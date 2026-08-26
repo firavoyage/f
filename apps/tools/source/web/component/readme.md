@@ -10,7 +10,6 @@ pattern
 
 - menu
 - sidebar
-- editor
 - process
 
 page

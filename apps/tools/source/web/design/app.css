@@ -142,7 +142,7 @@ textarea {
   flex-direction: row;
   flex-grow: 1;
 
-  .editor {
+  .panel {
     display: flex;
     flex-direction: column;
 
