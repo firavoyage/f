@@ -54363,6 +54363,12 @@ dont quite know what to do.
 
 have tasks in hand. none really meaningful.
 
+---
+
+ok yet i achieved sth and im happy.
+
+16 50 watch `This 1900 Defends Like A Monster! | Chess Rating Climb 1875 Rapid`.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
