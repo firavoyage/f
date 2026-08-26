@@ -103,7 +103,7 @@ textarea {
     flex-direction: row;
 
     padding: var(--spacing-0\.5);
-    height: var(--spacing-8);
+    flex-basis: var(--spacing-8);
 
     .search, .hamburger {
       width: var(--spacing-8);
