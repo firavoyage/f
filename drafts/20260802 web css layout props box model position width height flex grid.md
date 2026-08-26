@@ -2352,4 +2352,175 @@ To narrow down your layout setup, please let me know:
 
 # <!-- 26 aug -->
 
-# 
+# css flex grow shrink basis
+
+## css flex grow shrink basis
+
+The CSS properties `flex-grow`, `flex-shrink`, and `flex-basis` control how **flex items** size themselves along the main axis of a flex container. They determine how items expand to fill extra space or contract to prevent overflow. [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/flex-shrink)
+
+For a visual walkthrough of how these properties alter sizes dynamically, watch this comprehensive tutorial:
+
+8:42
+
+[link](https://www.youtube.com/watch?v=sanswTlz4ZY)
+
+Flex grow, shrink, basis | CSS Flexbox tutorial
+
+52K views · 4 years ago
+
+YouTube · Scrimba
+
+***
+
+### 🧱 Core Property Definitions
+
+| Property          | Core Concept                                                                    | Default Value       | Common Values                   |
+| ----------------- | ------------------------------------------------------------------------------- | ------------------- | ------------------------------- |
+| **`flex-basis`**  | The **starting size** of the item before any space is distributed.              | `auto`              | `200px`, `20%`, `auto`          |
+| **`flex-grow`**   | The ability to **expand** and absorb extra positive space.                      | `0` (do not grow)   | `1`, `2` (unitless proportions) |
+| **`flex-shrink`** | The ability to **contract** and shed negative space if the container overflows. | `1` (shrink evenly) | `0` (never shrink), `2`         |
+
+***
+
+### 1. `flex-basis` (The Starting Size)
+
+`flex-basis` dictates the initial, preferred size of an item before the browser calculates growth or shrinkage. [link](https://www.youtube.com/watch?v=LVLmX-fx09w\&t=1)
+
+- It acts as `width` if `flex-direction` is `row`.
+- It acts as `height` if `flex-direction` is `column`.
+- **`auto` (Default)**: Sizes the item relative to its content or its explicitly set `width`/`height` property. [link](https://www.youtube.com/watch?v=LVLmX-fx09w\&t=1)
+
+***
+
+### 2. `flex-grow` (Distributing Extra Space)
+
+When the parent container is larger than the total `flex-basis` of its children, `flex-grow` determines how the leftover positive space is divided. [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/flex-grow)
+
+- **`0` (Default)**: The item stays at its baseline content size.
+- **`1`**: If all sibling items are set to `1`, they grow equally to take up all remaining space.
+- **Proportions**: If Item A has `flex-grow: 2` and Item B has `flex-grow: 1`, Item A will claim **two shares** of the remaining layout space for every **one share** Item B claims. [link](https://css-tricks.com/understanding-flex-grow-flex-shrink-and-flex-basis/)
+
+***
+
+### 3. `flex-shrink` (Handling Overflow)
+
+When the total `flex-basis` of the items is larger than the available container size, `flex-shrink` dictates how items surrender space to avoid overflowing. [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/flex-shrink)
+
+- **`1` (Default)**: Items shrink at equal rates relative to their base sizes.
+- **`0`**: The item **will not shrink** under any circumstances, preserving its text or fixed dimensions even if it breaks layout borders.
+- **Higher numbers**: An item with `flex-shrink: 3` will shed space three times faster than an item with `flex-shrink: 1` when the container is compressed. [link](https://www.youtube.com/watch?v=vh-ZpSIcwI8\&t=251)
+
+***
+
+### 🏎️ The Recommended Shorthand: `flex`
+
+Instead of micro-managing individual values, the W3C recommends using the unified `flex` shorthand property. The structural order of parameters is **`flex: [grow] [shrink] [basis]`**. [link](https://css-tricks.com/understanding-flex-grow-flex-shrink-and-flex-basis/)
+
+css
+
+```
+/* Individual properties */
+.item {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 250px;
+}
+
+/* Equivalent shorthand syntax */
+.item {
+  flex: 1 0 250px;
+}
+```
+
+Use code with caution.
+
+#### Common Shorthand Presets [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/flex)
+
+- **`flex: 1;`** _(Resolves to `1 1 0%`)_: Distributes space completely evenly from zero starting widths.
+- **`flex: auto;`** _(Resolves to `1 1 auto`)_: Items expand/contract flexibly based on their raw content dimensions.
+- **`flex: none;`** _(Resolves to `0 0 auto`)_: Treats the item as completely rigid—it will neither grow nor shrink. [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/flex)
+
+Would you like to build an **interactive code example** to test these parameters or map out a **specific layout** like a sticky sidebar?
+
+21 sites
+
+- [link](https://css-tricks.com/understanding-flex-grow-flex-shrink-and-flex-basis/)\
+  Understanding flex-grow, flex-shrink, and flex-basis | CSS-Tricks\
+  Nov 10, 2020 — The flex-grow, flex-shrink, and flex-basis properties are part of the flex shorthand CSS property. The shorthand property bundles ...\
+  CSS-Tricks
+- [link](https://www.youtube.com/watch?v=vh-ZpSIcwI8\&t=251)\
+  Flexbox Basics: flex-grow, flex-shrink, flex-basis\
+  Mar 8, 2022 — Flexbox Basics: flex-grow, flex-shrink, flex-basis grow is zero which means there's no space that we need to take up other than ju...\
+  2m\
+  YouTube·Brad Hussey
+- [link](https://www.w3schools.com/css/css3%5Fflexbox%5Fitems.asp)\
+  CSS Flex Items - W3Schools\
+  CSS flex-shrink Property. The flex-shrink property specifies how much a flex item will shrink relative to the rest of the flex ite...\
+  W3Schools
+
+Show all
+
+## what if i make flex shrink 0 and overflow hidden default to all elements
+
+Applying `flex-shrink: 0` and `overflow: hidden` globally to **all elements** via the universal selector (`*`) will dramatically alter how web pages render. It breaks standard CSS assumptions, protects layouts from breaking, but introduces new risks like text clipping.
+
+Here is exactly what happens when you combine these two global rules:
+
+### 1. The Impact of Global `flex-shrink: 0`
+
+By default, flex items have `flex-shrink: 1`, allowing them to contract to prevent their parent container from overflowing.
+
+- **The Benefit:** Flex items will **never squeeze or distort**. Images, icons, and text blocks will strictly maintain their preferred `width` or `flex-basis`. Layouts like sidebars or navigation bars will remain rigid and stable.
+- **The Problem:** It completely destroys the responsiveness of standard Flexbox layouts. If a row of items is wider than the screen, they will refuse to shrink. Instead, the items will violently **overflow the right side of the screen**, causing ugly horizontal page scrolling.
+
+***
+
+### 2. The Impact of Global `overflow: hidden`
+
+By default, elements have `overflow: visible`, meaning content that is too large spills outside its box but remains readable.
+
+- **The Benefit:** It prevents accidental layout blowouts. Content will never visually break its container boundaries.
+- **The Problem:** It is incredibly dangerous for typography and standard layouts. Because everything is clipped, text that wraps or scales up will simply **disappear into a void**.
+- **The Scrollbar Trap:** A global `* { overflow: hidden; }` removes standard scrollbars from the `<body>` and `<html>` tags. Your users will be stuck on the top fold of the website, completely **unable to scroll down the page**.
+
+***
+
+### 3. The Combined Effect: The "Rigid Clipping" Nightmare
+
+When you combine both properties globally, your layout behaves like an unyielding grid of concrete blocks that cleanly slices off any data that doesn't fit.
+
+- **Text Disappears:** If a user increases their system font size, text inside a fixed flex item cannot shrink (`flex-shrink: 0`) and cannot wrap naturally. The excess letters will be cleanly sliced off (`overflow: hidden`) and become permanently invisible.
+- **Broken Third-Party Tools:** Dropdown menus, tooltips, modals, and custom select boxes rely on overflowing their parent containers to display correctly. A global `overflow: hidden` will slice off dropdown menus the moment they expand past their button wrapper.
+
+***
+
+### 🛠️ A Safer Alternative
+
+If your goal is to stop flex items (like icons or avatars) from distorting and prevent layouts from breaking, do not apply these rules universally. Instead, target them safely:
+
+css
+
+```
+/* 1. Global Box Sizing (Always do this instead) */
+*, *::before, *::after {
+  box-sizing: border-box; /* Prevents padding from breaking widths */
+}
+
+/* 2. Protect specific components from shrinking */
+.icon, .avatar, .sidebar {
+  flex-shrink: 0;
+}
+
+/* 3. Handle text truncation safely on specific elements */
+.truncate-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+```
+
+Use code with caution.
+
+Are you troubleshooting a **specific bug** where elements are shrinking unexpectedly, or are you trying to build a **particular UI layout** like an app dashboard?
+
+
