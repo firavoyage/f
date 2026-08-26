@@ -143,7 +143,7 @@ function is_match(obj: Record<string, any>, arr: string[]): boolean {
 function convert(design_yaml: string) {
   const design: Record<string, Record<string, string[]>> = parse(design_yaml)
 
-  const { modes, ...tokens_obj } = design
+  const { modes = {}, ...tokens_obj } = design ?? {}
 
   type tokens = Record<string, string | number>
 

@@ -2735,4 +2735,16 @@ c
 const dev = handle(() => process.env.NODE_ENV == 'development' || import.meta.env?.DEV, false)
 ```
 
+16 00 script/convert design tokens: generalize parsing.
+
+provide dc/loop safe default values.
+
+<!-- i want to remove adwaita.yaml from intellisense. it's outdated (ref/sys/comp based naming). just comment the full yaml. -->
+
+16 10 remove editor component.
+
+it doesnt do much. it abstracts nothing.
+
+**do not make it a component when it basically provides a classname and wraps children**
+
 

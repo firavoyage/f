@@ -1,4 +1,4 @@
-import { Textarea } from "./textarea"
+import { Textarea } from "../textarea"
 
 type editor = {
   type: 'input' | 'output' | 'process'
