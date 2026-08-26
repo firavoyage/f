@@ -51,7 +51,9 @@ function clean_non_enum(obj: any, seen = new WeakSet()): any {
  * 
  * todo: capture state of an object?
  */
-export function log(...args: any[]): void {
-  const processedArgs = args.map(arg => clean_non_enum(arg));
-  console.log(...processedArgs);
-}
+// export function log(...args: any[]): void {
+//   const processedArgs = args.map(arg => clean_non_enum(arg));
+//   console.log(...processedArgs);
+// }
+
+export const log = console.log

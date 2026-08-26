@@ -2747,4 +2747,32 @@ it doesnt do much. it abstracts nothing.
 
 **do not make it a component when it basically provides a classname and wraps children**
 
+16 20 alias console.log as log.
+
+i dont really need to "clean non enum" or "deepclone" objects logged.
+
+rather not messing up w "stack trace" "ignore script list". doesnt seem there exists a simple way like Error.
+
+simple.
+
+16 30 web/lib/use_bind: standardize options type.
+
+pattern
+
+```ts
+type use_bind = Partial<{
+  prevent_default: true
+  stop_propagation: true
+  global: true
+}>
+
+export function use_bind(shortcut: string, action: (event: KeyboardEvent) => void, options: use_bind = {}) {
+  const { prevent_default = true, stop_propagation = true, global = true } = options
+
+// do sth...
+}
+```
+
+16 40 web/component/main: create title bar.
+
 

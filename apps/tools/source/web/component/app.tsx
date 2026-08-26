@@ -58,38 +58,22 @@ export const use_global = state({
 export function App() {
   // const [focus, set_focus] = use_global('navigation.tool')
 
-  // useEffect(() => {
-  //   log('app mounts')
-
-  //   // log('value', value)
-  // })
-
-  use_bind('ctrl+p', (e) => {
-    e.preventDefault() // print
-    log(e)
+  use_bind('ctrl+p', () => {
     log('search recent items')
   })
-  use_bind('ctrl+shift+p', (e) => {
-    e.preventDefault() // browser console command panel?
-    log(e)
+  use_bind('ctrl+shift+p', () => {
     log('search commands')
   })
-  use_bind('ctrl+?', (e) => {
-    log(e)
+  use_bind('ctrl+?', () => {
     log('open shortcuts help')
   })
-  use_bind('ctrl+,', (e) => {
-    log(e)
+  use_bind('ctrl+,', () => {
     log('open settings')
   })
 
   use_sync_theme('system')
 
   use_window_active()
-
-  useMount(() => {
-    log(tool_to_args)
-  })
 
   return <>
     <title>Tools</title>
