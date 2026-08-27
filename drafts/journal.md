@@ -54379,6 +54379,8 @@ ok yet i achieved sth and im happy.
 
 how would i name myself... i dont really have a presence online.
 
+> Tore HQ
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
