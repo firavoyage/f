@@ -2847,8 +2847,29 @@ decision
 
 also, i would deprecate `result.get`. and `is_inside_react` will be irrelevant.
 
-21 10 lib/state: harden persistency.
+---
+
+deprecate `correct_next`. 
+
+no need to wrap a bool toggle.
+
+---
+
+deprecate `keys_to_sync.fn`.
+
+mutate the set directly.
+
+21 10 ~~lib/state: harden persistency.~~
 
 localstorage must store an object. i will ignore that otherwise.
+
+---
+
+no. the type of data and old data doenst have to match.
+
+the "null" is a temp failure while the state lib is being edited.
+
+---
+
 
 

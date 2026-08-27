@@ -53,7 +53,7 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
     init,
     change,
   } = options
-  
+
   const {
     should_sync_url = false,
     should_apply_all_given_params = true,
@@ -64,7 +64,7 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
     path_mapping
   } = sync_url_options
 
-  const keys_to_sync = Array.isArray(flexible_keys_to_sync) ?
+  let keys_to_sync = Array.isArray(flexible_keys_to_sync) ?
     new Set(flexible_keys_to_sync) : flexible_keys_to_sync
 
   const key_to_param_mapping: any = {}
@@ -276,7 +276,7 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
     }
   }
 
-  // result.data = data
+  use_global.data = data
   Object.defineProperty(use_global, 'data', {
     value: data,
     writable: false,
@@ -287,56 +287,22 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
 
   use_global.sub = subscribe
 
-  function keep(item: key): void
-  function keep(addition: key[] | Set<key>): void
-  function keep(item: any) {
-    if (typeof item == 'object') {
-      for (const key of item) {
-        keys_to_sync.add(key)
-      }
-    } else {
-      keys_to_sync.add(item)
+  // expose regardless of should sync url in case ts is not intelligent enough
+  use_global.keys_to_sync = keys_to_sync
+  Object.defineProperty(use_global, 'keys_to_sync', {
+    value: keys_to_sync,
+    set(v){
+      keys_to_sync = v
     }
-  }
+  })
 
-  function omit(item: key): void
-  function omit(deduction: key[] | Set<key>): void
-  function omit(item: any) {
-    if (typeof item == 'object') {
-      for (const key of item) {
-        keys_to_sync.delete(key)
-      }
-    } else {
-      keys_to_sync.delete(item)
+  use_global.should_correct_url = should_correct_url
+  Object.defineProperty(use_global, 'should_correct_url', {
+    value: should_correct_url,
+    set(v){
+      should_correct_url = v
     }
-  }
-
-  function replace(item: key): void
-  function replace(new_keys: key[] | Set<key>): void
-  function replace(item: any) {
-    if (typeof item == 'object') {
-      keys_to_sync.clear()
-
-      for (const key of item) {
-        keys_to_sync.add(key)
-      }
-    } else {
-      if (keys_to_sync.has(item)) {
-        keys_to_sync.delete(item)
-      } else {
-        keys_to_sync.add(item)
-      }
-    }
-  }
-
-  // expose these apis regardless, in case ts is not intelligent enough
-  use_global.keys_to_sync = { keep, omit, replace }
-
-  function correct_next() {
-    should_correct_url = true
-  }
-
-  use_global.correct_next = correct_next
+  })
 
   // set maintains insertion order, change should fire first
   // e.g. derive path from other props, then sync
