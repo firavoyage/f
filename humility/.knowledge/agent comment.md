@@ -17,3 +17,10 @@
 - never uppercase
 - no styling
 
+# 0.2-revision (2026.08.27)
+
+- self explanatory over commenting
+- title case for what and where
+- lowercase (sentence case only when multi line) for why
+- never uppercase
+- no styling

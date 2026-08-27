@@ -1,10 +1,12 @@
 type merge = typeof merge
 type has = typeof has
 type is_given = typeof is_given
+type nil = typeof nil
 declare global {
   var merge: merge
   var has: has
   var is_given: is_given
+  var nil: nil
 }
 
 /**
@@ -68,3 +70,5 @@ export function is_given<T>(foo: T): foo is NonNullable<T> {
 
 //   return false
 // }
+
+export const nil = null

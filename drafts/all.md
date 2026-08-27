@@ -225,6 +225,7 @@ archi:
 - compare type and kind
 - code style comment title case sentence case
 - ts import import type
+- compare null and nil
 
 web: <!-- frontend, web, ts/js -->
 
