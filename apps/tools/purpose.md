@@ -2845,5 +2845,10 @@ decision
 
 ---
 
+also, i would deprecate `result.get`. and `is_inside_react` will be irrelevant.
+
+21 10 lib/state: harden persistency.
+
+localstorage must store an object. i will ignore that otherwise.
 
 

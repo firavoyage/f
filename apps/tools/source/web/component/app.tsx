@@ -1,7 +1,6 @@
 import 'web/design/utilitarian/utilitarian.css'
 import 'web/design/app.css'
 
-import { useMount } from 'react-use';
 import { cloneDeep } from 'lodash-es'
 
 import { use_bind } from 'web/lib/keyboard.use';
@@ -57,6 +56,7 @@ export const use_global = state({
 
 export function App() {
   // const [focus, set_focus] = use_global('navigation.tool')
+  const [, set_process] = use_global('process')
 
   use_bind('ctrl+p', () => {
     log('search recent items')
@@ -83,12 +83,12 @@ export function App() {
         <Menu {...p({ app: 'Tools' })}></Menu>
         <List {...p({
           items, set_focus(tool: string) {
-            use_global.set((process: item[]) => {
+            set_process((process: item[]) => {
               process.push(cloneDeep({
                 tool,
                 args: tool_to_args[tool] ?? []
               }))
-            }, 'process')
+            })
           }
         })}></List>
       </Sidebar>
