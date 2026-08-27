@@ -1,10 +1,14 @@
 # todo
 
-create process panel to compose multiple tools
+complete utilitarian component system.
 
 ---
 
+adopt icon lib.
 
+---
+
+complete planned tools.
 
 # backlog
 

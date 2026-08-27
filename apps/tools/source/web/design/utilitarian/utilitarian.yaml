@@ -18,8 +18,8 @@ modes:
     - slate
   density:
     - comfortable
-    - compact
     - cozy
+    - compact
   window:
     - active
     - inactive
