@@ -132,6 +132,7 @@ life:
 - tokyo disneysea believe sea of dreams
 - anime mushoku tensei jobless reincarnation title meaning
 - ice lattice
+- game clash royale global server
 
 create something:
 
