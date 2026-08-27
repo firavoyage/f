@@ -2795,4 +2795,39 @@ i can simply make it a toggle `v => !v`.
 
 and, if you say `toggle(t)` or `toggle(f)`, it's essentially set state. 
 
+---
+
+pattern
+
+```
+data, set data = use global
+```
+
+```
+prop, set prop = use global prop
+```
+
+```
+, set prop = use global prop
+```
+
+it doesnt matter, right? to optimize like that
+
+```
+onclick: use global. set prop prop value
+```
+
+```
+toggle = use global.set prop prop
+
+onclick: toggle
+```
+
+and it would introduce a problem, currying. i.e. whether set prop prop should return a setter or toggle prop.
+
+since i do not care what prop gets updated, set prop would definitely rerender the whole app, which... is actually fast. and it makes total no sense to set a prop wo getting it.
+
+a clever way would be to deprecate use global.set. and i could make the returned array a proxy (i only register a rerender if the first arg is used, in case it matters)
+
+
 
