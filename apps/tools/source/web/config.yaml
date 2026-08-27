@@ -3,6 +3,10 @@ appearance: # view
     - system
     - light
     - dark
+  density:
+    - comfortable
+    - cozy
+    - compact
   layout:
     sidebar: 
       is visible: true

@@ -23,19 +23,20 @@ main:
       minify:
       maximize:
       close:
-  panels:
+  workspace:
     # args/recipe: # s
-    editor.process: # m
+    process: # m
       item:
         args:
         to delete: # s
         to reorder # c
       to clear: # s
+      to copy link: # c
+      to copy code: # c
+      to import code: # c
       to edit code: # c
-      to copy/export: # c
-      to import: # c
-    editor.input: tool, input
-    editor.output: tool, input # output doesnt have to be a global state
+    input: tool, input
+    output: tool, input # output doesnt have to be a global state
     to resize: # c
 editor: 
   tab bar:

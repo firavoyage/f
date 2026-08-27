@@ -2869,7 +2869,18 @@ no. the type of data and old data doenst have to match.
 
 the "null" is a temp failure while the state lib is being edited.
 
+28
+
+02 50 pivot.
+
+complete utilitarian component system.
+
 ---
 
+adopt icon lib.
+
+---
+
+complete planned tools.
 
 
