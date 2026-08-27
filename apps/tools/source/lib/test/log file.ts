@@ -1,4 +1,4 @@
-import { log_info, log_warn, log_error } from 'lib/log';
+import { log_info, log_warn, log_error } from 'lib/log_fs';
 
 await log_info('hello world')
 

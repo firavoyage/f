@@ -1,5 +1,3 @@
-import { handle } from 'lib/handle';
-
 type merge = typeof merge
 type has = typeof has
 type is_given = typeof is_given
