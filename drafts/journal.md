@@ -54395,6 +54395,10 @@ well, a bit confusing login.
 
 despite what's claimed, it doesnt actually send the email when i try to login on registered scid on a not connected game. it works as expected on sc store, saying "not connected to this game".
 
+---
+
+i could not modernize my email address to gmail immediately on a new device.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
