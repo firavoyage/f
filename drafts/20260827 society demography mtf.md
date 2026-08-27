@@ -54,7 +54,10 @@ i would refer to others as
 
 about the impression on mtfs
 
-
+- basically a boy
+- cute and adorable appearance, and possibly warm voice (though it can feel overly feminine after training)
+- a typical way to speak
+- some common activities and a global community
 
 ---
 
