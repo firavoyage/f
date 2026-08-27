@@ -35,9 +35,11 @@ export function map(...args: any) {
       }))
 }
 
-type halt = typeof halt
-type map = typeof map
-declare global {
-  var halt: halt
-  var map: map
-}
+// no need to redeclare
+
+// type halt = typeof halt
+// type map = typeof map
+// declare global {
+//   var halt: halt
+//   var map: map
+// }
