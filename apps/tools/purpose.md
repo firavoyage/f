@@ -2787,7 +2787,7 @@ it can be a bit awkward to wrap a single number in an object, as a constraint of
 
 i could use yaml. but if it were json, i could simply import and dc. (no parsing)
 
-17 30 web/lib/state: deprecate `to_toggle`. polymorph `set`. move `should_sync_url` into `sync_url_options`.
+17 30 web/lib/state: deprecate `to_toggle`. polymorph `set`. move `should_sync_url` into `sync_url_options`. refactor its methods.
 
 what if you say `set()`? it doesnt make any sense, since states couldnt be undefined. (you may pass undefined/nil, then arg length wouldnt be zero.)
 
@@ -2829,5 +2829,16 @@ since i do not care what prop gets updated, set prop would definitely rerender t
 
 a clever way would be to deprecate use global.set. and i could make the returned array a proxy (i only register a rerender if the first arg is used, in case it matters)
 
+---
 
+ok proxy would not work. js array dc impl is flawed.
+
+---
+
+decision
+
+- use global will not expose ~~set or~~ set prop
+- prefer `[foo, set foo] = use global(prop?)` or `[, set foo] = ug(prop?)`
+  - currently it makes no sense to differ "whether it's unnecessary to rerender when a certain specific prop changes", as i do not check what props are being modified (e.g. w immer or proxy hacks)
+- if it's perf critical, make it a separate (global) atom and 
 
