@@ -2779,4 +2779,12 @@ export function use_bind(shortcut: string, action: (event: KeyboardEvent) => voi
 
 16 00 lib/std: adopt `nil` (an alias to null, globally) over `null` and `undefined`.
 
+16 20 backend: deprecate `web/port.json` and move to `backend/port.json`.
+
+file tracking is no longer a concern. modernize and use json serialize instead of template string btw.
+
+it can be a bit awkward to wrap a single number in an object, as a constraint of json.
+
+i could use yaml. but if it were json, i could simply import and dc. (no parsing)
+
 
