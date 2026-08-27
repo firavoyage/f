@@ -2787,8 +2787,12 @@ it can be a bit awkward to wrap a single number in an object, as a constraint of
 
 i could use yaml. but if it were json, i could simply import and dc. (no parsing)
 
-17 30 web/lib/state: deprecate `to_toggle`. polymorph `set`.
+17 30 web/lib/state: deprecate `to_toggle`. polymorph `set`. move `should_sync_url` into `sync_url_options`.
 
 what if you say `set()`? it doesnt make any sense, since states couldnt be undefined. (you may pass undefined/nil, then arg length wouldnt be zero.)
+
+i can simply make it a toggle `v => !v`.
+
+and, if you say `toggle(t)` or `toggle(f)`, it's essentially set state. 
 
 
