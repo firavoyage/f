@@ -13,12 +13,6 @@ function use_update() {
   return () => update(v => !v)
 }
 
-function is_inside_react() {
-  // @ts-expect-error things should adapt to humans
-  const internals = React.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE || React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
-  return !!internals?.ReactCurrentDispatcher?.current;
-}
-
 type state<T> = {
   persist?: string
   version?: string
@@ -234,28 +228,17 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
     history.replaceState({}, '', url)
   }
 
-  function set(new_value: any, path?: key) {
-    // function set(new_value: T | ((old_value: T) => T), path?: key) {
-    if (is_given(path)) {
-      if (typeof new_value == 'function') {
-        const result = new_value(data[path])
+  function set(...args: any[]) {
+    const new_value = args.length == 0 ? (v: boolean) => !v : args[0]
 
-        if (typeof result != 'undefined') {
-          data[path] = result
-        }
-      } else {
-        data[path] = new_value
+    if (typeof new_value == 'function') {
+      const result = new_value(data)
+
+      if (typeof result != 'undefined') {
+        data = result
       }
     } else {
-      if (typeof new_value == 'function') {
-        const result = new_value(data)
-
-        if (typeof result != 'undefined') {
-          data = result
-        }
-      } else {
-        data = new_value
-      }
+      data = new_value
     }
 
     trigger()
@@ -274,9 +257,10 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
       data[path] = new_value
     }
 
+    trigger()
   }
 
-  function result(path?: key) {
+  function use_global(path?: key): [any, (new_value: any) => any] {
     const update = use_update()
 
     useEffect(() => {
@@ -286,32 +270,22 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
     })
 
     if (is_given(path)) {
-      return [data[path], (new_value: Parameters<typeof set>[0]) => set(new_value, path)]
+      return [data[path], (...new_value: any[]) => set_prop(path, ...new_value)]
     } else {
       return [data, set]
     }
   }
 
-  result.data = data
-
-  Object.defineProperty(result, 'data', {
+  // result.data = data
+  Object.defineProperty(use_global, 'data', {
+    value: data,
     writable: false,
     configurable: false
   })
 
-  function get(path?: key) {
-    if (is_inside_react()) {
-      return result(path)[0]
-    } else {
-      return is_given(path) ? data[path] : data
-    }
-  }
+  use_global.set = set
 
-  result.get = get
-
-  result.set = set
-
-  result.sub = subscribe
+  use_global.sub = subscribe
 
   function keep(item: key): void
   function keep(addition: key[] | Set<key>): void
@@ -356,13 +330,13 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
   }
 
   // expose these apis regardless, in case ts is not intelligent enough
-  result.keys_to_sync = { keep, omit, replace }
+  use_global.keys_to_sync = { keep, omit, replace }
 
   function correct_next() {
     should_correct_url = true
   }
 
-  result.correct_next = correct_next
+  use_global.correct_next = correct_next
 
   // set maintains insertion order, change should fire first
   // e.g. derive path from other props, then sync
@@ -382,25 +356,10 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
 
   init?.(data)
 
-  return result
-}
-
-export function to_toggle([on, set]: any) {
-  function toggle(new_value?: any): any {
-    // function toggle(new_value?: boolean | ((old_value: boolean) => boolean)) {
-    if (!is_given(new_value) || typeof new_value != 'boolean' && typeof new_value != 'function') {
-      set((v: boolean) => !v)
-    } else {
-      set(new_value)
-    }
-  }
-
-  return [on, toggle]
+  return use_global
 }
 
 type state_fn = typeof state
-type to_toggle = typeof to_toggle
 declare global {
   var state: state_fn
-  var to_toggle: to_toggle
 }
