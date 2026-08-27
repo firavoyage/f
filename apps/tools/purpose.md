@@ -2840,5 +2840,10 @@ decision
 - use global will not expose ~~set or~~ set prop
 - prefer `[foo, set foo] = use global(prop?)` or `[, set foo] = ug(prop?)`
   - currently it makes no sense to differ "whether it's unnecessary to rerender when a certain specific prop changes", as i do not check what props are being modified (e.g. w immer or proxy hacks)
-- if it's perf critical, make it a separate (global) atom and 
+- if it's perf critical, make it a separate (global) atom and write `toggle = use_prop.set` (i will expose set)
+- and, i will change the set api. if both path (key/prop) and value were optional, it would not work if you passed one arg. i would not let it accept obj param (boilerplate most time). the change is path is now not accepted. write `ug(prop)` instead. also, it makes things way more explicit.
+
+---
+
+
 
