@@ -133,6 +133,7 @@ life:
 - anime mushoku tensei jobless reincarnation title meaning
 - ice lattice
 - game clash royale global server
+- anime bakemonogatari tore
 
 create something:
 
