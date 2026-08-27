@@ -54389,6 +54389,12 @@ it doesn't have to be a name.
 
 for some reason it offers items in euro in shop.
 
+---
+
+well, a bit confusing login.
+
+despite what's claimed, it doesnt actually send the email when i try to login on registered scid on a not connected game. it works as expected on sc store, saying "not connected to this game".
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
