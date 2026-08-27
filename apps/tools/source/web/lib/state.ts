@@ -290,7 +290,9 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
   // expose regardless of should sync url in case ts is not intelligent enough
   use_global.keys_to_sync = keys_to_sync
   Object.defineProperty(use_global, 'keys_to_sync', {
-    value: keys_to_sync,
+    get() {
+      return keys_to_sync
+    },
     set(v){
       keys_to_sync = v
     }
@@ -298,7 +300,9 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
 
   use_global.should_correct_url = should_correct_url
   Object.defineProperty(use_global, 'should_correct_url', {
-    value: should_correct_url,
+    get(){
+      return should_correct_url
+    },
     set(v){
       should_correct_url = v
     }
