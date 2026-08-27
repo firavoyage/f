@@ -54375,11 +54375,19 @@ ok yet i achieved sth and im happy.
 
 16 10 watch `This 1900 Defends Like A Monster! | Chess Rating Climb 1875 Rapid`.
 
-20 50 download clash royale global server.
+20 50 download clash royale global server. reg supercell id w proton mail. login back to some prev accounts.
 
 how would i name myself... i dont really have a presence online.
 
 > Tore HQ
+
+or maybe _Humility_, in full width characters.
+
+it doesn't have to be a name.
+
+---
+
+for some reason it offers items in euro in shop.
 
 
 
