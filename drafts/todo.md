@@ -754,3 +754,8 @@ i may integrate things.
 currently only sabaki is elegant. but it's not well engineered in my standard.
 
 ---
+
+leisure en: dict
+
+---
+
