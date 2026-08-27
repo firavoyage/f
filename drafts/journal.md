@@ -54375,7 +54375,7 @@ ok yet i achieved sth and im happy.
 
 16 10 watch `This 1900 Defends Like A Monster! | Chess Rating Climb 1875 Rapid`.
 
-20 50 download clash royale global server. reg supercell id w proton mail. login back to some prev accounts.
+20 50 download clash royale global server. reg supercell id w proton mail. login back to some prev accounts. achieve 7-5 on kondon challenge.
 
 how would i name myself... i dont really have a presence online.
 
