@@ -28,8 +28,8 @@ export const use_global = state({
 }, {
   persist: 'tools',
   version: '0.2',
-  should_sync_url: true,
   sync_url_options: {
+    should_sync_url: true,
     should_apply_all_given_params: true,
     should_cleanup_omitted_params_after_init: true,
     should_sync_after_init: true,
