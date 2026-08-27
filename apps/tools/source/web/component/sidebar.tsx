@@ -1,5 +1,6 @@
 import { use_bind } from "web/lib/keyboard.use"
-import { use_global } from "./app"
+
+import { use_global } from "web/component/app"
 
 type SidebarProps = {
   variant?: 'push' | 'overlay'
@@ -9,7 +10,7 @@ type SidebarProps = {
 export function Sidebar({ variant, children }: SidebarProps) {
   variant ??= 'push'
 
-  const [on, toggle] = to_toggle(use_global('appearance.layout.sidebar.is_visible'))
+  const [on, toggle] = use_global('appearance.layout.sidebar.is_visible')
 
   use_bind('ctrl+b', toggle)
 

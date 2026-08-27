@@ -21,9 +21,9 @@ function is_inside_react() {
 
 type state<T> = {
   persist?: string
-  should_sync_url?: boolean
   version?: string
   sync_url_options?: {
+    should_sync_url?: boolean
     should_apply_all_given_params?: boolean
     should_cleanup_omitted_params_after_init?: boolean
     should_sync_after_init?: boolean
@@ -55,13 +55,13 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
   const {
     persist,
     version,
-    should_sync_url = false,
     sync_url_options = {},
     init,
     change,
   } = options
-
+  
   const {
+    should_sync_url = false,
     should_apply_all_given_params = true,
     should_cleanup_omitted_params_after_init = false,
     should_sync_after_init = true,
@@ -79,6 +79,17 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
   }
 
   let data: any = initial
+
+  const subs: Set<Function> = new Set()
+  function subscribe(listener: Function) {
+    subs.add(listener)
+  }
+
+  function trigger() {
+    for (const sub of subs) {
+      sub(data)
+    }
+  }
 
   function init_from_localstorage() {
     if (!is_given(persist) || !has(globalThis, 'localStorage')) {
@@ -227,7 +238,6 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
     // function set(new_value: T | ((old_value: T) => T), path?: key) {
     if (is_given(path)) {
       if (typeof new_value == 'function') {
-        // @ts-expect-error 
         const result = new_value(data[path])
 
         if (typeof result != 'undefined') {
@@ -238,7 +248,6 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
       }
     } else {
       if (typeof new_value == 'function') {
-        // @ts-expect-error 
         const result = new_value(data)
 
         if (typeof result != 'undefined') {
@@ -249,14 +258,22 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
       }
     }
 
-    for (const sub of subs) {
-      sub(data)
-    }
+    trigger()
   }
 
-  const subs: Set<Function> = new Set()
-  function subscribe(listener: Function) {
-    subs.add(listener)
+  function set_prop(path: key, ...args: any[]) {
+    const new_value = args.length == 0 ? (v: boolean) => !v : args[0]
+
+    if (typeof new_value == 'function') {
+      const result = new_value(data[path])
+
+      if (typeof result != 'undefined') {
+        data[path] = result
+      }
+    } else {
+      data[path] = new_value
+    }
+
   }
 
   function result(path?: key) {
