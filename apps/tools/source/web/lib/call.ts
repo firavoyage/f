@@ -1,4 +1,4 @@
-import { port } from 'web/port.json';
+import { port } from 'backend/port.json';
 
 /**
  * rather call('method', payload) than currying like method(payload)

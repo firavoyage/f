@@ -7,6 +7,8 @@ import { cors } from 'hono/cors';
 import { serveStatic } from '@hono/node-server/serve-static';
 import fs from 'node:fs'
 
+const { stringify: serialize } = JSON
+
 const port = 0;
 // const port = 3000;
 
@@ -77,5 +79,9 @@ serve({
 }, (info) => {
   log(`Server is running on http://localhost:${info.port}`);
 
-  fs.writeFileSync('../web/port.json', `{"port":${info.port}}`)
+  const port_data = {
+    port: info.port
+  }
+
+  fs.writeFileSync('./port.json', serialize(port_data))
 });
