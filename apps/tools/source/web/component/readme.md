@@ -9,8 +9,8 @@ atom
 - select <!-- single select -->
 - radio <!-- single select -->
 - input <!-- text input -->
-- number <!-- number field/number input -->
-- slider <!-- number range -->
+- number <!-- number input, number field -->
+- slider <!-- number input, number range -->
 - tooltip <!-- title attr -->
 
 pattern

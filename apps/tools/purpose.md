@@ -3008,4 +3008,6 @@ it doesnt have to be a portal i guess.
 
 "name" could be a react element here. not needed though.
 
-base ui is so... sophisticated? it applies "data-highlighted" on the hovered popup. and, if you use your mouse to hover an item first, up
+base ui is so... sophisticated? it applies "data-highlighted" on the hovered popup. and, if you use your mouse to hover an item first, up/down arrow would be based on that. not really practical it feels.
+
+
