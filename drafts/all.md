@@ -302,7 +302,7 @@ web: <!-- frontend, web, ts/js -->
 - css props order
 - css overflow prop
 - ts object types
-- react prop attr param
+- react prop over attr param
 
 backend:
 
@@ -376,6 +376,7 @@ desktop:
 - setup forgejo
 - shell typos cli config
 - shell typos abstraction
+- vscode fix css linting syntax highlighting
 
 android:
 
