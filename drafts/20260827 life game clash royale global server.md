@@ -468,4 +468,173 @@ Would you like a comparison of **how the new Void's single-target damage stacks 
 
 Show all
 
+# clash royale elite wild card change
+
+<mark><strong><span><u><span><span><span tabindex="0" role="button"><span><span>Clash Royale</span></span></span></span></span></u><span> </span>completely removed Elite Wild Cards (EWCs)</span></strong><span> </span>from the game as part of a massive economy and progression overhaul</mark>. The change reverted the game back to the classic progression system. Instead of saving 50,000 EWCs for Level 15 upgrades, players now upgrade cards using standard cards, gold, and traditional wild cards. [link](https://x.com/ClashRoyale/status/1987896938310594904)
+
+### Core Changes & Level 16 Mechanics
+
+- **Level 16 Introduction**: Level 16 was added as the new maximum tier for fully maxed decks and accounts. [link](https://x.com/ClashRoyale/status/1987896938310594904)
+- **Resource Conversion**: Any Elite Wild Cards left in player inventories were automatically **converted into Gems** to support a new gem-based economy shortcut. [link](https://x.com/ClashRoyale/status/1987896938310594904)
+- **Partial Upgrade Safety**: If a player had already invested partial EWCs into a Level 14 card, those EWCs were mirrored and **converted into regular card copies** to preserve progress. [link](https://supercell.com/en/games/clashroyale/blog/news/coming-in-the-next-update/)
+- **Magic Item Purge**: Alongside EWCs, Magic Books (like the Book of Cards) and Magic Coins were removed. Books were converted into traditional wild cards or gems, and Magic Coins turned into Gold. [link](https://www.youtube.com/watch?v=FNLYSsPiN14\&vl=en\&t=17)
+- **Ranked Level Caps**: To give players time to adjust to Level 16, ranked battles were strictly **capped at Level 15** for the first six months following the update. [link](https://supercell.com/en/games/clashroyale/blog/news/coming-in-the-next-update/)
+
+### Progression Reductions
+
+To balance out the addition of Level 16, the total amount of cards and gold required to upgrade to Level 14 was significantly reduced. Upgrades now focus strictly on standard card accumulation, with gems serving as an optional acceleration tool. [link](https://x.com/ClashRoyale/status/1987896938310594904)
+
+Are you looking to see how your **remaining magic items** shifted under this economy, or do you need a breakdown of the new **Level 16 upgrade costs**?
+
+7 sites
+
+- [link](https://www.reddit.com/r/ClashRoyale/comments/1ozc952/elite%5Fwild%5Fcards%5Fhave%5Fbeen%5Fcompletely%5Fremoved/)\
+  Elite Wild Cards have been completely removed from ... - Reddit\
+  Nov 17, 2025 — They added it back and it wasn't there when I posted. To be honest, maybe it was no accident and they probably added it back becau...\
+  Reddit·r/ClashRoyale
+- [link](https://supercell.com/en/games/clashroyale/blog/news/coming-in-the-next-update/)\
+  COMING IN THE NEXT UPDATE… × Clash Royale - Supercell\
+  Nov 10, 2025 — \* If you've already used Elite Wild Cards on a partial upgrade, these will be converted into copies of that card that will mirror ...\
+  Supercell
+- [link](https://x.com/ClashRoyale/status/1987896938310594904)\
+  Clash Royale (@ClashRoyale) on X\
+  Nov 10, 2025 — You no longer need to finish the entire Trophy Road to enter Ranked! Now, you unlock Ranked when you reach the required Trophy mil...\
+  X·ClashRoyale
+
+Show all
+
+## timeline
+
+The Elite Wild Card (EWC) system removal and the transition to Level 16 followed a strict, phased roadmap designed to protect competitive balance:
+
+### The Progression Overhaul Timeline
+
+| Date / Window                | Event & Impact                                                                                                                                                                                                                             |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Early November 2025**      | **Official Announcement:** [Supercell](https://supercell.com/en/games/clashroyale/blog/news/coming-in-the-next-update) officially revealed the complete removal of EWCs, the addition of Level 16, and the upcoming item conversion rates. |
+| **November 17, 2025**        | **Pre-Update Warnings:** In-game shop timers officially began a final countdown alerting players that EWCs were sunsetting.                                                                                                                |
+| **November 24, 2025**        | **The December Update Goes Live:** EWCs were completely erased from player inventories and converted into Gems at a **1 Gem for every 20 EWCs** ratio. Level 16 launched on Trophy Road and Clan Wars.                                     |
+| **November 2025 – May 2026** | **The Grace Period:** To keep a level playing field for non-maxed players, **Ranked (Path of Legends) battles remained strictly capped at Level 15**.                                                                                      |
+| **May 2026**                 | **Ranked Cap Lifted:** The Level 15 cap expired. Level 16 was integrated into Ranked mode matchmaking, making maxed decks necessary for top-tier ladder pushers.                                                                           |
+
+Do you need details on how **partial Level 15 upgrades** were handled during the November 24th transition, or a breakdown of the new **Crystal currency** that replaced overflow cards? [link](https://www.youtube.com/shorts/V7G-bxu1Yfc)
+
+- [link](https://www.reddit.com/r/ClashRoyale/comments/1ozc952/elite%5Fwild%5Fcards%5Fhave%5Fbeen%5Fcompletely%5Fremoved/)\
+  Reddit·r/ClashRoyale\
+  Elite Wild Cards have been completely removed from ... - Reddit\
+  Nov 17, 2025 — They added it back and it wasn't there when I posted. To be honest, maybe it was no accident and they probably added it back becau...
+- [link](https://supercell.com/en/games/clashroyale/blog/release-notes/december-update-2025/)\
+  Supercell\
+  DECEMBER UPDATE 2025 × Clash Royale - Supercell\
+  Nov 21, 2025 — In early November, we shared the first steps of a broader update to Clash Royale's progression system. The December update (live o...
+- [link](https://www.youtube.com/watch?v=i45NoX0uQbk\&t=314)\
+  YouTube·Tryaz Gaming\
+  STOP Upgrading! Level 16 changes EVERYTHING\
+  Nov 10, 2025 — clash Royale is removing elite white cards. and all book of cards. and introducing a new crystal currency. and level 16 in today's...\
+  24s
+
+Show all
+
+## prev timeline
+
+### The History of Elite Wild Cards (2023 – 2025)
+
+The entire lifecycle of the **Elite Wild Card (EWC) system** spanned from its arrival as part of the controversial Level 15 update to its eventual permanent removal: [link](https://clashroyale.fandom.com/wiki/Magic%5FItems)
+
+| Date                    | Era / Phase                            | Update Milestone & Impact                                                                                                                                                                                                                                                            |
+| ----------------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **June 12, 2023**       | **The EWC Announcement**               | [Supercell](https://supercell.com/en/games/clashroyale/blog/news/how-to-get-elite-levels-level-15-2) revealed EWCs as the exclusive currency required to upgrade cards from Level 14 to Level 15 ("Elite Level"). It bypassed gold costs entirely but mandated 50,000 EWCs per card. |
+| **June 19, 2023**       | **The Launch (Card Evolution Update)** | The EWC system officially went live. Excess card copies from maxed (Level 14) cards and Magic Items automatically converted into EWCs. Path of Legends implemented a 6-month Level 14 cap to help players transition.                                                                |
+| **October 23, 2023**    | **The Inventory Cap Rework**           | An update stopped regular Wild Cards from automatically overflowing into EWCs once a player hit the maximum EWC inventory cap.                                                                                                                                                       |
+| **Late 2023 – 2025**    | **The Daily Grind Era**                | For over two years, EWCs remained a core part of the endgame. Players passively accumulated them through reward tracks, clan wars, and opening chests containing maxed cards.                                                                                                        |
+| **Early November 2025** | **The Sudden Sunsetting**              | EWCs were abruptly removed from Ranked and Trophy Road reward tracks, causing brief community confusion until Supercell formally announced [the system's complete retirement](https://supercell.com/en/games/clashroyale/blog/news/coming-in-the-next-update).                       |
+| **November 24, 2025**   | **The Permanent Removal**              | The system officially ended. EWCs were purged globally and converted into Gems (at a 20:1 ratio) as [Clash Royale](https://supercell.com/en/games/clashroyale/blog/release-notes/december-update-2025) transitioned to standard cards and Gold for the newly introduced Level 16.    |
+
+Would you like to review the specific **card-to-EWC conversion rates** that were active during the 2023–2025 era, or look closer at the **Gold economy adjustments** made after they were removed? [link](https://supercell.com/en/games/clashroyale/blog/news/how-to-get-elite-levels-level-15-2/)
+
+- [link](https://www.reddit.com/r/ClashRoyale/comments/1ottu6z/new%5Fl16%5Fprogression%5Fwhat%5Fyou%5Fshould%5Fkeep%5Fand%5Fhow/)\
+  Reddit·r/ClashRoyale\
+  New L16 Progression - What you should keep and how to ...\
+  Nov 10, 2025 — EWC. Elite wild cards inserted into L14 cards will carry over progression- If you're halfway done with your level 15 progress for ...
+- [link](https://www.youtube.com/shorts/i0bnpBWKVpg)\
+  YouTube·Dirkyy - Clash Royale\
+  The Biggest Update in Clash Royale History…Level 16\
+  Nov 10, 2025 — the biggest update in Clash Royale. history was just announced in the next Clash Royale update level 16 is coming and elite wild c...\
+  1:14
+- [link](https://www.instagram.com/p/DQ4VR9JgaMU/)\
+  Instagram·royaleapi\
+  Level 16 + Economy Overhaul is coming to Clash Royale on ...\
+  Nov 10, 2025 — Level 16 + Economy Overhaul is coming to Clash Royale on Nov 24, 2025. Swipe through the charts to see: Old vs New material costs ...
+
+Show all
+
+## history of card level
+
+The card leveling system in Clash Royale has undergone major structural redesigns since the game launched. It transitioned from a complex, non-standardized format to unified numbering, experimented with card-less progression, and ultimately settled into standard linear capping. [link](https://www.reddit.com/r/ClashRoyale/comments/54vxii/a%5Fhistory%5Fof%5Fthe%5Fcards%5Fof%5Fclash%5Froyale/)
+
+### The Card Level Evolution Timeline
+
+| Era / Date                                      | Max Level            | Core System Mechanics & Impact                                                                                                                                                                                                          |
+| ----------------------------------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Launch Era\***(2016 – 2018)\*                 | **Varies by Rarity** | Cards had entirely different level caps based on rarity. **Commons capped at Level 13, Rares at 11, Epics at 8, and Legendaries at 5**. This caused extreme confusion regarding card power parity.                                      |
+| **September 2018\***The Level Standardization\* | **Level 13**         | Supercell standardized all card levels to align with Common card scaling. No stats were changed, but starting levels shifted so **all rarities capped at Level 13** (e.g., a base Legendary became Level 9 instead of Level 1).         |
+| **October 2021\***The Level 14 Shock\*          | **Level 14**         | The first true cap increase in over five years. King Towers and cards were extended to **Level 14**, costing 100,000 Gold per card. It introduced Champions as a new rarity and lowered previous tier upgrade costs.                    |
+| **June 2023\***The Elite Wild Card Era\*        | **Level 15**         | The addition of **Level 15 ("Elite Level")** changed progression fundamentally. It completely bypassed Gold costs, requiring **50,000 Elite Wild Cards (EWCs)** accumulated strictly from overflow maxed card copies.                   |
+| **November 2025\***The Level 16 Reset\*         | **Level 16**         | A massive overhaul completely **removed Elite Wild Cards**. Progression reverted to standard linear loops. **Level 16 became the new max tier**, requiring standard cards and gold, while Level 15 gold costs were drastically reduced. |
+
+### Statistical Rule of Thumb
+
+Through every iteration of the level caps, the mathematical core of the cards remained identical: **all health and damage statistics increase by roughly 10% per level**. [link](https://clashroyale.fandom.com/wiki/Cards)
+
+Would you like to examine the exact **Gold and Card requirements** for the current Level 16 progression, or see how **Tower Troop leveling** ties into these changes? [link](https://www.youtube.com/watch?v=KVORRYMnLs0\&t=109)
+
+- [link](https://www.youtube.com/watch?v=cOxxhK1025s\&vl=en)\
+  YouTube·HaVoC Gaming\
+  A Decade of Clash Royale History\
+  Mar 7, 2026 — and that was it this is definitely going to be the shortest. year in this video. but there really wasn't much going on they put al...\
+  21:55
+- [link](https://clashroyale.fandom.com/wiki/Cards)\
+  Clash Royale Wiki | Fandom\
+  Cards | Clash Royale Wiki - Fandom\
+  Cards are what players use to deploy troops, spells, and buildings onto the battlefield. A certain category of troops, those being...
+- [link](https://www.reddit.com/r/ClashRoyale/comments/54vxii/a%5Fhistory%5Fof%5Fthe%5Fcards%5Fof%5Fclash%5Froyale/)\
+  Reddit·r/ClashRoyale\
+  A history of the cards of clash royale : r/ClashRoyale - Reddit\
+  Sep 28, 2016 — A history of the cards of clash royale. At the launch of the game we had 14 commons, rares and epics. Commons: Arrows. Bomber. Arc...
+
+Show all
+
+## controversies
+
+**Clash Royale’s history of card level updates is deeply rooted in massive community controversies.** Each major cap increase has triggered intense player backlash, boycotts, and accusations of predatory monetization. Supercell has repeatedly reworked progression mechanics in response to these compounding "pay-to-win" criticisms. [link](https://www.youtube.com/watch?v=yXyX8nDePg0\&t=324)
+
+### The Major Card Level Controversies
+
+- **"Slashgate" & The Level 14 Surprise (October 2021):** Supercell launched **Slash Royale**, a highly praised event offering a 50% discount on all gold upgrades. Convinced they were safely maximizing their accounts, players drained millions in gold reserves. Days later, Supercell announced Level 14. Because the upgrade scaling changed _after_ the update, players who participated in Slash Royale actually lost out on massive resource values. The community branded it a "deliberate scam" to drain hoarded resources before a paywall, forcing Supercell to issue a public apology and retroactively refund card copies. [link](https://www.reddit.com/r/ClashRoyale/comments/17liehs/why%5Fdo%5Fpeople%5Fsay%5Fslash%5Froyale%5Fwas%5Fa%5Fscam/)
+- **The "Update for Losers" & Level 15 (Early 2023):** Facing immense resistance to the concept of Level 15, Supercell heavily nerfed the progression economy. They replaced the highly valued old Pass Royale with a split tier system, introducing a more expensive $12 Diamond Pass while removing Magic Books and Magic Coins from free progression tracks. This aggressive monetization strategy was widely viewed as a coordinated effort to force purchases ahead of the upcoming level cap. [link](https://www.youtube.com/watch?v=dWU6he51fcE\&vl=en)
+- **The Elite Wild Card Grind (June 2023):** To address complaints about Level 14’s gold costs, Supercell launched Level 15 requiring **50,000 Elite Wild Cards (EWCs)** instead of gold. However, the initial conversion rates for excess card copies were brutally low (e.g., needing 25,000 Common duplicates for just one Level 15 upgrade). Prominent content creators led massive community pushbacks, arguing that it created an impossible multi-year grind for free-to-play users while allowing big spenders to instantly max out via shop offers. [link](https://www.youtube.com/watch?v=IaX3Hfbfv0M\&t=255)
+- **The Level 16 Overcorrection & Boycott (Late 2025 – Early 2026):** Despite past developer promises that they would not add more levels, Supercell suddenly introduced **Level 16**. They deleted EWCs completely and abruptly stripped out popular features like the Season Shop to simplify the economy. This sparked a major creator-led boycott, review bombing, and the high-profile retirement of several professional players who felt Supercell had completely broken community trust. [link](https://www.youtube.com/watch?v=HTShujbevSI)
+
+Would you like a breakdown of the specific **conversion ratios** Supercell used to pacify players during the Level 14 Slashgate incident, or details on how the **2026 creator boycott** impacted official tournament events? [link](https://www.youtube.com/watch?v=6GIImlpslaY\&t=53)
+
+AI responses may include mistakes. For legal advice, consult a professional. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
+
+- [link](https://www.youtube.com/watch?v=dWU6he51fcE\&vl=en)\
+  YouTube·HaVoC Gaming\
+  Clash Royale's Biggest Controversy Each Year\
+  May 10, 2025 — another year another Clash Royale controversy am I right feels like there's never been a year in Clash Royale history where there ...\
+  16:40
+- [link](https://www.facebook.com/clashwithashofficial/videos/was-level-14-a-scam/4877092842335429/)\
+  Facebook·CWA Mobile Gaming\
+  Level 14 Controversy in #ClashRoyale - Was Slash Royale a ...\
+  Oct 21, 2021 — When the end game is changed you get a trickle down effect. CoC is the same way when newer levels are added to the game lower leve...\
+  [10:01](https://www.facebook.com/clashwithashofficial/videos/was-level-14-a-scam/4877092842335429/)
+- [link](https://www.youtube.com/watch?v=q-d-GC9VXhY\&t=419)\
+  YouTube·ARCTO\
+  Why Clash Royale's Updates Keep Getting WORSE\
+  Nov 22, 2025 — clash Royale is somehow. 10 years old and somehow the updates keep getting worse chest removal season shop deletion elite wild car...\
+  1m
+
+Show all
+
 
