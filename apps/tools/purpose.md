@@ -2927,7 +2927,7 @@ camel case. aria attrs. data attrs. tsism, undefined in union instead of questio
 
 "useid is primarily used for accessibility"
 
-18 10 create atom components.
+18 10 design and create atom components.
 
 ~~adopt standard markdown syntax on the component index~~ no need to add visual noise. you would read the raw md rather than rendering it.
 
@@ -2941,12 +2941,41 @@ no component will have .root .child like baseui. (violation of dry)
 
 it's a fixed constraint.
 
+for radio, it will accept options, that is an array of items (string or {name, id}), value and set value. i may add metedata like disabled on item if i need them one day.
+
+"radio would be always inside a radio group".
+
 ---
 
-~~it's meaningless to solve a general problem you will never meet (e.g. support on_click on props).~~ i will support on_click on props.
+~~it's meaningless to solve a general problem you will never meet (e.g. support on_click on props).~~ <!-- i will --> support on_click on props.
 
 you should not accept onclick, onClick, or on_click as a standard prop, right? you may name as click. it _is_ a callback fn when you see a verb on params/props.
 
 and if it's basically a wrapper, you should pass it down wo intercepting, leveraging idempotency.
+
+btw, for general fn, you may name as fn (e.g. map arr fn).
+
+---
+
+idea on keyboard navigation
+
+all actions must have a visual effect. (visibility of sys status)
+
+if yk what you are doing, you would ideally have minimum visual distraction.
+
+- links will show outline while tabbing
+- checkboxes/radios will _not_ show outline, if the action changes the state
+- checkboxes/radios _will_ show outline, if the action navigates to that option wo firing
+- primary actions will have a hover effect. they _may_ show a tool tip _after delay_. they will _not_ show bottom left address indicator by default (you may opt in!), even though they are all literally links.
+
+---
+
+what about checkbox/checkbox group?
+
+will i polymorph checkbox? well, tbh, "make it single word so i could avoid pascal case" isnt really a concern now. pascalcase feels nothing wrong.
+
+for checkbox group, would the value be id -> bool, or id[] (arr/set)?
+
+well it depends. on whether it's in its nature a multi select or a few distinct settings, despite the identical look.
 
 
