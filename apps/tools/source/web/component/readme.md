@@ -7,13 +7,13 @@ atom
 - button
 - textarea
 - checkbox
+- checkbox group <!-- multi select -->
 - switch
 - select
-- ratio
-- multi ratio
-- text input
+- radio <!-- single select -->
+- input <!-- text input -->
 - number input
-- slider (number range)
+- slider <!-- number range -->
 
 pattern
 
