@@ -103,9 +103,12 @@
   --border-2: 2px;
   --border-4: 4px;
   --border-8: 8px;
-  --hierarchy-invisible-backdrop: -100;
-  --hierarchy-backdrop: 800;
-  --hierarchy-sidebar: 900;
+  --hierarchy-backdrop-hidden: -200;
+  --hierarchy-backdrop: 200;
+  --hierarchy-sidebar: 400;
+  --hierarchy-dialog: 600;
+  --hierarchy-popup: 800;
+  --hierarchy-tooltip: 1000;
 }
 
 :root, [data-theme="light"], [theme="light"] {
