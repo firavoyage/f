@@ -396,3 +396,76 @@ Are you running into an **error message** when trying to change it, or are you t
 
 Show all
 
+
+# clash royale void spell change
+
+In the <mark><strong>August 2026 balance changes</strong>, Supercell completely restructured the<span> </span><span><a rel="noopener" href="https://clashroyale.fandom.com/wiki/Void">Void spell</a></span>, transforming it into<span> </span><strong>the game's first-ever 5-elixir damage spell</strong></mark>. Designed to bridge the gap between 4-elixir and 6-elixir spells, this rework significantly increases its damage stats to target beefier, resilient units. [link](https://supercell.com/en/games/clashroyale/blog/news/final-august-balance-changes-826/)
+
+### Key Stat Changes
+
+Supercell [implemented the following adjustments](https://supercell.com/en/games/clashroyale/blog/news/final-august-balance-changes-826) to shift the card away from standard fireball interactions and toward heavy-tank removal: [link](https://supercell.com/en/games/clashroyale/blog/news/final-august-balance-changes-826/)
+
+- **Elixir Cost:** Increased from **3 to 5 elixir**.
+- **Hit Frequency:** Buffed from **1.2 seconds to 1 second** (hitting 17% faster).
+- **2–4 Target Damage:** Increased by **83%** (from 161 to 294).
+- **5+ Target Damage:** Increased by **100%** (from 76 to 153).
+- **Crown Tower Damage:** Doubled across all tiers (**+100% damage** to towers). [link](https://supercell.com/en/games/clashroyale/blog/news/final-august-balance-changes-826/)
+
+### Interaction Impacts
+
+- **New Targets:** The massive damage spike allows it to effectively dismantle tanky, medium-health units like the **Bowler, Executioner, Hunter, and Sparky**. These previously required a combination of multiple spells or a 6-elixir commitment to clear. [link](https://www.reddit.com/r/ClashRoyale/comments/1vfisjq/what%5Fdo%5Fyou%5Fguys%5Fthink%5Fof%5Fthe%5Fnew%5Fvoid%5Fchanges/)
+- **The Downside:** Because it costs 5 elixir, missing a placement or letting opponents block the rays with cheap swarm cards (like Skeletons or Goblins) results in a much harsher **elixir deficit** than before. [link](https://www.reddit.com/r/ClashRoyale/comments/1emtplj/void%5Finteraction%5Fchanges%5Fbefore%5Fand%5Fafter%5Fthe/)
+
+Are you looking to **replace Fireball or Lightning** in a specific deck type, or do you want to see the **exact card level interactions** for the new Void?
+
+7 sites
+
+- [link](https://www.reddit.com/r/ClashRoyale/comments/1emtplj/void%5Finteraction%5Fchanges%5Fbefore%5Fand%5Fafter%5Fthe/)\
+  Void interaction changes before and after the rework : r/ClashRoyale\
+  Aug 8, 2024 — To be fair, that is the only sole purpose of void which they nerfed, otherwise why would someone use it for swarms when there's su...\
+  Reddit·r/ClashRoyale
+- [link](https://www.reddit.com/r/ClashRoyale/comments/1vfisjq/what%5Fdo%5Fyou%5Fguys%5Fthink%5Fof%5Fthe%5Fnew%5Fvoid%5Fchanges/)\
+  What do you guys think of the new void changes? - Reddit\
+  Aug 4, 2026 — What do you guys think of the new void changes? Discussion. r/ClashRoyale - What do you guys think of the new void changes? I'm lo...\
+  Reddit·r/ClashRoyale
+- [link](https://supercell.com/en/games/clashroyale/blog/news/final-august-balance-changes-826/)\
+  August Balance Changes × Clash Royale - Supercell\
+  Aug 4, 2026 — 2 - 4 Target Damage: 161 → 294 (+83%) 5+ Target Damage: 76 → 153 (+100%). 1 Target Crown Tower Damage: 48 → 97 (+100%) 2 - 4 Targe...\
+  Supercell
+
+Show all
+
+## what about 1 target dmg
+
+With the August 2026 update, the **single-target (1 target) damage** of the Void spell was massively increased from <mark><strong>340 to 696 damage per strike</strong></mark> at tournament standard level. This represents a **105% damage increase**, making it exceptionally devastating against isolated targets. [link](https://supercell.com/en/games/clashroyale/blog/news/final-august-balance-changes-826/)
+
+### What This Means in Total Damage
+
+Because the [Void spell](https://clashroyale.fandom.com/wiki/Void) strikes **3 times** per deployment, hitting a completely alone target across all waves yields a massive total:
+
+- **Total Isolated Damage:** **2,088 total damage** (696 x 3).
+- **Crown Tower Damage:** Increased from **48 to 97 per strike**, totaling **291 damage** if it hits the tower alone. [link](https://supercell.com/en/games/clashroyale/blog/news/final-august-balance-changes-826/)
+
+### Why This is "Insane"
+
+According to [player discussions on Reddit](https://www.reddit.com/r/ClashRoyale/comments/1vgqpkx/void%5Fis%5Fnow%5Finsane/), if an opponent allows the new Void spell to get full single-target damage, it actually **deals more total damage than a Rocket** for 1 less elixir. It allows players to clean up beefy units like the Bowler or Executioner effortlessly if they are caught out in the open. [link](https://www.youtube.com/watch?v=lqqoS1%5FRJFA)
+
+Would you like a comparison of **how the new Void's single-target damage stacks up** against a Fireball or Lightning strike?
+
+- [link](https://clashroyale.fandom.com/wiki/Void)\
+  Clash Royale Wiki\
+  Void | Clash Royale Wiki - Fandom\
+  Release Date. 6 May 2024. You shall not pass! Unless there are lot of you...Creates a field of dark magic damaging all enemy troop...
+- [link](https://supercell.com/en/games/clashroyale/blog/news/final-august-balance-changes-826/)\
+  Supercell\
+  August Balance Changes × Clash Royale - Supercell\
+  Aug 4, 2026 — \* Elixir Cost: 3 → 5. Hit Frequency: 1sec → 1.2sec (+20%) \* 1 Target Damage: 340 → 696 (+105%) 2 - 4 Target Damage: 161 → 294 (+83...
+- [link](https://www.youtube.com/watch?v=lqqoS1%5FRJFA)\
+  YouTube·Mautic\
+  August Balance Changes Will Change EVERYTHING\
+  Jul 24, 2026 — and Expo x will be getting a small damage buff as well there will be a rework with Ice Golem's third ability Hit it will only slow...\
+  3:00
+
+Show all
+
+
