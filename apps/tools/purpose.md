@@ -2925,4 +2925,18 @@ baseui is full of compliance and thus compromises.
 
 camel case. aria attrs. data attrs. tsism, undefined in union instead of question mark, react types, baseui arbitrary custom types. classname. dynamic classname. render prop. reactism, default value and value and on value change (passes a custom obj of value and event details to the callback fn. clever progressive disclosure? nil. strictly sub optimal, effectively, in any case.) instead of value and set value.
 
+18 10 create atom components.
+
+~~adopt standard markdown syntax on the component index~~ no need to add visual noise. you would read the raw md rather than rendering it.
+
+---
+
+decision
+
+i would make it opinionated.
+
+no component will have .root .child like baseui. (violation of dry)
+
+it's a fixed constraint.
+
 

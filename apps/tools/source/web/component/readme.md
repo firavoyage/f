@@ -1,18 +1,16 @@
 components
 
----
-
 atom
 
 - button
 - textarea
 - checkbox
-- checkbox group <!-- multi select -->
+- ~~checkbox group~~ <!-- multi select -->
 - switch
-- select
+- select <!-- single select -->
 - radio <!-- single select -->
 - input <!-- text input -->
-- number input
+- number field <!-- number input -->
 - slider <!-- number range -->
 
 pattern
