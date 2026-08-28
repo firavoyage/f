@@ -5,7 +5,6 @@ atom
 - button
 - textarea
 - checkbox
-- ~~checkbox group~~ <!-- multi select -->
 - switch
 - select <!-- single select -->
 - radio <!-- single select -->
