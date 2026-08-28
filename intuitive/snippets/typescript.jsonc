@@ -583,7 +583,7 @@ ref:
       "ut",
     ],
     "body": [
-      "const [${1:name}, toggle_${1:name}] = useToggle(${0: false})",
+      "const [${1:name}, toggle_${1:name}] = useToggle(${0:false})",
     ],
   },
   "export const use global state": {
