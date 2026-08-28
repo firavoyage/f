@@ -243,9 +243,9 @@ max-width:
 #   2xl: 1536px
 
 typeface:
-  # sans: '"roboto", sans-serif'
-  sans: "roboto, Adwaita Sans, Ubuntu Sans, sans-serif"
-  monospace: "Fira Code, Adwaita Mono, Ubuntu Mono, monospace"
+  sans: "Roboto, Adwaita Sans, Ubuntu Sans, Noto Sans, sans-serif"
+  serif: "EB Garamond, Noto Serif, serif"
+  mono: "Fira Code, Adwaita Mono, Ubuntu Mono, monospace"
 
 text:
   xs: "0.75rem/1rem"
