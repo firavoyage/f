@@ -2990,4 +2990,8 @@ props: value, set value (or toggle)
 
 visually the text would be always render after the indicator. thus children, if given, would be appended. it matters because the text should be clickable.
 
+---
+
+why does baseui defeat the scrollbar of the whole page when select active
+
 
