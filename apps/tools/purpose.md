@@ -2885,4 +2885,20 @@ complete planned tools.
 
 15 00 create setting field components (16 00)
 
+currently props convert `onclick` (or even `on_click`, i were about to support) to `onClick`. what if a component really wants `onclick`?
+
+and yet, it dc and wraps that, rather than passing all props through (that's where idempotency works out.)
+
+i absolutely do not wanna touch `onClick` at all.
+
+and `div onclick={my fn}` is weird, i would write `div p({onclick: fn})`
+
+---
+
+i now feel react's insist on `classname` could be wise. and opinionated anyway.
+
+you could have class as a obj key but you couldnt dc class.
+
+and it's conservative and compromised anyway.
+
 
