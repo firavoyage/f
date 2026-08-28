@@ -65,7 +65,9 @@ export function p<T>(
     } else {
       if (key.startsWith('data-') || key.startsWith('aria-')) {
         converted_props[key] = value
-      } else if (key.startsWith('on')) {
+      } else if (key.startsWith('on_')) {
+        
+      }  else if (key.startsWith('on')) {
         const normalized_key = key.slice(0, 2) + key[2].toUpperCase() + key.slice(3)
         converted_props[normalized_key] = value
       } else {
