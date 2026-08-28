@@ -15,6 +15,8 @@ export function Select(props: select) {
 
   const [open, toggle_open] = useToggle(false)
 
+  // preprocess items, build id -> name, so you can use has and map directly
+
   function is_valid() {
     return true
   }
@@ -30,7 +32,7 @@ export function Select(props: select) {
         {children}
       </button>
       <div className="popup">
-        
+        <button className="option">name</button>
       </div>
     </div>
   )
