@@ -302,7 +302,6 @@ web: <!-- frontend, web, ts/js -->
 - css props order
 - css overflow prop
 - ts object types
-- react prop over attr param
 
 backend:
 
