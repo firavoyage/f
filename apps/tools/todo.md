@@ -7,13 +7,13 @@ complete utilitarian component system.
 create setting field components
 
 - checkbox
-- slider
+- switch
 - select
 - ratio
 - multi ratio
 - text input
 - number input
-- number range
+- slider (number range)
 
 ---
 

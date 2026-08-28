@@ -54387,7 +54387,7 @@ it doesn't have to be a name.
 
 ---
 
-for some reason it offers items in euro in shop.
+for some reason it offers items in euro <!-- upd: de, germany --> in shop.
 
 ---
 
