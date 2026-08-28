@@ -5,14 +5,24 @@ components
 atom
 
 - button
+- textarea
+- checkbox
+- switch
+- select
+- ratio
+- multi ratio
+- text input
+- number input
+- slider (number range)
 
 pattern
 
-- menu
 - sidebar
-- process
+- menu
+- list
 
 page
 
 - app
 - main
+- process

@@ -29,7 +29,7 @@ function kebab_to_camel(str: string): string {
 //   class?: string;
 //   [key: string]: any;
 // };
-type RelaxedProps = object;
+type RelaxedProps = Record<any, any>;
 // type RelaxedProps = {
 //   key?: never,
 //   class?: string | object | Array<any>,
