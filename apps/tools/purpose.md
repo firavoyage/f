@@ -3010,4 +3010,20 @@ it doesnt have to be a portal i guess.
 
 base ui is so... sophisticated? it applies "data-highlighted" on the hovered popup. and, if you use your mouse to hover an item first, up/down arrow would be based on that. not really practical it feels.
 
+---
+
+no idea if it's really wise impl map obj this way.
+
+if you pass an object to map, it would convert to entries first. reasonable.
+
+and it _will_ convert back to an object, using from entries. do you always want an obj?
+
+idk.
+
+well, for select, it might not be just id -> name. there could be metadata. and thus object fits better.
+
+nothing wrong to derive both of arr of valid id and arr of options.
+
+by auto convertig back it's a reminder: it's discouraged to map an object. you may fen (e.g. to traverse recursively), but it should be an arr of elegantly structured data before you map it. [key, value] is actually rigid despite simple sounding.
+
 
