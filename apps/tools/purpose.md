@@ -2994,4 +2994,10 @@ visually the text would be always render after the indicator. thus children, if 
 
 why does baseui defeat the scrollbar of the whole page when select active
 
+on ubuntu settings, or ptyxis, select has no "undefined value" or placeholder.
+
+and it's a good prac. yk, it's irreversible, and it doesnt have to be.
+
+you can have an option like "prefer not to say" or "non binary". an explicit one.
+
 
