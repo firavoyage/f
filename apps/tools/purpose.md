@@ -2883,7 +2883,7 @@ adopt icon lib.
 
 complete planned tools.
 
-15 00 create setting field components (16 00)
+15 00 ~~create~~ plan setting field components, learn from base ui (16 00)
 
 currently props convert `onclick` (or even `on_click`, i were about to support) to `onClick`. what if a component really wants `onclick`?
 
@@ -2918,5 +2918,11 @@ this works
 ```
 
 foo and class raise no error. value and set value get auto complete.
+
+---
+
+baseui is full of compliance and thus compromises.
+
+camel case. aria attrs. data attrs. tsism, undefined in union instead of question mark, react types, baseui arbitrary custom types. classname. dynamic classname. render prop. reactism, default value and value and on value change instead of value and set value.
 
 
