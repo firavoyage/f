@@ -3000,4 +3000,12 @@ and it's a good prac. yk, it's irreversible, and it doesnt have to be.
 
 you can have an option like "prefer not to say" or "non binary". an explicit one.
 
+well, what if it's a required field, in, like a survey, or a poll? what about radio?
 
+ok fine. you could have a placeholder (not needed for radio). value is any and <!-- but --> not implicitly omitted. any non string or non existing option is considered invalid, thus placeholder.
+
+it doesnt have to be a portal i guess.
+
+"name" could be a react element here. not needed though.
+
+base ui is so... sophisticated? it applies "data-highlighted" on the hovered popup. and, if you use your mouse to hover an item first, up
