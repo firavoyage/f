@@ -2906,9 +2906,17 @@ and it's conservative and compromised anyway.
 decision
 
 - i will not use `on_click`. it _is_ snake case. but it's unnecessary and already clear wo. for callbacks, i may name as `click` or `onclick`. actually if it were not an attr i lean toward `click`. rationale: if you see `click` on a prop or a param yk it's a callback fn. while explicit, `on` prefix makes it inflexible. yk, you may call a fn, or pass a fn (e.g. set state). there should not be a label in its nature indicating that.
-- it may not be a concern. e.g. for textarea component, the prop is
+- it may not be a concern. e.g. for textarea component, the prop is `set_value`.
+- i will _always_ pass through all/rest params whenever event callback prop is needed
 
----
+16 00 web/lib/props: support autocomplete by narrowing return type to what's passed.
 
+this works
+
+```tsx
+<Textarea {...p({ foo: 123, class: '123', value: '123', set_value: () => 123 })}></Textarea>
+```
+
+foo and class raise no error. value and set value get auto complete.
 
 
