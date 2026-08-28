@@ -2925,6 +2925,8 @@ baseui is full of compliance and thus compromises.
 
 camel case. aria attrs. data attrs. tsism, undefined in union instead of question mark, react types, baseui arbitrary custom types. classname. dynamic classname. render prop. reactism, default value and value and on value change (passes a custom obj of value and event details to the callback fn. clever progressive disclosure? nil. strictly sub optimal, effectively, in any case.) instead of value and set value.
 
+"useid is primarily used for accessibility"
+
 18 10 create atom components.
 
 ~~adopt standard markdown syntax on the component index~~ no need to add visual noise. you would read the raw md rather than rendering it.
@@ -2938,5 +2940,13 @@ i would make it opinionated.
 no component will have .root .child like baseui. (violation of dry)
 
 it's a fixed constraint.
+
+---
+
+~~it's meaningless to solve a general problem you will never meet (e.g. support on_click on props).~~ i will support on_click on props.
+
+you should not accept onclick, onClick, or on_click as a standard prop, right? you may name as click. it _is_ a callback fn when you see a verb on params/props.
+
+and if it's basically a wrapper, you should pass it down wo intercepting, leveraging idempotency.
 
 
