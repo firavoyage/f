@@ -301,6 +301,7 @@ web: <!-- frontend, web, ts/js -->
 - design length unit px rem
 - css props order
 - css overflow prop
+- ts object types
 
 backend:
 
