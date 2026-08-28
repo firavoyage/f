@@ -65,7 +65,7 @@ export function App() {
     log('search commands')
   })
   use_bind('ctrl+?', () => {
-    log('open shortcuts help')
+    log('open keyboard shortcuts')
   })
   use_bind('ctrl+,', () => {
     log('open settings')

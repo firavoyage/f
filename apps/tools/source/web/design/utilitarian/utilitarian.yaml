@@ -313,8 +313,10 @@ border:
 #   offset: "-2px"
 
 hierarchy:
-  invisible-backdrop: -100
-  backdrop: 800
-  sidebar: 900
-
+  backdrop-hidden: -200
+  backdrop: 200
+  sidebar: 400
+  dialog: 600
+  popup: 800
+  tooltip: 1000
 

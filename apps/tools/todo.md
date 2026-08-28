@@ -4,6 +4,31 @@ complete utilitarian component system.
 
 ---
 
+create setting field components
+
+- checkbox
+- slider
+- select
+- ratio
+- multi ratio
+- text input
+- number input
+- number range
+
+---
+
+create command palette component
+
+---
+
+create keyboard shortcuts component
+
+---
+
+create settings component
+
+---
+
 adopt icon lib.
 
 ---
