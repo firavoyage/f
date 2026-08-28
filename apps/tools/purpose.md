@@ -2978,4 +2978,16 @@ for checkbox group, would the value be id -> bool, or id[] (arr/set)?
 
 well it depends. on whether it's in its nature a multi select or a few distinct settings, despite the identical look.
 
+---
+
+decision
+
+simple. i would _not_ have checkbox group.
+
+at the end of the day i care whether each feature is toggled rather than "what's there"
+
+props: value, set value (or toggle)
+
+visually the text would be always render after the indicator. thus children, if given, would be appended. it matters because the text should be clickable.
+
 
