@@ -2887,7 +2887,7 @@ complete planned tools.
 
 currently props convert `onclick` (or even `on_click`, i were about to support) to `onClick`. what if a component really wants `onclick`?
 
-and yet, it dc and wraps that, rather than passing all props through (that's where idempotency works out.)
+and yet, it dc and wraps that, rather than passing all (or rest) props through (that's where idempotency works out.)
 
 i absolutely do not wanna touch `onClick` at all.
 
@@ -2900,5 +2900,15 @@ i now feel react's insist on `classname` could be wise. and opinionated anyway.
 you could have class as a obj key but you couldnt dc class.
 
 and it's conservative and compromised anyway.
+
+---
+
+decision
+
+- i will not use `on_click`. it _is_ snake case. but it's unnecessary and already clear wo. for callbacks, i may name as `click` or `onclick`. actually if it were not an attr i lean toward `click`. rationale: if you see `click` on a prop or a param yk it's a callback fn. while explicit, `on` prefix makes it inflexible. yk, you may call a fn, or pass a fn (e.g. set state). there should not be a label in its nature indicating that.
+- it may not be a concern. e.g. for textarea component, the prop is
+
+---
+
 
 
