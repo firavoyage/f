@@ -35,6 +35,10 @@ adopt icon lib.
 
 complete planned tools.
 
+---
+
+support render input/output
+
 # backlog
 
 implement string distance based url correction
@@ -70,8 +74,6 @@ https://microsoft.github.io/vscode-codicons/dist/codicon.html
 ---
 
 design sidebar taxonomy and data structure. style sidebar normally.
-
-
 
 ---
 
