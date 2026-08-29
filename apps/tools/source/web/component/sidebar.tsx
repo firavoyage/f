@@ -12,14 +12,14 @@ export function Sidebar({ variant, children }: SidebarProps) {
 
   const [on, toggle] = use_global('appearance.layout.sidebar.is_visible')
 
-  use_bind('ctrl+b', () => toggle())
+  // use_bind('ctrl+b', toggle)
 
   return (
     <>
       <aside {...p({ class: 'sidebar', visible: on, variant })}>
         {children}
       </aside>
-      <div {...p({ class: "backdrop", onclick: toggle })}></div>
+      <div className="backdrop" {...p({ onClick: toggle })}></div>
     </>
   );
 }

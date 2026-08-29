@@ -229,7 +229,13 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
   }
 
   function set(...args: any[]) {
-    const new_value = args.length == 0 ? (v: boolean) => !v : args[0]
+    function does_type_mismatch(old_value: any, new_value: any) {
+      return typeof old_value == 'boolean' && typeof new_value != 'boolean'
+        && typeof new_value != 'function'
+    }
+
+    const toggle = (v: boolean) => !v
+    const new_value = args.length == 0 || does_type_mismatch(data, args[0]) ? toggle : args[0]
 
     if (typeof new_value == 'function') {
       const result = new_value(data)
@@ -245,7 +251,13 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
   }
 
   function set_prop(path: key, ...args: any[]) {
-    const new_value = args.length == 0 ? (v: boolean) => !v : args[0]
+    function does_type_mismatch(old_value: any, new_value: any) {
+      return typeof old_value == 'boolean' && typeof new_value != 'boolean'
+        && typeof new_value != 'function'
+    }
+
+    const toggle = (v: boolean) => !v
+    const new_value = args.length == 0 || does_type_mismatch(data[path], args[0]) ? toggle : args[0]
 
     if (typeof new_value == 'function') {
       const result = new_value(data[path])
@@ -293,17 +305,17 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
     get() {
       return keys_to_sync
     },
-    set(v){
+    set(v) {
       keys_to_sync = v
     }
   })
 
   use_global.should_correct_url = should_correct_url
   Object.defineProperty(use_global, 'should_correct_url', {
-    get(){
+    get() {
       return should_correct_url
     },
-    set(v){
+    set(v) {
       should_correct_url = v
     }
   })
