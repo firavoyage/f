@@ -79,6 +79,12 @@ export const shortcuts: shortcut[] = [
   },
 ]
 
+let call_command
+
+export function call(command: string) {
+  
+}
+
 export function App() {
   // const [focus, set_focus] = use_global('navigation.tool')
   const [, set_process] = use_global('process')

@@ -177,6 +177,8 @@ textarea {
         flex-grow: 1;
   
         overflow: auto;
+
+        font: var(--font-code);
       }
     }
   }
