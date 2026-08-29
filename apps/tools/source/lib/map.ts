@@ -6,7 +6,7 @@ export function halt(value: any) {
 // export const halt = Symbol('break')
 
 export function map<T>(items: T[], fn: (item: T, index: number, array: T[]) => any): any[]
-export function map(items: object, fn: (item: ReturnType<typeof Object.entries>[0], index: number, array: ReturnType<typeof Object.entries>) => any): any
+export function map(items: object, fn: (item: [key, value], index: number, array: ReturnType<typeof Object.entries>) => any): any
 // export function map<T>(items: object & T, fn: (item: ObjectENt T, index?: number, array?: T[]) => any): any[]
 
 /**
@@ -48,10 +48,6 @@ export function map(items: any, fn: (item: any, index: number, array: any[]) => 
 
     result.push(value);
   }
-
-  if (is_object) {
-    return Object.fromEntries(result)
-  } 
 
   return result
 }

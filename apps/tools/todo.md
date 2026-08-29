@@ -116,6 +116,8 @@ and it might be a custom tool. i would apply minifier if they paste, or import a
 
 implement tools
 
+ref: ia
+
 - data format
   - url decode <!-- e.g. %3d becomes = -->
 - language
@@ -146,10 +148,15 @@ polish maimai, expand the results (base2, base5) if the number is small
 
 low priority. it's just a derivation.
 
-
 # todo: support render input/output
 
 support render input/output
+
+# todo: support custom imported tools and fav tools
+
+support custom imported tools and fav tools
+
+i would have fav tools. custom tools? would they be imported on web?
 
 # backlog
 

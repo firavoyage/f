@@ -6,12 +6,12 @@ atom
 - textarea
 - checkbox
 - switch
-- select <!-- single select -->
-- radio <!-- single select -->
-- input <!-- text input -->
-- number <!-- number input, number field -->
-- slider <!-- number input, number range -->
-- tooltip <!-- title attr -->
+- . select <!-- single select -->
+- . radio <!-- single select -->
+- . input <!-- text input -->
+- . number <!-- number input, number field -->
+- . slider <!-- number input, number range -->
+- . tooltip <!-- title attr -->
 
 pattern
 
