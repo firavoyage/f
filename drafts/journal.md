@@ -54405,6 +54405,16 @@ i could not modernize my email address to gmail immediately on a new device.
 
 ReMAS15, 14.1k, shows some pics of maimai result, when i say hello to him.
 
+17 40 feel.
+
+cubercxm tells his father they (his frnd and he) want to have bin sushi tonight.
+
+i reminded them if the queue would be long. his frnd went to take a look.
+
+i asked his father, who said they did not get a queue number, and they would be happy to simply try another restaurant.
+
+actually i would somewhat attempting to have bin sushi today. have some, maybe.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

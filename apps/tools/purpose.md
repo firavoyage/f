@@ -3170,6 +3170,14 @@ i think i would not have such massive actions to name (id) like this
 
 and i can change naming later!
 
+well, what about `appearance.layout.sidebar.is_visible`? maybe it's just moved elsewhere, not reduced.
+
+---
+
+i think i may not have to "normalize id"?!
+
+it's perfectly fine to have string key on commands. i would go that way.
+
 17 20 web/lib/state: fix toggle not working.
 
 take a more aggressive approach.
