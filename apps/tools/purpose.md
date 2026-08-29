@@ -3028,4 +3028,24 @@ by auto convertig back it's a reminder: it's discouraged to map an object. you m
 
 29
 
+14 40 lib/union: fix typing.
+
+no need to polymorph `fn(...args: T[])` and `fn(args: T[])` unless it's user facing.
+
+generally, if possible, i lean toward `...args` when it's supposed to call via `fn(a, b, c)` (so i dont have to wrap into an arr), otherwise when there would be an existing arr.
+
+14 50 organize todos (15 10)
+
+i think there doesnt have to be an arbitrary "maximum todos" rule.
+
+todo is just validated backlog.
+
+<!-- the constraints of corp best prac do not exist here. -->
+
+---
+
+```yaml
+# m = must have, s = should have, c = could have, w = wont have
+```
+
 

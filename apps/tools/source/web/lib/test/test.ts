@@ -1,1 +1,0 @@
-const foo = union('standard', 'flexible', 'forgiving')
