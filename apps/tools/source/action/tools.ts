@@ -18,6 +18,11 @@ const flexible_tool_to_args: Record<string, arg[]> = {
       type: 'string',
       value: ''
     }
+  ],
+  "json to yaml": [
+    {
+      name: 'parse'
+    }
   ]
 }
 
