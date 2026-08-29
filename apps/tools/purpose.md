@@ -2859,6 +2859,16 @@ deprecate `keys_to_sync.fn`.
 
 mutate the set directly.
 
+---
+
+upd 29 aug:
+
+it's especially prone. what if you pass a keyboard event to toggle?
+
+you have to wrap like `use_bind('ctrl+b', () => toggle())` or `p({ onClick: () => toggle() })`
+
+i will take a way more aggressive approach, lol!
+
 21 10 ~~lib/state: harden persistency.~~
 
 localstorage must store an object. i will ignore that otherwise.
@@ -2918,6 +2928,21 @@ this works
 ```
 
 foo and class raise no error. value and set value get auto complete.
+
+upd 29 aug:
+
+well that's not the full story
+
+```tsx
+      <aside {...p({ class: 'sidebar', visible: on, variant })}>
+        {children}
+      </aside>
+      <div {...p({ class: "backdrop", onclick: toggle })}></div>
+```
+
+guess what? aside works. div says "no common prop".
+
+the conclusion is if it would work iff it has any _other_ prop, e.g. classname or children (any children)
 
 ---
 
@@ -3125,5 +3150,43 @@ props
 - call (i would call id when fired)
 
 it's trivial to have call on app.
+
+---
+
+i think i would not have such massive actions to name (id) like this
+
+```json
+{ "key": "f11",                   "command": "workbench.action.toggleFullScreen",
+                                     "when": "!isIOS" },
+{ "key": "ctrl+k ctrl+m",         "command": "workbench.action.toggleMaximizeEditorGroup",
+                                     "when": "editorPartMaximizedEditorGroup || editorPartMultipleEditorGroups" },
+{ "key": "ctrl+j",                "command": "workbench.action.togglePanel" },
+{ "key": "ctrl+b",                "command": "workbench.action.toggleSidebarVisibility" },
+{ "key": "ctrl+k z",              "command": "workbench.action.toggleZenMode",
+                                     "when": "!isAuxiliaryWindowFocusedContext" },
+{ "key": "ctrl+k shift+enter",    "command": "workbench.action.unpinEditor",
+                                     "when": "activeEditorIsPinned" }
+```
+
+and i can change naming later!
+
+17 20 web/lib/state: fix toggle not working.
+
+take a more aggressive approach.
+
+if the prev value is boolean, set value (toggle) will ignore any non bool and non fn arg.
+
+---
+
+```ts
+    function does_type_mismatch(old_value: any, new_value: any) {
+      return typeof old_value == 'boolean' && typeof new_value != 'boolean'
+        && typeof new_value != 'function'
+    }
+```
+
+currently it's just for bool, as it's the problem im gonna solve.
+
+and yeah it's not even a compromise. see what i would do: make new value toggle when mismatch.
 
 
