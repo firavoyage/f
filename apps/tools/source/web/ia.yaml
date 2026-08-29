@@ -60,6 +60,10 @@ sidebar:
   #   - regex
   #   - grep
   #   - glob
+command palette:
+  toggle sidebar:
+  open command palette:
+  
 
 # - data format
 #   - url decode <!-- e.g. %3d becomes = -->
