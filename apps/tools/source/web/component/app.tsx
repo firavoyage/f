@@ -57,7 +57,7 @@ export const use_global = state({
 
 export type shortcut = {
   key: string
-  command: string
+  command: command
 }
 
 export const shortcuts: shortcut[] = [
@@ -79,16 +79,16 @@ export const shortcuts: shortcut[] = [
   },
 ]
 
-let call_command
+type command = keyof ReturnType<typeof use_commands>
 
-export function call(command: string) {
-  
+let call_command: any
+
+export function call(command: command) {
+  // no possible race condition, no action could fire before app (ignore if so)
+  call_command?.(command)
 }
 
-export function App() {
-  // const [focus, set_focus] = use_global('navigation.tool')
-  const [, set_process] = use_global('process')
-
+function use_commands() {
   const [, toggle_sidebar] = use_global('appearance.layout.sidebar.is_visible')
 
   const commands = {
@@ -103,6 +103,19 @@ export function App() {
       log('open settings')
     },
   }
+
+  call_command = function call(command: keyof typeof commands) {
+    commands?.[command]()
+  }
+
+  return commands
+}
+
+export function App() {
+  // const [focus, set_focus] = use_global('navigation.tool')
+  const [, set_process] = use_global('process')
+
+  const commands = use_commands()
 
   use_sync_theme('system')
 
@@ -126,10 +139,7 @@ export function App() {
         })}></List>
       </Sidebar>
       <Main></Main>
-      <Shortcuts {...p({ shortcuts, call(command: string){
-        // @ts-expect-error best effort
-        commands?.[command]()
-      } })}></Shortcuts>
+      <Shortcuts {...p({ shortcuts, call })}></Shortcuts>
     </div>
   </>
 }
