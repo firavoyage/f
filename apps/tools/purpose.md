@@ -3048,4 +3048,10 @@ todo is just validated backlog.
 # m = must have, s = should have, c = could have, w = wont have
 ```
 
+16 40 design keyboard shortcuts component
+
+command palette is inherently coupled w both ia and config.
+
+it's not dry to copying back and forth. i would only list shortcuts on config, and ia would be for menu, sidebar, pages, taxonomies, etc. (and ixd is about components)
+
 
