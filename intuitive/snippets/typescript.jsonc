@@ -372,6 +372,18 @@ ref:
       "false",
     ],
   },
+  "Union": {
+    "prefix": [
+      "u",
+      "un",
+      "uni",
+      "unio",
+      "union",
+    ],
+    "body": [
+      "union($0)",
+    ],
+  },
   "Promise": {
     "prefix": [
       // "S",

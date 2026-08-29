@@ -1,6 +1,8 @@
-# todo
+# todo: complete utilitarian component system.
 
 complete utilitarian component system.
+
+ref: gnome nautilus, adwaita demo
 
 ---
 
@@ -29,28 +31,6 @@ create settings component
 
 ---
 
-adopt icon lib.
-
----
-
-complete planned tools.
-
----
-
-support render input/output
-
-# backlog
-
-implement string distance based url correction
-
-<!-- i guess you could do that easily. since asterisk is parsed as tools, you could use the most relevant tool. -->
-
----
-
-research encryption methods. pick and include what matters.
-
----
-
 complete utilitarian design
 
 maybe it's already completed.
@@ -62,6 +42,36 @@ rather than over engineering a comprehensive and future proof one.
 themes can be swapped in the future. for now, have neutral gray.
 
 learn from vscode. no borders or shadows. no radius. no paddings. only have solid fluid colors for hierarchy.
+
+# todo: adopt icon lib.
+
+adopt icon lib.
+
+# todo: complete planned tools.
+
+---
+
+research encryption methods. pick and include what matters.
+
+# todo: support render input/output
+
+---
+
+support code minify and fmt
+
+i guess there would be a tool for minify or prettier.
+
+i mean, for tools itself, it would use a yaml dsl. yeah that's dsl, as i need converter to global state. i would apply prettier, so it could copy and paste easily, effortless, no ctrl shift i needed.
+
+and it might be a custom tool. i would apply minifier if they paste, or import a new tool here.
+
+# backlog
+
+implement string distance based url correction
+
+<!-- i guess you could do that easily. since asterisk is parsed as tools, you could use the most relevant tool. -->
+
+c
 
 ---
 
@@ -342,23 +352,13 @@ could have.
 
 package as node lib.
 
-could have.
+w
 
 ---
 
 support internationalization.
 
-could have.
-
----
-
-support code minify and fmt
-
-i guess there would be a tool for minify or prettier.
-
-i mean, for tools itself, it would use a yaml dsl. yeah that's dsl, as i need converter to global state. i would apply prettier, so it could copy and paste easily, effortless, no ctrl shift i needed.
-
-and it might be a custom tool. i would apply minifier if they paste, or import a new tool here.
+c
 
 ---
 
@@ -366,4 +366,6 @@ secure sidebar list
 
 i may check whether tools exist
 
+c
 
+<!-- it might be irrelevant at the end of the day when it's complete. -->
