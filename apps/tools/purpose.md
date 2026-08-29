@@ -3176,7 +3176,13 @@ well, what about `appearance.layout.sidebar.is_visible`? maybe it's just moved e
 
 i think i may not have to "normalize id"?!
 
+---
+
 it's perfectly fine to have string key on commands. i would go that way.
+
+---
+
+shortcuts would be in array. otherwise it might not be as easy to handle multiple keys to one command or multple command (w/wo when) mapped to one key, and metadata. it's essentially an array and i would need fen otherwise.
 
 17 20 web/lib/state: fix toggle not working.
 

@@ -18,6 +18,7 @@ pattern
 - sidebar
 - menu
 - list
+- shortcuts <!-- keyboard shortcuts -->
 
 page
 
