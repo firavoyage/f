@@ -3217,4 +3217,8 @@ i would map to the correct prop of select component.
 
 i made the decision at the end of the day anyway. seems most time i dont need that.
 
+19 20 component/select: complete, and simplify props.
+
+non user facing fn doesnt have to be flexible. polymorphism is for handling different input, not the same input in different forms that would be normalized to be uniform (e.g. `...args` or `args`).
+
 

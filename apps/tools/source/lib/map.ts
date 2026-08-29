@@ -5,8 +5,10 @@ export function halt(value: any) {
 // export const halt = Symbol('halt')
 // export const halt = Symbol('break')
 
+type entry = [key: any, value: any]
+
 export function map<T>(items: T[], fn: (item: T, index: number, array: T[]) => any): any[]
-export function map(items: object, fn: (item: [key, value], index: number, array: ReturnType<typeof Object.entries>) => any): any
+export function map(items: object, fn: (item: entry, index: number, array: entry[]) => any): any[]
 // export function map<T>(items: object & T, fn: (item: ObjectENt T, index?: number, array?: T[]) => any): any[]
 
 /**

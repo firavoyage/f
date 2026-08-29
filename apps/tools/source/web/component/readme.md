@@ -6,7 +6,7 @@ atom
 - textarea
 - checkbox
 - switch
-- . select <!-- single select -->
+- select <!-- single select -->
 - . radio <!-- single select -->
 - . input <!-- text input -->
 - . number <!-- number input, number field -->
