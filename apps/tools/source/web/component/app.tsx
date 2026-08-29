@@ -1,7 +1,7 @@
 import 'web/design/utilitarian/utilitarian.css'
 import 'web/design/app.css'
 
-import { cloneDeep } from 'lodash-es'
+import { cloneDeep, commit } from 'lodash-es'
 
 import { use_bind } from 'web/lib/keyboard.use';
 import { use_sync_theme } from "web/lib/sync_theme.use";
@@ -14,6 +14,7 @@ import { Sidebar } from 'web/component/sidebar';
 import { List } from 'web/component/list';
 import type { item } from 'web/component/process'
 import { Menu } from 'web/component/menu';
+import { Shortcuts } from 'web/component/shortcuts';
 
 export const use_global = state({
   'input': '',
@@ -54,6 +55,30 @@ export const use_global = state({
   // }
 })
 
+export type shortcut = {
+  key: string
+  command: string
+}
+
+export const shortcuts: shortcut[] = [
+  {
+    key: "ctrl+b",
+    command: "toggle sidebar"
+  },
+  {
+    key: "ctrl+shift+p",
+    command: "open command palette"
+  },
+  {
+    key: "ctrl+,",
+    command: "open settings"
+  },
+  {
+    key: "ctrl+?",
+    command: "open keyboard shortcuts",
+  },
+]
+
 export function App() {
   // const [focus, set_focus] = use_global('navigation.tool')
   const [, set_process] = use_global('process')
@@ -62,32 +87,16 @@ export function App() {
 
   const commands = {
     "toggle sidebar": toggle_sidebar,
-    "open command palette": "ctrl+shift+p ctrl+p ctrl+f ctrl+k",
-    "open keyboard shortcuts": "ctrl+?",
-    "open settings": "ctrl+,",
+    "open command palette"() {
+      log('search commands')
+    },
+    "open keyboard shortcuts"() {
+      log('open keyboard shortcuts')
+    },
+    "open settings"() {
+      log('open settings')
+    },
   }
-
-  const shortcuts = {
-    "toggle sidebar": "ctrl+b",
-    "open command palette": "ctrl+shift+p ctrl+p ctrl+f ctrl+k",
-    "open settings": "ctrl+,",
-    "open keyboard shortcuts": "ctrl+?"
-  }
-
-  use_bind('ctrl+b', commands['toggle sidebar'])
-
-  use_bind('ctrl+p', () => {
-    log('search recent items')
-  })
-  use_bind('ctrl+shift+p', () => {
-    log('search commands')
-  })
-  use_bind('ctrl+?', () => {
-    log('open keyboard shortcuts')
-  })
-  use_bind('ctrl+,', () => {
-    log('open settings')
-  })
 
   use_sync_theme('system')
 
@@ -111,6 +120,10 @@ export function App() {
         })}></List>
       </Sidebar>
       <Main></Main>
+      <Shortcuts {...p({ shortcuts, call(command: string){
+        // @ts-expect-error best effort
+        commands?.[command]()
+      } })}></Shortcuts>
     </div>
   </>
 }
