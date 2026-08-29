@@ -3,7 +3,6 @@ import 'web/design/app.css'
 
 import { cloneDeep, commit } from 'lodash-es'
 
-import { use_bind } from 'web/lib/keyboard.use';
 import { use_sync_theme } from "web/lib/sync_theme.use";
 import { use_window_active } from 'web/lib/window.use';
 
