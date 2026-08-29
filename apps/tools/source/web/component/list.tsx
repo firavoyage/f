@@ -44,8 +44,8 @@ type row = {
 
 type list = {
   items: items
-  focus?: Key
-  set_focus?: (focus: Key) => void
+  focus?: any
+  set_focus?: (focus: any) => void
 }
 
 export function List({ items, focus, set_focus }: list) {

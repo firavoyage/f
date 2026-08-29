@@ -3176,9 +3176,9 @@ well, what about `appearance.layout.sidebar.is_visible`? maybe it's just moved e
 
 i think i may not have to "normalize id"?!
 
----
-
 it's perfectly fine to have string key on commands. i would go that way.
+
+(i need id for tools, as they are, in the simplest form, exported via esm, and thus have to be valid js vars)
 
 ---
 
@@ -3202,5 +3202,19 @@ if the prev value is boolean, set value (toggle) will ignore any non bool and no
 currently it's just for bool, as it's the problem im gonna solve.
 
 and yeah it's not even a compromise. see what i would do: make new value toggle when mismatch.
+
+19 00 design settings component
+
+the type would not be number | string (the value type), to decide whether to convert the value of the input to int.
+
+i would define a finite set of types, e.g. number, range, select, ratio. they are components.
+
+they might have additional metadata. e.g. for select, there would be options.
+
+i would map to the correct prop of select component.
+
+19 10 lib/map: refactor to decouple obj from entries post process. fix typing.
+
+i made the decision at the end of the day anyway. seems most time i dont need that.
 
 
