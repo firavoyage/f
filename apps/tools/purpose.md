@@ -3026,4 +3026,6 @@ nothing wrong to derive both of arr of valid id and arr of options.
 
 by auto convertig back it's a reminder: it's discouraged to map an object. you may fen (e.g. to traverse recursively), but it should be an arr of elegantly structured data before you map it. [key, value] is actually rigid despite simple sounding.
 
+29
+
 
