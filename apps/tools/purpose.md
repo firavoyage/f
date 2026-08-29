@@ -3054,4 +3054,76 @@ command palette is inherently coupled w both ia and config.
 
 it's not dry to copying back and forth. i would only list shortcuts on config, and ia would be for menu, sidebar, pages, taxonomies, etc. (and ixd is about components)
 
+---
+
+well i guess i would not simply map config yaml to ts. some are just about categorziation, and would be flattened. some are not.
+
+e.g. 
+
+```
+appearance: # view
+  theme: 
+    - system
+    - light
+    - dark
+  density:
+    - comfortable
+    - cozy
+    - compact
+  layout:
+    sidebar: 
+      is visible: true
+    title bar: 
+      is visible: true
+```
+
+i would map to 
+
+```
+appearance.theme: union(...)
+          .density: ...
+```
+
+and shortcuts would be obviously mapped to an object
+
+```
+shortcuts: {name: key, duplicate keys, when, metadata...}
+```
+
+rather than flattened
+
+```
+shortcut.toggle sidebar: ...
+shortcut.open command palette: ...
+```
+
+---
+
+well, actually let's see how vscode does.
+
+vscode has two separate files. settings and shortcuts.
+
+settings are generally a flat map. shortcuts are an array of key, command, when?, metadata.
+
+but... shortcuts is part of config.
+
+---
+
+yaml may not be designed to be parsed programatically anyway.
+
+i would have data, config, cache yaml. i may have data, config json serialized and persistent, where shortcuts (whether arr or obj), would be a key in config. i can absolutely flat some and keep some while mapping.
+
+and in code, i mean app component, i would separate concerns.
+
+---
+
+keyboard shortcuts
+
+props
+
+- shortcuts, an array (effectively)
+- call (i would call id when fired)
+
+it's trivial to have call on app.
+
 

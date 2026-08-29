@@ -260,7 +260,7 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
     trigger()
   }
 
-  function use_global(path?: key): [any, (new_value: any) => any] {
+  function use_global(path?: key): [any, (new_value?: any) => any] {
     const update = use_update()
 
     useEffect(() => {
