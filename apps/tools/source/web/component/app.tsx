@@ -61,13 +61,20 @@ export function App() {
   const [, toggle_sidebar] = use_global('appearance.layout.sidebar.is_visible')
 
   const commands = {
-    "toggle_sidebar": toggle_sidebar,
+    "toggle sidebar": toggle_sidebar,
     "open command palette": "ctrl+shift+p ctrl+p ctrl+f ctrl+k",
     "open keyboard shortcuts": "ctrl+?",
     "open settings": "ctrl+,",
   }
 
-  use_bind('ctrl+b', commands['toggle_sidebar'])
+  const shortcuts = {
+    "toggle sidebar": "ctrl+b",
+    "open command palette": "ctrl+shift+p ctrl+p ctrl+f ctrl+k",
+    "open settings": "ctrl+,",
+    "open keyboard shortcuts": "ctrl+?"
+  }
+
+  use_bind('ctrl+b', commands['toggle sidebar'])
 
   use_bind('ctrl+p', () => {
     log('search recent items')
