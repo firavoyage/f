@@ -3229,4 +3229,8 @@ you can absolutely pass string[].
 
 still, the id must be string. i dont feel it's practical to allow, like number. i could. if you pass an arr of name id, and then i use map (which supports any key) to index.
 
+23 30 component/app: create use_commands hook.
+
+a clever hack to break the scope.
+
 
