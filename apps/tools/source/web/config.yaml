@@ -24,7 +24,7 @@ shortcuts:
   # toggle output: ctrl+shift+o
   open command palette: ctrl+shift+p ctrl+p ctrl+f ctrl+k
   open settings: ctrl+,
-  open shortcuts: ctrl+?
+  open keyboard shortcuts: ctrl+?
 navigation:
   path: ''
 
