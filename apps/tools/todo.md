@@ -17,6 +17,10 @@ create setting field components
 - number input
 - slider (number range)
 
+baseui switch couldnt be dragged by default?!
+
+well to my surprise it's the same on mui. maybe iphone os is just a bit more obsessed.
+
 ---
 
 create command palette component

@@ -3221,4 +3221,12 @@ i made the decision at the end of the day anyway. seems most time i dont need th
 
 non user facing fn doesnt have to be flexible. polymorphism is for handling different input, not the same input in different forms that would be normalized to be uniform (e.g. `...args` or `args`).
 
+---
+
+upd: ~~reverse this action.~~ make it even simpler.
+
+you can absolutely pass string[].
+
+still, the id must be string. i dont feel it's practical to allow, like number. i could. if you pass an arr of name id, and then i use map (which supports any key) to index.
+
 

@@ -12,6 +12,12 @@ appearance: # view
       is visible: true
     title bar: 
       is visible: true
+    process: 
+      is visible: true
+    input: 
+      is visible: true
+    output: 
+      is visible: true
 behavior:
   will sync input to url: false
   will persist input: false

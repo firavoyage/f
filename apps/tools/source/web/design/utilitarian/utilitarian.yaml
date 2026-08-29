@@ -266,6 +266,7 @@ text:
 font:
   heading: bold text.lg typeface.sans
   text: text.base typeface.sans
+  code: text.sm typeface.mono
 
 # size: # icon-size
 #   sm: "14px"

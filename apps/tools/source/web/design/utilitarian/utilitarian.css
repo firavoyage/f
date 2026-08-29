@@ -70,8 +70,9 @@
   --max-width-screen-lg: 1024px;
   --max-width-screen-xl: 1280px;
   --max-width-screen-2xl: 1536px;
-  --typeface-sans: roboto, Adwaita Sans, Ubuntu Sans, sans-serif;
-  --typeface-monospace: Fira Code, Adwaita Mono, Ubuntu Mono, monospace;
+  --typeface-sans: Roboto, Adwaita Sans, Ubuntu Sans, Noto Sans, sans-serif;
+  --typeface-serif: EB Garamond, Noto Serif, serif;
+  --typeface-mono: Fira Code, Adwaita Mono, Ubuntu Mono, monospace;
   --text-xs: 0.75rem/1rem;
   --text-sm: 0.875rem/1.25rem;
   --text-base: 1rem/1.5rem;
@@ -87,6 +88,7 @@
   --text-9xl: 8rem/1;
   --font-heading: bold var(--text-lg) var(--typeface-sans);
   --font-text: var(--text-base) var(--typeface-sans);
+  --font-code: var(--text-sm) var(--typeface-mono);
   --radius-none: 0px;
   --radius-xs: 2px;
   --radius-sm: 2px;
