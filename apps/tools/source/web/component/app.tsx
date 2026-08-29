@@ -58,6 +58,15 @@ export function App() {
   // const [focus, set_focus] = use_global('navigation.tool')
   const [, set_process] = use_global('process')
 
+  const commands = {
+    "toggle sidebar"() {
+      
+    },
+    "open command palette": "ctrl+shift+p ctrl+p ctrl+f ctrl+k",
+    "open keyboard shortcuts": "ctrl+?",
+    "open settings": "ctrl+,",
+  }
+
   use_bind('ctrl+p', () => {
     log('search recent items')
   })
