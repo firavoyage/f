@@ -15,7 +15,7 @@ export function m(entries?: ReturnType<typeof Object.entries>) {
 }
 
 export function reverse_map(obj: object) {
-  return map(obj, ([key, value]) => [value, key])
+  return Object.fromEntries(map(obj, ([key, value]) => [value, key]))
 }
 
 type s = typeof s
