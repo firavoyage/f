@@ -11,7 +11,7 @@ import { items, tool_to_args } from 'action/tools';
 import { Main } from "web/component/main";
 import { Sidebar } from 'web/component/sidebar';
 import { List } from 'web/component/list';
-import type { item } from 'web/component/process'
+import type { tool } from 'web/component/process'
 import { Menu } from 'web/component/menu';
 import { Shortcuts } from 'web/component/shortcuts';
 
@@ -127,11 +127,11 @@ export function App() {
       <Sidebar>
         <Menu {...p({ app: 'Tools' })}></Menu>
         <List {...p({
-          items, set_focus(tool: string) {
-            set_process((process: item[]) => {
+          items, set_focus(name: string) {
+            set_process((process: tool[]) => {
               process.push(cloneDeep({
-                tool,
-                args: tool_to_args[tool] ?? []
+                name,
+                args: tool_to_args[name] ?? []
               }))
             })
           }

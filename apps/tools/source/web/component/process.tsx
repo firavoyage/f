@@ -1,19 +1,11 @@
-import type { arg } from 'action/tools'
+import type { tool } from 'action/tools'
 
 import { Textarea } from "web/component/textarea"
 
 type process = {
-  process: item[]
+  process: tool[]
   set_process: any
 }
-
-export type item = {
-  tool: string
-  args: arg[] // = []
-  // args?: arg[]
-}
-
-type type = 'number' | 'string'
 
 export function Process(props: process) {
   const { process, set_process } = props
@@ -22,7 +14,7 @@ export function Process(props: process) {
     {
       map(process, (item, index) => (
         <div className="item">
-          <div className="tool">{item.tool}</div>
+          <div className="tool">{item.name}</div>
           <button className="delete" {...p({
             onclick() {
               set_process(() => {

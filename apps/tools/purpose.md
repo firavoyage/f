@@ -3264,4 +3264,20 @@ e
 
 i should create abstractions, not hacks.
 
+---
+
+tools should be a map, not a flat list.
+
+i have ia decoupled.
+
+---
+
+it's meaningless to create arr tools and convert to map immediately
+
+and the decision is i would make tool (en) name and tool id the same thing
+
+it's fine if i would have internationalization later. en (as id) -> other lang is perfect, nothing wrong cmp w id -> all langs.
+
+there is no longer js contrainst as i make fn a prop.
+
 

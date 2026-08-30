@@ -1,4 +1,4 @@
-import type { arg } from 'action/tools'
+import type { tool, arg } from 'action/tools'
 
 import * as tools from 'action/tools';
 
@@ -28,10 +28,9 @@ export function Main() {
 
   useEffect(() => {
     let stdin = input
-    for (const item of process) {
-      if (has(tools, item.tool)) {
-        // @ts-expect-error 
-        const result = handle(() => tools[item.tool](stdin, args_to_options(item.args)))
+    for (const tool of process as tool[]) {
+      if (has(tools, tool.name)) {
+        const result = handle(() => tools[tool.name](stdin, args_to_options(tool.args)))
         if (is_error(result)) {
           continue
         }
