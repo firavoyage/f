@@ -1,3 +1,5 @@
+import type { arg } from 'action/tools'
+
 import { Textarea } from "web/component/textarea"
 
 type process = {
@@ -9,15 +11,6 @@ export type item = {
   tool: string
   args: arg[] // = []
   // args?: arg[]
-}
-
-export type arg = {
-  name: string
-  id?: string // = name to lower case rp space w underscore
-  type: type
-  variant?: string // how it should be rendered (e.g. checkbox or slider for bool?)
-  value: any // = default value
-  default_value?: any
 }
 
 type type = 'number' | 'string'
