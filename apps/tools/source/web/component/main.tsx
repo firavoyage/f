@@ -1,6 +1,7 @@
 import type { tool, arg } from 'action/tools'
 
-import * as tools from 'action/tools';
+import { tools } from 'action/tools'
+// import * as tools from 'action/tools';
 
 import { normalize_id } from 'lib/normalize_id';
 
@@ -30,7 +31,7 @@ export function Main() {
     let stdin = input
     for (const tool of process as tool[]) {
       if (has(tools, tool.name)) {
-        const result = handle(() => tools[tool.name](stdin, args_to_options(tool.args)))
+        const result = handle(() => tools[tool.name].fn(stdin, args_to_options(tool.args ?? [])))
         if (is_error(result)) {
           continue
         }
