@@ -1,13 +1,14 @@
-export * from 'action/maimai'
+// export * from 'action/maimai'
 import { json_to_yaml, yaml_to_json } from 'action/json yaml toml xml'
 import { merge_journal, telegram_to_journal } from 'action/telegram to journal';
-export * from 'action/json yaml toml xml'
+// export * from 'action/json yaml toml xml'
 
 export type tool = {
   name: string
   // name?: string // optional?!
   fn: (input: string, options?: any) => string
   args?: arg[]
+  args_to_options?: Function
   render_input?: Function
   render_output?: Function
 }
@@ -25,7 +26,7 @@ type type = 'number' | 'string'
 export type tool_name = keyof typeof tools
 
 export const tools = {
-// export const tools: Record<string, Omit<tool, 'name'>> = {
+  // export const tools: Record<string, Omit<tool, 'name'>> = {
   "json to yaml": {
     fn: json_to_yaml,
     args: [
@@ -54,5 +55,10 @@ export const tools = {
   }
 }
 
-export const tools_taxonomy = ["json to yaml", "yaml to json"]
+export const tools_taxonomy = [
+  "json to yaml",
+  "yaml to json",
+  "telegram to journal",
+  "merge journal"
+]
 

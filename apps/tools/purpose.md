@@ -3295,5 +3295,30 @@ it _is_ boilerplate. the tradeoff is worth it.
 
 normalize_id is still being used. letme think bout it.
 
+i would have it.
+
+```ts
+    const key = arg.id ?? normalize_id(arg.name)
+```
+
+nothing wrong, right?
+
+js vars couldnt contain spaces. and i never use any uppercase letters.
+
+```ts
+dc {my name} = options
+```
+
+e.g. that's invalid
+
+```ts
+dc {"my name": my_name} = options
+
+dc {"my name" as my_name} = options
+```
+
+you have to convert it anyway. somewhere.
+
+and if it's guranteed to be invalid (i would not convert on the fn definition), it's reasonable to add some magic in the preprocess.
 
 
