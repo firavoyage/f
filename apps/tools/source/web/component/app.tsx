@@ -6,12 +6,11 @@ import { cloneDeep } from 'lodash-es'
 import { use_sync_theme } from "web/lib/sync_theme.use";
 import { use_window_active } from 'web/lib/window.use';
 
-import { items, tool_to_args } from 'action/tools';
+import { tool, tool_name, tools, tools_taxonomy } from 'action/tools';
 
 import { Main } from "web/component/main";
 import { Sidebar } from 'web/component/sidebar';
 import { List } from 'web/component/list';
-import type { tool } from 'web/component/process'
 import { Menu } from 'web/component/menu';
 import { Shortcuts } from 'web/component/shortcuts';
 
@@ -127,11 +126,11 @@ export function App() {
       <Sidebar>
         <Menu {...p({ app: 'Tools' })}></Menu>
         <List {...p({
-          items, set_focus(name: string) {
+          items: tools_taxonomy, set_focus(name: tool_name) {
             set_process((process: tool[]) => {
               process.push(cloneDeep({
                 name,
-                args: tool_to_args[name] ?? []
+                args: tools[name].args ?? []
               }))
             })
           }

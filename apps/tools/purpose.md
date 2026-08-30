@@ -3235,7 +3235,7 @@ a clever hack to break the scope.
 
 30
 
-17 40 action/tools: refactor tools data structure.
+17 40 action/tools: refactor tools data structure. 18 30
 
 in my mental model, a tool has
 
@@ -3279,5 +3279,21 @@ and the decision is i would make tool (en) name and tool id the same thing
 it's fine if i would have internationalization later. en (as id) -> other lang is perfect, nothing wrong cmp w id -> all langs.
 
 there is no longer js contrainst as i make fn a prop.
+
+```ts
+  "yaml to json": {
+    fn: yaml_to_json,
+  },
+  "telegram to journal": {
+    fn: telegram_to_journal
+  },
+```
+
+it _is_ boilerplate. the tradeoff is worth it.
+
+---
+
+normalize_id is still being used. letme think bout it.
+
 
 

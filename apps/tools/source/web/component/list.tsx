@@ -1,12 +1,11 @@
-import { normalize_id } from "lib/normalize_id"
-
 type item = string | { name: string, id: string }
 
 export type items = item[] | { [key: string]: items }
 
 export function normalize_item(item: item) {
   if (typeof item == 'string') {
-    return { name: item, id: normalize_id(item) }
+    return { name: item, id: item }
+    // return { name: item, id: normalize_id(item) }
   } else {
     return item
   }
