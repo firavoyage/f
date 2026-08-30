@@ -178,9 +178,18 @@ ref:
       "type $1 = $0"
     ],
   },
+  "export type": {
+    "prefix": [
+      "et",
+      "ety",
+    ],
+    "body": [
+      "export type ${1:name} = ${0}",
+    ],
+  },
   "import type": {
     "prefix": [
-      "it",
+      "it", // ?! node:it has higher priority, wtf
       "dit",
     ],
     "body": [
