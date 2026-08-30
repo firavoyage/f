@@ -54417,7 +54417,7 @@ actually i would somewhat attempting to have bin sushi today. have some, maybe.
 
 30
 
-15 20 discuss math w a grade 9 jhs who got 717 this year (shanghai hs requires 716 this year) on hsee, admitted to weiyu hs.
+15 20 discuss math w a grade 9 jhs (liam0103, 12.5k) who got 717 this year (shanghai hs requires 716 this year) on hsee, admitted to weiyu hs.
 
 
 
