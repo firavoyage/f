@@ -1,4 +1,4 @@
-# todo: complete utilitarian component system.
+# todo: complete utilitarian component system. <!-- s -->
 
 complete utilitarian component system.
 
@@ -86,7 +86,7 @@ https://getbootstrap.com/docs/5.3/examples/
 
 w ~~c~~ <!-- it's not wise to build for the future. better to think what you need instead. -->
 
-# todo: adopt icon lib.
+# todo: adopt icon lib. <!-- s -->
 
 adopt icon lib.
 
@@ -98,7 +98,7 @@ https://github.com/microsoft/vscode-codicons
 
 https://microsoft.github.io/vscode-codicons/dist/codicon.html
 
-# todo: complete planned tools.
+# todo: complete planned tools. <!-- c -->
 
 complete planned tools.
 
@@ -152,11 +152,11 @@ polish maimai, expand the results (base2, base5) if the number is small
 
 low priority. it's just a derivation.
 
-# todo: support render input/output
+# todo: support render input/output <!-- s -->
 
 support render input/output
 
-# todo: support custom imported tools and fav tools
+# todo: support custom imported tools and fav tools <!-- c -->
 
 support custom imported tools and fav tools
 
