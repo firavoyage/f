@@ -54419,6 +54419,12 @@ actually i would somewhat attempting to have bin sushi today. have some, maybe.
 
 15 20 discuss math w a grade 9 jhs (liam0103, 12.5k) who got 717 this year (shanghai hs requires 716 this year) on hsee, admitted to weiyu hs.
 
+16 10 spend nearly an hour (re)solving spuee 2023 math p10. make a lot of mistakes even w my prev brief solution given. share the problem w djhs grade 10 oier.
+
+e.g. `(a+b)(c+d)=ac+bc+bc+bd`, misreading the letter of a point.
+
+feel i was much more stupid than when i were a student.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
