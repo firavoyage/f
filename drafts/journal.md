@@ -54415,6 +54415,10 @@ i asked his father, who said they did not get a queue number, and they would be 
 
 actually i would somewhat attempting to have bin sushi today. have some, maybe.
 
+30
+
+15 20 discuss math w a grade 9 jhs who got 717 this year (shanghai hs requires 716 this year) on hsee, admitted to weiyu hs.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
