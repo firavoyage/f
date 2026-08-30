@@ -3321,4 +3321,18 @@ you have to convert it anyway. somewhere.
 
 and if it's guranteed to be invalid (i would not convert on the fn definition), it's reasonable to add some magic in the preprocess.
 
+19 40 action/telegram to journal: debug weird output of merge journal. lib/collection: fix `reverse_map` to work w the breaking changed `map`. 20 00
+
+there seems to be some issues...
+
+---
+
+generalize journal. make empty input empty, instead of "an existing line of empty string as content"
+
+---
+
+well, the cause is the breaking change of map.
+
+it no longer applies obj from entries for obj.
+
 

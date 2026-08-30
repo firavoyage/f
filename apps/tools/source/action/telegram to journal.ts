@@ -86,6 +86,11 @@ type journal_item = {
 type journal = journal_item[]
 
 function parse_journal(journal_text: string): journal {
+  // make empty input empty
+  if (journal_text == '') {
+    return []
+  } 
+
   let year, month, date, hour, minute
 
   const journal = []
@@ -500,6 +505,7 @@ export function merge_journal(addition_text: string, { original_text }: merge_jo
   const addition = parse_journal(addition_text)
 
   const merged = sort([...original, ...addition])
+
   return serialize_journal(merged)
 }
 
@@ -552,6 +558,8 @@ function telegram_to_journal_util(telegram_text: string, options: telegram_to_jo
   })
 
   const journal_text = serialize_journal(telegram)
+
+  log(1)
 
   return journal_text
 }

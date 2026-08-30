@@ -10,12 +10,12 @@ import { App } from "./component/app"
 // @ts-expect-error best effort
 const dev = handle(() => process.env.NODE_ENV == 'development' || import.meta.env?.DEV, false)
 
-// Use StrictMode in Dev
+// Use StrictMode in Dev (disabled currently to reduce irrelevant noise)
 if (dev) {
   createRoot(document.getElementById("root")!).render(
-    <StrictMode>
+    // <StrictMode>
       <App />
-    </StrictMode>
+    // </StrictMode>
   )
 } else {
   createRoot(document.getElementById("root")!).render(
