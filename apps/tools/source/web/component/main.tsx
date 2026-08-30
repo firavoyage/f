@@ -15,6 +15,7 @@ function args_to_options(args: arg[]) {
   const options: any = {}
   for (const arg of args) {
     const key = arg.id ?? normalize_id(arg.name)
+    // todo
     const value = arg.type == 'number' ? +arg.value : arg.value
 
     options[key] = value
