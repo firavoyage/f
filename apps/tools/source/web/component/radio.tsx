@@ -16,21 +16,16 @@ export function Radio(props: radio) {
     Object.fromEntries(map(flexible_items, item => [item, item])) :
     flexible_items
 
-  const [open, toggle_open] = useToggle(false)
-
   return (
-    <div className="select" {...p({ open })}>
-      <button className="trigger" {...p({ onClick: toggle_open })}>
-        {has(items, value) ? items[value] : placeholder}
-        {children}
-      </button>
-      <div className="popup">
-        {
-          map(items, ([id, name]) => (
-            <button className="option" {...p({ onClick() { set_value(id) } })}>{name}</button>
-          ))
-        }
-      </div>
+    <div className="radio">
+      {
+        map(items, ([id, name]) => (
+          <button className="item" {...p({ checked: value == id, onClick() { set_value(id) } })}>
+            <span className="indicator"></span>
+            <span className="label" {...p({})}>{name}</span>
+          </button>
+        ))
+      }
     </div>
   )
 }

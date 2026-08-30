@@ -7,7 +7,7 @@ atom
 - checkbox
 - switch
 - select <!-- single select -->
-- . radio <!-- single select -->
+- radio <!-- single select -->
 - . input <!-- text input -->
 - . number <!-- number input, number field -->
 - . slider <!-- number input, number range -->
