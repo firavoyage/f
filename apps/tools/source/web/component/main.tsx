@@ -1,10 +1,12 @@
+import type { arg } from 'action/tools'
+
 import * as tools from 'action/tools';
 
 import { normalize_id } from 'lib/normalize_id';
 
 import { use_global } from "web/component/app";
 
-import { Process, arg } from "web/component/process";
+import { Process } from "web/component/process";
 import { Textarea } from 'web/component/textarea';
 import { call } from 'web/component/app'
 

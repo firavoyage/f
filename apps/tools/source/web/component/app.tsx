@@ -1,7 +1,7 @@
 import 'web/design/utilitarian/utilitarian.css'
 import 'web/design/app.css'
 
-import { cloneDeep, commit } from 'lodash-es'
+import { cloneDeep } from 'lodash-es'
 
 import { use_sync_theme } from "web/lib/sync_theme.use";
 import { use_window_active } from 'web/lib/window.use';

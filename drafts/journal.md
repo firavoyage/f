@@ -54419,11 +54419,17 @@ actually i would somewhat attempting to have bin sushi today. have some, maybe.
 
 15 20 discuss math w a grade 9 jhs (liam0103, 12.5k) who got 717 this year (shanghai hs requires 716 this year) on hsee, admitted to weiyu hs.
 
-16 10 spend nearly an hour (re)solving spuee 2023 math p10. make a lot of mistakes even w my prev brief solution given. share the problem w djhs grade 10 oier.
+16 10 spend nearly an hour (re)solving spuee 2023 math p10. make a lot of mistakes even w my prev brief solution given. share the problem w djhs grade 10 oier (jsla, 16.0k).
 
 e.g. `(a+b)(c+d)=ac+bc+bc+bd`, misreading the letter of a point.
 
 feel i was much more stupid than when i were a student.
+
+17 30 play maimai w that jhs for a whole afternoon.
+
+they left w their mother. they are polite, asking me whether it's ok every time (though later i said it's always y), sometimes saying sorry or thanks for no reason. they gifted me many pc.
+
+only the djhs oier keeps playing here currently.
 
 
 

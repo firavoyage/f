@@ -3233,4 +3233,35 @@ still, the id must be string. i dont feel it's practical to allow, like number. 
 
 a clever hack to break the scope.
 
+30
+
+17 40 action/tools: refactor tools data structure.
+
+in my mental model, a tool has
+
+- a converter fn, likely string -> string
+  - it's highly praised of the unix philosophy, by being text based, making things composable
+  - almost nothing could not be stringified informatically losslessly
+  - the cost is perf, which is negligible. i would not "even out serialize and parse"
+- args[]?
+  - name
+  - id? = normalize id name: the prop name in obj params
+  - value
+  - type: component to render and set value
+- render input? (?)
+- render output?
+
+c
+
+tools are re exported.
+
+constraints are
+
+- in js, fn could have props, but they would not be cleanly defined and typed
+- in js, var names could not contain spaces (thus `normalize_id` is created, so hacky and implicit, highly prone i think)
+
+e
+
+i should create abstractions, not hacks.
+
 
