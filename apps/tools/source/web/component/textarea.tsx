@@ -1,6 +1,6 @@
 type textarea = {
   value: string;
-  set_value: (value: string) => void;
+  set_value: (value: string | ((...args: any) => string)) => void;
 };
 
 export function Textarea({ value, set_value, ...props }: textarea) {
