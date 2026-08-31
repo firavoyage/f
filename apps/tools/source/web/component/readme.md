@@ -8,7 +8,7 @@ atom
 - switch
 - select <!-- single select -->
 - radio <!-- single select -->
-- . input <!-- text input -->
+- input <!-- text input -->
 - . number <!-- number input, number field -->
 - . slider <!-- number input, number range -->
 - . tooltip <!-- title attr -->
