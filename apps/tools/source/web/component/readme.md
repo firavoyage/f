@@ -12,6 +12,7 @@ atom
 - input <!-- text input -->
 - textarea
 - ~~tooltip~~ <!-- title attr -->
+- icon
 
 pattern
 
