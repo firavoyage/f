@@ -3347,4 +3347,11 @@ it no longer applies obj from entries for obj.
 
 15 40 create the rest of atom components
 
+jsx element auto complete is quirky, just like ts type inference.
+
+---
+
+seems in adwaita the order is always number field, dec, inc
+
+
 
