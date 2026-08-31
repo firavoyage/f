@@ -8,10 +8,6 @@ type FileError = { code: string, path: string, syscall: string, errno: number }
 type err = typeof err
 type is_error = typeof is_error
 declare global {
-  type Optional<Type, Keys extends keyof Type> = Omit<Type, Keys> & Partial<Pick<Type, Keys>>
-
-  // any, normalized
-  type all = void | string | number | boolean | bigint | symbol | null | undefined | { [key: PropertyKey]: any };
   type Result<T = all, E extends Err = Err> = (0 extends 1 & T ? Ok : Ok<T>) | E;
 
   var err: err

@@ -6,6 +6,10 @@
 
 declare global {
   type Key = PropertyKey
+  type Optional<Type, Keys extends keyof Type> = Omit<Type, Keys> & Partial<Pick<Type, Keys>>
+  // any, normalized
+  type all = void | string | number | boolean | bigint | symbol | null | undefined | { [key: PropertyKey]: any };
+
 }
 
 export {};
