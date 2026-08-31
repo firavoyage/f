@@ -22,7 +22,7 @@ export function Process(props: process) {
               })
             }
           })}>delete</button>
-          <div className="args">{map(item.args, arg => (
+          <div className="args">{map(item.args ?? [], arg => (
             <div className="arg">
               <div className="name">{arg.name}</div>
               <Textarea {...p({

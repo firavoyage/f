@@ -3353,5 +3353,14 @@ jsx element auto complete is quirky, just like ts type inference.
 
 seems in adwaita the order is always number field, dec, inc
 
+---
+
+doesnt seem slider is used anywhere. (at least here)
+
+and tooltip is irrelevant most time.
+
+16 30 create component arg
+
+just mutate in place. it would work and it would be simple.
 
 
