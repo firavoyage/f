@@ -1,5 +1,106 @@
 # .
 
+零れ落ちた、涙に映る
+冷えてしまった、笑顔と無告の日々
+拾い集めては失くしてしまった心の温度
+これじゃあいつまでも　進めやしない
+
+不安な夜に夢を見た　消える私は思い出に
+消えたくは無いよ　無告の夜を越え
+今　存在証明を
+
+私はずっと『ただの君の傍で生きてたいの』って願う
+私はきっと　まだ光を知らない　夜に隠れた理想
+私を知って　今希望を探すの　月明かり照らす現状
+『認められたい』私の声は　夜を超えてく
+
+月が照らす夜空に浮かぶ
+いつかの星光　理想は遥か遠く
+どんなに求めても　離れてく　憧れの光
+私らしく在れと　そう言ってるんでしょう
+
+You ready?　皆　共存の血統
+故に　MIRROR　存在の証明
+You ready?　皆　協奏の結晶
+我ら月下　電脳を先導
+
+WHAT'S THE MIRROR?月下の理想郷
+賭けてみな　さあ　ご覧遊ばせ
+故に　MIRROR　今宵も絶唱
+閑散な心も散々だ
+
+俯く私の手を握る
+君の手は暖かく
+忘れかけてた私の声は今
+自信へと変わっていく
+
+世界もきっと　いつか終わりが来るの
+後悔の無いようにと
+私もきっと　いつか終わりが来るの
+それまで笑いたい
+
+私はずっと『ただ君の傍で生きてたいの』って詩う
+私はきっと　まだ私を知らない　影に隠れた自称
+私を知って　今色を持つの　月明かり照らす電脳
+冷え切ってしまった心の温度　今熱を帯びる
+
+I want to be alive with you.
+I want to still alive with you
+I want to be alive with you.
+This is my proof of existence
+もう迷わぬ光
+
+---
+
+Reflected in the spilled, falling tears—  
+Smiles that have grown cold, and lonely, helpless days.  
+The warmth of my heart, lost even as I tried to gather it back up.  
+At this rate, I’ll never be able to move forward.  
+
+On an anxious night, I dreamed I faded away into a memory.  
+I don't want to disappear; transcending these silent, helpless nights,  
+Right now, here is the proof of my existence.  
+
+I keep praying, *"I just want to live by your side."*  
+Surely, I still don't know the light—my ideals hidden within the night.  
+Get to know me; now I search for hope under the moonlight illuminating reality.  
+*"I want to be acknowledged"*—my voice reaches out across the night.  
+
+Floating in the night sky lit by the moon,  
+The starlight from that day—my ideals are so far away.  
+No matter how much I reach for it, it drifts away: that light I long for.  
+*"Just stay true to who you are"*—is that what it's telling me?  
+
+*You ready?* Everyone, the bloodline of coexistence  
+Therefore, **MIRROR**—proof of existence  
+*You ready?* Everyone, the crystallization of harmony  
+Beneath the moon, we lead the cyber world  
+
+*WHAT'S THE MIRROR?* A utopia beneath the moon  
+Take a gamble—come now, feast your eyes  
+Therefore, **MIRROR**—singing our souls out again tonight  
+Even a desolate heart is torn to pieces  
+
+Taking my hand as I look down,  
+Your hand is so warm.  
+My voice, which I had almost forgotten,  
+Is now turning into confidence.  
+
+Surely, even the world will come to an end someday—  
+So I live without regrets.  
+Surely, an end will come for me someday, too—  
+Until then, I just want to smile.  
+
+I keep singing, *"I just want to live by your side."*  
+Surely, I still don't know who I am—a self-image hidden in the shadows.  
+Know who I am; now taking on color, the cyberspace lit by moonlight.  
+The warmth of my frozen heart is now glowing with heat once more.  
+
+*I want to be alive with you.*  
+*I want to still [be] alive with you.*  
+*I want to be alive with you.*  
+*This is my proof of existence.*  
+A light that will never waver again.
 
 # translate
 
@@ -135,7 +236,9 @@ A light that will never waver again.
 
 ## . stats
 
-<!-- seems -->
+<!-- seems i could use openrouter playground. i were told to have been blocked from anthropic/openai/gemini models due to geoblock of my payment method. -->
+
+---
 
 Provider
 Google

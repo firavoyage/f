@@ -3544,4 +3544,12 @@ i may support old state -> new state custom migration. or maybe yagni.
 
 w.
 
+sep 2026
+
+01
+
+00 30 adopt vscode icon pack.
+
+better to do what's clear and what yk would matter first.
+
 
