@@ -55,7 +55,7 @@ textarea {
   color: var(--color-fg-primary);
 }
 
-.sidebar {
+.app > .sidebar {
   background-color: var(--color-bg-secondary);
 
   &[variant="push"] {

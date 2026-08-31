@@ -3548,8 +3548,53 @@ sep 2026
 
 01
 
-00 30 adopt vscode icon pack.
+00 30 adopt vscode icon pack. create component icon.
 
 better to do what's clear and what yk would matter first.
 
+---
+
+well a bit tricky... letme think bout it.
+
+an icon has
+
+- name/id
+- icon pack
+- ~~size~~
+
+there is some logic inside.
+
+size doesnt matter for svg. (unlike ubuntu app icons)
+
+and if size does matter, it would not be not just scaling. anyway it's not to be "retrieved smartly".
+
+---
+
+abstraction
+
+```
+Icon name=sth
+```
+
+inside icon
+
+```yaml
+icon packs:
+  vscode:
+    sidebar: svg jsx
+    close: svg
+  md3:
+    ...
+
+icon pack = use global
+# "icon family: vscode, md3, ..."
+```
+
+it's trivial to paste html in jsx. i can just let icon own the icon packs.
+
+i dont have to "fallback to default vscode". icon packs are designed to be complete.
+
+if not, you may write `md3 = {...vscode, ...md3 icons}`
+
+01 00 app.css: enforce a rule.
 
