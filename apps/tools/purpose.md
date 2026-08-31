@@ -3335,4 +3335,13 @@ well, the cause is the breaking change of map.
 
 it no longer applies obj from entries for obj.
 
+31
+
+12 20 plan
+
+- complete the rest of atom components
+- map args/settings to input (in general) components
+- create pattern/page components and make every button clickable, e.g. hamburger menu, command palette
+- create basic styling of components
+- adopt icon lib <!-- s, inefficient wo -->
 
