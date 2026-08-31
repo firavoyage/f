@@ -3369,4 +3369,38 @@ it does not. rather pass down.
 
 i could narrow the type (for metadata) by typeof value.
 
+18 20 design hamburger menu.
+
+i feel im somewhat stuck. i do not really have a purpose now.
+
+basically it's just a visual, auto synced text converter
+
+it's easy to add features.
+
+i do not have to toggle keyboard shortcuts or pref. the only rationale is utilitarian would be a universal design system, and it should match gnome adwaita (styling can be changed) on features. and, what does it mean if i decide to build _for the future_?
+
+---
+
+doesnt matter i would complete things quickly.
+
+---
+
+idk why color theme is rendered specially. what if a (first time) gnome user wants to toggle light theme for a specific app and they dive into pref?
+
+i somehow need tooltip. or maybe it's the icon (white and black separated by a diagonal line) that is confusing: auto switch light/dark based on time, or follow system?
+
+it's clear i want to, at the end of the day, let it be a prop like `title`.
+
+```
+Button 
+```
+
+ok good news
+
+```tsx
+      <Button {...p({ onclick: () => {}, class: 123 })}></Button>
+```
+
+it works
+
 
