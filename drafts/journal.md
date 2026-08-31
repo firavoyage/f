@@ -54441,6 +54441,20 @@ only the djhs oier keeps playing here currently.
 
 <!-- inspired by sayonara lara, streamed by pin zi jun -->
 
+sep 2026
+
+01
+
+00 30 begin a new month.
+
+i would not do anything particular as before.
+
+to archive, to export, to cherish...
+
+if it's automated, it should be automated.
+
+also, thoughts, posts, memories, they are not treasures.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
