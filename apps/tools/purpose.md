@@ -3345,3 +3345,6 @@ it no longer applies obj from entries for obj.
 - create basic styling of components
 - adopt icon lib <!-- s, inefficient wo -->
 
+15 40 create the rest of atom components
+
+
