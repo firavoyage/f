@@ -1,6 +1,6 @@
 import type { tool } from 'action/tools'
 
-import { Textarea } from "web/component/textarea"
+import { Arg } from './arg'
 
 type process = {
   process: tool[]
@@ -24,14 +24,7 @@ export function Process(props: process) {
           })}>delete</button>
           <div className="args">{map(item.args ?? [], arg => (
             <div className="arg">
-              <div className="name">{arg.name}</div>
-              <Textarea {...p({
-                value: arg.value, set_value(new_value: any) {
-                  set_process(() => {
-                    arg.value = new_value
-                  })
-                }
-              })}></Textarea>
+              <Arg {...p({ ...arg })}></Arg>
             </div>
           ))}</div>
         </div>

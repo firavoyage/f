@@ -18,6 +18,8 @@ export type arg = {
   id?: string // = normalize id name
   type: type // how it should be rendered, not typeof value
   value: any
+  options?: any[] // for select/radio
+  placeholder?: string // for select
 }
 
 type type = 'checkbox' | 'switch' | 'select' | 'radio' | 'number' | 'input' | 'textarea'
