@@ -3596,5 +3596,26 @@ i dont have to "fallback to default vscode". icon packs are designed to be compl
 
 if not, you may write `md3 = {...vscode, ...md3 icons}`
 
-01 00 app.css: enforce a rule.
+01 00 app.css: ~~enforce a rule on~~ fix class collision.
+
+e.g. sidebar is named sidebar. sidebar toggle button is also named sidebar.
+
+well, i think it's easy to debug and solvable.
+
+i do not want to use descendent selectors. they are boilerplate, esp when nested (`.child` or `& > .child`).
+
+---
+
+why not make it global?
+
+y
+
+01 20 component/select: fix typing
+
+```
+Error: Received the string `true` for the boolean attribute `open`. Although this works, it will not work as expected if you pass the string "false". Did you mean open={true}?
+```
+
+wow, so sophisticated.
+
 

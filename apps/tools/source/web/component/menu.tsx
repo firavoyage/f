@@ -11,9 +11,13 @@ export function Menu(props: menu) {
 
   return (
     <div className="menu">
-      <button className="search">search</button>
+      <button className="search">
+        <Icon {...p({ name: 'search' })}></Icon>
+      </button>
       <div className="name">{app}</div>
-      <button className="hamburger" {...p({ onClick: toggle_hamburger })}>hamburger</button>
+      <button className="hamburger" {...p({ onClick: toggle_hamburger })}>
+        <Icon {...p({ name: 'menu' })}></Icon>
+      </button>
     </div>
   )
 }
