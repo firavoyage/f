@@ -9,13 +9,6 @@ type process = {
 }
 
 export function Process(props: process) {
-
-  function set_value(new_value: any) {
-    set_process(() => {
-      props.value = new_value
-    })
-  }
-
   const { process, set_process } = props
 
   return <div className="process">
@@ -32,7 +25,13 @@ export function Process(props: process) {
           })}>delete</button>
           <div className="args">{map(item.args ?? [], arg => (
             <div className="arg">
-              <Arg {...p({ ...arg })}></Arg>
+              <Arg {...p({
+                ...arg, set_value(new_value: any) {
+                  set_process(() => {
+                    arg.value = new_value
+                  })
+                }
+              })}></Arg>
             </div>
           ))}</div>
         </div>
