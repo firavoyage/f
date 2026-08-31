@@ -3392,7 +3392,14 @@ i somehow need tooltip. or maybe it's the icon (white and black separated by a d
 it's clear i want to, at the end of the day, let it be a prop like `title`.
 
 ```
-Button 
+Button title: follow system theme 
+```
+
+under the hood
+
+```
+Tooltip tip (string or children): follow system theme
+  button ...
 ```
 
 ok good news
@@ -3401,6 +3408,94 @@ ok good news
       <Button {...p({ onclick: () => {}, class: 123 })}></Button>
 ```
 
-it works
+it works, class would be overridden (no idea why autocomplete fails again)
+
+---
+
+observation:
+
+nautilus doesnt show _or allow_ theme switch (use system). yet almost all gnome apps that allow, shows on menu, not pref.
+
+nautilus shows new window before new tab, ptyxis does vice versa
+
+ref:
+
+- nautilus
+  - new win
+  - new tab
+  - .
+  - icon size - +
+  - .
+  - undo
+  - redo
+  - .
+  - show hidden files
+  - .
+  - pref
+  - keyboard shortcuts
+  - help (f1)
+  - about
+- ptyxis
+  - theme
+  - .
+  - (zoom) - 100% +
+  - .
+  - new tab
+  - new window
+  - .
+  - show open tabs
+  - .
+  - fullscreen
+  - .
+  - p
+  - ks
+  - a (about, not about ptyxis)
+- resource
+  - pref (ctrl+,)
+  - keyboard shortcuts (ctrl+?)
+  - about resources
+- adw demo
+  - inspector
+  - adaptive preview
+  - .
+  - p
+  - ks
+  - a
+
+all shortcut-able commands has which shown on the right
+
+seems it's not standardized and we can make choices.
+
+or, it's nautilus (at least my current version) that is not standardized. it uses ubuntu orange instead of adwaita blue.
+
+---
+
+btw, on ptyxis menu seems it cares both hover and tab. i mean when you hover sth, it resets tab focus there, silently.
+
+i would not adopt that. it should be consistent. tab uses outline.
+
+and, maybe it's good prac to highlight (underline) the alt letter when keyboard is detected. i would not adopt that as i never use alt letter. you should use normal keyboard shortcuts. (also, when you tab, would you use alt letter?). what's even more weird is alt letter has _no effect_.
+
+---
+
+design
+
+- ~~sys/light/dark theme (ux prac: many ways to achieve the same goal)~~
+- (hr)
+- ~~density~~
+- (hr)
+- ~~fullscreen?~~
+- (hr)
+- pref
+- keyboard shortcuts
+- about
+
+i can change my mind later.
+
+imo, it's not good prac to make a list work both vertically and horizontally.
+
+19 00 lib/global.types: centralize util types.
+
+optional, fn.
 
 
