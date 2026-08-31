@@ -1,6 +1,7 @@
 import type { tool } from 'action/tools'
 
 import { Arg } from './arg'
+import { use_global } from './app'
 
 type process = {
   process: tool[]
@@ -8,6 +9,13 @@ type process = {
 }
 
 export function Process(props: process) {
+
+  function set_value(new_value: any) {
+    set_process(() => {
+      props.value = new_value
+    })
+  }
+
   const { process, set_process } = props
 
   return <div className="process">

@@ -1,3 +1,5 @@
+import type { options } from 'web/component/select'
+
 // export * from 'action/maimai'
 import { json_to_yaml, yaml_to_json } from 'action/json yaml toml xml'
 import { merge_journal, telegram_to_journal } from 'action/telegram to journal';
@@ -18,7 +20,7 @@ export type arg = {
   id?: string // = normalize id name
   type: type // how it should be rendered, not typeof value
   value: any
-  options?: any[] // for select/radio
+  options?: options // for select/radio
   placeholder?: string // for select
 }
 
@@ -26,15 +28,16 @@ type type = 'checkbox' | 'switch' | 'select' | 'radio' | 'number' | 'input' | 't
 
 export type tool_name = keyof typeof tools
 
-export const tools = {
-  // export const tools: Record<string, Omit<tool, 'name'>> = {
+export const tools: Record<string, Optional<tool, 'name'>> = {
+// export const tools = {
   "json to yaml": {
     fn: json_to_yaml,
     args: [
       {
         name: 'parse',
-        type: 'string',
-        value: union('standard', 'flexible', 'forgiving')
+        type: 'select',
+        value: union('standard', 'flexible', 'forgiving'),
+        options: ['standard', 'flexible', 'forgiving']
       }
     ],
   },
@@ -49,12 +52,14 @@ export const tools = {
     args: [
       {
         name: 'original text',
-        type: 'string',
+        type: 'textarea',
         value: ''
       }
     ]
   }
 }
+
+// const tools_typecheck: Record<string, Optional<tool, 'name'>> = tools
 
 export const tools_taxonomy = [
   "json to yaml",

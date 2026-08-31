@@ -10,16 +10,8 @@ import { Radio } from './radio'
 import { Input } from './input'
 import { Textarea } from './textarea'
 
-export function Arg(props: arg) {
-  const [, set_global] = use_global()
-
-  function set_value(new_value: any) {
-    set_global(() => {
-      props.value = new_value
-    })
-  }
-
-  const { type, value } = props
+export function Arg(props: arg & {set_value: Function}) {
+  const { type, value, options, placeholder } = props
 
   const name = <span className="name">{props.name}</span>
 
@@ -42,18 +34,26 @@ export function Arg(props: arg) {
       </>
     )
   } else if (type == 'select') {
+    if (!is_given(options)) {
+      throw err('select must have options')
+    } 
+
     return (
       <>
         {name}
-        <Select {...p({ value, set_value, items: props.options ?? [], placeholder: props.placeholder })}>
+        <Select {...p({ value, set_value, options, placeholder })}>
         </Select>
       </>
     )
   } else if (type == 'radio') {
+    if (!is_given(options)) {
+      throw err('radio must have options')
+    } 
+
     return (
       <>
         {name}
-        <Radio {...p({ value, set_value, items: props.options ?? [] })}>
+        <Radio {...p({ value, set_value, options })}>
         </Radio>
       </>
     )

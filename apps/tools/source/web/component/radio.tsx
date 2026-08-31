@@ -1,16 +1,15 @@
+import type { options } from 'web/component/select'
+
 type radio = {
   value: any
   set_value: Function
-  items: items
+  options: options
   placeholder?: any
   children?: any
 }
 
-// id (value) -> name (label)
-type items = Record<string, string> | string[]
-
 export function Radio(props: radio) {
-  const { value, set_value, items: flexible_items, placeholder = '', children } = props
+  const { value, set_value, options: flexible_items, placeholder = '', children } = props
 
   const items = Array.isArray(flexible_items) ?
     Object.fromEntries(map(flexible_items, item => [item, item])) :
