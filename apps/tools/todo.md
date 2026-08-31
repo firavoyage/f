@@ -1,3 +1,11 @@
+# plan
+
+- complete the rest of atom components
+- map args/settings to input (in general) components
+- create pattern/page components and make every button clickable, e.g. hamburger menu, command palette
+- create basic styling of components
+- adopt icon lib <!-- s, inefficient wo -->
+
 # todo: complete utilitarian component system. <!-- s -->
 
 complete utilitarian component system.
@@ -163,6 +171,10 @@ support custom imported tools and fav tools
 i would have fav tools. custom tools? would they be imported on web?
 
 # backlog
+
+support copy input/output
+
+---
 
 implement string distance based url correction
 
