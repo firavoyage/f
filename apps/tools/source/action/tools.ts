@@ -20,8 +20,7 @@ export type arg = {
   value: any
 }
 
-// todo
-type type = 'number' | 'string'
+type type = 'checkbox' | 'switch' | 'select' | 'radio' | 'number' | 'input' | 'textarea'
 
 export type tool_name = keyof typeof tools
 

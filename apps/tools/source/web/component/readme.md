@@ -3,15 +3,15 @@ components
 atom
 
 - button
-- textarea
 - checkbox
 - switch
 - select <!-- single select -->
 - radio <!-- single select -->
+- number <!-- number input, number field -->
+- ~~slider~~ <!-- number input, number range -->
 - input <!-- text input -->
-- . number <!-- number input, number field -->
-- . slider <!-- number input, number range -->
-- . tooltip <!-- title attr -->
+- textarea
+- ~~tooltip~~ <!-- title attr -->
 
 pattern
 
@@ -19,6 +19,7 @@ pattern
 - menu
 - list
 - shortcuts <!-- keyboard shortcuts -->
+- . arg
 
 page
 
