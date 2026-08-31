@@ -13,6 +13,7 @@ sidebar:
       search input: # w, call command palette instead
     app name: Tools # title case
     hamburger: # alt bar
+      
   list: items (headings and items), tool
   to resize: # c, when hovered
 main:

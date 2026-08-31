@@ -13,6 +13,7 @@ import { Sidebar } from 'web/component/sidebar';
 import { List } from 'web/component/list';
 import { Menu } from 'web/component/menu';
 import { Shortcuts } from 'web/component/shortcuts';
+import { Button } from './button';
 
 export const use_global = state({
   'input': '',
