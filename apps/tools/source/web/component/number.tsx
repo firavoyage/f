@@ -17,8 +17,8 @@ export function Number({ value, set_value, ...props }: number_) {
   }
 
   return (
-    <div className="number">
-      <input {...p({ class: 'field', value, onchange: handle_change, ...props })}></input>
+    <div className="number" {...p({ ...props })}>
+      <input {...p({ class: 'field', value, onchange: handle_change })}></input>
       <button className="decrease" {...p({ onClick: decrease })}>-</button>
       <button className="increase" {...p({ onClick: increase })}>+</button>
     </div>

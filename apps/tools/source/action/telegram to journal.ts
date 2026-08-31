@@ -559,8 +559,6 @@ function telegram_to_journal_util(telegram_text: string, options: telegram_to_jo
 
   const journal_text = serialize_journal(telegram)
 
-  log(1)
-
   return journal_text
 }
 

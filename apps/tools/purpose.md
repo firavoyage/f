@@ -3363,4 +3363,9 @@ and tooltip is irrelevant most time.
 
 just mutate in place. it would work and it would be simple.
 
+---
+
+i could narrow the type (for metadata) by typeof value.
+
+
 
