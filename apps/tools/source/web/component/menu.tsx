@@ -1,3 +1,5 @@
+import { use_global } from "./app"
+
 type menu = {
   app: string
 }
@@ -5,11 +7,13 @@ type menu = {
 export function Menu(props: menu) {
   const { app = 'App' } = props
 
+  const [, toggle_hamburger] = use_global('appearance.layout.hamburger menu.is visible')
+
   return (
     <div className="menu">
-      <div className="search">search</div>
+      <button className="search">search</button>
       <div className="name">{app}</div>
-      <div className="hamburger">hamburger</div>
+      <button className="hamburger" {...p({ onClick: toggle_hamburger })}>hamburger</button>
     </div>
   )
 }
