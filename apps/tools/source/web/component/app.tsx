@@ -19,14 +19,15 @@ export const use_global = state({
   'input': '',
   'output': '',
   'process': [],
-  'appearance.theme': '',
-  'appearance.layout.sidebar.is_visible': true,
+  'appearance.theme': union('system', "light", "dark"),
+  'appearance.layout.sidebar.is visible': true,
+  'appearance.layout.hamburger menu.is visible': false,
   'navigation.path': '',
   // 'navigation.page': '',
   // 'navigation.tool': '',
 }, {
   persist: 'tools',
-  version: '0.2',
+  version: '0.3',
   sync_url_options: {
     should_sync_url: true,
     should_apply_all_given_params: true,
@@ -88,7 +89,7 @@ export function call(command: command) {
 }
 
 function use_commands() {
-  const [, toggle_sidebar] = use_global('appearance.layout.sidebar.is_visible')
+  const [, toggle_sidebar] = use_global('appearance.layout.sidebar.is visible')
 
   const commands = {
     "toggle sidebar": toggle_sidebar,
@@ -113,10 +114,13 @@ function use_commands() {
 export function App() {
   // const [focus, set_focus] = use_global('navigation.tool')
   const [, set_process] = use_global('process')
+  const [theme, set_theme] = use_global('appearance.theme')
+
+  log(theme)
 
   const commands = use_commands()
 
-  use_sync_theme('system')
+  use_sync_theme(theme)
 
   use_window_active()
 
@@ -126,6 +130,7 @@ export function App() {
     <div className="app">
       <Sidebar>
         <Menu {...p({ app: 'Tools' })}></Menu>
+
         <List {...p({
           items: tools_taxonomy, set_focus(name: tool_name) {
             set_process((process: tool[]) => {

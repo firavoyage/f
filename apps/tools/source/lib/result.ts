@@ -8,10 +8,10 @@ type FileError = { code: string, path: string, syscall: string, errno: number }
 type err = typeof err
 type is_error = typeof is_error
 declare global {
-  type Result<T = all, E extends Err = Err> = (0 extends 1 & T ? Ok : Ok<T>) | E;
-
   var err: err
   var is_error: is_error
+  
+  type Result<T = all, E extends Err = Err> = (0 extends 1 & T ? Ok : Ok<T>) | E;
 }
 
 const error_symbol: unique symbol = Symbol("error");

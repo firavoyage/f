@@ -3494,8 +3494,30 @@ i can change my mind later.
 
 imo, it's not good prac to make a list work both vertically and horizontally.
 
-19 00 lib/global.types: centralize util types.
+18 50 lib/global.types: centralize util types.
 
 optional, fn.
+
+no idea what ts builtin "Function" is. i dont have to know.
+
+19 00 create ~~component~~ hamburger
+
+does not have to be a component.
+
+---
+
+keys of global state can absolutely contain spaces.
+
+it's already un-"js var"-able when it contains dot, right?
+
+it has tradeoff. it's not as clean when combined w dot. `/` would feel clearer, but it's unnatural.
+
+no need to overthink.
+
+19 10 web/lib/state: support `should_migrate`.
+
+appearance.theme was an empty string. now it's union.
+
+the best effort migration would lock it forever (unless i toggle the name back and forth).
 
 
