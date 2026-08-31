@@ -43,3 +43,6 @@ use(state)
 // declare global {
 //   var use: use
 // }
+
+import * as icon from 'web/component/icon'
+use(icon)

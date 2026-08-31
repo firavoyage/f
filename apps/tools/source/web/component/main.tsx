@@ -10,7 +10,6 @@ import { use_global } from "web/component/app";
 import { Process } from "web/component/process";
 import { Textarea } from 'web/component/textarea';
 import { call } from 'web/component/app'
-import { Icon } from './icon';
 
 function args_to_options(args: arg[]) {
   const options: any = {}
@@ -48,20 +47,20 @@ export function Main() {
     <div className="main">
       <div className="title_bar">
         <button className="sidebar" {...p({ onClick() { call('toggle sidebar') } })}>
-          <Icon {...p({ name: '' })}></Icon>
+          <Icon {...p({ name: 'sidebar' })}></Icon>
         </button>
         <div className="title"></div>
         <button className="view">
           view
         </button>
         <button className="minimize">
-          minimize
+          <Icon {...p({ name: 'minimize' })}></Icon>
         </button>
         <button className="maximize">
-          maximize
+          <Icon {...p({ name: 'maximize' })}></Icon>
         </button>
         <button className="close">
-          close
+          <Icon {...p({ name: 'close' })}></Icon>
         </button>
       </div>
       <div className="workspace">

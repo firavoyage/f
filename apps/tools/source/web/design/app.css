@@ -21,28 +21,6 @@ body {
 
 /* Components */
 
-.a,
-.link,
-.button,
-.summary,
-.input,
-.textarea,
-.select,
-.contenteditable {
-  &:focus-visible {
-    outline: var(--border-2) solid var(--color-bg-selection);
-  }
-}
-/* a,
-button,
-summary,
-[contenteditable="true"],
-[tabindex="0"],
-input,
-select,
-textarea {
-} */
-
 .app {
   display: flex;
   flex-direction: row;
@@ -100,16 +78,17 @@ textarea {
 
   .menu {
     flex-direction: row;
-    
+
     flex-basis: var(--spacing-8);
     padding: var(--spacing-0\.5);
 
-    .search, .hamburger {
+    .search,
+    .hamburger {
       flex-basis: var(--spacing-8);
     }
 
     .name {
-      align-items: center;      
+      align-items: center;
 
       flex-grow: 1;
       flex-shrink: 1;
@@ -118,15 +97,15 @@ textarea {
     }
   }
 
-  .hamburger, .list {
+  .list {
     overflow-y: auto;
 
     * {
       width: 100%;
       display: block;
-  
+
       padding-inline: var(--spacing-0\.5);
-  
+
       &:hover,
       &:focus-visible,
       &[focus] {
@@ -134,10 +113,9 @@ textarea {
       }
     }
   }
-
 }
 
-.main {
+.app > .main {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -163,19 +141,19 @@ textarea {
     .panel {
       display: flex;
       flex-direction: column;
-  
+
       flex: 1;
-  
+
       .title {
         margin: var(--spacing-0\.5);
       }
-  
+
       .textarea {
         margin: var(--spacing-0\.5);
         padding: var(--spacing-2);
-  
+
         flex-grow: 1;
-  
+
         overflow: auto;
 
         font: var(--font-code);
@@ -183,3 +161,33 @@ textarea {
     }
   }
 }
+
+.icon {
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+.a,
+.link,
+.button,
+.summary,
+.input,
+.textarea,
+.select,
+.contenteditable {
+  &:focus-visible {
+    outline: var(--border-2) solid var(--color-bg-selection);
+  }
+}
+/* a,
+button,
+summary,
+[contenteditable="true"],
+[tabindex="0"],
+input,
+select,
+textarea {
+} */
