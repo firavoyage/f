@@ -16,6 +16,7 @@ function use_update() {
 type state<T> = {
   persist?: string
   version?: string
+  should_migrate?: fn
   sync_url_options?: {
     should_sync_url?: boolean
     should_apply_all_given_params?: boolean
@@ -49,6 +50,7 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
   const {
     persist,
     version,
+    should_migrate = () => true,
     sync_url_options = {},
     init,
     change,
@@ -94,11 +96,14 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
 
     if (is_given(old_data_text)) {
       const old_data = parse(old_data_text)
+      const current_version = localStorage.getItem(`${persist}.version`)
 
-      if (is_given(version) && localStorage.getItem(`${persist}.version`) != version) {
-        for (const [key,] of Object.entries(data)) {
-          if (has(old_data, key)) {
-            data[key] = old_data[key]
+      if (is_given(version) && current_version != version) {
+        if (should_migrate(current_version)) {
+          for (const [key,] of Object.entries(data)) {
+            if (has(old_data, key)) {
+              data[key] = old_data[key]
+            }
           }
         }
 

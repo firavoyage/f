@@ -27,7 +27,8 @@ export const use_global = state({
   // 'navigation.tool': '',
 }, {
   persist: 'tools',
-  version: '0.3',
+  version: '0.4',
+  should_migrate() { return false },
   sync_url_options: {
     should_sync_url: true,
     should_apply_all_given_params: true,
@@ -115,8 +116,7 @@ export function App() {
   // const [focus, set_focus] = use_global('navigation.tool')
   const [, set_process] = use_global('process')
   const [theme, set_theme] = use_global('appearance.theme')
-
-  log(theme)
+  const [hamburger, toggle_hamburger] = use_global('appearance.layout.hamburger menu.is visible')
 
   const commands = use_commands()
 
@@ -130,7 +130,12 @@ export function App() {
     <div className="app">
       <Sidebar>
         <Menu {...p({ app: 'Tools' })}></Menu>
-
+        {hamburger && <div className="hamburger">
+          <button className="preferences">Preferences</button>
+          <button className="shortcuts">Keyboard Shortcuts</button>
+          <button className="about">About</button>
+          <hr />
+        </div>}
         <List {...p({
           items: tools_taxonomy, set_focus(name: tool_name) {
             set_process((process: tool[]) => {

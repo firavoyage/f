@@ -3494,6 +3494,10 @@ i can change my mind later.
 
 imo, it's not good prac to make a list work both vertically and horizontally.
 
+---
+
+does it matter to name it as "About" or "About {app}"?
+
 18 50 lib/global.types: centralize util types.
 
 optional, fn.
@@ -3519,5 +3523,25 @@ no need to overthink.
 appearance.theme was an empty string. now it's union.
 
 the best effort migration would lock it forever (unless i toggle the name back and forth).
+
+---
+
+i think it should not be a boolean...
+
+version cmp?
+
+---
+
+anyway it would be too weird and corp like (future proof)
+
+for now i would ~~delete that in localstorage~~ make should migrate a fn.
+
+yes.
+
+---
+
+i may support old state -> new state custom migration. or maybe yagni.
+
+w.
 
 
