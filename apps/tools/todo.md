@@ -33,6 +33,8 @@ well to my surprise it's the same on mui. maybe iphone os is just a bit more obs
 
 create command palette component
 
+fuzzy search
+
 ---
 
 create keyboard shortcuts component

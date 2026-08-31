@@ -19,7 +19,7 @@ pattern
 - menu
 - list
 - shortcuts <!-- keyboard shortcuts -->
-- . arg
+- arg
 
 page
 

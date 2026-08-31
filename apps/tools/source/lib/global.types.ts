@@ -10,6 +10,7 @@ declare global {
   // any, normalized
   type all = void | string | number | boolean | bigint | symbol | null | undefined | { [key: PropertyKey]: any };
 
+  type fn = (...args: any) => any
 }
 
 export {};

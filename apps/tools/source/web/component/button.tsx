@@ -1,5 +1,5 @@
 type button = {
-  onClick: Function
+  onClick: fn
 }
 
 export function Button(props: button) {
