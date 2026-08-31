@@ -3359,13 +3359,12 @@ doesnt seem slider is used anywhere. (at least here)
 
 and tooltip is irrelevant most time.
 
-16 30 create component arg
+16 30 create component arg 17 10
 
 just mutate in place. it would work and it would be simple.
 
 ---
 
 i could narrow the type (for metadata) by typeof value.
-
 
 
