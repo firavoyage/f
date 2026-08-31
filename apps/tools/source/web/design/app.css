@@ -118,7 +118,7 @@ textarea {
     }
   }
 
-  .list {
+  .hamburger, .list {
     overflow-y: auto;
 
     * {

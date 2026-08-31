@@ -14,6 +14,7 @@ import { List } from 'web/component/list';
 import { Menu } from 'web/component/menu';
 import { Shortcuts } from 'web/component/shortcuts';
 import { Button } from './button';
+import { Hamburger } from './hamburger';
 
 export const use_global = state({
   'input': '',
@@ -116,7 +117,6 @@ export function App() {
   // const [focus, set_focus] = use_global('navigation.tool')
   const [, set_process] = use_global('process')
   const [theme, set_theme] = use_global('appearance.theme')
-  const [hamburger, toggle_hamburger] = use_global('appearance.layout.hamburger menu.is visible')
 
   const commands = use_commands()
 
@@ -130,12 +130,12 @@ export function App() {
     <div className="app">
       <Sidebar>
         <Menu {...p({ app: 'Tools' })}></Menu>
-        {hamburger && <div className="hamburger">
+        <Hamburger>
           <button className="preferences">Preferences</button>
           <button className="shortcuts">Keyboard Shortcuts</button>
           <button className="about">About</button>
           <hr />
-        </div>}
+        </Hamburger>
         <List {...p({
           items: tools_taxonomy, set_focus(name: tool_name) {
             set_process((process: tool[]) => {
