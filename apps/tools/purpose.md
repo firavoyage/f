@@ -3506,7 +3506,7 @@ no idea what ts builtin "Function" is. i dont have to know.
 
 19 00 create ~~component~~ hamburger
 
-does not have to be a component.
+~~does not have to be a component.~~
 
 ---
 

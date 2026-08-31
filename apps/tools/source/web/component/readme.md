@@ -20,6 +20,7 @@ pattern
 - list
 - shortcuts <!-- keyboard shortcuts -->
 - arg
+- hamburger
 
 page
 
