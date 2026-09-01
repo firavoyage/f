@@ -1,4 +1,4 @@
-import { write, read, data, append, remove, clear } from 'lib/file';
+import { write, read, data, append, remove, clear_folder } from 'lib/file';
 // import * as file from 'lib/file';
 // use(file)
 

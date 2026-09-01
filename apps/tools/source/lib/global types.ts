@@ -1,12 +1,8 @@
-// // no need to import
-
-// declare global {
-//   type Dict<K extends keyof any, T> = { [P in K]: T };
-// }
-
 declare global {
   type Key = PropertyKey
-  type Optional<Type, Keys extends keyof Type> = Omit<Type, Keys> & Partial<Pick<Type, Keys>>
+ 
+  type Optional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
+ 
   // any, normalized
   type all = void | string | number | boolean | bigint | symbol | null | undefined | { [key: PropertyKey]: any };
 

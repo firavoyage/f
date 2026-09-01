@@ -10,7 +10,7 @@ export function handle<F extends (...args: any[]) => Promise<any>>(
   fn: F, fallback?: any
 ): Promise<Result<Awaited<ReturnType<F>>>>;
 
-export function handle<F extends (...args: any[]) => any>(...args: any) {
+export function handle(...args: any) {
   const [fn, fallback] = args
 
   try {
