@@ -662,7 +662,7 @@ could have. maybe irrelevant.
 
 but it would be exciting and meaningful.
 
-22 40 write dsl spec. 
+22 40 write dsl spec.
 
 enough research.
 
@@ -691,7 +691,7 @@ and, there would be settings, keyboard shortcuts, and about <!-- version -->. wh
 - vscode alt bar
 - gnome adwaita sidebar hamburger
 
-btw, idk if i would show the window title *again*, if it's already inside a browser. maybe not.
+btw, idk if i would show the window title _again_, if it's already inside a browser. maybe not.
 
 cyberchef doesnt design. it basically pins things on screen.
 
@@ -754,7 +754,7 @@ i will not show a "sidebar of sidebar" like vscode or claude. i have no such doc
 
 tools couldnt be aliased easily to letters. and they dont necessarily have icons.
 
-the decision is, 
+the decision is,
 
 - on desktop, no sidebar toggle shown. it's on by default. search. title. hamburger. list. power users can opt to hide the title bar. you can use shortcuts or hover the left border. alt, i guess, will ctrl b first and then open main menu.
 - on mobile, there would be a toggle on top. toggle (hamburger or sidebar). Current tool. you can hide it and use gesture.
@@ -911,14 +911,14 @@ maybe adwaita assume we would not nest it too deep.
 
 ~~i would make a deliberate choice.~~
 
-i will not make any assumptions like "nesting level must be consistent under one heading, no mix of folders and files". 
+i will not make any assumptions like "nesting level must be consistent under one heading, no mix of folders and files".
 
 ~~decision.~~
 
 - top level headings like "convert" "misc" will be rendered like adwaita instead of a vscode folder. they can be collapsed when you hover them. if collapsed the indicator will be always visible. if expanded, it will only show on hover.
 - folders and files will be styled the same. folders will have an always visible indicator.
 - files inside folders will have indentation depending on the nesting level.
-- the indicator will go after an item, not before, unlike vscode. 
+- the indicator will go after an item, not before, unlike vscode.
 
 <!-- research wikipedia: philosophy -->
 
@@ -1114,7 +1114,7 @@ param mapping:
   theme: appearance.theme
 path mapping: # i guess it could be smart enough to derive the other way
   home: page
-  '*': tool
+  "*": tool
 ```
 
 notes on mapping
@@ -1254,7 +1254,7 @@ also, it benefits yaml. you couldnt both define a key and leave it undefined, un
 
 i think it's better to convert yaml before writing jsx. it leverages auto complete.
 
-*be aware! avoid tsism.*
+_be aware! avoid tsism._
 
 ---
 
@@ -1361,7 +1361,7 @@ app on mount, it will parse path to init other states.
 
 since then, path will reflect all other states. dep array doesnt matter (basically perf engineering).
 
-~~*critical:* app doesnt depend on path. on mount, it will get raw...~~
+~~_critical:_ app doesnt depend on path. on mount, it will get raw...~~
 
 you couldnt just get raw for the derived, intricated, coupled path. path is global state. and it shares subscribers w other props. all keys inside one global state share the subscribers.
 
@@ -1433,13 +1433,13 @@ let's say inside init, you somehow correct path first. and then mutate a few pro
 
 ---
 
-yes. it *is* more boilerplate. but look at the simpler approach, it isnt even complete. what would page be when tool is matched?
+yes. it _is_ more boilerplate. but look at the simpler approach, it isnt even complete. what would page be when tool is matched?
 
 **you can absolutely abstract w some hof if you like. maybe both at once, w obj flattening.**
 
 ---
 
-also, global state is expected to be complex and rarely you wanna sync all keys. 
+also, global state is expected to be complex and rarely you wanna sync all keys.
 
 ~~keep will default to empty.~~
 
@@ -1697,7 +1697,7 @@ decision:
 - leaves are leaves regardless of their nesting level. headings should be counted normally, rather than bottom up
 - within the same category, the number of layers should be consistent
 - i may ref the visual design from aosc os portal sidebar
-  - no idea if it's better to style as "up" instead of "right" when collapsed 
+  - no idea if it's better to style as "up" instead of "right" when collapsed
 
 ---
 
@@ -1708,10 +1708,10 @@ let's elaborate this.
 c
 
 ```yaml
-  convert:
-    - json yaml toml xml: ...
-    - markdown html: ...
-    - timestamp utc: # arg: timezone (when to utc)
+convert:
+  - json yaml toml xml: ...
+  - markdown html: ...
+  - timestamp utc: # arg: timezone (when to utc)
 ```
 
 btw, for gui, maybe i could make args about "how input should be parsed" next to the input.
@@ -1723,7 +1723,7 @@ e.g.
 
 ---
 
-for the draft name, i guess it would be "web sidebar ia". 
+for the draft name, i guess it would be "web sidebar ia".
 
 simple. <!-- self explanatory -->
 
@@ -1737,7 +1737,7 @@ figure out the names of the color constrast standards. get confused by llms and 
 
 for the props, i guess i can pass ia directly into it.
 
-no need to separate name and id as they will generally not collide. 
+no need to separate name and id as they will generally not collide.
 
 then i can make leaves strings instead of objects `{name, id}`
 
@@ -1749,9 +1749,9 @@ let's have a small mock experiment.
 
 well, i realize i did not want to pass children to sidebar.
 
-i will decouple the logics of the collapsible list. 
+i will decouple the logics of the collapsible list.
 
-let's just call it list for now. not "toc" or "collapsible nav". 
+let's just call it list for now. not "toc" or "collapsible nav".
 
 i will not just make list like "v for".
 
@@ -1770,14 +1770,14 @@ ts gets in my way.
 p (ideally)
 
 ```ts
-type items = string[] | Record<string, items>
+type items = string[] | Record<string, items>;
 // type items = string[] | Dict<string, items>
 ```
 
 c (compliant)
 
 ```ts
-type items = string[] | { [key: string]: items }
+type items = string[] | { [key: string]: items };
 ```
 
 ---
@@ -1800,28 +1800,8 @@ one two three
 ```
 
 ```html
-foo
-children of foo
-  bar
-  children of bar
-    one
-    two
-    three
-
-foo collapsed?
-children of foo
-  one
-  two
-  three
-bar
-children of bar
-  one
-  two
-  three
-
-one
-two
-three
+foo children of foo bar children of bar one two three foo collapsed? children of
+foo one two three bar children of bar one two three one two three
 ```
 
 so the state would be...
@@ -1845,7 +1825,7 @@ render
     if one of its parent is collapsed
       continue
     if it's a heading
-      show toggle (css: on hover or on collapsed parent)    
+      show toggle (css: on hover or on collapsed parent)
 ```
 
 20 40 ~~write list component.~~ create map util fn for global lib. ~~(21 20)~~ 21 40
@@ -1856,7 +1836,7 @@ let's define the types first and then i could generate.
 
 i would absolutely go for fof rather than map.
 
-it's my personal project. 
+it's my personal project.
 
 feeling > efficiency >> big tech <!-- corp --> best prac
 
@@ -1891,7 +1871,7 @@ and! react prevents you to spread key on props.
 
 btw, pascal cased types tell nothing.
 
-decision: i would make types pascal case iff they are util types (e.g. Record). 
+decision: i would make types pascal case iff they are util types (e.g. Record).
 
 if all components have props, it doesnt make any sense to suffix "Props" like "ListProps" or "list_props"
 
@@ -1933,7 +1913,7 @@ if flatten feels awkward, i could just create a result array and spread.
 
 ---
 
-ive made some decisions before. 
+ive made some decisions before.
 
 - id of headings will be their parents and them join dot
 - id of leaves will be their id or their name in snake case
@@ -1941,11 +1921,9 @@ ive made some decisions before.
 the only thing to watch out is
 
 ```yaml
-foo.bar:
-  sth
+foo.bar: sth
 foo:
-  bar:
-    sth
+  bar: sth
 ```
 
 which is highly unrealistic
@@ -1953,16 +1931,16 @@ which is highly unrealistic
 ---
 
 ```ts
-type Set_fn = typeof Set
+type Set_fn = typeof Set;
 declare global {
-  var Set: Set_fn
+  var Set: Set_fn;
 }
 
 export function Set(...args: any) {
-  return new globalThis.Set(...args)
+  return new globalThis.Set(...args);
 }
 
-log(Set())
+log(Set());
 ```
 
 it doesnt seem i can make `Set` `new Set` and `Map` `new Map`
@@ -1986,10 +1964,10 @@ i will support array and set on has.
 ```ts
 export function toggle(set: Set<any>, key: Key) {
   if (has(set, key)) {
-    set.delete(key)
+    set.delete(key);
   } else {
-    set.add(key)
-  } 
+    set.add(key);
+  }
 }
 ```
 
@@ -1998,30 +1976,42 @@ set.add would err. and it thinks has set key is always true (by the type guard),
 ---
 
 ```ts
-export function has<K extends PropertyKey>(obj: any[], key: K): boolean
-export function has<K extends PropertyKey>(obj: Set<any>, key: K): boolean
-export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, any>
+export function has<K extends PropertyKey>(obj: any[], key: K): boolean;
+export function has<K extends PropertyKey>(obj: Set<any>, key: K): boolean;
+export function has<K extends PropertyKey>(
+  obj: any,
+  key: K
+): obj is Record<K, any>;
 
 /**
  * check if an object has a key
- * 
+ *
  * for obj, check has own
- * 
+ *
  * for array, check array.includes
- * 
+ *
  * for set, check set.has
  */
-export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, any> {
+export function has<K extends PropertyKey>(
+  obj: any,
+  key: K
+): obj is Record<K, any> {
   if (Array.isArray(obj)) {
-    return obj.includes(key)
+    return obj.includes(key);
   }
 
   if (obj instanceof Set) {
-    return obj.has(key)
+    return obj.has(key);
   }
 
-  return (typeof key == 'string' || typeof key == 'number' || typeof key == 'symbol') &&
-    obj && typeof obj == 'object' && Object.hasOwn(obj, key);
+  return (
+    (typeof key == "string" ||
+      typeof key == "number" ||
+      typeof key == "symbol") &&
+    obj &&
+    typeof obj == "object" &&
+    Object.hasOwn(obj, key)
+  );
 }
 ```
 
@@ -2031,7 +2021,7 @@ interesting.
 
 07 00 polish styling. make spacing consistent and expected. add more design tokens for length units (e.g. border). ~~(07 30)~~ 08 00
 
-adopt tailwind scale for border radius. 
+adopt tailwind scale for border radius.
 
 rationale: no need to overthink. the values are identical. just have a standard naming (base 4px).
 
@@ -2107,7 +2097,7 @@ user research: # no need to overthink
   - solve my own problem
   - maimai user story # no foss portal on open web, inaccurate sometimes, inextensible
   - tools are scattered across clearnet, npm libs, and apps
-ia: 
+ia:
   - what features i will have
   - what actions can be made
   - how they will be organized
@@ -2204,7 +2194,7 @@ typically, the todo list might be like "api endpoints" "component lib" or "ux co
 
 ...
 
-i want sth like scrum. 
+i want sth like scrum.
 
 but i dont think i could get predictability when even deep work time is flexible and volatle.
 
@@ -2360,7 +2350,7 @@ c. serialize:
 
 maintain ymd (initial ?).
 
-for each item: 
+for each item:
 
 - is keyword? skip
 - is different from current ymd? add a separate line of mon yyyy and then dd if needed.
@@ -2386,7 +2376,7 @@ no idea how long it would take. feel i could achive sth today.
 
 feel i could make regex match std lib. maybe not now.
 
-well, i have a pl design now. i guess it would be better to invest in the new pl, `code`, than to 
+well, i have a pl design now. i guess it would be better to invest in the new pl, `code`, than to
 
 i would have the file ext `.code` and the compiler cli `compile`. it would output a js (or ts) named the same by default.
 
@@ -2715,13 +2705,13 @@ oh, that's not the case. "if dev" doesnt even trigger.
 p
 
 ```ts
-const dev = process?.env?.NODE_ENV == 'development'
+const dev = process?.env?.NODE_ENV == "development";
 ```
 
 c
 
 ```ts
-const dev = process.env.NODE_ENV == 'development'
+const dev = process.env.NODE_ENV == "development";
 ```
 
 no need to change, since i primarily use parceljs. could be better.
@@ -2732,7 +2722,10 @@ c
 
 ```ts
 // @ts-expect-error best effort
-const dev = handle(() => process.env.NODE_ENV == 'development' || import.meta.env?.DEV, false)
+const dev = handle(
+  () => process.env.NODE_ENV == "development" || import.meta.env?.DEV,
+  false
+);
 ```
 
 16 00 script/convert design tokens: generalize parsing.
@@ -2761,15 +2754,23 @@ pattern
 
 ```ts
 type use_bind = Partial<{
-  prevent_default: true
-  stop_propagation: true
-  global: true
-}>
+  prevent_default: true;
+  stop_propagation: true;
+  global: true;
+}>;
 
-export function use_bind(shortcut: string, action: (event: KeyboardEvent) => void, options: use_bind = {}) {
-  const { prevent_default = true, stop_propagation = true, global = true } = options
+export function use_bind(
+  shortcut: string,
+  action: (event: KeyboardEvent) => void,
+  options: use_bind = {}
+) {
+  const {
+    prevent_default = true,
+    stop_propagation = true,
+    global = true,
+  } = options;
 
-// do sth...
+  // do sth...
 }
 ```
 
@@ -2793,7 +2794,7 @@ what if you say `set()`? it doesnt make any sense, since states couldnt be undef
 
 i can simply make it a toggle `v => !v`.
 
-and, if you say `toggle(t)` or `toggle(f)`, it's essentially set state. 
+and, if you say `toggle(t)` or `toggle(f)`, it's essentially set state.
 
 ---
 
@@ -2849,7 +2850,7 @@ also, i would deprecate `result.get`. and `is_inside_react` will be irrelevant.
 
 ---
 
-deprecate `correct_next`. 
+deprecate `correct_next`.
 
 no need to wrap a bool toggle.
 
@@ -2924,7 +2925,9 @@ decision
 this works
 
 ```tsx
-<Textarea {...p({ foo: 123, class: '123', value: '123', set_value: () => 123 })}></Textarea>
+<Textarea
+  {...p({ foo: 123, class: "123", value: "123", set_value: () => 123 })}
+></Textarea>
 ```
 
 foo and class raise no error. value and set value get auto complete.
@@ -2974,7 +2977,7 @@ for radio, it will accept options, that is an array of items (string or {name, i
 
 ~~it's meaningless to solve a general problem you will never meet (e.g. support on_click on props).~~ <!-- i will --> support on_click on props.
 
-you should not accept onclick, onClick, or on_click as a standard prop, right? you may name as click. it _is_ a callback fn when you see a verb on params/props.
+you should not accept onclick, onClick, or on*click as a standard prop, right? you may name as click. it \_is* a callback fn when you see a verb on params/props.
 
 and if it's basically a wrapper, you should pass it down wo intercepting, leveraging idempotency.
 
@@ -3083,11 +3086,11 @@ it's not dry to copying back and forth. i would only list shortcuts on config, a
 
 well i guess i would not simply map config yaml to ts. some are just about categorziation, and would be flattened. some are not.
 
-e.g. 
+e.g.
 
 ```
 appearance: # view
-  theme: 
+  theme:
     - system
     - light
     - dark
@@ -3096,13 +3099,13 @@ appearance: # view
     - cozy
     - compact
   layout:
-    sidebar: 
+    sidebar:
       is visible: true
-    title bar: 
+    title bar:
       is visible: true
 ```
 
-i would map to 
+i would map to
 
 ```
 appearance.theme: union(...)
@@ -3193,10 +3196,13 @@ if the prev value is boolean, set value (toggle) will ignore any non bool and no
 ---
 
 ```ts
-    function does_type_mismatch(old_value: any, new_value: any) {
-      return typeof old_value == 'boolean' && typeof new_value != 'boolean'
-        && typeof new_value != 'function'
-    }
+function does_type_mismatch(old_value: any, new_value: any) {
+  return (
+    typeof old_value == "boolean" &&
+    typeof new_value != "boolean" &&
+    typeof new_value != "function"
+  );
+}
 ```
 
 currently it's just for bool, as it's the problem im gonna solve.
@@ -3298,7 +3304,7 @@ normalize_id is still being used. letme think bout it.
 i would have it.
 
 ```ts
-    const key = arg.id ?? normalize_id(arg.name)
+const key = arg.id ?? normalize_id(arg.name);
 ```
 
 nothing wrong, right?
@@ -3392,7 +3398,7 @@ i somehow need tooltip. or maybe it's the icon (white and black separated by a d
 it's clear i want to, at the end of the day, let it be a prop like `title`.
 
 ```
-Button title: follow system theme 
+Button title: follow system theme
 ```
 
 under the hood
@@ -3405,7 +3411,7 @@ Tooltip tip (string or children): follow system theme
 ok good news
 
 ```tsx
-      <Button {...p({ onclick: () => {}, class: 123 })}></Button>
+<Button {...p({ onclick: () => {}, class: 123 })}></Button>
 ```
 
 it works, class would be overridden (no idea why autocomplete fails again)
@@ -3610,12 +3616,62 @@ why not make it global?
 
 y
 
-01 20 component/select: fix typing
+01 20 web/lib/props~~component/select~~: fix typing
 
 ```
 Error: Received the string `true` for the boolean attribute `open`. Although this works, it will not work as expected if you pass the string "false". Did you mean open={true}?
 ```
 
 wow, so sophisticated.
+
+---
+
+yeah, why everything becomes string?
+
+---
+
+ok, it's on react. react is so proactive.
+
+there is no problem. i will never pass the string false.
+
+c
+
+```ts
+if (typeof value == "boolean") {
+  if (value == true) {
+    converted_props[normalized_key] = "true";
+  } else {
+    continue;
+  }
+} else {
+  converted_props[normalized_key] = value;
+}
+```
+
+---
+
+ok, even more problem
+
+```
+Error: Received `true` for a non-boolean attribute `visible`.
+
+If you want to write it to the DOM, pass a string instead: visible="true" or visible={value.toString()}.
+```
+
+---
+
+and both are not warning. they are errors. wtf.
+
+---
+
+i have the idea.
+
+in react they think html attrs are heavily standardized. and they must _comply_.
+
+---
+
+and, so, i would go my way
+
+**`t`, `nil`**
 
 
