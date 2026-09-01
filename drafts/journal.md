@@ -54459,7 +54459,17 @@ if it's automated, it should be automated.
 
 also, thoughts, posts, memories, they are not treasures.
 
-12 20 replace the quote on my laptop.
+12 20 replace the quote on my laptop. place a quote on my desk.
+
+```
+Irrelevant
+```
+
+i would use glue this time <!-- on top of my prev quote -->. the idea of "replacable quote case" sounds great. not as natural and resilient i guess.
+
+```
+又是一年开学季
+```
 
 
 
