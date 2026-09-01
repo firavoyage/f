@@ -16,8 +16,9 @@ declare global {
 async function log_into_file(type: 'info' | 'warn' | 'error', message: string, ...payloads: object[]) {
   const log_file = cache('log.log')
 
-  // vscode renders uppercase well out of the box
-  await append(log_file, `${new Date().toISOString()} ${type.toUpperCase()} ${message}\n`)
+  await append(log_file, `${new Date().toISOString()} [${type}] ${message}\n`)
+  // // vscode renders uppercase well out of the box
+  // await append(log_file, `${new Date().toISOString()} ${type.toUpperCase()} ${message}\n`)
 
   for (const payload of payloads) {
     // yaml stringify always appends a newline at the end
