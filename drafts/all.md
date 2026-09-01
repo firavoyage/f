@@ -303,6 +303,7 @@ web: <!-- frontend, web, ts/js -->
 - css overflow prop
 - ts object types
 - ts react component break the scope call
+- react icon lib
 
 backend:
 
