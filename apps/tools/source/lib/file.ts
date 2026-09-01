@@ -93,12 +93,14 @@ const map = {
 }
 
 /**
- * standardize errors
+ * Standardize fs error code to readable error msgs
  */
-export async function normalize<F extends (...args: any[]) => any>(fn: F) {
+export async function handle_map_error<F extends (...args: any[]) => any>(fn: F) {
   const _ = await handle(fn)
   if (is_error(_)) {
+    // @ts-expect-error stupid ts
     if (has(map, _.code)) {
+      // @ts-expect-error stupid ts
       throw err({ type: map[_.code], message: _ })
     }
 
@@ -117,82 +119,64 @@ export function path(...args: string[]) {
 }
 
 export function data(...args: string[]) {
+  // @ts-expect-error false positive on untyped js
   const data_folder = xdg ? desktop({ subdir: app_id }).data : home(`.${app_id}`, 'data')
 
   return join(data_folder, ...args)
 }
 
 export function config(...args: string[]) {
+  // @ts-expect-error false positive on untyped js
   const config_folder = xdg ? desktop({ subdir: app_id }).config : home(`.${app_id}`, 'config')
 
   return join(config_folder, ...args)
 }
 
 export function cache(...args: string[]) {
+  // @ts-expect-error false positive on untyped js
   const cache_folder = xdg ? desktop({ subdir: app_id }).cache : home(`.${app_id}`, 'cache')
 
   return join(cache_folder, ...args)
 }
 
-/**
- * (over) write a file
- * 
- * no content = touch
- */
-export async function write(path: string | 1, content: string = '') {
-  if (typeof path == 'string') {
-    await normalize(() => mkdir(dirname(path), { recursive: true }))
-  }
-  await normalize(() => writeFile(path, content, 'utf8'))
-}
+export const stdout = 1
 
 /**
- * read a file
+ * (Over)write a file
+ * 
+ * write to stdout when path = 1
+ * 
+ * iff touch when content is not given
  */
-export async function read(path: string | 0) {
-  const content = await normalize(() => readFile(path, 'utf8'))
+export async function write(path: string | typeof stdout, content: string = '') {
+  if (typeof path == 'string') {
+    await handle_map_error(() => mkdir(dirname(path), { recursive: true }))
+  }
+  // @ts-expect-error incorrect (incomprehensive) typing of builtin libs
+  await handle_map_error(() => writeFile(path, content, 'utf8'))
+}
+
+export const stdin = 0
+
+/**
+ * Read a file
+ * 
+ * read from stdin when path = 1
+ */
+export async function read(path: string | typeof stdin) {
+  // @ts-expect-error incorrect (incomprehensive) typing of builtin libs
+  const content = await handle_map_error(() => readFile(path, 'utf8'))
 
   return content
 }
 
 export async function append(path: string, content: string) {
-  await normalize(() => appendFile(path, content))
+  await handle_map_error(() => appendFile(path, content))
 }
 
-/**
- * todo
- * 
- * perf: positional replace, memory efficient.
- * 
- * more edit modes
- * 
- * regex
- * 
- * replace or replace all
- */
-export async function edit(path: string, search: string, replace: string) {
-  const content = await read(path)
-  if (typeof content != 'string') {
-    throw err(non_string_content)
-  }
+type remove = { must_exist?: boolean }
 
-  const updated_content = content.replaceAll(search, replace)
-
-  await write(path, updated_content)
-}
-
-/**
- * remove a file
- * 
- * todo
- * 
- * add an option (dont err for non existence)
- * 
- * a list of files?
- * 
- * do i { path, options } or path, { options }? others?
- */
-export async function remove(path: string, { can_non_exist = false }: { can_non_exist?: boolean } = {}) {
+export async function remove(path: string, { must_exist: can_non_exist = false }: remove = {}) {
   // must_exist = true // implicit true is somewhat inconsistent
   const _ = await handle(() => unlink(path))
   if (is_error(_)) {
@@ -216,7 +200,7 @@ export async function does_exist(path: string) {
 }
 
 export async function clear(path: string) {
-  await normalize(() => rm(path, { recursive: true, force: true }))
+  await handle_map_error(() => rm(path, { recursive: true, force: true }))
 }
 
 export async function trash(path: string, { can_non_exist = false }) {
