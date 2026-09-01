@@ -50,9 +50,9 @@ export function Main() {
           <Icon {...p({ name: 'sidebar' })}></Icon>
         </button>
         <div className="title"></div>
-        <button className="view">
+        {/* <button className="view">
           view
-        </button>
+        </button> */}
         <button className="minimize">
           <Icon {...p({ name: 'minimize' })}></Icon>
         </button>

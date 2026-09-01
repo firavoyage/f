@@ -8,7 +8,7 @@ function kebab_to_camel(str: string): string {
   for (let i = 0; i < str.length; i++) {
     const char = str[i];
 
-    if (char === "-") {
+    if (char == "-") {
       capitalize_next = true;
     } else {
       if (capitalize_next) {
@@ -76,7 +76,8 @@ export function p<T>(
 
         if (typeof value == 'boolean') {
           if (value == true) {
-            converted_props[normalized_key] = "true"
+            converted_props[normalized_key] = "t"
+            // converted_props[normalized_key] = "true"
           } else {
             continue
           }
