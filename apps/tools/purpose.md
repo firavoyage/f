@@ -3777,4 +3777,12 @@ wait, there is an issue on the design tokens converter.
 
 23 30 script: convert design tokens: fix incorrect dot to dash conversion and generalize naming
 
-it happens 
+it happens when name on the same nesting level contains dot.
+
+i never put dot between (when at least one side is letter) letters on naming, like `sidebar.width`, i would either name as `sidebar-width` or nest them.
+
+**only when it acts as float point number**
+
+so the solution can be specific.
+
+
