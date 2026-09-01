@@ -1,11 +1,10 @@
-// @ts-nocheck
 import desktop from '@folder/xdg';
 import { homedir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { rm, writeFile, readFile, appendFile, mkdir, unlink, access } from 'node:fs/promises';
 import trash_lib from 'trash';
 
-import { app_name, xdg } from 'lib/env';
+import { app_id, xdg } from 'config.json';
 
 // Errors
 export const non_string_content = "non string content"
@@ -118,19 +117,19 @@ export function path(...args: string[]) {
 }
 
 export function data(...args: string[]) {
-  const data_folder = xdg ? desktop({ subdir: app_name }).data : home(`.${app_name}`, 'data')
+  const data_folder = xdg ? desktop({ subdir: app_id }).data : home(`.${app_id}`, 'data')
 
   return join(data_folder, ...args)
 }
 
 export function config(...args: string[]) {
-  const config_folder = xdg ? desktop({ subdir: app_name }).config : home(`.${app_name}`, 'config')
+  const config_folder = xdg ? desktop({ subdir: app_id }).config : home(`.${app_id}`, 'config')
 
   return join(config_folder, ...args)
 }
 
 export function cache(...args: string[]) {
-  const cache_folder = xdg ? desktop({ subdir: app_name }).cache : home(`.${app_name}`, 'cache')
+  const cache_folder = xdg ? desktop({ subdir: app_id }).cache : home(`.${app_id}`, 'cache')
 
   return join(cache_folder, ...args)
 }

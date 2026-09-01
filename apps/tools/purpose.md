@@ -3694,4 +3694,10 @@ and unfortunately, i could not alias as (or strip to) Set and Map (ts constraint
 
 env is to be changed and thus should not live in lib. and env implies a false meaning of secret/private.
 
+i like yaml better, but it could not be imported natively and i already have a config.yaml, which is way too flexible (i.e. structured docs) and not designed to be machine readable (parsed).
+
+yeah, json is aliased to jsonc on my vscode, but trailing comma or string key isnt the full story. what about wrapping the full file in curly braces and putting a comma at the end of every line?
+
+feels it would not help much to make it `config.ts`.
+
 
