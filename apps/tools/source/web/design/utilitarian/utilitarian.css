@@ -171,6 +171,21 @@
   --color-bg-accent: oklch(60.1% 0.037 247);
 }
 
+:root, [data-density="comfortable"], [density="comfortable"] {
+  --titlebar-height: var(--spacing-12);
+  --page-whitespace: var(--spacing-2);
+}
+
+[data-density="cozy"], [density="cozy"] {
+  --titlebar-height: var(--spacing-10);
+  --page-whitespace: var(--spacing-1);
+}
+
+[data-density="compact"], [density="compact"] {
+  --titlebar-height: var(--spacing-8);
+  --page-whitespace: var(--spacing-0-5);
+}
+
 :root, [data-window="active"], [window="active"] {
   --color-bg-selection: color-mix(in srgb, var(--color-bg-accent) 30%, transparent);
 }
