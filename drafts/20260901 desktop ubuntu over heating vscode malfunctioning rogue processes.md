@@ -1707,5 +1707,52 @@ For processes running for days or weeks (like system daemons or long-term server
 
 Are you tracking a specific long-running script, or do you need help **sorting and filtering** processes by their execution time?
 
-# 
+# shell top command time+ format
+
+In the Linux `top` command, the **`TIME+` column displays the total accumulated CPU time used by a process since it started, formatted as `minutes:seconds.hundredths`**. [link](https://unix.stackexchange.com/questions/53270/what-units-of-time-does-top-use)
+
+Unlike real elapsed wall-clock time, this metrics tracks actual processor usage. If a process runs heavily on multiple CPU cores simultaneously, its `TIME+` value will accumulate much faster than actual time. [link](https://serverfault.com/questions/348393/time-column-in-top-command-is-inaccurate)
+
+### How to Read the Format
+
+The format dynamically adapts depending on how long the process has been utilizing the CPU: [link](https://superuser.com/questions/1148884/what-does-time-cpu-time-hundredth-in-top-mean)
+
+- **Standard Format:** `MMM:SS.hh` (Minutes : Seconds . Hundredths of a second).
+  - _Example:_ `0:14.27` means 14 seconds and 27 hundredths of a second.
+  - _Example:_ `125:43.10` means 125 minutes, 43 seconds, and 10 hundredths. [link](https://unix.stackexchange.com/questions/53270/what-units-of-time-does-top-use)
+- **Large Timeframes (Automatic Scaling):** If a process runs for an exceptionally long period, the column automatically scales down its granularity to fit the terminal display window.
+  - It drops the hundredths (`.hh`) portion to allow more space for growing minute/hour counts.
+  - It may transition to a comma-separated format such as `HH,MM` (Hours, Minutes) or append days if the value becomes too large. [link](https://superuser.com/questions/1148884/what-does-time-cpu-time-hundredth-in-top-mean)
+
+### Key Behaviors to Note
+
+- **Cumulative Mode (`S`):** By default, `TIME+` only tracks the main process. If you press **`Shift + S`** while `top` is running, it toggles "Cumulative Mode". The column header changes to `CTIME+`, and it will now include the CPU time of all dead child threads/processes that have closed. [link](https://serverfault.com/questions/348393/time-column-in-top-command-is-inaccurate)
+- **Difference from `TIME`:** Some legacy setups show a `TIME` column instead of `TIME+`. The plain `TIME` column reflects the exact same data but drops the hundredths-of-a-second decimal precision. [link](https://www.geeksforgeeks.org/linux-unix/top-command-in-linux-with-examples/)
+
+If you want to look at alternative tracking methods, let me know if you would like to:
+
+- See how to query this data via the **`ps` command**
+
+- Learn how to track a specific process by its **Process ID (PID)**
+
+- Explore **`htop`**, which uses a color-coded variation of this column [link](https://superuser.com/questions/1148884/what-does-time-cpu-time-hundredth-in-top-mean)
+
+- [link](https://superuser.com/questions/1148884/what-does-time-cpu-time-hundredth-in-top-mean)\
+  Super User\
+  What does TIME+ (cpu time, hundredth) in top mean?\
+  Nov 23, 2016 — 3 Answers Sorted by: 30 Haven't looked at the source code of top , but it seems like 3019:57 in column TIME+ means 3019 minutes 57...
+
+- [link](https://serverfault.com/questions/348393/time-column-in-top-command-is-inaccurate)\
+  Server Fault\
+  TIME+ column in top command is inaccurate\
+  Jan 10, 2012 — The TIME+ column in the top command displays CPU time spent per process rather than real time. The manual describes the TIME colum...
+
+- [link](https://unix.stackexchange.com/questions/53270/what-units-of-time-does-top-use)\
+  Unix & Linux Stack Exchange\
+  What units of time does "top" use?\
+  Oct 30, 2012 — The “TIME+" column in the “top” command uses a format of minutes:seconds.hundredths. This format is inherited from BSD, and you ca...
+
+Show all
+
+
 

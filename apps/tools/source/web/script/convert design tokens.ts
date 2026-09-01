@@ -3,15 +3,14 @@ import * as path from 'path';
 import { parse } from 'yaml';
 import 'css.escape'
 
-type InputObject = Record<string, any>;
-type FlattenOptions = {
+type flatten = {
   separator?: string;
   preserve?: (value: any, key: string) => boolean;
 };
 
-function flatten(obj: InputObject, options: FlattenOptions = {}): InputObject {
+function flatten(obj: object, options: flatten = {}): object {
   const { separator = ".", preserve } = options;
-  const result: InputObject = {};
+  const result: object = {};
 
   function recurse(current_item: any, current_prefix: string): void {
     for (const key in current_item) {
