@@ -102,10 +102,12 @@ body {
   .hamburger {
     /* margin-block: var(--page-whitespace); */
 
-    display: block;
+    /* display: block; */
 
     * {
-      padding-block: var(--page-whitespace);
+      /* width: 100%; */
+
+      padding-block: calc(var(--page-whitespace) / 2);
       padding-inline: var(--page-whitespace);
     }
   }
@@ -153,7 +155,7 @@ body {
       flex: 1;
 
       .title {
-        /* margin: var(--page-whitespace); */
+        margin-block: calc(var(--page-whitespace) / 2);
         margin-inline: var(--page-whitespace);
       }
 
