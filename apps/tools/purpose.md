@@ -3556,6 +3556,10 @@ sep 2026
 
 00 30 adopt vscode icon pack. create component icon.
 
+ref: https://microsoft.github.io/vscode-codicons/dist/codicon.html
+
+---
+
 better to do what's clear and what yk would matter first.
 
 ---
@@ -3757,6 +3761,8 @@ it does feel a bit unnatural when whitespace is not collapsed, i.e. more whitesp
 
 ok i think i would simply disable the whitespace of the element below. you do not have to align everything when possible.
 
+upd: **that's not a problem.** look at adwaita demo, the menu does have more whitespace below (due to compound paddings), the law of proximity does not apply here (it's not related). just style it normally, do not carea human perception (e.g. multiple bg color w subtle shift).
+
 ---
 
 wait, there is an issue on the design tokens converter.
@@ -3769,5 +3775,6 @@ wait, there is an issue on the design tokens converter.
 }
 ```
 
+23 30 script: convert design tokens: fix incorrect dot to dash conversion and generalize naming
 
-
+it happens 
