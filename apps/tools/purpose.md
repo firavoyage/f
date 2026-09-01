@@ -3674,10 +3674,12 @@ and, so, i would go my way
 
 **`t`, `nil`**
 
-14 50 read through the repo. polish code and ui.
+14 50 read through the repo. polish code ~~and ui~~.
 
 on naming:
 
 **data structures can be plural, e.g `for item of items`, names and labels can be plural (e.g. drafts, docs). the general rule of thumb is, if it's to be referenced as path, it must be singular, i.e. `component/button` (button is a component, the category is component, and button is one of the components), `script/install`, `action/new file`, `util/foo`. spaces do not matter, it's not a problem here.**
+
+and i would no longer enforce "every folder must have a readme" rule. like, when it's empty, or self explanable. generally if i have nothing to do but to explain the folder name (instead of its contents), better to omit the readme.
 
 
