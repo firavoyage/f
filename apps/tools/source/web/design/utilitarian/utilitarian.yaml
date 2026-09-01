@@ -211,6 +211,11 @@ spacing:
   80: 20rem
   96: 24rem
 
+whitespace:
+  top:
+    comfortable: spacing.0.5
+    
+
 max-width:
   none: none
   xs: 20rem

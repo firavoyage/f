@@ -3729,4 +3729,6 @@ tool is generally a local web app.
 
 i would design it and learn from like tanstack query when needed.
 
+19 00 polish ui.
+
 
