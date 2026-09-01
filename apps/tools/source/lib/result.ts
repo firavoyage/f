@@ -2,8 +2,8 @@
 
 type Ok<T = all> = T
 // type Ok<T = all> = T extends object ? (Omit<T, typeof error_symbol> & { [error_symbol]?: never }) : T;
-type Err = { type: any, [error_symbol]: true, message?: any } & Partial<FileError>
-type FileError = { code: string, path: string, syscall: string, errno: number }
+type Err = { type: any, [error_symbol]: true, message?: any } & Partial<FileErr>
+type FileErr = { code: string, path: string, syscall: string, errno: number }
 
 type err = typeof err
 type is_error = typeof is_error
@@ -16,11 +16,11 @@ declare global {
 
 const error_symbol: unique symbol = Symbol("error");
 
-// no `ok(data)` needed, just return `data` directly
+// just return data directly for ok(data)
 
 export function err(error: Optional<Err, typeof error_symbol> | PropertyKey | Err): Err {
   if (error[error_symbol]) {
-    // already wrapped, propagate
+    // already wrapped, likely propagated
     return error
   } else if (error instanceof Error) {
     error.type = error.constructor
@@ -40,9 +40,10 @@ export function err(error: Optional<Err, typeof error_symbol> | PropertyKey | Er
       }
     }
 
-    error_with_trace[error_symbol] = true
-
-    return merge(error_with_trace, error)
+    return merge(error_with_trace, {
+      ...error,
+      [error_symbol]: true
+    })
   } else {
     // flexible
     const error_with_trace = new Error(error)
