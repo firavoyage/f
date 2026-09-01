@@ -54419,7 +54419,7 @@ actually i would somewhat attempting to have bin sushi today. have some, maybe.
 
 15 20 discuss math w a grade 9 jhs (liam0103, 12.5k) who got 717 this year (shanghai hs requires 716 this year) on hsee, admitted to weiyu hs.
 
-they said "double the length of the triangle median"... nostalgia. there is no more auxilary line tricks you would find here.
+they said "double the length of the triangle median"... nostalgia. there is no more auxiliary line tricks you would find here.
 
 <!-- median: vertex to mid of the opposite side, midsegment: mid of two sides -->
 
