@@ -3674,7 +3674,7 @@ and, so, i would go my way
 
 **`t`, `nil`**
 
-14 50 read through the repo. polish code ~~and ui~~.
+14 50 read through the repo. polish code ~~and ui~~. 18 00
 
 on naming:
 
@@ -3714,5 +3714,19 @@ the purpose of file lib:
 
 - alias method names to human intent
 - make errors readable
+
+18 00 think. add todo: design web/lib/call.
+
+almost done.
+
+---
+
+`call` is complex. calling an api is not the same as calling a js method.
+
+timeout. retry. fallback value when err? readable error mapping?
+
+tool is generally a local web app.
+
+i would design it and learn from like tanstack query when needed.
 
 
