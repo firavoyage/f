@@ -3682,4 +3682,12 @@ on naming:
 
 and i would no longer enforce "every folder must have a readme" rule. like, when it's empty, or self explanable. generally if i have nothing to do but to explain the folder name (instead of its contents), better to omit the readme.
 
+15 30 lib/collection: deprecate `s` and `m`.
+
+Set and Map are flawed (oop). if they are always called w a new prefix, it should be reduced.
+
+but it does not seem any clean to alias to single letter vars. it's unreadable even in cp.
+
+and unfortunated, i could not alias as (or strip to) Set and Map (ts constraints), which would be ideal, nor could i alias as set (set value of a state or sth) and map (map an obj to a fn), both of which are already defined. i could alias as, like, group? dict? there is no such good words in english, as the best, math derived terms are already occupied by careless standarization committees.
+
 
