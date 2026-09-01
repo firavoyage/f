@@ -54419,6 +54419,10 @@ actually i would somewhat attempting to have bin sushi today. have some, maybe.
 
 15 20 discuss math w a grade 9 jhs (liam0103, 12.5k) who got 717 this year (shanghai hs requires 716 this year) on hsee, admitted to weiyu hs.
 
+they said "double the length of the triangle median"... nostalgia. there is no more auxilary line tricks you would find here.
+
+<!-- median: vertex to mid of the opposite side, midsegment: mid of two sides -->
+
 16 10 spend nearly an hour (re)solving spuee 2023 math p10. make a lot of mistakes even w my prev brief solution given. share the problem w djhs grade 10 oier (jsla, 16.0k).
 
 e.g. `(a+b)(c+d)=ac+bc+bc+bd`, misreading the letter of a point.
@@ -54454,6 +54458,8 @@ to archive, to export, to cherish...
 if it's automated, it should be automated.
 
 also, thoughts, posts, memories, they are not treasures.
+
+12 20 replace the quote on my laptop.
 
 
 
