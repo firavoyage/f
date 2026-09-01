@@ -1,24 +1,14 @@
-type merge = typeof merge
-type has = typeof has
-type is_given = typeof is_given
-type nil = typeof nil
-declare global {
-  var merge: merge
-  var has: has
-  var is_given: is_given
-  var nil: nil
-}
-
 /**
- * merge objects
+ * Merge objects to target (the first param)
  * 
- * pure, shallow, right > left when conflicting
+ * shallow
  * 
  * less quirky than Object.assign
  */
 export function merge(target: object, ...sources: object[]) {
   for (const source of sources) {
     for (const key of Object.keys(source)) {
+      // @ts-expect-error mutate type
       target[key] = source[key]
     }
   }
@@ -28,15 +18,11 @@ export function merge(target: object, ...sources: object[]) {
 export function has<K extends PropertyKey>(obj: any[], key: K): boolean
 export function has<K extends PropertyKey>(obj: Set<any>, key: K): boolean
 export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, any>
+export function has<K>(obj: any, key: K): boolean
+// export function has<K>(obj: any, key: K): obj is Record<K, any>
 
 /**
- * check if an object has a key
- * 
- * for obj, check has own
- * 
- * for array, check array.includes
- * 
- * for set, check set.has
+ * Check if an object has a key, or an array/set has an element
  */
 export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, any> {
   if (Array.isArray(obj)) {
@@ -72,3 +58,15 @@ export function is_given<T>(foo: T): foo is NonNullable<T> {
 // }
 
 export const nil = null
+
+type merge = typeof merge
+type has = typeof has
+type is_given = typeof is_given
+type nil = typeof nil
+declare global {
+  var merge: merge
+  var has: has
+  var is_given: is_given
+  var nil: nil
+}
+

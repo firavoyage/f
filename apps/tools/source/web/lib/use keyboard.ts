@@ -2,13 +2,13 @@ import { bind, unbind } from 'web/lib/keyboard';
 import { useEffect } from 'react';
 
 type use_bind = Partial<{
-  prevent_default: true
-  stop_propagation: true
-  global: true
+  prevent_default: boolean
+  stop_propagation: boolean
+  global: boolean
 }>
 
 /**
- * bind an action to a shortcut
+ * Bind an action to a shortcut
  * 
  * multiple actions can bind to the same shortcut simultaneously
  * 

@@ -1,7 +1,7 @@
 import mousetrap from 'mousetrap';
 import 'mousetrap-global-bind';
 
-const shift_keys = {
+const shift_keys_map = {
   "!": "shift+1",
   "@": "shift+2",
   "#": "shift+3",
@@ -40,7 +40,7 @@ function call(shortcut: string, event: KeyboardEvent) {
 
 function normalize(shortcut: string) {
   let normalized_shortcut = shortcut
-  for (const [key, shift_key] of Object.entries(shift_keys)) {
+  for (const [key, shift_key] of Object.entries(shift_keys_map)) {
     normalized_shortcut = normalized_shortcut.replaceAll(key, shift_key)
   }
   return normalized_shortcut
