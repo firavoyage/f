@@ -80,7 +80,7 @@ body {
     flex-direction: row;
 
     flex-basis: var(--titlebar-height);
-    padding: var(--page-whitespace);
+    padding-block: var(--page-whitespace);
 
     .search_button,
     .hamburger_button {
@@ -102,7 +102,10 @@ body {
   .hamburger {
     /* margin-block: var(--page-whitespace); */
 
+    display: block;
+
     * {
+      padding-block: var(--page-whitespace);
       padding-inline: var(--page-whitespace);
     }
   }
