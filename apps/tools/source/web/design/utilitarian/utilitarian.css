@@ -185,7 +185,7 @@
 }
 
 [data-density="compact"], [density="compact"] {
-  --page-whitespace: var(--spacing-0-5);
+  --page-whitespace: var(--spacing-0\.5);
   --titlebar-height: var(--spacing-8);
   --sidebar-width: var(--spacing-60);
 }

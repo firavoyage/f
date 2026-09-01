@@ -186,15 +186,21 @@ function convert(design_yaml: string) {
     separator: '-', preserve
   })
 
+  function convert_dot(variable: string): string {
+    return variable.replace(/(?<=\d)\.(?=\d)|(\.)/g, (match, p1) => {
+      return p1 ? "-" : "\\.";
+    });
+  }
+
   function set(variant: string, variable: string, value: string | number) {
-    if (typeof value == 'string') {      
+    if (typeof value == 'string') {
       // handle "bold text.lg typeface.serif"
       for (const part of value.split(' ')) {
         if (has(map, part)) {
-          value = value.replaceAll(part, `var(--${part.replaceAll('.', '-')})`)
+          value = value.replaceAll(part, `var(--${convert_dot(part)})`)
         }
       }
-    } 
+    }
 
     contexts[variant].tokens[variable] = value
 
