@@ -95,19 +95,19 @@ const map = {
 /**
  * Standardize fs error code to readable error msgs
  */
-export async function handle_map_error<F extends (...args: any[]) => any>(fn: F) {
-  const _ = await handle(fn)
-  if (is_error(_)) {
+export async function map_error<F extends (...args: any[]) => any>(fn: F) {
+  const result = await handle(fn)
+  if (is_error(result)) {
     // @ts-expect-error stupid ts
-    if (has(map, _.code)) {
+    if (has(map, result.code)) {
       // @ts-expect-error stupid ts
-      throw err({ type: map[_.code], message: _ })
+      throw err({ type: map[result.code], message: result })
     }
 
-    throw err(_)
+    throw err(result)
   }
 
-  return _
+  return result
 }
 
 export function home(...args: string[]) {
@@ -139,6 +139,11 @@ export function cache(...args: string[]) {
   return join(cache_folder, ...args)
 }
 
+export async function does_exist(path: string) {
+  const result = await handle(() => access(path))
+  return is_error(result) ? false : true
+}
+
 export const stdout = 1
 
 /**
@@ -150,10 +155,10 @@ export const stdout = 1
  */
 export async function write(path: string | typeof stdout, content: string = '') {
   if (typeof path == 'string') {
-    await handle_map_error(() => mkdir(dirname(path), { recursive: true }))
+    await map_error(() => mkdir(dirname(path), { recursive: true }))
   }
   // @ts-expect-error incorrect (incomprehensive) typing of builtin libs
-  await handle_map_error(() => writeFile(path, content, 'utf8'))
+  await map_error(() => writeFile(path, content, 'utf8'))
 }
 
 export const stdin = 0
@@ -161,59 +166,52 @@ export const stdin = 0
 /**
  * Read a file
  * 
- * read from stdin when path = 1
+ * read from stdin when path = 0
  */
 export async function read(path: string | typeof stdin) {
   // @ts-expect-error incorrect (incomprehensive) typing of builtin libs
-  const content = await handle_map_error(() => readFile(path, 'utf8'))
+  const content = await map_error(() => readFile(path, 'utf8'))
 
   return content
 }
 
 export async function append(path: string, content: string) {
-  await handle_map_error(() => appendFile(path, content))
+  await map_error(() => appendFile(path, content))
 }
 
 type remove = { must_exist?: boolean }
 
-export async function remove(path: string, { must_exist: can_non_exist = false }: remove = {}) {
-  // must_exist = true // implicit true is somewhat inconsistent
-  const _ = await handle(() => unlink(path))
-  if (is_error(_)) {
-    if (has(map, _.code)) {
-      if (map[_.code] == not_found && can_non_exist) {
-        return;
-      }
-      throw err({ type: map[_.code], message: _ })
-    }
+export async function remove(path: string, { must_exist = false }: remove = {}) {
+  const result = await handle(() => unlink(path))
 
-    throw err(_)
+  // @ts-expect-error stupid ts
+  if (is_error(result) && has(map, result.code) && (must_exist || map[result.code] != not_found)) {
+    // @ts-expect-error stupid ts
+    throw err({ type: map[result.code], message: result })
   }
+
+  // @ts-expect-error stupid ts
+  throw err(result)
 }
 
-export async function does_exist(path: string) {
-  _ = await handle(() => access(path))
-  if (is_error(_)) {
-    return false
+type trash = { must_exist?: boolean }
+
+export async function trash(path: string, { must_exist = false }: remove = {}) {
+  const result = await handle(() => trash_lib(path, { glob: false }))
+
+  // @ts-expect-error stupid ts
+  if (is_error(result) && has(map, result.code) && (must_exist || map[result.code] != not_found)) {
+    // @ts-expect-error stupid ts
+    throw err({ type: map[result.code], message: result })
   }
-  return true
+
+  // @ts-expect-error stupid ts
+  throw err(result)
 }
 
-export async function clear(path: string) {
-  await handle_map_error(() => rm(path, { recursive: true, force: true }))
-}
-
-export async function trash(path: string, { can_non_exist = false }) {
-  const _ = await handle(() => trash_lib(path, { glob: false }))
-  if (is_error(_)) {
-    if (has(map, _.code)) {
-      if (map[_.code] == not_found && can_non_exist) {
-        return;
-      }
-
-      throw err({ type: map[_.code], message: _ })
-    }
-
-    throw err(_)
-  }
+/**
+ * Delete a folder along with all files and subfolders inside
+ */
+export async function clear_folder(path: string) {
+  await map_error(() => rm(path, { recursive: true, force: true }))
 }

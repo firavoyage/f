@@ -2,32 +2,25 @@ const halt_symbol = Symbol('halt')
 export function halt(value: any) {
   return { [halt_symbol]: true, value }
 }
-// export const halt = Symbol('halt')
-// export const halt = Symbol('break')
 
 type entry = [key: any, value: any]
 
 export function map<T>(items: T[], fn: (item: T, index: number, array: T[]) => any): any[]
 export function map(items: object, fn: (item: entry, index: number, array: entry[]) => any): any[]
-// export function map<T>(items: object & T, fn: (item: ObjectENt T, index?: number, array?: T[]) => any): any[]
 
 /**
- * map an array to a fn
+ * Map an array to a fn
  * 
  * return void to continue
  * 
- * return halt to break
+ * return halt(value?) to break (or after pushing the last value)
  * 
- * return halt(value) to break after the last value
+ * auto convert to entries for objects
  */
 export function map(items: any, fn: (item: any, index: number, array: any[]) => any) {
-  let is_object = false
-
   if (typeof items == 'object' && !Array.isArray(items)) {
     items = Object.entries(items)
-
-    is_object = true
-  } 
+  }
 
   const result = []
 
@@ -46,7 +39,7 @@ export function map(items: any, fn: (item: any, index: number, array: any[]) => 
       // @ts-expect-error 
       result.push(value.value)
       break
-    } 
+    }
 
     result.push(value);
   }
@@ -56,6 +49,7 @@ export function map(items: any, fn: (item: any, index: number, array: any[]) => 
 
 type halt = typeof halt
 type map = typeof map
+
 declare global {
   var halt: halt
   var map: map

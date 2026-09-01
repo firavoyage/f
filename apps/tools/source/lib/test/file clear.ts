@@ -1,3 +1,3 @@
-import { data, clear } from 'lib/file';
+import { data, clear_folder } from 'lib/file';
 
-await clear(data())
+await clear_folder(data())

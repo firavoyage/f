@@ -9,7 +9,7 @@ import * as result from 'lib/result';
 use(result)
 
 import * as log from 'lib/log';
-import * as log_fs from 'lib/log_fs';
+import * as log_fs from 'lib/log fs';
 use(log)
 use(log_fs)
 
