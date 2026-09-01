@@ -3729,6 +3729,22 @@ tool is generally a local web app.
 
 i would design it and learn from like tanstack query when needed.
 
-19 00 polish ui.
+19 00 polish ui. support layout density config.
+
+utilitarian design tokens structure:
+
+- color ref (palette)
+- color sys (color)
+- font ref (typeface, text)
+- font sys (font)
+- comp (page, titlebar, sidebar, ...)
+
+css var intelligence extension is wicked.
+
+---
+
+i think it's wiser to prevent class collision in the first place, i.e. name them differently (sidebar toggle or toggle sidebar button instead of sidebar).
+
+the constraint is i could not let "button.name" auto opt out by default, i.e. make ".name" only target "div.name".
 
 

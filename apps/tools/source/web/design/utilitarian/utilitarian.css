@@ -111,6 +111,7 @@
   --hierarchy-dialog: 600;
   --hierarchy-popup: 800;
   --hierarchy-tooltip: 1000;
+  --field-outline-width: var(--border-2);
 }
 
 :root, [data-theme="light"], [theme="light"] {
@@ -172,18 +173,21 @@
 }
 
 :root, [data-density="comfortable"], [density="comfortable"] {
-  --titlebar-height: var(--spacing-12);
   --page-whitespace: var(--spacing-2);
+  --titlebar-height: var(--spacing-12);
+  --sidebar-width: var(--spacing-72);
 }
 
 [data-density="cozy"], [density="cozy"] {
-  --titlebar-height: var(--spacing-10);
   --page-whitespace: var(--spacing-1);
+  --titlebar-height: var(--spacing-10);
+  --sidebar-width: var(--spacing-64);
 }
 
 [data-density="compact"], [density="compact"] {
-  --titlebar-height: var(--spacing-8);
   --page-whitespace: var(--spacing-0-5);
+  --titlebar-height: var(--spacing-8);
+  --sidebar-width: var(--spacing-60);
 }
 
 :root, [data-window="active"], [window="active"] {
