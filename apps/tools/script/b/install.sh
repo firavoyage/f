@@ -1,1 +1,1 @@
-pnpm link -g
+bun link

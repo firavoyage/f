@@ -47,8 +47,6 @@ export default defineConfig(
   {
     ignores: [
       "**/legacy/**",
-      "**/ref/**", // readonly references
-      "**/temp/**",
       "**/build/**",
       "**/.build/**",
     ],
@@ -65,17 +63,17 @@ export default defineConfig(
     },
   },
 
-  // Base eslint and ts rules
+  // Base Rules
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
 
-  // Custom rules
+  // Custom Rules
   {
     rules: {
-      // do not care arbitary rules
+      // ignore false positive (best prac irrelevant/unappliable in this context)
       "no-irregular-whitespace": "off",
 
-      // do not over engineer, do not care big corp best prac
+      // do not over engineer for corp best prac
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/ban-ts-comment": "off",
       "@typescript-eslint/no-unsafe-function-type": "off",
@@ -84,15 +82,15 @@ export default defineConfig(
       // avoid hidden timing issues
       "@typescript-eslint/no-floating-promises": "error",
       
-      // throw 'foo' has no stack trace
+      // keep error stack trace (which throw 'foo' does not provide)
       "local/throw-err": "warn",
     },
   },
 
-  // Custom dev rules
+  // Custom Dev Rules
   {
     rules: {
-      // do not show errors halfway writing
+      // do not show errors halfway
       "no-empty": "off",
       'no-useless-assignment': 'off',
       '@typescript-eslint/no-unused-vars': 'off', // low opacity highlighting is enough

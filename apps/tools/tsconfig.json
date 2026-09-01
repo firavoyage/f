@@ -18,15 +18,12 @@
     // "strictNullChecks": false,
 
     "skipLibCheck": true,
-    "types": ["node"] // not to auto-scan the disk for hidden @types packages
+    "types": ["node"] // increase perf by disabling disk scanning for ts types
   },
   "include": ["**/*"],
   "exclude": [
-    "**/temp",
     "**/build",
     "**/.build",
-    "**/dist",
-    "**/.dist",
     "**/legacy",
     "**/node_modules"
   ]

@@ -1,10 +1,11 @@
-# (repo)/scripts/install.sh
+# (repo)/script/install.sh
 
 # prerequisites: bun, cargo
 
 # rather not have a suspicious post install. run it explicitly if you wanna contribute.
 
-cd ../script/b
+cd script
+cd b
 bun link
 cd ../..
 
