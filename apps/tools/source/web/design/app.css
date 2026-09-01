@@ -125,7 +125,7 @@ body {
   flex-direction: column;
   flex-grow: 1;
 
-  .title_bar {
+  .titlebar {
     flex-direction: row;
 
     flex-basis: var(--titlebar-height);
@@ -150,7 +150,8 @@ body {
       flex: 1;
 
       .title {
-        margin: var(--page-whitespace);
+        /* margin: var(--page-whitespace); */
+        margin-inline: var(--page-whitespace);
       }
 
       .textarea {
