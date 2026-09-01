@@ -33,7 +33,7 @@ body {
   color: var(--color-fg-primary);
 }
 
-.app > .sidebar {
+.sidebar {
   background-color: var(--color-bg-secondary);
 
   &[variant="push"] {
@@ -82,8 +82,8 @@ body {
     flex-basis: var(--titlebar-height);
     padding: var(--page-whitespace);
 
-    .search,
-    .hamburger {
+    .search_button,
+    .hamburger_button {
       flex-basis: var(--titlebar-height);
     }
 
@@ -98,8 +98,10 @@ body {
     }
   }
 
-  > .list,
-  > .hamburger {
+  .list,
+  .hamburger {
+    /* margin-block: var(--page-whitespace); */
+
     * {
       padding-inline: var(--page-whitespace);
     }
@@ -118,7 +120,7 @@ body {
   }
 }
 
-.app > .main {
+.main {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
