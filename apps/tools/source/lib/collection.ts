@@ -2,6 +2,9 @@ export function s(array?: Iterable<any>) {
   return new Set(array)
 }
 
+/**
+ * Toggle the presense of an element in a set
+ */
 export function toggle(set: Set<any>, key: Key) {
   if (has(set, key)) {
     set.delete(key)

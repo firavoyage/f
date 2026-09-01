@@ -48,7 +48,7 @@ type list = {
 }
 
 export function List({ items, focus, set_focus }: list) {
-  const [is_collapsed] = useState(s())
+  const [is_collapsed] = useState(new Set())
 
   const rows = flatten(items)
 

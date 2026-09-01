@@ -24,3 +24,12 @@
 - lowercase (sentence case only when multi line) for why
 - never uppercase
 - no styling
+
+# 0.3 (2026.09.01)
+
+- self explanatory over commenting
+- title case for what and where
+- lowercase for why
+- sentence case for docs
+- never uppercase
+- no styling

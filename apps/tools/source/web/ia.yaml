@@ -37,6 +37,7 @@ sidebar:
     - sha
     - md5
   style:
+    - to title case
     - leet speak
   lookup:
     - unicode characters # symbols and emojis
