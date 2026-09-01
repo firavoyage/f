@@ -3747,4 +3747,27 @@ i think it's wiser to prevent class collision in the first place, i.e. name them
 
 the constraint is i could not let "button.name" auto opt out by default, i.e. make ".name" only target "div.name".
 
+and it doesnt matter to write `.foo_button` for `button.foo` (attr matching selector not needed, lol, though i could)
+
+yeah, a bit more boilerplate.
+
+---
+
+it does feel a bit unnatural when whitespace is not collapsed, i.e. more whitespace below than above, when the bg are the same for adjacent elements.
+
+ok i think i would simply disable the whitespace of the element below. you do not have to align everything when possible.
+
+---
+
+wait, there is an issue on the design tokens converter.
+
+```css
+[data-density="compact"], [density="compact"] {
+  --page-whitespace: var(--spacing-0-5);
+  --titlebar-height: var(--spacing-8);
+  --sidebar-width: var(--spacing-60);
+}
+```
+
+
 
