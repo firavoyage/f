@@ -3688,6 +3688,10 @@ Set and Map are flawed (oop). if they are always called w a new prefix, it shoul
 
 but it does not seem any clean to alias to single letter vars. it's unreadable even in cp.
 
-and unfortunated, i could not alias as (or strip to) Set and Map (ts constraints), which would be ideal, nor could i alias as set (set value of a state or sth) and map (map an obj to a fn), both of which are already defined. i could alias as, like, group? dict? there is no such good words in english, as the best, math derived terms are already occupied by careless standarization committees.
+and unfortunately, i could not alias as (or strip to) Set and Map (ts constraints), which would be ideal, nor could i alias as set (set value of a state or sth) and map (map an obj to a fn), both of which are already defined. i could alias as, like, group? dict? there is no such good words in english, as the best, math derived terms are already occupied by careless standarization committees.
+
+15 50 lib/env: move to `config.json`.
+
+env is to be changed and thus should not live in lib. and env implies a false meaning of secret/private.
 
 

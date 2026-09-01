@@ -1,15 +1,12 @@
-type each = typeof each
-declare global {
-  var each: each
-
-}
-
 export const invalid_args = 'invalid arguments'
 
 export function each(end: number): number[];
 export function each(begin: number, end: number): number[];
 export function each(begin: number, end: number, step: number): number[];
 
+/**
+ * Generate an array from begin = 1 to end (included) by step = 1
+ */
 export function each(...args: number[]) {
   let begin = 1, end, step = 1
 
@@ -73,3 +70,8 @@ export function each(...args: number[]) {
 //   };
 //   return iterate(begin, end, step);
 // };
+
+type each = typeof each
+declare global {
+  var each: each
+}
