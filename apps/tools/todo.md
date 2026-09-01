@@ -96,18 +96,6 @@ https://getbootstrap.com/docs/5.3/examples/
 
 w ~~c~~ <!-- it's not wise to build for the future. better to think what you need instead. -->
 
-# todo: adopt icon lib. <!-- s -->
-
-adopt icon lib.
-
----
-
-adopt vscode icon pack
-
-https://github.com/microsoft/vscode-codicons
-
-https://microsoft.github.io/vscode-codicons/dist/codicon.html
-
 # todo: complete planned tools. <!-- c -->
 
 complete planned tools.
@@ -171,6 +159,10 @@ support render input/output
 support custom imported tools and fav tools
 
 i would have fav tools. custom tools? would they be imported on web?
+
+# todo: design web/lib/call
+
+design web/lib/call
 
 # backlog
 
