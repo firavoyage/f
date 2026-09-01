@@ -3,7 +3,7 @@ import type { tool, arg } from 'action/tools'
 import { tools } from 'action/tools'
 // import * as tools from 'action/tools';
 
-import { normalize_id } from 'lib/normalize_id';
+import { normalize_id } from 'lib/normalize id';
 
 import { use_global } from "web/component/app";
 
