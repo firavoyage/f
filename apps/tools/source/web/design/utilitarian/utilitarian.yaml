@@ -320,6 +320,11 @@ hierarchy:
 #   width: "2px"
 #   offset: "-2px"
 
+page:
+  whitespace:
+    comfortable: spacing.2
+    cozy: spacing.1
+    compact: spacing.0.5
 titlebar:
   height:
     comfortable: spacing.12
@@ -330,8 +335,6 @@ sidebar:
     comfortable: spacing.72
     cozy: spacing.64
     compact: spacing.60
-page:
-  whitespace:
-    comfortable: spacing.2
-    cozy: spacing.1
-    compact: spacing.0.5
+field:
+  outline:
+    width: border.2

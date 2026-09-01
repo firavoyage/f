@@ -53,7 +53,7 @@ export function Main() {
         {/* <button className="view">
           view
         </button> */}
-        <button className="minimize">
+        <button className="minimize_button">
           <Icon {...p({ name: 'minimize' })}></Icon>
         </button>
         <button className="maximize">
