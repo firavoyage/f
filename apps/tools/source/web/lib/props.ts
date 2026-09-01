@@ -38,7 +38,7 @@ type RelaxedProps = Record<any, any>;
 // };
 
 /**
- * flexible react props/attrs
+ * Write jsx props in js object flexibly
  * 
  * idempotent
  */

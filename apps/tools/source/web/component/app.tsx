@@ -3,7 +3,7 @@ import 'web/design/app.css'
 
 import { cloneDeep } from 'lodash-es'
 
-import { use_sync_theme } from "web/lib/sync_theme.use";
+import { use_sync_theme } from "web/lib/sync theme.use";
 import { use_window_active } from 'web/lib/window.use';
 
 import { tool, tool_name, tools, tools_taxonomy } from 'action/tools';

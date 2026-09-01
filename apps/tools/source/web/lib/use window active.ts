@@ -1,5 +1,8 @@
 import { useEffect } from 'react';
 
+/**
+ * Add window = 'active' | 'inactive' attr to root element
+ */
 export function use_window_active() {
   useEffect(() => {
     function set_active() {

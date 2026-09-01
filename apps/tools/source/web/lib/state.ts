@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 const { parse, stringify } = JSON
 
 type NonFunction = any
@@ -31,18 +29,17 @@ type state<T> = {
 }
 
 /**
- * store a global state, return a hook
+ * Store a global state and get use_global hook
  * 
- * to persist, data must be serializable
+ * when persist is on, data must be serializable
  * 
  * do not accept fn value
  * 
- * value can be undefined, a setter fn must not return undefined
+ * value can be undefined but setter fn must not return undefined
  * 
  * path can not exceed one nesting level
  * 
- * local storage sync is best effort. 
- * it performs a complete sync, w nested set time out for each key, before the next one
+ * local storage sync is best effort
  */
 export function state<T extends NonFunction>(initial: T, options: state<T> = {}) {
   type key = string & keyof T

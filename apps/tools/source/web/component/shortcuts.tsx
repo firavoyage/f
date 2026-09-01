@@ -1,4 +1,4 @@
-import { use_bind } from 'web/lib/keyboard.use'
+import { use_bind } from 'web/lib/use keyboard'
 
 import type { shortcut } from 'web/component/app'
 
