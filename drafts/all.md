@@ -378,6 +378,7 @@ desktop:
 - shell typos cli config
 - shell typos abstraction
 - vscode fix css linting syntax highlighting
+- ubuntu over heating vscode malfunctioning rogue processes
 
 android:
 
