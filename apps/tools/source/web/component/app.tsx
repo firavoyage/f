@@ -21,6 +21,7 @@ export const use_global = state({
   'output': '',
   'process': [],
   'appearance.theme': union('system', "light", "dark"),
+  'appearance.density': union("comfortable", "cozy", "compact"),
   'appearance.layout.sidebar.is visible': true,
   'appearance.layout.hamburger menu.is visible': false,
   'navigation.path': '',
@@ -28,8 +29,8 @@ export const use_global = state({
   // 'navigation.tool': '',
 }, {
   persist: 'tools',
-  version: '0.4',
-  should_migrate() { return false },
+  version: '0.5',
+  should_migrate() { return true },
   sync_url_options: {
     should_sync_url: true,
     should_apply_all_given_params: true,
@@ -85,7 +86,7 @@ type command = keyof ReturnType<typeof use_commands>
 
 let call_command: any
 
-export function call(command: command) {
+export function command(command: command) {
   // no possible race condition, no action could fire before app (ignore if so)
   call_command?.(command)
 }
@@ -117,12 +118,15 @@ export function App() {
   // const [focus, set_focus] = use_global('navigation.tool')
   const [, set_process] = use_global('process')
   const [theme, set_theme] = use_global('appearance.theme')
+  const [density, set_density] = use_global('appearance.density')
 
   const commands = use_commands()
 
   use_sync_theme(theme)
 
   use_window_active()
+
+  document.documentElement.setAttribute('density', density)
 
   return <>
     <title>Tools</title>
@@ -148,7 +152,7 @@ export function App() {
         })}></List>
       </Sidebar>
       <Main></Main>
-      <Shortcuts {...p({ shortcuts, call })}></Shortcuts>
+      <Shortcuts {...p({ shortcuts, call: command })}></Shortcuts>
     </div>
   </>
 }

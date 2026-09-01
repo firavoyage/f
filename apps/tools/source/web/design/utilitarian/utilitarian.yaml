@@ -211,11 +211,6 @@ spacing:
   80: 20rem
   96: 24rem
 
-whitespace:
-  top:
-    comfortable: spacing.0.5
-    
-
 max-width:
   none: none
   xs: 20rem
@@ -267,7 +262,6 @@ text:
   8xl: "6rem/1"
   9xl: "8rem/1"
 
-# write font weight directly. it's not changeable or contextual.
 font:
   heading: bold text.lg typeface.sans
   text: text.base typeface.sans
@@ -305,6 +299,14 @@ border:
   4: 4px
   8: 8px
 
+hierarchy:
+  backdrop-hidden: -200
+  backdrop: 200
+  sidebar: 400
+  dialog: 600
+  popup: 800
+  tooltip: 1000
+
 # # todo
 # scrollbar:
 #   width: "8px"
@@ -318,11 +320,18 @@ border:
 #   width: "2px"
 #   offset: "-2px"
 
-hierarchy:
-  backdrop-hidden: -200
-  backdrop: 200
-  sidebar: 400
-  dialog: 600
-  popup: 800
-  tooltip: 1000
-
+titlebar:
+  height:
+    comfortable: spacing.12
+    cozy: spacing.10
+    compact: spacing.8
+sidebar:
+  width:
+    comfortable: spacing.72
+    cozy: spacing.64
+    compact: spacing.60
+page:
+  whitespace:
+    comfortable: spacing.2
+    cozy: spacing.1
+    compact: spacing.0.5

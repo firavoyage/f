@@ -79,16 +79,17 @@ body {
   .menu {
     flex-direction: row;
 
-    flex-basis: var(--spacing-8);
-    padding: var(--spacing-0\.5);
+    flex-basis: var(--titlebar-height);
+    padding: var(--page-whitespace);
 
     .search,
     .hamburger {
-      flex-basis: var(--spacing-8);
+      flex-basis: var(--titlebar-height);
     }
 
     .name {
       align-items: center;
+      justify-content: center;
 
       flex-grow: 1;
       flex-shrink: 1;
@@ -104,7 +105,7 @@ body {
       width: 100%;
       display: block;
 
-      padding-inline: var(--spacing-0\.5);
+      padding-inline: var(--page-whitespace);
 
       &:hover,
       &:focus-visible,
@@ -123,10 +124,10 @@ body {
   .title_bar {
     flex-direction: row;
 
-    flex-basis: var(--spacing-8);
+    flex-basis: var(--titlebar-height);
 
     button {
-      flex-basis: var(--spacing-8);
+      flex-basis: var(--titlebar-height);
     }
 
     .title {
@@ -145,12 +146,11 @@ body {
       flex: 1;
 
       .title {
-        margin: var(--spacing-0\.5);
+        margin: var(--page-whitespace);
       }
 
       .textarea {
-        margin: var(--spacing-0\.5);
-        padding: var(--spacing-2);
+        padding: var(--page-whitespace);
 
         flex-grow: 1;
 
@@ -180,6 +180,7 @@ body {
 .contenteditable {
   &:focus-visible {
     outline: var(--border-2) solid var(--color-bg-selection);
+    outline-offset: -2px;
   }
 }
 /* a,
