@@ -45,7 +45,7 @@ export function Main() {
 
   return (
     <div className="main">
-      <div className="title_bar">
+      <div className="titlebar">
         <button className="toggle_sidebar_button" {...p({ onClick() { command('toggle sidebar') } })}>
           <Icon {...p({ name: 'sidebar' })}></Icon>
         </button>

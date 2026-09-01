@@ -12,6 +12,12 @@ complete utilitarian component system.
 
 ref: gnome nautilus, adwaita demo
 
+ref:
+
+https://base-ui.com/
+
+https://base-ui.com/react/components/radio
+
 ---
 
 create setting field components
