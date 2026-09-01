@@ -3775,7 +3775,7 @@ wait, there is an issue on the design tokens converter.
 }
 ```
 
-23 30 script: convert design tokens: fix incorrect dot to dash conversion and generalize naming
+23 30 script: convert design tokens: fix incorrect dot to dash conversion and generalize naming 23 50
 
 it happens when name on the same nesting level contains dot.
 
