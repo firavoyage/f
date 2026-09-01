@@ -3700,4 +3700,19 @@ yeah, json is aliased to jsonc on my vscode, but trailing comma or string key is
 
 feels it would not help much to make it `config.ts`.
 
+---
+
+how does it feel to map every sys error abbr to a named js const?
+
+16 20 lib/file: simplify methods.
+
+no future proof. remove methods like "edit".
+
+if all methods have a "File" suffix, it doesnt make any sense.
+
+the purpose of file lib:
+
+- alias method names to human intent
+- make errors readable
+
 
