@@ -8,26 +8,29 @@ type flatten = {
   preserve?: (value: any, key: string) => boolean;
 };
 
-function flatten(obj: object, options: flatten = {}) {
+function flatten(obj: Map<any, any>, options: flatten = {}) {
   const { separator = ".", preserve } = options;
-  const result: object = {};
+  const result = new Map();
 
-  function recurse(current_item: any, current_prefix: string): void {
-    for (const key in current_item) {
-      if (!Object.prototype.hasOwnProperty.call(current_item, key)) continue;
+  function recurse(item: Map<any, any>, prefix: string): void {
+    for (const [key] of item) {
+      // if (!Object.prototype.hasOwnProperty.call(current_item, key)) continue;
 
-      const value = current_item[key];
-      const new_key = current_prefix ? `${current_prefix}${separator}${key}` : key;
+      const value = item.get(key);
+      // const value = current_item[key];
+      const new_key = prefix ? `${prefix}${separator}${key}` : key;
 
       if (preserve && preserve(value, key)) {
-        result[new_key] = value;
+        result.set(new_key, value);
+        // result[new_key] = value;
         continue;
       }
-
-      if (typeof value === "object" && value !== null && !Array.isArray(value)) {
+      if (value instanceof Map) {
+      // if (typeof value === "object" && value !== null && !Array.isArray(value)) {
         recurse(value, new_key);
       } else {
-        result[new_key] = value;
+        result.set(new_key, value);
+        // result[new_key] = value;
       }
     }
   }
@@ -116,7 +119,7 @@ function main(convert: (input_str: string) => string, ext = '.css'): void {
   }
 }
 
-function does_match(value: Record<string, any>, mode: string[]): boolean {
+function does_match(value: Map<string, any>, mode: string[]): boolean {
   const keys = Object.keys(value);
 
   if (keys.length !== mode.length) {
@@ -128,8 +131,10 @@ function does_match(value: Record<string, any>, mode: string[]): boolean {
       return false;
     }
 
-    const val = value[key];
-    if (typeof val === 'object' && val !== null) {
+    const val = value.get(key);
+    // const val = value[key];
+    if (val instanceof Map) {
+    // if (typeof val === 'object' && val !== null) {
       return false;
     }
   }
@@ -144,7 +149,7 @@ function convert(design_yaml: string) {
   const tokens_obj = (design.delete('modes'), design)
   // const { modes = {}, ...tokens_obj } = design ?? {}
 
-  type tokens = Map<string, string | number>
+  type tokens = Map<string, string | number | tokens>
   // type tokens = Record<string, string | number>
 
   type context = {
@@ -183,7 +188,7 @@ function convert(design_yaml: string) {
 
   const map = flatten(tokens_obj, { preserve })
 
-  const tokens = flatten(tokens_obj, {
+  const tokens: tokens = flatten(tokens_obj, {
     separator: '-', preserve
   })
 
@@ -203,7 +208,8 @@ function convert(design_yaml: string) {
       }
     }
 
-    contexts[variant].tokens[variable] = value
+    contexts[variant].tokens.set(variable, value)
+    // contexts[variant].tokens[variable] = value
 
     // if (has(map, value)) {
     //   contexts[variant].tokens[variable] = `var(--${value.replaceAll('.', '-')})`
@@ -212,10 +218,11 @@ function convert(design_yaml: string) {
     // }
   }
 
-  for (const [token, value] of Object.entries(tokens)) {
+  for (const [token, value] of tokens) {
     const variable = `--${token}`
 
-    if (typeof value == 'object') {
+    if (value instanceof Map) {
+      // if (typeof value == 'object') {
       for (const [variant, contextual_value] of Object.entries(value)) {
         set(variant, variable, contextual_value)
       }
