@@ -2981,6 +2981,8 @@ Show all
 
 # (?) compare modifiers and adjuncts
 
+## compare modifiers and adjuncts
+
 In structural linguistics and syntax, **modifiers** and **adjuncts** both refer to optional elements that add extra information to a sentence without altering its core grammatical structure. While they are often used interchangeably in casual grammar discussions, <mark>they differ fundamentally based on<span> </span><strong>where they attach</strong><span> </span>and<span> </span><strong>the grammatical theories</strong><span> </span>being used</mark>. [link](https://linguistics.stackexchange.com/questions/47415/what-is-the-relationship-between-complement-adjunct-argument-and-modifier)
 
 ### The Core Difference
