@@ -54479,6 +54479,14 @@ it does not seem random tools (e.g. maimai dx note weight, bmi), static cheetshe
 
 it-tools are philistine but ironically fit everything, as it's basically a sidebar plus an iframe. cyberchef possesses advanced multi step logic, "recipe", which constraints it to text manipulating. how would i solve this...
 
+---
+
+seems starting from gold, the maimai dx color badge becomes narrower (and more premium)
+
+cool.
+
+ref: https://maimai.sega.com/play/newfunction2/
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
