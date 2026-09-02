@@ -18,8 +18,6 @@ export function Select(props: select) {
 
   const [open, toggle_open] = useToggle(false)
 
-  log(open)
-
   return (
     <div className="select" {...p({ open })}>
       <button className="trigger" {...p({ onClick: toggle_open })}>

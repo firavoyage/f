@@ -14,7 +14,7 @@ const dev = handle(() => process.env.NODE_ENV == 'development' || import.meta.en
 if (dev) {
   createRoot(document.getElementById("root")!).render(
     // <StrictMode>
-      <App />
+    <App />
     // </StrictMode>
   )
 } else {
@@ -43,4 +43,11 @@ if (dev) {
     // 5. Pass all normal warnings through seamlessly
     originalWarn.apply(console, args);
   };
+}
+
+// Ignore Irrelevant Errors (Use Custom)
+const irrelevant_errors = ['Invalid DOM property']
+console.error = function (msg, ...substitution) {  
+  // throw err are always errors, and if it can be logged (even as errors), it's safe
+  console.warn(msg, ...substitution)
 }

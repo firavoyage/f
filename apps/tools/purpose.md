@@ -3819,6 +3819,6 @@ each tool has a set of named params. one of them may be mapped to stdin.
 
 instead of toggling process (multi step), you choose to whether or not display input panel, which would be effectively an echo at the top of the process.
 
-
+02 30 
 
 
