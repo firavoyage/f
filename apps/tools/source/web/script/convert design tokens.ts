@@ -108,7 +108,8 @@ function convert(design_yaml: string) {
     is_default: boolean,
     tokens: tokens
   }
-  const variants: Record<string, variants> & Record<typeof root, variants> = {
+  type variant = string | typeof root
+  const variants: Record<variant, variants> = {
     [root]: {
       mode: 'root',
       is_default: true,
@@ -119,7 +120,7 @@ function convert(design_yaml: string) {
   for (const [mode, current_variants] of modes) {
     for (const variant of current_variants) {
       variants[variant] = {
-        mode: mode,
+        mode,
         is_default: false,
         tokens: new Map()
       }
@@ -128,28 +129,19 @@ function convert(design_yaml: string) {
   }
 
   function preserve(value: any) {
-    function does_match(value: Map<string, any>, mode: string[]): boolean {
-      if (!(value instanceof Map)) {
-        return false
-      }
-
-      const keys = Array.from(value.keys());
-      // const keys = Object.keys(value);
-
+    /**
+     * value is a contextual token if
+     * its keys represent (a subset of) the variants of a mode 
+     * and all values are primitive
+     */
+    function is_contextual(value: Map<string, any>, variants: string[]): boolean {
       const can_be_subset = true
-      if (keys.length !== mode.length && !can_be_subset) {
+      if (value.size != variants.length && !can_be_subset) {
         return false;
       }
 
-      for (const key of keys) {
-        if (!mode.includes(key)) {
-          return false;
-        }
-
-        const val = value.get(key);
-        // const val = value[key];
-        if (val instanceof Map) {
-          // if (typeof val === 'object' && val !== null) {
+      for (const [k, v] of value) {
+        if (!has(variants, k) || v instanceof Map) {
           return false;
         }
       }
@@ -157,46 +149,40 @@ function convert(design_yaml: string) {
       return true;
     }
 
-    for (const [, mode] of modes) {
-      // for (const mode of Object.values(modes)) {
-      if (does_match(value, mode)) {
+    for (const [, variants] of modes) {
+      if (value instanceof Map && is_contextual(value, variants)) {
         return true
       }
     }
     return false
   }
 
-  const map = flatten(nested_tokens, { preserve })
+  const tokens: tokens = flatten(nested_tokens, { preserve })
 
-  const tokens: tokens = flatten(nested_tokens, {
-    separator: '-', preserve
-  })
-
-  function convert_dot(variable: string): string {
+  /**
+   * Convert dots to dashes unless surrounded by numbers (i.e. float point)
+   */
+  function convert_dot(variable: string) {
     return variable.replace(/(?<=\d)\.(?=\d)|(\.)/g, (match, p1) => {
       return p1 ? "-" : ".";
     });
   }
 
-  function set(variant: string, variable: string, value: any) {
-    // function set(variant: string, variable: string, value: string | number) {
+  function css_variable(variable: string) {
+    return `--${CSS.escape(convert_dot(variable))}`
+  }
+
+  function set(variant: variant, variable: string, value: string | number) {
     if (typeof value == 'string') {
       // handle "bold text.lg typeface.serif"
       for (const part of value.split(' ')) {
-        if (has(map, part)) {
-          value = value.replaceAll(part, `var(--${CSS.escape(convert_dot(part))})`)
+        if (has(tokens, part)) {
+          value = value.replaceAll(part, `var(${css_variable(part)})`)
         }
       }
     }
 
-    variants[variant].tokens.set(convert_dot(variable), value)
-    // contexts[variant].tokens[variable] = value
-
-    // if (has(map, value)) {
-    //   contexts[variant].tokens[variable] = `var(--${value.replaceAll('.', '-')})`
-    // } else {
-    //   contexts[variant].tokens[variable] = value
-    // }
+    variants[variant].tokens.set(variable, value)
   }
 
   for (const [token, value] of tokens) {
