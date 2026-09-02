@@ -134,6 +134,7 @@ life:
 - ice lattice
 - game clash royale global server
 - anime bakemonogatari tore
+- game maimai dx song rating formula
 
 create something:
 

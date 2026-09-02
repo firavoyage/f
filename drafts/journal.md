@@ -54471,6 +54471,14 @@ i would use glue this time <!-- on top of my prev quote -->. the idea of "replac
 又是一年开学季
 ```
 
+02
+
+16 10 explore maimai dx rating formula.
+
+it does not seem random tools (e.g. maimai dx note weight, bmi), static cheetsheets, and text processing suites would compose together.
+
+it-tools are philistine but ironically fit everything, as it's basically a sidebar plus an iframe. cyberchef possesses advanced multi step logic, "recipe", which constraints it to text manipulating. how would i solve this...
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
