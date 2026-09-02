@@ -76,19 +76,19 @@ the first element in the array is the default variant
   --spacing-96: 24rem;
 }
 
-:root, [data-density="comfortable"], [density="comfortable"] {
+:root, [density="comfortable"], [data-density="comfortable"] {
   --page-whitespace: var(--spacing-2);
   --titlebar-height: var(--spacing-12);
   --sidebar-width: var(--spacing-72);
 }
 
-[data-density="cozy"], [density="cozy"] {
+[density="cozy"], [data-density="cozy"] {
   --page-whitespace: var(--spacing-1);
   --titlebar-height: var(--spacing-10);
   --sidebar-width: var(--spacing-64);
 }
 
-[data-density="compact"], [density="compact"] {
+[density="compact"], [data-density="compact"] {
   --page-whitespace: var(--spacing-0\.5);
   --titlebar-height: var(--spacing-8);
   --sidebar-width: var(--spacing-60);
@@ -99,13 +99,19 @@ this is how raw values and (default) contextual values would look like
 
 ## structure of tokens
 
+all arbitrary values should be ideally design tokens. you may write keywords and special values (e.g. `0`, `100%`) directly in css.
+
 there are three layers of design tokens, ref, sys, and comp.
 
 <!-- it's not enforced via prefix, which would be boilerplate. -->
 
 reference tokens are the raw values, e.g. `gray-500`
 
-system/component tokens are the contextual ones, e.g. `bg-primary` <!-- which may change based on the preferred color theme --> `sidebar-width`, of which the difference is how they are named
+system/component tokens are the contextual ones, e.g. `bg-primary` <!-- which may change based on the preferred color theme --> `sidebar-width` <!-- depending on density -->, of which the difference is how they are named
+
+<!-- you would generally define component tokens if (iff) it's (possibly) contextual, otherwise either in yaml or in css is fine, but you may not create new raw values on css, i.e. you may write `width: var(--sidebar-width)` or `width: var(--spacing-72)` (when fixed), but not `width: 18rem` -->
+
+<!-- it would be discouraged to create a lot of fixed component tokens, which would violate the dry principle (css would be essentially a mapping of yaml), unless you have to use design tokens cross platform (currently only css is supported as the compilation target) -->
 
 generally, you would define first and reference later _and_ group related ones together
 
