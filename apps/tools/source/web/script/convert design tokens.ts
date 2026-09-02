@@ -127,7 +127,8 @@ function does_match(value: Map<string, any>, mode: string[]): boolean {
   const keys = Array.from(value.keys());
   // const keys = Object.keys(value);
 
-  if (keys.length !== mode.length) {
+  const can_be_subset = true
+  if (keys.length !== mode.length && !can_be_subset) {
     return false;
   }
 
@@ -204,7 +205,7 @@ function convert(design_yaml: string) {
 
   function convert_dot(variable: string): string {
     return variable.replace(/(?<=\d)\.(?=\d)|(\.)/g, (match, p1) => {
-      return p1 ? "-" : "\\.";
+      return p1 ? "-" : ".";
     });
   }
 
@@ -214,12 +215,12 @@ function convert(design_yaml: string) {
       // handle "bold text.lg typeface.serif"
       for (const part of value.split(' ')) {
         if (has(map, part)) {
-          value = value.replaceAll(part, `var(--${convert_dot(part)})`)
+          value = value.replaceAll(part, `var(--${CSS.escape(convert_dot(part))})`)
         }
       }
     }
 
-    contexts[variant].tokens.set(variable, value)
+    contexts[variant].tokens.set(convert_dot(variable), value)
     // contexts[variant].tokens[variable] = value
 
     // if (has(map, value)) {
