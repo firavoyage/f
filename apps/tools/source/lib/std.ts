@@ -62,6 +62,14 @@ export function is_given<T>(foo: T): foo is NonNullable<T> {
 //   return false
 // }
 
+export function entries(obj: object | Map<any, any>) {
+  if (obj instanceof Map) {
+    return Array.from(obj.entries())
+  } else if (typeof obj == 'object') {
+    return 
+  } 
+}
+
 export const nil = null
 
 type merge = typeof merge

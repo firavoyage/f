@@ -6,6 +6,7 @@ export function halt(value: any) {
 type entry = [key: any, value: any]
 
 export function map<T>(items: T[], fn: (item: T, index: number, array: T[]) => any): any[]
+export function map(items: Map<any, any>, fn: (item: entry, index: number, array: entry[]) => any): any[]
 export function map(items: object, fn: (item: entry, index: number, array: entry[]) => any): any[]
 
 /**
@@ -18,7 +19,9 @@ export function map(items: object, fn: (item: entry, index: number, array: entry
  * auto convert to entries for objects
  */
 export function map(items: any, fn: (item: any, index: number, array: any[]) => any) {
-  if (typeof items == 'object' && !Array.isArray(items)) {
+  if (items instanceof Map) {
+    items = Array.from(items.entries())
+  } else if (typeof items == 'object' && !Array.isArray(items)) {
     items = Object.entries(items)
   }
 
