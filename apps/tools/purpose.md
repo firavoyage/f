@@ -3793,4 +3793,8 @@ so the solution can be specific.
 
 i would hand code it, lol. ik it's trivial to vibe this.
 
+---
+
+wow, by some magic, it works.
+
 

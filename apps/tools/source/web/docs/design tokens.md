@@ -41,9 +41,13 @@ the first element in the array is the default variant
 
 ```css
 :root {
+  --spacing-0\.5: 0.125rem;
   --spacing-1: 0.25rem;
+  --spacing-1\.5: 0.375rem;
   --spacing-2: 0.5rem;
+  --spacing-2\.5: 0.625rem;
   --spacing-3: 0.75rem;
+  --spacing-3\.5: 0.875rem;
   --spacing-4: 1rem;
   --spacing-5: 1.25rem;
   --spacing-6: 1.5rem;
@@ -91,9 +95,32 @@ the first element in the array is the default variant
 }
 ```
 
+this is how raw values and (default) contextual values would look like
+
 ## structure of tokens
 
+there are three layers of design tokens, ref, sys, and comp.
 
+<!-- it's not enforced via prefix, which would be boilerplate. -->
+
+reference tokens are the raw values, e.g. `gray-500`
+
+system/component tokens are the contextual ones, e.g. `bg-primary` (which may change based on the preferred color theme). the 
+
+
+generally, you would define first and reference later
+
+```yaml
+palette:
+
+color:
+
+typeface:
+
+text:
+
+
+```
 
 # compile
 
