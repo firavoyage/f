@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { parse } from 'yaml';
+import { parse, stringify } from 'yaml';
 import 'css.escape'
 
 type flatten = {
@@ -116,21 +116,19 @@ function main(convert: (input_str: string) => string, ext = '.css'): void {
   }
 }
 
-function is_match(obj: Record<string, any>, arr: string[]): boolean {
-  const keys = Object.keys(obj);
+function does_match(value: Record<string, any>, mode: string[]): boolean {
+  const keys = Object.keys(value);
 
-  if (keys.length !== arr.length) {
+  if (keys.length !== mode.length) {
     return false;
   }
 
-  const arr_set = new Set(arr);
-
   for (const key of keys) {
-    if (!arr_set.has(key)) {
+    if (!mode.includes(key)) {
       return false;
     }
 
-    const val = obj[key];
+    const val = value[key];
     if (typeof val === 'object' && val !== null) {
       return false;
     }
@@ -173,7 +171,7 @@ function convert(design_yaml: string) {
 
   function preserve(value: any) {
     for (const mode of Object.values(modes)) {
-      if (is_match(value, mode)) {
+      if (does_match(value, mode)) {
         return true
       }
     }
@@ -255,6 +253,7 @@ function convert(design_yaml: string) {
     append(selector, tokens)
   }
 
+  // return stringify(tokens_obj)
   return css
 }
 
