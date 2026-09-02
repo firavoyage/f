@@ -273,7 +273,7 @@ function convert(design_yaml: string) {
     }
 
     // be flexible, no data- prefix required
-    const selector = `${is_default ? ':root, ' : ''}[data-${type}="${variant}"], [${type}="${variant}"]`
+    const selector = `${is_default ? ':root, ' : ''}[${type}="${variant}"], [data-${type}="${variant}"]`
 
     append(selector, tokens)
   }
