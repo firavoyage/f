@@ -3819,6 +3819,12 @@ each tool has a set of named params. one of them may be mapped to stdin.
 
 instead of toggling process (multi step), you choose to whether or not display input panel, which would be effectively an echo at the top of the process.
 
-02 30 
+02 30 index.tsx: ignore irrelevant react errors
+
+so opinionated. i could not even paste a standard svg. i have to map the props to camel case to make react happy. ok i will just silence you.
+
+02 40 script/convert design tokens: refactor/rewrite in clean code
+
+yeah it works. i just dont want anything to be unreadable mess.
 
 

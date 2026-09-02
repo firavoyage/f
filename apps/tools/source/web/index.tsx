@@ -45,7 +45,7 @@ if (dev) {
   };
 }
 
-// Ignore Irrelevant Errors (Use Custom)
+// Ignore React Errors (Use Custom levels: info, error)
 const irrelevant_errors = ['Invalid DOM property']
 console.error = function (msg, ...substitution) {  
   // throw err are always errors, and if it can be logged (even as errors), it's safe
