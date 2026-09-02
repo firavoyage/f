@@ -3797,4 +3797,8 @@ i would hand code it, lol. ik it's trivial to vibe this.
 
 wow, by some magic, it works.
 
+<!-- it did not. it did not reference and convert into var() properly. -->
+
+22 50 lib/std: polymorph `has`, support map.
+
 

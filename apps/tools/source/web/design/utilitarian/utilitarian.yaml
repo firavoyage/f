@@ -242,7 +242,7 @@ max-width:
 typeface:
   sans: "Roboto, Adwaita Sans, Ubuntu Sans, Noto Sans, sans-serif"
   serif: "EB Garamond, Noto Serif, serif"
-  mono: "Fira Code, Adwaita Mono, Ubuntu Mono, monospace"
+  monospace: "Fira Code, Adwaita Mono, Ubuntu Mono, monospace"
 
 text:
   xs: "0.75rem/1rem"
@@ -262,7 +262,7 @@ text:
 font:
   heading: bold text.lg typeface.sans
   text: text.base typeface.sans
-  code: text.sm typeface.mono
+  code: text.sm typeface.monospace
 
 # size: # icon-size
 #   sm: "14px"
@@ -335,3 +335,15 @@ sidebar:
 field:
   outline:
     width: border.2
+
+test:
+  a: 123
+  a.b: 123
+  a.1: 123
+  1.2: 123
+
+test2:
+  a: test.a.b
+  b: test.a.1
+  c: test.1.2
+  d: test.a

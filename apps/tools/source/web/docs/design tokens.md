@@ -105,22 +105,63 @@ there are three layers of design tokens, ref, sys, and comp.
 
 reference tokens are the raw values, e.g. `gray-500`
 
-system/component tokens are the contextual ones, e.g. `bg-primary` (which may change based on the preferred color theme). the 
+system/component tokens are the contextual ones, e.g. `bg-primary` <!-- which may change based on the preferred color theme --> `sidebar-width`, of which the difference is how they are named
 
-
-generally, you would define first and reference later
+generally, you would define first and reference later _and_ group related ones together
 
 ```yaml
-palette:
+palette: # ref color
+  gray:
+    100:
+    200:
 
-color:
+color: # sys color
+  bg:
+    primary:
 
-typeface:
+typeface: # ref font faces
+  sans:
+  serif:
+  monospace:
 
-text:
+text: # ref font sizes
+  xs:
+  sm:
 
+font: # sys font
+  heading:
+  text:
+  code:
 
+sidebar: # comp tokens
+  width:
 ```
+
+system tokens are typically placed after ref tokens of the same category. components, which may reference all above, would be placed at the end.
+
+## how to define contextual tokens
+
+```yaml
+color:
+  bg:
+    primary:
+      light: palette.gray.50
+      dark: palette.gray.850
+    primary:
+```
+
+
+
+```yaml
+font:
+  heading: bold text.lg typeface.sans
+  text: text.base typeface.sans
+  code: text.sm typeface.monospace
+```
+
+you may reference many in one. it's valid as long as split by spaces.
+
+
 
 # compile
 
