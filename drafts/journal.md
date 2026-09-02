@@ -54507,6 +54507,8 @@ well, it feels a bit too cold wo chroma, esp when graduations are geometric. and
 
 it doesnt have to be completely neutral. i'd love vintage vibes.
 
+> 水至清则无鱼
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
