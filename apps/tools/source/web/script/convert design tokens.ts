@@ -120,7 +120,12 @@ function main(convert: (input_str: string) => string, ext = '.css'): void {
 }
 
 function does_match(value: Map<string, any>, mode: string[]): boolean {
-  const keys = Object.keys(value);
+  if (!(value instanceof Map)) {
+    return false
+  } 
+
+  const keys = Array.from(value.keys());
+  // const keys = Object.keys(value);
 
   if (keys.length !== mode.length) {
     return false;
@@ -145,7 +150,11 @@ function does_match(value: Map<string, any>, mode: string[]): boolean {
 function convert(design_yaml: string) {
   const design: Map<any, any> = parse(design_yaml, { mapAsMap: true })
 
-  const modes: Map<string, string[]> = design.get('modes') ?? {}
+  if (!(design instanceof Map)) {
+    return ''
+  } 
+
+  const modes: Map<string, string[]> = design.get('modes') ?? new Map()
   const tokens_obj = (design.delete('modes'), design)
   // const { modes = {}, ...tokens_obj } = design ?? {}
 
@@ -178,7 +187,8 @@ function convert(design_yaml: string) {
   }
 
   function preserve(value: any) {
-    for (const mode of Object.values(modes)) {
+    for (const [, mode] of modes) {
+    // for (const mode of Object.values(modes)) {
       if (does_match(value, mode)) {
         return true
       }
@@ -198,7 +208,8 @@ function convert(design_yaml: string) {
     });
   }
 
-  function set(variant: string, variable: string, value: string | number) {
+  function set(variant: string, variable: string, value: any) {
+  // function set(variant: string, variable: string, value: string | number) {
     if (typeof value == 'string') {
       // handle "bold text.lg typeface.serif"
       for (const part of value.split(' ')) {
@@ -223,7 +234,8 @@ function convert(design_yaml: string) {
 
     if (value instanceof Map) {
       // if (typeof value == 'object') {
-      for (const [variant, contextual_value] of Object.entries(value)) {
+      for (const [variant, contextual_value] of value) {
+      // for (const [variant, contextual_value] of Object.entries(value)) {
         set(variant, variable, contextual_value)
       }
     } else {
@@ -234,7 +246,8 @@ function convert(design_yaml: string) {
   function convert_tokens_to_css(tokens: tokens) {
     let css = ''
 
-    for (const [prop, value] of Object.entries(tokens)) {
+    for (const [prop, value] of tokens) {
+    // for (const [prop, value] of Object.entries(tokens)) {
       css += `  ${CSS.escape(prop)}: ${value};\n`
     }
 
@@ -248,7 +261,8 @@ function convert(design_yaml: string) {
   }
 
   for (const [variant, { type, is_default, tokens }] of Object.entries(contexts)) {
-    if (Object.keys(tokens).length == 0) {
+    if (tokens.size == 0) {
+    // if (Object.keys(tokens).length == 0) {
       continue
     }
 
