@@ -3807,4 +3807,18 @@ enforce naming consistently: dots, unless accompanied by digits on both sides, w
 
 no need to add a special rule. **the one of the less assumptions wins.**
 
+03
+
+01 10 redesign tools structure.
+
+the problem: process panel is irrelevant when single step. both arg and input are input.
+
+the solution: 
+
+each tool has a set of named params. one of them may be mapped to stdin.
+
+instead of toggling process (multi step), you choose to whether or not display input panel, which would be effectively an echo at the top of the process.
+
+
+
 
