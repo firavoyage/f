@@ -8,7 +8,7 @@ type flatten = {
   preserve?: (value: any, key: string) => boolean;
 };
 
-function flatten(obj: object, options: flatten = {}): object {
+function flatten(obj: object, options: flatten = {}) {
   const { separator = ".", preserve } = options;
   const result: object = {};
 
@@ -138,11 +138,14 @@ function does_match(value: Record<string, any>, mode: string[]): boolean {
 }
 
 function convert(design_yaml: string) {
-  const design: Record<string, Record<string, string[]>> = parse(design_yaml)
+  const design: Map<any, any> = parse(design_yaml, { mapAsMap: true })
 
-  const { modes = {}, ...tokens_obj } = design ?? {}
+  const modes: Map<string, string[]> = design.get('modes') ?? {}
+  const tokens_obj = (design.delete('modes'), design)
+  // const { modes = {}, ...tokens_obj } = design ?? {}
 
-  type tokens = Record<string, string | number>
+  type tokens = Map<string, string | number>
+  // type tokens = Record<string, string | number>
 
   type context = {
     type: string
@@ -154,16 +157,16 @@ function convert(design_yaml: string) {
     root: {
       type: 'root',
       is_default: true,
-      tokens: {}
+      tokens: new Map()
     }
   }
 
-  for (const [type, variants] of Object.entries(modes)) {
+  for (const [type, variants] of modes) {
     for (const variant of variants) {
       contexts[variant] = {
         type,
         is_default: false,
-        tokens: {}
+        tokens: new Map()
       }
     }
     contexts[variants[0]].is_default = true
