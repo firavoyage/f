@@ -1,8 +1,5 @@
 modes:
   theme:
-    # the white screen flash couldnt be avoided
-    # when the browser doesnt know anything yet
-    # it's just in terms of time
     - light
     - dark
   accent:
