@@ -1,2 +1,1 @@
-- redesign "process, input, output"
-- write docs/design tokens
+(archived to drafts/todo. thinking should be temporary. better to organize them, put them under the right project, and separate todo/thinking.)
