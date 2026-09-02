@@ -54487,6 +54487,14 @@ cool.
 
 ref: https://maimai.sega.com/play/newfunction2/
 
+19 50 research casio watches.
+
+the current one, used from jhs, is worn out. two (vi and xi) of twelve hour indicators are dropped (no longer glued) and moving freely within. and ring to fix the rope is also fragile.
+
+the prev one is out of stock here, and requires international delivery.
+
+i have a gift from frnd, which, as one of the gshock series, is too fancy.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
