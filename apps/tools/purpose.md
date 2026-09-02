@@ -3801,4 +3801,10 @@ wow, by some magic, it works.
 
 22 50 lib/std: polymorph `has`, support map.
 
+23 00 script/convert design tokens: support variable name including dots.
+
+enforce naming consistently: dots, unless accompanied by digits on both sides, will be converted to dashes. and everything will be css escaped eventually.
+
+no need to add a special rule. **the one of the less assumptions wins.**
+
 

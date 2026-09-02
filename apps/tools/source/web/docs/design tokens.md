@@ -142,15 +142,31 @@ system tokens are typically placed after ref tokens of the same category. compon
 ## how to define contextual tokens
 
 ```yaml
+border:
+  0: 0px
+  1: 1px
+  2: 2px
+  4: 4px
+  8: 8px
+
+field:
+  outline:
+    width: border.2
+```
+
+you may reference using dot notation.
+
+```yaml
 color:
   bg:
     primary:
       light: palette.gray.50
       dark: palette.gray.850
-    primary:
 ```
 
+it's contextual if the keys represent (a subset of) the variants of the mode and all values are primitive
 
+different modes should not have any variant named the same
 
 ```yaml
 font:
@@ -159,9 +175,7 @@ font:
   code: text.sm typeface.monospace
 ```
 
-you may reference many in one. it's valid as long as split by spaces.
-
-
+you may reference many in one. it's valid as long as it's recognized after split by spaces.
 
 # compile
 

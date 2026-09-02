@@ -335,15 +335,3 @@ sidebar:
 field:
   outline:
     width: border.2
-
-test:
-  a: 123
-  a.b: 123
-  a.1: 123
-  1.2: 123
-
-test2:
-  a: test.a.b
-  b: test.a.1
-  c: test.1.2
-  d: test.a
