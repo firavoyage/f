@@ -54495,6 +54495,12 @@ the prev one is out of stock here, and requires international delivery.
 
 i have a gift from frnd, which, as one of the gshock series, is too fancy.
 
+03
+
+00 30 buy casio watch ltp-1094 7a.
+
+maybe i would like a brown leather
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
