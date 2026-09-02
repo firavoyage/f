@@ -3789,4 +3789,8 @@ so the solution can be specific.
 
 19 00 docs: write a guide on design tokens
 
+19 40 script/convert design tokens: use map instead of object to preserve original order.
+
+i would hand code it, lol. ik it's trivial to vibe this.
+
 
