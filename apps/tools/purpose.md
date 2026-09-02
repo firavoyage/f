@@ -3827,4 +3827,10 @@ so opinionated. i could not even paste a standard svg. i have to map the props t
 
 yeah it works. i just dont want anything to be unreadable mess.
 
+03 30 lib/map: support map.
+
+03 40 lib/std: add `entries`.
+
+a modern replacement of obj/map entries.
+
 

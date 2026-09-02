@@ -186,51 +186,43 @@ function convert(design_yaml: string) {
   }
 
   for (const [token, value] of tokens) {
-    const variable = `--${token}`
+    const variable = css_variable(token)
 
     if (value instanceof Map) {
-      // if (typeof value == 'object') {
+      // contextual token
       for (const [variant, contextual_value] of value) {
-        // for (const [variant, contextual_value] of Object.entries(value)) {
         set(variant, variable, contextual_value)
       }
     } else {
-      set('root', variable, value)
+      // raw token
+      set(root, variable, value)
     }
   }
 
   function convert_tokens_to_css(tokens: tokens) {
-    let css = ''
-
-    for (const [prop, value] of tokens) {
-      // for (const [prop, value] of Object.entries(tokens)) {
-      css += `  ${CSS.escape(prop)}: ${value};\n`
-    }
-
-    return css
+    return map(tokens, ([prop, value]) => `  ${prop}: ${value};`).join('\n') + '\n'
   }
 
   let css = ''
 
-  function append(selector: string, tokens: tokens) {
-    css += `${selector} {\n${convert_tokens_to_css(tokens)}}\n\n`
-  }
-
-  for (const [variant, { mode: type, is_default, tokens }] of Object.entries(variants)) {
+  for (const [variant, { mode, is_default, tokens }] of entries(variants)) {
+    // omit empty ruleset
     if (tokens.size == 0) {
-      // if (Object.keys(tokens).length == 0) {
       continue
     }
 
-    if (variant == 'root') {
-      append(':root', tokens)
-      continue
+    function append_css(selector: string, tokens: tokens) {
+      css += `${selector} {\n${convert_tokens_to_css(tokens)}}\n\n`
     }
 
-    // be flexible, no data- prefix required
-    const selector = `${is_default ? ':root, ' : ''}[${type}="${variant}"], [data-${type}="${variant}"]`
+    if (variant == root) {
+      append_css(':root', tokens)
+    } else {
+      // be flexible, no data- prefix required
+      const selector = `${is_default ? ':root, ' : ''}[${mode}="${variant}"], [data-${mode}="${variant}"]`
 
-    append(selector, tokens)
+      append_css(selector, tokens)
+    }
   }
 
   return css
