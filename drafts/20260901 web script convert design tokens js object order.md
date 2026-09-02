@@ -463,3 +463,315 @@ Use code with caution.
 Would you like to see how this handles **edge cases** like trailing dots, or do you need help **integrating this** into a specific project?
 
 
+
+# <!-- 02 sep -->
+
+# js object order
+
+## js object order
+
+In modern JavaScript (ES6+), <mark><strong>object keys follow a strict, predictable execution order</strong><span> </span>when iterated</mark>, but they do **not** automatically stay in the order you type them. [link](https://www.reddit.com/r/learnjavascript/comments/15s3mcd/preserve%5Forder%5Fin%5Fobjectvalues/)
+
+### The 3-Step Key Ordering Rule
+
+When using operations like `Object.keys()`, `Object.entries()`, or `Reflect.ownKeys()`, JavaScript engines sort the properties behind the scenes using these exact priority rules: [link](https://stackoverflow.com/questions/31409156/javascript-maintain-key-order-when-going-from-object-array)
+
+1. **Integer Indices:** Any keys that can be parsed as positive integers (e.g., `'1'`, `2`) are placed first and sorted in **ascending numeric order**.
+2. **String Keys:** All standard strings/labels are placed next and sorted in **chronological insertion order**.
+3. **Symbol Keys:** Any `Symbol` properties are placed last and sorted in **chronological insertion order**. [link](https://stackoverflow.com/questions/5525795/does-javascript-guarantee-object-property-order)
+
+#### 🛑 Code Example of Unexpected Ordering
+
+Because of Rule 1, numeric strings jump to the front of the object regardless of when you added them:
+
+javascript
+
+```
+const user = {
+  name: "Alice", // String key
+  5: "Five",     // Integer index
+  age: 30,       // String key
+  1: "One"       // Integer index
+};
+
+console.log(Object.keys(user));
+// Output: ['1', '5', 'name', 'age']
+```
+
+Use code with caution.
+
+***
+
+### How to Sort or Control Object Order
+
+Standard objects cannot be reliably "sorted" in place because the engine enforces the rules above. If you need to force a specific order (like sorting alphabetically by key or numerically by value), use these two workarounds: [link](https://www.reddit.com/r/learnjavascript/comments/13ekuue/sort%5Fan%5Fobject%5Fin%5Fjavascript/)
+
+#### Option 1: Map your Object into an Array (Best for Sorting)
+
+Arrays natively support sorting and preserve positions. Convert the object properties to an array using `Object.entries()`, sort them, and iterate over that array. [link](https://stackoverflow.com/questions/1069666/sorting-object-property-by-values)
+
+javascript
+
+```
+const scores = { b: 10, c: 5, a: 20 };
+
+// Sort alphabetically by the object keys ('a', 'b', 'c')
+const sortedByKey = Object.entries(scores).sort((a, b) => a[0].localeCompare(b[0]));
+console.log(sortedByKey); // [ ['a', 20], ['b', 10], ['c', 5] ]
+
+// Sort by the object values (5, 10, 20)
+const sortedByValue = Object.entries(scores).sort((a, b) => a[1] - b[1]);
+console.log(sortedByValue); // [ ['c', 5], ['b', 10], ['a', 20] ]
+```
+
+Use code with caution.
+
+#### Option 2: Use a `Map` structure (Best for Pure Insertion Order)
+
+If you require your keys to always stay exactly in the order you write them—including integer keys—use a modern [JavaScript Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Array/sort) instead of a plain object. Maps **exclusively preserve insertion order** for everything. [link](https://esdiscuss.org/topic/nailing-object-property-order)
+
+javascript
+
+```
+const orderedMap = new Map();
+orderedMap.set("name", "Alice");
+orderedMap.set(5, "Five");
+orderedMap.set("age", 30);
+
+console.log([...orderedMap.keys()]);
+// Output: ['name', 5, 'age'] (Perfect insertion order!)
+```
+
+Use code with caution.
+
+Would you like help writing a custom function to **sort a specific dataset** you are currently working with, or do you need help converting an existing object into a **Map structure**?
+
+- [link](https://stackoverflow.com/questions/5525795/does-javascript-guarantee-object-property-order)\
+  Stack Overflow\
+  Does JavaScript guarantee object property order?\
+  Apr 2, 2011 — The order of properties in JavaScript is not guaranteed. The iteration order for objects is a combination of: \* \*\*Insertion order\*
+- [link](https://www.reddit.com/r/learnjavascript/comments/15s3mcd/preserve%5Forder%5Fin%5Fobjectvalues/)\
+  Reddit\
+  Preserve order in Object.values(); : r/learnjavascript - Reddit\
+  Aug 15, 2023 — The traversal order, as of modern ECMAScript specification, is well-defined and consistent across implementations. Within each com...
+- [link](https://stackoverflow.com/questions/31409156/javascript-maintain-key-order-when-going-from-object-array)\
+  Stack Overflow\
+  Javascript - maintain key order when going from object -> array\
+  Jul 14, 2015 — const obj = { '2': null, 'foo': null, '01': null, // "01" counts as a string. Only "1" is a number-like key! 1: null, \[Symbol('fir...
+
+Show all
+
+## how to parse yaml and preserve original order
+
+To parse YAML while preserving the exact order of your keys, <mark><strong>you cannot parse directly into a standard JavaScript object</strong></mark>, because JS engines will auto-sort any integer keys. [link](https://github.com/nodeca/js-yaml/issues/503)
+
+Instead, you need to use the official [**`yaml`** npm package](https://www.npmjs.com/package/yaml), which allows you to parse the file directly into a **JavaScript Map** or keep it as an **Abstract Syntax Tree (AST)**. [link](https://www.npmjs.com/package/yaml-transmute)
+
+Here are the two best ways to handle this depending on your goal.
+
+***
+
+### Option 1: Parse Directly into a `Map` (Best for Reading/Writing Data)
+
+By changing the parser's configuration, you can force it to output JavaScript `Map` structures instead of traditional objects. Maps completely guarantee strict chronological insertion order, even for numbers. [link](https://github.com/nodeca/js-yaml/issues/503)
+
+javascript
+
+```
+import YAML from 'yaml';
+
+const yamlText = `
+5: "Five"
+name: "Alice"
+1: "One"
+age: 30
+`;
+
+// Force the parser to instantiate maps instead of plain objects
+const data = YAML.parse(yamlText, { mapAsMap: true });
+
+console.log(data);
+// Output: Map(4) { 5 => 'Five', 'name' => 'Alice', 1 => 'One', 'age' => 30 }
+// Notice that '5' and '1' stay exactly where you wrote them!
+
+// You can still stringify it back perfectly later:
+console.log(YAML.stringify(data));
+```
+
+Use code with caution.
+
+***
+
+### Option 2: Parse as a Document Document/AST (Best for Modifying Files)
+
+If your goal is to open a YAML file (like a config file), modify one specific property, and save it back **without scrambling the order, removing formatting, or breaking comments**, parse it into a Document object. [link](https://www.npmjs.com/package/yaml-transmute)
+
+javascript
+
+```
+import YAML from 'yaml';
+
+const yamlText = `
+# Server Configuration
+port: 8080
+ssl: false
+host: "localhost"
+`;
+
+// 1. Parse into a full Document node tree
+const doc = YAML.parseDocument(yamlText);
+
+// 2. Safely mutate properties without altering structure or order
+doc.set('ssl', true);
+
+// 3. Stringify it back out
+console.log(doc.toString());
+/*
+Output preserves original key order and comments:
+# Server Configuration
+port: 8080
+ssl: true
+host: "localhost"
+*/
+```
+
+Use code with caution.
+
+***
+
+### Why standard `js-yaml` fails
+
+If you are using the older, popular `js-yaml` library (`yaml.load()`), it returns a normal JavaScript object. Because of how the V8 engine handles memory optimizations, integers are always hoisted to the top and sorted ascending, meaning any library returning standard objects cannot natively guarantee structural order. [link](https://github.com/nodeca/js-yaml/issues/503)
+
+Are you hoping to **edit and rewrite a configuration file** without breaking it, or are you trying to **extract and manipulate values** inside your application logic?
+
+- [link](https://github.com/nodeca/js-yaml/issues/503)\
+  GitHub\
+  Preserving order of fields when parsing · Issue #503 - GitHub\
+  Jun 4, 2019 — It's not so much that it's not preserved, but that its preservation is a side-effect of current implementation on a particular pla...
+- [link](https://www.npmjs.com/package/yaml-transmute)\
+  NPM\
+  yaml-transmute - NPM\
+  Mar 4, 2024 — If you need to change the content of a YAML file, without losing the key order or field comments, this is the right package for yo...
+
+## how will mapasmap work for complex data
+
+The `mapAsMap: true` setting handles **complex, deeply nested data structures flawlessly** by recursively converting every single YAML map (dictionary/object) it encounters into a distinct, nested JavaScript `Map` object.
+
+Any YAML arrays/lists within your data are still safely parsed as standard **JavaScript Arrays**.
+
+### A Deeply Nested Example
+
+If you have a complex configuration like this:
+
+yaml
+
+```
+# database.yaml
+production:
+  2: "Backup server"
+  1: "Primary server"
+  settings:
+    port: 5432
+    tags: [ production, database ]
+```
+
+Use code with caution.
+
+When you parse it with `mapAsMap: true`:
+
+javascript
+
+```
+import YAML from 'yaml';
+import fs from 'fs';
+
+const yamlText = fs.readFileSync('database.yaml', 'utf8');
+const config = YAML.parse(yamlText, { mapAsMap: true });
+```
+
+Use code with caution.
+
+The underlying structural layout becomes a multi-layered JavaScript `Map`:
+
+javascript
+
+```
+// A conceptual look at the parsed data structure:
+Map(1) {
+  "production" => Map(3) {
+    2 => "Backup server",
+    1 => "Primary server",
+    "settings" => Map(2) {
+      "port" => 5432,
+      "tags" => ["production", "database"] // YAML lists stay as standard arrays
+    }
+  }
+}
+```
+
+Use code with caution.
+
+***
+
+### How to access deeply nested properties
+
+Because you are dealing with `Map` instances rather than native objects, you cannot use dot notation (`config.production.settings.port`) or standard bracket notation (`config['production']`). Instead, you must chain `.get()` methods:
+
+javascript
+
+```
+// ❌ This will throw an error or return undefined
+console.log(config.production);
+
+//  Standard Way: Chain .get() methods
+const port = config.get('production').get('settings').get('port');
+console.log(port); // 5432
+
+//  Safer Way: Use Optional Chaining (?.) to prevent crashes if a key is missing
+const tag = config.get('production')?.get('settings')?.get('tags')[0];
+console.log(tag); // "production"
+```
+
+Use code with caution.
+
+### Modifying and Stringifying back to YAML
+
+If you make modifications directly inside the nested structure, the configuration order remains protected.
+
+javascript
+
+```
+// Modify a deeply nested map value
+config.get('production').get('settings').set('port', 9999);
+
+// Add a brand new property to a nested map
+config.get('production').get('settings').set('timeout', 30);
+
+// Convert everything back to YAML
+console.log(YAML.stringify(config));
+```
+
+Use code with caution.
+
+The resulting YAML output keeps the exact ordering, placing the newly appended items at the absolute end of their respective blocks without scrambling integers:
+
+yaml
+
+```
+production:
+  2: Backup server
+  1: Primary server
+  settings:
+    port: 9999
+    tags:
+      - production
+      - database
+    timeout: 30
+```
+
+Use code with caution.
+
+Are you looking for a clean utility wrapper function to make **getting and setting nested Map values** easier without chaining `.get()`, or are you worried about **passing this Map object to another library** that expects a plain JSON object?
+
+

@@ -54497,9 +54497,15 @@ i have a gift from frnd, which, as one of the gshock series, is too fancy.
 
 03
 
-00 30 buy casio watch ltp-1094 7a.
+00 30 buy casio watch ltp-1094 ~~7a~~ 9a.
 
-maybe i would like a brown leather
+maybe i would like <!-- white/sliver analog clock on --> brown watchband better. black one is fine. 
+
+simple and solid.
+
+well, it feels a bit too cold wo chroma, esp when graduations are geometric. and i think it should be geometric when it can represent both hour and minute <!-- and second, if it matters -->.
+
+it doesnt have to be completely neutral. i'd love vintage vibes.
 
 
 
