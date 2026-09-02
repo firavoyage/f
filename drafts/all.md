@@ -306,7 +306,7 @@ web: <!-- frontend, web, ts/js -->
 - ts object types
 - ts react component break the scope call
 - react icon lib
-- script convert design tokens
+- script convert design tokens js object order
 
 backend:
 
