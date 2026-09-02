@@ -1,6 +1,6 @@
 a guide on design tokens
 
-# create
+# write <!-- create -->
 
 design tokens are written in yaml, inside which there are modes and tokens
 
