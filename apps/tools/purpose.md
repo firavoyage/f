@@ -3891,4 +3891,26 @@ y.
 
 `.button_foo` is better than `button.foo`, `.radio_item` is better than `.radio > .item`
 
+or really? that's boilerplate.
+
+i have total control over nesting. there would not be a weird additional wrapper in between.
+
+it's only a problem when you have a random `.item` that strikes everywhere.
+
+i think it does not matter. **"make it work"**
+
+css is not flawed. you may need both descendant and child selector. it would not be fixed if one or another becomes the default (even if you have the option to toggle).
+
+for buttons, i would have a prefix because it's too weird to write "i would apply to all foo, but not buttons w an icon of/that called/that toggles foo". it's much easier to say "i would apply to all foo. or i would apply to all buttons of foo."
+
+for component scoped nesting, i would just use child selector (if needed).
+
+---
+
+it also makes you aware!
+
+**if child selector does not fit... you may separate it as a component.**
+
+e.g. now i have `.textarea` instead of `.panel .textarea`
+
 

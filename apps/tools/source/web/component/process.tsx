@@ -1,7 +1,6 @@
 import type { tool } from 'action/tools'
 
 import { Arg } from './arg'
-import { use_global } from './app'
 
 type process = {
   process: tool[]
@@ -14,9 +13,9 @@ export function Process(props: process) {
   return <div className="process">
     {
       map(process, (item, index) => (
-        <div className="process_item">
+        <div className="item">
           <div className="tool">{item.name}</div>
-          <button className="delete" {...p({
+          <button className="button_delete" {...p({
             onclick() {
               set_process(() => {
                 process.splice(index, 1)
