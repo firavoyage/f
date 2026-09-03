@@ -54429,6 +54429,10 @@ e.g. `(a+b)(c+d)=ac+bc+bc+bd`, misreading the letter of a point.
 
 feel i was much more stupid than when i were a student.
 
+---
+
+jsla: 我来机厅是来打舞萌的, 不是来做题的!
+
 17 30 play maimai w that jhs for a whole afternoon.
 
 they left w their mother. they are polite, asking me whether it's ok every time (though later i said it's always y), sometimes saying sorry or thanks for no reason. they gifted me many pc.
