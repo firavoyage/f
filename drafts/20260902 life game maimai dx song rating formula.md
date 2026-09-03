@@ -767,3 +767,46 @@ Would you like to know how the chart differences between a **Standard chart** an
 
 Show all
 
+
+# write a js fn to map achievement to both | Achievement % Range | Achieved Rank | Rank Factor Multiplier | | ----------------------- | ------------- | ---------------------- | | \*\*100.5000% or higher\*\* | \*\*SSS+\*\* | \*\*22.4\*\* | | 100.0000% – 100.4999% | SSS | 21.6 | | 99.5000% – 99.9999% | SS+ | 21.1 | | 99.0000% – 99.4999% | SS | 20.8 | | 98.0000% – 98.9999% | S+ | 20.3 | | 97.0000% – 97.9999% | S | 20.0 | | 94.0000% – 96.9999% | AAA | 16.8 | | 90.0000% – 93.9999% | AA | 15.2 | | 80.0000% – 89.9999% | A | 13.6 | | 75.0000% – 79.9999% | BBB | 12.0 | | 70.0000% – 74.9999% | BB |
+
+Here is the JavaScript function to map an achievement percentage to its corresponding rank and multiplier.
+
+javascript
+
+```
+function getRankDetails(percentage) {
+    // Array sorted from highest to lowest threshold
+    const rankTable = [
+        { min: 100.5, rank: 'SSS+', multiplier: 22.4 },
+        { min: 100.0, rank: 'SSS',  multiplier: 21.6 },
+        { min: 99.5,  rank: 'SS+',  multiplier: 21.1 },
+        { min: 99.0,  rank: 'SS',   multiplier: 20.8 },
+        { min: 98.0,  rank: 'S+',   multiplier: 20.3 },
+        { min: 97.0,  rank: 'S',    multiplier: 20.0 },
+        { min: 94.0,  rank: 'AAA',  multiplier: 16.8 },
+        { min: 90.0,  rank: 'AA',   multiplier: 15.2 },
+        { min: 80.0,  rank: 'A',    multiplier: 13.6 },
+        { min: 75.0,  rank: 'BBB',  multiplier: 12.0 },
+        { min: 70.0,  rank: 'BB',   multiplier: 10.4 } // Assumed logic progression for BB multiplier
+    ];
+
+    // Find the first matching tier
+    for (const tier of rankTable) {
+        if (percentage >= tier.min) {
+            return { rank: tier.rank, multiplier: tier.multiplier };
+        }
+    }
+
+    // Default return if percentage is below 70%
+    return { rank: 'No Rank', multiplier: 0 };
+}
+
+// Example usage:
+console.log(getRankDetails(100.25)); // { rank: 'SSS', multiplier: 21.6 }
+console.log(getRankDetails(95.5));   // { rank: 'AAA', multiplier: 16.8 }
+```
+
+Use code with caution.
+
+
