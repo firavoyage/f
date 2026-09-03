@@ -284,7 +284,7 @@ web: <!-- frontend, web, ts/js -->
 - react props lib
 - css selectors nesting
 - css inherited props implicitly inherited props global keywords css layer
-- css layout props box model position width height flex grid
+- css layout props box model position width height flex grid border outline box shadow
 - css caret props values
 - json data types undefined stringify parse omit union helper lib
 - mdn baseline status

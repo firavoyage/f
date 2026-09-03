@@ -16,11 +16,6 @@ body {
   * {
     display: flex;
     flex-direction: column;
-    flex-shrink: 0;
-
-    /* min-height: 0; */
-    
-    /* max-height: 100%; */
   }
 }
 
@@ -160,6 +155,9 @@ textarea {
 
   > .list {
     overflow-y: auto;
+    > * {
+      flex-shrink: 0;
+    }
 
     * {
       &:hover,
@@ -206,7 +204,12 @@ textarea {
       }
 
       > .process {
-        overflow-y: scroll;
+        flex: 1;
+
+        overflow-y: auto;
+        > * {
+          flex-shrink: 0;
+        }
 
         > .item {
           > .title {
@@ -228,7 +231,7 @@ textarea {
               flex-flow: row wrap;
 
               > .name {
-                flex: 1;
+                flex-grow: 1;
               }
             }
           }
@@ -253,6 +256,12 @@ textarea {
   flex-basis: 100%;
 
   > .item {
+    flex-direction: row;
+
     padding: var(--page-whitespace);
+
+    > .label {
+      flex: 1;
+    }
   }
 }
