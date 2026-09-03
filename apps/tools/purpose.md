@@ -3835,9 +3835,31 @@ a modern replacement of obj/map entries.
 
 15 00 redesign process.
 
+not all tools accept a textarea stdin
+
 new props for tools
 
-- stdin: arg id
-- 
+- ~~stdin?: arg id~~
+- arg: is_stdin
+
+it will not render if it's stdin and it's not the first tool.
+
+chaining default to false. <!-- idk if it really matters, despite being powerful -->
+
+---
+
+about name and id...
+
+i doubt if it's really scalable to "normalize id". it works well, arg names are human and internationalization is not needed now.
+
+but actually, id is a constraint of js. what if it allowed variable names w spaces?
+
+constraints? i should abstract. let's make name the primary key. later, i may write like this: if tool.name exists in current lang, use that, otherwise fallback to en or name itself.
+
+it would not be easily typed. but tsism should be avoided. i can easily test it. and if i wanna automate, static testing (code review) and localization are trivial for llms.
+
+"normalize id" is not really self explanatory. i would rename it `variable`.
+
+it's to fix js design flaw. so it would be nicely placed in std.
 
 
