@@ -3,6 +3,7 @@ import type { options } from 'web/component/select'
 // export * from 'action/maimai'
 import { json_to_yaml, yaml_to_json } from 'action/json yaml toml xml'
 import { merge_journal, telegram_to_journal } from 'action/telegram to journal';
+import { maimai } from 'web/component/maimai';
 // export * from 'action/json yaml toml xml'
 
 export type tool = {
@@ -48,9 +49,7 @@ export const tools: Record<string, Optional<tool, 'name'>> = {
         options: ['standard', 'flexible', 'forgiving']
       }
     ],
-    render_output(){
-      return 'hello world'
-    }
+    render_output: maimai
   },
   "yaml to json": {
     fn: yaml_to_json,
