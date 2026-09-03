@@ -393,3 +393,9 @@ i would omit anyway, but humans should know this.
   - self explanatory, no comments
 - notes:
   - prefer modern proven libraries when needed
+
+# . thinking 2026.09.03
+
+- verb noun for actions, predicate for bools, noun for factory functions (`date`, not `create_date` or `date_factory`)
+
+

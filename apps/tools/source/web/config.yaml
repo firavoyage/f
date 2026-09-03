@@ -19,9 +19,10 @@ appearance: # view
     output: 
       is visible: true
 behavior:
+  should chain: false
   will sync input to url: false
   will persist input: false
-  will pipe output to new command: false
+  # will pipe output to new command: false
 shortcuts:
   toggle sidebar: ctrl+b
   # toggle arguments: ctrl+shift+a

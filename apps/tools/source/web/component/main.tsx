@@ -3,8 +3,6 @@ import type { tool, arg } from 'action/tools'
 import { tools } from 'action/tools'
 // import * as tools from 'action/tools';
 
-import { normalize_id } from 'lib/normalize id';
-
 import { use_global } from "web/component/app";
 
 import { Process } from "web/component/process";
@@ -14,7 +12,7 @@ import { command } from 'web/component/app'
 function args_to_options(args: arg[]) {
   const options: any = {}
   for (const arg of args) {
-    const key = arg.id ?? normalize_id(arg.name)
+    const key = arg.id ?? variable(arg.name)
     const value = arg.value
     // const value = arg.type == 'number' ? +arg.value : arg.value
 
