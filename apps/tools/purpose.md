@@ -3862,4 +3862,23 @@ it would not be easily typed. but tsism should be avoided. i can easily test it.
 
 it's to fix js design flaw. so it would be nicely placed in std.
 
+---
+
+about the impl.
+
+simple. i would make stdin nil at first. (if input given, even if empty, it will be replaced w an empty string)
+
+if it's nil i would show the mapped stdin arg, and thus every step later it would be stdout which _would not_ be nil.
+
+the problem is undefined == nil == void in js. it does not matter.
+
+- i will not use "===". it's compliance. js design flaw should be abstracted or hacked, not "fixed" while keeping solid backward compatibility
+- fn should not be void.
+
+one idea is to make "nil symbol: nil", it would break nullish op. (i could not override op in js)
+
+and i will still show arg and ~~gray out the input~~ (stdin). just be explicit and inform.
+
+16 00 web: rename classnames of buttons, make button prefix instead of suffix.
+
 

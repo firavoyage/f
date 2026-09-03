@@ -11,11 +11,11 @@ export function Menu(props: menu) {
 
   return (
     <div className="menu">
-      <button className="search_button">
+      <button className="button_search">
         <Icon {...p({ name: 'search' })}></Icon>
       </button>
       <div className="name">{app}</div>
-      <button className="hamburger_button" {...p({ onClick: toggle_hamburger })}>
+      <button className="button_hamburger" {...p({ onClick: toggle_hamburger })}>
         <Icon {...p({ name: 'menu' })}></Icon>
       </button>
     </div>

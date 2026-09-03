@@ -44,20 +44,20 @@ export function Main() {
   return (
     <div className="main">
       <div className="titlebar">
-        <button className="toggle_sidebar_button" {...p({ onClick() { command('toggle sidebar') } })}>
+        <button className="button_toggle_sidebar" {...p({ onClick() { command('toggle sidebar') } })}>
           <Icon {...p({ name: 'sidebar' })}></Icon>
         </button>
         <div className="title"></div>
         {/* <button className="view">
           view
         </button> */}
-        <button className="minimize_button">
+        <button className="button_minimize">
           <Icon {...p({ name: 'minimize' })}></Icon>
         </button>
-        <button className="maximize_button">
+        <button className="button_maximize">
           <Icon {...p({ name: 'maximize' })}></Icon>
         </button>
-        <button className="close_button">
+        <button className="button_close">
           <Icon {...p({ name: 'close' })}></Icon>
         </button>
       </div>
