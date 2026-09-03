@@ -14,14 +14,18 @@ export function Process(props: process) {
     {
       map(process, (item, index) => (
         <div className="item">
-          <div className="tool">{item.name}</div>
-          <button className="button_delete" {...p({
-            onclick() {
-              set_process(() => {
-                process.splice(index, 1)
-              })
-            }
-          })}>delete</button>
+          <div className="title">
+            <div className="name">{item.name}</div>
+            <button className="button_delete" {...p({
+              onclick() {
+                set_process(() => {
+                  process.splice(index, 1)
+                })
+              }
+            })}>
+              <Icon {...p({ name: 'delete' })}></Icon>
+            </button>
+          </div>
           <div className="args">{map(item.args ?? [], arg => (
             <div className="arg">
               <Arg {...p({

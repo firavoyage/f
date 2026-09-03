@@ -51,9 +51,25 @@ export const tools: Record<string, Optional<tool, 'name'>> = {
   },
   "yaml to json": {
     fn: yaml_to_json,
+    args: [
+      {
+        name: 'json',
+        type: 'textarea',
+        value: '',
+        is_stdin: true
+      },
+    ],
   },
   "telegram to journal": {
-    fn: telegram_to_journal
+    fn: telegram_to_journal,
+    args: [
+      {
+        name: 'telegram text',
+        type: 'textarea',
+        value: '',
+        is_stdin: true
+      },
+    ],
   },
   "merge journal": {
     fn: merge_journal,

@@ -23,13 +23,14 @@ export const use_global = state({
   'appearance.theme': union('system', "light", "dark"),
   'appearance.density': union("comfortable", "cozy", "compact"),
   'appearance.layout.sidebar.is visible': true,
+  'appearance.layout.input.is visible': false,
   'appearance.layout.hamburger menu.is visible': false,
   'navigation.path': '',
   // 'navigation.page': '',
   // 'navigation.tool': '',
 }, {
   persist: 'tools',
-  version: '0.5',
+  version: '0.6',
   should_migrate() { return true },
   sync_url_options: {
     should_sync_url: true,
