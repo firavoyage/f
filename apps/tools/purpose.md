@@ -3923,4 +3923,17 @@ i mean, ive applied flex shrink 0 to all elements.
 
 **i generally want to show scrollbar on the children, rather than scrolling the parent all together.**
 
+---
+
+wait weird. it's `1 1 0%` instead of `1 1 auto`
+
+ok reasonable. i just have to explicitly define flex basis 100% for block elements.
+
+e.g. select is displayed inline. radio is not.
+
+---
+
+yeah, if i wrap dynamically... i should possibly make it block.
+
+
 
