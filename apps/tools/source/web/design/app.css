@@ -225,8 +225,7 @@ textarea {
             margin: var(--page-whitespace);
 
             > .arg {
-              flex-direction: row;
-              flex-wrap: wrap;
+              flex-flow: row wrap;
 
               > .name {
                 flex: 1;
@@ -241,9 +240,9 @@ textarea {
 
 .textarea {
   padding: var(--page-whitespace);
-  width: 100%;
 
   flex: 1;
+  flex-basis: 100%;
 
   overflow: auto;
 
@@ -251,7 +250,7 @@ textarea {
 }
 
 .radio {
-  width: 100%;
+  flex-basis: 100%;
 
   > .item {
     padding: var(--page-whitespace);
