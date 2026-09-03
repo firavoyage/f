@@ -29,21 +29,30 @@ export function Main() {
   let can_render_output = false
   let render_output: fn
 
-  useEffect(() => {
-    let stdin = is_input_visible ? input : nil
-    for (const tool of process as tool[]) {
-      log(tool)
-      const result = handle(() => tools[tool.name].fn(args_to_options(tool.args ?? [], stdin)))
-      if (is_error(result)) {
-        continue
-      }
-      stdin = result
+  let stdin = is_input_visible ? input : nil
+  for (const tool of process) {
+    const { fn, render_output: current_render_output } = tools[tool.name]
 
-
+    const result = handle(() => fn(args_to_options(tool.args ?? [], stdin)))
+    if (is_error(result)) {
+      continue
     }
+    stdin = result
 
-    set_output(stdin)
-  }, [JSON.stringify(process), input])
+    if (is_given(current_render_output)) {
+      can_render_output = true
+      render_output = current_render_output
+    }
+  }
+  const current_output = stdin
+  log(output)
+
+  useEffect(() => {
+    set_output(current_output ?? '')
+  }, [current_output])
+  // useEffect(() => {
+  //   set_output(stdin ?? '')
+  // }, [JSON.stringify(process), input])
 
   return (
     <div className="main">
@@ -82,7 +91,12 @@ export function Main() {
         <div className="panel">
           <div className="title">Output</div>
           <div className="output">
-            <Textarea {...p({ value: output, set_value: set_output })}></Textarea>
+            {
+              can_render_output ?
+                // @ts-expect-error already narrowed
+                render_output(output) :
+                <Textarea {...p({ value: output, set_value: set_output })}></Textarea>
+            }
           </div>
         </div>
       </div>
