@@ -26,17 +26,20 @@ export function Main() {
   const [input, set_input] = use_global('input')
   const [output, set_output] = use_global('output')
   const [is_input_visible, set_is_input_visible] = use_global('appearance.layout.input.is visible')
+  let can_render_output = false
+  let render_output: fn
 
   useEffect(() => {
     let stdin = is_input_visible ? input : nil
     for (const tool of process as tool[]) {
-      if (has(tools, tool.name)) {
-        const result = handle(() => tools[tool.name].fn(args_to_options(tool.args ?? [], stdin)))
-        if (is_error(result)) {
-          continue
-        }
-        stdin = result
+      log(tool)
+      const result = handle(() => tools[tool.name].fn(args_to_options(tool.args ?? [], stdin)))
+      if (is_error(result)) {
+        continue
       }
+      stdin = result
+
+
     }
 
     set_output(stdin)
@@ -71,12 +74,16 @@ export function Main() {
           is_input_visible &&
           <div className="panel">
             <div className="title">Input</div>
-            <Textarea {...p({ value: input, set_value: set_input })}></Textarea>
+            <div className="input">
+              <Textarea {...p({ value: input, set_value: set_input })}></Textarea>
+            </div>
           </div>
         }
         <div className="panel">
           <div className="title">Output</div>
-          <Textarea {...p({ value: output, set_value: set_output })}></Textarea>
+          <div className="output">
+            <Textarea {...p({ value: output, set_value: set_output })}></Textarea>
+          </div>
         </div>
       </div>
     </div>

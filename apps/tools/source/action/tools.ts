@@ -11,9 +11,9 @@ export type tool = {
   fn: fn
   // fn: (input: string, options?: any) => string
   args?: arg[]
-  args_to_options?: Function
-  render_input?: Function
-  render_output?: Function
+  args_to_options?: fn
+  render_input?: fn
+  render_output?: fn
 }
 
 export type arg = {
@@ -48,6 +48,9 @@ export const tools: Record<string, Optional<tool, 'name'>> = {
         options: ['standard', 'flexible', 'forgiving']
       }
     ],
+    render_output(){
+      return 'hello world'
+    }
   },
   "yaml to json": {
     fn: yaml_to_json,

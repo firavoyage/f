@@ -3943,4 +3943,14 @@ in my philosophy, everything is static by default. and if they refuse to shrink.
 
 flex shrink 0 (to direct children) and scrollable should be applied simultaneously.
 
+19 40 support render output.
+
+it can render output if there exists one tool that can render. if multiple supports, the last will be used.
+
+jsx would not be serialized so it would not return some elements directly.
+
+render output: text -> jsx.
+
+i feel if possible, i always want to render it. i dont have to have a dynamic option "render?" on output title i guess.
+
 
