@@ -53,7 +53,7 @@ export const tools: Record<string, Optional<tool, 'name'>> = {
     fn: yaml_to_json,
     args: [
       {
-        name: 'json',
+        name: 'yaml',
         type: 'textarea',
         value: '',
         is_stdin: true
