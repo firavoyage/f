@@ -3833,4 +3833,11 @@ yeah it works. i just dont want anything to be unreadable mess.
 
 a modern replacement of obj/map entries.
 
+15 00 redesign process.
+
+new props for tools
+
+- stdin: arg id
+- 
+
 
