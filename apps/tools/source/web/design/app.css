@@ -21,6 +21,38 @@ body {
 
 /* Components */
 
+.icon {
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+.a,
+.link,
+button,
+.button,
+.summary,
+.input,
+.textarea,
+.select,
+.contenteditable {
+  &:focus-visible {
+    outline: var(--field-outline-width) solid var(--color-bg-selection);
+    outline-offset: calc(var(--field-outline-width) * -1);
+  }
+}
+/* a,
+button,
+summary,
+[contenteditable="true"],
+[tabindex="0"],
+input,
+select,
+textarea {
+} */
+
 .app {
   display: flex;
   flex-direction: row;
@@ -76,7 +108,7 @@ body {
     }
   }
 
-  .menu {
+  > .menu {
     flex-direction: row;
 
     flex-basis: var(--titlebar-height);
@@ -101,8 +133,8 @@ body {
     }
   }
 
-  .list,
-  .hamburger {
+  > .list,
+  > .hamburger {
     /* margin-block: var(--page-whitespace); */
 
     /* display: block; */
@@ -115,7 +147,7 @@ body {
     }
   }
 
-  .list {
+  > .list {
     overflow-y: auto;
 
     * {
@@ -133,7 +165,7 @@ body {
   flex-direction: column;
   flex-grow: 1;
 
-  .titlebar {
+  > .titlebar {
     flex-direction: row;
 
     flex-basis: var(--titlebar-height);
@@ -142,71 +174,47 @@ body {
       flex-basis: var(--titlebar-height);
     }
 
-    .title {
+    > .title {
       flex-grow: 1;
     }
   }
 
-  .workspace {
+  > .workspace {
     flex-direction: row;
     flex-grow: 1;
 
-    .panel {
+    > .panel {
       display: flex;
       flex-direction: column;
 
       flex: 1;
 
-      .title {
+      > .title {
         margin-block: calc(var(--page-whitespace) / 2);
         margin-inline: var(--page-whitespace);
       }
 
-      .textarea {
-        padding: var(--page-whitespace);
-
-        flex-grow: 1;
-
-        overflow: auto;
-
-        font: var(--font-code);
-      }
-
-      .process_item {
-        margin: var(--page-whitespace);
+      > .process {
+        > .item {
+          margin: var(--page-whitespace);
+        }
       }
     }
   }
 }
 
-.icon {
-  justify-content: center;
-  align-items: center;
+.textarea {
+  padding: var(--page-whitespace);
 
-  width: 100%;
-  height: 100%;
+  flex-grow: 1;
+
+  overflow: auto;
+
+  font: var(--font-code);
 }
 
-.a,
-.link,
-button,
-.button,
-.summary,
-.input,
-.textarea,
-.select,
-.contenteditable {
-  &:focus-visible {
-    outline: var(--field-outline-width) solid var(--color-bg-selection);
-    outline-offset: calc(var(--field-outline-width) * -1);
+.radio {
+  > .item {
+    padding: var(--page-whitespace);
   }
 }
-/* a,
-button,
-summary,
-[contenteditable="true"],
-[tabindex="0"],
-input,
-select,
-textarea {
-} */

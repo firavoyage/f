@@ -1,7 +1,5 @@
 import type { arg } from 'action/tools'
 
-import { use_global } from 'web/component/app'
-
 import { Checkbox } from './checkbox'
 import { Switch } from './switch'
 import { Number } from './number'
