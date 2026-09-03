@@ -9,13 +9,14 @@ import { App } from "./component/app"
 
 // @ts-expect-error best effort
 const dev = handle(() => process.env.NODE_ENV == 'development' || import.meta.env?.DEV, false)
+const strict = false // disabled currently to reduce irrelevant noise
 
-// Use StrictMode in Dev (disabled currently to reduce irrelevant noise)
-if (dev) {
+// Use StrictMode
+if (dev && strict) {
   createRoot(document.getElementById("root")!).render(
-    // <StrictMode>
-    <App />
-    // </StrictMode>
+    <StrictMode>
+      <App />
+    </StrictMode>
   )
 } else {
   createRoot(document.getElementById("root")!).render(
@@ -47,7 +48,7 @@ if (dev) {
 
 // Ignore React Errors (Use Custom levels: info, error)
 const irrelevant_errors = ['Invalid DOM property']
-console.error = function (msg, ...substitution) {  
+console.error = function (msg, ...substitution) {
   // throw err are always errors, and if it can be logged (even as errors), it's safe
   console.warn(msg, ...substitution)
 }
