@@ -3913,4 +3913,6 @@ it also makes you aware!
 
 e.g. now i have `.textarea` instead of `.panel .textarea`
 
+17 10 lib/std: polymorph `has` to support `string`.
+
 

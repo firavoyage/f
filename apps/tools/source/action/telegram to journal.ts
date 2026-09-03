@@ -89,7 +89,7 @@ function parse_journal(journal_text: string): journal {
   // make empty input empty
   if (journal_text == '') {
     return []
-  } 
+  }
 
   let year, month, date, hour, minute
 
@@ -496,11 +496,7 @@ function round_journal(journal: journal, targets: number[]) {
   return journal
 }
 
-type merge_journal = {
-  original_text: string
-}
-
-export function merge_journal(addition_text: string, { original_text }: merge_journal) {
+export function merge_journal({ original_text, addition_text }: text) {
   const original = parse_journal(original_text)
   const addition = parse_journal(addition_text)
 
@@ -686,7 +682,7 @@ function telegram_to_journal_util(telegram_text: string, options: telegram_to_jo
 
 // log(telegram_to_journal(test_telegram, { rounding: true, targets: each(0, 50, 10) }))
 
-export function telegram_to_journal(telegram_text: string) {
+export function telegram_to_journal({ telegram_text }: text) {
   return telegram_to_journal_util(telegram_text, { rounding: true, targets: each(0, 50, 10) })
 }
 

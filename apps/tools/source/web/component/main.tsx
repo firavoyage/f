@@ -9,12 +9,13 @@ import { Process } from "web/component/process";
 import { Textarea } from 'web/component/textarea';
 import { command } from 'web/component/app'
 
-function args_to_options(args: arg[]) {
+function args_to_options(args: arg[], stdin: any) {
+  log({args, stdin})
+
   const options: any = {}
   for (const arg of args) {
     const key = arg.id ?? variable(arg.name)
-    const value = arg.value
-    // const value = arg.type == 'number' ? +arg.value : arg.value
+    const value = arg.is_stdin ? stdin : arg.value
 
     options[key] = value
   }
@@ -31,7 +32,7 @@ export function Main() {
     let stdin = is_input_visible ? input : nil
     for (const tool of process as tool[]) {
       if (has(tools, tool.name)) {
-        const result = handle(() => tools[tool.name].fn(stdin, args_to_options(tool.args ?? [])))
+        const result = handle(() => tools[tool.name].fn(args_to_options(tool.args ?? [], stdin)))
         if (is_error(result)) {
           continue
         }
