@@ -1,4 +1,411 @@
+# maimai dx song rating formula
 
+1:09 AM
+
+In **maimai DX**, your total player rating is determined by your **Best 50 scores**, which is a combination of your top 15 songs from the current game version and your top 35 songs from previous versions. [link](https://argw.miraheze.org/wiki/Maimai%5FDX)
+
+The calculation for an **individual song rating** depends on three metrics: the song's hidden internal level, your achievement percentage, and a rank coefficient. [link](https://www.reddit.com/r/maimai/comments/1px75ne/what%5Fare%5Fratings%5Fand%5Fhow%5Fdo%5Fthey%5Fwork/)
+
+### The Song Rating Formula
+
+SongRating=InternalLevel×Achievement%×RankFactor
+
+_The final value is always **rounded down** to the nearest whole integer._ [link](https://www.reddit.com/r/maimai/comments/zqhb8i/how%5Fdoes%5Fthe%5Frank%5Ffactor%5Ftable%5Fcome%5Finto%5Fthe/)
+
+***
+
+### Formula Breakdown
+
+#### 1. Internal Level (Chart Constant)
+
+Every song has a visible level (e.g., 13 or 13+), but behind the scenes, it possesses a decimal **Internal Level**: [link](https://www.reddit.com/r/maimai/comments/zqhb8i/how%5Fdoes%5Fthe%5Frank%5Ffactor%5Ftable%5Fcome%5Finto%5Fthe/)
+
+- **Level X:** Ranges from `X.0` to `X.5`.
+- **Level X+:** Ranges from `X.6` to `X.9`.
+- _Example:_ A song labeled as Level 13+ might actually have an internal constant of `13.8`. You can look these up on community database sites like DXRating. [link](https://www.reddit.com/r/maimai/comments/zqhb8i/how%5Fdoes%5Fthe%5Frank%5Ffactor%5Ftable%5Fcome%5Finto%5Fthe/)
+
+#### 2. Achievement %
+
+This is your standard in-game accuracy score, capped at a maximum of **101.0000%** (which includes the 100% base score + 1% bonus for Critical Perfect Breaks). In the formula, you use the exact decimal percentage capped at 100.5000% for the multiplier (e.g., 99.5% is input as `99.5%` or `0.995`). [link](https://www.youtube.com/watch?v=kvavTX-RKh8\&t=258)
+
+#### 3. Rank Factor (Coefficient Table)
+
+The game applies a specific multiplier based on the definitive rank tier you achieve: [link](https://www.reddit.com/r/maimai/comments/1px75ne/what%5Fare%5Fratings%5Fand%5Fhow%5Fdo%5Fthey%5Fwork/)
+
+| Achieved Rank | Achievement Range     | Rank Factor (Multiplier) |
+| ------------- | --------------------- | ------------------------ |
+| **SSS+**      | 100.5000% or higher   | **22.4**                 |
+| **SSS**       | 100.0000% – 100.4999% | **21.6**                 |
+| **SS+**       | 99.5000% – 99.9999%   | **21.1**                 |
+| **SS**        | 99.0000% – 99.4999%   | **20.8**                 |
+| **S+**        | 98.0000% – 98.9999%   | **20.3**                 |
+| **S**         | 97.0000% – 97.9999%   | **20.0**                 |
+| **AAA**       | 94.0000% – 96.9999%   | **16.8**                 |
+| **AA**        | 90.0000% – 93.9999%   | **15.2**                 |
+| **A**         | 80.0000% – 89.9999%   | **13.6**                 |
+
+_(Note: Ranks below A scale downwards from 12.0 to 5.0)._
+
+***
+
+### Calculation Example
+
+If you score **100.2500% (SSS)** on a song with an internal constant of **14.2**:
+
+1. **Identify the Rank Factor:** Since 100.2500% falls into the SSS tier, your Rank Factor is **21.6**.
+2. **Apply the Formula:**
+
+14.2×100.25%×21.6=307.4472
+3\. **Round Down:** The song gives you **307 rating points**.
+
+### Strategy Tip
+
+Because the **Rank Factor** jumps aggressively at tier boundaries (like jumping from 21.6 to 22.4 when hitting SSS+), it is significantly easier to farm rating points by hunting **SSS+ scores** on slightly lower level charts than trying to scratch out an S or SS rank on a brutally hard chart. [link](https://www.reddit.com/r/maimai/comments/1px75ne/what%5Fare%5Fratings%5Fand%5Fhow%5Fdo%5Fthey%5Fwork/)
+
+If you would like to map out your next rating milestone, tell me your **current total rating** or the **average level** you can consistently SSS/SSS+. I can suggest what target scores you need next!
+
+- [link](https://www.reddit.com/r/maimai/comments/zqhb8i/how%5Fdoes%5Fthe%5Frank%5Ffactor%5Ftable%5Fcome%5Finto%5Fthe/)\
+  Reddit·r/maimai\
+  How does the Rank Factor Table come into the rating calculation\
+  Comments Section \* Rating wise, as long as 2 charts have the same internal difficulty, it will weight the same no matter the diffi...
+- [link](https://myjian.github.io/mai-tools/rating-visualizer/)\
+  WordPress.com\
+  maimai DX Rating Lookup Table & Visualization\
+  Level, Rank, Achv, Rating. 10.7 (10+), SSS+, 100.5000%, 240. 11.1 (11), SSS, 100.1002%, 240 ... Rank, Achievement, Factor, Rating ...
+- [link](https://www.youtube.com/watch?v=kvavTX-RKh8\&t=258)\
+  YouTube·Saow\
+  The PRO GUIDE to Help you Improve in maimai\
+  you lose from each note type allowing you to see where specifically you mess up and how to fix it for next time on the topic of sc...\
+  1m
+
+Show all
+
+## all rank factors
+
+In modern versions of **maimai DX** (from _maimai DX Splash PLUS_ up through the current _maimai DX CiRCLE_ version), the rank factors (coefficients) have been adjusted from the original Gen 1 values.
+
+The **complete list of rank factors** for every achievable tier in the game is categorized below:
+
+### 🌟 High Ranks (S to SSS+)
+
+These are the target tiers for building a high player rating. Note that for the **SSS+** multiplier, your achievement percentage is capped at **100.5000%** in the rating calculation formula, even if you score higher. [link](https://www.reddit.com/r/maimai/comments/1px75ne/what%5Fare%5Fratings%5Fand%5Fhow%5Fdo%5Fthey%5Fwork/)
+
+| Achieved Rank | Achievement Range     | Rank Factor (Coefficient) |
+| ------------- | --------------------- | ------------------------- |
+| **SSS+**      | 100.5000% or higher   | **22.4**                  |
+| **SSS**       | 100.0000% – 100.4999% | **21.6**                  |
+| **SS+**       | 99.5000% – 99.9999%   | **21.1**                  |
+| **SS**        | 99.0000% – 99.4999%   | **20.8**                  |
+| **S+**        | 98.0000% – 98.9999%   | **20.3**                  |
+| **S**         | 97.0000% – 97.9999%   | **20.0**                  |
+
+***
+
+### 📉 Mid-to-Low Ranks (D to AAA)
+
+While these ranks provide significantly less rating, their precise coefficients dictate your score if you are struggling with a difficult chart:
+
+| Achieved Rank | Achievement Range   | Rank Factor (Coefficient) |
+| ------------- | ------------------- | ------------------------- |
+| **AAA**       | 94.0000% – 96.9999% | **16.8**                  |
+| **AA**        | 90.0000% – 93.9999% | **15.2**                  |
+| **A**         | 80.0000% – 89.9999% | **13.6**                  |
+| **BBB**       | 75.0000% – 79.9999% | **12.0**                  |
+| **BB**        | 70.0000% – 74.9999% | **11.2**                  |
+| **B**         | 60.0000% – 69.9999% | **9.6**                   |
+| **C**         | 50.0000% – 59.9999% | **8.0**                   |
+| **D**         | 0.0000% – 49.9999%  | **4.0**                   |
+
+***
+
+### 🦘 The "Rank Jump" Breakdown
+
+The formula intentionally heavily rewards accuracy. If you look closely at the math, moving up a rank tier gives you an immediate boost because the coefficient itself jumps: [link](https://www.reddit.com/r/maimai/comments/1px75ne/what%5Fare%5Fratings%5Fand%5Fhow%5Fdo%5Fthey%5Fwork/)
+
+- Going from **S → S+** increases the factor by **0.3**
+- Going from **S+ → SS** increases the factor by **0.5**
+- Going from **SS → SS+** increases the factor by **0.3**
+- Going from **SS+ → SSS** increases the factor by **0.5**
+- Going from **SSS → SSS+** increases the factor by a massive **0.8**
+
+_Note: If you play on the latest **maimai DX CiRCLE** version, achieving an **All Perfect (AP)** or **All Perfect+ (AP+)** gives a flat **+1 point bonus** directly to that individual chart's final rating value._ [link](https://www.reddit.com/r/maimai/comments/1px75ne/what%5Fare%5Fratings%5Fand%5Fhow%5Fdo%5Fthey%5Fwork/)
+
+Would you like to calculate the exact rating value for a **specific level and achievement score**, or look at how **Dan (段位) plate bonuses** affect your total rating? [link](https://argw.miraheze.org/wiki/Maimai%5FDX)
+
+- [link](https://silentblue.remywiki.com/maimai%5FDX:Rating)\
+  RemyWiki\
+  maimai DX:Rating - SilentBlue - RemyWiki\
+  Mar 25, 2026 — Rating, officially DX Rating (でらっくす RATING), is a number that shows the skill of a player, similar to jubility in jubeat, Volforce...
+- [link](https://argw.miraheze.org/wiki/Maimai%5FDX)\
+  Miraheze\
+  maimai DX - All Rhythm Game Wiki\
+  Aug 17, 2024 — The Rating system has been overhauled. The new Rating system is called Deluxe Rating/DX Rating (でらっくすRATING). It works more or les...
+- [link](https://zh.moegirl.org.cn/en/Maimai%E7%B3%BB%E5%88%97)\
+  萌娘百科\
+  maimai - Moegirlpedia - 萌娘百科\
+  Aug 23, 2026 — The DX Rating value of a chart is calculated using the following formula and rounded down: "DX Rating Value = Chart Constant \* Ach...
+
+Show all
+
+# why is achievement rate capped at 100.5 in the maimai dx song rating formula
+
+In the [maimai DX rating formula](https://silentblue.remywiki.com/maimai%5FDX:Rating), the achievement rate used for calculation is capped at **100.5000%** because <mark>it serves as the threshold for the highest tier multiplier in the game's ranking system, known as<span> </span><strong>SSS+</strong></mark>. [link](https://www.reddit.com/r/maimai/comments/zqhb8i/how%5Fdoes%5Fthe%5Frank%5Ffactor%5Ftable%5Fcome%5Finto%5Fthe/)
+
+### The Core Reasons
+
+- **Standardizing the Highest Rank (SSS+):** The game maps rating multipliers to specific rank boundaries. The highest rank bracket is SSS+, which spans from 100.5000% to the absolute maximum possible score of 101.0000%. SEGA chose to value all SSS+ plays equally within the main rating formula. [link](https://www.reddit.com/r/maimai/comments/1px75ne/what%5Fare%5Fratings%5Fand%5Fhow%5Fdo%5Fthey%5Fwork/)
+- **Reducing "Break Note" RNG Bias:** While a standard perfect run nets 100.0000% base achievement, the extra 1.0000% comes from getting "Critical Perfect" judgments on **Break Notes**. If the formula scaled all the way to 101.0000%, songs with an unusually high density of Break Notes would reward disproportionately more rating than charts without them. Capping it at 100.5000% limits this scoring variance. [link](https://www.youtube.com/watch?v=kvavTX-RKh8\&t=258)
+- **Alignment with SEGA's Rhythm Game Ecosystem:** This system closely mirrors the rating and ranking logic used in SEGA’s other major arcade rhythm titles like _CHUNITHM_ and _Ongeki_, creating parity across their network ecosystem.
+
+### How the Cap Fits the Formula
+
+The single-song rating is calculated using this formula:
+
+SingleSongRating=ChartConstant×AchievementRate(Cappedat1.005)×RankCoefficient
+
+The tier breakdown demonstrates how the cap functions at the top level:
+
+| Rank     | Achievement Range     | Capped Value Used          | Rank Coefficient |
+| -------- | --------------------- | -------------------------- | ---------------- |
+| **SSS+** | 100.5000% – 101.0000% | **1.0050**                 | **22.4**         |
+| **SSS**  | 100.0000% – 100.4999% | Actual Score (e.g., 1.002) | 21.6             |
+| **SS+**  | 99.5000% – 99.9999%   | Actual Score               | 21.1             |
+| **SS**   | 99.0000% – 99.4999%   | Actual Score               | 20.8             |
+
+Once you cross 100.5000%, the achievement rate locks at `1.0050` and your coefficient locks at `22.4`. Therefore, a 100.5001% play and a perfect 101.0000% (Theoretical All Perfect+) grant the exact same baseline rating points. [link](https://www.reddit.com/r/maimai/comments/zqhb8i/how%5Fdoes%5Fthe%5Frank%5Ffactor%5Ftable%5Fcome%5Finto%5Fthe/)
+
+_(Note: In newer versions like maimai DX CiRCLE onwards, achieving a flawless **All Perfect (AP)** will grant a flat, cosmetic **+1 rating** to that specific chart score, but the core formula math remains tied to the 100.5% cap)._ [link](https://www.reddit.com/r/maimai/comments/1px75ne/what%5Fare%5Fratings%5Fand%5Fhow%5Fdo%5Fthey%5Fwork/)
+
+Would you like to look at the **exact rating output** for a specific song level, or calculate how many **SSS+ scores** you need to hit your next total rating milestone?
+
+- [link](https://note.com/yumenikker/n/n5bf533a21f0c?hl=en)\
+  note·ヒロッピ\
+  \[maimai Deluxe] What is a 16000 rating like? \[Achievement ...\
+  Jan 30, 2025 — About the calculation of the single-song rating value ... Regarding the achievement rate (ratio), 100.5000% (1.005) is the maximum...
+- [link](https://www.reddit.com/r/maimai/comments/zqhb8i/how%5Fdoes%5Fthe%5Frank%5Ffactor%5Ftable%5Fcome%5Finto%5Fthe/)\
+  Reddit\
+  How does the Rank Factor Table come into the rating calculation\
+  Dec 20, 2022 — Rating wise, as long as 2 charts have the same internal difficulty, it will weight the same no matter the difficulty (Expert / Mas...
+- [link](https://www.reddit.com/r/maimai/comments/1px75ne/what%5Fare%5Fratings%5Fand%5Fhow%5Fdo%5Fthey%5Fwork/)\
+  Reddit·r/maimai\
+  What are ratings and how do they work? : r/maimai - Reddit\
+  Dec 27, 2025 — The way individual chart rating is calculated is by multiplying a level multiplier, the achievement you get on that chart, and a "
+
+Show all
+
+## why
+
+The cap remains at **100.5000%** because SEGA wants to reward **flawless accuracy on regular notes** while preventing the rating system from becoming a **gamble on "Critical Perfects."**
+
+Here is why that specific number matters:
+
+- **100% is not actually perfect:** In _maimai DX_, hitting every single note with a standard "Perfect" judgment gives you exactly **100.0000%**.
+- **The "Bonus" 1%:** The extra 1.0000% (bringing the theoretical maximum to 101.0000%) can _only_ be earned by getting a **Critical Perfect** (a tighter timing window) on **Break Notes**.
+- **Why 100.5%?** It represents the halfway point of that bonus. To reach 100.5000%, a player must have near-flawless accuracy across the entire song and hit a reasonable majority of their Critical Perfects on Break Notes.
+
+If SEGA didn't cap it at 100.5%, the rating system would break in two ways:
+
+1. **Song Imbalance:** Songs with a massive amount of Break Notes would become "rating farms," giving players massive rating boosts just because of the chart structure. Songs with few Break Notes would be completely ignored by competitive players.
+2. **Extreme Stress:** Players would have to grind for literal perfection (101.0000% Theoretical All Perfect) to get the best rating. Capping it at 100.5% creates a buffer, allowing you to make a few minor timing mistakes on Break Notes while still walking away with the maximum possible rating for that chart.
+
+Are you trying to optimize your current **rating grind**, or are you curious about how **other SEGA rhythm games** handle their scoring limits?
+
+# maimai dx song rating formula
+
+In **maimai DX**, your total player rating is calculated by <mark>summing the individual rating values of your<span> </span><strong>top 50 song performances</strong></mark>.
+
+The total rating is split into two pools:
+
+- **Top 15 Current Songs:** Your highest-rated performances on tracks released in the active game version.
+- **Top 35 Old Songs:** Your highest-rated performances on tracks from all prior versions.
+
+***
+
+### The Single-Chart Rating Formula
+
+The individual rating value earned for a single song play is calculated using the following formula: [link](https://www.reddit.com/r/maimai/comments/zqhb8i/how%5Fdoes%5Fthe%5Frank%5Ffactor%5Ftable%5Fcome%5Finto%5Fthe/)
+
+SongRating=⌊ChartConstant×min(AchievementRate,100.5%)×RankFactor⌋
+
+_(Note: The result is truncated/rounded down to the nearest whole integer.)_ [link](https://www.reddit.com/r/maimai/comments/zqhb8i/how%5Fdoes%5Fthe%5Frank%5Ffactor%5Ftable%5Fcome%5Finto%5Fthe/)
+
+From the **maimai DX CiRCLE** version onward, achieving an **All Perfect (AP)** or **All Perfect+ (AP+)** adds a flat **+1 bonus** directly to that chart's final rating value. [link](https://www.reddit.com/r/maimai/comments/1px75ne/what%5Fare%5Fratings%5Fand%5Fhow%5Fdo%5Fthey%5Fwork/)
+
+***
+
+### Formula Variables Broken Down
+
+#### 1. Chart Constant (Internal Level)
+
+This is the hidden, exact decimal difficulty assigned to a song. The number displayed in-game is just a generalized label. For example: [link](https://www.reddit.com/r/maimai/comments/1px75ne/what%5Fare%5Fratings%5Fand%5Fhow%5Fdo%5Fthey%5Fwork/)
+
+- A song labeled as **Level 13** can have an internal chart constant anywhere from **13.0 to 13.6**.
+- A song labeled as **Level 13+** ranges from **13.7 to 13.9**. [link](https://www.reddit.com/r/maimai/comments/zqhb8i/how%5Fdoes%5Fthe%5Frank%5Ffactor%5Ftable%5Fcome%5Finto%5Fthe/)
+
+#### 2. Achievement Rate
+
+This is your final accuracy percentage shown at the clear screen (e.g., 99.5000% or 100.5000%). For calculation purposes, this value caps out at **100.5000%** (even if you score a theoretical maximum of 101.0000% via Break notes). [link](https://www.youtube.com/watch?v=kvavTX-RKh8\&t=258)
+
+#### 3. Rank Factor (Multiplier Table)
+
+The Rank Factor is a tiered multiplier determined strictly by your final achievement grade. Passing a threshold results in a massive multiplier spike: [link](https://www.reddit.com/r/maimai/comments/1px75ne/what%5Fare%5Fratings%5Fand%5Fhow%5Fdo%5Fthey%5Fwork/)
+
+| Achievement Grade | Minimum % Required | Rank Factor Multiplier |
+| ----------------- | ------------------ | ---------------------- |
+| **SSS+**          | 100.5000%          | **22.4**               |
+| **SSS**           | 100.0000%          | **21.6**               |
+| **SS+**           | 99.5000%           | **21.1**               |
+| **SS**            | 99.0000%           | **20.8**               |
+| **S+**            | 98.0000%           | **20.3**               |
+| **S**             | 97.0000%           | **20.0**               |
+| **AAA**           | 94.0000%           | **16.8**               |
+| **AA**            | 90.0000%           | **16.0**               |
+| **A**             | 80.0000%           | **13.6**               |
+
+***
+
+### Step-by-Step Calculation Example
+
+If you achieve an **SSS (100.0200%)** on a Master chart with an internal **Chart Constant of 14.2**: [link](https://www.reddit.com/r/maimai/comments/zqhb8i/how%5Fdoes%5Fthe%5Frank%5Ffactor%5Ftable%5Fcome%5Finto%5Fthe/)
+
+1. **Identify variables:** Chart Constant = `14.2`, Achievement Rate = `100.0200%` (or `1.0002`), Rank Factor = `21.6`.
+2. **Multiply:** 14.2 × 1.0002 × 21.6 = 306.7453
+3. **Truncate:** Drop the decimals to get a final value of **306 Rating Points**. [link](https://www.reddit.com/r/maimai/comments/zqhb8i/how%5Fdoes%5Fthe%5Frank%5Ffactor%5Ftable%5Fcome%5Finto%5Fthe/)
+
+If you would like to estimate your profile's progression, let me know your **current total rating** or **what tier of songs (e.g., Level 13 SSS)** you regularly clear so we can map out a target!
+
+- [link](https://www.reddit.com/r/maimai/comments/zqhb8i/how%5Fdoes%5Fthe%5Frank%5Ffactor%5Ftable%5Fcome%5Finto%5Fthe/)\
+  Reddit·r/maimai\
+  How does the Rank Factor Table come into the rating calculation\
+  Dec 20, 2022 — Comments Section \* Rating wise, as long as 2 charts have the same internal difficulty, it will weight the same no matter the diffi...
+- [link](https://www.reddit.com/r/maimai/comments/1px75ne/what%5Fare%5Fratings%5Fand%5Fhow%5Fdo%5Fthey%5Fwork/)\
+  Reddit·r/maimai\
+  What are ratings and how do they work? : r/maimai - Reddit\
+  Dec 27, 2025 — The way individual chart rating is calculated is by multiplying a level multiplier, the achievement you get on that chart, and a "
+- [link](https://www.reddit.com/r/maimai/comments/zb1vol/can%5Fanyone%5Ftell%5Fme%5Fhow%5Fdoes%5Fthe%5Frating%5Fpoints%5Fgo/)\
+  Reddit·r/maimai\
+  Can anyone tell me how does the rating points go up : r/maimai\
+  Dec 3, 2022 — Comments Section \* mug1wara26. • 4y ago. each song has an individual rating value that is calculated as Song level \* Achievement p...
+
+Show all
+
+# maimai dx single chart rating formula
+
+The single-chart DX rating value for an individual play in **maimai DX** is calculated using a straightforward math formula based on your accuracy, the hidden difficulty decimal, and a rank multiplier. [link](https://argw.miraheze.org/wiki/Maimai%5FDX)
+
+### The Single Chart Rating Formula
+
+SingleChartRating=⌊ChartConstant×AchievementRate×RankCoefficient⌋+APBonus
+
+- **Chart Constant (譜面定数):** The hidden internal difficulty of a song. For instance, a song listed visually as Level 13+ can have an internal value anywhere between 13.7 and 13.9. [link](https://www.reddit.com/r/maimai/comments/zqhb8i/how%5Fdoes%5Fthe%5Frank%5Ffactor%5Ftable%5Fcome%5Finto%5Fthe/)
+- **Achievement Rate:** Your final gameplay accuracy capped at **100.0000%** for the core calculation, expressed as a raw multiplier (e.g., a 99.5000% score uses `0.995`). _Note: Even if you score up to 101.0000% via Break notes, the percentage used in this formula stops scaling past 100.0000%._ [link](https://argw.miraheze.org/wiki/Maimai%5FDX)
+- **Rank Coefficient:** A steep multiplier tier determined strictly by the badge rank achieved during that play. [link](https://www.reddit.com/r/maimai/comments/1px75ne/what%5Fare%5Fratings%5Fand%5Fhow%5Fdo%5Fthey%5Fwork/)
+- **AP Bonus:** Modern versions (from _maimai DX CiRCLE_ onwards) award a flat **+1 point bonus** directly to the chart rating if you achieve an **All Perfect (AP)** or higher. [link](https://www.reddit.com/r/maimai/comments/1px75ne/what%5Fare%5Fratings%5Fand%5Fhow%5Fdo%5Fthey%5Fwork/)
+
+***
+
+### Rank Coefficient Table
+
+Because the rank coefficient jumps dramatically between specific break points, achieving a higher rank badge matters significantly more than grinding fractional percentages within a lower tier. [link](https://www.reddit.com/r/maimai/comments/1px75ne/what%5Fare%5Fratings%5Fand%5Fhow%5Fdo%5Fthey%5Fwork/)
+
+| Rank Badge | Achievement Range      | Rank Coefficient |
+| ---------- | ---------------------- | ---------------- |
+| **SSS+**   | 100.5000% to 101.0000% | **22.4**         |
+| **SSS**    | 100.0000% to 100.4999% | **21.6**         |
+| **SS+**    | 99.5000% to 99.9999%   | **21.1**         |
+| **SS**     | 99.0000% to 99.4999%   | **20.8**         |
+| **S+**     | 98.0000% to 98.9999%   | **20.3**         |
+| **S**      | 97.0000% to 97.9999%   | **20.0**         |
+| **AAA**    | 94.0000% to 96.9999%   | **16.8**         |
+| **AA**     | 90.0000% to 93.9999%   | **13.6**         |
+| **A**      | 80.0000% to 89.9999%   | **10.5**         |
+
+_(Ranks below A use lower single-digit coefficients down to 4.0 for a D rank.)_
+
+***
+
+### Calculation Example
+
+If you score **99.7500% (SS+)** on a Master chart with an internal **Chart Constant of 14.2**:
+
+1. Identify the coefficient for **SS+** → **21.1**.
+2. Cap your achievement rate to a max of 100% → **99.75%** (`0.9975`).
+3. Multiply the values: 14.2 × 0.9975 × 21.1 = 298.8715
+4. Round down to the nearest whole integer → **298 Rating Points**.
+
+To easily find specific song constants and model your profile data, you can use community resources like the [maimai DX Rating Lookup Table & Visualizer](https://myjian.github.io/mai-tools/rating-visualizer/) or track songs on DXRating.net.
+
+If you'd like, let me know:
+
+- Your **current total player rating**
+- The **difficulty bracket** you are targeting (e.g., Level 12, 13, 14)
+- Whether you prefer pushing for **higher accuracy (SSS+)** or **harder songs (S/SS)**
+
+I can calculate the exact targets you need to break into your next rating border color!
+
+- [link](https://www.reddit.com/r/maimai/comments/zqhb8i/how%5Fdoes%5Fthe%5Frank%5Ffactor%5Ftable%5Fcome%5Finto%5Fthe/)\
+  Reddit·r/maimai\
+  How does the Rank Factor Table come into the rating calculation\
+  Dec 20, 2022 — Comments Section \* Rating wise, as long as 2 charts have the same internal difficulty, it will weight the same no matter the diffi...
+- [link](https://www.reddit.com/r/maimai/comments/1px75ne/what%5Fare%5Fratings%5Fand%5Fhow%5Fdo%5Fthey%5Fwork/)\
+  Reddit·r/maimai\
+  What are ratings and how do they work? : r/maimai - Reddit\
+  Dec 27, 2025 — The way individual chart rating is calculated is by multiplying a level multiplier, the achievement you get on that chart, and a "
+- [link](https://argw.miraheze.org/wiki/Maimai%5FDX)\
+  Miraheze\
+  maimai DX - All Rhythm Game Wiki\
+  Aug 17, 2024 — The rough maximum rating in this system is about 10500, including grade bonuses. The formula for the rating of a particular play i...
+
+Show all
+
+# all maimai dx rank factors
+
+In **maimai DX**, the **Rank Factor** (also called the Rank Multiplier) is a hidden value used directly in the formula to calculate your individual chart rating. [link](https://www.reddit.com/r/maimai/comments/zqhb8i/how%5Fdoes%5Fthe%5Frank%5Ffactor%5Ftable%5Fcome%5Finto%5Fthe/)
+
+The exact rating you get from a play is determined by multiplying the internal **Chart Constant** by your achievement percentage and the corresponding **Rank Factor**. [link](https://www.reddit.com/r/maimai/comments/1px75ne/what%5Fare%5Fratings%5Fand%5Fhow%5Fdo%5Fthey%5Fwork/)
+
+### Official maimai DX Rank Factors
+
+Below is the complete, standard rank factor table utilized across modern versions of the game:
+
+| Achievement % Range     | Achieved Rank | Rank Factor Multiplier |
+| ----------------------- | ------------- | ---------------------- |
+| **100.5000% or higher** | **SSS+**      | **22.4**               |
+| 100.0000% – 100.4999%   | SSS           | 21.6                   |
+| 99.5000% – 99.9999%     | SS+           | 21.1                   |
+| 99.0000% – 99.4999%     | SS            | 20.8                   |
+| 98.0000% – 98.9999%     | S+            | 20.3                   |
+| 97.0000% – 97.9999%     | S             | 20.0                   |
+| 94.0000% – 96.9999%     | AAA           | 16.8                   |
+| 90.0000% – 93.9999%     | AA            | 15.2                   |
+| 80.0000% – 89.9999%     | A             | 13.6                   |
+| 75.0000% – 79.9999%     | BBB           | 12.0                   |
+| 70.0000% – 74.9999%     | BB            | 11.2                   |
+| 60.0000% – 69.9999%     | B             | 9.6                    |
+| 50.0000% – 59.9999%     | C             | 8.0                    |
+| 0.0000% – 49.9999%      | D             | 5.0                    |
+
+### Critical Takeaways for Rating Grinding
+
+- **The "S" and "SSS+" Spikes:** Notice the dramatic jump in the factor from AAA (16.8) to S (20.0), and from SSS (21.6) to SSS+ (22.4). Pushing your score over these exact thresholds provides a massive, non-linear boost to your total rating. [link](https://www.reddit.com/r/maimai/comments/1px75ne/what%5Fare%5Fratings%5Fand%5Fhow%5Fdo%5Fthey%5Fwork/)
+- **Accuracy Over Pure Difficulty:** Because of how heavily weighted higher rank factors are, getting an **SSS+** on a lower-level chart will almost always yield more rating points than just scraping an **S** or **SS** on a much harder song. [link](https://www.reddit.com/r/maimai/comments/1px75ne/what%5Fare%5Fratings%5Fand%5Fhow%5Fdo%5Fthey%5Fwork/)
+
+Would you like help calculating the exact **individual chart rating** for a specific song you are practicing? Tell me the **internal chart constant** and your **target achievement %** to see how much it will boost your profile! [link](https://www.reddit.com/r/maimai/comments/zqhb8i/how%5Fdoes%5Fthe%5Frank%5Ffactor%5Ftable%5Fcome%5Finto%5Fthe/)
+
+- [link](https://www.reddit.com/r/maimai/comments/zqhb8i/how%5Fdoes%5Fthe%5Frank%5Ffactor%5Ftable%5Fcome%5Finto%5Fthe/)\
+  Reddit·r/maimai\
+  How does the Rank Factor Table come into the rating calculation\
+  Dec 20, 2022 — Comments Section \* Rating wise, as long as 2 charts have the same internal difficulty, it will weight the same no matter the diffi...
+- [link](https://www.reddit.com/r/maimai/comments/1px75ne/what%5Fare%5Fratings%5Fand%5Fhow%5Fdo%5Fthey%5Fwork/)\
+  Reddit·r/maimai\
+  What are ratings and how do they work? : r/maimai - Reddit\
+  Dec 27, 2025 — The way individual chart rating is calculated is by multiplying a level multiplier, the achievement you get on that chart, and a "
+- [link](https://silentblue.remywiki.com/maimai%5FDX:Rating)\
+  RemyWiki\
+  maimai DX:Rating - SilentBlue - RemyWiki\
+  Mar 25, 2026 — Gen 3. Used in maimai でらっくす Splash PLUS to maimai でらっくす PRiSM PLUS. 段位 rating is no longer a part of the total rating. Friend Matc...
+
+Show all
 
 # kiwami meaning
 

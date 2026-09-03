@@ -49,7 +49,6 @@ export const tools: Record<string, Optional<tool, 'name'>> = {
         options: ['standard', 'flexible', 'forgiving']
       }
     ],
-    render_output: maimai
   },
   "yaml to json": {
     fn: yaml_to_json,
