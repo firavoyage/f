@@ -4,6 +4,12 @@
   color-scheme: dark;
 }
 
+:root {
+  * {
+    overflow: hidden;
+  }
+}
+
 body {
   user-select: none;
 
@@ -11,7 +17,10 @@ body {
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
-    overflow: hidden;
+
+    /* min-height: 0; */
+    
+    /* max-height: 100%; */
   }
 }
 
@@ -59,7 +68,8 @@ textarea {
   display: flex;
   flex-direction: row;
 
-  min-height: 100vh;
+  height: 100vh;
+  /* min-height: 100vh; */
 
   background-color: var(--color-bg-primary);
 
@@ -128,8 +138,7 @@ textarea {
       align-items: center;
       justify-content: center;
 
-      flex-grow: 1;
-      flex-shrink: 1;
+      flex: 1;
 
       font: var(--font-heading);
     }
@@ -165,7 +174,7 @@ textarea {
 .main {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  flex: 1;
 
   > .titlebar {
     flex-direction: row;
@@ -177,13 +186,13 @@ textarea {
     }
 
     > .title {
-      flex-grow: 1;
+      flex: 1;
     }
   }
 
   > .workspace {
     flex-direction: row;
-    flex-grow: 1;
+    flex: 1;
 
     > .panel {
       display: flex;
@@ -197,6 +206,8 @@ textarea {
       }
 
       > .process {
+        overflow-y: scroll;
+
         > .item {
           > .title {
             flex-direction: row;
@@ -206,7 +217,7 @@ textarea {
             }
 
             > .name {
-              flex-grow: 1;
+              flex: 1;
             }
           }
 
@@ -218,7 +229,7 @@ textarea {
               flex-wrap: wrap;
 
               > .name {
-                flex-grow: 1;
+                flex: 1;
               }
             }
           }
@@ -232,7 +243,7 @@ textarea {
   padding: var(--page-whitespace);
   width: 100%;
 
-  flex-grow: 1;
+  flex: 1;
 
   overflow: auto;
 

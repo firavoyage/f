@@ -3915,4 +3915,12 @@ e.g. now i have `.textarea` instead of `.panel .textarea`
 
 17 10 lib/std: polymorph `has` to support `string`.
 
+18 00 web: polish ui, adopt `flex: 1` over `flex-grow: 1`
+
+if i want it to "take all rest space"... its main size must be so as well.
+
+i mean, ive applied flex shrink 0 to all elements.
+
+**i generally want to show scrollbar on the children, rather than scrolling the parent all together.**
+
 
