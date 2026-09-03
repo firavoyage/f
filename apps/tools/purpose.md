@@ -3953,4 +3953,16 @@ render output: text -> jsx.
 
 i feel if possible, i always want to render it. i dont have to have a dynamic option "render?" on output title i guess.
 
+20 40 action/maimai: create maimai single chart difficulty <!-- chart constant --> and achivement rate to rating mapping tool. write docs <!-- collocated -->.
+
+https://myjian.github.io/mai-tools/rating-visualizer/
+
+this is absolutely flawed. ranges of single chart ratings of each rank obviously would not collide into each other, and sss plus has no "range".
+
+---
+
+https://silentblue.remywiki.com/maimai_DX:Rating
+
+this would be the primary reference.
+
 
