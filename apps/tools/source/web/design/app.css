@@ -212,6 +212,15 @@ textarea {
 
           > .args {
             margin: var(--page-whitespace);
+
+            > .arg {
+              flex-direction: row;
+              flex-wrap: wrap;
+
+              > .name {
+                flex-grow: 1;
+              }
+            }
           }
         }
       }
@@ -221,6 +230,7 @@ textarea {
 
 .textarea {
   padding: var(--page-whitespace);
+  width: 100%;
 
   flex-grow: 1;
 
@@ -230,6 +240,8 @@ textarea {
 }
 
 .radio {
+  width: 100%;
+
   > .item {
     padding: var(--page-whitespace);
   }

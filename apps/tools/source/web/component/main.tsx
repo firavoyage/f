@@ -10,15 +10,14 @@ import { Textarea } from 'web/component/textarea';
 import { command } from 'web/component/app'
 
 function args_to_options(args: arg[], stdin: any) {
-  log({args, stdin})
-
   const options: any = {}
   for (const arg of args) {
     const key = arg.id ?? variable(arg.name)
-    const value = arg.is_stdin ? stdin : arg.value
+    const value = arg.is_stdin && is_given(stdin) ? stdin : arg.value
 
     options[key] = value
   }
+
   return options
 }
 

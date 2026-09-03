@@ -134,6 +134,7 @@ ref:
   "import everything": {
     "prefix": [
       "ime",
+      "ima",
       "ia",
     ],
     "body": [

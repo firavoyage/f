@@ -8,7 +8,7 @@ import { Radio } from './radio'
 import { Input } from './input'
 import { Textarea } from './textarea'
 
-export function Arg(props: arg & {set_value: Function}) {
+export function Arg(props: arg & {set_value: fn}) {
   const { type, value, set_value, options, placeholder } = props
 
   const name = <span className="name">{props.name}</span>
