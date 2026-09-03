@@ -31,7 +31,7 @@ type type = 'checkbox' | 'switch' | 'select' | 'radio' | 'number' | 'input' | 't
 export type tool_name = keyof typeof tools
 
 export const tools: Record<string, Optional<tool, 'name'>> = {
-// export const tools = {
+  // export const tools = {
   "json to yaml": {
     fn: json_to_yaml,
     args: [
@@ -64,7 +64,8 @@ export const tools: Record<string, Optional<tool, 'name'>> = {
     fn: telegram_to_journal,
     args: [
       {
-        name: 'telegram text',
+        name: 'telegram',
+        id: 'telegram_text',
         type: 'textarea',
         value: '',
         is_stdin: true
@@ -75,10 +76,18 @@ export const tools: Record<string, Optional<tool, 'name'>> = {
     fn: merge_journal,
     args: [
       {
-        name: 'original text',
+        name: 'original',
+        id: 'original_text',
         type: 'textarea',
         value: ''
-      }
+      },
+      {
+        name: 'addition',
+        id: 'addition_text',
+        type: 'textarea',
+        value: '',
+        is_stdin: true
+      },
     ]
   }
 }
@@ -92,3 +101,6 @@ export const tools_taxonomy = [
   "merge journal"
 ]
 
+declare global {
+  type text = Record<string, string>
+}

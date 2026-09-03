@@ -1,11 +1,11 @@
 const { parse: parse_json, stringify: to_json } = JSON
 import { parse as parse_yaml, stringify as to_yaml } from "yaml"
 
-export function json_to_yaml(json: string) {
+export function json_to_yaml({ json }: text) {
   return to_yaml(parse_json(json))
 }
 
-export function yaml_to_json(yaml: string) {
+export function yaml_to_json({ yaml }: text) {
   return to_json(parse_yaml(yaml))
 }
 

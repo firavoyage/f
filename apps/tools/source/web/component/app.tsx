@@ -23,7 +23,7 @@ export const use_global = state({
   'appearance.theme': union('system', "light", "dark"),
   'appearance.density': union("comfortable", "cozy", "compact"),
   'appearance.layout.sidebar.is visible': true,
-  'appearance.layout.input.is visible': false,
+  'appearance.layout.input.is visible': true,
   'appearance.layout.hamburger menu.is visible': false,
   'navigation.path': '',
   // 'navigation.page': '',

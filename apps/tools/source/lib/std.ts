@@ -18,6 +18,7 @@ export function is_given<T>(foo: T): foo is NonNullable<T> {
 }
 
 export function has<K extends PropertyKey>(obj: any[], key: K): boolean
+export function has<K extends PropertyKey>(string: string, substring: K): boolean
 export function has<K extends PropertyKey>(obj: Set<any>, key: K): boolean
 export function has<K extends PropertyKey>(obj: Map<any, any>, key: K): boolean
 export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, any>
@@ -31,6 +32,14 @@ export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, a
   if (Array.isArray(obj)) {
     return obj.includes(key)
   }
+
+  if (typeof obj == 'string') {
+    if (typeof key != 'string') {
+      return false
+    } 
+
+    return obj.includes(key)
+  } 
 
   if (obj instanceof Set) {
     return obj.has(key)
