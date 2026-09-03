@@ -82,8 +82,8 @@ body {
     flex-basis: var(--titlebar-height);
     padding-block: var(--page-whitespace);
 
-    .search_button,
-    .hamburger_button {
+    .button_search,
+    .button_hamburger {
       flex-basis: var(--titlebar-height);
     }
 

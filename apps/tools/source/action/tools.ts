@@ -8,7 +8,8 @@ import { merge_journal, telegram_to_journal } from 'action/telegram to journal';
 export type tool = {
   name: string
   // name?: string // optional?!
-  fn: (input: string, options?: any) => string
+  fn: fn
+  // fn: (input: string, options?: any) => string
   args?: arg[]
   args_to_options?: Function
   render_input?: Function
