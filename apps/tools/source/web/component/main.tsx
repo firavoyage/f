@@ -25,9 +25,10 @@ export function Main() {
   const [process, set_process] = use_global('process')
   const [input, set_input] = use_global('input')
   const [output, set_output] = use_global('output')
+  const [is_input_visible, set_is_input_visible] = use_global('appearance.layout.input.is visible')
 
   useEffect(() => {
-    let stdin = input
+    let stdin = is_input_visible ? input : nil
     for (const tool of process as tool[]) {
       if (has(tools, tool.name)) {
         const result = handle(() => tools[tool.name].fn(stdin, args_to_options(tool.args ?? [])))

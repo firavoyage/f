@@ -27,6 +27,8 @@ body {
 
   width: 100%;
   height: 100%;
+
+  aspect-ratio: 1;
 }
 
 .a,
@@ -196,7 +198,21 @@ textarea {
 
       > .process {
         > .item {
-          margin: var(--page-whitespace);
+          > .title {
+            flex-direction: row;
+
+            > * {
+              padding: var(--page-whitespace);
+            }
+
+            > .name {
+              flex-grow: 1;
+            }
+          }
+
+          > .args {
+            margin: var(--page-whitespace);
+          }
         }
       }
     }

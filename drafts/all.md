@@ -307,6 +307,7 @@ web: <!-- frontend, web, ts/js -->
 - ts react component break the scope call
 - react icon lib
 - script convert design tokens js object order
+- css aspect ratio icon
 
 backend:
 
