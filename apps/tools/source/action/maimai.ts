@@ -1,8 +1,7 @@
-// import { home, write } from "lib/file";
-// import { stringify } from 'yaml';
+const { min, max, floor } = Math
 
-// const max_rounding_loss = 0.0002
 const max_rounding_loss = 0.0001
+// const max_rounding_loss = 0.0002
 
 function find_n_m(a: number, b: number, c: number, tolerance = max_rounding_loss) {
   const solutions = [];
@@ -343,4 +342,52 @@ export function expand_maimai(results: ReturnType<typeof maimai>) {
   log(results)
 }
 
+/**
+ * Calculate single chart rating for maimai dx, multiplied by 50
+ * 
+ * ap bonus is not included
+ * 
+ * @param difficulty chart constant
+ * @param achievement achievement%/achievement rate
+ */
+export function single_chart_rating(difficulty: number, achievement: number) {
+  achievement = min(achievement, 100.5)
 
+  const table = [
+    { min: 100.5, rank: 'SSS+', coefficient: 22.4 },
+    { min: 100.0, rank: 'SSS', coefficient: 21.6 },
+    { min: 99.5, rank: 'SS+', coefficient: 21.1 },
+    { min: 99.0, rank: 'SS', coefficient: 20.8 },
+    { min: 98.0, rank: 'S+', coefficient: 20.3 },
+    { min: 97.0, rank: 'S', coefficient: 20.0 },
+    { min: 94.0, rank: 'AAA', coefficient: 16.8 },
+    { min: 90.0, rank: 'AA', coefficient: 15.2 },
+    { min: 80.0, rank: 'A', coefficient: 13.6 },
+    { min: 75.0, rank: 'BBB', coefficient: 12.0 },
+    { min: 70.0, rank: 'BB', coefficient: 11.2 },
+    { min: 60.0, rank: 'B', coefficient: 9.6 },
+    { min: 50.0, rank: 'C', coefficient: 8.0 },
+    { min: 0.0, rank: 'D', coefficient: 5.0 },
+  ];
+
+  let rank, coefficient = 0
+
+  for (const tier of table) {
+    if (achievement >= tier.min) {
+      ({ rank, coefficient } = tier)
+      break
+    }
+  }
+
+  const rating = floor(difficulty * achievement/100 * coefficient)
+  // const rating = floor(difficulty * achievement * coefficient) + ap && 1
+
+  return rating * 50
+  // return rating
+}
+
+for (const difficulty of each(11, 13, 0.5)) {
+  for (const achievement of each(97, 100.5, 0.5)) {
+    log({difficulty, achievement, rating: single_chart_rating(difficulty, achievement)})
+  }
+}

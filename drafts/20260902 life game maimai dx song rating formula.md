@@ -624,3 +624,146 @@ Did you bring up "Goku" because you heard a _maimai_ player say the phrase **"Ni
   Noob question: What's the deal with characters not being able to read Goku's name?\
   Mar 2, 2018 — In \*Dragon Ball\*, characters have difficulty reading Goku's name because of the kanji's multiple readings: \* \*\*Kanji\*\* One of the ...
 
+
+# how is level or level plus in maimai determined
+
+## how is level or level plus in maimai determined
+
+In _maimai_, whether a chart is displayed as a flat level (e.g., Level 13) or a "Plus" level (e.g., Level 13+) is determined strictly <mark>by its hidden, decimal-based<span> </span><strong>internal level</strong></mark> (also known as the **Chart Constant**). [link](https://www.youtube.com/watch?v=kvavTX-RKh8)
+
+Sega assigns every song an exact decimal difficulty number, which dictates the display label based on the following breakdown:
+
+### Current Level Rules (Since _maimai DX BUDDiES PLUS_)
+
+- **Level X (Flat):** Assigned to charts with an internal decimal constant between **.0 and .5** (e.g., 13.0 to 13.5).
+- **Level X+ (Plus):** Assigned to charts with an internal decimal constant between **.6 and .9** (e.g., 13.6 to 13.9). [link](https://en.wikipedia.org/wiki/Maimai%5F%28video%5Fgame%5Fseries%29)
+
+_(Note: For Levels 1 through 6, and Level 15, there are no "Plus" variants)._ [link](https://en.wikipedia.org/wiki/Maimai%5F%28video%5Fgame%5Fseries%29)
+
+***
+
+### Historical Evolution of the "+" System
+
+Sega has adjusted the decimal threshold for the "Plus" designation across different versions of the game: [link](https://en.wikipedia.org/wiki/Maimai%5F%28video%5Fgame%5Fseries%29)
+
+- **BUDDiES PLUS to Present:** Level X covers `.0 to .5`, Level X+ covers `.6 to .9`.
+- **DX PLUS to BUDDiES:** Level X covered `.0 to .6`, Level X+ covered `.7 to .9`.
+- **Pre-DX Plus Era:** Level X covered `.0 to .8`, Level X+ was reserved only for the hardest charts at `.9`. [link](https://en.wikipedia.org/wiki/Maimai%5F%28video%5Fgame%5Fseries%29)
+
+### Why Internal Decimals Matter
+
+Even though you cannot see the exact decimal point on the arcade machine's song selection screen, the **exact Chart Constant is used directly in calculating your DX Rating**. [link](https://www.reddit.com/r/maimai/comments/1px75ne/what%5Fare%5Fratings%5Fand%5Fhow%5Fdo%5Fthey%5Fwork/)
+
+For example, achieving a high score on a chart with an internal rating of 13.5 (displayed as 13) will reward you with more rating points than achieving the same score on a 13.0 chart (also displayed as 13). Players frequently refer to community databases and tools to find these hidden values when optimizing their top 50 song pools. [link](https://www.youtube.com/watch?v=kvavTX-RKh8)
+
+If you are looking to raise your total score, let me know your **current rating color** or **what difficulty tier** you are currently practicing, and I can suggest standard Chart Constants to target! [link](https://www.youtube.com/watch?v=kvavTX-RKh8)
+
+- [link](https://www.youtube.com/watch?v=kvavTX-RKh8)\
+  YouTube\
+  The PRO GUIDE to Help you Improve in maimai - YouTube\
+  Aug 6, 2024 — it shows how many charts you cleared b on rank stars FC and sync along with your play count using MMBL on this page will give you ...
+- [link](https://en.wikipedia.org/wiki/Maimai%5F%28video%5Fgame%5Fseries%29)\
+  Wikipedia\
+  Maimai (video game series) - Wikipedia\
+  Each song has four or five playable difficulty levels for its charts. The four regular difficulty levels are Basic, Advanced, Expe...
+- [link](https://www.reddit.com/r/maimai/comments/1px75ne/what%5Fare%5Fratings%5Fand%5Fhow%5Fdo%5Fthey%5Fwork/)\
+  Reddit·r/maimai\
+  What are ratings and how do they work? : r/maimai - Reddit\
+  Dec 27, 2025 — The way individual chart rating is calculated is by multiplying a level multiplier, the achievement you get on that chart, and a "
+
+Show all
+
+## history
+
+The system for dividing difficulty levels into standard and **"Plus" (+)** categories in maimai has gone through a massive evolution since the game debuted in 2012. Sega introduced this division to prevent "difficulty spikes" and more accurately reflect a chart's hidden decimal value, known as the **Chart Constant**. [link](https://www.youtube.com/watch?v=kvavTX-RKh8)
+
+### The Pre-DX Era (Classic Cabinets)
+
+Before the game transitioned to the modern _DX_ hardware, the maximum numerical level was 14 (and later 13 in _FiNALE_). The "+" sign operated much differently than it does today:
+
+- **Pre-maimai PiNK (2012–2015):** There were **no "+" levels at all**. Charts with internal decimals from `.7` to `.9` were simply labeled as standard flat levels. A level 10 chart could feel radically harder than another level 10 chart because the game lacked visual shorthand for upper-tier charts.
+- **maimai PiNK (2015):** Sega introduced the **"+" category** to solve the "difficulty spike" issue. Levels 7 through 11 were split into base and "+" variants. During this time, the "+" symbol was reserved strictly for the hardest charts in a level tier, mapping only to charts with a decimal of **.9**. [link](https://en.wikipedia.org/wiki/Maimai%5F%28video%5Fgame%5Fseries%29)
+- **maimai MURASAKi (2016):** The system expanded to split Level 12 into 12 and 12+.
+- **maimai FiNALE (2018):** In the final version of the old cabinets, Level 13+ was introduced exclusively for the boss songs in the _PANDORA BOXXX_ folder (all of which were fixed at a maximum internal level of 13.9).
+
+### The Modern DX Era (2019–Present)
+
+When the game was rebuilt as _maimai DX_, the internal chart difficulty cap was raised to Level 15, and the decimal thresholds for the "+" levels were significantly widened to accommodate a much larger pool of songs: [link](https://en.wikipedia.org/wiki/Maimai%5F%28video%5Fgame%5Fseries%29)
+
+- **maimai DX PLUS to BUDDiES (2020–2024):** The threshold shifted downward. Standard levels covered `.0` through `.6`, while **"+" levels were assigned to `.7` through `.9`**. [link](https://en.wikipedia.org/wiki/Maimai%5F%28video%5Fgame%5Fseries%29)
+- **maimai DX BUDDiES PLUS to Present (2024–2026):** Sega shifted the brackets to the current layout to create a more balanced split:
+  - **Level X:** Decimals between `.0 and .5`.
+  - **Level X+:** Decimals between `.6 and .9`. [link](https://en.wikipedia.org/wiki/Maimai%5F%28video%5Fgame%5Fseries%29)
+
+### Level 15 Exceptions
+
+Throughout _maimai_ history, the highest active level tier has never featured a "+" designation. In older eras, Level 14 was a flat level; in the modern _DX_ era, **Level 15 remains a flat level** without a 15+ variant. Charts hitting 15.0 or higher (up to 15.6 in current versions) are all visually displayed simply as "15." [link](https://en.wikipedia.org/wiki/Maimai%5F%28video%5Fgame%5Fseries%29)
+
+If you want to dive deeper into the history, I can break down how **the target score system (like SSS+)** shifted alongside these level changes, or how **the DX Rating formula** evolved across versions! [link](https://en.wikipedia.org/wiki/Maimai%5F%28video%5Fgame%5Fseries%29)
+
+AI can make mistakes, so double-check responses
+
+- [link](https://en.wikipedia.org/wiki/Maimai%5F%28video%5Fgame%5Fseries%29)\
+  Wikipedia\
+  Maimai (video game series) - Wikipedia\
+  Each song has four or five playable difficulty levels for its charts. The four regular difficulty levels are Basic, Advanced, Expe...
+- [link](https://sega.fandom.com/wiki/Maimai%5F%28series%29)\
+  Sega Wiki | Fandom\
+  Maimai (series) - Sega Wiki - Fandom\
+  Maimai (series) \* Genre(s) Rhythm. \* Developer(s) Sega. \* Publisher(s) Sega. \* Creator(s) Sega. \* Years active. 2012-Present Day. ...
+- [link](https://silentblue.remywiki.com/Internal%5Flevel)\
+  RemyWiki\
+  Internal level - SilentBlue.RemyWiki\
+  Jul 6, 2026 — maimai. Before PiNK, maimai did not have X+ levels; X. 7~X. 9 are also labeled level X. In maimai FiNALE, level 13+ charts (PANDOR...
+
+Show all
+
+## why did maimai become maimai dx
+
+Sega transitioned _maimai_ to _maimai DX_ (Deluxe) in July 2019 <mark>to resolve hardware manufacturing limitations, modernize the game's decade-old technology, and refresh the gameplay mechanics for a changing arcade market</mark>. [link](https://maimai.fandom.com/wiki/Maimai%5FDX)
+
+### 1. Obsolete Hardware and Camera Supply Issues
+
+The primary catalyst for the change was physical hardware limitations. The old "classic" cabinets (which ran from 2012's original _maimai_ through 2019's _FiNALE_) relied on a highly specialized video camera unit capable of hardware video encoding. [link](https://argw.miraheze.org/wiki/Maimai%5FDX)
+
+- **The Manufacturing Problem:** The manufacturer stopped making these specific legacy camera parts. Sega could no longer build new cabinets or reliably supply replacement parts to arcade operators.
+- **The Solution:** Sega retired the classic line and engineered the **DX Cabinet** from the ground up. It replaced the complex video recording array with a centralized, static "Memorial Camera" intended only for commemorative end-of-game photos. To appease players who recorded their gameplay, Sega added built-in plastic mounting brackets to the new cabinets so players could securely clip in their own smartphones. [link](https://en.wikipedia.org/wiki/Maimai%5F%28video%5Fgame%5Fseries%29)
+
+### 2. Player Quality-of-Life Upgrades
+
+The hardware refresh allowed Sega to address years of player feedback and implement heavily requested physical features:
+
+- **Headphone Jacks:** For seven years, players had to play using the loud cabinet speakers. _maimai DX_ finally introduced standard **headphone jacks** equipped with independent volume controls for each player. [link](https://argw.miraheze.org/wiki/Maimai%5FDX)
+- **Better Screens and Sensors:** The cabinet updated to modern internal computing hardware, clearer displays, and more responsive touch-screen overlays to improve high-level precision. [link](https://primetimeamusements.com/maimai-dx-a-rhythm-game-making-waves-in-the-us/)
+
+### 3. Gameplay Evolution and Content Restructuring
+
+From a software perspective, the _maimai_ engine was aging. Rebuilding the game under the _DX_ banner allowed Sega to overhaul the entire meta and introduce modern rhythm game features:
+
+- **The "Touch" Note:** _DX_ introduced a brand new note type called **Touch Notes** (and Touch Holds), which require players to tap specific zones directly on the inner screen rather than relying on the outer physical buttons.
+- **Chart Splitting (Standard vs. DX):** To preserve the history of the game while pushing the boundaries of the new mechanics, song lists were split. Old charts became "Standard" charts, while newer layouts utilizing the Touch Notes were classified as "DX" charts.
+- **Streamlined Rating and Progression:** The entire account level and skill assessment framework was discarded in favor of the modern, math-driven **DX Rating** system, creating a highly competitive, trackable environment for top-tier players. [link](https://maimai.fandom.com/wiki/Maimai%5FDX)
+
+### 4. Global Expansion Preparation
+
+The original cabinets were heavily intertwined with Japanese network infrastructures and legacy software frameworks (like the old _niconico_ video uploading system), which made legal, official international distribution incredibly complex. [link](https://en.wikipedia.org/wiki/Maimai%5F%28video%5Fgame%5Fseries%29)
+
+By launching _maimai DX_, Sega standardized the infrastructure under modern software, paving the way for the **maimai DX International Version**. This upgrade is what ultimately allowed the game to officially expand into broader Asian markets and eventually launch dedicated arcade distributions across North America. [link](https://primetimeamusements.com/maimai-dx-a-rhythm-game-making-waves-in-the-us/)
+
+Would you like to know how the chart differences between a **Standard chart** and a **DX chart** look in practice, or how the **DX Pass system** was integrated into these newer machines? [link](https://argw.miraheze.org/wiki/Maimai%5FDX)
+
+- [link](https://en.wikipedia.org/wiki/Maimai%5F%28video%5Fgame%5Fseries%29)\
+  Wikipedia\
+  Maimai (video game series) - Wikipedia\
+  Using a computer or smartphone, a player can use Maimai NET (now Maimai DX NET) to access detailed information on their account li...
+- [link](https://www.reddit.com/r/maimai/comments/1ra3po7/the%5Foldest%5Ffactinformation%5Fyou%5Fknow%5Fabout%5Fmaimai/)\
+  Reddit·r/maimai\
+  The oldest fact/information you know about maimai and when ...\
+  Feb 21, 2026 — Comments Section ... started playing 9 years ago and international actually had access to maware (region locked) in an event cours...
+- [link](https://primetimeamusements.com/maimai-dx-a-rhythm-game-making-waves-in-the-us/)\
+  PrimeTime Amusements\
+  Maimai DX: A Rhythm Game Making Waves in the US\
+  Aug 23, 2024 — A Brief History of Maimai Maimai first debuted in Japan in 2012 and quickly gained a dedicated following due to its distinctive ca...
+
+Show all
+
