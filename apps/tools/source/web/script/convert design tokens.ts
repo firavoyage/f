@@ -3,32 +3,6 @@ import * as path from 'path';
 import { parse } from 'yaml';
 import 'css.escape'
 
-type flatten = {
-  separator?: string;
-  preserve?: (value: any, key: string) => boolean;
-};
-
-function flatten(obj: Map<string, any>, options: flatten = {}) {
-  const { separator = ".", preserve = () => false } = options;
-  const result = new Map();
-
-  function traverse(item: Map<any, any>, prefix: string = ""): void {
-    for (const [key] of item) {
-      const value = item.get(key);
-      const path = prefix ? `${prefix}${separator}${key}` : key;
-
-      if (value instanceof Map && !preserve(value, key)) {
-        traverse(value, path);
-      } else {
-        result.set(path, value);
-      }
-    }
-  }
-
-  traverse(obj);
-  return result;
-}
-
 /**
  * Read file inputs and write outputs to disk
  */
@@ -87,6 +61,9 @@ function main(convert: (input_str: string) => string, ext = '.css'): void {
   }
 }
 
+/**
+ * Convert design token yaml to css
+ */
 function convert(design_yaml: string) {
   const design: Map<string, any> = parse(design_yaml, { mapAsMap: true })
 
@@ -109,23 +86,23 @@ function convert(design_yaml: string) {
     tokens: tokens
   }
   type variant = string | typeof root
-  const variants: Record<variant, variants> = {
+
+  const variants: Map<variant, variants> = new Map(entries({
     [root]: {
       mode: 'root',
       is_default: true,
       tokens: new Map()
     }
-  }
+  }))
 
   for (const [mode, current_variants] of modes) {
-    for (const variant of current_variants) {
-      variants[variant] = {
+    for (const [index, variant] of entries(current_variants)) {
+      variants.set(variant, {
         mode,
-        is_default: false,
+        is_default: index == 0,
         tokens: new Map()
-      }
+      })
     }
-    variants[current_variants[0]].is_default = true
   }
 
   function preserve(value: any) {
@@ -157,6 +134,32 @@ function convert(design_yaml: string) {
     return false
   }
 
+  type flatten = {
+    separator?: string;
+    preserve?: (value: any, key: string) => boolean;
+  };
+
+  function flatten(obj: Map<string, any>, options: flatten = {}) {
+    const { separator = ".", preserve = () => false } = options;
+    const result = new Map();
+
+    function traverse(item: Map<any, any>, prefix: string = ""): void {
+      for (const [key] of item) {
+        const value = item.get(key);
+        const path = prefix ? `${prefix}${separator}${key}` : key;
+
+        if (value instanceof Map && !preserve(value, key)) {
+          traverse(value, path);
+        } else {
+          result.set(path, value);
+        }
+      }
+    }
+
+    traverse(obj);
+    return result;
+  }
+
   const tokens: tokens = flatten(nested_tokens, { preserve })
 
   /**
@@ -182,7 +185,8 @@ function convert(design_yaml: string) {
       }
     }
 
-    variants[variant].tokens.set(variable, value)
+    // @ts-expect-error narrowed when called
+    variants.get(variant).tokens.set(variable, value)
   }
 
   for (const [token, value] of tokens) {
@@ -205,7 +209,7 @@ function convert(design_yaml: string) {
 
   let css = ''
 
-  for (const [variant, { mode, is_default, tokens }] of entries(variants)) {
+  for (const [variant, { mode, is_default, tokens }] of variants) {
     // omit empty ruleset
     if (tokens.size == 0) {
       continue

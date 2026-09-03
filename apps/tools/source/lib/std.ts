@@ -1,3 +1,5 @@
+export const nil = null
+
 /**
  * Merge objects to target (the first param)
  * 
@@ -36,7 +38,7 @@ export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, a
 
   if (obj instanceof Map) {
     return obj.has(key)
-  } 
+  }
 
   return (typeof key == 'string' || typeof key == 'number' || typeof key == 'symbol') &&
     obj && typeof obj == 'object' && Object.hasOwn(obj, key);
@@ -62,24 +64,36 @@ export function is_given<T>(foo: T): foo is NonNullable<T> {
 //   return false
 // }
 
-export function entries(obj: object | Map<any, any>) {
+type entries = [k: any, v: any][]
+// type entries = [k: Key, v: any][]
+export function entries(obj: object | Map<any, any>): entries {
+// type entries<T> = [k: keyof T, v: T[keyof T]][]
+// export function entries<T>(obj: object | Map<any, any>): entries<T> {
   if (obj instanceof Map) {
     return Array.from(obj.entries())
   } else if (typeof obj == 'object') {
-    return 
+    const keys = [
+      ...Object.getOwnPropertyNames(obj),
+      ...Object.getOwnPropertySymbols(obj)
+    ];
+
+    // @ts-expect-error stupid ts
+    return keys.map(key => [key, obj[key]]);
+  } else {
+    return []
   } 
 }
 
-export const nil = null
-
+type nil = typeof nil
 type merge = typeof merge
 type has = typeof has
 type is_given = typeof is_given
-type nil = typeof nil
+type entries_fn = typeof entries
 declare global {
+  var nil: nil
   var merge: merge
   var has: has
   var is_given: is_given
-  var nil: nil
+  var entries: entries_fn
 }
 
