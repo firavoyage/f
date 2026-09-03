@@ -80,7 +80,10 @@ body {
     flex-direction: row;
 
     flex-basis: var(--titlebar-height);
-    padding-block: var(--page-whitespace);
+
+    > * {
+      padding-block: var(--page-whitespace);
+    }
 
     .button_search,
     .button_hamburger {
@@ -169,10 +172,8 @@ body {
         font: var(--font-code);
       }
 
-      .process {
-        .item {
-          margin: var(--page-whitespace);
-        }
+      .process_item {
+        margin: var(--page-whitespace);
       }
     }
   }
@@ -188,6 +189,7 @@ body {
 
 .a,
 .link,
+button,
 .button,
 .summary,
 .input,

@@ -3881,4 +3881,14 @@ and i will still show arg and ~~gray out the input~~ (stdin). just be explicit a
 
 16 00 web: rename classnames of buttons, make button prefix instead of suffix.
 
+16 10 web: polish ui, fix focus outline inconsistency, fix class collision and .
+
+seems all list items are called "item".
+
+as always, do not make them collide in the first place. or is it really what i want?
+
+y.
+
+`.button_foo` is better than `button.foo`, `.radio_item` is better than `.radio > .item`
+
 

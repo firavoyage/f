@@ -21,6 +21,7 @@ export type arg = {
   id?: string // = normalize id name
   type: type // how it should be rendered, not typeof value
   value: any
+  is_stdin?: boolean
   options?: options // for select/radio
   placeholder?: string // for select
 }
@@ -35,8 +36,14 @@ export const tools: Record<string, Optional<tool, 'name'>> = {
     fn: json_to_yaml,
     args: [
       {
+        name: 'json',
+        type: 'textarea',
+        value: '',
+        is_stdin: true
+      },
+      {
         name: 'parse',
-        type: 'select',
+        type: 'radio',
         value: union('standard', 'flexible', 'forgiving'),
         options: ['standard', 'flexible', 'forgiving']
       }
