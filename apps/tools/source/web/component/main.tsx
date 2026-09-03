@@ -67,10 +67,13 @@ export function Main() {
           <div className="title">Process</div>
           <Process {...p({ process, set_process })}></Process>
         </div>
-        <div className="panel">
-          <div className="title">Input</div>
-          <Textarea {...p({ value: input, set_value: set_input })}></Textarea>
-        </div>
+        {
+          is_input_visible &&
+          <div className="panel">
+            <div className="title">Input</div>
+            <Textarea {...p({ value: input, set_value: set_input })}></Textarea>
+          </div>
+        }
         <div className="panel">
           <div className="title">Output</div>
           <Textarea {...p({ value: output, set_value: set_output })}></Textarea>

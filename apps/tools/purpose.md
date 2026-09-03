@@ -3935,5 +3935,12 @@ e.g. select is displayed inline. radio is not.
 
 yeah, if i wrap dynamically... i should possibly make it block.
 
+---
+
+y. as adviced, i should not apply flex shrink 0 globally.
+
+in my philosophy, everything is static by default. and if they refuse to shrink... they will expand and get clipped by a rigid parent.
+
+flex shrink 0 (to direct children) and scrollable should be applied simultaneously.
 
 
