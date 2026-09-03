@@ -14,7 +14,7 @@ export function Process(props: process) {
   return <div className="process">
     {
       map(process, (item, index) => (
-        <div className="item">
+        <div className="process_item">
           <div className="tool">{item.name}</div>
           <button className="delete" {...p({
             onclick() {

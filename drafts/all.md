@@ -505,6 +505,7 @@ ux: <!-- ui/ux design, ia -->
 - youtube playlist next vid inflexible url confusing error screen
 - content design ux writing kde hig text and labels apple hig typography
 - checkbox switch feeling
+- select radio feeling
 
 typography:
 
