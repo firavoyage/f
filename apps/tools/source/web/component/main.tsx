@@ -24,7 +24,7 @@ function args_to_options(args: arg[], stdin: any) {
 export function Main() {
   const [process, set_process] = use_global('process')
   const [input, set_input] = use_global('input')
-  const [output, set_output] = use_global('output')
+  // const [output, set_output] = use_global('output')
   const [is_input_visible, set_is_input_visible] = use_global('appearance.layout.input.is visible')
   let can_render_output = false
   let render_output: fn
@@ -44,12 +44,11 @@ export function Main() {
       render_output = current_render_output
     }
   }
-  const current_output = stdin
-  log(output)
+  const output = stdin ?? ''
 
-  useEffect(() => {
-    set_output(current_output ?? '')
-  }, [current_output])
+  // useEffect(() => {
+  //   set_output(current_output ?? '')
+  // }, [current_output])
   // useEffect(() => {
   //   set_output(stdin ?? '')
   // }, [JSON.stringify(process), input])
@@ -95,7 +94,7 @@ export function Main() {
               can_render_output ?
                 // @ts-expect-error already narrowed
                 render_output(output) :
-                <Textarea {...p({ value: output, set_value: set_output })}></Textarea>
+                <Textarea {...p({ value: output })}></Textarea>
             }
           </div>
         </div>

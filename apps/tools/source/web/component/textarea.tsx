@@ -1,11 +1,11 @@
 type textarea = {
   value: string;
-  set_value: (value: string | ((...args: any) => string)) => void;
+  set_value?: (value: string | ((...args: any) => string)) => void;
 };
 
 export function Textarea({ value, set_value, ...props }: textarea) {
   function handle_change(event: React.ChangeEvent<HTMLTextAreaElement>) {
-    set_value(event.target.value);
+    set_value?.(event.target.value);
   }
 
   return (
