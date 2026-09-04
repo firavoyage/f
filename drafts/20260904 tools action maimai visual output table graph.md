@@ -1334,3 +1334,274 @@ The core difference is that **styling `<td>`/`<th>` is universally supported and
 Are you experiencing a specific styling bug, or are you trying to achieve a complex design like **hidden columns or rounded corners**? Let me know, and I can show you how to code it!
 
 
+
+# default css of table component
+
+<mark><strong>By default, browsers render HTML tables using a unique User-Agent stylesheet</strong></mark> that enforces strict structural behaviors mapping directly to standard tabular data. [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Table)
+
+The core default CSS properties applied to a standard native `<table>` and its child elements usually approximate the following rules across modern browsers (like Chrome, Firefox, and Safari):
+
+### 📋 The Browser Default Stylesheet
+
+css
+
+```
+/* The main table container */
+table {
+  display: table;
+  border-collapse: separate; /* Cells have gaps between them by default */
+  border-spacing: 2px;       /* The default size of those cell gaps */
+  box-sizing: border-box;
+  text-indent: 0;            /* Resets text indentation */
+  border-color: gray;
+}
+
+/* Structural groupings */
+thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+tfoot {
+  display: table-footer-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+/* Rows */
+tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+
+/* Header cells */
+th {
+  display: table-cell;
+  font-weight: bold;         /* Bold headers by default */
+  text-align: internal-center; /* Center-aligned text */
+  vertical-align: inherit;
+}
+
+/* Data cells */
+td {
+  display: table-cell;
+  text-align: inherit;        /* Left-aligned text in LTR languages */
+  vertical-align: inherit;
+}
+
+/* Table Caption */
+caption {
+  display: table-caption;
+  text-align: center;
+}
+```
+
+Use code with caution.
+
+***
+
+### 🔍 Key Behaviors to Note
+
+- **The Layout Algorithm:** The `table-layout` property defaults to `auto`. This means the browser will calculate column widths based on the longest unbreakable content inside each cell. [link](https://www.youtube.com/watch?v=47HaA8vYR0c)
+- **No Outlines/Borders:** Natively, tables have zero visible borders. They only feature a `2px` spacing invisible gap (`border-spacing: 2px`) between individual cells. [link](https://piccalil.li/blog/styling-tables-the-modern-css-way/)
+- **The Display Property:** Table elements do not use `display: block` or `display: inline`. They utilize specific tabular layouts (`table`, `table-row`, `table-cell`), which means traditional layout tools like flexbox, grid, `margin: auto`, or `transform` may not behave normally unless you explicitly override their `display` property. [link](https://boyl.es/post/css-reset-for-tables/)
+
+Are you working with a specific component library (like **Tailwind**, **Bootstrap**, or **Material UI**), or are you trying to build a custom, **responsive layout override** for standard HTML tables? [link](https://www.htmlelements.com/docs/table-css/)
+
+- [link](https://boyl.es/post/css-reset-for-tables/)\
+  boyl.es\
+  A CSS Grid Reset for Tables | Michael Boyles\
+  Jan 12, 2024 — A guide for how to override the default CSS for elements to use CSS grids instead. ... I've written a small CSS reset which uses C...
+- [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Table)\
+  MDN Web Docs\
+  CSS table - MDN Web Docs\
+  Nov 7, 2025 — The CSS table module helps you define how to lay out table data. This CSS module defines styles applicable to the HTML element, wh...
+- [link](https://piccalil.li/blog/styling-tables-the-modern-css-way/)\
+  piccalil.li\
+  Styling Tables the Modern CSS Way - Piccalilli\
+  Jul 18, 2024 — css table { text-align: left; } Now let's imagine for a second we'd like some grid lines between our table cells. We can't simply ...
+
+Show all
+
+# why doesnt table accept padding
+
+In CSS, **the `<table>` element actually does accept padding**, but it often **appears to be ignored because `border-collapse: collapse;` is active**. When a table's borders are collapsed, the traditional CSS box model breaks down, and the browser is explicitly instructed by the W3C specification to ignore padding on the container element. [link](https://stackoverflow.com/questions/1750670/how-do-you-specify-table-padding-in-css-table-not-cell-padding)
+
+Additionally, internal structural elements like **`<tr>` (table rows), `<thead>`, and `<tbody>` never accept padding** under any layout mode. [link](https://stackoverflow.com/questions/15595932/why-isnt-padding-applied-to-table-elements)
+
+***
+
+### How to Fix It
+
+Depending on what look you are trying to achieve, you can use a few different strategies to introduce spacing.
+
+#### 1. Separate the borders (To add padding to the `<table>` wrapper)
+
+If you want padding around the inner perimeter of the entire table container, you must change the border-collapse model to `separate`. [link](https://stackoverflow.com/questions/1750670/how-do-you-specify-table-padding-in-css-table-not-cell-padding)
+
+css
+
+```
+table {
+  border-collapse: separate; /* Required for table padding to work */
+  padding: 20px;
+}
+```
+
+Use code with caution.
+
+#### 2. Target the cells directly (Most Common)
+
+If you are trying to give your data breathing room, the padding **must** be applied directly to the `<td>` (table data) or `<th>` (table header) elements. They natively accept padding regardless of the border model. [link](https://www.w3schools.com/html/html%5Ftable%5Fpadding%5Fspacing.asp)
+
+css
+
+```
+th, td {
+  padding: 12px 15px; /* Adds spacing inside each individual cell */
+}
+```
+
+Use code with caution.
+
+#### 3. Use `border-spacing` for row/cell gaps
+
+If your goal is to space out the elements or mimic row padding (which `<tr>` doesn't support), use the `border-spacing` property on the `<table>`. [link](https://stackoverflow.com/questions/3656615/padding-a-table-row)
+
+css
+
+```
+table {
+  border-collapse: separate;
+  border-spacing: 0 10px; /* Explodes the space between rows by 10px */
+}
+```
+
+Use code with caution.
+
+***
+
+### Summary of Element Behavior
+
+| Element               | Accepts Padding?                            | Common Workaround                                                           |
+| --------------------- | ------------------------------------------- | --------------------------------------------------------------------------- |
+| `<table>`             | **Only if `border-collapse` is `separate`** | Wrap the table in a `<div>` with padding if you must use collapsed borders. |
+| `<tr>`                | **Never**                                   | Use `border-spacing` on the table, or apply transparent borders to the row. |
+| `<thead>` / `<tbody>` | **Never**                                   | Apply padding to the `<td>` or `<th>` elements inside them.                 |
+| `<th>` / `<td>`       | **Always**                                  | _Native behavior—this is the intended place for cell padding._              |
+
+Would you like help writing a specific **CSS snippet** to fix your layout, or are you trying to **space out a specific part** of your table (like the header or the rows)?
+
+- [link](https://stackoverflow.com/questions/15595932/why-isnt-padding-applied-to-table-elements)\
+  Stack Overflow\
+  Why isn't padding applied to table elements? - Stack Overflow\
+  Mar 24, 2013 — Unfortunately, padding is not available for thead , tbody nor tr . Nonetheless, more padding between thead and tbody can be achiev...
+- [link](https://stackoverflow.com/questions/1750670/how-do-you-specify-table-padding-in-css-table-not-cell-padding)\
+  Stack Overflow\
+  How do you specify table padding in CSS? (table, not cell, padding )\
+  Nov 17, 2009 — You can specify table padding in CSS independently of its cells. The padding property is not inherited by its children. For exampl...
+- [link](https://stackoverflow.com/questions/3656615/padding-a-table-row)\
+  Stack Overflow\
+  Padding a table row\
+  Sep 7, 2010 — Padding for table rows ( ) was removed in CSS 2.1 and CSS 3. However, there are some workarounds: \* \`tr { border-top: 12px solid t...
+
+Show all
+
+# why doesnt table accept overflow auto
+
+An HTML **`<table>` element does not accept `overflow: auto`** because of its default CSS display behavior. By default, a table has `display: table`, which dictates that the table container must expand to fit its content rather than clipping it or creating a scroll container. [link](https://stackoverflow.com/questions/29155585/css3-displaytable-overflow-yscroll-doesnt-work)
+
+Furthermore, according to the CSS specification, the `height` property on standard table layouts is treated as a minimum height. Because a table container will automatically stretch to accommodate all internal rows and cells, it technically never "overflows" its own boundaries, meaning `overflow: auto` never triggers a scrollbar. [link](https://www.sitepoint.com/community/t/div-overflow-not-working-min-width-table-inside-div/114897)
+
+***
+
+### The Two Best Ways to Fix It
+
+Depending on what you want to achieve, you can fix this using one of two standard approaches.
+
+#### Approach 1: Wrap the Table in a `<div>` (Recommended)
+
+The cleanest, most cross-browser compatible method is to leave the table's default layout intact and wrap it inside a block container (like a `<div>`) that handles the scrolling. [link](https://www.youtube.com/watch?v=96AybobApKQ\&t=38)
+
+html
+
+```
+<div class="table-container">
+  <table>
+    <!-- Your table content -->
+  </table>
+</div>
+```
+
+Use code with caution.
+
+css
+
+```
+.table-container {
+  max-width: 100%;    /* Or a fixed width like 600px */
+  max-height: 400px;   /* For vertical scrolling */
+  overflow: auto;      /* The div will handle the scrollbars */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+```
+
+Use code with caution.
+
+#### Approach 2: Force the Table to Be a Block Element
+
+If you absolutely cannot add a wrapper `<div>` to your HTML, you can force the table element to behave like a standard block element using CSS. [link](https://stackoverflow.com/questions/25296479/how-to-get-overflowauto-behavior-with-html-table)
+
+css
+
+```
+table {
+  display: block;
+  max-width: 100%;
+  max-height: 400px;
+  overflow: auto;
+}
+```
+
+Use code with caution.
+
+_⚠️ **Note:** Forcing `display: block` breaks the traditional alignment physics of tables. You may need to manually define widths (`min-width` or `width`) on your `<th>` and `<td>` elements to keep the columns from shrinking awkwardly._ [link](https://weblog.west-wind.com/posts/2023/Jan/26/HTML-Table-Cell-Overflow-Handling)
+
+***
+
+If you are struggling with a specific type of scrolling layout, let me know:
+
+- Are you trying to get **horizontal scrolling** (for responsive mobile screens) or **vertical scrolling** (to lock the table headers)?
+- Is your table rendering inside a strict layout system like **Flexbox** or **Grid**?
+
+I can tailor a specific snippet that matches your exact setup!
+
+- [link](https://stackoverflow.com/questions/29155585/css3-displaytable-overflow-yscroll-doesnt-work)\
+  Stack Overflow\
+  CSS3 display:table, overflow-y:scroll doesn't work\
+  Mar 19, 2015 — If your display value is table, you can't set a height or max-height, and so overflow-y:scroll doesn't work. This is because: \* In...
+- [link](https://stackoverflow.com/questions/25296479/how-to-get-overflowauto-behavior-with-html-table)\
+  Stack Overflow\
+  How to get overflow:auto behavior with HTML table\
+  Aug 13, 2014 — To get overflow:auto behavior with an HTML table, you can try these steps: 1. Set the table to display as block: \* \`table { displa...
+- [link](https://www.sitepoint.com/community/t/div-overflow-not-working-min-width-table-inside-div/114897)\
+  SitePoint\
+  Div overflow not working - min-width table inside div - SitePoint\
+  Mar 9, 2015 — How can I fix this so the DIV shrinks with the main viewport window (so the table is scrollable from the overflow but the main bro...
+
+Show all
+
+
+

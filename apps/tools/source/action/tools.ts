@@ -1,10 +1,9 @@
 import type { options } from 'web/component/select'
 
-// export * from 'action/maimai'
 import { json_to_yaml, yaml_to_json } from 'action/json yaml toml xml'
 import { merge_journal, telegram_to_journal } from 'action/telegram to journal';
-import { maimai } from 'web/component/maimai';
-// export * from 'action/json yaml toml xml'
+import { single_chart_rating_table } from './maimai';
+import { table as visual_single_chart_rating_table } from 'web/component/maimai';
 
 export type tool = {
   name: string
@@ -90,6 +89,10 @@ export const tools: Record<string, Optional<tool, 'name'>> = {
         is_stdin: true
       },
     ]
+  },
+  "maimai single_chart_rating_table": {
+    fn: single_chart_rating_table,
+    render_output: visual_single_chart_rating_table
   }
 }
 
@@ -99,7 +102,8 @@ export const tools_taxonomy = [
   "json to yaml",
   "yaml to json",
   "telegram to journal",
-  "merge journal"
+  "merge journal",
+  "maimai single_chart_rating_table"
 ]
 
 declare global {
