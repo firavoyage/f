@@ -1,14 +1,16 @@
 import { parse as standard_json } from 'json5';
 import * as jsonic from 'jsonic';
 const flexible_json = jsonic.default || jsonic;
-import { jsonrepair as forgiving_json } from 'jsonrepair'
-
+import { jsonrepair } from 'jsonrepair'
+function forgiving_json(json: string) {
+  return rigid_json(jsonrepair(json))
+}
 const { parse: rigid_json, stringify: serialize_json } = JSON
 import { parse as standard_yaml, stringify as serialize_yaml } from "yaml"
 
 type json_to_yaml = {
   json: string
-  parsing: union<['rigid', 'standard', 'flexible', 'forgiving']>
+  parsing: Union<['rigid', 'standard', 'flexible', 'forgiving']>
 }
 
 export function json_to_yaml({ json, parsing }: json_to_yaml) {

@@ -45,7 +45,7 @@ export const tools: Record<string, Optional<tool, 'name'>> = {
       {
         name: 'parsing',
         type: 'radio',
-        value: union('rigid', 'standard', 'flexible', 'forgiving'),
+        value: union('standard', 'rigid', 'flexible', 'forgiving'),
         options: ['rigid', 'standard', 'flexible', 'forgiving']
       }
     ],

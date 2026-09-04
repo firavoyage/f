@@ -4005,7 +4005,7 @@ standard/flexible/forgiving does not really feel right.
 
 standard. which? json, or es6?
 
-18 10 action/json: implement flexible json parsing.
+18 10 action/json: implement flexible json parsing. 19 00
 
 i will name it flexible. standard is what we love. there is no such a thing dictated.
 
@@ -4069,5 +4069,6 @@ b 'script.ts' # run
 open index.html # run in browser (parceljs under the hood)
 ```
 
----
+19 20 action/maimai: create table layout.
+
 
