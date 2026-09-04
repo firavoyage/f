@@ -17,6 +17,8 @@ SSS: 21.6
 SSS+: 22.4
 ```
 
+the formula: single chart rating = 
+
 players are way more familiar w the overall rating, and thus by default i would multiply them by 50 (avg later) rather than showing the raw values (sum later).
 
 starting from maimai dx circle, there is one bonus rating for ap.

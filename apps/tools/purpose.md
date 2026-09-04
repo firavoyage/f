@@ -3985,4 +3985,15 @@ graph layout (preferred):
 
 basically the fn is y = kx, where k is increasing by achievement% (it's discrete due to how rank coefficient works)
 
+---
+
+it's actually quite easy to have a table layout. you can use native table!
+
+content driven basis and alignment, they are _in its nature_.
+
+---
+
+i may consider "json to csv".
+
+first you have an array of objects (if json must be an object, you may use the first key of which). the obj keys are the column headings. if new keys are found in later items, they append.
 
