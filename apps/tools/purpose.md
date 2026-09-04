@@ -3971,6 +3971,18 @@ this would be the primary reference.
 
 16 40 action/maimai: design render output.
 
-x: difficulty, y: achievement% (in rank)
+table layout:
+
+- x: difficulty (in n or n+, latest)
+- y: achievement% (in rank)
+- item: min/max/range
+
+graph layout (preferred):
+
+- x: difficulty (in n or n+, latest)
+- y: rating (overall)
+- graph: min/max/range for each rank
+
+basically the fn is y = kx, where k is increasing by achievement% (it's discrete due to how rank coefficient works)
 
 
