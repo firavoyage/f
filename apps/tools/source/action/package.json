@@ -1,0 +1,6 @@
+{
+  "packageManager": "pnpm@10.30.2",
+  "dependencies": {
+    "json5": "2.2.3"
+  }
+}

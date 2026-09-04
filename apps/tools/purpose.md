@@ -4009,6 +4009,63 @@ standard. which? json, or es6?
 
 i will name it flexible. standard is what we love. there is no such a thing dictated.
 
+<!-- also, "Aim for **flexibility** in your code to make it future-proof, reusable, and easy to extend. Avoid being **relaxed** with your engineering standards, typing system, or data validation, as it inevitably introduces technical debt, security vulnerabilities, and bugs." -->
+
 e.g. backtick template strings is not more "derived" than double quotes.
 
+- rigid (json)
+- standard (es6/json5), default <!-- actually json5 is flawed as not supporting template literal, maybe i would use new Function or sth -->
+- flexible ~~relaxed~~ <!-- jsonic (besides a unplausible name, really relaxed json does not do much and it does not have a clear purpose) -->
+- forgiving (llm) <!-- i do not need this, and thus i would not compare the options. maybe i would use jsonrepair (by its name). upd: i kind of like dirty-json better but i would keep my decision. -->
+
+---
+
+well, bun init is quite flawed and coupled w claude. (it add claude.md dictating bun over nodejs)
+
+let me test...
+
+pnpm init
+
+```json
+{
+  "name": "action",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.30.2"
+}
+```
+
+bare
+
+```json
+{
+  "packageManager": "pnpm@10.30.2"
+}
+```
+
+what if i alias on zshrc?
+
+doesnt seem i can alias two word vars.
+
+maybe i would alias `i` to `pnpm init --bare`.
+
+(i have an idea of "pnpm install || init --bare", but it would break when it's initialized on a parent dir)
+
+**current workflow:**
+
+```sh
+i # init
+b i # install
+b i pkg # install (add) pkg
+b rm pkg # remove pkg
+```
+
+---
 
