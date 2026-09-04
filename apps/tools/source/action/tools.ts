@@ -43,7 +43,7 @@ export const tools: Record<string, Optional<tool, 'name'>> = {
         is_stdin: true
       },
       {
-        name: 'parse',
+        name: 'parsing',
         type: 'radio',
         value: union('standard', 'flexible', 'forgiving'),
         options: ['standard', 'flexible', 'forgiving']
