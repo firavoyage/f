@@ -3959,10 +3959,18 @@ https://myjian.github.io/mai-tools/rating-visualizer/
 
 this is absolutely flawed. ranges of single chart ratings of each rank obviously would not collide into each other, and sss plus has no "range".
 
+<!-- upd: well, fine, both achievement% and difficulty (14 -> 14.0 ~ 14.5) are variable here. no wonder they overlap. -->
+
 ---
 
 https://silentblue.remywiki.com/maimai_DX:Rating
 
 this would be the primary reference.
+
+04
+
+16 40 action/maimai: design render output.
+
+x: difficulty, y: achievement% (in rank)
 
 
