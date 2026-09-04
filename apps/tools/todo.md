@@ -18,6 +18,8 @@ https://base-ui.com/
 
 https://base-ui.com/react/components/radio
 
+https://readerisdead.com/reader/view/#overview-page
+
 ---
 
 create setting field components

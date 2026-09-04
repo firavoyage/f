@@ -27,5 +27,5 @@ starting from maimai dx circle, there is one bonus rating for ap.
 
 rank constants of all versions https://silentblue.remywiki.com/maimai_DX:Rating
 
-an incorrect visualizer https://myjian.github.io/mai-tools/rating-visualizer/
+a flawed visualizer https://myjian.github.io/mai-tools/rating-visualizer/
 

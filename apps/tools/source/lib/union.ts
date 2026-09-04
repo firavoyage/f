@@ -5,7 +5,7 @@
  */
 export function union<const T extends readonly unknown[]>(
   ...all_args: T
-): union<T>;
+): Union<T>;
 export function union(...args: unknown[]): unknown {
   return args[0];
 }
@@ -14,5 +14,5 @@ type union_fn = typeof union
 declare global {
   var union: union_fn
 
-  type union<T> = T extends readonly unknown[] ? T[number] : T;
+  type Union<T> = T extends readonly unknown[] ? T[number] : T;
 }
