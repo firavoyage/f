@@ -54513,6 +54513,12 @@ it doesnt have to be completely neutral. i'd love vintage vibes.
 
 > 水至清则无鱼
 
+04
+
+20 00 feel.
+
+the hsee pro (awa the gyhs guy) comes <!-- jsla came quite eariler. lowe/haru has left. -->. they studies in weiyu hs, but they live nearby.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

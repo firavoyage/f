@@ -387,8 +387,8 @@ export function single_chart_rating(difficulty: number, achievement: number) {
 }
 
 export function single_chart_rating_table() {
-  const difficulties = each(10, 15, 0.5)
-  const ranks = each(97, 100.5, 0.5)
+  const difficulties = each(11, 15, 0.5)
+  const ranks = each(100.5, 97, -0.5)
 
   const table = [['Rank', ...difficulties], ...map(
     ranks, (achievement) => [achievement, ...map(
