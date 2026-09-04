@@ -4081,4 +4081,6 @@ nevermind.
 
 i do want the 1pica/rem and 1px dual way scale. tailwind 4px base spacing would work fine though.
 
+22 50 action/maimai: research ways to render graph.
+
 

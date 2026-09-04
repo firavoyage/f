@@ -8,6 +8,7 @@ import { use_global } from "web/component/app";
 import { Process } from "web/component/process";
 import { Textarea } from 'web/component/textarea';
 import { command } from 'web/component/app'
+import { Checkbox } from './checkbox';
 
 function args_to_options(args: arg[], stdin: any) {
   const options: any = {}
@@ -25,7 +26,9 @@ export function Main() {
   const [process, set_process] = use_global('process')
   const [input, set_input] = use_global('input')
   // const [output, set_output] = use_global('output')
+  const [is_process_visible, set_is_process_visible] = use_global('appearance.layout.process.is visible')
   const [is_input_visible, set_is_input_visible] = use_global('appearance.layout.input.is visible')
+  const [is_output_visible, set_is_output_visible] = use_global('appearance.layout.output.is visible')
   let can_render_output = false
   let render_output: fn
 
@@ -63,6 +66,15 @@ export function Main() {
         {/* <button className="view">
           view
         </button> */}
+        <Checkbox {...p({ value: is_process_visible, set_value: set_is_process_visible })}>
+          process
+        </Checkbox>
+        <Checkbox {...p({ value: is_input_visible, set_value: set_is_input_visible })}>
+          input
+        </Checkbox>
+        <Checkbox {...p({ value: is_output_visible, set_value: set_is_output_visible })}>
+          output
+        </Checkbox>
         <button className="button_minimize">
           <Icon {...p({ name: 'minimize' })}></Icon>
         </button>
@@ -74,10 +86,13 @@ export function Main() {
         </button>
       </div>
       <div className="workspace">
-        <div className="panel">
-          <div className="title">Process</div>
-          <Process {...p({ process, set_process })}></Process>
-        </div>
+        {
+          is_process_visible &&
+          <div className="panel">
+            <div className="title">Process</div>
+            <Process {...p({ process, set_process })}></Process>
+          </div>
+        }
         {
           is_input_visible &&
           <div className="panel">
@@ -87,17 +102,20 @@ export function Main() {
             </div>
           </div>
         }
-        <div className="panel">
-          <div className="title">Output</div>
-          <div className="output">
-            {
-              can_render_output ?
-                // @ts-expect-error already narrowed
-                render_output(output) :
-                <Textarea {...p({ value: output })}></Textarea>
-            }
+        {
+          is_output_visible &&
+          <div className="panel">
+            <div className="title">Output</div>
+            <div className="output">
+              {
+                can_render_output ?
+                  // @ts-expect-error already narrowed
+                  render_output(output) :
+                  <Textarea {...p({ value: output })}></Textarea>
+              }
+            </div>
           </div>
-        </div>
+        }
       </div>
     </div>
   )
