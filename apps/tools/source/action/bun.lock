@@ -5,10 +5,16 @@
     "": {
       "dependencies": {
         "json5": "2.2.3",
+        "jsonic": "2.28.0",
+        "jsonrepair": "3.15.0",
       },
     },
   },
   "packages": {
     "json5": ["json5@2.2.3", "", { "bin": { "json5": "lib/cli.js" } }, "sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg=="],
+
+    "jsonic": ["jsonic@2.28.0", "", { "bin": { "jsonic": "bin/jsonic", "jsonic-bnf": "bin/jsonic-bnf" } }, "sha512-lo+Yo4ShvJot3A3G6kZOlphRx+GfhR4uK3/O0u9Wg12fggOuvK7TxtteoRtBGeGaqnbHqEHqkj3Uft8obfvP+g=="],
+
+    "jsonrepair": ["jsonrepair@3.15.0", "", { "bin": { "jsonrepair": "bin/cli.js" } }, "sha512-wy8OTjwsJwQRnQJkKnMJJ9vcytRdBPAgIF/Hy6+s1dAj42BHMKiyL8JzEieIl3JY7idt8eyHwBWTO8mh/+mtwA=="],
   }
 }

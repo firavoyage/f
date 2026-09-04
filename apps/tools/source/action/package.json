@@ -1,6 +1,8 @@
 {
   "packageManager": "pnpm@10.30.2",
   "dependencies": {
-    "json5": "2.2.3"
+    "json5": "2.2.3",
+    "jsonic": "2.28.0",
+    "jsonrepair": "3.15.0"
   }
 }
