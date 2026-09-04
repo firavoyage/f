@@ -1,5 +1,3 @@
-type union<T> = T extends readonly unknown[] ? T[number] : T;
-
 /**
  * Create union type of all what's given
  * 
@@ -15,4 +13,6 @@ export function union(...args: unknown[]): unknown {
 type union_fn = typeof union
 declare global {
   var union: union_fn
+
+  type union<T> = T extends readonly unknown[] ? T[number] : T;
 }

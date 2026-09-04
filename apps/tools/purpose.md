@@ -4065,6 +4065,8 @@ i # init
 b i # install
 b i pkg # install (add) pkg
 b rm pkg # remove pkg
+b 'script.ts' # run
+open index.html # run in browser (parceljs under the hood)
 ```
 
 ---

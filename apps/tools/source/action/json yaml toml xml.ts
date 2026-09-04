@@ -1,13 +1,27 @@
-const { parse: parse_json, stringify: to_json } = JSON
-import { parse as parse_yaml, stringify as to_yaml } from "yaml"
+import { parse as standard_json } from 'json5';
+import * as jsonic from 'jsonic';
+const flexible_json = jsonic.default || jsonic;
+import { jsonrepair as forgiving_json } from 'jsonrepair'
 
-export function json_to_yaml({ json, parsing }: text) {
-  
-  return to_yaml(parse_json(json))
+const { parse: rigid_json, stringify: serialize_json } = JSON
+import { parse as standard_yaml, stringify as serialize_yaml } from "yaml"
+
+type json_to_yaml = {
+  json: string
+  parsing: union<['rigid', 'standard', 'flexible', 'forgiving']>
+}
+
+export function json_to_yaml({ json, parsing }: json_to_yaml) {
+  const obj = parsing == 'rigid' ? rigid_json(json) :
+    parsing == 'standard' ? standard_json(json) :
+      parsing == 'flexible' ? flexible_json(json) :
+        parsing == 'forgiving' ? forgiving_json(json) : {}
+
+  return serialize_yaml(obj)
 }
 
 export function yaml_to_json({ yaml }: text) {
-  return to_json(parse_yaml(yaml))
+  return serialize_json(standard_yaml(yaml))
 }
 
 type flatten = {
