@@ -90,7 +90,7 @@ export const tools: Record<string, Optional<tool, 'name'>> = {
       },
     ]
   },
-  "maimai single_chart_rating_table": {
+  "maimai single chart rating table": {
     fn: single_chart_rating_table,
     render_output: visual_single_chart_rating_table
   }
@@ -103,7 +103,7 @@ export const tools_taxonomy = [
   "yaml to json",
   "telegram to journal",
   "merge journal",
-  "maimai single_chart_rating_table"
+  "maimai single chart rating table"
 ]
 
 declare global {
