@@ -3997,3 +3997,18 @@ i may consider "json to csv".
 
 first you have an array of objects (if json must be an object, you may use the first key of which). the obj keys are the column headings. if new keys are found in later items, they append.
 
+---
+
+on json parsing...
+
+standard/flexible/forgiving does not really feel right. 
+
+standard. which? json, or es6?
+
+18 10 action/json: implement flexible json parsing.
+
+i will name it flexible. standard is what we love. there is no such a thing dictated.
+
+e.g. backtick template strings is not more "derived" than double quotes.
+
+
