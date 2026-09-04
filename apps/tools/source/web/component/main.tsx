@@ -34,6 +34,10 @@ export function Main() {
 
   let stdin = is_input_visible ? input : nil
   for (const tool of process) {
+    if (!has(tools, tool.name)) {
+      continue
+    }
+
     const { fn, render_output: current_render_output } = tools[tool.name]
 
     const result = handle(() => fn(args_to_options(tool.args ?? [], stdin)))
