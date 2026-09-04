@@ -12575,6 +12575,8 @@ Show all
 
 # compare json and js object syntax
 
+## compare json and js object syntax
+
 The core difference between them is that <mark><strong>JSON is a strict, text-based data serialization format</strong>, whereas a<span> </span><strong>JavaScript object is an active in-memory data structure</strong><span> </span>used in application logic</mark>.
 
 ### Quick Comparison Table
