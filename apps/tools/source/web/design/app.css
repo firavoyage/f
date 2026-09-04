@@ -275,3 +275,41 @@ textarea {
     }
   }
 }
+
+.table {
+  overflow: auto;
+
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  > .table_content {
+    display: table;
+
+    border-collapse: collapse;
+
+    .thead {
+      display: table-header-group;
+    }
+
+    .tbody {
+      display: table-row-group;
+    }
+
+    .tr {
+      display: table-row;
+    }
+
+    .td,
+    .th {
+      display: table-cell;
+
+      min-width: var(--spacing-16);
+    }
+
+    /* .th {
+      position: sticky;
+    } */
+  }
+}
