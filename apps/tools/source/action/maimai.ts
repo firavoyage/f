@@ -379,15 +379,24 @@ export function single_chart_rating(difficulty: number, achievement: number) {
     }
   }
 
-  const rating = floor(difficulty * achievement/100 * coefficient)
+  const rating = floor(difficulty * achievement / 100 * coefficient)
   // const rating = floor(difficulty * achievement * coefficient) + ap && 1
 
   return rating * 50
   // return rating
 }
 
-for (const difficulty of each(11, 13, 0.5)) {
-  for (const achievement of each(97, 100.5, 0.5)) {
-    log({difficulty, achievement, rating: single_chart_rating(difficulty, achievement)})
-  }
+export function single_chart_rating_table() {
+  const difficulties = each(10, 15, 0.5)
+  const ranks = each(97, 100.5, 0.5)
+
+  const table = [['Rank', ...difficulties], ...map(
+    ranks, (achievement) => [achievement, ...map(
+      difficulties, (difficulty) => single_chart_rating(difficulty, achievement)
+    )]
+  )]
+
+  return table
 }
+
+

@@ -4071,4 +4071,12 @@ open index.html # run in browser (parceljs under the hood)
 
 19 20 action/maimai: create table layout.
 
+they would never see the raw output (currently). it doesnt matter how to structure it. i may output an array (rows) of array (column cells), lol.
+
+what if i output csv? what if i output json, convert to csv, and have a general table rendering fn for csv? wow so interesting.
+
+nevermind.
+
+---
+
 
