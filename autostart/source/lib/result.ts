@@ -1,0 +1,70 @@
+// @ts-nocheck
+
+type Ok<T = all> = T
+// type Ok<T = all> = T extends object ? (Omit<T, typeof error_symbol> & { [error_symbol]?: never }) : T;
+type Err = { type: any, [error_symbol]: true, message?: any } & Partial<FileErr>
+type FileErr = { code: string, path: string, syscall: string, errno: number }
+
+type err = typeof err
+type is_error = typeof is_error
+declare global {
+  var err: err
+  var is_error: is_error
+  
+  type Result<T = all, E extends Err = Err> = (0 extends 1 & T ? Ok : Ok<T>) | E;
+}
+
+const error_symbol: unique symbol = Symbol("error");
+
+// just return data directly for ok(data)
+
+export function err(error: Optional<Err, typeof error_symbol> | PropertyKey | Err): Err {
+  if (error[error_symbol]) {
+    // already wrapped, likely propagated
+    return error
+  } else if (error instanceof Error) {
+    error.type = error.constructor
+    error.message = error.stack ?? error.message
+    error[error_symbol] = true
+    return error as Err
+  } else if (error && typeof error == 'object' && has(error, 'type')) {
+    // keep stack trace
+    const error_with_trace = new Error(error.type)
+    if (typeof Error.captureStackTrace == 'function') {
+      Error.captureStackTrace(error_with_trace, err);
+    } else {
+      const lines = error_with_trace.stack?.split('\n');
+      if (lines && lines.length > 1) {
+        lines.splice(1, 1);
+        error_with_trace.stack = lines.join('\n');
+      }
+    }
+
+    return merge(error_with_trace, {
+      ...error,
+      [error_symbol]: true
+    })
+  } else {
+    // flexible
+    const error_with_trace = new Error(error)
+    if (typeof Error.captureStackTrace == 'function') {
+      Error.captureStackTrace(error_with_trace, err);
+    } else {
+      const lines = error_with_trace.stack?.split('\n');
+      if (lines && lines.length > 1) {
+        lines.splice(1, 1);
+        error_with_trace.stack = lines.join('\n');
+      }
+    }
+
+    return merge(error_with_trace, {
+      type: error,
+      message: error,
+      [error_symbol]: true
+    })
+  }
+}
+
+export function is_error(result: Result): result is Err {
+  return has(result, error_symbol)
+}

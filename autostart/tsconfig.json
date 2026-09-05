@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+
+    "baseUrl": "./source",
+
+    "allowJs": true,
+    "checkJs": false,
+    "maxNodeModuleJsDepth": 1,
+    "noEmit": true,
+
+    "jsx": "react-jsx",
+
+    "strict": true,
+    // "noImplicitAny": false,
+    // "strictNullChecks": false,
+
+    "skipLibCheck": true,
+    "types": ["node"] // increase perf by disabling disk scanning for ts types
+  },
+  "include": ["**/*"],
+  "exclude": [
+    "**/build",
+    "**/.build",
+    "**/legacy",
+    "**/node_modules"
+  ]
+}
