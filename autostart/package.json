@@ -1,0 +1,7 @@
+{
+  "packageManager": "pnpm@10.30.2",
+  "devDependencies": {
+    "@types/node": "26.4.1",
+    "chokidar": "5.0.0"
+  }
+}
