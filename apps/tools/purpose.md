@@ -4103,4 +4103,28 @@ i will still name based on components, not individual css props.
 
 like, .button.button_delete. i may not add .button_delete if i do not wanna target it. (button_ prefix is required, in case i have a component called delete, which happens a lot. workarounds would be even worse and more ambiguous/confusing.)
 
+---
+
+wow. ~~ts~~ vscode magic.
+
+```tsx
+      <Button onClick={function (...args: any) {
+        throw new Error("Function not implemented.")
+      } }></Button>
+```
+
+---
+
+i would generally use snake case. and there is nothing wrong w `onClick` (i do not wanna get multiple autocomplete or mess up w tsism).
+
+`onclick` and `on_click` will technically work.
+
+<!-- i have a rationale! -->
+
+rationale: `on` prefix is boilerplate <!-- should be fixed -->. and i would rather read `onClick` as a symbol/icon.
+
+---
+
+all focusable elements should style properly. currently non buttons would rather have no focus ring at all.
+
 

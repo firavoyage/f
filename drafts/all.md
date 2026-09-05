@@ -240,7 +240,6 @@ web: <!-- frontend, web, ts/js -->
 - js void type
 - js result promise throw
 - ts d.ts code style
-- ts utility types record union enum
 - md footnote syntax support render
 - ts std result go pattern rust pattern
 - web components criticism
@@ -628,6 +627,7 @@ float: <!-- music -->
 - interpret the peachy key iyowa
 - interpret samsa teniwoha
 - translation moonlight kamitsubaki city ensemble
+- meaning seishun complex
 
 philosophy:
 

@@ -16,12 +16,9 @@ export function Menu(props: menu) {
         <Icon {...p({ name: 'search' })}></Icon>
       </Button>
       <div className="name">{app}</div>
-      <Button onClick={function (...args: any) {
-        throw new Error("Function not implemented.")
-      } }></Button>
-      <button className="button_hamburger" {...p({ onClick: toggle_hamburger })}>
+      <Button {...p({ class: "button_hamburger", onClick: toggle_hamburger })}>
         <Icon {...p({ name: 'menu' })}></Icon>
-      </button>
+      </Button>
     </div>
   )
 }

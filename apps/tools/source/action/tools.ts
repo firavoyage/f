@@ -30,7 +30,7 @@ type type = 'checkbox' | 'switch' | 'select' | 'radio' | 'number' | 'input' | 't
 
 export type tool_name = keyof typeof tools
 
-export const tools: Record<string, Optional<tool, 'name'>> = {
+export const tools = {
   // export const tools = {
   "json to yaml": {
     fn: json_to_yaml,
@@ -94,7 +94,7 @@ export const tools: Record<string, Optional<tool, 'name'>> = {
     fn: single_chart_rating_table,
     render_output: visual_single_chart_rating_table
   }
-}
+} satisfies Record<string, Optional<tool, 'name'>>
 
 // const tools_typecheck: Record<string, Optional<tool, 'name'>> = tools
 

@@ -9,6 +9,7 @@ import { Process } from "web/component/process";
 import { Textarea } from 'web/component/textarea';
 import { command } from 'web/component/app'
 import { Checkbox } from './checkbox';
+import { Button } from './button';
 
 function args_to_options(args: arg[], stdin: any) {
   const options: any = {}
@@ -63,9 +64,9 @@ export function Main() {
   return (
     <div className="main">
       <div className="titlebar">
-        <button className="button_toggle_sidebar" {...p({ onClick() { command('toggle sidebar') } })}>
+        <Button {...p({ class: 'button_toggle_sidebar', onClick() { command('toggle sidebar') } })}>
           <Icon {...p({ name: 'sidebar' })}></Icon>
-        </button>
+        </Button>
         <div className="title"></div>
         {/* <button className="view">
           view
@@ -79,15 +80,15 @@ export function Main() {
         <Checkbox {...p({ value: is_output_visible, set_value: set_is_output_visible })}>
           output
         </Checkbox>
-        <button className="button_minimize">
+        <Button className="button_minimize">
           <Icon {...p({ name: 'minimize' })}></Icon>
-        </button>
-        <button className="button_maximize">
+        </Button>
+        <Button className="button_maximize">
           <Icon {...p({ name: 'maximize' })}></Icon>
-        </button>
-        <button className="button_close">
+        </Button>
+        <Button className="button_close">
           <Icon {...p({ name: 'close' })}></Icon>
-        </button>
+        </Button>
       </div>
       <div className="workspace">
         {
