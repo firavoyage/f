@@ -4145,4 +4145,16 @@ it (the demo) will be clipped before the leftmost of the scrollbar on 1280px lap
 
 https://tailwindcss.com/docs/width#setting-both-width-and-height
 
+it works well on 1440 (90%).
+
+---
+
+decision:
+
+- border: strictly for borders outlines box shadows in 0 2 4 8 px (currently)
+- spacing: length (margin, padding) in 2px base, starting from 1
+- size: length (width, height) in 1rem base, starting from 1 ~~4rem~~ <!-- in tailwind size means exactly width/height. and here there would not be a thing to magically set both -->
+
+well how much does it matter? idk but i think i would follow my idea.
+
 
