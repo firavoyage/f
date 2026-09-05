@@ -762,6 +762,8 @@ history:
 - chris coyier
 - codepen
 - pl <!-- programming languages -->
+- typescript flow
+- ocaml
 
 politics:
 
