@@ -11,7 +11,7 @@ After=network.target
 [Service]
 Type=simple
 User=$(whoami)
-ExecStart=/bin/zsh -ic 'b ${autostart_script}'
+ExecStart=/bin/zsh -ic "b '${autostart_script}'"
 Restart=on-failure
 
 [Install]
