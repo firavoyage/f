@@ -319,9 +319,9 @@ hierarchy:
 
 page:
   whitespace:
-    comfortable: spacing.2
-    cozy: spacing.1
-    compact: spacing.0.5
+    comfortable: border.8
+    cozy: border.4
+    compact: border.2
 titlebar:
   height:
     comfortable: spacing.12
