@@ -94,7 +94,9 @@ export const tools = {
     fn: single_chart_rating_table,
     render_output: visual_single_chart_rating_table
   }
-} satisfies Record<string, Optional<tool, 'name'>>
+} as const satisfies Record<string, Optional<tool, 'name'>>
+// } as const
+// } satisfies Record<string, Optional<tool, 'name'>>
 
 // const tools_typecheck: Record<string, Optional<tool, 'name'>> = tools
 
