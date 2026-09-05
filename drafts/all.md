@@ -309,6 +309,7 @@ web: <!-- frontend, web, ts/js -->
 - react icon lib
 - script convert design tokens js object order
 - css aspect ratio icon
+- css semantic component or utility class name
 
 backend:
 

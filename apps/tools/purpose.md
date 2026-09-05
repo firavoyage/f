@@ -4129,11 +4129,20 @@ all focusable elements should style properly. currently non buttons would rather
 
 20 00 web/design: clear spacing tokens below 1rem.
 
-accessibility is out of concern. use border otherwise.
+use border if needed. left wing politics is out of concern.
 
 ---
 
+i would not refactor the base to 1rem. yeah, it carries purpose, it's the default font size originated from printing press... and 1px means nothing but to align environments... and 4px is basically out of display constraints...
 
+not everything are based on font size. you may have 20px or 40px.
 
+---
+
+fun fact: tailwindcss docs itself is not responsive.
+
+it (the demo) will be clipped before the leftmost of the scrollbar on 1280px laptop.
+
+https://tailwindcss.com/docs/width#setting-both-width-and-height
 
 
