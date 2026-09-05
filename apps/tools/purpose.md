@@ -4152,9 +4152,27 @@ it works well on 1440 (90%).
 decision:
 
 - border: strictly for borders outlines box shadows in 0 2 4 8 px (currently)
-- spacing: length (margin, padding) in 2px base, starting from 1
+- spacing: length (margin, padding) in ~~2px~~ 4px base, starting from 1
 - size: length (width, height) in 1rem base, starting from 1 ~~4rem~~ <!-- in tailwind size means exactly width/height. and here there would not be a thing to magically set both -->
 
 well how much does it matter? idk but i think i would follow my idea.
+
+i think it's just tiny, i mean 4px is very very tiny. and 1rem is small.
+
+**i will not use 0.5 value (2px base).**
+
+well, i think it's not a good idea to introduce "size".
+
+you can not imagine it, right?
+
+also, titlebar height uses spacing. yeah, maybe it serves as whitespace.
+
+---
+
+i can not make progress.
+
+my conclusion is it's not a problem that could be solved on design tokens. the scale does increase for larger components. different naming has obvious downside (mental load). and what does it give? increase by one? nil.
+
+eventually you just want (a tool) to map the design sheet.
 
 

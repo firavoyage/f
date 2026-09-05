@@ -957,6 +957,3 @@ AI can make mistakes, so double-check responses
   Default spacing scale By default, Tailwind includes a generous and comprehensive numeric spacing scale. The values are proportiona...
 
 Show all
-
-# 
-
