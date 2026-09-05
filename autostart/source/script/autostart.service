@@ -1,0 +1,12 @@
+[Unit]
+Description=Autostart
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/www/my-node-app
+ExecStart=/home/fira/.local/bin/b {autostart_path}
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
