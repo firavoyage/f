@@ -41,17 +41,19 @@ async function run_script(event, file) {
   const scripts = parse(await read(path(repo, 'config.yaml')))
 
   for (const script of scripts) {
-    const daemon = spawn(script, [], { shell: 'zsh' })
+    const { name, command } = script
+
+    const daemon = spawn(command, [], { shell: 'zsh' })
 
     daemon.stdout.setEncoding('utf8');
     daemon.stderr.setEncoding('utf8');
 
     daemon.stdout.on('data', (chunk) => {
-      log(`[stdout] ${chunk}`)
+      log(`[${name}] [stdout] ${chunk}`)
     });
 
     daemon.stderr.on('data', (chunk) => {
-      log(`[stderr] ${chunk}`)
+      log(`[${name}] [stderr] ${chunk}`)
     });
 
     existing_daemons.add(daemon)
