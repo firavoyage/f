@@ -151066,3 +151066,16 @@
 2026-09-06 00:16:26+08:00 ghostty sudo journalctl -u autostart -f
 2026-09-06 00:17:27+08:00 code file.ts - f (Workspace) - Visual Studio Code
 2026-09-06 00:18:27+08:00 code file.ts - f (Workspace) - Visual Studio Code
+2026-09-06 00:20:27+08:00 chromium how to use pm2 - Google Search - Chromium
+2026-09-06 00:21:27+08:00 ghostty ~
+2026-09-06 00:22:27+08:00 code autostart.ts - f (Workspace) - Visual Studio Code
+2026-09-06 00:23:27+08:00 ghostty pm2 logs autostart
+2026-09-06 00:24:27+08:00 code ● 20260905 shell systemd abstraction autostart.md - f (Workspace) - Visual Studio Code
+2026-09-06 00:25:27+08:00 code config.yaml - f (Workspace) - Visual Studio Code
+2026-09-06 00:26:27+08:00 chromium how to use pm2 - Google Search - Chromium
+2026-09-06 00:27:27+08:00 chromium nodejs childprocess spawn - Google Search - Chromium
+2026-09-06 00:28:27+08:00 code ubuntu.md - f (Workspace) - Visual Studio Code
+2026-09-06 00:29:27+08:00 code install.sh - f (Workspace) - Visual Studio Code
+2026-09-06 00:30:27+08:00 code ● install.sh - f (Workspace) - Visual Studio Code
+2026-09-06 00:31:27+08:00 code ● install.sh - f (Workspace) - Visual Studio Code
+2026-09-06 00:32:27+08:00 code ● install.sh - f (Workspace) - Visual Studio Code
