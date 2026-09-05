@@ -4083,4 +4083,12 @@ i do want the 1pica/rem and 1px dual way scale. tailwind 4px base spacing would 
 
 22 50 action/maimai: research ways to render graph.
 
+05
+
+14 30 web/component/button: separate actual buttons from buttons.
+
+html tags have functionality. e.g. it's much easier when you use native button for interactive widgets.
+
+not all focusable elements are actual buttons.
+
 
