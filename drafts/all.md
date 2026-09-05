@@ -230,6 +230,7 @@ archi:
 - code style comment title case sentence case
 - ts import import type
 - compare null and nil
+- writing style bold punctuation mark
 
 web: <!-- frontend, web, ts/js -->
 

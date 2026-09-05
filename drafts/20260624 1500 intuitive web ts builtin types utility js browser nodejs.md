@@ -847,7 +847,7 @@ Show all
 
 <!-- file gen is barely working. -->
 
-## all typescript builtin types
+# all typescript builtin types
 
 **TypeScript built-in types** fall into several core categories: <mark><strong>primitives</strong><span> </span>(inherited from JavaScript),<span> </span><strong>special types</strong><span> </span>specific to TypeScript's type system,<span> </span><strong>structural types</strong><span> </span>for data collections, and<span> </span><strong>built-in utility types</strong><span> </span>used to manipulate existing types</mark>. [link](https://www.typescriptlang.org/docs/handbook/utility-types.html)
 
@@ -944,7 +944,7 @@ I can write out the exact structural setup or utility type you need.
 
 Show all
 
-## all typescript builtin utility types
+# all typescript builtin utility types
 
 **TypeScript built-in utility types** are global generic tools used to manipulate and transform existing types without rewriting them from scratch. [link](https://www.typescriptlang.org/docs/handbook/utility-types.html)
 
@@ -1042,7 +1042,7 @@ I can demonstrate exactly how to chain or apply these utilities to your code.
 
 Show all
 
-## all typescript builtin js types
+# all typescript builtin js types
 
 **TypeScript's built-in JavaScript types** are the types provided by the compiler out-of-the-box (`lib.d.ts`) to match **native JavaScript primitives, standard global objects, and runtime constructs**. [link](https://www.typescriptlang.org/docs/handbook/2/type-declarations.html)
 
@@ -1122,7 +1122,7 @@ I can show you how to properly cast or configure your environment settings to fi
 
 Show all
 
-## all browser types in ts
+# all browser types in ts
 
 Here is your file:
 
@@ -1247,7 +1247,7 @@ If you are currently debugging element interactions, let me know:
 
 I can write out the clean casting patterns or type annotations to fix the issue.
 
-## all nodejs types in ts
+# all nodejs types in ts
 
 Here is your file:
 
@@ -1404,3 +1404,7 @@ If you are setting up or configuring a modern project backend, let me know:
 - If you are running into type conflicts between **DOM types** and **Node.js types** (like `setTimeout` returning different signatures)
 
 I can supply the correct configuration setups or code structures to resolve any compiler complaints.
+
+#
+
+

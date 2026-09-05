@@ -4091,4 +4091,16 @@ html tags have functionality. e.g. it's much easier when you use native button f
 
 not all focusable elements are actual buttons.
 
+**im not saying "util classes".**
+
+yeah, 
+
+> The Bad: As your project grows, you end up with massive CSS files full of duplicated code (e.g., declaring display: flex or padding: 15px hundreds of times). You also suffer from "naming fatigue" trying to name every single inner div wrapper."
+
+you basically alias them to "flex" and "p-4" and duplicate them across classes.
+
+i will still name based on components, not individual css props.
+
+like, .button.button_delete. i may not add .button_delete if i do not wanna target it. (button_ prefix is required, in case i have a component called delete, which happens a lot. workarounds would be even worse and more ambiguous/confusing.)
+
 
