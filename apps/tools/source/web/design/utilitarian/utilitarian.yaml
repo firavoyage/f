@@ -175,11 +175,11 @@ color:
 
 spacing:
   # 0.5: 0.125rem
-  # 1: 0.25rem
+  1: 0.25rem
   # 1.5: 0.375rem
-  # 2: 0.5rem
+  2: 0.5rem
   # 2.5: 0.625rem
-  # 3: 0.75rem
+  3: 0.75rem
   # 3.5: 0.875rem
   4: 1rem
   5: 1.25rem
@@ -192,26 +192,26 @@ spacing:
   12: 3rem
   14: 3.5rem
   16: 4rem
-  # 20: 5rem
-  # 24: 6rem
-  # 28: 7rem
-  # 32: 8rem
-  # 36: 9rem
-  # 40: 10rem
-  # 44: 11rem
-  # 48: 12rem
-  # 52: 13rem
-  # 56: 14rem
-  # 60: 15rem
-  # 64: 16rem
-  # 72: 18rem
-  # 80: 20rem
-  # 96: 24rem
+  20: 5rem
+  24: 6rem
+  28: 7rem
+  32: 8rem
+  36: 9rem
+  40: 10rem
+  44: 11rem
+  48: 12rem
+  52: 13rem
+  56: 14rem
+  60: 15rem
+  64: 16rem
+  72: 18rem
+  80: 20rem
+  96: 24rem
 
 size:
-  1: 1rem
-  2: 2rem
-  3: 3rem
+  # 1: 1rem
+  # 2: 2rem
+  # 3: 3rem
   4: 4rem
   5: 5rem
   6: 6rem
@@ -228,6 +228,15 @@ size:
   18: 18rem
   20: 20rem
   24: 24rem
+  28: 28rem
+  32: 32rem
+  36: 36rem
+  42: 42rem
+  48: 48rem
+  56: 56rem
+  64: 64rem
+  72: 72rem
+  80: 80rem
 
 max-width:
   none: none
@@ -350,9 +359,9 @@ hierarchy:
 
 page:
   whitespace:
-    comfortable: border.8
-    cozy: border.4
-    compact: border.2
+    comfortable: spacing.2
+    cozy: spacing.1
+    compact: spacing.1
 titlebar:
   height:
     comfortable: spacing.12
