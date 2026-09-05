@@ -23,13 +23,16 @@ function kebab_to_camel(str: string): string {
   return result;
 }
 
-// for some reason it couldnt autocomplete
-
+type RelaxedProps = Record<any, any> & {
+  key?: never
+  class?: string | object | Array<any>
+  style?: string | object
+}
+// type RelaxedProps = Record<any, any>
 // type RelaxedProps<T> = Omit<T, 'className'> & {
 //   class?: string;
 //   [key: string]: any;
 // };
-type RelaxedProps = Record<any, any>;
 // type RelaxedProps = {
 //   key?: never,
 //   class?: string | object | Array<any>,
@@ -42,7 +45,7 @@ type RelaxedProps = Record<any, any>;
  * 
  * idempotent
  */
-export function p<T = >(
+export function p<T>(
   props: RelaxedProps & T
 ): T {
   // export function p<Tag extends keyof React.JSX.IntrinsicElements>(

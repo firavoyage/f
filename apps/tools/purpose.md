@@ -4085,7 +4085,7 @@ i do want the 1pica/rem and 1px dual way scale. tailwind 4px base spacing would 
 
 05
 
-14 30 web/component/button: separate actual buttons from buttons.
+14 30 web/component/button: separate actual buttons from buttons. web/lib/props: fix props autocomplete.
 
 html tags have functionality. e.g. it's much easier when you use native button for interactive widgets.
 

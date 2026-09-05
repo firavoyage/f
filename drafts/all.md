@@ -231,6 +231,7 @@ archi:
 - ts import import type
 - compare null and nil
 - writing style bold punctuation mark
+- compare writing styles
 
 web: <!-- frontend, web, ts/js -->
 

@@ -1,11 +1,15 @@
+import clsx from "clsx"
+
 type button = {
   onClick: fn
 }
 
 export function Button(props: button) {
-  const { className } = p(props)
+  // @ts-expect-error 
+  const { className = '', ...rest_props } = p(props)
 
   return (
-    <button className="button" {...p(props)}></button>
+    <button {...p({ class: clsx('button', className), ...rest_props })}></button>
   )
 }
+
