@@ -385,6 +385,7 @@ desktop:
 - shell typos abstraction
 - vscode fix css linting syntax highlighting
 - ubuntu over heating vscode malfunctioning rogue processes
+- shell systemd abstraction autostart
 
 android:
 
