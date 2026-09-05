@@ -1,4 +1,5 @@
 import { use_global } from "./app"
+import { Button } from "./button"
 
 type menu = {
   app: string
@@ -11,10 +12,13 @@ export function Menu(props: menu) {
 
   return (
     <div className="menu">
-      <button className="button_search">
+      <Button {...p({ class: 'button_search' })}>
         <Icon {...p({ name: 'search' })}></Icon>
-      </button>
+      </Button>
       <div className="name">{app}</div>
+      <Button onClick={function (...args: any) {
+        throw new Error("Function not implemented.")
+      } }></Button>
       <button className="button_hamburger" {...p({ onClick: toggle_hamburger })}>
         <Icon {...p({ name: 'menu' })}></Icon>
       </button>
