@@ -42,7 +42,7 @@ type RelaxedProps = Record<any, any>;
  * 
  * idempotent
  */
-export function p<T>(
+export function p<T = >(
   props: RelaxedProps & T
 ): T {
   // export function p<Tag extends keyof React.JSX.IntrinsicElements>(
