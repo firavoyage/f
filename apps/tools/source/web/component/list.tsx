@@ -1,3 +1,5 @@
+import { Button } from "./button"
+
 type item = string | { name: string, id: string }
 
 export type items = item[] | { [key: string]: items }
@@ -66,9 +68,9 @@ export function List({ items, focus, set_focus }: list) {
 
           const is_focus = focus == id
           
-          const Tag = 'button'
+          const Tag = Button
           // const Tag = type
-          return <Tag {...p({ class: type, focus: is_focus, onclick(){
+          return <Tag {...p({ class: type, focus: is_focus, onClick(){
             if (type == 'p') {
               set_focus?.(id)
             } else {

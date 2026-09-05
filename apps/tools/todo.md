@@ -104,6 +104,14 @@ https://getbootstrap.com/docs/5.3/examples/
 
 w ~~c~~ <!-- it's not wise to build for the future. better to think what you need instead. -->
 
+# todo: style elements focus states <!-- s -->
+
+style elements focus states
+
+not just buttons.
+
+i mean, like checkboxes, sidebar items
+
 # todo: complete planned tools. <!-- c -->
 
 complete planned tools.
