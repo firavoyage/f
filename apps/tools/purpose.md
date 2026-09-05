@@ -4064,6 +4064,7 @@ maybe i would alias `i` to `pnpm init --bare`.
 i # init
 b i # install
 b i pkg # install (add) pkg
+b i -D pkg # install (add) dev pkg
 b rm pkg # remove pkg
 b 'script.ts' # run
 open index.html # run in browser (parceljs under the hood)
@@ -4186,6 +4187,8 @@ tailwind would be quite good. it's widely used and defacto. at least good enough
 the only change is to remove .5 spacing. 2px is too trivial, i think. it also echos w their initial idea.
 
 max w scales. (it's not recommended to hardcode main widget length to be responsive)
+
+22 00 web/script: create auto convert design tokens, a file watcher.
 
 
 

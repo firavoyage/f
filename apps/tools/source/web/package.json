@@ -21,6 +21,7 @@
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
     "buffer": "6.0.3",
+    "chokidar": "5.0.0",
     "crypto-browserify": "^3.12.1",
     "events": "^3.3.0",
     "os-browserify": "^0.3.0",
