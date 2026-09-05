@@ -4127,4 +4127,13 @@ rationale: `on` prefix is boilerplate <!-- should be fixed -->. and i would rath
 
 all focusable elements should style properly. currently non buttons would rather have no focus ring at all.
 
+20 00 web/design: clear spacing tokens below 1rem.
+
+accessibility is out of concern. use border otherwise.
+
+---
+
+
+
+
 
