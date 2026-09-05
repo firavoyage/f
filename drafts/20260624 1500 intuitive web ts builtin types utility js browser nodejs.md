@@ -1799,6 +1799,97 @@ Would you like to see a practical code example demonstrating how to combine **`k
 
 Show all
 
+# typescript satisfies
+
+The **TypeScript `satisfies` operator**, introduced in **TypeScript 4.9**, <mark>validates that an expression matches a specific type<span> </span><strong>without changing or widening the inferred type</strong><span> </span>of that expression</mark>. [link](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-9.html)
+
+It allows you to enforce a contract (ensure your data is structured correctly) while maintaining the most precise, narrow type information possible. [link](https://mimo.org/glossary/typescript/satisfies)
+
+***
+
+### The Problem it Solves
+
+Before `satisfies`, using a colon type annotation (`: Type`) would force TypeScript to **widen** the type. This meant losing specific details about the values, which ruins autocompletion and type safety down the line. [link](https://www.youtube.com/watch?v=r1L35zxZQPE)
+
+#### Example with standard type annotation (`:`) ❌
+
+typescript
+
+```
+type Colors = "red" | "green" | "blue";
+type RGB = [number, number, number];
+
+// We want properties to match either a string or an RGB array
+const palette: Record<Colors, string | RGB> = {
+  red: [255, 0, 0],
+  green: "#00ff00",
+  blue: [0, 0, 255]
+};
+
+// ❌ ERROR: Property 'toUpperCase' does not exist on type 'string | RGB'.
+// TypeScript forgot that 'green' is a string because we widened it to 'string | RGB'.
+palette.green.toUpperCase();
+```
+
+Use code with caution.
+
+#### Example with the `satisfies` operator ✅
+
+typescript
+
+```
+const palette = {
+  red: [255, 0, 0],
+  green: "#00ff00",
+  blue: [0, 0, 255]
+} satisfies Record<Colors, string | RGB>;
+
+//  SUCCESS! TypeScript validates the structure, but safely remembers
+// that 'palette.green' is exactly a string.
+palette.green.toUpperCase();
+
+// It also knows 'palette.red' is an array, allowing array methods:
+palette.red.map(x => x * 2);
+```
+
+Use code with caution.
+
+***
+
+### Quick Comparison: `:` vs `as` vs `satisfies`
+
+| Feature           | Type Annotation (`: Type`)                         | Type Assertion (`as Type`)                     | `satisfies` Operator                             |
+| ----------------- | -------------------------------------------------- | ---------------------------------------------- | ------------------------------------------------ |
+| **Purpose**       | Declares the explicit type of a variable lifetime. | Forces TS to treat a value as a type (unsafe). | Validates compliance without altering inference. |
+| **Type Widening** | Widens type to match the declared type.            | Overrides inference entirely.                  | **No.** Retains narrowest inferred literal type. |
+| **Catches Typos** | Yes.                                               | No (can silenty bypass errors).                | **Yes**.                                         |
+
+***
+
+### Key Use Cases
+
+- **Catching Property Typos:** If you accidentally misspell a property, `satisfies` will trigger a compile-time error.
+- **Config Objects:** Ideal for Tailwind configurations, route definition maps, or theme setups where properties have diverse types but need rigid structures.
+- **Inline API Payloads:** Use it to strictly type `fetch` request bodies inline without losing autocomplete when mapping local variables. [link](https://www.totaltypescript.com/clarifying-the-satisfies-operator)
+
+If you are dealing with a specific piece of code where you aren't sure whether to use `satisfies`, paste it here! I can help you **refactor your types** or **explain any compile-time errors** you are seeing.
+
+- [link](https://www.youtube.com/watch?v=r1L35zxZQPE)\
+  YouTube·Matt Pocock\
+  Most TS devs don't understand 'satisfies'\
+  and variable annotations there's been a bit of confusion about the satisfies keyword since it came out in Typescript 4.9. so if we...\
+  4:10
+- [link](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-9.html)\
+  TypeScript\
+  Documentation - TypeScript 4.9\
+  The new satisfies operator lets us validate that the type of an expression matches some type, without changing the resulting type ...
+- [link](https://www.totaltypescript.com/clarifying-the-satisfies-operator)\
+  Total TypeScript\
+  Clarifying the \`satisfies\` Operator | Total TypeScript\
+  In TypeScript, satisfies is a way to assign types to values. It's designed to solve the problem that colon annotations, like the f...
+
+Show all
+
 # typescript enum
 
 In TypeScript, an <mark><strong>enum (enumeration) is a special class-like feature that allows you to define a set of named constants</strong></mark>. Unlike most TypeScript features, enums are not purely type-level extensions; they compile down to actual JavaScript objects that exist at runtime. [link](https://www.typescriptlang.org/docs/handbook/enums.html)
@@ -2587,4 +2678,3 @@ If you want to make your project a bit more forgiving, would you like to see how
 well, conservativism. backward compatibility.
 
 **fuck tc39.**
-
