@@ -1,3 +1,5 @@
+import 'lib/global'
+
 import chokidar from 'chokidar';
 import { dirname, relative } from 'path';
 import { fileURLToPath } from 'url';
