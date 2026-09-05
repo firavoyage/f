@@ -4171,8 +4171,21 @@ also, titlebar height uses spacing. yeah, maybe it serves as whitespace.
 
 i can not make progress.
 
-my conclusion is it's not a problem that could be solved on design tokens. the scale does increase for larger components. different naming has obvious downside (mental load). and what does it give? increase by one? nil.
+~~my conclusion is it's not a problem that could be solved on design tokens. the scale does increase for larger components. different naming has obvious downside (mental load). and what does it give? increase by one? nil.~~
 
-eventually you just want (a tool) to map the design sheet.
+~~eventually you just want (a tool) to map the design sheet.~~
+
+~~wait why not? are you gonna have 3 digit spacing?! 24rem isnt wide enough!~~
+
+---
+
+i will not carry out a massive change.
+
+tailwind would be quite good. it's widely used and defacto. at least good enough.
+
+the only change is to remove .5 spacing. 2px is too trivial, i think. it also echos w their initial idea.
+
+max w scales. (it's not recommended to hardcode main widget length to be responsive)
+
 
 
