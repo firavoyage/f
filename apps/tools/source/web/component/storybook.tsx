@@ -27,8 +27,8 @@ export function Graph() {
   return (
     <svg {...p({ ref: svg, style: {
       backgroundColor: 'khaki'
-    } })}>
-
+    }, viewBox: "0 0 100 100", width: 300, height: 300 })}>
+      <rect x="0" y="0" width="80" height="50" />
     </svg>
   )
 }
