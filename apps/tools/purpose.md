@@ -4194,5 +4194,7 @@ max w scales. (it's not recommended to hardcode main widget length to be respons
 
 21 10 action/maimai: research and design graph component.
 
+21 20 web/component: create a minimal storybook.
+
 
 
