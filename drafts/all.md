@@ -310,6 +310,7 @@ web: <!-- frontend, web, ts/js -->
 - script convert design tokens js object order
 - css aspect ratio icon
 - css semantic component or utility class name
+- svg graph lib
 
 backend:
 
