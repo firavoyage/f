@@ -552,6 +552,8 @@ What specific action are you trying to trigger inside your `useEffect`? If you a
 
 # d3js examples
 
+## d3js examples
+
 **D3.js (Data-Driven Documents)** is a powerful JavaScript library used to create dynamic, interactive data visualizations by binding data directly to the web browser's DOM.
 
 Because D3 works at a low level with web standards like SVG, Canvas, and HTML, it offers complete layout flexibility compared to rigid, pre-built chart configurations. Here is a guide to the best official and community-driven galleries to find examples, along with a functional code sample to get you started. [link](https://github.com/d3/d3)
@@ -1194,6 +1196,8 @@ Use code with caution.
 Are you trying to decide on a **framework or library configuration** for an upcoming project? I can recommend a specific stack based on whether you lean toward **Observable Plot's declarative simplicity** or **Svelte/React's component approach**.
 
 # why is d3js called
+
+## why is d3js called
 
 **D3.js** gets its name <mark>because it stands for<span> </span><strong>Data-Driven Documents</strong></mark>. [link](https://en.wikipedia.org/wiki/D3.js)
 

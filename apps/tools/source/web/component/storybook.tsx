@@ -1,5 +1,11 @@
 import { useRef } from "react"
 
+/**
+ * - scale: create context
+ * - scale on svg: map cord props to svg xy
+ * - scale on graph: map mouse position to cord
+ */
+
 export function Graph() {
   const svg = useRef()
 
@@ -27,7 +33,7 @@ export function Graph() {
   return (
     <svg {...p({ ref: svg, style: {
       backgroundColor: 'khaki'
-    }, viewBox: "0 0 100 100", width: 300, height: 300 })}>
+    }, viewBox: "0 0 100 100", width: 300, height: 100, preserveAspectRatio: 'none' })}>
       <rect x="0" y="0" width="80" height="50" />
     </svg>
   )
