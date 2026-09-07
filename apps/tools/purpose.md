@@ -4311,4 +4311,32 @@ well i dont really know the math terms... lol.
 
 ok that's called grid.
 
+21 30 web/lib/props: fix string style.
+
+lack of testing. i assumed it would return an obj style react expects rather than some ast.
+
+---
+
+ref: rechart example
+
+```jsx
+export default function IndexLineChart() {
+  return (
+    <LineChart style={{ width: '100%', aspectRatio: 1.618, maxWidth: 800, margin: 'auto' }} responsive data={data}>
+      <CartesianGrid strokeDasharray="5 5" />
+      <XAxis dataKey="name" />
+      <YAxis width="auto" />
+      <Line type="monotone" dataKey="uv" />
+      <Line type="monotone" dataKey="pv" />
+      <Legend position="insideTopRight" offset={20} />
+      <RechartsDevtools />
+    </LineChart>
+  );
+}
+```
+
+---
+
+it seems if i move on trackpad, mousemove would fire regardless. (e.g. when you try to move toward top left standing on (0, 0))
+
 
