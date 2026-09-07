@@ -14,10 +14,14 @@ type graph = {
   aspect_ratio?: number
   padding_left?: number
   padding_bottom?: number
+  x: number[]
+  y: number[]
 }
 
 export function Graph(props: graph) {
-  const { aspect_ratio = 1, padding_left = 10, padding_bottom = 10 } = props
+  const { aspect_ratio = 1, padding_left = 10, padding_bottom = 10,
+    x, y
+   } = props
   const [container, bounds] = use_measure()
 
   const width = bounds.width || aspect_ratio * 100

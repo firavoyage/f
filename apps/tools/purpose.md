@@ -4339,4 +4339,7 @@ export default function IndexLineChart() {
 
 it seems if i move on trackpad, mousemove would fire regardless. (e.g. when you try to move toward top left standing on (0, 0))
 
+---
+
+
 
