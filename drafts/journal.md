@@ -54563,15 +54563,23 @@ im emotionless and i have to take the optimal path regardless.
 
 from a practical standpoint, i did not reason much. you have to either get ahead, or get blocked.
 
-and risk is out of concern. _ik it must be possibly optimal, if i play the most aggressive move._ that's it.
+and risk is out of concern. _ik it must be possibly optimal, if i play the most aggressive move._ that's it. <!-- on paper, for bureaucratic purposes, they said it was my first time practicing so. it's absolutely not. i remember years before (maybe in hs) when i rushed down an escalator a random young woman claims that ive crushed her milk tea and thus demands compensation, and at least cleanup (clearly they are conservative as they value cleanup more). i did not remember that time, but i thought what they said were likely to be true, unless they are bad actors (for milk tea? insane). i played the greedy move of requiring vod replay, and eventually left. seems they recorded a vid of my claims and i did not care. they messaged their bf for help. doesnt change much. or that was iced lemonade tea. --> <!--  -->
 
 at the same time, if they decide to chase me, they _must_ get me. not necessarily in perfect order, like, if i decided to turn around onto a truck, or if i went for a lose lose path for political reasons. it was a young man, maybe in his thirties. <!-- that's where young ppl should be. throughout the story, all figures of power wear easy clothes, and they wear uniforms iff they are small potatoes. yeah at the end of the day they have to make a decision. or maybe accept one. -->
 
-and thus it's not reasonable, objectively.
+and thus it's not reasonable, objectively. <!-- like, "i have no enemies" -->
 
 ---
 
-the world 
+about the route, there are strictly dominant alternatives if you check the map. <!-- and if you somewhat value risk aversion -->
+
+---
+
+the world <!-- society --> is structured to be emotionally manipulative.
+
+
+
+---
 
 it reminds me who i am.
 
