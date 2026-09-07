@@ -54523,6 +54523,46 @@ the hsee pro (awa the gyhs guy) comes <!-- jsla came quite eariler. lowe/haru ha
 
 16 00 have some mung bean w crystal sugar porridge.
 
+06
+
+16 00 take a note on the patrol car.
+
+ride on the sideway/car road.
+
+get blocked. a group of police this time.
+
+ignore. proceed. they claim ive hurt their finger. so they must chase me.
+
+ignore. proceed.
+
+try to get ahead.
+
+pull them of their motorcycle.
+
+not a lucky day tbh.
+
+im one that fights the police from now on.
+
+im already on the stage.
+
+and remember: i have no enemy.
+
+---
+
+i asked them to lock me on the car as before.
+
+they did not. after confirming my mental clarity.
+
+it's a procedure it seems.
+
+---
+
+upd a day later:
+
+
+
+it reminds me who i am.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
