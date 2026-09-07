@@ -4245,6 +4245,16 @@ interesting. worth my time.
 
 i would
 
-- 
+- get props: aspect ratio (you may hardcode it or calculate it)
+- set dull values, like w = ratio * 100, h = 100
+- when rendered i guess it would get bounds (ideally before painting)
+- w = bounds.width ?? w, h = ... ?? h
+- set svg viewbox as 0 0 w h
+- ~~if unresponsive, i would fix w h~~ could have
+- i would subtract padding
+
+how would i fix w h, maybe usemount?
+
+what if i want a consistent 1rem padding and a golden aspect ratio? i will 
 
 
