@@ -4233,4 +4233,11 @@ for graduation... will the text scale the same as the graph? or will it be an ov
 
 research d3js examples... it does put text inside svg. it will not keep font size unchanged (like take more proportion of the viewbox) when the width collapses.
 
-research recharts... it does the same. but the text scales.
+research recharts... it does the same. but the text scales. wait how does it do.
+
+and about padding, four direction padding is not the same. on rechart, it only adds padding on the left and bottom.
+
+there is a dedicated "responsive" prop.
+
+
+
