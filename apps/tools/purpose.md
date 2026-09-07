@@ -4204,8 +4204,33 @@ what's the props of graph? what will the context provide?
 
 ```yaml
 props of graph:
-  padding:
-  
+  padding: 
+  scale:
+  x:
+    begin:
+    end:
+    step or graduates:
+  y:
 ```
 
+padding should be large enough to put the text on axis.
 
+let's think about the main graph first. maybe i should define the aspect ratio (in unit) instead of in px.
+
+will it be based on cord (e.g. x + 1 then y + 1) or gap (e.g. x graudates by 2, y graduates by 1, then x + 2 y + 1)?
+
+~~either.~~ i think it's unwise to do so? 14000 to 14500 is the same gap than 12k to 13k?
+
+let's declare like 
+
+```yaml
+scale: (13000-12000)/(12.5-12) # x/y
+```
+
+currently i would like it to be linear. i think it's easy to extend later.
+
+for graduation... will the text scale the same as the graph? or will it be an overlay? it would be a bit complex. how do ppl do?
+
+research d3js examples... it does put text inside svg. it will not keep font size unchanged (like take more proportion of the viewbox) when the width collapses.
+
+research recharts... it does the same. but the text scales.
