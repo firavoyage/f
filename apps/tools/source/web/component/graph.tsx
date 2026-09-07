@@ -1,3 +1,5 @@
+const { ceil, floor, abs } = Math
+
 /**
  * - scale: create context
  *   - viewbox w h
@@ -21,11 +23,47 @@ type graph = {
 export function Graph(props: graph) {
   const { aspect_ratio = 1, padding_left = 10, padding_bottom = 10,
     x, y
-   } = props
+  } = props
+
   const [container, bounds] = use_measure()
 
-  const width = bounds.width || aspect_ratio * 100
-  const height = bounds.height || 100
+  const width = bounds.width || 100
+  const height = bounds.height || 100 / aspect_ratio
+  const graph_width = width - padding_left
+  // why floor?
+  const graph_height = floor(graph_width / aspect_ratio)
+  const x_begin = x[0]
+  const x_end = x[x.length - 1]
+  // assume x begin < x end
+  const x_width = x_begin - x_end
+  const y_begin = y[0]
+  const y_end = y[y.length - 1]
+  const y_height = y_begin - y_end
+
+  function coordinate_on_viewbox(x: number, y: number) {
+    const x_percentage = (x - x_begin) / x_width
+    const x_viewbox = padding_left + graph_width * x_percentage
+
+    const y_percentage = (y - y_begin) / y_height
+    const y_viewbox = padding_left + graph_width * y_percentage
+
+    return { x: x_viewbox, y: y_viewbox }
+  }
+
+  /**
+   * scale relative mouse position on viewbox
+   * 
+   * use percentage in case the viewbox width height desync or when not responsive
+   * 
+   * @param x_percentage relative mouse x / element width
+   * @param y_percentage relative mouse y / element height
+   */
+  function mouse_on_viewbox(x_percentage: number, y_percentage: number) {
+    const x_viewbox = width * x_percentage
+    const x_coord = x_viewbox - padding_left
+
+    
+  }
 
   useEffect(() => {
     log(bounds)
