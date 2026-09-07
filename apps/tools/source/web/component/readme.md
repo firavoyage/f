@@ -13,6 +13,8 @@ atom
 - textarea
 - ~~tooltip~~ <!-- title attr -->
 - icon
+- (graph)
+  - line
 
 pattern
 
@@ -22,17 +24,15 @@ pattern
 - shortcuts <!-- keyboard shortcuts -->
 - arg
 - hamburger
+- (graph)
+  - graph
 
 page
 
 - app
 - main
 - process
-
-page for dev
-
-- storybook
-
-page of tools
-
-- maimai
+- (tools)
+  - maimai
+- (dev)
+  - storybook
