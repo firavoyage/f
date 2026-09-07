@@ -27,13 +27,14 @@ use(union)
 use(map)
 use(collection)
 
-import 'web/lib/react';
 import * as react from 'react';
 import * as react_use from 'react-use';
+import * as react_hooks from 'web/lib/react'
 import * as p from 'web/lib/props';
 import * as state from 'web/lib/state';
 use(react)
 use(react_use)
+use(react_hooks)
 use(p)
 use(state)
 

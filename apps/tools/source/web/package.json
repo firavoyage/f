@@ -13,7 +13,6 @@
     "react": "19.2.7",
     "react-dom": "19.2.7",
     "react-use": "17.6.1",
-    "react-use-measure": "2.1.7",
     "the-new-css-reset": "1.11.3"
   },
   "devDependencies": {
