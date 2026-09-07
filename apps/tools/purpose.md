@@ -4252,9 +4252,43 @@ i would
 - set svg viewbox as 0 0 w h
 - ~~if unresponsive, i would fix w h~~ could have
 - i would subtract padding
+  - substract width by x padding
+  - calc height by aspect ratio
+  - add height by y padding
+- i will map the scale
 
 how would i fix w h, maybe usemount?
 
-what if i want a consistent 1rem padding and a golden aspect ratio? i will 
+what if i want a consistent 1rem padding and a golden aspect ratio? i will ... i would use the default (or provided preserve aspect ratio)
 
+---
+
+let's finalize it
+
+```yaml
+graph:
+  scale: (12.5-12)/(13000-12000)
+  pl: 16 # in px
+  pb: 16 # in px
+  x: each(11, 15, 0.5) # linear mapping by default
+  x:
+    begin: 10
+    end: 15
+    steps: 0.5
+  x:
+    begin: 10
+    end: 15
+    steps: each(11, 15, 0.5)
+  x:
+    cord to %: 
+    "% to cord": 
+  children:
+    x axis: # simple by default, text align is trivial (easy research of props)
+    y axis:
+    line of sss+: y = kx # as x => kx + b, i will just query the start and end point
+    line of sss max: y = kx
+    line of sss min: y = kx
+    polygon of sss range: y = kx
+      label: sss # i would align the right of the text to the end by default
+```
 
