@@ -26,7 +26,8 @@ type graph = {
 }
 
 export function Graph(props: graph) {
-  const { aspect_ratio = 1, padding_left = 10, padding_bottom = 10,
+  const { aspect_ratio = 1,
+    padding_left = 10, padding_right = 0, padding_top = 0, padding_bottom = 10,
     x, y,
     children
   } = props
@@ -35,9 +36,15 @@ export function Graph(props: graph) {
 
   const width = bounds.width || 100
   const height = bounds.height || 100 / aspect_ratio
-  const graph_width = width - padding_left
+  let graph_width = width - padding_left - padding_right
   // why floor?
-  const graph_height = floor(graph_width / aspect_ratio)
+  let graph_height = floor(graph_width / aspect_ratio)
+
+  if (graph_height + padding_top + padding_bottom > height) {
+    graph_height = height - padding_top - padding_bottom
+    graph_width = floor(graph_height * aspect_ratio)
+  }
+
   const x_begin = x[0]
   const x_end = x[x.length - 1]
   // assume x begin < x end
@@ -46,16 +53,15 @@ export function Graph(props: graph) {
   const y_end = y[y.length - 1]
   const y_height = y_end - y_begin
 
-  function coordinate_on_viewbox(x: number, y: number) {
-    log({x_begin, x_width, y_begin, y_height})
+  log({ width, height, graph_width, graph_height })
 
+  function coordinate_on_viewbox(x: number, y: number) {
     const x_percentage = (x - x_begin) / x_width
     const x_viewbox = padding_left + graph_width * x_percentage
 
-    const y_percentage = (y - y_begin) / y_height
-    const y_viewbox = padding_left + graph_width * y_percentage
-
-    log({x_percentage, x_viewbox, y_percentage, y_viewbox})
+    // origin on bottom left
+    const y_percentage = 1 - (y - y_begin) / y_height
+    const y_viewbox = padding_top + graph_height * y_percentage
 
     return { x: x_viewbox, y: y_viewbox }
   }
@@ -72,7 +78,8 @@ export function Graph(props: graph) {
     const x_viewbox = width * x_percentage
     const x_coord = x_viewbox - padding_left
 
-    const y_viewbox = height * y_percentage
+    // origin on bottom left
+    const y_viewbox = height * (1 - y_percentage)
     const y_coord = y_viewbox
 
     return { x: x_coord, y: y_coord }
@@ -115,7 +122,6 @@ export function Graph(props: graph) {
           }, viewBox: `0 0 ${width} ${height}`,
           // preserveAspectRatio: 'none',
         })}>
-          <rect x="0" y="0" width="80" height="50" />
           {children}
         </svg>
       </div>
@@ -141,6 +147,6 @@ export function Line({ line }: line) {
   }
 
   return (
-    <line {...p({ x1: s.x, x2: e.x, y1: s.x, y2: e.x })}></line>
+    <line {...p({ x1: s.x, y1: s.y, x2: e.x, y2: e.y, style: 'stroke: black' })}></line>
   )
 }
