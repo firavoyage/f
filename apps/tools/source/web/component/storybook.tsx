@@ -2,8 +2,14 @@ import { useRef } from "react"
 
 /**
  * - scale: create context
- * - scale on svg: map cord props to svg xy
+ *   - viewbox w h
+ *   - graph~~%~~ x w y h
+ *   - graph x% <-> x cord (a number when linear, like 0 end or begin end)
+ *   - graph y% <-> y cord
+ * - scale on svg: map cord props to svg viewbox xy
+ *   - cord
  * - scale on graph: map mouse position to cord
+ *   - mouse% on the svg
  */
 
 export function Graph() {
