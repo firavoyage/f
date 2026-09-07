@@ -58,11 +58,14 @@ export function Graph(props: graph) {
    * @param x_percentage relative mouse x / element width
    * @param y_percentage relative mouse y / element height
    */
-  function mouse_on_viewbox(x_percentage: number, y_percentage: number) {
+  function mouse_on_coordinate(x_percentage: number, y_percentage: number) {
     const x_viewbox = width * x_percentage
     const x_coord = x_viewbox - padding_left
 
-    
+    const y_viewbox = height * y_percentage
+    const y_coord = y_viewbox
+
+    return {x: x_coord, y: y_coord}
   }
 
   useEffect(() => {
