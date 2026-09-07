@@ -54589,6 +54589,20 @@ it has boundaries. and the cynics exist regardless. not necessarily meaningfully
 
 ---
 
+one thing is i did not really make progress consistently throughout the thinking.
+
+initially i did make things clearer. that's a solvable problem. and sitting in serenity, i have time to figure out the algorithms step by step, and make decisions about the scope. i could infer it. i could imagine it. even when i have no additional information about the reality <!-- e.g. research -->.
+
+not all problems are meaningfully solvable. sometimes you could imagine an ideal syntax or workflow, but the investment in engineering would definitely provide negative roi. like, when you make plans, or decide priorities. and you would be trapped if you accept neither result <!-- maybe subconsciously -->.
+
+sometimes choices do not matter. and you can take any path. it could be better use of time, if you went an alternative way and thought what you would have <!-- what they would show -->, how they would come from (i.e. the data flow), and how they would be logically structured, instead of how <!-- or where --> they would show up. <!-- maybe inherently i have a strong belief that it would be sub optimal unless i started w questions like why, what i desired, or how i would like to interact w it. -->
+
+you could easily stare into the void for hours when all tools are available.
+
+no idea if that would be the takeaway.
+
+---
+
 it reminds me who i am.
 
 
