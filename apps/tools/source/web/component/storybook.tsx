@@ -21,8 +21,9 @@ export function App() {
   return <Graph {...p({
     aspect_ratio: ((15 - 10) / 0.5) / ((17000 - 10000) / 1000),
     x: each(10, 15, 0.5),
-    y: each(10000, 17000, 1000)
+    y: each(10000, 17000, 1000),
   })}>
-    <Line {...p({ line: 12 })}></Line>
+    <Line {...p({ line: 10 })}></Line>
+    <Line {...p({ line: (x) => 10000 })}></Line>
   </Graph>
 }
