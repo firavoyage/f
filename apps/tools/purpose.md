@@ -4267,6 +4267,7 @@ let's finalize it
 
 ```yaml
 graph:
+  hover: state (hover, set hover)
   scale: (12.5-12)/(13000-12000)
   pl: 16 # in px
   pb: 16 # in px
@@ -4286,9 +4287,28 @@ graph:
     x axis: # simple by default, text align is trivial (easy research of props)
     y axis:
     line of sss+: y = kx # as x => kx + b, i will just query the start and end point
-    line of sss max: y = kx
-    line of sss min: y = kx
-    polygon of sss range: y = kx
-      label: sss # i would align the right of the text to the end by default
+    # line of sss max: y = kx
+    # line of sss min: y = kx
+    # polygon of sss range: y = kx
+    #   label: sss # i would align the right of the text to the end by default
+    range of sss: # esp for two lines wo intersection
+      max: y = kx
+      min: y = kx
+      label: sss
+      background: oklch... # i would not highlight the lines i guess
+    grid: # yk what you want by default
+      # under the hood...
+      grid x: # vertical
+        line: 0 # i guess i could make number -> x = number, fn -> y = kx + b
+          color: faint # or class: grid
 ```
+
+i will not render "15k: sss+ difficulty, sss..." on svg.
+
+i may get the hover point and calculate manually. i may visually paint the line and some intersections... maybe line only. text legibility would suffer. (i may have some faint lines!)
+
+well i dont really know the math terms... lol.
+
+ok that's called grid.
+
 
