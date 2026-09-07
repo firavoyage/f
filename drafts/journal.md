@@ -54555,11 +54555,23 @@ they did not. after confirming my mental clarity.
 
 it's a procedure it seems.
 
+07
+
+13 20 reflect.
+
+im emotionless and i have to take the optimal path regardless.
+
+from a practical standpoint, i did not reason much. you have to either get ahead, or get blocked.
+
+and risk is out of concern. _ik it must be possibly optimal, if i play the most aggressive move._ that's it.
+
+at the same time, if they decide to chase me, they _must_ get me. not necessarily in perfect order, like, if i decided to turn around onto a truck, or if i went for a lose lose path for political reasons. it was a young man, maybe in his thirties. <!-- that's where young ppl should be. throughout the story, all figures of power wear easy clothes, and they wear uniforms iff they are small potatoes. yeah at the end of the day they have to make a decision. or maybe accept one. -->
+
+and thus it's not reasonable, objectively.
+
 ---
 
-upd a day later:
-
-
+the world 
 
 it reminds me who i am.
 
