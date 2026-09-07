@@ -4,17 +4,22 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import { useAsync, useAsyncFn, useMeasure, useToggle } from "react-use";
 
-export function use_measure(options?: Parameters<typeof useMeasure>[0]) {
+export function use_measure(options?: Parameters<typeof useMeasure>) {
   const [measureRef, bounds] = useMeasure(options);
-  
-  const elementRef = useRef<HTMLElement | null>(null);
+  const internalRef = useRef<HTMLElement | null>(null);
 
-  const combinedRef = useCallback((node: HTMLElement | null) => {
-    elementRef.current = node; // Update the standard .current property
-    measureRef(node);          // Pass the node to the measurement hook
+  const mergedCallback = useCallback((node: HTMLElement | null) => {
+    internalRef.current = node;
+    measureRef(node);
   }, [measureRef]);
 
-  return [combinedRef, elementRef, bounds] as const;
+  const mergedRef = Object.assign(mergedCallback, {
+    get current() {
+      return internalRef.current;
+    }
+  });
+
+  return [mergedRef, bounds] as const;
 }
 
 

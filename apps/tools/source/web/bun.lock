@@ -6,13 +6,13 @@
       "dependencies": {
         "clsx": "2.1.1",
         "css.escape": "1.5.1",
-        "inline-style-parser": "0.2.9",
         "lodash-es": "4.18.1",
         "mousetrap": "1.6.5",
         "mousetrap-global-bind": "1.1.0",
         "react": "19.2.7",
         "react-dom": "19.2.7",
         "react-use": "17.6.1",
+        "style-to-js": "2.0.2",
         "the-new-css-reset": "1.11.3",
       },
       "devDependencies": {
@@ -541,6 +541,10 @@
     "string.prototype.trimstart": ["string.prototype.trimstart@1.0.5", "", { "dependencies": { "call-bind": "1.0.2", "define-properties": "1.1.4", "es-abstract": "1.20.4" } }, "sha512-THx16TJCGlsN0o6dl2o6ncWUsdgnLRSA23rRE5pyGBw/mLr3Ej/R2LaqCtgP8VNMGZsvMWnf9ooZPyY2bHvUFg=="],
 
     "string_decoder": ["string_decoder@1.1.1", "", { "dependencies": { "safe-buffer": "5.1.2" } }, "sha512-n/ShnvDi6FHbbVfviro+WojiFzv+s8MPMHBczVePfUpDJLwoLT0ht1l4YwBCbi8pJAveEEdnkHyPyTP/mzRfwg=="],
+
+    "style-to-js": ["style-to-js@2.0.2", "", { "dependencies": { "style-to-object": "2.0.2" } }, "sha512-ctgbFvvi406Jvhi/s6TJtX6XYYCCTg6POgsL+SLmrl2RHFgwulepqtYPrtKuEmT8kmyk/+fxfNzuhRLO4zsASg=="],
+
+    "style-to-object": ["style-to-object@2.0.2", "", { "dependencies": { "inline-style-parser": "0.2.9" } }, "sha512-QmbXPUylqU80HAgTOJeEOdbA40W9KtxmjMhQy+tq+b8F2aoh3aQLuy82hh2jm2qsC9hR9eI0+eQidTMydKcqRA=="],
 
     "stylis": ["stylis@4.4.0", "", {}, "sha512-5Z9ZpRzfuH6l/UAvCPAPUo3665Nk2wLaZU3x+TLHKVzIz33+sbJqbtrYoC3KD4/uVOr2Zp+L0LySezP9OHV9yA=="],
 
