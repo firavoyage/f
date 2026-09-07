@@ -25,7 +25,7 @@ function kebab_to_camel(str: string): string {
 
 type RelaxedProps = Record<any, any> & {
   key?: never
-  class?: string | object | Array<any>
+  class?: string | object | any[]
   style?: string | object
 }
 // type RelaxedProps = Record<any, any>

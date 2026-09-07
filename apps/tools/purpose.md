@@ -4239,5 +4239,12 @@ and about padding, four direction padding is not the same. on rechart, it only a
 
 there is a dedicated "responsive" prop.
 
+---
+
+interesting. worth my time.
+
+i would
+
+- 
 
 
