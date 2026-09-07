@@ -4196,5 +4196,16 @@ max w scales. (it's not recommended to hardcode main widget length to be respons
 
 21 20 web/component: create a minimal storybook.
 
+07
+
+18 10 web/component/graph: design props and children archi.
+
+what's the props of graph? what will the context provide?
+
+```yaml
+props of graph:
+  padding:
+  
+```
 
 
