@@ -18,8 +18,10 @@ type graph = {
 
 export function Graph(props: graph) {
   const { aspect_ratio = 1, padding_left = 10, padding_bottom = 10 } = props
-
   const [container, bounds] = use_measure()
+
+  const width = bounds.width || aspect_ratio * 100
+  const height = bounds.height || 100
 
   useEffect(() => {
     log(bounds)
@@ -43,7 +45,7 @@ export function Graph(props: graph) {
       const screenX = event.screenX;
       const screenY = event.screenY;
 
-      console.log(`Pos inside element: X=${elementX}, Y=${elementY}`);
+      // console.log(`Pos inside element: X=${elementX}, Y=${elementY}`);
     });
   })
 
@@ -54,7 +56,7 @@ export function Graph(props: graph) {
           width: '100%',
           height: '100%',
           backgroundColor: 'khaki'
-        }, viewBox: "0 0 100 100",
+        }, viewBox: `0 0 ${width} ${height}`,
         // preserveAspectRatio: 'none',
       })}>
         <rect x="0" y="0" width="80" height="50" />

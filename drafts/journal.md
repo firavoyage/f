@@ -54547,6 +54547,8 @@ im already on the stage.
 
 and remember: i have no enemy.
 
+<!-- upd: they are somewhat sophisticated. they tried to parallel, or narrow my way gradually, wo letting me fall (like striking in front), initially. they seem to have shouted some emotionally manipulative words, like "i can drive up to 500km/h", though i was wearing headphone all the time. idk if they would have prepared what's next. quite expectable. if they decide to go whatever it takes, under all circumstances, then that's the cost of enforcement. -->
+
 ---
 
 i asked them to lock me on the car as before.
