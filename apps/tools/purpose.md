@@ -4345,5 +4345,10 @@ it seems if i move on trackpad, mousemove would fire regardless. (e.g. when you 
 
 how should text align?
 
+---
+
+would i research more rechart examples?
+
+---
 
 

@@ -108,7 +108,11 @@ export function Graph(props: graph) {
   })
 
   return (
-    <Coord value={{ coordinate_on_viewbox, x_begin, x_end, y_begin, y_end }}>
+    <Coord value={{
+      coordinate_on_viewbox,
+      x_labels: x, x_begin, x_end,
+      y_labels: y, y_begin, y_end
+    }}>
       <div className="graph" {...p({ ref: container, style: 'width: 1000px; height: 300px' })}>
         <svg {...p({
           style: {
@@ -148,17 +152,37 @@ export function Line({ line }: line) {
 }
 
 type text = {
-  text: string | number
   x: number
   y: number
-  anchor: 'left' | 'center' | 'right' // horizontal alignment
-  baseline: 'top' | 'center' | 'alphabetic' | 'bottom' // vertical alignment
+  anchor?: 'left' | 'center' | 'right' // horizontal alignment
+  baseline?: 'top' | 'center' | 'alphabetic' | 'bottom' // vertical alignment
+  children?: any
 }
 
-export function Text() {
+export function Text(props: text) {
+  const { x, y, anchor = 'center', baseline = 'alphabetic', children, ...attrs } = props
+
+  const textAnchor = {
+    left: 'start',
+    center: 'middle',
+    right: 'end',
+    // inherit: 'inherit',
+  }[anchor] ?? anchor
+
+  const dominantBaseline = {
+    top: 'text-before-edge',
+    center: 'central',
+    alphabetic: 'alphabetic',
+    bottom: 'text-after-edge',
+  }[baseline] ?? baseline
+
   return (
-    <text>
-      
+    <text {...p({ x, y, textAnchor, dominantBaseline, ...attrs })}>
+      {children}
     </text>
-  )  
+  )
+}
+
+export function XAxis() {
+  
 }
