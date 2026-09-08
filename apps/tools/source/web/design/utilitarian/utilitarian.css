@@ -120,6 +120,11 @@
   --hierarchy-dialog: 600;
   --hierarchy-popup: 800;
   --hierarchy-tooltip: 1000;
+  --hierarchy-graph-grid: -200;
+  --hierarchy-graph-line: 400;
+  --hierarchy-graph-axis: 500;
+  --hierarchy-graph-point: 600;
+  --hierarchy-graph-label: 1000;
   --field-outline-width: var(--border-2);
 }
 

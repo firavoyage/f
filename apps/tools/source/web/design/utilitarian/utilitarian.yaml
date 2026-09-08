@@ -313,6 +313,12 @@ hierarchy:
   dialog: 600
   popup: 800
   tooltip: 1000
+  graph:
+    grid: -200
+    line: 400
+    axis: 500
+    point: 600
+    label: 1000
 
 # # todo
 # scrollbar:
