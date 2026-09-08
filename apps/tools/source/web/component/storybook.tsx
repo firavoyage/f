@@ -17,15 +17,34 @@ const table = [
   { min: 0.0, rank: 'D', coefficient: 5.0 },
 ];
 
+const lines = map(table, (item, index) => {
+  const { min, rank, coefficient } = item
+
+  if (index == 0) {
+    return { k: min * coefficient, label: rank }
+  }
+
+  const max = table[index - 1].min - 0.0001
+
+  return [
+    { k: max * coefficient, label: `${rank} max` },
+    { k: min * coefficient, label: `${rank} min` },
+  ]
+}).flat()
+
 export function App() {
   return <Graph {...p({
-    aspect_ratio: ((15 - 10) / 0.5) / ((17000 - 10000) / 1000),
+    aspect_ratio: ((15 - 10) / 0.5) / (((17000 - 10000) / 1000)),
     x: each(10, 15, 0.5),
     y: each(10000, 17000, 1000),
   })}>
-    <Line {...p({ line: 10 })}></Line>
-    <Line {...p({ line: [0, 10000] })}></Line>
+    {
+      map(lines, (line) => (
+        <Line {...p({ line: [line.k], label: line.label })}></Line>
+      ))
+    }
     <XAxis></XAxis>
     <YAxis></YAxis>
   </Graph>
 }
+
