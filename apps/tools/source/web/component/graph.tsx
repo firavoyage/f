@@ -3,8 +3,13 @@ import { createContext, useContext } from "react"
 const { ceil, floor, abs } = Math
 
 // Defaults
-const padding = 16
-const text_offset = 0
+const rem = 16
+const pl = 3 * rem
+const pr = 0 * rem
+const pt = 1 * rem
+const pb = 2 * rem
+const text_offset = 8
+// const text_offset = padding / 2
 
 const Coord = createContext()
 
@@ -20,10 +25,9 @@ type graph = {
 }
 
 export function Graph(props: graph) {
-
   const { aspect_ratio = 1,
-    padding_left = padding, padding_right = padding,
-    padding_top = padding, padding_bottom = padding,
+    padding_left = pl, padding_right = pr,
+    padding_top = pt, padding_bottom = pb,
     x, y,
     children
   } = props
@@ -160,7 +164,10 @@ type text = {
 }
 
 export function Text(props: text) {
-  const { x, y, anchor = 'center', baseline = 'alphabetic', children, ...attrs } = props
+  const { x, y, anchor = 'center',
+    baseline = 'center', // for graph 
+    // baseline = 'alphabetic', 
+    children, ...attrs } = props
 
   const textAnchor = {
     left: 'start',
@@ -184,5 +191,43 @@ export function Text(props: text) {
 }
 
 export function XAxis() {
+  const { coordinate_on_viewbox: coord,
+    x_labels, x_begin, x_end,
+    y_labels, y_begin, y_end } = useContext(Coord)
+
+  return map(x_labels, (x_label: number) => {
+    const x = coord(x_label, y_begin).x
+    const y = coord(x_label, y_begin).y + text_offset
+
+    return (
+      <Text {...p({ x, y, baseline: 'top' })}>
+        {x_label}
+      </Text>
+    )
+  })
+}
+
+export function YAxis() {
+  const { coordinate_on_viewbox: coord,
+    x_labels, x_begin, x_end,
+    y_labels, y_begin, y_end } = useContext(Coord)
+
   
+  return (
+    // g (instead of div) is used inside svg
+    <g className="y_axis">
+      {
+        map(y_labels, (y_label: number) => {
+          const x = coord(x_begin, y_label).x - text_offset
+          const y = coord(x_begin, y_label).y
+
+          return (
+            <Text {...p({ x, y, anchor: 'right' })}>
+              {y_label}
+            </Text>
+          )
+        })
+      }
+    </g>
+  )
 }

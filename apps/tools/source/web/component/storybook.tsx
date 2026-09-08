@@ -1,4 +1,4 @@
-import { Graph, Line } from 'web/component/graph'
+import { Graph, Line, XAxis, YAxis } from 'web/component/graph'
 
 const table = [
   { min: 100.5, rank: 'SSS+', coefficient: 22.4 },
@@ -25,5 +25,7 @@ export function App() {
   })}>
     <Line {...p({ line: 10 })}></Line>
     <Line {...p({ line: (x) => 10000 })}></Line>
+    <XAxis></XAxis>
+    <YAxis></YAxis>
   </Graph>
 }
