@@ -78,6 +78,7 @@ export default defineConfig(
       "@typescript-eslint/ban-ts-comment": "off",
       "@typescript-eslint/no-unsafe-function-type": "off",
       "@typescript-eslint/no-unused-expressions": "off",
+      "no-self-assign": "off",
 
       // avoid hidden timing issues
       "@typescript-eslint/no-floating-promises": "error",
