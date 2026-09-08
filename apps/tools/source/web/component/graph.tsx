@@ -227,32 +227,150 @@ type range = {
   label?: string | number
 }
 
+export function Polygon({points}) {
+  return (
+    <polygon {...p({ points: map(points, ({x, y}) => `${x},${y}`).join(' ') })}></polygon>
+  )
+}
+
+/**
+ * must not intersect
+ */
 export function Range({ line1, line2, label }: range) {
   const { coordinate_on_viewbox: viewbox, x_begin, x_end, y_begin, y_end } = useContext(Coord)
 
-  const segment1 = segment(line1, x_begin, x_end, y_begin, y_end)
-  const segment2 = segment(line2, x_begin, x_end, y_begin, y_end)
+  let segment1 = segment(line1, x_begin, x_end, y_begin, y_end)
+  let segment2 = segment(line2, x_begin, x_end, y_begin, y_end)
 
   if (segment1 == nil && segment2 == nil) {
-    return 
-  } 
+    return
+  }
 
   let points = []
 
-  const top_left = {x: x_begin, y: y_end}
-  const top_bottom = {x: x_begin, y: ystart}
-  const top_left = {x: x_begin, y: y_end}
-  const top_left = {x: x_begin, y: y_end}
+  const bottom_left = { x: x_begin, y: y_begin }
+  const bottom_right = { x: x_end, y: y_begin }
+  const top_left = { x: x_begin, y: y_end }
+  const top_right = { x: x_end, y: y_end }
 
   if (segment1 == nil) {
-    const { sx, sy, ex, ey } = segment2
+    const prev_segment1 = segment1
+    segment1 = segment2
+    segment2 = prev_segment1
+  }
 
-    points.push({x: sx, y: sy}, {x: ex, y: ey})
+  if (segment2 == nil) {
+    const { sx, sy, ex, ey } = segment1
 
-    if (sy < ey) {
-      
-    } 
-  } 
+    points.push({ x: sx, y: sy }, { x: ex, y: ey })
+
+    let is_line2_on_top = false
+
+    if (typeof line2 == 'number') {
+      if (line2 < sx) {
+        is_line2_on_top = true
+      }
+    } else {
+      const [k, b = 0] = line2
+      function fx(x: number) {
+        return k * x + b
+      }
+
+      if (fx(sx) > sy) {
+        is_line2_on_top = true
+      }
+    }
+
+    if (sx == x_begin && ex == x_end) {
+      if (is_line2_on_top) {
+        points.push(top_right, top_left)
+      } else {
+        points.push(bottom_right, bottom_left)
+      }
+    } else if (sy == y_begin && ey == y_end) {
+      if (is_line2_on_top) {
+        points.push(top_right, bottom_right)
+      } else {
+        points.push(top_left, bottom_left)
+      }
+    } else if (sx == x_begin && ey == y_end) {
+      if (is_line2_on_top) {
+        points.push(top_left)
+      } else {
+        points.push(top_right, bottom_right, bottom_left)
+      }
+    } else if (sx == x_begin && ey == y_begin) {
+      if (is_line2_on_top) {
+        points.push(bottom_right, top_right, top_left)
+      } else {
+        points.push(bottom_left)
+      }
+    } else if (sy == y_begin && ex == x_end) {
+      if (is_line2_on_top) {
+        points.push(top_right, top_left, bottom_left)
+      } else {
+        points.push(bottom_right)
+      }
+    } else if (sy == y_end && ex == x_end) {
+      if (is_line2_on_top) {
+        points.push(top_right)
+      } else {
+        points.push(bottom_right, bottom_left, top_left)
+      }
+    }
+  } else {
+    const { sx, sy, ex, ey } = segment1
+
+    let is_line2_on_top = false
+
+    if (typeof line2 == 'number') {
+      if (line2 < sx) {
+        is_line2_on_top = true
+      }
+    } else {
+      const [k, b = 0] = line2
+      function fx(x: number) {
+        return k * x + b
+      }
+
+      if (fx(sx) > sy) {
+        is_line2_on_top = true
+      }
+    }
+
+    if (is_line2_on_top) {
+      const prev_segment1 = segment1
+      segment1 = segment2
+      segment2 = prev_segment1
+    }
+
+    const { sx: sx1, sy: sy1, ex: ex1, ey: ey1 } = segment1
+    const { sx: sx2, sy: sy2, ex: ex2, ey: ey2 } = segment2
+
+    points.push({ x: sx1, y: sy1 }, { x: ex1, y: ey1 })
+
+    if (ex1 != x_end && ey1 == y_end && ey1 != ey2) {
+      points.push(top_right)
+    }
+
+    if (ex2 != x_end && ey2 == y_end && ey1 != ey2) {
+      points.push(bottom_right)
+    }
+
+    points.push({ x: ex2, y: ey2 }, { x: sx2, y: sy2 })
+
+    if (sx2 != x_begin && sy2 == y_begin && sy1 != sy2) {
+      points.push(bottom_left)
+    }
+
+    if (sx1 != x_begin && sy1 == y_begin && sy1 != sy2) {
+      points.push(top_left)
+    }
+  }
+
+  return (
+    <Polygon {...p({ points })}></Polygon>
+  )
 }
 
 type text = {
