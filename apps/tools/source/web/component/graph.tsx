@@ -121,7 +121,7 @@ export function Graph(props: graph) {
           style: {
             width: '100%',
             height: '100%',
-            display: 'block',
+            display: 'block', // fix container height != svg height legacy quirk
           }, 
           viewBox: `0 0 ${width} ${height}`,
           // preserveAspectRatio: 'none',

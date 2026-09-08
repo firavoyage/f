@@ -35,7 +35,7 @@ const lines = map(table, (item, index) => {
 export function App() {
   return (
     <div className="app" {...p({ style: {
-      height: '100vh'
+      height: '100dvh'
     } })}>
       <Graph {...p({
         aspect_ratio: ((15 - 10) / 0.5) / (((17000 - 10000) / 1000) * 2),
