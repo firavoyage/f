@@ -1,4 +1,6 @@
-import { Graph, Line, XAxis, YAxis } from 'web/component/graph'
+import 'web/design/app.css'
+
+import { Graph, Grid, Line, XAxis, YAxis } from 'web/component/graph'
 
 const table = [
   { min: 100.5, rank: 'SSS+', coefficient: 22.4 },
@@ -34,19 +36,13 @@ const lines = map(table, (item, index) => {
 
 export function App() {
   return (
-    <div className="app" {...p({ style: {
-      height: '100dvh'
-    } })}>
+    <div className="app">
       <Graph {...p({
         aspect_ratio: ((15 - 10) / 0.5) / (((17000 - 10000) / 1000) * 2),
         x: each(10, 15, 0.5),
         y: each(10000, 17000, 1000),
-        style: {
-          'background-color': 'khaki',
-          width: '500px',
-          height: '700px',
-        }
       })}>
+        <Grid></Grid>
         {
           map(lines, (line) => (
             <Line {...p({ line: [line.k], label: line.label })}></Line>
