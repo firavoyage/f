@@ -136,9 +136,7 @@ type line = {
   label?: string | number
 }
 
-export function Line({ line, label }: line) {
-  const { coordinate_on_viewbox: viewbox, x_begin, x_end, y_begin, y_end } = useContext(Coord)
-
+function segment(line, x_begin, x_end, y_begin, y_end) {
   let sx, sy, ex, ey
 
   if (typeof line == 'number') {
@@ -149,7 +147,7 @@ export function Line({ line, label }: line) {
     ey = y_end
 
     if (x < x_begin || x > x_end) {
-      return
+      return nil
     }
   } else {
     const [k, b = 0] = line
@@ -187,9 +185,21 @@ export function Line({ line, label }: line) {
     // it will work as expected (render nothing) when s = e, i.e. wholy above/below graph
     // no. it will err (warn) when "infinity", and it's not good prac.
     if (sx == ex && sy == ey) {
-      return
+      return nil
     }
   }
+
+  return { sx, sy, ex, ey }
+}
+
+export function Line({ line, label }: line) {
+  const { coordinate_on_viewbox: viewbox, x_begin, x_end, y_begin, y_end } = useContext(Coord)
+
+  const seg = segment(line, x_begin, x_end, y_begin, y_end)
+  if (!is_given(seg)) {
+    return
+  }
+  const { sx, sy, ex, ey } = seg
 
   const s = viewbox(sx, sy)
   const e = viewbox(ex, ey)
@@ -209,6 +219,40 @@ export function Line({ line, label }: line) {
       }
     </>
   )
+}
+
+type range = {
+  line1: [k: number, b?: number] | number
+  line2: [k: number, b?: number] | number
+  label?: string | number
+}
+
+export function Range({ line1, line2, label }: range) {
+  const { coordinate_on_viewbox: viewbox, x_begin, x_end, y_begin, y_end } = useContext(Coord)
+
+  const segment1 = segment(line1, x_begin, x_end, y_begin, y_end)
+  const segment2 = segment(line2, x_begin, x_end, y_begin, y_end)
+
+  if (segment1 == nil && segment2 == nil) {
+    return 
+  } 
+
+  let points = []
+
+  const top_left = {x: x_begin, y: y_end}
+  const top_bottom = {x: x_begin, y: ystart}
+  const top_left = {x: x_begin, y: y_end}
+  const top_left = {x: x_begin, y: y_end}
+
+  if (segment1 == nil) {
+    const { sx, sy, ex, ey } = segment2
+
+    points.push({x: sx, y: sy}, {x: ex, y: ey})
+
+    if (sy < ey) {
+      
+    } 
+  } 
 }
 
 type text = {
