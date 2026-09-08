@@ -24,7 +24,7 @@ export function App() {
     y: each(10000, 17000, 1000),
   })}>
     <Line {...p({ line: 10 })}></Line>
-    <Line {...p({ line: (x) => 10000 })}></Line>
+    <Line {...p({ line: [0, 10000] })}></Line>
     <XAxis></XAxis>
     <YAxis></YAxis>
   </Graph>

@@ -56,6 +56,10 @@ export function Graph(props: graph) {
   log({ width, height, graph_width, graph_height })
 
   function coordinate_on_viewbox(x: number, y: number) {
+    if (x < x_begin || x > x_end || y < y_begin || y > y_end) {
+      return nil
+    } 
+
     const x_percentage = (x - x_begin) / x_width
     const x_viewbox = padding_left + graph_width * x_percentage
 
@@ -134,7 +138,7 @@ export function Graph(props: graph) {
 }
 
 type line = {
-  line: fn | number
+  line: [k: number, b?: number] | number
 }
 
 export function Line({ line }: line) {
@@ -145,9 +149,20 @@ export function Line({ line }: line) {
   if (typeof line == 'number') {
     s = coord(line, y_begin)
     e = coord(line, y_end)
+
+    if (s == nil || e == nil) {
+      return 
+    } 
   } else {
-    s = coord(x_begin, line(x_begin))
-    e = coord(x_end, line(x_end))
+    const [k, b = 0] = line
+    s = coord(x_begin, k * x_begin + b)
+    e = coord(x_end, k * x_end + b)
+
+    if (s == nil && e == nil) {
+      return 
+    } else if (s == nil) {
+      s = coord(, y_begin)
+    } 
   }
 
   return (
