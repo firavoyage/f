@@ -315,6 +315,7 @@ hierarchy:
   tooltip: 1000
   graph:
     grid: -200
+    range: 200
     line: 400
     axis: 500
     point: 600
