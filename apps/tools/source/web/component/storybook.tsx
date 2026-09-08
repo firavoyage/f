@@ -30,8 +30,10 @@ const lines = map(table, (item, index) => {
   const max = table[index - 1].min - 0.0001
 
   return [
-    { k: max / 100 * coefficient * 50, label: `${rank} max` },
-    { k: min / 100 * coefficient * 50, label: `${rank} min` },
+    { k: max / 100 * coefficient * 50, label: `${rank}` },
+    // { k: max / 100 * coefficient * 50, label: `${rank} max` },
+    { k: min / 100 * coefficient * 50, label: `` },
+    // { k: min / 100 * coefficient * 50, label: `${rank} min` },
   ]
 }).flat()
 

@@ -139,13 +139,14 @@ type line = {
 export function Line({ line, label }: line) {
   const { coordinate_on_viewbox: viewbox, x_begin, x_end, y_begin, y_end } = useContext(Coord)
 
-  let s, e
+  let sx, sy, ex, ey
 
   if (typeof line == 'number') {
     const x = line
 
-    s = viewbox(line, y_begin)
-    e = viewbox(line, y_end)
+    sx = ex = x
+    sy = y_begin
+    ey = y_end
 
     if (x < x_begin || x > x_end) {
       return
@@ -159,39 +160,54 @@ export function Line({ line, label }: line) {
       return (y - b) / k
     }
 
-    const sy = fx(x_begin)
+    sy = fx(x_begin)
     if (sy < y_begin) {
-      s = viewbox(fy(y_begin), y_begin)
+      sx = fy(y_begin)
+      sy = y_begin
     } else if (sy > y_end) {
-      s = viewbox(fy(y_end), y_end)
+      sx = fy(y_end)
+      sy = y_end
     } else {
-      s = viewbox(x_begin, sy)
+      sx = x_begin
+      sy = sy
     }
 
-    const ey = fx(x_end)
+    ey = fx(x_end)
     if (ey < y_begin) {
-      e = viewbox(fy(y_begin), y_begin)
+      ex = fy(y_begin)
+      ey = y_begin
     } else if (ey > y_end) {
-      e = viewbox(fy(y_end), y_end)
+      ex = fy(y_end)
+      ey = y_end
     } else {
-      e = viewbox(x_end, ey)
+      ex = x_end
+      ey = ey
     }
 
     // it will work as expected (render nothing) when s = e, i.e. wholy above/below graph
-    // it will err when "infinity"
-
-    if (s.x == e.x && s.y == e.y) {
+    // no. it will err (warn) when "infinity", and it's not good prac.
+    if (sx == ex && sy == ey) {
       return
     }
-
-    // log({
-    //   k, label, s: { x: x_begin, y: fx(x_begin) },
-    //   e: { x: x_end, y: fx(x_end) },
-    // })
   }
 
+  const s = viewbox(sx, sy)
+  const e = viewbox(ex, ey)
+
   return (
-    <line {...p({ class: 'line', x1: s.x, y1: s.y, x2: e.x, y2: e.y })}></line>
+    <>
+      <g className="line">
+        <line {...p({ x1: s.x, y1: s.y, x2: e.x, y2: e.y })}></line>
+      </g>
+      {
+        label &&
+        <g className="label line_label">
+          <Text {...p({ ...viewbox(ex, ey), anchor: 'right', baseline: 'bottom' })}>
+            {label}
+          </Text>
+        </g>
+      }
+    </>
   )
 }
 
@@ -203,6 +219,9 @@ type text = {
   children?: any
 }
 
+/**
+ * render text on viewbox x y (labels do not have to be inside graph)
+ */
 export function Text(props: text) {
   const { x, y, anchor = 'center',
     baseline = 'center', // for graph 
