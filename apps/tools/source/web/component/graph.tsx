@@ -56,10 +56,6 @@ export function Graph(props: graph) {
   log({ width, height, graph_width, graph_height })
 
   function coordinate_on_viewbox(x: number, y: number) {
-    if (x < x_begin || x > x_end || y < y_begin || y > y_end) {
-      return nil
-    } 
-
     const x_percentage = (x - x_begin) / x_width
     const x_viewbox = padding_left + graph_width * x_percentage
 
@@ -142,26 +138,51 @@ type line = {
 }
 
 export function Line({ line }: line) {
-  const { coordinate_on_viewbox: coord, x_begin, x_end, y_begin, y_end } = useContext(Coord)
+  const { coordinate_on_viewbox: viewbox, x_begin, x_end, y_begin, y_end } = useContext(Coord)
 
   let s, e
 
   if (typeof line == 'number') {
-    s = coord(line, y_begin)
-    e = coord(line, y_end)
+    const x = line
 
-    if (s == nil || e == nil) {
-      return 
-    } 
+    s = viewbox(line, y_begin)
+    e = viewbox(line, y_end)
+
+    if (x < x_begin || x > x_end) {
+      return
+    }
   } else {
     const [k, b = 0] = line
-    s = coord(x_begin, k * x_begin + b)
-    e = coord(x_end, k * x_end + b)
+    function fx(x: number) {
+      return k * x + b
+    }
+    function fy(y: number) {
+      return (y - b) / k
+    }
 
-    if (s == nil && e == nil) {
+    const sy = fx(x_begin)
+    if (sy < y_begin) {
+      s = viewbox(fy(y_begin), y_begin)
+    } else if (sy > y_end) {
+      s = viewbox(fy(y_end), y_end)
+    } else {
+      s = viewbox(x_begin, sy)
+    }
+
+    const ey = fx(x_end)
+    if (ey < y_begin) {
+      e = viewbox(fy(y_begin), y_begin)
+    } else if (ey > y_end) {
+      e = viewbox(fy(y_end), y_end)
+    } else {
+      e = viewbox(x_end, ey)
+    }
+
+    // it will work as expected (render nothing) when s = e, i.e. wholy above/below graph
+    // it will err when "infinity"
+
+    if (s.x == e.x && s.y == e.y) {
       return 
-    } else if (s == nil) {
-      s = coord(, y_begin)
     } 
   }
 
@@ -206,43 +227,54 @@ export function Text(props: text) {
 }
 
 export function XAxis() {
-  const { coordinate_on_viewbox: coord,
+  const { coordinate_on_viewbox: viewbox,
     x_labels, x_begin, x_end,
     y_labels, y_begin, y_end } = useContext(Coord)
 
-  return map(x_labels, (x_label: number) => {
-    const x = coord(x_label, y_begin).x
-    const y = coord(x_label, y_begin).y + text_offset
+  return (
+    <g className="x_axis">
+      <Line {...p({ line: [0, y_begin] })}></Line>
+      <g className="labels">
+        {
+          map(x_labels, (x_label: number) => {
+            const x = viewbox(x_label, y_begin).x
+            const y = viewbox(x_label, y_begin).y + text_offset
 
-    return (
-      <Text {...p({ x, y, baseline: 'top' })}>
-        {x_label}
-      </Text>
-    )
-  })
+            return (
+              <Text {...p({ x, y, baseline: 'top' })}>
+                {x_label}
+              </Text>
+            )
+          })
+        }
+      </g>
+    </g>
+  )
 }
 
 export function YAxis() {
-  const { coordinate_on_viewbox: coord,
+  const { coordinate_on_viewbox: viewbox,
     x_labels, x_begin, x_end,
     y_labels, y_begin, y_end } = useContext(Coord)
 
-  
   return (
     // g (instead of div) is used inside svg
     <g className="y_axis">
-      {
-        map(y_labels, (y_label: number) => {
-          const x = coord(x_begin, y_label).x - text_offset
-          const y = coord(x_begin, y_label).y
+      <Line {...p({ line: x_begin })}></Line>
+      <g className="labels">
+        {
+          map(y_labels, (y_label: number) => {
+            const x = viewbox(x_begin, y_label).x - text_offset
+            const y = viewbox(x_begin, y_label).y
 
-          return (
-            <Text {...p({ x, y, anchor: 'right' })}>
-              {y_label}
-            </Text>
-          )
-        })
-      }
+            return (
+              <Text {...p({ x, y, anchor: 'right' })}>
+                {y_label}
+              </Text>
+            )
+          })
+        }
+      </g>
     </g>
   )
 }
