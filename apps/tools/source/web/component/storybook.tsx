@@ -33,23 +33,29 @@ const lines = map(table, (item, index) => {
 }).flat()
 
 export function App() {
-  return <Graph {...p({
-    aspect_ratio: ((15 - 10) / 0.5) / (((17000 - 10000) / 1000) * 2),
-    x: each(10, 15, 0.5),
-    y: each(10000, 17000, 1000),
-    style: {
-      'background-color': 'khaki',
-      width: '1000px',
-      // height: '700px',
-    }
-  })}>
-    {
-      map(lines, (line) => (
-        <Line {...p({ line: [line.k], label: line.label })}></Line>
-      ))
-    }
-    <XAxis></XAxis>
-    <YAxis></YAxis>
-  </Graph>
+  return (
+    <div className="app" {...p({ style: {
+      height: '100vh'
+    } })}>
+      <Graph {...p({
+        aspect_ratio: ((15 - 10) / 0.5) / (((17000 - 10000) / 1000) * 2),
+        x: each(10, 15, 0.5),
+        y: each(10000, 17000, 1000),
+        style: {
+          'background-color': 'khaki',
+          width: '500px',
+          height: '700px',
+        }
+      })}>
+        {
+          map(lines, (line) => (
+            <Line {...p({ line: [line.k], label: line.label })}></Line>
+          ))
+        }
+        <XAxis></XAxis>
+        <YAxis></YAxis>
+      </Graph>
+    </div>
+  )
 }
 

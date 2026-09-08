@@ -5,7 +5,7 @@ const { ceil, floor, abs } = Math
 // Defaults
 const rem = 16
 const pl = 3 * rem
-const pr = 0 * rem
+const pr = 1 * rem
 const pt = 1 * rem
 const pb = 2 * rem
 const text_offset = 8
@@ -121,6 +121,7 @@ export function Graph(props: graph) {
           style: {
             width: '100%',
             height: '100%',
+            display: 'block',
           }, 
           viewBox: `0 0 ${width} ${height}`,
           // preserveAspectRatio: 'none',
