@@ -4355,4 +4355,12 @@ would i research more rechart examples?
 
 "🚨 @parcel/transformer-js: Trailing comma isn't permitted after a rest element"
 
+---
+
+how should i apply z index?
+
+i think it should be irrelevant to positioning.
+
+i may learn from rechart.
+
 

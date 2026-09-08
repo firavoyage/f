@@ -85,8 +85,6 @@ export function Graph(props: graph) {
   }
 
   useEffect(() => {
-    log(bounds, graph_width, graph_height)
-
     let element = container.current
     if (!element) {
       return
@@ -122,8 +120,8 @@ export function Graph(props: graph) {
             width: '100%',
             height: '100%',
             display: 'block', // fix container height != svg height legacy quirk
-          }, 
-          viewBox: `0 0 ${width} ${height}`,
+          },
+          viewBox: `0 0 ${floor(width)} ${floor(height)}`,
           // preserveAspectRatio: 'none',
         })}>
           {children}
@@ -193,7 +191,7 @@ export function Line({ line, label }: line) {
   }
 
   return (
-    <line {...p({ x1: s.x, y1: s.y, x2: e.x, y2: e.y, style: 'stroke: black' })}></line>
+    <line {...p({ class: 'line', x1: s.x, y1: s.y, x2: e.x, y2: e.y })}></line>
   )
 }
 
@@ -226,7 +224,7 @@ export function Text(props: text) {
   }[baseline] ?? baseline
 
   return (
-    <text {...p({ x, y, textAnchor, dominantBaseline, ...attrs })}>
+    <text {...p({ class: 'text', x, y, textAnchor, dominantBaseline, ...attrs })}>
       {children}
     </text>
   )
@@ -279,6 +277,32 @@ export function YAxis() {
               </Text>
             )
           })
+        }
+      </g>
+    </g>
+  )
+}
+
+export function Grid() {
+  const { coordinate_on_viewbox: viewbox,
+    x_labels, x_begin, x_end,
+    y_labels, y_begin, y_end } = useContext(Coord)
+
+  return (
+    <g className="grid">
+      {/* grid x can be ambiguous. horizontal, or vertical mapping x axis? */}
+      <g className="horizontal_grid">
+        {
+          map(y_labels, (y_label: number) => (
+            <Line {...p({ line: [0, y_label] })}></Line>
+          ))
+        }
+      </g>
+      <g className="vertical_grid">
+        {
+          map(x_labels, (x_label: number) => (
+            <Line {...p({ line: x_label })}></Line>
+          ))
         }
       </g>
     </g>

@@ -1,3 +1,9 @@
+/* Reset */
+
+svg {
+  display: block;
+}
+
 /* Base */
 
 [theme="dark"] {
@@ -310,5 +316,19 @@ textarea {
     /* .th {
       position: sticky;
     } */
+  }
+}
+
+/* Testing */
+
+.graph {
+  background-color: khaki;
+
+  .line {
+    stroke: black;
+  }
+
+  .grid .line {
+    stroke: lightyellow;
   }
 }
