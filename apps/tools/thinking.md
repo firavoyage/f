@@ -1,4 +1,4 @@
 - action/maimai: graph, web/component/graph
 - web/component: dropdown/popup (used by select, dropdown, tooltip...)
-- complete atom component styling
+- create basic styling for atom components
 - (code?, repo, have, humility, pure, ...)
