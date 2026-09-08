@@ -206,9 +206,7 @@ export function Line({ line, label }: line) {
 
   return (
     <>
-      <g className="line">
-        <line {...p({ x1: s.x, y1: s.y, x2: e.x, y2: e.y })}></line>
-      </g>
+      <line {...p({ class: 'line', x1: s.x, y1: s.y, x2: e.x, y2: e.y })}></line>
       {
         label &&
         <g className="label line_label">
@@ -227,9 +225,9 @@ type range = {
   label?: string | number
 }
 
-export function Polygon({points}) {
+export function Polygon({ points }) {
   return (
-    <polygon {...p({ points: map(points, ({x, y}) => `${x},${y}`).join(' ') })}></polygon>
+    <polygon {...p({ class: 'polygon', points: map(points, ({ x, y }) => `${x},${y}`).join(' ') })}></polygon>
   )
 }
 
@@ -368,8 +366,26 @@ export function Range({ line1, line2, label }: range) {
     }
   }
 
+  points = map(points, ({ x, y }) => viewbox(x, y))
+
+  const { ex, ey } = segment1
+
   return (
-    <Polygon {...p({ points })}></Polygon>
+    <>
+      <g className="range">
+        <Polygon {...p({ points })}></Polygon>
+      </g>
+      <Line {...p({ line: line1 })}></Line>
+      <Line {...p({ line: line2 })}></Line>
+      {
+        label &&
+        <g className="label range_label">
+          <Text {...p({ ...viewbox(ex, ey), anchor: 'right', baseline: 'bottom' })}>
+            {label}
+          </Text>
+        </g>
+      }
+    </>
   )
 }
 

@@ -339,7 +339,6 @@ textarea {
   .label {
     z-index: var(--hierarchy-graph-label);
   }
-
 }
 
 /* Testing */
@@ -359,5 +358,9 @@ textarea {
   }
 
   .label {
+  }
+
+  .polygon {
+    fill: orange;
   }
 }
