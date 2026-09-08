@@ -29,7 +29,8 @@ export function Graph(props: graph) {
     padding_left = pl, padding_right = pr,
     padding_top = pt, padding_bottom = pb,
     x, y,
-    children
+    children,
+    ...attrs
   } = props
 
   const [container, bounds] = use_measure()
@@ -52,8 +53,6 @@ export function Graph(props: graph) {
   const y_begin = y[0]
   const y_end = y[y.length - 1]
   const y_height = y_end - y_begin
-
-  log({ width, height, graph_width, graph_height })
 
   function coordinate_on_viewbox(x: number, y: number) {
     const x_percentage = (x - x_begin) / x_width
@@ -86,7 +85,7 @@ export function Graph(props: graph) {
   }
 
   useEffect(() => {
-    log(bounds)
+    log(bounds, graph_width, graph_height)
 
     let element = container.current
     if (!element) {
@@ -117,13 +116,13 @@ export function Graph(props: graph) {
       x_labels: x, x_begin, x_end,
       y_labels: y, y_begin, y_end
     }}>
-      <div className="graph" {...p({ ref: container, style: 'width: 1000px; height: 300px' })}>
+      <div className="graph" {...p({ ref: container, ...attrs })}>
         <svg {...p({
           style: {
             width: '100%',
             height: '100%',
-            backgroundColor: 'khaki'
-          }, viewBox: `0 0 ${width} ${height}`,
+          }, 
+          viewBox: `0 0 ${width} ${height}`,
           // preserveAspectRatio: 'none',
         })}>
           {children}
@@ -135,9 +134,10 @@ export function Graph(props: graph) {
 
 type line = {
   line: [k: number, b?: number] | number
+  label?: string | number
 }
 
-export function Line({ line }: line) {
+export function Line({ line, label }: line) {
   const { coordinate_on_viewbox: viewbox, x_begin, x_end, y_begin, y_end } = useContext(Coord)
 
   let s, e
@@ -182,8 +182,13 @@ export function Line({ line }: line) {
     // it will err when "infinity"
 
     if (s.x == e.x && s.y == e.y) {
-      return 
-    } 
+      return
+    }
+
+    // log({
+    //   k, label, s: { x: x_begin, y: fx(x_begin) },
+    //   e: { x: x_end, y: fx(x_end) },
+    // })
   }
 
   return (

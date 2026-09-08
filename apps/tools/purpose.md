@@ -4351,4 +4351,8 @@ would i research more rechart examples?
 
 ---
 
+"🚨 @parcel/transformer-js: Rest element must be final element"
+
+"🚨 @parcel/transformer-js: Trailing comma isn't permitted after a rest element"
+
 

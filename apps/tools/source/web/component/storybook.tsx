@@ -21,22 +21,27 @@ const lines = map(table, (item, index) => {
   const { min, rank, coefficient } = item
 
   if (index == 0) {
-    return { k: min * coefficient, label: rank }
+    return { k: min / 100 * coefficient * 50, label: rank }
   }
 
   const max = table[index - 1].min - 0.0001
 
   return [
-    { k: max * coefficient, label: `${rank} max` },
-    { k: min * coefficient, label: `${rank} min` },
+    { k: max / 100 * coefficient * 50, label: `${rank} max` },
+    { k: min / 100 * coefficient * 50, label: `${rank} min` },
   ]
 }).flat()
 
 export function App() {
   return <Graph {...p({
-    aspect_ratio: ((15 - 10) / 0.5) / (((17000 - 10000) / 1000)),
+    aspect_ratio: ((15 - 10) / 0.5) / (((17000 - 10000) / 1000) * 2),
     x: each(10, 15, 0.5),
     y: each(10000, 17000, 1000),
+    style: {
+      'background-color': 'khaki',
+      width: '1000px',
+      // height: '700px',
+    }
   })}>
     {
       map(lines, (line) => (
