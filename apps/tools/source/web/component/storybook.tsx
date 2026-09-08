@@ -1,4 +1,5 @@
 import 'web/design/app.css'
+import 'web/design/utilitarian/utilitarian.css'
 
 import { Graph, Grid, Line, XAxis, YAxis } from 'web/component/graph'
 
@@ -42,14 +43,14 @@ export function App() {
         x: each(10, 15, 0.5),
         y: each(10000, 17000, 500),
       })}>
+        <Grid></Grid>
+        <XAxis></XAxis>
+        <YAxis></YAxis>
         {
           map(lines, (line) => (
             <Line {...p({ line: [line.k], label: line.label })}></Line>
           ))
         }
-        <XAxis></XAxis>
-        <YAxis></YAxis>
-        <Grid></Grid>
       </Graph>
     </div>
   )

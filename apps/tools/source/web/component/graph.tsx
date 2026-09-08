@@ -4,7 +4,7 @@ const { ceil, floor, abs } = Math
 
 // Defaults
 const rem = 16
-const pl = 3 * rem
+const pl = 4 * rem
 const pr = 1 * rem
 const pt = 1 * rem
 const pb = 2 * rem
@@ -236,7 +236,7 @@ export function XAxis() {
     y_labels, y_begin, y_end } = useContext(Coord)
 
   return (
-    <g className="x_axis">
+    <g className="axis x_axis">
       <Line {...p({ line: [0, y_begin] })}></Line>
       <g className="labels">
         {
@@ -263,7 +263,7 @@ export function YAxis() {
 
   return (
     // g (instead of div) is used inside svg
-    <g className="y_axis">
+    <g className="axis y_axis">
       <Line {...p({ line: x_begin })}></Line>
       <g className="labels">
         {

@@ -4365,4 +4365,20 @@ i may learn from rechart.
 
 i can (re)search, no need to analyze (rev engineering) manually.
 
+zindex currently doesnt work on svg, and i have generally rely on dom order, at the end of the day?
+
+how does rechart work?
+
+~~let's try to reorder the elements.~~ it absolutely intercepts its children.
+
+yeah, not as expected (iterating children prop), but effectively so.
+
+the graph has a prop of zindex layers arr. it exposes via context.
+
+components do not render. they get the graph context, and append themselves to the correspond layer.
+
+the graph renders later.
+
+e.g. map layers layer if nothing inside return, .zindex layer item (render the arr directly, they are already vnodes)
+
 

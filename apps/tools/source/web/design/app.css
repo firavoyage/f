@@ -321,8 +321,25 @@ textarea {
 
 .graph {
   .grid {
-    z-index: var(hier);
+    z-index: var(--hierarchy-graph-grid);
   }
+
+  .line {
+    z-index: var(--hierarchy-graph-line);
+  }
+
+  .axis {
+    z-index: var(--hierarchy-graph-axis);
+  }
+
+  .point {
+    z-index: var(--hierarchy-graph-point);
+  }
+
+  .label {
+    z-index: var(--hierarchy-graph-label);
+  }
+
 }
 
 /* Testing */
