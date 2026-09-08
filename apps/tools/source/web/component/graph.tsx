@@ -2,23 +2,17 @@ import { createContext, useContext } from "react"
 
 const { ceil, floor, abs } = Math
 
-/**
- * - scale: create context
- *   - viewbox w h
- *   - graph~~%~~ x w y h
- *   - graph x% <-> x cord (a number when linear, like 0 end or begin end)
- *   - graph y% <-> y cord
- * - scale on svg: map cord props to svg viewbox xy
- *   - cord
- * - scale on graph: map mouse position to cord
- *   - mouse% on the svg
- */
+// Defaults
+const padding = 16
+const text_offset = 0
 
 const Coord = createContext()
 
 type graph = {
   aspect_ratio?: number
   padding_left?: number
+  padding_right?: number
+  padding_top?: number
   padding_bottom?: number
   x: number[]
   y: number[]
@@ -26,8 +20,10 @@ type graph = {
 }
 
 export function Graph(props: graph) {
+
   const { aspect_ratio = 1,
-    padding_left = 10, padding_right = 0, padding_top = 0, padding_bottom = 10,
+    padding_left = padding, padding_right = padding,
+    padding_top = padding, padding_bottom = padding,
     x, y,
     children
   } = props
@@ -149,4 +145,20 @@ export function Line({ line }: line) {
   return (
     <line {...p({ x1: s.x, y1: s.y, x2: e.x, y2: e.y, style: 'stroke: black' })}></line>
   )
+}
+
+type text = {
+  text: string | number
+  x: number
+  y: number
+  anchor: 'left' | 'center' | 'right' // horizontal alignment
+  baseline: 'top' | 'center' | 'alphabetic' | 'bottom' // vertical alignment
+}
+
+export function Text() {
+  return (
+    <text>
+      
+    </text>
+  )  
 }
