@@ -319,6 +319,12 @@ textarea {
   }
 }
 
+.graph {
+  .grid {
+    z-index: var(hier);
+  }
+}
+
 /* Testing */
 
 .graph {

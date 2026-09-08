@@ -40,9 +40,8 @@ export function App() {
       <Graph {...p({
         aspect_ratio: ((15 - 10) / 0.5) / (((17000 - 10000) / 1000) * 2),
         x: each(10, 15, 0.5),
-        y: each(10000, 17000, 1000),
+        y: each(10000, 17000, 500),
       })}>
-        <Grid></Grid>
         {
           map(lines, (line) => (
             <Line {...p({ line: [line.k], label: line.label })}></Line>
@@ -50,6 +49,7 @@ export function App() {
         }
         <XAxis></XAxis>
         <YAxis></YAxis>
+        <Grid></Grid>
       </Graph>
     </div>
   )

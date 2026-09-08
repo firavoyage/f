@@ -4075,5 +4075,1708 @@ Because that ghost text-descender space is added _after_ the SVG renders, the pa
 
 Did applying **`display: block`** to your SVG cleanly break the infinite loop, or is a flexbox parent element still causing layout shifts? Let me know your **current CSS layout rules** if you need to double-check the configuration.
 
+# compare useMeasure from react-use and react-use-measure
+
+## compare useMeasure from react-use and react-use-measure
+
+While both hooks solve the same core problem—tracking the size and bounds of a DOM element using the `ResizeObserver` API—**`react-use-measure`** is a highly optimized, standalone package maintained by Poimandres (creators of React Three Fiber and Zustand), whereas **`react-use`'s `useMeasure`** is part of a broad utility library. [link](https://github.com/streamich/react-use/blob/master/docs/useMeasure.md)
+
+Choosing between them comes down to bundle constraints, API preferences, and specialized needs like scroll-tracking or animation synchronization.
+
+***
+
+### Core Differences at a Glance
+
+| Feature                                 | `react-use` (`useMeasure`)                                                     | `react-use-measure`                                                  |
+| --------------------------------------- | ------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
+| **Package Nature**                      | Utility in a massive multi-hook library.                                       | Lightweight, dedicated standalone package.                           |
+| **Returned Value**                      | A tuple: `[setRef, dimensions]` _(Note: older docs used a single ref)_.        | A tuple: `[bindRef, dimensions]`.                                    |
+| **Scroll Awareness**                    | ❌ Strictly tracks element boundary resizing.                                  | Tracks resizing, window scroll, and nested area scrolling.           |
+| **React 18 Concurrent Rendering Fixes** | Can occasionally fall out of sync or lag due to automatic batching.            | Actively maintained to sync efficiently with modern React rendering. |
+| **Bundle Impact**                       | Best if you already have `react-use` installed; shaking single hooks can vary. | Extremely tiny, zero dependencies.                                   |
+
+***
+
+### 1. Syntactic Implementation
+
+The way you bind and consume the state is slightly different.
+
+#### `react-use` Syntax
+
+The hook returns a ref setter and a `rect` object containing the properties: [link](https://github.com/streamich/react-use/blob/master/docs/useMeasure.md)
+
+tsx
+
+```
+import { useMeasure } from 'react-use';
+
+const MyComponent = () => {
+  // Returns a ref callback and the measured state
+  const [ref, { width, height, top, left }] = useMeasure<HTMLDivElement>();
+
+  return <div ref={ref}>Width: {width}</div>;
+};
+```
+
+Use code with caution.
+
+#### `react-use-measure` Syntax
+
+It behaves identically in structure, but includes a more extensible configuration object (e.g., controlling polyfills or debouncing):
+
+tsx
+
+```
+import useMeasure from 'react-use-measure';
+
+const MyComponent = () => {
+  // Accepts optional settings like debounce or a custom ResizeObserver polyfill
+  const [ref, bounds] = useMeasure({ debounce: 0 });
+
+  return <div ref={ref}>Width: {bounds.width}</div>;
+};
+```
+
+Use code with caution.
+
+***
+
+### 2. When to Choose `react-use` (`useMeasure`)
+
+- **You are already utilizing `react-use`:** If your codebase extensively relies on the `react-use` ecosystem, pulling its native `useMeasure` avoids adding an unnecessary dependency. [link](https://stackoverflow.com/questions/43817118/how-to-get-the-width-of-a-react-element)
+- **You need basic element resizing:** If you only care about a component's scale altering (such as responsive chart containers or sidebar toggles), this basic hook gets the job done cleanly. [link](https://reactuse.com/element/usemeasure/)
+
+### 3. When to Choose `react-use-measure` (Recommended for modern apps)
+
+- **You need standalone efficiency:** You want a 0-dependency, hyper-focused utility without importing a giant utility toolbox. [link](https://www.npmjs.com/package/react-use-measure)
+- **You need scroll-responsive boundaries:** Standard `ResizeObserver` implementations do not trigger on page or container scrolling. `react-use-measure` intercepts scroll events to give you accurate viewport coordinates continuously. [link](https://medium.com/@wul55267/react-useresizeobserver-hook-track-element-size-changes-2026-8c7961125e47)
+- **You are building canvas, layout, or Framer Motion animations:** Because it was created by the Poimandres collective, it is heavily tailored for heavy visual operations where layout shifts must coordinate in lockstep with rendering cycles.
+
+Are you trying to implement this for a specific UI pattern, like a **responsive chart**, **fixed tooltip overlay**, or **fluid layout animation**? Let me know, and I can suggest the exact hook setup or provide a clean boilerplate.
+
+- [link](https://www.npmjs.com/package/react-use-measure)\
+  NPM\
+  react-use-measure - NPM\
+  Jan 30, 2025 — react-use-measure. TypeScript icon, indicating that this package has built-in type declarations. 2.1.7 • Public • Published 2 year...
+- [link](https://reactuse.com/blog/react-usemeasure-hook/)\
+  ReactUse\
+  React useMeasure Hook: Measure DOM Elements with ...\
+  Aug 5, 2026 — Takeaways \* useMeasure gives you a live element rect with one line — ResizeObserver underneath, zero observer bookkeeping, automat...
+- [link](https://github.com/streamich/react-use/blob/master/docs/useMeasure.md)\
+  GitHub\
+  react-use/docs/useMeasure.md at master\
+  The \`useMeasure\` hook in React tracks the dimensions of an HTML element using the Resize Observer API. You can use \`useMeasure\` as...
+
+Show all
+
+## what does the second return obj include
+
+The second value returned by both hooks is an object containing the geometric dimensions and bounding box coordinates of the measured element.
+
+However, **`react-use-measure` includes extra properties** (`x` and `y`) that are missing from `react-use`.
+
+***
+
+### Comparison of Properties
+
+| Property     | `react-use` | `react-use-measure` | What it represents                                                  |
+| ------------ | ----------- | ------------------- | ------------------------------------------------------------------- |
+| **`width`**  |             |                     | The width of the element (including padding).                       |
+| **`height`** |             |                     | The height of the element (including padding).                      |
+| **`top`**    |             |                     | Distance from the top of the viewport to the element's top edge.    |
+| **`bottom`** |             |                     | Distance from the top of the viewport to the element's bottom edge. |
+| **`left`**   |             |                     | Distance from the left of the viewport to the element's left edge.  |
+| **`right`**  |             |                     | Distance from the left of the viewport to the element's right edge. |
+| **`x`**      | ❌          |                     | Equal to `left` (the element's X-coordinate relative to viewport).  |
+| **`y`**      | ❌          |                     | Equal to `top` (the element's Y-coordinate relative to viewport).   |
+
+***
+
+### Crucial Note on "Viewport" Coordinates (`top`, `left`, etc.)
+
+Because both hooks rely fundamentally on standard browser measurement APIs, these coordinate values behave differently depending on the hook:
+
+- **In `react-use`:** The `top`, `bottom`, `left`, and `right` values are **static relative to the viewport at the moment of the last resize event**. If the user scrolls the page _without_ resizing the element, these values will temporarily become inaccurate until a resize triggers them again.
+- **In `react-use-measure`:** Because it explicitly listens to scroll events, the `top`, `bottom`, `left`, `right`, `x`, and `y` values **update continuously as the user scrolls**, giving you real-time positions relative to the current viewport.
+
+Are you using these measurements to **position a floating element** (like a tooltip or dropdown) or to **dynamically scale a component** (like a canvas or chart)? I can show you how to handle the coordinate math for your specific use case.
+
+## are x and y aliases
+
+**Yes, `x` and `y` are aliases** for `left` and `top`. [link](https://www.npmjs.com/package/react-use-measure)
+
+Under the hood, both libraries mirror the standard browser **`DOMRect`** structure, where: [link](https://reactuse.com/element/usemeasure/)
+
+- **`x`** is exactly identical to **`left`** (the horizontal distance from the left edge of the viewport to the element's origin).
+- **`y`** is exactly identical to **`top`** (the vertical distance from the top edge of the viewport to the element's origin). [link](https://reactnative.dev/docs/the-new-architecture/layout-measurements)
+
+_(Correction to the previous table: Modern versions of **`react-use`** also include `x` and `y` in their output)._ [link](https://github.com/streamich/react-use/blob/master/docs/useMeasure.md)
+
+### Why do both exist?
+
+The duplicate properties are a byproduct of modernizing web standards:
+
+1. **Legacy Compatibility (`top` / `left`):** Historically, standard methods like `element.getBoundingClientRect()` only returned `top`, `bottom`, `left`, and `right`.
+2. **Modern Geometry (`x` / `y`):** Newer specifications (like `DOMRect` and the modern standard `ResizeObserver` entries) introduce `x` and `y` because they align better with standard mathematical coordinate planes. [link](https://reactuse.com/blog/react-usemeasure-hook/)
+
+You can use whichever names make your code easier to read. For layout positioning, developers usually prefer `top` and `left`, whereas for canvas or SVG manipulation, `x` and `y` are generally preferred.
+
+Are you mapping these coordinates to **absolute canvas coordinates** or using them to **manually position a floating element** relative to the page? I can give you the standard formula to account for page scrolls.
+
+- [link](https://reactuse.com/element/usemeasure/)\
+  ReactUse\
+  useMeasure – Element Hook Usage & Examples - ReactUse\
+  useMeasure tracks the full dimensions of a DOM element using the ResizeObserver API. It returns a tuple of \[rect, stop] where rect...
+- [link](https://reactuse.com/blog/react-usemeasure-hook/)\
+  ReactUse\
+  React useMeasure Hook: Measure DOM Elements with ...\
+  Aug 5, 2026 — How It Works Inside. useMeasure is a thin layer over the library's useResizeObserver hook: import { useState } from 'react'; impor...
+- [link](https://reactnative.dev/docs/the-new-architecture/layout-measurements)\
+  React Native\
+  Measuring the Layout - React Native\
+  Aug 12, 2026 — Determines the location on screen ( x and y ), width , and height in the viewport of the given view. Returns the values via an asy...
+
+Show all
+
+## why doesnt ref have current
+
+The ref returned by these hooks does not have a `.current` property because it is a **callback ref**, not a standard object ref created by `useRef()`.
+
+Instead of returning a mutable object like `{ current: null }`, the hooks return a **function** that React automatically calls when the DOM element mounts or unmounts.
+
+### Why do they use Callback Refs?
+
+Standard object refs (`useRef`) **do not notify React when a DOM node changes**. If a node attaches or detaches later (e.g., due to conditional rendering like `isOpen && <div ref={myRef} />`), a standard ref won't trigger a re-run of the hook's measurement logic.
+
+Callback refs solve this cleanly:
+
+1. **Guaranteed Execution:** When the element mounts, React invokes the callback function and passes the actual DOM node as an argument.
+2. **Immediate Measurement:** The hook intercepts that DOM node, immediately instantiates the `ResizeObserver` on it, and calculates its initial size.
+3. **Clean Teardown:** When the element unmounts, React calls the function with `null`, allowing the hook to safely disconnect the `ResizeObserver` and prevent memory leaks.
+
+### What if you _need_ to access `.current` or pass it to another library?
+
+If you need to access the DOM node yourself, or if you need to merge it with another ref (like a `forwardRef`), you can create a custom wrapper function to capture the element:
+
+tsx
+
+```
+import { useRef } from 'react';
+import useMeasure from 'react-use-measure';
+
+const MyComponent = () => {
+  const [measureRef, bounds] = useMeasure();
+  const myManualRef = useRef<HTMLDivElement | null>(null);
+
+  // Combine them into a single callback ref
+  const combinedRef = (node: HTMLDivElement | null) => {
+    myManualRef.current = node; // Now you have .current access!
+    measureRef(node);          // Pass it along to the measurement hook
+  };
+
+  return <div ref={combinedRef}>Width: {bounds.width}</div>;
+};
+```
+
+Use code with caution.
+
+Are you running into an error trying to **pass this ref to a third-party library** (like Framer Motion or a UI kit), or are you trying to **manually read a property from the element** using `ref.current`? Let me know the specific pattern you are trying to implement!
+
+## why dont they do so
+
+The reason these hook creators chose **not** to return a standard `{ current: null }` object ref comes down to a fundamental React design rule: **React components do not re-render when a ref's `.current` property changes.**
+
+If they used a standard object ref, the hook would fail silently in many common real-world scenarios.
+
+***
+
+### The 3 Big Problems with Standard Object Refs
+
+#### 1. Conditional Rendering Breaks Measurements
+
+If your element isn't on the screen immediately when the component mounts, a standard ref will remain `null`. When it finally appears, the hook has no way of knowing it needs to start measuring.
+
+tsx
+
+```
+// ❌ IF THEY USED AN OBJECT REF:
+const [ref, bounds] = useMeasure(); // ref = { current: null }
+
+// When isOpen becomes true, the div mounts, and ref.current fills up.
+// BUT because changing ref.current doesn't cause a re-render,
+// the hook never runs its ResizeObserver setup. Bounds stay at 0.
+return isOpen ? <div ref={ref}>Hello</div> : null;
+```
+
+Use code with caution.
+
+With a **callback ref**, React actively pushes the new DOM node into the hook the exact millisecond it appears on screen, allowing the `ResizeObserver` to attach instantly.
+
+#### 2. Re-used Refs and Key Changes
+
+If the element changes its identity (for example, if a `key` prop changes or a list gets re-ordered), a standard object ref updates silently. The hook would continue trying to watch the _old_ deleted DOM element. A callback ref safely tears down the old observer and spins up a new one on the fresh element automatically.
+
+#### 3. It Prevents Infinite Render Loops
+
+If a hook tried to use standard `useEffect` to watch `ref.current`, it would look like this: `useEffect(() => ..., [ref.current])`.
+
+However, React's dependency array cannot track mutations to `.current`. To force it to work, the hook would have to trigger a state update inside the effect to force a re-render, which often triggers an infinite loop of measuring, updating state, re-rendering, and re-measuring. Callback refs naturally sidestep this timing issue.
+
+***
+
+### How React 19 / Modern Hooks Handle This
+
+React's official stance is that **if you need to measure a DOM node's size or position, you must use a callback ref.**
+
+Interestingly, newer APIs like React 19's `useActionState` and modern libraries are increasingly leaning into callback refs for anything dealing directly with DOM life cycles, while reserving `useRef` strictly for storing persistent data that doesn't affect the visual layout.
+
+Are you trying to use this hook on an element that **renders conditionally** or inside a **list component**? I can show you how to structure the component so your measurements are 100% reliable.
+
+## why dont they do so (return the combined ref)
+
+The reason hook creators don't return a pre-bundled combined ref (an object ref + a callback ref) comes down to **API minimalism, performance optimization, and avoiding accidental memory leaks**.
+
+If the hook creators tried to force a combined ref out of the box, they would introduce significant architectural trade-offs:
+
+### 1. It breaks React's single source of truth
+
+In React, a DOM node should ideally have one direct owner responsible for its lifecycle. If `useMeasure` returned a pre-baked object ref _alongside_ its callback functionality, it would have to maintain a hidden internal `useRef`.
+
+If you then tried to mutate that ref or attach it to a second library, the internal states could easily fall out of sync, leading to unpredictable bugs where your code thinks `.current` is one element, but the `ResizeObserver` is watching another.
+
+### 2. Double the work for 90% of use cases
+
+Most of the time, developers use these hooks strictly to read dimensions:
+
+tsx
+
+```
+const [ref, bounds] = useMeasure();
+return <div ref={ref}>Width: {bounds.width}</div>;
+```
+
+Use code with caution.
+
+In this standard scenario, a `.current` reference is completely unnecessary. Forcing the hook to instantiate, update, and manage a standard React `useRef` object under the hood for every single measurement would add wasted overhead and boilerplate code to library internals.
+
+### 3. Cleaning up memory becomes a nightmare
+
+When a component unmounts or a DOM node changes, a callback ref is automatically invoked by React with `null`. This acts as a reliable kill-switch to run `observer.disconnect()`.
+
+If the library tried to manage a combined object ref, it would have to manually nullify `.current` at the exact right moment in the React render timeline. If handled poorly, it can easily lead to **detached DOM nodes** remaining trapped in memory because the object ref is still holding onto them.
+
+### 4. It restricts advanced compositions
+
+By returning a pure callback function, the hooks remain fully flexible. A callback function can easily be wrapped inside other functions, debounced, piped into animations, or shared across multiple nodes. If it returned a rigid, pre-packaged combined ref architecture, you wouldn't be able to easily pipe it into specialized patterns like a `forwardRef` or a custom layout controller.
+
+***
+
+Are you currently running into a situation where you **absolutely need `.current` access** (such as manually triggering an `.focus()` or an `.animate()` call)?
+
+If you share your specific code layout, I can show you how to write a clean **3-line merging utility** to bridge the two safely.
+
+## wrap useMeasure
+
+Here is a clean, reusable wrapper hook that combines `useMeasure` with a standard object ref.
+
+This gives you the best of both worlds: the hook safely measures the element, and you get a fully functional **`.current`** property to manually access the DOM node whenever you need it (e.g., for calling `.focus()`, `.scrollTo()`, or passing it to another library).
+
+### The Wrapper Hook
+
+tsx
+
+```
+import { useRef, useCallback } from 'react';
+import useMeasure from 'react-use-measure'; // Or 'react-use'
+
+export function useMeasureWithRef(options?: Parameters<typeof useMeasure>[0]) {
+  // 1. Initialize react-use-measure
+  const [measureRef, bounds] = useMeasure(options);
+
+  // 2. Create the standard object ref you want to access
+  const elementRef = useRef<HTMLElement | null>(null);
+
+  // 3. Combine them into a single callback ref
+  const combinedRef = useCallback((node: HTMLElement | null) => {
+    elementRef.current = node; // Update the standard .current property
+    measureRef(node);          // Pass the node to the measurement hook
+  }, [measureRef]);
+
+  // Return the combined ref handler, the standard ref object, and the bounds
+  return [combinedRef, elementRef, bounds] as const;
+}
+```
+
+Use code with caution.
+
+***
+
+### How to Use It
+
+Here is an example showing how you can use the `bounds` for visual updates while simultaneously using `.current` to programmatically trigger a DOM action (like scrolling):
+
+tsx
+
+```
+import React from 'react';
+import { useMeasureWithRef } from './useMeasureWithRef'; // path to your wrapper
+
+export const MyComponent = () => {
+  // Destructure the combined callback, the standard ref object, and the dimensions
+  const [ref, elementRef, bounds] = useMeasureWithRef();
+
+  const handleScrollToBottom = () => {
+    // You have full access to .current just like a normal useRef!
+    if (elementRef.current) {
+      elementRef.current.scrollTop = elementRef.current.scrollHeight;
+    }
+  };
+
+  return (
+    <div>
+      <button onClick={handleScrollToBottom}>
+        Scroll Container
+      </button>
+
+      {/* 1. Pass the combined callback ref to the element */}
+      <div
+        ref={ref}
+        style={{ height: '200px', overflowY: 'auto', border: '1px solid black' }}
+      >
+        <p>Container Width: {bounds.width}px</p>
+        <div style={{ height: '400px' }}>Long content...</div>
+      </div>
+    </div>
+  );
+};
+```
+
+Use code with caution.
+
+### Why this setup is safe:
+
+- **`useCallback`** ensures that the combined ref function doesn't get needlessly re-created on every single render, preventing performance stutters.
+- **`elementRef.current`** is updated instantly as soon as React mounts or unmounts the DOM node, keeping your manual references perfectly aligned with the measurement observer.
+
+Are you planning to pass this `elementRef` to **another third-party hook** (like Framer Motion or an intersection observer), or are you primarily using it for **direct browser API actions** like focusing or scrolling?
+
+## can combineref and elementref be merged
+
+Yes, **`combinedRef` and `elementRef` can be merged into a single entity**, but with one major caveat: **you cannot use standard object dot-notation (`ref.current`) inside your JSX `ref={...}` attribute.** React requires a function there to trigger the callback behavior.
+
+To merge them, you can turn the `combinedRef` function into a **Callable Function Object**. This allows the ref to act as a callback function when passed to React's `ref={...}` attribute, while simultaneously carrying a `.current` property that you can read anywhere else in your code.
+
+### The Merged Hook
+
+Here is how to build it using `Object.assign`:
+
+tsx
+
+```
+import { useRef, useCallback } from 'react';
+import useMeasure from 'react-use-measure'; // Or 'react-use'
+
+export function useMeasuredRef(options?: Parameters<typeof useMeasure>) {
+  const [measureRef, bounds] = useMeasure(options);
+  const internalRef = useRef<HTMLElement | null>(null);
+
+  // 1. Create the callback function
+  const mergedCallback = useCallback((node: HTMLElement | null) => {
+    internalRef.current = node;
+    measureRef(node);
+  }, [measureRef]);
+
+  // 2. Attach a getter to the function so it mimics a standard ref object
+  const mergedRef = Object.assign(mergedCallback, {
+    get current() {
+      return internalRef.current;
+    }
+  });
+
+  return [mergedRef, bounds] as const;
+}
+```
+
+Use code with caution.
+
+***
+
+### How to Use the Merged Ref
+
+Now you only have to manage a single variable `ref` instead of splitting it up.
+
+tsx
+
+```
+import React from 'react';
+import { useMeasuredRef } from './useMeasuredRef';
+
+export const MyComponent = () => {
+  // Only two items returned!
+  const [ref, bounds] = useMeasuredRef();
+
+  const handleAction = () => {
+    // You can access .current directly off the exact same ref!
+    if (ref.current) {
+      ref.current.focus();
+    }
+  };
+
+  return (
+    <div>
+      <button onClick={handleAction}>Focus Input</button>
+
+      {/* Pass the exact same ref variable directly to JSX */}
+      <input ref={ref} placeholder={`Width is ${bounds.width}px`} />
+    </div>
+  );
+};
+```
+
+Use code with caution.
+
+### Is this safe to use?
+
+Yes. Because `mergedRef.current` uses a standard JavaScript getter pointing directly to a real React `useRef` container underneath, it remains completely safe. It preserves the exact execution timing React demands while cleaning up your variable declarations.
+
+Are you passing this merged ref to **TypeScript code that strictly expects a `React.RefObject` type**, or are you using it entirely inside your own components? I can help you adjust the TypeScript types if a third-party library starts complaining about the function structure.
+
+# 'event.currentTarget' is possibly 'null'.
+
+## 'event.currentTarget' is possibly 'null'.
+
+**TypeScript throws this error because the DOM `Event.currentTarget` type definition technically allows `null`** since its value changes dynamically as an event bubbles up the DOM, and it becomes `null` once the event finishes processing. [link](https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget)
+
+Here are the best ways to fix it depending on your use case.
+
+### 1. The Type Guard / Early Return (Recommended)
+
+The cleanest, safest approach is to add a check at the top of your function. This satisfies TypeScript's type checker and prevents runtime errors.
+
+typescript
+
+```
+const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  if (!event.currentTarget) return;
+
+  // TypeScript now knows event.currentTarget is not null
+  console.log(event.currentTarget.value);
+};
+```
+
+Use code with caution.
+
+### 2. Type Assertion (If you are 100% sure)
+
+If you know for a fact that this event handler will only run while the element exists in the DOM, you can use the non-null assertion operator (`!`) to tell TypeScript to stop worrying.
+
+typescript
+
+```
+const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  // The '!' tells TypeScript that currentTarget will never be null
+  console.log(event.currentTarget!.value);
+};
+```
+
+Use code with caution.
+
+### 3. Use `event.target` (With Caution)
+
+If you just want the element that was clicked, you can use `event.target`, but you will still need to cast it or verify its existence because `event.target` can also technically be `null` or a generic `EventTarget`. [link](https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget)
+
+typescript
+
+```
+const handleClick = (event: React.MouseEvent) => {
+  const target = event.target as HTMLButtonElement;
+  console.log(target.value);
+};
+```
+
+Use code with caution.
+
+_Note: Unlike `currentTarget` (which always references the element the event listener is attached to), `target` references the exact child element that triggered the event._ [link](https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget)
+
+If you are still seeing the error, let me know:
+
+- Are you using **Vanilla TypeScript** or a framework like **React** or **Vue**?
+- Could you share the **snippet of code** where the error is triggering?
+
+I can provide the exact code block you need to copy and paste.
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget)\
+  MDN Web Docs\
+  Event: currentTarget property - Web APIs - MDN Web Docs\
+  Dec 19, 2024 — The currentTarget read-only property of the Event interface identifies the element to which the event handler has been attached. T...
+
+## can it be null
+
+<mark><strong>No, at the exact moment your event handler function runs,<span> </span><code dir="ltr">event.currentTarget</code><span> </span>will never be<span> </span></strong></mark>**`null`.**
+
+However, there is **one major catch** where it _can_ become `null`: if you try to read it inside an asynchronous callback (like a `setTimeout`, a `fetch` promise, or an `async/await` delay).
+
+Here is why this happens and why TypeScript complains anyway.
+
+### 1. Why TypeScript thinks it can be null
+
+In the underlying browser architecture, the DOM recycles event objects. As soon as your event handler finishes running, the browser clears the event properties—setting `currentTarget` to `null`—so the event object can be reused for future clicks.
+
+Because the standard TypeScript DOM type definitions have to account for the event's entire lifecycle (including after the handler runs), it marks `currentTarget` as `EventTarget | null`.
+
+### 2. When it actually _will_ be null (The Async Trap)
+
+If you try to access `event.currentTarget` after any asynchronous delay, your code will crash because the browser has already wiped it.
+
+❌ **This will crash:**
+
+typescript
+
+```
+const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  setTimeout(() => {
+    // ❌ CRASH: By the time this runs, event.currentTarget is null!
+    console.log(event.currentTarget.id);
+  }, 1000);
+};
+```
+
+Use code with caution.
+
+### 3. How to fix the async problem
+
+If you need the element inside an async function, you must save a reference to it **synchronously** at the very top of your function.
+
+✅ **Do this instead:**
+
+typescript
+
+```
+const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  // 1. Capture the element immediately while it still exists
+  const button = event.currentTarget;
+
+  setTimeout(() => {
+    // ✅ SAFE: 'button' holds the reference even after the event is destroyed
+    console.log(button.id);
+  }, 1000);
+};
+```
+
+Use code with caution.
+
+Are you trying to use this event inside an **async/await** function, a **setTimeout**, or a **state update**? If you share the function, I can show you how to structure it safely.
+
+# why cant react jsx style be string
+
+## why cant react jsx style be string
+
+In React, the `style` prop cannot be a plain string because <mark><strong>React works with a virtual DOM and optimizes rendering by treating styles as structured JavaScript objects.</strong></mark> [link](https://www.codechef.com/learn/course/react-js/CREACT002/problems/PREACT0012)
+
+While standard HTML accepts a string like `style="color: red; design: bold;"`, React requires an object like `style={{ color: 'red' }}` due to several technical and performance reasons: [link](https://react.dev/learn/javascript-in-jsx-with-curly-braces)
+
+### 1. Performance and Efficient Updates
+
+When a component updates, React compares the previous Virtual DOM with the new Virtual DOM (a process called **diffing**).
+
+- **With an object:** React can quickly iterate through the object keys and change _only_ the specific CSS properties that actually changed (e.g., updating just `opacity` while keeping `color` the same).
+- **With a string:** React would have to parse the entire CSS string into individual properties every single render cycle to figure out what changed, or risk destroying and recreating the entire element's style attribute, which is terrible for performance.
+
+### 2. Guarding Against XSS Vulnerabilities
+
+Allowing raw strings to be directly injected into element attributes makes applications highly vulnerable to Cross-Site Scripting (XSS) attacks. By forcing styles into a structured key-value JavaScript object, React can sanitize values and strictly control how styles are inserted into the DOM.
+
+### 3. Native Integration with JavaScript Expressions
+
+React relies on the power of JavaScript to handle dynamic behavior. Passing an object makes it incredibly easy to programmatically modify individual CSS properties based on component state or props: [link](https://react.dev/learn/javascript-in-jsx-with-curly-braces)
+
+jsx
+
+```
+// Easily adjust a single property using JavaScript state
+<div style={{ display: isOpen ? 'block' : 'none', color: 'blue' }} />
+```
+
+Use code with caution.
+
+If `style` were a string, you would have to perform messy string manipulation or use template literals every time you wanted to toggle a single CSS property. [link](https://stackoverflow.com/questions/51501057/react-style-not-working-with-template-strings)
+
+### 4. Cross-Browser Consistency
+
+React abstracts away various browser inconsistencies. By controlling styles through JavaScript objects, React can automatically append `"px"` to certain numeric values (like `width: 200` turning into `200px`) and handle vendor prefixes more reliably behind the scenes. [link](https://www.codechef.com/learn/course/react-js/CREACT002/problems/PREACT0012)
+
+***
+
+### Summary of Differences
+
+| Feature             | Standard HTML                   | React JSX                                |
+| ------------------- | ------------------------------- | ---------------------------------------- |
+| **Type**            | String (`""`)                   | JavaScript Object (`{{}}`)               |
+| **Property Format** | Kebab-case (`background-color`) | CamelCase (`backgroundColor`)            |
+| **Values**          | Always strings                  | Strings or numbers (e.g., `padding: 10`) |
+
+Are you running into a specific **syntax error** or **TypeScript error** trying to apply styles, or are you exploring whether to use **CSS Modules / Tailwind** instead?
+
+- [link](https://stackoverflow.com/questions/51501057/react-style-not-working-with-template-strings)\
+  Stack Overflow\
+  React Style not working with template strings\
+  Jul 24, 2018 — The style prop in JavaScript expects a mapping from style properties to values, not a string. For example, \`style={{marginRight: s...
+- [link](https://www.codechef.com/learn/course/react-js/CREACT002/problems/PREACT0012)\
+  CodeChef\
+  Inline Styles in JSX - CodeChef\
+  In JSX, styles are applied using an object with camelCase property names, differing from regular HTML, where styles are written as...
+- [link](https://react.dev/learn/javascript-in-jsx-with-curly-braces)\
+  React\
+  JavaScript in JSX with Curly Braces - React\
+  You can only use curly braces in two ways inside JSX: As text directly inside a JSX tag: {name}'s To Do List works, but <{tag}>Gre...
+
+Show all
+
+## how to convert
+
+To convert a standard HTML style string into a React JSX object, you need to change the properties from **kebab-case to camelCase** and wrap the key-value pairs into a **JavaScript object**.
+
+Here is how you do it manually, along with automated ways to handle large blocks of code.
+
+### The Manual Conversion Rules
+
+1. **Change casing:** Convert kebab-case (`background-color`) to camelCase (`backgroundColor`).
+2. **Quote the values:** Wrap string values in quotes (`'red'`, `'10px'`).
+3. **Change separators:** Replace semicolons (`;`) with commas (`,`), and remove the trailing semicolon.
+4. **Double curly braces:** In JSX, the outer `{}` enters JavaScript mode, and the inner `{}` creates the object.
+
+html
+
+```
+<!-- Standard HTML -->
+<div style="background-color: red; font-size: 16px; margin-top: 10px;"></div>
+```
+
+Use code with caution.
+
+jsx
+
+```
+// React JSX Equivalent
+<div style={{ backgroundColor: 'red', fontSize: '16px', marginTop: '10px' }}></div>
+```
+
+Use code with caution.
+
+***
+
+### 🛠️ Quick Conversion Tools
+
+If you have a massive block of HTML and don't want to convert it by hand, you can use these automated methods:
+
+#### Method 1: Use an Online Converter
+
+The fastest way is to copy-paste your HTML into a free tool like **[transform.tools/html-to-jsx](https://transform.tools/html-to-jsx)**. It will instantly convert all standard HTML attributes (including style strings) into perfectly formatted React JSX.
+
+#### Method 2: Use JavaScript in the Browser Console
+
+If you have a string of CSS styles in your code and want to parse it dynamically into an object, you can use this quick helper function:
+
+javascript
+
+```
+const stringToInlineStyle = (styleString) => {
+  return styleString
+    .split(';')
+    .filter(style => style.trim() !== '')
+    .reduce((acc, style) => {
+      const [key, value] = style.split(':');
+      // Convert kebab-case to camelCase
+      const camelCasedKey = key.trim().replace(/-./g, c => c.toUpperCase().replace('-', ''));
+      acc[camelCasedKey] = value.trim();
+      return acc;
+    }, {});
+};
+
+// Example Usage:
+const htmlStyle = "background-color: blue; padding-left: 20px;";
+console.log(stringToInlineStyle(htmlStyle));
+// Output: { backgroundColor: 'blue', paddingLeft: '20px' }
+```
+
+Use code with caution.
+
+Do you have a **specific snippet of HTML** you need help converting right now, or are you looking for a **VS Code extension** to automate this inside your editor?
+
+## npm lib to convert string to jsx style obj
+
+The single best npm library specifically tailored for this task is **`style-to-js`**. [link](https://www.npmjs.com/package/style-to-js)
+
+It parses a standard inline CSS string directly into a **camelCased JavaScript object** perfectly suited for React's `style` prop. [link](https://www.npmjs.com/package/style-to-js)
+
+### 1. The Best Option: `style-to-js`
+
+This is a lightweight library explicitly designed to convert standard CSS kebab-case styles into a JSX-friendly format. [link](https://www.npmjs.com/package/style-to-js)
+
+- **Installation:** `npm install style-to-js`
+- **Usage:** [link](https://www.npmjs.com/package/style-to-js)
+
+javascript
+
+```
+import styleToJS from 'style-to-js';
+
+const cssString = 'background-color: red; font-size: 16px; margin-top: 20px;';
+const jsxStyle = styleToJS(cssString);
+
+console.log(jsxStyle);
+// Output: { backgroundColor: 'red', fontSize: '16px', marginTop: '20px' }
+
+// Usage in React:
+// <div style={jsxStyle}>Hello World</div>
+```
+
+Use code with caution.
+
+***
+
+### 2. The Alternative: `style-to-object`
+
+If you see older tutorials or codebases, they often use **`style-to-object`**. [link](https://www.npmjs.com/package/style-to-object)
+
+_⚠️ Note:_ By default, `style-to-object` **does not** convert keys to camelCase (it will output `{'background-color': 'red'}`). However, it accepts an optional iterator callback function which you can pair with a package like `camelcase` to get JSX styles. [link](https://www.npmjs.com/package/camelcase)
+
+- **Installation:** `npm install style-to-object camelcase`
+- **Usage:** [link](https://www.npmjs.com/package/style-to-object)
+
+javascript
+
+```
+import parseStyle from 'style-to-object';
+import camelCase from 'camelcase';
+
+const cssString = 'background-color: blue; padding-left: 10px;';
+
+const jsxStyle = {};
+parseStyle(cssString, (name, value) => {
+  jsxStyle[camelCase(name)] = value;
+});
+
+console.log(jsxStyle);
+// Output: { backgroundColor: 'blue', paddingLeft: '10px' }
+```
+
+Use code with caution.
+
+***
+
+### 3. The Full HTML Parser Option: `html-react-parser`
+
+If you are trying to convert an entire HTML block string dynamically (which contains element tags, classes, and `style=""` string attributes all mixed together), use **`html-react-parser`**. It handles all components, attributes, and styles out-of-the-box and generates ready-to-render React elements. [link](https://www.npmjs.com/package/react-html-parser)
+
+- **Installation:** `npm install html-react-parser`
+- **Usage:** [link](https://www.npmjs.com/package/html-react-parser)
+
+jsx
+
+```
+import parse from 'html-react-parser';
+
+const htmlString = '<div style="color: green; font-weight: bold;">Parsed HTML</div>';
+
+function MyComponent() {
+  // It automatically converts the style string under the hood
+  return <div>{parse(htmlString)}</div>;
+}
+```
+
+Use code with caution.
+
+Are you trying to process user-generated content **dynamically at runtime**, or are you looking to clean up static strings **during your build/development stage**?
+
+- [link](https://www.npmjs.com/package/style-to-object)\
+  NPM\
+  style-to-object - NPM\
+  Jul 6, 2026 — Parse CSS inline style to JavaScript object: \* import parse from 'style-to-object'; parse('color: #C0FFEE; background: #BADA55;');
+- [link](https://www.npmjs.com/package/style-to-js)\
+  NPM\
+  style-to-js - NPM\
+  Jul 7, 2026 — Parses CSS inline style to JavaScript object (camelCased).. Latest version: 2.0.2, last published: a month ago. Start using style-
+- [link](https://www.npmjs.com/package/react-html-parser)\
+  NPM\
+  react-html-parser - NPM\
+  Nov 29, 2017 — React HTML Parser. A utility for converting HTML strings into React components. Avoids the use of dangerouslySetInnerHTML and conv...
+
+Show all
+
+# what if every mousemove event triggers a react state change
+
+## what if every mousemove event triggers a react state change
+
+If you trigger a React state change on **every single `mousemove` event**, <mark>you will likely introduce<span> </span><strong>severe user interface lag and performance bottlenecks</strong></mark>. [link](https://www.youtube.com/shorts/cUeSMZI2o54)
+
+A standard computer mouse fires `mousemove` events roughly **60 to 100+ times per second** depending on the hardware polling rate. Because a React state update forces a component to re-render, you are asking React to run its reconciliation process, diff the virtual DOM, and potentially update the real DOM dozens of times every single second. [link](https://www.instagram.com/reel/Dbi2unqPpLz/)
+
+***
+
+### What Actually Happens Under the Hood
+
+1. **CPU Thrashing:** React must execute the component function body, re-evaluate hooks, and compare the old virtual DOM tree with the new one at an unsustainable frequency. [link](https://www.youtube.com/shorts/cUeSMZI2o54)
+2. **Subtree Re-renders:** By default, when a parent component updates its state, **all of its child components re-render** with it. If your `mousemove` state lives high up in the component tree, your entire application will struggle to stay responsive. [link](https://www.reddit.com/r/reactjs/comments/k73g9f/what%5Fis%5Fthe%5Feffective%5Fway%5Fto%5Fuse%5Fmousemove%5Fevent/)
+3. **Dropped Frames & Stuttering:** Browsers target a 60Hz refresh rate (16.67ms per frame) or higher. If React's rendering cycle takes longer than a few milliseconds, it will block the browser's main thread, leading to visual stuttering and delayed interaction responses. [link](https://www.youtube.com/shorts/cUeSMZI2o54)
+
+***
+
+### How to Fix or Avoid It
+
+Depending on what you are trying to build, you can use several patterns to completely bypass or mitigate this bottleneck:
+
+#### 1. The "Private Lane" Fix (Direct DOM Manipulation)
+
+If you are moving a visual element across the screen (like a custom cursor or a drag handle), **do not use React state**. Instead, use a `useRef` to target the DOM element directly and change its styles inline. This bypasses the React render engine entirely. [link](https://www.youtube.com/shorts/cUeSMZI2o54)
+
+jsx
+
+```
+import { useEffect, useRef } from 'react';
+
+function FollowCursor() {
+  const boxRef = useRef(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (boxRef.current) {
+        // Fast, direct DOM update bypassing React's render loop
+        boxRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  return <div ref={boxRef} className="moving-box" />;
+}
+```
+
+Use code with caution.
+
+#### 2. Component Isolation (State Isolation)
+
+If you _must_ use state to capture coordinates, isolate that state into the smallest component possible. You can pass heavy, non-moving UI structures down as `children` so they are not forced to re-render. [link](https://www.developerway.com/posts/react-elements-children-parents)
+
+jsx
+
+```
+// Only this tiny wrapper re-renders; the heavy children stay untouched
+function MouseTracker({ children }) {
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+
+  return (
+    <div onMouseMove={(e) => setPos({ x: e.clientX, y: e.clientY })}>
+      <p>Coordinates: {pos.x}, {pos.y}</p>
+      {children}
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+#### 3. Throttling or Debouncing
+
+If you need the coordinates to trigger side effects (like updating an API or tracking telemetry), use a throttling helper (e.g., from [Lodash](https://lodash.com/)) to restrict the state updates to a predictable cadence, such as once every 50ms to 100ms. [link](https://www.reddit.com/r/reactjs/comments/113f0cc/prevent%5Freact%5Ffrom%5Fredrawing%5Fevery%5Ftime%5Fmouse/)
+
+What are you trying to build with the mouse coordinates? If you can share your **specific usecase** (e.g., a **custom cursor**, **drag-and-drop feature**, or **canvas drawing app**), I can write the exact optimization code you need.
+
+- [link](https://www.reddit.com/r/reactjs/comments/k73g9f/what%5Fis%5Fthe%5Feffective%5Fway%5Fto%5Fuse%5Fmousemove%5Fevent/)\
+  Reddit\
+  What is the effective way to use mousemove event that use states in useEffect?\
+  Dec 5, 2020 — Here's some information about using the mousemove event in useEffect: \* \*\*setState a move event\*\* This can be slow and trigger sub...
+- [link](https://www.developerway.com/posts/react-elements-children-parents)\
+  Developer Way\
+  The mystery of React Element, children, parents and re-renders\
+  Jul 4, 2022 — Now, we know that React components re-render themselves and all their children when the state is updated. In this case, on every m...
+- [link](https://news.ycombinator.com/item?id=44009710)\
+  Hacker News\
+  Unlike React it doesn't recalculate everything on every mouse ...\
+  That comparison is apples to oranges, because React components are typically much smaller than Vue components (think 20 components...
+
+Show all
+
+## how does throttling or debouncing work
+
+Both **throttling** and **debouncing** are rate-limiting techniques used to control how many times a function is executed over time. They are essential for handling high-frequency events like `mousemove`, `scroll`, `resize`, and `keyup`.
+
+While they share a similar goal, they work in fundamentally opposite ways.
+
+***
+
+### The Core Difference
+
+- **Throttling** enforces a **maximum frequency**. It guarantees the function runs regularly at a fixed time interval (e.g., "execute this function at most once every 100ms").
+- **Debouncing** enforces a **period of silence**. It waits for the user to _stop_ firing events for a set amount of time before running the function (e.g., "wait until the user has stopped typing for 300ms before searching").
+
+***
+
+### Visual Comparison
+
+Imagine a user frantically triggering events over 4 seconds:
+
+| Technique      | Behavior Visualized                                                        | Best Use Cases                                                                                     |
+| -------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| **Throttling** | `⏱️...💥...⏱️...💥...⏱️...💥`Fires at steady, predictable intervals.       | • Updating a map UI while scrolling• Infinite scroll pagination• Game loops (`mousemove` tracking) |
+| **Debouncing** | `⏳........................💥`Fires only once the storm of events settles. | • Search bar auto-suggestions• Form input validation• Window resize recalculations                 |
+
+***
+
+### How Throttling Works
+
+Throttling acts like a **valve**. When an event fires, it checks a timer or a lock variable. If the lock is open, the function runs and the lock is shut. Until the timer runs out, all subsequent events are ignored. Once the timer finishes, the lock opens again for the next event.
+
+#### Simple JavaScript Implementation:
+
+javascript
+
+```
+function throttle(func, limit) {
+  let inThrottle;
+  return function(...args) {
+    if (!inThrottle) {
+      func.apply(this, args);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, limit);
+    }
+  }
+}
+```
+
+Use code with caution.
+
+***
+
+### How Debouncing Works
+
+Debouncing acts like an **elevator door**. Every time a passenger walks in (an event fires), the elevator reset its timer and waits another 5 seconds before closing the doors to move. If a new passenger arrives before the 5 seconds are up, the timer restarts completely.
+
+#### Simple JavaScript Implementation:
+
+javascript
+
+```
+function debounce(func, delay) {
+  let timeoutId;
+  return function(...args) {
+    // Clear the previous timer every time a new event fires
+    clearTimeout(timeoutId);
+
+    // Start a brand new timer
+    timeoutId = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
+}
+```
+
+Use code with caution.
+
+***
+
+### React Specific Trap: The Re-render Bug
+
+If you try to implement a throttle or debounce directly inside a React component like this, **it will fail**:
+
+jsx
+
+```
+// ❌ WRONG: This creates a brand new debounced function on every re-render!
+const handleSearch = debounce((text) => fetchResults(text), 300);
+```
+
+Use code with caution.
+
+Because React components re-run their entire function body on a state change, the component will recreate a _fresh_ timer on every stroke, completely breaking the debouncing logic.
+
+To fix this in React, you must wrap the throttled or debounced function in a `useCallback` or `useMemo` so it persists across renders:
+
+jsx
+
+```
+import { useCallback } from 'react';
+import debounce from 'lodash/debounce';
+
+//  RIGHT: The debounced function is cached across renders
+const handleSearch = useCallback(
+  debounce((text) => fetchResults(text), 300),
+  []
+);
+```
+
+Use code with caution.
+
+Which one fits the feature you are currently building? I can help you write a **custom React hook** (like `useDebounce` or `useThrottle`) or show you how to plug it into your **event handlers**.
+
+## how much limit
+
+The ideal **time limit** depends entirely on the technique you choose and the specific user experience (UX) you want to achieve.
+
+Here is a breakdown of standard, production-tested limits for common use cases:
+
+***
+
+### Recommended Throttling Limits
+
+When throttling, you want the UI to feel smooth, but you don't want to overload the CPU.
+
+- **16ms (60 FPS):** Use this for **ultra-smooth visual elements**, like custom mouse cursors or drag-and-drop elements that rely on state.
+- **50ms to 100ms:** Best for **heavy real-time tracking**, such as updating a map as the user pans around, firing scroll animations, or sending user telemetry coordinates back to a server.
+- **200ms to 500ms:** Perfect for **background loops**, like checking if a user has scrolled to the bottom of the page to trigger an infinite scroll API call.
+
+***
+
+### Recommended Debouncing Limits
+
+When debouncing, you are waiting for the user to _stop_ doing something. The limit represents how long you wait after their final action.
+
+- **150ms to 250ms:** Best for **fast-feedback UI**, like responsive search auto-suggestions or real-time password strength indicators while typing.
+- **300ms to 500ms:** The industry standard for **standard input forms** or search bars querying a database API. It gives average typists enough time to finish a word without triggering accidental API requests.
+- **500ms+:** Used for **heavy computational tasks**, like recalculating layout dimensions after a user finishes resizing their browser window, or auto-saving a large document block to a server.
+
+***
+
+### Summary Table
+
+| Use Case                     | Recommended Limit | Technique |
+| ---------------------------- | ----------------- | --------- |
+| **Mouse movements (Visual)** | 16ms – 50ms       | Throttle  |
+| **Window Resizing**          | 300ms – 500ms     | Debounce  |
+| **Search Input Box**         | 300ms             | Debounce  |
+| **Scroll / Infinite Scroll** | 100ms – 200ms     | Throttle  |
+
+Which specific action are you trying to rate-limit right now? If you share **what event** you are capturing (e.g., typing, scrolling, mouse moving) and **what it triggers**, I can recommend the exact millisecond threshold you should use.
+
+AI responses may include mistakes. For financial advice, consult a professional. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
+
+## what is it called if the first event fires immediately and all events between last and last + limit are deferred to one at last + limit
+
+What you are describing is a specialized flavor of throttling often referred to as a **Leading and Trailing Throttle** (or a throttle with both `leading: true` and `trailing: true`).
+
+In standard open-source utility libraries like **Lodash**, this is the **default behavior** when you call `_.throttle()`.
+
+***
+
+### How It Breaks Down
+
+Your description covers three distinct phases of execution:
+
+1. **The First Event ("Leading Edge"):** Fires **immediately** without waiting.
+
+2. **The Intermediate Events:** Any events triggered during the cooldown period are ignored or squashed together.
+
+3. **The Final Event ("Trailing Edge"):** The very last event that happened during the cooldown is preserved and **deferred** to execute exactly when the time limit expires (`last + limit`).
+
+<!---->
+
+```
+Events Fired:  💥 (Immediate)  💥  💥  💥                   💥 (Last event)
+
+               |----------------- Limit -----------------|
+Execution:     🔥 (Fires)                                🔥 (Fires deferred event)
+```
+
+***
+
+### Why Use This?
+
+This configuration gives you the absolute best of both worlds for high-frequency events like `mousemove` or `scroll`:
+
+- **Instant Responsiveness:** Because the first event fires immediately, the user gets instant visual feedback the millisecond they start moving their mouse or scrolling.
+- **Guaranteed Final State:** Because the trailing edge fires at the end of the limit, your UI is guaranteed to capture the **exact final position** of the mouse or scrollbar when the movement stops, ensuring data accuracy.
+
+***
+
+### How to Write It in Code
+
+If you use **Lodash**, you don't need to pass any extra options because this is how it behaves out of the box:
+
+javascript
+
+```
+import throttle from 'lodash/throttle';
+
+// Fires immediately on frame 1, and fires one final time at 100ms
+const handledMove = throttle(updateState, 100);
+```
+
+Use code with caution.
+
+If you are implementing this from scratch using pure JavaScript, it requires tracking both a `timeoutId` (to catch the trailing edge) and a timestamp of the `lastRan` execution (to catch the leading edge):
+
+javascript
+
+```
+function throttleLeadingTrailing(func, limit) {
+  let timeoutId = null;
+  let lastRan = 0;
+
+  return function(...args) {
+    const now = Date.now();
+    const remaining = limit - (now - lastRan);
+
+    // 1. Leading Edge: If no previous run or limit passed, fire immediately
+    if (remaining <= 0 || remaining > limit) {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+        timeoutId = null;
+      }
+      func.apply(this, args);
+      lastRan = now;
+    }
+    // 2. Trailing Edge: Defer the last event to the end of the limit block
+    else if (!timeoutId) {
+      timeoutId = setTimeout(() => {
+        func.apply(this, args);
+        lastRan = Date.now();
+        timeoutId = null;
+      }, remaining);
+    }
+  };
+}
+```
+
+Use code with caution.
+
+Are you setting up this **leading and trailing** logic for a specific interface element, like a **drag-and-drop boundary** or a **scrolling progress bar**? Let me know, and we can look at how to hook this directly into a component.
+
+# can svg accept float number x y width height
+
+**Yes, SVG fully accepts float (decimal) numbers** for `x`, `y`, `width`, and `height` attributes. [link](https://stackoverflow.com/questions/29898702/width-and-height-of-svg-as-float-number)
+
+Because SVG (Scalable Vector Graphics) is a vector-based format, its coordinate system is mathematical rather than pixel-fixed. You can use values like `x="10.5"` or `width="100.25"` on the `<svg>` element itself, on shapes like `<rect>`, or within the `viewBox` attribute (e.g., `viewBox="0 0 10.5 20.75"`). [link](https://github.com/shakiba/svgexport/issues/98)
+
+### Key Considerations for Using Floats in SVG
+
+- **Sub-pixel Rendering:** Browsers use anti-aliasing to render fractional coordinates. If a shape starts at `x="10.5"`, the browser will blend the color across the adjacent pixels to simulate the fractional position. This can sometimes make lines look slightly blurry. If you need perfectly crisp borders, stick to whole integers aligned to the pixel grid.
+- **Browser Precision Limits:** Modern web browsers process SVG calculations using standard floating-point numbers. However, to avoid bugs in older or low-level rendering engines, it is best practice to avoid excessively long decimals (e.g., limit your decimals to 2 or 3 places, like `12.34`). [link](https://oreillymedia.github.io/Using%5FSVG/extras/ch08-precision.html)
+- **Units:** If you don't specify a unit (like `width="50.5"`), it defaults to user units (pixels). You can also use floats alongside absolute or relative CSS units, such as `width="50.5%"` or `height="10.25rem"`. [link](https://www.w3.org/TR/SVG11/coords.html)
+
+### Example
+
+xml
+
+```
+<svg width="200.5" height="200.5" viewBox="0 0 100.5 100.5">
+  <!-- A rectangle using floating-point attributes -->
+  <rect x="10.25" y="10.25" width="40.5" height="40.5" fill="royalblue" />
+</svg>
+```
+
+Use code with caution.
+
+Are you running into a specific issue where an SVG element is **not rendering correctly**, or are you generating SVGs dynamically via **JavaScript** or **backend code**?
+
+- [link](https://github.com/shakiba/svgexport/issues/98)\
+  GitHub\
+  Support for decimal numbers in viewBox · Issue #98 · piqnt/svgexport\
+  Apr 5, 2021 — mattsrinc commented. ... For anyone doing similar task (exporting SVG to PNG tile images for Leafleat maps) here's the changed ren...
+- [link](https://stackoverflow.com/questions/29898702/width-and-height-of-svg-as-float-number)\
+  Stack Overflow\
+  Width and height of SVG as float number - Stack Overflow\
+  Apr 27, 2015 — 2 Answers Sorted by: 1 Since SVG is a Vector format you can use any width / height you want. It doesn't really matter in which wid...
+- [link](https://www.w3.org/TR/SVG11/coords.html)\
+  W3C\
+  Coordinate Systems, Transformations and Units – SVG 1.1 ( ... - W3C
+
+7.1 Introduction. For all media, the SVG canvas describes "the space where the SVG content is rendered." The canvas is infinite fo...
+
+Show all
+
+# why is height 100vh but not width 100vw needed for .app
+
+## why is height 100vh but not width 100vw needed for .app
+
+In web development, you need **`height: 100vh`** (or modern alternatives like `100dvh`) for a root `.app` container because block-level elements do not automatically expand vertically to fill the screen, whereas **`width: 100vw` is unnecessary and often buggy** because block elements naturally expand horizontally to fill available space. [link](https://www.youtube.com/shorts/0-WRRh3ZXhw)
+
+Here is the exact breakdown of why this behavior occurs:
+
+### 1. Why `height: 100vh` is needed
+
+By default, HTML elements only take up as much vertical space as their children require. If your `.app` container only contains a single sentence, its height will only be a few pixels tall.
+
+- To make a layout (like a dashboard, sidebar, or sticky footer app) occupy the full screen, you must explicitly force the height to fill the viewport. [link](https://css-tricks.com/fun-viewport-units/)
+- **Note:** Many modern developers favor **`100dvh` (Dynamic Viewport Height)** over `100vh` because standard `100vh` bleeds past the bottom of mobile screens due to mobile browser address bars. [link](https://www.smashingmagazine.com/2023/12/new-css-viewport-units-not-solve-classic-scrollbar-problem/)
+
+### 2. Why `width: 100vw` is NOT needed
+
+The `.app` element is a block-level element (usually a `div`).
+
+- By default, block-level elements automatically stretch to fill **100% of the width** of their parent container (`body`).
+- Adding `width: 100vw` is redundant because the element is already full-width. [link](https://www.youtube.com/shorts/0-WRRh3ZXhw)
+
+### 3. The `100vw` Scrollbar Bug (Why it's harmful)
+
+Using `width: 100vw` actually introduces a notorious layout bug.
+
+The `vw` unit calculates the viewport width **including the browser's vertical scrollbar**. If your app content gets long and a vertical scrollbar appears on the right side of the screen, `100vw` will force the `.app` container to match the window width _as if the scrollbar wasn't there_. [link](https://dev.to/tepythai/why-100vw-causes-horizontal-scrollbar-4nlm)
+
+This pushes your content underneath the scrollbar and triggers an unwanted **horizontal scrollbar** at the bottom of the page. [link](https://news.ycombinator.com/item?id=21103735)
+
+| Property   | Default Behavior                           | Best Unit for Full Screen   | Why?                                                            |
+| ---------- | ------------------------------------------ | --------------------------- | --------------------------------------------------------------- |
+| **Width**  | Expands to fill 100% of parent width.      | _Leave blank_ or use `100%` | Avoids the horizontal scrollbar overflow bug caused by `100vw`. |
+| **Height** | Collapses to the size of internal content. | `100dvh` or `100vh`         | Explicitly forces the app to fill the vertical viewport.        |
+
+Are you building a **single-page application dashboard** or a **scrolling website**? I can give you the optimal layout rules (like `min-height` vs `height`) depending on your design goal.
+
+- [link](https://www.youtube.com/shorts/0-WRRh3ZXhw)\
+  YouTube·Kevin Powell\
+  Stop using width 100vw for no good reason\
+  Dec 28, 2022 — more and more often I've been seeing people declare width 100 VW on things that really don't require it and it could actually be c...\
+  1:00
+- [link](https://dev.to/tepythai/why-100vw-causes-horizontal-scrollbar-4nlm)\
+  DEV Community\
+  Why 100vw causes horizontal scrollbar - DEV Community\
+  Jun 4, 2020 — So, back to the title, why would 100vw be the cause? Well, the answer is: When you set an element's width to 100vw , the element's...
+- [link](https://www.reddit.com/r/webdev/comments/1g9h8xn/why%5Fdoes%5Fmy%5Fbody%5Fnot%5Ftake%5Fup%5Fthe%5Fentire%5Fscreen/)\
+  Reddit\
+  Why does my body not take up the entire screen despite setting height and width to 100%/vw? : r/webdev\
+  Oct 22, 2024 — There are a few reasons why your body might not take up the entire screen, even if you've set the height and width to 100%/vw: \* \*
+
+Show all
+
+## is width 100% default
+
+<mark><strong>Yes,<span> </span><code dir="ltr">width: 100%</code><span> </span>is the default behavior</strong><span> </span>for block-level elements</mark> like `<div>`, `<header>`, `<section>`, and `<main>`.
+
+Technically, the default browser value is `width: auto`. However, for block-level elements, `width: auto` automatically tells the browser to **calculate and stretch the element to fill 100% of the available horizontal space** of its parent container.
+
+### The Critical Difference Between `width: auto` (Default) and `width: 100%`
+
+While they look identical on a blank page, they behave differently the moment you add **padding, borders, or margins**:
+
+- **`width: auto` (Default):** The browser absorbs padding and borders _inside_ the element's width. If your container is 500px wide and you add 20px of padding, the element stays exactly 500px wide.
+- **`width: 100%` (Explicit):** Forces the element to be exactly as wide as its parent _plus_ any padding or borders you add. If your container is 500px wide and you add 20px of padding, the element becomes 540px wide, causing it to **overflow and break your layout**.
+
+### Summary Rule
+
+Because `width: auto` naturally fills the screen safely, you **rarely need to write `width: 100%` or `width: 100vw`** on your root `.app` or main layout containers.
+
+Are you running into an **overflow or horizontal scrolling issue** right now? If you share your current **CSS layout structure** (e.g., if you are using Flexbox or Grid), I can help you optimize it.
+
+## when does width 100% overflow
+
+An element with <mark><strong><code dir="ltr">width: 100%</code><span> </span>overflows when you add horizontal margins, padding, or borders</strong><span> </span>to it</mark>—unless you change how the browser calculates its sizing.
+
+Here is exactly when and why it happens, and how to prevent it.
+
+### 1. The Box Model Math (Why it Overflows)
+
+By default, browsers use a CSS box model setting called `box-sizing: content-box`. Under this setting, the `width` property _only_ defines the width of the content area.
+
+If your parent container is **1000px** wide, and you set `width: 100%` on a child element, its math works like this:
+
+TotalWidth=Width(100%)+Left/RightPadding+Left/RightBorder
+
+- If you add **20px padding** and a **5px border**, your total element width becomes:\
+  1000px+40px(padding)+10px(border)=𝟏𝟎𝟓𝟎px
+- Because 1050px is wider than the 1000px parent, it **overflows by 50px**, creating an accidental horizontal scrollbar.
+
+### 2. When `width: 100%` Breaks Your Layout
+
+You will see `width: 100%` cause overflow in these specific scenarios:
+
+- **Form Inputs:** Putting `width: 100%` on `<input>` or `<textarea>` tags while they have their default browser borders and padding.
+- **Adding Margins:** If you apply `margin-left: 20px` and `width: 100%`, the element pushes 20px out the right side of its container.
+- **Grid or Flex Items:** Forcing `width: 100%` on items inside a flex or grid container that already has `gap` properties or padding applied.
+
+***
+
+### How to Fix and Prevent It
+
+#### Solution A: The Modern CSS Reset (Best Practice)
+
+You can force the browser to include padding and borders _inside_ the 100% width calculation by applying **`box-sizing: border-box`**. Web developers apply this globally at the top of their CSS file:
+
+css
+
+```
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+```
+
+Use code with caution.
+
+_With this reset, a `width: 100%` element stays exactly 1000px wide. The padding and borders shrink the inner content space instead of expanding the box._
+
+#### Solution B: Switch to `width: auto`
+
+If you are dealing with margins, `border-box` won't save you from overflow. The safest fix is to remove `width: 100%` entirely and rely on **`width: auto`** (the default block behavior). `width: auto` automatically subtracts margins, padding, and borders to perfectly fit the remaining space.
+
+Are you noticing this overflow on a specific element, like an **input field**, a **navigation bar**, or a **flexbox item**? Share the code snippet, and I can tell you exactly which fix to use.
+
+## does width 100% overflow with modern reset
+
+**No, `width: 100%` will not overflow from padding or borders** if you use the modern `box-sizing: border-box` reset.
+
+However, **it will still overflow if you apply horizontal margins** to that element.
+
+Here is exactly how `width: 100%` behaves under the modern reset:
+
+### 1. Safe: Padding and Borders (No Overflow)
+
+With the reset, padding and borders are forced _inside_ the width. The overall box remains exactly 100% of the parent container.
+
+- **The Math:** If a parent is `500px` wide, your element remains exactly `500px`. The browser simply shrinks the space available for your text or internal content.
+
+### 2. Unsafe: Horizontal Margins (Will Overflow)
+
+The `border-box` reset **does not include margins** in its calculation. Margins always sit _outside_ the box.
+
+If you write this code:
+
+css
+
+```
+.child {
+  width: 100%;
+  margin-left: 20px; /* Outward push */
+}
+```
+
+Use code with caution.
+
+- **The Result:** The browser makes the element 100% wide, and _then_ pushes it 20px to the right. This causes the element to overflow the right side of its parent container by exactly 20px.
+
+### Summary Rule for the Modern Reset
+
+- Use `width: 100%` if you need padding and borders (it is perfectly safe).
+- **Never combine `width: 100%` with horizontal margins.** If you need side margins, delete `width: 100%` and let the default browser behavior (`width: auto`) handle it perfectly without overflowing.
+
+Are you trying to add spacing around a full-width element right now? I can show you how to apply **margins vs. parent padding** to keep it clean.
+
+# compare 100vh and 100dvh
+
+## compare 100vh and 100dvh
+
+The main difference between `100vh` and `100dvh` is how they handle **mobile browser toolbars** (like the address bar and navigation controls). While **`100vh` is static and ignores toolbars**, often causing content to get cut off on mobile devices, **`100dvh` adapts dynamically** to give you a perfect fit regardless of whether the browser interface is expanded or collapsed. [link](https://www.youtube.com/watch?v=O16af0iRs44\&t=101)
+
+###
+
+### Direct Comparison
+
+| Feature              | `100vh` (Viewport Height)                                                     | `100dvh` (Dynamic Viewport Height)                                      |
+| -------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| **Sizing Basis**     | Takes 100% of the maximum viewport height, assuming all browser UI is hidden. | Adjusts seamlessly between the smallest and largest possible viewports. |
+| **Mobile Behavior**  | Often forces content below the screen edge or behind the address bar.         | Automatically shrinks when toolbars appear and expands when they hide.  |
+| **Scroll Stability** | Completely stable; does not cause layout shifts during scrolling.             | Can cause sudden layout shifts or jerky reflows on scroll.              |
+| **Performance**      | High; requires zero browser layout recalculation.                             | Slightly heavier; triggers recalculations as toolbars animate.          |
+
+###
+
+### The Problem with 100vh
+
+When you use `height: 100vh` on a mobile browser, the browser calculates the height based on the maximum screen real estate (when toolbars are hidden). However, because the address bar is usually visible by default, the bottom part of your layout gets pushed off the screen, causing an unwanted scrollbar or cutting off call-to-action buttons. [link](https://www.reddit.com/r/webdev/comments/1dimjkh/matching%5Fscreen%5Fheight%5Fnowadays%5Fwhat%5Fare%5Fthe%5Fbest/)
+
+###
+
+### How 100dvh Fixes It
+
+The `dvh` unit acts as a bridge between `100svh` (Small Viewport Height, when UI is fully visible) and `100lvh` (Large Viewport Height, when UI is fully hidden). [link](https://university.webflow.com/videos/small-large-and-dynamic-viewport-units)
+
+- When the user first lands on the page, `100dvh` matches the available screen space _minus_ the toolbars.
+- As they scroll down and the toolbars disappear, it smoothly scales up to utilize the maximum screen size. [link](https://medium.com/@tharunbalaji110/understanding-mobile-viewport-units-a-complete-guide-to-svh-lvh-and-dvh-0c905d96e21a)
+
+###
+
+### A Caveat and Best Practice
+
+Because `100dvh` resizes in real-time, it can cause text or images to stretch or jump during scrolling, which can look glitchy to users. For elements containing complex child components, web developers often prefer `100svh` to keep layouts stable. [link](https://dev.to/roushannn/understanding-the-different-css-viewport-units-dvh-svh-lvh-9eo)
+
+When using `100dvh`, you should always provide a fallback for older web environments: [link](https://www.reddit.com/r/webdev/comments/1dimjkh/matching%5Fscreen%5Fheight%5Fnowadays%5Fwhat%5Fare%5Fthe%5Fbest/)
+
+css
+
+```
+.hero-section {
+  height: 100vh;   /* Fallback for older legacy browsers */
+  height: 100dvh;  /* Applied in modern browsers */
+}
+```
+
+Use code with caution.
+
+To see a live demonstration of how these viewport units shift and recalculate space across mobile devices, you can watch this instructional breakdown:
+
+1m
+
+[link](https://www.youtube.com/watch?v=O16af0iRs44\&t=101)
+
+Use 100dvh, not 100vh (CSS Units)
+
+17K views · 3 years ago
+
+YouTube · ByteGrad
+
+Are you trying to design a **full-screen hero section**, a **sticky mobile navigation menu**, or something else? I can recommend the exact unit setup for your specific case.
+
+- [link](https://www.reddit.com/r/webdev/comments/1dimjkh/matching%5Fscreen%5Fheight%5Fnowadays%5Fwhat%5Fare%5Fthe%5Fbest/)\
+  Reddit·r/webdev\
+  Matching screen height nowadays: What are the best practices?\
+  Jun 18, 2024 — height: 100vh; height: 100dvh;. dvh is 'dynamic viewport height' which prevents glitching when on mobile, the tabbar or navigation...
+- [link](https://webdesign.tutsplus.com/learn-these-viewport-relative-css-units-100vh-100dvh-100lvh-100svh--cms-108537t)\
+  Envato Tuts+\
+  Learn these viewport-relative CSS units (100vh, 100dvh, 100lvh, 100svh) | Envato Tuts+\
+  Sep 16, 2024 — 100vh and 100dvh are both CSS viewport height units. 100vh is the easiest way to create a full-screen section. 100dvh is a dynamic...
+- [link](https://www.youtube.com/watch?v=O16af0iRs44\&t=101)\
+  YouTube·ByteGrad\
+  Use 100dvh, not 100vh (CSS Units)\
+  Jul 28, 2023 — so you can already sense that there are some issues with sizing things based on viewport height and width now typically on desktop...\
+  1m
+
+Show all
+
+## what about svh
+
+**`100svh` (Small Viewport Height)** <mark>represents the viewport height when the mobile browser's toolbars and address bars are<span> </span><strong>fully expanded and visible</strong></mark>.
+
+Think of it as the "safest minimum" layout space.
+
+###
+
+### The Main Difference
+
+Unlike `100vh` (which assumes the toolbars are gone) or `100dvh` (which changes size as you scroll), **`100svh` is completely static and never changes on scroll.** \[1]
+
+| Unit         | Toolbar State Assumed    | Layout Stability      | Mobile Behavior                                                       |
+| ------------ | ------------------------ | --------------------- | --------------------------------------------------------------------- |
+| **`100svh`** | Fully visible (expanded) | **Perfectly Stable**  | Content is never cut off; empty space may appear when scrolling down. |
+| **`100vh`**  | Fully hidden (collapsed) | **Perfectly Stable**  | Content at the bottom gets cut off by toolbars on initial load.       |
+| **`100dvh`** | Dynamically changes      | **Unstable (Shifts)** | Content resizes continuously as toolbars slide in and out.            |
+
+###
+
+### Why Choose svh Over dvh?
+
+While `100dvh` sounds perfect on paper, its constant resizing creates a major downside: **layout shift**. As a user scrolls down a page, the address bar shrinks, causing a `100dvh` element to suddenly jump in size, which can make text re-wrap or images flicker awkwardly.
+
+By contrast, `100svh` guarantees that:
+
+- Your content fits perfectly within the screen on first load.
+- The layout stays **rock-solid and static** when the user scrolls.
+
+###
+
+### Best Use Cases for svh
+
+- **Fixed Bottom Navigation:** Bottom bars or tab navigation menus on mobile apps/websites, ensuring they sit directly above the browser’s native interface without being hidden or jumping around.
+- **Sticky Chat Widgets:** Chat bubbles or help buttons that need to remain floating safely above the browser interface.
+- **Scroll-Heavy Landing Pages:** If you want a full-screen layout but hate the jerky resizing animations that `dvh` triggers on mobile devices.
+
+Would you like to see how to structure a **sticky bottom navigation bar** using `100svh`, or are you looking to fix a specific **layout bug** on mobile?
+
+# should i use 100vh 100dvh or 100svh
+
+## should i use 100vh 100dvh or 100svh
+
+<mark><strong>You should use<span> </span><code dir="ltr">100dvh</code><span> </span>or<span> </span><code dir="ltr">100svh</code><span> </span>depending on the type of component you are building, while keeping<span> </span></strong></mark>**`100vh` strictly as a fallback for older browsers**. [link](https://www.reddit.com/r/webdev/comments/1dimjkh/matching%5Fscreen%5Fheight%5Fnowadays%5Fwhat%5Fare%5Fthe%5Fbest/)
+
+On mobile devices, the traditional `100vh` unit does not account for dynamic browser UI elements like the address bar or navigation panels. This often causes elements to become too tall on initial page load, hiding content or call-to-action buttons below the edge of the screen. The modern CSS Viewport Module Level 4 introduces **`svh` (Small Viewport Height)** and **`dvh` (Dynamic Viewport Height)** to solve this exact issue. [link](https://www.youtube.com/watch?v=O16af0iRs44)
+
+***
+
+### Which one should you use?
+
+| Unit         | What it represents                                                                                                                          | Best Used For                                                                                                                                                 |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`100svh`** | The **smallest possible viewport height** (when the mobile browser's address bar is fully expanded). It remains static as the user scrolls. | **Hero sections and landing page splashes.** It ensures content never gets clipped on load and prevents sudden "layout jumps" when the user begins to scroll. |
+| **`100dvh`** | The **dynamic viewport height**, which recalculates in real-time as the address bar shrinks or expands during scrolling.                    | **App shells, chat UIs, dashboards, and modals.** It forces UI controls (like a sticky bottom chat input) to actively track the edge of the usable screen.    |
+| **`100vh`**  | The **traditional layout viewport height**. It acts like the maximum height on mobile, bleeding behind toolbars.                            | **Browser Fallback.** Never use it by itself anymore; only use it so older browsers don't completely break.                                                   |
+
+***
+
+### Best Practices & Fallback Implementation
+
+Because `svh` and `dvh` are now widely supported by all modern browsers, you can safely implement them using standard CSS progressive enhancement. A browser will ignore any property it doesn't recognize, allowing you to stack the declarations like this: [link](https://stackoverflow.com/questions/52848856/100vh-height-when-address-bar-is-shown-chrome-mobile)
+
+#### For a Hero Section (Stable, no scroll-jumps):
+
+css
+
+```
+.hero-section {
+  /* Fallback for older browsers */
+  min-height: 100vh;
+  /* Modern standard: fits perfectly on load, ignores address bar retraction */
+  min-height: 100svh;
+}
+```
+
+Use code with caution.
+
+#### For an App Shell / Sidebar / Full-Screen Modal (Tracks the screen edge):
+
+css
+
+```
+.app-container {
+  /* Fallback for older browsers */
+  height: 100vh;
+  /* Modern standard: shrinks and grows fluidly with the browser UI */
+  height: 100dvh;
+}
+```
+
+Use code with caution.
+
+_Note: Be cautious when using `100dvh` on layouts containing large chunks of text, as the constant recalculation during scrolling can cause jarring text shifts and image re-stretching._ [link](https://dev.to/roushannn/understanding-the-different-css-viewport-units-dvh-svh-lvh-9eo)
+
+What **kind of layout** or component are you currently styling? If you share your usecase, I can recommend the exact implementation structure for it.
+
+- [link](https://www.reddit.com/r/webdev/comments/1dimjkh/matching%5Fscreen%5Fheight%5Fnowadays%5Fwhat%5Fare%5Fthe%5Fbest/)\
+  Reddit·r/webdev\
+  Matching screen height nowadays: What are the best practices?\
+  Jun 18, 2024 — I always use: height: 100vh; height: 100dvh;. dvh is 'dynamic viewport height' which prevents glitching when on mobile, the tabbar...
+- [link](https://www.youtube.com/watch?v=O16af0iRs44)\
+  YouTube·ByteGrad\
+  Use 100dvh, not 100vh (CSS Units)\
+  Jul 28, 2023 — Use 100dvh, not 100vh (CSS Units) very often we want to size an element based on the viewport height or width. so here I have an e...\
+  3:23
+- [link](https://web.dev/blog/viewport-units)\
+  web.dev\
+  The large, small, and dynamic viewport units | Blog - web.dev\
+  Nov 29, 2022 — While the existing units work well on desktop, it's a different story on mobile devices. There, the viewport size is influenced by...
+
+Show all
+
+## for .app
+
+For an **`.app`** container (like a web app dashboard, chat interface, or web-based mobile app), you should use **`100dvh`**.
+
+An app shell usually requires UI elements—like bottom navigation bars, sidebars, or chat inputs—to stick perfectly to the edges of the visible screen. Using `100dvh` ensures that these controls fluidly adapt as the mobile browser address bar shrinks or expands, preventing your interface from getting buried underneath the browser's native UI.
+
+### Recommended CSS Structure
+
+To ensure a seamless experience on mobile, pair `100dvh` with `overflow: hidden` on the outer shell, and handle scrolling inside your content sub-containers.
+
+css
+
+```
+.app {
+  /* 1. Fallback for older browsers */
+  height: 100vh;
+  /* 2. Modern standard: dynamically tracks the usable screen space */
+  height: 100dvh;
+
+  /* 3. Essential App Shell Setup */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Prevents the whole page from bouncing/scrolling */
+}
+
+/* Example internal layout */
+.app-content {
+  flex: 1;
+  overflow-y: auto; /* Scroll happens strictly inside the app content */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling for iOS devices */
+}
+```
+
+Use code with caution.
+
+### Why `100dvh` wins for an App Layout
+
+- **No Hidden Controls:** A bottom bar or chat input set to `100vh` will slide under the mobile browser UI on initial load. `100dvh` pulls it up so it is immediately visible and clickable.
+- **No Dead Zones:** If you used `100svh`, your app would look right on load, but once the user scrolls and the address bar shrinks, a "blank gap" equal to the size of the retracted address bar would appear at the bottom. `100dvh` scales up to fill that space automatically.
+
+What **sub-components** make up your `.app` (e.g., a top header, a bottom nav, or a sticky sidebar)? If you are using a framework like **React** or **Tailwind CSS**, let me know and I can provide the exact code wrapper for it.
+
+## how will dvh work when scroll
+
+When you scroll, <mark><strong><code dir="ltr">100dvh</code><span> </span>dynamically shrinks or grows</strong><span> </span>in real-time to match the changing size of the browser’s interface</mark>.
+
+On mobile devices (like Safari on iOS or Chrome on Android), scrolling down usually shrinks or hides the URL address bar and bottom navigation controls. Because the browser's UI gets smaller, the usable screen area gets larger. **`100dvh` automatically scales up** to fill that newly available space.
+
+***
+
+### Step-by-Step Behavior During a Scroll
+
+1. **On Initial Page Load (Address Bar Expanded):**\
+   The browser UI is fully visible. `100dvh` is at its _smallest_ size. In this state, `100dvh` is exactly equal to `100svh` (Small Viewport Height). Your `.app` container will perfectly fit the visible area between the top and bottom browser bars.
+2. **As You Scroll Down (Address Bar Shrinking):**\
+   As the user drags the page up, the mobile browser starts to collapse its address bar. As the address bar shrinks, `100dvh` increases its height pixel-by-pixel in perfect sync with the browser's animation.
+3. **When Fully Scrolled Down (Address Bar Hidden):**\
+   The browser UI is now completely minimized or hidden. `100dvh` reaches its _largest_ size. In this state, `100dvh` becomes exactly equal to `100lvh` (Large Viewport Height), completely filling the screen from the very top edge to the very bottom edge.
+4. **Scrolling Back Up:**\
+   The moment the user scrolls back up, the browser UI snaps back into view, and `100dvh` immediately shrinks back down to match.
+
+***
+
+### The One Catch: Performance & Layout Shifts
+
+Because `100dvh` changes its value continuously during a scroll, the browser has to **re-calculate the layout** on every single frame.
+
+- **Why it's great for an `.app` shell:** If your `.app` container uses `overflow: hidden` (as recommended in the previous response) and you are scrolling _inside_ a content sub-div, the outer `.app` height won't change constantly because the main body isn't the thing triggering the browser UI to hide. It remains stable.
+- **Why it's bad for text paragraphs:** If you apply `100dvh` to containers that wrap fluid text elements on a standard scrolling webpage, the text will wrap and un-wrap as the height changes, causing jarring jumps and stuttering performance on older mobile devices.
+
+Are you planning to make the **entire screen scroll naturally**, or will the scrolling happen **strictly inside an inner section** of your app? Let me know, and I can show you how to structure the CSS to prevent layout stutter.
+
+## does dvh work well when the toolbar is half collapsed in between of a scroll
+
+Yes, **`100dvh` handles half-collapsed toolbars perfectly** because it recalculates in real-time on every single frame of the scroll animation.
+
+If a user pauses mid-scroll and leaves the browser toolbar stuck halfway between fully expanded and fully collapsed, `100dvh` will stop exactly at that halfway point. It doesn't snap or guess; its height is always precisely equal to the visible pixels of the screen at that exact millisecond.
+
+However, while `100dvh` looks smooth, it introduces a major technical problem if your application layout isn't designed for it: **Layout Thrashing**.
+
+***
+
+### The Mid-Scroll Problem: Layout Thrashing
+
+When the toolbar is stuck half-collapsed, the browser has to constantly fire off layout recalculations. If your components are relying on that changing height, you will experience two frustrating side effects:
+
+1. **Jittery Performance (Lag):** If your `.app` container changes height by even 1 pixel mid-scroll, the browser has to re-render the app, re-calculate flexbox math, and redraw the screen. On older or mid-range mobile devices, this causes noticeable micro-stutters and lag.
+2. **Jumping Content:** If you have elements inside the app positioned relative to the height (like text elements or images set to percentage heights), they will violently stretch, shrink, or wrap text mid-scroll.
+
+***
+
+### How to completely fix it for your `.app`
+
+To make sure your app looks perfect even when the toolbar is half-collapsed, you need to isolate the scroll.
+
+If you use the classic **"App Shell" pattern**, the browser toolbar will actually **never collapse at all**. Mobile browsers only hide their toolbars when the main `<body>` or `<html>` element scrolls. By locking the body and scrolling an inner `div`, the toolbar stays completely static and stable.
+
+Here is the exact layout configuration to prevent mid-scroll layout issues:
+
+css
+
+```
+/* 1. Lock the outer environment so the browser toolbar stays put */
+html, body {
+  height: 100dvh;
+  overflow: hidden;
+}
+
+/* 2. Your app matches the screen perfectly */
+.app {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 3. Isolate the scrolling here.
+      The toolbar won't collapse, completely avoiding mid-scroll jank! */
+.app-main-content {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+```
+
+Use code with caution.
+
+Are you aiming to have the browser toolbar **collapse and hide** to give the user more screen space, or would you prefer a **completely locked interface** like a native iOS/Android app? Let me know, and we can look at the best approach!
+
+If you want to tailor this further, tell me:
+
+- Do you want the browser address bar to **hide during scrolling**, or stay **locked in place**?
+
+- Are you using any specific **CSS frameworks** (like Tailwind) or **JS libraries** (like React/Vue)?
+
 # 
 
