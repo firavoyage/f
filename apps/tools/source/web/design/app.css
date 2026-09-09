@@ -120,7 +120,7 @@ body {
     * {
       /* width: 100%; */
 
-      padding-block: calc(var(--page-whitespace) / 2);
+      padding-block: var(--page-whitespace-sm);
       padding-inline: var(--page-whitespace);
     }
   }
@@ -252,7 +252,7 @@ body {
 }
 
 .button,
-.select,
+.select > .trigger,
 .input,
 .textarea {
   &:focus-visible {
@@ -314,7 +314,17 @@ textarea {
 }
 
 /* .switch */
-/* .select */
+
+.select {
+  > .trigger {
+    flex-flow: row;
+
+    > .icon {
+      margin-inline: var(--page-whitespace-sm);
+    }
+  }
+}
+
 /* .number */
 /* .tooltip */
 
