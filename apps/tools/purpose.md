@@ -4381,4 +4381,10 @@ the graph renders later.
 
 e.g. map layers layer if nothing inside return, .zindex layer item (render the arr directly, they are already vnodes)
 
+09
+
+18 40 component/process: support clear all.
+
+interesting, "children" doesnt exist on "intrinstic ...", yet i passed children prop on native html button, it magically works. maybe that's the right prac to "pass down all rest props".
+
 

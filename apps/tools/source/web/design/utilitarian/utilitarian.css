@@ -190,19 +190,19 @@
 :root, [density="comfortable"], [data-density="comfortable"] {
   --page-whitespace: var(--spacing-2);
   --titlebar-height: var(--spacing-12);
-  --sidebar-width: spacing.18;
+  --sidebar-width: var(--spacing-72);
 }
 
 [density="cozy"], [data-density="cozy"] {
   --page-whitespace: var(--spacing-1);
   --titlebar-height: var(--spacing-10);
-  --sidebar-width: var(--spacing-16);
+  --sidebar-width: var(--spacing-64);
 }
 
 [density="compact"], [data-density="compact"] {
   --page-whitespace: var(--spacing-1);
   --titlebar-height: var(--spacing-8);
-  --sidebar-width: spacing.15;
+  --sidebar-width: var(--spacing-60);
 }
 
 :root, [window="active"], [data-window="active"] {

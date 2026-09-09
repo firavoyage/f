@@ -94,7 +94,14 @@ export function Main() {
         {
           is_process_visible &&
           <div className="panel">
-            <div className="title">Process</div>
+            <div className="title">
+              <div className="label">
+                Process
+              </div>
+              <Button>
+                <Icon {...p({ name: 'clear' })}></Icon>
+              </Button>
+            </div>
             <Process {...p({ process, set_process })}></Process>
           </div>
         }
