@@ -23,14 +23,18 @@ export function Select(props: select) {
       <button className="trigger" {...p({ onClick: toggle_open })}>
         {has(items, value) ? items[value] : placeholder}
         {children}
+        <Icon {...p({ name: 'dropdown' })}></Icon>
       </button>
-      <div className="popup">
-        {
-          map(items, ([id, name]) => (
-            <button className="option" {...p({ onClick() { set_value(id) } })}>{name}</button>
-          ))
-        }
-      </div>
+      {
+        open &&
+        <div className="popup">
+          {
+            map(items, ([id, name]) => (
+              <button className="option" {...p({ onClick() { set_value(id) } })}>{name}</button>
+            ))
+          }
+        </div>
+      }
     </div>
   )
 }

@@ -343,6 +343,10 @@ page:
     comfortable: spacing.2
     cozy: spacing.1
     compact: spacing.1
+  whitespace-sm:
+    comfortable: spacing.1
+    cozy: spacing.1
+    compact: spacing.1
 titlebar:
   height:
     comfortable: spacing.12

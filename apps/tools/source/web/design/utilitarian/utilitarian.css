@@ -195,18 +195,21 @@
 
 :root, [density="comfortable"], [data-density="comfortable"] {
   --page-whitespace: var(--spacing-2);
+  --page-whitespace-sm: var(--spacing-1);
   --titlebar-height: var(--spacing-12);
   --sidebar-width: var(--spacing-72);
 }
 
 [density="cozy"], [data-density="cozy"] {
   --page-whitespace: var(--spacing-1);
+  --page-whitespace-sm: var(--spacing-1);
   --titlebar-height: var(--spacing-10);
   --sidebar-width: var(--spacing-64);
 }
 
 [density="compact"], [data-density="compact"] {
   --page-whitespace: var(--spacing-1);
+  --page-whitespace-sm: var(--spacing-1);
   --titlebar-height: var(--spacing-8);
   --sidebar-width: var(--spacing-60);
 }
