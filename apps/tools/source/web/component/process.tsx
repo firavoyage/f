@@ -2,6 +2,7 @@ import type { tool } from 'action/tools'
 import { use_global } from 'web/component/app'
 
 import { Arg } from './arg'
+import { Button } from './button'
 
 type process = {
   process: tool[]
@@ -19,15 +20,16 @@ export function Process(props: process) {
         <div className="item">
           <div className="title">
             <div className="name">{item.name}</div>
-            <button className="button_delete" {...p({
-              onclick() {
+            <Button {...p({
+              class: 'button_delete',
+              onClick() {
                 set_process(() => {
                   process.splice(index, 1)
                 })
               }
             })}>
               <Icon {...p({ name: 'delete' })}></Icon>
-            </button>
+            </Button>
           </div>
           <div className="args">{map(item.args ?? [], arg => (
             <div className="arg">

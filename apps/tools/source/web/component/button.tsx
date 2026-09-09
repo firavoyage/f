@@ -1,5 +1,7 @@
 type button = {
   onClick: fn
+  className?: any
+  children?: any
 }
 
 export function Button(props: button) {
