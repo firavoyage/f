@@ -4387,4 +4387,21 @@ e.g. map layers layer if nothing inside return, .zindex layer item (render the a
 
 interesting, "children" doesnt exist on "intrinstic ...", yet i passed children prop on native html button, it magically works. maybe that's the right prac to "pass down all rest props".
 
+19 20 component: style atom components.
+
+both css and js can contain logics. it's easier to work w css for its expressiveness, but it has limitations. like, it can not manipulate dom, unless you want to use pseudo elements (considered hacks). on jsx you can inject icons dynamically, on css, you have to convert them to bg img first, likely in base64. and yet css has no native mixins. you could not say ".a = .foo + .bar" in css.
+
+good news is it's specific here. im creating an opinionated styling. and later if i wanna extend, i may just manipulate jsx (e.g. when you switch to md theme and you want the cursor originated ripple effect).
+
+---
+
+how should i style checkbox?
+
+seems vscode simply renders a checked icon when checked.
+
+how should i set the default flex direction on page (i want everything to be flex by default)?
+
+i may unset for articles, if needed.
+
+i feel it's more natural when contents flow down by default.
 

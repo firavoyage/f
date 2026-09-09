@@ -21,7 +21,7 @@ body {
 
   * {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
   }
 }
 
@@ -29,40 +29,7 @@ body {
   background-color: var(--color-bg-selection);
 }
 
-/* Components */
-
-.icon {
-  justify-content: center;
-  align-items: center;
-
-  width: 100%;
-  height: 100%;
-
-  aspect-ratio: 1;
-}
-
-.a,
-.link,
-.button,
-.summary,
-.input,
-.textarea,
-.select,
-.contenteditable {
-  &:focus-visible {
-    outline: var(--field-outline-width) solid var(--color-bg-selection);
-    outline-offset: calc(var(--field-outline-width) * -1);
-  }
-}
-/* a,
-button,
-summary,
-[contenteditable="true"],
-[tabindex="0"],
-input,
-select,
-textarea {
-} */
+/* Page Components */
 
 .app {
   display: flex;
@@ -184,7 +151,7 @@ textarea {
 
     flex-basis: var(--titlebar-height);
 
-    button {
+    .button {
       flex-basis: var(--titlebar-height);
     }
 
@@ -270,6 +237,51 @@ textarea {
       }
     }
   }
+}
+
+/* Atom/Pattern Components */
+
+.icon {
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  aspect-ratio: 1;
+}
+
+.button {
+  &:focus-visible {
+    outline: var(--field-outline-width) solid var(--color-bg-selection);
+    outline-offset: calc(var(--field-outline-width) * -1);
+  }
+}
+/* .a,
+.link,
+.button,
+.summary,
+.input,
+.textarea,
+.select,
+.contenteditable {
+  &:focus-visible {
+    outline: var(--field-outline-width) solid var(--color-bg-selection);
+    outline-offset: calc(var(--field-outline-width) * -1);
+  }
+} */
+/* a,
+button,
+summary,
+[contenteditable="true"],
+[tabindex="0"],
+input,
+select,
+textarea {
+} */
+
+.checkbox {
+
 }
 
 .textarea {
