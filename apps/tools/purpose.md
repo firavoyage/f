@@ -4447,5 +4447,8 @@ vscode doesnt use radio inside, nor does it have icon for it.
 
 would i style the indicator in css? i can try.
 
+---
+
+css var intellisense is buggy. idk.
 
 
