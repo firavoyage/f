@@ -22,7 +22,7 @@ export function use_measure(options?: Parameters<typeof useMeasure>) {
   return [mergedRef, bounds] as const;
 }
 
-
+type useRef = typeof useRef
 type useState = typeof useState
 type useEffect = typeof useEffect
 type useToggle = typeof useToggle
@@ -30,6 +30,7 @@ type useAsync = typeof useAsync
 type useAsyncFn = typeof useAsyncFn
 type use_measure = typeof use_measure
 declare global {
+  var useRef: useRef
   var useState: useState
   var useEffect: useEffect
   var useToggle: useToggle
