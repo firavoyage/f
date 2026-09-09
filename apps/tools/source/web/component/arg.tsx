@@ -59,7 +59,7 @@ export function Arg(props: arg & {set_value: fn}) {
     return (
       <>
         {name}
-        <Input {...p({ value, set_value })}>
+        <Input {...p({ value, set_value, placeholder })}>
         </Input>
       </>
     )

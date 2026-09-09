@@ -4,6 +4,7 @@ import { json_to_yaml, yaml_to_json } from 'action/json yaml toml xml'
 import { merge_journal, telegram_to_journal } from 'action/telegram to journal';
 import { single_chart_rating_table } from './maimai';
 import { MaimaiGraph, MaimaiTable } from 'web/component/maimai';
+import { apca } from './color contrast';
 
 export type tool = {
   name: string
@@ -31,7 +32,7 @@ type type = 'checkbox' | 'switch' | 'select' | 'radio' | 'number' | 'input' | 't
 export type tool_name = keyof typeof tools
 
 export const tools: Record<string, Optional<tool, 'name'>> = {
-// export const tools = {
+  // export const tools = {
   "json to yaml": {
     fn: json_to_yaml,
     args: [
@@ -97,7 +98,24 @@ export const tools: Record<string, Optional<tool, 'name'>> = {
   "maimai single chart rating graph": {
     fn: single_chart_rating_table,
     render_output: MaimaiGraph
-  }
+  },
+  "perpetual": {
+    fn: apca,
+    args: [
+      {
+        name: 'foreground',
+        type: 'input',
+        value: '',
+        placeholder: 'hex',
+      },
+      {
+        name: 'background',
+        type: 'input',
+        value: '',
+        placeholder: 'hex',
+      },
+    ],
+  },
 }
 // } as const satisfies Record<string, Optional<tool, 'name'>>
 // } as const
@@ -111,7 +129,8 @@ export const tools_taxonomy = [
   "telegram to journal",
   "merge journal",
   "maimai single chart rating table",
-  "maimai single chart rating graph"
+  "maimai single chart rating graph",
+  "perpetual",
 ]
 
 declare global {

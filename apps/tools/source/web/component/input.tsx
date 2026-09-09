@@ -1,6 +1,7 @@
 type input = {
-  value: string;
-  set_value: (value: string | ((...args: any) => string)) => void;
+  value: string
+  placeholder?: string
+  set_value: (value: string | ((...args: any) => string)) => void
 };
 
 export function Input({ value, set_value, ...props }: input) {

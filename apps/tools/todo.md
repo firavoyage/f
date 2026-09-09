@@ -273,3 +273,9 @@ i may check whether tools exist
 c
 
 <!-- it might be irrelevant at the end of the day when it's complete. -->
+
+---
+
+action/color contrast: normalize colorparsley to fail loudly
+
+c
