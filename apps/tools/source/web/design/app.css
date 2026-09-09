@@ -328,10 +328,10 @@ textarea {
   }
 
   > .popup {
-    position: absolute;
+    position: fixed;
     z-index: var(--hierarchy-popup);
 
-    top: 100%;
+    top: 0;
     left: 0;
     right: 0;
 

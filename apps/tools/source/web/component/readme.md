@@ -13,8 +13,10 @@ atom
 - input <!-- text input -->
 - textarea
 - ~~tooltip~~ <!-- title attr -->
+- dropdown
 - (graph)
   - line
+  - xaxis
 
 pattern
 
