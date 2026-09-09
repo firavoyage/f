@@ -282,6 +282,7 @@ textarea {
 
 .checkbox {
   flex-flow: row;
+  align-items: center;
 
   padding-block: var(--page-whitespace);
 
