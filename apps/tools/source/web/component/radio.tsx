@@ -20,7 +20,9 @@ export function Radio(props: radio) {
       {
         map(items, ([id, name]) => (
           <button className="item" {...p({ checked: value == id, onClick() { set_value(id) } })}>
-            <span className="indicator"></span>
+            <span className="indicator">
+              <span className="icon"></span>
+            </span>
             <span className="label" {...p({})}>{name}</span>
           </button>
         ))

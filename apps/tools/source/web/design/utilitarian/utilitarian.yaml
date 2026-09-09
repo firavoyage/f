@@ -164,14 +164,17 @@ color:
 
   fg:
     primary:
-      light: "palette.gray.800"
-      dark: "white"
+      light: palette.gray.800
+      dark: white
     secondary:
-      light: "palette.gray.800"
-      dark: "white"
+      light: palette.gray.800
+      dark: white
     tertiary:
-      light: "palette.gray.800"
-      dark: "white"
+      light: palette.gray.800
+      dark: white
+    placeholder:
+      light: palette.gray.500
+      dark: palette.gray.500
 
 spacing:
   # 0.5: 0.125rem

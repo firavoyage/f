@@ -4443,4 +4443,9 @@ c
 
 21 00 component: style the rest of atom components. component/input: support placeholder (explicitly on props type).
 
+vscode doesnt use radio inside, nor does it have icon for it.
+
+would i style the indicator in css? i can try.
+
+
 

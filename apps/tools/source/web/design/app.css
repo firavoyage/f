@@ -294,7 +294,20 @@ textarea {
 
     border: solid var(--border-1);
 
-    border-radius: var(--border-4);
+    border-radius: var(--radius-base);
+  }
+}
+
+/* .switch */
+/* .select */
+/* .number */
+/* .tooltip */
+
+.input {
+  background: var(--color-bg-secondary);
+
+  &::placeholder {
+    color: var(--color-fg-placeholder);
   }
 }
 
@@ -316,10 +329,33 @@ textarea {
   > .item {
     flex-flow: row;
 
-    padding: var(--page-whitespace);
+    > .indicator {
+      justify-content: center;
+      align-items: center;
 
+      padding: var(--page-whitespace);
+      width: var(--spacing-10);
+      height: var(--spacing-10);
+
+      > .icon {
+        width: var(--spacing-4);
+        height: var(--spacing-4);
+
+        border: solid var(--border-1);
+        border-radius: var(--radius-full);
+        box-shadow: ;
+
+        [checked] & {
+          background-color: var(--color-fg-primary);
+        }
+      }
+    }
+    
     > .label {
       flex: 1;
+      
+      padding: var(--page-whitespace);
+      padding-left: 0; /* collapse whitespace */
     }
   }
 }
