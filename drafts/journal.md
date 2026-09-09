@@ -54609,6 +54609,34 @@ no idea if that would be the takeaway.
 
 it reminds me who i am.
 
+09
+
+16 00 think.
+
+i did not have a clear conclusion.
+
+i thought css is flawed. it has to be backward compatible. and it's not initially designed for modern component based structure, or native nesting.
+
+tag is flawed. a simple and valid point. tag, the shortest naming, is deeply coupled w behavior. it should be component instead. currently, a lot of times you define classes that are conceptually identical to tags.
+
+that solves problem. `sidebar` would not conflict w `button.sidebar`. no comp or button prefix needed (for you).
+
+<!-- you cant cap tags, `tag&tag`, unlike `.class.class`, but that's generally not a problem. -->
+
+about nesting, that makes me confused. can `.list .item` target all .item? or only descendents? by default.
+
+like, what if you put it inside a container? is it still a list item, or is it an item of a list item (which most time does not share the styling), or is it an item that does not belong to list (e.g. `.sidebar > .item, .sidebar > .settings > .item`)?
+
+solutions are generally (implicitly) prefixing. like `sidebar.css .item, settings.css .item`. you can play tricks. `dc item = sidebar` (a classic naming abstraction).
+
+about css in js, css contains logics, which js wants to fight for control. i dont like that. but that's different. <!-- yeah, if you wanna adopt one, you have to think bout that -->
+
+that changes the default behavior of classes, right? `.item` inside `sidebar.css` is effectively `.sidebar_item`.
+
+i think it would not be solved easily wo ambiguity. at the end of the day you would declare what item it is on html class, i guess. it will not work in general if you make it smart make it component bound (e.g. use context), because you can absolutely wrap it in a different component as well, no way to tell if it should be styled differently.
+
+i mean i can make css native nesting string concat for classes, or somehow make it more specific. i may toggle the default behavior (currently > is ubiquitous in my styling, it can be compressed and thus it can be abstracted). yet more than one scenarios exist simultaneously anyway.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
