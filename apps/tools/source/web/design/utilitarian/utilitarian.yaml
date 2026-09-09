@@ -346,9 +346,9 @@ titlebar:
     compact: spacing.8
 sidebar:
   width:
-    comfortable: spacing.18
-    cozy: spacing.16
-    compact: spacing.15
+    comfortable: spacing.72
+    cozy: spacing.64
+    compact: spacing.60
 field:
   outline:
     width: border.2

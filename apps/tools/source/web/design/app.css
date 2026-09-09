@@ -204,8 +204,16 @@ textarea {
       flex: 1;
 
       > .title {
+        flex-direction: row;
+
         margin-block: calc(var(--page-whitespace) / 2);
         margin-inline: var(--page-whitespace);
+
+        height: var(--spacing-6);
+
+        .label {
+          flex: 1;
+        }
       }
 
       > .process {

@@ -6,6 +6,10 @@
 - create basic styling of components
 - adopt icon lib <!-- s, inefficient wo -->
 
+ref
+
+adopt more icons https://microsoft.github.io/vscode-codicons/dist/codicon.html
+
 # todo: complete utilitarian component system. <!-- s -->
 
 complete utilitarian component system.
@@ -183,6 +187,14 @@ design web/lib/call
 # todo: action/maimai: style rendered output (e.g. rating and achievement%), support input, support intersection
 
 action/maimai: style rendered output (e.g. rating and achievement%), support input, support intersection
+
+ref
+
+https://dxrating.net/
+
+https://myjian.github.io/mai-tools/rating-visualizer/
+
+https://myjian.github.io/mai-tools/
 
 ---
 
