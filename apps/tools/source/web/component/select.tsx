@@ -1,3 +1,4 @@
+import { use_bind } from "web/lib/use keyboard"
 import Dropdown from "./dropdown"
 
 type select = {
@@ -14,14 +15,17 @@ export type options = Record<string, string> | string[]
 export function Select(props: select) {
   const { value, set_value, options: flexible_items, placeholder = '', children } = props
 
-  const ref = useRef()
-  const select_ref = useRef()
-
   const items = Array.isArray(flexible_items) ?
     Object.fromEntries(map(flexible_items, item => [item, item])) :
     flexible_items
 
+  const ref = useRef()
+  const select_ref = useRef()
+
   const [open, toggle_open] = useToggle(false)
+  const close = () => toggle_open(false)
+
+  use_bind('esc', close)
 
   return (
     <div className="select" {...p({ open })}>
@@ -36,7 +40,7 @@ export function Select(props: select) {
       </button>
       {
         open &&
-        <Dropdown {...p({ ref, align: 'center' })}>
+        <Dropdown {...p({ ref, align: 'center', click_outside: close })}>
           {
             map(items, ([id, name]) => (
               <button className="option" {...p({
