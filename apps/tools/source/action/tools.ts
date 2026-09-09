@@ -3,7 +3,7 @@ import type { options } from 'web/component/select'
 import { json_to_yaml, yaml_to_json } from 'action/json yaml toml xml'
 import { merge_journal, telegram_to_journal } from 'action/telegram to journal';
 import { single_chart_rating_table } from './maimai';
-import { table as visual_single_chart_rating_table } from 'web/component/maimai';
+import { MaimaiTable } from 'web/component/maimai';
 
 export type tool = {
   name: string
@@ -92,7 +92,7 @@ export const tools: Record<string, Optional<tool, 'name'>> = {
   },
   "maimai single chart rating table": {
     fn: single_chart_rating_table,
-    render_output: visual_single_chart_rating_table
+    render_output: MaimaiTable
   }
 }
 // } as const satisfies Record<string, Optional<tool, 'name'>>

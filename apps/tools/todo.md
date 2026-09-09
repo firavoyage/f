@@ -180,6 +180,16 @@ i would have fav tools. custom tools? would they be imported on web?
 
 design web/lib/call
 
+# todo: action/maimai: style rendered output (e.g. rating and achievement%), support input, support intersection
+
+action/maimai: style rendered output (e.g. rating and achievement%), support input, support intersection
+
+---
+
+research recharts, support more type of graphs on graph lib
+
+ref: https://recharts.github.io/en-US/examples/
+
 # backlog
 
 support copy input/output
