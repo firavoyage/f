@@ -316,6 +316,9 @@ textarea {
 /* .switch */
 
 .select {
+  position: relative;
+  overflow: visible;
+
   > .trigger {
     flex-flow: row;
 
@@ -323,12 +326,24 @@ textarea {
       margin-inline: var(--page-whitespace-sm);
     }
   }
+
+  > .popup {
+    position: absolute;
+    z-index: var(--hierarchy-popup);
+
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    background: wheat;
+  }
 }
 
 /* .number */
 /* .tooltip */
 
-.input, .number > .field {
+.input,
+.number > .field {
   background: var(--color-bg-secondary);
 
   &::placeholder {
