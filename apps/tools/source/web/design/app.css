@@ -21,7 +21,7 @@ body {
 
   * {
     display: flex;
-    /* flex-direction: column; */
+    flex-flow: column;
   }
 }
 
@@ -33,7 +33,7 @@ body {
 
 .app {
   display: flex;
-  flex-direction: row;
+  flex-flow: row;
 
   height: 100dvh;
   /* min-height: 100vh; */
@@ -88,7 +88,7 @@ body {
   }
 
   > .menu {
-    flex-direction: row;
+    flex-flow: row;
 
     flex-basis: var(--titlebar-height);
 
@@ -133,7 +133,7 @@ body {
 
     * {
       &:hover,
-      &:focus-visible,
+      /* &:focus-visible, */
       &[focus] {
         background-color: var(--color-bg-tertiary);
       }
@@ -143,11 +143,11 @@ body {
 
 .main {
   display: flex;
-  flex-direction: column;
+  flex-flow: column;
   flex: 1;
 
   > .titlebar {
-    flex-direction: row;
+    flex-flow: row;
 
     flex-basis: var(--titlebar-height);
 
@@ -161,17 +161,17 @@ body {
   }
 
   > .workspace {
-    flex-direction: row;
+    flex-flow: row;
     flex: 1;
 
     > .panel {
       display: flex;
-      flex-direction: column;
+      flex-flow: column;
 
       flex: 1;
 
       > .title {
-        flex-direction: row;
+        flex-flow: row;
 
         /* margin-block: calc(var(--page-whitespace) / 2); */
         /* margin-inline: var(--page-whitespace); */
@@ -201,7 +201,7 @@ body {
           margin-bottom: var(--page-whitespace);
 
           > .title {
-            flex-direction: row;
+            flex-flow: row;
 
             > * {
               padding: var(--page-whitespace);
@@ -281,7 +281,20 @@ textarea {
 } */
 
 .checkbox {
+  flex-flow: row;
 
+  padding-block: var(--page-whitespace);
+
+  > .indicator {
+    width: var(--spacing-5);
+    height: var(--spacing-5);
+
+    margin-inline: var(--page-whitespace);
+
+    border: solid var(--border-1);
+
+    border-radius: var(--border-4);
+  }
 }
 
 .textarea {
@@ -300,7 +313,7 @@ textarea {
   flex-basis: 100%;
 
   > .item {
-    flex-direction: row;
+    flex-flow: row;
 
     padding: var(--page-whitespace);
 
