@@ -4,6 +4,8 @@
   "workspaces": {
     "": {
       "dependencies": {
+        "apca-w3": "0.1.9",
+        "colorparsley": "0.1.8",
         "json5": "2.2.3",
         "jsonic": "2.28.0",
         "jsonrepair": "3.15.0",
@@ -11,6 +13,10 @@
     },
   },
   "packages": {
+    "apca-w3": ["apca-w3@0.1.9", "", { "dependencies": { "colorparsley": "^0.1.8" } }, "sha512-Zrf6AeBeQjNe/fxK7U1jCo5zfdjDl6T4/kdw5Xlky3G7u+EJTZkyItjMYQGtwf9pkftsINxcYyOpuLkzKf1ITQ=="],
+
+    "colorparsley": ["colorparsley@0.1.8", "", {}, "sha512-rObESTTTE6G5qO5WFwFxWPggpw4KfpxnLC6Ssl8bITBnNVRhDsyCeTRAUxWQNVTx2pRknKlO2nddYTxjkdNFaw=="],
+
     "json5": ["json5@2.2.3", "", { "bin": { "json5": "lib/cli.js" } }, "sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg=="],
 
     "jsonic": ["jsonic@2.28.0", "", { "bin": { "jsonic": "bin/jsonic", "jsonic-bnf": "bin/jsonic-bnf" } }, "sha512-lo+Yo4ShvJot3A3G6kZOlphRx+GfhR4uK3/O0u9Wg12fggOuvK7TxtteoRtBGeGaqnbHqEHqkj3Uft8obfvP+g=="],
