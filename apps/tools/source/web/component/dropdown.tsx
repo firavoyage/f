@@ -1,16 +1,22 @@
-import { useFloating, flip, autoUpdate } from '@floating-ui/react';
+import { useFloating, flip, autoUpdate, useDismiss } from '@floating-ui/react';
 
 type dropdown = {
   ref: any
   align?: 'left' | 'center' | 'right' // horizontal alignment
+  click_outside?: fn
   children
 }
 
 export default function Dropdown(props: dropdown) {
-  const { ref, align = 'left', children } = props
+  const { ref, align = 'left', click_outside, children } = props
 
-  const { refs: { setReference: set_reference, setFloating: set_floating }, floatingStyles: floating_styles } = useFloating({
+  const { refs: { setReference: set_reference, setFloating: set_floating }, floatingStyles: floating_styles, context } = useFloating({
     open: true,
+    onOpenChange: (nextOpen, event, reason) => {
+      if (reason == 'outside-press') {
+        click_outside?.(false)
+      }
+    },
     strategy: 'fixed',
     placement: {
       left: 'bottom-start',
@@ -21,6 +27,13 @@ export default function Dropdown(props: dropdown) {
     middleware: [
       flip()
     ],
+  });
+
+  useDismiss(context, {
+    outsidePress: (event) => {
+      const is_excluded = event.target.closest('.trigger');
+      return !is_excluded;
+    },
   });
 
   useEffect(() => {
