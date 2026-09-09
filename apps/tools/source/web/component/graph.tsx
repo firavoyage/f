@@ -35,8 +35,10 @@ export function Graph(props: graph) {
 
   const [container, bounds] = use_measure()
 
-  const width = bounds.width || 100
-  const height = bounds.height || 100 / aspect_ratio
+  const width = bounds.width || 0
+  // const width = bounds.width || 100
+  const height = bounds.height || 0
+  // const height = bounds.height || 100 / aspect_ratio
   let graph_width = width - padding_left - padding_right
   // why floor?
   let graph_height = floor(graph_width / aspect_ratio)

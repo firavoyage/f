@@ -98,7 +98,9 @@ export function Main() {
               <div className="label">
                 Process
               </div>
-              <Button>
+              <Button {...p({ onClick(){
+                set_process([])
+              } })}>
                 <Icon {...p({ name: 'clear' })}></Icon>
               </Button>
             </div>
@@ -108,7 +110,11 @@ export function Main() {
         {
           is_input_visible &&
           <div className="panel">
-            <div className="title">Input</div>
+            <div className="title">
+              <div className="label">
+                Input
+              </div>
+            </div>
             <div className="input">
               <Textarea {...p({ value: input, set_value: set_input })}></Textarea>
             </div>
@@ -117,7 +123,11 @@ export function Main() {
         {
           is_output_visible &&
           <div className="panel">
-            <div className="title">Output</div>
+            <div className="title">
+              <div className="label">
+                Output
+              </div>
+            </div>
             <div className="output">
               {
                 can_render_output ?
