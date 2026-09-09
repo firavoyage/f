@@ -4431,6 +4431,18 @@ foreground #BFBFBF background #22242A
 Lc -65.3
 
 ⚠️ Lc 65 | Large or Bold Text Only: Safe for headings and large UI text (minimum 24px normal or 16px bold). Too low for body copy.
+
+foreground #B8B8B8 background #22242A
+
+Lc -61.3
+
+⚠️ Lc 61 | Large or Bold Text Only: Safe for headings and large UI text (minimum 24px normal or 16px bold). Too low for body copy.
+
+foreground #B8B8B8 background #2C2E35
+
+Lc -59.3
+
+⚠️ Lc 59 | Large Display Accents: Only safe for massive titles, subtitles, or large graphical elements (minimum 36px normal or 24px bold).
 ```
 
 ---
