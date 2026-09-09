@@ -136,6 +136,7 @@
   --color-fg-primary: var(--palette-gray-800);
   --color-fg-secondary: var(--palette-gray-800);
   --color-fg-tertiary: var(--palette-gray-800);
+  --color-fg-placeholder: var(--palette-gray-500);
 }
 
 [theme="dark"], [data-theme="dark"] {
@@ -145,6 +146,7 @@
   --color-fg-primary: white;
   --color-fg-secondary: white;
   --color-fg-tertiary: white;
+  --color-fg-placeholder: var(--palette-gray-500);
 }
 
 :root, [accent="blue"], [data-accent="blue"] {
