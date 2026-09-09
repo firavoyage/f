@@ -349,11 +349,14 @@ textarea {
 
         border-radius: var(--radius-full);
         /* box-shadow: 0 0 0 var(--border-1) var(--color-fg-primary); */
+
+        --offset: calc(var(--field-outline-width) * -1);
+        
         box-shadow: 
+        0 0 0 var(--border-1) var(--color-fg-primary),
         0 0 0 3px var(--color-bg-primary),
-        0 0 0 5px var(--color-bg-selection),
-        0 0 0 var(--border-1) var(--color-fg-primary)
-          ;
+        0 0 0 5px var(--color-bg-selection)
+        ;
 
         :focus-visible & {
           /* box-shadow: 0 0 0 5px var(--color-bg-selection),
