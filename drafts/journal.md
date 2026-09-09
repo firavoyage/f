@@ -54637,6 +54637,8 @@ i think it would not be solved easily wo ambiguity. at the end of the day you wo
 
 i mean i can make css native nesting string concat for classes, or somehow make it more specific. i may toggle the default behavior (currently > is ubiquitous in my styling, it can be compressed and thus it can be abstracted). yet more than one scenarios exist simultaneously anyway.
 
+23 00 dl `Ado`.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

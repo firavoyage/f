@@ -15,6 +15,17 @@ yt-dlp \
   -o "_/Hiroji Miyamoto/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
 ```
 
+Ado
+
+```sh
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_kaq7YKHY01MiwJ_sWEQOuEHoku01EpVAM" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --match-filters "view_count > 100000" \
+  --reject-title "(?i)inst" \
+  -o "_/Ado/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+```
+
 Mitsuko Uchida Mozart Sonatas for Piano & Violin
 
 ```sh

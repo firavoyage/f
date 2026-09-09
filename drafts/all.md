@@ -311,6 +311,7 @@ web: <!-- frontend, web, ts/js -->
 - css aspect ratio icon
 - css semantic component or utility class name
 - svg graph lib
+- css placeholder pseudo selector
 
 backend:
 
@@ -918,6 +919,7 @@ tools:
 - web utilitarian component library
 - action json parsing
 - action maimai visual output table graph
+- action color contrast
 
 code:
 
