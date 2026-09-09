@@ -206,13 +206,19 @@ textarea {
       > .title {
         flex-direction: row;
 
-        margin-block: calc(var(--page-whitespace) / 2);
-        margin-inline: var(--page-whitespace);
+        /* margin-block: calc(var(--page-whitespace) / 2); */
+        /* margin-inline: var(--page-whitespace); */
 
-        height: var(--spacing-6);
+        height: var(--spacing-10);
 
         .label {
           flex: 1;
+
+          padding: var(--page-whitespace);
+        }
+
+        .button {
+          padding: var(--page-whitespace);
         }
       }
 
@@ -225,6 +231,8 @@ textarea {
         }
 
         > .item {
+          margin-bottom: var(--page-whitespace);
+
           > .title {
             flex-direction: row;
 
@@ -238,10 +246,11 @@ textarea {
           }
 
           > .args {
-            margin: var(--page-whitespace);
-
             > .arg {
               flex-flow: row wrap;
+
+              margin-inline: var(--page-whitespace);
+              margin-bottom: calc(var(--page-whitespace) / 2);
 
               > .name {
                 flex-grow: 1;
