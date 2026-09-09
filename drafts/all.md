@@ -918,6 +918,10 @@ tools:
 - action json parsing
 - action maimai visual output table graph
 
+code:
+
+- halting problem
+
 humility:
 
 - research claude code leak insights
