@@ -4451,4 +4451,8 @@ would i style the indicator in css? i can try.
 
 css var intellisense is buggy. idk.
 
+10
+
+00 50 web/component: create dropdown for select and tooltip.
+
 

@@ -156,5 +156,7 @@ export function App() {
       <Main></Main>
       <Shortcuts {...p({ shortcuts, call: command })}></Shortcuts>
     </div>
+
+    <div id="root_portal"></div>
   </>
 }
