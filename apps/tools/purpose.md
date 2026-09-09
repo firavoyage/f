@@ -4415,4 +4415,10 @@ btw, the value of flex dir is confusing. it would be better to be "horizontal" o
 
 and why vscode suggests flex grow before flex flow for "flow"? i have to use "flfl" instead.
 
+20 10 action/color contrast: support perpectual contrast.
+
+google ai mode phases out yet another a/b testing (yeah, data driven yk).
+
+it makes sidebar icons possibly accent (e.g. new chat icon in google lightblue), and make non heading table items dimmer... is it legible enough?
+
 
