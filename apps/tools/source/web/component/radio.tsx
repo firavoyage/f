@@ -18,14 +18,22 @@ export function Radio(props: radio) {
   return (
     <div className="radio">
       {
-        map(items, ([id, name]) => (
-          <button className="item" {...p({ checked: value == id, onClick() { set_value(id) } })}>
-            <span className="indicator">
-              <span className="icon"></span>
-            </span>
-            <span className="label" {...p({})}>{name}</span>
-          </button>
-        ))
+        map(items, ([id, name]) => {
+          const checked = value == id
+
+          return (
+            <button className="item" {...p({ checked, onClick() { set_value(id) } })}>
+              <span className="indicator">
+                <span className="icon_radio">
+                  {checked && (
+                    <span className="icon_radio_checked"></span>
+                  )}
+                </span>
+              </span>
+              <span className="label" {...p({})}>{name}</span>
+            </button>
+          )
+        })
       }
     </div>
   )
