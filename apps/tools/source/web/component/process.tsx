@@ -13,7 +13,7 @@ export function Process(props: process) {
 
   const { process, set_process } = props
 
-  return <div className="process">
+  return <div className="panel_process">
     {
       map(process, (item, index) => (
         <div className="item">

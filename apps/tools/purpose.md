@@ -4421,4 +4421,26 @@ google ai mode phases out yet another a/b testing (yeah, data driven yk).
 
 it makes sidebar icons possibly accent (e.g. new chat icon in google lightblue), and make non heading table items dimmer... is it legible enough?
 
+---
+
+result
+
+```
+foreground #BFBFBF background #22242A
+
+Lc -65.3
+
+⚠️ Lc 65 | Large or Bold Text Only: Safe for headings and large UI text (minimum 24px normal or 16px bold). Too low for body copy.
+```
+
+---
+
+colorparsley doesnt err when it fails to parse, and logs it instead
+
+normalize colorparsley to fail loudly
+
+c
+
+21 00 component: style the rest of atom components. component/input: support placeholder (explicitly on props type).
+
 

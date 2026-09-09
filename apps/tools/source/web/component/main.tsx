@@ -115,7 +115,7 @@ export function Main() {
                 Input
               </div>
             </div>
-            <div className="input">
+            <div className="panel_input">
               <Textarea {...p({ value: input, set_value: set_input })}></Textarea>
             </div>
           </div>
@@ -128,7 +128,7 @@ export function Main() {
                 Output
               </div>
             </div>
-            <div className="output">
+            <div className="panel_output">
               {
                 can_render_output ?
                   // @ts-expect-error already narrowed

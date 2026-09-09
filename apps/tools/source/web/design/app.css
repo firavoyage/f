@@ -189,7 +189,7 @@ body {
         }
       }
 
-      > .process {
+      > .panel_process {
         flex: 1;
 
         overflow-y: auto;
@@ -227,8 +227,8 @@ body {
         }
       }
 
-      > .input,
-      > .output {
+      > .panel_input,
+      > .panel_output {
         flex: 1;
 
         > * {
