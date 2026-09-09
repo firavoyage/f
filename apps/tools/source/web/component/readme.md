@@ -2,6 +2,7 @@ components
 
 atom
 
+- icon
 - button
 - checkbox
 - switch
@@ -12,7 +13,6 @@ atom
 - input <!-- text input -->
 - textarea
 - ~~tooltip~~ <!-- title attr -->
-- icon
 - (graph)
   - line
 
