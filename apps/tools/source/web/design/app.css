@@ -295,9 +295,21 @@ textarea {
 
     margin-inline: var(--page-whitespace);
 
-    border: solid var(--border-1);
+    /* border: solid var(--border-1); */
 
     border-radius: var(--radius-base);
+
+    --outline-width: var(--border-4);
+    --outline-offset: var(--border-2);
+    box-shadow: 0 0 0 var(--border-1) var(--color-fg-primary);
+    :focus-visible & {
+      box-shadow: 0 0 0 var(--border-1) var(--color-fg-primary),
+        0 0 0 calc(var(--border-1) + var(--outline-offset))
+          var(--color-bg-primary),
+        0 0 0
+          calc(var(--border-1) + var(--outline-offset) + var(--outline-width))
+          var(--color-bg-selection);
+    }
   }
 }
 
@@ -306,7 +318,7 @@ textarea {
 /* .number */
 /* .tooltip */
 
-.input {
+.input, .number > .field {
   background: var(--color-bg-secondary);
 
   &::placeholder {
@@ -348,22 +360,19 @@ textarea {
         height: var(--spacing-4);
 
         border-radius: var(--radius-full);
-        /* box-shadow: 0 0 0 var(--border-1) var(--color-fg-primary); */
 
-        --offset: calc(var(--field-outline-width) * -1);
-        
-        box-shadow: 
-        0 0 0 var(--border-1) var(--color-fg-primary),
-        0 0 0 3px var(--color-bg-primary),
-        0 0 0 5px var(--color-bg-selection)
-        ;
-
+        --outline-width: var(--border-4);
+        --outline-offset: var(--border-2);
+        box-shadow: 0 0 0 var(--border-1) var(--color-fg-primary);
         :focus-visible & {
-          /* box-shadow: 0 0 0 5px var(--color-bg-selection),
-            0 0 0 4px var(--color-bg-primary),
-            0 0 0 var(--border-1) var(--color-fg-primary); */
-          /* outline: var(--field-outline-width) solid var(--color-bg-selection);
-          outline-offset: calc(var(--field-outline-width) * -1); */
+          box-shadow: 0 0 0 var(--border-1) var(--color-fg-primary),
+            0 0 0 calc(var(--border-1) + var(--outline-offset))
+              var(--color-bg-primary),
+            0 0 0
+              calc(
+                var(--border-1) + var(--outline-offset) + var(--outline-width)
+              )
+              var(--color-bg-selection);
         }
 
         > .icon_radio_checked {
