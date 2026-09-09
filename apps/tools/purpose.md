@@ -4405,3 +4405,14 @@ i may unset for articles, if needed.
 
 i feel it's more natural when contents flow down by default.
 
+problem is it breaks inline. div and span have no difference now. but do i really want it to be "ideally inline, wrap if needed"? no. it's just use case of horizontal flex.
+
+decision: **i would use flex-flow instead of flex-dir from now on.** (though seems ive never used flex wrap)
+
+and i think it's the same if you "flow down by default, flex (horizontal default) if needed" or "flow down (flex) by default, horizontal flex if needed". or isnt it weird to say "i want to change the direction, so i toggled the display prop". the default direction seems to be somehow impacted by backward compatibility of block (downward default)...
+
+btw, the value of flex dir is confusing. it would be better to be "horizontal" or "vertical". like, row? does it flow horizontally (the parent like a row), or does it contain rows?
+
+and why vscode suggests flex grow before flex flow for "flow"? i have to use "flfl" instead.
+
+
