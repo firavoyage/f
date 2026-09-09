@@ -15,6 +15,7 @@ export function Select(props: select) {
   const { value, set_value, options: flexible_items, placeholder = '', children } = props
 
   const ref = useRef()
+  const select_ref = useRef()
 
   const items = Array.isArray(flexible_items) ?
     Object.fromEntries(map(flexible_items, item => [item, item])) :
@@ -24,25 +25,28 @@ export function Select(props: select) {
 
   return (
     <div className="select" {...p({ open })}>
-      <button className="trigger" {...p({ ref, onClick: toggle_open })}>
+      <button className="trigger" {...p({ onClick: toggle_open })}>
         <span className="label">
           {has(items, value) ? items[value] : placeholder}
           {children}
         </span>
-        <span className="icon_dropdown">
+        <span className="icon_dropdown" {...p({ ref })}>
           <Icon {...p({ name: 'dropdown' })}></Icon>
         </span>
       </button>
       {
         open &&
-        <Dropdown {...p({ ref })}>
-          <div className="popup">
-            {
-              map(items, ([id, name]) => (
-                <button className="option" {...p({ onClick() { set_value(id) } })}>{name}</button>
-              ))
-            }
-          </div>
+        <Dropdown {...p({ ref, align: 'center' })}>
+          {
+            map(items, ([id, name]) => (
+              <button className="option" {...p({
+                onClick() {
+                  set_value(id)
+                  toggle_open()
+                }
+              })}>{name}</button>
+            ))
+          }
         </Dropdown>
       }
     </div>

@@ -316,32 +316,24 @@ textarea {
 /* .switch */
 
 .select {
-  position: relative;
-  overflow: visible;
-
-  width: var(--spacing-24);
+  align-items: end;
 
   > .trigger {
     flex-flow: row;
 
     > .label {
-      flex: 1;
+      flex: 1 0 auto;
     }
 
-    > .icon {
-      margin-inline: var(--page-whitespace-sm);
+    > .icon_dropdown {
+      padding-inline: var(--page-whitespace-sm);
     }
   }
 
-  > .popup {
-    position: fixed;
+  > .dropdown {
     z-index: var(--hierarchy-popup);
 
-    top: 0;
-    left: 0;
-    right: 0;
-
-    background: wheat;
+    background: var(--color-bg-secondary);
   }
 }
 
