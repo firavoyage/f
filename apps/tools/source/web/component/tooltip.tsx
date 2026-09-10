@@ -6,6 +6,9 @@ type tooltip = {
   delay: number
 }
 
+/**
+ * @param delay hover delay in ms, default 1000
+ */
 export function Tooltip(props: tooltip) {
   const { ref, tooltip, delay = 1000 } = props
 
@@ -17,14 +20,26 @@ export function Tooltip(props: tooltip) {
     const trigger = ref.current
 
     if (!trigger) {
-      return 
-    } 
+      return
+    }
 
-    
+    trigger.addEventListener('mouseenter', () => {
+      timeout = setTimeout(() => {
+        toggle_open(true)
+      }, delay);
+    });
+
+    trigger.addEventListener('mouseleave', () => {
+      clearTimeout(timeout);
+
+      toggle_open(false)
+    });
+
   })
 
   return (
-    <Dropdown {...p({ ref })}>
+    open &&
+    <Dropdown {...p({ ref, align: 'center' })}>
       <span className="tooltip" {...p({ open })}>
         {tooltip}
       </span>

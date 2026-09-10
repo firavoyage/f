@@ -12,11 +12,11 @@ export function Menu(props: menu) {
 
   return (
     <div className="menu">
-      <Button {...p({ class: 'button_search' })}>
+      <Button {...p({ class: 'button_search', tooltip: 'Search' })}>
         <Icon {...p({ name: 'search' })}></Icon>
       </Button>
       <div className="name">{app}</div>
-      <Button {...p({ class: "button_hamburger", onClick: toggle_hamburger })}>
+      <Button {...p({ class: "button_hamburger", onClick: toggle_hamburger, tooltip: 'Main Menu' })}>
         <Icon {...p({ name: 'menu' })}></Icon>
       </Button>
     </div>

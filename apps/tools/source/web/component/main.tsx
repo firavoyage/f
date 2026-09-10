@@ -64,23 +64,27 @@ export function Main() {
   return (
     <div className="main">
       <div className="titlebar">
-        <Button {...p({ class: 'button_toggle_sidebar', onClick() { command('toggle sidebar') } })}>
+        <Button {...p({
+          tooltip: 'Toggle Sidebar', class: 'button_toggle_sidebar', onClick() { command('toggle sidebar') }
+        })}>
           <Icon {...p({ name: 'sidebar' })}></Icon>
         </Button>
         <div className="title"></div>
         {/* <button className="view">
           view
         </button> */}
-        <Checkbox {...p({ value: is_process_visible, set_value: set_is_process_visible })}>
-          process
-        </Checkbox>
-        <Checkbox {...p({ value: is_input_visible, set_value: set_is_input_visible })}>
-          input
-        </Checkbox>
-        <Checkbox {...p({ value: is_output_visible, set_value: set_is_output_visible })}>
-          output
-        </Checkbox>
-        <Button className="button_minimize">
+        <div className="view">
+          <Checkbox {...p({ value: is_process_visible, set_value: set_is_process_visible })}>
+            process
+          </Checkbox>
+          <Checkbox {...p({ value: is_input_visible, set_value: set_is_input_visible })}>
+            input
+          </Checkbox>
+          <Checkbox {...p({ value: is_output_visible, set_value: set_is_output_visible })}>
+            output
+          </Checkbox>
+        </div>
+        {/* <Button className="button_minimize">
           <Icon {...p({ name: 'minimize' })}></Icon>
         </Button>
         <Button className="button_maximize">
@@ -88,7 +92,7 @@ export function Main() {
         </Button>
         <Button className="button_close">
           <Icon {...p({ name: 'close' })}></Icon>
-        </Button>
+        </Button> */}
       </div>
       <div className="workspace">
         {
@@ -98,9 +102,11 @@ export function Main() {
               <div className="label">
                 Process
               </div>
-              <Button {...p({ onClick(){
-                set_process([])
-              } })}>
+              <Button {...p({
+                onClick() {
+                  set_process([])
+                }
+              })}>
                 <Icon {...p({ name: 'clear' })}></Icon>
               </Button>
             </div>
