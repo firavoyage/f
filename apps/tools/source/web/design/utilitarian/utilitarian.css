@@ -16,6 +16,8 @@
   --palette-error: #ff938c;
   --color-bg-backdrop: color-mix(in srgb, var(--palette-gray-950) 30%, transparent);
   --color-bg-tooltip: var(--palette-gray-900);
+  --color-bg-hover: color-mix(in srgb, var(--color-bg-tertiary) 50%, transparent);
+  --color-bg-click: var(--color-bg-tertiary);
   --color-fg-tooltip: white;
   --spacing-0\.5: 0.125rem;
   --spacing-1: 0.25rem;

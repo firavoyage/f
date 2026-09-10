@@ -14,6 +14,7 @@ import { List } from 'web/component/list';
 import { Menu } from 'web/component/menu';
 import { Shortcuts } from 'web/component/shortcuts';
 import { Hamburger } from './hamburger';
+import { Button } from './button';
 
 export const use_global = state({
   'input': '',
@@ -137,10 +138,10 @@ export function App() {
       <Sidebar>
         <Menu {...p({ app: 'Tools' })}></Menu>
         <Hamburger>
-          <button className="preferences">Preferences</button>
-          <button className="shortcuts">Keyboard Shortcuts</button>
-          <button className="about">About</button>
-          <hr />
+          <Button className="preferences">Preferences</Button>
+          <Button className="shortcuts">Keyboard Shortcuts</Button>
+          <Button className="about">About</Button>
+          <hr {...p({ class: 'hr' })} />
         </Hamburger>
         <List {...p({
           items: tools_taxonomy, set_focus(name: tool_name) {
