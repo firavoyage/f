@@ -221,6 +221,8 @@ body {
 
             > .name {
               flex: 1;
+
+              font: var(--font-heading);
             }
           }
 
@@ -356,7 +358,6 @@ textarea {
 
   padding-block: var(--page-whitespace);
   padding-inline: var(--page-whitespace-sm);
-
   margin-inline: var(--page-whitespace-sm);
   /* the ones after the same component */
   & + & {
@@ -447,11 +448,24 @@ textarea {
   > .item {
     flex-flow: row;
 
+    > * {
+      padding-inline: var(--page-whitespace);
+      padding-block: calc(var(--page-whitespace) / 2);
+    }
+    margin-block: calc(var(--page-whitespace) / 2);
+    /* the ones after the same component */
+    & + & {
+        margin-block-start: 0;
+    }
+    /* the ones before the same component */
+    &:has(+ &) {
+        margin-block-end: 0;
+    }
+
     > .indicator {
       justify-content: center;
       align-items: center;
 
-      padding: var(--page-whitespace);
       width: var(--spacing-10);
       height: var(--spacing-10);
 
@@ -490,9 +504,11 @@ textarea {
     }
 
     > .label {
+      flex-flow: column;
+      justify-content: center;
+
       flex: 1;
 
-      padding: var(--page-whitespace);
       padding-left: 0; /* collapse whitespace */
     }
   }

@@ -15,10 +15,11 @@ atom
 - tooltip <!-- title attr -->
 - dropdown
 - (graph)
-  - line
+  - grid
   - x axis
   - y axis
-  - ...
+  - line
+  - range
 
 pattern
 
@@ -40,5 +41,6 @@ page
 - process
 - (tools)
   - maimai
-- (dev)
+- (storybook)
+  - app
   - storybook
