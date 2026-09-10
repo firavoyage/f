@@ -1,10 +1,6 @@
 # plan
 
-- complete the rest of atom components
-- map args/settings to input (in general) components
 - create pattern/page components and make every button clickable, e.g. hamburger menu, command palette
-- create basic styling of components
-- adopt icon lib <!-- s, inefficient wo -->
 
 ref
 
@@ -279,3 +275,12 @@ c
 action/color contrast: normalize colorparsley to fail loudly
 
 c
+
+---
+
+component/select: support arrow keys, close (or trap) when tab after the last element
+
+---
+
+component/graph: fix z index in svg w portal
+

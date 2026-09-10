@@ -5,7 +5,7 @@ import 'web/lib/global';
 import { createRoot } from "react-dom/client"
 import { StrictMode } from 'react';
 
-import { App } from "./storybook"
+import { App } from "./storybook.app"
 
 // @ts-expect-error best effort
 const dev = handle(() => process.env.NODE_ENV == 'development' || import.meta.env?.DEV, false)

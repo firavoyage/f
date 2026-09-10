@@ -1,36 +1,14 @@
+import { Graph, Grid, Line, Range, XAxis, YAxis } from 'web/component/graph'
+import { Table } from './table';
+
 type table = (string | number)[][]
 export function MaimaiTable(output: table) {
   return (
-    <div className="table">
-      <table className="table_content">
-        <thead className="thead">
-          <tr className="tr">
-            {map(output[0], (cell) => (
-              <th className="th">{cell}</th>
-            ))}
-          </tr>
-        </thead>
-        <thead className="tbody">
-          {map(output.slice(1), (row) => (
-            <tr className="tr">
-              {
-                map(row, (cell, index) => index == 0 ? (
-                  <th className="th">{cell}</th>
-                ) : (
-                  <td className="td">{cell}</td>
-                ))
-              }
-            </tr>
-          ))}
-        </thead>
-      </table>
-    </div>
+    <Table {...p({ table: output })}></Table>
   )
 }
 
-import { Graph, Grid, Line, Range, XAxis, YAxis } from 'web/component/graph'
-
-const table = [
+const coefficient_table = [
   { min: 100.5, rank: 'SSS+', coefficient: 22.4 },
   { min: 100.0, rank: 'SSS', coefficient: 21.6 },
   { min: 99.5, rank: 'SS+', coefficient: 21.1 },
@@ -47,7 +25,7 @@ const table = [
   { min: 0.0, rank: 'D', coefficient: 5.0 },
 ];
 
-const lines = map(table, (item, index) => {
+const lines = map(coefficient_table, (item, index) => {
   const { min, rank, coefficient } = item
 
   if (index == 0) {
@@ -59,7 +37,7 @@ const lines = map(table, (item, index) => {
     )
   }
 
-  const max = table[index - 1].min - 0.0001
+  const max = coefficient_table[index - 1].min - 0.0001
 
   const line1 = [max / 100 * coefficient * 50]
   const line2 = [min / 100 * coefficient * 50]

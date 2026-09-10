@@ -2589,3 +2589,100 @@ Show all
 
 
 
+
+# how to set keyboard focused element in js
+
+To set the keyboard focus on an element using JavaScript, you must <mark>call the<span> </span><strong><code dir="ltr">focus()</code><span> </span>method</strong><span> </span>on the target element</mark>. [link](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)
+
+Here is the quickest way to do it:
+
+javascript
+
+```
+// Select the element and trigger focus
+document.getElementById("myElement").focus();
+```
+
+Use code with caution.
+
+### ⚠️ The Catch: Making Non-Interactive Elements Focusable
+
+By default, only interactive elements (like `<input>`, `<button>`, `<textarea>`, and `<a>` links) can receive focus. If you try to call `.focus()` on a `<div>`, `<span>`, or `<h1>`, **it will fail** unless you explicitly make it focusable by adding a `tabindex` attribute in your HTML: [link](https://stackoverflow.com/questions/6754275/set-keyboard-focus-to-a-div)
+
+- **`tabindex="-1"` (Recommended for custom focus management):** Allows the element to be focused programmatically via JavaScript, but prevents the user from accidentally pressing the `Tab` key to reach it. Perfect for modals and custom dropdowns. [link](https://www.bennadel.com/blog/4096-trapping-focus-within-an-element-using-tab-key-navigation-in-javascript.htm)
+- **`tabindex="0"`:** Places the element into the natural keyboard tab order, allowing users to navigate to it using the `Tab` key _and_ allowing you to focus it via JavaScript. [link](https://uit.stanford.edu/accessibility/techniques/websites/website-navigation/website-focus)
+
+html
+
+```
+<!-- This CANNOT be focused by default -->
+<div id="status-message">Saved successfully!</div>
+
+<!-- This CAN be focused via JS using .focus() -->
+<div id="modal-box" tabindex="-1">Welcome back!</div>
+```
+
+Use code with caution.
+
+### ⚙️ Advanced Configuration Options
+
+The [`HTMLElement.focus()` method](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) accepts an optional configuration object: [link](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)
+
+#### 1. Prevent Scrolling
+
+By default, calling `.focus()` automatically scrolls the page to bring the newly focused element into view. You can disable this behavior by setting `preventScroll: true`: [link](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)
+
+javascript
+
+```
+document.getElementById("myButton").focus({
+  preventScroll: true
+});
+```
+
+Use code with caution.
+
+#### 2. Visible Focus Indicators
+
+If you want to explicitly force the browser to display its native visual focus ring (the regular outline visible during keyboard navigation), you can pass `focusVisible: true`: [link](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Guides/Keyboard-navigable%5FJavaScript%5Fwidgets)
+
+javascript
+
+```
+document.getElementById("myButton").focus({
+  focusVisible: true
+});
+```
+
+Use code with caution.
+
+### 🔍 How to Check Which Element Has Focus
+
+If you need to verify which element currently holds the keyboard focus, query the read-only [`document.activeElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/activeElement) property:
+
+javascript
+
+```
+console.log(document.activeElement); // Returns the currently focused DOM element
+```
+
+Use code with caution.
+
+Are you trying to manage focus for a specific UI component, like a **modal dialog**, a **custom dropdown widget**, or a **form validation error**? Let me know, and I can give you the exact accessibility code patterns for it!
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)\
+  MDN Web Docs\
+  HTMLElement: focus() method - Web APIs | MDN\
+  Jun 23, 2025 — view code html Button Click to set focus on "Button" Click to set focus and focusVisible on "Button" css js document.getElementByI...
+- [link](https://stackoverflow.com/questions/6754275/set-keyboard-focus-to-a-div)\
+  Stack Overflow\
+  Set keyboard focus to a\
+  \- javascript - Stack Overflow\
+  Jul 19, 2011 — 7 Answers Sorted by: 105 +50 This answer has been awarded bounties worth 50 reputation by webdad3 you can make a div focusable if ...
+- [link](https://developer.mozilla.org/en-US/docs/Web/API/Document/activeElement)\
+  MDN Web Docs\
+  Document: activeElement property - Web APIs | MDN\
+  Jul 3, 2026 — The activeElement read-only property of the Document interface returns the Element within the DOM that is receiving keyboard event...
+
+Show all
+
