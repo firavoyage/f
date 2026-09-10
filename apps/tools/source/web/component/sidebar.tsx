@@ -8,21 +8,21 @@ type sidebar = {
 }
 
 export function Sidebar(props: sidebar) {
-  const { variant = 'overlay', children } = props
+  const { variant = 'push', children } = props
 
-  const [on, toggle] = use_global('appearance.layout.sidebar.is visible')
+  const [open, toggle] = use_global('appearance.layout.sidebar.is visible')
 
   // use_bind('ctrl+b', toggle)
 
   return (
     <>
-      <aside {...p({ class: 'sidebar', visible: on, variant })}>
+      <aside {...p({ class: 'sidebar', open, variant })}>
         {children}
       </aside>
       {
-        // variant == 'overlay' &&
-        variant == 'overlay' && on &&
-        <div className="backdrop" {...p({ onClick: toggle })}></div>
+        variant == 'overlay' &&
+        // variant == 'overlay' && on &&
+        <div className="sidebar_backdrop" {...p({ onClick: toggle })}></div>
       }
     </>
   );

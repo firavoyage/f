@@ -4504,13 +4504,13 @@ but why do i have to mimic adwaita? i can absolutely make it no inset.
 
 what is "normal"?!
 
-~~19 30~~ 19 50 create storybook.
+~~19 30~~ 19 50 ~~create storybook.~~
 
 name or label?
 
 11
 
-00 30 create component popup.
+00 30 create component popup, a foundation of about shortcuts pref.
 
 - esc, click outside: close
 - backdrop?
@@ -4529,4 +4529,29 @@ ref:
 - files (nautilus)
 - eyedropper
 
+01 30 create component about.
 
+- icon
+- name <!-- label -->
+- author?
+- details?
+  - label -> link (tooltip: link)
+- hr
+- support questions -> link
+- report an issue -> link
+- trouble shooting
+  - text
+  - debugging information
+    - readonly text
+      - copy
+      - save as... (txt)
+- hr
+- credits
+  - code by
+    - list
+  - design by
+    - list
+  - artwork by
+    - list
+- legal
+  - markdown
