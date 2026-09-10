@@ -1,4 +1,7 @@
+import { useEvent } from "react-use"
 import Dropdown from "./dropdown"
+
+const default_delay = 1000
 
 type tooltip = {
   ref
@@ -10,32 +13,31 @@ type tooltip = {
  * @param delay hover delay in ms, default 1000
  */
 export function Tooltip(props: tooltip) {
-  const { ref, tooltip, delay = 1000 } = props
+  const { ref, tooltip, delay = default_delay } = props
 
   const [open, toggle_open] = useToggle(false)
 
-  let timeout = nil
+  let timeout = useRef()
 
-  useEffect(() => {
-    const trigger = ref.current
+  const trigger = ref.current
+  
+  useEvent('mouseenter', () => {
+    timeout.current = setTimeout(() => {
+      toggle_open(true)
+    }, delay);
+  }, trigger)
 
-    if (!trigger) {
-      return
-    }
+  useEvent('mouseleave', () => {
+    clearTimeout(timeout.current);
 
-    trigger.addEventListener('mouseenter', () => {
-      timeout = setTimeout(() => {
-        toggle_open(true)
-      }, delay);
-    });
+    toggle_open(false)
+  }, trigger);
 
-    trigger.addEventListener('mouseleave', () => {
-      clearTimeout(timeout);
+  useEvent('click', () => {
+    clearTimeout(timeout.current);
 
-      toggle_open(false)
-    });
-
-  })
+    toggle_open(false)
+  });
 
   return (
     open &&
