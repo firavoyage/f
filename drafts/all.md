@@ -312,6 +312,8 @@ web: <!-- frontend, web, ts/js -->
 - css semantic component or utility class name
 - svg graph lib
 - css placeholder pseudo selector
+- component select dropdown floating ui
+- component tooltip css triangle
 
 backend:
 

@@ -4467,4 +4467,6 @@ css var intellisense is buggy. idk.
 
 00 50 web/component: create dropdown for select and tooltip.
 
+~~16 40~~ 16 50 web/component: create tooltip, integrate w button.
+
 
