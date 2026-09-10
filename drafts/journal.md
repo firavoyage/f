@@ -54653,7 +54653,7 @@ todo list (or note taking app, or guestbook) is an app you would see in guides a
 
 toolbox. if it's said that beginners love writing toolboxes... then what is not toolbox. figma, adobe suites, office apps, ides. specialized ones, of complexity. it's much easier for them to aggregate and glue small (esp pure & text based) utils. you may also build gui, in the most hyped/fashionable way of your time, for proven/popular clis.
 
-index pages. computers transfer and manipulate information. tools are to process. indices are to display. we love knowledge sharing. and links are one of the easiest ways to share.
+index pages. computers transfer and manipulate information. tools are to process. indices are to display. we love knowledge sharing. and links are one of the easiest ways to share. you dont parse. you dont postprocess. you dont scrap. you basically copy their url, yeah, a "universal" format of information you would consistently find everywhere, wo effort. as you go further you may have deeper analysis and possibly gain specific insights.
 
 
 
