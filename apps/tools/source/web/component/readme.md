@@ -12,7 +12,7 @@ atom
 - ~~slider~~ <!-- number input, number range -->
 - input <!-- text input -->
 - textarea
-- ~~tooltip~~ <!-- title attr -->
+- tooltip <!-- title attr -->
 - dropdown
 - (graph)
   - line
