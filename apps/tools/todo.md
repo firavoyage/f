@@ -52,7 +52,11 @@ create keyboard shortcuts component
 
 ---
 
-create settings component
+create about component
+
+---
+
+create preferences (settings) component
 
 ---
 
@@ -281,7 +285,9 @@ c
 
 ---
 
-component/select: support arrow keys, close (or trap) when tab after the last element
+component/select: support arrow keys, close (or trap) when tab after the last item
+
+and shift tab before the first item
 
 ---
 
