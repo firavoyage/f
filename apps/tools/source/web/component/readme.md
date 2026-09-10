@@ -16,7 +16,9 @@ atom
 - dropdown
 - (graph)
   - line
-  - xaxis
+  - x axis
+  - y axis
+  - ...
 
 pattern
 
@@ -26,6 +28,8 @@ pattern
 - shortcuts <!-- keyboard shortcuts -->
 - arg
 - hamburger
+- (table)
+  - table
 - (graph)
   - graph
 

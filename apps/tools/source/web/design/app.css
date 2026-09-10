@@ -93,7 +93,7 @@ body {
     flex-basis: var(--titlebar-height);
 
     > * {
-      padding-block: var(--page-whitespace);
+      /* padding-block: var(--page-whitespace); */
     }
 
     .button_search,
@@ -157,6 +157,10 @@ body {
 
     > .title {
       flex: 1;
+    }
+
+    > .view {
+      flex-flow: row;
     }
   }
 
@@ -253,6 +257,14 @@ body {
   aspect-ratio: 1;
 }
 
+.tooltip {
+  padding-block: var(--page-whitespace-sm);
+  padding-inline: var(--page-whitespace);
+
+  background-color: var(--color-bg-tooltip);
+  color: var(--color-fg-tooltip);
+}
+
 .button,
 .select > .trigger,
 .input,
@@ -290,6 +302,7 @@ textarea {
   align-items: center;
 
   padding-block: var(--page-whitespace);
+  padding-inline: var(--page-whitespace-sm);
 
   > .indicator {
     width: var(--spacing-5);
@@ -338,9 +351,6 @@ textarea {
     background: var(--color-bg-secondary);
   }
 }
-
-/* .number */
-/* .tooltip */
 
 .input,
 .number > .field {
