@@ -73,7 +73,7 @@ body {
       z-index: var(--hierarchy-backdrop-hidden);
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.3s ease;
+      transition: opacity var(--transition-backdrop);
     }
 
     &[visible] {

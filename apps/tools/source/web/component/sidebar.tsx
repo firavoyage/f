@@ -2,13 +2,13 @@ import { use_bind } from "web/lib/use keyboard"
 
 import { use_global } from "web/component/app"
 
-type SidebarProps = {
+type sidebar = {
   variant?: 'push' | 'overlay'
   children?: any
 }
 
-export function Sidebar({ variant, children }: SidebarProps) {
-  variant ??= 'push'
+export function Sidebar(props: sidebar) {
+  const { variant = 'overlay', children } = props
 
   const [on, toggle] = use_global('appearance.layout.sidebar.is visible')
 
@@ -19,7 +19,11 @@ export function Sidebar({ variant, children }: SidebarProps) {
       <aside {...p({ class: 'sidebar', visible: on, variant })}>
         {children}
       </aside>
-      <div className="backdrop" {...p({ onClick: toggle })}></div>
+      {
+        // variant == 'overlay' &&
+        variant == 'overlay' && on &&
+        <div className="backdrop" {...p({ onClick: toggle })}></div>
+      }
     </>
   );
 }

@@ -20,6 +20,9 @@ modes:
   window:
     - active
     - inactive
+  animation:
+    - fluid
+    - instant # reduced animation
 
 palette:
   # no need to overthink, 1% difference is trivial
@@ -358,3 +361,8 @@ sidebar:
 field:
   outline:
     width: border.2
+
+transition:
+  backdrop:
+    fluid: 0.3s ease
+    instant: 0s ease
