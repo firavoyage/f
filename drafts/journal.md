@@ -54639,6 +54639,22 @@ i mean i can make css native nesting string concat for classes, or somehow make 
 
 23 00 dl `Ado`.
 
+10
+
+20 30 recollect.
+
+> todo list, toolbox, and index page
+
+typical starting projects?
+
+letme think bout it...
+
+todo list (or note taking app, or guestbook) is an app you would see in guides and examples. it's simple. it carries some utilities. and it has common props of regular apps.
+
+toolbox. if it's said that beginners love writing toolboxes... then what is not toolbox. figma, adobe suites, office apps, ides. specialized ones, of complexity. it's much easier for them to aggregate and glue small (esp pure & text based) utils. you may also build gui, in the most hyped/fashionable way of your time, for proven/popular clis.
+
+index pages. computers transfer and manipulate information. tools are to process. indices are to display. we love knowledge sharing. and links are one of the easiest ways to share.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
