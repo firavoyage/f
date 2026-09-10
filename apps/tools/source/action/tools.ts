@@ -1,5 +1,3 @@
-import type { options } from 'web/component/select'
-
 import { json_to_yaml, yaml_to_json } from 'action/json yaml toml xml'
 import { merge_journal, telegram_to_journal } from 'action/telegram to journal';
 import { single_chart_rating_table } from './maimai';
@@ -28,6 +26,9 @@ export type arg = {
 }
 
 type type = 'checkbox' | 'switch' | 'select' | 'radio' | 'number' | 'input' | 'textarea'
+
+// id (value) -> name (label)
+export type options = Record<string, string> | string[]
 
 export type tool_name = keyof typeof tools
 
