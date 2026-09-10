@@ -1,4 +1,4 @@
-import { useFloating, flip, autoUpdate, useDismiss } from '@floating-ui/react';
+import { useFloating, flip, autoUpdate, useDismiss, shift } from '@floating-ui/react';
 
 type dropdown = {
   ref: any
@@ -25,7 +25,8 @@ export default function Dropdown(props: dropdown) {
     }[align],
     whileElementsMounted: autoUpdate,
     middleware: [
-      flip()
+      flip(),
+      shift()
     ],
   });
 
