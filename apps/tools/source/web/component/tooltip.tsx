@@ -1,7 +1,7 @@
 import { useEvent } from "react-use"
 import Dropdown from "./dropdown"
 
-const default_delay = 1000
+const default_delay = 500
 
 type tooltip = {
   ref
@@ -9,9 +9,6 @@ type tooltip = {
   delay: number
 }
 
-/**
- * @param delay hover delay in ms, default 1000
- */
 export function Tooltip(props: tooltip) {
   const { ref, tooltip, delay = default_delay } = props
 
