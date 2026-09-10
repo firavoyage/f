@@ -1,4 +1,4 @@
-import type { options } from 'web/component/select'
+import type { options } from 'action/tools'
 
 type radio = {
   value: any

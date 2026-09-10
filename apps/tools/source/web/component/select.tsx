@@ -1,3 +1,5 @@
+import type { options } from 'action/tools'
+
 import { use_bind } from "web/lib/use keyboard"
 import Dropdown from "./dropdown"
 import { Button } from "./button"
@@ -9,9 +11,6 @@ type select = {
   placeholder?: any
   children?: any
 }
-
-// id (value) -> name (label)
-export type options = Record<string, string> | string[]
 
 export function Select(props: select) {
   const { value, set_value, options: flexible_items, placeholder = '', children } = props
