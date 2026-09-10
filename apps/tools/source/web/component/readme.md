@@ -29,6 +29,7 @@ pattern
 - shortcuts <!-- keyboard shortcuts -->
 - arg
 - hamburger
+- popup
 - (table)
   - table
 - (graph)
