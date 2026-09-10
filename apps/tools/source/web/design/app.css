@@ -391,7 +391,7 @@ textarea {
   }
 }
 
-/* .switch */
+/* todo: .switch */
 
 .select {
   align-items: end;
@@ -410,6 +410,11 @@ textarea {
 
   > .dropdown {
     z-index: var(--hierarchy-popup);
+
+    * {
+      padding-block: var(--page-whitespace-sm);
+      padding-inline: var(--page-whitespace);
+    }
 
     background: var(--color-bg-secondary);
   }
