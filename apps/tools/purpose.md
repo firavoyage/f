@@ -4508,4 +4508,25 @@ what is "normal"?!
 
 name or label?
 
+11
+
+00 30 create component popup.
+
+- esc, click outside: close
+- backdrop?
+
+how to bflex?
+
+how to detect outside click?
+
+research adwaita?
+
+ref:
+
+- adwaita demo
+- ptyxis
+- resources
+- files (nautilus)
+- eyedropper
+
 

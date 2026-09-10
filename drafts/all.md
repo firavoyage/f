@@ -315,6 +315,7 @@ web: <!-- frontend, web, ts/js -->
 - component select dropdown floating ui
 - component tooltip css triangle
 - css margin collapse
+- emmet abbr syntax
 
 backend:
 
@@ -772,6 +773,7 @@ history:
 - pl <!-- programming languages -->
 - typescript flow
 - ocaml
+- textmate
 
 politics:
 
