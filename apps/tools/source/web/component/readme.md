@@ -14,6 +14,7 @@ atom
 - textarea
 - tooltip <!-- title attr -->
 - dropdown
+- popup
 - (graph)
   - grid
   - x axis
@@ -29,11 +30,11 @@ pattern
 - shortcuts <!-- keyboard shortcuts -->
 - arg
 - hamburger
-- popup
 - (table)
   - table
 - (graph)
   - graph
+- about
 
 page
 

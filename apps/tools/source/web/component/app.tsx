@@ -15,6 +15,7 @@ import { Menu } from 'web/component/menu';
 import { Shortcuts } from 'web/component/shortcuts';
 import { Hamburger } from './hamburger';
 import { Button } from './button';
+import { About } from './about';
 
 export const use_global = state({
   'input': '',
@@ -123,6 +124,8 @@ export function App() {
   const [theme, set_theme] = use_global('appearance.theme')
   const [density, set_density] = use_global('appearance.density')
 
+  const [open_about, toggle_open_about] = useToggle(false)
+
   const commands = use_commands()
 
   use_sync_theme(theme)
@@ -140,7 +143,7 @@ export function App() {
         <Hamburger>
           <Button className="preferences">Preferences</Button>
           <Button className="shortcuts">Keyboard Shortcuts</Button>
-          <Button className="about">About</Button>
+          <Button className="about" {...p({ onClick: toggle_open_about })}>About</Button>
           <hr {...p({ class: 'hr' })} />
         </Hamburger>
         <List {...p({
@@ -156,6 +159,7 @@ export function App() {
       </Sidebar>
       <Main></Main>
       <Shortcuts {...p({ shortcuts, call: command })}></Shortcuts>
+      <About {...p({  })}></About>
     </div>
   </>
 }
