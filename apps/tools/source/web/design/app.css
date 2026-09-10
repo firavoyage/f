@@ -297,12 +297,35 @@ select,
 textarea {
 } */
 
+.button {
+  
+
+  .icon {    
+    width: var(--spacing-6);
+    height: var(--spacing-6);
+  }
+
+  &:hover .icon {
+    background-color: var(--color-bg-tertiary);
+  }
+}
+
 .checkbox {
   flex-flow: row;
   align-items: center;
 
   padding-block: var(--page-whitespace);
   padding-inline: var(--page-whitespace-sm);
+
+  margin-inline: var(--page-whitespace-sm);
+  /* the ones after the same component */
+  & + & {
+    margin-inline-start: 0;
+  }
+  /* the ones before the same component */
+  &:has(+ &) {
+    margin-inline-end: 0;
+  }
 
   > .indicator {
     width: var(--spacing-5);

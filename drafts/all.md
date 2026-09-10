@@ -314,6 +314,7 @@ web: <!-- frontend, web, ts/js -->
 - css placeholder pseudo selector
 - component select dropdown floating ui
 - component tooltip css triangle
+- css margin collapse
 
 backend:
 
