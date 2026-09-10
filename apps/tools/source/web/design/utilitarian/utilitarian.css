@@ -226,3 +226,11 @@
   --color-bg-selection: color-mix(in srgb, var(--palette-gray-500) 20%, transparent);
 }
 
+:root, [animation="fluid"], [data-animation="fluid"] {
+  --transition-backdrop: 0.3s ease;
+}
+
+[animation="instant"], [data-animation="instant"] {
+  --transition-backdrop: 0s ease;
+}
+
