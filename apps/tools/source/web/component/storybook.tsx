@@ -1,6 +1,8 @@
 import 'web/design/app.css'
 import 'web/design/utilitarian/utilitarian.css'
 
+
+
 import { Graph, Grid, Line, Range, XAxis, YAxis } from 'web/component/graph'
 
 const table = [

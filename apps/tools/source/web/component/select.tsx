@@ -1,5 +1,6 @@
 import { use_bind } from "web/lib/use keyboard"
 import Dropdown from "./dropdown"
+import { Button } from "./button"
 
 type select = {
   value: any
@@ -20,16 +21,21 @@ export function Select(props: select) {
     flexible_items
 
   const ref = useRef()
-  const select_ref = useRef()
+  const trigger_ref = useRef()
 
   const [open, toggle_open] = useToggle(false)
-  const close = () => toggle_open(false)
+  const close = () => {
+    toggle_open(false)
+
+    // magically works as expected
+    trigger_ref?.current?.focus()
+  }
 
   use_bind('esc', close)
 
   return (
     <div className="select" {...p({ open })}>
-      <button className="trigger" {...p({ onClick: toggle_open })}>
+      <button className="trigger" {...p({ onClick: toggle_open, ref: trigger_ref })}>
         <span className="label">
           {has(items, value) ? items[value] : placeholder}
           {children}
@@ -43,12 +49,12 @@ export function Select(props: select) {
         <Dropdown {...p({ ref, align: 'center', click_outside: close })}>
           {
             map(items, ([id, name]) => (
-              <button className="option" {...p({
+              <Button className="option" {...p({
                 onClick() {
                   set_value(id)
-                  toggle_open()
+                  close()
                 }
-              })}>{name}</button>
+              })}>{name}</Button>
             ))
           }
         </Dropdown>
