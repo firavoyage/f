@@ -156,6 +156,8 @@ color:
       inactive: color-mix(in srgb, palette.gray.500 20%, transparent)
     backdrop: color-mix(in srgb, palette.gray.950 30%, transparent)
     tooltip: palette.gray.900
+    hover: color-mix(in srgb, color.bg.tertiary 50%, transparent)
+    click: color.bg.tertiary
 
   fg:
     primary:

@@ -4469,4 +4469,37 @@ css var intellisense is buggy. idk.
 
 ~~16 40~~ 16 50 web/component: create tooltip, integrate w button.
 
+my ideal is 
+
+- max hitbox (whether hover/click/tap)
+- normal styling
+
+and thus i create a weird
+
+```css
+.button {
+  &:has(.icon){
+    justify-content: center;
+    align-items: center;
+  }
+
+  .icon {    
+    width: var(--spacing-8);
+    height: var(--spacing-8);
+
+    border-radius: var(--radius-base);
+  }
+
+  &:hover .icon {
+    background-color: var(--color-bg-hover);
+  }
+
+  &:active .icon {
+    background-color: var(--color-bg-click);
+  }
+}
+```
+
+but why do i have to mimic adwaita?! i can absolutely make it no inset.
+
 
