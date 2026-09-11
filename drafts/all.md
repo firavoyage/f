@@ -965,7 +965,7 @@ humility:
 - research ai agent problems features capabilities tools
 - research ai agent search
 - research old reddit
-- web design utilitarian yaml
+- web design utilitarian yaml oklch <!-- flush rect or inset rounded -->
 - serve endpoints
 - research claude
 - research memoh
