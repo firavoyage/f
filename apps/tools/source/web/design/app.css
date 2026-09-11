@@ -431,6 +431,12 @@ textarea {
   }
 }
 
+.number {
+  flex-flow: row;
+
+  flex-shrink: 0;
+}
+
 .textarea {
   padding: var(--page-whitespace);
 

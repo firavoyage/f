@@ -27,7 +27,7 @@ export function yaml_to_json({ yaml }: text) {
 }
 
 type table_object = object[]
-type table = string[][]
+export type table = string[][]
 
 export function object_to_table(table_object: table_object) {
   const headings: string[] = []

@@ -139,7 +139,7 @@ export function Main() {
                 can_render_output ?
                   // @ts-expect-error already narrowed
                   render_output(output) :
-                  <Textarea {...p({ value: output })}></Textarea>
+                  <Textarea {...p({ value: typeof output == 'string' ? output : JSON.stringify(output) })}></Textarea>
               }
             </div>
           </div>

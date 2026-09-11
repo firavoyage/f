@@ -1,12 +1,12 @@
 import { Graph, Grid, Line, Range, XAxis, YAxis } from 'web/component/graph'
-import { Table } from './table';
 
-type table = (string | number)[][]
-export function MaimaiTable(output: table) {
-  return (
-    <Table {...p({ table: output })}></Table>
-  )
-}
+// import { Table } from './table';
+// type table = (string | number)[][]
+// export function MaimaiTable(output: table) {
+//   return (
+//     <Table {...p({ table: output })}></Table>
+//   )
+// }
 
 const coefficient_table = [
   { min: 100.5, rank: 'SSS+', coefficient: 22.4 },

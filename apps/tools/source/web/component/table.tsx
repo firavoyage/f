@@ -1,8 +1,10 @@
-type table = {
-  table: (string | number)[][]
+import { table } from 'action/json yaml toml xml'
+
+type table_props = {
+  table: table
 }
 
-export function Table({ table }: table) {
+export function Table({ table }: table_props) {
   return (
     <div className="table">
       <table className="table_content">
@@ -28,5 +30,11 @@ export function Table({ table }: table) {
         </thead>
       </table>
     </div>
+  )
+}
+
+export function render_table(output: table) {
+  return (
+    <Table {...p({ table: output })}></Table>
   )
 }
