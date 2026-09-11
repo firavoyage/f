@@ -21,14 +21,10 @@ export function Popup(props: popup) {
   const popup_ref = useRef()
 
   // listen for outside clicks
-  useEvent('click', function (e) {
-    // backdrop will catch "click outside" if shown
-    if (!popup_ref.current || backdrop) {
+  useEvent('mousedown', function (e) {
+    if (!popup_ref.current) {
       return
     }
-
-    // todo: fix "mount and get a click that creates it"
-    log(open, e.target, popup_ref.current)
 
     if (!popup_ref.current.contains(e.target)) {
       click_outside()

@@ -515,8 +515,11 @@ textarea {
 }
 
 .popup {
+  justify-content: center;
+  align-items: center;
+
   z-index: var(--hierarchy-popup);
-  
+
   position: fixed;
   top: 50%;
   left: 50%;
@@ -533,13 +536,26 @@ textarea {
   }
 
   &[open] {
-    transform: translateX(0);
-
     ~ .backdrop {
       z-index: var(--hierarchy-backdrop);
       opacity: 1;
       pointer-events: auto;
     }
+  }
+}
+
+.about {
+  width: var(--max-width-sm);
+
+  background-color: var(--color-bg-primary);
+
+  overflow-y: auto;
+  > * {
+    flex-shrink: 0;
+  }
+
+  .name {
+    height: 40rem;
   }
 }
 
