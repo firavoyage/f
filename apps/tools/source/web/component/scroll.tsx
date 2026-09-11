@@ -4,18 +4,17 @@ type scroll = {
   children
   // scroll_top?: number
   // set_scroll_top?: fn
-  set_is_top?: fn
+  toggle_is_top?: fn
+  // set_is_top?: fn
 }
 
-export function Scroll({ children, set_is_top }: scroll) {
+export function Scroll({ children, toggle_is_top }: scroll) {
   const ref = useRef()
 
   const scroll_top = useScroll(ref)
 
   useEffect(() => {
-    if (scroll_top.y == 0) {
-      set_is_top?.(true)
-    } 
+    toggle_is_top?.(scroll_top.y == 0)
   })
 
   return (
