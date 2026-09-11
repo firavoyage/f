@@ -1,3 +1,5 @@
+import { Button } from "./button";
+
 type number_ = {
   value: number;
   set_value: (value: number | ((...args: any) => number)) => void;
@@ -19,8 +21,16 @@ export function Number({ value, set_value, ...props }: number_) {
   return (
     <div className="number" {...p({ ...props })}>
       <input {...p({ class: 'field', value, onchange: handle_change })}></input>
-      <button className="decrease" {...p({ onClick: decrease })}>-</button>
-      <button className="increase" {...p({ onClick: increase })}>+</button>
+      <Button className="decrease" {...p({ onClick: decrease })}>
+        <span className="icon">
+          -
+        </span>
+      </Button>
+      <Button className="increase" {...p({ onClick: increase })}>
+        <span className="icon">
+          +
+        </span>
+      </Button>
     </div>
   );
 }
