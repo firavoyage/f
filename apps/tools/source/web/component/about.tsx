@@ -13,7 +13,7 @@ type about = {
 }
 
 export function About(props: about) {
-  const { open, toggle_open, icon, name, author } = props
+  const { open, toggle_open, icon, name, author, version } = props
 
   function close() {
     toggle_open(false)
@@ -39,7 +39,6 @@ export function About(props: about) {
         </div>
         <Scroll {...p({ toggle_is_top })}>
           <div className="about_icon">
-            <Icon {...p({ name: 'back' })}></Icon>
             {icon}
           </div>
           <div className="name">
@@ -47,6 +46,10 @@ export function About(props: about) {
           </div>
           <div className="author">
             {author}
+          </div>
+          <div className="version">
+            0.5 (2026.08.22)
+            {version}
           </div>
         </Scroll>
       </div>
