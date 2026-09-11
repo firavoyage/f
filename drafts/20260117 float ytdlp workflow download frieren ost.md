@@ -12,7 +12,18 @@ yt-dlp \
   -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
   --match-filters "view_count > 100000" \
   --reject-title "(?i)inst" \
-  -o "_/Hiroji Miyamoto/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+  -o "_/Name/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+```
+
+Isekaijoucho
+
+```sh
+dl \
+  "https://music.youtube.com/playlist?list=OLAK5uy_lhywzkXt86SNbEO95c7ONceYU4ooyjAW0" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  # --match-filters "view_count > 100000" \
+  --reject-title "(?i)inst" \
+  -o "_/Isekaijoucho/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
 ```
 
 Ado
