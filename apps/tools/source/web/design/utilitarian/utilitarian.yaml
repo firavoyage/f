@@ -353,6 +353,11 @@ page:
     comfortable: spacing.1
     cozy: spacing.1
     compact: spacing.1
+
+  whitespace-lg:
+    comfortable: spacing.5
+    cozy: spacing.2
+    compact: spacing.1
 titlebar:
   height:
     comfortable: spacing.12

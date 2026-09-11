@@ -858,10 +858,6 @@ textarea {
 
   max-height: calc(100vh - var(--titlebar-height) * 2);
 
-  > :last-child{
-    padding-bottom: var(--titlebar-height);
-  }
-
   background-color: var(--color-bg-primary);
 
   .titlebar {
@@ -925,12 +921,23 @@ textarea {
 
     margin-block: var(--page-whitespace);
     padding-block: var(--spacing-1);
-    padding-inline: var(--spacing-6);
+    padding-inline: var(--spacing-5);
     border-radius: var(--radius-full);
 
-    font: var(--text-sm) var(--typeface-sans);
+    font: bold var(--text-sm) var(--typeface-sans);
 
-    background-color: color-mix(in srgb, var(--color-bg-accent) 30%, transparent);
+    background-color: color-mix(in oklab, var(--color-bg-accent) 15%, transparent);
+    color: color-mix(in oklab, var(--color-bg-accent) 50%, var(--color-fg-primary));
+  }
+
+  .links {
+    margin-block: var(--page-whitespace);
+
+    .button {
+      padding-block: var(--page-whitespace);
+
+      padding-inline: var(--page-whitespace-lg);
+    }
   }
 }
 

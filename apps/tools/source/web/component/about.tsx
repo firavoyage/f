@@ -51,6 +51,9 @@ export function About(props: about) {
             0.5 (2026.08.22)
             {version}
           </div>
+          <div className="links">
+            <Button >Credits</Button>
+          </div>
         </Scroll>
       </div>
     </Popup>
