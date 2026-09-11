@@ -30,9 +30,12 @@ export function map(items: any, fn: (item: any, index: number, array: any[]) => 
   for (const [index, item] of Object.entries(items)) {
     const value = fn(item, +index, items)
 
-    if (!is_given(value)) {
+    if (value === undefined) {
       continue
     }
+    // if (!is_given(value)) {
+    //   continue
+    // }
 
     if (value == halt) {
       break

@@ -29,7 +29,8 @@ export function Process(props: process) {
                     set_process(() => {
                       process.splice(index, 1)
                     })
-                  }
+                  },
+                  tooltip: 'Remove this Tool'
                 })}>
                   <Icon {...p({ name: 'delete' })}></Icon>
                 </Button>

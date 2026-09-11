@@ -4618,5 +4618,8 @@ it doesnt matter when it stays in place.
 
 19 50 action/maimai: create tool note loss table.
 
+21 40 lib/map: fix, consider continue only when return undefined, but not nil.
+
+nil is an explicit absence of value.
 
 

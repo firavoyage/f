@@ -105,7 +105,7 @@ export function Main() {
               <Button {...p({
                 onClick() {
                   set_process([])
-                }
+                }, tooltip: 'Clear Process'
               })}>
                 <Icon {...p({ name: 'clear' })}></Icon>
               </Button>
