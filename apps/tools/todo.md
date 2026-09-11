@@ -2,7 +2,6 @@
 
 - create pattern/page components and make every button clickable, e.g. hamburger menu, command palette
 - create a storybook, style switch
-- more maimai tools
 - (code?, repo, have, humility, pure, ...)
 
 ref

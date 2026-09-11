@@ -399,4 +399,6 @@ export function single_chart_rating_table() {
   return table
 }
 
-
+export function note_loss_table() {
+  
+}
