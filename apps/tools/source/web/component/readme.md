@@ -15,6 +15,7 @@ atom
 - tooltip <!-- title attr -->
 - dropdown
 - popup
+- scrollarea
 - (graph)
   - grid
   - x axis

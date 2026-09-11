@@ -3,6 +3,7 @@ import { use_global } from 'web/component/app'
 
 import { Arg } from './arg'
 import { Button } from './button'
+import { Scroll } from './scroll'
 
 type process = {
   process: tool[]
@@ -14,43 +15,47 @@ export function Process(props: process) {
 
   const { process, set_process } = props
 
-  return <div className="panel_process">
-    {
-      map(process, (item, index) => (
-        <div className="item">
-          <div className="title">
-            <div className="name">{item.name}</div>
-            <Button {...p({
-              class: 'button_delete',
-              onClick() {
-                set_process(() => {
-                  process.splice(index, 1)
-                })
-              }
-            })}>
-              <Icon {...p({ name: 'delete' })}></Icon>
-            </Button>
-          </div>
-          <div className="args">{map(item.args ?? [], arg => (
-            <div className="arg">
-              {
-                arg.is_stdin && (index > 0 || is_input_given) ?
-                  <>
-                    <span className="name">{arg.name}</span>
-                    <span className="stdin">stdin</span>
-                  </> :
-                  <Arg {...p({
-                    ...arg, set_value(new_value: any) {
-                      set_process(() => {
-                        arg.value = new_value
-                      })
-                    }
-                  })}></Arg>
-              }
+  return (
+    <div className="panel_process">
+      <Scroll>
+        {
+          map(process, (item, index) => (
+            <div className="process_item">
+              <div className="title">
+                <div className="name">{item.name}</div>
+                <Button {...p({
+                  class: 'button_delete',
+                  onClick() {
+                    set_process(() => {
+                      process.splice(index, 1)
+                    })
+                  }
+                })}>
+                  <Icon {...p({ name: 'delete' })}></Icon>
+                </Button>
+              </div>
+              <div className="args">{map(item.args ?? [], arg => (
+                <div className="arg">
+                  {
+                    arg.is_stdin && (index > 0 || is_input_given) ?
+                      <>
+                        <span className="name">{arg.name}</span>
+                        <span className="stdin">stdin</span>
+                      </> :
+                      <Arg {...p({
+                        ...arg, set_value(new_value: any) {
+                          set_process(() => {
+                            arg.value = new_value
+                          })
+                        }
+                      })}></Arg>
+                  }
+                </div>
+              ))}</div>
             </div>
-          ))}</div>
-        </div>
-      ))
-    }
-  </div>
+          ))
+        }
+      </Scroll>
+    </div>
+  )
 }
