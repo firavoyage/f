@@ -443,40 +443,46 @@ export function note_loss_table(props: note_loss_table) {
   const break_base = 1 / break_
 
   const tap_loss = {
+    note: 'tap/touch',
     great: 0.2 * base,
     good: 0.5 * base,
     miss: 1 * base
   }
 
   const hold_loss = {
+    note: 'hold',
     great: 2 * 0.2 * base,
     good: 2 * 0.5 * base,
     miss: 2 * 1 * base
   }
 
   const slide_loss = {
+    note: 'slide',
     great: 3 * 0.2 * base,
     good: 3 * 0.5 * base,
     miss: 3 * 1 * base
   }
 
   const break_loss = {
-    "high perfect": 0.25*break_base,
-    "low perfect": 0.5*break_base,
-    "high great": 5*0.2*base+0.6*break_base,
-    "mid great": 5*0.4*base+0.6*break_base,
-    "low great": 5*0.5*base+0.6*break_base,
-    good: 5*0.6*base+0.7*break_base,
-    miss: 5*1*base+1*break_base
+    note: 'break',
+    "high perfect": 0.25 * break_base,
+    "low perfect": 0.5 * break_base,
+    "high great": 5 * 0.2 * base + 0.6 * break_base,
+    "mid great": 5 * 0.4 * base + 0.6 * break_base,
+    "low great": 5 * 0.5 * base + 0.6 * break_base,
+    good: 5 * 0.6 * base + 0.7 * break_base,
+    miss: 5 * 1 * base + 1 * break_base
   }
 
   for (const loss of [tap_loss, hold_loss, slide_loss, break_loss]) {
     for (const [key, value] of entries(loss)) {
-      loss[key] = Number(value).toFixed(4)
+      if (typeof value == 'number') {
+        loss[key] = value.toFixed(4)
+      } 
     }
   }
 
-  return object_to_table([tap_loss, hold_loss, break_loss])
+  return object_to_table([tap_loss, hold_loss, slide_loss, break_loss])
 }
 
 

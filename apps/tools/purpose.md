@@ -4622,4 +4622,12 @@ it doesnt matter when it stays in place.
 
 nil is an explicit absence of value.
 
+23 00 web/lib/props: normalize and pass down true as true
+
+true = string true. false = omitted (effectively undefined).
+
+it's react that is damned. silience its warning instead.
+
+(it will not work if you pass boolean true to a non boolean prop, which is defined by react itself)
+
 

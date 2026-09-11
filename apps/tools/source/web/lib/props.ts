@@ -79,14 +79,15 @@ export function p<T>(
 
         if (typeof value == 'boolean') {
           if (value == true) {
-            converted_props[normalized_key] = "t"
-            // converted_props[normalized_key] = "true"
+            converted_props[normalized_key] = "true"
+            // converted_props[normalized_key] = "t"
           } else {
             continue
           }
         } else {
           converted_props[normalized_key] = value
         }
+        // converted_props[normalized_key] = value
       }
     }
   }

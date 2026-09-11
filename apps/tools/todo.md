@@ -294,3 +294,8 @@ and shift tab before the first item
 
 component/graph: fix z index in svg w portal
 
+---
+
+component/number: set a limit
+
+do not let it become rounded, inf, and then nan when they type non stop
