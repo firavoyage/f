@@ -69,3 +69,9 @@ export function About(props: about) {
     </Popup>
   )
 }
+
+type credits = {
+  
+}
+
+
