@@ -4555,3 +4555,14 @@ ref:
     - list
 - legal
   - markdown
+
+---
+
+it seems all bool props are sanitized.
+
+false -> (omitted)
+true -> 't'
+
+but it can work i think
+
+
