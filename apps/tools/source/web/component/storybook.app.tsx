@@ -13,7 +13,15 @@ import { Storybook } from './storybook'
 const storybook = {
   Button,
   Checkbox,
-  Switch,
+  Switch() {
+    const [value, set_value] = useState(false)
+
+    return (
+      <Switch {...p({ value, set_value })}>
+
+      </Switch>
+    )
+  },
   Select,
   Radio,
   Number,
@@ -27,9 +35,7 @@ export function App() {
   use_window_active()
 
   return (
-    <div className="app">
-      <Storybook {...p({ storybook })}></Storybook>
-    </div>
+    <Storybook {...p({ storybook })}></Storybook>
   )
 }
 
