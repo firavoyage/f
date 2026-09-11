@@ -11,6 +11,12 @@ type about = {
 export function About(props: about) {
   const { open, toggle_open, name, author } = props
 
+  function close() {
+    toggle_open(false)
+  }
+
+  use_bind('esc', close)
+
   return (
     <Popup {...p({ open, toggle_open })}>
       {name}

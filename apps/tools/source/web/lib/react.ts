@@ -2,7 +2,12 @@
 // these are the ones you would actually use
 
 import { useEffect, useState, useRef, useCallback } from "react";
-import { useAsync, useAsyncFn, useMeasure, useToggle } from "react-use";
+import { useAsync, useAsyncFn, useEvent, useMeasure, useToggle } from "react-use";
+import { use_bind } from 'web/lib/use keyboard'
+
+export * from 'web/lib/use keyboard'
+export * from 'web/lib/use sync theme'
+export * from 'web/lib/use window active'
 
 export function use_measure(options?: Parameters<typeof useMeasure>) {
   const [measureRef, bounds] = useMeasure(options);
@@ -29,6 +34,8 @@ type useToggle = typeof useToggle
 type useAsync = typeof useAsync
 type useAsyncFn = typeof useAsyncFn
 type use_measure = typeof use_measure
+type useEvent = typeof useEvent
+type use_bind = typeof use_bind
 declare global {
   var useRef: useRef
   var useState: useState
@@ -37,4 +44,6 @@ declare global {
   var useAsync: useAsync
   var useAsyncFn: useAsyncFn
   var use_measure: use_measure
+  var useEvent: useEvent
+  var use_bind: use_bind
 }
