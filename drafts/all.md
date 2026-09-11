@@ -317,6 +317,7 @@ web: <!-- frontend, web, ts/js -->
 - css margin collapse
 - emmet abbr syntax
 - component popup about preferences keyboard shortcuts
+- userscript ruler
 
 backend:
 
