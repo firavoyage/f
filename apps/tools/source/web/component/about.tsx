@@ -1,3 +1,4 @@
+import { Button } from "./button"
 import { Popup } from "./popup"
 import { Scroll } from "./scroll"
 
@@ -7,6 +8,8 @@ type about = {
   icon?
   name: string
   author?: string
+  version?: string
+
 }
 
 export function About(props: about) {
@@ -21,6 +24,14 @@ export function About(props: about) {
   return (
     <Popup {...p({ open, toggle_open })}>
       <div className="about">
+        <div className="titlebar">
+          <div className="title">
+            About
+          </div>
+          <Button {...p({ class: 'button_close', onClick: close })}>
+            <Icon {...p({ name: 'close' })}></Icon>
+          </Button>
+        </div>
         <Scroll>
           <div className="about_icon">
             {icon}
