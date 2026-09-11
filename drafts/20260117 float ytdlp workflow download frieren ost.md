@@ -15,15 +15,37 @@ yt-dlp \
   -o "_/Name/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
 ```
 
+Minato Aqua
+
+```sh
+dl \
+  "https://music.youtube.com/playlist?list=OLAK5uy_lNy8Jzql1BIxtqatGdHGS5TUCMCPQvfIg" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --reject-title "(?i)inst" \
+  -o "_/Minato Aqua/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+  # --match-filters "view_count > 100000" \
+```
+
+Ui Shigure
+
+```sh
+dl \
+  "https://music.youtube.com/playlist?list=OLAK5uy_lMv3lFs4c-fMHAUWrWHrnnMfOMAESuJU4" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --reject-title "(?i)inst" \
+  -o "_/Ui Shigure/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+  # --match-filters "view_count > 100000" \
+```
+
 Isekaijoucho Cover
 
 ```sh
 dl \
   "https://music.youtube.com/playlist?list=PL_Y0U3KlPL0dmpNS5ewVWmxOmmWobj0zU" \
   -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
-  # --match-filters "view_count > 100000" \
   --reject-title "(?i)inst" \
   -o "_/Isekaijoucho Cover/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+  # --match-filters "view_count > 100000" \
 ```
 
 Isekaijoucho
@@ -32,9 +54,9 @@ Isekaijoucho
 dl \
   "https://music.youtube.com/playlist?list=OLAK5uy_lhywzkXt86SNbEO95c7ONceYU4ooyjAW0" \
   -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
-  # --match-filters "view_count > 100000" \
   --reject-title "(?i)inst" \
   -o "_/Isekaijoucho/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+  # --match-filters "view_count > 100000" \
 ```
 
 Ado
