@@ -4,6 +4,8 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import { useAsync, useAsyncFn, useEvent, useMeasure, useToggle } from "react-use";
 import { use_bind } from 'web/lib/use keyboard'
+import { use_sync_theme } from 'web/lib/use sync theme'
+import { use_window_active } from 'web/lib/use window active'
 
 export * from 'web/lib/use keyboard'
 export * from 'web/lib/use sync theme'
@@ -36,6 +38,8 @@ type useAsyncFn = typeof useAsyncFn
 type use_measure = typeof use_measure
 type useEvent = typeof useEvent
 type use_bind = typeof use_bind
+type use_sync_theme = typeof use_sync_theme
+type use_window_active = typeof use_window_active
 declare global {
   var useRef: useRef
   var useState: useState
@@ -46,4 +50,6 @@ declare global {
   var use_measure: use_measure
   var useEvent: useEvent
   var use_bind: use_bind
+  var use_sync_theme: use_sync_theme
+  var use_window_active: use_window_active
 }
