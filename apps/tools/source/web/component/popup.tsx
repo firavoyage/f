@@ -3,7 +3,7 @@ import { use_bind } from "web/lib/use keyboard"
 type popup = {
   open
   toggle_open
-  backdrop: boolean
+  backdrop?: boolean
   children
 }
 

@@ -1,16 +1,18 @@
 import { Popup } from "./popup"
 
 type about = {
+  open
+  toggle_open
   icon?
   name: string
   author?: string
 }
 
 export function About(props: about) {
-  const { name, author } = props
+  const { open, toggle_open, name, author } = props
 
   return (
-    <Popup>
+    <Popup {...p({ open, toggle_open })}>
       {name}
       {author}
     </Popup>
