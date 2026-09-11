@@ -54655,6 +54655,10 @@ toolbox. if it's said that beginners love writing toolboxes... then what is not 
 
 index pages. computers transfer and manipulate information. tools are to process. indices are to display. we love knowledge sharing. and links are one of the easiest ways to share. you dont parse. you dont postprocess. you dont scrap. you basically copy their url, yeah, a "universal" format of information you would consistently find everywhere, wo effort. as you go further you may have deeper analysis and possibly gain specific insights.
 
+11
+
+16 10 dl `Isekaijoucho`.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
