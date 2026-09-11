@@ -4630,4 +4630,14 @@ it's react that is damned. silience its warning instead.
 
 (it will not work if you pass boolean true to a non boolean prop, which is defined by react itself)
 
+---
+
+i mean i dont like t, nil for true false. not really.
+
+true, false, nil.
+
+they carry different intent.
+
+i may use a symbol for undefined.
+
 
