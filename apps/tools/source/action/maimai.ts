@@ -443,7 +443,8 @@ export function note_loss_table(props: note_loss_table) {
   const break_base = 1 / break_
 
   const tap_loss = {
-    note: 'tap/touch',
+    note: 'tap',
+    // note: 'tap/touch',
     great: 0.2 * base,
     good: 0.5 * base,
     miss: 1 * base
@@ -463,6 +464,14 @@ export function note_loss_table(props: note_loss_table) {
     miss: 3 * 1 * base
   }
 
+  const touch_loss = {
+    note: 'touch',
+    // note: 'tap/touch',
+    great: 0.2 * base,
+    good: 0.5 * base,
+    miss: 1 * base
+  }
+
   const break_loss = {
     note: 'break',
     "high perfect": 0.25 * break_base,
@@ -474,7 +483,7 @@ export function note_loss_table(props: note_loss_table) {
     miss: 5 * 1 * base + 1 * break_base
   }
 
-  for (const loss of [tap_loss, hold_loss, slide_loss, break_loss]) {
+  for (const loss of [tap_loss, hold_loss, slide_loss, touch_loss, break_loss]) {
     for (const [key, value] of entries(loss)) {
       if (typeof value == 'number') {
         loss[key] = value.toFixed(4)
@@ -482,7 +491,7 @@ export function note_loss_table(props: note_loss_table) {
     }
   }
 
-  return object_to_table([tap_loss, hold_loss, slide_loss, break_loss])
+  return object_to_table([tap_loss, hold_loss, slide_loss, touch_loss, break_loss])
 }
 
 

@@ -505,6 +505,12 @@ body {
                 flex-grow: 1;
               }
             }
+
+            /* show outline of elements, e.g. number + - buttons */
+            overflow: visible;
+            > * {
+              overflow: visible;
+            }
           }
         }
       }
@@ -658,7 +664,6 @@ textarea {
 
     border-radius: var(--radius-base);
 
-    --outline-width: var(--border-4);
     --outline-offset: var(--border-2);
     box-shadow: 0 0 0 var(--border-1) var(--color-fg-primary);
     :focus-visible & {
@@ -666,7 +671,10 @@ textarea {
         0 0 0 calc(var(--border-1) + var(--outline-offset))
           var(--color-bg-primary),
         0 0 0
-          calc(var(--border-1) + var(--outline-offset) + var(--outline-width))
+          calc(
+            var(--border-1) + var(--outline-offset) +
+              var(--field-outline-width-lg)
+          )
           var(--color-bg-selection);
     }
   }
@@ -712,6 +720,7 @@ textarea {
 
 .number {
   flex-flow: row;
+  overflow: visible;
 
   .button {
     flex-shrink: 0;
@@ -721,6 +730,11 @@ textarea {
     border-radius: var(--radius-full);
 
     /* background: color-mix(in oklab, var(--color-bg-secondary) 50%, transparent); */
+
+    &:focus-visible {
+      outline: var(--field-outline-width-lg) solid var(--color-bg-selection);
+      outline-offset: calc(var(--field-outline-width) * -1);
+    }
   }
 }
 
@@ -772,7 +786,6 @@ textarea {
 
         border-radius: var(--radius-full);
 
-        --outline-width: var(--border-4);
         --outline-offset: var(--border-2);
         box-shadow: 0 0 0 var(--border-1) var(--color-fg-primary);
         :focus-visible & {
@@ -781,7 +794,8 @@ textarea {
               var(--color-bg-primary),
             0 0 0
               calc(
-                var(--border-1) + var(--outline-offset) + var(--outline-width)
+                var(--border-1) + var(--outline-offset) +
+                  var(--field-outline-width-lg)
               )
               var(--color-bg-selection);
         }
@@ -819,16 +833,6 @@ textarea {
   left: 50%;
   transform: translate(-50%, -50%);
 
-  ~ .backdrop {
-    position: fixed;
-    inset: 0;
-    background: var(--color-bg-backdrop);
-    z-index: var(--hierarchy-backdrop-hidden);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity var(--transition-backdrop);
-  }
-
   &[open] {
     ~ .backdrop {
       z-index: var(--hierarchy-backdrop);
@@ -836,6 +840,16 @@ textarea {
       pointer-events: auto;
     }
   }
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--color-bg-backdrop);
+  z-index: var(--hierarchy-backdrop-hidden);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-backdrop);
 }
 
 .table {
