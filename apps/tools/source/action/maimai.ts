@@ -425,12 +425,20 @@ export function single_chart_rating_table() {
 
 type note_loss_table = {
   tap: number
-  hold: number
-  tap: number
+  hold: number // hold/touch hold
+  slide: number // star = tap + slide
+  touch: number
   break: number
-
 }
 
-export function note_loss_table() {
+export function note_loss_table(props: note_loss_table) {
+  const { tap: raw_tap, hold, slide, touch: raw_touch, break: break_ } = props
+
+  const tap = raw_tap + raw_touch
+
+  const total_points = (1*tap+2*hold+3*slide+5*break_)
+  const base = 100
+  const break_base = 1/break_
+
   
 }
