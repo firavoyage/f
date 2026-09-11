@@ -16,6 +16,7 @@ import { Shortcuts } from 'web/component/shortcuts';
 import { Hamburger } from './hamburger';
 import { Button } from './button';
 import { About } from './about';
+import { Scroll } from './scroll';
 
 export const use_global = state({
   'input': '',
@@ -140,29 +141,32 @@ export function App() {
     <div className="app">
       <Sidebar>
         <Menu {...p({ app: 'Tools' })}></Menu>
-        <Hamburger>
-          <Button className="preferences">Preferences</Button>
-          <Button className="shortcuts">Keyboard Shortcuts</Button>
-          <Button className="about" {...p({ onClick: toggle_open_about })}>About</Button>
-          <hr {...p({ class: 'hr' })} />
-        </Hamburger>
-        <List {...p({
-          items: tools_taxonomy, set_focus(name: tool_name) {
-            set_process((process: tool[]) => {
-              process.push(cloneDeep({
-                name,
-                args: tools[name].args ?? []
-              }))
-            })
-          }
-        })}></List>
+        <Scroll>
+          <Hamburger>
+            <Button>Preferences</Button>
+            <Button>Keyboard Shortcuts</Button>
+            <Button {...p({ onClick: toggle_open_about })}>About</Button>
+            <hr {...p({ class: 'hr' })} />
+          </Hamburger>
+          <List {...p({
+            items: tools_taxonomy, set_focus(name: tool_name) {
+              set_process((process: tool[]) => {
+                process.push(cloneDeep({
+                  name,
+                  args: tools[name].args ?? []
+                }))
+              })
+            }
+          })}></List>
+        </Scroll>
       </Sidebar>
       <Main></Main>
       <Shortcuts {...p({ shortcuts, call: command })}></Shortcuts>
-      <About {...p({ open: open_about, toggle_open: toggle_open_about,
+      <About {...p({
+        open: open_about, toggle_open: toggle_open_about,
         name: 'Tools',
         author: 'Headquarters',
-       })}></About>
+      })}></About>
     </div>
   </>
 }

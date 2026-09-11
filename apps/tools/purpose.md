@@ -4577,4 +4577,8 @@ idk if it would be mobile compatible. but it's not a current concern.
 
 div and span are of no difference now.
 
+19 00 create component scrollarea. (?)
+
+abbr as scroll.
+
 

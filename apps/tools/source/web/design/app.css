@@ -87,7 +87,7 @@ body {
     }
   }
 
-  > .menu {
+  .menu {
     flex-flow: row;
 
     flex-basis: var(--titlebar-height);
@@ -111,8 +111,8 @@ body {
     }
   }
 
-  > .list,
-  > .hamburger {
+  .list,
+  .hamburger {
     /* margin-block: var(--page-whitespace); */
 
     /* display: block; */
@@ -126,11 +126,6 @@ body {
   }
 
   > .list {
-    overflow-y: auto;
-    > * {
-      flex-shrink: 0;
-    }
-
     * {
       &[focus] {
         background-color: var(--color-bg-click);
@@ -204,12 +199,7 @@ body {
       > .panel_process {
         flex: 1;
 
-        overflow-y: auto;
-        > * {
-          flex-shrink: 0;
-        }
-
-        > .item {
+        .process_item {
           margin-bottom: var(--page-whitespace);
 
           > .title {
@@ -282,6 +272,13 @@ body {
 
   background-color: var(--color-bg-tooltip);
   color: var(--color-fg-tooltip);
+}
+
+.scroll {
+  overflow-y: auto;
+  > * {
+    flex-shrink: 0;
+  }
 }
 
 .button,
@@ -546,16 +543,12 @@ textarea {
 
 .about {
   width: var(--max-width-sm);
+  max-height: calc(100vh - var(--titlebar-height) * 2);
 
   background-color: var(--color-bg-primary);
 
-  overflow-y: auto;
-  > * {
-    flex-shrink: 0;
-  }
-
   .name {
-    height: 40rem;
+    height: 400rem;
   }
 }
 
