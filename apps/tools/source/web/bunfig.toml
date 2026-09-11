@@ -1,1 +1,2 @@
-preload = ["web/lib/global"]
+preload = ["lib/global"]
+# preload = ["web/lib/global"]
