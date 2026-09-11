@@ -39,6 +39,7 @@ export function About(props: about) {
         </div>
         <Scroll {...p({ toggle_is_top })}>
           <div className="about_icon">
+            <Icon {...p({ name: 'back' })}></Icon>
             {icon}
           </div>
           <div className="name">
