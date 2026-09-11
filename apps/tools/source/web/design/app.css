@@ -515,6 +515,8 @@ textarea {
 }
 
 .popup {
+  z-index: var(--hierarchy-popup);
+  
   position: fixed;
   top: 50%;
   left: 50%;

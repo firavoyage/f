@@ -326,6 +326,11 @@ hierarchy:
     point: 600
     label: 1000
 
+transition:
+  backdrop:
+    fluid: 0.3s ease
+    instant: 0s ease
+
 # # todo
 # scrollbar:
 #   width: "8px"
@@ -361,8 +366,3 @@ sidebar:
 field:
   outline:
     width: border.2
-
-transition:
-  backdrop:
-    fluid: 0.3s ease
-    instant: 0s ease

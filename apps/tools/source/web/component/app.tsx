@@ -159,7 +159,10 @@ export function App() {
       </Sidebar>
       <Main></Main>
       <Shortcuts {...p({ shortcuts, call: command })}></Shortcuts>
-      <About {...p({  })}></About>
+      <About {...p({ open: open_about, toggle_open: toggle_open_about,
+        name: 'Tools',
+        author: 'Headquarters',
+       })}></About>
     </div>
   </>
 }
