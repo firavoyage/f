@@ -4565,4 +4565,16 @@ true -> 't'
 
 but it can work i think
 
+11
+
+18 40 create component about.
+
+easily fixed. i can detect mousedown instead of click (which would fire onmount) for click outside.
+
+idk if it would be mobile compatible. but it's not a current concern.
+
+---
+
+div and span are of no difference now.
+
 

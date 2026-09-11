@@ -9,7 +9,7 @@ type about = {
 }
 
 export function About(props: about) {
-  const { open, toggle_open, name, author } = props
+  const { open, toggle_open, icon, name, author } = props
 
   function close() {
     toggle_open(false)
@@ -19,8 +19,17 @@ export function About(props: about) {
 
   return (
     <Popup {...p({ open, toggle_open })}>
-      {name}
-      {author}
+      <div className="about">
+        <div className="about_icon">
+          {icon}
+        </div>
+        <div className="name">
+          {name}
+        </div>
+        <div className="author">
+          {author}
+        </div>
+      </div>
     </Popup>
   )
 }
