@@ -680,7 +680,42 @@ textarea {
   }
 }
 
-/* todo: .switch */
+.switch {
+  justify-content: center;
+
+  width: var(--spacing-10);
+  height: var(--spacing-6);
+
+  border-radius: var(--radius-full);
+
+  background-color: var(--color-bg-secondary);
+
+  &[checked] {
+    background-color: var(--color-bg-accent);
+  }
+
+  transition: background var(--transition-backdrop);
+
+  .thumb {
+    width: var(--spacing-5);
+    height: var(--spacing-5);
+    aspect-ratio: 1;
+
+    margin-inline: var(--spacing-0\.5);
+
+    border-radius: var(--radius-full);
+
+    background-color: var(--color-fg-primary);
+
+    /* transform: translateX(var(--spacing-0\.5)); */
+
+    [checked] & {
+      transform: translateX(var(--spacing-5));
+    }
+
+    transition: transform var(--transition-backdrop);
+  }
+}
 
 .select {
   align-items: end;

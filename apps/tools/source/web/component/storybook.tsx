@@ -47,22 +47,30 @@ export function Storybook({ storybook }: storybook) {
   const Tag = storybook[component]
 
   return (
-    <div className="app storybook">
-      <Sidebar>
-        {
-          map(storybook, ([component]) => (
-            <Button {...p({ onClick() { set_component(component) } })}>
-              {component}
-            </Button>
-          ))
-        }
-      </Sidebar>
-      <div className="main demo">
-        {
-          Tag &&
-          <Tag></Tag>
-        }
+    <>
+      <div className="app storybook">
+        <Sidebar>
+          {
+            map(storybook, ([component]) => (
+              <Button {...p({ onClick() { set_component(component) } })}>
+                {component}
+              </Button>
+            ))
+          }
+        </Sidebar>
+        <div className="main demo" {...p({
+          style: {
+            display: 'block',
+            // width: '100px',
+            // height: '100px'
+          }
+        })}>
+          {
+            Tag &&
+            <Tag></Tag>
+          }
+        </div>
       </div>
-    </div>
+    </>
   )
 }
