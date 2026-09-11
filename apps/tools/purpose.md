@@ -4581,4 +4581,40 @@ div and span are of no difference now.
 
 abbr as scroll.
 
+---
+
+currently scrollarea just apply a class, but i may extend it in the future.
+
+and, cant go wrong to be more explicit.
+
+---
+
+i think the cleanest way is just `.process_item`. abstractions are abstractions.
+
+`> .item` could not be wrapped by middlewares (e.g. scrollarea, popup widget). `.item` will blast into `.process .radio .item`. and even if i solve all the problems, what if `item` become a standalone component?
+
+yeah, i ~~will~~ may name it `radio_item`.
+
+**classes should begin w component name. only apply classes when you wanna style it.**
+
+exclusions are, if it _is_ a component (e.g. `.icon`), or if you are sure it's an atom.
+
+ok fine i do not have to prefix w `radio`. radio items are expected to be simple, e.g. text or an img at most.
+
+i mean, you can leave it simple, only if yk
+
+- **it will not become a component**
+- **it will not apply to its deeply nested children when it should not (e.g. no `{children}`)**
+
+(you do not look back, thanks to css native nesting)
+
+---
+
+position relative/absolute does work, i mean.
+
+the unfixable quirk is about clipping when overflow hidden on _any_ parent.
+
+it doesnt matter when it stays in place.
+
+
 

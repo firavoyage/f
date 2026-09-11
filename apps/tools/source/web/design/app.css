@@ -281,6 +281,10 @@ body {
   }
 }
 
+.menu, .titlebar {
+  flex-shrink: 0;
+}
+
 .button,
 .select > .trigger,
 .input,
@@ -546,6 +550,32 @@ textarea {
   max-height: calc(100vh - var(--titlebar-height) * 2);
 
   background-color: var(--color-bg-primary);
+
+  .titlebar {
+    flex-flow: row;
+    position: relative;
+
+    height: var(--titlebar-height);
+
+    .title {
+      flex: 1;
+
+      font-weight: bold;
+      
+      text-align: center;
+      justify-self: center;
+      align-self: center;
+    }
+
+    .button_close {
+      position: absolute;
+      right: 0;
+
+      width: var(--titlebar-height);
+
+      justify-self: flex-end;
+    }
+  }
 
   .name {
     height: 400rem;
