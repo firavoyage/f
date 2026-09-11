@@ -1,1 +1,0 @@
-write a userscript. when alt r pressed, toggle its visibility, default hidden. show a ruler. it's not rounded. it's draggable. it has a graduation every 4px, a mid graduation every 20px, and a high graduation every 40px. it's background is semi transparent, color mix white 50% transparent. graduations are white.

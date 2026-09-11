@@ -544,6 +544,7 @@ linguistics: <!-- grammar, etymology -->
 - typology of positive response systems
 - name breadcrumb nav
 - copular clauses with a number mismatch
+- name headquarters etymology plural
 
 literature:
 
