@@ -22,14 +22,10 @@ export function Number({ value, set_value, ...props }: number_) {
     <div className="number" {...p({ ...props })}>
       <input {...p({ class: 'field', value, onchange: handle_change })}></input>
       <Button className="decrease" {...p({ onClick: decrease })}>
-        <span className="icon">
-          -
-        </span>
+        <Icon {...p({ name: 'decrease' })}></Icon>
       </Button>
       <Button className="increase" {...p({ onClick: increase })}>
-        <span className="icon">
-          +
-        </span>
+        <Icon {...p({ name: 'increase' })}></Icon>
       </Button>
     </div>
   );
