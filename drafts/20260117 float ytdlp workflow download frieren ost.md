@@ -15,6 +15,17 @@ yt-dlp \
   -o "_/Name/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
 ```
 
+Isekaijoucho Cover
+
+```sh
+dl \
+  "https://music.youtube.com/playlist?list=PL_Y0U3KlPL0dmpNS5ewVWmxOmmWobj0zU" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  # --match-filters "view_count > 100000" \
+  --reject-title "(?i)inst" \
+  -o "_/Isekaijoucho Cover/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+```
+
 Isekaijoucho
 
 ```sh
