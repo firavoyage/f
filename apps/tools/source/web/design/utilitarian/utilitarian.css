@@ -135,6 +135,7 @@
   --hierarchy-graph-point: 600;
   --hierarchy-graph-label: 1000;
   --field-outline-width: var(--border-2);
+  --field-outline-width-lg: var(--border-4);
 }
 
 :root, [theme="light"], [data-theme="light"] {

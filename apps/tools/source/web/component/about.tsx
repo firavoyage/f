@@ -38,21 +38,31 @@ export function About(props: about) {
           </Button>
         </div>
         <Scroll {...p({ toggle_is_top })}>
-          <div className="about_icon">
-            {icon}
+          <div className="info">
+            <div className="about_icon">
+              {icon}
+            </div>
+            <div className="name">
+              {name}
+            </div>
+            <div className="author">
+              {author}
+            </div>
+            <div className="version">
+              0.5 (2026.08.22)
+              {version}
+            </div>
           </div>
-          <div className="name">
-            {name}
-          </div>
-          <div className="author">
-            {author}
-          </div>
-          <div className="version">
-            0.5 (2026.08.22)
-            {version}
-          </div>
+          {/* <hr className="hr" /> */}
           <div className="links">
-            <Button >Credits</Button>
+            <Button >
+              <div className="label">
+                Credits
+              </div>
+              <div className="action">
+                <Icon {...p({ name: 'expand' })}></Icon>
+              </div>
+            </Button>
           </div>
         </Scroll>
       </div>
