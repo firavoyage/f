@@ -16,7 +16,9 @@ atom
 - dropdown
 - popup
 - scrollarea
-- (graph)
+- . toast
+- table
+- graph
   - grid
   - x axis
   - y axis
@@ -27,21 +29,19 @@ pattern
 
 - sidebar
 - menu
-- list
-- shortcuts <!-- keyboard shortcuts -->
-- arg
 - hamburger
-- (table)
-  - table
-- (graph)
-  - graph
-- about
+- list
+- . preferences
+- . shortcuts <!-- keyboard shortcuts -->
+- . about
+  - . credits
 
 page
 
 - app
 - main
 - process
+  - arg
 - (tools)
   - maimai
 - (storybook)
