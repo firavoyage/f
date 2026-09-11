@@ -26,28 +26,27 @@ export function yaml_to_json({ yaml }: text) {
   return serialize_json(standard_yaml(yaml))
 }
 
-type flatten = {
-  separator?: string;
-  preserve?: (value: any, key: string) => boolean;
-};
+type table_object = object[]
+type table = string[][]
 
-export function flatten(obj: Map<string, any>, options: flatten = {}) {
-  const { separator = ".", preserve = () => false } = options;
-  const result = new Map();
+export function object_to_table(table_object: table_object) {
+  const headings: string[] = []
 
-  function traverse(item: Map<any, any>, prefix: string = ""): void {
-    for (const [key] of item) {
-      const value = item.get(key);
-      const path = prefix ? `${prefix}${separator}${key}` : key;
-
-      if (value instanceof Map && !preserve(value, key)) {
-        traverse(value, path);
-      } else {
-        result.set(path, value);
-      }
+  // Curate Table Headings
+  map(table_object, (row) => map(row, ([k, v]) => {
+    if (!has(headings, k)) {
+      headings.push(k)
     }
-  }
+  }))
 
-  traverse(obj);
-  return result;
+  const table = []
+
+  table.push(headings)
+
+  table.push(...map(table_object, (row) => map(headings, (heading) => row[heading] ?? nil)))
+
+  return table
 }
+
+// log(object_to_table([{a:1, b:2, c:3},{a:1, c:2}]))
+

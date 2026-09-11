@@ -440,5 +440,7 @@ export function note_loss_table(props: note_loss_table) {
   const base = 100
   const break_base = 1/break_
 
-  
+  const tap_loss = {
+    great: 0.2 
+  }
 }
