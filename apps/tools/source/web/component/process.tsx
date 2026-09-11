@@ -46,7 +46,11 @@ export function Process(props: process) {
                       <Arg {...p({
                         ...arg, set_value(new_value: any) {
                           set_process(() => {
-                            arg.value = new_value
+                            if (typeof new_value == 'function') {
+                              arg.value = new_value(arg.value)
+                            } else {
+                              arg.value = new_value
+                            } 
                           })
                         }
                       })}></Arg>
