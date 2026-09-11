@@ -2,7 +2,7 @@
 
 <!-- not necessarily in one album -->
 
-# .
+# . downloads
 
 tmp
 
@@ -555,7 +555,7 @@ yt-dlp \
   --match-filters "view_count > 1000000"
 ```
 
-# .
+# . guide
 
 title - album - artist
 
@@ -2041,3 +2041,8 @@ Would you like help mapping out a specific combination of conditions (such as tr
   incorrect documentation for --match-filters #12177 - GitHub\
   Jan 23, 2025 — Provide a description that is worded well enough to be understood. the git documentation reads: --match-filters FILTER Generic vid...\
   GitHub
+
+# . thinking 2026.09.11
+
+sometimes it leaves some empty webp.
+

@@ -316,6 +316,7 @@ web: <!-- frontend, web, ts/js -->
 - component tooltip css triangle
 - css margin collapse
 - emmet abbr syntax
+- component popup about preferences keyboard shortcuts
 
 backend:
 
