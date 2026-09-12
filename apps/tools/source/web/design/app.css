@@ -975,6 +975,15 @@ textarea {
       align-self: center;
     }
 
+    .button_back {
+      position: absolute;
+      left: 0;
+
+      width: var(--titlebar-height);
+
+      justify-self: flex-end;
+    }
+
     .button_close {
       position: absolute;
       right: 0;

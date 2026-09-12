@@ -4711,6 +4711,13 @@ how would i map "about" itself?
 
 make it work.
 
+---
+
+well, feels vscode icon back is... quite small cmp w close.
+
+i dont think i should apply scale, or toggle the svg myself.
+
+
 
 
 00 40 web/lib/props: generalize. pass down false value. nullify non obj props.

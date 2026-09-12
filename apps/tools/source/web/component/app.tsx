@@ -166,6 +166,7 @@ export function App() {
         open: open_about, toggle_open: toggle_open_about,
         name: 'Tools',
         author: 'Headquarters',
+        version: '0.5 (2026.08.22)'
       })}></About>
     </div>
   </>
