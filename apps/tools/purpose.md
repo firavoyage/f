@@ -4736,9 +4736,6 @@ and nothing happens onclick, unless there is a link or an email.
 
 maybe i can make them copiable.
 
-
-
 00 40 web/lib/props: generalize. pass down false value. nullify non obj props.
-
 
 
