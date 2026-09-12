@@ -997,6 +997,7 @@ textarea {
   .info {
     margin-block: var(--spacing-4);
 
+    
     .about_icon {
       align-items: center;
 
@@ -1050,8 +1051,14 @@ textarea {
     }
   }
 
+  .h1 {
+    margin-inline: var(--spacing-5);
+
+    font-weight: bold;
+  }
+
   .links {
-    margin-block: var(--spacing-4);
+    margin-bottom: var(--spacing-4);
 
     .button {
       flex-flow: row;

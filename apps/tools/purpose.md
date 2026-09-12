@@ -4717,6 +4717,16 @@ well, feels vscode icon back is... quite small cmp w close.
 
 i dont think i should apply scale, or toggle the svg myself.
 
+---
+
+wait what
+
+```
+> '123'.link
+ƒ link() { [native code] }
+> '123'.link()
+'<a href="undefined">123</a>'
+```
 
 
 
