@@ -22,30 +22,6 @@ export function Popup(props: popup) {
   const popup_ref = useRef()
   const prev_focus_ref = useRef()
 
-  // useEffect(() => {
-  //   const handleKeyDown = (e) => {
-  //     if (e.key !== 'Tab') return;
-
-  //     // Cleanly fetches all visible, interactive keyboard-focusable nodes
-  //     const focusable = tabbable(popup_ref.current);
-  //     if (focusable.length === 0) return;
-
-  //     const first_element = focusable[0];
-  //     const last_element = focusable[focusable.length - 1];
-
-  //     if (e.shiftKey && document.activeElement === first_element) {
-  //       last_element.focus();
-  //       e.preventDefault();
-  //     } else if (!e.shiftKey && document.activeElement === last_element) {
-  //       first_element.focus();
-  //       e.preventDefault();
-  //     }
-  //   };
-
-  //   window.addEventListener('keydown', handleKeyDown);
-  //   return () => window.removeEventListener('keydown', handleKeyDown);
-  // }, [open]);
-
   use_bind('tab', function (e) {
     if (!popup_ref.current || !open) {
       return
