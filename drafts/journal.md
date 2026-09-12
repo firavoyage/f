@@ -54663,6 +54663,10 @@ index pages. computers transfer and manipulate information. tools are to process
 
 wait, i could not comment a line in a multiline command. well, shell...
 
+12
+
+17 30 read `the stranger (albert camus)`.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
