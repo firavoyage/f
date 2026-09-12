@@ -16,7 +16,7 @@ atom
 - dropdown
 - popup
 - scrollarea
-- . toast
+- toast
 - table
 - graph
   - grid

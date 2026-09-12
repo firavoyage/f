@@ -14,19 +14,33 @@ type about = {
 
 type credits = Record<string, people>
 
-type people = person[]
+type people = link[]
 
-type person = string | {
+// type person = string | {
+//   name: string
+//   // email?: string
+//   link?: string
+// }
+
+type links = {
+  links: link[]
+}
+
+type link = string | {
   name: string
-  // email?: string
-  link?: string
+  action: 'expand' | 'open'
+  target: string
 }
 
 async function copy_text(text: string) {
   await navigator.clipboard.writeText(text);
 }
 
+function copy(text: string) {
+  copy_text(text)
 
+  // toast
+}
 
 export function About(props: about) {
   const { open, toggle_open, icon, name, author, version, credits } = props
@@ -55,17 +69,50 @@ export function About(props: about) {
 
   use_bind('esc', navigate_back)
 
-  function copy(text: string) {
-    copy_text(text)
-
-    // toast
-  }
-
   const [is_on_top, toggle_is_on_top] = useToggle(false)
   const [stack, set_stack] = useState(default_stack)
 
-  type page = keyof typeof pages
-  const page: page = stack[stack.length - 1]
+  function Links({ links }: links) {
+    return (
+      <div className="links">
+        {
+          map(links, (link) => {
+            if (typeof link == 'string') {
+              return (
+                <Button {...p({ onClick() { copy(link) } })}>
+                  <div className="label">
+                    {link}
+                  </div>
+                </Button>
+              )
+            } else if (link.action == 'expand') {
+              return (
+                <Button {...p({ onClick() { navigate_into(link.target) } })}>
+                  <div className="label">
+                    {link.name}
+                  </div>
+                  <div className="action">
+                    <Icon {...p({ name: 'expand' })}></Icon>
+                  </div>
+                </Button>
+              )
+            } else if (link.action == 'open') {
+              return (
+                <Button {...p({ tooltip: link.target })}>
+                  <div className="label">
+                    {link.name}
+                  </div>
+                  <div className="action">
+                    <Icon {...p({ name: 'open' })}></Icon>
+                  </div>
+                </Button>
+              )
+            }
+          })
+        }
+      </div>
+    )
+  }
 
   function AboutPage() {
     return (
@@ -85,47 +132,28 @@ export function About(props: about) {
           </Button>
         </div>
         {/* <hr className="hr" /> */}
-        <div className="links">
-          <Button {...p({ onClick() { navigate_into('Credits') } })}>
-            <div className="label">
-              Credits
-            </div>
-            <div className="action">
-              <Icon {...p({ name: 'expand' })}></Icon>
-            </div>
-          </Button>
-        </div>
+        <Links {...p({ links: [
+          {
+            name: 'Credits',
+            action: 'expand',
+            target: 'Credits',
+          }
+        ] })}></Links>
       </>
     )
   }
 
   function Credits() {
-    return map(credits, ([k, v]) => (
+    return map(credits, ([work, people]) => (
       <>
-        <h1 className="h1">{k}</h1>
-        <div className="links">
-          {
-            map(v, (person) => (
-              typeof person == 'string' ?
-                <Button {...p({ onClick() { copy(person) } })}>
-                  <div className="label">
-                    {person}
-                  </div>
-                </Button> :
-                <Button {...p({ tooltip: person.link })}>
-                  <div className="label">
-                    {person.name}
-                  </div>
-                  <div className="action">
-                    <Icon {...p({ name: 'open' })}></Icon>
-                  </div>
-                </Button>
-            ))
-          }
-        </div>
+        <h1 className="h1">{work}</h1>
+        <Links {...p({ links: people })}></Links>
       </>
     ))
   }
+
+  type page = keyof typeof pages
+  const page: page = stack[stack.length - 1]
 
   const pages = {
     About: AboutPage,

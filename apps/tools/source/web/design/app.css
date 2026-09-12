@@ -891,6 +891,14 @@ textarea {
   transition: opacity var(--transition-backdrop);
 }
 
+.toasts {
+  position: fixed;
+
+  .toast {
+
+  }
+}
+
 .table {
   overflow: auto;
 
