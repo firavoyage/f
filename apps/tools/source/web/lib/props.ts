@@ -48,6 +48,10 @@ type RelaxedProps = Record<any, any> & {
 export function p<T>(
   props: RelaxedProps & T
 ): T {
+  if (typeof props != 'object') {
+    return {}
+  } 
+
   // export function p<Tag extends keyof React.JSX.IntrinsicElements>(
   //   props: RelaxedProps<React.JSX.IntrinsicElements[Tag]>
   // ): any {
