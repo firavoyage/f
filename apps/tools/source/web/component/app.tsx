@@ -166,7 +166,18 @@ export function App() {
         open: open_about, toggle_open: toggle_open_about,
         name: 'Tools',
         author: 'Headquarters',
-        version: '0.5 (2026.08.22)'
+        version: '0.0 (2026.09.12)',
+        credits: {
+          'Code by': [
+            'Fira'
+          ],
+          'Design by': [
+            'Headquarters Design Team'
+          ],
+          'Artwork by': [
+            'Headquarters Design Team'
+          ],
+        }
       })}></About>
     </div>
   </>

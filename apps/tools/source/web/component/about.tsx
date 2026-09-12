@@ -9,7 +9,17 @@ type about = {
   name: string
   author?: string
   version?: string
+  credits: credits
+}
 
+type credits = Record<string, people>
+
+type people = person[]
+
+type person = string | {
+  name: string
+  // email?: string
+  link?: string
 }
 
 async function copy(text: string) {
@@ -17,9 +27,15 @@ async function copy(text: string) {
 }
 
 export function About(props: about) {
-  const { open, toggle_open, icon, name, author, version } = props
+  const { open, toggle_open, icon, name, author, version, credits } = props
+
+  const default_stack = ['About']
 
   function close() {
+    // in case react state persists somehow
+    // yeah, closed != unmounted
+    set_stack(default_stack)
+
     toggle_open(false)
   }
 
@@ -44,7 +60,7 @@ export function About(props: about) {
   }
 
   const [is_on_top, toggle_is_on_top] = useToggle(false)
-  const [stack, set_stack] = useState(['About'])
+  const [stack, set_stack] = useState(default_stack)
 
   type page = keyof typeof pages
   const page: page = stack[stack.length - 1]
@@ -82,7 +98,33 @@ export function About(props: about) {
   }
 
   function Credits() {
-
+    return map(credits, ([k, v]) => (
+      <>
+        <h1 className="h1">{k}</h1>
+        <div className="links">
+          {
+            map(v, (person) => (
+              <Button>
+                {
+                  typeof person == 'string' ?
+                    <div className="label">
+                      {person}
+                    </div> :
+                    <>
+                      <div className="label">
+                        {person.name}
+                      </div>
+                      <div className="action">
+                        <Icon {...p({ name: 'open' })}></Icon>
+                      </div>
+                    </>
+                }
+              </Button>
+            ))
+          }
+        </div>
+      </>
+    ))
   }
 
   const pages = {
@@ -99,6 +141,7 @@ export function About(props: about) {
       <div className="about">
         <div className="titlebar">
           {
+            !is_on_homepage &&
             <Button {...p({ class: 'button_back', onClick: navigate_back })}>
               <Icon {...p({ name: 'back' })}></Icon>
             </Button>
@@ -121,8 +164,5 @@ export function About(props: about) {
   )
 }
 
-type credits = {
-
-}
 
 
