@@ -309,3 +309,9 @@ component/popup: fix keyboard navigation, trap focus when open
 component/toast: scroll to bottom on new toast
 
 just in case
+
+---
+
+component/toast: have a fade out effect
+
+
