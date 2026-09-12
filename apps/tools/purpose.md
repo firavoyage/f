@@ -4644,4 +4644,47 @@ i may use a symbol for undefined.
 
 05 20 web/component/switch: style switch.
 
+13
+
+00 20 web/component/about: complete features.
+
+i want to...
+
+- make close non selectable. maybe it (tab index -1) would work. i will test.
+- support nested pages. i will have a stack. map page to component. show the top of stack. create navigation.
+- have a basic structure on credits, and links
+  - i think links should either expand or open external. maybe i would have this constraint. you may be non clickable, 
+- copy version, show a toast. i will show which on the corner maybe. they know what they are doing. no need to grab attention. if they want to confirm, they can.
+- trap keyboard focus. it would be easy if there are no quirks.
+
+---
+
+will tab index -1 work?
+
+it works flawlessly out of box. 
+
+maybe i will make it a prop. it's common. how would i name it.
+
+no need to say "variant". it may have many categories, not a single type. <!-- Aristotelian vs. Prototype Theory -->
+
+let's say "focusable = false". more self explanatory than tabindex -1. 
+
+wait, props would omit false values. and it would become the default value...
+
+what if i just keep false values? how will react do if it were native html attrs?
+
+ok! fortunately, here is how react does:
+
+- if it's a boolean attr, apply `attr` (not `attr="true"`) if true, omit otherwise
+  - html only cares existence, react explicitly warns `attr="false"` would not work as expected
+- if not, react would omit anyway unless it's string. or number? y.
+
+confirmed.
+
+> index.tsx:45 Invalid value for prop `foo` on <button> tag. Either remove it from the element, or pass a string or number value to keep it in the DOM. For details, see https://react.dev/link/attribute-behavior
+
+that's perfect. i can pass down false values. (as i silenced irrelevant warnings)
+
+---
+
 

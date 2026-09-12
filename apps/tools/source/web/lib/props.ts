@@ -83,8 +83,8 @@ export function p<T>(
             // converted_props[normalized_key] = "t"
             // converted_props[normalized_key] = true
           } else {
-            continue
-            // converted_props[normalized_key] = false
+            converted_props[normalized_key] = false
+            // continue
           }
         } else {
           converted_props[normalized_key] = value
