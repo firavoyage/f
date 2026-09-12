@@ -1,3 +1,5 @@
+import { useMemo } from "react"
+import { toast, use_global } from "./app"
 import { Button } from "./button"
 import { Popup } from "./popup"
 import { Scroll } from "./scroll"
@@ -39,7 +41,8 @@ async function copy_text(text: string) {
 function copy(text: string) {
   copy_text(text)
 
-  // toast
+  // use_global.set(() => {})
+  toast('Copied to clipboard')
 }
 
 export function About(props: about) {
@@ -132,13 +135,15 @@ export function About(props: about) {
           </Button>
         </div>
         {/* <hr className="hr" /> */}
-        <Links {...p({ links: [
-          {
-            name: 'Credits',
-            action: 'expand',
-            target: 'Credits',
-          }
-        ] })}></Links>
+        <Links {...p({
+          links: [
+            {
+              name: 'Credits',
+              action: 'expand',
+              target: 'Credits',
+            }
+          ]
+        })}></Links>
       </>
     )
   }
@@ -160,7 +165,13 @@ export function About(props: about) {
     Credits
   }
 
+  // fix focus lost on rerender (i.e. toast)
+  for (const [key, value] of entries(pages)) {
+    pages[key] = useMemo(value, [])
+  }
+
   const Page = pages[page]
+  // const Page = useMemo(pages[page], [])
 
   const is_on_homepage = page == 'About'
 
@@ -185,7 +196,8 @@ export function About(props: about) {
           </Button>
         </div>
         <Scroll {...p({ toggle_is_on_top })}>
-          <Page></Page>
+          {Page}
+          {/* <Page></Page> */}
         </Scroll>
       </div>
     </Popup>

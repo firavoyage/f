@@ -904,6 +904,8 @@ textarea {
 }
 
 .toasts {
+  z-index: var(--hierarchy-toast);
+
   position: fixed;
 
   bottom: 0;
