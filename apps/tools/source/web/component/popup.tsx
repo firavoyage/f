@@ -19,6 +19,18 @@ export function Popup(props: popup) {
   }
 
   const popup_ref = useRef()
+  const prev_focus_ref = useRef()
+
+  // restore focus when exit
+  useEffect(() => {
+    if (open) {
+      prev_focus_ref.current = document.activeElement
+    } else {
+      prev_focus_ref.current?.focus()
+    } 
+
+    return () => prev_focus_ref.current?.focus()
+  }, [open])
 
   // listen for outside clicks
   useEvent('mousedown', function (e) {
@@ -28,6 +40,7 @@ export function Popup(props: popup) {
 
     if (!popup_ref.current.contains(e.target)) {
       click_outside()
+      // e.preventDefault()
     }
   })
 
