@@ -17,6 +17,7 @@ import { Hamburger } from './hamburger';
 import { Button } from './button';
 import { About } from './about';
 import { Scroll } from './scroll';
+import { Toast } from './toast';
 
 export const use_global = state({
   'input': '',
@@ -62,6 +63,22 @@ export const use_global = state({
   //     'main' : state['navigation.tool']
   // }
 })
+
+export const use_toasts = state(new Map())
+
+export function toast(message: string, duration = 100000) {
+  const id = Math.random()
+
+  use_toasts.set(() => {
+    use_toasts.data.set(id, message)
+  })
+
+  setTimeout(function () {
+    use_toasts.set(() => {
+      use_toasts.data.delete(id)
+    })
+  }, duration)
+}
 
 export type shortcut = {
   key: string
@@ -125,6 +142,9 @@ export function App() {
   const [theme, set_theme] = use_global('appearance.theme')
   const [density, set_density] = use_global('appearance.density')
 
+  const [toasts, set_toasts] = use_toasts()
+
+
   const [open_about, toggle_open_about] = useToggle(false)
 
   const commands = use_commands()
@@ -143,7 +163,7 @@ export function App() {
         <Menu {...p({ app: 'Tools' })}></Menu>
         <Scroll>
           <Hamburger>
-            <Button>Preferences</Button>
+            <Button {...p({ onClick(){toast(Math.random())} })}>Preferences</Button>
             <Button>Keyboard Shortcuts</Button>
             <Button {...p({ onClick: toggle_open_about })}>About</Button>
             <hr {...p({ class: 'hr' })} />
@@ -181,6 +201,19 @@ export function App() {
           ],
         }
       })}></About>
+      <div className="toasts">
+        {
+          map(toasts, ([id, message]) => (
+            <Toast {...p({
+              message, close() {
+                use_toasts.set(() => {
+                  use_toasts.data.delete(id)
+                })
+              }
+            })}></Toast>
+          ))
+        }
+      </div>
     </div>
   </>
 }
