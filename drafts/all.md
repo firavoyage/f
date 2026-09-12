@@ -318,6 +318,7 @@ web: <!-- frontend, web, ts/js -->
 - emmet abbr syntax
 - component popup about preferences keyboard shortcuts
 - userscript ruler
+- component switch
 
 backend:
 

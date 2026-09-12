@@ -701,16 +701,20 @@ textarea {
     height: var(--spacing-5);
     aspect-ratio: 1;
 
-    margin-inline: var(--spacing-0\.5);
-
     border-radius: var(--radius-full);
 
-    background-color: var(--color-fg-primary);
+    background-color: color-mix(in srgb, var(--color-fg-primary) 80%, transparent);
+    :hover > &, [checked] > & {
+      background-color: var(--color-fg-primary);
+    }
 
-    /* transform: translateX(var(--spacing-0\.5)); */
+    --margin: var(--spacing-0\.5);
 
-    [checked] & {
-      transform: translateX(var(--spacing-5));
+    transform: translateX(var(--margin));
+
+    [checked] > & {
+      right: 0;
+      transform: translateX(calc(var(--spacing-5) - var(--margin)));
     }
 
     transition: transform var(--transition-backdrop);
