@@ -232,6 +232,7 @@ archi:
 - compare null and nil
 - writing style bold punctuation mark
 - compare writing styles
+- spaghetti code
 
 web: <!-- frontend, web, ts/js -->
 

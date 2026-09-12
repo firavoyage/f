@@ -4736,6 +4736,14 @@ and nothing happens onclick, unless there is a link or an email.
 
 maybe i can make them copiable.
 
+---
+
+why adwaita focus "version" when i open about...
+
+anyway. i think i would focus popup container instead, generally speaking.
+
+you would focus the first element, of body, not the second when you tab, right?
+
 00 40 web/lib/props: generalize. pass down false value. nullify non obj props.
 
 
