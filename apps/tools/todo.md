@@ -1,9 +1,9 @@
 # plan
 
+- create a storybook
 - prettier (default?)
 - visualize obj/table?
 - create pattern/page components and make every button clickable, e.g. hamburger menu, command palette
-- create a storybook, style switch
 - (code?, repo, have, humility, pure, ...)
 
 ref
