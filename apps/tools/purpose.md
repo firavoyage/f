@@ -4687,4 +4687,33 @@ that's perfect. i can pass down false values. (as i silenced irrelevant warnings
 
 ---
 
+(idk how to say "ive completed a new trivial task. i will keep/continue working now.". and i dont wanna divide commits. that would be corp boilerplate, i mean boring.)
+
+maybe i would continue writing here. <!-- it's clear where it belongs. and git would record everything. (events within 20min are trivial) -->
+
+---
+
+how to support nested pages?
+
+i will
+
+- maintain a state, which is stack = About
+- show the top of stack
+- when esc/click back button
+  - pop the stack
+  - if it could not, close
+
+btw, for title, it seems adwaita only hides when it's on about (main page) _and_ scroll top = 0
+
+how would i map "about" itself?
+
+~~maybe a dedicated "about page" would make my life easier in case i wanna support page transition in the future.~~ doesnt feel i have to. btw, about page is always at the bottom.
+
+make it work.
+
+
+
+00 40 web/lib/props: generalize. pass down false value. nullify non obj props.
+
+
 

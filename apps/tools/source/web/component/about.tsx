@@ -21,23 +21,24 @@ export function About(props: about) {
 
   use_bind('esc', close)
 
-  const [is_top, toggle_is_top] = useToggle(false)
+  const [is_on_top, toggle_is_on_top] = useToggle(false)
+  const [stack, set_stack] = useState(['About'])
 
   return (
     <Popup {...p({ open, toggle_open })}>
       <div className="about">
         <div className="titlebar">
           {
-            !is_top &&
+            !is_on_top &&
             <div className="title">
               About
             </div>
           }
-          <Button {...p({ class: 'button_close', onClick: close, "tab-index": -1 })}>
+          <Button {...p({ class: 'button_close', onClick: close, focusable: false })}>
             <Icon {...p({ name: 'close' })}></Icon>
           </Button>
         </div>
-        <Scroll {...p({ toggle_is_top })}>
+        <Scroll {...p({ toggle_is_on_top })}>
           <div className="info">
             <div className="about_icon">
               {icon}
