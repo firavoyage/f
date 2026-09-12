@@ -7,8 +7,8 @@ type about = {
   toggle_open
   icon?
   name: string
-  author?: string
-  version?: string
+  author: string
+  version: string
   credits: credits
 }
 
@@ -22,9 +22,11 @@ type person = string | {
   link?: string
 }
 
-async function copy(text: string) {
+async function copy_text(text: string) {
   await navigator.clipboard.writeText(text);
 }
+
+
 
 export function About(props: about) {
   const { open, toggle_open, icon, name, author, version, credits } = props
@@ -53,8 +55,8 @@ export function About(props: about) {
 
   use_bind('esc', navigate_back)
 
-  function copy_version() {
-    copy(version)
+  function copy(text: string) {
+    copy_text(text)
 
     // toast
   }
@@ -78,7 +80,7 @@ export function About(props: about) {
           <div className="author">
             {author}
           </div>
-          <Button {...p({ class: 'version', onClick: copy_version })}>
+          <Button {...p({ class: 'version', onClick() { copy(version) } })}>
             {version}
           </Button>
         </div>
@@ -104,22 +106,20 @@ export function About(props: about) {
         <div className="links">
           {
             map(v, (person) => (
-              <Button>
-                {
-                  typeof person == 'string' ?
-                    <div className="label">
-                      {person}
-                    </div> :
-                    <>
-                      <div className="label">
-                        {person.name}
-                      </div>
-                      <div className="action">
-                        <Icon {...p({ name: 'open' })}></Icon>
-                      </div>
-                    </>
-                }
-              </Button>
+              typeof person == 'string' ?
+                <Button {...p({ onClick() { copy(person) } })}>
+                  <div className="label">
+                    {person}
+                  </div>
+                </Button> :
+                <Button {...p({ tooltip: person.link })}>
+                  <div className="label">
+                    {person.name}
+                  </div>
+                  <div className="action">
+                    <Icon {...p({ name: 'open' })}></Icon>
+                  </div>
+                </Button>
             ))
           }
         </div>
