@@ -19,6 +19,8 @@ import { About } from './about';
 import { Scroll } from './scroll';
 import { Toast } from './toast';
 
+const default_toast_duration = 1000
+
 export const use_global = state({
   'input': '',
   'output': '',
@@ -66,7 +68,7 @@ export const use_global = state({
 
 export const use_toasts = state(new Map())
 
-export function toast(message: string, duration = 100000) {
+export function toast(message: string, duration = default_toast_duration) {
   const id = Math.random()
 
   use_toasts.set(() => {
@@ -163,7 +165,7 @@ export function App() {
         <Menu {...p({ app: 'Tools' })}></Menu>
         <Scroll>
           <Hamburger>
-            <Button {...p({ onClick(){toast(Math.random())} })}>Preferences</Button>
+            <Button {...p({ onClick() { toast(Math.random()) } })}>Preferences</Button>
             <Button>Keyboard Shortcuts</Button>
             <Button {...p({ onClick: toggle_open_about })}>About</Button>
             <hr {...p({ class: 'hr' })} />
@@ -202,17 +204,19 @@ export function App() {
         }
       })}></About>
       <div className="toasts">
-        {
-          map(toasts, ([id, message]) => (
-            <Toast {...p({
-              message, close() {
-                use_toasts.set(() => {
-                  use_toasts.data.delete(id)
-                })
-              }
-            })}></Toast>
-          ))
-        }
+        <Scroll {...p({ scrollbar: false })}>
+          {
+            map(toasts, ([id, message]) => (
+              <Toast {...p({
+                message, close() {
+                  use_toasts.set(() => {
+                    use_toasts.data.delete(id)
+                  })
+                }
+              })}></Toast>
+            ))
+          }
+        </Scroll>
       </div>
     </div>
   </>

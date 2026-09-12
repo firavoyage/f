@@ -11,9 +11,11 @@ export function Toast({ message, close }: toast) {
       <div className="message">
         {message}
       </div>
-      <Button {...p({ onClick: close })}>
-        <Icon {...p({ name: 'close' })}></Icon>
-      </Button>
+      <div className="actions">
+        <Button {...p({ onClick: close })}>
+          <Icon {...p({ name: 'close' })}></Icon>
+        </Button>
+      </div>
     </div>
   )
 }

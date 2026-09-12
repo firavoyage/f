@@ -563,6 +563,13 @@ body {
   > * {
     flex-shrink: 0;
   }
+
+  &[noscrollbar] {
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }
 
 .menu,
@@ -703,8 +710,13 @@ textarea {
 
     border-radius: var(--radius-full);
 
-    background-color: color-mix(in srgb, var(--color-fg-primary) 80%, transparent);
-    :hover > &, [checked] > & {
+    background-color: color-mix(
+      in srgb,
+      var(--color-fg-primary) 80%,
+      transparent
+    );
+    :hover > &,
+    [checked] > & {
       background-color: var(--color-fg-primary);
     }
 
@@ -894,8 +906,35 @@ textarea {
 .toasts {
   position: fixed;
 
-  .toast {
+  bottom: 0;
+  right: 0;
 
+  max-height: 100vh;
+
+  .toast {
+    flex-flow: row;
+
+    /* the ones after the same component */
+    & + & {
+      margin-block-start: calc(var(--page-whitespace) / 2);
+    }
+    /* the ones before the same component */
+    &:has(+ &) {
+      margin-block-end: calc(var(--page-whitespace) / 2);
+    }
+    margin: var(--page-whitespace);
+
+    background-color: var(--color-bg-tooltip);
+
+    .message {
+      flex: 1;
+
+      padding: var(--page-whitespace);
+    }
+
+    .actions {
+      width: var(--spacing-10);
+    }
   }
 }
 
@@ -1006,7 +1045,7 @@ textarea {
 
   .info {
     margin-bottom: var(--spacing-4);
-    
+
     .about_icon {
       align-items: center;
 
