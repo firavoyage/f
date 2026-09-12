@@ -33,7 +33,7 @@ export function About(props: about) {
               About
             </div>
           }
-          <Button {...p({ class: 'button_close', onClick: close })}>
+          <Button {...p({ class: 'button_close', onClick: close, "tab-index": -1 })}>
             <Icon {...p({ name: 'close' })}></Icon>
           </Button>
         </div>
@@ -55,7 +55,7 @@ export function About(props: about) {
           </div>
           {/* <hr className="hr" /> */}
           <div className="links">
-            <Button >
+            <Button>
               <div className="label">
                 Credits
               </div>
@@ -71,7 +71,7 @@ export function About(props: about) {
 }
 
 type credits = {
-  
+
 }
 
 
