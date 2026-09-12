@@ -19,15 +19,40 @@ export function Popup(props: popup) {
     toggle_open(false)
   }
 
-  const popup_ref = useRef()
-  const prev_focus_ref = useRef()
+  const popup = useRef()
+  const prev_focus = useRef()
 
-  use_bind('tab', function (e) {
-    if (!popup_ref.current || !open) {
+  // focus first element (or popup itself) when open, restore focus when exit
+  useEffect(() => {
+    if (!popup.current) {
       return
     }
 
-    const focusable = tabbable(popup_ref.current);
+    if (open) {
+      // always true i guess, just in case
+      if (!popup.current.contains(document.activeElement)) {
+        prev_focus.current = document.activeElement
+
+        // const focusable = tabbable(popup_ref.current);
+        // const first_element = focusable[0];
+        // first_element?.focus()
+        popup.current.focus()
+      }
+    } else {
+      prev_focus.current?.focus()
+      prev_focus.current = nil
+    }
+
+    return () => prev_focus.current?.focus()
+  }, [open])
+
+  // trap keyboard when open
+  use_bind('tab', function (e) {
+    if (!popup.current || !open) {
+      return
+    }
+
+    const focusable = tabbable(popup.current);
     if (focusable.length == 0) {
       e.preventDefault()
 
@@ -46,11 +71,11 @@ export function Popup(props: popup) {
   })
 
   use_bind('shift+tab', function (e) {
-    if (!popup_ref.current || !open) {
+    if (!popup.current || !open) {
       return
     }
 
-    const focusable = tabbable(popup_ref.current);
+    const focusable = tabbable(popup.current);
     if (focusable.length == 0) {
       e.preventDefault()
 
@@ -68,29 +93,6 @@ export function Popup(props: popup) {
     prevent_default: false
   })
 
-  // focus first element (or popup itself) when open, restore focus when exit
-  useEffect(() => {
-    if (!popup_ref.current) {
-      return
-    }
-
-    if (open) {
-      prev_focus_ref.current = document.activeElement
-
-      // const focusable = tabbable(popup_ref.current);
-      // const first_element = focusable[0];
-      // first_element?.focus()
-      popup_ref.current.focus()
-    } else {
-      prev_focus_ref.current?.focus()
-    }
-
-    return () => prev_focus_ref.current?.focus()
-  }, [open])
-
-  // trap keyboard when open
-
-
   // listen for outside clicks
   useEvent('mousedown', function (e) {
     if (backdrop) {
@@ -98,11 +100,11 @@ export function Popup(props: popup) {
       e?.preventDefault()
     }
 
-    if (!popup_ref.current) {
+    if (!popup.current) {
       return
     }
 
-    if (!popup_ref.current.contains(e.target)) {
+    if (!popup.current.contains(e.target)) {
       click_outside()
     }
   })
@@ -111,7 +113,7 @@ export function Popup(props: popup) {
     <>
       {
         open &&
-        <div className="popup" {...p({ open, ref: popup_ref, tabIndex: -1 })}>
+        <div className="popup" {...p({ open, ref: popup, tabIndex: -1 })}>
           {children}
         </div>
       }
