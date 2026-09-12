@@ -169,7 +169,9 @@ export function App() {
         version: '0.0 (2026.09.12)',
         credits: {
           'Code by': [
-            'Fira'
+            'Fira',
+            'Fira',
+            'Fira',
           ],
           'Design by': [
             'Headquarters Design Team'

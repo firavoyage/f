@@ -965,6 +965,8 @@ textarea {
 
     height: var(--titlebar-height);
 
+    margin-bottom: var(--spacing-4);
+
     .title {
       flex: 1;
 
@@ -995,8 +997,7 @@ textarea {
   }
 
   .info {
-    margin-block: var(--spacing-4);
-
+    margin-bottom: var(--spacing-4);
     
     .about_icon {
       align-items: center;
@@ -1052,12 +1053,13 @@ textarea {
   }
 
   .h1 {
-    margin-inline: var(--spacing-5);
+    margin-inline: var(--spacing-4);
 
-    font-weight: bold;
+    font: bold var(--text-base) var(--typeface-sans);
   }
 
   .links {
+    margin-top: var(--spacing-2);
     margin-bottom: var(--spacing-4);
 
     .button {

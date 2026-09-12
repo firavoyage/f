@@ -34,7 +34,8 @@ pattern
 - . preferences
 - . shortcuts <!-- keyboard shortcuts -->
 - . about
-  - . credits
+  - links
+  - credits
 
 page
 
