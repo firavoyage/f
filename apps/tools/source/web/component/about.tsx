@@ -12,6 +12,10 @@ type about = {
 
 }
 
+async function copy(text: string) {
+  await navigator.clipboard.writeText(text);
+}
+
 export function About(props: about) {
   const { open, toggle_open, icon, name, author, version } = props
 
@@ -19,19 +23,90 @@ export function About(props: about) {
     toggle_open(false)
   }
 
-  use_bind('esc', close)
+  function navigate_back() {
+    if (stack.length == 1) {
+      close()
+    } else {
+      set_stack(stack.slice(0, -1))
+    }
+  }
+
+  function navigate_into(page: page) {
+    set_stack([...stack, page])
+  }
+
+  use_bind('esc', navigate_back)
+
+  function copy_version() {
+    copy(version)
+
+    // toast
+  }
 
   const [is_on_top, toggle_is_on_top] = useToggle(false)
   const [stack, set_stack] = useState(['About'])
+
+  type page = keyof typeof pages
+  const page: page = stack[stack.length - 1]
+
+  function AboutPage() {
+    return (
+      <>
+        <div className="info">
+          <div className="about_icon">
+            {icon}
+          </div>
+          <div className="name">
+            {name}
+          </div>
+          <div className="author">
+            {author}
+          </div>
+          <Button {...p({ class: 'version', onClick: copy_version })}>
+            {version}
+          </Button>
+        </div>
+        {/* <hr className="hr" /> */}
+        <div className="links">
+          <Button {...p({ onClick() { navigate_into('Credits') } })}>
+            <div className="label">
+              Credits
+            </div>
+            <div className="action">
+              <Icon {...p({ name: 'expand' })}></Icon>
+            </div>
+          </Button>
+        </div>
+      </>
+    )
+  }
+
+  function Credits() {
+
+  }
+
+  const pages = {
+    About: AboutPage,
+    Credits
+  }
+
+  const Page = pages[page]
+
+  const is_on_homepage = page == 'About'
 
   return (
     <Popup {...p({ open, toggle_open })}>
       <div className="about">
         <div className="titlebar">
           {
-            !is_on_top &&
+            <Button {...p({ class: 'button_back', onClick: navigate_back })}>
+              <Icon {...p({ name: 'back' })}></Icon>
+            </Button>
+          }
+          {
+            (!is_on_homepage || !is_on_top) &&
             <div className="title">
-              About
+              {page}
             </div>
           }
           <Button {...p({ class: 'button_close', onClick: close, focusable: false })}>
@@ -39,32 +114,7 @@ export function About(props: about) {
           </Button>
         </div>
         <Scroll {...p({ toggle_is_on_top })}>
-          <div className="info">
-            <div className="about_icon">
-              {icon}
-            </div>
-            <div className="name">
-              {name}
-            </div>
-            <div className="author">
-              {author}
-            </div>
-            <div className="version">
-              0.5 (2026.08.22)
-              {version}
-            </div>
-          </div>
-          {/* <hr className="hr" /> */}
-          <div className="links">
-            <Button>
-              <div className="label">
-                Credits
-              </div>
-              <div className="action">
-                <Icon {...p({ name: 'expand' })}></Icon>
-              </div>
-            </Button>
-          </div>
+          <Page></Page>
         </Scroll>
       </div>
     </Popup>
