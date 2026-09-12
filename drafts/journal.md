@@ -54667,6 +54667,10 @@ wait, i could not comment a line in a multiline command. well, shell...
 
 17 30 read `the stranger (albert camus)`.
 
+17 50 introduce the family to lichess. play the tutorial of piece moves.
+
+they quit.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
