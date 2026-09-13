@@ -320,6 +320,7 @@ web: <!-- frontend, web, ts/js -->
 - component popup about preferences keyboard shortcuts
 - userscript ruler
 - component switch
+- storybook
 
 backend:
 
