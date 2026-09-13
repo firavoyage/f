@@ -43,16 +43,18 @@ export function Shortcuts(props: shortcuts) {
           </Button>
         </div>
         <Scroll {...p({ toggle_is_on_top })}>
-          {map(shortcuts, ({ command, key }) => (
-            <Button className="shortcut">
-              <div className="label">
-                {command}
-              </div>
-              <div className="key">
-                {key}
-              </div>
-            </Button>
-          ))}
+          <div className="body">
+            {map(shortcuts, ({ command, key }) => (
+              <Button className="shortcut">
+                <div className="label">
+                  {command}
+                </div>
+                <div className="key">
+                  {key}
+                </div>
+              </Button>
+            ))}
+          </div>
         </Scroll>
       </div>
     </Popup>

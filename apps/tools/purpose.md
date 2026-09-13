@@ -4784,5 +4784,13 @@ seems alt p should toggle process panel rather than "focus(only show) process pa
 
 if you let ctrl ? open shortcuts, why not let it close.
 
+---
+
+adwaita is designed to be responsive. after a mobile breakpoint, it eliminates the inline and bottom margins, and make it a drawer (from bottom) instead of a centered popup.
+
+---
+
+dont feel i have to style shortcut keys as adw. just plain text for now.
+
 
 

@@ -205,18 +205,22 @@ export function About(props: about) {
           </Button>
         </div>
         <Scroll {...p({ toggle_is_on_top })}>
-          {/* fix focus (prev active element is gone when dom elements recreated) */}
-          {
-            map(pages, ([name, component]) => ((
-              <div {...p(name != page && { style: {
-                display: 'none'
-              } })}>
-                {component}
-              </div>
-            )))
-          }
-          {/* {Page} */}
-          {/* <Page></Page> */}
+          <div className="body">
+            {
+              // fix focus (prev active element is gone in conditional rendering)
+              map(pages, ([name, component]) => ((
+                <div {...p(name != page && {
+                  style: {
+                    display: 'none'
+                  }
+                })}>
+                  {component}
+                </div>
+              )))
+            }
+            {/* {Page} */}
+            {/* <Page></Page> */}
+          </div>
         </Scroll>
       </div>
     </Popup>
