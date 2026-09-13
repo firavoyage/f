@@ -33,10 +33,10 @@ export function Popup(props: popup) {
       if (!popup.current.contains(document.activeElement)) {
         prev_focus.current = document.activeElement
 
-        // const focusable = tabbable(popup_ref.current);
-        // const first_element = focusable[0];
-        // first_element?.focus()
-        popup.current.focus()
+        const focusable = tabbable(popup.current);
+        const first_element = focusable[0];
+        first_element?.focus()
+        // popup.current.focus()
       }
     } else {
       prev_focus.current?.focus()
