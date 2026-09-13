@@ -1,9 +1,10 @@
 # plan
 
 - create a storybook
+- create command palette, preferences, keyboard shortcuts
+  - make every button usable 
 - prettier (default?)
 - visualize obj/table?
-- create pattern/page components and make every button clickable, e.g. hamburger menu, command palette
 - (code?, repo, have, humility, pure, ...)
 
 ref
