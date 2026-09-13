@@ -21,6 +21,22 @@ import { Toast } from './toast';
 
 const default_toast_duration = 1000
 
+export const use_toasts = state(new Map())
+
+export function toast(message: string, duration = default_toast_duration) {
+  const id = Math.random()
+
+  use_toasts.set(() => {
+    use_toasts.data.set(id, message)
+  })
+
+  setTimeout(function () {
+    use_toasts.set(() => {
+      use_toasts.data.delete(id)
+    })
+  }, duration)
+}
+
 export const use_global = state({
   'input': '',
   'output': '',
@@ -66,30 +82,20 @@ export const use_global = state({
   // }
 })
 
-export const use_toasts = state(new Map())
-
-export function toast(message: string, duration = default_toast_duration) {
-  const id = Math.random()
-
-  use_toasts.set(() => {
-    use_toasts.data.set(id, message)
-  })
-
-  setTimeout(function () {
-    use_toasts.set(() => {
-      use_toasts.data.delete(id)
-    })
-  }, duration)
-}
-
 export type shortcut = {
   key: string
   command: command
 }
 
+type command = keyof ReturnType<typeof use_commands>
+
 export const shortcuts: shortcut[] = [
   {
     key: "ctrl+b",
+    command: "toggle sidebar"
+  },
+  {
+    key: "alt+s",
     command: "toggle sidebar"
   },
   {
@@ -104,19 +110,25 @@ export const shortcuts: shortcut[] = [
     key: "ctrl+?",
     command: "open keyboard shortcuts",
   },
+  {
+    key: "alt+p",
+    command: "toggle process panel",
+  },
+  {
+    key: "alt+i",
+    command: "toggle input panel",
+  },
+  {
+    key: "alt+o",
+    command: "toggle output panel",
+  },
 ]
-
-type command = keyof ReturnType<typeof use_commands>
-
-let call_command: any
-
-export function command(command: command) {
-  // no possible race condition, no action could fire before app (ignore if so)
-  call_command?.(command)
-}
 
 function use_commands() {
   const [, toggle_sidebar] = use_global('appearance.layout.sidebar.is visible')
+  const [, toggle_process] = use_global('appearance.layout.process.is visible')
+  const [, toggle_input] = use_global('appearance.layout.input.is visible')
+  const [, toggle_output] = use_global('appearance.layout.output.is visible')
 
   const commands = {
     "toggle sidebar": toggle_sidebar,
@@ -129,6 +141,9 @@ function use_commands() {
     "open settings"() {
       log('open settings')
     },
+    'toggle process panel': toggle_process,
+    'toggle input panel': toggle_input,
+    'toggle output panel': toggle_output,
   }
 
   call_command = function call(command: keyof typeof commands) {
@@ -221,3 +236,11 @@ export function App() {
     </div>
   </>
 }
+
+export function command(command: command) {
+  // no possible race condition, no action could fire before app (ignore if so)
+  call_command?.(command)
+}
+
+let call_command: any
+

@@ -1,8 +1,8 @@
 # plan
 
-- customize scroll area
 - create command palette, preferences, keyboard shortcuts
   - make every button usable 
+- customize scroll area
 - prettier (default?)
 - visualize obj/table?
 - (code?, repo, have, humility, pure, ...)
