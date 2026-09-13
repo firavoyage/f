@@ -1,4 +1,4 @@
-import { toast, use_global } from "web/component/app"
+import { toast } from "web/component/toast"
 
 async function copy_text(text: string) {
   await navigator.clipboard.writeText(text);

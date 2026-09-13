@@ -341,4 +341,10 @@ component/shortcuts: make it searchable.
 
 idk if needed for now. but i will have it.
 
+---
+
+component/popup: support variant where it can be draggable wo keyboard trap
+
+see ptyxis/pref. it's just a regular (even recognized by the desktop env) window. you can drag it away and do what you want. it would center initially and get your focus. it would not trap your keyboard.
+
 

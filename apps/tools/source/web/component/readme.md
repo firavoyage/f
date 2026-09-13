@@ -33,7 +33,7 @@ pattern
 - list
 - . commands <!-- command palette -->
 - . preferences
-- . shortcuts <!-- keyboard shortcuts -->
+- shortcuts <!-- keyboard shortcuts -->
 - about
   - links
   - credits
