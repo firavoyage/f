@@ -4748,6 +4748,6 @@ you would focus the first element, of body, not the second when you tab, right?
 
 20 10 web/component/popup: fix to only detect outside clicks when open.
 
-20 20 web/component/popup: polish keyboard focus. support initial focus option.
+20 20 web/component/popup: polish keyboard focus. support initial focus option. restore focus on navigation back.
 
 
