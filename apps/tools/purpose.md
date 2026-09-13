@@ -4762,5 +4762,18 @@ yeah, i was too careless and heuristic, assuming it were already narrowed to the
 
 an agentic code reviewer (in bg) would definitely save my time. but most time it's irrelevant... it needs quite an engineering to make it useful and less noisy.
 
+14
+
+01 20 think on storybook.
+
+a component need props. it's hard to know automatically wo ts lsp or llms.
+
+the structure is simple. like, n: number, set_n: state(n).
+
+storybook is trivial whatever.
+
+01 30 create command palette, preferences, keyboard shortcuts. create commands (shortcuts) for each panel toggle.
+
+
 
 
