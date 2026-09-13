@@ -4766,11 +4766,15 @@ an agentic code reviewer (in bg) would definitely save my time. but most time it
 
 01 20 think on storybook.
 
-a component need props. it's hard to know automatically wo ts lsp or llms.
+a component need props. it's hard to know automatically wo ts lsp or llms. also, i have no idea of internal states.
 
 the structure is simple. like, n: number, set_n: state(n).
 
 storybook is trivial whatever.
+
+ref: https://recharts.github.io/en-US/storybook/
+
+<!-- btw, interesting, doesnt seem recharts want me to draw arbitrary fn graphs. -->
 
 01 30 create command palette, preferences, keyboard shortcuts. create commands (shortcuts) for each panel toggle.
 
