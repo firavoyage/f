@@ -103,21 +103,17 @@ export function Popup(props: popup) {
 
   // listen for outside clicks when open
   useEvent('mousedown', function (e) {
-    if (!open) {
-      return
-    }
-
-    if (backdrop) {
-      // prevent focus loss (backdrop should not get focused)
-      e?.preventDefault()
-    }
-
-    if (!popup.current) {
+    if (!open || !popup.current) {
       return
     }
 
     if (!popup.current.contains(e.target)) {
       click_outside()
+
+      if (backdrop) {
+        // prevent focus loss (backdrop should not get focused)
+        e?.preventDefault()
+      }
     }
   })
 

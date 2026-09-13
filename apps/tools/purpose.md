@@ -4750,4 +4750,17 @@ you would focus the first element, of body, not the second when you tab, right?
 
 20 20 web/component/popup: polish keyboard focus. support initial focus option. restore focus on navigation back.
 
+in adwaita everything is memorized. i mean, the scroll top, even the focused element of a sub page. idk if they are serious.
+
+i will focus on back button regardless when a sub page opens.
+
+---
+
+llms really know the common causes, from the search or sof. i dont.
+
+yeah, i was too careless and heuristic, assuming it were already narrowed to the case (all mouse clicks are outside clicks).
+
+an agentic code reviewer (in bg) would definitely save my time. but most time it's irrelevant... it needs quite an engineering to make it useful and less noisy.
+
+
 
