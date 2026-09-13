@@ -11,6 +11,8 @@ ref
 
 adopt more icons https://microsoft.github.io/vscode-codicons/dist/codicon.html
 
+baseui https://base-ui.com/react/components/drawer
+
 # todo: complete utilitarian component system. <!-- s -->
 
 complete utilitarian component system.
@@ -314,5 +316,29 @@ just in case
 ---
 
 component/toast: have a fade out effect
+
+---
+
+component/shortcuts: write clearer labels and create taxonomy.
+
+i will name commands in predicates for consistency and self explanability.
+
+nevertheless, i agree it's much clearer to say "preferences" instead of "open ~".
+
+and i may have titles (e.g. general, tab view) and hr.
+
+i can either make it structured or not. you may pass an arbitrary "article" as children. well i think it will be easier to be structured esp when you have internal states (shortcuts). doesnt have to be that flexible.
+
+---
+
+component/shortcuts: polish styling.
+
+i may not copy adw. but currently it doesnt feel really scannable. the width is too much. and boundaries are unclear. think about toc design variations from traditional printing press.
+
+---
+
+component/shortcuts: make it searchable.
+
+idk if needed for now. but i will have it.
 
 

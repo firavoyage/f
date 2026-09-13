@@ -109,7 +109,7 @@ export const shortcuts: shortcut[] = [
   },
   {
     key: "ctrl+,",
-    command: "open settings"
+    command: "open preferences"
   },
   {
     key: "ctrl+?",
@@ -142,8 +142,8 @@ function use_commands() {
       log('search commands')
     },
     "open keyboard shortcuts": 'toggle_open_shortcuts',
-    "open settings"() {
-      log('open settings')
+    "open preferences"() {
+      log('open preferences')
     },
     'toggle process panel': toggle_process,
     'toggle input panel': toggle_input,
