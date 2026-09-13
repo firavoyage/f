@@ -875,17 +875,29 @@ textarea {
 }
 
 .popup {
-  justify-content: center;
-  align-items: center;
-
   z-index: var(--hierarchy-popup);
 
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  &[align=center]{
+    justify-content: center;
+    align-items: center;
+  
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
-  &[open] {
+  &[align=center]{
+    justify-content: center;
+    align-items: center;
+  
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &[open][backdrop] {
     ~ .backdrop {
       z-index: var(--hierarchy-backdrop);
       opacity: 1;
@@ -1129,6 +1141,54 @@ textarea {
 }
 
 .shortcuts {
+  width: var(--max-width-xl);
+  max-width: calc(100vw - var(--spacing-8) * 2);
+
+  max-height: calc(100vh - var(--titlebar-height) * 2);
+
+  background-color: var(--color-bg-primary);
+
+  .body {
+    margin-bottom: var(--spacing-4);
+
+    .button {
+      flex-flow: row;
+  
+      padding-block: var(--page-whitespace);
+      padding-inline: var(--spacing-8);
+  
+      .label {
+        flex: 1;
+      }
+    }
+  }
+}
+
+.preferences {
+  width: var(--max-width-xl);
+  max-width: calc(100vw - var(--spacing-8) * 2);
+
+  max-height: calc(100vh - var(--titlebar-height) * 2);
+
+  background-color: var(--color-bg-primary);
+
+  .body {
+    margin-bottom: var(--spacing-4);
+
+    .button {
+      flex-flow: row;
+  
+      padding-block: var(--page-whitespace);
+      padding-inline: var(--spacing-8);
+  
+      .label {
+        flex: 1;
+      }
+    }
+  }
+}
+
+.commands {
   width: var(--max-width-xl);
   max-width: calc(100vw - var(--spacing-8) * 2);
 

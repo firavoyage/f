@@ -19,6 +19,7 @@ import { About } from './about';
 import { Scroll } from './scroll';
 import { use_toasts, toast, Toast } from './toast';
 import { Preferences } from './preferences';
+import { Commands } from './commands';
 
 export const use_global = state({
   'input': '',
@@ -87,6 +88,10 @@ export const shortcuts: shortcut[] = [
     command: "toggle titlebar"
   },
   {
+    key: "ctrl+p",
+    command: "open command palette"
+  },
+  {
     key: "ctrl+shift+p",
     command: "open command palette"
   },
@@ -121,13 +126,9 @@ function use_commands() {
 
   const commands = {
     "toggle sidebar": toggle_sidebar,
-    "open command palette"() {
-      log('search commands')
-    },
+    "open command palette": 'toggle_open_commands',
     "open keyboard shortcuts": 'toggle_open_shortcuts',
-    "open preferences"() {
-      log('open preferences')
-    },
+    "open preferences": 'toggle_open_preferences',
     'toggle process panel': toggle_process,
     'toggle input panel': toggle_input,
     'toggle output panel': toggle_output,
@@ -154,11 +155,12 @@ export function App() {
 
   const [toasts, set_toasts] = use_toasts()
 
+  const [open_commands, toggle_open_commands] = useToggle(false)
   const [open_shortcuts, toggle_open_shortcuts] = useToggle(false)
   const [open_preferences, toggle_open_preferences] = useToggle(false)
   const [open_about, toggle_open_about] = useToggle(false)
 
-  expose({ toggle_open_shortcuts, toggle_open_preferences })
+  expose({ toggle_open_commands, toggle_open_shortcuts, toggle_open_preferences })
 
   const commands = use_commands()
 
@@ -194,6 +196,9 @@ export function App() {
         </Scroll>
       </Sidebar>
       <Main></Main>
+      <Commands {...p({
+        open: open_commands, toggle_open: toggle_open_commands
+      })}></Commands>
       <Preferences {...p({
         open: open_preferences, toggle_open: toggle_open_preferences
       })}></Preferences>
@@ -220,6 +225,7 @@ export function App() {
           ],
         }
       })}></About>
+      <div className="backdrop"></div>
       <div className="toasts">
         <Scroll {...p({ scrollbar: false })}>
           {

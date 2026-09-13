@@ -6,6 +6,7 @@ type popup = {
   toggle_open
   children
   backdrop?: boolean
+  align?: 'center' | 'top'
   initial_focus?: 'popup_container' | 'first_element'
   // focus?: 'popup_body' | 'first_element'
   click_outside?: fn
@@ -17,6 +18,7 @@ export function Popup(props: popup) {
   // you must pass it down, otherwise (if local state) it could not be opened
   const { children, open, toggle_open,
     backdrop = true,
+    align = 'center',
     initial_focus = 'popup_container',
     click_outside = close } = props
 
@@ -110,8 +112,8 @@ export function Popup(props: popup) {
     if (!popup.current.contains(e.target)) {
       click_outside()
 
-      if (backdrop) {
-        // prevent focus loss (backdrop should not get focused)
+      // prevent focus loss due to a quirk when backdrop z index shifts after focused
+      if (e.target.closest('.backdrop')) {
         e?.preventDefault()
       }
     }
@@ -121,13 +123,9 @@ export function Popup(props: popup) {
     <>
       {
         open &&
-        <div className="popup" {...p({ open, ref: popup, tabIndex: -1 })}>
+        <div className="popup" {...p({ open, backdrop, align, ref: popup, tabIndex: -1 })}>
           {children}
         </div>
-      }
-      {
-        backdrop &&
-        <div className="backdrop" {...p({ onClick: click_outside })}></div>
       }
     </>
   )
