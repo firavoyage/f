@@ -578,8 +578,9 @@ body {
 }
 
 .button,
-.select > .trigger,
+.select .trigger,
 .input,
+.field, /* .number .field */
 .textarea {
   &:focus-visible {
     outline: var(--field-outline-width) solid var(--color-bg-selection);
@@ -760,8 +761,7 @@ textarea {
   }
 }
 
-.input,
-.number > .field {
+.input, .field {
   background: var(--color-bg-secondary);
 
   &::placeholder {
