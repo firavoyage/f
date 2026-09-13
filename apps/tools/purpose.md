@@ -4780,4 +4780,9 @@ ref: https://recharts.github.io/en-US/storybook/
 
 seems alt p should toggle process panel rather than "focus(only show) process panel".
 
+---
+
+if you let ctrl ? open shortcuts, why not let it close.
+
+
 
