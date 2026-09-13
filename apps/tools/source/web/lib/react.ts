@@ -6,10 +6,12 @@ import { useAsync, useAsyncFn, useEvent, useMeasure, useToggle } from "react-use
 import { use_bind } from 'web/lib/use keyboard'
 import { use_sync_theme } from 'web/lib/use sync theme'
 import { use_window_active } from 'web/lib/use window active'
+import { use_variants } from 'web/lib/use variants'
 
 export * from 'web/lib/use keyboard'
 export * from 'web/lib/use sync theme'
 export * from 'web/lib/use window active'
+export * from 'web/lib/use variants'
 
 export function use_measure(options?: Parameters<typeof useMeasure>) {
   const [measureRef, bounds] = useMeasure(options);
@@ -40,6 +42,7 @@ type useEvent = typeof useEvent
 type use_bind = typeof use_bind
 type use_sync_theme = typeof use_sync_theme
 type use_window_active = typeof use_window_active
+type use_variants = typeof use_variants
 declare global {
   var useRef: useRef
   var useState: useState
@@ -52,4 +55,5 @@ declare global {
   var use_bind: use_bind
   var use_sync_theme: use_sync_theme
   var use_window_active: use_window_active
+  var use_variants: use_variants
 }

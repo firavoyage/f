@@ -17,25 +17,8 @@ import { Hamburger } from './hamburger';
 import { Button } from './button';
 import { About } from './about';
 import { Scroll } from './scroll';
-import { Toast } from './toast';
-
-const default_toast_duration = 1000
-
-export const use_toasts = state(new Map())
-
-export function toast(message: string, duration = default_toast_duration) {
-  const id = Math.random()
-
-  use_toasts.set(() => {
-    use_toasts.data.set(id, message)
-  })
-
-  setTimeout(function () {
-    use_toasts.set(() => {
-      use_toasts.data.delete(id)
-    })
-  }, duration)
-}
+import { use_toasts, toast, Toast } from './toast';
+import { Preferences } from './preferences';
 
 export const use_global = state({
   'input': '',
@@ -152,12 +135,12 @@ function use_commands() {
   }
 
   call_command = function call(command: keyof typeof commands) {
-    if (typeof commands?.[command] == 'string') {     
+    if (typeof commands?.[command] == 'string') {
       // @ts-expect-error 
       exposed_commands?.[commands?.[command]]?.()
     } else {
       commands?.[command]?.()
-    } 
+    }
   }
 
   return commands
@@ -172,9 +155,10 @@ export function App() {
   const [toasts, set_toasts] = use_toasts()
 
   const [open_shortcuts, toggle_open_shortcuts] = useToggle(false)
-  expose({ toggle_open_shortcuts })
-
+  const [open_preferences, toggle_open_preferences] = useToggle(false)
   const [open_about, toggle_open_about] = useToggle(false)
+
+  expose({ toggle_open_shortcuts, toggle_open_preferences })
 
   const commands = use_commands()
 
@@ -182,7 +166,7 @@ export function App() {
 
   use_window_active()
 
-  document.documentElement.setAttribute('density', density)
+  use_variants({ density })
 
   return <>
     <title>Tools</title>
@@ -192,7 +176,7 @@ export function App() {
         <Menu {...p({ app: 'Tools' })}></Menu>
         <Scroll>
           <Hamburger>
-            <Button {...p({ onClick() { toast(Math.random()) } })}>Preferences</Button>
+            <Button {...p({ onClick: toggle_open_preferences })}>Preferences</Button>
             <Button {...p({ onClick: toggle_open_shortcuts })}>Keyboard Shortcuts</Button>
             <Button {...p({ onClick: toggle_open_about })}>About</Button>
             <hr {...p({ class: 'hr' })} />
@@ -210,6 +194,9 @@ export function App() {
         </Scroll>
       </Sidebar>
       <Main></Main>
+      <Preferences {...p({
+        open: open_preferences, toggle_open: toggle_open_preferences
+      })}></Preferences>
       <Shortcuts {...p({
         open: open_shortcuts, toggle_open: toggle_open_shortcuts,
         shortcuts, call: command
