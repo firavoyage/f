@@ -1,4 +1,4 @@
-import { use_global } from "./app"
+import { command, use_global } from "./app"
 import { Button } from "./button"
 
 type menu = {
@@ -12,7 +12,9 @@ export function Menu(props: menu) {
 
   return (
     <div className="menu">
-      <Button {...p({ class: 'button_search', tooltip: 'Search' })}>
+      <Button {...p({ class: 'button_search', tooltip: 'Search', onClick(){
+        command('open command palette')
+      } })}>
         <Icon {...p({ name: 'search' })}></Icon>
       </Button>
       <div className="name">{app}</div>
