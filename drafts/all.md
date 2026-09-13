@@ -783,7 +783,7 @@ history:
 
 politics:
 
-- xi jinping dictatorship llm test political science
+- dictatorship llm test political science
 - chinese patriotism
 - llm adoption us cn fr
 - eight nine six four meaning white paper
@@ -793,6 +793,7 @@ politics:
 - bill gates home address security celebrity harassment stochastic terrorism
 - existential threat <!-- it's just literal -->
 - ea eacc
+- accessibility
 
 economics:
 
@@ -828,7 +829,6 @@ society: <!-- sociology -->
 - tv more criticism than filmography
 - us ssn zhcn id design
 - demography mtf
-- accessibility
 
 rhetoric:
 
