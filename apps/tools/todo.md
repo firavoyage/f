@@ -1,6 +1,5 @@
 # plan
 
-- create a storybook
 - customize scroll area
 - create command palette, preferences, keyboard shortcuts
   - make every button usable 
