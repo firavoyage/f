@@ -31,9 +31,10 @@ pattern
 - menu
 - hamburger
 - list
+- . commands <!-- command palette -->
 - . preferences
 - . shortcuts <!-- keyboard shortcuts -->
-- . about
+- about
   - links
   - credits
 

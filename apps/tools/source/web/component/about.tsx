@@ -1,5 +1,6 @@
+import { copy } from 'web/lib/clipboard'
+
 import { useMemo } from "react"
-import { toast, use_global } from "./app"
 import { Button } from "./button"
 import { Popup } from "./popup"
 import { Scroll } from "./scroll"
@@ -32,17 +33,6 @@ type link = string | {
   name: string
   action: 'expand' | 'open'
   target: string
-}
-
-async function copy_text(text: string) {
-  await navigator.clipboard.writeText(text);
-}
-
-function copy(text: string) {
-  copy_text(text)
-
-  // use_global.set(() => {})
-  toast('Copied to clipboard')
 }
 
 export function About(props: about) {
