@@ -47,13 +47,14 @@ export const use_global = state({
   'appearance.layout.process.is visible': true,
   'appearance.layout.input.is visible': true,
   'appearance.layout.output.is visible': true,
+  'appearance.layout.titlebar.is visible': true,
   'appearance.layout.hamburger menu.is visible': false,
   'navigation.path': '',
   // 'navigation.page': '',
   // 'navigation.tool': '',
 }, {
   persist: 'tools',
-  version: '0.7',
+  version: '0.8',
   should_migrate() { return true },
   sync_url_options: {
     should_sync_url: true,
@@ -99,6 +100,10 @@ export const shortcuts: shortcut[] = [
     command: "toggle sidebar"
   },
   {
+    key: "alt+t",
+    command: "toggle titlebar"
+  },
+  {
     key: "ctrl+shift+p",
     command: "open command palette"
   },
@@ -129,6 +134,7 @@ function use_commands() {
   const [, toggle_process] = use_global('appearance.layout.process.is visible')
   const [, toggle_input] = use_global('appearance.layout.input.is visible')
   const [, toggle_output] = use_global('appearance.layout.output.is visible')
+  const [, toggle_titlebar] = use_global('appearance.layout.titlebar.is visible')
 
   const commands = {
     "toggle sidebar": toggle_sidebar,
@@ -144,6 +150,7 @@ function use_commands() {
     'toggle process panel': toggle_process,
     'toggle input panel': toggle_input,
     'toggle output panel': toggle_output,
+    'toggle titlebar': toggle_titlebar,
   }
 
   call_command = function call(command: keyof typeof commands) {

@@ -4774,6 +4774,6 @@ storybook is trivial whatever.
 
 01 30 create command palette, preferences, keyboard shortcuts. create commands (shortcuts) for each panel toggle.
 
-
+seems alt p should toggle process panel rather than "focus(only show) process panel".
 
 

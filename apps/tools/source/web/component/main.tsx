@@ -27,6 +27,7 @@ export function Main() {
   const [process, set_process] = use_global('process')
   const [input, set_input] = use_global('input')
   // const [output, set_output] = use_global('output')
+  const [is_titlebar_visible, set_is_titlebar_visible] = use_global('appearance.layout.titlebar.is visible')
   const [is_process_visible, set_is_process_visible] = use_global('appearance.layout.process.is visible')
   const [is_input_visible, set_is_input_visible] = use_global('appearance.layout.input.is visible')
   const [is_output_visible, set_is_output_visible] = use_global('appearance.layout.output.is visible')
@@ -63,28 +64,30 @@ export function Main() {
 
   return (
     <div className="main">
-      <div className="titlebar">
-        <Button {...p({
-          tooltip: 'Toggle Sidebar', class: 'button_toggle_sidebar', onClick() { command('toggle sidebar') }
-        })}>
-          <Icon {...p({ name: 'sidebar' })}></Icon>
-        </Button>
-        <div className="title"></div>
-        {/* <button className="view">
+      {
+        is_titlebar_visible &&
+        <div className="titlebar">
+          <Button {...p({
+            tooltip: 'Toggle Sidebar', class: 'button_toggle_sidebar', onClick() { command('toggle sidebar') }
+          })}>
+            <Icon {...p({ name: 'sidebar' })}></Icon>
+          </Button>
+          <div className="title"></div>
+          {/* <button className="view">
           view
         </button> */}
-        <div className="view">
-          <Checkbox {...p({ value: is_process_visible, set_value: set_is_process_visible })}>
-            process
-          </Checkbox>
-          <Checkbox {...p({ value: is_input_visible, set_value: set_is_input_visible })}>
-            input
-          </Checkbox>
-          <Checkbox {...p({ value: is_output_visible, set_value: set_is_output_visible })}>
-            output
-          </Checkbox>
-        </div>
-        {/* <Button className="button_minimize">
+          <div className="view">
+            <Checkbox {...p({ value: is_process_visible, set_value: set_is_process_visible })}>
+              process
+            </Checkbox>
+            <Checkbox {...p({ value: is_input_visible, set_value: set_is_input_visible })}>
+              input
+            </Checkbox>
+            <Checkbox {...p({ value: is_output_visible, set_value: set_is_output_visible })}>
+              output
+            </Checkbox>
+          </div>
+          {/* <Button className="button_minimize">
           <Icon {...p({ name: 'minimize' })}></Icon>
         </Button>
         <Button className="button_maximize">
@@ -93,7 +96,8 @@ export function Main() {
         <Button className="button_close">
           <Icon {...p({ name: 'close' })}></Icon>
         </Button> */}
-      </div>
+        </div>
+      }
       <div className="workspace">
         {
           is_process_visible &&
