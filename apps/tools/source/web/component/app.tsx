@@ -141,9 +141,7 @@ function use_commands() {
     "open command palette"() {
       log('search commands')
     },
-    "open keyboard shortcuts"() {
-      log('open keyboard shortcuts')
-    },
+    "open keyboard shortcuts": 'toggle_open_shortcuts',
     "open settings"() {
       log('open settings')
     },
@@ -154,7 +152,12 @@ function use_commands() {
   }
 
   call_command = function call(command: keyof typeof commands) {
-    commands?.[command]()
+    if (typeof commands?.[command] == 'string') {     
+      // @ts-expect-error 
+      exposed_commands?.[commands?.[command]]?.()
+    } else {
+      commands?.[command]?.()
+    } 
   }
 
   return commands
@@ -168,6 +171,8 @@ export function App() {
 
   const [toasts, set_toasts] = use_toasts()
 
+  const [open_shortcuts, toggle_open_shortcuts] = useToggle(false)
+  expose({ toggle_open_shortcuts })
 
   const [open_about, toggle_open_about] = useToggle(false)
 
@@ -188,7 +193,7 @@ export function App() {
         <Scroll>
           <Hamburger>
             <Button {...p({ onClick() { toast(Math.random()) } })}>Preferences</Button>
-            <Button>Keyboard Shortcuts</Button>
+            <Button {...p({ onClick: toggle_open_shortcuts })}>Keyboard Shortcuts</Button>
             <Button {...p({ onClick: toggle_open_about })}>About</Button>
             <hr {...p({ class: 'hr' })} />
           </Hamburger>
@@ -205,7 +210,10 @@ export function App() {
         </Scroll>
       </Sidebar>
       <Main></Main>
-      <Shortcuts {...p({ shortcuts, call: command })}></Shortcuts>
+      <Shortcuts {...p({
+        open: open_shortcuts, toggle_open: toggle_open_shortcuts,
+        shortcuts, call: command
+      })}></Shortcuts>
       <About {...p({
         open: open_about, toggle_open: toggle_open_about,
         name: 'Tools',
@@ -251,3 +259,8 @@ export function command(command: command) {
 
 let call_command: any
 
+let exposed_commands = {}
+
+function expose(command: Record<string, fn>) {
+  merge(exposed_commands, command)
+}
