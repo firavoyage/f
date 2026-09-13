@@ -67,7 +67,6 @@ export function About(props: about) {
       // prev_focus.current = document.activeElement
       button_back?.current?.focus?.()
     } else if (prev_navigation_action.current == 'back') {
-      log(prev_focus.current)
       prev_focus.current?.focus?.()
     }
   }, [stack])
@@ -216,7 +215,17 @@ export function About(props: about) {
           </Button>
         </div>
         <Scroll {...p({ toggle_is_on_top })}>
-          {Page}
+          {/* fix focus (prev active element is gone when dom elements recreated) */}
+          {
+            map(pages, ([name, component]) => ((
+              <div {...p(name != page && { style: {
+                display: 'none'
+              } })}>
+                {component}
+              </div>
+            )))
+          }
+          {/* {Page} */}
           {/* <Page></Page> */}
         </Scroll>
       </div>
