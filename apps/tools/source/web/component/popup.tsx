@@ -93,8 +93,12 @@ export function Popup(props: popup) {
     prevent_default: false
   })
 
-  // listen for outside clicks
+  // listen for outside clicks when open
   useEvent('mousedown', function (e) {
+    if (!open) {
+      return 
+    } 
+
     if (backdrop) {
       // prevent focus loss (backdrop should not get focused)
       e?.preventDefault()
