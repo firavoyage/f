@@ -6,6 +6,8 @@ type popup = {
   toggle_open
   children
   backdrop?: boolean
+  initial_focus?: 'popup_container' | 'first_element'
+  // focus?: 'popup_body' | 'first_element'
   click_outside?: fn
 }
 
@@ -13,7 +15,10 @@ export function Popup(props: popup) {
   // const [open_state, toggle_open_state] = useToggle(false)
 
   // you must pass it down, otherwise (if local state) it could not be opened
-  const { children, open, toggle_open, backdrop = true, click_outside = close } = props
+  const { children, open, toggle_open,
+    backdrop = true,
+    initial_focus = 'popup_container',
+    click_outside = close } = props
 
   function close() {
     toggle_open(false)
@@ -33,10 +38,13 @@ export function Popup(props: popup) {
       if (!popup.current.contains(document.activeElement)) {
         prev_focus.current = document.activeElement
 
-        const focusable = tabbable(popup.current);
-        const first_element = focusable[0];
-        first_element?.focus()
-        // popup.current.focus()
+        if (initial_focus == 'popup_container') {
+          popup.current.focus()
+        } else if (initial_focus == 'first_element') {
+          const focusable = tabbable(popup.current);
+          const first_element = focusable[0];
+          first_element?.focus()
+        }
       }
     } else {
       prev_focus.current?.focus()
@@ -96,8 +104,8 @@ export function Popup(props: popup) {
   // listen for outside clicks when open
   useEvent('mousedown', function (e) {
     if (!open) {
-      return 
-    } 
+      return
+    }
 
     if (backdrop) {
       // prevent focus loss (backdrop should not get focused)

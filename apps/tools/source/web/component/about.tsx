@@ -50,6 +50,28 @@ export function About(props: about) {
 
   const default_stack = ['About']
 
+  const prev_focus = useRef()
+  const button_back = useRef()
+
+  const prev_navigation_action = useRef<'expand' | 'back'>()
+
+  use_bind('esc', navigate_back)
+
+  const [is_on_top, toggle_is_on_top] = useToggle(false)
+  const [stack, set_stack] = useState(default_stack)
+
+  // focus on back button when they navigate inside, restore focus when back
+  useEffect(() => {
+    if (prev_navigation_action.current == 'expand') {
+      // doesnt work ("body"), move to navigate into instead
+      // prev_focus.current = document.activeElement
+      button_back?.current?.focus?.()
+    } else if (prev_navigation_action.current == 'back') {
+      log(prev_focus.current)
+      prev_focus.current?.focus?.()
+    }
+  }, [stack])
+
   function close() {
     // in case react state persists somehow
     // yeah, closed != unmounted
@@ -62,18 +84,16 @@ export function About(props: about) {
     if (stack.length == 1) {
       close()
     } else {
+      prev_navigation_action.current = 'back'
       set_stack(stack.slice(0, -1))
     }
   }
 
   function navigate_into(page: page) {
+    prev_focus.current = document.activeElement
+    prev_navigation_action.current = 'expand'
     set_stack([...stack, page])
   }
-
-  use_bind('esc', navigate_back)
-
-  const [is_on_top, toggle_is_on_top] = useToggle(false)
-  const [stack, set_stack] = useState(default_stack)
 
   function Links({ links }: links) {
     return (
@@ -181,7 +201,7 @@ export function About(props: about) {
         <div className="titlebar">
           {
             !is_on_homepage &&
-            <Button {...p({ class: 'button_back', onClick: navigate_back })}>
+            <Button {...p({ class: 'button_back', onClick: navigate_back, ref: button_back })}>
               <Icon {...p({ name: 'back' })}></Icon>
             </Button>
           }
@@ -203,6 +223,3 @@ export function About(props: about) {
     </Popup>
   )
 }
-
-
-
