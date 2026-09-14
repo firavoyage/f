@@ -4792,7 +4792,12 @@ adwaita is designed to be responsive. after a mobile breakpoint, it eliminates t
 
 dont feel i have to style shortcut keys as adw. just plain text for now.
 
-16 00 action/maimai: generalize note count to loss, support space based sum and math exp. consider invalid input as 0. 
+16 00 action/maimai: generalize note count to loss, support space based sum and math exp, consider invalid input as 0, fix infinity (div by zero). 
 
+maybe we can take a step further. maybe we can render h/m/l great inside great?
+
+how to merge cell in html table?
+
+wait... i would have to impl new heading then...
 
 
