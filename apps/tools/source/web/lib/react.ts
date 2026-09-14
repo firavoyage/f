@@ -2,7 +2,7 @@
 // these are the ones you would actually use
 
 import { useEffect, useState, useRef, useCallback } from "react";
-import { useAsync, useAsyncFn, useEvent, useMeasure, useToggle } from "react-use";
+import { useAsync, useAsyncFn, useEvent, useMeasure, useToggle, useMount } from "react-use";
 import { use_bind } from 'web/lib/use keyboard'
 import { use_sync_theme } from 'web/lib/use sync theme'
 import { use_window_active } from 'web/lib/use window active'
@@ -43,6 +43,7 @@ type use_bind = typeof use_bind
 type use_sync_theme = typeof use_sync_theme
 type use_window_active = typeof use_window_active
 type use_variants = typeof use_variants
+type useMount = typeof useMount
 declare global {
   var useRef: useRef
   var useState: useState
@@ -56,4 +57,5 @@ declare global {
   var use_sync_theme: use_sync_theme
   var use_window_active: use_window_active
   var use_variants: use_variants
+  var useMount: useMount
 }
