@@ -79,6 +79,7 @@ export default defineConfig(
       "@typescript-eslint/no-unsafe-function-type": "off",
       "@typescript-eslint/no-unused-expressions": "off",
       "no-self-assign": "off",
+      "no-useless-escape": "off",
 
       // avoid hidden timing issues
       "@typescript-eslint/no-floating-promises": "error",

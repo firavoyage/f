@@ -178,7 +178,9 @@ function convert(design_yaml: string) {
   function set(variant: variant, variable: string, value: string | number) {
     if (typeof value == 'string') {
       // handle "bold text.lg typeface.serif"
-      for (const part of value.split(' ')) {
+      for (const part of value.split(/([\s!()\[\]{}<>\-_=+\\\/|;:'",?@#$%^&*`~]+)/)) {
+      // for (const part of value.split(/([^a-zA-Z0-9.]+)/)) {
+      // for (const part of value.split(' ')) {
         if (has(tokens, part)) {
           value = value.replaceAll(part, `var(${css_variable(part)})`)
         }

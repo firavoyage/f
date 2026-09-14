@@ -14,7 +14,7 @@
   --palette-success: #78e9ab;
   --palette-warning: #ffc252;
   --palette-error: #ff938c;
-  --color-bg-focus: color-mix(in srgb, var(--color-bg-accent) 50%, transparent);
+  --color-bg-focus: color-mix(in srgb, var(--color-bg-accent) 30%, transparent);
   --color-bg-backdrop: color-mix(in srgb, var(--palette-gray-950) 30%, transparent);
   --color-bg-tooltip: var(--palette-gray-900);
   --color-bg-hover: color-mix(in srgb, var(--color-bg-tertiary) 50%, transparent);
@@ -145,7 +145,7 @@
   --color-bg-primary: var(--palette-gray-50);
   --color-bg-secondary: var(--palette-gray-200);
   --color-bg-tertiary: var(--palette-gray-300);
-  --color-bg-commands: color-mix(in srgb, var(--palette-gray-200) 30%, var(--color-bg-primary) );
+  --color-bg-commands: color-mix(in srgb, var(--palette-gray-200) 30%, var(--color-bg-primary));
   --color-fg-primary: var(--palette-gray-800);
   --color-fg-secondary: var(--palette-gray-800);
   --color-fg-tertiary: var(--palette-gray-800);
@@ -156,7 +156,7 @@
   --color-bg-primary: var(--palette-gray-850);
   --color-bg-secondary: var(--palette-gray-800);
   --color-bg-tertiary: var(--palette-gray-700);
-  --color-bg-commands: color-mix(in srgb, var(--palette-gray-950) 30%, var(--color-bg-primary) );
+  --color-bg-commands: color-mix(in srgb, var(--palette-gray-950) 30%, var(--color-bg-primary));
   --color-fg-primary: white;
   --color-fg-secondary: white;
   --color-fg-tertiary: white;

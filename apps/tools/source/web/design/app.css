@@ -1099,7 +1099,7 @@ textarea {
       }
 
       &[focus] {
-        background-color: var(--color-bg-selection);
+        background-color: var(--color-bg-focus);
       }
     }
   }

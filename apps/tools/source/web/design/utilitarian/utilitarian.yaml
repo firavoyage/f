@@ -157,12 +157,12 @@ color:
     selection:
       active: color-mix(in srgb, color.bg.accent 30%, transparent)
       inactive: color-mix(in srgb, palette.gray.500 20%, transparent)
-    focus: color-mix(in srgb, color.bg.accent 50%, transparent)
+    focus: color-mix(in srgb, color.bg.accent 30%, transparent)
     backdrop: color-mix(in srgb, palette.gray.950 30%, transparent)
     tooltip: palette.gray.900
     commands:
-      light: color-mix(in srgb, palette.gray.200 30%, color.bg.primary )
-      dark: color-mix(in srgb, palette.gray.950 30%, color.bg.primary )
+      light: color-mix(in srgb, palette.gray.200 30%, color.bg.primary)
+      dark: color-mix(in srgb, palette.gray.950 30%, color.bg.primary)
     hover: color-mix(in srgb, color.bg.tertiary 50%, transparent)
     click: color.bg.tertiary
 
