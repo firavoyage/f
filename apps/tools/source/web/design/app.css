@@ -876,22 +876,15 @@ textarea {
 
 .popup {
   z-index: var(--hierarchy-popup);
+  position: fixed;
 
-  &[align=center]{
-    justify-content: center;
-    align-items: center;
-  
-    position: fixed;
-    top: 50%;
+  &[align=top]{
+    top: 0%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0%);
   }
 
   &[align=center]{
-    justify-content: center;
-    align-items: center;
-  
-    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
