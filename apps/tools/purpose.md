@@ -4824,4 +4824,10 @@ well, the real cause is a quirk.
 
 w the fix applied feels screen real estate is no longer a problem and i can make it logically sound.
 
+---
+
+weird. ocloc outputs more code in a sub folder than on its parent folder.
+
+---
+
 
