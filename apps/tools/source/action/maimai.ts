@@ -463,6 +463,19 @@ export function note_loss_table(props: note_loss_table) {
   //   good: 5*0.6*base+0.7*break base = 3 b + 0.7 bb
   //   miss: 5*1*base+1*break base = 5 b + 1 bb
 
+  /**
+   * p:
+   *   c: +- 1 frame (1/60s)
+   *   h: 2
+   *   l: 3
+   * g:
+   *   h: 4
+   *   m: 5
+   *   l: 6
+   * good: 7..9
+   * miss: 10+
+   */
+
   const tap = raw_tap + raw_touch
 
   const total_points = (1 * tap + 2 * hold + 3 * slide + 5 * break_)
