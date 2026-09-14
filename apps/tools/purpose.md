@@ -4848,4 +4848,38 @@ it shows categories (appearance, behavior, shortcuts, profiles). it's quite spec
 
 when crossing a breakpoint, it shows pref on titlebar and make sections on bottom dock (text below icon) instead of titlebar (text after icon). it could not shrink further. seems i could apply a constraint of pref category number.
 
+inside the same category, you can (and generally you will) have max one level of heading. and inside a heading there might be hr (or you can think them as groups).
+
+an individual option may have desc.
+
+switches may have collapsed menu dep on a certain toggle state, in deeply bg, indicated by dropdown icon (up or down).
+
+you may search through settings.
+
+a list of nav buttons would appear like
+
+```
+label
+layout (category) -> (unicode arrow) pages (heading)
+```
+
+these are navigate only. and search basically filters.
+
+search is simple substring match.
+
+---
+
+i will
+
+- create lib/search: fuzzy search
+- style commands
+  - flush, borderless, solid color, as guided by utilitarian design (generally you will only have fluid/flush bg and hr. exceptions are radio/multi select buttons where it can be rounded, full or not.)
+  - to create hierarchy, i may choose different bg or hr.
+- structure commands
+  - taxonomy = commands (name -> id for )
+  - 
+- 
+
+it will make my life easy to impl search on shortcuts. i may not have to.
+
 
