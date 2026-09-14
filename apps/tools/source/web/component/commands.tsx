@@ -16,19 +16,44 @@ export function Commands(props: commands) {
   const [is_on_top, toggle_is_on_top] = useToggle(false)
   const [search, set_search] = useState('')
 
+  const input = useRef()
+
   use_bind('esc', close)
 
   function close() {
     toggle_open(false)
   }
 
+  useEffect(() => {
+    if (!input.current) {
+      return
+    }
+
+    input.current?.focus()
+  })
+
+  const results = [
+    'foo',
+    'bar',
+    'baz',
+    'asdf',
+  ]
+
   return (
     <Popup {...p({ open, toggle_open, backdrop: false, align: 'top' })}>
       <div className="commands">
-        <Input {...p({ value: search, set_value: set_search })}></Input>
+        <div className="search">
+          <Input {...p({ value: search, set_value: set_search, ref: input })}></Input>
+        </div>
         <Scroll {...p({ toggle_is_on_top })}>
           <div className="body">
-
+            {
+              map(results, (result) => (
+                <Button {...p({})}>
+                  result
+                </Button>
+              ))
+            }
           </div>
         </Scroll>
       </div>
