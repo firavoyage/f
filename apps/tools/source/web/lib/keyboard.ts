@@ -1,6 +1,8 @@
 import mousetrap from 'mousetrap';
 import 'mousetrap-global-bind';
 
+const { max } = Math
+
 const shift_keys_map = {
   "!": "shift+1",
   "@": "shift+2",
@@ -29,12 +31,18 @@ type shortcutid = number
 type action = (event: KeyboardEvent) => void
 
 let shortcutid: shortcutid = 0
-const bindings: Map<shortcutid, { shortcut: string, action: action }> = new Map()
+const bindings: Map<shortcutid, { shortcut: string, action: action, priority: number }> = new Map()
 const shortcuts: Map<string, Set<shortcutid>> = new Map()
 
 function call(shortcut: string, event: KeyboardEvent) {
+  // only shortcuts of highest priority will be fired
+  const highest_priority = max(...map(shortcuts.get(shortcut), (shortcutid) => bindings.get(shortcutid)?.priority))
+
   for (const shortcutid of shortcuts.get(shortcut) ?? []) {
-    bindings.get(shortcutid)?.action(event)
+    const binding = bindings.get(shortcutid)
+    if (binding?.priority == highest_priority) {
+      binding?.action(event)
+    } 
   }
 }
 
@@ -46,14 +54,14 @@ function normalize(shortcut: string) {
   return normalized_shortcut
 }
 
-export function bind(shortcut: string, action: action, global = true): number {
+export function bind(shortcut: string, action: action, global = true, priority = 0): number {
   shortcut = normalize(shortcut)
 
   if (!shortcuts.has(shortcut)) {
     shortcuts.set(shortcut, new Set())
   }
   shortcuts.get(shortcut)?.add(shortcutid)
-  bindings.set(shortcutid, { shortcut, action })
+  bindings.set(shortcutid, { shortcut, action, priority })
 
   // it will work whether it overrides or not
   if (global) {

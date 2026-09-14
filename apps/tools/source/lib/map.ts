@@ -19,9 +19,11 @@ export function map(items: object, fn: (item: entry, index: number, array: entry
  * auto convert to entries for objects
  */
 export function map(items: any, fn: (item: any, index: number, array: any[]) => any) {
-  if (items instanceof Map) {
+  if (is(items, Map)) {
     items = Array.from(items.entries())
-  } else if (typeof items == 'object' && !Array.isArray(items)) {
+  } else if (is(items, Set)) {
+    items = Array.from(items)
+  }  else if (is(items, 'object')) {
     items = Object.entries(items)
   }
 
