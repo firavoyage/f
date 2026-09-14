@@ -105,7 +105,32 @@ export const tools: Record<string, Optional<tool, 'name'>> = {
   "maimai note loss table": {
     fn: note_loss_table,
     render_output: render_table,
-    args: [{ "name": "tap", "type": "number", "value": 0 }, { "name": "hold", "type": "number", "value": 0 }, { "name": "slide", "type": "number", "value": 0 }, { "name": "touch", "type": "number", "value": 0 }, { "name": "break", "type": "number", "value": 0 }]
+    args: [
+      {
+        "name": "tap",
+        "type": "input",
+        "value": 0
+      },
+      {
+        "name": "hold",
+        "type": "input",
+        "value": 0
+      },
+      {
+        "name": "slide",
+        "type": "input",
+        "value": 0
+      },
+      {
+        "name": "touch",
+        "type": "input",
+        "value": 0
+      },
+      {
+        "name": "break",
+        "type": "input",
+        "value": 0
+      }]
   },
   "perpetual": {
     fn: apca,

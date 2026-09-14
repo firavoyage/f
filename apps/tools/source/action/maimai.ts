@@ -1,4 +1,9 @@
 import { object_to_table } from "./json yaml toml xml";
+import Mexp from 'math-expression-evaluator'
+function evaluate(exp: string) {
+  const mexp = new Mexp();
+  return mexp.eval(exp)
+}
 
 const { min, max, floor } = Math
 
@@ -426,21 +431,36 @@ export function single_chart_rating_table() {
 //   miss: 5*1*base+1*break base = 5 b + 1 bb
 
 type note_loss_table = {
-  tap: number
-  hold: number // hold/touch hold
-  slide: number // star = tap + slide
-  touch: number
-  break: number
+  tap: string
+  hold: string // hold/touch hold
+  slide: string // star = tap + slide
+  touch: string
+  break: string
+}
+
+function calc(flexible_exp: string) {
+  // polymorph
+  if (typeof flexible_exp == 'number') {
+    flexible_exp = String(flexible_exp)
+  }
+
+  // consider (white)space as + operator
+  const exp = flexible_exp.replace(/(?<=\d)\s+(?=\d)/g, '+')
+
+  // best effort
+  return handle(() => evaluate(exp), 0)
 }
 
 export function note_loss_table(props: note_loss_table) {
-  const { tap: raw_tap, hold, slide, touch: raw_touch, break: break_ } = props
+  const { tap: raw_tap, hold, slide, touch: raw_touch, break: break_ } = Object.fromEntries(map(props,
+    ([k, v]) => ([k, calc(v)])
+  ))
 
   const tap = raw_tap + raw_touch
 
   const total_points = (1 * tap + 2 * hold + 3 * slide + 5 * break_)
   const base = 100 / total_points
-  const break_base = 1 / break_
+  const break_base = break_ == 0 ? 0 : 1 / break_
 
   const tap_loss = {
     note: 'tap',
@@ -487,7 +507,7 @@ export function note_loss_table(props: note_loss_table) {
     for (const [key, value] of entries(loss)) {
       if (typeof value == 'number') {
         loss[key] = value.toFixed(4)
-      } 
+      }
     }
   }
 
