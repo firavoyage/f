@@ -1,4 +1,4 @@
-# . script
+# . script 2.1
 
 ```js
 // ==UserScript==
@@ -608,4 +608,12 @@ Here is the updated Userscript. It fixes the dragging shift when rotated, restri
 1. **No Drag Shift:** Uses `getBoundingClientRect()` to compute cursor offsets dynamically, eliminating positional jumping when grabbing and dragging while rotated 90°.
 2. **0° / 90° Toggle:** Constrained rotation exclusively to `0°` (horizontal) and `90°` (vertical). Clicking toggles back and forth.
 3. **Fixed Header Syntax:** Updated the metadata block closing tag to `// ==/UserScript==`.
+
+
+# . script 2.2 <!-- 15 sep -->
+
+```
+
+```
+
 
