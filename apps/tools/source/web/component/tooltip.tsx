@@ -1,4 +1,3 @@
-import { useEvent } from "react-use"
 import Dropdown from "./dropdown"
 
 const default_delay = 500
@@ -26,13 +25,15 @@ export function Tooltip(props: tooltip) {
     timeout.current = setTimeout(() => {
       toggle_open(true)
     }, delay);
-  }, trigger)
+  }, ref.current)
+
+  
 
   useEvent('mouseleave', () => {
     clearTimeout(timeout.current);
 
     toggle_open(false)
-  }, trigger);
+  }, ref.current);
 
   useEvent('click', () => {
     clearTimeout(timeout.current);

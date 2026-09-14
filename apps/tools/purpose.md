@@ -5016,4 +5016,8 @@ wait, maybe it's timing issue. i could use effect instead of use event.
 
 seems it doesnt have to rerender. see how floating ui works.
 
+07 10 web/lib/use event: polymorph to support ref. fix a documented flaw in react use.
+
+conservative guys.
+
 
