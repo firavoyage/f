@@ -975,7 +975,9 @@ textarea {
     .th {
       display: table-cell;
 
-      min-width: var(--spacing-16);
+      min-width: var(--spacing-12);
+
+      padding-inline-end: var(--page-whitespace);
     }
 
     /* .th {
