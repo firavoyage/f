@@ -4876,10 +4876,62 @@ i will
   - flush, borderless, solid color, as guided by utilitarian design (generally you will only have fluid/flush bg and hr. exceptions are radio/multi select buttons where it can be rounded, full or not.)
   - to create hierarchy, i may choose different bg or hr.
 - structure commands
-  - taxonomy = commands (name -> id for )
-  - 
-- 
+  - taxonomy (name[]) = commands (name -> id to call)
+  - taxonomy can be item[], where item = name | name, alternative name, search keywords... <!-- w -->
+- structure settings
+  - i will have settings. you could not just map the global state.
+  - category -> heading -> arg
+    - arg = label, type, id (in global state)
+  - i dont have that many settings and thus i may not have dock/titlebar items.
+- render settings
+  - easy
+- style settings
+  - straight forward
+- make settings searchable
+  - ~~i would give every button a #hash href~~ i will scroll there, it will be trivial
 
 it will make my life easy to impl search on shortcuts. i may not have to.
+
+---
+
+let's style commands first and see if i like bg or hr better. (dont overthink it. i can change my mind later.)
+
+both input and selected item should be focused. and i could not natively focus two elements. i will give a button focus attr.
+
+on vscode focused has way more hierarchy than hover. and click has no vfx.
+
+lets take a look on gnome builder.
+
+idk how to trigger it, ctrl (shift) p or sth. but it has a dedicated global search. (ok well on tooltip it shows ctrl enter. reasonable.)
+
+it uses accent for the focused item.
+
+yeah, as always, it remembers the search param (ok, it full selects by default when opened again. acceptable.) after you close the widget. quite awkward... i mean. 
+
+many static elements are somehow focusable. how would you justify this? likely a unconsidered default imo.
+
+there are three ways to select.
+
+- tab (typing has no effect if you decide to tab to select.)
+  - it will show outline
+  - you may shift tab to focus the last ranked item. no idea how useful it is.
+- arrow keys
+  - it will apply accent, and move outline w it iff youve tabbed before
+- hover
+  - it does not change focus.
+  - it has hover and click style (bg) of regular buttons.
+
+the dropdown looks like
+
+```
+        help ... f1
+        (desc in sentence case wo end period: Get help w using Builder)
+        high contrast
+        (desc)
+(icon)  Show Build Output (title case)
+
+```
+
+seems all command has desc. some have icon or shortcut.
 
 

@@ -92,11 +92,15 @@ export const shortcuts: shortcut[] = [
     command: "toggle titlebar"
   },
   {
-    key: "ctrl+p",
+    key: "ctrl+k",
     command: "open command palette"
   },
   {
-    key: "ctrl+k",
+    key: "ctrl+enter",
+    command: "open command palette"
+  },
+  {
+    key: "ctrl+p",
     command: "open command palette"
   },
   {
