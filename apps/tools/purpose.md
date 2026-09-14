@@ -4810,6 +4810,12 @@ there are a few ways to do this.
   - i may render like "great: h/m/l" or "high great/mid great/low great"
 - render sub headings on the left/top of that cell
 
-i may go for the "left of that cell" this time.
+i may go for the "left of that cell" this time. i can solve a specific problem instead of a general one.
 
-i have
+logically it should be on top, whether top or very top, to align w headings. i would make it on the left anyway to make best use of screen real estate.
+
+18 00 lib/std: create util `type`.
+
+no more nil == obj. no more arr = obj.
+
+

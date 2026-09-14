@@ -130,7 +130,14 @@ export const tools: Record<string, Optional<tool, 'name'>> = {
         "name": "break",
         "type": "input",
         "value": 0
-      }]
+      },
+      {
+        "name": "decimals",
+        "type": "number",
+        "value": 4,
+        // placeholder: '4'
+      },
+    ]
   },
   "perpetual": {
     fn: apca,

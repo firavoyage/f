@@ -202,6 +202,9 @@ const _b_factors_base_5 = [1, 2, 3, 4, 6]
 // hp, lp, hg/mg/lg, good, miss
 const _bb_factors = [5, 10, 12, 14, 20]
 
+/**
+ * infer perf of individual note types by achievement% and number of each note
+ */
 export function maimai(achievement: number,
   tap: number, hold: number, slide: number, break_number: number) {
 
@@ -406,38 +409,6 @@ export function single_chart_rating_table() {
   return table
 }
 
-// # b = base = 100/total points = 100/(1*tap/touch number+2*hold/touch hold number+3*slide number+5*break number)
-// # bb = break base = 1/break number
-// # loss for each
-// tap/touch:
-//   great: 0.2 base
-//   good: 0.5 base
-//   miss: 1 base
-// hold:
-//   great: 2*0.2*base = 0.4 base
-//   good: 2*0.5*base = 1 base
-//   miss: 2*1*base = 2 base
-// slide:
-//   great: 3*0.2*base = 0.6 base
-//   good: 3*0.5*base = 1.5 base
-//   miss: 3*1*base = 3 base
-// break:
-//   high perfect: 0.25*break base = 0.25 bb
-//   low perfect: 0.5*break base = 0.5 bb
-//   high great: 5*0.2*base+0.6*break base = 1 b + 0.6 bb
-//   mid great: 5*0.4*base+0.6*break base = 2 b + 0.6 bb
-//   low great: 5*0.5*base+0.6*break base = 2.5 b + 0.6 bb
-//   good: 5*0.6*base+0.7*break base = 3 b + 0.7 bb
-//   miss: 5*1*base+1*break base = 5 b + 1 bb
-
-type note_loss_table = {
-  tap: string
-  hold: string // hold/touch hold
-  slide: string // star = tap + slide
-  touch: string
-  break: string
-}
-
 function calc(flexible_exp: string) {
   // polymorph
   if (typeof flexible_exp == 'number') {
@@ -451,10 +422,45 @@ function calc(flexible_exp: string) {
   return handle(() => evaluate(exp), 0)
 }
 
+type note_loss_table = {
+  tap: string
+  hold: string // hold/touch hold
+  slide: string // star = tap + slide
+  touch: string
+  break: string
+  decimals?: number
+}
+
 export function note_loss_table(props: note_loss_table) {
-  const { tap: raw_tap, hold, slide, touch: raw_touch, break: break_ } = Object.fromEntries(map(props,
+  const { tap: raw_tap, hold, slide, touch: raw_touch, break: break_,
+    decimals = 4
+  } = Object.fromEntries(map(props,
     ([k, v]) => ([k, calc(v)])
   ))
+
+  // # b = base = 100/total points = 100/(1*tap/touch number+2*hold/touch hold number+3*slide number+5*break number)
+  // # bb = break base = 1/break number
+  // # loss for each
+  // tap/touch:
+  //   great: 0.2 base
+  //   good: 0.5 base
+  //   miss: 1 base
+  // hold:
+  //   great: 2*0.2*base = 0.4 base
+  //   good: 2*0.5*base = 1 base
+  //   miss: 2*1*base = 2 base
+  // slide:
+  //   great: 3*0.2*base = 0.6 base
+  //   good: 3*0.5*base = 1.5 base
+  //   miss: 3*1*base = 3 base
+  // break:
+  //   high perfect: 0.25*break base = 0.25 bb
+  //   low perfect: 0.5*break base = 0.5 bb
+  //   high great: 5*0.2*base+0.6*break base = 1 b + 0.6 bb
+  //   mid great: 5*0.4*base+0.6*break base = 2 b + 0.6 bb
+  //   low great: 5*0.5*base+0.6*break base = 2.5 b + 0.6 bb
+  //   good: 5*0.6*base+0.7*break base = 3 b + 0.7 bb
+  //   miss: 5*1*base+1*break base = 5 b + 1 bb
 
   const tap = raw_tap + raw_touch
 
@@ -464,6 +470,9 @@ export function note_loss_table(props: note_loss_table) {
 
   let tap_loss = {
     note: 'tap',
+    // the order of table headings is determined by the first row
+    "high perfect": nil,
+    "low perfect": nil,
     // note: 'tap/touch',
     great: 0.2 * base,
     good: 0.5 * base,
@@ -504,7 +513,9 @@ export function note_loss_table(props: note_loss_table) {
   }
 
   function nullify(loss: object) {
-    return Object.fromEntries(map(loss, ([k, v]) => ([k, typeof v == 'number' ? 0 : v])))
+    return Object.fromEntries(map(loss, ([k, v]) => ([k, typeof v == 'number' ? 0 :
+      typeof v == 'object' ? nullify(v) : v
+    ])))
   }
 
   if (raw_tap == 0) {
@@ -527,15 +538,28 @@ export function note_loss_table(props: note_loss_table) {
     break_loss = nullify(break_loss)
   }
 
-  for (const loss of [tap_loss, hold_loss, slide_loss, touch_loss, break_loss]) {
-    for (const [key, value] of entries(loss)) {
-      if (typeof value == 'number') {
-        // omit unnecessary trailing zeros
-        loss[key] = +value.toFixed(4)
-        // loss[key] = value.toFixed(4)
-      }
-    }
+  function format(loss: object) {
+    return Object.fromEntries(map(loss, ([k, v]) => ([k, typeof v == 'number' ?
+      // omit unnecessary trailing zeros
+      +v.toFixed(decimals)
+      // v.toFixed(decimals)
+      : typeof v == 'object' ? format(v) : v
+    ])))
   }
+
+  // format numbers
+  map([tap_loss, hold_loss, slide_loss, touch_loss, break_loss], format)
+  log(1)
+  log([tap_loss, hold_loss, slide_loss, touch_loss, break_loss])
+  // for (const loss of [tap_loss, hold_loss, slide_loss, touch_loss, break_loss]) {
+  //   for (const [key, value] of entries(loss)) {
+  //     if (typeof value == 'number') {
+  //       // omit unnecessary trailing zeros
+  //       loss[key] = +value.toFixed(decimals)
+  //       // loss[key] = value.toFixed(4)
+  //     }
+  //   }
+  // }
 
   return object_to_table([tap_loss, hold_loss, slide_loss, touch_loss, break_loss])
 }
