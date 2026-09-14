@@ -96,6 +96,10 @@ export const shortcuts: shortcut[] = [
     command: "open command palette"
   },
   {
+    key: "ctrl+k",
+    command: "open command palette"
+  },
+  {
     key: "ctrl+shift+p",
     command: "open command palette"
   },
