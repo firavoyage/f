@@ -1,11 +1,19 @@
-// type Route = { path: string };
+const str = "hello!world [test] 123.45 + abc=xyz;foo,bar";
 
-// // 1. Create a raw object with an extra property
-// const rawInput = { path: "/", extraProp: "hello", typoKey: 123 };
+// Hardcoded common symbols inside a capturing group (excluding '.')
+const regex = /([\s!()\[\]{}<>\-_=+\\\/|;:'",?@#$%^&*`~]+)/;
 
-// // 2. Assign it to a variable typed as Route
-// const myRoute: Route = rawInput; // ✅ NO ERROR!
+const result = str.split(regex);
 
-const foo = Array.from (new Set([1, 2, 3]))
+console.log(result);
+/* Output: 
+[
+  "hello", "!", "world", " [", "test", "] ", 
+  "123.45", " + ", "abc", "=", "xyz", ";", 
+  "foo", ",", "bar"
+]
+*/
 
-log(map(foo, (v) => log(v)))
+// Verifying the integrity of the string
+console.log(result.join('') === str);
+// Output: true

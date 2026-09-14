@@ -4992,4 +4992,13 @@ yeah, it has downside if they do not prevent default. but i guess that's not the
 
 nil and array are not objects _by default_. 
 
+05 20 script/convert design tokens: generalize token reference syntax.
+
+divide by symbols rather than just white spaces.
+
+support `color-mix(in srgb, palette.gray.950 30%, color.bg.primary)` besides `bold text.lg typeface.sans`.
+
+currently all tokens are letters dots and numbers. it's easier to target that directly. i may not have to support latin or cjk. well, i feel it's strictly better to hardcode the symbols instead.
+
+
 
