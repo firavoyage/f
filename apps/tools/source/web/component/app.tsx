@@ -147,7 +147,7 @@ function use_commands() {
     'toggle titlebar': toggle_titlebar,
   }
 
-  call_command = function call(command: keyof typeof commands) {
+  command_ = function call(command: keyof typeof commands) {
     if (typeof commands?.[command] == 'string') {
       // @ts-expect-error 
       exposed_commands?.[commands?.[command]]?.()
@@ -259,10 +259,10 @@ export function App() {
 
 export function command(command: command) {
   // no possible race condition, no action could fire before app (ignore if so)
-  call_command?.(command)
+  command_?.(command)
 }
 
-let call_command: any
+let command_: any
 
 let exposed_commands = {}
 
