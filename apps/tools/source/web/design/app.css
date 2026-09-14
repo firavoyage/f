@@ -1086,7 +1086,7 @@ textarea {
   }
 
   .body {
-    margin-bottom: var(--spacing-4);
+    /* margin-bottom: var(--spacing-4); */
 
     .button {
       flex-flow: row;

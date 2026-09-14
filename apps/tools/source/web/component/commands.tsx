@@ -19,8 +19,31 @@ export function Commands(props: commands) {
 
   const input = useRef()
 
+  const results = [
+    ...map(commands, ([k, v]) => k),
+    'foo',
+    'bar',
+    'baz',
+    'asdf',
+  ]
+
+  const last_index = results.length - 1
+
   function close() {
     toggle_open(false)
+  }
+
+  function navigate_up() {
+    set_focus((v) => v == 0 ? last_index : v - 1)
+  }
+
+  function navigate_down() {
+    set_focus((v) => v == last_index ? 0 : v + 1)
+  }
+
+  function select(index) {
+    close()
+    command(results[index])
   }
 
   use_bind('esc', close)
@@ -33,44 +56,15 @@ export function Commands(props: commands) {
     input.current?.focus()
   })
 
-  function navigate_up() {
-    // ?
-    set_focus((v) => v - 1)
-  }
-
-  function navigate_down() {
-    set_focus((v) => v + 1)
-  }
-
   use_bind('tab', navigate_down)
   use_bind('ctrl+j', navigate_down)
   use_bind('down', navigate_down)
+
   use_bind('shift+tab', navigate_up)
   use_bind('ctrl+k', navigate_up)
   use_bind('up', navigate_up)
 
-  const results = [
-    'foo',
-    'bar',
-    'baz',
-    'asdf',
-    'asdf',
-    'asdf',
-    'asdf',
-    'asdf',
-    'asdf',
-    'asdf',
-    'asdf',
-    'asdf',
-    'asdf',
-    'asdf',
-    'asdf',
-    'asdf',
-    'asdf',
-    'asdf',
-    'asdf',
-    'asdf',
-  ]
+  use_bind('enter', () => select(focus))
 
   return (
     <Popup {...p({ open, toggle_open, backdrop: false, align: 'top' })}>
@@ -85,8 +79,7 @@ export function Commands(props: commands) {
                 <Button {...p({
                   focus: focus == index,
                   onClick() {
-                    close()
-                    log(handle(() => command(commands[result])))
+                    select(index)
                   }
                 })}>
                   {result}

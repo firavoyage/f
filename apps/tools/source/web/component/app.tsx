@@ -212,7 +212,8 @@ export function App() {
       </Sidebar>
       <Main></Main>
       <Commands {...p({
-        open: open_commands, toggle_open: toggle_open_commands
+        open: open_commands, toggle_open: toggle_open_commands,
+        commands
       })}></Commands>
       <Preferences {...p({
         open: open_preferences, toggle_open: toggle_open_preferences
