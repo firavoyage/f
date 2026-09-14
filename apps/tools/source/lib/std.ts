@@ -36,10 +36,10 @@ export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, a
   if (typeof obj == 'string') {
     if (typeof key != 'string') {
       return false
-    } 
+    }
 
     return obj.includes(key)
-  } 
+  }
 
   if (obj instanceof Set) {
     return obj.has(key)
@@ -90,12 +90,27 @@ export function merge(target: object, ...sources: object[]) {
   return target
 }
 
+type variable_type = 'nil' | 'array' | "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" | fn
+
+export function is(variable: any, type: variable_type) {
+  if (variable === nil) {
+    return type === nil || type == 'nil'
+  } else if (Array.isArray(variable)) {
+    return type == 'array'
+  } else if (typeof type == 'function') {
+    return variable instanceof type
+  } else {
+    return typeof variable == type
+  }
+}
+
 type nil = typeof nil
 type variable = typeof variable
 type is_given = typeof is_given
 type has = typeof has
 type entries_fn = typeof entries
 type merge = typeof merge
+type is = typeof is
 declare global {
   var nil: nil
   var variable: variable
@@ -103,5 +118,6 @@ declare global {
   var has: has
   var entries: entries_fn
   var merge: merge
+  var is: is
 }
 

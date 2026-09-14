@@ -878,13 +878,13 @@ textarea {
   z-index: var(--hierarchy-popup);
   position: fixed;
 
-  &[align=top]{
+  &[align="top"] {
     top: 0%;
     left: 50%;
     transform: translate(-50%, 0%);
   }
 
-  &[align=center]{
+  &[align="center"] {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -983,6 +983,13 @@ textarea {
     /* .th {
       position: sticky;
     } */
+
+    .sub_table {
+      .td,
+      .th {
+        min-width: var(--spacing-4);
+      }
+    }
   }
 }
 
@@ -1056,47 +1063,47 @@ textarea {
 
     .info {
       margin-bottom: var(--spacing-4);
-  
+
       .about_icon {
         align-items: center;
-  
+
         > * {
           width: var(--spacing-32);
           height: var(--spacing-32);
         }
-  
+
         svg {
           align-items: center;
           justify-content: center;
-  
+
           width: 100%;
           height: 100%;
         }
       }
-  
+
       .name {
         text-align: center;
-  
+
         font: bold var(--text-3xl) var(--typeface-sans);
       }
-  
+
       .author {
         text-align: center;
-  
+
         font: var(--text-base) var(--typeface-sans);
       }
-  
+
       .version {
         align-self: center;
         width: fit-content;
-  
+
         margin-block: var(--page-whitespace);
         padding-block: var(--spacing-1);
         padding-inline: var(--spacing-5);
         border-radius: var(--radius-full);
-  
+
         font: bold var(--text-sm) var(--typeface-sans);
-  
+
         background-color: color-mix(
           in oklab,
           var(--color-bg-accent) 15%,
@@ -1109,30 +1116,29 @@ textarea {
         );
       }
     }
-  
+
     .h1 {
       margin-inline: var(--spacing-4);
-  
+
       font: bold var(--text-base) var(--typeface-sans);
     }
-  
+
     .links {
       margin-top: var(--spacing-2);
       margin-bottom: var(--spacing-4);
-  
+
       .button {
         flex-flow: row;
-  
+
         padding-block: var(--page-whitespace);
         padding-inline: var(--spacing-8);
-  
+
         .label {
           flex: 1;
         }
       }
     }
   }
-
 }
 
 .shortcuts {
@@ -1148,10 +1154,10 @@ textarea {
 
     .button {
       flex-flow: row;
-  
+
       padding-block: var(--page-whitespace);
       padding-inline: var(--spacing-8);
-  
+
       .label {
         flex: 1;
       }
@@ -1172,10 +1178,10 @@ textarea {
 
     .button {
       flex-flow: row;
-  
+
       padding-block: var(--page-whitespace);
       padding-inline: var(--spacing-8);
-  
+
       .label {
         flex: 1;
       }
@@ -1196,10 +1202,10 @@ textarea {
 
     .button {
       flex-flow: row;
-  
+
       padding-block: var(--page-whitespace);
       padding-inline: var(--spacing-8);
-  
+
       .label {
         flex: 1;
       }

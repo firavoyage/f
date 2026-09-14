@@ -429,6 +429,7 @@ type note_loss_table = {
   touch: string
   break: string
   decimals?: number
+  // should omit trailing zero: true
 }
 
 export function note_loss_table(props: note_loss_table) {
@@ -471,8 +472,7 @@ export function note_loss_table(props: note_loss_table) {
   let tap_loss = {
     note: 'tap',
     // the order of table headings is determined by the first row
-    "high perfect": nil,
-    "low perfect": nil,
+    "perfect": nil,
     // note: 'tap/touch',
     great: 0.2 * base,
     good: 0.5 * base,
@@ -503,18 +503,32 @@ export function note_loss_table(props: note_loss_table) {
 
   let break_loss = {
     note: 'break',
-    "high perfect": 0.25 * break_base,
-    "low perfect": 0.5 * break_base,
-    "high great": 5 * 0.2 * base + 0.6 * break_base,
-    "mid great": 5 * 0.4 * base + 0.6 * break_base,
-    "low great": 5 * 0.5 * base + 0.6 * break_base,
+    perfect: {
+      h: 0.25 * break_base,
+      l: 0.5 * break_base
+      // high: 0.25 * break_base,
+      // low: 0.5 * break_base
+    },
+    // "high perfect": 0.25 * break_base,
+    // "low perfect": 0.5 * break_base,
+    great: {
+      h: 5 * 0.2 * base + 0.6 * break_base,
+      m: 5 * 0.4 * base + 0.6 * break_base,
+      l: 5 * 0.5 * base + 0.6 * break_base,
+      // high: 5 * 0.2 * base + 0.6 * break_base,
+      // mid: 5 * 0.4 * base + 0.6 * break_base,
+      // low: 5 * 0.5 * base + 0.6 * break_base,
+    },
+    // "high great": 5 * 0.2 * base + 0.6 * break_base,
+    // "mid great": 5 * 0.4 * base + 0.6 * break_base,
+    // "low great": 5 * 0.5 * base + 0.6 * break_base,
     good: 5 * 0.6 * base + 0.7 * break_base,
     miss: 5 * 1 * base + 1 * break_base
   }
 
   function nullify(loss: object) {
     return Object.fromEntries(map(loss, ([k, v]) => ([k, typeof v == 'number' ? 0 :
-      typeof v == 'object' ? nullify(v) : v
+      is(v, 'object') ? nullify(v) : v
     ])))
   }
 
@@ -543,23 +557,12 @@ export function note_loss_table(props: note_loss_table) {
       // omit unnecessary trailing zeros
       +v.toFixed(decimals)
       // v.toFixed(decimals)
-      : typeof v == 'object' ? format(v) : v
+      : is(v, 'object') ? format(v) : v
     ])))
   }
 
   // format numbers
-  map([tap_loss, hold_loss, slide_loss, touch_loss, break_loss], format)
-  log(1)
-  log([tap_loss, hold_loss, slide_loss, touch_loss, break_loss])
-  // for (const loss of [tap_loss, hold_loss, slide_loss, touch_loss, break_loss]) {
-  //   for (const [key, value] of entries(loss)) {
-  //     if (typeof value == 'number') {
-  //       // omit unnecessary trailing zeros
-  //       loss[key] = +value.toFixed(decimals)
-  //       // loss[key] = value.toFixed(4)
-  //     }
-  //   }
-  // }
+  [tap_loss, hold_loss, slide_loss, touch_loss, break_loss] = map([tap_loss, hold_loss, slide_loss, touch_loss, break_loss], format)
 
   return object_to_table([tap_loss, hold_loss, slide_loss, touch_loss, break_loss])
 }
