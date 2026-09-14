@@ -4802,4 +4802,14 @@ wait... i would have to impl new heading then...
 
 or what if i separate break from the main table.
 
+17 30 web/component/table: support sub headings for cells.
 
+there are a few ways to do this.
+
+- render sub headings on the very left/very top, and merge cell when irrelevant
+  - i may render like "great: h/m/l" or "high great/mid great/low great"
+- render sub headings on the left/top of that cell
+
+i may go for the "left of that cell" this time.
+
+i have
