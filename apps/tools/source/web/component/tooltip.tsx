@@ -11,14 +11,17 @@ type tooltip = {
 
 export function Tooltip(props: tooltip) {
   const { ref, tooltip, delay = default_delay } = props
-  log(tooltip, ref)
-
-  const [open, toggle_open] = useToggle(false)
-
-  let timeout = useRef()
-
-  const trigger = ref.current
   
+  const [open, toggle_open] = useToggle(false)
+  
+  let timeout = useRef()
+  
+  const trigger = ref.current
+  log(tooltip, ref)
+  useEffect(() => {
+    log(tooltip, ref)
+  })
+
   useEvent('mouseenter', () => {
     timeout.current = setTimeout(() => {
       toggle_open(true)
