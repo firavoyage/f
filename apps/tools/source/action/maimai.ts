@@ -472,7 +472,7 @@ export function note_loss_table(props: note_loss_table) {
   let tap_loss = {
     note: 'tap',
     // the order of table headings is determined by the first row
-    "perfect": nil,
+    perfect: nil,
     // note: 'tap/touch',
     great: 0.2 * base,
     good: 0.5 * base,
@@ -504,20 +504,20 @@ export function note_loss_table(props: note_loss_table) {
   let break_loss = {
     note: 'break',
     perfect: {
-      h: 0.25 * break_base,
-      l: 0.5 * break_base
-      // high: 0.25 * break_base,
-      // low: 0.5 * break_base
+      // h: 0.25 * break_base,
+      // l: 0.5 * break_base,
+      high: 0.25 * break_base,
+      low: 0.5 * break_base,
     },
     // "high perfect": 0.25 * break_base,
     // "low perfect": 0.5 * break_base,
     great: {
-      h: 5 * 0.2 * base + 0.6 * break_base,
-      m: 5 * 0.4 * base + 0.6 * break_base,
-      l: 5 * 0.5 * base + 0.6 * break_base,
-      // high: 5 * 0.2 * base + 0.6 * break_base,
-      // mid: 5 * 0.4 * base + 0.6 * break_base,
-      // low: 5 * 0.5 * base + 0.6 * break_base,
+      // h: 5 * 0.2 * base + 0.6 * break_base,
+      // m: 5 * 0.4 * base + 0.6 * break_base,
+      // l: 5 * 0.5 * base + 0.6 * break_base,
+      high: 5 * 0.2 * base + 0.6 * break_base,
+      mid: 5 * 0.4 * base + 0.6 * break_base,
+      low: 5 * 0.5 * base + 0.6 * break_base,
     },
     // "high great": 5 * 0.2 * base + 0.6 * break_base,
     // "mid great": 5 * 0.4 * base + 0.6 * break_base,

@@ -357,4 +357,10 @@ very top, very left, cell top, cell left
 
 action/maimai: support "should omit trailing zeros" option.
 
+---
+
+component/number: support range or validator.
+
+e.g. decimals must be non neg.
+
 

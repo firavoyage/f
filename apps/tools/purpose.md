@@ -4820,4 +4820,8 @@ no more nil == obj. no more arr = obj.
 
 18 30 web/component/table: fix min width quirk in flex container by unsetting display.
 
+well, the real cause is a quirk.
+
+w the fix applied feels screen real estate is no longer a problem and i can make it logically sound.
+
 

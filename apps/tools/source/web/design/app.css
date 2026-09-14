@@ -559,7 +559,8 @@ body {
 }
 
 .scroll {
-  overflow-y: auto;
+  overflow: auto;
+  /* overflow-y: auto; */
   > * {
     flex-shrink: 0;
   }

@@ -9,7 +9,25 @@ export function render_cell(cell) {
   if (is(cell, 'object')) {
     return (
       <table className="sub_table">
+        <thead className="thead">
+          <tr className="tr">
+            {
+              map(cell, ([k, v]) => (
+                <th className="th">{k}</th>
+              ))
+            }
+          </tr>
+        </thead>
         <tbody className="tbody">
+          <tr className="tr">
+            {
+              map(cell, ([k, v]) => (
+                <td className="td">{v}</td>
+              ))
+            }
+          </tr>
+        </tbody>
+        {/* <tbody className="tbody">
           {
             map(cell, ([k, v]) => (
               <tr className="tr">
@@ -18,7 +36,7 @@ export function render_cell(cell) {
               </tr>
             ))
           }
-        </tbody>
+        </tbody> */}
       </table>
     )
   }
