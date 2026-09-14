@@ -2,16 +2,18 @@
 // these are the ones you would actually use
 
 import { useEffect, useState, useRef, useCallback } from "react";
-import { useAsync, useAsyncFn, useEvent, useMeasure, useToggle, useMount } from "react-use";
+import { useAsync, useAsyncFn, useMeasure, useToggle, useMount } from "react-use";
 import { use_bind } from 'web/lib/use keyboard'
 import { use_sync_theme } from 'web/lib/use sync theme'
 import { use_window_active } from 'web/lib/use window active'
 import { use_variants } from 'web/lib/use variants'
+import { use_event } from 'web/lib/use event'
 
 export * from 'web/lib/use keyboard'
 export * from 'web/lib/use sync theme'
 export * from 'web/lib/use window active'
 export * from 'web/lib/use variants'
+export * from 'web/lib/use event'
 
 export function use_measure(options?: Parameters<typeof useMeasure>) {
   const [measureRef, bounds] = useMeasure(options);
@@ -38,12 +40,12 @@ type useToggle = typeof useToggle
 type useAsync = typeof useAsync
 type useAsyncFn = typeof useAsyncFn
 type use_measure = typeof use_measure
-type useEvent = typeof useEvent
 type use_bind = typeof use_bind
 type use_sync_theme = typeof use_sync_theme
 type use_window_active = typeof use_window_active
 type use_variants = typeof use_variants
 type useMount = typeof useMount
+type use_event = typeof use_event
 declare global {
   var useRef: useRef
   var useState: useState
@@ -52,10 +54,10 @@ declare global {
   var useAsync: useAsync
   var useAsyncFn: useAsyncFn
   var use_measure: use_measure
-  var useEvent: useEvent
   var use_bind: use_bind
   var use_sync_theme: use_sync_theme
   var use_window_active: use_window_active
   var use_variants: use_variants
   var useMount: useMount
+  var use_event: use_event
 }

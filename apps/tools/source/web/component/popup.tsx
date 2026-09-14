@@ -106,7 +106,7 @@ export function Popup(props: popup) {
   })
 
   // listen for outside clicks when open
-  useEvent('mousedown', function (e) {
+  use_event('mousedown', function (e) {
     if (!open || !popup.current) {
       return
     }

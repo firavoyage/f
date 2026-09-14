@@ -5020,4 +5020,24 @@ seems it doesnt have to rerender. see how floating ui works.
 
 conservative guys.
 
+07 30 web/component/commands: normalize focus as select all (like tabbing).
+
+tab focuses. focus is not focus. it's select.
+
+popup pops up. popup is not popup. it's a dialog. and popup is reserved for like select dropdown menu, on higher hierarchy, inside pref popup (dialog).
+
+interesting.
+
+---
+
+ok, well, when i leverage conditional rendering, it's no longer a problem. state is simply cleared, which is expected (gnome adw is wicked, i mean, it's quite engineered to magically memoize everything, but it's not what you would expected).
+
+<!-- it does work when i cancel the cond rendering though. -->
+
+actually ive had the idea of "oh we can create a magic serializable react to make everything persistent across refreshes, wo explicitly naming the global state keys, at all costs" months before.
+
+07 40 web/component/preferences: structure props and create minimal layout.
+
+the last piece.
+
 
