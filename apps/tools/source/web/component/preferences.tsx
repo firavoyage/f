@@ -37,13 +37,15 @@ export function Preferences(props: preferences) {
     <Popup {...p({ open, toggle_open })}>
       <div className="preferences">
         <div className="titlebar">
-          {/* Search shortcuts */}
-          {/* {
-            (!is_on_top) &&
+          <Button {...p({ class: 'button_search' })}>
+            <Icon {...p({ name: 'search' })}></Icon>
+          </Button>
+          {
+            // (!is_on_top) &&
             <div className="title">
-              Shortcuts
+              Preferences
             </div>
-          } */}
+          }
           <Button {...p({ class: 'button_close', onClick: close, focusable: false })}>
             <Icon {...p({ name: 'close' })}></Icon>
           </Button>

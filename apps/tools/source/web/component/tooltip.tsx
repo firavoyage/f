@@ -14,28 +14,20 @@ export function Tooltip(props: tooltip) {
   const [open, toggle_open] = useToggle(false)
   
   let timeout = useRef()
-  
-  const trigger = ref.current
-  log(tooltip, ref)
-  useEffect(() => {
-    log(tooltip, ref)
-  })
 
-  useEvent('mouseenter', () => {
+  use_event('mouseenter', () => {
     timeout.current = setTimeout(() => {
       toggle_open(true)
     }, delay);
-  }, ref.current)
+  }, ref)  
 
-  
-
-  useEvent('mouseleave', () => {
+  use_event('mouseleave', () => {
     clearTimeout(timeout.current);
 
     toggle_open(false)
-  }, ref.current);
+  }, ref);
 
-  useEvent('click', () => {
+  use_event('click', () => {
     clearTimeout(timeout.current);
 
     toggle_open(false)

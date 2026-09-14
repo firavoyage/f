@@ -325,6 +325,7 @@ web: <!-- frontend, web, ts/js -->
 - storybook
 - js std lib is
 - css color mix oklab oklch
+- web lib use event
 
 backend:
 

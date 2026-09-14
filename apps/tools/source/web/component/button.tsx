@@ -14,18 +14,14 @@ export function Button(props: button) {
     focusable = true,
     ...rest_props } = p(props)
 
-  // prevent undefined ref when passed to multiple
-  // const [ref, set_ref] = useState()
   const ref = useRef()
 
   if (is_given(tooltip)) {
     return (
       <>
         <button {...p({ class: ['button', className], ref, ...rest_props })}
-        // <button {...p({ class: ['button', className], ref: set_ref, ...rest_props })}
           {...p(!focusable && { tabIndex: -1 })}></button>
         <Tooltip {...p({ tooltip, ref })}></Tooltip>
-        {/* <Tooltip {...p({ tooltip, ref: { current: ref } })}></Tooltip> */}
       </>
     )
   } else {

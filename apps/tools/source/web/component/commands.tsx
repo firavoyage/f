@@ -55,7 +55,7 @@ export function Commands(props: commands) {
       return
     }
 
-    input.current?.focus()
+    input.current?.select()
   }, [open])
 
   // scroll into view on focus change

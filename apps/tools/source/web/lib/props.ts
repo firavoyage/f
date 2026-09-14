@@ -98,10 +98,6 @@ export function p<T>(
     }
   }
 
-  if (has(props, 'ref')) {
-    log(converted_props)
-  } 
-
   return converted_props
 }
 
