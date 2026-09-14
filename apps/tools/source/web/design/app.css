@@ -1073,7 +1073,7 @@ textarea {
 
   max-height: min(calc(100vh), var(--max-width-md));
 
-  background-color: var(--color-bg-primary);
+  background-color: var(--color-bg-commands);
 
   .search {
     flex-shrink: 0;
@@ -1098,8 +1098,8 @@ textarea {
         flex: 1;
       }
 
-      &[focus]{
-        background-color: var(--color-bg-accent);
+      &[focus] {
+        background-color: var(--color-bg-selection);
       }
     }
   }

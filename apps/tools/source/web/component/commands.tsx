@@ -18,6 +18,7 @@ export function Commands(props: commands) {
   const [focus, set_focus] = useState(0)
 
   const input = useRef()
+  const list = useRef()
 
   const results = [
     ...map(commands, ([k, v]) => k),
@@ -48,13 +49,30 @@ export function Commands(props: commands) {
 
   use_bind('esc', close)
 
+  // focus the input on mount (on open), it's counterintuitively always mounted
   useEffect(() => {
     if (!input.current) {
       return
     }
 
     input.current?.focus()
-  })
+  }, [open])
+
+  // scroll into view on focus change
+  useEffect(() => {
+    if (!list.current) {
+      return
+    }
+
+    const child = list.current?.children?.[focus];
+
+    child?.scrollIntoView?.({ behavior: 'auto', block: 'nearest' });
+  }, [focus])
+
+  // reset focus on search change
+  useEffect(() => {
+    set_focus(0)
+  }, [search])
 
   use_bind('tab', navigate_down)
   use_bind('ctrl+j', navigate_down)
@@ -73,7 +91,7 @@ export function Commands(props: commands) {
           <Input {...p({ value: search, set_value: set_search, ref: input })}></Input>
         </div>
         <Scroll {...p({ toggle_is_on_top })}>
-          <div className="body">
+          <div className="body" {...p({ ref: list })}>
             {
               map(results, (result, index) => (
                 <Button {...p({
