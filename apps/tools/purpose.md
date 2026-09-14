@@ -4967,4 +4967,25 @@ awkwardly, for folders (yeah files = files/folders), it still wants to show a pr
 
 it can fuzzy search, but idk how it does. and unlike vscode it doesnt highlight matches. yet it can match non existing match (maybe there are hidden metadata like search keywords).
 
+15
+
+02 10 web/lib/keyboard: support priority.
+
+in popup keyboard trap, it tries to prevent default shift tab when focus on the first element, well, and yet, it focuses the last. reasonable right? but command palette already captures shift tab. it does loop back. but not native focus.
+
+there is no native way to see "whether the default behavior will be triggered", esp prone to race cond.
+
+solutions are
+
+- default? (if default, it will only fire when no others prevent default)
+- override? (if override, it will block others)
+- low priority? (it will not run if others exist)
+- priority
+
+i think priority is more general.
+
+**default to 0. only shortcuts of highest priority will be fired. keyboard trap defaults to -1.**
+
+yeah, it has downside if they do not prevent default. but i guess that's not the practical case.
+
 

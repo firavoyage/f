@@ -138,7 +138,7 @@ function use_commands() {
 
   const commands = {
     "toggle sidebar": toggle_sidebar,
-    "open command palette": 'toggle_open_commands',
+    "open command palette": 'open_commands',
     "open keyboard shortcuts": 'toggle_open_shortcuts',
     "open preferences": 'toggle_open_preferences',
     'toggle process panel': toggle_process,
@@ -172,7 +172,10 @@ export function App() {
   const [open_preferences, toggle_open_preferences] = useToggle(false)
   const [open_about, toggle_open_about] = useToggle(false)
 
-  expose({ toggle_open_commands, toggle_open_shortcuts, toggle_open_preferences })
+  expose({
+    open_commands() { toggle_open_commands(true) },
+    toggle_open_shortcuts, toggle_open_preferences
+  })
 
   const commands = use_commands()
 
