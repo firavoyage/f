@@ -761,6 +761,11 @@ textarea {
   }
 }
 
+.input, .number {
+  width: var(--spacing-40);
+  /* flex-basis: var(--spacing-40); */
+}
+
 .input,
 .field {
   background: var(--color-bg-secondary);
@@ -947,14 +952,11 @@ textarea {
 }
 
 .table {
-  overflow: auto;
-
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    display: none;
+  * {
+    display: unset;
   }
 
-  > .table_content {
+  .table_content {
     display: table;
 
     border-collapse: collapse;
@@ -975,7 +977,7 @@ textarea {
     .th {
       display: table-cell;
 
-      min-width: var(--spacing-12);
+      min-width: var(--spacing-16);
 
       padding-inline-end: var(--page-whitespace);
     }
@@ -985,6 +987,8 @@ textarea {
     } */
 
     .sub_table {
+      display: table;
+
       .td,
       .th {
         min-width: var(--spacing-4);

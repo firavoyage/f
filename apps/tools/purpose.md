@@ -4818,4 +4818,6 @@ logically it should be on top, whether top or very top, to align w headings. i w
 
 no more nil == obj. no more arr = obj.
 
+18 30 web/component/table: fix min width quirk in flex container by unsetting display.
+
 
