@@ -459,10 +459,10 @@ export function note_loss_table(props: note_loss_table) {
   const tap = raw_tap + raw_touch
 
   const total_points = (1 * tap + 2 * hold + 3 * slide + 5 * break_)
-  const base = 100 / total_points
+  const base = total_points == 0 ? 0 : 100 / total_points
   const break_base = break_ == 0 ? 0 : 1 / break_
 
-  const tap_loss = {
+  let tap_loss = {
     note: 'tap',
     // note: 'tap/touch',
     great: 0.2 * base,
@@ -470,21 +470,21 @@ export function note_loss_table(props: note_loss_table) {
     miss: 1 * base
   }
 
-  const hold_loss = {
+  let hold_loss = {
     note: 'hold',
     great: 2 * 0.2 * base,
     good: 2 * 0.5 * base,
     miss: 2 * 1 * base
   }
 
-  const slide_loss = {
+  let slide_loss = {
     note: 'slide',
     great: 3 * 0.2 * base,
     good: 3 * 0.5 * base,
     miss: 3 * 1 * base
   }
 
-  const touch_loss = {
+  let touch_loss = {
     note: 'touch',
     // note: 'tap/touch',
     great: 0.2 * base,
@@ -492,7 +492,7 @@ export function note_loss_table(props: note_loss_table) {
     miss: 1 * base
   }
 
-  const break_loss = {
+  let break_loss = {
     note: 'break',
     "high perfect": 0.25 * break_base,
     "low perfect": 0.5 * break_base,
@@ -503,10 +503,36 @@ export function note_loss_table(props: note_loss_table) {
     miss: 5 * 1 * base + 1 * break_base
   }
 
+  function nullify(loss: object) {
+    return Object.fromEntries(map(loss, ([k, v]) => ([k, typeof v == 'number' ? 0 : v])))
+  }
+
+  if (raw_tap == 0) {
+    tap_loss = nullify(tap_loss)
+  }
+
+  if (hold == 0) {
+    hold_loss = nullify(hold_loss)
+  }
+
+  if (slide == 0) {
+    slide_loss = nullify(slide_loss)
+  }
+
+  if (raw_touch == 0) {
+    touch_loss = nullify(touch_loss)
+  }
+
+  if (break_ == 0) {
+    break_loss = nullify(break_loss)
+  }
+
   for (const loss of [tap_loss, hold_loss, slide_loss, touch_loss, break_loss]) {
     for (const [key, value] of entries(loss)) {
       if (typeof value == 'number') {
-        loss[key] = value.toFixed(4)
+        // omit unnecessary trailing zeros
+        loss[key] = +value.toFixed(4)
+        // loss[key] = value.toFixed(4)
       }
     }
   }
