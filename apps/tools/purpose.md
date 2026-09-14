@@ -4828,6 +4828,24 @@ w the fix applied feels screen real estate is no longer a problem and i can make
 
 weird. ocloc outputs more code in a sub folder than on its parent folder.
 
----
+20 00 web/component: structure and style commands and preferences.
+
+let's make things clear first. how would i structure pref?
+
+would i put the categories on titlebar/dock?
+
+how does adw do?
+
+adw demo doesnt really have settings. just examples and mocks.
+
+btw, the dock items is a single component designed to work w arrow keys.
+
+how does adw on ptyxis do?
+
+it shows categories (appearance, behavior, shortcuts, profiles). it's quite special among adw ecosystem. but it's reasonable as its shortcuts can be editted on gui.
+
+<!-- the popup window of ptyxis can be occassionally recognized by desktop env. that is, when i open via ctrl ?. it might not work on ctrl ,. -->
+
+when crossing a breakpoint, it shows pref on titlebar and make sections on bottom dock (text below icon) instead of titlebar (text after icon). it could not shrink further. seems i could apply a constraint of pref category number.
 
 

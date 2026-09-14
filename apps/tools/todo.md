@@ -289,9 +289,9 @@ c
 
 ---
 
-component/select: support arrow keys, close (or trap) when tab after the last item
+component/select: support arrow keys and keyboard trap.
 
-and shift tab before the first item
+close (or loop back) when tab after the last item or shift tab before the first item
 
 ---
 
@@ -362,5 +362,7 @@ action/maimai: support "should omit trailing zeros" option.
 component/number: support range or validator.
 
 e.g. decimals must be non neg.
+
+---
 
 
