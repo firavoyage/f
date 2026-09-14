@@ -15,13 +15,13 @@
   --palette-warning: #ffc252;
   --palette-error: #ff938c;
   --color-bg-backdrop: color-mix(
-    in srgb,
+    in oklch,
     var(--palette-gray-950) 30%,
     transparent
   );
   --color-bg-tooltip: var(--palette-gray-900);
   --color-bg-hover: color-mix(
-    in srgb,
+    in oklch,
     var(--color-bg-tertiary) 50%,
     transparent
   );
@@ -248,7 +248,7 @@
 [window="active"],
 [data-window="active"] {
   --color-bg-selection: color-mix(
-    in srgb,
+    in oklch,
     var(--color-bg-accent) 30%,
     transparent
   );
@@ -257,7 +257,7 @@
 [window="inactive"],
 [data-window="inactive"] {
   --color-bg-selection: color-mix(
-    in srgb,
+    in oklch,
     var(--palette-gray-500) 20%,
     transparent
   );
@@ -794,7 +794,7 @@ textarea {
     border-radius: var(--radius-full);
 
     background-color: color-mix(
-      in srgb,
+      in oklch,
       var(--color-fg-primary) 80%,
       transparent
     );
@@ -863,7 +863,7 @@ textarea {
 
     border-radius: var(--radius-full);
 
-    /* background: color-mix(in oklab, var(--color-bg-secondary) 50%, transparent); */
+    /* background: color-mix(in oklch, var(--color-bg-secondary) 50%, transparent); */
 
     &:focus-visible {
       outline: var(--field-outline-width-lg) solid var(--color-bg-selection);
@@ -1208,12 +1208,12 @@ textarea {
         font: bold var(--text-sm) var(--typeface-sans);
 
         background-color: color-mix(
-          in oklab,
+          in oklch,
           var(--color-bg-accent) 15%,
           transparent
         );
         color: color-mix(
-          in oklab,
+          in oklch,
           var(--color-bg-accent) 50%,
           var(--color-fg-primary)
         );
