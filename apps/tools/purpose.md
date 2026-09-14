@@ -4814,7 +4814,7 @@ i may go for the "left of that cell" this time. i can solve a specific problem i
 
 logically it should be on top, whether top or very top, to align w headings. i would make it on the left anyway to make best use of screen real estate.
 
-18 00 lib/std: create util `type`.
+18 00 lib/std: create util ~~`type`~~ `is`.
 
 no more nil == obj. no more arr = obj.
 
