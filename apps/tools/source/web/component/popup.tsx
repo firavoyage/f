@@ -77,7 +77,8 @@ export function Popup(props: popup) {
       e.preventDefault()
     }
   }, {
-    prevent_default: false
+    prevent_default: false,
+    priority: -1
   })
 
   use_bind('shift+tab', function (e) {
@@ -100,7 +101,8 @@ export function Popup(props: popup) {
       e.preventDefault()
     }
   }, {
-    prevent_default: false
+    prevent_default: false,
+    priority: -1
   })
 
   // listen for outside clicks when open

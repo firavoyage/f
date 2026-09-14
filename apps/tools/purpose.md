@@ -4988,4 +4988,8 @@ i think priority is more general.
 
 yeah, it has downside if they do not prevent default. but i guess that's not the practical case.
 
+02 20 lib/map: polymorph for set. upgrade to is (instead of typeof/instanceof).
+
+nil and array are not objects _by default_. 
+
 

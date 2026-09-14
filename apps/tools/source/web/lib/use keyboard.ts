@@ -5,6 +5,7 @@ type use_bind = Partial<{
   prevent_default: boolean
   stop_propagation: boolean
   global: boolean
+  priority: number
 }>
 
 /**
@@ -17,7 +18,7 @@ type use_bind = Partial<{
  * all flags default to on
  */
 export function use_bind(shortcut: string, action: (event: KeyboardEvent) => void, options: use_bind = {}) {
-  const { prevent_default = true, stop_propagation = true, global = true } = options
+  const { prevent_default = true, stop_propagation = true, global = true, priority = 0 } = options
 
   useEffect(() => {
     const shortcutid = bind(shortcut, (e) => {
@@ -25,7 +26,7 @@ export function use_bind(shortcut: string, action: (event: KeyboardEvent) => voi
       stop_propagation && e.stopPropagation?.()
 
       action(e)
-    }, global)
+    }, global, priority)
 
     return () => unbind(shortcutid)
   })

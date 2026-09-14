@@ -90,7 +90,9 @@ export function merge(target: object, ...sources: object[]) {
   return target
 }
 
-type variable_type = 'nil' | 'array' | "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" | fn
+// for some reason, ts sees constructures as Function, not any to any fn
+type variable_type = 'nil' | 'array' | "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" | Function
+// type variable_type = 'nil' | 'array' | "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" | fn
 
 export function is(variable: any, type: variable_type) {
   if (variable === nil) {
