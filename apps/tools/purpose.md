@@ -4800,4 +4800,6 @@ how to merge cell in html table?
 
 wait... i would have to impl new heading then...
 
+or what if i separate break from the main table.
+
 
