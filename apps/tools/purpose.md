@@ -5000,5 +5000,20 @@ support `color-mix(in srgb, palette.gray.950 30%, color.bg.primary)` besides `bo
 
 currently all tokens are letters dots and numbers. it's easier to target that directly. i may not have to support latin or cjk. well, i feel it's strictly better to hardcode the symbols instead.
 
+06 40 web/component/button: fix tooltip.
+
+it occasionally doesnt work. that's reproducible. you could not pass ref to multiple children as expected, which would be undefined on initial render.
+
+yeah, why not make it a state. perf is trivial.
+
+ref can absolutely be state.
+
+---
+
+wait, maybe it's timing issue. i could use effect instead of use event.
+
+<!-- otherwise i may consider refactoring tooltip (accept the element directly, instead of ref.current) -->
+
+seems it doesnt have to rerender. see how floating ui works.
 
 
