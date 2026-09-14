@@ -16,16 +16,22 @@ export function Button(props: button) {
 
   const ref = useRef()
 
-  return (
-    <>
-      <button {...p({ class: ['button', className], ref, ...rest_props })}
-        {...p(!focusable && { tabIndex: -1 })}></button>
-      {
-        is_given(tooltip) &&
+  if (is_given(tooltip)) {
+    return (
+      <>
+        <button {...p({ class: ['button', className], ref, ...rest_props })}
+          {...p(!focusable && { tabIndex: -1 })}></button>
         <Tooltip {...p({ tooltip, ref })}></Tooltip>
-      }
-    </>
-  )
+      </>
+    )
+  } else {
+    return (
+      <>
+        <button {...p({ class: ['button', className], ...rest_props })}
+          {...p(!focusable && { tabIndex: -1 })}></button>
+      </>
+    )
+  }
 }
 
 // type button = {

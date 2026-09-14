@@ -211,10 +211,14 @@ export function App() {
         </Scroll>
       </Sidebar>
       <Main></Main>
-      <Commands {...p({
-        open: open_commands, toggle_open: toggle_open_commands,
-        commands
-      })}></Commands>
+      {
+        // leverage component lifecycle (default cleanups), making it intuitive
+        open_commands &&
+        <Commands {...p({
+          open: open_commands, toggle_open: toggle_open_commands,
+          commands
+        })}></Commands>
+      }
       <Preferences {...p({
         open: open_preferences, toggle_open: toggle_open_preferences
       })}></Preferences>

@@ -6,11 +6,12 @@ const default_delay = 500
 type tooltip = {
   ref
   tooltip
-  delay: number
+  delay?: number
 }
 
 export function Tooltip(props: tooltip) {
   const { ref, tooltip, delay = default_delay } = props
+  log(tooltip, ref)
 
   const [open, toggle_open] = useToggle(false)
 

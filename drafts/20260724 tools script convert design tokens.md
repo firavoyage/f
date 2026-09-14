@@ -2835,3 +2835,334 @@ Show all
 
 
 
+
+# write a js regex to split a string to an array by any non dot symbols
+
+To split a string into an array by **any non-dot symbols**, you can use the JavaScript [`split()` method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/String/split) with the regular expression **`/[^.]+/`**.
+
+### The Solution
+
+javascript
+
+```
+const str = "hello...world...test..abc";
+
+// Split by one or more non-dot characters
+const result = str.split(/[^.]+/);
+
+console.log(result);
+// Output: [ "", "...", "...", "..", "" ]
+```
+
+Use code with caution.
+
+### How It Works
+
+- `[...]` is a character class.
+- The `^` at the very beginning of a character class means **"NOT"**.
+- The `.` inside the character class matches a literal dot (it does not need to be escaped inside `[...]`).
+- The `+` quantifier ensures that consecutive non-dot symbols are matched together as a single delimiter, preventing empty strings between adjacent non-dot characters.
+
+### Cleaning Up Empty Strings
+
+Because JavaScript's `split()` preserves empty strings if the delimiters appear at the very beginning or end of your string, you can chain it with [`.filter(Boolean)`](https://www.geeksforgeeks.org/javascript/split-a-string-into-an-array-of-words-in-javascript/) to clean up the output if you only want the dot groups:
+
+javascript
+
+```
+const cleanResult = str.split(/[^.]+/).filter(Boolean);
+
+console.log(cleanResult);
+// Output: [ "...", "...", ".." ]
+```
+
+Use code with caution.
+
+Would you like to modify this regex to **keep certain characters** (like spaces or newlines), or are you trying to achieve a specific parsing goal with these dots?
+
+- [link](https://stackoverflow.com/questions/13268770/splitting-string-with-regular-expression-to-make-it-array-without-empty-element)\
+  Stack Overflow\
+  Splitting string with regular expression to make it array without empty element\
+  Nov 7, 2012 — It's correct behavior that the built-in split function in JavaScript doesn't omit empty results. If you know your string always en...
+- [link](https://bobbyhadz.com/blog/javascript-split-string-special-characters)\
+  bobbyhadz\
+  Split a String by Special Characters in JavaScript - bobbyhadz\
+  Mar 4, 2024 — Report Ad. If you need to also split on a space, you can add a space between the square brackets. index.js. Copied! const str = 'a...
+
+## the result should be complete representation of str. result.join('') should == str. i mean to split by spaces, (), \[], etc., but not dot. i mean symbols not characters. numbers and letters are valid.
+
+To ensure that `result.join('') === str`, you need to use a **capturing group** `(...)` in your regular expression. When you wrap the delimiter pattern in parentheses, JavaScript’s `split()` method includes the separators themselves in the final array.
+
+Based on your clarification, you want to split by non-alphanumeric symbols (like spaces, parentheses, brackets) while strictly **treating letters, numbers, and dots as valid tokens** that shouldn't be split.
+
+### The Solution
+
+Use the regular expression **`/([^a-zA-Z0-9.]+)/`**:
+
+javascript
+
+```
+const str = "hello [world] 123.45...test";
+
+// Wrapping the pattern in () preserves the split symbols in the array
+const result = str.split(/([^a-zA-Z0-9.]+)/);
+
+console.log(result);
+// Output: [ "hello", " [", "world", "] ", "123.45", "...", "test" ]
+
+// Verifying the integrity of the string
+console.log(result.join('') === str);
+// Output: true
+```
+
+Use code with caution.
+
+### How It Works
+
+- **`([^a-zA-Z0-9.]+)`**: The outer parentheses create a **capturing group**, which tells `split()` to keep the delimiter inside the resulting array instead of throwing it away.
+- **`[^...]`**: The `^` at the start of the brackets means **"match anything EXCEPT these characters"**.
+- **`a-zA-Z0-9.`**: This specifies your valid tokens—all lowercase letters, uppercase letters, numbers, and literal dots.
+- **`+`**: This groups consecutive symbols together (e.g., matching `[` as a single element instead of splitting it into \`\`and `[` separately).
+
+Does this output layout match what you need for your data, or do you need **specific symbols** like underscores (`_`) or hyphens (`-`) to be preserved as valid characters too?
+
+## detect symbols instead of valid tokens
+
+10 sites
+
+### Here are top web results for exploring this topic:
+
+[link](https://www.boxentriq.com/analysis/cipher-identifier)
+
+Boxentriq·https://www.boxentriq.com
+
+Cipher Identifier | Boxentriq
+
+Decimal Codes can represent A1Z26, ASCII, or more advanced encoding schemes. They can also represent the output of Hash functions or modern crypto algorithms like RSA, AES, etc, even if they usually a
+
+[link](https://www.reddit.com/r/learnpython/comments/1gdcklp/how%5Fdo%5Fi%5Fcheck%5Fif%5Fa%5Fstring%5Fhas%5Fa%5Fsymbol%5Fthats%5Fnot/)
+
+Reddit·https://www.reddit.com
+
+How do I **check** if a **string** has a **symbol** that's **not** in a list - Reddit
+
+invalid\_username\_characters = set(\[" ", "-", "/", "?"...]) \_input = input("Username: ") if set(\_input) & invalid\_username\_characters: print("Contains invalid symbol!") Yoghurt42. •. 2y ago. Strings ar
+
+[link](https://stackoverflow.com/questions/32311081/check-for-special-characters-in-string)
+
+Stack Overflow·https://stackoverflow.com
+
+**Check** for special **characters** in **string** - javascript - Stack Overflow
+
+This question shows research effort; it is useful and clear. 110. This question does not show any research effort; it is unclear or not useful. Save this question. Show activity on this post. I want t
+
+[link](https://www.geeksforgeeks.org/java/java-program-to-check-whether-the-string-consists-of-special-characters/)
+
+GeeksforGeeks·https://www.geeksforgeeks.org
+
+Java Program to **Check** Whether the **String** Consists of Special ...
+
+isLetterOrDigit() method that checks if a string consists of special characters. If the character is not a letter or digit, it is considered a special character. This is a simple and efficient method
+
+[link](https://www.sololearn.com/en/Discuss/2408789/how-to-check-whether-the-special-characters-are-present-in-a-string)
+
+Sololearn·https://www.sololearn.com
+
+How to **check** whether the special **characters** are present in a **string**?
+
+\+ 2. ♤♢☞ 𝐊𝐢𝐢𝐛𝐨 𝐆𝐡𝐚𝐲𝐚𝐥 ☜♢♤ But isalpha, isnum is for checking the letters and numbers, not special characters. 23rd Jul 2020, 9:18 AM. Jaya Singh. Jaya Singh - avatar. + 2. I don't know why
+
+[link](https://www.sqlservercentral.com/articles/finding-special-characters-within-character-strings)
+
+SQLServerCentral·https://www.sqlservercentral.com
+
+Finding Special **Characters** within **Character** Strings
+
+If you were searching a UNICODE character expression you would replace the DATALENGTH(THE\_TEXT); in the where clause with DATALENGTH(THE\_TEXT)/2;. Looking over the query you can see that we needed to
+
+[link](https://docs.python.org/3/library/re.html)
+
+Python documentation·https://docs.python.org
+
+re — Regular expression operations — Python 3.14.7 documentation
+
+Special sequences which do not match a single character such as \A and \z are not allowed. Characters that are not within a range can be matched by complementing the set. If the first character of the
+
+[link](https://forum.uipath.com/t/method-to-check-if-string-contains-anything-other-than-alphabets-numbers-special-characters/224816)
+
+UiPath Community Forum·https://forum.uipath.com
+
+Method to **Check** if **String** Contains anything other than Alphabets ...
+
+Hi All I have a string, and I want to check if the string contain anything other than the English Alphabets, Numbers, and Special Characters . Basically, my string sometimes can contains any other lan
+
+[link](https://regexr.com/)
+
+RegExr·https://regexr.com
+
+RegExr: Learn, Build, & Test RegEx
+
+Regular expression tester with syntax highlighting, PHP / PCRE & JS Support, contextual help, cheat sheet, reference, and searchable community patterns.
+
+[link](https://forum.knime.com/t/regexmatcher-for-special-characters/73234)
+
+KNIME·https://forum.knime.com
+
+RegexMatcher for Special **Characters** - KNIME Analytics Platform
+
+I want to identify if there are any invalid characters in my records. Only below special characters are valid "\[a-zA-Z]\[0-9]^\_=!#$%&()\*+,-.:'/?@ "). If any other special character appears other than a
+
+## write
+
+To split strictly by specific symbols without defining "valid tokens," you can explicitly target the exact symbols you want to split on inside a capturing group **`([\s()\[\]]+)`**.
+
+Using a **capturing group** `(...)` ensures that `result.join('') === str` remains true, as JavaScript will include the matched symbols in the final array instead of discarding them.
+
+### The Solution
+
+javascript
+
+```
+const str = "hello [world] 123.45...test";
+
+// Split and capture spaces, parentheses, and square brackets
+const result = str.split(/([\s()\[\]]+)/);
+
+console.log(result);
+// Output: [ "hello", " [", "world", "] ", "123.45...test" ]
+
+// Verifying the integrity of the string
+console.log(result.join('') === str);
+// Output: true
+```
+
+Use code with caution.
+
+### How It Works
+
+- **`(...)`**: The capturing group. It tells `split()` to keep the symbols in the resulting array.
+- **`[\s()\[\]]`**: This character class targets the specific symbols you mentioned:
+  - `\s`: Matches any whitespace character (spaces, tabs, newlines).
+  - `()`: Matches literal open and close parentheses.
+  - `\[\]`: Matches literal open and close square brackets (escaped with `\` so JavaScript doesn't think it's the end of the character class).
+- **`+`**: Groups consecutive symbols together so a space followed by a bracket (` [`) remains a single element in the array.
+
+### Alternative: Split by ALL Symbols except Dots, Letters, and Numbers
+
+If you want a truly comprehensive catch-all for symbols—meaning you want to split on characters like `!`, `@`, `#`, `-`, `+`, `=`, etc., but still **ignore dots**—you can use the negative character class directly inside the capturing group:
+
+javascript
+
+```
+// Captures any character that is NOT a letter, number, or dot
+const result = str.split(/([^a-zA-Z0-9.]+)/);
+```
+
+Use code with caution.
+
+Should the regex include other symbols like **braces (`{}`)**, **commas (`,`)**, or **math operators (`+`, `-`)**, or does this specific set cover your use case?
+
+## hardcode the symbols (all common symbols, not just paratheses brackets) instead of the valid tokens
+
+To split strictly by a hardcoded list of **all common symbols** (while ignoring dots) and ensure that `result.join('') === str` remains true, you can explicitly list those characters inside a **capturing group**.
+
+### The Solution
+
+Here is the regular expression containing the most common symbols found on a standard keyboard (spaces, brackets, punctuation, math operators, quotes, etc.), carefully escaped so they don't break the regex pattern:
+
+javascript
+
+```
+const str = "hello!world [test] 123.45 + abc=xyz;foo,bar";
+
+// Hardcoded common symbols inside a capturing group (excluding '.')
+const regex = /([\s!()\[\]{}<>\-_=+\\\/|;:'",?@#$%^&*`~]+)/;
+
+const result = str.split(regex);
+
+console.log(result);
+/* Output:
+[
+  "hello", "!", "world", " [", "test", "] ",
+  "123.45", " + ", "abc", "=", "xyz", ";",
+  "foo", ",", "bar"
+]
+*/
+
+// Verifying the integrity of the string
+console.log(result.join('') === str);
+// Output: true
+```
+
+Use code with caution.
+
+### Breakdown of the Hardcoded Symbols
+
+Inside the character class `[...]`, the following common symbols are explicitly matched and grouped together with `+`:
+
+- `\s` — Whitespace (spaces, tabs, newlines)
+- `!()` — Exclamation and parentheses
+- `\[\]{}` — Square brackets and curly braces (note that `[` and `]` must be escaped as `\[` and `\]`)
+- `<>` — Angle brackets / less-than and greater-than signs
+- `\-_=+` — Hyphen, underscore, equals, and plus (the hyphen must be escaped as `\-` or placed at the very start/end so it isn't treated as a range indicator)
+- `\\\/|` — Backslash, forward slash, and vertical pipe (the backslash must be escaped as `\\`)
+- `;:'",?` — Semicolon, colon, apostrophe, quotation mark, comma, and question mark
+- `@#\$%^&*` — Standard top-row symbol keys
+- \`\`~\` — Backtick and tilde
+
+Would you like to add any specific **Unicode symbols** (like currency signs `€`, `£` or math symbols like `±`) to this hardcoded list, or does this cover the keyboard layout you are working with?
+
+## what symbols may appear on css value
+
+In CSS property values, symbols serve as structural syntax, functional delimiters, math operators, or content characters. [link](https://ishadeed.com/article/css-vars-101/)
+
+These are the primary symbols that regularly appear inside a **CSS value**:
+
+### 1. Structure & Structural Delimiters
+
+- **`,` (Comma)**: Separates multiple values in lists (e.g., fallback font names `font-family: Arial, sans-serif;` or background layers).
+- **`/` (Forward Slash)**: Separates distinct values within a shorthand property that share a similar format, such as `font: 16px/1.5 sans-serif;` (font-size/line-height) or grid layouts (`grid-area: 1 / 3;`).
+- **`:` (Colon)**: Used for functional syntax inside property values, most notably in pseudo-classes within custom elements or values like `url(http://...)`. [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Values%5Fand%5Funits/Value%5Fdefinition%5Fsyntax)
+
+### 2. Math, Units, and Custom Syntax
+
+- **`%` (Percentage)**: Denotes relative sizes, colors, and keyframe points (e.g., `width: 100%;`, `opacity: 50%;`).
+- **`#` (Hash/Pound)**: Designates hex color codes (e.g., `color: #ffffff;`).
+- **`+` and `-` (Plus and Minus)**: Used as algebraic signs for numbers, or as operators inside mathematical functions like `calc(100% - 20px)` or `clamp()`.
+- **`*` and `/` (Asterisk and Slash)**: Used as multiplication and division operators inside arithmetic functions like `calc(var(--size) * 2)`. [link](https://insidethesquare.co/resources/css-symbols)
+
+### 3. Encapsulation & Functions
+
+- **`()` (Parentheses)**: Used to execute native CSS functions such as `calc()`, `var()`, `url()`, `rgb()`, `linear-gradient()`, and modern transformations.
+- **`""` and `''` (Double and Single Quotes)**: Used to define strings, asset paths, or custom identifiers (e.g., `content: "★";`, `font-family: 'Open Sans';`). [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/symbols)
+
+### 4. Custom Variables & Naming
+
+- **`--` (Double Hyphen)**: Used to register and reference CSS custom properties (variables), such as `background: var(--primary-color);`.
+- **`_` and `-` (Underscore and Hyphen)**: Permitted characters inside names, custom identifiers, variable labels, or custom font stacks. [link](https://www.w3.org/TR/CSS2/syndata.html)
+
+### 5. String Literals (`content` property)
+
+Inside the `content: "";` property used by pseudo-elements (`::before` or `::after`), **any valid Unicode symbol** can appear. This includes:
+
+- Currency symbols (`$`, `€`, `£`)
+- Icons and shapes (`★`, `▶`, `✖`)
+- Escaped hex strings utilizing the **`\` (Backslash)** symbol (e.g., `content: "\201C";` for a left double-quotation mark).
+
+Are you asking this to **expand your JavaScript regex** so it safely ignores these CSS value symbols while parsing? If so, tell me your exact **target string format** and I can tailor the regex pattern for you.
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Values%5Fand%5Funits/Value%5Fdefinition%5Fsyntax)\
+  MDN Web Docs\
+  Value definition syntax - CSS - MDN Web Docs\
+  Dec 16, 2025 — Literals. In CSS, a few characters can appear on their own, like the slash ( / ) or the comma ( , ), and are used in a property de...
+- [link](https://insidethesquare.co/resources/css-symbols)\
+  insidethesquare.co\
+  Your Guide to CSS Symbols: How & When To Use What — insidethesquare.co - Free Squarespace Advice\
+  Jan 4, 2022 — Curly brackets are used in CSS to keep all the changes you are making to a selector in one place for your browser. For example, th...
+- [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/symbols)\
+  MDN Web Docs\
+  symbols() CSS function - MDN Web Docs - Mozilla\
+  Apr 18, 2026 — Syntax. ... symbols() = symbols( ? \[ | ]+ ); can be one of the following: cyclic : The system cycles through the given values in t...
+
+Show all
+

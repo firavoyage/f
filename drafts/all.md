@@ -324,6 +324,7 @@ web: <!-- frontend, web, ts/js -->
 - component switch
 - storybook
 - js std lib is
+- css color mix oklab oklch
 
 backend:
 
