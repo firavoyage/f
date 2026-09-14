@@ -47,7 +47,7 @@ export function Commands(props: commands) {
     command(results[index])
   }
 
-  use_bind('esc', close)
+  use_bind('esc', close, { priority: 1 })
 
   // focus the input on mount (on open), it's counterintuitively always mounted
   useEffect(() => {
