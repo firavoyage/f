@@ -37,6 +37,22 @@ export function Commands(props: commands) {
     'bar',
     'baz',
     'asdf',
+    'asdf',
+    'asdf',
+    'asdf',
+    'asdf',
+    'asdf',
+    'asdf',
+    'asdf',
+    'asdf',
+    'asdf',
+    'asdf',
+    'asdf',
+    'asdf',
+    'asdf',
+    'asdf',
+    'asdf',
+    'asdf',
   ]
 
   return (
@@ -50,7 +66,7 @@ export function Commands(props: commands) {
             {
               map(results, (result) => (
                 <Button {...p({})}>
-                  result
+                  {result}
                 </Button>
               ))
             }
