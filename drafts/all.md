@@ -136,6 +136,7 @@ life:
 - anime bakemonogatari tore
 - game maimai dx song rating formula
 - watch
+- pad
 
 create something:
 
@@ -321,6 +322,7 @@ web: <!-- frontend, web, ts/js -->
 - userscript ruler
 - component switch
 - storybook
+- js std lib is
 
 backend:
 
@@ -933,6 +935,7 @@ tools:
 - action json parsing
 - action maimai visual output table graph
 - action color contrast
+- action maimai loss table math exp sub table min width quirk
 
 code:
 

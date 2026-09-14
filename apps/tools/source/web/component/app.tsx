@@ -80,6 +80,10 @@ export const shortcuts: shortcut[] = [
     command: "toggle sidebar"
   },
   {
+    key: "alt+b",
+    command: "toggle sidebar"
+  },
+  {
     key: "alt+s",
     command: "toggle sidebar"
   },
