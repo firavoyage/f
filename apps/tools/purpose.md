@@ -4934,4 +4934,37 @@ the dropdown looks like
 
 seems all command has desc. some have icon or shortcut.
 
+```
+Type to Search
+
+Prefix your query w one of the following to filter results
+
+Files ... `~`
+Symbols `@`
+Documentation `?`
+Actions `>`
+```
+
+<!-- you can either place whitespace of any number or not after the prefix. -->
+
+in the current project (gnome clock) there are no docs. you will find nothing w `?` prefix.
+
+for files and symbols it will show a preview on the right. for symbols, it will focus on where it is. if it's not at the very top/bottom of the file, it will scroll to where you are comfortable (i.e. golden div of your screen, 38...47 symbol...73).
+
+files have icons of file type (e.g. music, docs, img...)
+
+symbols have icons for const, var/prop, and fn.
+
+on global search, the order is
+
+- commands
+- symbols
+- files
+
+awkwardly, for folders (yeah files = files/folders), it still wants to show a preview, yet it could only show a blank file of focusing "line 1: empty". and the desc is always "Open file or folder" repeating millions of times in the dropdown. i mean, even if you scope to `~`, it does that.
+
+<!-- how does vscode solve that? it simply does not have/show desc. -->
+
+it can fuzzy search, but idk how it does. and unlike vscode it doesnt highlight matches. yet it can match non existing match (maybe there are hidden metadata like search keywords).
+
 
