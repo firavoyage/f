@@ -5142,4 +5142,10 @@ result.push(['p', item]) // this can be abstracted
 
 vscode takes 300% cpu, becomes almost unresponsive, notices my laps, and self heals?
 
+---
+
+`Parameter cannot have question mark and initializer.ts(1015)`
+
+interesting pl design.
+
 
