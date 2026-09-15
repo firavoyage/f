@@ -299,6 +299,8 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
 
   use_global.set = set
 
+  use_global.set_prop = set_prop
+
   use_global.sub = subscribe
 
   // expose regardless of should sync url in case ts is not intelligent enough

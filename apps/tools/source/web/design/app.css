@@ -1052,7 +1052,7 @@ textarea {
     align-self: center;
   }
 
-  .button_back {
+  .button_back, .button_search {
     position: absolute;
     left: 0;
 
