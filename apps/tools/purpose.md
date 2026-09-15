@@ -5094,4 +5094,28 @@ feel an array would feel better. type can be h1, h2, h3, or p/leaf.
 
 headings have labels. leaves have content. nothing wrong to array dc, though that would be less future proof.
 
+a dedicated is_leaf? idk. maybe not needed.
+
+maybe it will not be completely flattened.
+
+it's common to look like
+
+```yaml
+heading:
+  - - c1 u1
+    - c1 u2
+    - c1 u3
+  - - c2 u1
+    - c2 u2
+    - c2 u3
+```
+
+i will not flat them to "hr". because they are not rendered this way <!-- in adw -->.
+
+oh maybe they are. i do not have to follow adw and i may render hr.
+
+what if they are mixed?
+
+an array will append a hr if there isnt already one. it will lift a flag to append an hr after it unless it's immediatelly followed by some heading.
+
 
