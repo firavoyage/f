@@ -183,7 +183,9 @@ export function App() {
 
   use_window_active()
 
-  use_variants({ density })
+  const glitch = use_mouse_glitch()
+
+  use_variants({ density, glitch })
   
   use_event('mouseenter', (e) => {
     log('enter', e)

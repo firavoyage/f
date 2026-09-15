@@ -8,12 +8,14 @@ import { use_sync_theme } from 'web/lib/use sync theme'
 import { use_window_active } from 'web/lib/use window active'
 import { use_variants } from 'web/lib/use variants'
 import { use_event } from 'web/lib/use event'
+import { use_mouse_glitch } from "web/lib/use mouse glitch";
 
 export * from 'web/lib/use keyboard'
 export * from 'web/lib/use sync theme'
 export * from 'web/lib/use window active'
 export * from 'web/lib/use variants'
 export * from 'web/lib/use event'
+export * from "web/lib/use mouse glitch";
 
 export function use_measure(options?: Parameters<typeof useMeasure>) {
   const [measureRef, bounds] = useMeasure(options);
@@ -46,6 +48,7 @@ type use_window_active = typeof use_window_active
 type use_variants = typeof use_variants
 type useMount = typeof useMount
 type use_event = typeof use_event
+type use_mouse_glitch = typeof use_mouse_glitch
 declare global {
   var useRef: useRef
   var useState: useState
@@ -60,4 +63,5 @@ declare global {
   var use_variants: use_variants
   var useMount: useMount
   var use_event: use_event
+  var use_mouse_glitch: use_mouse_glitch
 }

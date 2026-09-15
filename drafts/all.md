@@ -326,6 +326,7 @@ web: <!-- frontend, web, ts/js -->
 - js std lib is
 - css color mix oklab oklch
 - web lib use event
+- web lib use mouse glitch
 
 backend:
 
