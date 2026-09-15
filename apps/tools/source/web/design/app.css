@@ -239,7 +239,7 @@ body {
               margin-inline: var(--page-whitespace);
               margin-bottom: calc(var(--page-whitespace) / 2);
 
-              > .name {
+              > .label {
                 flex-grow: 1;
               }
             }
@@ -884,7 +884,8 @@ textarea {
       /* margin-block-end: var(--spacing-4); */
     }
 
-    .name {
+    .label {
+      font-weight: 500;
       /* font: 500 var(--text-base) var(--typeface-sans); */
 
       /* margin-block-end: var(--spacing-4); */

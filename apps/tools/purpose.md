@@ -5204,10 +5204,20 @@ what fluid means depends on the design philosophy of the specific app. util desi
 
 01 40 component/commands: implement fuzzy search.
 
-01 50 component/preferences: support hierarchy.
+01 50 component/preferences: support hierarchy. style headings.
 
 done.
 
 <!-- work would never be done. i can polish it forever. i may impl scroll area and focus trap select next. i may add new tools. most items in backlog are nice to have, under c/w. -->
+
+---
+
+.name? childish. awkward, really feels.
+
+label.
+
+app name, tool name, arg name.
+
+ok but for arg, esp in pref i will call it label instead.
 
 
