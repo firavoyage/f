@@ -5152,4 +5152,20 @@ interesting pl design.
 
 rebind shortcut on every rerender in case the fn carries outdated state snapshot.
 
+23 20 web/lib/use mouse glitch: fix ghost 0, 0 coord on tab switch. web/component/tooltip: fix glitch on top left element when switching browser tabs.
+
+from my test
+
+- the glitch only happen in chromium on windows/linux (as said), ~~esp~~ when maximized
+- both mouse enter and mouse move _will_ fire when glitched.
+- it's highly unnatural when all of them, screen xy, client xy, are zero.
+- tradeoff is worth it: it will not trigger hover state correctly if they genuinely rest on top left _wo making any movement_.
+
+the logic:
+
+- if they _enter_ document body at a glitched (or resting there for some reason) position, apply glitched state
+- on css, disable all pointer action and hide tooltip when glitched.
+- if they _move_ to any reasonable position or _leave_ body, set state to true
+- react will handle the rest
+
 

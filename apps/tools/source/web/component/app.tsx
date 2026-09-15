@@ -184,6 +184,18 @@ export function App() {
   use_window_active()
 
   use_variants({ density })
+  
+  use_event('mouseenter', (e) => {
+    log('enter', e)
+  }, document.body)
+
+  use_event('mousemove', (e) => {
+    log('move', e)
+  })
+
+  use_event('mouseleave', (e) => {
+    log('leave', e)
+  }, document.body)
 
   return <>
     <title>Tools</title>
