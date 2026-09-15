@@ -1,4 +1,4 @@
-import { use_bind } from 'web/lib/use keyboard'
+import { use_keyboard } from 'web/lib/use keyboard'
 
 import type { shortcut } from 'web/component/app'
 import { Scroll } from './scroll'
@@ -18,10 +18,10 @@ export function Shortcuts(props: shortcuts) {
 
   map(shortcuts, (shortcut) => {
     const { key, command } = shortcut
-    use_bind(key, () => call(command))
+    use_keyboard(key, () => call(command))
   })
 
-  use_bind('esc', close)
+  use_keyboard('esc', close)
 
   function close() {
     toggle_open(false)

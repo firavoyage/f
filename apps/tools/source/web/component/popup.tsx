@@ -1,5 +1,5 @@
 import { tabbable } from "tabbable"
-import { use_bind } from "web/lib/use keyboard"
+import { use_keyboard } from "web/lib/use keyboard"
 
 type popup = {
   open
@@ -62,8 +62,8 @@ export function Popup(props: popup) {
   }, [open])
 
   // trap keyboard when open
-  use_bind('tab', function (e) {
-    if (!popup.current || !open) {
+  use_keyboard('tab', function (e) {
+    if (!popup.current) {
       return
     }
 
@@ -84,11 +84,12 @@ export function Popup(props: popup) {
     }
   }, {
     prevent_default: false,
-    priority: -1
+    priority: -100,
+    when: open,
   })
 
-  use_bind('shift+tab', function (e) {
-    if (!popup.current || !open) {
+  use_keyboard('shift+tab', function (e) {
+    if (!popup.current) {
       return
     }
 
@@ -109,12 +110,13 @@ export function Popup(props: popup) {
     }
   }, {
     prevent_default: false,
-    priority: -1
+    priority: -100,
+    when: open
   })
 
   // listen for outside clicks when open
   use_event('mousedown', function (e) {
-    if (!open || !popup.current) {
+    if (!popup.current || !open) {
       return
     }
 

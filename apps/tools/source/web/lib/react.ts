@@ -3,7 +3,7 @@
 
 import { useEffect, useState, useRef, useCallback } from "react";
 import { useAsync, useAsyncFn, useMeasure, useToggle, useMount } from "react-use";
-import { use_bind } from 'web/lib/use keyboard'
+import { use_keyboard } from 'web/lib/use keyboard'
 import { use_sync_theme } from 'web/lib/use sync theme'
 import { use_window_active } from 'web/lib/use window active'
 import { use_variants } from 'web/lib/use variants'
@@ -40,7 +40,7 @@ type useToggle = typeof useToggle
 type useAsync = typeof useAsync
 type useAsyncFn = typeof useAsyncFn
 type use_measure = typeof use_measure
-type use_bind = typeof use_bind
+type use_keyboard = typeof use_keyboard
 type use_sync_theme = typeof use_sync_theme
 type use_window_active = typeof use_window_active
 type use_variants = typeof use_variants
@@ -54,7 +54,7 @@ declare global {
   var useAsync: useAsync
   var useAsyncFn: useAsyncFn
   var use_measure: use_measure
-  var use_bind: use_bind
+  var use_keyboard: use_keyboard
   var use_sync_theme: use_sync_theme
   var use_window_active: use_window_active
   var use_variants: use_variants

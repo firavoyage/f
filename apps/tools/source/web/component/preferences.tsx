@@ -35,7 +35,7 @@ export function Preferences(props: preferences) {
   const { open, toggle_open, preferences } = props
   const [is_on_top, toggle_is_on_top] = useToggle(false)
 
-  use_bind('esc', close)
+  use_keyboard('esc', close)
 
   function close() {
     toggle_open(false)

@@ -47,7 +47,10 @@ export function Commands(props: commands) {
     command(results[index])
   }
 
-  use_bind('esc', close, { priority: 1 })
+  use_keyboard('esc', close, {
+    priority: 100,
+    when: open
+  })
 
   // focus the input on mount (on open), it's counterintuitively always mounted
   useEffect(() => {
@@ -74,15 +77,15 @@ export function Commands(props: commands) {
     set_focus(0)
   }, [search])
 
-  use_bind('tab', navigate_down)
-  use_bind('ctrl+j', navigate_down)
-  use_bind('down', navigate_down)
+  use_keyboard('tab', navigate_down, { when: open })
+  use_keyboard('ctrl+j', navigate_down, { when: open })
+  use_keyboard('down', navigate_down, { when: open })
 
-  use_bind('shift+tab', navigate_up)
-  use_bind('ctrl+k', navigate_up)
-  use_bind('up', navigate_up)
+  use_keyboard('shift+tab', navigate_up, { when: open })
+  use_keyboard('ctrl+k', navigate_up, { when: open })
+  use_keyboard('up', navigate_up, { when: open })
 
-  use_bind('enter', () => select(focus))
+  use_keyboard('enter', () => select(focus), { when: open })
 
   return (
     <Popup {...p({ open, toggle_open, backdrop: false, align: 'top' })}>
