@@ -6,7 +6,7 @@ export function toggle<T>(set: Set<T>, element: T) {
     set.delete(element)
   } else {
     set.add(element)
-  } 
+  }
 }
 
 export function reverse_map(obj: object) {
@@ -14,44 +14,66 @@ export function reverse_map(obj: object) {
 }
 
 export function flatten(object: object) {
-// export function flatten(object: object, is_leaf?: fn) {
+  // export function flatten(object: object, is_leaf?: fn) {
   const result = []
 
-  let should_append_hr = false
+  // 'hr' | type, label | type, content
+  function append(...args) {
+    result.push(args)
+  }
+
+  function flatten_array(array: any[]) {
+    let result = []
+
+    // flatten any array while prepending and appending a hr for each array
+    map(array, (item) => {
+      if (is(item, 'array')) {
+        append('hr')
+        flatten_array(item)
+        append('hr')
+      } else {
+        append('p', item)
+      }
+    })
+
+    // merge duplicate consecutive hr into one, omit the starting and trailing hr
+    result = map(result, (item, index) => {
+      if (item[0] == 'hr') {
+        if (result[index - 1][0] == 'hr' || index == 0 || index == result.length - 1) {
+          return
+        }
+      }
+
+      return item
+    })
+
+    return result
+  }
 
   function traverse(object: object, depth = 1) {
     if (is(object, 'array')) {
-      map(object, (v) => {
-        if (is(v, 'array')) {
-          if (result[result.length - 1][0] == 'p') {
-            result.push(['hr'])
-          } 
-
-          
-
-          should_append_hr = true
-        } 
-        result.push(['p', v])
+      flatten_array(object)
+    } else if (is(object, 'object')) {
+      map(object, ([k, v]) => {
+        append(`h${depth}`, k)
+        traverse(v, depth + 1)
       })
-    } 
-
-    map(object, (k, v) => {
-
-
-      result.push([`h${depth}`, k])
-
-
-    })
+    } else {
+      // primitive
+      append('p', object)
+    }
   }
 
-  map(object, (k, v) => {
-    
-  })
+  traverse(object)
+
+  return result
 }
 
 type toggle = typeof toggle
 type reverse_map = typeof reverse_map
+type flatten = typeof flatten
 declare global {
   var toggle: toggle
   var reverse_map: reverse_map
+  var flatten: flatten
 }

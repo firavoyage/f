@@ -5118,4 +5118,28 @@ what if they are mixed?
 
 an array will append a hr if there isnt already one. it will lift a flag to append an hr after it unless it's immediatelly followed by some heading.
 
+conceptually i want to 
+
+- flatten any array while prepending and appending a hr for each array
+- merge duplicate consecutive hr into one
+- omit the heading and trailing hr (if exists)
+
+let's avoid the hacks and make it clear. contextual flags are unreadable.
+
+---
+
+well that's incredibly prone to human errors. cant be fixed though.
+
+```
+map(object, ([k, v]) ...)
+// or map(object, (k, v) ...)
+
+result.push(['p', item]) // this can be abstracted
+// or result.push('p', item)
+```
+
+---
+
+vscode takes 300% cpu, becomes almost unresponsive, notices my laps, and self heals?
+
 
