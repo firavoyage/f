@@ -5040,4 +5040,22 @@ actually ive had the idea of "oh we can create a magic serializable react to mak
 
 the last piece.
 
+08 00 web/lib/state: ~~create `get`, a modern alternative to `data`~~. fix `use_global.data` to return the current latest value.
+
+feels quirky. i could not tell. im not a pro. but fn would solve it.
+
+maybe i dont have to.
+
+y.
+
+08 10 web/component/popup: harden keyboard trap and fix styling.
+
+it's meaningless to make the popup body tab index -1 and "focus it itself".
+
+and it's quirky. it makes everything inside focus visible. lol.
+
+it should do nothing.
+
+and tab/shift tab should not assume it's already inside. it should handle first/last element, and reset focus when outside (as if the popup itself is focused).
+
 

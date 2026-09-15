@@ -62,7 +62,6 @@ export function Preferences(props: preferences) {
           <div className="body">
             {
               map(preferences, (pref) => {
-                log(use_global.data)
                 return (
                 <Arg {...p({ ...pref, value: use_global.data[pref.id], set_value(v){
                   use_global.set_prop(pref.id, v)

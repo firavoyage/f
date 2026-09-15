@@ -227,7 +227,13 @@ export function App() {
             id: 'appearance.theme',
             type: 'radio',
             options: ['system', "light", "dark"]
-          }
+          },
+          {
+            name: 'Density',
+            id: 'appearance.density',
+            type: 'radio',
+            options: ["comfortable", "cozy", "compact"]
+          },
         ]
       })}></Preferences>
       <Shortcuts {...p({
