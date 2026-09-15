@@ -61,15 +61,22 @@ export function Preferences(props: preferences) {
         <Scroll {...p({ toggle_is_on_top })}>
           <div className="body">
             {
-              map(preferences, (pref) => {
-                return (
-                  <Arg {...p({
-                    ...pref, value: use_global.data[pref.id], set_value(v) {
-                      use_global.set_prop(pref.id, v)
-                    }
-                  })}
-                  ></Arg>
-                )
+              map(flatten(preferences), (pref) => {
+                const [type, content] = pref
+                if (type == 'p') {
+                  return (
+                    <Arg {...p({
+                      ...content, value: use_global.data[pref.id], set_value(v) {
+                        use_global.set_prop(pref.id, v)
+                      }
+                    })}
+                    ></Arg>
+                  )
+                } else {
+                  return (
+                    <div {...p({ class: type })}>{content}</div>
+                  )
+                }
               })
             }
           </div>
