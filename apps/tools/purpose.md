@@ -5148,4 +5148,8 @@ vscode takes 300% cpu, becomes almost unresponsive, notices my laps, and self he
 
 interesting pl design.
 
+22 40 web/lib/use keyboard: fix stale state.
+
+rebind shortcut on every rerender in case the fn carries outdated state snapshot.
+
 

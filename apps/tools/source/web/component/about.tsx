@@ -61,11 +61,12 @@ export function About(props: about) {
     }
   }, [stack])
 
-  function close() {
-    // in case react state persists somehow
-    // yeah, closed != unmounted
+  // reset to navigation to main page when closed and opened again
+  useEffect(() => {
     set_stack(default_stack)
+  }, [open])
 
+  function close() {
     toggle_open(false)
   }
 

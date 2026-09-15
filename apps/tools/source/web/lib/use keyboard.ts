@@ -23,10 +23,6 @@ export function use_keyboard(shortcut: string, action: (event: KeyboardEvent) =>
     when = true
   } = options
 
-  if (shortcut == 'esc' && when) {
-    log(action, options)
-  } 
-
   useEffect(() => {
     if (!when) {
       return
@@ -41,5 +37,5 @@ export function use_keyboard(shortcut: string, action: (event: KeyboardEvent) =>
     )
 
     return () => unbind(shortcutid)
-  }, [when])
+  })
 }
