@@ -88,6 +88,3 @@ export function unbind(shortcutid: number) {
     mousetrap.unbind(shortcut)
   }
 }
-
-globalThis.bindings = bindings
-globalThis.shortcuts = shortcuts
