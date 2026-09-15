@@ -225,26 +225,28 @@ export function App() {
       })}></Commands>
       <Preferences {...p({
         open: open_preferences, toggle_open: toggle_open_preferences,
-        preferences: [
-          {
-            name: 'Theme',
-            id: 'appearance.theme',
-            type: 'radio',
-            options: ['system', "light", "dark"]
-          },
-          {
-            name: 'Density',
-            id: 'appearance.density',
-            type: 'radio',
-            options: ["comfortable", "cozy", "compact"]
-          },
-          {
-            name: 'Animation',
-            id: 'appearance.animation',
-            type: 'radio',
-            options: ["fluid", "reduced"]
-          },
-        ]
+        preferences: {
+          Appearance: [
+            {
+              name: 'Theme',
+              id: 'appearance.theme',
+              type: 'radio',
+              options: ['system', "light", "dark"]
+            },
+            {
+              name: 'Density',
+              id: 'appearance.density',
+              type: 'radio',
+              options: ["comfortable", "cozy", "compact"]
+            },
+            {
+              name: 'Animation',
+              id: 'appearance.animation',
+              type: 'radio',
+              options: ["fluid", "reduced"]
+            },
+          ]
+        }
       })}></Preferences>
       <Shortcuts {...p({
         open: open_shortcuts, toggle_open: toggle_open_shortcuts,

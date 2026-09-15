@@ -4,6 +4,7 @@ import { Scroll } from './scroll'
 import { Button } from './button'
 import { Popup } from './popup'
 import { Input } from './input'
+import { go } from 'fuzzysort'
 
 type commands = {
   open: boolean
@@ -12,7 +13,7 @@ type commands = {
 }
 
 export function Commands(props: commands) {
-  const { open, toggle_open, commands } = props
+  const { open, toggle_open, commands: commands_object } = props
   const [is_on_top, toggle_is_on_top] = useToggle(false)
   const [search, set_search] = useState('')
   const [focus, set_focus] = useState(0)
@@ -20,13 +21,16 @@ export function Commands(props: commands) {
   const input = useRef()
   const list = useRef()
 
-  const results = [
-    ...map(commands, ([k, v]) => k),
-    'foo',
-    'bar',
-    'baz',
-    'asdf',
-  ]
+  const commands = map(commands_object, ([k, v]) => k)
+  const results = search ? map(go(search, commands), (result) => result.target) : commands
+  // const results = commands
+  // const results = [
+  //   ...map(commands, ([k, v]) => k),
+  //   'foo',
+  //   'bar',
+  //   'baz',
+  //   'asdf',
+  // ]
 
   const last_index = results.length - 1
 

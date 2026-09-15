@@ -5202,4 +5202,12 @@ and i guess i would have two options instead of three or more (i.e. fluid/simple
 
 what fluid means depends on the design philosophy of the specific app. util design would not have much animation. it might not even have transition for overlay sidebar.
 
+01 40 component/commands: implement fuzzy search.
+
+01 50 component/preferences: support hierarchy.
+
+done.
+
+<!-- work would never be done. i can polish it forever. i may impl scroll area and focus trap select next. i may add new tools. most items in backlog are nice to have, under c/w. -->
+
 

@@ -4,7 +4,7 @@ svg {
   display: block;
 }
 
-[glitch]{
+[glitch] {
   /* it will not automatially cancel already applied hover style */
   /* furthermore it might block mouse events (it might not) */
   /* * {
@@ -871,6 +871,24 @@ textarea {
         flex: 1;
       }
     } */
+
+    .h1 {
+      font: var(--text-3xl) var(--typeface-sans);
+
+      margin-block-end: var(--spacing-4);
+    }
+
+    .h2 {
+      font: var(--text-2xl) var(--typeface-sans);
+
+      /* margin-block-end: var(--spacing-4); */
+    }
+
+    .name {
+      /* font: 500 var(--text-base) var(--typeface-sans); */
+
+      /* margin-block-end: var(--spacing-4); */
+    }
   }
 }
 
