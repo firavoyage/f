@@ -13,8 +13,8 @@ export function reverse_map(obj: object) {
   return Object.fromEntries(map(obj, ([key, value]) => [value, key]))
 }
 
-export function flatten(object: object) {
-  // export function flatten(object: object, is_leaf?: fn) {
+// export function flatten(object: object) {
+export function flatten(object: object, is_leaf?: fn = () => false) {
   const result = []
 
   // 'hr' | type, label | type, content
@@ -28,11 +28,11 @@ export function flatten(object: object) {
     // flatten any array while prepending and appending a hr for each array
     map(array, (item) => {
       if (is(item, 'array')) {
-        append('hr')
-        flatten_array(item)
-        append('hr')
+        result.push(['hr'])
+        result.push(...flatten_array(item))
+        result.push(['hr'])
       } else {
-        append('p', item)
+        result.push(['p', item])
       }
     })
 
@@ -51,8 +51,11 @@ export function flatten(object: object) {
   }
 
   function traverse(object: object, depth = 1) {
-    if (is(object, 'array')) {
-      flatten_array(object)
+    if (is_leaf(object)) {
+      // see as primitive
+      append('p', object)
+    } else if (is(object, 'array')) {
+      result.push(...flatten_array(object))
     } else if (is(object, 'object')) {
       map(object, ([k, v]) => {
         append(`h${depth}`, k)
