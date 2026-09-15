@@ -41,7 +41,12 @@ export function Popup(props: popup) {
         prev_focus.current = document.activeElement
 
         if (initial_focus == 'popup_container') {
-          popup.current.focus()
+          /**
+           * fix quirk: popup container should show no outline, 
+           * yet when focused, everything inside becomes focus visible
+           */
+          document.activeElement?.blur?.();
+          // popup.current.focus()
         } else if (initial_focus == 'first_element') {
           const focusable = tabbable(popup.current);
           const first_element = focusable[0];
@@ -65,14 +70,15 @@ export function Popup(props: popup) {
     const focusable = tabbable(popup.current);
     if (focusable.length == 0) {
       e.preventDefault()
-
       return
     };
 
     const first_element = focusable[0];
     const last_element = focusable[focusable.length - 1];
 
-    if (document.activeElement == last_element) {
+    // harden keyboard trap
+    if (document.activeElement == last_element || !popup.current.contains(document.activeElement)) {
+    // if (document.activeElement == last_element) {
       first_element.focus()
       e.preventDefault()
     }
@@ -89,14 +95,15 @@ export function Popup(props: popup) {
     const focusable = tabbable(popup.current);
     if (focusable.length == 0) {
       e.preventDefault()
-
       return
     };
 
     const first_element = focusable[0];
     const last_element = focusable[focusable.length - 1];
 
-    if (document.activeElement == first_element) {
+    // harden keyboard trap
+    if (document.activeElement == first_element || !popup.current.contains(document.activeElement)) {
+    // if (document.activeElement == first_element) {
       last_element.focus()
       e.preventDefault()
     }

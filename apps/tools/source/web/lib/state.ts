@@ -292,9 +292,12 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
 
   use_global.data = data
   Object.defineProperty(use_global, 'data', {
-    value: data,
-    writable: false,
-    configurable: false
+    get() {
+      return data
+    },
+    set(v) {
+      data = v
+    }
   })
 
   use_global.set = set

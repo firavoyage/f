@@ -1052,7 +1052,8 @@ textarea {
     align-self: center;
   }
 
-  .button_back, .button_search {
+  .button_back,
+  .button_search {
     position: absolute;
     left: 0;
 
@@ -1118,9 +1119,11 @@ textarea {
   background-color: var(--color-bg-primary);
 
   .body {
-    margin-bottom: var(--spacing-4);
+    margin-block: var(--spacing-4);
 
-    .button {
+    padding-inline: var(--spacing-4);
+
+    /* .button {
       flex-flow: row;
 
       padding-block: var(--page-whitespace);
@@ -1129,7 +1132,7 @@ textarea {
       .label {
         flex: 1;
       }
-    }
+    } */
   }
 }
 
