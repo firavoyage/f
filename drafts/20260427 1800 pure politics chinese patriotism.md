@@ -1,6 +1,4 @@
-#
-
-criticism on patriotism
+# criticism on patriotism
 
 6:13 pm
 
@@ -48,9 +46,7 @@ Ultimately, many critics advocate for alternatives like **cosmopolitanism** (ide
 
 Show all
 
-#
-
-criticism on patriotism in china
+# criticism on patriotism in china
 
 6:13 pm
 
@@ -102,9 +98,7 @@ Within Chinese society, critics highlight how extreme patriotism can stifle rati
 
 Show all
 
-#
-
-criticism on chinese patriotism
+# criticism on chinese patriotism
 
 Criticism of Chinese patriotism often centers on its transformation from a unifying sentiment into a tool for state legitimacy and commercial profit, frequently leading to extreme nationalism or social division.
 

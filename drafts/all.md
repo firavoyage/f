@@ -791,7 +791,7 @@ history:
 politics:
 
 - dictatorship llm test political science
-- chinese patriotism
+- patriotism
 - llm adoption us cn fr
 - eight nine six four meaning white paper
 - dictatorship criticism
