@@ -13,7 +13,9 @@ export function reverse_map(obj: object) {
   return Object.fromEntries(map(obj, ([key, value]) => [value, key]))
 }
 
-
+export function flatten(object: object, is_leaf?: fn) {
+  
+}
 
 type toggle = typeof toggle
 type reverse_map = typeof reverse_map
