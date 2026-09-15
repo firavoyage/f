@@ -38,7 +38,7 @@ export const use_global = state({
   // 'navigation.tool': '',
 }, {
   persist: 'tools',
-  version: '0.8',
+  version: '0.9',
   should_migrate() { return true },
   sync_url_options: {
     should_sync_url: true,
@@ -220,7 +220,15 @@ export function App() {
         })}></Commands>
       }
       <Preferences {...p({
-        open: open_preferences, toggle_open: toggle_open_preferences
+        open: open_preferences, toggle_open: toggle_open_preferences,
+        preferences: [
+          {
+            name: 'Theme',
+            id: 'appearance.theme',
+            type: 'radio',
+            options: ['system', "light", "dark"]
+          }
+        ]
       })}></Preferences>
       <Shortcuts {...p({
         open: open_shortcuts, toggle_open: toggle_open_shortcuts,

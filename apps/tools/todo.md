@@ -365,4 +365,12 @@ e.g. decimals must be non neg.
 
 ---
 
+web/lib/state: harden, auto detect new keys, auto fix/discard broken persistent state.
+
+---
+
+component/commands: support tools (i.e. files) and actions (commands/shortcuts).
+
+s
+
 
