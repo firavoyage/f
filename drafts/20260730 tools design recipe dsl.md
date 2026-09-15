@@ -1,5 +1,7 @@
 # how to run a dynamic js string in browsers
 
+## how to run a dynamic js string in browsers
+
 The recommended way to run a dynamic JavaScript string in a browser is by <mark>using the<span> </span><strong><code dir="ltr">new Function()</code><span> </span>constructor</strong></mark>, which isolates code from the local scope and performs better than standard evaluation. [link](https://medium.com/@bestowensss/4-ways-to-dynamically-execute-javascript-code-on-the-front-end-01648b4f527a)
 
 While multiple methods exist, each handles variables, scope, and security differently.
@@ -307,6 +309,8 @@ Show all
 feels new function is the choice.
 
 # js ast
+
+## js ast
 
 A JavaScript **Abstract Syntax Tree (AST)** is <mark>a deeply nested tree structure that represents the semantic meaning and grammar of your source code</mark>. Instead of treating code like raw text, engines and build tools parse it into a hierarchy of objects called **Nodes**, completely stripping away irrelevant details like whitespaces, semicolons, and parentheses. [link](https://medium.com/@jotadeveloper/abstract-syntax-trees-on-javascript-534e33361fc7)
 
@@ -731,6 +735,8 @@ Show all
 
 # compare immutable let and const
 
+## compare immutable let and const
+
 The core difference between an **immutable `let` variable** (as seen by default in languages like [Rust](https://nickymeuleman.netlify.app/blog/rust-let-const/) or [Swift](https://www.reddit.com/r/functionalprogramming/comments/18lcinq/immutable%5Fand%5Fmutable%5Fbindings%5Fnaming%5Fconst%5Fvar/)) and a **`const` declaration** (found in [JavaScript](https://www.geeksforgeeks.org/javascript/difference-between-var-let-and-const-keywords-in-javascript/), [C++](https://softwareengineering.stackexchange.com/questions/149555/difference-between-immutable-and-const), or Rust) centers on **when the value is evaluated** and **how strictly memory mutation is blocked**. [link](https://www.reddit.com/r/functionalprogramming/comments/18lcinq/immutable%5Fand%5Fmutable%5Fbindings%5Fnaming%5Fconst%5Fvar/)
 
 While both prevent you from reassigning a variable name to a new value, they control memory and execution time differently. [link](https://www.reddit.com/r/rust/comments/pj2ier/the%5Fmain%5Fdifference%5Fbetween%5Funmutable%5Fvariables/)
@@ -897,6 +903,8 @@ it looks fine. but it would help much. it's partial.
 despite extensive examples, it's quite limited in syntactic range.
 
 # js switch syntax
+
+## js switch syntax
 
 The **[JavaScript switch statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch)** evaluates an expression and executes code matching a specific value case. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch)
 
@@ -1500,6 +1508,8 @@ Show all
 
 # rust semicolon
 
+## rust semicolon
+
 In Rust, <mark>the presence or absence of a<span> </span><strong>semicolon (<code dir="ltr">;</code>) determines whether a line of code is an expression that returns a value or a statement that suppresses it</strong></mark>. Because Rust is an expression-based language, almost every block of code (including functions, `if` branches, and `match` arms) can return a value. [link](https://www.reddit.com/r/rust/comments/yrd8b2/on%5Fchapter%5F5%5Fof%5Frustbook%5Fdont%5Fquite%5Funderstand/)
 
 ### Core Semicolon Rules
@@ -1865,6 +1875,8 @@ Show all
 
 # js asi
 
+## js asi
+
 In JavaScript, <mark><strong>Automatic Semicolon Insertion (ASI)</strong></mark> is a built-in parser mechanism that implicitly adds semicolons to your code during compilation so you do not always have to write them explicitly. [link](https://en.wikibooks.org/wiki/JavaScript/Automatic%5Fsemicolon%5Finsertion)
 
 While ASI allows for cleaner, semicolon-free code styles, relying on it blindly can introduce subtle, hard-to-find bugs. [link](https://en.wikibooks.org/wiki/JavaScript/Automatic%5Fsemicolon%5Finsertion)
@@ -2115,6 +2127,8 @@ AI can make mistakes, so double-check responses
 Show all
 
 # js try catch
+
+## js try catch
 
 The **`try...catch`** statement in JavaScript marks a block of statements to test (`try`), and specifies a response if an exception is thrown (`catch`). It allows you to handle runtime errors gracefully, preventing your entire application from crashing. [link](https://mimo.org/glossary/javascript/try-catch)
 
@@ -3364,6 +3378,8 @@ Show all
 
 # all lisp syntax <!-- extremely flexible, but doesnt define anything, the only fixed constraint is poor use of keyboard -->
 
+## all lisp syntax
+
 1:43 PM
 
 The absolute core of Lisp syntax is that <mark><strong>it has almost no syntax at all</strong></mark>. Instead of complex grammatical rules found in languages like C++ or Python, Lisp code is written entirely using a single, unified data structure called an **S-expression (Symbolic Expression)**. [link](https://stopa.io/post/265)
@@ -3999,6 +4015,8 @@ Would you like to build a macro that solves a **specific programming problem** y
 Show all
 
 # lisp dialects
+
+## lisp dialects
 
 The Lisp programming language family is famous for its **parenthetical S-expression syntax, macro systems, and treating code as data**. While the original Lisp was created by John McCarthy in 1958, it has evolved into several distinct, powerful dialects. [link](https://en.wikipedia.org/wiki/List%5Fof%5FLisp-family%5Fprogramming%5Flanguages)
 

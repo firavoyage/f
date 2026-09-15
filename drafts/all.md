@@ -931,7 +931,6 @@ grow:
 
 tools:
 
-- recipe dsl
 - research cyberchef alternatives
 - research awk lang
 - web sidebar ia list
@@ -943,6 +942,7 @@ tools:
 
 code:
 
+- tools recipe dsl
 - halting problem
 
 humility:
