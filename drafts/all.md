@@ -234,7 +234,7 @@ archi:
 - writing style bold punctuation mark
 - compare writing styles
 - spaghetti code
-- npm zipped size loc meaning feeling
+- npm zipped bundle size loc meaning feeling
 
 web: <!-- frontend, web, ts/js -->
 
