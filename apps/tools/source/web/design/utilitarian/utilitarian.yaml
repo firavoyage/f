@@ -22,7 +22,7 @@ modes:
     - inactive
   animation:
     - fluid
-    - instant # reduced animation
+    - reduced # reduced animation
 
 palette:
   # no need to overthink, 1% difference is trivial
@@ -335,7 +335,7 @@ hierarchy:
 transition:
   backdrop:
     fluid: 0.3s ease
-    instant: 0s ease
+    reduced: 0s ease
 
 # # todo
 # scrollbar:

@@ -27,6 +27,7 @@ export const use_global = state({
   'process': [],
   'appearance.theme': union('system', "light", "dark"),
   'appearance.density': union("comfortable", "cozy", "compact"),
+  'appearance.animation': union("fluid", "reduced"),
   'appearance.layout.sidebar.is visible': true,
   'appearance.layout.process.is visible': true,
   'appearance.layout.input.is visible': true,
@@ -38,7 +39,7 @@ export const use_global = state({
   // 'navigation.tool': '',
 }, {
   persist: 'tools',
-  version: '0.9',
+  version: '0.10',
   should_migrate() { return true },
   sync_url_options: {
     should_sync_url: true,
@@ -164,6 +165,7 @@ export function App() {
   const [, set_process] = use_global('process')
   const [theme, set_theme] = use_global('appearance.theme')
   const [density, set_density] = use_global('appearance.density')
+  const [animation, set_animation] = use_global('appearance.animation')
 
   const [toasts, set_toasts] = use_toasts()
 
@@ -185,7 +187,7 @@ export function App() {
 
   const glitch = use_mouse_glitch()
 
-  use_variants({ density, glitch })
+  use_variants({ density, glitch, animation })
   
   use_event('mouseenter', (e) => {
     log('enter', e)
@@ -243,6 +245,12 @@ export function App() {
             id: 'appearance.density',
             type: 'radio',
             options: ["comfortable", "cozy", "compact"]
+          },
+          {
+            name: 'Animation',
+            id: 'appearance.animation',
+            type: 'radio',
+            options: ["fluid", "reduced"]
           },
         ]
       })}></Preferences>

@@ -236,7 +236,7 @@
   --transition-backdrop: 0.3s ease;
 }
 
-[animation="instant"], [data-animation="instant"] {
+[animation="reduced"], [data-animation="reduced"] {
   --transition-backdrop: 0s ease;
 }
 

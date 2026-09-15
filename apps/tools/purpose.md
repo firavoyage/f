@@ -5192,4 +5192,14 @@ a correction: if it's glitched initially, nothing can get focused. if you rest y
 
 and if there is no glitch, my hack would not apply that attr. and you can receive hover state normally.
 
+16
+
+01 10 web: support animation pref, fluid/reduced.
+
+feels reduced is clearer than "instant". "fast" is out of the question.
+
+and i guess i would have two options instead of three or more (i.e. fluid/simple).
+
+what fluid means depends on the design philosophy of the specific app. util design would not have much animation. it might not even have transition for overlay sidebar.
+
 
