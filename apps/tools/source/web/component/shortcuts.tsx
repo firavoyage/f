@@ -21,7 +21,7 @@ export function Shortcuts(props: shortcuts) {
     use_keyboard(key, () => call(command))
   })
 
-  use_keyboard('esc', close)
+  use_keyboard('esc', close, { when: open })
 
   function close() {
     toggle_open(false)

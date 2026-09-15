@@ -13,8 +13,7 @@ export function reverse_map(obj: object) {
   return Object.fromEntries(map(obj, ([key, value]) => [value, key]))
 }
 
-// export function flatten(object: object) {
-export function flatten(object: object, is_leaf?: fn = () => false) {
+export function flatten(object: object, is_leaf: fn = () => false) {
   const result = []
 
   // 'hr' | type, label | type, content

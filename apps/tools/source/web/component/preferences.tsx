@@ -35,7 +35,7 @@ export function Preferences(props: preferences) {
   const { open, toggle_open, preferences } = props
   const [is_on_top, toggle_is_on_top] = useToggle(false)
 
-  use_keyboard('esc', close)
+  use_keyboard('esc', close, { when: open })
 
   function close() {
     toggle_open(false)
@@ -63,11 +63,14 @@ export function Preferences(props: preferences) {
             {
               map(preferences, (pref) => {
                 return (
-                <Arg {...p({ ...pref, value: use_global.data[pref.id], set_value(v){
-                  use_global.set_prop(pref.id, v)
-                } })}
-                ></Arg>
-              )})
+                  <Arg {...p({
+                    ...pref, value: use_global.data[pref.id], set_value(v) {
+                      use_global.set_prop(pref.id, v)
+                    }
+                  })}
+                  ></Arg>
+                )
+              })
             }
           </div>
         </Scroll>
