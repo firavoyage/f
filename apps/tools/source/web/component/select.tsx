@@ -1,6 +1,6 @@
 import type { options } from 'action/tools'
 
-import { use_bind } from "web/lib/use keyboard"
+import { use_keyboard } from "web/lib/use keyboard"
 import Dropdown from "./dropdown"
 import { Button } from "./button"
 
@@ -30,7 +30,7 @@ export function Select(props: select) {
     trigger_ref?.current?.focus()
   }
 
-  use_bind('esc', close)
+  use_keyboard('esc', close)
 
   return (
     <div className="select" {...p({ open })}>

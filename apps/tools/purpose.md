@@ -5058,4 +5058,32 @@ it should do nothing.
 
 and tab/shift tab should not assume it's already inside. it should handle first/last element, and reset focus when outside (as if the popup itself is focused).
 
+18 20 web/lib/use keyboard: support `when`. rename to `use_keyboard`.
 
+it might not mount/unmount in the way of component lifecycle as you expect.
+
+better to have an explicit option.
+
+---
+
+it may not follow the naming convention. "when" is clear i guess.
+
+questions words like when where can function as is does should will.
+
+---
+
+align w filename. what does it mean to bind? bind what? ambiguous.
+
+it's basically derived from mousetrap, a cjs tradition, where you call like mousetrap.bind.
+
+great. lsp works well.
+
+---
+
+i may not have to have `when` on `use_event`.
+
+unlike shortcuts it doesnt conflict w others or prevent default by default.
+
+it has time to step into the fn and check the first early return cond. perf is negligible.
+
+  
