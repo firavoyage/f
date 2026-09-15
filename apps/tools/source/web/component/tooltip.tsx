@@ -16,6 +16,8 @@ export function Tooltip(props: tooltip) {
   let timeout = useRef()
 
   use_event('mouseenter', () => {
+    log('mouseenter')
+
     timeout.current = setTimeout(() => {
       toggle_open(true)
     }, delay);
