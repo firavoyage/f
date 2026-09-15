@@ -5154,6 +5154,16 @@ rebind shortcut on every rerender in case the fn carries outdated state snapshot
 
 23 20 web/lib/use mouse glitch: fix ghost 0, 0 coord on tab switch. web/component/tooltip: fix glitch on top left element when switching browser tabs.
 
+component/tooltip: harden mouseenter detection ~~w page visibility api.~~
+
+c: tab switching and sleeping can cause unintended tooltip.
+
+(maybe that's not to be solved, because the css hover state is flawed aw)
+
+idk if i can get the accurate latest mouse pointer (maybe ubuntu doesnt sync it well fundanmentally).
+
+---
+
 from my test
 
 - the glitch only happen in chromium on windows/linux (as said), ~~esp~~ when maximized
@@ -5167,5 +5177,19 @@ the logic:
 - on css, disable all pointer action and hide tooltip when glitched.
 - if they _move_ to any reasonable position or _leave_ body, set state to true
 - react will handle the rest
+
+---
+
+pointer events none only works afterward. how would i solve this.
+
+i guess i would not hijack the hover pseudo sel (prefixing non glitch cond).
+
+i may solve a specific problem. the one on the top left is a button, and i can override that and tooltip for which.
+
+---
+
+a correction: if it's glitched initially, nothing can get focused. if you rest your mouse somewhere of a real element, it would not receive hover regardless.
+
+and if there is no glitch, my hack would not apply that attr. and you can receive hover state normally.
 
 

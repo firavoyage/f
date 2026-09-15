@@ -5,13 +5,14 @@ svg {
 }
 
 [glitch]{
-  * {
-    color: yellow;
-    pointer-events: none !important;
-  }
+  /* it will not automatially cancel already applied hover style */
+  /* furthermore it might block mouse events (it might not) */
+  /* * {
+    pointer-events: none;
+  } */
 
   .button {
-    background-color: #fff !important;
+    background-color: unset !important;
   }
 
   .tooltip {

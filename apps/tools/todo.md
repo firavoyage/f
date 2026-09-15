@@ -375,12 +375,5 @@ s
 
 ---
 
-component/tooltip: harden mouseenter detection w page visibility api.
-
-c: tab switching and sleeping can cause unintended tooltip.
-
-(maybe that's not to be solved, because the css hover state is flawed aw)
-
-idk if i can get the accurate latest mouse pointer (maybe ubuntu doesnt sync it well fundanmentally).
 
 
