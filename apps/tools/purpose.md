@@ -5086,5 +5086,12 @@ unlike shortcuts it doesnt conflict w others or prevent default by default.
 
 it has time to step into the fn and check the first early return cond. perf is negligible.
 
-20 00 web/
+20 00 lib/collection: create `flatten(object, is_leaf)` util.
+
+output an array of tuple type, content.
+
+feel an array would feel better. type can be h1, h2, h3, or p/leaf.
+
+headings have labels. leaves have content. nothing wrong to array dc, though that would be less future proof.
+
 
