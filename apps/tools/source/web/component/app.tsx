@@ -137,6 +137,8 @@ function use_commands() {
   const [, toggle_output] = use_global('appearance.layout.output.is visible')
   const [, toggle_titlebar] = use_global('appearance.layout.titlebar.is visible')
 
+  const tool_commands: Record<tool_name, fn> = Object.fromEntries(map(tools_taxonomy, (name) => [name, () => add_tool(name)]))
+
   const commands = {
     "toggle sidebar": toggle_sidebar,
     "open command palette": 'open_commands',
@@ -146,6 +148,7 @@ function use_commands() {
     'toggle input panel': toggle_input,
     'toggle output panel': toggle_output,
     'toggle titlebar': toggle_titlebar,
+    ...tool_commands
   }
 
   command_ = function call(command: keyof typeof commands) {
@@ -160,9 +163,17 @@ function use_commands() {
   return commands
 }
 
+function add_tool(name: tool_name) {
+  use_global.set_prop('process', (process: tool[]) => {
+    process.push(cloneDeep({
+      name,
+      args: tools[name].args ?? []
+    }))
+  })
+}
+
 export function App() {
   // const [focus, set_focus] = use_global('navigation.tool')
-  const [, set_process] = use_global('process')
   const [theme, set_theme] = use_global('appearance.theme')
   const [density, set_density] = use_global('appearance.density')
   const [animation, set_animation] = use_global('appearance.animation')
@@ -188,18 +199,6 @@ export function App() {
   const glitch = use_mouse_glitch()
 
   use_variants({ density, glitch, animation })
-  
-  use_event('mouseenter', (e) => {
-    log('enter', e)
-  }, document.body)
-
-  use_event('mousemove', (e) => {
-    log('move', e)
-  })
-
-  use_event('mouseleave', (e) => {
-    log('leave', e)
-  }, document.body)
 
   return <>
     <title>Tools</title>
@@ -215,14 +214,7 @@ export function App() {
             <hr {...p({ class: 'hr' })} />
           </Hamburger>
           <List {...p({
-            items: tools_taxonomy, set_focus(name: tool_name) {
-              set_process((process: tool[]) => {
-                process.push(cloneDeep({
-                  name,
-                  args: tools[name].args ?? []
-                }))
-              })
-            }
+            items: tools_taxonomy, set_focus: add_tool
           })}></List>
         </Scroll>
       </Sidebar>
