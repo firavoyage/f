@@ -45,7 +45,7 @@ export function About(props: about) {
 
   const prev_navigation_action = useRef<'expand' | 'back'>()
 
-  use_keyboard('esc', navigate_back)
+  use_keyboard('esc', navigate_back, { when: open })
 
   const [is_on_top, toggle_is_on_top] = useToggle(false)
   const [stack, set_stack] = useState(default_stack)

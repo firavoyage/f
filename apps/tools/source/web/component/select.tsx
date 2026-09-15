@@ -30,7 +30,7 @@ export function Select(props: select) {
     trigger_ref?.current?.focus()
   }
 
-  use_keyboard('esc', close)
+  use_keyboard('esc', close, { when: open })
 
   return (
     <div className="select" {...p({ open })}>

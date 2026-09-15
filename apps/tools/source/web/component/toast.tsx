@@ -1,6 +1,7 @@
 import { Button } from "./button"
 
-const default_toast_duration = 1000
+const default_toast_duration = 3000
+// const default_toast_duration = 1000
 
 type toast = {
   message: string
