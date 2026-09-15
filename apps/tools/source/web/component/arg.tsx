@@ -11,23 +11,23 @@ import { Textarea } from './textarea'
 export function Arg(props: arg & {set_value: fn}) {
   const { type, value, set_value, options, placeholder } = props
 
-  const name = <span className="name">{props.name}</span>
+  const label = <span className="label">{props.name}</span>
 
   if (type == 'checkbox') {
     return (
-      <Checkbox {...p({ value, set_value })}>{name}</Checkbox>
+      <Checkbox {...p({ value, set_value })}>{label}</Checkbox>
     )
   } else if (type == 'switch') {
     return (
       <>
-        {name}
+        {label}
         <Switch {...p({ value, set_value })}></Switch>
       </>
     )
   } else if (type == 'number') {
     return (
       <>
-        {name}
+        {label}
         <Number {...p({ value, set_value })}></Number>
       </>
     )
@@ -38,7 +38,7 @@ export function Arg(props: arg & {set_value: fn}) {
 
     return (
       <>
-        {name}
+        {label}
         <Select {...p({ value, set_value, options, placeholder })}>
         </Select>
       </>
@@ -50,7 +50,7 @@ export function Arg(props: arg & {set_value: fn}) {
 
     return (
       <>
-        {name}
+        {label}
         <Radio {...p({ value, set_value, options })}>
         </Radio>
       </>
@@ -58,7 +58,7 @@ export function Arg(props: arg & {set_value: fn}) {
   } else if (type == 'input') {
     return (
       <>
-        {name}
+        {label}
         <Input {...p({ value, set_value, placeholder })}>
         </Input>
       </>
@@ -66,7 +66,7 @@ export function Arg(props: arg & {set_value: fn}) {
   } else if (type == 'textarea') {
     return (
       <>
-        {name}
+        {label}
         <Textarea {...p({ value, set_value })}>
         </Textarea>
       </>
