@@ -5210,6 +5210,8 @@ done.
 
 <!-- work would never be done. i can polish it forever. i may impl scroll area and focus trap select next. i may add new tools. most items in backlog are nice to have, under c/w. -->
 
+<!-- it doesnt have many settings to be searched. i could have it though. -->
+
 ---
 
 .name? childish. awkward, really feels.
