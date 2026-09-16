@@ -388,6 +388,10 @@ body {
 }
 
 .menu,
+.titlebar {
+  flex-shrink: 0;
+}
+/* .menu,
 .titlebar,
 .button,
 .checkbox,
@@ -399,7 +403,7 @@ body {
 .textarea,
 .radio {
   flex-shrink: 0;
-}
+} */
 
 .button,
 .select .trigger,

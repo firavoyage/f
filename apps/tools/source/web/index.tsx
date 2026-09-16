@@ -65,5 +65,3 @@ function warn(msg, ...substitution) {
   console.warn(msg, ...substitution)
 }
 console.error = warn
-
-console.clear();
