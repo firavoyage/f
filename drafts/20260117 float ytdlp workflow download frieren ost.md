@@ -7,13 +7,105 @@
 tmp
 
 ```sh
-yt-dlp \
-  "https://music.youtube.com/playlist?list=OLAK5uy_kbVTOPNS3CZAQznMRZqmCqVtMQNbWBnb4" \
+name='name'
+
+dl \
+  "https://music.youtube.com/playlist?list=RDCLAK5uy_nBRdayC7IIasIQYPvCIoIRYippIyG6euQ" \
   -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
-  --match-filters "view_count > 100000" \
   --reject-title "(?i)inst" \
-  -o "_/Name/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+  -o "Music/$name/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s" \
+  --match-filters "view_count > 100000"
 ```
+
+```sh
+name='Vocaloid 2022'
+
+dl \
+  "https://music.youtube.com/playlist?list=RDCLAK5uy_nYYtzas1XZfuMeK1VdU8lGNbh8IBoi_cE" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --reject-title "(?i)inst" \
+  -o "Music/$name/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s" \
+  --match-filters "view_count > 100000"
+```
+
+```sh
+name='Vocaloid 2023'
+
+dl \
+  "https://music.youtube.com/playlist?list=RDCLAK5uy_ms0iq7i7WuQpEGLBuB8qQPovED2ZQRLWU" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --reject-title "(?i)inst" \
+  -o "Music/$name/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s" \
+  --match-filters "view_count > 100000"
+```
+
+```sh
+name='Vocaloid 2024'
+
+dl \
+  "https://music.youtube.com/playlist?list=RDCLAK5uy_nP6Ndn9aGujCgif2tQNlsKotyiO6YLP68" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --reject-title "(?i)inst" \
+  -o "Music/$name/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s" \
+  --match-filters "view_count > 100000"
+```
+
+```sh
+name='Vocaloid 2025'
+
+dl \
+  "https://music.youtube.com/playlist?list=RDCLAK5uy_nBRdayC7IIasIQYPvCIoIRYippIyG6euQ" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --reject-title "(?i)inst" \
+  -o "Music/$name/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s" \
+  --match-filters "view_count > 100000"
+```
+
+Kasane Teto
+
+```sh
+dl \
+  "https://music.youtube.com/playlist?list=OLAK5uy_nKoD4zM69vZTXOR28pbhc1UUYZXHKHMkg" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --reject-title "(?i)inst" \
+  -o "Music/Kasane Teto/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s" \
+  --match-filters "view_count > 100000"
+```
+
+Kanaria
+
+```sh
+dl \
+  "https://music.youtube.com/playlist?list=OLAK5uy_kZEp5vDqWdBk20wjjrLdb4NRGwLkqxCeo" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --reject-title "(?i)inst" \
+  -o "Music/Kanaria/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+  # --match-filters "view_count > 100000" \
+```
+
+Minato Aqua Collab
+
+```sh
+dl \
+  "https://music.youtube.com/playlist?list=PLUp1t9SPBl6qrPT_W79HOeR6_n-hWsAbk" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --reject-title "(?i)inst" \
+  -o "Music/Minato Aqua Collab/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+  # --match-filters "view_count > 100000" \
+```
+
+
+Minato Aqua Cover
+
+```sh
+dl \
+  "https://music.youtube.com/playlist?list=PLUp1t9SPBl6r4nqsQBg7HH7fPX2l9AGQk" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --reject-title "(?i)inst" \
+  -o "Music/Minato Aqua Cover/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+  # --match-filters "view_count > 100000" \
+```
+
 
 Minato Aqua
 
