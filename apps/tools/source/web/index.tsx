@@ -48,7 +48,7 @@ if (dev) {
 
 // Ignore React Errors (Use Custom levels: info, error)
 const irrelevant_errors = [
-  'Invalid DOM property', 
+  'Invalid DOM property',
   'for the boolean attribute',
   'for a non-boolean attribute',
   '`useScroll` expects a single ref argument.',
@@ -56,8 +56,8 @@ const irrelevant_errors = [
 console.error = function (msg, ...substitution) {
   for (const anti_pattern of irrelevant_errors) {
     if (has(msg, anti_pattern)) {
-      return 
-    } 
+      return
+    }
   }
 
   // throw err are always errors, and if it can be logged (even as errors), it's safe

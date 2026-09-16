@@ -329,6 +329,7 @@ web: <!-- frontend, web, ts/js -->
 - web lib use mouse glitch
 - component commands fuzzy search
 - web lib use keyboard shortcuts system hotkeys leave site prompt
+- devtools hide tabs disable react devtools
 
 backend:
 
