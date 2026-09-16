@@ -4,7 +4,7 @@ If you are looking for **npm packages that offer data visualization and plotting
 
 Because JavaScript runs natively in the browser and on the server via Node.js, these libraries are generally split between **Node.js-specific plotting utilities** (which open a window or export files) and **powerful web-based visualization frameworks**.
 
----
+***
 
 ### 1. The Closest Match: Node-Specific Plotting
 
@@ -25,7 +25,7 @@ If your goal is to render charts in a web application or interactive dashboard, 
 - **[D3.js](https://d3js.org/)**: The gold standard for JavaScript visualization. While Matplotlib provides ready-made charts, D3 is a low-level tool that lets you build _anything_ from scratch by binding data to the DOM. It has a steep learning curve but infinite flexibility.
 - **[Chart.js](https://www.chartjs.org/)**: If D3 is too complex, Chart.js is the exact opposite. It is an extremely easy-to-use, lightweight library for clean canvas-based line, bar, pie, and radar charts.
 
----
+***
 
 ### Quick Comparison
 
@@ -71,7 +71,7 @@ Here is a comparison of the top web data visualization libraries categorized by 
 | **[Highcharts](https://www.highcharts.com/)**     | Enterprise-grade apps needing commercial support     | SVG                  | Commercial (Free for personal) |
 | **[Plotly.js](https://plotly.com/)**              | Scientific, 3D, and statistical plotting             | WebGL / SVG          | Open Source (MIT)              |
 
----
+***
 
 ### Comprehensive Breakdown by Category
 
@@ -86,8 +86,8 @@ Here is a comparison of the top web data visualization libraries categorized by 
 
 #### 🚀 High-Performance & Large Data
 
-- **Apache ECharts**: Maintained by the Apache Software Foundation, this library effortlessly handles millions of data points using its powerful canvas and WebGL capabilities. It includes excellent built-in features like brush filtering, data zooming, and rapid streaming. [link](https://www.youtube.com/watch?v=s6n9vEyM1gY&t=61)
-- **Perspective**: An open-source, ultra-fast streaming analytics engine optimized for real-time updates and interactive data pivoting via WebAssembly. [link](https://www.youtube.com/watch?v=s6n9vEyM1gY&t=61)
+- **Apache ECharts**: Maintained by the Apache Software Foundation, this library effortlessly handles millions of data points using its powerful canvas and WebGL capabilities. It includes excellent built-in features like brush filtering, data zooming, and rapid streaming. [link](https://www.youtube.com/watch?v=s6n9vEyM1gY\&t=61)
+- **Perspective**: An open-source, ultra-fast streaming analytics engine optimized for real-time updates and interactive data pivoting via WebAssembly. [link](https://www.youtube.com/watch?v=s6n9vEyM1gY\&t=61)
 
 #### ⚛️ Framework-Specific (React/Vue/Angular)
 
@@ -134,7 +134,7 @@ Choosing the right tool depends heavily on your application's data density, need
 | **Performance**    | Better with **fewer objects over large surfaces**        | Better with **thousands of objects on small surfaces**    |
 | **Best For**       | Logos, icons, UI components, interactive charts          | 2D video games, pixel manipulation, real-time data        |
 
----
+***
 
 ### Performance Tradeoffs
 
@@ -253,13 +253,13 @@ The defining rule of `useRef` is that **changing `.current` does not trigger a r
 1. **Manipulating the DOM Directly:** When you need to interact with actual HTML elements (e.g., managing focus, playing/pausing a video, or measuring elements). [link](https://www.youtube.com/watch?v=hErOvJAJ0KY)
 2. **Storing Instance Variables:** When you need a container to hold a value that changes over time, but you don't want those changes to force the component to redraw itself. [link](https://www.youtube.com/watch?v=AltU-XcGvuo)
 
----
+***
 
 ###
 
 ### 1. Interacting with the DOM
 
-To use it with the DOM, initialize the ref to `null`, attach it to a JSX tag using the `ref` attribute, and React will automatically point `.current` to that real DOM element once it mounts. [link](https://www.youtube.com/watch?v=9X0ntL4FguM&t=5)
+To use it with the DOM, initialize the ref to `null`, attach it to a JSX tag using the `ref` attribute, and React will automatically point `.current` to that real DOM element once it mounts. [link](https://www.youtube.com/watch?v=9X0ntL4FguM\&t=5)
 
 jsx
 
@@ -287,7 +287,7 @@ function TextInputWithFocusButton() {
 
 Use code with caution.
 
----
+***
 
 ###
 
@@ -326,7 +326,7 @@ function Timer() {
 
 Use code with caution.
 
----
+***
 
 ###
 
@@ -339,7 +339,7 @@ Use code with caution.
 | **When to use?**        | For reading/writing data that doesn't impact what is rendered on screen. | For data that controls the visual appearance or text on the UI.   |
 | **Availability**        | Accessible instantly inside event handlers right after mutating it.      | Updated asynchronously; not available until the next render pass. |
 
----
+***
 
 ###
 
@@ -371,7 +371,7 @@ The **`ref` prop** is a special attribute in React that <mark>allows you to<span
 
 While React typically handles all DOM updates automatically through its virtual DOM, the `ref` prop acts as an **"escape hatch"** when you need to bypass React and manipulate a physical HTML element directly.
 
----
+***
 
 ### How the `ref` Prop Works Under the Hood
 
@@ -402,7 +402,7 @@ function Example() {
 
 Use code with caution.
 
----
+***
 
 ### The Three Ways to Use the `ref` Prop
 
@@ -445,7 +445,7 @@ Use code with caution.
 
 In older versions of React, you could pass a string like `ref="myInput"`. This is **deprecated** because it has performance issues and is slated for complete removal.
 
----
+***
 
 ### Key Behavioral Rules
 
@@ -460,7 +460,7 @@ Are you using the `ref` prop to **target a standard HTML element**, or are you t
 
 While React guarantees that refs attached to elements in your JSX will be populated _by the time_ your `useEffect` runs, it is still a best practice to guard your code with a check (e.g., `if (ref.current)`).
 
----
+***
 
 ### Why You Should Check `ref.current`
 
@@ -521,13 +521,13 @@ useEffect(() => {
 
 Use code with caution.
 
----
+***
 
 ### When Can You Skip the Check?
 
 If you are absolutely certain that the element is **always** rendered (never hidden behind a shortcut like `&&` or a ternary operator) and you aren't doing cleanup work in an asynchronous callback, you can technically omit the check. However, checking it is defensive programming that prevents unexpected crashes during future UI changes.
 
----
+***
 
 ### Alternative: Callback Refs
 
@@ -564,7 +564,7 @@ Because D3 works at a low level with web standards like SVG, Canvas, and HTML, i
 - [The D3 Graph Gallery](https://d3-graph-gallery.com/) — **The best playground for beginners**. It catalogs hundreds of clean, reproducible, and highly structured chart types—from basic histograms and scatter plots to interactive heatmaps and ridgeline charts. [link](https://d3-graph-gallery.com/)
 - [Awesome D3 Ecosystem](https://github.com/wbkd/awesome-d3) — A comprehensive collection of **plugins, maps, and abstractions** built on top of D3 (such as specialized geographic projection extensions and thematic charting layers). [link](https://github.com/wbkd/awesome-d3)
 
----
+***
 
 ### Basic Example: Building a Bar Chart
 
@@ -671,7 +671,7 @@ Here is a direct comparison of a bar chart rendered using **React (Declarative U
 | **State Updates** | Manual selection updates via `.data().join()`. | Automatic re-renders when data props change.  |
 | **Code Style**    | Method chaining (`.append().attr()`).          | HTML-like components/templates (`<rect />`).  |
 
----
+***
 
 ### Code Example: Declarative React + D3 Component
 
@@ -752,7 +752,7 @@ Are you using a specific UI framework like **React, Vue, or Svelte** for your pr
 
 Unlike high-level charting libraries (like Chart.js or Highcharts) that give you pre-built "bar charts" or "pie charts" out of the box, D3 provides **no default charts**. Instead, it gives you a digital construction kit of math modules, layout tools, and web-standard wrappers to build any visual interface you can imagine from scratch.
 
----
+***
 
 ### 🧱 The Core Building Blocks: What D3 Actually Handles
 
@@ -783,7 +783,7 @@ For advanced visual designs, you need an engine to figure out where things shoul
 
 D3 interpolates elements smoothly between states, enabling you to build fluid animations, geographic map panning/zooming, and custom mouse hover behaviors natively.
 
----
+***
 
 ### 📊 When Should You Use D3?
 
@@ -795,7 +795,7 @@ D3 interpolates elements smoothly between states, enabling you to build fluid an
 
 Are you trying to decide between **D3 and a pre-built library**, or do you have a **specific visual concept** in mind that you want to see if D3 can handle?
 
-This is for informational purposes only. For medical advice or diagnosis, consult a professional. AI responses may include mistakes. [Learn more](https://support.google.com/websearch?p=aimode&gl=us)
+This is for informational purposes only. For medical advice or diagnosis, consult a professional. AI responses may include mistakes. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
 
 ## examples
 
@@ -890,7 +890,7 @@ Would you like a copy-pasteable code boilerplate for a **Force-Directed Graph** 
 
 D3.js is organized into specialized mathematical and visual sub-modules. Below are examples of the most frequently used D3 methods, broken down by their core responsibilities. [link](https://d3js.org/d3-array)
 
----
+***
 
 ### 🔎 1. Selecting and Modifying DOM Elements (`d3-selection`)
 
@@ -914,7 +914,7 @@ d3.select("#chart-title")
 
 Use code with caution.
 
----
+***
 
 ### 🔄 2. Joining Data to Elements
 
@@ -935,7 +935,7 @@ d3.select("svg")
 
 Use code with caution.
 
----
+***
 
 ### 📊 3. Quantitative Scaling Maps (`d3-scale`)
 
@@ -960,7 +960,7 @@ const xScale = d3.scaleBand()
 
 Use code with caution.
 
----
+***
 
 ### 📈 4. Structural Math & Aggregation (`d3-array`)
 
@@ -983,7 +983,7 @@ const boundaries = d3.extent(transactions, d => d.revenue); // Returns: [310, 80
 
 Use code with caution.
 
----
+***
 
 ### 🎨 5. Path Generators (`d3-shape`)
 
@@ -1036,7 +1036,7 @@ The developer community typically evaluates the library through the following pe
 
 - **"Ultimate, Pixel-Level Freedom"** — Reviewers consistently note that D3 has no "opinion" on what your chart should look like. Unlike rigid libraries that give you a generic `<BarChart />` component, D3 allows you to build completely bespoke, non-standard visual structures (like custom data-journalism maps or physics-based network clusters). [link](https://www.reddit.com/r/datascience/comments/2yatjn/d3js%5Fand%5Fbokeh%5Fanyone%5Fwith%5Fexperience%5Fexplain%5Fthe/)
 - **"Like a Modular Toolbelt, Not a Modular Home"** — A common community analogy is that other charting libraries give you a pre-built house where you can only change the paint. D3 gives you the raw blocks (math scales, layout structures, and array processors) to build whatever shape you want. [link](https://www.reddit.com/r/d3js/comments/1230xcm/d3%5Fis%5Fgoing%5Fto%5Fbe%5Fmade%5Firrelevant%5Fby%5Fits/)
-- **Highly Performant Animations** — Developers highly praise D3’s data lifecycle (`enter`, `update`, `exit`), saying it makes fluid, data-driven transitions look professional and performant. [link](https://www.youtube.com/watch?v=bp2GF8XcJdY&t=103)
+- **Highly Performant Animations** — Developers highly praise D3’s data lifecycle (`enter`, `update`, `exit`), saying it makes fluid, data-driven transitions look professional and performant. [link](https://www.youtube.com/watch?v=bp2GF8XcJdY\&t=103)
 
 ### 🔴 The Bad: The Common Frustrations
 
@@ -1044,7 +1044,7 @@ The developer community typically evaluates the library through the following pe
 - **Massive Overkill for Standard Layouts** — The consensus among web devs is that using D3 just to make a standard line graph, pie chart, or dashboard widget is a waste of time. A layout that takes three lines of code in Chart.js or Recharts can take 60+ lines of non-obvious math configurations in D3. [link](https://www.reddit.com/r/datascience/comments/9pclge/do%5Fyou%5Frecommend%5Fd3js/)
 - **"Virtual DOM" Conflicts** — Frontend developers using React or Vue often complain about integrating vanilla D3. Because both D3 and modern frameworks want absolute ownership over manipulating webpage elements, mixing them blindly can lead to memory leaks and UI bugs unless you use specific declarative integration patterns. [link](https://www.reddit.com/r/javascript/comments/a7b7xz/why%5Fi%5Fno%5Flonger%5Fuse%5Fd3js%5Fpaul%5Fsweeney%5Fmedium/)
 
----
+***
 
 ### ⚖️ The Verdict: Should You Use It?
 
@@ -1059,7 +1059,7 @@ Are you trying to gauge if D3 is **worth the time investment for a specific proj
   Reddit·r/d3js\
   D3 is going to be made irrelevant by its dependence ... - Reddit\
   Mar 26, 2023 — Also, D3 is not dependent on Observable at all. I don't understand how you came to this conclusion. D3.js has always been a JS lib...
-- [link](https://www.youtube.com/watch?v=9e03D47jZYk&t=38)\
+- [link](https://www.youtube.com/watch?v=9e03D47jZYk\&t=38)\
   YouTube·Ben Davis\
   D3 is the Best Visualization Tool for JS\
   Nov 22, 2024 — The speaker built a custom animated bar graph using D3.js and Svelte and wants to showcase it. They note that D3.js is a powerful ...\
@@ -1106,7 +1106,7 @@ Because D3 charts have no default settings, you have to use syntax functions to 
 
 - **What people say:** This makes the code highly verbose. Developers note that building a simple chart requires writing lines of boilerplate syntax just to define a margin, compute an axis, or draw a border.
 
----
+***
 
 ### 🛠️ How Modern Syntax Has Improved
 
@@ -1122,7 +1122,7 @@ If you ask data visualization developers what the **ideal visualization syntax**
 
 In an ideal world, the syntax would combine the **creative power of D3** with the **declarative simplicity of HTML**.
 
----
+***
 
 ### 🎨 The Blueprint for an Ideal Syntax
 
@@ -1142,7 +1142,7 @@ It would speak the native language of modern frontend frameworks (React, Vue, Sv
 
 You wouldn’t have to write 30 lines of boilerplate just to render an axis line, tick marks, or margins. The chart would handle standard layouts automatically, but allow you to overrule those styles at a pixel level when needed.
 
----
+***
 
 ### 🚀 What this "Ideal Syntax" looks like today
 
@@ -1321,7 +1321,7 @@ W3Schools·https://www.w3schools.com
 
 <mark><strong><code dir="ltr">useContext</code><span> </span>is a React Hook that allows you to share and consume global data (like themes, user sessions, or language preferences) across your component tree without manually passing props down through every level (a problem known as "prop drilling")</strong></mark>. [link](https://react.dev/reference/react/useContext)
 
----
+***
 
 ### 💡 The 3-Step Setup
 
@@ -1392,7 +1392,7 @@ export default function DeeplyNestedButton() {
 
 Use code with caution.
 
----
+***
 
 ### 🏎️ Context vs. Props: A Direct Comparison
 
@@ -1403,7 +1403,7 @@ Use code with caution.
 | **Best Used For**      | UI-specific configuration unique to a child.              | "Global" application data (e.g., Auth, Themes).                            |
 | **Performance Impact** | Only re-renders direct children receiving updates.        | **Re-renders all components** consuming the context value when it changes. |
 
----
+***
 
 ### ⚠️ Performance Warning
 
@@ -1527,7 +1527,7 @@ export default function MyTabs() {
 
 Use code with caution.
 
----
+***
 
 ### 2. What Base UI is doing internally with `useContext`
 
@@ -1590,7 +1590,7 @@ Would you like an example of how to use **Base UI's publicly exported hooks** (l
 
 The **`useContext` hook** in React allows you to share data (like themes, user sessions, or settings) globally across your component tree without manually passing props down through every level—a problem known as "prop drilling". [link](https://www.youtube.com/watch?v=FpNfvbNYPsg)
 
-Here is a clean, modern example of implementing a **Theme Toggle (Light/Dark Mode)** using standard React patterns. [link](https://www.youtube.com/watch?v=hkGiP6Ur-B4&t=96)
+Here is a clean, modern example of implementing a **Theme Toggle (Light/Dark Mode)** using standard React patterns. [link](https://www.youtube.com/watch?v=hkGiP6Ur-B4\&t=96)
 
 ### 1. Create and Export the Context
 
@@ -1632,7 +1632,7 @@ export function useTheme() {
 
 Use code with caution.
 
----
+***
 
 ### 2. Wrap Your Application Tree
 
@@ -1656,7 +1656,7 @@ export default function App() {
 
 Use code with caution.
 
----
+***
 
 ### 3. Consume Context Deep in the Tree
 
@@ -1699,7 +1699,7 @@ function MainContent() {
 
 Use code with caution.
 
----
+***
 
 ### Key Workflow Breakdown
 
@@ -1739,7 +1739,7 @@ Custom hooks [share **stateful logic**, not the **state itself**](https://react.
 
 To share state across separate components and force updates down a tree without prop-drilling, you need a mechanism that taps into React’s fiber architecture—which is exactly what `useContext` does. [link](https://www.youtube.com/watch?v=HYKDUF8X3qI)
 
----
+***
 
 ### Why Custom Hooks Fail to Replicate Context Independently
 
@@ -1775,7 +1775,7 @@ function useMyCustomState() {
 Use code with caution.\
 Because `globalState` is a plain JavaScript object, mutating it doesn't trigger React’s rendering engine.
 
----
+***
 
 ### How to Achieve the Same Behavior Without `useContext`
 
@@ -1839,7 +1839,7 @@ Use code with caution.
 
 Libraries like **Zustand** or **Redux** use exactly this approach—they manage data outside of React's internals and cleanly tap into the UI rendering lifecycle using hooks under the hood. [link](https://stackoverflow.com/questions/70455690/using-usecontext-with-custom-hooks-vs-usecontext-usereducer)
 
----
+***
 
 Would you like to see how to adapt this external store approach to mimic **scoped** provider trees (like nested contexts), or are you trying to debug a specific **performance problem** related to Context re-renders? [link](https://www.reddit.com/r/reactjs/comments/1e9j0ty/do%5Fpeople%5Ftend%5Fto%5Fexaggerate%5Fhow%5Fbad%5Fusing/)
 
@@ -1865,7 +1865,7 @@ Show all
 
 In fact, that tree structure is exactly how it looks up data. Under the hood, `useContext(MyContext)` works by starting at the specific component calling the hook and **walking upward through the fiber tree** (React's internal representation of your component structure) until it finds the nearest matching `<MyContext.Provider>` ancestor.
 
----
+***
 
 ### Why the Component Tree Matters to Context
 
@@ -1905,7 +1905,7 @@ If you tried to do this using a basic custom hook tied to a standard external st
 
 If you render a component next to (as a sibling of) a Provider rather than inside it, `useContext` will fail to find it. It cannot look "sideways" or "down"—only up the direct ancestral path of the tree. If it hits the root of the tree without finding a provider, it falls back to the default value passed during `React.createContext(defaultValue)`.
 
----
+***
 
 ### Context vs. External Stores (The "Tree" Difference)
 
@@ -1923,7 +1923,7 @@ Are you considering using **Context** versus an **external state manager** for a
 
 However, **practically and for debugging/hacking, yes.** React leaves private pointers on the physical DOM nodes it creates, meaning you can grab any element in your browser console and crawl your entire application's React fiber tree. [link](https://www.ag-grid.com/blog/inside-fiber-an-in-depth-overview-of-the-new-reconciliation-algorithm-in-react/)
 
----
+***
 
 ### 1. The Hacking/Debugging Way (Access via DOM)
 
@@ -1957,7 +1957,7 @@ Once you have that single `fiberNode`, you can traverse the **entire React tree*
 
 _(This is exactly how tools like the **React DevTools Extension** map out and display your component tree.)_
 
----
+***
 
 ### 2. The Production/Supported Way (Controlled Bridges)
 
@@ -2020,7 +2020,7 @@ function Profile() {
 
 Use code with caution.
 
----
+***
 
 What are you trying to accomplish by looking into the tree from the outside?
 
@@ -2077,7 +2077,7 @@ In large companies, a single webpage is often stitched together using completely
 
 - **The Use Case:** If an Angular wrapper needs to dynamically trigger an update or read the current status inside a nested React micro-frontend but doesn't have direct access to its props, developers will occasionally use these internal DOM pointers as a quick "escape hatch" to tunnel data across framework boundaries. [link](https://stackoverflow.com/questions/37758834/reactjs-expose-react-component-methods-outside-react-tree)
 
----
+***
 
 ### ⚠️ Why it's a huge anti-pattern for regular code
 
@@ -2124,9 +2124,9 @@ Use code with caution.
 
 - `viewBox="min-x min-y width height"`: Establishes the internal coordinate system system (aspect ratio and boundaries).
 - `width` / `height`: Sets the actual display size of the container in the layout.
-- `xmlns`: The XML namespace definition required for standalone browser rendering. [link](https://www.youtube.com/watch?v=iZk-QKV44u0&t=548)
+- `xmlns`: The XML namespace definition required for standalone browser rendering. [link](https://www.youtube.com/watch?v=iZk-QKV44u0\&t=548)
 
----
+***
 
 ### 2. Basic Shape Elements
 
@@ -2141,7 +2141,7 @@ SVG provides pre-defined geometric elements for drawing standard 2D shapes. [lin
 | **`<polyline>`** | `<polyline points="10,10 30,50 90,90" />`                     | Connected straight line segments forming an open shape.                    |
 | **`<polygon>`**  | `<polygon points="50,10 90,90 10,90" />`                      | Connected straight line segments forming a closed shape automatically.     |
 
----
+***
 
 ### 3. The Complex `<path>` Element
 
@@ -2156,7 +2156,7 @@ _Uppercase commands use **absolute** coordinates; lowercase commands use **relat
 - **`S / s` (Smooth Cubic Bézier Curve):** Continues a curve assuming the previous control point is mirrored.
 - **`Q / q` (Quadratic Bézier Curve):** Draws a curve using a single control point `Q x1 y1, x y`.
 - **`A / a` (Elliptical Arc):** Draws a segment of an oval using radius, rotation, and flags `A rx ry x-axis-rotation large-arc-flag sweep-flag x y`.
-- **`Z / z` (Close Path):** Draws a straight line from the current position back to the path's starting `M` coordinate. [link](https://www.youtube.com/watch?v=emFMHH2Bfvo&t=20)
+- **`Z / z` (Close Path):** Draws a straight line from the current position back to the path's starting `M` coordinate. [link](https://www.youtube.com/watch?v=emFMHH2Bfvo\&t=20)
 
 xml
 
@@ -2167,11 +2167,11 @@ xml
 
 Use code with caution.
 
----
+***
 
 ### 4. Text Elements
 
-SVG handles text as graphic paths, making it highly customizable and accessible. [link](https://www.youtube.com/watch?v=XGvq2lKBzxQ&t=36)
+SVG handles text as graphic paths, making it highly customizable and accessible. [link](https://www.youtube.com/watch?v=XGvq2lKBzxQ\&t=36)
 
 - **`<text>`**: Renders vector text. Positioned using `x` and `y` attributes.
 - **`<tspan>`**: Adjusts styling or positioning for a subset of characters within a parent `<text>` block.
@@ -2187,7 +2187,7 @@ xml
 
 Use code with caution.
 
----
+***
 
 ### 5. Layout, Reusability, and Definitions
 
@@ -2214,11 +2214,11 @@ xml
 
 Use code with caution.
 
----
+***
 
 ### 6. Styling Attributes
 
-SVG visuals are customized directly via presentation attributes or standardized CSS: [link](https://www.youtube.com/watch?v=iZk-QKV44u0&t=548)
+SVG visuals are customized directly via presentation attributes or standardized CSS: [link](https://www.youtube.com/watch?v=iZk-QKV44u0\&t=548)
 
 - **`fill`**: Sets the interior color of an item (supports HEX, RGB, standard colors, or `none`).
 - **`stroke`**: Formats the border line outlining shapes.
@@ -2250,7 +2250,7 @@ The **`viewBox`** attribute is the most critical concept in SVG. It defines the 
 
 Think of it like a **camera lens**: it dictates exactly what part of the infinite vector canvas is visible inside the frame.
 
----
+***
 
 ### 1. Syntax Breakdown
 
@@ -2283,7 +2283,7 @@ xml
 
 Use code with caution.
 
----
+***
 
 ### 2. Why use `viewBox`? (The Power of Scaling)
 
@@ -2291,7 +2291,7 @@ Without a `viewBox`, your elements use fixed dimensions (like pixels). If you ch
 
 With a `viewBox`, your artwork becomes **completely responsive**. In the example above, the internal coordinate system is `100x100`, but the browser stretches those 100 units to fit a `500px` by `500px` screen area smoothly. If you change the display width to `100%`, it will scale infinitely without breaking your layout.
 
----
+***
 
 ### 3. Cropping and Panning (`min-x` and `min-y`)
 
@@ -2301,7 +2301,7 @@ By changing the first two parameters, you shift the camera window across the can
 - **`viewBox="50 0 100 100"`**: Pans the camera 50 units to the **right**. Elements located between `X=0` and `X=49` will be cut off on the left side.
 - **`viewBox="-50 -50 100 100"`**: Centers the coordinate origin `(0,0)` exactly in the middle of your viewing screen. This is incredibly helpful for drawing symmetrical designs, charts, or math visualizations.
 
----
+***
 
 ### 4. Advanced Aspect Ratio Control (`preserveAspectRatio`)
 
@@ -2334,7 +2334,7 @@ The **`preserveAspectRatio`** attribute dictates how your SVG scales when its **
 
 Think of it exactly like the CSS **`object-fit`** or **`background-size`** properties, but explicitly baked into vector coordinates.
 
----
+***
 
 ### 1. Syntax Overview
 
@@ -2350,7 +2350,7 @@ Use code with caution.
 
 - **Example:** `preserveAspectRatio="xMidYMid meet"` (This is the default browser behavior if you don't declare it).
 
----
+***
 
 ### 2. Part 1: Scaling Modes (`meet` vs. `slice` vs. `none`)
 
@@ -2362,7 +2362,7 @@ This parameter tells the browser how to resize the image inside a container that
 | **`slice`**            | `cover`            | Scales the graphic up until it completely fills the container space. It preserves the aspect ratio, but **crops/slices off** the parts that overflow.                            |
 | **`none`**             | `fill` / `stretch` | Disregards aspect ratios completely. It **stretches, squishes, and warps** your vectors to match the container perfectly.                                                        |
 
----
+***
 
 ### 3. Part 2: Alignment Values (Where to anchor)
 
@@ -2382,7 +2382,7 @@ You combine one **X value** and one **Y value** together into a single string (c
 - **`yMid`**: Center the viewBox vertically inside the container.
 - **`yMax`**: Align the bottom edge of the viewBox with the bottom edge of the container.
 
----
+***
 
 ### 4. Interactive Cheat Sheet Examples
 
@@ -2416,7 +2416,7 @@ Imagine you have an SVG with a square `viewBox="0 0 100 100"`. If you drop it in
 
 Every X coordinate in your SVG is multiplied by 4, while every Y coordinate is multiplied by 1. This distorts your shapes.
 
----
+***
 
 ### Visualizing the Distortion
 
@@ -2429,7 +2429,7 @@ Because the axes scale independently, geometric shapes change their properties f
 | **Diagonal Lines** (`<line>`)            | The angle changes; **45-degree angles flatten out** to become shallower.                                                                                                    |
 | **Borders** (`stroke-width="2"`)         | **Uneven thickness**. The left and right vertical borders will look thicker because they get stretched horizontally, while the top and bottom horizontal borders stay thin. |
 
----
+***
 
 ### When Stretching is Highly Useful (Practical Use Cases)
 
@@ -2485,7 +2485,7 @@ xml
 
 Use code with caution.
 
----
+***
 
 ### How to Prevent Text Distortion (3 Solutions)
 
@@ -2823,7 +2823,7 @@ With all the layouts finalized, Recharts triggers a standard React state change.
 
 Because the browser sees a brand new coordinate rather than a squished or stretched parent SVG, **the font renders at its exact defined style sheet size, keeping the text sharp, readable, and visually unwarped**.
 
----
+***
 
 ### What if you explicitly use `scaleToFit`?
 
@@ -2888,7 +2888,7 @@ If the container shrinks to the point where text bounds would overlap, Recharts'
 
 If you have applied an angle to your axis ticks (e.g., `<XAxis angle={-45} />`), Recharts does not rely on fluid scaling. It locks the text to its true pixel size and updates an inline SVG style rule: `transform="rotate(-45, currentX, currentY)"`. This ensures the rotation anchor updates seamlessly as the chart shifts sizes.
 
----
+***
 
 ### The Underlying Secret
 
@@ -2928,7 +2928,7 @@ To see how Recharts behaves under the hood, we can compare how CSS and SVG prese
 | **`transform` (Matrix/Scale)**  | Unchanged (or recalculated per-node if using custom rotations).      | **Inherits parent SVG scaling matrix** (stretches/shrinks text pixels). |
 | **`text-anchor`**               | Kept static (`"middle"`, `"end"`) to anchor moving coordinates.      | Kept static, but visual alignment relies on the global vector zoom.     |
 
----
+***
 
 ### Structural Differences in the DOM
 
@@ -2977,7 +2977,7 @@ To control whether text scales fluidly with an SVG or stays a fixed pixel size, 
 
 Recharts itself **does not use these CSS scaling overrides by default** (it relies on updating coordinates via JavaScript), but if you want to explicitly enforce or prevent font-size scaling at the CSS engine level, here are the exact properties applied to the `<text>` element.
 
----
+***
 
 ### 1. To STOP Text Scaling (Keep Font Size Fixed & Crisp)
 
@@ -3003,7 +3003,7 @@ Use code with caution.
 
 - **Why it works:** `!important` locks the font size against SVG scale matrices. Setting absolute pixel definitions overrides the viewport scaling factor of the parent SVG element.
 
----
+***
 
 ### 2. To FORCE Text Scaling (Make Font Size Shrink/Grow with the SVG)
 
@@ -3029,7 +3029,7 @@ Use code with caution.
 
 - **The SVG 2 Native Property:** You can also apply `vector-effect="non-scaling-size"` directly as a presentation attribute on the text element if you want to lock positioning but allow independent vector scaling behaviors, though it is often cleaner to handle this via raw CSS viewpoint units (`vw` / `vh`) or SVG percentages (`%`).
 
----
+***
 
 ### Direct Summary Table for Font Sizing
 
@@ -3060,7 +3060,7 @@ This isn't actually a CSS property, but a structural SVG attribute that fundamen
 
 The moment a `viewBox` is applied, **`14px` ceases to mean "14 screen pixels."** Instead, it means **"14 coordinate units inside a fictional 500x300 grid."** If that 500x300 grid stretches across a 2000px wide monitor, the browser zooms everything inside the grid by 4x. The computed font size remains `14px` in the DevTools console, but the browser vectors it up to a perceived size of `56px`. [link](https://css-tricks.com/svg-text-typographic-designs/)
 
----
+***
 
 ### 2. How Recharts Forces it to "Not Scale" (Default Behavior)
 
@@ -3072,7 +3072,7 @@ When you use a Recharts `<ResponsiveContainer>` or its standard responsive layou
 
 Because the SVG coordinate system is kept at a 1:1 ratio with your screen pixels, your `14px` inherited font size stays exactly 14 physical pixels on your display.
 
----
+***
 
 ### 3. The Specific CSS Props to Manually Force Behavior Change
 
@@ -3136,7 +3136,7 @@ The actual CSS properties on the `<text>` or `<tspan>` nodes do not change. Inst
 
 The distinction comes down to the following mechanics:
 
----
+***
 
 ### Scenario A: Responsive Mode is OFF
 
@@ -3149,7 +3149,7 @@ When responsive mode is off, Recharts renders the chart as a static grid with lo
 - **Why it visually shrinks:** In an SVG container with locked boundary constraints, `14px` stops representing 14 screen pixels. It represents **14 abstract coordinate spaces** inside a fixed bounding box. If the box is scaled down by half via layout compression, those coordinate spaces are scaled down by half. [link](https://stackoverflow.com/questions/45906864/how-to-center-text-and-scale-font-size-based-on-container-using-svg)
 - **The DevTools Illusion:** The browser's CSS style rules still compute the base value as `14px` because the text node itself hasn't changed. However, the SVG rendering engine multiples that value by the canvas scale multiplier (e.g., `14px * 0.5 = 7px perceived size`). [link](https://css-tricks.com/almanac/properties/f/font/font-size/)
 
----
+***
 
 ### Scenario B: Responsive Mode is ON
 
@@ -3162,7 +3162,7 @@ When responsive is turned on, Recharts activates a JavaScript-driven layout loop
 - **Why it stays the same perceived size:** Because Recharts alters the underlying `x` and `y` matrix positions to fit the new layout width without introducing a global coordinate scale multiplier, the text element maintains a strict **1:1 relationship with your monitor's physical screen pixels**.
 - **The Result:** `14px` continues to represent exactly 14 crisp screen pixels. The text is repositioned or spaced closer together, but it never encounters a graphical compression matrix.
 
----
+***
 
 ### Summary Checklist of Properties
 
@@ -3277,7 +3277,7 @@ The mystery is solved! You found the exact mechanism: when responsive mode is on
 
 To understand why this stops text from scaling, you need to understand how the **Outer Viewport** (`width`/`height`) and the **Inner Canvas** (`viewBox`) work together.
 
----
+***
 
 ### The Two Components of SVG Sizing
 
@@ -3286,7 +3286,7 @@ Think of an SVG like a **physical picture frame** holding a piece of **graph pap
 1. **`width` and `height` attributes (The Picture Frame):** This defines how much physical space the SVG takes up on your computer screen. It tells the browser, _"Reserve exactly 800 pixels of monitor space for this chart."_
 2. **`viewBox` attribute (The Graph Paper):** This defines the internal coordinate system used _inside_ the SVG. It takes four values: `viewBox="min-x min-y width height"`. It tells the browser, _"Divide the inside of this frame into a grid that goes from 0 to 800 horizontally and 0 to 400 vertically."_
 
----
+***
 
 ### Why the Text Scaled When They Didn't Match (Responsive OFF)
 
@@ -3300,7 +3300,7 @@ Because the browser has to pack a `600`-unit wide coordinate grid into a tiny `3
 - Your text says `font-size: 14px`, meaning _"take up 14 units on the graph paper."_
 - Because the graph paper is shrunk by 0.5x, the browser displays it at a **perceived size of 7px**.
 
----
+***
 
 ### Why the Text Stays Fixed When They DO Match (Responsive ON)
 
@@ -3316,7 +3316,7 @@ Because the physical frame (`width="320"`) perfectly matches the internal coordi
 - `font-size: 14px` means _"take up 14 units on the graph paper."_
 - Since 1 unit = 1 screen pixel, the text renders at exactly **14 physical screen pixels**. It stays crisp, unwarped, and completely unchanged in perceived size regardless of how wide the chart gets!
 
----
+***
 
 ### Visual Summary
 
@@ -3335,7 +3335,7 @@ The CSS styles completely override the SVG attributes for defining the outer box
 
 Here is exactly how the browser resolves the conflict step-by-step:
 
----
+***
 
 ### 1. The Priority Rule: CSS Overrides Attributes
 
@@ -3350,7 +3350,7 @@ html
 
 Use code with caution.
 
----
+***
 
 ### 2. What Happens to the SVG `width`/`height` Attributes?
 
@@ -3358,7 +3358,7 @@ When CSS overrides the outer layout size, the SVG `width` and `height` attribute
 
 If a `viewBox` **is** present, the browser completely strips the SVG `width` and `height` attributes of their sizing power and defaults entirely to the `viewBox` grid ratios.
 
----
+***
 
 ### 3. The 3 Common Interaction Scenarios
 
@@ -3410,7 +3410,7 @@ Use code with caution.
 - **Result:** The browser forces a perfect square drawing grid (`100x100`) to stretch horizontally into a wide rectangle layout (`400x200`).
 - **The Text Effect:** Your circles turn into ellipses, and your text looks stretched out horizontally while remaining vertically squished.
 
----
+***
 
 ### Summary Rule of Thumb
 
@@ -3427,7 +3427,7 @@ Unlike old-school methods (like listening to the global window `resize` event), 
 
 Here are the best ways to implement it across different environments:
 
----
+***
 
 ### 1. The Vanilla JavaScript Way (Native API)
 
@@ -3460,7 +3460,7 @@ resizeObserver.observe(targetElement);
 
 Use code with caution.
 
----
+***
 
 ### 2. The React Way (Custom Hook)
 
@@ -3510,7 +3510,7 @@ export default function ChartWrapper() {
 
 Use code with caution.
 
----
+***
 
 ### 3. The Popular Library Way (Fastest Setup)
 
@@ -3543,7 +3543,7 @@ function MyComponent() {
 
 Use code with caution.
 
----
+***
 
 ### Why this beats the old `window.addEventListener('resize')` method:
 
@@ -3558,7 +3558,7 @@ To align text precisely around a specific coordinate `(x, y)` inside an SVG view
 
 Instead, you use two native SVG presentation attributes: **`text-anchor`** for horizontal alignment and **`dominant-baseline`** for vertical alignment.
 
----
+***
 
 ### The Alignment Matrix
 
@@ -3570,7 +3570,7 @@ By combining these two properties, you can anchor any point of the text bounding
 | **Center**            | `dominant-baseline: central` \[3]`text-anchor: start` \[1]          | `dominant-baseline: central` \[3]`text-anchor: middle` \[1]          | `dominant-baseline: central` \[3]`text-anchor: end` \[1]          |
 | **Bottom**            | `dominant-baseline: text-after-edge` \[3]`text-anchor: start` \[1]  | `dominant-baseline: text-after-edge` \[3]`text-anchor: middle` \[1]  | `dominant-baseline: text-after-edge` \[3]`text-anchor: end` \[1]  |
 
----
+***
 
 ### Quick Code Examples
 
@@ -3602,7 +3602,7 @@ xml
 
 Use code with caution.
 
----
+***
 
 ### Deep Dive: How the Properties Work
 
@@ -3652,7 +3652,7 @@ Together, **`text-anchor`** and **`dominant-baseline`** act as a two-axis grid s
 
 Here is a visual, conceptual breakdown of exactly how each property operates on a string of text.
 
----
+***
 
 ### 1. Horizontal Axis: `text-anchor`
 
@@ -3670,7 +3670,7 @@ Here is a visual, conceptual breakdown of exactly how each property operates on 
 - **`middle`:** Maps the **horizontal center** of the text box to the `x` coordinate. Text splits evenly to the left and right.
 - **`end`:** Maps the **right edge** of the text box to the `x` coordinate. Text flows entirely to the left.
 
----
+***
 
 ### 2. Vertical Axis: `dominant-baseline`
 
@@ -3691,7 +3691,7 @@ Here is a visual, conceptual breakdown of exactly how each property operates on 
 - **`alphabetic` (Default Baseline):** Emulates standard typesetting. The invisible line that flat letters sit on snaps to `y`. Hanging descenders (like the tails of _p, q, g, y, j_) loop below the coordinate line.
 - **`text-after-edge` (Bottom Alignment):** Snaps the absolute bottom edge of the entire bounding box (including any descender tails) to the `y` coordinate. The entire word sits completely _above_ your line.
 
----
+***
 
 ### 3. Cheat Sheet: Setting the Exact Origin Point
 
@@ -3709,7 +3709,7 @@ If you want to position your text box relative to an exact coordinate point `(x,
 | ⬇️ **Bottom-Center**                                   | `"middle"`              | `"text-after-edge"`           |
 | ↘️ **Bottom-Right**                                    | `"end"`                 | `"text-after-edge"`           |
 
----
+***
 
 ### 4. Implementation Example (React & Recharts Style)
 
@@ -3749,7 +3749,7 @@ The `text-anchor` property has only **3 standard values**. It dictates the horiz
 - **`end`:** The text string terminates exactly at the `x` coordinate, meaning it flows completely to the left.
 - _(Inherited Value)_ **`inherit`:** Inherits the text anchor property value from its parent element container.
 
----
+***
 
 ### 2. `dominant-baseline` All Possible Values
 
@@ -3787,7 +3787,7 @@ The specification features **16 possible values**:
 - **`mathematical`** _(Varying support)_
 - **`central`** / **`middle`** context variations
 
----
+***
 
 ### Which ones should you actually use?
 
@@ -3805,7 +3805,7 @@ For graph Y-axis graduations (tick labels), you should almost always align the t
 
 Here is why this combination provides the best readability, along with the rare exception where you might choose otherwise.
 
----
+***
 
 ### 1. Why Vertical Center (`central`) is the Standard
 
@@ -3826,7 +3826,7 @@ CORRECT (central)              INCORRECT (alphabetic / baseline)
                                   ───────
 ```
 
----
+***
 
 ### 2. The Horizontal Counterpart: `text-anchor: end`
 
@@ -3839,7 +3839,7 @@ This acts as a "right-align" for your numbers. As your dataset grows from single
        0 ┼
 ```
 
----
+***
 
 ### 3. The One Exception: Horizontal Layouts
 
@@ -3958,7 +3958,7 @@ This infinite loop happens because of a breakdown in communication between the b
 
 Here is the exact step-by-step breakdown of how the browser gets trapped in this cycle:
 
----
+***
 
 ### Step 1: The Initial Trigger
 
@@ -3998,7 +3998,7 @@ Because the parent container just expanded from `500px` to `501px`, **the `Resiz
 
 This process repeats indefinitely, crushing your CPU performance and causing the chart to jitter or completely freeze the browser tab.
 
----
+***
 
 ### Why doesn't this happen when the container is fully bounded?
 
@@ -4016,7 +4016,7 @@ By default, the browser's HTML layout engine treats an `<svg>` tag exactly like 
 
 Even if your SVG has absolutely no text inside it, that invisible text baseline space is carved out underneath it, pushing the parent container's content height down by roughly **3px to 5px**.
 
----
+***
 
 ### The Three Best Ways to Fix It
 
@@ -4080,7 +4080,7 @@ While both hooks solve the same core problem—tracking the size and bounds of a
 
 Choosing between them comes down to bundle constraints, API preferences, and specialized needs like scroll-tracking or animation synchronization.
 
----
+***
 
 ### Core Differences at a Glance
 
@@ -4092,7 +4092,7 @@ Choosing between them comes down to bundle constraints, API preferences, and spe
 | **React 18 Concurrent Rendering Fixes** | Can occasionally fall out of sync or lag due to automatic batching.            | Actively maintained to sync efficiently with modern React rendering. |
 | **Bundle Impact**                       | Best if you already have `react-use` installed; shaking single hooks can vary. | Extremely tiny, zero dependencies.                                   |
 
----
+***
 
 ### 1. Syntactic Implementation
 
@@ -4136,7 +4136,7 @@ const MyComponent = () => {
 
 Use code with caution.
 
----
+***
 
 ### 2. When to Choose `react-use` (`useMeasure`)
 
@@ -4172,7 +4172,7 @@ The second value returned by both hooks is an object containing the geometric di
 
 However, **`react-use-measure` includes extra properties** (`x` and `y`) that are missing from `react-use`.
 
----
+***
 
 ### Comparison of Properties
 
@@ -4187,7 +4187,7 @@ However, **`react-use-measure` includes extra properties** (`x` and `y`) that ar
 | **`x`**      | ❌          |                     | Equal to `left` (the element's X-coordinate relative to viewport).  |
 | **`y`**      | ❌          |                     | Equal to `top` (the element's Y-coordinate relative to viewport).   |
 
----
+***
 
 ### Crucial Note on "Viewport" Coordinates (`top`, `left`, etc.)
 
@@ -4285,7 +4285,7 @@ The reason these hook creators chose **not** to return a standard `{ current: nu
 
 If they used a standard object ref, the hook would fail silently in many common real-world scenarios.
 
----
+***
 
 ### The 3 Big Problems with Standard Object Refs
 
@@ -4319,7 +4319,7 @@ If a hook tried to use standard `useEffect` to watch `ref.current`, it would loo
 
 However, React's dependency array cannot track mutations to `.current`. To force it to work, the hook would have to trigger a state update inside the effect to force a re-render, which often triggers an infinite loop of measuring, updating state, re-rendering, and re-measuring. Callback refs naturally sidestep this timing issue.
 
----
+***
 
 ### How React 19 / Modern Hooks Handle This
 
@@ -4366,7 +4366,7 @@ If the library tried to manage a combined object ref, it would have to manually 
 
 By returning a pure callback function, the hooks remain fully flexible. A callback function can easily be wrapped inside other functions, debounced, piped into animations, or shared across multiple nodes. If it returned a rigid, pre-packaged combined ref architecture, you wouldn't be able to easily pipe it into specialized patterns like a `forwardRef` or a custom layout controller.
 
----
+***
 
 Are you currently running into a situation where you **absolutely need `.current` access** (such as manually triggering an `.focus()` or an `.animate()` call)?
 
@@ -4406,7 +4406,7 @@ export function useMeasureWithRef(options?: Parameters<typeof useMeasure>[0]) {
 
 Use code with caution.
 
----
+***
 
 ### How to Use It
 
@@ -4496,7 +4496,7 @@ export function useMeasuredRef(options?: Parameters<typeof useMeasure>) {
 
 Use code with caution.
 
----
+***
 
 ### How to Use the Merged Ref
 
@@ -4702,7 +4702,7 @@ If `style` were a string, you would have to perform messy string manipulation or
 
 React abstracts away various browser inconsistencies. By controlling styles through JavaScript objects, React can automatically append `"px"` to certain numeric values (like `width: 200` turning into `200px`) and handle vendor prefixes more reliably behind the scenes. [link](https://www.codechef.com/learn/course/react-js/CREACT002/problems/PREACT0012)
 
----
+***
 
 ### Summary of Differences
 
@@ -4760,7 +4760,7 @@ jsx
 
 Use code with caution.
 
----
+***
 
 ### 🛠️ Quick Conversion Tools
 
@@ -4830,7 +4830,7 @@ console.log(jsxStyle);
 
 Use code with caution.
 
----
+***
 
 ### 2. The Alternative: `style-to-object`
 
@@ -4860,7 +4860,7 @@ console.log(jsxStyle);
 
 Use code with caution.
 
----
+***
 
 ### 3. The Full HTML Parser Option: `html-react-parser`
 
@@ -4909,7 +4909,7 @@ If you trigger a React state change on **every single `mousemove` event**, <mark
 
 A standard computer mouse fires `mousemove` events roughly **60 to 100+ times per second** depending on the hardware polling rate. Because a React state update forces a component to re-render, you are asking React to run its reconciliation process, diff the virtual DOM, and potentially update the real DOM dozens of times every single second. [link](https://www.instagram.com/reel/Dbi2unqPpLz/)
 
----
+***
 
 ### What Actually Happens Under the Hood
 
@@ -4917,7 +4917,7 @@ A standard computer mouse fires `mousemove` events roughly **60 to 100+ times pe
 2. **Subtree Re-renders:** By default, when a parent component updates its state, **all of its child components re-render** with it. If your `mousemove` state lives high up in the component tree, your entire application will struggle to stay responsive. [link](https://www.reddit.com/r/reactjs/comments/k73g9f/what%5Fis%5Fthe%5Feffective%5Fway%5Fto%5Fuse%5Fmousemove%5Fevent/)
 3. **Dropped Frames & Stuttering:** Browsers target a 60Hz refresh rate (16.67ms per frame) or higher. If React's rendering cycle takes longer than a few milliseconds, it will block the browser's main thread, leading to visual stuttering and delayed interaction responses. [link](https://www.youtube.com/shorts/cUeSMZI2o54)
 
----
+***
 
 ### How to Fix or Avoid It
 
@@ -5002,14 +5002,14 @@ Both **throttling** and **debouncing** are rate-limiting techniques used to cont
 
 While they share a similar goal, they work in fundamentally opposite ways.
 
----
+***
 
 ### The Core Difference
 
 - **Throttling** enforces a **maximum frequency**. It guarantees the function runs regularly at a fixed time interval (e.g., "execute this function at most once every 100ms").
 - **Debouncing** enforces a **period of silence**. It waits for the user to _stop_ firing events for a set amount of time before running the function (e.g., "wait until the user has stopped typing for 300ms before searching").
 
----
+***
 
 ### Visual Comparison
 
@@ -5020,7 +5020,7 @@ Imagine a user frantically triggering events over 4 seconds:
 | **Throttling** | `⏱️...💥...⏱️...💥...⏱️...💥`Fires at steady, predictable intervals.       | • Updating a map UI while scrolling• Infinite scroll pagination• Game loops (`mousemove` tracking) |
 | **Debouncing** | `⏳........................💥`Fires only once the storm of events settles. | • Search bar auto-suggestions• Form input validation• Window resize recalculations                 |
 
----
+***
 
 ### How Throttling Works
 
@@ -5045,7 +5045,7 @@ function throttle(func, limit) {
 
 Use code with caution.
 
----
+***
 
 ### How Debouncing Works
 
@@ -5072,7 +5072,7 @@ function debounce(func, delay) {
 
 Use code with caution.
 
----
+***
 
 ### React Specific Trap: The Re-render Bug
 
@@ -5114,7 +5114,7 @@ The ideal **time limit** depends entirely on the technique you choose and the sp
 
 Here is a breakdown of standard, production-tested limits for common use cases:
 
----
+***
 
 ### Recommended Throttling Limits
 
@@ -5124,7 +5124,7 @@ When throttling, you want the UI to feel smooth, but you don't want to overload 
 - **50ms to 100ms:** Best for **heavy real-time tracking**, such as updating a map as the user pans around, firing scroll animations, or sending user telemetry coordinates back to a server.
 - **200ms to 500ms:** Perfect for **background loops**, like checking if a user has scrolled to the bottom of the page to trigger an infinite scroll API call.
 
----
+***
 
 ### Recommended Debouncing Limits
 
@@ -5134,7 +5134,7 @@ When debouncing, you are waiting for the user to _stop_ doing something. The lim
 - **300ms to 500ms:** The industry standard for **standard input forms** or search bars querying a database API. It gives average typists enough time to finish a word without triggering accidental API requests.
 - **500ms+:** Used for **heavy computational tasks**, like recalculating layout dimensions after a user finishes resizing their browser window, or auto-saving a large document block to a server.
 
----
+***
 
 ### Summary Table
 
@@ -5147,7 +5147,7 @@ When debouncing, you are waiting for the user to _stop_ doing something. The lim
 
 Which specific action are you trying to rate-limit right now? If you share **what event** you are capturing (e.g., typing, scrolling, mouse moving) and **what it triggers**, I can recommend the exact millisecond threshold you should use.
 
-AI responses may include mistakes. For financial advice, consult a professional. [Learn more](https://support.google.com/websearch?p=aimode&gl=us)
+AI responses may include mistakes. For financial advice, consult a professional. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
 
 ## what is it called if the first event fires immediately and all events between last and last + limit are deferred to one at last + limit
 
@@ -5155,7 +5155,7 @@ What you are describing is a specialized flavor of throttling often referred to 
 
 In standard open-source utility libraries like **Lodash**, this is the **default behavior** when you call `_.throttle()`.
 
----
+***
 
 ### How It Breaks Down
 
@@ -5176,7 +5176,7 @@ Events Fired:  💥 (Immediate)  💥  💥  💥                   💥 (Last e
 Execution:     🔥 (Fires)                                🔥 (Fires deferred event)
 ```
 
----
+***
 
 ### Why Use This?
 
@@ -5185,7 +5185,7 @@ This configuration gives you the absolute best of both worlds for high-frequency
 - **Instant Responsiveness:** Because the first event fires immediately, the user gets instant visual feedback the millisecond they start moving their mouse or scrolling.
 - **Guaranteed Final State:** Because the trailing edge fires at the end of the limit, your UI is guaranteed to capture the **exact final position** of the mouse or scrollbar when the movement stops, ensuring data accuracy.
 
----
+***
 
 ### How to Write It in Code
 
@@ -5276,10 +5276,10 @@ Are you running into a specific issue where an SVG element is **not rendering co
   Width and height of SVG as float number - Stack Overflow\
   Apr 27, 2015 — 2 Answers Sorted by: 1 Since SVG is a Vector format you can use any width / height you want. It doesn't really matter in which wid...
 - [link](https://www.w3.org/TR/SVG11/coords.html)\
-   W3C\
-   Coordinate Systems, Transformations and Units – SVG 1.1 ( ... - W3C
+  W3C\
+  Coordinate Systems, Transformations and Units – SVG 1.1 ( ... - W3C
 
-  7.1 Introduction. For all media, the SVG canvas describes "the space where the SVG content is rendered." The canvas is infinite fo...
+7.1 Introduction. For all media, the SVG canvas describes "the space where the SVG content is rendered." The canvas is infinite fo...
 
 Show all
 
@@ -5381,7 +5381,7 @@ You will see `width: 100%` cause overflow in these specific scenarios:
 - **Adding Margins:** If you apply `margin-left: 20px` and `width: 100%`, the element pushes 20px out the right side of its container.
 - **Grid or Flex Items:** Forcing `width: 100%` on items inside a flex or grid container that already has `gap` properties or padding applied.
 
----
+***
 
 ### How to Fix and Prevent It
 
@@ -5451,7 +5451,7 @@ Are you trying to add spacing around a full-width element right now? I can show 
 
 ## compare 100vh and 100dvh
 
-The main difference between `100vh` and `100dvh` is how they handle **mobile browser toolbars** (like the address bar and navigation controls). While **`100vh` is static and ignores toolbars**, often causing content to get cut off on mobile devices, **`100dvh` adapts dynamically** to give you a perfect fit regardless of whether the browser interface is expanded or collapsed. [link](https://www.youtube.com/watch?v=O16af0iRs44&t=101)
+The main difference between `100vh` and `100dvh` is how they handle **mobile browser toolbars** (like the address bar and navigation controls). While **`100vh` is static and ignores toolbars**, often causing content to get cut off on mobile devices, **`100dvh` adapts dynamically** to give you a perfect fit regardless of whether the browser interface is expanded or collapsed. [link](https://www.youtube.com/watch?v=O16af0iRs44\&t=101)
 
 ###
 
@@ -5502,7 +5502,7 @@ To see a live demonstration of how these viewport units shift and recalculate sp
 
 1m
 
-[link](https://www.youtube.com/watch?v=O16af0iRs44&t=101)
+[link](https://www.youtube.com/watch?v=O16af0iRs44\&t=101)
 
 Use 100dvh, not 100vh (CSS Units)
 
@@ -5520,7 +5520,7 @@ Are you trying to design a **full-screen hero section**, a **sticky mobile navig
   Envato Tuts+\
   Learn these viewport-relative CSS units (100vh, 100dvh, 100lvh, 100svh) | Envato Tuts+\
   Sep 16, 2024 — 100vh and 100dvh are both CSS viewport height units. 100vh is the easiest way to create a full-screen section. 100dvh is a dynamic...
-- [link](https://www.youtube.com/watch?v=O16af0iRs44&t=101)\
+- [link](https://www.youtube.com/watch?v=O16af0iRs44\&t=101)\
   YouTube·ByteGrad\
   Use 100dvh, not 100vh (CSS Units)\
   Jul 28, 2023 — so you can already sense that there are some issues with sizing things based on viewport height and width now typically on desktop...\
@@ -5575,7 +5575,7 @@ Would you like to see how to structure a **sticky bottom navigation bar** using 
 
 On mobile devices, the traditional `100vh` unit does not account for dynamic browser UI elements like the address bar or navigation panels. This often causes elements to become too tall on initial page load, hiding content or call-to-action buttons below the edge of the screen. The modern CSS Viewport Module Level 4 introduces **`svh` (Small Viewport Height)** and **`dvh` (Dynamic Viewport Height)** to solve this exact issue. [link](https://www.youtube.com/watch?v=O16af0iRs44)
 
----
+***
 
 ### Which one should you use?
 
@@ -5585,7 +5585,7 @@ On mobile devices, the traditional `100vh` unit does not account for dynamic bro
 | **`100dvh`** | The **dynamic viewport height**, which recalculates in real-time as the address bar shrinks or expands during scrolling.                    | **App shells, chat UIs, dashboards, and modals.** It forces UI controls (like a sticky bottom chat input) to actively track the edge of the usable screen.    |
 | **`100vh`**  | The **traditional layout viewport height**. It acts like the maximum height on mobile, bleeding behind toolbars.                            | **Browser Fallback.** Never use it by itself anymore; only use it so older browsers don't completely break.                                                   |
 
----
+***
 
 ### Best Practices & Fallback Implementation
 
@@ -5689,7 +5689,7 @@ When you scroll, <mark><strong><code dir="ltr">100dvh</code><span> </span>dynam
 
 On mobile devices (like Safari on iOS or Chrome on Android), scrolling down usually shrinks or hides the URL address bar and bottom navigation controls. Because the browser's UI gets smaller, the usable screen area gets larger. **`100dvh` automatically scales up** to fill that newly available space.
 
----
+***
 
 ### Step-by-Step Behavior During a Scroll
 
@@ -5702,7 +5702,7 @@ On mobile devices (like Safari on iOS or Chrome on Android), scrolling down usua
 4. **Scrolling Back Up:**\
    The moment the user scrolls back up, the browser UI snaps back into view, and `100dvh` immediately shrinks back down to match.
 
----
+***
 
 ### The One Catch: Performance & Layout Shifts
 
@@ -5721,7 +5721,7 @@ If a user pauses mid-scroll and leaves the browser toolbar stuck halfway between
 
 However, while `100dvh` looks smooth, it introduces a major technical problem if your application layout isn't designed for it: **Layout Thrashing**.
 
----
+***
 
 ### The Mid-Scroll Problem: Layout Thrashing
 
@@ -5730,7 +5730,7 @@ When the toolbar is stuck half-collapsed, the browser has to constantly fire off
 1. **Jittery Performance (Lag):** If your `.app` container changes height by even 1 pixel mid-scroll, the browser has to re-render the app, re-calculate flexbox math, and redraw the screen. On older or mid-range mobile devices, this causes noticeable micro-stutters and lag.
 2. **Jumping Content:** If you have elements inside the app positioned relative to the height (like text elements or images set to percentage heights), they will violently stretch, shrink, or wrap text mid-scroll.
 
----
+***
 
 ### How to completely fix it for your `.app`
 
@@ -5912,7 +5912,7 @@ Show all
 
 To move elements to the right visual layers inside inline SVGs, Recharts combines three main methods: **React Context** (to collect requested `zIndex` values), **Dynamic Array Sorting** (to ensure the container groups follow SVG's native "painting order"), and **React Portals** (to teleport the children elements into those groups). [link](https://develop.finki.ukim.mk/projects/NETIntel/browser/node%5Fmodules/recharts/types/zIndex/ZIndexLayer.d.ts?rev=a762898ecd37a452c782821d4c2c4955c6ed2521)
 
----
+***
 
 ### The Internal Mechanics (How It Works)
 
@@ -5920,7 +5920,7 @@ To move elements to the right visual layers inside inline SVGs, Recharts combine
 2. **Sequential Rendering (Painting Order)**: The main chart component takes that list of active layer integers, filters out zeros, and sorts them numerically from lowest to highest (e.g., `[-100, 100, 400, 2000]`). It loops over them to render empty `<g>` (group) tags inside the root `<svg>` element. Since higher numbers are appended later in the DOM tree, they sit natively on top. [link](https://recharts.github.io/en-US/guide/zIndex/)
 3. **`createPortal()` Teleportation**: Every component utilizes an internal wrapper called `<ZIndexLayer>`. It matches its assigned weight to the respective sorted `<g>` DOM reference container, executing a React Portal to deliver the SVG node elements directly into it. [link](https://lobehub.com/skills/neversight-skills%5Ffeed-recharts)
 
----
+***
 
 ### Simplest Example Implementation
 
@@ -6036,7 +6036,7 @@ However, `z-index` does not work universally on every element. Understanding its
 
 ### 1. It Requires a "Positioned" Element
 
-By default, all HTML elements have a `position` of `static`, which ignores `z-index`. For `z-index` to take effect, you must change the element's position property to one of the following: [link](https://www.youtube.com/watch?v=IbrX%5FXkZwzg&t=190)
+By default, all HTML elements have a `position` of `static`, which ignores `z-index`. For `z-index` to take effect, you must change the element's position property to one of the following: [link](https://www.youtube.com/watch?v=IbrX%5FXkZwzg\&t=190)
 
 - `relative`
 - `absolute`
@@ -6057,9 +6057,9 @@ The most common reason `z-index` fails is due to **stacking contexts**. Think of
 
 When a parent element forms a new stacking context (usually by having both a position and a `z-index` set), **all of its children are locked inside that context**. Their child `z-index` values only compare against siblings within the same parent—they cannot compete with elements outside. [link](https://www.youtube.com/shorts/epLxpj2yKXU)
 
-> **The Analogy:** Imagine Parent A has a `z-index: 1` and Parent B has a `z-index: 2`. Even if a child inside Parent A is assigned `z-index: 99999`, it will **never** sit on top of Parent B, because its parent is locked to a lower overall layer. [link](https://www.youtube.com/watch?v=QG7gF6XN4RI&t=273)
+> **The Analogy:** Imagine Parent A has a `z-index: 1` and Parent B has a `z-index: 2`. Even if a child inside Parent A is assigned `z-index: 99999`, it will **never** sit on top of Parent B, because its parent is locked to a lower overall layer. [link](https://www.youtube.com/watch?v=QG7gF6XN4RI\&t=273)
 
----
+***
 
 ### Comparison of Stacking Rules
 
@@ -6097,7 +6097,7 @@ When elements are nested, **`z-index` values are no longer global**. Instead, th
 
 To understand nested `z-index`, remember this golden rule: **A child element can never break out of its parent's stacking context.** If a parent element is physically layered below a different element, all of its children—no matter how high their `z-index`—are dragged down with it.
 
----
+***
 
 ### The "Folder" Analogy
 
@@ -6110,7 +6110,7 @@ Inside Folder A, you have a sheet of paper numbered **999,999** (`z-index: 99999
 
 Because Folder B sits entirely on top of Folder A, **every piece of paper inside Folder B will sit on top of Folder A**, including its trillion-priority paper. The browser resolves Folder B first, then looks inside.
 
----
+***
 
 ### A Common Breaking Scenario
 
@@ -6133,7 +6133,7 @@ Use code with caution.
 - **What you might expect:** `child-one` has a `z-index` of `9999`, so it should sit on top of everything.
 - **What actually happens:** `child-two` will visually overlap `child-one`. Because `parent-one` has a lower `z-index` than `parent-two`, its inner child is trapped on a lower plane.
 
----
+***
 
 ### What Triggers a Parent to Trap its Children?
 
@@ -6161,7 +6161,7 @@ When a parent container has **no `z-index` set** (meaning it defaults to `z-inde
 
 This means the nested child elements are **not trapped** in a "folder." Instead, the children skip right past the parent and **compete directly with the rest of the elements on the global page**.
 
----
+***
 
 ### The Global Blueprint (Visual Guide)
 
@@ -6183,7 +6183,7 @@ Use code with caution.
 
 Because `.main-container` has no `z-index`, the nested `.nested-badge` can look outside its parent. It sees the `.sidebar` has a `z-index: 5`. Since `10` is greater than `5`, the **nested badge will successfully render completely on top of the sidebar**.
 
----
+***
 
 ### The Secret Traps: When a Container Forms a Context _Without_ a Z-Index
 
@@ -6197,7 +6197,7 @@ Even if you leave `z-index` completely off a parent container, modern CSS proper
 
 If your parent container has _any_ of those properties active, the nested child's `z-index` resets to a local scale, and it can no longer float over external elements like the sidebar in the scenario above.
 
----
+***
 
 ### Summary Checklist
 
@@ -6249,7 +6249,7 @@ The browser evaluates their effective layers like this:
 
 Because `0.999` is structurally bound to the parent's starting `0`, it can never bypass an entirely separate element on the page that has an effective global level of `1` or higher.
 
----
+***
 
 ### The Breaking Point Example
 
@@ -6357,7 +6357,7 @@ xml
 
 Use code with caution.
 
----
+***
 
 ### How to Change the Layering of SVG Elements
 
@@ -6386,7 +6386,7 @@ Use code with caution.
 
 If you don't want to break your script's DOM order, you can use an SVG `<use>` tag. Define your elements inside a `<defs>` block at the top, and drop `<use>` references below. The order of the `<use>` elements dictates which one displays on top. [link](https://stackoverflow.com/questions/482115/with-javascript-can-i-change-the-z-index-layer-of-an-svg-g-element)
 
----
+***
 
 ### ⚠️ Note on SVG 2 Specification
 
@@ -6408,3 +6408,5 @@ Are you currently trying to **bring an SVG shape to the front on hover/click**, 
   Sep 15, 2015 — The CSS rules that define the effect of the 'z-index' property were written specifically for the CSS box model, and those rules do...
 
 Show all
+
+
