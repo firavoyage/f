@@ -2686,3 +2686,148 @@ Are you trying to manage focus for a specific UI component, like a **modal dialo
 
 Show all
 
+# how should keyboard navigation work on select component
+
+## how should keyboard navigation work on select component
+
+To ensure a **select (dropdown) component** complies with accessibility standards like the [W3C WAI-ARIA Authoring Practices (APG)](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/), its keyboard interaction must mirror native HTML `<select>` behavior. [link](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Guides/Keyboard-navigable%5FJavaScript%5Fwidgets)
+
+The primary rule of select menus is that **individual options should never be reachable via the `Tab` key**. Instead, the user tabs _to_ the component, expands it, and navigates _within_ it using arrow keys. [link](https://stackoverflow.com/questions/71355535/accessibility-question-do-select-dropdown-elements-need-to-be-tab-able-to-go-up)
+
+***
+
+### 1. Navigating to the Component
+
+- **`Tab`**: Moves focus **forward** to the select trigger element.
+- **`Shift + Tab`**: Moves focus **backward** to the previous interactive element. [link](https://afixt.com/keyboard-navigation-ensuring-usability-without-a-mouse/)
+
+***
+
+### 2. When the Component is Collapsed (Menu Closed)
+
+When the select trigger has focus but the dropdown is closed, the following keys apply:
+
+- **`Spacebar`** or **`Enter`**: **Opens the dropdown** menu and places visual focus on the currently selected item.
+- **`ArrowDown`** / **`ArrowUp`**: (Optional but recommended) In standard HTML selects, pressing the arrow keys while closed changes the selection immediately without opening the menu. For custom widgets, it is widely acceptable to have these keys **open the menu** instead. [link](https://www.reddit.com/r/accessibility/comments/1l3u9al/keyboard%5Faccessibility%5Fhow%5Fdropdowns%5Fshould/)
+
+***
+
+### 3. When the Component is Expanded (Menu Open)
+
+Once the dropdown menu is visible, focus stays managed inside the list: [link](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/)
+
+- **`ArrowDown`**: Moves visual focus to the **next option** in the list. If focus is on the last option, it either stops or loops back to the first option. [link](https://dap.berkeley.edu/websites/accessibility-developers/keyboard-navigation)
+- **`ArrowUp`**: Moves visual focus to the **previous option**. [link](https://reciteme.com/us/news/keyboard-accessibility/)
+- **`Enter`**: **Selects** the currently focused option, updates the trigger text, **closes the dropdown**, and returns focus to the select trigger. [link](https://medium.com/design-bootcamp/accessibility-how-to-navigate-a-website-with-the-keyboard-51b2b657bd46)
+- **`Spacebar`**: In a single-select component, this behaves exactly like `Enter` (selects and closes). _(Note: In a multi-select component, Spacebar checks/unchecks the option without closing the menu)._ [link](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/)
+- **`Escape`**: **Closes the dropdown** without making a new selection, reverting back to the previously chosen item. Focus returns to the select trigger. [link](https://nitsantech.de/en/accessibility-glossary/keyboard-navigation)
+
+***
+
+### 4. Advanced/Typeahead Behavior (Highly Recommended)
+
+- **`Character Keys (A-Z)`**: When the menu is open (or focused), typing a letter should move focus to the **first option starting with that character**. Typing the same letter repeatedly should cycle through all options starting with that letter.
+- **`Home`**: Moves focus to the first option in the list.
+- **`End`**: Moves focus to the last option in the list. [link](https://reciteme.com/us/news/keyboard-accessibility/)
+
+***
+
+### Keyboard Navigation Summary
+
+| Key Command              | Action When Menu is Collapsed        | Action When Menu is Expanded                             |
+| ------------------------ | ------------------------------------ | -------------------------------------------------------- |
+| **`Tab`**                | Moves focus to the next page element | Closes the menu and moves focus to the next page element |
+| **`Spacebar` / `Enter`** | Opens the dropdown menu              | Selects the highlighted option and closes the menu       |
+| **`ArrowDown`**          | Opens menu (or changes selection)    | Moves focus to the next option                           |
+| **`ArrowUp`**            | Opens menu (or changes selection)    | Moves focus to the previous option                       |
+| **`Escape`**             | N/A                                  | Closes the menu without changing the selection           |
+| **`A–Z` (Typeahead)**    | N/A                                  | Jumps to the option starting with that letter            |
+
+Are you building a **single-select** or a **multi-select** component, and are you using **native HTML** or a custom framework like **React/Vue**? Knowing this can help me provide tailored ARIA attributes (`aria-expanded`, `aria-activedescendant`) or code examples.
+
+- [link](https://www.reddit.com/r/accessibility/comments/1l3u9al/keyboard%5Faccessibility%5Fhow%5Fdropdowns%5Fshould/)\
+  Reddit\
+  Keyboard accessibility: how dropdowns should function - Reddit\
+  Jun 5, 2025 — key === "ArrowUp") { if (! this. matches(":focus-within")) { event. preventDefault(); } } }); Explanation: We listen for the keydo...
+- [link](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/)\
+  W3C\
+  Developing a Keyboard Interface | APG | WAI - W3C\
+  However, if the widget supports multiple selection, then more than one item can be in a selected state, and keys for moving focus ...
+- [link](https://stackoverflow.com/questions/71355535/accessibility-question-do-select-dropdown-elements-need-to-be-tab-able-to-go-up)\
+  Stack Overflow\
+  do select dropdown elements need to be tab-able to go up ...\
+  Mar 4, 2022 — 2 Answers 2. ... Save this answer. Show activity on this post. If you mean the different options of a dropdown menu, no, they shou...
+
+Show all
+
+## where should the focus be after open
+
+When the select dropdown opens, focus handling depends entirely on whether you are using a **native HTML select element** or building a **custom JavaScript select/combobox component**.
+
+Here is exactly where the focus should go based on your implementation:
+
+### 1. In a Custom Component (WAI-ARIA Pattern)
+
+If you are building a custom dropdown using `role="combobox"` and `role="listbox"`, **the actual DOM focus should remain on the trigger element (the button/input)** \[WAI-ARIA].
+
+You should **never** shift DOM focus to the dropdown container or the list items. Instead, you manage focus virtually:
+
+- **The DOM focus** stays locked on the `<button>` or `<input>`.
+- **Visual focus** (a highlight background color) moves to the **currently active item** inside the dropdown \[WAI-ARIA].
+- **Screen readers** track this virtual focus using the **`aria-activedescendant`** attribute on the trigger element \[WAI-ARIA]. You dynamically update this attribute to match the ID of the highlighted list option (e.g., `aria-activedescendant="option-2"`) \[WAI-ARIA].
+
+### 2. Which item gets the visual highlight?
+
+When the menu expands, the visual highlight (and `aria-activedescendant`) should land on:
+
+- **The currently selected item:** If the user has already chosen an option previously, the list should open with that specific item highlighted \[WAI-ARIA].
+- **The first item in the list:** If no value has been selected yet (or it's a fresh form), the highlight should default to the very first option \[WAI-ARIA].
+
+### 3. In a Native HTML `<select>` Element
+
+If you are using standard HTML `<select>`, the browser handles this automatically. When clicked or opened via keyboard, the browser opens the native overlay. Focus technically remains on the `<select>` element, while the operating system handles the visual scrolling and selection highlight of the options list.
+
+***
+
+Are you building this component from scratch using **vanilla JavaScript**, or are you working with a framework like **React, Vue, or Angular**? I can provide the exact **ARIA attributes** or a **code snippet** for managing the active descendant if that would help.
+
+## ignore compliance. why should it focus on trigger or one of the dropdown item after open on ux
+
+Putting technical compliance and accessibility rules completely aside, the choice between focusing on the **trigger** versus an **item in the dropdown** comes down to <mark>balancing two competing user behaviors:<span> </span><strong>interaction efficiency</strong><span> </span>and<span> </span><strong>visual orientation</strong></mark>.
+
+Here is the UX logic behind both approaches.
+
+***
+
+### Why focus should stay on the Trigger (The "Context First" Approach)
+
+From a pure user experience perspective, keeping focus on the trigger element solves several visual and structural problems:
+
+- **Prevents "Focus Whiplash":** When a user triggers a dropdown, they expect a menu to appear _relative_ to where they just clicked. If the focus suddenly jumps into the dropdown, the page or container may scroll unexpectedly to accommodate the new focus target, disorienting the user.
+- **Maintains the Search Context (for Comboboxes):** If your select component allows typing to filter options (an editable combobox), the cursor **must** stay in the input field. If focus jumps down to a list item, the user loses the ability to type, destroying the search experience.
+- **Clean Escape Hatch:** If a user opens the menu by accident, keeping focus on the trigger means hitting `Escape` or clicking away is seamless. The user's focus point hasn't actually moved, making it easy to abort the action without feeling like they got "sucked into" a modal environment.
+
+***
+
+### Why focus should move to an Item (The "Action First" Approach)
+
+Moving focus directly to an item inside the dropdown prioritizes speed and immediate action:
+
+- **Eliminates Dead Keypresses:** If a user opens a menu using the keyboard, their immediate next goal is to pick an item. By defaulting focus to the first item (or the previously selected item), the user can immediately hit `Enter` to confirm, or use arrow keys from a known starting point without needing an extra keypress to "get into" the list.
+- **Clear State Confirmation:** Visually highlighting the focused item gives the user immediate feedback that the UI is responsive and ready for their next input. It bridges the gap between opening the menu and interacting with its contents.
+- **Context Preservation (For Pre-selected Values):** If a user re-opens a dropdown to change their mind, focusing directly on their _previously selected item_ acts as a cognitive landmark. They know exactly what they currently have chosen, and they can navigate relative to that choice (e.g., "I want the option just below this one").
+
+***
+
+### The UX Compromise: Virtual Focus
+
+The modern design pattern used by tech leaders (Apple, Google, Microsoft) combines the best of both worlds through **virtual focus**:
+
+The mouse or keyboard focus **physically stays on the trigger**, ensuring the page layout remains stable and typeahead search works. Simultaneously, the UI **visually highlights the first or active dropdown item** as if it were focused.
+
+This gives the user the visual clarity of the "Action First" approach while retaining the stability and control of the "Context First" approach.
+
+Are you designing a **standard dropdown** where users just pick from a static list, or an **editable search/autocomplete dropdown**? Knowing this helps determine whether keeping focus on the input is mandatory for the UX.
+
+
+

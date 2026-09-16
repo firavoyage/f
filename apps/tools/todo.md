@@ -363,10 +363,6 @@ web/lib/state: harden, auto detect new keys, auto fix/discard broken persistent 
 
 ---
 
-component/commands: support tools (i.e. files) and actions (commands/shortcuts).
-
-s
-
----
+component/commands: implement a more sophisticated fuzzy search engine
 
 

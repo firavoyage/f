@@ -327,6 +327,8 @@ web: <!-- frontend, web, ts/js -->
 - css color mix oklab oklch
 - web lib use event
 - web lib use mouse glitch
+- component commands fuzzy search
+- web lib use keyboard shortcuts system hotkeys leave site prompt
 
 backend:
 
@@ -944,6 +946,7 @@ code:
 
 - tools recipe dsl
 - halting problem
+- foundation
 
 humility:
 
