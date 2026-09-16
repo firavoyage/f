@@ -47,14 +47,27 @@ export function Select(props: select) {
         open &&
         <Dropdown {...p({ ref, align: 'center', click_outside: close })}>
           {
-            map(items, ([id, name]) => (
-              <Button className="option" {...p({
-                onClick() {
-                  set_value(id)
-                  close()
-                }
-              })}>{name}</Button>
-            ))
+            map(items, ([id, name]) => {
+              const checked = value == id
+
+              return (
+                <Button className="option" {...p({
+                  onClick() {
+                    set_value(id)
+                    close()
+                  },
+                  checked
+                })}>
+                  <span className="label">
+                    {name}
+                  </span>
+                  {
+                    checked &&
+                    <Icon {...p({ name: 'check' })}></Icon>
+                  }
+                </Button>
+              )
+            })
           }
         </Dropdown>
       }

@@ -47,7 +47,7 @@ export type tool_name = keyof typeof tools
       },
       {
         name: 'parsing',
-        type: 'radio',
+        type: 'select',
         value: union('standard', 'rigid', 'flexible', 'forgiving'),
         options: ['rigid', 'standard', 'flexible', 'forgiving']
       }

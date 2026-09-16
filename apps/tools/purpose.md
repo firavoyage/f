@@ -5222,4 +5222,12 @@ app name, tool name, arg name.
 
 ok but for arg, esp in pref i will call it label instead.
 
+16
+
+16 10 component/select: support arrow keys and keyboard trap.
+
+close (or loop back) when tab after the last item or shift tab before the first item
+
+
+
 
