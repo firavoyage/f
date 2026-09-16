@@ -5204,6 +5204,10 @@ what fluid means depends on the design philosophy of the specific app. util desi
 
 01 40 component/commands: implement fuzzy search.
 
+component/commands: support tools (i.e. files) and actions (commands/shortcuts).
+
+s
+
 01 50 component/preferences: support hierarchy. style headings.
 
 done.
@@ -5221,8 +5225,6 @@ label.
 app name, tool name, arg name.
 
 ok but for arg, esp in pref i will call it label instead.
-
-16
 
 16 10 component/select: support arrow keys and keyboard trap. append a check to indicate the current option. 16 50
 
