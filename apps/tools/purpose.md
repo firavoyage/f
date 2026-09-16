@@ -5224,7 +5224,7 @@ ok but for arg, esp in pref i will call it label instead.
 
 16
 
-16 10 component/select: support arrow keys and keyboard trap.
+16 10 component/select: support arrow keys and keyboard trap. append a check to indicate the current option. 16 50
 
 close (or loop back) when tab after the last item or shift tab before the first item
 
@@ -5234,5 +5234,14 @@ adw (ptyxis) focuses the first option (not necessarily the currently selected on
 
 and it remembers the focus after you close the dropdown and open again.
 
+---
+
+there a few ways to do this. when navigate before the first or after the last...
+
+1. do nothing
+2. loop
+3. close
+
+adw chooses the first. i go for the third (by default).
 
 

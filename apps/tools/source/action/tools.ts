@@ -34,8 +34,8 @@ export type options = Record<string, string> | string[]
 
 export type tool_name = keyof typeof tools
 
-// export const tools: Record<string, Optional<tool, 'name'>> = {
-  export const tools = {
+export const tools: Record<string, Optional<tool, 'name'>> = {
+  // export const tools = {
   "json to yaml": {
     fn: json_to_yaml,
     args: [
@@ -47,7 +47,7 @@ export type tool_name = keyof typeof tools
       },
       {
         name: 'parsing',
-        type: 'select',
+        type: 'radio',
         value: union('standard', 'rigid', 'flexible', 'forgiving'),
         options: ['rigid', 'standard', 'flexible', 'forgiving']
       }

@@ -10,15 +10,18 @@ type select = {
   options: options
   placeholder?: any
   children?: any
+  navigate_out?: 'close' | 'ignore' | 'loop'
 }
 
 export function Select(props: select) {
-  const { value, set_value, options: flexible_items, placeholder = '', children } = props
+  const { value, set_value, options: flexible_items, placeholder = '', children,
+    navigate_out = 'close'
+  } = props
 
   const items = Array.isArray(flexible_items) ?
     Object.fromEntries(map(flexible_items, item => [item, item])) :
     flexible_items
-  const last_index = items.length - 1
+  const last_index = entries(items).length - 1
 
   const [open, toggle_open] = useToggle(false)
   const [index, set_index] = useState(0)
@@ -27,6 +30,7 @@ export function Select(props: select) {
   const trigger = useRef()
   const options = useRef(new Map())
 
+  // restore focus on close
   function close() {
     toggle_open(false)
 
@@ -35,21 +39,60 @@ export function Select(props: select) {
   }
 
   function navigate_up() {
-    set_index((index) => )
+    if (index == 0) {
+      // safely omit to ignore, prevent default is default for shortcuts binded
+      if (navigate_out == 'close') {
+        close()
+      } else if (navigate_out == 'loop') {
+        set_index(last_index)
+      }
+    } else {
+      set_index((v) => v - 1)
+    }
   }
 
-  use_keyboard('esc', close, { when: open })
+  function navigate_down() {
+    if (index == last_index) {
+      // safely omit to ignore, prevent default is default for shortcuts binded
+      if (navigate_out == 'close') {
+        close()
+      } else if (navigate_out == 'loop') {
+        set_index(0)
+      }
+    } else {
+      set_index((v) => v + 1)
+    }
+  }
 
-
-  // focus on the first option after open
-  useEffect(() => {
-    if (!has(options.current, 0)) {
+  function focus(index) {
+    if (!has(options.current, index)) {
       return
     }
 
-    options.current.get(0)?.focus?.()
+    options.current.get(index)?.focus?.()
+  }
+
+  // focus on the first option on open
+  useEffect(() => {
     set_index(0)
+
+    focus(0)
   }, [open])
+
+  // focus the corresponding option when index change
+  useEffect(() => {
+    focus(index)
+  }, [index])
+
+  use_keyboard('tab', navigate_down, { when: open, priority: 800 })
+  use_keyboard('ctrl+j', navigate_down, { when: open, priority: 800 })
+  use_keyboard('down', navigate_down, { when: open, priority: 800 })
+
+  use_keyboard('shift+tab', navigate_up, { when: open, priority: 800 })
+  use_keyboard('ctrl+k', navigate_up, { when: open, priority: 800 })
+  use_keyboard('up', navigate_up, { when: open, priority: 800 })
+
+  use_keyboard('esc', close, { when: open, priority: 800 })
 
   return (
     <div className="select" {...p({ open })}>
