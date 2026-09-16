@@ -52,8 +52,9 @@ const irrelevant_errors = [
   'for the boolean attribute',
   'for a non-boolean attribute',
   '`useScroll` expects a single ref argument.',
+  // 'Something has shimmed'
 ]
-console.error = function (msg, ...substitution) {
+function warn(msg, ...substitution) {
   for (const anti_pattern of irrelevant_errors) {
     if (has(msg, anti_pattern)) {
       return
@@ -63,3 +64,6 @@ console.error = function (msg, ...substitution) {
   // throw err are always errors, and if it can be logged (even as errors), it's safe
   console.warn(msg, ...substitution)
 }
+console.error = warn
+
+console.clear();
