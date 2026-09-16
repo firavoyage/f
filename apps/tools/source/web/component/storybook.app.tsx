@@ -9,8 +9,10 @@ import { Number } from './number'
 import { Input } from './input'
 import { Textarea } from './textarea'
 import { Storybook } from './storybook'
+import { Favicon } from './favicon'
 
 const storybook = {
+  Favicon,
   Button,
   Checkbox,
   Switch() {
