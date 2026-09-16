@@ -5246,4 +5246,18 @@ there a few ways to do this. when navigate before the first or after the last...
 
 adw chooses the first. i go for the third (by default).
 
+17
+
+02 00 web: create favicon.
+
+just have some ideas on the icon of tools and code (ide).
+
+also, i like to explore how lean prover works. maybe i could do sth on it. it's deeply sophisticated and incredibly powerful feels.
+
+---
+
+i can just use svg.
+
+i dont wanna use inkscape. i may not have to create a visual editor (i.e. material) or a language (like a list of type followed by args). i would just create a live preview via storybook.
+
 
