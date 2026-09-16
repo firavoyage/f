@@ -5260,4 +5260,20 @@ i can just use svg.
 
 i dont wanna use inkscape. i may not have to create a visual editor (i.e. material) or a language (like a list of type followed by args). i would just create a live preview via storybook.
 
+---
+
+time wasted.
+
+yeah, conservative guys.
+
+this time experiments win guessing/asking and any workarounds that try to play nice.
+
+---
+
+tested and compared w google.
+
+you can just have 100% size for circle. maybe it's 95%.
+
+---
+
 
