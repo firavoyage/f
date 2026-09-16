@@ -48,6 +48,7 @@ export function Storybook({ storybook }: storybook) {
 
   return (
     <>
+      <title>Storybook</title>
       <div className="app storybook">
         <Sidebar>
           {

@@ -1,3 +1,350 @@
+# . all svg syntax
+
+Here is the comprehensive guide to **Scalable Vector Graphics (SVG)** syntax, organized by structural, shapes, styling, and complex elements.
+
+### 1. The Root Canvas & Document Structure
+
+Every SVG begins with a root `<svg>` container. If embedded natively within HTML5, only the `viewBox` is strictly required. If saved as a standalone `.svg` file, you must include the XML namespace (`xmlns`). [link](https://www.w3schools.com/graphics/svg%5Fintro.asp)
+
+xml
+
+```
+<svg xmlns="http://w3.org" viewBox="0 0 100 100" width="100%" height="100%">
+  <!-- SVG elements go here -->
+</svg>
+```
+
+Use code with caution.
+
+- `viewBox="min-x min-y width height"`: Establishes the internal coordinate system system (aspect ratio and boundaries).
+- `width` / `height`: Sets the actual display size of the container in the layout.
+- `xmlns`: The XML namespace definition required for standalone browser rendering. [link](https://www.youtube.com/watch?v=iZk-QKV44u0\&t=548)
+
+***
+
+### 2. Basic Shape Elements
+
+SVG provides pre-defined geometric elements for drawing standard 2D shapes. [link](https://www.w3.org/TR/2000/CR-SVG-20001102/intro.html)
+
+| Element          | Essential Attributes & Syntax                                 | Description                                                                |
+| ---------------- | ------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| **`<rect>`**     | `<rect x="10" y="10" width="80" height="50" rx="5" ry="5" />` | Rectangle. `x`/`y` set origin; `rx`/`ry` round the corners.                |
+| **`<circle>`**   | `<circle cx="50" cy="50" r="40" />`                           | Circle. `cx`/`cy` set center point coordinates; `r` is radius.             |
+| **`<ellipse>`**  | `<ellipse cx="50" cy="50" rx="40" ry="20" />`                 | Ellipse. `rx` and `ry` define independent horizontal/vertical radii.       |
+| **`<line>`**     | `<line x1="10" y1="10" x2="90" y2="90" />`                    | Straight line segment connecting point 1 `(x1, y1)` to point 2 `(x2, y2)`. |
+| **`<polyline>`** | `<polyline points="10,10 30,50 90,90" />`                     | Connected straight line segments forming an open shape.                    |
+| **`<polygon>`**  | `<polygon points="50,10 90,90 10,90" />`                      | Connected straight line segments forming a closed shape automatically.     |
+
+***
+
+### 3. The Complex `<path>` Element
+
+The **`<path>`** element is the most powerful tool in SVG, used to draw custom shapes by combining lines, curves, and arcs via the `d` attribute. [link](https://www.w3schools.com/graphics/svg%5Fpath.asp)
+
+_Uppercase commands use **absolute** coordinates; lowercase commands use **relative** positions._ [link](https://css-tricks.com/svg-path-syntax-illustrated-guide/)
+
+- **`M / m` (Move To):** Picks up the pen and jumps to a coordinate without drawing.
+- **`L / l` (Line To):** Draws a straight line to the coordinate.
+- **`H / h` & `V / v` (Horizontal / Vertical Line):** Draws a straight horizontal or vertical line.
+- **`C / c` (Cubic Bézier Curve):** Draws a smooth curve using two control points `C x1 y1, x2 y2, x y`.
+- **`S / s` (Smooth Cubic Bézier Curve):** Continues a curve assuming the previous control point is mirrored.
+- **`Q / q` (Quadratic Bézier Curve):** Draws a curve using a single control point `Q x1 y1, x y`.
+- **`A / a` (Elliptical Arc):** Draws a segment of an oval using radius, rotation, and flags `A rx ry x-axis-rotation large-arc-flag sweep-flag x y`.
+- **`Z / z` (Close Path):** Draws a straight line from the current position back to the path's starting `M` coordinate. [link](https://www.youtube.com/watch?v=emFMHH2Bfvo\&t=20)
+
+xml
+
+```
+<!-- Example of a simple triangle path -->
+<path d="M 10 10 L 90 10 L 50 80 Z" />
+```
+
+Use code with caution.
+
+***
+
+### 4. Text Elements
+
+SVG handles text as graphic paths, making it highly customizable and accessible. [link](https://www.youtube.com/watch?v=XGvq2lKBzxQ\&t=36)
+
+- **`<text>`**: Renders vector text. Positioned using `x` and `y` attributes.
+- **`<tspan>`**: Adjusts styling or positioning for a subset of characters within a parent `<text>` block.
+- **`<textPath>`**: Chains text along a referenced `<path>` layout. [link](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element)
+
+xml
+
+```
+<text x="20" y="40" font-family="Arial" font-size="12">
+  Hello, <tspan fill="red">World!</tspan>
+</text>
+```
+
+Use code with caution.
+
+***
+
+### 5. Layout, Reusability, and Definitions
+
+SVG allows you to define hidden elements to recycle across your graphic canvas, keeping file sizes exceptionally lightweight. [link](https://www.w3.org/TR/2000/CR-SVG-20001102/intro.html)
+
+- **`<g>` (Group)**: Combines multiple child elements together so they can share structural classes, IDs, or transforms.
+- **`<defs>` (Definitions)**: A storage warehouse for non-rendered assets (like gradients or clip masks) to reference later.
+- **`<symbol>`**: Like `<defs>`, but includes its own `viewBox` boundaries for structured template generation.
+- **`<use>`**: Clones and prints elements defined elsewhere by passing their element ID (`href="#id"`). [link](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element)
+
+xml
+
+```
+<defs>
+  <g id="star">
+    <polygon points="10,1 4,19 19,7 1,7 16,19" />
+  </g>
+</defs>
+
+<!-- Paste the exact same star in multiple coordinate locations -->
+<use href="#star" x="10" y="10" fill="gold" />
+<use href="#star" x="50" y="10" fill="silver" />
+```
+
+Use code with caution.
+
+***
+
+### 6. Styling Attributes
+
+SVG visuals are customized directly via presentation attributes or standardized CSS: [link](https://www.youtube.com/watch?v=iZk-QKV44u0\&t=548)
+
+- **`fill`**: Sets the interior color of an item (supports HEX, RGB, standard colors, or `none`).
+- **`stroke`**: Formats the border line outlining shapes.
+- **`stroke-width`**: The physical weight/thickness of the boundary edge lines.
+- **`stroke-dasharray`**: Breaks solid lines into customizable dash/gap patterns.
+- **`opacity` / `fill-opacity` / `stroke-opacity`**: Adjusts alpha channel transparency values between `0.0` and `1.0`.
+- **`transform`**: Modifies orientation or scale across the canvas grid via commands like `translate(x,y)`, `scale(x,y)`, or `rotate(deg)`. [link](https://www.w3.org/TR/SVG2/struct.html)
+
+Would you like to see a practical example of a **specific component** built from scratch (such as a custom **icon**, **graph**, or **button**), or are you looking to dive deeper into advanced configurations like **animations** or **filters**?
+
+- [link](https://css-tricks.com/svg-path-syntax-illustrated-guide/)\
+  CSS-Tricks\
+  The SVG \`path\` Syntax: An Illustrated Guide - CSS-Tricks\
+  Oct 3, 2016 — Let's look at two absolute commands: Pick up the pen and move it to 50,50 Put down the pen and draw a line to 100,100 Followed by ...
+- [link](https://www.w3schools.com/graphics/svg%5Fpath.asp)\
+  W3Schools\
+  SVG Path - W3Schools\
+  SVG Path - The element is used to define a path. Paths are used to create simple or complex shapes combining several straight or c...
+- [link](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element)\
+  MDN Web Docs\
+  SVG element reference - MDN Web Docs\
+  Jun 7, 2025 — SVG drawings and images are created using a wide array of elements which are dedicated to the construction, drawing, and layout of...
+
+Show all
+
+# . all css props on svg
+
+In modern web development, **SVG presentation attributes** behave like CSS properties. This means you can style them directly in an external stylesheet, a `<style>` block, or via inline styles. [link](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute)
+
+The complete list of CSS properties specifically designed for or supported by SVG elements is categorized below. [link](https://www.w3.org/TR/SVG2/styling.html)
+
+### 🎨 1. Painting & Color Properties
+
+These control the inner fills and outer outlines of SVG shapes.
+
+| Property                  | Description                                                                   | Supported Elements                                  |                                 |
+| ------------------------- | ----------------------------------------------------------------------------- | --------------------------------------------------- | ------------------------------- | ------------ |
+| **`fill`**                | Sets the color, gradient, or pattern of the interior of a shape.              | Shapes (`<rect>`, `<circle>`, `<path>`, etc.), text |                                 |
+| **`fill-opacity`**        | Sets the opacity of the fill color (0 to 1).                                  | Shapes, text                                        |                                 |
+| **`fill-rule`**           | Determines how the "inside" of a complex shape is calculated (`nonzero`       | `evenodd`).                                         | Shapes, text                    |              |
+| **`stroke`**              | Sets the color, gradient, or pattern of the outline.                          | Shapes, text                                        |                                 |
+| **`stroke-opacity`**      | Sets the opacity of the stroke outline (0 to 1).                              | Shapes, text                                        |                                 |
+| **`stroke-width`**        | Sets the thickness of the outline.                                            | Shapes, text                                        |                                 |
+| **`stroke-linecap`**      | Defines the shape used at the end of open subpaths (`butt`                    | `round`                                             | `square`).                      | Shapes, text |
+| **`stroke-linejoin`**     | Defines the shape used at the corners of paths (`miter`                       | `round`                                             | `bevel`).                       | Shapes, text |
+| **`stroke-miterlimit`**   | Limits the distance of a miter joint corner before transitioning to bevel.    | Shapes, text (when `stroke-linejoin="miter"`)       |                                 |
+| **`stroke-dasharray`**    | Creates dashed stroke lines (comma/space-separated values).                   | Shapes, text                                        |                                 |
+| **`stroke-dashoffset`**   | Defines how far into the dash pattern the stroke starts (key for animations). | Shapes, text                                        |                                 |
+| **`color`**               | Primarily provides a fallback color for the `currentColor` variable.          | All SVG elements                                    |                                 |
+| **`color-interpolation`** | Chooses the color space for gradient interpolations (`sRGB`                   | `linearRGB`).                                       | Container and graphics elements |              |
+
+### 📐 2. Geometry Properties (SVG 2+)
+
+In modern CSS, you can manipulate the native dimensions and positioning of SVG elements directly via stylesheets. [link](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute)
+
+| Property                  | Target Element                         | Description                                                       |
+| ------------------------- | -------------------------------------- | ----------------------------------------------------------------- |
+| **`cx`**, **`cy`**        | `<circle>`, `<ellipse>`                | X and Y coordinates for the center point.                         |
+| **`r`**                   | `<circle>`                             | Radius of a circle.                                               |
+| **`rx`**, **`ry`**        | `<rect>`, `<ellipse>`                  | X and Y corner radii (for rounding rectangles).                   |
+| **`x`**, **`y`**          | `<rect>`, `<image>`, `<text>`, `<svg>` | Top-left position coordinates.                                    |
+| **`width`**, **`height`** | `<rect>`, `<image>`, `<svg>`           | Width and height dimensions.                                      |
+| **`d`**                   | `<path>`                               | The literal path geometry data (allows CSS-driven path morphing). |
+
+### 🔤 3. Typography & Text Properties
+
+When using `<text>` and `<tspan>` tags inside an SVG, they accept both standard CSS text properties and SVG-exclusive layout behaviors. [link](https://www.w3.org/TR/SVG2/styling.html)
+
+- **`font`**, **`font-family`**, **`font-size`**, **`font-weight`**, **`font-style`**
+- **`text-anchor`** (`start` | `middle` | `end` — aligns text horizontally relative to its starting point).
+- **`dominant-baseline`** / **`alignment-baseline`** (Aligns text vertically relative to the baseline font grid).
+- **`baseline-shift`** (Used for creating superscripts or subscripts natively).
+- **`letter-spacing`**, **`word-spacing`**, **`text-decoration`**
+- **`writing-mode`** (`lr-tb` | `rl-tb` | `tb-rl` — controls text directionality). [link](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute)
+
+### 🔮 4. Gradients, Markers, & Special Effects
+
+These handle references to structural assets declared within the SVG `<defs>` block. [link](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorials/SVG%5Ffrom%5Fscratch/SVG%5Fand%5FCSS)
+
+- **`stop-color`** / **`stop-opacity`**: Styles the colors and transparency inside `<stop>` elements for linear/radial gradients.
+- **`marker`** / **`marker-start`** / **`marker-mid`** / **`marker-end`**: Attaches marker elements (like arrowheads) to lines, polylines, or paths.
+- **`flood-color`** / **`flood-opacity`**: Defines the solid color area inside filter element containers.
+- **`lighting-color`**: Styles the light source illumination color inside filter nodes. [link](https://www.w3.org/TR/2000/CR-SVG-20001102/styling.html)
+
+### 🖥️ 5. Visibility, Clipping, & Layout
+
+- **`opacity`**: Changes visibility for individual layers, shapes, or entire `<g>` groups.
+- **`visibility`**: Hides an element (`hidden`) while retaining its structural rendering bounds.
+- **`display`**: Removes an element entirely from the render tree (`none`).
+- **`clip-path`** / **`clip-rule`**: Binds a visual vector clipping path mask onto standard geometry elements.
+- **`mask`**: Attaches a transparent masking node onto the parent graphic.
+- **`pointer-events`**: Declares how shapes react to mouse clicks and mouse hovers (`none` ignore clicks; `visiblePainted` captures fill clicks, etc.). [link](https://www.geeksforgeeks.org/css/svg-properties-in-css/)
+
+### 🔄 6. Standard CSS Properties compatible with SVG
+
+SVGs completely support normal modern CSS layout rules for UI interaction: [link](https://stackoverflow.com/questions/23995091/which-svg-properties-can-be-manipulated-using-css3)
+
+- **`transform`**, **`transform-origin`**, **`transform-box`** (Crucial for rotation/scaling animations).
+- **`transition`** & **`animation`** (Works on all SVG fill, stroke, and geometry properties listed above).
+- **`cursor`** (Controls cursor states on hovered shapes). [link](https://css-tricks.com/svg-properties-and-css/)
+
+Are you trying to **animate an icon** (like a stroke-dashoffset animation), build a **reusable icon system** using CSS variables, or fix a layout bug? Let me know your goal and I can write out the specific CSS code snippets you need!
+
+- [link](https://css-tricks.com/svg-properties-and-css/)\
+  CSS-Tricks\
+  SVG Properties in CSS Guide\
+  May 13, 2019 — Let's start with drawing a element in the shape of a triangle. Using the d property will specify the shape of the element: To get ...
+- [link](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute)\
+  MDN Web Docs\
+  SVG Attribute reference - MDN Web Docs\
+  Aug 14, 2026 — SVG presentation attributes are SVG attributes that can also be used as CSS properties on SVG elements. They set CSS property valu...
+- [link](https://stackoverflow.com/questions/23995091/which-svg-properties-can-be-manipulated-using-css3)\
+  Stack Overflow\
+  Which SVG properties can be manipulated using CSS(3)?\
+  Jun 2, 2014 — For example: Can be styled as such: circle { fill-opacity: 0.5; stroke-width: 4; fill: #3080d0; stroke: #3080d0; transition: fill ...
+
+Show all
+
+# . all svg attr
+
+Because SVG handles everything from vector math to complex visual styles and animations, it contains **hundreds of attributes**. To make this massive list usable, they are broken down below by their functional category. [link](https://www.w3.org/TR/SVG11/attindex.html)
+
+***
+
+### 📐 Geometry & Positioning Attributes
+
+These control the size, shape, coordinates, and physical layout of your vector artwork. [link](https://www.youtube.com/watch?v=kBT90nwUb%5Fo\&t=296)
+
+- **`x` / `y`**: Starting horizontal and vertical coordinates.
+- **`width` / `height`**: Dimensions of the element or viewport.
+- **`cx` / `cy`**: Center X and Center Y coordinates (used for `<circle>` and `<ellipse>`).
+- **`r`**: Radius of a circle.
+- **`rx` / `ry`**: Horizontal and vertical radii for ellipses or rounded rectangles.
+- **`x1` / `y1` / `x2` / `y2`**: Starting and ending coordinates for a `<line>`.
+- **`d`**: The path data string (commands like `M`, `L`, `C`, `Z`) that defines complex custom paths.
+- **`points`**: A list of coordinates defining a `<polygon>` or `<polyline>`.
+- **`viewBox`**: Defines the internal coordinate system aspect ratio and bounds (`min-x min-y width height`). [link](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/viewBox)
+
+***
+
+### 🎨 Presentation & Styling Attributes
+
+These modify the visual look of vector paths. In modern web standards (SVG 2), almost all of these can also be manipulated via CSS. [link](https://css-tricks.com/svg-properties-and-css/)
+
+#### Fills and Strokes
+
+- **`fill`**: Sets the interior color, gradient, or pattern of a shape.
+- **`fill-opacity` / `fill-rule`**: Sets fill transparency and mathematical boundary rules.
+- **`stroke`**: Sets the outline color of a shape.
+- **`stroke-width`**: Sets the thickness of the outline.
+- **`stroke-opacity`**: Adjusts outline transparency.
+- **`stroke-linecap`**: Caps line ends (`butt`, `round`, `square`).
+- **`stroke-linejoin`**: Sets corner styles where lines intersect (`miter`, `round`, `bevel`).
+- **`stroke-dasharray` / `stroke-dashoffset`**: Creates dashed lines and offsets them (crucial for line-drawing animations). [link](https://oreillymedia.github.io/Using%5FSVG/guide/markup.html)
+
+#### Graphic Control
+
+- **`opacity`**: Controls overall element transparency.
+- **`visibility` / `display`**: Hides or shows graphics.
+- **`clip-path` / `mask`**: Binds the element to a clipping boundary or transparency mask.
+- **`transform`**: Shifts, rotates, scales, or skews elements (`translate()`, `rotate()`, `scale()`). [link](https://www.w3.org/TR/SVG11/struct.html)
+
+***
+
+### 🔤 Typography (Text) Attributes
+
+Specific to `<text>`, `<tspan>`, and `<textPath>` elements to control layout and rendering. [link](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/text)
+
+- **`font-family` / `font-size` / `font-weight` / `font-style`**: Mimics standard CSS text formatting.
+- **`text-anchor`**: Aligns text relative to its starting coordinates (`start`, `middle`, `end`).
+- **`dx` / `dy`**: Shifts text positions subtly along the X or Y axes.
+- **`textLength` / `lengthAdjust`**: Compresses or expands text to fit a set width.
+- **`startOffset`**: Determines the starting point of text along a track in a `<textPath>`. [link](https://www.youtube.com/watch?v=LTy156GtpHg\&t=151)
+
+***
+
+### 🎬 Animation Attributes
+
+Used inside SMIL animation tags like `<animate>`, `<animateTransform>`, and `<animateMotion>`. [link](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element)
+
+- **`attributeName`**: Specifies which attribute to animate (e.g., `fill` or `cx`).
+- **`from` / `to` / `by`**: The starting, ending, or incremental value of the animation.
+- **`values`**: A semicolon-separated list of transition stages over time.
+- **`dur` / `begin` / `end`**: Animation timing loops and boundaries.
+- **`repeatCount` / `repeatDur`**: Sets loop repetitions or durations.
+- **`calcMode` / `keyTimes` / `keySplines`**: Controls easing curves and frame pacing. [link](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute)
+
+***
+
+### 🔬 Filter Primitive Attributes
+
+Used inside filter operations (like `<feGaussianBlur>` or `<feColorMatrix>`) to create graphic effects. [link](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/values)
+
+- **`in` / `in2`**: Identifies the inputs for a filter blend (e.g., `SourceGraphic`).
+- **`result`**: Names the current filter layer output so another layer can use it.
+- **`stdDeviation`**: Controls the blur radius for a Gaussian blur.
+- **`type` / `values`**: Maps calculations for color matrices.
+- **`dx` / `dy`**: Sets offsets for drop shadows. [link](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/type)
+
+***
+
+### 🌐 Global & Core Attributes
+
+Attributes that can safely sit on almost any SVG tag for code linking, semantic access, or custom styling. [link](https://github.com/mdn/content/issues/41747)
+
+- **`id`**: Unique identifier for targeting via JavaScript, CSS, or internal reuse (`<use>`).
+- **`class`**: CSS class hook.
+- **`style`**: Inline CSS declaration rules.
+- **`href` / `xlink:href`**: Identifies asset links or resources (like image paths or target references).
+- **`xmlns`**: Defines the XML namespace (required for standalone files: `http://www.w3.org/2000/svg`).
+- **`data-*`**: Custom data spaces for passing variables straight to scripts. [link](https://www.geeksforgeeks.org/html/svg-attribute-complete-reference/)
+
+For a exhaustive dictionary detailing niche components or deprecated items, check the official [W3C SVG Attribute Index](https://www.w3.org/TR/SVG/attindex.html) or browse alphabetical definitions on the [MDN SVG Attribute Reference](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute).
+
+Are you trying to solve a specific problem, like **building an animation**, **scaling a viewport with viewBox**, or **styling via CSS**? Let me know and I can provide clean code templates.
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/viewBox)\
+  MDN Web Docs\
+  viewBox - SVG - MDN Web Docs\
+  Apr 7, 2026 — The viewBox attribute defines the position and dimension, in user space, of an SVG viewport. The value of the viewBox attribute is...
+- [link](https://www.w3.org/TR/SVG11/attindex.html)\
+  W3C\
+  Attribute Index – SVG 1.1 (Second Edition)\
+  M. 1 Regular attributes The following table lists all of the attributes defined in the SVG language, except for the presentation a...
+- [link](https://www.youtube.com/watch?v=kBT90nwUb%5Fo\&t=296)\
+  YouTube·Hunor Márton Borbély\
+  Learn SVG through 24 examples\
+  Dec 12, 2020 — Learn SVG through 24 examples or you can just make a guess then adjust your values till it looks good this is the reason why proba...\
+  1m
+
+Show all
+
 # npm libs like matplotlib
 
 If you are looking for **npm packages that offer data visualization and plotting** capabilities similar to Python's **Matplotlib**, several excellent JavaScript and Node.js alternatives exist.
@@ -6409,4 +6756,201 @@ Are you currently trying to **bring an SVG shape to the front on hover/click**, 
 
 Show all
 
+
+
+# all svg attr
+
+Because SVG handles everything from vector math to complex visual styles and animations, it contains **hundreds of attributes**. To make this massive list usable, they are broken down below by their functional category. [link](https://www.w3.org/TR/SVG11/attindex.html)
+
+***
+
+### 📐 Geometry & Positioning Attributes
+
+These control the size, shape, coordinates, and physical layout of your vector artwork. [link](https://www.youtube.com/watch?v=kBT90nwUb%5Fo\&t=296)
+
+- **`x` / `y`**: Starting horizontal and vertical coordinates.
+- **`width` / `height`**: Dimensions of the element or viewport.
+- **`cx` / `cy`**: Center X and Center Y coordinates (used for `<circle>` and `<ellipse>`).
+- **`r`**: Radius of a circle.
+- **`rx` / `ry`**: Horizontal and vertical radii for ellipses or rounded rectangles.
+- **`x1` / `y1` / `x2` / `y2`**: Starting and ending coordinates for a `<line>`.
+- **`d`**: The path data string (commands like `M`, `L`, `C`, `Z`) that defines complex custom paths.
+- **`points`**: A list of coordinates defining a `<polygon>` or `<polyline>`.
+- **`viewBox`**: Defines the internal coordinate system aspect ratio and bounds (`min-x min-y width height`). [link](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/viewBox)
+
+***
+
+### 🎨 Presentation & Styling Attributes
+
+These modify the visual look of vector paths. In modern web standards (SVG 2), almost all of these can also be manipulated via CSS. [link](https://css-tricks.com/svg-properties-and-css/)
+
+#### Fills and Strokes
+
+- **`fill`**: Sets the interior color, gradient, or pattern of a shape.
+- **`fill-opacity` / `fill-rule`**: Sets fill transparency and mathematical boundary rules.
+- **`stroke`**: Sets the outline color of a shape.
+- **`stroke-width`**: Sets the thickness of the outline.
+- **`stroke-opacity`**: Adjusts outline transparency.
+- **`stroke-linecap`**: Caps line ends (`butt`, `round`, `square`).
+- **`stroke-linejoin`**: Sets corner styles where lines intersect (`miter`, `round`, `bevel`).
+- **`stroke-dasharray` / `stroke-dashoffset`**: Creates dashed lines and offsets them (crucial for line-drawing animations). [link](https://oreillymedia.github.io/Using%5FSVG/guide/markup.html)
+
+#### Graphic Control
+
+- **`opacity`**: Controls overall element transparency.
+- **`visibility` / `display`**: Hides or shows graphics.
+- **`clip-path` / `mask`**: Binds the element to a clipping boundary or transparency mask.
+- **`transform`**: Shifts, rotates, scales, or skews elements (`translate()`, `rotate()`, `scale()`). [link](https://www.w3.org/TR/SVG11/struct.html)
+
+***
+
+### 🔤 Typography (Text) Attributes
+
+Specific to `<text>`, `<tspan>`, and `<textPath>` elements to control layout and rendering. [link](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/text)
+
+- **`font-family` / `font-size` / `font-weight` / `font-style`**: Mimics standard CSS text formatting.
+- **`text-anchor`**: Aligns text relative to its starting coordinates (`start`, `middle`, `end`).
+- **`dx` / `dy`**: Shifts text positions subtly along the X or Y axes.
+- **`textLength` / `lengthAdjust`**: Compresses or expands text to fit a set width.
+- **`startOffset`**: Determines the starting point of text along a track in a `<textPath>`. [link](https://www.youtube.com/watch?v=LTy156GtpHg\&t=151)
+
+***
+
+### 🎬 Animation Attributes
+
+Used inside SMIL animation tags like `<animate>`, `<animateTransform>`, and `<animateMotion>`. [link](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element)
+
+- **`attributeName`**: Specifies which attribute to animate (e.g., `fill` or `cx`).
+- **`from` / `to` / `by`**: The starting, ending, or incremental value of the animation.
+- **`values`**: A semicolon-separated list of transition stages over time.
+- **`dur` / `begin` / `end`**: Animation timing loops and boundaries.
+- **`repeatCount` / `repeatDur`**: Sets loop repetitions or durations.
+- **`calcMode` / `keyTimes` / `keySplines`**: Controls easing curves and frame pacing. [link](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute)
+
+***
+
+### 🔬 Filter Primitive Attributes
+
+Used inside filter operations (like `<feGaussianBlur>` or `<feColorMatrix>`) to create graphic effects. [link](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/values)
+
+- **`in` / `in2`**: Identifies the inputs for a filter blend (e.g., `SourceGraphic`).
+- **`result`**: Names the current filter layer output so another layer can use it.
+- **`stdDeviation`**: Controls the blur radius for a Gaussian blur.
+- **`type` / `values`**: Maps calculations for color matrices.
+- **`dx` / `dy`**: Sets offsets for drop shadows. [link](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/type)
+
+***
+
+### 🌐 Global & Core Attributes
+
+Attributes that can safely sit on almost any SVG tag for code linking, semantic access, or custom styling. [link](https://github.com/mdn/content/issues/41747)
+
+- **`id`**: Unique identifier for targeting via JavaScript, CSS, or internal reuse (`<use>`).
+- **`class`**: CSS class hook.
+- **`style`**: Inline CSS declaration rules.
+- **`href` / `xlink:href`**: Identifies asset links or resources (like image paths or target references).
+- **`xmlns`**: Defines the XML namespace (required for standalone files: `http://www.w3.org/2000/svg`).
+- **`data-*`**: Custom data spaces for passing variables straight to scripts. [link](https://www.geeksforgeeks.org/html/svg-attribute-complete-reference/)
+
+For a exhaustive dictionary detailing niche components or deprecated items, check the official [W3C SVG Attribute Index](https://www.w3.org/TR/SVG/attindex.html) or browse alphabetical definitions on the [MDN SVG Attribute Reference](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute).
+
+Are you trying to solve a specific problem, like **building an animation**, **scaling a viewport with viewBox**, or **styling via CSS**? Let me know and I can provide clean code templates.
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/viewBox)\
+  MDN Web Docs\
+  viewBox - SVG - MDN Web Docs\
+  Apr 7, 2026 — The viewBox attribute defines the position and dimension, in user space, of an SVG viewport. The value of the viewBox attribute is...
+- [link](https://www.w3.org/TR/SVG11/attindex.html)\
+  W3C\
+  Attribute Index – SVG 1.1 (Second Edition)\
+  M. 1 Regular attributes The following table lists all of the attributes defined in the SVG language, except for the presentation a...
+- [link](https://www.youtube.com/watch?v=kBT90nwUb%5Fo\&t=296)\
+  YouTube·Hunor Márton Borbély\
+  Learn SVG through 24 examples\
+  Dec 12, 2020 — Learn SVG through 24 examples or you can just make a guess then adjust your values till it looks good this is the reason why proba...\
+  1m
+
+Show all
+
+# how to set border radius in svg
+
+To set a border radius in SVG, you use the **`rx` and `ry` attributes** directly on shapes like the `<rect>` element, or apply standard CSS **`border-radius`** to the outer `<svg>` container. [link](https://stackoverflow.com/questions/71161341/how-to-add-border-radius-on-svg-path-javacsript)
+
+Unlike normal HTML elements, internal SVG elements (like `<path>`, `<polygon>`, or `<circle>`) do not support the CSS `border-radius` property. [link](https://stackoverflow.com/questions/10177985/svg-rounded-corner)
+
+Here are the standard methods to achieve rounded corners in SVG depending on your specific use case:
+
+***
+
+### 1. Rounding Corners on SVG Rectangles
+
+To round the corners of an SVG `<rect>` element, use the `rx` (x-axis radius) and `ry` (y-axis radius) attributes. If you only specify `rx`, `ry` will automatically default to the same value. [link](https://www.reddit.com/r/GraphicsProgramming/comments/xpm5fu/implementing%5Fsvg%5Frounded%5Frectangle%5Fcorners%5Fwith/)
+
+xml
+
+```
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Equal rounding on all corners -->
+  <rect x="20" y="20" width="160" height="160" rx="15" fill="skyblue" />
+</svg>
+```
+
+Use code with caution.
+
+### 2. Rounding the Outer SVG Container (Using CSS)
+
+If you want the entire SVG canvas wrapper to have rounded corners, you can treat the `<svg>` element like any other standard HTML block and apply CSS via an inline `style` attribute or an external stylesheet. [link](https://stackoverflow.com/questions/71036050/rounding-the-corners-of-an-svg)
+
+_Note: You must also use `overflow: hidden;` so the inner contents don't bleed out of the rounded edges._ [link](https://www.youtube.com/watch?v=W-YYzsJytsQ)
+
+xml
+
+```
+<svg style="border-radius: 20px; overflow: hidden;" width="200" height="200">
+  <rect width="100%" height="100%" fill="coral" />
+</svg>
+```
+
+Use code with caution.
+
+### 3. Rounding Stroke Intersections (Borders)
+
+If your element has a outline border (`stroke`) and you want the connecting lines or sharp joints to look smooth and curved, add the **`stroke-linejoin="round"`** or **`stroke-linecap="round"`** attributes. [link](https://stackoverflow.com/questions/58925105/svg-how-to-round-stroke-and-rectangle-corners)
+
+xml
+
+```
+<svg width="200" height="200">
+  <!-- stroke-linejoin rounds the corners where two lines meet -->
+  <polygon points="50,20 150,60 100,180"
+           stroke="black" stroke-width="8" fill="none"
+           stroke-linejoin="round" />
+</svg>
+```
+
+Use code with caution.
+
+### 4. Advanced: Rounding Specific Elements or Single Corners
+
+Because SVG elements do not natively support individual corner rules (like CSS `border-top-left-radius`), you have two alternatives for custom shapes: [link](https://stackoverflow.com/questions/8687693/svg-css-rounded-corner-not-working)
+
+- **Use a `<path>` with Arc Commands:** You can manually program the curvature by using an elliptical arc (`A` or `a`) command inside a W3C SVG Path.
+- **Use a CSS Mask / Clip-Path:** Tie the SVG element to a structural CSS clipping profile. [link](https://stackoverflow.com/questions/52079356/svg-path-border-radius)
+
+What kind of **SVG element** (e.g., a background rectangle, an external image icon, or a custom drawn path) are you trying to apply the border radius to?
+
+- [link](https://stackoverflow.com/questions/10177985/svg-rounded-corner)\
+  Stack Overflow\
+  SVG rounded corner - Stack Overflow\
+  Apr 16, 2012 — 4 Comments. ... stroke-linecap="round" is as easy as good. I don't know why there's no answer with it :) ... I've happened upon th...
+- [link](https://stackoverflow.com/questions/8687693/svg-css-rounded-corner-not-working)\
+  Stack Overflow\
+  svg css rounded corner not working - Stack Overflow\
+  Dec 31, 2011 — \* 2 Answers. Sorted by: rx and ry are regular attributes rather than presentation attributes. Only presentation attributes can be ...
+- [link](https://stackoverflow.com/questions/71161341/how-to-add-border-radius-on-svg-path-javacsript)\
+  Stack Overflow\
+  how to add border radius on SVG path (javacsript) \[duplicate]\
+  Feb 17, 2022 — You can't apply a border radius to a element. However, you can set a border radius for primitives. You can define the border radiu...
+
+Show all
 
