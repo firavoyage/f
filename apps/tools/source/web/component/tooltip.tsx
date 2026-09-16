@@ -35,7 +35,7 @@ export function Tooltip(props: tooltip) {
 
   return (
     open &&
-    <Dropdown {...p({ ref, align: 'center' })}>
+    <Dropdown {...p({ anchor: ref, align: 'center' })}>
       <span className="tooltip" {...p({ open })}>
         {tooltip}
       </span>
