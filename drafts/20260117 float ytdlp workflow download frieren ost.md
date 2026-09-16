@@ -18,6 +18,39 @@ dl \
 ```
 
 ```sh
+name='Vocaloid Focus'
+
+dl \
+  "https://music.youtube.com/playlist?list=RDCLAK5uy_nl-gAS0m9H2MjspboXM4PXqgT74aeNnYs" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --reject-title "(?i)inst" \
+  -o "Music/$name/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s" \
+  --match-filters "view_count > 100000"
+```
+
+```sh
+name='Vocaloid Big Hits'
+
+dl \
+  "https://music.youtube.com/playlist?list=RDCLAK5uy_mgu07-HoqLSU-WqjK2ldEQWLuPPm3CAy8" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --reject-title "(?i)inst" \
+  -o "Music/$name/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s" \
+  --match-filters "view_count > 100000"
+```
+
+```sh
+name='Vocaloid Hits'
+
+dl \
+  "https://music.youtube.com/playlist?list=RDCLAK5uy_l5aa8m8-BDq-dxZGCowwrPv-VDFxSa2pM" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --reject-title "(?i)inst" \
+  -o "Music/$name/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s" \
+  --match-filters "view_count > 100000"
+```
+
+```sh
 name='Vocaloid 2022'
 
 dl \

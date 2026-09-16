@@ -289,12 +289,6 @@ c
 
 ---
 
-component/select: support arrow keys and keyboard trap.
-
-close (or loop back) when tab after the last item or shift tab before the first item
-
----
-
 component/graph: fix z index in svg w portal
 
 ---
