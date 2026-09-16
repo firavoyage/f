@@ -330,6 +330,7 @@ web: <!-- frontend, web, ts/js -->
 - component commands fuzzy search
 - web lib use keyboard shortcuts system hotkeys leave site prompt
 - devtools hide tabs disable react devtools
+- favicon
 
 backend:
 

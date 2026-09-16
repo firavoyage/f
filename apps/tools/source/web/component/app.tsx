@@ -202,6 +202,7 @@ export function App() {
 
   return <>
     <title>Tools</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg"></link>
 
     <div className="app">
       <Sidebar>

@@ -835,3 +835,528 @@ For developers, the console acts as an unalterable **audit log** of the applicat
 
 Are you building an **application, extension, or library** where seeing this message impacts your users, or are you looking for a way to suppress it during **automated testing**?
 
+# . commands
+
+```
+cd /home/fira/Documents/f/apps/tools/source/web/node_modules/react-dom/
+rg 'Download the React DevTool'
+```
+
+interesting. it shuts up completely. just delete two code blocks.
+
+so easy.
+
+---
+
+```js
+      var protocol = window.location.protocol;
+      /^(https?|file):$/.test(protocol) &&
+        console.info(
+          "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools" +
+            ("file:" === protocol
+              ? "\nYou might need to use a local HTTP server (instead of file://): https://react.dev/link/react-devtools-faq"
+              : ""),
+          "font-weight:bold"
+        );
+```
+
+also, it uses info instead of log.
+
+i may silence info completely.
+
+(only my own logs matter. i never use anything other than log.)
+
+---
+
+```html
+  <script>
+    console.info = () => {}
+  </script>
+```
+
+add this to html head.
+
+# what will happen if i turn off react devtools
+
+If you turn off **React DevTools**, <mark><strong>your React website or application will continue to work perfectly fine</strong>, but you will lose the ability to inspect its internal state and performance through your browser extension</mark>. [link](https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?gl=us)
+
+How this impacts you depends entirely on whether you are **developing an app** or **just browsing the web**:
+
+### If you are a Developer (Building a React App)
+
+- **Loss of "Components" and "Profiler" tabs:** You will no longer see the custom React tabs in your browser's inspect panel. You won't be able to easily view component hierarchies, inspect hooks, or dynamically edit props and state. [link](https://stackoverflow.com/questions/53164064/what-changes-to-a-component-state-can-i-make-using-react-devtools)
+- **No performance profiling:** You will lose the ability to record performance data or highlight component re-renders to catch performance bottlenecks. [link](https://reactnative.dev/docs/react-native-devtools)
+- **Standard DevTools still work:** Your standard browser Developer Tools (Console, Elements, Network, Sources) will remain completely unaffected. You can still debug vanilla JavaScript and HTML/CSS. [link](https://www.reddit.com/r/reactjs/comments/cx1gn5/question%5Fis%5Fit%5Fpossible%5Fto%5Fhide%5Fcomponents%5Ffrom/)
+
+### If you are a Regular User (Browsing the Web)
+
+- **Absolutely nothing changes:** React DevTools is purely a debugging extension. Turning it off will have no visible impact on the performance, layout, or interactivity of the websites you visit. [link](https://www.reddit.com/r/react/comments/wtbfvy/is%5Fgood%5Fpractice%5Fto%5Fdisable%5Fredux%5Fdevtools%5Fin/)
+- **Slight browser optimization:** Disabling the extension stops it from actively injecting global hooks into every page you visit to look for React. This saves a tiny amount of browser memory and CPU overhead. [link](https://stackoverflow.com/questions/66383735/how-to-disable-loading-react-devtools-backend-script)
+
+***
+
+_(Note: If you are looking to explicitly **disable** React DevTools on your production website so that other users cannot easily look at your component tree, you can do so by injecting `window.__REACT_DEVTOOLS_GLOBAL_HOOK__.inject = function() {};` at the very top of your application script before React loads.)_ [link](https://stackoverflow.com/questions/49906967/prevent-react-dev-tools-from-changing-props-state)
+
+Are you asking because you want to **uninstall the browser extension** to clean up your browser, or are you a developer trying to **hide your app's state and structure** from users in production?
+
+- [link](https://stackoverflow.com/questions/66383735/how-to-disable-loading-react-devtools-backend-script)\
+  Stack Overflow\
+  How to disable loading React Devtools Backend script\
+  Feb 26, 2021 — const disableReactDevTools = (): void => { const noop = (): void => undefined; const DEV\_TOOLS = (window as any). \_\_REACT\_DEVTOOLS...
+- [link](https://www.reddit.com/r/react/comments/wtbfvy/is%5Fgood%5Fpractice%5Fto%5Fdisable%5Fredux%5Fdevtools%5Fin/)\
+  Reddit\
+  Is good practice to disable redux DevTools in production\
+  Aug 20, 2022 — According to some, it's best practice to disable anything meant for debugging or development in production. This includes devtools...
+- [link](https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?gl=us)\
+  Chrome Web Store\
+  React Developer Tools - Chrome Web Store\
+  React Developer Tools is a Chrome DevTools extension for the open-source React JavaScript library. It allows you to inspect the Re...
+
+Show all
+
+## will it impact hmr
+
+**No, turning off React DevTools will not impact Hot Module Replacement (HMR).**
+
+**HMR** is entirely controlled by your development build tools (like **Vite**, **Webpack**, or **Turbopack**) and your project's local development server. It runs independently of any browser extensions.
+
+Here is a quick breakdown of how they differ:
+
+- **Hot Module Replacement (HMR):** Runs on your **local machine**. It watches your source files for changes, compiles only the modified code, and pushes that specific update straight to your running browser tab so you don't have to refresh the whole page.
+- **React DevTools:** Runs inside your **browser extension architecture**. It simply reads data from the React application after it has already loaded in the browser.
+
+Even with the DevTools extension completely uninstalled, your code changes will still instantly reflect in the browser via HMR. However, when HMR updates your components, you will no longer be able to use the DevTools panel to see how those updates changed the component's internal state.
+
+Are you experiencing an issue where **HMR is failing to update** your page, or are your component states **resetting unexpectedly** during a change? Let me know what build tool you are using (like **Vite** or **Next.js**) so I can help you troubleshoot.
+
+AI responses may include mistakes. For financial advice, consult a professional. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
+
+## does hmr rely on window. react global hook
+
+<mark><span>Yes,<span> </span></span><strong>React's modern HMR system (Fast Refresh) absolutely relies on<span> </span><code dir="ltr">window.**REACT\_DEVTOOLS\_GLOBAL\_HOOK**</code></strong></mark>. [link](https://github.com/react/react/issues/37410)
+
+This might seem surprising given that HMR is a bundler feature, but **React Fast Refresh explicitly hijacks that global hook** to communicate with React internals. [link](https://dev.to/leapcell/beyond-hmr-understanding-reacts-fast-refresh-13h8)
+
+If you completely strip, block, or corrupt that hook object, **Fast Refresh will break, and your component state will be lost on every save** (falling back to a full page reload). [link](https://stackoverflow.com/questions/55508695/how-to-enable-hmr-when-cra2-and-redux-are-used)
+
+Here is exactly how it works under the hood and why it doesn't break when you just turn off the extension.
+
+### 1. How Fast Refresh Uses the Hook
+
+To update code _without_ wiping out your state (like `useState` values), the bundler's dev runtime (`react-refresh/runtime`) needs a way to find React's inner reconciliation engine. [link](https://leapcell.io/blog/react-fast-refresh)
+
+Instead of creating a brand new communication bridge, the React team reused the existing infrastructure built for the DevTools extension. When your dev server starts up, `react-refresh` runs this code immediately:
+
+javascript
+
+```
+const runtime = require('react-refresh/runtime');
+runtime.injectIntoGlobalHook(window); // <-- Attaches to the global hook
+```
+
+Use code with caution.
+
+If the browser extension is missing or disabled, **`react-refresh` creates a hidden, synthetic fallback object** at `window.__REACT_DEVTOOLS_GLOBAL_HOOK__`. It uses this dummy hook to listen for when React DOM loads, registers itself, and captures the hooks/components it needs to hot-reload dynamically. [link](https://github.com/react/react/issues/37410)
+
+### 2. Why Disabling the Extension Doesn't Break HMR
+
+- **When you turn off the DevTools extension:** The extension stops populating `window.__REACT_DEVTOOLS_GLOBAL_HOOK__`. Your bundler notices it is missing, safely initializes its own synthetic version of the hook, and Fast Refresh continues working perfectly. [link](https://github.com/react/react/issues/37410)
+- **When you aggressively block the hook:** If you inject a script that completely locks down or deletes the property (e.g., `Object.defineProperty(window, '__REACT_DEVTOOLS_GLOBAL_HOOK__', { value: null })`), Fast Refresh will throw a console warning ("_Something has shimmed the React DevTools global hook... Fast Refresh is not compatible_") and will shut down entirely. [link](https://github.com/react/react/issues/20117)
+
+### Summary of What Happens
+
+| Scenario                    | DevTools Extension Status | `__REACT_DEVTOOLS_GLOBAL_HOOK__` | State-preserving HMR?            |
+| --------------------------- | ------------------------- | -------------------------------- | -------------------------------- |
+| **Normal Dev Env**          | Enabled                   | Provided by Extension            | **Works** ✅                     |
+| **Extension Turned Off**    | Disabled / Uninstalled    | Handled by Bundler Fallback      | **Works** ✅                     |
+| **Force-Disabled via Code** | Disabled / Overridden     | Blocked / Broken                 | **Breaks** ❌ (Full page reload) |
+
+Are you currently writing a script to **disable DevTools in production** and worried it might bleed into your development workflow, or are you trying to debug an **HMR warning** in your console? Let me know so we can fix it!
+
+- [link](https://dev.to/leapcell/beyond-hmr-understanding-reacts-fast-refresh-13h8)\
+  DEV Community\
+  Beyond HMR: Understanding React's Fast Refresh\
+  Feb 18, 2025 — Implementation Details. To achieve finer-grained updates than HMR (module-level) and React Hot Loader (limited component-level), w...
+- [link](https://stackoverflow.com/questions/55508695/how-to-enable-hmr-when-cra2-and-redux-are-used)\
+  Stack Overflow\
+  How to enable HMR when CRA2 and redux are used?\
+  Apr 4, 2019 — 1 Answer. ... What is the difference between react-hot-loader and usual HMR? Can I have hot module replacement (at least for css) ...
+- [link](https://leapcell.io/blog/react-fast-refresh)\
+  Leapcell\
+  React Fast Refresh: Next-Gen Hot Reloading Explained - Leapcell\
+  Feb 18, 2025 — HMR Workflow \* Inject the runtime into the application before loading React: const runtime = require('react-refresh/runtime'); run...
+
+Show all
+
+## how to silence the react devtools marketing log
+
+To silence the annoying `Download the React DevTools for a better development experience...` message in your console, you can use one of a few methods. [link](https://stackoverflow.com/questions/74409622/how-to-hide-download-the-react-devtools-for-a-better-development-experience)
+
+Because **HMR / Fast Refresh relies on the global hook** to maintain state, we have to be careful not to completely break the hook while silencing the message.
+
+Here are the safest ways to mute the log depending on your setup:
+
+### 1. The Frontend Code Fix (Safest for Local Projects)
+
+You can intercept the global hook right before React loads and pass an `isDisabled: true` property. This stops React from printing the log but **still allows its hidden fallback code to mount safely so HMR won't break**. [link](https://stackoverflow.com/questions/74409622/how-to-hide-download-the-react-devtools-for-a-better-development-experience)
+
+Add this script to the very top of your main **HTML entry file** (e.g., `index.html` or `_document.js`), **above** any bundled JavaScript tags:
+
+html
+
+```
+<script>
+  window.__REACT_DEVTOOLS_GLOBAL_HOOK__ = { isDisabled: true };
+</script>
+```
+
+Use code with caution.
+
+### 2. The Webpack/Vite Compiler Fix (Cleanest)
+
+If you don't want to modify your HTML file manually, you can tell your bundler to inject the object during compilation. [link](https://stackoverflow.com/questions/42196819/disable-hide-download-the-react-devtools)
+
+- **For Vite (`vite.config.js`):**\
+  javascript
+
+<!---->
+
+```
+export default defineConfig({
+  define: {
+    'window.__REACT_DEVTOOLS_GLOBAL_HOOK__': '({ isDisabled: true })'
+  }
+})
+```
+
+Use code with caution.
+
+- **For Webpack (`webpack.config.js`):**\
+  javascript
+
+<!---->
+
+```
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.DefinePlugin({
+      'window.__REACT_DEVTOOLS_GLOBAL_HOOK__': '({ isDisabled: true })'
+    })
+  ]
+};
+```
+
+Use code with caution.
+
+### 3. The Console Proxy Fix (Zero-Config Code Solution)
+
+If you want to silence the log purely via JS without touching your bundler configs or global React properties, you can create a proxy over `console.info` to silently catch and ignore the message.
+
+Place this code at the **absolute first line** of your application's `index.js` or `main.js`:
+
+javascript
+
+```
+try {
+  console.info = new Proxy(console.info, {
+    apply: (target, thisArg, args) => {
+      if (args?.[0]?.includes?.("React DevTools")) return; // Drop the message safely
+      return Reflect.apply(target, thisArg, args);
+    },
+  });
+} catch {}
+```
+
+Use code with caution.
+
+### 4. The Browser-Only Fix (No Code Required)
+
+If you want to get rid of the log on your end without pushing code to your repository, you can filter it out inside your Chrome/Firefox console settings:
+
+1. Open your browser DevTools Console.
+2. In the **Filter** bar, type: `-React DevTools`
+3. This tells your browser console to show everything _except_ lines containing that text string.
+
+Which environment are you looking to fix this for? Let me know if you are using a specific framework like **Next.js** or **Remix** so I can give you the exact file path where you should paste the code.
+
+- [link](https://stackoverflow.com/questions/74409622/how-to-hide-download-the-react-devtools-for-a-better-development-experience)\
+  Stack Overflow\
+  How to hide "Download the React DevTools for a better development experience:"\
+  Nov 12, 2022 — You can try these steps to hide the message: \* \*\*If you are using React+Vite\*\* 1. Go to the file location: "node\_modules/.vite\dep...
+- [link](https://stackoverflow.com/questions/42196819/disable-hide-download-the-react-devtools)\
+  Stack Overflow\
+  Disable/Hide "Download the React DevTools..." - Stack Overflow\
+  Feb 13, 2017 — 6 Answers Sorted by: 33 As of React 16.2.0, you can add a line like this to your webpack configuration: new webpack. DefinePlugin(
+- [link](https://github.com/react/react/issues/24283?timeline%5Fpage=1)\
+  github.com\
+  Suppress "Download the React DevTools" log for a better ...\
+  Apr 6, 2022 — One can proxy console.info and filter the message. Just needs to be done early enough, like in an inline script in HTML. try { con...
+
+## how to hijack the node module itself
+
+If you want to "hijack" or modify how a node module behaves locally—such as removing a specific log or fixing an internal function without breaking your app's dependencies—you can do this via code manipulation or developer workflow tools.
+
+Directly editing files inside the `node_modules/` folder works temporarily, but your changes will be completely erased the next time you or a teammate runs `npm install`. [link](https://stackoverflow.com/questions/55694871/how-to-override-file-or-function-inside-node-modules)
+
+To make a permanent change, use one of the standard engineering approaches below:
+
+### 1. The Prototyping Approach: Runtime Monkey Patching
+
+If you want to alter the behavior of a dependency directly in your application code at runtime without modifying its physical files, you can "monkey patch" it. You do this by importing the module at the top of your entry file, saving its original function, and overriding it: [link](https://www.geeksforgeeks.org/node-js/how-to-override-functions-of-module-in-node-js/)
+
+javascript
+
+```
+// At the absolute top of index.js / main.js
+import someModule from 'some-package';
+
+// Save the original behavior
+const originalMethod = someModule.targetMethod;
+
+// Hijack and override it
+someModule.targetMethod = function(...args) {
+  console.log("Intercepted call with args:", args);
+
+  // Conditionally change the behavior or call the original
+  return originalMethod.apply(this, args);
+};
+```
+
+Use code with caution.
+
+### 2. The Clean Local Fix: `patch-package` (Recommended)
+
+If you need to change the physical source code of a dependency (like manually stripping out a log statement from `react-dom` or another framework library) and keep those changes saved in your git repository, use **`patch-package`**. [link](https://stackoverflow.com/questions/55694871/how-to-override-file-or-function-inside-node-modules)
+
+1. **Install the utility:**\
+   bash
+
+<!---->
+
+```
+npm install patch-package --save-dev
+```
+
+Use code with caution.
+2\. **Modify the code:** Go inside `node_modules/react-dom/` (or whichever package you want to change) and edit the files directly to remove or change the code you want.
+3\. **Generate the patch:** Run the command targeting that package:\
+bash
+
+```
+npx patch-package react-dom
+```
+
+Use code with caution.\
+This creates a `.patch` file in a root folder called `/patches`.
+4\. **Automate it:** Add the following to your `package.json` so the patch is reapplied every time anyone runs `npm install`:\
+json
+
+```
+"scripts": {
+  "postinstall": "patch-package"
+}
+```
+
+Use code with caution.\
+[link](https://stackoverflow.com/questions/42196819/disable-hide-download-the-react-devtools)
+
+### 3. The Structural Approach: Forking the Module
+
+If the modifications you need to make are extensive, the industry standard approach is to host your own version of the package. [link](https://stackoverflow.com/questions/52001366/can-i-modify-a-package-from-node-modules)
+
+1. Go to the package's open-source repository (e.g., on GitHub) and click **Fork**.
+
+2. Clone your fork locally, make your code changes, and push them to your repository.
+
+3. Update your project's `package.json` to point directly to your hijacked repository instead of the public registry:\
+   json
+
+<!---->
+
+```
+"dependencies": {
+  "some-package": "git+https://github.com"
+}
+```
+
+Use code with caution.\
+[link](https://stackoverflow.com/questions/71273304/how-to-override-function-declared-in-npm-package)
+
+### 4. The Local Workspace Solution: `npm link`
+
+If you are modifying a module that you also own or want to test locally across two different folders on your machine, you can create a symlink so that changes in your module's folder instantly apply to your main app. [link](https://www.reddit.com/r/reactjs/comments/d6bmy0/cra%5Fhow%5Fto%5Fmodify%5Fcode%5Fin%5Fnode%5Fmodules/)
+
+1. Inside your dependency module's local directory, run:\
+   bash
+
+<!---->
+
+```
+npm link
+```
+
+Use code with caution.
+2\. Inside your main application directory, link it up:\
+bash
+
+```
+npm link name-of-the-package
+```
+
+Use code with caution.\
+[link](https://www.reddit.com/r/reactjs/comments/d6bmy0/cra%5Fhow%5Fto%5Fmodify%5Fcode%5Fin%5Fnode%5Fmodules/)
+
+Now, any code edits you save in the module folder will instantly reflect in your application's execution environment. [link](https://www.reddit.com/r/reactjs/comments/d6bmy0/cra%5Fhow%5Fto%5Fmodify%5Fcode%5Fin%5Fnode%5Fmodules/)
+
+- [link](https://stackoverflow.com/questions/52001366/can-i-modify-a-package-from-node-modules)\
+  Stack Overflow\
+  Can I modify a package from node\_modules?\
+  Aug 24, 2018 — Yes, you can modify a package from node\_modules. Here are some options: \* \*\*Submit a pull request\*\* \* \*\*Fork the project\*\* \* \*\*Use...
+- [link](https://stackoverflow.com/questions/55694871/how-to-override-file-or-function-inside-node-modules)\
+  Stack Overflow\
+  How to override file or function inside node\_modules\
+  Apr 15, 2019 — It's not recommended to directly modify node\_modules because it will be overwritten with the next npm install. Here are some ways ...
+- [link](https://www.reddit.com/r/reactjs/comments/d6bmy0/cra%5Fhow%5Fto%5Fmodify%5Fcode%5Fin%5Fnode%5Fmodules/)\
+  Reddit·r/reactjs\
+  CRA - How to modify code in node\_modules : r/reactjs - Reddit\
+  Sep 19, 2019 — How is this /static/js/0. chunk. js script generated? When you run your dev server ('npm start'/'yarn'), and when you run the buil...
+
+Show all
+
+## hijack it now and do not gitignore node modules
+
+To hijack the module immediately right inside `node_modules` and force Git to track it, follow these steps in your terminal.
+
+### Step 1: Remove `node_modules` from your `.gitignore`
+
+Open your root `.gitignore` file and **delete** the line that says `node_modules`. [link](https://dev.to/momentum/what-to-do-if-you-accidentally-committed-your-nodemodules-323o)
+
+If it isn't there, Git might be inheriting rules from a global ignore. Run this command to force Git to track a specific `react-dom` file anyway:
+
+bash
+
+```
+git add -f node_modules/react-dom/cjs/react-dom.development.js
+```
+
+Use code with caution.
+
+### Step 2: Comment out the Log Statement
+
+Now, open the file where React prints that specific log:\
+📁 `node_modules/react-dom/cjs/react-dom.development.js` [link](https://stackoverflow.com/questions/42196819/disable-hide-download-the-react-devtools)
+
+Find the block containing the text `"Download the React DevTools"`. It usually looks like this: [link](https://stackoverflow.com/questions/42196819/disable-hide-download-the-react-devtools)
+
+javascript
+
+```
+if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined') {
+  console.log('Download the React DevTools for a better development experience...');
+}
+```
+
+Use code with caution.
+
+**Comment it out or delete it completely:**
+
+javascript
+
+```
+// if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined') {
+//   console.log('Download the React DevTools for a better development experience...');
+// }
+```
+
+Use code with caution.
+
+_Note: If you are using React 18+, also check `node_modules/react-dom/cjs/react-dom-client.development.js` as the log statement might be duplicated there depending on your exact version._ [link](https://github.com/ricky0123/vad/issues/230)
+
+### Step 3: Commit it into your Repository
+
+Now track and save your modified `node_modules` folder directly into version control: [link](https://dev.to/momentum/what-to-do-if-you-accidentally-committed-your-nodemodules-323o)
+
+bash
+
+```
+git add node_modules/react-dom/
+git commit -m "chore: hijack react-dom to kill devtools log"
+```
+
+Use code with caution.
+
+***
+
+### ⚠️ A quick warning about committing `node_modules`
+
+While this solves your problem immediately on your current machine, tracking `node_modules` in Git will drastically balloon your repository's size, slow down your `git status`/`git push` speeds, and can trigger cross-platform compiler crashes if binary dependencies (like `esbuild` or `sass`) get pushed from a Mac to a teammate running Windows or a Linux CI build tool. [link](https://dev.to/momentum/what-to-do-if-you-accidentally-committed-your-nodemodules-323o)
+
+Would you like help setting up **`patch-package`** instead? It lets you keep your exact code modifications to `node_modules` safely tracked in Git **without** having to commit the massive `node_modules` folder itself. [link](https://research.jfrog.com/post/hijacked-npm-vscode-tasks-blockchain/)
+
+- [link](https://dev.to/momentum/what-to-do-if-you-accidentally-committed-your-nodemodules-323o)\
+  DEV Community\
+  What to do if you accidentally committed your node\_modules\
+  Aug 6, 2020 — For all the following commands, you'll need to use the command line (don't type the $ ; that just indicates the command line promp...
+- [link](https://research.jfrog.com/post/hijacked-npm-vscode-tasks-blockchain/)\
+  JFrog Security Research\
+  Hijacked npm Packages Use Novel VSCode Autorun and ...\
+  Jun 25, 2026 — It creates a user-level Node dependency directory under ~/.node\_modules , installs missing packages with npm, reports status to /v...
+- [link](https://stackoverflow.com/questions/42196819/disable-hide-download-the-react-devtools)\
+  Stack Overflow\
+  Disable/Hide "Download the React DevTools..." - Stack Overflow\
+  Feb 13, 2017 — Copy link. This answer is useful. 8. This answer is not useful. Save this answer. Loading when this answer was accepted… Show acti...
+
+Show all
+
+# does rg ignore node modules by default
+
+<mark><strong><span>No, ripgrep (</span><code dir="ltr">rg</code>) does not have a hardcoded rule to ignore<span> </span><code dir="ltr">node\_modules</code><span> </span>by default</strong></mark>. However, in practice, it almost always ignores them because **`rg` automatically respects your `.gitignore` rules, hidden files, and global ignore settings**. [link](https://github.com/BurntSushi/ripgrep/issues/1927)
+
+Since nearly every JavaScript or Node.js project includes `node_modules/` in its root `.gitignore` file, ripgrep will seamlessly skip searching through that directory. [link](https://www.geeksforgeeks.org/git/how-to-ignore-node%5Fmodules-folder-in-git/)
+
+### How to change this behavior
+
+If you want to adjust how `rg` treats `node_modules` or ignored files, you can use these flags:
+
+- **Search inside `node_modules` anyway:** If it is listed in your `.gitignore` but you still want to search it, use the `--no-ignore` flag:\
+  bash
+
+<!---->
+
+```
+rg --no-ignore "your-search-term"
+```
+
+Use code with caution.
+
+- **Strictly ignore it everywhere:** If you happen to be working in a directory without a `.gitignore` file but still want `rg` to skip `node_modules`, you can create a global [David Mohundro](https://mohundro.com/blog/2026-01-07-rgignore/) `.rgignore` or `.ignore` file in your home directory and add:\
+  text
+
+<!---->
+
+```
+node_modules/
+```
+
+Use code with caution.\
+[link](https://github.com/BurntSushi/ripgrep/issues/673)
+
+Are you running into an issue where `rg` is **unexpectedly searching** through your `node_modules`, or are you trying to **force it to search** inside them? Let me know and I can give you the exact command or config tweak you need!
+
+- [link](https://github.com/BurntSushi/ripgrep/issues/1927)\
+  GitHub\
+  ripgrep is not ignoring .gitignore files by default! #1927 - GitHub\
+  Jul 6, 2021 — BurntSushi on Jul 6, 2021 Owner And running rg -l data --debug has this line: DEBUG|ignore::walk|crates/ignore/src/walk.rs:1741: i...
+- [link](https://ripgrep.dev/docs/guide/)\
+  ripgrep.dev\
+  ripgrep User Guide - Complete Documentation\
+  Out of the box, ripgrep respects several ignore rules so you almost never search files you do not care about: .gitignore — respect...
+- [link](https://github.com/BurntSushi/ripgrep/issues/673)\
+  GitHub\
+  Why was .rgignore deprecated in favor of .ignore? #673 - GitHub\
+  Nov 11, 2017 — All of these programs follow a practice of namespacing configuration files to avoid potential collisions ( . gitignore , . stignor...
+
+Show all
+
