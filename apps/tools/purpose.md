@@ -5228,6 +5228,11 @@ ok but for arg, esp in pref i will call it label instead.
 
 close (or loop back) when tab after the last item or shift tab before the first item
 
+---
+
+adw (ptyxis) focuses the first option (not necessarily the currently selected one) after open.
+
+and it remembers the focus after you close the dropdown and open again.
 
 
 

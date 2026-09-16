@@ -575,13 +575,21 @@ textarea {
 
   > .dropdown {
     z-index: var(--hierarchy-popup);
-
-    * {
+    
+    background: var(--color-bg-secondary);
+    
+    .button {
+      flex-flow: row;
       padding-block: var(--page-whitespace-sm);
       padding-inline: var(--page-whitespace);
     }
+    
+    .icon {
+      width: var(--spacing-4);
+      height: var(--spacing-4);
 
-    background: var(--color-bg-secondary);
+      margin-inline-start: var(--page-whitespace-sm);
+    }
   }
 }
 

@@ -1,14 +1,14 @@
 import { useFloating, flip, autoUpdate, useDismiss, shift } from '@floating-ui/react';
 
 type dropdown = {
-  ref: any
+  anchor: any
   align?: 'left' | 'center' | 'right' // horizontal alignment
   click_outside?: fn
   children
 }
 
 export default function Dropdown(props: dropdown) {
-  const { ref, align = 'left', click_outside, children } = props
+  const { anchor, align = 'left', click_outside, children } = props
 
   const { refs: { setReference: set_reference, setFloating: set_floating }, floatingStyles: floating_styles, context } = useFloating({
     open: true,
@@ -38,10 +38,10 @@ export default function Dropdown(props: dropdown) {
   });
 
   useEffect(() => {
-    if (ref && ref.current) {
-      set_reference(ref.current);
+    if (anchor && anchor.current) {
+      set_reference(anchor.current);
     }
-  }, [ref]);
+  }, [anchor]);
 
   return (
     <div className="dropdown" {...p({ ref: set_floating, style: floating_styles })}>
