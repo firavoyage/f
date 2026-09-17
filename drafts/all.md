@@ -797,6 +797,7 @@ history:
 - svelte
 - solidjs
 - js
+- ts
 
 politics:
 
