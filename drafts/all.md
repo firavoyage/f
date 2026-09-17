@@ -792,6 +792,7 @@ history:
 - ocaml
 - textmate
 - react
+- vue
 
 politics:
 
