@@ -794,6 +794,8 @@ history:
 - textmate
 - react
 - vue
+- svelte
+- solidjs
 
 politics:
 
