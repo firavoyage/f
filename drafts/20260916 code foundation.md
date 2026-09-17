@@ -16041,4 +16041,668 @@ What specific feature, proposal, or syntax choice has you annoyed? If you're dea
 
 Show all
 
-# 
+# what are the technical commitee (number)s
+
+**Technical Committee (TC) numbers** are <mark>unique identifiers used by global standards organizations to categorize groups of experts working on specific technical fields</mark>. Because hundreds of different organizations use this numbering system, the exact "number" depends entirely on the organization you are looking at.
+
+The numbering systems of the most prominent international and industry standards bodies break down as follows:
+
+### 1. International Organization for Standardization (ISO)
+
+The [ISO Technical Committees](https://www.iso.org/technical-committees.html) are numbered sequentially based on the order in which they were created. There are currently over **800 active TCs and subcommittees**. [link](https://www.iso.org/technical-committees.html)
+
+- **TC 1:** Screw threads (the very first committee, created in 1947).
+- **TC 22:** Road vehicles (handles automotive standards).
+- **TC 176:** Quality management and quality assurance (the committee behind the famous **ISO 9001** standard).
+- **TC 323:** Circular economy (one of the newer committees). [link](https://www.iso.org/technical-committees.html)
+
+### 2. International Electrotechnical Commission (IEC)
+
+The [IEC Technical Committees](https://iec.ch/technical-committees-and-subcommittees) govern international standards for all electrical, electronic, and related technologies. They manage **118 Technical Committees**. [link](https://iec.ch/technical-committees-and-subcommittees)
+
+- **TC 1:** Terminology.
+- **TC 20:** Electric cables.
+- **TC 57:** Power systems management and associated information exchange.
+- **TC 100:** Audio, video and multimedia systems and equipment.
+
+### 3. IEEE (Institute of Electrical and Electronics Engineers)
+
+Within the IEEE, individual societies use numbered technical committees to focus on specific engineering disciplines. For example:
+
+- **[IEEE Power Electronics Society (PELS)](https://www.ieee-pels.org/technical-activities/technical-committees/):** Uses PELS TCs from **TC 1** (Control and Modeling) to **TC 12** (Energy Access and Off-Grid Systems).
+- **[IEEE Antennas and Propagation Society (AP-S)](https://ieeeaps.org/committees/tc):** Uses AP-S TCs from **TC 1** (Antennas) to **TC 12** (Space). [link](https://www.ieee-pels.org/technical-activities/technical-committees/)
+
+### 4. ASTM International
+
+Instead of using plain numbers, [ASTM Technical Committees](https://www.astm.org/membership-participation/technical-committees) use an **alphanumeric designation system** grouped by industry categories: [link](https://www.astm.org/membership-participation/technical-committees)
+
+- **A01:** Steel, Stainless Steel, and Related Alloys.
+- **B02:** Nonferrous Metals and Alloys.
+- **D02:** Petroleum Products, Liquid Fuels, and Lubricants.
+- **F24:** Amusement Rides and Devices. [link](https://www.astm.org/membership-participation/technical-committees/committee-all)
+
+### 5. Ecma International
+
+Known for standardizing information and communication systems, [Ecma Technical Committees](https://ecma-international.org/technical-committees/) focus on software and computing. [link](https://ecma-international.org/technical-committees/)
+
+- **TC 39:** ECMAScript (the committee responsible for standardizing **JavaScript**).
+- **TC 52:** Dart programming language.
+- **TC 57:** High-Level Shading Language (HLSL). [link](https://ecma-international.org/technical-committees/)
+
+Are you looking for a **specific technology, industry, or organization** (like ISO, IEEE, or ASTM)? If you tell me what topic you are researching, I can give you the exact committee number and its current project list.
+
+- [link](https://www.iso.org/technical-committees.html)\
+  ISO - International Organization for Standardization\
+  Technical Committees - ISO\
+  From Assistive products to Zinc alloys. Here you'll find a list of the ISO technical committees in the order in which they were cr...
+- [link](https://iec.ch/technical-committees-and-subcommittees)\
+  iec.ch\
+  Technical committees and subcommittees - IEC\
+  ... on state-of-the-art technical solutions with global relevance and reach. These are published as voluntary, consensus-based int...
+- [link](https://www.astm.org/membership-participation/technical-committees/committee-all)\
+  ASTM International\
+  Technical Committees by Designation - Full List - ASTM\
+  Technical Committees by Designation - Full List. A01 - Steel, Stainless Steel and Related Alloys · A04 - Iron Castings · A05 - Met...
+
+Show all
+
+# all ecma tc numbers
+
+**[Ecma International](https://ecma-international.org/technical-committees/)** organizes its technical standardization work through **Technical Committees (TCs)**. While historical numbers range from **TC1 to TC57**, many have officially completed their tasks and are no longer active. [link](https://ecma-international.org/technical-committees/)
+
+***
+
+### 🌐 Active Technical Committees
+
+These committees are currently active, maintaining and building modern technical standards: [link](https://ecma-international.org/meeting-calendar/)
+
+- **TC31** – Information Storage
+- **TC38** – Product-Related Environmental Attributes
+- **TC39** – ECMAScript (JavaScript & Internationalization APIs)
+- **TC45** – Office Open XML Formats
+- **TC49** – Programming Languages (e.g., C#, CLI)
+- **TC51** – Access Systems and Information Exchange Between Systems
+- **TC52** – Dart Programming Language
+- **TC53** – ECMAScript Modules for Embedded Systems
+- **TC54** – Software and System Transparency
+- **TC55** – Web-Interoperable Server Runtimes
+- **TC56** – Natural Language Interaction Protocol for AI Agents
+- **TC57** – High-Level Shading Language (HLSL) [link](https://ecma-international.org/technical-committees/tc38/)
+
+***
+
+### 🏛️ Disbanded / Historical Technical Committees
+
+These committees are officially closed or have achieved their initial standardized goals: [link](https://ecma-international.org/technical-committees/tcs-which-have-accomplished-their-tasks/)
+
+- **TC1** – Codes and Character Sets (created standard ECMA-6 / ISO 646)
+- **TC2** – General Programming Languages
+- **TC3** – Problem Analysis and Flow Charting
+- **TC4** – Optical Character Recognition (OCR)
+- **TC5** – ALGOL
+- **TC6** – COBOL
+- **TC7** – Magnetic Tape
+- **TC8** – FORTRAN
+- **TC9** – Data Transmission
+- **TC10** – PL/1
+- **TC11** – Numerical Control
+- **TC12** – Product Safety
+- **TC13** – Magnetic Disks
+- **TC14** – Acoustic Noise
+- **TC15** – Volume and File Structure
+- **TC16** – Rigid Magnetic Disks
+- **TC17** – Magnetic Tape Cassettes
+- **TC18** – I/O Interface
+- **TC19** – Magnetic Disk Cartridges
+- **TC20** – Electromagnetic Compatibility (EMC)
+- **TC21** – Data Cassettes
+- **TC22** – Linear Magnetic Flexible Disk Cartridges
+- **TC23** – Open Systems Interconnection (OSI)
+- **TC24** – Communications Protocols
+- **TC25** – Local Area Networks (LAN)
+- **TC26** – OSI Management
+- **TC27** – SCSI / Storage Interfaces
+- **TC28** – Ergonomics of Workstations
+- **TC29** – Document Architecture
+- **TC30** – Digital Cellular Telecommunications
+- **TC32** – Communication, Networks, and Systems Interconnection
+- **TC33** – Portable Common Tool Environment (PCTE)
+- **TC34** – Office Document Architecture (ODA)
+- **TC35** – Security Evaluation Criteria
+- **TC36** – IT Security
+- **TC37** – Read-Only Optical Disks
+- **TC40** – High-Density Recording Media
+- **TC41** – Magnetic Optical Disks
+- **TC42** – Subjective Assessment of Sound Quality
+- **TC43** – Broadband Services
+- **TC44** – Computer Telephony Integration (CTI)
+- **TC46** – Open XML Paper Specification (OpenXPS)
+- **TC47** – Near Field Communication (NFC)
+- **TC48** – High Rate Wireless Communication
+- **TC50** – Closed-Circuit Television (CCTV) / Security Surveillance [link](https://ecma-international.org/publications-and-standards/standards/ecma-381/)
+
+_(Note: Missing sequential numbers like TC42–TC44 reflect older working subgroups that were re-absorbed or evolved into broader categories over time)._
+
+Are you looking for details on a **specific committee's standard** (like TC39's JavaScript updates), or do you need the **Task Group (TG) breakdowns** for an active committee?
+
+- [link](https://ecma-international.org/technical-committees/)\
+  Ecma International\
+  Technical Committees and Task Groups - Ecma International\
+  Technical work is carried out by Technical Committees (TCs) and Task Groups (TGs). A Technical Committee or a Task Group addresses...
+- [link](https://dev.to/bnb/my-first-experience-attending-tc39-bpn)\
+  DEV Community\
+  My First Experience Attending TC39 - DEV Community\
+  Apr 15, 2019 — My rough estimate is that there were 50-75 people in the meeting. The meeting spans three days and some people were only able to a...
+- [link](https://ecma-international.org/publications-and-standards/standards/ecma-381/)\
+  Ecma International\
+  ECMA-381\
+  Classification \* CategoryWireless proximity systems. \* SubcategoryHigh rate wireless communication. \* Technical CommitteeTC48 (thi...
+
+Show all
+
+# ecma international
+
+### Quick results from the web:
+
+[link](https://ecma-international.org/)
+
+Home - **Ecma International**
+
+Ecma International is an industry association dedicated to the standardization of information and communication systems. Celebrating 65 Years of Ecma International – Advancing global standards through
+
+Ecma International·https://ecma-international.org
+
+[link](https://en.wikipedia.org/wiki/Ecma%5FInternational)
+
+**Ecma International** - Wikipedia
+
+The organization was founded in 1961 to standardize computer systems in Europe. Membership is open to large and small companies worldwide that produce, market, or develop computer or communication sys
+
+Wikipedia·https://en.wikipedia.org
+
+**Ecma International** is <mark>a prominent, non-profit industry association dedicated to the<span> </span><strong>standardization of information and communication technology (ICT) and consumer electronics</strong></mark>. Originally founded in **1961** as the _European Computer Manufacturers Association_ (ECMA), the organization changed its name in 1994 to reflect its broad global reach. It is headquartered in **Geneva, Switzerland**. [link](https://en.wikipedia.org/wiki/Ecma%5FInternational)
+
+The organization operates via technical committees through a contribution-driven, consensus-based framework to build vendor-neutral standards. Its industry members include major global players like Apple, Google, Meta, Microsoft, and Netflix. [link](https://ecma-international.org/mission/)
+
+### Core Standardization Areas
+
+- **Programming Languages:** Most famous for shepherding **ECMAScript** (the core standard behind **JavaScript**) under the TC39 Committee, as well as standardizing languages like **C#** (ECMA-334) and **Dart**. [link](https://ecma-international.org/)
+- **Artificial Intelligence:** Features emerging frameworks like the Natural Language Interaction Protocol (NLIP) suite to ensure seamless communication and interoperability between separate AI agents. [link](https://x.com/EcmaIntl)
+- **Data & Office Formats:** Maintains international standards for data interchange, including the ubiquitous human-readable data layout **JSON** (ECMA-404) and **Office Open XML** formats. [link](https://ecma-international.org/publications-and-standards/standards/ecma-404/)
+- **Hardware & Hardware Interfacing:** Drives industry specifications for hardware architecture like the **Common Language Infrastructure (CLI)** (ECMA-335), environmental declarations, and **Near Field Communication (NFC)** wireless guidelines. [link](https://ecma-international.org/publications-and-standards/standards/ecma-335/)
+
+Map data ©2026[Terms](https://www.google.com/intl/en-US/help/terms%5Fmaps/?gl=us)
+
+15 min
+
+If you want to look deeper into Ecma, tell me if you want to:
+
+- Explore specific upcoming feature proposals from the **TC39 JavaScript committee**
+- Learn how a technology company can **apply for membership**
+- Review the latest standard editions released during the **General Assembly**
+
+Let me know what you would like to examine next!
+
+- [link](https://ecma-international.org/)\
+  Ecma International\
+  Home - Ecma International\
+  Feb 12, 2026 — Ecma International is an industry association dedicated to the standardization of information and communication systems \* ECMAScri...
+- [link](https://en.wikipedia.org/wiki/Ecma%5FInternational)\
+  Wikipedia\
+  Ecma International - Wikipedia\
+  Ecma International (/ˈɛkmə/) is a nonprofit standards organization for information and communication systems. It acquired its curr...
+- [link](https://ecma-international.org/publications-and-standards/standards/ecma-262/)\
+  Ecma International\
+  ECMA-262\
+  This Standard defines the ECMAScript 2026 general-purpose programming language. Kindly note that the normative copy is the HTML ve...
+
+Show all
+
+# history of ecma international
+
+**Ecma International** is a Swiss-based, non-profit standards organization that has spent over six decades shaping global information and communication technologies (ICT). <mark>Officially established on<span> </span><strong>June 17, 1961</strong>, as the<span> </span><strong>European Computer Manufacturers Association (ECMA)</strong>, it rebranded in<span> </span><strong>1994</strong><span> </span>to its current name to reflect its expanding international reach</mark>. [link](https://ecma-international.org/mission/)
+
+Today, Ecma is widely famous for standardizing **ECMAScript**, the core specification behind the universal web language, **JavaScript**. [link](https://javascript.plainenglish.io/understanding-ecmascript-the-complete-history-of-javascripts-evolution-17c4f2e7e2a9)
+
+***
+
+### Key Historical Eras
+
+#### 1. Founding and Early Mission (1960s–1980s)
+
+- **The Need for Interoperability:** In the late 1950s, data prepared on one manufacturer's computer could rarely run on another's. In December 1960, a group of leading European computer manufacturers decided to form an alliance to bridge this gap. [link](https://ecma-international.org/history/)
+- **Strategic Location:** The association set up its headquarters in **Geneva, Switzerland**, ensuring immediate proximity to other critical standardization bodies, including the International Organization for Standardization (ISO) and the International Electrotechnical Commission (IEC). [link](https://ecma-international.org/history/)
+- **Early Milestones:** Ecma hosted its first constituent assembly in June 1961. Its early focus revolved around operational techniques, data interchange, and character sets.
+  - In 1965, the organization approved its first version of the **FORTRAN** programming language standard.
+  - It also developed the **ECMA-6 standard** (a 7-bit Coded Character Set), which pioneered how numbers, letters, and symbols were uniformly processed across different machines. [link](https://ecma-international.org/news/ecma-international-celebrates-its-60th-anniversary/)
+
+#### 2. Rebranding and Going Global (1994)
+
+By the 1990s, the organization’s members and technical reach extended well beyond Europe. [link](https://en.wikipedia.org/wiki/Ecma%5FInternational)
+
+- **The Name Change:** In 1994, the General Assembly changed the official name to **Ecma International – European association for standardizing information and communication systems**. [link](https://ecma-international.org/history/)
+
+- **The "Ecma" Trademark:** To avoid confusion and retain historical legacy, the organization stopped treating "ECMA" as an acronym. It dropped the full capitalization and adopted **Ecma** as a standard trademark. [link](https://ecma-international.org/history/)
+
+<!---->
+
+```
+[1961: European Computer Manufacturers Association] ──> [1994: Ecma International]
+```
+
+#### 3. The Web Era and ECMAScript (1996–Present)
+
+Ecma’s most culturally defining moment came in the mid-1990s with the rise of the consumer internet.
+
+- **The JavaScript Crisis:** JavaScript was originally invented by Brendan Eich at Netscape in 1995. Sensing its rapid adoption, Microsoft soon built its own variation called JScript. This quickly threatened to fracture the early web with cross-browser compatibility chaos. [link](https://www.w3schools.com/Js/js%5Fhistory.asp)
+- **Standardizing the Web:** In November 1996, Netscape submitted JavaScript to Ecma International to create an official browser rulebook. Under Ecma's newly formed **TC39 committee**, the first edition of **ECMA-262** (formally christened **ECMAScript**) was approved in **June 1997**. [link](https://en.wikipedia.org/wiki/ECMAScript)
+- **Modern Evolution:** Despite a major political disagreement that permanently killed a planned "ECMAScript 4" in the 2000s, the committee rebounded. Following the massive release of ECMAScript 6 (ES6 / ES2015), the language transitioned into a highly structured annual release cycle, powering billions of active implementations globally. [link](https://www.diplomacy.edu/actor/ecma-international/)
+
+***
+
+### How Ecma Differs From Other Standards Bodies
+
+| Feature             | [Ecma International](https://ecma-international.org/)                                                               | Traditional Bodies (e.g., ISO, national agencies)                       |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| **Membership Base** | Driven primarily by industry companies, technical experts, and tech giants.                                         | Driven by national government delegations and political entities.       |
+| **Process Speed**   | Uses a highly streamlined, less bureaucratic, consensus-driven business approach.                                   | Slower, highly rigid multi-national ratification tracks.                |
+| **Fast-Tracking**   | Acts as an incubator; standardizes rules in months, then hands them off to ISO/IEC for international fast-tracking. | Direct top-down authorship.                                             |
+| **Accessibility**   | All finalized specifications and technical reports are completely **free to copy and download**.                    | Often requires paid licenses or subscriptions to view complete manuals. |
+
+### Current Status
+
+As of **2026**, Ecma celebrated its **65th anniversary** of standards leadership. Moving forward from its foundational history in hardware compatibility and language design, the organization has expanded its active technical committees to address modern frontiers like **Artificial Intelligence (AI) safety**, **sustainability**, and advanced **cybersecurity frameworks**. [link](https://ecma-international.org/news/ecma-international-celebrates-65-years-of-global-standards-leadership/)
+
+If you want to dive deeper into a specific part of this history, let me know if you would like to explore:
+
+- The **browser wars and politics** that led to the death of ECMAScript 4
+
+- What exactly the **TC39 committee** does today and how new language features get approved
+
+- Other non-web Ecma standards (like **C# or Dart**)
+
+- [link](https://ecma-international.org/history/)\
+  Ecma International\
+  History - Ecma-international.org\
+  To reflect the global activities of the Europe-based Ecma organization, the name of the association was changed in 1994 to: Ecma I...
+
+- [link](https://ecma-international.org/mission/)\
+  Ecma International\
+  Mission - Ecma-international.org\
+  Ecma International is a Swiss based not-for-profit association officially established on 17 June 1961. It is headquartered in Gene...
+
+- [link](https://en.wikipedia.org/wiki/ECMAScript)\
+  Wikipedia\
+  ECMAScript - Wikipedia\
+  History. The ECMAScript specification is a standardized specification of a scripting language developed by Brendan Eich of Netscap...
+
+Show all
+
+# . pl design flaws
+
+# why do ppl say fuck tc39
+
+When developers say **"fuck TC39,"** they are <mark>expressing frustration with the<span> </span><strong>Technical Committee 39</strong></mark>—the committee responsible for standardizing **JavaScript** (ECMAScript). [link](https://news.ycombinator.com/item?id=14635534)
+
+Because JavaScript runs natively on billions of devices and cannot be updated like a standard backend language, the committee operates under intense pressure. This friction often boils over into developer community anger for a few specific reasons: [link](https://www.reddit.com/r/javascript/comments/b126xx/a%5Fcouple%5Frecent%5Ftc39%5Ffailures/)
+
+### 1. "Design by Committee" and Weird Syntax
+
+Because TC39 requires a high degree of consensus among competing tech giants (Google, Apple, Microsoft, Mozilla), features often get compromised until they look clunky or counterintuitive. [link](https://news.ycombinator.com/item?id=2982949)
+
+- **The Private Fields Drama:** When TC39 introduced native private class properties, they chose the hashtag syntax (e.g., `#privateVar`) instead of a traditional keyword like `private`. The developer community widely mocked and hated this aesthetic choice. [link](https://news.ycombinator.com/item?id=38791336)
+- **`globalThis`:** When trying to standardize a way to access the global scope across browsers (`window`) and Node.js (`global`), the committee settled on `globalThis`, a name many felt was confusing, wordy, and ugly. [link](https://www.reddit.com/r/javascript/comments/b5bqv8/discussion%5Fon%5Fhow%5Fthe%5Ftc39s%5Flate%5Fstage%5Fglobalthis/)
+
+### 2. The Strict "Don't Break the Web" Rule
+
+TC39 operates under an absolute constraint: **backward compatibility**. They cannot deprecate or change existing JavaScript features if doing so breaks older websites. [link](https://www.reddit.com/r/javascript/comments/a7vrk8/tc39proposaljavascriptstandardlibrary/)
+
+- This means historical mistakes (like `typeof null === 'object'`) can never be fixed.
+- When proposing new features, they often have to use convoluted workarounds because standard, intuitive names would conflict with legacy code written 25 years ago (a phenomenon famously highlighted by the "SmooshGate" incident, where a proposed `Array.prototype.flatten` method had to be renamed to `flat` because an old version of the Mootools library broke when it ran). Developers often blame the committee for letting ancient, poorly written libraries dictate the future of modern syntax. [link](https://news.ycombinator.com/item?id=14635534)
+
+### 3. Perception of Gatekeeping and Elitism
+
+TC39 is mostly made up of delegates representing large corporations and browser vendors. To many everyday web developers, the committee can feel out of touch, ivory-towered, and exclusionary. Proposing features through their strict "Stages" process requires massive bureaucratic navigation, leading to accusations that you have to be "friends with standards maintainers" to actually get anything done. [link](https://www.reddit.com/r/javascript/comments/a7vrk8/tc39proposaljavascriptstandardlibrary/)
+
+### 4. Interpersonal Friction in GitHub Issues
+
+Much of the community's frustration gets directed at specific, highly active TC39 delegates. Because the development of these features happens openly on GitHub, developers frequently butt heads with committee members over technical disagreements, API design, or standard practices (like the long-standing community debates around explicit semicolon usage or package resolution). When these discussions turn into stubborn standoffs, it leaves a bitter taste in the community's mouth. [link](https://www.reddit.com/r/javascript/comments/7pr0e2/tc39%5Fconsidering%5Fofficially%5Frecommending%5Fusing/)
+
+Ultimately, "fuck TC39" is a symptom of the chaotic, decentralized nature of JavaScript, where millions of developers rely on a single committee to evolve a language that can never truly change its past. [link](https://www.reddit.com/r/javascript/comments/a7vrk8/tc39proposaljavascriptstandardlibrary/)
+
+- [link](https://www.reddit.com/r/javascript/comments/a7vrk8/tc39proposaljavascriptstandardlibrary/)\
+  Reddit·r/javascript\
+  tc39/proposal-javascript-standard-library - Reddit\
+  Dec 20, 2018 — Javascript should have a process for letting people who aren't friends with standards maintainers be helpful too \* vcarl. • 8y ago...
+- [link](https://www.reddit.com/r/javascript/comments/b126xx/a%5Fcouple%5Frecent%5Ftc39%5Ffailures/)\
+  Reddit·r/javascript\
+  A couple recent TC39 failures : r/javascript - Reddit\
+  Mar 14, 2019 — The obvious solution is if it bothers you, transpile from a language you'd be OK with. Internet and TC39 is not your private army.
+- [link](https://www.reddit.com/r/javascript/comments/7pr0e2/tc39%5Fconsidering%5Fofficially%5Frecommending%5Fusing/)\
+  Reddit·r/javascript\
+  TC39 considering officially recommending using semicolons in JS\
+  Jan 11, 2018 — \* delventhalz. • 9y ago. Headline is misleading. This PR is a warning that future ASI hazards are likely to arise, and to be wary ...
+
+Show all
+
+# all js historical flaws
+
+**JavaScript was notoriously created in just 10 days** by Brendan Eich in 1995. Because Netscape rushed it out to compete with Microsoft and forced it to syntactically "look like Java" while keeping it beginner-friendly, it was saddled with architectural flaws. [link](https://javascript.plainenglish.io/frustrations-with-javascript-a-comprehensive-look-at-its-flaws-5fc0431b060f)
+
+Due to the web’s core rule—**"Don't break the web"**—the TC39 Committee cannot fix these flaws by removing them, as doing so would crash millions of legacy websites. Instead, modern JavaScript (ES6+) patches them with new keywords and a "Strict Mode". [link](https://www.reddit.com/r/programming/comments/c58avq/the%5Fweird%5Fhistory%5Fof%5Fjavascript/)
+
+***
+
+### 1. Type Coercion & The Loose Equality Flaw (`==`)
+
+JavaScript is weakly typed, meaning it aggressively tries to convert data types on the fly to avoid throwing errors. This led to absurd, non-transitive logic when using the original loose equality operator (`==`). [link](https://blog.lsantos.dev/en/most-common-bad-practices-javascript/)
+
+- **The Quirks:**\
+  javascript
+
+<!---->
+
+```
+"" == 0;      // true
+0 == [];      // true
+"" == [];     // true (Seems logical, but...)
+null == 0;    // false
+```
+
+Use code with caution.
+
+- **The Fix:** Modern JS developers entirely avoid `==` and use the strict equality operator (`===`), which checks both the value and the type without forcing coercion. [link](https://esdiscuss.org/topic/10-biggest-js-pitfalls)
+
+### 2. Lack of Block Scope & Variable Hoisting (`var`)
+
+Originally, JavaScript only had two scopes: global scope and function scope. It did not recognize block scope (like inside an `if` statement or a `for` loop). Additionally, variables declared with `var` are "hoisted" to the top of their execution context. [link](https://medium.com/javascript-non-grata/the-top-10-things-wrong-with-javascript-58f440d6b3d8)
+
+- **The Quirks:**\
+  javascript
+
+<!---->
+
+```
+for (var i = 0; i < 5; i++) {
+  // do something
+}
+console.log(i); // Outputs 5! The variable leaked outside the loop.
+```
+
+Use code with caution.
+
+- **The Fix:** ECMAScript 2015 (ES6) introduced `let` and `const`, which respect proper block-level scoping and prevent hoisting bugs. [link](https://www.youtube.com/watch?v=Sh6lK57Cuk4)
+
+### 3. The Multi-Headed Monster: `null` vs. `undefined`
+
+Unlike most programming languages that have a single representation for "nothing" (like `nil` or `null`), JavaScript has two, which often causes confusion. [link](https://brainstation.io/learn/javascript/data-types)
+
+- `undefined`: A variable has been declared but has not yet been assigned a value.
+- `null`: An intentional assignment representing the absence of any object value.
+- **The Infamous Bug:** Executing `typeof null` returns `"object"`. Brendan Eich has admitted this was a literal implementation bug in the first week of JS that could never be fixed because it would break existing codebases. [link](https://certificates.dev/blog/the-8-javascript-errors-every-developer-should-understand)
+
+### 4. Global Scope Pollution & Silent Failures
+
+In early JavaScript, if you accidentally misspelled a variable name during assignment, JS wouldn't throw an error. Instead, it would quietly create a brand new global variable on the `window` object. [link](https://www.toptal.com/developers/javascript/10-most-common-javascript-mistakes)
+
+- **The Quirks:**\
+  javascript
+
+<!---->
+
+```
+function saveUser() {
+  isLoggedIn = true; // Forgot to type 'var'/'let'!
+}
+saveUser();
+console.log(window.isLoggedIn); // true (Polluted the global scope)
+```
+
+Use code with caution.
+
+- **The Fix:** The introduction of `"use strict";` (Strict Mode) in ECMAScript 5 turns these silent mistakes into loud, helpful runtime syntax or reference errors. [link](https://medium.com/javascript-non-grata/the-top-10-things-wrong-with-javascript-58f440d6b3d8)
+
+### 5. Intricate Object Prototypes
+
+JavaScript does not have traditional, class-based object-oriented inheritance like Java or C++. Instead, it uses **Prototypal Inheritance**, where objects link directly to other objects. While highly flexible, constructing deep class hierarchies natively was incredibly messy, verbose, and difficult to scale. [link](https://dev.to/codediodeio/the-weird-history-of-javascript-2bnb)
+
+- **The Fix:** ES6 introduced the `class` keyword syntactic sugar. Under the hood, it still uses prototypes, but the syntax mirrors standard object-oriented patterns to reduce developer error. [link](https://esdiscuss.org/topic/10-biggest-js-pitfalls)
+
+### 6. The `this` Keyword Confusion
+
+In JavaScript, the value of `this` is not determined by where a function is written, but **how the function is called**. Passing a method as a callback (like in a `setTimeout` or an event listener) regularly causes `this` to lose its original context and fall back to the global object. [link](https://www.toptal.com/developers/javascript/10-most-common-javascript-mistakes)
+
+- **The Fix:** Developers historically used awkward hacks like `const self = this;` or `.bind(this)`. Modern JavaScript addresses this with **Arrow Functions** (`() => {}`), which lexically bind `this` to the surrounding scope. [link](https://www.toptal.com/developers/javascript/10-most-common-javascript-mistakes)
+
+***
+
+### Summary of Historic Flaws vs. Modern Patches
+
+| Historical Flaw                | Impact                                         | Modern Resolution                                  |
+| ------------------------------ | ---------------------------------------------- | -------------------------------------------------- |
+| **Loose Equality (`==`)**      | Bizarre and unpredictable type transformations | Use **Strict Equality (`===`)**                    |
+| **Function-scoped `var`**      | Variables leaked out of loops and blocks       | Use **`let` and `const`**                          |
+| **Global Context `this`**      | Functions lose track of their parent object    | Use **Arrow Functions**                            |
+| **Silent Failures**            | Typos created accidental global bugs           | Enable **`"use strict";`**                         |
+| **`typeof null === 'object'`** | False type categorization                      | Avoid `typeof` checks for null; use `val === null` |
+
+For a deeper dive into the strangest edge cases caused by these historical flaws, you can explore the community-curated [wtfjs repository on GitHub](https://github.com/denysdovhan/wtfjs).
+
+Are you asking out of **historical curiosity**, or are you currently trying to **debug a strange runtime quirk** in your code? I can help explain specific mechanisms like **hoisting** or **lexical scoping** if you'd like.
+
+- [link](https://esdiscuss.org/topic/10-biggest-js-pitfalls)\
+  ES Discuss\
+  10 biggest JS pitfalls - ESDiscuss.org\
+  10 biggest JS pitfalls \* Both undefined and null \[not too much of a problem, easily learned] \* Truthy and falsy values \[not pretty...
+- [link](https://javascript.plainenglish.io/frustrations-with-javascript-a-comprehensive-look-at-its-flaws-5fc0431b060f)\
+  JavaScript in Plain English\
+  Frustrations With JavaScript: A Comprehensive Look At Its Flaws\
+  Nov 20, 2024 — 1. The Historical Luggage: Born in 10 Days. JavaScript was famously created in just 10 days by Brendan Eich in 1995, a rushed resp...
+- [link](https://www.toptal.com/developers/javascript/10-most-common-javascript-mistakes)\
+  Toptal\
+  The 10 Most Common JavaScript Issues Developers Face\
+  Jul 12, 2026 — It is important to be aware of and avoid these issues on your journey to become a master JavaScript developer. \* JavaScript Issue ...
+
+Show all
+
+# why does js misspelling create global var
+
+A misspelled variable in JavaScript creates a global variable <mark>because of a historical design choice known as<span> </span><strong>implicit globals</strong></mark>, where assigning a value to an undeclared variable automatically attaches it to the **global object** (like `window` in browsers). [link](https://www.reddit.com/r/learnjavascript/comments/nexhsf/why%5Fdoes%5Fmy%5Fcode%5Fstill%5Fwork%5Fif%5Fi%5Fomit%5Flet%5Fand/)
+
+### How it happens step-by-step
+
+When you write an assignment statement like `userNmae = "Alice"` (mistyping `userName`), the JavaScript engine executes the following logic: [link](https://stackoverflow.com/questions/25197480/why-does-x-defined-inside-a-function-become-a-global-variable-when-i-didnt-de)
+
+1. **Scope Lookup:** The engine looks for a declaration (`let`, `const`, or `var`) for `userNmae` in the current local scope.
+2. **Climbing the Chain:** Not finding it locally, it climbs up the scope chain all the way to the top-level global scope.
+3. **Auto-Creation:** Instead of throwing a "ReferenceError" for trying to write to something that doesn't exist, legacy JavaScript assumes you want to create a brand-new variable globally. It creates `userNmae` as a property on the global object. [link](https://stackoverflow.com/questions/10525582/why-are-global-variables-considered-bad-practice)
+
+### Why JavaScript was designed this way
+
+JavaScript was created in 1995 in just 10 days. It was originally intended to be a forgiving, beginner-friendly scripting language for making small tweaks to web pages. The creators preferred to silently guess the developer's intent and keep the script running rather than crashing the entire web page with an error. [link](https://www.reddit.com/r/learnjavascript/comments/qkf9gk/why%5Fdo%5Fimplicit%5Fglobals%5Fexist%5Fin%5Fjavascript/)
+
+### How to fix and prevent it
+
+Today, relying on implicit globals is universally considered a dangerous anti-pattern. You can completely stop this behavior by enabling **Strict Mode**: [link](https://medium.com/@daser/implied-globals-everywhere-84a0dbccd52a)
+
+javascript
+
+```
+"use strict";
+
+let userName = "Alice";
+userNmae = "Bob"; // ❌ Throws: "ReferenceError: userNmae is not defined"
+```
+
+Use code with caution.
+
+By placing `"use strict";` at the top of your JavaScript files or functions, the engine will immediately crash with a helpful error message instead of silently introducing a bug into the global scope. Modern setups (like ES modules, React, or build tools like Webpack and Vite) automatically enforce strict mode by default. [link](https://www.reddit.com/r/learnjavascript/comments/nexhsf/why%5Fdoes%5Fmy%5Fcode%5Fstill%5Fwork%5Fif%5Fi%5Fomit%5Flet%5Fand/)
+
+Are you trying to **debug a specific issue** in your code right now, or would you like to know how to set up tools like **ESLint** to catch these typos automatically as you type?
+
+- [link](https://www.reddit.com/r/learnjavascript/comments/nexhsf/why%5Fdoes%5Fmy%5Fcode%5Fstill%5Fwork%5Fif%5Fi%5Fomit%5Flet%5Fand/)\
+  Reddit·r/learnjavascript\
+  Why does my code still work if I omit let (and don't use const or var ...\
+  May 18, 2021 — Comments Section \* okwg. • 5y ago. With the above example, anyone reading your code will think that line is updating an existing v...
+- [link](https://www.reddit.com/r/learnjavascript/comments/qkf9gk/why%5Fdo%5Fimplicit%5Fglobals%5Fexist%5Fin%5Fjavascript/)\
+  Reddit·r/learnjavascript\
+  Why do implicit globals exist in JavaScript? - Reddit\
+  Nov 1, 2021 — I don't know why they were first implemented in the language but the only reason they still exist is to prevent old code from brea...
+- [link](https://stackoverflow.com/questions/23816916/omitting-the-var-keyword-when-defining-a-global-variable-in-javascript)\
+  Stack Overflow\
+  Omitting the var keyword when defining a global variable in JavaScript\
+  May 22, 2014 — \* Please see stackoverflow.com/a/1471738/637889. andyb. – andyb. 2014-05-22 21:00:07 +00:00. Commented May 22, 2014 at 21:00. \* I'
+
+Show all
+
+## can it be toggled to implicitly declare like var instead
+
+<mark><span>No, JavaScript<span> </span></span><strong>cannot be toggled</strong><span> </span>to implicitly declare variables</mark> using `var` instead of attaching them as properties to the global object.
+
+The mechanism behind implicit globals is baked directly into the language's runtime engine. However, there is a technical nuance in how JavaScript treats implicit globals versus explicit `var` declarations, and alternative ways to get the behavior you might be looking for.
+
+### The Technical Difference
+
+While both end up in the global scope, they are not handled identically by the engine:
+
+| Characteristic     | Implicit Global (`mistake = 5`)                            | Explicit Global `var` (`var mistake = 5`)                  |
+| ------------------ | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| **Under the Hood** | Created as a configurable property on the global object.   | Created as a non-configurable variable record.             |
+| **Hoisting**       | **No**. It does not exist until the line of code executes. | **Yes**. The variable is hoisted to the top of the script. |
+| **Deletable**      | **Yes**. You can run `delete window.mistake`.              | **No**. `delete window.mistake` returns `false`.           |
+
+Because implicit globals are technically just dynamic property assignments on the `window` or `globalThis` object, JavaScript has no way to retroactively treat them as lexically scoped variables.
+
+### How to achieve the desired safety
+
+If your goal is to ensure that variables are safely declared without risking global pollution, you have a few options:
+
+- **Use Linters (Recommended):** Tools like **ESLint** will scan your code as you type and flag any variables that aren't explicitly declared with `let`, `const`, or `var`.
+
+- **Wrap code in an IIFE:** If you want to isolate variables and prevent them from hitting the true global scope, wrap your script in an Immediately Invoked Function Expression (IIFE):\
+  javascript
+
+<!---->
+
+```
+(function() {
+    // Your code lives safely in this local function scope
+})();
+```
+
+Use code with caution.
+
+Are you trying to **prevent global pollution** in an older codebase, or are you looking for a way to make variables **automatically scoped** to a specific function or module?
+
+## does var have fn scope
+
+<mark><span>Yes,<span> </span></span><strong><code dir="ltr">var</code><span> </span>has function scope</strong></mark>. This means that a variable declared with `var` is only accessible inside the specific function where it was created.
+
+Unlike `let` and `const`, which are block-scoped (restricted by `{}` curly braces like `if` statements or `for` loops), `var` completely ignores blocks and bleeds out into the surrounding function.
+
+### How Function Scope Works with `var`
+
+If you declare a `var` inside a function, it is completely trapped inside that function:
+
+javascript
+
+```
+function myFunction() {
+    var secret = "I am hidden";
+    console.log(secret); // ✅ Works: "I am hidden"
+}
+
+myFunction();
+console.log(secret); // ❌ Throws: ReferenceError: secret is not defined
+```
+
+Use code with caution.
+
+### The Difference: Function Scope vs. Block Scope
+
+Because `var` is function-scoped rather than block-scoped, it can cause unexpected behavior inside `if` statements or loops:
+
+javascript
+
+```
+function testScopes() {
+    if (true) {
+        var functionScoped = "Accessible anywhere in this function";
+        let blockScoped = "Trapped in this if-block";
+    }
+
+    console.log(functionScoped); // ✅ Works! The if-block didn't stop it.
+    console.log(blockScoped);    // ❌ Throws: ReferenceError: blockScoped is not defined
+}
+```
+
+Use code with caution.
+
+### Behind the Scenes: Hoisting
+
+When JavaScript compiles a function, it looks for all `var` declarations and "hoists" them (lifts them) to the very top of that function's scope.
+
+javascript
+
+```
+function hostingExample() {
+    // JavaScript secretly moves "var x;" right here!
+
+    console.log(x); // ✅ Returns 'undefined' (no error!) instead of crashing
+    var x = 10;
+    console.log(x); // ✅ Returns 10
+}
+```
+
+Use code with caution.
+
+Are you dealing with a bug where a variable is **leaking out of a loop or if statement**, or are you refactoring an older codebase from **`var` to `let`/`const`**?
+
+## why isnt implicit var fn scoped
+
+Implicit declarations are not function-scoped because <mark><strong>they are not declarations at all; they are property assignments.</strong></mark>
+
+When you type a misspelled variable without `var`, `let`, or `const`, the JavaScript engine does not secretly insert a declaration for you. Instead, it interprets your code as an instruction to write a value to an object.
+
+Here is the exact technical breakdown of why this prevents function scoping.
+
+### 1. The Engine Interprets it as an Object Property
+
+In JavaScript, the global environment is represented by a physical object (like `window` in browsers or `globalThis` in modern environments).
+
+When you write `x = 5`, JavaScript treats it identically to how it treats a standard object modification:
+
+javascript
+
+```
+// This:
+userNmae = "Alice";
+
+// Is executed identically to this:
+window.userNmae = "Alice";
+```
+
+Use code with caution.
+
+Objects do not have "scopes." If you add a property to a globally accessible object inside a function, that property is instantly visible to the entire program.
+
+### 2. Resolution Climbs Outside the Function
+
+When the JavaScript engine compiles your code, it creates an environment record for each function.
+
+If it encounters `var x`, it immediately reserves a spot for `x` inside that function's local environment record (hoisting).
+
+If you just write `x = 5`, the engine's lookup process works like this:
+
+1. It looks at the current function's local record. `x` is not there.
+2. It climbs up to the parent function. Not there.
+3. It reaches the top-level global environment. Not there.
+4. Instead of failing, the global environment says: _"I will just create a new property named `x` on myself and set it to 5."_
+
+Because the local function record was completely bypassed during the creation of the variable, the function has no ownership over it.
+
+### 3. Historical "Fail-Soft" Philosophy
+
+As mentioned earlier, JavaScript was designed to be "fail-soft." If a beginner developer forgot to declare a variable inside a function, the creator of the language decided it was better to accidentally place it on the global object so the script could keep running, rather than throwing a hard error and crashing the website.
+
+Are you trying to **isolate variables** within a specific function without manually typing `var` or `let` every time, or are you tracking down a bug where an **undeclared variable is overwriting data** elsewhere in your application?
