@@ -555,4 +555,395 @@ ERROR: Could not find any ADB device
 [2]  + exit 1     scrcpy --fullscreen --turn-screen-off --power-off-on-close  --window-title
 ```
 
+<!-- automate confirmation -->
+
+```
+%                                                                                                                                      ~ % xdotool getmouselocation
+
+x:999 y:967 screen:0 window:44040680
+ ~ % while true; do xdotool mousemove 999 967 click 1; sleep 3; done
+
+^C%
+```
+
+```
+ ~/apks % phone
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+^C%                                                                                                                                    ~/apks % for dir in */; do
+   pkg="${dir%/}"
+   if adb shell pm list packages | grep -q "^package:$pkg$"; then
+     echo "Skipping: $pkg is already installed"
+   else
+     echo "Installing missing app: $pkg"
+     adb install-multiple "$dir"*.apk < /dev/null
+   fi
+done
+Skipping: app.lawnchair.lawnicons.play is already installed
+Skipping: app.lawnchair.play is already installed
+Skipping: chat.fluffy.fluffychat is already installed
+Skipping: com.a10miaomiao.bilimiao is already installed
+Skipping: com.aefyr.sai.fdroid is already installed
+Skipping: com.android.vending is already installed
+Skipping: com.anthropic.claude is already installed
+Skipping: com.atharok.screentime is already installed
+Skipping: com.aurora.store is already installed
+Skipping: com.autonavi.minimap is already installed
+Skipping: com.beemdevelopment.aegis is already installed
+Skipping: com.chess is already installed
+Skipping: com.eusoft.eudic is already installed
+Skipping: com.example.helloworld is already installed
+Skipping: com.example.minimalapp is already installed
+Skipping: com.example.piliplus is already installed
+Skipping: com.foxwq.yhwq is already installed
+Skipping: com.github.metacubex.clash.meta is already installed
+Skipping: com.github.zly2006.zhplus.lite is already installed
+Installing missing app: com.gitlab.mudlej.MjPdfReader
+Success
+Installing missing app: com.google.android.apps.authenticator2
+Success
+Installing missing app: com.google.android.apps.docs.editors.docs
+adb: failed to finalize session
+Failure [INSTALL_FAILED_USER_RESTRICTED: Install canceled by user]
+Installing missing app: com.google.android.apps.docs.editors.sheets
+Success
+Installing missing app: com.google.android.apps.docs.editors.slides
+Success
+Installing missing app: com.google.android.apps.dynamite
+adb: failed to finalize session
+Failure [INSTALL_FAILED_USER_RESTRICTED: Install canceled by user]
+Installing missing app: com.google.android.apps.labs.language.tailwind
+Success
+Installing missing app: com.google.android.apps.maps
+Success
+Installing missing app: com.google.android.apps.photos
+^C%                                                                                                                                    ~/apks % for dir in */; do
+   pkg="${dir%/}"
+   if adb shell pm list packages | grep -q "^package:$pkg$"; then
+     echo "Skipping: $pkg is already installed"
+   else
+     echo "Installing missing app: $pkg"
+     adb install-multiple "$dir"*.apk < /dev/null
+   fi
+done
+Skipping: app.lawnchair.lawnicons.play is already installed
+Skipping: app.lawnchair.play is already installed
+Skipping: chat.fluffy.fluffychat is already installed
+Skipping: com.a10miaomiao.bilimiao is already installed
+Skipping: com.aefyr.sai.fdroid is already installed
+Skipping: com.android.vending is already installed
+Skipping: com.anthropic.claude is already installed
+Skipping: com.atharok.screentime is already installed
+Skipping: com.aurora.store is already installed
+Skipping: com.autonavi.minimap is already installed
+Skipping: com.beemdevelopment.aegis is already installed
+Skipping: com.chess is already installed
+Skipping: com.eusoft.eudic is already installed
+Skipping: com.example.helloworld is already installed
+Skipping: com.example.minimalapp is already installed
+Skipping: com.example.piliplus is already installed
+Skipping: com.foxwq.yhwq is already installed
+Skipping: com.github.metacubex.clash.meta is already installed
+Skipping: com.github.zly2006.zhplus.lite is already installed
+Skipping: com.gitlab.mudlej.MjPdfReader is already installed
+Skipping: com.google.android.apps.authenticator2 is already installed
+Installing missing app: com.google.android.apps.docs.editors.docs
+^C%
+```
+
+```
+ ~/apks % for dir in */; do
+   pkg="${dir%/}"
+   if adb shell pm list packages | grep -q "^package:$pkg$"; then
+     echo "Skipping: $pkg is already installed"
+   else
+     echo "Installing missing app: $pkg"
+     adb install-multiple "$dir"*.apk < /dev/null
+   fi
+done
+Skipping: app.lawnchair.lawnicons.play is already installed
+Skipping: app.lawnchair.play is already installed
+Skipping: chat.fluffy.fluffychat is already installed
+Skipping: com.a10miaomiao.bilimiao is already installed
+Skipping: com.aefyr.sai.fdroid is already installed
+Skipping: com.android.vending is already installed
+Skipping: com.anthropic.claude is already installed
+Skipping: com.atharok.screentime is already installed
+Skipping: com.aurora.store is already installed
+Skipping: com.autonavi.minimap is already installed
+Skipping: com.beemdevelopment.aegis is already installed
+Skipping: com.chess is already installed
+Skipping: com.eusoft.eudic is already installed
+Skipping: com.example.helloworld is already installed
+Skipping: com.example.minimalapp is already installed
+Skipping: com.example.piliplus is already installed
+Skipping: com.foxwq.yhwq is already installed
+Skipping: com.github.metacubex.clash.meta is already installed
+Skipping: com.github.zly2006.zhplus.lite is already installed
+Skipping: com.gitlab.mudlej.MjPdfReader is already installed
+Skipping: com.google.android.apps.authenticator2 is already installed
+Installing missing app: com.google.android.apps.docs.editors.docs
+Success
+Skipping: com.google.android.apps.docs.editors.sheets is already installed
+Skipping: com.google.android.apps.docs.editors.slides is already installed
+Installing missing app: com.google.android.apps.dynamite
+Success
+Skipping: com.google.android.apps.labs.language.tailwind is already installed
+Skipping: com.google.android.apps.maps is already installed
+Installing missing app: com.google.android.apps.photos
+Success
+Installing missing app: com.google.android.apps.tasks
+Success
+Installing missing app: com.google.android.calculator
+Success
+Installing missing app: com.google.android.calendar
+Success
+Skipping: com.google.android.gms is already installed
+Installing missing app: com.google.android.inputmethod.latin
+Success
+Installing missing app: com.google.android.keep
+Success
+Installing missing app: com.google.android.syncadapters.contacts
+Success
+Installing missing app: com.ichi2.anki
+Success
+Installing missing app: com.machiav3lli.fdroid
+Success
+Installing missing app: com.niksoftware.snapseed
+Success
+Installing missing app: com.PigeonGames.Phigros
+Success
+Installing missing app: com.radolyn.ayugram
+adb: failed to finalize session
+Failure [INSTALL_FAILED_NO_MATCHING_ABIS: INSTALL_FAILED_NO_MATCHING_ABIS: Failed to extract native libraries, res=-113]
+Installing missing app: com.rom1v.sndcpy
+Success
+Installing missing app: com.sega.pjsekai
+Success
+Installing missing app: com.soulgamechst.majsoul
+Success
+Installing missing app: com.tencent.mm
+Success
+Installing missing app: com.tencent.mobileqq
+Success
+Installing missing app: com.tencent.tmgp.supercell.clashroyale
+Success
+Installing missing app: com.termux
+Success
+Installing missing app: com.x8bit.bitwarden
+adb: failed to finalize session
+Failure [INSTALL_FAILED_USER_RESTRICTED: Install canceled by user]
+Installing missing app: com.xycz.simple_live
+Success
+Installing missing app: de.danoeh.antennapod
+Success
+Installing missing app: eu.depau.etchdroid
+Success
+Installing missing app: io.github.muntashirakon.Music
+Success
+Installing missing app: io.github.samolego.canta
+Success
+Installing missing app: jp.pxv.android
+adb: failed to finalize session
+Failure [INSTALL_FAILED_USER_RESTRICTED: Install canceled by user]
+Installing missing app: me.zhanghai.android.files
+adb: failed to finalize session
+Failure [INSTALL_FAILED_USER_RESTRICTED: Install canceled by user]
+Installing missing app: moe.shizuku.privileged.api
+Success
+Installing missing app: net.osmand
+adb: failed to finalize session
+Failure [INSTALL_FAILED_USER_RESTRICTED: Install canceled by user]
+Installing missing app: org.breezyweather
+adb: failed to finalize session
+Failure [INSTALL_FAILED_USER_RESTRICTED: Install canceled by user]
+Installing missing app: org.catrobat.paintroid
+Success
+Installing missing app: org.fcitx.fcitx5.android
+Success
+Installing missing app: org.fossify.voicerecorder
+Success
+Installing missing app: org.lichess.mobileapp.free
+Success
+Installing missing app: org.mewx.wenku8
+Success
+Installing missing app: org.mozilla.firefox
+Success
+Installing missing app: org.thunderdog.challegram
+Success
+Installing missing app: org.videolan.vlc
+adb: failed to finalize session
+Failure [INSTALL_FAILED_USER_RESTRICTED: Install canceled by user]
+Installing missing app: sh.ppy.osulazer
+Success
+```
+
+```
+ ~/apks % for dir in */; do
+   pkg="${dir%/}"
+   if adb shell pm list packages | grep -q "^package:$pkg$"; then
+     echo "Skipping: $pkg is already installed"
+   else
+     echo "Installing missing app: $pkg"
+     adb install-multiple "$dir"*.apk < /dev/null
+   fi
+done
+Skipping: app.lawnchair.lawnicons.play is already installed
+Skipping: app.lawnchair.play is already installed
+Skipping: chat.fluffy.fluffychat is already installed
+Skipping: com.a10miaomiao.bilimiao is already installed
+Skipping: com.aefyr.sai.fdroid is already installed
+Skipping: com.android.vending is already installed
+Skipping: com.anthropic.claude is already installed
+Skipping: com.atharok.screentime is already installed
+Skipping: com.aurora.store is already installed
+Skipping: com.autonavi.minimap is already installed
+Skipping: com.beemdevelopment.aegis is already installed
+Skipping: com.chess is already installed
+Skipping: com.eusoft.eudic is already installed
+Skipping: com.example.helloworld is already installed
+Skipping: com.example.minimalapp is already installed
+Skipping: com.example.piliplus is already installed
+Skipping: com.foxwq.yhwq is already installed
+Skipping: com.github.metacubex.clash.meta is already installed
+Skipping: com.github.zly2006.zhplus.lite is already installed
+Skipping: com.gitlab.mudlej.MjPdfReader is already installed
+Skipping: com.google.android.apps.authenticator2 is already installed
+Skipping: com.google.android.apps.docs.editors.docs is already installed
+Skipping: com.google.android.apps.docs.editors.sheets is already installed
+Skipping: com.google.android.apps.docs.editors.slides is already installed
+Skipping: com.google.android.apps.dynamite is already installed
+Skipping: com.google.android.apps.labs.language.tailwind is already installed
+Skipping: com.google.android.apps.maps is already installed
+Skipping: com.google.android.apps.photos is already installed
+Skipping: com.google.android.apps.tasks is already installed
+Skipping: com.google.android.calculator is already installed
+Skipping: com.google.android.calendar is already installed
+Skipping: com.google.android.gms is already installed
+Skipping: com.google.android.inputmethod.latin is already installed
+Skipping: com.google.android.keep is already installed
+Skipping: com.google.android.syncadapters.contacts is already installed
+Skipping: com.ichi2.anki is already installed
+Skipping: com.machiav3lli.fdroid is already installed
+Skipping: com.niksoftware.snapseed is already installed
+Skipping: com.PigeonGames.Phigros is already installed
+Installing missing app: com.radolyn.ayugram
+adb: failed to finalize session
+Failure [INSTALL_FAILED_NO_MATCHING_ABIS: INSTALL_FAILED_NO_MATCHING_ABIS: Failed to extract native libraries, res=-113]
+Skipping: com.rom1v.sndcpy is already installed
+Skipping: com.sega.pjsekai is already installed
+Skipping: com.soulgamechst.majsoul is already installed
+Skipping: com.tencent.mm is already installed
+Skipping: com.tencent.mobileqq is already installed
+Skipping: com.tencent.tmgp.supercell.clashroyale is already installed
+Skipping: com.termux is already installed
+Installing missing app: com.x8bit.bitwarden
+Success
+Skipping: com.xycz.simple_live is already installed
+Skipping: de.danoeh.antennapod is already installed
+Skipping: eu.depau.etchdroid is already installed
+Skipping: io.github.muntashirakon.Music is already installed
+Skipping: io.github.samolego.canta is already installed
+Installing missing app: jp.pxv.android
+Success
+Installing missing app: me.zhanghai.android.files
+Success
+Skipping: moe.shizuku.privileged.api is already installed
+Installing missing app: net.osmand
+Success
+Installing missing app: org.breezyweather
+Success
+Skipping: org.catrobat.paintroid is already installed
+Skipping: org.fcitx.fcitx5.android is already installed
+Skipping: org.fossify.voicerecorder is already installed
+Skipping: org.lichess.mobileapp.free is already installed
+Skipping: org.mewx.wenku8 is already installed
+Skipping: org.mozilla.firefox is already installed
+Skipping: org.thunderdog.challegram is already installed
+Installing missing app: org.videolan.vlc
+Success
+Skipping: sh.ppy.osulazer is already installed
+```
+
+```
+ ~/apks % for dir in */; do
+   pkg="${dir%/}"
+   if adb shell pm list packages | grep -q "^package:$pkg$"; then
+     echo "Skipping: $pkg is already installed"
+   else
+     echo "Installing missing app: $pkg"
+     adb install-multiple "$dir"*.apk < /dev/null
+   fi
+done
+Skipping: app.lawnchair.lawnicons.play is already installed
+Skipping: app.lawnchair.play is already installed
+Skipping: chat.fluffy.fluffychat is already installed
+Skipping: com.a10miaomiao.bilimiao is already installed
+Skipping: com.aefyr.sai.fdroid is already installed
+Skipping: com.android.vending is already installed
+Skipping: com.anthropic.claude is already installed
+Skipping: com.atharok.screentime is already installed
+Skipping: com.aurora.store is already installed
+Skipping: com.autonavi.minimap is already installed
+Skipping: com.beemdevelopment.aegis is already installed
+Skipping: com.chess is already installed
+Skipping: com.eusoft.eudic is already installed
+Skipping: com.example.helloworld is already installed
+Skipping: com.example.minimalapp is already installed
+Skipping: com.example.piliplus is already installed
+Skipping: com.foxwq.yhwq is already installed
+Skipping: com.github.metacubex.clash.meta is already installed
+Skipping: com.github.zly2006.zhplus.lite is already installed
+Skipping: com.gitlab.mudlej.MjPdfReader is already installed
+Skipping: com.google.android.apps.authenticator2 is already installed
+Skipping: com.google.android.apps.docs.editors.docs is already installed
+Skipping: com.google.android.apps.docs.editors.sheets is already installed
+Skipping: com.google.android.apps.docs.editors.slides is already installed
+Skipping: com.google.android.apps.dynamite is already installed
+Skipping: com.google.android.apps.labs.language.tailwind is already installed
+Skipping: com.google.android.apps.maps is already installed
+Skipping: com.google.android.apps.photos is already installed
+Skipping: com.google.android.apps.tasks is already installed
+Skipping: com.google.android.calculator is already installed
+Skipping: com.google.android.calendar is already installed
+Skipping: com.google.android.gms is already installed
+Skipping: com.google.android.inputmethod.latin is already installed
+Skipping: com.google.android.keep is already installed
+Skipping: com.google.android.syncadapters.contacts is already installed
+Skipping: com.ichi2.anki is already installed
+Skipping: com.machiav3lli.fdroid is already installed
+Skipping: com.niksoftware.snapseed is already installed
+Skipping: com.PigeonGames.Phigros is already installed
+Installing missing app: com.radolyn.ayugram
+adb: failed to finalize session
+Failure [INSTALL_FAILED_NO_MATCHING_ABIS: INSTALL_FAILED_NO_MATCHING_ABIS: Failed to extract native libraries, res=-113]
+Skipping: com.rom1v.sndcpy is already installed
+Skipping: com.sega.pjsekai is already installed
+Skipping: com.soulgamechst.majsoul is already installed
+Skipping: com.tencent.mm is already installed
+Skipping: com.tencent.mobileqq is already installed
+Skipping: com.tencent.tmgp.supercell.clashroyale is already installed
+Skipping: com.termux is already installed
+Skipping: com.x8bit.bitwarden is already installed
+Skipping: com.xycz.simple_live is already installed
+Skipping: de.danoeh.antennapod is already installed
+Skipping: eu.depau.etchdroid is already installed
+Skipping: io.github.muntashirakon.Music is already installed
+Skipping: io.github.samolego.canta is already installed
+Skipping: jp.pxv.android is already installed
+Skipping: me.zhanghai.android.files is already installed
+Skipping: moe.shizuku.privileged.api is already installed
+Skipping: net.osmand is already installed
+Skipping: org.breezyweather is already installed
+Skipping: org.catrobat.paintroid is already installed
+Skipping: org.fcitx.fcitx5.android is already installed
+Skipping: org.fossify.voicerecorder is already installed
+Skipping: org.lichess.mobileapp.free is already installed
+Skipping: org.mewx.wenku8 is already installed
+Skipping: org.mozilla.firefox is already installed
+Skipping: org.thunderdog.challegram is already installed
+Skipping: org.videolan.vlc is already installed
+Skipping: sh.ppy.osulazer is already installed
+```
+
 
