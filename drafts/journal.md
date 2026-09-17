@@ -54675,6 +54675,10 @@ they quit.
 
 15 40 dl `Minato Aqua Cover` `Minato Aqua Collab` `Kanaria` `Kasane Teto` `Vocaloid Hits (year)` `Vocaloid Big Hits` `Vocaloid Focus`.
 
+17
+
+21 30 unbox and setup mi pad 7.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
