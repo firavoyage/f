@@ -247,3 +247,312 @@ adb: failed to finalize session
 Failure [INSTALL_FAILED_USER_RESTRICTED: Install canceled by user]
 Installing missing app: com.autonavi.minimap
 ```
+
+<!-- for state surveilliance they want accounts to be logged in to toggle on "install apps via usb". warnings w confirmations delay are ubiquitous. mlcn ppl, you should fight. -->
+
+<!-- they have confirmation screen (w timeoout, remember choice doesnt work) for individual apps in batch installation. yet i may click automatically i guess. -->
+
+```
+ ~/apks % for dir in */; do
+   pkg="${dir%/}"
+   if adb shell pm list packages | grep -q "^package:$pkg$"; then
+     echo "Skipping: $pkg is already installed"
+   else
+     echo "Installing missing app: $pkg"
+     adb install-multiple "$dir"*.apk < /dev/null
+   fi
+done
+Installing missing app: app.lawnchair.lawnicons.play
+Success
+Installing missing app: app.lawnchair.play
+Success
+Installing missing app: chat.fluffy.fluffychat
+Success
+Installing missing app: com.a10miaomiao.bilimiao
+Success
+Installing missing app: com.aefyr.sai.fdroid
+^C%
+```
+
+```
+ ~/apks % for dir in */; do
+   pkg="${dir%/}"
+   if adb shell pm list packages | grep -q "^package:$pkg$"; then
+     echo "Skipping: $pkg is already installed"
+   else
+     echo "Installing missing app: $pkg"
+     adb install-multiple "$dir"*.apk < /dev/null
+   fi
+done
+Skipping: app.lawnchair.lawnicons.play is already installed
+Skipping: app.lawnchair.play is already installed
+Skipping: chat.fluffy.fluffychat is already installed
+Skipping: com.a10miaomiao.bilimiao is already installed
+Skipping: com.aefyr.sai.fdroid is already installed
+Skipping: com.android.vending is already installed
+Installing missing app: com.anthropic.claude
+Success
+Installing missing app: com.atharok.screentime
+Success
+Installing missing app: com.aurora.store
+Success
+Installing missing app: com.autonavi.minimap
+Success
+Installing missing app: com.beemdevelopment.aegis
+Success
+Installing missing app: com.chess
+Success
+Installing missing app: com.eusoft.eudic
+Success
+Installing missing app: com.example.helloworld
+Success
+Installing missing app: com.example.minimalapp
+Success
+Installing missing app: com.example.piliplus
+Success
+Installing missing app: com.foxwq.yhwq
+Success
+Installing missing app: com.github.metacubex.clash.meta
+Success
+Installing missing app: com.github.zly2006.zhplus.lite
+adb: failed to finalize session
+* daemon not running; starting now at tcp:5037
+ADB server didn't ACK
+Full server startup log: /tmp/adb.1000.log
+Server had pid: 238553
+--- adb starting (pid 238553) ---
+09-17 23:47:27.761 238553 238553 I adb     : main.cpp:66 Android Debug Bridge version 1.0.41
+09-17 23:47:27.761 238553 238553 I adb     : main.cpp:66 Version 36.0.0-13206524
+09-17 23:47:27.761 238553 238553 I adb     : main.cpp:66 Installed as /usr/local/bin/adb
+09-17 23:47:27.761 238553 238553 I adb     : main.cpp:66 Running on Linux 6.17.0-35-generic (x86_64)
+09-17 23:47:27.761 238553 238553 I adb     : main.cpp:66
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:170 AdbUdpSocket fd=12
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:170 AdbUdpSocket fd=17
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:274 SetMulticastOutboundInterface for index=2
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:533 bind endpoint=0.0.0.0:5353
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:274 SetMulticastOutboundInterface for index=2
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:558 bind endpoint=[0000:0000:0000:0000:0000:0000:0000:0000]:5353 scope_id=0
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:170 AdbUdpSocket fd=18
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:274 SetMulticastOutboundInterface for index=3
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:533 bind endpoint=0.0.0.0:5353
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:170 AdbUdpSocket fd=19
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:170 AdbUdpSocket fd=20
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:274 SetMulticastOutboundInterface for index=4
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:533 bind endpoint=0.0.0.0:5353
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:274 SetMulticastOutboundInterface for index=4
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:558 bind endpoint=[0000:0000:0000:0000:0000:0000:0000:0000]:5353 scope_id=0
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:170 AdbUdpSocket fd=21
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:274 SetMulticastOutboundInterface for index=5
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:533 bind endpoint=0.0.0.0:5353
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:170 AdbUdpSocket fd=22
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:274 SetMulticastOutboundInterface for index=6
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:558 bind endpoint=[0000:0000:0000:0000:0000:0000:0000:0000]:5353 scope_id=0
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:170 AdbUdpSocket fd=23
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:274 SetMulticastOutboundInterface for index=7
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:558 bind endpoint=[0000:0000:0000:0000:0000:0000:0000:0000]:5353 scope_id=0
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:170 AdbUdpSocket fd=26
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:274 SetMulticastOutboundInterface for index=8
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:558 bind endpoint=[0000:0000:0000:0000:0000:0000:0000:0000]:5353 scope_id=0
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:170 AdbUdpSocket fd=27
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:274 SetMulticastOutboundInterface for index=9
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:558 bind endpoint=[0000:0000:0000:0000:0000:0000:0000:0000]:5353 scope_id=0
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:170 AdbUdpSocket fd=28
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:274 SetMulticastOutboundInterface for index=10
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:558 bind endpoint=[0000:0000:0000:0000:0000:0000:0000:0000]:5353 scope_id=0
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:170 AdbUdpSocket fd=29
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:170 AdbUdpSocket fd=30
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:274 SetMulticastOutboundInterface for index=11
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:533 bind endpoint=0.0.0.0:5353
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:274 SetMulticastOutboundInterface for index=11
+09-17 23:47:27.763 238552 238552 I adb     : udp_socket.cpp:558 bind endpoint=[0000:0000:0000:0000:0000:0000:0000:0000]:5353 scope_id=0
+09-17 23:47:27.770 238552 238571 I adb     : usb_libusb.cpp:90 47f969dd: read thread spawning
+09-17 23:47:27.770 238552 238572 I adb     : usb_libusb.cpp:119 47f969dd: write thread spawning
+09-17 23:47:27.895 238552 238571 I adb     : usb_libusb.cpp:94 47f969dd: read failed: Success
+09-17 23:47:27.895 238552 238572 I adb     : transport.cpp:1165 47f969dd: connection terminated: write thread stopped
+09-17 23:47:27.895 238552 238552 I adb     : usb_libusb.cpp:174 LibUsbConnection(47f969dd): stopping
+09-17 23:47:27.895 238552 238552 I adb     : usb_libusb.cpp:167 LibUsbConnection(47f969dd) Stop: not running
+09-17 23:47:28.263 238553 238553 F adb     : main.cpp:167 could not install *smartsocket* listener: Address already in use
+
+* failed to start daemon
+adb: cannot connect to daemon
+Installing missing app: com.gitlab.mudlej.MjPdfReader
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.google.android.apps.authenticator2
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.google.android.apps.docs.editors.docs
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.google.android.apps.docs.editors.sheets
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.google.android.apps.docs.editors.slides
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.google.android.apps.dynamite
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.google.android.apps.labs.language.tailwind
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.google.android.apps.maps
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.google.android.apps.photos
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.google.android.apps.tasks
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.google.android.calculator
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.google.android.calendar
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.google.android.gms
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.google.android.inputmethod.latin
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.google.android.keep
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.google.android.syncadapters.contacts
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.ichi2.anki
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.machiav3lli.fdroid
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.niksoftware.snapseed
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.PigeonGames.Phigros
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.radolyn.ayugram
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.rom1v.sndcpy
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.sega.pjsekai
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.soulgamechst.majsoul
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.tencent.mm
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.tencent.mobileqq
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.tencent.tmgp.supercell.clashroyale
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.termux
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.x8bit.bitwarden
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: com.xycz.simple_live
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: de.danoeh.antennapod
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: eu.depau.etchdroid
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: io.github.muntashirakon.Music
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: io.github.samolego.canta
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: jp.pxv.android
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: me.zhanghai.android.files
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: moe.shizuku.privileged.api
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: net.osmand
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: org.breezyweather
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: org.catrobat.paintroid
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: org.fcitx.fcitx5.android
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: org.fossify.voicerecorder
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: org.lichess.mobileapp.free
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: org.mewx.wenku8
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: org.mozilla.firefox
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: org.thunderdog.challegram
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: org.videolan.vlc
+adb: no devices/emulators found
+adb: no devices/emulators found
+Installing missing app: sh.ppy.osulazer
+adb: no devices/emulators found
+```
+
+```
+ ~ % scrcpy
+scrcpy 3.3.3 <https://github.com/Genymobile/scrcpy>
+INFO: ADB device found:
+INFO:     -->   (usb)  47f969dd                        device  2410CRP4CC
+/usr/local/bin/scrcpy-server: 1 file pushed, 0 skipped. 7.7 MB/s (90164 bytes in 0.011s)
+[server] INFO: Device: [Xiaomi] Xiaomi 2410CRP4CC (Android 15)
+INFO: Renderer: opengl
+INFO: OpenGL version: 4.6 (Compatibility Profile) Mesa 25.2.8-0ubuntu0.24.04.2
+INFO: Trilinear filtering enabled
+INFO: Texture: 3200x2136
+ ~ % phone
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+[2] 239311
+scrcpy 3.3.3 <https://github.com/Genymobile/scrcpy>
+ERROR: Could not find any ADB device
+ ~ % ERROR: Server connection failed
+
+[2]  + exit 1     scrcpy --fullscreen --turn-screen-off --power-off-on-close  --window-title
+ ~ % adb devices
+List of devices attached
+47f969dd        device
+
+ ~ % phone
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+[2] 239511
+scrcpy 3.3.3 <https://github.com/Genymobile/scrcpy>
+ERROR: Could not find any ADB device
+ ~ % ERROR: Server connection failed
+
+[2]  + exit 1     scrcpy --fullscreen --turn-screen-off --power-off-on-close  --window-title
+```
+
+
