@@ -16340,6 +16340,8 @@ Show all
 
 # . pl design flaws
 
+# 
+
 # why do ppl say fuck tc39
 
 When developers say **"fuck TC39,"** they are <mark>expressing frustration with the<span> </span><strong>Technical Committee 39</strong></mark>—the committee responsible for standardizing **JavaScript** (ECMAScript). [link](https://news.ycombinator.com/item?id=14635534)
