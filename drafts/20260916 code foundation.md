@@ -11151,6 +11151,247 @@ Are you building a brand new app using **Svelte 5** or maintaining a legacy **Sv
 
 Show all
 
+# all svelte 4 syntax
+
+Here is the comprehensive guide to **Svelte 4 syntax**, covering core script rules, template blocks, element directives, and state management. [link](https://www.youtube.com/watch?v=%5F-uq--CLjbQ)
+
+***
+
+### 1. Script & Component Options
+
+html
+
+```
+<script context="module">
+  // Runs once when the module first loads (shared across instances)
+  export const sharedConstant = 'GLOBAL';
+</script>
+
+<script>
+  import { onMount } from 'svelte';
+
+  // 1. Local State
+  let count = 0;
+
+  // 2. Props (Component Inputs)
+  export let user = 'Guest';               // Optional prop with default value
+  export let requiredProp;                 // Required prop
+
+  // 3. Reactive Declarations ($:)
+  $: doubled = count * 2;                 // Reactive variable
+  $: if (count >= 10) {                   // Reactive statement block
+    console.log('Count is high!');
+  }
+
+  // 4. Lifecycle Hooks
+  onMount(() => {
+    console.log('Mounted');
+    return () => console.log('Destroyed'); // Cleanup (replaces onDestroy)
+  });
+</script>
+```
+
+Use code with caution.
+
+***
+
+### 2. Template Logic Blocks
+
+#### If-Else Blocks
+
+html
+
+```
+{#if count === 0}
+  <p>Empty</p>
+{:else if count > 0 && count < 5}
+  <p>Getting there</p>
+{:else}
+  <p>Full</p>
+{/if}
+```
+
+Use code with caution.
+
+#### Each (Loops) Blocks
+
+html
+
+```
+<!-- Standard Loop -->
+{#each items as item}
+  <li>{item.name}</li>
+{/each}
+
+<!-- Keyed Loop (Recommended for dynamic arrays) -->
+{#each items as item (item.id)}
+  <li>{item.name}</li>
+{:else}
+  <p>No items found.</p> <!-- Optional fallback -->
+{/each}
+
+<!-- Destructured Loop with Index -->
+{#each items as { id, name }, index (id)}
+  <li>#{index}: {name}</li>
+{#each}
+```
+
+Use code with caution.
+
+#### Await (Promises) Blocks
+
+html
+
+```
+{#await promise}
+  <p>Loading...</p>
+{:then data}
+  <p>Data: {data}</p>
+{:catch error}
+  <p>Error: {error.message}</p>
+{/await}
+```
+
+Use code with caution.
+
+***
+
+### 3. Element Directives
+
+| Directive Type         | Syntax Example                    | Description                                   |
+| ---------------------- | --------------------------------- | --------------------------------------------- |
+| **Attributes & Props** | `<div class={myClass}>`           | Dynamic attributes                            |
+| **Shorthand Attr**     | `<div {id}>`                      | Equivalent to `id={id}`                       |
+| **Class Toggle**       | `<div class:active={isActive}>`   | Conditionally applies a CSS class             |
+| **Style Property**     | `<div style:color={myColor}>`     | Inline CSS variable assignment                |
+| **Event Listeners**    | `<button on:click={handleClick}>` | Triggers a local function                     |
+| **Event Modifiers**    | \`                                | preventDefault={submit}>\`                    |
+| **Two-way Binding**    | `<input bind:value={name}>`       | Two-way data binding                          |
+| **Element Binding**    | `<canvas bind:this={canvasRef}>`  | References the DOM element node               |
+| **Actions**            | `<div use:myAction={params}>`     | Hooks element into custom lifecycle utilities |
+
+***
+
+### 4. Component Communication & Slots
+
+#### Child Component (`Child.svelte`)
+
+html
+
+```
+<script>
+  import { createEventDispatcher } from 'svelte';
+
+  const dispatch = createEventDispatcher(); // Fire custom events
+
+  function notifyParent() {
+    dispatch('message', { text: 'Hello!' });
+  }
+</script>
+
+<!-- Named & Default Slots -->
+<slot name="header">Fallback Header</slot>
+<slot>Default body content goes here.</slot>
+
+<button on:click={notifyParent}>Ping Parent</button>
+```
+
+Use code with caution.
+
+#### Parent Component (`Parent.svelte`)
+
+html
+
+```
+<script>
+  import Child from './Child.svelte';
+
+  function handleMessage(event) {
+    console.log(event.detail.text); // 'Hello!'
+  }
+</script>
+
+<Child on:message={handleMessage}>
+  <h1 slot="header">Custom Title</h1>
+  <p>Custom Body</p>
+</Child>
+```
+
+Use code with caution.
+
+***
+
+### 5. Svelte 4 Global Context & Stores
+
+#### Classic Stores (`svelte/store`)
+
+javascript
+
+```
+import { writable, readable, derived } from 'svelte/store';
+
+// 1. Writable Store
+export const countStore = writable(0); // usage: countStore.set(1), countStore.update(n => n + 1)
+
+// 2. Readable Store
+export const timeStore = readable(new Date(), (set) => {
+  const interval = setInterval(() => set(new Date()), 1000);
+  return () => clearInterval(interval); // cleanup
+});
+
+// 3. Derived Store
+export const doubleStore = derived(countStore, ($countStore) => $countStore * 2);
+```
+
+Use code with caution.
+
+#### Store Auto-Subscription in Markup
+
+Prefix the store name with `$` inside `.svelte` components to automatically subscribe and unsubscribe safely. [link](https://www.youtube.com/watch?v=%5F-uq--CLjbQ)
+
+html
+
+```
+<script>
+  import { countStore } from './store.js';
+</script>
+
+<h1>The count is {$countStore}</h1>
+<button on:click={() => $countStore++}>+</button>
+```
+
+Use code with caution.
+
+***
+
+### 6. Special Tags & Elements
+
+- **`{@html string}`**: Renders unescaped HTML strings safely inside elements.
+- **`{@debug var1, var2}`**: Pauses code execution and prints values to dev tools console.
+- **`<svelte:component this={currentComponent}/>`**: Dynamically renders components.
+- **`<svelte:window on:keydown={handleKeydown}/>`**: Listens directly to the window element.
+- **`<svelte:body on:mouseenter={handleHover}/>`**: Listens directly to the body element.
+- **`<svelte:head>`**: Injects tags (meta, links, script) straight into the page HTML head.
+- **`<svelte:self>`**: Allows a component to recursively render itself. [link](https://svelte.dev/docs/svelte/basic-markup)
+
+Are you setting up a legacy **Svelte 4** application, or are you looking to migrate an existing codebase over to the newer **Svelte 5 Runes syntax**? Let me know if you need specific help with **TypeScript configuration** or **transition/animation blocks**.
+
+- [link](https://www.youtube.com/watch?v=%5F-uq--CLjbQ)\
+  YouTube·Cooper Codes\
+  Svelte 5 VS Svelte 4 Syntax | Code Snippet Comparisons\
+  Oct 20, 2024 — In this video, we are going to be comparing different code examples from Svelte 4 to Svelte 5, looking at changes in areas like st...\
+  22:43
+- [link](https://svelte.dev/docs/svelte/basic-markup)\
+  Svelte\
+  Basic markup • Svelte Docs\
+  Text expressions. A JavaScript expression can be included as text by surrounding it with curly braces. ... Expressions that are nu...
+- [link](https://svelte.dev/docs/svelte/use)\
+  Svelte\
+  use: • Svelte Docs\
+  On this page. ... In Svelte 5.29 and newer, consider using attachments instead, as they are more flexible and composable. ... The ...
+
+Show all
+
 # 
 
 # . misc
