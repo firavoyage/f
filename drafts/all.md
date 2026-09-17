@@ -796,6 +796,7 @@ history:
 - vue
 - svelte
 - solidjs
+- js
 
 politics:
 
