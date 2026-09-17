@@ -138,6 +138,7 @@ life:
 - watch
 - pad
 - game maimai badges name plates
+- game maimai friend match class ghost data player pool birthday paradox
 
 create something:
 
