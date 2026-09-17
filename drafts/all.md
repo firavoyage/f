@@ -416,6 +416,7 @@ android:
 - test declarative predictable hello world compilation
 - export apk aab
 - set up one ui
+- set up hyper os
 
 ops: <!-- devops, ci, vcs, ... -->
 
