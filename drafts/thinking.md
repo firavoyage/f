@@ -1,1 +1,2 @@
-(archived to drafts/todo. thinking should be temporary. better to organize them, put them under the right project, and separate todo/thinking.)
+- copy videos to pad
+- (archived to drafts/todo. thinking should be temporary. better to organize them, put them under the right project, and separate todo/thinking.)
