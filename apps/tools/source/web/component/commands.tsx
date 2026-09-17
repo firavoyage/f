@@ -4,7 +4,7 @@ import { Scroll } from './scroll'
 import { Button } from './button'
 import { Popup } from './popup'
 import { Input } from './input'
-import { go } from 'fuzzysort'
+import { go as search } from 'fuzzysort'
 
 type commands = {
   open: boolean
@@ -15,14 +15,14 @@ type commands = {
 export function Commands(props: commands) {
   const { open, toggle_open, commands: commands_object } = props
   const [is_on_top, toggle_is_on_top] = useToggle(false)
-  const [search, set_search] = useState('')
+  const [query, set_query] = useState('')
   const [focus, set_focus] = useState(0)
 
   const input = useRef()
   const list = useRef()
 
   const commands = map(commands_object, ([k, v]) => k)
-  const results = search ? map(go(search, commands), (result) => result.target) : commands
+  const results = query ? map(search(query, commands), (result) => result.target) : commands
   // const results = commands
   // const results = [
   //   ...map(commands, ([k, v]) => k),
@@ -79,7 +79,7 @@ export function Commands(props: commands) {
   // reset focus on search change
   useEffect(() => {
     set_focus(0)
-  }, [search])
+  }, [query])
 
   use_keyboard('tab', navigate_down, { when: open })
   use_keyboard('ctrl+j', navigate_down, { when: open })
@@ -95,7 +95,7 @@ export function Commands(props: commands) {
     <Popup {...p({ open, toggle_open, backdrop: false, align: 'top' })}>
       <div className="commands">
         <div className="search">
-          <Input {...p({ value: search, set_value: set_search, ref: input })}></Input>
+          <Input {...p({ value: query, set_value: set_query, ref: input })}></Input>
         </div>
         <Scroll {...p({ toggle_is_on_top })}>
           <div className="body" {...p({ ref: list })}>
