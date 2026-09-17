@@ -8,7 +8,7 @@ you may use their specific language when dev under environments <!-- on platform
 
 yet js is flawed.
 
-it's rapidly prototyped initially, grown where constraints and patterns are considered obsolete today, and it has to be backward compatible. 
+it's rapidly prototyped initially, grown where constraints and patterns would be considered obsolete today, and it has to be backward compatible. 
 
 you can use js in any color you like. oop/fp. fn statement/arrow fn. cjs/esm. imperative/declarative. setter/proxy.
 
