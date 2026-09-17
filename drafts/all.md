@@ -800,6 +800,7 @@ history:
 - solidjs
 - js
 - ts
+- astrodx
 
 politics:
 
