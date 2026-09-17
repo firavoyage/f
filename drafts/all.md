@@ -137,6 +137,7 @@ life:
 - game maimai dx song rating formula
 - watch
 - pad
+- game maimai badges name plates
 
 create something:
 
