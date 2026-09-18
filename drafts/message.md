@@ -26,3 +26,10 @@ how does lean kernel work
 
 how does smt work
 
+---
+
+history of low code
+
+history of no/low code platforms
+
+situation

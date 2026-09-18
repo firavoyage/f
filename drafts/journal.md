@@ -54679,6 +54679,10 @@ they quit.
 
 21 30 unbox and setup mi pad 7.
 
+28
+
+23 00 put away the color pencil case on the desk.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
