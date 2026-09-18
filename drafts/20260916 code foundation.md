@@ -16400,6 +16400,280 @@ Are you interested in learning how Lean compares to other tools like **Coq/Rocq*
 
 Show all
 
+# how to install lean prover on ubuntu
+
+## how to install lean prover on ubuntu
+
+To install **Lean 4** on Ubuntu, the officially recommended method is to use **`elan`** (the Lean version manager) along with **Visual Studio Code**. [link](https://lean-lang.org/install/)
+
+Follow these sequential steps to set up your environment:
+
+### Step 1: Install Required Dependencies
+
+Lean requires `git` and `curl` to fetch and manage packages. Open your terminal and run: [link](https://lean-lang.org/install/manual/)
+
+bash
+
+```
+sudo apt update
+sudo apt install git curl -y
+```
+
+Use code with caution.
+
+### Step 2: Install the Lean Version Manager (`elan`)
+
+[`elan`](https://github.com/leanprover/tutorial) automatically manages the specific version of Lean needed for your individual projects. Run the official installer script: [link](https://lean-lang.org/install/manual/)
+
+bash
+
+```
+curl https://elan.lean-lang.org/elan-init.sh -sSf | sh
+```
+
+Use code with caution.
+
+- When prompted during the installation, press `1` to select the **default installation option**.
+
+- Once the script finishes, update your terminal environment so it recognizes the new commands:\
+  bash
+
+<!---->
+
+```
+source $HOME/.elan/env
+```
+
+Use code with caution.\
+[link](https://lean-lang.org/install/manual/)
+
+### Step 3: Install VS Code and the Lean 4 Extension
+
+Visual Studio Code is the primary and highly recommended IDE for writing Lean code. [link](https://leanprover-community.github.io/lean3/install/linux.html)
+
+1. **Download and install VS Code**:\
+   bash
+
+<!---->
+
+```
+wget -O code.deb https://go.microsoft.com/fwlink/?LinkID=760868
+sudo apt install ./code.deb -y
+rm code.deb
+```
+
+Use code with caution.
+2\. **Install the official Lean 4 extension** directly from the command line:\
+bash
+
+```
+code --install-extension leanprover.lean4
+```
+
+Use code with caution.\
+[link](https://lean-lang.org/install/manual/)
+
+### Step 4: Verify the Installation
+
+To ensure everything is working correctly, open VS Code and create a new scratch file named `test.lean`. Paste the following code into it: [link](https://proofassistants.stackexchange.com/questions/2/how-do-i-install-lean-4)
+
+lean
+
+```
+#eval 1 + 1
+```
+
+Use code with caution.
+
+Once typed, a side panel called the **Lean Infoview** should open automatically on the right, displaying the output `2`. [link](https://proofassistants.stackexchange.com/questions/2/how-do-i-install-lean-4)
+
+Are you setting up Lean to work on an **existing project** (like Mathlib), or are you planning to start a **completely new package** from scratch? I can provide the specific `lake` toolchain commands for either path. [link](https://wiki.archlinux.org/title/Lean)
+
+- [link](https://lean-lang.org/install/)\
+  Lean Programming Language\
+  Install — Lean Lang - Lean Programming Language\
+  Install Lean. The recommended way to install Lean is through VS Code and the Lean 4 VS Code extension, ; STEP ONEInstall VS Code. ...
+- [link](https://lean-lang.org/install/manual/)\
+  Lean Programming Language\
+  Install — Lean Lang\
+  Linux macOS Windows Note that the following installation steps are optimized for Ubuntu. Some steps may differ for other distribut...
+- [link](https://proofassistants.stackexchange.com/questions/2/how-do-i-install-lean-4)\
+  Proof Assistants Stack Exchange\
+  How do I install Lean 4? - Proof Assistants Stack Exchange\
+  Feb 8, 2022 — Sorted by: 13 Install the latest Lean 4 nightly through elan : in any bash-compatible shell, run: curl https://raw.githubuserconte...
+
+Show all
+
+## how to use it via cli
+
+To interact with **Lean 4 via the command line (CLI)**, you will primarily use two commands: **`lean`** (the compiler and evaluator) and **`lake`** (Lean's build system and package manager).
+
+Here is how to create, build, and run projects entirely from the terminal.
+
+***
+
+### 1. Compile or Evaluate a Single File
+
+If you have a standalone file like `test.lean`, you can process it directly from the CLI.
+
+- **To evaluate or print compiler messages** (similar to the VS Code Infoview):\
+  bash
+
+<!---->
+
+```
+lean test.lean
+```
+
+Use code with caution.\
+_(If your file contains `#eval 1 + 1`, this command will output `2` directly to the terminal)._
+
+- **To compile a file into an executable binary**:\
+  bash
+
+<!---->
+
+```
+lean --run test.lean
+```
+
+Use code with caution.
+
+***
+
+### 2. Manage Projects Using Lake
+
+For anything more complex than a single file, you should use **Lake**. It automates dependency management and builds.
+
+- **Create a new executable project:**\
+  bash
+
+<!---->
+
+```
+lake new my_project exe
+```
+
+Use code with caution.\
+This creates a folder named `my_project` containing a structured Lean environment, including a `Main.lean` entry point.
+
+- **Navigate into your project:**\
+  bash
+
+<!---->
+
+```
+cd my_project
+```
+
+Use code with caution.
+
+- **Build the project:**\
+  bash
+
+<!---->
+
+```
+lake build
+```
+
+Use code with caution.\
+This compiles your Lean files and outputs an executable binary.
+
+- **Run the compiled binary:**\
+  bash
+
+<!---->
+
+```
+.build/bin/my_project
+```
+
+Use code with caution.
+
+***
+
+### 3. Run an Interactive REPL
+
+Lean 4 does not have a traditional built-in interactive REPL (like Python). However, you can run Lean in an interactive text-stream mode (used by IDEs behind the scenes) using:
+
+bash
+
+```
+lean --run
+```
+
+Use code with caution.
+
+Alternatively, if you want a true terminal-based interactive proof environment, the Lean community highly recommends using **Lean inside Vim/NeoVim** (via the `lean.nvim` plugin) or using the standard VS Code setup.
+
+Are you planning to add **external packages** (like the mathematics library `Mathlib`) to your CLI project, or do you just need help writing a custom `lakefile.lean` configuration?
+
+## what does a lean program do
+
+Unlike standard programming languages, a **Lean program** usually does one of two entirely different jobs—and often both at the same time:
+
+1. **It acts as a Mathematical Proof (Theorem Proving):** Most people use Lean to write mathematical statements and then use Lean's interactive logic system to write rigorous, error-free proofs for them.
+2. **It acts as a General-Purpose Executable (Functional Programming):** Lean 4 is a fully capable functional programming language (similar to Haskell or OCaml) that can compile down to highly efficient native machine code.
+
+***
+
+### 1. The Mathematical Side: Verifying Proofs
+
+When you write math in Lean, you aren't calculating a number; you are convincing a **logical kernel** that a mathematical statement is absolutely true. Lean acts as an unbreakable checker. If your proof compiles without errors, it is guaranteed to be logically flawless.
+
+For example, a Lean program might state a theorem and prove it using **tactics** (step-by-step commands to solve logic puzzles):
+
+lean
+
+```
+-- A simple theorem stating that for any natural numbers n and m, n + m = m + n
+theorem add_comm (n m : Nat) : n + m = m + n := by
+  induction n with
+  | zero => simp
+  | succ n ih => ...
+```
+
+Use code with caution.
+
+When Lean processes this, it doesn't "run" the code in a traditional sense. Instead, it checks that every logical step follows perfectly from the axioms of mathematics.
+
+### 2. The Programming Side: Executing Software
+
+Lean 4 is also a **pure functional programming language**. You can use it to write command-line tools, web servers, or complex algorithms. It features a sophisticated compiler that translates Lean code into C, which is then compiled into a fast, native binary.
+
+A functional Lean program looks like this:
+
+lean
+
+```
+-- A function that calculates the factorial of a number
+def factorial (n : Nat) : Nat :=
+  match n with
+  | 0 => 1
+  | n + 1 => (n + 1) * factorial n
+
+def main : IO Unit := do
+  let result := factorial 5
+  IO.println s!"The factorial of 5 is {result}"
+```
+
+Use code with caution.
+
+When you run this via the CLI (`lake run`), it executes exactly like a program written in C++, Python, or Rust, printing `The factorial of 5 is 120` to your terminal.
+
+***
+
+### The Superpower: "Correctness by Construction"
+
+The ultimate purpose of Lean is to merge these two worlds. Because Lean is both a proof assistant and a programming language, you can write a piece of software (like a sorting algorithm) and then **write a mathematical proof inside the same file proving that the software has zero bugs**.
+
+This is used for high-stakes systems where software failure is not an option, such as cryptography, aerospace, and compiler design.
+
+Would you like to try writing a **basic functional program** (like a calculator script) or a **simple mathematical proof** (like proving 1 + 1 = 2 from core logic) to see how Lean handles it?
+
+# 
+
 # . misc
 
 # are v attrs discouraged in modern vue
