@@ -717,6 +717,8 @@ math:
 - problem first one hundred million digits of sqrt two nickel angel mi challenge
 - godel completeness incompleteness theorem
 - logical systems foundational systems zfc set theory type theory category theory
+- goodstein theorem
+- peano arithmetic
 
 physics:
 
