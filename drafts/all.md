@@ -716,6 +716,7 @@ math:
 - problem gx divide fx grouping patching
 - problem first one hundred million digits of sqrt two nickel angel mi challenge
 - godel completeness incompleteness theorem
+- logical systems foundational systems zfc set theory type theory category theory
 
 physics:
 
