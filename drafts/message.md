@@ -22,5 +22,7 @@ lean prover syntax examples
 
 how does kernel work
 
+how does lean kernel work
+
 how does smt work
 
