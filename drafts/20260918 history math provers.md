@@ -1,3 +1,5 @@
+# history of math provers
+
 ## history of math provers
 
 September 16, 2026
@@ -94,4 +96,76 @@ Would you like to explore a specific part of this modern history? I can:
 - Explain the significance of **Peter Scholze's Liquid Tensor Experiment**
 
 - Discuss how **Lean 4** became the dominant language for modern formal mathematics
+
+
+# history of lean prover
+
+The **Lean Theorem Prover** is an open-source interactive proof assistant and pure functional programming language based on dependent type theory. Over its relatively short history, it has rapidly become one of the most celebrated tools in modern formal mathematics and software verification. [link](https://en.wikipedia.org/wiki/Lean%5F%28proof%5Fassistant%29)
+
+Below is the chronological evolution and major historical milestones of Lean.
+
+***
+
+### Timeline of Development
+
+```
+2013: Project launched by Leonardo de Moura at Microsoft Research
+  │
+2015: Lean 2 released (experimented with Homotopy Type Theory)
+  │
+2017: Lean 3 released; Mathlib is founded
+  │
+2021: Liquid Tensor Experiment proves Lean's potential for modern math
+  │
+2023: Lean 4 fully released; Transition to a non-profit FRO
+  │
+2024–Present: Widespread AI adoption (e.g., Google DeepMind's AlphaProof)
+```
+
+### The Architectural Generations
+
+- **The Inception & Lean 1 (2013–2014):**\
+  The Lean project was launched in **2013** by computer scientist Leonardo de Moura at Microsoft Research Redmond. De Moura sought to bridge the gap between automated reasoning (like SMT solvers) and interactive proof assistants. The first official public version, Lean 0.1, arrived in 2014. [link](https://lean-lang.org/fro/about/)
+- **Lean 2 (2015):**\
+  Released in the summer of 2015, Lean 2 was notable for experimenting with alternative foundations. It allowed users to toggle between standard dependent type theory and Homotopy Type Theory (HoTT). [link](https://www.andrew.cmu.edu/user/avigad/Talks/lean%5Fini.pdf)
+- **Lean 3 (2017):**\
+  Lean underwent a massive structural rewrite in 2016, dropping HoTT support to focus heavily on a robust, classical variant of the Calculus of Inductive Constructions. Released in early 2017, Lean 3 introduced an influential metaprogramming framework, enabling users to write custom automation tactics within the language itself. [link](https://www.galois.com/articles/the-lean-theorem-prover-past-present-and-future)
+- **Lean 4 (2021–2023):**\
+  While development began in 2018, Lean 4 was officially released as stable in September 2023. It represented a complete redesign, rewriting the system so that **Lean is implemented in Lean itself**. Lean 4 transformed the system into a high-performance, general-purpose programming language that compiles to C code, featuring massive upgrades to its macro and extensibility systems. [link](https://lean-lang.org/functional%5Fprogramming%5Fin%5Flean/Introduction/)
+
+***
+
+### The Rise of Mathlib & Community Growth
+
+Lean’s explosive popularity is tightly bound to its community infrastructure. In 2017, core mathematical libraries were factored out of the main repository, giving birth to Mathlib. [link](https://leanprover-community.github.io/papers/mathlib-paper.pdf)
+
+Initially managed by a small, tight-knit group of academics and students exchanging ideas over a basic mailing list, the community sought a more scalable communication framework. In February 2018, they migrated to a dedicated **Zulip server**. The high accessibility of the Lean Zulip Chat became a crucial social catalyst, attracting world-class pure mathematicians—such as Kevin Buzzard of Imperial College London—who actively evangelized the tool. Today, Mathlib has grown to house millions of lines of machine-checked code spanning algebra, analysis, and topology. [link](https://lean-lang.org/)
+
+***
+
+### Historical Turning Points & Modern Impact
+
+- **The Liquid Tensor Experiment (2020–2022):**\
+  In late 2020, Fields Medalist Peter Scholze challenged the Lean community to verify a complex, foundational theorem of his in liquid vector spaces, a proof he admitted was too complicated for human peers to confidently verify. Led by Johan Commelin, a global team successfully codified and verified the proof in Lean by 2022. This historic event eliminated the "trust bottleneck" and proved Lean could handle bleeding-edge mathematical research. [link](https://www.simonsfoundation.org/2026/06/23/from-trust-to-verification-leans-impact-on-mathematics/)
+- **Establishment of the Lean FRO (2023):**\
+  In July 2023, development transitioned away from Microsoft to the **Lean Focused Research Organization (FRO)**, a nonprofit structured under Convergent Research. Funded by philanthropic grants, the FRO is dedicated to improving Lean’s scalability, tool chains, and user experience. [link](https://en.wikipedia.org/wiki/Lean%5F%28proof%5Fassistant%29)
+- **AI and Auto-Formalization (2024–Present):**\
+  Lean has become the language of choice for tech companies training artificial intelligence in reasoning. Notably, Google DeepMind utilized Lean 4 to build **AlphaProof**, an AI system that solved complex problems from the International Mathematical Olympiad (IMO) by compiling natural language math into Lean and proving them automatically. Concurrently, massive tech infrastructures like Amazon Web Services (AWS) use Lean to verify software permission frameworks and security protocols. [link](https://www.youtube.com/watch?v=WnKHskNts5Y\&t=79)
+
+Would you like to explore **how Lean's logic differs** from other provers like Coq and Isabelle, or would you prefer a recommendation on **how to start learning Lean** (such as the Natural Number Game)?
+
+- [link](https://en.wikipedia.org/wiki/Lean%5F%28proof%5Fassistant%29)\
+  Wikipedia\
+  Lean (proof assistant) - Wikipedia\
+  Lean (proof assistant). Article · Talk. Language; Download PDF; Watch · Edit. Lean is a proof assistant and a functional programmi...
+- [link](https://lean-lang.org/fro/about/)\
+  Lean Programming Language\
+  About — Lean Lang - Lean Programming Language\
+  Since its formation in July 2023 as a non-profit organization under Convergent Research, the FRO pursues a focused mission to impr...
+- [link](https://www.andrew.cmu.edu/user/avigad/Talks/lean%5Fini.pdf)\
+  Carnegie Mellon University\
+  The Lean Theorem Prover - andrew.cmu.ed\
+  Jun 29, 2017 — The Lean Theorem Prover The aim is to bring interactive and automated reasoning together, and build • an interactive theorem prove...
+
+Show all
 
