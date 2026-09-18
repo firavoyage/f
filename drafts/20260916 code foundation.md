@@ -1,3 +1,114 @@
+# . archi
+
+# how to create a programming lang
+
+Creating your own programming language involves <mark>defining<span> </span><strong>how the code looks (syntax)</strong>,<span> </span><strong>what it means (semantics)</strong>, and building a<span> </span><strong>translation tool (an interpreter or compiler)</strong><span> </span>using an existing host language like Python, Rust, or C++</mark>. [link](https://www.reddit.com/r/computerscience/comments/1jblzw6/how%5Fdo%5Fyou%5Fcreate%5Fa%5Fnew%5Fprogramming%5Flanguage/)
+
+For beginners, building an **interpreted language** is highly recommended because it executes code line-by-line and is much easier to debug than compiling straight to machine code. [link](https://www.reddit.com/r/learnprogramming/comments/kjxytb/creating%5Fyour%5Fown%5Fprogramming%5Flanguage/)
+
+***
+
+### Phase 1: Design Your Language
+
+Before writing code, you must define the scope and appearance of your language. [link](https://www.reddit.com/r/computerscience/comments/1jblzw6/how%5Fdo%5Fyou%5Fcreate%5Fa%5Fnew%5Fprogramming%5Flanguage/)
+
+- **Define the Goal:** Are you creating a general-purpose language, a mathematical language, or a domain-specific layout language?
+- **Choose the Syntax:** Decide how variables are declared (`let x = 5`, `x := 5`, or `x is 5`).
+- **Pick a Host Language:** Choose a language you are highly comfortable with to write the interpreter. Python is great for quick development, while Rust and C++ offer speed and strict type management. [link](https://www.reddit.com/r/ProgrammingLanguages/comments/f8u39n/where%5Fdo%5Fi%5Fstart%5Fto%5Fcreate%5Fa%5Fprogramming%5Flanguage/)
+
+***
+
+### Phase 2: Build the Core Architecture
+
+Every programming language relies on a sequential "pipeline" to convert raw text into executable actions. [link](https://medium.com/@abiliu018/how-i-created-my-own-programming-language-from-scratch-9b99fa0a802b)
+
+```
+  Source Code [ text ]
+          │
+          ▼
+   1. Lexer / Tokenizer
+          │
+          ▼
+      [ Tokens ]
+          │
+          ▼
+     2. Parser
+          │
+          ▼
+[ Abstract Syntax Tree (AST) ]
+          │
+          ▼
+3. Evaluator / Interpreter
+```
+
+#### 1. The Lexer (Tokenizer)
+
+The lexer reads your source code character-by-character and groups them into meaningful chunks called **tokens**. It strips away unnecessary whitespaces and comments. [link](https://www.youtube.com/watch?v=Eythq9848Fg\&t=1)
+
+- _Input:_ `let x = 10 + 5`
+- _Output:_ `[TOKEN_LET, TOKEN_IDENT("x"), TOKEN_ASSIGN, TOKEN_INT(10), TOKEN_PLUS, TOKEN_INT(5)]`
+
+#### 2. The Parser
+
+The parser takes the flat list of tokens and arranges them into a hierarchical data structure called an **Abstract Syntax Tree (AST)**. The parser ensures the code obeys your structural grammar rules. [link](https://www.youtube.com/watch?v=4Wn54XtgeJM\&t=21)
+
+- _Example:_ For `10 + 5`, it creates a tree where the root node is the `+` operator, and the child nodes are `10` and `5`. [link](https://www.youtube.com/watch?v=pgeSGBwtHW8)
+
+#### 3. The Environment & Scope
+
+To make a functional language, you need an **Environment system** to track variables, data types, and functions. This is usually handled by keeping a hash table (or map) that links a variable's identifier name to its actual runtime value. [link](https://www.youtube.com/watch?v=XrnBtQq6OxM\&t=473)
+
+#### 4. The Evaluator (Interpreter Execution)
+
+The evaluator evaluates the program by traversing the structural nodes of the AST recursively. When it hits a binary expression node like `+`, it evaluates the left side, evaluates the right side, and performs the addition. [link](https://medium.com/@abiliu018/how-i-created-my-own-programming-language-from-scratch-9b99fa0a802b)
+
+***
+
+### Recommended Learning Paths & Books
+
+Rather than starting completely blind, it is highly encouraged to use established guides:
+
+- **The Best Starter Resource:** Read Crafting Interpreters by Robert Nystrom. It walks you through building an interpreted language (Lox) in Java, and a fast, bytecode virtual machine in C.
+- **The Practical Tutorial:** If you want a quick, hands-on video series, look up the [Computerphile Programming Language Interpreter Guide](https://www.youtube.com/watch?v=Q2UDHY5as90) or the LLVM Kaleidoscope Tutorial for compiled code. [link](https://www.youtube.com/watch?v=Q2UDHY5as90)
+- **Parser Generators (Shortcut):** If you don't want to hand-write your lexer and parser, you can use automated toolkits like ANTLR or Flex/Bison to auto-generate your parsing infrastructure from a defined grammar file. [link](https://stackoverflow.com/questions/3810119/how-to-go-about-making-your-own-programming-language)
+
+To see a step-by-step visual implementation of building a programming language tokenizer, abstract syntax tree, and runner from scratch, watch this guide:
+
+31:29
+
+[link](https://www.youtube.com/watch?v=rTuTLc%5Fu6qw)
+
+I Built My Own Programming Language 🤯
+
+34K views · 2 years ago
+
+YouTube · Piyush Garg
+
+To help tailor the best steps forward, tell me:
+
+- What **host language** do you plan to use? (e.g., Python, JavaScript, C++, Rust)
+
+- What is the **primary feature** you want your language to have? (e.g., math solver, string processor, object-oriented, purely functional)
+
+- Do you prefer **writing the parser by hand** or using an **automated tool**?
+
+- [link](https://www.reddit.com/r/learnprogramming/comments/kjxytb/creating%5Fyour%5Fown%5Fprogramming%5Flanguage/)\
+  Reddit·r/learnprogramming\
+  Creating Your Own Programming Language - Reddit\
+  Dec 25, 2020 — The simplest thing to create is a interpreted language like BASIC, because it's all simple statements, no nesting, etc. You just n...
+
+- [link](https://www.reddit.com/r/computerscience/comments/1jblzw6/how%5Fdo%5Fyou%5Fcreate%5Fa%5Fnew%5Fprogramming%5Flanguage/)\
+  Reddit·r/computerscience\
+  How do you create a new programming language? - Reddit\
+  Mar 15, 2025 — The abstractions continue from here until you end up with data science interns trying to load a 32GB hash table into memory instea...
+
+- [link](https://www.reddit.com/r/ProgrammingLanguages/comments/f8u39n/where%5Fdo%5Fi%5Fstart%5Fto%5Fcreate%5Fa%5Fprogramming%5Flanguage/)\
+  Reddit·r/ProgrammingLanguages\
+  Where do I Start to Create a Programming Language - Reddit\
+  Feb 24, 2020 — \* • 7y ago. Check out Writing Compilers and Interpreters: Software Engineering Approach book, it's a very handy book to read while...
+
+Show all
+
 # . low level compiler
 
 # compare immutable let and const
@@ -14941,6 +15052,141 @@ Turning on `sideEffects: true` downgrades ESM from an **elite** optimization tie
 Are you trying to optimize an active project where you **cannot change a library's `sideEffects` flag**? If you let me know which **bundler** (like **Vite, Webpack, or Rollup**) you are using, we can look into configuration workarounds like **manual chunking** or **alias rewrites** to isolate the heavy code.
 
 # . misc
+
+# lean prover examples
+
+Here are examples of how to use **Lean 4**, an interactive theorem prover and functional programming language. [link](https://www.youtube.com/watch?v=WnKHskNts5Y\&t=79)
+
+In Lean, you write code in two primary styles: **term mode** (writing explicit functional proof terms) and **tactic mode** (giving step-by-step commands to the proof assistant using a `by` block). [link](https://proofassistants.stackexchange.com/questions/1575/what-are-the-differences-between-theorem-example-def-etc)
+
+***
+
+### 1. Basic Arithmetic & Reflexivity (`rfl`)
+
+The simplest way to establish truth in Lean is by evaluation. If both sides of an equation compute to the exact same value, the `rfl` (reflexivity) tactic completes the proof at compile time. [link](https://blog.lambdaclass.com/the-hitchhikers-guide-to-reading-lean-4-theorems/)
+
+lean
+
+```
+-- A named theorem proving 1 + 1 = 2
+theorem one_plus_one : 1 + 1 = 2 := by
+  rfl
+
+-- An anonymous example testing the same logic
+example : 5 * 4 = 20 := by
+  rfl
+```
+
+Use code with caution.
+
+***
+
+### 2. Functional Programming & Induction
+
+Lean doubles as a functional programming language. You can define data structures recursively and use mathematical induction to prove properties about them. [link](https://leanprover.github.io/theorem%5Fproving%5Fin%5Flean4/)
+
+Here is an example defining a function that computes the sum of the first n natural numbers, followed by a theorem that verifies its behavior for a specific case: [link](https://ahelwer.ca/post/2020-04-05-lean-assignment/)
+
+lean
+
+```
+-- Defines the sum of the first n natural numbers recursively
+def sumFirstN : Nat → Nat
+  | 0     => 0
+  | n + 1 => (n + 1) + sumFirstN n
+
+-- Evaluates the function (Outputs: 15)
+#eval sumFirstN 5
+
+-- Proves a specific case using rewriting (rw) and calculation
+example : sumFirstN 3 = 6 := by
+  unfold sumFirstN
+  rfl
+```
+
+Use code with caution.
+
+***
+
+### 3. Propositional Logic
+
+Lean can prove statements using logical connectives like AND (
+
+∧
+
+), OR (
+
+∨
+
+), and implication (→). [link](https://leanprover.github.io/theorem%5Fproving%5Fin%5Flean/propositions%5Fand%5Fproofs.html)
+
+#### Tactic Mode (Intuitive step-by-step)
+
+lean
+
+```
+variable (p q : Prop)
+
+-- Proving that if "p AND q" is true, then "q AND p" is true
+theorem and_commute (h : p ∧ q) : q ∧ p := by
+  cases h with
+  | intro hp hq =>
+    exact And.intro hq hp
+```
+
+Use code with caution.
+
+#### Term Mode (Concise functional style)
+
+lean
+
+```
+-- The exact same proof written as a pure lambda function
+theorem and_commute_term (h : p ∧ q) : q ∧ p :=
+  And.intro h.right h.left
+```
+
+Use code with caution.
+
+***
+
+### 4. Real-World & Advanced Mathematics
+
+In heavy mathematical research, mathematicians rely on **Mathlib** (Lean's massive community-driven mathematical library) to formalize complex theories. Famous high-profile milestones completed in Lean include: [link](https://leanprover-community.github.io/)
+
+- **[The Liquid Tensor Experiment](https://leanprover-community.github.io/lean%5Fprojects.html)**: Successfully verifying a core theorem in condensed mathematics proposed by Fields Medalist Peter Scholze.
+- **[The Prime Number Theorem](https://leanprover-community.github.io/100.html)**: Formalized with exact error terms by a team including Terence Tao.
+- **[Perfectoid Spaces](https://leanprover-community.github.io/)**: Verifying sophisticated algebraic geometry concepts. [link](https://leanprover-community.github.io/100.html)
+
+***
+
+### Where to Practice and Learn Lean
+
+If you want to dive deeper and interactive with these examples:
+
+- 🎮 **The Natural Number Game**: An online, gamified tutorial that teaches you how to prove fundamental math properties from scratch.
+- 📖 **Theorem Proving in Lean 4**: The official textbook guiding you from basic logic to advanced dependent type theory.
+- 💻 **[Lean4Web](https://lean-lang.org/learn/)**: A web-based sandbox where you can paste and run Lean 4 code directly inside your browser without installing anything. [link](https://lean-lang.org/learn/)
+
+Would you like to see a specific type of proof—such as an **inductive proof on natural numbers**, a proof using **quantifiers (∀, ∃)**, or an example using **Mathlib's real analysis** tools?
+
+- [link](https://ahelwer.ca/post/2020-04-05-lean-assignment/)\
+  Andrew Helwer\
+  Doing a math assignment with the Lean theorem prover -\
+  Apr 5, 2020 — Lean is a theorem prover that uses hypotheses, proof goals, and moves to prove things. You can use Lean to: \* Define the sum of th...
+- [link](https://www.youtube.com/watch?v=WnKHskNts5Y\&t=79)\
+  YouTube·DeFi Security Summit - DSS\
+  Intro to the Lean Theorem Prover | Jakob von Raumer ...\
+  Dec 17, 2024 — Intro to the Lean Theorem Prover | Jakob von Raumer (Lindy Labs) - DSS 101 2024 um a small tool that we've so far only tested on o...\
+  8m
+- [link](https://proofassistants.stackexchange.com/questions/1575/what-are-the-differences-between-theorem-example-def-etc)\
+  Proof Assistants Stack Exchange\
+  What are the differences between theorem, example, def, etc?\
+  Jul 7, 2022 — Regading definitions, you can define multiple objects using ':=' def add (x y : Nat) : Nat := x + y -- a simple def of function de...
+
+Show all
+
+# 
 
 # are v attrs discouraged in modern vue
 
