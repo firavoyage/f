@@ -5694,6 +5694,438 @@ If you are building a specific project, let me know if you need to deep-dive int
 
 Show all
 
+# all ruby syntax <!-- visually aesthetic, but not really ergonomically concise -->
+
+**Ruby is a highly expressive, dynamically-typed language** where everything is an object. Semicolons and parenthesized method arguments are largely optional, and blocks of code can be written using either keywords (`do...end`) or curly braces (`{...}`). [link](https://www.youtube.com/watch?v=8wZ2ZD--VTk\&t=245)
+
+This comprehensive reference guide covers all core syntactic structures of the [Ruby Programming Language](https://www.ruby-lang.org/en/).
+
+***
+
+### Basic Rules & Comments
+
+- **Line endings**: Newlines or semicolons act as statement terminators.
+- **Indentation**: Two spaces are standard, though indentation is not syntactically enforced.
+- **Single-line comments**: Begin with `#`.
+- **Multi-line comments**: Enclosed between `=begin` and `=end` starting at the margin. [link](https://ruby-doc.org/docs/ruby-doc-bundle/Manual/man-1.4/syntax.html)
+
+ruby
+
+```
+# This is a single-line comment
+
+=begin
+This is a
+multi-line comment
+=end
+```
+
+Use code with caution.
+
+***
+
+### Variables & Scope
+
+Ruby uses naming prefixes (sigils) to explicitly determine a variable's scope: [link](https://en.wikipedia.org/wiki/Ruby%5Fsyntax)
+
+| Syntax Prefix     | Scope Type            | Example / Rule                              |
+| ----------------- | --------------------- | ------------------------------------------- |
+| `lowercase` / `_` | **Local Variable**    | Scoped to the current method or block.      |
+| `@`               | **Instance Variable** | Belonging to a specific object instance.    |
+| `@@`              | **Class Variable**    | Shared across all instances of a class.     |
+| `$`               | **Global Variable**   | Accessible anywhere throughout the runtime. |
+| `UPPERCASE`       | **Constant**          | Cannot be easily changed without a warning. |
+
+***
+
+### Data Types & Literals
+
+#### Numbers & Strings
+
+ruby
+
+```
+num = 42          # Integer
+pi  = 3.14        # Float
+
+# Double quotes allow string interpolation and escape characters
+name = "World"
+puts "Hello, #{name}!" # => Hello, World!
+
+# Single quotes represent literal strings
+puts 'Hello, #{name}!' # => Hello, #{name}!
+```
+
+Use code with caution.
+
+#### Symbols
+
+Immutable, reusable strings typically used as hash keys. [link](https://xolotlp.github.io/notes/ruby)
+
+ruby
+
+```
+:status
+:my_symbol
+```
+
+Use code with caution.
+
+#### Collections (Arrays & Hashes)
+
+ruby
+
+```
+# Arrays are ordered, zero-indexed collections
+items = ["apple", "banana", 123]
+
+# Hashes store key-value pairs (Modern symbol syntax)
+user = { name: "Alice", age: 30 }
+
+# Legacy rocket syntax (required if keys are not symbols)
+user_old = { :name => "Alice", "string_key" => 30 }
+
+# Shorthand Hash Syntax (Ruby 3.1+)
+age = 25
+user = { age: }  # Equivalent to { age: age }
+```
+
+Use code with caution.
+
+#### Percent Strings (`%` Notation)
+
+Shorthand literal creators to avoid escaping internal quotes. [link](https://docs.ruby-lang.org/en/2.0.0/syntax/literals%5Frdoc.html)
+
+ruby
+
+```
+%q(Literal single-quoted string)
+%Q(Interpolated double-quoted string)
+%w(apple banana orange)   # Array of strings: ["apple", "banana", "orange"]
+%i(low medium high)       # Array of symbols: [:low, :medium, :high]
+%r([\d+])                 # Regular expression
+```
+
+Use code with caution.
+
+***
+
+### Control Flow & Conditionals
+
+#### If, Else, and Unless
+
+ruby
+
+```
+# Standard If/Else (Note: 'elsif')
+if score > 90
+  puts "A"
+elsif score > 80
+  puts "B"
+else
+  puts "C"
+end
+
+# Unless (Opposite of if)
+unless heavy_rain?
+  puts "Go for a walk"
+end
+
+# Inline modifiers
+puts "Success!" if logged_in
+puts "Keep playing" unless game_over
+```
+
+Use code with caution.
+
+#### Case Statements
+
+ruby
+
+```
+case status
+when "active"
+  puts "Online"
+when "inactive", "pending"
+  puts "Offline"
+else
+  puts "Unknown"
+end
+```
+
+Use code with caution.
+
+#### Ternary Operator
+
+ruby
+
+```
+allowed = age >= 18 ? "Yes" : "No"
+```
+
+Use code with caution.
+
+***
+
+### Loops & Iterators
+
+While traditional loops exist, Ruby strongly favors object-oriented iterators. [link](https://rubylearning.com/guides/ruby-syntax.html)
+
+ruby
+
+```
+# While loop
+while inventory > 0
+  inventory -= 1
+end
+
+# Until loop
+until pipeline.empty?
+  pipeline.pop
+end
+
+# Each Iterator (Preferred style)
+[1, 2, 3].each do |number|
+  puts number
+end
+
+# Times loop
+5.times { puts "Hello" }
+
+# Map Iterator (Transforms a collection)
+doubled = [1, 2, 3].map { |n| n * 2 }
+```
+
+Use code with caution.
+
+***
+
+### Methods
+
+Methods return the value of their last evaluated expression automatically; an explicit `return` is optional. [link](https://rubylearning.com/guides/ruby-syntax.html)
+
+ruby
+
+```
+# Standard method
+def greet(name)
+  "Hello, #{name}"
+end
+
+# Default arguments
+def calculate_tax(amount, rate = 0.05)
+  amount * rate
+end
+
+# Splat operator (Accepts variable number of arguments into an array)
+def sum_all(*numbers)
+  numbers.sum
+end
+
+# Keyword arguments
+def create_profile(name:, status: "active")
+  { name: name, status: status }
+end
+```
+
+Use code with caution.
+
+***
+
+### Blocks, Procs, and Lambdas
+
+#### Code Blocks
+
+Blocks are chunks of anonymous code passed to methods. [link](https://en.wikipedia.org/wiki/Ruby%5Fsyntax)
+
+ruby
+
+```
+# Single line block with curly braces
+[1, 2].each { |x| puts x }
+
+# Multi-line block with do/end
+[1, 2].each do |x|
+  puts x
+end
+
+# Yielding to a block in custom methods
+def run_twice
+  yield
+  yield
+end
+run_twice { puts "Running!" }
+```
+
+Use code with caution.
+
+#### Procs & Lambdas
+
+Objects that store executable blocks of code to be reused or passed around. [link](https://rubylearning.com/guides/ruby-syntax.html)
+
+ruby
+
+```
+# Proc (Lenient argument checking)
+my_proc = Proc.new { |x| puts x }
+my_proc.call(5)
+
+# Lambda (Strict argument checking, returns back to caller)
+my_lambda = ->(x) { puts x }
+my_lambda.call(10)
+
+# Shorthand Symbol-to-Proc syntax
+["apple", "banana"].map(&:upcase) # Equivalent to: .map { |str| str.upcase }
+```
+
+Use code with caution.
+
+***
+
+### Classes & Modules
+
+#### Object-Oriented Class Structures
+
+ruby
+
+```
+class Person
+  # Shorthand macros for getters and setters
+  attr_accessor :name
+  attr_reader :age
+
+  # Constructor method
+  def initialize(name, age)
+    @name = name
+    @age = age
+  end
+
+  # Instance method
+  def introduce
+    "Hi, I'm #{@name}"
+  end
+end
+
+# Instantiating an object
+user = Person.new("Bob", 25)
+```
+
+Use code with caution.
+
+#### Modules
+
+Used for namespacing and mixing reusable components into multiple classes (Mixins). [link](https://rubylearning.com/guides/ruby-syntax.html)
+
+ruby
+
+```
+module Flyable
+  def fly
+    "I'm flying!"
+  end
+end
+
+class Bird
+  include Flyable # Mixin: adds module methods as instance methods
+end
+```
+
+Use code with caution.
+
+***
+
+### Exception Handling
+
+ruby
+
+```
+begin
+  # Code that might raise an error
+  result = 10 / 0
+rescue ZeroDivisionError => e
+  puts "Caught error: #{e.message}"
+ensure
+  puts "This always runs, regardless of errors."
+end
+```
+
+Use code with caution.
+
+***
+
+### Advanced & Idiomatic Syntax
+
+#### Safe Navigation Operator (`&.`)
+
+Prevents crashing on a `nil` object. If the object is `nil`, it skips the method call and returns `nil`.
+
+ruby
+
+```
+user&.profile&.avatar_url
+```
+
+Use code with caution.
+
+#### Memoization / Conditional Assignment (`||=`)
+
+Assigns a value to a variable _only_ if that variable is currently `nil` or `false`.
+
+ruby
+
+```
+@current_user ||= User.find(session[:user_id])
+```
+
+Use code with caution.
+
+#### Pattern Matching (Ruby 2.7+)
+
+ruby
+
+```
+case [1, 2, 3]
+in [1, a, b]
+  puts "Matches! a = #{a}, b = #{b}"
+else
+  puts "No match"
+end
+```
+
+Use code with caution.
+
+#### Numbered Block Parameters (Ruby 2.7+)
+
+Allows working with block variables without explicitly naming them.
+
+ruby
+
+```
+[10, 20, 30].map { _1 * 2 } # _1 represents the first positional argument
+```
+
+Use code with caution.
+
+***
+
+If you are looking to dig into a specific part of the syntax, let me know. I can detail **metaprogramming tricks** (like `method_missing`), dive into **regular expression engine** details, or provide a guide on writing idiomatic code according to the official [Ruby Style Guide](https://rubystyle.guide/)!
+
+- [link](https://ruby-doc.org/docs/ruby-doc-bundle/Manual/man-1.4/syntax.html)\
+  Ruby Syntax - Ruby-Doc.org\
+  Lexical structure. The character set used in the Ruby source files for the current implementation is based on ASCII. The case of c...\
+  Ruby-Doc
+- [link](https://www.youtube.com/watch?v=8wZ2ZD--VTk\&t=245)\
+  Ruby Programming | In One Video\
+  Dec 5, 2017 — and print is going to do the same thing except prints not going to print a new line after it so when we print world it won't also ...\
+  1m\
+  YouTube·Giraffe Academy
+- [link](https://www.ruby-lang.org/en/)\
+  Ruby Programming Language\
+  Ruby has a vast collection of libraries called gems, supporting everything from web development to data processing. With mature fr...\
+  Ruby Programming Language
+
+Show all
+
 # all rust syntax <!-- sometimes innovating, not designed to be simple though -->
 
 This comprehensive reference guide covers **all essential Rust syntax elements**, organized from basic variables to advanced traits and macros, based on specifications found in [The Rust Reference](https://doc.rust-lang.org/reference/) and official learning materials. [link](https://rust-lang.org/learn/)
@@ -7229,438 +7661,6 @@ If you are writing a specific piece of code, would you like me to show you how t
   May 7, 2023 — haskell being a functional language. and also just being Haskell is syntactically very different from most languages. so in order ...\
   1m\
   YouTube·peppidesu
-
-Show all
-
-# all ruby syntax <!-- visually aesthetic, but not really ergonomically concise -->
-
-**Ruby is a highly expressive, dynamically-typed language** where everything is an object. Semicolons and parenthesized method arguments are largely optional, and blocks of code can be written using either keywords (`do...end`) or curly braces (`{...}`). [link](https://www.youtube.com/watch?v=8wZ2ZD--VTk\&t=245)
-
-This comprehensive reference guide covers all core syntactic structures of the [Ruby Programming Language](https://www.ruby-lang.org/en/).
-
-***
-
-### Basic Rules & Comments
-
-- **Line endings**: Newlines or semicolons act as statement terminators.
-- **Indentation**: Two spaces are standard, though indentation is not syntactically enforced.
-- **Single-line comments**: Begin with `#`.
-- **Multi-line comments**: Enclosed between `=begin` and `=end` starting at the margin. [link](https://ruby-doc.org/docs/ruby-doc-bundle/Manual/man-1.4/syntax.html)
-
-ruby
-
-```
-# This is a single-line comment
-
-=begin
-This is a
-multi-line comment
-=end
-```
-
-Use code with caution.
-
-***
-
-### Variables & Scope
-
-Ruby uses naming prefixes (sigils) to explicitly determine a variable's scope: [link](https://en.wikipedia.org/wiki/Ruby%5Fsyntax)
-
-| Syntax Prefix     | Scope Type            | Example / Rule                              |
-| ----------------- | --------------------- | ------------------------------------------- |
-| `lowercase` / `_` | **Local Variable**    | Scoped to the current method or block.      |
-| `@`               | **Instance Variable** | Belonging to a specific object instance.    |
-| `@@`              | **Class Variable**    | Shared across all instances of a class.     |
-| `$`               | **Global Variable**   | Accessible anywhere throughout the runtime. |
-| `UPPERCASE`       | **Constant**          | Cannot be easily changed without a warning. |
-
-***
-
-### Data Types & Literals
-
-#### Numbers & Strings
-
-ruby
-
-```
-num = 42          # Integer
-pi  = 3.14        # Float
-
-# Double quotes allow string interpolation and escape characters
-name = "World"
-puts "Hello, #{name}!" # => Hello, World!
-
-# Single quotes represent literal strings
-puts 'Hello, #{name}!' # => Hello, #{name}!
-```
-
-Use code with caution.
-
-#### Symbols
-
-Immutable, reusable strings typically used as hash keys. [link](https://xolotlp.github.io/notes/ruby)
-
-ruby
-
-```
-:status
-:my_symbol
-```
-
-Use code with caution.
-
-#### Collections (Arrays & Hashes)
-
-ruby
-
-```
-# Arrays are ordered, zero-indexed collections
-items = ["apple", "banana", 123]
-
-# Hashes store key-value pairs (Modern symbol syntax)
-user = { name: "Alice", age: 30 }
-
-# Legacy rocket syntax (required if keys are not symbols)
-user_old = { :name => "Alice", "string_key" => 30 }
-
-# Shorthand Hash Syntax (Ruby 3.1+)
-age = 25
-user = { age: }  # Equivalent to { age: age }
-```
-
-Use code with caution.
-
-#### Percent Strings (`%` Notation)
-
-Shorthand literal creators to avoid escaping internal quotes. [link](https://docs.ruby-lang.org/en/2.0.0/syntax/literals%5Frdoc.html)
-
-ruby
-
-```
-%q(Literal single-quoted string)
-%Q(Interpolated double-quoted string)
-%w(apple banana orange)   # Array of strings: ["apple", "banana", "orange"]
-%i(low medium high)       # Array of symbols: [:low, :medium, :high]
-%r([\d+])                 # Regular expression
-```
-
-Use code with caution.
-
-***
-
-### Control Flow & Conditionals
-
-#### If, Else, and Unless
-
-ruby
-
-```
-# Standard If/Else (Note: 'elsif')
-if score > 90
-  puts "A"
-elsif score > 80
-  puts "B"
-else
-  puts "C"
-end
-
-# Unless (Opposite of if)
-unless heavy_rain?
-  puts "Go for a walk"
-end
-
-# Inline modifiers
-puts "Success!" if logged_in
-puts "Keep playing" unless game_over
-```
-
-Use code with caution.
-
-#### Case Statements
-
-ruby
-
-```
-case status
-when "active"
-  puts "Online"
-when "inactive", "pending"
-  puts "Offline"
-else
-  puts "Unknown"
-end
-```
-
-Use code with caution.
-
-#### Ternary Operator
-
-ruby
-
-```
-allowed = age >= 18 ? "Yes" : "No"
-```
-
-Use code with caution.
-
-***
-
-### Loops & Iterators
-
-While traditional loops exist, Ruby strongly favors object-oriented iterators. [link](https://rubylearning.com/guides/ruby-syntax.html)
-
-ruby
-
-```
-# While loop
-while inventory > 0
-  inventory -= 1
-end
-
-# Until loop
-until pipeline.empty?
-  pipeline.pop
-end
-
-# Each Iterator (Preferred style)
-[1, 2, 3].each do |number|
-  puts number
-end
-
-# Times loop
-5.times { puts "Hello" }
-
-# Map Iterator (Transforms a collection)
-doubled = [1, 2, 3].map { |n| n * 2 }
-```
-
-Use code with caution.
-
-***
-
-### Methods
-
-Methods return the value of their last evaluated expression automatically; an explicit `return` is optional. [link](https://rubylearning.com/guides/ruby-syntax.html)
-
-ruby
-
-```
-# Standard method
-def greet(name)
-  "Hello, #{name}"
-end
-
-# Default arguments
-def calculate_tax(amount, rate = 0.05)
-  amount * rate
-end
-
-# Splat operator (Accepts variable number of arguments into an array)
-def sum_all(*numbers)
-  numbers.sum
-end
-
-# Keyword arguments
-def create_profile(name:, status: "active")
-  { name: name, status: status }
-end
-```
-
-Use code with caution.
-
-***
-
-### Blocks, Procs, and Lambdas
-
-#### Code Blocks
-
-Blocks are chunks of anonymous code passed to methods. [link](https://en.wikipedia.org/wiki/Ruby%5Fsyntax)
-
-ruby
-
-```
-# Single line block with curly braces
-[1, 2].each { |x| puts x }
-
-# Multi-line block with do/end
-[1, 2].each do |x|
-  puts x
-end
-
-# Yielding to a block in custom methods
-def run_twice
-  yield
-  yield
-end
-run_twice { puts "Running!" }
-```
-
-Use code with caution.
-
-#### Procs & Lambdas
-
-Objects that store executable blocks of code to be reused or passed around. [link](https://rubylearning.com/guides/ruby-syntax.html)
-
-ruby
-
-```
-# Proc (Lenient argument checking)
-my_proc = Proc.new { |x| puts x }
-my_proc.call(5)
-
-# Lambda (Strict argument checking, returns back to caller)
-my_lambda = ->(x) { puts x }
-my_lambda.call(10)
-
-# Shorthand Symbol-to-Proc syntax
-["apple", "banana"].map(&:upcase) # Equivalent to: .map { |str| str.upcase }
-```
-
-Use code with caution.
-
-***
-
-### Classes & Modules
-
-#### Object-Oriented Class Structures
-
-ruby
-
-```
-class Person
-  # Shorthand macros for getters and setters
-  attr_accessor :name
-  attr_reader :age
-
-  # Constructor method
-  def initialize(name, age)
-    @name = name
-    @age = age
-  end
-
-  # Instance method
-  def introduce
-    "Hi, I'm #{@name}"
-  end
-end
-
-# Instantiating an object
-user = Person.new("Bob", 25)
-```
-
-Use code with caution.
-
-#### Modules
-
-Used for namespacing and mixing reusable components into multiple classes (Mixins). [link](https://rubylearning.com/guides/ruby-syntax.html)
-
-ruby
-
-```
-module Flyable
-  def fly
-    "I'm flying!"
-  end
-end
-
-class Bird
-  include Flyable # Mixin: adds module methods as instance methods
-end
-```
-
-Use code with caution.
-
-***
-
-### Exception Handling
-
-ruby
-
-```
-begin
-  # Code that might raise an error
-  result = 10 / 0
-rescue ZeroDivisionError => e
-  puts "Caught error: #{e.message}"
-ensure
-  puts "This always runs, regardless of errors."
-end
-```
-
-Use code with caution.
-
-***
-
-### Advanced & Idiomatic Syntax
-
-#### Safe Navigation Operator (`&.`)
-
-Prevents crashing on a `nil` object. If the object is `nil`, it skips the method call and returns `nil`.
-
-ruby
-
-```
-user&.profile&.avatar_url
-```
-
-Use code with caution.
-
-#### Memoization / Conditional Assignment (`||=`)
-
-Assigns a value to a variable _only_ if that variable is currently `nil` or `false`.
-
-ruby
-
-```
-@current_user ||= User.find(session[:user_id])
-```
-
-Use code with caution.
-
-#### Pattern Matching (Ruby 2.7+)
-
-ruby
-
-```
-case [1, 2, 3]
-in [1, a, b]
-  puts "Matches! a = #{a}, b = #{b}"
-else
-  puts "No match"
-end
-```
-
-Use code with caution.
-
-#### Numbered Block Parameters (Ruby 2.7+)
-
-Allows working with block variables without explicitly naming them.
-
-ruby
-
-```
-[10, 20, 30].map { _1 * 2 } # _1 represents the first positional argument
-```
-
-Use code with caution.
-
-***
-
-If you are looking to dig into a specific part of the syntax, let me know. I can detail **metaprogramming tricks** (like `method_missing`), dive into **regular expression engine** details, or provide a guide on writing idiomatic code according to the official [Ruby Style Guide](https://rubystyle.guide/)!
-
-- [link](https://ruby-doc.org/docs/ruby-doc-bundle/Manual/man-1.4/syntax.html)\
-  Ruby Syntax - Ruby-Doc.org\
-  Lexical structure. The character set used in the Ruby source files for the current implementation is based on ASCII. The case of c...\
-  Ruby-Doc
-- [link](https://www.youtube.com/watch?v=8wZ2ZD--VTk\&t=245)\
-  Ruby Programming | In One Video\
-  Dec 5, 2017 — and print is going to do the same thing except prints not going to print a new line after it so when we print world it won't also ...\
-  1m\
-  YouTube·Giraffe Academy
-- [link](https://www.ruby-lang.org/en/)\
-  Ruby Programming Language\
-  Ruby has a vast collection of libraries called gems, supporting everything from web development to data processing. With mature fr...\
-  Ruby Programming Language
 
 Show all
 
@@ -15051,7 +15051,7 @@ Turning on `sideEffects: true` downgrades ESM from an **elite** optimization tie
 
 Are you trying to optimize an active project where you **cannot change a library's `sideEffects` flag**? If you let me know which **bundler** (like **Vite, Webpack, or Rollup**) you are using, we can look into configuration workarounds like **manual chunking** or **alias rewrites** to isolate the heavy code.
 
-# . misc
+# . prover
 
 # lean prover examples
 
@@ -15187,6 +15187,8 @@ Would you like to see a specific type of proof—such as an **inductive proof on
 Show all
 
 # 
+
+# . misc
 
 # are v attrs discouraged in modern vue
 
