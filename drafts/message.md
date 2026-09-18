@@ -18,4 +18,9 @@ what are the math provers
 
 lean prover syntax examples
 
+---
+
+how does kernel work
+
+how does smt work
 
