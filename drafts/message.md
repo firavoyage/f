@@ -36,4 +36,10 @@ situation
 
 ---
 
+all builtin commands of lisp
+
+std lib of each pl
+
+---
+
 
