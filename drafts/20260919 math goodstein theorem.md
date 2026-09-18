@@ -1,3 +1,5 @@
+# goodstein theorem
+
 ## goodstein theorem
 
 **Goodstein's theorem** is a remarkable statement in mathematical logic and number theory proved by Reuben Goodstein in 1944. It states that <mark><strong>every "Goodstein sequence" eventually terminates at 0</strong>, no matter how large the starting number is</mark>. [link](https://en.wikipedia.org/wiki/Goodstein%27s%5Ftheorem)
