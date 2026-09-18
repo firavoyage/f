@@ -56,9 +56,9 @@ const lines = map(coefficient_table, (item, index) => {
 export function MaimaiGraph() {
   return (
     <Graph {...p({
-      aspect_ratio: ((15 - 10) / 0.5) / (((17000 - 10000) / 1000) * 2),
-      x: each(10, 15, 0.5),
-      y: each(10000, 17000, 500),
+      aspect_ratio: ((15 - 8) / 0.5) / (((17000 - 8000) / 1000) * 2),
+      x: each(8, 15, 0.5),
+      y: each(8000, 17000, 500),
     })}>
       <Grid></Grid>
       {
