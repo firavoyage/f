@@ -32,4 +32,16 @@ return (
 
 you may name components in any case. though pascal case is recommended. namespace is trivial.
 
+---
+
+haskell is deeply sophisticated on the use cases.
+
+in math, i mean, not in pragmatics.
+
+---
+
+add op would accept numbers, and implicitly convert to numbers if needed. you may override this.
+
+for string, you should use template literal. i have shell like eof string, and you can either make it static or replaceable. `{}` is enough. no dollar symbol needed.
+
 
