@@ -54679,9 +54679,15 @@ they quit.
 
 21 30 unbox and setup mi pad 7.
 
-28
+18
 
 23 00 put away the color pencil case on the desk.
+
+20
+
+17 40 (re)read csdiy intro.
+
+<!-- ~~survive sjtu~~ ~~jyy letter~~ -->
 
 
 
