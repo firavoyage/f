@@ -8291,6 +8291,303 @@ Cursor - コードをより速くリリース
 
 Show all
 
+# all lean syntax
+
+## all lean syntax
+
+September 16, 2026
+
+Here is a comprehensive reference sheet for the syntax of the [Lean 4 Programming Language and Theorem Prover](https://lean4.dev/).
+
+***
+
+### 1. Basic Definitions & Functions
+
+[Functions in Lean](https://lean-lang.org/doc/reference/latest/Terms/Functions/) are first-class, pure, and curried by default. [link](https://lean-lang.org/functional%5Fprogramming%5Fin%5Flean/Getting-to-Know-Lean/Functions-and-Definitions/)
+
+lean
+
+```
+-- Constant/Value definition
+def hello : String := "Hello, world!"
+
+-- Simple function with explicit types
+def addOne (x : Nat) : Nat := x + 1
+
+-- Multiple arguments shorthand
+def add (x y : Nat) : Nat := x + y
+
+-- Anonymous (lambda) functions
+#check fun x => x + 1
+#check ↦ x + 1           -- Alternative Unicode syntax
+
+-- Centered dot shorthand for simple lambdas
+#check (· + 1)           -- Equivalent to: fun x => x + 1
+```
+
+Use code with caution.
+
+### 2. Argument Types & Generics
+
+Lean uses different brackets to specify how arguments are handled during function application. [link](https://lean-lang.org/theorem%5Fproving%5Fin%5Flean4/Structures-and-Records/)
+
+| Syntax             | Argument Type       | Description                                                                    | Example                      |
+| ------------------ | ------------------- | ------------------------------------------------------------------------------ | ---------------------------- |
+| `(x : α)`          | **Explicit**        | Must be supplied manually by the user.                                         | `add 1 2`                    |
+| `{α : Type}`       | **Implicit**        | Automatically inferred from context by Lean.                                   | `List.append`                |
+| `[Inst : Class α]` | **Type Class**      | Inferred via type class resolution machinery.                                  | `(· + ·)` requires `[Add α]` |
+| `⦃x : α⦄`          | **Strict Implicit** | Deferred implicit argument; inferred only when trailing arguments are applied. | Used in theorem forging.     |
+
+### 3. Data Types & Structures
+
+[Structures and Inductive Types](https://lean-lang.org/theorem%5Fproving%5Fin%5Flean4/Structures-and-Records/) form the core of Lean's data model. [link](https://www.uv.es/coslloen/Lean4/Leancap01.html)
+
+lean
+
+```
+-- Inductive Data Type (Enums / Tagged Unions)
+inductive Bool where
+  | false : Bool
+  | true : Bool
+
+-- Structure (Records with named fields)
+structure Point where
+  x : Float
+  y : Float
+
+-- Structure instantiation
+def myPoint : Point := { x := 1.0, y := 2.0 }
+
+-- Dot notation (Generalized field projection)
+#check myPoint.x         -- Accesses field x
+```
+
+Use code with caution.
+
+### 4. Control Flow & Pattern Matching
+
+Lean matches patterns structurally and supports standard monad bindings via `do` notation. [link](https://lean-lang.org/doc/reference/latest/Terms/Functions/)
+
+lean
+
+```
+-- Pattern matching expression
+def IsZero (n : Nat) : Bool :=
+  match n with
+  | 0 => true
+  | _ => false
+
+-- Idiomatic 'if-then-else'
+def max (a b : Nat) : Nat :=
+  if a > b then a else b
+
+-- Monadic 'do' blocks (imperative-style block)
+def printSequence : IO Unit := do
+  let x ← IO.println "Input sequence started..."
+  IO.println "Done!"
+```
+
+Use code with caution.
+
+### 5. Mathematical Logic & Quantifiers
+
+Logic in Lean maps propositions to types (`Prop`). [link](https://overreacted.io/a-lean-syntax-primer/)
+
+lean
+
+```
+variable (p q : Prop)
+
+-- Logical Connectives
+#check p ∧ q     -- Conjunction (AND)
+#check p ∨ q     -- Disjunction (OR)
+#check p → q     -- Implication (IF-THEN)
+#check ¬p        -- Negation (NOT)
+#check p ↔ q     -- Logical equivalence (IFF)
+
+-- Quantifiers
+#check ∀ (x : Nat), x + 0 = x   -- Universal ("for all", type \all)
+#check ∃ (x : Nat), x > 0       -- Existential ("there exists", type \exists)
+```
+
+Use code with caution.
+
+### 6. Writing Proofs (Tactics)
+
+Proofs can be written inline as functional expressions or dynamically inside a `by` block using [Tactics](https://lean-lang.org/doc/reference/latest/).
+
+lean
+
+```
+-- Tactic-style proof block
+theorem add_zero_rewrite (x : Nat) : x + 0 = x := by
+  simp  -- Simplification tactic
+
+-- Using 'sorry' to stub an unproven result (will raise a compiler warning)
+theorem complex_math_theorem : 1 + 1 = 2 := by
+  sorry
+```
+
+Use code with caution.
+
+### 7. Core Interactive Commands
+
+Commands used to interact with the environment in your editor or REPL. [link](https://www.youtube.com/watch?v=FPiykrdPe6U\&t=2427)
+
+- `#check expr` — Infers and prints the type of `expr`.
+- `#eval expr` — Evaluates `expr` and prints the resulting value.
+- `#reduce expr` — Reductively normalizes `expr` using the kernel evaluator.
+- `import Module` — Imports an external file or library dependency.
+- `open Namespace` — Opens a namespace so identifiers don't require full prefixes. [link](https://leanprover-community.github.io/lean4-metaprogramming-book/main/05%5Fsyntax.html)
+
+***
+
+Are you seeking syntax help for a specific task, such as **writing mathematical proofs**, building **functional algorithms**, or leveraging Lean 4's **macro and metaprogramming system**? Let me know so I can tailor code snippets for you.
+
+- [link](https://overreacted.io/a-lean-syntax-primer/)\
+  Overreacted.io\
+  A Lean Syntax Primer - Overreacted.io\
+  Universal Quantifier. ... This theorem says “for all cy and a , a + birthYear cy a is equal to cy ”. Mathematicians have their own...
+- [link](https://lean-lang.org/doc/reference/latest/Terms/Functions/)\
+  Lean Programming Language\
+  Functions - Lean Programming Language
+
+13.3. Functions. Terms with function types can be created via abstractions, introduced with the. Parser. Term. fun keyword.In vari...
+
+- [link](https://lean-lang.org/doc/reference/latest/Functors%5F%5F%5F-Monads-and--do--Notation/Syntax/)\
+  Lean Programming Language\
+  Syntax - Lean Programming Language\
+  Infix operators are primarily useful in smaller expressions, or when there is no Monad instance. \* 1.1. Functors. There are two in...
+
+Show all
+
+## examples
+
+### Practical Algorithms & Programs
+
+#### 1. Recursive Functions & Pattern Matching
+
+A classic implementation of the **Fibonacci sequence**. Lean requires functions to be proven structurally terminating, or marked as `partial`.
+
+lean
+
+```
+-- Standard recursive function
+def fib : Nat → Nat
+  | 0 => 0
+  | 1 => 1
+  | n + 2 => fib (n + 1) + fib n
+
+#eval fib 7  -- Evaluates to 13
+```
+
+Use code with caution.
+
+#### 2. Working with Lists & Monadic `do` Notation
+
+An example using lists, mapping, and a monadic block to combine elements with an environment action.
+
+lean
+
+```
+-- Map a function over a list
+def squareList (xs : List Nat) : List Nat :=
+  xs.map (fun x => x * x)
+
+-- IO action printing items using 'do' notation
+def printList (xs : List Nat) : IO Unit := do
+  for x in xs do
+    IO.println s!"Element: {x}"
+
+#eval squareList [1, 2, 3]  -- Evaluates to [1, 4, 9]
+```
+
+Use code with caution.
+
+***
+
+### Mathematical Proofs (Tactics)
+
+#### 1. Equality & Local Rewriting
+
+A simple proof showing that changing variables via equality works as expected using the **`rw` (rewrite)** tactic.
+
+lean
+
+```
+theorem rw_example (a b c : Nat) (h1 : a = b) (h2 : c = b) : a = c := by
+  rw [h1]  -- Changes the goal from `a = c` to `b = c`
+  rw [h2]  -- Changes the goal from `b = c` to `c = c`, which is solved by reflexivity
+```
+
+Use code with caution.
+
+#### 2. Logic & Structural Case Splits
+
+Proving a classic propositional logic identity (
+
+𝑃
+
+∧𝑄
+
+→
+
+𝑄
+
+∧𝑃
+
+) by breaking down the hypotheses.
+
+lean
+
+```
+theorem and_commutative (p q : Prop) : p ∧ q → q ∧ p := by
+  intro h          -- Assume the premise: h : p ∧ q
+  cases h with    -- Split the conjunction into parts
+  | intro hp hq =>
+    exact ⟨hq, hp⟩ -- Construct the target `q ∧ p` using the pieces
+```
+
+Use code with caution.
+
+***
+
+### Type Classes & Generics
+
+#### 1. Creating a Custom Type Class
+
+Defining a trait for things that can be converted to an integer, and implementing an instance for `Bool`.
+
+lean
+
+```
+-- Define the typeclass
+class ToInt (α : Type) where
+  toInt : α → Int
+
+-- Provide an instance for Bool
+instance : ToInt Bool where
+  toInt b := if b then 1 else 0
+
+-- A function that uses the typeclass constraint
+def absoluteDelta [ToInt α] (x y : α) : Int :=
+  Int.natAbs (ToInt.toInt x - ToInt.toInt y)
+
+#eval absoluteDelta true false  -- Evaluates to 1
+```
+
+Use code with caution.
+
+***
+
+Would you like to dive deeper into one of these paradigms? I can provide more examples focusing on:
+
+- **Theorem proving** (using Mathlib, induction, or advanced tactics like `aesop`)
+
+- **Software development** (defining structures, handling options/errors, or parsing text)
+
+- **Inductive types** (dependent types like Vectors with a statically checked length)
+
 # recipe dsl spec
 
 ## fundamentals
