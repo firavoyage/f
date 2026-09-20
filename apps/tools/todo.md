@@ -366,4 +366,11 @@ web/lib/state: harden, auto detect new keys, auto fix/discard broken persistent 
 
 component/commands: implement a more sophisticated fuzzy search engine
 
+---
+
+component/commands: support ctrl p shortcut?
+
+on vscode if you spam press on ctrl p you move down files. you auto load. ctrl shift p doesnt listen for spam pressing.
+
+think bout it.
 

@@ -9064,7 +9064,7 @@ fof fn of values global
 
 
 
-# . syntax: scope
+# . syntax: scope <!-- lexical/dyanmic scoping -->, hoisting
 
 # python scope
 
@@ -9828,7 +9828,7 @@ Use code with caution.
 
 What kind of project behavior are you trying to implement? If you are stuck on a specific **borrow checker error message**, share it here and we can debug it together!
 
-# . syntax: var and fn, philosophy
+# . syntax: var and fn, brackets, philosophy
 
 # compare lisp and scheme
 
@@ -10276,6 +10276,138 @@ Would you like to see how **Lisp macros** use S-expressions to manipulate code a
   May 27, 2012 — 2 Comments. Add a comment. Will Ness. Will Ness Over a year ago. list is a cons cell chain with NIL sentinel. that' all. the reade...
 
 Show all
+
+# . syntax: data and fn, fp/oop
+
+# compare c and cpp
+
+## compare c and cpp
+
+The fundamental difference is that <mark><strong>C is a procedural programming language</strong>, while<span> </span><strong>C++ is a multi-paradigm language that extends C to support Object-Oriented Programming (OOP)</strong></mark>. [link](https://www.geeksforgeeks.org/cpp/difference-between-c-and-c/)
+
+Think of C++ as "C with more features"—it retains all the low-level capability and speed of C but introduces abstractions like classes, objects, and namespaces to make large-scale software development easier to manage. [link](https://www.youtube.com/watch?v=sNMtjs%5FwQiE\&t=32)
+
+Here is a direct comparison of the key differences:
+
+### 📊 Feature Breakdown
+
+| Feature                  | C                                                                                                  | C++                                                                                                                 |
+| ------------------------ | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| **Programming Paradigm** | Strictly **Procedural / Functional** (focused on steps and actions).                               | **Multi-paradigm**; fully supports **Object-Oriented Programming** (OOP).                                           |
+| **Core Concept**         | Focused on **functions and data structures**.                                                      | Focused on **objects and classes**.                                                                                 |
+| **Data Security**        | **Low**. Data is out in the open and can be modified by outside code.                              | **High**. Uses **encapsulation** and access modifiers (`public`, `private`) to hide data.                           |
+| **Memory Management**    | Uses standard library functions: `malloc()` and `free()`.                                          | Uses built-in language operators: `new` and `delete`.                                                               |
+| **I/O Operations**       | Uses `printf()` and `scanf()`.                                                                     | Uses stream objects like `std::cout` and `std::cin`.                                                                |
+| **Error Handling**       | No built-in exception handling; relies on **return codes** (e.g., returning `-1` or `NULL`).       | Native **exception handling** using `try`, `catch`, and `throw` blocks.                                             |
+| **Overloading**          | Does **not support** function or operator overloading.                                             | Supports **overloading** (multiple functions can share the same name with different parameters).                    |
+| **Primary Use Cases**    | Operating system kernels (like Linux), embedded systems, hardware drivers, and low-level firmware. | Video game engines, web browsers (like Chrome), large desktop applications, and high-performance financial systems. |
+
+***
+
+### 💡 Key Conceptual Differences
+
+- **Approach to Design:** C follows a **top-down** approach, meaning you start with a high-level problem and break it down into smaller functions. C++ follows a **bottom-up** approach, where you design low-level objects and classes first, then combine them to build the larger system. [link](https://www.quora.com/Can-you-explain-the-difference-between-C-and-C-C-Are-they-considered-the-same-language)
+- **Type Checking:** C++ enforces much **stricter type checking** than C. For example, in C you can implicitly assign a generic pointer (`void*`) to a specific pointer type without a cast, but C++ will throw a compiler error. [link](https://en.wikipedia.org/wiki/Compatibility%5Fof%5FC%5Fand%5FC%2B%2B)
+- **Compatibility:** While C++ is mostly a superset of C—meaning most C code will compile cleanly in a C++ compiler—the reverse is not true. C cannot run or understand C++ code. [link](https://www.youtube.com/watch?v=IPGbzJ8i7ss\&t=28)
+
+Are you trying to decide **which language to learn first**, or are you looking to **convert existing C code into C++**? Let me know so I can provide the right resources or code examples!
+
+- [link](https://www.reddit.com/r/C%5FProgramming/comments/34tes5/c%5Fvs%5Fc/)\
+  Reddit\
+  C vs C++ : r/C\_Programming\
+  A Google search will probably help you discover more. ... Ha I love Linus' attitude. ... I have to wonder if you still do, ten yea...
+- [link](https://www.geeksforgeeks.org/cpp/difference-between-c-and-c/)\
+  GeeksforGeeks\
+  Difference between C and C++ - GeeksforGeeks\
+  Difference between C and C++ ... C and C++ are popular programming languages used for system programming, application development,
+- [link](https://www.youtube.com/watch?v=IPGbzJ8i7ss\&t=28)\
+  YouTube·Smartherd\
+  C vs. C++ (Explore the Difference between C and C++ Programming ...\
+  hi in this lesson we will explore the differences between C and C++ as a language. so the first major difference between them is C...\
+  1m
+
+Show all
+
+## compare syntax
+
+### 📊 Syntax Comparison Table
+
+| Language Feature         | 🇨 (Procedural)                              | 🇨➕➕ (Object-Oriented)                      |
+| ------------------------ | ------------------------------------------- | -------------------------------------------- |
+| **Header File**          | `#include <stdio.h>`                        | `#include <iostream>`                        |
+| **Output Text**          | `printf("Hello, World!\n");`                | `std::cout << "Hello, World!" << std::endl;` |
+| **Input Value**          | `scanf("%d", &num);`                        | `std::cin >> num;`                           |
+| **Memory Allocation**    | `int* arr = (int*)malloc(5 * sizeof(int));` | `int* arr = new int[5];`                     |
+| **Memory Deallocation**  | `free(arr);`                                | `delete[] arr;`                              |
+| **String Type**          | `char str[] = "Hello";`                     | `std::string str = "Hello";`                 |
+| **Structures / Classes** | `struct User { char name[20]; };`           | `class User { public: std::string name; };`  |
+
+***
+
+### 🔍 Code Example: Structs vs. Classes
+
+In **C**, data structures only hold variable data. In **C++**, classes bundle both data _and_ functions (methods) together.
+
+#### 🇨 C Syntax (Functions outside data)
+
+c
+
+```
+#include <stdio.h>
+
+// Structs can only hold data variables
+struct Rectangle {
+    double width;
+    double height;
+};
+
+// Functions must be declared outside the struct
+double calculateArea(struct Rectangle r) {
+    return r.width * r.height;
+}
+
+int main() {
+    struct Rectangle rect = {10.0, 5.0};
+    printf("Area: %.2f\n", calculateArea(rect));
+    return 0;
+}
+```
+
+Use code with caution.
+
+#### 🇨➕➕ C++ Syntax (Encapsulated Objects)
+
+cpp
+
+```
+#include <iostream>
+
+// Classes wrap data and functions together
+class Rectangle {
+private:
+    double width;
+    double height;
+
+public:
+    // Constructor
+    Rectangle(double w, double h) : width(w), height(h) {}
+
+    // Method inside the class
+    double calculateArea() {
+        return width * height;
+    }
+};
+
+int main() {
+    Rectangle rect(10.0, 5.0);
+    std::cout << "Area: " << rect.calculateArea() << std::endl;
+    return 0;
+}
+```
+
+Use code with caution.
+
+Would you like to look at syntax differences for a specific feature, like **function overloading**, **pointers vs references**, or **how error handling looks** in both languages?
 
 # . syntax: error handling
 
