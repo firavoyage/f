@@ -42,4 +42,6 @@ std lib of each pl
 
 ---
 
+all decisions on pl syntax design
 
+compare commenting symbols in pl design
