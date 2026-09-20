@@ -9828,6 +9828,10 @@ Use code with caution.
 
 What kind of project behavior are you trying to implement? If you are stuck on a specific **borrow checker error message**, share it here and we can debug it together!
 
+# . syntax: var and fn
+
+
+
 # . syntax: error handling
 
 # js try catch
