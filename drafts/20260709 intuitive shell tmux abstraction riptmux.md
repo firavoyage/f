@@ -11467,3 +11467,169 @@ Use ctrl+b d to detach from a session
 - merge scattered/unused shell commands into one `tmux`
 - revise help text and some comments
 - alias `e` to `exit`
+
+# . test
+
+```
+ ~ % tmux
+[detached (from session 5)]
+ ~ % tmux l
+5: 1 windows (created Mon Sep 21 11:31:32 2026)
+storybook: 1 windows (created Thu Sep 17 02:17:17 2026)
+tools: 1 windows (created Wed Sep 16 19:04:44 2026)
+ ~ % tmux rm 5
+Run and manage background daemons
+
+Usage:
+  tmux                  Start a new terminal
+  tmux <name>           Start a new named terminal or attach if existing
+  tmux <command>        Perform an action
+  tmux [flag]           Check version or help
+
+Commands:
+  l, ls                 List all sessions
+  a [name]              Back to the last (or a named) session
+  clear                 Clear inactive sessions of last command finished
+  kill <name>           Kill a session
+  rename <old> <new>    Rename a session
+
+Options:
+  -v, --version         Print version
+  -h, --help            Print help
+
+Use ctrl+b d to detach from a session
+ ~ % tmux kill 5
+```
+
+# . tmux 0.6 (2026.09.21)
+
+```sh
+riptmux(){
+  local reset=$(tput sgr0)
+  
+  local bold=$(tput bold)
+  local italic=$(tput sitm)
+  local underline=$(tput smul)
+
+  local black=$(tput setaf 0)
+  local red=$(tput setaf 1)
+  local green=$(tput setaf 2)
+  local yellow=$(tput setaf 3)
+  local blue=$(tput setaf 4)
+  local magenta=$(tput setaf 5)
+  local cyan=$(tput setaf 6)
+  local white=$(tput setaf 7)
+  
+  local bright_black=$(tput setaf 8)
+  local bright_red=$(tput setaf 9)
+  local bright_green=$(tput setaf 10)
+  local bright_yellow=$(tput setaf 11)
+  local bright_blue=$(tput setaf 12)
+  local bright_magenta=$(tput setaf 13)
+  local bright_cyan=$(tput setaf 14)
+  local bright_white=$(tput setaf 15)
+
+  local heading="$bold$bright_green"
+  local cmd="$bold$bright_cyan" # command or flag
+  local arg="$cyan" # argument
+
+  local version="tmux 0.6 (2026.09.21)"
+  local help=$(cat <<- EOF | sed 's/^  //'
+  Run and manage background daemons
+
+  ${heading}Usage:${reset} 
+    ${cmd}tmux${reset}                  Start a new terminal
+    ${cmd}tmux${reset} ${arg}<name>${reset}           Start a new named terminal or attach if existing
+    ${cmd}tmux${reset} ${arg}<command>${reset}        Perform an action
+    ${cmd}tmux${reset} ${arg}[flag]${reset}           Check version or help
+
+  ${heading}Commands:${reset}
+    ${cmd}l${reset}, ${cmd}ls${reset}                 List all sessions
+    ${cmd}a${reset} ${arg}[name]${reset}              Back to the last (or a named) session
+    ${cmd}clear${reset}                 Clear inactive sessions of last command finished
+    ${cmd}kill${reset}, ${cmd}rm${reset} ${arg}<name>${reset}       Kill a session
+    ${cmd}rename${reset} ${arg}<old>${reset} ${arg}<new>${reset}    Rename a session
+
+  ${heading}Options:${reset}
+    ${cmd}-v${reset}, ${cmd}--version${reset}         Print version
+    ${cmd}-h${reset}, ${cmd}--help${reset}            Print help
+
+  Use ctrl+b d to detach from a session
+	EOF
+  # Use exit to close and remove the session
+	)
+
+  if test $# -eq 0; then
+    command tmux
+  elif test $# -eq 1; then
+    if test $1 = "ls" -o $1 = "l"; then
+      command tmux ls
+    elif test $1 = "a"; then
+      command tmux a
+    elif test $1 = "clear"; then
+      # Loop through all active tmux session names
+      for s in $(command tmux ls -F '#{session_name}' 2>/dev/null); do
+          # Count the number of active child processes running in this session
+          child_process_count=$(command tmux list-panes -t "$s" -F '#{pane_pid}' | xargs -I {} pgrep -P {} | wc -l)
+
+          # If the count is 0, nothing is running except the idle shell prompt
+          if [ "$child_process_count" -eq 0 ]; then
+              # echo "Killing idle session: $s"
+              command tmux kill-session -t "$s"
+          else
+              # echo "Keeping active session: $s"
+          fi
+      done
+    elif test $1 = "--help" -o $1 = "-h"; then
+      echo $help
+    elif test $1 = "--version" -o $1 = "-v"; then
+      echo $version
+    else
+      # create a named session
+      command tmux new -A -s $1
+    fi
+  elif test $# -eq 2 -a $1 = "a"; then
+    command tmux a -t $2
+  elif test $# -eq 2 -a $1 = "kill"; then
+    command tmux kill-session -t $2
+  elif test $# -eq 2 -a $1 = "rm"; then
+    command tmux kill-session -t $2
+  elif test $# -eq 3 -a $1 = "rename"; then
+    command tmux rename-session -t $2 $3
+  else
+    echo $help
+    # echo "no arg to tmux, one arg to have a named tmux session"
+  fi
+}
+```
+
+
+# . test 0.6
+
+```
+ ~ % tmux -h
+Run and manage background daemons
+
+Usage:
+  tmux                  Start a new terminal
+  tmux <name>           Start a new named terminal or attach if existing
+  tmux <command>        Perform an action
+  tmux [flag]           Check version or help
+
+Commands:
+  l, ls                 List all sessions
+  a [name]              Back to the last (or a named) session
+  clear                 Clear inactive sessions of last command finished
+  kill, rm <name>       Kill a session
+  rename <old> <new>    Rename a session
+
+Options:
+  -v, --version         Print version
+  -h, --help            Print help
+
+Use ctrl+b d to detach from a session
+```
+
+# . changes 0.6
+
+- alias `rm` to `kill`
