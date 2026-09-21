@@ -54703,6 +54703,8 @@ ctrl w for del word?! ctrl u for del line (k for del line after cursor). alt b/f
 
 cd -?!
 
+https://hkn.eecs.berkeley.edu/courseguides/CS/61A
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
