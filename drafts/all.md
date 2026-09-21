@@ -967,6 +967,7 @@ code:
 - tools recipe dsl
 - halting problem
 - foundation
+- syntax design
 
 humility:
 
