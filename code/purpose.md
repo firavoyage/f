@@ -28,4 +28,17 @@ it might take engineering effort. it can be intricate thoughts. if it does not e
 
 better to make decisions. how variables will be scoped. how it can be typed cleanly. what the default will be, for which the simplest code is reserved. and how things can be polymorphed or overridden.
 
+21
+
+if i wanna do sth, i can ask directly.
+
+at its heart there are comments. i lean toward `#` for single line comment. i have to confirm.
+
+there are variable and fn definitions, referencing, updating <!-- setting -->, and calling.
+
+math expressions like `let x = 1 y = 2 in x * y` or `x * y where x = 1 y = 2` can just expand, since everything is expr based here.
+
+type matters. everything can be a list. not everything is a list. i may have utils, and build abstrations on top. `__init__` is highly boilerplate, i may have some magic for most common use cases.
+
+
 
