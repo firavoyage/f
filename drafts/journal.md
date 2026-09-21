@@ -54697,6 +54697,12 @@ so powerful. jobs fg bg ctrl z ctrl c. i may create an abstraction to move, deta
 
 ctrl r is superpower. i never used it. (though it should be default like omnibox i think, no need to strictly prefix match by default, well shell has no native gui for dropdown typeahead...)
 
+i can even spam press it.
+
+ctrl w for del word?! ctrl u for del line (k for del line after cursor). alt b/f to move to word s/e. ctrl a/e to move to line s/e. and vi/emacs shortcuts in batch? so weird i mean. and alt # (or ctrl a # enter).
+
+cd -?!
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
