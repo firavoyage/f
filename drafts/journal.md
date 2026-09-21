@@ -54703,9 +54703,15 @@ ctrl w for del word?! ctrl u for del line (k for del line after cursor). alt b/f
 
 cd -?!
 
+---
+
+?!sicp?!
+
 https://hkn.eecs.berkeley.edu/courseguides
 
 https://hkn.eecs.berkeley.edu/courseguides/CS/61A
+
+https://cs61a.org/fa26/
 
 
 
