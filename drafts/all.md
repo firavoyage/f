@@ -410,6 +410,7 @@ desktop:
 - vscode fix css linting syntax highlighting
 - ubuntu over heating vscode malfunctioning rogue processes
 - shell systemd abstraction autostart
+- shell job control fg bg jobs advanced tmux systemd pm2 abstraction
 
 android:
 

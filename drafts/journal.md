@@ -54689,6 +54689,14 @@ they quit.
 
 <!-- ~~survive sjtu~~ ~~jyy letter~~ -->
 
+21
+
+10 40 read the art of command line.
+
+so powerful. jobs fg bg ctrl z ctrl c. i may create an abstraction to move, detach, and persist in tmux. idk if things would work consistently w a wrapper. common use cases would be made easier i guess.
+
+ctrl r is superpower. i never used it. (though it should be default like omnibox i think, no need to strictly prefix match by default, well shell has no native gui for dropdown typeahead...)
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
