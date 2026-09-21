@@ -720,6 +720,7 @@ math:
 - logical systems foundational systems zfc set theory type theory category theory
 - goodstein theorem
 - peano arithmetic
+- advanced math intro function and mapping
 
 physics:
 
