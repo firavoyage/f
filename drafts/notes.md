@@ -1251,3 +1251,11 @@ fe: edge cases
 when you press left on 00:00 on yt, it will show a loading spinner.
 
 ---
+
+fe: keyboard navigation
+
+yeah, if i type, you should focus on search bar/prompt field, esp when i type a letter wo cjk ime.
+
+but what if i space? you may consider scrolling.
+
+
