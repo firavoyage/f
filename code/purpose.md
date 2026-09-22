@@ -40,5 +40,30 @@ math expressions like `let x = 1 y = 2 in x * y` or `x * y where x = 1 y = 2` ca
 
 type matters. everything can be a list. not everything is a list. i may have utils, and build abstrations on top. `__init__` is highly boilerplate, i may have some magic for most common use cases.
 
+22
+
+ergonomics and expressiveness matter.
+
+if curly braces are the default,
+
+tab should move to the next meaningful block. you dont have to move your cursor out of the closing one.
+
+if indentation is the defaut,
+
+tab should do the indent.
+
+and if you type enter three times in a row, you will exit the current block, as you would not generally leave two consecutive blank lines.
+
+that's not ideal feels. maybe you dont like to leave one blank line after each block either, to make it compact.
+
+so maybe backspace will be used anyway, for consistency, which drastically lowers mental overhead.
+
+if both are accepted, the fmt would validate your choice by default. but things would adapt to curly braces.
+
+the catch? you may have to move your cursor anyway. you will. you rarely write code linearly irl, right? and imagine nested fn call, which is quite common, you could not always have juxtaposition like haskell (though i will accept shell like syntax, as you dont necessarily wrap the outermost one), and even if you can define (awkward) constraints to solve it deterministically, it would not be visually clear.
+
+if indentation couldnt be consistently elegant, it would not be as good as it looks, and basically it loses all its tradeoffs.
+
+yeah, interesting, tab moves the cursor.
 
 
