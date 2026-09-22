@@ -54719,6 +54719,12 @@ https://cs61a.org/fa26/
 
 15 00 take `CS 61A: Structure and Interpretation of Computer Programs, Fall 2026, UC Berkeley`.
 
+or Spring 2026 maybe.
+
+---
+
+"apply the fn to the args", not "apply the args to the fn"
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
