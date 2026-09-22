@@ -973,6 +973,7 @@ code:
 - syntax decisions
 - type system
 - macro
+- transpile
 
 humility:
 
