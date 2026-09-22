@@ -4147,5 +4147,80 @@ To give you more tailored advice on building your grammar, tell me:
 
 Show all
 
+# all decisions in programming language design
+
+Designing a programming language requires balancing hardware constraints, human psychology, and computer science theory. Language designers must answer fundamental questions across several core pillars, adjusting trade-offs to determine the language's identity, target audience, and performance characteristics. [link](https://www.youtube.com/watch?v=-c-MY57rYuQ)
+
+***
+
+### 1. Paradigm & Core Philosophy
+
+The highest-level decision defines **how the programmer thinks** about solving problems. [link](https://daedtech.com/decision-points-in-programming/)
+
+- **Programming Paradigm:** Will the language be **Imperative** (C, Go), **Object-Oriented** (Java, C++), **Functional** (Haskell, OCaml), or **Logic-based** (Prolog)? Alternatively, will it be a multi-paradigm language like Rust or Python? [link](https://colinsblog.net/2024-06-17-little-big-ideas/)
+- **Purity:** If functional, is it pure (no side effects, like Haskell) or impure (allowing side effects, like Clojure)? If object-oriented, is everything strictly an object (Smalltalk, Ruby) or are there primitive types (Java)? [link](https://www.ni.com/en/support/documentation/supplemental/06/labview-object-oriented-programming--the-decisions-behind-the-de.html)
+- **Primary Optimization Target:** Is the language designed for **maximum execution speed** (C/C++), **developer productivity** (Python), **memory safety** (Rust), or **mass concurrency** (Go, Erlang)? [link](https://www.reddit.com/r/ProgrammingLanguages/comments/a4z68q/what%5Fprinciples%5Fhave%5Fyou%5Fadopted%5Ffor%5Fyour/)
+
+### 2. The Type System
+
+The type system dictates **how data is categorized** and validated by the language. [link](https://www.reddit.com/r/ProgrammingLanguages/comments/uhtxqi/worst%5Fdesign%5Fdecisions%5Fyouve%5Fever%5Fseen/)
+
+- **Static vs. Dynamic Typing:** Are types checked at compile-time (Java, C++) or runtime (Python, JavaScript)?
+- **Strong vs. Weak Typing:** Does the language prevent implicit type conversions (Python prevents `4 + "4"`) or allow them freely (JavaScript allows `"5" - 3` to equal `2`)?
+- **Type Inference:** Must the programmer explicitly write out every type annotation, or can the compiler deduce them automatically (like Swift, Kotlin, or Rust's local variables)?
+- **Advanced Features:** Will it support **Generics / Parametric Polymorphism**? Will it feature structural typing (Go), nominal typing (Java), or duck typing (Python)? [link](https://www.reddit.com/r/ProgrammingLanguages/comments/tt7kq9/what%5Fsyntax%5Fdesign%5Fchoices%5Fdo%5Fyou%5Flove%5Fand%5Fwhat/)
+
+### 3. Syntax & Style (Surface Design)
+
+Syntax determines the **visual look** and readable feel of the source code. [link](https://www.reddit.com/r/ProgrammingLanguages/comments/tt7kq9/what%5Fsyntax%5Fdesign%5Fchoices%5Fdo%5Fyou%5Flove%5Fand%5Fwhat/)
+
+- **Visual Anchors:** Will blocks be scoped by **curly braces `{}`** (C-style), **indentation whitespace** (Python), or **keywords** like `begin/end` (Ruby, Pascal)? [link](https://www.geeksforgeeks.org/c/decision-making-in-c/)
+- **Expressions vs. Statements:** Is everything an expression that returns a value (like Rust, where `if` yields a value), or are there distinct computational statements that return nothing (like C)? [link](https://en.wikipedia.org/wiki/Conditional%5F%28computer%5Fprogramming%29)
+- **Verbosity:** Will the syntax be terse and symbolic (APL, Perl) or explicit and descriptive (COBOL, SQL)? Will it require semicolons `;` as statement terminators? [link](https://www.reddit.com/r/ProgrammingLanguages/comments/tt7kq9/what%5Fsyntax%5Fdesign%5Fchoices%5Fdo%5Fyou%5Flove%5Fand%5Fwhat/)
+
+### 4. Memory Management
+
+How the language handles the allocation and freeing of **hardware memory** strongly impacts performance and reliability. [link](https://www.reddit.com/r/ProgrammingLanguages/comments/a4z68q/what%5Fprinciples%5Fhave%5Fyou%5Fadopted%5Ffor%5Fyour/)
+
+- **Manual Management:** Does the developer allocate and free memory explicitly (C's `malloc` and `free`), presenting high performance but risks like memory leaks?
+- **Garbage Collection (GC):** Does a runtime system periodically track and sweep away unused memory automatically (Go, Java, Python), trading a minor performance cost for developer safety?
+- **Compile-time Ownership:** Does the language enforce strict ownership and lifetime rules at compile time to achieve memory safety without a garbage collector (Rust)?
+- **Reference Counting:** Are objects tracked via real-time reference counts, deleting themselves immediately when the count hits zero (Swift, RC pointers)? [link](https://colinsblog.net/2024-06-17-little-big-ideas/)
+
+### 5. Control Flow & Execution Mechanics
+
+Control flow dictates how the program transitions between lines of code. [link](https://www.geeksforgeeks.org/computer-science-fundamentals/control-flow-statements-in-programming/)
+
+- **Conditional Branching:** Standard decisions use structures like `if/else`, `switch/match`, or ternary operators. Designers must choose whether to support advanced **pattern matching** over complex structures.
+- **Iteration:** Will loops rely on raw indexing (`for i=0; i<10`), collections iterators (`foreach`), or will the language lean heavily on recursion (Haskell)?
+- **Error Handling:** Should errors trigger **Exceptions** that bubble up the stack (Java, Python), or should errors be treated as **ordinary return values** (Go, Rust)?
+- **Concurrency Model:** How does the language handle multiple operations simultaneously? Options include OS threads, green threads / coroutines (Go's goroutines), or an asynchronous event loop (JavaScript). [link](https://colinsblog.net/2024-06-17-little-big-ideas/)
+
+### 6. Compilation & Runtime Target
+
+This defines how the code written by humans interacts with physical microchips. [link](https://www.youtube.com/watch?v=-c-MY57rYuQ)
+
+- **Execution Architecture:** Is the code directly compiled to **native machine code** (C, Rust), run line-by-line via an **Interpreter** (Python, Ruby), or compiled to bytecode targeted at a **Virtual Machine** (Java's JVM, C#'s CLR)?
+- **Extensibility & Metaprogramming:** Does the language allow code to write code? Options range from textual macros (C preprocessor) to syntactic macros (Rust) and runtime reflection/introspection. [link](https://www.reddit.com/r/ProgrammingLanguages/comments/c3wb01/programming%5Flanguage%5Fphilosophies/)
+
+***
+
+Are you asking out of curiosity about **programming history**, or are you currently planning to **design your own programming language**? If the latter, let me know your **primary goal** (e.g., building a fast systems language, a web scripting language, or an educational tool) so we can map out the ideal decisions for it.
+
+- [link](https://www.reddit.com/r/ProgrammingLanguages/comments/uhtxqi/worst%5Fdesign%5Fdecisions%5Fyouve%5Fever%5Fseen/)\
+  Reddit\
+  Worst Design Decisions You've Ever Seen - Reddit\
+  May 4, 2022 — Since the language was designed for running from source like a scripting language, it didn't do any real type inference. That mean...
+- [link](https://colinsblog.net/2024-06-17-little-big-ideas/)\
+  colinsblog.net\
+  Little 'Big Ideas' in Programming Language Design\
+  Jun 17, 2024 — It's “big idea” was to make the simplest language that was practical to develop in. Even for the time it eschewed nearly all moder...
+- [link](https://www.reddit.com/r/ProgrammingLanguages/comments/a4z68q/what%5Fprinciples%5Fhave%5Fyou%5Fadopted%5Ffor%5Fyour/)\
+  Reddit·r/ProgrammingLanguages\
+  What principles have you adopted for your programming language's ...\
+  Dec 10, 2018 — Things to improve: \* Use a modern C++ API that's both simple to use and nearly impossible to misuse. \* Rid the language of unneces...
+
+Show all
+
 # 
 
