@@ -102,4 +102,14 @@ on commenting
 
 i may not use block comment much though.
 
+---
+
+type system. fn polymorphism. macros. std lib, use, import. pattern matching. error handling. asi.
+
+---
+
+i may begin the impl of the ast transpiler.
+
+i can easily extend the syntax, introducing more types to match, and then convert.
+
 
