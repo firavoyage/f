@@ -972,6 +972,7 @@ code:
 - syntax design
 - syntax decisions
 - type system
+- macro
 
 humility:
 
