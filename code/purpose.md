@@ -64,6 +64,18 @@ the catch? you may have to move your cursor anyway. you will. you rarely write c
 
 if indentation couldnt be consistently elegant, it would not be as good as it looks, and basically it loses all its tradeoffs.
 
-yeah, interesting, tab moves the cursor.
+yeah, interesting, tab moves the cursor. 
+
+> Extraordinary claims require extraordinary evidence
+
+isnt obvious? tab makes no sense. you should use fmt. at least it shouldnt indent (?). at least it shouldnt indent when there is already some code.
+
+i would take a hybrid approach.
+
+for parsing, both is accepted. code will be pasted on the same indentation level.
+
+tabs are two spaces. they will be considered one in ide when you move your cursor.
+
+tabs work for navigation unless you are on a blank line, or you have a selection or multi cursor.
 
 
