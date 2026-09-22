@@ -54713,6 +54713,10 @@ https://hkn.eecs.berkeley.edu/courseguides/CS/61A
 
 https://cs61a.org/fa26/
 
+22
+
+11 40 read [Afraid my language doesn't mean anything anymore](https://www.reddit.com/r/ProgrammingLanguages/comments/1wmqkbo/afraid_my_language_doesnt_mean_anything_anymore/).
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
