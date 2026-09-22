@@ -29,9 +29,9 @@ main
 
 ```code
 fizzbuzz n = match n
-  % 3 == 0 && % 5 == 0 'FizzBuzz'
-  % 3 == 0 'Fizz'
-  % 5 == 0 'Buzz'
+  % 3 = 0 && % 5 = 0 'FizzBuzz'
+  % 3 = 0 'Fizz'
+  % 5 = 0 'Buzz'
   str(n)
   # string(n)
   # n
