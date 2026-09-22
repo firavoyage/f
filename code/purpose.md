@@ -78,4 +78,16 @@ tabs are two spaces. they will be considered one in ide when you move your curso
 
 tabs work for navigation unless you are on a blank line, or you have a selection or multi cursor.
 
+---
+
+on asi
+
+- no asi
+  - trailing/leading binary op
+  - unclosed paren/brackets (irrelevant, i only care fn blocks, i.e. braces)
+  - leading dot (method chaining)
+  - return/throw w something after it (you know what you are doing, you will never write unreachable code)
+- do asi
+  - _otherwise_
+
 
