@@ -54,4 +54,6 @@ compare set theory and type theory
 
 compare typing systems in pl design
 
+compare error handling patterns in pl design
+
 
