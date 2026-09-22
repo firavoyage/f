@@ -38,6 +38,8 @@ compare type systems in pl design
 
 compare error handling patterns in pl design
 
+compare pattern matching paradigms in pl design
+
 how do type operations work
 
 how would a sound type system look like
