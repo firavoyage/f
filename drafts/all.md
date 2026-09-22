@@ -140,6 +140,7 @@ life:
 - game maimai badges name plates
 - game maimai friend match class ghost data player pool birthday paradox
 - university cs future in ai era
+- university cs sicp
 
 create something:
 

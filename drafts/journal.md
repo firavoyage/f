@@ -54717,6 +54717,8 @@ https://cs61a.org/fa26/
 
 11 40 read [Afraid my language doesn't mean anything anymore](https://www.reddit.com/r/ProgrammingLanguages/comments/1wmqkbo/afraid_my_language_doesnt_mean_anything_anymore/).
 
+15 00 take `CS 61A: Structure and Interpretation of Computer Programs, Fall 2026, UC Berkeley`.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
