@@ -56,4 +56,8 @@ compare typing systems in pl design
 
 compare error handling patterns in pl design
 
+how do type operations work
+
+how would a sound type system look like
+
 
