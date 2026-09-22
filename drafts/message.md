@@ -42,4 +42,10 @@ how do type operations work
 
 how would a sound type system look like
 
+---
 
+what can pl syntax have
+
+macro
+
+<!-- julia -->

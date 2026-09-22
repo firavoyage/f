@@ -168,7 +168,7 @@ Are you asking out of curiosity about **programming history**, or are you curren
 Show all
 
 
-# all decisions in programming language syntax design
+# . all decisions in programming language syntax design
 
 7:46 PM
 
@@ -1685,6 +1685,5 @@ To fix this, languages with eager ASI enforce strict style rules. For example, *
 
 Are you considering **implementing eager ASI** in a language you are building, or are you looking for strategies on how to **handle the multiline expression problem** in a grammar?
 
-
-
+# 
 
