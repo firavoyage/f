@@ -1685,5 +1685,382 @@ To fix this, languages with eager ASI enforce strict style rules. For example, *
 
 Are you considering **implementing eager ASI** in a language you are building, or are you looking for strategies on how to **handle the multiline expression problem** in a grammar?
 
+# compare comment symbols in pl design
+
+In **programming language (PL) design**, choosing the right comment symbols involves balancing human legibility, compiler efficiency, and syntactic conflict prevention. Designers generally choose between <mark><strong>line comments</strong><span> </span>(which extend to the end of a line) and<span> </span><strong>block/enclosed comments</strong><span> </span>(which have explicit starting and ending boundaries)</mark>. [link](https://langdev.stackexchange.com/questions/687/what-are-common-options-for-comment-syntax)
+
+***
+
+### Comparison of Major Comment Styles
+
+Different language families use distinct syntax paradigms based on their heritage and design philosophies:
+
+| Style Paradigm        | Line Symbol | Block Symbols                       | Notable Languages             | Design Implications                                                                                                                                    |
+| --------------------- | ----------- | ----------------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **C-Style**           | `//`        | `/* ... */`                         | C++, Java, JavaScript, Rust   | **Pros:** Very standard, easy to parse.**Cons:** `/*` conflicts with math tokens like `/ *ptr` (division of a dereferenced pointer).                   |
+| **Shell / Scripting** | `#`         | _Varies (e.g., `#[ ... ]#` in Nim)_ | Python, Ruby, Bash, Perl      | **Pros:** Leaves `/` purely for math. `#` works beautifully with `#!` (shebang) interpreters.**Cons:** Lacks a universal, short block syntax natively. |
+| **SQL / Ada**         | `--`        | `/* ... */` _or none_               | Oracle PL/SQL, Ada, Haskell   | **Pros:** Clear separation from operator tokens.**Cons:** `--` can visually conflict with the decrement operator (`--`) in hybrid expressions.         |
+| **Algol / Pascal**    | _None_      | `(* ... *)` or `{ ... }`            | Pascal, Structured Text (PLC) | **Pros:** No conflict with prefix operators.**Cons:** Slower to type and lacks a dedicated, lightweight line comment character.                        |
+
+***
+
+### Core Trade-offs in Syntax Design
+
+When designing a programming language, the syntax chosen for comments introduces specific technical trade-offs: [link](https://langdev.stackexchange.com/questions/687/what-are-common-options-for-comment-syntax)
+
+#### 1. Token Ambiguity & Lexer Complexity
+
+If a comment symbol shares a character with an operator, the lexer must look ahead to differentiate them. [link](https://langdev.stackexchange.com/questions/687/what-are-common-options-for-comment-syntax)
+
+- For example, in C, `x/*y` is treated as the start of a block comment. If you want to divide `x` by the dereferenced pointer `*y`, you are forced to add a space: `x / *y`. [link](https://langdev.stackexchange.com/questions/687/what-are-common-options-for-comment-syntax)
+
+#### 2. The Nesting Problem
+
+Block comments that use simple character matching (like C's `/* ... */`) cannot easily be nested. [link](https://en.wikipedia.org/wiki/Comment%5F%28computer%5Fprogramming%29)
+
+- If you try to comment out a block of code that already contains a block comment, the compiler pairs the first internal `*/` with the external `/*`, breaking the rest of your code.
+- Languages like **Rust** and **Swift** fix this by tracking nesting depth during compilation, allowing nested block comments.
+
+#### 3. Toggling Code vs. Documenting
+
+Many developers use block comments to temporarily disable code. A clever design quirk often utilized by developers is adding an extra slash to a C-style closing fence (`/**/`) to create an easily flippable toggle switch between active and dead code blocks. [link](https://www.reddit.com/r/ProgrammingLanguages/comments/w6ntc8/favorite%5Fcomment%5Fsyntax%5Fin%5Fprogramming%5Flanguages/)
+
+Other modern language designs require block comments to explicitly start at the beginning of a line to prevent code logic from accidentally hiding inside string literals or trailing expressions. [link](https://www.reddit.com/r/ProgrammingLanguages/comments/1hqlr1c/opinions%5Fon%5Fdifferent%5Fcomment%5Fstyles/)
+
+Are you designing a parser for a **custom programming language**, or are you looking for the best way to handle **documentation generation** (like Javadoc or Python docstrings) within a language's syntax? [link](https://insum-labs.github.io/plsql-and-sql-coding-guidelines/v1.0/3-coding-style/02-coding-style-comments/)
+
+- [link](https://langdev.stackexchange.com/questions/687/what-are-common-options-for-comment-syntax)\
+  Stack Exchange\
+  What are common options for comment syntax?\
+  end One problem with comment delimiters is that they may conflict with the plain syntax. In C for example 'x/ \*divp' is a valid di...
+- [link](https://en.wikipedia.org/wiki/Comment%5F%28computer%5Fprogramming%29)\
+  Wikipedia\
+  Comment (computer programming) - Wikipedia\
+  For example, C, C++ and their many derivatives support block comments delimited by /\* and \*/ and line comments delimited by // . O...
+- [link](https://www.reddit.com/r/ProgrammingLanguages/comments/1hqlr1c/opinions%5Fon%5Fdifferent%5Fcomment%5Fstyles/)\
+  Reddit\
+  Opinions on different comment styles : r/ProgrammingLanguages\
+  Jan 1, 2025 — tokenize each line independently \* brucejbell • 2y ago • Edited 2y ago Something I don't recall seeing (and am seriously thinking ...
+
+Show all
+
+## how does nested block comment work
+
+**Nested block comments** <mark>allow developers to comment out large sections of code that already contain their own block comments</mark>.
+
+In languages that support nesting (like **Rust, Swift, and Kotlin**), the compiler doesn’t just look for the first closing tag it sees. Instead, it uses a **counter or a stack** during the lexical analysis phase to track how deep the comments are.
+
+***
+
+### How the Compiler Parses It (Step-by-Step)
+
+The lexer (the part of the compiler that reads your code character by character) tracks an integer variable, usually called a `comment_depth` counter, initialized to **0**.
+
+text
+
+```
+Counter = 0  (Reading normal code)
+
+/*           <- Counter becomes 1 (Entering level 1)
+   Code line 1
+   Code line 2
+
+   /*        <- Counter becomes 2 (Entering level 2 - Nesting!)
+      Inner commented code
+   */        <- Counter becomes 1 (Exiting level 2)
+
+   Code line 3
+*/           <- Counter becomes 0 (Exiting level 1 - Back to normal code)
+```
+
+Use code with caution.
+
+1. **Increment:** Every time the lexer encounters the opening symbol (e.g., `/*`), it adds `1` to the counter.
+2. **Ignore Content:** While the counter is greater than 0, the compiler ignores all standard code logic, strings, and operators. It _only_ searches for opening or closing comment symbols.
+3. **Decrement:** Every time the lexer encounters the closing symbol (e.g., `*/`), it subtracts `1` from the counter.
+4. **Exit:** The compiler only considers the comment fully finished and resumes reading normal code when the counter hits **0**.
+
+***
+
+### Comparison: Nesting vs. Non-Nesting
+
+To see why this matters, look at what happens when you try to comment out a block of code containing an existing comment in **C** (which does _not_ support nesting) versus **Rust** (which does).
+
+c
+
+```
+// ❌ IN C (Syntax Error)
+/*
+   printf("Hello");
+   /* This is an old internal note */  <-- C sees this '*/' and stops the comment!
+   printf("World");                    <-- This code is now active and breaks compilation!
+*/                                     <-- This trailing '*/' causes a syntax error.
+```
+
+Use code with caution.
+
+rust
+
+```
+//  IN RUST (Works Perfectly)
+/*
+   println!("Hello");
+   /* This is an old internal note */  <-- Depth drops to 1, comment continues.
+   println!("World");                  <-- Safely ignored.
+*/                                     <-- Depth hits 0, comment cleanly ends.
+```
+
+Use code with caution.
+
+### The Design Trade-off
+
+While nesting is highly convenient for developers, it makes the language's lexer slightly more complex. Instead of treating a block comment as a simple regular expression (like a string literal), the compiler must use a **stateful tracker** to count pairs.
+
+Are you trying to implement a **lexer/parser** that supports nested comments right now? If so, tell me **what language or tools** (like Python, Flex/Bison, or Antlr) you are using, and I can show you the exact logic to write it.
+
+## what if you have extra opening comment symbol in nested block comment
+
+If you have an **unmatched, extra opening symbol** inside a nested block comment, <mark>the compiler's comment counter will never return to zero</mark>. As a result, the compiler will treat the **entire rest of the file** as a comment, wiping out your active code and triggering a **Syntax Error** at the very end of the file.
+
+***
+
+### Step-by-Step Visualization
+
+Here is exactly what happens in the compiler's lexer if you accidentally leave an extra opening symbol:
+
+text
+
+```
+Counter = 0
+
+/*               <- Counter = 1 (Main comment starts)
+   Code Line 1
+
+   /*            <- Counter = 2 (Accidental extra opening symbol)
+
+   Code Line 2
+*/               <- Counter = 1 (The compiler thinks this closes the second symbol)
+
+   Active Code?  <-- NO. Counter is still 1, so the compiler ignores this code!
+   Active Code?  <-- All of this code is accidentally swallowed up.
+
+[EOF]            <-- ERROR: "Unexpected end of file while parsing block comment"
+```
+
+Use code with caution.
+
+### The Resulting Compiler Error
+
+Because the counter is still at `1` when the compiler reaches the end of the source code file, it realizes it was left hanging.
+
+Depending on the language, you will get a specific error:
+
+- **Rust:** `error: unterminated block comment`
+- **Swift:** `error: unterminated '/*' comment`
+- **Java/C (if non-nested):** They behave similarly if a single `/*` is left open, throwing an `unclosed comment` or `unexpected end of file` error.
+
+### Why this is a "Silent" Danger Until the End
+
+The trickiest part about this mistake is that the code immediately following your closing `*/` **will not throw errors for having typos or broken logic**. Because the compiler views it as just a text comment, it won't check its syntax. You will only find out there is a problem because of the single error flagged at the **very last line** of your file.
+
+Are you running into a specific **unterminated comment error** in a project right now, or are you designing the **error-handling logic** for your own custom language parser?
+
+## how does the c style toggle work
+
+The **C-style toggle switch** is a clever trick used by C, C++, Java, and JavaScript developers to quickly enable or disable a block of code by adding or removing a single character (usually a slash `/`).
+
+It exploits the fact that C-style languages allow line comments (`//`) to sit right next to or wrap around block comments (`/* ... */`).
+
+***
+
+### How the Two States Work
+
+By changing **just the very first character** of the block, you can flip the entire chunk of code between active and inactive.
+
+#### State 1: Code is DISABLED (Commented Out)
+
+To turn the code off, you start the block with a normal block comment `/*`.
+
+c
+
+```
+/*
+   printf("This code is HIDDEN\n");
+   printf("It will not execute.\n");
+//*/
+```
+
+Use code with caution.
+
+- **How it works:** The compiler sees `/*` at the top and ignores everything until it finds `*/` at the bottom. The two slashes `//` at the bottom are ignored because they are trapped inside the block comment.
+
+#### State 2: Code is ENABLED (Active)
+
+To turn the code back on, you simply add **one extra slash** `/` to the very top line, making it `//*`.
+
+c
+
+```
+//*
+   printf("This code is ACTIVE\n");
+   printf("It will execute perfectly!\n");
+//*/
+```
+
+Use code with caution.
+
+- **How it works:** The top line is now a **line comment** (`//`), followed by a harmless asterisk (`*`). Because the top line is just a line comment, the compiler ignores _only_ that line and compiles the code below it. When it hits the bottom line, it reads `//` and treats the trailing `*/` as a comment, meaning it doesn't cause a syntax error!
+
+***
+
+### The Dual-Block "Flip-Flop" Toggle
+
+You can take this a step further. If you have two different blocks of code (like an old feature and a new feature) and want to swap between them instantly, you can chain them together like this:
+
+#### Executing Block A:
+
+c
+
+```
+/*
+   // BLOCK A IS DISABLED
+   printf("Running Option A\n");
+/*/
+   // BLOCK B IS ENABLED
+   printf("Running Option B\n");
+//*/
+```
+
+Use code with caution.
+
+#### Executing Block B (Just add a `/` to the top line):
+
+c
+
+```
+//*
+   // BLOCK A IS ENABLED
+   printf("Running Option A\n");
+/*/
+   // BLOCK B IS DISABLED
+   printf("Running Option B\n");
+//*/
+```
+
+Use code with caution.
+
+### Why Modern Designers Dislike It
+
+While this is a fun and fast trick for debugging, modern language designers and team leads heavily discourage it in production code:
+
+- **Obfuscation:** It makes it difficult to tell at a glance whether code is active or dead without looking closely at the top line.
+- **IDE Conflicts:** Modern IDEs allow you to highlight code and press `Ctrl + /` (or `Cmd + /`) to comment out code cleanly using line comments, making manual toggles largely obsolete.
+
+Are you setting up **conditional features** in your code right now? If so, tell me **what programming language** you are using, and I can show you how to use cleaner, production-grade tools like **preprocessor directives** (`#ifdef`) or **feature flags**.
+
+## how can the block comment symbol look like for
+
+When designing a language that uses `#` as its line comment symbol, you cannot use C-style `/* ... */` without creating a jarring, mixed aesthetic. Instead, language designers usually follow one of three main syntax patterns for `#`-based block comments:
+
+### 1. The Wrapper Pattern (Most Common)
+
+This pattern wraps the `#` inside bracket-style characters, or adds a secondary character next to it to form a distinct "fence."
+
+- **`#[ ... ]#` (Used by Nim):**\
+  nim
+
+<!---->
+
+```
+#[
+   This is a block comment in Nim.
+   It nests perfectly!
+]#
+```
+
+Use code with caution.
+
+- **`#= ... =#` (Used by Julia):**\
+  julia
+
+<!---->
+
+```
+#=
+   Julia uses equals signs packed inside hashes
+   for its multi-line block comments.
+=#
+```
+
+Use code with caution.
+
+- **`### ... ###` (Used by CoffeeScript):**\
+  CoffeeScript simply triplets the symbol.\
+  coffeescript
+
+<!---->
+
+```
+###
+This is a block comment
+in CoffeeScript.
+###
+```
+
+Use code with caution.
+
+### 2. The String Literal Hack (Python & Elixir)
+
+Some languages choose **not to implement a dedicated block comment symbol at all**. Instead, they allow developers to use unassigned multi-line string literals. Because the compiler sees a standalone string that isn't assigned to a variable, it simply discards it during compilation.
+
+- **`""" ... """` (Used by Python):**\
+  python
+
+<!---->
+
+```
+# Normal line comment
+
+"""
+This is technically a multi-line string literal,
+but Python programmers use it as a block comment.
+"""
+print("Hello")
+```
+
+Use code with caution.
+
+### 3. Custom Keyword Directives (PowerShell)
+
+Some languages prefer explicit, readable text tags over abstract symbols.
+
+- **`<# ... #>` (Used by PowerShell):**\
+  powershell
+
+<!---->
+
+```
+<#
+   PowerShell uses HTML/XML style brackets
+   combined with the hash symbol.
+#>
+```
+
+Use code with caution.
+
+***
+
+### Comparison for Language Designers
+
+If you are designing your own language syntax, here is how the choices stack up:
+
+| Block Syntax      | Nesting Ease                             | Parser Complexity           | Visual Cleanness                                         |
+| ----------------- | ---------------------------------------- | --------------------------- | -------------------------------------------------------- |
+| **`#[ ... ]#`**   | **Excellent** (brackets pair naturally)  | Medium                      | Very clean; matches the `#` identity.                    |
+| **`### ... ###`** | **Poor** (hard to tell start from end)   | Low                         | Looks heavy on the page.                                 |
+| **`""" ... """`** | **Impossible** (cannot nest same quotes) | None (reuses string parser) | Clean, but creates memory overhead if not optimized out. |
+
+Are you choosing a **syntax style for a new programming language** you are designing, or are you writing a **syntax highlighter/parser** for an existing language that uses these symbols?
+
 # 
 

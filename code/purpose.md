@@ -93,4 +93,13 @@ on asi
 
 eager.
 
+---
+
+on commenting
+
+- single line `#`
+- block/inline, can be nested `#= hello =#`
+
+i may not use block comment much though.
+
 
