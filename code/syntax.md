@@ -71,31 +71,23 @@ play
 
 # array filter
 
-```
-sum_of_high_prices(int[] prices, threshold) {
-
-}
+```code
+# sum_of_high_prices(int[] prices, threshold) {
+#   let sum = 0
+#   # let sum
+# 
+#   for price of prices
+#     if price >= threshold
+#       sum += price
+# }
+sum_of_high_prices(int[] prices, threshold) = prices.filter(_ >= threshold).sum()
 
 main
   const prices = [12.99, 45.00, 5.50, 99.99, 23.50, 8.00];  
-  
+  const threshold = 20.00
+
+  console.log(`Total sum of items over {threshold}: {total_sum}`) where
+    total_sum = sum_of_high_prices prices threshold
 ```
 
-```
-// List Filter and Accumulator
-function sumHighPrices() {
-    const prices = [12.99, 45.00, 5.50, 99.99, 23.50, 8.00];
-    const threshold = 20.00;
-    let totalSum = 0;
-
-    for (let i = 0; i < prices.length; i++) {
-        if (prices[i] >= threshold) {
-            totalSum += prices[i];
-        }
-    }
-
-    console.log(`Total sum of items over $${threshold}: $${totalSum}`);
-    // Output: Total sum of items over \$20: \$168.49
-}
-```
 
