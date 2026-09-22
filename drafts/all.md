@@ -969,6 +969,7 @@ code:
 - halting problem
 - foundation
 - syntax design
+- syntax decisions
 
 humility:
 
