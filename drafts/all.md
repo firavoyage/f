@@ -971,6 +971,7 @@ code:
 - foundation
 - syntax design
 - syntax decisions
+- type system
 
 humility:
 
