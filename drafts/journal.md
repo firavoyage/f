@@ -54725,6 +54725,56 @@ or Spring 2026 maybe.
 
 "apply the fn to the args", not "apply the args to the fn"
 
+---
+
+```
+2026
+
+~~dp~~
+
+i. 20, 26
+
+20, 19, 10, 9, 5
+
+26, 25, 13, 7, 6, 5
+
+~~ii. 2025~~
+
+identical. you will convert 26 to 25 (or 6 to 5) anyway.
+
+ii. 202, 6
+
+202, 201, 100, 99, 
+
+- 50, 49, 25, (4)
+- 9, 5 | 9, 5
+
+6, 5
+
+---
+
+obviously
+
+2026 = 20 | 26 = 20, 19, 10, 9, 5 | 26, 25, 13, 7, 6, 5 : 33
+2026 = 202 | 6 = 202, 201, 100, (9, 5 | 9, 5) | 6, 5 : 29
+
+5 = 1 char
+, = 3 char f({}) or g({})
+| = 4 char h({},{})
+```
+
+to solve w a computer...
+
+5 requires identical match. h requires minimum. g requires minimum and odd. h gives all paths of possible division, i.e. no leading zero, minimum.
+
+~~you may find the shortest path w a template.~~ the output of h is unappliable.
+
+you may just use memo recursive dp.
+
+---
+
+"python command: python3/python/py"
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
