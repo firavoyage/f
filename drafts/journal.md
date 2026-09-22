@@ -54775,6 +54775,12 @@ you may just use memo recursive dp.
 
 "python command: python3/python/py"
 
+16 40 write some advanced math exercises.
+
+<!-- inspired by dormmates -->
+
+"how to create a sound math typing system" <!-- how to impl type op -->
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
