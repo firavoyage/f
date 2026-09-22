@@ -4,6 +4,12 @@ message/paste · todo · tabs/things · scratch pad · weekly/projects · notes
 
 ---
 
+shortcuts
+
+tools ~~http://localhost:1234/~~ <!-- `b dev` -->
+
+---
+
 research openai api
 
 research fetch api
