@@ -9,3 +9,4 @@ do {
 } while (abs(b ** 2 / a ** 2 - 2) < 0.01);
 
 console.log(n)
+
