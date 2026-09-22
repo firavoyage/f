@@ -84,10 +84,13 @@ on asi
 
 - no asi
   - trailing/leading binary op
-  - unclosed paren/brackets (irrelevant, i only care fn blocks, i.e. braces)
   - leading dot (method chaining)
-  - return/throw w something after it (you know what you are doing, you will never write unreachable code)
+  - leading braces, iff it's fn, not obj or dc
+  - _return/throw w something after it_ (you know what you are doing, you will never write unreachable code)
+  - ~~unclosed paren/brackets~~ (irrelevant, i only care fn blocks, i.e. braces)
 - do asi
-  - _otherwise_
+  - _otherwise_ (incl. leading paren/brakets)
+
+eager.
 
 
