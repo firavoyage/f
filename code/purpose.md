@@ -138,7 +138,7 @@ you can explicitly panic to narrow the type.
 
 it favors efficiency over safety so it doesnt require ? to propagate. and yeah, it will not just continue, it will immediately return _iff you have no handling logic after_.
 
-<!-- i.e. it will immediately return on read, so i can optimize (you will not normally have unused vars, i guess...). i do not have to. i can just make it runtime. -->
+<!-- i.e. it will immediately return on read, so i can optimize (you will not normally have unused vars, i guess... it's a read even if you pass it down wo "really" evaluating/calling). i do not have to. i can just make it runtime. -->
 
 reading a possible error results in a warning, which would panic in runtime if it really errs.
 
@@ -155,5 +155,13 @@ match value
   target # no "Ok() wrapper"
   type(value)
 ```
+
+i do need a lang level keyword for throw. no need to be strictly keyword aw. 
+
+maybe code::err or code::throw.
+
+err is simpler. both the fn and the type (for matching) can be called err. nothing wrong, conceptually the same.
+
+(and yeah, you should use nil over NaN, NaN doesnt have props of a regular number you would expect, dont be confused by js)
 
 
