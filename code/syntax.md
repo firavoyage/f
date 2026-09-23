@@ -61,12 +61,15 @@ play
     guess = int(input("Guess a number between 1 and 10:"))
 
     match guess
-      NaN print "Invalid input. Please enter a valid number."
+      nil
+        print "Invalid input. Please enter a valid number."
       target
         print "Spot on! You got it."
         break
-      > target print "Too high! Try again."
-      < target print "Too low! Try again."
+      > target
+        print "Too high! Try again."
+      < target
+        print "Too low! Try again."
 ```
 
 # array filter
