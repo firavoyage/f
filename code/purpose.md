@@ -136,7 +136,7 @@ under the hood i can make it a tuple return cleanly.
 
 you can explicitly panic to narrow the type. 
 
-it favors efficiency over safety so it doesnt require ? to propagate. and yeah, it will not just continue, it will immediately return _iff you have no handling logic after_.
+it favors efficiency over safety so it doesnt require ? to propagate. and yeah, it will not just continue, ~~it will immediately return _iff you have no handling logic after_~~ <!-- or it may not. well it doesnt matter. you may declare handling logic as you like. -->.
 
 <!-- i.e. it will immediately return on read, so i can optimize (you will not normally have unused vars, i guess... it's a read even if you pass it down wo "really" evaluating/calling). i do not have to. i can just make it runtime. -->
 
