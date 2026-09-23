@@ -974,6 +974,7 @@ code:
 - type system
 - macro
 - transpile
+- error handling
 
 humility:
 
