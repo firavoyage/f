@@ -975,7 +975,7 @@ code:
 - macro
 - transpile
 - error handling
-- async await algrebraic effects
+- async await no algrebraic effects auto await by default
 
 humility:
 

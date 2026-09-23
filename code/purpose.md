@@ -122,4 +122,38 @@ most time you will await, right?
 
 coloring is generated. it can work. you dont have to care parents. if you reference async fn, i will color it. and all sync fn are simply there.
 
+---
+
+yeah, await by default!
+
+---
+
+syntax doesnt matter, error is logically just one of the return values
+
+no "object colored as err" tricks. (as you can not return both _any_ value and err, and differ them)
+
+under the hood i can make it a tuple return cleanly.
+
+you can explicitly panic to narrow the type. 
+
+it favors efficiency over safety so it doesnt require ? to propagate. and yeah, it will not just continue, it will immediately return _iff you have no handling logic after_.
+
+<!-- i.e. it will immediately return on read, so i can optimize (you will not normally have unused vars, i guess...). i do not have to. i can just make it runtime. -->
+
+reading a possible error results in a warning, which would panic in runtime if it really errs.
+
+you always handle real, possible, errors. you never wrap arbitrary block of code in try.
+
+no syntax for it (e.g. try catch, rescue). there is a language level keyword for err.
+
+you may match like
+
+```code
+match value
+  code::err # std
+  # or code::err(msg), or code::err(e)
+  target # no "Ok() wrapper"
+  type(value)
+```
+
 
