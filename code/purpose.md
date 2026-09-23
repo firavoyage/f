@@ -112,4 +112,14 @@ i may begin the impl of the ast transpiler.
 
 i can easily extend the syntax, introducing more types to match, and then convert.
 
+23
+
+you can write file. it's awaited.
+
+you can fire write file. it's fired, you may parallel a few and handle when you like.
+
+most time you will await, right?
+
+coloring is generated. it can work. you dont have to care parents. if you reference async fn, i will color it. and all sync fn are simply there.
+
 
