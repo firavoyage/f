@@ -164,4 +164,72 @@ err is simpler. both the fn and the type (for matching) can be called err. nothi
 
 (and yeah, you should use nil over NaN, NaN doesnt have props of a regular number you would expect, dont be confused by js)
 
+24
+
+space is a sacred operator.
+
+how is it used?
+
+in js it's generally left unused.
+
+as fn params
+
+```
+convert_celsius_to_fahrenheit celsius = (celsius * 9 / 5) + 32;
+```
+
+in array
+
+```
+foo = [1 2 3]
+```
+
+in obj/type <!-- i lean toward linebreak here, but space can be accepted -->
+
+```
+type foo = {
+  a: b
+  c: d
+}
+type foo = {
+  a: b c: d
+}
+```
+
+in call expression
+
+```
+call exp
+```
+
+in type?
+
+```
+type foo = a b c
+type foo = a | b | c
+```
+
+in paren (tuple/union)
+
+```
+type foo = union(
+  {
+    type: 'select'
+    options: string[]
+  }
+  {
+    type: 'checkbox'
+    value: boolean
+  }
+  {
+    type: button
+    click: fn
+  }
+)
+```
+
+---
+
+type system and pattern matching are deeply intertwined, absolutely.
+
 
