@@ -4264,5 +4264,288 @@ Would you like to see how to replace a **specific recursive function** you are w
 
 Show all
 
+# haskell currying examples
+
+In **Haskell**, **currying** is the core mechanism where **every function officially takes exactly one argument**. If a function requires multiple arguments, it takes the first one and returns a _new_ function that expects the next argument, continuing this chain until it yields the final result. [link](https://www.youtube.com/shorts/JRJU8Cmx-zs)
+
+Because this behavior is built into the language by default, you do not need special syntax to curry a function. Here is a breakdown of how it works under the hood, alongside practical examples of partial application. [link](https://stackoverflow.com/questions/6652234/how-does-currying-work)
+
+***
+
+### 1. The Anatomy of a Curried Function
+
+Consider a standard addition function:
+
+haskell
+
+```
+add :: Int -> Int -> Int
+add x y = x + y
+```
+
+Use code with caution.
+
+While it looks like `add` takes two arguments, the arrow operator (`->`) in Haskell's type system **associates to the right**. The type signature is secretly parsed like this: [link](https://www.reddit.com/r/haskell/comments/1fqbxwe/beginner%5Fasking%5Ffor%5Fclarification%5Fabout%5Fhow/)
+
+haskell
+
+```
+add :: Int -> (Int -> Int)
+```
+
+Use code with caution.
+
+- **What it means:** `add` takes a single `Int` and returns a function of type `Int -> Int`.
+- **Function Application:** Similarly, calling `add 3 5` actually associates to the left: `(add 3) 5`. First, `add 3` evaluates to a temporary function, and then `5` is passed to that temporary function. [link](https://discourse.haskell.org/t/beginner-having-trouble-understanding-curried-function-in-example/3773)
+
+***
+
+### 2. Practical Examples of Partial Application
+
+Because all functions are curried, you can leave off arguments to create highly reusable specialized helper functions on the fly. This is known as **partial application**. [link](https://www.youtube.com/watch?v=psmu%5FVAuiag\&t=268)
+
+#### Example A: Creating a specialized utility
+
+By passing only one argument to `add`, you generate an incrementing function:
+
+haskell
+
+```
+-- Partially applying the first argument
+increment :: Int -> Int
+increment = add 1
+
+-- Using it
+main = print (increment 10) -- Outputs: 11
+```
+
+Use code with caution.
+
+#### Example B: Inline filtering with lists
+
+Currying becomes incredibly powerful when combined with higher-order functions like `filter` or `map`. [link](https://www.geeksforgeeks.org/python/higher-order-functions-currying/)
+
+haskell
+
+```
+-- The standard compare function: (> 5) is a partially applied operator
+isGreaterThanFive :: Int -> Bool
+isGreaterThanFive = (> 5)
+
+-- Passing the partially applied function straight into a list filter
+justLargeNumbers :: [Int] -> [Int]
+justLargeNumbers = filter (> 5)
+
+main = print (justLargeNumbers [2, 5, 8, 12, 3]) -- Outputs: [8, 12]
+```
+
+Use code with caution.
+
+#### Example C: String formatting and prefixing
+
+You can lock in initial configuration parameters (like a prefix or a structural marker) while keeping the remainder of your logic dynamic:
+
+haskell
+
+```
+logger :: String -> String -> String
+logger level message = "[" ++ level ++ "] " ++ message
+
+-- Partially apply the severity level
+logError :: String -> String
+logError = logger "ERROR"
+
+logInfo :: String -> String
+logInfo = logger "INFO"
+
+main = do
+    putStrLn (logError "Database connection failed!") -- [ERROR] Database connection failed!
+    putStrLn (logInfo "Server started successfully.")  -- [INFO] Server started successfully.
+```
+
+Use code with caution.
+
+***
+
+### 3. Converting via `curry` and `uncurry`
+
+Sometimes you will encounter functions that accept their inputs inside a data structure, like a pair tuple `(x, y)`. This is called an **uncurried function**. [link](https://www.haskell.org/haskellwiki/currying)
+
+Haskell provides built-in functions in the Haskell Prelude to bridge these formats effortlessly: [link](https://www.haskell.org/haskellwiki/currying)
+
+| Function Form      | Definition Example              | Notes                                             |
+| ------------------ | ------------------------------- | ------------------------------------------------- |
+| **Curried Form**   | `add :: Int -> Int -> Int`      | Takes arguments one by one. Preferred in Haskell. |
+| **Uncurried Form** | `addTuple :: (Int, Int) -> Int` | Takes all arguments grouped at once in a tuple.   |
+
+You can use the functions `curry` and `uncurry` to translate back and forth: [link](https://www.haskell.org/haskellwiki/currying)
+
+haskell
+
+```
+-- An uncurried function
+addTuple :: (Int, Int) -> Int
+addTuple (x, y) = x + y
+
+-- 1. Transform it to a curried function so we can partially apply it
+curriedAdd = curry addTuple
+addTen     = curriedAdd 10
+
+-- 2. Transform a curried function back into an uncurried function
+uncurriedZipAdd = uncurry (+)
+
+main = do
+    print (addTen 5)              -- Outputs: 15
+    print (uncurriedZipAdd (4, 6)) -- Outputs: 10
+```
+
+Use code with caution.
+
+Would you like to see how currying applies to **custom data types / constructors**, or are you looking to see how curried functions are leveraged inside **map/fold loop variations**?
+
+- [link](https://stackoverflow.com/questions/6652234/how-does-currying-work)\
+  Stack Overflow\
+  haskell - How does currying work?\
+  Comments 4 Something that may help is to think about how you could implement curry as a higher order function if Haskell didn't ha...
+- [link](https://www.reddit.com/r/haskell/comments/1fqbxwe/beginner%5Fasking%5Ffor%5Fclarification%5Fabout%5Fhow/)\
+  Reddit\
+  Beginner: Asking for clarification about how currying is functioning in ...\
+  Sep 27, 2024 — Comments Section cdsmith • 2y ago It's a little bit incorrect to say that the first example is "without currying". The currying is...
+- [link](https://discourse.haskell.org/t/beginner-having-trouble-understanding-curried-function-in-example/3773)\
+  Haskell Community\
+  Beginner: Having trouble understanding curried function in example\
+  Dec 1, 2021 — y The way that you described it is correct, and in the first chapter of the book Hutton introduces a notation (not Haskell syntax,
+
+Show all
+
+## why does > n eval to \_ > n instead of n > \_
+
+In Haskell, an expression like `(> 5)` is called an **operator section**. The reason `(> 5)` evaluates to `\x -> x > 5` (which means `_ > 5`) instead of `\x -> 5 > x` comes down to a strict, intuitive rule in Haskell’s syntax regarding **which side of the operator the argument is placed**.
+
+Haskell looks at which slot is left blank:
+
+- **Right Section:** If you put the argument on the **right** side of the operator, the missing argument goes on the **left**.\
+  `_ > 5` is written as `(> 5)`
+- **Left Section:** If you put the argument on the **left** side of the operator, the missing argument goes on the **right**.\
+  `5 > _` is written as `(5 >)`
+
+***
+
+### Visually Mapping Operator Sections
+
+Think of the parentheses as a structural placeholder. Wherever you leave an open space inside the parentheses, Haskell implicitly drops a variable lambda `\x -> ...` into that exact spot:
+
+| Written Code | Equivalent Lambda Expression | Meaning                            | Example Application             |
+| ------------ | ---------------------------- | ---------------------------------- | ------------------------------- |
+| `(> 5)`      | `\x -> x > 5`                | "Is the input **greater than** 5?" | `(> 5) 10` evaluates to `True`  |
+| `(5 >)`      | `\x -> 5 > x`                | "Is 5 **greater than** the input?" | `(5 >) 10` evaluates to `False` |
+
+### Why this is mathematically intuitive
+
+This design allows you to read your code naturally from left to right.
+
+If you want to filter a list of numbers to find only those greater than 5, writing `filter (> 5) [1..10]` mirrors standard mathematical notation (
+
+𝑥
+
+\>5
+
+). If Haskell flipped the arguments arbitrarily, reading sections would become highly confusing.
+
+### Handling Non-Commutative Operators
+
+This structural placement is especially critical for non-commutative operations like subtraction (`-`) or division (`/`), where the order of arguments entirely changes the outcome:
+
+- `(/ 2)` means `\x -> x / 2` (Halve the input number)
+- `(2 /)` means `\x -> 2 / x` (Divide 2 by the input number)
+
+_(Note: Subtraction `(- x)` is a special edge case in Haskell because `-5` is parsed as a negative number rather than a section. To get `\x -> x - 5`, you generally use the built-in function `subtract 5` instead)._
+
+Would you like to explore how **operator precedence and fixity** affect these sections, or see examples of creating your own **custom operators** that support sectioning?
+
+# haskell operator section examples
+
+In Haskell, **operator sectioning** is the practice of partially applying an infix operator. Enclosing an operator along with one of its arguments in parentheses creates a new, unary function (a function that takes a single argument). [link](https://www.haskell.org/tutorial/functions.html)
+
+Because infix operators have a left side and a right side, there are two distinct ways to construct a section. [link](https://cs.lmu.edu/~ray/notes/introhaskell/)
+
+### Left Sections (Fixing the First Argument)
+
+A **left section** supplies the left-hand operand. The resulting function accepts the right-hand operand as its input. [link](https://www.devhowto.dev/haskell/sectioning.html)
+
+- **`(2^)`**
+  - Equivalent to: `\x -> 2 ^ x`
+  - Example: `(2^) 3` evaluates to **`8`**. [link](https://cs.lmu.edu/~ray/notes/introhaskell/)
+- **`("Hello, " ++)`**
+  - Equivalent to: `\x -> "Hello, " ++ x`
+  - Example: `("Hello, " ++ ) "World"` evaluates to **`"Hello, World"`**. [link](https://github.com/haskellcats/haskell-operators/blob/master/examples.md)
+- **`(100 /)`**
+  - Equivalent to: `\x -> 100 / x`
+  - Example: `(100 /) 4` evaluates to **`25.0`**. [link](https://www.youtube.com/watch?v=9lD3pquf0CQ\&t=236)
+
+### Right Sections (Fixing the Second Argument)
+
+A **right section** supplies the right-hand operand. The resulting function accepts the left-hand operand as its input. [link](https://www.haskell.org/tutorial/functions.html)
+
+- **`(^2)`**
+  - Equivalent to: `\x -> x ^ 2`
+  - Example: `(^2) 3` evaluates to **`9`**. [link](https://cs.lmu.edu/~ray/notes/introhaskell/)
+- **`(+1)`**
+  - Equivalent to: `\x -> x + 1`
+  - Example: `map (+1) [1, 2, 3]` evaluates to **`[2, 3, 4]`**. [link](https://www.haskell.org/tutorial/functions.html)
+- **`(`elem` "AEIOU")`**
+  - Equivalent to: `\x -> x `elem` "AEIOU"`
+  - Example: `filter (`elem` "AEIOU") "HASKELL"` evaluates to **`"AE"`**. [link](https://wiki.haskell.org/Section%5Fof%5Fan%5Finfix%5Foperator)
+
+***
+
+### Comparison of Commutative vs. Non-Commutative Operators
+
+For commutative operations like addition or multiplication, the placement of the argument doesn't alter the math. For non-commutative operations like subtraction, division, or exponentiation, the order completely changes the function's behavior. [link](https://www.devhowto.dev/haskell/sectioning.html)
+
+| Section               | Equivalent Lambda | Evaluation Example | Result |
+| --------------------- | ----------------- | ------------------ | ------ |
+| **`(10/)`** _(Left)_  | `\x -> 10 / x`    | `(10/) 2`          | `5.0`  |
+| **`(/10)`** _(Right)_ | `\x -> x / 10`    | `(/10) 2`          | `0.2`  |
+| **`(2^)`** _(Left)_   | `\x -> 2 ^ x`     | `(2^) 3`           | `8`    |
+| **`(^2)`** _(Right)_  | `\x -> x ^ 2`     | `(^2) 3`           | `9`    |
+
+### ⚠️ The Subtraction Exception (`-`)
+
+Haskell treats the `-` symbol as both a binary subtraction operator and a unary negation operator. Because of this syntactic overlap, **`(-1)` is parsed as the negative number -1**, not as a function that subtracts 1. [link](https://www.youtube.com/watch?v=7--rV1th214\&t=105)
+
+If you need a right section for subtraction, you must use the standard subtract function instead:
+
+haskell
+
+```
+-- WRONG: This is just the number negative one
+-- map (-1) [3, 4, 5]
+
+-- CORRECT: Use the subtract function
+map (subtract 1) [3, 4, 5] -- Returns [2, 3, 4]
+```
+
+Use code with caution.
+
+Would you like to see how operator sections can be combined with **function composition (`.`)**, or are you looking to use sections with **custom-defined infix operators**? [link](https://academy.fpblock.com/haskell/tutorial/operators/)
+
+- [link](https://wiki.haskell.org/Section%5Fof%5Fan%5Finfix%5Foperator)\
+  Haskell Language\
+  Section of an infix operator\
+  Like partial application and lambda abstraction, sectioning provides a convenient way of writing some functions without having to ...
+- [link](https://www.haskell.org/tutorial/functions.html)\
+  Haskell Language\
+  A Gentle Introduction to Haskell: Functions
+
+3.2.1 Sections Since infix operators are really just functions, it makes sense to be able to partially apply them as well. In Hask...
+
+- [link](https://www.devhowto.dev/haskell/sectioning.html)\
+  www.devhowto.dev\
+  Haskell Sectioning - Dev How To\
+  Infix operators \[1] by definition have to take two arguments, one on the left, and one on the right. We can partially apply this o...
+
+Show all
+
 # 
 

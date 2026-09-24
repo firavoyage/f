@@ -54781,6 +54781,54 @@ you may just use memo recursive dp.
 
 "how to create a sound math typing system" <!-- how to impl type op -->
 
+24
+
+19 00 converse.
+
+```
+the experienced lua programmer: (...)
+
+我有看到你.
+
+你有没有感觉我博客... github 上的东西很奇怪
+
+没有啊, 就是很传统的网页. 没有 css.
+
+你会不会把你随时想到的想法记录下来.
+
+y
+
+(show river.md)
+
+全小写吗?
+
+y
+
+(search for ryos, ryolu)
+
+可能作为一个 example.
+
+他做 cursor 的. cursor 你知道吧, 自动编程软件.
+
+("ryo is exploring taipei") 他正在台北旅游.
+
+y, 他就是全小写的 (i 也小写)
+
+(有研究的.)
+
+"compare lowercase and sentence case"
+
+"compare lowercase and sentence case on sns"
+
+(underline "gen z") 一些年轻人会用.
+
+就是会不严肃一些, 是吧
+
+y
+
+bye.
+```
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
