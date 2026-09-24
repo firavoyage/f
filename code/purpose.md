@@ -194,6 +194,13 @@ type foo = {
 type foo = {
   a: b c: d
 }
+
+match foo {
+  1 a
+  2 b
+  3 c
+  4 d
+}
 ```
 
 in call expression
