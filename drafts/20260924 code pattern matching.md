@@ -1289,4 +1289,88 @@ Use code with caution.
 
 Would you like to see how to use **formatting specifiers** (like padding, alignment, or rounding decimals) using Rust's native `format!` macro syntax? Or are you curious about how **procedural macros** allow third-party crates to alter Rust's syntax?
 
+# does rust enforce match branches must be orthogonal
+
+<mark><strong><span>No, Rust does not enforce that match branches must be orthogonal (mutually exclusive)</span></strong></mark>. Instead, Rust evaluates match arms from **top to bottom**, executing the _first_ arm that matches the value. [link](https://www.reddit.com/r/rust/comments/pqnufj/rust%5Fmatch%5Farm%5Fpriority/)
+
+If you have overlapping or redundant arms, Rust handles them using strict ordering and compiler warnings: [link](https://internals.rust-lang.org/t/is-match-arm-order-always-defined-behaviour/16848)
+
+### 1. Overlapping Arms are Allowed (First Match Wins)
+
+You can write patterns where one branch overlaps with another. The compiler will always choose the higher one in the list. [link](https://www.reddit.com/r/rust/comments/pqnufj/rust%5Fmatch%5Farm%5Fpriority/)
+
+rust
+
+```
+let number = 5;
+
+match number {
+    1..=10 => println!("Between 1 and 10"), // This executes!
+    5 => println!("This is five"),           // This is unreachable, but compiles
+    _ => println!("Something else"),
+}
+```
+
+Use code with caution.
+
+### 2. Redundant Patterns Trigger Warnings
+
+While the compiler allows overlapping arms, it will trigger an **`unreachable_pattern` warning** if a lower match arm can _never_ be reached because a previous arm covers it entirely. [link](https://alexanderobregon.substack.com/p/match-control-flow-in-rust-and-pattern)
+
+For example, compiling the code above will produce:
+
+text
+
+```
+warning: unreachable pattern
+ --> src/main.rs:6:5
+  |
+5 |     1..=10 => println!("Between 1 and 10"),
+  |     ------ matches any value from 1 to 10
+6 |     5 => println!("This is five"),
+  |     ^ unreachable pattern
+```
+
+Use code with caution.
+
+### 3. Match Guards Bypass Exhaustiveness Checks
+
+If you use match guards (an extra `if` condition on the arm), the compiler cannot statically prove whether the branches are mutually exclusive. In this scenario, top-to-bottom evaluation order is strictly relied upon. [link](https://www.reddit.com/r/rust/comments/pqnufj/rust%5Fmatch%5Farm%5Fpriority/)
+
+rust
+
+```
+let x = Some(5);
+
+match x {
+    Some(n) if n > 2 => println!("Greater than two"), // First check
+    Some(n) if n == 5 => println!("Five"),            // Overlapping, but allowed
+    Some(_) => println!("Any other number"),
+    None => println!("Nothing"),
+}
+```
+
+Use code with caution.
+
+### What Rust _Does_ Enforce
+
+Instead of forcing orthogonality, Rust enforces **exhaustiveness**. The compiler requires that your match arms account for _every possible value_ of the type being matched, which is why a catch-all block (`_`) is often used. [link](https://users.rust-lang.org/t/how-to-keep-pattern-match-branch-order/66363)
+
+Are you trying to resolve an **unreachable pattern** warning in your code, or are you looking to optimize the **execution performance** of a large match block?
+
+- [link](https://www.reddit.com/r/rust/comments/pqnufj/rust%5Fmatch%5Farm%5Fpriority/)\
+  Reddit\
+  Rust match arm priority\
+  According to a Reddit user, Rust match expressions normally have mutually exclusive arms. The order of evaluation isn't guaranteed...
+- [link](https://internals.rust-lang.org/t/is-match-arm-order-always-defined-behaviour/16848)\
+  Rust Internals\
+  Is match arm order always defined behaviour?\
+  Jun 19, 2022 — Is match arm order always defined behaviour? \* gilescope June 19, 2022, 5:10pm 1 Given that reddit isn't that authoritative I thou...
+- [link](https://alexanderobregon.substack.com/p/match-control-flow-in-rust-and-pattern)\
+  Substack\
+  Match Control Flow in Rust and Pattern Matching Mechanics\
+  How Rust decides which branch runs and why others don't \* The match expression in Rust is a tightly controlled branching construct...
+
+Show all
+
 # 
