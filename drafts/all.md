@@ -979,6 +979,8 @@ code:
 - error handling
 - async await no algrebraic effects auto await by default
 - pattern matching
+- type system
+- syntax spec
 
 humility:
 
