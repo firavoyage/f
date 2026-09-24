@@ -99,7 +99,7 @@ fibonacci 1 = 1
 fibonacci n = f(n-1) + f(n-2)
 
 main
-  print map(0..10, fibonacci)
+  print map(0..=10, fibonacci)
 ```
 
 # guessing game
