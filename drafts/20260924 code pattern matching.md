@@ -1750,4 +1750,422 @@ Would you like to see how to combine these patterns with **guards**, or do you n
 
 Show all
 
+# haskell polymorphism examples
+
+In Haskell, polymorphism falls primarily into two distinct categories: **parametric polymorphism** and **ad-hoc polymorphism**. [link](https://www.haskell.org/haskellwiki/Polymorphism)
+
+Here is a breakdown of how they work with practical examples.
+
+***
+
+### 1. Parametric Polymorphism
+
+Parametric polymorphism occurs when a function or data type is defined using **unconstrained type variables**. The function executes the exact same uniform logic regardless of the concrete type substituted into the variable. This is the equivalent of "generics" or "templates" in other languages. [link](https://eli.thegreenplace.net/2018/return-type-polymorphism-in-haskell/)
+
+#### Example: The Identity Function
+
+The simplest example is the standard library's `id` function, which merely returns whatever value it receives. [link](https://haskellforall.com/2015/10/polymorphism-for-dummies)
+
+haskell
+
+```
+-- 'a' is a type variable representing any type
+id :: a -> a
+id x = x
+```
+
+Use code with caution.
+
+Because `a` has no constraints, you can pass any type to it:
+
+haskell
+
+```
+id 4          -- Works for Int, returns 4
+id "Haskell"  -- Works for String, returns "Haskell"
+```
+
+Use code with caution.
+
+#### Example: Mapping Over Lists
+
+Functions that manipulate structural shapes (like lists) without evaluating the data inside them are also parametrically polymorphic. [link](https://eli.thegreenplace.net/2018/return-type-polymorphism-in-haskell/)
+
+haskell
+
+```
+map :: (a -> b) -> [a] -> [b]
+map _ []     = []
+map f (x:xs) = f x : map f xs
+```
+
+Use code with caution.
+
+***
+
+### 2. Ad-hoc Polymorphism (Overloading)
+
+Ad-hoc polymorphism allows a single function name to have **different implementations for different types**. Haskell achieves this through **typeclasses**, which act like interfaces. If a type variable is bounded by a typeclass, it appears to the left of the `=>` symbol in a type signature. [link](https://www.cs.toronto.edu/~lczhang/324/lab/lab09.pdf)
+
+#### Example: Implementing a Custom Typeclass
+
+Let's create a custom `Describable` typeclass that behaves differently depending on whether it's dealing with a person's profile or a store item.
+
+haskell
+
+```
+-- 1. Define the typeclass interface
+class Describable a where
+    describe :: a -> String
+
+-- 2. Define custom data types
+data User = User String Int         -- Name, Age
+data Product = Product String Double -- Item name, Price
+
+-- 3. Provide ad-hoc implementations (Instances)
+instance Describable User where
+    describe (User name age) = name ++ " is " ++ show age ++ " years old."
+
+instance Describable Product where
+    describe (Product item price) = item ++ " costs $" ++ show price
+```
+
+Use code with caution.
+
+When you call `describe`, Haskell evaluates the type of the argument at compile time and dispatches it to the correct implementation:
+
+haskell
+
+```
+describe (User "Alice" 30)     -- Returns: "Alice is 30 years old."
+describe (Product "Laptop" 999.0) -- Returns: "Laptop costs $999.0"
+```
+
+Use code with caution.
+
+***
+
+### Comparison Summary
+
+| Feature            | Parametric Polymorphism       | Ad-hoc Polymorphism                 |
+| ------------------ | ----------------------------- | ----------------------------------- |
+| **Mechanism**      | Type variables (`a`, `b`)     | Typeclasses (`Eq`, `Show`, custom)  |
+| **Behavior**       | Identical logic for all types | Completely different logic per type |
+| **OOP Analogy**    | Generics / Templates          | Interfaces / Overloading            |
+| **Type Signature** | `head :: [a] -> a`            | `(==) :: Eq a => a -> a -> Bool`    |
+
+Would you like to see how to implement more advanced variations, such as **multi-parameter typeclasses** or **higher-kinded types**? Let me know what you are building or trying to model!
+
+- [link](https://www.haskell.org/haskellwiki/Polymorphism)\
+  Haskell Language\
+  Polymorphism - HaskellWiki - Haskell.org\
+  Jan 21, 2015 — Most polymorphism in Haskell falls into one of two broad categories: parametric polymorphism and ad-hoc polymorphism. Parametric p...
+- [link](https://eli.thegreenplace.net/2018/return-type-polymorphism-in-haskell/)\
+  Eli Bendersky's website\
+  Return type polymorphism in Haskell - Eli Bendersky's website\
+  Jan 30, 2018 — Parametric vs. ad-hoc polymophism. It's worth beginning with a quick discussion of the two most common kinds of compile-time polym...
+- [link](https://haskellforall.com/2015/10/polymorphism-for-dummies)\
+  Haskell for all\
+  Polymorphism for dummies - Haskell for all\
+  Oct 2, 2015 — This tutorial explains how polymorphism is implemented under the hood in Haskell using the least technical terms possible. The sim...
+
+Show all
+
+# haskell monad examples
+
+In Haskell, a **monad** is a design pattern used to chain computations together while automatically managing underlying side effects or contexts (like failure, state, or I/O). [link](https://www.haskell.org/haskellwiki/Monad)
+
+At its core, a Monad is defined by two primary operations:
+
+- `return` (or `pure`): Takes a raw value and wraps it into the monadic context.
+- `>>=` (pronounced **"bind"**): Takes a wrapped value, unwraps it, and passes it to a function that generates a new wrapped value. [link](https://www.haskell.org/haskellwiki/All%5FAbout%5FMonads)
+
+Here are the four most common, practical examples of Monads in Haskell, ranging from simple to advanced.
+
+***
+
+### 1. The `Maybe` Monad (Handling Potential Failure)
+
+The [Maybe Monad](https://www.haskell.org/haskellwiki/Simple%5Fmonad%5Fexamples) is used for sequential operations where any step might return `Nothing`. If any step fails, the entire chain cleanly evaluates to `Nothing` without crashing. [link](https://www.youtube.com/watch?v=%5FGk%5FlwhJMzk\&t=18)
+
+Imagine looking up a user, getting their profile, and then fetching their specific preference:
+
+haskell
+
+```
+-- Dummy lookup functions
+findUser :: Int -> Maybe String
+findUser 1 = Just "Alice"
+findUser _ = Nothing
+
+getProfile :: String -> Maybe String
+getProfile "Alice" = Just "Alice's Profile"
+getProfile _       = Nothing
+
+getPreference :: String -> Maybe String
+getPreference "Alice's Profile" = Just "Dark Mode"
+getPreference _                 = Nothing
+```
+
+Use code with caution.
+
+#### Explicitly Chaining with Bind (`>>=`)
+
+haskell
+
+```
+-- If any lookup returns Nothing, the whole chain returns Nothing
+getUserPreference :: Int -> Maybe String
+getUserPreference userId =
+    findUser userId >>= getProfile >>= getPreference
+```
+
+Use code with caution.
+
+#### Cleaned up using `do`-notation
+
+Haskell provides `do`-notation as syntactic sugar to make monadic code look sequential and imperative: [link](https://learnyouahaskell.github.io/a-fistful-of-monads.html)
+
+haskell
+
+```
+getUserPreferenceDo :: Int -> Maybe String
+getUserPreferenceDo userId = do
+    user       <- findUser userId      -- If Nothing, stops here and returns Nothing
+    profile    <- getProfile user
+    preference <- getPreference profile
+    return preference
+```
+
+Use code with caution.
+
+***
+
+### 2. The List Monad (Non-Deterministic Computation)
+
+The list monad represents computations that can return **multiple possible results**. When you chain operations on a list, Haskell applies the next step to _every single item_ in the list, effectively exploring all paths (like a nested loop). [link](https://stackoverflow.com/questions/15726733/simple-examples-to-illustrate-category-monoid-and-monad)
+
+haskell
+
+```
+-- Generates pairs of numbers where the second number is larger than the first
+generatePairs :: [Int] -> [(Int, Int)]
+generatePairs xs = do
+    x <- xs          -- Extract each element from the list
+    y <- [x..5]      -- Generate a new list based on x
+    return (x, y)
+
+-- Example invocation:
+-- generatePairs [1, 2]
+-- Output: [(1,1),(1,2),(1,3),(1,4),(1,5),(2,2),(2,3),(2,4),(2,5)]
+```
+
+Use code with caution.
+
+***
+
+### 3. The `IO` Monad (Interacting with the Outside World)
+
+Because Haskell is a pure functional language, functions cannot have hidden side-effects (like modifying terminal text or reading files). The [IO Monad](https://mmhaskell.com/monads/tutorial) isolates these side-effects so the rest of your program can stay purely functional. [link](https://www.youtube.com/watch?v=ti3mrLm3Sv4)
+
+haskell
+
+```
+main :: IO ()
+main = do
+    putStrLn "What is your name?"
+    name <- getLine                   -- Extracts the String value out of the IO context
+    putStrLn ("Hello, " ++ name ++ "!")
+```
+
+Use code with caution.
+
+***
+
+### 4. The `State` Monad (Simulating Mutable State)
+
+Haskell variables are completely immutable. When you want to pass a changing piece of "state" through multiple functions, doing it manually gets messy. The [State Monad](https://brandon.si/code/the-state-monad-a-tutorial-for-the-confused/) passes a background state state implicitly behind the scenes. [link](https://www.reddit.com/r/haskell/comments/10jw67n/please%5Fexplain%5Fmonads%5Fto%5Fme%5Flike%5Fim%5F12/)
+
+You can manage state using `get` (to read the state) and `put` (to overwrite it) from `Control.Monad.State`:
+
+haskell
+
+```
+import Control.Monad.State
+
+-- A simple game state transition using an Int counter
+manageCounter :: State Int String
+manageCounter = do
+    currentCount <- get               -- Fetch current state
+    if currentCount > 2
+        then do
+            put (currentCount + 1)    -- Update state
+            return "Counter incremented!"
+        else do
+            put 0                     -- Reset state
+            return "Counter reset!"
+
+-- To run it with an initial state of 3:
+-- runState manageCounter 3
+-- Output: ("Counter incremented!", 4)
+```
+
+Use code with caution.
+
+***
+
+### Summary of Differences
+
+| Monad           | What the Context Represents                  | What `>>=` Automatically Handles                     |
+| --------------- | -------------------------------------------- | ---------------------------------------------------- |
+| **`Maybe`**     | Potential failure (`Just a` or `Nothing`)    | Aborts the chain early if a `Nothing` occurs         |
+| **`[]` (List)** | Multiple possible outcomes (non-determinism) | Loops and flattens nested lists                      |
+| **`IO`**        | Interaction with the system environment      | Guarantees strict sequential execution order         |
+| **`State`**     | A hidden, threadable piece of data           | Passes the state parameter from function to function |
+
+Would you like to dive deeper into one of these specific monads, or see how to implement **your own custom Monad** by writing an `instance Monad` declaration? [link](https://www.reddit.com/r/haskell/comments/10jw67n/please%5Fexplain%5Fmonads%5Fto%5Fme%5Flike%5Fim%5F12/)
+
+- [link](https://www.reddit.com/r/haskell/comments/10jw67n/please%5Fexplain%5Fmonads%5Fto%5Fme%5Flike%5Fim%5F12/)\
+  Reddit\
+  Please explain monads to me like I'm 12. : r/haskell - Reddit\
+  Being good programmers, we notice some patterns and abstract them. For example, all the functions have SomeState -> (a, SomeState)
+- [link](https://www.haskell.org/haskellwiki/All%5FAbout%5FMonads)\
+  Haskell Language\
+  All About Monads - HaskellWiki\
+  May 27, 2024 — That is the subject of the next chapter. \* The Monad class In Haskell, there is a standard Monad class that defines the names and ...
+- [link](https://brandon.si/code/the-state-monad-a-tutorial-for-the-confused/)\
+  brandon.si\
+  The State Monad: a tutorial for the confused?\
+  Feb 16, 2012 — The Data Declaration: Yikes! Let's try to get our head on straight and figure this out: First of all the State monad is just an ab...
+
+Show all
+
+# haskell io monad examples
+
+In Haskell, **the `IO` monad is the gateway to side effects**. Because Haskell is a pure functional programming language, you cannot read from files, print to the console, or fetch data from networks without wrapping those actions in an `IO` type. [link](https://www.haskell.org/haskellwiki/Introduction%5Fto%5FIO)
+
+An execution blueprint of type `IO a` does not perform actions immediately; instead, it acts as a set of instructions that the Haskell runtime executes sequentially when assigned to `main`. [link](https://www.reddit.com/r/haskell/comments/44vecd/can%5Fsomeone%5Fexplain%5Fthe%5Fbasics%5Fof%5Fio%5Fand%5Fto%5Fme/)
+
+Here are key examples of using the `IO` monad, ranging from basic terminal interaction to file handling and mixing pure code with input/output.
+
+***
+
+### 1. Basic Console I/O (`do` notation)
+
+The most common way to sequence `IO` actions is using `do` notation, which allows you to write sequential instructions that mimic imperative code. [link](https://www.haskell.org/tutorial/io.html)
+
+haskell
+
+```
+-- main has the type IO (), which means it executes side effects and returns no useful value.
+main :: IO ()
+main = do
+    putStrLn "What is your name?"  -- Prints a line to the console
+    name <- getLine                -- Extracts the String value out of IO String
+    putStrLn ("Hello, " ++ name ++ "!")
+```
+
+Use code with caution.
+
+### 2. Under the Hood: The Desugared Version (`>>=` and `>>`)
+
+`do` notation is just syntactic sugar. Underneath, Haskell chains actions together using the monadic bind operators: [link](https://www.youtube.com/watch?v=fCoQb-zqYDI)
+
+- `>>=` (bind) passes the result of the left action to a function returning a new action.
+- `>>` sequences two actions when you don't care about the intermediate return value. [link](https://www.haskell.org/haskellwiki/Monad)
+
+Here is exactly how the compiler reads the `main` loop from the previous example:
+
+haskell
+
+```
+mainExplicit :: IO ()
+mainExplicit =
+    putStrLn "What is your name?" >>
+    getLine >>= \name ->
+    putStrLn ("Hello, " ++ name ++ "!")
+```
+
+Use code with caution.
+
+### 3. Injecting Pure Functions with `return`
+
+In Haskell, `return` does not exit a function. Instead, it **lifts a pure value into a monadic context**. This is useful when you perform some calculation and need to wrap it back into `IO`. [link](https://priyankamondal-11139.medium.com/haskell-io-monad-b4a825b59269)
+
+haskell
+
+```
+-- A pure function that reverses text (No side effects)
+reverseString :: String -> String
+reverseString str = reverse str
+
+-- Combining pure code inside an IO environment
+getAndReverse :: IO ()
+getAndReverse = do
+    putStrLn "Type something to reverse:"
+    input <- getLine
+
+    -- We pass input to a pure function
+    let processed = reverseString input
+
+    -- return wraps our pure String into an IO String context
+    finalValue <- return ("Reversed result: " ++ processed)
+
+    putStrLn finalValue
+```
+
+Use code with caution.
+
+### 4. Reading and Writing Files
+
+The `IO` monad also handles interactions with your operating system's filesystem. [link](https://mmhaskell.com/monads/tutorial)
+
+haskell
+
+```
+import System.IO
+
+fileExample :: IO ()
+fileExample = do
+    -- Writing to a file
+    writeFile "example.txt" "Line 1: Learning Haskell\nLine 2: The IO Monad."
+
+    -- Reading from a file
+    contents <- readFile "example.txt"
+
+    putStrLn "--- File Contents ---"
+    putStr contents
+```
+
+Use code with caution.
+
+***
+
+### Directly Comparing Key `IO` Primitives
+
+| Function   | Type Signature          | Purpose                                                               |
+| ---------- | ----------------------- | --------------------------------------------------------------------- |
+| `putStrLn` | `String -> IO ()`       | Takes a String and prints it to the terminal with a trailing newline. |
+| `getLine`  | `IO String`             | Reads a single line of user text from standard input.                 |
+| `readFile` | `FilePath -> IO String` | Takes a path to a file and returns its complete contents.             |
+| `return`   | `a -> IO a`             | Wraps a completely pure value inside an `IO` action.                  |
+
+Would you like to see how to handle errors and **exceptions** inside the `IO` monad, or would you prefer an example of using `IO` alongside other monads via **monad transformers** (like `StateT`)? [link](https://cstml.github.io/2021/07/22/State-Monad.html)
+
+- [link](https://www.haskell.org/tutorial/io.html)\
+  Haskell Language\
+  A Gentle Introduction to Haskell: IO\
+  I/O actions can be sequenced using the do notation. The do notation introduces a sequence of statements which are executed in orde...
+- [link](https://www.reddit.com/r/haskell/comments/44vecd/can%5Fsomeone%5Fexplain%5Fthe%5Fbasics%5Fof%5Fio%5Fand%5Fto%5Fme/)\
+  Reddit·r/haskell\
+  Can someone explain the basics of IO and >> to me? : r/haskell\
+  Feb 9, 2016 — First thing to understand, is that a monad is not a box. It doesn't contain anything. It is just a description of a computation. "
+- [link](https://www.haskell.org/haskellwiki/Introduction%5Fto%5FIO)\
+  Haskell Language\
+  Introduction to IO - HaskellWiki\
+  Introduction to IO (This page is intended as a quick introduction to how IO is treated in Haskell. It doesn't describe everything ...
+
+Show all
+
+
 # 
