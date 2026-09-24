@@ -12,6 +12,18 @@ space before/after `#` is optional.
 42 3.14
 'hello world' # no var expansion
 "hello world {var}" # template literal
+'''
+multi line string
+'''
+'''EOF
+multi line string, align w closing ''' (can contain '''!)
+'''EOF
+"""
+multi line string {var}
+"""
+"""hi
+multi line string {var}
+"""hi
 true false
 nil
 ```
