@@ -247,4 +247,16 @@ i may write a syntax spec today.
 
 not necessarily in ebnf. it can be flexible and human oriented. it has to be deterministic and unambiguous. it doesnt have to be parsable and computable.
 
+---
+
+there is no `==`. i could fmt it to `=`.
+
+in block it will work as assignment.
+
+in exp it will work as eq.
+
+you may use if let.
+
+there is no scenario to cleanly mutate an outside var while comparing it.
+
 

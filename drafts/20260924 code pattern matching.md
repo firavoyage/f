@@ -2168,4 +2168,1087 @@ Would you like to see how to handle errors and **exceptions** inside the `IO` mo
 Show all
 
 
+# haskell state monad examples
+
+In Haskell, the **`State` monad** is used to pass state explicitly behind the scenes, allowing you to write purely functional code that reads and feels like sequential, imperative code. [link](https://brandon.si/code/the-state-monad-a-tutorial-for-the-confused/)
+
+Under the hood, a stateful computation is just a function of the type `s -> (a, s)`. It takes an initial state `s` and returns a result `a` along with an updated state `s`. [link](https://www.hacklewayne.com/state-monad-a-bit-of-currying-goes-a-long-way)
+
+Here are three complete, practical examples ranging from simple state manipulation to a real-world scenario.
+
+***
+
+### Prerequisites
+
+To use the `State` monad, import it from the `mtl` library: [link](https://cstml.github.io/2021/07/22/State-Monad.html)
+
+haskell
+
+```
+import Control.Monad.State
+```
+
+Use code with caution.
+
+***
+
+### Example 1: A Simple Number Counter (The Basics)
+
+This basic example demonstrates how to read (`get`), write (`put`), and modify (`modify`) state. [link](https://mmhaskell.com/monads/state)
+
+haskell
+
+```
+-- Define a computation where the State is an Int, and the return value is a String
+incrementCounter :: State Int String
+incrementCounter = do
+    current <- get            -- 1. Retrieve the current state
+    if current >= 3
+        then do
+            put 0             -- 2. Reset the state if it's too high
+            return "Reset!"   -- 3. Return a message
+        else do
+            modify (+1)       -- 4. Otherwise, increment state using a function
+            return "Incremented"
+
+main :: IO ()
+main = do
+    -- runState returns BOTH the result value and the final state as a pair
+    print $ runState incrementCounter 1  -- Output: ("Incremented", 2)
+    print $ runState incrementCounter 3  -- Output: ("Reset!", 0)
+```
+
+Use code with caution.
+
+***
+
+### Example 2: Simulating a Stack (Data Structure State)
+
+A classic way to understand the `State` monad is by modeling a stack data structure (`pop` and `push` actions). [link](https://gist.github.com/sdiehl/8d991a718f7a9c80f54b)
+
+haskell
+
+```
+type Stack = [Int]
+
+-- Pops an element off the list state and returns it
+pop :: State Stack Int
+pop = do
+    currentStack <- get
+    case currentStack of
+        []     -> error "Stack is empty!"
+        (x:xs) -> do
+            put xs   -- Set the new state to the tail of the list
+            return x -- Return the popped element
+
+-- Pushes an element onto the list state
+push :: Int -> State Stack ()
+push val = do
+    currentStack <- get
+    put (val : currentStack)
+
+-- Chain multiple operations together cleanly
+stackManip :: State Stack Int
+stackManip = do
+    push 5
+    push 10
+    a <- pop
+    push 3
+    return a
+
+main :: IO ()
+main = do
+    let initialState = [1, 2]
+
+    -- runState: returns (result, finalState)
+    print $ runState stackManip initialState
+    -- Output: (10, [3, 5, 1, 2])
+
+    -- evalState: returns ONLY the final result
+    print $ evalState stackManip initialState
+    -- Output: 10
+
+    -- execState: returns ONLY the final state
+    print $ execState stackManip initialState
+    -- Output: [3, 5, 1, 2]
+```
+
+Use code with caution.
+
+***
+
+### Example 3: A Video Game Score Tracker (Practical Scenario)
+
+Imagine a simple text game where a player gains points or takes damage based on strings of events. [link](https://www.haskell.org/haskellwiki/State%5FMonad)
+
+haskell
+
+```
+data GameState = GameState
+  { score  :: Int
+  , health :: Int
+  } deriving Show
+
+-- Initial game conditions
+initialGame :: GameState
+initialGame = GameState { score = 0, health = 100 }
+
+-- Process a single in-game event
+processEvent :: String -> State GameState ()
+processEvent "coin" = modify (\st -> st { score = score st + 10 })
+processEvent "dmg"  = modify (\st -> st { health = health st - 20 })
+processEvent "boss" = modify (\st -> st { score = score st + 50, health = health st - 40 })
+processEvent _      = return () -- Ignore unknown events
+
+-- Process a collection of game events sequentially
+playGame :: [String] -> State GameState Int
+playGame events = do
+    mapM_ processEvent events -- Run processEvent for every item in the list
+    finalState <- get
+    return (score finalState)
+
+main :: IO ()
+main = do
+    let events = ["coin", "dmg", "coin", "boss", "unknown_event"]
+    let (finalScore, endingState) = runState (playGame events) initialGame
+
+    putStrLn $ "Final Score: " ++ show finalScore
+    putStrLn $ "Ending State: " ++ show endingState
+    -- Output:
+    -- Final Score: 70
+    -- Ending State: GameState {score = 70, health = 40}
+```
+
+Use code with caution.
+
+***
+
+### Core Functions Reference
+
+| Function        | Type Signature             | What it does                                                                           |
+| --------------- | -------------------------- | -------------------------------------------------------------------------------------- |
+| **`get`**       | `State s s`                | Fetches the current state out of the monad context so you can assign it to a variable. |
+| **`put`**       | `s -> State s ()`          | Completely overrides the existing state with a brand new value.                        |
+| **`modify`**    | `(s -> s) -> State s ()`   | Accepts a modifier function to cleanly tweak parts of your state.                      |
+| **`runState`**  | `State s a -> s -> (a, s)` | Runs the computation given an initial state, returning `(result, state)`.              |
+| **`evalState`** | `State s a -> s -> a`      | Runs the computation but discards the final state, giving you just the final value.    |
+| **`execState`** | `State s a -> s -> s`      | Runs the computation but discards the result value, giving you just the final state.   |
+
+To dive deeper into the theory behind this structure, you can explore the [Haskell Wiki Page on State Monads](https://www.haskell.org/haskellwiki/State%5FMonad) or see how it wraps basic variables via the [School of Haskell Guide](https://www.schoolofhaskell.com/school/starting-with-haskell/basics-of-haskell/12-State-Monad).
+
+Would you like to see how to implement your own **custom instance of the State monad** from scratch to understand the math behind it, or do you need help rewriting an **imperative loop** you are working on into Haskell code?
+
+- [link](https://brandon.si/code/the-state-monad-a-tutorial-for-the-confused/)\
+  brandon.si\
+  The State Monad: a tutorial for the confused?\
+  To understand a monad you look at its datatype and then at the definition for bind ( >>= ). Most monad tutorials start by showing ...
+- [link](https://www.haskell.org/haskellwiki/State%5FMonad)\
+  Haskell Language\
+  State Monad - HaskellWiki - Haskell.org\
+  Dec 21, 2018 — Complete and Concrete Example 1. Simple example that demonstrates the use of the standard Control.Monad.State monad. It's a simple...
+- [link](https://stackoverflow.com/questions/24577066/one-more-time-can-i-have-an-example-of-state-monad-that-does-what-i-want)\
+  Stack Overflow\
+  One more time...can I have an example of state monad that does what I want?\
+  Here's an example of a stateful subroutine calling another stateful subroutine: \* \*\*import Control.Monad.Trans.State\*\* \* \*\*f :: St...
+
+Show all
+
+# does haskell enforce exhaustiveness on pattern matching
+
+<mark><strong><span>No, Haskell does not strictly enforce pattern matching exhaustiveness at compile-time by default</span></strong></mark>. If you write a non-exhaustive pattern match, the code will compile completely fine but throw a **`Non-exhaustive patterns` exception at runtime** if an unhandled value is passed. [link](https://stackoverflow.com/questions/31866379/non-exhaustive-pattern-matching-in-haskell)
+
+However, the **Glasgow Haskell Compiler (GHC)** includes highly sophisticated static analysis to catch these issues before your code runs. You can opt into enforcement using compiler flags. [link](https://www.reddit.com/r/haskell/comments/chcd9j/why%5Fis%5Fnonexhaustive%5Fpatterns%5Fin%5Fcase%5Fa%5Fruntime/)
+
+***
+
+### How to Enforce Exhaustiveness in GHC
+
+You can turn pattern-matching gaps into compile-time warnings or hard errors by adding flags at the top of your source file or in your build configuration:
+
+- **`-Wincomplete-patterns`**: This prompts GHC to emit a **warning** during compilation if any of your pattern matches are not exhaustive.
+- **`-Wall`**: This turns on all major warnings, which **includes** `-Wincomplete-patterns`.
+- **`-Werror`**: This upgrades all warnings to **hard compilation errors**, effectively enforcing total exhaustiveness checks across your codebase. [link](https://discourse.haskell.org/t/pattern-match-es-are-non-exhaustive/4561)
+
+haskell
+
+```
+{-# OPTIONS_GHC -Wincomplete-patterns -Werror #-}
+
+-- GHC will reject this at compile-time because 'Nothing' is unhandled
+describeMaybe :: Maybe String -> String
+describeMaybe (Just val) = "Found: " ++ val
+```
+
+Use code with caution.
+
+### Why isn't it enforced by default?
+
+1. **Historical Semantics:** The Haskell standard explicitly allows partial functions (functions that can crash on certain inputs, like the built-in `head` or `read`). [link](https://arxiv.org/html/1909.04160v1)
+2. **Decidability Constraints:** While GHC can easily verify exhaustiveness for Algebraic Data Types (ADTs), it cannot statically prove whether complex guard expressions (like `| x > 5 = ...`) cover every mathematical edge case. [link](https://stackoverflow.com/questions/73035296/when-are-haskell-guard-pattern-matches-considered-none-exhaustive)
+
+Would you like to see how to resolve a **specific non-exhaustive pattern warning** you are running into, or would you like to explore how to use **total functions** to avoid this issue entirely?
+
+- [link](https://www.reddit.com/r/haskell/comments/chcd9j/why%5Fis%5Fnonexhaustive%5Fpatterns%5Fin%5Fcase%5Fa%5Fruntime/)\
+  Reddit·r/haskell\
+  Why is "Non-exhaustive patterns in case" a runtime ... - Reddit\
+  Jul 24, 2019 — (At least the warning should really be on by default.) You may also want to consider -Wall , which turns on all many warnings. Mos...
+- [link](https://discourse.haskell.org/t/pattern-match-es-are-non-exhaustive/4561)\
+  Haskell Community\
+  Pattern match(es) are non-exhaustive - Haskell Discourse\
+  data Operations = Addition | Subtraction | Multiplication | Division | Modulus deriving (Show, Eq) getSymbol :: Maybe Operations -
+- [link](https://stackoverflow.com/questions/832992/is-it-recommended-to-always-have-exhaustive-pattern-matches-in-haskell-even-for)\
+  Stack Overflow\
+  Is it recommended to always have exhaustive pattern matches in Haskell, even for "impossible" cases?\
+  Some recommend exhaustiveness checking on case patterns. For example, you can: \* Put in a \_ -> error "Impossible! Empty list in st...
+
+Show all
+
+# haskell imperative examples
+
+**Haskell can be used as an incredibly expressive, type-safe imperative programming language**. While fundamentally a pure functional language, Haskell utilizes **monads** (specifically `IO`, `State`, and `ST`) alongside `do` notation to mimic line-by-line sequential execution, local state updates, and early loops. [link](https://www.reddit.com/r/haskell/comments/e7444v/can%5Fi%5Fcall%5Fhaskell%5Fan%5Fimperative%5Fprogramming/)
+
+Below are three comprehensive examples showing how common imperative patterns map directly into Haskell.
+
+***
+
+### 1. Basic I/O & Sequential Execution
+
+In languages like Python or C, you execute print and input statements step-by-step. In Haskell, you wrap these side effects in an `IO` block using **`do` notation**. [link](https://www.haskell.org/tutorial/io.html)
+
+haskell
+
+```
+-- A sequential, line-by-line imperative script
+main :: IO ()
+main = do
+    putStrLn "What is your name?"
+    name <- getLine                    -- "Read" input into a bound variable
+    let greeting = "Hello, " ++ name   -- Declare local immutable variable
+    putStrLn greeting
+```
+
+Use code with caution.
+
+- **Why it looks imperative:** Statements execute strictly from top to bottom.
+- **The structural catch:** `name <- getLine` is actually a context bind operation, not an assignment to a mutable point in memory. [link](https://www.schoolofhaskell.com/school/starting-with-haskell/basics-of-haskell/3-pure-functions-laziness-io)
+
+### 2. Loops and Early Terminations
+
+Instead of native keywords (`for`, `while`), Haskell uses control-flow library functions (combinators) inside monadic blocks to execute standard loops. [link](https://haskellforall.com/2012/01/haskell-for-mainstream-programmers%5F04)
+
+haskell
+
+```
+import Control.Monad (forM_, when)
+
+printNumbers :: IO ()
+printNumbers = do
+    putStrLn "Starting loop..."
+
+    -- Equivalent to: for i in range(1, 6):
+    forM_ [1..5] $ \i -> do
+        putStrLn $ "Loop index: " ++ show i
+
+        -- Equivalent to: if i == 3: print("Halfway!")
+        when (i == 3) $ do
+            putStrLn "  -> Halfway mark reached!"
+
+    putStrLn "Loop completed."
+```
+
+Use code with caution.
+
+- **`forM_`**: Takes a list and a subroutine (anonymous function `\i -> ...`), executing the action sequentially for each item.
+- **`when`**: Acts exactly like a traditional conditional branch (`if` statement without an `else` branch). [link](https://stackoverflow.com/questions/6622524/why-is-haskell-sometimes-referred-to-as-best-imperative-language)
+
+### 3. Local Mutable Variables (`ST` Monad)
+
+If you require actual, high-performance **in-place memory mutation** (like array indexing or accumulator variables in standard algorithms), Haskell provides the `ST` (State Thread) monad. It allows local state mutation while remaining perfectly "pure" to the rest of your application. [link](https://www.reddit.com/r/haskell/comments/32iq90/how%5Fto%5Fapproach%5Fimplementing%5Fimperative/)
+
+haskell
+
+```
+import Control.Monad.ST
+import Data.STRef
+
+-- Computes a sum using a local mutable loop counter and accumulator
+sumImperative :: Int -> Int
+sumImperative n = runST $ do
+    -- Allocate mutable pointer references (similar to pointers or local variables)
+    acc <- newSTRef 0
+    i   <- newSTRef 1
+
+    -- Define a while-loop equivalent via local helper recursion
+    let loop = do
+          currI <- readSTRef i
+          when (currI <= n) $ do
+              -- Modify accumulator: acc += currI
+              modifySTRef' acc (+ currI)
+              -- Increment counter: i += 1
+              modifySTRef' i (+ 1)
+              loop -- Repeat
+
+    loop -- Run the loop
+    readSTRef acc -- Read and return the final value out of the ST thread
+```
+
+Use code with caution.
+
+- **`newSTRef` / `modifySTRef'`**: Acts exactly like allocating and re-assigning values to variables.
+- **Safety**: The compiler ensures that these mutations can never leak outside of the `runST` block, protecting the overall pure architecture of your code. [link](https://www.reddit.com/r/haskell/comments/32iq90/how%5Fto%5Fapproach%5Fimplementing%5Fimperative/)
+
+***
+
+### Comparison of Structural Equivalents
+
+| Imperative Language Concept | Haskell Structural Equivalent                   |
+| --------------------------- | ----------------------------------------------- |
+| `;` or Newlines (Sequence)  | `do` blocks                                     |
+| `x = 5` (Re-assignment)     | `writeSTRef` / `put` (State Monad)              |
+| `for item in list:`         | `forM_ list (\item -> ...)`                     |
+| `while condition:`          | Recursive monadic loops / `whileM` combinations |
+
+Are you trying to translate a **specific imperative algorithm** (like bubble sort or a matrix multiplication loop) into Haskell, or are you trying to understand how **monads** work behind the scenes? Let me know so I can tailor the next step!
+
+- [link](https://stackoverflow.com/questions/6622524/why-is-haskell-sometimes-referred-to-as-best-imperative-language)\
+  Stack Overflow\
+  Why is Haskell (sometimes) referred to as "Best Imperative ...\
+  Jul 8, 2011 — Here's some of the advantages that Haskell gives you: Easy creation of subroutines. Let's say that I want a function to print a va...
+- [link](https://www.reddit.com/r/haskell/comments/e7444v/can%5Fi%5Fcall%5Fhaskell%5Fan%5Fimperative%5Fprogramming/)\
+  Reddit\
+  Can I call Haskell an imperative programming language?\
+  Dec 6, 2019 — Comments Section And like many of the things he says, this is at least half tongue-in-cheek. He obviously doesn't mean that Haskel...
+- [link](https://www.reddit.com/r/haskell/comments/32iq90/how%5Fto%5Fapproach%5Fimplementing%5Fimperative/)\
+  Reddit\
+  How to approach implementing imperative algorithms functionally?\
+  Apr 14, 2015 — Comments Section There are advantages in programming equationally. But if these issues are not important for you case, why you car...
+
+Show all
+
+## for and while loop
+
+To implement **for** and **while** loops imperatively in Haskell, we use **monadic combinators** from the `Control.Monad` library or build local recursive actions inside a `do` block.
+
+Here is how you write traditional loop structures in Haskell using both `IO` (for side effects) and `ST` (for real, high-performance in-place mutable memory).
+
+***
+
+### 1. The `for` Loop
+
+In traditional languages, a `for` loop steps through a sequence. In Haskell, **`forM_`** acts as your loop engine. It takes a list of values, passes each value to a body of code, and executes them sequentially.
+
+haskell
+
+```
+import Control.Monad (forM_)
+
+-- Equivalent to: for i in range(1, 4): print(f"Item: {i}")
+loopFor :: IO ()
+loopFor = do
+    putStrLn "--- Starting For Loop ---"
+
+    forM_ [1..3] $ \i -> do
+        putStrLn $ "Loop index i = " ++ show i
+        putStrLn "  Running nested statement..."
+
+    putStrLn "--- For Loop Finished ---"
+```
+
+Use code with caution.
+
+### 2. The `while` Loop (with IO Condition)
+
+Since Haskell variables are immutable by default, a standard `while` loop usually checks a shifting external state (like reading user input until they type "quit").
+
+You implement this by defining a local, self-repeating block inside your `do` notation.
+
+haskell
+
+```
+-- Equivalent to: while input != "quit": input = get_input()
+loopWhileIO :: IO ()
+loopWhileIO = do
+    putStrLn "--- Starting While Loop (Type 'quit' to exit) ---"
+
+    let loop = do
+          putStrLn "Enter a command: "
+          input <- getLine
+
+          if input == "quit"
+              then putStrLn "Exiting loop!" -- 'break' equivalent
+              else do
+                  putStrLn $ "You typed: " ++ input
+                  loop -- Repeat the loop
+
+    loop -- Triggers the first iteration
+```
+
+Use code with caution.
+
+### 3. The `while` Loop (with Mutable Counters)
+
+If you want a traditional `while (i < 10)` loop that mutates an integer counter in memory, you use the **`ST` monad** and an **`STRef`** (a mutable variable pointer).
+
+haskell
+
+```
+import Control.Monad (when)
+import Control.Monad.ST
+import Data.STRef
+
+-- Computes a factorial using a mutable 'while' loop style
+mutableWhileLoop :: Int -> Int
+mutableWhileLoop n = runST $ do
+    -- Allocate mutable variables: int result = 1, i = 1;
+    result <- newSTRef 1
+    i      <- newSTRef 1
+
+    let loop = do
+          currI <- readSTRef i
+          -- Equivalent to: while (i <= n)
+          when (currI <= n) $ do
+              -- result *= i
+              modifySTRef' result (* currI)
+              -- i++
+              modifySTRef' i (+ 1)
+
+              loop -- Tail-recursive jump back to the top of the loop
+
+    loop -- Start loop
+    readSTRef result -- Return final value
+```
+
+Use code with caution.
+
+***
+
+### Loop Cheat Sheet
+
+| Imperative Pattern | Haskell Translation Pattern                                              |
+| ------------------ | ------------------------------------------------------------------------ |
+| **For Loop**       | `forM_ [start..end] $ \i -> do ...`                                      |
+| **While Loop**     | `let loop = do { ...; if condition then loop else return () }`           |
+| **Break**          | Base case of an `if/then/else` block (simply don't call the loop again). |
+| **Continue**       | Call the `loop` function early without executing the remaining lines.    |
+
+Would you like to see how to implement **early loop breaks** using things like the `ExceptT` monad transformer, or are you looking to optimize an **array-based loop** using mutable vectors? Let me know what you're working on!
+
+## why cant you mutate vars cleanly within a pure fn
+
+The short answer is that <mark><strong>mutation destroys referential transparency</strong></mark>, which is the foundational rule of pure functions.
+
+If a function mutates variables in place, it becomes impossible for the compiler (and you) to guarantee that the function will always produce the exact same output for the same input, regardless of when or how many times it is called.
+
+Here is a breakdown of exactly why mutation and purity cannot cleanly coexist:
+
+### 1. The Principle of Referential Transparency
+
+In a pure function, any expression can be replaced with its resulting value without changing the behavior of the program. This is called **referential transparency**.
+
+Imagine you have a function that updates a global or shared variable:
+
+text
+
+```
+// Pseudocode showing broken purity due to mutation
+x = 0
+function pureFn(input) {
+    x = x + input     // Modifying an external state
+    return x
+}
+```
+
+Use code with caution.
+
+If you call `pureFn(5)` the first time, it returns `5`. If you call `pureFn(5)` a second time, it returns `10`. Because the output changes despite the input being identical, the function is no longer mathematically pure. You cannot safely swap `pureFn(5)` with the number `5` in your code.
+
+### 2. Haskell’s Lazy Evaluation Would Break
+
+Haskell features **lazy evaluation**, meaning expressions are not evaluated when they are defined. Instead, they are evaluated only at the exact moment their results are actually needed.
+
+If you allowed clean, unchecked variable mutation inside a pure function, the order of evaluation would completely break your logic:
+
+- In an imperative language, code executes strictly from top to bottom line-by-line (`line 1` alters `x`, then `line 2` reads `x`).
+- In a lazy language, `line 2` might execute _before_ `line 1` if the program needs `line 2`'s data first.
+
+If variables could mutate freely, lazy evaluation would make code execution unpredictable, causing chaotic, non-deterministic bugs.
+
+### 3. Concurrency and Thread Safety
+
+Pure functions are inherently thread-safe because data is immutable. Multiple CPU cores can read the exact same data structure simultaneously without any locks, mutexes, or race conditions.
+
+If pure functions could mutate local or global state cleanly without safety containers, Haskell would lose its ability to compile highly concurrent code safely.
+
+***
+
+### How Haskell Solves This (The Loophole)
+
+Haskell actually _does_ allow you to cleanly mutate variables, but it forces you to do it inside an explicit sandbox that keeps the side-effects isolated. This sandbox is the **`ST` Monad** (State Thread) we looked at earlier.
+
+The `ST` monad uses Haskell's powerful type system to guarantee that whatever mutation happens inside the sandbox **can never leak out** to the rest of the program.
+
+haskell
+
+```
+-- This is a 100% pure function from the outside!
+pureSquareAndSum :: Int -> Int
+pureSquareAndSum n = runST $ do    -- Sandbox starts here
+    v <- newSTRef 0               -- Create a mutable variable
+    modifySTRef' v (+ (n * n))    -- Mutate it!
+    readSTRef v                   -- Extract value and close sandbox
+```
+
+Use code with caution.
+
+To the rest of your Haskell application, `pureSquareAndSum` looks, acts, and behaves like a completely pure, mathematically predictable function. The mutation is localized, controlled, and perfectly safe.
+
+Would you like to look closer at how Haskell's type system uses **phantom types** to lock those mutations inside the sandbox, or would you like to see how to handle state updates functionally using the standard **`State` Monad**?
+
+## why cant you mutate vars created within a pure fn cleanly
+
+The reason you cannot mutate variables **even if they were created entirely within the bounds of a pure function** comes down to how Haskell is evaluated under the hood.
+
+In a traditional imperative language, a function creates a distinct physical stack frame in memory, executes line-by-line, and discards the stack frame when finished. Because the frame is private, mutating variables inside it doesn't affect the outside world.
+
+Haskell does not work this way. It lacks traditional local variables and execution lines because of **Graph Reduction** and **Lazy Evaluation**.
+
+***
+
+### 1. Variables in Haskell are Names, Not Memory Slots
+
+In an imperative language, a local variable is a labeled bucket in memory. You can swap the contents of the bucket at any time.
+
+In Haskell, when you write a local definition using `let` or `where` inside a pure function, you are not creating a memory bucket. You are defining a **mathematical substitution rule** (binding a name to an expression):
+
+haskell
+
+```
+-- This is NOT creating a variable and filling it with 5
+let x = 5 in x + x
+```
+
+Use code with caution.
+
+Behind the scenes, Haskell sees `x` and builds a graph node representing `5`. If you were allowed to "change" `x` to `6` halfway through, you would be redefining the meaning of `x` for the entire graph evaluation, breaking mathematical consistency.
+
+### 2. Lazy Evaluation Destroys "Before" and "After"
+
+For mutation to make sense, there must be a strict timeline: a variable has value A _before_ the mutation, and value B _after_ the mutation.
+
+Because Haskell is **lazy**, code does not execute from top to bottom. Instead, expressions are left as unevaluated pointers (called **thunks**) until their values are absolutely forced.
+
+Imagine a hypothetical Haskell function that allowed local mutation:
+
+haskell
+
+```
+-- HYPOTHETICAL broken Haskell code
+badPureFn :: Int -> Int
+badPureFn n =
+    let x = 10
+        y = x + 5  -- If evaluated here, y should be 15
+        _ = mutate x to 20
+    in y
+```
+
+Use code with caution.
+
+Because of laziness, Haskell doesn't calculate `y` when it reaches that line. It waits until the function returns. If `y` is evaluated _after_ the hypothetical mutation happens, `y` suddenly becomes `25`. If the compiler optimizes the code and evaluates `y` earlier, `y` is `15`.
+
+Allowing local mutation inside a pure function would make the output depend entirely on the compiler's internal evaluation order, destroying predictability.
+
+### 3. The Compiler Shares Values (Sharing/Memoization)
+
+Haskell optimizations aggressively reuse values to save memory. If you use a local variable multiple times, the compiler may point all of them to the exact same memory structure (a process called **sharing**).
+
+If you were able to silently mutate a local structure, you might accidentally mutate data shared across entirely different parts of your program's execution graph, introducing massive bugs.
+
+***
+
+### How Haskell _Actually_ Achieves Local Mutation Cleanly
+
+Haskell recognizes that local mutation is incredibly useful for algorithms (like sorting an array). To allow it without breaking laziness, Haskell forces you to use the **`ST` monad** wrapper.
+
+The `ST` monad acts as an explicit "imperative timeline." Inside `ST`, Haskell stops being lazy about your mutations, forcing a strict execution order.
+
+haskell
+
+```
+import Control.Monad.ST
+import Data.STRef
+
+-- This is perfectly valid and completely pure from the outside
+cleanLocalMutation :: Int -> Int
+cleanLocalMutation n = runST $ do
+    -- 1. Explicitly allocate a real mutable memory slot
+    xRef <- newSTRef 10
+
+    -- 2. Read it to compute something else
+    xVal <- readSTRef xRef
+    let y = xVal + 5
+
+    -- 3. Mutate it safely. This cannot break 'y' because
+    -- the ST monad guarantees sequential execution order.
+    writeSTRef xRef 20
+
+    return y
+```
+
+Use code with caution.
+
+By forcing you to use `STRef` and `do` notation, Haskell bridges the gap: you get your private, highly efficient local mutations, while the type system guarantees the function remains 100% pure to the rest of your program.
+
+Would you like to see how a **concrete algorithm** (like building and modifying a local mutable array) is written using this safe `ST` sandbox, or are you interested in how **thunks** and **lazy evaluation** look in memory?
+
+# haskell lazy eval examples
+
+In **Haskell, lazy evaluation** means that expressions are not computed when they are defined. Instead, computation is deferred until their results are explicitly required by another part of the program. Uncomputed expressions are stored as temporary placeholders called **thunks**. [link](https://www.youtube.com/watch?v=BZBSgb55Mnk\&t=250)
+
+Here are the most common and practical examples demonstrating how lazy evaluation works in Haskell.
+
+***
+
+### 1. Short-Circuiting Functions (Avoiding Expensive Computations)
+
+In strict languages, all arguments to a function are evaluated before the function runs. In Haskell, if an argument isn't needed, it is completely ignored. [link](https://www.cs.umd.edu/class/spring2019/cmsc388F/lectures/laziness.html)
+
+haskell
+
+```
+-- A built-in function that returns the first element of a pair
+fst :: (a, b) -> a
+fst (x, y) = x
+
+-- An incredibly expensive or infinite computation
+hugeListLength :: Int
+hugeListLength = length [1..9999999999999]
+
+main :: IO ()
+main = print (fst (42, hugeListLength))
+-- Output: 42 (Instantaneous!)
+```
+
+Use code with caution.
+
+**Why it works:** The function `fst` only demands the first element `x`. Because `y` is never evaluated, `hugeListLength` never triggers, saving the program from running an intense loop. [link](https://www.cs.umd.edu/class/spring2019/cmsc388F/lectures/laziness.html)
+
+***
+
+### 2. Infinite Data Structures
+
+Because elements are only evaluated on demand, you can define infinite data structures without causing a crash or an infinite loop. [link](https://www.youtube.com/watch?v=BZBSgb55Mnk\&t=250)
+
+haskell
+
+```
+-- Define an infinite list of all positive numbers
+allNumbers :: [Integer]
+allNumbers = [1..]
+
+-- Fibonacci sequence defined infinitely via lazy zipWith
+fibs :: [Integer]
+fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
+
+main :: IO ()
+main = do
+    print (take 5 allNumbers) -- Output: [1,2,3,4,5]
+    print (fibs !! 6)         -- Output: 8
+```
+
+Use code with caution.
+
+**Why it works:** `take 5` only forces evaluation of the first 5 elements of `allNumbers`. The rest of the infinite list remains an uncalculated thunk. [link](https://www.youtube.com/watch?v=BZBSgb55Mnk\&t=250)
+
+***
+
+### 3. Decoupling Data Generation from Control Logic
+
+Laziness allows you to write modular code by separating the mechanism that generates data from the logic that decides when to stop. [link](https://apfelmus.nfshost.com/articles/lazy-eval.html)
+
+haskell
+
+```
+-- A naive sort function (e.g., Quicksort implementation)
+sort :: Ord a => [a] -> [a]
+sort []     = []
+sort (x:xs) = sort [a | a <- xs, a < x] ++ [x] ++ sort [a | a <- xs, a >= x]
+
+-- Get the minimum element of a list
+minimumElement :: Ord a => [a] -> a
+minimumElement xs = head (sort xs)
+```
+
+Use code with caution.
+
+**Why it works:** In an eager language, `sort xs` must fully sort the list (
+
+𝑂
+
+(
+
+𝑛
+
+log
+
+𝑛
+
+)
+
+complexity) before `head` can grab the first element. In Haskell, `head` only requests the very first item. Laziness causes `sort` to perform only enough work to find the minimum value, reducing the execution time to **linear O(n) complexity**. [link](https://apfelmus.nfshost.com/articles/lazy-eval-modular-code.html)
+
+***
+
+### Summary: Eager vs. Lazy Evaluation
+
+| Feature                 | Eager (Strict) Evaluation                      | Lazy (Call-by-Need) Evaluation                                 |
+| ----------------------- | ---------------------------------------------- | -------------------------------------------------------------- |
+| **Argument Evaluation** | Evaluated _before_ entering the function body. | Evaluated _only when_ demanded inside the function.            |
+| **Infinite Structures** | Crashes the program or loops indefinitely.     | Supported natively and computed safely on demand.              |
+| **Performance Risk**    | May compute values that are never used.        | Can accumulate deep **thunks**, leading to memory space leaks. |
+
+Would you like to see how to debug lazy code using the **`seq` function** or **BangPatterns** to prevent memory leaks, or would you prefer a **step-by-step trace** of how a specific thunk evaluates?
+
+- [link](https://apfelmus.nfshost.com/articles/lazy-eval-intro.html)\
+  Heinrich Apfelmus\
+  How does Lazy Evaluation Work in Haskell?\
+  Here's an example of lazy evaluation: \* \*\*Seq\*\* This combinator returns its second argument and behaves much like the const functi...
+- [link](https://www.youtube.com/watch?v=BZBSgb55Mnk\&t=250)\
+  YouTube·Simple Haskell\
+  Lazy vs Strict Evaluation in Haskell\
+  Nov 11, 2022 — This video will explain lazy versus strict evaluation in Haskell. Everything in Haskell is by default lazy. Lazy evaluation means ...\
+  37m
+- [link](https://www.cs.umd.edu/class/spring2019/cmsc388F/lectures/laziness.html)\
+  UMD Department of Computer Science\
+  Laziness\
+  Lazy evaluation delays evaluation of function arguments until it is absolutely necessary to do so. Even further, it only evaluates...
+
+Show all
+
+# haskell eager eval examples
+
+While **Haskell uses lazy evaluation by default**, it provides several built-in mechanisms to opt into **eager (strict) evaluation**. Forcing eager evaluation is highly useful for optimizing performance, minimizing memory leaks caused by accumulated thunks, or ensuring a predictable execution order. [link](https://www.youtube.com/watch?v=BZBSgb55Mnk\&t=250)
+
+You can force eager evaluation in Haskell using the following common strategies and tools:
+
+***
+
+### 1. The Strict Application Operator (`$!`)
+
+The standard prelude provides the `$!` operator. Unlike the regular lazy application operator (`$`), `$!` forces the argument to be evaluated to **Weak Head Normal Form (WHNF)** before passing it to the function. [link](https://www.youtube.com/watch?v=BZBSgb55Mnk\&t=250)
+
+haskell
+
+```
+-- Lazy Evaluation: '1 + 1' is passed as an unevaluated thunk
+lazyResult = show (1 + 1)
+
+-- Eager Evaluation: '1 + 1' is evaluated to '2' before passing to show
+eagerResult = show $! (1 + 1)
+```
+
+Use code with caution.
+
+### 2. The `seq` Function
+
+The primitive function `seq` forces its first argument to be evaluated to WHNF before returning its second argument. It is often used to ensure state or metrics accumulate strictly instead of building up a massive chain of deferred computations. [link](https://www.youtube.com/watch?v=BZBSgb55Mnk\&t=250)
+
+haskell
+
+```
+-- Forces x to evaluate before returning y
+eagerAdd :: Int -> Int -> Int
+eagerAdd x y = x `seq` (x + y)
+```
+
+Use code with caution.
+
+### 3. Bang Patterns (`!`)
+
+By enabling the `BangPatterns` language extension, you can place an exclamation mark (`!`) directly in front of pattern-matched variables. This forces the variable to evaluate to WHNF as soon as the function is called. [link](https://www.youtube.com/watch?v=BZBSgb55Mnk\&t=250)
+
+haskell
+
+```
+{-# LANGUAGE BangPatterns #-}
+
+-- The arguments x and y are evaluated eagerly
+addStrict :: Int -> Int -> Int
+addStrict !x !y = x + y
+```
+
+Use code with caution.
+
+### 4. Strict Data Types
+
+If you want data structures where the fields are always evaluated eagerly upon creation, you can add strictness annotations (`!`) directly inside the data type declaration.
+
+haskell
+
+```
+-- Regular lazy fields
+data LazyPoint = LazyPoint Int Int
+
+-- Strict fields (eagerly evaluated when User is constructed)
+data StrictPoint = StrictPoint !Int !Int
+```
+
+Use code with caution.
+
+### 5. Fully Eager Deep Evaluation (`force`)
+
+The standard `seq` function only evaluates an expression to WHNF (the outermost constructor). If you have a nested structure like a list of tuples, `seq` only evaluates the outer list wrapper. To force a full, deep eager evaluation, use the `force` function from the Control.DeepSeq module. [link](https://www.youtube.com/watch?v=BZBSgb55Mnk\&t=250)
+
+haskell
+
+```
+import Control.DeepSeq (force)
+import Control.Exception (evaluate)
+
+-- Forces evaluation of every single item nested inside the list eagerly
+evaluateDeeply :: [Int] -> IO [Int]
+evaluateDeeply xs = evaluate (force xs)
+```
+
+Use code with caution.
+
+***
+
+Would you like to explore **Weak Head Normal Form (WHNF)** to understand how far eager evaluation goes by default, or are you looking to fix a specific **memory / space leak** problem in your code?
+
+- [link](https://www.youtube.com/watch?v=BZBSgb55Mnk\&t=250)\
+  YouTube·Simple Haskell\
+  Lazy vs Strict Evaluation in Haskell\
+  Nov 11, 2022 — This video will explain lazy versus strict evaluation in Haskell. Everything in Haskell is by default lazy. Lazy evaluation means ...\
+  37m
+
+- [link](https://www.cs.umd.edu/class/spring2019/cmsc388F/lectures/laziness.html)\
+  UMD Department of Computer Science\
+  Laziness\
+  Strict Evaluation Haskell is a lazy language, meaning that it employs lazy evaluation . Before explaining lazy evaluation , let's ...
+
+- [link](https://www.sfu.ca/~tjd/383fall2019/haskell%5Flazy%5Fand%5Fstrict.html)\
+  Simon Fraser University\
+  Laziness and Strictness — 383fall2019 documentation\
+  lazy evaluation sqr(3 + 4) -- eager evaluation (innermost reduction) = sqr 7 = let n=7 in n\*n = 7\*7 = 49 sqr(3+4) -- lazy evaluati...
+
+# haskell declarative examples
+
+**Haskell is a purely functional programming language that is inherently declarative, meaning you write code that describes _what_ a program should compute rather than providing step-by-step instructions on _how_ to do it.** Instead of using loops, state changes, and mutable variables, Haskell relies on mathematical equations, expressions, pattern matching, and function composition to define data transformations. [link](https://www.reddit.com/r/haskell/comments/1bmcjbt/haskell%5Fis%5Fdeclarative%5Fprogramming/)
+
+Below are clear examples contrasting traditional imperative logic with Haskell's declarative design.
+
+***
+
+### 1. Filtering and Transforming a List
+
+Imagine you want to take a list of numbers, keep only the odd ones, and double them. [link](https://dev.to/ruizb/declarative-vs-imperative-4a7l)
+
+#### ❌ The Imperative Approach (How)
+
+In languages like JavaScript or C, you explicitly tell the computer how to construct a loop, track index pointers, and mutate an array. [link](https://blog.saihemanth.com/posts/I-Finally-Understand-Declarative/)
+
+javascript
+
+```
+// Imperative JavaScript
+let numbers = [1, 2, 3, 4, 5];
+let result = [];
+for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] % 2 !== 0) {
+        result.push(numbers[i] * 2);
+    }
+}
+```
+
+Use code with caution.
+
+#### The Declarative Haskell Approach (What)
+
+In Haskell, you define the output by combining high-level intent using **higher-order functions** like `filter` and `map`. [link](https://www.reddit.com/r/haskell/comments/1bmcjbt/haskell%5Fis%5Fdeclarative%5Fprogramming/)
+
+haskell
+
+```
+-- Declarative Haskell
+doubleOdds :: [Int] -> [Int]
+doubleOdds nums = map (*2) (filter odd nums)
+```
+
+Use code with caution.
+
+- **What it says:** "The result is a mapping of multiplication by two over a filtered list of odd numbers."
+- **Why it's declarative:** There is no loop tracking, no temporary state, and no array mutation. [link](https://quizlet.com/239667247/declarative-programming-haskell-flash-cards/)
+
+***
+
+### 2. Computing a Factorial (Equational Reasoning)
+
+Defining functions in Haskell reads closely to their mathematical definitions, using **pattern matching** to specify conditions instead of execution branches. [link](https://stackoverflow.com/questions/40130014/why-is-haskell-fully-declarative)
+
+#### ❌ The Imperative Approach
+
+python
+
+```
+# Imperative Python
+def factorial(n):
+    result = 1
+    for i in range(1, n + 1):
+        result *= i
+    return result
+```
+
+Use code with caution.
+
+#### The Declarative Haskell Approach
+
+haskell
+
+```
+-- Declarative Haskell
+factorial :: Integer -> Integer
+factorial 0 = 1
+factorial n = n * factorial (n - 1)
+```
+
+Use code with caution.
+
+- **What it says:** "The factorial of 0 is 1. The factorial of any other number `n` is `n` multiplied by the factorial of `n - 1`."
+- **Why it's declarative:** Rather than implementing an execution counter that loops through memory slots, you are presenting truth statements to the compiler. [link](https://www.reddit.com/r/haskell/comments/1bmcjbt/haskell%5Fis%5Fdeclarative%5Fprogramming/)
+
+***
+
+### 3. Combining Operations (Point-Free Style)
+
+Haskell takes declarativeness a step further with **function composition**, which allows you to define new logic purely by snapping existing functions together without referencing the data directly. [link](https://www.reddit.com/r/haskell/comments/1bmcjbt/haskell%5Fis%5Fdeclarative%5Fprogramming/)
+
+Suppose you want to compute the total length of a list of strings. [link](https://ianthehenry.com/posts/declarative-imperative/)
+
+#### Standard Declarative Style
+
+haskell
+
+```
+totalLength :: [String] -> Int
+totalLength strings = sum (map length strings)
+```
+
+Use code with caution.
+
+#### Point-Free Declarative Style
+
+Using the dot `.` operator for function composition, you can eliminate the data variable entirely: [link](https://ianthehenry.com/posts/declarative-imperative/)
+
+haskell
+
+```
+totalLength :: [String] -> Int
+totalLength = sum . map length
+```
+
+Use code with caution.
+
+- **What it says:** "The `totalLength` pipeline is explicitly defined as mapping the `length` property and then summing the results."
+- **Why it's declarative:** You describe the _shape_ of the process pipeline rather than managing the items moving through it. [link](https://www.dataops.live/blog/the-data-engineers-guide-to-declarative-vs-imperative-for-data)
+
+***
+
+### 4. Handling Infinite Data Structure (Lazy Evaluation)
+
+Because Haskell features **lazy evaluation**, it doesn't compute things until they are strictly necessary. This lets you define mathematically infinite concepts cleanly. [link](https://www.reddit.com/r/haskell/comments/1bmcjbt/haskell%5Fis%5Fdeclarative%5Fprogramming/)
+
+haskell
+
+```
+-- An infinite list of all positive integers
+allNumbers :: [Integer]
+allNumbers = [1..]
+
+-- Grabbing the first 5 even numbers from it
+firstFiveEvens :: [Integer]
+firstFiveEvens = take 5 (filter even allNumbers)
+-- Output: [2, 4, 6, 8, 10]
+```
+
+Use code with caution.
+
+- **Why it's declarative:** In an imperative language, evaluating an infinite list `[1..]` would cause an infinite loop or an out-of-memory crash. In Haskell, you declare the properties of the infinite dataset safely; the underlying compiler runtime figures out exactly how many steps are needed to yield your result. [link](https://www.reddit.com/r/haskell/comments/1bmcjbt/haskell%5Fis%5Fdeclarative%5Fprogramming/)
+
+If you are trying to solve a specific problem, tell me:
+
+- What **task or algorithm** are you trying to build?
+- Are you trying to rewrite an **imperative loop** into a declarative format?
+
+I can help you convert the logic step-by-step into clean Haskell.
+
+- [link](https://www.reddit.com/r/haskell/comments/1bmcjbt/haskell%5Fis%5Fdeclarative%5Fprogramming/)\
+  Reddit\
+  Haskell is declarative programming\
+  Some examples of declarative programming in Haskell include: \* \*\*Function composition\*\* \* \*\*Higher order functions\*\* \* \*\*Partial f...
+- [link](https://stackoverflow.com/questions/40130014/why-is-haskell-fully-declarative)\
+  Stack Overflow\
+  Why is Haskell fully declarative?\
+  Haskell is considered declarative for a number of reasons: \* \*\*Pure functions\*\* Haskell code is often considered declarative becau...
+- [link](https://blog.saihemanth.com/posts/I-Finally-Understand-Declarative/)\
+  blog.saihemanth.com\
+  I finally understand Declarative Programming\
+  Jan 28, 2022 — Background Aren't we supposed to iterate and update variables at someplace for the program to work? I was so caught in thinking of...
+
+Show all
+
+# compare haskell lazy eval and js proxy
+
+**Haskell's lazy evaluation** and **JavaScript's `Proxy` object** are completely different mechanisms that operate at different levels of a programming language, though they can occasionally be used to achieve similar architectural patterns (like [lazy data structures](https://hackernoon.com/how-i-used-proxy-to-implement-lazy-infinite-lists-in-javascript-5e86879b44d6)). [link](https://medium.com/hackernoon/how-i-used-proxy-to-implement-lazy-infinite-lists-in-javascript-5e86879b44d6)
+
+The fundamental difference is scope: **Haskell’s lazy evaluation is a core, compiler-level execution strategy** applied to all expressions by default, while a **JavaScript `Proxy` is an API wrapper** used to intercept and customize basic operations on specific objects. [link](https://www.youtube.com/watch?v=BZBSgb55Mnk\&t=250)
+
+***
+
+### Direct Comparison
+
+| Feature                 | Haskell Lazy Evaluation                                                   | JavaScript `Proxy`                                                    |
+| ----------------------- | ------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| **What is it?**         | A native evaluation strategy (call-by-need).                              | An ES6 metaprogramming API wrapper.                                   |
+| **Level**               | **Language & Compiler Level** (GHC runtime).                              | **Application & Object Level** (V8 runtime engine).                   |
+| **Default Behavior**    | Every expression is lazy unless specified otherwise.                      | Opt-in. You must explicitly instantiate a `new Proxy()`.              |
+| **How it works**        | Replaces expressions with unevaluated heap allocations called **thunks**. | Uses **traps** (like `get`, `set`) to intercept object interactions.  |
+| **Caching/Memoization** | Native. Once a thunk is evaluated, it is overwritten with the result.     | Manual. A proxy trap will re-run on every access unless you cache it. |
+| **Primary Use Case**    | Infinite data structures, performance optimizations, modular code.        | Data reactivity (e.g., Vue.js), logging, validation, profiling.       |
+
+***
+
+### Deep Dive: Haskell Lazy Evaluation
+
+In Haskell, expressions are not evaluated when they are bound to a variable. Instead, the compiler creates a **thunk**—a pointer to the computation. [link](https://stackoverflow.com/questions/23820809/im-confused-by-haskells-lazy-evaluation)
+
+- **Call-by-Need:** Evaluation happens only when the value is strictly required (e.g., printing to screen or pattern matching). Once evaluated, the runtime replaces the thunk with the actual value. [link](https://www.reddit.com/r/haskell/comments/q0ngj/lazy%5Fevaluation%5Fvs%5Fleftmost%5Freduction%5Fwith%5Fgraph/)
+- **Purity matters:** This relies entirely on Haskell's status as a pure language. Because functions have no side effects, evaluating an expression now vs. evaluating it later always yields identical results. [link](https://www.reddit.com/r/haskell/comments/15qgxef/a%5Fdefense%5Fof%5Flaziness%5Fin%5Fhaskell%5Fpart%5F1%5Fprologue/)
+- **Example:** You can define an infinite list `[1..]` instantly. Memory is only consumed for the elements you actually read. [link](https://www.quora.com/Im-a-Javascript-developer-Does-knowledge-of-Haskell-or-Erlang-make-me-more-marketable)
+
+### Deep Dive: JavaScript `Proxy`
+
+JavaScript is an eager, strict-by-default language. A `Proxy` doesn't change how JavaScript evaluates expressions; it sits in front of a target object and intercepts operations. [link](https://www.reddit.com/r/haskell/comments/utmymx/comparing%5Fstrict%5Fand%5Flazy/)
+
+- **Metaprogramming:** When you read a property via `proxy.foo`, a `get` trap runs custom logic. [link](https://medium.com/hackernoon/how-i-used-proxy-to-implement-lazy-infinite-lists-in-javascript-5e86879b44d6)
+- **Simulating Laziness:** You _can_ use a `Proxy` to mimic Haskell's lazy data structures. For instance, a proxy can intercept an array index accessor (`list[100]`) and dynamically generate the required value only at that moment. [link](https://medium.com/hackernoon/how-i-used-proxy-to-implement-lazy-infinite-lists-in-javascript-5e86879b44d6)
+- **Stateful Overhead:** Because JavaScript allows side effects, using a proxy to delay execution can introduce bugs if the underlying state of your application changes before the proxy trap triggers. [link](https://stackoverflow.com/questions/54754566/difference-between-eager-and-lazy-evaluation-in-a-non-functional-language-like-j)
+
+Are you trying to **implement a specific lazy data structure** (like an infinite list) in JavaScript using a `Proxy`, or are you weighing the **architectural patterns** of both languages for a new project?
+
+- [link](https://www.youtube.com/watch?v=BZBSgb55Mnk\&t=250)\
+  YouTube·Simple Haskell\
+  Lazy vs Strict Evaluation in Haskell\
+  Nov 11, 2022 — This video will explain lazy versus strict evaluation in Haskell. Everything in Haskell is by default lazy. Lazy evaluation means ...\
+  37m
+- [link](https://www.reddit.com/r/haskell/comments/q0ngj/lazy%5Fevaluation%5Fvs%5Fleftmost%5Freduction%5Fwith%5Fgraph/)\
+  Reddit\
+  Lazy evaluation vs. leftmost reduction with graph reduction : r/haskell\
+  Feb 22, 2012 — Comments Section Note that sharing doesn't require a graph reduction machine like the G-machine. There are also environment based ...
+- [link](https://medium.com/hackernoon/how-i-used-proxy-to-implement-lazy-infinite-lists-in-javascript-5e86879b44d6)\
+  Medium·Steven Syrek\
+  How I Used Proxy to Implement Lazy Infinite Lists in JavaScript\
+  Dec 4, 2016 — In our lazy list world, any given tail evaluated by the handler is going to be either a singleton list or a list that has already ...
+
+Show all
+
 # 
