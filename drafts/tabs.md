@@ -10,6 +10,8 @@ tools ~~http://localhost:1234/~~ <!-- `b dev` -->
 
 ---
 
+https://csdiy.wiki/CS%E5%AD%A6%E4%B9%A0%E8%A7%84%E5%88%92/#_10
+
 https://csdiy.wiki/%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/Python/CS61A/?h=cs61a#_1
 
 https://lr2933.github.io/cs61a-spring-2026/
@@ -25,6 +27,8 @@ https://composingprograms.com/3ed/elements-of-programming/
 https://composingprograms.com/3ed/defining-new-functions/
 
 chrome://downloads/
+
+/home/fira/Downloads
 
 ---
 

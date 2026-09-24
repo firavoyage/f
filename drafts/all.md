@@ -978,6 +978,7 @@ code:
 - transpile
 - error handling
 - async await no algrebraic effects auto await by default
+- pattern matching
 
 humility:
 
