@@ -1373,4 +1373,381 @@ Are you trying to resolve an **unreachable pattern** warning in your code, or ar
 
 Show all
 
+# all rust match syntax examples
+
+In Rust, the `match` control flow construct is an exhaustive pattern-matching tool. It is frequently described as a "type-safe switch statement on steroids." [link](https://notes.kodekloud.com/docs/Rust-Programming/Rust-Basics/Control-Flow-Pattern-matching-with-match/page)
+
+Below is a comprehensive guide to **every major pattern-matching syntax option** in Rust. [link](https://notes.kodekloud.com/docs/Rust-Programming/Rust-Basics/Control-Flow-Pattern-matching-with-match/page)
+
+***
+
+### 1. Core Basics
+
+#### Literal Matching & Catch-All (`_`)
+
+Matches precise scalar values. Because `match` must be **exhaustive**, the underscore `_` acts as a mandatory fallback for any unhandled variants. [link](https://rust-book.cs.brown.edu/ch06-02-match.html)
+
+rust
+
+```
+let number = 3;
+match number {
+    1 => println!("One"),
+    2 => println!("Two"),
+    _ => println!("Anything else"), // Catch-all wildcard
+}
+```
+
+Use code with caution.
+
+#### Multiple Patterns (Or `|`)
+
+Executes an arm if the value matches _any_ of the pipe-separated alternatives. [link](https://doc.rust-lang.org/book/ch19-03-pattern-syntax.html)
+
+rust
+
+```
+let x = 2;
+match x {
+    1 | 2 => println!("One or two"),
+    3 | 4 | 5 => println!("Three, four, or five"),
+    _ => println!("Something else"),
+}
+```
+
+Use code with caution.
+
+#### Ranges (`..=`)
+
+Matches any value falling inside an inclusive range. Works primarily with integers and `char` types. [link](https://doc.rust-lang.org/book/ch19-03-pattern-syntax.html)
+
+rust
+
+```
+let test_score = 85;
+match test_score {
+    90..=100 => println!("Grade: A"),
+    80..=89 => println!("Grade: B"),
+    0..=79 => println!("Grade: C or below"),
+    _ => println!("Invalid score"),
+}
+```
+
+Use code with caution.
+
+***
+
+### 2. Standard Types (Option & Result)
+
+#### Unwrapping `Option<T>`
+
+Extracts the inner item from an option. [link](https://www.youtube.com/watch?v=QQ3crUFCn%5Fs)
+
+rust
+
+```
+let some_value: Option<i32> = Some(42);
+match some_value {
+    Some(valid_num) => println!("Got an integer: {valid_num}"),
+    None => println!("Found nothing"),
+}
+```
+
+Use code with caution.
+
+#### Unwrapping `Result<T, E>`
+
+Branches natively on success or error types. [link](https://www.youtube.com/watch?v=QQ3crUFCn%5Fs)
+
+rust
+
+```
+let response: Result<String, &'static str> = Ok(String::from("Success"));
+match response {
+    Ok(message) => println!("Server said: {message}"),
+    Err(err_msg) => println!("Error occurred: {err_msg}"),
+}
+```
+
+Use code with caution.
+
+***
+
+### 3. Destructuring Complex Structures
+
+#### Tuples
+
+Destructures positional items from a tuple. You can ignore parts using `_` or `..`. [link](https://doc.rust-lang.org/book/ch19-01-all-the-places-for-patterns.html)
+
+rust
+
+```
+let coordinates = (10, -5, 20);
+match coordinates {
+    (0, y, z) => println!("On the X-origin! Y: {y}, Z: {z}"),
+    (x, _, 20) => println!("Z is exactly 20. X is {x}"),
+    (x, y, z) => println!("X: {x}, Y: {y}, Z: {z}"),
+}
+```
+
+Use code with caution.
+
+#### Structs
+
+Destructures named fields. Field variables can be shorthand (matching the field name) or reassigned. [link](https://www.youtube.com/watch?v=x3VMLh3R0UM)
+
+rust
+
+```
+struct Point { x: i32, y: i32 }
+let origin = Point { x: 0, y: 15 };
+
+match origin {
+    Point { x, y: 0 } => println!("On the X axis at {x}"),
+    Point { x: 0, y } => println!("On the Y axis at {y}"), // Shorthand rebinds to `y`
+    Point { x, y }    => println!("Somewhere else at ({x}, {y})"),
+}
+```
+
+Use code with caution.
+
+#### Enums (With Associated Data)
+
+Rust's most robust use case. Extracts explicit internal payloads from custom enum variants. [link](https://doc.rust-lang.org/std/keyword.match.html)
+
+rust
+
+```
+enum Message {
+    Quit,
+    Move { x: i32, y: i32 },
+    Write(String),
+}
+
+let msg = Message::Move { x: 5, y: 10 };
+match msg {
+    Message::Quit => println!("Quitting"),
+    Message::Move { x, y } => println!("Moving to x:{x}, y:{y}"),
+    Message::Write(text) => println!("Text payload: {text}"),
+}
+```
+
+Use code with caution.
+
+#### Arrays and Slices
+
+Matches against elements within an array or slice structure. Uses `..` to indicate variable-length inner chunks. [link](https://www.youtube.com/watch?v=NNg9JR9%5Fs0Y)
+
+rust
+
+```
+let sequence = [1, 2, 3, 4, 5];
+match sequence {
+    [1, 2, ..] => println!("Starts with 1 and 2"),
+    [_, middle @ .., 5] => println!("Ends with 5. Sub-slice is {:?}", middle),
+    _ => println!("Unmatched list shape"),
+}
+```
+
+Use code with caution.
+
+***
+
+### 4. Advanced Matching Conditions
+
+#### Match Guards (`if` Conditions)
+
+Adds a runtime arbitrary conditional block to an arm. The arm matches _only_ if the guard expression returns `true`. [link](https://doc.rust-lang.org/reference/expressions/match-expr.html)
+
+rust
+
+```
+let pair = (5, 5);
+match pair {
+    (x, y) if x == y => println!("They are twin numbers!"),
+    (x, y) if x + y == 10 => println!("They sum to 10!"),
+    (x, y) => println!("Just an ordinary pair: ({x}, {y})"),
+}
+```
+
+Use code with caution.
+
+#### Variable Bindings (`@` Operator)
+
+Captures a value inside a variable while checking if it satisfies another condition (like a range or variant). [link](https://www.youtube.com/watch?v=xZUimOlCPdg)
+
+rust
+
+```
+let age = 16;
+match age {
+    age_var @ 13..=19 => println!("Teenager detected of age: {age_var}"),
+    _ => println!("Not a teenager"),
+}
+```
+
+Use code with caution.
+
+***
+
+### 5. Returning Values (Match as an Expression)
+
+Because `match` is an expression in Rust, you can assign its evaluated evaluation directly to a variable. [link](https://doc.rust-lang.org/rust-by-example/flow%5Fcontrol/match.html)
+
+rust
+
+```
+let is_sunny = true;
+let weather_status = match is_sunny {
+    true => "Grab your sunglasses!",
+    false => "Take an umbrella.",
+};
+```
+
+Use code with caution.
+
+Are you trying to resolve a specific compiler error like **"non-exhaustive patterns"**, or would you like to explore alternative shorthand macros like **`matches!`** or **`if let`** constructs?
+
+- [link](https://doc.rust-lang.org/book/ch19-03-pattern-syntax.html)\
+  Rust Documentation\
+  Pattern Syntax - The Rust Programming Language\
+  Patterns can be used in match expressions, let statements, and function parameters. Here are some examples of patterns: \* \*\*Matchi...
+- [link](https://www.youtube.com/watch?v=x3VMLh3R0UM)\
+  YouTube·Stephen Blum\
+  Rust By Example: Match Destructuring Enums and Structs\
+  Mar 20, 2024 — Rust By Example: Match Destructuring Enums and Structs i have found my most beloved pattern. and all of rust. in terms of his abil...\
+  10:29
+- [link](https://www.youtube.com/watch?v=QQ3crUFCn%5Fs)\
+  YouTube·Stephen Blum\
+  Rust By Example: If Let\
+  Mar 27, 2024 — everything all together. so it's a nice syntax that Rust offers us. so taking a look here. we've got uh at our our first line of c...\
+  11:35
+
+Show all
+
+# haskell pattern matching syntax examples
+
+**Pattern matching in Haskell** allows you to deconstruct data and match specific values or shapes directly within function definitions, `case` statements, `let` bindings, or lambdas. Haskell evaluates patterns sequentially from **top to bottom**, executing the first code block that matches. [link](https://www.reddit.com/r/haskell/comments/16frkjj/can%5Fsomeone%5Fexplain%5Fpattern%5Fmatching%5Fto%5Fme/)
+
+Below is a comprehensive guide to Haskell pattern matching syntax with common examples.
+
+***
+
+### 1. Basic Value Matching & Wildcards
+
+You can match literal constants directly. The underscore `_` acts as a **wildcard pattern**, matching absolutely anything without binding it to a variable name. [link](https://stackoverflow.com/questions/2225774/haskell-pattern-matching-what-is-it)
+
+haskell
+
+```
+-- Matching exact numeric literals
+isLucky :: Int -> String
+isLucky 7 = "LUCKY NUMBER SEVEN!"
+isLucky 13 = "Unlucky..."
+isLucky _  = "Just a regular number."  -- Catch-all wildcard
+```
+
+Use code with caution.
+
+### 2. Tuple Patterns
+
+Tuples are matched by mirroring their comma-separated structure within parentheses. [link](https://www.youtube.com/watch?v=e4%5F3uZXvoak)
+
+haskell
+
+```
+-- Extracting data from a 3-tuple (similar to the built-in `fst` for pairs)
+firstOfThree :: (a, b, c) -> a
+firstOfThree (x, _, _) = x  -- Binds 'x' to the first element, ignores the rest
+```
+
+Use code with caution.
+
+### 3. List Patterns
+
+Lists can be matched by structural sugar (like `[]` or `[x, y]`) or via the cons constructor (`:`) to separate the **head** (first element) from the **tail** (the rest of the list). [link](https://en.wikibooks.org/wiki/Haskell/Pattern%5Fmatching)
+
+haskell
+
+```
+describeList :: [a] -> String
+describeList []       = "The list is empty."
+describeList [x]      = "The list has exactly one element."
+describeList (x:y:[]) = "The list has exactly two elements."
+describeList (x:xs)   = "The list is long. The first element is bound to x."
+```
+
+Use code with caution.
+
+### 4. Custom Data Types (Algebraic Data Types)
+
+You pattern match custom types by specifying their data constructors and providing variable bindings for their internal values. [link](https://www.haskell.org/tutorial/patterns.html)
+
+haskell
+
+```
+data Shape = Circle Double | Rectangle Double Double
+
+area :: Shape -> Double
+area (Circle r)        = pi * r * r
+area (Rectangle w h)   = w * h
+```
+
+Use code with caution.
+
+### 5. "As" Patterns (`@`)
+
+An **as-pattern** allows you to break an item apart into its structure while still retaining a reference name for the _entire_ original object. [link](https://www.youtube.com/watch?v=c-l5VBTmLFM)
+
+haskell
+
+```
+-- 'allStr' points to the entire string, while 'firstChar' extracts just the head
+getFirstAndWhole :: String -> String
+getFirstAndWhole [] = "Empty string!"
+getFirstAndWhole allStr@(firstChar:_) = "The first char of " ++ allStr ++ " is " ++ [firstChar]
+```
+
+Use code with caution.
+
+### 6. Case Expressions
+
+Pattern matching doesn't have to happen at the function boundary. You can use a `case ... of` block anywhere inside a expression. [link](https://academy.fpblock.com/blog/pattern-matching/)
+
+haskell
+
+```
+describeNumber :: Int -> String
+describeNumber n = "The number is " ++ case n of
+    0 -> "zero"
+    1 -> "one"
+    _ -> "something else"
+```
+
+Use code with caution.
+
+***
+
+### 💡 Quick Rules to Remember
+
+- **Order Matters:** Always put your most specific patterns at the top and your catch-all (wildcard or generic variable) at the bottom. If you swap them, the specific cases will become dead code.
+- **No Duplicate Variables:** You cannot match `equalPairs (x, x) = True`. Patterns must be linear. Use guards instead (`equalPairs (x, y) | x == y = True`). [link](https://www.reddit.com/r/haskell/comments/16frkjj/can%5Fsomeone%5Fexplain%5Fpattern%5Fmatching%5Fto%5Fme/)
+
+Would you like to see how to combine these patterns with **guards**, or do you need an example utilizing a specific type of data structure like **Record syntax**?
+
+- [link](https://www.reddit.com/r/haskell/comments/16frkjj/can%5Fsomeone%5Fexplain%5Fpattern%5Fmatching%5Fto%5Fme/)\
+  Reddit\
+  Can someone explain Pattern Matching to me? : r/haskell\
+  sacheie • 3y ago • Edited 3y ago Pattern matching is like the "switch" keyword from most languages, except instead of comparing ag...
+- [link](https://stackoverflow.com/questions/2225774/haskell-pattern-matching-what-is-it)\
+  Stack Overflow\
+  Haskell pattern matching - what is it?\
+  Here are some examples of pattern matching in Haskell: \* \*\*Direct value matching\*\* Matching against literal values directly. For e...
+- [link](https://www.haskell.org/tutorial/patterns.html)\
+  Haskell Language\
+  4 Case Expressions and Pattern Matching - Haskell.org\
+  Patterns are not "first-class;" there is only a fixed set of different kinds of patterns. We have already seen several examples of...
+
+Show all
+
 # 
