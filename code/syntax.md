@@ -54,7 +54,7 @@ greet
 convert_celsius_to_fahrenheit celsius = (celsius * 9 / 5) + 32;
 
 # celsius = 25
-# fahrenheit = convert_celsius_to_fahrenheit celsius# 
+# fahrenheit = convert_celsius_to_fahrenheit celsius
 # print `{celsius}°C is equal to ${fahrenheit}°F`
 main
   celsius = 25
@@ -67,9 +67,22 @@ main
 
 ```code
 fizzbuzz n = match n
-  % 3 = 0 && % 5 = 0 'FizzBuzz'
+  % 3 = 0 & % 5 = 0 'FizzBuzz'
   % 3 = 0 'Fizz'
   % 5 = 0 'Buzz'
+  str(n)
+  # string(n)
+  # n
+
+main
+  print map(1..=20, fizzbuzz)
+```
+
+```code
+fizzbuzz n = match n
+  n % 3 = 0 & n % 5 = 0 'FizzBuzz'
+  n % 3 = 0 'Fizz'
+  n % 5 = 0 'Buzz'
   str(n)
   # string(n)
   # n
@@ -127,7 +140,7 @@ main
   const prices = [12.99, 45.00, 5.50, 99.99, 23.50, 8.00];  
   const threshold = 20.00
 
-  console.log(`Total sum of items over {threshold}: {total_sum}`) where
+  print `Total sum of items over {threshold}: {total_sum}` where
     total_sum = sum_of_high_prices prices threshold
 ```
 
