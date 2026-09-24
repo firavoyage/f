@@ -56,6 +56,8 @@ macro
 
 how does typescript lsp work
 
+---
+
 what if typescript type system were sound
 
 all typescript syntax
@@ -69,5 +71,6 @@ how does rust type system work
 how does haskell type system work
 
 how does typescript type system work
+
 
 
