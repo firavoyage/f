@@ -10,6 +10,24 @@ tools ~~http://localhost:1234/~~ <!-- `b dev` -->
 
 ---
 
+https://csdiy.wiki/%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/Python/CS61A/?h=cs61a#_1
+
+https://lr2933.github.io/cs61a-spring-2026/
+
+https://cs61a.org/fa26/
+
+https://www.youtube.com/watch?v=gyk0Qutui1s&list=PL6BsET-8jgYULSxiV2garZ0FxbnXR08MP&index=3
+
+https://www.youtube.com/playlist?list=PL6BsET-8jgYWZlcJMOuWFSXKc99cSneEN
+
+https://composingprograms.com/3ed/elements-of-programming/
+
+https://composingprograms.com/3ed/defining-new-functions/
+
+chrome://downloads/
+
+---
+
 research openai api
 
 research fetch api

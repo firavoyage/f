@@ -897,7 +897,7 @@ poetry:
 
 - stopping by woods on a snowy evening
 
-laws:
+law:
 
 - lichess chessdotcom icons
 - cookie banners
@@ -907,6 +907,8 @@ laws:
 - youtube made for kids coppa restriction dmca criticism digital colonialism
 - criticism web accessibility compliance
 - agpl opensource strictness illusion
+- upload vids under surveillance
+- tax system
 
 repo: <!-- init, clone, save/checkpoint, sync, restore -->
 
