@@ -46,7 +46,9 @@ how would a sound type system look like
 
 ---
 
-what can pl syntax have
+what can pl syntax include
+
+---
 
 macro
 
