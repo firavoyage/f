@@ -32,10 +32,10 @@ you may use escape `\` in both single and double quoted string. you may escape s
 
 # operators
 
-- arithmetic: `+`, `-`, `*`, `^` (pow), `/`, `%`
+- arithmetic: `+`, `-`, `*`, `**`, `/`, `%`
 - assignment: `=`, `{arithmetic}=`
 - comparison: `==`, `!=`, `<`, `>`, `<=`, `>=`
-- logical: `&` (and), `|` (or), `!` (not)
+- logical: `&` (and), `|` (or), `!` (not), `^` (xor)
 
 # variables
 
