@@ -239,4 +239,10 @@ type foo = union(
 
 type system and pattern matching are deeply intertwined, absolutely.
 
+---
+
+i may write a syntax spec today.
+
+not necessarily in ebnf. it can be flexible and human oriented. it has to be deterministic and unambiguous. it doesnt have to be parsable and computable.
+
 
