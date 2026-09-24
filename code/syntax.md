@@ -10,6 +10,44 @@ greet
     print `Hello, {name}!`
 ```
 
+```code
+greet
+  const name = input "What is your name?"
+
+  # input wont be nil
+  match name
+    ''
+      print "Hello, Mysterious Stranger!"
+    _
+      print `Hello, {name}!`
+```
+
+```code
+greet
+  const name = input "What is your name?"
+
+  match name
+    err
+      print "Failed to Receive Input"
+    ''
+      print "Hello, Mysterious Stranger!"
+    _
+      print `Hello, {name}!`
+```
+
+```code
+greet
+  const name = input "What is your name?"
+
+  match name
+    err(msg)
+      print `Failed to Receive Input {msg}`
+    ''
+      print "Hello, Mysterious Stranger!"
+    _
+      print `Hello, {name}!`
+```
+
 # temperature converter
 
 ```code
