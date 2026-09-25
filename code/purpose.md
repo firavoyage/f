@@ -499,5 +499,6 @@ idk if js is really flawed.
 
 maybe js it not flawed, but quirky.
 
+and, about ts, it could never become smart "enough", i think.
 
 
