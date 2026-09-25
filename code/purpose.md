@@ -410,4 +410,80 @@ the superpower, i would make it reserved for obj. it's quite common and frustrat
 
 it's also clearer to read when params are separated.
 
+---
+
+~~i will adopt the py way. concise isnt it.~~
+
+int and str, instead of number and string, or "string from".
+
+```
+ ~ % py
+Python 3.12.3 (main, Mar 23 2026, 19:04:32) [GCC 13.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> int('123')
+123
+>>> int(12)
+12
+>>> int('a')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: invalid literal for int() with base 10: 'a'
+>>> int('o')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: invalid literal for int() with base 10: 'o'
+>>> int('o1')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: invalid literal for int() with base 10: 'o1'
+>>> int('0o1')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: invalid literal for int() with base 10: '0o1'
+>>> int('asdfjkhl')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: invalid literal for int() with base 10: 'asdfjkhl'
+>>> str(123)
+'123'
+>>> str('')
+''
+```
+
+wait, is it strictly for int?
+
+```
+ ~ % py
+Python 3.12.3 (main, Mar 23 2026, 19:04:32) [GCC 13.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> int('3.14')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: invalid literal for int() with base 10: '3.14'
+>>> float('3.14')
+3.14
+>>> double('3.14')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'double' is not defined
+>>> num('3.14')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'num' is not defined. Did you mean: 'sum'?
+>>> number('3.14')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'number' is not defined
+```
+
+why. i will go my way if i already named folders as `source` (not `src`) in my repo.
+
+...
+
+but i never write `integer`... i dont even recognize at once. i see `int` as a symbol/icon.
+
+---
+
+i can still write `f x = ...`.
+
 
