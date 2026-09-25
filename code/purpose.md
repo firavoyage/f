@@ -64,7 +64,7 @@ the catch? you may have to move your cursor anyway. you will. you rarely write c
 
 if indentation couldnt be consistently elegant, it would not be as good as it looks, and basically it loses all its tradeoffs.
 
-yeah, interesting, tab moves the cursor. 
+yeah, interesting, tab moves the cursor.
 
 > Extraordinary claims require extraordinary evidence
 
@@ -136,7 +136,7 @@ no "object colored as err" tricks. (as you can not return both _any_ value and e
 
 under the hood i can make it a tuple return cleanly.
 
-you can explicitly panic to narrow the type. 
+you can explicitly panic to narrow the type.
 
 it favors efficiency over safety so it doesnt require ? to propagate. and yeah, it will not just continue, ~~it will immediately return _iff you have no handling logic after_~~ <!-- or it may not. well it doesnt matter. you may declare handling logic as you like. -->.
 
@@ -158,7 +158,7 @@ match value
   type(value)
 ```
 
-i do need a lang level keyword for throw. no need to be strictly keyword aw. 
+i do need a lang level keyword for throw. no need to be strictly keyword aw.
 
 maybe code::err or code::throw.
 
@@ -318,3 +318,47 @@ SyntaxError: Missing parentheses in call to 'print'. Did you mean print(...)?
 SyntaxError: invalid syntax
 ```
 
+interesting
+
+i could make an argument that why not make `print 1` directly inside a fn function as `print(1)`. just to reduce mental overhead. you do not learn two syntaxes.
+
+e.g. `{print, foo}` ("if it contains , it's an object") instead of `{print foo}` only if it's ambiguous.
+
+only when you use consistent syntax can you avoid worrying whether to escape/wrap.
+
+tradeoff is, you can no longer write "naturally" downward.
+
+like, print, foo, enter.
+
+but it's really that you could not. you have to move your cursor inside, and then outside a string. there are block end symbols. indentation is not the solution. you have to occassionally move up, or find/replace, or navigate anywhere.
+
+just print, (), foo, shift enter.
+
+what about shell and haskell?
+
+shell cli syntax is even more awkward, w many legacy quirks (e.g. you dont know if it's a flag or a string). and haskell make severe anti pragmatism constraints for purity and mathematics.
+
+---
+
+for fn definition, you may write like
+
+```
+convert_celsius_to_fahrenheit celsius = (celsius * 9 / 5) + 32;
+```
+
+or
+
+```
+convert_celsius_to_fahrenheit(celsius) = (celsius * 9 / 5) + 32;
+```
+
+or
+
+```
+convert_celsius_to_fahrenheit(celsius){
+  (celsius * 9 / 5) + 32
+  # return (celsius * 9 / 5) + 32
+}
+```
+
+i have 
