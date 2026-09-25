@@ -259,4 +259,62 @@ you may use if let.
 
 there is no scenario to cleanly mutate an outside var while comparing it.
 
+25
+
+rather not allow shell (or haskell) like call expression.
+
+```
+foo 1 2 3
+```
+
+is it call foo w args 1 2 3, or an array of foo (fn), 1, 2, 3 (numbers).
+
+esp when nested. i have to wrap in paren anyway.
+
+```
+{
+  foo
+}
+```
+
+does it mean an object of foo: foo, or a fn called foo?
+
+(it would not help if i decide to make fn `(){}`, which can be interpretted as tuple and object)
+
+lexical.
+
+now it's much easier to distinguish.
+
+- if it's empty, it's an empty object (it makes to nosense to call an empty fn, and thus i can safely nullify all non fn call expression in runtime)
+- if it contains : <!-- only the first scope will be taken into account -->, it must be an object
+- if it contains assignment statement or call expression, it must be a fn.
+
+this approach also aligns w modern pl design.
+
+```
+ ~ % py
+Python 3.12.3 (main, Mar 23 2026, 19:04:32) [GCC 13.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> quite
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'quite' is not defined. Did you mean: 'quit'?
+>>> quitttt
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'quitttt' is not defined
+>>> print
+<built-in function print>
+>>> print 1
+  File "<stdin>", line 1
+    print 1
+    ^^^^^^^
+SyntaxError: Missing parentheses in call to 'print'. Did you mean print(...)?
+>>> pr = print
+>>> pr 1
+  File "<stdin>", line 1
+    pr 1
+       ^
+SyntaxError: invalid syntax
+```
 
