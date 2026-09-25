@@ -2,65 +2,63 @@
 
 ```code
 greet
-  const name = input "What is your name?"
+  const name = input("What is your name?")
 
   if !name
-    print "Hello, Mysterious Stranger!"
+    print("Hello, Mysterious Stranger!")
   else
-    print `Hello, {name}!`
+    print(`Hello, {name}!`)
 ```
 
 ```code
 greet
-  const name = input "What is your name?"
+  const name = input("What is your name?")
 
   # input wont be nil
   match name
     ''
-      print "Hello, Mysterious Stranger!"
+      print("Hello, Mysterious Stranger!")
     _
-      print `Hello, {name}!`
+      print(`Hello, {name}!`)
 ```
 
 ```code
 greet
-  const name = input "What is your name?"
+  const name = input("What is your name?")
 
   match name
     err
-      print "Failed to Receive Input"
+      print("Failed to Receive Input")
     ''
-      print "Hello, Mysterious Stranger!"
+      print("Hello, Mysterious Stranger!")
     _
-      print `Hello, {name}!`
+      print(`Hello, {name}!`)
 ```
 
 ```code
 greet
-  const name = input "What is your name?"
+  const name = input("What is your name?")
 
   match name
     err(msg)
-      print `Failed to Receive Input {msg}`
+      print(`Failed to Receive Input {msg}`)
     ''
-      print "Hello, Mysterious Stranger!"
+      print("Hello, Mysterious Stranger!")
     _
-      print `Hello, {name}!`
+      print(`Hello, {name}!`)
 ```
 
 # temperature converter
 
 ```code
-convert_celsius_to_fahrenheit celsius = (celsius * 9 / 5) + 32;
+convert_celsius_to_fahrenheit celsius = (celsius * 9 / 5) + 32
 
-# celsius = 25
-# fahrenheit = convert_celsius_to_fahrenheit celsius
-# print `{celsius}°C is equal to ${fahrenheit}°F`
-main
+main {
   celsius = 25
   fahrenheit = convert_celsius_to_fahrenheit celsius
 
   print `{celsius}°C is equal to ${fahrenheit}°F`
+}
 ```
 
 # fizz buzz
@@ -137,7 +135,7 @@ play
 sum_of_high_prices(int[] prices, threshold) = prices.filter(_ >= threshold).sum()
 
 main
-  const prices = [12.99, 45.00, 5.50, 99.99, 23.50, 8.00];  
+  const prices = [12.99, 45.00, 5.50, 99.99, 23.50, 8.00]  
   const threshold = 20.00
 
   print `Total sum of items over {threshold}: {total_sum}` where
