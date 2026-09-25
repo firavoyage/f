@@ -486,4 +486,11 @@ but i never write `integer`... i dont even recognize at once. i see `int` as a s
 
 i can still write `f x = ...`.
 
+---
+
+tab/space doesnt matter.
+
+- in ide, if it's for indentation, cursor should take each level as one char
+- it should render based on pref
+
 

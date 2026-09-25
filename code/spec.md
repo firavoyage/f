@@ -138,7 +138,10 @@ name = exp
 
 let foo = exp
 const foo = exp
+
+let foo: type = exp
 type foo = bar
+
 int foo = 1
 const int foo = 123
 ```
@@ -188,6 +191,33 @@ to shadow, you may write, though it's highly discouraged
 let foo = ...
 ```
 
+# types
+
+```
+type foo {
+  a
+}
+
+type foo {
+  a: string
+}
+
+type foo {
+  a: string
+  b
+}
+
+type foo = {
+  
+}
+```
+
+```
+type prime = (n){
+  n -> bool
+}
+```
+
 # modules
 
 ```
@@ -197,4 +227,5 @@ import foo from foo
 
 import foo, bar from foo
 ```
+
 

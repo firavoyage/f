@@ -435,4 +435,873 @@ Are you learning a **specific programming language** (like Python, C++, or Java)
 
 Show all
 
-# 
+# compare multi line string syntax in pl design
+
+## compare multi line string syntax in pl design
+
+In **Programming Language (PL) design**, supporting multi-line strings is a balancing act between three competing priorities: <mark><strong>readability</strong><span> </span>(how nicely the code aligns),<span> </span><strong>safety</strong><span> </span>(avoiding parser ambiguity), and<span> </span><strong>literalness</strong><span> </span>(preserving spaces/newlines exactly as written)</mark>. [link](https://www.reddit.com/r/ProgrammingLanguages/comments/ywl6kz/variablyquoted%5Fstring%5Fliterals/)
+
+Different languages tackle this via four primary syntactic designs: [link](https://www.reddit.com/r/ProgrammingLanguages/comments/10oe423/how%5Fdoes%5Fyour%5Fprogramming%5Flanguage%5Fimplement/)
+
+***
+
+### 1. Raw / Triple-Quote Literals
+
+This is the most common modern design pattern. The language uses a specific repeated character sequence (usually `"""` or `'''`) to tell the compiler to treat everything inside—including hard returns—as part of the string. [link](https://www.youtube.com/watch?v=eVsxu93S6fg)
+
+- **Languages:** Python, Kotlin, Swift, Java, C#, Delphi 12.
+- **The Indentation Dilemma:** If you indent the string to match your code block, the spaces or tabs become part of the string.
+- **Modern Fix (C# 11, Swift):** The position of the _closing_ triple quote sets the baseline for indentation. Any whitespace to the left of that baseline is automatically stripped out by the compiler, allowing developers to maintain clean code hierarchy. [link](https://medium.com/@ragab5434/python-multi-line-statements-and-string-for-cleaner-code-d29bc9641318)
+
+### 2. Heredocs (Here Documents)
+
+Heredoc syntax uses a custom delimiter token (like `<<<EOT` or `<<<'EOF'`). The string continues until the compiler runs into that exact token standing alone on its own line. [link](https://www.sitepoint.com/multi-line-strings-and-text-editors/)
+
+- **Languages:** PHP, Perl, Bash, Ruby. [link](https://stackoverflow.com/questions/37523526/compare-multiline-strings-in-bash-variables)
+- **Pros:** Highly flexible. It completely avoids collision issues when writing blocks of text containing nested single or double quotes (like SQL queries or HTML). [link](https://www.sitepoint.com/multi-line-strings-and-text-editors/)
+- **Cons:** Visually disruptive. It breaks the visual nesting scope of code because the closing token typically must start at column 0 (the far left margin) to be recognized, harming overall readability. [link](https://www.youtube.com/watch?v=a1f5p5mdG6E\&t=73)
+
+### 3. Line-by-Line Continuation Characters
+
+Instead of allowing a literal newline inside a quote block, this design forces developers to signal to the parser that a string continues onto the next line, using a symbol like a backslash (`\`) or an explicit concatenation operator (`+` or `.`). [link](https://doc.windev.com/en-US/?1512011)
+
+- **Languages:** JavaScript (ES5 backslash), C/C++, standard PL/SQL (concatenation).
+- **Pros:** Strict parsing. The compiler always knows exactly where a statement is intended to end, preventing a missing quote from accidentally consuming the rest of the source file.
+- **Cons:** High visual clutter. Developers must append tokens or rewrite matching quotes for every single line of text. [link](https://www.reddit.com/r/ProgrammingLanguages/comments/18ox9oe/string%5Fdesign%5Foptions/)
+
+### 4. Prefixed Line Literals
+
+A rarer but elegant design choice where every line of a multi-line string block is explicitly prefixed by a specific multi-line token rather than wrapped in a closing container. [link](https://lobste.rs/s/nxeqtq/zig%5Fs%5Flovely%5Fsyntax)
+
+- **Languages:** Zig (`\\`).
+- **Pros:** There are no escape sequences or closing delimiters to track, making it incredibly safe against code injection and parsing bugs.
+- **Cons:** Less common, meaning it requires developers to adjust to a non-standard paradigm. [link](https://lobste.rs/s/nxeqtq/zig%5Fs%5Flovely%5Fsyntax)
+
+***
+
+### Direct Comparison Overview
+
+| Feature Design          | Example Syntax             | Visual Code Alignment                                | Handling of Inner Quotes              | Best Use Case                              |
+| ----------------------- | -------------------------- | ---------------------------------------------------- | ------------------------------------- | ------------------------------------------ |
+| **Triple Quotes / Raw** | `""" Line 1 \n Line 2 """` | Excellent (if compiler strips baseline indentation)  | Excellent (accepts single `"` freely) | Modern apps, embedding clean JSON/Markdown |
+| **Heredocs**            | `<<<EOF\nLine 1\nEOF`      | Poor (closing tag usually forces column 0 alignment) | Perfect (ignores all quotes entirely) | Heavy SQL queries, templates               |
+| **Continuation / Cat**  | `"Line 1" + \n "Line 2"`   | Great (highly controlled manually)                   | Poor (requires character escaping)    | Legacy codebases, short multi-lines        |
+| **Line Prefixes**       | `\\ Line 1 \n \\ Line 2`   | Excellent (matches code indentation)                 | Perfect (no escaping required)        | Systems programming (e.g., Zig strings)    |
+
+Are you designing a syntax parser for a **custom programming language**, or are you evaluating how to best handle a specific data format (like **SQL** or **JSON**) inside an existing language?
+
+- [link](https://www.reddit.com/r/ProgrammingLanguages/comments/ywl6kz/variablyquoted%5Fstring%5Fliterals/)\
+  Reddit\
+  Variably-quoted string literals. : r/ProgrammingLanguages\
+  Nov 16, 2022 — Comments Section \* useerup • 4y ago • Edited 4y ago Ask yourself the question: What are the use cases for this? C# pretty much nai...
+- [link](https://www.reddit.com/r/ProgrammingLanguages/comments/10oe423/how%5Fdoes%5Fyour%5Fprogramming%5Flanguage%5Fimplement/)\
+  Reddit\
+  How does your programming language implement multi\
+  Jan 29, 2023 — Comments Section 4y ago It probably isn't. Neither is it that different from multi-line comments which are delimited by special sy...
+- [link](https://stackoverflow.com/questions/37523526/compare-multiline-strings-in-bash-variables)\
+  Stack Overflow\
+  Compare multiline strings in bash variables\
+  May 30, 2016 — 3 Answers Even if you're using sh you absolutely can compare multiline strings. In particular there's no need to hash the strings ...
+
+Show all
+
+## examples
+
+Here are concrete examples of each multi-line string syntax design pattern across different programming languages, demonstrating how they handle inner quotes and code indentation.
+
+### 1. Triple-Quote / Raw Literals
+
+#### Python
+
+Python preserves literal newlines exactly as typed. However, it does not automatically strip code indentation, meaning any leading spaces to keep the code pretty will become part of the string unless manually manipulated.
+
+python
+
+```
+def get_query():
+    # The indentation below becomes literal spaces inside the string
+    return """SELECT *
+    FROM users
+    WHERE status = 'active';"""
+```
+
+Use code with caution.
+
+#### Swift (With Baseline Stripping)
+
+Swift resolves the indentation issue beautifully. The column position of the closing `"""` sets the line baseline. Every space to the left of that baseline is stripped from the final string.
+
+swift
+
+```
+func getMessage() -> String {
+    let text = """
+        This is line one.
+        This is line two.
+        """ // The indent of this closing quote determines the strip baseline
+    return text
+}
+```
+
+Use code with caution.
+
+***
+
+### 2. Heredocs (Here Documents)
+
+#### PHP
+
+PHP parses everything between the opening identifier (`<<<EOD`) and the closing identifier (`EOD`). Traditionally, the closing identifier had to be at the absolute start of the line (column 0).
+
+php
+
+```
+function get_html() {
+    $name = "Alice";
+    return <<<EOD
+    <div class="profile">
+        <h1>Hello, $name</h1>
+    </div>
+EOD; // Must be at the start of the line in older versions
+}
+```
+
+Use code with caution.
+
+#### Bash
+
+Bash uses heredocs extensively for redirecting multi-line input blocks directly into commands.
+
+bash
+
+```
+cat << 'EOF' > config.json
+{
+  "status": "active",
+  "debug": true
+}
+EOF
+```
+
+Use code with caution.
+
+***
+
+### 3. Line-by-Line Continuation
+
+#### JavaScript (ES5 Backslash)
+
+Before template literals were introduced in ES6, JavaScript required a trailing backslash (`\`) at the absolute end of a line to escape the literal newline character.
+
+javascript
+
+```
+var oldWay = "This is a very long \
+string that spans across \
+multiple lines safely.";
+```
+
+Use code with caution.
+
+#### C# (Explicit Concatenation)
+
+Before C# introduced raw string literals (`"""`), developers frequently used the addition operator (`+`) to visually break strings across lines without breaking the code layout.
+
+csharp
+
+```
+string legacyQuery =
+    "SELECT id, name " +
+    "FROM products " +
+    "WHERE price > 100;";
+```
+
+Use code with caution.
+
+***
+
+### 4. Prefixed Line Literals
+
+#### Zig
+
+Zig entirely avoids multi-line string delimiters. Instead, it introduces a line-prefix token (`\\`). Each line starting with `\\` is automatically joined with a newline character, making it highly secure and predictable for the compiler.
+
+zig
+
+```
+const hello_lines =
+    \\Line one of the string
+    \\Line two of the string
+    \\"Quotes inside are completely fine"
+;
+```
+
+Use code with caution.
+
+Would you like to see how any of these languages handle **string interpolation** (embedding variables) inside these multi-line blocks, or are you looking to see how a specific language's **parser implementation** looks under the hood?
+
+## cpp example
+
+In **C++**, the evolution of handling multi-line strings perfectly mirrors the shift from old-school syntax restrictions to modern, developer-friendly PL design.
+
+Here are the three ways C++ handles multi-line strings, showcasing legacy, modern, and modern-clean approaches:
+
+### 1. Visual Implicit Concatenation (The Classic Way)
+
+C++ has a unique parser feature: if two string literals are placed next to each other with only whitespace or newlines between them, the compiler **implicitly merges them into a single string**.
+
+cpp
+
+```
+#include <iostream>
+#include <string>
+
+void printQuery() {
+    // No + operator needed; the compiler merges these at compile time.
+    std::string sql =
+        "SELECT id, name "
+        "FROM users "
+        "WHERE status = 'active';";
+
+    std::cout << sql << std::endl;
+    // Output is single-line because no literal '\n' was embedded:
+    // SELECT id, name FROM users WHERE status = 'active';
+}
+```
+
+Use code with caution.
+
+- **Pros:** Keeps code beautifully aligned to your indentation block.
+- **Cons:** It doesn't actually create a multi-line output unless you manually insert `\n` inside each quote.
+
+***
+
+### 2. Backslash Continuation (The C-Legacy Way)
+
+Inherited from C, you can escape a physical newline in your source file using a backslash (`\`).
+
+cpp
+
+```
+#include <iostream>
+#include <string>
+
+void printText() {
+    // The backslash MUST be the absolute last character on the line
+    std::string text = "This is line one.\n\
+This is line two.\n\
+This is line three.";
+
+    std::cout << text << std::endl;
+}
+```
+
+Use code with caution.
+
+- **Pros:** Simple parser logic.
+- **Cons:** Horrible for code indentation. If you indent "This is line two" to match the code block, those indentation spaces become a literal part of your string. Furthermore, a single accidental space _after_ the backslash causes a compiler error.
+
+***
+
+### 3. Raw String Literals (Modern C++11 and Later)
+
+To fix these issues, C++11 introduced **Raw String Literals** using the syntax `R"(...)")`. Everything inside the parentheses is treated exactly as written—quotes don't need escaping, and newlines are perfectly literal.
+
+cpp
+
+```
+#include <iostream>
+#include <string>
+
+void printJson() {
+    // Syntax: R"delimiter( raw_characters )delimiter"
+    // We use "json" as a custom delimiter so nested parentheses don't break the string.
+    std::string jsonData = R"json(
+    {
+        "status": "success",
+        "code": 200,
+        "message": "Found the user's data"
+    }
+    )json";
+
+    std::cout << jsonData << std::endl;
+}
+```
+
+Use code with caution.
+
+- **Pros:** Perfect for raw text, regex patterns, or embedded languages (HTML/JSON/SQL) because you can use double quotes `"` and parentheses freely without escaping them.
+- **Cons:** Like Python, C++ does _not_ natively strip leading indentation. The spaces used to align the JSON inside the code block will be printed literally in the output.
+
+Are you trying to figure out how to **strip the leading indentation** from a C++ raw string literal, or are you looking to see how **other languages** handle this specific compiler challenge?
+
+## cpp raw string literal examples
+
+Here are specific, practical examples of **C++ Raw String Literals (`R"(...)"`)** demonstrating how they solve common programming challenges like escaping quotes, writing regular expressions, and handling custom delimiters.
+
+### 1. The Basic Raw String (No Escaping Needed)
+
+In a standard C++ string, you must escape double quotes (`\"`) and newlines (`\n`). A raw string literal ignores escapes completely.
+
+cpp
+
+```
+#include <iostream>
+#include <string>
+
+int main() {
+    // Standard string (messy):
+    std::string normal = "He said, \"Hello World!\"\nNext line.";
+
+    // Raw string literal (clean):
+    std::string raw = R"(He said, "Hello World!"
+Next line.)";
+
+    std::cout << raw << std::endl;
+}
+```
+
+Use code with caution.
+
+***
+
+### 2. Embedding JSON, HTML, or SQL (Handling Inner Quotes)
+
+Raw strings are ideal for embedding other languages directly inside your C++ source code because you can type quotes naturally.
+
+cpp
+
+```
+#include <iostream>
+#include <string>
+
+void localDatabaseSetup() {
+    // Multi-line SQL query with internal single and double quotes
+    std::string query = R"(
+        SELECT user_id, email
+        FROM accounts
+        WHERE role = "admin" AND status = 'active'
+        ORDER BY created_at DESC;
+    )";
+
+    std::cout << query << std::endl;
+}
+```
+
+Use code with caution.
+
+***
+
+### 3. Regular Expressions (Avoiding the "Backslash Plague")
+
+Regex patterns heavily rely on backslashes (`\`). In standard C++ strings, you have to escape every single backslash (`\\`), leading to unreadable code. Raw strings completely eliminate this problem.
+
+cpp
+
+```
+#include <iostream>
+#include <string>
+#include <regex>
+
+void validateInput() {
+    // Standard string regex:    "\\d{3}-\\d{3}-\\d{4}"  (Hard to read)
+    // Raw string regex:
+    std::string phonePattern = R"(\d{3}-\d{3}-\d{4})";
+
+    std::regex r(phonePattern);
+    std::cout << "Regex safely compiled: " << phonePattern << std::endl;
+}
+```
+
+Use code with caution.
+
+***
+
+### 4. Custom Delimiters (When your string contains `)"` )
+
+What happens if the text you want to store _actually contains_ a closing parenthesis and a double quote sequence `)"`? The compiler will think the string ended early.
+
+To fix this, C++ allows you to add a **custom delimiter** between the `R"` and the `(`. The string will only close when the exact same delimiter matches at the end.
+
+cpp
+
+```
+#include <iostream>
+#include <string>
+
+int main() {
+    // Problem: This string contains )" which would break a standard raw string:
+    // std::string broken = R"( Formula: (x + y)" )"; // Compiler Error!
+
+    // Solution: Add a custom delimiter string (e.g., "my_boundary")
+    std::string mathFormula = R"my_boundary(
+        Inside this string, the character sequence )" is totally safe!
+        The compiler is waiting for the matching closing tag.
+    )my_boundary";
+
+    std::cout << mathFormula << std::endl;
+}
+```
+
+Use code with caution.
+
+### Summary of C++ Raw String Syntax Rules
+
+- **Prefix:** Must start with a capital `R`.
+- **Opening Sequence:** `R"delimiter(`
+- **Closing Sequence:** `)delimiter"`
+- **The Delimiter:** Can be any sequence of up to 16 characters (except spaces, control characters, or parentheses). It can also be left completely empty, which is the most common use case (`R"(...)"`).
+
+Would you like to see how to write a quick C++ helper function to **strip out the leading whitespace indentation** from these raw strings, or are you curious about how they behave with **UTF-8 / wide-character encodings** (like `LR"(...)"` or `u8R"(...)"`)?
+
+## shell heredoc examples
+
+In Shell scripting (like **Bash, Zsh, or Sh**), a **Heredoc** (Here Document) is a powerful way to pass multi-line strings directly into a command or out to a file.
+
+Here are practical examples showing how to use them, handle variables, and keep your script files clean.
+
+***
+
+### 1. The Basic Heredoc (Printing Text)
+
+The most basic use case passes a stream of text directly into a command like `cat`. You define a delimiter word (usually `EOF`, `END`, or `TEXT`) to tell the shell where the string starts and stops.
+
+bash
+
+```
+cat << EOF
+This is line one.
+This is line two.
+Quotes like "this" and 'this' don't need to be escaped!
+EOF
+```
+
+Use code with caution.
+
+***
+
+### 2. Writing to a File
+
+To save a multi-line block of text directly into a file, combine the heredoc with standard shell redirection (`>`).
+
+bash
+
+```
+cat << EOF > configuration.txt
+server_name = "production_server"
+max_connections = 100
+ssl_enabled = true
+EOF
+```
+
+Use code with caution.
+
+***
+
+### 3. Variable Interpolation (The Default Behavior)
+
+By default, the shell will **evaluate variables and commands** inside a heredoc before passing the text along.
+
+bash
+
+```
+USER_NAME="Alice"
+
+cat << EOF
+Welcome back, $USER_NAME!
+The current date and time is: $(date)
+EOF
+```
+
+Use code with caution.
+
+***
+
+### 4. Literal Strings (Preventing Variable Interpolation)
+
+If you are writing a script that generates _another_ script, or if you are embedding text that naturally contains `$` signs (like a PHP or Perl script), you need to stop the shell from substituting variables.
+
+To turn off interpolation, **wrap the opening delimiter in single or double quotes**.
+
+bash
+
+```
+API_KEY="secret_123"
+
+# Quoting 'EOF' treats everything inside as a completely raw literal string
+cat << 'EOF' > output.sh
+echo "This script is running as user: $USER"
+echo "It will not print the secret API_KEY here."
+EOF
+```
+
+Use code with caution.
+
+***
+
+### 5. Stripping Tabs for Clean Indentation (`<<-`)
+
+One of the biggest issues with heredocs is that the closing delimiter _must_ be at the far left margin (column 0). If you indent it inside an `if` statement or a function, the shell won't recognize it.
+
+By using `<<-` instead of `<<`, the shell will **ignore any leading literal Tab characters** on every line, including the delimiter line. This lets you keep your code clean.
+
+bash
+
+```
+display_menu() {
+	if [ true ]; then
+		# Notice the minus sign: <<-
+		# IMPORTANT: The indents below MUST be actual Tab characters (\t), not spaces!
+		cat <<- EOF
+		[1] Start Server
+		[2] Stop Server
+		[3] Exit
+		EOF
+	fi
+}
+```
+
+Use code with caution.
+
+_Note: This feature only works with hard standard tabs (`\t`), not spaces. If your code editor automatically converts tabs to spaces, this trick will break._
+
+***
+
+### 6. Passing Input to Other Commands (e.g., `ssh` or `sudo`)
+
+Heredocs aren't just for `cat`. You can feed multi-line input into interactive CLI tools or remote servers.
+
+bash
+
+```
+# Execute multiple commands on a remote server over SSH
+ssh user@remote-host << EOF
+    cd /var/www/html
+    git pull origin main
+    echo "Deployment complete!"
+EOF
+```
+
+Use code with caution.
+
+Would you like to see how to capture a shell heredoc **directly into a variable** instead of printing it, or are you interested in how **Herestrings** (`<<<`) differ from Heredocs?
+
+# string escape characters
+
+September 24, 2026
+
+An **escape character** is a special character (most commonly a backslash `\`) used inside string literals to change the meaning of the characters that follow it. It allows you to include characters that would otherwise be illegal or impossible to type into a string, such as new lines, tabs, or quotes that match the string's outer delimiters. [link](https://learn.microsoft.com/en-us/cpp/c-language/escape-sequences?view=msvc-170)
+
+### Common Escape Sequences
+
+Across almost all major programming languages (including Python, JavaScript, C, C++, C#, and Java), the standard escape sequences share a uniform format: [link](https://en.wikipedia.org/wiki/Escape%5Fcharacter)
+
+| Escape Sequence | Description         | Result / Action                                               |
+| --------------- | ------------------- | ------------------------------------------------------------- |
+| `\n`            | **New Line**        | Moves the cursor to the next line.                            |
+| `\t`            | **Horizontal Tab**  | Inserts a tabbed indentation space.                           |
+| `\\`            | **Backslash**       | Inserts a single literal backslash character.                 |
+| `\"`            | **Double Quote**    | Inserts a literal `"` character inside double-quoted strings. |
+| `\'`            | **Single Quote**    | Inserts a literal `'` character inside single-quoted strings. |
+| `\r`            | **Carriage Return** | Moves the cursor to the beginning of the current line.        |
+| `\b`            | **Backspace**       | Deletes the preceding character (where supported).            |
+
+***
+
+### Core Use Cases
+
+#### 1. Avoiding Syntax Errors with Quotes
+
+If you open a string with double quotes, your compiler or interpreter expects the next double quote to end the string. Using an escape character tells the code to treat the inner quote as plain text: [link](https://www.reddit.com/r/learnprogramming/comments/10qm4tu/what%5Fis%5Fan%5Fescape%5Fcharacter%5Fexactly/)
+
+javascript
+
+```
+// This throws a syntax error:
+let phrase = "We are the so-called "Vikings" from the north.";
+
+// Fixed with escape characters:
+let phrase = "We are the so-called \"Vikings\" from the north.";
+```
+
+Use code with caution.
+
+#### 2. Inserting Non-Printable Elements
+
+You cannot cleanly press "Enter" or "Tab" inside a single-line string literal in many languages without breaking the code structure. Escape characters solve this: [link](https://www.youtube.com/watch?v=6S4DJ1COwxM)
+
+python
+
+```
+print("First Line\nSecond Line\t(indented)")
+```
+
+Use code with caution.
+
+#### 3. Writing Hexadecimal and Unicode
+
+Many languages let you specify characters by their numeric values using extensions of the escape character syntax: [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/escape)
+
+- `\xHH` represents an ASCII character using a 2-digit hexadecimal number (e.g., `\x41` is `A`).
+- `\uHHHH` represents a Unicode character using a 4-digit hexadecimal number (e.g., `\u00A9` is `©`). [link](https://developer.mozilla.org/en-US/docs/Glossary/Escape%5Fcharacter)
+
+Are you trying to resolve an **unexpected syntax error** or format text in a **specific programming language**? Let me know which language you are using, and I can provide tailored code examples.
+
+- [link](https://onlinestringtools.com/escape-string)\
+  Online String Tools\
+  Slash-escape a String - Online String Tools\
+  Simple, free and easy to use online tool that escapes a string. No intrusive ads, popups or nonsense, just a string escaper. Load ...
+- [link](https://en.wikipedia.org/wiki/Escape%5Fcharacter)\
+  Wikipedia\
+  Escape character\
+  Programming and data formats Many modern programming languages specify the double-quote character ( " ) as a delimiter for a strin...
+- [link](https://www.youtube.com/watch?v=1DK97cxWF0I\&t=25)\
+  YouTube·Sonic Scholar Code\
+  C# String Escape Sequences\
+  C# String Escape Sequences or www.sonic scholar.com string theory let's get into today's demo on special characters let's take a l...\
+  5m
+
+Show all
+
+# how to define or override operators in haskell
+
+In Haskell, <mark><strong>operators are simply functions</strong><span> </span>that use symbols instead of alphanumeric characters, allowing them to be called with infix notation</mark>. Because Haskell uses type classes rather than traditional object-oriented function overloading, "overriding" or "overloading" an existing operator is done differently than in languages like C++ or Java. [link](https://stackoverflow.com/questions/30441760/is-it-possible-to-overload-logical-operators-e-g-in-haskell)
+
+***
+
+### 1. Defining a Brand New Operator
+
+You can create an entirely new operator by wrapping the symbols in parentheses for its type signature and definition. [link](https://medium.com/@adambrohl/custom-operators-in-haskell-f7249590c1f)
+
+haskell
+
+```
+-- 1. Define the type signature (wrap the operator in parentheses)
+(|+|) :: Num a => a -> a -> a
+
+-- 2. Define the implementation using infix style
+x |+| y = abs x + abs y
+
+-- 3. Set the fixity (Optional but highly recommended)
+infixl 6 |+|
+```
+
+Use code with caution.
+
+#### Understanding Fixity declarations (`infixl` / `infixr` / `infix`)
+
+If you don't specify fixity, Haskell defaults to `infixl 9` (left-associative, highest precedence). You can explicitly control this: [link](https://www.youtube.com/watch?v=O1K8EMiPEVE\&t=10)
+
+- **`infixl`**: Left-associative (e.g., `a + b + c` is parsed as `(a + b) + c`).
+- **`infixr`**: Right-associative (e.g., `a : b : c` is parsed as `a : (b : c)`).
+- **`infix`**: Non-associative (cannot be chained without explicit parentheses, like `==` or `<`).
+- **Precedence numbers**: A scale from `0` to `9`. For instance, `+` has precedence 6, while `*` has 7. [link](https://www.reddit.com/r/ProgrammingLanguages/comments/136wbeh/prefix%5Finfix%5Fand%5Fpostfix%5Foperator%5Foverloading/)
+
+***
+
+### 2. Overloading an Existing Operator (The Idiomatic Way)
+
+Standard operators like `+`, `==`, and `<` are methods inside Haskell **type classes** (`Num`, `Eq`, and `Ord` respectively). To make an existing operator work for your custom data type, you must create an **`instance`** of that type class. [link](https://stackoverflow.com/questions/8308015/can-you-overload-in-haskell)
+
+haskell
+
+```
+data Vector2D = Vector2D Double Double deriving (Show)
+
+-- Overload (==) by making Vector2D an instance of the Eq type class
+instance Eq Vector2D where
+    (Vector2D x1 y1) == (Vector2D x2 y2) = x1 == x2 && y1 == y2
+
+-- Overload (+) by making Vector2D an instance of the Num type class
+instance Num Vector2D where
+    (Vector2D x1 y1) + (Vector2D x2 y2) = Vector2D (x1 + x2) (y1 + y2)
+
+    -- Note: When implementing Num, you must also define these stub/required methods:
+    (*) = error "Not implemented"
+    abs = error "Not implemented"
+    signum = error "Not implemented"
+    fromInteger = error "Not implemented"
+    negate = error "Not implemented"
+```
+
+Use code with caution.
+
+***
+
+### 3. Hiding and Redefining Standard Operators
+
+If you want to reuse an existing operator symbol (like `+`) with an entirely new meaning or a completely different type signature, you will run into a name collision error with the default `Prelude`. [link](https://stackoverflow.com/questions/52615758/overriding-in-haskell)
+
+To fix this, you must **explicitly hide** the operator when importing the Prelude: [link](https://stackoverflow.com/questions/52615758/overriding-in-haskell)
+
+haskell
+
+```
+module Main where
+
+-- Import everything from Prelude EXCEPT the standard (+) operator
+import Prelude hiding ((+))
+
+-- Now you are free to define (+) however you like
+(+) :: String -> String -> String
+str1 + str2 = str1 ++ " " ++ str2
+
+main :: Silence = do
+    putStrLn ("Hello" + "World") -- Outputs: "Hello World"
+```
+
+Use code with caution.
+
+***
+
+### Quick Syntax Reminders
+
+- **Infix to Prefix**: You can turn any operator into a normal prefix function by wrapping it in parentheses: `(+) 1 2` is the same as `1 + 2`.
+- **Prefix to Infix**: You can turn any normal 2-argument function into an infix operator by wrapping it in backticks: `5 `mod` 2` is the same as `mod 5 2`. [link](https://stackoverflow.com/questions/40033307/operator-as-an-argument-in-haskell)
+
+Are you trying to create a **completely brand new operator symbol**, or are you looking to implement an existing mathematical operator like `+` or `*` for a **specific custom data type**? Let me know what your exact use case is and I can provide the exact boilerplate code.
+
+- [link](https://stackoverflow.com/questions/8308015/can-you-overload-in-haskell)\
+  Stack Overflow\
+  Can you overload + in haskell?\
+  Nov 29, 2011 — Yes, you can overload the (+) operator in Haskell. There are two ways to overload it: \* \*\*Directly\*\* Without any other changes \* \*
+- [link](https://stackoverflow.com/questions/30441760/is-it-possible-to-overload-logical-operators-e-g-in-haskell)\
+  Stack Overflow\
+  Is it possible to overload logical operators (&& e.g.) in Haskell?\
+  May 25, 2015 — 5 Answers Haskell doesn't really have overloading (=ad-hoc-polymorphism) at all. + , \* etc. are not functions but class methods: “...
+- [link](https://www.reddit.com/r/ProgrammingLanguages/comments/136wbeh/prefix%5Finfix%5Fand%5Fpostfix%5Foperator%5Foverloading/)\
+  Reddit\
+  Prefix, Infix and Postfix Operator overloading functions\
+  May 3, 2023 — Comments Section I don't see any real issue with it, other than it is missing notation to mark operator precedence and left/right ...
+
+Show all
+
+# compare tab and space for indentation in pl design
+
+September 24, 2026
+
+In **programming language (PL) design**, <mark>deciding between<span> </span><strong>tabs</strong><span> </span>and<span> </span><strong>spaces</strong><span> </span>for source code indentation goes far beyond personal developer preference</mark>. It directly impacts how a language's compiler or interpreter processes code, the layout predictability across diverse platforms, and the ecosystem's overarching accessibility.
+
+Here is a direct comparison of tabs and spaces from a programming language design and tooling perspective:
+
+### Core Structural & Functional Differences
+
+| Feature                | Tab Character (`\t`)                                                                                                                                              | Space Character (` `)                                                                                                         |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| **Lexical Meaning**    | Represents exactly **one logical level** of structural nesting.                                                                                                   | Represents a **rigid unit of visual width**.                                                                                  |
+| **Visual Render**      | Dynamic. The display width is controlled entirely by the user's editor settings (e.g., 2, 4, or 8 spaces wide).                                                   | Deterministic. A space always occupies exactly one character column regardless of the environment.                            |
+| **Accessibility**      | **High.** Visually impaired developers using screen readers or custom font layouts can scale tab sizes to their exact reading comfort without modifying the code. | **Low.** Enforces a hardcoded visual width that can break layout or text-to-speech cadence for users requiring custom setups. |
+| **Alignment Behavior** | Breaks vertical alignment (e.g., aligning inline comments or multi-line parameters) if developers have different tab settings.                                    | Perfect for visual alignment. Elements remain mathematically lined up across all viewports, pull requests, and terminals.     |
+| **File Footprint**     | Extremely efficient. A single byte (`0x09`) represents an entire indentation level.                                                                               | Bulkier. Requires multiple bytes (e.g., 4 bytes of `0x20` per level), which accumulates in massive codebases.                 |
+
+***
+
+### Language Design Considerations
+
+#### 1. Off-side Rule / Syntactic Whitespace
+
+If you are designing a language where indentation determines scope (like Python or Haskell) rather than using braces (`{}`), mixing tabs and spaces introduces severe lexical ambiguity. [link](https://www.reddit.com/r/programming/comments/8d3w8/tabs%5Fvs%5Fspaces/)
+
+- **The Space Approach (e.g., Python):** Python's PEP 8 officially standardizes on **four spaces**. Because spaces have a fixed value, the parser can easily compute the exact character offset to determine structural depth. [link](https://python.plainenglish.io/space-vs-tab-in-python-9e205c698b50)
+- **The Tab Approach (e.g., Go):** Go mandates **tabs** via its built-in compiler tool, `gofmt`. Because `gofmt` strips out spaces used for indentation and enforces a single tab per level, it entirely eliminates formatting bikeshedding and ensures mathematical consistency at the parser level. [link](https://www.sitepoint.com/community/t/tabs-vs-spaces/307796)
+
+#### 2. The Indentation vs. Alignment Dilemma
+
+A common design philosophy is that **tabs should express structure, while spaces should express presentation**. [link](https://gist.github.com/MangaD/67663d27b5ad90af7c2a24906b4f589b)
+
+text
+
+```
+// Tabs for Indentation (→), Spaces for Alignment (·)
+→if (condition) {
+→→log_error("Failed to execute",
+→→..........error_code,
+→→..........timestamp);
+→}
+```
+
+Use code with caution.
+
+If a language relies purely on tabs for everything, lining up the text `error_code` with the opening parenthesis becomes impossible if a peer changes their local tab width from 4 columns to 2 columns. Designing standard-library tooling or strict linters that enforce "tabs for indentation, spaces for alignment" resolves this issue but increases toolchain complexity. [link](https://www.reddit.com/r/programming/comments/p1j1c/tabs%5Fvs%5Fspaces%5Fvs%5Fboth/)
+
+#### 3. Ecosystem Tooling and Ecosystem Defaults
+
+Modern language designers rarely leave indentation to chance. They ship standard formatting utilities directly with the language compiler/SDK (e.g., `cargo fmt` for Rust, `gofmt` for Go).
+
+- When designing a language ecosystem, standardizing on **spaces** minimizes downstream friction because web interfaces (like GitHub code viewers) and bare-metal terminals default to a uniform appearance. [link](https://www.youtube.com/watch?v=BsclwrOUS-w)
+- Conversely, standardizing on **tabs** shifts the visual control to the end-user, leaning heavily into modern software engineering principles of personal configuration and universal accessibility. [link](https://www.reddit.com/r/coding/comments/1dwmhwb/tab%5Fvs%5Fspace%5Fwhats%5Fyour%5Fpreference/)
+
+To see a practical breakdown of how code editors handle the visual conversion and structural depth behind these choices, watch this explanation:
+
+12:07
+
+[link](https://www.youtube.com/watch?v=wyegDSxBy6E)
+
+TABS vs SPACES debate explained
+
+9.8K views · 4 years ago
+
+YouTube · ByteGrad
+
+To help narrow down the best choice for your project, tell me:
+
+- Are you designing a language with **syntactic whitespace** (like Python) or **brace-delimited scope** (like C/Java)?
+
+- Will your language include a **native auto-formatter** (like `gofmt`) bundled in its compiler?
+
+- [link](https://www.reddit.com/r/programming/comments/p1j1c/tabs%5Fvs%5Fspaces%5Fvs%5Fboth/)\
+  Reddit\
+  Tabs vs Spaces vs Both : r/programming - Reddit\
+  Personally, I prefer using spaces - but I understand the argument for using tabs for indent and spaces for alignment; mainly becau...
+
+- [link](https://softwareengineering.stackexchange.com/questions/57/tabs-versus-spaces-what-is-the-proper-indentation-character-for-everything-in-e)\
+  Software Engineering Stack Exchange\
+  Tabs versus spaces—what is the proper indentation character for everything, in every situation, ever? \[closed]\
+  Here are some pros and cons of tabs: \* \*\*Consistent\*\* \* \*\*Customizable\*\* \* \*\*Allow developers with different preferences to change...
+
+- [link](https://www.youtube.com/watch?v=wyegDSxBy6E)\
+  YouTube·ByteGrad\
+  TABS vs SPACES debate explained\
+  i want to quickly talk about tabs versus spaces maybe you've heard of this before it used to be a bit of a debate between develope...\
+  12:07
+
+Show all
+
+## pros cons
+
+From a pure **programming language design (compiler, parser, and ecosystem tooling)** standpoint, choosing one over the other introduces distinct architectural trade-offs.
+
+Here are the technical pros and cons of tabs versus spaces for a language designer:
+
+### Tabs (`\t`)
+
+#### Pros
+
+- **Semantic Clarity for Parsers:** One tab character strictly equals one level of depth. The lexical analyzer can count bytes (`0x09`) directly without having to divide total spaces by a configuration variable (e.g., total spaces / 4).
+- **Maximum Accessibility:** Visually impaired developers using screen readers or high-contrast, ultra-large text setups can dynamically scale a tab to their exact visual needs without altering the source file.
+- **Storage and Network Efficiency:** Indentation requires only **1 byte per level**. In massive monorepos or enterprise codebases, this significantly reduces disk footprint, git diff sizes, and abstract syntax tree (AST) compilation memory overhead.
+- **Enforced Decentralization:** It decouples the _structure_ of the code from its _presentation_, allowing individual developers to choose their preferred layout without forcing it on others.
+
+#### Cons
+
+- **Visual Fragmentation:** Because different environments (GitHub, local terminals, IDEs, code review tools) default to different tab widths (ranging from 2 to 8 spaces), the visual layout of the language can look drastically broken and unreadable across different platforms.
+- **The Alignment Nightmare:** Tabs fail completely at fine-grained visual alignment (e.g., lining up multi-line function parameters or long mathematical equations). If mixed with spaces for alignment, it introduces parsing fragility.
+
+***
+
+### Spaces (` `)
+
+#### Pros
+
+- **Absolute Visual Determinism:** What the author sees is exactly what every other developer, code review platform, and terminal environment will see. It provides an identical layout everywhere.
+- **Flawless Visual Alignment:** Spaces allow developers or automated formatters to align code down to the precise character column, ensuring mathematical and visual symmetry across multi-line expressions.
+- **Simplified Tooling for Web & CLI:** Building language ecosystems (like documentation generators, code linters, and terminal error reporters with caret pointers) is much simpler because character column counts always map 1:1 with visual columns.
+
+#### Cons
+
+- **Ecosystem "Bikeshedding":** Choosing spaces forces the language designer to dictate a rigid visual standard (e.g., 2 spaces vs. 4 spaces). This historically leads to endless community fragmentation and debate if not strictly enforced by a compiler linter.
+- **Inflated File Size:** A single nesting level requires **2 to 8 bytes** of data. Across millions of lines of code, this accumulates massive amounts of dead weight in whitespace bytes.
+- **Poor Structural Accessibility:** Forcing a hardcoded visual width makes it incredibly difficult for engineers who require hyper-specific layout configurations to read or navigate the codebase effectively.
+
+Are you leaning toward a language with **syntactic whitespace** (where indentation defines blocks), or will your language rely on **explicit block markers** like curly braces or `begin/end` keywords?
+
