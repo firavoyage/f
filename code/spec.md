@@ -11,7 +11,8 @@ space before/after `#` is optional.
 ```
 42 3.14
 'hello world' # no var expansion
-"hello world {var}" # template literal
+"hello world {var}" # template literal (e.g. py f"")
+# `hello world {var}` # template literal (e.g. js `` wo multiline)
 '''
 multi line string
 '''
