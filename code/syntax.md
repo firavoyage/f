@@ -51,13 +51,13 @@ greet
 # temperature converter
 
 ```code
-convert_celsius_to_fahrenheit celsius = (celsius * 9 / 5) + 32
+convert_celsius_to_fahrenheit(celsius) = (celsius * 9 / 5) + 32
 
 main {
   celsius = 25
-  fahrenheit = convert_celsius_to_fahrenheit celsius
+  fahrenheit = convert_celsius_to_fahrenheit(celsius)
 
-  print `{celsius}°C is equal to ${fahrenheit}°F`
+  print(`{celsius}°C is equal to ${fahrenheit}°F`)
 }
 ```
 

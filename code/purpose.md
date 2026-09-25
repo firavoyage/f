@@ -361,4 +361,53 @@ convert_celsius_to_fahrenheit(celsius){
 }
 ```
 
-i have 
+---
+
+how do i decide it's fn definition? no ambiguity.
+
+~~**you can only define named fn on first scope of any fn.**~~
+
+```
+main {
+  celsius = 25
+  fahrenheit = convert_celsius_to_fahrenheit celsius
+
+  print `{celsius}°C is equal to ${fahrenheit}°F`
+}
+main(){
+  celsius = 25
+  fahrenheit = convert_celsius_to_fahrenheit celsius
+
+  print `{celsius}°C is equal to ${fahrenheit}°F`
+}
+```
+
+shell like call exp is already disabled. and ik you are defining main.
+
+paren are optional wo params.
+
+i can convert indentation to block later, if it's proven that it will not cause problems.
+
+```
+print(main(x, y) {...})
+```
+
+~~if it's not inside a fn block, exp like this are always considered a fn call and an object/fn.~~
+
+wait fine, what if i use comma instead.
+
+just use comma.
+
+```
+print(main(x), (x){x+1}, _ + 1, (x, y){x+y}, {...})
+```
+
+**space is overloaded.** yeah it's the simpest possible key. it's easy to type. it could not carry too much responsibility.
+
+i mean i could. but you should not write `fahrenheit = convert_celsius_to_fahrenheit celsius` today, and `fahrenheit = to_fixed(convert_celsius_to_fahrenheit(celsius), 1)` tomorrow. yeah, you can decide to whether write `to_fixed convert_celsius_to_fahrenheit(celsius) 1` or `to_fixed(convert_celsius_to_fahrenheit celsius, 1)`, which makes it even worse.
+
+the superpower, i would make it reserved for obj. it's quite common and frustrating when i wanna add a new field to an object, and routinely run into missing comma issues, esp when "trailling comma" is omitted.
+
+it's also clearer to read when params are separated.
+
+
