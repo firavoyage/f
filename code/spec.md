@@ -191,6 +191,21 @@ to shadow, you may write, though it's highly discouraged
 let foo = ...
 ```
 
+multiple statements can be put inside a line when separated by semicolon.
+
+you dont necessarily have to write semicolons. asi works this way:
+
+- when linebreak, it will inject a semicolon unless there is...
+  - trailing/leading binary op
+  - leading dot (method chaining)
+  - leading braces of statements
+  - _return/throw w something after it_ (you know what you are doing, you will never write unreachable code)
+  - ~~unclosed paren/brackets~~ (irrelevant, i only care fn blocks, i.e. braces)
+
+<!-- leading means on the next line -->
+
+for paren/brackets, it will append commas whether or not it linebreaks. the boundary of expressions is always clear.
+
 # types
 
 ```

@@ -493,4 +493,11 @@ tab/space doesnt matter.
 - in ide, if it's for indentation, cursor should take each level as one char
 - it should render based on pref
 
+26
+
+idk if js is really flawed.
+
+maybe js it not flawed, but quirky.
+
+
 
