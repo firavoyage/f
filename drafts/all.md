@@ -661,6 +661,8 @@ float: <!-- music -->
 - interpret samsa teniwoha
 - translation moonlight kamitsubaki city ensemble
 - meaning seishun complex
+- artists similar to animenz
+- artists similar to mafumafu
 
 philosophy:
 
