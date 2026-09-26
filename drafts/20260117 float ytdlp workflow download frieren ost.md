@@ -4,17 +4,48 @@
 
 # . downloads
 
-tmp
-
 ```sh
 name='name'
 
 dl \
-  "https://music.youtube.com/playlist?list=RDCLAK5uy_nBRdayC7IIasIQYPvCIoIRYippIyG6euQ" \
+  "https://music.youtube.com/playlist?list=asdf" \
   -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
   --reject-title "(?i)inst" \
   -o "Music/$name/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s" \
   --match-filters "view_count > 100000"
+```
+
+```sh
+name='Mafumafu'
+
+dl \
+  "https://music.youtube.com/playlist?list=OLAK5uy_lDQsFqps9kn7g4CYWplAlTw0lmJ_T94DY" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --reject-title "(?i)inst" \
+  -o "Music/$name/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s" \
+  --match-filters "view_count > 100000"
+```
+
+```sh
+name='kylelandry'
+
+dl \
+  "https://music.youtube.com/playlist?list=PL0979EAE3E9D40C07" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --reject-title "(?i)inst" \
+  -o "Music/$name/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s" \
+  --match-filters "view_count > 0"
+```
+
+```sh
+name='Theishter'
+
+dl \
+  "https://music.youtube.com/playlist?list=OLAK5uy_k8UeQBikLtH37l7hnmCJwpXg6sqU0FMyc" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --reject-title "(?i)inst" \
+  -o "Music/$name/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s" \
+  --match-filters "view_count > 0"
 ```
 
 ```sh
