@@ -376,6 +376,12 @@ think bout it.
 
 ---
 
+web/commands: make every possible no/union arg action a command
+
+e.g. clear all commands
+
+---
+
 action/format code: create a tool to format js
 
 parse ast. for var names, camel case to snake case. 
