@@ -3532,3 +3532,856 @@ Use code with caution.
 Would you like to **execute a mock test** using this specific tool for one of the allowed exams, or should we examine the **parameter constraints** further?
 
 
+
+# . summarization injection <!-- 26 sep -->
+
+# (d) all js object methods and params return of each
+
+Here is the comprehensive guide to **all standard JavaScript `Object` methods**, categorized into **Static methods** (called directly on `Object`) and **Instance methods** (available on individual object instances via the prototype chain). [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/values)
+
+***
+
+### 1. Static Methods (Core & Data Extraction)
+
+These methods are used primarily to read, copy, or transform data inside objects.
+
+| Method                 | Parameters                                                                           | Return Value                                                                 | Description                                                   |
+| ---------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| `Object.keys()`        | `obj`: The object to inspect.                                                        | **`Array<string>`**: An array of the object's own enumerable property names. | Extracts all keys from the object.                            |
+| `Object.values()`      | `obj`: The object to inspect.                                                        | **`Array<any>`**: An array of the object's own enumerable property values.   | Extracts all values from the object.                          |
+| `Object.entries()`     | `obj`: The object to inspect.                                                        | **`Array<[string, any]>`**: An array of `[key, value]` pairs.                | Converts an object into an array of key-value pairs.          |
+| `Object.fromEntries()` | `iterable`: An iterable of entries (e.g., `Map` or Array of arrays).                 | **`Object`**: A new object built from the entries.                           | The inverse of `Object.entries()`.                            |
+| `Object.assign()`      | `target`: The receiving object.`...sources`: One or more source objects.             | **`Object`**: The modified target object.                                    | Copies properties from source objects to a target object.     |
+| `Object.create()`      | `proto`: The prototype object.`propertiesObject` _(optional)_: Property descriptors. | **`Object`**: A new object with the specified prototype.                     | Creates a new object using an existing object as a prototype. |
+| `Object.groupBy()`     | `items`: An iterable.`callbackFn`: Function returning a group key.                   | **`Object`**: A null-prototype object grouping the items.                    | Groups elements of an iterable based on a callback function.  |
+
+***
+
+### 2. Static Methods (Integrity & Protection)
+
+These methods control whether properties can be added, removed, or changed.
+
+| Method                       | Parameters                     | Return Value                                            | Description                                                               |
+| ---------------------------- | ------------------------------ | ------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `Object.freeze()`            | `obj`: The object to freeze.   | **`Object`**: The object that was passed in.            | Prevents all modifications (no adding, deleting, or altering values).     |
+| `Object.isFrozen()`          | `obj`: The object to check.    | **`boolean`**: `true` if frozen, `false` otherwise.     | Checks if an object is frozen.                                            |
+| `Object.seal()`              | `obj`: The object to seal.     | **`Object`**: The object that was passed in.            | Prevents adding or deleting properties, but allows editing existing ones. |
+| `Object.isSealed()`          | `obj`: The object to check.    | **`boolean`**: `true` if sealed, `false` otherwise.     | Checks if an object is sealed.                                            |
+| `Object.preventExtensions()` | `obj`: The object to restrict. | **`Object`**: The object that was passed in.            | Prevents new properties from ever being added to the object.              |
+| `Object.isExtensible()`      | `obj`: The object to check.    | **`boolean`**: `true` if extensible, `false` otherwise. | Checks if an object allows adding new properties.                         |
+
+***
+
+### 3. Static Methods (Property Descriptors & Prototypes)
+
+These lower-level methods deal with property behaviors (like visibility/writability) and prototype chains.
+
+Additional static methods handle property configurations and comparisons: `Object.defineProperty()` and `Object.defineProperties()` configure specific property attributes, while `Object.getOwnPropertyDescriptor()` and `Object.getOwnPropertyDescriptors()` retrieve them. Utilities like `Object.getOwnPropertyNames()`, `Object.getOwnPropertySymbols()`, `Object.getPrototypeOf()`, and `Object.setPrototypeOf()` manage keys, symbols, and prototypes. `Object.hasOwn()` checks for direct properties safely, and `Object.is()` compares two values strictly. [link](https://stackoverflow.com/questions/2257993/how-to-display-all-methods-of-an-object)
+
+***
+
+#### 4. Instance Methods
+
+Available directly on object instances via the prototype chain: methods like `hasOwnProperty()`, `isPrototypeOf()`, and `propertyIsEnumerable()` inspect property relationships, while `toString()`, `toLocaleString()`, and `valueOf()` provide string and primitive conversions. Legacy methods like `__defineGetter__` are deprecated. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working%5Fwith%5Fobjects)
+
+Would you like to see **practical code examples** for any specific group of these methods, or do you need help using them for a **particular task** (like deep cloning or merging objects)?
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/values)\
+  MDN Web Docs\
+  Object.values() - JavaScript\
+  Sep 15, 2026 — Was this page helpful to you? \* Standard built-in objects \* Object \* Constructor Object() \* Static methods assign() create() defin...
+- [link](https://stackoverflow.com/questions/2257993/how-to-display-all-methods-of-an-object)\
+  Stack Overflow\
+  How to display all methods of an object? - Stack Overflow\
+  They just changed the names of the methods of the Java object, and I was able to figure out the new names by running Object.getOwn...
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object)\
+  MDN Web Docs\
+  Object - JavaScript | MDN\
+  Here are some static methods for objects: \* \*\*Object.assign()\*\* Copies the values of all enumerable own properties from one or mor...
+
+Show all
+
+# (d) all js object methods and params return of each
+
+5:04 AM
+
+The JavaScript [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object) global class provides **static methods** (called directly on `Object`) and **instance methods** (called on an object instance via its prototype chain). [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/values)
+
+Below is the comprehensive list of all standard JavaScript `Object` methods, including their parameters and what they return. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/values)
+
+***
+
+### 🔑 Key Creation & Copying Methods
+
+| Method                 | Parameters                                             | Returns                                                   |
+| ---------------------- | ------------------------------------------------------ | --------------------------------------------------------- |
+| `Object.assign()`      | `target` (object), `...sources` (one or more objects)  | The modified `target` object.                             |
+| `Object.create()`      | `proto` (object/null), _`propertiesObject` (optional)_ | A new object with the specified prototype and properties. |
+| `Object.fromEntries()` | `iterable` (e.g., Array of `[key, value]` pairs)       | A new object whose properties are given by the entries.   |
+
+***
+
+#### 🔍 Reflection & Property Inspection
+
+Additional static reflection methods include `Object.keys()`, `Object.values()`, and `Object.entries()` to inspect property names, values, or key-value pairs. You can also retrieve descriptors or specific property names using `Object.getOwnPropertyNames()`, `Object.getOwnPropertySymbols()`, `Object.getOwnPropertyDescriptor()`, and `Object.getOwnPropertyDescriptors()`. Other utility inspection tools include `Object.getPrototypeOf()` and `Object.hasOwn()`. Detailed parameter and return configurations for these reflection tools are fully documented in. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/entries)
+
+#### 🛡️ Integrity & State Control
+
+Methods handling object state and mutability include `Object.defineProperty()`, `Object.defineProperties()`, and `Object.freeze()`, alongside state-checking utilities like `Object.isFrozen()`. Sealing and extension controls are managed through `Object.seal()`, `Object.isSealed()`, `Object.preventExtensions()`, and `Object.isExtensible()` to restrict or permit property modifications. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object)
+
+#### ⚖️ Utility & Advanced Iteration
+
+Advanced utilities include `Object.is()` for precise value comparison, `Object.setPrototypeOf()` to modify prototype links, and `Object.groupBy()` for categorizing iterable items into grouped object structures. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/values)
+
+#### 🔄 Instance Methods (Called on individual instances)
+
+_Found on `Object.prototype` and inherited by standard objects._ [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/values)
+
+Inherited instance methods include `obj.hasOwnProperty()`, `obj.isPrototypeOf()`, `obj.propertyIsEnumerable()`, `obj.toString()`, `obj.toLocaleString()`, and `obj.valueOf()`, which handle individual object checks, string coercions, and primitive retrievals. [link](https://stackoverflow.com/questions/2257993/how-to-display-all-methods-of-an-object)
+
+#### ⚠️ Deprecated Instance Methods
+
+Legacy accessors such as `obj.__defineGetter__()`, `obj.__defineSetter__()`, `obj.__lookupGetter__()`, and `obj.__lookupSetter__()` are deprecated and superseded by modern alternatives like `Object.defineProperty()`. [link](https://skstory.online/p/how-much-do-you-know-about-29-javascript-object-methods/)
+
+Are you looking to use these for a specific project? If you want, I can provide practical **code snippets** or clarify how a specific method handles **nested objects or array conversions**.
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/values)\
+  MDN Web Docs\
+  Object.values() - JavaScript\
+  Was this page helpful to you? \* Standard built-in objects \* Object \* Constructor Object() \* Static methods assign() create() defin...
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working%5Fwith%5Fobjects)\
+  MDN Web Docs\
+  Working with objects - JavaScript - MDN Web Docs - Mozilla\
+  You can then call the method in the context of the object as follows: js. Copy. objectName.methodName(params);. Methods are typica...
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/entries)\
+  MDN Web Docs\
+  Object.entries() - JavaScript | MDN\
+  The Object.entries() static method returns an array of a given object's enumerable string-keyed property key-value pairs. The synt...
+
+Show all
+
+# (d) all js object methods and params return of each
+
+Here is the comprehensive guide to **all standard methods** available on the global `Object` constructor in JavaScript. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/values)
+
+They are split into **Static methods** (called directly on `Object`) and **Instance methods** (called on an object instance like `obj.toString()`). [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/values)
+
+***
+
+### Static Methods
+
+These methods are called as `Object.methodName(...)`. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object)
+
+Here is a summary of the core static methods available on the `Object` constructor:
+
+- **`assign()`**: `(target, ...sources)` – Returns the modified `target` object by copying enumerable own properties.
+- **`create()`**: `(proto, [descriptors])` – Creates and returns a new object with the specified prototype.
+- **`defineProperties()` / `defineProperty()`**: Takes property descriptors and an object to define or modify properties, returning the object.
+- **`entries()`**: `(obj)` – Returns an `Array` of `[key, value]` pairs for enumerable string-keyed properties.
+- **`freeze()` / `seal()` / `preventExtensions()`**: Manage object mutability and extensibility.
+- **`fromEntries()`**: `(iterable)` – Transforms key-value pairs into a new object.
+- **Property Inspection Methods**: Such as `getOwnPropertyDescriptor()`, `getOwnPropertyDescriptors()`, `getOwnPropertyNames()`, `getOwnPropertySymbols()`, and `getPrototypeOf()` to inspect object properties and prototypes.
+- **Utility & Checking Methods**: `groupBy()`, `hasOwn()`, `is()` (compares values), and boolean checks like `isExtensible()`, `isFrozen()`, and `isSealed()`.
+- **`keys()` & `values()`**: Return arrays of an object's own enumerable keys and values.
+- **Prototype Management**: `setPrototypeOf(obj, prototype)` sets the internal prototype and returns the object. [link](https://stackoverflow.com/questions/2257993/how-to-display-all-methods-of-an-object)
+
+_(For the complete, extensive list of parameters and return types for every single utility, please refer to the referenced documentation)._ [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/entries)
+
+***
+
+#### Instance Methods
+
+These methods exist on `Object.prototype` and are inherited by almost all JavaScript objects. They are called as `myObject.methodName(...)`. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working%5Fwith%5Fobjects)
+
+- **`hasOwnProperty()`**: `(prop)` – Returns a `Boolean` indicating if the property is the object's own property.
+- **`isPrototypeOf()`**: `(obj)` – Checks if the object exists in another object's prototype chain (`Boolean`).
+- **`propertyIsEnumerable()`**: `(prop)` – Checks if a specific property is enumerable and is an own property (`Boolean`).
+- **`toLocaleString()` / `toString()`**: Returns a `String` representation of the object, localized or standard.
+- **`valueOf()`**: Returns the primitive value of the specified object. [link](https://stackoverflow.com/questions/2257993/how-to-display-all-methods-of-an-object)
+
+_(Note: Legacy/deprecated instance methods like `__defineGetter__`, `__defineSetter__`, `__lookupGetter__`, and `__lookupSetter__` are omitted as they are deprecated and replaced by standard property descriptors)._ [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/values)
+
+Would you like to see **code examples** for how to use any specific methods from this list, or are you looking to understand how to build **custom methods** inside an object?
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/values)\
+  MDN Web Docs\
+  Object.values() - JavaScript\
+  Sep 15, 2026 — Was this page helpful to you? \* Standard built-in objects \* Object \* Constructor Object() \* Static methods assign() create() defin...
+- [link](https://stackoverflow.com/questions/2257993/how-to-display-all-methods-of-an-object)\
+  Stack Overflow\
+  How to display all methods of an object? - Stack Overflow\
+  They just changed the names of the methods of the Java object, and I was able to figure out the new names by running Object.getOwn...
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object)\
+  MDN Web Docs\
+  Object - JavaScript | MDN\
+  Here are some static methods for objects: \* \*\*Object.assign()\*\* Copies the values of all enumerable own properties from one or mor...
+
+Show all
+
+# (d) all js object methods and params return of each
+
+Here is the complete reference for all standard **JavaScript `Object` static and instance methods**, including their parameters and return values. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/values)
+
+***
+
+### Static Methods
+
+These methods are called directly on the global `Object` constructor (e.g., `Object.keys(obj)`). [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/values)
+
+Below is a concise summary of the standard static and instance methods available for JavaScript `Object`. For the complete, detailed breakdown of parameters, return values, and descriptions as provided in the reference, please see the referenced web documents. [link](https://stackoverflow.com/questions/2257993/how-to-display-all-methods-of-an-object)
+
+#### Static Methods Overview
+
+- **`Object.assign()`**: Copies enumerable own properties from source objects to a target object.
+- **`Object.create()`**: Creates a new object with a specified prototype.
+- **`Object.defineProperties()` / `Object.defineProperty()`**: Defines or modifies properties on an object.
+- **`Object.entries()` / `Object.fromEntries()`**: Transforms entries to/from arrays and objects.
+- **`Object.freeze()` / `Object.seal()` / `Object.preventExtensions()`**: Manages object extensibility and mutation protection.
+- **Property Inspection (`getOwnPropertyDescriptor`, `getOwnPropertyDescriptors`, `getOwnPropertyNames`, `getOwnPropertySymbols`)**: Inspects object properties directly.
+- **Prototype & State Checks (`getPrototypeOf`, `setPrototypeOf`, `isExtensible`, `isFrozen`, `isSealed`, `is`, `hasOwn`, `groupBy`)**: Handles prototype management and utility checks.
+- **`Object.keys()` / `Object.values()`**: Extracts property names or values. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/entries)
+
+***
+
+#### Instance Methods
+
+These methods are inherited by almost all JavaScript objects via the prototype chain and are called on an instance (e.g., `myObj.toString()`). [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/values)
+
+- **`hasOwnProperty()`**: Checks if a property is an own property of the object.
+- **`isPrototypeOf()`**: Checks prototype chain presence.
+- **`propertyIsEnumerable()`**: Verifies property enumerability.
+- **`toString()` / `toLocaleString()`**: Returns string representations, with locale support.
+- **`valueOf()`**: Returns the primitive value of the object. [link](https://stackoverflow.com/questions/2257993/how-to-display-all-methods-of-an-object)
+
+_(Note: Legacy proto-accessors are deprecated and excluded)._ [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/values)
+
+Would you like a functional **code example** demonstrating how to use any of these methods, or do you need help **walking a prototype chain** to collect all inherited properties?
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/values)\
+  MDN Web Docs\
+  Object.values() - JavaScript\
+  Sep 15, 2026 — Was this page helpful to you? \* Standard built-in objects \* Object \* Constructor Object() \* Static methods assign() create() defin...
+- [link](https://stackoverflow.com/questions/2257993/how-to-display-all-methods-of-an-object)\
+  Stack Overflow\
+  How to display all methods of an object? - Stack Overflow\
+  They just changed the names of the methods of the Java object, and I was able to figure out the new names by running Object.getOwn...
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/entries)\
+  MDN Web Docs\
+  Object.entries() - JavaScript | MDN\
+  The Object.entries() static method returns an array of a given object's enumerable string-keyed property key-value pairs. The synt...
+
+Show all
+
+# (d) all js object methods and params return of each
+
+In JavaScript, the **`Object` constructor** provides both **static methods** (called directly on `Object`) and **instance methods** (available on all JavaScript objects via the prototype chain). [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)
+
+Here is the comprehensive quick-reference breakdown of all standard `Object` methods, including their parameters and what they return.
+
+***
+
+### 1. Object Creation & Modification
+
+| Method                     | Parameters                      | Returns                         | Description                                                                  |
+| -------------------------- | ------------------------------- | ------------------------------- | ---------------------------------------------------------------------------- |
+| **`Object.assign()`**      | `(target, ...sources)`          | The modified **target object**. | Copies all enumerable own properties from source objects to a target object. |
+| **`Object.create()`**      | `(proto, [propertiesObject])`   | A **new object**.               | Creates a new object with the specified prototype and optional properties.   |
+| **`Object.fromEntries()`** | `(iterable)` (e.g., Array, Map) | A **new object**.               | Transforms a list of key-value pairs into an object.                         |
+
+#### 2. Property Definition & Configuration
+
+- **`Object.defineProperty(obj, prop, descriptor)`**: Defines or modifies a single property with a descriptor, returning the modified object.
+- **`Object.defineProperties(obj, props)`**: Defines or modifies multiple properties using a descriptor object, returning the modified object.
+- **`Object.getOwnPropertyDescriptor(obj, prop)`**: Returns a property descriptor object or `undefined`.
+- **`Object.getOwnPropertyDescriptors(obj)`**: Retrieves all own property descriptors for an object. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object)
+
+#### 3. Object Inspection & Traversal
+
+- **`Object.keys(obj)`**: Returns an array of strings representing own enumerable property names.
+- **`Object.values(obj)`**: Returns an array of own enumerable property values.
+- **`Object.entries(obj)`**: Obtains an array of a given object's own enumerable string-keyed property key-value pairs.
+- **`Object.getOwnPropertyNames(obj)`**: Returns an array containing all own properties of an object regardless of enumerability.
+- **`Object.getOwnPropertySymbols(obj)`**: Returns an array of all symbol properties found directly upon a given object.
+- **`Object.groupBy(items, callbackFn)`**: Returns a null-prototype object grouping elements based on a callback return value. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working%5Fwith%5Fobjects)
+
+#### 4. Integrity Checking & Comparison
+
+- **`Object.freeze(obj)`**: Freezes an object and returns it.
+- **`Object.isFrozen(obj)`**: Returns a boolean indicating whether an object is frozen.
+- **`Object.seal(obj)`**: Seals an object and returns it.
+- **`Object.isSealed(obj)`**: Returns a boolean indicating whether an object is sealed.
+- **`Object.preventExtensions(obj)`**: Prevents new additions and returns the modified object.
+- **`Object.isExtensible(obj)`**: Returns a boolean for extensibility.
+- **`Object.is(value1, value2)`**: Compares two values for exact equality (boolean return).
+- **`Object.hasOwn(obj, prop)`**: Safely checks if an own property exists (boolean return). [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working%5Fwith%5Fobjects)
+
+#### 5. Prototype Management
+
+- **`Object.getPrototypeOf(obj)`**: Returns the internal prototype (`[[Prototype]]`) or `null`.
+- **`Object.setPrototypeOf(obj, prototype)`**: Sets the internal prototype and returns the modified object. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)
+
+#### 6. Instance Methods (via `Object.prototype`) [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)
+
+- **`hasOwnProperty(prop)`**: Returns boolean checking for an own property (prefer `Object.hasOwn()`).
+- **`isPrototypeOf(obj)`**: Returns boolean checking prototype chain presence.
+- **`propertyIsEnumerable(prop)`**: Returns boolean if property is enumerable.
+- **`toString()`**: Returns a string representation of the object.
+- **`toLocaleString()`**: Returns a locale-specific string representation.
+- **`valueOf()`**: Returns the object's primitive value. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working%5Fwith%5Fobjects)
+
+For complete, unabridged definitions and further details on standard global objects, please consult MDN Web Docs. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object)
+
+Are you looking for a **code example** of how a specific method works, or do you need a deep dive into **property descriptors** (`writable`, `enumerable`, `configurable`)? Let me know!
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)\
+  MDN Web Docs\
+  Object.keys() - JavaScript\
+  Jul 20, 2025 — Was this page helpful to you? \* Standard built-in objects \* Object \* Constructor Object() \* Static methods assign() create() defin...
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working%5Fwith%5Fobjects)\
+  MDN Web Docs\
+  Working with objects - JavaScript - MDN Web Docs - Mozilla\
+  Aug 21, 2026 — Object.getOwnPropertyNames() . This method returns an array containing all the own string property names in the object myObj , reg...
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object)\
+  MDN Web Docs\
+  Object - JavaScript | MDN\
+  Here are some static methods for objects: \* \*\*Object.assign()\*\* Copies the values of all enumerable own properties from one or mor...
+
+Show all
+
+# (d) all js object methods and params return of each
+
+**JavaScript’s standard library features over 30 static and instance methods** on the fundamental [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object) global constructor. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object)
+
+Below is a complete reference categorized by functional usage, detailing the parameters and exact return value for every standard JavaScript `Object` method. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)
+
+***
+
+#### 1. Property Retrieval & Transformation
+
+Methods used to inspect, extract, or convert object properties. Key options include: [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/values)
+
+- **`Object.keys(obj)`** — Returns an `Array` of own enumerable property strings (`obj` as parameter).
+- **`Object.values(obj)`** — Returns an `Array` of the object's own enumerable values.
+- **`Object.entries(obj)`** — Returns an `Array` of `[key, value]` pairs.
+- **`Object.fromEntries(iterable)`** — Builds a new `Object` from an iterable of key-value pairs.
+- **`Object.getOwnPropertyNames(obj)`** — Returns all own property names, enumerable or not.
+- **`Object.getOwnPropertySymbols(obj)`** — Returns all symbol properties on the object.
+- **`Object.groupBy(items, callbackFn)`** — Groups elements into a null-prototype object based on a callback return value. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working%5Fwith%5Fobjects)
+
+#### 2. Object Creation & Modification
+
+- **`Object.assign(target, ...sources)`** — Copies source properties to a target object, returning the modified target.
+- **`Object.create(proto, [propertiesObject])`** — Creates a new `Object` with a specified prototype.
+- **`Object.hasOwn(obj, prop)`** — Returns a `Boolean` indicating if the property exists directly on the object. [link](https://www.youtube.com/watch?v=NrPwbrAnxNk\&t=16)
+
+#### 3. Property Descriptors & Meta-Programming
+
+- **`Object.defineProperty(obj, prop, descriptor)`** / **`Object.defineProperties(obj, props)`** — Configures property rules and returns the modified object.
+- **`Object.getOwnPropertyDescriptor(obj, prop)`** / **`Object.getOwnPropertyDescriptors(obj)`** — Retrieves descriptor configurations or `undefined`. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object)
+
+#### 4. Integrity, Locking, & State Control
+
+Methods managing immutability and alterations (all return the target `obj` or a `Boolean` status): [link](https://javascript.plainenglish.io/javascript-object-methods-every-developer-should-know-about-58b172871b40)
+
+- **`Object.freeze(obj)` / `Object.isFrozen(obj)`** — Completely locks or checks locking status.
+- **`Object.seal(obj)` / `Object.isSealed(obj)`** — Prevents additions/deletions while allowing value updates.
+- **`Object.preventExtensions(obj)` / `Object.isExtensible(obj)`** — Restricts new properties. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object)
+
+#### 5. Prototype Management & Identity
+
+- **`Object.getPrototypeOf(obj)` / `Object.setPrototypeOf(obj, prototype)`** — Inspects or alters an object's prototype link.
+- **`Object.is(value1, value2)`** — Returns a `Boolean` comparing exact value equality (handling `-0` and `NaN` differently than `===`). [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)
+
+#### 6. Instance (Prototype) Methods
+
+Methods called directly from individual instances on `Object.prototype`: [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)
+
+- **`hasOwnProperty(prop)`**, **`isPrototypeOf(object)`**, and **`propertyIsEnumerable(prop)`** return `Boolean` checks.
+- **`toString()`**, **`toLocaleString()`**, and **`valueOf()`** return string representations or primitive values. [link](https://stackoverflow.com/questions/2257993/how-to-display-all-methods-of-an-object)
+
+Would you like an **example snippet** demonstrating how a specific group of these methods (like the **Immutability/Locking** or **Descriptor** methods) works in code?
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)\
+  MDN Web Docs\
+  Object.keys() - JavaScript\
+  Jul 20, 2025 — Was this page helpful to you? \* Standard built-in objects \* Object \* Constructor Object() \* Static methods assign() create() defin...
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working%5Fwith%5Fobjects)\
+  MDN Web Docs\
+  Working with objects - JavaScript - MDN Web Docs - Mozilla\
+  Aug 21, 2026 — Object.getOwnPropertyNames() . This method returns an array containing all the own string property names in the object myObj , reg...
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object)\
+  MDN Web Docs\
+  Object - JavaScript | MDN\
+  Here are some static methods for objects: \* \*\*Object.assign()\*\* Copies the values of all enumerable own properties from one or mor...
+
+Show all
+
+# all js object methods and params return of each
+
+In JavaScript, methods associated with the **`Object` constructor** are broadly split into two categories: **Static Methods** (called directly on `Object`, e.g., `Object.keys()`) and **Instance Methods** (available on individual object instances via the prototype chain). [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object)
+
+Here is the comprehensive guide to all standard `Object` methods, including their parameters and return values. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)
+
+***
+
+### 1. Static Methods (State and Inspection)
+
+These methods are used to inspect, extract, or compare object components. [link](https://medium.com/@pvnsripati/javascript-object-methods-cheatsheet-quick-reference-4f62330132b2)
+
+Standard `Object` static and instance methods can be summarized by category as follows:
+
+#### 1. State and Inspection
+
+- **`Object.keys(obj)`**: Takes an object `obj` and returns an **`Array` of strings** representing its own enumerable property names.
+- **`Object.values(obj)`**: Takes an object `obj` and returns an **`Array`** containing its own enumerable property values.
+- **`Object.entries(obj)`**: Takes an object and returns an **`Array` of `[key, value]` pairs**.
+- **`Object.fromEntries(iterable)`**: Takes an iterable (like an Array or Map) and returns a **new `Object`**.
+- **`Object.is(value1, value2)`**: Compares two values and returns a **`Boolean`**.
+- **`Object.groupBy(items, callback)`**: Groups elements from an iterable based on a callback function, returning a **null-prototype `Object`**. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/values)
+
+#### 2. Property Manipulation & Descriptors
+
+These methods configure properties and descriptors: [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get)
+
+- **`Object.defineProperty(obj, prop, descriptor)`** / **`Object.defineProperties(obj, props)`**: Add or modify single/multiple properties with specific descriptors, returning the modified object.
+- **`Object.getOwnPropertyDescriptor(obj, prop)`** / **`Object.getOwnPropertyDescriptors(obj)`**: Retrieve configuration data/descriptors for own properties.
+- **`Object.getOwnPropertyNames(obj)`** & **`Object.getOwnPropertySymbols(obj)`**: Return arrays of own property names or symbol properties. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working%5Fwith%5Fobjects)
+
+#### 3. Modification & Integrity
+
+Methods used to lock down or copy object structures: [link](https://www.youtube.com/watch?v=NrPwbrAnxNk\&t=16)
+
+- **`Object.assign(target, ...sources)`**: Copies enumerable own properties and returns the modified target object.
+- **`Object.create(proto, [propertiesObject])`**: Creates a new object with a specified prototype.
+- **`Object.freeze`**, **`Object.seal`**, **`Object.preventExtensions`** (and their respective `is...` checkers): Manage object immutability and extensibility, returning modified objects or booleans. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object)
+
+#### 4. Prototype Delegation
+
+- **`Object.getPrototypeOf(obj)`**: Returns the internal `[[Prototype]]` of the target object.
+- **`Object.setPrototypeOf(obj, prototype)`**: Sets the internal prototype chain and returns the modified object. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)
+
+#### 5. Instance Methods
+
+Inherited from `Object.prototype` and called on instances: [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)
+
+- **`hasOwnProperty`**, **`isPrototypeOf`**, and **`propertyIsEnumerable`**: Return `Boolean` values to inspect property ownership, prototype placement, and enumerability.
+- **`toLocaleString()`** & **`toString()`**: Return `String` representations of the object.
+- **`valueOf()`**: Returns the primitive value of the specified object. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)
+
+Would you like to see a practical **code example** of how a specific method operates (such as working with **property descriptors** or **cloning objects**), or are you building an app that requires a specific utility?
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)\
+  MDN Web Docs\
+  Object.keys() - JavaScript\
+  Jul 20, 2025 — Was this page helpful to you? \* Standard built-in objects \* Object \* Constructor Object() \* Static methods assign() create() defin...
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object)\
+  MDN Web Docs\
+  Object - JavaScript | MDN\
+  Here are some static methods for objects: \* \*\*Object.assign()\*\* Copies the values of all enumerable own properties from one or mor...
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working%5Fwith%5Fobjects)\
+  MDN Web Docs\
+  Working with objects - JavaScript - MDN Web Docs - Mozilla\
+  Aug 21, 2026 — Object.getOwnPropertyNames() . This method returns an array containing all the own string property names in the object myObj , reg...
+
+Show all
+
+# (?) all js object methods and params return of each
+
+In JavaScript, built-in methods for handling objects are split into two categories: **Static Methods** (called directly on the global `Object` constructor, like `Object.keys()`) and **Instance Methods** (called on individual object instances via the prototype chain, like `obj.toString()`). [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object)
+
+***
+
+### 🔑 Core Static Methods (Most Common)
+
+These are the standard methods developers use daily for extracting data, copying objects, or transforming structures. [link](https://medium.com/stemoto/javascript-object-methods-every-developer-should-know-c68c132a658)
+
+| Method                                | Parameters                                                                                    | Return Value                                                           |
+| ------------------------------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `Object.keys(obj)`                    | `obj`: The object to inspect.                                                                 | An **Array of strings** representing all enumerable own property keys. |
+| `Object.values(obj)`                  | `obj`: The object to inspect.                                                                 | An **Array** of all enumerable own property values.                    |
+| `Object.entries(obj)`                 | `obj`: The object to inspect.                                                                 | An **Array of \[key, value] pairs** (a multi-dimensional array).       |
+| `Object.fromEntries(iterable)`        | `iterable`: An iterable structure (e.g., Array of pairs, Map).                                | A **New Object** created from those key-value pairs.                   |
+| `Object.assign(target, ...sources)`   | `target`: Receiver object.`...sources`: One or more provider objects.                         | The **Modified target object** with copied properties.                 |
+| `Object.create(proto, [descriptors])` | `proto`: Object prototype or `null`.`descriptors` _(optional)_: Property configuration block. | A **New Object** using the provided prototype.                         |
+
+***
+
+### 🛡️ Integrity & State Control Methods
+
+These methods modify or inspect how rigid or extensible an object is. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)
+
+| Method                          | Parameters                  | Return Value                                                                          |
+| ------------------------------- | --------------------------- | ------------------------------------------------------------------------------------- |
+| `Object.freeze(obj)`            | `obj`: The object to lock.  | The **Same object**, now read-only (prevents adds, deletes, and updates).             |
+| `Object.isFrozen(obj)`          | `obj`: The object to check. | **Boolean**: `true` if frozen, otherwise `false`.                                     |
+| `Object.seal(obj)`              | `obj`: The object to lock.  | The **Same object**, (prevents adds or deletes, but allows updates to existing keys). |
+| `Object.isSealed(obj)`          | `obj`: The object to check. | **Boolean**: `true` if sealed, otherwise `false`.                                     |
+| `Object.preventExtensions(obj)` | `obj`: The object to lock.  | The **Same object**, (prevents adding new properties).                                |
+| `Object.isExtensible(obj)`      | `obj`: The object to check. | **Boolean**: `true` if new properties can be added, otherwise `false`.                |
+
+***
+
+### 🔬 Advanced Metadata & Reflection Methods
+
+Used for low-level property querying, inheritance settings, and working with complex keys. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working%5Fwith%5Fobjects)
+
+| Method                                         | Parameters                                                         | Return Value                                                                            |
+| ---------------------------------------------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------- |
+| `Object.defineProperty(obj, prop, descriptor)` | `obj`: The object.`prop`: Key name string.`descriptor`: Setup map. | The **Modified object** with the custom configured property.                            |
+| `Object.defineProperties(obj, props)`          | `obj`: The object.`props`: Map of keys to configurations.          | The **Modified object** with all configured properties.                                 |
+| `Object.getOwnPropertyDescriptor(obj, prop)`   | `obj`: The object.`prop`: Key name string.                         | A **Descriptor object** (contains flags like `writable`, `enumerable`), or `undefined`. |
+| `Object.getOwnPropertyDescriptors(obj)`        | `obj`: The object.                                                 | An **Object** combining all property descriptor maps.                                   |
+| `Object.getOwnPropertyNames(obj)`              | `obj`: The object.                                                 | An **Array of strings** matching all own keys (including non-enumerable ones).          |
+| `Object.getOwnPropertySymbols(obj)`            | `obj`: The object.                                                 | An **Array of Symbol keys** strictly belonging to the target object.                    |
+| `Object.getPrototypeOf(obj)`                   | `obj`: The object.                                                 | The **Prototype object** of the target, or `null`.                                      |
+| `Object.setPrototypeOf(obj, prototype)`        | `obj`: The object.`prototype`: New prototype object or `null`.     | The **Modified object** pointing to its new prototype chain link.                       |
+| `Object.hasOwn(obj, prop)`                     | `obj`: The object.`prop`: Property key string to look up.          | **Boolean**: `true` if the key belongs directly to the object (not inherited).          |
+| `Object.is(value1, value2)`                    | `value1`, `value2`: The elements to evaluate.                      | **Boolean**: `true` if values are structurally identical (fixes `NaN === NaN` issues).  |
+| `Object.groupBy(items, callback)`              | `items`: Iterable array.`callback`: Sorting handler function.      | A **New null-prototype object** grouping your items into matching array buckets.        |
+
+***
+
+### 🧬 Instance Methods (Called via standard objects)
+
+These are found directly on `Object.prototype` and can be invoked from any standard instantiated object block. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)
+
+| Method                           | Parameters                                          | Return Value                                                                                      |
+| -------------------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `obj.hasOwnProperty(prop)`       | `prop`: Property key string.                        | **Boolean**: `true` if the property belongs directly to `obj` (older version of `Object.hasOwn`). |
+| `obj.isPrototypeOf(target)`      | `target`: The object whose chain you are examining. | **Boolean**: `true` if `obj` sits anywhere within `target`'s inheritance chain.                   |
+| `obj.propertyIsEnumerable(prop)` | `prop`: Property key string.                        | **Boolean**: `true` if the key exists and will expose itself during standard loops.               |
+| `obj.toString()`                 | None.                                               | A **String representation** of the object (often returns `"[object Object]"`).                    |
+| `obj.toLocaleString()`           | Localized/regional arguments _(optional)_.          | A **Localized string representation**, frequently overridden by `Date` or `Number`.               |
+| `obj.valueOf()`                  | None.                                               | The **Primitive value representation** of the specified object.                                   |
+
+Are you looking to use these methods to solve a **specific programming problem** (like deep cloning, formatting data, or setting up validation traps), or do you need code **syntax examples** for a specific method?
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object)\
+  MDN Web Docs\
+  Object - JavaScript | MDN\
+  Here are some static methods for objects: \* \*\*Object.assign()\*\* Copies the values of all enumerable own properties from one or mor...
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/values)\
+  MDN Web Docs\
+  Object.values() - JavaScript\
+  Using Object.values() js Copy const obj = { foo: "bar", baz: 42 }; console. log(Object. values(obj)); // \['bar', 42] // Array-like...
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)\
+  MDN Web Docs\
+  Object.keys() - JavaScript\
+  Jul 20, 2025 — Was this page helpful to you? \* Standard built-in objects \* Object \* Constructor Object() \* Static methods assign() create() defin...
+
+Show all
+
+# (?) all js object methods and params return of each
+
+The built-in JavaScript **`Object` constructor** features both **static methods** (called directly on `Object`) and **instance methods** (available on individual object instances via the prototype chain). [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)
+
+Below is the comprehensive quick-reference reference for all standard JavaScript `Object` methods, including their expected parameters and return values. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)
+
+***
+
+### 1. Static Methods (The `Object.*` Methods)
+
+These are called on the `Object` class itself (e.g., `Object.keys(obj)`). [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)
+
+| Method                                    | Parameters                                                                 | Return Value                                                                       |
+| ----------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| **`assign(target, ...sources)`**          | `target` (object), `...sources` (one or more objects)                      | The modified `target` object.                                                      |
+| **`create(proto, [descriptors])`**        | `proto` (object/null), optional property descriptor object                 | A new object with the specified prototype and properties.                          |
+| **`defineProperties(obj, props)`**        | `obj` (object), `props` (object mapping keys to descriptors)               | The modified input object `obj`.                                                   |
+| **`defineProperty(obj, prop, desc)`**     | `obj` (object), `prop` (string/symbol), `desc` (descriptor object)         | The modified input object `obj`.                                                   |
+| **`entries(obj)`**                        | `obj` (object)                                                             | An array of key-value pairs as arrays: `[[key, value], ...]`.                      |
+| **`freeze(obj)`**                         | `obj` (object)                                                             | The identical object `obj`, frozen from changes.                                   |
+| **`fromEntries(iterable)`**               | `iterable` (e.g., Array of `[key, value]` arrays, or a Map)                | A brand new object built from the key-value pairs.                                 |
+| **`getOwnPropertyDescriptor(obj, prop)`** | `obj` (object), `prop` (string/symbol)                                     | A configuration descriptor object for the key, or `undefined`.                     |
+| **`getOwnPropertyDescriptors(obj)`**      | `obj` (object)                                                             | An object containing all own property descriptor objects.                          |
+| **`getOwnPropertyNames(obj)`**            | `obj` (object)                                                             | An array of string keys (including non-enumerable properties).                     |
+| **`getOwnPropertySymbols(obj)`**          | `obj` (object)                                                             | An array of all symbol keys found directly on the object.                          |
+| **`getPrototypeOf(obj)`**                 | `obj` (object)                                                             | The internal prototype (`[[Prototype]]`) of the object.                            |
+| **`groupBy(items, callbackFn)`**          | `items` (iterable), `callbackFn(element, index)` (returns a string/symbol) | A new, null-prototype object grouping elements by string keys.                     |
+| **`hasOwn(obj, prop)`**                   | `obj` (object), `prop` (string/symbol property name)                       | `true` if the property belongs directly to `obj`; `false` if inherited or missing. |
+| **`is(value1, value2)`**                  | `value1` (any), `value2` (any)                                             | `true` if both values are identical (more accurate than `===` for `NaN`).          |
+| **`isExtensible(obj)`**                   | `obj` (object)                                                             | `true` if new properties can still be added to the object; else `false`.           |
+| **`isFrozen(obj)`**                       | `obj` (object)                                                             | `true` if the object is frozen; else `false`.                                      |
+| **`isSealed(obj)`**                       | `obj` (object)                                                             | `true` if the object is sealed; else `false`.                                      |
+| **`keys(obj)`**                           | `obj` (object)                                                             | An array of the object's own enumerable string keys.                               |
+| **`preventExtensions(obj)`**              | `obj` (object)                                                             | The modified input object `obj` (blocks any future property additions).            |
+| **`seal(obj)`**                           | `obj` (object)                                                             | The modified object `obj` (prevents additions/deletions of keys).                  |
+| **`setPrototypeOf(obj, prototype)`**      | `obj` (object), `prototype` (object or `null`)                             | The modified object `obj` with its new prototype linked.                           |
+| **`values(obj)`**                         | `obj` (object)                                                             | An array of the object's own enumerable property values.                           |
+
+***
+
+### 2. Instance Methods (The `Object.prototype.*` Methods)
+
+These are called on individual instances of an object (e.g., `myObj.toString()`). [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)
+
+| Method                           | Parameters                                       | Return Value                                                                  |
+| -------------------------------- | ------------------------------------------------ | ----------------------------------------------------------------------------- |
+| **`hasOwnProperty(prop)`**       | `prop` (string/symbol name)                      | `true` if the property belongs directly to the instance; else `false`.        |
+| **`isPrototypeOf(obj)`**         | `obj` (any target object)                        | `true` if the calling object exists anywhere in `obj`'s prototype chain.      |
+| **`propertyIsEnumerable(prop)`** | `prop` (string/symbol name)                      | `true` if the property exists directly and will show up in a `for...in` loop. |
+| **`toLocaleString()`**           | None (though can accept locale-specific options) | A string representation tailored to local formats.                            |
+| **`toString()`**                 | None                                             | A default string representation of the object: `"[object Object]"`.           |
+| **`valueOf()`**                  | None                                             | The primitive value of the specified object (usually returns `this`).         |
+
+_(Note: Legacy instance methods `__defineGetter__`, `__defineSetter__`, `__lookupGetter__`, and `__lookupSetter__` are deprecated and should no longer be used in modern environments)._ [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)
+
+Would you like me to write a **code snippet** demonstrating how a few of these methods work together, or are you looking to dive deeper into **property descriptors** and **immutability** (`freeze` vs `seal`)?
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)\
+  MDN Web Docs\
+  Object.keys() - JavaScript\
+  Jul 20, 2025 — Was this page helpful to you? \* Standard built-in objects \* Object \* Constructor Object() \* Static methods assign() create() defin...
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working%5Fwith%5Fobjects)\
+  MDN Web Docs\
+  Working with objects - JavaScript - MDN Web Docs - Mozilla\
+  Aug 21, 2026 — Object.getOwnPropertyNames() . This method returns an array containing all the own string property names in the object myObj , reg...
+- [link](https://stackoverflow.com/questions/2257993/how-to-display-all-methods-of-an-object)\
+  Stack Overflow\
+  How to display all methods of an object? - Stack Overflow\
+  They just changed the names of the methods of the Java object, and I was able to figure out the new names by running Object.getOwn...
+
+Show all
+
+# (?) all js object methods and params return of each
+
+Here is the comprehensive guide to **all native JavaScript `Object` methods**, categorized into **Static Methods** (called directly on the global `Object` constructor) and **Instance Methods** (available to all standard JavaScript object instances via the prototype chain). [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)
+
+***
+
+### 🛠️ Static Methods
+
+These methods are invoked directly on the `Object` class (e.g., `Object.keys(obj)`). [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)
+
+#### Property Extraction & Transformation
+
+| Method                                  | Parameters                                                             | Return Value                                                                     |
+| --------------------------------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| **`Object.keys(obj)`**                  | `obj`: The target object                                               | An `Array` of strings representing the object's own enumerable property names.   |
+| **`Object.values(obj)`**                | `obj`: The target object                                               | An `Array` containing the object's own enumerable property values.               |
+| **`Object.entries(obj)`**               | `obj`: The target object                                               | An `Array` of `[key, value]` pairs, where each pair is an array of two elements. |
+| **`Object.fromEntries(iterable)`**      | `iterable`: An iterable (e.g., `Map` or Array of pairs)                | A new `Object` built from the key-value pairs.                                   |
+| **`Object.assign(target, ...sources)`** | `target`: Destination object.`...sources`: One or more source objects. | The modified **`target` object**.                                                |
+
+#### Object Modification Control (Immutability)
+
+| Method                              | Parameters                               | Return Value                                                                                                                  |
+| ----------------------------------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| **`Object.freeze(obj)`**            | `obj`: The object to freeze              | The same **`obj`** passed to the function, now frozen (properties cannot be added, deleted, or changed).                      |
+| **`Object.isFrozen(obj)`**          | `obj`: The target object                 | `Boolean`: `true` if the object is frozen, otherwise `false`.                                                                 |
+| **`Object.seal(obj)`**              | `obj`: The object to seal                | The same **`obj`** passed to the function, now sealed (properties cannot be added/deleted, but existing ones can be changed). |
+| **`Object.isSealed(obj)`**          | `obj`: The target object                 | `Boolean`: `true` if the object is sealed, otherwise `false`.                                                                 |
+| **`Object.preventExtensions(obj)`** | `obj`: The object to make non-extensible | The same **`obj`** passed to the function (prevents new properties from being added).                                         |
+| **`Object.isExtensible(obj)`**      | `obj`: The target object                 | `Boolean`: `true` if new properties can be added to the object, otherwise `false`.                                            |
+
+#### Prototype Manipulation
+
+| Method                                         | Parameters                                                                                                 | Return Value                                                         |
+| ---------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| **`Object.create(proto, [propertiesObject])`** | `proto`: The object to use as a blueprint prototype.`propertiesObject` _(optional)_: Property descriptors. | A **new object** with the specified prototype and properties.        |
+| **`Object.getPrototypeOf(obj)`**               | `obj`: The target object                                                                                   | The **prototype** (internal `[[Prototype]]` property) of the object. |
+| **`Object.setPrototypeOf(obj, prototype)`**    | `obj`: The target object.`prototype`: The new prototype object or `null`.                                  | The **target object** itself (`obj`).                                |
+
+#### Property Descriptors
+
+| Method                                             | Parameters                                                                        | Return Value                                                                        |
+| -------------------------------------------------- | --------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| **`Object.defineProperty(obj, prop, descriptor)`** | `obj`: Target object.`prop`: Name of property.`descriptor`: Configuration object. | The modified **target object** (`obj`).                                             |
+| **`Object.defineProperties(obj, props)`**          | `obj`: Target object.`props`: Object mapping keys to descriptors.                 | The modified **target object** (`obj`).                                             |
+| **`Object.getOwnPropertyDescriptor(obj, prop)`**   | `obj`: Target object.`prop`: Name of property.                                    | A **Property Descriptor object** configuration, or `undefined` if it doesn't exist. |
+| **`Object.getOwnPropertyDescriptors(obj)`**        | `obj`: Target object                                                              | An **Object** containing all own property descriptors of the target.                |
+
+#### Advanced Property Filtering & Utilities
+
+| Method                                  | Parameters                                                                    | Return Value                                                                                                   |
+| --------------------------------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| **`Object.getOwnPropertyNames(obj)`**   | `obj`: The target object                                                      | An `Array` of strings containing **all** own property names (both enumerable and non-enumerable).              |
+| **`Object.getOwnPropertySymbols(obj)`** | `obj`: The target object                                                      | An `Array` of all symbol properties found directly on the object.                                              |
+| **`Object.hasOwn(obj, prop)`**          | `obj`: Target object instance.`prop`: String name or Symbol of the property.  | `Boolean`: `true` if the specified property is a direct property of the object (ignores inherited properties). |
+| **`Object.is(value1, value2)`**         | `value1`: First value.`value2`: Second value.                                 | `Boolean`: `true` if the two values are exactly the same (more strict than `===` for `NaN` and signs).         |
+| **`Object.groupBy(items, callbackFn)`** | `items`: An iterable.`callbackFn`: Function that returns a string/symbol key. | A **new null-prototype object** where properties are arrays grouped by the callback's returned key.            |
+
+***
+
+### 🧬 Instance Methods (Prototype Methods)
+
+These methods belong to `Object.prototype` and are called on an instance of an object (e.g., `myObj.toString()`). [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)
+
+| Method                           | Parameters                                                           | Return Value                                                                                                                  |
+| -------------------------------- | -------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| **`hasOwnProperty(prop)`**       | `prop`: The string name or Symbol of the property to check.          | `Boolean`: `true` if the object has the specified property as an **own** property (Note: `Object.hasOwn()` is now preferred). |
+| **`isPrototypeOf(obj)`**         | `obj`: The object whose prototype chain should be searched.          | `Boolean`: `true` if the calling prototype instance exists within the prototype chain of `obj`.                               |
+| **`propertyIsEnumerable(prop)`** | `prop`: The name of the property to test.                            | `Boolean`: `true` if the property can be iterated over via a `for...in` loop.                                                 |
+| **`toLocaleString()`**           | None _(can accept locale specific arguments depending on overrides)_ | A **String** representation tailored to localized formatting.                                                                 |
+| **`toString()`**                 | None                                                                 | A **String** representing the object (defaults to `"[object Object]"`).                                                       |
+| **`valueOf()`**                  | None                                                                 | The **primitive value** of the specified object (usually returns the object itself).                                          |
+
+Would you like an example or **use case** for any specific method listed here, or help writing a custom utility with them?
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)\
+  MDN Web Docs\
+  Object.keys() - JavaScript\
+  Jul 20, 2025 — Was this page helpful to you? \* Standard built-in objects \* Object \* Constructor Object() \* Static methods assign() create() defin...
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object)\
+  MDN Web Docs\
+  Object - JavaScript | MDN\
+  Here are some static methods for objects: \* \*\*Object.assign()\*\* Copies the values of all enumerable own properties from one or mor...
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working%5Fwith%5Fobjects)\
+  MDN Web Docs\
+  Working with objects - JavaScript - MDN Web Docs - Mozilla\
+  Aug 21, 2026 — Object.getOwnPropertyNames() . This method returns an array containing all the own string property names in the object myObj , reg...
+
+Show all
+
+# (d) all js object methods and params return of each
+
+The JavaScript `Object` constructor contains both **static methods** (called directly on `Object` itself) and **instance methods** (available on individual object instances through the prototype chain). [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)
+
+Below is a comprehensive guide to all core JavaScript `Object` methods, including their parameters and return values. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)
+
+***
+
+### 1. Core Object Manipulation (Most Common)
+
+| Method                 | Parameters                                                                    | Return Value                                                                     |
+| ---------------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `Object.assign()`      | `(target, ...sources)`: Target object and one or more source objects.         | The modified **`target` object**.                                                |
+| `Object.create()`      | `(proto, [propertiesObject])`: The prototype object and optional descriptors. | A **new object** with the specified prototype.                                   |
+| `Object.entries()`     | `(obj)`: An object.                                                           | An **`Array`** of the object's own enumerable string-keyed `[key, value]` pairs. |
+| `Object.fromEntries()` | `(iterable)`: An iterable (e.g., an `Array` or `Map`) of key-value pairs.     | A **new object** built from the key-value pairs.                                 |
+| `Object.keys()`        | `(obj)`: An object.                                                           | An **`Array` of strings** representing all enumerable property keys.             |
+| `Object.values()`      | `(obj)`: An object.                                                           | An **`Array`** of the object's own enumerable property values.                   |
+
+***
+
+#### 2. Property & Prototype Introspection
+
+JavaScript also provides methods for inspecting and configuring properties and prototypes, such as `Object.defineProperty()`, `Object.defineProperties()`, `Object.getOwnPropertyDescriptor()`, `Object.getOwnPropertyDescriptors()`, `Object.getOwnPropertyNames()`, `Object.getOwnPropertySymbols()`, `Object.getPrototypeOf()`, `Object.hasOwn()`, and `Object.setPrototypeOf()`. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working%5Fwith%5Fobjects)
+
+#### 3. Integrity and State Control
+
+Methods to manage object extensibility and modification include `Object.freeze()`, `Object.isFrozen()`, `Object.seal()`, `Object.isSealed()`, `Object.preventExtensions()`, and `Object.isExtensible()`. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object)
+
+#### 4. Comparison and Grouping
+
+Utility methods for comparing values or organizing data include `Object.is()` and `Object.groupBy()`. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)
+
+#### 5. Instance Methods (Called on `{}` values)
+
+Instance methods accessed directly on object prototypes include `hasOwnProperty()`, `isPrototypeOf()`, `propertyIsEnumerable()`, `toLocaleString()`, `toString()`, and `valueOf()`. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)
+
+Would you like to see a **code example** demonstrating how to use some of these specific methods, or are you looking to dive deeper into how **property descriptors** work?
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)\
+  MDN Web Docs\
+  Object.keys() - JavaScript\
+  Jul 20, 2025 — Was this page helpful to you? \* Standard built-in objects \* Object \* Constructor Object() \* Static methods assign() create() defin...
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object)\
+  MDN Web Docs\
+  Object - JavaScript | MDN\
+  Here are some static methods for objects: \* \*\*Object.assign()\*\* Copies the values of all enumerable own properties from one or mor...
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working%5Fwith%5Fobjects)\
+  MDN Web Docs\
+  Working with objects - JavaScript - MDN Web Docs - Mozilla\
+  Aug 21, 2026 — Object.getOwnPropertyNames() . This method returns an array containing all the own string property names in the object myObj , reg...
+
+Show all
+
+# (?) all js object methods and params return of each
+
+**JavaScript's `Object` class** comes with a set of built-in **Static Methods** (called directly on the global `Object` constructor) and **Instance Methods** (called on individual object instances via the prototype chain). [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)
+
+Below is the complete reference guide detailing the parameters and return values for each method, categorized by use case.
+
+***
+
+### 1. Core Object Inspections & Transformations
+
+These methods are the most commonly used for reading data out of an object or building new ones.
+
+| Method                                         | Parameters                                                                                              | Return Value                                                            |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| **`Object.keys(obj)`**                         | `obj`: The object to inspect.                                                                           | An **Array of strings** representing all own, enumerable property keys. |
+| **`Object.values(obj)`**                       | `obj`: The object to inspect.                                                                           | An **Array** of the object's own, enumerable property values.           |
+| **`Object.entries(obj)`**                      | `obj`: The object to inspect.                                                                           | An **Array of `[key, value]` pairs** (nested arrays).                   |
+| **`Object.fromEntries(iterable)`**             | `iterable`: An iterable structure (like an Array of pairs or a Map).                                    | A **new Object** built from the key-value pairs.                        |
+| **`Object.assign(target, ...sources)`**        | `target`: The object receiving properties.`sources`: One or more objects containing properties to copy. | The modified **target object**.                                         |
+| **`Object.create(proto, [propertiesObject])`** | `proto`: The prototype object.`propertiesObject` _(optional)_: Property descriptors.                    | A **new object** with the specified prototype and properties.           |
+
+***
+
+### 2. State & Integrity Control (Immutability)
+
+Use these methods when you want to lock down your objects to prevent tampering or unexpected changes.
+
+| Method                              | Parameters                     | Return Value                      | Description                                                          |
+| ----------------------------------- | ------------------------------ | --------------------------------- | -------------------------------------------------------------------- |
+| **`Object.freeze(obj)`**            | `obj`: The object to freeze.   | The **same object** (now frozen). | Prevents additions, deletions, and any value modifications.          |
+| **`Object.seal(obj)`**              | `obj`: The object to seal.     | The **same object** (now sealed). | Prevents additions/deletions, but allows _updating_ existing values. |
+| **`Object.preventExtensions(obj)`** | `obj`: The object to restrict. | The **same object** (restricted). | Only stops new properties from being added.                          |
+| **`Object.isFrozen(obj)`**          | `obj`: The object to check.    | **Boolean** (`true`/`false`).     | Checks if an object is frozen.                                       |
+| **`Object.isSealed(obj)`**          | `obj`: The object to check.    | **Boolean** (`true`/`false`).     | Checks if an object is sealed.                                       |
+| **`Object.isExtensible(obj)`**      | `obj`: The object to check.    | **Boolean** (`true`/`false`).     | Checks if new properties can be added.                               |
+
+***
+
+### 3. Property Descriptors & Meta-Programming
+
+These are advanced methods used to define hidden, read-only, or custom getters/setters on keys. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get)
+
+| Method                                             | Parameters                                                                                                     | Return Value                                                                 |
+| -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| **`Object.defineProperty(obj, prop, descriptor)`** | `obj`: Target object.`prop`: Key string/symbol.`descriptor`: Configuration object (`value`, `writable`, etc.). | The modified **object**.                                                     |
+| **`Object.defineProperties(obj, props)`**          | `obj`: Target object.`props`: An object mapping keys to descriptors.                                           | The modified **object**.                                                     |
+| **`Object.getOwnPropertyDescriptor(obj, prop)`**   | `obj`: The object.`prop`: The property key.                                                                    | A **Property Descriptor object** or `undefined` if key doesn't exist.        |
+| **`Object.getOwnPropertyDescriptors(obj)`**        | `obj`: The object to inspect.                                                                                  | An **Object** containing all own property descriptors.                       |
+| **`Object.getOwnPropertyNames(obj)`**              | `obj`: The object to inspect.                                                                                  | An **Array of strings** containing _all_ own properties (enumerable or not). |
+| **`Object.getOwnPropertySymbols(obj)`**            | `obj`: The object to inspect.                                                                                  | An **Array of Symbols** found directly on the object.                        |
+
+***
+
+### 4. Prototype Management & Utilities
+
+Methods dealing with inheritance and utility operations.
+
+| Method                                      | Parameters                                                                                  | Return Value                                                                                       |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| **`Object.getPrototypeOf(obj)`**            | `obj`: The object to inspect.                                                               | The **prototype object** (or `null`).                                                              |
+| **`Object.setPrototypeOf(obj, prototype)`** | `obj`: Target object.`prototype`: New prototype object or `null`.                           | The modified **object**.                                                                           |
+| **`Object.hasOwn(obj, prop)`**              | `obj`: The object.`prop`: The key to check.                                                 | **Boolean** (`true` if the key is an _own_ property, not inherited).                               |
+| **`Object.is(value1, value2)`**             | `value1`: First value.`value2`: Second value.                                               | **Boolean** (`true` if values are exactly identical, more precise than `===` for `NaN` and signs). |
+| **`Object.groupBy(items, callbackFn)`**     | `items`: An iterable array/object collection.`callbackFn`: Function returning a string key. | A **new Object** grouping the items by the string keys.                                            |
+
+***
+
+### 5. Instance Methods (`Object.prototype`)
+
+These are methods called directly on your custom objects (e.g., `myObj.toString()`). [link](https://www.w3schools.com/js/js%5Fobject%5Fmethods.asp)
+
+| Method                           | Parameters                         | Return Value        | Description                                                                                    |
+| -------------------------------- | ---------------------------------- | ------------------- | ---------------------------------------------------------------------------------------------- |
+| **`hasOwnProperty(prop)`**       | `prop`: String or symbol key name. | **Boolean**         | _Legacy._ Checks if a property is an own property (Use `Object.hasOwn` instead in modern JS).  |
+| **`isPrototypeOf(obj)`**         | `obj`: The object to test against. | **Boolean**         | Checks if the prototype instance exists in another object's chain.                             |
+| **`propertyIsEnumerable(prop)`** | `prop`: String property name.      | **Boolean**         | Returns `true` if the property is direct and will show up in a `for...in` loop.                |
+| **`toString()`**                 | _None_                             | **String**          | Returns a string representation of the object (usually `"[object Object]"` unless overridden). |
+| **`toLocaleString()`**           | _None (varies by subclass)_        | **String**          | Returns a localized string representation (heavily used by `Date` and `Number` objects).       |
+| **`valueOf()`**                  | _None_                             | **Primitive value** | Returns the primitive representation of the object (usually returns `this` itself).            |
+
+Would you like to see a practical **code example** of how one of these specific methods (like descriptors, immutability, or data transformations) works in action, or are you looking to use these to **solve a specific problem**?
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/keys)\
+  MDN Web Docs\
+  Object.keys() - JavaScript\
+  Jul 20, 2025 — Was this page helpful to you? \* Standard built-in objects \* Object \* Constructor Object() \* Static methods assign() create() defin...
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working%5Fwith%5Fobjects)\
+  MDN Web Docs\
+  Working with objects - JavaScript - MDN Web Docs - Mozilla\
+  Aug 21, 2026 — Object.getOwnPropertyNames() . This method returns an array containing all the own string property names in the object myObj , reg...
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object)\
+  MDN Web Docs\
+  Object - JavaScript | MDN\
+  Here are some static methods for objects: \* \*\*Object.assign()\*\* Copies the values of all enumerable own properties from one or mor...
+
+Show all
+
+
