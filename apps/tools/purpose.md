@@ -5274,6 +5274,10 @@ tested and compared w google.
 
 you can just have 100% size for circle. maybe it's 95%.
 
----
+26
+
+15 50 web/component/preferences: fix id.
+
+how can you type an object after "flatten"? quite hard.
 
 

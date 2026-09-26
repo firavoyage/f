@@ -33,7 +33,6 @@ type options = Record<string, string> | string[]
 
 export function Preferences(props: preferences) {
   const { open, toggle_open, preferences } = props
-  const [is_on_top, toggle_is_on_top] = useToggle(false)
 
   use_keyboard('esc', close, { when: open })
 
@@ -58,16 +57,17 @@ export function Preferences(props: preferences) {
             <Icon {...p({ name: 'close' })}></Icon>
           </Button>
         </div>
-        <Scroll {...p({ toggle_is_on_top })}>
+        <Scroll>
           <div className="body">
             {
               map(flatten(preferences), (pref) => {
                 const [type, content] = pref
                 if (type == 'p') {
+                  const { id } = content
                   return (
                     <Arg {...p({
-                      ...content, value: use_global.data[pref.id], set_value(v) {
-                        use_global.set_prop(pref.id, v)
+                      ...content, value: use_global.data[id], set_value(v) {
+                        use_global.set_prop(id, v)
                       }
                     })}
                     ></Arg>
