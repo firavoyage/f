@@ -239,6 +239,7 @@ archi:
 - compare writing styles
 - spaghetti code
 - npm zipped bundle size loc meaning feeling
+- code design patterns in fp
 
 web: <!-- frontend, web, ts/js -->
 

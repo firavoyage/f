@@ -16,6 +16,17 @@ dl \
 ```
 
 ```sh
+name='soraru'
+
+dl \
+  "https://music.youtube.com/playlist?list=OLAK5uy_lDQsFqps9kn7g4CYWplAlTw0lmJ_T94DY" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --reject-title "(?i)inst" \
+  -o "Music/$name/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s" \
+  --match-filters "view_count > 10000"
+```
+
+```sh
 name='Mafumafu'
 
 dl \
