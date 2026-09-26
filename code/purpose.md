@@ -499,6 +499,10 @@ idk if js is really flawed.
 
 maybe js it not flawed, but quirky.
 
-and, about ts, it could never become smart "enough", i think.
+about ts, it could never become smart "enough", i think.
+
+and you should use snippets, or autocomplete of any kind. you would type less, and read the expanded regular english words, unless you wanna see and memorize them as symbols. <!-- i.e. _function_ f, for _of_, () _=>_ {}, import _as_ -->
+
+what's left are sound type system implementation, pattern matching, operator overrides, and some syntax sugar (e.g. indentation, asi fix). <!-- e.g. a hacky contextual = over explicit = and ==. unified & and |, since you never use bit op. polymorphism in case you would prefer + for vectors, like if you work for math where operators have various definitions. dk if they would be worth it. -->
 
 
