@@ -336,7 +336,8 @@ web: <!-- frontend, web, ts/js -->
 - web lib use keyboard shortcuts system hotkeys leave site prompt
 - devtools hide tabs disable react devtools
 - favicon
-- js builtin std lib methods
+- js std lib
+- js std lib builtin global object methods
 
 backend:
 

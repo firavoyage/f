@@ -1210,5 +1210,3 @@ I can tailor a specific, lean blueprint for your project.
 
 Show all
 
-# 
-
