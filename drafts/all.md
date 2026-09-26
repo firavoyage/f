@@ -982,6 +982,7 @@ code:
 - pattern matching
 - type system
 - syntax spec
+- lsp
 
 humility:
 
