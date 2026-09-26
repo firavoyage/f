@@ -374,3 +374,13 @@ on vscode if you spam press on ctrl p you move down files. you auto load. ctrl s
 
 think bout it.
 
+---
+
+action/format code: create a tool to format js
+
+parse ast. for var names, camel case to snake case. 
+
+use == instead of === for all business logics.
+
+prettier. decide the options.
+
