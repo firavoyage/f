@@ -1,5 +1,3 @@
-how to create a programming lang
-
 what should a programming lang have
 
 what can std lib of a programming lang have
@@ -24,12 +22,6 @@ std lib of each pl
 
 ---
 
-all decisions on pl syntax design
-
-compare commenting symbols in pl design
-
----
-
 compare set theory and type theory
 
 (in cs/pl design)
@@ -38,25 +30,15 @@ compare type systems in pl design
 
 compare error handling patterns in pl design
 
-compare pattern matching paradigms in pl design
-
 how do type operations work
 
 how would a sound type system look like
 
 ---
 
-what can pl syntax include
-
----
-
 macro
 
 <!-- julia -->
-
----
-
-how does typescript lsp work
 
 ---
 
