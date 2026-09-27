@@ -54833,6 +54833,33 @@ bye.
 
 17 10 dl `Theishter` `kylelandry` alongside `animenz`. dl `Mafumafu` `soraru`.
 
+27
+
+20 00 put a new quote on my laptop.
+
+> Not Even Wrong
+
+<!-- 
+
+> 你是学信息学竞赛的
+> 还是学数学竞赛的
+> 数学竞赛也不学这个啊
+
+-->
+
+<!-- 
+
+> ~~科研~~
+> ~~大一进组 大二发论文~~
+> ~~模型, 实验, 投稿~~
+> ~~竞赛~~
+> ~~AI 绩点 实习 vibe coding~~
+> ~~语言 推荐信 交换 暑研~~
+>
+> 让本科生做回本科生
+
+ -->
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
