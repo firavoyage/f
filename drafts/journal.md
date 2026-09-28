@@ -55082,6 +55082,13 @@ if foo
 
 CHANGE MY MIND.
 
+18 00 read composing program.
+
+- primitive expressions and statements
+- means of combination
+- means of abstraction
+
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
