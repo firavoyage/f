@@ -538,3 +538,140 @@ Show all
 
 
 
+
+# js proxy example
+
+A **JavaScript Proxy** allows you to wrap a target object and intercept fundamental operations, such as reading properties (`get`), setting properties (`set`), or deleting properties (`deleteProperty`). Think of it as a middleman that adds custom behavior to an object. [link](https://www.w3schools.com/js/js%5Fmeta%5Fproxy.asp)
+
+The syntax is straightforward: `const proxy = new Proxy(target, handler);`. The `target` is your original object, and the `handler` is an object containing "traps" (functions) that intercept operations. [link](https://dev.to/italoqueiroz/the-secrets-of-proxies-intercepting-and-controlling-objects-in-javascript-14il)
+
+Here are three real-world examples demonstrating how to use a JavaScript Proxy.
+
+***
+
+### 1. Basic Interception (`get` and `set` traps)
+
+This example logs a message whenever someone reads or modifies a property on the object, which is excellent for debugging or tracking state changes. [link](https://www.youtube.com/watch?v=mQ1bKqypBDY\&vl=en\&t=41)
+
+javascript
+
+```
+// The target object
+const user = {
+  name: "Alice",
+  age: 28
+};
+
+// The handler containing traps
+const handler = {
+  // Intercepts reading a property
+  get(target, prop) {
+    console.log(`Reading property: "${prop}"`);
+    return target[prop];
+  },
+
+  // Intercepts modifying or adding a property
+  set(target, prop, value) {
+    console.log(`Setting property: "${prop}" to ${value}`);
+    target[prop] = value;
+    return true; // Must return true to indicate success
+  }
+};
+
+// Create the proxy
+const userProxy = new Proxy(user, handler);
+
+// Intercepting 'get'
+console.log(userProxy.name);
+// Output:
+// Reading property: "name"
+// Alice
+
+// Intercepting 'set'
+userProxy.age = 29;
+// Output:
+// Setting property: "age" to 29
+```
+
+Use code with caution.
+
+***
+
+### 2. Data Validation
+
+Proxies are highly effective for validating incoming data dynamically before it is saved to your application state, preventing bad data format crashes. [link](https://www.youtube.com/watch?v=BbFoEnoFPjw)
+
+javascript
+
+```
+const validatorHandler = {
+  set(target, prop, value) {
+    if (prop === 'age') {
+      if (!Number.isInteger(value)) {
+        throw new TypeError('Age must be an integer');
+      }
+      if (value < 0 || value > 120) {
+        throw new RangeError('Age must be between 0 and 120');
+      }
+    }
+
+    // If validations pass, save the data
+    target[prop] = value;
+    return true;
+  }
+};
+
+const profile = new Proxy({}, validatorHandler);
+
+profile.age = 30; // Works fine
+// profile.age = "thirty"; // Throws TypeError: Age must be an integer
+// profile.age = 150;     // Throws RangeError: Age must be between 0 and 120
+```
+
+Use code with caution.
+
+***
+
+### 3. Default Fallbacks (Smart Objects)
+
+You can intercept the `get` method to provide dynamic default values when a property does not exist, rather than returning `undefined`. [link](https://www.reddit.com/r/javascript/comments/wl7lpo/askjs%5Fwhat%5Fare%5Fsome%5Freal%5Fworld%5Fapplications%5Fof%5Fjs/)
+
+javascript
+
+```
+const dictionaryHandler = {
+  get(target, prop) {
+    // If the translation exists, return it. Otherwise, return the original word.
+    return prop in target ? target[prop] : `[Translation missing for "${prop}"]`;
+  }
+};
+
+const spanishDictionary = new Proxy({
+  hello: "hola",
+  goodbye: "adiós"
+}, dictionaryHandler);
+
+console.log(spanishDictionary.hello);   // Output: hola
+console.log(spanishDictionary.welcome); // Output: [Translation missing for "welcome"]
+```
+
+Use code with caution.
+
+Would you like to explore more advanced traps, such as **intercepting function calls (`apply`)** or **hiding private properties**? Let me know what you are building so I can tailor a snippet for you!
+
+- [link](https://www.reddit.com/r/javascript/comments/wl7lpo/askjs%5Fwhat%5Fare%5Fsome%5Freal%5Fworld%5Fapplications%5Fof%5Fjs/)\
+  Reddit·r/javascript\
+  \[AskJS] What are some real world applications of JS Proxy ...\
+  Aug 11, 2022 — Essentially, a proxy just lets you define dynamic getters/setters, so if an object has 2 properties a and b, obj.c will be undefin...
+- [link](https://www.youtube.com/watch?v=mQ1bKqypBDY\&vl=en\&t=41)\
+  YouTube·ColorCode\
+  JavaScript Proxies: The Most Powerful Feature You're Not Using\
+  Jan 3, 2026 — proxies can create virtual and dynamic properties that don't physically exist but act like functions, providing computed values an...\
+  13m
+- [link](https://www.w3schools.com/js/js%5Fmeta%5Fproxy.asp)\
+  W3Schools\
+  JavaScript Proxy Object - W3Schools\
+  Proxy Syntax. const proxy = new Proxy(target, handler);. target - the original object or function; handler - an object with trap m...
+
+Show all
+
