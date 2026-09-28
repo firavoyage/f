@@ -54878,6 +54878,16 @@ i could not update instantly if i go the best prac way. against all boilerplates
 
 dont think it should load from a hardcoded static source/config.json.
 
+---
+
+ok fine. last resort.
+
+i will copy the whole folder.
+
+---
+
+i may create an automation to auto sync folders (e.g. latest edit), in case symlinks are prone. mv isnt ideal. i could "merge".
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

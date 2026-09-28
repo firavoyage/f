@@ -86,6 +86,14 @@ Resolved, downloaded and extracted [103]
 Saved lockfile
 ```
 
+```
+ ~ % cd /home/fira/Documents/f/apps/tools/source
+ ...apps/tools/source % link lib ../../../lib
+ ...apps/tools/source % link ../../../lib lib
+ ...apps/tools/source % touch test.ts
+ ...apps/tools/source % open test.ts
+```
+
 # how to create a js monorepo
 
 ## how to create a js monorepo
@@ -3705,6 +3713,297 @@ For example, if you name your path `"fs/*"` or `"react/*"`, TypeScript will prio
 To ensure this works seamlessly across your entire setup, let me know:
 
 - What **bundler or runtime** (like Vite, Webpack, or ts-node) you are using, since some require a plugin to resolve non-prefixed paths correctly during builds.
+
+
+
+
+# tsconfig paths
+
+## tsconfig paths
+
+The `paths` property in a `tsconfig.json` file allows you to **declare custom module path aliases**, which eliminates messy relative imports (like `../../components/Button`) and replaces them with clean absolute-style paths (like `@/components/Button`). [link](https://www.youtube.com/shorts/h1ZPBYhTT1k)
+
+While **`paths` informs the TypeScript compiler (`tsc`)** where to find type definitions for your aliases during development, **`tsc` does not rewrite these paths** when compiling your code to JavaScript. You will need a bundler or runtime tool to handle them in production. [link](https://www.reddit.com/r/typescript/comments/1c1gmsz/rant%5Ftsconfig%5Fpaths%5Fare%5Fnot%5Fworth%5Fthe%5Fhassle/)
+
+***
+
+### 1. Basic Configuration
+
+To set up path aliases, update the `compilerOptions` in your `tsconfig.json`. [link](https://webreaper.dev/posts/tsconfig-paths-setup/)
+
+json
+
+```
+{
+  "compilerOptions": {
+    "baseUrl": ".", // Defines the root directory for relative paths (defaults to "." if omitted in newer versions)
+    "paths": {
+      "@/*": ["src/*"],
+      "@components/*": ["src/components/*"],
+      "@utils/*": ["src/utils/*"]
+    }
+  }
+}
+```
+
+Use code with caution.
+
+- **`baseUrl`**: Sets the base directory from which the mappings resolve.
+- **`@/*`**: The custom alias prefix. The asterisk `*` acts as a wildcard matching any file path.
+- **`["src/*"]`**: The physical folder the alias points to, relative to the `baseUrl`. [link](https://www.youtube.com/watch?v=i4sorpyHBg8\&t=5)
+
+***
+
+### 2. Usage in Code
+
+Once configured, you can switch from fragile relative imports to clean aliases: [link](https://starter.cosmicthemes.com/blog/tsconfig-paths-setup/)
+
+typescript
+
+```
+// ❌ Old, messy relative import
+import { Button } from "../../../components/Button";
+import { formatDates } from "../../utils/date";
+
+//     Import Aliases
+import { Button } from "@components/Button";
+import { formatDates } from "@utils/date";
+```
+
+Use code with caution.
+
+***
+
+### 3. Making Paths Work at Runtime ⚙️
+
+Because `tsc` leaves your aliases untouched in the compiled `.js` files, you must configure your runtime environment or bundler to read your `tsconfig` paths. [link](https://www.reddit.com/r/typescript/comments/1c1gmsz/rant%5Ftsconfig%5Fpaths%5Fare%5Fnot%5Fworth%5Fthe%5Fhassle/)
+
+#### Modern Runtimes & Frameworks (Zero-Config)
+
+If you are using modern tools, `tsconfig` paths usually work **out of the box**:
+
+- **Next.js**, **Vite**, **Astro**, and **Angular** automatically detect and resolve `tsconfig` paths during builds.
+- [Bun](https://bun.com/guides/runtime/tsconfig-paths) natively supports and dynamically resolves `tsconfig.json` paths out of the box. [link](https://www.youtube.com/watch?v=whRsz7ywYZo\&t=5)
+
+#### Vanilla Node.js & Production
+
+If you are running compiled JavaScript directly with Node.js, it will throw a `"Cannot find module"` error. Use one of these solutions: [link](https://npmjs.com/package/tsconfig-paths)
+
+- **For Development (`ts-node`):** Install the [tsconfig-paths package](https://npmjs.com/package/tsconfig-paths) and execute using: `ts-node -r tsconfig-paths/register main.ts`. Alternatively, use tsx which handles path resolution seamlessly without extra configuration. [link](https://www.reddit.com/r/webdev/comments/1idvcmc/til%5Fyou%5Fneed%5Fa%5Fpackage%5Fcalled%5Ftsconfigpaths%5Fto/)
+- **For Production Build Pipelines:** Use a build-time plugin like [tsconfig-replace-paths](https://www.npmjs.com/package/tsconfig-replace-paths) to structurally rewrite the aliases back into clean relative paths inside your final build directory. [link](https://www.npmjs.com/package/tsconfig-replace-paths)
+- **For Webpack Environments:** Inject the [tsconfig-paths-webpack-plugin](https://www.npmjs.com/package/tsconfig-paths-webpack-plugin) directly into your Webpack resolution configuration to sync your aliases automatically. [link](https://oneuptime.com/blog/post/2026-01-24-configure-typescript-path-aliases/view)
+
+Are you setting this up for a **specific framework/bundler** (like Vite, Next.js, or pure Node.js)? Let me know so I can provide the exact plug-and-play configuration!
+
+- [link](https://www.reddit.com/r/typescript/comments/1c1gmsz/rant%5Ftsconfig%5Fpaths%5Fare%5Fnot%5Fworth%5Fthe%5Fhassle/)\
+  Reddit\
+  RANT: tsconfig paths are not worth the hassle - Reddit\
+  tsconfig paths are meant to be information for the TSC compiler and not actual path aliases,
+- [link](https://www.youtube.com/watch?v=whRsz7ywYZo\&t=5)\
+  YouTube·Awais Mirza\
+  Angular - tsconfig paths configurations\
+  Sep 18, 2019 — Angular provides a good way of configuring paths for imports in TypeScript files to make your code more readable. Instead of using...\
+  5m
+- [link](https://www.youtube.com/watch?v=i4sorpyHBg8\&t=5)\
+  YouTube·The Dev Method\
+  Typescript: "paths" tsconfig\
+  Nov 30, 2021 — To enable referencing nested components within the \`components\` directory, an asterisk (\`\*\`) wildcard should be added to the path ...\
+  5m
+
+Show all
+
+## can i path to parent folders
+
+<mark><strong><span>Yes, you can path to parent folders</span></strong></mark>, but it is generally considered a bad practice and can break build pipelines.
+
+Because `tsconfig.json` path mappings are resolved relative to the directory specified in `baseUrl` (which is typically your project root `"."`), mapping aliases to a parent directory requires using relative path steps (`../`).
+
+Here is how you configure it and why you should avoid it:
+
+### How to set it up
+
+If you have a monorepo setup or a separate project root and need an alias to step out of the current folder into a parent directory, you can write it like this:
+
+json
+
+```
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@shared/*": ["../shared-packages/*"],
+      "@root-config/*": ["../package.json"]
+    }
+  }
+}
+```
+
+Use code with caution.
+
+### ⚠️ Why this can break your project
+
+While TypeScript will successfully find the type definitions during development, mapping to parent folders often breaks during compilation and runtime for two main reasons:
+
+1. **`outDir` Distortion**: When `tsc` compiles your code, it tries to mirror your source directory structure inside your build folder (e.g., `dist/`). If your code imports files from a parent folder (`../`), TypeScript will unexpectedly change the internal structure of your `dist/` folder to include those parent files, which can break your deployment scripts.
+2. **Bundler Failures**: Many bundlers (like Vite, Webpack, or Next.js) restrict file resolution to the project root for safety reasons. Reaching outside the project root can throw "Module not found" or security isolation errors during production builds.
+
+### The Better Alternative
+
+Instead of mapping upward, **move your `tsconfig.json` to the highest shared parent directory**, or use **TypeScript Project References** (via a `tsconfig.build.json` or solution-style configs) to properly link multi-package/monorepo structures together.
+
+Are you trying to share code between **multiple projects (like a monorepo)**, or are you just trying to reference a **global config file** outside your source folder? Let me know so I can suggest the safest structural fix.
+
+# how to hardlink on ubuntu
+
+To create a hard link on Ubuntu, use the **`ln` command** by typing **`ln source_file target_link`** in your terminal. Unlike a symbolic (soft) link, a hard link acts as an exact copy or alias that points directly to the same underlying data on your storage drive (the same inode). [link](https://www.redhat.com/en/blog/hard-links-linux)
+
+### How to Create a Hard Link
+
+Open your terminal and use the following syntax:
+
+bash
+
+```
+ln /path/to/source_file /path/to/hard_link
+```
+
+Use code with caution.
+
+**Example:**\
+If you have a file named `report.txt` and you want to create a hard link named `report_backup.txt` in the same directory, run:
+
+bash
+
+```
+ln report.txt report_backup.txt
+```
+
+Use code with caution.
+
+### How to Verify It Worked
+
+You can verify that both names point to the exact same data by checking their **inode number** using the `-i` flag with `ls`: [link](https://www.redhat.com/en/blog/hard-links-linux)
+
+bash
+
+```
+ls -i report.txt report_backup.txt
+```
+
+Use code with caution.
+
+- **Result:** You will see the same ID number listed next to both files (e.g., `1234567 report.txt` and `1234567 report_backup.txt`). [link](https://www.youtube.com/shorts/8sihjGwamJA)
+
+To visualize how hard links differ from soft links and how to track their unique identifiers in the filesystem, watch this demonstration:
+
+16:12
+
+[link](https://www.youtube.com/watch?v=VKCXygOV2uk)
+
+Linux Fundamentals: Mastering Links: Unraveling the Magic of ...
+
+2 years ago
+
+YouTube · Acosta E.T.F
+
+### Important Rules and Limitations
+
+- **Files only:** You **cannot** create a hard link for a directory (folder). If you need to link a directory, you must use a symbolic link (`ln -s`). [link](https://askubuntu.com/questions/108771/what-is-the-difference-between-a-hard-link-and-a-symbolic-link)
+- **Same storage drive:** Hard links **cannot span across different filesystems** or partitions (e.g., you cannot hardlink a file from your internal drive to an external USB drive). [link](https://www.redhat.com/en/blog/linking-linux-explained)
+- **Safe deletions:** If you delete the original file, the hard link still works perfectly and retains all the data. The data is only truly deleted from your computer once _all_ hard links to it are deleted. [link](https://www.reddit.com/r/linuxquestions/comments/194oc3q/i%5Fhave%5Fa%5Fbit%5Fof%5Fa%5Fdumb%5Fquestion%5Fregarding%5Fhard/)
+
+Would you like to know how to create a **symbolic (soft) link** instead to link folders or cross over to different drives, or do you need help managing existing links?
+
+- [link](https://askubuntu.com/questions/108771/what-is-the-difference-between-a-hard-link-and-a-symbolic-link)\
+  Ask Ubuntu\
+  What is the difference between a hard link and a symbolic link?\
+  1 15 When to use Soft Link: Link across filesystems: If you want to link files across the filesystems, you can only use symlinks/s...
+- [link](https://www.redhat.com/en/blog/hard-links-linux)\
+  Red Hat\
+  Sysadmin basics: Create hard links in Linux - Red Hat\
+  Oct 11, 2022 — The ln command creates links. Use the -h option to see its available parameters. To create a hard link, To prove this hard link is...
+- [link](https://www.redhat.com/en/blog/linking-linux-explained)\
+  Red Hat\
+  Hard links and soft links in Linux explained\
+  Sep 21, 2020 — The syntax for creating a hard link is: \* \`ln (original file path) (new file path)\` \* \*\*Limitations\*\* Hard links can only be creat...
+
+Show all
+
+# how to preserve symlink on parceljs
+
+**Parcel explicitly follows Node's default logic by automatically preserving symlinks**. [link](https://github.com/parcel-bundler/parcel/issues/1125)
+
+Unlike bundlers such as Webpack—which evaluate the target file's absolute path (`fs.realpath`)—\[Parcel resolves local paths using the directory structure of the symlink itself]\(1.2.1, 1.3.1). This behavior ensures that your module resolution context remains tied to where the symlink lives, effectively preventing duplicate nested package lookups. [link](https://forums.meteor.com/t/very-bumpy-upgrade-to-3-4-1-and-rspack-still-cant-build/64650)
+
+However, local development workflows (like using `npm link` or Monorepos) can occasionally break this behavior. The underlying logic and fixes vary depending on the specific problem you are troubleshooting:
+
+### 1. Parcel Compiles Your Code Instead of Using the Bundled Version
+
+When a module is symlinked, **Parcel actively detects if the package has a `source` field** in its `package.json`. If it finds one, Parcel treats it as raw source code and builds it recursively using the host project's configuration. [link](https://parceljs.org/features/dependency-resolution/)
+
+- **The Problem:** If you want your symlinked package to act exactly like an external npm package (using its pre-compiled `main` or `module` build), the presence of the `source` field will override that goal. [link](https://github.com/parcel-bundler/parcel/discussions/8547)
+
+- **The Fix:** Remove the `"source"` field from the symlinked library’s `package.json`, or explicitly map it back to the entry file inside your host application's `package.json` using the [Parcel Aliases](https://parceljs.org/features/dependency-resolution/) feature: [link](https://parceljs.org/features/dependency-resolution/)\
+  json
+
+<!---->
+
+```
+"alias": {
+  "your-symlinked-package": "./node_modules/your-symlinked-package/dist/index.js"
+}
+```
+
+Use code with caution.
+
+### 2. Live Rebuilds / HMR Are Not Triggered by Symlinked File Changes
+
+If you are modifying code inside a symlinked directory and the hot-reloading mechanism fails to capture the update, it is usually because the underlying watcher loses track of the symlink tree boundaries. [link](https://github.com/parcel-bundler/parcel/issues/4950)
+
+- **The Fix:** Run the Parcel development server with the `--no-cache` argument to force a fresh file evaluation:\
+  bash
+
+<!---->
+
+```
+parcel watch index.html --no-cache
+```
+
+Use code with caution.
+
+- **Alternatively:** Clean the local cache directory entirely by executing `rm -rf .parcel-cache` before initiating your next script run. [link](https://parceljs.org/features/cli/)
+
+### 3. Node-Level Symlink Failures (for Custom Tooling or Entry Points)
+
+If you have written a custom script wrapping Parcel or are calling it via node executables that resolve paths too early, you must enforce the configuration directly at the Node runtime engine layer. [link](https://github.com/pnpm/pnpm/issues/244)
+
+- **The Fix:** Pass the native runtime flag directly through your environment configuration by setting `NODE_OPTIONS`: [link](https://stackoverflow.com/questions/61132438/preserve-symbolic-link-in-mocha-js)\
+  bash
+
+<!---->
+
+```
+NODE_OPTIONS="--preserve-symlinks" parcel build index.html
+```
+
+Use code with caution.
+
+Are you running into an **issue with a monorepo setup** (like Yarn/pnpm Workspaces), or is a specific **`npm link` dependency failing to compile**? Let me know the context so I can tailor the configuration for you.
+
+- [link](https://github.com/parcel-bundler/parcel/issues/1125)\
+  GitHub\
+  Symlink realpaths · Issue #1125 · parcel-bundler/parcel\
+  Node's --preserve-symlinks does not prevent getting multiple copies of the same dependencies.
+- [link](https://parceljs.org/features/dependency-resolution/)\
+  Parcel.js\
+  Dependency resolution\
+  using the alias field to replace files unconditionally, or with the source or browser fields. When the module is symlinked, compil...
+- [link](https://github.com/parcel-bundler/parcel/issues/4950)\
+  GitHub\
+  Parcel does not watch/refresh changes inside a symlink folder #4950\
+  Jul 29, 2020 — I need to stop the server, delete the cache ( rm -rf . parcel-cache ) and restart parcel to see the change.
+
+Show all
 
 
 
