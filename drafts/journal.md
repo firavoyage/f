@@ -55137,6 +55137,10 @@ TypeError: 'int' object is not iterable
 
 > The user-defined function square takes only x; providing more or fewer arguments will result in an error.
 
+---
+
+"python tutor" <!-- py in js? ah, ssr... -->
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
