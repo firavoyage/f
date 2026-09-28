@@ -8,27 +8,23 @@ modes:
     - green
     - yellow
     - orange
+    - orange-ubuntu
     - red
     - pink
     - purple
     - slate
   density:
     - comfortable
-    - compact
     - cozy
+    - compact
+  window:
+    - active
+    - inactive
+  animation:
+    - fluid
+    - reduced # reduced animation
 
 palette:
-  accent:
-    blue: oklch(61.4% 0.164 255)
-    teal: oklch(60.3% 0.098 213)
-    green: oklch(59.4% 0.139 147)
-    yellow: oklch(67.4% 0.142 76)
-    orange: oklch(65.4% 0.196 42)
-    red: oklch(60.3% 0.217 22)
-    pink: oklch(65.1% 0.158 352)
-    purple: oklch(52.5% 0.175 317)
-    slate: oklch(60.1% 0.037 247)
-
   # no need to overthink, 1% difference is trivial
   # prefer standard over adwaita
   gray:
@@ -136,42 +132,54 @@ palette:
 
 color:
   bg:
-    primary: # core canvas
-      value: "palette.gray.50"
-      dark: "palette.gray.900"
-    secondary: # panel
-      value: "palette.gray.200"
-      dark: "palette.gray.800"
-    tertiary: # button on panel
-      value: "palette.gray.300"
-      dark: "palette.gray.700"
-    hover:
-      value: "palette.gray.200"
-      dark: "palette.gray.800"
-    pressed:
-      value: "palette.gray.200"
-      dark: "palette.gray.800"
     accent:
-      value: "palette.accent.blue"
-      teal: "palette.accent.teal"
-      green: "palette.accent.green"
-      yellow: "palette.accent.yellow"
-      orange: "palette.accent.orange"
-      red: "palette.accent.red"
-      pink: "palette.accent.pink"
-      purple: "palette.accent.purple"
-      slate: "palette.accent.slate"
+      blue: oklch(61.4% 0.164 255)
+      teal: oklch(60.3% 0.098 213)
+      green: oklch(59.4% 0.139 147)
+      yellow: oklch(67.4% 0.142 76)
+      orange: oklch(65.4% 0.196 42)
+      orange-ubuntu: oklch(64.049% 0.19406 37.743)
+      red: oklch(60.3% 0.217 22)
+      pink: oklch(65.1% 0.158 352)
+      purple: oklch(52.5% 0.175 317)
+      slate: oklch(60.1% 0.037 247)
+    primary: # core canvas
+      light: "palette.gray.50"
+      dark: "palette.gray.850"
+      # dark: "palette.gray.900"
+    secondary: # panel
+      light: "palette.gray.200"
+      dark: "palette.gray.800"
+      # dark: "palette.gray.850"
+    tertiary: # button on panel
+      light: "palette.gray.300"
+      dark: "palette.gray.700"
+    selection:
+      active: color-mix(in oklab, color.bg.accent 30%, transparent)
+      inactive: color-mix(in oklab, palette.gray.500 20%, transparent)
+    focus: color-mix(in oklab, color.bg.accent 30%, transparent)
+    backdrop: color-mix(in oklab, palette.gray.950 30%, transparent)
+    tooltip: palette.gray.900
+    commands:
+      light: color-mix(in oklab, palette.gray.200 30%, color.bg.primary)
+      dark: color-mix(in oklab, palette.gray.950 30%, color.bg.primary)
+    hover: color-mix(in oklab, color.bg.tertiary 50%, transparent)
+    click: color.bg.tertiary
 
   fg:
     primary:
-      value: "palette.gray.800"
-      dark: "white"
+      light: palette.gray.800
+      dark: white
     secondary:
-      value: "palette.gray.800"
-      dark: "white"
+      light: palette.gray.800
+      dark: white
     tertiary:
-      value: "palette.gray.800"
-      dark: "white"
+      light: palette.gray.800
+      dark: white
+    placeholder:
+      light: palette.gray.500
+      dark: palette.gray.500
+    tooltip: white
 
 spacing:
   0.5: 0.125rem
@@ -208,54 +216,89 @@ spacing:
   80: 20rem
   96: 24rem
 
-# use weight directly. it's not changeable or contextual. 
+max-width:
+  none: none
+  xs: 20rem # Narrow UI cards
+  sm: 24rem # Sidebars / Dialogs
+  md: 28rem # Small article columns
+  lg: 32rem # Standard content blocks
+  xl: 36rem # Medium readability blocks
+  2xl: 42rem # Standard grid containers
+  3xl: 48rem # Content layouts
+  4xl: 56rem # Content layouts
+  5xl: 64rem # Wide sections
+  6xl: 72rem # Wide sections
+  7xl: 80rem # Maximum default page width (1280px)
+  prose: 65ch
+  full: 100%
+  min: min-content
+  max: max-content
+  fit: fit-content
+  screen-sm: 640px
+  screen-md: 768px
+  screen-lg: 1024px
+  screen-xl: 1280px
+  screen-2xl: 1536px
 
-font:
-  sans: '"Adwaita Sans", sans-serif'
-  monospace: '"Adwaita Mono", monospace'
+# breakpoint:
+#   sm: 640px
+#   md: 768px
+#   lg: 1024px
+#   xl: 1280px
+#   2xl: 1536px
+
+typeface:
+  sans: "Roboto, Adwaita Sans, Ubuntu Sans, Noto Sans, sans-serif"
+  serif: "EB Garamond, Noto Serif, serif"
+  monospace: "Fira Code, Adwaita Mono, Ubuntu Mono, monospace"
 
 text:
-  xs: 
-    size: "0.75rem"
-    height: "1rem"
-  sm: 
-    size: "0.875rem"
-    height: "1.25rem"
-  base: 
-    size: "1rem"
-    height: "1.5rem"
-  lg: 
-    size: "1.125rem"
-    height: "1.75rem"
-  xl: 
-    size: "1.25rem"
-    height: "1.75rem"
-  2xl: 
-    size: "1.5rem"
-    height: "2rem"
-  3xl: 
-    size: "1.875rem"
-    height: "2.25rem"
-  4xl: 
-    size: "2.25rem"
-    height: "2.5rem"
+  xs: 0.75rem/1rem
+  sm: 0.875rem/1.25rem
+  base: 1rem/1.5rem
+  lg: 1.125rem/1.75rem
+  xl: 1.25rem/1.75rem
+  2xl: 1.5rem/2rem
+  3xl: 1.875rem/2.25rem
+  4xl: 2.25rem/2.5rem
+  5xl: 3rem/1
+  6xl: 3.75rem/1
+  7xl: 4.5rem/1
+  8xl: 6rem/1
+  9xl: 8rem/1
 
-# size: # icon-size
-#   sm: "14px"
-#   md: "16px"
-#   lg: "32px"
+icon:
+  xs: 0.75rem
+  sm: 0.875rem
+  base: 1rem
+  lg: 1.125rem
+  xl: 1.25rem
+  2xl: 1.5rem
+  3xl: 1.875rem
+  4xl: 2.25rem
+  5xl: 3rem
+  6xl: 3.75rem
+  7xl: 4.5rem
+  8xl: 6rem
+  9xl: 8rem
+
+font:
+  heading: bold text.lg typeface.sans
+  text: text.base typeface.sans
+  code: text.sm typeface.monospace
 
 radius:
-  xs: "2px"
-  sm: "4px"
-  base: "6px"
-  md: "8px"
-  lg: "12px"
-  xl: "16px"
-  2xl: "24px"
-  3xl: "32px"
-  
-  # just go standard as it's a superset
+  none: 0px
+  xs: 2px
+  sm: 2px
+  base: 4px
+  md: 6px
+  lg: 8px
+  xl: 12px
+  2xl: 16px
+  3xl: 24px
+  4xl: 32px
+  full: 9999px
 
   # xs: "4px"
   # sm: "8px"
@@ -263,17 +306,70 @@ radius:
   # lg: "16px"
   # xl: "24px"
   # 2xl: "32px"
-  full: "9999px"
 
-# todo
-scrollbar:
-  width: "8px"
-  thumb: "#bbb"
-  thumb-hover: "#999"
-  thumb-active: "#888"
+border:
+  0: 0px
+  1: 1px
+  2: 2px
+  # 3: 3px
+  4: 4px
+  8: 8px
 
-# todo
-focus-ring:
-  color: "rgba(53, 132, 228, 0.5)"
-  width: "2px"
-  offset: "-2px"
+hierarchy:
+  backdrop-hidden: -200
+  backdrop: 200
+  sidebar: 400
+  dialog: 600 # preferences, keyboard shortcuts, about
+  popup: 800 # select dropdown
+  commands: 850 # command palette
+  toast: 900
+  tooltip: 1000
+  graph:
+    grid: -200
+    range: 200
+    line: 400
+    axis: 500
+    point: 600
+    label: 1000
+
+transition:
+  backdrop:
+    fluid: 0.3s ease
+    reduced: 0s ease
+
+# # todo
+# scrollbar:
+#   width: "8px"
+#   thumb: "#bbb"
+#   thumb-hover: "#999"
+#   thumb-active: "#888"
+
+# # todo
+# focus-ring:
+#   color: "rgba(53, 132, 228, 0.5)"
+#   width: "2px"
+#   offset: "-2px"
+
+page:
+  whitespace:
+    comfortable: spacing.2
+    cozy: spacing.1
+    compact: spacing.1
+  whitespace-sm:
+    comfortable: spacing.1
+    cozy: spacing.1
+    compact: spacing.1
+titlebar:
+  height:
+    comfortable: spacing.12
+    cozy: spacing.10
+    compact: spacing.8
+sidebar:
+  width:
+    comfortable: spacing.72
+    cozy: spacing.64
+    compact: spacing.60
+field:
+  outline:
+    width: border.2
+    width-lg: border.4

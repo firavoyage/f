@@ -4,7 +4,7 @@ import { join, dirname } from 'node:path';
 import { rm, writeFile, readFile, appendFile, mkdir, unlink, access } from 'node:fs/promises';
 import trash_lib from 'trash';
 
-let app_id = ''
+let app_id = 'app'
 let xdg = false
 
 // Errors

@@ -1,74 +1,82 @@
 // @ts-nocheck
 /* eslint-disable */
 
-import { handle, handle_best_effort } from 'lib/handle';
+import { handle } from 'lib/handle';
 
-function foo() {
-  throw 'foo'
-}
+// function foo() {
+//   throw 'foo'
+// }
 
-async function bar() {
-  throw 'bar'
+// async function bar() {
+//   throw 'bar'
 
-  return 'ok'
-}
+//   return 'ok'
+// }
 
-function baz() {
-  const luck = Math.random()
-  if (luck < 0.5) {
-    throw err('unlucky')
-  }
+// function baz() {
+//   const luck = Math.random()
+//   if (luck < 0.5) {
+//     throw err('unlucky')
+//   }
 
-  return { ok: true }
-}
+//   return { ok: true }
+// }
 
-function asdf() {
-  const luck = Math.random()
-  if (luck < 0.5) {
-    throw err('unlucky')
-  }
+// function asdf() {
+//   const luck = Math.random()
+//   if (luck < 0.5) {
+//     throw err('unlucky')
+//   }
 
-  return 'lucky'
-}
+//   return 'lucky'
+// }
 
-async function main() {
-  const a = handle(foo)
-  log(a)
+// async function main() {
+//   const a = handle(foo)
+//   log(a)
 
-  const b = await handle(() => bar())
-  log(b)
+//   const b = await handle(() => bar())
+//   log(b)
 
-  // log(await handle(() => await bar()))
+//   // log(await handle(() => await bar()))
 
-  const c = await handle(async () => await bar())
-  log(c)
+//   const c = await handle(async () => await bar())
+//   log(c)
 
-  const d = await handle(() => fetch(''))
-  log(d)
+//   const d = await handle(() => fetch(''))
+//   log(d)
 
-  // await handle(() => fetch(''))
-  // log((await handle(() => fetch(''))).message) 
-  // log(await handle(async () => await fetch('')))
+//   // await handle(() => fetch(''))
+//   // log((await handle(() => fetch(''))).message) 
+//   // log(await handle(async () => await fetch('')))
 
-  const e = handle(baz)
-  log('baz', e)
-  // if (is_error(e)) {
-  //   return e
-  // }
-  // const temp = e
+//   const e = handle(baz)
+//   log('baz', e)
+//   // if (is_error(e)) {
+//   //   return e
+//   // }
+//   // const temp = e
 
-  const f = handle(asdf)
-  log('asdf', f)
-  // if (is_error(f)) {
-  //   return f
-  // }
-  // const temp2 = f
+//   const f = handle(asdf)
+//   log('asdf', f)
+//   // if (is_error(f)) {
+//   //   return f
+//   // }
+//   // const temp2 = f
 
-  // bar()  
-}
+//   // bar()  
+// }
 
-await main()
+// await main()
 
-log(await handle_best_effort(() => bar()))
+// log('reaches the end')
 
-log('reaches the end')
+log(handle(() => { throw err('123') }))
+
+log(handle(() => { throw err('123') }, 456))
+
+log(handle(() => foo))
+
+log(handle(() => foo, 'fallback'))
+
+log('end')
