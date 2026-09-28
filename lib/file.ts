@@ -4,7 +4,8 @@ import { join, dirname } from 'node:path';
 import { rm, writeFile, readFile, appendFile, mkdir, unlink, access } from 'node:fs/promises';
 import trash_lib from 'trash';
 
-import { app_id, xdg } from 'config.json';
+let app_id = ''
+let xdg = false
 
 // Errors
 export const non_string_content = "non string content"
@@ -108,6 +109,10 @@ export async function map_error<F extends (...args: any[]) => any>(fn: F) {
   }
 
   return result
+}
+
+export function init(options) {
+  ({ app_id, xdg } = options)
 }
 
 export function home(...args: string[]) {
