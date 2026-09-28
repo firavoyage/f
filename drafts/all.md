@@ -339,6 +339,7 @@ web: <!-- frontend, web, ts/js -->
 - favicon
 - js std lib
 - js std lib builtin global object methods
+- web lib style
 
 backend:
 
