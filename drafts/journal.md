@@ -54896,6 +54896,10 @@ wow interesting. Math.min accepts params, not an array. costs me minutes of conf
 
 min was 27. i was not optimal.
 
+<!-- i missed a critical detail. i totally missed it. yeah, you have to split it first. it's way faster than /2 or -1. and 2026 - 1 is not the same as 2026 division first nevertheless because you have a tricky in between move. -->
+
+<!-- "heuristics" -->
+
 ```ts
 // const { min } = Math
 
