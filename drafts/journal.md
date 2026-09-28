@@ -55120,6 +55120,23 @@ Type "help", "copyright", "credits" or "license" for more information.
 1
 ```
 
+---
+
+turtle is a wonderful example of its power in education. canvas is highly practical and imperative, and thus non mathematical. svg cant be programmed natively.
+
+---
+
+?!
+
+```
+>>> max(1)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'int' object is not iterable
+```
+
+> The user-defined function square takes only x; providing more or fewer arguments will result in an error.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
