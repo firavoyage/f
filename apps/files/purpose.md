@@ -1,0 +1,5283 @@
+purpose
+
+---
+
+jul 2026
+
+17
+
+17 20 optimize maimai. test the logics. ~~(17 40)~~ (18 00)
+
+idk if it matters. but i would like to complete it, at least to make it logically sound.
+
+e.g. large m (e.g. miss break), low n (base loss), obviously impossible yet currently some results exist it seems
+
+<!-- 17 34 oh it's simple. there might be more loss than avail notes. just add a check. -->
+
+<!-- i would like to write into a log, but it's async, and i fire and forget. ask if it matters. -->
+
+~~19 00~~ 19 40 optimize maimai furtherer ~~(19 40)~~ ~~(20 00)~~ 21 00
+
+seems ive done what i can do on branch cutting.
+
+btw, i could easily figure out hp lp hg md lg given all stats on the board, but that would be a bit boring.
+
+the current problem is it's terminated.
+
+e.g. `solve_change(285, _b_factors)`
+
+as you can see
+
+```ts
+const _b_factors = [2, 4, 5, 6, 10, 15, 20, 30];
+```
+
+i guess i can remove 4, 10, and 15, for example.
+
+they are basically a combination.
+
+<!-- i drifted a bit. but i would be fine. -->
+
+20
+
+02 40 plan
+
+i guess it can be simple. i can know everything ahead.
+
+idk the exact choices or designs i would have. but ik what they would be.
+
+i could be wrong. but if it provides invariant foundation for the future, it would be worth investing in.
+
+---
+
+idk how long it would take. but i do not have to timebox everything. ik it matters. so just proceed until complete.
+
+24
+
+05 00 simplify design tokens yaml, deprecate value based contextual token determination, make it more natural and consistent ~~(06 00)~~ 07 00
+
+adopt a object flattening template <!-- ? -->
+
+revise convert yaml to css cli input syntax
+
+no native globbing i guess. leverage shell wildcard. take all args as files (ignore stdin). convert yaml to colocated css.
+
+---
+
+this wont work. stdin wont propagate.
+
+```
+rg --files -g '*.ts' | cd "/home/fira/Documents/f/apps/tools/source/web/scripts/" && b 'convert design tokens.ts'
+```
+
+it's not about the code.
+
+---
+
+improve app copy meanwhile.
+
+---
+
+it seems ive modified legacy folder by mis ordering rg flags
+
+surprisingly vscode timeline doesnt track them.
+
+i could, but i would not fix them through git history.
+
+p
+
+```sh
+rg --files -g '!**/legacy/**' -g 'design/**/*.yaml'
+```
+
+c
+
+```sh
+rg --files -g 'design/**/*.yaml' -g '!**/legacy/**'
+```
+
+23 20 refine design tokens. leverage font shorthand. (23 40)
+
+```yaml
+font: font-style font-variant font-weight font-stretch font-size/line-height font-family;
+```
+
+it's a bit hard to reference tokens like this
+
+```yaml
+font:
+  heading: bold text.lg typeface.serif
+```
+
+i dont wanna invent like `{text.lg}`
+
+```yaml
+font:
+  heading: bold var(--text-lg) var(--typeface-serif)
+```
+
+seems it ruins.
+
+```yaml
+font: bold var(--text-lg) var(--typeface-serif)
+# font: var(--font-heading)
+```
+
+maybe i would just define font in css.
+
+you would not reuse `var(--font-heading)` a lot.
+
+wait why do i have to make assumptions.
+
+well, i guess i can make the converter smarter.
+
+ok. easy. the logic is, separate value by spaces. for each, if it's a valid token, convert to css var and replace all.
+
+fix typing in converter.
+
+25
+
+02 20 design main page. create sidebar. create a basic converter. (03 00)
+
+try to make some progress.
+
+---
+
+main page.
+
+states <!-- props and states are logically the same -->: tools, focused tool, pref
+
+by pref, i mean when possible, it can show as structured/raw input, and rendered/raw output.
+
+a tools have
+
+- name
+- fn
+- structure? an object in setting options <!-- i would design it later -->
+- render? string -> component
+
+---
+
+sidebar
+
+states: list, focused item
+
+<!-- llm doesnt name as list. it names as items. wise. -->
+
+---
+
+i will not impl the draggable separater for now.
+
+---
+
+<!-- use ts. use type no interface. only type on params, not return. -->
+
+use ts. use type no interface. use snake case. no aria labels.
+
+class name rules...
+
+well, i guess i should break the rules.
+
+rules are designed for react, for big corps.
+
+seems ts wants me to use data attrs for non standard attrs. ok. let's have a css snippet for it.
+
+---
+
+use ts. use type no interface. no return type. use snake case. no aria labels. use fn statement. write a react textarea component. params value set_value.
+
+---
+
+convertion can be two way i realize.
+
+---
+
+til: ~~**think a bit about the implementation (e.g. params/states, types, abstraction structure) even if they are logically identical.**~~ **write when you are clear. sleep or rest when not.**
+
+03 20 write web/lib/sync theme.use. add import type snippet. link some snippets.
+
+12 20 simplify knowledge: name component classname (12 40)
+
+just be nested. if overwhelming, consider separation/abstraction.
+
+<!-- btw, by default, descendant selector already selects children on all levels. flexible. -->
+
+make humility/.knowledge the single source of truth. rm everywhere else.
+
+folders like humility/source/web/knowledge are just quick workarounds as i dont wanna deal w agent skills.
+
+17 20 style selection ~~and focus ring~~ ~~(17 40)~~ ~~(18 00)~~
+
+choose adwaita anyway.
+
+til: i would always tend to ask general broader questions. fewer assumptions -> larger value range -> better result. but it would be more efficient to trust my intuition (observations, assumptions) more and ask the binary comparison questions directly.
+
+> It's important to do things fast
+
+---
+
+assumption: i guess it's the same 30% opacity across light or dark.
+
+---
+
+fix converter. rm assumption: you would only ref non contextual tokens. you can reference whatever exists now.
+
+---
+
+drop the timebox. i do not actually have a time constraint. and i would absolutely explore when i feel like that, even with the identical outcome.
+
+---
+
+wait. maybe my assumption is wrong. for inactive selection, it might not be 30 opacity.
+
+maybe they just use different bg, like contextual bg primary.
+
+though, my bg primary secondary teritary has discrepency w them anyway.
+
+the decision is to use a unified bg teritary at 50 opacity.
+
+well, let me see.
+
+i assume they will have a same opacity for both light and dark. i couldnt believe if it's not true.
+
+i have another theory. they used my gray 500 at 0.2 opacity. i guess it's better. i dont think teritary bg has sth to do. if there is a dedicated inactive sel bg, it would not be contextual i guess.
+
+```
+0.2 oklch(66.7% 0.001 286) oklch(64.8% 0.006 286)
+0.5 oklch(86.1% 0.001 286) oklch(42.2% 0.007 286)
+```
+
+---
+
+wow surprising
+
+```
+    selection: color-mix(in srgb, color.bg.accent 30%, transparent)
+```
+
+when i type co, bg, acc, it can autocomplete. maybe yaml has some reference syntax?
+
+it couldnt work on numbers though. (pa works, gr works, 500 doesnt)
+
+---
+
+after conversion it sits on global root. expected. but interesting.
+
+it's not contextual itself. but it reference one.
+
+---
+
+i could create a js listener. it's easy. to monitor whether window is active.
+
+but currently it looks fine. why does it have to react to window blur. just make it selected. no need to grab attention.
+
+~~decision: out of scope. (could have)~~
+
+why not. i would have it if it allows. i should ignore browser compatibility constraints.
+
+---
+
+20 00 style focus ring 20 40
+
+animation is cool. but i would not adopt it. vscode and linear dont have animation yk.
+
+---
+
+i made padding inside "focus-visible", but it's quickly found and fixed.
+
+26
+
+03 00 complete sidebar. write some snippets. (03 20)
+
+~~both push and overlay variants i guess.~~
+
+only push for now. (vscode)
+
+could have: overlay variant.
+
+snippets and react utils later.
+
+i would separate the taxonomy of sidebar items from the tools definition. it could be free.
+
+it doesnt have to be fancy. just an array of strings for now. i could add hierarchy later. <!-- well, maybe i need both name and id, ordered. i will think about it later. the current focus is styling. -->
+
+---
+
+use state snippet. use effect snippet. css sel snippet. <!-- ? -->
+
+make use state and use effect global. also support react-use.
+
+---
+
+the tradeoff of linking snippets is... vscode couldnt detect file changes to reload. you have to restart.
+
+18 40 create snippet use toggle, deconstruct array. (19 00)
+
+19 00 decide to create a middleware for props. (20 00)
+
+yes. class > classname. theme > data-theme (both, under the hood). attr: false then do not make a presence at all.
+
+it would be incompatible w llms wo heavy prompting. but it would be fine.
+
+<!-- i guess there would be no libs for that. -->
+
+---
+
+how to use class instead of classname in react
+
+---
+
+it could be less than 20min in code, but it takes time to research react arbitary rules.
+
+20 00 research google ai mode content filter and actual system prompt.
+
+no idea how meaningful it was.
+
+curiosity. **gravitated and spellbound.**
+
+20 20 design props middle ware.
+
+support string, array, and object for both class and classname. lib: `clsx`. for array, pass as `clsx(...arr)` (maybe array of classes, maybe args i.e. a mix of types).
+
+support string and object style. lib: `inline-style-parser`
+
+if not started w data or aria, normalize kebab case. (snake case doesnt err)
+
+for boolean, omit false, make true "true".
+
+---
+
+create a snippet for it.
+
+---
+
+i think whether or not i could, i will not let it autocomplete all possible attrs. first i dont have autocomplete when i type `{...{}}` (until i type the first letter), unlike css prop values. so i wont know what's there. and it's too massive and noisy. i would not need most generally.
+
+solution: leverage llms (mdn backed) to know the attrs. stay above raw elements most time.
+
+---
+
+upd 27 jul dawn: normalize onfoo to onFoo.
+
+27
+
+03 20 research and design ~~, and write~~ global persistent state management lib.
+
+see 20260719 intuitive web react state management usecontext zustand jotai custom hook.md
+
+05 00 make styling opt in.
+
+using a button tag doesnt mean it's a button. it should have no border radius by default.
+
+sidebar item shouldnt have a regular outline. it doesnt have to be consistent. (see chromium devtools)
+
+ideal: all focusable items have focus style. none uses default browser style. each uses what fits.
+
+i could not achieve the ideal. i could not make all focusable items properly styled before knowing what they are to decide what fits.
+
+what i can do, is, to reset the ugly browser fallback, and remove the blue ring baseline.
+
+---
+
+no idea what `[tabindex="0"]` does.
+
+i dont have to know. it does nothing if i do not adopt it at all.
+
+---
+
+upd: make an issue irrelevant btw
+
+fix sidebar
+
+when collapsed, the outline still can be visible.
+
+enlarge neg margin l, or take a more elegant approach.
+
+18 40 plan.
+
+today:
+
+- state lib
+- sidebar overlay variant. fix toggle.
+- research cyberchef, online converters. think about features & ui prototype.
+
+~~19 00~~ 19 40 write state management lib. ~~(19 40)~~ ~~(20 20)~~ 22 40
+
+i just wanna hand code it.
+
+---
+
+i did some research out of curiosity. it would pay off i guess. like, what if i add a rule, do not async if you do not await?
+
+well maybe not. i think the best prac is to await network, fs, etc. and make all others sync.
+
+---
+
+seems i was motivated by aggressive phrasing of risks, leading to over engineering concerns.
+
+---
+
+ts resets type narrowing, even if you define the fn right inside an if.
+
+just ignore rather than "foo as sth". it's ts's problem, rather than sth to be declared explicitly.
+
+28
+
+03 20 fix sidebar toggle shortcut consistency
+
+when inside textarea, ctrl b doesnt work.
+
+maybe it's to prevent default. decide to opt in or opt out.
+
+04 40 adopt state lib. test and fix. 05 00
+
+move global prelude to the absolute beginning.
+
+05 00 create sidebar overlay variant. ~~(05 20)~~ 06 00
+
+fix props lib.
+
+---
+
+the local roboto font does have font weight issues. it maps incorrectly.
+
+---
+
+false assumption: sibling means either backward or forward.
+
+---
+
+well, css syntax highlighting is quirky.
+
+20 20 research cyberchef. think about features. design the routing and all app states. 21 20
+
+**i should write down my thoughts. otherwise i would be repeating the same decisions, trying to memorize.**
+
+**in serenity <!-- or day dreams -->, i might dive deep and gain insights, but i might not think broad enough.**
+
+<!-- no need to timebox this btw. but i would generally try to do it fast. at least to make time meaningfully spent. -->
+
+---
+
+think about features.
+
+- what tools would be available
+- what routes would be available
+- what would ia look like
+- how to design the ixd, or taxonomy, for the related ones (e.g. json yaml toml xml)
+
+it's easy. it's known that many devs start their first projects as todo list, tool box, nav page, or personal blog.
+
+i do have some ideas. let's aggregate them. <!-- now i have a new one. typo fixer. not necessarily typos. just when you mispell some words. i guess it's trivial to have a wordnet in browser memory. or maybe i can make it self hosted. -->
+
+where are they. todo? notes? maybe.
+
+well it doesnt seem to be inside tools/todo. not inside humility aw.
+
+ok i see. drafts/todo.
+
+---
+
+tools
+
+- planned
+  - maimai
+  - color contrast
+  - json yaml toml
+  - base64
+  - unicode and emojis. aliases. synonyms. vector semantic search. <!-- it doesnt have to be a converter. if you feel it would be a tool, then it is a tool. -->
+  - dict (auto correct, string distance)
+  - typo check
+  - word counter
+
+---
+
+/home/fira/Downloads/CyberChef/CyberChef_v11.0.0.html
+
+ok now let's try to gain some inspirations.
+
+ixd: search. you can search through the sidebar items. it would be a prop.
+
+<!-- the tab navigation doesnt work so well. you can easy be trapped into nowhere. -->
+
+you have favorites. a global state.
+
+<!-- well the ix doesnt work. you can double click a sidebar item, or drag it into the recipe. but not single click it. -->
+
+<!-- well, it's just legacy. no native system dark mode. fake md. cluttered irrelevant status bar items. the window scrolls, rather than the settings popup. it's known. -->
+
+let's be focused on the purpose, the list of tools, rather than their ux flaws.
+
+- data format
+  - url decode <!-- e.g. %3d becomes = -->
+- language
+  - language decode <!-- yes, it's vscode builtin, but why not -->
+  - leet speak
+- date/time
+  - timestamp, utc, timezone, (any template string)
+- encryption, public key, hash
+  - (popular methods)
+- misc
+  - regex (the args are defined separately from inputs, on the recipe)
+  - grep
+  - glob
+  - lorem ipsum
+
+shannon entropy is impressive. it's an example of rendered output. though i might not include this. why do i have to know how random sth is. i can document the extension methods, and let llms generate everything though.
+
+fork is weird. it's literally a loop. input must be string. so you fork them by a separator like newline. then you decode base64 for each, and it would be joined. it's not quite a tool i mean. i think you would be able to write logics. like, input split newline map base64 decode join newline, instead. you should not invent a new lang.
+
+magic is fun. dont know if it would be really practically used.
+
+one thing i just noticed, is, it shows a desc of each sidebar item on the right, no delay. <!-- well, it's linguistically inconsistent. "Converts the data from an ordinal integer array back into its raw form." "Convert from IEEE754 Floating Point Numbers". --> there can be an example and/or a reference (e.g. wikipedia).
+
+it does have both json to yaml and yaml to json. it's not quite intuitive yk. it can be json toml yaml csv. but you have to chain yaml to json to csv, otherwise it wouldnt be supported.
+
+when you use json to yaml it errs immediately, as empty isnt valid json. <!-- Error translating from ArrayBuffer to JSON: SyntaxError: Unexpected end of JSON input --> for me, i would choose to be do nothing when it errs. i mean by default. i could take empty/invalid pasted input differently.
+
+_i would like to have some encryption methods._ <!-- there are too many --> i would research.
+
+seems encryption/encoding and public key are different categories.
+
+it holds the power of a math calculator. but it's awkward to fit inside a recipe.
+
+prettier (code tidy) should be an ide feature.
+
+image processing is out of scope.
+
+**scope: text to text at its core.**
+
+better to use a pl yk for flow control. (magic, fork, subsection, ...)
+
+---
+
+about routes, i will support /shortcuts. why not.
+
+but it doesnt have to be a page. (btw, you couldnt share a link, which is both shortcuts manpage and a tool.)
+
+for settings. it would be structured. it can be
+
+- flag (checkbox/toggle)
+- select
+- number input (text inc dec or slide)
+- text input
+
+i would have a quick action panel, like vscode ctrl (shift) p. any variant of ctrl p would trigger. i would make use bind flexible. (array first param)
+
+i guess ctrl f is the same as ctrl p, as the sidebar is searchable. but they dont carry the same intention. ctrl p is better. ctrl f is ambiguous. search sidebar, input, or output? maybe ctrl h replace?
+
+ctrl p can not only search sidebar items, but also "open settings", "open settings json".
+
+---
+
+about recipe.
+
+_could have: recipe._
+
+there are not so many tools here. write extension in js instead.
+
+---
+
+i can also research cyberchef alternatives.
+
+29
+
+00 40 polish global state lib.
+
+narrow path from all strings to keyof state.
+
+revise snippets.
+
+30
+
+04 20 organize todos.
+
+it should be more comprehensive. it should be ordered.
+
+even if they all fall into the backlog category on kanban, they are not the same.
+
+**they have priority and dependency.**
+
+<!-- i didnt include importance. i have moscow labels for them. and roles (e.g. plan, research, visual design, archi design, implement), i think, are already reflected by the priority. -->
+
+the original order reflects the time they are added, a nice to have implicit metadata, which doesnt mean anything.
+
+<!-- btw, priority isnt inherently inside their nature. it comes from dependency, then importance. -->
+
+...
+
+if you feel you wanna build sth even if useless, for a personal project, that's almost always a psychological trap. or not.
+
+<!-- i thought i wanna create a dsl for "recipe". it would be flexible and contextual and embrace the ambiguity of human languages. it's definitely challenging and exciting. -->
+
+04 40 think how to make todos comprehensive.
+
+wbs is too formal and inefficient. i guess it's just a problem of taxonomy. just categorize. by role, maybe.
+
+also, **it's better to plan first.**
+
+it's obvious. but, actually, there are two ways, top down and bottom up. sometimes yk you will need this so you make it anyway. it's reasonable. but, the problem is, you have to figure out what to do next, or how to adapt to the invisible constraints <!-- e.g. it should launch one day. you should expect that. -->. it's different when you are busy or relaxed. both have benefits. but, i mean,
+
+it's better to plan ahead, to write down what you know in one go. as long as you know. it's not wrong to plan everything ahead i mean.
+
+---
+
+it doesnt mean i will have them now. i will proceed tomorrow.
+
+05 20 decide to make text selectability opt in.
+
+a quick win i guess.
+
+---
+
+research css inheritance.
+
+19 00 check the feasibility of recipe dsl.
+
+how to run a dynamic js string in browsers
+
+---
+
+there are many ways. but i think it's not about to choose one.
+
+the conclusion is it's highly feasible and easy.
+
+---
+
+how to construct a js string somehow? via ast?
+
+would i construct a js string via ast?
+
+i think i do want an ast. but maybe a simpler one.
+
+---
+
+well, i guess "js syntax" is way more conceptually simple than "js ast".
+
+ast is designed to be rigid for parsers. many words are highly coupled, yet not merged into an alias or sth.
+
+20 00 design a dsl for recipe. research and summarize firascript and glaze.
+
+could have. maybe irrelevant.
+
+but it would be exciting and meaningful.
+
+22 40 write dsl spec.
+
+enough research.
+
+it wouldnt be pragmatic if it doesnt change the output.
+
+i could absolutely simplify just based on the syntax ref.
+
+31
+
+03 20 <!-- continue to --> write dsl spec. 05 40
+
+18 40 apply title case on window title.
+
+everything you <!-- would possibly --> type should be in lowercase, whether url, filenames, or foldernames (e.g. git clone repo name).
+
+visually, it should show whatever fits.
+
+20 00 ~~document everything known. elaborate the plan.~~ make decisions. think and research sidebar ux.
+
+how would i style the bars.
+
+i feel flush <!-- rect --> items would fit the philosophy. but even vscode doesnt apply flush everywhere. for example, the quick action panel items are inset <!-- rounded -->.
+
+and, there would be settings, keyboard shortcuts, and about <!-- version -->. where would they be. i may say i would toggle it off personally and adopt hotkeys, but on mobile there should be somehow visible. and if it's visible on mobile, it should be consistent on desktop, even if i offer the option to turn off.
+
+- vscode alt bar
+- gnome adwaita sidebar hamburger
+
+btw, idk if i would show the window title _again_, if it's already inside a browser. maybe not.
+
+cyberchef doesnt design. it basically pins things on screen.
+
+foliate shows title bar when hover, and offers a dedicated pin button to switch between overlay (default) and push.
+
+feels im stuck. i have to make a decision.
+
+well, after researching google ai mode (devtools device toggle), i guess i have an answer.
+
+first, it must be able to toggle on when off. so it shouldnt just appear on the sidebar. there would be an icon. i would choose the hamburger menu, like all mobile apps. the adwaita design is actually quite weird i feel, though consistent. it behaves as three dots. letme think about it.
+
+i think the design choice of adwaita is... there is no need for a hambergur menu. when resized, it shows a sidebar icon. the sidebar icon is not bad. it's clear. but it's not single colored (or opacity). it requires significant more cog load.
+
+the decision is
+
+- off: hamburger menu (you can toggle it off, and use keyboard/gesture)
+- on: push for desktop, overlay for mobile
+- push:
+
+---
+
+another thing is, i guess sidebar should not handle the list and the focus. i could render anything inside. it doesnt have to be coupled.
+
+soc.
+
+i guess i would have a list pattern to abstract the map. i mean there are many types of list. nested. hr. headings... this one is opinionated aw.
+
+. 21 00 analyze claude ux. record. 22 00
+
+claude takes another approach. sidebar icon (single colored) on desktop. hamburger on mobile.
+
+btw, i think i could make input and output horizontally splitted on desktop. it doesnt have to be like cyberchef, if we dont rely on recipe.
+
+the final decision.
+
+i will not show a "sidebar of sidebar" like vscode or claude. i have no such dock items.
+
+- google ai mode
+  - home
+  - list
+  - new
+- vscode
+  - files
+  - search
+  - extensions
+  - ...
+- claude
+  - sidebar toggle
+  - (whitespace)
+  - new
+  - chats
+  - projects
+  - artifacts
+  - code
+  - "business"
+  - (whitespace)
+  - design
+  - (whitespace to the bottom)
+  - avatar
+
+tools couldnt be aliased easily to letters. and they dont necessarily have icons.
+
+the decision is,
+
+- on desktop, no sidebar toggle shown. it's on by default. search. title. hamburger. list. power users can opt to hide the title bar. you can use shortcuts or hover the left border. alt, i guess, will ctrl b first and then open main menu.
+- on mobile, there would be a toggle on top. toggle (hamburger or sidebar). Current tool. you can hide it and use gesture.
+
+no secondary sidebar or dock.
+
+for icons, i can change my mind later, make it contextual, or customizable.
+
+. 22 40 analyze adwaita demo.
+
+adwaita demo doesnt allow you to toggle the sidebar. but when you switch to adaptive preview, you can. it's exactly the mobile pattern. btw, it pushes.
+
+toggle. current title. actions (camera/screenshot icon, exit icon, exit text) or three dots. window actions.
+
+the thing is, i dont wanna have a meaningless title bar on web.
+
+actually i thought about it. but i gave too heavy constraints. <!-- i dont want the toggle to float (idk what it would hide. it's also unnatural to see it before "input"). and i dont wanna let it take screen real estate. -->
+
+false assumptions: sidebar toggle should be on sidebar. no title bar.
+
+aug 2026
+
+01
+
+05 00 ~~document everything known.~~ elaborate the plan. design page anatomy. design params and return of some components. 06 00
+
+create general pattern components.
+
+sidebar. shortcuts. settings. quick panel. scroll area.
+
+<!-- that can be. but that's not simple. better to generate, test, and align. -->
+
+learn the layout css props by asking llms specific questions.
+
+sidebar. params: an array of options. a state of selected.
+
+quick panel. params: a list of functions w optional metadata (e.g. names, synonyms).
+
+shortcuts. <!-- just let it bind. -->
+
+---
+
+that's too brief. create a todo for each component instead.
+
+02
+
+02 40 create pattern editor (03 00)
+
+enough prep. time to move on.
+
+---
+
+default export found in sidebar and textarea. <!-- not given enough constrants to chatbot llms -->
+
+standardize as named.
+
+---
+
+- editor type select? readonly?
+  - title
+    - type
+    - select?
+  - textarea
+    - readonly?
+
+---
+
+<!-- i guess it can be done later, to drag to resize. -->
+
+minimum css to split a div to left and right
+
+---
+
+make everything default to flex.
+
+03
+
+17 20 research css caret props. (17 40)
+
+i can complete it.
+
+---
+
+i guess it's to overlay. it would be a bit complex. it might encounter edge cases.
+
+let's keep it simple for now.
+
+---
+
+it doesnt matter, i guess, on when i finish each task. <!-- on recording, well, i mean i could. -->
+
+i would record when i decide to start, or consciously make timeboxes, whether a hard one or a soft one.
+
+i have breaks between tasks. <!-- pomodoro? -->
+
+i may have some rest sometimes. <!-- i would not need to know, i guess, in the future. also, it could be implied. -->
+
+18 00 learn pomodoro method. (18 20)
+
+<!-- compare variant and variation -->
+
+<!-- i didnt record the time in the md either. languages just sit there, waiting for my exploration. it doesnt matter when i learnt things. -->
+
+i guess, from now on i would divide time to every ten minutes, instead of twenty. <!-- i guess, still, i would not use five. relax, i mean. -->
+
+~~18 00~~ 18 30 research cyberchef alternatives. ~~(18 20)~~ (19 00) 20 00
+
+it should be simple. maybe it would not be even worth the time. take a look. and leave.
+
+https://devtoys.app/
+
+---
+
+i have some tabs left. clear them.
+
+also, it seems to be on the top of the todos.
+
+---
+
+it does remember my dark mode choice.
+
+one thing i notice is, cyberchef typically instructs you to dl, as a zip, which is an html.
+
+it doesnt, like, pnpm add g and then run a localhost daemon.
+
+and thus everything stores in localstorage, under origin "files://".
+
+keys are "options" and "favourites" (yeah en uk). i guess it would absolutely conflict.
+
+22 20 <!-- 22 40? --> design routing params and ia. ~~23 40~~ 24 20
+
+<!-- i closed my eyes. i thought. i leaned myself on walls. i wandered. i feel it would pay off. i feel i would be wasting time. idk what im doing. i know what im doing. -->
+
+conclusions
+
+- routing params: tool, args, input <!-- instead of input: json, output: yaml. tools are basically fn, imperative. you couldnt just declare in general. e.g. maimai analysis tool. args are optional (e.g. recipe tool). input auto sync is opt in. -->
+- sidebar ia: under convert heading, there are "json, yaml, toml, xml" and "markdown, html". convert heading couldnt be collapsed. items are dropdowns. collapsed by default. clicking will select the first tool and expand. <!-- initially i thought i would have select on editor title. that's inconsistent and inefficient. -->
+
+rationale
+
+scannable. consistent. efficient. progressive.
+
+<!-- it might be easier to click "json to yaml", than two selects, though selecting is more elegant. you will use ctrl p json yaml anyway. -->
+
+impl
+
+i guess it will be easy. maybe react-use. make routing params a state. set initial when load. sync when change. one way, no more params to js after loading.
+
+visual design
+
+i didnt find a pattern of nested sidebar. vscode works. but it's just too boring. and it doesnt give me any aesthetic pleasure. some blogs or docs might have this pattern. but it's generally vscode like.
+
+maybe adwaita assume we would not nest it too deep.
+
+~~i would make a deliberate choice.~~
+
+i will not make any assumptions like "nesting level must be consistent under one heading, no mix of folders and files".
+
+~~decision.~~
+
+- top level headings like "convert" "misc" will be rendered like adwaita instead of a vscode folder. they can be collapsed when you hover them. if collapsed the indicator will be always visible. if expanded, it will only show on hover.
+- folders and files will be styled the same. folders will have an always visible indicator.
+- files inside folders will have indentation depending on the nesting level.
+- the indicator will go after an item, not before, unlike vscode.
+
+<!-- research wikipedia: philosophy -->
+
+wait. i think they absolutely hae the screen real estate to display both md to html and html to md confortably. it's easier. scan. and then one click.
+
+the main reason behind "json yaml toml xml" dropdown is... aesthetics. it's not a really thing. i shouldnt make them collapsed by default.
+
+decision.
+
+- everything will be indented the same
+- all leaves will be styled the same
+- folders are headings
+- heading style depends on their level. h1 has underline.
+- indicator will only show on hover or when collapsed.
+
+the assumption:
+
+- it can nest anyway, but it will not really nest very deep to look the same.
+- it doesnt matter much if you misidentify which folder it belongs to.
+
+---
+
+anyway.
+
+i think it will turn out to be fine.
+
+you could not imagine the way. you have to build it.
+
+and... you can change your mind later!
+
+04
+
+04 00 design global persistent state. (04 30)
+
+sidebar collapse. settings. theme. sidebar taxonomy pref. tool view pref.
+
+---
+
+i think it could be categorized, like vscode alt bar.
+
+---
+
+constraints
+
+- state must be flattened
+- all possible gui toggles must be reflected in settings. state is a superset.
+- settings gui and settings json must be identical.
+
+---
+
+i think "state must be flattened" would be quite easy to solve.
+
+i guess i would have a yaml file. it's trivial to flatten. and i would not have to deflatten. i would simply reference the existing keys thanks to ts.
+
+assumption: it's clear, i think, that every state, incl the optional ones, must have a default value. it couldnt be undefined. because undefined would be reduced to a default value anyway. and it's not better to define/hardcode in code.
+
+---
+
+how to design the taxonomy?
+
+- vscode alt bar
+- xdg desktop
+- adwaita apps
+
+there could be many ways. but letme learn by doing. just try them out.
+
+where would i put this file.
+
+<!-- vscode file tree is a bit messy. toggle some workspace file exclude settings. -->
+
+maybe just state.yaml on web root.
+
+---
+
+now i see.
+
+alt bar is inside xdg desktop. (data, settings in config)
+
+wait. i feel it might be probably massive to store the full input string in localstorage.
+
+i guess in code i would have `use_global` and `use_global_data`.
+
+i could store data somehow. but it should be decoupled. like,
+
+- when sharing, input could live in url if it allows
+- when restart, input might be stored inside idb. (for sec, default off)
+
+that's conceptually identical. but impl differs.
+
+let's separate them.
+
+<!-- i dont think there would be cache. app state (e.g. current page) would not be cache either. it might be a config. -->
+
+---
+
+since it's yaml i would write freely. in flatten i would convert spaces in keys to underscores.
+
+---
+
+let's research ptyxis a bit.
+
+---
+
+vscode autocompletes yaml well. wow.
+
+<!-- i did not remember ive installed some extensions. -->
+
+18 40 design ~~and implement~~ routing as an extension of state lib. (19 40)
+
+location.
+
+- keep (omit others)
+- omit
+- always sync
+
+---
+
+url params are global. it's inherently coupled w global state.
+
+i already have some thoughts.
+
+design
+
+- ~~sync <!-- should sync url params -->~~
+
+well let's be explicit. i guess persist is clear. you would have an item on localstorage w such key. (i may support idb later.)
+
+sync is not. where would you sync w?
+
+---
+
+well suddenly i thought, if i have both use_global and use_global_data, and both occupies url, and i have no idea what's updated, how could i sync?
+
+solution: every global state would occupy some keys. it simply updates what it has. it wouldnt cleanup irrelevant params (e.g. utm from).
+
+---
+
+design
+
+- should sync url ~~params~~: false <!-- if false, everything else is irrelevant) -->
+- should apply whatever given: true <!-- if they explicitly define like "theme=dark", i think it must apply. whether i would cleanup (so if they share simply by copying url their own pref wouldnt be shared), that's another problem. -->
+- ~~should cleanup irrelevant params after init: false~~
+  - false: do nothing
+  - 'omitted': cleanup if existing as a key of the state and omitted
+  - true: omit everything else (dangerous, may conflict w other global states) <!-- i will not analyze your code. -->
+- should cleanup omitted params after init: false
+- should sync after init: true <!-- if they go to the main page, and there is a tool memorized in localstorage, apply to url. (for new users, i may choose whether to show a main page. maybe just the site itself, not an explicit index.html or main.html, or guide them to the first tool.) you may explicitly go to /home (e.g. if you click the main title). it would show a brief desc of all tools. -->
+- ~~keys to sync?~~
+  - keep?: omit all others
+  - omit?: omit some keys
+- keys to sync? <!-- i guess i would wrap everything inside sync url options (it can be confusing otherwise, like sync w what. sync w persist? btw i dont have constraints on js fn params.) -->
+- keys to omit?
+- ~~parser: url path to params obj (default: ignore path, )~~
+- ~~applier:~~
+- param mapping?: url param to key
+- ~~path mapping: path to key (e.g. `tool`, `page/tool`)~~
+- path mapping?: path to key <!-- since main exists, i would make it an array of matcher. i would make it flexible and human (rather than page=main/tool, tool?=some tool). -->
+  - `main`: page
+  - `*`: tool
+- custom mapping?: url (param, path, whatever) to key value pairs. both way. ignore mapping if set.
+
+notes
+
+- localstorage and url params merge. url params have high priority.
+- url hash `#somewhere` is equivalent to `?#=foo` by default
+
+---
+
+i guess react use would not provide such method. everything is a hook in its perspective.
+
+letme search... what methods would i need
+
+how to get and parse url in js
+
+how to set url in js
+
+what url can be set wo a reload in js
+
+20 00 design archi of implementation of state lib routing. 20 30
+
+letme think what args i would actually pass first. i may not impl "custom mapping" for now.
+
+```yaml
+should sync url: true
+should apply whatever given: true
+should cleanup omitted params after init: true
+# most time it doesnt matter at all to cleanup irrelevant url params. the "conceptual cleaniness" doesnt outweigh the cons.
+should sync after init: true
+keys to sync:
+  - tool
+  - page
+param mapping:
+  theme: appearance.theme
+path mapping: # i guess it could be smart enough to derive the other way
+  home: page
+  "*": tool
+```
+
+notes on mapping
+
+- cache all keys mentioned
+- for each key to sync
+  - if inside path mapping
+    - check one by one if it would match
+    - it fits apply, otherwise continue
+  - if inside param mapping (e.g. `#: location`)
+    - mutate in place as if it's mapped
+  - otherwise
+    - apply as param. (or hash if it's `#`)
+
+js objects have order. it would be preserved when converting yaml aw.
+
+20 40 implement routing as an extension of state lib. ~~(21 00)~~ (21 20)
+
+how to get and parse url in js
+
+how to set url in js
+
+what url can be set wo a reload in js
+
+how to match asterisk
+
+---
+
+well i guess it's a bit too optimistic. but i would try my best.
+
+<!-- yes it is. i will not overwork anyway. good news is things are clear now. -->
+
+---
+
+if i run sync url after persist it would be automatically merged w priority.
+
+---
+
+i think i will not use regex.
+
+constraint: only support one asterisk at most for now. (reflected on the type.)
+
+let's generate.
+
+use snake case. use type no interface. use fn statement. write a ts fn match. params pattern, text. pattern contains exactly one asterisk. return false if not matched. return the matched string. no regex, test start with and ends with and slice.
+
+<!-- use snake case. use type no interface. use fn statement. write a ts fn match. params pattern, test. -->
+
+05
+
+21 40 design navigation state. research undefined in json (de)serialization. ~~22 30~~ 22 40
+
+it's not cached data. obviously.
+
+it's not generated <!-- input/output --> data.
+
+put inside config.
+
+in vscode, the ia is designed as
+
+- view
+  - open command palette/view
+  - appearance
+    - panel/element/mode toggles
+    - panel position
+    - zoom
+  - <!-- editor --> layout
+    - multi column/row
+  - primary sidebar items, e.g. files, extensions
+  - panels, e.g. terminal, problems
+  - word wrap toggle
+
+wise enough. i think. could be sub optimal.
+
+---
+
+i think it's about different contexts.
+
+it's alt bar in vscode. it's not alt bar here.
+
+---
+
+i think it's clear to separate navigation in state.
+
+i will show theme, layout, position, element toggles, whatever in appearance in settings.
+
+i may not put navigation in settings. it's awkward.
+
+it might conflict w the decision to make settings an exact mapping of states. it's expected.
+
+well, i would say it's not. you still edit the same config anyway in json.
+
+and the settings gui is a taxonomy on top. after a mapping, designed for humans.
+
+---
+
+about undefined. i guess i would just leave it there.
+
+it's simpler to write `?`. i can simply omit. undefined is a valid default value.
+
+yeah, again, it conflicts w my assumption.
+
+let's think whether it can work.
+
+serialize:
+
+- when defined, ok
+- when undefined, omit
+
+deserialize:
+
+- when defined, ok
+- when undefined, do nothing as you couldnt see it (omit effectively)
+
+it's the same when you have an undefined key or a non existing key.
+
+wait. my url param behavior seems to rely on the list of keys. <!-- ts keyof would work. js runtime would not. -->
+
+---
+
+solution:
+
+- all keys must not be optional
+- use false over undefined. you may use an empty string aw.
+
+assumption:
+
+- booleans couldnt be undefined. it must effectively evaluate to t or f by default.
+
+what about string keys? maybe i could make it an empty string.
+
+~~no. it doesnt make any sense.~~ it does make typing easier. i dont need it when it's undefined, so it can have any value. if i always need it, it must have a default value, as a factor of the default app state.
+
+also, it benefits yaml. you couldnt both define a key and leave it undefined, unless you wanna bother null (the ten b dollar mistake).
+
+---
+
+i think it's better to convert yaml before writing jsx. it leverages auto complete.
+
+_be aware! avoid tsism._
+
+---
+
+btw, ts infers type well.
+
+---
+
+i guess there isnt an ideally simple way to type a key.
+
+default true is widened as boolean, as expected. (let widens. const defines as is. for fn params, i.e. state, it's considered let. well done ts.)
+
+for arbitary string, it's just widened as string. no workaround needed.
+
+the most common and maybe the single case, is where it's flexible, but it's not anything of its type. typically union. maybe i could solve it in place.
+
+22 50 check feasibility and implement union helper lib (23 10)
+
+use snake case. use type no interface. use fn statement. write a ts fn union. params all args. returns the first arg. return an union of the args array.
+
+---
+
+assumption: all values in config must not be an array
+
+then i could easily define an array and get the first value.
+
+in the converter, i will map it to the union.
+
+the benifit is i leverage yaml flexible typing. numbers are numbers. strings do not need quotes.
+
+---
+
+i outperformed the llm by applying common sense on self explanable api design. ts is absolutely self explanable. you wouldnt define true and get false, or define a union and get only one.
+
+i made mistakes. web/lib/global is ignored by b. b takes the nearest bunfig (which is lib/global on root). browser takes web/lib/global
+
+maybe i could normalize it. i could copy bunfig on web.
+
+yes. that works.
+
+06
+
+05 10 research url params. learn the methods of state lib routing. ~~(05 30)~~ 05 40
+
+url normalization is ugly. it's still cleaner and more readable than base64. i may render it better, like, sometimes it doesnt have to be converted. it could show unicode chars. but it's better not bother it for now.
+
+---
+
+let's think about the logics.
+
+- (persist)
+- if should sync url
+  - calculate keys to sync, that is keep ?? all keys excluding the omitted ?? empty
+  - init
+- init
+  - map url to keys, path mapping, params mapping, hash
+  - loop through given params, apply if it's valid key of the state, and then delete if it's omitted
+  - sync
+- sync
+  - map keys to path (it works for now. i may need a more general one soon.)
+  - apply params mapping
+  - merge to the url (append, update if existing, ignore if irrelevant)
+- when state change
+  - sync
+
+solution: the more general routing
+
+- more asterisks, arg reference
+  - syntax sugar like template string fn or proxy based auto tracking
+- custom two way converter. it's easy.
+  - you can just define one way aw
+
+21 30 think about the implementation on routing.
+
+about login. it's irrelevant for app tools. but it could be handled easily.
+
+component app:
+
+- if page is login (from path mapping), show login
+- if page is protected and it lacks auth, show login
+
+i may allow push, replace, or auto.
+
+an explicit replace is needed, e.g. path auto correction (esp common, e.g. typos, outdated routes).
+
+no idea when explicit push is needed. i guess i would engineer the other way.
+
+just toggle a flag. i guess it would be a void fn.
+
+in the main component tool auto corrects itself if non existing, and toggles the replace flag.
+
+app might also use it to correct the path. (that is page, which must be inside a union at the end of the day)
+
+there's nothing wrong to just leave these three options in case abstraction leaks.
+
+23 00 design ~~implement~~ routing for state lib. (00 30)
+
+currently the routing (path mapping) is very specific.
+
+i think if needed, i will not create a two way converter anyway.
+
+instead, i will make the full path as path. a global state.
+
+app on mount, it will parse path to init other states.
+
+since then, path will reflect all other states. dep array doesnt matter (basically perf engineering).
+
+~~_critical:_ app doesnt depend on path. on mount, it will get raw...~~
+
+you couldnt just get raw for the derived, intricated, coupled path. path is global state. and it shares subscribers w other props. all keys inside one global state share the subscribers.
+
+well i couldnt use effect either. it would still inf loop. letme find a more direct approach against react.
+
+i could work against react. i dont have to.
+
+i think i will still have init fn and change fn. what's different is it's no longer bound w routing.
+
+- init
+  - run after persist and routing
+  - get raw state
+  - get your path prop
+  - mutate state directly to init the derived states
+  - it runs before the app component
+- change
+  - basically a subscriber. syntax sugar.
+  - get raw state
+  - mutate path directly to reflect all props.
+  - sync
+
+**rule: no setstate inside any subscriber. (set call subs. if subs called set then inf loop.)**
+
+i may alter the design of change. just solve the specific problem. so i no longer have to expose sync.
+
+well, i will still call it change.
+
+- change
+  - get raw state
+  - mutate path directly to reflect all props.
+  - (implicitly sync)
+
+sync is a subscriber yk. and it's clear when state change it should sync.
+
+it doesnt have to render the component. but it should be always in sync.
+
+you dont have to learn the rigid (leaking) structure of routing. just use js.
+
+i think i will apply it now.
+
+- path mapping: key (not object)
+- init
+- change
+- ~~correct path~~
+  - (it's mutated directly)
+  - lift a flag to make the next sync replace
+- correct path path
+  - update the path
+  - ~~lift a flag to make the next sync replace~~
+  - (sync as replace)
+
+i will make correct path always available to avoid tsism. <!-- yes. it will work. if no path mapping, it simply do not update the path in global state. -->
+
+well, i will not have the direct method. it's awkward having a method like this.
+
+no leak. you only want to correct path when you actually altered the path somewhere. and since global state is always available, you can simply rp the raw mutation w it.
+
+and it should sync! it doesnt matter to sync again if you placed it inside change. since path is already synced and no new path mutation, neither push nor replace will occur. the benefit is you can correct path anywhere.
+
+---
+
+one thing is "sync" itself will always be sto zero.
+
+order is guranteed so no race cond. and it will fire after all sync op.
+
+it's not about async. it's to let sync state mutation fire first.
+
+let's say inside init, you somehow correct path first. and then mutate a few props. it might break if not async.
+
+---
+
+yes. it _is_ more boilerplate. but look at the simpler approach, it isnt even complete. what would page be when tool is matched?
+
+**you can absolutely abstract w some hof if you like. maybe both at once, w obj flattening.**
+
+---
+
+also, global state is expected to be complex and rarely you wanna sync all keys.
+
+~~keep will default to empty.~~
+
+and i think you dont have to keep "page" and "tool" anymore. you dont have to keep "path" either.
+
+keep will default to all mapped props (param or path).
+
+21 20 redesign routing keys keep and omit.
+
+if you can change whether to keep "input" on url on the fly, i may rethink how to design "keep".
+
+first, both keep and omit will become set whatever you pass.
+
+you can pass a fn to modify keep or omit.
+
+you can pass a set to replace. you can pass a string to add. you may delete.
+
+if keep is not everything by default, i may redesign keep and omit.
+
+if i dont care what keys you have, a single omit means nothing.
+
+conclusion:
+
+- only items to sync (array or set) in sync options, no omit
+- keep and omit are returned
+- keep
+  - array/set: add
+  - fn:
+    - set -> new set: add
+    - set -> undefined: (modify original) do nothing
+  - item: add
+- omit
+  - array/set: deduct
+  - fn:
+    - set -> new set: deduct
+    - set -> undefined: (modify original) do nothing
+  - item: deduct
+- rp
+  - array/set: rp
+  - fn:
+    - set -> new set: rp
+    - set -> undefined: (modify original) do nothing
+  - item: toggle
+
+08
+
+03 20 implement routing for state lib. (04 10)
+
+play hayato sumino.
+
+---
+
+wait. ive not thought enough.
+
+currently, if you have param mapping, let's say it's theme to appearance.theme, it would be included.
+
+what if you do not wanna actually sync it?
+
+explicit > implicit.
+
+instead of introducing "omit" back again, let's be explicit. mapping != including.
+
+---
+
+ts wants me to write like
+
+```ts
+init {
+  if data source exists
+    do init
+}
+```
+
+instead of
+
+```ts
+init {
+  // tsc err: data source might be undefined
+  do init
+}
+
+if data source exists
+  init
+```
+
+anyway. no idea if that constraint matters.
+
+06 20 <!-- continue to --> implement routing for state lib. ~~(07 00)~~ 07 20
+
+<!-- i was thinking about "acbox: i feel depressed when i screen hundreds of resumes while we only need three, and im afraid i would be one of them". i checked where it was and read the context. and then i surfed a bit. well actually i wasnt even wasting time on anything typical, i simply was dreaming and feel some kinds of ecstasy or zeal. damn. -->
+
+sync. correct url.
+
+keep, omit, replace.
+
+---
+
+now subscribers will always receive data.
+
+you can always pass more in ts.
+
+---
+
+correct path. i will life a flag instead. it's more flexible.
+
+yk, sometimes you dont wanna derive the path where you correct a critical prop.
+
+i will call it correct next.
+
+---
+
+i feel i want to call it key instead of path.
+
+i may change my mind later.
+
+---
+
+well, it feels like over enigneering.
+
+it's not wise to accept fn, esp considering it's so flexible, dep on whether it's void, on runtime.
+
+i guess i would only accept array/set and item.
+
+hard to say if you never need that. but it's highly unlikely you would pass a fn. see, keep omit rp void fn does the same thing. to mutate the set directly. it's definitely an anti pattern anyway.
+
+---
+
+it seems to be working.
+
+- fof object doesnt work. i have to use fen. i did not always remember. <!-- btw, no way to escape. you couldnt override js native for loop (wo a pre compiler, which is massive work). you have to get entries to map. you may silently make object iterable? -->
+- i do need to add state versioning for example or it would get stuck in a desync localstorage
+- currently it doesnt show path, as tools and sidebars are not finished. it can work if i explicitly set the factor states.
+
+09
+
+00 40 write readme for tools. (01 10)
+
+i should have done it earlier. ux, ia... these all depend on what it is and what it's designed for.
+
+false assumption: it would be simple and clear. no many choices. <!-- thus no explicit constraints required -->
+
+example: would you make it default to process or args? would you expand it consistently even for json to yaml (that doesnt necessarily take args)?
+
+---
+
+well, i dont really wanna write readme like others.
+
+<!-- that is, name (icon), desc badges socials links, features (explanation, comparison), build/deploy, contributing (contributors, community, team), misc (sponsors, star history) -->
+
+if im making decisions, rather make decisions directly.
+
+---
+
+let's take a look at linux readme. i remember it. it was inspiring.
+
+- it uses `====` and `----` for headings, instead of markdown `#`
+- it uses rst instead of markdown sometimes <!-- ?, no idea if that makes sense -->
+- the structure
+  - name, desc, links
+  - readlist for "all users"
+  - who are you
+  - welcome and readlist (links to certain docs) for each specific users
+  - community links
+
+ok, well, linux is confident enough. "i dont have to introduce myself or explain my worth"
+
+---
+
+well, im not writing readme or making decisions. actually the next step would be sidebar impl, and scrollarea i guess. (btw idk textareas would be scrollable that way)
+
+<!-- i might design the sidebar ia, that is an yaml. i would write down some of my prev thoughts on the road. -->
+
+it's worth the time i guess.
+
+---
+
+i still have some time left. let's write a knowledge for readme.
+
+05 20 record verbal thoughts. map ia on yaml. ~~(05 40)~~ ~~06 00~~ 06 20
+
+let's have an yaml of sidebar, or ia, in general.
+
+there can be alt bar yk. and more.
+
+i would define the constraints and record the decisions in <!-- derived from --> monologues.
+
+then i could apply that structure.
+
+you could have some styling. you could be obsessed in names <!-- text and labels -->. ik it's incredibly intimidating or logically captivating <!-- entangling ~~entrapping~~ --> when you could not map the whole picture precisely. dont be afraid. invariants matter <!-- anyway -->.
+
+---
+
+idea on state
+
+- i may expose data to result.data
+  - i can make itself readonly
+
+upd: applied.
+
+---
+
+decisions on sidebar ia
+
+- there should be hierarchy coz they are logically grouped
+- if i could not mimic adwaita completely, i would not care about it at all
+  - adwaita would not expect there to be hundreds of tools, nested deeply
+- they could be collapsed. the toggle would only show on hover or when collapsed to reduce visual noise
+  - rationale: if you click the heading you would not expect nothing to happen, so it's strictly better to have some extra behavior for the one who needs
+- sidebar will use the id instead of the array index, which tells nothing and has to be mapped anyway, for the state of the selected item
+  - you might intercept click behavior or make it draggable in the future
+- all items will be expanded by default
+  - sidebar should be designed for the ones who need them. power users who collapse and use command palette are irrelevant.
+  - scrolling is easier than clicking
+  - it doesnt make sense to make "json yaml toml xml" collapsed by default just to make them feel a bit more elegant when onboarding
+  - if i choose to hide some
+    - i have to choose whether to hide for each, esp cases like "md html or html md" (not worth a click, but could be grouped to avoid the messy complete graph path listing)
+    - there would be too much to expand, adding one more step to virtually all actions
+- nesting levels should be consistent
+  - consistency matters immensely
+  - you should accept the tradeoff, e.g. misc/misc/item
+  - for visual design, i may style the higest nesting level italic, dimmed, and underlined. they are akin to title code code comments indicating where.
+  - i would like to count from the leaf upward. but it's ok to be naturally h1 h2 h3 since it's consistent within one app
+
+---
+
+ideas on additional tools
+
+- lookup
+  - chinese id (or prefix) to geolocation
+  - university ranking
+
+---
+
+conclusion
+
+- i will make it consistent as possible, esp for the same category
+- i will actually make the second nesting layer (json yaml toml xml) less noticeable
+
+thanks to yaml, it's much easier figuring out the visual design.
+
+19 00 elaborate and design ~~and implement~~ sidebar. (19 40)
+
+i may integrate w scrollarea later, and support versioning for persistent state.
+
+though sidebar would technically dep on scrollarea. (i guess it would be easy)
+
+let's record verbal thoughts first.
+
+<!-- i forget to bring the watch today. would be fine. -->
+
+---
+
+decision:
+
+- leaves are leaves regardless of their nesting level. headings should be counted normally, rather than bottom up
+- within the same category, the number of layers should be consistent
+- i may ref the visual design from aosc os portal sidebar
+  - no idea if it's better to style as "up" instead of "right" when collapsed
+
+---
+
+i may have objects of arrays. i will not have an array of objects.
+
+let's elaborate this.
+
+c
+
+```yaml
+convert:
+  - json yaml toml xml: ...
+  - markdown html: ...
+  - timestamp utc: # arg: timezone (when to utc)
+```
+
+btw, for gui, maybe i could make args about "how input should be parsed" next to the input.
+
+e.g.
+
+- json parser, flexible or not?
+- maimai, tap and hold already merged?
+
+---
+
+for the draft name, i guess it would be "web sidebar ia".
+
+simple. <!-- self explanatory -->
+
+no need to say "design ia write web component sidebar"
+
+---
+
+figure out the names of the color constrast standards. get confused by llms and evil law makers.
+
+---
+
+for the props, i guess i can pass ia directly into it.
+
+no need to separate name and id as they will generally not collide.
+
+then i can make leaves strings instead of objects `{name, id}`
+
+---
+
+let's have a small mock experiment.
+
+---
+
+well, i realize i did not want to pass children to sidebar.
+
+i will decouple the logics of the collapsible list.
+
+let's just call it list for now. not "toc" or "collapsible nav".
+
+i will not just make list like "v for".
+
+---
+
+will lists be draggable?
+
+will have.
+
+if i wanna do so, i guess i can simply omit focused and setfocused, and pass onselect.
+
+19 40 design archi of ~~create~~ component list. (20 20)
+
+ts gets in my way.
+
+p (ideally)
+
+```ts
+type items = string[] | Record<string, items>;
+// type items = string[] | Dict<string, items>
+```
+
+c (compliant)
+
+```ts
+type items = string[] | { [key: string]: items };
+```
+
+---
+
+let's think about how i would like to flatten items, and map them to html.
+
+```ts
+{
+  foo: {
+    bar: one, two, three
+  }
+}
+
+{
+  foo: one, two, three
+  bar: one, two, three
+}
+
+one two three
+```
+
+```html
+foo children of foo bar children of bar one two three foo collapsed? children of
+foo one two three bar children of bar one two three one two three
+```
+
+so the state would be...
+
+```
+is collapsed map id bool
+
+flat item
+
+- name
+- id
+- type: h1 to h6 or p (leaf/item)
+- parent: id[]
+# - parent id?
+
+flat items flat item[]
+
+render
+  each item
+    apply type on both tag and class # it's feasible (though you couldnt eval js in jsx tag)
+    if one of its parent is collapsed
+      continue
+    if it's a heading
+      show toggle (css: on hover or on collapsed parent)
+```
+
+20 40 ~~write list component.~~ create map util fn for global lib. ~~(21 20)~~ 21 40
+
+let's define the types first and then i could generate.
+
+---
+
+i would absolutely go for fof rather than map.
+
+it's my personal project.
+
+feeling > efficiency >> big tech <!-- corp --> best prac
+
+it just looks too weird, when you loop through it one time to filter, and loop again to map.
+
+i may not create a fp "map arr fn" either. well actually i may want to auto add keys to suppress react warnings (ideal of big corps, the conservative guys).
+
+```ts
+fof item items
+  if should stop break
+  if irrelevant continue
+  push process item
+
+map items item ->
+  if should stop return break symbol # break signal
+  if non trivial return process item
+```
+
+look, map it's not any syntactic more boilerplate.
+
+---
+
+btw, i would say react itself is over engineering.
+
+it solves a general problem: it should be safe and robust for all arrays
+
+instead of my specific one: it's always static, whether on sidebar or on toc or on alt bar
+
+and! react prevents you to spread key on props.
+
+---
+
+btw, pascal cased types tell nothing.
+
+decision: i would make types pascal case iff they are util types (e.g. Record).
+
+if all components have props, it doesnt make any sense to suffix "Props" like "ListProps" or "list_props"
+
+~~05 40 write list component. (06 40)~~
+
+05 40 polish map lib. 06 10
+
+filtering would be trivial. just loop through, make itself and all its parents visible if matches. that's how adwaita demo works.
+
+but i guess for tools it can behave exactly like ctrl shift p. see nautilus or vscode.
+
+---
+
+just code it myself. i could try to be more efficient. i dont have to.
+
+---
+
+i dont have to have a separate `onclick` or `onselect` i feel.
+
+if i want to make click "append to recipe". i can simply omit focused (or fix it to a non existent key, like an empty string), and pass `set focused` normally.
+
+---
+
+i dont have to be focused. i could simply fix anything just to make it feel right.
+
+i think i would accept index? and array? for map. why not.
+
+i feel i can make halt a fn. you can either return a value and halt, or just stop.
+
+06 10 write list component. ~~(07 00)~~ 07 30
+
+i would like to have a method flatten.
+
+---
+
+well, i can oop if i like. i dont have to.
+
+if flatten feels awkward, i could just create a result array and spread.
+
+---
+
+ive made some decisions before.
+
+- id of headings will be their parents and them join dot
+- id of leaves will be their id or their name in snake case
+
+the only thing to watch out is
+
+```yaml
+foo.bar: sth
+foo:
+  bar: sth
+```
+
+which is highly unrealistic
+
+---
+
+```ts
+type Set_fn = typeof Set;
+declare global {
+  var Set: Set_fn;
+}
+
+export function Set(...args: any) {
+  return new globalThis.Set(...args);
+}
+
+log(Set());
+```
+
+it doesnt seem i can make `Set` `new Set` and `Map` `new Map`
+
+just call it `S` and `M` anyway. have lib/collection.
+
+i dont feel i have to make them capitalized.
+
+---
+
+doesnt seem i should persist is collapsed. it should reset after refresh. and i do not have to provide an option.
+
+---
+
+fine to name as flatten. fn statement takes priority than global this util.
+
+---
+
+i will support array and set on has.
+
+```ts
+export function toggle(set: Set<any>, key: Key) {
+  if (has(set, key)) {
+    set.delete(key);
+  } else {
+    set.add(key);
+  }
+}
+```
+
+set.add would err. and it thinks has set key is always true (by the type guard), thus else is never.
+
+---
+
+```ts
+export function has<K extends PropertyKey>(obj: any[], key: K): boolean;
+export function has<K extends PropertyKey>(obj: Set<any>, key: K): boolean;
+export function has<K extends PropertyKey>(
+  obj: any,
+  key: K
+): obj is Record<K, any>;
+
+/**
+ * check if an object has a key
+ *
+ * for obj, check has own
+ *
+ * for array, check array.includes
+ *
+ * for set, check set.has
+ */
+export function has<K extends PropertyKey>(
+  obj: any,
+  key: K
+): obj is Record<K, any> {
+  if (Array.isArray(obj)) {
+    return obj.includes(key);
+  }
+
+  if (obj instanceof Set) {
+    return obj.has(key);
+  }
+
+  return (
+    (typeof key == "string" ||
+      typeof key == "number" ||
+      typeof key == "symbol") &&
+    obj &&
+    typeof obj == "object" &&
+    Object.hasOwn(obj, key)
+  );
+}
+```
+
+interesting.
+
+11
+
+07 00 polish styling. make spacing consistent and expected. add more design tokens for length units (e.g. border). ~~(07 30)~~ 08 00
+
+adopt tailwind scale for border radius.
+
+rationale: no need to overthink. the values are identical. just have a standard naming (base 4px).
+
+12
+
+06 20 alter wording on comments of lib map.
+
+20 40 break down ixd. organize and conclude ux and pm knowledge.
+
+i have to rescope tools.
+
+well, if i would not feel right wo it, then it _is_ in scope.
+
+i would categorize them into a few priority groups i guess.
+
+moscow is effective. it's factual. it feels objective. it doesnt fit my instinct.
+
+<!-- well, i would say, moscow is ideal. the flaw isnt about moscow. it's me myself that didnt make the plan comprehensive. for example, i didnt say "provide basic functionality. i can switch tools on sidebar. and editors should work as expected.". instead, i said "create sidebar component" (as if it's decoupled from the logics, well it is, but sidebar itself only provides the state of the selected item). i said "create editor component". to make it ideal, i thought there would be "args on input/output heading" "two way convertion". -->
+
+<!-- i would not say it's a problem to be solved. but sometimes if you wanna see some results, it's perfectly valid to be progressive on ux (instead of code completeness). -->
+
+---
+
+i feel i should have the tool "tg to journal".
+
+it would parse and make it an array, then convert based on the predefined time precision.
+
+i would make it builtin. it's trivial to extend later. just, have a persistent state of extensions. for each, create a new function. inject to tool map. then inject to the tools hierarchy, which would determine the sidebar and the command palette.
+
+in the future i would integrate it w have. like, "tg to have", or "import from tg desktop via clipboard/data export".
+
+and, i will have the maimai tools. if there is only one tool in tools, it might be maimai. most tools are basically wrappers of ubiquitous libs, like, you can convert json to yaml anywhere.
+
+<!-- yaml is a superset of json -->
+
+there are a bunch of tools i can have. like code formatter/prettier. json to csv (?!). it's not a priority. <!-- you can even convert json to ts/py (auto typing). or to markdown (to csv first). it's quite weird actually. json must be object. and only the first key in the object, which must be an array of objects, will be used. keys in the first object dictates the table headings. inconsistent keys in following objects will be appended. anything non literal will be simply stringified (csv could not nest), and escaped if needed. -->
+
+---
+
+user research
+
+ia
+
+ixd
+
+visual design
+
+---
+
+**yeah yaml is structured, but you can write comments anywhere.**
+
+e.g.
+
+```yaml
+feature: # must have
+  - get data
+  - map reduce data
+  - render output
+```
+
+since i dont parse yaml, i can write as i like.
+
+decision: that would be the way to structure ixd.
+
+---
+
+about the scope of ixd.
+
+ixd and ia wouldnt overlap at all.
+
+```yaml
+user research: # no need to overthink
+  - solve my own problem
+  - maimai user story # no foss portal on open web, inaccurate sometimes, inextensible
+  - tools are scattered across clearnet, npm libs, and apps
+ia:
+  - what features i will have
+  - what actions can be made
+  - how they will be organized
+  - how they will be mapped for each navigation component
+  - how they will be named, what text or label will be applied on each
+ixd:
+  - what will be shown on screen given each state # wireframes
+  - how will state be changed given each user action # since it's declarative, i would say "how state will be changed" instead of "what will happen on screen or what will be triggered"
+  - what are the components
+  - what features/actions will each component have, which priority will each feature have
+  - how each goal will be accomplished # implied or derived
+visual design:
+  philosophy: brutalism # simple by default, powerful when needed
+  design system: utilitarian # opinionated from a subset of tailwind
+  component library: created when needed
+  assets: icon lib will be adopted when needed, no avatars/banners/backgrounds
+```
+
+---
+
+letme think about the structure of ixd yaml, not the questions it would answer
+
+it would be an object, obviously, instead of an array.
+
+i think i will have an object of components. for each, i would use array if i just wanna list its children, or an object if i wanna describe each child
+
+i will use comments whenever it feels right. like priority labels.
+
+decision: one constraint i would apply is, i would never write general categories like `features` `actions`. i will write directly wo adding a layer.
+
+---
+
+"wh" could imply both `wont have (this time)` and `will have`. interesting. clever.
+
+---
+
+basically i just want it to be syntax highlighted and somewhat structured.
+
+```yaml
+foo: must have
+  click: set an arg
+bar: could have
+  baz:
+  asdf:
+```
+
+it's perfectly clear in ide.
+
+decision: i will use comments only for commenting. i will write directly whenever it feels right and i may break the parsing structure. and, i will leverage "implicit null" for elements wo children. (it's perfectly fine to write arrays when yk it's a flat plain list)
+
+<!-- rationale above -->
+
+and,
+
+conclusion: the flexible yaml is about _trees_ and lists, instead of _maps_ and lists.
+
+that's how the world is really structured.
+
+---
+
+> **be explicit and organized. focus and timebox.**
+
+about wbs <!-- "organized" -->, you absolutely have to break down the work. but basically it's yet another taxonomy. and <!-- ideally --> it tells nothing if it just mirrors like ia, ixd, archi, etc.
+
+<!-- upd: wbs answers "what needs to be delivered to complete this product?", which is exactly what ux (typically ixd) implies. -->
+
+you dont always have to have a kanban <!-- "explicit" --> or a todo list. they all serve for efficiency/productivity. it's fine if yk what you are doing <!-- and what to do _next_ --> and why it matters, esp when alone.
+
+you have to write down your thoughts and ideas though. you couldnt memorize.
+
+...
+
+well actually you do have a kanban. since the constraint is the number of wip <!-- or todo --> is always one (or zero), you organize like this
+
+```yaml
+todo: # serves as backlog
+  - foo
+  - bar
+  - baz
+  - ...
+purpose:
+  - ...done
+  - wip # or todo effectively, or the task of highest priority in backlog
+  # - backlog
+```
+
+...
+
+it might be useful to separate todo from backlog.
+
+that is, i may have a bunch of todos and one wip.
+
+typically, the todo list might be like "api endpoints" "component lib" or "ux competitive research/analysis", a set of related tasks
+
+...
+
+i want sth like scrum.
+
+but i dont think i could get predictability when even deep work time is flexible and volatle.
+
+well, is predictability a thing? what for? if it matters, who for? and accountability. who for?
+
+13
+
+03 20 separate todo and backlog.
+
+14
+
+05 30 ~~write ixd.~~ define the rule of priority. 06 20
+
+i will rarely use arrays. i will use array only if it's a list of items, not some distinct children. i will leverage implicit null and comments.
+
+i may break yaml syntax.
+
+<!-- sometimes i feel labels or metadata like "moscow" would better fit as comments. -->
+
+---
+
+fix list component.
+
+some vars are unused. it's incorrect. the value instead of the key value pair should be passed.
+
+**generally, all components must begin as an element w classname of itself.**
+
+---
+
+should have and could have differ in "value". it's messy and ambiguous.
+
+letme establish a clear rule
+
+- must have: completely usuable wo (i.e. no tasks can be completed)
+- should have: inefficient or incomplete wo (e.g. missing features, no native route for some use cases)
+
+well, what about could/will?
+
+the decision is i will just name it as "wont have".
+
+it's effectively the same when you dont write it down or you havent imagined a feature. in that case, it doesnt matter if the feature matters or not in the real world. it might matter. or it matters. but it doesnt matter (it's the same) to you.
+
+i dont have to call it "_will_ have" just because i _might_ have it in the future ("wont have, for now").
+
+<!-- will have is could have. -->
+
+- could have: ux improvements, minor perf engineering, etc. (i will write them if i have spare time or i feel like that)
+- ~~will/~~ wont have: not planned (e.g. contrast to the opinionated design or decisions), out of scope, negative roi
+- unlisted: irrelevant or awkward or yet to be discovered
+
+<!-- it would be vicious i guess to think things in roi. what you invest is merely your time. you should write if you feel right. it's "wont have" if it's not good even if you can have it instantly. -->
+
+<!-- awkward is inherently subjective. you may explicitly declare "wont have" if you really feel that's a thing and yet you dont like that. -->
+
+**conclusion on moscow priority classification:**
+
+- must have: completely usuable wo (no tasks can be completed)
+- should have: inefficient or incomplete wo (no native route for some common use cases)
+- could have: barebone or unpolished or unsophisticated wo (unmatched expectation or dissatisfaction)
+- wont have: mediocre/unopinionated or bloating w (it should be done by extensions or forks)
+- (unlisted): irrelevant or yet to be discovered
+
+upd 18 aug: not always black or white. sometimes you might discuss "how often" or "how much". e.g. more efficient for who? more reliable to solve what edge cases, how common? most time it's clear when it comes to the decision though.
+
+07 20 write ixd.
+
+i guess i have the idea <!-- in my mind -->.
+
+10 00 elaborate ixd for basic functionality.
+
+11 20 write some snippets for import export.
+
+i would aggregate all tools on action/tools.
+
+11 30 create basic functionality. refactor sidebar, decouple list from it. 12 10
+
+fix parcel cache.
+
+fix web prelude. import the web variant for map instead.
+
+make list items button so they can be focused naturally.
+
+---
+
+parceljs doesnt monitor files outside cwd. that's the problem.
+
+if it doesnt track, it's basically outdated and ignorant to changes.
+
+**create dev script on package json, use `b dev` instead.**
+
+---
+
+use effect should have dep array. if you update a state inside, that state mustnt be tracked.
+
+22 30 complete todo: elaborate ixd. create every component and the must haves.
+
+rationale: some tools are needed <!-- solve your own problem -->. the app must be usable and functional.
+
+<!-- it's already functional if i can navigate a list of tools. -->
+
+22 40 pivot: create telegram to journal tool. design its mechanics.
+
+<!-- from voice recording. -->
+
+two parts. telegram to journal. and merge new memories into existing journal.
+
+i. telegram to journal.
+
+telegram msg looks like
+
+```
+[name, date & 12h time]
+content
+```
+
+i can loop through the lines, and test regex.
+
+i will convert it into journal data structure, an array of time (y m d), content, and metadata.
+
+ii. merge new memories into existing journal.
+
+i could "insertion sort". to be simple, i will parse both, sort, and serialize instead. it might be much more unpredictable (breaking original structure, or even being non idempotent). it would not.
+
+a. parse
+
+the purpose is to separate the document into blocks.
+
+i will maintain ymd, nil initially. i will place the first separator at the start of the document.
+
+whenever it reads a keyword line. that is `mon yyyy` or `d | dd`, it will cut before it. it will lift a flag of "keyword", which would be added to metadata later. from the prev separator to its before will be appended as the content, w current time state. then the new date will be applied.
+
+e.g.
+
+```
+mar 2026
+
+foo bar asdf # this will be ignored as keyword
+
+01
+
+baz asdf # this will also be ignored as keyword
+
+07 00 get up
+```
+
+when it sees a line starting w "hh mm", it will cut before it, and add time to its metadata (but it's not a keyword). eof will also be cut.
+
+btw, it would ideally only look at acutal paragraphs, and standarzie time if needed.
+
+b. sort: trivial
+
+c. serialize:
+
+maintain ymd (initial ?).
+
+for each item:
+
+- is keyword? skip
+- is different from current ymd? add a separate line of mon yyyy and then dd if needed.
+- paste content
+
+it's clever because nil = nil.
+
+15
+
+07 40 rename "focused" as "focus" on `list`.
+
+nouns are nouns.
+
+20 20 research js regex lib. create poc and some util for tg to journal.
+
+17
+
+00 30 abstract to improve regex dx ~~write `parse`~~ for tg to journal. 00 50
+
+no idea how long it would take. feel i could achive sth today.
+
+---
+
+feel i could make regex match std lib. maybe not now.
+
+well, i have a pl design now. i guess it would be better to invest in the new pl, `code`, than to
+
+i would have the file ext `.code` and the compiler cli `compile`. it would output a js (or ts) named the same by default.
+
+---
+
+<!-- rather --> sleep.
+
+23 20 define data structure for journal.
+
+18
+
+10 40 tg to journal: parse time.
+
+10 50 tg to journal: sort.
+
+add order metadata: index. preserve the original order.
+
+i guess i would have it. it would not be the default, like, think how sort works.
+
+upd 23 00: it's not quirky at all, i mean the design of return value or cmp.
+
+it sorts ascending by default, and cmp should be like "a - b", that is true if a > b, false if not.
+
+i thought it would feel natural (in math, we always write like "assume a < b", which follows the direction of the real number axis) to say "if a < b then true".
+
+anyway, it's quite awkward to have `const is_a_before_b`, i guess i would have a named after variant instead of `!is_a_before_b`.
+
+12 20 tg to journal: serialize. test. 12 50
+
+pass.
+
+13 30 lib/map: support object, polymorphic. reuse lib/map on web/lib/map (instead of copying). 13 50 14 40 test and fix. create `reverse_map` util on lib/collection. 14 50
+
+web/lib/map now modifies the result if array & react children.
+
+remove `flatten` on `lib/map`. (unused)
+
+19
+
+00 20 tg to journal: write `parse_telegram`. 01 00
+
+01 10 tg to journal: write `round_minute`. 01 20
+
+revise dc snippet. declare from first, then you will get auto complete for the vars inside.
+
+Math.min isnt flexible about params. it should have been polymorphic and accept array arg wo spreading. (no ts check or debugging needed). i wouldnt patch it. i would fix it in my lang.
+
+22
+
+23 00 tg to journal: fix `round_minute`. round 14:59 to 15:00 instead of 14:00. test. 23 10
+
+i may solve a specific problem <!-- (just) for me myself --> instead of a general one. ~~support rounding method on round minute~~
+
+i would like to have 24:00.
+
+23
+
+09 50 tg to journal: `round_journal`, `merge_journal`.
+
+18 40 tg to journal: write `telegram_to_journal`. standardize string to string type and scalable naming. export. format single digit and prefix zero on serialize.
+
+on lib/map, as i see "return void" as continue, i couldnt see it as "direct mutation" (i.e. return original) instead. guess would be right, explicit > implicit. "void" and "omit" sounds the same, esp when you say you dont wanna see any undefined in your code.
+
+19 20 refactor lib/each.
+
+- i want `each(n)` behave as `repeat(n)`, so it now begins from 1 by default
+  - it's a breaking change. but guess would be fine. it's actually very weird if you rely on it. how would you use "from 0 to n"? for array index, it's "from 0 to n-1".
+  - i wouldnt go the python way. `each(a, b)` should be `[a, b]`, not `[a, b)`
+- return an array instead of an iterator
+  - perf is trivial, composibility matters more
+
+24
+
+12 10 complete todo: create telegram to journal tool. <!-- sync memories -->
+
+skip the non paragraph lines, by markdown ast, even if they fit the regex <!-- could have -->
+
+no idea if needed. wouldnt cause problems seems.
+
+could have.
+
+12 10 pivot: create process panel to compose multiple tools
+
+process can be visual and code. even when it's visual, it has to be serialized on url param, and thus to be parsed later.
+
+i could serialize in object, e.g. yaml.
+
+- if i serialize in yaml, it's inflexible, and also a bit boilerplate, which isnt ideal. i could be able to just list (w autocomplete) the name of a few tools, separated by linebreaks.
+- actually i have a proposal of the `code` lang. it's quite complex. no idea if all its syntax would be meaningfully visualized (not "tool: code, content: program string").
+
+the decision is i would compromise nothing. just like apple (iphone) shortcuts or samsung modes and routines. or scratch. i could absolutely go down the hard way. i would need that in the future.
+
+btw, the data structure is obviously ast. not everything could be preserved. like, whether you place a space before a comment, it would be formatted.
+
+---
+
+i would create a tool in js to sync memories first.
+
+---
+
+well... a problem. vite is showy (port number, cli, crash screens) and requires plugins (vendor lockin).
+
+and parceljs wouldnt just track everything.
+
+i guess i would rather clear cache. the simplest way. but why doesnt it track?
+
+---
+
+i think it wont be fixed.
+
+at the end of the day you must use react. and it logs twice (i.e. some weird object object). hmr doesnt reload the full app. effect doesnt rerun and you would have to reload anyway.
+
+vite isnt just optimal. tlide or relative path would be even more prone.
+
+the current solution is i would just rerun b dev, which would trash stale cache first.
+
+everything would be in sync.
+
+in the future i may fight the tools, so it would rebuild whenever anything changes. the current page would refresh.
+
+13 40 style scrollbar. apply dark mode. web/lib/sync theme: rename `data-theme` to `theme`.
+
+p
+
+```css
+[date-theme="dark"] {
+  color-scheme: dark;
+}
+```
+
+c
+
+```css
+[theme="dark"] {
+  color-scheme: dark;
+}
+```
+
+well... data-theme works. i made a typo though. lol.
+
+---
+
+i couldnt just disable the dir arrows while using native scrollbar.
+
+maybe i dont have it. it would be likely quirky or incompatible.
+
+create scrollarea component.
+
+could have
+
+16 20 tg to journal: fix `parse_telegram`. create a temp tool `fix_telegram`. 16 40
+
+on telegram, there is no `0:mm` or `24:mm`.
+
+12 am means 0 am that day. 12 pm means 12 am that day.
+
+p
+
+add 12 for pm.
+
+c
+
+add 12 for pm.
+
+if the result is 12 or 24, subtract 12.
+
+---
+
+upd: and! consecutive msgs are merged into one, both on ui and when copied. they do show as separate msgs. but the name is only shown once. and the time is of the first msg in the sequence.
+
+16 50 design process panel. elaborate ixd.
+
+it would be process. not tool/args/recipe.
+
+i may (though unlikely) build abstraction on top, like, arg for single tool, hide for single tool wo args, or render some args on input or output title bar. process, nevertheless, would be the ssot.
+
+---
+
+~~it would be a process component. no need to reuse~~
+
+it would be editor.process. i would accept "should show textarea" param.
+
+---
+
+on url, i would deprecate path. no page. no home. no tool. just one process param. you may omit when nil.
+
+---
+
+moscow are familiar labels. use (text) icongraphy instead.
+
+```yaml
+# m = must have, s = should have, c = could have, w = wont have
+```
+
+i may simply remove such comment when "done".
+
+---
+
+on code,
+
+- all tools must be `f(stdin, options?)`
+- for the editor.process, (currently code edit isnt supported), it will receive "should show textarea: false" and get children of what's rendered.
+  - i need the title bar, copy as if it's an editor, and at its heart, it's serializable
+- process item:
+  - tool
+  - args
+    - arg
+    - type
+    - default value
+    - value
+- process data structure: item[]
+- render process: take process data, mutate directly
+- main
+  - pass step by step get output
+
+how would i "mutate directly"?
+
+loop through tools, loop through args, render, onchange: set arg.value
+
+set arg.value is wrapped inside set('process', ...). process, binded to url, is absolutely global state. void return are ignored and subs are fired.
+
+btw, it sees "undefined" as void return. when you omit return or return directly, it must be undefined, not nil.
+
+---
+
+i would map tool id to tool args. (no args if omitted)
+
+list onclick, i would add tool to process instead of change the path
+
+---
+
+on url i would just serialize process directly. i may not sync it for now.
+
+---
+
+could have:
+
+- sync process to url in an elegant way (e.g. code)
+
+17 50 web/lib/state: support versioning. 18 00
+
+when mismatch, it will merge the cap of old and new into new.
+
+could have: custom migration
+
+18 00 write component/process.
+
+`object` and `{}` are different in ts. always prefer the latter.
+
+19 30 web/lib/state: fix race cond.
+
+flag finished immediately after syncing.
+
+19 40 lib/map, web/lib/map: fix args.
+
+in ts you can always receive less args on a callback fn.
+
+20 40 tg to journal: fix `sort`. 21 10
+
+js sort requires
+
+- identity
+- symmetry
+- transitivity
+
+25
+
+17 00 pivot.
+
+the process panel is almost done. basically, everything can be a textarea.
+
+i may convert to bools, numbers, or objects.
+
+it's incomplete though.
+
+---
+
+feel im stuck.
+
+i dont have a purpose. i may need base64 convert. i may like to check color contrast. i may not.
+
+i dont like to use cyberchef or random sites when i need them.
+
+yet, i have sth to do. i have some ideas.
+
+i would like to fix parceljs. i may put index html on source instead of source/web. dk if it would work.
+
+i would like to read css tricks flex (grid) guide. that builds confidence.
+
+17 10 fix parcel tracking by coping index html to a higher folder. 17 30
+
+that works!!!!!
+
+---
+
+so simple. configless.
+
+---
+
+deprecate web/env.json.
+
+17 30 write knowledge/agent comment.
+
+it should ideally know how to write comments. though, i would rather let it write no comment by default.
+
+23 30 centralize and name z-index as design tokens. script/convert design tokens: fix `value.split(' ')` isnt a function when value isnt string (incorrect type assertion `value as string`)
+
+no idea scripts are plural. rather make it consistently singular, against all conventions.
+
+css intellisense experiences some quirks. it doesnt detect file change when generated. i have to, like, enter and then remove a space on the generated css.
+
+26
+
+03 10 create component menu.
+
+12 20 fix parceljs auto reconnect.
+
+console warn is hooked by react devtools before my script.
+
+---
+
+oh, that's not the case. "if dev" doesnt even trigger.
+
+---
+
+p
+
+```ts
+const dev = process?.env?.NODE_ENV == "development";
+```
+
+c
+
+```ts
+const dev = process.env.NODE_ENV == "development";
+```
+
+no need to change, since i primarily use parceljs. could be better.
+
+12 30 lib/handle: support fallback value. deprecate `handle_best_effort`.
+
+c
+
+```ts
+// @ts-expect-error best effort
+const dev = handle(
+  () => process.env.NODE_ENV == "development" || import.meta.env?.DEV,
+  false
+);
+```
+
+16 00 script/convert design tokens: generalize parsing.
+
+provide dc/loop safe default values.
+
+<!-- i want to remove adwaita.yaml from intellisense. it's outdated (ref/sys/comp based naming). just comment the full yaml. -->
+
+16 10 remove editor component.
+
+it doesnt do much. it abstracts nothing.
+
+**do not make it a component when it basically provides a classname and wraps children**
+
+16 20 alias console.log as log.
+
+i dont really need to "clean non enum" or "deepclone" objects logged.
+
+rather not messing up w "stack trace" "ignore script list". doesnt seem there exists a simple way like Error.
+
+simple.
+
+16 30 web/lib/use_bind: standardize options type.
+
+pattern
+
+```ts
+type use_bind = Partial<{
+  prevent_default: true;
+  stop_propagation: true;
+  global: true;
+}>;
+
+export function use_bind(
+  shortcut: string,
+  action: (event: KeyboardEvent) => void,
+  options: use_bind = {}
+) {
+  const {
+    prevent_default = true,
+    stop_propagation = true,
+    global = true,
+  } = options;
+
+  // do sth...
+}
+```
+
+16 40 web/component/main: create title bar.
+
+27
+
+16 00 lib/std: adopt `nil` (an alias to null, globally) over `null` and `undefined`.
+
+16 20 backend: deprecate `web/port.json` and move to `backend/port.json`.
+
+file tracking is no longer a concern. modernize and use json serialize instead of template string btw.
+
+it can be a bit awkward to wrap a single number in an object, as a constraint of json.
+
+i could use yaml. but if it were json, i could simply import and dc. (no parsing)
+
+17 30 web/lib/state: deprecate `to_toggle`. polymorph `set`. move `should_sync_url` into `sync_url_options`. refactor its methods.
+
+what if you say `set()`? it doesnt make any sense, since states couldnt be undefined. (you may pass undefined/nil, then arg length wouldnt be zero.)
+
+i can simply make it a toggle `v => !v`.
+
+and, if you say `toggle(t)` or `toggle(f)`, it's essentially set state.
+
+---
+
+pattern
+
+```
+data, set data = use global
+```
+
+```
+prop, set prop = use global prop
+```
+
+```
+, set prop = use global prop
+```
+
+it doesnt matter, right? to optimize like that
+
+```
+onclick: use global. set prop prop value
+```
+
+```
+toggle = use global.set prop prop
+
+onclick: toggle
+```
+
+and it would introduce a problem, currying. i.e. whether set prop prop should return a setter or toggle prop.
+
+since i do not care what prop gets updated, set prop would definitely rerender the whole app, which... is actually fast. and it makes total no sense to set a prop wo getting it.
+
+a clever way would be to deprecate use global.set. and i could make the returned array a proxy (i only register a rerender if the first arg is used, in case it matters)
+
+---
+
+ok proxy would not work. js array dc impl is flawed.
+
+---
+
+decision
+
+- use global will not expose ~~set or~~ set prop
+- prefer `[foo, set foo] = use global(prop?)` or `[, set foo] = ug(prop?)`
+  - currently it makes no sense to differ "whether it's unnecessary to rerender when a certain specific prop changes", as i do not check what props are being modified (e.g. w immer or proxy hacks)
+- if it's perf critical, make it a separate (global) atom and write `toggle = use_prop.set` (i will expose set)
+- and, i will change the set api. if both path (key/prop) and value were optional, it would not work if you passed one arg. i would not let it accept obj param (boilerplate most time). the change is path is now not accepted. write `ug(prop)` instead. also, it makes things way more explicit.
+
+---
+
+also, i would deprecate `result.get`. and `is_inside_react` will be irrelevant.
+
+---
+
+deprecate `correct_next`.
+
+no need to wrap a bool toggle.
+
+---
+
+deprecate `keys_to_sync.fn`.
+
+mutate the set directly.
+
+---
+
+upd 29 aug:
+
+it's especially prone. what if you pass a keyboard event to toggle?
+
+you have to wrap like `use_bind('ctrl+b', () => toggle())` or `p({ onClick: () => toggle() })`
+
+i will take a way more aggressive approach, lol!
+
+21 10 ~~lib/state: harden persistency.~~
+
+localstorage must store an object. i will ignore that otherwise.
+
+---
+
+no. the type of data and old data doenst have to match.
+
+the "null" is a temp failure while the state lib is being edited.
+
+28
+
+02 50 pivot.
+
+complete utilitarian component system.
+
+---
+
+adopt icon lib.
+
+---
+
+complete planned tools.
+
+15 00 ~~create~~ plan setting field components, learn from base ui (16 00)
+
+currently props convert `onclick` (or even `on_click`, i were about to support) to `onClick`. what if a component really wants `onclick`?
+
+and yet, it dc and wraps that, rather than passing all (or rest) props through (that's where idempotency works out.)
+
+i absolutely do not wanna touch `onClick` at all.
+
+and `div onclick={my fn}` is weird, i would write `div p({onclick: fn})`
+
+---
+
+i now feel react's insist on `classname` could be wise. and opinionated anyway.
+
+you could have class as a obj key but you couldnt dc class.
+
+and it's conservative and compromised anyway.
+
+---
+
+decision
+
+- i will not use `on_click`. it _is_ snake case. but it's unnecessary and already clear wo. for callbacks, i may name as `click` or `onclick`. actually if it were not an attr i lean toward `click`. rationale: if you see `click` on a prop or a param yk it's a callback fn. while explicit, `on` prefix makes it inflexible. yk, you may call a fn, or pass a fn (e.g. set state). there should not be a label in its nature indicating that.
+- it may not be a concern. e.g. for textarea component, the prop is `set_value`.
+- i will _always_ pass through all/rest params whenever event callback prop is needed
+
+16 00 web/lib/props: support autocomplete by narrowing return type to what's passed.
+
+this works
+
+```tsx
+<Textarea
+  {...p({ foo: 123, class: "123", value: "123", set_value: () => 123 })}
+></Textarea>
+```
+
+foo and class raise no error. value and set value get auto complete.
+
+upd 29 aug:
+
+well that's not the full story
+
+```tsx
+      <aside {...p({ class: 'sidebar', visible: on, variant })}>
+        {children}
+      </aside>
+      <div {...p({ class: "backdrop", onclick: toggle })}></div>
+```
+
+guess what? aside works. div says "no common prop".
+
+the conclusion is if it would work iff it has any _other_ prop, e.g. classname or children (any children)
+
+---
+
+baseui is full of compliance and thus compromises.
+
+camel case. aria attrs. data attrs. tsism, undefined in union instead of question mark, react types, baseui arbitrary custom types. classname. dynamic classname. render prop. reactism, default value and value and on value change (passes a custom obj of value and event details to the callback fn. clever progressive disclosure? nil. strictly sub optimal, effectively, in any case.) instead of value and set value.
+
+"useid is primarily used for accessibility"
+
+18 10 design and create atom components.
+
+~~adopt standard markdown syntax on the component index~~ no need to add visual noise. you would read the raw md rather than rendering it.
+
+---
+
+decision
+
+i would make it opinionated.
+
+no component will have .root .child like baseui. (violation of dry)
+
+it's a fixed constraint.
+
+for radio, it will accept options, that is an array of items (string or {name, id}), value and set value. i may add metedata like disabled on item if i need them one day.
+
+"radio would be always inside a radio group".
+
+---
+
+~~it's meaningless to solve a general problem you will never meet (e.g. support on_click on props).~~ <!-- i will --> support on_click on props.
+
+you should not accept onclick, onClick, or on*click as a standard prop, right? you may name as click. it \_is* a callback fn when you see a verb on params/props.
+
+and if it's basically a wrapper, you should pass it down wo intercepting, leveraging idempotency.
+
+btw, for general fn, you may name as fn (e.g. map arr fn).
+
+---
+
+idea on keyboard navigation
+
+all actions must have a visual effect. (visibility of sys status)
+
+if yk what you are doing, you would ideally have minimum visual distraction.
+
+- links will show outline while tabbing
+- checkboxes/radios will _not_ show outline, if the action changes the state
+- checkboxes/radios _will_ show outline, if the action navigates to that option wo firing
+- primary actions will have a hover effect. they _may_ show a tool tip _after delay_. they will _not_ show bottom left address indicator by default (you may opt in!), even though they are all literally links.
+
+---
+
+what about checkbox/checkbox group?
+
+will i polymorph checkbox? well, tbh, "make it single word so i could avoid pascal case" isnt really a concern now. pascalcase feels nothing wrong.
+
+for checkbox group, would the value be id -> bool, or id[] (arr/set)?
+
+well it depends. on whether it's in its nature a multi select or a few distinct settings, despite the identical look.
+
+---
+
+decision
+
+simple. i would _not_ have checkbox group.
+
+at the end of the day i care whether each feature is toggled rather than "what's there"
+
+props: value, set value (or toggle)
+
+visually the text would be always render after the indicator. thus children, if given, would be appended. it matters because the text should be clickable.
+
+---
+
+why does baseui defeat the scrollbar of the whole page when select active
+
+on ubuntu settings, or ptyxis, select has no "undefined value" or placeholder.
+
+and it's a good prac. yk, it's irreversible, and it doesnt have to be.
+
+you can have an option like "prefer not to say" or "non binary". an explicit one.
+
+well, what if it's a required field, in, like a survey, or a poll? what about radio?
+
+ok fine. you could have a placeholder (not needed for radio). value is any and <!-- but --> not implicitly omitted. any non string or non existing option is considered invalid, thus placeholder.
+
+it doesnt have to be a portal i guess.
+
+"name" could be a react element here. not needed though.
+
+base ui is so... sophisticated? it applies "data-highlighted" on the hovered popup. and, if you use your mouse to hover an item first, up/down arrow would be based on that. not really practical it feels.
+
+---
+
+no idea if it's really wise impl map obj this way.
+
+if you pass an object to map, it would convert to entries first. reasonable.
+
+and it _will_ convert back to an object, using from entries. do you always want an obj?
+
+idk.
+
+well, for select, it might not be just id -> name. there could be metadata. and thus object fits better.
+
+nothing wrong to derive both of arr of valid id and arr of options.
+
+by auto convertig back it's a reminder: it's discouraged to map an object. you may fen (e.g. to traverse recursively), but it should be an arr of elegantly structured data before you map it. [key, value] is actually rigid despite simple sounding.
+
+29
+
+14 40 lib/union: fix typing.
+
+no need to polymorph `fn(...args: T[])` and `fn(args: T[])` unless it's user facing.
+
+generally, if possible, i lean toward `...args` when it's supposed to call via `fn(a, b, c)` (so i dont have to wrap into an arr), otherwise when there would be an existing arr.
+
+14 50 organize todos (15 10)
+
+i think there doesnt have to be an arbitrary "maximum todos" rule.
+
+todo is just validated backlog.
+
+<!-- the constraints of corp best prac do not exist here. -->
+
+---
+
+```yaml
+# m = must have, s = should have, c = could have, w = wont have
+```
+
+16 40 design keyboard shortcuts component
+
+command palette is inherently coupled w both ia and config.
+
+it's not dry to copying back and forth. i would only list shortcuts on config, and ia would be for menu, sidebar, pages, taxonomies, etc. (and ixd is about components)
+
+---
+
+well i guess i would not simply map config yaml to ts. some are just about categorziation, and would be flattened. some are not.
+
+e.g.
+
+```
+appearance: # view
+  theme:
+    - system
+    - light
+    - dark
+  density:
+    - comfortable
+    - cozy
+    - compact
+  layout:
+    sidebar:
+      is visible: true
+    title bar:
+      is visible: true
+```
+
+i would map to
+
+```
+appearance.theme: union(...)
+          .density: ...
+```
+
+and shortcuts would be obviously mapped to an object
+
+```
+shortcuts: {name: key, duplicate keys, when, metadata...}
+```
+
+rather than flattened
+
+```
+shortcut.toggle sidebar: ...
+shortcut.open command palette: ...
+```
+
+---
+
+well, actually let's see how vscode does.
+
+vscode has two separate files. settings and shortcuts.
+
+settings are generally a flat map. shortcuts are an array of key, command, when?, metadata.
+
+but... shortcuts is part of config.
+
+---
+
+yaml may not be designed to be parsed programatically anyway.
+
+i would have data, config, cache yaml. i may have data, config json serialized and persistent, where shortcuts (whether arr or obj), would be a key in config. i can absolutely flat some and keep some while mapping.
+
+and in code, i mean app component, i would separate concerns.
+
+---
+
+keyboard shortcuts
+
+props
+
+- shortcuts, an array (effectively)
+- call (i would call id when fired)
+
+it's trivial to have call on app.
+
+---
+
+i think i would not have such massive actions to name (id) like this
+
+```json
+{ "key": "f11",                   "command": "workbench.action.toggleFullScreen",
+                                     "when": "!isIOS" },
+{ "key": "ctrl+k ctrl+m",         "command": "workbench.action.toggleMaximizeEditorGroup",
+                                     "when": "editorPartMaximizedEditorGroup || editorPartMultipleEditorGroups" },
+{ "key": "ctrl+j",                "command": "workbench.action.togglePanel" },
+{ "key": "ctrl+b",                "command": "workbench.action.toggleSidebarVisibility" },
+{ "key": "ctrl+k z",              "command": "workbench.action.toggleZenMode",
+                                     "when": "!isAuxiliaryWindowFocusedContext" },
+{ "key": "ctrl+k shift+enter",    "command": "workbench.action.unpinEditor",
+                                     "when": "activeEditorIsPinned" }
+```
+
+and i can change naming later!
+
+well, what about `appearance.layout.sidebar.is_visible`? maybe it's just moved elsewhere, not reduced.
+
+---
+
+i think i may not have to "normalize id"?!
+
+it's perfectly fine to have string key on commands. i would go that way.
+
+(i need id for tools, as they are, in the simplest form, exported via esm, and thus have to be valid js vars)
+
+---
+
+shortcuts would be in array. otherwise it might not be as easy to handle multiple keys to one command or multple command (w/wo when) mapped to one key, and metadata. it's essentially an array and i would need fen otherwise.
+
+17 20 web/lib/state: fix toggle not working.
+
+take a more aggressive approach.
+
+if the prev value is boolean, set value (toggle) will ignore any non bool and non fn arg.
+
+---
+
+```ts
+function does_type_mismatch(old_value: any, new_value: any) {
+  return (
+    typeof old_value == "boolean" &&
+    typeof new_value != "boolean" &&
+    typeof new_value != "function"
+  );
+}
+```
+
+currently it's just for bool, as it's the problem im gonna solve.
+
+and yeah it's not even a compromise. see what i would do: make new value toggle when mismatch.
+
+19 00 design settings component
+
+the type would not be number | string (the value type), to decide whether to convert the value of the input to int.
+
+i would define a finite set of types, e.g. number, range, select, ratio. they are components.
+
+they might have additional metadata. e.g. for select, there would be options.
+
+i would map to the correct prop of select component.
+
+19 10 lib/map: refactor to decouple obj from entries post process. fix typing.
+
+i made the decision at the end of the day anyway. seems most time i dont need that.
+
+19 20 component/select: complete, and simplify props.
+
+non user facing fn doesnt have to be flexible. polymorphism is for handling different input, not the same input in different forms that would be normalized to be uniform (e.g. `...args` or `args`).
+
+---
+
+upd: ~~reverse this action.~~ make it even simpler.
+
+you can absolutely pass string[].
+
+still, the id must be string. i dont feel it's practical to allow, like number. i could. if you pass an arr of name id, and then i use map (which supports any key) to index.
+
+23 30 component/app: create use_commands hook.
+
+a clever hack to break the scope.
+
+30
+
+17 40 action/tools: refactor tools data structure. 18 30
+
+in my mental model, a tool has
+
+- a converter fn, likely string -> string
+  - it's highly praised of the unix philosophy, by being text based, making things composable
+  - almost nothing could not be stringified informatically losslessly
+  - the cost is perf, which is negligible. i would not "even out serialize and parse"
+- args[]?
+  - name
+  - id? = normalize id name: the prop name in obj params
+  - value
+  - type: component to render and set value
+- render input? (?)
+- render output?
+
+c
+
+tools are re exported.
+
+constraints are
+
+- in js, fn could have props, but they would not be cleanly defined and typed
+- in js, var names could not contain spaces (thus `normalize_id` is created, so hacky and implicit, highly prone i think)
+
+e
+
+**i should create abstractions, not hacks.**
+
+---
+
+tools should be a map, not a flat list.
+
+i have ia decoupled.
+
+---
+
+it's meaningless to create arr tools and convert to map immediately
+
+and the decision is i would make tool (en) name and tool id the same thing
+
+it's fine if i would have internationalization later. en (as id) -> other lang is perfect, nothing wrong cmp w id -> all langs.
+
+there is no longer js contrainst as i make fn a prop.
+
+```ts
+  "yaml to json": {
+    fn: yaml_to_json,
+  },
+  "telegram to journal": {
+    fn: telegram_to_journal
+  },
+```
+
+it _is_ boilerplate. the tradeoff is worth it.
+
+---
+
+normalize_id is still being used. letme think bout it.
+
+i would have it.
+
+```ts
+const key = arg.id ?? normalize_id(arg.name);
+```
+
+nothing wrong, right?
+
+js vars couldnt contain spaces. and i never use any uppercase letters.
+
+```ts
+dc {my name} = options
+```
+
+e.g. that's invalid
+
+```ts
+dc {"my name": my_name} = options
+
+dc {"my name" as my_name} = options
+```
+
+you have to convert it anyway. somewhere.
+
+and if it's guranteed to be invalid (i would not convert on the fn definition), it's reasonable to add some magic in the preprocess.
+
+19 40 action/telegram to journal: debug weird output of merge journal. lib/collection: fix `reverse_map` to work w the breaking changed `map`. 20 00
+
+there seems to be some issues...
+
+---
+
+generalize journal. make empty input empty, instead of "an existing line of empty string as content"
+
+---
+
+well, the cause is the breaking change of map.
+
+it no longer applies obj from entries for obj.
+
+31
+
+12 20 plan
+
+- complete the rest of atom components
+- map args/settings to input (in general) components
+- create pattern/page components and make every button clickable, e.g. hamburger menu, command palette
+- create basic styling of components
+- adopt icon lib <!-- s, inefficient wo -->
+
+15 40 create the rest of atom components
+
+jsx element auto complete is quirky, just like ts type inference.
+
+---
+
+seems in adwaita the order is always number field, dec, inc
+
+---
+
+doesnt seem slider is used anywhere. (at least here)
+
+and tooltip is irrelevant most time.
+
+16 30 create component arg 17 10
+
+~~just mutate in place. it would work and it would be simple.~~
+
+it does not. rather pass down.
+
+---
+
+i could narrow the type (for metadata) by typeof value.
+
+18 20 design hamburger menu.
+
+i feel im somewhat stuck. i do not really have a purpose now.
+
+basically it's just a visual, auto synced text converter
+
+it's easy to add features.
+
+i do not have to toggle keyboard shortcuts or pref. the only rationale is utilitarian would be a universal design system, and it should match gnome adwaita (styling can be changed) on features. and, what does it mean if i decide to build _for the future_?
+
+---
+
+doesnt matter i would complete things quickly.
+
+---
+
+idk why color theme is rendered specially. what if a (first time) gnome user wants to toggle light theme for a specific app and they dive into pref?
+
+i somehow need tooltip. or maybe it's the icon (white and black separated by a diagonal line) that is confusing: auto switch light/dark based on time, or follow system?
+
+it's clear i want to, at the end of the day, let it be a prop like `title`.
+
+```
+Button title: follow system theme
+```
+
+under the hood
+
+```
+Tooltip tip (string or children): follow system theme
+  button ...
+```
+
+ok good news
+
+```tsx
+<Button {...p({ onclick: () => {}, class: 123 })}></Button>
+```
+
+it works, class would be overridden (no idea why autocomplete fails again)
+
+---
+
+observation:
+
+nautilus doesnt show _or allow_ theme switch (use system). yet almost all gnome apps that allow, shows on menu, not pref.
+
+nautilus shows new window before new tab, ptyxis does vice versa
+
+ref:
+
+- nautilus
+  - new win
+  - new tab
+  - .
+  - icon size - +
+  - .
+  - undo
+  - redo
+  - .
+  - show hidden files
+  - .
+  - pref
+  - keyboard shortcuts
+  - help (f1)
+  - about
+- ptyxis
+  - theme
+  - .
+  - (zoom) - 100% +
+  - .
+  - new tab
+  - new window
+  - .
+  - show open tabs
+  - .
+  - fullscreen
+  - .
+  - p
+  - ks
+  - a (about, not about ptyxis)
+- resource
+  - pref (ctrl+,)
+  - keyboard shortcuts (ctrl+?)
+  - about resources
+- adw demo
+  - inspector
+  - adaptive preview
+  - .
+  - p
+  - ks
+  - a
+
+all shortcut-able commands has which shown on the right
+
+seems it's not standardized and we can make choices.
+
+or, it's nautilus (at least my current version) that is not standardized. it uses ubuntu orange instead of adwaita blue.
+
+---
+
+btw, on ptyxis menu seems it cares both hover and tab. i mean when you hover sth, it resets tab focus there, silently.
+
+i would not adopt that. it should be consistent. tab uses outline.
+
+and, maybe it's good prac to highlight (underline) the alt letter when keyboard is detected. i would not adopt that as i never use alt letter. you should use normal keyboard shortcuts. (also, when you tab, would you use alt letter?). what's even more weird is alt letter has _no effect_.
+
+---
+
+design
+
+- ~~sys/light/dark theme (ux prac: many ways to achieve the same goal)~~
+- (hr)
+- ~~density~~
+- (hr)
+- ~~fullscreen?~~
+- (hr)
+- pref
+- keyboard shortcuts
+- about
+
+i can change my mind later.
+
+imo, it's not good prac to make a list work both vertically and horizontally.
+
+---
+
+does it matter to name it as "About" or "About {app}"?
+
+18 50 lib/global.types: centralize util types.
+
+optional, fn.
+
+no idea what ts builtin "Function" is. i dont have to know.
+
+19 00 create ~~component~~ hamburger
+
+~~does not have to be a component.~~
+
+---
+
+keys of global state can absolutely contain spaces.
+
+it's already un-"js var"-able when it contains dot, right?
+
+it has tradeoff. it's not as clean when combined w dot. `/` would feel clearer, but it's unnatural.
+
+no need to overthink.
+
+19 10 web/lib/state: support `should_migrate`.
+
+appearance.theme was an empty string. now it's union.
+
+the best effort migration would lock it forever (unless i toggle the name back and forth).
+
+---
+
+i think it should not be a boolean...
+
+version cmp?
+
+---
+
+anyway it would be too weird and corp like (future proof)
+
+for now i would ~~delete that in localstorage~~ make should migrate a fn.
+
+yes.
+
+---
+
+i may support old state -> new state custom migration. or maybe yagni.
+
+w.
+
+sep 2026
+
+01
+
+00 30 adopt vscode icon pack. create component icon.
+
+ref: https://microsoft.github.io/vscode-codicons/dist/codicon.html
+
+---
+
+better to do what's clear and what yk would matter first.
+
+---
+
+well a bit tricky... letme think bout it.
+
+an icon has
+
+- name/id
+- icon pack
+- ~~size~~
+
+there is some logic inside.
+
+size doesnt matter for svg. (unlike ubuntu app icons)
+
+and if size does matter, it would not be not just scaling. anyway it's not to be "retrieved smartly".
+
+---
+
+abstraction
+
+```
+Icon name=sth
+```
+
+inside icon
+
+```yaml
+icon packs:
+  vscode:
+    sidebar: svg jsx
+    close: svg
+  md3:
+    ...
+
+icon pack = use global
+# "icon family: vscode, md3, ..."
+```
+
+it's trivial to paste html in jsx. i can just let icon own the icon packs.
+
+i dont have to "fallback to default vscode". icon packs are designed to be complete.
+
+if not, you may write `md3 = {...vscode, ...md3 icons}`
+
+01 00 app.css: ~~enforce a rule on~~ fix class collision.
+
+e.g. sidebar is named sidebar. sidebar toggle button is also named sidebar.
+
+well, i think it's easy to debug and solvable.
+
+i do not want to use descendent selectors. they are boilerplate, esp when nested (`.child` or `& > .child`).
+
+---
+
+why not make it global?
+
+y
+
+01 20 web/lib/props~~component/select~~: fix typing
+
+```
+Error: Received the string `true` for the boolean attribute `open`. Although this works, it will not work as expected if you pass the string "false". Did you mean open={true}?
+```
+
+wow, so sophisticated.
+
+---
+
+yeah, why everything becomes string?
+
+---
+
+ok, it's on react. react is so proactive.
+
+there is no problem. i will never pass the string false.
+
+c
+
+```ts
+if (typeof value == "boolean") {
+  if (value == true) {
+    converted_props[normalized_key] = "true";
+  } else {
+    continue;
+  }
+} else {
+  converted_props[normalized_key] = value;
+}
+```
+
+---
+
+ok, even more problem
+
+```
+Error: Received `true` for a non-boolean attribute `visible`.
+
+If you want to write it to the DOM, pass a string instead: visible="true" or visible={value.toString()}.
+```
+
+---
+
+and both are not warning. they are errors. wtf.
+
+---
+
+i have the idea.
+
+in react they think html attrs are heavily standardized. and they must _comply_.
+
+---
+
+and, so, i would go my way
+
+**`t`, `nil`**
+
+14 50 read through the repo. polish code ~~and ui~~. 18 00
+
+on naming:
+
+**data structures can be plural, e.g `for item of items`, names and labels can be plural (e.g. drafts, docs). the general rule of thumb is, if it's to be referenced as path, it must be singular, i.e. `component/button` (button is a component, the category is component, and button is one of the components), `script/install`, `action/new file`, `util/foo`. spaces do not matter, it's not a problem here.**
+
+and i would no longer enforce "every folder must have a readme" rule. like, when it's empty, or self explanable. generally if i have nothing to do but to explain the folder name (instead of its contents), better to omit the readme.
+
+15 30 lib/collection: deprecate `s` and `m`.
+
+Set and Map are flawed (oop). if they are always called w a new prefix, it should be reduced.
+
+but it does not seem any clean to alias to single letter vars. it's unreadable even in cp.
+
+and unfortunately, i could not alias as (or strip to) Set and Map (ts constraints), which would be ideal, nor could i alias as set (set value of a state or sth) and map (map an obj to a fn), both of which are already defined. i could alias as, like, group? dict? there is no such good words in english, as the best, math derived terms are already occupied by careless standarization committees.
+
+15 50 lib/env: move to `config.json`.
+
+env is to be changed and thus should not live in lib. and env implies a false meaning of secret/private.
+
+i like yaml better, but it could not be imported natively and i already have a config.yaml, which is way too flexible (i.e. structured docs) and not designed to be machine readable (parsed).
+
+yeah, json is aliased to jsonc on my vscode, but trailing comma or string key isnt the full story. what about wrapping the full file in curly braces and putting a comma at the end of every line?
+
+feels it would not help much to make it `config.ts`.
+
+---
+
+how does it feel to map every sys error abbr to a named js const?
+
+16 20 lib/file: simplify methods.
+
+no future proof. remove methods like "edit".
+
+if all methods have a "File" suffix, it doesnt make any sense.
+
+the purpose of file lib:
+
+- alias method names to human intent
+- make errors readable
+
+18 00 think. add todo: design web/lib/call.
+
+almost done.
+
+---
+
+`call` is complex. calling an api is not the same as calling a js method.
+
+timeout. retry. fallback value when err? readable error mapping?
+
+tool is generally a local web app.
+
+i would design it and learn from like tanstack query when needed.
+
+19 00 polish ui. support layout density config.
+
+utilitarian design tokens structure:
+
+- color ref (palette)
+- color sys (color)
+- font ref (typeface, text)
+- font sys (font)
+- comp (page, titlebar, sidebar, ...)
+
+css var intelligence extension is wicked.
+
+---
+
+i think it's wiser to prevent class collision in the first place, i.e. name them differently (sidebar toggle or toggle sidebar button instead of sidebar).
+
+the constraint is i could not let "button.name" auto opt out by default, i.e. make ".name" only target "div.name".
+
+and it doesnt matter to write `.foo_button` for `button.foo` (attr matching selector not needed, lol, though i could)
+
+yeah, a bit more boilerplate.
+
+---
+
+it does feel a bit unnatural when whitespace is not collapsed, i.e. more whitespace below than above, when the bg are the same for adjacent elements.
+
+ok i think i would simply disable the whitespace of the element below. you do not have to align everything when possible.
+
+upd: **that's not a problem.** look at adwaita demo, the menu does have more whitespace below (due to compound paddings), the law of proximity does not apply here (it's not related). just style it normally, do not carea human perception (e.g. multiple bg color w subtle shift).
+
+---
+
+wait, there is an issue on the design tokens converter.
+
+```css
+[data-density="compact"], [density="compact"] {
+  --page-whitespace: var(--spacing-0-5);
+  --titlebar-height: var(--spacing-8);
+  --sidebar-width: var(--spacing-60);
+}
+```
+
+23 30 script: convert design tokens: fix incorrect dot to dash conversion and generalize naming 23 50
+
+it happens when name on the same nesting level contains dot.
+
+i never put dot between (when at least one side is letter) letters on naming, like `sidebar.width`, i would either name as `sidebar-width` or nest them.
+
+**only when it acts as float point number**
+
+so the solution can be specific.
+
+02
+
+19 00 docs: write a guide on design tokens
+
+19 40 script/convert design tokens: use map instead of object to preserve original order.
+
+i would hand code it, lol. ik it's trivial to vibe this.
+
+---
+
+wow, by some magic, it works.
+
+<!-- it did not. it did not reference and convert into var() properly. -->
+
+22 50 lib/std: polymorph `has`, support map.
+
+23 00 script/convert design tokens: support variable name including dots.
+
+enforce naming consistently: dots, unless accompanied by digits on both sides, will be converted to dashes. and everything will be css escaped eventually.
+
+no need to add a special rule. **the one of the less assumptions wins.**
+
+03
+
+01 10 redesign tools structure.
+
+the problem: process panel is irrelevant when single step. both arg and input are input.
+
+the solution: 
+
+each tool has a set of named params. one of them may be mapped to stdin.
+
+instead of toggling process (multi step), you choose to whether or not display input panel, which would be effectively an echo at the top of the process.
+
+02 30 index.tsx: ignore irrelevant react errors
+
+so opinionated. i could not even paste a standard svg. i have to map the props to camel case to make react happy. ok i will just silence you.
+
+02 40 script/convert design tokens: refactor/rewrite in clean code
+
+yeah it works. i just dont want anything to be unreadable mess.
+
+03 30 lib/map: support map.
+
+03 40 lib/std: add `entries`.
+
+a modern replacement of obj/map entries.
+
+15 00 redesign process.
+
+not all tools accept a textarea stdin
+
+new props for tools
+
+- ~~stdin?: arg id~~
+- arg: is_stdin
+
+it will not render if it's stdin and it's not the first tool.
+
+chaining default to false. <!-- idk if it really matters, despite being powerful -->
+
+---
+
+about name and id...
+
+i doubt if it's really scalable to "normalize id". it works well, arg names are human and internationalization is not needed now.
+
+but actually, id is a constraint of js. what if it allowed variable names w spaces?
+
+constraints? i should abstract. let's make name the primary key. later, i may write like this: if tool.name exists in current lang, use that, otherwise fallback to en or name itself.
+
+it would not be easily typed. but tsism should be avoided. i can easily test it. and if i wanna automate, static testing (code review) and localization are trivial for llms.
+
+"normalize id" is not really self explanatory. i would rename it `variable`.
+
+it's to fix js design flaw. so it would be nicely placed in std.
+
+---
+
+about the impl.
+
+simple. i would make stdin nil at first. (if input given, even if empty, it will be replaced w an empty string)
+
+if it's nil i would show the mapped stdin arg, and thus every step later it would be stdout which _would not_ be nil.
+
+the problem is undefined == nil == void in js. it does not matter.
+
+- i will not use "===". it's compliance. js design flaw should be abstracted or hacked, not "fixed" while keeping solid backward compatibility
+- fn should not be void.
+
+one idea is to make "nil symbol: nil", it would break nullish op. (i could not override op in js)
+
+and i will still show arg and ~~gray out the input~~ (stdin). just be explicit and inform.
+
+16 00 web: rename classnames of buttons, make button prefix instead of suffix.
+
+16 10 web: polish ui, fix focus outline inconsistency, fix class collision and .
+
+seems all list items are called "item".
+
+as always, do not make them collide in the first place. or is it really what i want?
+
+y.
+
+`.button_foo` is better than `button.foo`, `.radio_item` is better than `.radio > .item`
+
+or really? that's boilerplate.
+
+i have total control over nesting. there would not be a weird additional wrapper in between.
+
+it's only a problem when you have a random `.item` that strikes everywhere.
+
+i think it does not matter. **"make it work"**
+
+css is not flawed. you may need both descendant and child selector. it would not be fixed if one or another becomes the default (even if you have the option to toggle).
+
+for buttons, i would have a prefix because it's too weird to write "i would apply to all foo, but not buttons w an icon of/that called/that toggles foo". it's much easier to say "i would apply to all foo. or i would apply to all buttons of foo."
+
+for component scoped nesting, i would just use child selector (if needed).
+
+---
+
+it also makes you aware!
+
+**if child selector does not fit... you may separate it as a component.**
+
+e.g. now i have `.textarea` instead of `.panel .textarea`
+
+17 10 lib/std: polymorph `has` to support `string`.
+
+18 00 web: polish ui, adopt `flex: 1` over `flex-grow: 1`
+
+if i want it to "take all rest space"... its main size must be so as well.
+
+i mean, ive applied flex shrink 0 to all elements.
+
+**i generally want to show scrollbar on the children, rather than scrolling the parent all together.**
+
+---
+
+wait weird. it's `1 1 0%` instead of `1 1 auto`
+
+ok reasonable. i just have to explicitly define flex basis 100% for block elements.
+
+e.g. select is displayed inline. radio is not.
+
+---
+
+yeah, if i wrap dynamically... i should possibly make it block.
+
+---
+
+y. as adviced, i should not apply flex shrink 0 globally.
+
+in my philosophy, everything is static by default. and if they refuse to shrink... they will expand and get clipped by a rigid parent.
+
+flex shrink 0 (to direct children) and scrollable should be applied simultaneously.
+
+19 40 support render output.
+
+it can render output if there exists one tool that can render. if multiple supports, the last will be used.
+
+jsx would not be serialized so it would not return some elements directly.
+
+render output: text -> jsx.
+
+i feel if possible, i always want to render it. i dont have to have a dynamic option "render?" on output title i guess.
+
+20 40 action/maimai: create maimai single chart difficulty <!-- chart constant --> and achivement rate to rating mapping tool. write docs <!-- collocated -->.
+
+https://myjian.github.io/mai-tools/rating-visualizer/
+
+this is absolutely flawed. ranges of single chart ratings of each rank obviously would not collide into each other, and sss plus has no "range".
+
+<!-- upd: well, fine, both achievement% and difficulty (14 -> 14.0 ~ 14.5) are variable here. no wonder they overlap. -->
+
+---
+
+https://silentblue.remywiki.com/maimai_DX:Rating
+
+this would be the primary reference.
+
+04
+
+16 40 action/maimai: design render output.
+
+table layout:
+
+- x: difficulty (in n or n+, latest)
+- y: achievement% (in rank)
+- item: min/max/range
+
+graph layout (preferred):
+
+- x: difficulty (in n or n+, latest)
+- y: rating (overall)
+- graph: min/max/range for each rank
+
+basically the fn is y = kx, where k is increasing by achievement% (it's discrete due to how rank coefficient works)
+
+---
+
+it's actually quite easy to have a table layout. you can use native table!
+
+content driven basis and alignment, they are _in its nature_.
+
+---
+
+i may consider "json to csv".
+
+first you have an array of objects (if json must be an object, you may use the first key of which). the obj keys are the column headings. if new keys are found in later items, they append.
+
+---
+
+on json parsing...
+
+standard/flexible/forgiving does not really feel right. 
+
+standard. which? json, or es6?
+
+18 10 action/json: implement flexible json parsing. 19 00
+
+i will name it flexible. standard is what we love. there is no such a thing dictated.
+
+<!-- also, "Aim for **flexibility** in your code to make it future-proof, reusable, and easy to extend. Avoid being **relaxed** with your engineering standards, typing system, or data validation, as it inevitably introduces technical debt, security vulnerabilities, and bugs." -->
+
+e.g. backtick template strings is not more "derived" than double quotes.
+
+- rigid (json)
+- standard (es6/json5), default <!-- actually json5 is flawed as not supporting template literal, maybe i would use new Function or sth -->
+- flexible ~~relaxed~~ <!-- jsonic (besides a unplausible name, really relaxed json does not do much and it does not have a clear purpose) -->
+- forgiving (llm) <!-- i do not need this, and thus i would not compare the options. maybe i would use jsonrepair (by its name). upd: i kind of like dirty-json better but i would keep my decision. -->
+
+---
+
+well, bun init is quite flawed and coupled w claude. (it add claude.md dictating bun over nodejs)
+
+let me test...
+
+pnpm init
+
+```json
+{
+  "name": "action",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.30.2"
+}
+```
+
+bare
+
+```json
+{
+  "packageManager": "pnpm@10.30.2"
+}
+```
+
+what if i alias on zshrc?
+
+doesnt seem i can alias two word vars.
+
+maybe i would alias `i` to `pnpm init --bare`.
+
+(i have an idea of "pnpm install || init --bare", but it would break when it's initialized on a parent dir)
+
+**current workflow:**
+
+```sh
+i # init
+b i # install
+b i pkg # install (add) pkg
+b i -D pkg # install (add) dev pkg
+b rm pkg # remove pkg
+b 'script.ts' # run
+open index.html # run in browser (parceljs under the hood)
+```
+
+19 20 action/maimai: create table layout.
+
+they would never see the raw output (currently). it doesnt matter how to structure it. i may output an array (rows) of array (column cells), lol.
+
+what if i output csv? what if i output json, convert to csv, and have a general table rendering fn for csv? wow so interesting.
+
+nevermind.
+
+---
+
+i do want the 1pica/rem and 1px dual way scale. tailwind 4px base spacing would work fine though.
+
+22 50 action/maimai: research ways to render graph.
+
+05
+
+14 30 web/component/button: separate actual buttons from buttons. web/lib/props: fix props autocomplete.
+
+html tags have functionality. e.g. it's much easier when you use native button for interactive widgets.
+
+not all focusable elements are actual buttons.
+
+**im not saying "util classes".**
+
+yeah, 
+
+> The Bad: As your project grows, you end up with massive CSS files full of duplicated code (e.g., declaring display: flex or padding: 15px hundreds of times). You also suffer from "naming fatigue" trying to name every single inner div wrapper."
+
+you basically alias them to "flex" and "p-4" and duplicate them across classes.
+
+i will still name based on components, not individual css props.
+
+like, .button.button_delete. i may not add .button_delete if i do not wanna target it. (button_ prefix is required, in case i have a component called delete, which happens a lot. workarounds would be even worse and more ambiguous/confusing.)
+
+---
+
+wow. ~~ts~~ vscode magic.
+
+```tsx
+      <Button onClick={function (...args: any) {
+        throw new Error("Function not implemented.")
+      } }></Button>
+```
+
+---
+
+i would generally use snake case. and there is nothing wrong w `onClick` (i do not wanna get multiple autocomplete or mess up w tsism).
+
+`onclick` and `on_click` will technically work.
+
+<!-- i have a rationale! -->
+
+rationale: `on` prefix is boilerplate <!-- should be fixed -->. and i would rather read `onClick` as a symbol/icon.
+
+---
+
+all focusable elements should style properly. currently non buttons would rather have no focus ring at all.
+
+20 00 web/design: clear spacing tokens below 1rem.
+
+use border if needed. left wing politics is out of concern.
+
+---
+
+i would not refactor the base to 1rem. yeah, it carries purpose, it's the default font size originated from printing press... and 1px means nothing but to align environments... and 4px is basically out of display constraints...
+
+not everything are based on font size. you may have 20px or 40px.
+
+---
+
+fun fact: tailwindcss docs itself is not responsive.
+
+it (the demo) will be clipped before the leftmost of the scrollbar on 1280px laptop.
+
+https://tailwindcss.com/docs/width#setting-both-width-and-height
+
+it works well on 1440 (90%).
+
+---
+
+decision:
+
+- border: strictly for borders outlines box shadows in 0 2 4 8 px (currently)
+- spacing: length (margin, padding) in ~~2px~~ 4px base, starting from 1
+- size: length (width, height) in 1rem base, starting from 1 ~~4rem~~ <!-- in tailwind size means exactly width/height. and here there would not be a thing to magically set both -->
+
+well how much does it matter? idk but i think i would follow my idea.
+
+i think it's just tiny, i mean 4px is very very tiny. and 1rem is small.
+
+**i will not use 0.5 value (2px base).**
+
+well, i think it's not a good idea to introduce "size".
+
+you can not imagine it, right?
+
+also, titlebar height uses spacing. yeah, maybe it serves as whitespace.
+
+---
+
+i can not make progress.
+
+~~my conclusion is it's not a problem that could be solved on design tokens. the scale does increase for larger components. different naming has obvious downside (mental load). and what does it give? increase by one? nil.~~
+
+~~eventually you just want (a tool) to map the design sheet.~~
+
+~~wait why not? are you gonna have 3 digit spacing?! 24rem isnt wide enough!~~
+
+---
+
+i will not carry out a massive change.
+
+tailwind would be quite good. it's widely used and defacto. at least good enough.
+
+the only change is to remove .5 spacing. 2px is too trivial, i think. it also echos w their initial idea.
+
+max w scales. (it's not recommended to hardcode main widget length to be responsive)
+
+22 00 web/script: create auto convert design tokens, a file watcher.
+
+06
+
+21 10 action/maimai: research and design graph component.
+
+21 20 web/component: create a minimal storybook.
+
+07
+
+18 10 web/component/graph: design props and children archi.
+
+what's the props of graph? what will the context provide?
+
+```yaml
+props of graph:
+  padding: 
+  scale:
+  x:
+    begin:
+    end:
+    step or graduates:
+  y:
+```
+
+padding should be large enough to put the text on axis.
+
+let's think about the main graph first. maybe i should define the aspect ratio (in unit) instead of in px.
+
+will it be based on cord (e.g. x + 1 then y + 1) or gap (e.g. x graudates by 2, y graduates by 1, then x + 2 y + 1)?
+
+~~either.~~ i think it's unwise to do so? 14000 to 14500 is the same gap than 12k to 13k?
+
+let's declare like 
+
+```yaml
+scale: (13000-12000)/(12.5-12) # x/y
+```
+
+currently i would like it to be linear. i think it's easy to extend later.
+
+for graduation... will the text scale the same as the graph? or will it be an overlay? it would be a bit complex. how do ppl do?
+
+research d3js examples... it does put text inside svg. it will not keep font size unchanged (like take more proportion of the viewbox) when the width collapses.
+
+research recharts... it does the same. but the text scales. wait how does it do.
+
+and about padding, four direction padding is not the same. on rechart, it only adds padding on the left and bottom.
+
+there is a dedicated "responsive" prop.
+
+---
+
+interesting. worth my time.
+
+i would
+
+- get props: aspect ratio (you may hardcode it or calculate it)
+- set dull values, like w = ratio * 100, h = 100
+- when rendered i guess it would get bounds (ideally before painting)
+- w = bounds.width ?? w, h = ... ?? h
+- set svg viewbox as 0 0 w h
+- ~~if unresponsive, i would fix w h~~ could have
+- i would subtract padding
+  - substract width by x padding
+  - calc height by aspect ratio
+  - add height by y padding
+- i will map the scale
+
+how would i fix w h, maybe usemount?
+
+what if i want a consistent 1rem padding and a golden aspect ratio? i will ... i would use the default (or provided preserve aspect ratio)
+
+---
+
+let's finalize it
+
+```yaml
+graph:
+  hover: state (hover, set hover)
+  scale: (12.5-12)/(13000-12000)
+  pl: 16 # in px
+  pb: 16 # in px
+  x: each(11, 15, 0.5) # linear mapping by default
+  x:
+    begin: 10
+    end: 15
+    steps: 0.5
+  x:
+    begin: 10
+    end: 15
+    steps: each(11, 15, 0.5)
+  x:
+    cord to %: 
+    "% to cord": 
+  children:
+    x axis: # simple by default, text align is trivial (easy research of props)
+    y axis:
+    line of sss+: y = kx # as x => kx + b, i will just query the start and end point
+    # line of sss max: y = kx
+    # line of sss min: y = kx
+    # polygon of sss range: y = kx
+    #   label: sss # i would align the right of the text to the end by default
+    range of sss: # esp for two lines wo intersection
+      max: y = kx
+      min: y = kx
+      label: sss
+      background: oklch... # i would not highlight the lines i guess
+    grid: # yk what you want by default
+      # under the hood...
+      grid x: # vertical
+        line: 0 # i guess i could make number -> x = number, fn -> y = kx + b
+          color: faint # or class: grid
+```
+
+i will not render "15k: sss+ difficulty, sss..." on svg.
+
+i may get the hover point and calculate manually. i may visually paint the line and some intersections... maybe line only. text legibility would suffer. (i may have some faint lines!)
+
+well i dont really know the math terms... lol.
+
+ok that's called grid.
+
+21 30 web/lib/props: fix string style.
+
+lack of testing. i assumed it would return an obj style react expects rather than some ast.
+
+---
+
+ref: rechart example
+
+```jsx
+export default function IndexLineChart() {
+  return (
+    <LineChart style={{ width: '100%', aspectRatio: 1.618, maxWidth: 800, margin: 'auto' }} responsive data={data}>
+      <CartesianGrid strokeDasharray="5 5" />
+      <XAxis dataKey="name" />
+      <YAxis width="auto" />
+      <Line type="monotone" dataKey="uv" />
+      <Line type="monotone" dataKey="pv" />
+      <Legend position="insideTopRight" offset={20} />
+      <RechartsDevtools />
+    </LineChart>
+  );
+}
+```
+
+---
+
+it seems if i move on trackpad, mousemove would fire regardless. (e.g. when you try to move toward top left standing on (0, 0))
+
+08
+
+16 00 web/component/graph: create deps for maimai graph.
+
+how should text align?
+
+---
+
+would i research more rechart examples?
+
+---
+
+"🚨 @parcel/transformer-js: Rest element must be final element"
+
+"🚨 @parcel/transformer-js: Trailing comma isn't permitted after a rest element"
+
+---
+
+how should i apply z index?
+
+i think it should be irrelevant to positioning.
+
+i may learn from rechart.
+
+i can (re)search, no need to analyze (rev engineering) manually.
+
+zindex currently doesnt work on svg, and i have generally rely on dom order, at the end of the day?
+
+how does rechart work?
+
+~~let's try to reorder the elements.~~ it absolutely intercepts its children.
+
+yeah, not as expected (iterating children prop), but effectively so.
+
+the graph has a prop of zindex layers arr. it exposes via context.
+
+components do not render. they get the graph context, and append themselves to the correspond layer.
+
+the graph renders later.
+
+e.g. map layers layer if nothing inside return, .zindex layer item (render the arr directly, they are already vnodes)
+
+09
+
+18 40 component/process: support clear all. polish styling.
+
+interesting, "children" doesnt exist on "intrinstic ...", yet i passed children prop on native html button, it magically works. maybe that's the right prac to "pass down all rest props".
+
+19 20 component: style atom components.
+
+both css and js can contain logics. it's easier to work w css for its expressiveness, but it has limitations. like, it can not manipulate dom, unless you want to use pseudo elements (considered hacks). on jsx you can inject icons dynamically, on css, you have to convert them to bg img first, likely in base64. and yet css has no native mixins. you could not say ".a = .foo + .bar" in css.
+
+good news is it's specific here. im creating an opinionated styling. and later if i wanna extend, i may just manipulate jsx (e.g. when you switch to md theme and you want the cursor originated ripple effect).
+
+---
+
+how should i style checkbox?
+
+seems vscode simply renders a checked icon when checked.
+
+how should i set the default flex direction on page (i want everything to be flex by default)?
+
+i may unset for articles, if needed.
+
+i feel it's more natural when contents flow down by default.
+
+problem is it breaks inline. div and span have no difference now. but do i really want it to be "ideally inline, wrap if needed"? no. it's just use case of horizontal flex.
+
+decision: **i would use flex-flow instead of flex-dir from now on.** (though seems ive never used flex wrap)
+
+and i think it's the same if you "flow down by default, flex (horizontal default) if needed" or "flow down (flex) by default, horizontal flex if needed". or isnt it weird to say "i want to change the direction, so i toggled the display prop". the default direction seems to be somehow impacted by backward compatibility of block (downward default)...
+
+btw, the value of flex dir is confusing. it would be better to be "horizontal" or "vertical". like, row? does it flow horizontally (the parent like a row), or does it contain rows?
+
+and why vscode suggests flex grow before flex flow for "flow"? i have to use "flfl" instead.
+
+20 10 action/color contrast: support perpectual contrast.
+
+google ai mode phases out yet another a/b testing (yeah, data driven yk).
+
+it makes sidebar icons possibly accent (e.g. new chat icon in google lightblue), and make non heading table items dimmer... is it legible enough?
+
+---
+
+result
+
+```
+foreground #BFBFBF background #22242A
+
+Lc -65.3
+
+⚠️ Lc 65 | Large or Bold Text Only: Safe for headings and large UI text (minimum 24px normal or 16px bold). Too low for body copy.
+
+foreground #B8B8B8 background #22242A
+
+Lc -61.3
+
+⚠️ Lc 61 | Large or Bold Text Only: Safe for headings and large UI text (minimum 24px normal or 16px bold). Too low for body copy.
+
+foreground #B8B8B8 background #2C2E35
+
+Lc -59.3
+
+⚠️ Lc 59 | Large Display Accents: Only safe for massive titles, subtitles, or large graphical elements (minimum 36px normal or 24px bold).
+```
+
+---
+
+colorparsley doesnt err when it fails to parse, and logs it instead
+
+normalize colorparsley to fail loudly
+
+c
+
+21 00 component: style the rest of atom components. component/input: support placeholder (explicitly on props type).
+
+vscode doesnt use radio inside, nor does it have icon for it.
+
+would i style the indicator in css? i can try.
+
+---
+
+css var intellisense is buggy. idk.
+
+10
+
+00 50 web/component: create dropdown for select and tooltip.
+
+~~16 40~~ 16 50 web/component: create tooltip, integrate w button.
+
+my ideal is 
+
+- max hitbox (whether hover/click/tap)
+- normal styling
+
+and thus i create a weird
+
+```css
+.button {
+  &:has(.icon){
+    justify-content: center;
+    align-items: center;
+  }
+
+  .icon {    
+    width: var(--spacing-8);
+    height: var(--spacing-8);
+
+    border-radius: var(--radius-base);
+  }
+
+  &:hover .icon {
+    background-color: var(--color-bg-hover);
+  }
+
+  &:active .icon {
+    background-color: var(--color-bg-click);
+  }
+}
+```
+
+but why do i have to mimic adwaita? i can absolutely make it no inset.
+
+what is "normal"?!
+
+~~19 30~~ 19 50 ~~create storybook.~~
+
+name or label?
+
+11
+
+00 30 create component popup, a foundation of about shortcuts pref.
+
+- esc, click outside: close
+- backdrop?
+
+how to bflex?
+
+how to detect outside click?
+
+research adwaita?
+
+ref:
+
+- adwaita demo
+- ptyxis
+- resources
+- files (nautilus)
+- eyedropper
+
+01 30 create component about.
+
+- icon
+- name <!-- label -->
+- author?
+- details?
+  - label -> link (tooltip: link)
+- hr
+- support questions -> link
+- report an issue -> link
+- trouble shooting
+  - text
+  - debugging information
+    - readonly text
+      - copy
+      - save as... (txt)
+- hr
+- credits
+  - code by
+    - list
+  - design by
+    - list
+  - artwork by
+    - list
+- legal
+  - markdown
+
+---
+
+it seems all bool props are sanitized.
+
+false -> (omitted)
+true -> 't'
+
+but it can work i think
+
+11
+
+18 40 create component about.
+
+easily fixed. i can detect mousedown instead of click (which would fire onmount) for click outside.
+
+idk if it would be mobile compatible. but it's not a current concern.
+
+---
+
+div and span are of no difference now.
+
+19 00 create component scrollarea. (?)
+
+abbr as scroll.
+
+---
+
+currently scrollarea just apply a class, but i may extend it in the future.
+
+and, cant go wrong to be more explicit.
+
+---
+
+i think the cleanest way is just `.process_item`. abstractions are abstractions.
+
+`> .item` could not be wrapped by middlewares (e.g. scrollarea, popup widget). `.item` will blast into `.process .radio .item`. and even if i solve all the problems, what if `item` become a standalone component?
+
+yeah, i ~~will~~ may name it `radio_item`.
+
+**classes should begin w component name. only apply classes when you wanna style it.**
+
+exclusions are, if it _is_ a component (e.g. `.icon`), or if you are sure it's an atom.
+
+ok fine i do not have to prefix w `radio`. radio items are expected to be simple, e.g. text or an img at most.
+
+i mean, you can leave it simple, only if yk
+
+- **it will not become a component**
+- **it will not apply to its deeply nested children when it should not (e.g. no `{children}`)**
+
+(you do not look back, thanks to css native nesting)
+
+---
+
+position relative/absolute does work, i mean.
+
+the unfixable quirk is about clipping when overflow hidden on _any_ parent.
+
+it doesnt matter when it stays in place.
+
+19 50 action/maimai: create tool note loss table.
+
+21 40 lib/map: fix, consider continue only when return undefined, but not nil.
+
+nil is an explicit absence of value.
+
+23 00 web/lib/props: normalize and pass down true as true
+
+true = string true. false = omitted (effectively undefined).
+
+it's react that is damned. silience its warning instead.
+
+(it will not work if you pass boolean true to a non boolean prop, which is defined by react itself)
+
+---
+
+i mean i dont like t, nil for true false. not really.
+
+true, false, nil.
+
+they carry different intent.
+
+i may use a symbol for undefined.
+
+12
+
+05 20 web/component/switch: style switch.
+
+13
+
+00 20 web/component/about: complete features.
+
+i want to...
+
+- make close non selectable. maybe it (tab index -1) would work. i will test.
+- support nested pages. i will have a stack. map page to component. show the top of stack. create navigation.
+- have a basic structure on credits, and links
+  - i think links should either expand or open external. maybe i would have this constraint. you may be non clickable, 
+- copy version, show a toast. i will show which on the corner maybe. they know what they are doing. no need to grab attention. if they want to confirm, they can.
+- trap keyboard focus. it would be easy if there are no quirks.
+
+---
+
+will tab index -1 work?
+
+it works flawlessly out of box. 
+
+maybe i will make it a prop. it's common. how would i name it.
+
+no need to say "variant". it may have many categories, not a single type. <!-- Aristotelian vs. Prototype Theory -->
+
+let's say "focusable = false". more self explanatory than tabindex -1. 
+
+wait, props would omit false values. and it would become the default value...
+
+what if i just keep false values? how will react do if it were native html attrs?
+
+ok! fortunately, here is how react does:
+
+- if it's a boolean attr, apply `attr` (not `attr="true"`) if true, omit otherwise
+  - html only cares existence, react explicitly warns `attr="false"` would not work as expected
+- if not, react would omit anyway unless it's string. or number? y.
+
+confirmed.
+
+> index.tsx:45 Invalid value for prop `foo` on <button> tag. Either remove it from the element, or pass a string or number value to keep it in the DOM. For details, see https://react.dev/link/attribute-behavior
+
+that's perfect. i can pass down false values. (as i silenced irrelevant warnings)
+
+---
+
+(idk how to say "ive completed a new trivial task. i will keep/continue working now.". and i dont wanna divide commits. that would be corp boilerplate, i mean boring.)
+
+maybe i would continue writing here. <!-- it's clear where it belongs. and git would record everything. (events within 20min are trivial) -->
+
+---
+
+how to support nested pages?
+
+i will
+
+- maintain a state, which is stack = About
+- show the top of stack
+- when esc/click back button
+  - pop the stack
+  - if it could not, close
+
+btw, for title, it seems adwaita only hides when it's on about (main page) _and_ scroll top = 0
+
+how would i map "about" itself?
+
+~~maybe a dedicated "about page" would make my life easier in case i wanna support page transition in the future.~~ doesnt feel i have to. btw, about page is always at the bottom.
+
+make it work.
+
+---
+
+well, feels vscode icon back is... quite small cmp w close.
+
+i dont think i should apply scale, or toggle the svg myself.
+
+---
+
+wait what
+
+```
+> '123'.link
+ƒ link() { [native code] }
+> '123'.link()
+'<a href="undefined">123</a>'
+```
+
+---
+
+idk why in adwaita names in credits are buttons.
+
+and nothing happens onclick, unless there is a link or an email.
+
+maybe i can make them copiable.
+
+---
+
+why adwaita focus "version" when i open about...
+
+anyway. i think i would focus popup container instead, generally speaking.
+
+you would focus the first element, of body, not the second when you tab, right?
+
+00 40 web/lib/props: generalize. pass down false value. nullify non obj props.
+
+20 10 web/component/popup: fix to only detect outside clicks when open.
+
+20 20 web/component/popup: polish keyboard focus. support initial focus option. restore focus on navigation back.
+
+in adwaita everything is memorized. i mean, the scroll top, even the focused element of a sub page. idk if they are serious.
+
+i will focus on back button regardless when a sub page opens.
+
+---
+
+llms really know the common causes, from the search or sof. i dont.
+
+yeah, i was too careless and heuristic, assuming it were already narrowed to the case (all mouse clicks are outside clicks).
+
+an agentic code reviewer (in bg) would definitely save my time. but most time it's irrelevant... it needs quite an engineering to make it useful and less noisy.
+
+14
+
+01 20 think on storybook.
+
+a component need props. it's hard to know automatically wo ts lsp or llms. also, i have no idea of internal states.
+
+the structure is simple. like, n: number, set_n: state(n).
+
+storybook is trivial whatever.
+
+ref: https://recharts.github.io/en-US/storybook/
+
+<!-- btw, interesting, doesnt seem recharts want me to draw arbitrary fn graphs. -->
+
+01 30 create command palette, preferences, keyboard shortcuts. create commands (shortcuts) for each panel toggle.
+
+seems alt p should toggle process panel rather than "focus(only show) process panel".
+
+---
+
+if you let ctrl ? open shortcuts, why not let it close.
+
+---
+
+adwaita is designed to be responsive. after a mobile breakpoint, it eliminates the inline and bottom margins, and make it a drawer (from bottom) instead of a centered popup.
+
+---
+
+dont feel i have to style shortcut keys as adw. just plain text for now.
+
+16 00 action/maimai: generalize note count to loss, support space based sum and math exp, consider invalid input as 0, fix infinity (div by zero). 
+
+maybe we can take a step further. maybe we can render h/m/l great inside great?
+
+how to merge cell in html table?
+
+wait... i would have to impl new heading then...
+
+or what if i separate break from the main table.
+
+17 30 web/component/table: support sub headings for cells.
+
+there are a few ways to do this.
+
+- render sub headings on the very left/very top, and merge cell when irrelevant
+  - i may render like "great: h/m/l" or "high great/mid great/low great"
+- render sub headings on the left/top of that cell
+
+i may go for the "left of that cell" this time. i can solve a specific problem instead of a general one.
+
+logically it should be on top, whether top or very top, to align w headings. i would make it on the left anyway to make best use of screen real estate.
+
+18 00 lib/std: create util ~~`type`~~ `is`.
+
+no more nil == obj. no more arr = obj.
+
+18 30 web/component/table: fix min width quirk in flex container by unsetting display.
+
+well, the real cause is a quirk.
+
+w the fix applied feels screen real estate is no longer a problem and i can make it logically sound.
+
+---
+
+weird. ocloc outputs more code in a sub folder than on its parent folder.
+
+20 00 web/component: structure and style commands and preferences.
+
+let's make things clear first. how would i structure pref?
+
+would i put the categories on titlebar/dock?
+
+how does adw do?
+
+adw demo doesnt really have settings. just examples and mocks.
+
+btw, the dock items is a single component designed to work w arrow keys.
+
+how does adw on ptyxis do?
+
+it shows categories (appearance, behavior, shortcuts, profiles). it's quite special among adw ecosystem. but it's reasonable as its shortcuts can be editted on gui.
+
+<!-- the popup window of ptyxis can be occassionally recognized by desktop env. that is, when i open via ctrl ?. it might not work on ctrl ,. -->
+
+when crossing a breakpoint, it shows pref on titlebar and make sections on bottom dock (text below icon) instead of titlebar (text after icon). it could not shrink further. seems i could apply a constraint of pref category number.
+
+inside the same category, you can (and generally you will) have max one level of heading. and inside a heading there might be hr (or you can think them as groups).
+
+an individual option may have desc.
+
+switches may have collapsed menu dep on a certain toggle state, in deeply bg, indicated by dropdown icon (up or down).
+
+you may search through settings.
+
+a list of nav buttons would appear like
+
+```
+label
+layout (category) -> (unicode arrow) pages (heading)
+```
+
+these are navigate only. and search basically filters.
+
+search is simple substring match.
+
+---
+
+i will
+
+- create lib/search: fuzzy search
+- style commands
+  - flush, borderless, solid color, as guided by utilitarian design (generally you will only have fluid/flush bg and hr. exceptions are radio/multi select buttons where it can be rounded, full or not.)
+  - to create hierarchy, i may choose different bg or hr.
+- structure commands
+  - taxonomy (name[]) = commands (name -> id to call)
+  - taxonomy can be item[], where item = name | name, alternative name, search keywords... <!-- w -->
+- structure settings
+  - i will have settings. you could not just map the global state.
+  - category -> heading -> arg
+    - arg = label, type, id (in global state)
+  - i dont have that many settings and thus i may not have dock/titlebar items.
+- render settings
+  - easy
+- style settings
+  - straight forward
+- make settings searchable
+  - ~~i would give every button a #hash href~~ i will scroll there, it will be trivial
+
+it will make my life easy to impl search on shortcuts. i may not have to.
+
+---
+
+let's style commands first and see if i like bg or hr better. (dont overthink it. i can change my mind later.)
+
+both input and selected item should be focused. and i could not natively focus two elements. i will give a button focus attr.
+
+on vscode focused has way more hierarchy than hover. and click has no vfx.
+
+lets take a look on gnome builder.
+
+idk how to trigger it, ctrl (shift) p or sth. but it has a dedicated global search. (ok well on tooltip it shows ctrl enter. reasonable.)
+
+it uses accent for the focused item.
+
+yeah, as always, it remembers the search param (ok, it full selects by default when opened again. acceptable.) after you close the widget. quite awkward... i mean. 
+
+many static elements are somehow focusable. how would you justify this? likely a unconsidered default imo.
+
+there are three ways to select.
+
+- tab (typing has no effect if you decide to tab to select.)
+  - it will show outline
+  - you may shift tab to focus the last ranked item. no idea how useful it is.
+- arrow keys
+  - it will apply accent, and move outline w it iff youve tabbed before
+- hover
+  - it does not change focus.
+  - it has hover and click style (bg) of regular buttons.
+
+the dropdown looks like
+
+```
+        help ... f1
+        (desc in sentence case wo end period: Get help w using Builder)
+        high contrast
+        (desc)
+(icon)  Show Build Output (title case)
+
+```
+
+seems all command has desc. some have icon or shortcut.
+
+```
+Type to Search
+
+Prefix your query w one of the following to filter results
+
+Files ... `~`
+Symbols `@`
+Documentation `?`
+Actions `>`
+```
+
+<!-- you can either place whitespace of any number or not after the prefix. -->
+
+in the current project (gnome clock) there are no docs. you will find nothing w `?` prefix.
+
+for files and symbols it will show a preview on the right. for symbols, it will focus on where it is. if it's not at the very top/bottom of the file, it will scroll to where you are comfortable (i.e. golden div of your screen, 38...47 symbol...73).
+
+files have icons of file type (e.g. music, docs, img...)
+
+symbols have icons for const, var/prop, and fn.
+
+on global search, the order is
+
+- commands
+- symbols
+- files
+
+awkwardly, for folders (yeah files = files/folders), it still wants to show a preview, yet it could only show a blank file of focusing "line 1: empty". and the desc is always "Open file or folder" repeating millions of times in the dropdown. i mean, even if you scope to `~`, it does that.
+
+<!-- how does vscode solve that? it simply does not have/show desc. -->
+
+it can fuzzy search, but idk how it does. and unlike vscode it doesnt highlight matches. yet it can match non existing match (maybe there are hidden metadata like search keywords).
+
+15
+
+02 10 web/lib/keyboard: support priority.
+
+in popup keyboard trap, it tries to prevent default shift tab when focus on the first element, well, and yet, it focuses the last. reasonable right? but command palette already captures shift tab. it does loop back. but not native focus.
+
+there is no native way to see "whether the default behavior will be triggered", esp prone to race cond.
+
+solutions are
+
+- default? (if default, it will only fire when no others prevent default)
+- override? (if override, it will block others)
+- low priority? (it will not run if others exist)
+- priority
+
+i think priority is more general.
+
+**default to 0. only shortcuts of highest priority will be fired. keyboard trap defaults to -1.**
+
+yeah, it has downside if they do not prevent default. but i guess that's not the practical case.
+
+02 20 lib/map: polymorph for set. upgrade to is (instead of typeof/instanceof).
+
+nil and array are not objects _by default_. 
+
+05 20 script/convert design tokens: generalize token reference syntax.
+
+divide by symbols rather than just white spaces.
+
+support `color-mix(in srgb, palette.gray.950 30%, color.bg.primary)` besides `bold text.lg typeface.sans`.
+
+currently all tokens are letters dots and numbers. it's easier to target that directly. i may not have to support latin or cjk. well, i feel it's strictly better to hardcode the symbols instead.
+
+06 40 web/component/button: fix tooltip.
+
+it occasionally doesnt work. that's reproducible. you could not pass ref to multiple children as expected, which would be undefined on initial render.
+
+yeah, why not make it a state. perf is trivial.
+
+ref can absolutely be state.
+
+---
+
+wait, maybe it's timing issue. i could use effect instead of use event.
+
+<!-- otherwise i may consider refactoring tooltip (accept the element directly, instead of ref.current) -->
+
+seems it doesnt have to rerender. see how floating ui works.
+
+07 10 web/lib/use event: polymorph to support ref. fix a documented flaw in react use.
+
+conservative guys.
+
+07 30 web/component/commands: normalize focus as select all (like tabbing).
+
+tab focuses. focus is not focus. it's select.
+
+popup pops up. popup is not popup. it's a dialog. and popup is reserved for like select dropdown menu, on higher hierarchy, inside pref popup (dialog).
+
+interesting.
+
+---
+
+ok, well, when i leverage conditional rendering, it's no longer a problem. state is simply cleared, which is expected (gnome adw is wicked, i mean, it's quite engineered to magically memoize everything, but it's not what you would expected).
+
+<!-- it does work when i cancel the cond rendering though. -->
+
+actually ive had the idea of "oh we can create a magic serializable react to make everything persistent across refreshes, wo explicitly naming the global state keys, at all costs" months before.
+
+07 40 web/component/preferences: structure props and create minimal layout.
+
+the last piece.
+
+08 00 web/lib/state: ~~create `get`, a modern alternative to `data`~~. fix `use_global.data` to return the current latest value.
+
+feels quirky. i could not tell. im not a pro. but fn would solve it.
+
+maybe i dont have to.
+
+y.
+
+08 10 web/component/popup: harden keyboard trap and fix styling.
+
+it's meaningless to make the popup body tab index -1 and "focus it itself".
+
+and it's quirky. it makes everything inside focus visible. lol.
+
+it should do nothing.
+
+and tab/shift tab should not assume it's already inside. it should handle first/last element, and reset focus when outside (as if the popup itself is focused).
+
+18 20 web/lib/use keyboard: support `when`. rename to `use_keyboard`.
+
+it might not mount/unmount in the way of component lifecycle as you expect.
+
+better to have an explicit option.
+
+---
+
+it may not follow the naming convention. "when" is clear i guess.
+
+questions words like when where can function as is does should will.
+
+---
+
+align w filename. what does it mean to bind? bind what? ambiguous.
+
+it's basically derived from mousetrap, a cjs tradition, where you call like mousetrap.bind.
+
+great. lsp works well.
+
+---
+
+i may not have to have `when` on `use_event`.
+
+unlike shortcuts it doesnt conflict w others or prevent default by default.
+
+it has time to step into the fn and check the first early return cond. perf is negligible.
+
+20 00 lib/collection: create `flatten(object, is_leaf)` util.
+
+output an array of tuple type, content.
+
+feel an array would feel better. type can be h1, h2, h3, or p/leaf.
+
+headings have labels. leaves have content. nothing wrong to array dc, though that would be less future proof.
+
+a dedicated is_leaf? idk. maybe not needed.
+
+maybe it will not be completely flattened.
+
+it's common to look like
+
+```yaml
+heading:
+  - - c1 u1
+    - c1 u2
+    - c1 u3
+  - - c2 u1
+    - c2 u2
+    - c2 u3
+```
+
+i will not flat them to "hr". because they are not rendered this way <!-- in adw -->.
+
+oh maybe they are. i do not have to follow adw and i may render hr.
+
+what if they are mixed?
+
+an array will append a hr if there isnt already one. it will lift a flag to append an hr after it unless it's immediatelly followed by some heading.
+
+conceptually i want to 
+
+- flatten any array while prepending and appending a hr for each array
+- merge duplicate consecutive hr into one
+- omit the heading and trailing hr (if exists)
+
+let's avoid the hacks and make it clear. contextual flags are unreadable.
+
+---
+
+well that's incredibly prone to human errors. cant be fixed though.
+
+```
+map(object, ([k, v]) ...)
+// or map(object, (k, v) ...)
+
+result.push(['p', item]) // this can be abstracted
+// or result.push('p', item)
+```
+
+---
+
+vscode takes 300% cpu, becomes almost unresponsive, notices my laps, and self heals?
+
+---
+
+`Parameter cannot have question mark and initializer.ts(1015)`
+
+interesting pl design.
+
+22 40 web/lib/use keyboard: fix stale state.
+
+rebind shortcut on every rerender in case the fn carries outdated state snapshot.
+
+23 20 web/lib/use mouse glitch: fix ghost 0, 0 coord on tab switch. web/component/tooltip: fix glitch on top left element when switching browser tabs.
+
+component/tooltip: harden mouseenter detection ~~w page visibility api.~~
+
+c: tab switching and sleeping can cause unintended tooltip.
+
+(maybe that's not to be solved, because the css hover state is flawed aw)
+
+idk if i can get the accurate latest mouse pointer (maybe ubuntu doesnt sync it well fundanmentally).
+
+---
+
+from my test
+
+- the glitch only happen in chromium on windows/linux (as said), ~~esp~~ when maximized
+- both mouse enter and mouse move _will_ fire when glitched.
+- it's highly unnatural when all of them, screen xy, client xy, are zero.
+- tradeoff is worth it: it will not trigger hover state correctly if they genuinely rest on top left _wo making any movement_.
+
+the logic:
+
+- if they _enter_ document body at a glitched (or resting there for some reason) position, apply glitched state
+- on css, disable all pointer action and hide tooltip when glitched.
+- if they _move_ to any reasonable position or _leave_ body, set state to true
+- react will handle the rest
+
+---
+
+pointer events none only works afterward. how would i solve this.
+
+i guess i would not hijack the hover pseudo sel (prefixing non glitch cond).
+
+i may solve a specific problem. the one on the top left is a button, and i can override that and tooltip for which.
+
+---
+
+a correction: if it's glitched initially, nothing can get focused. if you rest your mouse somewhere of a real element, it would not receive hover regardless.
+
+and if there is no glitch, my hack would not apply that attr. and you can receive hover state normally.
+
+16
+
+01 10 web: support animation pref, fluid/reduced.
+
+feels reduced is clearer than "instant". "fast" is out of the question.
+
+and i guess i would have two options instead of three or more (i.e. fluid/simple).
+
+what fluid means depends on the design philosophy of the specific app. util design would not have much animation. it might not even have transition for overlay sidebar.
+
+01 40 component/commands: implement fuzzy search.
+
+component/commands: support tools (i.e. files) and actions (commands/shortcuts).
+
+s
+
+01 50 component/preferences: support hierarchy. style headings.
+
+done.
+
+<!-- work would never be done. i can polish it forever. i may impl scroll area and focus trap select next. i may add new tools. most items in backlog are nice to have, under c/w. -->
+
+<!-- it doesnt have many settings to be searched. i could have it though. -->
+
+---
+
+.name? childish. awkward, really feels.
+
+label.
+
+app name, tool name, arg name.
+
+ok but for arg, esp in pref i will call it label instead.
+
+16 10 component/select: support arrow keys and keyboard trap. append a check to indicate the current option. 16 50
+
+close (or loop back) when tab after the last item or shift tab before the first item
+
+---
+
+adw (ptyxis) focuses the first option (not necessarily the currently selected one) after open.
+
+and it remembers the focus after you close the dropdown and open again.
+
+---
+
+there a few ways to do this. when navigate before the first or after the last...
+
+1. do nothing
+2. loop
+3. close
+
+adw chooses the first. i go for the third (by default).
+
+17
+
+02 00 web: create favicon.
+
+just have some ideas on the icon of tools and code (ide).
+
+also, i like to explore how lean prover works. maybe i could do sth on it. it's deeply sophisticated and incredibly powerful feels.
+
+---
+
+i can just use svg.
+
+i dont wanna use inkscape. i may not have to create a visual editor (i.e. material) or a language (like a list of type followed by args). i would just create a live preview via storybook.
+
+---
+
+time wasted.
+
+yeah, conservative guys.
+
+this time experiments win guessing/asking and any workarounds that try to play nice.
+
+---
+
+tested and compared w google.
+
+you can just have 100% size for circle. maybe it's 95%.
+
+26
+
+15 50 web/component/preferences: fix id.
+
+how can you type an object after "flatten"? quite hard.
+
+
