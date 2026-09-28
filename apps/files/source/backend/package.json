@@ -1,0 +1,8 @@
+{
+  "packageManager": "pnpm@10.30.2",
+  "dependencies": {
+    "@hono/node-server": "2.0.8",
+    "hono": "4.12.27",
+    "serve-static": "link:@hono/node-server/serve-static"
+  }
+}
