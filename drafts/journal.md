@@ -54896,6 +54896,102 @@ wow interesting. Math.min accepts params, not an array. costs me minutes of conf
 
 min was 27. i was not optimal.
 
+```ts
+
+```
+
+```ts
+// const { min } = Math
+
+function min(...args: (number | boolean)[]) {
+  let m = [Infinity]
+  for (const arg of args) {
+    if (is(arg, 'boolean')) {
+      continue
+    } 
+
+    const [guess, prev] = arg
+
+    if (guess < m[0]) {
+      m = arg
+    } 
+  }
+
+  return m
+}
+
+function calc(n: number) {
+  // Length
+  const five = 1 // 5
+  const f = 3 // f()
+  const g = 3 // g()
+  const h = 4 // h(,)
+
+  if (n == 5) {
+    return [five, [5]]
+  }
+
+  const minimum = min(
+    [f + calc(n - 1)[0], calc(n - 1)[1]],
+    n % 2 == 1 && n >= 9 && [g + calc((n + 1) / 2)[0], calc((n + 1) / 2)[1]],
+    ...map(each(1, n.toString().length - 1), (i) => {
+      if (n.toString().length < 2) {
+        return 
+      } 
+
+      const former = n.toString().slice(0, i)
+      const latter = n.toString().slice(i)
+
+      if (former.startsWith('0') || latter.startsWith('0')) {
+        return 
+      } 
+
+      const a = parseInt(former)
+      const b = parseInt(latter)
+      if (a < 5 || b < 5) {
+        return 
+      } 
+
+      return [h + calc(a)[0] + calc(b)[0], [calc(a)[1], calc(b)[1]]]
+    })
+  )
+
+  return [minimum[0], [n, ...minimum[1]]]
+}
+
+function memo(fn) {
+  const cache = new Map()
+
+  // return (...args) => {
+  //   if (has(cache, args)) {
+  //     return cache.get(args)
+  //   } 
+
+  //   const result = fn(...args)
+
+  //   cache.set(args, result)
+
+  //   return result
+  // }
+  return (n) => {
+    if (has(cache, n)) {
+      return cache.get(n)
+    } 
+
+    const result = fn(n)
+
+    cache.set(n, result)
+
+    return result
+  }
+}
+
+calc = memo(calc)
+
+// log(calc(6))
+log(calc(2026))
+```
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
