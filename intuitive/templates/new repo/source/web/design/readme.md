@@ -1,11 +1,5 @@
 design
 
----
-
-adwaita
-
-plain <!-- google reader -->
-
-utilitarian <!-- vscode -->
-
-
+- adwaita <!-- gnome libadwaita -->
+- plain <!-- google reader -->
+- utilitarian <!-- vscode -->

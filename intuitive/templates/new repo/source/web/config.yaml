@@ -1,0 +1,46 @@
+appearance: # view
+  theme: 
+    - system
+    - light
+    - dark
+  density:
+    - comfortable
+    - cozy
+    - compact
+  layout:
+    sidebar: 
+      is visible: true
+    title bar: 
+      is visible: true
+    process: 
+      is visible: true
+    input: 
+      is visible: true
+    output: 
+      is visible: true
+behavior:
+  should chain: false
+  will sync input to url: false
+  will persist input: false
+  # will pipe output to new command: false
+shortcuts:
+  toggle sidebar: ctrl+b
+  # toggle arguments: ctrl+shift+a
+  # toggle recipe/program/logics/flow: ctrl+shift+r ctrl+shift+p ctrl+shift+l ctrl+shift+f
+  # toggle input: ctrl+shift+i
+  # toggle output: ctrl+shift+o
+  open command palette: ctrl+shift+p ctrl+p ctrl+f ctrl+k
+  open settings: ctrl+,
+  open keyboard shortcuts: ctrl+?
+navigation:
+  path: ''
+
+  # page: 
+  #   - home
+  #   - tool
+  # tool:
+  #   - ''
+  #   - keyof tools # it could not work. i could make the converter smarter though.
+  #   # - ...Object.keys(tools) # it could not work. i could make the converter smarter though.
+extensions:
+  tools: {}

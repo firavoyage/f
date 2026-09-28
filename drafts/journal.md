@@ -54888,6 +54888,8 @@ i will copy the whole folder.
 
 i may create an automation to auto sync folders (e.g. latest edit), in case symlinks are prone. mv isnt ideal. i could "merge".
 
+14 40 create a minimal new repo template.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

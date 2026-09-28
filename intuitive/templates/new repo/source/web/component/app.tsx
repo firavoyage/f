@@ -1,91 +1,305 @@
-import { useState } from "react"
-import { Button } from "./Button"
-import { Checkbox } from "./Checkbox"
-import { ContextMenu } from "./ContextMenu"
-import { Select } from "./Select"
-import { Input } from "./Input"
-import { NumberField } from "./NumberField"
-import { ScrollArea } from "./ScrollArea"
-import { Slider } from "./Slider"
-import { Switch } from "./Switch"
-import { Toggle } from "./Toggle"
-import { Tooltip } from "./Tooltip"
+import 'web/design/utilitarian/utilitarian.css'
+import 'web/design/app.css'
+
+import { cloneDeep } from 'lodash-es'
+
+import { use_sync_theme } from "lib/web/use sync theme";
+import { use_window_active } from 'lib/web/use window active';
+
+import { tool, tool_name, tools, tools_taxonomy } from 'action/tools';
+
+import { Main } from "web/component/main";
+import { Sidebar } from 'web/component/sidebar';
+import { List } from 'web/component/list';
+import { Menu } from 'web/component/menu';
+import { Shortcuts } from 'web/component/shortcuts';
+import { Hamburger } from './hamburger';
+import { Button } from './button';
+import { About } from './about';
+import { Scroll } from './scroll';
+import { use_toasts, toast, Toast } from 'web/component/toast';
+import { Preferences } from './preferences';
+import { Commands } from './commands';
+
+export const use_global = state({
+  'input': '',
+  'output': '',
+  'process': [],
+  'appearance.theme': union('system', "light", "dark"),
+  'appearance.density': union("comfortable", "cozy", "compact"),
+  'appearance.animation': union("fluid", "reduced"),
+  'appearance.layout.sidebar.is visible': true,
+  'appearance.layout.process.is visible': true,
+  'appearance.layout.input.is visible': true,
+  'appearance.layout.output.is visible': true,
+  'appearance.layout.titlebar.is visible': true,
+  'appearance.layout.hamburger menu.is visible': false,
+  'navigation.path': '',
+  // 'navigation.page': '',
+  // 'navigation.tool': '',
+}, {
+  persist: 'tools',
+  version: '0.10',
+  should_migrate() { return true },
+  sync_url_options: {
+    should_sync_url: true,
+    should_apply_all_given_params: true,
+    should_cleanup_omitted_params_after_init: true,
+    should_sync_after_init: true,
+    param_mapping: {
+      theme: 'appearance.theme'
+    },
+    path_mapping: 'navigation.path'
+  },
+  // init(state) {
+  //   const path = state['navigation.path']
+  //   if (path == 'main') {
+  //     state['navigation.page'] = path
+  //   } else {
+  //     state['navigation.page'] = 'tool'
+
+  //     // todo: correct tool
+  //     state['navigation.tool'] = path
+  //   }
+  // },
+  // change(state) {
+  //   state['navigation.path'] = state['navigation.page'] == 'main' ?
+  //     'main' : state['navigation.tool']
+  // }
+})
+
+export type shortcut = {
+  key: string
+  command: command
+}
+
+type command = keyof ReturnType<typeof use_commands>
+
+export const shortcuts: shortcut[] = [
+  {
+    key: "ctrl+b",
+    command: "toggle sidebar"
+  },
+  {
+    key: "alt+b",
+    command: "toggle sidebar"
+  },
+  {
+    key: "alt+s",
+    command: "toggle sidebar"
+  },
+  {
+    key: "alt+t",
+    command: "toggle titlebar"
+  },
+  {
+    key: "ctrl+k",
+    command: "open command palette"
+  },
+  {
+    key: "ctrl+enter",
+    command: "open command palette"
+  },
+  {
+    key: "ctrl+p",
+    command: "open command palette"
+  },
+  {
+    key: "ctrl+shift+p",
+    command: "open command palette"
+  },
+  {
+    key: "ctrl+,",
+    command: "open preferences"
+  },
+  {
+    key: "ctrl+?",
+    command: "open keyboard shortcuts",
+  },
+  {
+    key: "alt+p",
+    command: "toggle process panel",
+  },
+  {
+    key: "alt+i",
+    command: "toggle input panel",
+  },
+  {
+    key: "alt+o",
+    command: "toggle output panel",
+  },
+]
+
+function use_commands() {
+  const [, toggle_sidebar] = use_global('appearance.layout.sidebar.is visible')
+  const [, toggle_process] = use_global('appearance.layout.process.is visible')
+  const [, toggle_input] = use_global('appearance.layout.input.is visible')
+  const [, toggle_output] = use_global('appearance.layout.output.is visible')
+  const [, toggle_titlebar] = use_global('appearance.layout.titlebar.is visible')
+
+  const tool_commands: Record<tool_name, fn> = Object.fromEntries(map(tools_taxonomy, (name) => [name, () => add_tool(name)]))
+
+  const commands = {
+    "toggle sidebar": toggle_sidebar,
+    "open command palette": 'open_commands',
+    "open keyboard shortcuts": 'toggle_open_shortcuts',
+    "open preferences": 'toggle_open_preferences',
+    'toggle process panel': toggle_process,
+    'toggle input panel': toggle_input,
+    'toggle output panel': toggle_output,
+    'toggle titlebar': toggle_titlebar,
+    ...tool_commands
+  }
+
+  command_ = function call(command: keyof typeof commands) {
+    if (typeof commands?.[command] == 'string') {
+      // @ts-expect-error 
+      exposed_commands?.[commands?.[command]]?.()
+    } else {
+      commands?.[command]?.()
+    }
+  }
+
+  return commands
+}
+
+function add_tool(name: tool_name) {
+  use_global.set_prop('process', (process: tool[]) => {
+    process.push(cloneDeep({
+      name,
+      args: tools[name].args ?? []
+    }))
+  })
+}
 
 export function App() {
-  const [buttonClick, setButtonClick] = useState(0)
-  const [checkbox, setCheckbox] = useState(false)
-  const [contextMenuPos, setContextMenuPos] = useState<{x: number, y: number} | null>(null)
-  const [select, setSelect] = useState("")
-  const [input, setInput] = useState("")
-  const [number, setNumber] = useState(0)
-  const [slider, setSlider] = useState(50)
-  const [switchOn, setSwitchOn] = useState(false)
-  const [toggleOn, setToggleOn] = useState(false)
-  const [tooltipShow, setTooltipShow] = useState(false)
+  // const [focus, set_focus] = use_global('navigation.tool')
+  const [theme, set_theme] = use_global('appearance.theme')
+  const [density, set_density] = use_global('appearance.density')
+  const [animation, set_animation] = use_global('appearance.animation')
 
-  return (
-    <div style={{ padding: 20, display: "flex", flexDirection: "column", gap: 20 }}>
-      <div>
-        <h2>Button</h2>
-        <Button onClick={() => setButtonClick(c => c + 1)}>clicked {buttonClick}</Button>
-      </div>
+  const [toasts, set_toasts] = use_toasts()
 
-      <div>
-        <h2>Checkbox</h2>
-        <Checkbox checked={checkbox} onChange={setCheckbox}>agree</Checkbox>
-      </div>
+  const [open_commands, toggle_open_commands] = useToggle(false)
+  const [open_shortcuts, toggle_open_shortcuts] = useToggle(false)
+  const [open_preferences, toggle_open_preferences] = useToggle(false)
+  const [open_about, toggle_open_about] = useToggle(false)
 
-      <div>
-        <h2>ContextMenu</h2>
-        <div style={{ border: "1px solid #ccc", padding: 20, minHeight: 100 }} onContextMenu={e => { e.preventDefault(); setContextMenuPos({ x: e.clientX, y: e.clientY }) }}>
-          right click here
-        </div>
-        {contextMenuPos && <ContextMenu x={contextMenuPos.x} y={contextMenuPos.y} onClose={() => setContextMenuPos(null)} />}
-      </div>
+  expose({
+    open_commands() { toggle_open_commands(true) },
+    toggle_open_shortcuts, toggle_open_preferences
+  })
 
-      <div>
-        <h2>Select</h2>
-        <Select value={select} onChange={setSelect} options={[{ value: "a", label: "Option A" }, { value: "b", label: "Option B" }, { value: "c", label: "Option C" }]} />
-      </div>
+  const commands = use_commands()
 
-      <div>
-        <h2>Input</h2>
-        <Input value={input} onChange={setInput} placeholder="type here" />
-      </div>
+  use_sync_theme(theme)
 
-      <div>
-        <h2>NumberField</h2>
-        <NumberField value={number} onChange={setNumber} />
-      </div>
+  use_window_active()
 
-      <div>
-        <h2>ScrollArea</h2>
-        <ScrollArea style={{ height: 100, width: 200 }}>
-          <div style={{ height: 300 }}>tall content</div>
-        </ScrollArea>
-      </div>
+  const glitch = use_mouse_glitch()
 
-      <div>
-        <h2>Slider</h2>
-        <Slider value={slider} onChange={setSlider} min={0} max={100} />
-      </div>
+  use_variants({ density, glitch, animation })
 
-      <div>
-        <h2>Switch</h2>
-        <Switch checked={switchOn} onChange={setSwitchOn}>wifi</Switch>
-      </div>
+  return <>
+    <title>Tools</title>
 
-      <div>
-        <h2>Toggle</h2>
-        <Toggle checked={toggleOn} onChange={setToggleOn}>dark mode</Toggle>
-      </div>
-
-      <div>
-        <h2>Tooltip</h2>
-        <Tooltip content="hello world" show={tooltipShow}>
-          <button onMouseEnter={() => setTooltipShow(true)} onMouseLeave={() => setTooltipShow(false)}>hover me</button>
-        </Tooltip>
+    <div className="app">
+      <Sidebar>
+        <Menu {...p({ app: 'Tools' })}></Menu>
+        <Scroll>
+          <Hamburger>
+            <Button {...p({ onClick: toggle_open_preferences })}>Preferences</Button>
+            <Button {...p({ onClick: toggle_open_shortcuts })}>Keyboard Shortcuts</Button>
+            <Button {...p({ onClick: toggle_open_about })}>About</Button>
+            <hr {...p({ class: 'hr' })} />
+          </Hamburger>
+          <List {...p({
+            items: tools_taxonomy, set_focus: add_tool
+          })}></List>
+        </Scroll>
+      </Sidebar>
+      <Main></Main>
+      <Commands {...p({
+        open: open_commands, toggle_open: toggle_open_commands,
+        commands
+      })}></Commands>
+      <Preferences {...p({
+        open: open_preferences, toggle_open: toggle_open_preferences,
+        preferences: {
+          Appearance: [
+            {
+              name: 'Theme',
+              id: 'appearance.theme',
+              type: 'radio',
+              options: ['system', "light", "dark"]
+            },
+            {
+              name: 'Density',
+              id: 'appearance.density',
+              type: 'radio',
+              options: ["comfortable", "cozy", "compact"]
+            },
+            {
+              name: 'Animation',
+              id: 'appearance.animation',
+              type: 'radio',
+              options: ["fluid", "reduced"]
+            },
+          ]
+        }
+      })}></Preferences>
+      <Shortcuts {...p({
+        open: open_shortcuts, toggle_open: toggle_open_shortcuts,
+        shortcuts, call: command
+      })}></Shortcuts>
+      <About {...p({
+        open: open_about, toggle_open: toggle_open_about,
+        name: 'Tools',
+        author: 'Headquarters',
+        version: '0.0 (2026.09.12)',
+        credits: {
+          'Code by': [
+            'Fira',
+            'Fira',
+            'Fira',
+          ],
+          'Design by': [
+            'Headquarters Design Team'
+          ],
+          'Artwork by': [
+            'Headquarters Design Team'
+          ],
+        }
+      })}></About>
+      <div className="backdrop"></div>
+      <div className="toasts">
+        <Scroll {...p({ scrollbar: false })}>
+          {
+            map(toasts, ([id, message]) => (
+              <Toast {...p({
+                message, close() {
+                  use_toasts.set(() => {
+                    use_toasts.data.delete(id)
+                  })
+                }
+              })}></Toast>
+            ))
+          }
+        </Scroll>
       </div>
     </div>
-  )
+  </>
+}
+
+export function command(command: command) {
+  // no possible race condition, no action could fire before app (ignore if so)
+  command_?.(command)
+}
+
+let command_: any
+
+let exposed_commands = {}
+
+function expose(command: Record<string, fn>) {
+  merge(exposed_commands, command)
 }

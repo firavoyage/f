@@ -1,11 +1,11 @@
-// @ts-nocheck
 import desktop from '@folder/xdg';
 import { homedir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { rm, writeFile, readFile, appendFile, mkdir, unlink, access } from 'node:fs/promises';
 import trash_lib from 'trash';
 
-import { app_name, xdg } from 'lib/env';
+let app_id = 'app'
+let xdg = false
 
 // Errors
 export const non_string_content = "non string content"
@@ -94,19 +94,25 @@ const map = {
 }
 
 /**
- * standardize errors
+ * Standardize fs error code to readable error msgs
  */
-export async function normalize<F extends (...args: any[]) => any>(fn: F) {
-  const _ = await handle(fn)
-  if (is_error(_)) {
-    if (has(map, _.code)) {
-      throw err({ type: map[_.code], message: _ })
+export async function map_error<F extends (...args: any[]) => any>(fn: F) {
+  const result = await handle(fn)
+  if (is_error(result)) {
+    // @ts-expect-error stupid ts
+    if (has(map, result.code)) {
+      // @ts-expect-error stupid ts
+      throw err({ type: map[result.code], message: result })
     }
 
-    throw err(_)
+    throw err(result)
   }
 
-  return _
+  return result
+}
+
+export function init(options) {
+  ({ app_id, xdg } = options)
 }
 
 export function home(...args: string[]) {
@@ -118,119 +124,99 @@ export function path(...args: string[]) {
 }
 
 export function data(...args: string[]) {
-  const data_folder = xdg ? desktop({ subdir: app_name }).data : home(`.${app_name}`, 'data')
+  // @ts-expect-error false positive on untyped js
+  const data_folder = xdg ? desktop({ subdir: app_id }).data : home(`.${app_id}`, 'data')
 
   return join(data_folder, ...args)
 }
 
 export function config(...args: string[]) {
-  const config_folder = xdg ? desktop({ subdir: app_name }).config : home(`.${app_name}`, 'config')
+  // @ts-expect-error false positive on untyped js
+  const config_folder = xdg ? desktop({ subdir: app_id }).config : home(`.${app_id}`, 'config')
 
   return join(config_folder, ...args)
 }
 
 export function cache(...args: string[]) {
-  const cache_folder = xdg ? desktop({ subdir: app_name }).cache : home(`.${app_name}`, 'cache')
+  // @ts-expect-error false positive on untyped js
+  const cache_folder = xdg ? desktop({ subdir: app_id }).cache : home(`.${app_id}`, 'cache')
 
   return join(cache_folder, ...args)
 }
 
-/**
- * (over) write a file
- * 
- * no content = touch
- */
-export async function write(path: string | 1, content: string = '') {
-  if (typeof path == 'string') {
-    await normalize(() => mkdir(dirname(path), { recursive: true }))
-  }
-  await normalize(() => writeFile(path, content, 'utf8'))
+export async function does_exist(path: string) {
+  const result = await handle(() => access(path))
+  return is_error(result) ? false : true
 }
 
+export const stdout = 1
+
 /**
- * read a file
+ * (Over)write a file
+ * 
+ * write to stdout when path = 1
+ * 
+ * iff touch when content is not given
  */
-export async function read(path: string | 0) {
-  const content = await normalize(() => readFile(path, 'utf8'))
+export async function write(path: string | typeof stdout, content: string = '') {
+  if (typeof path == 'string') {
+    await map_error(() => mkdir(dirname(path), { recursive: true }))
+  }
+  // @ts-expect-error incorrect (incomprehensive) typing of builtin libs
+  await map_error(() => writeFile(path, content, 'utf8'))
+}
+
+export const stdin = 0
+
+/**
+ * Read a file
+ * 
+ * read from stdin when path = 0
+ */
+export async function read(path: string | typeof stdin) {
+  // @ts-expect-error incorrect (incomprehensive) typing of builtin libs
+  const content = await map_error(() => readFile(path, 'utf8'))
 
   return content
 }
 
 export async function append(path: string, content: string) {
-  await normalize(() => appendFile(path, content))
+  await map_error(() => appendFile(path, content))
+}
+
+type remove = { must_exist?: boolean }
+
+export async function remove(path: string, { must_exist = false }: remove = {}) {
+  const result = await handle(() => unlink(path))
+
+  // @ts-expect-error stupid ts
+  if (is_error(result) && has(map, result.code) && (must_exist || map[result.code] != not_found)) {
+    // @ts-expect-error stupid ts
+    throw err({ type: map[result.code], message: result })
+  }
+
+  // @ts-expect-error stupid ts
+  throw err(result)
+}
+
+type trash = { must_exist?: boolean }
+
+export async function trash(path: string, { must_exist = false }: remove = {}) {
+  const result = await handle(() => trash_lib(path, { glob: false }))
+
+  // @ts-expect-error stupid ts
+  if (is_error(result) && has(map, result.code) && (must_exist || map[result.code] != not_found)) {
+    // @ts-expect-error stupid ts
+    throw err({ type: map[result.code], message: result })
+  }
+
+  // @ts-expect-error stupid ts
+  throw err(result)
 }
 
 /**
- * todo
- * 
- * perf: positional replace, memory efficient.
- * 
- * more edit modes
- * 
- * regex
- * 
- * replace or replace all
+ * Delete a folder along with all files and subfolders inside
  */
-export async function edit(path: string, search: string, replace: string) {
-  const content = await read(path)
-  if (typeof content != 'string') {
-    throw err(non_string_content)
-  }
-
-  const updated_content = content.replaceAll(search, replace)
-
-  await write(path, updated_content)
-}
-
-/**
- * remove a file
- * 
- * todo
- * 
- * add an option (dont err for non existence)
- * 
- * a list of files?
- * 
- * do i { path, options } or path, { options }? others?
- */
-export async function remove(path: string, { can_non_exist = false }: { can_non_exist?: boolean } = {}) {
-  // must_exist = true // implicit true is somewhat inconsistent
-  const _ = await handle(() => unlink(path))
-  if (is_error(_)) {
-    if (has(map, _.code)) {
-      if (map[_.code] == not_found && can_non_exist) {
-        return;
-      }
-      throw err({ type: map[_.code], message: _ })
-    }
-
-    throw err(_)
-  }
-}
-
-export async function does_exist(path: string) {
-  _ = await handle(() => access(path))
-  if (is_error(_)) {
-    return false
-  }
-  return true
-}
-
-export async function clear(path: string) {
-  await normalize(() => rm(path, { recursive: true, force: true }))
-}
-
-export async function trash(path: string, { can_non_exist = false }) {
-  const _ = await handle(() => trash_lib(path, { glob: false }))
-  if (is_error(_)) {
-    if (has(map, _.code)) {
-      if (map[_.code] == not_found && can_non_exist) {
-        return;
-      }
-
-      throw err({ type: map[_.code], message: _ })
-    }
-
-    throw err(_)
-  }
+export async function clear_folder(path: string) {
+  await map_error(() => rm(path, { recursive: true, force: true }))
 }

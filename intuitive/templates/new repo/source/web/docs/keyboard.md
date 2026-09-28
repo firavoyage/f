@@ -1,2 +1,0 @@
-- for letters, prefer `ctrl+shift+p` over `ctrl+P`
-- for symbols, prefer `ctrl+?` over `ctrl+shift+/`
