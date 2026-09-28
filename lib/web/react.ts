@@ -3,19 +3,19 @@
 
 import { useEffect, useState, useRef, useCallback } from "react";
 import { useAsync, useAsyncFn, useMeasure, useToggle, useMount } from "react-use";
-import { use_keyboard } from 'web/lib/use keyboard'
-import { use_sync_theme } from 'web/lib/use sync theme'
-import { use_window_active } from 'web/lib/use window active'
-import { use_variants } from 'web/lib/use variants'
-import { use_event } from 'web/lib/use event'
-import { use_mouse_glitch } from "web/lib/use mouse glitch";
+import { use_keyboard } from 'lib/web/use keyboard'
+import { use_sync_theme } from 'lib/web/use sync theme'
+import { use_window_active } from 'lib/web/use window active'
+import { use_variants } from 'lib/web/use variants'
+import { use_event } from 'lib/web/use event'
+import { use_mouse_glitch } from "lib/web/use mouse glitch";
 
-export * from 'web/lib/use keyboard'
-export * from 'web/lib/use sync theme'
-export * from 'web/lib/use window active'
-export * from 'web/lib/use variants'
-export * from 'web/lib/use event'
-export * from "web/lib/use mouse glitch";
+export * from 'lib/web/use keyboard'
+export * from 'lib/web/use sync theme'
+export * from 'lib/web/use window active'
+export * from 'lib/web/use variants'
+export * from 'lib/web/use event'
+export * from "lib/web/use mouse glitch";
 
 export function use_measure(options?: Parameters<typeof useMeasure>) {
   const [measureRef, bounds] = useMeasure(options);

@@ -1,4 +1,4 @@
-import { copy } from 'web/lib/clipboard'
+import { copy } from 'lib/web/clipboard'
 
 import { useMemo } from "react"
 import { Button } from "./button"

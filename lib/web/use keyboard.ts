@@ -1,4 +1,4 @@
-import { bind, unbind } from 'web/lib/keyboard';
+import { bind, unbind } from 'lib/web/keyboard';
 import { useEffect } from 'react';
 
 type use_keyboard = Partial<{
