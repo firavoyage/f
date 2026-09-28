@@ -241,6 +241,7 @@ archi:
 - spaghetti code
 - npm zipped bundle size loc meaning feeling
 - code design patterns in fp
+- js monorepo
 
 web: <!-- frontend, web, ts/js -->
 
