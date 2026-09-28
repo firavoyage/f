@@ -1,4 +1,4 @@
-import { use_keyboard } from "web/lib/use keyboard"
+import { use_keyboard } from "lib/web/use keyboard"
 
 import { use_global } from "web/component/app"
 

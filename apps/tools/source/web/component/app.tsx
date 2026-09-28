@@ -3,8 +3,9 @@ import 'web/design/app.css'
 
 import { cloneDeep } from 'lodash-es'
 
-import { use_sync_theme } from "web/lib/use sync theme";
-import { use_window_active } from 'web/lib/use window active';
+import { use_sync_theme } from "lib/web/use sync theme";
+import { use_window_active } from 'lib/web/use window active';
+import { init_clipboard } from 'lib/web/clipboard'
 
 import { tool, tool_name, tools, tools_taxonomy } from 'action/tools';
 
@@ -17,7 +18,7 @@ import { Hamburger } from './hamburger';
 import { Button } from './button';
 import { About } from './about';
 import { Scroll } from './scroll';
-import { use_toasts, toast, Toast } from './toast';
+import { use_toasts, toast, Toast } from 'web/component/toast';
 import { Preferences } from './preferences';
 import { Commands } from './commands';
 
@@ -303,3 +304,10 @@ let exposed_commands = {}
 function expose(command: Record<string, fn>) {
   merge(exposed_commands, command)
 }
+
+init_clipboard({
+  oncopy() {
+    toast('Copied to clipboard')
+  }
+})
+

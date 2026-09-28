@@ -1,6 +1,6 @@
 import 'the-new-css-reset/css/reset.css';
 
-import 'web/lib/global';
+import 'lib/web/global';
 
 import { createRoot } from "react-dom/client"
 import { StrictMode } from 'react';

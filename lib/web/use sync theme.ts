@@ -1,7 +1,7 @@
-import { sync_theme } from 'web/lib/sync theme';
+import { sync_theme } from 'lib/web/sync theme';
 import { useEffect } from 'react';
 
-import type { theme } from 'web/lib/sync theme'
+import type { theme } from 'lib/web/sync theme'
 
 /**
  * Add theme attr to root element

@@ -1,4 +1,4 @@
-import { use_keyboard } from 'web/lib/use keyboard'
+import { use_keyboard } from 'lib/web/use keyboard'
 
 import type { shortcut } from 'web/component/app'
 import { Scroll } from './scroll'

@@ -1,5 +1,5 @@
 import { tabbable } from "tabbable"
-import { use_keyboard } from "web/lib/use keyboard"
+import { use_keyboard } from "lib/web/use keyboard"
 
 type popup = {
   open

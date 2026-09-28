@@ -21,7 +21,7 @@ import * as handle from 'lib/handle';
 use(handle)
 
 import * as union from 'lib/union';
-import * as map from 'web/lib/map';
+import * as map from 'lib/web/map';
 import * as collection from 'lib/collection';
 use(union)
 use(map)
@@ -29,9 +29,9 @@ use(collection)
 
 import * as react from 'react';
 import * as react_use from 'react-use';
-import * as react_hooks from 'web/lib/react'
-import * as p from 'web/lib/props';
-import * as state from 'web/lib/state';
+import * as react_hooks from 'lib/web/react'
+import * as p from 'lib/web/props';
+import * as state from 'lib/web/state';
 use(react)
 use(react_use)
 use(react_hooks)
@@ -44,6 +44,3 @@ use(state)
 // declare global {
 //   var use: use
 // }
-
-import * as icon from 'web/component/icon'
-use(icon)

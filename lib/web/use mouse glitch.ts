@@ -1,4 +1,4 @@
-import { use_event } from 'web/lib/use event'
+import { use_event } from 'lib/web/use event'
 
 export function use_mouse_glitch() {
   const [is_glitched, toggle_is_glitched] = useToggle(false)

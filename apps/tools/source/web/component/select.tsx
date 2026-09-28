@@ -1,6 +1,6 @@
 import type { options } from 'action/tools'
 
-import { use_keyboard } from "web/lib/use keyboard"
+import { use_keyboard } from "lib/web/use keyboard"
 import Dropdown from "./dropdown"
 import { Button } from "./button"
 
