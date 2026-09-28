@@ -54892,6 +54892,10 @@ i may create an automation to auto sync folders (e.g. latest edit), in case syml
 
 15 40 write a program for cs61a small exp discussion.
 
+wow interesting. Math.min accepts params, not an array. costs me minutes of confusion and debugging. "NaN". and yeah, ts warns me "n == NaN" is always false.
+
+min was 27. i was not optimal.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
