@@ -1,19 +1,26 @@
-const str = "hello!world [test] 123.45 + abc=xyz;foo,bar";
+// const { min } = Math
 
-// Hardcoded common symbols inside a capturing group (excluding '.')
-const regex = /([\s!()\[\]{}<>\-_=+\\\/|;:'",?@#$%^&*`~]+)/;
+function min(...args: (number | boolean)[]) {
+  return Math.min(args.filter(n => !is(n, 'boolean')))
+}
 
-const result = str.split(regex);
+function calc(n: number) {
+  // Length
+  const five = 1 // 5
+  const f = 3 // f()
+  const g = 3 // g()
+  const h = 4 // h(,)
 
-console.log(result);
-/* Output: 
-[
-  "hello", "!", "world", " [", "test", "] ", 
-  "123.45", " + ", "abc", "=", "xyz", ";", 
-  "foo", ",", "bar"
-]
-*/
+  if (n == 5) {
+    return five
+  }
 
-// Verifying the integrity of the string
-console.log(result.join('') === str);
-// Output: true
+  return min(
+    f + calc(n - 1),
+    n % 2 == 1 && n >= 9 && g + calc((n + 1) / 2)
+  )
+}
+
+// log(calc(2026))
+
+log('012345'.slice(0, 1))

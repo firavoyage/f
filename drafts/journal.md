@@ -54890,6 +54890,8 @@ i may create an automation to auto sync folders (e.g. latest edit), in case syml
 
 14 40 create a minimal new repo template.
 
+15 40 write a program for cs61a small exp discussion.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
