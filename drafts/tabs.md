@@ -24,8 +24,6 @@ https://www.youtube.com/playlist?list=PL6BsET-8jgYWZlcJMOuWFSXKc99cSneEN
 
 https://composingprograms.com/3ed/elements-of-programming/
 
-https://composingprograms.com/3ed/defining-new-functions/
-
 chrome://downloads/
 
 /home/fira/Downloads

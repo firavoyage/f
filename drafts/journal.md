@@ -55100,6 +55100,26 @@ you type from left to right, which aligns w auto complete.
 
 (about tradeoff, feels the actual fn you dep matter more, which would be better put at first and aligned w other imports)
 
+---
+
+py style dc looks right. but must it be tuple/array? can it be polymorphed for objects?
+
+<!-- ok well seems json is a superpower of js... -->
+
+---
+
+oh... interesting
+
+```
+ ~ % py
+Python 3.12.3 (main, Mar 23 2026, 19:04:32) [GCC 13.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> min([1,2,3])
+1
+>>> min(1,2,3)
+1
+```
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
