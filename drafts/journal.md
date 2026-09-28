@@ -54860,6 +54860,14 @@ bye.
 
  -->
 
+28
+
+10 40 create project files.
+
+i would like to take a new styling approach, given my frustration in component scoping and css var autocomplete.
+
+i can install what's needed in modern mono repo archi, rather than copy pasting. idk if npm is the solution, i mean for rapid dev.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

@@ -1,0 +1,392 @@
+# plan
+
+- create command palette, preferences, keyboard shortcuts
+  - make every button usable 
+- customize scroll area
+- prettier (default?)
+- visualize obj/table?
+- (code?, repo, have, humility, pure, ...)
+- (material, para, ...)
+
+ref
+
+adopt more icons https://microsoft.github.io/vscode-codicons/dist/codicon.html
+
+baseui https://base-ui.com/react/components/drawer
+
+# todo: complete utilitarian component system. <!-- s -->
+
+complete utilitarian component system.
+
+ref: gnome nautilus, adwaita demo
+
+ref:
+
+https://base-ui.com/
+
+https://base-ui.com/react/components/radio
+
+https://readerisdead.com/reader/view/#overview-page
+
+---
+
+create setting field components
+
+- checkbox
+- switch
+- select
+- ratio
+- multi ratio
+- text input
+- number input
+- slider (number range)
+
+baseui switch couldnt be dragged by default?!
+
+well to my surprise it's the same on mui. maybe iphone os is just a bit more obsessed.
+
+---
+
+create command palette component
+
+fuzzy search
+
+---
+
+create keyboard shortcuts component
+
+---
+
+create about component
+
+---
+
+create preferences (settings) component
+
+---
+
+create scroll area
+
+props: direction (default vertical), children
+
+vscode style. overlay. fade out when outside. opacity grows: inside, hover, active.
+
+c
+
+---
+
+create popup
+
+- title bar
+  - search (default input, button if has some dock items)
+  - dock items?
+  - close
+
+bind esc ~~and ctrl q (best effort)~~
+
+c
+
+---
+
+complete utilitarian design
+
+maybe it's already completed.
+
+take a bottom up approach. know what you will need. centralize and abstract cleanly.
+
+rather than over engineering a comprehensive and future proof one.
+
+themes can be swapped in the future. for now, have neutral gray.
+
+learn from vscode. no borders or shadows. no radius. no paddings. only have solid fluid colors for hierarchy.
+
+---
+
+research bootstrap and expand component patterns
+
+https://www.google.com/search?udm=50&atvm=2&mstk=AUtExfCOM-P8TYzsBz0Gg-H51sgbOX2y1eZQ4ux4X4qGPhwYYs63uKtsK5quXPvsxQ70CotRjSNINb-IY3wXKv8WA_OX7y9JCu1Sp6mHu0XCnwAZ5l8t7sHOuSyN4ybKOwZfKrjTMXNBZUjfT42ifQhvvaI2ETW4s6TMH06iQeXs2Mx6Qbxvhu12ktOejJr580w_b_G0OUFaKG1ugolcSEfts5hqplvmlWxxCnz_HdKvFTmW9ZD3QENyCPWxv3bRxuDQlXA_7AQcZtUjDA&mtid=Rx9marOhIYerur8Pwpfw-A8&csuir=1&aep=26&q=All+Bootstrap+Components&ved=0CAAQ2_wOahcKEwjYtcD32PCVAxUAAAAAHQAAAAAQGg
+
+https://getbootstrap.com/2.3.2/getting-started.html#examples
+
+https://getbootstrap.com/docs/3.4/components/
+
+https://getbootstrap.com/docs/4.0/examples/
+
+https://getbootstrap.com/docs/5.3/examples/
+
+w ~~c~~ <!-- it's not wise to build for the future. better to think what you need instead. -->
+
+# todo: style elements focus states <!-- s -->
+
+style elements focus states
+
+not just buttons.
+
+i mean, like checkboxes, sidebar items
+
+# todo: complete planned tools. <!-- c -->
+
+complete planned tools.
+
+---
+
+research encryption methods. pick and include what matters.
+
+---
+
+support code minify and fmt
+
+i guess there would be a tool for minify or prettier.
+
+i mean, for tools itself, it would use a yaml dsl. yeah that's dsl, as i need converter to global state. i would apply prettier, so it could copy and paste easily, effortless, no ctrl shift i needed.
+
+and it might be a custom tool. i would apply minifier if they paste, or import a new tool here.
+
+---
+
+implement tools
+
+ref: ia
+
+- data format
+  - url decode <!-- e.g. %3d becomes = -->
+- language
+  - language decode <!-- yes, it's vscode builtin, but why not -->
+  - leet speak
+- date/time
+  - timestamp, utc, timezone, (any template string)
+- encryption, public key, hash
+  - (popular methods)
+  - base64
+- misc
+  - regex (the args are defined separately from inputs, on the recipe)
+  - grep
+  - glob
+  - lorem ipsum
+  - emoji search
+  - bmi <!-- take acbox for example. also, have::global search: acbox height weight. -->
+
+---
+
+adapt maimai, show loss of each
+
+sometimes it can be simple. actually, that might be the most use cases.
+
+---
+
+polish maimai, expand the results (base2, base5) if the number is small
+
+low priority. it's just a derivation.
+
+# todo: support render input/output <!-- s -->
+
+support render input/output
+
+# todo: support custom imported tools and fav tools <!-- c -->
+
+support custom imported tools and fav tools
+
+i would have fav tools. custom tools? would they be imported on web?
+
+# todo: design web/lib/call
+
+design web/lib/call
+
+# todo: action/maimai: style rendered output (e.g. rating and achievement%), support input, support intersection
+
+action/maimai: style rendered output (e.g. rating and achievement%), support input, support intersection
+
+ref
+
+https://dxrating.net/
+
+https://myjian.github.io/mai-tools/rating-visualizer/
+
+https://myjian.github.io/mai-tools/
+
+---
+
+research recharts, support more type of graphs on graph lib
+
+ref: https://recharts.github.io/en-US/examples/
+
+# backlog
+
+support copy input/output
+
+---
+
+implement string distance based url correction
+
+<!-- i guess you could do that easily. since asterisk is parsed as tools, you could use the most relevant tool. -->
+
+c
+
+---
+
+support wasm/server side features, e.g. ffmpeg converter, pdf minimizer
+
+w
+
+it's primarily text based, w some rendering tools.
+
+---
+
+support pwa
+
+w
+
+it must be able to run locally. but it does not need pwa to do so.
+
+you could install it. but it does not require pwa either.
+
+and pwa itself is of inconsistent compatibility.
+
+<!-- yeah. if you have service worker, they can access wo internet. and it doesnt have to be pwa, a superset of sw. -->
+
+---
+
+support undo redo for all user actions, beyond text editing.
+
+memorize state history of input output tools recipes.
+
+w
+
+---
+
+support cli.
+
+w
+
+<!-- you may call ts fn via bun. it's easy. while it's sub optimal to even make cli a primary way on ux. yk, you couldnt really select a tool from a list (you could have tui, that's even more prone and likely incompatible), edit complex args, paste input, print long output... and if you really have them structured... just call the ts module! -->
+
+---
+
+package as node lib.
+
+w
+
+---
+
+support internationalization.
+
+c
+
+---
+
+secure sidebar list
+
+i may check whether tools exist
+
+c
+
+<!-- it might be irrelevant at the end of the day when it's complete. -->
+
+---
+
+action/color contrast: normalize colorparsley to fail loudly
+
+c
+
+---
+
+component/graph: fix z index in svg w portal
+
+---
+
+component/number: set a limit
+
+do not let it become rounded, inf, and then nan when they type non stop
+
+---
+
+component/popup: fix keyboard navigation, trap focus when open
+
+---
+
+component/toast: scroll to bottom on new toast
+
+just in case
+
+---
+
+component/toast: have a fade out effect
+
+---
+
+component/shortcuts: write clearer labels and create taxonomy.
+
+i will name commands in predicates for consistency and self explanability.
+
+nevertheless, i agree it's much clearer to say "preferences" instead of "open ~".
+
+and i may have titles (e.g. general, tab view) and hr.
+
+i can either make it structured or not. you may pass an arbitrary "article" as children. well i think it will be easier to be structured esp when you have internal states (shortcuts). doesnt have to be that flexible.
+
+---
+
+component/shortcuts: polish styling.
+
+i may not copy adw. but currently it doesnt feel really scannable. the width is too much. and boundaries are unclear. think about toc design variations from traditional printing press.
+
+---
+
+component/shortcuts: make it searchable.
+
+idk if needed for now. but i will have it.
+
+---
+
+component/popup: support variant where it can be draggable wo keyboard trap
+
+see ptyxis/pref. it's just a regular (even recognized by the desktop env) window. you can drag it away and do what you want. it would center initially and get your focus. it would not trap your keyboard.
+
+---
+
+component/table: support option for sub table heading alignment.
+
+very top, very left, cell top, cell left
+
+---
+
+action/maimai: support "should omit trailing zeros" option.
+
+---
+
+component/number: support range or validator.
+
+e.g. decimals must be non neg.
+
+---
+
+web/lib/state: harden, auto detect new keys, auto fix/discard broken persistent state.
+
+---
+
+component/commands: implement a more sophisticated fuzzy search engine
+
+---
+
+component/commands: support ctrl p shortcut?
+
+on vscode if you spam press on ctrl p you move down files. you auto load. ctrl shift p doesnt listen for spam pressing.
+
+think bout it.
+
+---
+
+web/commands: make every possible no/union arg action a command
+
+e.g. clear all commands
+
+---
+
+action/format code: create a tool to format js
+
+parse ast. for var names, camel case to snake case. 
+
+use == instead of === for all business logics.
+
+prettier. decide the options.
+
