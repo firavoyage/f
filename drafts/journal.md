@@ -55141,6 +55141,12 @@ TypeError: 'int' object is not iterable
 
 "python tutor" <!-- py in js? ah, ssr... -->
 
+---
+
+> Function names typically evoke operations applied to arguments by the interpreter (e.g., print, add, square) or the name of the quantity that results (e.g., max, abs, sum).
+
+> Parameter names ... Single-word names are preferred.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
