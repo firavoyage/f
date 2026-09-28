@@ -54862,13 +54862,21 @@ bye.
 
 28
 
-10 40 create project files.
+10 40 create project files. centralize deps. deprecate new repo template.
 
 i would like to take a new styling approach, given my frustration in component scoping and css var autocomplete.
 
 i can install what's needed in modern mono repo archi, rather than copy pasting. idk if npm is the solution, i mean for rapid dev.
 
 symlink on tsconfig would be the simplest way. well it would be very prone and possibly incompatible i think.
+
+globalthis must be hooked because js is flawed and i wont adapt. there is no way to say "use namespace", or pull/override some fn for every file in the repo. but it's absolutely cleaner to normally add and install react.
+
+i could not update instantly if i go the best prac way. against all boilerplates, i would just, first centralize them, and just symlink/tsconfig path them. yeah, hack it.
+
+---
+
+dont think it should load from a hardcoded static source/config.json.
 
 
 
