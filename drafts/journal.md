@@ -55088,6 +55088,17 @@ CHANGE MY MIND.
 - means of combination
 - means of abstraction
 
+---
+
+wait how impressive the design is.
+
+```
+from foo import a b c
+```
+
+you type from left to right, which aligns w auto complete.
+
+(about tradeoff, feels the actual fn you dep matter more, which would be better put at first and aligned w other imports)
 
 
 

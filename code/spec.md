@@ -61,7 +61,7 @@ use template literal for string concat.
   - fn `float('3.14')` `exp(exp, exp, exp)` `(control flow)`
   - operator `foo + bar` `exp op exp` `(exp op exp)` `(exp)`
 
-in variable name, space and symbols <!-- i.e. any symbols on us keyboard --> (except `_` and `$`) are not allowed.
+in variable name, space and symbols <!-- i.e. any symbols on us keyboard --> (except `_` and `$`) are not allowed. it can not be consisted w solely digits.
 
 <!-- variable names can begin w number. it makes sense to alias `2x` to `2*x`, but it will not work if the factor is not a literal number (which is common, esp in best prac where you group constants). -->
 
