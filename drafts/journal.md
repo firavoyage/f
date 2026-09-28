@@ -54868,7 +54868,7 @@ i would like to take a new styling approach, given my frustration in component s
 
 i can install what's needed in modern mono repo archi, rather than copy pasting. idk if npm is the solution, i mean for rapid dev.
 
-symlink on tsconfig would be the simplest way.
+symlink on tsconfig would be the simplest way. well it would be very prone and possibly incompatible i think.
 
 
 
