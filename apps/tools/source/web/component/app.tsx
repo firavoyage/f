@@ -5,7 +5,6 @@ import { cloneDeep } from 'lodash-es'
 
 import { use_sync_theme } from "lib/web/use sync theme";
 import { use_window_active } from 'lib/web/use window active';
-import { init_clipboard } from 'lib/web/clipboard'
 
 import { tool, tool_name, tools, tools_taxonomy } from 'action/tools';
 
@@ -304,10 +303,3 @@ let exposed_commands = {}
 function expose(command: Record<string, fn>) {
   merge(exposed_commands, command)
 }
-
-init_clipboard({
-  oncopy() {
-    toast('Copied to clipboard')
-  }
-})
-
