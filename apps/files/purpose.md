@@ -50,11 +50,12 @@ i may not have any autocomplete now. but i guess that's much of a problem of css
 
 29
 
-i would like a consistent design system right?
+i would like a consistent design system right? <!-- like, i may have a custom scrollarea first, for all my projects. i may style as i like. there are certain structures can be fixed. -->
 
-~~i would like a sound type system right?~~ i can absolutely define them clearly and explicitly. how they compromise by historical flaws, how they implement, how they infer, smart or stupid, that's not a concern.
+~~i would like a sound type system right?~~ i can absolutely define them clearly and explicitly. how they compromise by historical flaws, how they implement, how they infer, smart or stupid, that's not a concern. <!-- i can, if i want. -->
 
 i would like somewhere organized for my life, besides purpose for individual projects. tools/todo is overloaded. drafts/thinking is moved to where todos are quite obsolete. time to move on.
 
+i may have a better js stl. min, max could accept arrays or positioned params. operators can be both prefixed or infixed, like python op module. NaN will not exist, nil will be used instead. i may build it progressively when needed. i could also complete it at once <!-- to save future debugging time -->.
 
 

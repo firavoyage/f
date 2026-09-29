@@ -55147,6 +55147,10 @@ TypeError: 'int' object is not iterable
 
 > Parameter names ... Single-word names are preferred.
 
+29
+
+19 00 check cs 61a _Homework 1: Functions_. 19 10
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
