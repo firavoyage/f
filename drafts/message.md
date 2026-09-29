@@ -79,38 +79,4 @@ Word 文档，命名为“豆包-咨询-考研 vs 就业建议.docx”
 保存批处理文件，命名为“豆包-编程-关机批处理.bat”，再将此文件用压缩软件压缩
 成“豆包-编程-关机批处理.zip”文件提交（“豆包-编程-关机批处理.bat”文件不用提
 
----
-
-生成 1 张“大学校园秋日银杏大道”主题图片，要求画面清晰、色调温暖，包含学生漫步场景，尺寸设置为 1920×1080。
-
-生成 1 张“大学生社团招新海报底图”，要求包含“社团招新”视觉符号、多彩配色，无文字。
-
----
-
-生成一份“大学生职业生涯规划”PPT，要求包含自我认知、职业目标、实施计划、评估调整 4 个核心模块，不少于 8 页，设计风格简约清新
-
-only output a code block in slidev compatible markdown. the pre should be in zhcn.
-
----
-
-生成一首以“青春校园”为主题的现代诗，要求篇幅不少于 20行，语言优美、贴合大学生活，包含校园场景、青春感悟等元素
-
----
-
-咨询“本科毕业生考研 vs 就业的选择建议”，要求明确两种选择的优势、劣势，结合不同专业特点给出针对性建议，记录咨询问题及回复
-
-only output a code block in markdown of a realistic inquiry between human and llm. it should be in zhcn.
-
-保存为Word 文档，命名为“豆包-咨询-考研 vs 就业建议.docx”
-
----
-
-编写一个 Windows 关机批处理程序，要求包含“立即关机”“延时 30分钟关机”“取消关机”三个功能，代码格式规范、加注释
-
----
-
-can slidev convert to pptx
-
-how to convert md to docx on ubuntu
-
 
