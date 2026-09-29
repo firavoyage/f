@@ -742,6 +742,10 @@ physics:
 - microwave mechanics radiowave sound light engineering
 - laws naming order logic
 
+chemistry:
+
+- thermochemistry ideal gas law formula standard enthalpy of reaction from enthalpies of formation
+
 biology:
 
 - house plant longevity
