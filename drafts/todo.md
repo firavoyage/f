@@ -4,14 +4,6 @@
 
 # backlog
 
-todo
-
-message/paste · thinking · tabs · todo · projects
-
-<!-- backlog -->
-
-<!-- life, arrange todo -->
-
 <!--
 
 - **Action is the only metric.** You cannot think your way to a solution; you must build your way there.
@@ -26,35 +18,29 @@ message/paste · thinking · tabs · todo · projects
 
 ---
 
+(humility use case)
+
 find and organize useful agent skills all over the internet
 
 e.g. https://github.com/anthropics/claude-code/blob/main/plugins/frontend-design/skills/frontend-design/SKILL.md
 
 ---
 
-journal web
+journal: create a web ui and support md export
 
-journal.md
-
----
-
-carte:
-
-game design.
-
-gameplay.
-
-ideas.
-
-clarity.
+you may view your day(s) in text format. you have log or sqlite db, but it's just inelegant ux.
 
 ---
 
-intention.
+carte: design the game
 
 ---
 
-weekend indie game. weekend gamejam.
+intention: create omnibox based on fav and history.
+
+---
+
+gamedev: research weekend indie games and gamejams
 
 https://www.google.com/search?q=gorogoa+gameplay
 
