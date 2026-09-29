@@ -1304,3 +1304,64 @@ exit /b 0
 
 ## 生成 1 张“大学生社团招新海报底图”，要求包含“社团招新”视觉符号、多彩配色，无文字。
 
+
+# . upload
+
+```html
+<div ng-repeat="upload in model.pagination.currentList" class="ng-scope">
+        <!-- ngIf: upload.is_folder -->
+        <!-- ngIf: !upload.is_folder --><label class="row file-list-item ng-scope" ng-if="!upload.is_folder">
+            <div class="large-1 column check">
+                <!-- ngIf: !model.singleSelect --><input type="checkbox" ng-change="toggleUploadClick(upload)" ng-model="upload.selected" ng-if="!model.singleSelect" ng-disabled="upload.failed || upload.failedWithAMessage || !upload.selectable || !upload.id" class="ng-pristine ng-untouched ng-valid ng-scope ng-not-empty"><!-- end ngIf: !model.singleSelect -->
+                <!-- ngIf: model.singleSelect -->
+            </div>
+            <div class="large-1 column file-icon-wrapper">
+                <!-- ngIf: upload.type != 'slide' && upload.type != 'subject-lib' --><i ng-if="upload.type != 'slide' &amp;&amp; upload.type != 'subject-lib'" class="font font-file-image"></i><!-- end ngIf: upload.type != 'slide' && upload.type != 'subject-lib' -->
+                <!-- ngIf: upload.type == 'slide' -->
+                <!-- ngIf: upload.type == 'subject-lib' -->
+            </div>
+            <div class="columns file-name large-12" ng-class="{'large-12': !toggleAuditCourseResource, 'large-9': toggleAuditCourseResource}">
+                <div class="total-file-name">
+                    <span class="name truncate-text">
+                        <!-- ngIf: upload.type != 'slide' && upload.type != 'subject-lib' --><span ng-if="upload.type != 'slide' &amp;&amp; upload.type != 'subject-lib'" ng-bind="upload.name|fileName" tipsy="upload.name" class="ng-binding ng-scope" original-title="豆包-文生<br />图-校园银杏.png" title="豆包-文生<br />图-校园银杏.png">豆包-文生
+图-校园银杏</span><!-- end ngIf: upload.type != 'slide' && upload.type != 'subject-lib' -->
+                        <!-- ngIf: upload.type == 'slide' || upload.type == 'subject-lib' -->
+                    </span>
+                    <!-- ngIf: upload.type == 'video-quiz' -->
+                    <!-- ngIf: upload.type != 'slide' --><span ng-if="upload.type != 'slide'" class="extension ng-binding ng-scope" ng-bind="upload.name|fileExtension">.png</span><!-- end ngIf: upload.type != 'slide' -->
+                    <!-- ngIf: upload.type == 'video-quiz' && upload.uploads[0].deleted -->
+                </div>
+                <div class="file-info">
+                    <!-- ngIf: upload.type == 'slide' -->
+                    <!-- ngIf: upload.type == 'video-quiz' || upload.type == 'subject-lib' -->
+                </div>
+            </div>
+            <div class="large-5 column time-area">
+                <span ng-bind="upload.created_at | datetime" class="ng-binding">2026.09.29 15:40</span>
+            </div>
+            <div class="large-4 column">
+                <!-- ngIf: upload.size --><span ng-if="upload.size" ng-bind="upload.size | humanizeBytes" class="ng-binding ng-scope">2.87 MB</span><!-- end ngIf: upload.size -->
+                <!-- ngIf: !upload.size -->
+            </div>
+                <!-- ngIf: model.tab === 'group_resource' -->
+            <div class="large-6 columns no-horizontal-padding" ng-class="{'text-center': upload.failed || upload.failedWithAMessage}">
+                <!-- ngIf: !upload.failed && !upload.failedWithAMessage && upload.progress >= 0 -->
+                <!-- ngIf: upload.failed || upload.failedWithAMessage -->
+                <!-- ngIf: !upload.id && model.tab == 'public_resource' -->
+            </div>
+            <div class="large-4 columns">
+                <!-- ngIf: upload.speed || upload.speed == 0 -->
+            </div>
+            <div class="large-3 columns upload-buttons">
+                <!-- ngIf: !upload.failed && (!upload.finished && upload.finished == false) -->
+            </div>
+        </label><!-- end ngIf: !upload.is_folder -->
+    </div>
+```
+
+wow that's how it's written.
+
+angular...
+
+(btw, on ux, i could not select to submit immediately after upload, i have to refresh the page/tabs so they update the state.)
+
