@@ -2,6 +2,10 @@
 
 # todo
 
+create project para
+
+index and browser knowledge base, read markdown structured books
+
 # backlog
 
 <!--
@@ -52,6 +56,8 @@ https://www.google.com/search?q=gamedev+story
 
 ---
 
+create projects
+
 grow. eat.
 
 para. (supporting grow, and humility code)
@@ -66,7 +72,7 @@ how to determine?
 
 ---
 
-Pdf to yaml, and then html
+have: research pdf parsing, convert to structured data, and convert to md
 
 ---
 
@@ -114,7 +120,9 @@ also, it's more neutral (safer) than using menci/chyk/leohearts as the first sta
 
 ---
 
-Ideas in Chinese textbook. Tags. Meta. Essence.
+(humility use case)
+
+chinese: research Ideas in Chinese textbook. Tags. Meta. Essence.
 
 ---
 
@@ -126,19 +134,21 @@ inspired by chyk.
 
 ---
 
-art movements. (test manus)
+(humility use case)
+
+document and create a (interactive) pre of art movements.
+
+<!-- (test manus) -->
 
 ---
 
-gnome design system.
+humility: research mcp to cli
+
+e.g. playwright mcp as cli
 
 ---
 
-playwright mcp as cli
-
----
-
-float.
+create project float
 
 folders/albums/whatever.
 
@@ -158,7 +168,9 @@ i hold the dream since grade 10.
 
 ---
 
-test llm vid transcription
+(humility use case)
+
+~~test~~ research llm vid transcription
 
 nickle angel made some courses with ppt in her 20s.
 
@@ -196,11 +208,11 @@ it's likely the sophisticated fonts on like claude, google (google sans), duolin
 
 ---
 
-write a tg bot.
+humility: build an abstraction to integrate w im platforms, write a tg bot for fun
 
 ---
 
-twitter to mastodon abstraction
+grow: abstract twitter as mastodon
 
 i can
 
@@ -216,7 +228,7 @@ view twitter in mastodon.
 
 ---
 
-project pre
+create project pre
 
 no more slidev.
 
@@ -931,6 +943,4 @@ for app copy, i might offer "duplicate the first heading as h1".
 nice to have.
 
 ---
-
-
 
