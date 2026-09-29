@@ -55151,6 +55151,21 @@ TypeError: 'int' object is not iterable
 
 19 00 check cs 61a _Homework 1: Functions_. 19 10
 
+20 50 have a pair of gloves in the dorm.
+
+21 00 organize drafts/todo.
+
+plan: due day
+
+todo: ready for implementation
+
+backlog: random ideas
+
+---
+
+i almost forget ive got things like weekly/projects. when were they last updated?
+
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

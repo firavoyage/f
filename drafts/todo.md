@@ -1,3 +1,9 @@
+# plan
+
+# todo
+
+# backlog
+
 todo
 
 message/paste · thinking · tabs · todo · projects
