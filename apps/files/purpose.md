@@ -48,4 +48,13 @@ also, it's a structure, not a string, which gives way more expressiveness than t
 
 i may not have any autocomplete now. but i guess that's much of a problem of css var its own. snippet + descriptive words <!-- e.g. preps --> should be preferred over aliases <!-- abbr --> only if they really feel natural, not boilerplate, to read.
 
+29
+
+i would like a consistent design system right?
+
+~~i would like a sound type system right?~~ i can absolutely define them clearly and explicitly. how they compromise by historical flaws, how they implement, how they infer, smart or stupid, that's not a concern.
+
+i would like somewhere organized for my life, besides purpose for individual projects. tools/todo is overloaded. drafts/thinking is moved to where todos are quite obsolete. time to move on.
+
+
 
