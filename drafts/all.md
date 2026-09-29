@@ -1050,6 +1050,7 @@ humility:
 - research google ai mode
 - name arif
 - research google gemini app
+- use case university ai intro course tasks
 
 legacy:
 
