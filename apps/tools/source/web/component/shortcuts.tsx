@@ -14,7 +14,6 @@ type shortcuts = {
 
 export function Shortcuts(props: shortcuts) {
   const { open, toggle_open, shortcuts, call } = props
-  const [is_on_top, toggle_is_on_top] = useToggle(false)
 
   map(shortcuts, (shortcut) => {
     const { key, command } = shortcut
@@ -42,7 +41,7 @@ export function Shortcuts(props: shortcuts) {
             <Icon {...p({ name: 'close' })}></Icon>
           </Button>
         </div>
-        <Scroll {...p({ toggle_is_on_top })}>
+        <Scroll>
           <div className="body">
             {map(shortcuts, ({ command, key }) => (
               <Button className="shortcut">

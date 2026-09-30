@@ -14,7 +14,6 @@ type commands = {
 
 export function Commands(props: commands) {
   const { open, toggle_open, commands: commands_object } = props
-  const [is_on_top, toggle_is_on_top] = useToggle(false)
   const [query, set_query] = useState('')
   const [focus, set_focus] = useState(0)
 
@@ -97,7 +96,7 @@ export function Commands(props: commands) {
         <div className="search">
           <Input {...p({ value: query, set_value: set_query, ref: input })}></Input>
         </div>
-        <Scroll {...p({ toggle_is_on_top })}>
+        <Scroll>
           <div className="body" {...p({ ref: list })}>
             {
               map(results, (result, index) => (

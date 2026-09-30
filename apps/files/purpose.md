@@ -58,4 +58,13 @@ i would like somewhere organized for my life, besides purpose for individual pro
 
 i may have a better js stl. min, max could accept arrays or positioned params. operators can be both prefixed or infixed, like python op module. NaN will not exist, nil will be used instead. i may build it progressively when needed. i could also complete it at once <!-- to save future debugging time -->.
 
+---
+
+on scrollarea
+
+really, is it way too specific? "toggle_is_on_top".
+
+well anyway it's not a big deal. i was just too lazy to debounce.
+
+
 
