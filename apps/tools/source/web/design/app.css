@@ -300,6 +300,8 @@ body {
 }
 
 .scroll {
+  position: relative;
+
   overflow: auto;
   /* overflow-y: auto; */
   > * {
@@ -319,9 +321,39 @@ body {
   } */
 
   .track {
-    opacity: 0;
+    background-color: #fff;
 
-    transition: opacity var(--transition-backdrop);
+    opacity: 0;
+    transition: opacity var(--transition-scrollbar);
+
+    &:hover,
+    &[drag] {
+      opacity: 1;
+    }
+
+    .thumb {
+      position: absolute;
+    }
+  }
+
+  .vertical_scrollbar {
+    .track {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: var(--spacing-4);
+    }
+  }
+
+  .horizontal_scrollbar {
+    .track {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: var(--spacing-4);
+    }
   }
 }
 
