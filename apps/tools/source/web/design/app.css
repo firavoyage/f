@@ -301,24 +301,27 @@ body {
 
 .scroll {
   position: relative;
+  overflow: hidden;
 
-  overflow: auto;
-  /* overflow-y: auto; */
-  > * {
-    flex-shrink: 0;
-  }
+  .scroll_content {
+    overflow: auto;
+    /* overflow-y: auto; */
+    > * {
+      flex-shrink: 0;
+    }
 
-  /* use a custom scrollbar */
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  /* &[noscrollbar] {
+    /* use a custom scrollbar */
     scrollbar-width: none;
     &::-webkit-scrollbar {
       display: none;
     }
-  } */
+    /* &[noscrollbar] {
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    } */
+  }
 
   .track {
     background-color: #fff;
@@ -326,33 +329,37 @@ body {
     opacity: 0;
     transition: opacity var(--transition-scrollbar);
 
-    &:hover,
-    &[drag] {
-      opacity: 1;
-    }
-
     .thumb {
       position: absolute;
     }
   }
 
+  &:hover .track,
+  &[drag] .track {
+    opacity: 1;
+  }
+
   .vertical_scrollbar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
     .track {
-      position: absolute;
-      right: 0;
-      top: 0;
-      bottom: 0;
       width: var(--spacing-4);
+      height: 100%;
     }
   }
 
   .horizontal_scrollbar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
     .track {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
       height: var(--spacing-4);
+      width: 100%;
     }
   }
 }
