@@ -433,7 +433,9 @@ github 3p ui.
 
 ---
 
-Para?
+para: prototype
+
+Para.
 
 (Blog in any theme.)
 
@@ -465,41 +467,7 @@ why vscode is bad:
 
  -->
 
----
-
-Have.
-
-Make sure you have enough space and export all tg chats one by one. (I can help with some automation).
-
-Then you can, for example, timeline any user across channels and chats.
-
-(An user can have many accounts, I will simply preprocess, and cache maybe.)
-
----
-
-design system. component library.
-
-react.
-
-research md3 (mui, awa google's web components).
-
-think.
-
-lib adwaita on web.
-
 ...
-
-I want to find some design. If I like I can further go to the figma.
-
-Also, component lib.
-
-Where.
-
-...
-
-blog theme?
-
----
 
 para.
 
@@ -512,6 +480,20 @@ i could not ctrl f. i could not have toc.
 research: gemini. (lagrange)
 
 ---
+
+have: support import from tg
+
+Have.
+
+Make sure you have enough space and export all tg chats one by one. (I can help with some automation).
+
+Then you can, for example, timeline any user across channels and chats.
+
+(An user can have many accounts, I will simply preprocess, and cache maybe.)
+
+---
+
+repo: create an abstraction of cli on top of git
 
 precious, [5/2/26 5:59 PM]
 V.
@@ -589,17 +571,15 @@ just
 
 ---
 
-research terminal bench
+humility: research terminal bench
 
 <!-- inadequate and incomprehensive tasks, seems -->
 
 ---
 
-dl maimai dx songs.
+humility: test use case dl maimai dx songs.
 
-touhou. vocaloid. etc. (agent?)
-
-it's wiser to do it at home.
+touhou. vocaloid. etc.
 
 ---
 
@@ -609,47 +589,13 @@ crawl the web.
 
 ---
 
-- git (azaneko?)
-- systemd abstraction?
-- semantic vector search
-- tg export to knowledge
-- tg userbot x11
-- patchright (e.g. deepseek)
-- nameless (mihomo by fira). <!-- web ui. btw, the backend and the frontend are two things -->
-- have (crawl the web, e.g. matrix67) <!-- the most crucial step is network. be pragmatic. like handling a few big ones like twitter, tg export. ssg (hexo, astro, etc.). for general ones fallback to, like mhtml. menci has oi.menci on github, just clone. no need to crawl. ruanyf has ruanyf weekly on github, but no idea if all articles are foss. -->
-- projects, other todos <!-- e.g. blog abstraction -->.
+para: test: host gnome hig and kde hig
+
+humility: test: convert a legacy docs repo to md
 
 ---
 
-tg to activitypub
-
-activitypub to something.
-
----
-
-para: <!-- for eat, grow, (and have, maybe) -->
-
-any blog. any document on fs.
-
-any app on any design system.
-
----
-
-test Literature analysis
-
-Naval: Get rich wo getting lucky
-
----
-
-para.
-
-host: gnome hig, kde hig
-
-(humility: convert to md)
-
----
-
-have: Activity pub spec scope
+have: research and design the format, e.g. activity pub
 
 tg export. standardized activity pub.
 
@@ -677,31 +623,19 @@ Zhihu auto sync, global playwright
 
 ---
 
-Systemd failure Notifier
+Maimai web port
 
 ---
-
-Maimai web port? 
-
----
-
-(have, humility)
 
 all: funshiki films index.
 
+(have, humility)
+
 ---
+
+create a (better) resources app for linux
 
 i should be able to view resources in a pie chart. and i guess sometimes it does not add up to the mem. idk.
-
----
-
-app: convert
-
-(string to string, or more params)
-
-collapsible sidebar. routing.
-
-just vibe, after completing the design system.
 
 ---
 
@@ -920,10 +854,6 @@ analyze linear (?) <!-- needed? already done? --> and github on android.
 
 ---
 
-have
-
----
-
 i would include these ppl in the first archive
 
 - acbox
@@ -932,13 +862,24 @@ i would include these ppl in the first archive
 - ruanyf
 - steven lynn
 - umr
-- also, https://nyac.at/
+- nyac.at
 
 ---
 
-for app copy, i might offer "duplicate the first heading as h1".
+copy: support "duplicate the first heading as h1".
 
 nice to have.
 
 ---
 
+copy: refactor and simplify codebase
+
+the generate js blobs are messy and unreadable
+
+it's simple. you should be able to modify wo llms.
+
+i may have a postprocessor to strip all inline citations (politics driven) and specific text like "ai can make mistakes" "use code w caution" (business driven). no idea if para should take the resp, as it cant be bad to have more information.
+
+i may write it in code.
+
+i may compile it as userscript
