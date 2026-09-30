@@ -735,6 +735,9 @@ math:
 - peano arithmetic
 - advanced math intro function and mapping
 - problem prob tile matching
+- decidability wo provability
+- limit infinitesimal order
+- limit trigonometric identities lhopital taylor series
 
 physics:
 
