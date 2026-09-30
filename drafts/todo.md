@@ -1,5 +1,7 @@
 # plan
 
+
+
 # todo
 
 create project para
@@ -22,9 +24,7 @@ index and browser knowledge base, read markdown structured books
 
 ---
 
-(humility use case)
-
-find and organize useful agent skills all over the internet
+humility: test find and organize useful agent skills all over the internet
 
 e.g. https://github.com/anthropics/claude-code/blob/main/plugins/frontend-design/skills/frontend-design/SKILL.md
 
@@ -120,9 +120,11 @@ also, it's more neutral (safer) than using menci/chyk/leohearts as the first sta
 
 ---
 
-(humility use case)
+humility: test: research Ideas in Chinese textbook
 
-chinese: research Ideas in Chinese textbook. Tags. Meta. Essence.
+Tags. Meta. Essence.
+
+(project chinese)
 
 ---
 
@@ -134,11 +136,7 @@ inspired by chyk.
 
 ---
 
-(humility use case)
-
-document and create a (interactive) pre of art movements.
-
-<!-- (test manus) -->
+humility: test: document and create a (interactive) pre of art movements.
 
 ---
 
@@ -168,9 +166,7 @@ i hold the dream since grade 10.
 
 ---
 
-(humility use case)
-
-~~test~~ research llm vid transcription
+humility: test: research llm vid transcription
 
 nickle angel made some courses with ppt in her 20s.
 
@@ -253,9 +249,7 @@ writing style consistency: maybe i should let llm to write some stuff in compari
 
 ---
 
-(humility use case)
-
-write editorials for project euler
+humility: test: write editorials for project euler
 
 ---
 
@@ -289,11 +283,11 @@ make readme personas clearer.
 
 ---
 
-(humility use case)
-
-generate dicts
+humility: test: generate dicts
 
 i did not found good llms generated dicts on google.
+
+(project leisure: dict)
 
 ---
 
@@ -387,7 +381,7 @@ https://space.bilibili.com/1156993272/fans/follow
 
 ---
 
-(humility use case)
+humility: test: organize berryberry fav.
 
 have: organize berryberry fav.
 
@@ -639,10 +633,6 @@ i should be able to view resources in a pie chart. and i guess sometimes it does
 
 ---
 
-intention
-
----
-
 Anyway you do not live in a vacuum.
 
 You will have landing page (it should definitely not be vitepress), repo page, pm page (issues roadmap todo whatever), discussion, and docs.
@@ -687,23 +677,11 @@ go engines can run on my laptop and phone. it might be slow. but it's absolutely
 
 i may integrate things.
 
-currently only sabaki is elegant. but it's not well engineered in my standard.
+currently only sabaki is elegant. but it's not well engineered to my standard.
 
 ---
 
-leisure en: dict
-
----
-
-<!-- leverage thinking
-
-it's wise to research more.
-
-the real world is less hard but way more complex, which llms do not handle well. -->
-
----
-
-action
+humility: prototype actions
 
 - new thread
 - chat <!-- put everything related to "new node" in chat? -->
@@ -716,7 +694,7 @@ hooks are easy. they come later.
 
 ---
 
-workflow:
+humility: prototype simple workflows
 
 ```yaml
 name: research project (company)
@@ -750,53 +728,13 @@ all nodes can be referenced directly. you can copy its id.
 
 ---
 
-web (chat, thread, sidebar, shortcuts, settings)
+humility: research dify and analyze ux
 
-chatbot
-
----
-
-dify <!-- it has no moat. visual ui is nothing. unlike agents, mcp, skills, tool calls, extensions, hooks, quick unclear. -->
-
-(research dify. record.)
+<!-- it has no moat. visual ui is nothing. unlike agents, mcp, skills, tool calls, extensions, hooks, quick unclear. -->
 
 ---
 
-- atom components
-- utilitarian.yaml
-- pattern? (shortcuts, settings)
-- page, chatbot functionality
-- page routing (auto correct), page to url mapping
-- backend serve, method to endpoint mapping
-- search?
-- browse (patchright)?
-- operate (x11 computer use)?
-- dify research
-
-it's to create more useful components next i guess.
-
-style in utilitarian. (both yaml tokens and css)
-
-... <!-- upd -->
-
-generally
-
-- dev
-- research
-
-currently ik what to do.
-
-- chatbot
-  - test fetch
-  - layout
-    - test sidebar
-    - resp design
-  - network (over fetching/under fetching)
-    - have rest api over graphql <!-- at the end of the day, you will have a few specific requests. it's backend's resp. you may store as you like, but the state only change or requests only fire upon certain user actions. -->
-  - streaming
-  - theming
-
----
+repo: decide project scope
 
 i guess it's better to be a drop in replacement of github.
 
@@ -804,7 +742,7 @@ identical ui. faster as you serve locally if possible.
 
 assumption: you usually work on a repo yk rather than new ones all over the internet.
 
----
+...
 
 all (highly requested) features of github desktop
 
@@ -820,6 +758,8 @@ scope. <!-- i might not need grill me. i could think myself. -->
 
 ---
 
+code: test: write shell fn
+
 seems i write shell fn often.
 
 have a converter. like yaml to shell fn.
@@ -828,7 +768,7 @@ use ts.
 
 ---
 
-call.
+lib: create server abstraction, or call
 
 `call(method, payload)` is not easily typed.
 
@@ -844,15 +784,17 @@ purpose. <!-- i mean the file i guess. to list. to plan. no need to build a fanc
 
 ---
 
-analyze linear (?) <!-- needed? already done? --> and github on android.
+repo/purpose: analyze linear and github on android.
 
 <!-- acbox uses github mobile. idk. -->
 
-> you d build better products j becoz the craft of using linear
+> you d build better products just because of the craft of using linear
 
 /home/fira/Videos/Screencasts/2026-06-22 20-10-10 linear.mp4
 
 ---
+
+have: test: display works/posts of some ppl
 
 i would include these ppl in the first archive
 
