@@ -10,8 +10,32 @@ import { Input } from './input'
 import { Textarea } from './textarea'
 import { Storybook } from './storybook'
 import { Favicon } from './favicon'
+import { Scroll } from 'web/component/scroll'
 
 const storybook = {
+  Scroll() {
+    return (
+      <div {...p({ style: {
+        height: '300px'
+      } })}>
+        <Scroll>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque sint explicabo ducimus porro quibusdam placeat consequatur voluptatum itaque tempora vel beatae maiores aliquam culpa iusto, ullam dolores illum dolorem odit?
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque sint explicabo ducimus porro quibusdam placeat consequatur voluptatum itaque tempora vel beatae maiores aliquam culpa iusto, ullam dolores illum dolorem odit?
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque sint explicabo ducimus porro quibusdam placeat consequatur voluptatum itaque tempora vel beatae maiores aliquam culpa iusto, ullam dolores illum dolorem odit?
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque sint explicabo ducimus porro quibusdam placeat consequatur voluptatum itaque tempora vel beatae maiores aliquam culpa iusto, ullam dolores illum dolorem odit?
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque sint explicabo ducimus porro quibusdam placeat consequatur voluptatum itaque tempora vel beatae maiores aliquam culpa iusto, ullam dolores illum dolorem odit?
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque sint explicabo ducimus porro quibusdam placeat consequatur voluptatum itaque tempora vel beatae maiores aliquam culpa iusto, ullam dolores illum dolorem odit?
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque sint explicabo ducimus porro quibusdam placeat consequatur voluptatum itaque tempora vel beatae maiores aliquam culpa iusto, ullam dolores illum dolorem odit?
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque sint explicabo ducimus porro quibusdam placeat consequatur voluptatum itaque tempora vel beatae maiores aliquam culpa iusto, ullam dolores illum dolorem odit?
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque sint explicabo ducimus porro quibusdam placeat consequatur voluptatum itaque tempora vel beatae maiores aliquam culpa iusto, ullam dolores illum dolorem odit?
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque sint explicabo ducimus porro quibusdam placeat consequatur voluptatum itaque tempora vel beatae maiores aliquam culpa iusto, ullam dolores illum dolorem odit?
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque sint explicabo ducimus porro quibusdam placeat consequatur voluptatum itaque tempora vel beatae maiores aliquam culpa iusto, ullam dolores illum dolorem odit?
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque sint explicabo ducimus porro quibusdam placeat consequatur voluptatum itaque tempora vel beatae maiores aliquam culpa iusto, ullam dolores illum dolorem odit?
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque sint explicabo ducimus porro quibusdam placeat consequatur voluptatum itaque tempora vel beatae maiores aliquam culpa iusto, ullam dolores illum dolorem odit?
+        </Scroll>
+      </div>
+    )
+  },
   Favicon,
   Button,
   Checkbox,

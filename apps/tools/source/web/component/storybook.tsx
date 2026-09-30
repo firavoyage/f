@@ -51,13 +51,15 @@ export function Storybook({ storybook }: storybook) {
       <title>Storybook</title>
       <div className="app storybook">
         <Sidebar>
-          {
-            map(storybook, ([component]) => (
-              <Button {...p({ onClick() { set_component(component) } })}>
-                {component}
-              </Button>
-            ))
-          }
+          <div className="list">
+            {
+              map(storybook, ([c]) => (
+                <Button {...p({ onClick() { set_component(c) }, focus: component == c })}>
+                  {c}
+                </Button>
+              ))
+            }
+          </div>
         </Sidebar>
         <div className="main demo" {...p({
           style: {

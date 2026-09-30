@@ -341,6 +341,7 @@ web: <!-- frontend, web, ts/js -->
 - js std lib
 - js std lib builtin global object methods
 - web lib style
+- fix reference error react not defined
 
 backend:
 
