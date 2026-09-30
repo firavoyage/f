@@ -55194,7 +55194,9 @@ docker stop pvzge
 docker start pvzge
 ```
 
-ok, intuitive. would be better to provide docs out of the box alongside the one liner in readme.
+ok, intuitive. would be better to provide docs out of the box alongside the one liner in readme. <!-- there is an update/upgrade guide. but maintenance matters! and it would be better paired w a cli, like a flag to open directly in default browser, to read manual (--help), or to check version. (on windows/mac, there are more options other than docker, like builds, electron maybe, and regional cloud drive mirrors) -->
+
+seems it's serverless.
 
 
 
