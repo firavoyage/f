@@ -306,12 +306,17 @@ body {
     flex-shrink: 0;
   }
 
-  &[noscrollbar] {
+  /* use a custom scrollbar */
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  /* &[noscrollbar] {
     scrollbar-width: none;
     &::-webkit-scrollbar {
       display: none;
     }
-  }
+  } */
 }
 
 .popup {
@@ -582,15 +587,15 @@ textarea {
 
   > .dropdown {
     z-index: var(--hierarchy-popup);
-    
+
     background: var(--color-bg-secondary);
-    
+
     .button {
       flex-flow: row;
       padding-block: var(--page-whitespace-sm);
       padding-inline: var(--page-whitespace);
     }
-    
+
     .icon {
       width: var(--spacing-4);
       height: var(--spacing-4);
