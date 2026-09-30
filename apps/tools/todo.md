@@ -390,3 +390,8 @@ use == instead of === for all business logics.
 
 prettier. decide the options.
 
+---
+
+web: support routing
+
+you may copy link of a specific process, or maybe input aw

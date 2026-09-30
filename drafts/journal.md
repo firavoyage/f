@@ -55165,6 +55165,16 @@ backlog: random ideas
 
 i almost forget ive got things like weekly/projects. when were they last updated?
 
+30
+
+13 20 organize drafts/todo.
+
+<!-- (archived to drafts/todo. thinking should be temporary. better to organize them, put them under the right project, and separate todo/thinking.) -->
+
+i may group by project.
+
+how relevant...
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
