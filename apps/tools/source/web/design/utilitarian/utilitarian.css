@@ -234,9 +234,11 @@
 
 :root, [animation="fluid"], [data-animation="fluid"] {
   --transition-backdrop: 0.3s ease;
+  --transition-scrollbar: 0.15s ease;
 }
 
 [animation="reduced"], [data-animation="reduced"] {
   --transition-backdrop: 0s ease;
+  --transition-scrollbar: 0s ease;
 }
 

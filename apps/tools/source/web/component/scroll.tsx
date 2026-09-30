@@ -34,8 +34,10 @@ export function Scroll(props: scroll) {
   })
 
   return (
-    <div className="scroll" {...p({ ref })} {...p(!scrollbar && { noscrollbar: true })}>
-      {children}
+    <div className="scroll" {...p(!scrollbar && { noscrollbar: true })}>
+      <div className="scroll_content" {...p({ ref })}>
+        {children}
+      </div>
       {is_vertically_scrollable && (
         <div className="vertical_scrollbar">
           <div className="track">
