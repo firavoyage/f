@@ -1,7 +1,7 @@
 // everything from react and react-use is available
 // these are the ones you would actually use
 
-import { useEffect, useState, useRef, useCallback } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import { useAsync, useAsyncFn, useMeasure, useToggle, useMount } from "react-use";
 import { use_keyboard } from 'lib/web/use keyboard'
 import { use_sync_theme } from 'lib/web/use sync theme'
