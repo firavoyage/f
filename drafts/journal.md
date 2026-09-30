@@ -55179,6 +55179,23 @@ oct 2026
 
 01
 
+00 30 play pvzge.
+
+docker one liner works out of the box. great work! <!-- could have more options. like one liner after github clone, which is vastly superior to docker (dockerhub vendor lockin). and npm, if possible. -->
+
+but how would i manage it... like start, stop, status, and log maybe.
+
+```
+docker run --name pvzge -d -p 8080:80 gaozih/pvzge:latest
+```
+
+```
+docker stop pvzge
+docker start pvzge
+```
+
+ok, intuitive. would be better to provide docs out of the box alongside the one liner in readme.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
