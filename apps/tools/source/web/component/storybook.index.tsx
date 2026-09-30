@@ -1,4 +1,4 @@
-import 'the-new-css-reset/css/reset.css';
+// import 'the-new-css-reset/css/reset.css';
 
 import 'lib/web/global';
 
@@ -63,5 +63,3 @@ console.error = function (msg, ...substitution) {
   // throw err are always errors, and if it can be logged (even as errors), it's safe
   console.warn(msg, ...substitution)
 }
-
-console.clear();
