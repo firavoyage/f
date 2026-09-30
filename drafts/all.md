@@ -420,6 +420,7 @@ desktop:
 - shell job control fg bg jobs advanced tmux systemd pm2 abstraction
 - flatpak local installation
 - install anaconda
+- disable gnome shell crash screen
 
 android:
 
