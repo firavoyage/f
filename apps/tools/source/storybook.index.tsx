@@ -1,11 +1,11 @@
-// import 'the-new-css-reset/css/reset.css';
+import 'the-new-css-reset/css/reset.css';
 
 import 'lib/web/global';
 
 import { createRoot } from "react-dom/client"
 import { StrictMode } from 'react';
 
-import { App } from "./storybook.app"
+import { App } from "web/component/storybook.app"
 
 // @ts-expect-error best effort
 const dev = handle(() => process.env.NODE_ENV == 'development' || import.meta.env?.DEV, false)
