@@ -24,8 +24,8 @@ export function Scroll(props: scroll) {
 
   useLayoutEffect(() => {
     if (!ref.current) {
-      return 
-    } 
+      return
+    }
 
     const view = ref.current
 
@@ -36,6 +36,20 @@ export function Scroll(props: scroll) {
   return (
     <div className="scroll" {...p({ ref })} {...p(!scrollbar && { noscrollbar: true })}>
       {children}
+      {is_vertically_scrollable && (
+        <div className="vertical_scrollbar">
+          <div className="track">
+            <div className="thumb"></div>
+          </div>
+        </div>
+      )}
+      {is_horizontally_scrollable && (
+        <div className="horizontal_scrollbar">
+          <div className="track">
+            <div className="thumb"></div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
