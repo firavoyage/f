@@ -234,11 +234,28 @@ no more slidev.
 
 ---
 
-pure project.
+create project pure
 
 i could easily outperform the textbooks in mainland china.
 
 research the best textbooks.
+
+...
+
+pure math generation (?)
+
+with advanced topics and tricks on the cheetsheet
+
+why: gen and revise, compare and summarize the style. aops. apply the style.
+set the narration style when translating. "for enthu, memories, ref." (?)
+
+writing style consistency: maybe i should let llm to write some stuff in comparison and let me choose? idea: let llm generate some stuff in a list, i choose or rewrite, then let llm put them in comparison, generate the style guide. (or: give example, generate following existing text with human curated limitation.)
+
+---
+
+(humility use case)
+
+write editorials for project euler
 
 ---
 
@@ -272,11 +289,15 @@ make readme personas clearer.
 
 ---
 
+(humility use case)
+
 generate dicts
 
-i did not found good llms generated dicts by google.
+i did not found good llms generated dicts on google.
 
 ---
+
+shelf: index popular read lists.
 
 read books
 
@@ -290,16 +311,6 @@ https://61.life/2023/1230
 
 ---
 
-research readme writing style.
-
-see linux. (what is it writing? who are you. if you are... you can.)
-
-similar to fira's (I want to ... headings)
-
-see mootools.
-
----
-
 research lagenrage
 
 about:help
@@ -308,7 +319,7 @@ gemini://estela.moe
 
 ---
 
-archive wanqu daily
+have: import wanqu daily archive
 
 https://github.com/NiceLabs/wanqu-daily-dump
 
@@ -316,15 +327,7 @@ https://nicelabs.github.io/wanqu-daily-dump/
 
 ---
 
-proxy self hosting guide.
-
----
-
-project euler
-
-editorial euler
-
----
+all: tv index (e.g. films, bangumis)
 
 track good new films/bangumis
 
@@ -356,54 +359,45 @@ integrate repo w agent?
 
 ---
 
-leisure en
+leisure: write for popular topics
 
 how to describe food in english
 
 ---
 
-misc
+all: pics of sky, clouds, sunrises and sunsets
 
 sunrising and sunsetting in the real world :heart: the gradients in the sky be anytime anythere (proj. all)
 
 ---
 
-grow
-
-organize sub for intentional surfing.
+grow: organize sub for intentional surfing.
 
 ---
 
-project eat:
+project eat: research the recommendation algo
 
-research the recommendation algo. (views distribution)
-
----
-
-organize berryberry fav.
-
-organize sub before export. https://space.bilibili.com/1156993272/fans/follow
-
-leverage llms instead.
+<!-- views distribution (?!) -->
 
 ---
 
-pure math generation  (?)
+eat: export subs from popular content platforms
 
-with advanced topics and tricks on the cheetsheet
-
-why: gen and revise, compare and summarize the style. aops. apply the style.
-set the narration style when translating. "for enthu, memories, ref." (?)
-
-writing style consistency: maybe i should let llm to write some stuff in comparison and let me choose? idea: let llm generate some stuff in a list, i choose or rewrite, then let llm put them in comparison, generate the style guide. (or: give example, generate following existing text with human curated limitation.)
+https://space.bilibili.com/1156993272/fans/follow
 
 ---
 
-research manus use cases.
+(humility use case)
+
+have: organize berryberry fav.
 
 ---
 
-uninteractive widgets.
+humility: research manus use cases
+
+---
+
+humility: research and create some non interactive widgets
 
 - math graph
 - color
@@ -417,6 +411,8 @@ research types. (maybe py lib plus google sans)
 
 ---
 
+purpose: prototype
+
 build a pm app
 
 linear foss ui.
@@ -428,6 +424,8 @@ native markdown has a lot advantage.
 well... i could proxy it. somehow. w a format i like.
 
 ---
+
+repo: prototype
 
 build a repo app
 
