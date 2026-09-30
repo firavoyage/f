@@ -336,6 +336,9 @@ transition:
   backdrop:
     fluid: 0.3s ease
     reduced: 0s ease
+  scrollbar:
+    fluid: 0.15s ease
+    reduced: 0s ease
 
 # # todo
 # scrollbar:
