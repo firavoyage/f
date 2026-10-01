@@ -159,6 +159,7 @@ color:
       inactive: color-mix(in oklab, palette.gray.500 20%, transparent)
     focus: color-mix(in oklab, color.bg.accent 30%, transparent)
     backdrop: color-mix(in oklab, palette.gray.950 30%, transparent)
+    scrollbar: color-mix(in oklab, color.fg.primary 50%, transparent)
     tooltip: palette.gray.900
     commands:
       light: color-mix(in oklab, palette.gray.200 30%, color.bg.primary)
@@ -339,19 +340,6 @@ transition:
   scrollbar:
     fluid: 0.15s ease
     reduced: 0s ease
-
-# # todo
-# scrollbar:
-#   width: "8px"
-#   thumb: "#bbb"
-#   thumb-hover: "#999"
-#   thumb-active: "#888"
-
-# # todo
-# focus-ring:
-#   color: "rgba(53, 132, 228, 0.5)"
-#   width: "2px"
-#   offset: "-2px"
 
 page:
   whitespace:

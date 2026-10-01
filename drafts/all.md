@@ -423,6 +423,7 @@ desktop:
 - flatpak local installation
 - install anaconda
 - disable gnome shell crash screen
+- 
 
 android:
 
