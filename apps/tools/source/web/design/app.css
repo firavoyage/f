@@ -324,15 +324,13 @@ body {
   }
 
   .track {
-    background-color: #fff;
-
     opacity: 0;
     transition: opacity var(--transition-scrollbar);
 
     .thumb {
       position: absolute;
 
-      background-color: khaki;
+      background-color: var(--color-bg-scrollbar);
     }
   }
 
@@ -348,7 +346,7 @@ body {
     bottom: 0;
 
     .track {
-      width: var(--spacing-4);
+      width: var(--spacing-2);
       height: 100%;
 
       .thumb {
@@ -364,7 +362,7 @@ body {
     bottom: 0;
 
     .track {
-      height: var(--spacing-4);
+      height: var(--spacing-2);
       width: 100%;
 
       .thumb {
