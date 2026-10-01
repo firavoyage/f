@@ -835,7 +835,7 @@ history:
 - astrodx
 - math provers
 - py
-- lcnc
+- lcnc dev supply
 
 politics:
 
