@@ -242,6 +242,7 @@ archi:
 - npm zipped bundle size loc meaning feeling
 - code design patterns in fp
 - js monorepo
+- writing single double quote
 
 web: <!-- frontend, web, ts/js -->
 
