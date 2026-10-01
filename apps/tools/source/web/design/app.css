@@ -348,6 +348,10 @@ body {
     .track {
       width: var(--spacing-4);
       height: 100%;
+
+      .thumb {
+        width: 100%;
+      }
     }
   }
 
@@ -360,6 +364,10 @@ body {
     .track {
       height: var(--spacing-4);
       width: 100%;
+
+      .thumb {
+        height: 100%;
+      }
     }
   }
 }
