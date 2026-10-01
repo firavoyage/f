@@ -552,4 +552,492 @@ Are you seeing these downsides affect a **project you are currently working on**
 Show all
 
 
+# what do ppl think of python bdfl
+
+Public opinion on Python’s **BDFL (Benevolent Dictator for Life)** model—and specifically its holder, Python creator **Guido van Rossum**—is <mark>largely positive</mark>, credited with keeping Python elegant and unified. However, the community also recognizes that the model was unsustainable, leading to heavy developer burnout. [link](https://www.youtube.com/watch?v=AKZ9GHtb0ms\&t=2)
+
+When Guido stepped down from the role in July 2018, it marked the end of an era and highlighted the distinct pros and cons of centralized open-source governance. [link](https://en.wikipedia.org/wiki/Benevolent%5Fdictator%5Ffor%5Flife)
+
+### ⚖️ The General Consensus
+
+| What People Loved About the BDFL Model                                                                                                         | What People Criticized / Feared                                                                                                                              |
+| ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Design Consistency:** Guido’s strong aesthetic sense kept Python readable and prevented feature bloat.                                       | **Single Point of Failure:** Decisions completely bottle-necked at one person, creating immense stress and slower processing times.                          |
+| **Gridlock Prevention:** It provided a clear, authoritative voice to resolve bitter community disputes instantly.                              | **Outrage Culture & Toxicity:** Bitter debates (like the infamous pushback over the `:=` walrus operator) grew toxic, ultimately driving Guido to step down. |
+| **Resistance to Corporate Overlordship:** A neutral, respected founder kept the language from being hijacked by competing corporate interests. | **Aversion to Modern Features:** Some felt Guido's conservative approach historically resisted optimization and paradigms like functional programming.       |
+
+### 🔄 Perspectives on Python "Post-BDFL"
+
+Since 2019, Python has been governed by a five-person **Steering Council**. Community reflection on this transition falls into two camps: [link](https://www.youtube.com/watch?v=AKZ9GHtb0ms\&t=2)
+
+- **The Modernists:** Many developers feel Python is better than ever. The Steering Council is viewed as less conservative than Guido, allowing the language to evolve much faster. Major shifts—like making the Global Interpreter Lock (GIL) optional to drastically improve performance—are often cited as wins that happened because governance democratized. [link](https://news.ycombinator.com/item?id=43750379)
+- **The Traditionalists:** Some purists miss the "monarchy". They argue that deciding by committee has caused Python to lose its core philosophy (_"there should be one obvious way to do it"_). They point to highly debated additions like pattern matching and complex f-string changes as evidence that Python is becoming a bloated behemoth of redundant features. [link](https://news.ycombinator.com/item?id=17563524)
+
+Ultimately, the Python community views the BDFL era as a necessary phase that gave the language its soul, but widely agrees that stepping away from it was vital for Python’s long-term survival. [link](https://www.youtube.com/watch?v=AKZ9GHtb0ms\&t=2)
+
+Would you like to explore the specific fight over the **walrus operator** that caused Guido to step down, or look into how the current **Steering Council** handles Python Enhancement Proposals (PEPs)?
+
+- [link](https://news.ycombinator.com/item?id=17563524)\
+  Hacker News\
+  Python post-Guido\
+  Jul 19, 2018 — Each time you burn through one leader you have to pick a new one who might have a relatively different aesthetic sense or set of p...
+- [link](https://www.facebook.com/groups/selftaughtprogrammers/posts/648230825540655/)\
+  Facebook\
+  Guido VanRossum has stepped down as the BDFL of python ...\
+  He felt frustrated because ABC was powerful but too complex and rigid. without funding, without a team, Burnout after success Iron...
+- [link](https://opensource.stackexchange.com/questions/10088/what-are-the-benefits-of-having-a-benevolent-dictator-for-life-bdfl-on-oss)\
+  Open Source Stack Exchange\
+  What are the benefits of having a benevolent dictator for life ...\
+  A BDFL is highly invested in the project, typically the original creator. Their own name and professional reputation are often ins...
+
+Show all
+
+# what do ppl say on python bdfl
+
+On the Python **BDFL** (**Benevolent Dictator for Life**), people usually say one of two things: <mark>they are either explaining what the funny title means, or they are talking about<span> </span><strong><span><u><span><span><span tabindex="0" role="button"><span>Guido van Rossum</span></span></span></span></u></span></strong>, the creator of Python, who held the title for over 25 years</mark>. [link](https://en.wikipedia.org/wiki/Benevolent%5Fdictator%5Ffor%5Flife)
+
+Here is what people typically say and mean when the topic comes up:
+
+### 1. Explaining the Joke and the Role
+
+- **"It's a semi-humorous, tongue-in-cheek title."** People point out that despite the scary word "Dictator," the key word is _Benevolent_. It means the community trusts the creator to have the final say in arguments to keep the language's design consistent and prevent endless debate. [link](https://dustingram.com/talks/2019/04/04/the-walrus-operator/)
+- **"Leaving off the 'B'."** According to the famous [Hacker's Jargon File](http://www.catb.org/jargon/html/B/BDFL.html), if developers get temporarily angry or "cheesed off" by one of Guido's design decisions, they joke about dropping the "Benevolent" and just calling him the **DFL** (Dictator for Life). [link](http://www.catb.org/jargon/html/B/BDFL.html)
+
+### 2. Discussing Guido van Rossum's Abdication
+
+When people talk about Python's BDFL today, they almost always talk about how **Guido stepped down from the role in July 2018**. [link](https://www.reddit.com/r/learnpython/comments/90wp5h/how%5Fare%5Freleased%5Fof%5Fnew%5Fversions%5Fof%5Fpython/)
+
+- **"The Walrus Operator broke the camel's back."** People often mention [PEP 572](https://dustingram.com/talks/2019/04/04/the-walrus-operator/), a proposal that introduced assignment expressions (`:=`, known as the walrus operator). The online arguments and personal attacks over this feature became so toxic that Guido famously said, _"I don't ever want to have to fight so hard for a PEP and find that so many people despise my decisions."_ He gave himself a permanent vacation from the job. [link](https://www.i-programmer.info/news/216-python/11967-guido-van-rossum-quits-as-python-bdfl.html)
+- **"He held onto it for too long."** In later interviews, Guido himself reflected that he should have given up the central role sooner because the extreme stress of managing such a massive community was burning him out. [link](https://www.youtube.com/watch?v=AKZ9GHtb0ms\&t=2)
+
+### 3. Talking About Python's New Governance
+
+- **"Python is now run by a Council."** Because "BDFL" was a lifetime appointment specific to Guido, people now point out that Python doesn't have a dictator anymore. Instead, it is successfully governed by a democratically elected, 5-person **Steering Council** that votes on the language's future. [link](https://www.youtube.com/watch?v=AKZ9GHtb0ms\&t=2)
+
+Are you looking into the **history of Python's development**, trying to understand how **open-source project governance** works, or just curious about a **specific Python feature** (like the walrus operator) that caused the drama?
+
+- [link](https://dustingram.com/talks/2019/04/04/the-walrus-operator/)\
+  dustingram.com\
+  PEP 572: The Walrus Operator\
+  Apr 4, 2019 — "Dictator" meaning that he can do whatever he wants to the language, "benevolent" meaning that he's generally going to be looking ...
+- [link](https://lwn.net/Articles/759654/)\
+  LWN.net\
+  Guido van Rossum resigns as Python leader\
+  Jul 14, 2018 — Guido van Rossum has decided, in the wake of the difficult PEP 572 discussion, to step down from his leadership of the project.
+- [link](https://en.wikipedia.org/wiki/Benevolent%5Fdictator%5Ffor%5Flife)\
+  Wikipedia\
+  Benevolent dictator for life - Wikipedia\
+  Benevolent dictator for life (BDFL) is a tongue-in-cheek title for open-source software project leaders/founders retaining final d...
+
+Show all
+
+## what do ppl say
+
+When people talk broadly about the **Python language** itself, the conversation usually splits into massive praise for its ease of use, mixed with some standard developer complaints about its performance.
+
+Here is what people typically say: [link](https://www.youtube.com/watch?v=3OSiyI0yJQs)
+
+### 🚀 The Praise: Why People Love It
+
+- **"It reads like plain English."** Beginners and pros alike praise Python because it skips the complex symbols (like semicolons and curly braces) required by languages like C++ or Java. It uses indentation to structure code, making it incredibly clean and readable. [link](https://www.youtube.com/watch?v=mlTd1EPITBo\&t=357)
+- **"It's the language of AI and Data Science."** This is its biggest selling point. Virtually every major machine learning framework—like TensorFlow and PyTorch—is built for Python. People say if you want to work with data, automation, or artificial intelligence, Python is non-negotiable. [link](https://www.youtube.com/watch?v=Y8Tko2YC5hA)
+- **"Batteries included."** This is a famous community phrase. It means Python comes out of the box with an massive standard library of pre-written code, plus millions of third-party packages. If you want to do something, someone has already written a library for it. [link](https://gist.github.com/RobertAKARobin/a1cba47d62c009a378121398cc5477ea)
+
+### 🛑 The Criticism: What People Complain About
+
+- **"Python is slow."** Because Python is an interpreted, dynamically-typed language, it executes much slower than compiled languages like Rust or C++. People say you shouldn't use it for high-performance game engines or heavy low-level systems programming. [link](https://www.quora.com/Is-Python-a-good-language-to-learn-Most-people-say-it-is-just-a-glue-language)
+- **"It's just a 'glue' language."** Critics sometimes dismiss Python as a tool that just sticks other, faster programs together. (Proponents counter that being a great "glue" is exactly why it's so useful for fast prototyping). [link](https://www.quora.com/Is-Python-a-good-language-to-learn-Most-people-say-it-is-just-a-glue-language)
+- **"Environment management is a nightmare."** A common joke among developers is how easily Python's package managers (`pip`, `virtualenv`, `conda`) can break or conflict, leaving you with a messy setup on your computer. [link](https://gist.github.com/RobertAKARobin/a1cba47d62c009a378121398cc5477ea)
+
+### 🗣️ Fun Trivia: The Name & Pronunciation
+
+- **"It's named after Monty Python, not the snake."** People love pointing out this easter egg. Creator Guido van Rossum named it while reading scripts from the British comedy troupe _Monty Python’s Flying Circus_.
+- **"Is it Pie-thun or Pie-thon?"** In British English, you'll often hear a crisp "Pie-thon" (ending in an _on_ sound), while American English lean toward "Pie-thun" (using a softer _schwa_ sound). Both are perfectly correct! [link](https://www.quora.com/Is-the-name-of-the-Python-programming-language-pronounced-differently-to-the-word-for-the-snake-in-English)
+
+Are you considering **learning Python** as a beginner, comparing it to **another language** for a specific project, or trying to debug a frustrating **environment setup issue**?
+
+- [link](https://gist.github.com/RobertAKARobin/a1cba47d62c009a378121398cc5477ea)\
+  GitHub\
+  Python Is Not A Great Programming Language · GitHub\
+  Weaknesses: Forced indentation, dynamic typing, inconsistent/verbose features, 400 string interpolation methods, 69 top-level func...
+- [link](https://www.quora.com/Is-Python-a-good-language-to-learn-Most-people-say-it-is-just-a-glue-language)\
+  Quora\
+  Is Python a good language to learn? Most people say it is just ...\
+  Most people say it is just a glue language. \* There isn't 'a language after Python' - there is no rule or league table of language...
+- [link](https://www.youtube.com/watch?v=3OSiyI0yJQs)\
+  YouTube·Eric Roby\
+  Is Python REALLY Worth Learning in 2025?\
+  May 8, 2025 — Python isn't ideal for every task, such as building high-performance game engines or low-level system code requiring optimization ...\
+  6:37
+
+Show all
+
+# what do ppl say on python bdfl
+
+On the topic of Python's **BDFL** (**Benevolent Dictator For Life**), people are usually referring to <mark><strong><span><u><span><span><span tabindex="0" role="button"><span>Guido van Rossum</span></span></span></span></u></span></strong></mark>, the creator of Python, who held this title until he stepped down in July 2018. [link](https://realpython.com/ref/glossary/bdfl/)
+
+The phrase itself is a semi-humorous title given to open-source project founders who have the ultimate final say in technical design disputes. When developers use this term or talk about it in the context of Python, they typically say a few key things: [link](https://en.wikipedia.org/wiki/Benevolent%5Fdictator%5Ffor%5Flife)
+
+### 1. "WWGD" (What Would Guido Do?)
+
+For decades, when the Python core development team was deadlocked over a new feature or syntax change, the ultimate resolution was to let the BDFL decide. Developers often joked about trying to read Guido's mind, asking **"What Would Guido Do?"** to figure out if a proposal fit the "Zen of Python" (the language's core design philosophy). If Guido liked it, it became part of the language via a Python Enhancement Proposal (PEP). [link](https://dustingram.com/talks/2019/04/04/the-walrus-operator/)
+
+### 2. "People drop the 'B' when they're angry"
+
+According to the famous [Hacker Jargon File](http://www.catb.org/jargon/html/B/BDFL.html), an old community joke is that when developers are temporarily annoyed by one of Guido's executive decisions, they drop the "Benevolent" and just call him the **DFL (Dictator For Life)**. The community often contrasted this fierce-sounding title with Guido's actual mild-mannered, collaborative personality. [link](http://www.catb.org/jargon/html/B/BDFL.html)
+
+### 3. "The Walrus Operator broke the camel's back"
+
+When people talk about the end of the BDFL era, they always bring up **PEP 572**—the introduction of the "walrus operator" (`:=`). The debate over this feature became so toxic and full of personal attacks on Twitter and mailing lists that Guido decided he was tired of fighting. He famously wrote: _"I don't ever want to have to fight so hard for a PEP and find that so many people despise my decisions."_ [link](https://www.i-programmer.info/news/216-python/11967-guido-van-rossum-quits-as-python-bdfl.html)
+
+### 4. "The Steering Council replaced the Dictator"
+
+Since Guido stepped down as BDFL, the Python community now talks about the **Python Steering Council**. Instead of a single "dictator," the language's direction is now decided by a democratically elected five-person committee, a shift that most developers agree was necessary for Python to continue scaling. [link](https://www.youtube.com/watch?v=AKZ9GHtb0ms\&t=2)
+
+Are you researching the **history of open-source governance**, or are you trying to understand a specific **Python design decision** that the BDFL was involved in?
+
+- [link](https://dustingram.com/talks/2019/04/04/the-walrus-operator/)\
+  dustingram.com\
+  PEP 572: The Walrus Operator\
+  Apr 4, 2019 — The way that decisions are made within the Python language is with a PEP: a Python Enhancement Proposal.
+- [link](https://www.i-programmer.info/news/216-python/11967-guido-van-rossum-quits-as-python-bdfl.html)\
+  i-programmer.info\
+  Guido van Rossum Quits As Python BDFL\
+  Jul 12, 2018 — PEP 572 was a surprising proposal to modify Python in a fairly minor way, yet it stirred up emotions. Eventually the impasse was b...
+- [link](https://en.wikipedia.org/wiki/Benevolent%5Fdictator%5Ffor%5Flife)\
+  Wikipedia\
+  Benevolent dictator for life - Wikipedia\
+  Benevolent dictator for life (BDFL) is a tongue-in-cheek title for open-source software project leaders/founders retaining final d...
+
+Show all
+
+# what do ppl say on Guido van Rossum
+
+**Guido van Rossum is universally recognized as one of the most influential figures in modern computer science**, primarily praised for his creation of the **Python programming language**. Because he managed Python's development for decades as its **"Benevolent Dictator for Life" (BDFL)**, public opinion about him is massive, generally deeply respectful, but occasionally critical of his rigid design philosophies. [link](https://www.reddit.com/r/programming/comments/1l4lgj/interviews%5Fguido%5Fvan%5Frossum%5Fanswers/)
+
+Public sentiment surrounding Guido van Rossum falls into several key categories:
+
+### 1. High Praise for "Human-First" Engineering
+
+The tech community overwhelmingly respects Guido for prioritizing **human readability over machine efficiency**. Programmers frequently praise him for making coding accessible to billions. [link](https://blog.dropbox.com/topics/work-culture/-the-mind-at-work--guido-van-rossum-on-how-python-makes-thinking)
+
+- **The "Thinking in Code" Philosophy:** People love that Python allows developers to write code that looks like English. His insistence on using whitespace/indentation for code blocks—initially a controversial choice—is now celebrated for forcing everyone to write readable code. [link](https://www.reddit.com/r/Python/comments/z5cjum/guido%5Fvan%5Frossum%5Fpython%5Fand%5Fthe%5Ffuture%5Fof/)
+- **Humility and Grace:** Unlike some notoriously aggressive tech founders, Guido is widely regarded as a deeply humble, soft-spoken, and collaborative leader. In the community, it is well-remembered that he once self-deprecatingly rated his own Python coding skills as "at most a 6 out of 10," explaining that others in the ecosystem were far better developers than he was. [link](https://www.youtube.com/shorts/b1UKjA78N%5F4)
+
+### 2. Accidental Brilliance in the AI Era
+
+People often comment on how Guido’s 1989 "Christmas holiday side project" accidentally ended up powering the modern world. [link](https://ospo.gwu.edu/python-wasnt-built-day-origin-story-worth-knowing)
+
+- Industry experts note that Python wasn't originally designed for complex numerical data science or machine learning.
+- However, because Guido made the language so friendly to human cognition, **AI models and data scientists naturally gravitated toward it**. Today, the consensus is that Guido inadvertently built the bedrock for the entire global AI ecosystem (powering PyTorch, NumPy, and OpenAI systems) simply by focusing on simplicity.
+
+### 3. Community Critiques & "Guido-isms"
+
+While he is beloved, tech forums like Reddit's r/programming and Hacker News feature plenty of complaints from developers who disagree with his strict architectural choices. [link](https://www.reddit.com/r/programming/comments/1l4lgj/interviews%5Fguido%5Fvan%5Frossum%5Fanswers/)
+
+- **Stubborn Design Choices:** Some computer scientists argue that Guido could be overly stubborn. A famous example is his long-standing refusal to implement multi-line anonymous functions (lambdas) in Python, which frustrates functional programming purists. [link](https://www.reddit.com/r/programming/comments/1l4lgj/interviews%5Fguido%5Fvan%5Frossum%5Fanswers/)
+- **The Python 2 to 3 Migration:** For nearly a decade, the developer community heavily criticized the rough, backwards-incompatible transition from Python 2 to Python 3. While necessary for the language's survival, it caused massive frustration across the software industry. [link](https://www.reddit.com/r/ProgrammingLanguages/comments/z5eb7v/guido%5Fvan%5Frossum%5Fpython%5Fand%5Fthe%5Ffuture%5Fof/)
+- **The "Explicit Self" Annoyance:** Some object-oriented programmers express annoyance at having to explicitly pass `self` as the first argument in Python class methods, a foundational rule Guido stubbornly kept. [link](https://www.reddit.com/r/programming/comments/1l4lgj/interviews%5Fguido%5Fvan%5Frossum%5Fanswers/)
+
+### 4. Sympathy Around His Resignation
+
+In 2018, Guido abruptly stepped down from his BDFL role after a bitter community dispute over the syntax of "assignment expressions" (the walrus operator `:=`). The tech community widely sided with Guido during this time, expressing sadness and anger that internet toxicity and ungrateful complaints from the open-source community had burned out a tech pioneer. [link](https://www.youtube.com/watch?v=qxMcGDnT8uc)
+
+Today, his post-retirement work at companies like Dropbox and Microsoft to dramatically speed up Python's execution engine is met with widespread excitement and gratitude. [link](https://www.reddit.com/r/programming/comments/q21jnd/guido%5Fvan%5Frossum%5Fon%5Fimproving%5Fpythons%5Fperformance/)
+
+Are you interested in a specific aspect of his work, such as the **syntax debates** that led to his retirement, his views on **AI's impact on coding**, or how he **originally engineered Python**?
+
+- [link](https://www.reddit.com/r/Python/comments/z5cjum/guido%5Fvan%5Frossum%5Fpython%5Fand%5Fthe%5Ffuture%5Fof/)
+
+- [link](https://www.reddit.com/r/programming/comments/1l4lgj/interviews%5Fguido%5Fvan%5Frossum%5Fanswers/)
+
+- [link](https://blog.dropbox.com/topics/work-culture/-the-mind-at-work--guido-van-rossum-on-how-python-makes-thinking)
+
+- [link](https://www.reddit.com/r/Python/comments/z5cjum/guido%5Fvan%5Frossum%5Fpython%5Fand%5Fthe%5Ffuture%5Fof/)\
+  Reddit·Lex Fridman\
+  Guido van Rossum - Lex Fridman Podcast #341\
+  Nov 26, 2022 — Python uses indentation as a fundamental part of its syntax to define code blocks, making it unique compared to other languages th...\
+  [03:15:51](https://www.reddit.com/r/Python/comments/z5cjum/guido%5Fvan%5Frossum%5Fpython%5Fand%5Fthe%5Ffuture%5Fof/)
+
+- [link](https://www.youtube.com/watch?v=qxMcGDnT8uc)\
+  YouTube\
+  Guido van Rossum | Creator of Python\
+  May 4, 2019 — Swapnil Bhartiya, the founder of TFIR, sat down with Guido van Rossum, the creator of Python to talk about the origin of the langu...
+
+- [link](https://www.reddit.com/r/ProgrammingLanguages/comments/z5eb7v/guido%5Fvan%5Frossum%5Fpython%5Fand%5Fthe%5Ffuture%5Fof/)\
+  Reddit·Lex Fridman\
+  Guido van Rossum: Python and the Future of Programming\
+  Nov 26, 2022 — The video introduces a conversation with Guido van Rossum, the creator of Python, focusing on potential features of Python 4.0 and...\
+  [03:15:51](https://www.reddit.com/r/ProgrammingLanguages/comments/z5eb7v/guido%5Fvan%5Frossum%5Fpython%5Fand%5Fthe%5Ffuture%5Fof/)
+
+- [link](https://www.reddit.com/r/programming/comments/egj1dm/guido%5Fvan%5Frossum%5Fexits%5Fpython%5Fsteering%5Fcouncil/)\
+  Reddit\
+  Guido van Rossum exits Python Steering Council : r/programming\
+  Dec 28, 2019 — Guido van Rossum exits Python Steering Council : r/programming
+
+- [link](https://www.reddit.com/r/programming/comments/1l4lgj/interviews%5Fguido%5Fvan%5Frossum%5Fanswers/)\
+  Reddit\
+  Interviews: Guido van Rossum Answers : r/programming\
+  his answers to many of these PL questions reveal a stubborn ignorance. He doesn't want multi-line lambdas, so he invents a rationa...
+
+- [link](https://www.reddit.com/r/Python/comments/blvfkv/python%5Fcreator%5Fguido%5Fvan%5Frossum%5Fblames%5Fhis/)\
+  Reddit\
+  Python creator Guido van Rossum blames his resignation partly on ...\
+  May 8, 2019 — Guido van Rossum the founder of Python programming language explained very beautifully why does python exists in the World today.
+
+- [link](https://blog.dropbox.com/topics/work-culture/-the-mind-at-work--guido-van-rossum-on-how-python-makes-thinking)\
+  Dropbox\
+  The Mind at Work: Guido van Rossum on how Python makes ...\
+  Nov 25, 2019 — Guido van Rossum, the creator and retired BDFL of the Python programming language. And he's done it with a self-effacing grace and...
+
+- [link](https://developers.slashdot.org/story/13/08/25/2115204/interviews-guido-van-rossum-answers-your-questions)\
+  Slashdot\
+  Interviews: Guido van Rossum Answers Your Questions\
+  you end up writing most of a Python runtime in JavaScript, which slows things down too much. the conversion of popular libraries h...
+
+- [link](https://www.reddit.com/r/programming/comments/q21jnd/guido%5Fvan%5Frossum%5Fon%5Fimproving%5Fpythons%5Fperformance/)\
+  Reddit\
+  Guido van Rossum on improving Python's performance\
+  Oct 5, 2021 — Lua and Perl are a rung higher. Then Python and PHP. Then Ruby, JavaScript, etc, begin the "real" programming language category. I...
+
+- [link](https://news.ycombinator.com/item?id=25073556)\
+  Hacker News\
+  Wow, the replies to this actually saying Guido van Rossum ...\
+  Guido van Rossum should do an algorithm/DS leetcode interview. top notch "coders" as such. Linus has said something like "I'm not ...
+
+- [link](https://mischavandenburg.com/zet/guido-van-rossum-convinced-me-python-is-the-way/)\
+  Mischa van den Burg\
+  Guido van Rossum Convinced Me: Python Is The Way\
+  Dec 17, 2025 — AI models are trained to mimic human cognition. So when they generate code, they naturally gravitate toward languages that were de...
+
+- [link](https://www.youtube.com/shorts/b1UKjA78N%5F4)\
+  YouTube·Darcy DeClute\
+  Who is Guido van Rossum? #python #mojo #ai #ml #pytorch ...\
+  Sep 10, 2024 — Van Rossum served as Python's "benevolent dictator for life," overseeing its development until his resignation in 2018. He worked ...\
+  0:54
+
+- [link](https://ospo.gwu.edu/python-wasnt-built-day-origin-story-worth-knowing)\
+  The George Washington University\
+  Python Wasn't Built in a Day: An Origin Story Worth Knowing\
+  The usual story is that Guido van Rossum invented Python over his Christmas holiday in 1989. We see in the film that while he star...
+
+- [link](https://www.facebook.com/AssociationForComputingMachinery/videos/guido-van-rossum-reelmp4/1226734678824981/)\
+  Facebook·ACM - Association for Computing Machinery\
+  POV: You invented the programming language, Python. Happy ...\
+  Jan 31, 2026 — Python is a high-level, general-purpose language that prioritizes human readability over machine efficiency.\
+  [0:38](https://www.facebook.com/AssociationForComputingMachinery/videos/guido-van-rossum-reelmp4/1226734678824981/)
+
+- [link](https://en.wikipedia.org/wiki/Guido%5Fvan%5FRossum)\
+  Wikipedia\
+  Guido van Rossum\
+  Distinguished Engineer at Microsoft, Computer History Fellow. joined the Developer Division at Microsoft. it'll make using Python ...
+
+- [link](https://blakecrosley.com/blog/engineering-philosophy-guido-van-rossum)\
+  Blake Crosley\
+  Engineering Philosophy: Guido van Rossum, Readability Counts\
+  Jun 2, 2026 — One of Guido's key insights is that code is read much more often than it is written.” The guideline immediately cites PEP 20's “Re...
+
+- [link](https://www.facebook.com/groups/2600net/posts/4138969926326101/)\
+  Facebook\
+  Guido van Rossum's legacy in Python programming - Facebook\
+  Guido van Rossum, the inventor of the Python programming language. Guido's vision was to make programming accessible and efficient...
+
+- [link](https://www.azquotes.com/author/46455-Guido%5Fvan%5FRossum)\
+  A-Z Quotes\
+  TOP 13 QUOTES BY GUIDO VAN ROSSUM - A\
+  Don't you hate code that's not properly indented? Making it \[indenting] part of the syntax guarantees that all code is properly in...
+
+- [link](https://www.youtube.com/shorts/64MWfqh5UvQ)\
+  YouTube·WebKnower\
+  Guido van Rossum Explains Why Python Became So ...\
+  May 26, 2026 — Guido van Rossum first created Python, he did not expect it to be used for arrays of numbers. He considered arrays of numbers to b...\
+  0:17
+
+Show less
+
+# what do ppl say on Guido van Rossum bdfl
+
+When people discuss **Guido van Rossum** and his former title as the **BDFL (Benevolent Dictator for Life)** of [Python](https://en.wikipedia.org/wiki/Guido%5Fvan%5FRossum), the conversation usually revolves around a few key themes: respect for his leadership, the origins of the funny title, and the dramatic community burnout that led to his resignation. [link](https://talkpython.fm/episodes/show/170/guido-van-rossum-steps-down)
+
+Here is what people generally say and highlight about his time as BDFL:
+
+### 1. He Maintained Python’s Core Philosophy
+
+- **Consistency & Vision:** Programmers widely credit Guido's "dictatorship" with keeping Python clean, readable, and unified. Because he had the final veto, Python avoided becoming a cluttered "kitchen sink" language like C++. [link](https://www.youtube.com/watch?v=AKZ9GHtb0ms\&t=2)
+- **"Guido’s Thought Process":** Over three decades, the core development community grew so accustomed to his engineering philosophy that they could often accurately predict his decisions before he even made them. [link](https://www.youtube.com/watch?v=AKZ9GHtb0ms\&t=2)
+
+### 2. The Title Was a "Tongue-in-Cheek" Joke
+
+- **The Origin:** People often point out that the title wasn't meant to be taken literally. It was coined in **1995** at an early Python meeting.
+- **The Joke:** Fellow developers jokingly gave him the title "First Interim BDFL". The term stuck and eventually became a famous blueprint for leadership in other major open-source projects. [link](https://www.reddit.com/r/Python/comments/blvfkv/python%5Fcreator%5Fguido%5Fvan%5Frossum%5Fblames%5Fhis/)
+
+### 3. The "Walrus Operator" and Community Burnout
+
+When people talk about the _end_ of his BDFL status, the discussion shifts to community toxicity and burnout: [link](https://ospo.gwu.edu/python-wasnt-built-day-origin-story-worth-knowing)
+
+- **The Breaking Point:** In 2018, a massive, vitriolic debate erupted over **PEP 572** (the implementation of the "walrus operator" `:=`).
+- **The Resignation:** Exhausted by aggressive backlash on mailing lists and Twitter, Guido abruptly resigned. In his famous departure letter, he stated he was taking a "permanent vacation from being BDFL," adding, _"I don't ever want to have to fight so hard for a PEP and find that so many people despise my decisions."_ [link](https://www.reddit.com/r/Python/comments/8yapie/transfer%5Fof%5Fpower%5Fguido%5Fstepping%5Fdown%5Fas%5Fbdfl/)
+
+### 4. Post-BDFL Sympathy and Legacy
+
+- **Sympathy:** Many in the tech community express sadness and anger over how he was treated, viewing his departure as a cautionary tale about how open-source toxicity can cause severe burnout, even for legendary creators. [link](https://talkpython.fm/episodes/show/170/guido-van-rossum-steps-down)
+- **Hindsight:** Guido himself later reflected in interviews that he held onto the central BDFL role for too long and that the extreme stress wasn't healthy. [link](https://www.youtube.com/watch?v=AKZ9GHtb0ms\&t=2)
+- **Life After BDFL:** Today, people respect that the community successfully transitioned away from a single "dictator" to a five-person democratic **Steering Council**, allowing Guido to stay on as an ordinary developer who can focus purely on what he loves coding. [link](https://www.linuxjournal.com/content/guido-van-rossum-stepping-down-role-pythons-benevolent-dictator-life)
+
+Are you researching the history of **Python's governance**, or are you curious about how the **walrus operator debate** unfolded? I can share more details on either side.
+
+- [link](https://www.youtube.com/watch?v=AKZ9GHtb0ms\&t=2)\
+  YouTube·Lex Clips\
+  Guido van Rossum: I held on to BDFL position too long\
+  Nov 27, 2022 — The community learned his thought process and could predict his decisions, leading to a clear and steady path without abrupt chang...\
+  4m
+- [link](https://www.reddit.com/r/Python/comments/blvfkv/python%5Fcreator%5Fguido%5Fvan%5Frossum%5Fblames%5Fhis/)\
+  Reddit\
+  Python creator Guido van Rossum blames his resignation partly on ...\
+  May 7, 2019 — Should be "tongue in cheek", FYI. \* Guido van Rossum exits Python Steering Council r/programming • 7y ago Guido van Rossum exits P...
+- [link](https://www.reddit.com/r/Python/comments/1jowzs2/breaking%5Fnews%5Fguido%5Fvan%5Frossum%5Fback%5Fas%5Fpythons/)\
+  Reddit\
+  Guido van Rossum back as Python's Benevolent Dictator for Life ( ...\
+  Apr 1, 2025 — Python will end up looking like C++ and the kitchen sink it has become!! Interview with Python creator, and Benevolent Dictator fo...
+
+Show all
+
+# criticism on py bdfl
+
+The **Benevolent Dictator for Life (BDFL)** governance model, famously embodied by Python's creator **Guido van Rossum** for nearly three decades, has faced substantial criticism from open-source developers, governance experts, and even Van Rossum himself. [link](https://www.youtube.com/watch?v=AKZ9GHtb0ms\&t=2)
+
+While the model historically provided Python with a singular, clear vision and design consistency, it faced structural issues that ultimately culminated in Van Rossum abdicating his position in July 2018. [link](https://blakecrosley.com/blog/engineering-philosophy-guido-van-rossum)
+
+***
+
+### Core Criticisms of the Python BDFL Model
+
+- **The Single Point of Failure & Burnout Risk:** Entrusting final technical authority to a single person places an immense emotional and psychological burden on that individual. As Python exploded in popularity, the friction of resolving contentious community debates led directly to severe stress and burnout. [link](https://news.ycombinator.com/item?id=17563524)
+- **Potential for "Authoritarian" Features Against Community Will:** Under a BDFL setup, if the dictator supports a feature, it gets pushed into the language regardless of opposition. The breaking point for Python was **PEP 572** (the introduction of the assignment expression or "walrus operator" `:=`). Van Rossum approved it despite heavy pushback from core developers, creating severe community toxicity that convinced him to step down. [link](https://www.reddit.com/r/programming/comments/8yb4bo/guido%5Fstepping%5Fdown%5Fas%5Fbdfl%5Ffor%5Fpython/)
+- **The "For Life" Succession Nightmare:** BDFL models rarely feature robust or automated transition plans. When a dictator steps down abruptly without naming a successor, it leaves the community in a governance vacuum, threatening the long-term sustainability of critical software infrastructure. [link](https://opensource.com/article/18/7/bdfl)
+- **Susceptibility to Individual Bias:** A single leader can create systemic blind spots. For years, critics argued that Python lagged behind in runtime performance, concurrent parallelism (due to the [Global Interpreter Lock or GIL](https://peps.python.org/pep-8012/)), and robust functional programming tooling because those features were not personal priorities for the BDFL. [link](https://news.ycombinator.com/item?id=25071985)
+- **Inability to Scale with Ecosystem Diversity:** A BDFL can successfully manage a small language. However, as Python scaled into widely different niches (including data science, web development, DevOps, and embedded scripting), a single head could no longer holistically balance the competing requirements of all these disparate industries. [link](https://dev.to/ben/guido-van-rossum-steps-down-as-pythons-bdfl-thoughts-4nc3)
+
+### The Move to Committee Leadership
+
+Following Van Rossum’s departure, Python explicitly abandoned the BDFL philosophy. The core developers established a democratic **five-member Steering Council**. This committee-based approach—modeled on governance pipelines similar to Rust's RFC process—aims to distribute management loads, eliminate toxic bottlenecks, and provide a broader, less individualized roadmap for the language's future. [link](https://en.wikipedia.org/wiki/Benevolent%5Fdictator%5Ffor%5Flife)
+
+Would you like to explore:
+
+- How the **Python Steering Council** currently handles controversial feature proposals?
+
+- The specific arguments behind the **PEP 572 (walrus operator)** debate?
+
+- A comparison of how **other languages** (like Rust, Go, or Ruby) approach open-source governance?
+
+- [link](https://www.youtube.com/watch?v=AKZ9GHtb0ms\&t=2)\
+  YouTube·Lex Clips\
+  Guido van Rossum: I held on to BDFL position too long\
+  Nov 27, 2022 — The BDFL role provided the Python community with clarity of vision and a clear direction, as Rossum had specific ideas when he cre...\
+  4m
+
+- [link](https://www.reddit.com/r/programming/comments/8yb4bo/guido%5Fstepping%5Fdown%5Fas%5Fbdfl%5Ffor%5Fpython/)\
+  Reddit\
+  Guido stepping down as BDFL for Python : r/programming\
+  There is no such thing as "ramming it through" when you have a BDFL. If Guido wants it in, then it is in. Done. End of story. Stop...
+
+- [link](https://blakecrosley.com/blog/engineering-philosophy-guido-van-rossum)\
+  Blake Crosley\
+  Guido van Rossum, Readability Counts - Blake Crosley\
+  Jun 2, 2026 — He resigned on 12 July 2018, days after the contentious acceptance of PEP 572 … which he had pushed through against heavy oppositi...
+
+Show all
+
+# py walrus op
+
+The **walrus operator (`:=`)**, officially known as the **assignment expression operator**, is a feature introduced in **Python 3.8** that <mark>allows you to<span> </span><strong>assign a value to a variable inside an expression</strong></mark>. [link](https://www.mostlypython.com/remember-the-walrus-operator/)
+
+Normally, a standard assignment (`=`) is a statement and does not return anything. The walrus operator, however, **assigns the value and then immediately returns it**. It gets its nickname because the symbol looks like a walrus turned on its side. [link](https://docs.python.org/3/whatsnew/3.8.html)
+
+### 💡 Why use it?
+
+It prevents you from having to run the same function or calculation multiple times when you need to evaluate a condition _and_ use the resulting data right after. [link](https://realpython.com/python-walrus-operator/)
+
+***
+
+### 🛠️ Common Use Cases
+
+#### 1. In `if` Statements (Avoiding Redundant Calls)
+
+Without the walrus operator, you might call a function twice or create a temporary variable above the condition: [link](https://www.youtube.com/watch?v=e0vFRnEv16I)
+
+python
+
+```
+# Without walrus
+user_list = get_users_from_db()
+if len(user_list) > 10:
+    print(f"Too many users: {len(user_list)}")
+
+# With walrus (cleans up code and saves evaluation time)
+if (n := len(get_users_from_db())) > 10:
+    print(f"Too many users: {n}")
+```
+
+Use code with caution.
+
+#### 2. In `while` Loops (Streamlining Data Streams)
+
+Excellent for processing data chunks, lines from files, or user inputs until a termination value is met. [link](https://martinheinz.dev/blog/79)
+
+python
+
+```
+# Without walrus (The "loop-and-a-half" pattern)
+while True:
+    command = input("Enter command: ")
+    if command == "quit":
+        break
+    print(f"Executing {command}")
+
+# With walrus
+while (command := input("Enter command: ")) != "quit":
+    print(f"Executing {command}")
+```
+
+Use code with caution.
+
+#### 3. In List Comprehensions (Filtering and Reusing Values)
+
+You can reuse a value generated during the filtering process directly inside the element generation block. [link](https://docs.python.org/3/whatsnew/3.8.html)
+
+python
+
+```
+# Reuse the heavy calculation result 'value'
+results = [value for x in data if (value := heavy_calculation(x)) > 0]
+```
+
+Use code with caution.
+
+***
+
+### ⚠️ Syntactic Rules & Gotchas
+
+- **Parentheses are often required:** Because `:=` has a very low operator precedence, you usually need to wrap it in parentheses when using it inside comparisons or math expressions (e.g., `if (n := len(x)) > 0:`). [link](https://www.datacamp.com/tutorial/python-walrus-operator)
+- **No top-level unparenthesized assignments:** You cannot write `x := 5` on its own line like a regular variable assignment; Python will throw a syntax error. Use standard `=` instead. [link](https://peps.python.org/pep-0572/)
+- **Don't overuse it:** While it can optimize performance and compress code, overly complex assignment expressions can drastically hurt code readability. [link](https://www.mostlypython.com/remember-the-walrus-operator/)
+
+Would you like to see how to refactor a **specific piece of your code** using the walrus operator, or do you need help debugging a **SyntaxError** related to it?
+
+- [link](https://www.mostlypython.com/remember-the-walrus-operator/)\
+  Mostly Python\
+  Remember the walrus operator\
+  assigns a value to a variable and immediately returns that assigned value, unlike the standard assignment operator (\`=\`) which doe...
+- [link](https://docs.python.org/3/whatsnew/3.8.html)\
+  Python documentation\
+  What's New In Python 3.8 — Python 3.14.7 documentation\
+  same value again in the body of the loop: a value computed in a filtering condition is also needed in the expression body:
+- [link](https://realpython.com/python-walrus-operator/)\
+  Real Python\
+  The Walrus Operator: Python's Assignment Expressions\
+  The walrus operator is particularly useful when you want to avoid repetitive function calls or calculations. prevent unintended be...
+
+Show all
+
 # 
