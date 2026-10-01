@@ -331,13 +331,19 @@ body {
 
     .thumb {
       position: absolute;
+
+      background-color: khaki;
     }
   }
 
-  &:hover .track,
-  &[drag] .track {
+  /* it must be hovered when dragging, and thumb drag (active) style is different */
+  &:hover .track {
     opacity: 1;
   }
+  /* &:hover .track,
+  &[drag] .track {
+    opacity: 1;
+  } */
 
   .vertical_scrollbar {
     position: absolute;
