@@ -5292,4 +5292,8 @@ object params would solve it, at the cost of a bit boilerplate.
 
 nevermind.
 
+---
+
+maybe it could fade out if i hover and stay static for a while
+
 
