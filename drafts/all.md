@@ -424,6 +424,7 @@ desktop:
 - install anaconda
 - disable gnome shell crash screen
 - fix auto date time
+- kill malfunctioning process pid process name killall pkill
 
 android:
 
