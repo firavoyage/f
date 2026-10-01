@@ -243,6 +243,7 @@ archi:
 - code design patterns in fp
 - js monorepo
 - writing single double quote
+- popular pl
 
 web: <!-- frontend, web, ts/js -->
 
@@ -344,6 +345,7 @@ web: <!-- frontend, web, ts/js -->
 - web lib style
 - fix reference error react not defined
 - component scroll area
+- js stl math
 
 backend:
 
