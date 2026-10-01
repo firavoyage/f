@@ -1,7 +1,7 @@
 // everything from react and react-use is available
 // these are the ones you would actually use
 
-import { useEffect, useState, useRef, useCallback } from "react";
+import React, { useEffect, useLayoutEffect, useState, useRef, useCallback } from "react";
 import { useAsync, useAsyncFn, useMeasure, useToggle, useMount } from "react-use";
 import { use_keyboard } from 'lib/web/use keyboard'
 import { use_sync_theme } from 'lib/web/use sync theme'
@@ -38,6 +38,7 @@ export function use_measure(options?: Parameters<typeof useMeasure>) {
 type useRef = typeof useRef
 type useState = typeof useState
 type useEffect = typeof useEffect
+type useLayoutEffect = typeof useLayoutEffect
 type useToggle = typeof useToggle
 type useAsync = typeof useAsync
 type useAsyncFn = typeof useAsyncFn
@@ -53,6 +54,7 @@ declare global {
   var useRef: useRef
   var useState: useState
   var useEffect: useEffect
+  var useLayoutEffect: useLayoutEffect
   var useToggle: useToggle
   var useAsync: useAsync
   var useAsyncFn: useAsyncFn
