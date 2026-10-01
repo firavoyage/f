@@ -82,20 +82,11 @@ export function Scroll(props: scroll) {
     }
   })
 
-  useEffect(() => {
-    if (!is_dragging) return
+  // window can capture mouse up outside body
+  use_event('mousemove', mouse_move, window, { when: is_dragging })
+  use_event('mouseup', mouse_up, window, { when: is_dragging })
 
-
-    window.addEventListener("mousemove", handle_mouse_move)
-    window.addEventListener("mouseup", handle_mouse_up)
-    return () => {
-      window.removeEventListener("mousemove", handle_mouse_move)
-      window.removeEventListener("mouseup", handle_mouse_up)
-    }
-  }, [is_dragging])
-  use_event('mouseup')
-
-  function handle_mouse_down_v (e: React.MouseEvent) {
+  function handle_mouse_down_v(e: React.MouseEvent) {
     if (!content.current) return
     set_is_dragging(true)
 
@@ -107,7 +98,7 @@ export function Scroll(props: scroll) {
     // document.body.style.userSelect = "none"
   }
 
-  function handle_mouse_down_h (e: React.MouseEvent) {
+  function mouse_down_h(e: React.MouseEvent) {
     if (!content.current) return
     set_is_dragging(true)
 
@@ -119,7 +110,7 @@ export function Scroll(props: scroll) {
     // document.body.style.userSelect = "none"
   }
 
-  const handle_mouse_move = (e: MouseEvent) => {
+  function mouse_move(e: MouseEvent) {
     const view = content.current
     const { orientation, mouse_pos, scroll_pos } = drag_start.current
     if (!view) return
@@ -141,13 +132,13 @@ export function Scroll(props: scroll) {
     }
   }
 
-  const handle_mouse_up = () => {
+  function mouse_up() {
     set_is_dragging(false)
-    document.body.style.userSelect = ""
+    // document.body.style.userSelect = ""
   }
 
   return (
-    <div className="scroll" {...p(!scrollbar && { noscrollbar: true })}>
+    <div className="scroll" {...p({ noscrollbar: !scrollbar, drag: is_dragging })}>
       <div className="scroll_content" {...p({ ref: content })}>
         {children}
       </div>
@@ -161,7 +152,7 @@ export function Scroll(props: scroll) {
       {is_horizontally_scrollable && (
         <div className="horizontal_scrollbar">
           <div className="track" {...p({ ref: horizontal_track })}>
-            <div className="thumb" {...p({ ref: horizontal_thumb, onMouseDown: handle_mouse_down_h })}></div>
+            <div className="thumb" {...p({ ref: horizontal_thumb, onMouseDown: mouse_down_h })}></div>
           </div>
         </div>
       )}

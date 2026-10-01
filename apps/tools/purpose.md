@@ -5280,4 +5280,16 @@ you can just have 100% size for circle. maybe it's 95%.
 
 how can you type an object after "flatten"? quite hard.
 
+oct 2026
+
+01
+
+13 30 web/component: create custom scrollbar for scroll area. lib/web/use event: add `when` option.
+
+it might not work well when there are two unordered optional positional params.
+
+object params would solve it, at the cost of a bit boilerplate.
+
+nevermind.
+
 

@@ -336,14 +336,10 @@ body {
     }
   }
 
-  /* it must be hovered when dragging, and thumb drag (active) style is different */
-  &:hover .track {
-    opacity: 1;
-  }
-  /* &:hover .track,
+  &:hover .track,
   &[drag] .track {
     opacity: 1;
-  } */
+  }
 
   .vertical_scrollbar {
     position: absolute;
