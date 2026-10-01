@@ -425,6 +425,7 @@ desktop:
 - disable gnome shell crash screen
 - fix auto date time
 - kill malfunctioning process pid process name killall pkill
+- docker change port pvzge
 
 android:
 
