@@ -423,7 +423,7 @@ desktop:
 - flatpak local installation
 - install anaconda
 - disable gnome shell crash screen
-- 
+- fix auto date time
 
 android:
 
