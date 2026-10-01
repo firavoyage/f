@@ -24,7 +24,7 @@ one thing i would do is to centralize the commands if possible. i may hook short
 
 originally it's about an idea on styling. some new approaches. implementation does not really matter anyway. i have yet to validate them. i can write some prototype.
 
-and i want to launch them as normal apps. that is, i will create a systemd service (if compatible) to call a script, which will startup, monitor, and record a set of apps. also i may open the app on a generated free port via env vars, and modify caddyfile a bit so i can access easier.
+and i want to launch them as normal apps. that is, i will create a systemd service (if compatible) to call a script, which will startup, monitor, and record a set of apps. also i may open the app on a generated free port via env vars, and modify caddyfile a bit so i can access easier. <!-- f/autostart/source -->
 
 design system is never complete.
 
@@ -65,6 +65,5 @@ on scrollarea
 really, is it way too specific? "toggle_is_on_top".
 
 well anyway it's not a big deal. i was just too lazy to debounce.
-
 
 
