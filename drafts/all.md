@@ -555,6 +555,7 @@ ux: <!-- ui/ux design, ia -->
 - content design ux writing kde hig text and labels apple hig typography
 - checkbox switch feeling
 - select radio feeling
+- scroll spacebar instant jump smooth scroll continuous scroll full page scroll element based snapping
 
 typography:
 
