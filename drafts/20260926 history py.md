@@ -1209,6 +1209,8 @@ Would you like to see how the walrus operator behaves in **list comprehensions**
 
 Show less
 
+# 
+
 # what does Now is better than never. Although never is often better than right now. mean
 
 This quote comes from **The Zen of Python**, a set of 19 guiding principles for writing computer software. At its core, the line balances **taking action** with **avoiding rushed mistakes**. [link](https://peps.python.org/pep-0020/)
