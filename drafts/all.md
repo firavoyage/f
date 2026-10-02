@@ -840,6 +840,8 @@ history:
 - math provers
 - py
 - lcnc dev supply
+- ruby
+- r lang
 
 politics:
 
