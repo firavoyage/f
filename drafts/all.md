@@ -245,6 +245,7 @@ archi:
 - writing single double quote
 - popular pl
 - naming api endpoints design rest rpc
+- game engine business models premium foss
 
 web: <!-- frontend, web, ts/js -->
 
