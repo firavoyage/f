@@ -250,132 +250,230 @@ Are you checking these trends to **choose a new language to learn**, looking for
 
 Show all
 
-# why isnt ruby lang popular
+# history of popular programming languages on trending github repos
 
-The **Ruby programming language** is not as dominant today because <mark>it has shifted from a mainstream trendsetter into a<span> </span><strong>highly specialized niche</strong>, largely due to competition from<span> </span><strong>Python</strong>,<span> </span><strong>Node.js</strong>, and a industry-wide move toward<span> </span><strong>static typing</strong></mark>.
+## history of popular programming languages on trending github repos
 
-While it remains incredibly lucrative for senior engineers and powers massive web applications, several key technical and cultural shifts explain why it has fallen out of favor for new projects.
+The history of popular programming languages on trending GitHub repositories <mark>reveals how the open-source community adapts to massive industry shifts</mark>. While repository "stars" and "trending" pages fluctuate daily based on viral projects, GitHub's annual **State of the Octoverse** report tracks the definitive structural history of languages based on code contributions and repository creation. [link](https://github.blog/news-insights/octoverse/octoverse-2024/)
 
-***
-
-### 1. Python Outcompeted It in Non-Web Niches
-
-In the mid-2000s, Ruby and Python were battling for the same "dynamic, human-friendly scripting language" mindshare. Ruby leaned heavily into web development, while Python aggressively expanded into **data science, machine learning, and academia**. Python also provided better first-class support for Windows early on. As AI and data exploded, Python became a universal requirement, leaving Ruby behind in those fields. [link](https://www.reddit.com/r/cscareerquestions/comments/fbz2gb/what%5Fdid%5Fruby%5Fdo%5Fwrong%5Fto%5Fface%5Fa%5Fclear%5Fdecline%5Fin/)
-
-### 2. The Over-Reliance on "Ruby on Rails"
-
-Ruby’s massive initial boom was almost entirely driven by the popularity of Ruby on Rails, a framework that fundamentally changed web development with its "convention over configuration" approach. However, this created a scenario where Ruby became synonymous with Rails. If a developer wasn't building a traditional server-rendered web app, they rarely had a reason to choose Ruby over JavaScript, Go, or Python. [link](https://www.reddit.com/r/learnprogramming/comments/12n4lyx/why%5Fisnt%5Fruby%5Fmore%5Fpopular/)
-
-### 3. The Shift to JavaScript and Single Page Apps (SPAs)
-
-When Ruby was at its peak, server-side HTML rendering was the standard. The industry later shifted toward Client-Side Rendering with frameworks like **React, Vue, and Next.js**. Since developers were forced to use JavaScript/TypeScript on the frontend, many companies decided to use Node.js on the backend to keep their entire stack in one language, squeezing Rails out of newer startups. [link](https://news.ycombinator.com/item?id=18874029)
-
-### 4. The Rise of Static Typing and "Language Humility"
-
-In the 2000s, dynamic typing was loved because it allowed developers to move fast without writing verbose boilerplate code (like Java required at the time). Modern developers have largely shifted toward **statically typed, compiled languages** (like Go, Rust, and TypeScript) because they offer: [link](https://www.youtube.com/watch?v=6f1%5FSlJA2ZM)
-
-- **Better tooling:** Autocomplete, jump-to-definition, and safer refactoring.
-- **fewer production bugs:** Compilers catch errors before code ever runs, which is crucial for massive, distributed microservices.
-- Ruby introduced optional typing via Sorbet and RBS, but because they aren't native to the language core, adoption has been slow. [link](https://news.ycombinator.com/item?id=45023176)
-
-### 5. Legacy Perception of Performance Issues
-
-Early on, Ruby gained a reputation for being slow and heavy on memory usage (notably during Twitter's high-profile move away from Ruby to Scala in the early 2010s). While modern Ruby implementations (like Ruby 3.x and the YJIT compiler) have drastically closed the performance gap, the historic stereotype has stuck in the minds of tech architects. [link](https://news.ycombinator.com/item?id=34414207)
+Historically, GitHub’s charts were a stable battleground dominated by JavaScript. However, the explosive rise of **Generative AI** and **AI-assisted coding** completely upended that hierarchy. [link](https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/)
 
 ***
 
-### The Reality: Is Ruby Dead?
+### 🕒 Chronological History of GitHub's Top Languages
 
-**Absolutely not.** Ruby has transitioned into what developers call a "mature technology ecosystem". [link](https://techpreneurr.medium.com/the-ruby-hiring-crisis-why-nobody-wants-to-learn-ruby-anymore-b6de7c3988f3)
+#### 1. The Ruby and Java Era (2008–2013)
 
-| Metric            | The State of Ruby Today                                                                                                                                                       |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Market Share**  | Its server-side footprint has actually grown steadily over the last decade, powering roughly **6.9% of all websites**.                                                        |
-| **Major Backers** | Tech giants like Shopify, GitHub, Airbnb, Stripe, and Basecamp still scale heavily on Ruby.                                                                                   |
-| **Job Market**    | Because fewer bootcamps teach Ruby, there is a **junior scarcity vs. senior retention** dynamic, making experienced Ruby developers highly sought after and well-compensated. |
+When GitHub launched, **Ruby** was the king of trending repositories due to the massive popularity of the Ruby on Rails framework (which GitHub itself was built on). As GitHub grew more mainstream, enterprise giants like **Java** and **C++** caught up, and Ruby began a long, gradual decline in new repository creation. [link](https://ideaexchange.uakron.edu/cgi/viewcontent.cgi?article=3812\&context=honors%5Fresearch%5Fprojects)
 
-Are you asking out of curiosity about **industry trends**, or are you trying to decide if Ruby is **worth learning** for a specific project or career path? Let me know so I can tailor the advice!
+#### 2. The Absolute Dominance of JavaScript (2014–2023)
 
-- [link](https://www.reddit.com/r/learnprogramming/comments/12n4lyx/why%5Fisnt%5Fruby%5Fmore%5Fpopular/)
+For a decade, **JavaScript** held an unshakeable #1 spot on GitHub. The explosion of Node.js, frontend frameworks (React, Vue, Angular), and full-stack web application repositories meant that JavaScript code configurations dominated both the general trending pages and overall repository volume. [link](https://www.diva-portal.org/smash/get/diva2:1463849/FULLTEXT01.pdf)
 
-- [link](https://www.reddit.com/r/cscareerquestions/comments/fbz2gb/what%5Fdid%5Fruby%5Fdo%5Fwrong%5Fto%5Fface%5Fa%5Fclear%5Fdecline%5Fin/)
+#### 3. The AI Boom Dethrones JavaScript (2024)
 
-- [link](https://www.youtube.com/watch?v=6f1%5FSlJA2ZM)
+In 2024, a major shift occurred: **Python unseated JavaScript as the most-used language on GitHub**. Driven entirely by the generative AI revolution, data science workloads, and the reliance on tools like Jupyter Notebooks (+92% YoY growth), Python repositories dominated the trending page as developers rushed to build LLM wrappers, autonomous agents, and machine learning pipelines. [link](https://www.theregister.com/software/2024/11/05/githubs-most-used-language-isnt-javascript-anymore/1337119)
 
-- [link](https://www.reddit.com/r/learnprogramming/comments/12n4lyx/why%5Fisnt%5Fruby%5Fmore%5Fpopular/)\
-  Reddit·r/learnprogramming\
-  Why isn't Ruby more popular? : r/learnprogramming - Reddit\
-  Apr 15, 2023 — Ruby is more or less tied to Ruby on Rails. It got very popular a little over a decade ago because it was one of the first framewo...
+#### 4. The Rise of TypeScript & The "AI Convenience Loop" (2025–Present)
 
-- [link](https://news.ycombinator.com/item?id=43031238)\
-  Hacker News\
-  Is it? To me it seems like Ruby is declining \[1]. It's still popular ...\
-  My issue with Ruby (and Rails) has always been the "ball of mud" problem that I feel originates from its extensive use of syntacti...
+By late 2025, a new champion emerged: **TypeScript surpassed both Python and JavaScript to become the #1 language on GitHub** by contributor counts. [link](https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/)
 
-- [link](https://www.reddit.com/r/cscareerquestions/comments/fbz2gb/what%5Fdid%5Fruby%5Fdo%5Fwrong%5Fto%5Fface%5Fa%5Fclear%5Fdecline%5Fin/)\
+- **Why did it trend?** Engineering teams and AI coding assistants shifted heavily toward strongly typed languages. Types acts as an essential "safety net," making agent-assisted code generation far more reliable in production. [link](https://www.youtube.com/watch?v=4-u6dUg6IJk\&vl=en)
+- Today, a mere **six languages**—TypeScript, Python, JavaScript, Java, C++, and C#—account for **nearly 80% of all new repositories** created on the platform. [link](https://itsfoss.com/news/github-octoverse-2025/)
+
+***
+
+### 📊 Direct Comparison: How They Evolved
+
+| Era           | Top Language (Volume) | Typical Trending Repositories                                      | Core Driving Trend                                           |
+| ------------- | --------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------ |
+| **2008–2013** | **Ruby** / **Java**   | Early web frameworks, developer tooling libraries                  | Open-source adoption by early web startups                   |
+| **2014–2022** | **JavaScript**        | Frontend frameworks, full-stack web applications, Node.js packages | The undisputed rise of modern web development                |
+| **2023–2024** | **Python**            | LLM orchestration (LangChain), vector databases, RAG tools         | Generative AI, data science, and academic research           |
+| **2025–2026** | **TypeScript**        | AI agent frameworks, full-stack typed apps, production web systems | **AI-assisted coding** demanding static types to reduce bugs |
+
+***
+
+### 🚀 Hidden Trends: The Fast-Moving Underdogs
+
+While the top spots rarely change, the "Fastest Growing" categories on GitHub highlight where the engineering landscape is heading next:
+
+- **Infrastructure as Code (IaC):** Languages like **HCL (HashiCorp Configuration Language)** and **Shell** historically saw massive spikes (+56% growth in a single year) as cloud automation and DevOps pipelines matured. [link](https://octoverse.github.com/2022/top-programming-languages)
+- **System Safety:** **Rust** has continually climbed the ranks. Originally trending because of Web3/crypto hype, it has pivoted to stay trending due to its memory safety features, finding its way into core operating systems and high-performance AI runtimes. [link](https://www.reddit.com/r/cpp/comments/1ojwais/octoverse%5F2025%5Fgithub%5Fsurvey%5Fis%5Fout/)
+
+If you want to dive deeper, let me know:
+
+- Are you looking for the history of a **specific language** (like Rust or Go)?
+
+- Do you want to know what types of projects are **trending right now** on GitHub?
+
+- [link](https://github.blog/news-insights/octoverse/octoverse-2024/)\
+  The GitHub Blog\
+  Octoverse: AI leads Python to top language as the number of global developers surges - The GitHub Blog\
+  Oct 29, 2024 — TypeScript overtook Java last year to enter the top three programming languages on GitHub—and. Python becomes the most used langua...
+
+- [link](https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/)\
+  The GitHub Blog\
+  Octoverse: A new developer joins GitHub every second as AI leads ...\
+  Oct 28, 2025 — TypeScript is now the most used language on GitHub. In August 2025, TypeScript overtook both Python and JavaScript.
+
+- [link](https://www.diva-portal.org/smash/get/diva2:1463849/FULLTEXT01.pdf)\
+  DiVA portal\
+  The Most Popular Programming Languages of GitHub's Trending ...\
+  Jun 7, 2020 — They gathered the top 2 500 repos with the most stars
+
+Show all
+
+## why
+
+The structural shift in what trends on GitHub comes down to **how software is being built** and **who (or what) is writing the code.**
+
+When developers changed from building simple websites to building cloud infrastructure and AI models, the languages they used had to change, too. Here is exactly why the top languages shifted over time:
+
+***
+
+### 1. Why Python Overtook JavaScript (The AI Shift)
+
+Python didn't become the most popular language because it is the best for general software; it won because it became the **lingua franca of Artificial Intelligence**.
+
+- **The AI Monoculture:** Every major AI framework—TensorFlow, PyTorch, Hugging Face, LangChain, and OpenAI's API libraries—is written in or primarily supports Python.
+- **Low Barrier to Entry:** Data scientists, researchers, and academic professors (who aren't traditional software engineers) needed a simple language to write AI scripts. Python’s readable, English-like syntax made it the perfect fit.
+- **The "Wrapper" Explosion:** When ChatGPT launched, thousands of developers rushed to GitHub to build "AI wrappers" and autonomous agents. Because the APIs were easiest to call in Python, Python repositories flooded the trending pages.
+
+### 2. Why TypeScript Overtook Python (The AI Coding Assistant Shift)
+
+While Python is great for data science, **TypeScript became the absolute king of production code**, largely driven by the rise of AI coding assistants like GitHub Copilot, Cursor, and Windsurf.
+
+- **The "Safety Net" for AI Bots:** AI models are notorious for hallucinating or making small coding mistakes. If an AI writes pure JavaScript or Python, a tiny typo might not cause an error until the app actually runs. TypeScript uses **static typing** (strict rules for what data goes where). If an AI makes a mistake in TypeScript, the code editor flags it immediately _before_ running it. Developers switched to TypeScript so they could use AI to write code safely.
+- **The Evolution of the Web:** JavaScript is notoriously disorganized for massive projects. As web applications grew more complex, companies forced a migration to TypeScript because it scales incredibly well without breaking.
+
+### 3. Why Ruby and Java Faded from the Trending Pages
+
+- **Ruby's Specialization:** Ruby was popular because of one great framework (Ruby on Rails). When mobile apps and single-page web apps (like React) took over, Ruby didn't adapt well to handling those separate frontend and backend systems, so developers moved on.
+- **The Enterprise Shift:** Java is still massively popular in the corporate world, but enterprise companies rarely open-source their code on GitHub's trending pages. GitHub trends favor experimental, fast-moving, and community-driven projects, which Java historically lacks.
+
+***
+
+### 💡 Summary of the "Why"
+
+- **JavaScript** trended because we needed to build the **modern web**.
+- **Python** trended because we needed to build **AI models**.
+- **TypeScript** is trending right now because humans and AI bots need to build **stable, error-free applications together**.
+
+Would you like to explore **how AI coding assistants have changed developer habits**, or do you want to look at why a language like **Rust** is suddenly trending for performance?
+
+# (d) how does tiobe pl ranking work
+
+The **TIOBE Programming Community Index** ranks programming languages <mark>by tracking<span> </span><strong>the number of search engine results</strong><span> </span>generated for each language</mark>. Updated monthly by [TIOBE Software BV](https://www.tiobe.com/tiobe-index/), the index acts as an indicator of a language's **global popularity and "chatter,"** rather than its technical superiority or the absolute volume of code written in it. [link](https://www.tiobe.com/tiobe-index/programminglanguages%5Fdefinition/)
+
+Here is exactly how the calculation and ranking system works.
+
+### 1. Requirements for a Language to Qualify
+
+Before a language can even be counted, it must meet three specific criteria:
+
+- **Turing Completeness:** It must be a full programming language. This excludes data-interchange or markup formats like HTML, XML, and JSON.
+- **Wikipedia Entry:** The language must have its own dedicated page on Wikipedia explicitly stating that it is a programming language.
+- **Search Volume Minimum:** It must return at least 5,000 hits for the query term on Google. [link](https://www.dice.com/career-advice/tiobe-claims-google-scrambled-programming-language-rankings)
+
+### 2. The Search Query Method
+
+TIOBE counts search result hits globally using a highly specific search string:\
+`+"<language> programming"` [link](https://www.quora.com/Why-does-the-TIOBE-index-show-certain-programming-languages-as-more-popular-and-should-I-trust-it-when-deciding-what-to-learn)
+
+The search terms are aggregated across **25 of the highest-ranked search engines** and high-traffic websites determined by web analytics platforms like Similarweb. These include: [link](https://www.tiobe.com/tiobe-index/programminglanguages%5Fdefinition/)
+
+- Major search engines (Google, Bing, Yahoo!, Baidu)
+- Massive content and commerce platforms (Wikipedia, YouTube, Amazon) [link](https://www.tiobe.com/tiobe-index/)
+
+### 3. Calculating the Ratings
+
+Once the hits are retrieved for all eligible programming languages, TIOBE uses the following math to normalize the scores:
+
+1. **Calculate Individual Ratios:** For a specific search engine, a language's total hits are divided by the combined sum of hits for the top 50 languages on that engine.
+2. **Average Across Platforms:** The percentage scores from all 25 search engines are then averaged together for each language.
+3. **Final Score:** The resulting percentage represents that language's "market share" of total search volume. The language with the highest percentage takes the #1 spot.
+
+To ensure accuracy, TIOBE applies a manually calculated "confidence factor" to clean up false positives. For example, a search for _"Basic programming"_ might mistakenly return a page titled _"Improve your basic programming skills in Java"_; the confidence modifier helps filter those out.
+
+### Common Criticisms of the Index
+
+While widely cited, many developers and data scientists look at the TIOBE Index with skepticism due to inherent biases in its logic:
+
+- **Measures Struggle, Not Usage:** A language with highly verbose syntax or confusing error messages might force developers to Google solutions constantly, artificially inflating its ranking. [link](https://www.quora.com/Why-does-the-TIOBE-index-show-certain-programming-languages-as-more-popular-and-should-I-trust-it-when-deciding-what-to-learn)
+- **Legacy Footprint:** Older languages (like C or C++) have accumulated billions of indexed pages over decades, giving them a massive head start over modern, fast-growing alternatives. [link](https://www.quora.com/Why-does-the-TIOBE-index-show-certain-programming-languages-as-more-popular-and-should-I-trust-it-when-deciding-what-to-learn)
+- **Search Engine Fluctuations:** Because the index relies purely on "hit counts," anytime Google or Bing updates its search algorithms or cleans out spam, the TIOBE rankings can fluctuate wildly without any real-world change in software development. [link](https://www.reddit.com/r/Database/comments/e1en4h/the%5Fmost%5Fpopular%5Fprogramming%5Flanguages%5Ftiobe/)
+
+Would you like to compare TIOBE's approach to other popular benchmarks like the **PYPL Index**, **GitHub Octoverse**, or the **Stack Overflow Developer Survey**?
+
+- [link](https://www.tiobe.com/tiobe-index/programminglanguages%5Fdefinition/)\
+  TIOBE\
+  TIOBE Programming Community Index Definition\
+  There are 25 search engines that are used to calculate the TIOBE index. The selected search engines are the 25 highest ranked webs...
+- [link](https://www.tiobe.com/tiobe-index/)\
+  TIOBE\
+  TIOBE Index\
+  The TIOBE Programming Community index is an indicator of the popularity of programming languages. Popular web sites Google, Amazon...
+- [link](https://www.reddit.com/r/Python/comments/q5cnnk/guido%5Fvan%5Frossum%5Fhonored%5Fas%5Fpython%5Fbecomes%5F1%5Fmost/)\
+  Reddit·r/Python\
+  Guido van Rossum "honored" as Python becomes #1 most ...\
+  Oct 10, 2021 — Popular search engines such as Google, Bing, Yahoo!, Wikipedia, Amazon, YouTube and Baidu are used to calculate the ratings.
+
+Show all
+
+# (?) why is tiobe pl ranking flawed
+
+The **TIOBE Programming Community Index** is widely considered flawed because <mark><strong>it measures internet search engine results for specific phrases rather than actual code production, developer usage, or job market demand</strong></mark>. By relying almost entirely on counting web page hits that match the query `+"<language> programming"` across platforms like Google, Bing, and Amazon, the index introduces massive biases. [link](https://www.infoworld.com/article/4142618/ruby-sinking-in-popularity-buried-by-python-tiobe.html)
+
+The most glaring flaws in the TIOBE index methodology include:
+
+### 1. It Confuses "Talking" or "Learning" with "Using"
+
+TIOBE assumes that the volume of web pages discussing a language correlates directly to its popularity in production. [link](https://softwareengineering.stackexchange.com/questions/195786/why-is-c-so-high-in-tiobe-index-of-popularity-while-c-is-just-under-here-too)
+
+- **The Beginner Bias:** Languages heavily taught in schools or used by kids—such as **Scratch** or **MATLAB**—frequently rank higher than foundational, enterprise-grade languages like **Rust, TypeScript, or Kotlin**. This happens because students and beginners generate millions of basic search queries and tutorial pages. [link](https://medium.com/@ankushroy7/tiobe-is-trash-why-it-gets-more-credit-than-it-deserves-what-to-use-instead-afccc415b978)
+- **The Hype & Complexity Bias:** A complex or poorly documented language might generate a massive influx of troubleshooting threads, while a stable, deeply integrated language (like **Go**) might drop in the rankings simply because it has become stable, standardized, and "boring" enough that developers don't need to look up tutorials. [link](https://www.reddit.com/r/programming/comments/10f3057/is%5Ftiobe%5Findex%5Fmisinformation/)
+
+### 2. Flawed Search Syntax Requirements
+
+To be counted, a search must match the literal format of `+"<language> programming"`. This methodology completely breaks down based on how human beings naturally talk and search: [link](https://bulldogjob.com/readme/why-tiobe-index-is-flawed)
+
+- **Unnatural Queries:** Professional developers rarely search for _"JavaScript programming"_. Instead, they search for specific frameworks, tools, or errors (e.g., _"React state management"_ or _"TypeScript compile error"_), which TIOBE completely misses. [link](https://bulldogjob.com/readme/why-tiobe-index-is-flawed)
+- **Name Confounding:** Languages named after common words or people (like **Julia** or **Go**) require artificial search clarification compared to uniquely named languages, creating highly skewed result counts depending on how search engines parse the phrases. [link](https://juliahub.com/blog/thoughts-on-tiobes-language-ranking-methodology)
+
+### 3. Search Engine Volatility and Manipulation
+
+Search engines are constantly changing how they index pages, remove duplicates, or calculate the total count of search results. [link](https://www.reddit.com/r/programming/comments/we8kxc/please%5Fstop%5Fciting%5Ftiobe/)
+
+- **Wild Fluctuations:** Rankings can experience sudden, erratic spikes or drops month-over-month due to algorithmic updates in underlying search engines like Google or Baidu, rather than any actual change in language adoption.
+- **Community Gaming:** Small, dedicated user bases (such as the Delphi community) have historically organized campaigns to artificially inflate web page counts to intentionally manipulate their position on the TIOBE index. [link](https://www.youtube.com/watch?v=tzlRR6AMOv4)
+
+### 4. Legacy and Hoarding Bias
+
+Because it tallies the absolute historical existence of web pages, old languages that have been around for decades accumulate massive numbers of indexed pages and books. This is why outdated technologies or legacy languages like **Visual Basic** often sit absurdly high compared to modern languages powering the modern web and mobile application ecosystems. [link](https://discourse.julialang.org/t/tiobe-index-rank-20-as-of-august-2023-was-23-in-jan-2021/42730?page=3)
+
+### What to Look at Instead
+
+If you want to evaluate actual industry trends, experts recommend looking at data sources that track real development activity:
+
+- GitHub Octoverse / Pull Request data (Tracks code actually being pushed)
+- Stack Overflow Developer Survey (Tracks self-reported usage and developer sentiment)
+- PYPL Index (Tracks Google Trends for tutorial searches, avoiding the "total page count" flaw) [link](https://www.reddit.com/r/dotnet/comments/9aqd14/why%5Fis%5Fvisual%5Fbasic%5Fhigher%5Fthan%5Fc%5Fon%5Fthe%5Ftiobe/)
+
+Are you looking at the TIOBE index to **choose a language to learn**, or are you trying to gauge the **market demand for a specific language**? Let me know what your goal is, and I can point you toward the right data.
+
+- [link](https://bulldogjob.com/readme/why-tiobe-index-is-flawed)\
+  bulldogjob.com\
+  TIOBE index is flawed\
+  Basically the calculation comes down to counting hits for the search query +" programming" query may not translate into the actual...
+- [link](https://www.reddit.com/r/programming/comments/10f3057/is%5Ftiobe%5Findex%5Fmisinformation/)\
   Reddit\
-  What did Ruby do wrong to face a clear decline in it's popularity?\
-  Mar 1, 2020 — Ruby's popularity in the states was driven almost entirely by Rails. When the Rails hype died off, so did the interest in Ruby. Py...
-
-- [link](https://www.youtube.com/watch?v=6f1%5FSlJA2ZM)\
-  YouTube·Awesome\
-  The language behind billion dollar startups\
-  Jan 21, 2026 — The lack of strong typing was a deliberate trade-off to prioritize developer flow and speed, although tools like RBS and Sorbet of...\
-  11:43
-
-- [link](https://news.ycombinator.com/item?id=45023176)\
-  Hacker News\
-  Do I not like Ruby anymore? (2024)\
-  Aug 26, 2025 — I was forced to use Ruby and fell in love with it. a type-less language again. one can have autocompletion, typechecking, deep dat...
-
-- [link](https://news.ycombinator.com/item?id=18874029)\
-  Hacker News\
-  Ruby is the very least favorite of all the programming languages I've ...\
-  Ruby is the very least favorite of all the programming. Its syntax strongly favors cuteness over familiarity. Wherever Ruby can di...
-
-- [link](https://news.ycombinator.com/item?id=36175345)\
-  Hacker News\
-  Ask HN: Why Did Ruby Fall Out of Favour with Startups\
-  We are in a time where people prefer compiled, statically typed languages which contributes to Ruby losing its popularity, that's ...
-
-- [link](https://news.ycombinator.com/item?id=34414207)\
-  Hacker News\
-  For anyone thinking Ruby is dying or slow, it's not the reason people ...\
-  Ruby / Python is the fact that it's duck typed, it makes the maintenance and refactor pretty hazardous. no compile error but it wi...
-
-- [link](https://techpreneurr.medium.com/the-ruby-hiring-crisis-why-nobody-wants-to-learn-ruby-anymore-b6de7c3988f3)\
+  Is Tiobe Index misinformation? : r/programming - Reddit\
+  If you have an over-complicated new language with poor documentation and a lot of hype; you can have a lot of people talking about...
+- [link](https://medium.com/@ankushroy7/tiobe-is-trash-why-it-gets-more-credit-than-it-deserves-what-to-use-instead-afccc415b978)\
   Medium\
-  Medium\
-  Developers fleeing to React/Next.js and Python/Django due to career anxiety, ecosystem stagnation, and startup shifts toward serve...
+  TIOBE Is Trash: Why It Gets More Credit Than It Deserves ...\
+  Scratch has a huge presence in beginner programming education, meaning tons of kids, parents, and teachers are searching for “Scra...
 
-- [link](https://www.reddit.com/r/ruby/comments/rpn1te/high%5Ffunctionality%5Fbut%5Fdecreasing%5Fpopularity/)\
-  Reddit\
-  High functionality but decreasing popularity : r/ruby\
-  Dec 27, 2021 — For a decade Ruby was virtually synonymous with Rails. It was just the "complex" thing that Rails was built on to many, many peopl...
-
-- [link](https://daily.dev/posts/the-inevitable-demise-of-ruby-programming-j0mkngass)\
-  daily.dev·Stefan Mischook\
-  The Inevitable Demise of Ruby Programming\
-  Dec 2, 2025 — Having a codebase on Ruby on Rails makes it difficult to find programmers for maintenance and leads to unmaintained underlying tec...\
-  [4m](https://daily.dev/posts/the-inevitable-demise-of-ruby-programming-j0mkngass)
-
-- [link](https://www.youtube.com/watch?v=h9SGrCDD308\&t=145)\
-  YouTube·CodeSource\
-  The Untold Story of Ruby\
-  Dec 5, 2025 — As Ruby's visibility grew, it faced accusations from critics of being too slow, too loose, and too idealistic. before RubyGems bec...\
-  1m
-
-- [link](https://www.infoworld.com/article/4142618/ruby-sinking-in-popularity-buried-by-python-tiobe.html)\
-  InfoWorld\
-  Ruby sinking in popularity, buried by Python – Tiobe - InfoWorld\
-  Mar 9, 2026 — But the language has dropped to 30th place in this month's Tiobe index of language popularity, with Python cited as a reason for R...
-
-- [link](https://www.monterail.com/blog/is-ruby-on-rails-still-relevant)\
-  Monterail\
-  Is Ruby on Rails Still Relevant in 2026? The Business Case | Monterail blog\
-  Aug 28, 2026 — Ruby's server-side presence has grown from 0.9% of websites in 2015 to 6.9% in 2026, a more than sixfold increase (W3Techs).
-
-Show less
-
-
+Show all
 
