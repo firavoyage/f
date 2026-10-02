@@ -1,3 +1,75 @@
+# history of ruby lang
+
+The history of **Ruby** is a fascinating journey of a programming language designed not just to instruct machines, but to make human programmers happy. Created with the core philosophy of minimizing friction between thought and code, Ruby evolved from a passion project in Japan to the engine behind some of the world's largest digital platforms. [link](https://auth0.com/blog/a-brief-history-of-ruby/)
+
+***
+
+### 1. The Origin: "Born from a Lack of Choice" (1993–1995)
+
+In **February 1993**, Japanese computer scientist **Yukihiro Matsumoto** (affectionately known as **"Matz"**) began conceptualizing a new scripting language. Matz loved the text-processing capabilities and flexibility of Perl, but hated its confusing, "secret code" syntax. He also appreciated Python but felt it wasn't a "true" object-oriented language at the time. [link](https://en.wikipedia.org/wiki/Ruby%5F%28programming%5Flanguage%29)
+
+Matz set out to build a language that blended the best parts of **Perl, Smalltalk, Eiffel, Ada, and Lisp**. His goal was a language focused heavily on developer productivity and enjoyment. [link](https://en.wikipedia.org/wiki/Ruby%5F%28programming%5Flanguage%29)
+
+- **The Name:** Matz and his colleague Keiju Ishitsuka narrowed down names to _Coral_ and _Ruby_. They chose **Ruby** because it was a gemstone that followed the legacy of Perl (a play on "pearl") and was shorter by one letter.
+- **The First Release:** On **December 21, 1995**, Matz released **Ruby 0.95** to Japanese Usenet newsgroups. [link](https://www.britannica.com/technology/Ruby-programming-language)
+
+### 2. "Ruby Goes West" (1996–2003)
+
+For its first several years, Ruby was primarily a hidden gem within Japan. [link](https://www.ebsco.com/research-starters/computer-science/ruby-programming-language/)
+
+- **Ruby 1.0 (1996):** Released on Christmas Day, establishing the official baseline of the language.
+- **The "Pickaxe" Book (2000):** Ruby's explosion into the English-speaking world was catalyzed by Dave Thomas and Andy Hunt publishing **_Programming Ruby_**. Because it featured a pickaxe on the cover, it became known as the "Pickaxe Book," introducing Western developers to Ruby's elegant syntax.
+- By 2002, traffic on the English-language Ruby mailing list surpassed the original Japanese list. [link](https://twobithistory.org/2017/11/19/the-ruby-story.html)
+
+### 3. The Rails Boom & Mass Acceptance (2004–2010)
+
+While Ruby was respected for its beauty, it was not yet a mainstream enterprise language. That changed entirely with the creation of **Ruby on Rails**. [link](https://twobithistory.org/2017/11/19/the-ruby-story.html)
+
+- **The Framework:** In 2004, Danish developer **David Heinemeier Hansson (DHH)** extracted a web framework he had built while creating the project management tool Basecamp. He released it as an open-source framework called **Ruby on Rails**. [link](https://medium.com/the-renaissance-developer/learning-ruby-from-zero-to-hero-2cf06da45396)
+- **The Metaprogramming Revolution:** Rails capitalized on Ruby’s powerful dynamic features and metaprogramming, introducing philosophies like _Convention over Configuration_ (CoC) and _Don't Repeat Yourself_ (DRY). Suddenly, complex web apps that took weeks to build in Java or PHP could be spun up in days. [link](https://www.sitepoint.com/history-ruby/)
+- **The Apple Push (2006/2007):** In 2006, Apple announced that macOS would ship with Ruby on Rails pre-installed. By 2007, Ruby achieved a spot in the **TIOBE Top 10** most popular programming languages, launching the era of Web 2.0 startups. Giants like **GitHub, Airbnb, Shopify, early Twitter, and SoundCloud** were entirely birthed on Ruby. [link](https://auth0.com/blog/a-brief-history-of-ruby/)
+
+### 4. Growing Pains & Architectural Shifts (2011–2019)
+
+With massive scale came engineering bottlenecks. Ruby faced sharp criticism for its execution speed, memory footprint, and high-traffic performance. [link](https://gamma.app/docs/Ruby-A-Language-of-Balance-dkhxpwq8dme8caw)
+
+- **The 1.9 Transition:** The community experienced a painful fracturing during the transition to Ruby 1.9, which introduced major changes (like modern string encoding handling) that broke older libraries. [link](https://www.youtube.com/watch?v=h9SGrCDD308\&t=12)
+- **Ruby 2.0 (2013):** This landmark release restored stability, optimized keyword arguments, improved the garbage collector, and paved the way for massive performance overhauls. Alternate implementations also gained popularity, like **JRuby** (running Ruby on the Java Virtual Machine) and **TruffleRuby**. [link](https://maori.geek.nz/posts/2014/2014-03-03%5Fwhat-is-ruby-it-is-fun-and-makes-you-happy/)
+
+### 5. Modern Ruby: The Speed & Typings Era (2020–Present)
+
+Facing heavy competition from languages like Node.js, Python, and Go, the Ruby core team shifted their primary focus to **performance and modern architecture**. [link](https://www.britannica.com/technology/Ruby-programming-language)
+
+- **Ruby 3.0 & "Ruby 3x3" (2020):** Matz set a goal called "Ruby 3x3"—to make Ruby 3.0 **three times faster** than Ruby 2.0. They achieved this by introducing Just-In-Time (JIT) compilation (including **YJIT**, heavily backed by Shopify) and **Ractors** for safe, concurrent parallelism. It also introduced **RBS**, an official tool for optional static typing.
+- **Ruby 4.0 (2026):** Moving forward, Ruby remains a powerhouse for e-commerce and SaaS ecosystems. The modern framework focuses on sandboxed code loading (`Ruby::Box`), sophisticated isolated scopes, and continuing the foundational pledge Matz made over three decades ago: optimizing code for **human happiness** over machine convenience. [link](https://en.wikipedia.org/wiki/Ruby%5F%28programming%5Flanguage%29)
+
+***
+
+Would you like to explore a specific aspect of Ruby's history? I can provide details on:
+
+- The **exact technical differences** between Ruby and Python
+
+- How **YJIT or Ractors** solved Ruby's historic speed limitations
+
+- A breakdown of **how Ruby on Rails works**
+
+- [link](https://en.wikipedia.org/wiki/Ruby%5F%28programming%5Flanguage%29)\
+  Wikipedia\
+  Ruby (programming language) - Wikipedia\
+  Ruby is a general-purpose programming language. Development of the language began in the mid-1990s by Yukihiro "Matz" Matsumoto in...
+
+- [link](https://www.ruby-lang.org/en/about/)\
+  Ruby Programming Language\
+  About Ruby\
+  Recalling his search, he said, “I wanted a scripting language that was more powerful than Perl, and more object-oriented than Pyth...
+
+- [link](https://auth0.com/blog/a-brief-history-of-ruby/)\
+  Auth0\
+  A Brief History of Ruby\
+  Created in Feb 1993 by Yukihiro Matsumoto (Matz); 2.4 million developers by end of 2022. Ractors parallelism; RBS and Typeprof sta...
+
+Show all
+
 # why isnt ruby lang popular
 
 The **Ruby programming language** is not as dominant today because <mark>it has shifted from a mainstream trendsetter into a<span> </span><strong>highly specialized niche</strong>, largely due to competition from<span> </span><strong>Python</strong>,<span> </span><strong>Node.js</strong>, and a industry-wide move toward<span> </span><strong>static typing</strong></mark>.
