@@ -431,6 +431,7 @@ desktop:
 - fix auto date time
 - kill malfunctioning process pid process name killall pkill
 - docker change port pvzge
+- usb types
 
 android:
 
