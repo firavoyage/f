@@ -55179,7 +55179,7 @@ oct 2026
 
 01
 
-00 30 play pvzge.
+00 30 play pvzge. <!-- inspired by nickel angel -->
 
 docker one liner works out of the box. great work! <!-- could have more options. like one liner after github clone, which is vastly superior to docker (dockerhub vendor lockin). and npm, if possible. -->
 
