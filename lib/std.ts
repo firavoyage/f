@@ -91,18 +91,23 @@ export function merge(target: object, ...sources: object[]) {
 }
 
 // for some reason, ts sees constructures as Function, not any to any fn
-type variable_type = 'nil' | 'array' | "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" | Function
+type variable_type = 'nil' | 'array' | "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" | Function |
+  'numeric' | 'iterable'
 // type variable_type = 'nil' | 'array' | "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" | fn
 
-export function is(variable: any, type: variable_type) {
-  if (variable === nil) {
+export function is(v: any, type: variable_type) {
+  if (v === nil) {
     return type === nil || type == 'nil'
-  } else if (Array.isArray(variable)) {
+  } else if (Array.isArray(v)) {
     return type == 'array'
+  } else if (type == 'numeric') {
+    return is(v, 'number') || is(v, 'bigint')
+  } else if (type == 'iterable') {
+    return is(v[Symbol.iterator], 'function')
   } else if (typeof type == 'function') {
-    return variable instanceof type
+    return v instanceof type
   } else {
-    return typeof variable == type
+    return typeof v == type
   }
 }
 
