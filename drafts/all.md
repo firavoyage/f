@@ -247,6 +247,7 @@ archi:
 - popular pl
 - naming api endpoints design rest rpc
 - game engine business models premium foss
+- naming plural s suffix in abbreviation
 
 web: <!-- frontend, web, ts/js -->
 
@@ -587,6 +588,9 @@ linguistics: <!-- grammar, etymology -->
 - name breadcrumb nav
 - copular clauses with a number mismatch
 - name headquarters etymology plural
+- top languages
+- stop words
+- spanish info
 
 literature:
 

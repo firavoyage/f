@@ -8,6 +8,20 @@ create project para
 
 index and browser knowledge base, read markdown structured books
 
+---
+
+copy: refactor and simplify codebase
+
+the generate js blobs are messy and unreadable
+
+it's simple. you should be able to modify wo llms.
+
+i may have a postprocessor to strip all inline citations (politics driven) and specific text like "ai can make mistakes" "use code w caution" (business driven). no idea if para should take the resp, as it cant be bad to have more information.
+
+i may write it in code.
+
+i may compile it as userscript
+
 # backlog
 
 <!--
@@ -814,14 +828,3 @@ nice to have.
 
 ---
 
-copy: refactor and simplify codebase
-
-the generate js blobs are messy and unreadable
-
-it's simple. you should be able to modify wo llms.
-
-i may have a postprocessor to strip all inline citations (politics driven) and specific text like "ai can make mistakes" "use code w caution" (business driven). no idea if para should take the resp, as it cant be bad to have more information.
-
-i may write it in code.
-
-i may compile it as userscript
