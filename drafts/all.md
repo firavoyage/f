@@ -751,6 +751,7 @@ math:
 - decidability wo provability
 - limit infinitesimal order
 - limit trigonometric identities lhopital taylor series
+- stats error fn
 
 physics:
 
