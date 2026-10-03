@@ -55212,9 +55212,15 @@ use snake case generally.
 
 use lowercase on comments explaining _why_. you may use title case if it's about _what_ or _where_. <!-- yeah, what and why overlap. you can think in terms of length. -->
 
-use singular if it's meant to be referenced as path in code. you may use
+use singular if it's meant to be referenced as path in code. you may use plural for iterables and docs.
 
 never use upper case.
+
+for fn, use verb (or verb noun complement iff needed) describing <!-- indicating --> its operations (e.g. print, add, square) or noun/adjective describing its result (e.g. max, abs, sum). use predicate for bools.
+
+you should not prefix `create` or suffix `factory` for pure wrappers, like `date` or `path`.
+
+single word fn/param names are preferred.
 
 
 
