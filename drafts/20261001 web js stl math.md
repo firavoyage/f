@@ -2915,4 +2915,3 @@ Use code with caution.
 
 Would you like to see how to safely subclass `Object` to create a **custom, loopable Data Structure**, or are you interested in how **modern meta-programming tools like `Proxy`** can safely intercept object loops?
 
-# 
