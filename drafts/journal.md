@@ -55202,6 +55202,20 @@ seems it's serverless.
 
 22 50 change the port of pvz to 9000. learn docker commands. modify the exported player file to unlock all worlds.
 
+03
+
+12 10 think.
+
+on naming,
+
+use snake case generally.
+
+use lowercase on comments explaining _why_. you may use title case if it's about _what_ or _where_. <!-- yeah, what and why overlap. you can think in terms of length. -->
+
+use singular if it's meant to be referenced as path in code. you may use
+
+never use upper case.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
