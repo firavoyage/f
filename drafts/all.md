@@ -142,6 +142,7 @@ life:
 - university cs future in ai era
 - university cs sicp
 - phone battery capping
+- metro rushing station platform train door lights timeline
 
 create something:
 
