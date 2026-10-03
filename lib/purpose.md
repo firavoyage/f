@@ -32,4 +32,14 @@ let's introduce some fp methods to std.
 
 some of them are already available via array prototype, but i dont like that.
 
+04
+
+yeah, file. shell.
+
+work as if you ctrl alt t.
+
+i build what i need.
+
+components of a design system. maybe like adw. just to specify.
+
 
