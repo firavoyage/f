@@ -847,6 +847,7 @@ history:
 - lcnc dev supply
 - ruby
 - r lang
+- cpp stl
 
 politics:
 
