@@ -22,4 +22,14 @@ well, seems it would be merely polymorphism on min and max.
 
 std math fn doesnt feel flawed.
 
+---
+
+std::is: support iterable and numeric.
+
+---
+
+let's introduce some fp methods to std.
+
+some of them are already available via array prototype, but i dont like that.
+
 
