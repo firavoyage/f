@@ -18,6 +18,7 @@ export function max(...args) {
     return max(args)
   } 
 }
+
 export function min(...args) {
   if (args.length == 2 && is(args[0], 'numeric') && is(args[1], 'function')) {
     const [array, fn] = args
