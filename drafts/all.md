@@ -355,6 +355,7 @@ web: <!-- frontend, web, ts/js -->
 - lib ruby builtins
 - lib fp utils
 - lib file shell
+- js async await patterns force async to sync
 
 backend:
 
