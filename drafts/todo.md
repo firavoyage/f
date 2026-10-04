@@ -4,6 +4,10 @@
 
 # todo
 
+create project files
+
+---
+
 create project para
 
 index and browser knowledge base, read markdown structured books
@@ -832,3 +836,5 @@ nice to have.
 
 ---
 
+- (code?, repo, have, humility, pure, ...)
+- (material, para, ...)

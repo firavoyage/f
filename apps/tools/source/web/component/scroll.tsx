@@ -1,4 +1,4 @@
-import { useEvent, useScroll } from "react-use"
+import { useEvent, useMeasure, useScroll } from "react-use"
 
 const { max } = Math
 
@@ -18,12 +18,13 @@ export function Scroll(props: scroll) {
   const [is_vertically_scrollable, toggle_is_vertically_scrollable] = useToggle(false)
   const [is_horizontally_scrollable, toggle_is_horizontally_scrollable] = useToggle(false)
 
+  const [container] = useMeasure()
   const content = useRef()
   const vertical_track = useRef()
   const vertical_thumb = useRef()
   const horizontal_track = useRef()
   const horizontal_thumb = useRef()
-
+  
   const [is_dragging, set_is_dragging] = useState(false)
   const drag_start = useRef({ mouse_pos: 0, scroll_pos: 0, orientation: "" as "v" | "h" | "" })
 
@@ -138,7 +139,7 @@ export function Scroll(props: scroll) {
   }
 
   return (
-    <div className="scroll" {...p({ noscrollbar: !scrollbar, drag: is_dragging })}>
+    <div className="scroll" {...p({ noscrollbar: !scrollbar, drag: is_dragging, ref: container })}>
       <div className="scroll_content" {...p({ ref: content })}>
         {children}
       </div>

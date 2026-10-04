@@ -91,19 +91,81 @@ export function merge(target: object, ...sources: object[]) {
 }
 
 // for some reason, ts sees constructures as Function, not any to any fn
-type variable_type = 'nil' | 'array' | "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" | Function
+type variable_type = 'nil' | 'array' | "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" | Function |
+  'numeric' | 'iterable'
 // type variable_type = 'nil' | 'array' | "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" | fn
 
-export function is(variable: any, type: variable_type) {
-  if (variable === nil) {
-    return type === nil || type == 'nil'
-  } else if (Array.isArray(variable)) {
+export function is(v: any, type: variable_type) {
+  if (v === nil) {
+    return type == 'nil' || type === nil
+  } else if (type == 'nil') {
+    return v === nil || Number.isNaN(v)
+  } else if (Array.isArray(v)) {
     return type == 'array'
+  } else if (type == 'numeric') {
+    return is(v, 'number') || is(v, 'bigint')
+  } else if (type == 'iterable') {
+    return is(v[Symbol.iterator], 'function')
   } else if (typeof type == 'function') {
-    return variable instanceof type
+    return v instanceof type
   } else {
-    return typeof variable == type
+    return typeof v == type
   }
+}
+
+// numeric
+export function num(n) {
+  const result = Number(n)
+  if (Number.isNaN(result)) {
+    return nil
+  }
+
+  return result
+}
+
+export function int(n) {
+  const result = parseInt(n)
+  if (Number.isNaN(result)) {
+    return nil
+  }
+
+  return result
+}
+
+export function float(n) {
+  const result = parseFloat(n)
+  if (Number.isNaN(result)) {
+    return nil
+  }
+
+  return result
+}
+
+export function bool(v) {
+  return Boolean(v)
+}
+
+export function str(s) {
+  return String(s)
+}
+
+export function list(v) {
+  return Array.from(v)
+}
+
+export function set(v) {
+  return new Set(v)
+}
+
+export function dict(v) {
+  if (!is(v, 'iterable')) {
+    v = entries(v)    
+  }
+  // if (is(v, 'object')) {
+  //   v = entries(v)    
+  // }
+
+  return new Map(v)
 }
 
 type nil = typeof nil
@@ -113,6 +175,14 @@ type has = typeof has
 type entries_fn = typeof entries
 type merge = typeof merge
 type is = typeof is
+type num = typeof num
+type int = typeof int
+type float = typeof float
+type bool = typeof bool
+type str = typeof str
+type list = typeof list
+type set = typeof set
+type dict = typeof dict
 declare global {
   var nil: nil
   var variable: variable
@@ -121,5 +191,12 @@ declare global {
   var entries: entries_fn
   var merge: merge
   var is: is
+  var num: num
+  var int: int
+  var float: float
+  var bool: bool
+  var str: str
+  var list: list
+  var set: set
+  var dict: dict
 }
-

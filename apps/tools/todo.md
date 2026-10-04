@@ -1,12 +1,6 @@
 # plan
 
-- create command palette, preferences, keyboard shortcuts
-  - make every button usable 
-- customize scroll area
 - prettier (default?)
-- visualize obj/table?
-- (code?, repo, have, humility, pure, ...)
-- (material, para, ...)
 
 ref
 
