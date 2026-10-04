@@ -1032,6 +1032,7 @@ code:
 - syntax spec
 - lsp
 - pl design ruby oop module class object method lookup hierarchy
+- keyword params unordered object params default values
 
 humility:
 
