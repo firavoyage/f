@@ -1029,6 +1029,7 @@ code:
 - type system
 - syntax spec
 - lsp
+- pl design ruby oop module class object method lookup hierarchy
 
 humility:
 
