@@ -1,3 +1,134 @@
+# all py builtin non imported methods
+
+## all py builtin non imported methods
+
+Python has a total of **71 built-in functions and types** available in the global namespace. These can be called directly **without importing any module**. [link](https://www.youtube.com/watch?v=7Qu%5FKXc7xSI)
+
+The complete, categorized list of these non-imported functions and types is broken down below: [link](https://realpython.com/python-built-in-functions/)
+
+### 🧮 Math & Data Aggregation
+
+- `abs(x)`: Returns the absolute value of a number.
+- `divmod(a, b)`: Returns a tuple containing the quotient and remainder of a division.
+- `max(iterable)`: Returns the largest item in an iterable or among multiple arguments.
+- `min(iterable)`: Returns the smallest item in an iterable or among multiple arguments.
+- `pow(base, exp)`: Returns the value of base raised to the power of exp.
+- `round(num)`: Rounds a floating-point number to a specified number of decimals.
+- `sum(iterable)`: Sums up all the items of an iterable. [link](https://www.youtube.com/watch?v=MO7rBLsH3oM\&t=13)
+
+### 🔄 Type Conversions & Constructors
+
+- `bool(x)`: Converts a value to a Boolean (`True` or `False`).
+- `bytearray(x)`: Returns a new mutable array of bytes.
+- `bytes(x)`: Returns a new immutable bytes object.
+- `complex(r, i)`: Creates a complex number.
+- `dict(x)`: Creates a new dictionary.
+- `float(x)`: Converts a string or number to a floating-point number.
+- `frozenset(x)`: Returns an immutable collection of unique elements.
+- `int(x)`: Converts a string or number into an integer.
+- `list(x)`: Creates a mutable sequence list.
+- `object()`: Returns a featureless object which is the base for all classes.
+- `set(x)`: Creates a mutable collection of unique elements.
+- `str(x)`: Converts an object into its string representation.
+- `tuple(x)`: Creates an immutable sequence tuple.
+- `type(object)`: Returns the type of an object or creates a new type object. [link](https://www.youtube.com/watch?v=ZysTNS0YOrY\&t=13)
+
+### 🧵 Iterables & Sequences
+
+- `all(iterable)`: Returns `True` if all elements in an iterable are truthy.
+- `any(iterable)`: Returns `True` if any element in an iterable is truthy.
+- `enumerate(iterable)`: Combines an iterable with a counter tracking the loop index.
+- `filter(func, iter)`: Filters out elements from an iterable based on a function.
+- `iter(object)`: Returns an iterator object for a collection.
+- `len(object)`: Returns the number of items (length) in an object.
+- `map(func, iter)`: Applies a function to all items in an input iterable.
+- `next(iterator)`: Retrieves the next item from an iterator.
+- `range(stop)`: Generates an immutable sequence of numbers.
+- `reversed(seq)`: Returns a reverse iterator over a sequence.
+- `slice(stop)`: Creates a slice object representing a set of indices.
+- `sorted(iterable)`: Returns a new sorted list from the items in any iterable.
+- `zip(*iterables)`: Aggregates elements from multiple iterables into tuples. [link](https://www.youtube.com/watch?v=ho24rK%5FAYrQ)
+
+### 💻 Input, Output & Files
+
+- `input(prompt)`: Prompts the user for input and reads it as a string.
+- `open(file)`: Opens a file and returns a corresponding file object.
+- `print(*objects)`: Prints objects to the text stream (console). [link](https://realpython.com/ref/stdlib/builtins/)
+
+### 🔬 Object Inspection & Reflection
+
+- `callable(object)`: Returns `True` if the object appears callable (like a function).
+- `dir(object)`: Returns a list of valid attributes and methods for an object.
+- `getattr(obj, name)`: Gets the value of a named attribute from an object.
+- `hasattr(obj, name)`: Returns `True` if an object possesses a specific named attribute.
+- `hash(object)`: Returns the hash value of a given object.
+- `id(object)`: Returns the unique, permanent identity integer for an object.
+- `isinstance(obj, cls)`: Checks if an object is an instance or subclass of a given class.
+- `issubclass(sub, cls)`: Checks if a class is a subclass of another class.
+- `locals()`: Returns a dictionary representing the current local symbol table.
+- `globals()`: Returns a dictionary representing the current global symbol table.
+- `setattr(obj, name, val)`: Sets the value of a named attribute on an object.
+- `delattr(obj, name)`: Deletes a named attribute from an object.
+- `vars(object)`: Returns the `__dict__` attribute of a module, class, or instance. [link](https://realpython.com/ref/builtin-functions/)
+
+### 🔤 String & Character Encoding
+
+- `ascii(object)`: Returns a readable string containing a printable representation of an object.
+- `bin(x)`: Converts an integer number to a binary string prefixed with "0b".
+- `chr(i)`: Returns the string representing a character from its Unicode code point.
+- `format(value)`: Formats a value into a specific representation.
+- `hex(x)`: Converts an integer number to a lowercase hexadecimal string prefixed with "0x".
+- `oct(x)`: Converts an integer number to an octal string prefixed with "0o".
+- `ord(c)`: Returns an integer representing the Unicode code point of a single character. [link](https://www.pythonmorsels.com/built-in-functions-in-python/)
+
+### 🛠️ Code Execution & Classes
+
+- `classmethod(func)`: Transforms a method into a class method.
+- `compile(source)`: Compiles source code into a code object or AST object.
+- `eval(expression)`: Parses and executes a dynamically provided string expression.
+- `exec(object)`: Dynamically executes Python code (statements and blocks).
+- `property(fget)`: Returns a property attribute for managed class attributes.
+- `staticmethod(func)`: Transforms a method into a static method.
+- `super()`: Returns a proxy object that delegates method calls to a parent or sibling class. [link](https://docs.python.org/3/builtins/functions.html)
+
+### 🧠 Advanced, Async & System Built-ins
+
+- `aiter(async_iterable)`: Returns an asynchronous iterator for an asynchronous iterable.
+- `anext(async_iterator)`: Awaits the next item from an asynchronous iterator.
+- `breakpoint()`: Drops you into the debugger (PDB) at the call site.
+- `help(object)`: Invokes the built-in comprehensive help system.
+- `memoryview(obj)`: Creates a memoryview object to access internal data buffers without copying.
+- `__import__(name)`: The internal function invoked by the `import` statement. [link](https://stackoverflow.com/questions/53895005/can-pythons-standard-librarys-written-in-python-modules-be-used-without-import)
+
+***
+
+### 💡 Note on Built-in Constants
+
+While not functions, Python also populates several built-in constants directly into your global namespace: [link](https://realpython.com/ref/stdlib/builtins/)
+
+- **Booleans:** `True`, `False`
+- **Special singletons:** `None`, `Ellipsis` (`...`), `NotImplemented`
+- **Interactive constants:** `quit()`, `exit()`, `copyright`, `credits`, `license` [link](https://realpython.com/ref/stdlib/builtins/)
+
+Would you like me to generate a **ready-to-run Python script (.py)** that loops through and demonstrates how a few specific built-ins function, or are you looking to deep dive into a **particular category**?
+
+- [link](https://www.youtube.com/watch?v=7Qu%5FKXc7xSI)\
+  YouTube\
+  All 71 built-in Python functions\
+  71 built-in Python functions. types like bool int float and complex. min div mod abs pow round and sum bool is the built-in type w...
+- [link](https://www.youtube.com/watch?v=MO7rBLsH3oM\&t=13)\
+  YouTube·Real Python\
+  Math-Related Built-Ins & String Data Types\
+  Jul 23, 2026 — Key mathematical built-in functions include … \`divmod()\` for quotients and remainders, finding extreme values in iterables,\
+  15m
+- [link](https://www.youtube.com/watch?v=zg905h762Cw)\
+  YouTube·Core Electronics\
+  Python Workshop - All The Built In Functions\
+  Aug 5, 2020 — Python offers built-in functions that are pre-installed and instantly accessible in scripts without requiring imports.\
+  5:39
+
+Show all
+
 # all py type conversion builtins and js for each
 
 Here is a comprehensive breakdown of all the **Python built-in type conversion functions** (type constructors) and their closest **JavaScript equivalents**.
