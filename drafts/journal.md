@@ -55230,6 +55230,16 @@ single word fn/param names are preferred.
 
 <!-- embedded es subs? interesting. -->
 
+04
+
+16 00 think.
+
+just feels it's better to ask exactly one question on one thread.
+
+it's reproducible. it's intentional. and you would be less likely to drift and just ask whatever you like.
+
+it's fine to ask multiple in one, which would behave like a wiki or some workflow effectively.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
