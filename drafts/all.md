@@ -350,6 +350,7 @@ web: <!-- frontend, web, ts/js -->
 - fix reference error react not defined
 - component scroll area
 - js stl math
+- js stl type conversion
 
 backend:
 

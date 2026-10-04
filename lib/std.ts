@@ -119,12 +119,53 @@ export function num(n) {
   if (Number.isNaN(result)) {
     return nil
   }
-  
+
   return result
 }
 
 export function int(n) {
-    
+  const result = parseInt(n)
+  if (Number.isNaN(result)) {
+    return nil
+  }
+
+  return result
+}
+
+export function float(n) {
+  const result = parseFloat(n)
+  if (Number.isNaN(result)) {
+    return nil
+  }
+
+  return result
+}
+
+export function bool(v) {
+  return Boolean(v)
+}
+
+export function str(s) {
+  return String(s)
+}
+
+export function list(v) {
+  return Array.from(v)
+}
+
+export function set(v) {
+  return new Set(v)
+}
+
+export function dict(v) {
+  if (!is(v, 'iterable')) {
+    v = entries(v)    
+  }
+  // if (is(v, 'object')) {
+  //   v = entries(v)    
+  // }
+
+  return new Map(v)
 }
 
 type nil = typeof nil
@@ -134,6 +175,14 @@ type has = typeof has
 type entries_fn = typeof entries
 type merge = typeof merge
 type is = typeof is
+type num = typeof num
+type int = typeof int
+type float = typeof float
+type bool = typeof bool
+type str = typeof str
+type list = typeof list
+type set = typeof set
+type dict = typeof dict
 declare global {
   var nil: nil
   var variable: variable
@@ -142,5 +191,13 @@ declare global {
   var entries: entries_fn
   var merge: merge
   var is: is
+  var num: num
+  var int: int
+  var float: float
+  var bool: bool
+  var str: str
+  var list: list
+  var set: set
+  var dict: dict
 }
 
