@@ -73,6 +73,7 @@ feels i would learn from py and rb, not go/rust (bounded by low level stuff no m
 let's design a bit.
 
 - launch by systemd (config normally, like after network maybe well anyway)
+- read a config file, parse yaml
 - for each app
   - create a normal terminal, as if ctrl alt t
   - generate free port if needed, modify caddyfile then
@@ -80,5 +81,11 @@ let's design a bit.
   - constantly collect logs, like stdout/stderr or exit
   - save log for each, on fs maybe. just separate and incremental. avoid yaml overhead.
 - modify caddyfile, restart caddy
+
+i may learn how to use caddy. (or caddyfile syntax is all i need)
+
+and i would have a separate server. well doesnt matter. it's app specific.
+
+it will route api to api, and anything else to the spa build.
 
 
