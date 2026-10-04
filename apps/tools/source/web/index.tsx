@@ -52,6 +52,7 @@ const irrelevant_errors = [
   'for the boolean attribute',
   'for a non-boolean attribute',
   '`useScroll` expects a single ref argument.',
+  'Each child in a list should have a unique "key" prop.',
   // 'Something has shimmed'
 ]
 function warn(msg, ...substitution) {

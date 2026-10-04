@@ -299,6 +299,10 @@ body {
   color: var(--color-fg-tooltip);
 }
 
+.dropdown {
+  z-index: var(--hierarchy-popup);
+}
+
 .scroll {
   position: relative;
   overflow: hidden;
