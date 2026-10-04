@@ -53,3 +53,4 @@ like parseint? array from? string from? new constructor? here inconsistent.
 and i do need to, in case js sees + as string concat via some magic rules. and i could not override op <!-- i mean infix, not prefix --> cleanly.
 
 
+

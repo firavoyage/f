@@ -22,6 +22,8 @@ i may write it in code.
 
 i may compile it as userscript
 
+<!-- how to compile (build) a backend script? -->
+
 # backlog
 
 <!--
