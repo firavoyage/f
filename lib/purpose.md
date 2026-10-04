@@ -68,4 +68,17 @@ maybe i would fix what's flawed first. they are existing deps. i need them.
 
 yeah but it itself will rely on fs and terminal anyway if i want to do it cleanly (shell is quirky).
 
+feels i would learn from py and rb, not go/rust (bounded by low level stuff no matter how you abstract or sweeten).
+
+let's design a bit.
+
+- launch by systemd (config normally, like after network maybe well anyway)
+- for each app
+  - create a normal terminal, as if ctrl alt t
+  - generate free port if needed, modify caddyfile then
+  - run command as long running daemon 
+  - constantly collect logs, like stdout/stderr or exit
+  - save log for each, on fs maybe. just separate and incremental. avoid yaml overhead.
+- modify caddyfile, restart caddy
+
 
