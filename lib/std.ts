@@ -97,7 +97,9 @@ type variable_type = 'nil' | 'array' | "string" | "number" | "bigint" | "boolean
 
 export function is(v: any, type: variable_type) {
   if (v === nil) {
-    return type === nil || type == 'nil'
+    return type == 'nil' || type === nil
+  } else if (type = 'nil') {
+    return v === nil || Number.isNaN(v)
   } else if (Array.isArray(v)) {
     return type == 'array'
   } else if (type == 'numeric') {

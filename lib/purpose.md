@@ -42,4 +42,14 @@ i build what i need.
 
 components of a design system. maybe like adw. just to specify.
 
+---
+
+look at the py builtins. and ruby builtins maybe.
+
+how would i convert types, yeah maybe ive eliminated nan (ok i will see nil as nan).
+
+like parseint? array from? string from? new constructor? here inconsistent.
+
+and i do need to, in case js sees + as string concat via some magic rules. and i could not override op <!-- i mean infix, not prefix --> cleanly.
+
 
