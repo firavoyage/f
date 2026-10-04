@@ -113,6 +113,20 @@ export function is(v: any, type: variable_type) {
   }
 }
 
+// numeric
+export function num(n) {
+  const result = Number(n)
+  if (Number.isNaN(result)) {
+    return nil
+  }
+  
+  return result
+}
+
+export function int(n) {
+    
+}
+
 type nil = typeof nil
 type variable = typeof variable
 type is_given = typeof is_given
