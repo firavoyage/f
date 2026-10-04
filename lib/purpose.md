@@ -88,4 +88,12 @@ and i would have a separate server. well doesnt matter. it's app specific.
 
 it will route api to api, and anything else to the spa build.
 
+---
+
+file op can be sync. dx matters more than perf. <!-- and yeah, async should be preferrably handled automatically under the hood -->
+
+about shell, it can be sync to run a command and get its result. it's on backend right? and on frontend, if it takes time and you wanna display some placeholder, you may "use async". network requests are inherently async. and you could not run shell commands on web.
+
+for long running daemon, it doesnt matter sync/async. it's basically traditional event listeners.
+
 
