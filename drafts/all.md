@@ -354,6 +354,7 @@ web: <!-- frontend, web, ts/js -->
 - react use measure
 - lib ruby builtins
 - lib fp utils
+- lib file shell
 
 backend:
 
