@@ -24,6 +24,8 @@ i may compile it as userscript
 
 <!-- how to compile (build) a backend script? -->
 
+<!-- well... it would be always sub optimal compared w a dedicated copy main content button, esp when you rarely select arbitrarily -->
+
 # backlog
 
 <!--
