@@ -352,6 +352,8 @@ web: <!-- frontend, web, ts/js -->
 - js stl math
 - js stl type conversion
 - react use measure
+- lib ruby builtins
+- lib fp utils
 
 backend:
 
