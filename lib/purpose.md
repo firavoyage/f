@@ -56,4 +56,16 @@ and i do need to, in case js sees + as string concat via some magic rules. and i
 
 i may not need the fp methods right now.
 
+---
+
+file. shell.
+
+"launch"
+
+maybe i would fix what's flawed first. they are existing deps. i need them.
+
+---
+
+yeah but it itself will rely on fs and terminal anyway if i want to do it cleanly (shell is quirky).
+
 
