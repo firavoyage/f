@@ -356,6 +356,7 @@ web: <!-- frontend, web, ts/js -->
 - lib fp utils
 - lib file shell
 - js async await patterns force async to sync
+- lib std list polymorphism
 
 backend:
 
@@ -1034,6 +1035,7 @@ code:
 - lsp
 - pl design ruby oop module class object method lookup hierarchy
 - keyword params unordered object params default values
+- pl design list default iteration keys values pairs entries ruby inconsistency
 
 humility:
 

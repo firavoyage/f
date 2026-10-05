@@ -108,4 +108,10 @@ would `list` already solve this? how does array.from work?
 
 btw, the naming of `list` might conflict, but that's not the case (classic lisp1/lisp2 divide when fn and var are the same word in verb/noun). i would generally prefer more concise std lib fn.
 
+it makes no sense to have map fn arg, if map itself could already be applied to any iterables in stl.
+
+> JavaScript had historical baggage.
+>
+> Python was designed for readability from day one.
+
 
