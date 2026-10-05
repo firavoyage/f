@@ -143,6 +143,7 @@ life:
 - university cs sicp
 - phone battery capping
 - metro rushing station platform train door lights timeline
+- game bang dream our notes setup
 
 create something:
 
