@@ -19,9 +19,9 @@ spec
 - utils
   - rename/mv
   - delete/unlink
-  - mkdir <!-- you know there will be -p -->
+  - ~~mkdir <!-- you know there will be -p -->~~
   - cp
-  - rm <!-- or maybe rm_rf? it's dangerous and it should be explicit. -->
+  - ~~rm <!-- or maybe rm_rf? it's dangerous and it should be explicit. -->~~
 
 ---
 
