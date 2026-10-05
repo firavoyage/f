@@ -8,6 +8,7 @@ spec
   - join ... = path: string <!-- just like math.max. i may have a util for it -->
   - expand_path = absolute path (expand relative and tlide)
   - basename path <!-- second param? -->
+  - stemname
   - dirname path
   - extname path
 - queries
@@ -15,6 +16,7 @@ spec
   - is file
   - is dir ~~is directory~~ <!-- be consistent w your aliases -->
   - size
+  - stat
   - atime, ctime, mtime, birthtime <!-- access, change, modification, or creation timestamps. --> ~~mtime <!-- modification timestamp, maybe i can have more (upd: yeah!) -->~~
   - utime(atime, mtime)
 - utils
