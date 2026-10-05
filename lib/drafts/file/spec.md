@@ -5,20 +5,37 @@ spec
   - read path
   - ~~foreach~~
 - path
+  - path string <!-- Pathname.new --> = path, w duplicate/trailing slash handled <!-- i may design a better name (js is lisp1, conflicting factory/constructor/verb fn and noun var, if they are the same word) -->
+  - cwd/pwd/getwd <!-- there is more than one way to do it -->
   - join ... = path: string <!-- just like math.max. i may have a util for it -->
   - expand_path = absolute path (expand relative and tlide)
+  - ~~cleanpath = relative path w . and .. resolved~~
+  - ~~realpath, realdirpath = path w symlink resolved~~
+  - relative_path path base_dir
   - basename path <!-- second param? -->
-  - stemname
-  - dirname path
+  - stemname <!-- basename w the last .ext striped, if existing -->
+  - dirname/parent path
   - extname path
+  - ~~sub path pattern replacement~~
+  - ~~sub_ext path new_ext~~
+  - split path = [dir, base]
 - queries
   - does exist
   - is file
   - is dir ~~is directory~~ <!-- be consistent w your aliases -->
+  - ~~is root~~
+  - ~~is absolute~~
+  - ~~is relative~~
   - size
   - stat
   - atime, ctime, mtime, birthtime <!-- access, change, modification, or creation timestamps. --> ~~mtime <!-- modification timestamp, maybe i can have more (upd: yeah!) -->~~
   - utime(atime, mtime)
+  - children/each_child = entries wo . and ..
+  - glob
+- iterate
+  - ~~ascend = root_to_basename[]~~
+  - ~~descend = ascend reversed~~
+  - ~~each filename~~
 - utils
   - rename/mv
   - delete/unlink
