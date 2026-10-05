@@ -2,114 +2,9 @@ import desktop from '@folder/xdg';
 import { homedir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { rm, writeFile, readFile, appendFile, mkdir, unlink, access } from 'node:fs/promises';
-import trash_lib from 'trash';
 
 let app_id = 'app'
 let xdg = false
-
-// Errors
-export const non_string_content = "non string content"
-
-export const not_found = "not_found"
-export const permission_denied = "permission_denied"
-export const already_exists = "already_exists"
-export const is_a_directory = "is_a_directory"
-export const not_a_directory = "not_a_directory"
-export const out_of_memory = "out_of_memory"
-export const storage_full = "storage_full"
-export const resource_busy = "resource_busy"
-export const invalid_filename = "invalid_filename"
-export const read_only_filesystem = "read_only_filesystem"
-export const quota_exceeded = "quota_exceeded"
-export const file_too_large = "file_too_large"
-export const other = "other"
-export const executable_file_busy = "executable_file_busy"
-export const deadlock = "deadlock"
-export const would_block = "would_block"
-export const directory_not_empty = "directory_not_empty"
-export const filesystem_loop = "filesystem_loop"
-export const not_seekable = "not_seekable"
-export const broken_pipe = "broken_pipe"
-export const interrupted = "interrupted"
-export const not_connected = "not_connected"
-export const connection_reset = "connection_reset"
-export const unsupported = "unsupported"
-export const invalid_input = "invalid_input"
-export const stale_network_file_handle = "stale_network_file_handle"
-
-const map = {
-  // File & Directory Existence
-  ENOENT: not_found,
-  EEXIST: already_exists,
-
-  // Permissions & Ownership
-  EACCES: permission_denied,
-  EPERM: permission_denied,
-  EROFS: read_only_filesystem,
-
-  // Path & Filename Formats
-  ENOTDIR: not_a_directory,
-  EISDIR: is_a_directory,
-  ENAMETOOLONG: invalid_filename,
-  EINVAL: invalid_filename,
-
-  // Resource Exhaustion & Limits
-  ENOSPC: storage_full,
-  EDQUOT: quota_exceeded,
-  EFBIG: file_too_large,
-  EMFILE: other,
-  ENFILE: other,
-  ENOMEM: out_of_memory,
-
-  // State, Locks, & Concurrent Blocks
-  EBUSY: resource_busy,
-  ETXTBSY: executable_file_busy,
-  EDEADLK: deadlock,
-  EAGAIN: would_block,
-  EWOULDBLOCK: would_block,
-
-  // Structural Directory Rules
-  ENOTEMPTY: directory_not_empty,
-  EXDEV: other,
-  ELOOP: filesystem_loop,
-
-  // Hard Drives & Physical Operations
-  EIO: other,
-  ENODEV: not_found,
-  ENXIO: not_found,
-  ESPIPE: not_seekable,
-
-  // Streams, Pipes, & Buffers
-  EPIPE: broken_pipe,
-  EINTR: interrupted,
-  ENOTCONN: not_connected,
-  ESHUTDOWN: broken_pipe,
-  ECONNRESET: connection_reset,
-
-  // Fallbacks
-  ENOSYS: unsupported,
-  ENOTSUP: unsupported,
-  EFAULT: invalid_input,
-  ESTALE: stale_network_file_handle
-}
-
-/**
- * Standardize fs error code to readable error msgs
- */
-export async function map_error<F extends (...args: any[]) => any>(fn: F) {
-  const result = await handle(fn)
-  if (is_error(result)) {
-    // @ts-expect-error stupid ts
-    if (has(map, result.code)) {
-      // @ts-expect-error stupid ts
-      throw err({ type: map[result.code], message: result })
-    }
-
-    throw err(result)
-  }
-
-  return result
-}
 
 export function init(options) {
   ({ app_id, xdg } = options)
@@ -188,21 +83,6 @@ type remove = { must_exist?: boolean }
 
 export async function remove(path: string, { must_exist = false }: remove = {}) {
   const result = await handle(() => unlink(path))
-
-  // @ts-expect-error stupid ts
-  if (is_error(result) && has(map, result.code) && (must_exist || map[result.code] != not_found)) {
-    // @ts-expect-error stupid ts
-    throw err({ type: map[result.code], message: result })
-  }
-
-  // @ts-expect-error stupid ts
-  throw err(result)
-}
-
-type trash = { must_exist?: boolean }
-
-export async function trash(path: string, { must_exist = false }: remove = {}) {
-  const result = await handle(() => trash_lib(path, { glob: false }))
 
   // @ts-expect-error stupid ts
   if (is_error(result) && has(map, result.code) && (must_exist || map[result.code] != not_found)) {
