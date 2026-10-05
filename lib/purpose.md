@@ -114,4 +114,9 @@ it makes no sense to have map fn arg, if map itself could already be applied to 
 >
 > Python was designed for readability from day one.
 
+---
+
+i will adopt pathname rather than fileutils, as recommended.
+
+
 
