@@ -100,5 +100,12 @@ for long running daemon, it doesnt matter sync/async. it's basically traditional
 
 i may list the methods and leverage llm.
 
+---
+
+rest params `...` are common. i may have a util to polymorph it, i.e. `fn(...args)` `fn(arr)` when each individual arg must not be iterable (or at least there's no ambiguity when only one arg is passed). <!-- btw, math lib is different as it accepts an optional `fn` alongside -->
+
+would `list` already solve this? how does array.from work?
+
+btw, the naming of `list` might conflict, but that's not the case (classic lisp1/lisp2 divide when fn and var are the same word in verb/noun). i would generally prefer more concise std lib fn.
 
 
