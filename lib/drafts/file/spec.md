@@ -15,13 +15,14 @@ spec
   - is file
   - is dir ~~is directory~~ <!-- be consistent w your aliases -->
   - size
-  - mtime <!-- modification timestamp, maybe i can have more -->
+  - atime, ctime, mtime, birthtime <!-- access, change, modification, or creation timestamps. --> ~~mtime <!-- modification timestamp, maybe i can have more (upd: yeah!) -->~~
+  - utime(atime, mtime)
 - utils
   - rename/mv
   - delete/unlink
-  - ~~mkdir <!-- you know there will be -p -->~~
+  - mkpath ~~mkdir <!-- you know there will be -p -->~~
   - cp
-  - ~~rm <!-- or maybe rm_rf? it's dangerous and it should be explicit. -->~~
+  - rmtree ~~rm <!-- or maybe rm_rf? it's dangerous and it should be explicit. -->~~
 
 ---
 
