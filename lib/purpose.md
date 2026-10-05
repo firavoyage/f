@@ -96,4 +96,9 @@ about shell, it can be sync to run a command and get its result. it's on backend
 
 for long running daemon, it doesnt matter sync/async. it's basically traditional event listeners.
 
+05
+
+i may list the methods and leverage llm.
+
+
 
