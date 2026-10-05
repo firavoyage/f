@@ -118,5 +118,8 @@ it makes no sense to have map fn arg, if map itself could already be applied to 
 
 i will adopt pathname rather than fileutils, as recommended.
 
+---
+
+thanks to js, iterators and arrays are of polymorphism (constrast to ruby entries/each_entry)
 
 

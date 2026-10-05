@@ -1,9 +1,13 @@
 spec
 
 - file rw
+  - ~~open~~ <!-- ? -->
   - write path content
   - read path
+  - ~~binread/write~~
   - ~~foreach~~
+  - ~~each_line~~ <!-- perf -->
+  - ~~readlines~~ <!-- split by \n instead -->
 - path
   - path string <!-- Pathname.new --> = path, w duplicate/trailing slash handled <!-- i may design a better name (js is lisp1, conflicting factory/constructor/verb fn and noun var, if they are the same word) -->
   - cwd/pwd/getwd <!-- there is more than one way to do it -->
@@ -26,11 +30,18 @@ spec
   - ~~is root~~
   - ~~is absolute~~
   - ~~is relative~~
+  - ~~is symlink~~
+  - ~~is executable/readable/writable/...~~
+  - is empty
+  - ~~is zero = is the file zero byte~~ <!-- use size instead, arabic symbolic number > english number -->
   - size
-  - stat
+  - ~~stat~~ <!-- ? -->
   - atime, ctime, mtime, birthtime <!-- access, change, modification, or creation timestamps. --> ~~mtime <!-- modification timestamp, maybe i can have more (upd: yeah!) -->~~
   - utime(atime, mtime)
-  - children/each_child = entries wo . and ..
+  - ~~chmod chown~~
+  - ~~ftype~~ <!-- ? -->
+  - children~~/each_child~~ = entries wo . and ..
+  - entries~~/each_entry~~ = ls a
   - glob
 - iterate
   - ~~ascend = root_to_basename[]~~
@@ -38,7 +49,8 @@ spec
   - ~~each filename~~
 - utils
   - rename/mv
-  - delete/unlink
+  - delete/unlink = remove file <!-- i may use return value to indicate "best effort" delete. it's not critical to del a non existing file right? -->
+  - rmdir = remove only if empty
   - mkpath ~~mkdir <!-- you know there will be -p -->~~
   - cp
   - rmtree ~~rm <!-- or maybe rm_rf? it's dangerous and it should be explicit. -->~~
