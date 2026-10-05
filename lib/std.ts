@@ -149,8 +149,40 @@ export function str(s) {
   return String(s)
 }
 
-export function list(v) {
-  return Array.from(v)
+export function max(...args) {
+  if (args.length == 2 && is(args[0], 'numeric') && is(args[1], 'function')) {
+    const [array, fn] = args
+    let maximum = array[0]
+    map(array, (n) => {
+      if (fn(n, maximum)) {
+        maximum = n
+      }
+    })
+    return maximum
+  } else if (args.length == 1 && is(args[0], 'iterable')) {
+    const [array] = args
+    function compare(a, b) {
+      return a > b
+    }
+    return max(array, compare)
+  } else {
+    return max(args)
+  } 
+}
+
+/**
+ * you may pass spread args or an array
+ * 
+ * you should not spread it if it can contain iterable elements, pass an array instead
+ */
+export function list(...args) {
+  if (args.length == 1 && is(args[0], 'iterable')) {
+    const [v] = args
+    return Array.from(v)
+  } else {
+    const v = args
+    return Array.from(v)
+  }  
 }
 
 export function set(v) {
