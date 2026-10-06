@@ -8,13 +8,26 @@ type run = Partial<{
 /**
  * run a command
  * 
- * returns string stdout
+ * returns stdout as string
  * 
- * userspace is linux specific, get the primary user (or fiven) and their 
+ * userspace is linux specific, 
+ * (if you are already root, e.g. in sudo systemd)
+ * to get the primary user on single user desktop (or a given string) 
+ * and their default shell,
+ * and run commands "normally"
  * 
- * better to 
+ * better to run the whole script inside userspace
  */
-export function run(command: string, options: run) {
+export function run(command: string, options: run = {}) {
+  const { userspace = false } = options
+  if (userspace) {
+    const primary_user = run("awk -F: '$3 >= 1000 && $3 < 60000 {print $1; exit}' /etc/passwd")
+    const user = is(userspace, 'string') ? userspace : primary_user
+
+    const default_shell = run(`getent passwd "${user}" | cut -d: -f7`)
+
+    
+  }
 
   return execSync(command, { encoding: 'utf-8', ...options })
 }
@@ -27,7 +40,7 @@ type spawn = Partial<{
   finish: fn
 }>
 
-export function spawn(command: string, options: spawn) {
+export function spawn(command: string, options: spawn = {}) {
   const { stdout, stderr, finish } = options
 
   const process = _spawn(command, options)
