@@ -130,4 +130,9 @@ maybe i would name it as subprocess, not shell. doesnt matter much. just feels i
 
 nodejs subprocess spawn has 20 overloads.
 
+---
+
+ah... yeah, you should trim the stdout. saves my day.
+
+
 

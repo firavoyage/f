@@ -8,7 +8,7 @@ type run = Partial<{
 /**
  * run a command
  * 
- * returns stdout as string
+ * returns the trimmed stdout as string
  * 
  * userspace is linux specific, 
  * (if you are already root, e.g. in sudo systemd)
@@ -26,10 +26,10 @@ export function run(command: string, options: run = {}) {
 
     const default_shell = run(`getent passwd "${user}" | cut -d: -f7`)
 
-    
+    return run(`sudo -u '${user}' -i '${default_shell}' -c '${command}'`, { ...options, userspace: false })
   }
 
-  return execSync(command, { encoding: 'utf-8', ...options })
+  return str(execSync(command, { encoding: 'utf-8', ...options })).trim()
 }
 
 type spawn = Partial<{
@@ -65,3 +65,7 @@ export function spawn(command: string, options: spawn = {}) {
 
   return process
 }
+
+log(run('ls', { userspace: 'foo' }))
+
+
