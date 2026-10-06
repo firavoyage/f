@@ -1,8 +1,19 @@
 spec
 
+- os
+  - home
+  - init_desktop options
+    - bool xdg
+    - string app
+  - data
+  - config
+  - cache
 - file rw
   - ~~open~~ <!-- ? -->
   - write path content
+    - auto mkpath under the hood
+  - append
+    - it must exist
   - read path
   - ~~binread/write~~
   - ~~foreach~~
@@ -12,7 +23,7 @@ spec
   - ~~path~~ pathname string <!-- Pathname.new --> = path, w duplicate/trailing slash handled <!-- i may design a better name (js is lisp1, conflicting factory/constructor/verb fn and noun var, if they are the same word) -->
   - cwd/pwd/getwd <!-- there is more than one way to do it -->
   - join ... = path: string <!-- just like math.max. i may have a util for it -->
-  - expand_path = absolute path (expand relative and tlide)
+  - expand_path/resolve = absolute path (expand relative and tlide)
   - ~~cleanpath = relative path w . and .. resolved~~
   - ~~realpath, realdirpath = path w symlink resolved~~
   - relative_path path base_dir
@@ -22,7 +33,7 @@ spec
   - extname path
   - ~~sub path pattern replacement~~
   - ~~sub_ext path new_ext~~
-  - split path = [dir, base]
+  - ~~split path = [dir, base]~~
 - queries
   - does exist
   - is file
@@ -37,12 +48,12 @@ spec
   - size
   - ~~stat~~ <!-- ? -->
   - atime, ctime, mtime, birthtime <!-- access, change, modification, or creation timestamps. --> ~~mtime <!-- modification timestamp, maybe i can have more (upd: yeah!) -->~~
-  - utime(atime, mtime)
+  - ~~utime(atime, mtime)~~ <!-- could have -->
   - ~~chmod chown~~
   - ~~ftype~~ <!-- ? -->
   - children~~/each_child~~ = entries wo . and ..
   - entries~~/each_entry~~ = ls a
-  - glob
+  - ~~glob~~ <!-- could have -->
 - iterate
   - ~~ascend = root_to_basename[]~~
   - ~~descend = ascend reversed~~
@@ -55,13 +66,6 @@ spec
   - cp
   - rmtree ~~rm <!-- or maybe rm_rf? it's dangerous and it should be explicit. -->~~
 
----
-
-```rb
-File.basename("/home/user/script.rb")      # => "script.rb"
-File.basename("/home/user/script.rb", ".rb") # => "script"
-File.dirname("/home/user/script.rb")       # => "/home/user"
-File.extname("/home/user/script.rb")       # => ".rb"
-```
+path can be 0 (stdin) or 1 (stdout)
 
 

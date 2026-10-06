@@ -5809,5 +5809,4 @@ Use code with caution.
 
 Would you like to extend this script to **pass variables from the root context down into the user shell**, or do you need help **capturing output variables** from this block back into your main script?
 
-# 
 
