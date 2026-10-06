@@ -126,4 +126,8 @@ thanks to js, iterators and arrays are of polymorphism (constrast to ruby entrie
 
 maybe i would name it as subprocess, not shell. doesnt matter much. just feels it's an easier choice.
 
+07
+
+nodejs subprocess spawn has 20 overloads.
+
 
