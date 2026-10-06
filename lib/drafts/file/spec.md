@@ -9,7 +9,7 @@ spec
   - ~~each_line~~ <!-- perf -->
   - ~~readlines~~ <!-- split by \n instead -->
 - path
-  - path string <!-- Pathname.new --> = path, w duplicate/trailing slash handled <!-- i may design a better name (js is lisp1, conflicting factory/constructor/verb fn and noun var, if they are the same word) -->
+  - ~~path~~ pathname string <!-- Pathname.new --> = path, w duplicate/trailing slash handled <!-- i may design a better name (js is lisp1, conflicting factory/constructor/verb fn and noun var, if they are the same word) -->
   - cwd/pwd/getwd <!-- there is more than one way to do it -->
   - join ... = path: string <!-- just like math.max. i may have a util for it -->
   - expand_path = absolute path (expand relative and tlide)
