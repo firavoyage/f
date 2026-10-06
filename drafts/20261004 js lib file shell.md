@@ -32,6 +32,395 @@ hello world%                                                                    
 hello world\n%                                                                                                                         ~ % rm a.txt
 ```
 
+```
+ ~ % py
+Python 3.12.3 (main, Mar 23 2026, 19:04:32) [GCC 13.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import subprocess
+>>> subprocess.run
+<function run at 0x72d44e423ce0>
+>>> subprocess.run()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/usr/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Popen.__init__() missing 1 required positional argument: 'args'
+>>> subprocess.run('ls -l')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/usr/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'ls -l'
+>>> subprocess.run('ls')
+ Android   Desktop   Documents   Downloads   Music   Pictures   Projects   Public   snap   Templates   Videos  'VirtualBox VMs'
+CompletedProcess(args='ls', returncode=0)
+>>> subprocess.run(['ls', '-l'])
+total 48
+drwxr-xr-x  3 fira fira 4096 Mar 11  2026  Android
+drwxr-xr-x  2 fira fira 4096 Sep  1 22:28  Desktop
+drwxr-xr-x 15 fira fira 4096 Sep 29 15:44  Documents
+drwxr-xr-x  5 fira fira 4096 Oct  2 23:29  Downloads
+drwxr-xr-x 91 fira fira 4096 Sep 26 17:21  Music
+drwxr-xr-x  9 fira fira 4096 Jun 11 18:30  Pictures
+drwxr-xr-x 62 fira fira 4096 Aug 25 19:56  Projects
+drwxr-xr-x  2 fira fira 4096 Feb 23  2026  Public
+drwx------ 10 fira fira 4096 Jun 20 16:44  snap
+drwxr-xr-x  2 fira fira 4096 Mar  7  2026  Templates
+drwxr-xr-x 23 fira fira 4096 Oct  4 01:52  Videos
+drwxrwxr-x  3 fira fira 4096 Jun  2 02:35 'VirtualBox VMs'
+CompletedProcess(args=['ls', '-l'], returncode=0)
+>>> subprocess.run('ls', '-la')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/usr/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 835, in __init__
+    raise TypeError("bufsize must be an integer")
+TypeError: bufsize must be an integer
+>>> subprocess.run('ls')
+ Android   Desktop   Documents   Downloads   Music   Pictures   Projects   Public   snap   Templates   Videos  'VirtualBox VMs'
+CompletedProcess(args='ls', returncode=0)
+```
+
+```
+ ~ % rb
+irb(main):001:0> output = `ls`
+=> "Android\nDesktop\nDocuments\nDownloads\nMusic\nPictures\nProjects\nPublic\nsnap\nTemplates\nVideos\nVirtualBox VMs\n"
+irb(main):002:0> print output
+Android
+Desktop
+Documents
+Downloads
+Music
+Pictures
+Projects
+Public
+snap
+Templates
+Videos
+VirtualBox VMs
+=> nil
+irb(main):003:0> puts output
+Android
+Desktop
+Documents
+Downloads
+Music
+Pictures
+Projects
+Public
+snap
+Templates
+Videos
+VirtualBox VMs
+=> nil
+irb(main):004:0> print(output)
+Android
+Desktop
+Documents
+Downloads
+Music
+Pictures
+Projects
+Public
+snap
+Templates
+Videos
+VirtualBox VMs
+=> nil
+irb(main):005:0>
+```
+
+```
+ ~ % date
+Tue Oct  6 03:06:03 PM CST 2026
+```
+
+```
+ ~ % whoami
+fira
+ ~ % sudo whoami
+root
+ ~ % sudo -u f whoami
+sudo: unknown user f
+sudo: error initializing audit plugin sudoers_audit
+ ~ % sudo -u whoami
+sudo: unknown user whoami
+sudo: error initializing audit plugin sudoers_audit
+ ~ % sudo -u fira whoami
+fira
+ ~ % sudo -u root whoami
+root
+ ~ % who
+fira     seat0        2026-09-30 18:05 (login screen)
+fira     :1           2026-09-30 18:05 (:1)
+fira     pts/2        2026-09-16 19:04 (tmux(5637).%0)
+fira     pts/3        2026-09-29 15:13 (tmux(5637).%6)
+fira     pts/6        2026-10-01 00:03 (tmux(5637).%7)
+ ~ % who am
+ ~ % who am i
+ ~ % sudo who am i
+fira     pts/11       2026-10-06 15:19
+```
+
+```
+ ~ % ALL_USERS=$(awk -F: '$3 >= 1000 && $3 < 60000 {print $1}' /etc/passwd)
+
+ ~ % echo "$ALL_USERS"
+fira
+ ~ % getent passwd fira
+fira:x:1000:1000:Fira:/home/fira:/usr/bin/zsh
+ ~ % getent passwd fira | cut -d/
+cut: you must specify a list of bytes, characters, or fields
+Try 'cut --help' for more information.
+ ~ % getent passwd fira | cut -d:
+cut: you must specify a list of bytes, characters, or fields
+Try 'cut --help' for more information.
+ ~ % getent passwd fira | cut -d: -f7
+/usr/bin/zsh
+ ~ % getent passwd fira | cut -d/ -f7
+
+ ~ % getent passwd fira | cut -d/ -f1
+fira:x:1000:1000:Fira:
+```
+
+```
+ ~ % sudo zsh
+Fira# bun
+zsh: command not found: bun
+Fira# b
+zsh: command not found: b
+Fira# ls
+ Android   Desktop   Documents   Downloads   Music   Pictures   Projects   Public   snap   Templates   Videos  'VirtualBox VMs'
+Fira# whoami
+root
+Fira# whereami
+zsh: command not found: whereami
+Fira# cd
+Fira# which cd
+cd: shell built-in command
+Fira# cd /
+Fira# pwd
+/
+Fira# ls
+bin                boot   dev  home  lib32  lib.usr-is-merged  media  opt   root  sbin                snap  swap.img  tmp  var
+bin.usr-is-merged  cdrom  etc  lib   lib64  lost+found         mnt    proc  run   sbin.usr-is-merged  srv   sys       usr
+Fira#
+```
+
+```
+ ~ % #!/bin/bash
+
+# 1. Dynamically find the primary human user (first UID >= 1000)
+PRIMARY_USER=$(awk -F: '$3 >= 1000 && $3 < 60000 {print $1; exit}' /etc/passwd)
+
+if [ -z "$PRIMARY_USER" ]; then
+    echo "Error: No primary human user found on this system." >&2
+    exit 1
+fi
+
+# 2. Get that specific user's default shell (e.g., /bin/bash, /usr/bin/zsh)
+USER_SHELL=$(getent passwd "$PRIMARY_USER" | cut -d: -f7)
+
+echo "Systemd/Root Execution Context: $(whoami)"
+echo "Targeting Primary User:         $PRIMARY_USER"
+echo "Targeting Default Shell:        $USER_SHELL"
+echo "--------------------------------------------------"
+
+# 3. Pull in their exact environment and execute commands inside their shell
+#    -u specifies the user
+#    -i simulates an initial login (sets HOME, USER, etc.)
+sudo -u "$PRIMARY_USER" -i "$USER_SHELL" -l << 'EOF'
+  # ----------------------------------------------------
+  # EVERYTHING INSIDE THIS BLOCK RUNS IN THEIR DEFAULT SHELL
+  # WITH THEIR FULL PATHS AND CONFIGS LOADED
+  # ----------------------------------------------------
+  echo "Current shell context user: $(whoami)"
+  echo "Current Shell binary:       $SHELL"
+  echo "Fully initialized PATH:     $PATH"
+
+  # Run your userspace commands here (e.g., node, cargo, pip, rbenv, nvm)
+  # example_command_here
+EOF
+
+Systemd/Root Execution Context: fira
+Targeting Primary User:         fira
+Targeting Default Shell:        /usr/bin/zsh
+--------------------------------------------------
+Current shell context user: fira
+Current Shell binary:       /usr/bin/zsh
+Fully initialized PATH:     /home/fira/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+```
+
+```
+ ~ % sudo zsh
+Fira# >....
+PRIMARY_USER=$(awk -F: '$3 >= 1000 && $3 < 60000 {print $1; exit}' /etc/passwd)
+
+if [ -z "$PRIMARY_USER" ]; then
+    echo "Error: No primary human user found on this system." >&2
+    exit 1
+fi
+
+# 2. Get that specific user's default shell (e.g., /bin/bash, /usr/bin/zsh)
+USER_SHELL=$(getent passwd "$PRIMARY_USER" | cut -d: -f7)
+
+echo "Systemd/Root Execution Context: $(whoami)"
+echo "Targeting Primary User:         $PRIMARY_USER"
+echo "Targeting Default Shell:        $USER_SHELL"
+echo "--------------------------------------------------"
+
+# 3. Pull in their exact environment and execute commands inside their shell
+#    -u specifies the user
+#    -i simulates an initial login (sets HOME, USER, etc.)
+sudo -u "$PRIMARY_USER" -i "$USER_SHELL" -l << 'EOF'
+  # ----------------------------------------------------
+  # EVERYTHING INSIDE THIS BLOCK RUNS IN THEIR DEFAULT SHELL
+  # WITH THEIR FULL PATHS AND CONFIGS LOADED
+  # ----------------------------------------------------
+  echo "Current shell context user: $(whoami)"
+  echo "Current Shell binary:       $SHELL"
+  echo "Fully initialized PATH:     $PATH"
+
+  # Run your userspace commands here (e.g., node, cargo, pip, rbenv, nvm)
+  # example_command_here
+EOF
+
+zsh: event not found: /bin/bash
+Fira# >....
+PRIMARY_USER=$(awk -F: '$3 >= 1000 && $3 < 60000 {print $1; exit}' /etc/passwd)
+
+if [ -z "$PRIMARY_USER" ]; then
+    echo "Error: No primary human user found on this system." >&2
+    exit 1
+fi
+
+# 2. Get that specific user's default shell (e.g., /bin/bash, /usr/bin/zsh)
+USER_SHELL=$(getent passwd "$PRIMARY_USER" | cut -d: -f7)
+
+echo "Systemd/Root Execution Context: $(whoami)"
+echo "Targeting Primary User:         $PRIMARY_USER"
+echo "Targeting Default Shell:        $USER_SHELL"
+echo "--------------------------------------------------"
+
+# 3. Pull in their exact environment and execute commands inside their shell
+#    -u specifies the user
+#    -i simulates an initial login (sets HOME, USER, etc.)
+sudo -u "$PRIMARY_USER" -i "$USER_SHELL" -l << 'EOF'
+  # ----------------------------------------------------
+  # EVERYTHING INSIDE THIS BLOCK RUNS IN THEIR DEFAULT SHELL
+  # WITH THEIR FULL PATHS AND CONFIGS LOADED
+  # ----------------------------------------------------
+  echo "Current shell context user: $(whoami)"
+  echo "Current Shell binary:       $SHELL"
+  echo "Fully initialized PATH:     $PATH"
+
+  # Run your userspace commands here (e.g., node, cargo, pip, rbenv, nvm)
+  # example_command_here
+EOF
+
+zsh: event not found: /bin/bash
+Fira# /bin/bash
+root@Fira:/home/fira# #!/bin/bash
+
+# 1. Dynamically find the primary human user (first UID >= 1000)
+PRIMARY_USER=$(awk -F: '$3 >= 1000 && $3 < 60000 {print $1; exit}' /etc/passwd)
+
+if [ -z "$PRIMARY_USER" ]; then
+    echo "Error: No primary human user found on this system." >&2
+    exit 1
+fi
+
+# 2. Get that specific user's default shell (e.g., /bin/bash, /usr/bin/zsh)
+USER_SHELL=$(getent passwd "$PRIMARY_USER" | cut -d: -f7)
+
+echo "Systemd/Root Execution Context: $(whoami)"
+echo "Targeting Primary User:         $PRIMARY_USER"
+echo "Targeting Default Shell:        $USER_SHELL"
+echo "--------------------------------------------------"
+
+# 3. Pull in their exact environment and execute commands inside their shell
+#    -u specifies the user
+#    -i simulates an initial login (sets HOME, USER, etc.)
+sudo -u "$PRIMARY_USER" -i "$USER_SHELL" -l << 'EOF'
+  # ----------------------------------------------------
+  # EVERYTHING INSIDE THIS BLOCK RUNS IN THEIR DEFAULT SHELL
+  # WITH THEIR FULL PATHS AND CONFIGS LOADED
+  # ----------------------------------------------------
+  echo "Current shell context user: $(whoami)"
+  echo "Current Shell binary:       $SHELL"
+  echo "Fully initialized PATH:     $PATH"
+
+  # Run your userspace commands here (e.g., node, cargo, pip, rbenv, nvm)
+  # example_command_here
+EOF
+Systemd/Root Execution Context: root
+Targeting Primary User:         fira
+Targeting Default Shell:        /usr/bin/zsh
+--------------------------------------------------
+Current shell context user: fira
+Current Shell binary:       /usr/bin/zsh
+Fully initialized PATH:     /home/fira/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+root@Fira:/home/fira# bun
+Command 'bun' not found, did you mean:
+  command 'bus' from deb atm-tools (1:2.5.1-5)
+  command 'zun' from deb python3-zunclient (4.7.0-0ubuntu1)
+  command 'ben' from deb ben (0.10.3ubuntu2)
+  command 'bup' from deb bup (0.33.2-1)
+Try: apt install <deb name>
+```
+
+```
+ ~ % sudo bash
+root@Fira:/home/fira# #!/bin/bash
+
+# 1. Dynamically find the primary human user (first UID >= 1000)
+PRIMARY_USER=$(awk -F: '$3 >= 1000 && $3 < 60000 {print $1; exit}' /etc/passwd)
+
+if [ -z "$PRIMARY_USER" ]; then
+    echo "Error: No primary human user found on this system." >&2
+    exit 1
+fi
+
+# 2. Get that specific user's default shell (e.g., /bin/bash, /usr/bin/zsh)
+USER_SHELL=$(getent passwd "$PRIMARY_USER" | cut -d: -f7)
+
+echo "Systemd/Root Execution Context: $(whoami)"
+echo "Targeting Primary User:         $PRIMARY_USER"
+echo "Targeting Default Shell:        $USER_SHELL"
+echo "--------------------------------------------------"
+
+# 3. Pull in their exact environment and execute commands inside their shell
+#    -u specifies the user
+#    -i simulates an initial login (sets HOME, USER, etc.)
+sudo -u "$PRIMARY_USER" -i "$USER_SHELL" -l << 'EOF'
+  # ----------------------------------------------------
+  # EVERYTHING INSIDE THIS BLOCK RUNS IN THEIR DEFAULT SHELL
+  # WITH THEIR FULL PATHS AND CONFIGS LOADED
+  # ----------------------------------------------------
+  echo "Current shell context user: $(whoami)"
+  echo "Current Shell binary:       $SHELL"
+  echo "Fully initialized PATH:     $PATH"
+
+  # Run your userspace commands here (e.g., node, cargo, pip, rbenv, nvm)
+  # example_command_here
+EOF
+Systemd/Root Execution Context: root
+Targeting Primary User:         fira
+Targeting Default Shell:        /usr/bin/zsh
+--------------------------------------------------
+Current shell context user: fira
+Current Shell binary:       /usr/bin/zsh
+Fully initialized PATH:     /home/fira/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+```
+
 # py filesystem related modules
 
 When working with the filesystem in Python, you can choose between <mark><strong>built-in standard library modules</strong></mark> (which handle native OS paths) or **third-party abstraction layers** (which let you treat local folders, ZIP files, and cloud buckets identically).
