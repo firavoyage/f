@@ -1,5 +1,5 @@
 import desktop from '@folder/xdg';
-import { cpSync, existsSync, mkdirSync, readdirSync, renameSync, rmdirSync, rmSync, statSync, unlinkSync, writeFileSync } from 'node:fs';
+import { appendFileSync, cpSync, existsSync, mkdirSync, readdirSync, readFileSync, readSync, renameSync, rmdirSync, rmSync, statSync, unlinkSync, writeFileSync } from 'node:fs';
 import { homedir } from 'node:os';
 import {
   join as _join, resolve as _resolve, relative,
@@ -8,18 +8,19 @@ import {
   extname as _extname,
 } from 'node:path';
 
-export stdin = 0
+export const stdin = 0
 type stdin = typeof stdin
 export const stdout = 1
 type stdout = typeof stdout
+export const stderr = 2
+type stderr = typeof stderr
 
 type path_fs = string
 
-type stream_number = typeof stdin | typeof stdout
-
+// type stream_number = stdin | stdout
 // type path = path_fs | stream_number
-type path_w = path_fs | typeof stdout
-type path_r = path_fs | typeof stdin
+type path_w = path_fs | stdout | stderr
+type path_r = path_fs | stdin
 
 // Path
 
@@ -191,7 +192,7 @@ export const mv = rename
 /**
  * delete an individual file
  * 
- * err when non existing
+ * err if non existing
  */
 export function unlink(path: path_fs) {
   return unlinkSync(path)
@@ -203,7 +204,7 @@ export const remove = unlink
 /**
  * delete an empty folder
  * 
- * err when non existing or not empty
+ * err if non existing or not empty
  */
 export function rmdir(path: path_fs) {
   return rmdirSync(path)
@@ -229,61 +230,22 @@ export function mkpath(path: path_fs) {
 
 // File r/w
 
-export function write(path: path, content: string) {
+export function write(path: path_w, content: string) {
   if (is(path, 'string')) {
     mkpath(dirname(path))
   }
 
-  return writeFileSync(path, content)
+  return writeFileSync(path, content, 'utf8')
 }
 
-export function touch(path: path) {
-  
+export function touch(path: path_fs) {
+  return write(path, '')
 }
 
-/**
- * (Over)write a file
- * 
- * write to stdout when path = 1
- * 
- * iff touch when content is not given
- */
-export async function write_(path: path | typeof stdout, content: string = '') {
-  if (typeof path == 'string') {
-    await map_error(() => mkdir(dirname(path), { recursive: true }))
-  }
-  await map_error(() => writeFile(path, content, 'utf8'))
+export function append(path: path_fs, content: string) {
+  return appendFileSync(path, content)
 }
 
-/**
- * Read a file
- * 
- * read from stdin when path = 0
- */
-export async function read_(path: path | typeof stdin) {
-  // @ts-expect-error incorrect (incomprehensive) typing of builtin libs
-  const content = await map_error(() => readFile(path, 'utf8'))
-
-  return content
+export function read(path: path_r) {
+  return readFileSync(path, 'utf8')
 }
-
-export async function append_(path: path, content: string) {
-  await map_error(() => appendFile(path, content))
-}
-
-type remove = { must_exist?: boolean }
-
-export async function remove_(path: path, { must_exist = false }: remove = {}) {
-  const result = await handle(() => unlink(path))
-
-  // @ts-expect-error stupid ts
-  if (is_error(result) && has(map, result.code) && (must_exist || map[result.code] != not_found)) {
-    // @ts-expect-error stupid ts
-    throw err({ type: map[result.code], message: result })
-  }
-
-  // @ts-expect-error stupid ts
-  throw err(result)
-}
-
-
