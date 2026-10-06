@@ -41,7 +41,15 @@ type spawn = Partial<{
 }>
 
 export function spawn(command: string, options: spawn = {}) {
-  const { stdout, stderr, finish } = options
+  const { userspace = false, stdout, stderr, finish } = options
+  if (userspace) {
+    const primary_user = run("awk -F: '$3 >= 1000 && $3 < 60000 {print $1; exit}' /etc/passwd")
+    const user = is(userspace, 'string') ? userspace : primary_user
+
+    const default_shell = run(`getent passwd "${user}" | cut -d: -f7`)
+
+    return spawn(`sudo -u '${user}' -i '${default_shell}' -c '${command}'`, { ...options, userspace: false })
+  }
 
   const process = _spawn(command, options)
 
@@ -65,7 +73,3 @@ export function spawn(command: string, options: spawn = {}) {
 
   return process
 }
-
-log(run('ls', { userspace: 'foo' }))
-
-
