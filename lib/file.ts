@@ -235,7 +235,7 @@ export function write(path: path_w, content: string) {
     mkpath(dirname(path))
   }
 
-  return writeFileSync(path, content, 'utf8')
+  return writeFileSync(path, content, 'utf-8')
 }
 
 export function touch(path: path_fs) {
@@ -247,5 +247,5 @@ export function append(path: path_fs, content: string) {
 }
 
 export function read(path: path_r) {
-  return readFileSync(path, 'utf8')
+  return readFileSync(path, 'utf-8')
 }
