@@ -122,4 +122,8 @@ i will adopt pathname rather than fileutils, as recommended.
 
 thanks to js, iterators and arrays are of polymorphism (constrast to ruby entries/each_entry)
 
+06
+
+maybe i would name it as subprocess, not shell. doesnt matter much. just feels it's an easier choice.
+
 
