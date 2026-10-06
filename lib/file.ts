@@ -3,6 +3,9 @@ import { homedir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { rm, writeFile, readFile, appendFile, mkdir, unlink, access } from 'node:fs/promises';
 
+export const stdin = 0
+export const stdout = 1
+
 let app_id = 'app'
 let xdg = false
 
@@ -19,21 +22,18 @@ export function path(...args: string[]) {
 }
 
 export function data(...args: string[]) {
-  // @ts-expect-error false positive on untyped js
   const data_folder = xdg ? desktop({ subdir: app_id }).data : home(`.${app_id}`, 'data')
 
   return join(data_folder, ...args)
 }
 
 export function config(...args: string[]) {
-  // @ts-expect-error false positive on untyped js
   const config_folder = xdg ? desktop({ subdir: app_id }).config : home(`.${app_id}`, 'config')
 
   return join(config_folder, ...args)
 }
 
 export function cache(...args: string[]) {
-  // @ts-expect-error false positive on untyped js
   const cache_folder = xdg ? desktop({ subdir: app_id }).cache : home(`.${app_id}`, 'cache')
 
   return join(cache_folder, ...args)
@@ -43,8 +43,6 @@ export async function does_exist(path: string) {
   const result = await handle(() => access(path))
   return is_error(result) ? false : true
 }
-
-export const stdout = 1
 
 /**
  * (Over)write a file
@@ -57,11 +55,8 @@ export async function write(path: string | typeof stdout, content: string = '') 
   if (typeof path == 'string') {
     await map_error(() => mkdir(dirname(path), { recursive: true }))
   }
-  // @ts-expect-error incorrect (incomprehensive) typing of builtin libs
   await map_error(() => writeFile(path, content, 'utf8'))
 }
-
-export const stdin = 0
 
 /**
  * Read a file
