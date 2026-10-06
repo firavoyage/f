@@ -5188,6 +5188,8 @@ Show all
 
 # can i contextually be root or user in shell script
 
+## can i contextually be root or user in shell script
+
 <mark><strong><span>Yes, you can absolutely execute commands contextually as either root or a normal user inside a single shell script.</span></strong></mark> However, you cannot directly change the privilege level of the _current_ shell process mid-flight. Instead, you must change user context by executing specific commands or code blocks inside a **subshell** using tools like `sudo`. [link](https://askubuntu.com/questions/978451/how-do-i-run-commands-as-a-non-root-user-in-a-script-started-with-root-permissio)
 
 Depending on how your script is initially launched, you have two primary ways to approach this:
