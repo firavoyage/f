@@ -26,7 +26,8 @@ spec
 - file rw
   - ~~open~~ <!-- ? -->
   - write path content
-    - auto mkpath under the hood
+    - auto mkpath if needed
+  - touch
   - append
     - it must exist
   - read path
@@ -66,6 +67,6 @@ spec
   - cp
   - rmtree ~~rm <!-- or maybe rm_rf? it's dangerous and it should be explicit. -->~~
 
-path can be 0 (stdin) or 1 (stdout)
+path can be 0 (stdin) or 1 (stdout) <!-- or 2, stderr -->
 
-
+open/close are of perf engineering, out of scope.
