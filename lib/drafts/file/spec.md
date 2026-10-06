@@ -8,17 +8,6 @@ spec
   - data
   - config
   - cache
-- file rw
-  - ~~open~~ <!-- ? -->
-  - write path content
-    - auto mkpath under the hood
-  - append
-    - it must exist
-  - read path
-  - ~~binread/write~~
-  - ~~foreach~~
-  - ~~each_line~~ <!-- perf -->
-  - ~~readlines~~ <!-- split by \n instead -->
 - path
   - ~~path~~ pathname string <!-- Pathname.new --> = path, w duplicate/trailing slash handled <!-- i may design a better name (js is lisp1, conflicting factory/constructor/verb fn and noun var, if they are the same word) -->
   - cwd/pwd/getwd <!-- there is more than one way to do it -->
@@ -34,6 +23,17 @@ spec
   - ~~sub path pattern replacement~~
   - ~~sub_ext path new_ext~~
   - ~~split path = [dir, base]~~
+- file rw
+  - ~~open~~ <!-- ? -->
+  - write path content
+    - auto mkpath under the hood
+  - append
+    - it must exist
+  - read path
+  - ~~binread/write~~
+  - ~~foreach~~
+  - ~~each_line~~ <!-- perf -->
+  - ~~readlines~~ <!-- split by \n instead -->
 - queries
   - does exist
   - is file

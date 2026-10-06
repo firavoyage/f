@@ -1,42 +1,66 @@
 import desktop from '@folder/xdg';
 import { homedir } from 'node:os';
-import { join, dirname } from 'node:path';
-import { rm, writeFile, readFile, appendFile, mkdir, unlink, access } from 'node:fs/promises';
+import { join as join_, dirname as dirname_ } from 'node:path';
 
 export const stdin = 0
 export const stdout = 1
 
-let app_id = 'app'
-let xdg = false
+export function pathname(...args: string[]) {
+  const parts = list(args)
 
-export function init(options) {
-  ({ app_id, xdg } = options)
+  return join_(...parts)
+}
+
+export const join = pathname
+
+let data_folder, config_folder, cache_folder
+
+export function init_desktop(app: string, xdg = false) {
+  if (xdg) {
+    (
+      { data: data_folder, config: config_folder, cache: cache_folder } = desktop({ subdir: app })
+    )
+  } else {
+    data_folder = home(`.${app}`, 'data')
+    config_folder = home(`.${app}`, 'config')
+    cache_folder = home(`.${app}`, 'cache')
+  }
 }
 
 export function home(...args: string[]) {
-  return join(homedir(), ...args)
-}
+  const parts = list(args)
 
-export function path(...args: string[]) {
-  return join(...args)
+  return join(homedir(), ...parts)
 }
 
 export function data(...args: string[]) {
-  const data_folder = xdg ? desktop({ subdir: app_id }).data : home(`.${app_id}`, 'data')
+  const parts = list(args)
 
-  return join(data_folder, ...args)
+  if (is(data_folder, 'undefined')) {
+    throw err('desktop folders should be initialized')
+  }
+
+  return join(data_folder, ...parts)
 }
 
 export function config(...args: string[]) {
-  const config_folder = xdg ? desktop({ subdir: app_id }).config : home(`.${app_id}`, 'config')
+  const parts = list(args)
 
-  return join(config_folder, ...args)
+  if (is(config_folder, 'undefined')) {
+    throw err('desktop folders should be initialized')
+  }
+
+  return join(config_folder, ...parts)
 }
 
 export function cache(...args: string[]) {
-  const cache_folder = xdg ? desktop({ subdir: app_id }).cache : home(`.${app_id}`, 'cache')
+  const parts = list(args)
 
-  return join(cache_folder, ...args)
+  if (is(cache_folder, 'undefined')) {
+    throw err('desktop folders should be initialized')
+  }
+
+  return join(cache_folder, ...parts)
 }
 
 export async function does_exist(path: string) {
