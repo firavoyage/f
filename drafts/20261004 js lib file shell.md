@@ -421,6 +421,1678 @@ Current Shell binary:       /usr/bin/zsh
 Fully initialized PATH:     /home/fira/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
 ```
 
+# .
+
+```
+ ~ % PRIMARY_USER=$(awk -F: '$3 >= 1000 && $3 < 60000 {print $1; exit}' /etc/passwd)
+
+ ~ % USER_SHELL=$(getent passwd "$PRIMARY_USER" | cut -d: -f7)
+
+ ~ % echo $USER_SHELL
+/usr/bin/zsh
+ ~ % sudo -u "$PRIMARY_USER" -i "$USER_SHELL" -l
+ ~ % sudo -u "$PRIMARY_USER" -i "$USER_SHELL" -l 'ls'
+usage: sudo -h | -K | -k | -V
+usage: sudo -v [-ABkNnS] [-g group] [-h host] [-p prompt] [-u user]
+usage: sudo -l [-ABkNnS] [-g group] [-h host] [-p prompt] [-U user]
+            [-u user] [command [arg ...]]
+usage: sudo [-ABbEHkNnPS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] [VAR=value] [-i | -s] [command [arg ...]]
+usage: sudo -e [-ABkNnS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] file ...
+ ~ % sudo -u "$PRIMARY_USER" -i "$USER_SHELL" 'ls'
+usage: sudo -h | -K | -k | -V
+usage: sudo -v [-ABkNnS] [-g group] [-h host] [-p prompt] [-u user]
+usage: sudo -l [-ABkNnS] [-g group] [-h host] [-p prompt] [-U user]
+            [-u user] [command [arg ...]]
+usage: sudo [-ABbEHkNnPS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] [VAR=value] [-i | -s] [command [arg ...]]
+usage: sudo -e [-ABkNnS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] file ...
+ ~ % sudo -u "$PRIMARY_USER" -i "$USER_SHELL" -l << 'EOF'
+  # ----------------------------------------------------
+  # EVERYTHING INSIDE THIS BLOCK RUNS IN THEIR DEFAULT SHELL
+  # WITH THEIR FULL PATHS AND CONFIGS LOADED
+  # ----------------------------------------------------
+  echo "Current shell context user: $(whoami)"
+  echo "Current Shell binary:       $SHELL"
+  echo "Fully initialized PATH:     $PATH"
+
+  # Run your userspace commands here (e.g., node, cargo, pip, rbenv, nvm)
+  # example_command_here
+EOF
+usage: sudo -h | -K | -k | -V
+usage: sudo -v [-ABkNnS] [-g group] [-h host] [-p prompt] [-u user]
+usage: sudo -l [-ABkNnS] [-g group] [-h host] [-p prompt] [-U user]
+            [-u user] [command [arg ...]]
+usage: sudo [-ABbEHkNnPS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] [VAR=value] [-i | -s] [command [arg ...]]
+usage: sudo -e [-ABkNnS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] file ...
+ ~ % sudo -u "$PRIMARY_USER" -i "$USER_SHELL" -l << 'EOF'
+  # ----------------------------------------------------
+  # EVERYTHING INSIDE THIS BLOCK RUNS IN THEIR DEFAULT SHELL
+  # WITH THEIR FULL PATHS AND CONFIGS LOADED
+  # ----------------------------------------------------
+  echo "Current shell context user: $(whoami)"
+  echo "Current Shell binary:       $SHELL"
+  echo "Fully initialized PATH:     $PATH"
+
+  # Run your userspace commands here (e.g., node, cargo, pip, rbenv, nvm)
+  # example_command_here
+EOF
+usage: sudo -h | -K | -k | -V
+usage: sudo -v [-ABkNnS] [-g group] [-h host] [-p prompt] [-u user]
+usage: sudo -l [-ABkNnS] [-g group] [-h host] [-p prompt] [-U user]
+            [-u user] [command [arg ...]]
+usage: sudo [-ABbEHkNnPS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] [VAR=value] [-i | -s] [command [arg ...]]
+usage: sudo -e [-ABkNnS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] file ...
+ ~ % sudo -u "$PRIMARY_USER" -i "$USER_SHELL" -l
+usage: sudo -h | -K | -k | -V
+usage: sudo -v [-ABkNnS] [-g group] [-h host] [-p prompt] [-u user]
+usage: sudo -l [-ABkNnS] [-g group] [-h host] [-p prompt] [-U user]
+            [-u user] [command [arg ...]]
+usage: sudo [-ABbEHkNnPS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] [VAR=value] [-i | -s] [command [arg ...]]
+usage: sudo -e [-ABkNnS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] file ...
+ ~ % sudo -u "$PRIMARY_USER" -i "$USER_SHELL" -l -c 'ls'
+usage: sudo -h | -K | -k | -V
+usage: sudo -v [-ABkNnS] [-g group] [-h host] [-p prompt] [-u user]
+usage: sudo -l [-ABkNnS] [-g group] [-h host] [-p prompt] [-U user]
+            [-u user] [command [arg ...]]
+usage: sudo [-ABbEHkNnPS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] [VAR=value] [-i | -s] [command [arg ...]]
+usage: sudo -e [-ABkNnS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] file ...
+ ~ % sudo -u "$PRIMARY_USER" -i "$USER_SHELL" -c 'ls'
+usage: sudo -h | -K | -k | -V
+usage: sudo -v [-ABkNnS] [-g group] [-h host] [-p prompt] [-u user]
+usage: sudo -l [-ABkNnS] [-g group] [-h host] [-p prompt] [-U user]
+            [-u user] [command [arg ...]]
+usage: sudo [-ABbEHkNnPS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] [VAR=value] [-i | -s] [command [arg ...]]
+usage: sudo -e [-ABkNnS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] file ...
+ ~ % sudo -u fira ls
+ Android   Desktop   Documents   Downloads   Music   Pictures   Projects   Public   snap   Templates   Videos  'VirtualBox VMs'
+ ~ % sudo -u fira -i '/usr/bin/zsh'
+ ~ % sudo -u fira -i '/usr/bin/zsh' -c 'ls'
+ Android   Desktop   Documents   Downloads   Music   Pictures   Projects   Public   snap   Templates   Videos  'VirtualBox VMs'
+ ~ % sudo -u fira -i '/usr/bin/zsh' -l
+ ~ % sudo -u fira -i '/usr/bin/zsh' -l -c 'ls'
+ Android   Desktop   Documents   Downloads   Music   Pictures   Projects   Public   snap   Templates   Videos  'VirtualBox VMs'
+ ~ % sudo -u fira -i '/usr/bin/zsh' -l
+ ~ % sudo -u fira -l
+usage: sudo -h | -K | -k | -V
+usage: sudo -v [-ABkNnS] [-g group] [-h host] [-p prompt] [-u user]
+usage: sudo -l [-ABkNnS] [-g group] [-h host] [-p prompt] [-U user]
+            [-u user] [command [arg ...]]
+usage: sudo [-ABbEHkNnPS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] [VAR=value] [-i | -s] [command [arg ...]]
+usage: sudo -e [-ABkNnS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] file ...
+ ~ % sudo -l
+Matching Defaults entries for fira on Fira:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty
+
+User fira may run the following commands on Fira:
+    (ALL : ALL) ALL
+ ~ % sudo -u fira -i '/usr/bin/zsh' -l -c 'ls'
+ Android   Desktop   Documents   Downloads   Music   Pictures   Projects   Public   snap   Templates   Videos  'VirtualBox VMs'
+ ~ % sudo -l -u fira -i '/usr/bin/zsh' -c 'ls'
+usage: sudo -h | -K | -k | -V
+usage: sudo -v [-ABkNnS] [-g group] [-h host] [-p prompt] [-u user]
+usage: sudo -l [-ABkNnS] [-g group] [-h host] [-p prompt] [-U user]
+            [-u user] [command [arg ...]]
+usage: sudo [-ABbEHkNnPS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] [VAR=value] [-i | -s] [command [arg ...]]
+usage: sudo -e [-ABkNnS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] file ...
+ ~ % sudo -l -u fira -i '/usr/bin/zsh' 'ls'
+usage: sudo -h | -K | -k | -V
+usage: sudo -v [-ABkNnS] [-g group] [-h host] [-p prompt] [-u user]
+usage: sudo -l [-ABkNnS] [-g group] [-h host] [-p prompt] [-U user]
+            [-u user] [command [arg ...]]
+usage: sudo [-ABbEHkNnPS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] [VAR=value] [-i | -s] [command [arg ...]]
+usage: sudo -e [-ABkNnS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] file ...
+ ~ % sudo -l -u fira -i '/usr/bin/zsh' -c 'ls'
+usage: sudo -h | -K | -k | -V
+usage: sudo -v [-ABkNnS] [-g group] [-h host] [-p prompt] [-u user]
+usage: sudo -l [-ABkNnS] [-g group] [-h host] [-p prompt] [-U user]
+            [-u user] [command [arg ...]]
+usage: sudo [-ABbEHkNnPS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] [VAR=value] [-i | -s] [command [arg ...]]
+usage: sudo -e [-ABkNnS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] file ...
+ ~ % sudo -u fira -i '/usr/bin/zsh' -c 'ls'
+ Android   Desktop   Documents   Downloads   Music   Pictures   Projects   Public   snap   Templates   Videos  'VirtualBox VMs'
+ ~ % sudo -u fira -i '/usr/bin/zsh' 'ls'
+/usr/bin/zsh: can't open input file: ls
+ ~ % sudo 'ls'
+ Android   Desktop   Documents   Downloads   Music   Pictures   Projects   Public   snap   Templates   Videos  'VirtualBox VMs'
+```
+
+```
+ ~ % getent passwd "fira" | cut -d: -f7
+/usr/bin/zsh
+```
+
+```
+ ~ % cat /var/log/auth.log
+2026-10-04T00:05:01.917362+08:00 Fira CRON[1780472]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T00:05:01.920559+08:00 Fira CRON[1780472]: pam_unix(cron:session): session closed for user root
+2026-10-04T00:15:01.927237+08:00 Fira CRON[1782249]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T00:15:01.930827+08:00 Fira CRON[1782249]: pam_unix(cron:session): session closed for user root
+2026-10-04T00:17:01.936533+08:00 Fira CRON[1782595]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T00:17:01.975153+08:00 Fira CRON[1782595]: pam_unix(cron:session): session closed for user root
+2026-10-04T00:25:01.981861+08:00 Fira CRON[1784422]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T00:25:01.985157+08:00 Fira CRON[1784422]: pam_unix(cron:session): session closed for user root
+2026-10-04T00:33:58.860951+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-04T00:33:58.862870+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-04T01:51:45.688859+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-04T01:51:45.990748+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-04T01:55:01.679613+08:00 Fira CRON[1788001]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T01:55:01.682828+08:00 Fira CRON[1788001]: pam_unix(cron:session): session closed for user root
+2026-10-04T02:05:01.690113+08:00 Fira CRON[1790482]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T02:05:01.693347+08:00 Fira CRON[1790482]: pam_unix(cron:session): session closed for user root
+2026-10-04T02:15:01.701037+08:00 Fira CRON[1793111]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T02:15:01.704496+08:00 Fira CRON[1793111]: pam_unix(cron:session): session closed for user root
+2026-10-04T02:17:01.708773+08:00 Fira CRON[1793628]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T02:17:01.711655+08:00 Fira CRON[1793628]: pam_unix(cron:session): session closed for user root
+2026-10-04T02:25:01.719624+08:00 Fira CRON[1795750]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T02:25:01.722813+08:00 Fira CRON[1795750]: pam_unix(cron:session): session closed for user root
+2026-10-04T02:35:01.728010+08:00 Fira CRON[1797655]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T02:35:01.730177+08:00 Fira CRON[1797655]: pam_unix(cron:session): session closed for user root
+2026-10-04T02:45:01.735403+08:00 Fira CRON[1799918]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T02:45:01.737647+08:00 Fira CRON[1799918]: pam_unix(cron:session): session closed for user root
+2026-10-04T02:55:01.742854+08:00 Fira CRON[1801681]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T02:55:01.746344+08:00 Fira CRON[1801681]: pam_unix(cron:session): session closed for user root
+2026-10-04T03:05:01.102414+08:00 Fira CRON[1803856]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T03:05:01.104843+08:00 Fira CRON[1803856]: pam_unix(cron:session): session closed for user root
+2026-10-04T03:10:01.109754+08:00 Fira CRON[1804753]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T03:10:01.111415+08:00 Fira CRON[1804753]: pam_unix(cron:session): session closed for user root
+2026-10-04T03:15:01.115728+08:00 Fira CRON[1805642]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T03:15:01.117958+08:00 Fira CRON[1805642]: pam_unix(cron:session): session closed for user root
+2026-10-04T03:17:01.121862+08:00 Fira CRON[1806014]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T03:17:01.124081+08:00 Fira CRON[1806014]: pam_unix(cron:session): session closed for user root
+2026-10-04T03:25:01.129284+08:00 Fira CRON[1807890]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T03:25:01.132467+08:00 Fira CRON[1807890]: pam_unix(cron:session): session closed for user root
+2026-10-04T03:30:01.138572+08:00 Fira CRON[1809009]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T03:30:01.140083+08:00 Fira CRON[1809009]: pam_unix(cron:session): session closed for user root
+2026-10-04T03:35:01.144962+08:00 Fira CRON[1809862]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T03:35:01.147143+08:00 Fira CRON[1809862]: pam_unix(cron:session): session closed for user root
+2026-10-04T03:45:01.154798+08:00 Fira CRON[1812149]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T03:45:01.158261+08:00 Fira CRON[1812149]: pam_unix(cron:session): session closed for user root
+2026-10-04T03:52:59.537882+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-04T03:52:59.539670+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-04T04:01:38.430744+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-04T04:01:38.736325+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-04T04:04:07.768821+08:00 Fira gnome-keyring-daemon[1387915]: asked to register item /org/freedesktop/secrets/collection/Default_5fkeyring/1, but it's already registered
+2026-10-04T04:05:01.427180+08:00 Fira CRON[1816433]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T04:05:01.430308+08:00 Fira CRON[1816433]: pam_unix(cron:session): session closed for user root
+2026-10-04T04:12:33.256321+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-04T04:12:33.258196+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-04T15:47:34.444975+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-04T15:47:34.774483+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-04T15:55:01.787864+08:00 Fira CRON[1821309]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T15:55:01.792609+08:00 Fira CRON[1821309]: pam_unix(cron:session): session closed for user root
+2026-10-04T16:05:01.803208+08:00 Fira CRON[1823819]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T16:05:01.808083+08:00 Fira CRON[1823819]: pam_unix(cron:session): session closed for user root
+2026-10-04T16:15:01.820242+08:00 Fira CRON[1825859]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T16:15:01.825219+08:00 Fira CRON[1825859]: pam_unix(cron:session): session closed for user root
+2026-10-04T16:17:01.832924+08:00 Fira CRON[1826231]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T16:17:01.837518+08:00 Fira CRON[1826231]: pam_unix(cron:session): session closed for user root
+2026-10-04T16:25:01.848904+08:00 Fira CRON[1828140]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T16:25:01.853181+08:00 Fira CRON[1828140]: pam_unix(cron:session): session closed for user root
+2026-10-04T16:29:11.941177+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-04T16:29:11.943751+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-04T16:40:52.422532+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-04T16:40:52.757504+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-04T16:41:36.464436+08:00 Fira CRON[1829822]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T16:41:36.475542+08:00 Fira CRON[1829822]: pam_unix(cron:session): session closed for user root
+2026-10-04T16:43:10.701794+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-04T16:43:10.704639+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-04T17:09:21.399132+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-04T17:09:21.732683+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-04T17:15:01.959075+08:00 Fira CRON[1832391]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T17:15:01.963668+08:00 Fira CRON[1832391]: pam_unix(cron:session): session closed for user root
+2026-10-04T17:17:01.971338+08:00 Fira CRON[1832758]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T17:17:01.976180+08:00 Fira CRON[1832758]: pam_unix(cron:session): session closed for user root
+2026-10-04T17:21:03.432836+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-04T17:21:03.435433+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-04T18:19:36.430625+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-04T18:19:36.750354+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-04T18:20:25.420888+08:00 Fira CRON[1835943]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T18:20:25.423902+08:00 Fira CRON[1835943]: pam_unix(cron:session): session closed for user root
+2026-10-04T18:25:01.433424+08:00 Fira CRON[1837588]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T18:25:01.439247+08:00 Fira CRON[1837588]: pam_unix(cron:session): session closed for user root
+2026-10-04T18:30:01.448580+08:00 Fira CRON[1839675]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T18:30:01.451268+08:00 Fira CRON[1839675]: pam_unix(cron:session): session closed for user root
+2026-10-04T18:35:01.460842+08:00 Fira CRON[1840970]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T18:35:01.465672+08:00 Fira CRON[1840970]: pam_unix(cron:session): session closed for user root
+2026-10-04T18:45:01.477104+08:00 Fira CRON[1843470]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T18:45:01.482296+08:00 Fira CRON[1843470]: pam_unix(cron:session): session closed for user root
+2026-10-04T18:49:53.773289+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-04T18:49:53.775672+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-04T19:32:40.414458+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-04T19:32:40.422345+08:00 Fira CRON[1844306]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T19:32:40.426044+08:00 Fira CRON[1844306]: pam_unix(cron:session): session closed for user root
+2026-10-04T19:32:40.737066+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-04T19:35:01.434795+08:00 Fira CRON[1845296]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T19:35:01.439828+08:00 Fira CRON[1845296]: pam_unix(cron:session): session closed for user root
+2026-10-04T19:45:01.450596+08:00 Fira CRON[1848008]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T19:45:01.455691+08:00 Fira CRON[1848008]: pam_unix(cron:session): session closed for user root
+2026-10-04T19:55:01.467496+08:00 Fira CRON[1849734]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T19:55:01.496191+08:00 Fira CRON[1849734]: pam_unix(cron:session): session closed for user root
+2026-10-04T20:05:01.508098+08:00 Fira CRON[1852364]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T20:05:01.512786+08:00 Fira CRON[1852364]: pam_unix(cron:session): session closed for user root
+2026-10-04T20:15:01.524053+08:00 Fira CRON[1854175]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T20:15:01.529015+08:00 Fira CRON[1854175]: pam_unix(cron:session): session closed for user root
+2026-10-04T20:17:01.537966+08:00 Fira CRON[1854471]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T20:17:01.566858+08:00 Fira CRON[1854471]: pam_unix(cron:session): session closed for user root
+2026-10-04T20:20:31.646072+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-04T20:20:31.648647+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-04T20:21:48.411091+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-04T20:21:48.418267+08:00 Fira dbus-daemon[1224]: [system] Rejected send message, 0 matched rules; type="error", sender=":1.1725" (uid=1000 pid=2019 comm="/usr/bin/wireplumber" label="unconfined") interface="(unset)" member="(unset)" error name="org.bluez.MediaEndpoint1.Error.NotImplemented" requested_reply="0" destination=":1.8" (uid=0 pid=1223 comm="/usr/libexec/bluetooth/bluetoothd" label="unconfined")
+2026-10-04T20:21:48.420316+08:00 Fira dbus-daemon[1224]: message repeated 8 times: [ [system] Rejected send message, 0 matched rules; type="error", sender=":1.1725" (uid=1000 pid=2019 comm="/usr/bin/wireplumber" label="unconfined") interface="(unset)" member="(unset)" error name="org.bluez.MediaEndpoint1.Error.NotImplemented" requested_reply="0" destination=":1.8" (uid=0 pid=1223 comm="/usr/libexec/bluetooth/bluetoothd" label="unconfined")]
+2026-10-04T20:21:48.420986+08:00 Fira dbus-daemon[1224]: [system] Rejected send message, 0 matched rules; type="error", sender=":1.1725" (uid=1000 pid=2019 comm="/usr/bin/wireplumber" label="unconfined") interface="(unset)" member="(unset)" error name="org.bluez.MediaEndpoint1.Error.NotImplemented" requested_reply="0" destination=":1.8" (uid=0 pid=1223 comm="/usr/libexec/bluetooth/bluetoothd" label="unconfined")
+2026-10-04T20:21:48.422387+08:00 Fira dbus-daemon[1224]: message repeated 9 times: [ [system] Rejected send message, 0 matched rules; type="error", sender=":1.1725" (uid=1000 pid=2019 comm="/usr/bin/wireplumber" label="unconfined") interface="(unset)" member="(unset)" error name="org.bluez.MediaEndpoint1.Error.NotImplemented" requested_reply="0" destination=":1.8" (uid=0 pid=1223 comm="/usr/libexec/bluetooth/bluetoothd" label="unconfined")]
+2026-10-04T20:21:48.817984+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-04T20:22:52.700731+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-04T20:22:52.703393+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-04T20:40:27.416821+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-04T20:40:27.552593+08:00 Fira CRON[1856432]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T20:40:27.556024+08:00 Fira CRON[1856432]: pam_unix(cron:session): session closed for user root
+2026-10-04T20:40:27.730000+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-04T20:45:01.565108+08:00 Fira CRON[1857998]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T20:45:01.570353+08:00 Fira CRON[1857998]: pam_unix(cron:session): session closed for user root
+2026-10-04T20:55:01.580340+08:00 Fira CRON[1860508]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T20:55:01.585758+08:00 Fira CRON[1860508]: pam_unix(cron:session): session closed for user root
+2026-10-04T20:57:26.032939+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-04T20:57:26.035506+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-04T21:02:13.413929+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-04T21:02:13.419757+08:00 Fira dbus-daemon[1224]: [system] Rejected send message, 0 matched rules; type="error", sender=":1.1725" (uid=1000 pid=2019 comm="/usr/bin/wireplumber" label="unconfined") interface="(unset)" member="(unset)" error name="org.bluez.MediaEndpoint1.Error.NotImplemented" requested_reply="0" destination=":1.8" (uid=0 pid=1223 comm="/usr/libexec/bluetooth/bluetoothd" label="unconfined")
+2026-10-04T21:02:13.421868+08:00 Fira dbus-daemon[1224]: message repeated 12 times: [ [system] Rejected send message, 0 matched rules; type="error", sender=":1.1725" (uid=1000 pid=2019 comm="/usr/bin/wireplumber" label="unconfined") interface="(unset)" member="(unset)" error name="org.bluez.MediaEndpoint1.Error.NotImplemented" requested_reply="0" destination=":1.8" (uid=0 pid=1223 comm="/usr/libexec/bluetooth/bluetoothd" label="unconfined")]
+2026-10-04T21:02:13.438742+08:00 Fira dbus-daemon[1224]: [system] Rejected send message, 0 matched rules; type="error", sender=":1.1725" (uid=1000 pid=2019 comm="/usr/bin/wireplumber" label="unconfined") interface="(unset)" member="(unset)" error name="org.bluez.MediaEndpoint1.Error.NotImplemented" requested_reply="0" destination=":1.8" (uid=0 pid=1223 comm="/usr/libexec/bluetooth/bluetoothd" label="unconfined")
+2026-10-04T21:02:13.439659+08:00 Fira dbus-daemon[1224]: message repeated 5 times: [ [system] Rejected send message, 0 matched rules; type="error", sender=":1.1725" (uid=1000 pid=2019 comm="/usr/bin/wireplumber" label="unconfined") interface="(unset)" member="(unset)" error name="org.bluez.MediaEndpoint1.Error.NotImplemented" requested_reply="0" destination=":1.8" (uid=0 pid=1223 comm="/usr/libexec/bluetooth/bluetoothd" label="unconfined")]
+2026-10-04T21:02:13.721877+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-04T21:05:01.165893+08:00 Fira CRON[1862262]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T21:05:01.171220+08:00 Fira CRON[1862262]: pam_unix(cron:session): session closed for user root
+2026-10-04T21:09:39.698968+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-04T21:09:39.701218+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-04T21:58:29.429832+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-04T21:58:44.108636+08:00 Fira CRON[1863947]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T21:58:44.111162+08:00 Fira CRON[1863947]: pam_unix(cron:session): session closed for user root
+2026-10-04T21:58:53.621349+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-04T22:43:46.453911+08:00 Fira CRON[1864023]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T22:43:46.455912+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-04T22:43:46.456743+08:00 Fira CRON[1864023]: pam_unix(cron:session): session closed for user root
+2026-10-04T22:43:46.734564+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-04T22:45:01.449954+08:00 Fira CRON[1865369]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T22:45:01.453227+08:00 Fira CRON[1865369]: pam_unix(cron:session): session closed for user root
+2026-10-04T22:55:01.460412+08:00 Fira CRON[1867188]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T22:55:01.464069+08:00 Fira CRON[1867188]: pam_unix(cron:session): session closed for user root
+2026-10-04T23:05:01.472767+08:00 Fira CRON[1869418]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T23:05:01.476284+08:00 Fira CRON[1869418]: pam_unix(cron:session): session closed for user root
+2026-10-04T23:15:01.485707+08:00 Fira CRON[1871125]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T23:15:01.489367+08:00 Fira CRON[1871125]: pam_unix(cron:session): session closed for user root
+2026-10-04T23:17:01.495722+08:00 Fira CRON[1871494]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T23:17:01.499295+08:00 Fira CRON[1871494]: pam_unix(cron:session): session closed for user root
+2026-10-04T23:25:01.508180+08:00 Fira CRON[1873331]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T23:25:01.512123+08:00 Fira CRON[1873331]: pam_unix(cron:session): session closed for user root
+2026-10-04T23:30:01.519525+08:00 Fira CRON[1874187]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T23:30:01.522196+08:00 Fira CRON[1874187]: pam_unix(cron:session): session closed for user root
+2026-10-04T23:35:01.530557+08:00 Fira CRON[1875030]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T23:35:01.533694+08:00 Fira CRON[1875030]: pam_unix(cron:session): session closed for user root
+2026-10-04T23:45:01.545005+08:00 Fira CRON[1877247]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T23:45:01.547988+08:00 Fira CRON[1877247]: pam_unix(cron:session): session closed for user root
+2026-10-04T23:55:01.905556+08:00 Fira CRON[1879169]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T23:55:01.909137+08:00 Fira CRON[1879169]: pam_unix(cron:session): session closed for user root
+2026-10-04T23:59:01.916283+08:00 Fira CRON[1879851]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T23:59:01.919762+08:00 Fira CRON[1879851]: pam_unix(cron:session): session closed for user root
+2026-10-05T00:05:01.926758+08:00 Fira CRON[1881907]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T00:05:01.930436+08:00 Fira CRON[1881907]: pam_unix(cron:session): session closed for user root
+2026-10-05T00:15:01.940747+08:00 Fira CRON[1883623]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T00:15:01.943836+08:00 Fira CRON[1883623]: pam_unix(cron:session): session closed for user root
+2026-10-05T00:17:01.950415+08:00 Fira CRON[1883990]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T00:17:01.954448+08:00 Fira CRON[1883990]: pam_unix(cron:session): session closed for user root
+2026-10-05T00:25:01.964232+08:00 Fira CRON[1885865]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T00:25:01.967352+08:00 Fira CRON[1885865]: pam_unix(cron:session): session closed for user root
+2026-10-05T00:35:01.977727+08:00 Fira CRON[1887579]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T00:35:01.981093+08:00 Fira CRON[1887579]: pam_unix(cron:session): session closed for user root
+2026-10-05T00:45:01.991142+08:00 Fira CRON[1889680]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T00:45:01.994818+08:00 Fira CRON[1889680]: pam_unix(cron:session): session closed for user root
+2026-10-05T00:55:02.003435+08:00 Fira CRON[1891864]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T00:55:02.007072+08:00 Fira CRON[1891864]: pam_unix(cron:session): session closed for user root
+2026-10-05T01:05:01.013623+08:00 Fira CRON[1894229]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T01:05:01.016890+08:00 Fira CRON[1894229]: pam_unix(cron:session): session closed for user root
+2026-10-05T01:15:01.024409+08:00 Fira CRON[1896455]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T01:15:01.027848+08:00 Fira CRON[1896455]: pam_unix(cron:session): session closed for user root
+2026-10-05T01:17:01.033116+08:00 Fira CRON[1896875]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T01:17:01.036343+08:00 Fira CRON[1896875]: pam_unix(cron:session): session closed for user root
+2026-10-05T01:25:01.045637+08:00 Fira CRON[1898914]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T01:25:01.048642+08:00 Fira CRON[1898914]: pam_unix(cron:session): session closed for user root
+2026-10-05T01:35:01.056443+08:00 Fira CRON[1900837]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T01:35:01.059834+08:00 Fira CRON[1900837]: pam_unix(cron:session): session closed for user root
+2026-10-05T01:45:01.067663+08:00 Fira CRON[1903368]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T01:45:01.070561+08:00 Fira CRON[1903368]: pam_unix(cron:session): session closed for user root
+2026-10-05T01:55:01.078305+08:00 Fira CRON[1906170]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T01:55:01.081844+08:00 Fira CRON[1906170]: pam_unix(cron:session): session closed for user root
+2026-10-05T02:05:01.090287+08:00 Fira CRON[1908572]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T02:05:01.093661+08:00 Fira CRON[1908572]: pam_unix(cron:session): session closed for user root
+2026-10-05T02:15:01.100583+08:00 Fira CRON[1910491]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T02:15:01.102895+08:00 Fira CRON[1910491]: pam_unix(cron:session): session closed for user root
+2026-10-05T02:17:01.107445+08:00 Fira CRON[1910868]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T02:17:01.118513+08:00 Fira CRON[1910868]: pam_unix(cron:session): session closed for user root
+2026-10-05T02:25:01.115026+08:00 Fira CRON[1912758]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T02:25:01.117243+08:00 Fira CRON[1912758]: pam_unix(cron:session): session closed for user root
+2026-10-05T02:35:01.122637+08:00 Fira CRON[1914602]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T02:35:01.125588+08:00 Fira CRON[1914602]: pam_unix(cron:session): session closed for user root
+2026-10-05T02:45:01.130611+08:00 Fira CRON[1916828]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T02:45:01.132999+08:00 Fira CRON[1916828]: pam_unix(cron:session): session closed for user root
+2026-10-05T02:55:01.138920+08:00 Fira CRON[1918640]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T02:55:01.142419+08:00 Fira CRON[1918640]: pam_unix(cron:session): session closed for user root
+2026-10-05T03:05:01.147558+08:00 Fira CRON[1920982]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T03:05:01.149868+08:00 Fira CRON[1920982]: pam_unix(cron:session): session closed for user root
+2026-10-05T03:05:15.058729+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-05T03:05:15.060324+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-05T13:39:50.408617+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-05T13:39:50.724617+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-05T13:45:01.827107+08:00 Fira CRON[1924259]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T13:45:01.837015+08:00 Fira CRON[1924259]: pam_unix(cron:session): session closed for user root
+2026-10-05T13:55:01.840435+08:00 Fira CRON[1926193]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T13:55:01.844076+08:00 Fira CRON[1926193]: pam_unix(cron:session): session closed for user root
+2026-10-05T14:05:01.852182+08:00 Fira CRON[1928845]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T14:05:01.855801+08:00 Fira CRON[1928845]: pam_unix(cron:session): session closed for user root
+2026-10-05T14:15:01.450140+08:00 Fira CRON[1931406]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T14:15:01.453673+08:00 Fira CRON[1931406]: pam_unix(cron:session): session closed for user root
+2026-10-05T14:17:01.459059+08:00 Fira CRON[1931823]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T14:17:01.462191+08:00 Fira CRON[1931823]: pam_unix(cron:session): session closed for user root
+2026-10-05T14:25:01.469351+08:00 Fira CRON[1933792]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T14:25:01.472763+08:00 Fira CRON[1933792]: pam_unix(cron:session): session closed for user root
+2026-10-05T14:30:01.478790+08:00 Fira CRON[1934745]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T14:30:01.480850+08:00 Fira CRON[1934745]: pam_unix(cron:session): session closed for user root
+2026-10-05T14:35:01.487101+08:00 Fira CRON[1935707]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T14:35:01.517552+08:00 Fira CRON[1935707]: pam_unix(cron:session): session closed for user root
+2026-10-05T14:45:01.525704+08:00 Fira CRON[1938105]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T14:45:01.529291+08:00 Fira CRON[1938105]: pam_unix(cron:session): session closed for user root
+2026-10-05T14:55:01.538165+08:00 Fira CRON[1940044]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T14:55:01.541066+08:00 Fira CRON[1940044]: pam_unix(cron:session): session closed for user root
+2026-10-05T15:05:01.550116+08:00 Fira CRON[1942374]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T15:05:01.553227+08:00 Fira CRON[1942374]: pam_unix(cron:session): session closed for user root
+2026-10-05T15:15:01.562266+08:00 Fira CRON[1944296]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T15:15:01.592965+08:00 Fira CRON[1944296]: pam_unix(cron:session): session closed for user root
+2026-10-05T15:17:01.599885+08:00 Fira CRON[1944717]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T15:17:01.603103+08:00 Fira CRON[1944717]: pam_unix(cron:session): session closed for user root
+2026-10-05T15:25:01.609790+08:00 Fira CRON[1946875]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T15:25:01.612267+08:00 Fira CRON[1946875]: pam_unix(cron:session): session closed for user root
+2026-10-05T15:30:01.617172+08:00 Fira CRON[1947873]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T15:30:01.619076+08:00 Fira CRON[1947873]: pam_unix(cron:session): session closed for user root
+2026-10-05T15:35:01.623952+08:00 Fira CRON[1948875]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T15:35:01.626206+08:00 Fira CRON[1948875]: pam_unix(cron:session): session closed for user root
+2026-10-05T15:36:57.323949+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-05T15:36:57.325876+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-05T18:10:54.692599+08:00 Fira CRON[1949350]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T18:10:54.693860+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-05T18:10:54.693984+08:00 Fira CRON[1949350]: pam_unix(cron:session): session closed for user root
+2026-10-05T18:10:55.003839+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-05T18:11:04.678761+08:00 Fira CRON[1950162]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T18:11:04.682206+08:00 Fira CRON[1950162]: pam_unix(cron:session): session closed for user root
+2026-10-05T18:15:01.493322+08:00 Fira CRON[1951765]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T18:15:01.498683+08:00 Fira CRON[1951765]: pam_unix(cron:session): session closed for user root
+2026-10-05T18:17:01.508000+08:00 Fira CRON[1952165]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T18:17:01.512585+08:00 Fira CRON[1952165]: pam_unix(cron:session): session closed for user root
+2026-10-05T18:25:01.523136+08:00 Fira CRON[1954110]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T18:25:01.528085+08:00 Fira CRON[1954110]: pam_unix(cron:session): session closed for user root
+2026-10-05T18:30:01.537041+08:00 Fira CRON[1955027]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T18:30:01.541700+08:00 Fira CRON[1955027]: pam_unix(cron:session): session closed for user root
+2026-10-05T18:35:01.551619+08:00 Fira CRON[1955999]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T18:35:01.556638+08:00 Fira CRON[1955999]: pam_unix(cron:session): session closed for user root
+2026-10-05T18:44:13.989148+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-05T18:44:13.991976+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-05T19:36:09.415532+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-05T19:36:09.751338+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-05T19:36:51.752920+08:00 Fira CRON[1959219]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T19:36:51.756392+08:00 Fira CRON[1959219]: pam_unix(cron:session): session closed for user root
+2026-10-05T19:41:51.272565+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-05T19:41:51.274979+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-05T20:04:56.416851+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-05T20:04:56.728488+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-05T20:05:01.039772+08:00 Fira CRON[1961295]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T20:05:01.044733+08:00 Fira CRON[1961295]: pam_unix(cron:session): session closed for user root
+2026-10-05T20:15:01.054866+08:00 Fira CRON[1963560]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T20:15:01.059822+08:00 Fira CRON[1963560]: pam_unix(cron:session): session closed for user root
+2026-10-05T20:17:01.067746+08:00 Fira CRON[1963969]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T20:17:01.071834+08:00 Fira CRON[1963969]: pam_unix(cron:session): session closed for user root
+2026-10-05T20:17:44.129293+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-05T20:17:44.131992+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-05T21:15:26.420036+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-05T21:15:26.734943+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-05T21:15:35.081031+08:00 Fira CRON[1965123]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T21:15:35.085621+08:00 Fira CRON[1965123]: pam_unix(cron:session): session closed for user root
+2026-10-05T21:15:35.091715+08:00 Fira CRON[1965126]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T21:15:35.095018+08:00 Fira CRON[1965126]: pam_unix(cron:session): session closed for user root
+2026-10-05T21:17:01.103964+08:00 Fira CRON[1965566]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T21:17:01.109264+08:00 Fira CRON[1965566]: pam_unix(cron:session): session closed for user root
+2026-10-05T21:25:01.120296+08:00 Fira CRON[1967533]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T21:25:01.125626+08:00 Fira CRON[1967533]: pam_unix(cron:session): session closed for user root
+2026-10-05T21:30:01.134413+08:00 Fira CRON[1968520]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T21:30:01.137833+08:00 Fira CRON[1968520]: pam_unix(cron:session): session closed for user root
+2026-10-05T21:34:17.388095+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-05T21:34:17.390795+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-05T22:26:00.411437+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-05T22:26:00.714481+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-05T22:30:01.319784+08:00 Fira CRON[1970900]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T22:30:01.323554+08:00 Fira CRON[1970900]: pam_unix(cron:session): session closed for user root
+2026-10-05T22:35:01.333523+08:00 Fira CRON[1971843]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T22:35:01.337954+08:00 Fira CRON[1971843]: pam_unix(cron:session): session closed for user root
+2026-10-05T22:45:01.348612+08:00 Fira CRON[1974259]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T22:45:01.353755+08:00 Fira CRON[1974259]: pam_unix(cron:session): session closed for user root
+2026-10-05T22:47:30.773483+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-05T22:47:30.775803+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-06T00:21:24.962070+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-06T00:21:44.141023+08:00 Fira CRON[1975802]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T00:21:44.143908+08:00 Fira CRON[1975802]: pam_unix(cron:session): session closed for user root
+2026-10-06T00:21:44.148615+08:00 Fira CRON[1975804]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T00:21:44.152133+08:00 Fira CRON[1975804]: pam_unix(cron:session): session closed for user root
+2026-10-06T00:21:48.841770+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-06T00:36:12.416513+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-06T00:36:12.695212+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-06T00:36:12.754540+08:00 Fira gdm-password]: pam_unix(gdm-password:auth): user [fira] has blank password; authenticated without it
+2026-10-06T00:36:12.755035+08:00 Fira gdm-password]: gkr-pam: no password is available for user
+2026-10-06T00:45:01.803455+08:00 Fira CRON[1978483]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T00:45:01.806673+08:00 Fira CRON[1978483]: pam_unix(cron:session): session closed for user root
+2026-10-06T00:55:01.816085+08:00 Fira CRON[1980270]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T00:55:01.819848+08:00 Fira CRON[1980270]: pam_unix(cron:session): session closed for user root
+2026-10-06T01:05:01.829780+08:00 Fira CRON[1982594]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T01:05:01.832893+08:00 Fira CRON[1982594]: pam_unix(cron:session): session closed for user root
+2026-10-06T01:15:01.841474+08:00 Fira CRON[1984694]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T01:15:01.845015+08:00 Fira CRON[1984694]: pam_unix(cron:session): session closed for user root
+2026-10-06T01:17:01.851369+08:00 Fira CRON[1985053]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T01:17:01.854470+08:00 Fira CRON[1985053]: pam_unix(cron:session): session closed for user root
+2026-10-06T01:25:01.862819+08:00 Fira CRON[1986898]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T01:25:01.866318+08:00 Fira CRON[1986898]: pam_unix(cron:session): session closed for user root
+2026-10-06T01:35:01.875551+08:00 Fira CRON[1988733]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T01:35:01.879066+08:00 Fira CRON[1988733]: pam_unix(cron:session): session closed for user root
+2026-10-06T01:45:01.887841+08:00 Fira CRON[1990946]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T01:45:01.891529+08:00 Fira CRON[1990946]: pam_unix(cron:session): session closed for user root
+2026-10-06T01:55:01.899974+08:00 Fira CRON[1992712]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T01:55:01.906187+08:00 Fira CRON[1992712]: pam_unix(cron:session): session closed for user root
+2026-10-06T02:05:01.489600+08:00 Fira CRON[1994885]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T02:05:01.492727+08:00 Fira CRON[1994885]: pam_unix(cron:session): session closed for user root
+2026-10-06T02:15:01.501738+08:00 Fira CRON[1996654]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T02:15:01.507536+08:00 Fira CRON[1996654]: pam_unix(cron:session): session closed for user root
+2026-10-06T02:17:01.513897+08:00 Fira CRON[1997012]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T02:17:01.516927+08:00 Fira CRON[1997012]: pam_unix(cron:session): session closed for user root
+2026-10-06T02:25:01.526259+08:00 Fira CRON[1998809]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T02:25:01.529922+08:00 Fira CRON[1998809]: pam_unix(cron:session): session closed for user root
+2026-10-06T02:35:01.014062+08:00 Fira CRON[2000610]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T02:35:01.016857+08:00 Fira CRON[2000610]: pam_unix(cron:session): session closed for user root
+2026-10-06T02:45:00.475073+08:00 Fira CRON[2002757]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T02:45:00.478633+08:00 Fira CRON[2002757]: pam_unix(cron:session): session closed for user root
+2026-10-06T02:55:01.487335+08:00 Fira CRON[2004752]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T02:55:01.490898+08:00 Fira CRON[2004752]: pam_unix(cron:session): session closed for user root
+2026-10-06T02:57:58.094827+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-06T02:57:58.096415+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-06T03:31:27.701297+08:00 Fira CRON[2005337]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T03:31:27.701596+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-06T03:31:27.703882+08:00 Fira CRON[2005337]: pam_unix(cron:session): session closed for user root
+2026-10-06T03:31:27.975603+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-06T03:35:01.673071+08:00 Fira CRON[2006671]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T03:35:01.676207+08:00 Fira CRON[2006671]: pam_unix(cron:session): session closed for user root
+2026-10-06T03:36:49.341257+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-06T03:36:49.343082+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-06T14:28:58.442260+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-06T14:28:58.740145+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-06T14:30:01.023146+08:00 Fira CRON[2008635]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T14:30:01.024929+08:00 Fira CRON[2008635]: pam_unix(cron:session): session closed for user root
+2026-10-06T14:35:01.031470+08:00 Fira CRON[2009596]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T14:35:01.034785+08:00 Fira CRON[2009596]: pam_unix(cron:session): session closed for user root
+2026-10-06T14:45:01.044090+08:00 Fira CRON[2011900]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T14:45:01.047544+08:00 Fira CRON[2011900]: pam_unix(cron:session): session closed for user root
+2026-10-06T14:55:01.055311+08:00 Fira CRON[2014126]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T14:55:01.058213+08:00 Fira CRON[2014126]: pam_unix(cron:session): session closed for user root
+2026-10-06T15:05:01.064779+08:00 Fira CRON[2016912]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T15:05:01.067411+08:00 Fira CRON[2016912]: pam_unix(cron:session): session closed for user root
+2026-10-06T15:15:01.075261+08:00 Fira CRON[2018996]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T15:15:01.078877+08:00 Fira CRON[2018996]: pam_unix(cron:session): session closed for user root
+2026-10-06T15:17:01.085086+08:00 Fira CRON[2019461]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T15:17:01.088255+08:00 Fira CRON[2019461]: pam_unix(cron:session): session closed for user root
+2026-10-06T15:17:12.101570+08:00 Fira sudo: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+2026-10-06T15:17:20.183941+08:00 Fira sudo: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+2026-10-06T15:17:20.184626+08:00 Fira sudo:     fira : TTY=pts/10 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/whoami
+2026-10-06T15:17:20.185347+08:00 Fira sudo: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+2026-10-06T15:17:20.187461+08:00 Fira sudo: pam_unix(sudo:session): session closed for user root
+2026-10-06T15:18:23.230405+08:00 Fira sudo:     fira : unknown user f ; TTY=pts/10 ; PWD=/home/fira ; USER=f ;
+2026-10-06T15:18:25.818416+08:00 Fira sudo:     fira : unknown user whoami ; TTY=pts/10 ; PWD=/home/fira ; USER=whoami ;
+2026-10-06T15:18:28.244903+08:00 Fira sudo:     fira : TTY=pts/10 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/whoami
+2026-10-06T15:18:28.247121+08:00 Fira sudo: pam_unix(sudo:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-06T15:18:28.249500+08:00 Fira sudo: pam_unix(sudo:session): session closed for user fira
+2026-10-06T15:18:31.898494+08:00 Fira sudo:     fira : TTY=pts/10 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/whoami
+2026-10-06T15:18:31.899125+08:00 Fira sudo: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+2026-10-06T15:18:31.901183+08:00 Fira sudo: pam_unix(sudo:session): session closed for user root
+2026-10-06T15:19:53.329220+08:00 Fira sudo:     fira : TTY=pts/10 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/who am i
+2026-10-06T15:19:53.330065+08:00 Fira sudo: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+2026-10-06T15:19:53.332795+08:00 Fira sudo: pam_unix(sudo:session): session closed for user root
+2026-10-06T15:25:01.095598+08:00 Fira CRON[2021757]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T15:25:01.099112+08:00 Fira CRON[2021757]: pam_unix(cron:session): session closed for user root
+2026-10-06T15:30:01.106279+08:00 Fira CRON[2022844]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T15:30:01.108837+08:00 Fira CRON[2022844]: pam_unix(cron:session): session closed for user root
+2026-10-06T15:35:01.115927+08:00 Fira CRON[2023856]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T15:35:01.119460+08:00 Fira CRON[2023856]: pam_unix(cron:session): session closed for user root
+2026-10-06T15:39:18.291274+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-06T15:39:18.293089+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-06T18:51:18.427591+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-06T18:51:18.717827+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-06T18:51:24.758012+08:00 Fira sudo: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+2026-10-06T18:51:24.758486+08:00 Fira sudo:     fira : TTY=pts/12 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/zsh
+2026-10-06T18:51:24.759185+08:00 Fira sudo: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+2026-10-06T18:54:50.849008+08:00 Fira sudo: pam_unix(sudo:session): session closed for user root
+2026-10-06T18:55:01.550707+08:00 Fira CRON[2027158]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T18:55:01.556443+08:00 Fira CRON[2027158]: pam_unix(cron:session): session closed for user root
+2026-10-06T18:55:27.465811+08:00 Fira sudo:     fira : TTY=pts/7 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -l'
+2026-10-06T18:55:27.468694+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-06T18:55:27.479416+08:00 Fira sudo: pam_unix(sudo-i:session): session closed for user fira
+2026-10-06T18:55:31.173176+08:00 Fira sudo: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+2026-10-06T18:55:31.173763+08:00 Fira sudo:     fira : TTY=pts/8 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/zsh
+2026-10-06T18:55:31.174525+08:00 Fira sudo: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+2026-10-06T18:55:40.893570+08:00 Fira sudo: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+2026-10-06T18:55:40.894300+08:00 Fira sudo:     fira : TTY=pts/10 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/bash
+2026-10-06T18:55:40.895017+08:00 Fira sudo: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+2026-10-06T18:55:42.865110+08:00 Fira sudo:     root : TTY=pts/11 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -l'
+2026-10-06T18:55:42.867083+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=0)
+2026-10-06T18:55:42.884596+08:00 Fira sudo: pam_unix(sudo-i:session): session closed for user fira
+2026-10-06T18:56:40.916194+08:00 Fira sudo:     root : TTY=pts/9 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -l'
+2026-10-06T18:56:40.918415+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=0)
+2026-10-06T18:56:40.924525+08:00 Fira sudo: pam_unix(sudo-i:session): session closed for user fira
+2026-10-06T18:57:16.871593+08:00 Fira sudo: pam_unix(sudo:session): session closed for user root
+2026-10-06T18:57:23.994930+08:00 Fira sudo: pam_unix(sudo:session): session closed for user root
+2026-10-06T19:05:01.565176+08:00 Fira CRON[2029790]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T19:05:01.568920+08:00 Fira CRON[2029790]: pam_unix(cron:session): session closed for user root
+2026-10-06T19:15:01.579443+08:00 Fira CRON[2031505]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T19:15:01.582613+08:00 Fira CRON[2031505]: pam_unix(cron:session): session closed for user root
+2026-10-06T19:17:01.590247+08:00 Fira CRON[2031850]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T19:17:01.593177+08:00 Fira CRON[2031850]: pam_unix(cron:session): session closed for user root
+2026-10-06T19:25:01.601825+08:00 Fira CRON[2033625]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T19:25:01.605253+08:00 Fira CRON[2033625]: pam_unix(cron:session): session closed for user root
+2026-10-06T19:30:01.613725+08:00 Fira CRON[2034484]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T19:30:01.615904+08:00 Fira CRON[2034484]: pam_unix(cron:session): session closed for user root
+2026-10-06T19:35:01.624064+08:00 Fira CRON[2035424]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T19:35:01.627385+08:00 Fira CRON[2035424]: pam_unix(cron:session): session closed for user root
+2026-10-06T19:45:01.636786+08:00 Fira CRON[2037792]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T19:45:01.642808+08:00 Fira CRON[2037792]: pam_unix(cron:session): session closed for user root
+2026-10-06T19:55:01.652672+08:00 Fira CRON[2039499]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T19:55:01.656370+08:00 Fira CRON[2039499]: pam_unix(cron:session): session closed for user root
+2026-10-06T20:05:01.666227+08:00 Fira CRON[2041627]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T20:05:01.669634+08:00 Fira CRON[2041627]: pam_unix(cron:session): session closed for user root
+2026-10-06T20:15:01.679627+08:00 Fira CRON[2043319]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T20:15:01.710125+08:00 Fira CRON[2043319]: pam_unix(cron:session): session closed for user root
+2026-10-06T20:17:01.716536+08:00 Fira CRON[2043683]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T20:17:01.719395+08:00 Fira CRON[2043683]: pam_unix(cron:session): session closed for user root
+2026-10-06T20:25:01.727578+08:00 Fira CRON[2045849]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T20:25:01.731152+08:00 Fira CRON[2045849]: pam_unix(cron:session): session closed for user root
+2026-10-06T20:30:01.738237+08:00 Fira CRON[2047121]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T20:30:01.740896+08:00 Fira CRON[2047121]: pam_unix(cron:session): session closed for user root
+2026-10-06T20:35:01.748066+08:00 Fira CRON[2048110]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T20:35:01.751543+08:00 Fira CRON[2048110]: pam_unix(cron:session): session closed for user root
+2026-10-06T20:45:01.760052+08:00 Fira CRON[2050642]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T20:45:01.763511+08:00 Fira CRON[2050642]: pam_unix(cron:session): session closed for user root
+2026-10-06T20:55:01.772877+08:00 Fira CRON[2052565]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T20:55:01.776559+08:00 Fira CRON[2052565]: pam_unix(cron:session): session closed for user root
+2026-10-06T21:05:01.785866+08:00 Fira CRON[2054991]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T21:05:01.789352+08:00 Fira CRON[2054991]: pam_unix(cron:session): session closed for user root
+2026-10-06T21:15:01.797985+08:00 Fira CRON[2056761]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T21:15:01.801566+08:00 Fira CRON[2056761]: pam_unix(cron:session): session closed for user root
+2026-10-06T21:17:01.807775+08:00 Fira CRON[2057185]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T21:17:01.810929+08:00 Fira CRON[2057185]: pam_unix(cron:session): session closed for user root
+2026-10-06T21:25:01.816911+08:00 Fira CRON[2060161]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T21:25:01.819236+08:00 Fira CRON[2060161]: pam_unix(cron:session): session closed for user root
+2026-10-06T21:30:01.826584+08:00 Fira CRON[2061127]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T21:30:01.828696+08:00 Fira CRON[2061127]: pam_unix(cron:session): session closed for user root
+2026-10-06T21:35:01.836462+08:00 Fira CRON[2062019]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T21:35:01.840039+08:00 Fira CRON[2062019]: pam_unix(cron:session): session closed for user root
+2026-10-06T21:45:01.849370+08:00 Fira CRON[2064321]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T21:45:01.853050+08:00 Fira CRON[2064321]: pam_unix(cron:session): session closed for user root
+2026-10-06T21:55:01.861410+08:00 Fira CRON[2066432]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T21:55:01.865126+08:00 Fira CRON[2066432]: pam_unix(cron:session): session closed for user root
+2026-10-06T22:05:01.873350+08:00 Fira CRON[2068736]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T22:05:01.876163+08:00 Fira CRON[2068736]: pam_unix(cron:session): session closed for user root
+2026-10-06T22:15:01.884387+08:00 Fira CRON[2070724]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T22:15:01.887627+08:00 Fira CRON[2070724]: pam_unix(cron:session): session closed for user root
+2026-10-06T22:17:01.893961+08:00 Fira CRON[2071058]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T22:17:01.897583+08:00 Fira CRON[2071058]: pam_unix(cron:session): session closed for user root
+2026-10-06T22:25:01.906796+08:00 Fira CRON[2072864]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T22:25:01.912326+08:00 Fira CRON[2072864]: pam_unix(cron:session): session closed for user root
+2026-10-06T22:30:01.920076+08:00 Fira CRON[2073727]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T22:30:01.922669+08:00 Fira CRON[2073727]: pam_unix(cron:session): session closed for user root
+2026-10-06T22:35:01.929251+08:00 Fira CRON[2074574]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T22:35:01.932659+08:00 Fira CRON[2074574]: pam_unix(cron:session): session closed for user root
+2026-10-06T22:45:01.941568+08:00 Fira CRON[2076721]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T22:45:01.945176+08:00 Fira CRON[2076721]: pam_unix(cron:session): session closed for user root
+2026-10-06T22:55:01.955640+08:00 Fira CRON[2078425]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T22:55:01.958767+08:00 Fira CRON[2078425]: pam_unix(cron:session): session closed for user root
+2026-10-06T23:05:01.968463+08:00 Fira CRON[2080546]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T23:05:01.972074+08:00 Fira CRON[2080546]: pam_unix(cron:session): session closed for user root
+2026-10-06T23:15:01.981368+08:00 Fira CRON[2082266]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T23:15:01.984341+08:00 Fira CRON[2082266]: pam_unix(cron:session): session closed for user root
+2026-10-06T23:17:01.990048+08:00 Fira CRON[2082602]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T23:17:01.993478+08:00 Fira CRON[2082602]: pam_unix(cron:session): session closed for user root
+2026-10-06T23:25:02.001515+08:00 Fira CRON[2084611]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T23:25:02.004824+08:00 Fira CRON[2084611]: pam_unix(cron:session): session closed for user root
+2026-10-06T23:30:01.010816+08:00 Fira CRON[2085470]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T23:30:01.013385+08:00 Fira CRON[2085470]: pam_unix(cron:session): session closed for user root
+2026-10-06T23:35:01.020338+08:00 Fira CRON[2086334]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T23:35:01.023498+08:00 Fira CRON[2086334]: pam_unix(cron:session): session closed for user root
+2026-10-06T23:45:01.031585+08:00 Fira CRON[2088487]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T23:45:01.035230+08:00 Fira CRON[2088487]: pam_unix(cron:session): session closed for user root
+2026-10-06T23:55:01.045082+08:00 Fira CRON[2090196]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T23:55:01.048602+08:00 Fira CRON[2090196]: pam_unix(cron:session): session closed for user root
+2026-10-06T23:59:01.055089+08:00 Fira CRON[2090886]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T23:59:01.058435+08:00 Fira CRON[2090886]: pam_unix(cron:session): session closed for user root
+2026-10-07T00:05:01.066350+08:00 Fira CRON[2092927]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T00:05:01.070019+08:00 Fira CRON[2092927]: pam_unix(cron:session): session closed for user root
+2026-10-07T00:15:01.079571+08:00 Fira CRON[2094686]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T00:15:01.083021+08:00 Fira CRON[2094686]: pam_unix(cron:session): session closed for user root
+2026-10-07T00:17:01.088474+08:00 Fira CRON[2095020]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T00:17:01.091864+08:00 Fira CRON[2095020]: pam_unix(cron:session): session closed for user root
+2026-10-07T00:25:01.111022+08:00 Fira CRON[2096837]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T00:25:01.114646+08:00 Fira CRON[2096837]: pam_unix(cron:session): session closed for user root
+2026-10-07T00:35:01.124083+08:00 Fira CRON[2098553]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T00:35:01.127511+08:00 Fira CRON[2098553]: pam_unix(cron:session): session closed for user root
+2026-10-07T00:45:01.135720+08:00 Fira CRON[2100658]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T00:45:01.138531+08:00 Fira CRON[2100658]: pam_unix(cron:session): session closed for user root
+2026-10-07T00:55:01.147522+08:00 Fira CRON[2102379]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T00:55:01.150947+08:00 Fira CRON[2102379]: pam_unix(cron:session): session closed for user root
+2026-10-07T01:05:01.160276+08:00 Fira CRON[2104505]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T01:05:01.171349+08:00 Fira CRON[2104505]: pam_unix(cron:session): session closed for user root
+2026-10-07T01:15:01.174129+08:00 Fira CRON[2106218]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T01:15:01.211603+08:00 Fira CRON[2106218]: pam_unix(cron:session): session closed for user root
+2026-10-07T01:17:01.184328+08:00 Fira CRON[2106554]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T01:17:01.187853+08:00 Fira CRON[2106554]: pam_unix(cron:session): session closed for user root
+2026-10-07T01:25:01.195601+08:00 Fira CRON[2108354]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T01:25:01.198926+08:00 Fira CRON[2108354]: pam_unix(cron:session): session closed for user root
+2026-10-07T01:35:01.208474+08:00 Fira CRON[2110067]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T01:35:01.211615+08:00 Fira CRON[2110067]: pam_unix(cron:session): session closed for user root
+2026-10-07T01:45:01.221520+08:00 Fira CRON[2112196]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T01:45:01.225046+08:00 Fira CRON[2112196]: pam_unix(cron:session): session closed for user root
+2026-10-07T01:55:01.234174+08:00 Fira CRON[2113896]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T01:55:01.237659+08:00 Fira CRON[2113896]: pam_unix(cron:session): session closed for user root
+2026-10-07T02:05:01.246501+08:00 Fira CRON[2116000]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T02:05:01.284111+08:00 Fira CRON[2116000]: pam_unix(cron:session): session closed for user root
+2026-10-07T02:15:01.258199+08:00 Fira CRON[2118291]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T02:15:01.261320+08:00 Fira CRON[2118291]: pam_unix(cron:session): session closed for user root
+2026-10-07T02:17:01.265652+08:00 Fira CRON[2118696]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T02:17:01.267865+08:00 Fira CRON[2118696]: pam_unix(cron:session): session closed for user root
+2026-10-07T02:25:01.275559+08:00 Fira CRON[2120736]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T02:25:01.279089+08:00 Fira CRON[2120736]: pam_unix(cron:session): session closed for user root
+2026-10-07T02:35:01.286656+08:00 Fira CRON[2123032]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T02:35:01.288962+08:00 Fira CRON[2123032]: pam_unix(cron:session): session closed for user root
+2026-10-07T02:45:01.296618+08:00 Fira CRON[2125766]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T02:45:01.299838+08:00 Fira CRON[2125766]: pam_unix(cron:session): session closed for user root
+2026-10-07T02:46:34.720392+08:00 Fira sudo: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+2026-10-07T02:46:43.572051+08:00 Fira sudo:     fira : TTY=pts/7 ; PWD=/home/fira/Documents/f/lib ; USER=root ; COMMAND=/usr/bin/zsh
+2026-10-07T02:46:43.572666+08:00 Fira sudo: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+2026-10-07T02:47:12.320189+08:00 Fira sudo: pam_unix(sudo:session): session closed for user root
+2026-10-07T02:47:19.695714+08:00 Fira sudo:     fira : TTY=pts/7 ; PWD=/home/fira/Documents/f/lib ; USER=root ; COMMAND=/usr/bin/ls
+2026-10-07T02:47:19.696207+08:00 Fira sudo: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+2026-10-07T02:47:19.697898+08:00 Fira sudo: pam_unix(sudo:session): session closed for user root
+2026-10-07T02:51:49.936102+08:00 Fira sudo:     fira : TTY=pts/8 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -l'
+2026-10-07T02:51:49.937896+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T02:55:01.307036+08:00 Fira CRON[2128837]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T02:55:01.310389+08:00 Fira CRON[2128837]: pam_unix(cron:session): session closed for user root
+2026-10-07T02:57:46.336830+08:00 Fira sudo:     fira : TTY=pts/9 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/ls
+2026-10-07T02:57:46.338761+08:00 Fira sudo: pam_unix(sudo:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T02:57:46.340997+08:00 Fira sudo: pam_unix(sudo:session): session closed for user fira
+2026-10-07T02:58:00.578188+08:00 Fira sudo:     fira : TTY=pts/9 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c \\/usr\\/bin\\/zsh
+2026-10-07T02:58:00.580129+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T02:58:07.309910+08:00 Fira sudo:     fira : TTY=pts/10 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -c ls'
+2026-10-07T02:58:07.311672+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T02:58:07.317826+08:00 Fira sudo: pam_unix(sudo-i:session): session closed for user fira
+2026-10-07T02:58:15.501430+08:00 Fira sudo:     fira : TTY=pts/10 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -l'
+2026-10-07T02:58:15.503251+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T02:58:19.001680+08:00 Fira sudo:     fira : TTY=pts/11 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -l -c ls'
+2026-10-07T02:58:19.003328+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T02:58:19.009390+08:00 Fira sudo: pam_unix(sudo-i:session): session closed for user fira
+2026-10-07T02:58:49.138696+08:00 Fira sudo:     fira : TTY=pts/11 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -l'
+2026-10-07T02:58:49.140370+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T02:58:55.364231+08:00 Fira sudo: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+2026-10-07T03:00:05.816226+08:00 Fira sudo:     fira : TTY=pts/12 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -l -c ls'
+2026-10-07T03:00:05.817809+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T03:00:05.823698+08:00 Fira sudo: pam_unix(sudo-i:session): session closed for user fira
+2026-10-07T03:01:45.041001+08:00 Fira sudo:     fira : TTY=pts/12 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -c ls'
+2026-10-07T03:01:45.042690+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T03:01:45.049110+08:00 Fira sudo: pam_unix(sudo-i:session): session closed for user fira
+2026-10-07T03:01:46.795441+08:00 Fira sudo:     fira : TTY=pts/12 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh ls'
+2026-10-07T03:01:46.797456+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T03:01:46.802617+08:00 Fira sudo: pam_unix(sudo-i:session): session closed for user fira
+2026-10-07T03:01:50.613770+08:00 Fira sudo:     fira : TTY=pts/12 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/ls
+2026-10-07T03:01:50.614486+08:00 Fira sudo: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+2026-10-07T03:01:50.616696+08:00 Fira sudo: pam_unix(sudo:session): session closed for user root
+2026-10-07T03:05:01.040319+08:00 Fira CRON[2131751]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T03:05:01.043586+08:00 Fira CRON[2131751]: pam_unix(cron:session): session closed for user root
+2026-10-07T03:05:25.729845+08:00 Fira sudo:     fira : unknown user fira#012 ; TTY=pts/7 ; PWD=/home/fira/Documents/f/lib ; USER=fira#012 ;
+2026-10-07T03:06:10.339548+08:00 Fira sudo:     fira : unknown user fira#012 ; TTY=pts/7 ; PWD=/home/fira/Documents/f/lib ; USER=fira#012 ;
+2026-10-07T03:09:32.151873+08:00 Fira sudo:     fira : TTY=pts/7 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -c ls'
+2026-10-07T03:09:32.153482+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T03:09:32.158994+08:00 Fira sudo: pam_unix(sudo-i:session): session closed for user fira
+2026-10-07T03:09:39.985283+08:00 Fira sudo:     fira : TTY=pts/7 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -c ls'
+2026-10-07T03:09:39.987078+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T03:09:39.992667+08:00 Fira sudo: pam_unix(sudo-i:session): session closed for user fira
+2026-10-07T03:09:45.111094+08:00 Fira sudo:     fira : TTY=pts/7 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -c ls'
+2026-10-07T03:09:45.112675+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T03:09:45.118152+08:00 Fira sudo: pam_unix(sudo-i:session): session closed for user fira
+2026-10-07T03:09:55.581654+08:00 Fira sudo:     fira : TTY=pts/7 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -c ls'
+2026-10-07T03:09:55.583341+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T03:09:55.588798+08:00 Fira sudo: pam_unix(sudo-i:session): session closed for user fira
+2026-10-07T03:10:01.050137+08:00 Fira CRON[2135500]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T03:10:01.052927+08:00 Fira CRON[2135500]: pam_unix(cron:session): session closed for user root
+2026-10-07T03:10:08.601206+08:00 Fira sudo:     fira : unknown user r ; TTY=pts/7 ; PWD=/home/fira/Documents/f/lib ; USER=r ;
+2026-10-07T03:10:29.948731+08:00 Fira sudo:     fira : unknown user foo ; TTY=pts/7 ; PWD=/home/fira/Documents/f/lib ; USER=foo ;
+ ~ % cat /var/log/auth.log
+2026-10-04T00:05:01.917362+08:00 Fira CRON[1780472]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T00:05:01.920559+08:00 Fira CRON[1780472]: pam_unix(cron:session): session closed for user root
+2026-10-04T00:15:01.927237+08:00 Fira CRON[1782249]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T00:15:01.930827+08:00 Fira CRON[1782249]: pam_unix(cron:session): session closed for user root
+2026-10-04T00:17:01.936533+08:00 Fira CRON[1782595]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T00:17:01.975153+08:00 Fira CRON[1782595]: pam_unix(cron:session): session closed for user root
+2026-10-04T00:25:01.981861+08:00 Fira CRON[1784422]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T00:25:01.985157+08:00 Fira CRON[1784422]: pam_unix(cron:session): session closed for user root
+2026-10-04T00:33:58.860951+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-04T00:33:58.862870+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-04T01:51:45.688859+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-04T01:51:45.990748+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-04T01:55:01.679613+08:00 Fira CRON[1788001]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T01:55:01.682828+08:00 Fira CRON[1788001]: pam_unix(cron:session): session closed for user root
+2026-10-04T02:05:01.690113+08:00 Fira CRON[1790482]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T02:05:01.693347+08:00 Fira CRON[1790482]: pam_unix(cron:session): session closed for user root
+2026-10-04T02:15:01.701037+08:00 Fira CRON[1793111]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T02:15:01.704496+08:00 Fira CRON[1793111]: pam_unix(cron:session): session closed for user root
+2026-10-04T02:17:01.708773+08:00 Fira CRON[1793628]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T02:17:01.711655+08:00 Fira CRON[1793628]: pam_unix(cron:session): session closed for user root
+2026-10-04T02:25:01.719624+08:00 Fira CRON[1795750]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T02:25:01.722813+08:00 Fira CRON[1795750]: pam_unix(cron:session): session closed for user root
+2026-10-04T02:35:01.728010+08:00 Fira CRON[1797655]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T02:35:01.730177+08:00 Fira CRON[1797655]: pam_unix(cron:session): session closed for user root
+2026-10-04T02:45:01.735403+08:00 Fira CRON[1799918]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T02:45:01.737647+08:00 Fira CRON[1799918]: pam_unix(cron:session): session closed for user root
+2026-10-04T02:55:01.742854+08:00 Fira CRON[1801681]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T02:55:01.746344+08:00 Fira CRON[1801681]: pam_unix(cron:session): session closed for user root
+2026-10-04T03:05:01.102414+08:00 Fira CRON[1803856]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T03:05:01.104843+08:00 Fira CRON[1803856]: pam_unix(cron:session): session closed for user root
+2026-10-04T03:10:01.109754+08:00 Fira CRON[1804753]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T03:10:01.111415+08:00 Fira CRON[1804753]: pam_unix(cron:session): session closed for user root
+2026-10-04T03:15:01.115728+08:00 Fira CRON[1805642]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T03:15:01.117958+08:00 Fira CRON[1805642]: pam_unix(cron:session): session closed for user root
+2026-10-04T03:17:01.121862+08:00 Fira CRON[1806014]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T03:17:01.124081+08:00 Fira CRON[1806014]: pam_unix(cron:session): session closed for user root
+2026-10-04T03:25:01.129284+08:00 Fira CRON[1807890]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T03:25:01.132467+08:00 Fira CRON[1807890]: pam_unix(cron:session): session closed for user root
+2026-10-04T03:30:01.138572+08:00 Fira CRON[1809009]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T03:30:01.140083+08:00 Fira CRON[1809009]: pam_unix(cron:session): session closed for user root
+2026-10-04T03:35:01.144962+08:00 Fira CRON[1809862]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T03:35:01.147143+08:00 Fira CRON[1809862]: pam_unix(cron:session): session closed for user root
+2026-10-04T03:45:01.154798+08:00 Fira CRON[1812149]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T03:45:01.158261+08:00 Fira CRON[1812149]: pam_unix(cron:session): session closed for user root
+2026-10-04T03:52:59.537882+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-04T03:52:59.539670+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-04T04:01:38.430744+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-04T04:01:38.736325+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-04T04:04:07.768821+08:00 Fira gnome-keyring-daemon[1387915]: asked to register item /org/freedesktop/secrets/collection/Default_5fkeyring/1, but it's already registered
+2026-10-04T04:05:01.427180+08:00 Fira CRON[1816433]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T04:05:01.430308+08:00 Fira CRON[1816433]: pam_unix(cron:session): session closed for user root
+2026-10-04T04:12:33.256321+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-04T04:12:33.258196+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-04T15:47:34.444975+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-04T15:47:34.774483+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-04T15:55:01.787864+08:00 Fira CRON[1821309]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T15:55:01.792609+08:00 Fira CRON[1821309]: pam_unix(cron:session): session closed for user root
+2026-10-04T16:05:01.803208+08:00 Fira CRON[1823819]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T16:05:01.808083+08:00 Fira CRON[1823819]: pam_unix(cron:session): session closed for user root
+2026-10-04T16:15:01.820242+08:00 Fira CRON[1825859]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T16:15:01.825219+08:00 Fira CRON[1825859]: pam_unix(cron:session): session closed for user root
+2026-10-04T16:17:01.832924+08:00 Fira CRON[1826231]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T16:17:01.837518+08:00 Fira CRON[1826231]: pam_unix(cron:session): session closed for user root
+2026-10-04T16:25:01.848904+08:00 Fira CRON[1828140]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T16:25:01.853181+08:00 Fira CRON[1828140]: pam_unix(cron:session): session closed for user root
+2026-10-04T16:29:11.941177+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-04T16:29:11.943751+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-04T16:40:52.422532+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-04T16:40:52.757504+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-04T16:41:36.464436+08:00 Fira CRON[1829822]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T16:41:36.475542+08:00 Fira CRON[1829822]: pam_unix(cron:session): session closed for user root
+2026-10-04T16:43:10.701794+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-04T16:43:10.704639+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-04T17:09:21.399132+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-04T17:09:21.732683+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-04T17:15:01.959075+08:00 Fira CRON[1832391]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T17:15:01.963668+08:00 Fira CRON[1832391]: pam_unix(cron:session): session closed for user root
+2026-10-04T17:17:01.971338+08:00 Fira CRON[1832758]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T17:17:01.976180+08:00 Fira CRON[1832758]: pam_unix(cron:session): session closed for user root
+2026-10-04T17:21:03.432836+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-04T17:21:03.435433+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-04T18:19:36.430625+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-04T18:19:36.750354+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-04T18:20:25.420888+08:00 Fira CRON[1835943]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T18:20:25.423902+08:00 Fira CRON[1835943]: pam_unix(cron:session): session closed for user root
+2026-10-04T18:25:01.433424+08:00 Fira CRON[1837588]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T18:25:01.439247+08:00 Fira CRON[1837588]: pam_unix(cron:session): session closed for user root
+2026-10-04T18:30:01.448580+08:00 Fira CRON[1839675]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T18:30:01.451268+08:00 Fira CRON[1839675]: pam_unix(cron:session): session closed for user root
+2026-10-04T18:35:01.460842+08:00 Fira CRON[1840970]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T18:35:01.465672+08:00 Fira CRON[1840970]: pam_unix(cron:session): session closed for user root
+2026-10-04T18:45:01.477104+08:00 Fira CRON[1843470]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T18:45:01.482296+08:00 Fira CRON[1843470]: pam_unix(cron:session): session closed for user root
+2026-10-04T18:49:53.773289+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-04T18:49:53.775672+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-04T19:32:40.414458+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-04T19:32:40.422345+08:00 Fira CRON[1844306]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T19:32:40.426044+08:00 Fira CRON[1844306]: pam_unix(cron:session): session closed for user root
+2026-10-04T19:32:40.737066+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-04T19:35:01.434795+08:00 Fira CRON[1845296]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T19:35:01.439828+08:00 Fira CRON[1845296]: pam_unix(cron:session): session closed for user root
+2026-10-04T19:45:01.450596+08:00 Fira CRON[1848008]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T19:45:01.455691+08:00 Fira CRON[1848008]: pam_unix(cron:session): session closed for user root
+2026-10-04T19:55:01.467496+08:00 Fira CRON[1849734]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T19:55:01.496191+08:00 Fira CRON[1849734]: pam_unix(cron:session): session closed for user root
+2026-10-04T20:05:01.508098+08:00 Fira CRON[1852364]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T20:05:01.512786+08:00 Fira CRON[1852364]: pam_unix(cron:session): session closed for user root
+2026-10-04T20:15:01.524053+08:00 Fira CRON[1854175]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T20:15:01.529015+08:00 Fira CRON[1854175]: pam_unix(cron:session): session closed for user root
+2026-10-04T20:17:01.537966+08:00 Fira CRON[1854471]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T20:17:01.566858+08:00 Fira CRON[1854471]: pam_unix(cron:session): session closed for user root
+2026-10-04T20:20:31.646072+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-04T20:20:31.648647+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-04T20:21:48.411091+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-04T20:21:48.418267+08:00 Fira dbus-daemon[1224]: [system] Rejected send message, 0 matched rules; type="error", sender=":1.1725" (uid=1000 pid=2019 comm="/usr/bin/wireplumber" label="unconfined") interface="(unset)" member="(unset)" error name="org.bluez.MediaEndpoint1.Error.NotImplemented" requested_reply="0" destination=":1.8" (uid=0 pid=1223 comm="/usr/libexec/bluetooth/bluetoothd" label="unconfined")
+2026-10-04T20:21:48.420316+08:00 Fira dbus-daemon[1224]: message repeated 8 times: [ [system] Rejected send message, 0 matched rules; type="error", sender=":1.1725" (uid=1000 pid=2019 comm="/usr/bin/wireplumber" label="unconfined") interface="(unset)" member="(unset)" error name="org.bluez.MediaEndpoint1.Error.NotImplemented" requested_reply="0" destination=":1.8" (uid=0 pid=1223 comm="/usr/libexec/bluetooth/bluetoothd" label="unconfined")]
+2026-10-04T20:21:48.420986+08:00 Fira dbus-daemon[1224]: [system] Rejected send message, 0 matched rules; type="error", sender=":1.1725" (uid=1000 pid=2019 comm="/usr/bin/wireplumber" label="unconfined") interface="(unset)" member="(unset)" error name="org.bluez.MediaEndpoint1.Error.NotImplemented" requested_reply="0" destination=":1.8" (uid=0 pid=1223 comm="/usr/libexec/bluetooth/bluetoothd" label="unconfined")
+2026-10-04T20:21:48.422387+08:00 Fira dbus-daemon[1224]: message repeated 9 times: [ [system] Rejected send message, 0 matched rules; type="error", sender=":1.1725" (uid=1000 pid=2019 comm="/usr/bin/wireplumber" label="unconfined") interface="(unset)" member="(unset)" error name="org.bluez.MediaEndpoint1.Error.NotImplemented" requested_reply="0" destination=":1.8" (uid=0 pid=1223 comm="/usr/libexec/bluetooth/bluetoothd" label="unconfined")]
+2026-10-04T20:21:48.817984+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-04T20:22:52.700731+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-04T20:22:52.703393+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-04T20:40:27.416821+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-04T20:40:27.552593+08:00 Fira CRON[1856432]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T20:40:27.556024+08:00 Fira CRON[1856432]: pam_unix(cron:session): session closed for user root
+2026-10-04T20:40:27.730000+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-04T20:45:01.565108+08:00 Fira CRON[1857998]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T20:45:01.570353+08:00 Fira CRON[1857998]: pam_unix(cron:session): session closed for user root
+2026-10-04T20:55:01.580340+08:00 Fira CRON[1860508]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T20:55:01.585758+08:00 Fira CRON[1860508]: pam_unix(cron:session): session closed for user root
+2026-10-04T20:57:26.032939+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-04T20:57:26.035506+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-04T21:02:13.413929+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-04T21:02:13.419757+08:00 Fira dbus-daemon[1224]: [system] Rejected send message, 0 matched rules; type="error", sender=":1.1725" (uid=1000 pid=2019 comm="/usr/bin/wireplumber" label="unconfined") interface="(unset)" member="(unset)" error name="org.bluez.MediaEndpoint1.Error.NotImplemented" requested_reply="0" destination=":1.8" (uid=0 pid=1223 comm="/usr/libexec/bluetooth/bluetoothd" label="unconfined")
+2026-10-04T21:02:13.421868+08:00 Fira dbus-daemon[1224]: message repeated 12 times: [ [system] Rejected send message, 0 matched rules; type="error", sender=":1.1725" (uid=1000 pid=2019 comm="/usr/bin/wireplumber" label="unconfined") interface="(unset)" member="(unset)" error name="org.bluez.MediaEndpoint1.Error.NotImplemented" requested_reply="0" destination=":1.8" (uid=0 pid=1223 comm="/usr/libexec/bluetooth/bluetoothd" label="unconfined")]
+2026-10-04T21:02:13.438742+08:00 Fira dbus-daemon[1224]: [system] Rejected send message, 0 matched rules; type="error", sender=":1.1725" (uid=1000 pid=2019 comm="/usr/bin/wireplumber" label="unconfined") interface="(unset)" member="(unset)" error name="org.bluez.MediaEndpoint1.Error.NotImplemented" requested_reply="0" destination=":1.8" (uid=0 pid=1223 comm="/usr/libexec/bluetooth/bluetoothd" label="unconfined")
+2026-10-04T21:02:13.439659+08:00 Fira dbus-daemon[1224]: message repeated 5 times: [ [system] Rejected send message, 0 matched rules; type="error", sender=":1.1725" (uid=1000 pid=2019 comm="/usr/bin/wireplumber" label="unconfined") interface="(unset)" member="(unset)" error name="org.bluez.MediaEndpoint1.Error.NotImplemented" requested_reply="0" destination=":1.8" (uid=0 pid=1223 comm="/usr/libexec/bluetooth/bluetoothd" label="unconfined")]
+2026-10-04T21:02:13.721877+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-04T21:05:01.165893+08:00 Fira CRON[1862262]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T21:05:01.171220+08:00 Fira CRON[1862262]: pam_unix(cron:session): session closed for user root
+2026-10-04T21:09:39.698968+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-04T21:09:39.701218+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-04T21:58:29.429832+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-04T21:58:44.108636+08:00 Fira CRON[1863947]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T21:58:44.111162+08:00 Fira CRON[1863947]: pam_unix(cron:session): session closed for user root
+2026-10-04T21:58:53.621349+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-04T22:43:46.453911+08:00 Fira CRON[1864023]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T22:43:46.455912+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-04T22:43:46.456743+08:00 Fira CRON[1864023]: pam_unix(cron:session): session closed for user root
+2026-10-04T22:43:46.734564+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-04T22:45:01.449954+08:00 Fira CRON[1865369]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T22:45:01.453227+08:00 Fira CRON[1865369]: pam_unix(cron:session): session closed for user root
+2026-10-04T22:55:01.460412+08:00 Fira CRON[1867188]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T22:55:01.464069+08:00 Fira CRON[1867188]: pam_unix(cron:session): session closed for user root
+2026-10-04T23:05:01.472767+08:00 Fira CRON[1869418]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T23:05:01.476284+08:00 Fira CRON[1869418]: pam_unix(cron:session): session closed for user root
+2026-10-04T23:15:01.485707+08:00 Fira CRON[1871125]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T23:15:01.489367+08:00 Fira CRON[1871125]: pam_unix(cron:session): session closed for user root
+2026-10-04T23:17:01.495722+08:00 Fira CRON[1871494]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T23:17:01.499295+08:00 Fira CRON[1871494]: pam_unix(cron:session): session closed for user root
+2026-10-04T23:25:01.508180+08:00 Fira CRON[1873331]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T23:25:01.512123+08:00 Fira CRON[1873331]: pam_unix(cron:session): session closed for user root
+2026-10-04T23:30:01.519525+08:00 Fira CRON[1874187]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T23:30:01.522196+08:00 Fira CRON[1874187]: pam_unix(cron:session): session closed for user root
+2026-10-04T23:35:01.530557+08:00 Fira CRON[1875030]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T23:35:01.533694+08:00 Fira CRON[1875030]: pam_unix(cron:session): session closed for user root
+2026-10-04T23:45:01.545005+08:00 Fira CRON[1877247]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T23:45:01.547988+08:00 Fira CRON[1877247]: pam_unix(cron:session): session closed for user root
+2026-10-04T23:55:01.905556+08:00 Fira CRON[1879169]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T23:55:01.909137+08:00 Fira CRON[1879169]: pam_unix(cron:session): session closed for user root
+2026-10-04T23:59:01.916283+08:00 Fira CRON[1879851]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-04T23:59:01.919762+08:00 Fira CRON[1879851]: pam_unix(cron:session): session closed for user root
+2026-10-05T00:05:01.926758+08:00 Fira CRON[1881907]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T00:05:01.930436+08:00 Fira CRON[1881907]: pam_unix(cron:session): session closed for user root
+2026-10-05T00:15:01.940747+08:00 Fira CRON[1883623]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T00:15:01.943836+08:00 Fira CRON[1883623]: pam_unix(cron:session): session closed for user root
+2026-10-05T00:17:01.950415+08:00 Fira CRON[1883990]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T00:17:01.954448+08:00 Fira CRON[1883990]: pam_unix(cron:session): session closed for user root
+2026-10-05T00:25:01.964232+08:00 Fira CRON[1885865]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T00:25:01.967352+08:00 Fira CRON[1885865]: pam_unix(cron:session): session closed for user root
+2026-10-05T00:35:01.977727+08:00 Fira CRON[1887579]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T00:35:01.981093+08:00 Fira CRON[1887579]: pam_unix(cron:session): session closed for user root
+2026-10-05T00:45:01.991142+08:00 Fira CRON[1889680]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T00:45:01.994818+08:00 Fira CRON[1889680]: pam_unix(cron:session): session closed for user root
+2026-10-05T00:55:02.003435+08:00 Fira CRON[1891864]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T00:55:02.007072+08:00 Fira CRON[1891864]: pam_unix(cron:session): session closed for user root
+2026-10-05T01:05:01.013623+08:00 Fira CRON[1894229]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T01:05:01.016890+08:00 Fira CRON[1894229]: pam_unix(cron:session): session closed for user root
+2026-10-05T01:15:01.024409+08:00 Fira CRON[1896455]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T01:15:01.027848+08:00 Fira CRON[1896455]: pam_unix(cron:session): session closed for user root
+2026-10-05T01:17:01.033116+08:00 Fira CRON[1896875]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T01:17:01.036343+08:00 Fira CRON[1896875]: pam_unix(cron:session): session closed for user root
+2026-10-05T01:25:01.045637+08:00 Fira CRON[1898914]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T01:25:01.048642+08:00 Fira CRON[1898914]: pam_unix(cron:session): session closed for user root
+2026-10-05T01:35:01.056443+08:00 Fira CRON[1900837]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T01:35:01.059834+08:00 Fira CRON[1900837]: pam_unix(cron:session): session closed for user root
+2026-10-05T01:45:01.067663+08:00 Fira CRON[1903368]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T01:45:01.070561+08:00 Fira CRON[1903368]: pam_unix(cron:session): session closed for user root
+2026-10-05T01:55:01.078305+08:00 Fira CRON[1906170]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T01:55:01.081844+08:00 Fira CRON[1906170]: pam_unix(cron:session): session closed for user root
+2026-10-05T02:05:01.090287+08:00 Fira CRON[1908572]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T02:05:01.093661+08:00 Fira CRON[1908572]: pam_unix(cron:session): session closed for user root
+2026-10-05T02:15:01.100583+08:00 Fira CRON[1910491]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T02:15:01.102895+08:00 Fira CRON[1910491]: pam_unix(cron:session): session closed for user root
+2026-10-05T02:17:01.107445+08:00 Fira CRON[1910868]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T02:17:01.118513+08:00 Fira CRON[1910868]: pam_unix(cron:session): session closed for user root
+2026-10-05T02:25:01.115026+08:00 Fira CRON[1912758]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T02:25:01.117243+08:00 Fira CRON[1912758]: pam_unix(cron:session): session closed for user root
+2026-10-05T02:35:01.122637+08:00 Fira CRON[1914602]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T02:35:01.125588+08:00 Fira CRON[1914602]: pam_unix(cron:session): session closed for user root
+2026-10-05T02:45:01.130611+08:00 Fira CRON[1916828]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T02:45:01.132999+08:00 Fira CRON[1916828]: pam_unix(cron:session): session closed for user root
+2026-10-05T02:55:01.138920+08:00 Fira CRON[1918640]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T02:55:01.142419+08:00 Fira CRON[1918640]: pam_unix(cron:session): session closed for user root
+2026-10-05T03:05:01.147558+08:00 Fira CRON[1920982]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T03:05:01.149868+08:00 Fira CRON[1920982]: pam_unix(cron:session): session closed for user root
+2026-10-05T03:05:15.058729+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-05T03:05:15.060324+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-05T13:39:50.408617+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-05T13:39:50.724617+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-05T13:45:01.827107+08:00 Fira CRON[1924259]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T13:45:01.837015+08:00 Fira CRON[1924259]: pam_unix(cron:session): session closed for user root
+2026-10-05T13:55:01.840435+08:00 Fira CRON[1926193]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T13:55:01.844076+08:00 Fira CRON[1926193]: pam_unix(cron:session): session closed for user root
+2026-10-05T14:05:01.852182+08:00 Fira CRON[1928845]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T14:05:01.855801+08:00 Fira CRON[1928845]: pam_unix(cron:session): session closed for user root
+2026-10-05T14:15:01.450140+08:00 Fira CRON[1931406]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T14:15:01.453673+08:00 Fira CRON[1931406]: pam_unix(cron:session): session closed for user root
+2026-10-05T14:17:01.459059+08:00 Fira CRON[1931823]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T14:17:01.462191+08:00 Fira CRON[1931823]: pam_unix(cron:session): session closed for user root
+2026-10-05T14:25:01.469351+08:00 Fira CRON[1933792]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T14:25:01.472763+08:00 Fira CRON[1933792]: pam_unix(cron:session): session closed for user root
+2026-10-05T14:30:01.478790+08:00 Fira CRON[1934745]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T14:30:01.480850+08:00 Fira CRON[1934745]: pam_unix(cron:session): session closed for user root
+2026-10-05T14:35:01.487101+08:00 Fira CRON[1935707]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T14:35:01.517552+08:00 Fira CRON[1935707]: pam_unix(cron:session): session closed for user root
+2026-10-05T14:45:01.525704+08:00 Fira CRON[1938105]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T14:45:01.529291+08:00 Fira CRON[1938105]: pam_unix(cron:session): session closed for user root
+2026-10-05T14:55:01.538165+08:00 Fira CRON[1940044]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T14:55:01.541066+08:00 Fira CRON[1940044]: pam_unix(cron:session): session closed for user root
+2026-10-05T15:05:01.550116+08:00 Fira CRON[1942374]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T15:05:01.553227+08:00 Fira CRON[1942374]: pam_unix(cron:session): session closed for user root
+2026-10-05T15:15:01.562266+08:00 Fira CRON[1944296]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T15:15:01.592965+08:00 Fira CRON[1944296]: pam_unix(cron:session): session closed for user root
+2026-10-05T15:17:01.599885+08:00 Fira CRON[1944717]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T15:17:01.603103+08:00 Fira CRON[1944717]: pam_unix(cron:session): session closed for user root
+2026-10-05T15:25:01.609790+08:00 Fira CRON[1946875]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T15:25:01.612267+08:00 Fira CRON[1946875]: pam_unix(cron:session): session closed for user root
+2026-10-05T15:30:01.617172+08:00 Fira CRON[1947873]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T15:30:01.619076+08:00 Fira CRON[1947873]: pam_unix(cron:session): session closed for user root
+2026-10-05T15:35:01.623952+08:00 Fira CRON[1948875]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T15:35:01.626206+08:00 Fira CRON[1948875]: pam_unix(cron:session): session closed for user root
+2026-10-05T15:36:57.323949+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-05T15:36:57.325876+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-05T18:10:54.692599+08:00 Fira CRON[1949350]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T18:10:54.693860+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-05T18:10:54.693984+08:00 Fira CRON[1949350]: pam_unix(cron:session): session closed for user root
+2026-10-05T18:10:55.003839+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-05T18:11:04.678761+08:00 Fira CRON[1950162]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T18:11:04.682206+08:00 Fira CRON[1950162]: pam_unix(cron:session): session closed for user root
+2026-10-05T18:15:01.493322+08:00 Fira CRON[1951765]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T18:15:01.498683+08:00 Fira CRON[1951765]: pam_unix(cron:session): session closed for user root
+2026-10-05T18:17:01.508000+08:00 Fira CRON[1952165]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T18:17:01.512585+08:00 Fira CRON[1952165]: pam_unix(cron:session): session closed for user root
+2026-10-05T18:25:01.523136+08:00 Fira CRON[1954110]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T18:25:01.528085+08:00 Fira CRON[1954110]: pam_unix(cron:session): session closed for user root
+2026-10-05T18:30:01.537041+08:00 Fira CRON[1955027]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T18:30:01.541700+08:00 Fira CRON[1955027]: pam_unix(cron:session): session closed for user root
+2026-10-05T18:35:01.551619+08:00 Fira CRON[1955999]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T18:35:01.556638+08:00 Fira CRON[1955999]: pam_unix(cron:session): session closed for user root
+2026-10-05T18:44:13.989148+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-05T18:44:13.991976+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-05T19:36:09.415532+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-05T19:36:09.751338+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-05T19:36:51.752920+08:00 Fira CRON[1959219]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T19:36:51.756392+08:00 Fira CRON[1959219]: pam_unix(cron:session): session closed for user root
+2026-10-05T19:41:51.272565+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-05T19:41:51.274979+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-05T20:04:56.416851+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-05T20:04:56.728488+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-05T20:05:01.039772+08:00 Fira CRON[1961295]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T20:05:01.044733+08:00 Fira CRON[1961295]: pam_unix(cron:session): session closed for user root
+2026-10-05T20:15:01.054866+08:00 Fira CRON[1963560]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T20:15:01.059822+08:00 Fira CRON[1963560]: pam_unix(cron:session): session closed for user root
+2026-10-05T20:17:01.067746+08:00 Fira CRON[1963969]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T20:17:01.071834+08:00 Fira CRON[1963969]: pam_unix(cron:session): session closed for user root
+2026-10-05T20:17:44.129293+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-05T20:17:44.131992+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-05T21:15:26.420036+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-05T21:15:26.734943+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-05T21:15:35.081031+08:00 Fira CRON[1965123]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T21:15:35.085621+08:00 Fira CRON[1965123]: pam_unix(cron:session): session closed for user root
+2026-10-05T21:15:35.091715+08:00 Fira CRON[1965126]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T21:15:35.095018+08:00 Fira CRON[1965126]: pam_unix(cron:session): session closed for user root
+2026-10-05T21:17:01.103964+08:00 Fira CRON[1965566]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T21:17:01.109264+08:00 Fira CRON[1965566]: pam_unix(cron:session): session closed for user root
+2026-10-05T21:25:01.120296+08:00 Fira CRON[1967533]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T21:25:01.125626+08:00 Fira CRON[1967533]: pam_unix(cron:session): session closed for user root
+2026-10-05T21:30:01.134413+08:00 Fira CRON[1968520]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T21:30:01.137833+08:00 Fira CRON[1968520]: pam_unix(cron:session): session closed for user root
+2026-10-05T21:34:17.388095+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-05T21:34:17.390795+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-05T22:26:00.411437+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-05T22:26:00.714481+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-05T22:30:01.319784+08:00 Fira CRON[1970900]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T22:30:01.323554+08:00 Fira CRON[1970900]: pam_unix(cron:session): session closed for user root
+2026-10-05T22:35:01.333523+08:00 Fira CRON[1971843]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T22:35:01.337954+08:00 Fira CRON[1971843]: pam_unix(cron:session): session closed for user root
+2026-10-05T22:45:01.348612+08:00 Fira CRON[1974259]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-05T22:45:01.353755+08:00 Fira CRON[1974259]: pam_unix(cron:session): session closed for user root
+2026-10-05T22:47:30.773483+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-05T22:47:30.775803+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-06T00:21:24.962070+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-06T00:21:44.141023+08:00 Fira CRON[1975802]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T00:21:44.143908+08:00 Fira CRON[1975802]: pam_unix(cron:session): session closed for user root
+2026-10-06T00:21:44.148615+08:00 Fira CRON[1975804]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T00:21:44.152133+08:00 Fira CRON[1975804]: pam_unix(cron:session): session closed for user root
+2026-10-06T00:21:48.841770+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-06T00:36:12.416513+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-06T00:36:12.695212+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-06T00:36:12.754540+08:00 Fira gdm-password]: pam_unix(gdm-password:auth): user [fira] has blank password; authenticated without it
+2026-10-06T00:36:12.755035+08:00 Fira gdm-password]: gkr-pam: no password is available for user
+2026-10-06T00:45:01.803455+08:00 Fira CRON[1978483]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T00:45:01.806673+08:00 Fira CRON[1978483]: pam_unix(cron:session): session closed for user root
+2026-10-06T00:55:01.816085+08:00 Fira CRON[1980270]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T00:55:01.819848+08:00 Fira CRON[1980270]: pam_unix(cron:session): session closed for user root
+2026-10-06T01:05:01.829780+08:00 Fira CRON[1982594]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T01:05:01.832893+08:00 Fira CRON[1982594]: pam_unix(cron:session): session closed for user root
+2026-10-06T01:15:01.841474+08:00 Fira CRON[1984694]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T01:15:01.845015+08:00 Fira CRON[1984694]: pam_unix(cron:session): session closed for user root
+2026-10-06T01:17:01.851369+08:00 Fira CRON[1985053]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T01:17:01.854470+08:00 Fira CRON[1985053]: pam_unix(cron:session): session closed for user root
+2026-10-06T01:25:01.862819+08:00 Fira CRON[1986898]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T01:25:01.866318+08:00 Fira CRON[1986898]: pam_unix(cron:session): session closed for user root
+2026-10-06T01:35:01.875551+08:00 Fira CRON[1988733]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T01:35:01.879066+08:00 Fira CRON[1988733]: pam_unix(cron:session): session closed for user root
+2026-10-06T01:45:01.887841+08:00 Fira CRON[1990946]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T01:45:01.891529+08:00 Fira CRON[1990946]: pam_unix(cron:session): session closed for user root
+2026-10-06T01:55:01.899974+08:00 Fira CRON[1992712]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T01:55:01.906187+08:00 Fira CRON[1992712]: pam_unix(cron:session): session closed for user root
+2026-10-06T02:05:01.489600+08:00 Fira CRON[1994885]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T02:05:01.492727+08:00 Fira CRON[1994885]: pam_unix(cron:session): session closed for user root
+2026-10-06T02:15:01.501738+08:00 Fira CRON[1996654]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T02:15:01.507536+08:00 Fira CRON[1996654]: pam_unix(cron:session): session closed for user root
+2026-10-06T02:17:01.513897+08:00 Fira CRON[1997012]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T02:17:01.516927+08:00 Fira CRON[1997012]: pam_unix(cron:session): session closed for user root
+2026-10-06T02:25:01.526259+08:00 Fira CRON[1998809]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T02:25:01.529922+08:00 Fira CRON[1998809]: pam_unix(cron:session): session closed for user root
+2026-10-06T02:35:01.014062+08:00 Fira CRON[2000610]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T02:35:01.016857+08:00 Fira CRON[2000610]: pam_unix(cron:session): session closed for user root
+2026-10-06T02:45:00.475073+08:00 Fira CRON[2002757]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T02:45:00.478633+08:00 Fira CRON[2002757]: pam_unix(cron:session): session closed for user root
+2026-10-06T02:55:01.487335+08:00 Fira CRON[2004752]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T02:55:01.490898+08:00 Fira CRON[2004752]: pam_unix(cron:session): session closed for user root
+2026-10-06T02:57:58.094827+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-06T02:57:58.096415+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-06T03:31:27.701297+08:00 Fira CRON[2005337]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T03:31:27.701596+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-06T03:31:27.703882+08:00 Fira CRON[2005337]: pam_unix(cron:session): session closed for user root
+2026-10-06T03:31:27.975603+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-06T03:35:01.673071+08:00 Fira CRON[2006671]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T03:35:01.676207+08:00 Fira CRON[2006671]: pam_unix(cron:session): session closed for user root
+2026-10-06T03:36:49.341257+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-06T03:36:49.343082+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-06T14:28:58.442260+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-06T14:28:58.740145+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-06T14:30:01.023146+08:00 Fira CRON[2008635]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T14:30:01.024929+08:00 Fira CRON[2008635]: pam_unix(cron:session): session closed for user root
+2026-10-06T14:35:01.031470+08:00 Fira CRON[2009596]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T14:35:01.034785+08:00 Fira CRON[2009596]: pam_unix(cron:session): session closed for user root
+2026-10-06T14:45:01.044090+08:00 Fira CRON[2011900]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T14:45:01.047544+08:00 Fira CRON[2011900]: pam_unix(cron:session): session closed for user root
+2026-10-06T14:55:01.055311+08:00 Fira CRON[2014126]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T14:55:01.058213+08:00 Fira CRON[2014126]: pam_unix(cron:session): session closed for user root
+2026-10-06T15:05:01.064779+08:00 Fira CRON[2016912]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T15:05:01.067411+08:00 Fira CRON[2016912]: pam_unix(cron:session): session closed for user root
+2026-10-06T15:15:01.075261+08:00 Fira CRON[2018996]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T15:15:01.078877+08:00 Fira CRON[2018996]: pam_unix(cron:session): session closed for user root
+2026-10-06T15:17:01.085086+08:00 Fira CRON[2019461]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T15:17:01.088255+08:00 Fira CRON[2019461]: pam_unix(cron:session): session closed for user root
+2026-10-06T15:17:12.101570+08:00 Fira sudo: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+2026-10-06T15:17:20.183941+08:00 Fira sudo: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+2026-10-06T15:17:20.184626+08:00 Fira sudo:     fira : TTY=pts/10 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/whoami
+2026-10-06T15:17:20.185347+08:00 Fira sudo: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+2026-10-06T15:17:20.187461+08:00 Fira sudo: pam_unix(sudo:session): session closed for user root
+2026-10-06T15:18:23.230405+08:00 Fira sudo:     fira : unknown user f ; TTY=pts/10 ; PWD=/home/fira ; USER=f ;
+2026-10-06T15:18:25.818416+08:00 Fira sudo:     fira : unknown user whoami ; TTY=pts/10 ; PWD=/home/fira ; USER=whoami ;
+2026-10-06T15:18:28.244903+08:00 Fira sudo:     fira : TTY=pts/10 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/whoami
+2026-10-06T15:18:28.247121+08:00 Fira sudo: pam_unix(sudo:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-06T15:18:28.249500+08:00 Fira sudo: pam_unix(sudo:session): session closed for user fira
+2026-10-06T15:18:31.898494+08:00 Fira sudo:     fira : TTY=pts/10 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/whoami
+2026-10-06T15:18:31.899125+08:00 Fira sudo: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+2026-10-06T15:18:31.901183+08:00 Fira sudo: pam_unix(sudo:session): session closed for user root
+2026-10-06T15:19:53.329220+08:00 Fira sudo:     fira : TTY=pts/10 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/who am i
+2026-10-06T15:19:53.330065+08:00 Fira sudo: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+2026-10-06T15:19:53.332795+08:00 Fira sudo: pam_unix(sudo:session): session closed for user root
+2026-10-06T15:25:01.095598+08:00 Fira CRON[2021757]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T15:25:01.099112+08:00 Fira CRON[2021757]: pam_unix(cron:session): session closed for user root
+2026-10-06T15:30:01.106279+08:00 Fira CRON[2022844]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T15:30:01.108837+08:00 Fira CRON[2022844]: pam_unix(cron:session): session closed for user root
+2026-10-06T15:35:01.115927+08:00 Fira CRON[2023856]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T15:35:01.119460+08:00 Fira CRON[2023856]: pam_unix(cron:session): session closed for user root
+2026-10-06T15:39:18.291274+08:00 Fira systemd-logind[1260]: Lid closed.
+2026-10-06T15:39:18.293089+08:00 Fira systemd-logind[1260]: Suspending...
+2026-10-06T18:51:18.427591+08:00 Fira systemd-logind[1260]: Lid opened.
+2026-10-06T18:51:18.717827+08:00 Fira systemd-logind[1260]: Operation 'suspend' finished.
+2026-10-06T18:51:24.758012+08:00 Fira sudo: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+2026-10-06T18:51:24.758486+08:00 Fira sudo:     fira : TTY=pts/12 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/zsh
+2026-10-06T18:51:24.759185+08:00 Fira sudo: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+2026-10-06T18:54:50.849008+08:00 Fira sudo: pam_unix(sudo:session): session closed for user root
+2026-10-06T18:55:01.550707+08:00 Fira CRON[2027158]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T18:55:01.556443+08:00 Fira CRON[2027158]: pam_unix(cron:session): session closed for user root
+2026-10-06T18:55:27.465811+08:00 Fira sudo:     fira : TTY=pts/7 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -l'
+2026-10-06T18:55:27.468694+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-06T18:55:27.479416+08:00 Fira sudo: pam_unix(sudo-i:session): session closed for user fira
+2026-10-06T18:55:31.173176+08:00 Fira sudo: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+2026-10-06T18:55:31.173763+08:00 Fira sudo:     fira : TTY=pts/8 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/zsh
+2026-10-06T18:55:31.174525+08:00 Fira sudo: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+2026-10-06T18:55:40.893570+08:00 Fira sudo: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+2026-10-06T18:55:40.894300+08:00 Fira sudo:     fira : TTY=pts/10 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/bash
+2026-10-06T18:55:40.895017+08:00 Fira sudo: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+2026-10-06T18:55:42.865110+08:00 Fira sudo:     root : TTY=pts/11 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -l'
+2026-10-06T18:55:42.867083+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=0)
+2026-10-06T18:55:42.884596+08:00 Fira sudo: pam_unix(sudo-i:session): session closed for user fira
+2026-10-06T18:56:40.916194+08:00 Fira sudo:     root : TTY=pts/9 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -l'
+2026-10-06T18:56:40.918415+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=0)
+2026-10-06T18:56:40.924525+08:00 Fira sudo: pam_unix(sudo-i:session): session closed for user fira
+2026-10-06T18:57:16.871593+08:00 Fira sudo: pam_unix(sudo:session): session closed for user root
+2026-10-06T18:57:23.994930+08:00 Fira sudo: pam_unix(sudo:session): session closed for user root
+2026-10-06T19:05:01.565176+08:00 Fira CRON[2029790]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T19:05:01.568920+08:00 Fira CRON[2029790]: pam_unix(cron:session): session closed for user root
+2026-10-06T19:15:01.579443+08:00 Fira CRON[2031505]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T19:15:01.582613+08:00 Fira CRON[2031505]: pam_unix(cron:session): session closed for user root
+2026-10-06T19:17:01.590247+08:00 Fira CRON[2031850]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T19:17:01.593177+08:00 Fira CRON[2031850]: pam_unix(cron:session): session closed for user root
+2026-10-06T19:25:01.601825+08:00 Fira CRON[2033625]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T19:25:01.605253+08:00 Fira CRON[2033625]: pam_unix(cron:session): session closed for user root
+2026-10-06T19:30:01.613725+08:00 Fira CRON[2034484]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T19:30:01.615904+08:00 Fira CRON[2034484]: pam_unix(cron:session): session closed for user root
+2026-10-06T19:35:01.624064+08:00 Fira CRON[2035424]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T19:35:01.627385+08:00 Fira CRON[2035424]: pam_unix(cron:session): session closed for user root
+2026-10-06T19:45:01.636786+08:00 Fira CRON[2037792]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T19:45:01.642808+08:00 Fira CRON[2037792]: pam_unix(cron:session): session closed for user root
+2026-10-06T19:55:01.652672+08:00 Fira CRON[2039499]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T19:55:01.656370+08:00 Fira CRON[2039499]: pam_unix(cron:session): session closed for user root
+2026-10-06T20:05:01.666227+08:00 Fira CRON[2041627]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T20:05:01.669634+08:00 Fira CRON[2041627]: pam_unix(cron:session): session closed for user root
+2026-10-06T20:15:01.679627+08:00 Fira CRON[2043319]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T20:15:01.710125+08:00 Fira CRON[2043319]: pam_unix(cron:session): session closed for user root
+2026-10-06T20:17:01.716536+08:00 Fira CRON[2043683]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T20:17:01.719395+08:00 Fira CRON[2043683]: pam_unix(cron:session): session closed for user root
+2026-10-06T20:25:01.727578+08:00 Fira CRON[2045849]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T20:25:01.731152+08:00 Fira CRON[2045849]: pam_unix(cron:session): session closed for user root
+2026-10-06T20:30:01.738237+08:00 Fira CRON[2047121]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T20:30:01.740896+08:00 Fira CRON[2047121]: pam_unix(cron:session): session closed for user root
+2026-10-06T20:35:01.748066+08:00 Fira CRON[2048110]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T20:35:01.751543+08:00 Fira CRON[2048110]: pam_unix(cron:session): session closed for user root
+2026-10-06T20:45:01.760052+08:00 Fira CRON[2050642]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T20:45:01.763511+08:00 Fira CRON[2050642]: pam_unix(cron:session): session closed for user root
+2026-10-06T20:55:01.772877+08:00 Fira CRON[2052565]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T20:55:01.776559+08:00 Fira CRON[2052565]: pam_unix(cron:session): session closed for user root
+2026-10-06T21:05:01.785866+08:00 Fira CRON[2054991]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T21:05:01.789352+08:00 Fira CRON[2054991]: pam_unix(cron:session): session closed for user root
+2026-10-06T21:15:01.797985+08:00 Fira CRON[2056761]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T21:15:01.801566+08:00 Fira CRON[2056761]: pam_unix(cron:session): session closed for user root
+2026-10-06T21:17:01.807775+08:00 Fira CRON[2057185]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T21:17:01.810929+08:00 Fira CRON[2057185]: pam_unix(cron:session): session closed for user root
+2026-10-06T21:25:01.816911+08:00 Fira CRON[2060161]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T21:25:01.819236+08:00 Fira CRON[2060161]: pam_unix(cron:session): session closed for user root
+2026-10-06T21:30:01.826584+08:00 Fira CRON[2061127]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T21:30:01.828696+08:00 Fira CRON[2061127]: pam_unix(cron:session): session closed for user root
+2026-10-06T21:35:01.836462+08:00 Fira CRON[2062019]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T21:35:01.840039+08:00 Fira CRON[2062019]: pam_unix(cron:session): session closed for user root
+2026-10-06T21:45:01.849370+08:00 Fira CRON[2064321]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T21:45:01.853050+08:00 Fira CRON[2064321]: pam_unix(cron:session): session closed for user root
+2026-10-06T21:55:01.861410+08:00 Fira CRON[2066432]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T21:55:01.865126+08:00 Fira CRON[2066432]: pam_unix(cron:session): session closed for user root
+2026-10-06T22:05:01.873350+08:00 Fira CRON[2068736]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T22:05:01.876163+08:00 Fira CRON[2068736]: pam_unix(cron:session): session closed for user root
+2026-10-06T22:15:01.884387+08:00 Fira CRON[2070724]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T22:15:01.887627+08:00 Fira CRON[2070724]: pam_unix(cron:session): session closed for user root
+2026-10-06T22:17:01.893961+08:00 Fira CRON[2071058]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T22:17:01.897583+08:00 Fira CRON[2071058]: pam_unix(cron:session): session closed for user root
+2026-10-06T22:25:01.906796+08:00 Fira CRON[2072864]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T22:25:01.912326+08:00 Fira CRON[2072864]: pam_unix(cron:session): session closed for user root
+2026-10-06T22:30:01.920076+08:00 Fira CRON[2073727]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T22:30:01.922669+08:00 Fira CRON[2073727]: pam_unix(cron:session): session closed for user root
+2026-10-06T22:35:01.929251+08:00 Fira CRON[2074574]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T22:35:01.932659+08:00 Fira CRON[2074574]: pam_unix(cron:session): session closed for user root
+2026-10-06T22:45:01.941568+08:00 Fira CRON[2076721]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T22:45:01.945176+08:00 Fira CRON[2076721]: pam_unix(cron:session): session closed for user root
+2026-10-06T22:55:01.955640+08:00 Fira CRON[2078425]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T22:55:01.958767+08:00 Fira CRON[2078425]: pam_unix(cron:session): session closed for user root
+2026-10-06T23:05:01.968463+08:00 Fira CRON[2080546]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T23:05:01.972074+08:00 Fira CRON[2080546]: pam_unix(cron:session): session closed for user root
+2026-10-06T23:15:01.981368+08:00 Fira CRON[2082266]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T23:15:01.984341+08:00 Fira CRON[2082266]: pam_unix(cron:session): session closed for user root
+2026-10-06T23:17:01.990048+08:00 Fira CRON[2082602]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T23:17:01.993478+08:00 Fira CRON[2082602]: pam_unix(cron:session): session closed for user root
+2026-10-06T23:25:02.001515+08:00 Fira CRON[2084611]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T23:25:02.004824+08:00 Fira CRON[2084611]: pam_unix(cron:session): session closed for user root
+2026-10-06T23:30:01.010816+08:00 Fira CRON[2085470]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T23:30:01.013385+08:00 Fira CRON[2085470]: pam_unix(cron:session): session closed for user root
+2026-10-06T23:35:01.020338+08:00 Fira CRON[2086334]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T23:35:01.023498+08:00 Fira CRON[2086334]: pam_unix(cron:session): session closed for user root
+2026-10-06T23:45:01.031585+08:00 Fira CRON[2088487]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T23:45:01.035230+08:00 Fira CRON[2088487]: pam_unix(cron:session): session closed for user root
+2026-10-06T23:55:01.045082+08:00 Fira CRON[2090196]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T23:55:01.048602+08:00 Fira CRON[2090196]: pam_unix(cron:session): session closed for user root
+2026-10-06T23:59:01.055089+08:00 Fira CRON[2090886]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-06T23:59:01.058435+08:00 Fira CRON[2090886]: pam_unix(cron:session): session closed for user root
+2026-10-07T00:05:01.066350+08:00 Fira CRON[2092927]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T00:05:01.070019+08:00 Fira CRON[2092927]: pam_unix(cron:session): session closed for user root
+2026-10-07T00:15:01.079571+08:00 Fira CRON[2094686]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T00:15:01.083021+08:00 Fira CRON[2094686]: pam_unix(cron:session): session closed for user root
+2026-10-07T00:17:01.088474+08:00 Fira CRON[2095020]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T00:17:01.091864+08:00 Fira CRON[2095020]: pam_unix(cron:session): session closed for user root
+2026-10-07T00:25:01.111022+08:00 Fira CRON[2096837]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T00:25:01.114646+08:00 Fira CRON[2096837]: pam_unix(cron:session): session closed for user root
+2026-10-07T00:35:01.124083+08:00 Fira CRON[2098553]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T00:35:01.127511+08:00 Fira CRON[2098553]: pam_unix(cron:session): session closed for user root
+2026-10-07T00:45:01.135720+08:00 Fira CRON[2100658]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T00:45:01.138531+08:00 Fira CRON[2100658]: pam_unix(cron:session): session closed for user root
+2026-10-07T00:55:01.147522+08:00 Fira CRON[2102379]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T00:55:01.150947+08:00 Fira CRON[2102379]: pam_unix(cron:session): session closed for user root
+2026-10-07T01:05:01.160276+08:00 Fira CRON[2104505]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T01:05:01.171349+08:00 Fira CRON[2104505]: pam_unix(cron:session): session closed for user root
+2026-10-07T01:15:01.174129+08:00 Fira CRON[2106218]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T01:15:01.211603+08:00 Fira CRON[2106218]: pam_unix(cron:session): session closed for user root
+2026-10-07T01:17:01.184328+08:00 Fira CRON[2106554]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T01:17:01.187853+08:00 Fira CRON[2106554]: pam_unix(cron:session): session closed for user root
+2026-10-07T01:25:01.195601+08:00 Fira CRON[2108354]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T01:25:01.198926+08:00 Fira CRON[2108354]: pam_unix(cron:session): session closed for user root
+2026-10-07T01:35:01.208474+08:00 Fira CRON[2110067]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T01:35:01.211615+08:00 Fira CRON[2110067]: pam_unix(cron:session): session closed for user root
+2026-10-07T01:45:01.221520+08:00 Fira CRON[2112196]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T01:45:01.225046+08:00 Fira CRON[2112196]: pam_unix(cron:session): session closed for user root
+2026-10-07T01:55:01.234174+08:00 Fira CRON[2113896]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T01:55:01.237659+08:00 Fira CRON[2113896]: pam_unix(cron:session): session closed for user root
+2026-10-07T02:05:01.246501+08:00 Fira CRON[2116000]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T02:05:01.284111+08:00 Fira CRON[2116000]: pam_unix(cron:session): session closed for user root
+2026-10-07T02:15:01.258199+08:00 Fira CRON[2118291]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T02:15:01.261320+08:00 Fira CRON[2118291]: pam_unix(cron:session): session closed for user root
+2026-10-07T02:17:01.265652+08:00 Fira CRON[2118696]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T02:17:01.267865+08:00 Fira CRON[2118696]: pam_unix(cron:session): session closed for user root
+2026-10-07T02:25:01.275559+08:00 Fira CRON[2120736]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T02:25:01.279089+08:00 Fira CRON[2120736]: pam_unix(cron:session): session closed for user root
+2026-10-07T02:35:01.286656+08:00 Fira CRON[2123032]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T02:35:01.288962+08:00 Fira CRON[2123032]: pam_unix(cron:session): session closed for user root
+2026-10-07T02:45:01.296618+08:00 Fira CRON[2125766]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T02:45:01.299838+08:00 Fira CRON[2125766]: pam_unix(cron:session): session closed for user root
+2026-10-07T02:46:34.720392+08:00 Fira sudo: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+2026-10-07T02:46:43.572051+08:00 Fira sudo:     fira : TTY=pts/7 ; PWD=/home/fira/Documents/f/lib ; USER=root ; COMMAND=/usr/bin/zsh
+2026-10-07T02:46:43.572666+08:00 Fira sudo: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+2026-10-07T02:47:12.320189+08:00 Fira sudo: pam_unix(sudo:session): session closed for user root
+2026-10-07T02:47:19.695714+08:00 Fira sudo:     fira : TTY=pts/7 ; PWD=/home/fira/Documents/f/lib ; USER=root ; COMMAND=/usr/bin/ls
+2026-10-07T02:47:19.696207+08:00 Fira sudo: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+2026-10-07T02:47:19.697898+08:00 Fira sudo: pam_unix(sudo:session): session closed for user root
+2026-10-07T02:51:49.936102+08:00 Fira sudo:     fira : TTY=pts/8 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -l'
+2026-10-07T02:51:49.937896+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T02:55:01.307036+08:00 Fira CRON[2128837]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T02:55:01.310389+08:00 Fira CRON[2128837]: pam_unix(cron:session): session closed for user root
+2026-10-07T02:57:46.336830+08:00 Fira sudo:     fira : TTY=pts/9 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/ls
+2026-10-07T02:57:46.338761+08:00 Fira sudo: pam_unix(sudo:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T02:57:46.340997+08:00 Fira sudo: pam_unix(sudo:session): session closed for user fira
+2026-10-07T02:58:00.578188+08:00 Fira sudo:     fira : TTY=pts/9 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c \\/usr\\/bin\\/zsh
+2026-10-07T02:58:00.580129+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T02:58:07.309910+08:00 Fira sudo:     fira : TTY=pts/10 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -c ls'
+2026-10-07T02:58:07.311672+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T02:58:07.317826+08:00 Fira sudo: pam_unix(sudo-i:session): session closed for user fira
+2026-10-07T02:58:15.501430+08:00 Fira sudo:     fira : TTY=pts/10 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -l'
+2026-10-07T02:58:15.503251+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T02:58:19.001680+08:00 Fira sudo:     fira : TTY=pts/11 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -l -c ls'
+2026-10-07T02:58:19.003328+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T02:58:19.009390+08:00 Fira sudo: pam_unix(sudo-i:session): session closed for user fira
+2026-10-07T02:58:49.138696+08:00 Fira sudo:     fira : TTY=pts/11 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -l'
+2026-10-07T02:58:49.140370+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T02:58:55.364231+08:00 Fira sudo: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+2026-10-07T03:00:05.816226+08:00 Fira sudo:     fira : TTY=pts/12 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -l -c ls'
+2026-10-07T03:00:05.817809+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T03:00:05.823698+08:00 Fira sudo: pam_unix(sudo-i:session): session closed for user fira
+2026-10-07T03:01:45.041001+08:00 Fira sudo:     fira : TTY=pts/12 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -c ls'
+2026-10-07T03:01:45.042690+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T03:01:45.049110+08:00 Fira sudo: pam_unix(sudo-i:session): session closed for user fira
+2026-10-07T03:01:46.795441+08:00 Fira sudo:     fira : TTY=pts/12 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh ls'
+2026-10-07T03:01:46.797456+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T03:01:46.802617+08:00 Fira sudo: pam_unix(sudo-i:session): session closed for user fira
+2026-10-07T03:01:50.613770+08:00 Fira sudo:     fira : TTY=pts/12 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/ls
+2026-10-07T03:01:50.614486+08:00 Fira sudo: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+2026-10-07T03:01:50.616696+08:00 Fira sudo: pam_unix(sudo:session): session closed for user root
+2026-10-07T03:05:01.040319+08:00 Fira CRON[2131751]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T03:05:01.043586+08:00 Fira CRON[2131751]: pam_unix(cron:session): session closed for user root
+2026-10-07T03:05:25.729845+08:00 Fira sudo:     fira : unknown user fira#012 ; TTY=pts/7 ; PWD=/home/fira/Documents/f/lib ; USER=fira#012 ;
+2026-10-07T03:06:10.339548+08:00 Fira sudo:     fira : unknown user fira#012 ; TTY=pts/7 ; PWD=/home/fira/Documents/f/lib ; USER=fira#012 ;
+2026-10-07T03:09:32.151873+08:00 Fira sudo:     fira : TTY=pts/7 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -c ls'
+2026-10-07T03:09:32.153482+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T03:09:32.158994+08:00 Fira sudo: pam_unix(sudo-i:session): session closed for user fira
+2026-10-07T03:09:39.985283+08:00 Fira sudo:     fira : TTY=pts/7 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -c ls'
+2026-10-07T03:09:39.987078+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T03:09:39.992667+08:00 Fira sudo: pam_unix(sudo-i:session): session closed for user fira
+2026-10-07T03:09:45.111094+08:00 Fira sudo:     fira : TTY=pts/7 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -c ls'
+2026-10-07T03:09:45.112675+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T03:09:45.118152+08:00 Fira sudo: pam_unix(sudo-i:session): session closed for user fira
+2026-10-07T03:09:55.581654+08:00 Fira sudo:     fira : TTY=pts/7 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -c ls'
+2026-10-07T03:09:55.583341+08:00 Fira sudo: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+2026-10-07T03:09:55.588798+08:00 Fira sudo: pam_unix(sudo-i:session): session closed for user fira
+2026-10-07T03:10:01.050137+08:00 Fira CRON[2135500]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-10-07T03:10:01.052927+08:00 Fira CRON[2135500]: pam_unix(cron:session): session closed for user root
+2026-10-07T03:10:08.601206+08:00 Fira sudo:     fira : unknown user r ; TTY=pts/7 ; PWD=/home/fira/Documents/f/lib ; USER=r ;
+2026-10-07T03:10:29.948731+08:00 Fira sudo:     fira : unknown user foo ; TTY=pts/7 ; PWD=/home/fira/Documents/f/lib ; USER=foo ;
+2026-10-07T03:13:46.016149+08:00 Fira sudo: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+2026-10-07T03:13:46.016794+08:00 Fira sudo:     fira : TTY=pts/15 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/ls
+2026-10-07T03:13:46.017457+08:00 Fira sudo: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Oct 07 03:00:05 Fira sudo[2130717]: pam_unix(sudo-i:session): session closed for user fira
+Oct 07 03:01:45 Fira sudo[2131081]:     fira : TTY=pts/12 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -c ls'
+Oct 07 03:01:45 Fira sudo[2131081]: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+Oct 07 03:01:45 Fira sudo[2131081]: pam_unix(sudo-i:session): session closed for user fira
+Oct 07 03:01:46 Fira sudo[2131104]:     fira : TTY=pts/12 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh ls'
+Oct 07 03:01:46 Fira sudo[2131104]: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+Oct 07 03:01:46 Fira sudo[2131104]: pam_unix(sudo-i:session): session closed for user fira
+on closed for user fira
+me/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -c ls'
+on opened for user fira(uid=1000) by fira(uid=1000)
+on closed for user fira
+me/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh ls'
+on opened for user fira(uid=1000) by fira(uid=1000)
+on closed for user fira
+me/fira ; USER=root ; COMMAND=/usr/bin/ls
+ opened for user root(uid=0) by fira(uid=1000)
+ closed for user root
+e/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -c ls'
+on opened for user fira(uid=1000) by fira(uid=1000)
+on closed for user fira
+e/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -c ls'
+on opened for user fira(uid=1000) by fira(uid=1000)
+on closed for user fira
+e/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -c ls'
+on opened for user fira(uid=1000) by fira(uid=1000)
+on closed for user fira
+e/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh -c ls'
+on opened for user fira(uid=1000) by fira(uid=1000)
+on closed for user fira
+=pts/7 ; PWD=/home/fira/Documents/f/lib ; USER=r ;
+TY=pts/7 ; PWD=/home/fira/Documents/f/lib ; USER=foo ;
+] has blank password; authenticated without it
+me/fira ; USER=root ; COMMAND=/usr/bin/ls
+ opened for user root(uid=0) by fira(uid=1000)
+ closed for user root
+] has blank password; authenticated without it
+me/fira ; USER=root ; COMMAND=/usr/bin/journalctl -e /usr/bin/sudo
+ opened for user root(uid=0) by fira(uid=1000)
+
+ ~ % sudo journalctl -e /usr/bin/sudo -r
+
+Oct 05 00:01:26 Fira sudo[1487018]:     fira : TTY=pts/4 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/apt install --reinstall geoc>
+Oct 05 00:01:22 Fira sudo[1486506]: pam_unix(sudo:session): session closed for user root
+Oct 05 00:01:16 Fira sudo[1486506]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Oct 05 00:01:16 Fira sudo[1486506]:     fira : TTY=pts/4 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/apt update
+Oct 05 00:01:16 Fira sudo[1486506]: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+Oct 01 00:50:27 Fira sudo[1439753]: pam_unix(sudo:session): session closed for user root
+Oct 01 00:50:27 Fira sudo[1439753]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Oct 01 00:50:27 Fira sudo[1439753]:     fira : TTY=pts/4 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/docker start pvzge
+Oct 01 00:49:16 Fira sudo[1439416]: pam_unix(sudo:session): session closed for user root
+Oct 01 00:49:16 Fira sudo[1439416]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Oct 01 00:49:16 Fira sudo[1439416]:     fira : TTY=pts/4 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/docker stop pvzge
+Oct 01 00:48:52 Fira sudo[1439322]: pam_unix(sudo:session): session closed for user root
+Oct 01 00:48:51 Fira sudo[1439322]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Oct 01 00:48:51 Fira sudo[1439322]:     fira : TTY=pts/4 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/docker container ls
+Oct 01 00:48:49 Fira sudo[1439283]: pam_unix(sudo:session): session closed for user root
+Oct 01 00:48:49 Fira sudo[1439283]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Oct 01 00:48:49 Fira sudo[1439283]:     fira : TTY=pts/4 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/docker ls
+Oct 01 00:48:49 Fira sudo[1439283]: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+Oct 01 00:27:58 Fira sudo[1434507]: pam_unix(sudo:session): session closed for user root
+Oct 01 00:27:58 Fira sudo[1434507]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Oct 01 00:27:58 Fira sudo[1434507]:     fira : TTY=pts/5 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/docker run --name pvzge -d ->
+Oct 01 00:27:43 Fira sudo[1434126]: pam_unix(sudo:session): session closed for user root
+Oct 01 00:26:51 Fira sudo[1434126]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Oct 01 00:26:51 Fira sudo[1434126]:     fira : TTY=pts/5 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/docker run --name pvzge -d ->
+Oct 01 00:26:51 Fira sudo[1434126]: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+Oct 01 00:02:41 Fira sudo[1426407]: pam_unix(sudo:session): session closed for user root
+Oct 01 00:02:33 Fira sudo[1426407]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Oct 01 00:02:33 Fira sudo[1426407]:     fira : TTY=pts/4 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/journalctl -u autostart -f
+Oct 01 00:02:33 Fira sudo[1426407]: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+Sep 21 22:33:36 Fira sudo[608489]: pam_unix(sudo:session): session closed for user root
+Sep 21 22:33:36 Fira sudo[608489]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Sep 21 22:33:36 Fira sudo[608489]:     fira : TTY=pts/6 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/mv org.gnome.Builder.flatpak >
+Sep 21 22:33:36 Fira sudo[608486]: pam_unix(sudo:session): session closed for user root
+Sep 21 22:33:36 Fira sudo[608486]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Sep 21 22:33:36 Fira sudo[608486]:     fira : TTY=pts/6 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/mkdir -p /var/local/flatpak-b>
+Sep 21 22:33:27 Fira sudo[608448]: pam_unix(sudo:session): session closed for user root
+Sep 21 22:33:27 Fira sudo[608448]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Sep 21 22:33:27 Fira sudo[608448]:     fira : TTY=pts/6 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/mkdir -p /var/local/flatpak-b>
+Sep 21 22:33:27 Fira sudo[608448]: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+Sep 16 19:05:22 Fira sudo[2182]: pam_unix(sudo:session): session closed for user root
+Sep 16 19:04:23 Fira sudo[2182]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=0)
+Sep 16 19:04:23 Fira sudo[2182]:     root : PWD=/home/fira/Documents/f/localhost ; USER=root ; COMMAND=/usr/bin/systemctl reload caddy
+Sep 16 19:04:23 Fira sudo[2161]: pam_unix(sudo:session): session closed for user root
+Sep 16 19:04:23 Fira sudo[2161]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=0)
+Sep 16 19:04:23 Fira sudo[2161]:     root : PWD=/home/fira/Documents/f/localhost ; USER=root ; COMMAND=/usr/bin/tee /etc/caddy/Caddyf>
+
+ ~ % sudo journalctl /usr/bin/sudo -r
+
+Oct 07 03:17:09 Fira sudo[2137418]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Oct 07 03:17:09 Fira sudo[2137418]:     fira : TTY=pts/14 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/journalctl /usr/bin/sudo -r
+Oct 07 03:17:09 Fira sudo[2137418]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Oct 07 03:17:09 Fira sudo[2137418]:     fira : TTY=pts/14 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/journalctl /usr/bin/sudo -r
+Oct 07 03:16:36 Fira sudo[2137213]: pam_unix(sudo:session): session closed for user root
+Oct 07 03:16:19 Fira sudo[2137213]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Oct 07 03:16:19 Fira sudo[2137213]:     fira : TTY=pts/14 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/journalctl -e /usr/bin/sudo>
+Oct 07 03:16:14 Fira sudo[2136815]: pam_unix(sudo:session): session closed for user root
+Oct 07 03:14:14 Fira sudo[2136815]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Oct 07 03:14:14 Fira sudo[2136815]:     fira : TTY=pts/14 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/journalctl -e /usr/bin/sudo
+Oct 07 03:14:14 Fira sudo[2136815]: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+Oct 07 03:13:46 Fira sudo[2136698]: pam_unix(sudo:session): session closed for user root
+Oct 07 03:13:46 Fira sudo[2136698]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Oct 07 03:13:46 Fira sudo[2136698]:     fira : TTY=pts/15 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/ls
+Oct 07 03:13:46 Fira sudo[2136698]: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+Oct 07 03:10:29 Fira sudo[2135888]:     fira : unknown user foo ; TTY=pts/7 ; PWD=/home/fira/Documents/f/lib ; USER=foo ;
+Oct 07 03:10:08 Fira sudo[2135645]:     fira : unknown user r ; TTY=pts/7 ; PWD=/home/fira/Documents/f/lib ; USER=r ;
+Oct 07 03:09:55 Fira sudo[2135432]: pam_unix(sudo-i:session): session closed for user fira
+Oct 07 03:09:55 Fira sudo[2135432]: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+Oct 07 03:09:55 Fira sudo[2135432]:     fira : TTY=pts/7 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh ->
+Oct 07 03:09:45 Fira sudo[2135220]: pam_unix(sudo-i:session): session closed for user fira
+Oct 07 03:09:45 Fira sudo[2135220]: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+Oct 07 03:09:45 Fira sudo[2135220]:     fira : TTY=pts/7 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh ->
+Oct 07 03:09:39 Fira sudo[2135045]: pam_unix(sudo-i:session): session closed for user fira
+Oct 07 03:09:39 Fira sudo[2135045]: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+Oct 07 03:09:39 Fira sudo[2135045]:     fira : TTY=pts/7 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh ->
+Oct 07 03:09:32 Fira sudo[2134845]: pam_unix(sudo-i:session): session closed for user fira
+Oct 07 03:09:32 Fira sudo[2134845]: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+Oct 07 03:09:32 Fira sudo[2134845]:     fira : TTY=pts/7 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh ->
+Oct 07 03:01:50 Fira sudo[2131171]: pam_unix(sudo:session): session closed for user root
+Oct 07 03:01:50 Fira sudo[2131171]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Oct 07 03:01:50 Fira sudo[2131171]:     fira : TTY=pts/12 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/ls
+Oct 07 03:01:46 Fira sudo[2131104]: pam_unix(sudo-i:session): session closed for user fira
+
+ ~ % sudo journalctl /usr/bin/sudo -b all
+
+Sep 01 22:03:58 Fira sudo[1333343]: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+Sep 01 22:03:58 Fira sudo[1333343]:     fira : TTY=pts/8 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/apt install -y cpufrequtils
+Sep 01 22:03:58 Fira sudo[1333343]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Sep 01 22:04:07 Fira sudo[1333343]: pam_unix(sudo:session): session closed for user root
+Sep 01 22:04:09 Fira sudo[1333970]: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+Sep 01 22:04:09 Fira sudo[1333970]:     fira : TTY=pts/9 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/apt install -y htop
+Sep 01 22:04:09 Fira sudo[1333970]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Sep 01 22:04:14 Fira sudo[1333970]: pam_unix(sudo:session): session closed for user root
+Sep 05 23:31:18 Fira sudo[1953518]: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+Sep 05 23:31:18 Fira sudo[1953518]:     fira : TTY=pts/5 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/journalctl -u repo_save.serv>
+Sep 01 22:03:58 Fira sudo[1333343]: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+Sep 01 22:03:58 Fira sudo[1333343]:     fira : TTY=pts/8 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/apt install -y cpufrequtils
+Sep 01 22:03:58 Fira sudo[1333343]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Sep 01 22:04:07 Fira sudo[1333343]: pam_unix(sudo:session): session closed for user root
+Sep 01 22:04:09 Fira sudo[1333970]: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+Sep 01 22:04:09 Fira sudo[1333970]:     fira : TTY=pts/9 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/apt install -y htop
+Sep 01 22:04:09 Fira sudo[1333970]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Sep 01 22:04:14 Fira sudo[1333970]: pam_unix(sudo:session): session closed for user root
+Sep 05 23:31:18 Fira sudo[1953518]: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+Sep 05 23:31:18 Fira sudo[1953518]:     fira : TTY=pts/5 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/journalctl -u repo_save.serv>
+Sep 05 23:31:18 Fira sudo[1953518]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Sep 05 23:32:33 Fira sudo[1953518]: pam_unix(sudo:session): session closed for user root
+Sep 05 23:46:57 Fira sudo[1958174]: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+Sep 05 23:46:57 Fira sudo[1958174]:     fira : TTY=pts/5 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/env PATH=/home/fira/.local/s>
+Sep 05 23:46:57 Fira sudo[1958174]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Sep 05 23:46:58 Fira sudo[1958174]: pam_unix(sudo:session): session closed for user root
+Sep 05 23:55:06 Fira sudo[1960812]: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+Sep 05 23:55:06 Fira sudo[1960812]:     fira : TTY=pts/4 ; PWD=/home/fira/Documents/f/autostart/source/script ; USER=root ; COMMAND=/>
+Sep 05 23:55:06 Fira sudo[1960812]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Sep 05 23:55:07 Fira sudo[1960812]: pam_unix(sudo:session): session closed for user root
+Sep 05 23:55:07 Fira sudo[1960992]:     fira : TTY=pts/4 ; PWD=/home/fira/Documents/f/autostart/source/script ; USER=root ; COMMAND=/>
+Sep 05 23:55:07 Fira sudo[1960992]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Sep 05 23:55:08 Fira sudo[1960992]: pam_unix(sudo:session): session closed for user root
+Sep 06 00:03:09 Fira sudo[1963757]:     fira : TTY=pts/4 ; PWD=/home/fira/Documents/f/autostart/source/script ; USER=root ; COMMAND=/>
+Sep 06 00:03:09 Fira sudo[1963757]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Sep 06 00:03:09 Fira sudo[1963757]: pam_unix(sudo:session): session closed for user root
+Sep 06 00:03:09 Fira sudo[1963760]:     fira : TTY=pts/4 ; PWD=/home/fira/Documents/f/autostart/source/script ; USER=root ; COMMAND=/>
+Sep 06 00:03:09 Fira sudo[1963760]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Sep 06 00:03:10 Fira sudo[1963760]: pam_unix(sudo:session): session closed for user root
+Sep 06 00:03:10 Fira sudo[1963947]:     fira : TTY=pts/4 ; PWD=/home/fira/Documents/f/autostart/source/script ; USER=root ; COMMAND=/>
+Sep 06 00:03:10 Fira sudo[1963947]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+
+ ~ % sudo journalctl /usr/bin/sudo -b all -r
+
+Oct 07 03:17:35 Fira sudo[2137503]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Oct 07 03:17:35 Fira sudo[2137503]:     fira : TTY=pts/14 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/journalctl /usr/bin/sudo -b>
+Oct 07 03:17:33 Fira sudo[2137460]: pam_unix(sudo:session): session closed for user root
+Oct 07 03:17:24 Fira sudo[2137460]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Oct 07 03:17:24 Fira sudo[2137460]:     fira : TTY=pts/14 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/journalctl /usr/bin/sudo -b>
+Oct 07 03:17:14 Fira sudo[2137418]: pam_unix(sudo:session): session closed for user root
+Oct 07 03:17:09 Fira sudo[2137418]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Oct 07 03:17:09 Fira sudo[2137418]:     fira : TTY=pts/14 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/journalctl /usr/bin/sudo -r
+Oct 07 03:16:36 Fira sudo[2137213]: pam_unix(sudo:session): session closed for user root
+Oct 07 03:16:19 Fira sudo[2137213]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Oct 07 03:16:19 Fira sudo[2137213]:     fira : TTY=pts/14 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/journalctl -e /usr/bin/sudo>
+Oct 07 03:16:14 Fira sudo[2136815]: pam_unix(sudo:session): session closed for user root
+Oct 07 03:14:14 Fira sudo[2136815]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Oct 07 03:14:14 Fira sudo[2136815]:     fira : TTY=pts/14 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/journalctl -e /usr/bin/sudo
+Oct 07 03:14:14 Fira sudo[2136815]: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+Oct 07 03:13:46 Fira sudo[2136698]: pam_unix(sudo:session): session closed for user root
+Oct 07 03:13:46 Fira sudo[2136698]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Oct 07 03:13:46 Fira sudo[2136698]:     fira : TTY=pts/15 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/ls
+Oct 07 03:13:46 Fira sudo[2136698]: pam_unix(sudo:auth): user [fira] has blank password; authenticated without it
+Oct 07 03:10:29 Fira sudo[2135888]:     fira : unknown user foo ; TTY=pts/7 ; PWD=/home/fira/Documents/f/lib ; USER=foo ;
+Oct 07 03:10:08 Fira sudo[2135645]:     fira : unknown user r ; TTY=pts/7 ; PWD=/home/fira/Documents/f/lib ; USER=r ;
+Oct 07 03:09:55 Fira sudo[2135432]: pam_unix(sudo-i:session): session closed for user fira
+Oct 07 03:09:55 Fira sudo[2135432]: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+Oct 07 03:09:55 Fira sudo[2135432]:     fira : TTY=pts/7 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh ->
+Oct 07 03:09:45 Fira sudo[2135220]: pam_unix(sudo-i:session): session closed for user fira
+Oct 07 03:09:45 Fira sudo[2135220]: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+Oct 07 03:09:45 Fira sudo[2135220]:     fira : TTY=pts/7 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh ->
+Oct 07 03:09:39 Fira sudo[2135045]: pam_unix(sudo-i:session): session closed for user fira
+Oct 07 03:09:39 Fira sudo[2135045]: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+Oct 07 03:09:39 Fira sudo[2135045]:     fira : TTY=pts/7 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh ->
+Oct 07 03:09:32 Fira sudo[2134845]: pam_unix(sudo-i:session): session closed for user fira
+Oct 07 03:09:32 Fira sudo[2134845]: pam_unix(sudo-i:session): session opened for user fira(uid=1000) by fira(uid=1000)
+Oct 07 03:09:32 Fira sudo[2134845]:     fira : TTY=pts/7 ; PWD=/home/fira ; USER=fira ; COMMAND=/usr/bin/zsh -c '\\/usr\\/bin\\/zsh ->
+Oct 07 03:01:50 Fira sudo[2131171]: pam_unix(sudo:session): session closed for user root
+Oct 07 03:01:50 Fira sudo[2131171]: pam_unix(sudo:session): session opened for user root(uid=0) by fira(uid=1000)
+Oct 07 03:01:50 Fira sudo[2131171]:     fira : TTY=pts/12 ; PWD=/home/fira ; USER=root ; COMMAND=/usr/bin/ls
+Oct 07 03:01:46 Fira sudo[2131104]: pam_unix(sudo-i:session): session closed for user fira
+
+ ~ % # View your current system logging rules
+cat /etc/systemd/journald.conf | grep -E "SystemMaxUse|MaxFileAgeSec"
+
+#SystemMaxUse=
+ ~ % # View your current system logging rules
+cat /etc/systemd/journald.conf
+
+#  This file is part of systemd.
+#
+#  systemd is free software; you can redistribute it and/or modify it under the
+#  terms of the GNU Lesser General Public License as published by the Free
+#  Software Foundation; either version 2.1 of the License, or (at your option)
+#  any later version.
+#
+# Entries in this file show the compile time defaults. Local configuration
+# should be created by either modifying this file (or a copy of it placed in
+# /etc/ if the original file is shipped in /usr/), or by creating "drop-ins" in
+# the /etc/systemd/journald.conf.d/ directory. The latter is generally
+# recommended. Defaults can be restored by simply deleting the main
+# configuration file and all drop-ins located in /etc/.
+#
+# Use 'systemd-analyze cat-config systemd/journald.conf' to display the full config.
+#
+# See journald.conf(5) for details.
+
+[Journal]
+#Storage=auto
+#Compress=yes
+#Seal=yes
+#SplitMode=uid
+#SyncIntervalSec=5m
+#RateLimitIntervalSec=30s
+#RateLimitBurst=10000
+#SystemMaxUse=
+#SystemKeepFree=
+#SystemMaxFileSize=
+#SystemMaxFiles=100
+#RuntimeMaxUse=
+#RuntimeKeepFree=
+#RuntimeMaxFileSize=
+#RuntimeMaxFiles=100
+#MaxRetentionSec=
+#MaxFileSec=1month
+#ForwardToSyslog=no
+#ForwardToKMsg=no
+#ForwardToConsole=no
+#ForwardToWall=yes
+#TTYPath=/dev/console
+#MaxLevelStore=debug
+#MaxLevelSyslog=debug
+#MaxLevelKMsg=notice
+#MaxLevelConsole=info
+#MaxLevelWall=emerg
+#LineMax=48K
+#ReadKMsg=yes
+#Audit=yes
+```
+
 # py filesystem related modules
 
 When working with the filesystem in Python, you can choose between <mark><strong>built-in standard library modules</strong></mark> (which handle native OS paths) or **third-party abstraction layers** (which let you treat local folders, ZIP files, and cloud buckets identically).
@@ -5811,4 +7483,3681 @@ Use code with caution.
 
 Would you like to extend this script to **pass variables from the root context down into the user shell**, or do you need help **capturing output variables** from this block back into your main script?
 
+
+
+# all nodejs fs sync methods and params of each
+
+The Node.js `node:fs` module provides a comprehensive set of **synchronous methods**. These methods perform file I/O operations by blocking the JavaScript event loop until the operation completes or fails. Instead of relying on a final callback function, they return values directly and throw exceptions immediately upon error. [link](https://nodejs.org/api/fs.html)
+
+Below is a grouped breakdown of all standard synchronous methods available in the [Node.js File System Module](https://nodejs.org/api/fs.html) and their signature parameters. [link](https://nodejs.org/download/release/v0.7.9/docs/api/fs.html)
+
+***
+
+### 📂 File Reading, Writing, & Modification
+
+- **`fs.readFileSync(path[, options])`**
+  - `path`: String, Buffer, or URL representing the file location.
+  - `options`: Object or String specifying the file encoding (e.g., `'utf8'`) and flag.
+  - _Returns_: String or Buffer content. [link](https://www.youtube.com/watch?v=3vifreYugnM\&t=580)
+- **`fs.writeFileSync(file, data[, options])`**
+  - `file`: String, Buffer, URL, or integer file descriptor.
+  - `data`: String, Buffer, TypedArray, or DataView to write.
+  - `options`: Object or String for encoding, mode, and flag. [link](https://www.memberstack.com/blog/write-files-in-node-js)
+- **`fs.appendFileSync(path, data[, options])`**
+  - `path`: String, Buffer, URL, or file descriptor.
+  - `data`: String or Buffer to append.
+  - `options`: Object or String for encoding, mode, and flag. [link](https://node.readthedocs.io/en/latest/api/fs/)
+- **`fs.copyFileSync(src, dest[, mode])`**
+  - `src`: String, Buffer, or URL of the source file.
+  - `dest`: String, Buffer, or URL of the destination path.
+  - `mode`: Optional integer modifiers for copy behaviors (e.g., `fs.constants.COPYFILE_EXCL`). [link](https://docs.deno.com/api/node/fs/)
+- **`fs.cpSync(src, dest[, options])`**
+  - `src`: String, Buffer, or URL of the source file or directory.
+  - `dest`: String, Buffer, or URL of the destination path.
+  - `options`: Object adjusting behaviors like `recursive`, `force`, or `dereference`. [link](https://beta.docs.nodejs.org/fs)
+- **`fs.truncateSync(path[, len])`**
+  - `path`: String, Buffer, or URL.
+  - `len`: Optional integer specifying the length to truncate to (default: `0`). [link](https://nodejs.org/download/release/v0.7.9/docs/api/fs.html)
+- **`fs.unlinkSync(path)`**
+  - `path`: String, Buffer, or URL of the file to delete. [link](https://www.w3schools.com/nodejs/nodejs%5Ffilesystem.asp)
+
+***
+
+### 🗂️ Directory Operations
+
+- **`fs.mkdirSync(path[, options])`**
+  - `path`: String, Buffer, or URL.
+  - `options`: Object or integer setting the `mode` or setting `recursive: true` to create nested folders.
+  - _Returns_: String (if `recursive: true` creates folders) or `undefined`. [link](https://www.youtube.com/watch?v=QkwHP4d01xA\&t=500)
+- **`fs.readdirSync(path[, options])`**
+  - `path`: String, Buffer, or URL.
+  - `options`: Object or String specifying encoding or `withFileTypes: true` to return `fs.Dirent` objects instead of strings.
+  - _Returns_: Array of file names or `fs.Dirent` items. [link](https://www.geeksforgeeks.org/node-js/difference-between-synchronous-and-asynchronous-method-of-fs-module/)
+- **`fs.rmdirSync(path[, options])`**
+  - `path`: String, Buffer, or URL.
+  - `options`: Object managing retry delays or recursive behaviors. [link](https://nodejs.org/download/release/v0.7.9/docs/api/fs.html)
+- **`fs.rmSync(path[, options])`**
+  - `path`: String, Buffer, or URL of a file or directory.
+  - `options`: Object handling `recursive` and `force` flags (replaces deprecated `rmdirSync` options). [link](https://beta.docs.nodejs.org/fs)
+- **`fs.mkdtempSync(prefix[, options])`**
+  - `prefix`: String containing the trailing template text.
+  - `options`: Object or String outlining encoding settings.
+  - _Returns_: The created directory path string. [link](https://nodejs.org/download/release/v0.7.9/docs/api/fs.html)
+
+***
+
+#### ℹ️ Metadata, Links, & Permissions
+
+- **`fs.statSync(path[, options])`** and **`fs.lstatSync(path[, options])`** accept a path and options (like `bigint: true`) to return an fs.Stats object, with `lstatSync` targeting symbolic links directly without dereferencing.
+- **`fs.accessSync(path[, mode])`** checks file visibility/permissions using an optional mode integer, while **`fs.existsSync(path)`** returns a boolean indicating file existence.
+- **`fs.chmodSync(path, mode)`**, **`fs.chownSync(path, uid, gid)`**, and **`fs.utimesSync(path, atime, mtime)`** manage permissions, ownership, and timestamps.
+- **`fs.renameSync(oldPath, newPath)`** renames files, while **`fs.linkSync`**, **`fs.symlinkSync`**, **`fs.readlinkSync`**, and **`fs.realpathSync`** handle hard/symbolic links and path resolution. [link](https://www.geeksforgeeks.org/node-js/node-js-fs-statsync-method/)
+
+***
+
+#### 🔢 File Descriptor (Low-Level) Methods
+
+These methods interact directly with raw integer file descriptors (`fd`) generated via `fs.openSync`. [link](https://nodejs.org/learn/manipulating-files/working-with-file-descriptors-in-nodejs)
+
+- **`fs.openSync(path[, flags[, mode]])`** opens a file returning an integer descriptor ID, and **`fs.closeSync(fd)`** closes it.
+- **`fs.readSync(fd, ...)`** and **`fs.writeSync(fd, ...)`** handle reading and writing via buffers or strings using file descriptors.
+- Descriptor-based metadata and utility variants—including **`fs.fstatSync`**, **`fs.fchmodSync`**, **`fs.fchownSync`**, **`fs.futimesSync`**, **`fs.ftruncateSync`**, **`fs.fsyncSync`** (flushes data to disk), and **`fs.fdatasyncSync`** (flushes file data omitting metadata)—operate directly on active file descriptor integers. [link](https://www.geeksforgeeks.org/node-js/node-js-fs-fdatasyncsync-method/)
+
+Are you looking for deep details on how a **specific method** handles edge cases, or would you like an example of how to implement solid **try/catch error handling** alongside these synchronous functions?
+
+- [link](https://nodejs.org/api/fs.html)\
+  Node.js\
+  File system | Node.js v26.8.1 Documentation\
+  Synchronous API: Blocks the Node.js event loop until completion, using immediate exceptions. Common Objects: Includes classes like...
+- [link](https://nodejs.org/download/release/v0.7.9/docs/api/fs.html)\
+  Node.js\
+  File System Node.js v0.7.9 Manual & Documentation\
+  providing asynchronous (callback-based, non-guaranteed ordering) and synchronous (blocking) methods. Core Methods: fs.rename/Sync,
+- [link](https://node.readthedocs.io/en/latest/api/fs/)\
+  Read the Docs\
+  Fs - node\
+  fs.fsync(fd, callback) fs.fsyncSync(fd) fs.write(fd, buffer, offset, length\[, position], callback) fs.appendFile(filename, fs.exis...
+
+Show all
+
+## how to check is file, is dir, is dir empty, size of file, atime, ctime, mtime, birthtime of file, children of folder
+
+You can check all of these file and directory attributes using a combination of **`fs.statSync()`**, **`fs.readdirSync()`**, and the **`fs.Stats`** object properties.
+
+Here is how to check each one using the synchronous methods in Node.js:
+
+javascript
+
+```
+const fs = require('node:fs');
+const path = require('node:path');
+
+const targetPath = './example-path';
+
+try {
+  // 1. Get the stats object for the path
+  const stats = fs.statSync(targetPath);
+
+  // Is file? (Returns boolean)
+  const isFile = stats.isFile();
+
+  // Is directory? (Returns boolean)
+  const isDir = stats.isDirectory();
+
+  // Size of file (in bytes)
+  const fileSize = stats.size;
+
+  // Timestamps (Returns Date objects)
+  const accessTime = stats.atime;       // Last accessed time
+  const modifyTime = stats.mtime;       // Last modified time
+  const changeTime = stats.ctime;       // Last metadata change time
+  const birthTime  = stats.birthtime;   // Creation time
+
+  console.log({ isFile, isDir, fileSize, accessTime, modifyTime, changeTime, birthTime });
+
+  // 2. Directory-specific checks (Children & Empty status)
+  if (isDir) {
+    // Children of folder (Returns an Array of file/folder names)
+    const children = fs.readdirSync(targetPath);
+
+    // Is directory empty? (Returns boolean)
+    const isDirEmpty = children.length === 0;
+
+    console.log({ children, isDirEmpty });
+  }
+
+} catch (error) {
+  // Throws an error if the file or directory does not exist
+  console.error("Error reading path:", error.message);
+}
+```
+
+Use code with caution.
+
+### 🧠 Quick Breakdown of the Methods Used
+
+- **`stats.isFile()` / `stats.isDirectory()`**: Built-in helper methods on the object returned by `fs.statSync()`.
+- **`fs.readdirSync(path)`**: Reads the contents of a directory. It only returns the immediate children (shallow read), not a deeply nested tree.
+- **`children.length === 0`**: The easiest way to check if a directory is empty after reading it.
+
+Would you like to see how to do a **recursive deep scan** of a directory to list all children inside subfolders, or do you need help **formatting the file size** into human-readable kilobytes or megabytes?
+
+## does children include . and ..
+
+**No, `fs.readdirSync()` does not include `.` (current directory) or `..` (parent directory)** in the returned array.
+
+It only returns the actual named files, folders, and symbolic links located inside that directory.
+
+For example, if you have a folder containing `index.js` and a subfolder named `images`, `fs.readdirSync()` will return exactly:
+
+javascript
+
+```
+['images', 'index.js']
+```
+
+Use code with caution.
+
+If the directory is completely empty, it returns a clean, empty array: `[]`.
+
+Would you like to know how to filter out hidden files (like **`.DS_Store`** or **`.gitignore`**) from the results, or are you looking to resolve **absolute file paths** for each child?
+
+## how to rename/mv, unlink, rmdir, mkdirp, cp file/folder, or rmrf
+
+Here is how to perform all common file and folder manipulations—like renaming, moving, deleting, creating, and copying—using the native synchronous methods in Node.js.
+
+### 📋 Overview of Methods
+
+| Operation                | Native `fs` Sync Method                             | Works on Files? | Works on Folders? |
+| ------------------------ | --------------------------------------------------- | --------------- | ----------------- |
+| **rename / mv**          | `fs.renameSync(oldPath, newPath)`                   | Yes             | Yes               |
+| **unlink (delete)**      | `fs.unlinkSync(path)`                               | Yes             | No                |
+| **rmdir (delete empty)** | `fs.rmdirSync(path)`                                | No              | Yes (Empty only)  |
+| **mkdirp (recursive)**   | `fs.mkdirSync(path, { recursive: true })`           | No              | Yes               |
+| **cp (copy)**            | `fs.cpSync(src, dest, { recursive: true })`         | Yes             | Yes               |
+| **rmrf (force delete)**  | `fs.rmSync(path, { recursive: true, force: true })` | Yes             | Yes               |
+
+***
+
+### 💻 Code Implementation
+
+javascript
+
+```
+const fs = require('node:fs');
+
+// 1. Rename / Move (mv)
+// Moves or renames files and directories. Destination folder must already exist.
+fs.renameSync('./old-name.txt', './new-name.txt');
+fs.renameSync('./new-name.txt', './folder/moved-file.txt');
+
+// 2. Unlink (Delete a single file)
+// Throws an error if the path is a directory.
+fs.unlinkSync('./delete-me.txt');
+
+// 3. Rmdir (Delete an EMPTY folder)
+// Throws an error if the directory contains files or other folders.
+fs.rmdirSync('./empty-folder');
+
+// 4. Mkdirp (Create directory and any missing parent directories)
+// Setting 'recursive: true' mimics the behavior of 'mkdir -p'.
+fs.mkdirSync('./nested/path/to/new-folder', { recursive: true });
+
+// 5. Cp (Copy file or folder recursively)
+// Setting 'recursive: true' allows copying entire folders along with their contents.
+fs.cpSync('./source-folder', './destination-folder', { recursive: true });
+
+// 6. Rmrf (Force delete file or folder recursively)
+// 'recursive: true' removes folders and contents. 'force: true' ignores errors if the path doesn't exist.
+fs.rmSync('./folder-or-file-to-wipe-out', { recursive: true, force: true });
+```
+
+Use code with caution.
+
+### ⚠️ Crucial Edge Cases to Keep in Mind
+
+- **`fs.renameSync` limitation**: You cannot use `fs.renameSync` to move files across different physical partitions or hard drives. If you need to move files between different storage volumes, you must copy the file (`fs.cpSync`) and then delete the source (`fs.unlinkSync`).
+- **`fs.rmdirSync` deprecation note**: While `fs.rmdirSync` still works for empty folders, passing `{ recursive: true }` to it is deprecated. Always use `fs.rmSync` for recursive directory deletions.
+
+Would you like to see how to handle **permission errors** safely during these operations, or do you need to know how to add a **progress callback** to `fs.cpSync`?
+
+## how to get cwd
+
+You can get the current working directory (**CWD**) in Node.js using **`process.cwd()`**.
+
+It is a global method, so you don't need to import the `node:fs` module to use it.
+
+javascript
+
+```
+const cwd = process.cwd();
+console.log(cwd);
+// Output: /Users/username/projects/my-node-app
+```
+
+Use code with caution.
+
+### ⚠️ `process.cwd()` vs `__dirname`
+
+It is important to know the difference between these two, as they behave differently depending on how your script is run:
+
+- **`process.cwd()`**: Returns the directory where you **launched** the Node.js process (the terminal's current folder).
+- **`__dirname`**: Returns the directory where the **actual JavaScript file** lives. _(Note: `__dirname` is only available in CommonJS modules; for ES Modules, you use `import.meta.dirname`)._
+
+### 🛠️ Real-World Example
+
+If you want to read a file relative to where the user is running your command-line tool, combine `process.cwd()` with the `node:path` module:
+
+javascript
+
+```
+const fs = require('node:fs');
+const path = require('node:path');
+
+// Safely resolve an absolute path from the terminal's working directory
+const configPath = path.join(process.cwd(), 'config.json');
+
+const config = fs.readFileSync(configPath, 'utf8');
+```
+
+Use code with caution.
+
+Are you building a **Command Line Interface (CLI) tool** where users run your script from different folders, or do you need to resolve a path **relative to the source code file** itself?
+
+## how to check if file/folder exist
+
+The absolute best way to check if a file or folder exists in Node.js is by using **`fs.existsSync(path)`**.
+
+It returns a simple **`true`** or **`false`** and is explicitly designed to handle this check safely without throwing errors if the target is missing.
+
+javascript
+
+```
+const fs = require('node:fs');
+
+const pathToCheck = './some-file-or-folder';
+
+if (fs.existsSync(pathToCheck)) {
+  console.log('It exists!');
+} else {
+  console.log('It does not exist.');
+}
+```
+
+Use code with caution.
+
+***
+
+### ⚠️ A Legacy Method to Avoid: `fs.accessSync`
+
+You might see older tutorials recommending `fs.accessSync()`. While it can check for a file's existence, **it throws an exception** if the file does not exist. This forces you to wrap a simple check inside a messy `try/catch` block, which is unnecessary for a straightforward existence check:
+
+javascript
+
+```
+// 🚫 NOT RECOMMENDED for simple existence checks
+try {
+  fs.accessSync('./file.txt', fs.constants.F_OK);
+  // File exists
+} catch (err) {
+  // File does not exist (throws an error)
+}
+```
+
+Use code with caution.
+
+_(Note: Only use `fs.accessSync()` if you specifically need to verify structural user permissions, like checking if a file is explicitly **read-only** or **executable**)._
+
+### 🛑 Important Security Warning (Race Conditions)
+
+If your goal is to check if a file exists **right before writing or reading it**, it is highly recommended **not** to check first. Doing so creates a security flaw and bug window known as a **TOCTOU** (Time-of-Check to Time-of-Use) race condition—where the file status could change in the millisecond between your check and your read/write.
+
+- **Instead of checking first:** Just try to read or write the file directly, and wrap it in a `try/catch` block to handle any errors if the file happens to be missing or inaccessible.
+
+Would you like to see an example of how to securely handle a **direct read/write with error trapping**, or do you need to check if a path exists and _then_ verify if it's specifically a file vs a directory?
+
+## can path be streams like stdout in err
+
+<mark><strong><span>No,<span> </span></span><code dir="ltr">fs</code><span> </span>module methods cannot accept streams like<span> </span><code dir="ltr">process.stdout</code><span> </span>or<span> </span><code dir="ltr">process.stderr</code><span> </span>as their<span> </span><code dir="ltr">path</code><span> </span>argument.</strong></mark>
+
+The `fs` module's synchronous functions expect the `path` parameter to specifically point to a location on the physical file system layout. Valid types include:
+
+- A **String** path (e.g., `'/var/log/app.log'`)
+- A **Buffer** containing a path
+- A **`file://` URL** object
+- An integer **File Descriptor (`fd`)** pointing to an open file layout on disk.
+
+Streams like `process.stdout` are active I/O pipelines (writable streams wrapped around low-level system sockets or pipes), not file tracks on a disk surface. Passing a stream object directly into a parameter expecting a path will throw a `TypeError`.
+
+***
+
+### 💡 The Alternative: Using File Descriptors for System Streams
+
+If your goal is to synchronously write to standard output or standard error using `fs` tools, you can pass their underlying, hardcoded **File Descriptors (FD)** directly into raw `fs` methods:
+
+- **`1`** is the system file descriptor for **Standard Output (`stdout`)**.
+- **`2`** is the system file descriptor for **Standard Error (`stderr`)**.
+
+You can utilize these integer IDs directly inside **`fs.writeSync()`** to print text synchronously bypasssing the stream infrastructure:
+
+javascript
+
+```
+const fs = require('node:fs');
+
+// Synchronously write to stdout (Console output)
+fs.writeSync(1, 'This prints to stdout immediately\n');
+
+// Synchronously write to stderr (Error output)
+fs.writeSync(2, 'This prints to stderr immediately\n');
+```
+
+Use code with caution.
+
+Alternatively, you can extract the active descriptor integer dynamically directly from the streams themselves using `process.stdout.fd` (which equals `1`) or `process.stderr.fd` (which equals `2`).
+
+Are you attempting to **capture terminal logs** to a file dynamically, or are you trying to build a **synchronous logging utility** that prints out to the terminal console layout without yielding to the event loop?
+
+## what are the fd
+
+An **FD (File Descriptor)** is <mark>a low-level, non-negative integer assigned by the operating system kernel to track an open I/O resource</mark>.
+
+Whenever a process opens a file, a network socket, or a pipeline, the OS creates a reference in an internal table and hands back a simple index number (like `0`, `1`, `3`, or `12`). Instead of passing complex file paths or bulky stream objects around, the system passes this integer to read or write data.
+
+In Node.js, you interact with FDs primarily in two ways: **Standard Streams** and **Custom Disk Files**.
+
+***
+
+### 1. Standard System File Descriptors
+
+By universal operating system convention (POSIX/Windows), every single process is born with three standard file descriptors automatically opened and mapped for it:
+
+| FD Integer | Node.js Property | Stream Purpose      | Default Destination                           |
+| ---------- | ---------------- | ------------------- | --------------------------------------------- |
+| **`0`**    | `process.stdin`  | **Standard Input**  | Reads text typed into the terminal.           |
+| **`1`**    | `process.stdout` | **Standard Output** | Prints normal text/logs to the terminal.      |
+| **`2`**    | `process.stderr` | **Standard Error**  | Prints error messages/traces to the terminal. |
+
+You can grab these integers dynamically in Node.js using `process.stdout.fd` or `process.stderr.fd`.
+
+***
+
+### 2. Custom File Descriptors (Low-Level File operations)
+
+When you use a high-level function like `fs.writeFileSync('./file.txt', data)`, Node.js handles opening and closing the file descriptor under the hood automatically.
+
+However, if you are doing heavy I/O, you can manage the file descriptor manually using **`fs.openSync()`**. This gives you an integer ID that keeps a persistent channel open to that file:
+
+javascript
+
+```
+const fs = require('node:fs');
+
+// 1. Open a file channel. This returns a fresh FD integer (e.g., 3)
+const fd = fs.openSync('./my-log.txt', 'w');
+console.log('Opened File Descriptor:', fd); // Output: 3 (or higher)
+
+// 2. Write data directly using the integer ID
+fs.writeSync(fd, 'Line 1 of data\n');
+fs.writeSync(fd, 'Line 2 of data\n');
+
+// 3. You MUST close it manually to free up OS system resources!
+fs.closeSync(fd);
+```
+
+Use code with caution.
+
+### ⚠️ Important Things to Know About FDs
+
+- **FDs are Finite:** Operating systems have a strict limit on how many file descriptors a single process can have open at once (often `1024` or `4096` by default). If you use `fs.openSync()` inside a loop and forget to call `fs.closeSync()`, your application will crash with an **`EMFILE: too many open files`** error.
+- **They are Process-Specific:** An FD integer of `4` in your Node.js app points to a completely different file than an FD integer of `4` inside a running Python script or web browser on your machine.
+
+Are you running into a **"too many open files" (EMFILE)** error in your code, or would you like to see how to use FDs to **efficiently append chunks of data** to a file without re-opening it every time?
+
+## why use custom fd
+
+High-level methods like `fs.writeFileSync()` or `fs.readFileSync()` are great for simple tasks, but they are inefficient for complex file manipulations. Every single time you call them, Node.js has to ask the operating system to find the file, open it, perform the operation, and close it.
+
+Using a **custom file descriptor (FD)** allows you to open that channel once and keep it open. There are four primary reasons to manage custom FDs manually:
+
+***
+
+### 1. High Performance & Low Overhead (Massive Loops)
+
+If you need to write to a log file thousands of times per second, using `fs.appendFileSync()` creates massive overhead because it repeatedly opens and closes the file. Keeping an FD open bypasses this entire system bottleneck.
+
+javascript
+
+```
+const fs = require('node:fs');
+const fd = fs.openSync('./perftest.txt', 'a');
+
+// 🚀 EXTREMELY FAST: The file stays open in memory during the entire loop
+for (let i = 0; i < 100000; i++) {
+  fs.writeSync(fd, `Log line ${i}\n`);
+}
+
+fs.closeSync(fd);
+```
+
+Use code with caution.
+
+### 2. Precise Control Over "Where" You Read or Write (Offsets)
+
+High-level methods always read or write the entire file or overwrite it from the very beginning. A custom FD tracks a **cursor position** (seek pointer), allowing you to modify specific pieces of a file without touching the rest. This is exactly how database engines modify individual bytes inside a giant 50GB file.
+
+javascript
+
+```
+const fs = require('node:fs');
+const fd = fs.openSync('./game-save.dat', 'r+'); // Read and write mode
+
+const buffer = Buffer.from('GOLD');
+// Parameters: fd, buffer, offset in buffer, length to write, position in file
+fs.writeSync(fd, buffer, 0, 4, 1024); // Directly overwrites bytes 1024-1027
+
+fs.closeSync(fd);
+```
+
+Use code with caution.
+
+### 3. Immediate Disk Flushing (Data Integrity)
+
+Operating systems often fake writing to disk; they hold data in a memory buffer and write it when it is convenient. If the computer loses power, that data is lost. When using a custom FD, you can call **`fs.fsyncSync(fd)`** to force the operating system to flush the cache and physically commit the data to the hard drive immediately.
+
+### 4. Advanced Fine-Tuning Flags
+
+When opening a custom FD, you have access to highly granular operational flags that change how the underlying file system behaves:
+
+- **`ax` / `wx` (Exclusive Flags):** Fails immediately if the file already exists, protecting you from accidentally overwriting data.
+- **`O_DIRECT` / `O_SYNC`:** Tells the operating system to bypass local system caching altogether for strict, synchronous block logging.
+
+***
+
+### Direct Comparison
+
+| Feature               | High-Level (`writeFileSync`, etc.)             | Custom FD (`openSync` + `writeSync`)              |
+| --------------------- | ---------------------------------------------- | ------------------------------------------------- |
+| **OS Overhead**       | **High** (Opens & closes on every single call) | **Low** (Opens once, writes many times)           |
+| **File Manipulation** | **All-or-Nothing** (Reads/writes whole file)   | **Granular** (Read/write specific byte positions) |
+| **Resource Cleanup**  | **Automatic**                                  | **Manual** (Must call `fs.closeSync(fd)`)         |
+| **Use Case**          | Quick scripts, configuration files             | Databases, heavy logging utilities, binary files  |
+
+Are you designing a system that requires **frequent, fast modifications** to a single file, or are you looking to dive deeper into parsing out specific fields from **binary file formats**?
+
+## what if you write to stdin or read from stdout stderr
+
+Trying to **write to `stdin`** or **read from `stdout`/`stderr`** flips the natural direction of standard system streams. What happens depends entirely on whether your Node.js process is interacting with an actual terminal user interface or a redirected stream pipeline.
+
+Here is the operational breakdown of what happens under the hood when you attempt these inversions.
+
+***
+
+### 1. What happens if you try to write to `stdin`?
+
+`stdin` (File Descriptor `0`) is configured by the Operating System kernel as a **Read-Only channel**.
+
+- **The Result:** If you attempt to synchronously force data into it using `fs.writeSync(0, 'data')`, the underlying system kernel will reject the request and throw a **`EBADF: bad file descriptor`** error.
+- **Why?** The operating system locks the channel to prevent a program from feeding spoofed inputs into its own input buffer.
+
+#### 💡 The Catch: When `stdin` becomes an active Pipeline
+
+If someone runs your script in a terminal layout and explicitly pipes data _out_ of a command _into_ your script using a pipe operator (`|`), `stdin` might be reassigned to a bidirectional socket channel or a file wrapper. In those specific infrastructure environments, writing to `FD 0` might actually succeed without throwing an error—but the data will vanish or bleed into the parent process without ever appearing on the user's terminal monitor layout.
+
+***
+
+### 2. What happens if you try to read from `stdout` or `stderr`?
+
+`stdout` (FD `1`) and `stderr` (FD `2`) are explicitly configured by the operating system kernel as **Write-Only channels**.
+
+- **The Result:** If you attempt to pull data back out of them synchronously using a buffer layout via `fs.readSync(1, buffer, ...)` or `fs.readSync(2, buffer, ...)`, Node.js will fail immediately and throw a **`EBADF: bad file descriptor`** error.
+- **Why?** You cannot treat standard terminal output logs like a local historical variable array. Once data is flushed down `stdout`, it is gone from the process memory space and belongs to the parent terminal interface handler.
+
+***
+
+### 🛠️ How to safely capture and read `stdout` / `stderr`
+
+If your core development goal is to read what a function or an external subprocess is printing to the console, you cannot read it out of the local global stream properties. Instead, you must **intercept the output streams** using one of the following architectural strategies:
+
+#### Strategy A: Spawning a Subprocess (Best for running external tools)
+
+If you are running an external terminal script, you can capture its output buffers cleanly using standard subprocess execution features:
+
+javascript
+
+```
+const { execSync } = require('node:child_process');
+
+// Run a command and capture its standard output directly into a variable
+try {
+  const stdoutOutput = execSync('echo "Hello World"');
+  console.log('Captured Output:', stdoutOutput.toString().trim());
+} catch (error) {
+  // If the process fails, standard error details are bound to the error payload
+  console.error('Captured Error:', error.stderr.toString());
+}
+```
+
+Use code with caution.
+
+#### Strategy B: Overriding Console Prototypes (Best for internal logging capture)
+
+If you want to read or copy what your _own_ Node.js script is printing locally, you can temporarily override the default `process.stdout.write` method loop to copy the text into a string array variable before it leaves the app framework:
+
+javascript
+
+```
+const originalWrite = process.stdout.write;
+let capturedLogs = '';
+
+// Intercept stdout writes
+process.stdout.write = function(chunk, encoding, callback) {
+  capturedLogs += chunk.toString(); // Save a copy for yourself
+  return originalWrite.apply(process.stdout, arguments); // Print it normally to terminal
+};
+
+console.log("This text is tracked inside capturedLogs!");
+
+// Restore original behavior when done
+process.stdout.write = originalWrite;
+```
+
+Use code with caution.
+
+Are you attempting to **intercept console logs** for a local testing framework unit test, or are you trying to build a interactive **CLI prompt tool** that reads user inputs and handles back-and-forth terminal text communication?
+
+# all nodejs os methods and params of each
+
+The built-in **`node:os` module** provides a comprehensive set of utilities for interacting with and retrieving information about the underlying operating system. [link](https://www.w3schools.com/nodejs/nodejs%5Fos.asp)
+
+The complete list of methods and properties available in the [Node.js OS API Reference](https://nodejs.org/api/os.html) is categorized below by function, along with their parameters: [link](https://nodejs.org/api/os.html)
+
+### ⚙️ System Configuration & CPU Methods
+
+- `os.arch()`
+  - **Parameters:** None.
+  - **Returns:** String representing the CPU architecture for which the Node.js binary was compiled (e.g., `'x64'`, `'arm64'`). [link](https://www.geeksforgeeks.org/node-js/node-js-os-arch-method/)
+- `os.availableParallelism()`
+  - **Parameters:** None.
+  - **Returns:** An integer estimate of the default amount of parallelism a program should use (typically the number of logical CPU cores). [link](https://bun.com/reference/node/os)
+- `os.cpus()`
+  - **Parameters:** None.
+  - **Returns:** An array of objects containing detailed information about each logical CPU core (e.g., model, speed, and CPU times). [link](https://www.geeksforgeeks.org/node-js/node-js-os-cpus-method/)
+- `os.endianness()`
+  - **Parameters:** None.
+  - **Returns:** A string identifying the endianness of the CPU (`'BE'` for big-endian or `'LE'` for little-endian). [link](https://www.geeksforgeeks.org/node-js/node-js-os-complete-reference/)
+- `os.machine()`
+  - **Parameters:** None.
+  - **Returns:** A string identifying the machine type (e.g., `'x86_64'`, `'aarch64'`). [link](https://www.geeksforgeeks.org/node-js/node-js-os-machine-method/)
+
+### 💻 Platform & Environment Information
+
+- `os.hostname()`
+  - **Parameters:** None.
+  - **Returns:** A string specifying the hostname of the operating system. [link](https://www.naukri.com/code360/library/the-node-js-os-module)
+- `os.platform()`
+  - **Parameters:** None.
+  - **Returns:** A string identifying the operating system platform compiled into Node.js (e.g., `'darwin'`, `'linux'`, `'win32'`). [link](https://www.geeksforgeeks.org/node-js/node-js-os-platform-method/)
+- `os.release()`
+  - **Parameters:** None.
+  - **Returns:** A string identifying the operating system release version. [link](https://bun.com/reference/node/os)
+- `os.type()`
+  - **Parameters:** None.
+  - **Returns:** A string identifying the operating system name as returned by `uname(3)` (e.g., `'Windows_NT'`, `'Linux'`, `'Darwin'`). [link](http://haxefoundation.github.io/hxnodejs/js/node/Os.html)
+- `os.version()`
+  - **Parameters:** None.
+  - **Returns:** A string identifying the kernel version of the operating system. [link](https://bun.com/reference/node/os)
+
+### 📁 Memory, Storage & Path Methods
+
+- `os.freemem()`
+  - **Parameters:** None.
+  - **Returns:** An integer representing the amount of free system memory in bytes. [link](https://bun.com/reference/node/os)
+- `os.homedir()`
+  - **Parameters:** None.
+  - **Returns:** A string path to the current user's home directory. [link](https://bun.com/reference/node/os)
+- `os.tmpdir()`
+  - **Parameters:** None.
+  - **Returns:** A string path to the operating system's default directory for temporary files. [link](http://haxefoundation.github.io/hxnodejs/js/node/Os.html)
+- `os.totalmem()`
+  - **Parameters:** None.
+  - **Returns:** An integer representing the total amount of system memory in bytes. [link](https://www.youtube.com/watch?v=PysNwj7Y4z4\&t=4)
+
+### 📊 Network & Performance Diagnostics
+
+- `os.loadavg()`
+  - **Parameters:** None.
+  - **Returns:** An array containing the 1, 5, and 15-minute system load averages (Note: Always returns `[0, 0, 0]` on Windows). [link](https://bun.com/reference/node/os)
+- `os.networkInterfaces()`
+  - **Parameters:** None.
+  - **Returns:** An object containing network interfaces that have been assigned a network address. [link](https://bun.com/reference/node/os)
+- `os.uptime()`
+  - **Parameters:** None.
+  - **Returns:** An integer representing the system uptime in seconds. [link](https://www.javascripttutorial.net/nodejs-tutorial/nodejs-os-module/)
+
+### 👥 Process & User Management
+
+- `os.getPriority([pid])`
+  - **Parameters:**
+    - `pid` _(Integer, Optional)_: The process ID. If omitted or `0`, it defaults to the current process ID.
+  - **Returns:** An integer representing the scheduling priority of the specified process. [link](https://bun.com/reference/node/os)
+- `os.setPriority([pid, ]priority)`
+  - **Parameters:**
+    - `pid` _(Integer, Optional)_: The process ID. Defaults to `0` (current process) if omitted.
+    - `priority` _(Integer)_: The scheduling priority to assign (ranging between `-20` for highest priority and `19` for lowest).
+  - **Returns:** `undefined`. [link](http://haxefoundation.github.io/hxnodejs/js/node/Os.html)
+- `os.userInfo([options])`
+  - **Parameters:**
+    - `options` _(Object, Optional)_: An object containing an `encoding` property (e.g., `{ encoding: 'buffer' }` or `'utf8'`).
+  - **Returns:** An object containing information about the current effective user (such as `username`, `uid`, `gid`, `shell`, and `homedir`). [link](https://medium.com/analytics-vidhya/os-module-in-nodejs-26459c17f5a)
+
+### 📌 Core Constants & Values (Properties)
+
+The `os` module also exposes a few non-method properties and specific platform constants: [link](https://nodejs.org/api/os.html)
+
+- `os.EOL`: A constant string defining the operating system's End-of-Line marker (`\n` on POSIX, `\r\n` on Windows).
+- `os.devNull`: A constant string path to the system's null device (`/dev/null` on POSIX, `\\.\NUL` on Windows).
+- `os.constants`: An object containing platform-specific constants for error codes, process signals, and priority categories. [link](https://www.scaler.com/topics/nodejs/os-api-nodejs/)
+
+Would you like to see **code examples** for any of these methods, or do you need help **formatting bytes into gigabytes** from the memory functions?
+
+- [link](https://bun.com/reference/node/os)\
+  Bun\
+  Node.js os module | API Reference - Bun\
+  endianness() Returns a string identifying the endianness of the CPU for which the Node. js binary was compiled.
+- [link](https://www.geeksforgeeks.org/node-js/node-js-os-complete-reference/)\
+  GeeksforGeeks\
+  Node.js OS Complete Reference - GeeksforGeeks\
+  Provides operating system information and methods including os.EOL … os.endianness() (CPU endianness),
+- [link](https://www.geeksforgeeks.org/node-js/node-js-os-cpus-method/)\
+  GeeksforGeeks\
+  Node.js os.cpus() Method\
+  Apr 28, 2025 — Parameters: This method does not accept any parameters. \* Return: This method returns an object containing information about each ...
+
+Show all
+
+# all nodejs path methods and params of each
+
+The built-in **`node:path` module** provides utilities for playing with file and directory paths. [link](https://nodejs.org/api/path.html)
+
+Here is the comprehensive list of every method in the `path` module, including their exact input parameters and what they return.
+
+***
+
+### Path Extraction & Disassembly
+
+These methods break down or extract specific parts of a path string.
+
+- #### `path.basename(path[, suffix])`
+  - **`path`** `<string>`: The full file path.
+  - **`suffix`** `<string>` _(Optional)_: An extension to filter out from the result.
+  - **Returns** `<string>`: The last portion of the path (typically the filename). If `suffix` is matched, it is omitted. [link](https://www.scaler.com/topics/nodejs/path-module-in-node-js/)
+
+- #### `path.dirname(path)`
+  - **`path`** `<string>`: The file path.
+  - **Returns** `<string>`: The directory name of the path (the parent folders). [link](https://www.geeksforgeeks.org/node-js/nodejs-path-module/)
+
+- #### `path.extname(path)`
+  - **`path`** `<string>`: The file path.
+  - **Returns** `<string>`: The extension of the path, from the last occurrence of the `.` (period) character to the end of the string. Returns an empty string if no period exists. [link](https://nodejs.org/api/path.html)
+
+- #### `path.parse(path)`
+  - **`path`** `<string>`: The file path.
+  - **Returns** `<Object>`: An object whose properties represent significant elements of the path. The returned object contains:
+    - `root` `<string>`
+    - `dir` `<string>`
+    - `base` `<string>`
+    - `ext` `<string>`
+    - `name` `<string>` [link](https://www.geeksforgeeks.org/node-js/node-js-path-module-complete-reference/)
+
+***
+
+### Path Modification & Formatting
+
+These methods build, join, or format path structures.
+
+- #### `path.format(pathObject)`
+  - **`pathObject`** `<Object>`: A JavaScript object with any of the following properties (the opposite of `path.parse`):
+    - `dir` `<string>`
+    - `root` `<string>`
+    - `base` `<string>`
+    - `name` `<string>`
+    - `ext` `<string>`
+  - **Returns** `<string>`: A unified path string. _(Note: `dir` takes priority over `root`, and `base` takes priority over `name` + `ext` if both are provided)._ [link](https://www.geeksforgeeks.org/node-js/node-js-path-format-method/)
+
+- #### `path.join([...paths])`
+  - **`...paths`** `<string[]>`: A sequence of path segments.
+  - **Returns** `<string>`: A single joined path string normalized using the platform-specific separator (`/` or `\`). [link](https://nodejs.org/api/path.html)
+
+- #### `path.resolve([...paths])`
+  - **`...paths`** `<string[]>`: A sequence of paths or path segments.
+  - **Returns** `<string>`: An absolute path. It processes the arguments from right to left, prepending them until an absolute path is constructed. If no absolute path is reached, the current working directory is appended. [link](https://www.youtube.com/watch?v=n9jjho08CHg)
+
+***
+
+### Evaluation & Comparison
+
+These methods assess attributes of a path or find spatial relationships between paths.
+
+- #### `path.isAbsolute(path)`
+  - **`path`** `<string>`: The path to check.
+  - **Returns** `<boolean>`: `true` if the given path evaluates to an absolute path, otherwise `false`. [link](https://nodejs.org/api/path.html)
+
+- #### `path.matchesGlob(path, pattern)`
+  - **`path`** `<string>`: The file path to evaluate.
+  - **`pattern`** `<string>`: The glob pattern to check against (e.g., `**/*.js`).
+  - **Returns** `<boolean>`: `true` if the path matches the glob pattern, `false` if it does not. [link](https://nodejs.org/api/path.html)
+
+- #### `path.relative(from, to)`
+  - **`from`** `<string>`: The starting path.
+  - **`to`** `<string>`: The destination path.
+  - **Returns** `<string>`: The relative path from the `from` path to the `to` path based on the current working directory. [link](https://www.javascripttutorial.net/nodejs-tutorial/nodejs-path-module/)
+
+***
+
+### Utility & Environment Methods
+
+These methods modify paths for strict system configurations or formatting rules.
+
+- #### `path.normalize(path)`
+  - **`path`** `<string>`: The messy or unformatted path.
+  - **Returns** `<string>`: A normalized path string, resolving structural elements like `.` (current directory), `..` (parent directory), and duplicate slashes. [link](https://nodejs.org/learn/manipulating-files/nodejs-file-paths)
+
+- #### `path.toNamespacedPath(path)`
+  - **`path`** `<string>`: The target path.
+  - **Returns** `<string>`: On Windows operating systems, it returns an equivalent Windows-specific namespace-prefixed path. On POSIX systems, it simply returns the input `path` string without modifications. [link](https://nodejs.org/api/path.html)
+
+***
+
+### Core Structural Properties
+
+While these are not functional methods, the `path` module exposes four properties vital to building cross-platform environments:
+
+| Property             | Type       | Description                                                                                                  |
+| -------------------- | ---------- | ------------------------------------------------------------------------------------------------------------ |
+| **`path.sep`**       | `<string>` | Provides the platform-specific path segment separator (`\` on Windows, `/` on POSIX).                        |
+| **`path.delimiter`** | `<string>` | Provides the platform-specific path delimiter for environment variables (`;` on Windows, `:` on POSIX).      |
+| **`path.pos32`**     | `<Object>` | Provides access to all the `path` methods listed above, strictly forced to behave like a **POSIX** system.   |
+| **`path.win32`**     | `<Object>` | Provides access to all the `path` methods listed above, strictly forced to behave like a **Windows** system. |
+
+Would you like to see **code examples** demonstrating how specific methods (such as `path.join` vs `path.resolve`) handle edge cases, or are you looking to resolve a specific path manipulation problem in your application?
+
+- [link](https://nodejs.org/api/path.html)\
+  Node.js\
+  Path | Node.js v26.8.1 Documentation\
+  node:path module provides file and directory path utilities, path.toNamespacedPath(path) returns namespace-prefixed path (Windows ...
+- [link](https://www.geeksforgeeks.org/node-js/nodejs-path-module/)\
+  GeeksforGeeks\
+  Node.js Path Module\
+  path.relative() | Computes the relative path between two paths.
+- [link](https://nodejs.org/learn/manipulating-files/nodejs-file-paths)\
+  Node.js\
+  Node.js File Paths | Node.js Learn\
+  path.resolve() (calculates absolute path from relative or base parameters, treats leading slash as absolute), path.normalize()
+
+Show all
+
+## how to get stemname
+
+In Node.js, the "stem" or "stemname" refers to the **filename without its extension** (for example, getting `image` from `/path/to/image.png`).
+
+While Python has `Path.stem`, Node.js does not have a method literally named "stem". Instead, you can achieve this easily using **two different approaches** via the native `node:path` module. [link](https://nodejs.org/api/path.html)
+
+### Approach 1: Using `path.parse()` (Recommended)
+
+The `path.parse()` method breaks a path into an object where the **`.name`** property gives you the extension-free filename automatically. [link](https://medium.com/@scholaritemedia/understanding-path-parse-in-node-js-f43314ec278f)
+
+javascript
+
+```
+import path from 'node:path'; // or const path = require('node:path');
+
+const filePath = '/users/workspace/project/server.test.js';
+
+const stemName = path.parse(filePath).name;
+console.log(stemName); // Output: server.test
+```
+
+Use code with caution.
+
+### Approach 2: Using `path.basename()` with `path.extname()`
+
+The `path.basename()` method accepts an optional second argument representing the file extension suffix you want to strip out. By dynamically feeding it `path.extname()`, you can strip whatever extension the file has. [link](https://nodejs.org/learn/manipulating-files/nodejs-file-paths)
+
+javascript
+
+```
+import path from 'node:path';
+
+const filePath = '/users/workspace/project/server.test.js';
+
+const stemName = path.basename(filePath, path.extname(filePath));
+console.log(stemName); // Output: server.test
+```
+
+Use code with caution.
+
+### Which one should you use?
+
+- Use **`path.parse(filePath).name`** if you prefer clean, readable code or if you might also need other parts of the path (like the directory or the extension) later in your script.
+- Use **`path.basename()`** if you are writing performance-critical code where avoiding object allocation matters. [link](https://stackoverflow.com/questions/423376/how-to-get-the-file-name-from-a-full-path-using-javascript)
+
+Would you like to see how to handle complex file extensions (like **`.tar.gz`**) or do you need help implementing this into a broader file-processing script?
+
+- [link](https://nodejs.org/api/path.html)\
+  Node.js\
+  Path | Node.js v26.8.1 Documentation\
+  node:path module provides file and directory path utilities, adapting behavior to OS (Windows or POSIX), with explicit overrides v...
+- [link](https://www.w3schools.com/nodejs/met%5Fpath%5Fbasename.asp)\
+  W3Schools\
+  Node.js path.basename() Method\
+  Extracts the final filename portion from a provided file path string, optionally stripping a specified trailing extension.
+- [link](https://futurestud.io/tutorials/node-js-get-a-file-name-with-or-without-extension)\
+  futurestud.io\
+  Node.js — Get a File Name (With or Without Extension)\
+  You may use the built-in Node.js path module to do that. You can use the Path.parse method to parse a given file path into the ind...
+
+Show all
+
+# what does f in rmrf mean
+
+In the Unix/Linux command `rm -rf`, the **`f`** stands for <mark><strong>force</strong></mark>. [link](https://www.reddit.com/r/AskProgramming/comments/1cgkbu2/what%5Fdoes%5Fsudo%5Frm%5Frf%5Fdo%5Fon%5Flinux/)
+
+When you break down the entire command, it translates to the following behaviors:
+
+- **`rm`**: Remove (delete) files or directories. [link](https://www.reddit.com/r/AskProgramming/comments/1cgkbu2/what%5Fdoes%5Fsudo%5Frm%5Frf%5Fdo%5Fon%5Flinux/)
+- **`-r`**: Recursive. This tells the system to dive into directories and delete everything inside them, including all subfolders and files. [link](https://askubuntu.com/questions/670648/what-does-rm-rf-do)
+- **`-f`**: Force. This overrides safety checks by doing two main things:
+  1. **Suppresses confirmation prompts:** It deletes write-protected or read-only files silently without asking you "Are you sure?".
+  2. **Ignores nonexistent files:** If a file you target doesn't exist, the command will just move on silently instead of stopping to show an error message. [link](https://unix.stackexchange.com/questions/88943/whats-the-real-point-of-the-f-option-on-rm)
+
+Because the `-f` flag completely removes your last safety checks and warnings, running `rm -rf` is irreversible and can be incredibly destructive if typed with the wrong folder path. [link](https://askubuntu.com/questions/670648/what-does-rm-rf-do)
+
+Are you trying to safely **delete a specific folder**, or are you just **learning about Linux command line flags**? Let me know if you need help with a safe alternative like the `trash` CLI!
+
+- [link](https://www.reddit.com/r/AskProgramming/comments/1cgkbu2/what%5Fdoes%5Fsudo%5Frm%5Frf%5Fdo%5Fon%5Flinux/)\
+  Reddit·r/AskProgramming\
+  What does \`sudo rm -rf /\` do on Linux? : r/AskProgramming\
+  Apr 30, 2024 — rm is the remove command. -rf are options where -r stands for recursive, meaning it includes all files and directories within a sp...
+- [link](https://askubuntu.com/questions/670648/what-does-rm-rf-do)\
+  Ask Ubuntu\
+  files - What does rm -rf do? - Ask Ubuntu\
+  And -f does: ignore nonexistent files and arguments, never prompt So in combination they do both.
+- [link](https://unix.stackexchange.com/questions/88943/whats-the-real-point-of-the-f-option-on-rm)\
+  Unix & Linux Stack Exchange\
+  What's the real point of the -f option on rm?\
+  The -f option suppresses confirmation prompts when deleting a read-only file. It also suppresses errors when one or more supplied ...
+
+Show all
+
+# nodejs path relative
+
+### Quick results from the web:
+
+[link](https://nodejs.org/api/path.html)
+
+**Path** | **Node.js** v26.10.0 Documentation
+
+The path.relative() method returns the relative path from from to to based on the current working directory. If from and to each resolve to the same path (after calling path.resolve() on each), a zero
+
+Node.js·https://nodejs.org
+
+[link](https://www.geeksforgeeks.org/node-js/node-js-path-relative-method/)
+
+**Node.js path**.**relative**() Method - GeeksforGeeks
+
+Loading Playground... // Node.js program to demonstrate the // path.relative() method // Import the path module const path = require('path'); path1 = path.relative("geeks/website", "geeks/index.html")
+
+GeeksforGeeks·https://www.geeksforgeeks.org
+
+In Node.js, managing **relative paths** usually breaks down into two core use cases: finding the path _between_ two folders using `path.relative()`, or converting a relative path into an absolute path using `path.resolve()` or `path.join()`. [link](https://www.geeksforgeeks.org/node-js/node-js-path-relative-method/)
+
+Here is how you handle both, using the built-in [Node.js Path Module](https://nodejs.org/api/path.html).
+
+***
+
+### 1. Find the path from one location to another (`path.relative`)
+
+The `path.relative(from, to)` method calculates the **relative path from directory A to directory B**. If both paths resolve to the same location, it returns an empty string. [link](https://www.geeksforgeeks.org/node-js/node-js-path-relative-method/)
+
+javascript
+
+```
+const path = require('node:path'); // Or import path from 'node:path';
+
+const fromPath = '/data/user/project/src';
+const toPath = '/data/user/project/config/db.json';
+
+const relativePath = path.relative(fromPath, toPath);
+console.log(relativePath);
+// Output: '../config/db.json'
+```
+
+Use code with caution.
+
+### 2. Convert a relative path to an absolute path
+
+If you try to read a file using a simple relative string (like `./data.json`), Node.js looks for it relative to the **Current Working Directory (`process.cwd()`)**—which is wherever you ran the `node` command in your terminal, _not_ where the JavaScript file lives. This often causes "file not found" bugs. [link](https://www.youtube.com/watch?v=7UIXzCEqgas)
+
+To safely resolve a path relative to the **current file's location**, use `path.join` or `path.resolve` alongside environmental variables: [link](https://stackoverflow.com/questions/32705219/nodejs-accessing-file-with-relative-path)
+
+#### In CommonJS (`.js` files using `require`)
+
+Use the globally available `__dirname` variable: [link](https://stackoverflow.com/questions/32705219/nodejs-accessing-file-with-relative-path)
+
+javascript
+
+```
+const path = require('node:path');
+const fs = require('node:fs');
+
+// Safely point to a file in a folder adjacent to this script
+const absolutePath = path.join(__dirname, '../config/settings.json');
+
+const data = fs.readFileSync(absolutePath, 'utf8');
+```
+
+Use code with caution.
+
+#### In ES Modules (`.mjs` files or `"type": "module"`)
+
+`__dirname` is not available in ES modules. Use `import.meta.dirname` instead: [link](https://www.w3schools.com/nodejs/nodejs%5Fpath.asp)
+
+javascript
+
+```
+import path from 'node:path';
+import fs from 'node:fs';
+
+const absolutePath = path.join(import.meta.dirname, '../config/settings.json');
+const data = fs.readFileSync(absolutePath, 'utf8');
+```
+
+Use code with caution.
+
+***
+
+### Directly Comparing the Core Methods
+
+| Method                          | What it does                                                            | Best Used For                                                  |
+| ------------------------------- | ----------------------------------------------------------------------- | -------------------------------------------------------------- |
+| **`path.relative(from, to)`**   | Finds the navigation route between two explicit paths.                  | Generating portable links or move commands.                    |
+| **`path.join(...segments)`**    | Glues path segments together and normalizes the dots (`.` and `..`).    | Combining `__dirname` with a relative file path safely.        |
+| **`path.resolve(...segments)`** | Processes paths right-to-left until it builds a complete absolute path. | Forcing a relative route to turn into an absolute system path. |
+
+Are you trying to **fix a broken file-read error**, or are you programmatically **generating relative URLs/links** for a tool? Let me know your specific goal so I can give you the exact code snippet!
+
+AI can make mistakes, so double-check responses
+
+- [link](https://nodejs.org/api/path.html)\
+  Node.js\
+  Path | Node.js v26.8.1 Documentation\
+  Overview: node:path module provides file and directory path utilities, adapting behavior to OS (Windows or POSIX), with explicit o...
+- [link](https://stackoverflow.com/questions/32705219/nodejs-accessing-file-with-relative-path)\
+  Stack Overflow\
+  NodeJS accessing file with relative path \[duplicate]\
+  You can use the path module to join the path of the directory. This should work on Linux, OSX, and Windows assuming a UTF8 encodin...
+- [link](https://www.geeksforgeeks.org/node-js/node-js-path-relative-method/)\
+  GeeksforGeeks\
+  Node.js path.relative() Method - GeeksforGeeks\
+  Finally, it compares two identical paths and produces an empty string because no navigation is required. move from one location to...
+
+Show all
+
+# all nodejs shell methods and params of each
+
+## all nodejs shell methods and params of each
+
+In Node.js, interacting with the shell or running operating system commands is primarily handled by the built-in **`child_process`** module. There are **asynchronous (callback/stream-based)** methods and their **synchronous** blocking counterparts. [link](https://nodejs.org/api/child%5Fprocess.html)
+
+Here is the comprehensive list of all Node.js native shell methods, along with their parameters and specific use cases.
+
+***
+
+### Asynchronous Methods (Non-Blocking)
+
+These methods run in the background and do not halt the main Node.js event loop. [link](https://nodejs.org/api/child%5Fprocess.html)
+
+#### 1. `child_process.exec(command[, options][, callback])`
+
+_Runs a command inside a shell_ (e.g., `/bin/sh` or `cmd.exe`) and buffers the entire output in memory. [link](https://www.youtube.com/watch?v=6C-d%5FdntMXw\&t=51)
+
+- **`command`** _(string)_: The shell command to run (e.g., `'ls -la'` or `'mkdir new_folder'`). [link](https://www.youtube.com/watch?v=6C-d%5FdntMXw\&t=51)
+- **`options`** _(object, optional)_:
+  - `cwd` _(string)_: Current working directory of the child process.
+  - `env` _(object)_: Environment key-value pairs.
+  - `shell` _(string)_: Shell to execute the command with (Default: `/bin/sh` on Unix, `process.env.ComSpec` on Windows).
+  - `timeout` _(number)_: Maximum execution time allowed in milliseconds.
+  - `maxBuffer` _(number)_: Largest amount of data allowed on stdout or stderr (Default: 1024 \* 1024 bytes).
+- **`callback`** _(function, optional)_: Called when the process terminates.
+  - Parameters: `(error, stdout, stderr)`
+
+#### 2. `child_process.spawn(command[, args][, options])`
+
+_Launches a new process directly without a shell_ by default. It streams data (`stdout` / `stderr`) instead of buffering it, making it ideal for long-running processes or massive data transfers. [link](https://nodejs.org/api/child%5Fprocess.html)
+
+- **`command`** _(string)_: The executable file or command to run (e.g., `'node'`, `'python'`, `'git'`).
+- **`args`** _(string array, optional)_: List of string arguments to pass to the executable. [link](https://mojoauth.com/dev-guides/command-line-argument-escaping-in-nodejs)
+- **`options`** _(object, optional)_:
+  - `cwd`, `env` _(same as exec)_.
+  - `argv0` _(string)_: Explicitly sets the value of `argv[0]` sent to the child process.
+  - `stdio` _(array|string)_: Configures the pipes established between parent and child (e.g., `'pipe'`, `'inherit'`, `'ignore'`).
+  - `detached` _(boolean)_: Prepare child process to run independently of its parent.
+  - `shell` _(boolean|string)_: If `true`, runs the command inside a shell. [link](https://mojoauth.com/dev-guides/command-line-argument-escaping-in-nodejs)
+
+#### 3. `child_process.execFile(file[, args][, options][, callback])`
+
+Similar to `exec`, but it _spawns the executable directly_ without a shell wrapper, making it faster and significantly safer against SQL-injection-style shell command injections. [link](https://nodejs.org/api/child%5Fprocess.html)
+
+- **`file`** _(string)_: The name or path of the executable file to run.
+- **`args`** _(string array, optional)_: List of string arguments.
+- **`options`** _(object, optional)_: Identical to `exec` options.
+- **`callback`** _(function, optional)_: Parameters: `(error, stdout, stderr)`. [link](https://mojoauth.com/dev-guides/command-line-argument-escaping-in-nodejs)
+
+#### 4. `child_process.fork(modulePath[, args][, options])`
+
+A special case of `spawn` explicitly designed to spin up _new Node.js V8 instances_. It establishes an Inter-Process Communication (IPC) channel to pass messages back and forth via `process.send()`. [link](https://nodejs.org/api/child%5Fprocess.html)
+
+- **`modulePath`** _(string)_: The path to the JavaScript module to run in the child process. [link](https://nodejs.org/api/child%5Fprocess.html)
+- **`args`** _(string array, optional)_: List of string arguments. [link](https://mojoauth.com/dev-guides/command-line-argument-escaping-in-nodejs)
+- **`options`** _(object, optional)_:
+  - `cwd`, `env`, `stdio` _(same as spawn)_.
+  - `execPath` _(string)_: Executable used to create the child process.
+  - `execArgv` _(string array)_: List of string arguments passed to the executable (e.g., `--inspect`).
+
+***
+
+### Synchronous Methods (Blocking)
+
+These methods block the Node.js event loop, halting all execution until the shell command finishes running. Use these strictly for automation scripts or during initial startup scripts. [link](https://nodejs.org/api/child%5Fprocess.html)
+
+#### 5. `child_process.execSync(command[, options])`
+
+- **`command`** _(string)_: The shell command to run.
+- **`options`** _(object, optional)_: Same as `exec` (excluding callback).
+- **Returns**: The stdout of the command as a _Buffer_ or _string_. [link](https://nodejs.org/api/child%5Fprocess.html)
+
+#### 6. `child_process.spawnSync(command[, args][, options])`
+
+- **`command`** _(string)_: The executable file to run.
+- **`args`** _(string array, optional)_: List of string arguments.
+- **`options`** _(object, optional)_: Same as `spawn`.
+- **Returns**: An object containing `status`, `signal`, `output`, `stdout`, `stderr`, and `error`.
+
+#### 7. `child_process.execFileSync(file[, args][, options])`
+
+- **`file`** _(string)_: The name or path of the executable file to run.
+- **`args`** _(string array, optional)_: List of string arguments.
+- **`options`** _(object, optional)_: Same as `execFile` (excluding callback).
+- **Returns**: The stdout of the command as a _Buffer_ or _string_. [link](https://nodejs.org/api/child%5Fprocess.html)
+
+***
+
+### Direct Comparison Cheat Sheet
+
+| Method         | Spawns Shell?       | Output Type            | Best Used For...                                   |
+| -------------- | ------------------- | ---------------------- | -------------------------------------------------- |
+| **`exec`**     | Yes (By default)    | Buffered (Callback)    | Simple, small CLI strings (`ls`, `cat file.txt`)   |
+| **`spawn`**    | No (Unless toggled) | Streamed (`stdout.on`) | Large data, long-lived tasks, real-time logging    |
+| **`execFile`** | No                  | Buffered (Callback)    | Executing binary files, secure script execution    |
+| **`fork`**     | No                  | IPC Messaging          | Offloading heavy JS computation to multi-processes |
+| **`*Sync`**    | Varies by method    | Returned directly      | Build scripts, migrations, CLI utilities           |
+
+Are you trying to **build a custom CLI tool**, automate a deployment script, or pipe data between multi-tiered shell applications? Let me know, and I can write a **working code snippet** tailored to your project.
+
+- [link](https://nodejs.org/api/child%5Fprocess.html)\
+  Node.js\
+  Child process | Node.js v26.10.0 Documentation\
+  execFile() : similar to child\_process. exec() except that it spawns the command directly without first spawning a shell by default...
+- [link](https://mojoauth.com/dev-guides/command-line-argument-escaping-in-nodejs)\
+  MojoAuth\
+  Node.js Command Line Arguments and Escaping - MojoAuth\
+  argv. slice(2) , which returns the arguments after node and the script path as an array of strings. Avoid the shell with an argume...
+- [link](https://www.youtube.com/watch?v=6C-d%5FdntMXw\&t=51)\
+  YouTube·medium guy\
+  execute shell commands with nodejs | part 1\
+  Nov 23, 2022 — The \`exec\` function creates a new shell, buffers the command output in memory, which is suitable for smaller data outputs. memory-\
+  6m
+
+## examples
+
+Here are practical, real-world examples for each of the core Node.js shell methods.
+
+***
+
+### 1. `child_process.exec` (Asynchronous Shell)
+
+Best for running quick shell commands where you need to read a small amount of buffered output at once.
+
+javascript
+
+```
+const { exec } = require('child_process');
+
+// Lists all files in long format
+exec('ls -la', (error, stdout, stderr) => {
+  if (error) {
+    console.error(`Execution Error: ${error.message}`);
+    return;
+  }
+  if (stderr) {
+    console.error(`Shell Error: ${stderr}`);
+    return;
+  }
+  console.log(`Directory Output:\n${stdout}`);
+});
+```
+
+Use code with caution.
+
+### 2. `child_process.spawn` (Asynchronous Streaming)
+
+Best for handling large amounts of data, real-time logging, or running interactive commands.
+
+javascript
+
+```
+const { spawn } = require('child_process');
+
+// Streams a network ping command continuously
+const ping = spawn('ping', ['-c', '4', '8.8.8.8']);
+
+// Listen to data chunks as they stream in real-time
+ping.stdout.on('data', (data) => {
+  console.log(`Ping update: ${data.toString().trim()}`);
+});
+
+ping.stderr.on('data', (data) => {
+  console.error(`Ping error: ${data}`);
+});
+
+ping.on('close', (code) => {
+  console.log(`Ping process finished with exit code ${code}`);
+});
+```
+
+Use code with caution.
+
+### 3. `child_process.execFile` (Asynchronous Executable)
+
+Best for running external binaries or scripts directly without spawning an expensive overhead shell wrapper.
+
+javascript
+
+```
+const { execFile } = require('child_process');
+
+// Directly calls a Python binary script safely
+execFile('python3', ['script.py', '--arg1=value'], (error, stdout, stderr) => {
+  if (error) {
+    throw error;
+  }
+  console.log(`Python script output: ${stdout}`);
+});
+```
+
+Use code with caution.
+
+### 4. `child_process.fork` (Node-to-Node IPC)
+
+Best for background worker threads. It allows the parent script and the child worker script to pass JSON objects back and forth seamlessly.
+
+**parent.js (Main Process)**
+
+javascript
+
+```
+const { fork } = require('child_process');
+
+// Spin up a secondary background worker file
+const computeWorker = fork('./worker.js');
+
+// Send data to the background worker
+computeWorker.send({ task: 'heavy_math', payload: [10, 20, 30] });
+
+// Listen for the calculated response from the worker
+computeWorker.on('message', (result) => {
+  console.log(`Result from background worker:`, result);
+  computeWorker.kill(); // Safely terminate the process when finished
+});
+```
+
+Use code with caution.
+
+**worker.js (Background Process)**
+
+javascript
+
+```
+process.on('message', (message) => {
+  console.log('Worker received task:', message.task);
+
+  // Perform computation
+  const sum = message.payload.reduce((a, b) => a + b, 0);
+
+  // Send the result back to the main script
+  process.send({ success: true, answer: sum });
+});
+```
+
+Use code with caution.
+
+***
+
+### 5. `child_process.execSync` (Synchronous Blocking)
+
+Best used for setup scripts, migrations, or local CLI automation programs where things **must** run in order before continuing.
+
+javascript
+
+```
+const { execSync } = require('child_process');
+
+try {
+  console.log('Checking global software version...');
+
+  // This blocks the event loop until the exact command finishes
+  const nodeVersion = execSync('node -v', { encoding: 'utf-8' });
+
+  console.log(`Your active runtime version is: ${nodeVersion.trim()}`);
+} catch (error) {
+  console.error('Failed to look up software version:', error.message);
+}
+```
+
+Use code with caution.
+
+Would you like to see how to wrap these methods into **modern async/await promises**, or do you need help **handling cross-platform differences** so your shell scripts can run on both Windows and macOS/Linux safely?
+
+## all spawn return instance methods and params of each
+
+When you call an asynchronous method like `child_process.spawn()`, `fork()`, `exec()`, or `execFile()`, it returns an instance of the **`ChildProcess`** class. [link](https://nodejs.org/api/child%5Fprocess.html)
+
+The `ChildProcess` class inherits from `EventEmitter`. Below is the complete list of all **instance methods** available on the returned process object, along with their parameters, types, and behaviors. [link](https://r2.nodejs.org/dist/v0.10.36/docs/api/child%5Fprocess.html)
+
+***
+
+### 1. `subprocess.kill([signal])`
+
+Sends a POSIX signal to the child process to terminate or manage it. [link](https://docs.deno.com/api/node/child%5Fprocess/)
+
+- **`signal`** _(string | number, optional)_: The signal to send.
+  - _Default:_ `'SIGTERM'` (which politely requests the process to exit).
+  - _Common Alternatives:_ `'SIGKILL'` (forces immediate termination), `'SIGINT'` (CTRL+C simulation).
+- **Returns**: `boolean` (`true` if the signal was successfully delivered, `false` otherwise).
+
+### 2. `subprocess.send(message[, sendHandle][, options][, callback])`
+
+Used exclusively when an **IPC (Inter-Process Communication) channel** is active (most common when using `child_process.fork()`). It sends a message from the parent process to the child process (or vice-versa). [link](https://r2.nodejs.org/docs/v7.1.0/api/child%5Fprocess.html)
+
+- **`message`** _(object | string | number | boolean)_: The data payload to transmit. It must be a JSON-serializable object or a primitive type. [link](https://nodejs.org/download/release/v5.1.0/docs/api/child%5Fprocess.html)
+- **`sendHandle`** _(Handle object, optional)_: A server or socket object (like a TCP server `net.Server` or socket `net.Socket`) you want to hand off to the child process.
+- **`options`** _(object, optional)_: Used to customize the message delivery behavior.
+  - `keepOpen` _(boolean)_: Keeps the net server/socket open in the parent process even after handing it off. _Default:_ `false`.
+- **`callback`** _(function, optional)_: Triggered once the message is successfully emitted or fails.
+  - Parameters: `(error)`
+- **Returns**: `boolean` (`true` if the message was sent into the channel buffer, `false` otherwise).
+
+### 3. `subprocess.disconnect()`
+
+Closes the IPC communication channel between the parent and child process. [link](https://nodejs.org/download/release/v6.8.0/docs/api/child%5Fprocess.html)
+
+- **Parameters**: None.
+- **Returns**: `void`.
+- _Effect:_ Once invoked, the `disconnect` event fires, and the `subprocess.connected` flag drops to `false`. This allows the child process to exit gracefully if nothing else is keeping it alive. [link](https://nodejs.org/api/child%5Fprocess.html)
+
+### 4. `subprocess.ref()`
+
+Keeps the parent Node.js event loop alive as long as the child process is active.
+
+- **Parameters**: None.
+- **Returns**: `this` (the `ChildProcess` instance for chaining).
+- _Note:_ This restores the default behavior if `subprocess.unref()` was previously called.
+
+### 5. `subprocess.unref()`
+
+Removes the child process from the parent's event loop reference count.
+
+- **Parameters**: None.
+- **Returns**: `this`.
+- _Effect:_ If this method is called, the parent Node.js process can exit completely even if the child process is still running independently in the background.
+
+***
+
+### Summary Checklist of Instance Methods
+
+| Method             | Key Parameter                | Purpose                                                          | Requires IPC?                      |
+| ------------------ | ---------------------------- | ---------------------------------------------------------------- | ---------------------------------- |
+| **`kill()`**       | `signal` (e.g., `'SIGKILL'`) | Terminates or signals the process.                               | No                                 |
+| **`send()`**       | `message` (JSON/Primitive)   | Passes structural data or network handles.                       | **Yes** (`fork` or `stdio: 'ipc'`) |
+| **`disconnect()`** | None                         | Gracefully severs the IPC communication link.                    | **Yes**                            |
+| **`unref()`**      | None                         | Allows parent process to exit while child keeps running.         | No                                 |
+| **`ref()`**        | None                         | Undoes `unref()`, forcing the parent loop to wait for the child. | No                                 |
+
+Would you like to see how to couple these methods with **ChildProcess instance events** (like `.on('exit')` or `.on('message')`), or see a snippet demonstrating how to **pass a TCP server handle** to a child using `.send()`?
+
+- [link](https://nodejs.org/api/child%5Fprocess.html)\
+  Node.js\
+  Child process | Node.js v26.10.0 Documentation\
+  Events: close, disconnect, error, exit, message, spawn. Subprocess properties: channel, connected, exitCode, killed, pid, signalCo...
+- [link](https://docs.deno.com/api/node/child%5Fprocess/)\
+  Deno\
+  child\_process - Node documentation - Deno Docs\
+  connected property indicates whether it is still possible to send and receive messages from a child process. When subprocess. conn...
+- [link](https://nodejs.org/download/release/v6.8.0/docs/api/child%5Fprocess.html)\
+  Node.js\
+  Child Process | Node.js v6.8.0 Documentation\
+  ChildProcess implements EventEmitter. Events: close, disconnect, error, exit, message. ipc), detached.
+
+Show all
+
+## all spawn return instance methods and params of each
+
+In the previous response, we covered the main execution methods on the returned `ChildProcess` instance. However, to get a truly complete picture of the object returned by `child_process.spawn()`, you also need its **native stream properties**, **informational properties**, and **inherited Event Emitter methods**.
+
+Here is the exhaustive breakdown of everything available on the returned `ChildProcess` instance.
+
+***
+
+### 1. Attached Stream Methods & Properties
+
+When you spawn a child process with default options, it attaches standard I/O streams. These streams are standard Node.js `Readable` or `Writable` streams and possess their own methods.
+
+- **`subprocess.stdout`** _(stream.Readable)_: The child process's standard output stream.
+  - _Key Methods:_ `.on('data', chunk => {})`, `.pipe(destination)`, `.pause()`, `.resume()`.
+- **`subprocess.stderr`** _(stream.Readable)_: The child process's standard error stream.
+  - _Key Methods:_ Same as `stdout`.
+- **`subprocess.stdin`** _(stream.Writable)_: The child process's standard input stream. Used to write data _into_ the child process.
+  - _Key Methods:_ `.write(chunk[, encoding][, callback])`, `.end([chunk][, encoding][, callback])`.
+- **`subprocess.stdio`** _(Array)_: A sparse array containing the pipes to the child process. Index `0` is `stdin`, `1` is `stdout`, and `2` is `stderr`. Extra indexes represent extra file descriptors if configured via custom `stdio` arrays.
+
+***
+
+### 2. Informational & State Properties
+
+These read-only properties give you real-time insight into the process's health, identity, and lifecycle configuration.
+
+- **`subprocess.pid`** _(number | undefined)_: The operating system Process Identifier (PID) of the child process. (If spawning fails, this is `undefined`).
+- **`subprocess.exitCode`** _(number | null)_: The exit code of the process. Contains a number (like `0` for success) _only after_ the process has exited; otherwise `null`.
+- **`subprocess.signalCode`** _(string | null)_: The POSIX signal received by the process if it was terminated externally (e.g., `'SIGTERM'`, `'SIGKILL'`). Otherwise `null`.
+- **`subprocess.connected`** _(boolean)_: Returns `true` if an IPC channel is still open and you can safely use `.send()`.
+- **`subprocess.killed`** _(boolean)_: Returns `true` after `.kill()` has successfully sent a termination signal to the child process.
+- **`subprocess.spawnfile`** _(string)_: The name of the executable file that was launched.
+- **`subprocess.spawnargs`** _(Array)_: The complete command-line arguments that the child process was launched with.
+
+***
+
+### 3. Inherited Event Emitter Methods (`.on`, `.once`, `.off`)
+
+Because `ChildProcess` extends Node's native `EventEmitter`, its most powerful "methods" are the event listeners you attach to track lifecycle transitions.
+
+- **`subprocess.on(eventName, listener)`** / **`subprocess.once(eventName, listener)`**
+  - **`'spawn'`** → `() => {}`
+    - Fires as soon as the process successfully spawns at the OS level.
+  - **`'error'`** → `(err: Error) => {}`
+    - Fires if the process cannot be spawned, cannot be killed, or sending an IPC message fails.
+  - **`'message'`** → `(message: Object | Primitive, sendHandle: Handle) => {}`
+    - Fires when the child process sends data using `process.send()`.
+  - **`'disconnect'`** → `() => {}`
+    - Fires after `.disconnect()` is called on either the parent or child process.
+  - **`'exit'`** → `(code: number | null, signal: string | null) => {}`
+    - Fires immediately when the child process ends. Note that the standard I/O streams (`stdout`, `stderr`) might still be open buffering remaining data.
+  - **`'close'`** → `(code: number | null, signal: string | null) => {}`
+    - Fires _only after_ the process has exited **and** all its standard I/O streams have been fully closed.
+
+Are you looking to use these properties to create a **process manager** (like a custom runner that restarts crashed scripts), or do you need help setting up **custom stream plumbing** via the `stdio` array?
+
+## subprocess on
+
+The `.on()` method is inherited from Node.js’s `EventEmitter` class. It registers listener functions that fire asynchronously when a specific lifecycle event occurs within the spawned process.
+
+Here is the complete list of all native events you can pass into `subprocess.on()`, along with their specific callback parameters.
+
+***
+
+### 1. `.on('spawn', () => {})`
+
+Fires **immediately** when the operating system successfully creates and launches the child process.
+
+- **Callback Parameters**: None.
+- **Best Used For**: Knowing the exact millisecond the child process started running, or confirming a successful launch before tracking performance metrics.
+
+javascript
+
+```
+const child = spawn('ls');
+child.on('spawn', () => {
+  console.log(`Process successfully started with PID: ${child.pid}`);
+});
+```
+
+Use code with caution.
+
+### 2. `.on('error', (err) => {})`
+
+Fires if the process **cannot be spawned or manipulated**. Note that if this event triggers, the `'exit'` event will generally _not_ fire.
+
+- **Callback Parameters**:
+  - `err` _(Error object)_: Contains details about why execution failed (e.g., `err.code = 'ENOENT'` if the command executable file was not found).
+- **Best Used For**: Critical exception handling and preventing your main Node.js application from crashing due to an unhandled exception.
+
+javascript
+
+```
+const child = spawn('invalid-command-name');
+child.on('error', (err) => {
+  console.error(`Failed to start child process: ${err.message}`);
+});
+```
+
+Use code with caution.
+
+### 3. `.on('exit', (code, signal) => {})`
+
+Fires the exact moment the child process **terminates at the OS level**.
+
+- **Important Caveat**: Standard input/output streams (`stdout`, `stderr`) may still be open and buffering data when this fires.
+- **Callback Parameters**:
+  - `code` _(number | null)_: The final exit status code if the process exited on its own (e.g., `0` for success). If the process was terminated by an external signal, this is `null`.
+  - `signal` _(string | null)_: The POSIX signal string (e.g., `'SIGTERM'`, `'SIGKILL'`) used to terminate the process. Otherwise `null`.
+
+javascript
+
+```
+child.on('exit', (code, signal) => {
+  console.log(`Process exited. Code: ${code}, Signal: ${signal}`);
+});
+```
+
+Use code with caution.
+
+### 4. `.on('close', (code, signal) => {})`
+
+Fires **only after** the process has exited **and** all of its standard I/O streams (`stdout`, `stderr`) have been fully closed and flushed.
+
+- **Callback Parameters**: Same as `'exit'`.
+  - `code` _(number | null)_
+  - `signal` _(string | null)_
+- **Best Used For**: Safely processing the complete output of a script. This is usually the preferred event over `'exit'` if you are accumulating stream data into strings.
+
+javascript
+
+```
+child.on('close', (code, signal) => {
+  console.log(`All I/O streams closed. Process cleanup complete.`);
+});
+```
+
+Use code with caution.
+
+### 5. `.on('message', (message, sendHandle) => {})`
+
+Fires when the child process sends structural data back to the parent process. This **requires an active IPC channel** (such as using `child_process.fork()` or setting `stdio: ['pipe', 'pipe', 'pipe', 'ipc']` during spawn).
+
+- **Callback Parameters**:
+  - `message` _(Object | string | number | boolean)_: A parsed JSON object or primitive payload sent from the child via `process.send()`.
+  - `sendHandle` _(Handle object | undefined)_: A network socket or server instance (e.g., `net.Socket` or `net.Server`) if one was handed down along with the message.
+
+javascript
+
+```
+child.on('message', (message) => {
+  console.log('Received structural data from worker:', message);
+});
+```
+
+Use code with caution.
+
+### 6. `.on('disconnect', () => {})`
+
+Fires when the IPC channel between the parent and child process is programmatically severed (via `.disconnect()`).
+
+- **Callback Parameters**: None.
+- **Best Used For**: Final garbage collection or worker-recycling routines when utilizing process pools.
+
+javascript
+
+```
+child.on('disconnect', () => {
+  console.log('IPC channel broken. Parent and child can no longer pass messages.');
+});
+```
+
+Use code with caution.
+
+***
+
+Would you like to see how to use these events to build a **robust automatic process restarter** that attempts to revive a crashed task, or are you tracking down a specific **stream buffering issue**?
+
+## how to receive stdout and stderr from spawn
+
+To receive `stdout` (standard output) and `stderr` (standard error) from a spawned process, you listen to the **`data` events** on the `child.stdout` and `child.stderr` streams.
+
+Because `spawn` streams data in real-time, it arrives in chunks as Node.js **Buffer objects**. You must either convert these buffers to strings immediately or aggregate them into an array to process when the stream closes.
+
+Here are the two best ways to do this depending on your use case.
+
+***
+
+### Method 1: Real-Time Streaming (Best for long-running scripts)
+
+This method processes data the exact millisecond the child process emits it. It is ideal for streaming logs or tracking the live progress of a script.
+
+javascript
+
+```
+const { spawn } = require('child_process');
+
+// Example: Running a network ping command
+const child = spawn('ping', ['-c', '3', '8.8.8.8']);
+
+// 1. Capture standard output (stdout)
+child.stdout.on('data', (data) => {
+  // Convert the Buffer chunk to a readable string
+  console.log(`[STDOUT]: ${data.toString().trim()}`);
+});
+
+// 2. Capture error output (stderr)
+child.stderr.on('data', (data) => {
+  console.error(`[STDERR]: ${data.toString().trim()}`);
+});
+
+// 3. Handle process completion using 'close'
+child.on('close', (code) => {
+  console.log(`Process exited with code: ${code}`);
+});
+```
+
+Use code with caution.
+
+***
+
+### Method 2: Buffer and Collect (Best for parsing final output)
+
+If you need to analyze the _entire_ output at the very end (e.g., parsing a complete JSON string emitted by a script), you should collect the chunks into arrays and combine them on the `'close'` event.
+
+javascript
+
+```
+const { spawn } = require('child_process');
+
+const child = spawn('ls', ['-la']);
+
+const stdoutChunks = [];
+const stderrChunks = [];
+
+// Collect stdout chunks
+child.stdout.on('data', (chunk) => {
+  stdoutChunks.push(chunk);
+});
+
+// Collect stderr chunks
+child.stderr.on('data', (chunk) => {
+  stderrChunks.push(chunk);
+});
+
+// Wait until the process exits AND streams are completely flushed
+child.on('close', (code) => {
+  // Combine all buffers into single strings
+  const finalStdout = Buffer.concat(stdoutChunks).toString();
+  const finalStderr = Buffer.concat(stderrChunks).toString();
+
+  if (code === 0) {
+    console.log('Success! Complete Output:\n', finalStdout);
+  } else {
+    console.error(`Process failed with code ${code}.\nError Log:\n`, finalStderr);
+  }
+});
+```
+
+Use code with caution.
+
+***
+
+### Pro-Tip: Inherit Streams (No-code printing)
+
+If you don't actually need to read the data inside your Node.js application, but you just want the child process's output to print directly into your terminal window, pass `stdio: 'inherit'` in the options:
+
+javascript
+
+```
+// This will automatically pipe stdout/stderr directly to your terminal screen
+const child = spawn('ls', ['-la'], { stdio: 'inherit' });
+```
+
+Use code with caution.
+
+If you want, let me know:
+
+- What **specific shell command** or script are you trying to spawn?
+- Do you need to **send inputs back into the process** while it runs?
+
+I can help you build the perfect stream configuration or wrap this into a clean, modern **async/await Promise wrapper**.
+
+## why trim
+
+We use `.trim()` because **command-line programs almost always append a trailing newline character (`\n`) to their output.**
+
+If you don't use `.trim()`, your terminal logs will often have unexpected blank lines or extra spacing.
+
+Here is a breakdown of why this happens and how it works:
+
+### 1. Stripping Trailing Newlines
+
+When a shell program finishes printing a line, it outputs `\n` so the shell prompt drops down to the next clean line.
+
+If you run a command like `echo "Hello"`, the raw output buffer received by Node.js is actually `"Hello\n"`.
+
+- **Without `.trim()`:** `console.log("Result: " + data.toString())` prints your string, plus the trailing newline, plus `console.log`'s own built-in newline. This leaves a messy blank line underneath your log.
+- **With `.trim()`:** The trailing whitespace/newline is deleted, giving you exactly `"Hello"`.
+
+### 2. Handling Stream "Chunks"
+
+Because `spawn` reads data in real-time streams, it doesn't wait for a clean sentence to finish before handing it to Node.js. It fires the `data` event as soon as a "chunk" of bytes arrives in the network/I/O buffer.
+
+These chunks frequently contain raw white space, tab spaces, or Windows-specific carriage returns (`\r\n`). Applying `.trim()` cleans these up instantly before your code processes them as a string.
+
+### When should you NOT use `.trim()`?
+
+You should **avoid** using `.trim()` if the exact spacing or formatting of the shell output matters to your application. For example:
+
+- If you are reading a formatted data table where leading spaces align the columns.
+- If you are reading a file's contents where leading tabs or spaces are a required part of the data.
+
+Are you running into an issue where **text formatting is getting messed up**, or are you parsing a **specific type of output** (like JSON or a list of files)? Let me know and I can show you how to parse it correctly!
+
+## what if you echo hello or echo hello\n
+
+If you run those two commands through `spawn`, here is exactly what Node.js receives in its raw buffer and how `.trim()` changes it:
+
+### 1. Running `echo hello`
+
+By default, the `echo` command automatically adds a trailing newline (`\n`) to whatever you tell it to print.
+
+- **Raw Output Buffer:** `'hello\n'`
+
+- **Without `.trim()`:** `console.log()` adds its own newline on top of the buffer's newline, resulting in an **extra blank line** in your terminal:\
+  text
+
+```
+hello
+
+```
+
+Use code with caution.
+
+- **With `.trim()`:** The `\n` is stripped out, giving you just a clean, single line:\
+  text
+
+<!---->
+
+```
+hello
+```
+
+Use code with caution.
+
+### 2. Running `echo "hello\n"`
+
+If you explicitly add a `\n` to your echo string, `echo` will print your explicit newline _and_ still attach its own default trailing newline.
+
+- **Raw Output Buffer:** `'hello\n\n'`
+- **Without `.trim()`:** You get **two extra blank lines** in your terminal.
+- **With `.trim()`:** **Both** newlines are stripped away completely, leaving you with just `'hello'`.
+
+### The Core Rule of `.trim()`
+
+The `.trim()` method removes **all** leading and trailing whitespace, tabs, and newlines from a string, no matter how many there are.
+
+If you want to remove _only the single trailing newline_ added by the system without accidentally erasing intentional spaces or tabs at the beginning of your text, use **`.replace(/\r?\n$/, '')`** instead:
+
+javascript
+
+```
+child.stdout.on('data', (data) => {
+  // Safely removes only ONE trailing newline at the very end of the string
+  const cleanLine = data.toString().replace(/\r?\n$/, '');
+  console.log(cleanLine);
+});
+```
+
+Use code with caution.
+
+Are you trying to parse output line-by-line as it streams in, or are you running into an issue where **intentional spacing or indentation is being lost** because of `.trim()`?
+
+## will there be an unintended newline by default regardless
+
+<mark><strong><span>Yes, by default,<span> </span></span><code dir="ltr">console.log()</code><span> </span>will always add a newline regardless</strong><span> </span>of what the child process sent</mark>.
+
+If you don't use `.trim()`, you get the child process's newline _plus_ `console.log`'s newline. If you do use `.trim()`, you strip the child's newline, but `console.log()` still adds its own mandatory newline at the end of the print statement.
+
+To completely prevent unintended newlines and gain absolute control over exactly how the text prints to your terminal, you have two options:
+
+### Option 1: Use `process.stdout.write()` instead of `console.log()`
+
+`process.stdout.write()` prints raw strings directly to your terminal window **without adding an automatic newline** at the end. If you couple this with a regex to remove the child's trailing newline, you get an exact 1:1 match of what the command emitted.
+
+javascript
+
+```
+child.stdout.on('data', (data) => {
+  // 1. Remove only the single trailing newline from the child process
+  const cleanString = data.toString().replace(/\r?\n$/, '');
+
+  // 2. Print it raw. No extra hidden newlines will be added by Node.js.
+  process.stdout.write(cleanString);
+});
+```
+
+Use code with caution.
+
+### Option 2: The "Inherit" Shortcut
+
+If your goal is to let the child process print to the screen naturally without Node.js interfering or duplicating newlines, configure `stdio: 'inherit'`. This completely bypasses the JS stream buffering layer and hooks the process directly to your terminal screen.
+
+javascript
+
+```
+const { spawn } = require('child_process');
+
+// The child process completely owns the printing; no hidden newlines.
+spawn('echo', ['hello'], { stdio: 'inherit' });
+```
+
+Use code with caution.
+
+Are you trying to:
+
+- Build a **custom terminal UI or progress bar** where layout precision matters?
+- **Parse a file line-by-line** where you need to preserve exact indentation?
+
+Let me know and I can show you how to structure your stream handler.
+
+## i mean the on data, will there be an unintended newline by default regardless
+
+No, inside the **`on('data')`** callback itself, there are **no extra or unintended newlines** injected by Node.js.
+
+What you receive in the `data` chunk is a **100% exact byte-for-byte replica** of what the spawned program emitted. Node.js does not modify, wrap, or append anything to this stream.
+
+However, you will still frequently see "unintended" newlines due to how operating systems stream data. Here are the three reasons why it happens:
+
+### 1. The Child Program is Forcing It
+
+As mentioned, commands like `echo`, `ls`, or `ping` natively attach a `\n` to the end of their output strings before sending them to the OS stream. Node.js simply hands you that raw `\n` because it’s exactly what the program generated.
+
+### 2. The Chunk Splitting Effect
+
+Streams break data into chunks based on buffer sizes, not line breaks. If a program prints a long paragraph, Node.js might slice it right in the middle of a word across two `data` events:
+
+- **Chunk 1:** `"Hel"`
+- **Chunk 2:** `"lo World\n"`
+
+If you run `console.log(data.toString())` on _every_ chunk, `console.log` will insert a newline after `"Hel"`, breaking your word in half on the screen. This makes it _look_ like Node.js added a newline to the data, but it was actually just `console.log` reacting to a partial chunk.
+
+### 3. Terminal Emulation TTY Effects
+
+If you spawn a process that outputs to a pseudo-TTY terminal (or if the OS detects an interactive process), it might automatically replace standard Line Feeds (`\n`) with Carriage Return + Line Feeds (`\r\n`) to handle terminal cursor wrapping.
+
+### The Correct Way to Avoid Unintended Breaks
+
+If you want to parse text cleanly without chunks breaking your sentences or adding rogue lines, you must assemble the chunks and split them **only** when an explicit newline character is detected:
+
+javascript
+
+```
+const { spawn } = require('child_process');
+const child = spawn('ls', ['-la']);
+
+let buffer = '';
+
+child.stdout.on('data', (chunk) => {
+  // Append the raw chunk to our tracker string
+  buffer += chunk.toString();
+
+  // Split out completely finished lines
+  const lines = buffer.split(\(/\r\)?\n/);
+
+  // Keep the last partial line in the buffer (it hasn't finished emitting yet)
+  buffer = lines.pop();
+
+  // Process only 100% complete lines safely
+  for (const line of lines) {
+    console.log(`Clean Line: ${line}`);
+  }
+});
+```
+
+Use code with caution.
+
+Are you trying to parse **structured logs** (like JSON lines), or are you trying to build a **live progress bar** that updates on a single line using carriage returns (`\r`)? Let me know what you're building!
+
+## how to listen for halt
+
+In Node.js, a child process doesn't have an explicit event called "halt." Instead, a process halting means it has either **paused/suspended execution** or **completely terminated/crashed**.
+
+Depending on what you mean by "halt," here is how you listen for it using the returned process instance.
+
+***
+
+### 1. If "Halt" means the process Terminated or Crashed
+
+To listen for when a process stops executing completely, use the **`close`** or **`exit`** events. This is the most common way to catch a halt.
+
+javascript
+
+```
+const { spawn } = require('child_process');
+const child = spawn('node', ['script.js']);
+
+// Fires the moment the process halts/terminates at the OS level
+child.on('exit', (code, signal) => {
+  if (signal) {
+    console.log(`Process was forcefully halted by signal: ${signal}`);
+  } else if (code !== 0) {
+    console.error(`Process halted due to a crash/error. Exit code: ${code}`);
+  } else {
+    console.log(`Process halted successfully (finished execution normally).`);
+  }
+});
+```
+
+Use code with caution.
+
+### 2. If "Halt" means the process is Freezing / Stalled (No Activity)
+
+If a process is still running but has "halted" its work (e.g., it is stuck in an infinite loop or waiting indefinitely for input), **no OS event will fire**.
+
+To detect this kind of halt, you must implement a **heartbeat timeout**. If the process stops sending data over `stdout` for a certain period, you assume it has stalled and kill it.
+
+javascript
+
+```
+const child = spawn('some-heavy-task');
+
+let heartbeatTimeout;
+
+const resetTimeout = () => {
+  clearTimeout(heartbeatTimeout);
+  // If the process goes 5 seconds without emitting data, we consider it "halted"
+  heartbeatTimeout = setTimeout(() => {
+    console.warn('Process has stalled/halted activity! Forcing termination...');
+    child.kill('SIGKILL');
+  }, 5000);
+};
+
+// Reset the timer every time the child process outputs data
+child.stdout.on('data', () => resetTimeout());
+
+child.on('close', () => clearTimeout(heartbeatTimeout));
+resetTimeout();
+```
+
+Use code with caution.
+
+### 3. If "Halt" means the process was Suspended (Paused)
+
+On Unix/Linux/macOS systems, a process can be temporarily suspended (halted in mid-air) using the `SIGSTOP` or `SIGTSTP` signals, and resumed later with `SIGCONT`.
+
+You cannot listen for this directly inside the parent Node.js script using standard events, but you can check if it's alive by sending a `0` signal, which safely checks if a PID is still responsive without killing it:
+
+javascript
+
+```
+// Check if the process is responsive at the OS level
+try {
+  process.kill(child.pid, 0);
+  console.log('Process is still alive (though it might be paused or running).');
+} catch (e) {
+  console.log('Process is completely gone.');
+}
+```
+
+Use code with caution.
+
+What kind of halt are you trying to catch?
+
+- Is the process **crashing and exiting**?
+- Is it **freezing/stuck** in the background without giving output?
+
+Let me know, and I can give you the exact code to handle it or show you how to **automatically restart it**.
+
+This is for informational purposes only. For medical advice or diagnosis, consult a professional. AI responses may include mistakes. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
+
+## what if you listen for exit or close
+
+When you listen for **`exit`** versus **`close`**, you are listening to two different stages of a process shutting down.
+
+While they feel identical for fast commands, they behave differently when a process is handling large amounts of data. Here is exactly what happens when you listen for each:
+
+***
+
+### 1. If you listen for `exit`
+
+The `exit` event fires **the exact millisecond the operating system shuts down the process.**
+
+- **What is ready:** The process's `pid` is officially dead. You get the `code` (exit status) and `signal` immediately.
+- **The Risk:** **The standard output streams (`stdout` and `stderr`) might still be open and buffering data.** If the child process printed a massive amount of text right before dying, the OS is still piping those bytes to Node.js. If you rely _only_ on `exit` to finalize your data strings, your variables might be missing the last few lines of text.
+
+javascript
+
+```
+child.on('exit', (code, signal) => {
+  // Danger: child.stdout may still be processing data chunks!
+  console.log(`OS killed process. Code: ${code}`);
+});
+```
+
+Use code with caution.
+
+***
+
+### 2. If you listen for `close`
+
+The `close` event fires **only after the process has exited AND all of its I/O streams have completely finished flushing.**
+
+- **What is ready:** Everything. The process is dead, and every single byte of `stdout` and `stderr` has been safely received by your Node.js app.
+- **The Benefit:** This is the safest event to use if you are collecting data into strings or arrays because it guarantees you won't experience truncated text.
+
+javascript
+
+```
+child.on('close', (code, signal) => {
+  // Safe: Every single byte of stdout/stderr has been collected.
+  console.log(`Streams clean and process completely finalized.`);
+});
+```
+
+Use code with caution.
+
+***
+
+### Summary: Which one should you choose?
+
+| If you are...                                 | Use This Event | Why?                                                                                     |
+| --------------------------------------------- | -------------- | ---------------------------------------------------------------------------------------- |
+| **Collecting data chunks into a string**      | **`close`**    | Guarantees you don't miss the tail end of the output.                                    |
+| **Spawning multiple worker processes (Pool)** | **`exit`**     | Lets you spawn a replacement worker immediately without waiting for slow stream flushes. |
+| **Running simple commands (`ls`, `mkdir`)**   | **Either**     | The output is so tiny that both events will practically fire at the same time.           |
+
+Are you currently collecting output into a **variable** to parse later, or are you trying to orchestrate **background worker processes** that need to be replaced the moment they die? Let me know so we can structure the logic perfectly.
+
+## what if you spawn or spawnsync
+
+Choosing between **`spawn`** and **`spawnSync`** changes how your entire Node.js application executes.
+
+The core difference is **blocking vs. non-blocking**: `spawnSync` pauses your entire Node.js server until the command finishes, while `spawn` lets everything run concurrently in the background.
+
+Here is exactly how they behave side-by-side:
+
+***
+
+### Direct Feature Comparison
+
+| Feature               | `spawn` (Asynchronous)                             | `spawnSync` (Synchronous)                                               |
+| --------------------- | -------------------------------------------------- | ----------------------------------------------------------------------- |
+| **Event Loop Effect** | **Non-blocking**. Your app keeps running normally. | **Blocks everything**. Your app is frozen until the shell task is done. |
+| **Data Handling**     | Streams data dynamically over time via chunks.     | Returns the final data immediately inside an object.                    |
+| **Memory Footprint**  | Extremely low (processes data piece-by-piece).     | Higher (buffers the entire output in RAM at once).                      |
+| **Error Handling**    | Caught via `.on('error')` event listener.          | Caught natively using standard `try/catch` blocks.                      |
+| **Best Used For**     | Web servers, long tasks, big data transfers.       | Build scripts, migrations, CLI automation utilities.                    |
+
+***
+
+### What happens when you use `spawnSync`?
+
+When you call `spawnSync`, Node.js halts the main thread. If this is a web server (like Express), **no users can connect, and no other code will execute** until the command completes.
+
+It does not return a `ChildProcess` instance. Instead, it directly returns a static **results object**.
+
+javascript
+
+```
+const { spawnSync } = require('child_process');
+
+try {
+  // Execution completely pauses right here
+  const result = spawnSync('ls', ['-la'], { encoding: 'utf-8' });
+
+  // Access the outputs directly from the returned object
+  console.log('Status Code:', result.status); // 0
+  console.log('Output data:', result.stdout);
+} catch (error) {
+  console.error('System error:', error);
+}
+```
+
+Use code with caution.
+
+### What happens when you use `spawn`?
+
+When you call `spawn`, Node.js tells the operating system to start the command in the background and immediately moves to the next line of JavaScript code. You must use event listeners to capture the results.
+
+javascript
+
+```
+const { spawn } = require('child_process');
+
+// Code continues executing instantly. The app never pauses.
+const child = spawn('ls', ['-la']);
+
+child.stdout.on('data', (data) => {
+  console.log(data.toString());
+});
+
+child.on('close', (code) => {
+  console.log('Finished with code:', code);
+});
+```
+
+Use code with caution.
+
+***
+
+### When to choose which?
+
+- **Choose `spawnSync` if** you are writing a standalone automation script, a local CLI tool, or setup logic that runs _before_ your web server starts listening. In these cases, blocking is perfectly fine because nothing else needs to happen at the same time.
+- **Choose `spawn` if** you are inside an active web server (e.g., handling an API request), processing large files (videos, databases), or running tasks that take longer than a split second.
+
+Are you writing a **local script/CLI tool** where blocking the event loop is safe, or is this running inside a **live backend server** where speed and concurrency matter?
+
+## what does execsync return
+
+`child_process.execSync()` returns <mark>the<span> </span><strong><code dir="ltr">stdout</code><span> </span>(standard output) of the command directly</strong></mark>.
+
+By default, this output is returned as a raw Node.js **`Buffer` object**. However, if you pass an encoding option like `{ encoding: 'utf-8' }`, it will automatically return a native JavaScript **`string`**.
+
+Here is exactly how it behaves depending on your configuration:
+
+### 1. Default Behavior (Returns a Buffer)
+
+If you do not specify an encoding, you must manually call `.toString()` to read the text.
+
+javascript
+
+```
+const { execSync } = require('child_process');
+
+// Returns a Buffer object
+const outputBuffer = execSync('echo hello');
+
+console.log(outputBuffer); // <Buffer 68 65 6c 6c 6f 0a>
+console.log(outputBuffer.toString().trim()); // "hello"
+```
+
+Use code with caution.
+
+### 2. With Encoding Option (Returns a String)
+
+Passing an encoding configuration causes the method to return clean, ready-to-use text instantly.
+
+javascript
+
+```
+const { execSync } = require('child_process');
+
+// Returns a native string
+const outputString = execSync('echo hello', { encoding: 'utf-8' });
+
+console.log(typeof outputString); // "string"
+console.log(outputString.trim()); // "hello"
+```
+
+Use code with caution.
+
+***
+
+### What happens if the command fails?
+
+Unlike asynchronous methods that pass errors to a callback, `execSync` **throws a native JavaScript error** if the command fails (i.e., returns a non-zero exit code).
+
+To prevent your script from crashing, you must wrap it in a **`try/catch` block**. The thrown error object contains extra properties that allow you to inspect what went wrong:
+
+javascript
+
+```
+const { execSync } = require('child_process');
+
+try {
+  // Running an invalid command
+  execSync('ls non_existent_folder', { encoding: 'utf-8' });
+} catch (error) {
+  console.error('Command Failed!');
+  console.error('Exit Status Code:', error.status); // e.g., 1 or 2
+  console.error('Captured Stderr:', error.stderr);   // The actual error text from the shell
+}
+```
+
+Use code with caution.
+
+Are you trying to capture the **stdout and stderr separately** from a synchronous execution? If so, I can show you how to use `spawnSync` instead, which handles split streams much better than `execSync`.
+
+## params of each callback of spawn event
+
+Here are the exact **callback parameters** provided by each event emitted by a `child_process.spawn()` instance (`ChildProcess`).
+
+***
+
+### 1. `.on('spawn', () => {})`
+
+Fires the exact millisecond the child process is successfully launched by the operating system.
+
+- **Parameters:** None.
+- **Purpose:** Confirms successful process creation and that `child.pid` is now populated.
+
+### 2. `.on('error', (err) => {})`
+
+Fires if the process cannot be spawned, cannot be forcefully killed, or if message delivery fails.
+
+- **Parameters:**
+  - **`err`** _(Error object)_: A standard JavaScript error instance detailing the failure.
+    - `err.code`: Frequently contains string error codes like `'ENOENT'` (command executable file not found) or `'EACCES'` (permission denied).
+    - `err.message`: Human-readable error description.
+
+### 3. `.on('exit', (code, signal) => {})`
+
+Fires immediately when the child process terminates at the operating system level.
+
+- **Parameters:**
+  - **`code`** _(number | null)_: The final exit status code of the process if it completed on its own (e.g., `0` for absolute success, `1` or higher for a failure code). If the process was killed externally by a signal, this parameter evaluates to `null`.
+  - **`signal`** _(string | null)_: The POSIX signal string used to terminate the process externally (e.g., `'SIGTERM'`, `'SIGKILL'`, `'SIGINT'`). If the script finished executing on its own without intervention, this parameter evaluates to `null`.
+
+### 4. `.on('close', (code, signal) => {})`
+
+Fires _only after_ the process has exited **and** all associated standard I/O streams (`stdout`, `stderr`) have completely closed and flushed their memory buffers.
+
+- **Parameters:**
+  - **`code`** _(number | null)_: Same as `'exit'`.
+  - **`signal`** _(string | null)_: Same as `'exit'`.
+
+### 5. `.on('message', (message, sendHandle) => {})`
+
+Fires when the child process transmits structural data back using `process.send()`. This event **requires** an active Inter-Process Communication (IPC) configuration (such as using `child_process.fork()` or passing `stdio: ['pipe', 'pipe', 'pipe', 'ipc']` in the spawn options).
+
+- **Parameters:**
+  - **`message`** _(Object | string | number | boolean)_: The parsed JSON object or primitive payload sent out by the child process.
+  - **`sendHandle`** _(net.Socket | net.Server | undefined)_: A network handle object. If the child process deliberately handed down an active server or TCP socket instance alongside the message, it is received here. Otherwise, it is `undefined`.
+
+### 6. `.on('disconnect', () => {})`
+
+Fires when the IPC communication channel between the parent and child process is programmatically severed (usually triggered via `.disconnect()`).
+
+- **Parameters:** None.
+
+***
+
+### 💡 Quick Summary Cheat Sheet
+
+javascript
+
+```
+child.on('spawn',      () => {});
+child.on('error',      (err) => {});
+child.on('exit',       (code, signal) => {});
+child.on('close',      (code, signal) => {});
+child.on('message',    (message, sendHandle) => {});
+child.on('disconnect', () => {});
+```
+
+Use code with caution.
+
+Are you setting up **IPC message passing** between custom scripts, or are you trying to build a **robust error handling wrapper** around your spawned events? Let me know and I can provide targeted code logic.
+
+## params of each callback of all spawn events
+
+To be absolutely exhaustive, a spawned process emits events from two distinct locations: **the `ChildProcess` core instance** itself and **its individual I/O streams** (`stdout`/`stderr`/`stdin`).
+
+Here are the exact callback parameters, data types, and structural formats for **every single event** that can be fired during a `spawn` runtime. [link](https://nodejs.org/api/child%5Fprocess.html)
+
+***
+
+### Group 1: Core Process Lifecycle Events
+
+These are attached directly to the returned process object (e.g., `child.on(...)`). [link](https://www.freecodecamp.org/news/node-js-child-processes-everything-you-need-to-know-e69498fe970a/)
+
+#### 1. `'spawn'`
+
+- **Callback Signature:** `()`
+- **Parameters:** None.
+- **When it fires:** The exact millisecond the operating system creates and registers the process's PID.
+
+#### 2. `'error'`
+
+- **Callback Signature:** `(err)`
+- **Parameters:**
+  - `err` _(Error object)_: A standard JavaScript error instance.
+    - `err.code` _(string)_: System error codes like `'ENOENT'` (command executable file not found) or `'EACCES'` (permission denied).
+    - `err.message` _(string)_: Plaintext description of what went wrong.
+
+#### 3. `'exit'`
+
+- **Callback Signature:** `(code, signal)`
+- **Parameters:**
+  - `code` _(number | null)_: The final exit status code if the process exited on its own (e.g., `0` for success). If the process was terminated by an external signal, this evaluates to `null`.
+  - `signal` _(string | null)_: The POSIX signal string (e.g., `'SIGTERM'`, `'SIGKILL'`) used to forcefully end the process. If it completed naturally, this is `null`. [link](https://www.freecodecamp.org/news/node-js-child-processes-everything-you-need-to-know-e69498fe970a/)
+
+#### 4. `'close'`
+
+- **Callback Signature:** `(code, signal)`
+- **Parameters:**
+  - `code` _(number | null)_: Same behavior as the `'exit'` callback parameter.
+  - `signal` _(string | null)_: Same behavior as the `'exit'` callback parameter.
+  - _(Difference: This fires **only after** `exit` completes and all streams are fully flushed.)_ [link](https://www.freecodecamp.org/news/node-js-child-processes-everything-you-need-to-know-e69498fe970a/)
+
+#### 5. `'message'`
+
+- **Callback Signature:** `(message, sendHandle)`
+- **Parameters:**
+  - `message` _(Object | string | number | boolean)_: A parsed JSON structural object or a primitive type sent by the child process via `process.send()`.
+  - `sendHandle` _(net.Socket | net.Server | undefined)_: An optional raw TCP socket or server instance that was deliberately handed off along with the message data. [link](https://www.freecodecamp.org/news/node-js-child-processes-everything-you-need-to-know-e69498fe970a/)
+
+#### 6. `'disconnect'`
+
+- **Callback Signature:** `()`
+- **Parameters:** None.
+- **When it fires:** Triggered immediately when the Inter-Process Communication (IPC) link is programmatically severed (via `.disconnect()`). [link](https://www.freecodecamp.org/news/node-js-child-processes-everything-you-need-to-know-e69498fe970a/)
+
+***
+
+### Group 2: Attached Stream Events
+
+Because `child.stdout` and `child.stderr` are native Readable Streams, they offer a completely separate set of data events. [link](https://www.freecodecamp.org/news/node-js-child-processes-everything-you-need-to-know-e69498fe970a/)
+
+#### 7. `child.stdout.on('data')` & `child.stderr.on('data')`
+
+- **Callback Signature:** `(chunk)`
+- **Parameters:**
+  - `chunk` _(Buffer)_: A raw byte array representation of the output text emitted by the system command. (Can be transformed into a string by calling `chunk.toString()`).
+
+#### 8. `child.stdout.on('end')` & `child.stderr.on('end')`
+
+- **Callback Signature:** `()`
+- **Parameters:** None.
+- **When it fires:** Triggers when the specific stream has no more data left to send.
+
+#### 9. `child.stdout.on('error')` & `child.stderr.on('error')`
+
+- **Callback Signature:** `(err)`
+- **Parameters:**
+  - `err` _(Error object)_: Standard error instance indicating a failure while reading or processing the underlying I/O stream pipeline.
+
+***
+
+### Group 3: Input Stream Events
+
+Because `child.stdin` is a Writable Stream, you can track event parameters when writing raw data into an interactive command.
+
+#### 10. `child.stdin.on('drain')`
+
+- **Callback Signature:** `()`
+- **Parameters:** None.
+- **When it fires:** Notifies your parent program that the child's input stream buffer has successfully cleared out and it is safe to write more data without overwhelming memory.
+
+#### 11. `child.stdin.on('error')`
+
+- **Callback Signature:** `(err)`
+- **Parameters:**
+  - `err` _(Error object)_: Fires if you try to call `.write()` after the child process has already shut down or rejected inputs.
+
+#### 12. `child.stdin.on('finish')`
+
+- **Callback Signature:** `()`
+- **Parameters:** None.
+- **When it fires:** Emitted after you invoke `child.stdin.end()`, confirming all pending inbound data has been successfully pushed into the child's terminal.
+
+***
+
+### Complete Event Archetype Code Blueprint
+
+javascript
+
+```
+const { spawn } = require('child_process');
+const child = spawn('node', ['worker.js']);
+
+// Core Lifecycle Callbacks
+child.on('spawn',      () => { /* No params */ });
+child.on('error',      (err) => { console.log(err.code) });
+child.on('exit',       (code, signal) => { console.log(code, signal) });
+child.on('close',      (code, signal) => { console.log(code, signal) });
+child.on('message',    (message, sendHandle) => { console.log(message) });
+child.on('disconnect', () => { /* No params */ });
+
+// Readable Output Callbacks
+child.stdout.on('data',  (chunk) => { console.log(chunk.toString()) });
+child.stdout.on('error', (err) => { console.error(err) });
+child.stdout.on('end',   () => { /* No params */ });
+
+// Writable Input Callbacks
+child.stdin.on('drain',  () => { /* No params */ });
+child.stdin.on('error',  (err) => { console.error(err) });
+child.stdin.on('finish', () => { /* No params */ });
+```
+
+Use code with caution.
+
+Would you like help mapping out a **state tracker** to handle all these events inside a production **TypeScript environment**, or do you need assistance configuring a custom **`stdio` array** configuration to pass extra custom file descriptors?
+
+- [link](https://nodejs.org/api/child%5Fprocess.html)\
+  Node.js\
+  Child process | Node.js v26.10.0 Documentation\
+  Async creation: spawn (non-blocking), Events: close, disconnect, error, exit, message, spawn. Subprocess properties: channel, spaw...
+- [link](https://www.freecodecamp.org/news/node-js-child-processes-everything-you-need-to-know-e69498fe970a/)\
+  freeCodeCamp\
+  Node.js Child Processes: Everything you need to know\
+  Every child process also gets the three standard stdio streams, which we can access using child. stdin , child. stdout , and child...
+
+## can i run multiple command on execsync
+
+<mark><strong><span>Yes, you can run multiple commands inside a single<span> </span></span><code dir="ltr">execSync</code><span> </span>call.</strong></mark>
+
+Because `execSync` automatically spawns a real shell backend (like `/bin/sh` on Mac/Linux or `cmd.exe` on Windows), you can chain commands together using standard shell operators.
+
+The correct operator to use depends on whether you want the commands to run **unconditionally** or **conditionally** based on success.
+
+***
+
+### Chaining Strategies & Operators
+
+#### 1. The Sequential Operator (`;` or `&`)
+
+Runs the next command **regardless of whether the previous command succeeded or failed.**
+
+- **Mac / Linux:** Use a semicolon `;`
+- **Windows:** Use an ampersand `&`
+
+javascript
+
+```
+const { execSync } = require('child_process');
+
+// Mac / Linux Example
+const outputLinux = execSync('mkdir test_dir; cd test_dir; pwd', { encoding: 'utf-8' });
+console.log(outputLinux);
+
+// Windows Example
+const outputWin = execSync('mkdir test_dir & cd test_dir & cd', { encoding: 'utf-8' });
+console.log(outputWin);
+```
+
+Use code with caution.
+
+#### 2. The Safe "AND" Operator (`&&`)
+
+Runs the next command **only if the previous command completed with a success code (`0`)**. If a single command fails, execution stops immediately, and `execSync` throws an error. This is universally supported across Mac, Linux, and Windows.
+
+javascript
+
+```
+const { execSync } = require('child_process');
+
+try {
+  // If npm install fails, npm run build will NEVER execute
+  const deploy = execSync('npm install && npm run build', { encoding: 'utf-8' });
+  console.log('Deployment successful:\n', deploy);
+} catch (error) {
+  console.error('Deployment aborted because a step failed!');
+  console.error(error.stderr);
+}
+```
+
+Use code with caution.
+
+#### 3. The "OR" Operator (`||`)
+
+Runs the second command **only if the first command fails**. This is useful for writing fallback routines or quick default logging configurations directly in the shell.
+
+javascript
+
+```
+const { execSync } = require('child_process');
+
+// If folder exists, it does nothing. If it doesn't, it creates it.
+execSync('cd target_folder || mkdir target_folder');
+```
+
+Use code with caution.
+
+***
+
+### Clean Alternative: Multiline Template Literals
+
+If you have a complex script with many commands, packing them all onto one endless line gets messy. Because shells tolerate newlines inside quotes, you can use JavaScript template literals to layout a clear, vertical recipe:
+
+javascript
+
+```
+const { execSync } = require('child_process');
+
+// Works seamlessly on Mac and Linux
+const cleanupScript = `
+  echo "Starting structural backup..."
+  mkdir -p backup_folder
+  cp -R data/ backup_folder/
+  echo "Backup finished successfully."
+`;
+
+const result = execSync(cleanupScript, { encoding: 'utf-8' });
+console.log(result);
+```
+
+Use code with caution.
+
+### ⚠️ Security Warning
+
+If any part of your chained command uses dynamic user-generated text (like a folder name typed by a user on a website), chaining strings inside `execSync` leaves you highly vulnerable to **shell injection attacks**. If you are handling untrusted inputs, you should avoid `execSync` and switch to `spawn` or `execFile` where parameters are safely separated into distinct string arrays.
+
+If you're building a multi-step sequence, tell me:
+
+- Are you writing this for **Windows, Mac/Linux, or cross-platform** compatibility?
+- What **specific shell operations** (like file movements or dependency tracking) are you automating?
+
+I can help write a cross-platform helper function or wrap it into a clean, modern architecture.
+
+## how to pass some commands to sudo -u "$PRIMARY\_USER" -i "$USER\_SHELL" wo heredoc
+
+To pass commands to an interactive or login shell running under a different user (`sudo -u "$PRIMARY_USER" -i "$USER_SHELL"`) without using a bash heredoc (`<<EOF`), you can pass the script as a string directly to the shell's standard input (`stdin`) using **`child_process.spawn`**.
+
+Because `spawn` gives you direct access to the `stdin` stream, you can simply `.write()` your commands as a standard JavaScript string and then close the stream with `.end()`.
+
+Here is the exact way to structure this cleanly and safely:
+
+javascript
+
+```
+const { spawn } = require('child_process');
+
+// Define your environment variables or target variables
+const PRIMARY_USER = 'john_doe';
+const USER_SHELL = '/bin/bash';
+
+// 1. Spawn the sudo process with arguments broken out as a clean array
+const child = spawn('sudo', ['-u', PRIMARY_USER, '-i', USER_SHELL]);
+
+// 2. Define the multi-line commands you want to execute under that user
+const commandsToRun = `
+echo "Current OS user is: $(whoami)"
+pwd
+echo "Home directory: $HOME"
+`;
+
+// 3. Pipe the commands directly into the process stdin (No heredoc required!)
+child.stdin.write(commandsToRun);
+child.stdin.end(); // Inform the shell that no more commands are coming
+
+// 4. Capture and display standard output
+child.stdout.on('data', (data) => {
+  console.log(data.toString().trim());
+});
+
+// 5. Capture any errors
+child.stderr.on('data', (data) => {
+  console.error(`[STDERR]: ${data.toString().trim()}`);
+});
+
+child.on('close', (code) => {
+  console.log(`\nProcess completed with exit code: ${code}`);
+});
+```
+
+Use code with caution.
+
+### Why this works perfectly without a Heredoc:
+
+When you run a login shell with `-i`, the terminal program sits and waits for a human to type commands into standard input. By hooking into `child.stdin.write()`, your Node.js application "types" the commands into the session on behalf of the user, followed by `.end()` which acts exactly like hitting `CTRL+D` to close the terminal session.
+
+### Alternative: The Shell String Flag (`-c`)
+
+If you only need to run a quick single line or short chain of commands, you can bypass piping entirely by passing the commands directly as an execution string flag (`-c`) argument inside `execSync` or `spawn`:
+
+javascript
+
+```
+const { execSync } = require('child_process');
+
+// Executes the string command directly as the requested user
+const output = execSync(
+  `sudo -u "${PRIMARY_USER}" -i "${USER_SHELL}" -c "cd ~ && pwd && whoami"`,
+  { encoding: 'utf-8' }
+);
+
+console.log(output);
+```
+
+Use code with caution.
+
+If you run into issues, let me know:
+
+- Is your `sudo` environment configured to **require a password**, or is it running via **passwordless `visudo` rules**?
+- Are you trying to pass **dynamic Node.js variables** directly into those nested user shell commands?
+
+I can show you how to securely sanitize the strings or handle interactive password prompts if needed.
+
+## flags of sudo
+
+The `sudo` command includes a wide variety of operational flags. These flags can be grouped by how they <mark>control<span> </span><strong>identity, environment behavior, automation, and general listing/validation</strong></mark>. [link](https://github.com/bobbyiliev/101-linux-commands/blob/main/ebook/en/content/051-the-sudo-command.md)
+
+***
+
+### 1. Identity & Shell Options
+
+These control _who_ you are running the command as, and _how_ the target environment is instantiated.
+
+- **`-u user` or `--user=user`**: Specifies the target user to run the command as. This can be a username or a numerical user ID (prefixed with `#` like `-u #1001`). Default is `root`. [link](https://man7.org/linux/man-pages/man8/sudo.8.html)
+- **`-g group` or `--group=group`**: Specifies the primary Unix group to run the command as. [link](https://linux.die.net/man/8/sudo)
+- **`-i` or `--login`**: Runs the shell as a **login shell**. It changes the environment to match the target user's profile, switches the current directory to their home folder (`~`), and loads login files like `.bash_profile` or `.profile`. [link](https://www.sudo.ws/docs/man/1.8.10/sudo.man/)
+- **`-s` or `--shell`**: Runs the shell specified by the invoking user's `SHELL` environment variable, or the target user's default shell, but does _not_ simulate a fresh login or change the working directory. [link](https://www.geeksforgeeks.org/linux-unix/sudo-command-in-linux-with-examples/)
+
+***
+
+### 2. Automation & Scripting Flags
+
+Crucial when launching commands from Node.js or automated shell scripts, where terminal prompts can break execution.
+
+- **`-S` or `--stdin`**: Forces `sudo` to **read the password from standard input (stdin)** instead of loading an interactive terminal device challenge.
+  - _Example in Node.js:_ `child.stdin.write("my_password\n")`. [link](https://man.openbsd.org/OpenBSD-3.6/sudo.8)
+- **`-n` or `--non-interactive`**: Strictly forbids `sudo` from asking for a password. If the action requires authentication and there are no valid cached credentials, `sudo` will fail immediately with an error rather than freezing. [link](https://blog.gluckzhang.com/archives/197/)
+- **`-b` or `--background`**: Executes the requested command in the background immediately. [link](https://www.sudo.ws/docs/man/1.8.10/sudo.man/)
+- **`-A` or `--askpass`**: Tells `sudo` to call an external graphical helper program (configured via `SUDO_ASKPASS`) to fetch the password. [link](https://www.sudo.ws/docs/man/1.8.10/sudo.man/)
+- **`-T timeout` or `--command-timeout=timeout`**: Sets a maximum execution threshold for the running process. If it runs past the expiration limit, it is automatically terminated. [link](https://man7.org/linux/man-pages/man8/sudo.8.html)
+
+***
+
+### 3. Environment & Security Isolation
+
+These flags change how environment variables and memory space are managed across user boundaries.
+
+- **`-E` or `--preserve-env`**: Inherits and **preserves your current environment variables** across the user swap. By default, `sudo` resets and sanitizes the environment for safety.
+- **`--preserve-env=list`**: Allows you to preserve a comma-separated list of _specific_ environment variables while discarding the rest.
+- **`-H` or `--set-home`**: Explicitly re-points the `$HOME` environment variable to match the target user's home folder.
+- **`-D directory` or `--chdir=directory`**: Forces the command to execute from a specific working directory instead of inheriting the parent's active path. [link](https://documentation.suse.com/sled/15-SP5/html/SLED-all/cha-adm-sudo.html)
+
+***
+
+### 4. Credential & State Maintenance
+
+`sudo` tracks successful authentications via timestamp files so you don't have to type your password every single command. These flags modify that behavior. [link](https://www.sudo.ws/docs/man/1.8.10/sudo.man/)
+
+- **`-v` or `--validate`**: Updates/extends the user's cached security timestamp file without actually executing a command.
+- **`-k` or `--reset-timestamp`**: Invalidates the security timestamp cache. The next time you invoke `sudo`, it will explicitly demand a password prompt.
+- **`-K` or `--remove-timestamp`**: Forcefully deletes the timestamp completely. [link](https://linux.die.net/man/8/sudo)
+
+***
+
+### 5. Utility & Information
+
+Used to query what actions are permitted or to view settings.
+
+- **`-l` or `--list`**: Lists the allowed and forbidden commands for the active user based on your `/etc/sudoers` rules policy. Running **`-ll`** prints an extra verbose configuration layout.
+- **`-e` or `--edit`**: Spawns `sudoedit`, letting a user safely modify sensitive files using their own preferred local environment editor wrapper.
+- **`-V` or `--version`**: Displays version details along with internal defaults compiled directly into the binary file. [link](https://man.archlinux.org/man/extra/sudo-rs/sudoers-rs.5.en)
+
+If you are planning an automation strategy, let me know:
+
+- Are you looking to pass a **sudo password automatically** via a script?
+- Do you need to **preserve environment variables** from your Node.js parent app into the sudo session?
+
+I can provide the exact **`child_process` string configuration** or array configuration for your scenario.
+
+- [link](https://man7.org/linux/man-pages/man8/sudo.8.html)\
+  man7.org\
+  sudo(8) - Linux manual page - man7.org\
+  Sep 9, 2026 — -T timeout, --command-timeout=timeout Used to set a timeout for the command. If the timeout expires before the command has exited,
+- [link](https://www.sudo.ws/docs/man/1.8.10/sudo.man/)\
+  Sudo\
+  Sudo Manual | Sudo\
+  Execute commands as another user or superuser via security policies. Authentication & Caching: Requires password confirmation per ...
+- [link](https://man.openbsd.org/OpenBSD-3.6/sudo.8)\
+  OpenBSD manual pages\
+  sudo(8) - OpenBSD manual pages\
+  The -S (stdin) option causes sudo to read the password from standard input instead of the terminal device. -s flag.
+
+Show all
+
+## what does -l do
+
+The **`-l`** flag (or `--list`) in `sudo` **lists your current privileges and allowed commands**.
+
+When you run `sudo -l`, it checks the system's security configuration (the `/etc/sudoers` file) \[1] and prints a summary of exactly what you are—and are not—authorized to do on that machine.
+
+***
+
+### What it displays:
+
+1. **User Defaults:** The internal security policies applied to your user profile (e.g., environment variables to keep or drop).
+2. **Allowed Commands:** A comprehensive list of paths and binaries you are allowed to execute using `sudo`.
+3. **Password Rules:** It indicates whether a specific command requires your password, or if you can run it passwordlessly (marked by `NOPASSWD:`).
+
+### Real-World Output Example:
+
+If you run `sudo -l` on a typical system, you will see an output like this:
+
+text
+
+```
+Matching Defaults entries for john on web-server-01:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin
+
+User john may run the following commands on web-server-01:
+    (ALL : ALL) ALL
+    (root) NOPASSWD: /usr/bin/systemctl restart nginx
+```
+
+Use code with caution.
+
+- **`(ALL : ALL) ALL`** means the user can run _any_ command as _any_ user/group if they type their password.
+- **`(root) NOPASSWD: /usr/bin/systemctl restart nginx`** means this user can restart the Nginx web server as `root` without ever being prompted for a password.
+
+***
+
+### Key Variations & Scripting Tips
+
+#### 1. Checking Privileges for a Different User (`-u`)
+
+If you are an administrator and want to check what _another_ user on the system is allowed to do, combine it with the `-u` flag:
+
+bash
+
+```
+sudo -l -u username
+```
+
+Use code with caution.
+
+#### 2. Extra Verbose Output (`-ll`)
+
+If you pass the `l` flag twice (`sudo -ll`), it switches to a longer, comprehensive format. It will print out detailed descriptions of specific matches, column widths, and file paths.
+
+#### 3. Simulating a Command Check
+
+If you add a specific command to the end, like `sudo -l cat /etc/shadow`, it will tell you exactly whether that specific line is permitted by your policy rules. If it is allowed, it exits with status code `0`; if it is forbidden, it exits with code `1`.
+
+Are you trying to use `sudo -l` inside Node.js to **programmatically check if your script has root access** before trying to perform an administrative action? Let me know and I can show you how to parse its output!
+
+## does it have effect when you pass a command
+
+<mark><strong><span>Yes, passing a specific command argument to<span> </span></span><code dir="ltr">sudo -l</code><span> </span>fundamentally changes its behavior</strong><span> </span>from a broad, informational list into a precise policy verification tool</mark>. [link](https://linux.die.net/man/8/sudo)
+
+Instead of showing your entire catalog of privileges, it behaves exactly like a **permission validator** for that single command string: [link](https://www.sudo.ws/docs/man/1.8.14/sudo.man/)
+
+### 1. The Output Changes
+
+- **Without a command (`sudo -l`):** It prints out the generic multi-line policy rules dictating everything your account is allowed or forbidden to do on the host computer. [link](https://linux.die.net/man/8/sudo)
+- **With a command (`sudo -l cat /etc/shadow`):** It matches your string explicitly against the rules backend. If permitted, it prints only the **fully-qualified path** to the binary along with any accepted arguments. [link](https://linux.die.net/man/8/sudo)
+
+### 2. The Exit Code Changes (Crucial for Node.js Scripts)
+
+This is the most powerful aspect when automating routines via JavaScript. By adding a command argument, `sudo -l` returns standardized shell exit codes to indicate a match: [link](https://linux.die.net/man/8/sudo)
+
+- **Exit Code `0`:** The command is allowed.
+- **Exit Code `1`:** The command is forbidden by the security policy. [link](https://www.sudo.ws/docs/man/1.8.6/sudo%5Fplugin.man/)
+
+### Real-World Example in Node.js
+
+If you are writing a script that intends to restart a service but you want to check if the user is authorized _before_ attempting a destructive or throwing action, you can use `execSync` like this: [link](https://linux.die.net/man/8/sudo)
+
+javascript
+
+```
+const { execSync } = require('child_process');
+
+function checkPermission(commandToCheck) {
+  try {
+    // -n stops sudo from prompting for an interactive password if one is required
+    execSync(`sudo -n -l ${commandToCheck}`, { stdio: 'ignore' });
+    return true; // Exit code was 0, permission granted!
+  } catch (error) {
+    return false; // Exit code was non-zero, command is blocked.
+  }
+}
+
+const canRestartNginx = checkPermission('systemctl restart nginx');
+console.log(`Am I allowed to restart Nginx? ${canRestartNginx}`);
+```
+
+Use code with caution.
+
+Are you trying to filter user inputs to see if they match **specific `NOPASSWD:` paths** in your backend shell architecture? I can show you how to securely parse the exact system definitions returned by the tool.
+
+- [link](https://www.sudo.ws/docs/man/1.8.6/sudo%5Fplugin.man/)\
+  Sudo\
+  Sudo Plugin API\
+  The check\_policy () function returns 1 if the command is allowed, 0 if not allowed, sudo will print a usage message before it exit...
+- [link](https://linux.die.net/man/8/sudo)\
+  Linux die.net\
+  sudo(8): execute command as another user\
+  If command is specified but not allowed, sudo will exit with a status value of 1. will display an error message and exit.
+- [link](https://www.sudo.ws/docs/man/1.8.14/sudo.man/)\
+  Sudo\
+  Sudo Manual\
+  When used in conjunction with a command or an option that may require a password, this option will cause sudo to ignore the user's...
+
+## does -l have an effect if you -c command
+
+<mark><strong><span>No,<span> </span></span><code dir="ltr">-l</code><span> </span>does not work with<span> </span></strong></mark>**`-c`.** In fact, if you try to pass both flags to `sudo` simultaneously, the command will fail with a **syntax / usage error**.
+
+This happens because `-l` and `-c` belong to two mutually exclusive operation modes in `sudo`: [link](https://www.systutorials.com/linux-manual-page-1-sudo/)
+
+1. **`-l` (List Mode):** Tells `sudo` to inspect configuration privileges rather than execute a program.
+2. **`-c` (Class Mode / Execution Modifier):** On systems that support BSD login classes (like macOS or FreeBSD), `-c class` tells `sudo` to apply specific OS resource limits when _running_ a command. [link](https://www.sudo.ws/docs/man/1.7.10/sudo.man/)
+
+### The Syntax Conflict
+
+If you look at the official command-line structure for `sudo`, the two paths are completely separate: [link](https://www.systutorials.com/linux-manual-page-1-sudo/)
+
+- List syntax: `sudo -l [options] [command]`
+- Execution syntax: `sudo [-AbEHnPS] [-c class] [-u user] [command]` [link](https://www.systutorials.com/linux-manual-page-1-sudo/)
+
+Because `-l` stops `sudo` from running anything, passing `-c` makes no sense to the parser and will trigger a usage rejection. [link](https://man7.org/linux/man-pages/man8/sudo.8.html)
+
+### What you might actually be looking for instead:
+
+- **If you want to test permissions for a shell script:** Pass the script string directly to `-l` as the trailing argument.\
+  bash
+
+<!---->
+
+```
+sudo -l sh -c "cd /root && ls"
+```
+
+Use code with caution.\
+This will check if you are permitted to execute that exact sub-shell string without actually running it. [link](https://man7.org/linux/man-pages/man8/sudo.8.html)
+
+- **If you want to run commands under another user's interactive shell profile:** Bypassing `-l` entirely, you drop the commands into a standard execution framework.\
+  bash
+
+<!---->
+
+```
+sudo -u username -i sh -c "cd ~ && pwd"
+```
+
+Use code with caution.
+
+Are you trying to **verify permissions inside your Node.js code** before a script runs, or are you trying to **restrict a user's environment resources** using login classes?
+
+- [link](https://man7.org/linux/man-pages/man8/sudo.8.html)\
+  man7.org\
+  sudo(8) - Linux manual page - man7.org\
+  When used in conjunction with a command or an option that may require a password, this option will cause sudo, to ignore the user'
+- [link](https://www.systutorials.com/linux-manual-page-1-sudo/)\
+  SysTutorials\
+  Sudo (1) Linux Manual Page - SysTutorials\
+  Apr 20, 2026 — sudo -l\[l] To make a usage listing of the directories in the /home partition. Note that this runs the commands in a sub-shell to m...
+- [link](https://www.sudo.ws/docs/man/1.7.10/sudo.man/)\
+  Sudo\
+  Sudo Manual\
+  The -c (class) option causes sudo to run the specified command with resources limited by the specified login class. is only availa...
+
+## does the position of flags matter
+
+<mark><strong><span>Yes, the position of flags matters significantly in<span> </span></span></strong></mark>**`sudo`.**
+
+While you can shuffle some flags relative to _each other_, the absolute position of flags relative to the **target command** and their **associated values** is strictly enforced.
+
+The execution rules for flag placement are broken down into three categories below.
+
+***
+
+### 1. The Hard Divide: Flags Must Precede the Command
+
+Following standard POSIX guidelines, all `sudo` flags **must** come _before_ the target application or script you want to run. The moment `sudo` encounters an argument that it doesn't recognize as one of its own flags, it stops parsing and treats everything remaining as the payload command. [link](https://unix.stackexchange.com/questions/604317/does-it-matter-where-flag-appears-in-a-command)
+
+- ❌ **Wrong:** `sudo systemctl restart nginx -u web-user`\
+  _(Sudo attempts to run `systemctl` as `root`. It passes `-u web-user` into systemctl instead, causing systemctl to crash with an error.)_
+- v **Right:** `sudo -u web-user systemctl restart nginx`
+
+### 2. Value-Binding Flags
+
+Certain flags require an explicit modifier value immediately following them (like a username, group, or directory). The value must immediately follow the flag. [link](https://askubuntu.com/questions/634869/should-i-alphabetically-order-the-flags-in-a-command-as-good-practice)
+
+- ❌ **Wrong:** `sudo -u -i john_doe` _(Fails because `sudo` thinks the target username is `-i`)_
+- v **Right:** `sudo -u john_doe -i`
+- v **Right:** `sudo -i -u john_doe` _(Shuffling independent blocks is fine)_
+
+### 3. The Double-Dash (`--`) Boundary
+
+If the payload command you are running takes a flag that looks identical to a `sudo` flag, you must use a double-dash (`--`). The `--` tells `sudo` to immediately halt its internal option parsing, guaranteeing that any flags typed after it belong exclusively to the child process. [link](https://sugatoray.github.io/101-linux-commands-ebook/ebook/en/content/051-the-sudo-command/)
+
+- ❌ **Wrong:** `sudo -u worker-user node -v`\
+  _(If you want to view the Node version, this might work, but if you pass an ambiguous flag, `sudo` might intercept it)._
+- v **Right:** `sudo -u worker-user -- node -v`
+
+***
+
+### Clean Syntax Blueprint for Node.js `spawn`
+
+When using `child_process.spawn()`, your parameters are isolated as array elements, ensuring `sudo` processes them in the correct position without syntax bleed:
+
+javascript
+
+```
+const { spawn } = require('child_process');
+
+// Sudo options come first, followed optionally by '--', followed by the command payload
+const child = spawn('sudo', [
+  '-n',                // Non-interactive (Fail instead of password prompt)
+  '-u', 'john_doe',    // Target user bound directly to -u
+  '-i',                // Request a login shell behavior
+  '--',                // Stop parsing sudo parameters here
+  'node', '-v'         // The payload program and its child arguments
+]);
+```
+
+Use code with caution.
+
+Are you running into an **invalid usage syntax error** with a specific set of flags, or are you trying to pipe a complex **one-liner command string** via `execSync`? Tell me the exact layout and I can verify it.
+
+- [link](https://unix.stackexchange.com/questions/604317/does-it-matter-where-flag-appears-in-a-command)\
+  Unix & Linux Stack Exchange\
+  does it matter where flag appears in a command?\
+  It's a POSIX guideline: it also matters whether --global is an option to sudo , to npr or to the install sub-command of npr . Movi...
+- [link](https://askubuntu.com/questions/634869/should-i-alphabetically-order-the-flags-in-a-command-as-good-practice)\
+  Ask Ubuntu\
+  Should I alphabetically order the flags in a command as good ...\
+  Jun 10, 2015 — It does not really matter\* unless a command explicitly mentions. if any option needs a filename or any other input right after it ...
+- [link](https://sugatoray.github.io/101-linux-commands-ebook/ebook/en/content/051-the-sudo-command/)\
+  GitHub\
+  051: sudo - 101 Linux Commands Open Source eBook\
+  May 12, 2022 — The – flag indicates that sudo should stop processing command line arguments. It is most useful in conjunction with the -s flag.
+
+Show all
+
+## is it a flawed design in modern cli
+
+Whether this behavior is a "flawed design" is a subject of major debate in computer science. Many developers find positional rules frustrating and unintuitive. However, in modern system-level CLI engineering, it is considered an intentional, essential design compromise rather than a flaw.
+
+To understand why, it helps to look at the massive engineering problem a program like `sudo` or `node` has to solve: **Command Wrapping.**
+
+***
+
+### Why the Positional Design Exists (The "Why")
+
+When you run `sudo -u worker node -v`, you are actually running **two completely different programs** nested inside each other:
+
+1. `sudo` (The Host wrapper)
+2. `node` (The Child payload)
+
+If the CLI parser was fully position-independent, it would look at a command like this:\
+`sudo node -v -u worker`
+
+If it parsed everything simultaneously, how would the computer know if `-u worker` belongs to `sudo` or if it is an argument meant for `node`?
+
+By enforcing a **hard positional stop** (the moment an argument doesn't look like a `sudo` flag, or when it hits `--`), `sudo` safely slices the array of text. It eats its own options on the left, handles the security transition, and hands the clean right-hand slice to the child program without modifying it.
+
+***
+
+### The Modern Split: "UX-First" vs. "Script-First" CLIs
+
+Modern CLI design has split into two schools of thought regarding flag positions:
+
+#### 1. Script-First (Strict POSIX)
+
+- **Examples:** `sudo`, `find`, `ssh`, `docker run`
+- **Philosophy:** Determinism and safety above all else.
+- **The Design:** Flags must come first. They explicitly prioritize strict parsing because these tools are heavily automated via shell scripts. If a script dynamically appends user arguments to the end of a command, a position-independent parser could inadvertently trigger host-level flags, creating massive security vulnerabilities (like argument-injection exploits).
+
+#### 2. UX-First (Modern App CLIs)
+
+- **Examples:** `git`, `npm`, `gcloud`, `aws`
+- **Philosophy:** Human flexibility and user experience.
+- **The Design:** Permissive and smart. If you type `npm install express --save-dev` or `npm install --save-dev express`, it works identically. Modern sub-command routers are smart enough to collect flags regardless of where they land because they control the entire stack and aren't blindly executing third-party binaries.
+
+***
+
+### The Verdict
+
+It is a flawed design **for humans**, but a perfect design **for machines**.
+
+If you are typing commands manually into a terminal, strict positional requirements feel archaic. But when you are writing automation backends in Node.js, that strictness is exactly what keeps your software predictable.
+
+This is why Node.js's `child_process.spawn()` bypasses the entire "human CLI" formatting problem entirely. By forcing you to pass arguments as a clean, pre-sliced JavaScript Array (`['sudo', '-u', 'worker', 'node']`), it eliminates position ambiguity at the system level.
+
+Are you running into a specific issue where a tool's flag requirements are making it difficult to **dynamically build command strings** in your application? I can show you how to structure an **array builder wrapper** to handle those positional constraints automatically.
+
+## why does it say "err init plugin" when i pass non existing user sudo: unknown user foo
+
+sudo: error initializing audit plugin sudoers\_audit
+
+This specific double-error happens because <mark><strong><code dir="ltr">sudo</code><span> </span>aborts a transaction halfway through its setup process</strong></mark>**.** [link](https://forum.manjaro.org/t/error-initializing-audit-plugin-sudoers-audit/184246)
+
+It is a scary-looking cascade of messages, but it is actually completely normal behavior for `sudo` when it encounters a non-existent target username. [link](https://forums.raspberrypi.com/viewtopic.php?t=381474)
+
+Here is exactly why both lines happen:
+
+### 1. `sudo: unknown user foo`
+
+This is the **primary error**. When you type `sudo -u foo`, `sudo` immediately reaches out to the operating system's user database (like `/etc/passwd` or an LDAP directory) to find the User ID (UID) and security boundaries for `foo`. Because the user doesn't exist, the lookup fails right here. [link](https://forum.manjaro.org/t/error-initializing-audit-plugin-sudoers-audit/184246)
+
+### 2. `sudo: error initializing audit plugin sudoers_audit`
+
+This is a **secondary fallback error**, and it is the one that causes confusion.\
+Modern versions of `sudo` use a modular plugin architecture configured by a file named `/etc/sudo.conf`. One of its default mandatory components is `sudoers_audit`, a background plugin responsible for logging everything you attempt to do for security tracking. [link](https://forum.manjaro.org/t/error-initializing-audit-plugin-sudoers-audit/184246)
+
+When you pass a non-existent user:
+
+- `sudo` starts up and tells its internal plugins: _"Hey, prepare an audit log space for user `foo`."_
+- The audit plugin tries to pull the profile details for `foo` so it can properly format the log entry.
+- Because `foo` has no valid UID, home folder, or system structure, the audit plugin panics and reports that it **cannot initialize its security logging space**.
+
+### Is something broken on your system?
+
+**No, your system is perfectly fine.** `sudo` is just failing cleanly. The plugin error is a literal consequence of the `unknown user` error—since the user doesn't exist, the system logs cannot be anchored to that non-existent identity, causing the security plugin to shut down. [link](https://forum.manjaro.org/t/error-initializing-audit-plugin-sudoers-audit/184246)
+
+If you are hitting this inside your Node.js application, tell me:
+
+- Are you attempting to pass a **dynamic variable** to `-u` that might be arriving as `undefined`, a blank string, or an incorrect name?
+
+- Do you need to programmatically **check if a system user exists** before attempting to spawn a process under their name?
+
+- [link](https://forum.manjaro.org/t/error-initializing-audit-plugin-sudoers-audit/184246)\
+  Manjaro Linux Forum\
+  Error initializing audit plugin sudoers\_audit - System Updates\
+  I think the error is from audit network and not actually in the sudoers. The module/rules to check sudoers cannot start. EDIT: Las...
+
+- [link](https://forums.raspberrypi.com/viewtopic.php?t=381474)\
+  Raspberry Pi Forums\
+  Trouble with $SUDO\_UID\
+  Dec 24, 2024 — The setup file contains the following: sudo. Each instance of sudo -u $SUDO\_UID triggers a unknown user 1000 error, sudo: error in...
+
+- [link](https://www.facebook.com/fb-answers/sudo-error-initializing-audit-plugin-sudoers-audit/?locale=uk%5FUA)\
+  Facebook\
+  Fixing Sudo Error Initializing Audit Plugin Sudoers Audit\
+  The "sudo error initializing audit plugin sudoers\_audit" usually happens when the /etc/sudo.conf file has incorrect ownership, oft...
+
+## does it mean all my sudos have been recorded by default
+
+<mark><strong><span>Yes, your system records all<span> </span></span><code dir="ltr">sudo</code><span> </span>attempts by default.</strong></mark> [link](https://www.sudo.ws/docs/man/1.9.2/sudoers.man/)
+
+Even though the `sudoers_audit` plugin panicked and threw a secondary error because it couldn't map the user `foo`, the core `sudo` subsystem **already successfully recorded this event**. [link](https://medium.com/@harishsingh8529/sudo-the-most-misunderstood-command-in-linux-f428f084085a)
+
+### Where is it recorded?
+
+On almost all modern Linux and Unix distributions, `sudo` pushes an immediate message to the system's authentication logs. Depending on your operating system, you can see it right now by checking: [link](https://www.manageengine.com/log-management/siem-use-cases/threats/failed-privilege-elevation-attempts.html)
+
+- **Ubuntu/Debian/macOS:** `/var/log/auth.log`
+- **RHEL/CentOS/Fedora:** `/var/log/secure`
+- **Systemd-based modern distros (Arch, Ubuntu 24.04+, etc.):** Via `journalctl` [link](https://www.vicarius.io/vsociety/posts/detect-linux-failed-sudo-attempts)
+
+### What does the log entry actually look like?
+
+If you read the system log file for that failed command, you will see a detailed entry that looks exactly like this: [link](https://www.manageengine.com/log-management/siem-use-cases/threats/failed-privilege-elevation-attempts.html)
+
+text
+
+```
+Oct 06 12:12:00 my-server sudo:   yourusername : unknown user foo ; TTY=pts/0 ; PWD=/home/yourusername ; USER=root ; COMMAND=sudo -u foo
+```
+
+Use code with caution.
+
+The system proactively writes down: [link](https://www.manageengine.com/log-management/siem-use-cases/threats/failed-privilege-elevation-attempts.html)
+
+1. **Who** made the attempt (`yourusername`).
+2. **Where** they made it from (the terminal device `pts/0` and directory `/home/yourusername`).
+3. **What** specific typo or invalid execution command string they passed.
+
+### The "Big Brother" Security Design
+
+Linux security architecture assumes that if someone is trying to execute code as an unrecognized user or running unpermitted tasks, it could be a sign of a bad actor testing the boundaries of the server. Because of this, `sudo` is engineered to **write to the security log first** before it proceeds to evaluate or fail the command. [link](https://www.manageengine.com/log-management/siem-use-cases/threats/failed-privilege-elevation-attempts.html)
+
+The `sudoers_audit` plugin crash was just a failure to spin up an advanced, _session-specific_ internal logging layer, but the core master log record was written successfully before that plugin even loaded. [link](https://www.sudo.ws/docs/man/1.9.4/sudoers.man/)
+
+If you want, I can show you how to run a quick `journalctl` or `grep` script in Node.js to **programmatically parse your log files** for security events. Would that be helpful?
+
+- [link](https://www.sudo.ws/docs/man/1.9.4/sudoers.man/)\
+  Sudo\
+  Sudoers Manual | Sudo\
+  sudoers\_audit sudoers.so. For sudo version 1.9.1 and higher, this is the sudoers\_audit plugin. Multiple arguments may be specified...
+- [link](https://forum.manjaro.org/t/error-initializing-audit-plugin-sudoers-audit/184246)\
+  Manjaro Linux Forum\
+  Error initializing audit plugin sudoers\_audit - System Updates\
+  Dec 24, 2025 — I think the error is from audit network and not actually in the sudoers. The module/rules to check sudoers cannot start. brings up...
+- [link](https://www.manageengine.com/log-management/siem-use-cases/threats/failed-privilege-elevation-attempts.html)\
+  ManageEngine\
+  How to detect failed privilege elevation attempts\
+  This log entry contains everything needed to understand the context of the attempt: the account that tried to elevate, The Sudo Ac...
+
+Show all
+
+## does it record the actual commands
+
+<mark><strong><span>Yes, it logs the absolute, literal command string you typed, word-for-word.</span></strong></mark> \[1]
+
+`sudo` doesn't just log that an attempt was made; it logs the complete argument array. Even if you type multi-line commands, run complex shell chains (`&&`), or make a blatant typo, the system captures it exactly as it was submitted.
+
+### What exactly is captured?
+
+Every single log entry records a specific footprint of the execution attempt:
+
+- **The exact executable and its flags:** (e.g., `sudo -u foo -i /bin/bash`) \[1]
+- **The working directory (`PWD`):** The exact folder you were standing in when you ran it.
+- **The environment context:** The terminal line (`TTY`) and the invoking user's actual username.
+
+### Where you can find it right now
+
+If you want to see your actual command history logs on a modern system, run this command:
+
+bash
+
+```
+# On Ubuntu / Debian
+tail -n 50 /var/log/auth.log | grep sudo
+
+# On CentOS / RHEL / Fedora
+tail -n 50 /var/log/secure | grep sudo
+
+# On systemd networks (Universal modern standard)
+journalctl _COMM=sudo -n 50
+```
+
+Use code with caution.
+
+### ⚠️ A Critical Security Note for Node.js Developers
+
+Because `sudo` records the actual command strings verbatim into plain-text system log files, **you must never pass passwords, API keys, or sensitive tokens directly as inline command arguments.**
+
+For example, if your Node.js script spawns this:
+
+javascript
+
+```
+// ❌ DANGEROUS: This password is now written to a global log file forever!
+spawn('sudo', ['-u', 'deployer', 'mysql', '-pSecretPassword123']);
+```
+
+Use code with caution.
+
+Any user or monitoring tool with basic read access to the system log files will be able to extract that credential in plain text. Always pipe sensitive data dynamically via standard input (`stdin`) or environment variables instead.
+
+Are you trying to audit **what commands your Node.js script is running** at the OS level, or are you looking for a secure way to **pass variables into your sudo commands** without exposing them to the system logs?
+
+## where can i see the commands
+
+You can see the recorded `sudo` commands directly in your system’s security log files. Depending on your Linux distribution, the commands are kept in one of two major places: [link](https://unix.stackexchange.com/questions/167935/details-about-sudo-commands-executed-by-all-user)
+
+### 1. Modern Linux Systems (Ubuntu, Debian, Arch, Fedora)
+
+Modern systems manage logs via `systemd`. You can use the `journalctl` utility to query the binary logs specifically for `sudo` operations: [link](https://www.youtube.com/watch?v=0dG3vUYt7Uk\&vl=en-US\&t=29)
+
+- **View the most recent entries:**\
+  bash
+
+<!---->
+
+```
+sudo journalctl -e /usr/bin/sudo
+```
+
+Use code with caution.\
+_(Press the **Right Arrow** key in your terminal if the command line is cut off off-screen)_
+
+- **Stream entries live in real-time:** [link](https://www.howtogeek.com/822971/review-linux-sudo-usage-history/)\
+  bash
+
+<!---->
+
+```
+sudo journalctl -f /usr/bin/sudo
+```
+
+Use code with caution.
+
+### 2. Standard Text Log Files
+
+If you prefer viewing or parsing a traditional text file, the paths differ by operating system vendor: [link](https://maketecheasier.com/check-sudo-history-linux/)
+
+- **On Ubuntu / Debian:**\
+  bash
+
+<!---->
+
+```
+sudo tail -n 50 /var/log/auth.log | grep sudo
+```
+
+Use code with caution.
+
+- **On RHEL / CentOS / Fedora / Rocky Linux:**\
+  bash
+
+<!---->
+
+```
+sudo tail -n 50 /var/log/secure | grep sudo
+```
+
+Use code with caution.
+
+***
+
+### What to Look For in the Log
+
+When you look at the entries, a recorded row looks like this structural pattern: [link](https://oneuptime.com/blog/post/2026-03-04-log-monitor-sudo-usage-rhel-9/view)
+
+text
+
+```
+Oct 06 12:12:00 host sudo:   username : TTY=pts/0 ; PWD=/home/username ; USER=root ; COMMAND=/usr/bin/apt update
+```
+
+Use code with caution.
+
+| Field Segment  | Meaning                                                  |
+| -------------- | -------------------------------------------------------- |
+| **`username`** | The human or service account that typed `sudo`.          |
+| **`PWD`**      | The directory they were standing in when executing.      |
+| **`USER`**     | The target identity they tried to assume (e.g., `root`). |
+| **`COMMAND`**  | **The exact, literal command and arguments executed.**   |
+
+Are you planning to write a Node.js script to **programmatically read and parse these logs** for an audit dashboard, or do you need help **purging/cleaning up** accidental sensitive input from your terminal logs?
+
+- [link](https://unix.stackexchange.com/questions/167935/details-about-sudo-commands-executed-by-all-user)\
+  Unix & Linux Stack Exchange\
+  logs - Details about sudo commands executed by all user\
+  Nov 14, 2014 — The user running the command is after the sudo: - gareth in this case. PWD is the directory. USER is the user that gareth is runni...
+- [link](https://www.howtogeek.com/822971/review-linux-sudo-usage-history/)\
+  How-To Geek\
+  How to Review sudo Command Usage on Linux - How\
+  Aug 23, 2022 — Use the "RightArrow" key to scroll to the right to see the command that was used with each of the invocations of sudo . (Or stretc...
+- [link](https://oneuptime.com/blog/post/2026-03-04-log-monitor-sudo-usage-rhel-9/view)\
+  OneUptime\
+  How to Log and Monitor Sudo Usage on RHEL - OneUptime\
+  RHEL gives you several ways to track sudo usage, from basic syslog entries to full session recordings. These entries go to /var/lo...
+
+Show all
+
+## what if i did not sudo
+
+If you run a command **without typing `sudo`**, it does not get recorded in the system's global security logs (`auth.log` or `secure`). Instead, it is processed under your normal user permissions and recorded in your local, private command histories.
+
+Here is exactly where those commands go and how you can see them:
+
+### 1. Your Shell History File (Most Common)
+
+Every time you type a command in the terminal as a normal user, your interactive shell (like Bash or Zsh) automatically appends it to a hidden history file located directly in your user home directory.
+
+- **If you use Zsh (Default on macOS and modern Ubuntu/Fedora):**\
+  Open and view your history file with:\
+  bash
+
+<!---->
+
+```
+cat ~/.zsh_history
+```
+
+Use code with caution.
+
+- **If you use Bash (Default on standard/older Linux distributions):**\
+  Open and view your history file with:\
+  bash
+
+<!---->
+
+```
+cat ~/.bash_history
+```
+
+Use code with caution.
+
+- **The Shortcut:** You can view this formatted history immediately in any shell simply by typing:\
+  bash
+
+<!---->
+
+```
+history
+```
+
+Use code with caution.
+
+### 2. Node.js Processes (`child_process.spawn`)
+
+If your Node.js application spawns a command **without `sudo`**, it bypasses the interactive shell history file entirely.
+
+- **Where it goes:** It does not get logged anywhere on the operating system by default.
+- **The Exception:** It will only show up in a log file if your own Node.js script explicitly records it (e.g., via `console.log`), or if the system administrator has deployed advanced kernel-level tracking tools like **`auditd`** or **Process Accounting (`acct`)** to monitor all system processes.
+
+### 3. Process Explorer (`ps` / `top`)
+
+While a non-sudo command is actively running, any other user logged into the same computer can see the full command and its arguments in real-time by looking at the system's active process list:
+
+bash
+
+```
+ps aux | grep your_username
+```
+
+Use code with caution.
+
+### Summary Comparison
+
+| Command Type             | Logged in Global System Logs? (`auth.log`) | Logged in Private Shell History? (`~/.bash_history`) | Visible to other users while running? |
+| ------------------------ | ------------------------------------------ | ---------------------------------------------------- | ------------------------------------- |
+| **`sudo ls`**            | **Yes**                                    | Yes                                                  | Yes                                   |
+| **`ls` (Manual)**        | No                                         | **Yes**                                              | Yes                                   |
+| **`spawn('ls')` (Node)** | No                                         | No                                                   | Yes                                   |
+
+Are you checking because you accidentally ran a command with a **sensitive API key or password** without sudo? If so, tell me if you are using **Bash or Zsh**, and I can show you how to securely scrub that specific line from your history file so nobody can find it.
+
+## does it record everything permanently since i ran the first command
+
+<mark><strong><span>No, your system does not record them permanently by default.</span></strong></mark>
+
+While `sudo` commands are aggressively logged the instant you run them, Linux operating systems are built with strict storage protections to keep log files from eventually filling up your entire hard drive. [link](https://www.redhat.com/en/blog/setting-logrotate)
+
+Your past history is automatically deleted over time through two core system cleanup mechanisms:
+
+### 1. Traditional Text Logs: `logrotate`
+
+If your system records `sudo` events in traditional text files (like `/var/log/auth.log` or `/var/log/secure`), a daily background utility named **`logrotate`** manages them. [link](https://askubuntu.com/questions/836623/how-can-i-keep-more-auth-log-files)
+
+- **The Default Retention:** On standard distributions like Ubuntu, `logrotate` is configured to rotate these files weekly and keep **only 4 weeks** of history. [link](https://cubepath.com/docs/Security%20Compliance/log-retention-and-rotation)
+- **What happens:** At the end of week 5, your oldest week of data (which includes your very first commands) is automatically deleted permanently to make room for new lines. [link](https://www.dash0.com/guides/log-rotation-linux-logrotate)
+
+### 2. Modern Binary Logs: `systemd-journald`
+
+If your system relies on modern `journalctl` logging, retention is dictated by **space limits**, not just time limits. [link](https://unix.stackexchange.com/questions/709570/how-to-keep-systemd-journal-for-one-year)
+
+- **The Default Cap:** By default, systemd limits log consumption to **10% of your total file system size, capped at a maximum of 4GB**.
+- **What happens:** Once your historical logs hit that 4GB ceiling, the system operates on a **FIFO (First In, First Out)** cycle. It will quietly erase the oldest entries from months ago to allow the current seconds' logs to be written. [link](https://www.freedesktop.org/software/systemd/man/journald.conf.html)
+
+***
+
+### The Exception: Local Shell History
+
+If you ran commands _without_ `sudo`, they live in your local user history file (`~/.bash_history` or `~/.zsh_history`). This file is governed by an environment variable named `$HISTSIZE`. [link](https://www.reddit.com/r/linuxquestions/comments/7rdhfc/user%5Fcommand%5Fhistory/)
+
+- Once you type more commands than your limit (usually 1,000 to 10,000 lines), the top of the file gets truncated, and your oldest commands vanish from the history listing.
+
+### Summary
+
+Unless a system administrator has specifically altered the configuration files (`/etc/logrotate.d/rsyslog` or `/etc/systemd/journald.conf`) to intentionally archive everything to a remote server, **your oldest commands are naturally purged by the operating system within a month or two.** [link](https://community.hetzner.com/tutorials/optimize-journalctl-to-save-server-disk-space-in-linux/)
+
+Are you asking because you need to **prevent old logs from deleting themselves** for compliance/auditing reasons, or are you trying to **verify if a command you ran a long time ago** is still visible to other users on the system? [link](https://serverfault.com/questions/17625/changing-the-log-rotation-cycle)
+
+- [link](https://superuser.com/questions/1481437/show-sudo-history-in-history-command)\
+  Super User\
+  Show sudo history in history command? - linux\
+  Show sudo history in history command? Commands run with sudo are logged there. In CentOS it may be /var/log/secure ,
+- [link](https://unix.stackexchange.com/questions/709570/how-to-keep-systemd-journal-for-one-year)\
+  Unix & Linux Stack Exchange\
+  How to keep systemd journal for one year?\
+  Basically the most limiting setting (time limit, disk space, file count, file size) limits the amount of log you'll have.
+- [link](https://www.freedesktop.org/software/systemd/man/journald.conf.html)\
+  Freedesktop.org\
+  journald.conf - Freedesktop.org\
+  SystemMaxUse= and RuntimeMaxUse= control how much disk space the journal may use up at most. SystemKeepFree= and RuntimeKeepFree= ...
+
+Show all
+
+## why is it quite recent when i sudo journalctl -e /usr/bin/sudo -r
+
+The reason your command is returning only quite recent `sudo` logs comes down to <mark>an<span> </span><strong>override conflict between your flags</strong><span> </span>and<span> </span><strong>how your operating system manages memory</strong></mark>.
+
+***
+
+### 1. The Flag Conflict: `-e` and `-r` Fight Each Other
+
+When you typed `sudo journalctl -e /usr/bin/sudo -r`, you gave the system two contradictory instructions: [link](https://man7.org/linux/man-pages/man1/journalctl.1.html)
+
+- **`-e` (Pager End):** This tells `journalctl` to open up the log matching path, immediately skip to the _very end_ of the timeline, and show you the newest entries.
+- **`-r` (Reverse):** This tells `journalctl` to change its sorting logic entirely, placing the newest items at the top and oldest at the bottom. [link](https://www.loggly.com/ultimate-guide/using-journalctl/)
+
+When you pass both flags, **`-r` effectively overrides `-e`**. The pager resets its position from the "end" back to the "beginning" of the new inverted index (which happens to be right now, today). When you scroll down, you are walking _backward_ into the past rather than looking at an accumulation of historical logs. [link](https://man7.org/linux/man-pages/man1/journalctl.1.html)
+
+### 2. The Boot Boundary (`-b`)
+
+If you don't explicitly ask `journalctl` to check older logs, many Linux configurations default to filtering queries dynamically by the **current boot session**. If you rebooted your machine recently, all logs generated before that reboot are hidden from your immediate screen view. [link](https://www.digitalocean.com/community/tutorials/how-to-use-journalctl-to-view-and-manipulate-systemd-logs)
+
+- **The Fix:** Add **`-b all`** to the string to force `journalctl` to ignore your reboots and pull from all historical files left on disk. [link](https://linuxize.com/post/journalctl-command-in-linux/)
+
+### 3. Log Expiration (FIFO Cleanup)
+
+As mentioned earlier, your operating system caps its binary log storage footprint (usually to 10% of your disk space or 4GB). If your server or desktop has high application traffic, background containers, or chatty services, those logs fill up fast. The system deletes old files to make room for today's logs—so if the server is busy, "old" entries might be completely erased within days. [link](https://www.reddit.com/r/linux/comments/m0hmax/using%5Fjournalctl%5Feffectively/)
+
+***
+
+### How to see everything sequentially
+
+To bypass the flag sorting collision and look at your historical `sudo` commands clearly, change your flags to this pattern:
+
+bash
+
+```
+# 1. Shows ALL sudo logs on disk from oldest to newest, allowing you to scroll down
+sudo journalctl /usr/bin/sudo -b all
+
+# 2. Shows ALL sudo logs in reverse chronological order (newest at the very top)
+sudo journalctl /usr/bin/sudo -b all -r
+```
+
+Use code with caution.
+
+If you try running it with **`-b all`**, let me know:
+
+- Does your history go **further back in time**?
+- Or are you seeing **"No entries"** from before a certain date?
+
+I can help you check your system's `journald.conf` parameters to see if your hard drive retention is artificially capped too low!
+
+- [link](https://www.howtogeek.com/499623/how-to-use-journalctl-to-read-linux-system-logs/)\
+  How-To Geek\
+  How to Use journalctl to Read Linux System Logs\
+  journalctl displays the entire journal, with the oldest entries at the top of the list. Pressing the End key will hop straight to ...
+- [link](https://linuxize.com/post/journalctl-command-in-linux/)\
+  Linuxize\
+  journalctl Command in Linux: Query and Filter System Logs | Linuxize\
+  Feb 26, 2026 — Syntax: journalctl \[OPTIONS] \[MATCHES]; -e (end), Troubleshooting: Use sudo for permission, check /var/log/journal/ for persistenc...
+- [link](https://man7.org/linux/man-pages/man1/journalctl.1.html)\
+  man7.org\
+  journalctl(1) - Linux manual page\
+  journalctl: prints systemd-journald/remote log entries. -r (reverse), Commands: --disk-usage, --vacuum-size/time/files, --verify, ...
+
+Show all
+
+## it's still just about a month
+
+If it still only goes back about a month, it means your operating system is actively enforcing its built-in safety limits. On most modern Linux systems (like Ubuntu and Debian), **one month is the default expiration hard-limit for system logs \[1].**
+
+Two primary settings control this one-month ceiling:
+
+### 1. The `MaxFileAgeSec=1month` Default \[1]
+
+In modern Linux distributions, the logging system (`systemd-journald`) includes a default safety configuration rule:
+
+text
+
+```
+MaxFileAgeSec=1month
+```
+
+Use code with caution.
+
+This tells the computer that the absolute moment a log file hits **31 days old**, it is considered expired and is scheduled for permanent deletion, regardless of how much free space you have left on your hard drive.
+
+### 2. Daily Disk Space Caps
+
+If your system generates a high volume of logs (e.g., from container runtimes, background updates, or web servers), you might also be hitting your disk space cap early. The system allocates roughly **10% of your disk space** to logs. Once that cap is hit, it automatically drops the oldest month's files to make room for today's logs.
+
+***
+
+### How to verify your system's exact limit
+
+You can check exactly what limits your specific machine is enforcing by printing out the system logging configuration:
+
+bash
+
+```
+# View your current system logging rules
+cat /etc/systemd/journald.conf | grep -E "SystemMaxUse|MaxFileAgeSec"
+```
+
+Use code with caution.
+
+If these lines have a `#` in front of them, it means they are currently running on their factory default behaviors (which defaults to a rolling 1-month window or a 10% disk cap).
+
+### Summary
+
+What you are experiencing is normal and expected behavior. Your older commands from months or years ago **no longer exist anywhere on the machine** because the operating system permanently scrubbed them for safety and storage conservation.
+
+If you want to change this behavior so your machine remembers your commands for a longer period, I can show you how to **edit your `journald.conf` file** to extend the timeline. Would you like to see how to do that?
+
+## why doesnt it record permanently if text are small
+
+Even though plain text uses very little disk space, your system still deletes them after a month due to three core engineering designs: <mark><strong>system security policies, uniform storage management, and database index performance.</strong></mark>
+
+Here is exactly why the operating system treats small text files this way:
+
+### 1. The Legal & Security Reason (Compliance)
+
+Under modern data privacy laws like **GDPR** or strict corporate security policies, holding onto administrative log files forever is considered a massive security risk.
+
+- If a hacker compromises a server, any permanent plain-text history file becomes an immediate roadmap showing every system weakness, script name, and hidden directory ever used.
+- To prevent this, operating systems enforce a strict **"Right to Be Forgotten" / short retention policy** for system security data by default.
+
+### 2. Uniform Safety Caps (The "Set It and Forget It" Rule)
+
+Operating system designers can't predict what software you will install. While _your_ manual `sudo` commands might only consume a few kilobytes, a chatty background app, database backup, or Docker container could write millions of lines of text to those exact same system logs overnight.
+
+- Instead of micro-managing text size line-by-line, the system applies **one universal rule to the entire log category** (e.g., _Delete files after 1 month_ or _Cap the folder at 4GB_).
+- This prevents your hard drive from accidentally freezing up if a rogue background program spirals out of control.
+
+### 3. Database Search Indexing Speed
+
+Modern tools like `journalctl` don't store your commands as simple text files; they compile them into structured, highly-indexed binary databases.
+
+- If the system allowed these database indexes to grow endlessly over 5 or 10 years, searching for a recent event using `journalctl` would eventually become slow and sluggish.
+- By keeping the database trimmed to a rotating 30-day window, searches remain instant.
+
+***
+
+### How to override this and make it permanent
+
+If you are running a server where you **explicitly want** to keep a permanent, un-purged text history of your commands, you can disable the time limits completely.
+
+Open your system logging configuration file:
+
+bash
+
+```
+sudo nano /etc/systemd/journald.conf
+```
+
+Use code with caution.
+
+Uncomment (remove the `#`) and change the following settings to let it grow up to a high storage cap instead of a time cap:
+
+text
+
+```
+[Journal]
+Storage=persistent
+MaxFileAgeSec=infinity
+SystemMaxUse=10G
+```
+
+Use code with caution.
+
+_(Save the file and restart the logging system with `sudo systemctl restart systemd-journald`)_
+
+Are you setting up this system for a production server that requires a **strict audit trail for compliance**, or are you just trying to build a **personal backup script** to archive your own commands into a secure file? Let me know and I can help you set up the right architecture.
+
+## what is it for to record for a while but just a while
+
+Recording logs for "just a while" <mark>strikes a perfect<span> </span><strong>engineering compromise</strong><span> </span>between having zero visibility and wasting endless system resources</mark>.
+
+The 30-day window exists to solve the **"Incident Response"** window. In professional IT and cybersecurity, a rolling 30-day window captures the vast majority of operational needs without any of the long-term storage or legal penalties.
+
+Here is exactly what that short window is used for:
+
+### 1. Retrospective Troubleshooting
+
+When something breaks on a server, it rarely breaks cleanly in the exact second you notice it.
+
+- Imagine an API server crashes on a Tuesday morning. You look at the logs and see a weird error.
+- You need to look _backward_ in time: _"Did someone run an update last week? Did an admin change an Nginx configuration file three days ago?"_
+- A 30-day window gives you enough historical context to trace the timeline of human actions that led up to a failure.
+
+### 2. Post-Mortem Security Auditing
+
+If a system is compromised or hacked, security teams need to figure out exactly what happened.
+
+- Statistically, most minor system breaches are detected within days or a few weeks of the initial entry.
+- By keeping a month of `sudo` logs, an engineer can log in and see exactly which commands the attacker typed, which folders they targeted, and how they elevated their privileges.
+
+### 3. Debugging Deployment Cycles
+
+Most software development and server maintenance runs on a weekly, bi-weekly, or monthly cycle (sprints). Keeping logs for roughly a month ensures that you have visibility over the entire previous deployment cycle. If a cron job or scheduled task runs once a month and fails, you will still have the logs from its previous run to compare it to.
+
+***
+
+### The Architecture: Short vs. Long Term Storage
+
+In modern infrastructure, the system log on the actual machine is treated like **short-term working memory**.
+
+If a company is legally required to store commands permanently (for compliance laws like HIPAA, PCI-DSS, or SOC2), they **do not keep them on the local computer**. Instead, they configure the server to stream the text live over the network to a central log server (like Splunk, Datadog, or an AWS S3 bucket).
+
+This keeps the local server fast, light, and safe from running out of space, while the external vault stores the permanent history securely.
+
+Are you trying to configure your server to meet a **specific security compliance standard**, or are you interested in learning how to **forward your Node.js app logs to an external storage manager**? Let me know your goals!
+
+## what is right to be forgotten
+
+The **Right to Be Forgotten** (often codified in laws like Europe's **GDPR** under Article 17) is a legal framework that gives individuals the right to request that organizations **permanently delete their personal data** from search engines, databases, and servers.
+
+The core philosophy is that an individual should have control over their digital footprint. If the data is no longer necessary, has been collected unlawfully, or the user withdraws their consent, the company must scrub it.
+
+Here is how this human-centric legal right directly shapes the aggressive deletion architecture of modern operating systems and CLI tools:
+
+### 1. The Conflict Between Logging and Privacy
+
+System logs like `auth.log` or `journalctl` capture strings like:
+
+text
+
+```
+USER=john_doe COMMAND="git clone https://github.com"
+```
+
+Use code with caution.
+
+If a system user named `john_doe` leaves a company or exercises their legal "Right to be Forgotten," the company is legally obligated to strip his identifying markers from its assets. If a server permanently recorded every single text string word-for-word forever, it would become an intentional compliance nightmare to manually locate, parse, and erase every instance of "john\_doe" buried deep inside millions of text files.
+
+### 2. Automatic Expiration as a Privacy Safeguard
+
+To comply with global privacy frameworks without breaking operational visibility, software engineers use **automated data minimization**:
+
+- **Short-Term Context:** Keep logs long enough to debug current issues or catch a malicious insider (typically **30 days**).
+- **Automatic Deletion:** Automatically purge everything older than that threshold via utilities like `logrotate` or `systemd-journald`.
+
+By strictly bounding logs to a short, rolling window, an operating system ensures that older personal data naturally and cleanly ceases to exist on its own, satisfying legal compliance by default.
+
+### 3. Impact on Search Engines & Backends
+
+Outside of operating system logs, the Right to be Forgotten is famous for forcing search engines like Google to remove links to outdated, irrelevant, or private information about public individuals upon request. In application development (like building web apps in Node.js), this requires engineers to design clear database deletion pipelines rather than letting user profiles sit in archives forever.
+
+Are you designing a **Node.js application** that needs to handle user deletion requests to comply with **GDPR or CCPA** privacy laws? I can show you how to structure database cascading deletes or implement data masking routines.
+
+AI can make mistakes, so double-check responses
+
+# why does typescript see foo: type | undefined as a required param
+
+**TypeScript treats** <mark><strong><code dir="ltr">foo: Type | undefined</code><span> </span>as a required parameter because a union type with<span> </span><code dir="ltr">undefined</code><span> </span>dictates<span> </span><em>what</em><span> </span>value the parameter can accept, not<span> </span><em>whether</em><span> </span>you can omit it.</strong></mark> [link](https://kate-dev.medium.com/when-to-use-typescript-optional-properties-and-the-difference-from-declaring-properties-as-44bb5eb80d1a)
+
+In JavaScript, there is a fundamental difference between a parameter being **completely omitted** (missing from the arguments list) and a parameter being **explicitly passed with the value `undefined`**. TypeScript mirrors this behavior. [link](https://stackoverflow.com/questions/46958782/why-does-typescript-require-optional-parameters-after-required-parameters)
+
+### Direct Comparison: Optional vs. Required Undefined
+
+| Syntax       | Parameter Status | What you must pass                                           |
+| ------------ | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------------- |
+| `foo?: Type` | **Optional**     | You can omit it entirely, pass a value, or pass `undefined`. |
+| `foo: Type   | undefined`       | **Required**                                                 | You **must** pass a value. That value is allowed to be `undefined`. |
+
+### The Difference in Action
+
+typescript
+
+```
+// 1. Explicit Union Type (Required)
+function logUser(foo: string | undefined) {
+  console.log(foo);
+}
+
+logUser("Alice");     // ✅ Valid
+logUser(undefined);   // ✅ Valid (Explicitly passed)
+logUser();            // ❌ Error: Expected 1 arguments, but got 0.
+
+// 2. Optional Modifier (Optional)
+function logGuest(foo?: string) {
+  console.log(foo);
+}
+
+logGuest("Bob");      // ✅ Valid
+logGuest(undefined);  // ✅ Valid
+logGuest();           // ✅ Valid (Can be omitted)
+```
+
+Use code with caution.
+
+### Why does TypeScript enforce this?
+
+Enforcing the presence of `string | undefined` prevents accidental omissions, especially when working with positional arguments. If you have multiple parameters, omitting a middle argument would shift the trailing arguments into the wrong positions, breaking your runtime logic. [link](https://stackoverflow.com/questions/46958782/why-does-typescript-require-optional-parameters-after-required-parameters)
+
+If your intention is to allow callers to skip providing the argument entirely, always use the **`?` optional modifier**. [link](https://stackoverflow.com/questions/69724205/typescript-complains-about-undefined-even-when-default-param-is-initialized)
+
+Are you seeing this behavior inside a **function's parameters** or as a **property inside an object/interface**? If you are trying to handle an argument that has a fallback, I can also show you how to write it with **default parameters**.
+
+- [link](https://stackoverflow.com/questions/46958782/why-does-typescript-require-optional-parameters-after-required-parameters)\
+  Stack Overflow\
+  Why does TypeScript require optional parameters after ...\
+  Oct 26, 2017 — Uses the pipe ( |. Any optional parameters must follow required parameters. Forcing optional parameters to come after required par...
+- [link](https://kate-dev.medium.com/when-to-use-typescript-optional-properties-and-the-difference-from-declaring-properties-as-44bb5eb80d1a)\
+  Medium\
+  When to use typescript optional properties and the difference ...\
+  Undefined means that parameter must be passed in but its value may be undefined. that parameter may be missing
+- [link](https://stackoverflow.com/questions/65986108/in-typescript-is-there-a-difference-between-optional-parameters-and-parameters)\
+  Stack Overflow\
+  In TypeScript, is there a difference between optional parameters and ...\
+  Feb 1, 2021 — 1 Answer In what follows, I am going to assume you are using the --strict or at least the --strictNullChecks compiler option so th...
+
+Show all
+
+## why is it different in js
+
+**JavaScript does not actually treat them differently at runtime—it treats both cases as `undefined`.** The difference you are seeing is purely because <mark><strong>JavaScript does not enforce arguments</strong></mark>, while **TypeScript enforces arity** (the expected number of arguments) to prevent bugs.
+
+Here is exactly how JavaScript handles this under the hood.
+
+### 1. In JavaScript, all parameters are technically optional
+
+JavaScript never throws an error if you miss an argument. If you call a function and leave an argument out, JavaScript automatically initializes that missing parameter to `undefined`.
+
+javascript
+
+```
+function greet(foo) {
+  console.log(foo);
+}
+
+greet("Alice"); // Prints: "Alice"
+greet();        // Prints: undefined (JS did this automatically)
+greet(undefined); // Prints: undefined
+```
+
+Use code with caution.
+
+To the JavaScript runtime, omitting the argument and passing `undefined` end up looking exactly the same inside the function body.
+
+### 2. Why TypeScript separates them
+
+Because JavaScript is so permissive, it is easy to accidentally forget an argument you actually needed. TypeScript introduces the distinction to let you declare your **intent**:
+
+- **`foo: string | undefined` (Intent: "I need this placeholder")**\
+  You are telling TypeScript: _"I am fully aware this parameter might have no data, but I want to explicitly acknowledge it at the call site."_ This is incredibly important for **positional arguments**.
+- **`foo?: string` (Intent: "This is completely optional")**\
+  You are telling TypeScript: _"It is perfectly fine to leave this out entirely."_
+
+### The Positional Argument Problem
+
+Imagine JavaScript didn't care, and TypeScript didn't enforce it. Look at this example:
+
+typescript
+
+```
+// If TypeScript allowed you to omit 'middleName' because it can be undefined...
+function printFullName(first: string, middle: string | undefined, last: string) {
+  // ...
+}
+
+// How would you call this if you want to skip the middle name?
+printFullName("John", "Smith");
+```
+
+Use code with caution.
+
+In JavaScript, `“Smith”` would slide into the `middle` parameter, and `last` would become `undefined`. By forcing you to write `printFullName("John", undefined, "Smith")`, TypeScript ensures your arguments land in the correct slots.
+
+Are you running into this issue with **positional arguments** in a function, or are you destructuring an **object property**? If you want, I can show you how JavaScript's **default parameters** (`foo = "default"`) change this behavior.
 
