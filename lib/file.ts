@@ -1,21 +1,32 @@
 import desktop from '@folder/xdg';
-import { cpSync, existsSync, mkdirSync, readdirSync, renameSync, rmdirSync, rmSync, statSync, unlinkSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readdirSync, renameSync, rmdirSync, rmSync, statSync, unlinkSync, writeFileSync } from 'node:fs';
 import { homedir } from 'node:os';
-import { join as join_, dirname as dirname_ } from 'node:path';
+import {
+  join as _join, resolve as _resolve, relative,
+  basename as _basename,
+  dirname as _dirname,
+  extname as _extname,
+} from 'node:path';
 
-export const stdin = 0
+export stdin = 0
+type stdin = typeof stdin
 export const stdout = 1
+type stdout = typeof stdout
 
 type path_fs = string
 
 type stream_number = typeof stdin | typeof stdout
 
-type path = path_fs | stream_number
+// type path = path_fs | stream_number
+type path_w = path_fs | typeof stdout
+type path_r = path_fs | typeof stdin
+
+// Path
 
 export function pathname(...args: string[]) {
   const parts = list(args)
 
-  return join_(...parts)
+  return _join(...parts)
 }
 
 export const join = pathname
@@ -69,6 +80,46 @@ export function cache(...args: string[]) {
 
   return join(cache_folder, ...parts)
 }
+
+export function cwd() {
+  return process.cwd()
+}
+
+export const pwd = cwd
+export const getwd = cwd
+export const getcwd = cwd
+
+export function expand_path(...args: string[]) {
+  const parts = list(args)
+
+  return _resolve(...parts)
+}
+
+export const resolve = expand_path
+
+export function relative_path(path: path_fs, base_dir: path_fs) {
+  return relative(base_dir, path)
+}
+
+export function basename(path: path_fs, suffix?: string) {
+  return _basename(path, suffix)
+}
+
+export function stemname(path: path_fs) {
+  return basename(path, extname(path))
+}
+
+export function dirname(path: path_fs) {
+  return _dirname(path)
+}
+
+export const parent = dirname
+
+export function extname(path: path_fs) {
+  return _extname(path)
+}
+
+// Queries
 
 export function does_exist(path: path_fs) {
   return existsSync(path)
@@ -129,6 +180,8 @@ export function children(path: path_fs) {
   return readdirSync(path)
 }
 
+// Utils
+
 export function rename(old_path: path_fs, new_path: path_fs) {
   return renameSync(old_path, new_path)
 }
@@ -143,6 +196,9 @@ export const mv = rename
 export function unlink(path: path_fs) {
   return unlinkSync(path)
 }
+
+export const rm = unlink
+export const remove = unlink
 
 /**
  * delete an empty folder
@@ -171,6 +227,20 @@ export function mkpath(path: path_fs) {
   return mkdirSync(path, { recursive: true })
 }
 
+// File r/w
+
+export function write(path: path, content: string) {
+  if (is(path, 'string')) {
+    mkpath(dirname(path))
+  }
+
+  return writeFileSync(path, content)
+}
+
+export function touch(path: path) {
+  
+}
+
 /**
  * (Over)write a file
  * 
@@ -178,7 +248,7 @@ export function mkpath(path: path_fs) {
  * 
  * iff touch when content is not given
  */
-export async function write(path: path | typeof stdout, content: string = '') {
+export async function write_(path: path | typeof stdout, content: string = '') {
   if (typeof path == 'string') {
     await map_error(() => mkdir(dirname(path), { recursive: true }))
   }
@@ -190,20 +260,20 @@ export async function write(path: path | typeof stdout, content: string = '') {
  * 
  * read from stdin when path = 0
  */
-export async function read(path: path | typeof stdin) {
+export async function read_(path: path | typeof stdin) {
   // @ts-expect-error incorrect (incomprehensive) typing of builtin libs
   const content = await map_error(() => readFile(path, 'utf8'))
 
   return content
 }
 
-export async function append(path: path, content: string) {
+export async function append_(path: path, content: string) {
   await map_error(() => appendFile(path, content))
 }
 
 type remove = { must_exist?: boolean }
 
-export async function remove(path: path, { must_exist = false }: remove = {}) {
+export async function remove_(path: path, { must_exist = false }: remove = {}) {
   const result = await handle(() => unlink(path))
 
   // @ts-expect-error stupid ts
@@ -215,3 +285,5 @@ export async function remove(path: path, { must_exist = false }: remove = {}) {
   // @ts-expect-error stupid ts
   throw err(result)
 }
+
+
