@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/sudo 
+ExecStart=/usr/bin/sudo -u 'fira' -i '/usr/bin/zsh' -ic 'launch'
 Restart=on-failure
 
 [Install]
