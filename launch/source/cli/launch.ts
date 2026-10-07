@@ -1,5 +1,5 @@
 import { parse } from 'yaml'
-import { init_desktop, touch, data, config, read } from 'lib/file'
+import { init_desktop, touch, data, config, read, write } from 'lib/file'
 import { run } from 'lib/subprocess'
 
 const config_file = 'apps.yaml'
@@ -40,3 +40,6 @@ function free_port() {
   return run(`node -e "require('net').createServer().listen(0, function() { console.log(this.address().port); process.exit(0); })"`)
 }
 
+// log(run('sudo systemctl reload caddy'))
+
+log(write('/a/b', 'foo'))
