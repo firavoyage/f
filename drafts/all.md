@@ -1039,6 +1039,11 @@ code:
 - keyword params unordered object params default values
 - pl design list default iteration keys values pairs entries ruby inconsistency
 
+launch:
+
+- research system alternatives
+- cli
+
 humility:
 
 - research claude code leak insights
