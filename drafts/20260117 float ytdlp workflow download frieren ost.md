@@ -16,6 +16,50 @@ dl \
 ```
 
 ```sh
+name='40mP'
+
+dl \
+  "https://music.youtube.com/playlist?list=OLAK5uy_nNyDZdH5W16ZubiJ6fVAmCQTCto3oDMpk" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --reject-title "(?i)inst" \
+  -o "Music/$name/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s" \
+  --match-filters "view_count > 100000"
+```
+
+```sh
+name='sasakure.UK'
+
+dl \
+  "https://music.youtube.com/playlist?list=OLAK5uy_n0DBXnin7Wwi6qGlyYA3SUuprnX7Tsa6g" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --reject-title "(?i)inst" \
+  -o "Music/$name/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s" \
+  --match-filters "view_count > 100000"
+```
+
+```sh
+name='nulut'
+
+dl \
+  "https://music.youtube.com/playlist?list=OLAK5uy_nqt0aEuzzUs0K6Ljw4yYXYz3TDAV3Bt0A" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --reject-title "(?i)inst" \
+  -o "Music/$name/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s" \
+  --match-filters "view_count > 100000"
+```
+
+```sh
+name='r-906'
+
+dl \
+  "https://music.youtube.com/playlist?list=OLAK5uy_kuL-AX48BXjdYw6VVx6WCXGuGTEr44ZEE" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --reject-title "(?i)inst" \
+  -o "Music/$name/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s" \
+  --match-filters "view_count > 100000"
+```
+
+```sh
 name='Harumaki Gohan'
 
 dl \

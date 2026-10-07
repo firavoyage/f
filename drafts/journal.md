@@ -55242,7 +55242,7 @@ it's fine to ask multiple in one, which would behave like a wiki or some workflo
 
 07
 
-13 40 dl `Harumaki Gohan`. <!-- inspired by daylily -->
+13 40 dl `Harumaki Gohan` awa `r-906` `nulut` `sasakure.UK` `40mP`. <!-- inspired by daylily -->
 
 
 
