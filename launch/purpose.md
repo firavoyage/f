@@ -44,8 +44,13 @@ structure the files
       - ~~disabled?~~ <!-- you may simply comment out some app -->
       - options
         - userspace = false
-        - port: false | true (= '--port') | string (= the cli flag)
-          - it will generate and pass a free port
+        <!-- - port: false | true (= '--port') | string (= the cli flag)
+          - it will generate and pass a free port -->
+        - port: false | true | number = false
+          - it will generate and pass a free port if needed
+        - port_flag: string = '--port'
+          - it will pass like `{port_flag} {port}`
+          - irrelevant when port is false
 - ~~cache~~
 
 structure the cli
