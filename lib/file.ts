@@ -1,5 +1,5 @@
 import desktop from '@folder/xdg';
-import { appendFileSync, cpSync, existsSync, mkdirSync, readdirSync, readFileSync, readSync, renameSync, rmdirSync, rmSync, statSync, unlinkSync, writeFileSync } from 'node:fs';
+import { appendFileSync, cpSync, existsSync, mkdirSync, readdirSync, readFileSync, renameSync, rmdirSync, rmSync, statSync, unlinkSync, writeFileSync } from 'node:fs';
 import { homedir } from 'node:os';
 import {
   join as _join, resolve as _resolve, relative,
@@ -7,6 +7,7 @@ import {
   dirname as _dirname,
   extname as _extname,
 } from 'node:path';
+import { run } from 'lib/subprocess'
 
 export const stdin = 0
 type stdin = typeof stdin
@@ -225,7 +226,17 @@ export function cp(source: path_fs, destination: path_fs) {
 }
 
 export function mkpath(path: path_fs) {
-  return mkdirSync(path, { recursive: true })
+  const result = handle(() => mkdirSync(path, { recursive: true }))
+
+  if(is_error(result)){
+    if (result.code == '') {
+      
+    }
+    
+    throw result
+  }
+
+  return result
 }
 
 // File r/w
