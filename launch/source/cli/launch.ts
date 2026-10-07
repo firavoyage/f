@@ -10,7 +10,7 @@ touch(config(config_file))
 
 type app = {
   name: string
-  command: string
+  command?: string
   options?: {
     userspace?: boolean | string
     port?: boolean | number
@@ -30,8 +30,10 @@ export function launch() {
   }
 
   map(apps, (app) => {
-    const { name, command, options } = app
+    const { name, command, options = {} } = app
 
+    const { userspace, port = false, port_flag = '--port' } = options
+    
     
   })
 }
@@ -42,4 +44,3 @@ function free_port() {
 
 // log(run('sudo systemctl reload caddy'))
 
-log(write('/a/b', 'foo'))

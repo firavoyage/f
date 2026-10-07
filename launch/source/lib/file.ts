@@ -1,5 +1,5 @@
 import desktop from '@folder/xdg';
-import { appendFileSync, cpSync, existsSync, mkdirSync, readdirSync, readFileSync, readSync, renameSync, rmdirSync, rmSync, statSync, unlinkSync, writeFileSync } from 'node:fs';
+import { appendFileSync, cpSync, existsSync, mkdirSync, readdirSync, readFileSync, renameSync, rmdirSync, rmSync, statSync, unlinkSync, writeFileSync } from 'node:fs';
 import { homedir } from 'node:os';
 import {
   join as _join, resolve as _resolve, relative,
@@ -7,6 +7,7 @@ import {
   dirname as _dirname,
   extname as _extname,
 } from 'node:path';
+import { run } from 'lib/subprocess'
 
 export const stdin = 0
 type stdin = typeof stdin
@@ -225,7 +226,17 @@ export function cp(source: path_fs, destination: path_fs) {
 }
 
 export function mkpath(path: path_fs) {
-  return mkdirSync(path, { recursive: true })
+  const result = handle(() => mkdirSync(path, { recursive: true }))
+
+  if (is_error(result)) {
+    if (result.code == 'EACCES') {
+      return run(`sudo mkdir -p ${path}`)
+    } else {
+      throw result
+    }
+  }
+
+  return result
 }
 
 // File r/w
@@ -235,21 +246,51 @@ export function write(path: path_w, content: string) {
     mkpath(dirname(path))
   }
 
-  return writeFileSync(path, content, 'utf-8')
+  const result = handle(() => writeFileSync(path, content, 'utf-8'))
+
+  if (is_error(result)) {
+    if (result.code == 'EACCES') {
+      return run(`sudo tee ${path} << 'EOF'\n${content}\nEOF`)
+    } else {
+      throw result
+    }
+  }
+
+  return
 }
 
 export function touch(path: path_fs) {
   if (does_exist(path)) {
-    return 
+    return
   }
 
   return write(path, '')
 }
 
 export function append(path: path_fs, content: string) {
-  return appendFileSync(path, content)
+  const result = handle(() => appendFileSync(path, content))
+
+  if (is_error(result)) {
+    if (result.code == 'EACCES') {
+      return run(`sudo tee -a ${path} << 'EOF'\n${content}\nEOF`)
+    } else {
+      throw result
+    }    
+  }
+
+  return result
 }
 
 export function read(path: path_r) {
-  return readFileSync(path, 'utf-8')
+  const result = handle(() => readFileSync(path, 'utf-8'))
+
+  if (is_error(result)) {
+    if (result.code == 'EACCES') {
+      return run(`sudo cat ${path}`)
+    } else {
+      throw result
+    }    
+  }
+
+  return result
 }
