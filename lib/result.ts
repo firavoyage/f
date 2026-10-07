@@ -1,6 +1,7 @@
 // @ts-nocheck
 
-type Ok<T = all> = T
+type Ok<T = any> = T
+// type Ok<T = all> = T
 // type Ok<T = all> = T extends object ? (Omit<T, typeof error_symbol> & { [error_symbol]?: never }) : T;
 type Err = { type: any, [error_symbol]: true, message?: any } & Partial<FileErr>
 type FileErr = { code: string, path: string, syscall: string, errno: number }
@@ -11,7 +12,8 @@ declare global {
   var err: err
   var is_error: is_error
   
-  type Result<T = all, E extends Err = Err> = (0 extends 1 & T ? Ok : Ok<T>) | E;
+  type Result<T = any, E extends Err = Err> = (0 extends 1 & T ? Ok : Ok<T>) | E;
+  // type Result<T = all, E extends Err = Err> = (0 extends 1 & T ? Ok : Ok<T>) | E;
 }
 
 const error_symbol: unique symbol = Symbol("error");
