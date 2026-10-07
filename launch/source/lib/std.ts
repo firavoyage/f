@@ -1,0 +1,234 @@
+export const nil = null
+
+/**
+ * Convert labels to js variable name in snake case
+ */
+export function variable(name: string) {
+  return name.toLowerCase().replaceAll(' ', '_')
+}
+
+export function is_given<T>(foo: T): foo is NonNullable<T> {
+  const missing_symbol = Symbol('missing')
+
+  if ((foo ?? missing_symbol) == missing_symbol) {
+    return false
+  } else {
+    return true
+  }
+}
+
+export function has<K extends PropertyKey>(obj: any[], key: K): boolean
+export function has<K extends PropertyKey>(string: string, substring: K): boolean
+export function has<K extends PropertyKey>(obj: Set<any>, key: K): boolean
+export function has<K extends PropertyKey>(obj: Map<any, any>, key: K): boolean
+export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, any>
+export function has<K>(obj: any, key: K): boolean
+// export function has<K>(obj: any, key: K): obj is Record<K, any>
+
+/**
+ * Check if an object/map has a key, or an array/set has an element
+ */
+export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, any> {
+  if (Array.isArray(obj)) {
+    return obj.includes(key)
+  }
+
+  if (typeof obj == 'string') {
+    if (typeof key != 'string') {
+      return false
+    }
+
+    return obj.includes(key)
+  }
+
+  if (obj instanceof Set) {
+    return obj.has(key)
+  }
+
+  if (obj instanceof Map) {
+    return obj.has(key)
+  }
+
+  return (typeof key == 'string' || typeof key == 'number' || typeof key == 'symbol') &&
+    obj && typeof obj == 'object' && Object.hasOwn(obj, key);
+}
+
+type entries = [k: any, v: any][]
+// type entries = [k: Key, v: any][]
+export function entries(obj: object | Map<any, any>): entries {
+  // type entries<T> = [k: keyof T, v: T[keyof T]][]
+  // export function entries<T>(obj: object | Map<any, any>): entries<T> {
+  if (obj instanceof Map) {
+    return Array.from(obj.entries())
+  } else if (typeof obj == 'object') {
+    const keys = [
+      ...Object.getOwnPropertyNames(obj),
+      ...Object.getOwnPropertySymbols(obj)
+    ];
+
+    // @ts-expect-error stupid ts
+    return keys.map(key => [key, obj[key]]);
+  } else {
+    return []
+  }
+}
+
+/**
+ * Merge objects to target (the first param)
+ * 
+ * shallow
+ * 
+ * less quirky than Object.assign
+ */
+export function merge(target: object, ...sources: object[]) {
+  for (const source of sources) {
+    for (const key of Object.keys(source)) {
+      // @ts-expect-error mutate type
+      target[key] = source[key]
+    }
+  }
+  return target
+}
+
+// for some reason, ts sees constructures as Function, not any to any fn
+type variable_type = 'nil' | 'array' | "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" | Function |
+  'numeric' | 'iterable'
+// type variable_type = 'nil' | 'array' | "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" | fn
+
+export function is(v: any, type: variable_type) {
+  if (v === nil) {
+    return type == 'nil' || type === nil
+  } else if (type == 'nil') {
+    return v === nil || Number.isNaN(v)
+  } else if (Array.isArray(v)) {
+    return type == 'array'
+  } else if (type == 'numeric') {
+    return is(v, 'number') || is(v, 'bigint')
+  } else if (type == 'iterable') {
+    return is(v[Symbol.iterator], 'function')
+  } else if (typeof type == 'function') {
+    return v instanceof type
+  } else {
+    return typeof v == type
+  }
+}
+
+// numeric
+export function num(n) {
+  const result = Number(n)
+  if (Number.isNaN(result)) {
+    return nil
+  }
+
+  return result
+}
+
+export function int(n) {
+  const result = parseInt(n)
+  if (Number.isNaN(result)) {
+    return nil
+  }
+
+  return result
+}
+
+export function float(n) {
+  const result = parseFloat(n)
+  if (Number.isNaN(result)) {
+    return nil
+  }
+
+  return result
+}
+
+export function bool(v) {
+  return Boolean(v)
+}
+
+export function str(s) {
+  return String(s)
+}
+
+export function max(...args) {
+  if (args.length == 2 && is(args[0], 'numeric') && is(args[1], 'function')) {
+    const [array, fn] = args
+    let maximum = array[0]
+    map(array, (n) => {
+      if (fn(n, maximum)) {
+        maximum = n
+      }
+    })
+    return maximum
+  } else if (args.length == 1 && is(args[0], 'iterable')) {
+    const [array] = args
+    function compare(a, b) {
+      return a > b
+    }
+    return max(array, compare)
+  } else {
+    return max(args)
+  } 
+}
+
+/**
+ * you may pass spread args or an array
+ * 
+ * you should not spread it if it can contain iterable elements, pass an array instead
+ */
+export function list(...args) {
+  if (args.length == 1 && is(args[0], 'iterable')) {
+    const [v] = args
+    return Array.from(v)
+  } else {
+    const v = args
+    return Array.from(v)
+  }  
+}
+
+export function set(v) {
+  return new Set(v)
+}
+
+export function dict(v) {
+  if (!is(v, 'iterable')) {
+    v = entries(v)    
+  }
+  // if (is(v, 'object')) {
+  //   v = entries(v)    
+  // }
+
+  return new Map(v)
+}
+
+type nil = typeof nil
+type variable = typeof variable
+type is_given = typeof is_given
+type has = typeof has
+type entries_fn = typeof entries
+type merge = typeof merge
+type is = typeof is
+type num = typeof num
+type int = typeof int
+type float = typeof float
+type bool = typeof bool
+type str = typeof str
+type list = typeof list
+type set = typeof set
+type dict = typeof dict
+declare global {
+  var nil: nil
+  var variable: variable
+  var is_given: is_given
+  var has: has
+  var entries: entries_fn
+  var merge: merge
+  var is: is
+  var num: num
+  var int: int
+  var float: float
+  var bool: bool
+  var str: str
+  var list: list
+  var set: set
+  var dict: dict
+}
