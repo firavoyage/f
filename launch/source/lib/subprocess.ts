@@ -26,7 +26,7 @@ export function run(command: string, options: run = {}) {
 
     const default_shell = run(`getent passwd "${user}" | cut -d: -f7`)
 
-    return run(`sudo -u '${user}' -i '${default_shell}' -c '${command}'`, { ...options, userspace: false })
+    return run(`sudo -u '${user}' -i '${default_shell}' -ic '${command}'`, { ...options, userspace: false })
   }
 
   return trim_trailing_newline(str(execSync(command, { encoding: 'utf-8', ...options })))
@@ -48,7 +48,7 @@ export function spawn(command: string, options: spawn = {}) {
 
     const default_shell = run(`getent passwd "${user}" | cut -d: -f7`)
 
-    return spawn(`sudo -u '${user}' -i '${default_shell}' -c '${command}'`, { ...options, userspace: false })
+    return spawn(`sudo -u '${user}' -i '${default_shell}' -ic '${command}'`, { ...options, userspace: false })
   }
 
   const process = _spawn(command, { shell: true, ...options })
