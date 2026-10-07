@@ -55240,6 +55240,10 @@ it's reproducible. it's intentional. and you would be less likely to drift and j
 
 it's fine to ask multiple in one, which would behave like a wiki or some workflow effectively.
 
+07
+
+13 40 dl `Harumaki Gohan`. <!-- inspired by daylily -->
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

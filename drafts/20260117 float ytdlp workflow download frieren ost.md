@@ -16,6 +16,26 @@ dl \
 ```
 
 ```sh
+name='Harumaki Gohan'
+
+dl \
+  "https://music.youtube.com/playlist?list=OLAK5uy_nrMe_q6IeRBLqijbJiwDIg0_skzHzv2zg" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --reject-title "(?i)inst" \
+  -o "Music/$name/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s"
+  # --match-filters "view_count > 100000"
+
+name='Harumaki Gohan'
+
+dl \
+  "https://music.youtube.com/playlist?list=OLAK5uy_mApxERenXFjJStBeR_NXzqgBShFO2CJZs" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --reject-title "(?i)inst" \
+  -o "Music/$name/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s"
+  # --match-filters "view_count > 100000"
+```
+
+```sh
 name='soraru'
 
 dl \
