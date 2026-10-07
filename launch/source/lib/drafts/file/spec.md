@@ -1,0 +1,72 @@
+spec
+
+- os
+  - home
+  - init_desktop options
+    - bool xdg
+    - string app
+  - data
+  - config
+  - cache
+- path
+  - ~~path~~ pathname string <!-- Pathname.new --> = path, w duplicate/trailing slash handled <!-- i may design a better name (js is lisp1, conflicting factory/constructor/verb fn and noun var, if they are the same word) -->
+  - cwd/pwd/getwd <!-- there is more than one way to do it -->
+  - join ... = path: string <!-- just like math.max. i may have a util for it -->
+  - expand_path/resolve = absolute path (expand relative and tlide)
+  - ~~cleanpath = relative path w . and .. resolved~~
+  - ~~realpath, realdirpath = path w symlink resolved~~
+  - relative_path path base_dir
+  - basename path <!-- second param? -->
+  - stemname <!-- basename w the last .ext striped, if existing -->
+  - dirname/parent path
+  - extname path
+  - ~~sub path pattern replacement~~
+  - ~~sub_ext path new_ext~~
+  - ~~split path = [dir, base]~~
+- file rw
+  - ~~open~~ <!-- ? -->
+  - write path content
+    - auto mkpath if needed
+  - touch
+  - append
+    - it must exist
+  - read path
+  - ~~binread/write~~
+  - ~~foreach~~
+  - ~~each_line~~ <!-- perf -->
+  - ~~readlines~~ <!-- split by \n instead -->
+- queries
+  - does exist
+  - is file
+  - is dir ~~is directory~~ <!-- be consistent w your aliases -->
+  - ~~is root~~
+  - ~~is absolute~~
+  - ~~is relative~~
+  - ~~is symlink~~
+  - ~~is executable/readable/writable/...~~
+  - is empty
+  - ~~is zero = is the file zero byte~~ <!-- use size instead, arabic symbolic number > english number -->
+  - size
+  - ~~stat~~ <!-- ? -->
+  - atime, ctime, mtime, birthtime <!-- access, change, modification, or creation timestamps. --> ~~mtime <!-- modification timestamp, maybe i can have more (upd: yeah!) -->~~
+  - ~~utime(atime, mtime)~~ <!-- could have -->
+  - ~~chmod chown~~
+  - ~~ftype~~ <!-- ? -->
+  - children~~/each_child~~ = entries wo . and ..
+  - entries~~/each_entry~~ = ls a
+  - ~~glob~~ <!-- could have -->
+- iterate
+  - ~~ascend = root_to_basename[]~~
+  - ~~descend = ascend reversed~~
+  - ~~each filename~~
+- utils
+  - rename/mv
+  - delete/unlink = remove file <!-- i may use return value to indicate "best effort" delete. it's not critical to del a non existing file right? -->
+  - rmdir = remove only if empty
+  - mkpath ~~mkdir <!-- you know there will be -p -->~~
+  - cp
+  - rmtree ~~rm <!-- or maybe rm_rf? it's dangerous and it should be explicit. -->~~
+
+path can be 0 (stdin) or 1 (stdout) <!-- or 2, stderr -->
+
+open/close are of perf engineering, out of scope.
