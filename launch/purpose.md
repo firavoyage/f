@@ -35,4 +35,6 @@ structure the cli
 
 <!-- guess i can learn from pm2 -->
 
+do i have to track the pids? maybe i would simply iterate and run everything.
+
 
