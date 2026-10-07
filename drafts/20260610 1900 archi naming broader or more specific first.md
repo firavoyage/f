@@ -8,6 +8,8 @@ broad: related items grouped together in a list
 
 # should i put the broader or more specific first in naming
 
+## should i put the broader or more specific first in naming
+
 Put the **specific information first** in almost all modern naming systems.
 
 This convention applies to digital files, email subjects, business projects, and URL structures. It ensures that the most unique, actionable detail is visible at a single glance. \[[1](https://theseanamethod.com/2017/01/digital-declutter-day-26-file-naming/)]
@@ -62,7 +64,7 @@ To help tailor this rule to your needs, tell me:
 
 Show all
 
-## You said: when does broader to more specific fit
+## when does broader to more specific fit
 
 Broader-to-more-specific structures fit best when you need to **organize information for systematic sorting, structural navigation, or scientific precision**.
 
@@ -129,7 +131,7 @@ If you are trying to decide which system to build, tell me:
 
 Show all
 
-## You said: where does more specific to broader fit
+## where does more specific to broader fit
 
 More-specific-to-broader structures fit best when **human efficiency, rapid search, and immediate recognition** matter more than rigid system organization.
 
@@ -171,7 +173,7 @@ To help you choose the right direction, tell me:
   \
   MarTech
 
-## You said: on window title
+## on window title
 
 For window titles, always use **specific-to-broad** naming.
 
