@@ -29,7 +29,7 @@ export function run(command: string, options: run = {}) {
     return run(`sudo -u '${user}' -i '${default_shell}' -c '${command}'`, { ...options, userspace: false })
   }
 
-  return str(execSync(command, { encoding: 'utf-8', ...options })).trim()
+  return trim_trailing_newline(str(execSync(command, { encoding: 'utf-8', ...options })))
 }
 
 type spawn = Partial<{
@@ -72,4 +72,14 @@ export function spawn(command: string, options: spawn = {}) {
   }
 
   return process
+}
+
+function trim_trailing_newline(s: string) {
+  if (s.endsWith('\r\n')) {
+    return s.slice(0, -2) // Remove last 2 characters
+  }
+  if (s.endsWith('\n') || s.endsWith('\r')) {
+    return s.slice(0, -1) // Remove last 1 character
+  }
+  return s // Return unchanged if no trailing newline
 }
