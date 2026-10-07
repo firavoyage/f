@@ -551,11 +551,24 @@ ref:
     "body": [
       "if(is_error($1)){",
       "  $0",
-      "  ",
-      "  throw $1",
       "}"
     ],
   },
+  // "is_error": {
+  //   "prefix": [
+  //     "is",
+  //     "ise",
+  //     "iser",
+  //     "iserr",
+  //   ],
+  //   "body": [
+  //     "if(is_error($1)){",
+  //     "  $0",
+  //     "  ",
+  //     "  throw $1",
+  //     "}"
+  //   ],
+  // },
   // "is_error propagate": {
   //   "prefix": [
   //     "is",
