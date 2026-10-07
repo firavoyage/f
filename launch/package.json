@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@folder/xdg": "4.0.1",
-    "trash": "10.1.1",
     "yaml": "2.9.0",
     "@floating-ui/react": "0.27.20",
     "clsx": "2.1.1",
