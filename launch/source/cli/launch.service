@@ -1,0 +1,11 @@
+[Unit]
+Description=Launch
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/sudo 
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
