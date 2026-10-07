@@ -19,7 +19,7 @@ type app = {
 }
 
 export function launch() {
-  const apps = handle(() => parse(read(config_file))) ?? []
+  const apps: app[] = handle(() => parse(read(config_file))) ?? []
 
   if(is_error(apps)){
     throw err('config should be parsable')
@@ -30,12 +30,13 @@ export function launch() {
   }
 
   map(apps, (app) => {
-    const { name, command,  } = app
+    const { name, command, options } = app
+
+    
   })
 }
 
 function free_port() {
-  return run("comm -23 <(seq 49152 65535 | sort) <(ss -Htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n 1")
+  return run(`node -e "require('net').createServer().listen(0, function() { console.log(this.address().port); process.exit(0); })"`)
 }
 
-log(free_port())
