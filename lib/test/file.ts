@@ -5,3 +5,4 @@ init_desktop('app', true)
 // log(data('foo'), config('foo'), cache('foo'))
 
 // write('/a/b/c/d', 'foo')
+
