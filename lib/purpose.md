@@ -134,5 +134,14 @@ nodejs subprocess spawn has 20 overloads.
 
 ah... yeah, you should trim the stdout. saves my day.
 
+---
+
+most time they leave a trailing newline, but rarely do they prefix, or leave trailing spaces.
+
+yeah, it would "ignore spaces after lineend and newlines after eof", but that's not the case.
+
+maybe a blank trim would be overkill. or does it matter.
+
+guess i would not have an option for this. it's a pragmatic abstraction and neither do i wanna leave nonsensical (trailing newline is compromise to terminal printing for humans, not scripts) content either. if it leaks let it leak.
 
 
