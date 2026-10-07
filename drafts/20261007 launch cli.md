@@ -171,6 +171,56 @@ log(1)
 /home/fira/.launch/data /home/fira/.launch/config /home/fira/.launch/cache
 ```
 
+# . cli syntax
+
+```
+ ~ % service
+Usage: service < option > | --status-all | [ service_name [ command | --full-restart ] ]
+ ~ % service --help
+Usage: service < option > | --status-all | [ service_name [ command | --full-restart ] ]
+ ~ % service --status-all
+ [ + ]  alsa-utils
+ [ - ]  anacron
+ [ + ]  apparmor
+ [ + ]  apport
+ [ + ]  bluetooth
+ [ - ]  console-setup.sh
+ [ + ]  cpufrequtils
+ [ + ]  cron
+ [ + ]  cups
+ [ + ]  dbus
+ [ + ]  dnsmasq
+ [ + ]  docker
+ [ + ]  earlyoom
+ [ + ]  gdm3
+ [ - ]  grub-common
+ [ - ]  iperf3
+ [ + ]  kerneloops
+ [ - ]  keyboard-setup.sh
+ [ + ]  kmod
+ [ + ]  lm-sensors
+ [ + ]  loadcpufreq
+ [ + ]  openvpn
+ [ - ]  plymouth
+ [ + ]  plymouth-log
+ [ - ]  postfix
+ [ + ]  procps
+ [ - ]  rsync
+ [ - ]  saned
+ [ - ]  speech-dispatcher
+ [ - ]  spice-vdagent
+ [ - ]  sssd
+ [ + ]  sysstat
+ [ - ]  tor
+ [ + ]  ufw
+ [ + ]  uml-utilities
+ [ + ]  unattended-upgrades
+ [ - ]  uuidd
+ [ + ]  virtualbox
+ [ - ]  whoopsie
+ [ - ]  x11-common
+```
+
 # how to create a nodejs cli
 
 ## how to create a nodejs cli
