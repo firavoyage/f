@@ -250,7 +250,7 @@ export function write(path: path_w, content: string) {
 
   if (is_error(result)) {
     if (result.code == 'EACCES') {
-      return run(`sudo tee ${path} << 'EOF'\n${content}\nEOF`)
+      return run(`head -c -1 << 'EOF' | sudo tee ${path}\n${content}\nEOF`)
     } else {
       throw result
     }
@@ -272,7 +272,7 @@ export function append(path: path_fs, content: string) {
 
   if (is_error(result)) {
     if (result.code == 'EACCES') {
-      return run(`sudo tee -a ${path} << 'EOF'\n${content}\nEOF`)
+      return run(`head -c -1 << 'EOF' | sudo tee -a ${path}\n${content}\nEOF`)
     } else {
       throw result
     }    
