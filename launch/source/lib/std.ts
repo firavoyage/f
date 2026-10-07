@@ -95,6 +95,13 @@ type variable_type = 'nil' | 'array' | "string" | "number" | "bigint" | "boolean
   'numeric' | 'iterable'
 // type variable_type = 'nil' | 'array' | "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" | fn
 
+/**
+ * check if type matches
+ * 
+ * arrays are not objects
+ * 
+ * strings are not iterable
+ */
 export function is(v: any, type: variable_type) {
   if (v === nil) {
     return type == 'nil' || type === nil
@@ -105,7 +112,7 @@ export function is(v: any, type: variable_type) {
   } else if (type == 'numeric') {
     return is(v, 'number') || is(v, 'bigint')
   } else if (type == 'iterable') {
-    return is(v[Symbol.iterator], 'function')
+    return is(v[Symbol.iterator], 'function') && !is(v, 'string')
   } else if (typeof type == 'function') {
     return v instanceof type
   } else {

@@ -144,4 +144,10 @@ maybe a blank trim would be overkill. or does it matter.
 
 guess i would not have an option for this. it's a pragmatic abstraction and neither do i wanna leave nonsensical (trailing newline is compromise to terminal printing for humans, not scripts) content either. if it leaks let it leak.
 
+---
+
+in practice you would almost never see string as iterable.
+
+primitive could not be iterable.
+
 
