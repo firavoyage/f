@@ -961,6 +961,7 @@ law:
 - agpl opensource strictness illusion
 - upload vids under surveillance
 - tax system
+- gdpr rtbf
 
 repo: <!-- init, clone, save/checkpoint, sync, restore -->
 
