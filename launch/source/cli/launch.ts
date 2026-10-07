@@ -43,16 +43,27 @@ export function launch() {
     const actual_port = port === true ? free_port() : port
 
     if (command) {
-      spawn(port? `command ${port_flag} ${actual_port}`: command, {
+      function log_into_file(type: 'info' | 'warn' | 'error', message: string) {
+        let line = `${datetime()} [${type}] ${message}`
+        if (!line.endsWith('\n')) {
+          line += '\n'
+        }
+
+        append(log_file, line)
+      }
+
+      spawn(port ? `command ${port_flag} ${actual_port}` : command, {
         userspace,
-        stdout(data){
-          append(log_file, `${datetime()} [info] ${data}`)
+        stdout(data) {
+          log_into_file('info', data)
         },
-        stderr(data){
-          append(log_file, `${datetime()} [error] ${data}`)
+        stderr(data) {
+          log_into_file('error', data)
         },
-        finish(code, signal){
-          append(log_file, `${datetime()} [warn] exit code ${code} signal ${signal}`)
+        finish(code, signal) {
+          const type = code == 0 ? 'warn' : 'error'
+          const signal_message = is(signal, 'nil') ? '' : ` signal ${signal}`
+          log_into_file(type, `exit code ${code}${signal_message}`)
         }
       })
     }
@@ -74,7 +85,7 @@ export function launch() {
       append(caddy_file, `}\n`)
     })
   }
-  
+
   run('sudo systemctl reload caddy')
 }
 
@@ -95,7 +106,7 @@ function datetime() {
   const ss = pad(now.getSeconds());
 
   // 2. Calculate the timezone offset (+hh:mm or -hh:mm)
-  const offsetMinutes = now.getTimezoneOffset(); 
+  const offsetMinutes = now.getTimezoneOffset();
   const sign = offsetMinutes <= 0 ? '+' : '-';
   const absMinutes = Math.abs(offsetMinutes);
   const offsetHours = pad(Math.floor(absMinutes / 60));
