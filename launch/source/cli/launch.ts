@@ -1,13 +1,13 @@
 import { parse } from 'yaml'
 import { init_desktop, touch, data, config, read, write, append } from 'lib/file'
-import { run } from 'lib/subprocess'
-
-const config_file = 'apps.yaml'
-const caddy_file = '/etc/caddy/Caddyfile'
+import { run, spawn } from 'lib/subprocess'
 
 init_desktop('launch', false)
 
-touch(config(config_file))
+const config_file = config('apps.yaml')
+const caddy_file = '/etc/caddy/Caddyfile'
+
+touch(config_file)
 
 type app = {
   name: string
@@ -37,14 +37,24 @@ export function launch() {
 
     const { userspace, port = false, port_flag = '--port' } = options
 
+    const log_file = data(`${name}.log`)
+    touch(log_file)
+
     const actual_port = port === true ? free_port() : port
 
     if (command) {
-      if (port) {
-        run(`command ${port_flag} ${actual_port}`, options)
-      } else {
-        run(command, options)
-      }
+      spawn(port? `command ${port_flag} ${actual_port}`: command, {
+        userspace,
+        stdout(data){
+          append(log_file, `${datetime()} [info] ${data}`)
+        },
+        stderr(data){
+          append(log_file, `${datetime()} [error] ${data}`)
+        },
+        finish(code, signal){
+          append(log_file, `${datetime()} [warn] exit code ${code} signal ${signal}`)
+        }
+      })
     }
 
     if (port) {
@@ -72,4 +82,25 @@ function free_port() {
   return run(`node -e "require('net').createServer().listen(0, function() { console.log(this.address().port); process.exit(0); })"`)
 }
 
+function datetime() {
+  const now = new Date();
+
+  // 1. Get the local date & time components
+  const pad = (num) => String(num).padStart(2, '0');
+  const YYYY = now.getFullYear();
+  const MM = pad(now.getMonth() + 1);
+  const DD = pad(now.getDate());
+  const hh = pad(now.getHours());
+  const mm = pad(now.getMinutes());
+  const ss = pad(now.getSeconds());
+
+  // 2. Calculate the timezone offset (+hh:mm or -hh:mm)
+  const offsetMinutes = now.getTimezoneOffset(); 
+  const sign = offsetMinutes <= 0 ? '+' : '-';
+  const absMinutes = Math.abs(offsetMinutes);
+  const offsetHours = pad(Math.floor(absMinutes / 60));
+  const offsetMins = pad(absMinutes % 60);
+
+  return `${YYYY}-${MM}-${DD} ${hh}:${mm}:${ss}${sign}${offsetHours}:${offsetMins}`;
+}
 

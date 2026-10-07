@@ -51,7 +51,7 @@ export function spawn(command: string, options: spawn = {}) {
     return spawn(`sudo -u '${user}' -i '${default_shell}' -c '${command}'`, { ...options, userspace: false })
   }
 
-  const process = _spawn(command, options)
+  const process = _spawn(command, { shell: true, ...options })
 
   if (stdout) {
     process.stdout.on('data', (data) => {
