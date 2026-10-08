@@ -164,6 +164,6 @@ i can absolutely solve a specific problem if eventually i will have my consisten
 
 ---
 
-
+but a childprocess could not really command its parent.
 
 
