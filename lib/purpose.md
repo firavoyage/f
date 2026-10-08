@@ -162,4 +162,8 @@ the more assumptions/currying/conventions you make, the simpler the code would b
 
 i can absolutely solve a specific problem if eventually i will have my consistent style.
 
+---
+
+
+
 

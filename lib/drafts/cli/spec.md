@@ -44,6 +44,20 @@ Options:
 Use ctrl+b d to detach from a session
 ```
 
+```
+ ~ % cd
+Navigate filesystem
+
+Usage:
+  cd <location>       Navigate somewhere
+  cd <location...>    Join args with a space and navigate there
+  cd [flag]           Check version or help
+
+Options:
+  -v, --version    Print version
+  -h, --help       Print help
+```
+
 assume you have no conflicting `-v` and `--v`. it will parse all options to an object w dashes stripped.
 
 it will handle `--`.
@@ -52,16 +66,29 @@ it will handle `--`.
 
 structure of command
 
-- command (you may have commas)
+- command (you may have commas) = ""
 - desc
 - args?
 - options?
+- fn
 
 structure of arg
 
 - name
 - type = 'string' <!-- (numeric, string, or union?) -->
+- rest = false <!-- true: an array -->
 
 structure of option
 
+- name (may contain comma)
+- type
 
+---
+
+or you may decouple help text from actual resolution?
+
+---
+
+priority is weird. maybe we can have a conventional resolution.
+
+- cli command
