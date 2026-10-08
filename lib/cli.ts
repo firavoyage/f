@@ -2,7 +2,7 @@ type cli = {
   name: string
   version: string
   description: string
-  
+
 }
 
 /**
@@ -20,6 +20,10 @@ type cli = {
 - tip
  */
 
-export function parse(cli: cli, args?: any) {
+export function evaluate(cli: cli, args?: any) {
   
 }
+
+// export function parse(cli: cli, args?: any) {
+  
+// }
