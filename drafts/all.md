@@ -250,6 +250,10 @@ archi:
 - game engine business models premium foss
 - naming plural s suffix in abbreviation
 
+lib:
+
+- cli
+
 web: <!-- frontend, web, ts/js -->
 
 - explicit implicit
