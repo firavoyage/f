@@ -362,6 +362,7 @@ web: <!-- frontend, web, ts/js -->
 - lib file shell
 - js async await patterns force async to sync
 - lib std list polymorphism
+- js top level fire and forget await on control flow end nodejs
 
 backend:
 
