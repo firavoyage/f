@@ -76,6 +76,7 @@ structure of arg
 
 - name
 - type = 'string' <!-- (numeric, string, or union?) -->
+  - bool iff it takes no param
 - rest = false <!-- true: an array -->
 
 structure of option
@@ -92,3 +93,7 @@ or you may decouple help text from actual resolution?
 priority is weird. maybe we can have a conventional resolution.
 
 - cli command
+- cli special flag (--help, --version) <!-- i.e. you could not pass any other arg/option if you already say cli --version -->
+- cli args... flags...
+
+
