@@ -156,4 +156,10 @@ yeah.
 
 have an cli abstraction.
 
+---
+
+the more assumptions/currying/conventions you make, the simpler the code would be.
+
+i can absolutely solve a specific problem if eventually i will have my consistent style.
+
 
