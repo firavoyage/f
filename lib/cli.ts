@@ -2,7 +2,29 @@ type cli = {
   name: string
   version: string
   description: string
+  usage: Record<string, string>
+  commands?: command[]
+  options?: option[]
+  tip?: string
+}
 
+type command = {
+  command: string
+  description: string
+  fn: fn
+  args?: arg[]
+  options?: option[]
+}
+
+type arg = {
+  name: string
+  type?: fn
+  is_rest?: boolean
+}
+
+type option = {
+  name: string
+  type?: 'boolean' | fn // = string? or boolean?
 }
 
 /**
@@ -27,3 +49,15 @@ export function evaluate(cli: cli, args?: any) {
 // export function parse(cli: cli, args?: any) {
   
 // }
+
+/**
+ * parse (multiple layer),
+ * 
+ * help options
+ */
+
+type help = {
+  // desc gap in spaces
+  description_gap: number
+  align: 'all' | 'heading' | 'off'
+}
