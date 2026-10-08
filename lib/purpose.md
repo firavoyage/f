@@ -150,4 +150,10 @@ in practice you would almost never see string as iterable.
 
 primitive could not be iterable.
 
+08
+
+yeah.
+
+have an cli abstraction.
+
 
