@@ -15,7 +15,7 @@ type app = {
   options?: {
     userspace?: boolean | string
     port?: boolean | number
-    port_flag?: string
+    port_flag?: string | 'boolean'
   }
 }
 
@@ -52,7 +52,7 @@ export function launch() {
         append(log_file, line)
       }
 
-      spawn(port ? `${command} ${port_flag} ${actual_port}` : command, {
+      spawn(port && port_flag ? `${command} ${port_flag} ${actual_port}` : command, {
         userspace,
         stdout(data) {
           log_into_file('info', data)

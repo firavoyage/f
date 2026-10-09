@@ -331,4 +331,43 @@ ioctl: VIDIOC_ENUM_FMT
                         Interval: Discrete 0.040s (25.000 fps)
 ```
 
+```
+ ~ % mkdir -p ~/webcam_dataset
+
+ ~ % ffmpeg -loglevel error -f v4l2 -input_format mjpeg -video_size 1920x1080 -i /dev/video4 -f image2 -strftime 1 -r 1 "$HOME/webcam_dataset/%Y-%m-%d_%H-00/shot_%M-%S.jpg"
+
+[image2 @ 0x5939935cad80] Could not open file : /home/fira/webcam_dataset/2026-10-09_16-00/shot_40-54.jpg
+[vost#0:0/mjpeg @ 0x5939935cf000] Error submitting a packet to the muxer: Input/output error
+[out#0/image2 @ 0x5939935cb8c0] Error muxing a packet
+ ~ % ffmpeg -loglevel error -f v4l2 -input_format mjpeg -video_size 1920x1080 -i /dev/video4 -f image2 -strftime 1 -r 1 -mkdir 1 "$HOME/webcam_dataset/%Y-%m-%d_%H-00/shot_%M-%S.jpg"
+
+Unrecognized option 'mkdir'.
+Error splitting the argument list: Option not found
+ ~ % ffmpeg -loglevel error -f v4l2 -input_format mjpeg -video_size 1920x1080 -i /dev/video4 -f image2 -strftime 1 -r 1 -mkdir 1 "$HOME/webcam_dataset/%Y-%m-%d_%H-00_shot_%M-%S.jpg"
+
+Unrecognized option 'mkdir'.
+Error splitting the argument list: Option not found
+ ~ % ffmpeg -loglevel error -f v4l2 -input_format mjpeg -video_size 1920x1080 -i /dev/video4 -f image2 -strftime 1 -r 1 "$HOME/webcam_dataset/%Y-%m-%d_%H-00_shot_%M-%S.jpg"
+
+ ~ % ffmpeg -loglevel error -f v4l2 -input_format mjpeg -video_size 1920x1080 -i /dev/video4 -r 1 -vcodec copy "$HOME/webcam_dataset/capture_output.mkv"
+
+ ~ % ffmpeg -loglevel error -f v4l2 -input_format mjpeg -video_size 1920x1080 -i /dev/video4 -r 1 -vcodec copy "$HOME/webcam_dataset/timelapse.mkv" -y
+
+ ~ % ffmpeg -loglevel error -f v4l2 -input_format mjpeg -video_size 1920x1080 -i /dev/video4 -r 1 -vcodec libx264 -crf 23 -g 1 "$HOME/webcam_dataset/timelapse_1fps.mkv" -y
+```
+
+```
+ ~ % df -i
+
+Filesystem       Inodes   IUsed    IFree IUse% Mounted on
+tmpfs           1963003    1781  1961222    1% /run
+/dev/nvme0n1p3 31227904 3075627 28152277   10% /
+tmpfs           1963003     374  1962629    1% /dev/shm
+tmpfs           1963003      10  1962993    1% /run/lock
+efivarfs              0       0        0     - /sys/firmware/efi/efivars
+tmpfs           1963003       1  1963002    1% /run/qemu
+/dev/nvme0n1p1        0       0        0     - /boot/efi
+tmpfs            392600     252   392348    1% /run/user/1000
+```
+
 
