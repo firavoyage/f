@@ -446,4 +446,11 @@ frame=    1 fps=0.0 q=6.5 Lsize=N/A time=00:00:00.00 bitrate=N/A speed=   0x
  ~ % ffmpeg -loglevel error -f v4l2 -input_format mjpeg -video_size 1920x1080 -i /dev/video4 -update 1 -frames:v 1 usb_cam_max.jpg -y
 ```
 
+# . command
+
+```sh
+mkdir -p ~/.observe/data/night
+ffmpeg -loglevel error -f v4l2 -input_format mjpeg -video_size 1920x1080 -i /dev/video4 -f image2 -strftime 1 -r 1 "$HOME/.observe/data/night/%Y%m%d_%H%M%S.jpg"
+```
+
 
