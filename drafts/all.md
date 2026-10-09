@@ -1052,6 +1052,10 @@ launch:
 - research system alternatives
 - cli
 
+observe:
+
+- camera integration
+
 humility:
 
 - research claude code leak insights
