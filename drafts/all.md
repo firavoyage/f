@@ -1055,7 +1055,8 @@ launch:
 
 observe:
 
-- camera integration
+- integrate camera
+- compute stats motion mse blur
 
 humility:
 
