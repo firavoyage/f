@@ -144,6 +144,7 @@ life:
 - phone battery capping
 - metro rushing station platform train door lights timeline
 - game bang dream our notes setup
+- uni campus run engineering workaround fake location hardware motor
 
 create something:
 
@@ -447,6 +448,7 @@ desktop:
 - kill malfunctioning process pid process name killall pkill
 - docker change port pvzge
 - usb types
+- hardware floating ground ungrounded circuit loop powered off plug board laggy keyboard
 
 android:
 
