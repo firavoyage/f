@@ -10,4 +10,5 @@ init_desktop('observe', false)
 
 const dataset = data('night')
 
-log(expand_path(dataset, children(dataset)[0]))
+log(children(dataset)[0])
+// log(expand_path(dataset, children(dataset)[0]))

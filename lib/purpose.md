@@ -166,4 +166,8 @@ i can absolutely solve a specific problem if eventually i will have my consisten
 
 but a childprocess could not really command its parent.
 
+09
+
+23 40 file: support with_dir option, default to true, like ruby.
+
 

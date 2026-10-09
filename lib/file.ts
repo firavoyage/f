@@ -178,8 +178,9 @@ export function birthtime(path: path_fs) {
   return stats.birthtime
 }
 
-export function children(path: path_fs) {
-  return readdirSync(path)
+export function children(path: path_fs, with_dir = true) {
+  const items = readdirSync(path)
+  return with_dir? map(items, (item) => join(path, item)): items
 }
 
 // Utils
