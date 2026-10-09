@@ -770,6 +770,7 @@ math:
 - limit infinitesimal order
 - limit trigonometric identities lhopital taylor series
 - stats error fn
+- limit calc
 
 physics:
 
