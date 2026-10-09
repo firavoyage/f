@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+
+    "baseUrl": "./source",
+
+    "allowJs": true,
+    "checkJs": false,
+    "maxNodeModuleJsDepth": 1,
+    "noEmit": true,
+
+    "jsx": "react-jsx",
+
+    "strict": true,
+
+    "skipLibCheck": true,
+    "types": ["node"],
+  },
+  "include": ["**/*"],
+  "exclude": [
+    "**/build",
+    "**/.build",
+    "**/legacy",
+    "**/node_modules"
+  ],
+}
