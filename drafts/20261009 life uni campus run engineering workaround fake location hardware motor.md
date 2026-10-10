@@ -1384,9 +1384,11 @@ Would you like me to find a **specific link or picture example** of what a **Ser
 
 # . news
 
-soon there would be gps track points on the map, and it wont work walking back and forth inside 2m, or wandering all over, or even outside the campus.
+soon there would be gps track points on the map, and it wont work walking back and forth inside 2m, or wandering all over, or even outside the campus. <!-- prev approaches would be in turn irrelevant, feels. -->
 
 human bridge still works as it doesnt do face recognition. it's stupid.
 
 btw, some other options exist, such as rope jumping and "sports club checking in" (i did not join clubs as i do not want to social). they require specific exploitations.
+
+# 
 
