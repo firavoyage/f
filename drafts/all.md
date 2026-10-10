@@ -1048,6 +1048,7 @@ code:
 - pl design ruby oop module class object method lookup hierarchy
 - keyword params unordered object params default values
 - pl design list default iteration keys values pairs entries ruby inconsistency
+- pl design contextual assignent statement equality comparison
 
 launch:
 
