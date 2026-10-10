@@ -162521,3 +162521,23 @@
 2026-10-11 01:57:05+08:00 code visualize.py - f (Workspace) - Visual Studio Code
 2026-10-11 01:58:05+08:00 org.gnome.Nautilus test
 2026-10-11 01:59:05+08:00 eog output.png
+2026-10-11 02:00:05+08:00 chromium hi - Google Search - Chromium
+2026-10-11 02:01:05+08:00 chromium hi - Google Search - Chromium
+2026-10-11 02:02:06+08:00 code visualize.py - f (Workspace) - Visual Studio Code
+2026-10-11 02:03:06+08:00 eog 20261009_223702.jpg
+2026-10-11 02:04:06+08:00 ghostty …/observe/source/backend
+2026-10-11 02:05:06+08:00 eog empty.png
+2026-10-11 02:06:06+08:00 chromium hi - Google Search - Chromium
+2026-10-11 02:07:06+08:00 chromium hi - Google Search - Chromium
+2026-10-11 02:08:06+08:00 eog empty.png
+2026-10-11 02:09:06+08:00 chromium hi - Google Search - Chromium
+2026-10-11 02:10:06+08:00 ghostty …/observe/source/backend
+2026-10-11 02:11:06+08:00 ghostty uv run analyze.py --bg /home/fira/test/20261009_210748.jpg --folder /home/fira/test --output /home/fira/stats2.yaml
+2026-10-11 02:12:06+08:00 ghostty …/observe/source/backend
+2026-10-11 02:13:06+08:00 eog output2.png
+2026-10-11 02:14:06+08:00 eog output2.png
+2026-10-11 02:15:06+08:00 chromium hi - Google Search - Chromium
+2026-10-11 02:16:06+08:00 org.gnome.Nautilus Home
+2026-10-11 02:17:06+08:00 chromium hi - Google Search - Chromium
+2026-10-11 02:18:06+08:00 code visualize_volume.py - f (Workspace) - Visual Studio Code
+2026-10-11 02:19:06+08:00 eog volume.png
