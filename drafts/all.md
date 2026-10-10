@@ -613,6 +613,7 @@ literature:
 - daoism kuai huo
 - shui zhong wan shi
 - stray birds
+- eileen chang
 
 typography:
 
@@ -773,6 +774,7 @@ math:
 - limit trigonometric identities lhopital taylor series
 - stats error fn
 - limit calc
+- limit standard limits lhopital rules
 
 physics:
 
