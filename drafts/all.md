@@ -1061,6 +1061,7 @@ observe:
 
 - integrate camera
 - compute stats motion mse blur
+- analyze
 
 humility:
 
