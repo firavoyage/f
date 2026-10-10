@@ -254,6 +254,7 @@ archi:
 lib:
 
 - cli
+- server
 
 web: <!-- frontend, web, ts/js -->
 
