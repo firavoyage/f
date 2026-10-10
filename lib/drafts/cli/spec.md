@@ -96,4 +96,32 @@ priority is weird. maybe we can have a conventional resolution.
 - cli special flag (--help, --version) <!-- i.e. you could not pass any other arg/option if you already say cli --version -->
 - cli args... flags...
 
+---
+
+data flow
+
+- define cli
+- receive args
+- parse args: string[] to object
+  - it's quirky. rather parse directly. e.g. string after option w param is always taken. --foo --bar is ambiguous. is bar option or param of foo?
+- --version is special option like command. even if you can ls directly, ls --version will output its version rather than passing version as an option. i will not care ls's args.
+- --help is special aw.
+
+---
+
+```
+ ~ % cd
+Navigate filesystem
+
+Usage:
+  cd <location>       Navigate somewhere
+  cd <location...>    Join args with a space and navigate there
+
+Options:
+  -v, --version    Print version
+  -h, --help       Print help
+```
+
+absolutely it makes no sense to say "check version or help"
+
 

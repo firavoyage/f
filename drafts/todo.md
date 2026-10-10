@@ -1,6 +1,9 @@
 # plan
 
-
+- lib/cli
+- lib/server
+- component/graph?
+- analyze
 
 # todo
 
