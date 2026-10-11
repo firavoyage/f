@@ -5,8 +5,8 @@ type cli = {
   version: string
   description: string
   usage: Record<string, string>
-  commands?: command[]
-  options?: option[]
+  commands?: Record<string, command>
+  options?: Record<string, option>
   tip?: string
 }
 
@@ -26,6 +26,7 @@ type arg = {
 
 type option = {
   name: string
+  description: string
   type?: 'boolean' | fn // = string? or boolean?
 }
 
@@ -33,7 +34,7 @@ export function evaluate(cli: cli, args?: any) {
 
 }
 
-type help = Options<{
+type help = Partial<{
   // desc gap in spaces
   description_gap: number
   indentation: number
@@ -42,7 +43,7 @@ type help = Options<{
 
 function help(cli: cli, options_: help = {}) {
   const { name, description, usage, commands = [], options = [], tip } = cli
-  const { description_gap = 4, align = 'all' } = options_
+  const { description_gap = 4, indentation = 2, align = 'all' } = options_
 
   // Modifiers
   const bold = chalk.bold;
@@ -76,9 +77,24 @@ function help(cli: cli, options_: help = {}) {
 
   let help_text = `${description}\n\n`
 
+  let width_usage, width_commands, width_options
+
+  if (align == 'all' || align == 'heading') {
+    width_usage = max(map(usage, ([k]) => k ? `${name} ${k}` : `${name}`))
+    // todo: v.args?
+    width_commands = max(map(commands, ([k]) => k))
+    width_options = max(map(options, ([k]) => k))
+
+    if (align == 'all') {
+      width_usage = width_commands = width_options = max(width_usage, width_commands, width_options)
+    }
+  } else {
+    width_usage = width_commands = width_options = 0
+  } 
+
   help_text += heading('Usage:\n')
-
-
+  
+  
 }
 
 log(help().trim())

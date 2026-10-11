@@ -39,3 +39,10 @@ export function min(...args) {
     return min(args)
   } 
 }
+
+type max = typeof max
+type min = typeof min
+declare global {
+  var max: max
+  var min: min
+}
