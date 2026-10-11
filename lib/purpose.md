@@ -170,4 +170,8 @@ but a childprocess could not really command its parent.
 
 23 40 file: support with_dir option, default to true, like ruby.
 
+11
+
+03 00 log: separate pure logic, format log.
+
 
