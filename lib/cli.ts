@@ -1,3 +1,5 @@
+import chalk, { Options } from 'chalk';
+
 type cli = {
   name: string
   version: string
@@ -11,7 +13,7 @@ type cli = {
 type command = {
   command: string
   description: string
-  fn: fn
+  action: fn
   args?: arg[]
   options?: option[]
 }
@@ -27,37 +29,56 @@ type option = {
   type?: 'boolean' | fn // = string? or boolean?
 }
 
-/**
-- name
-- version
-- description
-- usage
-  - ""
-  - "<name>"
-  - "<command>" <!-- resolves top to bottom (well... what if you list differently for ux. fine, have an explicit priority instead) -->
-  - "[flag]"
-- priority?: usage[]
-- commands
-- options
-- tip
- */
-
 export function evaluate(cli: cli, args?: any) {
-  
+
 }
 
-// export function parse(cli: cli, args?: any) {
-  
-// }
-
-/**
- * parse (multiple layer),
- * 
- * help options
- */
-
-type help = {
+type help = Options<{
   // desc gap in spaces
   description_gap: number
+  indentation: number
   align: 'all' | 'heading' | 'off'
+}>
+
+function help(cli: cli, options_: help = {}) {
+  const { name, description, usage, commands = [], options = [], tip } = cli
+  const { description_gap = 4, align = 'all' } = options_
+
+  // Modifiers
+  const bold = chalk.bold;
+  const italic = chalk.italic;
+  const underline = chalk.underline;
+
+  // Standard Foreground Colors
+  const black = chalk.black;
+  const red = chalk.red;
+  const green = chalk.green;
+  const yellow = chalk.yellow;
+  const blue = chalk.blue;
+  const magenta = chalk.magenta;
+  const cyan = chalk.cyan;
+  const white = chalk.white;
+
+  // Bright Foreground Colors
+  const bright_black = chalk.blackBright; // or chalk.gray / chalk.grey
+  const bright_red = chalk.redBright;
+  const bright_green = chalk.greenBright;
+  const bright_yellow = chalk.yellowBright;
+  const bright_blue = chalk.blueBright;
+  const bright_magenta = chalk.magentaBright;
+  const bright_cyan = chalk.cyanBright;
+  const bright_white = chalk.whiteBright;
+
+  // Combined Themes
+  const heading = chalk.bold.greenBright;
+  const cmd = chalk.bold.cyanBright; // command or flag
+  const arg = chalk.cyan;            // argument
+
+  let help_text = `${description}\n\n`
+
+  help_text += heading('Usage:\n')
+
+
 }
+
+log(help().trim())
