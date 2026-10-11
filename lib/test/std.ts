@@ -5,4 +5,7 @@ log(list(1, 2, 3))
 log(list([1, 2, 3]))
 log(list(1))
 
+log(list([1, 2, 3]))
 log(list([[1, 2, 3]]))
+log(list([1]))
+
