@@ -174,4 +174,10 @@ but a childprocess could not really command its parent.
 
 03 00 log: separate pure logic, format log.
 
+deprecate log_fs.
+
+> Functions should be defined generally. Squaring is not in the Python Library precisely because it is a special case of the pow function, which raises numbers to arbitrary powers.
+
+and it should be ideally pure.
+
 
