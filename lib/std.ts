@@ -107,8 +107,6 @@ export function is(v: any, type: variable_type) {
     return type == 'nil' || type === nil
   } else if (type == 'nil') {
     return v === nil || Number.isNaN(v)
-  } else if (Array.isArray(v)) {
-    return type == 'array'
   } else if (type == 'numeric') {
     return is(v, 'number') || is(v, 'bigint')
   } else if (type == 'iterable') {
@@ -116,7 +114,11 @@ export function is(v: any, type: variable_type) {
   } else if (typeof type == 'function') {
     return v instanceof type
   } else {
-    return typeof v == type
+    if (type == 'array') {
+      return Array.isArray(v)
+    } else {
+      return typeof v == type
+    }
   }
 }
 
@@ -174,7 +176,7 @@ export function max(...args) {
     return max(array, compare)
   } else {
     return max(args)
-  } 
+  }
 }
 
 /**
@@ -183,13 +185,14 @@ export function max(...args) {
  * you should not spread it if it can contain iterable elements, pass an array instead
  */
 export function list(...args) {
+  log(args[0], is(args[0], 'iterable'), is([], 'iterable'))
   if (args.length == 1 && is(args[0], 'iterable')) {
     const [v] = args
     return Array.from(v)
   } else {
     const v = args
     return Array.from(v)
-  }  
+  }
 }
 
 export function set(v) {
@@ -198,7 +201,7 @@ export function set(v) {
 
 export function dict(v) {
   if (!is(v, 'iterable')) {
-    v = entries(v)    
+    v = entries(v)
   }
   // if (is(v, 'object')) {
   //   v = entries(v)    
