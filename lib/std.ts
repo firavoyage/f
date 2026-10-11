@@ -105,8 +105,6 @@ type variable_type = 'nil' | 'array' | "string" | "number" | "bigint" | "boolean
 export function is(v: any, type: variable_type) {
   if (v === nil) {
     return type == 'nil' || type === nil
-  } else if (type == 'nil') {
-    return v === nil || Number.isNaN(v)
   } else if (type == 'numeric') {
     return is(v, 'number') || is(v, 'bigint')
   } else if (type == 'iterable') {
@@ -116,6 +114,8 @@ export function is(v: any, type: variable_type) {
   } else {
     if (type == 'array') {
       return Array.isArray(v)
+    } else if (type == 'nil') {
+      return v === nil || Number.isNaN(v)
     } else {
       return typeof v == type
     }
