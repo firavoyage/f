@@ -1,1 +1,0 @@
-uv run '/home/fira/Documents/f/observe/source/backend/visualize_volume.py' --yaml 20261010.yaml --output 20261010_volume.png

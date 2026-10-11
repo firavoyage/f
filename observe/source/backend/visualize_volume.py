@@ -18,7 +18,7 @@ import yaml
 # ==========================================
 # CONFIGURABLE CONSTANTS
 # ==========================================
-AGGREGATION_MINUTES = 5  # Window size for averaging (e.g., 10 minutes)
+AGGREGATION_MINUTES = 10  # Window size for averaging (e.g., 10 minutes)
 
 # Angle boundary ranges in degrees (0 to 360, where 0 is East/Right)
 RIGHT_ANGLE_MIN_1 = 0
