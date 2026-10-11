@@ -42,7 +42,7 @@ type help = Partial<{
 }>
 
 function help(cli: cli, options_: help = {}) {
-  const { name, description, usage, commands = [], options = [], tip } = cli
+  const { name, description, usage, commands = {}, options = {}, tip } = cli
   const { description_gap = 4, indentation = 2, align = 'all' } = options_
 
   // Modifiers
@@ -90,11 +90,54 @@ function help(cli: cli, options_: help = {}) {
     }
   } else {
     width_usage = width_commands = width_options = 0
-  } 
+  }
 
   help_text += heading('Usage:\n')
+
+  map(usage, ([example, desc]) => {
+    let content = `${cmd(name)}`
+    if (example) {
+      content += ` ${arg(example)}`
+    }
+    content = content.padEnd(width_usage)
+
+    help_text += `${''.padEnd(indentation)}${content}${description_gap}${desc}\n`
+  })
+  help_text += `\n`
+
+  // todo: desc?!
+  map(commands, ([command, desc]) => {
+    let content = style_command(command)
+    content = content.padEnd(width_commands)
+    
+    help_text += `${''.padEnd(indentation)}${content}${description_gap}${desc}\n`
+  })
+  help_text += `\n`
   
-  
+  // todo: desc?!
+  map(options, ([option, desc]) => {
+    let content = style_option(option)
+    content = content.padEnd(width_options)
+
+    help_text += `${''.padEnd(indentation)}${content}${description_gap}${desc}\n`
+  })
+
+  if (tip) {
+    help_text += `\n${tip}`
+  } 
+
+  function style_command(command: string) {
+    // todo: handle args
+    return command.split(',').map(cmd).join(',')
+  }
+
+  function style_option(option: string) {
+    // seems the same currently
+    return style_command(option)
+  }
 }
 
-log(help().trim())
+// merge positional and optional like yargs maybe
+function parse(args) {
+  
+}
