@@ -1,11 +1,13 @@
-// log(new Date().toISOString())
+// // log(new Date().toISOString())
 
-const foo = {
-  a: 1,
-  b: undefined,
-  c: nil,
-}
+// const foo = {
+//   a: 1,
+//   b: undefined,
+//   c: nil,
+// }
 
-const { a = 2, b = 2, c = 2, d =2 } = foo
+// const { a = 2, b = 2, c = 2, d =2 } = foo
 
-log({a, b, c, d})
+// log({a, b, c, d})
+
+log(list([1,2,3]), is([1,2,3][Symbol.iterator], 'function'))
