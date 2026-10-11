@@ -9,5 +9,3 @@
 // const { a = 2, b = 2, c = 2, d =2 } = foo
 
 // log({a, b, c, d})
-
-log(list([1,2,3]), is([1,2,3][Symbol.iterator], 'function'))

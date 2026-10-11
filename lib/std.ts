@@ -112,13 +112,17 @@ export function is(v: any, type: variable_type) {
   } else if (typeof type == 'function') {
     return v instanceof type
   } else {
-    if (type == 'array') {
-      return Array.isArray(v)
-    } else if (type == 'nil') {
-      return v === nil || Number.isNaN(v)
-    } else {
-      return typeof v == type
-    }
+    return real_type(v) == type
+  }
+}
+
+function real_type(v) {
+  if (v === nil || Number.isNaN(v)) {
+    return 'nil'
+  } else if (Array.isArray(v)) {
+    return 'array'
+  } else {
+    return typeof v
   }
 }
 
@@ -185,7 +189,6 @@ export function max(...args) {
  * you should not spread it if it can contain iterable elements, pass an array instead
  */
 export function list(...args) {
-  log(args[0], is(args[0], 'iterable'), is([], 'iterable'))
   if (args.length == 1 && is(args[0], 'iterable')) {
     const [v] = args
     return Array.from(v)

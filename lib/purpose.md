@@ -182,4 +182,6 @@ and it should be ideally pure.
 
 16 00 std/is: fix if order.
 
+in turn fix std/list.
+
 
