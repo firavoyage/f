@@ -12,7 +12,8 @@ function now() {
   const hour = now.getHours()
   const min = now.getMinutes()
   const sec = now.getSeconds()
-
+  const offset = now.getTimezoneOffset() * 60
+  
   // 2. Calculate the timezone offset (+hh:mm or -hh:mm)
   const offsetMinutes = now.getTimezoneOffset();
   const sign = offsetMinutes <= 0 ? '+' : '-';
