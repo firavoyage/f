@@ -5,50 +5,28 @@ function time() {
 
 type time = ReturnType<typeof now>
 
+type timezone = 'utc' | number
 
-function now(timezone) {
-  const now = new Date();
+export function now(timezone?: timezone) {
+  const current_time = new Date();
 
-  const year = now.getFullYear()
-  const month = now.getMonth() + 1
-  const day = now.getDate()
-  const hour = now.getHours()
-  const min = now.getMinutes()
-  const sec = now.getSeconds()
-  const offset = now.getTimezoneOffset() * 60
+  // core
+  const timestamp = current_time.getTime()
+  const offset = timezone == 'utc' ? 0 :
+    is(timezone, 'number') ? timezone : 
+    current_time.getTimezoneOffset() * 60
 
-  // 2. Calculate the timezone offset (+hh:mm or -hh:mm)
-  const offsetMinutes = now.getTimezoneOffset();
-  const sign = offsetMinutes <= 0 ? '+' : '-';
-  const absMinutes = Math.abs(offsetMinutes);
-  const offsetHours = Math.floor(absMinutes / 60);
-  const offsetMins = absMinutes % 60;
+  // derived
+  const year = current_time.getFullYear()
+  const month = current_time.getMonth() + 1
+  const day = current_time.getDate()
+  const hour = current_time.getHours()
+  const min = current_time.getMinutes()
+  const sec = current_time.getSeconds()
 
   return {
-    year, month, day, hour, min, sec, offset
+    timestamp, year, month, day, hour, min, sec, offset
   }
-}
-
-function datetime() {
-  const now = new Date();
-
-  // 1. Get the local date & time components
-  const pad = (num) => String(num).padStart(2, '0');
-  const YYYY = now.getFullYear();
-  const MM = pad(now.getMonth() + 1);
-  const DD = pad(now.getDate());
-  const hh = pad(now.getHours());
-  const mm = pad(now.getMinutes());
-  const ss = pad(now.getSeconds());
-
-  // 2. Calculate the timezone offset (+hh:mm or -hh:mm)
-  const offsetMinutes = now.getTimezoneOffset();
-  const sign = offsetMinutes <= 0 ? '+' : '-';
-  const absMinutes = Math.abs(offsetMinutes);
-  const offsetHours = pad(Math.floor(absMinutes / 60));
-  const offsetMins = pad(absMinutes % 60);
-
-  return `${YYYY}-${MM}-${DD} ${hh}:${mm}:${ss}${sign}${offsetHours}:${offsetMins}`;
 }
 
 export function format(time: time, pattern: string) {
@@ -59,7 +37,7 @@ export function format(time: time, pattern: string) {
   const timezone_hour = pad(floor(abs(offset_min) / 60))
   const timezone_min = pad(abs(offset_min) % 60)
 
-  const mapping = {
+  const macros = {
     Y: year,
     m: pad(month),
     d: pad(day),
@@ -80,14 +58,13 @@ export function format(time: time, pattern: string) {
     pattern = pattern.replaceAll(`%${shortcut}`, value)
   })
 
-  map(mapping, ([shortcut, value]) => {
-    pattern = pattern.replaceAll(`%${shortcut}`, value)
+  map(macros, ([macro, value]) => {
+    pattern = pattern.replaceAll(`%${macro}`, value)
   })
 
-
+  return pattern
 }
 
 function pad(n: number, length = 2) {
-  return str(num).padStart(length, '0')
+  return str(n).padStart(length, '0')
 }
-

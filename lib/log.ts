@@ -1,3 +1,5 @@
+import { format, now } from "./time"
+
 type log = typeof log
 declare global {
   var log: log
@@ -11,7 +13,7 @@ declare global {
 export const log = console.log
 
 export function format_log(message: string, type: 'info' | 'warn' | 'error' = 'info') {
-  let line = `${datetime()} [${type}] ${message}`
+  let line = `${log_time()} [${type}] ${message}`
   if (!line.endsWith('\n')) {
     line += '\n'
   }
@@ -19,26 +21,6 @@ export function format_log(message: string, type: 'info' | 'warn' | 'error' = 'i
   return line
 }
 
-function datetime() {
-  const now = new Date();
-
-  // 1. Get the local date & time components
-  const pad = (num) => String(num).padStart(2, '0');
-  const YYYY = now.getFullYear();
-  const MM = pad(now.getMonth() + 1);
-  const DD = pad(now.getDate());
-  const hh = pad(now.getHours());
-  const mm = pad(now.getMinutes());
-  const ss = pad(now.getSeconds());
-
-  // 2. Calculate the timezone offset (+hh:mm or -hh:mm)
-  const offsetMinutes = now.getTimezoneOffset();
-  const sign = offsetMinutes <= 0 ? '+' : '-';
-  const absMinutes = Math.abs(offsetMinutes);
-  const offsetHours = pad(Math.floor(absMinutes / 60));
-  const offsetMins = pad(absMinutes % 60);
-
-  return `${YYYY}-${MM}-${DD} ${hh}:${mm}:${ss}${sign}${offsetHours}:${offsetMins}`;
+function log_time() {
+  return format(now(), '%F %T%:z')
 }
-
-
