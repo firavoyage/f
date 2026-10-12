@@ -778,6 +778,7 @@ math:
 - limit standard limits lhopital rules
 - limit table ref answer issues
 - test smartestu tutor llm
+- limit inductive proof forall assume
 
 physics:
 
