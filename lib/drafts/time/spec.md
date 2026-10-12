@@ -45,21 +45,30 @@ data
 pattern <!-- prefixed by % -->
 
 - Y four digit year
-- y two digit year
+- ~~y two digit year~~
 - m month padded
-- B full month name captitalized
-- b/h three letter month name
+- ~~B full month name captitalized~~
+- ~~b/h three letter month name~~
 - d mday padded
-- e mday padded w a space
+- ~~e mday padded w a space~~
 - H hour in 24, padded
-- I hour in 12, padded
+- ~~I hour in 12, padded~~
 - M minute, padded
 - S second, padded
-- L milisec
-- N fractional sec
-- P/p am/pm in uppercase/lowercase
+- ~~L milisec~~
+- ~~N fractional sec~~
+- ~~P/p am/pm in uppercase/lowercase~~
+
 - F %Y-%m-%d
 - T %H:%M:%S
-- Z timezone abbr (e.g. UTC, PST)
+- R %H:%M
+- ~~Z timezone abbr (e.g. UTC, PST)~~
 - z timezone offset (e.g. +0000, -0500)
-
+- :z timezone offset (e.g. +00:00, -05:00)
+- ~~X The preferred local time representation based on system locale settings.~~
+- ~~r %I:%M:%S %p (e.g., "03:30:45 PM")~~
+- ~~D Traditional US date format. Equivalent to %m/%d/%y (e.g., "10/12/26")~~
+- ~~v VMS style date. Equivalent to %e-%b-%Y (e.g., "12-Oct-2026")~~
+- ~~x The preferred local date representation based on system locale settings~~
+- ~~c Preferred date and time representation based on system locale settings (e.g., "Mon Oct 12 15:30:45 2026")~~
+- ~~s The Number of seconds since the Unix Epoch~~
