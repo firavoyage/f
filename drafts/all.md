@@ -257,6 +257,7 @@ lib:
 - cli
 - server
 - datetime
+- chainable
 
 web: <!-- frontend, web, ts/js -->
 
@@ -477,6 +478,7 @@ sre:
 - ctf port scanning connection drop stealth server uptime hash wildcard subdomain udp quic
 - self hosting serverless cross device file syncing through github
 - self hosting spa ios web app limitations success app store monopoly google play bypass
+- vps reliable hosting wo cloudflare
 
 agent: <!-- ai/ml -->
 
