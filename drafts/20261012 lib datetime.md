@@ -5427,6 +5427,8 @@ Would you like a quick list of the **most dangerous token mistakes** in npm libr
 
 # all js date methods
 
+## all js date methods
+
 The JavaScript `Date` object provides a wide variety of methods to **get, set, format, and manipulate dates and times**. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Date)
 
 The complete list of native JavaScript `Date` methods is categorized below by functionality. Note that months in JavaScript are **0-indexed** (0 is January, 11 is December), while days of the month are **1-indexed** (1 to 31). [link](https://www.w3schools.com/js/js%5Fdate%5Fmethods.asp)

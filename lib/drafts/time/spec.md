@@ -72,3 +72,11 @@ pattern <!-- prefixed by % -->
 - ~~x The preferred local date representation based on system locale settings~~
 - ~~c Preferred date and time representation based on system locale settings (e.g., "Mon Oct 12 15:30:45 2026")~~
 - ~~s The Number of seconds since the Unix Epoch~~
+
+timezone
+
+- utc/gmt
+- number in sec
+- '+/-hh:mm'
+- ~~nato military code~~
+- {local_to_utc, utc_to_local, ~~is_dst~~}
