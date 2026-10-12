@@ -30,6 +30,9 @@ use(union)
 use(map)
 use(collection)
 
+import * as chainable from 'lib/chainable'
+use(chainable)
+
 // use({ use })
 // 
 // type use = typeof use
