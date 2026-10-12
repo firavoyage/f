@@ -1,9 +1,8 @@
 # plan
 
+- lib/datetime
 - lib/cli
-- lib/server
-- component/graph?
-- analyze
+- lib/web/server
 
 # todo
 
@@ -32,6 +31,16 @@ i may compile it as userscript
 <!-- how to compile (build) a backend script? -->
 
 <!-- well... it would be always sub optimal compared w a dedicated copy main content button, esp when you rarely select arbitrarily -->
+
+---
+
+copy: generalize converter
+
+some info are available in html but stripped.
+
+it's exceptionally easy to get the raw html and keep it.
+
+if you can, you may try to parse katex.
 
 # backlog
 
