@@ -192,6 +192,10 @@ export function dict(v) {
   return new Map(v)
 }
 
+export function obj(v) {
+  return Object.fromEntries(v)
+}
+
 type nil = typeof nil
 type variable = typeof variable
 type is_given = typeof is_given
@@ -207,6 +211,7 @@ type str = typeof str
 type list = typeof list
 type set = typeof set
 type dict = typeof dict
+type obj = typeof obj
 declare global {
   var nil: nil
   var variable: variable
@@ -223,4 +228,5 @@ declare global {
   var list: list
   var set: set
   var dict: dict
+  var obj: obj
 }
