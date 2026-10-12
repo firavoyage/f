@@ -1054,6 +1054,7 @@ code:
 - keyword params unordered object params default values
 - pl design list default iteration keys values pairs entries ruby inconsistency
 - pl design contextual assignent statement equality comparison
+- pl design paren less fn call
 
 launch:
 
