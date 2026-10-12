@@ -602,3 +602,119 @@ Would you like to look at some specific examples of this happening in other mass
 
 Show all
 
+
+# monogatari series watch order
+
+<!-- as prefixed on the torrent -->
+
+## monogatari series watch order
+
+The definitive and community-recommended way to experience the **Monogatari Series** is the **Light Novel (LN) Release Order**. [link](https://www.reddit.com/r/anime/comments/1mec4sh/updated%5Fmonogatari%5Fanime%5Fwatch%5Forderchronology/)
+
+Watching in this order preserves the intended mystery, character development, and narrative pacing crafted by Nisio Isin. The original anime adaptation by Studio SHAFT delayed several installments (like _Kizumonogatari_ and _Hanamonogatari_) due to production timelines, but following the author's intended novel structure provides the optimal experience. [link](https://www.youtube.com/watch?v=gPMCWDF3zP0\&t=267)
+
+***
+
+### 1. First Season
+
+- **Bakemonogatari** (15 episodes)
+- **Kizumonogatari** (Movie Trilogy: _Tekketsu_, _Nekketsu_, _Reiketsu_ OR the compilation film _Koyomi Vamp_)
+- **Nisemonogatari** (11 episodes)
+- **Nekomonogatari Black** (4 episodes) [link](https://www.youtube.com/watch?v=Hkbvs3yrXJ8)
+
+### 2. Second Season
+
+- **Monogatari Series Second Season** – _Episodes 1 to 11_ ( Nekomonogatari White & Kabukimonogatari arcs)
+- **Hanamonogatari** (5 episodes)
+- **Monogatari Series Second Season** – _Episodes 12 to 26_ (Otatorimonogatari, Onimonogatari & Koimonogatari arcs) [link](https://www.imdb.com/list/ls049610332/)
+
+### 3. Final Season
+
+- **Tsukimonogatari** (4 episodes)
+- **Owarimonogatari Season 1** (12 episodes)
+- **Koyomimonogatari** (12 short episodes)
+- **Owarimonogatari Season 2** (7 episodes)
+- **Zoku Owarimonogatari** (6 episodes / 1 movie) [link](https://myanimelist.net/stacks/37996)
+
+### 4. Off & Monster Season
+
+**Monogatari Series: Off & Monster Season** (14 episodes)
+
+- _Note:_ Watch episodes 1–6, followed by the mid-season special _Episode 6.5 (A Cruel Fairy Tale: The Beautiful Princess)_, and finish with episodes 7–14. [link](https://www.youtube.com/watch?v=Hkbvs3yrXJ8)
+
+***
+
+### Alternative Layouts at a Glance
+
+| Watch Order                           | Target Audience               | Description                                                                                        |
+| ------------------------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------- |
+| **Light Novel Order** _(Recommended)_ | First-time viewers            | Follows the original narrative structure intended by the author.                                   |
+| **Anime Airing Order**                | Purists of original broadcast | Follows exact television release dates; shuffles _Kizumonogatari_ and _Hanamonogatari_ much later. |
+| **Chronological Order**               | Rewatchers only               | Arranges arcs by in-universe dates. Highly confusing for newcomers due to disjointed mysteries.    |
+
+Would you like help finding **where to stream** specific parts of the series legally, or do you want a detailed breakdown of the **in-universe chronological timeline**?
+
+- [link](https://www.reddit.com/r/anime/comments/1mec4sh/updated%5Fmonogatari%5Fanime%5Fwatch%5Forderchronology/)\
+  Reddit\
+  Updated Monogatari Anime Watch Order/Chronology Infographic ...\
+  Monogatari has always been a series where the order has never been about chronological order. Kizumonogatari & Nekomonogatari Blac...
+- [link](https://www.youtube.com/watch?v=QmVWyRr2o%5FE\&t=9)\
+  YouTube·The Sandy Man\
+  Monogatari Series Watch Order In UNDER 2 MINUTES! (2021)\
+  The first season includes Bakemonogatari (15 episodes), the Kizumonogatari movie trilogy, Nisemonogatari, and Nekomonogatari Black...\
+  20s
+- [link](https://www.youtube.com/watch?v=Hkbvs3yrXJ8)\
+  YouTube·BatriNine\
+  How To Watch The Monogatari Series in The Right Order!\
+  The third season includes. Owarimonogatari Season 1 (12 episodes) and Season 2 (7 episodes), and finishes with Zoku Owarimonogatar...\
+  4:05
+
+Show all
+
+## what is second season called
+
+The core anime release for this section is titled **Monogatari Series Second Season**, but it actually encompasses **six different light novel titles**.
+
+When searching for or streaming it, you will find it under these names:
+
+### 1. The Main Anime Title
+
+- **Monogatari Series Second Season** (26 episodes) – This contains five of the six arcs: _Nekomonogatari White_, _Kabukimonogatari_, _Otorimonogatari_, _Onimonogatari_, and _Koimonogatari_.
+
+### 2. The Standalone Title
+
+- **Hanamonogatari** (5 episodes) – This is the sixth arc of the Second Season. Because of production delays, it was broadcast separately from the main block, but it belongs right in the middle of it if you are following the recommended Light Novel order (specifically after _Kabukimonogatari_).
+
+Are you trying to find where to **stream** the Second Season right now, or would you like to know the exact **episode breakdown** for those six arcs?
+
+## what does second season contain
+
+The **Monogatari Series Second Season** contains **six distinct story arcs** focusing on different heroines. Each arc adapts a specific light novel volume.
+
+The content is broken down as follows:
+
+### The Six Arcs of Second Season
+
+- **Nekomonogatari (White) / Tsubasa Tiger** _(Episodes 1–5)_
+  - **Focus Heroine:** Tsubasa Hanekawa
+  - **Plot:** While Koyomi Araragi is away, Hanekawa encounters a massive, talking white tiger spirit that burns down her house, triggering the return of her alternate personality, Black Hanekawa.
+- **Kabukimonogatari / Mayoi Jiangshi** _(Episodes 7–10)_
+  - **Focus Heroine:** Mayoi Hachikuji
+  - **Plot:** Koyomi and Shinobu attempt to travel back in time one day so Koyomi can finish his summer homework, but they accidentally end up 11 years in the past—causing a butterfly effect that creates an alternate timeline.
+- **Hanamonogatari / Suruga Devil** _(5 Episodes / Broadcast Separately)_
+  - **Focus Heroine:** Suruga Kanbaru
+  - **Plot:** Set after Koyomi graduates high school. Kanbaru, now a third-year student, hears rumors of a "Devil" who solves people's problems and discovers an old rival is behind it.
+- **Otorimonogatari / Nadeko Medusa** _(Episodes 12–15)_
+  - **Focus Heroine:** Nadeko Sengoku
+  - **Plot:** Nadeko is targeted by a giant white snake apparition named Kuchinawa. Driven by her unrequited love for Koyomi, her situation takes a dark, psychological turn.
+- **Onimonogatari / Shinobu Time** _(Episodes 17–20)_
+  - **Focus Heroine:** Shinobu Oshino
+  - **Plot:** Occurring directly after the events of _Kabukimonogatari_, Koyomi and Hachikuji are hunted by a mysterious, non-human "darkness" that swallows anything that deviates from its true nature.
+- **Koimonogatari / Hitagi End** _(Episodes 21–26)_
+  - **Focus Heroines:** Hitagi Senjougahara & Deishu Kaiki
+  - **Plot:** Desperate to save herself and Koyomi from a deadly threat, Senjougahara hires the untrustworthy con man Kaiki to deceive a newly crowned, dangerous god.
+
+_Note: Episodes 6, 11, and 16 in the original TV broadcast were recap episodes and are usually excluded from modern streaming or home releases._
+
+Would you like to know which **specific characters or apparitions** cross over between these arcs, or are you ready to look into **where you can watch them**?
+
