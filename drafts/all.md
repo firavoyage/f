@@ -1119,6 +1119,7 @@ humility:
 - name arif
 - research google gemini app
 - use case university ai intro course tasks
+- use case university ai intro course tasks img vid gen
 
 legacy:
 
