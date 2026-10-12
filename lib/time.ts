@@ -3,7 +3,16 @@ function time() {
 
 }
 
-type time = ReturnType<typeof now>
+type time = {
+  timestamp: number
+  year: number
+  month: number
+  day: number
+  hour: number
+  min: number
+  sec: number
+  offset: number
+}
 
 type timezone = 'utc' | number
 
@@ -13,8 +22,8 @@ export function now(timezone?: timezone) {
   // core
   const timestamp = current_time.getTime()
   const offset = timezone == 'utc' ? 0 :
-    is(timezone, 'number') ? timezone : 
-    current_time.getTimezoneOffset() * 60
+    is(timezone, 'number') ? timezone :
+      current_time.getTimezoneOffset() * 60
 
   // derived
   const year = current_time.getFullYear()
@@ -24,9 +33,9 @@ export function now(timezone?: timezone) {
   const min = current_time.getMinutes()
   const sec = current_time.getSeconds()
 
-  return {
+  return Time({
     timestamp, year, month, day, hour, min, sec, offset
-  }
+  })
 }
 
 export function format(time: time, pattern: string) {
@@ -69,14 +78,35 @@ function pad(n: number, length = 2) {
   return str(n).padStart(length, '0')
 }
 
-function Time<T>(data: T): T {
+function Time<T>(data: T) {
   return chainable(data, {
     format
   })
 }
 
-function chainable<T extends object>(data: T, methods: Record<string, fn>): T {
-  return merge(data, obj(map(methods, ([name, method]) => [name, (...args) => {
-    
-  }])))  
+type Chainable<T, M extends Record<string, (data: T, ...args: any[]) => any>> = {
+  [K in keyof M]: M[K] extends (data: T, ...args: infer Args) => infer Return
+  ? (...args: Args) => Return
+  : never;
+};
+
+function chainable<
+  T extends object,
+  M extends Record<string, (data: T, ...args: any[]) => any>
+>(
+  data: T,
+  methods: M
+): T & Chainable<T, M> {
+  return merge(
+    data,
+    obj(map(methods, ([name, method]) => [
+      name,
+      (...args: any[]) => method(data, ...args)
+    ]))
+  );
 }
+// function chainable<T extends object>(data: T, methods: Record<string, fn>): T {
+//   return merge(data, obj(map(methods, ([name, method]) => [name, (...args) => {
+//     return method(data, ...args)
+//   }])))  
+// }
