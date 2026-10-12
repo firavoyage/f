@@ -255,6 +255,7 @@ lib:
 
 - cli
 - server
+- datetime
 
 web: <!-- frontend, web, ts/js -->
 
