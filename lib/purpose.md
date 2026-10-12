@@ -192,4 +192,10 @@ because engineering is the art of making tradeoffs.
 
 <!-- i would not adopt "YYYY" because it's prone and ugly, and idk how it even works (e.g. for complex strings or edge cases). and, it does _not_ just inherently gurantee you better internalization. -->
 
+13
+
+it's a bit awkward to make it chainable when you have no first class fp piping.
+
+anyway, i can try.
+
 

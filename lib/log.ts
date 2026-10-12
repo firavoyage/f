@@ -1,4 +1,4 @@
-import { format, now } from "./time"
+import { format, now } from "lib/time"
 
 type log = typeof log
 declare global {

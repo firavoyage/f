@@ -68,3 +68,15 @@ export function format(time: time, pattern: string) {
 function pad(n: number, length = 2) {
   return str(n).padStart(length, '0')
 }
+
+function Time<T>(data: T): T {
+  return chainable(data, {
+    format
+  })
+}
+
+function chainable<T extends object>(data: T, methods: Record<string, fn>): T {
+  return merge(data, obj(map(methods, ([name, method]) => [name, (...args) => {
+    
+  }])))  
+}
