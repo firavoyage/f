@@ -40,9 +40,17 @@ export function min(...args) {
   } 
 }
 
+export const {abs, floor, ceil} = Math
+
 type max = typeof max
 type min = typeof min
+type abs = typeof abs
+type floor = typeof floor
+type ceil = typeof ceil
 declare global {
   var max: max
   var min: min
+  var abs: abs
+  var floor: floor
+  var ceil: ceil
 }
