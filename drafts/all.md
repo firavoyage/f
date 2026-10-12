@@ -776,6 +776,8 @@ math:
 - stats error fn
 - limit calc
 - limit standard limits lhopital rules
+- limit table ref answer issues
+- test smartestu tutor llm
 
 physics:
 
