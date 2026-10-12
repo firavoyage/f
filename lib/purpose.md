@@ -184,4 +184,12 @@ and it should be ideally pure.
 
 in turn fix std/list.
 
+12
+
+yeah, you invent dsl for time formatting pattern, even though it's conceptually <!-- should be --> (proxy) dc and template literal.
+
+because engineering is the art of making tradeoffs.
+
+<!-- i would not adopt "YYYY" because it's prone and ugly, and idk how it even works (e.g. for complex strings or edge cases). and, it does _not_ just inherently gurantee you better internalization. -->
+
 
