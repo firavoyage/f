@@ -17,7 +17,7 @@ methods
   - _is utc/gmt_
   - _is dst_ <!-- daylight savings time -->
   - _is sunday/.../saturday_
-- calc
+- _calc_
   - time + delta (in sec) = time
   - time - time = delta
   - cmp a b = sgn a - b
