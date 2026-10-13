@@ -33,16 +33,16 @@ methods
 data
 
 - year
-- month/mon
-- day/mday~~/date~~
+- month/_mon_
+- day/_mday_~~/date~~
 - hour
 - min
 - sec
-- wday
-- yday~~/date~~
-- zone/timezone
-- offset/utc_offset/gmt_offset/gmt_off
-- timestamp/to_i/to_f/to_r/to_a
+- _wday_
+- _yday~~/date~~_
+- _zone/timezone_
+- offset/~~utc_offset/gmt_offset/gmt_off~~
+- timestamp/~~to_i/to_f/to_r/to_a~~
 
 pattern <!-- prefixed by % -->
 
@@ -79,7 +79,7 @@ timezone
 
 - utc/gmt
 - _iana time zone names_
-- number in sec
+- number in sec <!-- it should be a realistic one, like at least by 30min -->
 - '+/-hh:mm'
 - ~~nato military code~~
 - ~~{local_to_utc, utc_to_local, ~~is_dst~~}~~
