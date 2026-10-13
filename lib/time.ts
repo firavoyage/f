@@ -78,8 +78,13 @@ function pad(n: number, length = 2) {
   return str(n).padStart(length, '0')
 }
 
-function Time<T>(data: T) {
+function Time(data: time) {
   return chainable(data, {
     format
   })
 }
+// function Time<T>(data: T) {
+//   return chainable(data, {
+//     format
+//   })
+// }
