@@ -5,4 +5,6 @@ function log_time() {
   // return format(now(), '%F %T%:z')
 }
 
+const foo = now().d
+
 log(log_time())
