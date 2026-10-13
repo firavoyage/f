@@ -75,6 +75,41 @@ Processing log array map for: input.wav
    SUCCESSFULLY GENERATED 16-BIT LOG MAP: input.volume.log.png
 ```
 
+---
+
+```
+ ~ % cd "/home/fira/Documents/f/record/" && uv run 'analyze_silence.py' /home/fira/test2
+Scanning target directory: /home/fira/test2...
+
++---------------------+------------------+--------------------------+----------------------+
+| Filename            | Total Duration   | Total Silence Detected   | Removable Data (%)   |
++=====================+==================+==========================+======================+
+| 20261013_204340.WAV | 87.94s           | 0s                       | 0.0%                 |
++---------------------+------------------+--------------------------+----------------------+
+| 20261013_204137.WAV | 109.06s          | 0s                       | 0.0%                 |
++---------------------+------------------+--------------------------+----------------------+
+| 20261013_204524.WAV | 149.76s          | 0s                       | 0.0%                 |
++---------------------+------------------+--------------------------+----------------------+
+ ...Documents/f/record % cd "/home/fira/Documents/f/record/" && uv run 'visualize_volume_distribution.py' /home/fira/test2
+Scanning directory: /home/fira/test2
+Processing statistics distribution profiles...
+Processing array map for: 20261013_204340.WAV
+   SUCCESSFULLY GENERATED DISTRIBUTION MAP: 20261013_204340.volume.png
+Processing array map for: 20261013_204137.WAV
+   SUCCESSFULLY GENERATED DISTRIBUTION MAP: 20261013_204137.volume.png
+Processing array map for: 20261013_204524.WAV
+   SUCCESSFULLY GENERATED DISTRIBUTION MAP: 20261013_204524.volume.png
+ ...Documents/f/record % cd "/home/fira/Documents/f/record/" && uv run 'visualize_volume_distribution_log.py' /home/fira/test2
+Scanning directory: /home/fira/test2
+Processing 16-bit logarithmic distribution profiles...
+Processing log array map for: 20261013_204340.WAV
+   SUCCESSFULLY GENERATED 16-BIT LOG MAP: 20261013_204340.volume.log.png
+Processing log array map for: 20261013_204137.WAV
+   SUCCESSFULLY GENERATED 16-BIT LOG MAP: 20261013_204137.volume.log.png
+Processing log array map for: 20261013_204524.WAV
+   SUCCESSFULLY GENERATED 16-BIT LOG MAP: 20261013_204524.volume.log.png
+```
+
 # how much quality is needed for voice recording
 
 ## how much quality is needed for voice recording

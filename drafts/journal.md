@@ -55244,6 +55244,10 @@ it's fine to ask multiple in one, which would behave like a wiki or some workflo
 
 13 40 dl `Harumaki Gohan` awa `r-906` `nulut` `sasakure.UK` `40mP`. <!-- inspired by daylily -->
 
+13
+
+20 40 test recorder deeply inside, inside, and outside, play a podcast for example
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
