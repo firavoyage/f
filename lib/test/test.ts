@@ -6,3 +6,5 @@ function log_time() {
 }
 
 log(log_time())
+
+log(now().offset)
