@@ -1,5 +1,7 @@
 # plan
 
+test recorder deeply inside, inside, and outside, play a podcast for example
+
 - lib/datetime
 - lib/cli
 - lib/web/server
