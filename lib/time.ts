@@ -1,12 +1,15 @@
+import { constructFrom } from 'date-fns';
+import { TZDate } from '@date-fns/tz';
+
 type time = {
   timestamp: number
+  offset: number // offset in seconds
   year: number
   month: number
   day: number
   hour: number
   min: number
   sec: number
-  offset: number // offset in seconds
 }
 
 type iana_timezone_name = string
@@ -15,8 +18,14 @@ type offset = number
 type timezone = 'utc' | 'local' | iana_timezone_name | offset
 
 export function time(year: number, month: number, day: number, hour: number, min: number, sec: number, timezone: timezone = 'local') {
+
+  const tzDate = new TZDate(year, month - 1, day, hour, min, sec, timezone);
+  const timestamp = Math.floor(tzDate.getTime() / 1000);
+  const offset = tzDate.getTimezoneOffset() * (-60);
+
   return Time({
-    year, month, day, hour, min, sec, timezone
+    timestamp, offset,
+    year, month, day, hour, min, sec
   })
 }
 
@@ -92,3 +101,14 @@ function Time(data: time) {
 //     format
 //   })
 // }
+
+function offset_to_timezone(offset: number) {
+  const offset_min = offset / 60
+  const timezone_sign = offset_min <= 0 ? '+' : '-'
+  const timezone_hour = pad(floor(abs(offset_min) / 60))
+  const timezone_min = pad(abs(offset_min) % 60)
+
+  const timezone = `${timezone_sign}${timezone_hour}:${timezone_min}`
+
+  return timezone
+}
