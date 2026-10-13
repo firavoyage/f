@@ -11,12 +11,12 @@ methods
     - now timezone
   - at timestamp (in sec) timezone
 - parse
-  - parse s pattern
+  - _parse s pattern_
   - (standard) s
 - check
   - is utc/gmt
-  - is dst <!-- daylight savings time -->
-  - is sunday/.../saturday
+  - _is dst_ <!-- daylight savings time -->
+  - _is sunday/.../saturday_
 - calc
   - time + delta (in sec) = time
   - time - time = delta
@@ -25,7 +25,7 @@ methods
 - convert
   - get_utc
   - get_local offset?
-  - round, ceil, floor digit <!-- round the sec -->
+  - _round, ceil, floor_ digit <!-- round the sec -->
 - format
   - format pattern
     - "str" to_s/inspect
