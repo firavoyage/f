@@ -1,5 +1,7 @@
 time spec
 
+<!-- paragraph: m/s, italic: c, strikethrough: w -->
+
 methods
 
 - create
@@ -76,7 +78,9 @@ pattern <!-- prefixed by % -->
 timezone
 
 - utc/gmt
+- _iana time zone names_
 - number in sec
 - '+/-hh:mm'
 - ~~nato military code~~
-- {local_to_utc, utc_to_local, ~~is_dst~~}
+- ~~{local_to_utc, utc_to_local, ~~is_dst~~}~~
+

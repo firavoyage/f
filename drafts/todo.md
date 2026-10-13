@@ -44,8 +44,10 @@ if you can, you may try to parse katex.
 
 ---
 
-- (code?, repo, have, humility, pure, ...)
-- (material, para, ...)
+- code?
+- have, repo, humility, pure, ...
+- para, material, ...
+- float
 
 # backlog
 

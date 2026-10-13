@@ -1,8 +1,3 @@
-// at timestamp number, or iso string
-function time() {
-
-}
-
 type time = {
   timestamp: number
   year: number
@@ -15,6 +10,12 @@ type time = {
 }
 
 type timezone = 'utc' | number
+
+export function time(year: number, month: number, day: number, hour: number, min: number, sec: number, timezone: timezone) {
+  return Time({
+    year, month, day, hour, min, sec, timezone
+  })
+}
 
 export function now(timezone?: timezone) {
   const current_time = new Date();
