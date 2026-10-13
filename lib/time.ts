@@ -2,11 +2,11 @@ import { TZDate } from '@date-fns/tz';
 import { getTimezoneOffset } from 'date-fns-tz'
 
 type time = {
-  timestamp: number
-  offset: number // offset in seconds
+  timestamp: number // in seconds
+  offset: number // in seconds
   year: number
   month: number
-  day: number
+  day: number // day of month
   hour: number
   min: number
   sec: number
@@ -19,9 +19,6 @@ type timezone = 'utc' | 'local' | iana_timezone_name | offset
 
 export function time(year: number, month: number, day: number, hour: number, min: number, sec: number, timezone?: timezone) {
   const tz_time = new TZDate(year, month - 1, day, hour, min, sec, format_offset(timezone_to_offset(timezone)));
-
-  log(parse_js_time(tz_time))
-
   const { timestamp, offset } = parse_js_time(tz_time)
 
   return Time({
@@ -43,7 +40,7 @@ export function at(timestamp: number, timezone?: timezone) {
   return time(year, month, day, hour, min, sec, timezone)
 }
 
-export function format(t: time, pattern: string) {
+export function format(t: time, pattern: string = '%F %T') {
   const { year, month, day, hour, min, sec, offset } = t
 
   const macros = {
@@ -105,7 +102,7 @@ function Time(data: time) {
 
 function format_offset(offset: number, colon = true) {
   const offset_min = offset / 60
-  const timezone_sign = offset_min <= 0 ? '+' : '-'
+  const timezone_sign = offset_min >= 0 ? '+' : '-'
   const timezone_hour = pad(floor(abs(offset_min) / 60))
   const timezone_min = pad(abs(offset_min) % 60)
 

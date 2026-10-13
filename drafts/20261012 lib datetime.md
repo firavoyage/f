@@ -5861,3 +5861,1174 @@ Would you like to see a code example comparing how **C** and **JavaScript** hand
 Show all
 
 
+
+# all date-fns methods and params of each
+
+The **[date-fns library](https://date-fns.org/) contains over 200 functions** split across logical categories. Because listing every single one of the 200+ functions with all parameters would be thousands of lines long, <mark>the absolute<span> </span><strong>most essential, commonly used date-fns methods</strong><span> </span>are grouped below by category along with their exact parameter signatures and options</mark>. [link](https://www.npmjs.com/package/date-fns)
+
+***
+
+### 📋 Common Options Object
+
+Many methods accept an optional `options` argument as their last parameter. The most common properties are: [link](https://akshatsethi.medium.com/a-short-intro-to-the-magic-of-date-fns-28407d7faf2b)
+
+- `locale`: The date-fns locale object (e.g., `es`, `fr`, `zhCN`).
+- `weekStartsOn`: An integer from `0` (Sunday) to `6` (Saturday) to specify the start of the week.
+- `additionalDigits`: `0`, `1`, or `2` specifying additional digits when parsing ISO timestamps. [link](https://blog.jeremyquinto.com/guide-to-dates-in-javascript-plus-making-it-easier-with-date-fns)
+
+***
+
+### 🎨 Formatting & Display
+
+Methods used to turn dates into human-readable strings.
+
+- `format(date, formatString, [options])`
+  - **date**: `Date | number | string` — The date to format.
+  - **formatString**: `string` — Token string based on UTS #35 (e.g., `'yyyy-MM-dd'`).
+  - **options**: `Object` — Supports `locale` and `weekStartsOn`. [link](https://help.fulcrumapp.com/en/articles/4037876-date-manipulation-with-date-fns)
+- `formatDistance(date, baseDate, [options])`
+  - **date**: `Date | number | string` — The date to compare.
+  - **baseDate**: `Date | number | string` — The relative anchor date.
+  - **options**: `Object` — Supports `includeSeconds` (boolean) and `addSuffix` (boolean, e.g., "3 days ago"). [link](https://www.youtube.com/watch?v=GwFUt6l8IEQ)
+- `formatRelative(date, baseDate, [options])`
+  - **date**: `Date | number | string` — The date to format.
+  - **baseDate**: `Date | number | string` — The reference date (e.g., today). [link](https://documentation.five9.com/bundle/studio-combo/page/studio-build/content-types/function-date-fns.htm)
+
+***
+
+### ➕ Math & Manipulation
+
+Pure functions that return a new mutated `Date` instance without modifying the original object.
+
+- `add(date, duration)`
+  - **date**: `Date | number | string` — The target date.
+  - **duration**: `Object` — An object representing time to add (e.g., `{ years: 2, months: 1, days: 7 }`).
+- `sub(date, duration)`
+  - **date**: `Date | number | string` — The target date.
+  - **duration**: `Object` — Time units to subtract (e.g., `{ hours: 5, minutes: 30 }`). [link](https://akshatsethi.medium.com/a-short-intro-to-the-magic-of-date-fns-28407d7faf2b)
+- `addDays(date, amount)` / `subDays(date, amount)`
+  - **date**: `Date | number | string` — The starter date.
+  - **amount**: `number` — The number of days to add or remove.
+  - _(Note: Exact matching functions exist for `Years`, `Months`, `Weeks`, `Hours`, `Minutes`, `Seconds`, and `Milliseconds`)_. [link](https://www.youtube.com/watch?v=9YZIQAmgD0o)
+
+***
+
+### 🔍 Range & Differences
+
+Methods used to measure the gaps between dates. [link](https://mollify.noroff.dev/content/feu1/javascript-1/module-6/lesson-2/date-fns)
+
+- `differenceInDays(dateLeft, dateRight)`
+  - **dateLeft**: `Date | number | string` — The later date.
+  - **dateRight**: `Date | number | string` — The earlier date.
+  - _(Note: Returns full days. Equivalent variants exist for all other units: `differenceInYears`, `differenceInMonths`, etc.)_ [link](https://help.fulcrumapp.com/en/articles/4037876-date-manipulation-with-date-fns)
+- `isWithinInterval(date, interval)`
+  - **date**: `Date | number | string` — The date to check.
+  - **interval**: `Object` — A range object containing `{ start: Date, end: Date }`. [link](https://help.fulcrumapp.com/en/articles/4037876-date-manipulation-with-date-fns)
+
+***
+
+### ⏱️ Start & End Points
+
+Methods used to reset a date to the exact threshold of a calendar boundary.
+
+- `startOfDay(date)` / `endOfDay(date)`
+  - **date**: `Date | number | string` — The target date. [link](https://www.youtube.com/watch?v=9YZIQAmgD0o)
+- `startOfWeek(date, [options])` / `endOfWeek(date, [options])`
+  - **date**: `Date | number | string` — The target date.
+  - **options**: `Object` — Can pass `weekStartsOn` to alter whether the week starts on Sunday or Monday.
+  - _(Note: Equivalent variants exist for `startOfMonth`, `endOfMonth`, `startOfYear`, `endOfYear`, etc.)_
+
+***
+
+### ⚖️ Comparisons & Queries
+
+Methods evaluating truthy/falsy queries or sorting logic.
+
+- `isAfter(date, dateToCompare)`
+  - **date**: `Date | number | string` — The date to evaluate.
+  - **dateToCompare**: `Date | number | string` — The date to check against. [link](https://www.youtube.com/watch?v=RbpWG1s0%5FQ4\&t=11)
+- `isBefore(date, dateToCompare)`
+  - **date**: `Date | number | string` — The date to evaluate.
+  - **dateToCompare**: `Date | number | string` — The date to check against.
+- `isEqual(dateLeft, dateRight)`
+  - **dateLeft / dateRight**: `Date | number | string` — Dates to check for strict visual equality.
+- `compareAsc(dateLeft, dateRight)` / `compareDesc(dateLeft, dateRight)`
+  - **dateLeft / dateRight**: `Date | number | string` — Dates compared specifically for sorting arrays. [link](https://devdocs.io/date%5Ffns/)
+
+***
+
+### 🛠️ Parsing
+
+Methods used to reliably turn various strings into valid JavaScript Date objects.
+
+- `parse(dateString, formatString, referenceDate, [options])`
+  - **dateString**: `string` — The string representing your date.
+  - **formatString**: `string` — The token mapping matching the string format.
+  - **referenceDate**: `Date | number` — Used to resolve missing values (like year or month).
+- `parseISO(argument, [options])`
+  - **argument**: `string` — An exact ISO 8601 formatted string.
+
+If you are looking for a **specific niche method** (like quarter math, ISO week numbering, or business day counters), let me know **what date operation you are trying to build**, and I can provide its exact parameter structure.
+
+- [link](https://akshatsethi.medium.com/a-short-intro-to-the-magic-of-date-fns-28407d7faf2b)\
+  Medium·AKSHAT SETHI\
+  A short intro to the magic of date-fns - Medium\
+  A very powerful function, which can format your date to any format. The function takes a date object, format string and some optio...
+- [link](https://www.npmjs.com/package/date-fns)\
+  NPM\
+  date-fns\
+  May 29, 2026 — NEW date-fns provides the most comprehensive, yet simple and consistent toolset for manipulating JavaScript dates in a browser & N...
+- [link](https://help.fulcrumapp.com/en/articles/4037876-date-manipulation-with-date-fns)\
+  Fulcrum\
+  Date Manipulation with date-fns | Fulcrum Help Center\
+  format (returns formatted date strings via UTS #35), formatDistance (returns distance in words), max (gets max date from arrays/re...
+
+Show all
+
+## how to get timestamp and offset in seconds by year month day hour min sec timezone
+
+To get a Unix timestamp and its timezone offset in seconds using **date-fns**, you should use the **`@date-fns/tz`** package (introduced in **date-fns v4** to handle timezones natively) alongside core `date-fns` methods [date-fns library](https://date-fns.org/).
+
+Here is the direct code solution using **`constructFrom`** and **`TZDate`**:
+
+javascript
+
+```
+import { constructFrom } from 'date-fns';
+import { TZDate } from '@date-fns/tz';
+
+function getTimeDetails(year, month, day, hour, min, sec, timezone) {
+  // 1. Create a date context tied to the target timezone (Note: month is 0-indexed in JS)
+  const tzDate = new TZDate(year, month - 1, day, hour, min, sec, timezone);
+
+  // 2. Get the Unix timestamp in seconds
+  const timestampInSeconds = Math.floor(tzDate.getTime() / 1000);
+
+  // 3. Get the timezone offset in seconds
+  // getTimezoneOffset() returns minutes relative to UTC (e.g., UTC+2 returns -120)
+  // Multiplying by -60 converts it to a standard positive/negative offset in seconds
+  const offsetInSeconds = tzDate.getTimezoneOffset() * -60;
+
+  return {
+    timestamp: timestampInSeconds,
+    offset: offsetInSeconds
+  };
+}
+
+// Example Usage:
+console.log(getTimeDetails(2026, 10, 13, 12, 0, 0, 'America/New_York'));
+// Output: { timestamp: 1791907200, offset: -14400 }
+```
+
+Use code with caution.
+
+### 📋 Parameter Breakdown & Logic
+
+- **`TZDate` Constructor**: Takes standard JavaScript date arguments `(year, monthIndex, day, hour, minute, second)` plus a final string representing the [IANA Time Zone identifier](https://en.wikipedia.org/wiki/List%5Fof%5Ftz%5Fdatabase%5Ftime%5Fzones) (e.g., `'Europe/Paris'`, `'America/Los_Angeles'`).
+- **Month Indexing**: JavaScript months are `0`-indexed (`0` = January, `11` = December). The formula subtracts `1` from your human-readable month input.
+- **`.getTime()`**: Returns the exact absolute epoch timestamp in **milliseconds**, which is universally converted to standard seconds by dividing by `1000`.
+- **`.getTimezoneOffset()`**: Returns the time difference between UTC and the local timezone in **minutes**, with an inverted sign convention (e.g., New York in Daylight Saving Time returns `240` instead of `-240`). Multiplying by `-60` corrects the direction and converts the value safely into seconds.
+
+Would you like to see how to format this timezone-aware date into a specific **localized string output**, or do you need help handling **daylight saving time transitions** for a specific city?
+
+## timezone param
+
+In **`date-fns` v4**, the `timezone` parameter used within the **`@date-fns/tz`** package accepts **two primary formats** to safely process your local wall-clock values: [link](https://www.npmjs.com/package/@date-fns/tz)
+
+### 1. IANA Time Zone Names (Recommended)
+
+You pass a string representing a geographical region. This is the most resilient approach because **it automatically handles Daylight Saving Time (DST)** changes based on the exact year, month, and day you provide. [link](https://www.postgresql.org/docs/current/datatype-datetime.html)
+
+- **Format:** `'Area/Location'`
+- **Examples:** `'America/New_York'`, `'Europe/London'`, `'Asia/Tokyo'`, `'Australia/Sydney'` [link](https://github.com/date-fns/tz)
+
+### 2. Fixed UTC Offsets
+
+If you do not want seasonal calendar adjustments (DST) to interfere, or if you already know the absolute static offset, you can pass a hardcoded UTC offset string. [link](https://www.npmjs.com/package/@date-fns/tz)
+
+- **Format:** `'±HH:mm'`
+- **Examples:** `'+05:30'`, `'-08:00'`, `'+00:00'` [link](https://github.com/date-fns/tz/issues/3)
+
+***
+
+### 🚀 Usage Variations in code
+
+Depending on how you write your code, the parameter shifts location:
+
+#### Option A: Inside the `TZDate` Constructor
+
+The timezone string acts as the **final parameter** following your chronological fields. [link](https://randyapps.com/blog/10259)
+
+javascript
+
+```
+import { TZDate } from '@date-fns/tz';
+
+// Signature: (year, monthIndex, day, hour, minute, second, millisecond, timezone)
+const date = new TZDate(2026, 9, 13, 12, 0, 0, 0, 'America/Los_Angeles');
+```
+
+Use code with caution.
+
+#### Option B: Using the `tz()` Context Helper
+
+If you are combining this with standard `date-fns` parsing or arithmetic utilities, you can pass the timezone parameter into the **`tz` context wrapper** inside an options object (`{ in: tz(timezone) }`): [link](https://www.npmjs.com/package/@date-fns/tz)
+
+javascript
+
+```
+import { parseISO } from 'date-fns';
+import { tz } from '@date-fns/tz';
+
+// Parses a floating date string directly into a specific timezone context
+const date = parseISO('2026-10-13T12:00:00', { in: tz('Europe/Paris') });
+```
+
+Use code with caution.
+
+Do you need help looking up the exact **IANA timezone string** for a specific city, or are you running into an **"Invalid Date"** error with a particular offset string format?
+
+- [link](https://www.postgresql.org/docs/current/datatype-datetime.html)\
+  PostgreSQL\
+  PostgreSQL: Documentation: 18: 8.5. Date/Time Types\
+  Accepts ISO 8601, SQL, POSTGRES, German styles; DateStyle/IntervalStyle parameters configure formats. Special values include epoch...
+- [link](https://docs.oracle.com/cd/E11882%5F01/server.112/e10729/ch4datetime.htm)\
+  Oracle Help Center\
+  Datetime Data Types and Time Zone Support\
+  DBMS\_DST package handles DST upgrades and error/trigger tables. calculate DST automatically, unlike standard TIMESTAMP.
+- [link](https://dev.java/learn/date-time/zoneid-zone-offset/)\
+  Dev.java\
+  Time Zone and Offset - Dev.java\
+  Jan 27, 2022 — It is used to represent a full date (year, month, day) and time (hour, minute, second, nanosecond) with an offset from Greenwich/U...
+
+Show all
+
+## can you pass arbitrary offset
+
+**Yes, you can pass arbitrary fixed offsets** to the `timezone` parameter instead of a geographical IANA name. [link](https://www.npmjs.com/package/@date-fns/tz)
+
+When you pass an arbitrary offset, the library treats it as a static time zone that never changes (meaning it completely bypasses seasonal Daylight Saving Time shifts). [link](https://www.npmjs.com/package/@date-fns/tz)
+
+### 🛠️ Accepted Offset Formats
+
+The `@date-fns/tz` package natively parses custom offsets formatted as strings in the following structural variants: [link](https://www.npmjs.com/package/@date-fns/tz)
+
+- **Standard ISO Offset**: `'+HH:mm'` or `'-HH:mm'` (e.g., `'+05:30'`, `'-08:00'`)
+- **Short Offset**: `'+HH'` or `'-HH'` (e.g., `'+02'`, `'-11'`)
+- **Condensed Offset**: `'+HHmm'` or `'-HHmm'` (e.g., `'+0800'`, `'-0430'`) [link](https://www.npmjs.com/package/@date-fns/tz)
+
+### 💻 Code Example
+
+javascript
+
+```
+import { TZDate } from '@date-fns/tz';
+
+// Example: Kathmandu, Nepal is statically UTC+05:45
+const customOffset = '+05:45';
+
+const tzDate = new TZDate(2026, 9, 13, 12, 0, 0, customOffset);
+
+console.log(tzDate.toISOString());
+// Output: 2026-10-13T06:15:00.000Z (Exactly 5 hours and 45 minutes behind UTC)
+
+console.log(tzDate.getTimezoneOffset() * -60);
+// Output: 20700 (5.75 hours converted cleanly to 20,700 seconds)
+```
+
+Use code with caution.
+
+⚠️ **Important Caveat**: Ensure your offset string includes a leading positive `+` or negative `-` sign. Passing a raw standalone number (like `5.5` or `330`) will fail or yield an `Invalid Date` error. [link](https://github.com/date-fns/tz/issues/3)
+
+Are you dynamically calculating this **arbitrary offset from user input** (like a slider or dropdown), or are you trying to **parse it out of an existing ISO timestamp string**? [link](https://codewithhugo.com/taming-timezones-moment-parsezone-to-date-fns-tz/)
+
+- [link](https://www.npmjs.com/package/@date-fns/tz)\
+  NPM\
+  @date-fns/tz - npm\
+  You can pass IANA time zone name ("Asia/Singapore", "America/New\_York", etc.) or UTC offset ("+01:00", "-2359", or "+23"):
+- [link](https://github.com/date-fns/tz/issues/3)\
+  GitHub\
+  Timezone offsets do not work in the TZDate constructor #3\
+  Sep 18, 2024 — Invalid Date errors instead of actual dates, meaning that the resulting code throws an error when attempting to utilise it for fur...
+- [link](https://codewithhugo.com/taming-timezones-moment-parsezone-to-date-fns-tz/)\
+  Code with Hugo\
+  Replacing moment.parseZone with @date\
+  This utility can be used as follows to rely on new Date(dateStr) parsing … also set the timezone. TZDate(dateStr, getISOTimezoneOf...
+
+Show all
+
+## how to get time at timestamp
+
+To extract the exact time components (hours, minutes, seconds) at a specific Unix timestamp in a particular timezone, you can feed your timestamp directly into `TZDate`.
+
+Here is the direct code solution using **`date-fns` v4** and **`@date-fns/tz`**:
+
+javascript
+
+```
+import { TZDate } from '@date-fns/tz';
+import { format } from 'date-fns';
+
+function getTimeFromTimestamp(timestampInSeconds, timezone) {
+  // 1. Convert seconds to milliseconds (JS timestamps require milliseconds)
+  const timestampInMs = timestampInSeconds * 1000;
+
+  // 2. Instantiate TZDate using the timestamp and target timezone
+  const tzDate = new TZDate(timestampInMs, timezone);
+
+  // 3. Extract the local wall-clock values safely
+  return {
+    hours: tzDate.getHours(),
+    minutes: tzDate.getMinutes(),
+    seconds: tzDate.getSeconds(),
+    // Optional: Format it instantly into a clean string (e.g., "14:30:15")
+    formatted24h: format(tzDate, 'HH:mm:ss'),
+    formatted12h: format(tzDate, 'hh:mm:ss a')
+  };
+}
+
+// Example Usage (Timestamp 1791910800 is Oct 13, 2026 17:00:00 UTC)
+console.log(getTimeFromTimestamp(1791910800, 'America/New_York'));
+// Output: { hours: 13, minutes: 0, seconds: 0, formatted24h: "13:00:00", formatted12h: "01:00:00 PM" }
+
+console.log(getTimeFromTimestamp(1791910800, '+05:30'));
+// Output: { hours: 22, minutes: 30, seconds: 0, formatted24h: "22:30:00", formatted12h: "10:30:00 PM" }
+```
+
+Use code with caution.
+
+### 💡 Key Mechanism
+
+When you pass a **single primitive number** into `new TZDate(timestamp, timezone)`, JavaScript interprets it as a universal absolute point in time (Epoch milliseconds). The library then maps that single point to the local clock time of whatever `timezone` string or arbitrary offset you provide.
+
+Do you also need to extract the **year, month, and day** from this timestamp, or are you looking to calculate the **difference in time** between two distinct timestamps?
+
+## how to convert timezones
+
+To convert a timestamp or date from one timezone to another using **date-fns v4**, you pass the existing date instance or timestamp directly into a new **`TZDate`** constructor configured with your target timezone string.
+
+Here is the direct code implementation to safely convert timezones:
+
+javascript
+
+```
+import { TZDate } from '@date-fns/tz';
+import { format } from 'date-fns';
+
+/**
+ * Converts a date from a source timezone to a target timezone
+ * @param {Date|number|string} sourceDate - The input date or epoch timestamp
+ * @param {string} targetTimezone - The IANA timezone name or fixed offset to convert TO
+ */
+function convertTimezone(sourceDate, targetTimezone) {
+  // Create a new TZDate instance mapped directly to the destination timezone
+  const convertedDate = new TZDate(sourceDate, targetTimezone);
+
+  return {
+    // Returns the new local wall-clock values
+    hours: convertedDate.getHours(),
+    minutes: convertedDate.getMinutes(),
+    dateObject: convertedDate,
+
+    // Safely format the output directly into the context of the target timezone
+    formatted: format(convertedDate, 'yyyy-MM-dd HH:mm:ss zzzz')
+  };
+}
+
+// === Example Usage ===
+
+// Scenario: A meeting is scheduled for Oct 13, 2026, at 15:00 (3 PM) in London (BST, UTC+1)
+const londonMeeting = new TZDate(2026, 9, 13, 15, 0, 0, 'Europe/London');
+
+// Convert that exact global moment to New York time (EDT, UTC-4)
+const newYorkTime = convertTimezone(londonMeeting, 'America/New_York');
+
+console.log(newYorkTime.formatted);
+// Output: "2026-10-13 10:00:00 Eastern Daylight Time"
+
+// Convert the same moment to Tokyo time (JST, UTC+9)
+const tokyoTime = convertTimezone(londonMeeting, 'Asia/Tokyo');
+
+console.log(tokyoTime.formatted);
+// Output: "2026-10-14 23:00:00 Japan Standard Time"
+```
+
+Use code with caution.
+
+### 🧠 How It Works Behind the Scenes
+
+1. **Absolute Time Underlying Structure**: Under the hood, JavaScript dates are just a count of milliseconds since 1970 UTC. When you pass `londonMeeting` to `new TZDate(..., 'America/New_York')`, it keeps the exact same underlying global millisecond count.
+2. **Context Shift**: The `TZDate` wrapper intercepts any display or getter methods (like `.getHours()` or `format()`) and adjusts the output values mathematically to match the rules of your target timezone.
+
+Are you converting dates that **originate from an API database** (usually as UTC strings), or are you building a **timezone scheduler** where users pick times across different cities?
+
+## why tzDate.getTimezoneOffset() \* -60
+
+The formula `tzDate.getTimezoneOffset() * -60` is used because JavaScript’s built-in **`getTimezoneOffset()` behaves in two counter-intuitive ways** that must be reversed to get a standard, production-ready offset in seconds:
+
+1. **It uses an inverted sign convention** (Negative is ahead, Positive is behind).
+2. **It returns the value in minutes**, not seconds.
+
+***
+
+### 1. Reversing the Inverted Sign (`* -1`)
+
+In standard computing and geography (ISO 8601), offsets are calculated as **Local Time minus UTC**.
+
+- **Paris** (UTC+2) should be `+2 hours`.
+- **New York** (UTC-4) should be `-4 hours`.
+
+However, JavaScript calculates it backward as **UTC minus Local Time**.
+
+- For **Paris**, JS returns `-120` minutes.
+- For **New York**, JS returns `240` minutes.
+
+Multiplying by `-1` flips the sign back to the universally expected standard direction.
+
+### 2. Converting Minutes to Seconds (`* 60`)
+
+Most APIs, databases, and low-level backend systems (like Unix epoch handling) require time variables and offsets to be calculated strictly in **seconds**. Since JavaScript returns the offset in minutes, multiplying by `60` scales it to seconds.
+
+***
+
+### 🔢 Mathematical Breakdown
+
+Let's look at what happens under the hood for **New York (EDT, UTC-4)**:
+
+| Step  | Operation                    | Result   | Notes                                                         |
+| ----- | ---------------------------- | -------- | ------------------------------------------------------------- |
+| **1** | `tzDate.getTimezoneOffset()` | `240`    | JS says UTC is 240 minutes _ahead_ of New York.               |
+| **2** | Multiply by `-1`             | `-240`   | Corrects sign to denote New York is 240 minutes _behind_ UTC. |
+| **3** | Multiply by `60`             | `-14400` | Standard offset in seconds (−4×3600=−14400).                  |
+
+By doing `* -60`, you combine both of these mathematical corrections into a single efficient operation.
+
+Are you passing this calculated **offset in seconds** to a backend API (like a PostgreSQL or Node.js server), or do you need to format it into an **ISO string like `-04:00`**?
+
+# all dayjs methods params
+
+**Day.js methods** accept specific parameters depending on whether you are parsing, getting, setting, manipulating, or displaying dates. Because Day.js uses an overloaded getter/setter pattern and fluent method chaining, understanding these parameters helps prevent unexpected bugs. [link](https://day.js.org/docs/en/get-set/get-set)
+
+***
+
+### 1. Parsing & Initialization
+
+The core factory function `dayjs()` initializes an instance. [link](https://medium.com/@yunyoung-jordan-choi/the-design-patterns-day-js-uses-226ab1786e2c)
+
+| Method                                   | Parameters                                                               | Description                                                                                                                  |
+| ---------------------------------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- | ---- | ----- | ----- | ------------------------------------------------------------------------------------------------------- |
+| `dayjs()`                                | _None_                                                                   | Parses the **current date and time** (equivalent to `dayjs(undefined)`).                                                     |
+| `dayjs(value)`                           | `value: string                                                           | number                                                                                                                       | Date | Dayjs | null` | Parses a **specific input**. Accepts ISO 8601 strings, Unix timestamps (ms), or native JS date objects. |
+| `dayjs(value, format, locale?, strict?)` | `value: string`, `format: string`, `locale?: string`, `strict?: boolean` | **Requires the `CustomParseFormat` plugin**. Parses a date string matching a specific token template (e.g., `'YYYY-MM-DD'`). |
+
+***
+
+### 2. Getters and Setters
+
+These methods act as **getters** when called without arguments, returning a number. They act as **setters** when passed a integer parameter, returning a _new, mutated Day.js instance_. [link](https://javascript.plainenglish.io/mastering-day-js-the-ultimate-cheat-sheet-eabc984b4c85)
+
+- **Accepted Setter Parameter:** `value: number` (Integers within their logical bounds, though most will "bubble up" if bounds are exceeded). [link](https://formio.github.io/core/docs/classes/index.dayjs.dayjs.html)
+
+| Method           | Getter Output / Setter Range   | Notes            |
+| ---------------- | ------------------------------ | ---------------- |
+| `.millisecond()` | `0` to `999`                   |                  |
+| `.second()`      | `0` to `59`                    |                  |
+| `.minute()`      | `0` to `59`                    |                  |
+| `.hour()`        | `0` to `23`                    |                  |
+| `.date()`        | `1` to `31`                    | Day of the month |
+| `.day()`         | `0` (Sunday) to `6` (Saturday) | Day of the week  |
+| `.month()`       | `0` (Jan) to `11` (Dec)        | **Zero-indexed** |
+| `.year()`        | e.g., `2026`                   | Four-digit year  |
+
+#### Generic Get/Set
+
+- `.get(unit: string)`: Returns the value of the specified date unit (e.g., `dayjs().get('month')`).
+- `.set(unit: string, value: number)`: Updates the specified unit and returns a new instance (e.g., `dayjs().set('date', 15)`). [link](https://www.npmjs.com/package/dayjs)
+
+***
+
+### 3. Manipulation
+
+All manipulation methods return a **new cloned Day.js instance**. [link](https://day.js.org/)
+
+- **Units supported:** `'year'`, `'month'`, `'week'`, `'day'`, `'hour'`, `'minute'`, `'second'`, `'millisecond'` (along with shorthands like `'y'`, `'M'`, `'d'`). [link](https://day.js.org/docs/en/durations/creating)
+
+| Method        | Parameters                      | Description                                                                                                      |
+| ------------- | ------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `.add()`      | `value: number`, `unit: string` | **Adds** time to the instance (e.g., `.add(7, 'day')`).                                                          |
+| `.subtract()` | `value: number`, `unit: string` | **Subtracts** time from the instance (e.g., `.subtract(1, 'month')`).                                            |
+| `.startOf()`  | `unit: string`                  | Clones and sets the instance to the **beginning** of the unit (e.g., `.startOf('year')` sets to Jan 1st, 00:00). |
+| `.endOf()`    | `unit: string`                  | Clones and sets the instance to the **end** of the unit.                                                         |
+
+***
+
+### 4. Querying & Validation
+
+These methods return a `boolean` or a `number` to evaluate or compare dates.
+
+| Method        | Parameters       | Description                                                  |
+| ------------- | ---------------- | ------------------------------------------------------------ | ----------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `.isBefore()` | `compared: Dayjs | string                                                       | Date`, `unit?: string`                    | Checks if it is **before** the compared date. Optional unit checks precision (e.g., `'year'`). |
+| `.isAfter()`  | `compared: Dayjs | string                                                       | Date`, `unit?: string`                    | Checks if it is **after** the compared date.                                                   |
+| `.isSame()`   | `compared: Dayjs | string                                                       | Date`, `unit?: string`                    | Checks if it is **identical** within the scope of the unit.                                    |
+| `.isValid()`  | _None_           | Returns `true` if the Day.js object resolves to a real date. |
+| `.diff()`     | `compared: Dayjs | string                                                       | Date`, `unit?: string`, `float?: boolean` | Returns the **difference** as a number. Set `float` to `true` for decimals.                    |
+
+***
+
+### 5. Displaying & Formatting
+
+These output the date instance into strings or native types.
+
+| Method                         | Parameters          | Description                                                                                                     |
+| ------------------------------ | ------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `.format()`                    | `template?: string` | Returns a **formatted string** based on tokens (e.g., `.format('YYYY-MM-DD')`). If empty, defaults to ISO 8601. |
+| `.valueOf()`                   | _None_              | Returns the **Unix timestamp** in milliseconds.                                                                 |
+| `.unix()`                      | _None_              | Returns the **Unix timestamp** in seconds.                                                                      |
+| `.toDate()`                    | _None_              | Parses the instance back into a **native Javascript Date object**.                                              |
+| `.toJSON()` / `.toISOString()` | _None_              | Returns an ISO 8601 formatted string in **UTC**.                                                                |
+| `.daysInMonth()`               | _None_              | Returns the total count of days in the instance's month (`28`, `29`, `30`, or `31`).                            |
+
+Are you trying to map specific **Moment.js parameters** over to Day.js, or are you looking for the exact params of a specific **plugin** (like `duration`, `utc`, or `isBetween`)?
+
+- [link](https://formio.github.io/core/docs/classes/index.dayjs.dayjs.html)\
+  GitHub Pages documentation\
+  Class Dayjs - formio/core\
+  Returns a cloned Day.js object with a specified amount of time added. Units are case insensitive, and support plural and short for...
+- [link](https://medium.com/@yunyoung-jordan-choi/the-design-patterns-day-js-uses-226ab1786e2c)\
+  Medium·Jordan\
+  The design patterns Day.js uses - Medium\
+  Jun 23, 2024 — Day.js uses a factory function dayjs() to create Dayjs objects. This function can be called with or without arguments. Each method...
+- [link](https://day.js.org/docs/en/get-set/get-set)\
+  JS.ORG\
+  Get + Set · Day.js\
+  js uses overloaded getters and setters, As dayjs objects are immutable, all setters will return a new dayjs instance. These map to...
+
+Show all
+
+## how to get timestamp and offset in seconds by year month day hour min sec timezone
+
+To get a Unix timestamp and UTC offset in seconds using specific date components and a timezone name in **Day.js**, you need to use the `utc` and `timezone` plugins.
+
+Here is the direct, step-by-step implementation:
+
+### 1. Required Setup & Code
+
+You must first extend Day.js with the necessary plugins to handle timezones accurately.
+
+javascript
+
+```
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc.js';
+import timezone from 'dayjs/plugin/timezone.js';
+
+// Extend Day.js with plugins
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+function getDateTimeDetails(year, month, day, hour, min, sec, tzName) {
+  // Note: Day.js months are 0-indexed (0 = Jan, 11 = Dec)
+  const dateObj = {
+    year: year,
+    month: month - 1, // Subtract 1 to match Day.js 0-indexed months
+    date: day,
+    hour: hour,
+    minute: min,
+    second: sec
+  };
+
+  // 1. Parse the date components directly within the target timezone
+  const targetDate = dayjs.tz(dateObj, tzName);
+
+  // 2. Get the Unix timestamp in seconds
+  const timestampInSeconds = targetDate.unix();
+
+  // 3. Get the timezone offset in seconds
+  // .utcOffset() returns minutes (e.g. -480 for UTC-8), so multiply by 60
+  const offsetInSeconds = targetDate.utcOffset() * 60;
+
+  return {
+    timestamp: timestampInSeconds,
+    offset: offsetInSeconds,
+    formatted: targetDate.format('YYYY-MM-DD HH:mm:ss Z')
+  };
+}
+
+// Example Usage:
+const result = getDateTimeDetails(2026, 10, 13, 14, 30, 0, 'America/New_York');
+console.log(result);
+/*
+Output:
+{
+  timestamp: 1791916200,
+  offset: -14400,          // -4 hours in seconds (EDT)
+  formatted: "2026-10-13 14:30:00 -04:00"
+}
+*/
+```
+
+Use code with caution.
+
+### Key Details to Remember
+
+- **Month Indexing:** When passing an object to `dayjs.tz()`, the `month` property is **zero-indexed** (0 is January, 11 is December). If your incoming data uses standard numbers (1-12), make sure to subtract `1`.
+- **Offset Sign:** `targetDate.utcOffset()` returns the offset in minutes. Positive values are East of UTC (e.g., `+60` for Central European Time) and negative values are West of UTC (e.g., `-300` for Eastern Standard Time). Multiplying by `60` gives you the exact offset in seconds.
+
+Are you receiving your timezone as an **IANA string** (e.g., `'America/Los_Angeles'`) or as a **UTC offset** (e.g., `'+02:00'`), and do you need help handling **Daylight Saving Time (DST)** changes for that region?
+
+## timezone param
+
+The **timezone parameter** (the second argument in `dayjs.tz(input, timezone)`) accepts a `string` and can be provided in three different formats.
+
+Here is how you can pass the timezone parameter, ranked from best practice to fallback options:
+
+### 1. IANA Timezone Names (Best Practice)
+
+This is the most reliable format. It automatically handles **Daylight Saving Time (DST)** adjustments based on the exact date and year you pass into Day.js.
+
+- **Examples:** `'America/New_York'`, `'Europe/London'`, `'Asia/Tokyo'`, `'UTC'`
+- **Usage:** `dayjs.tz("2026-10-13 14:30:00", "America/New_York")`
+
+### 2. Fixed Offset Strings
+
+If you don't care about regional DST rules and want to lock the date parsing to a rigid, fixed offset from UTC, you can pass an offset string.
+
+- **Examples:** `'+05:30'`, `'-08:00'`, `'+0200'`
+- **Usage:** `dayjs.tz("2026-10-13 14:30:00", "+05:30")`
+
+### 3. System Default (Omitting the parameter)
+
+If you omit the timezone parameter or pass `undefined`, Day.js defaults to your environment's local system timezone.
+
+- **Usage:** `dayjs.tz("2026-10-13 14:30:00")` _(Uses your local computer/server time zone)_
+
+***
+
+### Critical Troubleshooting Tips
+
+- **Case Sensitivity:** IANA timezone strings are **case-sensitive**. Passing `'america/new_york'` (lowercase 'a') will fail in some browser environments or node setups. Always use the canonical casing: `'America/New_York'`.
+- **Invalid Timezones:** If you pass an invalid or unrecognized timezone string (like `'NY'` or `'GMT-5'`), Day.js will silently fall back to the **local system timezone** or **UTC** depending on your environment, rather than throwing an error.
+
+Are you fetching these timezone strings dynamically from a **database**, a **browser API** (like `Intl.DateTimeFormat`), or do you need to **validate** that the timezone string your user provided is actually a valid IANA name?
+
+# all luxon methods params
+
+Because **Luxon** has a highly comprehensive API spanning five major classes (`DateTime`, `Duration`, `Interval`, `Info`, and `Zone`), a single list containing _every_ technical parameter variant would be thousands of lines long.
+
+Instead, here is the complete breakdown of the **most essential and frequently used Luxon methods and their exact parameters**, grouped logically by functionality.
+
+***
+
+### 1. Creation & Parsing Methods (Static)
+
+These methods construct new instances from strings, objects, or system times. They typically take standard inputs followed by an optional `ZoneOptions` object.
+
+| Method                  | Parameters                                              | Description                                                           |
+| ----------------------- | ------------------------------------------------------- | --------------------------------------------------------------------- |
+| `DateTime.now()`        | _None_                                                  | Creates a `DateTime` for the current time in the system's zone.       |
+| `DateTime.local()`      | `(...args: number[], options?: ZoneOptions)`            | Creates from calendar components (e.g., `year, month, day, hour...`). |
+| `DateTime.utc()`        | `(...args: number[], options?: ZoneOptions)`            | Same as `local()`, but sets the time zone directly to UTC.            |
+| `DateTime.fromISO()`    | `(text: string, options?: ZoneOptions)`                 | Parses an ISO 8601 string (e.g., `"2026-10-13T12:00:00"`).            |
+| `DateTime.fromObject()` | `(obj: DateObjectUnits, options?: ZoneOptions)`         | Creates from an object (e.g., `{ year: 2026, month: 10 }`).           |
+| `DateTime.fromFormat()` | `(text: string, format: string, options?: ZoneOptions)` | Parses ad-hoc strings using a token layout (e.g., `"dd/MM/yyyy"`).    |
+| `DateTime.fromJSDate()` | `(date: Date, options?: ZoneOptions)`                   | Converts a native JavaScript `Date` object into a Luxon instance.     |
+| `DateTime.fromMillis()` | `(ms: number, options?: ZoneOptions)`                   | Creates from Unix epoch milliseconds.                                 |
+
+- **`ZoneOptions` Object Properties:** `{ zone?: string | Zone, locale?: string, outputCalendar?: string, numberingSystem?: string }`
+
+***
+
+### 2. Transformation & Math Methods (Instance)
+
+Because Luxon is **immutable**, these methods return a brand new instance after modifying the time.
+
+| Method                  | Parameters                  | Description                                                                 |
+| ----------------------- | --------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------ | -------------------------------------------------------------------- |
+| `plus()` / `minus()`    | `(duration: Duration        | number                                                                      | DurationLike)`                                                     | Adds or subtracts time units (e.g., `.plus({ days: 7, hours: 2 })`). |
+| `set()`                 | `(values: DateObjectUnits)` | Overrides specific calendar components (e.g., `.set({ year: 2028 })`).      |
+| `setZone()`             | `(zone: string              | Zone, options?: { keepLocalTime?: boolean })`                               | Changes the time zone. `keepLocalTime` keeps text hours identical. |
+| `startOf()` / `endOf()` | `(unit: DurationUnit)`      | Resets components to the absolute start/end of a unit (`'day'`, `'month'`). |
+| `reconfigure()`         | `(options: ZoneOptions)`    | Changes instance options like the locale or numbering system.               |
+
+***
+
+### 3. Comparison & Math Diffing Methods (Instance)
+
+Used for evaluating relationships between different points in time.
+
+| Method      | Parameters                              | Description                                                                   |
+| ----------- | --------------------------------------- | ----------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `diff()`    | `(other: DateTime, unit?: DurationUnit  | DurationUnit[], options?: DiffOptions)`                                       | Computes the duration difference between two `DateTime` targets. |
+| `diffNow()` | `(unit?: DurationUnit                   | DurationUnit[], options?: DiffOptions)`                                       | Short-cut to diff the instance against the exact current time.   |
+| `hasSame()` | `(other: DateTime, unit: DurationUnit)` | Returns `true` if units match up down to that accuracy level (e.g., `'day'`). |
+
+***
+
+### 4. Formatting & Output Methods (Instance)
+
+These convert a `DateTime` instance into strings or native structures.
+
+| Method             | Parameters                                        | Description                                                                             |
+| ------------------ | ------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `toFormat()`       | `(format: string, options?: { macro?: boolean })` | Formats to custom string tokens (e.g., `'yyyy-MM-dd'`).                                 |
+| `toLocaleString()` | `(options?: DateTimeFormatOptions)`               | Human-readable output localized via native `Intl` presets (e.g., `DateTime.DATE_FULL`). |
+| `toISO()`          | `(options?: ToISOTimeOptions)`                    | Outputs an ISO 8601 compliant string format.                                            |
+| `toObject()`       | `(options?: { includeConfig?: boolean })`         | Exports an object of units `{ year, month, day... }`.                                   |
+| `toJSDate()`       | _None_                                            | Outputs a matching mutable native JavaScript `Date` object.                             |
+
+***
+
+### 5. Durations & Intervals (Helper Classes)
+
+Luxon isolates length of time and time ranges into their own modules.
+
+#### `Duration` (Abstract periods of time, e.g., "5 hours")
+
+- `Duration.fromObject(obj: DurationLike, options?)`: Creates an abstract length of time.
+- `duration.shiftTo(...units: DurationUnit[])`: Converts the values inside the duration to specified units (e.g., days to hours).
+- `duration.as(unit: DurationUnit)`: Evaluates the total duration expressed cleanly inside a single unit.
+
+#### `Interval` (Specific time boundaries, e.g., "Jan 1st to Jan 5th")
+
+- `Interval.fromDateTimes(start: DateTime, end: DateTime)`: Creates a boundary bracket.
+- `interval.contains(dateTime: DateTime)`: Returns `true` if the tested timestamp falls within the boundaries.
+- `interval.overlaps(other: Interval)`: Checks if two blocks of time physically crash into one another.
+
+***
+
+### 💡 Looking for something specific?
+
+The full specifications can always be accessed directly via the [Official Luxon API Documentation](https://moment.github.io/luxon/api-docs/index.html).
+
+Are you trying to implement a **specific calculation** (like time zone conversions or working out business day gaps)? Let me know what you are building, and I can give you the exact method combo with code examples!
+
+## how to get timestamp and offset in seconds by year month day hour min sec timezone
+
+To convert specific calendar components and a timezone into a Unix timestamp and an offset in seconds, you can use the **`DateTime.fromObject`** method in Luxon.
+
+Once created, you can access the timestamp via the **`.toMillis()`** (or **`.toSeconds()`**) method, and the timezone offset via the **`.offset`** property (multiplied by 60 to convert from minutes to seconds).
+
+Here is the exact implementation:
+
+javascript
+
+```
+import { DateTime } from 'luxon';
+
+function getDateTimeDetails(year, month, day, hour, min, sec, timezone) {
+  // 1. Create the DateTime instance from your components
+  const dt = DateTime.fromObject(
+    { year, month, day, hour, minute: min, second: sec },
+    { zone: timezone }
+  );
+
+  // 2. Validate that the inputs created a real date
+  if (!dt.isValid) {
+    throw new Error(`Invalid date or timezone: ${dt.invalidReason}`);
+  }
+
+  return {
+    // Unix timestamp in milliseconds
+    timestampMs: dt.toMillis(),
+
+    // Unix timestamp in seconds
+    timestampSeconds: Math.floor(dt.toMillis() / 1000),
+
+    // Luxon returns offset in minutes; multiply by 60 for seconds
+    offsetInSeconds: dt.offset * 60
+  };
+}
+
+// --- Example Usage ---
+const result = getDateTimeDetails(2026, 10, 13, 12, 0, 0, 'America/New_York');
+console.log(result);
+/*
+Output:
+{
+  timestampMs: 1791916800000,
+  timestampSeconds: 1791916800,
+  offsetInSeconds: -14400 (which is -4 hours behind UTC)
+}
+*/
+```
+
+Use code with caution.
+
+### Key Parameter Details:
+
+- **`minute` / `second`**: Note that in Luxon's object configuration, the keys are spelled out in full (`minute` and `second`), whereas your variables might be short names like `min` or `sec`.
+- **`dt.offset`**: This property naturally returns the number of **minutes** the zone is away from UTC (e.g., `-240` for EDT). Multiplying it by `60` gives you the exact offset in seconds.
+
+Are you building an API that processes **incoming user text inputs**, or are you extracting these fields from a **database** or HTML form? Let me know if you need help handling invalid date strings safely!
+
+## timezone param
+
+The `zone` parameter in Luxon’s parsing options accepts several different string formats. You can pass it inside the configuration object of static creators like `DateTime.fromObject()` or directly into instance methods like `.setZone()`.
+
+Here are the supported formats for the **`zone` parameter**:
+
+### 1. IANA Time Zone Names (Recommended)
+
+You can use standard **IANA deployment strings**. These are highly recommended because they automatically account for Daylight Saving Time (DST) changes.
+
+- `zone: 'America/New_York'`
+- `zone: 'Europe/London'`
+- `zone: 'Asia/Tokyo'`
+- `zone: 'Australia/Sydney'`
+
+### 2. Fixed Offset Strings
+
+If you want to pin the object to a fixed UTC offset that never changes with daylight savings, use a standard offset string format:
+
+- `zone: 'utc'` or `zone: 'gmt'` (Zero offset)
+- `zone: 'utc+4'`
+- `zone: 'utc-5:30'`
+
+### 3. System Defaults
+
+You can tell Luxon to explicitly use the execution environment's zone (the user's browser or the server's host system OS):
+
+- `zone: 'system'` or `zone: 'local'`
+
+***
+
+### Code Blueprint
+
+Here is how you apply these variations to your exact code:
+
+javascript
+
+```
+import { DateTime } from 'luxon';
+
+// 1. Using an IANA Zone (Handles DST automatically)
+const nyTime = DateTime.fromObject(
+  { year: 2026, month: 10, day: 13 },
+  { zone: 'America/New_York' }
+);
+
+// 2. Using a Strict Constant Offset
+const fixedTime = DateTime.fromObject(
+  { year: 2026, month: 10, day: 13 },
+  { zone: 'utc-5' }
+);
+
+// 3. Changing an existing instance's zone
+const switchZone = nyTime.setZone('Europe/Paris');
+```
+
+Use code with caution.
+
+Are you receiving these time zones as **abbreviations** (like "EST", "PST")? Luxon **does not natively support** those because they are ambiguous. Let me know if you need a strategy to map those abbreviations to standard IANA zones!
+
+# why is it called utc or gmt
+
+<mark><strong><span>GMT</span></strong><span> </span>stands for<span> </span><strong>Greenwich Mean Time</strong>, while<span> </span><strong>UTC</strong><span> </span>stands for<span> </span><strong>Coordinated Universal Time</strong></mark>. The names exist because they represent two different eras of tracking time—one based on the Earth's rotation and the other based on ultra-precise atomic clocks. [link](https://www.diffen.com/difference/GMT%5Fvs%5FUTC)
+
+Here is the breakdown of why each is named the way it is:
+
+### 🧭 Why is it called GMT?
+
+The name **Greenwich Mean Time** directly describes how the time was calculated and where it was measured: [link](https://24timezones.com/gmt-vs-utc)
+
+- **Greenwich:** In 1884, an international conference designated the Royal Observatory in Greenwich, London, as the location for the **Prime Meridian (0° longitude)**. It became the starting point for the world's time zones because over 70% of global shipping commerce already used British sea charts that referenced Greenwich. [link](https://news.ycombinator.com/item?id=21322266)
+- **Mean:** "Mean" represents the **average** length of a solar day. Because the Earth's orbit is slightly oval and its axis is tilted, actual solar days vary slightly in length throughout the year. GMT averages these out so that every day on a clock lasts exactly 24 hours. [link](https://www.facebook.com/HistoryExtra/videos/heres-why-time-was-causing-chaos-in-the-19th-century/880854491663028/)
+- **Time:** It was the international standard for civil time from 1884 until it was officially succeeded in 1972. [link](https://en.wikipedia.org/wiki/Greenwich%5FMean%5FTime)
+
+### ⚛️ Why is it called UTC?
+
+**Coordinated Universal Time** was introduced in the mid-20th century to create a highly precise world time standard driven by **atomic clocks** rather than the slightly irregular rotation of the Earth. [link](https://www.quora.com/Why-is-UTC-called-UTC)
+
+The abbreviation **UTC** is actually a famous **linguistic compromise** between English and French speakers: [link](https://www.space.com/what-is-utc.html)
+
+- **The English proposal:** English speakers wanted to use **CUT** for _Coordinated Universal Time_.
+- **The French proposal:** French speakers wanted to use **TUC** for _Temps Universel Coordonné_. [link](https://www.quora.com/Why-was-UTC-created-when-there-is-GMT)
+
+To avoid favoring either language, the International Telecommunication Union (ITU) and the International Astronomical Union blended the two and officially adopted **UTC**. It also conveniently aligned with the naming convention of existing scientific variations of Universal Time (like UT0 and UT1). [link](https://en.wikipedia.org/wiki/Coordinated%5FUniversal%5FTime)
+
+### Direct Comparison
+
+| Feature         | Greenwich Mean Time (GMT)                                                                        | Coordinated Universal Time (UTC)                                                                       |
+| --------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| **Type**        | An official **Time Zone** (observed by the UK, Ireland, and parts of Africa).                    | A **Time Standard** (the scientific framework used to regulate all global time zones).                 |
+| **Basis**       | **Astronomy:** Based on the position of the sun and the Earth's rotation.                        | **Physics:** Based on the ultra-stable tick of hundreds of global atomic clocks.                       |
+| **Adjustments** | None, but its actual day lengths can fluctuate by fractions of a second as the Earth slows down. | Uses **Leap Seconds** occasionally to ensure atomic time stays synchronized with the Earth's rotation. |
+
+Would you like to know more about **how time zones calculate their offsets** from UTC, or are you curious about **why we add leap seconds**? [link](https://www.diffen.com/difference/GMT%5Fvs%5FUTC)
+
+- [link](https://en.wikipedia.org/wiki/Greenwich%5FMean%5FTime)\
+  Wikipedia\
+  Greenwich Mean Time - Wikipedia\
+  On 1 January 1972, GMT as the international civil time standard was superseded by Coordinated Universal Time (UTC), maintained by ...
+- [link](https://www.rmg.co.uk/stories/time/greenwich-mean-time-gmt)\
+  Royal Museums Greenwich\
+  What is Greenwich Mean Time (GMT) - and why does it matter?\
+  GMT stands for Greenwich Mean Time, the local clock time at Greenwich. From 1884 until 1972, GMT was the international standard of...
+- [link](https://www.diffen.com/difference/GMT%5Fvs%5FUTC)\
+  Diffen\
+  GMT vs UTC - Difference and Comparison\
+  Greenwich where a system was first developed around 1850 for tracking time based on the rotation of the Earth.
+
+Show all
+
+how to get local timezone in js
+
+To get the local time zone name in JavaScript, the best approach is to use the **`Intl.DateTimeFormat().resolvedOptions().timeZone`** API. This returns the system's standard **IANA time zone identifier** (such as `"America/New_York"` or `"Europe/London"`) and is natively supported across all modern browsers and JavaScript runtimes. [link](https://stackoverflow.com/questions/1091372/getting-the-clients-time-zone-and-offset-in-javascript)
+
+Depending on exactly what type of time zone information you need, you can choose from the following three methods:
+
+### 1. Get the IANA Time Zone Name (Recommended)
+
+This is the most accurate way to identify the user's region and correctly handle Daylight Saving Time (DST) changes. [link](https://stackoverflow.com/questions/1091372/getting-the-clients-time-zone-and-offset-in-javascript)
+
+javascript
+
+```
+const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+console.log(timeZone);
+// Output example: "America/Los_Angeles" or "Europe/Berlin"
+```
+
+Use code with caution.
+
+### 2. Get the UTC Offset in Minutes
+
+If you only need the **numeric offset** to perform time calculations, use `getTimezoneOffset()`. It returns the difference in minutes between UTC and the local time zone. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Date/getTimezoneOffset)
+
+javascript
+
+```
+const offsetMinutes = new Date().getTimezoneOffset();
+console.log(offsetMinutes);
+// Output example: 480 (for UTC-8) or -120 (for UTC+2)
+```
+
+Use code with caution.
+
+_Note: The sign is inverted compared to standard convention (it returns positive numbers if the local time zone is **behind** UTC and negative if it is **ahead**)._ [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Date/getTimezoneOffset)
+
+### 3. Get the Modern `Temporal` API Identifier
+
+If you are developing for a modern environment supporting the newer ECMA Temporal specification, you can fetch the time zone directly through the `Temporal` global object. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Temporal/Now/timeZoneId)
+
+javascript
+
+```
+const timeZoneId = Temporal.Now.timeZoneId();
+console.log(timeZoneId);
+// Output example: "America/New_York"
+```
+
+Use code with caution.
+
+_(Keep in mind that while it has broad support in current browser versions, you may still need a polyfill for older environments or specific platforms like Safari on iOS)._ [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Temporal/Now/timeZoneId)
+
+Are you planning to use this time zone to **format a date string** for the user, or do you need to send it to a backend server to **handle time zone conversions**?
+
+- [link](https://stackoverflow.com/questions/1091372/getting-the-clients-time-zone-and-offset-in-javascript)\
+  Stack Overflow\
+  Getting the client's time zone (and offset) in JavaScript\
+  Time zones and daylight saving rules may change on several occasions during a year, and It's difficult to keep up with changes.
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Date/getTimezoneOffset)\
+  MDN Web Docs\
+  Date.prototype.getTimezoneOffset() - JavaScript | MDN\
+  The number of minutes returned by getTimezoneOffset() is positive if the local time zone is behind UTC, and negative if the local ...
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Temporal/Now/timeZoneId)\
+  MDN Web Docs\
+  Temporal.Now.timeZoneId() - JavaScript | MDN\
+  Has full support in Chrome 144, Edge 144, Firefox 139, Opera 128, and Android environments, but lacks support in Safari on iOS and...
+
+Show all
+
+# how to get offset in seconds by iana timezone name in js
+
+To get a time zone offset in seconds using an IANA time zone name in vanilla JavaScript, you can <mark><strong>use the native<span> </span><code dir="ltr">Intl.DateTimeFormat</code><span> </span>API to parse out the formatted<span> </span><code dir="ltr">longOffset</code><span> </span>string</strong></mark>. [link](https://stackoverflow.com/questions/77150058/how-to-get-the-timezone-offset-for-a-specific-timezone)
+
+Because a time zone's offset changes due to Daylight Saving Time (DST), you must calculate the offset for a specific point in time (e.g., right now). [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Date/getTimezoneOffset)
+
+### Vanilla JavaScript Solution (No Libraries)
+
+This function takes an IANA name and an optional date, extracts the GMT offset using `Intl.DateTimeFormat`, and converts it into seconds: [link](https://stackoverflow.com/questions/77150058/how-to-get-the-timezone-offset-for-a-specific-timezone)
+
+javascript
+
+```
+function getTimezoneOffsetInSeconds(timeZone, date = new Date()) {
+  // Format the date to extract the explicit long offset (e.g., "GMT-05:00" or "GMT+05:30")
+  const formatter = new Intl.DateTimeFormat('en-US', {
+    timeZone,
+    timeZoneName: 'longOffset'
+  });
+
+  const parts = formatter.formatToParts(date);
+  const offsetString = parts.find(p => p.type === 'timeZoneName').value; // e.g. "GMT-05:00"
+
+  // Handle UTC / GMT edge case
+  if (offsetString === 'GMT') return 0;
+
+  // Parse the sign, hours, and minutes using regex
+  const match = offsetString.match(/GMT([+-])(\d{2}):(\d{2})/);
+  if (!match) return 0;
+
+  const [_, sign, hours, minutes] = match;
+  const totalSeconds = (parseInt(hours, 10) * 3600) + (parseInt(minutes, 10) * 60);
+
+  // If the sign is '+', local time is ahead of UTC. If '-', it's behind.
+  return sign === '+' ? totalSeconds : -totalSeconds;
+}
+
+// --- Examples ---
+console.log(getTimezoneOffsetInSeconds('America/New_York')); // e.g., -18000 (EDT) or -22000 (EST)
+console.log(getTimezoneOffsetInSeconds('Europe/Paris'));     // e.g., 3600 (CET) or 7200 (CEST)
+console.log(getTimezoneOffsetInSeconds('Asia/Kolkata'));     // 19800 (+05:30)
+```
+
+Use code with caution.
+
+### Alternative: Using Modern `Temporal` API
+
+If your JavaScript runtime environment supports the new, modern ECMAScript Temporal API, you can achieve this much cleaner in a single line of code: [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Temporal/ZonedDateTime)
+
+javascript
+
+```
+// Gets the current offset in seconds directly
+const offsetInSeconds = Temporal.Now.zonedDateTimeISO('America/New_York').offsetNanoseconds / 1e9;
+```
+
+Use code with caution.
+
+If you are running this in a specific environment, let me know:
+
+- Is this for the **browser** or **Node.js**?
+- Do you already have a library like **date-fns** or **Luxon** installed in your project?
+
+I can easily adapt the code snippet for those tools if needed!
+
+- [link](https://github.com/moment/luxon/issues/1133)\
+  GitHub\
+  Convert timezone offset to IANA timezone name #1133 - GitHub\
+  Feb 7, 2022 — Given an arbitrary timestamp string I have two requirements: Be able to parse it into a JS Date in ISO 8601 and do any timezone co...
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Temporal/ZonedDateTime)\
+  MDN Web Docs\
+  Temporal.ZonedDateTime - JavaScript - MDN Web Docs\
+  A primary time zone identifier that uniquely identifies the time zone. It usually refers to a geographic area anchored by a city …...
+- [link](https://stackoverflow.com/questions/77150058/how-to-get-the-timezone-offset-for-a-specific-timezone)\
+  Stack Overflow\
+  javascript\
+  Sep 21, 2023 — getTimezoneOffset() gives you the local timezone offset at a particular date: Parse your date strings directly. If you want to get...
+
+Show all
+
+## via datefns
+
+To get a time zone offset in seconds using `date-fns` alongside `date-fns-tz`, you can **use the `getTimezoneOffset` function**.
+
+Because native `date-fns` v3+ and v4 do not natively resolve IANA offsets without helper packages, the official companion library **`date-fns-tz`** is required.
+
+### Implementation
+
+The `getTimezoneOffset` function returns the offset in **milliseconds**, so you simply divide by `1000` to get seconds:
+
+javascript
+
+```
+import { getTimezoneOffset } from 'date-fns-tz';
+
+function getTimezoneOffsetInSeconds(timeZone, date = new Date()) {
+  // getTimezoneOffset returns milliseconds (Note: sign is inverted compared to native JS Date.getTimezoneOffset)
+  // e.g., America/New_York returns -18000000 or -21600000 depending on DST
+  const offsetInMs = getTimezoneOffset(timeZone, date);
+
+  return offsetInMs / 1000;
+}
+
+// --- Examples ---
+console.log(getTimezoneOffsetInSeconds('America/New_York')); // e.g., -18000
+console.log(getTimezoneOffsetInSeconds('Europe/Paris'));     // e.g., 3600 or 7200
+console.log(getTimezoneOffsetInSeconds('Asia/Kolkata'));     // 19800
+```
+
+Use code with caution.
+
+### Installation
+
+Ensure you have both libraries installed in your project:
+
+bash
+
+```
+npm install date-fns date-fns-tz
+```
+
+Use code with caution.
+
+If you are working with dates, let me know:
+
+- Do you also need to **format** the date into that specific timezone?
+- Are you handling **user-inputted dates** or just the current moment?
+
+I can provide the exact helper functions to help you format or convert them.
+
+# what is daylight savings time
+
+**Daylight Saving Time (DST)**
+
+is <mark>the seasonal practice of<span> </span><strong>advancing clocks ahead by one hour</strong><span> </span>during the warmer months of the year so that darkness falls at a later clock time</mark>. [link](https://en.wikipedia.org/wiki/Daylight%5Fsaving%5Ftime)
+
+The main goal is to make better use of natural evening daylight and potentially save energy by reducing the need for artificial lighting. [link](https://www.timeanddate.com/time/dst/about.html)
+
+### How It Works
+
+The system relies on a simple, well-known rule of thumb: **"Spring forward, fall back."** [link](https://www.britannica.com/topic/Daylight-Saving-Time)
+
+- **In the Spring:** Clocks are moved **forward one hour** (usually in March). This marks the beginning of DST and causes you to "lose" an hour of sleep.
+- **In the Fall:** Clocks are turned **back one hour** (usually in November) to return to **Standard Time**. This gives you an extra hour of sleep. [link](https://www.timeanddate.com/time/dst/transition.html)
+
+### Current Schedule (United States)
+
+By federal law, most of the United States observes DST according to a standardized schedule: [link](https://aa.usno.navy.mil/faq/daylight%5Ftime)
+
+- **Starts:** The second Sunday in March at 2:00 a.m.
+- **Ends:** The first Sunday in November at 2:00 a.m. [link](https://aa.usno.navy.mil/faq/daylight%5Ftime)
+
+### Exceptions & Global Variations
+
+Not everywhere participates in this time change.
+
+- **U.S. Exceptions:** **Hawaii** and **most of Arizona** do not observe DST and stay on Standard Time year-round. U.S. territories like Puerto Rico, Guam, and the U.S. Virgin Islands also do not participate. [link](https://www.nist.gov/pml/time-and-frequency-division/popular-links/daylight-saving-time-dst)
+- **Global Use:** Roughly 40% of countries worldwide use DST. It is widely used across Europe and North America, but many countries near the equator skip it because their daylight hours do not vary much throughout the year. [link](https://en.wikipedia.org/wiki/Daylight%5Fsaving%5Ftime%5Fby%5Fcountry)
+
+### The Ongoing Debate
+
+While some enjoy the extended summer evening light for outdoor recreation, DST is increasingly controversial. Sleep researchers and medical professionals often argue against it, noting that the sudden time shifts can disrupt circadian rhythms, cause temporary sleep deprivation, and spike health risks. [link](https://publichealth.jhu.edu/2023/7-things-to-know-about-daylight-saving-time)
+
+Because of this, there are constant legislative pushes—such as the [Sunshine Protection Act](https://www.congress.gov/crs-product/R45208) in the U.S. Congress—to permanently eliminate the clock changes and lock the clock to one fixed time year-round. [link](https://www.kgw.com/article/news/nation-world/daylight-saving-time-november/507-845740ac-1899-461d-b6a1-6f16fe468d54)
+
+If you're curious about a specific angle, let me know if you would like to look into:
+
+- The **exact dates** the clocks change for this calendar year
+
+- The **history** of how it started during World War I
+
+- The current legislative status of **ending clock changes** in your area
+
+- [link](https://www.nist.gov/pml/time-and-frequency-division/popular-links/daylight-saving-time-dst)\
+  National Institute of Standards and Technology (.gov)\
+  Daylight Saving Time Rules | NIST\
+  2026 DST: March 8 (2 a.m., skip to 3 a.m.) to November 1 (2 a.m., become 1 a.m.). Rules: Enacted by Energy Policy Act 2005 (in eff...
+
+- [link](https://aa.usno.navy.mil/faq/daylight%5Ftime)\
+  US Naval Observatory Astronomical Applications Department (.mil)\
+  Daylight Saving Time\
+  On the second Sunday in March, clocks are set ahead one hour at 2:00 a.m. local standard time (which becomes 3:00 a.m. local Dayli...
+
+- [link](https://en.wikipedia.org/wiki/Daylight%5Fsaving%5Ftime)\
+  Wikipedia\
+  Daylight saving time\
+  The typical implementation of DST is to adjust clocks ahead of standard time by one hour in spring or late winter, and to set cloc...
+
+Show all
+
+# 

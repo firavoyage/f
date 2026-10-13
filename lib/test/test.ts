@@ -7,4 +7,6 @@ function log_time() {
 
 log(log_time())
 
-log(now().offset)
+log(now().get_utc().format())
+
+log(now().get_local(10000).format())

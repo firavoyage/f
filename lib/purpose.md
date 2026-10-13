@@ -198,4 +198,14 @@ it's a bit awkward to make it chainable when you have no first class fp piping.
 
 anyway, i can try.
 
+---
+
+```
+  const timezone_sign = offset_min <= 0 ? '+' : '-'
+```
+
+brilliant isnt it.
+
+yeah, it doesnt even hallucinate anything.
+
 
