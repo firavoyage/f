@@ -42,6 +42,11 @@ it's exceptionally easy to get the raw html and keep it.
 
 if you can, you may try to parse katex.
 
+---
+
+- (code?, repo, have, humility, pure, ...)
+- (material, para, ...)
+
 # backlog
 
 <!--
@@ -848,5 +853,10 @@ nice to have.
 
 ---
 
-- (code?, repo, have, humility, pure, ...)
-- (material, para, ...)
+humility: integrate w terminal
+
+what is "ghostty" about?
+
+why is it complex, if any.
+
+i would like to (auto) save history and export in md.

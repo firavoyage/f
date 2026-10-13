@@ -986,3 +986,233 @@ Are you noticing that the system is recommending the wrong items when you switch
 
 Show all
 
+
+# how does skin on honor of kings impact stats
+
+## how does skin on honor of kings impact stats
+
+In the <mark><strong><span>global version of<span> </span><u><span><span><span tabindex="0" role="button"><span>Honor of Kings</span></span></span></span></u>, skins are purely cosmetic and do not impact stats</span></strong></mark>. Unlike some other mobile MOBAs, the playing field is entirely level, and wearing a skin provides zero numerical advantages—such as extra health or attack power—in ranked or standard matches. [link](https://www.reddit.com/r/arenaofvalor/comments/nxusju/do%5Fskins%5Faffect%5Fingame%5Fperformance%5Fif%5Fyes%5Fwhich/)
+
+However, the question occasionally arises due to differences with the original Chinese version of the game (_Wangzhe Rongyao_).
+
+### The Chinese Server vs. Global Server Difference
+
+- **Chinese Server:** In the original Chinese version, skins do grant minor early-game stat buffs (such as **+10 Physical Attack** for assassins/marksmen, **+10 Magical Attack** for mages, or **+120 Max HP** for tanks). Even in the Chinese version, these stats are minor and can be compensated for via Arcana (runes) and early-game items. [link](https://www.zhihu.com/en/answer/223636746)
+- **Global Server:** To appeal to global esports and competitive fairness standards, Level Infinite removed all statistical advantages from skins. [link](https://www.reddit.com/r/arenaofvalor/comments/nxusju/do%5Fskins%5Faffect%5Fingame%5Fperformance%5Fif%5Fyes%5Fwhich/)
+
+### Hidden "Performance" Impacts
+
+While they don't change your raw stats, the community often notes that certain skins can subtly affect performance based on how they are designed: [link](https://www.reddit.com/r/arenaofvalor/comments/nxusju/do%5Fskins%5Faffect%5Fingame%5Fperformance%5Fif%5Fyes%5Fwhich/)
+
+- **Animation Smoothness ("Touch"):** Some premium skins (like Epic, Legend, or [Flawless tier skins](https://honor-of-kings.fandom.com/wiki/Precious%5FSkin)) have smoother attack animations or cancel animation backswings faster visually, making combos feel cleaner. [link](https://www.zhihu.com/en/answer/3176579959)
+- **Visual Clarity:** Certain skins feature highly distinct, bright particle effects that make it easier to track your skill indicators during chaotic team fights. Conversely, some skins have "pay-to-lose" visual clarity where their skill effects are too muted or blend into the river/terrain.
+
+Are you trying to optimize a **specific hero's combos**, or are you looking for info on how to build the best **Arcana page** to get those early-game stat advantages instead? Let me know and I can guide you!
+
+- [link](https://www.reddit.com/r/arenaofvalor/comments/nxusju/do%5Fskins%5Faffect%5Fingame%5Fperformance%5Fif%5Fyes%5Fwhich/)\
+  Reddit\
+  Do skins affect in-game performance? If yes which ones?\
+  Jun 12, 2021 — In HOK the parent game, skins actually affect your hero. There is less animation delay after a skill cast for some skins. U can mo...
+- [link](https://www.reddit.com/r/honorofkings/comments/1dn8gwx/skin%5Faffect%5Fstat/)\
+  Reddit·r/honorofkings\
+  Skin affect stat? : r/honorofkings - Reddit\
+  Jun 24, 2024 — In Mobile Legends, if you use a skin, this give a small buff/bonus to the character like +8 attack or +100hp, skin give/add stat t...
+- [link](https://bittopup.com/article/Honor-of-Kings-Skin-Tier-List-100-Ranked-for-Clarity)\
+  BitTopup\
+  Honor of Kings Skin Tier List: 100+ Ranked for - BitTopup\
+  Cosmetics affect competitive performance and teamfight visibility rather than direct stats; evaluating metrics include skill indic...
+
+Show all
+
+## how does skin on honor of kings impact stats on zhcn server
+
+On the **Chinese server (ZHCN / _Wangzhe Rongyao_)**, skins <mark>provide minor numerical stat boosts</mark>. These stats are applied automatically at Level 1 the moment you load into a match wearing any skin. [link](https://www.zhihu.com/en/answer/223636746)
+
+The exact stat increases are dictated by the **hero's primary class**, meaning the quality or price tier of the skin (whether it is a cheap skin or an expensive Mythic/Flawless one) does **not** change the numerical value. [link](https://www.zhihu.com/en/answer/223235243)
+
+### Official Numerical Stat Increases
+
+| Hero Class                                                | Skin Stat Bonus         | Economic Value Equivalent                |
+| --------------------------------------------------------- | ----------------------- | ---------------------------------------- |
+| **Physical Attackers\***(Marksmen, Assassins, Fighters)\* | **+10 Physical Attack** | ~125 Gold _(Half of a Iron Sword)_       |
+| **Magical Attackers\***(Mages)\*                          | **+10 Magical Attack**  | ~75 Gold _(Quarter of a Spellbook)_      |
+| **Tanks / Supports**                                      | **+120 Max HP**         | ~120 Gold _(About 40% of a Red Crystal)_ |
+
+### Competitive & Strategic Impact
+
+While the Chinese community frequently debates whether these bonuses ruin competitive fairness, the general consensus breaks down into two viewpoints: [link](https://www.zhihu.com/en/answer/1425801397)
+
+- **The Early Game Advantage:** A 10-attack or 120-HP boost is equivalent to starting the match with roughly **100 to 125 "free" gold**. In high-elo or professional play, this extra edge can slightly speed up jungle clear times, help secure last hits on minions, or decide a level-1 bush skirmish. [link](https://www.zhihu.com/en/answer/240900306)
+- **The Late Game Irrelevance:** As the match progresses and players buy full-tier items, these skin stats become entirely negligible. They also do not scale into the late game.
+
+### Modes Where Skin Stats are Disabled
+
+To prevent complete imbalance in high-stakes environments, these skin attributes are explicitly turned off in **pro esports tournaments (like KPL)** and specialized fully-equalized fair play modes.
+
+Are you trying to replicate a specific **Level 1 jungle clearing strategy** from a Chinese server guide, or would you like to know how to adjust your **Arcana page** to compensate for missing stats? Let me know!
+
+- [link](https://honor-of-kings.fandom.com/wiki/Mythic%5FSkins)\
+  Honor of Kings Wiki\
+  Mythic Skins | Honor of Kings Wiki | Fandom\
+  Mythic Skins: Top-tier prestige cosmetics in Honor of Kings offering entrance animations, voice effects, enhanced skill visuals, a...
+- [link](https://www.zhihu.com/en/answer/1425801397)\
+  知乎\
+  How should we view the attribute boosts of skins in Honor of Kings?\
+  With skins, it gains an additional 10 points of attack, which is equivalent to a 125 coin economic advantage. It's equivalent to a...
+- [link](https://www.zhihu.com/en/answer/223636746)\
+  知乎\
+  How should we view the attribute boosts of skins in ... - 知乎\
+  The skin bonus is equivalent to a 100 gold economic lead, and the difference is around 3 levels, it's not very noticeable. to 2-3 ...
+
+Show all
+
+## how much does it matter, to what extent
+
+In the grand scheme of the game, the skin stat bonuses matter **very little**—to the point where the Chinese community widely considers them a psychological buffer rather than a game-breaking advantage. [link](https://www.zhihu.com/en/answer/223636746)
+
+The actual extent of their impact breaks down mathematically and tactically as follows:
+
+### 1. The Mathematical Value: Equivalent to ~100 Gold
+
+If you evaluate the stats based on the cost of Level 1 items in the shop, the bonus is worth very little: [link](https://www.zhihu.com/en/answer/223636746)
+
+- **+10 Physical Attack:** A basic Iron Sword (+20 Attack) costs 250 Gold. The skin bonus is worth **125 Gold**.
+- **+10 Magical Attack:** A Spellbook (+40 Magic) costs 300 Gold. The skin bonus is worth **75 Gold**.
+- **+120 Max HP:** A Red Crystal (+300 HP) costs 300 Gold. The skin bonus is worth **120 Gold**. [link](https://www.zhihu.com/en/answer/223636746)
+
+Starting a match with a 100-Gold lead is negligible. A single minion wave or minor jungle camp farm instantly eclipses this entire advantage. [link](https://www.zhihu.com/en/answer/223636746)
+
+### 2. The Rune Comparison: Equivalent to 2–3 Arcana
+
+The max Arcana (Rune) page level is 150. A skin bonus effectively gives a player an initial stat footprint of a **"Level 160 Arcana page"**. While this sounds unfair on paper, the minor stat injection doesn't actually alter standard gameplay break-points (like how many turret shots you can take or how many skills it takes to clear a wave). [link](https://www.zhihu.com/en/answer/223636746)
+
+### 3. To What Extent Does It Matter?
+
+The impact shifts slightly depending on your skill bracket:
+
+- **In Low-to-Mid Elo (95% of players): It does not matter at all.** Mis-timed skill casts, poor map awareness, and missed minion last-hits lose thousands of gold worth of value. Someone with better mechanics wearing a default skin will easily crush a fully-skinned opponent. [link](https://www.zhihu.com/en/answer/720446048)
+- **In High-Elo (Top 1% / Mythic): It matters "microscopically."** At the absolute highest tiers of play where players exploit every single pixel of efficiency, +10 Physical Attack might mean a jungle assassin clears their first red buff **1.5 seconds faster**. That 1.5 seconds could allow them to secure a river crab or execute a level-2 lane gank just before the enemy laner can react. [link](https://www.zhihu.com/en/answer/223636746)
+
+### The Bottom Line
+
+If you are playing on the Chinese server without a skin, **you are not at a noticeable disadvantage.** The game is heavily balanced around late-game macro strategy, team fights, and itemization, where a +10 attack stat fully dissolves into thousands of total stat points. [link](https://www.zhihu.com/en/answer/720446048)
+
+Additionally, the game generously gives out free basic skins through events and internal rewards, meaning practically every active player has access to the baseline stat buff without spending a dime.
+
+Are you asking because you are noticing an **early-game damage gap** when playing against certain players, or are you just curious about the **competitive integrity** of the Chinese server? Let me know!
+
+- [link](https://www.zhihu.com/en/answer/223636746)\
+  知乎\
+  How should we view the attribute boosts of skins in ... - 知乎\
+  Skin bonuses are just a bit of data, far less important than runes, and technical skills are more important and have a greater imp...
+- [link](https://www.zhihu.com/en/answer/720446048)\
+  知乎\
+  Why do most players of Honor of Kings feel that the skin ... - 知乎\
+  King's data is too high, and the skin bonuses are too low. The skin bonus initially provides some help, but later on, it seems to ...
+
+## does it boost everyone as if they have skin or reset to base when turned off
+
+When skin stats are turned off—such as in official esports tournaments (like the KPL) or specialized tournament game lobbies—<mark>the server<span> </span><strong>resets everyone's attributes back to their flat base stats</strong></mark>.
+
+It does **not** boost skinless players to match the skin holders. Instead, the game completely strips away and nullifies the skin attributes for that match.
+
+### How the "Turned Off" Mechanic Works
+
+1. **The Game Strips the Buff:** If you are wearing a 1,688-token Legendary skin, the game still displays all your custom animations, visual particles, and voice lines. However, the system completely removes the underlying **+10 Attack** or **+120 HP** code. [link](https://zhuanlan.zhihu.com/p/2046753267376509625)
+2. **The Base Level Playground:** Everyone in the match starts at Level 1 with the exact same baseline attributes provided by their chosen hero and their equipped Arcana page.
+3. **No Visual Indicators Changes:** Your character's attribute panel in the bottom corner of the UI will strictly show your base stats plus Arcana. The customary "+10" skin bonus text will simply disappear.
+
+### Why do they reset to base instead of boosting everyone?
+
+From a competitive coding standpoint, it is much cleaner for the developers to toggled the skin stat logic to `0` rather than applying an artificial "invisible skin" buff to everyone who doesn't own one. Since professional esports players already have unlocked accounts with access to every skin in the game anyway, forcing a base-stat reset ensures that no matter what cosmetic a pro choose to wear on stage, the mathematical environment is 100% sterile and uniform.
+
+Would you like to know more about how **official custom tournament lobbies** are set up in the Chinese client, or are you curious about how **global tournament rules** handle skins across different regions? Let me know!
+
+- [link](https://zhuanlan.zhihu.com/p/2046753267376509625)\
+  知乎专栏\
+  一文讲清王者荣耀传说皮肤各类售价详情\
+  Jun 6, 2026 — 王者荣耀常规直售传说皮肤的统一售价为1688点券,折合人民币168元。 这是目前传说皮肤最主流的定价,绝大多数常驻商城的非限定传说、普通限定传说首次上线都采用这个定价。
+
+## what if they increased or decreased every number in the game
+
+If developers changed **every single number in the game**—meaning every hero's health, damage, skill scaling, item cost, gold reward, and cooldown—<mark>the actual impact on the gameplay would depend entirely on<span> </span><strong>how</strong><span> </span>they scaled those numbers</mark>.
+
+Mathematically, this breaks down into two very different scenarios:
+
+### Scenario A: Flat Scaling (Everything multiplies by the same amount)
+
+If the developers multiplied every single number by the exact same value (e.g., doubling all damage, all health pools, all gold income, and all item stats), **absolutely nothing would change.**
+
+- **The Ratio Stays the Same:** If a hero has 1,000 HP and an enemy skill deals 200 damage, it takes **5 hits** to kill them. If you multiply everything by 10, the hero now has 10,000 HP and the skill deals 2,000 damage. It still takes **5 hits** to kill them.
+- **Economic Neutrality:** If gold income doubles but item costs also double, your farming speed and item power spikes happen at the exact same intervals.
+
+The only difference would be visual: your screen would show much larger or smaller numbers floating over characters' heads during team fights.
+
+### Scenario B: Proportional Scaling (Changing the balance ratio)
+
+If they changed the numbers disproportionately (e.g., doubling all damage but leaving health numbers alone), **it would completely break and redesign the game.**
+
+Depending on what they changed, it would create drastically different metas:
+
+- **Increasing Damage but not Health (The One-Shot Meta):** If damage numbers are scaled up higher than defensive numbers, TTK (Time-to-Kill) drops to near zero. Tanks would vanish, and the game would become an twitch-reflex match where whoever presses their skill first wins instantly.
+- **Increasing Health but not Damage (The Raid Boss Meta):** If health pools and healing numbers scale up significantly higher than damage, team fights would last for several minutes. Assassin heroes would become entirely useless because they could no longer burst down squishy targets.
+- **Changing Cooldowns:** Decreasing all cooldowns by 50% turns the game into a chaotic arcade mode (similar to Honor of Kings' actual "Infinite Brawl" mode), where heroes can constantly spam mobility and crowd-control skills.
+
+### Why Developers Do This: "Stat Squishing"
+
+In long-running games, numbers naturally bloat over the years due to power creep. Developers will sometimes perform a **"stat squish"**—dividing every number in the game by a set amount (like 10 or 100)—purely to make the UI look cleaner and make it easier for players to quickly calculate damage in their heads.
+
+Are you imagining a specific scenario, like **doubling all damage numbers**, or are you curious about how **Honor of Kings balanced the game** when moving from the Chinese server to the Global server? Let me know!
+
+# how hard is it in honor of kings to know the heroes
+
+Learning the roster in **Honor of Kings (HoK)** is <mark><strong>moderately easy to pick up, but highly challenging to completely master</strong></mark>. With a massive roster of **over 100 heroes**, trying to learn everything at once can feel overwhelming. However, the game is designed with a very smooth learning curve that makes getting started relatively stress-free. [link](https://www.reddit.com/r/honorofkings/comments/1sxzg5q/how%5Fto%5Flearn%5Fheroes%5Fand%5Ftheir%5Fcounter%5Fpicks%5Fas/)
+
+***
+
+### 🧠 The Learning Curve Breakdown
+
+- **Easy to Begin (The Floor):** The game categorizes heroes into distinct classes (Tank, Warrior, Assassin, Mage, Marksman, Support). Beginner-friendly heroes like **Daji** or **Angela** have highly intuitive kits: point-and-click crowd control followed by heavy burst damage. You can grasp their core gameplay loop in just one match. [link](https://www.youtube.com/watch?v=KAcVOZ1Ot1A\&t=249)
+- **The "3-Hero Rule" for Ranked:** You do not need to memorize all 100+ heroes to play well or climb the ranks. Most experienced players recommend focusing on **one main hero, one counter pick, and one flexible option** for your preferred lane. [link](https://www.youtube.com/watch?v=UVgC2MvQe5k)
+- **Hard to Master (The Ceiling):** While basic mechanics are accessible, a handful of high-skill heroes have massive skill ceilings. Mastering heroes like **Arley (Gongsun Li)**, **Luna**, or **Yuan Ge** requires lightning-fast hands, complex combo memorization, and precise tracking of moving parts (like Arley's teleporting umbrella). [link](https://www.youtube.com/watch?v=x5xGCSFy0AQ\&t=12)
+
+***
+
+### 📊 Hero Difficulty Overview
+
+| Difficulty Tier     | Examples                   | What It Requires                                                                          |
+| ------------------- | -------------------------- | ----------------------------------------------------------------------------------------- |
+| **Beginner / Easy** | Daji, Angela, Lady Sun     | Simple skill-shots, clear positioning, linear combos.                                     |
+| **Intermediate**    | Dun, Princess Frost, Nuwa  | Good map awareness, skill timing, and understanding lane matchups.                        |
+| **Expert / Hard**   | Arley, Luna, Yuan Ge, Jing | Fast reaction times, complex stance/puppet swapping, and strict mechanical muscle memory. |
+
+***
+
+### 💡 The Fastest Way to Learn the Roster
+
+If you want to build up your knowledge without getting burned out, the community generally recommends a passive approach. Start by playing a few matches using easy starter heroes. When you encounter an enemy hero that completely destroys you or catches your attention, head into the **1v1 custom bot practice mode** right after the match to read their skill kit and try out their abilities. Repeating this process naturally builds up your memory of hero threats over time without requiring you to study menus for hours. [link](https://www.reddit.com/r/honorofkings/comments/1sxzg5q/how%5Fto%5Flearn%5Fheroes%5Fand%5Ftheir%5Fcounter%5Fpicks%5Fas/)
+
+To help point you in the right direction, let me know:
+
+- Have you played **other MOBAs** before (like _Wild Rift_ or _Mobile Legends_)?
+- What **playstyle** do you usually enjoy? (e.g., tanky frontliner, sneaky assassin, long-range sniper, or helper)?
+
+I can recommend a few easy heroes to kickstart your pool!
+
+- [link](https://www.youtube.com/watch?v=kFzfGvXYZCo)\
+  YouTube·spragels\
+  Use THESE Heroes To Start WINNING! | Honor Of Kings\
+  channel right now uh the passive is super simple your basic attacks reduce the cooldown of skill one skill one is a dash. and then...
+- [link](https://www.youtube.com/watch?v=x5xGCSFy0AQ\&t=12)\
+  YouTube·Emu PlayZZ\
+  5 Most Difficult Heroes in Honor of Kings (Are You Skilled ...\
+  Jul 1, 2025 — The five most difficult heroes to master in Honor of Kings are Arley, Luna, Machao, Yuan G, and Jing. Arley is a marksman known fo...\
+  5m
+- [link](https://www.reddit.com/r/honorofkings/comments/1sxzg5q/how%5Fto%5Flearn%5Fheroes%5Fand%5Ftheir%5Fcounter%5Fpicks%5Fas/)\
+  Reddit·r/honorofkings\
+  How to learn heroes and their counter picks as fast as possible\
+  my current method is to play a few games and then re-read the kits of heroes I went versus in my rank games to see and rejog my me...
+
+Show all
+
+# 
