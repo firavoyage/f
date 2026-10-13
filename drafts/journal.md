@@ -55250,6 +55250,12 @@ it's fine to ask multiple in one, which would behave like a wiki or some workflo
 
 inspires me. i may listen to podcasts. would be more though provoking than jpop.
 
+22 40 read _1.6 Higher-Order Functions, composing program_
+
+> In general, programming languages impose restrictions on the ways in which computational elements can be manipulated. Elements with the fewest restrictions are said to have first-class status.
+
+> In this example, a higher-order function trace is defined, which returns a function that precedes a call to its argument with a print statement that outputs the argument.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
