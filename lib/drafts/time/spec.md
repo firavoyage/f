@@ -5,16 +5,16 @@ time spec
 methods
 
 - create
-  - time year month day hour min sec timezone
-    - utc/gm/gmt
-    - local/mktime
+  - time year month day hour min sec timezone = local
+    - _utc/gm/gmt_
+    - _local/mktime_
     - now timezone
   - at timestamp (in sec) timezone
 - parse
   - _parse s pattern_
   - (standard) s
 - check
-  - is utc/gmt
+  - _is utc/gmt_
   - _is dst_ <!-- daylight savings time -->
   - _is sunday/.../saturday_
 - calc
@@ -24,7 +24,7 @@ methods
   - (eq ieq l g leq geq)
 - convert
   - get_utc
-  - get_local offset?
+  - get_local timezone <!-- get_local offset? -->
   - _round, ceil, floor_ digit <!-- round the sec -->
 - format
   - format pattern
