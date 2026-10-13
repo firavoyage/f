@@ -1395,4 +1395,269 @@ Are you trying to learn a **specific role** (like Jungle or Clash Lane), or is t
 
 Show all
 
-# 
+# how does honor of kings rank change after season
+
+In **Honor of Kings**, <mark>your rank undergoes a<span> </span><strong>soft reset</strong><span> </span>at the conclusion of every seasonal cycle</mark>. The game utilizes an official conversion system where **lower-tier ranks are preserved**, while **higher-tier ranks experience a heavier demotion** to balance competitive integrity for the upcoming season.
+
+The exact breakdown of how your tier transitions from one season to the next follows this structure:
+
+### 📉 Low Tiers (Unchanged)
+
+Players at the bottom of the ladder do not lose any progress:
+
+- **Bronze III to Silver I:** Retain their exact identical ranks.
+- **Gold IV:** Retains Gold IV. [link](https://honor-of-kings.fandom.com/wiki/Ranked%5FSeasonal%5FCycle%5FReset)
+
+### 📉 Mid Tiers (Slight Drop)
+
+Players in Gold, Platinum, and Diamond shift down by a couple of tiers or sub-divisions: [link](https://honor-of-kings.fandom.com/wiki/Ranked%5FSeasonal%5FCycle%5FReset)
+
+- **Gold III – I:** Drop down to Gold IV or Gold III.
+- **Platinum IV – I:** Reset into Gold II through Platinum III.
+- **Diamond V – I:** Reset into Platinum III through Diamond V. [link](https://honor-of-kings.fandom.com/wiki/Ranked%5FSeasonal%5FCycle%5FReset)
+
+### 📉 High Tiers (Major Drop)
+
+The highest competitive tiers are compressed heavily, shifting elite players back into Diamond and Master boundaries: [link](https://honor-of-kings.fandom.com/wiki/Ranked%5FSeasonal%5FCycle%5FReset)
+
+- **Master V – I:** Drop down to Diamond IV or Diamond III.
+- **Grandmaster (0–24 stars):** Resets to Diamond II or Diamond I.
+- **Mythic (25–49 stars):** Resets to Master V.
+- **Epic (50–99 stars):** Resets to Master IV or Master III.
+- **Legend (100+ stars):** Resets to Master III. [link](https://honor-of-kings.fandom.com/wiki/Ranked%5FSeasonal%5FCycle%5FReset)
+
+### 🔄 Additional Reset Mechanics
+
+- **MMR is Preserved:** Your hidden Matchmaking Rating (MMR) stays intact. This means during your early-season placement matches, you will still play against opponents of similar historical skill levels rather than true beginners.
+- **Rewards are Historical:** Seasonal milestone rewards scale based on your **highest rank achieved** during the season, not your final ending rank. You don't need to stress about a late-season losing streak ruining your rewards.
+- **Token & Item Resets:** Seasonal items like limited-time tokens or seasonal battle pass milestones will expire or reset to zero when the new update goes live. [link](https://www.youtube.com/shorts/dwlztq2s58E)
+
+If you want to prepare for the new season, let me know:
+
+- What is your **current rank and star count**?
+- Which **hero or role** do you usually main?
+
+I can give you a tailored plan to climb back up quickly.
+
+- [link](https://honor-of-kings.fandom.com/wiki/Ranked%5FSeasonal%5FCycle%5FReset)\
+  Honor of Kings Wiki\
+  Ranked Seasonal Cycle Reset | Honor of Kings Wiki | Fandom\
+  Master V-I drop to Diamond IV-III. Mythic (25-49 stars) resets to Master V. Epic (50-99 stars) resets to Master IV-III. Legend (10...
+- [link](https://bittopup.com/article/Honor-of-Kings-2025-Season-Reset-Guide-MMR-Climb-Tips)\
+  BitTopup\
+  Honor of Kings 2025 Season Reset Guide: MMR Climb Tips\
+  SSS ratings let you gain stars even in defeats. Higher ranks get hit harder. Bronze through Gold IV stay unchanged. MMR gets prese...
+- [link](https://news.bittopup.com/news/honor-of-kings-ranking-system-complete-guide-to-7-tiers)\
+  BitTopup News\
+  Honor of Kings Ranking System: Complete Guide to 7 Tiers\
+  Sep 7, 2025 — Seasonal rewards scale with your highest rank achieved, not ending rank—so don't worry about last-minute drops. Examples include R...
+
+Show all
+
+## does the international and zhcn ver change the same
+
+<mark><strong><span>No, the International (Global) and Chinese (CN) versions do not change identically</span></strong><span> </span>during a season reset</mark>, though they share the same foundational concept.
+
+Because the **Chinese version is many years ahead** (having been out since 2015 compared to Global's 2024 launch), its ranking ecosystem is much more advanced. [link](https://en.wikipedia.org/wiki/Honor%5Fof%5FKings)
+
+The core differences between how the two versions handle season resets include:
+
+### 1. Different Reset Tables & Tier Boundaries
+
+Because the Chinese server has a massive player base of elite veterans, the skill compression is much harsher. Recently, the **Chinese version optimized its reset system** so that the absolute highest-ranking players (Legend tier with high star counts) drop down to **Master II**, rather than being forced all the way back to Diamond. The Global version still uses a slightly older conversion curve where high Grandmasters and Mythics are dropped entirely back into Diamond IV–II. [link](https://www.youtube.com/watch?v=xgblwK4eg2k)
+
+### 2. Desynced Seasonal Timelines
+
+The two versions are on entirely different season numbers. For example, when Global is entering an earlier season like Season 5 or 6, the Chinese server is already past Season 37. They do not reset on the same day, and the patches that hit during the reset (introducing hero adjustments and meta overhauls) are entirely different. [link](https://www.reddit.com/r/honorofkings/comments/1gh7f04/is%5Fthere%5Fa%5Fdifference%5Fin%5Fthe%5Fglobal%5Fvs%5Fchinese/)
+
+### 3. Star-Count Milestones & Rewards
+
+While both versions feature the main brackets (Bronze to Grandmaster), the milestone rewards given out during the season transition vary: [link](https://hokstats.gg/ranks/)
+
+- **The CN Server** features tiered rewards and profile customizations tied to strict star levels (e.g., specific animations at 30, 40, or 50 stars).
+- **The Global Server** has been gradually trying to mirror these ("Rise to Honor" style rewards), but the available cosmetics, ranked tier frames, and token shop updates during the transition remain vastly distinct. [link](https://www.youtube.com/shorts/70xR-zH3-R0)
+
+### 4. Meta & Hero State on Day 1
+
+When a season resets on the Chinese server, players immediately draft into an ecosystem with **more heroes (120+ compared to Global's 90+)**, 3 to 5 ban slots per team, and heavily reworked character kits. When Global resets, the meta shifts much more predictably because the advanced items and complex hero mechanics are still being slowly ported over over from China. [link](https://www.youtube.com/watch?v=VN6n9mj6Fns\&t=312)
+
+Are you thinking about **switching servers**, or are you trying to track **upcoming patch features** from the Chinese version? Let me know so I can get you the right info!
+
+- [link](https://www.reddit.com/r/honorofkings/comments/1gh7f04/is%5Fthere%5Fa%5Fdifference%5Fin%5Fthe%5Fglobal%5Fvs%5Fchinese/)\
+  Reddit·r/honorofkings\
+  Is there a difference in the global vs Chinese games? - Reddit\
+  Yes, there is a significant difference between the global and the CN servers. A lot of heroes are not yet ported to the global ser...
+- [link](https://www.youtube.com/watch?v=VN6n9mj6Fns\&t=312)\
+  YouTube·Emu PlayZZ\
+  11 UPCOMING HERO REWORKS & ADJUSTMENTS GLOBAL ...\
+  Feb 10, 2026 — The video discusses 11 detailed hero adjustments and reworks that are currently missing from the global version of Honor of Kings ...\
+  1m
+- [link](https://honor-of-kings.fandom.com/wiki/Ranked%5FSeasonal%5FCycle%5FReset)\
+  Honor of Kings Wiki\
+  Ranked Seasonal Cycle Reset - Honor of Kings Wiki - Fandom\
+  Grandmaster (0-9 Stars), Diamond II. Grandmaster (10-24 stars), Diamond I. Mythic (25-49 Stars), Master V. Epic (50-74 Stars), Mas...
+
+Show all
+
+# how does honor of kings zhcn server rank change after season
+
+In **Honor of Kings (王者荣耀 - ZHCN server)**, <mark>your rank undergoes a<span> </span><strong>soft reset</strong><span> </span>at the start of every new season</mark>. This system drops higher-ranked players back down into Diamond or Platinum tiers to keep the ladder competitive, while allowing lower-tier players to retain their exact standing. [link](https://honor-of-kings.fandom.com/wiki/Ranked%5FSeasonal%5FCycle%5FReset)
+
+The exact conversion depends on your **final star count or tier** right before the season boundary closes:
+
+### 👑 King (Grandmaster) Tiers & Star Resets
+
+The highly populated King tiers experience the most significant demotions.
+
+- **0–9 Stars:** Resets to **Diamond II**
+- **10–24 Stars:** Resets to **Diamond I**
+- **25–49 Stars (Supreme King):** Resets to **Master V**
+- **50–74 Stars (Epic/Unparalleled King):** Resets to **Master IV**
+- **75–99 Stars:** Resets to **Master III**
+- **100+ Stars (Legendary King):** Resets to **Master III** or **Master II** (depending on the exact CN seasonal patch adjustments). [link](https://honor-of-kings.fandom.com/wiki/Ranked%5FSeasonal%5FCycle%5FReset)
+
+### 💎 Master & Diamond Tiers
+
+- **Master I to V:** Drops uniformly into the mid-to-high Diamond tiers, typically resetting between **Diamond IV and Diamond III**.
+- **Diamond I to V:** Drops back into the high Platinum tiers (Platinum I down to Platinum III) or the lowest Diamond tier. [link](https://honor-of-kings.fandom.com/wiki/Ranked%5FSeasonal%5FCycle%5FReset)
+
+### 🎖️ Lower Tiers (Platinum, Gold, Silver, Bronze)
+
+- **Platinum:** Softly resets down into the Gold tiers.
+- **Gold IV and Below:** Players in **Gold IV, Gold V, Silver, and Bronze maintain their identical ranks** and lose zero stars when the new season begins. [link](https://honor-of-kings.fandom.com/wiki/Ranked%5FSeasonal%5FCycle%5FReset)
+
+### 📊 Additional Season End Impacts
+
+- **Hero Power Reset:** Your regional and character-specific hero power undergoes a fractional decay. You do not drop to zero, but your starting hero power will decrease based on a formula tied to your previous season's peaks.
+- **Matchmaking MMR:** Your hidden Matchmaking Rating (MMR) is largely preserved. This ensures that even though you are placed in Diamond at the start of a season, you will still play against other former Kings rather than true Diamond players.
+
+If you want to prepare for the upcoming season, let me know:
+
+- What is your **current rank and star count**?
+- Are you aiming for a specific **Hero Power title**?
+
+I can give you a precise target to hit before the season ends!
+
+- [link](https://honor-of-kings.fandom.com/wiki/Ranked%5FSeasonal%5FCycle%5FReset)\
+  Honor of Kings Wiki\
+  Ranked Seasonal Cycle Reset | Honor of Kings Wiki | Fandom\
+  Gold IV retains Gold IV, while Gold III-I drop to Gold IV-III. Platinum IV-I reset to Gold II through Platinum III. Epic (50-99 st...
+- [link](https://bittopup.com/article/Honor-of-Kings-2025-Season-Reset-Guide-MMR-Climb-Tips)\
+  BitTopup\
+  Honor of Kings 2025 Season Reset Guide: MMR Climb Tips\
+  SSS ratings let you gain stars even in defeats. MMR gets preserved for appropriate placement.
+- [link](https://www.facebook.com/groups/1045162409393668/posts/1587331148510122/)\
+  Facebook\
+  Hi guys, understand that heroes rank refresh every Monday, if i ...\
+  Jan 7, 2025 — heroes rank refresh every Monday, Or after update the heroes power will reset? This season reset till around 6000-7000 1y
+
+Show all
+
+## can you reach gold and login to see you at silver months later
+
+**No, you cannot naturally drop from Gold to Silver just by being away from the game.** In **Honor of Kings (王者荣耀)**, there are only two mechanics that lower a player's rank—**inactivity rank decay** and **seasonal soft resets**—and both explicitly protect lower tiers like Gold.
+
+Here is why your rank would not drop to Silver purely from time passing, along with the rare exceptions where it could happen:
+
+### 🛡️ Why Gold is Safe From Drops
+
+1. **No Inactivity Decay:** Honor of Kings does have an inactivity penalty (losing 1 star every 7 days of not playing). However, **rank decay only applies to Grandmaster players**. If you are in Gold, you can leave the game unplayed for years, and you will never lose stars or tiers due to inactivity. [link](https://www.reddit.com/r/honorofkings/comments/1ehin36/what%5Fis%5Fthis/)
+2. **Seasonal Soft Resets Freeze Below Gold:** When a competitive season ends (roughly every 2–3 months), high-ranked players are demoted. However, according to the official [Honor of Kings Seasonal Reset Rules](https://honor-of-kings.fandom.com/wiki/Ranked%5FSeasonal%5FCycle%5FReset), players finishing in **Gold IV, Silver, or Bronze retain their exact rank** and lose zero stars. Players in Gold I, II, or III might slide down slightly into Gold IV, but they will **never be demoted into Silver**. [link](https://honor-of-kings.fandom.com/wiki/Ranked%5FSeasonal%5FCycle%5FReset)
+
+***
+
+### 🔍 Real Reasons You Might See "Silver" After Months Away
+
+If you log back in after months and find your account sitting in Silver, it is usually due to one of these external factors:
+
+- **You Swapped Servers or Login Methods (Most Common):** The ZHCN server allows you to log in via WeChat (微信) or QQ. Within those, there are also separate systems for iOS and Android. If you accidentally log in using QQ instead of WeChat, or pick a different server node than your original one, the game will treat it as a brand-new account, forcing you to start fresh from Bronze/Silver. [link](https://honor-of-kings.fandom.com/wiki/Bronze/Silver%5FTier)
+- **You Finished a Previous Season in Gold but Lost Matches Before Quitting:** If you hit Gold to claim a seasonal reward but kept playing and suffered a losing streak down to Silver right before taking your break, the game saved your _final_ rank rather than your peak rank.
+- **Account Sharing or Security Compromise:** If someone else had access to your account while you were gone, they may have played ranked matches and lost stars, dropping the account into Silver. [link](https://www.zhihu.com/en/answer/2864838163)
+
+If your account dropped, let me know:
+
+- Did you change your **device** (e.g., Android to iPhone)?
+- Did you log in via a **different app** (WeChat vs. QQ)?
+
+I can help you figure out if you're just logged into the wrong profile!
+
+- [link](https://honor-of-kings.fandom.com/wiki/Bronze/Silver%5FTier)\
+  Honor of Kings Wiki\
+  Bronze/Silver Tier\
+  Still relatively casual, but players start to understand basic mechanics. \* You may encounter some smurfs (experienced players on ...
+- [link](https://www.reddit.com/r/honorofkings/comments/1ehin36/what%5Fis%5Fthis/)\
+  Reddit·r/honorofkings\
+  What is this?? : r/honorofkings - Reddit\
+  Rank Decay. It is in the Info in the rank room on the top left. Happens if you dont play rank when you are already GM.
+- [link](https://www.facebook.com/groups/hokphofficial/posts/25532732539648644/)\
+  Facebook·Official Honor of Kings Philippines\
+  Why did my stars decrease in Honor of Kings? - Facebook\
+  Sep 13, 2025 — Rank decay causes star loss for inactivity, with a 1- star deduction per week. Rap Dio. 7 days no rank/peak decay 1 star. inactive...
+
+Show all
+
+# what are the tips for beginners in honor of kings
+
+To find success as a beginner in **Honor of Kings**, you must <mark>prioritize<span> </span><strong>objectives over kills</strong>, master a few<span> </span><strong>beginner-friendly heroes</strong>, and build strong<span> </span><strong>map awareness</strong></mark>. Winning in this fast-paced 5v5 MOBA relies less on complex mechanical plays and much more on understanding your specific role. [link](https://www.youtube.com/watch?v=aXE-mF8%5FzDY\&vl=en-US)
+
+This comprehensive tutorial breaks down the essential map features, hero types, and lane setups you need to know before stepping onto the battlefield:
+
+4:11
+
+[link](https://www.youtube.com/watch?v=hRAYdyMG0Fs)
+
+Honor of Kings Tutorial: Basic Gameplay Guide
+
+15K views · 2 years ago
+
+YouTube · Honor of Kings
+
+### 1. Choose Easy Starter Heroes
+
+Instead of trying to learn dozens of different characters right away, stick to **one or two roles** and focus on heroes with a low difficulty rating. [link](https://www.youtube.com/watch?v=8zCTxXGBKSo)
+
+- **Clash Lane (Top):** Play Arthur. He is a simple, durable paladin with great base damage, a silence mechanism, and high survivability. [link](https://www.facebook.com/SagiHOK/videos/hok-newbie-friendly-clash-lane-heroes/2324800731327095/)
+- **Mid Lane:** Play **Angela** or **Daji**. They are burst-damage mages who can easily eliminate targets with simple, straightforward ability combos. [link](https://store.epicgames.com/news/honor-of-kings-guide-tips-beginning-mobile-moba-players?lang=en-US)
+- **Farm Lane (Bottom):** Play **Hou Yi** or **Miya**. These are traditional ranged marksmen who focus on high attack speed and physical damage from a safe distance. [link](https://vocal.media/gamers/honor-of-kings-a-comprehensive-guide-for-beginners-and-professional-players)
+- **Roamer (Support):** Play **Yaria** or **Cai Yan**. They focus strictly on protecting team carries, providing healing, and shielding without mechanical complexity. [link](https://www.youtube.com/watch?v=aXE-mF8%5FzDY\&vl=en-US)
+
+### 2. Prioritize Map Objectives
+
+Chasing enemy heroes across the map for kills is the fastest way to lose a match. **Honor of Kings** is won exclusively by destroying the enemy team's **Crystal**. [link](https://www.youtube.com/watch?v=hRAYdyMG0Fs)
+
+- **The 4-Minute Rule:** Do not force or dive enemy towers before the 4-minute mark. Towers have active shields early on that reduce incoming damage, making early aggressive pushes a waste of time. [link](https://honor-of-kings.fandom.com/wiki/Top%5F10%5Ftips%5Fto%5Finstantly%5Fimprove%5FGameplay)
+- **Epic Monsters:** Help your team secure the **Tyrant** and **Overlord** when they spawn. Defeating them rewards your team with massive combat buffs and stronger minion waves to push lanes. [link](https://www.youtube.com/watch?v=DKNdwrVvBYM\&t=30)
+
+### 3. Master Gold and Wave Management
+
+Gold allows you to buy better equipment, making you significantly stronger than your opponents. [link](https://www.youtube.com/watch?v=hRAYdyMG0Fs)
+
+- **Last-Hitting:** Always try to get the final blow on minion waves. While you still get gold if a minion dies near you, successfully "last-hitting" grants a massive bonus in gold and experience.
+- **Tower Attack Button:** In your settings, enable the dedicated **Tower/Minion attack buttons**. This prevents your hero from accidentally targeting an enemy hero when you are trying to secure a last-hit on a minion or drop a turret. [link](https://honor-of-kings.fandom.com/wiki/Top%5F10%5Ftips%5Fto%5Finstantly%5Fimprove%5FGameplay)
+
+### 4. Build Constant Map Awareness
+
+Glance at your mini-map every **2 to 4 seconds**. [link](https://www.reddit.com/r/honorofkings/comments/1dyu4lx/the%5Fmost%5Fbasic%5Fadvices%5Ffor%5Fa%5Fmoba%5Fnewbie%5Faka%5Fme/)
+
+- If you cannot see the enemy Jungler or Mid-laner on the map, assume they are rotating to ambush (gank) you.
+- Pay close attention around the **1:00 to 1:30 minute mark**, as this is typically when junglers finish their initial camps and look for an easy first kill.
+- Utilize communication pings to warn teammates when an enemy hero disappears from your lane. [link](https://www.reddit.com/r/honorofkings/comments/1dyu4lx/the%5Fmost%5Fbasic%5Fadvices%5Ffor%5Fa%5Fmoba%5Fnewbie%5Faka%5Fme/)
+
+To help tailor this advice, **which role or playstyle** usually appeals to you in gaming (e.g., a sneaky assassin, a protective tank, a ranged damage dealer)? If you have played other MOBAs like _League of Legends_ or _Mobile Legends_, let me know so we can skip the basics!
+
+- [link](https://store.epicgames.com/news/honor-of-kings-guide-tips-beginning-mobile-moba-players?lang=en-US)\
+  Epic Games\
+  Honor of Kings guide: 11 tips for beginning mobile MOBA ...\
+  The Skill Combos button will even tell you how to chain together attacks for maximum impact. Honor of Kings is a deep and strategi...
+- [link](https://www.youtube.com/watch?v=8zCTxXGBKSo)\
+  YouTube·HellsDevil\
+  The ULTIMATE HONOR OF KINGS BEGINNER GUIDE\
+  Heroes by the way stick to two rolls stick to two rolls. so play two roles. and start to slowly. but surely extend your hero … pla...
+- [link](https://www.youtube.com/watch?v=aXE-mF8%5FzDY\&vl=en-US)\
+  YouTube·SoloZag\
+  Fix Every Beginner Mistake in Honor of Kings Guide\
+  Jan 10, 2026 — simple protect your damage dealers stick close to your marksman. and mage. take damage for them use your skills to block stun or d...\
+  27:15
+
+Show all
+
