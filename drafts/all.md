@@ -1072,6 +1072,10 @@ observe:
 - compute stats motion mse blur
 - analyze
 
+record:
+
+- recording quality kbps volume stats container environment acoustic theory
+
 humility:
 
 - research claude code leak insights
