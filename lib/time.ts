@@ -6,12 +6,15 @@ type time = {
   hour: number
   min: number
   sec: number
-  offset: number
+  offset: number // offset in seconds
 }
 
-type timezone = 'utc' | number
+type iana_timezone_name = string
+type offset = number
 
-export function time(year: number, month: number, day: number, hour: number, min: number, sec: number, timezone: timezone) {
+type timezone = 'utc' | 'local' | iana_timezone_name | offset
+
+export function time(year: number, month: number, day: number, hour: number, min: number, sec: number, timezone: timezone = 'local') {
   return Time({
     year, month, day, hour, min, sec, timezone
   })
