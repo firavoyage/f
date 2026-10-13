@@ -2156,3 +2156,691 @@ Located at the center of the base, behind the Tier 3 high-ground defense.
 
 Would you like to know the **exact damage numbers or attack mechanics** of these turrets, such as how they ramp up damage with each consecutive hit on a diving hero?
 
+
+# what does it take on honor of kings zhcn ver to change name
+
+## what does it take on honor of kings zhcn ver to change name
+
+To change your name in the **Chinese version of Honor of Kings** (王者荣耀 - _Wangzhe Rongyao_), you need a <mark><strong>Name Change Card (改名卡)</strong></mark>. [link](https://www.zhihu.com/en/answer/1436672228)
+
+Here is everything required and the exact steps to complete the process:
+
+### 💳 Requirements & Limitations
+
+- **The Item:** You must own a **Name Change Card**.
+- **Cooldown Period:** You can only change your name **once every 15 days**. [link](https://esports.gg/news/honor-of-kings/how-to-change-name-honor-of-kings/)
+- **Where to get a card:**
+  - **In-game Shop (商城):** Go to the Shop -> Special Offers/Treasures (特惠/日产) and purchase one for **90 Vouchers/Tokens** (roughly $1 USD).
+  - **Honor of Kings Camp App (王者营地):** You can sometimes exchange community or event points for a card in the official companion app.
+  - **Season Battle Pass (荣誉战令):** Free or premium tiers of the seasonal battle pass frequently include a Name Change Card as a level reward.
+  - **Events:** Keep an eye out for major game updates or seasonal events that hand out free cards. [link](https://esports.gg/news/honor-of-kings/how-to-change-name-honor-of-kings/)
+
+***
+
+### 🔄 Step-by-Step Guide to Change Your Name
+
+Because the interface is in Chinese, you can navigate using these specific menus:
+
+1. **Open your Profile:** Tap your **Avatar/Profile Picture** in the top-left corner of the main lobby screen.
+2. **Access Settings:** Look for the **Gear/Settings icon** (usually in the top right of the profile page) or tap **Homepage (个人主页)**.
+3. **Trigger the Edit:** Look at the top where your current in-game name is displayed. Tap the small **Pencil/Brush icon** right next to your nickname. [link](https://esports.gg/news/honor-of-kings/how-to-change-name-honor-of-kings/)
+4. **Enter New Name:** A text box will pop up. Type or paste your desired new name.
+5. **Confirm:** Tap the confirmation button (**确定**). The game will consume one Name Change Card from your inventory, and your new name will take effect immediately.
+
+_Note: Make sure your new name complies with the game's strict content filters and is not already taken by another player on your specific server._
+
+If you are having trouble finding the exact button or navigating the Chinese text, let me know:
+
+- Which **login method** you are using (WeChat or QQ)?
+- If you are getting a specific **error message** when trying to change it?
+
+I can translate any interface prompts to help you get it sorted out!
+
+AI can make mistakes, so double-check responses
+
+- [link](https://www.tiktok.com/@.cardan3/video/7486791515465878802)\
+  TikTok·抄送 holy•Young ^^\
+  How to Change Your Name in Honor of Kings (HOK)\
+  If you're experiencing an error, ensure you have a valid Name Change Card in your inventory and that your new name doesn't contain...
+- [link](https://www.youtube.com/watch?v=f%5FiJ4c3P1a4)\
+  YouTube·Last Error Fixer\
+  HOW TO CHANGE NAME IN HOK (Easily)\
+  click the pencil icon next to our name and change our name. after changing it we click complete make sure the name you choose isn'
+- [link](https://esports.gg/news/honor-of-kings/how-to-change-name-honor-of-kings/)\
+  Esports.gg\
+  How to change your name in Honor of Kings\
+  One free name change is available via the Profile page, Settings, Profile, and clicking the brush icon next to the nickname;
+
+Show all
+
+## what payment methods can be used
+
+The payment methods you can use to buy Vouchers/Tokens in the **Chinese version of Honor of Kings** depend heavily on whether you are playing on an Android device or an iOS (Apple) device. [link](https://wise.com/zh-cn/blog/arena-valor-topup-guide-overseas)
+
+Because the game is tailored strictly for mainland China, standard international credit cards cannot be directly linked inside the game for native checkouts.
+
+***
+
+### 📱 Android Devices
+
+Android accounts are heavily tied to the Tencent eco-system. When you click the "+" icon next to your Voucher balance in-game, you can pay using: [link](https://wise.com/zh-cn/blog/arena-valor-topup-guide-overseas)
+
+- **WeChat Pay (微信支付):** The most seamless method if you log in via WeChat.
+- **Alipay (支付宝):** Supported universally across Android devices.
+- **QQ Coins / QQ Wallet (Q币/QQ钱包):** You can load QQ Coins onto your QQ account. If you do not have a Chinese bank card, you can bind an international credit card (**VISA, MasterCard, JCB**) to your QQ Wallet app to buy QQ Coins, and then use those coins to purchase your in-game Vouchers. [link](https://www.seagm.com/ro/honor-of-kings-cn-top-up)
+
+***
+
+### 🍏 iOS (Apple) Devices
+
+Apple strictly handles all transactions for iOS devices through the App Store. Your options depend entirely on your Apple ID region: [link](https://www.taptap.cn/moment/520235474967593086)
+
+- **Mainland China Apple ID:** If you changed your App Store region to China to download the game, you must use payment methods accepted by the China App Store. This includes **WeChat Pay**, **Alipay**, **China UnionPay cards**, or **Chinese App Store Gift Cards**. [link](https://wise.com/zh-cn/blog/arena-valor-topup-guide-overseas)
+- **International Apple ID:** If you are somehow running the game via a non-mainland Apple account, it will route through your local App Store billing (e.g., standard local Credit Cards, Apple Pay, or local App Store balance). [link](https://www.taptap.cn/moment/520235474967593086)
+
+***
+
+### 🌏 Alternative for Overseas Players (No Chinese Payment Method)
+
+If you do not have access to WeChat Pay, Alipay, or a Chinese bank card, you cannot pay natively in-game on Android. Most players outside of China rely on these workarounds:
+
+- **Official Tencent Web Top-up:** You can visit the official [Tencent Pay Portal](https://pay.qq.com/) on a desktop browser. If you log in with your QQ account, it sometimes allows broader payment processing than the mobile app client. [link](https://pay.qq.com/paygame/index.shtml)
+- **Trusted Third-Party Top-up Sites:** Platforms like [SEAGM](https://www.seagm.com/) or [MooGold](https://moogold.com/) allow you to buy QQ Coins or top up your game directly using international payment methods like **PayPal, Visa, MasterCard, Google Pay, or local bank transfers**. [link](https://www.seagm.com/ro/honor-of-kings-cn-top-up)
+
+Are you playing on **iOS or Android**, and are you trying to pay with an **international (non-Chinese) card**? I can give you the exact steps for whichever setup you have!
+
+- [link](https://www.reddit.com/r/honorofkings/comments/1w4e9bh/how%5Fdifficult%5Fis%5Fit%5Fto%5Fdownload%5Fand%5Fplay%5Fthe/)\
+  Reddit·r/honorofkings\
+  How difficult is it to download and play the Chinese version of ...\
+  You have to switch change the country/region on your App Store to China( though it might require a payment method). It will ask yo...
+- [link](https://wise.com/zh-cn/blog/arena-valor-topup-guide-overseas)\
+  Wise\
+  王者荣耀海外充值全攻略：官方充值、微信支付及Wise 跨境 ...\
+  \*\*手机端:\*\*安卓(Android)用户可在游戏内进入充值页面,根据当前页面提供的付款方式完成点券充值;iOS(苹果)用户则需要通过App Store 及Apple ID 完成游戏内购买。 钱包绑定国际信用卡(VISA、MasterCard、JCB)付款。2...
+- [link](https://news.kardz.com/news/1252)\
+  Kardz\
+  Honor of Kings Top-Up Guide 2026 - Kardz News\
+  May 21, 2026 — A lot of people end up using third-party top-up platforms like Kardz because they support local payment methods and usually come o...
+
+Show all
+
+## do tencent games work w alipay
+
+<mark><strong><span>Yes, Tencent games do work with Alipay</span></strong></mark>**, but with one massive catch: it depends entirely on whether you are on an Android or iOS device.** [link](https://www.zhihu.com/en/answer/619140597)
+
+Because Tencent (the creator of WeChat) and Alibaba (the creator of Alipay) are historical corporate rivals in China, they restrict how you can pay on different operating systems. [link](https://www.zhihu.com/en/answer/619140597)
+
+### 🤖 On Android Devices: No Direct Support (Requires Workarounds)
+
+If you play the Chinese version of a Tencent game (like _Honor of Kings_ or _Peacekeeper Elite_) on an Android phone, **Alipay will not show up as a direct payment option** at checkout. Tencent blocks native Alipay integration to force players to use WeChat Pay or QQ Coins. [link](https://www.zhihu.com/en/answer/619140597)
+
+However, you can still use your Alipay balance via these indirect workarounds:
+
+1. **The QQ Coin Workaround:** You can open your **Alipay App**, search for "QQ Coins" (Q币) from trusted sellers, and purchase them using your Alipay account. Once the coins are credited to your QQ account, you can select QQ Coins as your payment method inside the Tencent game client.
+2. **Third-Party Top-Up Sites:** Popular gaming storefronts like [SEAGM](https://www.seagm.com/) or [MooGold](https://moogold.com/) accept **Alipay** (as well as PayPal/international cards) to directly fund your Tencent game account.
+
+### 🍏 On iOS (Apple) Devices: Full Support
+
+If you are playing on an iPhone or iPad, **Alipay works perfectly and natively.**
+
+This is because Apple acts as the middleman for all transactions on iOS. Tencent is legally required to route all in-game payments through the Apple App Store billing system. If you link your Alipay account to your Chinese Apple ID, you can buy in-game Vouchers directly with a single tap, bypassing Tencent's restrictions entirely.
+
+Are you trying to make a purchase on **Android or iOS**? If you are an **overseas player** without a Chinese bank card, I can show you how to set up the best payment method for your specific device.
+
+- [link](https://www.zhihu.com/en/answer/619140597)\
+  知乎\
+  Why can't Honor of Kings use Alipay for recharge?-zhihu\
+  Why can't Honor of Kings use Alipay for recharge?-zhihu. Rival Games & WeChat are Tencent's, while Alipay (Alipay) is Alibaba's.Ri...
+- [link](https://www.youtube.com/watch?v=xuwAeixtA1Y)\
+  YouTube·AppInChina\
+  How to use WeChat Pay and Alipay in your app, game or ...\
+  Alip Pay can also be integrated into your app or game for inapp payments submitting a payment in your app links to the user's WeCh...
+
+## does it gift new players name change card
+
+<mark><strong><span><span>No, the Chinese version of<span> </span></span><u><span><span><span tabindex="0" role="button"><span>Honor of Kings</span></span></span></span></u><span> </span>does not automatically gift a Name Change Card to new players</span></strong><span> </span>upon creating an account</mark>. [link](https://www.zhihu.com/en/answer/1436672228)
+
+When you sign up, you pick a name, and that name is locked in. However, the game gives new players incredibly easy, **guaranteed paths to get a free Name Change Card** almost immediately through basic play:
+
+### 1. The Free Season Battle Pass (荣誉战令)
+
+Every single player—including brand-new accounts—has access to the free tier of the **Battle Pass**. [link](https://pvp.qq.com/web201706/newsdetail.shtml?tid=463535)
+
+- As a new player, you will level up rapidly just by playing your first few matches and completing beginner missions.
+- Once your Battle Pass reaches **Level 42**, you are given a reward chest where you can choose a **free Name Change Card**. This usually takes a couple of weeks of casual play, but can be done faster if you grind beginner events. [link](https://www.zhihu.com/en/answer/1436672228)
+
+### 2. Beginner & Returnee Sign-in Events
+
+Honor of Kings frequently runs "New Player 7-Day Sign-in" or "Returnee" events. While the exact prize pool rotates, Tencent frequently includes a Name Change Card or a custom choice chest within the first week's login rewards to help players clean up temporary names.
+
+### 3. The "Free First Change" Rule (Applies to Global, _Rare_ on CN)
+
+_Note on versions:_ If you ever play the **Global version** of Honor of Kings, your very first name change is entirely free and doesn't require a card. On the **Chinese version**, however, you almost always need the physical card item to trigger a change, making the Level 42 Battle Pass your best free bet. [link](https://esports.gg/news/honor-of-kings/how-to-change-name-honor-of-kings/)
+
+### ⚠️ A Warning for New Accounts
+
+Because new accounts don't get a card right away, **do not use a random placeholder name** thinking you can change it 5 minutes later for free. Pick a name you are comfortable playing with for at least your first few weeks of leveling up!
+
+Did you accidentally register with a auto-generated name (like a string of random numbers), or are you just planning ahead? If you're stuck with a bad name, I can show you how to check your **current Battle Pass level** to see how close you are to the free card!
+
+- [link](https://www.zhihu.com/en/answer/1436672228)\
+  知乎\
+  How can I change my name in Honor of Kings, and do I need ...\
+  Yes, a name card is needed. You can get it by leveling up to 42 in the basic war mission … can obtain it after about 5 weeks of ac...
+- [link](https://pvp.qq.com/web201706/newsdetail.shtml?tid=463535)\
+  王者荣耀\
+  王者荣耀：想不花钱就获得改名卡吗？三种办法让你快速拿到手\
+  Jun 8, 2020 — 首先有必要普及一下知识,在王者荣耀中,改名卡分为两种,一种就是个人改名卡,另一种则是战队改名卡了,个人改名卡每隔3天可以更换
+- [link](https://esports.gg/news/honor-of-kings/how-to-change-name-honor-of-kings/)\
+  Esports.gg\
+  How to change your name in Honor of Kings\
+  Free Option: One free name change is available via the Profile page, Settings, Profile, and clicking the brush icon next to the ni...
+
+Show all
+
+## can you hoard many cards
+
+<mark><strong><span>Yes, you can hoard multiple Name Change Cards</span></strong><span> </span>in the Chinese version of Honor of Kings</mark>.
+
+There is **no limit** to how many Name Change Cards you can hold in your in-game inventory (背包 - _Backpack_). They do not expire, so you can safely collect them from seasonal events, battle passes, or purchases and save them for the future.
+
+However, hoarding them will not let you change your name rapidly due to one strict game rule:
+
+- **The 15-Day Cooldown:** No matter how many cards you have sitting in your inventory, the game imposes a strict **15-day waiting period** between name changes. Once you use a card, you cannot use another one until 15 days have passed.
+
+If you are gathering them for long-term use or just collecting them from free rewards over several seasons, you can hoard as many as you like!
+
+Are you currently holding onto a few cards, or are you **planning to buy them in bulk** while they are on sale? I can let you know if there are any current event discounts running!
+
+## can you get name change card from free battle pass every season
+
+<mark><strong><span>Yes, you can absolutely get a free Name Change Card every single season</span></strong></mark> from the Battle Pass in the Chinese version of Honor of Kings. [link](https://pvp.qq.com/web201706/newsdetail.shtml?tid=463535)
+
+Tencent includes it as a recurring reward on the free tier, meaning you do not need to spend any real money or buy the premium pass to get it. Here is how it works each season: [link](https://pvp.qq.com/web201706/newsdetail.shtml?tid=463535)
+
+### 🏆 The Free Battle Pass Reward Structure
+
+- **The Milestone:** Every season, you need to reach **Level 42** on the free (Elite/精英版) Battle Pass track.
+- **The Reward Box:** At Level 42, you will unlock the **Battle Pass Name Change Selection Chest (战令改名卡自选礼)**.
+- **How to Claim It:** When you open this chest from your inventory, you are given a choice between a few social items (usually a Name Change Card or intimacy roses). Simply select the **Name Change Card** to add it to your backpack. [link](https://www.taptap.cn/moment/457698178297236524)
+
+### ⏱️ How Long Does It Take?
+
+If you complete your weekly Battle Pass tasks, daily activity quests, and seasonal challenges, it typically takes about **4 to 5 weeks** of casual play to hit Level 42 and claim your card. Since a typical season in Honor of Kings lasts roughly 3 months, you have plenty of time to secure your free card before the pass resets for the next season. [link](https://www.zhihu.com/en/answer/1436672228)
+
+By playing consistently every season, you can easily build up a permanent hoard of Name Change Cards without ever spending a voucher. [link](https://pvp.qq.com/web201706/newsdetail.shtml?tid=463535)
+
+Are you trying to figure out the fastest way to grind **Battle Pass XP** to reach Level 42, or do you want to know about other ways to get free cards (like using **Camp Coins**)? Let me know!
+
+- [link](https://www.zhihu.com/en/answer/1436672228)\
+  知乎\
+  How can I change my name in Honor of Kings, and do I need ...\
+  42nd level reward. You can get it by leveling up to 42 in the basic war mission … you can obtain it after about 5 weeks of accumul...
+- [link](https://pvp.qq.com/web201706/newsdetail.shtml?tid=463535)\
+  王者荣耀\
+  王者荣耀：想不花钱就获得改名卡吗？三种办法让你快速拿到手\
+  王者荣耀:想不花钱就获得改名卡吗?三种办法让你快速拿到手 \* 方法一、通过荣耀战令获取 在王者荣耀中,有一个战令系统,战令分为精英版战令和进阶版战令,精英版战令无需玩家任何消费,只要每周根据任务要求玩游戏就行了,可以快速的获得战令经验,让自己的战令快速的升级,
+- [link](https://www.taptap.cn/moment/457698178297236524)\
+  TapTap - 发现好游戏\
+  王者荣耀白嫖改名卡怎么获取- 游戏懂哥的动态\
+  王者荣耀中,你可以通过战令来免费获得改名卡。 当战令等级达到42级时,你就可以免费领取一张改名卡。 另外,你还可以通过王者营地的每日福利中使用营地币兑换改名卡。
+
+Show all
+
+## how long is a season
+
+In the Chinese version of Honor of Kings, a competitive ranked season lasts approximately **3 months**. [link](https://en.wikipedia.org/wiki/Honor%5Fof%5FKings)
+
+Because of this 3-month schedule, Tencent releases **4 new seasons per calendar year**.
+
+### 📅 Seasonal Logistics & Patterns
+
+- **The Routine:** Seasons almost always kick off on a **Thursday** or a **Wednesday**, following a major overnight game maintenance window. For example, **S44** launched on _June 25, 2026_, and **S45** launched on _September 23, 2026_. [link](https://pvp.qq.com/web201706/newsdetail.shtml?tid=802692)
+- **The Match:** The in-game **Battle Pass** (荣誉战令) is perfectly synced to the lifespan of the season. When the Battle Pass timer countdown hits zero, it indicates that the ranked season will reset just a few days later. [link](https://www.gc.com.cn/game/wzrys38sjsmshjs.htm)
+
+### 🎁 What this means for your Name Change Cards:
+
+Since each season lasts roughly **12 to 13 weeks**, you have more than enough time to casually hit **Level 42** on the free Battle Pass tier. If it takes you roughly 4 weeks of playing to unlock the card, you can easily secure your **one free Name Change Card every season** and still have around 2 months left to sit back, stockpile it, or wait out your 15-day usage cooldown. [link](https://honor-of-kings.fandom.com/wiki/Honor%5FPass:%5FSeason%5F12)
+
+Are you trying to gauge how much time you have left to **grind the current season** before your rank and Battle Pass level reset? If you tell me your current level, I can tell you if you need to rush!
+
+- [link](https://honor-of-kings.fandom.com/wiki/Honor%5FPass:%5FSeason%5F12)\
+  Honor of Kings Wiki\
+  Honor Pass: Season 12 | Honor of Kings Wiki | Fandom\
+  Season Duration: March 1 to April 24, 2025. Pass Tiers: Mini Pass (Free), Elite Pass. Deluxe Pass (~988 Honor Tokens). Progression...
+- [link](https://en.wikipedia.org/wiki/Honor%5Fof%5FKings)\
+  Wikipedia\
+  Honor of Kings - Wikipedia\
+  Each season lasts approximately 3–4 months, with season awards being given to players according to the highest tier achieved. Each...
+- [link](https://news.17173.com/z/pvp/content/03212025/221642244.shtml)\
+  17173\
+  王者荣耀赛季时间表 - 17173\
+  Mar 21, 2025 — 1、王者荣耀的赛季周期通常维持在三个月左右,这意味着每年大约会推出四个全新的赛季。 2、以2023年为例,首个赛季在1月5日左右正式上线,这个时间点通常会比战令结束时间晚大约一周。
+
+Show all
+
+# what does it take on honor of kings zhcn ver to obtain heroes
+
+## what does it take on honor of kings zhcn ver to obtain heroes
+
+In the **Chinese version of Honor of Kings** (王者荣耀 - _Wangzhe Rongyao_), obtaining heroes requires using <mark>specific<span> </span><strong>in-game currencies, luck-based draws, or participating in limited-time events</strong></mark>. [link](https://www.youtube.com/watch?v=yy2mmninzQI\&t=10)
+
+The breakdown below outlines exactly what it takes to acquire heroes in the ZH-CN version:
+
+### 1. Main In-Game Currencies (The Shop)
+
+Most standard heroes can be purchased directly from the in-game shop using three primary resources:
+
+- **Gold (金币):** Earned naturally by playing matches, completing daily missions, and leveling up your account. Standard heroes typically cost **13,888 Gold** or **18,888 Gold**. [link](https://www.youtube.com/watch?v=yy2mmninzQI\&t=10)
+- **Diamonds (钻石):** A secondary free currency awarded through ranked season rewards, growth missions, and events. A select group of core heroes (like _Daji_, _Arthur_, or _Nezha_) can be unlocked cheaply using Diamonds.
+- **Vouchers / Tokens (点券):** The premium, paid currency bought with real money. Any standard shop hero can be instantly bought with Vouchers (usually ranging from 388 to 688 Vouchers), though using free Gold is highly recommended instead. [link](https://www.youtube.com/watch?v=yy2mmninzQI\&t=10)
+
+### 2. The Fragment Shop (英雄碎片)
+
+- **Hero Fragments (英雄碎片):** You can collect these through daily sign-ins, battle passes, and event chests.
+- Once you accumulate enough (usually **58 or 68 fragments**), you can redeem them in the Fragment Shop for a rotating roster of permanent heroes completely for free. [link](https://www.youtube.com/watch?v=yy2mmninzQI\&t=10)
+
+### 3. The Diamond Roulette & Crystal Shop (Exclusive Heroes)
+
+Some legendary or highly sought-after heroes cannot be bought normally in the store:
+
+- **Han Xin (韩信):** Obtained exclusively through the **Diamond Draw (钻石夺宝)**. You spend Diamonds to spin a roulette wheel until you pull a **King's Crystal (王者水晶)**, which you then trade in the Crystal Shop for him.
+- **Wu Zetian (武则天):** The most expensive hero in the game. She requires a **Glory Crystal (荣耀水晶)**, which can only be won via the premium **Voucher Roulette (积分夺宝)** using real money.
+
+### 4. Road to Greatness & New Player Events
+
+- **Leveling Up:** As a brand-new account, you automatically unlock foundational heroes like _Arthur_ and _Hou Yi_ just by completing the tutorial and reaching early account milestones.
+- **New Player Sign-in:** The game runs a 7-to-14-day calendar for newcomers that gifts multiple free hero chests and trial cards simply for logging in daily. [link](https://www.youtube.com/watch?v=yy2mmninzQI\&t=10)
+
+### 5. Limited-Time & Collaboration Events
+
+- **SNK Heroes:** Characters like _Mai Shiranui_, _Tachibana Ukyo_, _Nakoruru_, and _Charlotte_ cannot be bought with Gold. Instead, Tencent periodically runs special event missions where you must collect specific tokens or complete challenges to unlock them for free.
+- **New Hero Launches:** Whenever a brand-new hero is released on the Chinese server, there is almost always a launch event (like the _Destiny Event_) that allows active players to earn the hero for free by completing themed matches before they hit the regular shop. [link](https://www.youtube.com/shorts/tXIlhNVca-Q)
+
+Are you trying to unlock a **specific hero** on the Chinese server right now, or are you looking for the fastest way to build up a **brand-new account**?
+
+- [link](https://www.youtube.com/watch?v=yy2mmninzQI\&t=10)\
+  YouTube·Honor of Kings\
+  Honor of Kings Tutorial: How to Get and Use Heroes\
+  Feb 28, 2024 — In Honor of Kings, players control heroes. Most heroes are available for purchase using gold or tokens, and additional heroes, tri...\
+  2m
+- [link](https://www.youtube.com/watch?v=b2UlSBJGl3Q)\
+  YouTube·Real Honor of Kings India Official\
+  Honor of Kings Tutorial: How to Get and Use Heroes\
+  hero fragments and hero chests can be obtained through missions and events heroes in the game usually have three unique skills cal...
+- [link](https://www.sportskeeda.com/esports/how-obtain-heroes-skins-honor-kings)\
+  Sportskeeda\
+  How to obtain heroes and skins in Honor of Kings - Sportskeeda\
+  Sep 4, 2024 — Players can get new heroes by earning Starstones and Tokens. While the former is collected via gameplay, the latter is earned by p...
+
+Show all
+
+## do they gift and sell easy heroes at lower price compared w the harder ones
+
+<mark><strong><span>Yes, absolutely.</span></strong></mark> The economy in the Chinese version of _Honor of Kings_ is explicitly designed to **gift or heavily discount beginner-friendly, lower-difficulty heroes**, while gating high-difficulty, high-"skill ceiling" heroes behind maximum gold prices or gacha walls. [link](https://www.zhihu.com/en/answer/1358371249)
+
+The correlation between a hero's price, difficulty, and how they are given out functions in several specific ways:
+
+### 1. The Gold Tiers: Mechanics vs. Price
+
+Gold prices generally reflect how complex a hero is to play or how much mechanical execution they require: [link](https://www.zhihu.com/en/answer/1358371249)
+
+- **The 5,888 - 8,888 Gold Tier (Super Cheap & Easy):** This tier is reserved for simple, fundamental heroes designed for players learning the game. For example, **Sun Shangxiang** (a straightforward marksman) and **Zhuang Zhou** (a highly forgiving tank that removes crowd control) sit at the lowest price points.
+- **The 13,888 Gold Tier (Moderate Difficulty):** This is the average price for standard heroes. It features solid, balanced characters whose mechanics require some positioning but are not overly complex.
+- **The 18,888 Gold Tier (High Skill Ceiling):** The maximum standard gold price is almost exclusively reserved for complex, high-difficulty heroes. Heroes like **Li Bai** or **Guan Yu** require intricate ability combos, precise map awareness, and fast fingers. Tencent keeps these expensive so new players don't buy them immediately, fail with them, and get frustrated.
+
+### 2. Beginner Heroes are Gifted for Free
+
+Tencent wants newcomers to have a functional roster immediately without wasting gold. The game completely **gifts** the easiest and most reliable starter heroes across every role: [link](https://www.zhihu.com/en/answer/1144491863)
+
+- **Arthur (亚瑟) & Angela (安琪拉):** Gifted instantly via tutorials and early sign-ins. They have simple, highly effective skill sets.
+- **Daji (妲己):** Gifted for free early on. She is famous for her "one-shot" combo that requires almost zero aiming mechanics.
+- **Hou Yi (后羿) & Luban No. 7 (鲁班七号):** Given away practically for free or via pocket change in diamonds. They are basic, immobile marksmen who rely purely on auto-attacking from a safe distance. [link](https://www.youtube.com/watch?v=9VE%5FWkmqebU)
+
+### 3. Harder Heroes are Locked Behind Gacha
+
+The most complex or elite heroes are rarely given away and often cannot even be bought with normal gold.
+
+- As mentioned before, high-execution mechanically demanding heroes like **Han Xin** or **Wu Zetian** require the Diamond or Voucher Roulettes.
+- They are intentionally kept away from beginners because an inexperienced player using them effectively hurts the team's chances of winning.
+
+In short, the system ensures that **if a hero has an easy operational limit, they will be very cheap or free**. If a hero allows for wild, flashy, hyper-carry plays (high skill ceiling), you will have to grind the full **18,888 Gold** or play the gacha to get them.
+
+Are you looking for an easy, budget-friendly hero to main in a **particular role** (like Mage, Marksman, or Jungler), or are you trying to manage your Gold savings efficiently?
+
+- [link](https://www.zhihu.com/en/answer/1358371249)\
+  知乎\
+  In Honor of Kings, why are some heroes cheaper to buy than others?\
+  Hero prices are mainly tied to the strength of the heroes, of course, it's not entirely that the price determines the strength, or...
+- [link](https://www.youtube.com/watch?v=9VE%5FWkmqebU)\
+  YouTube·Shadow HOK\
+  BEST 20 HEROES FOR BEGINNERS! | Honor of Kings\
+  luben is a very strong marksman. he can continuously spam his passive to harass enemies his passive works when you use five basic ...
+- [link](https://www.zhihu.com/en/answer/1144491863)\
+  知乎\
+  What heroes are good for beginners to play in Honor of Kings ...\
+  For beginners, start with Arthur in the lane, play Damiyan or Anqiel in the mid, and buy either Luoban or Yizheng in the bottom la...
+
+Show all
+
+## what's the relationship between the easiness and power of a hero
+
+In _Honor of Kings_, the relationship between a hero’s easiness (low difficulty) and their power is <mark>dictated by<span> </span><strong>the concepts of the Skill Floor, the Skill Ceiling, and Lower-Elo vs. High-Elo performance.</strong></mark>
+
+Tencent balances the game around a core principle: **Easy heroes provide guaranteed, consistent value, while complex heroes offer higher potential, but risk catastrophic failure.**
+
+***
+
+### 1. The Power Ceiling: Easy vs. Hard
+
+The fundamental rule of the game is that **harder heroes generally have a higher "peak" power ceiling**, but only when played flawlessly.
+
+- **Easy Heroes have Fixed Power:** An easy hero like **Angela** or **Daji** has a simple "point-and-click" or linear combo. Their maximum power is capped by their predictable kit. No matter how good you are at the game, an enemy who knows their range can avoid them. [link](https://www.youtube.com/watch?v=4ZsSyo3YIyc\&t=164)
+- **Hard Heroes have Scalable Power:** Complex heroes like **Guan Yu**, **Li Bai**, or **Shangguan Wan'er** have kits full of dashes, invulnerability frames, and resets. In the hands of a master, their power scales infinitely because they can dodge incoming skills, out-play counters, and attack from unpredictable angles.
+
+### 2. The Power Floor (The "Punishment" Factor)
+
+While hard heroes can look incredibly powerful, they suffer from a low power floor.
+
+- **Easy Heroes are Forgiving:** If you play **Arthur** or **Hou Yi**, your baseline contribution to the team is high. Even on a bad day, Arthur can press his silent button and absorb damage. [link](https://www.youtube.com/watch?v=KAcVOZ1Ot1A)
+- **Hard Heroes Punish Mistakes:** If you mess up a single dash combo on a high-difficulty assassin like **Luna**, you lose your ability cooldown resets, become completely useless, and instantly die. An easy hero's power is stable; a hard hero's power is all-or-nothing.
+
+### 3. How "Power" Shifts by Rank (Elo)
+
+Because of this relationship, a hero’s perceived power completely flips depending on your rank:
+
+| Rank Tier                                       | Who is More "Powerful"? | Why?                                                                                                                                                                                                                                                                                      |
+| ----------------------------------------------- | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Low to Mid Ranks** _(Bronze to Diamond)_      | **Easy Heroes**         | Players don't know how to dodge or position. A simple, heavy-burst easy hero like **Daji** or **Lady Zhen** can easily dominate because nobody penalizes their lack of mobility. Complex heroes often lose here because the players using them lack the mechanics to pull off the combos. |
+| **High Ranks** _(Master to Grandmaster / Peak)_ | **Hard Heroes**         | High-elo players have elite map awareness and will easily exploit an easy hero’s predictable kit. Flashy, high-difficulty heroes become top-tier because their extreme mobility and outplay potential are mandatory to crack open tight enemy defenses.                                   |
+
+### 4. Pocket Counters: Simplicity Beating Complexity
+
+Tencent intentionally balances some easy heroes to act as "kryptonite" to high-difficulty, high-mobility meta picks.
+
+- For example, **Donghuang** and **Liang** are incredibly straightforward mages/support. However, their ultimate abilities feature an unstoppable, un-cleansable suppression effect.
+- Even if an enemy is playing an incredibly complex, expensive, hyper-mobile hero, an easy hero like Donghuang can walk up, press one button, lock them down, and allow the team to burst them to pieces.
+
+Are you trying to decide if it's **worth the time to practice a high-difficulty hero**, or are you looking for a **low-difficulty hero that remains viable** even in higher ranks?
+
+- [link](https://www.youtube.com/watch?v=SA5KjFTtIbc\&vl=en-US\&t=451)\
+  YouTube·SoloZag\
+  Avoid these Mistakes in Honor of Kings\
+  Feb 25, 2026 — Avoid these Mistakes in Honor of Kings you are not stuck because of bad teammates. i know it's the easiest thing to say when you s...\
+  31s
+- [link](https://hokstats.gg/tier-list/)\
+  HoKStats.gg\
+  Honor of Kings Tier List — Season 16 opening editorial estimate… ｜ HoKStats.gg\
+  Season 16 opening tier list (2026-09-23) ranks 116 heroes across 5 roles, featuring provisional editorial adjustments. Mid (26 her...
+- [link](https://www.youtube.com/watch?v=IEnDJyaQR98)\
+  YouTube·Auberon Wizonix\
+  Most Reliable Heroes For Me | Honor of Kings | HoK\
+  Mar 20, 2026 — Angela is a B-tier hero, capable of one-shotting any hero with perfectly landed abilities, though difficult to master.\
+  01:13:56
+
+Show all
+
+## do pros play easy heroes
+
+<mark><strong><span>Yes, professional players do play easy heroes</span></strong></mark>, but they use them for entirely different reasons than beginners do.
+
+In the competitive **King Pro League (KPL)** or international majors, a hero isn’t picked just because their combos are flashy. Pros choose lower-difficulty or mechanically simple heroes because of **draft draft strategy, absolute consistency, and tactical utility**. [link](https://www.youtube.com/shorts/Oc4Opp30--Y)
+
+When pros choose simple heroes, they prioritize three specific competitive strategic advantages:
+
+### 1. The "Point-and-Click" Counter Strategy
+
+High-level _Honor of Kings_ is dominated by hyper-mobile, mechanically complex assassins and marksmen (like _Luna_, _Jing_, or _Arli_). To shut these slippery heroes down, pros will counter-pick with exceptionally easy heroes who have un-missable, hard crowd control.
+
+**Donghuang (东皇太一) & Liang (张良):** These are mechanically very simple heroes. However, their ultimate abilities feature **Suppression**, an absolute lockdown mechanic that cannot be cleansed. Pros use them to completely freeze and neutralize an enemy million-dollar superstar mid-dash.
+
+### 2. Strategic Flexibility and Safety Nets
+
+Pros value predictability over flashy outplays when millions of dollars are on the line.
+
+- **Dun (夏侯惇):** A mechanically straightforward tank who frequently dominates pro priority lists. He is incredibly forgiving, brings reliable frontline crowd control, and absorbs massive amounts of damage. Pros pick him because he does his job flawlessly without risking mistakes. [link](https://www.youtube.com/shorts/Oc4Opp30--Y)
+- **Biron / Byron (狂铁):** Another relatively simple, early-game lane bully who gets picked in pro drafts for his consistent shield generation and high sustain, allowing a team to secure early map priority. [link](https://www.youtube.com/watch?v=4ZsSyo3YIyc)
+
+### 3. Utility and Enabler Supports
+
+Many of the most popular professional support choices have incredibly simple mechanical execution but offer immense strategic depth.
+
+**Cai Yan (蔡文姬) & Sun Bin (孙膑):** These heroes require very little aiming or complex execution. However, pros pick them because their utility—continuous healing, speed boosts, and cooldown reduction—synergizes perfectly with a highly coordinated pro team moving as a five-man unit. [link](https://www.youtube.com/watch?v=4ZsSyo3YIyc)
+
+### The Pro Catch: "Macro" Over "Micro"
+
+When a pro player picks an easy hero like **Angela** or **Arthur** (which happens occasionally during specific pocket-strat drafts or "Fearless Duel" draft formats), the skill requirement shifts entirely. [link](https://www.youtube.com/watch?v=Dnw7AFJXRms)
+
+Because the hero has no flashy dashes to escape danger, the pro must rely on perfect **macro skill**—flawless positioning, hidden map vision, precise bush camping, and impeccable team coordination. In the pro league, simple mechanics mean you cannot make up for bad positioning with a quick dash, making macro execution incredibly demanding. [link](https://www.youtube.com/watch?v=KAcVOZ1Ot1A)
+
+Are you asking because you want to know if **sticking to a simple hero** can take you all the way to the highest competitive ranks, or are you curious about a specific pro draft you saw?
+
+- [link](https://www.youtube.com/watch?v=4ZsSyo3YIyc)\
+  YouTube·Emu PlayZZ\
+  Solo Queue Hell? 15 Best Heroes to Carry Your Team & Rank ...\
+  Jun 8, 2026 — Byron excels in early-game lane domination with high damage, shield generation, and self-healing, capable of winning 1v2 situation...\
+  15:48
+- [link](https://www.facebook.com/groups/278370476020662/posts/1870994146758279/)\
+  Facebook·Honor of kings Latinoamerica.\
+  Heroes for beginner and advanced players in Honor of Kings\
+  Arthur – A tanky warrior with simple skills and strong sustain. Perfect for leading the charge!
+- [link](https://www.youtube.com/watch?v=KAcVOZ1Ot1A)\
+  YouTube·Emu PlayZZ\
+  10 Heroes EVERY New Honor of Kings Player Should Try!\
+  Sep 20, 2026 — 10 Heroes EVERY New Honor of Kings Player Should Try! so Wukong is a great next step for a beginner who wants to learn the more ag...\
+  10:20
+
+Show all
+
+## do some pro streamers use easy heroes as main
+
+<mark><strong><span>Yes, absolutely.</span></strong></mark> Many top-tier Chinese streamers make a massive living on platforms like Douyin, Huya, and Bilibili by exclusively "maining" or one-tricking easy, mechanically simple heroes. [link](https://www.reddit.com/r/DotA2/comments/1sk8dwf/what%5Fmakes%5Fyou%5Fa%5Fhero%5Fspammer%5Fvs%5Fa%5Fhero%5Fmain/)
+
+While professional KPL players must master high-difficulty meta heroes, streamers operate under a different entertainment model. In the Chinese _Honor of Kings_ community, these creators are known as **"Instalock/One-Trick Streamers" (专精主播 / 绝活哥)**.
+
+Streamers main easy heroes for several strategic and financial reasons:
+
+### 1. High "Macro" and Mind Games (The Brains over Fingers Approach)
+
+When a streamer plays a high-rank Grandmaster or "Peak Tournament" (巅峰赛) match with a basic hero, the entertainment value comes from showing how **supreme game knowledge (macro) can defeat fast fingers (micro)**.
+
+- **The "Arthur" Mains:** There are famous streamers who play **Arthur (亚瑟)**—the literal tutorial hero—at the highest level. Because Arthur’s kit is so simple, these streamers win by predicting enemy rotations, flawlessly managing minion waves, and using Arthur's simple silence skill to shut down flashy, hyper-mobile enemy assassins at the perfect micro-second. [link](https://pvp.qq.com/web201605/newsDetail.shtml?tid=388877)
+
+### 2. The "Relatability" Factor (观众共鸣)
+
+Viewers tune in to learn things they can actually replicate.
+
+- If a streamer plays **Jing** or **Luna**, average viewers might find the clip cool but will think, _"I can never do that, my fingers are too slow."_ [link](https://www.youtube.com/watch?v=rDLMCebgBDA)
+- If a streamer takes **Luban No. 7** (a heavily bullied, low-mobility beginner marksman) or **Lady Zhen** (a basic starter mage) into a Top 500 lobby and dominates, the chat goes wild. It gives regular players hope and teaches them how to position effectively with the heroes they already own. [link](https://www.youtube.com/watch?v=tBeYA12e2%5F4)
+
+### 3. Entertainment and "Trolling" Content
+
+Some mechanically easy heroes are inherently funny or infuriating to play against, making for great streaming content.
+
+- **Cheng Yaojin (程咬金):** A brainless tank who simply presses his ultimate to regenerate massive amounts of health. Streamers love maining him because they can run deep into the enemy base, proxy minion waves, tilt the entire enemy team, and escape alive while laughing on camera.
+- **Zhuang Zhou (庄周):** The "fish" tank who is permanently immune to crowd control. Streamers main him to intentionally absorb every single enemy skill, safely swim away, and banter with their chat while doing it. [link](https://zhuanlan.zhihu.com/p/557496024)
+
+### 4. Pocket Specialization (The Ultimate Counter-Pick)
+
+Some high-elo streamers main simple heroes to act as the ultimate anti-meta tool. Streamers who main **Donghuang** or **Liang** accumulate millions of views simply by teaching players exactly when to click their unstoppable "Suppression" ultimates to completely ruin the day of a sweaty, high-execution enemy player.
+
+### Famous Examples of "Simple Hero" Archetypes in the Scene:
+
+- **The "Kaizer" (铠) One-Tricks:** Streamers who play Kaizer completely full-damage ("One-Slash Build"). The mechanics are just pressing his ultimate and auto-attacking, but the stream is incredibly hype because he instantly deletes enemies in one hit.
+- **The "Mage" One-Tricks:** Streamers who one-trick **Angela** or **妲己 (Daji)** into Top 100 Peak Matches. They rely entirely on sitting in blind-spot bushes to ambush high-elo players who get too careless. [link](https://www.youtube.com/watch?v=KAcVOZ1Ot1A)
+
+Are you looking for a **specific Chinese streamer** to watch to learn a certain simple hero, or are you trying to find a simple hero that is safe to one-trick to high ranks yourself?
+
+- [link](https://www.reddit.com/r/DotA2/comments/1sk8dwf/what%5Fmakes%5Fyou%5Fa%5Fhero%5Fspammer%5Fvs%5Fa%5Fhero%5Fmain/)\
+  Reddit·RGOnax The Valve Guy\
+  What Makes you a Hero "Spammer" vs a Hero "Main" : r/DotA2\
+  Apr 13, 2026 — The terms "main," "spammer," "one trick," or "one-trick pony" describe players who primarily use a limited selection of characters...\
+  [34s](https://www.reddit.com/r/DotA2/comments/1sk8dwf/what%5Fmakes%5Fyou%5Fa%5Fhero%5Fspammer%5Fvs%5Fa%5Fhero%5Fmain/)
+- [link](https://zhuanlan.zhihu.com/p/557496024)\
+  知乎专栏\
+  王者荣耀新手玩什么英雄好（适合新手玩的十大英雄推荐） - 知乎\
+  Aug 24, 2022 — 王者荣耀新手玩什么英雄好(适合新手玩的十大英雄推荐). 法师的作用为消耗、收割和控制,需要注意的是保证自身存活后,打出伤害。 新手法师推荐诸葛亮、小乔、安琪拉、妲己,操作简单易上手,中级法师有墨子、高渐离、嬴政以及干将莫邪,需要一点操作,可用来练习,较为高端的...
+- [link](https://www.youtube.com/watch?v=tBeYA12e2%5F4)\
+  YouTube·Excoundrel\
+  THE TOP 10 Heroes for NEW PLAYERS in Honor of Kings - 2 ...\
+  Jun 23, 2024 — Here are the top 10 beginner guide friendly heroes that you can carry games with in Honor of Kings (hok) - they are simple to play...\
+  39:32
+
+Show all
+
+## why can easy heroes be played on top matches
+
+In top-level _Honor of Kings_ matches—such as high-Elo **Peak Tournaments (巅峰赛)** or professional **KPL league drafts**—easy heroes are not just viable; they are frequently prioritized.
+
+When elite players pick mechanically simple heroes like **Angela**, **Dun**, **Daji**, or **Liang**, they are capitalizing on tactical advantages that high-difficulty heroes simply cannot provide: [link](https://www.thevaultohio.com/post/honor-of-kings-tier-list-best-heroes)
+
+### 1. 100% Guaranteed Execution (Zero Room for Mechanical Failure)
+
+In top lobbies, mistakes are punished instantly. If a player messes up a complex, high-speed dash combo on a hero like _Luna_ or _Jing_, they lose their skill resets, get locked down, and throw the entire match.
+
+- **The Power of Simplicity:** An easy hero’s kit is mechanically foolproof. When an elite player uses a simple tank like **Dun** or a burst mage like **Angela**, their abilities always activate exactly as intended. By removing the risk of "fat-fingering" a complex combo, top players guarantee their baseline damage or crowd control in chaotic, high-pressure team fights. [link](https://www.youtube.com/watch?v=Dnw7AFJXRms)
+
+### 2. Shifting Mental Focus from "Micro" to "Macro"
+
+_Honor of Kings_ at the highest level is a game of hyper-precise map control, minion wave management, and split-second rotation timing. [link](https://www.youtube.com/watch?v=SA5KjFTtIbc\&vl=en-US)
+
+- When a player chooses an incredibly complex hero, a massive portion of their active brainpower must be dedicated strictly to executing their own mechanical inputs (micro). [link](https://www.youtube.com/watch?v=aXE-mF8%5FzDY\&vl=en-US)
+- By picking an easy hero, the player completely frees up their mental capacity to focus entirely on the broader map state (macro). They can spend more time tracking the enemy jungler's hidden position, coordinating precise ambush timings, and guiding team comms. [link](https://www.youtube.com/watch?v=aXE-mF8%5FzDY\&vl=en-US)
+
+### 3. Un-Counterable "Point-and-Click" Utility
+
+High-difficulty heroes rely entirely on extreme mobility (dashes, blinks, and movement speed boosts). Tencent balances these hyper-mobile threats by equipping several mechanically basic heroes with instant, unavoidable crowd control. [link](https://www.reddit.com/r/honorofkings/comments/1u26yv0/s14%5Fis%5Fendingheres%5Fmy%5Ffull%5Ftier%5Flist%5Ffor%5Fthe/)
+
+- **The Hard Counter:** Heroes like **Liang** and **Donghuang** require almost no mechanical skill to pilot. However, their ultimate abilities feature an unstoppable "Suppression" lock that cannot be broken by _Purify_ or any cleansing effects. In a top match, a simple point-and-click stun is the ultimate tool to shut down an enemy carrying a high-skill, hyper-mobile hero. [link](https://www.ldshop.gg/blog/tier-list/hok-tier-list.html)
+
+### 4. Flawless Bush Ambushing (The High-Elo Mind Game)
+
+High-Elo players check the minimap roughly every 3 to 5 seconds, making it incredibly difficult to catch them in the open. Top players use simple, instant-burst heroes to master the art of the blind-spot ambush. [link](https://www.youtube.com/watch?v=SA5KjFTtIbc\&vl=en-US)
+
+- An elite player pilot playing **Angela** or **Daji** will use exceptional map awareness to anticipate exactly where an enemy carry will walk. They hide in un-warded bushes, wait patiently, and dump their simple, full-burst combo. Because the hero's execution is instant, the enemy carry is deleted before they can use their high-mobility dashes to escape. [link](https://www.youtube.com/watch?v=aXE-mF8%5FzDY\&vl=en-US)
+
+### 5. Synergy with Overpowered Teams
+
+In a casual lower-rank match, players often have to pick self-sufficient, complex heroes to "solo-carry" a disorganized team. In top-level matches, teams move as a coordinated five-man unit.
+
+- Simple utility and enabler support heroes like **Cai Yan** (who simply presses an area-of-effect heal) or **Yaria** (who attaches to a teammate) become absolute powerhouses in top matches. Because their allies have world-class positioning, the simple, reliable stat-boosts provided by these easy heroes make their elite teammates completely unstoppable. [link](https://www.reddit.com/r/honorofkings/comments/1u26yv0/s14%5Fis%5Fendingheres%5Fmy%5Ffull%5Ftier%5Flist%5Ffor%5Fthe/)
+
+Would you like to analyze a specific easy hero's **high-Elo build and playstyle**, or are you looking for tips on how to improve your **map rotation and macro awareness**?
+
+- [link](https://www.youtube.com/watch?v=SA5KjFTtIbc\&vl=en-US)\
+  YouTube·SoloZag\
+  Avoid these Mistakes in Honor of Kings\
+  Feb 25, 2026 — Check the minimap every 5 seconds to prevent ganks and avoid pushing lanes without vision. always clear your lane wave before rota...\
+  8:03
+- [link](https://www.youtube.com/watch?v=aXE-mF8%5FzDY\&vl=en-US)\
+  YouTube·SoloZag\
+  Fix Every Beginner Mistake in Honor of Kings Guide\
+  Jan 10, 2026 — Support heroes bolster teammates with crowd control, shields, healing, or other abilities, demanding a deep understanding of enemy...\
+  27:15
+- [link](https://www.youtube.com/watch?v=a0xwOV3a0Xk)\
+  YouTube·Honor of Kings AR\
+  5 Secret Honor of Kings Tricks That Feel Like Hacks\
+  Mar 10, 2026 — Lady Jean can become temporarily untargetable for 2-3 seconds by standing directly on her first skill's icy area, making her immun...\
+  8:07
+
+Show all
+
+## why can one consistently pick easy heroes on top matches
+
+A player can <mark><strong>consistently pick easy heroes in top matches because their kits are immune to bans, they rarely get nerfed, and they act as universal "filler" pieces</strong><span> </span>that seamlessly adapt to any team composition</mark>.
+
+While high-skill "meta" heroes are constantly heavily contested, banned, or countered, simple heroes offer a level of draft stability that allows one-tricks and high-Elo players to pick them match after match without resistance.
+
+Here is exactly why easy heroes enjoy such an uninterrupted, consistent pick rate at the highest levels:
+
+### 1. They Completely Bypass the Ban Phase
+
+In high-Elo Peak Tournaments (巅峰赛) and professional KPL drafts, bans are heavily weaponized against high-difficulty, hyper-carry heroes (like _Jing_, _Luna_, _Arli_, or _Yaria_).
+
+- **The Low-Threat Illusion:** Top players rarely waste a ban on an easy hero like **Arthur**, **Dun**, or **Lady Zhen**. Because these heroes are viewed as predictable, enemies will gladly leave them open to ban the flashy, game-breaking threats. This means if you main a simple hero, they will almost always be available for you to lock in.
+
+### 2. Universal "Plug-and-Play" Draft Synergy
+
+High-difficulty heroes often require specific team compositions to work. For example, a hyper-mobile assassin might require a support who can keep up with their dashes. Easy heroes, however, are structurally designed to be modular.
+
+- **The Perfect Fill:** A simple, reliable tank like **Dun** or a straightforward utility mage like **Angela** can be slotted into practically any team composition. Whether your team wants to play aggressively early on, turtle up for the late game, or focus on team-fight womb-combos, an easy hero's kit provides a reliable baseline (like solid frontline soaking or instant wave clear) that never ruins a draft.
+
+### 3. Absolute Immunity to "Patch Notes" (System Balance)
+
+Tencent balance patches heavily target high-difficulty heroes because their extreme skill ceilings frequently break competitive balance.
+
+- **The Balancing Safe Haven:** Simple heroes have very stable win rates across the entire player base. Because their kits are linear, developers rarely find them "overpowered" in a game-breaking way. While high-skill heroes suffer from a roller coaster of buffs and heavy nerfs, an easy hero stays consistently viable for years, allowing you to master their macro gameplay without fear of your hero becoming useless next week.
+
+### 4. Psychological Comfort and "Tilt" Prevention
+
+Top-level matches are incredibly stressful, and mental fatigue is a massive factor during long gaming sessions or tournament series.
+
+- **Reducing Cognitive Load:** Playing a high-execution hero requires maximum focus on micro-movements, cooldown tracking, and finger placement every single second. Picking an easy hero lowers your mechanical stress. If a player is having an "off day" or feeling fatigued, consistently picking a simple hero ensures they can still perform at a 90% efficiency level without risking devastating mechanical misplays.
+
+### 5. They Stabalize Random Solo-Queue Lobbies
+
+In high-Elo solo queue, you cannot trust your random teammates to coordinate perfectly with complex strategies.
+
+- **The Lowered Barrier to Cooperation:** If you pick a highly complex hero that requires a specific playstyle from your team, miscommunication can lose you the game. If you pick a simple hero like **Donghuang** or **Liang**, your teammates instantly know what to do. When they see you press your point-and-click ultimate to lock an enemy down, the signal to attack is glaringly obvious, forcing immediate, accidental team coordination.
+
+Are you trying to pick a **reliable "comfort" hero** to consistently main so you don't have to worry about draft bans, or are you curious about how to **properly draft against** someone who consistently picks these simple heroes?
+
+## why can one main easy heroes and win top matches normally nevertheless
+
+Winning in top-tier lobbies (like **Top 500 Peak Tournaments** or **Mythic/Grandmaster** ranks) with mechanically easy heroes comes down to a fundamental reality of competitive gaming: <mark><strong>you do not get extra points for playing a harder character</strong></mark>. [link](https://www.reddit.com/r/OverwatchUniversity/comments/12ppzek/if%5Fim%5Fgood%5Fwithall%5Fmy%5Fmains%5Fare%5Feasy%5Fcharacters/)
+
+When highly skilled players—frequently known as **"Instalock/One-Trick Streamers" (绝活哥)**—consistently win top matches using basic heroes, it is because they have traded mechanical execution for mathematical, environmental, and mental dominance. [link](https://www.bilibili.com/video/BV1KQ8EzxEHm/)
+
+### 1. Reaching "Mechanical Perfection" Instantly
+
+Every hero has a cap on how flawlessly their buttons can be pressed.
+
+- **The Hard Hero Limit:** On a high-difficulty hero like _Jing_ or _Luna_, even a pro player can only achieve about 90–95% input accuracy under intense, high-pressure team fights. Mistakes happen, and a single fat-fingered dash ends in disaster.
+- **The Easy Hero Limit:** On an easy hero like **Dun**, **Angela**, or **Arthur**, a top-tier player achieves **100% mechanical perfection every single game**. Because the physical execution is fool-proof, they remove mechanical error entirely from their equation. Their damage, shields, and stuns hit with maximum statistical efficiency every single time. [link](https://us.forums.blizzard.com/en/overwatch/t/stop-making-characters-easy-stop-making-easy-characters-too-powerful/358577)
+
+### 2. High "Macro Skill" Weaponizes Basic Kits
+
+MOBA skill is divided into two parts: _micro_ (finger speed) and _macro_ (game sense, positioning, map awareness). Top players who main simple heroes possess elite macro. [link](https://www.reddit.com/r/rivals/comments/1kq3ihp/genuine%5Fquestion%5Fwhy%5Fdoes%5Fit%5Fmatter%5Fif%5Fa%5Fhero%5Fis/)
+
+- They win by playing the **map**, not the hero.
+- An elite **Lady Zhen** or **Daji** main in a top match doesn't fight enemies in the open. Instead, they use flawless map tracking to predict where an enemy carry will walk 15 seconds in advance. They manipulate minion waves, control the vision game, and abuse blind spots. The hero is just the tool used to deliver the payload once their macro has already won the psychological battle.
+
+### 3. Exploiting "Draft Tunnel Vision"
+
+Top-tier players heavily counter-draft based on the meta. If the meta dictates hyper-mobile assassins, players build teams to stop those specific assassins.
+
+- When someone consistently locks in a simple, overlooked hero like **Biron (狂铁)** or **Sun Bin**, they throw off the enemy team's drafting logic.
+- Enemies often fail to respect the raw base stats of simple heroes. A full-damage **Kaizer (铠)** or a perfectly positioned **Xiao Qiao** can completely wipe a team fight because the enemies wasted all their mental energy and draft bans trying to counter flashy meta picks, leaving them vulnerable to direct, overwhelming raw damage.
+
+### 4. Punishing the Mistakes of Complex Heroes
+
+High-elo players using high-difficulty heroes play on a knife's edge. They are constantly looking to make flashy outplays, which makes them aggressive and predictable.
+
+- Easy hero mains win by playing like a brick wall.
+- If an enemy _Guan Yu_ or _Shangguan Wan'er_ dives in to make a montage-worthy play, a simple **Donghuang** or **Liang** main just stands still and clicks their point-and-click Suppression ultimate. Easy heroes act as the ultimate "punishment system" in top ranks—they wait for the hyper-mobile player to make a single micromanagement mistake, and then instantly delete them for it.
+
+### 5. Conserving Mental Stamina (The Fatigue Advantage)
+
+Playing a top match with a high-apm (actions per minute) hero is exhausting. After 5 or 6 intense Peak Tournament matches, a player's reaction time slows down.
+
+- Players who main simple heroes suffer far less cognitive fatigue. While their opponent's hands are getting tired and their brains are fried from tracking infinite dash resets, the easy-hero main is completely relaxed. They have the exact same mental clarity in match #10 as they did in match #1, allowing them to make better shot-calls and smarter late-game decisions. [link](https://www.reddit.com/r/rivals/comments/1kq3ihp/genuine%5Fquestion%5Fwhy%5Fdoes%5Fit%5Fmatter%5Fif%5Fa%5Fhero%5Fis/)
+
+Ultimately, an easy hero limits your _options_, but it does not limit your _intelligence_. In top matches, a genius player using a simple tool will almost always beat an average player trying to wield a complex one. [link](https://www.reddit.com/r/Competitiveoverwatch/comments/1mas252/lowskill%5Fheroes%5Fare%5Fnecessary%5Fto%5Fthe%5Fsuccess%5Fof%5Fa/)
+
+Are you currently experiencing a wall in your **high-Elo rank climb**, or are you trying to decide on a **simple hero to one-trick** that won't fall off as you climb higher?
+
+- [link](https://www.reddit.com/r/OverwatchUniversity/comments/12ppzek/if%5Fim%5Fgood%5Fwithall%5Fmy%5Fmains%5Fare%5Feasy%5Fcharacters/)\
+  Reddit·r/OverwatchUniversity\
+  If I'm good with/all my mains are “easy” characters, am ... - Reddit\
+  Apr 17, 2023 — We usually divide the skill of a player into several categories : game sense, mechanical skill, experience, positioning etc. Heroe...
+- [link](https://www.reddit.com/r/rivals/comments/1kq3ihp/genuine%5Fquestion%5Fwhy%5Fdoes%5Fit%5Fmatter%5Fif%5Fa%5Fhero%5Fis/)\
+  Reddit\
+  genuine question: why does it matter if a hero is “easy” to play or not?\
+  May 19, 2025 — Even if a character is "easy" they're hard to pull off against skilled players. So it increases player count,
+- [link](https://www.reddit.com/r/Competitiveoverwatch/comments/1mas252/lowskill%5Fheroes%5Fare%5Fnecessary%5Fto%5Fthe%5Fsuccess%5Fof%5Fa/)\
+  Reddit\
+  "Low\
+  Jul 27, 2025 — In practice, easy characters generally do lose to hard characters, it just requires that the people playing difficult characters a...
+
+Show all
+
