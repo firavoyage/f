@@ -45,7 +45,9 @@ if you can, you may try to parse katex.
 ---
 
 - code?
-- have, repo, humility, pure, ...
+- have, record, observe
+- repo
+- humility, pure, ...
 - para, material, ...
 - float
 
