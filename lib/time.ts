@@ -1,5 +1,6 @@
 import { constructFrom } from 'date-fns';
 import { TZDate } from '@date-fns/tz';
+import { getTimezoneOffset } from 'date-fns-tz'
 
 type time = {
   timestamp: number
@@ -18,8 +19,7 @@ type offset = number
 type timezone = 'utc' | 'local' | iana_timezone_name | offset
 
 export function time(year: number, month: number, day: number, hour: number, min: number, sec: number, timezone: timezone = 'local') {
-
-  const tzDate = new TZDate(year, month - 1, day, hour, min, sec, timezone);
+  const tzDate = new TZDate(year, month - 1, day, hour, min, sec, format_offset(timezone_to_offset(timezone)));
   const timestamp = Math.floor(tzDate.getTime() / 1000);
   const offset = tzDate.getTimezoneOffset() * (-60);
 
@@ -34,9 +34,7 @@ export function now(timezone?: timezone) {
 
   // core
   const timestamp = current_time.getTime()
-  const offset = timezone == 'utc' ? 0 :
-    is(timezone, 'number') ? timezone :
-      current_time.getTimezoneOffset() * 60
+  const offset = timezone_to_offset(timezone)
 
   // derived
   const year = current_time.getFullYear()
@@ -54,11 +52,6 @@ export function now(timezone?: timezone) {
 export function format(time: time, pattern: string) {
   const { year, month, day, hour, min, sec, offset } = time
 
-  const offset_min = offset / 60
-  const timezone_sign = offset_min <= 0 ? '+' : '-'
-  const timezone_hour = pad(floor(abs(offset_min) / 60))
-  const timezone_min = pad(abs(offset_min) % 60)
-
   const macros = {
     Y: year,
     m: pad(month),
@@ -66,8 +59,8 @@ export function format(time: time, pattern: string) {
     H: pad(hour),
     M: pad(min),
     S: pad(sec),
-    z: `${timezone_sign}${timezone_hour}${timezone_min}`,
-    ':z': `${timezone_sign}${timezone_hour}:${timezone_min}`,
+    z: format_offset(offset, false),
+    ':z': format_offset(offset),
   }
 
   const shortcuts = {
@@ -102,13 +95,28 @@ function Time(data: time) {
 //   })
 // }
 
-function offset_to_timezone(offset: number) {
+function format_offset(offset: number, colon = true) {
   const offset_min = offset / 60
   const timezone_sign = offset_min <= 0 ? '+' : '-'
   const timezone_hour = pad(floor(abs(offset_min) / 60))
   const timezone_min = pad(abs(offset_min) % 60)
 
-  const timezone = `${timezone_sign}${timezone_hour}:${timezone_min}`
+  if (colon) {
+    return `${timezone_sign}${timezone_hour}:${timezone_min}`
+  } else {
+    return `${timezone_sign}${timezone_hour}${timezone_min}`
+  } 
+}
 
-  return timezone
+function timezone_to_offset(timezone?: timezone) {
+  if (timezone == 'utc' || timezone == 'gmt') {
+    return 0
+  } else if (timezone == 'local' || !is_given(timezone)) {
+    const current_time = new Date();
+    return current_time.getTimezoneOffset() * 60
+  } else if (is(timezone, 'number')) {
+    return timezone
+  } else if (is(timezone, 'string')) {
+    return getTimezoneOffset(timezone) / 1000
+  } 
 }
