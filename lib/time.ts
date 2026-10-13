@@ -18,9 +18,11 @@ type offset = number
 type timezone = 'utc' | 'local' | iana_timezone_name | offset
 
 export function time(year: number, month: number, day: number, hour: number, min: number, sec: number, timezone?: timezone) {
-  const tzDate = new TZDate(year, month - 1, day, hour, min, sec, format_offset(timezone_to_offset(timezone)));
-  const timestamp = Math.floor(tzDate.getTime() / 1000);
-  const offset = tzDate.getTimezoneOffset() * (-60);
+  const tz_time = new TZDate(year, month - 1, day, hour, min, sec, format_offset(timezone_to_offset(timezone)));
+
+  log(parse_js_time(tz_time))
+
+  const { timestamp, offset } = parse_js_time(tz_time)
 
   return Time({
     // core
@@ -31,20 +33,18 @@ export function time(year: number, month: number, day: number, hour: number, min
 }
 
 export function now(timezone?: timezone) {
-  const { year, month, day, hour, min, sec } = js_time()
-
+  const { year, month, day, hour, min, sec } = parse_js_time(new Date())
   return time(year, month, day, hour, min, sec, timezone)
 }
 
 export function at(timestamp: number, timezone?: timezone) {
   const timestamp_ms = timestamp * 1000
-  const { year, month, day, hour, min, sec } = js_time(timestamp_ms)
-
+  const { year, month, day, hour, min, sec } = parse_js_time(new Date(timestamp_ms))
   return time(year, month, day, hour, min, sec, timezone)
 }
 
-export function format(time: time, pattern: string) {
-  const { year, month, day, hour, min, sec, offset } = time
+export function format(t: time, pattern: string) {
+  const { year, month, day, hour, min, sec, offset } = t
 
   const macros = {
     Y: year,
@@ -74,10 +74,16 @@ export function format(time: time, pattern: string) {
   return pattern
 }
 
-export function get_local(time: time, timezone?: timezone) {
-  const tz_time = new TZDate(time.timestamp * 1000, format_offset(time.offset))
-  const converted_tz_time = 
+export function get_local(t: time, timezone?: timezone) {
+  const old_tz_time = new TZDate(t.timestamp * 1000, format_offset(t.offset))
+  const new_tz_time = new TZDate(old_tz_time, format_offset(timezone_to_offset(timezone)))
 
+  const { year, month, day, hour, min, sec } = parse_js_time(new_tz_time)
+  return time(year, month, day, hour, min, sec, timezone)
+}
+
+export function get_utc(t: time) {
+  return get_local(t, 'utc')
 }
 
 function pad(n: number, length = 2) {
@@ -86,7 +92,9 @@ function pad(n: number, length = 2) {
 
 function Time(data: time) {
   return chainable(data, {
-    format
+    format,
+    get_local,
+    get_utc
   })
 }
 // function Time<T>(data: T) {
@@ -112,8 +120,8 @@ function timezone_to_offset(timezone?: timezone) {
   if (timezone == 'utc' || timezone == 'gmt') {
     return 0
   } else if (timezone == 'local' || !is_given(timezone)) {
-    const current_time = new Date();
-    return current_time.getTimezoneOffset() * 60
+    const { offset } = parse_js_time(new Date())
+    return offset
   } else if (is(timezone, 'number')) {
     return timezone
   } else if (is(timezone, 'string')) {
@@ -121,15 +129,28 @@ function timezone_to_offset(timezone?: timezone) {
   }
 }
 
-function js_time(...args: ConstructorParameters<typeof Date>) {
-  const _time = new Date(...args)
+function parse_js_time(date) {
+  const timestamp = floor(date.getTime() / 1000);
+  const offset = date.getTimezoneOffset() * (-60);
 
-  const year = _time.getFullYear()
-  const month = _time.getMonth() + 1
-  const day = _time.getDate()
-  const hour = _time.getHours()
-  const min = _time.getMinutes()
-  const sec = _time.getSeconds()
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const hour = date.getHours()
+  const min = date.getMinutes()
+  const sec = date.getSeconds()
 
-  return { year, month, day, hour, min, sec }
+  return { timestamp, offset, year, month, day, hour, min, sec }
 }
+// function js_time(...args: ConstructorParameters<typeof Date>) {
+//   const _time = new Date(...args)
+
+//   const year = _time.getFullYear()
+//   const month = _time.getMonth() + 1
+//   const day = _time.getDate()
+//   const hour = _time.getHours()
+//   const min = _time.getMinutes()
+//   const sec = _time.getSeconds()
+
+//   return { year, month, day, hour, min, sec }
+// }
