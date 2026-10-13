@@ -12,7 +12,7 @@ methods
   - at timestamp (in sec) timezone
 - parse
   - _parse s pattern_
-  - (standard) s
+  - _(standard) s_
 - check
   - _is utc/gmt_
   - _is dst_ <!-- daylight savings time -->

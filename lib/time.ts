@@ -1,4 +1,3 @@
-import { constructFrom } from 'date-fns';
 import { TZDate } from '@date-fns/tz';
 import { getTimezoneOffset } from 'date-fns-tz'
 
@@ -18,35 +17,30 @@ type offset = number
 
 type timezone = 'utc' | 'local' | iana_timezone_name | offset
 
-export function time(year: number, month: number, day: number, hour: number, min: number, sec: number, timezone: timezone = 'local') {
+export function time(year: number, month: number, day: number, hour: number, min: number, sec: number, timezone?: timezone) {
   const tzDate = new TZDate(year, month - 1, day, hour, min, sec, format_offset(timezone_to_offset(timezone)));
   const timestamp = Math.floor(tzDate.getTime() / 1000);
   const offset = tzDate.getTimezoneOffset() * (-60);
 
   return Time({
+    // core
     timestamp, offset,
+    // derived
     year, month, day, hour, min, sec
   })
 }
 
 export function now(timezone?: timezone) {
-  const current_time = new Date();
+  const { year, month, day, hour, min, sec } = js_time()
 
-  // core
-  const timestamp = current_time.getTime()
-  const offset = timezone_to_offset(timezone)
+  return time(year, month, day, hour, min, sec, timezone)
+}
 
-  // derived
-  const year = current_time.getFullYear()
-  const month = current_time.getMonth() + 1
-  const day = current_time.getDate()
-  const hour = current_time.getHours()
-  const min = current_time.getMinutes()
-  const sec = current_time.getSeconds()
+export function at(timestamp: number, timezone?: timezone) {
+  const timestamp_ms = timestamp * 1000
+  const { year, month, day, hour, min, sec } = js_time(timestamp_ms)
 
-  return Time({
-    timestamp, year, month, day, hour, min, sec, offset
-  })
+  return time(year, month, day, hour, min, sec, timezone)
 }
 
 export function format(time: time, pattern: string) {
@@ -80,6 +74,12 @@ export function format(time: time, pattern: string) {
   return pattern
 }
 
+export function get_local(time: time, timezone?: timezone) {
+  const tz_time = new TZDate(time.timestamp * 1000, format_offset(time.offset))
+  const converted_tz_time = 
+
+}
+
 function pad(n: number, length = 2) {
   return str(n).padStart(length, '0')
 }
@@ -105,7 +105,7 @@ function format_offset(offset: number, colon = true) {
     return `${timezone_sign}${timezone_hour}:${timezone_min}`
   } else {
     return `${timezone_sign}${timezone_hour}${timezone_min}`
-  } 
+  }
 }
 
 function timezone_to_offset(timezone?: timezone) {
@@ -118,5 +118,18 @@ function timezone_to_offset(timezone?: timezone) {
     return timezone
   } else if (is(timezone, 'string')) {
     return getTimezoneOffset(timezone) / 1000
-  } 
+  }
+}
+
+function js_time(...args: ConstructorParameters<typeof Date>) {
+  const _time = new Date(...args)
+
+  const year = _time.getFullYear()
+  const month = _time.getMonth() + 1
+  const day = _time.getDate()
+  const hour = _time.getHours()
+  const min = _time.getMinutes()
+  const sec = _time.getSeconds()
+
+  return { year, month, day, hour, min, sec }
 }
