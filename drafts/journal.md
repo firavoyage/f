@@ -55248,6 +55248,8 @@ it's fine to ask multiple in one, which would behave like a wiki or some workflo
 
 20 40 test recorder deeply inside, inside, and outside, play a podcast for example
 
+inspires me. i may listen to podcasts. would be more though provoking than jpop.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
