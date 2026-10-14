@@ -7031,4 +7031,51 @@ If you're curious about a specific angle, let me know if you would like to look 
 
 Show all
 
-# 
+# criticism on daylight savings time
+
+The custom of changing our clocks twice a year is heavily criticized, with widespread public dissatisfaction and expert opposition. Criticism of **Daylight Saving Time (DST)** generally targets two distinct aspects: <mark>the physical disruption caused by the biannual "spring forward" switch, and the negative consequences of making DST permanent</mark>. [link](https://pmc.ncbi.nlm.nih.gov/articles/PMC10476036/)
+
+Critics, including sleep scientists, economists, and parents, point to several core arguments against the practice:
+
+### 1. Health and Sleep Disruption
+
+- **Circadian Misalignment:** The human body relies on morning sunlight to synchronize its internal biological clock. Moving clocks forward forces people to wake up in darkness, causing acute sleep loss and chronic fatigue. [link](https://www.science.org/content/article/does-daylight-saving-time-make-sense-scientists-debate-pros-and-cons)
+- **Cardiovascular Risks:** Studies have historically shown a noticeable spike in heart attacks and strokes during the week immediately following the springtime shift due to acute sleep deprivation and stress. However, the exact severity of long-term health risks remains an active debate among physicists and researchers. [link](https://medicalxpress.com/news/2026-04-physicists-refute-famous-daylight-poses.html)
+
+### 2. Public Safety and Productivity
+
+- **Traffic and Workplace Accidents:** The loss of sleep during the spring transition correlates with a sharp rise in fatal traffic collisions and workplace injuries. [link](https://en.wikipedia.org/wiki/Analysis%5Fof%5Fdaylight%5Fsaving%5Ftime)
+- **Economic Costs:** The "groggy" workforce results in a distinct drop in productivity. The logistical chaos of manually resetting clocks and dealing with scheduling confusion costs hundreds of millions of dollars globally. [link](https://www.ussc.edu.au/daylight-savers-or-night-wasters-the-case-against-permanent-daylight-saving-time-in-the-united-states)
+
+### 3. The "Dark Winter Morning" Problem
+
+Politicians frequently introduce bills like the [Sunshine Protection Act](https://time.com/article/2026/10/07/senate-permanent-daylight-saving-time-sunshine-protection-act/) to eliminate the clock changes by keeping DST year-round. However, sleep experts and local communities intensely criticize _permanent_ DST: [link](https://www.pbs.org/newshour/economy/daylight-saving-time-causes-lower-productivity-and-higher-health-care-costs-studies-say)
+
+- **Danger to Schoolchildren:** Under year-round DST, winter sunrises are delayed until 8:30 AM or later in many regions. This forces children to walk to school or wait for buses in pitch darkness, creating immense safety hazards. [link](https://www.facebook.com/5news/videos/after-days-of-public-criticism-from-president-trump-sen-tom-cotton-tells-5news-h/1096658159896417/)
+- **Failed Historical Experiments:** The U.S. enacted permanent DST in 1974, but public approval plummeted instantly from 79% to 42% after a string of winter child-pedestrian fatalities, forcing Congress to repeal it within months. Similar experiments in Russia and the UK were also abandoned due to widespread public backlash. [link](https://www.thecanadianpressnews.ca/environment/clocks-stay-in-daylight-saving-but-analysis-backs-permanent-standard-time/article%5F0c5b15d2-8a55-5ab2-8545-d01fb0a2f18c.html)
+
+### 4. Debunked Benefits
+
+- **Negligible Energy Savings:** DST was originally adopted during WWI to conserve energy. Modern studies show that any minor electricity saved on lighting is entirely wiped out by the increased use of evening air conditioning and morning heating. [link](https://www.yahoo.com/news/politics/article/congress-might-make-daylight-saving-time-permanent-experts-say-another-approach-could-be-even-better-212046022.html)
+- **Agricultural Opposition:** Despite the popular myth that DST was created for farmers, the agricultural sector has historically opposed it. Farmers operate by the sun, not the clock, and shifting the time disruptions complicates coordinating with laborers and shipping schedules. [link](https://mgaleg.maryland.gov/cmte%5Ftestimony/2020/ehe/3098%5F03052020%5F9322-540.pdf)
+
+Because of these flaws, leading medical organizations—such as the [American Academy of Sleep Medicine](https://pmc.ncbi.nlm.nih.gov/articles/PMC10476036/)—advocate for abolishing clock changes entirely by establishing **permanent Standard Time**, which naturally aligns our daily schedules with the solar cycle. [link](https://www.nytimes.com/2026/07/27/science/daylight-saving-time-health-safety.html)
+
+Are you exploring this topic for a **school debate**, looking into the **legislative progress** of the current bills, or trying to manage your own **sleep schedule** during clock changes? Let me know so I can provide the most relevant details!
+
+- [link](https://medicalxpress.com/news/2026-04-physicists-refute-famous-daylight-poses.html)\
+  Medical Xpress\
+  Physicists refute famous 2025 study claiming daylight saving time poses severe health risks\
+  Apr 20, 2026 — Refutation: PNAS published a 2026 letter by Martín-Olalla and Mira Pérez invalidating a 2025 Weed and Zeitzer Stanford study linki...
+- [link](https://pmc.ncbi.nlm.nih.gov/articles/PMC10476036/)\
+  National Institutes of Health (NIH) | (.gov)\
+  Debunking myths about daylight saving time: ten things everyone should know about the benefits of permanent standard time - PMC\
+  Biannual clock change is unpopular (75% favor ending), causing sleep loss and adverse health/economic outcomes during spring forwa...
+- [link](https://pmc.ncbi.nlm.nih.gov/articles/PMC7205184/)\
+  National Institutes of Health (NIH) | (.gov)\
+  Why should we abolish Daylight Saving Time? - PMC\
+  The first days after the sudden switch to DST in spring cause acute effects including shorter sleep duration (Barnes and Wagner, 2...
+
+Show all
+
+
