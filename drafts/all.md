@@ -784,6 +784,8 @@ math:
 - test smartestu tutor llm
 - limit inductive proof forall assume
 - limit strategies to reduce into special limits sin e
+- limit infinitesimals known equivalences
+- limit common taylor series
 
 physics:
 
