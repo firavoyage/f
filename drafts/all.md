@@ -146,6 +146,7 @@ life:
 - game bang dream our notes setup
 - uni campus run engineering workaround fake location hardware motor
 - game hok pubgm
+- clean tritan bottle
 
 create something:
 
