@@ -224,4 +224,14 @@ on server, i guess it's basically a wrapper. i can test it.
 
 but how would i handle like timeout or retry?
 
+15
+
+the current way of managing deps is extremely ugly.
+
+i should standardize before making progress.
+
+> how to publish and update npm lib on github, and add and upgrade via bun
+
+or maybe it's just a line of tsconfig, if im confortable w the monorepo.
+
 
