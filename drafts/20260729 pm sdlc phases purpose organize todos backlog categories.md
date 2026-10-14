@@ -827,6 +827,8 @@ I can help you map out a modern, abstraction-first architecture that completely 
 
 # sdlc phases
 
+## sdlc phases
+
 The **Software Development Life Cycle (SDLC)** is a structured framework that guides engineering teams through the process of planning, creating, testing, and maintaining high-quality software. While specific models vary, a standard lifecycle typically comprises <mark><strong>seven foundational phases</strong></mark>. [link](https://www.harness.io/blog/software-development-life-cycle-phases)
 
 ### 1. Planning
