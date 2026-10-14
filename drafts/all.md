@@ -140,7 +140,7 @@ life:
 - game maimai badges name plates
 - game maimai friend match class ghost data player pool birthday paradox
 - university cs future in ai era
-- university cs sicp
+- university cs sicp csdiy cs61a
 - phone battery capping
 - metro rushing station platform train door lights timeline
 - game bang dream our notes setup
@@ -1026,6 +1026,7 @@ have: <!-- eat, grow -->
 - research gemini protocol lagrange
 - research zlibrary anna archive copyright
 - research tor <!-- ? -->
+- use case berkeley cs61a current semester
 
 grow:
 
