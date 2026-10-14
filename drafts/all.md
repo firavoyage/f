@@ -259,6 +259,7 @@ lib:
 - server
 - datetime
 - chainable
+- tsconfig path
 
 web: <!-- frontend, web, ts/js -->
 

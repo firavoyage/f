@@ -33,9 +33,9 @@ use(collection)
 import * as chainable from 'lib/chainable'
 use(chainable)
 
-// use({ use })
-// 
-// type use = typeof use
-// declare global {
-//   var use: use
-// }
+use({ use })
+
+type use = typeof use
+declare global {
+  var use: use
+}
