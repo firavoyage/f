@@ -783,6 +783,7 @@ math:
 - limit table ref answer issues
 - test smartestu tutor llm
 - limit inductive proof forall assume
+- limit strategies to reduce into special limits sin e
 
 physics:
 
