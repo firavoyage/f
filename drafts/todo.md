@@ -1,7 +1,5 @@
 # plan
 
-clean tritan bottle
-
 - lib/datetime
 - lib/cli
 - lib/web/server
