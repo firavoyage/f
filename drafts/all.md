@@ -1064,6 +1064,7 @@ code:
 - pl design list default iteration keys values pairs entries ruby inconsistency
 - pl design contextual assignent statement equality comparison
 - pl design paren less fn call
+- pl design lexical scoping python scoping
 
 launch:
 
