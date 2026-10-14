@@ -611,6 +611,7 @@ linguistics: <!-- grammar, etymology -->
 - top languages
 - stop words
 - spanish info
+- translation reduction formulas zhcn
 
 literature:
 
