@@ -208,4 +208,20 @@ brilliant isnt it.
 
 yeah, it doesnt even hallucinate anything.
 
+14
+
+idk how i would do styling.
+
+css, which we are familiar w, is flawed on dx. i may invent some dsl.
+
+i might not need best possible intellisense or ide features/integration in general. like how often do i batch rename? and if i do not declare in order, autocomplete matters less even if things are coupled.
+
+it has to be coupled. if you can switch behavior on sth fixed, there definitely _will_ be some adapter somewhere.
+
+---
+
+on server, i guess it's basically a wrapper. i can test it.
+
+but how would i handle like timeout or retry?
+
 
