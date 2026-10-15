@@ -13,7 +13,8 @@ use(react_hooks)
 use(p)
 use(state)
 
-// use({ use })
+// override react.use (you never utilize react.use)
+use({ use })
 
 // type use = typeof use
 // declare global {
