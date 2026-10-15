@@ -231,3 +231,48 @@ Checked 455 installs across 485 packages (no changes) [91.00ms]
 ```
 
 
+
+# . add and update
+
+```
+export GIT_DIR="/home/fira/Documents/f/.git/.git_lib"
+export GIT_WORK_TREE="/home/fira/Documents/f/lib"
+
+git init
+git remote add g https://github.com/firahq/lib.git
+
+git add .
+git commit -m '.' || true
+
+git push -f g
+```
+
+```
+ ~ % export GIT_DIR="/home/fira/Documents/f/.git/.git_lib"
+export GIT_WORK_TREE="/home/fira/Documents/f/lib"
+
+git init
+git remote add g https://github.com/firahq/lib.git
+
+git add .
+git commit -m '.' || true
+
+git push -f g
+
+Reinitialized existing Git repository in /home/fira/Documents/f/.git/.git_lib/
+error: remote g already exists.
+On branch master
+nothing to commit, working tree clean
+Enumerating objects: 83, done.
+Counting objects: 100% (83/83), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (75/75), done.
+Writing objects: 100% (83/83), 56.44 KiB | 5.13 MiB/s, done.
+Total 83 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/firahq/lib.git
+ * [new branch]      master -> master
+branch 'master' set up to track 'g/master'.
+```
+
+

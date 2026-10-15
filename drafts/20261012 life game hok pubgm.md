@@ -3089,4 +3089,634 @@ For players who log in for a couple of matches during a commute or right before 
 When you look at these emotional profiles, which one feels closest to **your own experience** when you hit a losing streak? Do you get **tilted like an Achiever**, or can you **laugh it off like a Socializer**?
 
 
-# 
+# how does honor of kings zhcn ver calc rank delta after match
+
+## how does honor of kings zhcn ver calc rank delta after match
+
+The **Honor of Kings (王者荣耀)** Chinese (ZH-CN) version calculates your post-match rank delta <mark>using a<span> </span><strong>performance-integrated star system</strong><span> </span>that combines the basic match outcome with individual metric performance</mark>.
+
+Instead of traditional ELO systems where you strictly win one star or lose one star, the game converts your post-match achievements into **Result Points** on a 100-point meter. Accumulating **100 points grants you 1 star**, and achieving highly rated performances can net you multiple stars in a single match. [link](https://www.facebook.com/groups/mobaph/posts/30072824089029303/)
+
+***
+
+### 📊 How the Star Delta is Calculated
+
+The total rank delta is determined by adding your **Match Result** baseline to your **Personal Performance Points** (which dictate your final rating tier from C to SSS).
+
+| Match Outcome  | Personal Rating    | Point Value | Final Rank Delta                    |
+| -------------- | ------------------ | ----------- | ----------------------------------- |
+| **Victory** 🏆 | **SSS / MVP**      | +300 Points | **+3 Stars** ⭐⭐⭐                 |
+| **Victory** 🏆 | **SS**             | +200 Points | **+2 Stars** ⭐⭐                   |
+| **Victory** 🏆 | **Standard Win**   | +100 Points | **+1 Star** ⭐                      |
+| **Defeat** ❌  | **SSS / Loss MVP** | +100 Points | **+1 Star** (Rank Up on a Loss!) ⭐ |
+| **Defeat** ❌  | **SS**             | +0 Points   | **0 Stars** (Star Protection)       |
+| **Defeat** ❌  | **Standard Loss**  | -100 Points | **-1 Star**                         |
+
+***
+
+### 🧠 Performance Metrics & The Algorithm
+
+Your performance rating (0.0 to 16.0) is not purely based on your KDA (Kills/Deaths/Assists). The algorithmic calculation heavily weights **lane assignment and role-specific duties**: [link](https://www.facebook.com/groups/mobaph/posts/30072824089029303/)
+
+- **Damage/Gold Ratio & Economy Efficiency:** High damage output relative to the gold you farmed (crucial for Mages and Marksmen).
+- **Teamfight Participation:** Percentage of team fights you joined and your total percentage of team damage/damage taken.
+- **Objective Control:** Damage dealt to towers, pushing lanes, and securing Tyrants/Overlords.
+- **Role Feats:** Support ratings emphasize healing, crowd control, and saving low-health allies, while Tanks are rewarded for damage absorption. [link](https://www.facebook.com/groups/mobaph/posts/30072824089029303/)
+
+### 🛡️ Bravery Points & Star Protection
+
+If your performance results in a standard loss (-100 points), the game checks your accumulated **Bravery Points** (earned through win streaks, positive behavior, and MVP rewards):
+
+- If your Bravery Points meter is full, it clears the meter to absorb the penalty, resulting in **0 stars lost**.
+- In lower ranks (Bronze and Silver), passive tier protection ensures you **cannot drop stars** regardless of performance.
+
+### ⚖️ Hidden MMR Matchmaking
+
+While your visible rank delta uses the point system above, the Chinese server utilizes a hidden **MMR (Matchmaking Rating)** system. If you go on an extended win streak, the algorithm will pair you with lower-rated teammates or stronger opponents to keep your organic win rate stabilized around 50%, balancing competitive integrity across the ladder.
+
+If you want to maximize your point yields, let me know:
+
+- What **hero or role** do you primarily main?
+- What **rank tier** (e.g., Diamond, Master, Grandmaster) are you currently pushing through?
+
+I can give you specific stat thresholds required to consistently hit SS/SSS ratings.
+
+- [link](https://honor-of-kings.fandom.com/wiki/Ranked%5Fleague)\
+  Honor of Kings Wiki\
+  Ranked league | Honor of Kings Wiki - Fandom\
+  Players will not lose stars in the Bronze tier. encourages consistent, skillful play and rewards players even on losing teams if t...
+- [link](https://www.facebook.com/groups/ph.hok/posts/24335591072702978/)\
+  Facebook·Honor of Kings Official Philippines | HoK PH\
+  How does post-match rating system work in Honor of Kings?\
+  Simply put, get 100pts and you get a star. This means you can earn up to 3-stars for a triple-S rated game.
+- [link](https://boosteria.org/guides/honor-kings-rank-system-explained-ranks-stars-mmr)\
+  boosteria.org\
+  Honor of Kings Rank System Explained: Ranks, Stars & MMR\
+  Matchmaking: Utilizes hidden MMR for fair team balance; solo queue rewards stability, parties reward coordination.
+
+Show all
+
+## how does mmr work
+
+In **Honor of Kings (王者荣耀)**, **MMR (Matchmaking Rating)**—often referred to by the community as the hidden **ELO score (隐藏分)**—is the invisible, backend mathematical value that the server uses to determine your true skill level. [link](https://zhuanlan.zhihu.com/p/407506393)
+
+While your **Visible Rank** (e.g., Diamond, Master) dictates what seasonal rewards you get, your **MMR** is what the matchmaking algorithm actually uses to construct your matches. [link](https://lolboost.gg/blog/what-is-the-mmr-in-league-of-legends-understanding-your-matchmaking-rank)
+
+***
+
+### 🛡️ The Golden Rule: Team Average Balance
+
+The single most important thing to understand about the Honor of Kings matchmaking system is its ultimate goal: **The system does not look for 10 identical players; it looks to balance the cumulative MMR of Team A against the cumulative MMR of Team B**. [link](https://zhuanlan.zhihu.com/p/1961761016930075171)
+
+TotalMMRofTeamA≈TotalMMRofTeamB
+
+This core rule explains why matchmaking can sometimes feel incredibly frustrating or incredibly easy. [link](https://www.bilibili.com/opus/1005528809822224400)
+
+***
+
+### ⚙️ How the MMR Algorithm "Profiles" You
+
+Every single match you play updates your hidden profile. The game calculates your MMR using an equation heavily tied to three main pillars: [link](https://zhuanlan.zhihu.com/p/2002378945253900965)
+
+1. **Win/Loss Streaks:** Going on a win streak exponentially inflates your MMR. The system assumes you are smurfing or performing way below your real skill level. Conversely, a loss streak rapidly tanks your MMR. [link](https://zhuanlan.zhihu.com/p/2046356078330483727)
+2. **Comprehensive Match Score (综合评分):** The game tracks your performance efficiency. Getting a 16.0 MVP score or consecutive Gold/Silver medals flags you as a "high-MMR carry". [link](https://jingyan.baidu.com/article/00a07f38f90380c2d028dcdf.html)
+3. **Role-Specific Data:** The algorithm monitors your damage-to-gold conversion rate, teamfight participation, and damage taken. (It is smart enough to differentiate between a player who effectively carries and someone who just plays passively to keep their KDA safe). [link](https://www.facebook.com/groups/mobaph/posts/30072824089029303/)
+
+***
+
+### 🔄 The "Rubber-Band" Matchmaking Cycle
+
+Because the system forces total team MMR to be equal, your individual hidden score dictates the types of teammates you are handed: [link](https://jingyan.baidu.com/article/00a07f38f90380c2d028dcdf.html)
+
+#### 📈 Scenario A: Your MMR is significantly HIGHER than your current rank
+
+If you are an exceptional player on a 6-game win streak with multiple MVPs, the system tags you as a **"Super Carry" (大腿)**. [link](https://zhuanlan.zhihu.com/p/1961761016930075171)
+
+- **The Matchmaking Consequence:** To balance your massive MMR and keep the lobby average fair, the algorithm will pair you with **lower-MMR teammates** (players on loss streaks or with low win rates). [link](https://www.reddit.com/r/honorofkings/comments/1clc1gj/how%5Fdoes%5Fmatchmaking%5Fand%5Fmmr%5Fwork/)
+- **The Game Feel:** You are forced to heavily "carry" the match because the system expects your individual skill to offset your teammates' shortcomings. [link](https://m.douban.com/group/topic/103431335/)
+
+#### 📉 Scenario B: Your MMR is significantly LOWER than your current rank
+
+If you are currently on a heavy losing streak or consistently receive low performance scores (C-ratings), your hidden MMR drops below your visible rank tier. [link](https://www.bilibili.com/opus/1005528809822224400)
+
+- **The Matchmaking Consequence:** The system recognizes you are struggling and tags you as a player who needs a buffer. It will match you with a **high-MMR "Super Carry" teammate** or place you against an overall weaker enemy team to halt your losing streak.
+- **The Game Feel:** These are the games where you can easily "get carried" or win without having to play flawlessly. [link](https://zhuanlan.zhihu.com/p/407506393)
+
+***
+
+### 📊 Ranked Stars vs. MMR Discrepancy
+
+Because of **Bravery Points** and **Star Protection Cards**, visible ranks suffer from "rank inflation"—meaning players can climb ranks even with a sub-50% win rate simply by playing a large volume of games. [link](https://www.bilibili.com/opus/1005528809822224400)
+
+- **High MMR / Low Rank:** Occurs at the start of a new season. Your visible rank resets down, but your hidden MMR remains high. You will skip ranks or gain massive amounts of Result Points (+2 or +3 stars per win) because the game is aggressively trying to push your visible rank up to match your true MMR.
+- **Low MMR / High Rank:** Occurs when a player gets boosted by friends or carried via star protection. If they try to solo-queue, they will face a brutal wall ("制裁局" or Judgement Matches) where they are severely outclassed because their visible rank pulled them into a lobby they aren't mechanically ready for. [link](https://us.forums.blizzard.com/en/heroes/t/how-does-mmr-work/25536)
+
+Are you currently experiencing the **"win-one, lose-one" loop** or hitting a specific wall in solo queue? If you'd like, I can share some of the top community strategies used on the Chinese server to **manipulate your MMR profile** and get easier matchmaking loops.
+
+- [link](https://boosteria.org/guides/honor-kings-rank-system-explained-ranks-stars-mmr)\
+  boosteria.org\
+  Honor of Kings Rank System Explained: Ranks, Stars & MMR\
+  Rank is your visible badge (tier + stars). MMR is the system's private estimate of your skill, used to build matches.
+- [link](https://www.facebook.com/groups/mobaph/posts/30072824089029303/)\
+  Facebook·Honor of Kings PH Community\
+  How the New HOK Ranking System Works (SSS = 300 Points!)\
+  Honor of Kings Ranking System: New Rating System: Officially released in Season 11, featuring performance-based ratings and feats ...
+- [link](https://www.youtube.com/watch?v=p9GATvDIqJs)\
+  YouTube·kookmon\
+  HOK NEW RANK SYSTEM? NEW HERO?\
+  Jul 2, 2025 — HOK NEW RANK SYSTEM? NEW HERO? hi guys this is teacher Cookman here and today I'm going to teach you guys about the latest update ...\
+  11:30
+
+Show all
+
+## why do some ppl have a high or low win rate given the mmr system
+
+The reason players can maintain extreme win rates (ranging from **35% to over 80%**) despite an MMR system designed to force everyone toward 50% comes down to three main factors: <mark><strong>mechanical skill caps, strategic manipulation of the algorithm, and lobby composition.</strong></mark>
+
+The system attempts to balance teams mathematically, but players have figured out how to consistently break or exploit those calculations.
+
+***
+
+### 🚀 Why Some Players Have a Very High Win Rate (65% – 90%)
+
+High win-rate players are either too skilled for the algorithm to suppress, or they are actively gaming the system.
+
+- **Breaking the Statistical Cap:** Top-tier players, pros, and high-level smurfs possess mechanical skills and macro knowledge that exceed what the algorithm's "handicap" can account for. Even if the system gives them four underperforming teammates to balance the team's total MMR, a hyper-carry player can still single-handedly control objectives, wipe the enemy team, and force a win.
+- **Premade Teams (Duo/Trio/5-Man Queue):** The absolute easiest way to bypass the MMR rubber-band mechanic is playing with trusted friends. When stacking a lobby, the algorithm cannot force underperforming, low-MMR randoms onto your team. While the system will try to match you against other premade groups or slightly higher-ranked players, voice communication and coordinated drafts easily overcome this artificial difficulty.
+- **The "Elo-Lowering" Strategy (Elo-Farming / 控分):** Some players deliberately exploit the MMR formula. In matches they realize are unwinnable, they will intentionally play passively to tank their individual match score (getting a low C-rating), or they will purposefully lose games in non-essential modes. This artificially lowers their hidden MMR. When they switch back to serious ranked play, the system views them as "bad players who need a carry," matching them with highly skilled teammates for an easy string of wins.
+
+***
+
+### 📉 Why Some Players Have a Very Low Win Rate (35% – 45%)
+
+Low win-rate players are usually victims of rank inflation or behavioral traps that the MMR system penalizes heavily.
+
+- **Rank Inflation via Grinding (The Volume Trap):** Because _Honor of Kings_ features Bravery Points and Star Protection Cards, it is mathematically possible to climb to high ranks (like Master or Grandmaster) with a **46% win rate** simply by playing hundreds of games. Once these players reach these high tiers, their mechanical skill is vastly inferior to the actual rank lobby. They become a permanent liability, pulling down their teams until their win rate plummets even further to match their actual skill level.
+- **The Tilt and Loss-Streak Spiral:** The matchmaking system takes time to adjust to performance drops. If a player gets tilted, plays aggressively while angry, and continuously loses, their MMR drops rapidly. However, if they keep immediately re-queuing, they often play progressively worse. Even when the system hands them a "Super Carry" teammate to help them win, a severely tilted player can override that advantage by feeding or giving up, artificially keeping their own win rate suppressed.
+- **Hero OTPs (One-Trick Ponies) Out of Meta:** Players who exclusively play one hero regardless of team composition or meta shifts often suffer heavily. If their hero is weak in the current patch, or easily countered during the draft phase, they will lose a disproportionate number of games despite the algorithm trying to give them balanced matches.
+
+***
+
+### 📊 Summary Comparison
+
+| Player Profile                | Typical Win Rate | How They Handle the MMR System                                                 |
+| ----------------------------- | ---------------- | ------------------------------------------------------------------------------ |
+| **The Hard Carry / Smurf**    | **70%+**         | Outperforms the MMR handicap through pure skill and macro map control.         |
+| **The Smart Stack (Premade)** | **65% - 80%**    | Completely blocks the system from giving them bad random teammates.            |
+| **The Average Solo Queuer**   | **49% - 52%**    | Perfectly balanced by the algorithm; experiences the "win-one, lose-one" loop. |
+| **The Serial Grinder**        | **45% - 48%**    | Relies on Bravery Points to climb; constantly outclassed in high-rank lobbies. |
+
+Are you trying to figure out how to **break out of a low win rate loop**, or are you looking to **boost your solo-queue win rate** past the 50% trap? Let me know your main role so I can give you the best tactical advice.
+
+## why do some weak players have high wr or some strong players have low wr
+
+🗢 You can find a detailed breakdown of how this happens [here](https://en.wikipedia.org/wiki/Elo%5Frating%5Fsystem).
+
+The reason this paradox exists in _Honor of Kings_ comes down to a phenomenon the Chinese player base calls **"System-Induced Matching" (系统制裁)**. Because the MMR system focuses on balancing the _total team average_ rather than matching individuals of equal skill, it accidentally rewards certain low-skill playstyles and brutally penalizes certain high-skill playstyles.
+
+***
+
+### 🛡️ Why Some WEAK Players Have a High Win Rate
+
+Weak or mediocre players often boast a **55%–60%+ win rate** because their natural statistical profile tricks the algorithm into giving them a permanent "easy mode" matchmaking loop.
+
+- **The "Low-Score, High-Win" Phenomenon (Tiantang Mode / 天堂局):** Players who consistently perform poorly (low KDA, low teamfight participation, low damage output) receive low individual match ratings (C-ratings). The algorithm flags this player as a "weak link" who needs a buffer to avoid quitting the game. As a result, the system frequently places them on teams with a **high-MMR "Super Carry" teammate** to balance out the team's average. They get effortlessly carried to victory match after match.
+- **Highly "Carriable" Playstyles:** Certain weak players naturally excel at not feeding. They might play utility supports or safe tanks (like Zhuang Zhou or Lian Po). They don't make game-winning plays, but they also don't aggressively feed the enemy. When paired with the high-MMR carries that the system gives them, their lack of impact doesn't matter, and they win comfortably.
+- **The "Elo-Lowering" Exploit (Bailan / 摆烂):** Some smart players deliberately play badly or pick unconventional heroes to guarantee a low match score while still trying to win passively. By keeping their individual hidden MMR artificially bottomed out, they ensure the matchmaking system continuously hands them high-tier teammates.
+
+***
+
+### ⚔️ Why Some STRONG Players Have a Low Win Rate
+
+Highly skilled mechanical players can find themselves trapped in a **45%–49% win rate** nightmare loop because the MMR system uses their excellence to handicap them.
+
+- **The "MVP Penalty" (Diyu Mode / 地狱局):** If a strong player consistently gets high KDAs, massive damage shares, and post-match SSS/MVP ratings, their hidden MMR skyrockets. To keep the lobby's total MMR balanced, the algorithm must offset this "Super Carry" by giving them **four low-MMR, underperforming teammates**. The strong player is forced to play at a flawless, exhausting level every single game just to scrape a victory.
+- **The Tilt Feeding Loop:** Because strong players are forced to carry underperforming teammates, they often become heavily tilted (frustrated). A tilted strong player might make aggressive, high-risk plays to force a win, die early, and then get frustrated with their team. Even though they are mechanically superior, their negative mental state causes them to lose games they could have carried.
+- **High Damage, Wrong Objectives:** Some strong players are mechanical gods in 1v1 laning or skirmishes but have poor macro strategy. They chase kills across the map, racking up high KDA and damage metrics (which inflates their hidden MMR even further), but they fail to push towers or secure the Crystal. The system thinks they are a top-tier player, but their playstyle doesn't actually close out games, leading to high MMR but low win rates.
+
+***
+
+### 📊 The Paradox At A Glance
+
+| Player Type                         | Hidden MMR       | Teammate Quality                              | Game Experience                                | Win Rate Outcome            |
+| ----------------------------------- | ---------------- | --------------------------------------------- | ---------------------------------------------- | --------------------------- |
+| **The Weak Player** (Low Impact)    | **Very Low** 📉  | **Very High** 🚀 (Paired with carries)        | "Get carried" effortlessly; enemies feel weak. | **High Win Rate** (55%+) 📈 |
+| **The Strong Player** (High Impact) | **Very High** 📈 | **Very Low** 🐌 (Paired with underperformers) | Exhausting; must play perfectly to win.        | **Low Win Rate** (<50%) 📉  |
+
+Are you currently feeling trapped as a **strong player dealing with underperforming teammates**, or are you trying to understand how to adjust your own stats? Let me know **your current main hero** so we can look at your specific profile strategy.
+
+## compare perf metrics and objective well play
+
+In _Honor of Kings_, there is often a massive gap between what the **automated algorithm considers a "good performance" (Performance Metrics)** and what **actually wins the game (Objective Play)**.
+
+The game’s post-match system heavily rewards combat data, which can occasionally reward the wrong behaviors. Conversely, macro strategy and objective control directly secure the win but are historically harder for the algorithm to measure perfectly.
+
+***
+
+### ⚖️ Performance Metrics vs. Objective Play
+
+| Feature              | Performance Metrics (System Rating)                          | Objective Play (Winning the Game)                                                |
+| -------------------- | ------------------------------------------------------------ | -------------------------------------------------------------------------------- |
+| **Core Focus**       | Personal combat stats and resources.                         | Map control and ending the match.                                                |
+| **Key Indicators**   | KDA, Damage Dealt %, Damage Taken %, Gold per Minute (GPM).  | Tower Damage, Epic Monsters secured (Tyrant/Overlord), Lane Pressure.            |
+| **Algorithm Reward** | Awards **MVP, S/A Medals, and massive Result Points**.       | Awards **Ranked Stars** (by physically destroying the enemy Crystal).            |
+| **The Risk**         | Can encourage passive "KDA-saving" or chasing useless kills. | Can result in a lower personal score if you sacrifice yourself for an objective. |
+
+***
+
+### 📊 Performance Metrics (What the System Tracks)
+
+The post-match algorithm looks at your data relative to your chosen hero and role. To get an **S/SS/SSS rating**, the system heavily weights:
+
+- **Damage-to-Gold Efficiency:** If you farmed 10,000 gold, did you output a matching, high percentage of team damage? (Crucial for Mages and Marksmen).
+- **Teamfight Participation:** The percentage of total team kills you contributed to via a kill or an assist.
+- **Role-Specific Duties:** Tanks are graded on "Damage Taken per Death," while Supports are graded on "Crowd Control duration" and "Healing/Shielding."
+
+### 🗺️ Objective Well-Play (What Actually Wins)
+
+A match can be completely carried by macro decisions that the post-match screen might mostly ignore:
+
+- **Tower Pressure (Pushing Lanes):** Dragging enemies across the map by clearing minion waves creates space for your team. A split-pusher might finish a game 1/4/2 but single-handedly open up the enemy base.
+- **Epic Monster Control:** Securing the Tyrant (team-wide combat buffs) or Overlord (vanguard minion pressure) dictates the tempo of the entire map.
+- **Crucial Zoning:** A tank standing in a bush to block enemy vision while their Marksman takes a tower gets zero statistical credit, but it completely secures the objective.
+
+***
+
+### 💥 The Paradox: Why They Conflict
+
+Because high performance metrics shield you from dropping stars on a loss (via Bravery Points), the system accidentally creates a conflict of interest:
+
+1. **Chasing Kills vs. Pushing Towers:** Chasing a low-health enemy into their jungle inflates your KDA and Damage metrics. Letting them walk away to securely take a Tier-2 Tower is the _correct_ strategic move, but yields fewer "Performance Points."
+2. **The "Bailan" / Score-Tanking Strategy:** As established with the MMR system, intentionally avoiding teamfights to keep your match score low prevents your hidden MMR from skyrocketing. Players aiming for a high win rate sometimes deliberately suppress their performance metrics to keep their matchmaking lobbies easier.
+
+Are you trying to figure out how to **increase your post-match rating (S/A medals)** for star protection, or are you looking for the best macro strategies to **force wins even with low-performing teammates**? Let me know which angle you want to master.
+
+## how is mmr determined
+
+🗢 You can find a detailed breakdown of how this happens [here](https://en.wikipedia.org/wiki/Elo%5Frating%5Fsystem).
+
+In _Honor of Kings_, your hidden MMR is calculated after every single match using a complex, proprietary variant of the **Elo rating system** and **TrueSkill algorithm**.
+
+The system does not just look at whether you won or lost; it runs a mathematical evaluation comparing **what the game expected to happen** against **your actual individual output** during the match.
+
+***
+
+### 🧮 The Core Mathematical Calculation
+
+Every time you hit the "Find Match" button, the algorithm processes your MMR using four primary variables:
+
+```
+New MMR = Current MMR + [Match Outcome Factor × (Actual Outcome - Expected Outcome)] + Performance Modifier
+```
+
+1. **Your Baseline MMR:** Your historical skill rating carried over from previous matches and adjusted slightly during seasonal resets.
+2. **The Match Expectation (Odds):** Before the loading screen even appears, the system compares the average MMR of Team A against Team B. If your team has a higher cumulative MMR, the system _expects_ you to win.
+
+- **Winning an expected match** gives you a small MMR increase.
+- **Losing an expected match** drastically drops your MMR.
+- **Winning an unexpected match** (upsetting a stronger team) spikes your MMR upward.
+
+3. **The Performance Modifier (The Metric Weight):** This is where your personal post-match evaluation (0.0 to 16.0 score) alters the math. If you lose but achieve a flawless 16.0 SSS rating, the modifier heavily cushions your MMR drop. If you win but get a 4.0 C-rating, your MMR gain will be heavily suppressed.
+
+***
+
+### 📋 The Specific Data Variables Being Tracked
+
+To feed the formula its "Performance Modifier," the game continuously extracts data points from your matches. It heavily weights these categories based on your selected hero archetype:
+
+#### 1. Economic Efficiency (GPM & Output)
+
+- **Gold Per Minute (GPM):** How effectively you farm lane minions, jungle monsters, and objectives.
+- **Damage-to-Gold Ratio:** The system divides your total damage dealt by the total gold you consumed. High-MMR carries farm efficiently and convert that gold directly into teamfight impact rather than "wasting" resources.
+
+#### 2. Combat Impact & Map Presence
+
+- **Teamfight Participation:** The percentage of your team's total kills that you contributed to.
+- **KDA Ratio:** Calculated as\
+  Kills+Assistsmax(1,Deaths)\
+  . Deaths are penalized heavily because they gift the enemy team gold and map tempo.
+- **Damage Taken / Mitigated:** Crucial for Tanks and Supports to prove they are actively zoning and shielding teammates.
+
+#### 3. Macro & Objective Contributions
+
+- **Tower Damage:** Direct damage dealt to enemy structures.
+- **Neutral Monster Secures:** Last-hitting or heavily assisting in taking Tyrants and Overlords.
+
+***
+
+### 📈 MMR Fluctuations: Volatility vs. Stability
+
+The algorithm uses a hidden value known as **"Uncertainty" (K-Factor)** to dictate how fast your MMR moves:
+
+- **High Volatility (New Accounts & Win Streaks):** If your account is relatively new, or you are on an active 5+ game win streak, the algorithm increases your volatility factor. Your MMR will swing drastically by dozens of points per game, aggressively trying to push you out of lower-tier lobbies to prevent smurfing.
+- **High Stability (Hardstuck / High Volume Accounts):** If you have played 400 games in the current season with a flat 50% win rate, the system views your skill level as "highly certain." Your MMR adjustments per match become much smaller, meaning you will need a prolonged, dominant performance streak to change how the matchmaking algorithm profiles you.
+
+Are you trying to figure out how to **raise your MMR** to face tougher, more coordinated opponents, or are you trying to **artificially suppress it** to escape the "Super Carry" solo-queue trap? Let me know your current goal so I can give you the exact steps.
+
+## compare the tradeoff of perf metrics on star delta and mmr
+
+In _Honor of Kings_, your post-match **Performance Metrics** (your KDA, damage share, and 0.0–16.0 score) create a massive mechanical paradox because they affect your visible **Star Delta** and your hidden **MMR** in completely opposite ways.
+
+Maximizing your performance metrics gives you short-term ranking protection but creates long-term matchmaking difficulty.
+
+***
+
+### ⚖️ The Core Tradeoff
+
+| System Component       | Impact of HIGH Performance Metrics (S/SSS Ratings)                                                                                                           | Impact of LOW Performance Metrics (C Ratings)                                                                                            |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| **Visible Star Delta** | **Positive Buffer:** Grants massive Bravery Points and Star Protection. Saves stars on losses and skips stars on wins (+2 or +3 stars).                      | **Negative Drag:** Slows down climbing. Standard losses deduct stars instantly because there are no Bravery Points to shield you.        |
+| **Hidden MMR**         | **Negative Handicap:** Skyrockets your hidden rating. The system flags you as a "Super Carry" and saddles you with lower-rated teammates to balance lobbies. | **Positive Buffer:** Suppresses your hidden rating. The system flags you as a "weak link" and hands you dominant teammates to carry you. |
+| **Long-Term Result**   | **The Carrying Trap:** You climb faster initially, but solo queue becomes a stressful, exhausting "1v9" experience.                                          | **The Free Ride:** You climb slower, but your matches stay consistently easy because the algorithm gives you an artificial safety net.   |
+
+***
+
+### 🔄 Detailed Breakdown of the Tradeoff
+
+#### 1. High Performance Metrics: The Star Boost vs. MMR Penalty
+
+When you play flawlessly, get top damage, and consistently lock in MVPs:
+
+- **The Star Benefit:** You rack up **Bravery Points** incredibly fast. Even if your team loses, an SSS rating can result in zero stars lost, or even a star _gained_ on a loss. Your visible rank shoots up.
+- **The MMR Penalty:** The algorithm realizes you are mechanically superior to your current lobby. To balance the lobby's total average MMR, it pairs you with four **low-MMR teammates** (players on loss streaks or with poor macro skills).
+- **The Reality:** To keep winning, you have to maintain a flawless, high-stress performance every single game. The moment you have an off-game, your team will likely collapse.
+
+#### 2. Low Performance Metrics: The Star Drag vs. MMR Protection
+
+When you play passively, prioritize safe farming, or deliberately maintain low match scores (a strategy known in the Chinese community as _Bailan_ / 摆烂):
+
+- **The Star Drag:** You earn almost no Bravery Points. If you lose a match, you will lose a star with no safety net. You rely purely on raw wins to climb.
+- **The MMR Protection:** Because your match ratings are low, your hidden MMR remains depressed or flatlines. The algorithm profiles you as a player who struggles to carry. To balance the lobby, it intentionally matches you with a **high-MMR "Super Carry" teammate**.
+- **The Reality:** Your matches feel effortless. The enemy team often feels weaker, and your teammates naturally secure objectives and win teamfights for you while you safely cruise to a >55% win rate.
+
+***
+
+### 🎯 Tactical Summary: How to Manage the Tradeoff
+
+- **If you are playing in a Premade Stacking (Duo/Trio/5-man):** **Max out your performance metrics.** Go for the SSS ratings and MVPs. Your high MMR will not force bad randoms onto your team because you control your lobby composition, allowing you to maximize Star Delta gains via Bravery Points.
+- **If you are playing Solo Queue:** **Balance your metrics.** Do not chase meaningless late-game kills just to pad your KDA if the game is already won. Intentionally ending a match quickly with a solid "A" or standard win rating keeps your MMR stable, protecting you from entering the algorithm's "Super Carry" penalty loop in your next game.
+
+Are you currently playing **Solo Queue** or in a **Premade Stack**? Let me know, and I can give you a specific strategy to optimize your stats for your preferred queue type.
+
+## what do ppl say
+
+The community sentiment surrounding the MMR vs. Star Delta system is incredibly vocal, universally recognizable, and deeply integrated into Chinese gaming culture. Players on platforms like [Zhihu](https://zhuanlan.zhihu.com/) and [Reddit](https://www.reddit.com/r/honorofkings) have developed an entire dictionary of slang terms specifically to describe and navigate the system. [link](https://zhuanlan.zhihu.com/p/2002378945253900965)
+
+The primary community consensus can be broken down into three major perspectives:
+
+***
+
+### 1. The "Truman Show" and Engagement Optimization
+
+Industry insiders and high-level players point out that the game's ladder is not a pure, transparent, skill-based competition. Instead, they describe it as an **Engagement-Optimization System**. [link](https://www.reddit.com/r/honorofkings/comments/1ul046r/if%5Fyou%5Fare%5Flooking%5Ffor%5Fa%5Fcompetitive%5Fgame%5Fhok%5Fis/)
+
+- **The Sentiment:** Players feel that the algorithm isn't trying to find your true skill tier quickly. Instead, it artificially stretches your climb to maximize your log-in days and session lengths. The system keeps you hooked by alternating between punishing, high-stress matches and satisfying "free-win" streaks. [link](https://www.reddit.com/r/honorofkings/comments/1ul046r/if%5Fyou%5Fare%5Flooking%5Ffor%5Fa%5Fcompetitive%5Fgame%5Fhok%5Fis/)
+
+### 2. Iconic Community Slang & Player Roles
+
+The player base has categorized the matchmaking outcomes into distinct, universally understood scenarios:
+
+- **"Tiantang Ju" (天堂局 - Heaven Matches):** The ideal scenario for lower-impact players. The system predicts you are on a down-swing, matches you with a hyper-carry player, and allows you to "躺赢" (win while lying down / get effortlessly carried). [link](https://www.chaofan.com/news/de35sjcps18qf0l.html)
+- **"Diyu Ju" (地狱局 - Hell Matches / Judgement Matches):** The curse of the high-KDA solo player. Players complain bitterly about games where they are forced to act as the "Super Carry" (大腿), given a team of four underperforming teammates, and forced to play flawlessly just to lose an un-winnable game. [link](https://www.reddit.com/r/honorofkings/comments/1p355nv/matchmaking%5Frant/)
+- **"Bailan" (摆烂 - Deliberate Underperformance):** This has become a widespread strategic philosophy. Because the system heavily punishes high performance metrics in solo queue, thousands of players openly admit to _Bailan_—purposely avoiding MVPs, keeping their combat stats minimal, and playing utility roles simply to lower their hidden MMR and trick the system into feeding them easier lobbies. [link](https://zhuanlan.zhihu.com/p/2046356078330483727)
+
+### 3. Recent Developer Shifts (The S42 Focus)
+
+For years, the formula relied heavily on ability metrics over visible rank (a 70% MMR / 30% Rank split). However, following intense community backlash regarding "rank inflation" and severe skill gaps in the same lobby, developers adjusted the matching weight. [link](https://zhuanlan.zhihu.com/p/1991217917891724808)
+
+- **The New Reality:** The matchmaking algorithm currently operates closer to a **70% Rank / 30% MMR split**.
+- **The Feedback:** While solo-queue players have celebrated this change because it ensures teammates are mathematically closer to your exact star count (usually within 2 to 5 stars), players notes that hidden MMR still operates quietly in that 30% window, meaning the "Super Carry" penalty loop has been lessened but not entirely erased. [link](https://zhuanlan.zhihu.com/p/1991217917891724808)
+
+Knowing how the community feels, are you looking for **actionable ways to game your hidden stats** (like the _Bailan_ score-lowering method), or do you want a strategy to **tackle "Hell Matches" mechanically**? Let me know what role you play!
+
+- [link](https://www.reddit.com/r/honorofkings/comments/1ul046r/if%5Fyou%5Fare%5Flooking%5Ffor%5Fa%5Fcompetitive%5Fgame%5Fhok%5Fis/)\
+  Reddit·r/honorofkings\
+  If You Are Looking for a Competitive Game, HoK Is ...\
+  Honor of Kings should not be treated as a pure competitive game in the same way League of Legends is. My thinking with HoK is that...
+- [link](https://post.m.smzdm.com/p/a5rvmv6l/)\
+  什么值得买\
+  王者荣耀匹配机制真相：段位权重70%，隐藏分还在暗中操控你 ...\
+  Jun 12, 2026 — 截至2026年6月,王者荣耀的匹配机制仍以ELO算法为基础框架,但近年已多次调整权重结构。根据素材,系统为每位玩家生成一个“隐藏分”,综合近期胜率、KDA、承伤/输出占比、资源控制率等数据,目标是使双方队伍整体隐藏分差趋近于零,从而让预期胜率接近50%。然而,
+- [link](https://zhuanlan.zhihu.com/p/1991217917891724808)\
+  知乎专栏\
+  S42终于定档！新赛季匹配机制再次升级，单排玩家提前“开香槟”\
+  Jan 4, 2026 — 没有意外,确实是定档1月8日,按照以往的惯例,应该也是零点开始停服更新,直到5点才会开启。 而到了S42新赛季,则会更看重主段位,说白了,就是变得更随机,只要是钻石段位的玩家,不管胜率或者评分是多少,都有机会互相匹配。 \* 从上图中也不难发现,以前是70%能力...
+
+Show all
+
+## what do ppl say on the tradeoff of perf metrics on star delta and mmr
+
+The community discussion regarding the performance metrics vs. MMR tradeoff is incredibly sharp and has deeply influenced Chinese gaming culture. On platforms like [Zhihu](https://zhuanlan.zhihu.com/) and [Bilibili](https://www.bilibili.com/), the consensus is nearly universal: **the system forces high-performing solo players into a grueling "carrying tax," while directly rewarding subpar performance with a faster, easier climb**. [link](https://zhuanlan.zhihu.com/p/1961761016930075171)
+
+The community divides this algorithmic tradeoff into several deeply rooted philosophies and strategies:
+
+### 1. The "Carrying Tax" and "MvP Penalty" (尽力局 & 败方MVP)
+
+The most common complaint from mechanically strong players is the phenomenon of **"Jinli Ju" (尽力局 - Try-Hard Matches)**. [link](https://zhuanlan.zhihu.com/p/367779620)
+
+- **The Community View:** Players state that the better you play (chasing S/A medals and MVPs), the more the algorithm "penalizes" you. By inflating your Star Delta via Bravery Points, you are given short-term visual progression. However, because your MMR spikes out of control, you enter the dreaded **"Hell Match" loop (地狱局)**. [link](https://zhuanlan.zhihu.com/p/2046356078330483727)
+- **The Sentiment:** High-performance players feel like they are "unpaid babysitters" hired by the system to maintain a 50% win rate for lower-tier players. They argue that getting a Defeat MVP (+100 points) is a trap because it maintains their sky-high MMR while failing to reward them with an actual star. [link](https://www.taptap.cn/app/744415/topic)
+
+### 2. The Rise of "Bailan" (摆烂分 - Deliberate Mediocrity)
+
+Because the game penalizes a stellar performance profile, a massive portion of the player base has gamified the low-performance route. This has led to the popularized culture of **"Bailan" (摆烂 - letting things slide)**. [link](https://www.taptap.cn/moment/761271785839658183)
+
+- **The Community View:** A standard player profile with an overall match score of **70–75 points** is considered the baseline for a normal player. However, players have realized that maintaining an "ugly" profile of **60–65 points** (low KDA, minimal damage but high win rates due to being carried) keeps them in **"Heaven Matches" (天堂局)**. [link](https://pvp.qq.com/web201605/newsDetail.shtml?tid=596470)
+- **The Strategy (控分 - Score Controlling):** Highly analytical players actively share guides on how to manipulate this tradeoff. They advocate for actions like intentionally passing kills to teammates, avoiding damage padding, or purposely diving the enemy fountain right before the enemy crystal breaks to depress their post-match rating and protect their MMR from spiking. [link](https://zhuanlan.zhihu.com/p/492155732)
+
+### 3. The "Liver" Syndrome (积分战神)
+
+The community heavily criticizes how Bravery Points interact with the metric system, calling players who climb strictly through match volume **"Jifen Zhanshen" (积分战神 - Points Warriors)**. [link](https://www.zhihu.com/question/531701367)
+
+- **The Community View:** Players point out that the Star Delta safety nets (star protection cards and bravery point payouts) completely ruin the competitive integrity of high-tier lobbies. A weaker player with a **47% win rate** can brute-force their way to high ranks simply by playing 500+ matches a season. When these "Points Warriors" hit Master or Grandmaster lobbies, their real MMR is vastly inferior to the lobby baseline, turning them into a massive deficit that a high-MMR teammate is mathematically forced to carry. [link](https://www.zhihu.com/question/506101076)
+
+### 4. Group Queueing as the Only "True Escape"
+
+Because the solo-queue algorithm relies heavily on trading high performance for terrible teammates, the universal community advice is to completely abandon solo matchmaking. [link](https://zhuanlan.zhihu.com/p/407506393)
+
+- **The Sentiment:** Playing in **Duo, Trio, or 5-Man stacks** is viewed as the only way to play the game "authentically". In a full team stack, the system cannot assign low-MMR randoms to your team. Therefore, players note that you can push for maximum performance metrics, get all the SSS/MVP star deltas you want, and enjoy rapid rank skipping without any matchmaking backlash. [link](https://pvp.qq.com/web201605/newsDetail.shtml?tid=596845)
+
+Are you trying to figure out how to **adjust your current match stats** to avoid the solo-queue penalty loop, or are you looking to assemble a **coordinated team format** to bypass the MMR restrictions completely? Let me know which direction you want to take!
+
+- [link](https://www.taptap.cn/app/744415/topic)\
+  TapTap - 发现好游戏\
+  王者荣耀世界- 官方论坛\
+  游戏采用的ELO等级分系统,会综合玩家的历史战绩、击杀、死亡、助攻、经济等数据,生成一个不可见的“隐藏分”,并以此决定匹配到的队友和对手。
+- [link](https://zhuanlan.zhihu.com/p/1961761016930075171)\
+  知乎专栏\
+  如何评价《王者荣耀》的ELO匹配机制？—— 一名产品经理的 ...\
+  Oct 15, 2025 — 隐藏分(Matchmaking Rating, MMR):你的【真实实力】评估,是系统匹配最核心的依据。它不完全等同于你的显示段位。
+- [link](https://zhuanlan.zhihu.com/p/2046356078330483727)\
+  知乎专栏\
+  王者隐藏分查询全攻略！看懂隐藏ELO，再也不怕匹配牛马队友\
+  Jun 5, 2026 — 核心根源就是隐藏分(ELO 隐藏数值),这是王者荣耀官方内部计分数据,不在游戏主页展示,却牢牢掌控你的匹配池、排位难易度,决定每局匹配队友与对手实力代练通。今天一文讲透隐藏分是什么、两种查询方法、提升隐藏分实用技巧,顺带分享高效上分渠道!
+
+Show all
+
+## what do ppl say on the tradeoff of perf metrics on star delta and mmr (as in opponents) when you group queue
+
+When you transition from solo queue to a premade group (Duo, Trio, or 5-Man Stack) in _Honor of Kings_, the dynamic of the **Performance Metrics vs. MMR tradeoff changes completely**.
+
+On community forums like [Zhihu](https://zhuanlan.zhihu.com/) and Bilibili, players discuss a completely different set of rules regarding how the algorithm chooses your **opponents** based on your team's metrics. In group queue, high performance metrics no longer saddle you with bad teammates; instead, **they trigger aggressive opponent upgrades.**
+
+The community splits the group-queue tradeoff regarding your opponents into two main stack dynamics:
+
+***
+
+### 1. The 5-Man Stack Tradeoff: "The Arms Race"
+
+In a 5-Man stack, the algorithm completely removes the threat of "bad random teammates." However, to balance your team's high performance metrics, it turns its sights entirely onto the enemy team. [link](https://news.4399.com/wzlm/zixun/gg/m/630916.html)
+
+- **The Opponent Matchmaking Penalty (The Booster/Smurf Trap):** If your 5-man stack consists of high-performing players with great KDAs and multiple MVPs, your collective hidden MMR spikes. Because the system can only match 5-man groups against other 5-man groups, it will hunt for an opponent group with an equally terrifying average MMR. Players note that this frequently matches you against **professional boosters (代练车队), heavy smurfs, or "Push-to-Win" strategy comps (like the infamous "Ying Zhu" / 养猪流 - Feed the Carry meta)**. [link](https://news.4399.com/wzlm/zixun/gg/m/630916.html)
+- **The Star Delta Tradeoff:** In this mode, pushing for SSS/MVP ratings is highly encouraged because the risk of a "MvP Penalty" via teammates is gone. You maximize your Star Delta through raw victory streaks and massive Bravery Point accumulation, but the tradeoff is that **every single match becomes a high-intensity tournament final** against hyper-coordinated opponents.
+- **The "Anchor" Strategy (The Divergent Fix):** To game this tradeoff, the community heavily utilizes **"The Anchor" (带妹/带新)**. Groups deliberately bring along one or two mechanically weaker friends who consistently secure low performance metrics (C-ratings). This successfully drags the group's cumulative hidden MMR downward, matching the group against casual, uncoordinated enemy 5-man teams that the remaining strong players can easily dismantle.
+
+***
+
+### 2. The Duo / Trio Queue Tradeoff: "The Gap Filler"
+
+In 2-man or 3-man queues, you occupy a hybrid space: you control part of your team, but the system must fill the remaining slots with random players. [link](https://www.reddit.com/r/honorofkings/comments/1clc1gj/how%5Fdoes%5Fmatchmaking%5Fand%5Fmmr%5Fwork/)
+
+- **Opponent Buffing + Teammate Nerfing:** If a Duo or Trio performs exceptionally well and maintains top-tier performance metrics, the algorithm targets them with a double-edged sword. It calculates that your group's carry potential is massive. To balance the lobby, it will **raise the hidden MMR of the enemy premade group** while simultaneously **giving you low-MMR solo randoms** to fill your remaining empty slots. [link](https://www.reddit.com/r/honorofkings/comments/1clc1gj/how%5Fdoes%5Fmatchmaking%5Fand%5Fmmr%5Fwork/)
+- **The Player Sentiment:** Community members call high-performing Duo queues an absolute nightmare. If you and your friend play flawlessly, you will face an incredibly coordinated, high-MMR enemy duo/trio, while your random marksman or support feels completely outclassed.
+
+***
+
+### 📊 Summary of the Tradeoff by Queue Type
+
+| Queue Format    | If Your Performance Metrics are HIGH                                                | If Your Performance Metrics are LOW/Balanced                                | Community Consensus Strategy                                                                         |
+| --------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| **Solo Queue**  | **Enemy Skill:** Normal**Teammate Skill:** Extremely Poor 🐌                        | **Enemy Skill:** Normal**Teammate Skill:** Hyper-Carries 🚀                 | Play passively (_Bailan_) to lower MMR and get carried.                                              |
+| **Duo / Trio**  | **Enemy Skill:** Strong Premades ⚔️**Teammate Skill:** Underperforming Solo players | **Enemy Skill:** Casual Players**Teammate Skill:** Competent Solo players   | Balance your scores. Never have both players chase hyper-carry stats simultaneously.                 |
+| **5-Man Stack** | **Enemy Skill:** Pro Boosters / Sweats 💀**Teammate Skill:** Controlled by you      | **Enemy Skill:** Average Casual Stacks**Teammate Skill:** Controlled by you | **Max out performance metrics**, or use an "Anchor" player to tank the group MMR for easier enemies. |
+
+Are you currently running into **highly coordinated enemy squads** when you play with your friends? If you share **how many people you typically stack with** (Duo, Trio, or 5-man), I can tell you the best role-synergy strategies the community uses to beat the matchmaking algorithm.
+
+- [link](https://zhuanlan.zhihu.com/p/599567899)\
+  知乎专栏\
+  王者荣耀排位elo机制破解心得\
+  1\. 1,最佳方法,五个高手五排。胜率可达70-85%,因为连胜匹配连胜,所以会遇到代练车,一般是养猪的,很难打过,所以胜率不会有100%。 2. 2,三个高手三排。类似第一点。三排容易带节奏,比双排好。 4,在凌晨1-7点,这段时间打单排,容易连胜连跪,同时...
+- [link](https://www.reddit.com/r/honorofkings/comments/1clc1gj/how%5Fdoes%5Fmatchmaking%5Fand%5Fmmr%5Fwork/)\
+  Reddit·r/honorofkings\
+  How does Matchmaking and MMR work : r/honorofkings - Reddit\
+  May 6, 2024 — The matchmaking system will match teammates with low WR to players with high WR. If you lose 3-4 times in a row, they match you up...
+- [link](https://news.4399.com/wzlm/zixun/gg/m/630916.html)\
+  4399在线玩\
+  王者荣耀五人排位赛全介绍五人排位赛规则解析 - 4399游戏资讯\
+  May 12, 2016 — 全段位开启五人排位功能,玩家可以邀请不超过自身一个大段位的玩家进行五人排位赛,胜负成绩影响到排位赛的段位和星级,五人队伍只会遇到五人队伍,不会参与单双排的匹配,队伍的匹配能力值依赖于队伍里面高段位的玩家。
+
+## what do ppl say on the tradeoff of perf metrics on star delta and mmr strong opponents for 5 man stack
+
+In a **5-man stack (五排)**, the community perspective on the performance metrics vs. MMR tradeoff <mark>shifts entirely away from "teammate quality" and centers purely on<span> </span><strong>the ferocity of your opponents</strong></mark>.
+
+On platforms like [Zhihu](https://zhuanlan.zhihu.com/p/1961761016930075171) and NGA, players note that a 5-man stack strips the matchmaking algorithm of its ability to "punish" high-performing players with underperforming random teammates. Instead, the system redirects all of its balancing weight toward **upgrading the enemy team**, creating a brutal opponent escalation known as **"The Arms Race."** [link](https://zhuanlan.zhihu.com/p/1961761016930075171)
+
+***
+
+### 1. Opponent Escalation: Pushing for Maximum SSS/MVPs
+
+If your 5-man team plays at a top tier—sweeping matches, dominating gold leads, and securing high personal ratings (S/SSS medals): [link](https://zhuanlan.zhihu.com/p/1961761016930075171)
+
+- **The Star Delta Benefit:** You gain stars at a rapid velocity. Winning streaks coupled with high performance ratings generate a flood of **Bravery Points**, maximizing your star delta and skipping rank tiers. [link](https://zhuanlan.zhihu.com/p/1961761016930075171)
+- **The Opponent Tradeoff (Entering the Pro/Booster Tier):** Your collective team MMR rockets upward. Because the system can only match a 5-stack against another 5-stack, it looks for an opponent group with an equally high average MMR. [link](https://www.bilibili.com/opus/1005528809822224400)
+- **What Players Say:** Players complain that consecutive high-performance wins will inevitably lock you into **"The Booster Zone."** The algorithm will pair you against **professional booster squads (代练车队)**, high-tier smurfs, or perfectly synchronized tournament-style teams. Casual drafts fail, and every match begins to feel like a high-stakes competitive final.
+
+### 2. Opponent Suppression: The "Anchor" Strategy (带妹 / 带新)
+
+To bypass the punishing opponent upgrade, the Chinese player base heavily uses the **"Anchor" tactic** to intentionally depress their team's performance metrics:
+
+- **How It Works:** A group of 3 or 4 high-skill players will deliberately invite 1 or 2 friends who are mechanically weaker or who play low-impact, passive utility roles (consistently earning C-ratings). [link](https://zhuanlan.zhihu.com/p/1961761016930075171)
+- **The Tradeoff Effect:** The low performance metrics of the "anchor" successfully drag down the team's average hidden MMR. [link](https://www.bilibili.com/opus/1005528809822224400)
+- **The Opponent Outcome:** Instead of matching against hyper-coordinated pro boosters, the system matches the group against average, casual 5-man stacks. The strong carries on the team can easily dismantle the enemy, ensuring a high win rate while keeping the opponent difficulty manageable. [link](https://www.bilibili.com/opus/1005528809822224400)
+
+### 3. Recent Meta Matchmaking Adjustments
+
+In recent updates, developers adjusted the algorithm weight to feature a heavier focus on visible rank history rather than strictly hidden MMR. [link](https://voice.hupu.com/bbs/632682277)
+
+- **The Community Verdict:** Players observe that 5-man queues now take your group's **highest visible rank tier** much more seriously when fetching opponents. If you have even one historical Grandmaster player in a Diamond lobby, the system will aggressively match you against other teams with Grandmaster historical footprints, preventing high-rank players from easily stomping lower-tier 5-man lobbies. [link](https://www.zhihu.com/question/264939446)
+
+***
+
+### 🎯 The Consensus 5-Man Strategy
+
+The definitive community advice for running a 5-man stack follows two clear paths:
+
+1. **The "Sweat" Route:** If you want to max out performance metrics and speed up your Star Delta, you must run a **meta-synchronized draft strategy** (like lane-swapping or objective-snowball comps) because the algorithm _will_ eventually match you against top-tier opponents.
+2. **The "Smooth Sail" Route:** Intentionally control your team's average MMR profile. Do not chase redundant late-game kills just to pad your damage metrics. End the match cleanly, keep your scores balanced, and utilize an anchor player to keep your opponents within a casual skill tier. [link](https://www.bilibili.com/opus/1005528809822224400)
+
+Are you currently running a **high-performing 5-man stack** and noticing a massive spike in enemy coordination? If you tell me **what rank tier your group is currently in**, I can tell you which team comps the community uses to counter high-MMR enemy stacks.
+
+- [link](https://zhuanlan.zhihu.com/p/1961761016930075171)\
+  知乎专栏\
+  如何评价《王者荣耀》的ELO匹配机制？—— 一名产品经理的 ...\
+  系统会将你们的队伍视为一个整体来匹配另一个整体。 它能帮你: 1. 估算你的真实隐藏分:抛开虚高的段位,看清自己的真实实力定位。 2. 预测下一场胜率:基于你当前的状态(连胜/连败)、组队情况,给出科学的胜率预测。 3. 提供个性化建议:告诉你下一局是该勇猛精...
+- [link](https://www.bilibili.com/opus/1005528809822224400)\
+  Bilibili\
+  王者荣耀ELO匹配机制深度解析：如何破解隐藏分规律快速上分？\
+  选择上午或午夜匹配质量更高。 • 保持每天4-6局高质量对局:多打容易疲劳,进而影响隐藏分表现。
+- [link](https://voice.hupu.com/bbs/632682277)\
+  虎扑体育\
+  匹配机制仅重-王者荣耀丨KPL\
+  在S39赛季以前,排位赛会按照“平均分”来匹配,只看玩家的综合评分,简称的“ELO机制”。 匹配机制已经被策划完全重做,主要是改为“强对强”的模式,会把玩家的历史段位+英雄战力给计算进去,相当于“隐藏分”。
+
+Show all
+
+# how does honor of kings determine the owner of dragons
+
+<mark><strong><span>Honor of Kings determines the owner of a dragon strictly by the last hit.</span></strong></mark>
+
+The team of the player who deals the **final killing blow** to the dragon secures the objective and receives its respective team-wide buffs. It does not matter which team started the dragon or who dealt the most damage to its health bar. [link](https://www.bluestacks.com/blog/game-guides/honor-of-kings/hok-map-guide-en.html)
+
+Because of this mechanic, "dragon stealing" is a major strategic element in the game. [link](https://www.youtube.com/watch?v=Wr6477Q5yOE)
+
+### Key Mechanics for Securing Dragons
+
+- **The Last Hit Rule:** If Team A reduces a dragon's health down to 1% but a player from Team B sneaks in and hits it with a single basic attack or ability to drop it to 0%, Team B gets full credit and all the buffs.
+- **The Jungler's Role (Punish):** Junglers carry a talent spell called **Punish** (similar to Smite in other MOBAs). Punish deals a massive, instant burst of true damage to neutral monsters. Experienced junglers will calculate the exact remaining health of the dragon and time their Punish perfectly to secure the last hit and prevent the enemy from stealing it.
+- **Burst Damage:** Teams will often save high-damage skills to "burst" the dragon down through its final few thousand health points, making it harder for the opposing team to react and steal it.
+
+If you want to improve your objective control, let me know:
+
+- Are you trying to **stop enemies from stealing** the dragon?
+
+- Do you want tips on **how to steal dragons** yourself?
+
+- Would you like to know the differences between the **Tyrant, Overlord, and Tempest Dragon** buffs?
+
+- [link](https://www.youtube.com/watch?v=Wr6477Q5yOE)\
+  YouTube·J1ng\
+  How to Decide Between The DRAGONS and When ... - YouTube\
+  whenever you have the opportunity to contest it you should absolutely do so or attempt to steal it if necessary securing the Tempe...
+
+- [link](https://www.bluestacks.com/blog/game-guides/honor-of-kings/hok-map-guide-en.html)\
+  BlueStacks\
+  King's Gorge Key Features, Objectives, and Strategies\
+  Jun 20, 2024 — The Tempest Dragon's buff includes a powerful aura that damages nearby enemies, making it a game-changing advantage during team fi...
+
+- [link](https://www.zhihu.com/en/answer/424801201)\
+  www.zhihu.com\
+  Why is the dragon always considered very important in Honor ...\
+  Aug 16, 2026 — Let's talk about dragons. In Honor of Kings, there are three types of dragons The first type, the ordinary tyrant (hereinafter ref...
+
+## why can you surprisingly secure the dragon after death
+
+Securing a
+
+dragon
+
+in **Honor of Kings** even after your hero has died is a rare but entirely possible phenomenon. <mark>Because ownership is determined<span> </span><strong>strictly by the last hit</strong></mark>, you can still claim the objective from beyond the grave through three main mechanics:
+
+### 1. Damage Over Time (DoT) Effects
+
+Many heroes possess abilities that leave a lingering burn, bleed, or poison effect on a target. If you hit the dragon with one of these skills right before you die, the dragon will continue to tick down in health. If a tick of your passive or ability damage happens to be the precise final hit that drops its HP to zero—while the enemy team is standing there waiting to strike—your team secures the buff.
+
+### 2. Lingering or Delayed Projectiles
+
+Some ultimate abilities or high-damage skill shots have a travel time or a delayed detonation. If you fire a projectile and get eliminated a split second before it arrives, the ability doesn't disappear. It will still land on its target location. If its impact happens to deliver the killing blow, you will secure the objective post-mortem.
+
+### 3. Pets and Summoned Companions
+
+Certain heroes deploy summons, turrets, or pets that stay active on the battlefield independently of the hero's life status (such as **米莱狄 - Milady's** mechanical servants). If you die during a chaotic team fight in the dragon pit, your active summons may continue auto-attacking the dragon. If one of those autonomous attacks lands the final hit, credit goes to your team.
+
+Would you like to know which **specific heroes** have the best damage-over-time or delayed abilities for pulling off these accidental dragon steals?
+
