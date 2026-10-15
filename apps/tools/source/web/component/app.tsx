@@ -21,11 +21,11 @@ import { use_toasts, toast, Toast } from 'web/component/toast';
 import { Preferences } from './preferences';
 import { Commands } from './commands';
 
-import * as icon from 'web/component/icon'
-use(icon)
+// import * as icon from 'web/component/icon'
+// use(icon)
 
-import { init_clipboard } from 'lib/web/clipboard';
-init_clipboard({toast})
+// import { init_clipboard } from 'lib/web/clipboard';
+// init_clipboard({toast})
 
 export const use_global = state({
   'input': '',
