@@ -1,7 +1,7 @@
-let toast_: fn
+let _on_copy: fn
 
-export function init_clipboard({toast}) {
-  toast_ = toast
+export function init_clipboard(on_copy) {
+  _on_copy = on_copy
 }
 
 async function copy_text(text: string) {
@@ -11,7 +11,6 @@ async function copy_text(text: string) {
 export function copy(text: string) {
   copy_text(text)
 
-  // use_global.set(() => {})
-  toast_('Copied to clipboard')
+  _on_copy?.()
 }
 

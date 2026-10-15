@@ -24,8 +24,8 @@ import { Commands } from './commands';
 import * as icon from 'web/component/icon'
 use(icon)
 
-// import { init_clipboard } from 'lib/web/clipboard';
-// init_clipboard({toast})
+import { init_clipboard } from 'lib/web/clipboard';
+init_clipboard(() => toast('Copied to clipboard'))
 
 export const use_global = state({
   'input': '',
