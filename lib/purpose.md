@@ -234,4 +234,17 @@ i should standardize before making progress.
 
 or maybe it's just a line of tsconfig, if im confortable w the monorepo.
 
+---
+
+yeah, it's hacky anyway, and i run into a hard wall: node modules resolve upward.
+
+react could not work w conflicting versions in runtime. peer deps would not work this way.
+
+it also reveals problems. it's coupled w "web/component/icon" and "toast" to avoid boilerplate (e.g. import, export, init) at extreme danger.
+
+i may just go the standard way.
+
+- it should be able to be published separately
+- for local dev, i can really modify inside node modules, and build abstractions maybe on this workflow
+
 
