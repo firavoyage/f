@@ -2844,3 +2844,247 @@ Are you currently experiencing a wall in your **high-Elo rank climb**, or are yo
 
 Show all
 
+
+# honor of kings zhcn ver season reset time in a year
+
+## honor of kings zhcn ver season reset time in a year
+
+In the **Honor of Kings (王者荣耀) Chinese (ZHCN) version**, the ranked season resets <mark><strong>four times a year</strong></mark>, meaning a single season typically lasts for about **3 months**. [link](https://lewan.baidu.com/lewanqapage?idfrom=11006\&questionId=225251789969510400\&gameId=131809256589819904)
+
+While the exact dates vary slightly depending on developer scheduling and major holidays, the general pattern for the four season resets follows a regular yearly schedule:
+
+### General Yearly Reset Months
+
+| Season                          | Reset Window (Estimated Start)       | Context / Major Holiday Connection                                                                               |
+| ------------------------------- | ------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| **Winter / New Year Season**    | **Early January** (or late December) | Coincides with the massive Chinese New Year / Spring Festival annual update.                                     |
+| **Spring Season**               | **Late March to Early April**        | Kicks off the spring meta changes.                                                                               |
+| **Summer Season**               | **Late June to Early July**          | Marks the beginning of the "Summer Cruise" and student summer vacation updates.                                  |
+| **Autumn / Anniversary Season** | **Late September**                   | Aligns with the Lead-up to China’s National Day holiday and the high-profile game Anniversary events in October. |
+
+### Recent Actual Reset Examples
+
+To give you an idea of the precise timing, look at the official launch dates for the 2026 seasons:
+
+- **S42:** January 8, 2026
+- **S43:** April 1, 2026
+- **S44:** June 25, 2026
+- **S45:** September 23, 2026 [link](https://pvp.qq.com/web201706/newsdetail.shtml?tid=802692)
+
+### How to Check the Exact Date In-Game
+
+If you want to know exactly when the current season will end, you can track it via these primary indicators:
+
+- **In-game Rank Interface:** Navigate to the Ranked Match screen. Below your current tier, you will see a text indicator showing the current season's active months (e.g., "2026.09 - 2026.12").
+- **Honor Pass (战令) Countdown:** The Honor Pass expiration date is the most reliable anchor. The ranked season usually resets anywhere from a **few days to roughly one week after the current Honor Pass ends**. [link](https://www.reddit.com/r/honorofkings/comments/1f4n5n6/when%5Fdoes%5Fthe%5Fseason%5Freset/)
+
+Are you currently planning to **push your rank** before a specific season ends, or do you need the **tier inheritance rules** to know what your new rank will be after the reset?
+
+- [link](https://pvp.qq.com/web201706/newsdetail.shtml?tid=639710)\
+  王者荣耀\
+  S38新赛季-穿透信念\
+  Dec 23, 2024 — 王者荣耀官网-腾讯游戏 12月25日正式服S38赛季“穿透信念”版本更新公告 王者荣耀2024-12-23 15:27:36
+- [link](https://lewan.baidu.com/lewanqapage?idfrom=11006\&questionId=225251789969510400\&gameId=131809256589819904)\
+  百度\
+  王者一年几个赛季？\
+  document: 王者一年几个赛季?-百度乐玩 王者荣耀一年有四个赛季,下面为大家详细讲解。 1.一般来说,王者荣耀的赛季都在三个月左右。 s24赛季的开始时间是6月23日,大家可以根据
+- [link](https://pvp.qq.com/web201706/newsdetail.shtml?tid=802692)\
+  王者荣耀\
+  S44新赛季-不拘命格\
+  Jun 23, 2026 — 【更新方式】 正式服：不停机更新 2026年6月24日1:00-10:00，对正式服部分社交系统进行维护升级，维护升级期间战队、小队、电竞战队等系统暂时关闭体验； 2026年6月24日23:00后，禁止S43赛季排位赛和巅峰赛，匹配与无限乱斗正常开放； 202...
+
+Show all
+
+## why do they inherit rank this way
+
+The seasonal rank inheritance system in **Honor of Kings** relies on a principle called **"gradient demotion"** (阶梯式降级). The development team at TiMi Studio designs the reset this way to address crucial matchmaking, engagement, and progression factors. [link](https://baike.baidu.com/en/item/Honor%20of%20Kings%20Rank%20Inheritance%20Rules/2273375)
+
+### 1. Combating Rank Inflation
+
+Because of systems like **Bravery Points** (which grant star protection and extra stars), the game naturally injects more stars into the ecosystem than it takes away. Over a 3-month season, the player base naturally shifts upward, causing "rank inflation" where the high tiers become overcrowded. [link](https://lewan.baidu.com/lewanqapage?idfrom=11006\&questionId=231025070239076352\&gameId=131809256589819904)
+
+- Resetting the ranks deflates this bubble, ensuring that tiers like Master and Grandmaster remain prestigious indicators of current skill. [link](https://lewan.baidu.com/lewanqapage?idfrom=11006\&questionId=231025070239076352\&gameId=131809256589819904)
+
+### 2. Retaining Active Player Engagement
+
+If players could stay at their peak ranks indefinitely, many would stop playing Ranked altogether once they hit their goal (e.g., Grandmaster) out of fear of losing it. [link](https://honor-of-kings.fandom.com/wiki/Rank%5FStatus%5Fand%5FEffects/Requirements)
+
+- Dropping players back down creates a **new gameplay loop every 3 months**. It gives players a fresh goal to strive for, keeping the active queue populated.
+
+### 3. New Season "Soft Resets" vs. "Hard Resets"
+
+The system is explicitly a _soft reset_ rather than a complete wipe. It divides the player base logically to ensure high-quality games:
+
+- **The "Diamond Bottleneck" Filter:** Most lower-tier King players and high-tier Master/Starry Light players are dropped into the Diamond tier. This compresses the skilled player base, ensuring that the early-season matches in Diamond are highly competitive.
+- **Preserving Top Talent:** Exceptionally high-skill players (e.g., Legendary or Glorious Kings with 50 to 100+ stars) inherit directly into higher starting positions like Starry Light or even King 1-star. This prevents pro-level players or top-tier streamers from matching against average casual players, which would ruin the game balance. [link](https://news.qq.com/rain/a/20251127A06OKH00)
+
+### 4. Protecting New and Casual Players
+
+While high-ranked players take a massive hit, **Bronze and Silver tiers do not lose any stars or ranks**. Gold and Platinum tiers only drop by a few sub-tiers. [link](https://www.sohu.com/a/1035387996%5F122836989)
+
+- This protects newer or casual players from the frustration of losing all their progress. It keeps the casual environment welcoming while focusing the competitive churn entirely on the upper echelons of the ladder. [link](https://www.sohu.com/a/1035387996%5F122836989)
+
+Would you like to see the **exact star-to-rank conversion breakdown** for your current tier so you can plan where you will land next season?
+
+- [link](https://baike.baidu.com/en/item/Honor%20of%20Kings%20Rank%20Inheritance%20Rules/2273375)\
+  百度百科\
+  Honor of Kings Rank Inheritance Rules\
+  Rank inheritance in Honor of Kings is a routine reset of players' ranks from the previous season at the start of each New Season. ...
+- [link](https://www.pocketgamer.com/honor-of-kings-global/ranking-system/)\
+  Pocket Gamer\
+  Honor of Kings ranking system explained | Pocket Gamer\
+  the rank can increase. Each ranked season lasts for about 3 months, and the rank you have at the end of the season is the final ra...
+- [link](https://boosteria.org/guides/honor-kings-rank-system-explained-ranks-stars-mmr)\
+  boosteria.org\
+  Honor of Kings Rank System Explained: Ranks, Stars & MMR\
+  Protection: Bravery/protection points prevent star loss on defeat and enable bonus stars during stable performance.
+
+Show all
+
+## player psychology on ranking
+
+<mark><span>The ranking system in<span> </span></span><strong>Honor of Kings</strong><span> </span>leverages deeply researched human behavioral psychology to keep millions of players logging in every day</mark>. Video game developers design these systems around specific cognitive triggers, behavioral loops, and emotional motivators.
+
+Here is a breakdown of the core player psychology behind ranking systems:
+
+### 1. The Dopamine Loop & Sunk Cost Fallacy
+
+At its core, ranking hooks into the human brain's reward center. Earning a star or promoting to a new tier releases a burst of **dopamine** (the satisfaction hormone).
+
+- **The "Just One More Game" Trap:** When players experience a winning streak, they want to maintain the high. Conversely, when they lose, they fall victim to the **Sunk Cost Fallacy**—feeling that because they have already invested hours into the session, they _must_ keep playing until they win back their lost stars.
+
+### 2. Loss Aversion and Risk-Taking
+
+Psychological studies show that humans experience the pain of losing twice as intensely as the joy of winning. This is known as **Loss Aversion**.
+
+- **Why Star Protection Exists:** Mechanics like _Bravery Points_ or _Rank Protection Cards_ are psychological safety nets. By mitigating the immediate pain of a loss, the game lowers player anxiety. It coaxes hesitant or frustrated players back into the queue because the "risk" of losing progress feels manageable.
+
+### 3. The Hedonic Treadmill & The Fresh Start Effect
+
+If a player reaches their target rank and stays there forever, they quickly get bored. This is explained by the **Hedonic Treadmill**, a psychological phenomenon where humans rapidly adapt to positive changes and return to a baseline level of happiness.
+
+- **The Reset Psychology:** The seasonal reset utilizes the **Fresh Start Effect**. Psychologically, humans love milestones (like New Year's resolutions) because they allow us to distance ourselves from past failures. A new season wipes away a previous bad win-rate and reframes the climb as an exciting new opportunity rather than a grueling grind.
+
+### 4. Social Proof and Status Seeking
+
+Human beings are inherently tribal and hierarchical. We seek status within our chosen communities.
+
+- **Visible Prestige:** Ranks function as digital luxury goods. Loading screen borders, exclusive seasonal skins, and profile badges serve as **social proof** of a player’s skill and dedication. Dropping everyone's rank at the season reset triggers a competitive urge to reclaim that public status before their peers do.
+
+### 5. The "Bartle Taxonomy" of Player Types
+
+Psychologist Richard Bartle classified multiplayer gamers into four core psychological profiles, all of which are target-targeted by ranking systems:
+
+- **Achievers:** Driven by the concrete goal of hitting a specific tier (e.g., Grandmaster) and collecting 100% of the seasonal rewards.
+- **Killers/Competitors:** Motivated purely by dominance, the leaderboard rankings, and proving they are objectively better than the rest of the server.
+- **Socializers:** Use the ranked climb as a bonding ritual, treating the intense environment as a way to forge tighter strategic relationships with friends.
+
+Do you find yourself identifying with a specific player type like the **Achiever** or the **Competitor**, or are you currently trying to overcome the **frustration of a ranked plateau**?
+
+## how do players feel
+
+While game developers design these systems to maximize engagement, the actual emotional experience of the player base is a highly volatile mix of **extreme highs and deep frustrations**.
+
+The player experience in Honor of Kings typically oscillates between four distinct psychological states:
+
+### 1. The Euphoria of the "Climb"
+
+When a player is on a winning streak, the psychological payoff is massive.
+
+- **The "Flow State":** Successfully executing a team fight or carrying a game triggers a state of deep psychological "flow." Players feel a profound sense of personal growth, agency, and cognitive mastery.
+- **Validation:** Hitting a milestone tier (like finally reaching King/Grandmaster) provides intense validation. For many, it feels like a genuine, hard-earned life achievement, offering a tangible sense of status among their peers.
+
+### 2. Ranked Anxiety and the Fear of Queueing
+
+Because of **Loss Aversion**, many players experience genuine anxiety before hitting the "Match" button.
+
+- **Gatekeeping Stress:** This anxiety peaks when a player is one star away from a major tier promotion (e.g., Diamond to Master). The fear of losing that high-stakes match and sliding backward causes some players to freeze, leading them to stop playing Ranked altogether for days or weeks.
+
+### 3. The Despair of "Elo Hell" and Tilted Cynicism
+
+When players hit a losing streak, the emotional response shifts from fun to intense frustration, often resulting in a state known as **Tilt**.
+
+- **Externalizing Failure:** Psychologically, humans tend to attribute their successes to their own skill, but blame their failures on external factors (**Self-Serving Bias**). In Honor of Kings, this manifests as players feeling trapped in "Elo Hell"—convinced that the system is intentionally matching them with bad teammates ("trolls" or "feeders") to force a 50% win rate.
+- **Helplessness:** Prolonged losing streaks can trigger a form of learned helplessness. The game stops feeling like a test of skill and starts feeling like a rigged, stressful chore.
+
+### 4. Season Reset Burnout vs. Rejuvenation
+
+How players feel about the 3-month seasonal reset depends entirely on their current standing:
+
+- **The Relieved / Motivated:** Players who hit a plateau or had a miserable end-of-season run feel a sense of relief. They view the reset as a clean slate to try again with a better mindset.
+- **The Exhausted / Defeated:** Casual or semi-casual players who barely squeaked into their target tier right before the deadline often feel a sense of exhaustion. Seeing their hard work instantly deleted and being thrown back into the chaotic "Diamond Bottleneck" can lead to temporary burnout, causing them to take a break from the game for the first few weeks of the new season.
+
+Have you ever experienced that **"one star away" anxiety**, or are you currently feeling the **burnout of dealing with random teammates**?
+
+## different players
+
+In **Honor of Kings**, the player base is massive and incredibly diverse. Because millions of people play the game, they don't all experience the ranking system the same way.
+
+Players can generally be divided into **four distinct archetypes**, each with their own unique emotional relationship to the ranked climb:
+
+### 1. The Hardcore Competitive Grinders (The Top 5%)
+
+These are the players aiming for high-tier Grandmaster, Glorious King, or the prestigious **Top National Leaderboards**.
+
+- **How they feel:** They view ranking as a serious sport. They experience extreme focus, analytical calculation, and intense adrenaline.
+- **Their Reset Reaction:** They actually **welcome the season reset**. For them, the initial chaotic bottleneck is the most exciting part of the season because it is a race to see who can climb back to the top first. They rarely experience rank anxiety; instead, they get frustrated by meta shifts that weaken their favorite heroes.
+
+### 2. The Milestone Achievers (The Dedicated Casuals)
+
+This group makes up the bulk of the active ranked player base. Their goal is usually a specific landmark rank, most commonly **King (王者) 1-Star**, to get the seasonal rewards and profile bragging rights.
+
+- **How they feel:** They experience the highest levels of **emotional volatility**. They feel intense euphoria when they hit a new tier, but deep despair during losing streaks. They are highly susceptible to "rank anxiety" when they get close to their goal.
+- **Their Reset Reaction:** They feel a mix of exhaustion and relief. Once they hit King, many stop playing ranked entirely for the rest of the season to protect their status, viewing the upcoming reset as a ticking clock they have to beat.
+
+### 3. The Socializers (The Team Players)
+
+These players rarely queue alone. They almost exclusively play in **Duos, Trios, or 5-Man pre-made teams** with real-life friends or long-time in-game guildmates.
+
+- **How they feel:** For them, the ranking system is just a backdrop for socializing. The emotional highs and lows are mitigated because they share them with friends. A loss doesn't sting as bad if they can laugh about it together over voice chat, and a win feels like a shared team victory.
+- **Their Reset Reaction:** Neutral. They climb when their friends are online. The reset simply means it is time to coordinate schedules with their squad to start playing together again.
+
+### 4. The Casual Passives (The "Just For Fun" Players)
+
+These players mostly occupy the lower to middle tiers (Gold, Platinum, and lower Diamond). They play a few matches a week, often while commuting or relaxing at home.
+
+- **How they feel:** They are largely immune to rank anxiety. They play Ranked simply because it offers better matchmaking balance than casual Normal matches. If they win, great; if they lose, they move on with their day.
+- **Their Reset Reaction:** Unfazed. Because the game's inheritance rules protect lower tiers (Bronze and Silver don't drop at all, Gold drops minimally), the reset has almost zero negative impact on their psychological well-being.
+
+When you log in, do you find yourself playing more as a **Lone Achiever** trying to hit a goal, or do you prefer the community vibe of being a **Socializer with a squad**?
+
+## how do different players feel on ranking
+
+To understand how these different players feel while ranking, we have to look at the intersection of their **personal goals** and the **game’s psychological triggers**.
+
+The emotional journey of ranking looks radically different depending on who is holding the phone:
+
+### 1. Hardcore Grinders: Hyper-Focus and "The High"
+
+For the top 5% of players chasing high-star Grandmaster or National Leaderboard spots, the ranking process feels like a **high-stakes sport**.
+
+- **The Feeling:** They experience a state of intense, analytical hyper-focus. Wins don't just feel good—they feel like a validation of their superior strategic mind.
+- **The Dark Side:** They rarely get anxious, but they do get deeply cynical. Their main source of frustration isn't losing a fair fight; it is when "the meta" changes or a teammate makes an unoptimized macro mistake that ruins their perfect play.
+
+### 2. Milestone Achievers: Volatility and the "Gatekeeper" Panic
+
+For the players whose entire season revolves around hitting a specific milestone (usually **King/王者**), ranking is an emotional rollercoaster.
+
+- **The Feeling:** They experience the highest highs and lowest lows. When they are on a win streak, they feel unstoppable euphoria.
+- **The Dark Side:** They suffer heavily from **Ranked Anxiety**. When they get to "Gatekeeper" matches (e.g., Master I with 4 stars, one win away from King), the pressure is agonizing. A loss here doesn't just feel bad; it triggers a deep sense of dread and anger, making them feel like the matchmaking system is personally pulling them down.
+
+### 3. Socializers: Shared Joy and Shared Deflection
+
+Players who strictly queue in Duos, Trios, or 5-man premades with friends experience a much more stable emotional environment.
+
+- **The Feeling:** Ranking feels like a night out or a team hobby. Wins are celebrated collectively over voice chat, creating a strong sense of camaraderie and shared triumph.
+- **The Dark Side:** Loss aversion is heavily mitigated here. When they lose, they don't spiral into self-doubt or anger because they can **socially deflect the frustration**—laughing it off as a group or collectively blaming an overpowered enemy hero.
+
+### 4. Casual Passives: Relaxation and Low Stakes
+
+For players who log in for a couple of matches during a commute or right before bed, the ranking system doesn't hold psychological power over them.
+
+- **The Feeling:** They feel relaxed. They treat Ranked simply as a mode that gives slightly more balanced matchmaking than chaotic casual modes.
+- **The Dark Side:** They don't have one. Because lower tiers are heavily protected by the season reset rules, a loss doesn't strip away their progress. They play for the immediate fun of the match, meaning they completely bypass the stress, tilt, and burnout that plague the rest of the player base.
+
+When you look at these emotional profiles, which one feels closest to **your own experience** when you hit a losing streak? Do you get **tilted like an Achiever**, or can you **laugh it off like a Socializer**?
+

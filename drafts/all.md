@@ -147,6 +147,7 @@ life:
 - uni campus run engineering workaround fake location hardware motor
 - game hok pubgm
 - clean tritan bottle
+- coffee packaging formats brewing types beverage types popularity demography
 
 create something:
 
