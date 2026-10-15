@@ -247,4 +247,21 @@ i may just go the standard way.
 - it should be able to be published separately
 - for local dev, i can really modify inside node modules, and build abstractions maybe on this workflow
 
+---
+
+finally, sanity.
+
+- use a flat bundler (e.g. bun) <!-- or npm/yarn, but not pnpm -->
+- declare deps and peerdeps normally
+- copy to node modules of the consumer project, and _explicitly remove react and react-dom_ (it's only them that force singleton)
+- decouple tsconfig links to the consumer project. import and init explicitly instead.
+- you may automate it,
+  - track lib on an external git folder, publish to github, add as deps
+  - when install, peer deps will be respected normally, and i guess you would not see "react" (or at least on behavior it will resolve normally)
+  - when you dev locally rapidly, to update lib, you may
+    - update to git, push to github
+    - _no need to sync via network request_
+    - hardcode a list of consumers, drop react and react dom first (if existing) and copy everywhere (all projects use react, i have it on template)
+    - you can test lib normally, as you can never run react in terminal, and i have no web test
+
 
