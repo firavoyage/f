@@ -6,7 +6,6 @@
       "name": "lib",
       "dependencies": {
         "@date-fns/tz": "1.5.0",
-        "@floating-ui/react": "0.27.20",
         "@folder/xdg": "4.0.1",
         "chalk": "6.0.1",
         "clsx": "2.1.1",
@@ -36,6 +35,11 @@
         "tsx": "4.21.0",
         "typescript": "6.0.3",
         "typescript-eslint": "8.59.3",
+      },
+      "peerDependencies": {
+        "@floating-ui/react": "0.27.20",
+        "react": "19.2.7",
+        "react-dom": "19.2.7",
       },
     },
   },

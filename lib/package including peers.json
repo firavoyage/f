@@ -9,7 +9,6 @@
     "date-fns-tz": "3.2.0",
     "@folder/xdg": "4.0.1",
     "yaml": "2.9.0",
-    "@floating-ui/react": "0.27.20",
     "clsx": "2.1.1",
     "css.escape": "1.5.1",
     "fuzzysort": "4.0.2",
@@ -23,7 +22,8 @@
   },
   "peerDependencies": {
     "react": "19.2.7",
-    "react-dom": "19.2.7"
+    "react-dom": "19.2.7",
+    "@floating-ui/react": "0.27.20"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

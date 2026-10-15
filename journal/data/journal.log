@@ -164713,3 +164713,21 @@
 2026-10-15 20:16:34+08:00 org.gnome.Nautilus lib
 2026-10-15 20:17:35+08:00 code tsconfig.json - f (Workspace) - Visual Studio Code
 2026-10-15 20:18:35+08:00 code tsconfig.json - f (Workspace) - Visual Studio Code
+2026-10-15 20:20:35+08:00 org.gnome.Nautilus lib
+2026-10-15 20:22:35+08:00 chromium google.com/search?udm=50&aep=11&q=TypeError%3A Cannot read properties of null (reading %27useState%27) - Chromium
+2026-10-15 20:23:35+08:00 chromium localhost:1234 - Chromium
+2026-10-15 20:24:35+08:00 org.gnome.Nautilus lib
+2026-10-15 20:25:35+08:00 chromium localhost:1234 - Chromium
+2026-10-15 20:26:35+08:00 code ● state.ts - f (Workspace) - Visual Studio Code
+2026-10-15 20:27:35+08:00 code global.ts - f (Workspace) - Visual Studio Code
+2026-10-15 20:28:35+08:00 code index.tsx - f (Workspace) - Visual Studio Code
+2026-10-15 20:29:35+08:00 chromium localhost:1234 - Chromium
+2026-10-15 20:30:35+08:00 chromium TypeError: Cannot read properties of null (reading 'useState') - Google Search - Chromium
+2026-10-15 20:31:35+08:00 chromium localhost:1234 - Chromium
+2026-10-15 20:32:35+08:00 chromium TypeError: Cannot read properties of null (reading 'useState') - Google Search - Chromium
+2026-10-15 20:33:35+08:00 code package.json - f (Workspace) - Visual Studio Code
+2026-10-15 20:34:35+08:00 code package.json - f (Workspace) - Visual Studio Code
+2026-10-15 20:36:35+08:00 org.gnome.Nautilus lib
+2026-10-15 20:37:36+08:00 chromium localhost:1234 - Chromium
+2026-10-15 20:38:36+08:00 code app.tsx - f (Workspace) - Visual Studio Code
+2026-10-15 20:39:36+08:00 code ● global.ts - f (Workspace) - Visual Studio Code
