@@ -716,18 +716,26 @@ function solve_equation(term, derivative) {
  * ---
  *
  * second solution: 80pt (failing test case #1 now)
- * 
+ *
  * ---
- * 
+ *
  * let's recap
- * 
+ *
  * for 2 3 5 i can output each solution
- * 
+ *
  * for 1: solve i, but not ii and iii while i > ii
- * 
+ *
  * for 4: solve ii, but not i and iii while i < ii
- * 
+ *
  * well, iii doesnt help at all?
+ *
+ * ---
+ *
+ * what?
+ *
+ * ---
+ *
+ * i like ii anyway
  *
  */
 
@@ -801,14 +809,60 @@ function solve_i() {
   return count
 }
 
-function solve_ii() {
-  // 80pt (-1)
+function solve_i_sp() {
+  function is_cross(a, b, baseline) {
+    // use explicit cond rather than math sign trick
+    return (a > baseline && b < baseline) || (a < baseline && b > baseline)
+  }
 
+  let count = 0
+  let flag = false
+
+  for (const i of each(0, n)) {
+    const arrival = (s - i - tolerance) / v
+    const departure = (s + l - i + tolerance) / v
+
+    const start = height(arrival)
+    const end = height(departure)
+
+    // log({i, arrival, departure, start, end, top, bottom})
+
+    // 20pt (+ 1)
+    if (!((start > top && end > top) || (start < top && end < top))) {
+      count++
+      flag = true
+    }
+
+    // 40pt (+ 1 2)
+    // if (!(start > bottom && end > bottom || start < bottom && end < bottom)) {
+    //   count++
+    // }
+
+    // 80pt (-4)
+    // if (!((start > bottom && end > bottom) || (start < top && end < top))) {
+    //   count++
+    // }
+
+    // if (is_cross(height(arrival), height(departure), delta)) {
+    //   count++
+    // }
+  }
+
+  // pr(count)
+  return flag ? count : nil
+}
+
+function solve_ii() {
   const arrival = time(top)
   const departure = time(bottom)
   // const arrival = time(top - tolerance) // irrelevant
   // const departure = time(bottom + tolerance)
 
+  // // 60pt -1 -2
+  // const left = ceil(max(s - v * departure, 0))
+  // const right = floor(min(s + l - v * arrival, n - 1))
+
+  // 80pt (-1)
   const left = ceil(max(s - v * departure - tolerance, 0))
   const right = floor(min(s + l - v * arrival + tolerance, n - 1))
 
@@ -844,10 +898,31 @@ const i = solve_i()
 const ii = solve_ii()
 const iii = int(solve_iii())
 
-if (i < ii && i == iii) {
-  pr(ii)
-} else if (i > ii && ii == iii) {
-  pr(i)
-} else {
-  pr(iii)
-} 
+// 80pt (-4)
+// if (i < ii && i == iii) {
+//   pr(ii)
+// } else if (i > ii && ii == iii) {
+//   pr(i)
+// } else {
+//   pr(iii)
+// }
+
+// 80pt (-4)
+// if (i == iii) {
+//   pr(ii)
+// } else if (ii == iii) {
+//   pr(i)
+// } else {
+//   pr(iii)
+// }
+
+// -1 -4
+// pr(iii)
+
+// -4
+// pr(i)
+
+// i guess it will -1
+// pr(ii)
+
+pr(nullish(i, ii))
