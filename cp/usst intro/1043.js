@@ -691,11 +691,33 @@ function solve_equation(term, derivative) {
  * 
  * who know? let's submit a few more variations of interpretation
  * 
+ * feels like missing valid cases... (false neg)
+ * 
+ * a higher pt consistently pass a superset of test cases
+ * 
+ * ---
+ * 
+ * if increased tolerance wont help, maybe it's already over counting
+ * 
+ * ?! 0pt whether output count +1 or -1
+ * 
+ * ---
+ * 
+ * maybe that's not how it works.
+ * 
+ * i should cal
+ * 
  */
 
 // solution
 
 // feels it must be within [top, top + tolerance] rather than top +- tolerance
+// upd: neither it seems
+
+// const tolerance = 1 // 60pt
+// const tolerance = 0.1 // 60pt
+// const tolerance = 0.01 // still 80pt
+// const tolerance = 0.0001 // still 80pt
 const tolerance = 0.00001
 
 const [h, s, v, l, k, n] = input()
@@ -727,12 +749,21 @@ for (const i of each(0, n)) {
 
   // log({i, arrival, departure, start, end, top, bottom})
 
-  if (!(start > bottom && end > bottom || start < bottom && end < bottom)) {
-    count++
-  } 
-  // if (!(start > bottom && end > bottom || start < top && end < top)) {
+  // 20pt
+  // if (!(start > top && end > top || start < top && end < top)) {
   //   count++
   // } 
+
+  // 40pt
+  // if (!(start > bottom && end > bottom || start < bottom && end < bottom)) {
+  //   count++
+  // } 
+
+  // 80pt
+  if (!(start > bottom && end > bottom || start < top && end < top)) {
+    count++
+  } 
+
   // if (is_cross(height(arrival), height(departure), delta)) {
   //   count++
   // } 
