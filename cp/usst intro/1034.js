@@ -614,7 +614,68 @@ function min(...args) {
 这里定义两队的实力差为每队的 CrossFire 分数之和的差值，现在他们想要知道这个实力差最小是多少。
 
 Cubercsl?!
- */
+
+---
+
+// pr(abs(sub(a-b, c-d)))
+
+---
+
+// const numbers = read()
+
+// const [a, b, c, d] = numbers.sort()
+
+// pr(abs(sub(a-b, c-d)))
+
+interesting, the first time ive passed test cases and yet failed in this intro problemset
+
+---
+
+i thought i could fail, nonetheless i submitted wo testing anyway w confidence.
+
+> why? because why not. and because i can.
+
+---
+
+// i guess only two cases
+pr(min(map([sub(a-b, c-d), sub(a-c, b-d)], abs)))
+
+wait what?! that's mathmatically possible?!
+
+---
+
+ah it's the placement of abs
+
+pr(min(map([sub(abs(a-b), abs(c-d)), sub(abs(a-c), abs(b-d))], abs)))
+
+---
+
+or not.
+
+yeah once again i misread the problem statement.
+
+yeah... boring boilerplate story...
+
+just why cubercsl?!
+
+---
+
+pr(abs(sub(a+c, b+d)))
+
+?!
+
+---
+
+eventually i brute forced it...
+
+yeah it must be mathematically possible to hack me.
+
+ik. and i just dont wanna challenge it anymore. it could not go wrong.
+
+and i dont wanna solve for counter cases.
+
+*/
+
 
 // solution
 
@@ -622,6 +683,11 @@ const numbers = read()
 
 const [a, b, c, d] = numbers.sort()
 
-pr(abs(sub(a-b, c-d)))
-
-
+pr(min(map([
+  sub(a+b, c+d),
+  sub(a+c, b+d),
+  sub(a+d, b+c),
+  sub(b+c, a+d),
+  sub(b+d, a+c),
+  sub(c+d, a+b),
+], abs)))
