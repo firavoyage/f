@@ -469,11 +469,45 @@ function chainable(data, methods) {
   )
 }
 
+// string
+
+function pad_start(s, length, fill = ' ') {
+  return s.padStart(length, fill)
+}
+
+function pad_end(s, length, fill = ' ') {
+  return s.padEnd(length, fill)
+}
+
+function repeat(s, times) {
+  // you could not define macro in js, rather give the name to string *
+  const result = []
+  for (const _ of each(times)) {
+    result.push(s)
+  }
+  return result.join('')
+}
+
 // math
 
 function add(a, b) {
-  return a + b
+  // bigint not supported
+  if (is(a, 'number') && is(b, 'number')) {
+    return a + b
+  } else {
+    a = str(a)
+    b = str(b)
+
+    const digits = max(a.length, b.length) + 1
+
+    a = pad_start(a, digits, 0)
+    b = pad_start(b, digits, 0)
+
+    let c = repeat(0, digits)
+  } 
 }
+
+log(repeat(0, 8))
 
 function sub(a, b) {
   return a - b
@@ -578,6 +612,8 @@ function nullish(a, b) {
   } 
 }
 
+const fallback = nullish
+
 // feels i debug (i.e. log) way more often than logab
 const { abs, floor, ceil, sqrt, log: ln } = Math
 
@@ -673,5 +709,4 @@ function solve_equation(term, derivative) {
  */
 
 // solution
-
 

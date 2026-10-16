@@ -672,6 +672,10 @@ function solve_equation(term, derivative) {
  * maybe i need bigint?
  * 
  * true...
+ * 
+ * ---
+ * 
+ * wait the v8 env is right before es2020, when bigint is introduced!
  */
 
 // solution
