@@ -510,6 +510,7 @@ cp: <!-- algorithms -->
 - frobenius coin problem
 - top k elements
 - v8 acm syntax template
+- python operators divmod floordiv truediv mod
 
 pm:
 
