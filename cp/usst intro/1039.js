@@ -679,9 +679,57 @@ function solve_equation(term, derivative) {
  * 
  * i x in [0, 1] -> 1 1-x
  * 
- * ii y (0, 1 - x) -> 1-y 1-x
+ * ii y [0, 1 - x] -> 1-y 1-x
  * 
- * iii z = max -> 1-y min(1, 1-x - (1-y))
+ * iii z = max -> 1-y max(0, 1-x - (1-y)) = 1-y max(0, y-x)
+ * 
+ * ---
+ * 
+ * solve for min 1-y + max(y-x, 0)
+ * 
+ * where
+ * 
+ * x in [0, 1] and y in [0, 1 - x]
+ * 
+ * when y >= x, r = 1-y+y-x = 1-x
+ * 
+ * otherwise r = 1-y
+ * 
+ * that is
+ * 
+ * r = 1 - min x y
+ * 
+ * then it's exactly 0.5...
+ * 
+ * ---
+ * 
+ * oh wait, it's not n/4. it's 2n/4.
+ * 
+ * lol
+ * 
+ * ---
+ * 
+ * what if n is odd?
+ * 
+ * like 3
+ * 
+ * 3 3
+ * 
+ * 2 3 x~=0.3
+ * 
+ * 2 1 y~=0.6
+ * 
+ * 1 1
+ * 
+ * or
+ * 
+ * 1 3 x~=0.6
+ * 
+ * 1 2 y~=0.3
+ * 
+ * 0 2
+ * 
+ * than it's ceil
  * 
  */
 
@@ -691,8 +739,4 @@ function solve_equation(term, derivative) {
 
 const n = input()
 
-// pr(ceil(n/4))
-
-// pr(floor(n/4))
-
-
+pr(ceil(n/2))
