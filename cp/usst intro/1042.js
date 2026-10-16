@@ -661,9 +661,26 @@ function solve_equation(term, derivative) {
 // thoughts
 
 /**
- *
+ * 1 -> 10 -> 2 -> 9 -> 3 -> 8 -> 4 -> 7 -> 5 -> 6，代价是4
+ * 
+ * observation.
+ * 
+ * what if odd?
+ * 
+ * like 9
+ * 
+ * 1 9 2 8 3 7 4 5 6 = 4
+ * 
+ * ---
+ * 
+ * floor /2?
+ * 
+ * ---
+ * 
+ * ceil /2 -1?
+ * 
  */
 
 // solution
 
-
+pr(ceil(read()/2)-1)
