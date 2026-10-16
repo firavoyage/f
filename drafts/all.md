@@ -510,7 +510,7 @@ cp: <!-- algorithms -->
 - frobenius coin problem
 - top k elements
 - v8 acm syntax template
-- python operators divmod floordiv truediv mod
+- template math python operators divmod floordiv truediv mod
 
 pm:
 
@@ -794,6 +794,7 @@ math:
 - limit strategies to reduce into special limits sin e
 - limit infinitesimals known equivalences
 - limit common taylor series
+- triangle area heron formula
 
 physics:
 
