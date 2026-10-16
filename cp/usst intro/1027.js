@@ -167,6 +167,9 @@ function has(obj, key) {
   }
 }
 
+// const in = has
+const contains = has
+
 function entries(obj) {
   if (is(obj, Map)) {
     return Array.from(obj.entries())
@@ -481,6 +484,96 @@ function prod(...args) {
   return reduce(numbers, mul)
 }
 
+// lt
+function less(a, b) {
+  return a < b
+}
+
+// gt
+function greater(a, b) {
+  return a > b
+}
+
+function eq(a, b) {
+  return a === b
+}
+
+// ne
+function neq(a, b) {
+  return a !== b
+}
+
+// le
+function leq(a, b) {
+  return a <= b
+}
+
+// ge
+function geq(a, b) {
+  return a >= b
+}
+
+function and(a, b) {
+  return a && b
+}
+
+function or(a, b) {
+  return a || b
+}
+
+function not(a) {
+  return !a
+}
+
+function xor(a, b) {
+  // ?!
+  return a ^ b
+}
+
+const { abs, floor, ceil, sqrt } = Math
+
+/**
+ * Maximum in a list
+ *
+ * you may pass an array of spread args
+ *
+ * you may pass numbers and fn that should return a < b (useful for structs)
+ */
+function max(...args) {
+  const numbers_ = list(...args)
+
+  if (is(numbers_[0], 'iterable') && is(numbers_[1], 'function')) {
+    const [numbers, f] = numbers_
+
+    return reduce(numbers, (maximum, current) =>
+      f(maximum, current) ? current : maximum,
+    )
+  } else {
+    return max(numbers_, less)
+  }
+}
+
+/**
+ * Minimum in a list
+ *
+ * you may pass an array of spread args
+ *
+ * you may pass numbers and fn that should return a < b (useful for structs)
+ */
+function min(...args) {
+  const numbers_ = list(...args)
+
+  if (is(numbers_[0], 'iterable') && is(numbers_[1], 'function')) {
+    const [numbers, f] = numbers_
+
+    return reduce(numbers, (minimum, current) =>
+      f(minimum, current) ? minimum : current,
+    )
+  } else {
+    return min(numbers_, less)
+  }
+}
+
 // thoughts
 
 /**
@@ -490,5 +583,17 @@ function prod(...args) {
 // solution
 
 function triangle_area(a, b, c) {
-  
+  // heron formula
+  const s = (a + b + c) / 2
+
+  return sqrt(s * (s - a) * (s - b) * (s - c))
 }
+
+const [a, b, c] = read()
+
+const area = triangle_area(a, b, c)
+const c_ = sum(a, b, c)
+
+pr(`circumference=${c_.format(2)} area=${area.format(2)}`)
+
+

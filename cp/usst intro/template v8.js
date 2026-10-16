@@ -167,6 +167,9 @@ function has(obj, key) {
   }
 }
 
+// const in = has
+const contains = has
+
 function entries(obj) {
   if (is(obj, Map)) {
     return Array.from(obj.entries())
@@ -188,6 +191,15 @@ function entries(obj) {
   } else {
     return []
   }
+}
+
+function merge(target, ...sources) {
+  for (const source of sources) {
+    for (const key of Object.keys(source)) {
+      target[key] = source[key]
+    }
+  }
+  return target
 }
 
 // type variable_type = 'nil' | 'array' | "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" | Function |
@@ -295,9 +307,13 @@ function obj(v) {
 
 // fmt
 
-Number.prototype.format = function (precision) {
-  return this.toFixed(precision)
+/**
+ * @param {number} precision digits to keep after decimal point
+ */
+function format_float(n, precision) {
+  return n.toFixed(precision)
 }
+Number.prototype.format = curry(format_float)
 
 // fp
 
@@ -435,6 +451,24 @@ function each(...args) {
   return numbers
 }
 
+function curry(f) {
+  return function (...args) {
+    return f(this, ...args)
+  }
+}
+
+function chainable(data, methods) {
+  return merge(
+    data,
+    obj(
+      map(methods, ([name, method]) => [
+        name,
+        (...args) => method(data, ...args),
+      ]),
+    ),
+  )
+}
+
 // math
 
 function add(a, b) {
@@ -510,6 +544,23 @@ function geq(a, b) {
   return a >= b
 }
 
+function and(a, b) {
+  return a && b
+}
+
+function or(a, b) {
+  return a || b
+}
+
+function not(a) {
+  return !a
+}
+
+function xor(a, b) {
+  // ?!
+  return a ^ b
+}
+
 const { abs, floor, ceil, sqrt } = Math
 
 /**
@@ -529,7 +580,7 @@ function max(...args) {
       f(maximum, current) ? current : maximum,
     )
   } else {
-    return max(numbers_, (a, b) => a < b)
+    return max(numbers_, less)
   }
 }
 
@@ -550,7 +601,7 @@ function min(...args) {
       f(minimum, current) ? minimum : current,
     )
   } else {
-    return min(numbers_, (a, b) => a < b)
+    return min(numbers_, less)
   }
 }
 
@@ -561,3 +612,5 @@ function min(...args) {
  */
 
 // solution
+
+
