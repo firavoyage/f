@@ -575,7 +575,7 @@ const { abs, floor, ceil, sqrt, log: ln } = Math
 
 const math = {
   pi: Math.PI,
-  e: Math.E
+  e: Math.E,
 }
 
 function logab(a, b) {
@@ -648,7 +648,7 @@ function improve(update, close, guess = 1, timeout = pow(10, 5)) {
 function solve_equation(term, derivative) {
   // or you may call it find root, or find closest root, if feasible
   function update(x) {
-    return x - term(x)/derivative(x)
+    return x - term(x) / derivative(x)
   }
 
   function close(x) {
@@ -662,18 +662,57 @@ function solve_equation(term, derivative) {
 
 /**
  * 在高为 H 的天花板上有 n 个小球，体积不计，位置分别为 0，1，2，…．n-1。在地面上有一个小车（长为 L，高为 K，距原点距离为 S1）。已知小球下落距离计算公式为 d＝1/2*g*(t^2)，其中 g=10，t 为下落时间。地面上的小车以速度 V 前进。如下图：
- * 
+ *
  * 小车与所有小球同时开始运动，当小球距小车的距离 <= 0.00001 时，即认为小球被小车接受（小球落到地面后不能被接受）。
- * 
+ *
  * ---
- * 
+ *
  * what does d(car, ball) mean?
- * 
+ *
  * balls are points it seems,
- * 
+ *
  * but what about car?
+ *
+ * ---
+ *
+ * i kind of get it now, i may solve it
+ *
+ * ---
+ *
+ * n isnt much
  */
 
 // solution
 
+// feels it must be within [top, top + tolerance] rather than top +- tolerance
+const tolerance = 0.00001
 
+const [h, s, v, l, k, n] = input()
+
+const delta = h - (k + tolerance)
+
+function height(t) {
+  const g = 10
+
+  return (1 / 2) * g * pow(t, 2)
+}
+
+function is_cross(a, b, baseline) {
+  // use explicit cond rather than math sign trick
+  return a > baseline && b < baseline || a < baseline && b > baseline
+}
+
+let count = 0
+
+for (const i of each(0, n)) {
+  const arrival = (s - i) / v
+  const departure = (s + l - i) / v
+
+  log({i, arrival, departure, ah: height(arrival), dh: height(departure), delta})
+
+  if (is_cross(height(arrival), height(departure), delta)) {
+    count++
+  } 
+}
+
+pr(count)

@@ -2542,3 +2542,805 @@ arr.forEach((value, index) => {
 Use code with caution.
 
 Would you like to see how **`arr.keys()`** handles **empty slots (holes)** in an array differently than `Object.entries()` does?
+
+# js bigint
+
+### Quick results from the web:
+
+[link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/BigInt)
+
+**BigInt** - **JavaScript** - MDN Web Docs
+
+BigInt values represent integer values which are too high or too low to be represented by the number primitive.
+
+MDN Web Docs·https://developer.mozilla.org
+
+[link](https://www.w3schools.com/js/js%5Fbigint.asp)
+
+**JavaScript BigInt** - W3Schools
+
+Well organized and easy to understand Web building tutorials with lots of examples of how to use HTML, CSS, JavaScript, SQL, Python, PHP, Bootstrap, Java, XML and more.
+
+W3Schools·https://www.w3schools.com
+
+In JavaScript, **`BigInt`** is a built-in primitive data type introduced in ES2020 designed to represent and operate on whole numbers larger than **2⁵³ - 1** (`Number.MAX_SAFE_INTEGER`). Standard JavaScript `Number` values are represented as 64-bit floating-point numbers, which lose precision when dealing with extremely large integers. `BigInt` provides **arbitrary precision**, meaning it can grow as large as your system's memory allows. [link](https://www.w3schools.com/js/js%5Fbigint.asp)
+
+***
+
+### 1. Creating a BigInt
+
+You can create a `BigInt` by appending **`n`** to the end of an integer literal, or by calling the **`BigInt()`** constructor function. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/BigInt)
+
+javascript
+
+```
+// Method 1: Appending 'n'
+const bigNum = 9007199254740992n;
+
+// Method 2: Using the BigInt constructor (useful for strings or large numbers)
+const bigFromString = BigInt("9007199254740992");
+const bigFromNumber = BigInt(123);
+
+// Numeric literals (Hex, Binary, Octal) are also supported
+const hexBig = 0x1fffffffffffffn;
+const binBig = 0b111111111111111111n;
+```
+
+Use code with caution.
+
+***
+
+### 2. Supported Operations
+
+`BigInt` supports most standard arithmetic, bitwise, and comparison operators: [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/BigInt)
+
+| Operation Type  | Supported Operators               | Behavior Notes                                                              |
+| --------------- | --------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| **Arithmetic**  | `+`, `-`, `*`, `/`, `%`, `**`     | `/` discards fractional parts (it truncates towards zero).                  |
+| **Bitwise**     | `&`, `                           |`, `^`, `~`, `<<`, `>>`                                                     | The unsigned right shift operator (`>>>`) is **not supported**. |
+| **Comparisons** | `<`, `>`, `<=`, `>=`, `==`, `===` | Loose equality (`==`) works with Numbers; strict equality (`===`) does not. |
+
+javascript
+
+```
+// Division drops decimals
+console.log(5n / 2n); // 2n (not 2.5n)
+
+// Mixed comparison
+console.log(10n == 10);  // true
+console.log(10n === 10); // false (different data types)
+```
+
+Use code with caution.
+
+***
+
+### 3. Critical Rules and Constraints
+
+- **No Mixing Types:** You cannot mix `BigInt` and `Number` types in the same mathematical operation. You must explicitly coerce them first.\
+  javascript
+
+<!---->
+
+```
+// ❌ Throws TypeError
+const error = 10n + 5;
+
+//  Explicit coercion fixes it
+const success = 10n + BigInt(5); // 15n
+```
+
+Use code with caution.
+
+- **Math Object Incompatibility:** Built-in `Math` methods (like `Math.max()`, `Math.sin()`, or `Math.sqrt()`) do not work with `BigInt` values.
+
+- **JSON Serialization:** `JSON.stringify()` throws a `TypeError` when encountering a `BigInt`. If you need to serialize it, you must use a custom replacer function.\
+  javascript
+
+<!---->
+
+```
+const data = { id: 9223372036854775807n };
+const json = JSON.stringify(data, (key, value) =>
+  typeof value === 'bigint' ? value.toString() : value
+);
+```
+
+Use code with caution.
+
+- **Loose Logic:** In conditional statements (`if`, `while`) or with logical operators (`&&`, `||`, `!`), `0n` behaves as **falsy**, and all other `BigInt` values behave as **truthy**. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/BigInt)
+
+Are you running into a specific issue with **type mixing**, **JSON serialization**, or are you looking to use `BigInt` for a specific application like **high-precision timestamps** or **cryptography**?
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/BigInt)\
+  MDN Web Docs\
+  BigInt - JavaScript - MDN Web Docs\
+  Most operators support BigInts, Arithmetic operators: + , - , \* , / , % , \*\* \* Bitwise operators: >> , << , & , | , ^ , ~
+- [link](https://www.w3schools.com/js/js%5Fbigint.asp)\
+  W3Schools\
+  JavaScript BigInt\
+  BigInt is a JavaScript numeric data type for arbitrary-precision integers. Supports standard arithmetic, comparisons, bitwise ops,
+- [link](https://www.youtube.com/watch?v=OnJrRM1Btew)\
+  YouTube·AskLixi\
+  Chapter 13: Javascript Tutorial - What is a BigInt?\
+  JavaScript's Number data type rounds up numbers with 16 or more digits, leading to a loss of precision. BigInt ensures exact preci...\
+  13:31
+
+Show all
+
+## why is it designed to be incompatible
+
+The incompatibility between **`BigInt`** and standard **`Number`** types in JavaScript is an intentional design choice made by the **TC39 committee** (the body that standardizes JavaScript) to prevent **silent, irreversible data loss** and subtle bugs in your code.
+
+If implicit coercion were allowed, JavaScript would try to guess how to blend the two types, leading to dangerous mathematical inaccuracies without throwing an error.
+
+***
+
+### 1. Implicit Mixing Destroys Precision
+
+The primary reason `BigInt` exists is to handle numbers that `Number` cannot represent accurately. If JavaScript automatically converted a `BigInt` to a `Number` during an operation, you would immediately drop back into a world of rounding errors.
+
+javascript
+
+```
+// Imagine if JavaScript implicitly allowed this:
+const giantNum = 9007199254740993n; // Exactly 9,007,199,254,740,993
+const normalNum = 1;
+
+// If JS implicitly coerced giantNum to a standard Number:
+const result = giantNum + normalNum;
+console.log(result); // Would output: 9007199254740994 (Loses precision!)
+```
+
+Use code with caution.
+
+By forcing the developer to write explicit conversions (`BigInt(value)` or `Number(value)`), JavaScript ensures you are **fully aware** of exactly where and when precision might be lost.
+
+***
+
+### 2. The Danger of "Hidden" Loss in Complex Equations
+
+If mixing types were permitted, a large `BigInt` could pass through a long series of mathematical operations, silently losing precision at the very first step where it interacted with a `Number`.
+
+You wouldn't get a crash or an error message; you would just get a slightly wrong answer at the very end of your calculation. In applications dealing with **financial transactions, database IDs, or cryptography**, a single rounded digit can be catastrophic.
+
+***
+
+### 3. Why `Math` Object Methods are Blocked
+
+The built-in `Math` object (e.g., `Math.sqrt`, `Math.max`, `Math.pow`) is tightly coupled to the 64-bit floating-point format (`Number`).
+
+- Many `Math` functions inherently return **fractional decimals** (like `Math.sqrt(2)`), which `BigInt` cannot represent because it only handles whole integers.
+- If `Math.max(10n, 20)` were allowed, it would have to return a single type. If it returned a `Number`, you risk losing precision. If it returned a `BigInt`, it would alter the data type unexpectedly.
+
+***
+
+### Summary of the Design Philosophy
+
+JavaScript is traditionally very loose with types (e.g., `'5' - 1` equals `4`). However, for `BigInt`, the language architects chose **safety over convenience**. They decided that throwing a `TypeError` is much better than letting your application calculate the wrong number in secret.
+
+Are you currently trying to refactor some code to **integrate BigInt**, or are you deciding whether to use **BigInt versus a third-party math library** for your project?
+
+## why can py number be arbitrary
+
+Python numbers (specifically integers) are arbitrary-precision by default because <mark><strong>Python represents integers as dynamic array objects rather than raw CPU-native numbers.</strong></mark> [link](https://tenthousandmeters.com/blog/python-behind-the-scenes-8-how-python-integers-work/)
+
+When you write code in languages like C, C++, or Java, an integer is mapped directly to a fixed hardware register (usually 32 or 64 bits). If a calculation exceeds that bit limit, it silently overflows and wraps around. Python chooses to prioritize **developer convenience and safety** over raw hardware speed. [link](https://roadmap.sh/python/max-int)
+
+***
+
+### How Python Works Under the Hood
+
+The standard implementation of Python (CPython) defines an integer using a C structure called `PyLongObject`. [link](https://rushter.com/blog/python-integer-implementation/)
+
+Instead of forcing a number into a single 64-bit slot, Python breaks large numbers down into individual "digits" and stores them as an **array of pieces** on the heap. [link](https://www.youtube.com/shorts/PyhnaAdzSfw)
+
+- **Base 2³⁰ Arithmetic:** On 64-bit systems, Python converts numbers into base 2³⁰. This means each "digit" in Python's internal array holds a value up to 1,073,741,824. [link](https://arpitbhayani.me/blogs/long-integers-python/)
+- **Dynamic Heap Allocation:** If you have a small number like `42`, Python only needs one digit array element. If you calculate a massive number like 2¹⁰⁰⁰, Python's internal C code automatically calculates how many elements are required, calls `malloc()` to allocate more memory, and spreads the giant number across multiple array slots. [link](https://tenthousandmeters.com/blog/python-behind-the-scenes-8-how-python-integers-work/)
+- **Software-Based Math:** Because the CPU cannot natively add two custom array-based objects together, Python implements mathematical operations (addition, subtraction, and multiplication) **in software**. It performs grade-school style column math, carrying over remainders digit-by-digit across the array. [link](https://www.reddit.com/r/ProgrammingLanguages/comments/1e6p75u/why%5Fdo%5Fmost%5Fpls%5Fmake%5Ftheir%5Fint%5Farbitrary%5Fin%5Fsize/)
+
+***
+
+### Python vs. JavaScript’s Design Philosophy
+
+Your question highlights a fundamental difference in how these languages evolved:
+
+| Feature                      | Python `int`                                                                                                                                     | JavaScript `Number` & `BigInt`                                                                                                                                |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Default Integer Behavior** | **Arbitrary Precision** out of the box. There is no separate "small int" type exposed to users.                                                  | **Fixed Precision** (64-bit float) by default. You must explicitly opt into `BigInt` by adding an `n` \[1.0].                                                 |
+| **Type Friction**            | None. A number seamlessly transitions from a tiny integer to a massive one without throwing errors or requiring conversions.                     | High. If you try to mix a standard `Number` with a `BigInt`, JavaScript will throw a strict `TypeError` \[1.0].                                               |
+| **Performance Tradeoff**     | Python sacrifices performance on standard math for safety. Standard integers carry object overhead (about 28 bytes minimum for a single number). | JavaScript prioritizes speed for standard math (acting directly on hardware numbers), isolating arbitrary-precision math to an opt-in silo (`BigInt`) \[1.0]. |
+
+In short, Python protects you from integer overflows completely by wrapping all integers in a smart, self-expanding array structure. [link](https://tenthousandmeters.com/blog/python-behind-the-scenes-8-how-python-integers-work/)
+
+Are you building a system where you need to choose between Python and JavaScript for **heavy mathematical calculations**, or are you curious about how **Python handles floating-point decimals** compared to integers? [link](https://discuss.python.org/t/questions-about-the-python-language-and-floating-point/21707)
+
+- [link](https://arpitbhayani.me/blogs/long-integers-python/)\
+  Arpit Bhayani\
+  How Python Handles Gigantic Integers\
+  Python represents arbitrary-precision integers via the C struct \`\_longobject\`, Addition and subtraction run digit-wise with carry/
+- [link](https://www.reddit.com/r/ProgrammingLanguages/comments/1e6p75u/why%5Fdo%5Fmost%5Fpls%5Fmake%5Ftheir%5Fint%5Farbitrary%5Fin%5Fsize/)\
+  Reddit·r/ProgrammingLanguages\
+  Why do most PLs make their int arbitrary in size (as in short ...\
+  If you want the numbers inlined, you declare your array as plain i64\[size] and use that, with no performance overhead.
+- [link](https://tenthousandmeters.com/blog/python-behind-the-scenes-8-how-python-integers-work/)\
+  TenThousandMeters.com\
+  Python behind the scenes #8: how Python integers work\
+  Python integers are arbitrary-precision integers, also known as bignums. Bignums are handy to work with because we don't need to w...
+
+Show all
+
+## what if you wanna go the py way in js
+
+If you want Python’s "seamless, single-numeric-type" behavior inside JavaScript, you have to work around the engine's built-in type system. Because JavaScript strictly separates `Number` and `BigInt` \[1.0], you cannot natively make them automatically blend.
+
+However, you can achieve the Python experience in JS using two main strategies: **automatic wrapper functions** or **third-party arbitrary-precision libraries**.
+
+***
+
+### 1. The Native Approach: A Custom "Smart Math" Wrapper
+
+If you don't want to load an external library, you can write helper functions that mimic Python's type checking. The function inspects the inputs, transparently upgrades them if needed, and always returns the safest format.
+
+javascript
+
+```
+// A Python-like add function
+function pyAdd(a, b) {
+  // If either is a BigInt, treat the whole operation as BigInt
+  if (typeof a === 'bigint' || typeof b === 'bigint') {
+    return BigInt(a) + BigInt(b);
+  }
+
+  const result = a + b;
+
+  // If standard addition breaches safe limits, seamlessly upgrade to BigInt
+  if (result > Number.MAX_SAFE_INTEGER || result < Number.MIN_SAFE_INTEGER) {
+    return BigInt(a) + BigInt(b);
+  }
+
+  return result;
+}
+
+console.log(pyAdd(5, 10)); // 15 (Normal Number)
+console.log(pyAdd(9007199254740991, 5)); // 9007199254740996n (Auto-upgraded to BigInt!)
+```
+
+Use code with caution.
+
+- **The Downside:** You lose native operators (`+`, `-`, `*`). You have to write everything as functional calls like `pyAdd(x, y)`.
+
+***
+
+### 2. The Library Approach: BigNumber.js or Decimal.js
+
+To truly get Python-style numbers—where integers grow infinitely and decimals don't suffer from floating-point rounding errors (like `0.1 + 0.2 === 0.30000000000000004`)—developers use libraries.
+
+Popular choices include **`bignumber.js`**, **`decimal.js`**, or **`mathjs`**. They mimic Python's software-based heap allocation by treating every number as an object under the hood.
+
+javascript
+
+```
+import BigNumber from 'bignumber.js';
+
+// Tiny numbers, massive numbers, decimals—all handled by one single Type
+const a = new BigNumber(0.1);
+const b = new BigNumber("90071992547409923847293847293");
+
+// Seamless operations without type-mixing crashes
+const result = b.plus(a);
+
+console.log(result.toString());
+// Outputs perfectly: "90071992547409923847293847293.1"
+```
+
+Use code with caution.
+
+***
+
+### Why JavaScript Can't Give You a Native Python Experience
+
+You might wonder why you can't just use a JavaScript `Proxy` or overwrite the standard operator behavior.
+
+JavaScript **does not support operator overloading**. You cannot redefine what the `+` or `*` symbols do. The TC39 committee explicitly rejected implicit type upgrades for standard numbers because V8 (and other JS engines) are fundamentally optimized to run standard 64-bit hardware math at blistering speeds \[1.0, 1.1.1]. Forcing a "catch-all" dynamic numeric type out of the box would severely degrade standard web application performance.
+
+Would you like to see how to implement a complete **lightweight math utility** that wraps all basic operations (`add`, `subtract`, `multiply`), or are you looking for a **specific configuration** for an existing library like Math.js?
+
+## why does py suffer from rounding errors anyway
+
+While Python protects you from rounding errors with whole numbers (integers), it **still suffers from rounding errors with fractional decimals (floats)**. [link](https://www.geeksforgeeks.org/python/floating-point-error-in-python/)
+
+This is not a bug in Python. It happens because Python uses **hardware-native binary floating-point math** (the IEEE 754 standard) for decimals, which **cannot exactly represent standard base-10 fractions**. [link](https://docs.python.org/3/tutorial/floatingpoint.html)
+
+The fundamental conflict boils down to the difference between **Base 10** (human math) and **Base 2** (computer math). [link](https://openstax.org/books/introduction-python-programming/pages/2-4-floating-point-errors)
+
+***
+
+### 1. The Denominator Problem (Base 10 vs. Base 2)
+
+In any number system, a fraction can only be written cleanly (without repeating infinitely) if its denominator's prime factors divide evenly into the base.
+
+- **In Base 10**, the prime factors are **2 and 5**.
+  - Fractions like 1/2 (0.5), 1/5 (0.2), and 1/10 (0.1) terminate cleanly.
+  - Fractions like 1/3 repeat infinitely (0.3333...) because 3 doesn't divide into 10.
+- **In Base 2 (Binary)**, the only prime factor is **2**.
+  - Fractions like 1/2 (0.1₂), 1/4 (0.01₂), and 1/8 (0.001₂) terminate cleanly.
+  - **Fractions like 1/10 (0.1) repeat infinitely in binary**. [link](https://docs.python.org/3/tutorial/floatingpoint.html)
+
+When you type `0.1` into Python, the computer sees an infinite repeating fraction, just like 1/3 is to us:
+
+0.110=0.000110011001100110011...2
+
+***
+
+### 2. The 53-Bit Storage Cutoff
+
+Because physical computer memory is finite, Python cannot store an infinite string of ones and zeros. [link](https://www.youtube.com/watch?v=IuQc-cgj524)
+
+Python floats allocate exactly **53 bits** of precision for the fractional part. When it hits that 53-bit ceiling, it has to chop off the rest of the repeating sequence and round the last digit. [link](https://www.youtube.com/watch?v=IuQc-cgj524)
+
+Because of this cutoff, Python doesn't actually store exactly `0.1`. It stores a microscopic approximation:\
+`0.100000000000000005551115123125...` [link](https://www.geeksforgeeks.org/python/floating-point-error-in-python/)
+
+***
+
+### 3. The Math Compounds the Illusion
+
+When you print `0.1`, Python's display logic automatically rounds the output to keep things clean for humans, masking the hidden approximation. [link](https://www.reddit.com/r/learnpython/comments/ej7ob7/can%5Fanyone%5Fexplain%5Fto%5Fme%5Fwhy%5Fpython%5Fis%5Fadding/)
+
+However, as soon as you perform arithmetic, those hidden fractions compound and leak into view: [link](https://www.reddit.com/r/learnpython/comments/ej7ob7/can%5Fanyone%5Fexplain%5Fto%5Fme%5Fwhy%5Fpython%5Fis%5Fadding/)
+
+python
+
+```
+# Both numbers are slightly larger than their decimal names in memory
+print(0.1 + 0.2)
+# Outputs: 0.30000000000000004
+```
+
+Use code with caution.
+
+***
+
+### Why didn't Python make floats "arbitrary" like integers?
+
+Python _could_ handle decimals without rounding errors by default, but it chooses not to for one major reason: **Performance**.
+
+Standard floating-point math is baked directly into your computer's Intel, AMD, or ARM CPU hardware registers. It executes in a fraction of a nanosecond. If Python forced all decimals to use custom software math to avoid rounding errors, web servers, data science scripts, and machine learning models running Python would instantly crawl to a halt.
+
+### The Escape Hatches
+
+If you are writing Python code where decimal rounding errors are unacceptable (like financial calculations), Python provides the [official decimal module](https://docs.python.org/3/library/decimal.html):
+
+python
+
+```
+from decimal import Decimal
+
+# Software-based base-10 math (No rounding errors!)
+print(Decimal('0.1') + Decimal('0.2'))
+# Outputs exactly: 0.3
+```
+
+Use code with caution.
+
+Are you working on an application where these float rounding errors are **causing bugs in your logic** (like failed `if` statements), or are you dealing with **monetary values** where you need to switch to Python's `Decimal` type? [link](https://www.youtube.com/watch?v=U08Jb-aeG6I\&t=59)
+
+- [link](https://docs.python.org/3/tutorial/floatingpoint.html)\
+  Python documentation\
+  15\. Floating\
+  Representation error refers to the fact that some (most, actually) decimal fractions cannot be represented exactly as binary (base...
+- [link](https://www.geeksforgeeks.org/python/floating-point-error-in-python/)\
+  GeeksforGeeks\
+  Floating point error in Python - GeeksforGeeks\
+  Jun 27, 2026 — Floating-point errors occur because many decimal numbers cannot be represented exactly in binary format. calculations involving fl...
+- [link](https://openstax.org/books/introduction-python-programming/pages/2-4-floating-point-errors)\
+  OpenStax
+
+2.4 Floating-point errors - Introduction to Python Programming\
+Floating-point errors Computers store information using 0's and 1's. A round-off error occurs when floating-point values are store...
+
+Show all
+
+## what if ReferenceError: BigInt is not defined and you can not import libs
+
+If you encounter **`ReferenceError: BigInt is not defined`** and you cannot import external libraries, it means <mark>you are running your code in an<span> </span><strong>obsolete JavaScript environment</strong></mark> (such as Internet Explorer, Node.js v10 or older, or an ancient iOS/Android WebView) that lacks native ES2020 support \[1.0].
+
+Without libraries or native engine support, your only choice is to **write your own lightweight arbitrary-precision math system using standard Strings or Arrays.**
+
+***
+
+### The Solution: "Grade School" String Math
+
+Computers run out of precision, but strings can be as long as your memory allows. You can mimic the way humans do math on paper: write out numbers as text, look at them right-to-left, add the digits, and carry over the remainder.
+
+Here is a pure, self-contained JavaScript function to add two massive integer strings without using `BigInt` or external libraries:
+
+javascript
+
+```
+function safeAdd(str1, str2) {
+  let i = str1.length - 1;
+  let j = str2.length - 1;
+  let carry = 0;
+  let result = '';
+
+  // Loop from the last digit to the first
+  while (i >= 0 || j >= 0 || carry > 0) {
+    // Convert current characters to numbers, default to 0 if out of digits
+    const digit1 = i >= 0 ? parseInt(str1[i], 10) : 0;
+    const digit2 = j >= 0 ? parseInt(str2[j], 10) : 0;
+
+    // Calculate sum of column + carry over
+    const sum = digit1 + digit2 + carry;
+
+    // Determine new carry (will be 1 or 0)
+    carry = Math.floor(sum / 10);
+
+    // Append the last digit of sum to our result string
+    result = (sum % 10) + result;
+
+    i--;
+    j--;
+  }
+
+  return result;
+}
+
+// Example usage on numbers that would normally lose precision:
+const num1 = "9007199254740991";
+const num2 = "12345678901234567890";
+
+console.log(safeAdd(num1, num2));
+// Outputs exactly: "12354686100489308881"
+```
+
+Use code with caution.
+
+***
+
+### How to Handle Other Operations (Multiplication)
+
+If you also need multiplication, you can follow the same grade-school grid principle: multiply each digit of the second number by every digit of the first, store the partial results in an array, and sum them up using the `safeAdd` logic above.
+
+javascript
+
+```
+function safeMultiply(str1, str2) {
+  if (str1 === '0' || str2 === '0') return '0';
+
+  const len1 = str1.length;
+  const len2 = str2.length;
+  const result = Array(len1 + len2).fill(0);
+
+  // Multiply from right to left
+  for (let i = len1 - 1; i >= 0; i--) {
+    for (let j = len2 - 1; j >= 0; j--) {
+      const mul = parseInt(str1[i], 10) * parseInt(str2[j], 10);
+      const sum = mul + result[i + j + 1];
+
+      result[i + j + 1] = sum % 10;
+      result[i + j] += Math.floor(sum / 10);
+    }
+  }
+
+  // Convert array back to string and remove leading zeros
+  const resStr = result.join('');
+  return resStr.replace(/^0+/, '');
+}
+
+console.log(safeMultiply("999999999999", "999999999999"));
+// Outputs exactly: "999999999998000000000001"
+```
+
+Use code with caution.
+
+***
+
+### Constraints of this Approach
+
+- **Performance:** This is software-defined math executing in a slow `while` loop character-by-character. It is thousands of times slower than native engine math, but perfectly fine for occasional calculations (like parsing a massive ID).
+- **Integers Only:** This code handles whole numbers. If you need decimals, you have to split the strings at the `.` character, pad the fractional sides with trailing zeros so they align, perform the math, and sew the decimal point back into place.
+
+What kind of mathematical operation are you trying to perform—is it strictly **addition/multiplication**, or do you need to handle **subtraction and division** as well?
+
+## what can cpp handle out of box wo manual big number in cp
+
+In **Competitive Programming (CP)**, where external libraries like Boost or GMP are strictly banned, C++ still offers excellent, hardware-backed native tools to handle massive numbers without writing a manual string/array math system.
+
+The standard limits and non-standard extensions available out-of-the-box are structured below.
+
+***
+
+### 1. `__int128_t` and `__uint128_t` (The CP Secret Weapon)
+
+While not technically part of the standard ISO C++ specification, **GCC and Clang (which run 99% of CP platforms like Codeforces, LeetCode, and AtCoder) support 128-bit integers natively**. [link](https://codeforces.com/blog/entry/75044)
+
+- **Range:** Up to\
+  ≈3.4\
+  ×1038\
+  (Signed) or\
+  ≈1.8\
+  ×1039\
+  (Unsigned).
+- **Usage:** You can use standard arithmetic operators (`+`, `-`, `*`, `/`, `%`) directly on them.
+- **The Catch:** `std::cin` and `std::cout` do not know how to read or print them. You must parse them using a quick custom I/O function. [link](https://codeforces.com/blog/entry/75044)
+
+cpp
+
+```
+#include <iostream>
+using namespace std;
+
+// Custom I/O for 128-bit integers
+void print128(__int128 n) {
+    if (n < 0) { putchar('-'); n = -n; }
+    if (n > 9) print128(n / 10);
+    putchar(n % 10 + '0');
+}
+
+int main() {
+    // Easily multiply two large 64-bit numbers without overflow
+    long long a = 1e18;
+    long long b = 1e18;
+
+    __int128 result = (__int128)a * b; // Evaluates to 1e36
+
+    print128(result); // Outputs: 1000000000000000000000000000000000000
+}
+```
+
+Use code with caution.
+
+***
+
+### 2. Standard Native Integer Caps (No Extensions)
+
+If a platform uses MSVC (which does not support `__int128`) or strictly forbids compiler extensions, these are the standard types: [link](https://quuxplusone.github.io/blog/2019/02/28/is-int128-integral/)
+
+| Data Type            | Max Value | Exact Cap            | CP Best Use Case                                    |
+| -------------------- | --------- | -------------------- | --------------------------------------------------- |
+| `long long`          | ≈9×1018   | `LLONG_MAX` (263−1)  | Standard accumulator for math problems.             |
+| `unsigned long long` | ≈1.8×1019 | `ULLONG_MAX` (264−1) | Hash values or bitmask manipulation up to 64 items. |
+
+_Anything exceeding_
+
+_1.8_
+
+_×1019_
+
+_in integer math requires switching to `__int128` or using **modular arithmetic** (`% M`)._ [link](https://www.geeksforgeeks.org/dsa/modular-arithmetic-for-competitive-programming/)
+
+***
+
+### 3. Floating-Point: `__float128` and `std::float128_t`
+
+If you need massive scale and precision for decimal calculations:
+
+- **`long double`**: Usually maps to an **80-bit** extended precision format on x86 hardware, or 128-bit on some architectures. It provides\
+  ≈19\
+  decimal digits of precision.
+- **`__float128` / C++23 `<stdfloat>` `std::float128_t`**: On modern GCC versions, this gives you true 128-bit floating-point numbers with **34 decimal digits of precision**. [link](https://en.cppreference.com/cpp/types/floating-point)
+
+cpp
+
+```
+#include <iostream>
+#include <stdfloat> // C++23 standard method
+
+int main() {
+    std::float128_t massive_decimal = 1.0f128 / 3.0f128;
+    // Holds 34 accurate decimal places!
+}
+```
+
+Use code with caution.
+
+***
+
+### 4. Trick: Avoiding Big Numbers with `__int128`
+
+In CP geometry or combinatorics, you often have to check if
+
+𝐴
+
+×𝐵
+
+\>𝐶
+
+×𝐷
+
+. If
+
+𝐴
+
+,
+
+𝐵
+
+,
+
+𝐶
+
+,
+
+𝐷
+
+are already close to `LLONG_MAX` (
+
+1018
+
+), multiplying them will overflow a standard `long long`.
+
+Instead of writing a BigInt class, CP contestants cast the integers directly to `__int128`:
+
+cpp
+
+```
+bool isGreater(long long a, long long b, long long c, long long d) {
+    return (__int128)a * b > (__int128)c * d; // Handled flawlessly by CPU registers
+}
+```
+
+Use code with caution.
+
+Are you preparing for a **specific platform or contest** (like Codeforces, LeetCode, or ICPC) where you need to check if these extensions are supported?
+
+- [link](https://www.geeksforgeeks.org/dsa/modular-arithmetic-for-competitive-programming/)\
+  GeeksforGeeks\
+  Modular Arithmetic for Competitive Programming - GeeksforGeeks\
+  Combinatorics and probability tasks using modulo 10^9+7 to manage huge numbers, polynomial arithmetic, hashing algorithms, and sol...
+- [link](https://www.codecademy.com/resources/docs/cpp/operators/arithmetic-operators)\
+  Codecademy\
+  C++ (C Plus Plus) | Operators | Arithmetic Operators | Codecademy\
+  C++ Arithmetic Operators: Addition (+, adds values); Subtraction (-, subtracts second from first); Multiplication (\*, multiplies v...
+- [link](https://codeforces.com/blog/entry/75044)\
+  Codeforces\
+  some tips about \_\_int128 - Codeforces\
+  Default \`cin\` and \`cout\` streams do not handle 128-bit integers natively, requiring custom I/O functions or overloaded \`>>\` and \`<
+
+Show all
+
+# all features after es2020
+
+11:58 AM
+
+Since **ES2020**, ECMAScript has continued its annual release cycle, introducing highly anticipated features that reduce boilerplate code, improve array performance, and deliver cleaner native syntax.
+
+The major features added to JavaScript across **ES2021 through ES2026** are categorized below by their major release years.
+
+***
+
+### 🚀 ECMAScript 2026 (ES17)
+
+- **Grouping Collections by Key:** Introduces `Object.groupBy()` and `Map.groupBy()` to easily bucket array data without manual `reduce` setups.
+- **Explicit Resource Management:** Introduces the `using` declaration and `Symbol.dispose` to automate cleanup of resources like file handles or database connections. [link](https://www.linkedin.com/pulse/new-javascript-features-ecmascript-es2025-es2020-santosh-yadav-bft4c)
+
+### 🌟 ECMAScript 2025 (ES16)
+
+- **Mathematical Set Operations:** Adds built-in methods to the native `Set` prototype, allowing developers to perform `Set.prototype.union()`, `intersection()`, `difference()`, and `symmetricDifference()` operations natively. [link](https://javascript.plainenglish.io/understanding-ecmascript-the-complete-history-of-javascripts-evolution-17c4f2e7e2a9)
+- **Import Attributes:** Standardizes syntax to safely pass metadata attributes alongside module imports, most notably used for enforcing security requirements like JSON verification (`import config from "./config.json" with { type: "json" };`). [link](https://www.linkedin.com/pulse/new-javascript-features-ecmascript-es2025-es2020-santosh-yadav-bft4c)
+- **Unicode Reliability Verification:** Introduces `String.prototype.isWellFormed()` and `toWellFormed()` to validate and repair malformed Unicode strings containing unpaired surrogates. [link](https://www.linkedin.com/pulse/new-javascript-features-ecmascript-es2025-es2020-santosh-yadav-bft4c)
+
+### 🛠️ ECMAScript 2024 (ES15)
+
+- **Asynchronous Coordination:** Adds `Promise.withResolvers()`, which creates a new Promise along with its corresponding `resolve` and `reject` functions directly exposed in an object.
+- **Buffer Advancements:** Introduces resizable `ArrayBuffer` objects and shareable variants to make memory buffer allocations dynamic. [link](https://dev.to/techelopment/ecmascript-a-collection-of-the-main-new-features-of-each-version-8n5)
+
+### 🎨 ECMAScript 2023 (ES14)
+
+- **Immutable Array Methods:** Introduces array duplication methods that perform operations without modifying the original array:
+  - `toSorted()` (alternative to `sort()`)
+  - `toReversed()` (alternative to `reverse()`)
+  - `toSpliced()` (alternative to `splice()`)
+  - `with(index, value)` (safely updates an array element by returning a copy) [link](https://www.linkedin.com/pulse/new-javascript-features-ecmascript-es2025-es2020-santosh-yadav-bft4c)
+- **Searching from the End:** Adds `findLast()` and `findLastIndex()` to search elements starting from the end of an array. [link](https://www.linkedin.com/pulse/new-javascript-features-ecmascript-es2025-es2020-santosh-yadav-bft4c)
+- **Hashbang Grammar:** Formally standardizes the `#!` shell script interpreter directive for JavaScript files executed in CLI environments. [link](https://dev.to/techelopment/ecmascript-a-collection-of-the-main-new-features-of-each-version-8n5)
+
+### 🏗️ ECMAScript 2022 (ES13)
+
+- **Class Upgrades:** Integrates true native **Private Fields** (using the `#` prefix), as well as static class fields and blocks.
+- **Relative Indexing:** Adds the `.at()` method for strings and arrays, finally allowing native negative indexing (e.g., `arr.at(-1)` to grab the last item).
+- **Top-level `await`:** Enables using the `await` keyword directly within an asynchronous module without wrapping it inside an `async function` block.
+- **Error Cause Tracking:** Introduces `Error.cause` to chain and deeply track the source of errors during re-throwing logic.
+- **Safe Property Checking:** Adds `Object.hasOwn(obj, prop)` as a safer alternative to calling `Object.prototype.hasOwnProperty`. [link](https://gist.github.com/rajaramtt/7df3702a04c644b0b62c9a64f48f3dbf)
+
+### ⚡ ECMAScript 2021 (ES12)
+
+- **Logical Assignment Operators:** Combines logical operators with assignment operations (`&&=`, `||=`, `??=`).
+- **Bulk String Replacement:** Introduces `String.prototype.replaceAll()` to switch all matching strings without forcing developers to use global RegEx flags.
+- **First-to-Resolve Async Promise:** Adds `Promise.any()`, which resolves as soon as any promise in an iterable fulfills successfully.
+- **Numeric Separators:** Allows using underscores (`_`) inside numeric literals (`1_000_000`) purely for readability. [link](https://www.linkedin.com/pulse/new-javascript-features-ecmascript-es2025-es2020-santosh-yadav-bft4c)
+
+Would you like me to provide **code examples** or a **deep dive** into any specific feature from this list?
+
+- [link](https://www.linkedin.com/pulse/new-javascript-features-ecmascript-es2025-es2020-santosh-yadav-bft4c)\
+  LinkedIn\
+  New JavaScript Features in ECMAScript (ES2025 - ES2020)\
+  ECMAScript 2025: Realms API (separate global contexts), ECMAScript 2021: String replaceAll(), Promise.any(). for-in order, matchAl...
+- [link](https://dev.to/techelopment/ecmascript-a-collection-of-the-main-new-features-of-each-version-8n5)\
+  DEV Community\
+  ECMAScript - A collection of the main new features of each version - DEV Community\
+  ES8/2017: Async/Await, Object.entries/values, Asynchronous Iteration, Promise.finally. Promise.any, WeakRefs, FinalizationRegistry...
+- [link](https://medium.com/@danielmovsesyan/ultimate-guide-to-all-top-features-of-es2020-8fb7d0e29380)\
+  Medium\
+  Ultimate Guide to All Top Features of ES2020! - Medium\
+  Ultimate Guide to All Top Features of ES2020! Daniel Movsesyan. Follow. 5 min read. ·. May 16, 2020. 12. Listen. Share. Press ente...
+
+Show all
+
+# all features since es2020
+
+**ECMAScript has introduced numerous powerful features since ES2020** to streamline asynchronous programming, simplify property access, and make data manipulation much more intuitive. [link](https://www.geeksforgeeks.org/javascript/all-features-of-es2020-with-examples/)
+
+The following breakdown lists the core features added to JavaScript year by year, from **ES2020 (ES11) up through ES2025 (ES16)**. [link](https://en.wikipedia.org/wiki/ECMAScript%5Fversion%5Fhistory)
+
+***
+
+### 📦 ES2020 (ES11)
+
+- **Optional Chaining (`?.`)**: Safely accesses deeply nested object properties without throwing an error if a reference is `nullish`.
+- **Nullish Coalescing Operator (`??`)**: Provides a fallback value only when the left side is `null` or `undefined`, preserving falsy values like `0` or `""`.
+- **BigInt**: Adds a new numeric primitive for processing integers of arbitrary precision beyond the standard `SafeInteger` limit.
+- **Dynamic Import (`import()`)**: Enables loading modules asynchronously and on-demand, improving initial load performance.
+- **Promise.allSettled()**: Returns a promise that resolves after all given promises have either fulfilled or rejected.
+- **globalThis**: Standardizes a universal way to access the global object context across browsers, Node.js, and web workers.
+- **String.prototype.matchAll()**: Returns an iterator of all regex matches against a string, including capturing groups. [link](https://www.youtube.com/watch?v=%5F6B%5F93iMCYw\&t=5)
+
+### 🛠️ ES2021 (ES12)
+
+- **Logical Assignment Operators (`&&=`, `||=`, `??=`)**: Combines logical operations with variable assignments to reduce boilerplate code.
+- **String.prototype.replaceAll()**: Replaces all instances of a substring within a string without needing a global regex.
+- **Numeric Separators (`_`)**: Uses underscores as visual dividers in numeric literals to make large numbers easily readable (e.g., `1_000_000`).
+- **Promise.any()**: Short-circuits and resolves as soon as _any_ of the given promises fulfill.
+- **WeakRefs & FinalizationRegistry**: Allows creating weak references to objects and scheduling clean-up callbacks after garbage collection. [link](https://www.linkedin.com/pulse/new-javascript-features-ecmascript-es2025-es2020-santosh-yadav-bft4c)
+
+### 🏗️ ES2022 (ES13)
+
+- **Class Fields**: Formalizes standard public/private instance fields, static fields, and private methods using the `#` prefix.
+- **Top-Level `await`**: Allows using the `await` keyword at the top level of modules without wrapping it in an `async` function.
+- **`.at()` Method**: Enables relative indexing for Arrays, Strings, and TypedArrays, supporting negative integers to count from the end.
+- **Object.hasOwn()**: Offers a safer alternative to `Object.prototype.hasOwnProperty` for checking object properties.
+- **Error.cause**: Adds a property to the `Error` constructor to easily chain and track deeply nested errors. [link](https://gist.github.com/rajaramtt/7df3702a04c644b0b62c9a64f48f3dbf)
+
+### 📊 ES2023 (ES14)
+
+- **Change Array by Copy**: Introduces non-mutating, immutable array methods (`toSorted()`, `toReversed()`, `toSpliced()`, and `with()`) that return a new array instead of modifying the source.
+- **Array findLast() and findLastIndex()**: Simplifies searching an array from right to left (back to front).
+- **Symbols as WeakMap Keys**: Allows using unique Symbols as keys in `WeakMap` collections.
+- **Hashbang Grammar**: Standardizes CLI execution lines (like `#!/usr/bin/env node`) directly in script files. [link](https://dev.to/techelopment/ecmascript-a-collection-of-the-main-new-features-of-each-version-8n5)
+
+### 🗂️ ES2024 (ES15)
+
+- **Object.groupBy() & Map.groupBy()**: Provides a built-in mechanism to group elements of an array into distinct buckets based on a callback string or key.
+- **Promise.withResolvers()**: Returns a promise alongside its `resolve` and `reject` functions directly, minimizing wrapper code.
+- **ArrayBuffer Enhancements**: Introduces resizable `ArrayBuffer` allocations and transferable memory views.
+- **Atomics.waitAsync()**: Safely coordinates asynchronous wait events between shared memory workers. [link](https://www.linkedin.com/pulse/new-javascript-features-ecmascript-es2025-es2020-santosh-yadav-bft4c)
+
+### 🚀 ES2025 (ES16)
+
+- **New Set Methods**: Built-in set operations including `.union()`, `.intersection()`, `.difference()`, `.symmetricDifference()`, `.isSubsetOf()`, and `.isDisjointFrom()`. [link](https://www.youtube.com/watch?v=1-cjrEMj%5Fus\&t=57)
+- **Promise.try()**: Wraps synchronous or asynchronous callbacks consistently, handling both synchronous errors and rejected promises through a single chain. [link](https://www.youtube.com/watch?v=1-cjrEMj%5Fus\&t=57)
+- **Import Attributes**: Standardizes syntax to safely pass runtime-enforced module formats (e.g., `import data from "./data.json" with { type: "json" }`). [link](https://www.youtube.com/watch?v=1-cjrEMj%5Fus\&t=57)
+- **RegExp Escaping & Modifiers**: Introduces `RegExp.escape()` to sanitize strings for regex patterns, duplicate named capturing groups, and localized flags within selective pattern structures. [link](https://www.youtube.com/watch?v=1-cjrEMj%5Fus\&t=57)
+
+***
+
+Would you like me to dive deeper into any of these specific features, or provide code snippets demonstrating **how to use them** in a practical scenario?
+
+- [link](https://dev.to/techelopment/ecmascript-a-collection-of-the-main-new-features-of-each-version-8n5)\
+  DEV Community\
+  ECMAScript - A collection of the main new features of each version - DEV Community\
+  Modules, Promises. Rest/Spread Properties, Asynchronous Iteration, Promise.finally. Promise.withResolvers.
+- [link](https://www.linkedin.com/pulse/new-javascript-features-ecmascript-es2025-es2020-santosh-yadav-bft4c)\
+  LinkedIn·Santosh Yadav\
+  New JavaScript Features in ECMAScript (ES2025 - ES2020)\
+  Object.groupBy and Map.groupBy, Pipeline Operator (|>) for composition, Set union/intersection/difference.
+- [link](https://www.youtube.com/watch?v=%5F6B%5F93iMCYw\&t=5)\
+  YouTube·codeSTACKr\
+  JavaScript ES2020 === Awesome New Features!!\
+  Apr 17, 2020 — Optional chaining (\`?.\`) simplifies accessing deeply nested object properties, returning \`undefined\` if a property does not exist ...\
+  15m
+
+Show all
+

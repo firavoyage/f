@@ -62,13 +62,15 @@ function read() {
 
   const line = read_line()
 
-  const items = map(line.split(' '), (v) => {
-    if (is_given(num(v)) && num(v) < max_int && num(v) > min_int) {
-      return num(v)      
-    } else {
-      return nullish(num(v), v)
-    } 
-  })
+  // num safe limits do not work as expected, read line explicitly instead
+  const items = map(line.split(' '), (v) => nullish(num(v), v))
+  // const items = map(line.split(' '), (v) => {
+  //   if (is_given(num(v)) && num(v) < max_int && num(v) > min_int) {
+  //     return num(v)      
+  //   } else {
+  //     return nullish(num(v), v)
+  //   } 
+  // })
 
   if (items.length == 1) {
     return items[0]
