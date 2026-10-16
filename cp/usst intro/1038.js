@@ -570,7 +570,18 @@ function xor(a, b) {
   return a ^ b
 }
 
-const { abs, floor, ceil, sqrt } = Math
+// feels i debug (i.e. log) way more often than logab
+const { abs, floor, ceil, sqrt, log: logab } = Math
+
+const math = {
+  pi: Math.PI,
+  e: Math.E
+}
+
+function ln(x) {
+  // idk why they exclude ln, while having log10, and an even more suspicious log2
+  return logab(x, math.e)
+}
 
 /**
  * Maximum in a list
@@ -631,6 +642,22 @@ function improve(update, close, guess = 1, timeout = pow(10, 5)) {
   return guess
 }
 
+/**
+ * solve the root of an eq using the newton method
+ */
+function solve_equation(term, derivative) {
+  // or you may call it find root, or find closest root, if feasible
+  function update(x) {
+    return x - term(x)/derivative(x)
+  }
+
+  function close(x) {
+    return approx_eq(term(x), 0)
+  }
+
+  return improve(update, close)
+}
+
 // thoughts
 
 /**
@@ -638,5 +665,34 @@ function improve(update, close, guess = 1, timeout = pow(10, 5)) {
  */
 
 // solution
+
+// thoughts
+
+/**
+ *
+ * well n <= pow 10 18 and i could not iterate
+ * 
+ * js will handle it well, no "long long" needed or awkward "typedef long long ll"
+ * 
+ * (yeah, perf doesnt matter for now, 
+ * and you should not make zero cost abstraction the top priority)
+ * 
+ * ---
+ * 
+ * i want to maximize p + k given n
+ * 
+ * where
+ * 
+ * k is N+
+ * 
+ * and
+ * 
+ * p = log(n, k) and p is N+
+ * 
+ */
+
+// solution
+
+const { log: logab } = Math
 
 
