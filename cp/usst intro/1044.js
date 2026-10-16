@@ -665,6 +665,18 @@ function solve_equation(term, derivative) {
  * 
  * 1.你挂高树了吗.
  * 2.你挂大雾了吗．
+ * 
+ * ---
+ * 
+ * ?! the py version passes ?!
+ * 
+ * ---
+ * 
+ * ah, the read fn is flawed. i should use nullish, which it doesnt support.
+ * 
+ * use is given instead. or abstract it.
+ * 
+ * || fails when zero is valid.
  */
 
 // solution
