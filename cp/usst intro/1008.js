@@ -337,4 +337,6 @@ function each(...args) {
 
 // solution
 
-123123
+const [a, b] = read_int()
+
+print(`${b/a*100}%`)
