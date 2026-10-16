@@ -59,7 +59,7 @@ function pr(...args) {
 function read() {
   const line = read_line()
 
-  const items = map(line.split(' '), (v) => num(v) || v)
+  const items = map(line.split(' '), (v) => nullish(num(v), v))
 
   if (items.length == 1) {
     return items[0]
@@ -568,6 +568,14 @@ function not(a) {
 function xor(a, b) {
   // ?!
   return a ^ b
+}
+
+function nullish(a, b) {
+  if (a !== nil && a !== undefined) {
+    return a
+  } else {
+    return b
+  } 
 }
 
 // feels i debug (i.e. log) way more often than logab
