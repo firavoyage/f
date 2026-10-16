@@ -57,9 +57,18 @@ function pr(...args) {
 }
 
 function read() {
+  const max_int = Number.MAX_SAFE_INTEGER
+  const min_int = Number.MIN_SAFE_INTEGER
+
   const line = read_line()
 
-  const items = map(line.split(' '), (v) => nullish(num(v), v))
+  const items = map(line.split(' '), (v) => {
+    if (is_given(num(v)) && num(v) < max_int && num(v) > min_int) {
+      return num(v)      
+    } else {
+      return nullish(num(v), v)
+    } 
+  })
 
   if (items.length == 1) {
     return items[0]
@@ -317,6 +326,10 @@ Number.prototype.format = curry(format_float)
 
 // fp
 
+function identity(x) {
+  return x
+}
+
 const halt_symbol = Symbol('halt')
 function halt(value) {
   return { [halt_symbol]: true, value }
@@ -440,6 +453,10 @@ function each(...args) {
     step = args[2]
   }
 
+  if ((begin - end) * step > 0) {
+    step = -1
+  }
+
   const numbers = []
 
   let index = begin
@@ -488,6 +505,33 @@ function repeat(s, times) {
   return result.join('')
 }
 
+function trim_start(s, char = '0') {
+  let begin = 0
+  for (const index of each(0, s.length)) {
+    if (s[index] == char || has(char, s[index])) {
+      begin++
+    } else {
+      break
+    }
+  }
+
+  return s.slice(begin)
+}
+
+function trim_end(s, char = [' ', '\n']) {
+  let end = s.length
+  for (const index of each(s.length - 1, 0 - 1)) {
+    log(index)
+    if (s[index] == char || has(char, s[index])) {
+      end--
+    } else {
+      break
+    }
+  }
+
+  return s.slice(0, end)
+}
+
 // math
 
 function add(a, b) {
@@ -503,11 +547,22 @@ function add(a, b) {
     a = pad_start(a, digits, 0)
     b = pad_start(b, digits, 0)
 
-    let c = repeat(0, digits)
-  } 
-}
+    let c = map(repeat(0, digits), identity)
+    let carry = 0
 
-log(repeat(0, 8))
+    for (const index of each(digits - 1, 0 - 1)) {
+      let result = int(a[index]) + int(b[index]) + carry
+
+      const [new_carry, current_digit] = divmod(result, 10)
+
+      carry = new_carry
+
+      c[index] = str(current_digit)
+    }
+
+    return trim_start(c).join('')
+  }
+}
 
 function sub(a, b) {
   return a - b
@@ -609,7 +664,7 @@ function nullish(a, b) {
     return a
   } else {
     return b
-  } 
+  }
 }
 
 const fallback = nullish
@@ -619,7 +674,7 @@ const { abs, floor, ceil, sqrt, log: ln } = Math
 
 const math = {
   pi: Math.PI,
-  e: Math.E
+  e: Math.E,
 }
 
 function logab(a, b) {
@@ -692,7 +747,7 @@ function improve(update, close, guess = 1, timeout = pow(10, 5)) {
 function solve_equation(term, derivative) {
   // or you may call it find root, or find closest root, if feasible
   function update(x) {
-    return x - term(x)/derivative(x)
+    return x - term(x) / derivative(x)
   }
 
   function close(x) {
@@ -709,4 +764,3 @@ function solve_equation(term, derivative) {
  */
 
 // solution
-
