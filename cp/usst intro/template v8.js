@@ -578,9 +578,10 @@ const math = {
   e: Math.E
 }
 
-function ln(x) {
-  // idk why they exclude ln, while having log10, and an even more suspicious log2
-  return logab(x, math.e)
+function logab(a, b) {
+  // so confusing of js math.log
+  // look at py math.log, which is what you expect
+  return ln(a) / ln(b)
 }
 
 /**
