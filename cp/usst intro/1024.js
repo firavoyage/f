@@ -489,4 +489,6 @@ function prod(...args) {
 
 // solution
 
-const [up, down, ] = 
+const [up, down, h] = read()
+
+pr(((up+down)/2*h).format(3))
