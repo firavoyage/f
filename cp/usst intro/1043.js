@@ -680,33 +680,55 @@ function solve_equation(term, derivative) {
  * ---
  *
  * n isnt much
- * 
+ *
  * ---
- * 
+ *
  * seems they have their own way to calc distance and tolerance...
- * 
+ *
  * by the examples
- * 
+ *
  * ---
- * 
+ *
  * who know? let's submit a few more variations of interpretation
- * 
+ *
  * feels like missing valid cases... (false neg)
- * 
+ *
  * a higher pt consistently pass a superset of test cases
- * 
+ *
  * ---
- * 
+ *
  * if increased tolerance wont help, maybe it's already over counting
- * 
+ *
  * ?! 0pt whether output count +1 or -1
+ *
+ * ---
+ *
+ * maybe that's not how it works.
+ *
+ * i should solve the time when it drops on top or leaves below bottom
+ *
+ * and ceil/floor/min/max for the range of capture
+ *
+ * h = .5gt^2
+ *
+ * t = sq(2h/g)
+ *
+ * ---
+ *
+ * second solution: 80pt (failing test case #1 now)
  * 
  * ---
  * 
- * maybe that's not how it works.
+ * let's recap
  * 
- * i should cal
+ * for 2 3 5 i can output each solution
  * 
+ * for 1: solve i, but not ii and iii while i > ii
+ * 
+ * for 4: solve ii, but not i and iii while i < ii
+ * 
+ * well, iii doesnt help at all?
+ *
  */
 
 // solution
@@ -723,50 +745,109 @@ const tolerance = 0.00001
 const [h, s, v, l, k, n] = input()
 
 // const delta = h - (k + tolerance)
-const top = h - (k + tolerance)
+const top = h - k
+// const top = h - (k + tolerance)
 const bottom = h
 // const bottom = h + tolerance
 
-function height(t) {
-  const g = 10
+const g = 10
 
+function height(t) {
   return (1 / 2) * g * pow(t, 2)
 }
 
-function is_cross(a, b, baseline) {
-  // use explicit cond rather than math sign trick
-  return a > baseline && b < baseline || a < baseline && b > baseline
+function time(h) {
+  return sqrt((2 * h) / g)
 }
 
-let count = 0
+function solve_i() {
+  function is_cross(a, b, baseline) {
+    // use explicit cond rather than math sign trick
+    return (a > baseline && b < baseline) || (a < baseline && b > baseline)
+  }
 
-for (const i of each(0, n)) {
-  const arrival = (s - i - tolerance) / v
-  const departure = (s + l - i + tolerance) / v
+  let count = 0
 
-  const start = height(arrival)
-  const end = height(departure)
+  for (const i of each(0, n)) {
+    const arrival = (s - i - tolerance) / v
+    const departure = (s + l - i + tolerance) / v
 
-  // log({i, arrival, departure, start, end, top, bottom})
+    const start = height(arrival)
+    const end = height(departure)
 
-  // 20pt
-  // if (!(start > top && end > top || start < top && end < top)) {
-  //   count++
-  // } 
+    // log({i, arrival, departure, start, end, top, bottom})
 
-  // 40pt
-  // if (!(start > bottom && end > bottom || start < bottom && end < bottom)) {
-  //   count++
-  // } 
+    // 20pt (+ 1)
+    // if (!(start > top && end > top || start < top && end < top)) {
+    //   count++
+    // }
 
-  // 80pt
-  if (!(start > bottom && end > bottom || start < top && end < top)) {
-    count++
-  } 
+    // 40pt (+ 1 2)
+    // if (!(start > bottom && end > bottom || start < bottom && end < bottom)) {
+    //   count++
+    // }
 
-  // if (is_cross(height(arrival), height(departure), delta)) {
-  //   count++
-  // } 
+    // 80pt (-4)
+    if (!((start > bottom && end > bottom) || (start < top && end < top))) {
+      count++
+    }
+
+    // if (is_cross(height(arrival), height(departure), delta)) {
+    //   count++
+    // }
+  }
+
+  // pr(count)
+  return count
 }
 
-pr(count)
+function solve_ii() {
+  // 80pt (-1)
+
+  const arrival = time(top)
+  const departure = time(bottom)
+  // const arrival = time(top - tolerance) // irrelevant
+  // const departure = time(bottom + tolerance)
+
+  const left = ceil(max(s - v * departure - tolerance, 0))
+  const right = floor(min(s + l - v * arrival + tolerance, n - 1))
+
+  // pr(right - left + 1)
+  return right - left + 1
+}
+
+function solve_iii() {
+  // 60pt (-1 -4)
+
+  const arrival = time(top)
+  const departure = time(bottom)
+  // const arrival = time(top - tolerance) // irrelevant
+  // const departure = time(bottom + tolerance)
+
+  const left = max(s - v * departure - tolerance, 0)
+  const right = min(s + l - v * arrival + tolerance, n - 1)
+
+  // pr(right - left + 1)
+  return (right - left + 1).format(0)
+}
+
+// 80pt (-1)
+// pr(min(solve_i(), solve_ii()))
+
+// 80pt (-4)
+// pr(max(solve_i(), solve_ii()))
+
+// 60pt (-1 -4)
+// pr(solve_iii())
+
+const i = solve_i()
+const ii = solve_ii()
+const iii = int(solve_iii())
+
+if (i < ii && i == iii) {
+  pr(ii)
+} else if (i > ii && ii == iii) {
+  pr(i)
+} else {
+  pr(iii)
+} 
