@@ -377,7 +377,7 @@ function each(...args) {
 
 const [a, b] = read_ints()
 
-const rem = a%b
-const  = 
+const rem = a%b // remainder
+const quo = (a-rem)/b // quotient
 
-pr((a-a%b)/b, a%b)
+pr(quo, rem)

@@ -56,11 +56,23 @@ function pr(...args) {
   }
 }
 
+function read() {
+  const line = read_line()
+  
+  const items = map(line.split(' '), (v) => num(v) || v)
+
+  if (items.length == 1) {
+    return items[0]
+  } else {
+    return items
+  } 
+}
+
 /**
  * @returns {string}
  */
-function read(...args) {
-  return command_readline(...args)
+function read_line() {
+  return command_readline()
 }
 
 /**
@@ -365,6 +377,24 @@ function each(...args) {
   }
 
   return numbers
+}
+
+// math
+
+function divmod(a, b) {
+  return [floordiv(a, b), mod(a, b)]
+}
+
+function truediv(a, b) {
+  return a / b
+}
+
+function floordiv(a, b) {
+  return (a - (a % b)) / b
+}
+
+function mod(a, b) {
+  return a % b
 }
 
 // thoughts
