@@ -544,6 +544,15 @@ function geq(a, b) {
   return a >= b
 }
 
+function approx_eq(a, b, tolerance = pow(0.1, 5)) {
+  return abs(sub(a, b)) < tolerance
+}
+
+function mod_eq(a, b, modular) {
+  // feels modular is more natural and less pedantic than modulo
+  return eq(mod(mod(a, modular) - mod(b, modular), modular), 0)
+}
+
 function and(a, b) {
   return a && b
 }
@@ -603,6 +612,23 @@ function min(...args) {
   } else {
     return min(numbers_, less)
   }
+}
+
+/**
+ * @param {number} [timeout=pow(10, 5)] maximum number of updates before it's returned
+ */
+function improve(update, close, guess = 1, timeout = pow(10, 5)) {
+  let times = 0
+
+  while (!close(guess) && times < timeout) {
+    const prev_guess = guess
+    guess = update(guess)
+
+    log({ guess, prev_guess, times })
+    times++
+  }
+
+  return guess
 }
 
 // thoughts

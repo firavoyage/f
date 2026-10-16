@@ -634,12 +634,49 @@ but i really like the newton method, yeah!
 
 // solution
 
-function solve() {
-  
+/**
+ * solve the root of an eq using the newton method
+ */
+function solve(term, derivative) {
+  function update(x) {
+    return x - term(x)/derivative(x)
+  }
+
+  function close(x) {
+    return approx_eq(term(x), 0)
+  }
+
+  return improve(update, close)
+}
+
+/**
+ * @param {number} [timeout=pow(10, 5)] maximum number of updates before it's returned
+ */
+function improve(update, close, guess = 1, timeout = pow(10, 5)) {
+  let times = 0
+
+  while (!close(guess) && times < timeout) {
+    const prev_guess = guess
+    guess = update(guess)
+
+    log({guess, prev_guess, times})
+    times++
+  }
+
+  return guess
 }
 
 function approx_eq(a, b, tolerance = pow(0.1, 5)) {
   return abs(sub(a, b)) < tolerance
 }
+
+const n = read()
+
+pr(
+  mul(solve(
+    (x) => pow(x, 3) - n,
+    (x) => 3 * pow(x, 2),
+  ), 3).format(3),
+)
 
 
