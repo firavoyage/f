@@ -544,7 +544,7 @@ function geq(a, b) {
   return a >= b
 }
 
-function approx_eq(a, b, tolerance = pow(0.1, 5)) {
+function approx_eq(a, b, tolerance = pow(0.1, 7)) {
   return abs(sub(a, b)) < tolerance
 }
 
@@ -708,30 +708,79 @@ function solve_equation(term, derivative) {
  * solve k where r' = 0
  *
  * assume the solution is either floor or ceil k
+ *
+ * ---
+ *
+ * well... why is it maximum? can it be minimum?
+ *
+ * and why is it gonna be solved this way?
  * 
  * ---
  * 
- * well... why is it maximum? can it be minimum?
+ * wait, how can it be not n + 1?
  * 
- * and why is it gonna be solved this way?
+ * p ^ k = n where n in 2, pow 10 18
  * 
+ * when p = n (max), k = 1, r = n + 1
+ * 
+ * when p != n, you have raise k at the cost of p
+ * 
+ * but k is generally capped at log n 2 it seems,
+ * 
+ * and forall k >= 2, p <= sqrt n
+ * 
+ * can sqrt n + log n 2 beat n + 1?
+ * 
+ * no i think. forall large n, 
+ * 
+ * both sqrt n and log n 2 <= n / 2
+ * 
+ * ---
+ * 
+ * ah damn it log is not logab
+ *
  */
 
 // solution
 
-const n = read()
+// const n = read()
 
-let m = 0
+// let m = 0
 
-for (const k of each(1, 10000)) {
-  const p = pow(n, 1/k)
+// for (const k of each(1, ceil(logab(n, 2)) + 1)) {
+//   const p = pow(n, 1 / k)
 
-  if (!approx_eq(p, floor(p)) && !approx_eq(p, ceil(p))) {
-    continue
-  } 
+//   if (!approx_eq(p, floor(p)) && !approx_eq(p, ceil(p))) {
+//     continue
+//   }
 
-  m = max(m, p + k)
-}
+//   m = max(m, p + k)
+// }
 
-log(m.format(0))
+// pr(m.format(0))
 
+// let m = 0
+
+// for (const k of each(1, ceil(logab(n, 2)) + 5)) {
+//   const p = pow(n, 1 / k)
+
+//   function update(p) {
+//     if (pow(p, k) == n && p >= 2) {
+//       m = max(m, p + k)
+//     }
+//   }
+
+//   const p_1 = floor(p)
+//   const p_2 = ceil(p)
+
+//   update(p_1)
+//   update(p_2)
+// }
+
+// pr(m.format(0))
+
+// pr(n + 1)
+
+log(logab(4, 2))
+
+// so confusing.
