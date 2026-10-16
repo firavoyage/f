@@ -669,9 +669,18 @@ function solve_equation(term, derivative) {
 // thoughts
 
 /**
- *
+ * maybe i need bigint?
+ * 
+ * true...
  */
 
 // solution
 
+// log(pow(10, 18)+1)
 
+// log(Number.MAX_SAFE_INTEGER) // 9007199254740991
+// log(Number.MIN_SAFE_INTEGER) // -9007199254740991
+
+// log(logab(Number.MAX_SAFE_INTEGER, 10)) // 15.9
+
+log(BigInt)
