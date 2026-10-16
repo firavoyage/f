@@ -571,7 +571,7 @@ function xor(a, b) {
 }
 
 // feels i debug (i.e. log) way more often than logab
-const { abs, floor, ceil, sqrt, log: logab } = Math
+const { abs, floor, ceil, sqrt, log: ln } = Math
 
 const math = {
   pi: Math.PI,
