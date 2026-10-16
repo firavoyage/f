@@ -48,7 +48,7 @@ function pr(...args) {
 }
 
 function read(...args) {
-  command_readline(...args)
+  return command_readline(...args)
 }
 
 // fn statement hoists, and let/const just doesnt break "this"
@@ -245,9 +245,9 @@ function halt(value) {
  *
  * halt v? <=> break v? in ruby
  *
- * @param {(item: any, index: number, array: any[]) => any} fn
+ * @param {(item: any, index: number, array: any[]) => any} f
  */
-function map(items, fn) {
+function map(items, f) {
   if (is(items, Map)) {
     items = Array.from(items.entries())
   } else if (is(items, Set)) {
@@ -259,7 +259,7 @@ function map(items, fn) {
   const result = []
 
   for (const [index, item] of entries(items)) {
-    const value = fn(item, index, items)
+    const value = f(item, index, items)
 
     if (value === undefined) {
       continue
@@ -283,4 +283,46 @@ function map(items, fn) {
   return result
 }
 
-print(map([1, 2, 3], (v) => v * v))
+/**
+ * Generate an array from begin = 0 to end (excluded) by step = 1
+ *
+ * @param {number[]} args
+ */
+function each(...args) {
+  let begin = 0,
+    end,
+    step = 1
+
+  if (args.length == 1) {
+    end = args[0]
+  } else if (args.length == 2) {
+    begin = args[0]
+    end = args[1]
+  } else if (args.length == 3) {
+    begin = args[0]
+    end = args[1]
+    step = args[2]
+  }
+
+  const numbers = []
+
+  let index = begin
+  while ((index - end) * step < 0) {
+    numbers.push(index)
+    index += step
+  }
+
+  return numbers
+}
+
+// solution
+
+function repeat(s, times) {
+  const result = []
+  for (const _ of each(times)) {
+    result.push(s)
+  }
+  return result.join('')
+}
+
+print()
