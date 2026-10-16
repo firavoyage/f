@@ -613,4 +613,10 @@ function min(...args) {
 
 // solution
 
+const rem_sec = read()
 
+const [h, rem_min] = divmod(rem_sec, pow(60, 2))
+
+const [m, s] = divmod(rem_min, 60)
+
+pr(h, m, s)
