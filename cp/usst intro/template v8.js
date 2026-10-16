@@ -635,7 +635,6 @@ function improve(update, close, guess = 1, timeout = pow(10, 5)) {
     const prev_guess = guess
     guess = update(guess)
 
-    log({ guess, prev_guess, times })
     times++
   }
 

@@ -575,7 +575,7 @@ const { abs, floor, ceil, sqrt, log: logab } = Math
 
 const math = {
   pi: Math.PI,
-  e: Math.E
+  e: Math.E,
 }
 
 function ln(x) {
@@ -648,7 +648,7 @@ function improve(update, close, guess = 1, timeout = pow(10, 5)) {
 function solve_equation(term, derivative) {
   // or you may call it find root, or find closest root, if feasible
   function update(x) {
-    return x - term(x)/derivative(x)
+    return x - term(x) / derivative(x)
   }
 
   function close(x) {
@@ -662,37 +662,76 @@ function solve_equation(term, derivative) {
 
 /**
  *
- */
-
-// solution
-
-// thoughts
-
-/**
- *
  * well n <= pow 10 18 and i could not iterate
- * 
+ *
  * js will handle it well, no "long long" needed or awkward "typedef long long ll"
- * 
- * (yeah, perf doesnt matter for now, 
+ *
+ * (yeah, perf doesnt matter for now,
  * and you should not make zero cost abstraction the top priority)
+ *
+ * ---
+ *
+ * i want to maximize p + k given n
+ *
+ * where
+ *
+ * k is N+
+ *
+ * and
+ *
+ * p = log(n, k) and p is N+
+ *
+ * maximum usually lives on derivative zero point right?
+ *
+ * f k = p ^ k
+ *
+ * f k = n
+ *
+ * wait how can i do this...
+ *
+ * ---
+ *
+ * ~~result = p + k = g k = log(n, k) + k~~
+ *
+ * ~~result' = (ln n / ln k)~~
+ *
+ * actually
+ *
+ * p = pow(n, 1/k)
+ *
+ * r = p + k = g k = pow(n, 1/k) + k
+ *
+ * r' = pow(n, 1/k) ln n * (-1/k^2) + 1
+ *
+ * r'' = (-1/k^2) * ln n * pow(n, 1/k) * ln n * (-1/k^2) + (2/k^3) * pow(n, 1/k) ln n
+ *
+ * solve k where r' = 0
+ *
+ * assume the solution is either floor or ceil k
  * 
  * ---
  * 
- * i want to maximize p + k given n
+ * well... why is it maximum? can it be minimum?
  * 
- * where
- * 
- * k is N+
- * 
- * and
- * 
- * p = log(n, k) and p is N+
+ * and why is it gonna be solved this way?
  * 
  */
 
 // solution
 
-const { log: logab } = Math
+const n = read()
 
+let m = 0
+
+for (const k of each(1, 10000)) {
+  const p = pow(n, 1/k)
+
+  if (!approx_eq(p, floor(p)) && !approx_eq(p, ceil(p))) {
+    continue
+  } 
+
+  m = max(m, p + k)
+}
+
+log(m.format(0))
 
