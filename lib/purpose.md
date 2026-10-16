@@ -264,4 +264,12 @@ finally, sanity.
     - hardcode a list of consumers, drop react and react dom first (if existing) and copy everywhere (all projects use react, i have it on template)
     - you can test lib normally, as you can never run react in terminal, and i have no web test
 
+---
+
+i can absolutely go the standard way.
+
+it might help to automate the local one, just in case.
+
+it's simple anyway, a copy and a peer dep rm.
+
 
