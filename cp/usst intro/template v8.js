@@ -68,6 +68,8 @@ function read() {
   } 
 }
 
+const input = read
+
 /**
  * @returns {string}
  */
@@ -270,6 +272,10 @@ function list(...args) {
   }
 }
 
+function arr(v) {
+  return Array.from(v)
+}
+
 function set(v) {
   return new Set(v)
 }
@@ -345,6 +351,10 @@ function map(items, f) {
   }
 
   return result
+}
+
+function reduce() {
+  
 }
 
 /**
