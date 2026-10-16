@@ -20,7 +20,7 @@ try {
       return buffer.toString('utf8', 0, bytesRead).trimEnd()
     }
     function write(...args) {
-      process.stdout.write(str(args.join(' ')))
+      process.stdout.write(str(args.join('')))
     }
 
     command_write = write
@@ -53,7 +53,11 @@ function read(...args) {
 
 // fn statement hoists, and let/const just doesnt break "this"
 const print = function print(...args) {
-  command_print(...args)
+  if (is(args[0], 'number')) {
+    command_print(args.join(' '))
+  } else {
+    command_print(args.join(''))
+  } 
 }
 
 const log = print
@@ -315,14 +319,12 @@ function each(...args) {
   return numbers
 }
 
+// thoughts
+
+/**
+ * 
+ */
+
 // solution
 
-function repeat(s, times) {
-  const result = []
-  for (const _ of each(times)) {
-    result.push(s)
-  }
-  return result.join('')
-}
 
-print()
