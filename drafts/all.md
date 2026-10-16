@@ -456,6 +456,7 @@ desktop:
 - docker change port pvzge
 - usb types
 - hardware floating ground ungrounded circuit loop powered off plug board laggy keyboard
+- vscode terminal ctrl v binding
 
 android:
 

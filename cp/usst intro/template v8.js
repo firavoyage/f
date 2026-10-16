@@ -3,6 +3,7 @@
 let command_print
 let command_readline
 let command_write
+let log
 
 try {
   // if (Bun || Deno || process.version) {
@@ -26,17 +27,20 @@ try {
     command_write = write
     command_print = console.log
     command_readline = readline
+    log = console.log
   } else {
     // no window/global/global_this it seems
     command_write = this.write
     command_print = this.print
     command_readline = this.readline
+    log = () => {}
   }
 } catch (e) {
   // bun not defined
   command_write = this.write
   command_print = this.print
   command_readline = this.readline
+  log = () => {}
 }
 
 function prn(...args) {
@@ -51,16 +55,22 @@ function read(...args) {
   return command_readline(...args)
 }
 
+function read_int() {
+  const ints = map(read().split(' '), int)
+
+  return ints
+}
+
 // fn statement hoists, and let/const just doesnt break "this"
 const print = function print(...args) {
   if (is(args[0], 'number')) {
     command_print(args.join(' '))
   } else {
     command_print(args.join(''))
-  } 
+  }
 }
 
-const log = print
+// log = print
 
 // std
 
@@ -322,7 +332,7 @@ function each(...args) {
 // thoughts
 
 /**
- * 
+ *
  */
 
 // solution
