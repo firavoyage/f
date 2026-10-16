@@ -680,6 +680,17 @@ function solve_equation(term, derivative) {
  * ---
  *
  * n isnt much
+ * 
+ * ---
+ * 
+ * seems they have their own way to calc distance and tolerance...
+ * 
+ * by the examples
+ * 
+ * ---
+ * 
+ * who know? let's submit a few more variations of interpretation
+ * 
  */
 
 // solution
@@ -689,7 +700,10 @@ const tolerance = 0.00001
 
 const [h, s, v, l, k, n] = input()
 
-const delta = h - (k + tolerance)
+// const delta = h - (k + tolerance)
+const top = h - (k + tolerance)
+const bottom = h
+// const bottom = h + tolerance
 
 function height(t) {
   const g = 10
@@ -705,14 +719,23 @@ function is_cross(a, b, baseline) {
 let count = 0
 
 for (const i of each(0, n)) {
-  const arrival = (s - i) / v
-  const departure = (s + l - i) / v
+  const arrival = (s - i - tolerance) / v
+  const departure = (s + l - i + tolerance) / v
 
-  log({i, arrival, departure, ah: height(arrival), dh: height(departure), delta})
+  const start = height(arrival)
+  const end = height(departure)
 
-  if (is_cross(height(arrival), height(departure), delta)) {
+  // log({i, arrival, departure, start, end, top, bottom})
+
+  if (!(start > bottom && end > bottom || start < bottom && end < bottom)) {
     count++
   } 
+  // if (!(start > bottom && end > bottom || start < top && end < top)) {
+  //   count++
+  // } 
+  // if (is_cross(height(arrival), height(departure), delta)) {
+  //   count++
+  // } 
 }
 
 pr(count)
