@@ -44,30 +44,68 @@ try {
 }
 
 function prn(...args) {
-  command_print(...args)
+  pr(...args)
+  pr('\n')
 }
 
 function pr(...args) {
-  command_write(...args)
+  if (is(args[0], 'number')) {
+    command_write(args.join(' '))
+  } else {
+    command_write(args.join(''))
+  }
 }
 
+/**
+ * @returns {string}
+ */
 function read(...args) {
   return command_readline(...args)
 }
 
+/**
+ * must take a whole line or rest input will be dropped, likely not what you want
+ * 
+ * @returns {number}
+ */
 function read_int() {
+  const ints = map(read().split(' '), int)
+
+  return ints[0]
+}
+
+/**
+ * @returns {number[]}
+ */
+function read_ints() {
   const ints = map(read().split(' '), int)
 
   return ints
 }
 
+/**
+ * must take a whole line or rest input will be dropped, likely not what you want
+ * 
+ * @returns {number}
+ */
+function read_num() {
+  const numbers = map(read().split(' '), num)
+
+  return numbers[0]
+}
+
+/**
+ * @returns {number[]}
+ */
+function read_nums() {
+  const numbers = map(read().split(' '), num)
+
+  return numbers
+}
+
 // fn statement hoists, and let/const just doesnt break "this"
 const print = function print(...args) {
-  if (is(args[0], 'number')) {
-    command_print(args.join(' '))
-  } else {
-    command_print(args.join(''))
-  }
+  prn(...args)
 }
 
 // log = print

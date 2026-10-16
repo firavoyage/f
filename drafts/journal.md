@@ -55256,6 +55256,12 @@ inspires me. i may listen to podcasts. would be more though provoking than jpop.
 
 > In this example, a higher-order function trace is defined, which returns a function that precedes a call to its argument with a print statement that outputs the argument.
 
+16
+
+16 40 complete js v8 cp template and solve some introductory cp problems.
+
+interesting problem statement in zhcn.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
