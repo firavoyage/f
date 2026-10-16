@@ -10,26 +10,27 @@ try {
   if (Bun) {
     function readline() {
       const buffer = Buffer.alloc(1024)
-      const bytesRead = require("fs").readSync(
+      const bytesRead = require('fs').readSync(
         0,
         buffer,
         0,
         buffer.length,
         null,
       )
-      return buffer.toString("utf8", 0, bytesRead).trimEnd()
+      return buffer.toString('utf8', 0, bytesRead).trimEnd()
     }
     function write(...args) {
-      process.stdout.write(str(args.join(" ")))
+      process.stdout.write(str(args.join(' ')))
     }
 
     command_write = write
     command_print = console.log
     command_readline = readline
   } else {
-    command_write = write
-    command_print = print
-    command_readline = readline
+    // no window/global/global_this it seems
+    command_write = this.write
+    command_print = this.print
+    command_readline = this.readline
   }
 } catch (e) {
   // bun not defined
@@ -50,13 +51,12 @@ function read(...args) {
   command_readline(...args)
 }
 
-let print = function print(...args) {
+// fn statement hoists, and let/const just doesnt break "this"
+const print = function print(...args) {
   command_print(...args)
 }
 
-print(1)
-
-// const log = command_print
+const log = print
 
 // std
 
@@ -74,12 +74,12 @@ function is_given(v) {
 }
 
 function has(obj, key) {
-  if (is(obj, "array")) {
+  if (is(obj, 'array')) {
     return obj.includes(key)
   }
 
-  if (is(obj, "string")) {
-    if (typeof key != "string") {
+  if (is(obj, 'string')) {
+    if (!is(key, 'string')) {
       return false
     }
 
@@ -94,10 +94,10 @@ function has(obj, key) {
     return obj.has(key)
   }
 
-  if (is(obj, "object")) {
+  if (is(obj, 'object')) {
     return (
       is_given(key) &&
-      (is(key, "string") || is(key, "number") || is(key, "symbol")) &&
+      (is(key, 'string') || is(key, 'number') || is(key, 'symbol')) &&
       Object.hasOwn(obj, key)
     )
   }
@@ -106,13 +106,21 @@ function has(obj, key) {
 function entries(obj) {
   if (is(obj, Map)) {
     return Array.from(obj.entries())
-  } else if (typeof obj == "object") {
+  } else if (is(obj, 'object')) {
+    /**
+     * entries: enumerable non symbol
+     * names: non symbol
+     * symbol: non string
+     */
     const keys = [
+      // ...Object.entries(obj),
       ...Object.getOwnPropertyNames(obj),
       ...Object.getOwnPropertySymbols(obj),
     ]
 
-    return keys.map((key) => [key, obj[key]])
+    return map(keys, (key) => [key, obj[key]])
+  } else if (is(obj, 'array')) {
+    return obj.map((item, index) => [index, item])
   } else {
     return []
   }
@@ -125,12 +133,12 @@ function entries(obj) {
  */
 function is(v, type) {
   if (v === nil) {
-    return type == "nil" || type === nil
-  } else if (type == "numeric") {
-    return is(v, "number") || is(v, "bigint")
-  } else if (type == "iterable") {
-    return is(v[Symbol.iterator], "function") && !is(v, "string")
-  } else if (typeof type == "function") {
+    return type == 'nil' || type === nil
+  } else if (type == 'numeric') {
+    return is(v, 'number') || is(v, 'bigint')
+  } else if (type == 'iterable') {
+    return is(v[Symbol.iterator], 'function') && !is(v, 'string')
+  } else if (typeof type == 'function') {
     return v instanceof type
   } else {
     return real_type(v) == type
@@ -139,9 +147,9 @@ function is(v, type) {
 
 function real_type(v) {
   if (v === nil || Number.isNaN(v)) {
-    return "nil"
+    return 'nil'
   } else if (Array.isArray(v)) {
-    return "array"
+    return 'array'
   } else {
     return typeof v
   }
@@ -189,7 +197,7 @@ function str(s) {
  * it may not be used when individual items are be iterable
  */
 function list(...args) {
-  if (args.length == 1 && is(args[0], "iterable")) {
+  if (args.length == 1 && is(args[0], 'iterable')) {
     const [v] = args
     return Array.from(v)
   } else {
@@ -203,7 +211,7 @@ function set(v) {
 }
 
 function dict(v) {
-  if (!is(v, "iterable")) {
+  if (!is(v, 'iterable')) {
     v = entries(v)
   }
   // if (is(v, 'object')) {
@@ -219,7 +227,7 @@ function obj(v) {
 
 // fp
 
-const halt_symbol = Symbol("halt")
+const halt_symbol = Symbol('halt')
 function halt(value) {
   return { [halt_symbol]: true, value }
 }
@@ -244,14 +252,14 @@ function map(items, fn) {
     items = Array.from(items.entries())
   } else if (is(items, Set)) {
     items = Array.from(items)
-  } else if (is(items, "object")) {
+  } else if (is(items, 'object')) {
     items = entries(items)
   }
 
   const result = []
 
   for (const [index, item] of entries(items)) {
-    const value = fn(item, +index, items)
+    const value = fn(item, index, items)
 
     if (value === undefined) {
       continue
@@ -275,4 +283,4 @@ function map(items, fn) {
   return result
 }
 
-// print(map([1, 2, 3], (v) => v * v))
+print(map([1, 2, 3], (v) => v * v))
