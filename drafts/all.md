@@ -1039,6 +1039,7 @@ grow:
 - politics ice criticism
 - politics elon changes
 - politics trump transistors transgender
+- tech tesla flying car
 
 tools:
 
