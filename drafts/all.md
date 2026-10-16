@@ -507,6 +507,7 @@ cp: <!-- algorithms -->
 - mo algorithm
 - frobenius coin problem
 - top k elements
+- v8 acm syntax template
 
 pm:
 
