@@ -795,6 +795,7 @@ math:
 - limit infinitesimals known equivalences
 - limit common taylor series
 - triangle area heron formula
+- solve fn newton method
 
 physics:
 
