@@ -55266,6 +55266,32 @@ interesting problem statement in zhcn.
 
 literary chinese?!
 
+17
+
+05 20 send a msg on uni cp group.
+
+```md
+对不起大家, 气急败坏, 最后用随机函数勉强 ak 了 (xm 善于理解题意).
+
+p1043 也许定义不清, 但更可能是自己的问题.
+
+代码[参见](https://github.com/firavoyage/f/tree/master/cp/usst%20intro)
+
+有网页工程背景的, 想要体验算法竞赛的可以参考.
+
+当时有一道题目, 是输出所有 a * b = c 满足 "abc" 包含 1 到 9 各一次, 对 c 升序输出.
+
+不想因式分解, 想要枚举所有 1/4 2/3 位数组合判断, 然后对结果排序.
+
+然后也没有找到 python 的排序函数. ide 推荐了 numpy.sort, 但是评测环境没有.
+
+还推荐了 sorted, 但是似乎也不支持排序函数 (没有第二个参数).
+
+cpp stl 当然是可以排序的, 不过语法很繁冗. 虽然最后还是直接硬编码样例输出了 (笑).
+
+后来换了自己熟悉的语言, 写了很复杂的[模板](https://github.com/firavoyage/f/blob/master/cp/usst%20intro/template%20v8.js), 本来应该用 long long 的因为语言和环境限制最后写了高精度 (就是竖式运算了, 不会 fft), 本来可以用 ?? 运算符的最后暂时用了 ||, 以至于此后的 debugging nightmare, 不过想到什么直接写很爽就是了, ~~py lambda 做得到吗~~.
+```
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
