@@ -1,10 +1,13 @@
+// utils
+
 let command_print
 let command_readline
 let command_write
 
 try {
-  // if (Bun || Deno || process) {
-  if (process) {
+  // if (Bun || Deno || process.version) {
+  // if (process.version) {
+  if (Bun) {
     function readline() {
       const buffer = Buffer.alloc(1024)
       const bytesRead = require("fs").readSync(
@@ -30,9 +33,9 @@ try {
   }
 } catch (e) {
   // bun not defined
-  command_write = write
-  command_print = print
-  command_readline = readline
+  command_write = this.write
+  command_print = this.print
+  command_readline = this.readline
 }
 
 function prn(...args) {
@@ -47,9 +50,15 @@ function read(...args) {
   command_readline(...args)
 }
 
-function print(...args) {
+let print = function print(...args) {
   command_print(...args)
 }
+
+print(1)
+
+// const log = command_print
+
+// std
 
 const nil = null
 
@@ -180,7 +189,7 @@ function str(s) {
  * it may not be used when individual items are be iterable
  */
 function list(...args) {
-  if (args.length == 1 && is(args[0], 'iterable')) {
+  if (args.length == 1 && is(args[0], "iterable")) {
     const [v] = args
     return Array.from(v)
   } else {
@@ -194,7 +203,7 @@ function set(v) {
 }
 
 function dict(v) {
-  if (!is(v, 'iterable')) {
+  if (!is(v, "iterable")) {
     v = entries(v)
   }
   // if (is(v, 'object')) {
@@ -208,4 +217,62 @@ function obj(v) {
   return Object.fromEntries(v)
 }
 
+// fp
 
+const halt_symbol = Symbol("halt")
+function halt(value) {
+  return { [halt_symbol]: true, value }
+}
+
+/**
+ * Map an array to a fn
+ *
+ * return void to continue
+ *
+ * return halt(v?) to break (or after pushing the last value)
+ *
+ * auto convert to entries for objects
+ *
+ * return v? <=> next v? in ruby
+ *
+ * halt v? <=> break v? in ruby
+ *
+ * @param {(item: any, index: number, array: any[]) => any} fn
+ */
+function map(items, fn) {
+  if (is(items, Map)) {
+    items = Array.from(items.entries())
+  } else if (is(items, Set)) {
+    items = Array.from(items)
+  } else if (is(items, "object")) {
+    items = entries(items)
+  }
+
+  const result = []
+
+  for (const [index, item] of entries(items)) {
+    const value = fn(item, +index, items)
+
+    if (value === undefined) {
+      continue
+    }
+    // if (!is_given(value)) {
+    //   continue
+    // }
+
+    if (value == halt) {
+      break
+    }
+
+    if (has(value, halt_symbol)) {
+      result.push(value.value)
+      break
+    }
+
+    result.push(value)
+  }
+
+  return result
+}
+
+// print(map([1, 2, 3], (v) => v * v))
