@@ -55262,6 +55262,10 @@ inspires me. i may listen to podcasts. would be more though provoking than jpop.
 
 interesting problem statement in zhcn.
 
+18 40 dl _春秋左传注_ _尼采：在世纪的转折点上_.
+
+literary chinese?!
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
