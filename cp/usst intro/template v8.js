@@ -58,14 +58,14 @@ function pr(...args) {
 
 function read() {
   const line = read_line()
-  
+
   const items = map(line.split(' '), (v) => num(v) || v)
 
   if (items.length == 1) {
     return items[0]
   } else {
     return items
-  } 
+  }
 }
 
 const input = read
@@ -79,7 +79,7 @@ function read_line() {
 
 /**
  * must take a whole line or rest input will be dropped, likely not what you want
- * 
+ *
  * @returns {number}
  */
 function read_int() {
@@ -99,7 +99,7 @@ function read_ints() {
 
 /**
  * must take a whole line or rest input will be dropped, likely not what you want
- * 
+ *
  * @returns {number}
  */
 function read_num() {
@@ -122,14 +122,12 @@ const print = function print(...args) {
   prn(...args)
 }
 
-// log = print
-
 // std
 
 const nil = null
 
 function is_given(v) {
-  return v === nil || v === undefined
+  return v !== nil && v !== undefined
   // const missing_symbol = Symbol('missing')
 
   // if ((v ?? missing_symbol) == missing_symbol) {
@@ -295,6 +293,12 @@ function obj(v) {
   return Object.fromEntries(v)
 }
 
+// fmt
+
+Number.prototype.format = function (precision) {
+  return this.toFixed(precision)
+}
+
 // fp
 
 const halt_symbol = Symbol('halt')
@@ -353,8 +357,50 @@ function map(items, f) {
   return result
 }
 
-function reduce() {
-  
+/**
+ * @param {(accumulator: any, item: any, index: number, array: any[]) => any} f
+ */
+function reduce(items, f, initial_value) {
+  let result
+  let index = 0
+
+  if (!is_given(initial_value)) {
+    result = items[0]
+    index++
+  } else {
+    result = initial_value
+  }
+
+  while (index <= items.length - 1) {
+    result = f(result, items[index], index, items)
+    index++
+  }
+
+  return result
+}
+
+/**
+ * @param {(accumulator: any, item: any, index: number, array: any[]) => any} f
+ */
+function reduce_right(items, f, initial_value) {
+  const last_index = items.length - 1
+
+  let result
+  let index = last_index
+
+  if (!is_given(initial_value)) {
+    result = items[last_index]
+    index--
+  } else {
+    result = initial_value
+  }
+
+  while (index >= 0) {
+    result = f(result, items[index], index, items)
+    index--
+  }
+
+  return result
 }
 
 /**
@@ -391,6 +437,22 @@ function each(...args) {
 
 // math
 
+function add(a, b) {
+  return a + b
+}
+
+function sub(a, b) {
+  return a - b
+}
+
+function mul(a, b) {
+  return a * b
+}
+
+function pow(a, b) {
+  return a ** b
+}
+
 function divmod(a, b) {
   return [floordiv(a, b), mod(a, b)]
 }
@@ -405,6 +467,18 @@ function floordiv(a, b) {
 
 function mod(a, b) {
   return a % b
+}
+
+function sum(...args) {
+  const numbers = list(...args)
+
+  return reduce(numbers, add)
+}
+
+function prod(...args) {
+  const numbers = list(...args)
+
+  return reduce(numbers, mul)
 }
 
 // thoughts
