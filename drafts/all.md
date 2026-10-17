@@ -61,6 +61,7 @@ fira:
 - pm pomodoro
 - perfectionism procrastination
 - llm math research future
+- sdlc order
 
 life:
 
@@ -544,6 +545,8 @@ pm:
 - research or analysis
 - sdlc phases
 - pomodoro
+- sdlc order
+- value proposition value capture
 
 gamedev:
 
@@ -589,6 +592,7 @@ ux: <!-- ui/ux design, ia -->
 - checkbox switch feeling
 - select radio feeling
 - scroll spacebar instant jump smooth scroll continuous scroll full page scroll element based snapping
+- traditional methodology user research ia ixd visual design good bad examples
 
 typography:
 
