@@ -55302,8 +55302,15 @@ recursive optimization. <!-- ~~dp~~ -->
 
 things are around deadline.
 
-i need to figure out a way to archive voice records.
+i need to figure out a way to archive voice records or it will oom or be moved along w irrelevant data.
 
+i will archive uni courses and sns before they are gone.
+
+sdlc?
+
+i often chat. i may not always be able to chat via some self hosted llm interfaces. i have to export and organize threads easier.
+
+i may learn cpp. idk if it's fun. just feels i like problem solving, somewhat maybe, yeah.
 
 
 
