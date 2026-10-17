@@ -55298,6 +55298,13 @@ i guess the final strategy is simple. you can iterate from the highest few resul
 
 recursive optimization. <!-- ~~dp~~ -->
 
+21 40 think.
+
+things are around deadline.
+
+i need to figure out a way to archive voice records.
+
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
