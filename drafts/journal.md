@@ -55296,7 +55296,7 @@ cpp stl 当然是可以排序的, 不过语法很繁冗. 虽然最后还是直�
 
 i guess the final strategy is simple. you can iterate from the highest few results and blindly monte carlo the probs <!-- precise fractions might not be available if it goes deep and explodes. -->. and it all depends on later scenarios, where you can simply mul the wr and prob.
 
-cached recursion. <!-- ~~dp~~ -->
+recursive optimization. <!-- ~~dp~~ -->
 
 
 
