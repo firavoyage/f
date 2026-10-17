@@ -55308,7 +55308,7 @@ i will archive uni courses and sns before they are gone.
 
 sdlc?
 
-i often chat. i may not always be able to chat via some self hosted llm interfaces. i have to export and organize threads easier.
+i often chat. i may not always be able to chat via some self hosted llm interfaces. i have to export and organize threads easier. <!-- it can be more flexible to be specifically efficient, like to duplicate the first heading as h1 if non existent. btw, how would i show pref for userscript wo a permanent floating toggle or implicit hotkey? -->
 
 i may learn cpp. idk if it's fun. just feels i like problem solving, somewhat maybe, yeah.
 
@@ -55321,6 +55321,10 @@ i may learn cpp. idk if it's fun. just feels i like problem solving, somewhat ma
 "alternatives to jsx"
 
 "what css should be"
+
+---
+
+feels you can type a search/link/command <!-- what/where/how, or message (who/when/why) --> and ctrl/shift/alt enter, rather than fighting ctrl (shift) tab keys. it's also more efficient and it's cool.
 
 
 
