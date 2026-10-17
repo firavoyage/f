@@ -1,4 +1,6 @@
-what does kde hig say on advanced settings
+# what does kde hig say on advanced settings
+
+## what does kde hig say on advanced settings
 
 The \*\***[KDE Human Interface Guidelines (HIG)](https://develop.kde.org/hig/)** explicitly state that developers should **avoid hiding settings on pages or views named "Advanced"**. \[[1](https://develop.kde.org/hig/powerful%5Fwhen%5Fneeded/)]
 
@@ -41,7 +43,7 @@ If you are developing a specific application, would you like advice on **how to 
 
 Show all
 
-## You said: example how currently advanced settings would become if they had adopted kde philosophy
+## example how currently advanced settings would become if they had adopted kde philosophy
 
 To transform a traditional, messy "Advanced" settings panel into the clean KDE style, you must replace the generic "Advanced" tab with **progressive disclosure** and **contextual actions**.
 
@@ -90,7 +92,7 @@ KDE eliminates the "Advanced" tab entirely. Instead, everything is grouped by **
 
 Would you like to see how to implement this using **Kirigami code components** (like `FormLayout`), or do you want to redesign a **specific settings page** you are currently working on?
 
-## You said: example how currently advanced settings in vlc would become if they had adopted kde philosophy
+## example how currently advanced settings in vlc would become if they had adopted kde philosophy
 
 If VLC completely adopted the **KDE Human Interface Guidelines (HIG)**, its famous **"Simple vs. All" radio button toggle** at the bottom of the preferences window would be entirely removed.
 
@@ -155,7 +157,7 @@ Are there other heavy utility media features in VLC you would like to map out, o
 
 Show all
 
-## You said: how does chromium or firefox embrace this philosophy
+## how does chromium or firefox embrace this philosophy
 
 Both **Google Chromium** and **Mozilla Firefox** fully embrace the KDE philosophy of progressive disclosure and functional grouping. Neither browser uses a generic, all-encompassing "Advanced" settings tab anymore. \[[1](https://acorn.firefox.com/latest/desktop/patterns/browser-settings-txAMsYCR)]
 
@@ -218,7 +220,7 @@ Would you like to explore **how Chromium and Firefox handle their hidden power-u
 
 Show all
 
-## You said: how does samsung one ui settings embrace this philosophy
+## how does samsung one ui settings embrace this philosophy
 
 **Samsung One UI** heavily embraces the KDE philosophy of progressive disclosure by organizing settings strictly by **functional topic** and shifting the screen layout to lower visual weight. \[[1](https://medium.com/design-bootcamp/progressive-disclosure-showing-information-gradually-9f47bbd92f24), [2](https://design.samsung.com/global/contents/one-ui/)]
 
@@ -274,7 +276,7 @@ Would you like to design a mobile application layout that mirrors **One UI’s t
 
 Show all
 
-## You said: how does vscode embrace this philosophy
+## how does vscode embrace this philosophy
 
 \*\***VS Code** is arguably the ultimate realization of the KDE philosophy at a massive scale. It handles an incredibly complex environment—thousands of settings for programming languages, compilers, and extensions—without using a generic "Advanced" tab. \[[1](https://socfortress.medium.com/visual-studio-code-vs-code-secure-installation-cis-hardening-guide-part-i-9843e1571ffb), [2](https://artoonsolutions.com/glossary/visual-studio-code/), [3](https://pullflow.com/blog/cursor-vs-code-fragmentation/)]
 
@@ -351,7 +353,7 @@ Would you like to explore **how to structure extension settings in a manifest fi
 
 Show all
 
-## You said: what do you think of vscode offering commonly used instead of advanced
+## what do you think of vscode offering commonly used instead of advanced
 
 The choice by VS Code to feature a **"Commonly Used"** section at the very top of its settings sidebar is a brilliant, highly effective design pattern that perfectly aligns with the spirit of the KDE Human Interface Guidelines.
 
@@ -383,7 +385,7 @@ Featuring "Commonly Used" instead of "Advanced" is the gold standard of **progre
 
 If you were to implement a similar shortcut section in your own project, do you want to look at **how to determine what qualifies as "commonly used"** without relying on intrusive tracking, or should we discuss **how to visually style a shortcut section** so it doesn't clutter the main menu?
 
-## You said: what do you think from the ux perspective
+## what do you think from the ux perspective
 
 From a strict **User Experience (UX) perspective**, <mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">substituting "Commonly Used" for "Advanced" is a masterclass in reducing <strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">cognitive load</strong> and optimizing <strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">user workflows</strong></mark>. \[[1](https://www.creative-blend.co.uk/the-psychological-theories-behind-effective-ux-design/)]
 
@@ -441,7 +443,7 @@ If you are designing an interface, would you like to map out **how to implement 
 
 Show all
 
-## You said: what do you think of vscode not having fuzzy search in settings and commands, unlike gnome apps search or one ui
+## what do you think of vscode not having fuzzy search in settings and commands, unlike gnome apps search or one ui
 
 From a UX and architectural perspective, VS Code’s decision to limit aggressive fuzzy matching in its Settings UI and Command Palette—while mobile platforms like Samsung One UI and desktop shells like GNOME prioritize it—is a deliberate choice dictated by **user intent** and **muscle memory**. \[[1](https://github.com/microsoft/vscode/issues/1964)]
 
@@ -497,7 +499,7 @@ If you are building an interface, would you like to explore **how to code a pref
 
 Show all
 
-## You said: what do you think of vscode not having fuzzy search in settings and commands, unlike gnome apps search or one ui. i mean fuzzy search like music to elisa, image to inkscape, convert to lowercase to transform to lowercase, prettier to format document
+## what do you think of vscode not having fuzzy search in settings and commands, unlike gnome apps search or one ui. i mean fuzzy search like music to elisa, image to inkscape, convert to lowercase to transform to lowercase, prettier to format document
 
 The examples provided highlight **semantic/synonym search** rather than basic character-level fuzzy search (like matching "btery" to "Battery"). What is being described is a **conceptual map**—the ability to type a generic category like "music" and have the system understand you mean a specific program like Elisa, or typing a functional intent like "convert to lowercase" and having it match "transform to lowercase."
 
@@ -548,7 +550,7 @@ If you are building an application registry, would you like to see **how to manu
 
 Show all
 
-## You said: what do you think from the ux perspective
+## what do you think from the ux perspective
 
 From a strict **User Experience (UX) perspective**, <mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">the absence of semantic and synonym search creates a sharp divide between <strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">novice learnability</strong> and <strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">expert efficiency</strong></mark>.
 
