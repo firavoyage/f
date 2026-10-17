@@ -55292,6 +55292,12 @@ cpp stl 当然是可以排序的, 不过语法很繁冗. 虽然最后还是直�
 后来换了自己熟悉的语言, 写了很复杂的[模板](https://github.com/firavoyage/f/blob/master/cp/usst%20intro/template%20v8.js), 本来应该用 long long 的因为语言和环境限制最后写了高精度 (就是竖式运算了, 不会 fft), 本来可以用 ?? 运算符的最后暂时用了 ||, 以至于此后的 debugging nightmare, 不过想到什么直接写很爽就是了, ~~py lambda 做得到吗~~.
 ```
 
+14 10 explore cs61a project i hog.
+
+i guess the final strategy is simple. you can iterate from the highest few results and blindly monte carlo the probs <!-- precise fractions might not be available if it goes deep and explodes. -->. and it all depends on later scenarios, where you can simply mul the wr and prob.
+
+cached recursion. <!-- ~~dp~~ -->
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
