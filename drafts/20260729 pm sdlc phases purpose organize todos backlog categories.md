@@ -1473,5 +1473,3 @@ also, there are just a limited set of what you could fix.
   - feasibility, poc
 
 there are also researches, analyses, plans, etc. they are non essential.
-
-
