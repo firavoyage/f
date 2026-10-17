@@ -55312,6 +55312,12 @@ i often chat. i may not always be able to chat via some self hosted llm interfac
 
 i may learn cpp. idk if it's fun. just feels i like problem solving, somewhat maybe, yeah.
 
+---
+
+"alternatives to jsx"
+
+"what css should be"
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
