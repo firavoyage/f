@@ -1098,6 +1098,10 @@ record:
 
 - recording quality kbps volume stats container environment acoustic theory
 
+files:
+
+- market analysis
+
 humility:
 
 - research claude code leak insights
