@@ -3720,3 +3720,596 @@ Certain heroes deploy summons, turrets, or pets that stay active on the battlefi
 
 Would you like to know which **specific heroes** have the best damage-over-time or delayed abilities for pulling off these accidental dragon steals?
 
+
+# what do you get when you defeat an enemy in honor of kings
+
+## what do you get when you defeat an enemy in honor of kings
+
+When you defeat an enemy hero in Honor of Kings, you and your team receive several in-game rewards and tactical advantages:
+
+- **Gold:** You earn a direct bounty of gold for securing the final hit. Nearby teammates also receive a smaller portion of gold as assist rewards. This gold is used to buy equipment and increase your power. [link](https://www.bluestacks.com/blog/game-guides/honor-of-kings/hok-beginner-guide-en.html)
+- **Experience (XP):** Eliminating an enemy grants XP to level up your hero, which unlocks and strengthens your skills. [link](https://www.bluestacks.com/blog/game-guides/honor-of-kings/hok-beginner-guide-en.html)
+- **Buff Transfers:** If the enemy hero you defeated was carrying a jungle buff (like the **Red Buff** or **Blue Buff**), that buff instantly transfers to you, refreshing its duration. [link](https://www.facebook.com/groups/1045162409393668/posts/1665647897345113/)
+- **Kill Streak Accolades:** Defeating multiple enemies in a short timeframe unlocks special in-game announcer alerts and medals, such as a **Triple Kill** (3 heroes) or a **Penta Kill** (all 5 heroes).
+- **Map Pressure & Objective Control:** While the enemy is waiting to respawn, your team gains a temporary numbers advantage. This allows you to safely push lanes, destroy enemy turrets, or secure major neutral objectives like the **Tyrant** or **Overlord**. [link](https://www.youtube.com/watch?v=SA5KjFTtIbc\&vl=en-US)
+
+Are you looking for tips on **how to maximize your gold** from kills, or would you like to know more about the specific **buffs you can steal** from enemy junglers?
+
+- [link](https://www.youtube.com/watch?v=SA5KjFTtIbc\&vl=en-US)\
+  YouTube·SoloZag\
+  Avoid these Mistakes in Honor of Kings\
+  Feb 25, 2026 — Check the minimap every 5 seconds to prevent ganks and avoid pushing lanes without vision. During the mid-game, only engage in fig...\
+  8:03
+- [link](https://www.facebook.com/groups/1045162409393668/posts/1665647897345113/)\
+  Facebook·Honor of Kings 王者荣耀 Global\
+  Why do I get the red buff in Honor of Kings when I didn't take it?\
+  May 3, 2025 — Killing an enemy with the red buff transfers it to the killer, explaining the unexpected buff acquisition.
+- [link](https://www.facebook.com/dangergaminghok/videos/a-triple-kill-in-honor-of-kings-is-an-in-game-announcer-alert-and-medal-given-wh/1317618260234956/)\
+  Facebook·DanG#R Gaming\
+  A Triple Kill in Honor of Kings is an in\
+  A Triple Kill in Honor of Kings is an in-game announcer alert and medal given when you defeat three enemy heroes one after another...
+
+Show all
+
+## how much
+
+In Honor of Kings, the exact amount of gold you receive varies depending on the current game state, the hero's level, and their specific bounty value:
+
+### 💰 Core Gold Values
+
+- **Base Hero Kill:** **200 Gold**
+- **First Blood:** **225 Gold** (securing the very first kill of the match)
+- **Assists:** Teammates who help secure a kill normally split **half the bounty value**.
+- **Contribution Bonus:** If a teammate did the heavy lifting (inflicting massive DPS, tanking damage, or landing crucial crowd control) but didn’t get the final hit, they receive an additional **30% contribution bonus** on top of their standard assist gold.
+
+### ⚖️ The Primal Trial / Bounty System
+
+The gold reward adjusts dynamically based on how well or poorly an enemy is performing:
+
+- **Shutdown Bounties (High-Value Targets):** When an enemy hero gains a large gold lead, destroys towers, or secures a kill streak, they build up **"Bounty Stacks"**. You will see a glowing feather icon appear above their head. Eliminating them can yield **300, 400, or up to 500+ Gold**, which serves as a major comeback mechanic for your team.
+- **Diminishing Returns (Low-Value Targets):** Conversely, if an enemy has died multiple times in a row without getting any kills, their individual worth continuously drops. Repeatedly killing a struggling enemy can cause their value to fall to as little as **20–60 Gold**, making them worth less than a single wave of lane minions.
+
+Would you like to know more about the **Gold Sharing mechanic** when multiple heroes clear a lane together, or how buying **Jungle or Support items** changes your gold gains?
+
+- [link](https://www.youtube.com/watch?v=9pv3WZ7Bwyc)\
+  YouTube·Tsun dzu\
+  Master the Gold System in Honor of Kings - Art of HOK #1\
+  if you have die six time and are only worth 60 gold one kill puts your next death back at 200 gold.
+- [link](https://www.youtube.com/watch?v=HbqucXVbO9k)\
+  YouTube·Auberon Wizonix\
+  The Secret To Getting Stronger In Honor of Kings\
+  Mar 10, 2026 — Killing a wave of four minions provides approximately 170-180 gold, which is more than a normal hero kill. Therefore, farming mini...\
+  12:08
+- [link](https://www.reddit.com/r/honorofkings/comments/1qag0c2/what%5Fwould%5Fthat%5Fbe/)\
+  Reddit·r/honorofkings\
+  What would that be? : r/honorofkings\
+  It's the Bounty Stack. If you get several kills or a big gold lead, The more you kill, the higher the stacks, Each stack gives who...
+
+Show all
+
+## how much depending on the enemy
+
+The exact amount of gold you receive is directly tied to the enemy’s performance via the **Primal Trial** system. Every time a hero creates value for their team—by getting kills, assists, farming lane minions, or taking down towers—their Primal Trial level and bounty value increase.
+
+The scale behaves exactly based on the enemy's condition:
+
+### 🌟 High-Value Targets (Shutdown Bounties)
+
+When an enemy is performing exceptionally well, they build up **Bounty Stacks** indicated by a purple feather icon above their head. The Primal Trial has **six levels of bounties**:
+
+- **Level 1–2:** Standard base value or small additions (~200 to 250+ Gold).
+- **Level 3+:** Defeating them yields a massive personal bounty of **300, 400, or up to 500+ Gold**.
+- **Team Bonus:** Starting at Level 3, shutting down this enemy also awards a **gold bonus to your entire team**, dramatically accelerating a comeback.
+
+_Note on Shutdowns:_ Every time a high-bounty hero dies, their Primal Trial level drops by **three levels** (e.g., a Level 9 bounty instantly falls back to Level 6 upon a single death).
+
+### 📉 Low-Value Targets (Diminishing Returns)
+
+If you repeatedly eliminate an enemy who has not been able to secure any kills, assists, or meaningful farm since their last death, their individual gold value drops sharply:
+
+- **Subsequent Deaths:** Their value drops from the 200 base down to **135 Gold**, then **110 Gold**, and continues to sink.
+- **The Floor:** At their worst, a severely behind enemy or support hero can drop to as little as **20 to 60 Gold** total. At this point, chasing them down is a waste of time, as a standard wave of lane minions yields roughly 170–180 Gold—making regular farm far more valuable than a struggling enemy.
+
+Would you like to know how **Jungle monsters** like the Tyrant alter the team's gold scale, or how to see an enemy's exact **net worth** on the scoreboard mid-match?
+
+- [link](https://www.youtube.com/watch?v=9pv3WZ7Bwyc)\
+  YouTube·Tsun dzu\
+  Master the Gold System in Honor of Kings\
+  only worth 20 gold other time you shutting down an enemy carry can be worth hundreds of gold. there are six primal trial level. th...
+- [link](https://www.youtube.com/watch?v=HbqucXVbO9k)\
+  YouTube·Auberon Wizonix\
+  The Secret To Getting Stronger In Honor of Kings\
+  Mar 10, 2026 — Subsequent normal hero kills provide less gold, for example, 135 gold for a second kill on the same hero, and even less for repeat...\
+  12:08
+
+## what happens when you block a lane of minions
+
+In Honor of Kings, "blocking a lane of minions" can refer to two different advanced tactical strategies—either <mark><strong>blocking your opponent</strong><span> </span>from reaching the minions (<strong>Zone Freezing</strong>)</mark>, or physically using a massive tanky unit to **delay your own minion wave's travel time**. [link](https://www.zhihu.com/en/answer/2882217469)
+
+Depending on how you use this wave management technique, it drastically alters the map pressure:
+
+### 1. Blocking the Enemy Hero (Lane Freezing & Zoning)
+
+If you have an early-game advantage or a stronger 1v1 matchup, you can stand directly between the enemy hero and the minion waves. Instead of attacking the minions, you only hit them at the very last second to secure the gold. [link](https://www.reddit.com/r/MobileLegendsGame/comments/1u6g4vo/what%5Fis%5Flane%5Ffreezing%5Fand%5Fhow%5Fdo%5Fi%5Factually%5Fdo%5Fit/)
+
+- **Denies Gold and XP:** Because you are physically blocking the enemy's path, they are forced to stand out of the "soak range." When your minions die, the enemy receives **0 gold and 0 experience**, severely starving their economy. [link](https://www.youtube.com/shorts/nH6R7NBJjUk)
+- **Forces High-Risk Positioning:** If the enemy wants to break the freeze and get farm, they are forced to overextend incredibly deep into your side of the map. This leaves them highly vulnerable to an easy flank or gank from your team's jungler. [link](https://www.youtube.com/watch?v=4nV3NFrOFJo)
+
+### 2. Physically Delaying Your Own Minions (Double Wave Stacking)
+
+Top-tier players occasionally use high-mobility heroes, clone abilities, or strong unit collision to physically body-block their own outgoing minion waves inside their base or right outside a tier-2 tower. [link](https://www.youtube.com/watch?v=o1GOEA7l-5E)
+
+- **Creates a Double Wave:** By slowing down the first wave, you allow the second wave spawning behind it to catch up. This merges them into a massive, high-health "super wave". [link](https://www.youtube.com/watch?v=o1GOEA7l-5E)
+- **Overwhelms Heavy Wave-Clear:** If the enemy team has a hero with strong defensive wave-clear (like Yuhuan or Zhou Yu), a single wave is easily wiped out. Stacking a massive multi-wave forces the enemy to burn through heavy cooldowns and heavily damages their towers. [link](https://www.youtube.com/watch?v=o1GOEA7l-5E)
+
+### 3. Blocking the Mid-Lane Cannon (The Dragon Stall)
+
+When your team kills the **Shadow Vanguard** (the large neutral dragon objective), it replaces standard minions with powerful Drake/Dragon units. A common strategy is to intentionally _avoid_ clearing the last enemy cannon minion in the mid-lane. [link](https://www.zhihu.com/en/answer/2882217469)
+
+- By allowing the enemy cannon minion to stand there, it acts as a roadblock that fights your incoming mid-lane dragon.
+- This slows down the mid-lane push, allowing the side-lane dragons (which are unhindered) to catch up. As a result, all three lane dragons hit the enemy's high-ground base **simultaneously**, splitting their defenses and creating immense pressure. [link](https://www.zhihu.com/en/answer/2882217469)
+
+Would you like to learn **how to safely break a lane freeze** if the enemy is blocking you, or are you interested in **how to properly cut the minion wave** behind enemy towers?
+
+- [link](https://www.zhihu.com/en/answer/2882217469)\
+  知乎\
+  What is the role of blocking minions in Honor of Kings? - 知乎\
+  When you gain an advantage, the enemy won't dare to fight you, so you can block their minions. Finish off the enemy minion when it...
+- [link](https://www.youtube.com/shorts/nH6R7NBJjUk)\
+  YouTube·Honor of Kings\
+  Minion Wave Strategies | Honor of Kings - YouTube\
+  enemy minions are located killing minions will give you more gold than letting them die by other means. prevent them from getting ...
+- [link](https://www.youtube.com/watch?v=o1GOEA7l-5E)\
+  YouTube·Honor of Kings\
+  Minion Wave Management | Honor of Kings\
+  control the timing of your minion waves by making your minion waves in all three lanes reach the enemy's base tower simultaneously...
+
+Show all
+
+## what if you stand under the turret
+
+When you stand under a turret in **Honor of Kings**, <mark>the outcome depends entirely on<span> </span><strong>which team owns the turret</strong><span> </span>and<span> </span><strong>who you are attacking</strong></mark>. Turrets are highly defensive positions that feature distinct rules for target priority, damage scaling, and gold/XP sharing.
+
+### 🛡️ Under an Ally (Your Team's) Turret
+
+Your own turret is your safest haven on the map. Standing under it provides major defensive utility:
+
+- **Protection from Aggression:** If an enemy hero stands under your turret and inflicts _any_ damage onto you (even a tiny burn effect or damage-over-time skill), **the turret immediately targets the enemy hero**.
+- **True Damage Escalation:** Turret shots deal physical damage that **increases with every consecutive hit** on the same target. A greedy enemy who tries to dive you will quickly be melted by the turret's ramping damage.
+- **Safety Behind Walls:** Early in the game, standing under your outer turret gives you a safe pocket to recall to base or clear incoming minions without being easily engaged on by the enemy team.
+
+### ⚔️ Under an Enemy Turret (Tower Diving)
+
+Stepping under an enemy turret is highly dangerous and requires strict mechanical awareness of the turret's "aggression rules":
+
+- **Minions First (The Safe Window):** Enemy turrets follow a strict priority system. If your team's **minions enter the turret radius first**, the turret will focus on shooting the minions. You can freely stand under the tower and attack the physical structure without taking damage.
+- **The Aggro Trigger:** The exact millisecond you inflict damage on an enemy hero while within their turret's radius, **the turret will immediately drop the minions and target you**. To drop this "aggro," you must completely walk out of the turret's glowing red circle radius or use untargetable skills (such as skills from heroes like _Li Bai_ or _Miyamoto Musashi_).
+- **The Anti-Dive Shield (Early Game Protection):** During the **first 4 minutes** of a match, outer enemy turrets possess an active defensive shield. If you try to dive an enemy hero under their tower during this early window, your damage against them is heavily reduced, making early dives incredibly risky.
+- **Decreased Farm Value:** If you let your enemy turret land the final blow on a minion wave instead of last-hitting them yourself, you receive **significantly less gold and experience**.
+
+Would you like to know **which specific heroes are the best at "tower diving"** due to their abilities, or how to properly check a turret's exact attack radius on your screen?
+
+## what if you stand under your turret
+
+Standing under your own turret <mark>gives you a major mechanical advantage, transforming the area into a defensive fortress</mark>. The game rewards you with protection, while adjusting how minions give out rewards:
+
+### ⚡ 1. The Turret Aggro Rule (Your Bodyguard)
+
+The turret acts as an automated protector.
+
+- **Minion Priority:** By default, your turret will shoot incoming enemy minions first.
+- **Instant Protection:** The exact millisecond an enemy hero inflicts damage on you (even a tiny damage-over-time burn or area-of-effect skill) while you are inside the turret's ring, **the turret will instantly switch targets and attack the enemy hero**.
+- **Ramping Damage:** The turret's laser shots deal physical damage that **increases with every consecutive hit** on the same target. This makes "tower diving" you incredibly lethal for greedy enemies early in the game.
+
+### 💰 2. The Gold & XP Penalty (The Downside)
+
+While the turret keeps you safe, relying on it to clear minion waves hurts your economy:
+
+- **Reduced Gold:** If your turret lands the final blow (the "last hit") on an enemy minion, **you lose roughly 20% to 30% of that minion's maximum gold value**.
+- **The Solution:** To maximize your gold, you must time your basic attacks or skills to steal the "last hit" right before the turret's slow-moving projectile strikes the minion.
+
+### 🛡️ 3. Damage Mitigation (The 4-Minute Mark)
+
+During the **first 4 minutes** of a match, your outer (Tier 1) turrets have an active defensive aura. If enemy heroes try to dive you during this early-game window, **their damage against you is reduced**, giving you a massive survival advantage.
+
+Would you like to know how to use **specific hero abilities** to trap enemies under your turret, or would you like a breakdown of how many **turret shots** it takes to kill different minion types?
+
+## what happens before 4min
+
+Before the **4-minute mark** in Honor of Kings, <mark>the game is in its strict<span> </span><strong>Early Game phase</strong></mark>. During these first four minutes, several special balance rules and map protections are active to prevent matches from snowballing too quickly and to discourage premature team fighting: [link](https://honor-of-kings.fandom.com/wiki/Phases)
+
+### 🛡️ 1. Tower Protection (Anti-Dive & Defense Shield)
+
+- **Extra Turret Defense:** All outer (Tier 1) turrets are protected by a defensive mechanism that grants them **increased defense stats**. Trying to destroy a tower before 4 minutes is highly inefficient because it takes minimal damage. [link](https://honor-of-kings.fandom.com/wiki/Phases)
+- **Damage Mitigation for Allies:** If an enemy tries to dive you while you are standing inside your turret's range, **allies take reduced damage** from the intruders. [link](https://honor-of-kings.fandom.com/wiki/Phases)
+- **Extra Turret Damage:** Diving is punished even harder because the turret deals **extra damage** to enemy heroes during this window.
+
+### 👾 2. Minion Wave Scaling
+
+- **No Ballistas:** Minion waves consist only of basic melee and ranged mage minions.
+- **The 4-Minute Switch:** The exact moment the clock hits 4:00, one of the ranged mage minions in every single wave is permanently replaced by a **Ballista** (a mini-cannon minion) that deals increased damage to turrets, allowing teams to finally start taking objectives. [link](https://honor-of-kings.fandom.com/wiki/Phases)
+
+### 🐉 3. Epic Monsters Are Locked
+
+- The map's major neutral epic monsters—the **Tyrant** (which gives a combat buff) and the **Overlord** (which summons massive Vanguard dragons)—**do not exist on the map yet**. They spawn for the very first time exactly at the 4-minute mark.
+
+### 🎒 4. Jungler/Support Item Restrictions
+
+- **Devotion Modifier:** If you bought a Support item, your passive gold/XP sharing logic is fully active so you don't accidentally steal resources from your carry.
+- **Jungle Clear Pace:** The jungle monsters go through exactly **three respawn cycles** before the 4-minute mark. Junglers use this highly protected window to hit Level 4 safely and prepare for the 4-minute turning point.
+
+Would you like to know what **early game neutral objectives** you _can_ fight for before 4 minutes (like the Firebeak or Space Spirit), or how to plan your **Jungler's routing** to hit Level 4 before the shields drop?
+
+- [link](https://www.youtube.com/watch?v=W0v2JECHwgI)\
+  YouTube·Tsun dzu\
+  Every Minute of Honor of Kings Explained - Art Of HOK #2\
+  4-minute mark is important for another reason it's also the third jungle respawn and tower protection becomes much weaker before 4...
+- [link](https://honor-of-kings.fandom.com/wiki/Phases)\
+  Honor of Kings Wiki\
+  Phases | Honor of Kings Wiki - Fandom\
+  one of the ranged mage minions in each wave will be replaced by a ballista with increased damage.
+- [link](https://note.com/rin%5Fyuu/n/n5ba5cc760573?hl=en)\
+  note·Rinyu\
+  \[Complete Guide] Honor of Kings Beginner's Guide: Rules ...\
+  Aug 17, 2025 — Early Game (0-4 minutes). Focus on laning in each lane. At 4 minutes, important objectives appear
+
+## what happens on turret before 4min
+
+Before the **4-minute mark** in Honor of Kings, <mark>outer (Tier 1) turrets are protected by heavily fortified early-game mechanics</mark>. These features are designed to prevent premature lane pushing and heavily punish teams that attempt to "tower dive" before scaling: [link](https://honor-of-kings.fandom.com/wiki/Phases)
+
+### 🛡️ 1. Damage Reduction Shield
+
+The outer turrets are protected by a defensive aura that causes them to take **40% less damage** from all incoming sources. If you try to push the tower without minions (backdooring), this stacks with the global anti-backdoor protection to slap a massive **90% damage reduction** on your attacks. Because of this shield, trying to destroy a turret before 4 minutes is highly inefficient and a waste of standard attack damage. [link](https://www.reddit.com/r/honorofkings/comments/1ngwd86/is%5Fit%5Fjust%5Fme%5For%5Fare%5Ftowers%5Fin%5Fthis%5Fgame%5Fare/)
+
+### 💥 2. Tower Protection Aura (For Defending Heroes)
+
+If you are standing under your own turret during the first 4 minutes, the structure actively shields you. Any incoming damage dealt to you by an invading enemy hero is **reduced by 25%**. [link](https://honor-of-kings.fandom.com/wiki/Outer%5FTower)
+
+### ⚡ 3. Ramping True Damage
+
+While turrets always deal heavy physical damage that behaves like true damage (featuring 100% physical pierce), their active defense mechanic is dialed up early on. Every consecutive hit the turret lands on an invading enemy hero increases its damage by **60% per strike**, up to a maximum **300% bonus damage** cap. This ramping damage ignores player defenses entirely, making early-game tower dives incredibly lethal. [link](https://www.reddit.com/r/honorofkings/comments/1ngwd86/is%5Fit%5Fjust%5Fme%5For%5Fare%5Ftowers%5Fin%5Fthis%5Fgame%5Fare/)
+
+### 🕒 The 4:00 Mark Shift
+
+The exact second the clock hits **4:00**, these extra defense layers permanently change: [link](https://honor-of-kings.fandom.com/wiki/Phases)
+
+- The outer turret's defensive shields shatter, dropping their defense stats back to baseline. [link](https://honor-of-kings.fandom.com/wiki/Phases)
+- The tower protection aura drops from a 25% damage reduction for defending heroes down to just 10% (and later drops to 5% at the 10-minute mark). [link](https://honor-of-kings.fandom.com/wiki/Outer%5FTower)
+- Ranged mage minions in every wave begin being replaced by heavy-damage **Ballistas** (cannon minions), allowing teams to finally begin tearing down structures. [link](https://honor-of-kings.fandom.com/wiki/Phases)
+
+Would you like to know how to adjust your **early game laning strategy** around these 4-minute shields, or are you curious about the **anti-backdoor mechanics** that protect turrets later in the game?
+
+- [link](https://honor-of-kings.fandom.com/wiki/Phases)\
+  Honor of Kings Wiki\
+  Phases | Honor of Kings Wiki - Fandom\
+  one of the ranged mage minions in each wave will be replaced by a ballista with increased damage. At this you'll likely begin to s...
+- [link](https://honor-of-kings.fandom.com/wiki/Outer%5FTower)\
+  Honor of Kings Wiki\
+  Outer Tower | Honor of Kings Wiki | Fandom\
+  Tower Protection reduces enemy hero damage by 25% pre-04:00, diminishing to 10% at 04:00 and 5% at 10:00.
+- [link](https://www.reddit.com/r/honorofkings/comments/1ngwd86/is%5Fit%5Fjust%5Fme%5For%5Fare%5Ftowers%5Fin%5Fthis%5Fgame%5Fare/)\
+  Reddit·r/honorofkings\
+  Is it just me or are towers in this game are useless? - Reddit\
+  Sep 15, 2025 — Tower damage in HOK is already true damage, it's physical damage with 100% physical pierce so it doesn't matter how much defense y...
+
+## why do they design this
+
+Game developers implement early-game tower shields and anti-dive mechanics for three major reasons:
+
+### 1. Stopping the "Snowball Effect" ❄️
+
+In MOBA games, a single early mistake can ruin a match. If a team coordinates a three-man push at the 1-minute mark, wipes out the solo laner, and destroys the first turret immediately, they gain a massive gold and map control advantage. Without early tower protection, a match could be effectively **decided in the first 2 minutes**, making the remaining 15 minutes a slow, frustrating loss for the other team.
+
+### 2. Protecting the Scaling Phase 🛡️
+
+Different heroes excel at different stages of the game:
+
+- **Early-game heroes** have high base damage and try to bully opponents immediately.
+- **Late-game heroes (Carries)** start very weak and need to safely farm gold and experience to buy items before they become powerful.
+
+By protecting the lanes for the first 4 minutes, the developers ensure that late-game heroes aren't continuously dove under their own towers and completely starved out of the game before they even get a chance to play.
+
+### 3. Creating Structure and Pacing 🕒
+
+The 4-minute mark acts as a **soft whistle** that signals the end of the laning phase and the start of the mid-game.
+
+- **0:00 to 4:00:** Players focus on individual mechanical skill, last-hitting minions, and safe 1v1 or 2v2 skirmishes.
+- **4:00 onwards:** The tower shields drop, the massive Tyrant and Overlord dragons spawn, and Ballistas enter the lanes. This forces players to leave their safe lanes, gather for team fights, and start fighting over macro objectives.
+
+Ultimately, this design keeps the game fair, gives both teams a fighting chance, and creates a satisfying, predictable rhythm for every match.
+
+Would you like to know how to pick a **hero composition** that perfectly exploits the 4-minute shift, or are you interested in how **other map features** change after the early game phase ends?
+
+## what happens to your opponent if you just stand passively under your turret
+
+If you choose to sit completely passively under your own turret, <mark><strong>your opponent gains a massive, free economic advantage</strong><span> </span>without needing to fight you</mark>.
+
+While the turret guarantees your physical safety, passive play allows your opponent to completely dictate the flow of the match in three ways:
+
+### 1. They Can "Freeze" the Wave and Starve You ❄️
+
+If your opponent recognizes that you are refusing to step out, they will stop attacking your minions. They will only land the final blow (the "last hit") at the very last millisecond.
+
+- **The Result:** The minion waves will clash and get stuck deep on _their_ side of the map. Because you are sitting passively under your tower far away, you are completely out of the "experience and gold soak range."
+- **The Damage:** Your own minions will kill the enemy minions, and you will receive **zero gold and zero experience**. Within a few minutes, your opponent will be levels ahead of you and swimming in gold, making you completely useless for the rest of the game.
+
+### 2. They Get Free Roaming and Map Control 🗺️
+
+Because you aren't applying any counter-pressure or pushing your own minion waves, your opponent can clear their wave instantly and immediately leave the lane.
+
+- **The Result:** They are free to walk into the jungle to steal your team's buffs, secure neutral objectives like the Space Spirit, or execute a 3-man surprise gank on your Mid or Bottom lanes.
+- **The Damage:** While you sit safely under your tower doing nothing, your teammates are forced into unfair, outnumbered fights because your lane opponent has complete freedom to move around the map.
+
+### 3. They Get the Max Gold Advantage 💰
+
+Even if your opponent decides _not_ to freeze the wave and instead shoves the minions directly into your turret, you still lose out:
+
+- **The Turret Tax:** As mentioned before, if your turret shoots and kills the minions because you are playing too passively to safely last-hit them, **you lose 20% to 30% of the gold value** per minion.
+- **The Contrast:** Your opponent gets 100% value from perfectly last-hitting your minions, meaning their net worth will steadily pull away from yours over time.
+
+**The Bottom Line:** Sitting under the turret keeps you alive, but playing _completely_ passively hands your opponent the keys to win the rest of the map.
+
+Would you like to know how to safely **clear the wave with skills** from under your tower to minimize these losses, or how to call your **Jungler** to punish an opponent who is freezing the lane?
+
+## can you block the opponent from clearing their wave for a while if you stand under your turret and block some enemy minions
+
+<mark><strong><span>No, you cannot block the opponent from clearing their wave</span></strong><span> </span>using this method</mark>. In fact, doing this actually helps your opponent and hurts your own lane control.
+
+Here is exactly what happens mechanically if you try to hold or block enemy minions directly under your own turret:
+
+### 1. The Turret Intervenes Immediately ⚡
+
+You cannot hold enemy minions outside the turret's reach while staying safely inside its boundaries. Enemy minions follow a strict aggro line; if you pull them close enough to stand under your tower with them, they enter the turret's attack radius. **Your turret will immediately start shooting them.**
+
+### 2. It Accidnetly Creates a "Fast Push" for the Opponent 🏃‍♂️
+
+By pulling the enemy minions under your tower, your tower helps you kill them incredibly fast. Because the enemy minions die rapidly, your next wave of friendly minions will march forward completely untouched.
+
+- **The Result:** Your friendly minion wave will rapidly sail across the map right to your opponent's doorstep.
+- **The Benefit to Them:** Your opponent doesn't have to work to clear anything or risk overextending. They can comfortably sit under _their_ safe turret and perfectly collect all the gold and experience from your incoming wave.
+
+### 3. You Tank Unnecessary Damage 🩸
+
+Before your turret can finish off the enemy minions, they will actively attack you. Taking free minion damage early in the game chunks your health bar for no tactical gain, leaving you highly vulnerable to getting dove by the enemy jungler.
+
+### How to actually block them (The Correct Way)
+
+If your goal is to stop the opponent from clearing waves, you must do the exact opposite: **you must step out from under your turret and "Freeze" the wave.**
+
+1. Let the enemy minions march past the halfway point of the lane.
+2. Step up and use your hero's body to tank the minions _just outside_ your turret's red ring radius so the tower cannot shoot them.
+3. Only last-hit the minions at the absolute last second.
+
+This keeps the wave permanently stuck right outside your tower. Your opponent will be completely blocked from clearing their wave because stepping up to hit the minions would force them to stand in extreme danger right next to your turret.
+
+Would you like to know **which heroes have the best tools** to safely tank and freeze minion waves outside the turret, or how to break a freeze if an opponent does this to you?
+
+## can you block the opponent from clearing their wave for a while if you stand under (just outside) your turret and block some enemy minions
+
+<mark><strong><span>Yes, absolutely.</span></strong></mark> If you step **just outside your turret's red ring radius** to block the enemy minions, you are executing the classic advanced MOBA technique known as **Lane Freezing**.
+
+By physically stopping the enemy minions from entering your turret’s range, you prevent your tower from shooting them. This allows you to hold the wave in a highly secure, static position for as long as you can sustain it, completely locking your opponent out of free farm.
+
+Here is exactly how this blocks your opponent and works in your favor:
+
+### 🌟 Why This Completely Blocks the Opponent
+
+- **They Cannot Safely Step Up:** Because the minion wave is frozen right outside your doorstep, your opponent has to walk incredibly deep into your half of the map to hit them. Doing so leaves them entirely exposed to a surprise flank from your jungler or a sudden engage from you.
+- **Denial of Gold & XP:** If your opponent chooses to stay back safely on their side of the map, they will be entirely out of the "soak range." Every time one of their minions dies to your minions, they receive **zero gold and zero experience**, permanently stunting their item build.
+- **The Minion Disadvantage Rule:** To keep the freeze alive permanently, you want the enemy minion wave to always have **2 to 3 more minions** than your own wave. The extra enemy units will naturally chew through your incoming friendly waves, keeping the clash point locked right outside your tower.
+
+### ⚠️ Crucial Risks to Watch Out For
+
+While highly effective, standing just outside your turret requires careful management:
+
+- **Minion Damage (The Tank Tax):** To hold the minions in place before your next wave arrives, your hero has to physically body-block and tank their attacks. Early in the game, minion aggro hurts. If you tank them for too long, your health will drop, making you an easy target.
+- **Opponent Shoving:** If the enemy hero has massive, long-range area-of-effect (AoE) wave-clear skills (like _Zhou Yu_ or _Milady_), they can forcefully blast the minions from a safe distance, making it nearly impossible for you to physically hold the freeze without dying.
+
+Would you like to know **how to perfectly drop minion aggro** using the nearby lane bushes so you don't take too much damage while freezing, or would you like a list of **the best heroes** for holding freezes?
+
+# what is gold for in a match of honor of kings
+
+## what is gold for in a match of honor of kings
+
+In a match of **Honor of Kings**, gold is <mark>the primary in-match currency used to<span> </span><strong>purchase equipment and items</strong><span> </span>that make your hero stronger</mark>.
+
+Because every hero starts a match at level 1 with basic stats, accumulating gold faster than your opponents—often called "farming"—is the key to winning.
+
+### Why Gold is Crucial During a Match
+
+- **Power Spikes:** Gold allows you to buy tier-2 and tier-3 completed items from the shop. These items drastically increase your hero's stats (such as physical attack, magical power, defense, health, or attack speed) and grant powerful passive or active skills.
+- **Stat Advantages:** If you have more gold than your lane opponent, your items will give you a direct statistical advantage, allowing you to win duels, survive ganks, and dominate team fights.
+- **Role-Specific Needs:** Junglers use gold to upgrade their hunting knives for faster monster clearing, while Roamers/Supports use gold to buy utility items that shield or buff the entire team.
+
+### How to Earn Gold in a Match
+
+1. **Killing Minions:** Landing the "last hit" (the final blow) on a lane minion grants bonus gold compared to just standing near it while it dies. [link](https://www.youtube.com/watch?v=EaG%5FmyAxWOs)
+2. **Defeating Monsters:** Clearing neutral monsters in the jungle, especially major objectives like the Tempest Dragon, Overlord, or Tyrant, gives massive team-wide gold and buffs.
+3. **Hero Kills and Assists:** Eliminating an enemy hero rewards you with a large sum of gold. Securing "First Blood" (the first kill of the game) awards an extra 75 gold bonus. Teammates who help get the kill also receive a split of the assist gold.
+4. **Destroying Towers:** Taking down enemy turrets rewards your whole team with gold and opens up the map.
+5. **Passive Generation:** Every player naturally generates a small amount of gold automatically every second as the match progresses.
+
+_(Note: In-match gold is entirely separate from the Gold/Star system used for your permanent account Rank, or the out-of-game Gold currency used to unlock new heroes in the main menu)._ [link](https://www.zhihu.com/en/answer/2036269493)
+
+Would you like to know about **optimal gold-sharing strategies** between lanes, or are you looking for the **best build items** for a specific hero you are playing?
+
+- [link](https://www.youtube.com/watch?v=EaG%5FmyAxWOs)\
+  YouTube·Honor of Kings\
+  Honor of Kings Tutorial: Game Terms You Need to Know\
+  Apr 6, 2024 — to the final finishing blows dealt by a hero to a minion last hitting a minion rewards you with bonus gold compared to letting it ...\
+  3:12
+- [link](https://www.facebook.com/levirieplayss/videos/how-gold-sharing-actually-works-in-honor-of-kings-honorofkings-hokglobal-hok-hok/1039772655540437/)\
+  Facebook·Levirie\
+  HOW GOLD SHARING ACTUALLY WORKS IN HONOR OF ...\
+  Aug 10, 2026 — Junglers sharing a lane receive 50% of the gold and experience without affecting their teammate's earnings, but this only applies ...\
+  [1m](https://www.facebook.com/levirieplayss/videos/how-gold-sharing-actually-works-in-honor-of-kings-honorofkings-hokglobal-hok-hok/1039772655540437/)
+- [link](https://www.topuplive.com/news/honor-of-kings-guide-to-ranking-system.html)\
+  TOPUPlive\
+  Honor of Kings Guide to Ranking System - Everything You Need to Know\
+  Matchmaking restricts teams to a 2-level rank difference. Tiers: Gold (4 sub-tiers), Inactivity loses 1 star weekly. Mechanics: Wi...
+
+Show all
+
+## what if you already have best items
+
+Once your item build is completely full and you have purchased your core **tier-3 equipment**, gold changes from a progression tool into a safety net.
+
+In the late game, excess gold is primarily used for **swapping items on the fly** to gain tactical advantages or survive lethal damage.
+
+### 1. The Active Item Switch Trick (Resurrection Cycles)
+
+The most common use for extra gold is cycling through high-value survival items during a single team fight.
+
+- **Sage's Companion:** This item resurrects you upon death. While you are waiting to revive, you can open the shop, sell Sage's Companion, and immediately buy **Spitfire** (grants damage immunity) or **Pure Sky** (reduces damage taken).
+- **Blood Rage:** You can also swap to this to get a massive shield when low on health.
+- Having an extra **2,000 to 4,000 gold** allows you to execute these rapid item-swapping plays instantly.
+
+### 2. Upgrading to Late-Game Items
+
+Some items can be upgraded into incredibly powerful, expensive variants once you have the spare gold:
+
+- **Moonlight / Glacial Buckler:** Can be upgraded into advanced forms that provide enhanced active stats.
+- **Jungle and Support Items:** If you haven't already, you can max out your jungle weapon or support equipment to their absolute highest tiers.
+
+### 3. Countering the Enemy Composition
+
+If the match stretches into the late game (20+ minutes), the enemy team may change their strategy, forcing you to sell items and adjust:
+
+- **Selling Boots:** If you are a Mage or Marksman and fights are happening entirely in your base, you can sell your boots for a 6th defensive item (like _Sage's Companion_) or a raw damage item (_Void Staff_ or _Fenrir's Tooth_) since high movement speed is less critical when defending a single spot.
+- **Buying Pierce:** If enemy tanks have built massive physical armor, you may need to sell a lower-tier damage item to buy **Mortal Reminder** or **Daybreaker** for maximum armor penetration.
+- **Buying Anti-Heal:** If an enemy hero like Lam or a healer like Yaria is carrying the late game, you can swap an item for **Blazing Cape** or **Venomous Fang** to cut their healing by 50%.
+
+### 4. Buying Buffs and Consumables
+
+In the late-game shop, you can buy temporary potion buffs (often found in the "Special" or "Consumable" tabs) that increase your Attack Power, Magic Power, or Max HP for a limited duration. You can continuously rebuy these as they expire if you have excess gold.
+
+Are you trying to learn how to quickly configure your **Quick-Buy slots** so you can sell and swap items instantly during a fight?
+
+## what about hero level
+
+While gold dictates what items you can buy, your **hero level** dictates your character’s raw baseline strength and skill progression. [link](https://www.youtube.com/watch?v=NFbl8FDpVzk\&t=1)
+
+Every hero starts each match at **level 1** and can level up to a standard maximum of **level 15**. You increase your level by earning **Experience Points (EXP)** from the exact same actions that grant gold: killing minions, clearing jungle monsters, and defeating enemy heroes. [link](https://www.youtube.com/watch?v=NFbl8FDpVzk\&t=1)
+
+### What Happens When You Level Up?
+
+- **Stat Increases:** Every time you level up, your hero’s baseline stats permanently increase for the remainder of that match. This includes automatic boosts to your Max Health, Physical/Magical Attack, and Physical/Magical Defense. [link](https://www.youtube.com/watch?v=NFbl8FDpVzk\&t=1)
+- **Skill Upgrades:** Leveling up awards you one skill point to upgrade your abilities. Upgrading a skill reduces its cooldown, lowers its mana cost, and increases its base damage or utility effects. [link](https://www.youtube.com/watch?v=NFbl8FDpVzk\&t=1)
+- **Unlocking the Ultimate:** When you hit **Level 4**, you can unlock your hero's Ultimate ability. Level 4 is considered the most critical "power spike" in the early game; arriving at a lane at level 4 when your opponent is still level 3 usually guarantees a kill or a forced retreat. [link](https://www.youtube.com/watch?v=NFbl8FDpVzk\&t=1)
+
+### What Happens at Max Level (Level 15)?
+
+Once you hit level 15, you have maxed out all of your standard base stats and fully upgraded your 3 core skills. [link](https://www.youtube.com/watch?v=NFbl8FDpVzk)
+
+- **EXP Becomes Useless:** Any EXP you earn after level 15 is wasted, meaning you no longer benefit from farming just for levels.
+- **Gold Takes Over:** In the ultra-late game where everyone is level 15, the game relies entirely on **Gold** to make a difference (using the item-swapping strategies mentioned previously).
+
+### The Level 15 Exception: Ziya
+
+There is one massive exception to the level 15 cap in Honor of Kings: **Ziya**.
+
+- Ziya's passive ability allows him to absorb extra EXP.
+- Upon reaching level 15, Ziya can choose **one teammate** to infuse with divine power.
+- This allows both Ziya and that chosen teammate to break the level cap and level up all the way to **level 25**, granting massive bonus baseline stats that no other heroes can naturally reach.
+
+Would you like to know which skills you should prioritize upgrading first on your favorite hero, or how to reach Level 4 faster in the early game?
+
+- [link](https://www.youtube.com/watch?v=NFbl8FDpVzk\&t=1)\
+  YouTube·Honor of Kings\
+  Honor of Kings Tutorial: Leveling Up Heroes\
+  May 4, 2024 — 15 levels means you'll get 15 skill upgrades in the match. skills you'll only be able to choose to upgrade. skills is just like bu...\
+  54s
+- [link](https://www.youtube.com/watch?v=Qfbl85F4jfs)\
+  YouTube·Real Honor of Kings India Official\
+  Honor of Kings Tutorial: Leveling Up Heroes\
+  Mar 5, 2026 — At level four, heroes can unlock their ultimate skill. Upgrading a skill enhances its damage, effects, or, for some heroes, increa...\
+  2:42
+- [link](https://www.reddit.com/r/honorofkings/comments/1ewmmus/max%5Fcharacter%5Flevel/)\
+  Reddit·r/honorofkings\
+  Max character level? : r/honorofkings - Reddit\
+  Aug 20, 2024 — Ziya can exceed level 15 and choose 1 other hero to exceed level 15. The max is capped at 25 for ziya and whoever ziya chooses on ...
+
+## how much does item swapping matter
+
+Item swapping matters **immensely**—<mark>it is often the single deciding factor between winning or losing a match that goes into the late game (15 to 20+ minutes)</mark>.
+
+In high-ranked play, mastering this technique is considered a **core mechanical skill** rather than an advanced trick.
+
+### Why It Matters So Much
+
+- **The Difference Between Life and Death:** Late-game damage is incredibly high. If an enemy Marksman or Assassin catches you, you can die in less than two seconds. Item swapping allows you to survive an entire lethal combo, turn the fight around, and win the game on the spot.
+- **Breaking the "Cooldown" Barrier:** Powerful survival items like _Sage's Companion_ (Resurrection) have a long cooldown (up to 150 seconds) once they trigger. Leaving a broken or on-cooldown item in your inventory means you are effectively playing with only 5 items. Swapping it for an active item gives you immediate value.
+- **Denying Game-Ending Pushes:** If the enemy team is about to destroy your Crystal (Nexus) and you die, the game is over. If you swap items swiftly, you can stay alive long enough to clear the minion wave and save the match.
+
+### How Much Value Does It Actually Give?
+
+To visualize how powerful this is, look at a standard late-game team fight scenario:
+
+| Step                | Action                                                                                       | The Result                                                                    |
+| ------------------- | -------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| **1. The Mistake**  | You get caught out by the enemy team and your health drops to zero.                          | **Sage’s Companion** triggers. You are down, but reviving for 2 seconds.      |
+| **2. The Swap**     | While your hero is reviving, you open the shop, sell Sage's Companion, and buy **Spitfire**. | You immediately exit the shop menu just as your hero wakes up.                |
+| **3. The Survival** | The enemy team targets you again. You press the **Spitfire active button**.                  | You become immune to all physical damage for 2 seconds, wasting their skills. |
+| **4. The Counter**  | While immune, you drop all your skills or basic attacks.                                     | You kill the enemy damage dealers and win the team fight.                     |
+
+Without item swapping, you would have revived, instantly died again to their camping skills, and your team would have lost a 4v5 fight.
+
+### Do You Need to Do It Every Game?
+
+- **In Early/Mid Game (0–12 mins):** It matters **0%**. You don't have the gold to spare. Focus entirely on finishing your core build.
+- **In Low Ranks (Bronze to Diamond):** It matters **low to medium**. Players rarely coordinate late-game focus fire, so raw stats are usually enough to win.
+- **In High Ranks (Master / Grandmaster / Pro):** It matters **100%**. Failing to item swap when you have 5,000 spare gold is considered a massive mistake that throws games.
+
+Would you like to know how to set up your **shop pre-sets** so you can execute the Sage-to-Spitfire swap with just two fast taps?
+
+## how quick do you have to react and click
+
+To pull off a successful item swap, you generally have a window of <mark><strong>1.5 to 3 seconds</strong></mark> to react and complete the clicks.
+
+The exact speed depends entirely on the item you are using to trigger the window:
+
+- **Sage's Companion (Resurrection):** You have exactly **2 seconds**. The moment you "die" and the resurrection animation begins, your timer starts. You must open the shop, sell the item, buy the new one, and close the shop before your character stands back up.
+- **Spitfire (Physical Immunity) / Pure Sky (Damage Reduction):** You have a **1.5-second** window while the active effect is running to sell it and buy the next survival item (like _Sage's Companion_).
+
+While 1.5 to 2 seconds sounds incredibly tight, high-level players do not rely on raw human reaction time or scrolling through the shop menu. They use a system called **Pre-Ordering** to turn a complex task into a **3-click sequence** that takes less than **0.5 seconds** to execute.
+
+### The 3-Click "Pre-Order" Method
+
+Before a fight even breaks out, you set up the swap in advance while walking around the map:
+
+1. **The Setup:** Open the shop, tap on the item you want to swap _into_ next (e.g., _Spitfire_), and tap the **"Pre-Order"** button at the bottom right. Close the shop.
+2. **The Execution (When you die):**
+
+- **Click 1:** Open the Shop. (Because your inventory is displayed right there, your current _Sage's Companion_ is already selected or easily tappable).
+- **Click 2:** Tap **"Sell"**.
+- **Click 3:** Tap the **"Quick Buy"** widget. (Because you pre-ordered _Spitfire_, it automatically appears as a giant shortcut button on the left side of your main screen the instant you have a free item slot).
+
+With a bit of muscle memory, your fingers will tap **\[Shop] → \[Sell] → \[Shortcut]** in the blink of an eye, well before the 2-second revival animation finishes.
+
+Would you like me to walk you through how to practice this safely in the **Training Camp** mode without messing up your actual ranked matches?
+
+## how easy
+
+For beginners, executing an item swap feels **quite difficult and frantic**, but once you learn the setup, it becomes incredibly easy—almost like entering a cheat code or typing a quick text message.
+
+If you try to do it by opening the full shop and manually scrolling to search for items while dead, it is **nearly impossible** to finish in 2 seconds. However, if you use the pre-order shortcut trick, it is a simple **3-tap muscle memory pattern** that anyone can learn in 5 minutes.
+
+Here is a breakdown of how easy it is depending on your approach:
+
+### The Hard Way (No Setup) – Difficulty: 9/10
+
+- You die ➔ open shop ➔ tap the "Defense" tab ➔ scroll down to find _Spitfire_ ➔ tap buy ➔ close shop.
+- **Result:** You will usually panic, misclick, run out of time, and die immediately upon reviving.
+
+### The Pro Way (Pre-Ordering) – Difficulty: 3/10
+
+- Before the fight even starts, you tap _Spitfire_ and hit "Pre-Order".
+- When you die, you just tap three spots on your screen in a rhythmic sequence: **Top Right (Shop) ➔ Bottom Right (Sell) ➔ Left Side (Quick Buy shortcut)**.
+- **Result:** You easily complete the swap in under 1 second, leaving you plenty of time to mentally prepare for the fight.
+
+### The Real Challenge: Panic Management
+
+The hardest part isn't actually the speed of your fingers; it is **remembering to do it during a stressful team fight**. When your screen turns gray or your health drops, human nature is to panic, look away from the screen, or spam your skill buttons. Staying calm enough to calmly execute your 3 taps is what separates the average players from the pros.
+
+Would you like a step-by-step walkthrough on how to set up the **Training Camp** so you can practice this exact 3-tap pattern against bots with unlimited gold?
+
