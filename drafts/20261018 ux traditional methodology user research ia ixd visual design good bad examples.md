@@ -1156,3 +1156,495 @@ Do you struggle more with **visualizing the layout structure** on paper, or do y
 
 
 
+
+# how do ppl design ui for startup apps when there are many existing
+
+Designing the UI for a startup app in a crowded market requires you to <mark><strong>focus heavily on value differentiation and reducing friction</strong></mark>, rather than trying to completely reinvent the wheel. When many similar apps already exist, users have already been trained on how those apps work, meaning your goal is to leverage their existing habits while standing out exactly where it matters. [link](https://www.reddit.com/r/UXDesign/comments/1mteapa/how%5Fdo%5Fyou%5Fdo%5Fux%5Fin%5Fstartups%5Fwithout%5Ftime%5Fpeople/)
+
+Designers handle this challenge using a strategic, layered approach:
+
+### 1. Leverage "Jakob’s Law" for the Basics
+
+**Jakob’s Law** states that users spend most of their time on _other_ apps. This means they expect your app to work just like the ones they already know.
+
+- **Don't reinvent standard patterns:** If you are building a fintech app, keep the navigation bar at the bottom and use a familiar profile setup.
+- **Reduce cognitive load:** If a user has to learn a brand-new way to log in or navigate a menu just to try your app, they will likely abandon it. Keep the standard flows standard. [link](https://www.purrweb.com/blog/ui-ux-development-for-startups/)
+
+### 2. Map the Competition to Find "UX Gaps"
+
+Designers conduct deep competitive analysis (sometimes called "respectful stalking") of existing players. Instead of looking at what they do right, they look at what they do _wrong_. [link](https://medium.com/@marc%5F57057/ui-ux-design-for-startups-your-survival-guide-with-real-stories-hard-won-insights-b3bfc9d22e55)
+
+- **Analyze negative reviews:** Look at the App Store or Google Play reviews of your competitors to see what users complain about (e.g., "Too many clicks to do X," "Interface feels cluttered," "Confusing dashboard").
+- **Design for the fix:** Make solving that specific user frustration the centerpiece of your unique user experience. [link](https://medium.com/@jayka%5F26765/the-ultimate-guide-to-ux-ui-design-for-startups-7-steps-in-the-design-process-explained-05ea6996d5b9)
+
+### 3. Hyper-Focus on the "Hook" (The Core Value)
+
+An early-stage startup shouldn't try to match a mature competitor feature-for-feature. The UI needs to establish a strong visual hierarchy that points directly to your app's unique selling proposition (USP). [link](https://rondesignlab.com/blog/design-news/introducing-ux-ui-design-to-startups)
+
+- **The 80/20 Rule:** 80% of your app's interface can look like a clean, standard off-the-shelf design system.
+- **The 20% Differentiator:** Direct your premium design effort, custom animations, and unique layouts into the **one specific feature** that makes your app better than the rest. [link](https://uxdesign.cc/21-month-startup-journey-easy-ux-principles-that-we-learned-the-hard-way-fe76eee857bb)
+
+### 4. Lean on "Progressive Disclosure"
+
+Established apps often suffer from "feature creep"—they have been around so long that their interfaces are crowded with buttons, tabs, and settings. Startups win by offering a breath of fresh air. [link](https://rondesignlab.com/blog/design-news/introducing-ux-ui-design-to-startups)
+
+- Keep the initial screens remarkably clean and minimalist.
+- Use **progressive disclosure**, meaning you only show the user the information and actions they need at that exact moment, hiding advanced settings or secondary features under subtle dropdowns or secondary menus. [link](https://www.youtube.com/watch?v=wIAiRK5s1Wk)
+
+### 5. Build Fast by Using Off-the-Shelf Design Systems
+
+Startups don't have the time or money to design every button, toggle, and text field from scratch. [link](https://www.reddit.com/r/UXDesign/comments/1mteapa/how%5Fdo%5Fyou%5Fdo%5Fux%5Fin%5Fstartups%5Fwithout%5Ftime%5Fpeople/)
+
+- Designers stand on the shoulders of giants by adopting pre-built UI foundations like Google Material Design or Tailwind UI.
+- They duplicate open-source UI kits in Figma and skin them with the startup's unique brand colors, typography, and border radiuses. This gives you a highly polished, professional UI in days rather than months. [link](https://medium.com/design-bootcamp/how-to-build-your-startups-first-design-system-4d8724fbb802)
+
+### Summary Strategy
+
+| Strategy Dimension | What Mature Competitors Do                             | What Your Startup UI Should Do                                                  |
+| ------------------ | ------------------------------------------------------ | ------------------------------------------------------------------------------- |
+| **Feature Set**    | Overwhelming; bloated with legacy features over years. | Strict MVP focus; perfectly optimized core workflow.                            |
+| **Visual Style**   | Safe, corporate, and often dated.                      | Modern, clean, and highly aligned with current design trends.                   |
+| **Onboarding**     | Long forms, verification walls, heavy friction.        | "Time-to-value" optimized; let users experience the app before asking for data. |
+
+To give you more tailored advice, could you tell me:
+
+- What **industry or niche** is your startup app targeting?
+
+- Who is your **biggest competitor** that you are trying to win users over from?
+
+- Are you looking for help with the **UX workflow layout** or the **visual branding/style**?
+
+- [link](https://rondesignlab.com/blog/design-news/introducing-ux-ui-design-to-startups)\
+  Rondesignlab\
+  Introducing UX/UI Design to Startups | Essential Guide\
+  Airbnb started using high-quality, professional photos for listings. This design choice helps make the properties look more inviti...
+
+- [link](https://www.reddit.com/r/UXDesign/comments/1mteapa/how%5Fdo%5Fyou%5Fdo%5Fux%5Fin%5Fstartups%5Fwithout%5Ftime%5Fpeople/)\
+  Reddit·r/UXDesign\
+  How do you do UX in startups without time, people ... - Reddit\
+  Instead of screen design, focus your time on concept design. I would adopt an off the shelf design system, Most usability comes fo...
+
+- [link](https://www.purrweb.com/blog/ui-ux-development-for-startups/)\
+  Purrweb\
+  UI/UX Design for Startups: all questions answered - Purrweb\
+  Using an app shouldn't turn into a tedious IQ test. Knowing how to break down the task into smaller subsets … is the subtle art of...
+
+Show all
+
+# how do designers copy ux from existing apps
+
+Designers copy or replicate UX from existing apps through a spectrum of methods, ranging from <mark><strong>educational exercises (copywork) and design pattern adoption to AI-assisted component cloning</strong></mark>. [link](https://balsamiq.com/blog/copying-to-learn/)
+
+While straight plagiarism is frowned upon, UX designers frequently analyze and adapt established systems to align with **Jakob's Law**, which states that users prefer your app to work the same way as all the other apps they already know. [link](https://medium.com/si-410-ethics-and-information-technology/copying-stealing-or-inspiration-when-it-comes-to-ux-design-86607064cb43)
+
+Here is how designers actively deconstruct and copy UX/UI from existing apps:
+
+### 1. Manual "Copywork" & Deconstruction
+
+For educational purposes or when trying to reverse-engineer a smooth interaction, designers use a process called **copywork**: [link](https://medium.com/design-bootcamp/copywork-copy-if-you-can-901067dd46f4)
+
+- **Interface Audits & Grids:** A designer takes screenshots of a competitor's app (like Spotify or Airbnb) and imports them into a design tool like Figma. They place the image at a low opacity and manually draw shapes, text boxes, and buttons over it. [link](https://uxpilot.ai/blogs/clone-ui-design)
+- **Atomic Breakdown:** They use systems like **Atomic Design** to break the interface into components (atoms like buttons, molecules like search bars, and organisms like navigation headers) to figure out padding, margins, and spatial scales. [link](https://medium.com/design-bootcamp/learning-ui-design-how-creating-a-pixel-perfect-copy-polished-my-skills-54555041b1eb)
+- **Browser DevTools:** For web-based apps, designers use the "Inspect Element" feature in browsers to directly pull exact CSS values (colors, fonts, box models, and animation timings). [link](https://uxpilot.ai/blogs/clone-ui-design)
+
+### 2. Standardized UX Pattern Libraries
+
+Instead of reinventing the wheel for common tasks (like checking out or onboarding), designers copy generalized, industry-proven layouts rather than the specific app visuals: [link](https://ux.stackexchange.com/questions/88671/is-copying-other-apps-ui-okay)
+
+- **UI Repositories:** Platforms like Mobbin or Page Flows allow designers to study recorded video flows and screenshots of how popular apps handle specific user paths (e.g., how Duolingo triggers notifications or how Uber handles location picking).
+- **Wireframe Blueprints:** Designers strip away the brand assets (logos, specific colors) to isolate the core user flow, mapping out the steps it takes a user to complete a task. [link](https://uxmag.com/articles/copying-designs-doesnt-work-and-heres-why)
+
+### 3. Automated Cloning & AI Generation
+
+Modern design workflows leverage software tools to instantly rip code and layout frameworks from existing designs: [link](https://www.youtube.com/watch?v=CrW1zSZtn1E)
+
+- **Figma Browser Extensions:** Plugins can scrape a live web page and instantly convert its HTML/CSS DOM structure directly into editable Figma layers and auto-layout frames.
+- **Style Scrapers (DESIGN.md):** Tools like Refero Style can extract design data from popular sites into a unified markdown configuration file (`design.md`). Designers feed this file into AI coding assistants (like Cursor AI) to instantly apply the typography, spacing, and component definitions of an existing site onto a new project. [link](https://www.youtube.com/watch?v=ksCF5h3EZjE\&t=54)
+
+### The Line Between "Inspiration" and "Stealing"
+
+When designers replicate UX professionally, the objective is generally to **steal the thinking pattern, not the artifact**. Blindly copying a feature flow (e.g., duplicating a complex multi-step banking verification) often fails because the copycat app lacks the underlying features, target audience context, or backend technical infrastructure that made the original design function seamlessly. [link](https://medium.com/@kalvakuntaakshitha/copying-ux-best-practices-ditch-it-now-before-competitors-crush-you-8b5f8f80cf45)
+
+Are you asking out of **curiosity for a personal project**, looking for **tools to speed up your workflow**, or trying to **protect your own app's design** from being copied? Let me know so I can tailor the next steps.
+
+- [link](https://balsamiq.com/blog/copying-to-learn/)\
+  Balsamiq\
+  Copying an existing UI to learn how it was designed\
+  Copying existing UI via wireframes to learn design decisions, master tools, and understand user journeys. Effectiveness: Requires ...
+- [link](https://medium.com/si-410-ethics-and-information-technology/copying-stealing-or-inspiration-when-it-comes-to-ux-design-86607064cb43)\
+  Medium\
+  Copying, stealing, or inspiration when it comes to UX Design | by Courtney Fortin | SI 410: Ethics and Information Technology | Medium\
+  Feb 25, 2022 — Following standard layouts (Jakob's Law) aligns with user mental models, improving intuitiveness and task completion. instead of c...
+- [link](https://www.youtube.com/watch?v=CrW1zSZtn1E)\
+  YouTube·Rob Shocks\
+  Clone Any App Design Effortlessly with Cursor AI\
+  Jan 17, 2025 — so that's what makes composer. great so there's two different ways we can use this there's normal and there's agent. and I'm using...\
+  38:47
+
+Show all
+
+# how do designers learn ux from existing apps
+
+Designers learn user experience (UX) from existing apps through a process often called <mark><strong>reverse-engineering</strong><span> </span>or<span> </span><strong>deconstructive analysis</strong></mark>. By looking past the surface visuals, they study the logic, psychology, and structural decisions that make an app successful.
+
+Designers systematically extract UX lessons from existing products using the following core methods:
+
+### 1. Conducting UX Audits and Heuristic Evaluations
+
+Designers evaluate existing apps against established industry guidelines, such as **Jakob Nielsen’s 10 Usability Heuristics** or the foundational rules compiled on Laws of UX. They test the app to see if it follows crucial frameworks:
+
+- **Frenemy Testing:** Testing an app specifically to find where it frustrates the user (friction points) or where it excels (delight points).
+- **Consistency Check:** Analyzing how the app maintains uniform buttons, terminology, and gestures to reduce cognitive overload.
+- **Error Prevention:** Studying how the app stops users from making mistakes (e.g., how a form validates an email address in real-time). [link](https://www.youtube.com/watch?v=KRCDOa1YhLs\&t=117)
+
+### 2. Creating Pixel-for-Pixel Replications (Copy Work)
+
+One of the fastest ways to understand UI/UX spacing and hierarchy is to take screenshots of a great app (like Spotify or Airbnb) and replicate them exactly in design tools like Figma. [link](https://balsamiq.com/blog/copying-to-learn/)
+
+- **Revealing Spacing Systems:** Forcing oneself to measure elements reveals the exact padding, margin, and grid systems the original designers used.
+- **Understanding Typography:** Copy work helps designers see how font sizing, weight, and contrast are used to establish visual hierarchy and guide a user's eyes through a screen. [link](https://medium.com/design-bootcamp/the-ultimate-ui-ux-design-roadmap-a-detailed-and-structured-guide-to-self-learning-11f29f82f867)
+
+### 3. Mapping User Flows and Funnels
+
+Designers look beyond individual screens to map out entire user journeys. They look at how a user gets from Point A to Point B.
+
+- **Flow Charting:** Using tools or wireframe techniques like "breadboards" (a method popularized by 37signals / Basecamp) to textually map out user flows without getting bogged down by layouts. [link](https://www.reddit.com/r/UXDesign/comments/xmmebz/recreating%5Fwireframes%5Fand%5Fui%5Fof%5Ffavorite%5Fapps%5Fto/)
+- **Edge Case Analysis:** Documenting what happens when things go wrong. What does the app look like when there is no internet? How does the "empty state" look when a user has zero items in their shopping cart? [link](https://www.reddit.com/r/UXDesign/comments/xmmebz/recreating%5Fwireframes%5Fand%5Fui%5Fof%5Ffavorite%5Fapps%5Fto/)
+- **Task Analysis:** Counting the number of taps it takes to accomplish a primary goal (like checking out or booking a ride) to see how the app minimizes friction.
+
+### 4. Studying Platform Conventions & Design Systems
+
+Major tech operating systems provide strict, public rulebooks for how apps should behave. Designers cross-reference popular apps with these frameworks to see how guidelines are applied in the real world:
+
+- **Apple Human Interface Guidelines:** Studying how top iOS apps utilize native components, haptics, and navigation bars according to Apple Developer Documentation.
+- **Google Material Design:** Reviewing how Android apps handle elevation, dark mode, and responsive grids via the Material Design Guide. [link](https://www.fourzerothree.in/p/learning-ux-ui)
+
+### 5. Running "Guerilla" Usability Testing
+
+Designers don't just test apps themselves—they watch others use them. By handing a popular app to a friend or family member and giving them a specific task (e.g., "Try to split a bill on this app"), the designer can observe exactly where non-tech-savvy users stumble, bypass menus, or get confused. This reveals the gap between a professional designer's mental model and a real user's actual behavior.
+
+***
+
+### Directly Comparing UI vs. UX Analysis
+
+When analyzing an existing app, designers divide their observations into two buckets:
+
+| Analysis Layer    | What You Look At (UI)                                       | How It Functions (UX)                                                 |
+| ----------------- | ----------------------------------------------------------- | --------------------------------------------------------------------- |
+| **The Surface**   | Color palette, button shapes, iconography choices.          | Clear signifiers (does the button _look_ like it can be clicked?)     |
+| **The Structure** | Text alignment, spacing systems, typography scales.         | Information architecture (how content is categorized and grouped).    |
+| **The Movement**  | Micro-interactions, transition animations, loader graphics. | Interaction design (how the system reacts immediately to user input). |
+
+Are you asking because you want to **analyze an app for a portfolio project**, or are you looking for **exercises to improve your own design skills**? Let me know, and I can give you a structured step-by-step framework to follow!
+
+- [link](https://www.reddit.com/r/UXDesign/comments/xmmebz/recreating%5Fwireframes%5Fand%5Fui%5Fof%5Ffavorite%5Fapps%5Fto/)\
+  Reddit·r/UXDesign\
+  Recreating wireframes and ui of Favorite apps to figma as one ...\
+  write out use case narratives (e.g. user does x, system renders y) for the basic, alternate and exception flows. this could even i...
+- [link](https://balsamiq.com/blog/copying-to-learn/)\
+  Balsamiq\
+  Copying an existing UI to learn how it was designed\
+  Copying existing UI via wireframes to learn design decisions, master tools, and understand user journeys. color and text hierarchy...
+- [link](https://www.fourzerothree.in/p/learning-ux-ui)\
+  FourZeroThree\
+  Just starting your UX/UI journey? Start with learning UI/visual ...\
+  consistent UI design practice. Material Design and Human Interface Guidelines helps you learn a ton of stuff. Think about it. A so...
+
+Show all
+
+# how do ppl design ux by learning from existing apps
+
+<mark><strong><span>UX designers learn from existing apps by reverse-engineering their design choices, a practice commonly referred to as "copying to learn" or conducting a competitive UX analysis</span></strong></mark>**.** By analyzing established products, designers avoid "blank-canvas paralysis," master industry design standards, and understand how to solve complex user problems. [link](https://balsamiq.com/blog/copying-to-learn/)
+
+Here is exactly how designers break down and learn from existing apps:
+
+### 1. Recreating the UI "Pixel-for-Pixel"
+
+The most practical way to learn is by taking screenshots of a world-class app (like Spotify, Airbnb, or Instagram) and recreating them exactly in a design tool like Figma. [link](https://www.linkedin.com/posts/nolanperk%5Fuxdesign-figmadesign-vibecoding-activity-7343648660779360256-qZ%5FD)
+
+- **What they learn:** By matching the layout exactly, designers begin to naturally absorb technical choices like **typography scale, icon padding, information hierarchy, and spacing systems**. [link](https://www.linkedin.com/posts/nolanperk%5Fuxdesign-figmadesign-vibecoding-activity-7343648660779360256-qZ%5FD)
+- **Why it works:** It trains visual cognitive patterns and forces the designer to look at _why_ a button is placed somewhere, rather than just noticing that it looks good. [link](https://medium.com/design-bootcamp/the-ultimate-ui-ux-design-roadmap-a-detailed-and-structured-guide-to-self-learning-11f29f82f867)
+
+### 2. Mapping User Flows and "Breadboarding"
+
+Designers look past the visuals to understand the underlying architecture by mapping out user journeys. [link](https://www.academyart.edu/news/what-is-ux-ui-design-a-guide-to-user-experience-user-interface-and-product-design/)
+
+- **Breadboarding:** Designers write out the functional text-based flows without visual elements (e.g., _User taps 'Book' → App requests payment → Confirmation screen handles success/error_). [link](https://www.reddit.com/r/UXDesign/comments/xmmebz/recreating%5Fwireframes%5Fand%5Fui%5Fof%5Ffavorite%5Fapps%5Fto/)
+- **Analyzing Funnels:** They actively map out the onboarding process or checkout funnels of top apps to see how they minimize user friction and prevent cart abandonment. [link](https://www.youtube.com/watch?v=GNsVHcJEf38\&vl=en)
+
+### 3. Deconstructing Design Patterns via AI
+
+With the rise of advanced multimodal AI, modern designers often upload screenshots of existing apps into LLMs to analyze them. [link](https://www.linkedin.com/posts/nolanperk%5Fuxdesign-figmadesign-vibecoding-activity-7343648660779360256-qZ%5FD)
+
+- **Prompting for Logic:** A designer might take a screenshot of a complex dashboard and ask an AI tool: _"What design decisions make this layout successful? Why does it feel uncluttered?"_
+- **Uncovering Micro-Interactions:** AI can quickly call out subtle UX mechanics—like how an app uses varying brightness instead of harsh borders to show active states, or how it utilizes hover-states to hint at interactivity.
+
+### 4. Running Cognitive Walkthroughs
+
+Designers open an app and test it as if they were first-time users, documenting the exact feeling of navigating through the product. [link](https://www.youtube.com/watch?v=-nytw2hZw20\&t=77)
+
+- **Jakob's Law:** This UX principle states that users spend most of their time on _other_ apps. Designers study existing apps to learn the universal design conventions (like a shopping cart icon in the top right corner) so they don't accidentally reinvent the wheel and confuse their users.
+- **Heuristic Evaluation:** They grade the app against standard UX principles—such as user control, visibility of system status, and error prevention—to see where the app succeeds or stumbles. [link](https://www.youtube.com/watch?v=KRCDOa1YhLs\&t=117)
+
+### Summary of Techniques
+
+| Method                           | What You Do                          | Core Benefit                                                           |
+| -------------------------------- | ------------------------------------ | ---------------------------------------------------------------------- |
+| **Pixel-for-Pixel Copying**      | Recreate screens exactly in Figma.   | Teaches spacing, typography, and visual hierarchy.                     |
+| **Breadboarding / Flow Mapping** | Document user step-by-step pathways. | Reveals information architecture and hidden edge cases.                |
+| **AI Deconstruction**            | Upload screens to AI for analysis.   | Uncovers the psychological and structural logic behind layout choices. |
+| **Competitive Benchmarking**     | Audit several industry apps at once. | Uncovers standard user mental models and gaps in the market.           |
+
+Are you looking to use this approach to **build your own UX portfolio**, or are you trying to **redesign a specific feature** for an app you're currently working on?
+
+- [link](https://www.linkedin.com/posts/nolanperk%5Fuxdesign-figmadesign-vibecoding-activity-7343648660779360256-qZ%5FD)\
+  LinkedIn·Nolan Perkins\
+  How to learn UI/UX design in the AI era | Nolan Perkins posted ...\
+  Jun 25, 2025 — To learn UI/UX design in the AI era, start by learning AI to practice UX design skills and UI design for design systems. Use tools...\
+  [2:35](https://www.linkedin.com/posts/nolanperk%5Fuxdesign-figmadesign-vibecoding-activity-7343648660779360256-qZ%5FD)
+- [link](https://balsamiq.com/blog/copying-to-learn/)\
+  Balsamiq\
+  Copying an existing UI to learn how it was designed\
+  Copying existing UI via wireframes to learn design decisions, master tools, and understand user journeys. Select screens, set up w...
+- [link](https://www.reddit.com/r/UXDesign/comments/xmmebz/recreating%5Fwireframes%5Fand%5Fui%5Fof%5Ffavorite%5Fapps%5Fto/)\
+  Reddit·r/UXDesign\
+  Recreating wireframes and ui of Favorite apps to figma as one ...\
+  try identifying and recreating the funnel with breadboards. but also all round helpful to write out flows ・ use case narratives ・ ...
+
+Show all
+
+# how do ppl do competitive ux analysis
+
+**UX competitive analysis** is the practice of evaluating existing market products to map out their strengths, weaknesses, and user flows. UX researchers and designers do this not to copy what is out there, but to identify industry standards, spot market gaps, and uncover opportunities to design something better. [link](https://david-hamill.medium.com/how-to-do-meaningful-competitive-ux-analysis-3e543ddf9d0c)
+
+Here is exactly how professionals structure and execute a UX competitive analysis.
+
+***
+
+### 1. Define the Goals and Scope
+
+Before looking at any competitor, you must establish what you want to learn. [link](https://www.youtube.com/watch?v=oA3vObS5SUc)
+
+- **Target a specific flow:** Instead of evaluating an entire app, focus on a core user task (e.g., how competitors handle onboarding, checkout, or advanced filtering). [link](https://baymard.com/blog/competitive-analysis-ux)
+- **Set objectives:** Decide if your goal is to find usability gaps, evaluate accessibility, or figure out how to make a complex layout simpler. [link](https://baymard.com/blog/competitive-analysis-ux)
+
+### 2. Identify the Competitors
+
+Gather a mix of **3 to 5 direct and indirect competitors** to evaluate: [link](https://maze.co/collections/ux-ui-design/ux-competitive-analysis/)
+
+- **Direct Competitors:** Platforms that solve the same exact problem for the same audience (e.g., Asana vs. Trello).
+- **Indirect Competitors:** Platforms that solve a similar problem but for a different audience, or in an entirely different format (e.g., Apple Calendar vs. Asana). [link](https://www.linkedin.com/posts/nbabich%5Fdesign-ux-productdesign-activity-7305177826951884801-aBWs)
+
+### 3. Conduct the Evaluation (Methods)
+
+UX researchers use three primary methods to pull raw data:
+
+- **Heuristic Analysis / UX Audit:** You log into the competitor's app yourself. Take screenshots of every step of the journey to create a task flow map. Note where navigation gets confusing or where the microcopy is highly effective. [link](https://www.youtube.com/watch?v=Vl0m3Y3hg80)
+- **User Review Mining:** Read App Store, Google Play, or Reddit feedback to find what frustrates their actual users. This highlights user pain points you can solve out of the gate. [link](https://dscout.com/people-nerds/approach-competitive-analysis-like-a-user-researcher-with-template)
+- **Competitive Usability Testing:** Recruit users to perform a specific task on a competitor’s product while thinking out loud. This allows you to witness their friction points firsthand. [link](https://www.nngroup.com/articles/competitive-usability-evaluations/)
+
+### 4. Organize with Frameworks & Matrices
+
+To make sense of the data, compile your findings into highly scannable visual frameworks: [link](https://www.youtube.com/watch?v=1M-G9HqZDRo\&t=4)
+
+- **Feature Comparison Chart:** A grid mapping competitors against specific UX attributes (e.g., search speed, guest checkout availability, or filter logic).
+- **UX Matrix:** Grading competitor experiences against established criteria, often stored in collaboration tools like Notion or Figma. [link](https://theuxcookbook.com/recipes/competitive-analysis)
+
+| Analysis Framework  | What it Tracks                                                                                       |
+| ------------------- | ---------------------------------------------------------------------------------------------------- |
+| **SWOT Analysis**   | Internal Strengths, Weaknesses, Opportunities, and Threats for each product.                         |
+| **Journey Mapping** | Visual timelines of the clicks and emotional states required to complete a task.                     |
+| **Perceptual Maps** | Quadrant charts comparing competitors on axes like "Complex vs. Simple" or "Traditional vs. Modern". |
+
+### 5. Synthesize and Present Actionable Insights
+
+A great UX analysis doesn't just list what others are doing; it provides an **actionable game plan**. The final report should summarize the core patterns, highlight what worked or failed, and define the design requirements needed to build a superior experience. [link](https://www.nngroup.com/articles/competitive-usability-evaluations/)
+
+For a visual breakdown of how to structure your feature charts and map out design opportunities, you can check out this step-by-step video guide on UX competitive analysis:
+
+3m
+
+[link](https://www.youtube.com/watch?v=1M-G9HqZDRo\&t=4)
+
+About UX: What are the steps of competitive analysis?
+
+3 years ago
+
+YouTube · AxureBoutique
+
+Are you building a **new product from scratch** or trying to **redesign an existing feature**? Let me know, and I can give you a tailored template or outline specific metrics to look for!
+
+- [link](https://david-hamill.medium.com/how-to-do-meaningful-competitive-ux-analysis-3e543ddf9d0c)\
+  Medium·David Hamill\
+  How to do meaningful competitive UX analysis - David Hamill\
+  Competitive analysis in UX should be thought of as opportunity in my view. You have the ability to learn from sites/apps/software ...
+- [link](https://dscout.com/people-nerds/approach-competitive-analysis-like-a-user-researcher-with-template)\
+  Dscout\
+  Approach Competitive Analysis Like a User Researcher (+ Template) - Dscout\
+  Definition: User research (UXR) competitive analysis evaluates competitors' user experiences to better serve users' needs, goals, ...
+- [link](https://www.youtube.com/watch?v=oA3vObS5SUc)\
+  YouTube·Eleken\
+  YouTube\
+  Aug 14, 2025 — around three or five is good pick direct competitors. those targeting your exact audience. and maybe a few indirect. ones for extr...\
+  2:39
+
+Show all
+
+# how do ppl design ux for startup apps from existing apps and decide where to keep or change
+
+When designing a startup app using existing apps as a baseline, designers rely on <mark><strong>competitive UX teardowns, Jakob’s Law of UX, and value proposition mapping</strong></mark> to build an experience that feels immediately familiar yet distinctly better. Instead of reinventing the wheel, the goal is to borrow established mental models while aggressively innovating on the exact point of friction competitors have ignored. [link](https://www.youtube.com/watch?v=Hgps0PpDrHA\&t=74)
+
+Here is how product teams strategically analyze existing apps and decide what to keep versus what to change.
+
+***
+
+### 1. The Strategy: How Designers Map the Competitive Landscape
+
+Designers don't copy-paste; they audit the ecosystem using specific frameworks:
+
+- **Jakob’s Law Implementation:** This UX principle states that users spend most of their time on _other_ apps. Designers look at category leaders (e.g., Airbnb for booking, Uber for tracking, Instagram for feeds) to understand what layout patterns the target user already expects by default. [link](https://www.ramotion.com/blog/what-are-ui-guidelines/)
+- **The UX Teardown & Friction Audit:** Teams map out the exact user flows of 3–5 competing apps. They identify "interaction tax"—unnecessary steps, confusing navigation, or forced account creations that frustrate users. [link](https://www.youtube.com/watch?v=ODpB9-MCa5s\&t=91)
+- **App Store & Reddit Mining:** Teams read competitor reviews and community threads. If hundreds of users are complaining that a legacy app's "search filter is broken" or "onboarding takes too long," that becomes the startup's primary design target. [link](https://www.reddit.com/r/UXDesign/comments/1mteapa/how%5Fdo%5Fyou%5Fdo%5Fux%5Fin%5Fstartups%5Fwithout%5Ftime%5Fpeople/)
+
+***
+
+### 2. What to KEEP (The "Don't Make Me Think" Layer)
+
+Startups operate under tight timelines and budgets. To maximize efficiency and reduce user friction, designers **keep** standard industry design patterns. [link](https://www.youtube.com/watch?v=Hgps0PpDrHA\&t=74)
+
+```
++-------------------------------------------------------------------------+
+
+|                          WHAT TO KEEP (DON'T CHANGE)                    |
++-------------------------------------------------------------------------+
+
+| • Navigation Anchors: Bottom tabs for mobile apps, top-left logo home   |
+|   links, and standard icon conventions (magnifying glass for search)    |
+| • E-commerce Frameworks: The standard Shopping Cart -> Checkout flow    |
+| • Common Input Behaviors: Standard keyboards, date-pickers, and form     |
+|   validation indicators                                                 |
+| • Identity Actions: "Sign in with Google/Apple" and password resets    |
++-------------------------------------------------------------------------+
+```
+
+_Why keep these?_ If a startup tries to reinvent how a user edits their profile or filters a list, the user wastes cognitive energy just learning the UI rather than experiencing the app's actual value.
+
+***
+
+### 3. What to CHANGE (The "Value Proposition" Layer)
+
+Change is only introduced where it directly drives the startup's **core competitive advantage** or drastically eliminates an existing pain point.
+
+- **The "One-Key-Difference" Flow:** If the startup's value proposition is "faster delivery," the order tracking and checkout flow must be completely overhauled compared to slow competitors. [link](https://www.youtube.com/watch?v=Xzh8xjimmp8)
+- **The First 60 Seconds (Onboarding):** Legacy apps often accumulate "product debt"—bloated sign-up screens, survey questions, and mandatory compliance checks. Startups win by designing an ultra-lean, contextual onboarding flow that gets the user to their first "Aha!" moment instantly. [link](https://www.abbacustechnologies.com/ui-ux-design-for-startup-apps-what-founders-should-know/)
+- **Contextual & Adaptive Layouts:** While old apps treat all users the same, a modern startup app can gain an edge by dynamically personalizing the dashboard based on whether someone is a first-time visitor, a repeat user, or a power user. [link](https://www.youtube.com/watch?v=Xzh8xjimmp8)
+
+***
+
+### 4. How to Decide: The Keep vs. Change Matrix
+
+To make concrete product decisions without relying on guesswork, teams use a simple decision framework: [link](https://fuselabcreative.com/ui-ux-design-for-startups/)
+
+| Feature Element                 | Is it standard across the industry? | Does it support your unique value proposition?   | The Verdict                                                                                                                        |
+| ------------------------------- | ----------------------------------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| **Example: Account Settings**   | Yes                                 | No                                               | **KEEP:** Use standard component libraries or Tailwind/Material UI design patterns.                                                |
+| **Example: Search & Filtering** | Yes                                 | Yes (e.g., your app is a niche discovery engine) | **CHANGE:** Redesign it entirely to feel smarter, offering dynamic suggestions and better categorization than rivals.              |
+| **Example: Core Task Workflow** | No                                  | Yes                                              | **INNOVATE:** This is your Minimum Viable Product (MVP). Spend 80% of your creative energy building a breakthrough prototype here. |
+
+### 5. Validating the Decisions (The Lean Startup Approach)
+
+Once the initial prototype is mapped out, designers don't just launch it—they run rapid, budget-friendly tests to ensure their "changes" are actually improvements: [link](https://medium.com/@marc%5F57057/ui-ux-design-for-startups-your-survival-guide-with-real-stories-hard-won-insights-b3bfc9d22e55)
+
+- **Behavioral Smoke Testing:** Instead of building a complex new feature flow, teams use "false door" buttons or simple email smoke tests to see if users _actually_ click on the proposed new value add before writing code.
+- **Guerrilla Usability Testing:** Designers will put a interactive Figma prototype in front of 5 individuals who use the competitor's app. If those users trip over the new changes, the design is rolled back toward standard industry patterns. [link](https://www.reddit.com/r/UXDesign/comments/1mteapa/how%5Fdo%5Fyou%5Fdo%5Fux%5Fin%5Fstartups%5Fwithout%5Ftime%5Fpeople/)
+
+Are you currently mapping out a design for a **specific type of app** (like fintech, SaaS, or e-commerce)? If you share your app's **core concept** or the **competitor** you're looking at, I can help you pinpoint exactly which UX patterns to borrow and where to innovate.
+
+- [link](https://www.youtube.com/watch?v=Hgps0PpDrHA\&t=74)\
+  YouTube·Eleken\
+  UX Design for Startups: From Idea to MVP\
+  Oct 30, 2025 — Further reduce risk and speed by creating a clickable prototype in Figma, which allows for testing the idea with users without cod...\
+  1m
+- [link](https://www.reddit.com/r/UXDesign/comments/1mteapa/how%5Fdo%5Fyou%5Fdo%5Fux%5Fin%5Fstartups%5Fwithout%5Ftime%5Fpeople/)\
+  Reddit·r/UXDesign\
+  How do you do UX in startups without time, people ... - Reddit\
+  Building a flow is only going to tell you if they can use your product, Or a Smoke Test or False Front Door. this should be a coll...
+- [link](https://www.ramotion.com/blog/what-are-ui-guidelines/)\
+  Ramotion\
+  Mastering UI Guidelines: Principles for Better Interfaces | Ramotion Agency\
+  Nov 25, 2025 — 10 UI Design Principles \* Show system status clearly. ... \* Match. Give users control and freedom. ... \* Maintain consistency and ...
+
+Show all
+
+# how do ppl design ux for startup apps from existing apps and decide where they have to change
+
+Designing the UX for a startup app by looking at existing apps is a standard industry practice often called <mark><strong>competitive UX benchmarking</strong><span> </span>or<span> </span><strong>derivative design</strong></mark>. Startups don’t reinvent the wheel; instead, they find where the wheel is broken and fix that specific part. [link](https://medium.com/@marc%5F57057/ui-ux-design-for-startups-your-survival-guide-with-real-stories-hard-won-insights-b3bfc9d22e55)
+
+The process relies on a strategic mix of adopting established **UX design patterns** (so users don’t have to relearn how to navigate) and innovating only where it creates a **competitive advantage**. [link](https://medium.com/design-bootcamp/how-to-redesign-like-a-pro-22f6941bf108)
+
+***
+
+### Phase 1: Auditing Existing Apps (The Deconstruction)
+
+Designers look at existing apps (direct competitors and indirect ones with similar mechanics) to map out what users already expect. [link](https://medium.com/design-bootcamp/how-to-redesign-like-a-pro-22f6941bf108)
+
+- **Map the User Flows:** They document the step-by-step screens of existing apps. For example, how does Airbnb handle filtering? How does Uber handle onboarding? [link](https://medium.com/design-bootcamp/how-to-redesign-like-a-pro-22f6941bf108)
+- **Identify "UX Patterns":** Certain design choices are universally understood—like a shopping cart icon in the top right or a bottom navigation bar. Designers flag these as elements **not to change**, because breaking them creates unnecessary friction for users. [link](https://www.youtube.com/watch?v=Hgps0PpDrHA\&t=74)
+- **Perform "Respectful Stalking":** Designers comb through 1-star and 2-star reviews of existing apps in the App Store or Google Play. They look for recurring complaints about confusing workflows, hidden features, or clutter. [link](https://uxmag.com/articles/how-to-redesign-an-app-when-to-do-it-and-what-to-start-with)
+
+### Phase 2: Deciding Where to Change (The Triangulation)
+
+To avoid over-designing or building a generic clone, startups use a specific framework to pinpoint exactly where they need to diverge from existing apps: [link](https://www.youtube.com/watch?v=4ernbipPqOY\&t=20)
+
+```
+      [ Value Proposition ]  <-- Does this feature reflect our unique angle?
+               |
+  [ Friction Points in Market ] <-- What do users hate about the current apps?
+               |
+       ( WHERE TO CHANGE )
+               |
+  [ Technical / Scope Limits ] <-- Can our lean startup team actually build this?
+```
+
+1. **The Core Value Proposition (The "Hook"):** Change occurs where the startup's unique selling point lives. If an existing app is powerful but bloated, the startup changes the UX by making it ultra-minimalist and fast. The design changes radically only around the **one feature** that makes the startup different. [link](https://medium.com/minsight/designing-the-best-ux-process-in-a-startup-2f95ebf6aa00)
+2. **The "Value vs. Usability" Test:** In a startup, you must test whether a feature is _useful_, not just _usable_. Designers look at existing apps and ask: _"Did they build this feature just because they could, or do users actually want it?"_ If it's dead weight, the startup drops it. [link](https://www.reddit.com/r/UXDesign/comments/1mteapa/how%5Fdo%5Fyou%5Fdo%5Fux%5Fin%5Fstartups%5Fwithout%5Ftime%5Fpeople/)
+3. **Data-Driven Friction Points:** Using tools like UX Pilot or Figma, designers conduct a mock audit. If an incumbent app requires 7 taps to complete a checkout, the startup decides to innovate by redesigning that specific sequence into a 2-tap flow. [link](https://www.youtube.com/watch?v=4ernbipPqOY\&t=20)
+
+### Phase 3: Building and Validating the Changes
+
+Once they decide what to alter, they use lean methodologies to prove their UX assumptions are correct before writing code. [link](https://www.youtube.com/watch?v=Hgps0PpDrHA\&t=74)
+
+- **Wireframe with Low-Fidelity:** Designers create basic, grayscale outlines of the new, altered screens using Balsamiq or Figma. This keeps the focus strictly on function and layout, ignoring colors and visual polish.
+- **Behavioral "Smoke Tests":** Startups often run fake landing pages or "false front doors" to see if users will click a re-imagined button design before it's even functional.
+- **Rapid Usability Testing:** They build a clickable prototype and put it in front of users. Startups frequently participate in UX testing communities where founders swap feedback over pizza to catch blind spots early. [link](https://uxdesign.cc/21-month-startup-journey-easy-ux-principles-that-we-learned-the-hard-way-fe76eee857bb)
+
+To see a practical breakdown of how a startup defines its Minimum Viable Product (MVP) and streamlines UX design using established patterns, watch this short visual summary:
+
+4:00
+
+[link](https://www.youtube.com/watch?v=Hgps0PpDrHA)
+
+UX Design for Startups: From Idea to MVP
+
+11 months ago
+
+YouTube · Eleken
+
+Are you currently looking to design a **specific type of app**, or do you have a **particular competitor** in mind that you want to improve upon? Tell me a bit about your app idea, and I can map out exactly which standard UX patterns you should keep and where you should innovate.
+
+- [link](https://medium.com/design-bootcamp/how-to-redesign-like-a-pro-22f6941bf108)\
+  Medium\
+  How to redesign UI/UX like a pro. Redesigning a website or app is a… | by Dinesh Samala | Bootcamp | Medium\
+  Apr 19, 2021 — Apply UX laws, think like a user for accessibility, and establish a clear hierarchy.
+- [link](https://www.youtube.com/watch?v=Hgps0PpDrHA\&t=74)\
+  YouTube·Eleken\
+  UX Design for Startups: From Idea to MVP\
+  Oct 30, 2025 — To accelerate the design process, utilize proven UX patterns and component libraries such as End Design or Tailwind UI, avoiding t...\
+  1m
+- [link](https://www.youtube.com/watch?v=4ernbipPqOY\&t=20)\
+  YouTube·Agatha Richards\
+  I Redesigned a Bad App Using UX Pilot — Full Process\
+  Feb 3, 2026 — UX Pilot is used instead of Figma to avoid spending 80% of the time polishing the UI instead of focusing on UX, which is the main ...\
+  5m
+
+Show all
