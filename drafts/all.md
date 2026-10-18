@@ -514,7 +514,7 @@ cp: <!-- algorithms -->
 - template math python operators divmod floordiv truediv mod
 - dynamic programming recursive optimization game of hog final strategy
 - contests info
-- dsu on tree by depth 
+- dsu on tree by depth longest chain decomposition binary search on is solvable
 
 pm:
 
