@@ -167,4 +167,58 @@ def format_float(n: float, precision: int) -> str:
   return f'{n:.{precision}f}'
 
 
+# fp
 
+
+def identity(x):
+  return x
+
+
+halt_symbol = object()
+
+
+class HaltContainer:
+  def __init__(self, value):
+    self.halt_symbol = halt_symbol
+    self.value = value
+
+
+def halt(value=None):
+  """Returns a container to signals a break/halt sequence inside map()."""
+  return HaltContainer(value)
+
+
+map_ = map
+
+
+def map(items, f):
+  """
+  Maps a collection with specific early-termination options.
+  Automatically standardizes sets, dicts, and mappings to key-value lists.
+  """
+  if isinstance(items, dict):
+    items = entries(items)
+
+  result = []
+
+  for index, item in enumerate(items):
+    value = f(item, index, items)
+
+    if value is None:
+      continue
+
+    if value is halt:
+      break
+
+    if isinstance(value, HaltContainer) and value.halt_symbol is halt_symbol:
+      result.append(value.value)
+      break
+
+    result.append(value)
+
+  return result
+
+def add_one(x):
+  return x+1
+
+log(map([1, 2, 3], add_one))
