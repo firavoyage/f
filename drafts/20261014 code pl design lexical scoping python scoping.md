@@ -1,4 +1,4 @@
-what do pl designers say on python scoping
+# what do pl designers say on python scoping
 
 In programming language (PL) design circles, Python’s approach to variable scoping is highly idiosyncratic. While Python is widely praised for its high-level readability, PL designers and language theorists often criticize its scoping architecture as <mark>a<span> </span><strong>"wild outlier"</strong><span> </span>or a design footgun</mark> compared to languages like Lua, JavaScript, or Rust. [link](https://www.reddit.com/r/Python/comments/1ajvgli/python%5Fis%5Fweakly%5Fscoped/)
 
@@ -57,3 +57,5 @@ Would you like to see a **code comparison** illustrating exactly how Python leak
 
 Show all
 
+
+# 
