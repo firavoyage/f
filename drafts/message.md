@@ -22,4 +22,4 @@ ruby stl
 
 ---
 
-
+how would it look like if you can declare material design mouse position aware ripple effect in an ideal css alone
