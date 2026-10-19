@@ -163,7 +163,9 @@ def num(n):
   except (ValueError, TypeError):
     return nil
 
+
 int_ = int
+
 
 def int(n):
   try:
@@ -171,7 +173,9 @@ def int(n):
   except (ValueError, TypeError):
     return nil
 
+
 float_ = float
+
 
 def float(n):
   try:
@@ -183,10 +187,8 @@ def float(n):
 
 def list(*args):
   """Handles spread args fallback or dynamic conversion of an iterable."""
-  if len(args) == 1:
-    # If it's an iterable collection but not a raw string
-    if hasattr(args[0], '__iter__') and not isinstance(args[0], str):
-      return list(args[0])
-  return list(args)
+  if len(args) == 1 and hasattr(args[0], '__iter__') and not isinstance(args[0], str):
+    return args[0]
+  return args
 
 
