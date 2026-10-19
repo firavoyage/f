@@ -263,6 +263,7 @@ lib:
 - datetime
 - chainable
 - tsconfig path
+- web style
 
 web: <!-- frontend, web, ts/js -->
 
@@ -361,7 +362,6 @@ web: <!-- frontend, web, ts/js -->
 - favicon
 - js std lib
 - js std lib builtin global object methods
-- web lib style
 - fix reference error react not defined
 - component scroll area
 - js stl math
