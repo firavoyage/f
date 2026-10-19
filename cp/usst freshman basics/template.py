@@ -659,6 +659,8 @@ def find_root(term, derivative):
 
 """
 
+
+
 """
 
 
@@ -666,6 +668,13 @@ def find_root(term, derivative):
 
 
 def main():
+  n = read()
+
+  for i in each(n):
+    solve()
+
+
+def solve():
   pass
 
 
