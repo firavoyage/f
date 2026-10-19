@@ -767,7 +767,47 @@ expand and flatten - ~n
 
 count occurences of each - ~n (builtin hash map)
 
+> count occurences of each before expansion - ~n (builtin hash map)
 
+iterate hash map - ~n?
+
+if it's less than max occur from lower, skip
+
+eval - ?
+
+---
+
+well, isnt it
+
+n - all lower ones (i can count it imperatively) + all bonuses on it
+
+i dont even have tricks.
+
+---
+
+i can and perhaps i have to (only worst case matters) iter from 1 to m
+
+because 1 to n can absolutely hold 1 to m like if n = m
+
+It is guaranteed that the sum of n
+ over all test cases does not exceed 2⋅105
+ and the sum of m
+ over all test cases does not exceed 2⋅105
+.
+
+wait but it's mathematically sparse...
+
+---
+
+i dont have to expand, i can calc bonus directly
+
+---
+
+yeah, there must be some bonus somewhere if you land a cut there 
+
+unless you cut on 1
+
+but it's irrelevant and you need to stack up existing heights anyway
 
 """
 
@@ -783,7 +823,29 @@ def main():
 
 
 def solve():
-  pass
+  n, _ = read()
+
+  heights = read()
+
+  count = dict()
+
+  bonus = dict()
+
+  for height in heights:
+    increase(count, height)
+
+    if height % 2 == 0:
+      increase(bonus, height / 2)
+
+  
+
+def increase(object, key):
+  if has(object, key):
+    object[key] += 1
+  else:
+    object[key] = 1
 
 
-__()
+# __()
+
+
