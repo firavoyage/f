@@ -4,10 +4,10 @@ from types import SimpleNamespace
 
 # utils
 
-command_write = sys.stdout.write
-command_readline = sys.stdin.readline
-command_print = print
-log = command_print
+_write = sys.stdout.write
+_readline = sys.stdin.readline
+_print = print
+log = _print
 
 
 def pr(*args):
@@ -15,29 +15,29 @@ def pr(*args):
   if len(args) == 0:
     return
   # If the first item is numeric, separate by space; otherwise join directly
-  if isinstance(args[0], (int_, float_)):
-    command_write(' '.join(map(args, str)))
+  if isinstance(args[0], (_int, _float)):
+    _write(' '.join(map(args, str)))
   else:
-    command_write(''.join(map(args, str)))
+    _write(''.join(map(args, str)))
 
 
 def prn(*args):
   """Writes elements with a trailing newline."""
   pr(*args)
-  command_write('\n')
+  _write('\n')
 
 
 print = prn
 
 
-def read_line():
+def readline():
   """Reads a single line from standard input."""
-  return command_readline().rstrip('\r\n')
+  return _readline().rstrip('\r\n')
 
 
 def read():
   """Reads a line and parses tokens dynamically into numbers or strings."""
-  line = read_line()
+  line = readline()
   if not line:
     return nil
 
@@ -58,7 +58,7 @@ input = read
 def read_int():
   """Parses a single integer from the current space-separated line context."""
   res = read()
-  if isinstance(res, list_):
+  if isinstance(res, _list):
     return int(res[0])
   return int(res)
 
@@ -66,7 +66,7 @@ def read_int():
 def read_ints():
   """Parses an array of integers from the current line context."""
   res = read()
-  if isinstance(res, list_):
+  if isinstance(res, _list):
     return [int(x) for x in res]
   return [int(res)]
 
@@ -74,7 +74,7 @@ def read_ints():
 def read_num():
   """Parses a single number (float/int) from the current line context."""
   res = read()
-  if isinstance(res, list_):
+  if isinstance(res, _list):
     return num(res[0])
   return num(res)
 
@@ -82,7 +82,7 @@ def read_num():
 def read_nums():
   """Parses an array of numbers from the current line context."""
   res = read()
-  if isinstance(res, list_):
+  if isinstance(res, _list):
     return [num(x) for x in res]
   return [num(res)]
 
@@ -125,6 +125,7 @@ def __():
 
 sys.setrecursionlimit(200000)
 
+
 # std
 
 
@@ -136,7 +137,7 @@ def is_given(v):
 # prefer `key in obj`
 def has(obj, key):
   """Universal check equivalent to JavaScript's includes / has / hasOwn."""
-  if isinstance(obj, (list_, tuple, str, set, dict)):
+  if isinstance(obj, (_list, tuple, str, set, dict)):
     return key in obj
   return false
 
@@ -144,56 +145,56 @@ def has(obj, key):
 def entries(obj):
   """Returns iterable entries based on structure."""
   if isinstance(obj, dict):
-    return list_(obj.items())
-  elif isinstance(obj, (list_, tuple)):
-    return list_(enumerate(obj))
+    return _list(obj.items())
+  elif isinstance(obj, (_list, tuple, str)):
+    return _list(enumerate(obj))
   elif isinstance(obj, set):
-    return list_(enumerate(obj))
+    return _list(enumerate(obj))
   return []
 
 
 def num(n):
   """Attempts to cast to int or float safely, returning nil if NaN/Error."""
   try:
-    val = float_(n)
+    val = _float(n)
     if math.isnan(val):
       return nil
     if val.is_integer():
-      return int_(val)
+      return _int(val)
     return val
   except (ValueError, TypeError):
     return nil
 
 
-int_ = int
+_int = int
 
 
 def int(n):
   try:
-    return int_(float(n))
+    return _int(float(n))
   except (ValueError, TypeError):
     return nil
 
 
-float_ = float
+_float = float
 
 
 def float(n):
   try:
-    val = float_(n)
+    val = _float(n)
     return nil if math.isnan(val) else val
   except (ValueError, TypeError):
     return nil
 
 
-list_ = list
+_list = list
 
 
 def list(*args):
   """Handles spread args fallback or dynamic conversion of an iterable."""
   if len(args) == 1 and hasattr(args[0], '__iter__') and not isinstance(args[0], str):
-    return list_(args[0])
-  return list_(args)
+    return _list(args[0])
+  return _list(args)
 
 
 # fp
@@ -247,7 +248,7 @@ def halt(value=nil):
   return HaltContainer(value)
 
 
-map_ = map
+_map = map
 
 
 def map(items, f):
@@ -317,7 +318,7 @@ def reduce_right(items, f, initial_value=nil):
   return result
 
 
-range_ = range
+_range = range
 
 
 def each(*args):
@@ -427,7 +428,26 @@ def every(items, f):
 
 all = every
 
+
 # iterables
+
+
+def group(items, by):
+  result = []
+
+  current = []
+
+  for index, item in entries(items):
+    current.append(item)
+
+    if index % by == by - 1:
+      result.append(current)
+      current = []
+
+  if len(current) != 0:
+    result.append(current)
+
+  return result
 
 
 def sort(items, compare=nil):

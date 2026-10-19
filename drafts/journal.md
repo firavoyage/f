@@ -55334,6 +55334,8 @@ prefer `items` (strictly noun) over `list` (verb/noun) <!-- js is lisp 1 -->
 
 22 40 write a py cp template.
 
+"for, each, repeat, loop, while"
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
