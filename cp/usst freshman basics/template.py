@@ -14,10 +14,10 @@ def pr(*args):
   if len(args) == 0:
     return
   # If the first item is numeric, separate by space; otherwise join directly
-  if isinstance(args[0], (int, float)):
-    command_write(' '.join(map(str, args)))
+  if isinstance(args[0], (int_, float_)):
+    command_write(' '.join(map(args, str)))
   else:
-    command_write(''.join(map(str, args)))
+    command_write(''.join(map(args, str)))
 
 
 def prn(*args):
@@ -57,7 +57,7 @@ input = read
 def read_int():
   """Parses a single integer from the current space-separated line context."""
   res = read()
-  if isinstance(res, list__):
+  if isinstance(res, list_):
     return int(res[0])
   return int(res)
 
@@ -86,17 +86,45 @@ def read_nums():
   return [num(res)]
 
 
-# std
+# fix
 
 nil = None
 true = True
 false = False
 
 
+def call(fn, *params):
+  """
+  A high-performance, Codeforces-safe JS-style caller.
+  Tries passing arguments from most-to-least until one works.
+  """
+
+  # Start by trying to pass ALL arguments (the JS way)
+  # If it fails, sequentially slice off the last argument
+  for i in range(len(params), 0, -1):
+    try:
+      return fn(*params[:i])
+    except TypeError:
+      continue
+
+  # Fallback for functions that take 0 arguments
+  try:
+    return fn()
+  except TypeError:
+    # If it still fails, it means the TypeError was raised INSIDE the function,
+    # not because of an incorrect number of arguments. Raise it.
+    raise
+
+
+# std
+
+
+# prefer `v is not nil` or `v != nil`
 def is_given(v):
   return v is not nil
 
 
+# prefer `key in obj`
 def has(obj, key):
   """Universal check equivalent to JavaScript's includes / has / hasOwn."""
   if isinstance(obj, (list_, tuple, str, set, dict)):
@@ -202,7 +230,8 @@ def map(items, f):
   result = []
 
   for index, item in enumerate(items):
-    value = f(item, index, items)
+    # value = f(item, index, items)
+    value = call(f, item, index, items)
 
     if value is None:
       continue
@@ -218,7 +247,45 @@ def map(items, f):
 
   return result
 
-def add_one(x):
-  return x+1
 
-log(map([1, 2, 3], add_one))
+def reduce_fn(items, f, initial_value=None):
+  """Reduces an array from left to right."""
+  index = 0
+  items_list = list(items)
+
+  if initial_value is None:
+    if not items_list:
+      raise TypeError('reduce_fn() of empty sequence with no initial value')
+    result = items_list[0]
+    index += 1
+  else:
+    result = initial_value
+
+  while index <= len(items_list) - 1:
+    result = f(result, items_list[index], index, items_list)
+    index += 1
+
+  return result
+
+
+def reduce_right(items, f, initial_value=None):
+  """Reduces an array from right to left."""
+  items_list = list(items)
+  last_index = len(items_list) - 1
+  index = last_index
+
+  if initial_value is None:
+    if not items_list:
+      raise TypeError('reduce_right() of empty sequence with no initial value')
+    result = items_list[last_index]
+    index -= 1
+  else:
+    result = initial_value
+
+  while index >= 0:
+    result = f(result, items_list[index], index, items_list)
+    index -= 1
+
+  return result
+
+
