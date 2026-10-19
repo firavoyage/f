@@ -55332,6 +55332,8 @@ feels you can type a search/link/command <!-- what/where/how, or message (who/wh
 
 prefer `items` (strictly noun) over `list` (verb/noun) <!-- js is lisp 1 -->
 
+22 40 write a py cp template.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
