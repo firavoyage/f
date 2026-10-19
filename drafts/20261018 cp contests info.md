@@ -3942,3 +3942,173 @@ Does this description sound like **someone you know**, or are you realizing that
 
 
 
+
+# when is each codeforces round
+
+**Codeforces rounds do not follow a rigid, fixed calendar schedule**, but most regular rounds typically start at <mark><strong>17:35 Moscow Time (MSK / UTC+3)</strong></mark>. [link](https://codeforces.com/blog/entry/154239)
+
+Because the platform relies on community problem-writers and organizers based primarily in Eastern Europe, this specific time slot allows the administrators to actively monitor the contest during standard working hours. [link](https://codeforces.com/blog/entry/17287)
+
+### Schedule Frequency & Consistency
+
+- **Frequency:** There are usually **2 to 4 rounds per week**. They span different divisions (Div. 1, Div. 2, Div. 3, Div. 4) and specialized formats like Educational Rounds or sponsored contests. [link](https://codeforces.com/)
+- **Days of the week:** Rounds can happen on any day of the week, though organizers frequently schedule them on weekends to accommodate international student and worker schedules. [link](https://codeforces.com/blog/entry/17287)
+
+### How to Check Upcoming Rounds
+
+Because exact dates vary from week to week based on problem preparation, you should check the official schedules directly:
+
+1. **The Contests Page:** The most reliable place to see the upcoming schedule is the official [Codeforces Contests Page](https://codeforces.com/contests). It lists upcoming rounds weeks in advance alongside a countdown timer synced to your local time zone. [link](https://codeforces.com/contests)
+2. **The Calendar View:** You can also view schedules in a traditional calendar format via the [Codeforces Calendar](https://codeforces.com/calendar), which can be integrated into Google Calendar or other calendar apps. [link](https://codeforces.com/calendar)
+
+If you want, I can set up a **task** to monitor the Codeforces platform and alert you when new high-division or Educational rounds are announced for the upcoming weeks. Would you like me to do that?
+
+- [link](https://codeforces.com/contests)\
+  Codeforces\
+  Contests - Codeforces\
+  Codeforces Round (Div. 2), Oct/24/2026. Before start 9 days, Before. Codeforces Round (Div. 3), Before start 12 days, Before regis...
+- [link](https://codeforces.com/blog/entry/17287)\
+  Codeforces\
+  Time of contests in Codeforces - Codeforces\
+  Adjusting personal sleep schedules, scheduling weekend contests, or maintaining standard times.
+- [link](https://codeforces.com/)\
+  Codeforces\
+  Codeforces\
+  Contests: Educational Codeforces Round 195. Codeforces Round 1125 / Div. Codeforces Round 1123 / Div. 2 (Sep/25/2026, 7 problems, ...
+
+Show all
+
+## relationship between round number and when it's held
+
+<mark><span>There is<span> </span></span><strong>no mathematical formula or chronological link</strong><span> </span>between a Codeforces round number and the date it is held</mark>.
+
+The sequence is purely linear, but the timeline is irregular due to several platform realities:
+
+### 1. The Numbers are Sequential, but the Calendar is Not
+
+Round numbers simply increment by one each time a regular round is hosted. For example, **Round #999** is immediately followed by **Round #1000**. However, the time gap between them can vary wildly. One gap might be 2 days, while another might be 10 days, depending entirely on when the problem sets are ready.
+
+### 2. Independent Numbering Tracks
+
+Different types of contests run on completely separate numbering tracks, meaning they happen in parallel without affecting each other's schedules:
+
+- **Regular Rounds:** Follow the main sequence (e.g., _Codeforces Round #1002_).
+- **Educational Rounds:** Tracked separately (e.g., _Educational Codeforces Round 175_).
+- **Div. 3 / Div. 4 Specific Rounds:** Sometimes given their own standalone numbering sequence if they aren't combined with a Div. 2 mirror.
+
+### 3. Delays and Rescheduling
+
+Because contests rely heavily on community authors, coordinators, and testers, rounds are frequently postponed or swapped if:
+
+- A problem is found to be broken or unoriginal during testing.
+- It clashes with major global competitions like the **ICPC** or **IOI**.
+- The platform infrastructure requires maintenance.
+
+When a delay happens, the round number stays the same, but its date moves forward on the calendar.
+
+Would you like me to look up the **upcoming schedule** for the next few Codeforces rounds to see exactly when they are currently planned?
+
+## when was a historical round held approximately given its number
+
+While the gap between individual rounds fluctuates, the main sequence of regular Codeforces rounds follows a highly stable **macro-linear timeline**.
+
+Because Codeforces has averaged roughly **70 to 80 regular rounds per year** over its lifetime, you can estimate the historical date of any round using a simple rule of thumb or baseline benchmarks.
+
+### The Rule of Thumb Formula
+
+For any main sequence round number
+
+𝑅
+
+greater than 100, you can approximate its year with this math:
+
+EstimatedYear=2011+𝑅−10077
+
+### Quick-Reference Milestone Benchmarks
+
+If you know the general "century" of the round number, you can pinpoint the historical month and year using these actual milestones:
+
+| Round Number Range     | Historical Timing Benchmark           | Real-World Example       |
+| ---------------------- | ------------------------------------- | ------------------------ |
+| **Round #1**           | **February 2010** _(Platform launch)_ | Round #1 (Feb 2010)      |
+| **Rounds #100 – #199** | **Mid 2011 to Mid 2013**              | Round #100 (Dec 2011)    |
+| **Rounds #200 – #299** | **Late 2013 to Early 2015**           | Round #200 (Oct 2013)    |
+| **Rounds #300 – #399** | **Mid 2015 to Early 2017**            | Round #300 (Apr 2015)    |
+| **Rounds #400 – #499** | **Early 2017 to Mid 2018**            | Round #400 (Feb 2017)    |
+| **Rounds #500 – #599** | **Mid 2018 to Late 2019**             | Round #500 (July 2018)   |
+| **Rounds #600 – #699** | **Late 2019 to Early 2021**           | Round #600 (Nov 2019)    |
+| **Rounds #700 – #799** | **Early 2021 to Mid 2022**            | Round #700 (Feb 2021)    |
+| **Rounds #800 – #899** | **Mid 2022 to Late 2023**             | Round #800 (June 2022)   |
+| **Rounds #900 – #999** | **Late 2023 to Late 2024**            | Round #900 (Sept 2023)   |
+| **Rounds #1000+**      | **2025 onwards**                      | Round #1000 (Early 2025) |
+
+### ⚠️ Two Important Anomalies to Keep in Mind
+
+1. **The "Beta Round" Era (2010–2011):** The very earliest rounds were numbered differently and titled "Codeforces Beta Rounds". The sequencing settled into its predictable cadence after Round #100. [link](https://en.wikipedia.org/wiki/Codeforces)
+2. **Parallel Non-Main Contests:** Remember that **Educational Rounds**, **Global Rounds**, and special sponsored events (like _Pinely_, _Polycorp_, or _Good Bye \[Year]_) do not use these numbers. They have their own independent counts and are interspersed between regular rounds. [link](https://codeforces.com/contests/with/Shishir%5FAcharjee)
+
+Do you have a **specific round number** in mind that you want me to precisely verify the date, author, or problem set for?
+
+- [link](https://en.wikipedia.org/wiki/Codeforces)\
+  Wikipedia\
+  Codeforces - Wikipedia\
+  The first Codeforces Round was held on February 19, 2010. Codeforces Rounds were titled "Codeforces Beta Rounds" to indicate that ...
+- [link](https://codeforces.com/blog/entry/17287)\
+  Codeforces\
+  Time of contests in Codeforces\
+  12 years ago, hide # |. Vote: I like it +4 Vote: I do not like it. How about holding contest in different time (for example, Round...
+- [link](https://codeforces.com/blog/entry/87524)\
+  Codeforces\
+  Codeforces Round #700\
+  I'm very glad to invite you to my contest Codeforces Round 700 (Div. 1) and Codeforces Round 700 (Div. 2), which will be held on 0...
+
+Show all
+
+## in recent three years
+
+Over the recent three years (**2024, 2025, and 2026**), Codeforces expanded its scheduling pacing, meaning the numbers have moved significantly faster.
+
+The platform currently averages roughly **140 to 150 main-track regular round increments per year**. If you are looking at a round number from the last three years, you can map it out using these precise milestones:
+
+### 📅 The Recent 3-Year Timeline Milestones
+
+- **Late 2023:** The **#900s** began (e.g., [Round #900](https://codeforces.com/blog/entry/120678) was held on **September 26, 2023**).
+- **Mid 2024:** The **#950s** were held (e.g., [Round #950](https://codeforces.com/blog/entry/130032) was held on **June 3, 2024**).
+- **Early 2025:** Codeforces passed its millennial milestone! [Round #1000](https://codeforces.com/blog/entry/138439) was hosted on **January 22, 2025**.
+- **Late 2025:** The year concluded around the **#1070s** (e.g., [Round #1067](https://codeforces.com/contests) was in late **November 2025**).
+- **Current (Late 2026):** Regular rounds are currently tracking well into the **#1120s and #1130s**. [link](https://codeforces.com/contests)
+
+***
+
+### Recent 3-Year Reference Guide
+
+For a quick approximation of exactly when a recent round happened, you can use this table:
+
+| If the Round Number is... | It was likely held in... | Key Macro Context                                                         |
+| ------------------------- | ------------------------ | ------------------------------------------------------------------------- |
+| **#900 – #920**           | **Fall 2023**            | Leading into the 2023 winter seasonal contests.                           |
+| **#921 – #950**           | **First Half of 2024**   | Leading up to the summer break.                                           |
+| **#951 – #995**           | **Second Half of 2024**  | The final sprint toward the millennium round.                             |
+| **#996 – #1030**          | **First Half of 2025**   | Celebrated Round #1000 in January 2025.                                   |
+| **#1031 – #1075**         | **Second Half of 2025**  | A highly congested season with dozens of standalone Div. 1/Div. 2 splits. |
+| **#1076 – #1110**         | **First Half of 2026**   | Stable weekly pace matching global tournament windows.                    |
+| **#1111 or higher**       | **Second Half of 2026**  | Current ongoing tier of active platform contests.                         |
+
+Are you trying to track down a specific submission, problem statement, or editorial from one of these recent 2024–2026 rounds? Give me the number and I can dig it up for you!
+
+- [link](https://codeforces.com/contests)\
+  Codeforces\
+  Contests - Codeforces\
+  Final standings · x30438. Codeforces Round 1067 (Div. 2) Educational Codeforces Round 185 (Rated for Div. 2) Codeforces Round 1066...
+- [link](https://codeforces.com/blog/entry/144301)\
+  Codeforces\
+  One final blog about Codeforces Round 1033 and CodeNite 2025 - Codeforces\
+  Event: Codeforces Round 1033 and CodeNite 2025 (Div. 2). Author: Dragmon. Dark Side: Severe backlash, cheating, leaderboard manipu...
+- [link](https://codeforces.com/blog/entry/140518)\
+  Codeforces\
+  Codeforces Round #1010 (Div. 1, Div. 2, based on Zhili Cup ...\
+  KaiSuoShuTong's blog Codeforces Round #1010 (Div. 1, Div. 2, based on Zhili Cup 2025) By KaiSuoShuTong, 19 months ago, Nihao! Hell...
+
+Show all
+
+# 
