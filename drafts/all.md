@@ -1045,6 +1045,7 @@ have: <!-- eat, grow -->
 - research zlibrary anna archive copyright
 - research tor <!-- ? -->
 - use case berkeley cs61a current semester
+- use case university ai intro final project analyze faces daylily channel
 
 grow:
 
