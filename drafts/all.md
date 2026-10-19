@@ -266,6 +266,7 @@ lib:
 - tsconfig path
 - web style
 - web component prefix hyperscript
+- b bun root
 
 web: <!-- frontend, web, ts/js -->
 

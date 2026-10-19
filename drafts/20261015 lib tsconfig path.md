@@ -1,4 +1,4 @@
-# .
+# . test
 
 ```
  ~ % cd /home/fira/Documents/f/apps/tools/source
@@ -230,18 +230,18 @@ bun install v1.3.14 (0d9b296a)
 Checked 455 installs across 485 packages (no changes) [91.00ms]
 ```
 
-
-
 # . add and update
 
 init
 
 ```
-export GIT_DIR="/home/fira/Documents/f/.git/.git_lib"
-export GIT_WORK_TREE="/home/fira/Documents/f/lib"
+name='lib'
+
+export GIT_DIR="/home/fira/Documents/f/.git/.git_$name"
+export GIT_WORK_TREE="/home/fira/Documents/f/$name"
 
 git init
-git remote add g https://github.com/firahq/lib.git
+git remote add g https://github.com/firahq/$name.git
 
 git add .
 git commit -m '.' || true
@@ -282,7 +282,9 @@ branch 'master' set up to track 'g/master'.
 add
 
 ```
-bun add github:firahq/lib
+name='lib'
+
+bun add github:firahq/$name
 ```
 
 result of add
@@ -329,7 +331,7 @@ Managing `tsconfig` paths in a monorepo effectively depends on your goal: whethe
 
 Because TypeScript's `extends` property **overwrites rather than merges** the `paths` object, you have to organize your configurations strategically. [link](https://stackoverflow.com/questions/59256368/extend-a-paths-tsconfig-file-for-a-monorepo)
 
-***
+---
 
 ### Strategy 1: Cross-Package Linking (Recommended)
 
@@ -421,7 +423,7 @@ Use code with caution.
 
 **Usage:** You can now cleanly run `import { Button } from '@my-repo/ui'` without writing a single manual line in a `paths` config.
 
-***
+---
 
 ### Strategy 2: Internal Package Aliases (e.g., `@/*` maps to `./src/*`)
 
@@ -448,7 +450,7 @@ json
 
 Use code with caution.
 
-***
+---
 
 ### Strategy 3: Global Path Mapping (Fallback)
 
@@ -639,7 +641,7 @@ json
 
 Use code with caution.
 
-***
+---
 
 ### ⚠️ Crucial Gotchas with Inheritance
 
@@ -696,7 +698,7 @@ In **Node.js**, modules are <mark>reusable blocks of code encapsulated into indi
 
 How the entire system functions depends on three distinct categories: **how code is exported/imported**, **how Node.js searches for files**, and **how the `node_modules` folder manages dependencies**. [link](https://www.youtube.com/watch?v=3bDG19pRzcg)
 
-***
+---
 
 ### 1. The Syntax: Two Ways to Import & Export
 
@@ -756,7 +758,7 @@ import { add } from './math.js';
 
 Use code with caution.
 
-***
+---
 
 ### 2. The Lookup: How `require()` and `import` Locate Files
 
@@ -766,14 +768,14 @@ When you instruct Node.js to load a module (e.g., `require('something')`), it fo
 2. **File Modules (Relative/Absolute Paths):** If the string begins with `./`, `../`, or `/`, Node.js looks for a specific file in your local directory structure. If no file extension is provided, it tries matching `.js`, `.json`, and `.node` automatically. [link](https://nodejs.org/api/packages.html)
 3. **The `node_modules` Folder Hierarchy:** If you do not provide a path prefix (e.g., `require('express')`), Node.js assumes it is a third-party package. It will look for a folder named `node_modules/express` inside the current directory. If it isn't there, **it moves up one parent directory** and looks for `node_modules/` again, repeating this process all the way up to the root folder of your computer. [link](https://www.codemag.com/Article/1709061/Introduction-to-Node-Modules)
 
-***
+---
 
 ### 3. Under the Hood: Caching and Execution
 
 - **Evaluation on Demand:** The first time a file is requested via `require()` or `import`, Node.js compiles and runs the entire file.
 - **The Caching Layer:** After that initial execution, the resulting export object is saved to an internal cache. If your app imports the exact same file 10 more times, Node.js skips running the code again and instantly returns the cached object. This keeps execution fast and ensures state can be shared across modules. [link](https://www.w3schools.com/nodejs/nodejs%5Fmodules.asp)
 
-***
+---
 
 ### 4. The `node_modules` Folder: Managing Your Dependencies
 
@@ -802,11 +804,11 @@ Show all
 
 ## how does pnpm work w node modules
 
-Unlike traditional package managers, <mark><strong>pnpm manages<span> </span><code dir="ltr">node\_modules</code><span> </span>by using a content-addressable store and hard links</strong></mark>, completely changing how files are stored on your computer.
+Unlike traditional package managers, <mark><strong>pnpm manages<span> </span><code dir="ltr">node_modules</code><span> </span>by using a content-addressable store and hard links</strong></mark>, completely changing how files are stored on your computer.
 
 While npm and Yarn duplicate files across your projects and flatten the directory structure, **pnpm keeps all package files in a single global store** and links them into your project.
 
-***
+---
 
 ### 1. The Core Architecture: The Content-Addressable Store
 
@@ -816,7 +818,7 @@ When you install dependencies with pnpm, it does not download packages directly 
 2. **Content-Addressable Storage:** Every file inside a package is given a unique hash based on its content. If two different packages use the exact same file, it is only stored **once** globally.
 3. **Hard Links:** Instead of copying files from the global store to your project, pnpm creates a **hard link** from your project's `node_modules` directly to the file in the global store. A hard link points to the exact same spot on your hard drive, meaning it takes up **zero additional disk space**.
 
-***
+---
 
 ### 2. Preventing "Phantom Dependencies" (Strict Nesting)
 
@@ -849,7 +851,7 @@ node_modules
 
 Use code with caution.
 
-***
+---
 
 ### 3. Key Benefits of the pnpm Approach
 
@@ -865,7 +867,7 @@ When developers say **"symlinks don't work"** in Node.js, they are usually runni
 
 Here is exactly why symlinks break in the JavaScript ecosystem:
 
-***
+---
 
 ### 1. The "Realpath" Dilemma (Node's Default Behavior)
 
@@ -877,7 +879,7 @@ This breaks module resolution in two common ways:
 - **Incorrect Globals/Context:** Because Node.js jumps to the `realpath`, magic variables like `__dirname` or `__filename` reflect the physical path rather than the symlinked project path. Tooling that expects everything to live inside your local directory tree gets confused and breaks. [link](https://www.thenodebook.com/modules/resolution-algorithm)
 - **The Node.js Flag Fix:** Node.js has a flag called `--preserve-symlinks`. This forces Node to treat the symlink path as the true path. However, this flag isn't on by default and can introduce secondary caching and memory duplication issues. [link](https://github.com/pnpm/pnpm/issues/496)
 
-***
+---
 
 ### 2. Ecosystem Tooling Grinds to a Halt
 
@@ -887,7 +889,7 @@ Even though Node.js can technically parse symlinks, **third-party build tools, b
 - **Docker & Cloud Environments (AWS Lambda):** Many deployment platforms, serverless architectures, and container engines flat-out **ignore or fail to copy symlinks**. When you push your code, the symlink is either omitted or uploaded as a broken text pointer, leading to immediate runtime errors. [link](https://github.com/nodejs/node/issues/37001)
 - **Monorepos (Lerna, Yarn Workspaces):** Circular dependencies or deeply nested workspace structures can cause tools to get stuck in infinite recursive loops or fail to wire up the local packages entirely. [link](https://pnpm.io/faq)
 
-***
+---
 
 ### 3. Operating System Barriers (Windows vs. Unix)
 
@@ -896,7 +898,7 @@ Symlinks behave differently across operating systems, which causes cross-platfor
 - **Permissions on Windows:** By default, Windows restricts the creation of symbolic links to Administrator accounts or users with **Developer Mode** enabled. If a developer clones a symlink-heavy repository on a standard Windows machine, the setup fails out-of-the-box.
 - **Junction Points:** To get around Windows symlink restrictions, tools like `pnpm` fall back to **Directory Junctions**. While junctions work similarly to symlinks, they are a completely separate Windows-only primitive that specific cross-platform CLI tools fail to recognize. [link](https://pnpm.io/faq)
 
-***
+---
 
 ### Summary Checklist: Why your specific symlink might be failing
 
@@ -913,11 +915,11 @@ Are you dealing with **local package linking** (e.g., `npm link` or monorepos), 
   Frequently Asked Questions \* Does it work on Windows?# Short answer: Yes. Long answer: Using symbolic linking on Windows can somet...
 - [link](https://pnpm.io/symlinked-node-modules-structure)\
   PNPM\
-  Symlinked \`node\_modules\` structure | pnpm\
+  Symlinked \`node_modules\` structure | pnpm\
   Hard-linking packages inside subfolders allows self-importing and prevents circular symlinks. Resolution: Compatible with Node.js ...
 - [link](https://github.com/nodejs/node/issues/37001)\
   GitHub\
-  Provide a way to link packages to node\_modules avoiding ...\
+  Provide a way to link packages to node_modules avoiding ...\
   Is your feature request related to a problem? Please describe. pnpm is a mature package manager used by a significant amount of co...
 
 Show all
@@ -928,7 +930,7 @@ To clarify a common misconception: **pnpm actually _does_**<mark><strong><span>�
 
 If pnpm tried to use _only_ symlinks directly from your project to the central global store, the entire Node.js module resolution ecosystem would instantly break. Here is exactly why pnpm splits its architecture between **hard links** and **symlinks**. [link](https://pnpm.io/faq)
 
-***
+---
 
 ### Why pnpm Can’t _Only_ Use Symlinks to the Global Store
 
@@ -947,7 +949,7 @@ Imagine you have two projects on your machine:
 
 If `foo@1.0.0` was just a direct symlink to a single folder in the global store, it could only have **one** set of dependencies. By using **hard links**, pnpm can create an isolated folder layout inside each project's `.pnpm` directory. This allows the exact same files for `foo@1.0.0` to be safely context-isolated with different versions of `bar` depending on what the project demands. [link](https://pnpm.io/symlinked-node-modules-structure)
 
-***
+---
 
 ### How pnpm Mixes Both (The Hybrid Approach)
 
@@ -964,8 +966,8 @@ Are you trying to resolve a **tooling incompatibility** (like a linter, compiler
 
 - [link](https://pnpm.io/symlinked-node-modules-structure)\
   PNPM\
-  Symlinked \`node\_modules\` structure | pnpm\
-  Uses symbolic links and hard links to a content-addressable store inside \`node\_modules/.pnpm\`, maintaining a flat directory depth ...
+  Symlinked \`node_modules\` structure | pnpm\
+  Uses symbolic links and hard links to a content-addressable store inside \`node_modules/.pnpm\`, maintaining a flat directory depth ...
 - [link](https://pnpm.io/settings/node-modules)\
   PNPM\
   Node-Modules & Hoisting Settings\
@@ -983,7 +985,7 @@ In the Node.js ecosystem, **dependencies of dependencies are called "transitive 
 
 To understand the difference, let’s imagine you install **Package A**, and Package A requires **Package B** to function.
 
-***
+---
 
 ### 1. The Modern Default: How pnpm Works (Strict & Nested)
 
@@ -995,7 +997,7 @@ To understand the difference, let’s imagine you install **Package A**, and Pac
 
 **The Benefit:** This is highly secure. Your main application code is strictly blocked from importing Package B because it isn't in your root `node_modules`.
 
-***
+---
 
 ### 2. The Traditional Way: How npm and Yarn Work (Hoisted & Flat)
 
@@ -1017,7 +1019,7 @@ Use code with caution.
 
 **The Catch (Phantom Dependencies):** Because Package B is sitting right there at the root, your application code can illegally type `import 'B'` and it will work perfectly—even though you never added it to your `package.json`. If Package A ever updates and removes Package B, your app will suddenly crash.
 
-***
+---
 
 ### 3. What happens if there are version conflicts?
 
@@ -1034,14 +1036,14 @@ When you notice that pnpm **"sometimes symlinks, but sometimes doesn’t,"** you
 
 By default, pnpm is a hybrid system: it uses **hard links** to connect your project to the central global store, and **symlinks** to construct the internal dependency tree. However, it will automatically break this rule and fallback to other behaviors under specific conditions. [link](https://pnpm.io/symlinked-node-modules-structure)
 
-***
+---
 
 ### 1. Cross-Drive and Cross-FileSystem Incompatibilities
 
 The number one reason pnpm shifts its linking strategy is **hard drive geography**. [link](https://github.com/orgs/pnpm/discussions/8553)
 
 - **The Problem:** Hard links cannot span across different drives or filesystems. If your centralized global pnpm store is on your primary SSD (`C:` drive or `/`), but you code a project on an external hard drive (`D:` drive) or a separate network mount, **a hard link is physically impossible**. [link](https://pnpm.io/faq)
-- **pnpm’s Fallback:** When it detects a cross-drive setup, pnpm cannot hard-link the files. It will give up on linking completely and **completely copy the files** into your project's node\_modules, acting just like standard npm. [link](https://pnpm.io/faq)
+- **pnpm’s Fallback:** When it detects a cross-drive setup, pnpm cannot hard-link the files. It will give up on linking completely and **completely copy the files** into your project's node_modules, acting just like standard npm. [link](https://pnpm.io/faq)
 
 ### 2. Windows Permissions & Developer Mode
 
@@ -1070,7 +1072,7 @@ pnpm will **completely stop using symlinks**. Instead, it falls back to a flatte
 
 On modern filesystems that support copy-on-write (like macOS's APFS or Linux's Btrfs), pnpm will alter its behavior to use **reflinks** (clones) instead of hard links if it's more optimal. Reflinks act like independent file copies to the operating system but take up zero disk space until the file is modified. [link](https://pnpm.io/settings/node-modules)
 
-***
+---
 
 ### Summary Checklist
 
@@ -1089,8 +1091,8 @@ Are you seeing **abnormally high disk usage** on an external drive, or are you r
   pnpm hard links foo@1.0.0 to every project where it is used, in order to create different sets of dependencies for it.
 - [link](https://pnpm.io/symlinked-node-modules-structure)\
   PNPM\
-  Symlinked \`node\_modules\` structure - PNPM\
-  pnpm's node\_modules layout uses symbolic links to create a nested structure of dependencies. Every file of every package inside no...
+  Symlinked \`node_modules\` structure - PNPM\
+  pnpm's node_modules layout uses symbolic links to create a nested structure of dependencies. Every file of every package inside no...
 - [link](https://dev.to/chlorine/how-does-pnpm-work-5mh)\
   DEV Community\
   How does pnpm work - DEV Community\
@@ -1106,7 +1108,7 @@ Instead of blindly symlinking everything, pnpm acts like a clever architect. It 
 
 Here is exactly how pnpm tricks Node's `realpath` algorithm into working perfectly:
 
-***
+---
 
 ### 1. The Magic Layout: Nesting `node_modules` Inside `.pnpm`
 
@@ -1155,7 +1157,7 @@ Node.js defaults to resolving symlinks to their **`realpath`** primarily <mark>b
 
 When Node.js was first being built, resolving everything to a canonical, unique physical location solved several critical architectural problems.
 
-***
+---
 
 ### 1. The Singleton & Module Cache Problem
 
@@ -1182,7 +1184,7 @@ If Node.js's file traversal system blindly followed paths as written without der
 
 Node.js leans heavily on the native operating system file boundaries via `libuv` (the underlying C library that powers Node's asynchronous I/O). Standard POSIX functions and operating system behaviors naturally resolve file operations to their true targets. Adopting `realpath` as the standard anchor for `__dirname` and `__filename` matched traditional operating system mechanics, making file writes, reads, and relative paths highly predictable to the operating system. [link](https://github.com/nodejs/node/issues/7175?timeline%5Fpage=1)
 
-***
+---
 
 ### The Modern Alternative
 
@@ -1211,7 +1213,7 @@ A **`package.json`** file is the central manifest of any Node.js project. Writte
 
 Every `package.json` is split into distinct logical blocks that dictate how the project runs, installs, and builds.
 
-***
+---
 
 ### 1. Metadata (Project Identity)
 
@@ -1260,7 +1262,7 @@ These settings alter how Node.js reads your files and runs your runtime environm
 - **`engines`**: Specifies the exact versions of Node.js or npm that your application is compatible with (e.g., `"node": ">=18.0.0"`).
 - **`browserslist`**: Tells frontend tools (like Babel or Autoprefixer) which browsers you are targeting so they can compile your CSS/JS correctly.
 
-***
+---
 
 ### Example of a Complete `package.json`
 
@@ -1304,7 +1306,7 @@ Are you setting up a brand new project using **`npm init`**, or are you looking 
 
 How your project behaves when you leave it out depends entirely on what type of project you are building:
 
-***
+---
 
 ### 1. If your project is an Application (API, Website, CLI)
 
@@ -1354,7 +1356,7 @@ A **`peerDependency`** is an explicit declaration that your package requires a *
 
 Unlike a regular `dependency` (which is downloaded automatically into a sub-folder), a peer dependency says: _"I will work alongside this specific package, but you (the developer) must provide it at the root of the project."_ \[1]
 
-***
+---
 
 ### 1. Why do we need Peer Dependencies? (The Core Problem)
 
@@ -1363,7 +1365,7 @@ Imagine you are building a custom UI plugin called `awesome-button` that hooks i
 - **If you used regular `dependencies`:** Anyone who installs `awesome-button` would download its version of React. If your main application already uses React v18, and your button downloads its own copy of React v18 into its nested `node_modules`, you now have **two separate copies of React** loaded into memory. This breaks React's single-instance rule, causes runtime errors, and bloats your bundle size.
 - **By using `peerDependencies`:** Your plugin tells the package manager, _"I need React to function, but use the React instance that the parent project is already using."_ \[1]
 
-***
+---
 
 ### 2. How the Major Package Managers Handle Peer Dependencies
 
@@ -1386,7 +1388,7 @@ Because pnpm uses a nested `.pnpm` virtual layout, it handles peer dependencies 
 - **Yarn Classic (v1):** It will **never** automatically install a peer dependency. Instead, it prints a yellow `warning` in your terminal alerting you that you are missing a required peer package, putting the responsibility entirely on you to add it manually.
 - **Yarn Berry (v2+):** Like npm, it actively validates your dependency graph and prints helpful interactive errors to ensure your workspace graph is compliant.
 
-***
+---
 
 ### 3. How to Write it in `package.json`
 
@@ -1442,7 +1444,7 @@ On your file system, how peer dependencies look <mark>depends completely on whet
 
 Let's assume your project installs a plugin called `my-plugin` which declares `react` as a `peerDependency`. Your application explicitly installs `react`.
 
-***
+---
 
 ### 1. The Traditional Layout: npm and Yarn
 
@@ -1464,7 +1466,7 @@ Use code with caution.
 
 - **How Node finds it:** When `my-plugin` executes code and calls `require('react')`, Node.js starts looking inside `node_modules/my-plugin/node_modules/`. Since that is empty, it steps up one level to the root `node_modules/`, instantly finds the `react/` folder, and loads it. [link](https://stackoverflow.com/questions/50807329/using-peer-dependencies-with-local-file-some-lib-dependencies)
 
-***
+---
 
 ### 2. The Strict Layout: pnpm (The "Virtual Store" Magic)
 
@@ -1501,7 +1503,7 @@ Are you trying to inspect this file tree to debug a **monorepos project linking 
 - [link](https://stackoverflow.com/questions/50807329/using-peer-dependencies-with-local-file-some-lib-dependencies)\
   Stack Overflow\
   node.js - Using Peer Dependencies With Local (file:../some-lib ...\
-  node\_modules will be empty services some-service. Presumably this happens because node is only looking at lib/some-library/node\_mo...
+  node_modules will be empty services some-service. Presumably this happens because node is only looking at lib/some-library/node_mo...
 - [link](https://docs.deno.com/runtime/packages/peer%5Fdependencies/)\
   Deno\
   Peer dependencies | Deno Docs\
@@ -1519,7 +1521,7 @@ If you omit the `peerDependencies` block entirely from a plugin or library that 
 
 What happens next depends on whether you declared that host package as a regular `dependency` or left it out of your `package.json` entirely:
 
-***
+---
 
 ### Scenario A: You declare it as a regular `dependency` instead
 
@@ -1528,7 +1530,7 @@ If you accidentally put the host package (e.g., `react`) inside `"dependencies"`
 - **On the File System (npm/Yarn):** The package manager will download a brand new, isolated copy of that host library and nest it inside your plugin (`node_modules/my-plugin/node_modules/react`).
 - **The Consequences:** Your application will now have **two separate copies of the host package loaded into memory** (one at the app root, one inside the plugin). For libraries that rely on a single global state—like React, Tailwind, GraphQL, or database drivers—this causes immediate **runtime crashes**, duplicate context provider bugs, or massive bundle bloating.
 
-***
+---
 
 ### Scenario B: You leave it out of `package.json` completely
 
@@ -1538,7 +1540,7 @@ If you do not declare the peer dependency _at all_ anywhere in your `package.jso
 - **Why it might work by accident (The "Phantom" Success):** If the end user happens to use **npm or Yarn**, those managers hoist packages to the root `node_modules`. When your plugin calls `require('host-package')`, Node.js will walk up the tree, find it at the app root, and load it successfully.
 - **Why it breaks completely in pnpm / Yarn Plug'n'Play:** Because **pnpm** strictly isolates dependencies, it builds a private environment for your plugin. If your plugin code calls `require('host-package')`, pnpm will block Node from looking outside the plugin's sandbox. Since you didn't declare it as a peer dependency, pnpm won't symlink it into the plugin's view, causing an immediate **`MODULE_NOT_FOUND` crash**.
 
-***
+---
 
 ### Summary Table
 
@@ -1556,7 +1558,7 @@ Are you troubleshooting an existing package that is **missing its peer declarati
 
 Written from scratch in Zig, Bun is a drop-in replacement for npm, Yarn, and pnpm. By default, Bun structures your `node_modules` similarly to npm (flat and hoisted), but it achieves its legendary speed through deep integration with the operating system kernel.
 
-***
+---
 
 ### 1. How Bun Manages Your `node_modules` (The Default)
 
@@ -1566,7 +1568,7 @@ When you run `bun install`, Bun constructs a traditional, flat `node_modules` di
 - **Hard Links by Default:** Instead of copying files, Bun uses **hard links** (or clones/reflinks on modern macOS APFS/Linux filesystems) to point files from your local project’s `node_modules` back to the central cache.
 - **The Performance Advantage:** Because it uses hard links, your disk space is preserved, and file creation is lightning fast. Because it installs a flat layout, it retains 100% compatibility with older Node.js tools that expect packages to sit at the root of `node_modules`.
 
-***
+---
 
 ### 2. The Secret Sauce: Why Bun Install is So Fast
 
@@ -1575,7 +1577,7 @@ Bun's package manager routinely completes installs in milliseconds because it re
 1. **Binary-Serialized Lockfile (`bun.lock`):** Traditional lockfiles (`package-lock.json` or `pnpm-lock.yaml`) are massive text files that take a long time to parse. Bun uses a highly optimized **binary lockfile format** (`bun.lock`). Reading and parsing this file takes virtually zero CPU time.
 2. **System-Level Code (Syscalls):** Bun utilizes aggressive multi-threading and low-level kernel system calls (like `copy_file_range` on Linux or `clonefile` on macOS) to instantly map files into place without spinning up heavy JavaScript execution threads.
 
-***
+---
 
 ### 3. How Bun Handles "Deps of Deps" and Peer Dependencies
 
@@ -1584,7 +1586,7 @@ Because Bun uses a flat `node_modules` layout by default, its resolution strateg
 - **Transitive Dependencies:** Dependencies of dependencies are **hoisted** to the root of your `node_modules` folder. This means you can technically run into phantom dependencies, just like you would with npm or Yarn Classic.
 - **Peer Dependencies:** Bun strictly validates your dependency graph. If a plugin requires a peer dependency, Bun expects you to have it installed at the project root. If there is a minor version mismatch, Bun will aggressively try to resolve the closest matching version to keep your project running smoothly without throwing blocking terminal errors.
 
-***
+---
 
 ### 4. Optional: Bun's Strict Linker (The "pnpm" Mode)
 
@@ -1602,7 +1604,7 @@ Use code with caution.
 
 Setting `linker = "symlink"` instructs Bun to mimic pnpm's layout, using symlinks to isolate your code sandbox while keeping Bun's signature execution speeds.
 
-***
+---
 
 ### Summary: How Bun Compares to the Rest
 
@@ -1615,7 +1617,7 @@ Setting `linker = "symlink"` instructs Bun to mimic pnpm's layout, using symlink
 
 Are you considering **switching a project over to Bun** to speed up your CI/CD build times, or are you running into a **lockfile compatibility issue** between `bun.lock` and standard npm? Let me know, and I can show you how to generate a text-based backup lockfile!
 
-This is for informational purposes only. For medical advice or diagnosis, consult a professional. AI responses may include mistakes. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
+This is for informational purposes only. For medical advice or diagnosis, consult a professional. AI responses may include mistakes. [Learn more](https://support.google.com/websearch?p=aimode&gl=us)
 
 ## how does node or bun resolve pkgs, what if you manually drop sth into node modules
 
@@ -1639,7 +1641,7 @@ Bun follows the exact same logical resolution paths as Node.js to maintain 100% 
 - **The In-Memory Cache:** Bun doesn't repeatedly query your file system disk while walking up directories. Instead, during startup, Bun's compiled native engine reads your `node_modules` directory tree and builds an optimized **in-memory hash map** of your dependencies.
 - **Instant Resolution:** When you call `import`, Bun performs a near-instant memory lookup to find where the package sits on disk, bypassing the slow, step-by-step operating system file queries that slow Node.js down.
 
-***
+---
 
 ### 2. What Happens if You Manually Drop Something into `node_modules`?
 
@@ -1653,7 +1655,7 @@ Because Node.js and Bun dynamically check the file system at runtime, they will 
 - **It Breaks in CI/CD and Production:** Since your manually injected code lives only on your local laptop, when you push your repository to GitHub or deploy it to a server, the `node_modules` folder is ignored by git. The production server will build the environment purely from `package.json`, causing the app to crash with a `Cannot find module` error.
 - **The pnpm Exception:** If you are using **pnpm**, dropping a folder loosely into the root `node_modules` will allow your _main application_ to import it. However, if any of your other installed dependencies try to import it, they will crash. pnpm locks dependencies inside isolated `.pnpm` environments, so they cannot see loosely dropped folders outside their strict sandbox.
 
-***
+---
 
 ### The Right Way to Inject Custom Code
 
@@ -1683,7 +1685,7 @@ If you manually drop a custom package directly into `node_modules`, and that pac
 
 Because your package manager didn't orchestrate this installation, it couldn't auto-install or link the required peers for you. Here is exactly what happens under the hood when your manually injected package tries to resolve its peer dependencies:
 
-***
+---
 
 ### 1. In Node.js / Bun (Standard Flat `node_modules`)
 
@@ -1693,7 +1695,7 @@ If your project is using **npm, Yarn Classic, or Bun**, your root `node_modules`
 - **The Result:** If your main application has already explicitly installed that peer dependency (e.g., `react` is in your main `package.json`), your manually dropped package will find it sitting right there at the root. **It will link up and work perfectly by accident.**
 - **The Danger:** If your main application does _not_ have that peer dependency installed, your package will throw an immediate `Cannot find module` error and crash.
 
-***
+---
 
 ### 2. In pnpm (Strict Isolated `node_modules`)
 
@@ -1703,7 +1705,7 @@ If your project uses **pnpm**, manually dropping a package into the root `node_m
 - **The Broken Resolution Loop:** When your custom package calls `require('react')`, Node's `realpath` logic evaluates it inside your root `node_modules/my-custom-package/`. It steps up one level to the root `node_modules/`. However, in a standard pnpm project, **the root `node_modules` does not contain physical folders**—it only contains symlinks to your primary dependencies.
 - Because your manually dropped package isn't a symlink wired into pnpm's hidden dependency grid, it cannot traverse those symlinks to find its peer dependencies. It hits a dead end and triggers a **`MODULE_NOT_FOUND`** crash, even if your root app has `react` installed.
 
-***
+---
 
 ### Summary Checklist for Manual Injections with Peers
 
@@ -1726,7 +1728,7 @@ If you have a package that requires a **non-existent peer dependency**, but your
 
 Here is the breakdown of exactly how different layers of your development stack handle this situation:
 
-***
+---
 
 ### 1. The Runtime Layer (Node.js & Bun)
 
@@ -1735,7 +1737,7 @@ At pure runtime, **JavaScript is a dynamically executed language.** Node.js and 
 - **What happens:** If your application never imports the file that contains the missing dependency, **your app will run completely fine at runtime.**
 - **The Reason:** Node.js/Bun will never hit the `require('missing-package')` or `import 'missing-package'` statement. Because that line of code is never executed, the runtime engine never triggers its filesystem lookup algorithm, and no `MODULE_NOT_FOUND` error will ever be thrown.
 
-***
+---
 
 ### 2. The Package Manager Layer (The Installation Block)
 
@@ -1754,7 +1756,7 @@ Use code with caution.
 
 - **pnpm & Yarn:** These tools are more forgiving. They will print a yellow **`PEER_DEPENDENCY_MISMATCH` warning** in your terminal during installation, but they will still successfully generate your `node_modules` folder and let you run your app.
 
-***
+---
 
 ### 3. The Build & Compilation Layer (Webpack, Vite, TypeScript)
 
@@ -1770,7 +1772,7 @@ If you are building a frontend application or a TypeScript backend, you have a c
 
 If you are using TypeScript, the compiler (`tsc`) will aggressively look for type definitions for everything it encounters. If a package's type definition files (`.d.ts`) reference a missing peer dependency, **TypeScript will throw a type error during compiling**, even if you never execute that code path.
 
-***
+---
 
 ### Summary Checklist: Will it break?
 
@@ -1792,7 +1794,7 @@ While **`react-use` is completely safe** to leave in `dependencies`, putting **`
 
 Here is the breakdown of why one is safe and the other requires caution:
 
-***
+---
 
 ### 1. `react-use` — Safe for `dependencies`
 
@@ -1801,7 +1803,7 @@ Here is the breakdown of why one is safe and the other requires caution:
 - **Why it’s safe:** It does not manage global state, it does not inject global styles, and it doesn't rely on React Context singletons. It consists of pure, isolated JavaScript utility logic.
 - **What happens if it's duplicated:** If your library uses `react-use` v17 in `dependencies`, and the consumer's app uses `react-use` v15, both versions can safely coexist in the dependency tree. The only downside is a slight increase in the user's final production bundle size due to duplication (unless your library bundles/tree-shakes it away).
 
-***
+---
 
 ### 2. `@floating-ui/react` — Dangerous for `dependencies`
 
@@ -1810,7 +1812,7 @@ Here is the breakdown of why one is safe and the other requires caution:
 - **The Multi-Instance Bug:** If your library places `@floating-ui/react` in regular `dependencies`, it risks triggering a multi-instance conflict. If the parent app also uses a different version of `@floating-ui/react`, two separate copies will be loaded.
 - **The Consequences:** A popover generated inside your library might fail to close when a user clicks outside of it, because the global event listener belongs to the _app's_ instance of Floating UI, which cannot communicate with your _library's_ instance. Context providers can fail to pass floating states down to nested floating elements.
 
-***
+---
 
 ### The Ultimate Decider: How Are You Shipping Your Library?
 
@@ -1828,7 +1830,7 @@ If you list `@floating-ui/react` and `react-use` under regular `dependencies`, b
 
 - **How this helps:** When the end user installs your library, their package manager reads your `dependencies`, fetches the packages, and hands them to the bundler. The user's bundler will seamlessly deduplicate them, meaning only one instance of Floating UI is ever loaded into memory.
 
-***
+---
 
 ### Summary Checklist for your `package.json`
 
@@ -2171,7 +2173,7 @@ Show all
 
 ## why does it resolve to some "react.development" when you never import that and you already have globalThis.useState exports.useState
 
-node\_modules/lib/node\_modules/react/cjs/react.development.js:1263:33\
+node_modules/lib/node_modules/react/cjs/react.development.js:1263:33\
 1260 | return resolveDispatcher().useRef(initialValue);\
 1261 | };\
 1262 | exports.useState = function (initialState) {\
@@ -2181,11 +2183,11 @@ node\_modules/lib/node\_modules/react/cjs/react.development.js:1263:33\
 1265 | exports.useSyncExternalStore = function (\
 1266 | subscribe,\
 View compiled\
-use\_update\
-node\_modules/lib/web/state.ts:9:21\
+use_update\
+node_modules/lib/web/state.ts:9:21\
 6 | // type NonFunction = T extends Function ? never : T;\
 7 |\
-8 | function use\_update() {\
+8 | function use_update() {\
 \> 9 | const \[, update] = useState(false)\
 \> | ^\
 10 |\
@@ -2268,7 +2270,7 @@ To publish a Node.js module to **GitHub Packages** (GitHub's own npm registry), 
 
 Here is the step-by-step guide to **publish**, **add (install)**, and **update** your module.
 
-***
+---
 
 ### 1. How to Publish a Node Module to GitHub
 
@@ -2333,7 +2335,7 @@ Use code with caution.
 
 Your package is now live on GitHub! You can view it under the **Packages** tab on your GitHub profile or repository page. [link](https://docs.github.com/packages/quickstart)
 
-***
+---
 
 ### 2. How to Add (Install) the Package in Another Project
 
@@ -2365,11 +2367,11 @@ npm install @your-github-username/my-awesome-package
 
 Use code with caution.
 
-***
+---
 
 ### 3. How to Update the Package
 
-Npm will throw a `403 Forbidden` error if you try to publish changes without changing the version number. [link](https://www.youtube.com/watch?v=cUfXaK2ybks\&t=119)
+Npm will throw a `403 Forbidden` error if you try to publish changes without changing the version number. [link](https://www.youtube.com/watch?v=cUfXaK2ybks&t=119)
 
 When you make changes to your module's source code, follow these steps to push an update:
 
@@ -2383,7 +2385,7 @@ You can use `npm version` to automatically update your `package.json` following 
 
 #### Step B: Re-publish
 
-Run the publish command again: [link](https://www.youtube.com/watch?v=cUfXaK2ybks\&t=119)
+Run the publish command again: [link](https://www.youtube.com/watch?v=cUfXaK2ybks&t=119)
 
 bash
 
@@ -2410,7 +2412,7 @@ Would you like to know how to automate this using **GitHub Actions** so that it 
 - [link](https://docs.github.com/packages/working-with-a-github-packages-registry/working-with-the-npm-registry)\
   GitHub Docs\
   Working with the npm registry - GitHub Docs\
-  Authentication: Personal access token (classic) with scopes, or GITHUB\_TOKEN in GitHub Actions; Installing: Add scoped package dep...
+  Authentication: Personal access token (classic) with scopes, or GITHUB_TOKEN in GitHub Actions; Installing: Add scoped package dep...
 - [link](https://www.youtube.com/watch?v=lVze5eT5DQQ)\
   YouTube·Code with tkssharma\
   Build and Publish Your Own NodeJS NPM Package to Github\
@@ -2429,7 +2431,7 @@ To publish a Node module directly as a Git repository on GitHub—and easily upd
 
 Here is the exact step-by-step workflow to **initialize**, **publish**, **add** to another project, and **update** your Node module. [link](https://www.neonscience.org/resources/learning-hub/tutorials/github-git-add)
 
-***
+---
 
 ### 1. Initialize and Publish the Module to GitHub
 
@@ -2485,7 +2487,7 @@ git push origin v1.0.0
 
 Use code with caution.
 
-***
+---
 
 ### 2. How to Add the Module to Another Project
 
@@ -2525,7 +2527,7 @@ json
 
 Use code with caution.
 
-***
+---
 
 ### 3. How to Update the Module
 
@@ -2590,8 +2592,8 @@ If you want to take this a step further, let me know:
 
 - [link](https://stackoverflow.com/questions/68583969/how-to-add-node-modules-folder-to-github-repo)\
   Stack Overflow\
-  How to add Node\_modules folder to github repo?\
-  You don't need to push the node\_modules folder. If you really insist on pushing your node\_modules folder edit your .gitignore and ...
+  How to add Node_modules folder to github repo?\
+  You don't need to push the node_modules folder. If you really insist on pushing your node_modules folder edit your .gitignore and ...
 
 - [link](https://gist.github.com/coolaj86/1318304)\
   GitHub\
@@ -2606,7 +2608,7 @@ Using **Bun**, handling Git-based dependencies is faster and more efficient, but
 
 Here is how to **add** and **update** your GitHub-hosted Node module using Bun.
 
-***
+---
 
 ### 1. How to Add the Module via Bun
 
@@ -2648,7 +2650,7 @@ json
 
 Use code with caution.
 
-***
+---
 
 ### 2. How to Update the Module via Bun
 
@@ -3013,7 +3015,7 @@ Use code with caution.
 
 Are you setting up a **central hub to share code** with a team, or are you trying to automate a deployment using **Git hooks**? I can show you how to configure the next steps for either setup.
 
-## what if you already have git\_dir and git\_work\_tree
+## what if you already have git_dir and git_work_tree
 
 If you have already configured the **`GIT_DIR`** and **`GIT_WORK_TREE`** environment variables (or are passing them as flags), running `git init --bare` **overrides your work tree layout** and essentially breaks the separation you tried to create.
 
@@ -3257,5 +3259,3 @@ Use code with caution.
 This automatically sets up the upstream tracking behind the scenes, effectively letting you run `git push` from the start while still gaining the benefits of a tracked branch.
 
 Would you like to **apply one of these global configurations** to your machine right now, or are you having trouble with a **specific repository setup**?
-
-

@@ -5,7 +5,8 @@ import math
 
 command_write = sys.stdout.write
 command_readline = sys.stdin.readline
-log = print
+command_print = print
+log = command_print
 
 
 def pr(*args):
@@ -25,9 +26,12 @@ def prn(*args):
   command_write('\n')
 
 
+print = prn
+
+
 def read_line():
   """Reads a single line from standard input."""
-  return command_readline().rstrip('\(\r\\)n')
+  return command_readline()
 
 
 def read():
@@ -53,7 +57,7 @@ input = read
 def read_int():
   """Parses a single integer from the current space-separated line context."""
   res = read()
-  if isinstance(res, list):
+  if isinstance(res, list__):
     return int(res[0])
   return int(res)
 
@@ -61,7 +65,7 @@ def read_int():
 def read_ints():
   """Parses an array of integers from the current line context."""
   res = read()
-  if isinstance(res, list):
+  if isinstance(res, list_):
     return [int(x) for x in res]
   return [int(res)]
 
@@ -69,7 +73,7 @@ def read_ints():
 def read_num():
   """Parses a single number (float/int) from the current line context."""
   res = read()
-  if isinstance(res, list):
+  if isinstance(res, list_):
     return num(res[0])
   return num(res)
 
@@ -77,14 +81,9 @@ def read_num():
 def read_nums():
   """Parses an array of numbers from the current line context."""
   res = read()
-  if isinstance(res, list):
+  if isinstance(res, list_):
     return [num(x) for x in res]
   return [num(res)]
-
-
-def print_fn(*args):
-  """Custom print wrapper adhering to prn behaviour."""
-  prn(*args)
 
 
 # std
@@ -100,7 +99,7 @@ def is_given(v):
 
 def has(obj, key):
   """Universal check equivalent to JavaScript's includes / has / hasOwn."""
-  if isinstance(obj, (list, tuple, str, set, dict)):
+  if isinstance(obj, (list_, tuple, str, set, dict)):
     return key in obj
   return false
 
@@ -108,46 +107,12 @@ def has(obj, key):
 def entries(obj):
   """Returns iterable entries based on structure."""
   if isinstance(obj, dict):
-    return list(obj.items())
-  elif isinstance(obj, (list, tuple)):
-    return list(enumerate(obj))
+    return list_(obj.items())
+  elif isinstance(obj, (list_, tuple)):
+    return list_(enumerate(obj))
   elif isinstance(obj, set):
-    return list(enumerate(obj))
+    return list_(enumerate(obj))
   return []
-
-
-def is_type(v, t):
-  """Type assertion equivalent to your specific JavaScript type definitions."""
-  if v is nil:
-    return t == 'nil' or t is nil
-
-  if t == 'numeric':
-    return isinstance(v, (int, float))
-
-  if t == 'iterable':
-    try:
-      iter(v)
-      return not isinstance(v, str)
-    except TypeError:
-      return false
-
-  if isinstance(t, type):
-    return isinstance(v, t)
-
-  if t == 'array':
-    return isinstance(v, list)
-  elif t == 'string':
-    return isinstance(v, str)
-  elif t == 'number':
-    return isinstance(v, (int, float))
-  elif t == 'boolean':
-    return isinstance(v, bool)
-  elif t == 'object':
-    return isinstance(v, dict)
-  elif t == 'function':
-    return callable(v)
-
-  return false
 
 
 def num(n):
@@ -156,7 +121,6 @@ def num(n):
     val = float(n)
     if math.isnan(val):
       return nil
-    # Convert to an actual integer if it represents a whole number
     if val.is_integer():
       return int(val)
     return val
@@ -185,10 +149,22 @@ def float(n):
     return nil
 
 
+list_ = list
+
+
 def list(*args):
   """Handles spread args fallback or dynamic conversion of an iterable."""
   if len(args) == 1 and hasattr(args[0], '__iter__') and not isinstance(args[0], str):
-    return args[0]
-  return args
+    return list_(args[0])
+  return list_(args)
+
+
+# fmt
+
+
+def format_float(n: float, precision: int) -> str:
+  """Formats a float to a fixed number of decimal points."""
+  return f'{n:.{precision}f}'
+
 
 
