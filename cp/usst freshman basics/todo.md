@@ -1,0 +1,4 @@
+- a
+  - test different python versions
+  - test explicit gc
+  - test list time complexity (it's weird to take 300ms, i guess i can safely drop the list fn if it only needs to be iterable)

@@ -1836,3 +1836,261 @@ Because writing a balanced BST from scratch is a nightmare, Python competitors r
 
 Would you like to practice implementing the **Iterative Segment Tree** template, or should we look at how **Coordinate Compression** eliminates the need for complex trees entirely?
 
+
+# all py itertools methods
+
+The Python `itertools` module contains **19 core functions** designed to handle memory-efficient, fast looping and iterator algebra. They are built-in utilities that prevent you from needing to pull massive datasets into RAM all at once. [link](https://docs.python.org/3/library/itertools.html)
+
+According to the official [Python itertools documentation](https://docs.python.org/3/library/itertools.html), these methods are split into three logical categories: **Infinite**, **Terminating**, and **Combinatoric** iterators. [link](https://docs.python.org/3/library/itertools.html)
+
+***
+
+### 1. Infinite Iterators
+
+These functions generate sequences that never stop unless explicitly broken out of or capped. [link](https://medium.com/@thomas%5Freid/a-look-at-the-python-itertools-library-a3af6b8894f2)
+
+- **`count(start=0, step=1)`**: Generates an endless, evenly spaced sequence of numbers.
+  - _Example:_ `count(10, 2)` → `10, 12, 14, 16...` [link](https://docs.python.org/3/library/itertools.html)
+- **`cycle(iterable)`**: Loops over an input iterable indefinitely.
+  - _Example:_ `cycle('ABC')` → `A, B, C, A, B, C...` [link](https://docs.python.org/3/library/itertools.html)
+- **`repeat(object, times=None)`**: Repeats an object over and over. You can optionally limit the repetitions.
+  - _Example:_ `repeat(10, 3)` → `10, 10, 10` [link](https://docs.python.org/3/library/itertools.html)
+
+***
+
+### 2. Terminating Iterators
+
+These process finite streams and complete once the shortest input sequence runs out. [link](https://www.geeksforgeeks.org/python/python-itertools/)
+
+#### Grouping & Slicing
+
+- **`groupby(iterable, key=None)`**: Groups consecutive items together that share the same key. _Note: The data must be sorted first by that key function to group accurately._ [link](https://www.youtube.com/watch?v=1p7xa%5FBHYDs)
+- **`islice(iterable, start, stop, step)`**: Slices an iterator just like standard list slicing, but without loading the whole object into memory. [link](https://docs.python.org/3/library/itertools.html)
+- **`pairwise(iterable)`**: Returns overlapping pairs of consecutive elements.
+  - _Example:_ `pairwise('ABCD')` → `('A','B'), ('B','C'), ('C','D')` [link](https://docs.python.org/3/library/itertools.html)
+- **`tee(iterable, n=2)`**: Splits a single iterable into `n` independent, parallel iterators. [link](https://docs.python.org/3/library/itertools.html)
+
+#### Filtering
+
+- **`compress(data, selectors)`**: Filters data by using a secondary iterable of booleans.
+  - _Example:_ `compress('ABCD', [1, 0, 1, 0])` → `A, C` [link](https://docs.python.org/3/library/itertools.html)
+- **`dropwhile(predicate, iterable)`**: Drops items as long as the condition is true; returns everything else once the condition fails. [link](https://docs.python.org/3/library/itertools.html)
+- **`filterfalse(predicate, iterable)`**: Returns only the items where the condition evaluates to `False`. [link](https://docs.python.org/3/library/itertools.html)
+- **`takewhile(predicate, iterable)`**: Yields items as long as the condition remains true, then stops entirely. [link](https://docs.python.org/3/library/itertools.html)
+
+#### Transforming & Combining
+
+- **`accumulate(iterable, func=operator.add)`**: Computes running totals or accumulated results of other binary functions. [link](https://docs.python.org/3/library/itertools.html)
+- **`batched(iterable, n)`**: _Newer feature._ Splits an iterable into discrete, non-overlapping tuples of length `n`. [link](https://docs.python.org/3/library/itertools.html)
+- **`chain(*iterables)`**: Glues multiple iterables back-to-back into one continuous stream. [link](https://www.tothenew.com/blog/exploring-pythons-itertools-module-a-comprehensive-guide/)
+- **`chain.from_iterable(iterable)`**: A variation of chain that flattens a single grouped iterable (like a list of lists). [link](https://docs.python.org/3/library/itertools.html)
+- **`starmap(function, iterable)`**: Computes a function using argument tuples drawn from the iterable.
+  - _Example:_ `starmap(pow, [(2,5), (3,2)])` → `32, 9` [link](https://docs.python.org/3/library/itertools.html)
+- **`zip_longest(*iterables, fillvalue=None)`**: Zips uneven iterables together, padding shorter streams with a placeholder instead of stopping early. [link](https://docs.python.org/3/library/itertools.html)
+
+***
+
+### 3. Combinatoric Iterators
+
+These are used to find mathematical combinations, permutations, and configurations. [link](https://docs.python.org/3/library/itertools.html)
+
+| Method                                           | Order Matters? | Allows Duplicates/Repeats? | Example (`'ABC', r=2`)       |
+| ------------------------------------------------ | -------------- | -------------------------- | ---------------------------- |
+| **`product(*iterables, repeat=1)`**              | Yes            | Yes (Cartesian product)    | `AA AB AC BA BB BC CA CB CC` |
+| **`permutations(iterable, r=None)`**             | Yes            | No                         | `AB AC BA BC CA CB`          |
+| **`combinations(iterable, r)`**                  | No             | No                         | `AB AC BC`                   |
+| **`combinations_with_replacement(iterable, r)`** | No             | Yes                        | `AA AB AC BB BC CC`          |
+
+Would you like to see a practical **code example** for any specific method, or are you trying to solve a **particular algorithm problem**?
+
+- [link](https://docs.python.org/3/library/itertools.html)\
+  Python documentation\
+  itertools — Functions creating iterators for efficient looping — Python 3.15.0 documentation\
+  Combinatoric iterators: product (cartesian product), permutations (r-length orderings), combinations (r-length sorted subsequences...
+- [link](https://www.youtube.com/watch?v=1p7xa%5FBHYDs)\
+  YouTube·mCoding\
+  Python itertools - The key to mastering iteration\
+  Jun 25, 2024 — \`chain\` combines multiple iterables, while \`chain.from\_iterable\` handles an iterable of iterables. \`compress\` filters elements bas...\
+  20:03
+- [link](https://www.geeksforgeeks.org/python/python-itertools/)\
+  GeeksforGeeks\
+  Python Itertools - GeeksforGeeks\
+  Python itertools is a fast, memory-efficient module for iterator algebra … permutations() generates all orderings; combinations() ...
+
+Show all
+
+# all py math methods
+
+Python's built-in **`math` module** provides a comprehensive suite of mathematical functions for floating-point arithmetic, trigonometry, logarithms, and constants.
+
+Below is a complete, grouped categorization of all methods available in the `math` module.
+
+***
+
+### 1. Number-Theoretic and Representation Functions
+
+These methods deal with basic arithmetic, rounding, signs, and integer operations.
+
+- `math.ceil(x)`: Rounds a number **up** to the nearest integer.
+- `math.floor(x)`: Rounds a number **down** to the nearest integer.
+- `math.trunc(x)`: Truncates the decimal part, returning the integer part (rounds toward zero).
+- `math.fabs(x)`: Returns the **absolute value** of a float.
+- `math.fmod(x, y)`: Returns the remainder of `x / y` (platform-specific float handling).
+- `math.modf(x)`: Splits a number into its **fractional and integer parts** as a tuple of floats.
+- `math.copysign(x, y)`: Returns a float with the magnitude of `x` but the sign of `y`.
+- `math.factorial(n)`: Returns the **factorial** of an integer\
+  𝑛\
+  !\
+  .
+- `math.gcd(*integers)`: Returns the **Greatest Common Divisor** of the given integers.
+- `math.lcm(*integers)`: Returns the **Least Common Multiple** of the given integers.
+- `math.isqrt(n)`: Returns the exact **integer square root** of a non-negative integer (rounded down).
+- `math.frexp(x)`: Returns the mantissa and exponent of `x` as a pair `(m, e)`.
+- `math.ldexp(x, i)`: Computes\
+  𝑥\
+  ×2𝑖\
+  (the inverse of `frexp`).
+- `math.fsum(iterable)`: Returns an accurate floating-point **sum** of an iterable, avoiding loss of precision.
+- `math.prod(iterable, *, start=1)`: Calculates the **product** of all elements in the input iterable.
+- `math.perm(n, k=None)`: Returns the number of **permutations** of\
+  𝑛\
+  items taken\
+  𝑘\
+  at a time.
+- `math.comb(n, k)`: Returns the number of **combinations** (\
+  𝑛\
+  choose\
+  𝑘\
+  ) without repetition.
+
+***
+
+### 2. Power and Logarithmic Functions
+
+Methods handling roots, exponents, and logs.
+
+- `math.pow(x, y)`: Raises `x` to the power of `y` (\
+  𝑥𝑦\
+  ), returning a float.
+- `math.sqrt(x)`: Returns the **square root** of `x`.
+- `math.cbrt(x)`: Returns the **cube root** of `x`.
+- `math.exp(x)`: Returns\
+  𝑒\
+  raised to the power of `x` (\
+  𝑒𝑥\
+  ).
+- `math.expm1(x)`: Returns\
+  𝑒𝑥\
+  −1\
+  . Avoids precision loss for small `x`.
+- `math.log(x, [base])`: Returns the **logarithm** of `x` to the given base (defaults to natural log\
+  𝑙𝑛\
+  ).
+- `math.log1p(x)`: Returns the natural logarithm of\
+  1
+
++𝑥\
+(accurate for close-to-zero values).
+
+- `math.log2(x)`: Returns the **base-2 logarithm** of `x`.
+- `math.log10(x)`: Returns the **base-10 logarithm** of `x`.
+
+***
+
+### 3. Trigonometric Functions
+
+Standard trigonometric calculations. All angles must be passed or returned in **radians**.
+
+- `math.sin(x)`: Returns the **sine** of `x`.
+- `math.cos(x)`: Returns the **cosine** of `x`.
+- `math.tan(x)`: Returns the **tangent** of `x`.
+- `math.asin(x)`: Returns the **arcsine** (inverse sine) of `x`.
+- `math.acos(x)`: Returns the **arccosine** of `x`.
+- `math.atan(x)`: Returns the **arctangent** of `x`.
+- `math.atan2(y, x)`: Returns `atan(y / x)` in radians, accounting for the correct quadrant signs.
+
+***
+
+### 4. Hyperbolic Functions
+
+Analogs of trigonometric functions based on hyperbolas instead of circles.
+
+- `math.sinh(x)`: Returns the **hyperbolic sine** of `x`.
+- `math.cosh(x)`: Returns the **hyperbolic cosine** of `x`.
+- `math.tanh(x)`: Returns the **hyperbolic tangent** of `x`.
+- `math.asinh(x)`: Returns the **inverse hyperbolic sine** of `x`.
+- `math.acosh(x)`: Returns the **inverse hyperbolic cosine** of `x`.
+- `math.atanh(x)`: Returns the **inverse hyperbolic tangent** of `x`.
+
+***
+
+### 5. Angular Conversion and Geometry
+
+- `math.degrees(x)`: Converts angle `x` from **radians to degrees**.
+- `math.radians(x)`: Converts angle `x` from **degrees to radians**.
+- `math.dist(p, q)`: Returns the **Euclidean distance** between two points `p` and `q`, given as coordinates.
+- `math.hypot(*coordinates)`: Returns the Euclidean norm/hypotenuse\
+  𝑥2+𝑦2+…√\
+  .
+
+***
+
+### 6. Classification and Comparison Functions
+
+Methods used to validate values or safely check comparisons.
+
+- `math.isfinite(x)`: Returns `True` if `x` is neither an infinity nor a NaN.
+- `math.isinf(x)`: Returns `True` if `x` is positive or negative **infinity**.
+- `math.isnan(x)`: Returns `True` if `x` is **NaN** (Not a Number).
+- `math.isclose(a, b, *, rel_tol=1e-09, abs_tol=0.0)`: Returns `True` if `a` and `b` are **close in value** within tolerance boundaries.
+
+***
+
+### 7. Special Functions
+
+Advanced mathematical tools commonly used in statistics and engineering.
+
+- `math.erf(x)`: Returns the **error function** at `x`.
+- `math.erfc(x)`: Returns the **complementary error function** (\
+  1\
+  −erf\
+  (\
+  𝑥\
+  )\
+  ).
+- `math.gamma(x)`: Returns the **Gamma function** at `x`.
+- `math.lgamma(x)`: Returns the natural logarithm of the absolute value of the Gamma function at `x`.
+
+***
+
+### 8. Mathematical Constants
+
+Though not methods, the module includes these critical values:
+
+- `math.pi`: Mathematical constant\
+  𝜋\
+  \=3.141592\
+  .\
+  .\
+  .
+- `math.e`: Mathematical constant\
+  𝑒\
+  \=2.718281\
+  .\
+  .\
+  .
+- `math.tau`: Mathematical constant\
+  𝜏\
+  \=6.283185\
+  .\
+  .\
+  .\
+  (equivalent to\
+  2\
+  𝜋\
+  ).
+- `math.inf`: Floating-point positive **infinity**.
+- `math.nan`: Floating-point **NaN** value.
+
+Would you like a interactive **quiz** to test your knowledge of these math functions, or do you need a Python **code example** showing how to apply a specific method?
+
