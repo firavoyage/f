@@ -1,5 +1,4 @@
 import sys
-import math
 from functools import cmp_to_key
 
 # utils
@@ -203,6 +202,22 @@ def identity(x):
   return x
 
 
+def compose(*funcs):
+  """Composes multiple functions from right to left.
+  compose(f, g)(x) is equivalent to f(g(x)).
+  """
+  if not funcs:
+    return lambda x: x
+  return reduce(lambda f, g: lambda x: f(g(x)), funcs)
+
+def pipe(initial_value, *funcs):
+    """Passes a value through a sequence of functions from left to right.
+    pipe(x, f, g) is equivalent to g(f(x)).
+    """
+    return reduce(lambda value, func: func(value), funcs, initial_value)
+
+
+
 halt_symbol = object()
 
 
@@ -266,6 +281,9 @@ def reduce(items, f, initial_value=nil):
   return result
 
 
+fold = reduce
+
+
 def reduce_right(items, f, initial_value=nil):
   """Reduces an array from right to left."""
   items = list(items)
@@ -284,9 +302,12 @@ def reduce_right(items, f, initial_value=nil):
   return result
 
 
+range_ = range
+
+
 def each(*args):
   """
-  Generates a progression list from start to end (excluded), or start (excluded) to end if step < 0.
+  Generates a progression from start to end (excluded), or start (excluded) to end if step < 0.
   """
   begin = 0
   end = 0
@@ -305,23 +326,62 @@ def each(*args):
   if (begin - end) * step > 0:
     step = -1
 
-  numbers = []
+  # Validation to avoid an infinite loop if step ends up being 0
+  if step == 0:
+    raise ValueError('step must not be zero')
 
   if step > 0:
     index = begin
-
     while (index - end) * step < 0:
-      numbers.append(index)
+      yield index
       index += step
-
   else:
     index = begin + step
-
     while (index - end) * step <= 0:
-      numbers.append(index)
+      yield index
       index += step
 
-  return numbers
+
+# def each(*args):
+#   """
+#   Generates a progression list from start to end (excluded), or start (excluded) to end if step < 0.
+#   """
+#   begin = 0
+#   end = 0
+#   step = 1
+
+#   if len(args) == 1:
+#     end = args[0]
+#   elif len(args) == 2:
+#     begin = args[0]
+#     end = args[1]
+#   elif len(args) == 3:
+#     begin = args[0]
+#     end = args[1]
+#     step = args[2]
+
+#   if (begin - end) * step > 0:
+#     step = -1
+
+#   numbers = []
+
+#   if step > 0:
+#     index = begin
+
+#     while (index - end) * step < 0:
+#       numbers.append(index)
+#       index += step
+
+#   else:
+#     index = begin + step
+
+#     while (index - end) * step <= 0:
+#       numbers.append(index)
+#       index += step
+
+#   return numbers
+
+range = each
 
 
 def filter(items, f):
@@ -439,11 +499,16 @@ def trim_end(s: str, char=nil) -> str:
 
 # math
 
+import math
 from math import (
   floor,
   ceil,
   sqrt,
   log as logab,
+  gcd,
+  lcm,
+  isinf as is_inf,
+  # isnan as is_nan # nan == nil
 )
 from operator import (
   # abs,
@@ -561,6 +626,3 @@ def main():
 
 
 __()
-
-
-log(each(1000000))
