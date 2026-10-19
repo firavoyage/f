@@ -522,6 +522,7 @@ cp: <!-- algorithms -->
 - py std lib
 - shell zshrc solve shortcut vscode template
 - codefores python3 pypy mle
+- codefores format icpc format scoreboard formula
 
 pm:
 
