@@ -264,6 +264,7 @@ lib:
 - chainable
 - tsconfig path
 - web style
+- web component prefix hyperscript
 
 web: <!-- frontend, web, ts/js -->
 

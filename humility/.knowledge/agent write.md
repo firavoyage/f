@@ -398,4 +398,8 @@ i would omit anyway, but humans should know this.
 
 - verb noun for actions, predicate for bools, noun for factory functions (`date`, not `create_date` or `date_factory`)
 
+# . thinking 2026.10.19
 
+prefer `items` (strictly noun) over `list` (verb/noun)
+
+(js is lisp 1)

@@ -55326,6 +55326,12 @@ i may learn cpp. idk if it's fun. just feels i like problem solving, somewhat ma
 
 feels you can type a search/link/command <!-- what/where/how, or message (who/when/why) --> and ctrl/shift/alt enter, rather than fighting ctrl (shift) tab keys. it's also more efficient and it's cool.
 
+19
+
+10 50 think.
+
+prefer `items` (strictly noun) over `list` (verb/noun) <!-- js is lisp 1 -->
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
