@@ -1,5 +1,6 @@
 import sys
 import math
+from functools import cmp_to_key
 
 # utils
 
@@ -121,6 +122,7 @@ def __():
     if 'main' in globals() and callable(globals()['main']):
       globals()['main']()
 
+sys.setrecursionlimit(200000)
 
 # std
 
@@ -497,7 +499,7 @@ def find_root(term, derivative):
 
 
 def main():
-  log(1)
+  pass
 
 
 __()
