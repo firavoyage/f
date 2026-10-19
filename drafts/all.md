@@ -1107,6 +1107,10 @@ files:
 
 - market analysis
 
+material:
+
+- convert svg
+
 humility:
 
 - research claude code leak insights
