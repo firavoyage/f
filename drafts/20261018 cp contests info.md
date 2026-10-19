@@ -762,3 +762,612 @@ Are you trying to figure out how difficult it is to **qualify for a team** at yo
 
 Show all
 
+
+# can you play a codeforces round wo registeration
+
+<mark><strong><span><span>No, you cannot officially play a live<span> </span></span><u><span><span><span tabindex="0" role="button"><span>Codeforces</span></span></span></span></u><span> </span>round without registering.</span></strong></mark> Registration for the platform and the specific contest is mandatory to view the problems, submit solutions, and have your code evaluated during the live event. [link](https://codeforces.com/blog/entry/4088)
+
+However, if you missed the registration window or do not want the round to affect your official rating, you can use these alternatives:
+
+### 1. Extra Registration (Late Entry)
+
+If the main registration period has closed, Codeforces usually opens an **Extra Registration** phase about **10 minutes after the contest begins**. [link](https://codeforces.com/blog/entry/43953)
+
+- **Note:** This option still requires you to register on the spot, and your participation will be **unrated**. [link](https://codeforces.com/topic/81099/en1)
+
+### 2. Virtual Participation
+
+Once the live contest concludes, you can take part in it at any time using the [Codeforces Virtual Participation](https://codeforces.com/blog/entry/4088) feature. [link](https://www.youtube.com/watch?v=hQ8GYk9gkcE\&t=1)
+
+- This simulates the live environment exactly.
+- A real-time timer will count down, and your submissions will be graded alongside a historical leaderboard to show where you would have ranked. [link](https://www.youtube.com/watch?v=hQ8GYk9gkcE\&t=1)
+
+### 3. Upsolving (Practice Mode)
+
+After a round ends, all contest problems become publicly available in the **Problemset** tab on the [Codeforces Official Website](https://codeforces.com/help). You can read the problems, submit code, and test your solutions at your own pace without any time constraints.
+
+Are you trying to participate in an **upcoming live round**, or are you looking to practice with **past contest problems**? Let me know, and I can guide you through setting up a virtual contest or registering for the next event!
+
+- [link](https://codeforces.com/blog/entry/4088)\
+  Codeforces\
+  Codeforces Contest Rules\
+  You need to register to participate in a round. The registration opens six hours before the start of the contest and closes 5 minu...
+- [link](https://www.youtube.com/watch?v=hQ8GYk9gkcE\&t=1)\
+  YouTube·Coding Blocks\
+  How to Start Competitive Programming on Codeforces? Virtual ...\
+  Apr 30, 2020 — Even if unable to participate in a live contest, users can engage virtually by clicking on 'virtual participation' and starting at...\
+  9m
+- [link](https://codeforces.com/blog/entry/43953)\
+  Codeforces\
+  Codeforces: Extra Registration on Rounds\
+  a registration invalidates some internal caches it is better to open extra registration after 10 minutes. When registering during ...
+
+Show all
+
+# what if you play a codeforces round wo registeration
+
+If you do not register for a [Codeforces](https://codeforces.com/help) round, **you cannot participate officially during the live contest**, meaning <mark>you will not get a rank, your submissions won't count toward the scoreboard, and your rating will not change</mark>. [link](https://codeforces.com/blog/entry/4088)
+
+However, you can still view and interact with the round in the following ways:
+
+### 1. The "Extra Registration" Window
+
+If you missed the main registration deadline (which closes 5 minutes before the contest), Codeforces frequently offers an **Extra Registration** period. [link](https://codeforces.com/topic/44113/en1)
+
+- This window typically opens **10 minutes after the round starts** and remains open for about 20 minutes.
+- If you register during this window, you can participate **officially and get rated**. However, you will not be assigned a specific "room" and you won't have hacking privileges. [link](https://codeforces.com/blog/entry/43222)
+
+### 2. Practicing Out of Competition (Unofficial Submissions)
+
+If you miss both registration windows entirely, you still won't be locked out of the problems:
+
+- **View the problems:** Once the contest begins, the problem statements become public. You can open them and read them like anyone else.
+- **Submit solutions:** You can write code and submit it while the contest is running.
+- **The Catch:** Your submissions will be treated as **"out of competition"** (unofficial). You will not appear on the live leaderboard, you won't affect anyone else's rating, and your own rating will remain completely unchanged. [link](https://codeforces.com/blog/entry/122146)
+
+### 3. Virtual Participation Later
+
+If you want the authentic "contest feel" but missed the live event, your best option is to wait until the round is completely over. Once it ends, Codeforces allows you to start a **Virtual Participation** at any time. This sets a timer matching the original contest length and lets you submit problems as if you were playing live, later overlaying your final score onto the official scoreboard to see how you would have performed.
+
+Did you **miss a registration deadline** for a specific live round, or are you trying to figure out how to **practice past contests**?
+
+- [link](https://codeforces.com/blog/entry/4088)\
+  Codeforces\
+  Codeforces Contest Rules\
+  Problem statements are available in two languages: Russian and English \* Statements of all problems become available to read at th...
+- [link](https://codeforces.com/blog/entry/43222)\
+  Codeforces\
+  Let's allow registration during a contest - Codeforces\
+  Prevents missed rounds from forgotten registration; unsubmitted registrations do not affect ratings; late users avoid hack distrac...
+- [link](https://codeforces.com/blog/entry/122146)\
+  Codeforces\
+  CodeForces Contest registering suggestion - Codeforces\
+  Require participants to commit to rated or unrated status upon registration, preventing non-participating registrants from affecti...
+
+Show all
+
+# what if you practice a codeforces round wo registeration
+
+If you practice a [Codeforces](https://codeforces.com/help) round without registering, <mark><strong>your rating will not change, and you will not appear on the official leaderboard.</strong></mark> However, how the platform treats your submissions depends entirely on _when_ you decide to solve the problems.
+
+Here is what happens based on your timing:
+
+### 1. During the Live Contest
+
+If the contest is currently running and you did not register, **you cannot submit code to the round.**
+
+- The problem statements are usually made public, so you can read them.
+- You cannot test your code on the official judges until the contest ends.
+- You cannot participate in the hacking phase. [link](https://codeforces.com/blog/entry/4088)
+
+### 2. After the Contest Ends (Upsolving)
+
+Once the round is officially over, the problems are moved to the Codeforces Problemset.
+
+- You can submit your solutions at any time.
+- Your submissions will be judged against the full system tests.
+- This is completely **unrated** and is the standard way to "upsolve" problems you missed.
+
+### 3. Virtual Participation
+
+If you want the full "live" experience without affecting your rating, you can use the **Virtual Participation** feature after the contest ends. [link](https://www.youtube.com/watch?v=hQ8GYk9gkcE\&t=1)
+
+- You can start a personal timer that mimics the actual duration of the round.
+- You submit code as if you were live, and Codeforces will retroactively place your score into a virtual leaderboard to show you where you _would_ have ranked. [link](https://www.youtube.com/watch?v=hQ8GYk9gkcE\&t=1)
+
+Are you trying to practice an **upcoming live round** without losing rating, or looking to practice **past contests**? I can show you how to set up a virtual contest if you'd like!
+
+- [link](https://www.youtube.com/watch?v=hQ8GYk9gkcE\&t=1)\
+  YouTube·Coding Blocks\
+  How to Start Competitive Programming on Codeforces? Virtual ...\
+  Apr 30, 2020 — During virtual participation, a real-time rank list is visible, allowing comparison with actual participants at the equivalent tim...\
+  9m
+- [link](https://codeforces.com/blog/entry/4088)\
+  Codeforces\
+  Codeforces Contest Rules\
+  Problem statements are available in two languages: Russian and English \* Statements of all problems become available to read at th...
+
+## why cant you vp when it's live
+
+You cannot use **Virtual Participation (VP)** while a contest is live because **Codeforces must protect the integrity of the official competition.**
+
+If the system allowed virtual clones of a live contest, it would create several major issues:
+
+### 1. Preventing Cheating and Plagiarism
+
+During a live round, Codeforces strictly forbids sharing solutions. If users could create "virtual" rooms while the contest was running, they could easily **leak solutions** or test code under an alternate account to see if it passes system tests before submitting it on their main, rated account.
+
+### 2. Live Server Strain
+
+Codeforces servers are already under massive load during live contests, handling tens of thousands of simultaneous submissions. Running independent, staggered virtual timers for thousands of other users at the same time would crush the judges and cause **severe server lag** for the official competitors.
+
+### 3. Queue and System Testing Mechanics
+
+In many Codeforces rounds (like Division 1 and 2), submissions are only run against a small set of pretests during the live window. The final results are calculated during "System Testing" _after_ the contest ends. A virtual participation system requires immediate final verdicts, which the system physically cannot provide until the official system tests have been run and finalized.
+
+### The Closest Alternative
+
+If you want to practice a live contest without risking your rating, you can simply **open the problem statements** as a guest when the round starts, write your code locally, and then submit your solutions the moment the round ends and the platform opens up for upsolving.
+
+Are you worried about a **potential rating drop** in an upcoming round, or are you just looking for a **low-pressure way to compete**? I can give you tips on how to use unrated alternative accounts if you want to practice live risk-free.
+
+## why does it prevent cheating
+
+The main reason it prevents cheating is that <mark><strong>the official live contest relies on absolute synchronization,</strong></mark> while Virtual Participation (VP) lets you control your own clock.
+
+If you could start a virtual contest at any time while the official round was still live, malicious users could abuse the system in two major ways:
+
+### 1. The "Time-Shifted" Leak
+
+If a live contest runs from 12:00 PM to 2:00 PM, a cheater could wait until 1:00 PM to start their "Virtual Participation."
+
+- By 1:00 PM, the official solutions or hints might already be leaking on external chat groups (like Discord or Telegram).
+- The VP user could then submit these leaked solutions into the system during their "independent" virtual timer and get a high rank on the virtual leaderboard, ruining its accuracy for everyone else who uses it later.
+
+### 2. Risk-Free "Sandbox" Testing
+
+Codeforces strictly bans users from using multiple accounts (alts) to test code during a round. If live VP were allowed, a competitor could log into a second account, start a VP, and **test risky solutions without consequences.**
+
+- They could see if a solution passes or fails, or check for runtime errors.
+- Once they know the exact code that works, they would switch back to their main account and submit it perfectly, completely bypassing the risk that official competitors face.
+
+By locking the VP feature until the official round is entirely finished, Codeforces ensures that **everyone interacting with the judging system after the end time is on a level playing field**, and no one can gain an unfair advantage in the live, rated standings.
+
+Are you trying to figure out how to **safely test your code** without getting penalized, or are you interested in how Codeforces' **automated plagiarism detection** catches cheaters after a round?
+
+## why does it prevent cheating when they can basically register as well and do everything the same
+
+While it seems like a cheater could just register a fake account (an "alt") and do the same things, <mark><strong>blocking live Virtual Participation eliminates specific loopholes that a regular registration cannot provide.</strong></mark>
+
+The key difference comes down to **controlling the clock** and how Codeforces' **judging phases** work: [link](https://codeforces.com/blog/entry/71570)
+
+### 1. The Virtual Timer Bypasses the "Declining Score" Rule
+
+In standard Codeforces rounds, a problem's point value constantly ticks down. A problem worth 500 points at minute 0 might only be worth 300 points by minute 45. [link](https://codeforces.com/blog/entry/133094)
+
+- **With Regular Registration:** If a cheater waits 45 minutes for an external group to leak a solution, they can only submit it at minute 45 and get 300 points.
+- **If Live VP Were Allowed:** A cheater could wait 45 minutes for the leak, then click "Start Virtual Participation." Their personal virtual clock resets to 0. They could instantly paste the leaked solution at virtual minute 1 and claim the maximum 500 points on the virtual scoreboard. [link](https://codeforces.com/blog/entry/78078)
+
+### 2. Safeguarding the "System Tests" Illusion
+
+During a live Division 1 or Division 2 round, submissions are only tested against **Pretests** (a small subset of data). You don't find out if your code actually works on the hidden, brutal edge cases until the official **System Testing** phase after the contest ends. [link](https://codeforces.com/blog/entry/133094?locale=ru)
+
+- **With Regular Registration:** A cheater cannot use an alt to "guarantee" a solution works because the alt will only see "Pretests passed". The solution could still fail later. [link](https://codeforces.com/blog/entry/133094?locale=ru)
+- **If Live VP Were Allowed:** Virtual participation requires immediate, definitive feedback so the virtual user can see their finalized rank. If live VP existed, it would force Codeforces to test the VP user against the _full_ system tests immediately. Cheaters would use a live VP on an alt account as a **risk-free test sandbox** to see if their code survives the hidden system tests before submitting it on their main account. [link](https://codeforces.com/blog/entry/78078)
+
+### 3. Account Burn Rate and Ban Detection
+
+When cheaters register fake accounts to cheat in a live round, they leave a trail. Codeforces runs **automated plagiarism sweeps** after every contest, matching code structures. [link](https://leetcode.com/discuss/general-discussion/3680497/leetcode-cheating-how-to-avoid/)
+
+- Registered alt accounts that cheat get caught, flagged, and banned alongside the main accounts they share IP addresses or code similarities with.
+- If live VP were open to unregistered guests or un-rated throwaway rooms, it would allow a massive influx of untracked, anonymous code testing that bypasses the standard post-contest anti-cheat sweeps.
+
+By restricting Virtual Participation until the contest is 100% finished, Codeforces ensures that no one can manipulate the element of time or gain a hidden advantage over official competitors. [link](https://codeforces.com/blog/entry/78078)
+
+Would you like to know more about how Codeforces' **hacking phase** works, or how to spot **weak pretests** that might cause your code to fail during system testing?
+
+- [link](https://codeforces.com/blog/entry/78078)\
+  Codeforces\
+  Remove Virtual Contestants from Contest Leaderboards - Codeforces\
+  Virtual participants remain visible only to themselves on their own VCs. Reasons: Cheating via prewritten or copied solutions is c...
+- [link](https://leetcode.com/discuss/general-discussion/3680497/leetcode-cheating-how-to-avoid/)\
+  LeetCode\
+  (LC-Replied) LeetCode Cheating - how to avoid - Discuss - LeetCode\
+  LeetCode contest cheating caused by public solution sharing during active contests. implement advanced plagiarism checkers to dete...
+- [link](https://codeforces.com/blog/entry/133094?locale=ru)\
+  Codeforces\
+  Everything about Codeforces scoring system\
+  If you pass all pretests, you get 'Pretests passed' verdict. This does NOT guarantee that your submission is correct\[3], but preli...
+
+Show all
+
+## what if they allowed everyone to have registered every contest by default
+
+If Codeforces registered everyone for every contest by default, **it would break the platform's rating system, crash the servers, and fundamentally alter how people compete.**
+
+While it sounds like a simple way to get everyone into the game, "auto-registration" would create massive structural problems:
+
+### 1. Mass Rating Inflation and Deflation (The "Ghost" Problem)
+
+If all millions of registered Codeforces accounts were entered into every round, **the vast majority of participants would score 0 points because they didn't actually show up.**
+
+- In Elo-based rating systems (like Codeforces), your rating change is calculated based on who you beat and who you lose to.
+- If tens of thousands of active users suddenly "lose" to inactive accounts or automated bots that didn't submit anything, the math behind rating gains and losses would break entirely.
+- To fix this, Codeforces would have to make anyone with 0 submissions "unrated" for that round—which brings us exactly back to how the system works right now.
+
+### 2. Massive Infrastructure Crashing
+
+Codeforces splits competitors into rooms (usually of about 100 people) for the **Hacking Phase**, where you can look at other people's code and try to find bugs.
+
+- If everyone was registered by default, the system would have to generate hundreds of thousands of empty rooms for people who are asleep, at work, or offline.
+- Allocating server memory and generating database rows for millions of inactive users every single contest would cause **extreme server lag** and completely crash the platform before the contest even started.
+
+### 3. Destruction of the Competitive Mindset
+
+Part of the psychological appeal of competitive programming is the conscious choice to compete.
+
+- Forcing users into a rated match by default means someone could lose rating simply because they forgot a contest was happening, or because they were traveling without internet.
+- To prevent this frustration, platforms require an explicit "opt-in" (registering) to ensure that everyone on the leaderboard is an active, willing participant.
+
+### Summary of Differences
+
+| Feature           | Current "Opt-in" System                               | Hypothetical "Auto-Register" System                          |
+| ----------------- | ----------------------------------------------------- | ------------------------------------------------------------ |
+| **Server Load**   | **Efficient** (Only tracks active, interested users). | **Overloaded** (Processes millions of idle accounts).        |
+| **Leaderboard**   | **Clean** (Shows only people who came to play).       | **Cluttered** (Flooded with thousands of 0-score ghosts).    |
+| **Rating Safety** | **Safe** (You only risk rating if you choose to).     | **Risky** (You could lose rating by missing a notification). |
+
+Are you trying to find a way to **participate in contests automatically** using an API, or are you looking for a tool that **reminds you to register** before a round starts?
+
+AI can make mistakes, so double-check responses
+
+## what if they allowed everyone to have registered every contest by default and they can join (official clock) or vp (anytime) whenever they like, and it counts if they submit once
+
+If Codeforces adopted this hybrid system—where everyone is auto-registered but your rating is only affected **if you submit code**—it would successfully solve the "ghost user" rating problem.
+
+However, allowing users to choose between the **Official Clock** or a **Live VP** at any time during a live match would completely break the core fairness of competitive programming. It introduces two massive flaws: **Information Asymmetry** and **Server Gridlock**.
+
+### 1. The Weaponization of Information (The Biggest Issue)
+
+If you can start a "Live VP" at any time during a running contest, **time ceases to be a fair constraint.**
+
+Imagine a 2-hour contest starting at 12:00 PM.
+
+- **User A** joins immediately at 12:00 PM on the official clock. They struggle with a difficult Problem C for an hour.
+- **User B** waits until 1:00 PM. By this time, public chat groups, forums, or friends might have leaked a crucial hint, the general approach, or even the full code for Problem C.
+- **User B** clicks "Start Live VP" at 1:00 PM. Their personal clock resets to 0. They immediately submit the leaked code at virtual minute 1.
+
+Because User B submitted a solution, the system **must count it.** User B finishes with a perfect time penalty and a massive rating gain, completely destroying the integrity of the leaderboard for everyone who played fairly on the official clock.
+
+### 2. Immediate System Testing Destroys Servers
+
+To make a Live VP feel like a real contest, Codeforces would have to give you your **final, definitive verdict** when you submit.
+
+- In a normal live round, Codeforces only runs your code against a few basic inputs (**Pretests**) to save server power. The brutal, heavy calculations (**System Tests**) are run _after_ the contest ends.
+- If thousands of users are running personal VP clocks simultaneously, the server would be forced to run heavy System Tests constantly, 24/7, for staggered users. Codeforces' servers already struggle during normal live rounds; this would cause **permanent queue lag**, making it impossible to get your code judged in a reasonable time.
+
+### 3. The "Free Peek" Strategic Loophole
+
+Even without external leaks, a user could abuse this system purely on their own:
+
+1. When the contest starts at 12:00 PM, they _don't_ click join. They just look at the public problem statements.
+2. They spend 45 minutes thinking about Problem A and B on a scratchpad without using the IDE or submitting.
+3. Once they know exactly how to solve both, they click "Start Live VP."
+4. They type out the solutions in 5 minutes. On their virtual clock, they solved two hard problems in 5 minutes, getting a near-perfect score that elevates their rating artificially.
+
+### Summary
+
+The rule that **"a contest must have one synchronized start and end time for everyone"** is the single most important line of defense against cheating. The moment you allow individuals to decide _when_ their personal game clock starts while a contest is actively running, fairness disappears.
+
+Are you trying to find a way to **practice under real time pressure** without risking your rating, or would you like to see how to use Codeforces' **Gym feature** to find past contests that match this format?
+
+AI can make mistakes, so double-check responses
+
+## what if they allowed everyone to have registered every contest by default and they can join (official clock) or vp (anytime, no rating change, a leaderboard that doesnt matter) whenever they like, and it counts if they submit once
+
+If the system is adjusted so that the **Live VP option is strictly unrated and hidden on a leaderboard that doesn’t matter**, the cheating and strategic loopholes are completely solved. This is because cheating to get a high rank on a meaningless leaderboard yields no reward.
+
+In fact, this exact idea is very close to how platforms like **LeetCode** handle virtual contests, or how Codeforces itself handles **Gym contests**.
+
+However, implementing this for **standard live Codeforces rounds** still faces two major technical and structural roadblocks that prevent Codeforces from doing it:
+
+### 1. The Pretest vs. System Test Paradox
+
+This is the biggest technical hurdle. During a live Codeforces round, the system operates in a specific way:
+
+- **The Live Reality:** Submissions are only run against **Pretests** (e.g., 10–15 basic test cases). The full **System Tests** (e.g., 100+ brutal edge cases) do not even run until the _entire contest is completely over_.
+- **The VP Problem:** If you are doing a Live VP, how does the system judge your code?
+  - If it only judges you on **Pretests**, your VP code might pass. But if the official system tests haven't been run yet, the system cannot tell you what your actual virtual rank or score is. Your VP would feel incomplete and broken.
+  - If the system tries to judge you on **Full System Tests**, it can't—because the problem writers are often still tweaking and finalizing those test cases while the live contest is running.
+
+### 2. Severe Server Congestion (The Queue Freeze)
+
+Codeforces judges code using a queue system. When 30,000 live competitors all press "Submit" at the exact same moment on a problem, the judging queue backs up, and results take minutes to appear.
+
+- If Codeforces allowed thousands of extra users to run unrated Live VPs at the same time, those VP users would be adding thousands of extra submissions to the judging queue.
+- Official, rated competitors would experience **massive queue lag**. Waiting 10 or 15 minutes just to see if your code passed a pretest completely ruins the experience for the people playing in the real, official match.
+
+### How Codeforces Solves This Today
+
+Codeforces actually agrees with your core idea, but they wait exactly **5 to 20 minutes after the live contest ends** to enable it.
+
+Once the official round is over, the system tests are finalized, the live server load drops, and they open up Virtual Participation for everyone. This gives you the exact experience you are looking for—a synchronized clock, a virtual leaderboard, and zero risk to your rating—without crashing the platform for the live competitors.
+
+Would you like to know how to find **past contest clones in the Gym** that have full system tests ready to go for instant VP practice, or are you interested in how to look up **unrated parallel divisions**?
+
+# how many ai cheaters are there on codeforces
+
+While <mark>there is no official, real-time counter for the total number of AI cheaters on Codeforces</mark>, data from mass-ban rollbacks and community investigations indicate that **at least 4% to over 10% of participants** in any given contest actively use AI tools like OpenAI's ChatGPT o1 to cheat. [link](https://codeforces.com/blog/entry/149941)
+
+The prevalence of AI cheating varies drastically depending on the competitive tier:
+
+### 1. The Elite Tiers (Top 3,000)
+
+A deep-dive investigation into the [Codeforces Goodbye 2025 Round](https://codeforces.com/blog/entry/149941) caught and skipped **124 fraudulent participants** within the top 3,000 ranks alone. This established a verified **~4.13% AI-cheating rate** at the highest competitive levels, where users leverage advanced reasoning models to stay undetected. [link](https://codeforces.com/blog/entry/149941)
+
+### 2. Lower Divisions (Div. 3 & Div. 4)
+
+In lower divisions, the problem is vastly more widespread but easier to spot. Experienced users note that hundreds of new or unrated accounts frequently flood the top 100 of these contests. Many of these submissions are copied directly from LLMs, sometimes hilariously including conversational AI artifacts like comments reading _"adding the fix we talked about"_. [link](https://codeforces.com/blog/entry/154982?mobile=true\&locale=en)
+
+### Why AI Cheating is Surging
+
+- **Capable Models:** Reasoning models can now instantly solve complex logic and algorithmic problems rated up to 3000.
+- **Resume Padding:** Many cheaters use AI to artificially inflate their Codeforces ratings to bypass automated resume filters for tech job applications. [link](https://codeforces.com/blog/entry/149032)
+- **Leak Networks:** Solutions are frequently fed into AI models and mass-distributed via massive [Telegram leaking groups](https://codeforces.com/blog/entry/149032) during active contest windows. [link](https://codeforces.com/blog/entry/149032)
+
+While Codeforces actively updates its plagiarism detection systems, runs mass rating rollbacks, and bans accounts, the sheer volume of anonymous "alt" accounts makes keeping a definitive count nearly impossible. [link](https://codeforces.com/blog/entry/149941)
+
+Are you asking out of curiosity about **how Codeforces is trying to stop AI cheating**, or are you looking for ways to **verify if a specific user's code** was AI-generated?
+
+- [link](https://codeforces.com/blog/entry/149032)\
+  Codeforces\
+  A Concern Regarding AI - Codeforces\
+  Rampant AI cheating in online competitive programming platforms like Codeforces and LeetCode ruins contest integrity and negativel...
+- [link](https://codeforces.com/blog/entry/149941)\
+  Codeforces\
+  Goodbye 2025: more than 4% of Top Ranks Are AI-Cheaters - Codeforces\
+  124 skipped fraudulent participants in top 3000, replacing anonymous alt accounts to combat toxicity and AI misuse.
+- [link](https://www.reddit.com/r/codeforces/comments/1tio2db/recent%5Fstatus%5Fof%5Fai%5Fcheat/)\
+  Reddit·r/codeforces\
+  Recent status of AI cheat? : r/codeforces - Reddit\
+  No rating rollback since last 2 months … hope their will be a mass ban and we would get a 20,30+ in ratings. flag them in the roun...
+
+Show all
+
+## can you really know whether someone cheated
+
+<mark><span>Yes, you can absolutely tell when someone has cheated</span></mark>, but it requires a combination of automated structural analysis, behavioral data, and human review.
+
+Because modern AI tools can generate thousands of unique-looking variable names and slight structural variations, simple text-matching tools are no longer enough. Instead, the detection process relies on deeper signals to establish proof:
+
+### 1. Abstract Syntax Tree (AST) & MOSS Analysis
+
+Anti-plagiarism systems like **MOSS** (Measure of Software Similarity) do not just look at the exact words or text. They strip away variables, comments, and spacing, converting the code into a mathematical structure called an **Abstract Syntax Tree**. [link](https://codeforces.com/blog/entry/155347)
+
+- Even if two cheaters change the variables (`int total` vs `int final_sum`), an AST analysis reveals that the underlying **logic flow, loops, and conditions** are completely identical.
+- Codeforces filters out common standard templates (like fast I/O libraries) so that similarities are only flagged if they appear in the actual problem-solving logic. [link](https://codeforces.com/blog/entry/155347)
+
+### 2. The "AI Signature" and Hallucinations
+
+Large Language Models (LLMs) have specific "stylistic habits" that human coders rarely use.
+
+- **Over-engineering:** AI frequently writes unnecessarily verbose code or loops with weird structures to solve simple tasks.
+- **Hallucinated Logic:** Sometimes a prompt leak causes an AI model to write a specialized debugger function or "gibberish" logic block that never actually runs, but is included because the AI thought it was helpful. When multiple participants submit code containing the exact same bizarre, unused sub-routine, it is an instant giveaway. [link](https://codeforces.com/blog/entry/130283)
+
+### 3. Behavioral and Performance Anomalies
+
+Administrators look heavily at user telemetry data: [link](https://codeforces.com/blog/entry/149032)
+
+- **The "Typing Speed" Impossibility:** If a user opens a highly complex problem (Div. 2D or 2E) and pastes a flawless 150-line solution in under 45 seconds without any syntax errors or midway compilation attempts, it is highly indicative of external generation.
+- **Historical Rating Spikes:** When a user who has historically struggled to solve Div. 3B problems suddenly completes advanced algorithmic tasks at a "Master" tier pace without any gradual improvement over time, they are flagged for immediate manual review. [link](https://codeforces.com/blog/entry/130283)
+
+### 4. Human Verification & The Catch-22
+
+To minimize "false positives" (wrongfully banning an innocent person who just happened to think like someone else), Codeforces uses automation to flag candidates, but utilizes **human review on close calls**. [link](https://codeforces.com/blog/entry/155347)
+
+If a flagged user is suspected of cheating, their submission status is changed to **"Skipped"**. If a cheater tries to appeal the ban, they are usually asked to explain how their own code works or to solve a similar problem live—a test that AI cheaters almost always fail. [link](https://codeforces.com/blog/entry/132796)
+
+Are you trying to **check if a specific submission or user** on Codeforces is cheating, or are you interested in **how to build a plagiarism checker** yourself?
+
+- [link](https://codeforces.com/blog/entry/130283)\
+  Codeforces\
+  Exposing a cheater, making his way to Candidate master without ...\
+  There's a user, chayankumawat2004, who seems to be cheating his way to Candidate Master rank. He uses gibberish language in his co...
+- [link](https://codeforces.com/blog/entry/132796)\
+  Codeforces\
+  Things you should know before you discuss cheating - Codeforces\
+  Definitions: Plagiarize means using another's work while passing it off as yours, independent of detection/punishment; plague is a...
+- [link](https://codeforces.com/blog/entry/155770)\
+  Codeforces\
+  About cheaters on Codeforces\
+  After every Codeforces contest, a MOSS (Measure of Software Similarity) analysis is carried out to eliminate similar codes.
+
+Show all
+
+## can you really know whether someone cheated by asking ai for hints
+
+<mark><strong><span>Yes, platforms can often tell, but through indirect evidence.</span></strong></mark>
+
+According to the official [Codeforces Rule Restricting the Use of AI](https://codeforces.com/blog/entry/133941), asking an AI for hints, natural language descriptions of the solution, or algorithm selection during a live contest is **strictly prohibited**. [link](https://www.facebook.com/groups/programmingpilipinas/posts/2177328082736754/)
+
+While Codeforces cannot look at your private browser tabs to see you asking an AI for hints, the moment those hints influence your code, you leave highly visible, traceable markers:
+
+### 1. The "Mass Matching" Trap
+
+Even if you only ask an AI for a hint (e.g., _"Give me a hint on how to optimize this greedy approach"_), **hundreds of other cheaters are asking the exact same AI model the exact same question.**
+
+- When the AI provides a specific algorithmic hint or an optimized sub-routine template, everyone who implements that hint ends up producing highly correlated code structures.
+- The system's anti-plagiarism filters will flag you not because you "used AI," but because your code's core logic matches the code of dozens of other contestants. [link](https://www.facebook.com/groups/10ms.programming/posts/3391353201007821/)
+
+### 2. Sudden "Code Rewrites" (The AI Debugging Trap)
+
+If you get stuck, get a hint from an AI, and then try to fix your solution, a human inspector or statistical tool can spot it by looking at your **Wrong Answer (WA) submissions**. [link](https://codeforces.com/blog/entry/134003)
+
+- When humans get a hint, they incrementally edit their existing code.
+- When someone uses an AI hint, they often just paste a brand-new chunk of code provided by the AI to implement that hint. Sudden, total rewrites of logic between submissions are a major red flag. [link](https://codeforces.com/blog/entry/134003)
+
+### 3. Structural Contradictions
+
+If an AI gives you a hint involving a complex algorithm, it might require you to import specific math libraries or use obscure syntax. If your final code suddenly imports redundant headers (like adding `#include <cmath>` or `#include <algorithm>` when you already have `#include <bits/stdc++.h>`), it signals automated structure mimicking rather than organic human typing. [link](https://codeforces.com/blog/entry/134003)
+
+### 4. Step-Function Performance Jumps
+
+If your historical contest data shows you consistently struggle with problems requiring a 1600 rating, but you suddenly solve a 2100-rated problem in 10 minutes without making a single logical error along the way, the system flags the statistical anomaly. [link](https://www.facebook.com/groups/10ms.programming/posts/3391353201007821/)
+
+### The Bottom Line
+
+If you use AI to get hints during a contest, **your brain is no longer the sole author of the logic.** Because AI models are repetitive and predictable, that shared logic will almost always leak into your syntax and match someone else, resulting in your submission being **"Skipped."** [link](https://codeforces.com/blog/entry/149941)
+
+Are you trying to figure out the **best ways to use AI for practice** without getting flagged, or are you worried that **accidental similarities** in your own code might look like cheating?
+
+- [link](https://codeforces.com/blog/entry/134003)\
+  Codeforces\
+  To catch an AI cheater - Codeforces\
+  Failed early problems (B1/B2) without standard templates, exhibiting large code rewrites typical of AI generation rather than incr...
+- [link](https://www.facebook.com/groups/10ms.programming/posts/3391353201007821/)\
+  Facebook·Programming Bangladesh\
+  Confessing to cheating in a Codeforces contest by ...\
+  Using AI during codeforces contests is cheating \* Get it to show alternate approaches to a problem you solved. \* Use it to debug y...
+- [link](https://www.facebook.com/groups/programmingpilipinas/posts/2177328082736754/)\
+  Facebook·Programming Philippines\
+  Using AI during codeforces contests is cheating - Facebook\
+  You may not input the problem statement, its summary, any excerpt, or a sub-problem into an AI- based system to receive ready-made...
+
+Show all
+
+## to what extent
+
+To what extent can they know? **They can prove it with near 100% certainty if you copy code chunks, but it drops to a "highly probable" statistical guess if you only use AI for conceptual hints.**
+
+The exact boundary of what Codeforces can definitively detect breaks down into three distinct levels of certainty:
+
+### 1. Absolute Certainty (100% Proof)
+
+If an AI hint includes even **one small code snippet, macro, or customized library setup** that you paste into your editor, you will get caught. Because hundreds of other users are receiving the exact same snippet from the AI, the plagiarism detector will find a perfect logic match across multiple accounts. At this level, detection is deterministic and undeniable.
+
+### 2. High Probability (70% - 90% Certainty)
+
+If you ask the AI for a purely textual hint (e.g., _"Should I use a Segment Tree or Square Root Decomposition for this?"_) and you write the code entirely yourself, Codeforces cannot definitively prove you cheated using text matching. However, they can still flag and skip you based on **behavioral metrics**:
+
+- **Time Anomalies:** Solving an advanced, math-heavy problem significantly faster than the world's top grandmasters could read and process it.
+- **Skill Discrepancies:** A low-rated account flawlessly passing a high-tier problem without any compilation errors, local testing failures, or intermediate penalty submissions.
+
+### 3. The "Uncatchable" Zone (Invisible to the System)
+
+If you are already a high-skilled coder (e.g., a Master or Grandmaster) and you use an AI hint simply to double-check a mathematical formula or confirm an edge case you already suspected, the system **cannot detect you**. Because your coding style remains uniquely yours, and your solving speed matches your actual skill level, there are no anomalies to trigger an investigation.
+
+### Summary
+
+Codeforces cannot see your screen, but **they don't need to.** If an AI hint alters your coding style, your solving speed, or your structural logic to look like the rest of the AI-using crowd, the system will flag the anomaly and skip your submission.
+
+Are you trying to figure out **how to safely use AI to learn** after a contest is over, or are you concerned about a **specific submission** that you think might be flagged?
+
+## why cant they easily detect in the real world
+
+In the "real world"—such as university classes, technical job interviews, or corporate software engineering—detecting AI code is vastly more difficult than it is on Codeforces. [link](https://arxiv.org/html/2505.08244v1)
+
+Codeforces is a **closed, highly constrained environment**. Everyone is solving the exact same math puzzle, using the same inputs, under a tight 2-hour clock. The real world lacks these constraints, which breaks every single detection tool for several reasons: [link](https://codeforces.com/blog/entry/149032)
+
+### 1. There is Only One Way to Write "Standard" Code
+
+In a tech interview or real job, developers are asked to write standard, efficient functions (like querying a database or setting up an API endpoint). [link](https://www.dice.com/career-advice/coding-test-plagiarism-how-companies-are-pushing-back)
+
+- **The Formatting Paradox:** A human software engineer using code formatters like [Prettier](https://prettier.io/) or standard formatting linters writes code that looks **statistically identical** to Claude or ChatGPT. [link](https://justinmckelvey.com/blog/how-to-tell-if-code-is-ai-generated)
+- Because there are only a few logical ways to write standard enterprise code, traditional checkers flag massive numbers of **false positives**, accusing innocent humans of using AI. [link](https://sites.psu.edu/magdaliapassionblog/2018/03/15/plagiarism-in-programming/)
+
+### 2. The Lack of a "Control Group"
+
+Codeforces catches cheaters primarily by **comparing contestants against each other** (cross-checking submissions to see if 40 people used the exact same AI output). [link](https://www.youtube.com/watch?v=G6snGrVWX1Y\&t=186)
+
+- In the real world, a student or job candidate is working on a unique project, a homework assignment, or a company's private codebase.
+- Because there are no other developers solving the exact same prompt at the exact same second, there are no "identical twins" to cross-reference. If the AI generates clean, original code, it slips through completely unnoticed. [link](https://www.blueoptima.com/post/two-approaches-to-detecting-ai-generated-code)
+
+### 3. Open-Source Plagiarism vs. Real Work
+
+In competitive programming, copying code is cheating. In real-world software engineering, **copying code is the job**.\
+Engineers are _encouraged_ to use stack overflow snippets, open-source libraries, and AI assistants like [GitHub Copilot](https://github.com/features/copilot) or [Cursor](https://www.cursor.com/) to speed up development. Because humans and AI are constantly mixing together snippets from open-source repositories, drawing a clear line between "human-written" and "AI-written" code becomes conceptually impossible. [link](https://fast.io/resources/best-ai-code-detectors-2026/)
+
+### 4. Code Obfuscation & Personal Edits
+
+A cheater on Codeforces is under a tight time limit and usually copy-pastes code raw. In a real-world scenario (like a take-home exam or a week-long take-home interview project), a user has hours to modify the code. By changing variable names, restructuring loops, or breaking up functions into smaller files, they break the Abstract Syntax Tree (AST) patterns that tools like MOSS rely on. [link](https://dl.acm.org/doi/10.1145/3744916.3773225)
+
+### How the Real World is Adapting
+
+Because automated AI detection tools don't work reliably on code, the industry has shifted away from trying to "catch" the AI. Instead, companies use: [link](https://justinmckelvey.com/blog/how-to-tell-if-code-is-ai-generated)
+
+- **Live, In-Person Coding:** Forcing candidates to build a feature or debug code live on a call while explaining their thought process out loud.
+- **Architecture Discussions:** Asking candidates _why_ they structured a system a certain way, a question AI-reliant candidates can rarely answer deeply.
+
+Are you asking because you are facing a **take-home coding interview** and want to know what is safe to use, or are you an **instructor/manager** trying to figure out how to evaluate code fairly?
+
+- [link](https://codeforces.com/blog/entry/149032)\
+  Codeforces\
+  A Concern Regarding AI - Codeforces\
+  Rampant AI cheating in online. Cheaters use AI to gain high ratings for resumes, job filters, and social media flexing.
+- [link](https://www.youtube.com/watch?v=G6snGrVWX1Y\&t=186)\
+  YouTube·James Peralta\
+  Can You Use AI in Codeforces Contests?\
+  Jan 19, 2026 — Code matching among contestants is still considered evidence of cheating, ensuring AI is not used to bypass individual effort.\
+  11s
+- [link](https://codeforces.com/blog/entry/155347)\
+  Codeforces\
+  How Codeforces Catches Cheaters: A Look Inside Plagiarism ...\
+  Noise suppression: Human review on close calls: borderline similarity scores aren't auto-punished; a person looks at them, which c...
+
+Show all
+
+## why cant they (codeforces) easily detect in the real world
+
+The phrase "in the real world" changes the context entirely depending on what we are comparing.
+
+If you mean **why can't Codeforces easily detect AI in a way that works perfectly for every scenario**, it is because AI has evolved beyond simple copy-paste patterns. However, if you mean **why is AI detection so much harder in the professional/academic world compared to Codeforces**, it is because Codeforces is a tightly controlled vacuum, whereas the real world is messy and fundamentally relies on the same code AI writes. [link](https://casrai.org/ai-writing-tools/ai-code-detectors)
+
+Codeforces struggles to build a flawless, "real-world-proof" AI detector for several key reasons:
+
+### 1. The Death of "Stylistic Artifacts" (Advanced Obfuscation)
+
+In the early days of LLMs, AI code was easy to spot because it had a specific "flavor"—unnecessary comments, highly generic variable names, or rigid formatting. Today, a user can simply prompt an AI: _"Solve this problem, but use my specific coding style, include my custom macros, use variable names like `idx` and `res`, and do not add any comments."_\
+When the AI matches the user's organic human style, it leaves no surface-level trace for a detector.
+
+### 2. The Idiomatic Convergence Problem
+
+In software engineering and data science, there is often a single, highly optimized, "correct" way to write a standard function (e.g., validating an email string, reversing a linked list, or setting up a database query). [link](https://casrai.org/ai-writing-tools/ai-code-detectors)
+
+- If 50 human programmers and an AI are all told to write the most efficient version of a standard algorithm, **their code will look nearly identical**. [link](https://casrai.org/ai-writing-tools/ai-code-detectors)
+- Because idiomatic code naturally converges, any automated tool trying to flag "AI-like" patterns in the real world ends up triggering a massive wave of **false positives** against innocent human developers. [link](https://casrai.org/ai-writing-tools/ai-code-detectors)
+
+### 3. The "No Copy-Paste" Barrier
+
+Codeforces' most effective weapon is **MOSS** (Measure of Software Similarity), which cross-checks submissions _against other contestants_ to find matches.\
+In a real-world setting—like a student working on a unique take-home exam or an engineer writing a feature for a company—there is **no control group** to cross-reference. There are no other developers solving the exact same prompt at the exact same minute, meaning MOSS has nothing to compare the code against. [link](https://codeforces.com/blog/entry/155347)
+
+### 4. Human-AI Blending
+
+In a real-world workspace, developers don't just blindly copy-paste an entire file from ChatGPT. They use tools like [GitHub Copilot](https://github.com/features/copilot) or [Cursor](https://www.cursor.com/) to write boilerplate code, autocomplete loops, or suggest single lines.\
+When a codebase is a hybrid mix of 60% human logic and 40% AI structural assistance, it becomes mathematically impossible for an automated system to draw a clean line and declare, _"This person cheated."_ [link](https://www.youtube.com/watch?v=G6snGrVWX1Y\&t=38)
+
+### How Platforms are Forced to Adapt
+
+Because checking the _text_ of the code is a losing battle, Codeforces and real-world recruiters are shifting their focus entirely toward **behavioral and environment tracking**:
+
+- **Code Provenance Monitoring:** Tracking _how_ the code was created (e.g., detecting if 300 lines of code were typed out keystroke-by-keystroke over 40 minutes, or pasted into the IDE in a single millisecond). [link](https://codeforces.com/blog/entry/140786)
+- **Live Environments:** Real-world interviewers are largely abandoning take-home code tests in favor of live technical discussions, where a candidate must explain their architecture decisions on the spot—something a pure cheater cannot do. [link](https://www.sonarsource.com/blog/ai-coding-trust-gap/)
+
+Are you trying to understand **how code plagiarism tools operate internally**, or are you curious about **how tech companies are changing their hiring processes** to deal with AI?
+
+- [link](https://casrai.org/ai-writing-tools/ai-code-detectors)\
+  CASRAI\
+  AI Coding Detector: What It Can Prove - CASRAI\
+  Aug 18, 2026 — Why detecting AI-generated code is harder than detecting AI-generated prose. Prose detection works, to the extent it works at all,
+- [link](https://www.youtube.com/watch?v=G6snGrVWX1Y\&t=38)\
+  YouTube·James Peralta\
+  Can You Use AI in Codeforces Contests?\
+  Jan 19, 2026 — Using AI-based code completion tools for syntax and minor coding suggestions, similar to GitHub Copilot, is allowed.\
+  29s
+- [link](https://www.sonarsource.com/blog/ai-coding-trust-gap/)\
+  Sonar Source\
+  The AI trust gap: Why code verification matters\
+  TL;DR overview \* A critical trust gap exists in AI-assisted development: while 96% of developers do not fully trust AI-generated c...
+
+Show all
+
