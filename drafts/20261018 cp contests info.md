@@ -1,3 +1,13 @@
+<!-- Brain Gymnastics -->
+
+<!-- 
+
+"健脑房" 
+
+menci: 你是否在找: 算法竞赛
+
+-->
+
 # competitive programming contests
 
 **Competitive programming (CP)** is an algorithmic mind sport where participants solve complex mathematical and logical problems by writing highly optimized code under strict time and memory limits. Contestants are ranked based on the number of problems solved correctly, their speed, and the accuracy of their submissions. [link](https://en.wikipedia.org/wiki/Competitive%5Fprogramming)
@@ -3013,4 +3023,922 @@ Are you preparing for a specific division (like **Div. 2** or **Div. 3**), or wo
 
 Show all
 
-# 
+# what does codeforces allow you to prepare before and bring into contests
+
+## what does codeforces allow you to prepare before and bring into contests
+
+According to the official **[Codeforces Contest Rules](https://codeforces.com/blog/entry/4088)**, Codeforces allows you to prepare and utilize several resources during a live contest, provided you follow plagiarism guidelines.
+
+Because Codeforces contests are held online and are unproctored, you are allowed to use:
+
+- **Your own prewritten code**: You can prepare templates, macros, and standard data structures/algorithms **personally written by you** before the contest. [link](https://codeforces.com/blog/entry/4088)
+- **Books and personal notes**: Any physical or digital literature, textbooks, and personal reference sheets are entirely permitted. [link](https://codeforces.com/blog/entry/4088)
+- **Internet resources**: You can search for algorithms, definitions, math formulas, or syntax explanations on the internet during the round. [link](https://codeforces.com/blog/entry/4088)
+- **Third-party code (with restrictions)**: You can reference or use open-source/third-party prewritten code, but Codeforces requires that it must be publicly available or published _before_ the contest began. [link](https://codeforces.com/blog/entry/456)
+
+### 🚫 Strict Prohibitions
+
+While you can bring in your own prewritten materials, the platform strictly forbids:
+
+- **Copy-pasting or using someone else's code** written for the specific contest problems.
+- **Communicating with anyone else** about the active contest problems during the round. [link](https://codeforces.com/blog/entry/4088)
+
+Are you setting up a **C++ template** or looking for advice on **standard data structures** to include in your prewritten notebook? I can help you draft a highly efficient template.
+
+- [link](https://codeforces.com/blog/entry/4088)\
+  Codeforces\
+  Codeforces Contest Rules\
+  It is allowed to use any sources of information on the Internet (but it is forbidden to copy-paste somebody else's code).
+- [link](https://codeforces.com/blog/entry/456)\
+  Codeforces\
+  Codeforces Contests - Codeforces\
+  Decreases by point-loss per minute per problem; penalty of 50 points per failed attempt; Communication/obfuscation prohibited; Sol...
+
+## why cant you use private third party code
+
+**Codeforces bans private third-party code** primarily because it makes it impossible to verify whether you are cheating.
+
+If you use code that you did not write yourself and that nobody else can access, it breaks the core principles of fair competition in two major ways:
+
+### 1. Verification of Timing (The Anti-Cheating Rule)
+
+When the automated **[plagiarism detection system](https://codeforces.com/blog/entry/155347)** flags two participants for submitting identical or highly similar code, the accused players must prove their innocence.
+
+- **If the code is public:** A user can point to a public website (like GeeksforGeeks), an open GitHub repository, or a search engine cache. Codeforces can look at the timestamp and say, _"Yes, this code was published months ago. Both players copied it independently, so it isn't collusion."_ [link](https://codeforces.com/topic/133557/en1)
+- **If the code is private:** There is no way for the platform admins to prove that the code existed before the contest. For all they know, you and a friend could have privately messaged each other the solution _during_ the live round. [link](https://www.quora.com/Can-you-use-your-previously-written-code-for-competitive-programming-Lets-say-I-want-to-use-a-special-data-structure-I-implemented-for-another-purpose-previously)
+
+### 2. Prevention of Collaborative Cheating (The "ICPC Teammate" Loophole)
+
+Allowing private third-party code would create a massive loophole for **collusion**. For example, three members of a competitive programming team could share a private repository. If one teammate writes a complex data structure during a live contest, they could secretly push it to the private repo for the others to copy. Because the repository is private, outside moderators could never verify who actually wrote it or when it was added. [link](https://www.quora.com/Can-you-use-your-previously-written-code-for-competitive-programming-Lets-say-I-want-to-use-a-special-data-structure-I-implemented-for-another-purpose-previously)
+
+Ultimately, [Codeforces](https://codeforces.com/blog/entry/8790?locale=en) rules dictate that if your code matches someone else's, **the only reliable proof of innocence is the presence of that code in well-known public search engine caches** from before the contest started. If it's private, you cannot provide that proof, and your submission will be disqualified. [link](https://codeforces.com/blog/entry/456)
+
+Are you worried about getting **falsely flagged** because of a template you share with friends, or are you trying to figure out how to **safely organize your personal code library**?
+
+AI responses may include mistakes. For financial advice, consult a professional. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
+
+- [link](https://codeforces.com/blog/entry/8790)\
+  Codeforces\
+  Rule about third-party code is changing\
+  code doesn't violate the rules. using team reference code … is not allowed if there is no reliable and objective way to prove that...
+- [link](https://www.quora.com/Can-you-use-your-previously-written-code-for-competitive-programming-Lets-say-I-want-to-use-a-special-data-structure-I-implemented-for-another-purpose-previously)\
+  Quora\
+  Can you use your previously written code for competitive ...\
+  you can reuse your old … rule about third party code still applies if the code is written by your ICPC teammate and stored in a sh...
+- [link](https://codeforces.com/blog/entry/456)\
+  Codeforces\
+  Codeforces Contests\
+  Currently, the only reliable proof is the presence of code on the Internet and the presence of the used edition in the cache of we...
+
+Show all
+
+## do they search the internet to check cheating
+
+No, Codeforces **does not proactively scrape or search the entire internet** to check your code against every public website. [link](https://codeforces.com/topic/155989/en1?locale=ru)
+
+Instead, Codeforces utilizes an internal, highly sophisticated **automated code-similarity detector** to cross-reference every submission against _everyone else's submissions_ from the same contest. [link](https://codeforces.com/blog/entry/65874)
+
+### How Codeforces Catches Cheating
+
+The platform doesn't need to crawl Google or GitHub because of how cheating typically happens during contests: [link](https://codeforces.com/blog/entry/155347)
+
+1. **The Internal Cross-Check (Many-to-Many):** After a round concludes, Codeforces runs all submissions through a specialized system (historically based on a heavily optimized, contest-winning plagiarism tool). It converts your code into "tokens" to check structural logic, meaning it easily catches users who copy each other and try to hide it by changing variable names, adding comments, or shuffling functions. [link](https://codeforces.com/blog/entry/94956)
+2. **Targeting Leak Networks:** Most mass-cheating occurs inside private Telegram groups, Discord servers, or YouTube streams where bad actors leak solutions in real-time. Because thousands of cheaters copy from the same leaked internet sources, **their codes inevitably match each other** in the Codeforces system. The detector catches the massive cluster of duplicate logic and flags all of them. [link](https://www.youtube.com/watch?v=a8Vm-HpdSX8\&t=948)
+3. **The "Internet Search" is Your Defense, Not Their Weapon:** Codeforces only looks at the internet if you appeal a cheating flag. If the system flags you because your code matches another participant's, the onus is on you to prove you both independently copied the code from a public internet repository or textbook that was timestamped **before the contest began**. [link](https://codeforces.com/blog/entry/4088)
+4. **Community Reports:** The competitive programming community actively monitors suspicious rating spikes. Users often search public platforms or forums themselves and report cheaters manually to Codeforces admins, providing links to the leaked solutions online. [link](https://codeforces.com/blog/entry/130283)
+
+When the system or a manual review catches a cheater, Codeforces rolls back their rating and marks their submissions as a bright red **"SKIPPED"**. [link](https://codeforces.com/blog/entry/132796)
+
+Are you curious about **how the code-similarity detector works** (like how it bypasses variable renames), or are you trying to understand the **appeal process** if a false positive ever occurs?
+
+- [link](https://www.reddit.com/r/codeforces/comments/1lj1m74/codeforces%5Floosing%5Fits%5Fauthenticity%5Fand%5Frelevance/)\
+  Reddit·r/codeforces\
+  Codeforces loosing its authenticity and relevance due ...\
+  Comments Section Yes it is. Even using templates is cheating for me. rghosthero • 1y ago According to Codeforces rules copying any...
+- [link](https://codeforces.com/blog/entry/155347)\
+  Codeforces\
+  How Codeforces Catches Cheaters: A Look Inside Plagiarism ...\
+  improvise during a contest. Cheap surface-level edits, which is what time-pressured contest cheating usually looks like, don't get...
+- [link](https://cf-cheater-database.vercel.app/)\
+  CF Cheater Database\
+  CF Cheater Database\
+  Look up users to see if they have been reported for cheating Search Appeal a Cheater Mark If you believe you were wrongly marked a...
+
+Show all
+
+## do ppl appeal via the internet search
+
+Yes, **people do try to appeal using the internet search defense, but it rarely works** because the Codeforces system is designed to drastically limit what counts as an acceptable appeal. [link](https://codeforces.com/blog/entry/144006)
+
+When someone is caught by the system, Codeforces sends them an automated warning that explicitly states: [link](https://codeforces.com/blog/entry/126566)
+
+> _"If you have conclusive evidence that a coincidence has occurred due to the use of a common source published before the competition, write a comment to post about the round with all the details."_
+
+Because of this, the process usually unfolds in a few predictable ways:
+
+### 1. The Valid Appeal (Extremely Rare)
+
+If you genuinely used a public algorithm from a site like GeeksforGeeks, CP-Algorithms, or a well-known public GitHub repo, you can appeal. To do this, you must post a comment on the official contest announcement blog containing: [link](https://codeforces.com/blog/entry/126566)
+
+- A link to the exact **public URL** you used.
+- Proof that the code's timestamp or search engine cache date **precedes the contest start time**. [link](https://codeforces.com/blog/entry/144006)
+
+If the admins verify that the code was public and that you both just grabbed the same template independently, they may manually revert the "Skipped" penalty. [link](https://codeforces.com/blog/entry/93405)
+
+### 2. The "Unintentional Leak" Trap (Denied)
+
+A massive number of users try to appeal by showing that their code was on the internet, but they fail because they accidentally leaked it _during_ the contest. A common mistake is using online compilers like Ideone with default settings, which automatically publishes your code to a public feed. [link](https://codeforces.com/topic/141892/en1)
+
+- Codeforces rules explicitly state that **unintentional leakage is still a violation**. Even if someone else stole it from your public Ideone link, your appeal will be denied. [link](https://codeforces.com/blog/entry/126566)
+
+### 3. The "Bhai I Used Ideone" Flood (Ignored)
+
+The official contest announcement blogs are notoriously flooded with fake appeals written by actual cheaters. They use generic excuses like _"I just used a common template"_ or _"I wrote this myself, it's just a coincidence"_ without providing any concrete links. [link](https://codeforces.com/blog/entry/157726)
+
+Because the blogs get so overwhelmed with these malicious appeals, **Codeforces admins and coordinators rarely look at them** unless you are a highly-rated titleholder (like a Grandmaster or an ICPC finalist) with an immaculate track record who can prove an automated false positive. [link](https://codeforces.com/blog/entry/121225)
+
+Are you building a public library of your own and want to make sure it's **properly timestamped**, or are you looking for the safest offline IDEs to avoid **unintentional code leaks**?
+
+AI responses may include mistakes. For legal advice, consult a professional. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
+
+- [link](https://codeforces.com/blog/entry/144006)\
+  Codeforces\
+  Is there any way to appeal for a falsely given plagarism flag?\
+  Only blog 8790 and it is flooded with malicious appeals written by cheaters using "evidence" so chance of your appeal getting view...
+- [link](https://codeforces.com/topic/141892/en1)\
+  Codeforces\
+  Addressing the Plagiarism Flag on My Submission\
+  Resubmitting the same code can lead to unintended plagiarism flags. Using public IDEs (such as Ideone with default public settings...
+- [link](https://www.reddit.com/r/codeforces/comments/1lj1m74/codeforces%5Floosing%5Fits%5Fauthenticity%5Fand%5Frelevance/)\
+  Reddit·r/codeforces\
+  Codeforces loosing its authenticity and relevance due ...\
+  According to Codeforces rules copying any code that was already public before the contest is ok. For example going out and copying...
+
+Show all
+
+## why is valid appeal rare, is it that they are somewhat smart against false positives
+
+Successful and valid appeals are rare because <mark><strong>Codeforces’ anti-cheating system is highly optimized to avoid false positives in the first place</strong></mark>. When the system flags you, it is almost never a "coincidence" or a glitch—the mathematical probability that you wrote identical code to someone else by pure chance is incredibly low. [link](https://codeforces.com/blog/entry/96313)
+
+The system is remarkably smart at filtering out innocent similarities through several advanced mechanics:
+
+### 1. Tokenization and Structural Focus
+
+The plagiarism detector does not just look at text; it translates your source code into structural tokens. It completely strips out: [link](https://codeforces.com/blog/entry/155347)
+
+- Variable names, function names, and custom class labels.
+- Whitespace, tabs, indentation, and formatting.
+- Comments (including random gibberish people add to throw off the detector). [link](https://codeforces.com/blog/entry/60663)
+
+Because it maps out the core logic tree of the code, a false positive would mean two people independently came up with the exact same sequence of nested loops, unique branch conditions, and data structures. For competitive programming problems, there are usually dozens of ways to implement a solution, making exact structural matches highly precise signatures of copying. [link](https://codeforces.com/blog/entry/155347)
+
+### 2. Built-in "Noise Suppression"
+
+The algorithm ignores small, universal logic blocks. For example, every competitive programmer writes a standard binary search, a basic fast-I/O block, or a standard DFS traversal the exact same way. The system features a **noise suppression mechanism** that explicitly filters out these short, generic code snippets so they never trigger a flag. It only fires when large, structurally unique, and complex logic blocks match identically. [link](https://codeforces.com/blog/entry/155347)
+
+### 3. Verification Against Shared Boilerplate
+
+Many programmers use massive, thousands-of-lines-long C++ templates containing fast-Fourier transforms, segment trees, or matrix exponentiation blocks. Codeforces is smart enough to catalog and **exclude well-known, widely published boilerplate and templates** from the scoring. If your code matches someone else's _only_ inside the prewritten setup part of your code, you will not get flagged. [link](https://codeforces.com/blog/entry/155347)
+
+### 4. Human Review on Close Calls
+
+The automated tool outputs a similarity score. Borderline or questionable cases are not penalized instantly; they trigger a **manual review by a contest coordinator or moderator**. A human eye looks at the structural match to determine if it is a clever attempt to mask cheating or a genuine coincidence before handing down a "Skipped" verdict. [link](https://codeforces.com/blog/entry/132796)
+
+### Why Valid Appeals are Extensively Rare
+
+Because the system successfully removes boilerplate, ignores generic loops, and checks structural trees, **99.9% of flagged users actually did cheat**. [link](https://codeforces.com/blog/entry/155347)
+
+When a user tries to appeal, the only way Codeforces admins will accept it is if the user provides absolute, timestamped proof that the specific logic block came from a public source before the contest. Since true false-positives are virtually non-existent, the vast majority of appeals are filed by actual cheaters trying to lie their way out of a ban—which is why administrators filter them out heavily. [link](https://codeforces.com/topic/141892/en1)
+
+Would you like to know how to safely write your **personal code templates** to ensure they never accidentally look like someone else's, or are you interested in **how to properly format an appeal** just in case?
+
+AI can make mistakes, so double-check responses
+
+- [link](https://codeforces.com/blog/entry/155347)\
+  Codeforces\
+  How Codeforces Catches Cheaters: A Look Inside Plagiarism ...\
+  standard boilerplate (fast I/O templates, common headers) gets excluded from scoring specifically so it doesn't cause false positi...
+- [link](https://codeforces.com/blog/entry/96313)\
+  Codeforces\
+  False Positive in Codeforces' Anti-Cheat Detection\
+  Participating in many contests and solving many problems increases the probability of encountering a false positive sooner or late...
+- [link](https://codeforces.com/blog/entry/60663)\
+  Codeforces\
+  Is Plagiarism checker dead? - Codeforces\
+  plagiarism checkers should be updated as if the plagiarism level is more than 50% than it should be reported as plagiarised. Also,
+
+Show all
+
+## why are they smart against false positives if it depends on whether it's public on the open internet
+
+The system does not actually need to check the internet to be smart against false positives. Instead, <mark><strong>the platform uses internal mathematical and logical filtering</strong><span> </span>to ensure that if you are flagged, it is practically impossible for it to be a coincidence</mark>.
+
+The requirement that code must be "public on the open internet" is not how Codeforces _finds_ cheaters—**it is simply the legal standard of proof you must provide if you want to be excused.**
+
+Here is the breakdown of why the system is smart internally, and why the "public internet" rule is just a safety valve:
+
+### 1. Internal Logic Filters Out "Common Ground"
+
+The internal plagiarism detector is smart because it knows what normal, independent code looks like.
+
+- **It filters out standard syntax:** It knows that everyone writes `for(int i=0; i<n; i++)` or standard binary search the same way. It throws those matches away.
+- **It focuses on unique choices:** If a problem requires a highly specific sequence of math logic, a custom array size choice, a rare bitwise trick, and a unique way of nesting `if` statements, the odds of two strangers writing it _exactly_ the same way is like two people writing the exact same 500-word essay by accident.
+
+Therefore, when the system flags a match, it is because the code has crossed a mathematical threshold of unique similarity.
+
+### 2. Why the "Public Internet" Rule Exists
+
+If Codeforces' internal system is so smart, why do they have an internet rule at all? Because of **legitimate templates**.
+
+Imagine a famous competitive programmer publishes a highly optimized, very unique algorithm on their public blog. Two totally unrelated players, one in India and one in Poland, both copy that exact unique block of code into their personal libraries before a contest.
+
+During the live contest, a problem appears where that exact unique algorithm is useful. Both players paste it from their libraries.
+
+1. **The System Fires:** The internal system sees two identical, highly complex, unique code blocks. It doesn't know where the code came from, only that they match. It flags them both.
+2. **The Internet Search is the Alibi:** Codeforces doesn't actively browse the web to see if the code is public. Instead, they say to the flagged players: _"Our math says you copied each other. If this was actually a template from a book or blog, show us the link so we can verify it existed before today."_
+
+### Summary
+
+The system is smart because its **internal math avoids flagging innocent people who just happen to think alike**. The "open internet" rule is merely a courtroom rule: it provides a way for innocent players to clear their names if they both happened to use the exact same pre-existing public template.
+
+Are you planning to build a **shared library** with a team for other competitions (like ICPC), or are you looking for tips on how to keep your **personal template library safe and distinct**?
+
+## why are they smart against false positives if it depends on whether it's public on the open internet, as ppl really use random public code, maybe identical, maybe recently published
+
+This is a fantastic point. If thousands of users are pulling code from random, obscure, or recently published websites all over the internet, shouldn't the Codeforces system be throwing out massive waves of false positives every single round?
+
+It doesn't, because Codeforces’ system is designed to handle this exact scenario. The system is smart enough to differentiate between a **mass-downloaded public template** and **active cheating** based on _how_ that code appears across the entire contest.
+
+Here is how the system handles the chaos of the open internet to prevent false positives:
+
+### 1. The "Cluster vs. Pair" Footprint
+
+Cheating networks leave a very distinct digital footprint compared to people who just use a random public template.
+
+- **The Public Template Footprint:** If a popular blog or a new YouTube channel posts a great algorithm, hundreds of participants might copy it. The Codeforces detector will see a massive **"cluster"** of 300 people all using the exact same code block. Because the system sees a massive, widespread group using it, it recognizes it as a shared resource or a template and ignores it.
+- **The Cheating Footprint:** If two people are privately colluding, or if a small private cheating ring passes around a solution, the detector finds an **isolated pair** or a tiny cluster of identical submissions. If a code block is so unique that only _two_ people out of 30,000 used it, the mathematical probability of a coincidence drops to zero.
+
+### 2. The Context of the Rest of the Code
+
+When you use a public template, you don't just submit the template by itself. You paste the template into your IDE, and then you write the custom logic required to solve that specific problem.
+
+- **If it's a false positive:** Two players might have identical code for the _template_ portion, but the code they wrote to actually solve the problem (reading inputs, processing the specific conditions, printing output) will look entirely different. Codeforces' tokenization system isolates the template from the solution logic. It will not flag you if the similarity is confined to the setup code.
+- **If it's cheating:** The template _and_ the entire solution logic will be structurally identical.
+
+### 3. The Problem of "Recently Published" Code
+
+You mentioned a great edge case: what if someone publishes a solution _during_ the contest on a public site, and two innocent people find it and use it?
+
+- Codeforces rules explicitly state that **using code published _during_ the contest is cheating**, even if it is on the public internet.
+- To be a "valid appeal," the internet search must prove the code was published **before** the contest started. If a YouTuber streams the solution live or a blog posts it mid-contest, using it will get you disqualified, and no appeal will save you. Codeforces treats mid-contest public leaks exactly the same as private leaks.
+
+### Summary
+
+The system is smart because it evaluates similarity in the context of the whole contest. It doesn't get confused by random public code because **widespread public templates affect too many people to be a coincidence**, while **the custom logic you write around those templates remains uniquely yours**. The system only flags you when the unique, problem-solving core of your code matches someone else's.
+
+Are you trying to figure out if it's safe to use code from **sites like StackOverflow or LeetCode discussions** during a round, or do you want to know how to **structure your template** so the system always recognizes it as setup code?
+
+## is "The Context of the Rest of the Code" primarily why they are so smart
+
+<mark><span>Yes,<span> </span></span><strong>"The Context of the Rest of the Code" is absolutely the primary reason the system is so smart.</strong></mark>
+
+When you use a template from the internet, you are only copying the _tools_ (like a fast sorting algorithm or a specific math function). The actual _blueprint_ of how you use those tools to solve the problem—the variables you declare, the way you read the input, the specific sequence of `if/else` checks—is uniquely yours.
+
+Codeforces exploits this difference using two primary mechanisms:
+
+### 1. Isolation of "Boilerplate" vs. "Solution"
+
+The Codeforces plagiarism detector splits your submission into two distinct zones:
+
+- **The Global Setup (The Tool):** The complex, prewritten code blocks pasted at the top of your file.
+- **The `main()` Function (The Solution):** The custom logic written during the 2-hour contest window specifically to solve that problem.
+
+If 500 people copy an obscure, highly complex segment tree template from a random GitHub repository, they will all have identical "Global Setup" blocks. However, when it comes to the `main()` function, one person will use a `while` loop, another will use a `for` loop, one will check `if (x < 0)`, and another will check `if (x <= -1)`.
+
+Because the system detects that the **problem-solving context is completely different**, it ignores the matching template and clears you of cheating.
+
+### 2. The Multi-Problem Check (The Ultimate Context)
+
+The ultimate contextual check happens across the entire contest. If you are privately cheating with a friend or copying from a leaker, you don't just copy one problem; you usually copy multiple problems across the round.
+
+- **The Coincidence:** If you and a stranger happen to have a weirdly similar `main()` function on Problem A because the problem was incredibly simple, the system looks at the rest of your context. It checks your submissions for Problem B, C, and D.
+- **The Verdict:** If your codes for Problems B and C look completely different, Codeforces chalks up the similarity in Problem A to a fluke or standard logic and drops the flag. The system almost **never penalizes a user for a single, isolated similarity** on an easy problem unless the code is a 100% identical copy-paste of highly complex logic.
+
+### Summary
+
+The system doesn't need to know what exists on the internet because it relies on a fundamental truth of computer science: **two people given a blank text editor will never write the exact same custom program.** By focusing purely on the context of your custom solution logic and ignoring the generic tools you brought in, Codeforces eliminates virtually all false positives.
+
+Would you like to see an example of how to **cleanly separate your template code from your solution logic** so that automated detectors can easily tell them apart?
+
+# why isnt codeforces leaderboard filled w llms
+
+## why isnt codeforces leaderboard filled w llms
+
+<mark><strong><span>Large Language Models (LLMs) do not dominate the live Codeforces leaderboard primarily because Codeforces explicitly bans AI-generated submissions in rated contests, actively filters out bots, and limits automated API access.</span></strong></mark>
+
+While AI labs like OpenAI (with [o1 and o3](https://blog.ninapanickssery.com/p/an-llm-codeforces-champion-is-not)) and Google DeepMind (with AlphaCode) have achieved internal "Grandmaster" Elo ratings, they do so under simulated, controlled evaluations. [link](https://www.linkedin.com/posts/dayilin%5Fwhen-elo-lies-hidden-biases-in-codeforces-based-activity-7427797618183045120-cYLg)
+
+The actual, public competitive programming leaderboard remains predominantly human due to several critical barriers:
+
+### 1. Hard Bans and Anti-Cheating Policies
+
+Codeforces has strict rules against plagiarism and external assistance. Using an LLM to generate code during a live, rated contest is considered cheating. The platform uses advanced plagiarism detection algorithms to compare code structures. If a user inputs an LLM-generated solution that matches patterns used by other cheating accounts, both accounts are disqualified, and their ratings are docked. [link](https://codeforces.com/blog/entry/144683)
+
+### 2. Platform Safeguards Against Bots
+
+Codeforces is not designed to be an LLM benchmark suite; it is a platform for human community interaction. [link](https://www.linkedin.com/posts/dayilin%5Fwhen-elo-lies-hidden-biases-in-codeforces-based-activity-7427797618183045120-cYLg)
+
+- **API Constraints:** Codeforces restricts aggressive API scraping and automated submission endpoints, making it difficult for unauthorized bots to systematically scrape new problems and submit solutions at scale. [link](https://www.linkedin.com/posts/dayilin%5Fwhen-elo-lies-hidden-biases-in-codeforces-based-activity-7427797618183045120-cYLg)
+- **Hidden Test Cases:** Codeforces utilizes strong pre-tests and hidden system tests. An LLM cannot just brute-force guess variations because excessive incorrect submissions incur heavy time and point penalties. [link](https://www.linkedin.com/posts/dayilin%5Fwhen-elo-lies-hidden-biases-in-codeforces-based-activity-7427797618183045120-cYLg)
+
+### 3. The "New Problem" Bottleneck
+
+LLMs excel at solving problems that look similar to data they have already seen. However, Codeforces Div. 1 and Div. 2 contests feature entirely novel, handcrafted algorithmic problems designed specifically to bypass known paradigms.
+
+- Without the ability to search the web for an existing editorial, standard LLMs struggle heavily with true logic synthesis on brand-new tasks.
+- The models capable of solving them—like specialized reasoning models—require massive compute budgets (sampling thousands of candidate variations per problem), which is too expensive and slow to deploy organically in a fast-paced live contest.
+
+### 4. Evaluation Distortions (Why "Simulated" Elo Doesn't Translate)
+
+AI labs evaluate their models by looking at past contests and feeding the problems to the LLM in a vacuum. As researchers have pointed out on platforms like [LinkedIn](https://www.linkedin.com/posts/dayilin%5Fwhen-elo-lies-hidden-biases-in-codeforces-based-activity-7427797618183045120-cYLg), these benchmark Elo scores are highly sensitive to variables like the order of problems presented, the specific contest division, and run-to-run variability. In a live setting against dynamic human competitors, a model's real-world execution under strict time limits looks very different from a curated lab report. [link](https://www.linkedin.com/posts/dayilin%5Fwhen-elo-lies-hidden-biases-in-codeforces-based-activity-7427797618183045120-cYLg)
+
+Would you like to explore **how AI labs simulate these Codeforces tests**, or are you interested in **how platforms like Codeforces are updating their anti-cheating algorithms** to catch LLM code?
+
+- [link](https://www.linkedin.com/posts/dayilin%5Fwhen-elo-lies-hidden-biases-in-codeforces-based-activity-7427797618183045120-cYLg)\
+  LinkedIn·Dayi Lin\
+  Codeforces Elo Misleading for LLM Code Capability Comparison | Dayi Lin posted on the topic | LinkedIn\
+  Codeforces Elo scores are misleading for comparing LLM code capabilities due to a lack of disclosure regarding contests, divisions...
+- [link](https://codeforces.com/blog/entry/144683)\
+  Codeforces\
+  We need to save codeforces\
+  a public rating system would be utterly pointless. problem-solving to these stupid cheaters that can't muster up a single original...
+- [link](https://codeforces.com/blog/entry/154613)\
+  Codeforces\
+  Anti-cheating in the LLM Era - Codeforces\
+  They pay more attention to removing cheaters within the top 200, and have to tolerate huge cheating in the rating range below 2400...
+
+Show all
+
+## how soon can one rank up if they ak all problems in a sec every round by some magic and somehow does not get banned
+
+If a user magically <mark><strong>AKs (All Killed—solves every problem) a contest in exactly 1 second</strong></mark> every single round, they would secure an undisputed **Rank 1** with a historically impossible score.
+
+Under the [Codeforces Rating System](https://codeforces.com/blog/entry/20762), an account doing this would reach the highest rank of **Legendary Grandmaster (LGM, 3000+) in roughly 8 to 12 rounds**, and could realistically hit the absolute peak of the leaderboard (~4000 rating) in **15 to 20 rounds**.
+
+Because Codeforces caps how much your rating can jump in a single round to prevent volatile spikes, the journey happens in stages:
+
+### The Speedrun Timeline (Assuming Global Rank 1 Every Time)
+
+- **Round 1 (New Account):** A new account displays a visual rating of 0 but has an initial base seed of 1400. Achieving Rank 1 in a Div. 2 or Div. 1+2 combined round will grant the maximum possible newbie modifier boost. The rating will skyrocket by **+500 to +600 points**, landing them straight into **Expert (1600–1899)** or **Candidate Master (1900–2199)**.
+- **Rounds 2–4:** The system still considers the account relatively new, meaning the "volatility" factor is high. Securing Rank 1 repeatedly will yield consecutive massive gains of around +300 to +400 points per round. By Round 4, the account will cross 2400+, achieving **International Master** or **Grandmaster**.
+- **Rounds 5–8:** At this point, the account enters Div. 1 permanently. Even when competing against top-tier human grandmasters, taking Rank 1 with a 1-second penalty time produces an "infinite performance" metric. The system will continue pushing the rating up by +150 to +250 points per round. Around Round 8, the account will crack **3000+ (Legendary Grandmaster)**.
+- **Rounds 9–20:** As the rating approaches the high 3000s, the Elo math aggressively tries to pull the player backward. The "seed" (expected rank) for a 3800-rated player is already Rank 1. Winning a tournament at this stage only yields small increments (+20 to +50 points). It would take an additional 7 to 10 consecutive wins to squeeze past the ~3900 threshold and claim the absolute #1 spot on the global leaderboard.
+
+### The Real-World Practical Limitation: Schedule
+
+Since Codeforces holds roughly **2 to 3 rated rounds per week** (spanning Div. 1, Div. 2, and educational rounds), this magical entity would conquer the platform and become the highest-rated coder in the world in **about 3 to 5 weeks** of calendar time.
+
+## can one declare they are bots when they register for contests
+
+**No, there is no official feature or checkbox on Codeforces to declare yourself as a "bot" when registering for a contest.**
+
+The [Codeforces Rule Restricting the Use of AI](https://codeforces.com/blog/entry/133941) strictly prohibits the use of automated systems, LLMs, or external bots to generate algorithmic logic during any live, rated, or official out-of-competition round. Because of this blanket ban on automated solvers during active rounds, the platform does not offer a "Bot Track" or a toggle to opt out of the human leaderboard while playing live. [link](https://codeforces.com/blog/entry/133941)
+
+If a developer wants to test an automated programming bot legally on Codeforces without facing an immediate ban, they must use alternative formats:
+
+- **Virtual Contests (Gym Mode):** An automated system can be run on past contests via the [Codeforces Gym](https://codeforces.com/blog/entry/99660) or via virtual participation. In this mode, the bot's submissions are evaluated against historical test cases without interfering with live human leaderboards or affecting rating distributions. [link](https://codeforces.com/blog/entry/122146)
+- **Official AI/Bot Events:** Codeforces occasionally hosts or features dedicated AI challenges—such as the historical ["Battle of Bots" tournaments](https://codeforces.com/blog/entry/21531)—where participants specifically program automated strategies to compete against each other. However, these are specialized single-problem game theory events, not standard algorithmic speed-coding rounds. [link](https://codeforces.com/blog/entry/21531)
+
+Trying to bypass the system by writing "This account is a bot" in the profile bio or registration notes will not protect an account from the automated plagiarism checkers and community-driven cheating reports that monitor live rounds. [link](https://codeforces.com/topic/144972/en6?locale=en)
+
+Would you like to know more about **how AI researchers use the Codeforces API to test bots on past problems** without breaking platform rules, or **how Codeforces' AI-detection rules handle coding assistants like Copilot**?
+
+AI responses may include mistakes. For legal advice, consult a professional. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
+
+- [link](https://codeforces.com/blog/entry/78369)\
+  Codeforces\
+  Community Solutions to Abuse of Rules - Codeforces\
+  it will make illegal actions require too much effort to evade detection. Bots and systems can be tricked, but users are a bit toug...
+- [link](https://codeforces.com/blog/entry/133941)\
+  Codeforces\
+  Rule Restricting the Use of AI \[revision 2024-09-14]\
+  Sep 14, 2024 — This rule applies strictly to in-contest participation. This includes both registered contestants and out-of-competition participa...
+- [link](https://codeforces.com/blog/entry/57758)\
+  Codeforces\
+  Please stop violating the rules!\
+  Codeforces does not allow creating new accounts to participate in a contest, This is probably because it affects other user's rati...
+
+Show all
+
+## what if some sophisticated actors cheat to test llms
+
+If a sophisticated AI lab, corporate actor, or advanced state-sponsored research team decides to secretly bypass Codeforces safeguards to evaluate their models under live conditions, it triggers a high-tech game of cat-and-mouse.
+
+While individual cheaters often get caught quickly by relying on standard, unaltered prompts, a truly **sophisticated actor** could temporarily succeed by masking their model's footprint. However, the Codeforces community and administrators have unique ways of catching and reacting to these stealth operations. [link](https://www.facebook.com/groups/10ms.programming/posts/3391353201007821/)
+
+***
+
+### 1. How a Sophisticated Lab Avoids Immediate Detection
+
+To mask a model like OpenAI's `o3` or DeepMind's `AlphaCode` as a human, an advanced team would use targeted evasion techniques:
+
+- **Style Obfuscation:** The lab wouldn't submit standard AI-generated code. They would feed the AI's logic through a secondary "humanizer" script that randomly adjusts variable naming conventions, introduces human-like typing templates, and switches between pre-increment (`++i`) and post-increment (`i++`) to defeat structural fingerprinting. [link](https://codeforces.com/blog/entry/149348)
+- **Evading MOSS Plagiarism Checkers:** AI tools naturally output highly optimized, identical structural logic for a given problem. If multiple bot accounts submit the same code, Codeforces' MOSS (Measure of Software Similarity) system automatically flags them. A sophisticated actor would scatter their bot accounts across different global IP addresses and mandate distinct code variations or programming languages for each account. [link](https://codeforces.com/blog/entry/133941)
+- **Human-in-the-Loop Re-typing:** To completely bypass client-side tracking (such as copy-paste bans or key-loggers), researchers could simply have a human sit at a keyboard and manually re-type the LLM's solution text into the Codeforces IDE. [link](https://codeforces.com/blog/entry/140786)
+
+### 2. How the Codeforces Community Catches Them Anyway
+
+Even with masterful obfuscation, sophisticated bots leave statistical breadcrumbs that the hyper-vigilant competitive programming community eventually spots.
+
+```
+[Problem Published] ──(0 mins)──> [LLM Solves Hard Div.1 Problem]
+                                        │
+                                        ▼ (Anomaly Detected)
+[Human Grandmasters: 40-50 mins] ◄── VS ──► [Stealth Bot Account: 4 mins]
+```
+
+- **Impossible Solving Speed Anomalies:** Top-tier Div. 1 problems require multi-layered mathematical insights that take even the world's best humans 30 to 60 minutes to logically untangle. If a relatively unknown account suddenly solves a grueling 2700-rated problem in 4 minutes flat, it immediately sets off red flags. [link](https://codeforces.com/blog/entry/149348)
+- **Historical Style Inconsistency:** A human's coding style evolves gradually over years. If an account suddenly switches its structural habits overnight (e.g., swapping standard loops for highly advanced, niche standard library tricks it has never used before), community members will compile a public exposé on the Codeforces blogs. [link](https://codeforces.com/blog/entry/141477)
+- **"LLM Traps" in Problem Sets:** Knowing that labs might use automated web scrapers to feed problems into an AI during a contest, problem setters sometimes plant hidden "honeypots" or misleading text formatting in early versions of the problem statement. Humans naturally read past the trap, while an LLM parses it literally and outputs a bizarre, specific bug that instantly outs the account as a bot. [link](https://codeforces.com/blog/entry/149348)
+
+### 3. The Ultimate Defense: The "Onsite" Prestige Shift
+
+If sophisticated cheating becomes too hard to catch via automated algorithms, it fundamentally shifts how the community assigns value to competitive programming: [link](https://codeforces.com/topic/155255/en3)
+
+- **Rating Rollbacks:** Codeforces frequently runs sweeping retroactive sweeps after major contests, disqualifying hundreds of top accounts at a time based on post-contest statistical anomalies.
+- **The Death of Online Resumes:** Historically, a high Codeforces rating (like "Grandmaster") was a golden ticket on a software engineering resume. If cheating by sophisticated or casual actors spikes, tech companies stop trusting online ratings.
+- **Shifting to Trusted Verification & Onsite Finals:** The community is increasingly pushing for a two-tiered system: unverified online ranks vs. **Verified Ranks** (tied to in-person, proctored tournaments like the ICPC, IOI, or Google Code Jam-style onsite finals). A bot might magically conquer the online leaderboard, but it cannot sit down at a physical laptop in a monitored arena. [link](https://codeforces.com/blog/entry/149032)
+
+Would you like to see examples of **specific coding habits that give away an AI cheater**, or should we look at the **"Anti-LLM" problem styles** that problem setters use to trip up models like OpenAI o1/o3? [link](https://codeforces.com/blog/entry/138557)
+
+- [link](https://codeforces.com/topic/155255/en3)\
+  Codeforces\
+  Anti-cheating in the LLM Era\
+  Jun 25, 2026 — FPS game companies rely on automatic detection and community anti-cheat to continuously reduce the percentage of cheaters in the g...
+- [link](https://codeforces.com/blog/entry/154613)\
+  Codeforces\
+  Anti-cheating in the LLM Era - Codeforces\
+  Because of some kind of insistence on “open-source spirit”, Codeforces still has no effective restriction on one person registerin...
+- [link](https://codeforces.com/blog/entry/149032)\
+  Codeforces\
+  A Concern Regarding AI - Codeforces\
+  Issue: Rampant AI cheating in online competitive programming platforms like Codeforces and LeetCode ruins contest integrity and ne...
+
+Show all
+
+## what if some sophisticated actors cheat to test llms and mimick humans, why are the current leaderboard mostly genuine real humans
+
+Even if sophisticated labs use advanced "humanizing" logic to obscure their footprints, <mark><strong>the Codeforces leaderboard remains overwhelmingly human due to zero-tolerance administration, proactive community policing, the extreme difficulty of the top ranks, and the simple fact that labs have no long-term incentive to maintain active leaderboard accounts.</strong></mark>
+
+The platform is not completely immune to AI; platforms have documented localized spikes where casual cheaters use reasoning models (like `o1` or `o3-mini`) to boost secondary accounts. However, the top tiers (Master, Grandmaster, Legendary Grandmaster) remain genuinely human for several structural reasons: [link](https://codeforces.com/blog/entry/141477)
+
+### 1. The Community "Witch Hunts" and Manual Auditing
+
+Codeforces is a deeply reputational community. When an unknown account surges into high ranks, the community heavily scrutinizes their entire submission history.
+
+- High-level competitive programmers can spot machine logic better than automated anti-cheat systems. They look for anomalies like using odd data structures where simple arrays suffice, bizarre formatting quirk mismatches, or sudden changes in coding language syntax. [link](https://codeforces.com/blog/entry/141477)
+- Public exposé blogs (such as user-reported "Suspicious Master" threads) routinely result in manual administrative rollbacks and account bans. Even if an AI lab hid from automated scripts, they could not hide from thousands of human eyes manually dissecting their code structure. [link](https://codeforces.com/blog/entry/149941)
+
+### 2. Trap-Designing by Problem Setters
+
+Problem setters on Codeforces actively fight back by engineering "LLM traps" directly into their problems. [link](https://codeforces.com/blog/entry/149956)
+
+- **The Honeypot Strategy:** A problem author might explicitly state a condition in the text but embed a highly unusual edge case or a hidden constraint that standard logic models mishandle. In other cases, they plant useless functions or specific, subtle logic traps that only an automated web scraper or LLM would generate. [link](https://codeforces.com/blog/entry/149956)
+- If a submission contains these highly specific, automated anomalies, it signals immediate cheating, resulting in the account being skipped or permanently disabled. [link](https://codeforces.com/blog/entry/155862)
+
+### 3. Asymmetric Penalties and Admin Priorities
+
+While Codeforces admins admit that managing thousands of low-level alternate accounts is difficult, they focus their direct energy precisely where it matters most: **the top 200–300 ranks**. [link](https://codeforces.com/blog/entry/154613)
+
+- If a bot tries to squat on the prestigious first page of the leaderboard, it immediately hits the highest density of manual review.
+- To a casual cheater, losing an account means losing a disposable alt. To a sophisticated corporate actor or academic lab, getting publicly exposed and banned for active platform manipulation carries severe reputational damage.
+
+### 4. Lack of R\&D Incentive for Live Squatting
+
+The most fundamental reason the leaderboard is human is **incentive**. AI research labs (like OpenAI or DeepMind) do not gain scientific value from keeping a bot running anonymously on a live leaderboard week after week.
+
+- Labs want peer-reviewed validation. They evaluate models using clean, scientific benchmarks (like _LiveCodeBench Pro_) or simulated retrospectives where they can accurately control variables and publish formal research papers.
+- Once a lab proves internal "Grandmaster" capability in a controlled test environment, their goal is achieved. Maintaining dozens of stealth accounts just to hoard virtual rating points on a live website yields zero corporate value and high operational overhead. [link](https://arxiv.org/pdf/2506.11928)
+
+### 5. The Ultimate Proof: The Onsite Bottleneck
+
+Ultimately, a Codeforces rating is only worth as much as the real-world performance backing it. Because online AI cheating has made tech companies more skeptical of unverified online ratings, the competitive programming ecosystem relies heavily on **proctored onsite events** (like the International Collegiate Programming Contest (ICPC) or the IOI). High-ranking human grandmasters routinely validate their skills under strict physical monitoring, which an LLM actor simply cannot replicate. [link](https://codeforces.com/blog/entry/149032)
+
+Would you like to look closer at **how researchers structure benchmark tests like LiveCodeBench Pro** to avoid cheating, or would you like to see **the specific rules Codeforces uses to define what AI tools are legal** during a match?
+
+- [link](https://codeforces.com/blog/entry/154613)\
+  Codeforces\
+  Anti-cheating in the LLM Era - Codeforces\
+  Codeforces still has no effective restriction on one person registering multiple accounts. In every contest, there are thousands o...
+- [link](https://codeforces.com/blog/entry/149032)\
+  Codeforces\
+  A Concern Regarding AI - Codeforces\
+  Cheaters use AI to gain high ratings for resumes, job filters, and social media flexing. Detection measures create user friction, ...
+- [link](https://arxiv.org/pdf/2506.11928)\
+  arXiv.org\
+  LiveCodeBench Pro: How Do Olympiad Medalists Judge LLMs in ...\
+  Jun 13, 2025 — LiveCodeBench Pro, a benchmark composed of problems from Codeforces, ICPC, and IOI that are continuously updated to reduce the lik...
+
+Show all
+
+## can current top model get into top ten
+
+<mark><strong><span>No, current top-tier reasoning models cannot break into the official Top Ten on Codeforces.</span></strong></mark>
+
+While frontier reasoning models have achieved superhuman milestones, they face fundamental barriers that prevent them from reaching the absolute peak of the leaderboard.
+
+### 1. The 2700 Rating Ceiling vs. The 3800+ Top Ten
+
+OpenAI’s premier reasoning model, **o3**, made headlines by achieving an internal simulated Codeforces rating of **2724 to 2727**. This safely puts it in the elite "International Grandmaster" category, beating roughly 99.8% of active human programmers. [link](https://www.reddit.com/r/singularity/comments/1inpt9p/openais%5Fo3%5Fachieved%5Fgold%5Fmedal%5F998th%5Fin%5Fcodeforces/)
+
+However, the Codeforces Top Ten is an entirely different world. To sit on the first page of the global leaderboard, an account must have a rating of roughly **3800 to 4000+**. The gap between a 2700 rating and a 3900 rating is mathematically massive; a 3900-rated player (like _Tourist_) is expected to solve the hardest problems seamlessly, flawless in execution, with almost zero penalty time. Models like o3 still routinely fail on highly abstract, novel "Problem G" or "Problem H" types found in Division 1 rounds.
+
+### 2. The Asymmetry of Compute (The 10,000x Sampling Hack)
+
+When AI labs boast that a model reached a 2700+ rating, it is critical to look at the _methodology_. To solve the hardest problems, the models do not just take one guess. They use massive test-time compute pipelines:
+
+- **The Process:** The model may generate anywhere from **1,000 to 10,000 candidate code variations** for a single problem.
+- **The Filter:** It then runs those variations against a local "brute-force judge" script or known sample cases to filter out the bugs before picking the best submission. [link](https://www.youtube.com/watch?v=LZljPiftqyo\&t=347)
+
+In a live, un-cheated Codeforces round, you cannot throw 10,000 submissions at the server. Codeforces heavily penalizes incorrect attempts, tracks submission throttling, and enforces rigid time limits. Without the luxury of infinite parallel sampling in a vacuum, a live model's standalone accuracy drops significantly.
+
+### 3. The Novelty Wall
+
+Top Ten human coders do not rely on pattern recognition; they invent entirely new ad-hoc math and logic frameworks on the fly during a contest. Current LLMs, while capable of deeply complex reasoning via Chain-of-Thought, are still bound by their training distribution boundaries. When presented with a truly unprecedented algorithmic puzzle designed specifically by human authors to break standard programming templates, the models fail, whereas a Top Ten human pushes through.
+
+Would you like to look at the **specific types of math or game-theory problems** where top models still stumble, or see **how OpenAI structured their Codeforces testing environment**?
+
+- [link](https://www.reddit.com/r/singularity/comments/1inpt9p/openais%5Fo3%5Fachieved%5Fgold%5Fmedal%5F998th%5Fin%5Fcodeforces/)\
+  Reddit·r/singularity\
+  OpenAI's o3 achieved gold medal; 99.8th in Codeforces - Reddit\
+  Competed live at IOI 2024 o3 achieved gold General-purpose w/ hand-crafted pipelines specialized for coding results
+- [link](https://analyticsindiamag.com/ai-news-updates/openais-o3-wins-gold-at-international-olympiad-in-informatics-2024)\
+  analyticsindiamag.com\
+  How Did OpenAI's o3 Win Gold at IOI 2024?\
+  OpenAI's latest AI model, o3, earned an impressive 2724 rating on CodeForces, placing it in the 99.8th percentile. It also secured...
+- [link](https://x.com/deedydas/status/1870175212328608232)\
+  X·deedydas\
+  Deedy on X: "OpenAI o3 is 2727 on Codeforces which is equivalent to the #175 best human competitive coder on the planet. This is an absolutely superhuman result for AI and technology at large." / X\
+  OpenAI o3 achieved a Codeforces rating of 2727, ranking equivalently to the #175 best human competitive coder globally. Gold medal...
+
+Show all
+
+## i mean the latest sota models
+
+Even considering the absolute <mark><strong>latest 2026 state-of-the-art reasoning models</strong></mark>, the answer remains **no, they still cannot break into the official Top Ten on Codeforces.**
+
+The gap has narrowed significantly. In the past year, frontier models have smashed through previous limits—culminating in models like
+
+**DeepSeek V4.1 Flash**
+
+and
+
+**Gemini 3 Deep Think**
+
+reaching simulated Codeforces ratings between **3450 and 3471**. OpenAI's `GPT-5.6` series even completely swept the AtCoder World Tour Finals. [link](https://mlq.ai/news/openais-ai-sweeps-all-five-problems-at-atcoder-world-tour-finals-beating-every-human/)
+
+At ~3470 Elo, these SOTA AI models have advanced from "International Grandmaster" to the legendary tier of **Nutella-rated "Grandmasters."** However, the Top Ten is still mathematically out of reach for three specific reasons:
+
+### 1. The ~400 Elo "Human Wall"
+
+The [Official Codeforces Leaderboard](https://codeforces.com/) top tier is dominated by legendary humans like **Benq (3857), jiangly (3810), and**
+
+**Tourist**
+
+**(3528)**. [link](https://codeforces.com/topic/146108/en1?mobile=false)
+
+- A 3471-rated AI is phenomenal, but in Elo-based systems, a 400-point rating difference means a Top Three human is expected to beat the AI in a head-to-head match nearly **90% of the time**.
+- The problems required to bridge the gap from 3400 to 3900 (usually Div. 1 Problems F, G, and H) require highly abstract, ad-hoc mathematical jumps and creative reductions. SOTA models still hit a logical ceiling on these entirely unique, handcrafted puzzles.
+
+### 2. The Live Submission Penalty (The 10-Submission Rule)
+
+When AI labs publish these ~3400+ scores, they are often using **relaxed, simulated test-time compute constraints**—meaning the model generates thousands of potential solutions behind the scenes and uses internal validators to filter out bugs. [link](https://codeforces.com/blog/entry/133874)
+
+In a live contest environment, Codeforces severely punishes this:
+
+- You are heavily penalized for wrong submissions (penalties reduce your tie-breaker score).
+- The server will throttle or ban accounts that spam too many attempts.
+- Even with optimized 10-submission caps, a model's live performance drops significantly compared to an idealized lab benchmark where it can guess infinitely in a vacuum. [link](https://codeforces.com/blog/entry/133874)
+
+### 3. Absolute Perfection Required for Speed
+
+To rank in the Top Ten of a live round, it isn't enough to just solve all the problems; you have to do it **blazing fast**. Human grandmasters can read a problem, instantly visualize the dynamic programming state or segment tree layout, and type out a flawless, bug-free solution in 5 to 10 minutes. Deep reasoning models require minutes of "thinking time" (Chain-of-Thought generation) just to process the deep logic of a single complex problem, putting them at a massive time-penalty disadvantage against the clock.
+
+Would you like to break down **how OpenAI's latest models defeated humans at the AtCoder World Tour Finals**, or see **the exact problems from recent contests that AI still fails to solve**?
+
+- [link](https://codeforces.com/blog/entry/133874)\
+  Codeforces\
+  New OpenAI model achieves 1800 rating\
+  When allowed 10,000 submissions per problem, the model achieved a score of 362.14 – above the gold medal threshold – even without ...
+- [link](https://mlq.ai/news/openais-ai-sweeps-all-five-problems-at-atcoder-world-tour-finals-beating-every-human/)\
+  MLQ.ai\
+  OpenAI's AI Sweeps All Five Problems at AtCoder World Tour ...\
+  OpenAI's model finished with a score in the tens of billions — more than seven times higher than the best human result among 12 in...
+- [link](https://llmlearner.com/rankings/codeforces)\
+  llmlearner.com\
+  CodeForces Leaderboard (Sep 2026)\
+  Score milestones \* 2025-01-31 2073 OpenAI o3-mini … 3471 DeepSeek-V4.1-Flash
+
+Show all
+
+## when will llms cross 4k
+
+Predicting exactly when AI will cross a **4000+ rating** (a milestone reached by humans only once in Codeforces history by [Tourist](https://codeforces.com/blog/entry/133401)) requires looking at the trajectory of "test-time compute."
+
+Based on current scaling laws and historical leaps, frontier LLMs are projected to cross the 4000 rating threshold **between late 2027 and 2029** under simulated, lab-controlled environments. [link](https://medium.com/@engineer-logs/the-great-inference-shift-why-the-next-era-of-ai-belongs-to-test-time-compute-ca8316fdd236)
+
+The timeline relies on shifting from raw model size to deep, reinforcement-learning-driven search: [link](https://medium.com/@engineer-logs/the-great-inference-shift-why-the-next-era-of-ai-belongs-to-test-time-compute-ca8316fdd236)
+
+```
+      [ 1300 Elo ] ───> [ 1650 Elo ] ───> [ 2727 Elo ] ───> [ 3471 Elo ] ───> [ 4000+ Elo ]
+     AlphaCode (2022)   AlphaCode 2 (2023)    OpenAI o3 (2024)   DeepSeek V4.1 (2026)    Projected (2027-2029)
+```
+
+### The SOTA Trajectory (How We Got to 3471)
+
+- **2022–2023:** Early models like the original AlphaCode hovered around **1300 to 1650 Elo**. They were plagued by syntax errors, inefficient brute-force approaches, and a failure to comprehend advanced dynamic programming or segment trees. [link](https://codeforces.com/blog/entry/99566)
+- **2024–2025 (The Reasoning Shift):** OpenAI's `o3` introduced massive reinforcement learning and internal "brute-force judging" loops, leaping to **2727 Elo**. It began outperforming 99.8% of human coders. [link](https://www.reddit.com/r/programming/comments/1hir7lb/the%5Fnew%5Fopenai%5Fmodel%5Fo3%5Fscores%5Fbetter%5Fthan%5F998%5Fof/)
+- **2026 (The Current Peak):** The latest models—like DeepSeek V4.1 Flash—now peak at **3471 Elo** in simulated testing. They sit firmly in the elite human "International Grandmaster" tier. [link](https://codeforces.com/blog/entry/151862)
+
+### What is Missing to Reach 4000?
+
+To bridge the remaining ~530 Elo gap, AI labs must solve two distinct computer science bottlenecks:
+
+1. **True Metacognition (Self-Correction Limits):** Current SOTA models can generate 10,000 solution variants and filter them against basic sample tests. However, the hardest Div. 1 problems have incredibly weak sample tests. A 4000-rating AI cannot rely on a judge to tell it when it's wrong; it must mathematically _prove_ its code works. Labs are actively building "self-verification" loops into training pipelines to solve this. [link](https://deepmind.google/blog/competitive-programming-with-alphacode/)
+2. **Unprecedented Ad-Hoc Logic:** Crossing 4k means solving "Problem H" style constraints—puzzles where no known standard template or library trick applies. The model must essentially invent a micro-branch of mathematics during inference.
+
+### Why It Might Take Longer
+
+While AI scaling curves for competitive programming look vertical, hitting 4000 is a game of diminishing returns. In an Elo system, as your rating climbs, **a single mistake drops your score catastrophically**. To achieve a stable 4000 rating, an LLM must maintain a near 100% solve rate across multiple consecutive rounds with zero margin for logical flaws. [link](https://medium.com/@engineer-logs/the-great-inference-shift-why-the-next-era-of-ai-belongs-to-test-time-compute-ca8316fdd236)
+
+Therefore, while a model may _sporadically_ achieve a 4000-level performance on an individual contest by 2027, maintaining a baseline **4000+ card** will likely take until 2028 or 2029 when agentic runtime environments mature.
+
+Would you like to explore **how the concept of "test-time compute" is scaling** to achieve these jumps, or look at **the specific mathematical limits of the Elo system** at the 4000+ level?
+
+- [link](https://codeforces.com/blog/entry/151862)\
+  Codeforces\
+  2026 Codeforces Rating Distribution With Advanced Analytics!\
+  Ranks such as Master, Grandmaster, and Legendary Grandmaster make up only a small part of the total active user base, which is als...
+- [link](https://benchlm.ai/benchmarks/codeforces)\
+  BenchLM\
+  Codeforces Leaderboard & Scores — October 2026\
+  DeepSeek V4.1 Flash 1017 by DeepSeek currently leads with a score of 3471.0 on Codeforces. 7 AI models have published results on C...
+- [link](https://llmlearner.com/rankings/codeforces)\
+  llmlearner.com\
+  CodeForces Leaderboard (Sep 2026) - LLMLearner\
+  Sep 10, 2026 — Models are ranked by their best published score. 2. Gemini 3 Deep Think
+
+Show all
+
+## are these llm ratings by one shot, general coding agents, or specific ones
+
+These hyper-high ratings (like OpenAI's 2727 or DeepSeek V4.1 Flash's 3471) are <mark><strong>not</strong><span> </span>achieved by "one-shot" models</mark>, nor are they achieved by general software engineering agents (like Devin or SWE-agents). [link](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash)
+
+Instead, they are produced by **specialized competitive programming evaluation rigs that wrap frontier reasoning models.**
+
+The setup breaks down into three distinct layers:
+
+### 1. The Core Engine: "Reasoning" Models (Not One-Shot)
+
+A standard "one-shot" model (like regular GPT-4 or Claude 3.5 Sonnet) answers instantly and fails miserably at competitive programming because it cannot think ahead. The models used for these benchmarks are **Native Reasoning Models** (like OpenAI’s `o3` or `DeepSeek-R1`). [link](https://arxiv.org/html/2502.06807v1)
+
+- These models use **massive internal Chain-of-Thought (CoT)** reasoning.
+- Before writing a single line of code, they spend minutes silently testing logic, simulating loops, spotting edge cases, and correcting their own mathematical errors. [link](https://openai.com/index/learning-to-reason-with-llms/)
+
+### 2. The Wrapper: Specialized Competitive Programming Agents
+
+To generate a Codeforces rating, AI labs build a specialized, multi-step pipeline engineered specifically to game competitive programming rules. [link](https://codeforces.com/topic/134500/en2)
+
+- **The "Generator" Agent:** The reasoning model is prompted to generate not just one solution, but up to **1,000 to 10,000 candidate variations** for a single problem. [link](https://codeforces.com/blog/entry/133874)
+- **The "Brute-Force Judge" Agent:** The system generates a secondary, simple code file (a slow, simple "brute-force" script) alongside random test inputs. It runs all 10,000 fast variations against the slow brute-force script to filter out variations that give "Wrong Answer" or syntax bugs. [link](https://dl.acm.org/doi/10.1145/3794763.3794820)
+- **The "Scoring" Ranker:** A specialized classifier evaluates the remaining bug-free solutions to pick the absolute most optimal code (the one with the best time/space complexity) to submit to the final judge. [link](https://codeforces.com/blog/entry/133874)
+
+### 3. Why General "Software Engineering" Agents are Different
+
+You cannot take these exact high-scoring competitive programming systems and use them to build a real app. There is a massive fork in AI agent development:
+
+| Agent Feature       | **Competitive Programming Bots (Codeforces)**             | **General SE Agents (SWE-bench / Production)**                   |
+| ------------------- | --------------------------------------------------------- | ---------------------------------------------------------------- |
+| **Input Structure** | A clean, short text file with mathematical rules.         | A massive, messy GitHub repository with thousands of files.      |
+| **Primary Skill**   | Extreme, deep algorithmic logic and math.                 | Context management, reading documentation, and navigating tools. |
+| **Evaluation Loop** | Compiles instantly; graded by pure True/False test cases. | Requires spinning up Docker containers, databases, and APIs.     |
+| **Output**          | A single, self-contained file of 50–200 lines.            | A multi-file Pull Request (PR) balancing legacy code.            |
+
+When OpenAI released `o3`, they noted that while its specialized competitive programming variant dominated the International Olympiad in Informatics (IOI), it required a completely shifted framework when evaluated on software engineering benchmarks like [SWE-bench](https://www.swebench.com/).
+
+The 3471 rating belongs to a **hyper-optimized "Formula 1" car** built specifically to sprint through algorithmic problems in a simulated vacuum. [link](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash)
+
+Would you like to look at **how a model generates 10,000 variations and filters them**, or are you curious about **how general coding agents perform on real-world engineering tasks**?
+
+- [link](https://arxiv.org/html/2408.02479v2)\
+  arXiv.org\
+  From LLMs to LLM-based Agents for Software Engineering: A Survey of Current, Challenges and Future\
+  Apr 13, 2025 — Agent Tasks: Multi-agent (using systems like SWE-agent, overcome single-model context length limitations and hallucination risks i...
+- [link](https://arxiv.org/html/2508.00083v1)\
+  arXiv.org\
+  A Survey on Code Generation with LLM-based Agents\
+  \* Survey: LLM-based code generation agents (arXiv:2508.00083v1, 31 Jul 2025). \* Core Features: Autonomy (independent workflow), ex...
+- [link](https://dl.acm.org/doi/10.1145/3794763.3794820)\
+  ACM Digital Library\
+  A Code Ranking Framework with Human\
+  RankAgent first encourages LLMs to engage in constructing scenario and test inputs, and then performs explicit step-by-step reason...
+
+Show all
+
+# why do different ppl play on codeforces
+
+## why do different ppl play on codeforces
+
+**People play on [Codeforces](https://codeforces.com/)**<mark><strong><span> </span>for different reasons because it serves as a multi-purpose platform</strong><span> </span>that transitions from an educational tool into a highly competitive global sport</mark>. Depending on a user's background—whether they are a university student, a software engineer, or a math prodigy—their motivation changes dramatically. [link](https://www.reddit.com/r/codeforces/comments/1izo2lg/why%5Fdo%5Fyou%5Fdo%5Fcompetitive%5Fprogramming%5Fas%5Fhobby/)
+
+The primary reasons why different groups of people choose to use the platform include:
+
+### 1. The College Students & ICPC Aspirants
+
+For students preparing for the International Collegiate Programming Contest (ICPC), Codeforces is the gold standard for practice. [link](https://www.quora.com/Why-do-people-use-more-of-codeforces-than-topcoder-despite-that-editorials-are-better-on-topcoder)
+
+- **Mirroring Contest Formats:** Codeforces frequently hosts short, intense **2-hour rounds** with 5 to 7 problems that closely mimic actual ICPC-style team logic and pressure. [link](https://www.quora.com/Why-do-people-use-more-of-codeforces-than-topcoder-despite-that-editorials-are-better-on-topcoder)
+- **High-Quality Math Problems:** Unlike platforms focused purely on data structures, Codeforces is famous for heavy mathematical, constructive, and ad-hoc logic problems that test raw intelligence rather than memorized code. [link](https://www.quora.com/Why-do-people-use-more-of-codeforces-than-topcoder-despite-that-editorials-are-better-on-topcoder)
+
+### 2. The Gamers & "Brain Muscle" Hobbyists
+
+Many users treat Codeforces less like an exam prep tool and more like an **online multiplayer video game or chess**. [link](https://codeforces.com/topic/157705/en1)
+
+- **The Elo Rating System:** Users love watching their color-coded ranks change (from a gray "Newbie" to a coveted red "Grandmaster"). [link](https://www.reddit.com/r/codeforces/comments/1ueccjb/is%5Fthere%5Feven%5Fa%5Fpoint%5Fof%5Fdoing%5Fcodeforces%5Fanymore/)
+- **The Hacking System:** Codeforces features a unique mechanic where, during a contest, you can view other competitors' code and try to find an edge case that breaks it. A successful "hack" earns extra points, which injects a fast-paced adrenaline rush into programming. [link](https://codeforces.com/blog/entry/13575)
+- **Cutting out the Bloated Tasks:** As users on the Codeforces Reddit community note, software engineering often feels like wrestling with package managers and boilerplate code. Competitive programming strips that away, leaving pure, 100% logical problem-solving. [link](https://www.reddit.com/r/codeforces/comments/1izo2lg/why%5Fdo%5Fyou%5Fdo%5Fcompetitive%5Fprogramming%5Fas%5Fhobby/)
+
+### 3. The Tech Job Hunters
+
+While platforms like LeetCode are designed specifically for corporate technical interviews, many elite developers still prefer Codeforces to stand out. [link](https://www.youtube.com/watch?v=T85LFJJ7YGg\&t=45)
+
+- **Building Superior Problem-Solving Speed:** An engineer who can consistently solve a difficult Division 1 or Division 2 Codeforces problem can usually breeze through standard tech interview questions with ease.
+- **Resume Credibility:** Reaching a high tier like Candidate Master (CM) or Master is heavily respected by top-tier trading firms and elite tech institutions globally. [link](https://codeforces.com/blog/entry/13575)
+
+### Summary of Who Plays and Why
+
+| User Type               | Primary Motivation                      | Favorite Feature                        |
+| ----------------------- | --------------------------------------- | --------------------------------------- |
+| **University Students** | ICPC Training & Coding Competitions     | 2-hour timed rounds                     |
+| **Pure Hobbyists**      | Mental stimulation, logic puzzles       | Stripped-down, boilerplate-free coding  |
+| **Competitive Gamers**  | Climbing the global leaderboard         | The "Hacking" phase & Elo rating system |
+| **Career-Driven Devs**  | Over-preparing for difficult interviews | Mastering highly complex algorithms     |
+
+Are you asking because you are thinking about **starting on Codeforces yourself**, or are you trying to **decide between Codeforces and another platform** like LeetCode or AtCoder? Let me know so I can give you the right tips or comparisons!
+
+- [link](https://codeforces.com/blog/entry/13575)\
+  Codeforces\
+  Why do users make multiple accounts?\
+  Bob became one of the fastest on Codeforces at solving Div2A+Div2B, he was never able to consistently solve a Div1 problem. Bob fa...
+- [link](https://www.quora.com/Why-do-people-use-more-of-codeforces-than-topcoder-despite-that-editorials-are-better-on-topcoder)\
+  Quora\
+  Why do people use more of codeforces than topcoder despite ...\
+  Hacks are allowed during contest time. So, if someone is not able to solve more problems and still have time left, he can spend hi...
+- [link](https://www.reddit.com/r/codeforces/comments/1izo2lg/why%5Fdo%5Fyou%5Fdo%5Fcompetitive%5Fprogramming%5Fas%5Fhobby/)\
+  Reddit·r/codeforces\
+  Why do you do competitive programming as hobby? - Reddit\
+  Competitive programming cuts out the boilerplate and just focuses on the logical problem portion.
+
+Show all
+
+## why do different ppl enjoy competitive programming
+
+<mark><strong><span>People enjoy competitive programming (CP) because it transforms coding into an intense, rewarding mind sport</span></strong><span> </span>that combines the thrill of gaming with the satisfaction of pure mathematics</mark>. While onlookers might just see lines of text, participants experience a high-speed rush of logic, problem-solving, and global competition.
+
+The diverse reasons why people fall in love with this hobby include:
+
+### 1. The "Gamer" Mindset & Instant Gratification
+
+For many, competitive programming is a video game played entirely in the terminal.
+
+- **The Green "Accepted" Rush:** There is a powerful dopamine hit when you submit a solution and watch the testing system clear dozens of hidden edge cases, culminating in a bright green "Accepted" status.
+- **Climbing the Ranked Ladder:** Platforms like Codeforces and AtCoder use Elo rating systems identical to competitive games like _Chess_, _League of Legends_, or _Valorant_. Players become obsessed with watching their ratings rise and unlocking new color-coded tier titles.
+- **Real-Time Clashes:** Submitting a correct solution faster than thousands of other people around the world creates a high-stakes, adrenaline-fueled competitive environment.
+
+### 2. Pure Problem-Solving Without the "Boring" Parts
+
+Many software engineers find their day jobs filled with tedious tasks like configuration, writing boilerplate code, and fixing environment bugs.
+
+- **Stripped-Down Logic:** CP strips away all the technological clutter. There are no frameworks to install or APIs to configure. It is just you, a blank text editor, a mathematical problem, and raw logic.
+- **Brain Gymnastics:** It offers a structured way to flex your mental muscles. The problems force you to think creatively, find hidden patterns, and invent clever shortcuts (ad-hoc thinking) that standard coding rarely requires.
+
+### 3. The Joy of Optimization & Mastery
+
+CP appeals deeply to people who love perfectionism and mechanical elegance.
+
+- **Fighting the Clock:** Your code doesn't just have to be correct—it has to be blisteringly fast. Solutions must usually run in under 1 or 2 seconds, forcing you to optimize your algorithms from a slow O(N²) to a lightning-fast\
+  𝑂\
+  (\
+  𝑁\
+  log\
+  𝑁\
+  )\
+  .
+- **Bending Mathematics:** Seeing a complex, seemingly impossible word problem suddenly collapse into an elegant mathematical formula or a beautifully implemented graph algorithm is a profound "eureka" moment.
+
+### 4. A Global, Like-Minded Community
+
+CP is highly social, backed by a tight-knit global subculture.
+
+- **Post-Match Analysis:** After a contest ends, forums come alive with "editorials" and discussions. Players eagerly discuss how they solved problems, share alternative approaches, and celebrate or mourn their rating changes together.
+- **Shared Obsession:** It connects math prodigies, computer science students, and tech veterans from every corner of the earth through a shared love for difficult puzzles.
+
+***
+
+### Core Appeals at a Glance
+
+| The Appeal              | What it Feels Like                                            | Who it Attracts                        |
+| ----------------------- | ------------------------------------------------------------- | -------------------------------------- |
+| **The Gamification**    | Chasing a higher ranking and out-speeding rivals              | Competitive gamers and chess players   |
+| **The Purity**          | Zero boilerplate text; 100% logic and math                    | Mathematicians and puzzle enthusiasts  |
+| **The "Eureka" Factor** | Cracking a seemingly impossible problem after hours of trying | Persistent thinkers and perfectionists |
+| **The Sport**           | Representing your university or country on a global stage     | Team players and ICPC competitors      |
+
+Are you trying to **find the motivation to stick with competitive programming**, or are you a **complete beginner** wondering if the community is a good fit for you? Let me know, and I can suggest the best ways to get hooked!
+
+## what kinds of ppl are they
+
+**The people who dominate competitive programming generally fall into a few distinct archetypes**, unified by a shared love for intense logic puzzles. It attracts a unique mix of mathematical prodigies, hardcore gamers, and hyper-focused engineering minds.
+
+These individuals typically fit into the following categories:
+
+### 1. The Math Olympiad Veterans
+
+A massive percentage of top-tier competitive programmers did not start with computer science; they started with **high school math competitions** (like the IMO or AMC).
+
+- **Their Trait:** They see coding merely as a tool to execute mathematics.
+- **Why they excel:** They are brilliant at "constructive algorithms" and ad-hoc problems because they can spot abstract number patterns and geometric symmetries instantly without needing to write code first.
+
+### 2. The High-IQ "Gamers"
+
+These are individuals who have the brainpower for academic research but the temperament of a competitive video gamer.
+
+- **Their Trait:** They love fast-paced, high-stress environments. They are often highly ranked in esports, speedrunning, or online chess.
+- **Why they excel:** They thrive under the clock. They enjoy the mechanical rush of typing out complex algorithms at blazing speeds, taking calculated risks on submissions, and out-speeding thousands of global rivals.
+
+### 3. The Perfectionist Craftsmen
+
+These are developers who are deeply unsatisfied by "good enough" software. They despise bloated frameworks and slow apps.
+
+- **Their Trait:** They possess an obsessive need for efficiency and optimal execution.
+- **Why they excel:** They find genuine, almost artistic beauty in writing a 10-line block of code that runs in **3 milliseconds** instead of a sloppy 50-line block that runs in 2 seconds. They love elegant, minimal, and flawlessly structured logic.
+
+### 4. The Grinders & Academic Athletes
+
+These are hyper-disciplined university students who treat competitive programming like a varsity sport.
+
+- **Their Trait:** Incredible work ethic, stamina, and resilience against failure.
+- **Why they excel:** They train for hours every single day, systematically breaking down past contest problems, learning obscure tree and graph structures, and building muscle memory so they can represent their university at prestigious global finals.
+
+***
+
+### Personality Traits They All Share
+
+No matter their background, almost all competitive programmers share three core psychological traits:
+
+- **Extremely High Frustration Tolerance:** They are completely comfortable sitting in front of a screen for three hours, failing 20 times in a row, just to get that _one_ final green "Accepted" checkmark.
+- **Hyper-Focus (Hyperfixation):** They can completely tune out the rest of the world to dive deep into a single abstract puzzle.
+- **Humility & Adaptability:** Because the system gives instant feedback (your code is either objectively right or wrong), they check their egos at the door and are always ready to admit their logic was flawed so they can learn a better approach.
+
+Do you see **yourself fitting into one of these types**, or does this community sound **totally different** from the kinds of developers you usually meet? Let me know what your own background is!
+
+## what kinds of humans are they
+
+**Stripping away the tech entirely, these humans are intense, playful deep-divers** who treat their own minds like high-performance engines. They are the type of people who look at a chaotic, messy world and find deep comfort in pure, unadulterated order and logic.
+
+If you met them at a party or observed how they live their lives, you would see that they fall into a few distinct human types:
+
+### 1. The "Obsessive Mechanic"
+
+These humans are fascinated by how things work at the most fundamental level. They don't just want a car to drive; they want to take the engine apart, polish every gear, and put it back together so it runs 5% faster.
+
+- **In Daily Life:** They hate inefficiencies. They are the ones who will spend three days automating a task that only takes them five minutes to do manually, just because the manual way feels "wrong." They love optimization, minimalism, and elegance.
+
+### 2. The Mental Adrenaline Junkies
+
+While some people jump out of airplanes or race cars to get a rush, these humans get that exact same physical spike of adrenaline entirely inside their own skulls.
+
+- **In Daily Life:** They get bored incredibly easily by normal, slow-paced routines. They crave high-intensity cognitive pressure. They love the feeling of being completely overwhelmed by a problem, feeling their chest tighten under a strict time limit, and then experiencing the massive euphoric release when everything clicks into place.
+
+### 3. The Pure Pattern-Seekers
+
+To these individuals, the world is not a collection of random events—it is a massive matrix of interconnected rules and symmetries. They have a rare ability to look at absolute chaos and instantly isolate the signal from the noise.
+
+- **In Daily Life:** They love abstract puzzles, strategy board games (like _Go_ or chess), cryptography, and complex music structures. They are often quiet observers because their brains are constantly cataloging, sorting, and predicting the hidden data structures of everyday human interactions.
+
+### 4. The Gritty Monks
+
+These humans possess an almost frightening level of stamina and stubbornness. Where most people give up after a few minutes of confusion, these individuals can sit in absolute silence, staring at a single problem for hours or even days without moving.
+
+- **In Daily Life:** They are intensely resilient. They do not view failure as an insult to their ego; they view it simply as a data point showing them what _not_ to do next time. They have a rare, meditative relationship with frustration—they actually enjoy the struggle because they know it precedes growth.
+
+***
+
+### The Shared Human Paradox
+
+Ultimately, they are a fascinating contradiction. They are **highly playful yet intensely disciplined**. They treat incredibly complex mathematical engineering like a playground game, yet they bring the work ethic of an Olympic athlete to a computer screen. They are humans who find their highest state of joy and "flow" when pushed to the absolute absolute limit of their mental capacity.
+
+Does this description sound like **someone you know**, or are you realizing that **you might secretly be one of these humans** yourself? Let me know what sparked this deep dive!
+
+
+
