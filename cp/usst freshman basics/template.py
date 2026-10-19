@@ -1,5 +1,6 @@
 import sys
 from functools import cmp_to_key
+from types import SimpleNamespace
 
 # utils
 
@@ -210,12 +211,26 @@ def compose(*funcs):
     return lambda x: x
   return reduce(lambda f, g: lambda x: f(g(x)), funcs)
 
-def pipe(initial_value, *funcs):
-    """Passes a value through a sequence of functions from left to right.
-    pipe(x, f, g) is equivalent to g(f(x)).
-    """
-    return reduce(lambda value, func: func(value), funcs, initial_value)
 
+def pipe(initial_value, *funcs):
+  """Passes a value through a sequence of functions from left to right.
+  pipe(x, f, g) is equivalent to g(f(x)).
+  """
+  return reduce(lambda value, func: func(value), funcs, initial_value)
+
+
+def curry(func):
+  """A simple decorator to curry a function, allowing partial application."""
+
+  def curried(*args, **kwargs):
+    if len(args) + len(kwargs) >= func.__code__.co_argcount:
+      return func(*args, **kwargs)
+    return lambda *brgs, **bkwargs: curried(*(args + brgs), **{**kwargs, **bkwargs})
+
+  return curried
+
+
+from functools import partial
 
 
 halt_symbol = object()
