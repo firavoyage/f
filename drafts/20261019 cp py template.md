@@ -8390,3 +8390,335 @@ What kind of **iterable** are you working with right now (e.g., a dictionary, a 
 
 
 
+
+# how to create a py fn that mimicks range
+
+## how to create a py fn that mimicks range
+
+To create a Python function that mimics the built-in `range()`, you can use a **generator function** with the `yield` keyword. This makes it memory-efficient and "lazy," just like real Python 3 ranges. [link](https://inventwithpython.com/blog/what-is-a-generator.html)
+
+The trickiest part of mimicking `range()` is handling its **flexible arguments**:
+
+- `range(stop)` (1 argument)
+- `range(start, stop)` (2 arguments)
+- `range(start, stop, step)` (3 arguments)
+
+### The Implementation
+
+Here is how you can write your own `my_range` function using `*args` to handle variable inputs and defensive checks for step sizes:
+
+python
+
+```
+def my_range(*args):
+    # 1. Parse arguments dynamically
+    num_args = len(args)
+
+    if num_args == 1:
+        start = 0
+        stop = args[0]
+        step = 1
+    elif num_args == 2:
+        start, stop = args
+        step = 1
+    elif num_args == 3:
+        start, stop, step = args
+    else:
+        raise TypeError(f"my_range expected at most 3 arguments, got {num_args}")
+
+    # 2. Safety check for the step value
+    if step == 0:
+        raise ValueError("my_range() arg 3 must not be zero")
+
+    # 3. Generate values loop
+    current = start
+    if step > 0:
+        while current < stop:
+            yield current
+            current += step
+    else:  # step is negative
+        while current > stop:
+            yield current
+            current += step
+```
+
+Use code with caution.
+
+### How it behaves
+
+Because we used `yield`, the function behaves exactly like a native generator or iterable. You can loop over it directly or convert it to a flat list to see all values at once. [link](https://www.youtube.com/watch?v=C21drnKo50U)
+
+python
+
+```
+# 1 Argument: Counts 0 to 4
+print(list(my_range(5)))
+# Output: [0, 1, 2, 3, 4]
+
+# 2 Arguments: Counts 2 to 6
+print(list(my_range(2, 7)))
+# Output: [2, 3, 4, 5, 6]
+
+# 3 Arguments: Counts 10 to 20 by 2s
+print(list(my_range(10, 21, 2)))
+# Output: [10, 12, 14, 16, 18, 20]
+
+# Negative Step: Counts down from 5 to 1
+print(list(my_range(5, 0, -1)))
+# Output: [5, 4, 3, 2, 1]
+
+# Using it directly in a loop
+for num in my_range(3):
+    print(num)
+# Output:
+# 0
+# 1
+# 2
+```
+
+Use code with caution.
+
+Would you like to extend this behavior? I can show you how to build a fully custom **class-based iterable** that supports indexing (like `range(10)[2]`) or how to modify this generator to support **floating-point steps** (like `0.1`), which Python's standard `range` can't do natively.
+
+- [link](https://inventwithpython.com/blog/what-is-a-generator.html)\
+  Invent with Python\
+  What is a Python Generator? (Implementing Your Own range ...\
+  Generators in Python (also called generator functions) are used to create a series of values one at a time. Generator functions le...
+- [link](https://www.youtube.com/watch?v=C21drnKo50U)\
+  YouTube·Luke May\
+  Python 3 - Mimicking the Range Function\
+  the range function is an iterable you can create an iterator out of it. and access individual items one at a time using the next m...
+- [link](https://www.youtube.com/watch?v=IYJQqyiqm7k)\
+  YouTube\
+  What is range() function in Python and how to use it? A Guide for ...\
+  Feb 28, 2026 — range() is a "lazy" object, meaning it does not generate all values and store them in memory immediately.
+
+Show all
+
+## what can you do or not on range compared w list
+
+While both `range` and `list` represent a sequence of numbers, they operate entirely differently under the hood. A `list` is a memory-heavy array that stores actual values, while a `range` is a **lazy iterable object** that calculates values on demand using fixed metadata.
+
+Here is a direct comparison of what you **can** and **cannot** do with a `range` object compared to a `list`:
+
+### What you CAN do with both
+
+- **Index & Slice:** You can access specific elements or slice ranges (e.g., `range(100)[2:10]` returns another range object `range(2, 10)`).
+- **Check Membership:** You can use the `in` operator (e.g., `50 in range(100)`). _Note: Python optimizes this for ranges so it runs instantly (O(1)) without checking every number._
+- **Get Length:** You can find out how many items it spans using `len(range(10))`.
+- **Iterate:** You can loop over both using a `for` loop.
+
+***
+
+### What you CANNOT do with a `range` (But can with a `list`)
+
+| Action                      | `list` 🟢                               | `range` 🔴                              |
+| --------------------------- | --------------------------------------- | --------------------------------------- |
+| **Modify Items**            | **Yes** (Mutable: `lst[0] = 5`)         | **No** (Immutable: Throws `TypeError`)  |
+| **Add / Append**            | **Yes** (`lst.append(10)`)              | **No** (Has fixed boundaries)           |
+| **Remove / Pop**            | **Yes** (`lst.pop()`)                   | **No** (Structure cannot change)        |
+| **Store Floating Points**   | **Yes** (`[1.5, 2.5, 3.5]`)             | **No** (Only accepts `int` types)       |
+| **Store Mixed Data Types**  | **Yes** (`[1, "apple", True]`)          | **No** (Strictly numerical sequences)   |
+| **Sort / Reverse In-Place** | **Yes** (`lst.sort()`, `lst.reverse()`) | **No** (No in-place structural changes) |
+
+***
+
+### The Massive Advantage of `range`
+
+The main reason to use `range` over a `list` is **memory efficiency**.
+
+- A `list` of 1,000,000 integers takes up about **8 Megabytes** of RAM because it stores every single number.
+- A `range(1000000)` takes up only **48 Bytes** of RAM. It only saves three numbers in memory: the `start`, the `stop`, and the `step`.
+
+Would you like to see how to convert a `range` into a `list` when you _do_ need to modify the data, or should we look at how Python implements its incredibly fast O(1) **membership testing** for ranges?
+
+## rewrite it like range def each(\*args):
+
+"""\
+Generates a progression list from start to end (excluded), or start (excluded) to end if step < 0.\
+"""\
+begin = 0\
+end = 0\
+step = 1
+
+if len(args) == 1:\
+end = args\[0]\
+elif len(args) == 2:\
+begin = args\[0]\
+end = args\[1]\
+elif len(args) == 3:\
+begin = args\[0]\
+end = args\[1]\
+step = args\[2]
+
+if (begin - end) \* step > 0:\
+step = -1
+
+numbers = \[]
+
+if step > 0:\
+index = begin
+
+while (index - end) \* step < 0:\
+numbers.append(index)\
+index += step
+
+else:\
+index = begin + step
+
+while (index - end) \* step <= 0:\
+numbers.append(index)\
+index += step
+
+return numbers
+
+Here is the corrected and fully functioning rewrite of your `each` function.
+
+To make it behave exactly like Python's built-in `range()`, we need to change how the logic handles step signs and loop conditions. Python's native `range` **does not automatically flip your step direction** if you provide mismatching bounds (e.g., `range(0, 10, -1)` simply returns an empty sequence, it doesn't auto-correct). Additionally, both positive and negative steps always start exactly at `begin`.
+
+python
+
+```
+def each(*args):
+    """
+    Generates a progression list from start to end (excluded).
+    """
+    begin = 0
+    end = 0
+    step = 1
+
+    # 1. Parse arguments exactly like range()
+    if len(args) == 1:
+        end = args[0]
+    elif len(args) == 2:
+        begin = args[0]
+        end = args[1]
+    elif len(args) == 3:
+        begin = args[0]
+        end = args[1]
+        step = args[2]
+    else:
+        raise TypeError(f"each() expects at most 3 arguments, got {len(args)}")
+
+    # 2. Defensive check for step zero
+    if step == 0:
+        raise ValueError("each() arg 3 must not be zero")
+
+    numbers = []
+    index = begin
+
+    # 3. Simple, separate loops for positive and negative steps
+    if step > 0:
+        while index < end:
+            numbers.append(index)
+            index += step
+    else:  # step < 0
+        while index > end:
+            numbers.append(index)
+            index += step
+
+    return numbers
+```
+
+Use code with caution.
+
+### Why these changes were made:
+
+- **The Starting Index:** In your original code, the negative step block started at `begin + step`. In native Python, a countdown like `range(5, 0, -1)` starts at `5` (the `begin` value), not `4`.
+- **Automatic Step Inversion:** Native `range` will not change a positive step to `-1` if the boundaries are inverted. If you call `range(10, 0, 1)`, it outputs an empty list `[]`. Separating the loops by `if step > 0` mirrors this exact behavior.
+- **Simplified Loop Conditions:** Replacing the multiplication math (`(index - end) * step`) with straightforward `<` and `>` operators makes the code cleaner, faster, and avoids accidental inclusion of the `end` value.
+
+Would you like to test this implementation against a few specific **edge cases** (like negative bounds or massive steps), or should we look at making it memory-efficient using a **generator** instead of building a full list?
+
+## rewrite it to yield like range, but do not care the behavior of range def each(\*args):
+
+"""\
+Generates a progression list from start to end (excluded), or start (excluded) to end if step < 0.\
+"""\
+begin = 0\
+end = 0\
+step = 1
+
+if len(args) == 1:\
+end = args\[0]\
+elif len(args) == 2:\
+begin = args\[0]\
+end = args\[1]\
+elif len(args) == 3:\
+begin = args\[0]\
+end = args\[1]\
+step = args\[2]
+
+if (begin - end) \* step > 0:\
+step = -1
+
+numbers = \[]
+
+if step > 0:\
+index = begin
+
+while (index - end) \* step < 0:\
+numbers.append(index)\
+index += step
+
+else:\
+index = begin + step
+
+while (index - end) \* step <= 0:\
+numbers.append(index)\
+index += step
+
+return numbers
+
+Here is the rewrite of your function using `yield`. This keeps your exact custom loop logic, boundaries, and step behaviors, but converts it into a memory-efficient **generator function**.
+
+python
+
+```
+def each(*args):
+    """
+    Generates a progression from start to end (excluded), or start (excluded) to end if step < 0.
+    """
+    begin = 0
+    end = 0
+    step = 1
+
+    if len(args) == 1:
+        end = args[0]
+    elif len(args) == 2:
+        begin = args[0]
+        end = args[1]
+    elif len(args) == 3:
+        begin = args[0]
+        end = args[1]
+        step = args[2]
+
+    if (begin - end) * step > 0:
+        step = -1
+
+    # Validation to avoid an infinite loop if step ends up being 0
+    if step == 0:
+        raise ValueError("step must not be zero")
+
+    if step > 0:
+        index = begin
+        while (index - end) * step < 0:
+            yield index
+            index += step
+    else:
+        index = begin + step
+        while (index - end) * step <= 0:
+            yield index
+            index += step
+```
+
+Use code with caution.
+
+### What changed?
+
+- **Removed the list:** The `numbers = []` list and `numbers.append(index)` were entirely removed.
+- **Added `yield`:** Replacing `append` with `yield index` pauses the function and hands the value directly to the loop consuming it.
+- **Removed `return`:** Generator functions stream data line-by-line, so returning a final list container is no longer needed.
+
+Would you like to see an example of how to **loop over this generator**, or should we add a quick check to handle cases where a **float** (like `0.5`) is passed as the step?
+
