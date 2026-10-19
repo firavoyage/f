@@ -511,11 +511,12 @@ cp: <!-- algorithms -->
 - mo algorithm
 - frobenius coin problem
 - top k elements
-- v8 acm syntax template
+- js v8 acm syntax template
 - template math python operators divmod floordiv truediv mod
 - dynamic programming recursive optimization game of hog final strategy
 - contests info
 - dsu on tree by depth longest chain decomposition binary search on is solvable
+- py template
 
 pm:
 
