@@ -661,7 +661,113 @@ def find_root(term, derivative):
 
 it depends on even/odd.
 
-maybe
+maybe we can divide all even ones by half and take the most frequent num.
+
+---
+
+at the end of the day you will either
+
+- divide on a num
+- divide on half of an even
+
+---
+
+doesnt feel i should brute force it.
+
+---
+
+one a yield
+
+- 0 if you cut above them (yes i guess, in optimal strategy)
+  - wait what if you cut 1 5 5 5 on 4
+    - why do that, it's not better than on 1
+    - and if it really become the most frequent num
+    - you can reverse the cut (you can not benefit from half cut this way)
+  - it's true
+- 1 if you cut on them (or below & non half, it doesnt matter which part gets counted)
+- 2 if you cut on half of it
+  - that is, 2n is the same as n and n?
+  - yeah obviously
+
+---
+
+that becomes (when normalized/flattened)
+
+- 0 above
+- 1 exact/below
+
+---
+
+what about below?
+
+~~it makes no sense to arbitrarily cut on a non half mid upper or mid lower i guess.~~
+
+- for mid upper
+  - ...
+
+i guess it's about the definition of _cut_.
+
+you can absolutely cut if needed.
+
+---
+
+can we make a constraint you only cut on a num or on half of a num
+
+---
+
+let's observe some patterns
+
+6
+5 4
+1 2 3 4 4 - 1 2 3 2 2 2 2 y
+5 8
+1 1 8 8 8 - 1 1 4 4 4 4 4 4 y
+1 8
+6 - 3 3 y
+7 9
+1 7 5 1 7 5 3 - 1 7 5 1 7 5 3 n?
+4 1
+1 1 1 1 - y
+3 5
+3 1 5 - n?
+
+what if
+
+1 2 3 8 8 - 1 2 3 4 4 4 4 n!
+
+---
+
+the cut must be on _one of the number or half_
+
+or the case where you move it lower strictly dominates
+
+**and i guess you will use the num where you cut half/full?**
+
+---
+
+optimization.
+
+if you are both more and smaller, you are better
+
+- if the smallest one is even, you will never take it full
+
+---
+
+one insight...
+
+you have to o n to read inputs regardless, but m n are the same...
+
+---
+
+algorithm:
+
+read array - n
+
+expand and flatten - ~n
+
+count occurences of each - ~n (builtin hash map)
+
+
 
 """
 
