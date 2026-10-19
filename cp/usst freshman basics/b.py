@@ -809,6 +809,44 @@ unless you cut on 1
 
 but it's irrelevant and you need to stack up existing heights anyway
 
+---
+
+---
+
+wa?
+
+when you want to achieve x as most frequent
+
+- all heights below x are irrelevant
+- you must place a cut >= x
+- you can at least take all rest and bonus[x] if you cut x directly
+- if you cut higher, 
+  - it will yield 1 iff it's only x high
+  - it will never provide 2x bonus
+
+so you must cut x for x
+
+---
+
+when you place a cut at x, you get
+
+- number of all heights >= x, which is n - loss
+- ...
+
+---
+
+wait ive found it, how did i merge keys?
+
+```
+  possible_cuts = sort([*count.keys(), *bonus.keys()])
+```
+
+---
+
+ac.
+
+yeah, i thought it would be merge in js, where it overrides when conflicting.
+
 """
 
 
@@ -825,7 +863,8 @@ def main():
 def solve():
   n, _ = read()
 
-  heights = read()
+  heights = read_ints()
+  # heights = read()
 
   count = dict()
 
@@ -837,7 +876,18 @@ def solve():
     if height % 2 == 0:
       increase(bonus, height / 2)
 
+  lose = 0
+  maximum = -math.inf
+
+  possible_cuts = sort(list(set([*count.keys(), *bonus.keys()])))
+  # possible_cuts = sort([*count.keys(), *bonus.keys()])
+
+  for cut in possible_cuts:
+    evaluation = n - lose + get(bonus, cut)
+    maximum = max(maximum, evaluation)
+    lose += get(count, cut)  
   
+  prn(maximum)
 
 def increase(object, key):
   if has(object, key):
@@ -845,7 +895,12 @@ def increase(object, key):
   else:
     object[key] = 1
 
+def get(object, key):
+  if has(object, key):
+    return object[key]
+  else:
+    return 0  
 
-# __()
+__()
 
 
