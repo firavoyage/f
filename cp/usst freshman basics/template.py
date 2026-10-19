@@ -31,7 +31,7 @@ print = prn
 
 def read_line():
   """Reads a single line from standard input."""
-  return command_readline()
+  return command_readline().rstrip('\r\n')
 
 
 def read():
@@ -116,6 +116,12 @@ def call(fn, *params):
     raise
 
 
+def __():
+  if __name__ == '__main__':
+    if 'main' in globals() and callable(globals()['main']):
+      globals()['main']()
+
+
 # std
 
 
@@ -146,11 +152,11 @@ def entries(obj):
 def num(n):
   """Attempts to cast to int or float safely, returning nil if NaN/Error."""
   try:
-    val = float(n)
+    val = float_(n)
     if math.isnan(val):
       return nil
     if val.is_integer():
-      return int(val)
+      return int_(val)
     return val
   except (ValueError, TypeError):
     return nil
@@ -408,27 +414,90 @@ def sum(*numbers):
 def prod(*numbers):
   return reduce(numbers, mul)
 
-def approx_eq(a, b, tolerance=0.1 ** 5):
-    """Checks if two floating numbers are approximately equal within a tolerance threshold."""
-    return abs(a - b) < tolerance
+
+def approx_eq(a, b, tolerance=0.1**5):
+  """Checks if two floating numbers are approximately equal within a tolerance threshold."""
+  return abs(a - b) < tolerance
+
 
 def mod_eq(a, b, modular):
-    """Checks modular equivalence: determines if (a - b) % modular == 0."""
-    return ((a % modular) - (b % modular)) % modular == 0
+  """Checks modular equivalence: determines if (a - b) % modular == 0."""
+  return ((a % modular) - (b % modular)) % modular == 0
+
 
 def xor(a, b):
   return a ^ b
 
+
 xor_ = xor
 
+
 def nullish(a, b):
-    """Mirrors JavaScript's nullish coalescing operator (??)."""
-    return b if a == nil else a
+  """Mirrors JavaScript's nullish coalescing operator (??)."""
+  return b if a == nil else a
+
 
 fallback = nullish
+
 
 def ln(n):
   # base default to e
   return logab(n)
 
-log(math.inf < 0)
+
+max_ = max
+
+
+def max(*numbers):
+  return max_(list(*numbers))
+
+
+min_ = min
+
+
+def min(*numbers):
+  return min_(list(*numbers))
+
+
+def improve(update, close, guess=1, timeout=10**5):
+  """
+  Iteratively improves an approximation guess until 'close(guess)' is True
+  or the operation limit is hit.
+  """
+
+  times = 0
+  while not close(guess) and times < timeout:
+    guess = update(guess)
+    times += 1
+
+  return guess
+
+
+def find_root(term, derivative):
+  """Solves the roots of an equation using the Newton-Raphson approximation method."""
+
+  def update(x):
+    return x - term(x) / derivative(x)
+
+  def close(x):
+    return approx_eq(term(x), 0)
+
+  return improve(update, close)
+
+
+# thoughts
+
+
+"""
+
+"""
+
+
+# solution
+
+
+def main():
+  log(1)
+
+
+__()
