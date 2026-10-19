@@ -410,7 +410,12 @@ def filter(items, f):
   return result
 
 
+# prefer `value in items` to check for existence
 def some(items, f):
+  if not callable(f):
+    value = f
+    f = lambda v: v == value
+
   for item in items:
     if f(item):
       return true
@@ -419,6 +424,10 @@ def some(items, f):
 
 
 def every(items, f):
+  if not callable(f):
+    value = f
+    f = lambda v: v == value
+
   for item in items:
     if not f(item):
       return false
@@ -568,11 +577,11 @@ from operator import (
 
 
 def sum(*numbers):
-  return reduce(numbers, add)
+  return num(reduce(list(*numbers), add))
 
 
 def prod(*numbers):
-  return reduce(numbers, mul)
+  return num(reduce(list(*numbers), mul))
 
 
 def approx_eq(a, b, tolerance=0.1**5):
