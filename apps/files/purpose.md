@@ -66,4 +66,18 @@ really, is it way too specific? "toggle_is_on_top".
 
 well anyway it's not a big deal. i was just too lazy to debounce.
 
+oct 2026
+
+19
+
+"files is not responding"
+
+how many times ive seen this...
+
+e.g. when you toggle hidden files (it runs some command for all open folders simultaneuosly), or when you refresh/open/scroll an album
+
+---
+
+i should publish b (bun root) as a separate pkg.
+
 
