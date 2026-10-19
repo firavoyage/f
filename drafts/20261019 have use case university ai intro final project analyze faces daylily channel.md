@@ -535,6 +535,33 @@ bash: /home/fira/.deno/env: No such file or directory
 fira@Fira:~/.have/data/test/face/daylily$ for f in *.{jpg,jpeg,png,bmp,webp}; do [ -f "$f" ] && [ ! -f "${f%.*}.yaml" ] && mv "$f" ".$f"; done
 ```
 
+---
+
+```
+ ~ % cd /home/fira/Documents/uni/final project
+ ~/Documents/uni/final project
+ % touch report.md
+ ~/Documents/uni/final project
+ % code report.md
+ ~/Documents/uni/final project
+ % mkpath dataset
+ ~/Documents/uni/final project
+ % touch requirements.md
+ ~/Documents/uni/final project
+ % code requirements.md
+```
+
+```
+ ~/Documents/uni/final project
+ % pandoc '/home/fira/Downloads/“人工智能通识导论A”课程期末项目要求/“人工智能通识导论A”课程期末项目要求.docx' -o '/home/fira/Documents/uni/final project/requirements_.md'
+ ~/Documents/uni/final project
+ % pandoc '/home/fira/Downloads/“人工智能通识导论A”课程期末项目要求/“人工智能通识导论A”课程期末项目报告（空白模板）.docx' -o '/home/fira/Documents/uni/final project/report template.md'
+ ~/Documents/uni/final project
+ % pandoc '/home/fira/Documents/uni/final project/report.md' -o '/home/fira/Documents/uni/final project/report.docx'
+ ~/Documents/uni/final project
+ % pandoc '/home/fira/Documents/uni/final project/report.md' -o '/home/fira/Documents/uni/final project/report.docx'
+```
+
 # what are the ways to detect human faces in py via foss libs and open models in the simplest proven general way
 
 ## what are the ways to detect human faces in py via foss libs and open models in the simplest proven general way
@@ -2103,4 +2130,161 @@ Use code with caution.
 3. **`${f%.*}.yaml`**: Safely strips the image extension to check for the visible companion YAML.
 
 Are you running into an environment where your script needs to dynamically detect whether it's executing inside **Bash vs. Zsh**, or is this universal one-liner enough for your workflow?
+
+
+# how to convert md to docs on ubuntu via cli
+
+## how to convert md to docs on ubuntu via cli
+
+To convert a Markdown (`.md`) file to a Word document (`.docx`) using the Ubuntu command line, the most reliable and powerful tool is <mark><strong><span>Pandoc</span></strong></mark>.
+
+### Step 1: Install Pandoc
+
+Open your terminal and install Pandoc using the apt package manager:
+
+bash
+
+```
+sudo apt update
+sudo apt install pandoc
+```
+
+Use code with caution.
+
+### Step 2: Convert a Single File
+
+Pandoc automatically detects the formats based on the file extensions. Run the following command to convert your Markdown file: [link](https://www.howtogeek.com/678022/how-to-use-pandoc-to-convert-files-on-the-linux-command-line/)
+
+bash
+
+```
+pandoc input.md -o output.docx
+```
+
+Use code with caution.
+
+- `input.md`: The path to your existing Markdown file.
+- `-o output.docx`: Specifies the output file name and format. [link](https://www.howtogeek.com/678022/how-to-use-pandoc-to-convert-files-on-the-linux-command-line/)
+
+***
+
+### Advanced CLI Options
+
+#### 1. Batch Convert Multiple Files
+
+If you want to convert every `.md` file in a directory into individual `.docx` files, use a simple `for` loop: [link](https://markdowntoword.pro/blog/markdown-to-word-command-line)
+
+bash
+
+```
+for f in *.md; do pandoc "$f" -o "${f%.md}.docx"; done
+```
+
+Use code with caution.
+
+#### 2. Apply a Custom Style Template
+
+By default, Pandoc uses a basic Word template. If you want your converted document to use specific styles, fonts, or margins, you can use an existing `.docx` file as a template: [link](https://opensource.com/article/19/5/convert-markdown-to-word-pandoc)
+
+bash
+
+```
+pandoc input.md --reference-doc=template.docx -o output.docx
+```
+
+Use code with caution.
+
+#### 3. Use Specific Markdown Flavors
+
+If your Markdown file relies heavily on GitHub-Flavored Markdown (like task lists or specific table formats), explicitly state the input flavor using the `-f` flag: [link](https://markdowntoword.pro/blog/markdown-to-word-command-line)
+
+bash
+
+```
+pandoc -f gfm input.md -o output.docx
+```
+
+Use code with caution.
+
+Are you converting documents with complex elements like **embedded images** or **mathematical equations**? I can show you how to ensure those render correctly in Word.
+
+- [link](https://markdowntoword.pro/blog/markdown-to-word-command-line)\
+  markdowntoword.pro\
+  Convert Markdown to Word: Command Line Guide (Pandoc)\
+  This is where the command line genuinely beats any web tool. A GitHub Actions step that regenerates Word copies of your docs on ev...
+- [link](https://opensource.com/article/19/5/convert-markdown-to-word-pandoc)\
+  Opensource.com\
+  Convert Markdown files to word processor docs using pandoc | Opensource.com\
+  Basic conversion: pandoc. Multiple templates: rename customized reference files, store them locally, and invoke specific ones usin...
+- [link](https://www.howtogeek.com/678022/how-to-use-pandoc-to-convert-files-on-the-linux-command-line/)\
+  How-To Geek\
+  How to Use pandoc to Convert Files on the Linux Command Line\
+  Jun 30, 2020 — The -o (output) option tells pandoc the name of the file we wish to create: The ODT file has the same content as the HTML file.
+
+Show all
+
+## how to convert docs to md
+
+To convert a Word document (`.docx`) back to a Markdown (`.md`) file on Ubuntu, you can use **Pandoc** as well.
+
+If you already installed Pandoc using the previous steps, you can perform the conversion immediately. If not, run `sudo apt install pandoc` first.
+
+### Step 1: Convert a Single File
+
+Run the following command in your terminal:
+
+bash
+
+```
+pandoc input.docx -o output.md
+```
+
+Use code with caution.
+
+- `input.docx`: The path to your existing Word file.
+- `-o output.md`: Specifies the output file name and format.
+
+***
+
+### Advanced CLI Options
+
+#### 1. Target a Specific Markdown Flavor
+
+By default, Pandoc outputs its own extended version of Markdown. If you want a specific flavor (like **GitHub-Flavored Markdown** for platforms like GitHub or Obsidian), use the `-t` (to) flag:
+
+bash
+
+```
+pandoc input.docx -t gfm -o output.md
+```
+
+Use code with caution.
+
+#### 2. Extract Embedded Images
+
+If your Word document contains images, Pandoc will skip them by default because `.md` files cannot hold raw image data. You can force Pandoc to extract the images into a separate folder and link them automatically using the `--extract-media` flag:
+
+bash
+
+```
+pandoc input.docx --extract-media=./images -o output.md
+```
+
+Use code with caution.
+
+- This creates an `images` folder in your current directory, saves the embedded graphics inside, and inserts links like `![](./images/image1.png)` directly into your Markdown file.
+
+#### 3. Batch Convert Multiple Files
+
+To convert all Word documents in a directory into individual Markdown files at once, use this loop:
+
+bash
+
+```
+for f in *.docx; do pandoc "$f" -o "${f%.docx}.md"; done
+```
+
+Use code with caution.
+
+Do your Word documents contain heavy formatting like **tables**, **nested lists**, or **tracked changes/comments**? Let me know, and I can give you the flags to clean up or preserve those features during the export.
 
