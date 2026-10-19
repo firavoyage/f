@@ -1371,3 +1371,357 @@ Are you trying to understand **how code plagiarism tools operate internally**, o
 
 Show all
 
+# how can you know whether someone cheated on codeforces
+
+## how can you know whether someone cheated on codeforces
+
+Detecting whether someone is cheating on **Codeforces** relies on a mix of <mark><strong>automated system indicators</strong>,<span> </span><strong>third-party tools</strong>, and<span> </span><strong>manual code analysis</strong></mark>. [link](https://codeforces.com/blog/entry/132796)
+
+Here is a breakdown of how you can identify a Codeforces cheater.
+
+***
+
+### 1. Official Platform Indicators
+
+The most definitive proof comes directly from the platform after Codeforces runs its post-round plagiarism detector: [link](https://codeforces.com/blog/entry/132796)
+
+- **"Skipped" Submissions:** If a user’s submissions for an official contest are flagged for plagiarism, Codeforces changes their status to **"Skipped"**. Their rating change for that round is rolled back. [link](https://codeforces.com/blog/entry/132796)
+- **"Out of Competition" Status:** A persistent history of skipped contests will often result in the user being permanently marked as "out of competition" or having their account restricted. [link](https://codeforces.com/blog/entry/141523)
+
+### 2. Community Tools & Databases
+
+Because official bans can take time, the competitive programming community has built dedicated tracking tools:
+
+- **The Codeforces Cheater Database:** You can look up handles directly on the unofficial [CF Cheater Database](https://cf-cheater-database.vercel.app/). This community-driven platform logs reported cheaters backed by clear evidence. [link](https://cf-cheater-database.vercel.app/)
+- **Profile Analyzers:** Tools like the [CF CheatDetector](https://cfcheatdetector.netlify.app/) pull profile data to highlight exactly how many of a user's past contests were flagged and skipped by the system. [link](https://cfcheatdetector.netlify.app/)
+- **Browser Extensions:** Several community-built Chrome extensions change a flagged user's rank color to a custom "Cheater" tag or alter their avatar on the site so you can spot them instantly during discussions. [link](https://www.linkedin.com/posts/neverspot%5Fthe-problem-of-cheating-oncodeforces-is-activity-7216088859825070080-i-uE)
+
+### 3. Red Flags in Code Structure (Manual Analysis)
+
+Cheaters frequently use code from leaked Telegram groups, YouTube streams, or AI tools (like ChatGPT or OpenAI's o1) and try to mask it. You can spot them by looking for these patterns: [link](https://codeforces.com/blog/entry/155770)
+
+- **Gibberish & Dead Code:** To bypass the plagiarism checker, cheaters often insert completely useless code—like an uncalled BFS function, random math operations, or massive blocks of fake comments.
+- **Superficial Edits:** Codeforces uses an advanced structural plagiarism algorithm (similar to MOSS). If two solutions have the exact same logic flow, variable order, and spacing, but merely use different variable names (e.g., changing `cnt` to `counter`), it is a clear sign of a rushed copy-paste job.
+- **AI-Generated Quirks:** AI-written code often includes overly verbose, textbook-style documentation, highly unusual naming conventions, or specific templates that a human under time pressure wouldn't write. [link](https://codeforces.com/blog/entry/130283)
+
+### 4. Behavioral and Rating Anomalies
+
+- **The "Unexplained Spike":** A user who historically struggles to solve Problem A or B suddenly solves Problems A through E at a Master or Candidate Master speed, without any gradual improvement in their submission history.
+- **Inability to Explain Code:** Legitimate high-rated coders can explain their logic. If a user achieves a high rank but completely fumbles or dodges questions when asked to explain their solution approach in the comments, they likely did not write it. [link](https://codeforces.com/blog/entry/130283)
+
+Are you trying to **verify a specific user's profile**, or are you looking to **report someone** you suspect of cheating? I can give you the exact steps for either.
+
+- [link](https://codeforces.com/blog/entry/132796)\
+  Codeforces\
+  Things you should know before you discuss cheating - Codeforces\
+  Cheaters are marked "out of competition" with "Skipped" submissions, though skipped submissions can occur without cheating (e.g., ...
+- [link](https://codeforces.com/blog/entry/130283)\
+  Codeforces\
+  Exposing a cheater, making his way to Candidate master without ...\
+  Pranav16's blog Exposing a cheater, making his way to Candidate master without getting caught By Pranav16, history, 2 years ago, H...
+- [link](https://codeforces.com/blog/entry/134003)\
+  Codeforces\
+  To catch an AI cheater\
+  we aim to provide some general advice on catching cheaters using AI through examining a specific user and their submissions on yes...
+
+Show all
+
+## how can you know whether someone cheated on codeforces via llms
+
+Detecting cheating via **Large Language Models (LLMs)** like OpenAI's `o1`/`o3-mini`, Claude, or Gemini is one of the most prominent challenges on **Codeforces**. While Codeforces explicitly bans using LLMs to generate core algorithmic logic, fix bugs from system feedback, or solve sub-problems during rated contests, catching them requires a blend of code stylometry, structural comparisons, and behavioral analysis. [link](https://codeforces.com/blog/entry/140786)
+
+Here is how the platform and community catch AI cheaters.
+
+***
+
+### 1. The "Honey-Pot" Strategy (Mass Similarity)
+
+Because LLMs generate predictable logic flows given the same prompt, multiple cheaters feeding the exact same problem statement into ChatGPT or Claude will receive highly similar code structure. [link](https://codeforces.com/blog/entry/149118)
+
+- **The AI Blueprint:** Codeforces admins and problem coordinators can feed their newly created problem statements into prominent LLMs just before or during a contest to generate a vast database of "AI baseline solutions". [link](https://codeforces.com/blog/entry/149118)
+- **Cross-Matching:** If a participant's submission structurally aligns with the AI's internal response framework (even if they change variable names or add random comments), the **Codeforces plagiarism detector** flags and skips it because it matches dozens of other cheaters who used the same LLM. [link](https://codeforces.com/blog/entry/133941)
+
+### 2. Sudden Shifts in Code Stylometry
+
+Every human programmer has distinct coding habits. When a cheater copies code from an LLM, their submission often exposes severe stylistic contradictions compared to their older, legitimate submissions: [link](https://www.facebook.com/groups/10ms.programming/posts/3391353201007821/)
+
+- **Syntactic Shifts:** A user who has always used standard post-increment loops (`i++`) suddenly starts using pre-increment loops (`++i`) because an LLM generated it. [link](https://codeforces.com/blog/entry/134003)
+- **Function Inconsistencies:** The code might suddenly employ specialized or low-level library functions (like `memset` or `memcpy`) that the user has never utilized in any of their hundreds of previous practice problems. [link](https://codeforces.com/blog/entry/134003)
+- **Loop Logic vs. Hand-Written Logic:** A user who typically fills arrays manually by looping might suddenly turn in a submission with optimized, standardized boilerplate code typical of AI engines. [link](https://codeforces.com/blog/entry/134003)
+
+### 3. AI Artifacts and "Dead Code" Bypasses
+
+To trick plagiarism checkers, cheaters try to "humanize" LLM outputs. However, this often leaves distinct technical red flags: [link](https://codeforces.com/blog/entry/140786)
+
+- **Overly TextBook Architecture:** LLM-generated code often features rigid, perfectly formatted templates, unnatural variable naming types (like using `size_t` inside standard loops where a human would just type `int`), and flawless documentation tags.
+- **The "Garbage Injection" Fail:** Cheaters often ask an LLM to add random logic (like a completely useless DFS function or unused math operations) to lower the code similarity index. Experienced community members checking open hacks instantly recognize these disconnected code blocks. [link](https://codeforces.com/blog/entry/140786)
+
+### 4. Behavioral Anomalies and Contest Velocity
+
+Advanced reasoning models can crack difficult problems (like Div. 2 D or E) incredibly fast. This creates footprints in the submission data: [link](https://codeforces.com/blog/entry/140786)
+
+- **Impossible Timing Profiles:** A user might open a complex problem, read it, and submit a 100-line flawlessly optimized solution within 2 to 3 minutes. Unless they are a known Grandmaster, this "speed-typing" behavior strongly implies they copy-pasted a ready-made block from an external AI window.
+- **The Failing Test-Case "Fix":** If a user receives a _Wrong Answer on Test 4_ verdict, and a minute later submits a patch that fixes that hyper-specific edge case using a highly convoluted block of code, it suggests they fed the failing output back into an LLM for debugging, which violates Codeforces rule revisions. [link](https://codeforces.com/blog/entry/140786)
+
+### 5. Post-Contest Rollbacks
+
+During major rounds, Codeforces conducts comprehensive post-contest analysis. For instance, in rounds like _Goodbye 2025_, the platform routinely catches and strips ranks from hundreds of high-ranking participants after checking statistical performance anomalies against AI patterns, enforcing widespread account skips. [link](https://codeforces.com/blog/entry/149941)
+
+Are you analyzing a **suspicious profile** that you want to check for AI usage patterns, or are you interested in how **problem setters** write problems that LLMs struggle to solve?
+
+- [link](https://codeforces.com/blog/entry/134003)\
+  Codeforces\
+  To catch an AI cheater - Codeforces\
+  he manually loops to fill arrays with values, LLMs will have variability in their output for non-functional changes when asked to ...
+- [link](https://codeforces.com/blog/entry/140786)\
+  Codeforces\
+  How to improve the system for identifying AI cheaters on Codeforces? - Codeforces\
+  Real-time behavioral analysis tracking problem open-to-submit timing, solve speed anomalies, and page action logging;
+- [link](https://codeforces.com/blog/entry/133941)\
+  Codeforces\
+  Rule Restricting the Use of AI \[revision 2024-09-14]\
+  AI-based code completion systems may be used, but only for syntax. Prohibited AI Use: You may not input the problem statement, its...
+
+Show all
+
+## how easy can you do that
+
+How easy it is to catch an AI cheater on Codeforces depends heavily on **who** is doing the looking.
+
+For the **platform’s automated anti-plagiarism system**, it is remarkably easy to catch a large portion of AI cheaters. However, for an **individual user** trying to manually prove someone used an LLM, it requires careful detective work. [link](https://codeforces.com/blog/entry/119278)
+
+The difficulty breakdown depends on the detection method:
+
+### 1. Catching "Copy-Paste" AI Cheaters: Very Easy 🟢
+
+Most cheaters do not understand the problem they are cheating on. They blindly copy the problem statement, paste it into ChatGPT, Gemini, or Claude, and copy-paste the resulting code back into Codeforces. [link](https://www.linkedin.com/posts/srivishnu-s-09571418a%5Fcompetitiveprogramming-llm-codeforces-activity-7345778096937062400-uD0K)
+
+- **Why it's easy to catch:** Frontiers models (like `o1` or `o3-mini`) are deterministic enough that when they are given the exact same prompt, they generate highly similar code architectures. [link](https://codeforces.com/blog/entry/119278)
+- **The result:** Codeforces' structural plagiarism detector groups these identical logic flows together. If 50 users submit code with the exact same architectural skeleton, **the system flags all of them automatically** and shifts their status to "Skipped." [link](https://codeforces.com/blog/entry/119278)
+
+### 2. Spotting the Behavioral Anomalies: Easy 🟢
+
+You can spot an AI cheater just by looking at their profile submission timeline. [link](https://codeforces.com/blog/entry/149032)
+
+- Advanced reasoning models can solve difficult problems (like Div. 2 D or E) in seconds.
+- If a historically lower-rated user submits a flawless, 150-line complex algorithm **within 2 minutes** of opening the problem, it is physically impossible for a human to read, conceptualize, and type that fast. This timing fingerprint makes them stand out instantly. [link](https://codeforces.com/topic/138165/en2)
+
+### 3. Proving "Smart" AI Cheaters: Hard 🔴
+
+If a cheater actually understands competitive programming, they might use the LLM to explain the logic, or they will manually rewrite the AI's code template into their own personal style before submitting it. [link](https://www.linkedin.com/posts/srivishnu-s-09571418a%5Fcompetitiveprogramming-llm-codeforces-activity-7345778096937062400-uD0K)
+
+- **Why it's hard to catch:** Once the code is rewritten using the user's typical variable naming schemes, macro templates, and formatting, it bypasses the automated plagiarism checker. [link](https://codeforces.com/blog/entry/119278)
+- **The platform's challenge:** Codeforces cannot easily ban someone based on suspicion alone. Without a structural code match to another user or an AI baseline, the platform lacks definitive proof. [link](https://www.youtube.com/watch?v=G6snGrVWX1Y\&t=38)
+
+### The Escalating Arms Race
+
+Advanced reasoning models like **OpenAI's o3** can achieve a Codeforces rating of **2724** (placing them in the top 0.2% of human programmers). Because these models can now generate highly optimized, flawless competitive code, the Codeforces community has pushed for advanced defense mechanisms. Coordinators are increasingly designing problems with intricate edge cases specifically meant to cause LLM hallucinations. [link](https://www.youtube.com/watch?v=HWIHfQV7U7M)
+
+Are you trying to evaluate if a **specific code submission** looks AI-generated, or do you want to know how **problem setters** are changing their problem styles to try to stump modern LLMs? [link](https://codeforces.com/blog/entry/149118)
+
+- [link](https://codeforces.com/blog/entry/149032)\
+  Codeforces\
+  A Concern Regarding AI - Codeforces\
+  Rampant AI cheating in online competitive programming platforms like Codeforces and LeetCode ruins contest integrity and negativel...
+- [link](https://codeforces.com/blog/entry/149118)\
+  Codeforces\
+  A Proposal to Fight AI Cheating: Using LLMs Against ...\
+  ... specifically how AI tools allow users to reach Grandmaster (Red) status in just a few contests. While many advocate for strict...
+- [link](https://www.linkedin.com/posts/srivishnu-s-09571418a%5Fcompetitiveprogramming-llm-codeforces-activity-7345778096937062400-uD0K)\
+  LinkedIn·Srivishnu S\
+  Can LLMs solve CP problems? A ChatGPT experiment\
+  In some cases, correctness of basic flow may fail by its hallucinated code as the LLM🤖 just recognise pattern, not the exact Prob...
+
+Show all
+
+## how proactive does codeforces do like for the hilarious obvious llm testers
+
+When it comes to **"hilariously obvious"** LLM cheaters—the ones who blindly feed a problem statement into an AI tool and copy-paste the exact output into the platform—<mark><strong>Codeforces is actually incredibly proactive and highly efficient</strong></mark> at wiping them out. [link](https://codeforces.com/blog/entry/149032)
+
+While the platform has a reputation for being a bit slow to deal with sophisticated, subtle cheaters, it relies on strict, post-contest automation to mass-ban the obvious ones. [link](https://codeforces.com/blog/entry/154613)
+
+***
+
+### 1. The Post-Contest "Guillotine" (Mass Skips)
+
+Codeforces does not block people mid-contest because they want to avoid false positives during live competitive time. Instead, they act **proactively in bulk right after the round ends**. [link](https://codeforces.com/blog/entry/154613)
+
+- **The Routine Cull:** In major contests, Codeforces routinely flags and completely wipes out hundreds of accounts. For instance, looking back at major competitive rounds like _Goodbye 2025_, mass rollbacks resulted in **over 4% of the top ranks being skipped** purely due to automated AI and plagiarism detection sweeps. [link](https://codeforces.com/blog/entry/149941)
+- **The "Zero-Tolerance" Policy:** If you are caught by this system, your contest status is changed to **"Skipped"**, your rating change is completely erased, and repeated offenses quietly push your account into restricted pools where your leaderboards no longer affect honest human players. [link](https://codeforces.com/blog/entry/142408)
+
+### 2. Why Hilariously Obvious AI is a Trap
+
+If a cheater does zero modification to an LLM's code, they are caught almost instantly by Codeforces' internal anti-plagiarism protocols: [link](https://codeforces.com/blog/entry/155347)
+
+- **The Identical-Prompt Cluster:** Because thousands of low-level cheaters feed the exact same problem statement into the exact same web interfaces (like ChatGPT or Claude), the AI generates near-identical structural code architectures. [link](https://codeforces.com/blog/entry/149118)
+- **MOSS-Style Defense:** Codeforces utilizes advanced structural analysis (similar to MOSS) that strips out comments and ignores variable renaming. If a cheater tries to hide AI code by manually changing a variable from `ans` to `result`, the engine still flags the underlying architectural blueprint. When 100 people turn in the exact same AI blueprint, the system auto-skips all of them. [link](https://codeforces.com/blog/entry/149118)
+- **Dead Code Detection:** Obvious cheaters often try to trick the system by asking the AI to _"add random code to bypass plagiarism."_ The Codeforces engine has noise suppression filters explicitly built to spot and isolate massive chunks of irrelevant, uncalled functions (like an unused DFS macro or fake mathematical structures). [link](https://codeforces.com/blog/entry/155347)
+
+### 3. The "Gotcha" Traps (Hidden Prompts)
+
+Problem setters have started fighting back directly at the source code level during generation.
+
+- **Invisible Text / Traps:** Some problem setters experiment with embedding white-text instructions or hyper-specific edge case text hidden inside the problem HTML. A human reading the screen won't see it, but a script scraping the page to feed into an LLM API will copy it. The hidden text instructs the LLM to output a specific unique error or variable name (like `int total_cheater_count = 0;`), instantly identifying the user to the system.
+
+### 4. Where Codeforces Admits Limitation
+
+While Codeforces aggressively purges the obvious script-kiddies, they freely admit to the community that they have to prioritize their resources: [link](https://codeforces.com/blog/entry/154613)
+
+- **Focusing on the Elite:** Admin energy is heavily concentrated on securing the **top ranks** (protecting Grandmasters, Masters, and Candidate Masters).
+- **The "Alt" Account Problem:** Because Codeforces allows easy registration, an obvious cheater who gets their rank skipped can easily generate a new alternate account ("alt") for the next round. This means while Codeforces is great at _cleaning_ the leaderboard after a match, they are still fighting an ongoing battle to stop cheaters from signing up in the first place. [link](https://codeforces.com/blog/entry/142408)
+
+Are you checking up on a **specific user's skipped status** from a recent contest, or are you curious about the specific **Official Codeforces AI Policy** regarding what tools are actually legal to use?
+
+- [link](https://codeforces.com/blog/entry/154613)\
+  Codeforces\
+  Anti-cheating in the LLM Era - Codeforces\
+  the energy of CF managers is limited. They pay more attention to removing cheaters within the top 200, and have to tolerate huge c...
+- [link](https://codeforces.com/blog/entry/155347)\
+  Codeforces\
+  How Codeforces Catches Cheaters: A Look Inside Plagiarism ...\
+  genuinely difficult to beat, Noise suppression: matches on tiny common patterns … are filtered out, so the system focuses on large...
+- [link](https://codeforces.com/blog/entry/149032)\
+  Codeforces\
+  A Concern Regarding AI\
+  those who were caught cheating simply fed the problem statements directly into AI and submitted the generated code without modific...
+
+Show all
+
+## what if you submit all correct solutions in a min
+
+If you submit all correct solutions within a single minute of a contest starting, <mark><strong>your account will immediately trigger heavy automated flags, get manually audited, and almost certainly be stripped or banned</strong></mark>**.** [link](https://codeforces.com/blog/entry/149032)
+
+In competitive programming, this scenario is known as an impossible timing profile. The exact consequences depend on your account history and _how_ you actually managed to do it.
+
+***
+
+### Scenario A: You Used an Alternate Account or Leaked Tasks (Cheating)
+
+If a user submits 5 to 7 correct solutions in the very first minute, it is physically impossible that they read, coded, and tested them in that timeframe. [link](https://codeforces.com/blog/entry/68476)
+
+- **The "Alt-Account" Trick:** A common cheating method involves a user logging into a temporary "throwaway" account, reading and solving all the problems over 90 minutes, and then copy-pasting the complete codes into their main account all at once in the final minutes. [link](https://codeforces.com/blog/entry/58038)
+- **The Consequences:** **Immediate "Skipped" status.** Codeforces post-round plagiarism detectors will look at the code syntax. If those exact solutions match the ones you submitted on your alt account, or if they match leaked solution code from Telegram/YouTube channels, your entire contest is wiped. If you repeat this, your account is permanently disabled. [link](https://www.youtube.com/watch?v=a8Vm-HpdSX8\&t=744)
+
+### Scenario B: You Used an Advanced LLM API (AI Automation)
+
+If you wrote a script that automatically scrapes the Codeforces problem statements the second the contest starts, feeds them into an API like OpenAI `o3-mini` or Claude, and automatically submits the generated code blocks, you will hit a wall immediately.
+
+- **The Structural Trap:** Hundreds of other low-level cheaters are feeding the exact same problem statements to the same LLMs. The AI will generate highly similar code templates for everyone. [link](https://codeforces.com/blog/entry/119278)
+- **The Consequences:** When Codeforces runs its MOSS-style anti-plagiarism system after the round, it will see dozens of accounts submitting identical logic clusters. **Everyone in that cluster gets auto-skipped.** [link](https://codeforces.com/blog/entry/132796)
+
+### Scenario C: You are a Legendary Grandmaster (Legitimate, But Rare)
+
+There is only _one_ rare circumstance where a human can legitimately submit multiple solutions in the first few minutes: **Problem Pre-solving.**
+
+- In some rare educational rounds or Div. 3/4 contests, top-tier international grandmasters can guess the entire solution to Problem A or B just by glancing at the title and the sample Input/Output data. They type out a 5-line solution instantly without compiling it locally and hit submit.
+- Even then, a Grandmaster can only pull this off for the first **1 or 2 easy problems** (submitting at the 1- or 2-minute mark). Nobody—not even the best programmers in the world—can read, conceptualize, and submit the _entire_ problem set (including complex D, E, or F problems) in 60 seconds. [link](https://www.quora.com/Many-coders-on-Codeforces-submit-a-problem-within-2-minutes-despite-having-a-long-problem-description-How-do-they-read-the-problem-description)
+
+***
+
+### The Codeforces System Response
+
+If the system sees an account (especially a lower-rated Newbie or Pupil) clear a whole dashboard in 60 seconds, here is exactly what happens behind the scenes:
+
+1. **The System Lock:** The account profile is immediately flagged for an **unexplained performance anomaly.**
+2. **Plagiarism Sweep:** The code is cross-referenced with all other participants and known AI baselines.
+3. **The "Out of Competition" Sentence:** If a match is found, your profile history will permanently show a red **"Skipped"** marker for that round, completely rolling back any rating points you would have made. [link](https://www.facebook.com/groups/programmingpilipinas/posts/2177328082736754/)
+
+Are you asking because you saw a **highly suspicious user** on a recent leaderboard with impossible submission timestamps, or are you curious about how the Codeforces **automated queue** handles rapid-fire submissions?
+
+- [link](https://codeforces.com/blog/entry/132796)\
+  Codeforces\
+  Things you should know before you discuss cheating - Codeforces\
+  Cheaters are marked "out of competition" with "Skipped" submissions, though skipped submissions can occur without cheating (e.g., ...
+- [link](https://codeforces.com/blog/entry/149032)\
+  Codeforces\
+  A Concern Regarding AI - Codeforces\
+  Proposed Solutions: Phone number verification, third-party ID binding, flagged statistical analysis of performance anomalies, proc...
+- [link](https://www.youtube.com/watch?v=a8Vm-HpdSX8\&t=744)\
+  YouTube·Kumar K \[Amazon]\
+  Biggest Cheating in Codeforces Exposed in 2025\
+  Jun 22, 2025 — One theory suggests that the contest authors, who are Indian, leaked problems and solutions to other Indian participants with low-\
+  3m
+
+Show all
+
+## do they ban vp
+
+On a normal basis, **no, Codeforces does not run plagiarism checks or issue bans for regular Virtual Participation (VP)**. [link](https://codeforces.com/blog/entry/115428)
+
+Because virtual contests are unrated and exist purely for personal practice, you are not hurting anyone else's rating or stealing official prize pools. If you want to use an LLM or look at editorial solutions during a standard VP simulation to understand a problem, the automated system will not flag or ban you. [link](https://codeforces.com/blog/entry/78078)
+
+However, there are a few **critical exceptions** where cheating during a VP can get you in trouble:
+
+### 1. Special Prize-Backed or Sponsored Tournaments 🏆
+
+When Codeforces hosts large, sponsored tournaments (like the **A\&DS Contest Final**), they sometimes allow a "virtual window" for people who couldn't make the live runtime.
+
+- For these specific events, the results _do_ determine prizes and official tournament standings.
+- Codeforces actively runs its anti-plagiarism scripts on these virtual windows and will **mass-disqualify or ban** accounts caught cheating during them.
+
+### 2. Community Scoreboard Pollution (The Nuisance Factor)
+
+Many users use their "virtual participation" to copy-paste pre-written solutions or AI outputs purely to spam the historical leaderboard. [link](https://codeforces.com/blog/entry/78078)
+
+- While the automated system won't instantly ban your account for this, the community heavily despises it because it ruins the historical scoreboard for everyone else. [link](https://codeforces.com/blog/entry/78078)
+- If you spam obvious AI solutions or leaked code across dozens of virtual contests, prominent community members or coordinators will eventually manually report your handle, which can lead to a manual account restriction or a permanent "out of competition" tag. [link](https://codeforces.com/blog/entry/132796)
+
+### 3. Accidentally Pasting on the Live Queue
+
+The biggest risk of "cheating" during a VP isn't getting caught by the VP system itself—it’s user error. If you are simulating a past contest virtually, but you accidentally submit your code to a _live, ongoing_ contest queue or the main problem set gym under the wrong tab, the system will process it as a live submission. If that code contains blatant plagiarism or AI artifacts, you will get hit with a live-contest ban. [link](https://www.facebook.com/groups/10ms.programming/posts/3391353201007821/)
+
+**Summary:** If you are using Virtual Participation honestly to learn and occasionally peek at an AI or a solution blog when you get stuck, you are completely safe. Just don't use it to mass-bot or spam the historical leaderboards. [link](https://codeforces.com/blog/entry/86806)
+
+- [link](https://codeforces.com/blog/entry/78078)\
+  Codeforces\
+  Remove Virtual Contestants from Contest Leaderboards\
+  Virtual participants remain visible only to themselves on their own VCs. Cheating via prewritten or copied solutions is common, co...
+- [link](https://codeforces.com/blog/entry/86806)\
+  Codeforces\
+  Doubt regarding virtual round\
+  Virtual contests are for your own practice. They don't reward you rating. But you can use them for simulating a real contest envir...
+- [link](https://codeforces.com/blog/entry/70036)\
+  Codeforces\
+  Virtual participation is great! - Codeforces\
+  Codeforces virtual participation allows users to compete in past contests using real accounts without rating risks (unrated, no ha...
+
+Show all
+
+## do they allow "cheating" on unrated practice
+
+On Codeforces, <mark><strong>yes, you are completely allowed to use external help during unrated practice.</strong></mark>
+
+When you are practicing in the **Problemset**, solving problems in the **Gym**, or doing a **Virtual Participation (VP)**, the rules are entirely different from an official rated contest. Codeforces does not run its plagiarism detector or issue bans for using external resources during practice.
+
+Here is how the system handles different types of "cheating" during unrated practice:
+
+### 1. Using LLMs, AI, or ChatGPT: Allowed ✅
+
+If you get stuck on a difficult math or dynamic programming problem while practicing, you can absolutely paste the problem statement into ChatGPT, Claude, or Gemini to ask for a solution, an explanation, or a code block.
+
+- **The Platform's View:** Codeforces views unrated practice as your own personal study time. If you want to use an AI to act as a personal tutor or to debug your code, you will not be flagged, skipped, or banned.
+
+### 2. Looking at Tutorials and Editorials: Allowed ✅
+
+Every standard Codeforces problem features an official **Tutorial** button at the bottom right of the page.
+
+- Reading the editorial, understanding the author’s logic, and even copying their implementation details to get your solution to pass the test cases is a completely standard and encouraged way to learn competitive programming.
+
+### 3. Copy-Pasting Other Users' Code: Allowed ✅
+
+When looking at the leaderboard of a past problem, you can click on any accepted submission, view their exact code, and copy it into your own text editor to submit it.
+
+- While doing this blindly won't help you learn, the platform will simply mark the problem as **"Accepted"** on your profile and turn the problem box green. No anti-plagiarism script will run against it.
+
+***
+
+### The One Big Catch: "Cheating" Yourself ⚠️
+
+While Codeforces won't ban your account for using LLMs or copying solutions during unrated practice, doing it excessively will severely hurt your profile in the long run:
+
+- **The Rating Trap:** If you rely on AI to solve problems for you during practice, your brain won't build the necessary algorithmic intuition. When you enter a **live, rated contest** where LLMs are strictly banned and heavily filtered, you will struggle to solve even basic problems, causing your official Codeforces rating to tank.
+- **Spoiling the Fun:** The core appeal of competitive programming is the "aha!" moment when you finally crack a difficult problem after hours of thinking. Letting an LLM do the heavy lifting skips the struggle, but it also strips away the reward.
+
+Are you looking for the **most effective way to use LLMs during practice** without ruining your actual coding growth, or do you want to find **high-quality practice problem sets** tailored to your current rating?
+
+# 
