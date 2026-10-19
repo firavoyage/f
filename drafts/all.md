@@ -521,6 +521,7 @@ cp: <!-- algorithms -->
 - py template
 - py std lib
 - shell zshrc solve shortcut vscode template
+- codefores python3 pypy mle
 
 pm:
 

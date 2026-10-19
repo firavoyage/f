@@ -659,6 +659,11 @@ def find_root(term, derivative):
 
 """
 
+395255407	12:58:08	precioushq	A - Moo Language School	Python 3	Accepted	375 ms	2100 KB
+395254582	12:51:04	precioushq	A - Moo Language School	PyPy 3-64	Memory limit exceeded on test 2	312 ms	262100 KB
+
+same code
+
 """
 
 
@@ -672,6 +677,7 @@ def main():
     solve()
 
 
+# mle?! on n <= 20
 def solve():
   n, k = read()
 
