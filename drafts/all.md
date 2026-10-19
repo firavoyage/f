@@ -520,6 +520,7 @@ cp: <!-- algorithms -->
 - dsu on tree by depth longest chain decomposition binary search on is solvable
 - py template
 - py std lib
+- shell zshrc solve shortcut vscode template
 
 pm:
 
