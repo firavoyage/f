@@ -813,6 +813,12 @@ but it's irrelevant and you need to stack up existing heights anyway
 
 ---
 
+how could cpp players have these nice builtin hash maps, lol.
+
+(i guess they can)
+
+---
+
 wa?
 
 when you want to achieve x as most frequent

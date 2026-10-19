@@ -668,9 +668,9 @@ def find_root(term, derivative):
 
 
 def main():
-  n = read()
+  task_count = read()
 
-  for i in each(n):
+  for i in each(task_count):
     solve()
 
 
