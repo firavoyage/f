@@ -150,9 +150,6 @@ def is_type(v, t):
   return false
 
 
-# Type Converters
-
-
 def num(n):
   """Attempts to cast to int or float safely, returning nil if NaN/Error."""
   try:
@@ -166,31 +163,25 @@ def num(n):
   except (ValueError, TypeError):
     return nil
 
+int_ = int
 
-def int_cast(n):
+def int(n):
   try:
-    return int(float(n))
+    return int_(float(n))
   except (ValueError, TypeError):
     return nil
 
+float_ = float
 
-def float_cast(n):
+def float(n):
   try:
-    val = float(n)
+    val = float_(n)
     return nil if math.isnan(val) else val
   except (ValueError, TypeError):
     return nil
 
 
-def bool_cast(v):
-  return bool(v)
-
-
-def str_cast(s):
-  return str(s)
-
-
-def list_cast(*args):
+def list(*args):
   """Handles spread args fallback or dynamic conversion of an iterable."""
   if len(args) == 1:
     # If it's an iterable collection but not a raw string
@@ -199,18 +190,3 @@ def list_cast(*args):
   return list(args)
 
 
-def arr(v):
-  return list(v)
-
-
-def set_cast(v):
-  return set(v)
-
-
-def dict_cast(v):
-  if isinstance(v, dict):
-    return v
-  try:
-    return dict(v)
-  except (ValueError, TypeError):
-    return dict(entries(v))
