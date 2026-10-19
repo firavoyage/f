@@ -122,6 +122,7 @@ def __():
     if 'main' in globals() and callable(globals()['main']):
       globals()['main']()
 
+
 sys.setrecursionlimit(200000)
 
 # std
@@ -254,7 +255,7 @@ def reduce(items, f, initial_value=nil):
   result = initial_value
 
   for item in items:
-    if index == 0 and initial_value == nil:
+    if index == 0 and initial_value is nil:
       result = item
       index += 1
       continue
@@ -272,7 +273,7 @@ def reduce_right(items, f, initial_value=nil):
   index = last_index
   result = initial_value
 
-  if initial_value == nil:
+  if initial_value is nil:
     result = items[last_index]
     index -= 1
 
@@ -285,7 +286,7 @@ def reduce_right(items, f, initial_value=nil):
 
 def each(*args):
   """
-  Generates a progression list from start to end (excluded).
+  Generates a progression list from start to end (excluded), or start (excluded) to end if step < 0.
   """
   begin = 0
   end = 0
@@ -305,13 +306,70 @@ def each(*args):
     step = -1
 
   numbers = []
-  index = begin
 
-  while (index - end) * step < 0:
-    numbers.append(index)
-    index += step
+  if step > 0:
+    index = begin
+
+    while (index - end) * step < 0:
+      numbers.append(index)
+      index += step
+
+  else:
+    index = begin + step
+
+    while (index - end) * step <= 0:
+      numbers.append(index)
+      index += step
 
   return numbers
+
+
+def filter(items, f):
+  result = []
+
+  for item in items:
+    if f(item):
+      result.append(item)
+
+  return result
+
+
+def some(items, f):
+  for item in items:
+    if f(item):
+      return true
+
+  return false
+
+
+def every(items, f):
+  for item in items:
+    if not f(item):
+      return false
+
+  return true
+
+
+all = every
+
+# iterables
+
+
+def sort(items, compare=nil):
+  """Sort an iterable, ascending by default"""
+
+  def cmp_(x, y):
+    if x < y:
+      return -1
+    elif x > y:
+      return 1
+    else:
+      return 0
+
+  if compare is nil:
+    compare = cmp_
+
+  return sorted(items, key=cmp_to_key(compare))
 
 
 # string
@@ -436,7 +494,7 @@ xor_ = xor
 
 def nullish(a, b):
   """Mirrors JavaScript's nullish coalescing operator (??)."""
-  return b if a == nil else a
+  return b if a is nil else a
 
 
 fallback = nullish
@@ -503,3 +561,6 @@ def main():
 
 
 __()
+
+
+log(each(1000000))

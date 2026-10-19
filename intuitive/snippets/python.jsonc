@@ -37,4 +37,22 @@
       "log(${0})"
     ],
   },
+  "true": {
+    "prefix": "t",
+    "body": [
+      "true",
+    ],
+  },
+  "false": {
+    "prefix": "fa",
+    "body": [
+      "false",
+    ],
+  },
+  "nil": {
+    "prefix": "n",
+    "body": [
+      "nil",
+    ],
+  },
 }
