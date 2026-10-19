@@ -4111,4 +4111,374 @@ Are you trying to track down a specific submission, problem statement, or editor
 
 Show all
 
-# 
+# how to know the rating of a problem on codeforces
+
+## how to know the rating of a problem on codeforces
+
+To know the rating of a problem on **Codeforces**, <mark>look at the<span> </span><strong>"Problem tags" box located on the right-hand sidebar</strong><span> </span>of the problem page</mark>. The difficulty rating is displayed as a number preceded by an asterisk (e.g., `*1200`, `*1500`, `*2100`). [link](https://codeforces.com/blog/entry/80996)
+
+***
+
+### 1. View It Directly on the Problem Page
+
+1. Open the specific problem you want to check.
+2. Look at the right sidebar and find the box titled **Problem tags**.
+3. The last tag listed at the bottom of that box is usually the **numerical difficulty rating**. [link](https://chromewebstore.google.com/detail/cf-getrating/amnjdhcbnpchmbggnfachokcjiidcpkc?gl=us)
+
+### 2. Check via the Main Problemset Page
+
+If you are browsing for problems to practice:
+
+1. Navigate to the main **Codeforces Problemset** page.
+2. You will see a large table of problems.
+3. Look at the far-right column labeled **"Rating"** to see the score for every problem listed. You can also click the column header to sort problems from easiest (`800`) to hardest (`3500`). [link](https://codeforces.com/blog/entry/146400)
+
+### 3. Missing Ratings? (Unrated or Hidden)
+
+If you cannot see the rating, it is usually due to one of three reasons:
+
+- **The contest is too recent:** New problems do not get an official rating immediately. Codeforces calculates the difficulty after a few days based on how many contest participants solved it.
+- **Your settings are hiding them:** If you want to view ratings but hide standard tags (like `dp` or `greedy`) to avoid spoilers, make sure you check your account or problemset settings. [link](https://codeforces.com/blog/entry/80996)
+- **Using a browser extension:** Many competitive programmers use Chrome extensions like **[CF GetRating](https://chromewebstore.google.com/detail/cf-getrating/amnjdhcbnpchmbggnfachokcjiidcpkc?gl=us)** to reveal _only_ the problem difficulty while keeping the topic tags safely hidden. [link](https://codeforces.com/blog/entry/80996)
+
+Are you trying to **hide topic tags** while keeping the rating visible, or are you looking for a way to **filter problems** within your current rating range? Let me know, and I can give you the exact steps!
+
+- [link](https://codeforces.com/blog/entry/80996)\
+  Codeforces\
+  How to check the problem rating without checking the tags of a ...\
+  For a given problem, is it possible to check the rating of the problem without looking at the tags? I do not want to look at the t...
+- [link](https://chromewebstore.google.com/detail/cf-getrating/amnjdhcbnpchmbggnfachokcjiidcpkc?gl=us)\
+  Chrome Web Store\
+  CF GetRating - Chrome Web Store\
+  Jul 25, 2022 — This Codeforces Get Rating extension helps users to just view the problem rating without seeing the other tags. 1. Install the ext...
+- [link](https://codeforces.com/blog/entry/146400)\
+  Codeforces\
+  Finding out the rating of a problem by just entering problem's ID\
+  we can the rating of a problem by searching it on "Problemset" section. But "Problemset" is not the only place from where we visit...
+
+## do you see it on every problem
+
+**No, you do not see a rating on every problem.**
+
+While the vast majority of practice problems have a numerical difficulty rating, there are specific situations where a problem will not display one:
+
+### 1. The Contest Just Ended (The Most Common Reason)
+
+Problems do not get ratings immediately. After a contest concludes, Codeforces requires anywhere from **a few hours to several days** to calculate the problem ratings. They compute this statistically based on how many participants solved each problem relative to their own user ratings. Until this batch calculation runs, the rating tag is entirely absent. [link](https://codeforces.com/blog/entry/83899)
+
+### 2. Gym Contests and External Platforms
+
+Problems located in the **[Codeforces Gym](https://codeforces.com/gyms)** section usually do not have standard Codeforces difficulty ratings. The Gym hosts community-uploaded contests, external university qualifiers, and past ICPC regionals. Because these do not impact official Codeforces user ratings, they are typically unrated.
+
+### 3. Extremely Old Problems
+
+Some very early Codeforces rounds or ancient archived problems from over a decade ago never received an official retrofitted difficulty rating.
+
+### 4. Wildcard or Unofficial Rounds
+
+Occasionally, special experimental rounds, April Fools contests, or unrated marathon events feature problems that intentionally skip the standard difficulty tag classification.
+
+Are you currently looking at a specific problem that **doesn't have a rating**, or are you trying to find a way to **estimate the difficulty** of a brand-new problem before its rating updates? Let me know and I can help you figure it out!
+
+- [link](https://codeforces.com/topic/46525/en2)\
+  Codeforces\
+  Rating the Difficulty of Codeforces Problems\
+  Jul 28, 2016 — problem rating is defined as the rating of a contestant whose expected place in a contest equals the number of participants who ac...
+- [link](https://codeforces.com/blog/entry/83899)\
+  Codeforces\
+  Problems Rating — Why does the Update time vary so much? - Codeforces\
+  Codeforces problem rating update duration inconsistency (ranging from hours up to nine days for educational rounds) and batch-upda...
+
+## for private group contests
+
+For **private group contests** (often set up as mashup contests), the rules change regarding how problem ratings are displayed:
+
+### 1. During the Live Contest: Hidden by Default 🙈
+
+When you are actively competing in a private group contest or mashup, **Codeforces hides the problem tags and ratings on purpose**. This is a feature meant to mimic an official, live competition environment so that you can't use the rating to guess how complex the solution needs to be.
+
+### 2. The Sidebar is Missing
+
+If you click on a problem within the group's contest dashboard (where the URL looks like `://codeforces.com...`), the standard **"Problem tags" box on the right sidebar will not be visible**.
+
+***
+
+### How to Find the Rating Anyway
+
+If you are training and absolutely need to know the problem ratings during or after a private contest, use these workarounds:
+
+- **Find the Original Problem Page:** Mashup contests pull existing problems from the main archive. Look at the problem's code/ID (e.g., `1800A` or `451B`) usually listed in the contest dashboard or at the top of the statement. Open a separate browser tab and go directly to `://codeforces.com`. The original page will show the sidebar with the rating.
+- **Use Browser Extensions:** Popular competitive programming extensions like **[CF GetRating](https://codeforces.com/blog/entry/104632)** or **[CF Problem Insights](https://codeforces.com/blog/entry/139273)** can sometimes pull the official rating from the Codeforces API and inject it directly onto your screen, bypassing the contest block.
+- **Check the Standings:** If the group manager assigned specific point values to the problems when creating the mashup, you can use the point weights as a rough proxy (e.g., a `500` point problem is much easier than a `2500` point problem), though this depends entirely on the creator setting it up manually. [link](https://codeforces.com/blog/entry/135099)
+
+Are you **running** this private group contest and trying to figure out how to set the problem difficulties for your members, or are you a **participant** trying to look them up? Let me know and I can guide you further!
+
+- [link](https://codeforces.com/blog/entry/135099)\
+  Codeforces\
+  Seeking Help: How to Change Problem Scores in Codeforces ...\
+  a Mashup contest on Codeforces allows us to combine problems from various contests into a single event. by default, all problems i...
+
+## does it help much if you could know the rating on live
+
+Knowing the difficulty rating during a live contest is a highly debated topic in competitive programming, but most experienced coders agree that <mark><strong>it actually hurts your performance more than it helps.</strong></mark>
+
+While it sounds like useful information on paper, it often triggers psychological traps that degrade your problem-solving abilities. Here is how knowing the live rating impacts a coder, divided into the few pros and the many cons:
+
+### ❌ Why it Usually Hurts (The Cons)
+
+- **It Induces Psychological Blinking:** If you open a problem and see it is rated `2100` (well above your current level), you might instantly panic, tell yourself _"I'm not good enough to solve this yet,"_ and give up before giving it a fair shot. Conversely, if you look at a problem rated `1200` and get stuck for 15 minutes, you might descend into severe tilt and anxiety, thinking _"Why am I struggling on something this easy?"_ [link](https://codeforces.com/blog/entry/79795)
+- **It Biases Your Approach:** If you know a problem is rated highly, you might immediately jump to over-complicating it—wasting time implementing heavy data structures like Segment Trees or complex Dynamic Programming when a simple, clever ad-hoc mathematical observation was all that was needed. [link](https://codeforces.com/blog/entry/68288)
+- **It Promotes Fake Confidence:** Believing a problem is "easy" just because of a low rating can cause you to rush through the description, miss crucial edge cases, make sloppy constraints checks, and rack up penalty points on wrong submissions. [link](https://codeforces.com/blog/entry/79795)
+
+### When it Can Help (The Pros)
+
+- **Smarter Time Allocation:** In a messy mashup contest where the problems are _not_ sorted by difficulty, knowing the ratings can prevent you from getting trapped. It ensures you don't spend 45 minutes banging your head against a `2400` problem when there is a free `900` problem sitting at the bottom of the list.
+- **The "Skip" Decision:** If you have 20 minutes left in a contest and are deciding between two problems, knowing that one is `1400` and the other is `1900` gives you a very clear mathematical signal on which problem you are statistically more likely to solve before the timer runs out. [link](https://codeforces.com/topic/46525/en2)
+
+### 💡 The Verdict
+
+Codeforces deliberately hides ratings in official contests to evaluate your pure problem-solving grit. When you don't know the rating, you treat every problem equally: you analyze the constraints, trace the logic, and look for the cleanest solution. [link](https://codeforces.com/blog/entry/79795)
+
+If you are participating in or hosting a private group contest, **it is highly recommended to keep the ratings hidden** to build real confidence and simulate a true competitive environment. [link](https://codeforces.com/blog/entry/79795)
+
+Are you noticing that **mental blocks or overthinking** affect your performance during your group's live rounds? I can share a few strategies on how to read constraints to estimate difficulty _without_ spoiling the actual rating!
+
+- [link](https://codeforces.com/blog/entry/79795)\
+  Codeforces\
+  How to avoid losing one's cool during contests? - Codeforces\
+  Compete frequently via virtual rounds to normalize pressure; avoid excessive scoreboard monitoring or rating predictors if it indu...
+- [link](https://codeforces.com/blog/entry/68288)\
+  Codeforces\
+  How to Interpret Contest Ratings\
+  having your rating on the line can be a good motivator during a contest, simulating some of the pressure of a major event such as ...
+- [link](https://codeforces.com/topic/46525/en2)\
+  Codeforces\
+  Rating the Difficulty of Codeforces Problems\
+  Technically, problem rating is defined as the rating of a contestant whose expected place in a contest equals the number of partic...
+
+## can they use custom problem instead of from existing contests
+
+<mark><strong><span>Yes, you can absolutely use custom problems instead of existing ones.</span></strong></mark> However, you cannot type the problem directly into Codeforces. You must use Codeforces' sister platform, **Polygon**, which is the official tool used by problemsetters to design, test, and package problems. [link](https://codeforces.com/blog/entry/148061)
+
+Setting it up requires a specific sequence of steps to bridge Polygon, a Codeforces Mashup, and your private group:
+
+### Step 1: Create the Problem on Polygon
+
+1. Go to **[Polygon Codeforces](https://polygon.codeforces.com/)** and create a free account.
+2. Build your custom problem by writing the statement, configuring the memory/time limits, adding test cases, and writing the solution checker. [link](https://codeforces.com/blog/entry/52135)
+3. **Crucial Access Step:** Go to the problem's **"Manage Access"** tab in Polygon, add the username `codeforces`, and grant it **Read** access. This allows Codeforces to look inside Polygon and pull your problem. [link](https://codeforces.com/blog/entry/72465?mobile=false\&locale=en)
+
+### Step 2: Form a Mashup Contest
+
+1. Navigate to the main Codeforces website and go to the **[Gym](https://codeforces.com/gyms)** tab.
+2. In the right-hand sidebar, click **"Create Mashup Contest"**.
+3. Give your contest a name and duration.
+4. To add your custom problem, copy the unique **Polygon problem URL** (found in the bottom-right corner of your problem's page on Polygon) and paste it into the Codeforces mashup wizard. [link](https://codeforces.com/blog/entry/120346?locale=en)
+
+### Step 3: Link the Mashup to Your Private Group
+
+1. Go to your **Private Group** page on Codeforces.
+2. Click on **"Contests"** and then choose **"Add contest to group"**.
+3. Paste the **Contest ID** of the Mashup you just created. [link](https://codeforces.com/topic/120971/en2)
+
+Once added, group members can participate in your custom contest, and their code will be executed and graded natively by the Codeforces judge system.
+
+Are you planning to **author the custom problems yourself** from scratch, or do you already have a set of problems from an external contest (like a PDF file) that you are trying to port over? I can offer tips on setting up Polygon checkers if you need them!
+
+- [link](https://codeforces.com/blog/entry/72465)\
+  Codeforces\
+  How can I create a contest in my group? - Codeforces\
+  Create a new mashup contest on Codeforces, add problems using the link from the bottom right section of each Polygon problem, and ...
+- [link](https://codeforces.com/blog/entry/148061)\
+  Codeforces\
+  Problemsetting - Codeforces\
+  For a private group, you just create a mashup and add the problems there, to create the problems use Polygon, after creating the p...
+- [link](https://codeforces.com/blog/entry/52135)\
+  Codeforces\
+  New feature on Virtual judge : Add your own problems to ...\
+  Register on Codeforces polygon, create a problem and add statements, tests, checkers, etc. Create a mashup here. Add the problem t...
+
+Show all
+
+## how easy is it if they dont want to copy existing problems in mashup contest
+
+Creating custom problems from scratch without copying existing ones is <mark><strong>significantly harder and takes much more time</strong></mark> than just picking existing problems.
+
+While the actual process of linking a custom problem to Codeforces is straightforward, **authoring** a high-quality, bug-free competitive programming problem requires careful engineering.
+
+Here is a breakdown of what makes it challenging and a realistic timeline of what to expect:
+
+### 🛠️ Why It is a Lot of Work (The Hidden Hurdles)
+
+When you create a custom problem on Polygon, you have to build every single piece of the architecture yourself:
+
+- **Writing Strict Checkers:** You cannot just say "the answer is 5." You have to write a robust verification program (usually in C++ using the `testlib.h` library) to validate that the participant's output perfectly matches your expected constraints.
+- **Generating Massive Test Cases:** You need to manually generate or write scripts to create **50 to 100+ test cases**. This includes regular cases, random distributions, and crucially, **extreme edge cases** (e.g., maximum possible values, minimum constraints, empty strings, large graphs) to ensure nobody passes with a faulty or slow O(N²) solution.
+- **Writing the Model Solution:** You must write a flawlessly optimized solution to set the official time and memory limits.
+- **Writing "Wrong" Solutions on Purpose:** Good problem setters write intentionally buggy or slow solutions (like a naive brute-force) to make sure their test cases successfully catch and reject bad code.
+
+### ⏱️ Realistic Time Estimates
+
+If you want to create a standard 5-problem contest for your group:
+
+- **Using Existing Problems:** **5 to 10 minutes.** You just type in five problem IDs (like `1800A`, `1500B`), click create, and you're done.
+- **Using Custom Problems:** **5 to 15+ hours of active work.** Even for experienced problem setters, designing a single well-balanced problem, writing the description cleanly, generating 80 test cases, and ensuring the judge doesn't crash takes hours of debugging.
+
+### 💡 The Verdict: Is it worth it?
+
+- **If it's a casual weekly practice:** **No.** Stick to existing Codeforces problems. With tens of thousands of problems in the archive, you can easily find hidden gems your group members have never seen before.
+- **If it's an official university selection, a major club tournament, or an interview test:** **Yes.** Using Polygon ensures complete academic integrity, meaning nobody can look up the solutions online during the live window.
+
+Are you trying to create a **high-stakes exam** where you absolutely need original problems to prevent cheating, or would you prefer a trick on **how to find obscure, unseen existing problems** to save yourself hours of work? Let me know how you'd like to proceed!
+
+## how easy is it if they dont want to copy existing problems in mashup contest, if they just wanna modify a bit
+
+Modifying an existing Codeforces problem slightly is **the perfect middle ground**. It is vastly easier than building a custom problem from scratch, but it still requires some work because you cannot simply click "Edit" on a Codeforces problem.
+
+To modify a problem, you must still use the **Polygon** platform, but you get to skip the hardest part: inventing the logic and writing the initial text.
+
+***
+
+### 🛠️ The Shortcut: How to Copy-Paste Into Polygon
+
+Since Codeforces problems are not open-source templates you can copy with one click, the easiest way to modify one is a manual clone:
+
+1. **Copy the Text:** Create a new problem in **Polygon**. Copy and paste the original statement into the description editor.
+2. **Make Your Tweaks:** Change whatever you want. For example, if the original problem asked to find the _maximum_ value, change your text to ask for the _minimum_ value. Or, double the constraints (e.g., change N ≤ 10⁵ to N ≤ 2 × 10⁵) to force a faster time complexity.
+3. **Update the Test Generators:** This is where the work comes in. If you changed the constraints or the logic, you will need to adjust the test case generator scripts in Polygon to output your new numbers.
+4. **Write the New Solution:** Code the solution to your modified version, generate the test answers, and link it to your mashup.
+
+***
+
+### ⚖️ The Effort Scale: What changes are Easy vs. Hard?
+
+Depending on _how_ you want to modify the problem, your workload will look very different:
+
+| Modification Type                                                               | Difficulty               | What You Have to Do                                                                                                                                          |
+| ------------------------------------------------------------------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Flavor Text Only\***(e.g., Changing "Alice and Bob" to your friends' names)\* | **Very Easy**⏱️ ~10 mins | Just copy the text, change the names, and you can reuse the exact same test cases and solution from the original problem.                                    |
+| **Scaling Constraints\***(e.g., Making N larger so a slow solution fails)\*     | **Medium**⏱️ ~30–45 mins | The logic stays the same, but you must rewrite the test generators to create larger inputs, and verify your new model solution passes within the time limit. |
+| **Logic Flipping\***(e.g., Changing "Minimize X" to "Maximize X")\*             | **Harder**⏱️ ~1–2 hours  | You have to completely rewrite the model solution, regenerate all test case answers, and rewrite the verification checker.                                   |
+
+### 💡 Is it worth doing?
+
+If your primary goal is to **prevent cheating/googling** in a friendly group setting, **Flavor Text modifications are highly effective and take almost no effort**.
+
+If a student tries to google the problem text or character names during your contest, they won't find anything, but you didn't have to spend hours writing custom math checkers.
+
+Which specific problem are you thinking about tweaking, and **what kind of change** do you want to make to it? I can tell you exactly how much work that specific change will require on Polygon!
+
+## can you get the test cases of the original problem
+
+<mark><strong><span>Yes, but only for the sample tests easily.</span></strong></mark> Getting the _full_ suite of official test cases (which often contains 50 to 100+ hidden scenarios) ranges from very easy to strictly impossible, depending on whether you own the problem or are pulling it from the main public archive. [link](https://github.com/emilgoldsmith/Codeforces-test-case-parser)
+
+Here is how it works depending on your situation:
+
+### 1. For Sample Test Cases (The Examples)
+
+If you just want the 1 to 3 example test cases shown on the problem page, you do not need to copy them manually.
+
+- There are open-source Python tools like **Codeforces-test-case-parser** and **[cf-testcases](https://github.com/pin3da/cf-testcases)** that automatically scrape the page.
+- They will format the sample data into neat `input.txt` and `output.txt` files directly inside your local coding folder. [link](https://github.com/pin3da/cf-testcases)
+
+### 2. For Hidden/Full Test Cases (From the Public Archive)
+
+If you are trying to grab the **full background test suite** of an existing Codeforces archive problem to drop into your Polygon setup, **Codeforces intentionally blocks this**. [link](https://codeforces.com/blog/entry/82501)
+
+- **The Reason:** They keep full test suites confidential to prevent users from hardcoding answers or stealing problems for malicious reasons. [link](https://codeforces.com/blog/entry/120859)
+- **The Web Truncation:** If you click on a failed submission online, Codeforces will show you the first few lines of a test case but will truncate it with `...` if it is too large. There is no official "Download Testdata" button. [link](https://codeforces.com/blog/entry/120846)
+
+### 🛠️ The Workarounds for a Modified Mashup
+
+If you are modifying a problem for a mashup and need full test suites to prevent your friends from breaking the judge, setters usually use one of these two methods:
+
+- **Use the Generator Script (Recommended):** Most high-level Codeforces problems have a blog post or editorial where the author explains how they generated the tests. Instead of stealing the literal text data, it is often easier to write a tiny C++ script (a "generator") that outputs random arrays, trees, or strings that match the problem's size constraints. [link](https://codeforces.com/blog/entry/15021)
+- **Stress Testing:** Instead of finding the original test cases, you can write a slow, basic "brute-force" version of the code that you know is 100% correct (but slow). Run a loop that generates random tiny inputs, feeds them to both your brute-force and your modified fast solution, and checks if the answers match. This acts as a self-made test suite generator.
+
+Are you trying to download the tests to **debug a specific bug** in your own code, or do you need a massive test file to **upload into Polygon** for your modified problem? I can show you how to quickly write a test generator script if needed!
+
+- [link](https://codeforces.com/blog/entry/120846)\
+  Codeforces\
+  CF-TESTCASES: A Tool to Retrieve Test Cases from Codeforces Problems - Codeforces\
+  Fails to retrieve very large or hidden test cases because Codeforces truncates input data over a certain size on submission pages ...
+- [link](https://www.reddit.com/r/codeforces/comments/1ouxjlx/how%5Fto%5Ffind%5Fthat%5Fparticular%5Ftest%5Fcase/)\
+  Reddit·r/codeforces\
+  How to find that particular test case : r/codeforces - Reddit\
+  Nov 12, 2025 — Stress test on smaller test cases. Create a file where you generate random test cases. as a verifiable correct code (either brutef...
+- [link](https://codeforces.com/blog/entry/19382)\
+  Codeforces\
+  HOW TO COPY COMPLETE TESTCASES - Codeforces\
+  Users can abuse the submission system to extract large test cases by finding distinctive features of the failing test, outputting ...
+
+Show all
+
+
+# does codeforces allow you to use llms for pl syntax help on live contests
+
+## does codeforces allow you to use llms for pl syntax help on live contests
+
+<mark><strong><span>Yes, Codeforces allows the use of AI tools for basic syntax help and minor code completion during live contests.</span></strong></mark> According to the official [Codeforces Rule Restricting the Use of AI](https://codeforces.com/blog/entry/133941), you can use AI-based code completion tools—like GitHub Copilot—for **syntax suggestions, boilerplate code (such as I/O functions), and minor coding assistance**. [link](https://www.youtube.com/watch?v=G6snGrVWX1Y)
+
+However, Codeforces draws a very strict line between syntax assistance and problem-solving assistance.
+
+### 🟢 Permitted AI Use
+
+- **Syntax and Autofill:** Using an AI autocomplete tool in your IDE to check programming language syntax or fill out repetitive structures.
+- **Boilerplate Code:** Generating standard template setups, libraries, or quick I/O configurations.
+- **Translation:** Translating the raw text of the problem statement into another language. [link](https://www.youtube.com/watch?v=G6snGrVWX1Y)
+
+### 🔴 Prohibited AI Use
+
+- **Logic Generation:** Using an LLM (like ChatGPT or Gemini) to generate algorithms, solve subproblems, or build the core logic of the problem. [link](https://www.youtube.com/watch?v=G6snGrVWX1Y)
+- **Inputting Problem Data:** Feeding the problem description, summaries, or test cases into an LLM to get a natural language solution or code. [link](https://www.youtube.com/watch?v=G6snGrVWX1Y)
+- **Debugging Failed Submissions:** Using AI to diagnose, fix, or optimize your code based on system feedback (like Wrong Answer or Time Limit Exceeded errors) received during the contest. [link](https://www.youtube.com/watch?v=G6snGrVWX1Y)
+- **Substituting Reasoning:** Any use of an LLM that replaces your own problem-solving, critical thinking, or algorithmic decision-making. [link](https://www.youtube.com/watch?v=G6snGrVWX1Y)
+
+If you use an LLM during a live round, keep it strictly limited to your local IDE's autocomplete feature for quick syntax references. Passing actual problem elements to an external chat interface puts you at a high risk of violating the [Codeforces anti-cheating policy](https://codeforces.com/topic/155255/en3).
+
+Are you trying to configure a **specific IDE extension** (like GitHub Copilot or Tabnine) for an upcoming round, or are you looking for **alternative ways** to quickly look up syntax while competing?
+
+- [link](https://www.youtube.com/watch?v=G6snGrVWX1Y)\
+  YouTube·James Peralta\
+  Can You Use AI in Codeforces Contests?\
+  Jan 19, 2026 — Codeforces explicitly limits the use of AI-based systems like ChatGPT and Gemini for solving problems during contests.\
+  12:55
+
+## can you ask for like pl docs, std libs
+
+**Yes, you can use an LLM or AI tool to look up programming language documentation and standard libraries during a live contest.**
+
+Under the [Codeforces Rule Restricting the Use of AI](https://codeforces.com/blog/entry/133941), checking standard APIs, lookups, and library syntax falls safely under the umbrella of **permitted syntax and minor coding suggestions**. [link](https://codeforces.com/blog/entry/133941)
+
+However, you must be very careful with _how_ you ask the LLM to avoid crossing the line into prohibited territory. Keep the following strict boundaries in mind:
+
+### 🟢 What is Allowed
+
+- **Pure API Lookups:** Asking an LLM questions like _"What is the syntax for `std::lower_bound` in C++?"_ or _"How do I implement a priority queue with a custom comparator in Python?"_
+- **Standard Data Structure Syntax:** Prompting for built-in method signatures, parameter orders, or return types (e.g., how to use `std::map`, Python's `collections.Counter`, or Java's `TreeMap`).
+- **Boilerplate generation:** Getting standard, non-problem-specific template code for libraries. [link](https://codeforces.com/blog/entry/133941)
+
+### 🔴 What Will Get You Banned
+
+- **Including Problem Context:** You must **never** mention the problem name, paste any constraints, or describe what your code is trying to achieve within the context of the contest. For example, asking _"How do I use std::map to count the occurrences of integers given in the problem array?"_ is an explicit violation because it involves problem-specific logic. [link](https://codeforces.com/topic/134567/en4?locale=ru)
+- **Asking for Algorithmic Wrappers:** You cannot ask the LLM to write a custom wrapper or helper that solves a sub-problem for you. Stick strictly to general, abstract language features and standard functions. [link](https://codeforces.com/blog/entry/133941)
+
+### 💡 Pro-Tip for Live Contests
+
+While asking an LLM for documentation is technically legal, manually switching tabs and prompting a chatbot can waste valuable contest minutes. To save time and completely eliminate the risk of accidentally violating rules, try these alternatives:
+
+1. **Offline Documentation:** Keep official, pre-downloaded documentation tools handy, such as **Zeal** or **Dash**, or use trusted sites like [cppreference.com](https://en.cppreference.com/) or the official Python docs. These are always 100% legal on Codeforces and completely safe from plagiarism-detection false positives.
+2. **Inline IDE Autocomplete:** Use an AI autocomplete tool integrated directly into your editor (like GitHub Copilot). It will provide parameter types and function signatures natively as you type without you needing to phrase a question. [link](https://codeforces.com/blog/entry/133941)
+
+Are you currently using a specific programming language (like **C++**, **Python**, or **Java**) for competitive programming? I can show you how to set up the best **local, offline documentation** for it so you don't have to rely on an LLM during rounds.
+
+- [link](https://codeforces.com/blog/entry/133941)\
+  Codeforces\
+  Rule Restricting the Use of AI \[revision 2024-09-14] - Codeforces\
+  AI code completion tools restricted to syntax and minor suggestions, excluding core logic or algorithm generation; using AI to res...
+
+- [link](https://codeforces.com/topic/134567/en4?locale=ru)\
+  Codeforces\
+  Rule Restricting the Use of AI \[revision 2024-09-14]\
+  Sep 14, 2024 — AI-based code completion systems may be used, but only for syntax and minor coding suggestions. Using them to generate the core lo...
+
