@@ -584,7 +584,7 @@ from operator import (
   floordiv,
   # divmod,
   mod,
-  pow,
+  # pow, # pow is builtin, while math/operator pow doesnt support modulo
   lt as less,
   gt as greater,
   eq,
