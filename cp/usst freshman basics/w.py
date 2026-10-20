@@ -804,17 +804,31 @@ def solve():
   if every(state, '0'):
     prn(students_needed(len(state)))
   else:
-    free_seats = map(state.split('1'), compose(len, partial(sub, 2)))
+    free_seats = map(state.split('1'), len)
 
-    result = sum(map(free_seats, students_needed))
+    # log(free_seats)
 
+    result = sum(
+      map(free_seats[slice(1, -1)], lambda x: students_needed(x-2))
+      # map(free_seats[slice(1, -1)], compose(partial(sub, b=2), students_needed))
+      # map(free_seats[slice(1, -1)], compose(partial(sub, 2), students_needed))
+    )
 
-  
+    result += students_needed(free_seats[0] - 1) + students_needed(
+      free_seats[-1] - 1
+    )
+
+    result += state.count('1')
+
+    prn(result)
+
 
 def students_needed(free_seat_count):
+  # log('.', free_seat_count)
   if free_seat_count < 0:
     return 0
 
-  return ceil(free_seat_count/3)
+  return ceil(free_seat_count / 3)
+
 
 __()
