@@ -1,3 +1,6 @@
+from template import *
+
+
 # math/nt
 
 
@@ -53,3 +56,25 @@ def is_prime(n):
       return False
 
   return True
+
+
+def base_prime(n):
+  """
+  List of power of each prime from 2 to ... for n
+
+  May contain trailing zero
+  """
+  result = [0]
+  index = 0
+  for i in each(2, ceil(sqrt(n)) + 1):
+    if n % i == 0:
+      while n % i == 0:
+        result[index] += 1
+        n /= i
+
+    if is_prime(i + 1):
+      result.append(0)
+      index += 1
+  return result
+
+

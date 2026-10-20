@@ -364,7 +364,9 @@ _range = range
 
 def each(*args):
   """
-  Generates a progression from start to end (excluded), or start (excluded) to end if step < 0.
+  Generates a progression from start to end (excluded)
+
+  if step < 0, both start and end are included
   """
   begin = 0
   end = 0
@@ -383,17 +385,12 @@ def each(*args):
   if (begin - end) * step > 0:
     step = -1
 
-  # Validation to avoid an infinite loop if step ends up being 0
-  if step == 0:
-    raise ValueError('step must not be zero')
-
+  index = begin
   if step > 0:
-    index = begin
     while (index - end) * step < 0:
       yield index
       index += step
   else:
-    index = begin + step
     while (index - end) * step <= 0:
       yield index
       index += step
@@ -620,11 +617,11 @@ from operator import (
 
 
 def sum(*numbers):
-  return num(reduce(list(*numbers), add))
+  return fallback(num(reduce(list(*numbers), add)), 0)
 
 
 def prod(*numbers):
-  return num(reduce(list(*numbers), mul))
+  return fallback(num(reduce(list(*numbers), mul)), 1)
 
 
 def approx_eq(a, b, tolerance=0.1**5):

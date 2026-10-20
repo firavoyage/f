@@ -355,7 +355,9 @@ _range = range
 
 def each(*args):
   """
-  Generates a progression from start to end (excluded), or start (excluded) to end if step < 0.
+  Generates a progression from start to end (excluded)
+
+  if step < 0, both start and end are included
   """
   begin = 0
   end = 0
@@ -374,17 +376,12 @@ def each(*args):
   if (begin - end) * step > 0:
     step = -1
 
-  # Validation to avoid an infinite loop if step ends up being 0
-  if step == 0:
-    raise ValueError('step must not be zero')
-
+  index = begin
   if step > 0:
-    index = begin
     while (index - end) * step < 0:
       yield index
       index += step
   else:
-    index = begin + step
     while (index - end) * step <= 0:
       yield index
       index += step
@@ -867,22 +864,52 @@ def main():
 def solve():
   n = read()
 
-  all_same = n
+  for maximum in each(n, 0):
+    factors = base_prime(maximum)
 
-  all_distinct = comb(n, 3)  # works as expeccted for n <= 2
+    baseline = prod(map(factors, partial(pow, exp=3)))
 
-  two_same_one_larger = n * (n - 1) // 2
-  # two_same_one_larger = n * (n - 1) / 2
-  two_same_one_smaller = two_same_one_larger
 
-  prn(
-    all_same * 1
-    + all_distinct * 1
-    + two_same_one_larger * 2
-    + two_same_one_smaller * 1
-  )
+# def solve():
+#   n = read()
+
+#   all_same = n
+
+#   all_distinct = comb(n, 3)  # works as expeccted for n <= 2
+
+#   two_same_one_larger = n * (n - 1) // 2
+#   # two_same_one_larger = n * (n - 1) / 2
+#   two_same_one_smaller = two_same_one_larger
+
+#   prn(
+#     all_same * 1
+#     + all_distinct * 1
+#     + two_same_one_larger * 2
+#     + two_same_one_smaller * 1
+#   )
 
 
 # __()
 
-log(comb(20, 3))
+
+def base_prime(n):
+  """
+  List of power of each prime from 2 to ... for n
+
+  May contain trailing zero
+  """
+  result = [0]
+  index = 0
+  for i in each(2, ceil(sqrt(n)) + 1):
+    if n % i == 0:
+      while n % i == 0:
+        result[index] += 1
+        n /= i
+
+    if is_prime(i + 1):
+      result.append(0)
+      index += 1
+  return result
+
+
+log(prod(map([1, 1, 3], partial(pow, exp=3))))
