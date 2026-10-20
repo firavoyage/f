@@ -954,6 +954,45 @@ b is also free. because if ka will coprime b regardless then vice versa.
 
 the `/gcd a b` part on `b/gcd a b` does not even matter.
 
+---
+
+wait, look at the example. (2 1 1).
+
+c doesnt have to be multiple of a.
+
+lcm to gcd formula is right. and i could not just expose a from gcd, 
+when there is dividend.
+
+---
+
+i would believe my theory on "consistent" max/mid/min was right.
+
+and what does it mean if one is consistently larger than another on base prime?
+
+it's a multiple. if eq allowed, it can be 1x mulitple.
+
+---
+
+my theory was...
+
+first to successfully form in any order, 
+
+it must be a, ab, and abc.
+
+gcd(lcm x y, lcm y z) = gcd x z
+
+min mid max -> gcd(ab, abc) = ab = a
+
+min max mid -> gcd(abc, abc) = abc = a
+
+mid min max -> gcd(ab, abc) = ab = ab (guranteed)
+
+mid max min -> gcd(abc, abc) = abc = a
+
+max min mid -> gcd(abc, ab) = ab = ab (guranteed)
+
+max mid min -> gcd(abc, ab) = ab = a
+
 
 
 """
