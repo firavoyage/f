@@ -901,6 +901,20 @@ _ max _ doesnt gurantee t, as the example output explanation says.
 
 wait my solution currently doesnt gurantee it reaches maximum...
 
+---
+
+---
+
+lunch.
+
+---
+
+let's take an alternative approach. it's not that complex.
+
+gcd(lcm a b, lcm b c) = gcd a c
+
+(look i was even )
+
 """
 
 
@@ -972,62 +986,62 @@ def solve():
 #   )
 
 
-def case_count(n):
-  """
-  n: factor power
-  """
+# def case_count(n):
+#   """
+#   n: factor power
+#   """
 
-  all_same = 1
+#   all_same = 1
 
-  # there are n cases from 0 to n-1 (max has power n, it's not all distinct then)
-  all_distinct = comb(n, 2)
-  # all_distinct = comb(n + 1, 2)
+#   # there are n cases from 0 to n-1 (max has power n, it's not all distinct then)
+#   all_distinct = comb(n, 2)
+#   # all_distinct = comb(n + 1, 2)
 
-  # 001 for 1, one case
-  # 002, 112 for 2 -> 2
-  # 003, 113, 223 for 3 -> 3
-  two_same_one_larger = n
-  # two_same_one_larger = n * (n - 1) // 2
-  # two_same_one_larger = n * (n - 1) / 2
-  two_same_one_smaller = two_same_one_larger
+#   # 001 for 1, one case
+#   # 002, 112 for 2 -> 2
+#   # 003, 113, 223 for 3 -> 3
+#   two_same_one_larger = n
+#   # two_same_one_larger = n * (n - 1) // 2
+#   # two_same_one_larger = n * (n - 1) / 2
+#   two_same_one_smaller = two_same_one_larger
 
-  return (
-    all_same * 1
-    + all_distinct * 1
-    + two_same_one_larger * 2
-    + two_same_one_smaller * 1
-  )
-
-
-def base_prime(n):
-  """
-  List of power of each prime from 2 to ... for n
-
-  May contain trailing zero
-  """
-  result = [0]
-
-  index = 0
-  for i in closed_each(2, n, 1):
-    if n % i == 0:
-      while n % i == 0:
-        result[index] += 1
-        n /= i
-
-    if is_prime(i + 1):
-      result.append(0)
-      index += 1
-  return result
+#   return (
+#     all_same * 1
+#     + all_distinct * 1
+#     + two_same_one_larger * 2
+#     + two_same_one_smaller * 1
+#   )
 
 
-def is_prime(n):
-  if n <= 1:
-    return False
-  # Check divisibility only up to the square root of n
-  for i in range(2, int(n**0.5) + 1):
-    if n % i == 0:
-      return False
-  return True
+# def base_prime(n):
+#   """
+#   List of power of each prime from 2 to ... for n
+
+#   May contain trailing zero
+#   """
+#   result = [0]
+
+#   index = 0
+#   for i in closed_each(2, n, 1):
+#     if n % i == 0:
+#       while n % i == 0:
+#         result[index] += 1
+#         n /= i
+
+#     if is_prime(i + 1):
+#       result.append(0)
+#       index += 1
+#   return result
+
+
+# def is_prime(n):
+#   if n <= 1:
+#     return False
+#   # Check divisibility only up to the square root of n
+#   for i in range(2, int(n**0.5) + 1):
+#     if n % i == 0:
+#       return False
+#   return True
 
 
 __()
