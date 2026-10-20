@@ -85,10 +85,16 @@ from algo import *
 # for i in each(1,100):
 #   log(i, 100/i)
 
-def f(n):
-  return random.random() >= 0.5
+# def f(n):
+#   return random.random() >= 0.5
 
-def g(n):
-  return true
+# def g(n):
+#   return true
 
-diff(closed_each(1, 10), f, g)
+# diff(closed_each(1, 10), f, g)
+
+a = dict()
+
+a[1] = 0
+
+log(a.get(1))
