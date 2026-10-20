@@ -682,4 +682,4 @@ def solve():
 
 # log(gcd(55, 55555))
 
-log([1,2,3][-1])
+log('a'.upper())
