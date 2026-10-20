@@ -909,11 +909,52 @@ lunch.
 
 ---
 
-let's take an alternative approach. it's not that complex.
+let's take an alternative approach. it's not that complex. no "base prime".
 
 gcd(lcm a b, lcm b c) = gcd a c
 
-(look i was even )
+(look i was even solving the wrong problem previously)
+
+it simply means
+
+gcd(ab/gcd a b, bc/gcd b c) = gcd a c
+
+a gcd(b/gcd a b, c/gcd b c) = gcd a c
+
+gcd returns int >= 1.
+
+thus gcd a c must contain a, at least.
+
+then c is multiple of a.
+
+let's say c = k a
+
+a gcd(b/gcd a b, ka/gcd b ka) = a gcd 1 k
+
+yes and gcd a b could not return anything > a or > b
+
+(alternatively, we say left >= a, right <= a, while left = right)
+
+thus (c = ka, and...)
+
+gcd(b/gcd a b, ka/gcd ka b) = 1
+
+b/gcd a b and ka/gcd ka b coprime.
+
+_b and _ka coprime when b has all a factors dropped and ka has all b factors dropped.
+
+(?)
+
+ka is free. it will coprime b regardless, 
+
+- if not, b must share some common factors w ka, 
+then ka/gcd ka b will have them dropped
+
+b is also free. because if ka will coprime b regardless then vice versa.
+
+the `/gcd a b` part on `b/gcd a b` does not even matter.
+
+
 
 """
 
