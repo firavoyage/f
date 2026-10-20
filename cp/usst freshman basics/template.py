@@ -243,12 +243,23 @@ def identity(x):
 
 
 def compose(*funcs):
-  """Composes multiple functions from right to left.
-  compose(f, g)(x) is equivalent to f(g(x)).
+  """
+  Composes multiple functions from left to right.
+  compose(f, g)(x) is equivalent to g(f(x)).
   """
   if not funcs:
     return lambda x: x
-  return reduce(funcs, lambda f, g: lambda x: f(g(x)))
+  return reduce(funcs, lambda f, g: lambda x: g(f(x)))
+
+
+# def compose(*funcs):
+#   """
+#   Composes multiple functions from right to left.
+#   compose(f, g)(x) is equivalent to f(g(x)).
+#   """
+#   if not funcs:
+#     return lambda x: x
+#   return reduce(funcs, lambda f, g: lambda x: f(g(x)))
 
 
 def pipe(initial_value, *funcs):

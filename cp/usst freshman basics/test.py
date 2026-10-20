@@ -26,3 +26,28 @@ from algo import *
 # log(reduce(list([]), mul))
 
 # log(compose(partial(add, 1), partial(mul, 3))(1))
+
+# log(
+#   map(
+#     [1, 2, 3], compose(partial(add, 1), partial(pow, exp=3))
+#   )
+# )
+# log(
+#   map(
+#     [1, 2, 3], compose(lambda x: x + 1, partial(pow, exp=3))
+#   )
+# )
+# log(map([1, 2, 3], compose(partial(pow, exp=3))))
+# log(
+#   map(
+#     [1, 2, 3],
+#     compose(
+#       lambda x: x + 1,
+#       lambda x: x + 1,
+#     ),
+#   )
+# )
+# log(map([1, 2, 3], lambda x: (x + 1) ** 3))
+
+
+log(comb(2, 2))
