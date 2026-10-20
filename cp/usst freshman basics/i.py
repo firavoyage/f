@@ -1210,19 +1210,19 @@ def calc(n):
 
 
 def calc_fast(n):
-  log('calc fast', n)
+  # log('calc fast', n)
   result = 0
 
   left = n
   for i in closed_each(1, sqrt(n)):
     right = floor(n / (i + 1)) + 1
     result += i**2 * (left - right + 1)
-    log('yield', i**2, 'from', left, 'to', right)
+    # log('yield', i**2, 'from', left, 'to', right)
 
     left = right - 1
 
   for i in closed_each(left, 1, -1):
-    log('yield', floor(n / i) ** 2, 'on', i)
+    # log('yield', floor(n / i) ** 2, 'on', i)
     result += floor(n / i) ** 2
 
   return result
@@ -1384,7 +1384,7 @@ def calc_fast(n):
 #   return True
 
 
-# __()
+__()
 
 # for i in closed_each(1, 20):
 #   prn(i, factor_count(i), solution_count(i))
@@ -1400,8 +1400,8 @@ def calc_fast(n):
 #         ):
 #           log(a, b, c)
 
-for i in closed_each(1, 10):
-  a, b = calc(i), calc_fast(i)
+# for i in closed_each(1, 1000):
+#   a, b = calc(i), calc_fast(i)
 
-  if a != b:
-    log(i, a, b)
+#   if a != b:
+#     log(i, a, b)
