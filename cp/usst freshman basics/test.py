@@ -682,4 +682,11 @@ def solve():
 
 # log(gcd(55, 55555))
 
-log('a'.upper())
+# log('a'.upper())
+
+n = 1.0
+m = 1.1
+
+log(int(n) if n.is_integer() else n)
+
+log(int(m) if m.is_integer() else m)

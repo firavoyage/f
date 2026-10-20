@@ -16,7 +16,16 @@ def pr(*args):
     return
   # If the first item is numeric, separate by space; otherwise join directly
   if isinstance(args[0], (_int, _float)):
-    _write(' '.join(map(args, str)))
+    _write(
+      ' '.join(
+        map(
+          map(
+            args, lambda n: int(n) if n.is_integer() else n
+          ),
+          str,
+        )
+      )
+    )
   else:
     _write(''.join(map(args, str)))
 
@@ -213,7 +222,11 @@ _list = list
 
 def list(*args):
   """Handles spread args fallback or dynamic conversion of an iterable."""
-  if len(args) == 1 and hasattr(args[0], '__iter__') and not isinstance(args[0], str):
+  if (
+    len(args) == 1
+    and hasattr(args[0], '__iter__')
+    and not isinstance(args[0], str)
+  ):
     return _list(args[0])
   return _list(args)
 
@@ -238,7 +251,9 @@ def pipe(initial_value, *funcs):
   """Passes a value through a sequence of functions from left to right.
   pipe(x, f, g) is equivalent to g(f(x)).
   """
-  return reduce(lambda value, func: func(value), funcs, initial_value)
+  return reduce(
+    lambda value, func: func(value), funcs, initial_value
+  )
 
 
 def curry(func):
@@ -247,7 +262,9 @@ def curry(func):
   def curried(*args, **kwargs):
     if len(args) + len(kwargs) >= func.__code__.co_argcount:
       return func(*args, **kwargs)
-    return lambda *brgs, **bkwargs: curried(*(args + brgs), **{**kwargs, **bkwargs})
+    return lambda *brgs, **bkwargs: curried(
+      *(args + brgs), **{**kwargs, **bkwargs}
+    )
 
   return curried
 
@@ -292,7 +309,10 @@ def map(items, f):
     if value is halt:
       break
 
-    if isinstance(value, HaltContainer) and value.halt_symbol is halt_symbol:
+    if (
+      isinstance(value, HaltContainer)
+      and value.halt_symbol is halt_symbol
+    ):
       result.append(value.value)
       break
 
@@ -673,7 +693,9 @@ def improve(update, close, guess=1, timeout=10**5):
 
 
 def find_root(term, derivative):
-  """Solves the roots of an equation using the Newton-Raphson approximation method."""
+  """
+  Solves the roots of an equation using the Newton-Raphson approximation method.
+  """
 
   def update(x):
     return x - term(x) / derivative(x)
