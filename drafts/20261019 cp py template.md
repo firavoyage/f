@@ -11046,3 +11046,399 @@ Many backend systems use a standard factory function that takes a third argument
 
 Are you trying to implement this in a **specific programming language** (like Python or SQL), or are you looking for a **formal mathematical logic notation**? Let me know, and I can give you the exact code syntax or math definition!
 
+# curry fn in py
+
+**Currying** in Python is a functional programming technique where a function with multiple arguments is transformed into a **sequence of single-argument functions**. Instead of passing all arguments at once like `func(a, b, c)`, you pass them one by one like `func(a)(b)(c)`. [link](https://medium.com/@obande5826/understanding-currying-in-python-with-simple-examples-fc9c2aa0be9c)
+
+While Python does not support currying natively by default (unlike Haskell or JavaScript), you can achieve it using **nested functions**, the **`functools.partial` module**, or a **custom decorator**. [link](https://stackoverflow.com/questions/24881604/when-should-i-use-function-currying)
+
+***
+
+### 1. Manual Currying (Nested Functions)
+
+The most basic way to curry is to nest definitions so that each function returns the next inner function. [link](https://www.stratascratch.com/blog/go-to-guide-to-currying-in-python)
+
+python
+
+```
+# A traditional multi-argument function
+def regular_multiply(x, y):
+    return x * y
+
+# The curried version
+def curried_multiply(x):
+    def with_y(y):
+        return x * y
+    return with_y
+
+# Usage
+print(curried_multiply(3)(5))  # Output: 15
+
+# You can also reuse the intermediate function
+triple = curried_multiply(3)
+print(triple(10))              # Output: 30
+```
+
+Use code with caution.
+
+### 2. Using `functools.partial` (Recommended Approach)
+
+If you already have a standard function, you can partially apply arguments using the native functools.partial module. This is the cleanest, most "Pythonic" way to mimic currying. [link](https://www.reddit.com/r/learnpython/comments/x6l47u/what%5Fare%5Fcurried%5Ffunctions/)
+
+For partial application examples and building a dynamic `@curry` decorator, please refer to programming guides and documentation online. [link](https://python-course.eu/advanced-python/currying-in-python.php)
+
+Are you trying to solve a **specific use case** with currying (like event handling, custom data filtering pipelines, or building microservices)? Let me know, and I can show you how to apply it practically!
+
+- [link](https://stackoverflow.com/questions/24881604/when-should-i-use-function-currying)\
+  Stack Overflow\
+  python - When should I use function currying?\
+  In Python, currying can be achieved through various methods, including manual implementation, using functools.partial
+- [link](https://www.reddit.com/r/learnpython/comments/x6l47u/what%5Fare%5Fcurried%5Ffunctions/)\
+  Reddit·r/learnpython\
+  What are curried functions : r/learnpython - Reddit\
+  Sep 5, 2022 — Partial application is basically creating another function that acts like calling the original with one or more of these arguments...
+- [link](https://python-course.eu/advanced-python/currying-in-python.php)\
+  Python-Course.eu\
+  11\. Currying in Python | Advanced\
+  This example will use multiple curried functions to apply item prices, quantities, and discounts incrementally.
+
+Show all
+
+## partial examples
+
+Here are practical examples of **partial application** in Python using `functools.partial`. This technique fixes a certain number of arguments of a function and generates a new, simpler function.
+
+### 1. Simple Utility Functions
+
+You can use `partial` to freeze arguments on general functions to create specific, reusable helpers.
+
+python
+
+```
+from functools import partial
+
+# A generic power function
+def power(base, exponent):
+    return base ** exponent
+
+# Create specialized versions
+square = partial(power, exponent=2)
+cube = partial(power, exponent=3)
+
+print(square(5))  # Output: 25 (5 ** 2)
+print(cube(3))    # Output: 27 (3 ** 3)
+```
+
+Use code with caution.
+
+***
+
+### 2. Streamlining Data Processing Maps
+
+When using functions like `map()` or `filter()`, the callback must accept exactly one argument. `partial` lets you adapt multi-argument functions to fit this requirement.
+
+python
+
+```
+from functools import partial
+
+def multiply(x, y):
+    return x * y
+
+numbers = [1, 2, 3, 4, 5]
+
+# Scale all numbers by 10
+triple_func = partial(multiply, 10)
+scaled_numbers = list(map(triple_func, numbers))
+
+print(scaled_numbers)  # Output: [10, 20, 30, 40, 50]
+```
+
+Use code with caution.
+
+***
+
+### 3. Handling API / HTTP Headers
+
+If you frequently query an external API with static configurations, you can lock in headers or base URLs.
+
+python
+
+```
+from functools import partial
+import requests
+
+def send_request(base_url, endpoint, auth_token):
+    # Abstracted request logic
+    return f"Sending to {base_url}/{endpoint} with token {auth_token[:4]}..."
+
+# Pre-configure production API settings
+prod_api_request = partial(
+    send_request,
+    base_url="https://production.com",
+    auth_token="SECRET_JWT_KEY_12345"
+)
+
+# Call specific endpoints cleanly
+print(prod_api_request(endpoint="users"))   # Sent to production users
+print(prod_api_request(endpoint="billing")) # Sent to production billing
+```
+
+Use code with caution.
+
+***
+
+### 4. Custom Logger Prefixes
+
+You can freeze metadata or tags inside a logging function so that logs automatically attach contextual information.
+
+python
+
+```
+from functools import partial
+from datetime import datetime
+
+def log_message(level, component, message):
+    timestamp = datetime.now().strftime("%H:%M:%S")
+    print(f"[{timestamp}] [{level}] [{component}]: {message}")
+
+# Lock down the 'component' and 'level' arguments for a database worker
+db_error_logger = partial(log_message, level="ERROR", component="Database")
+auth_info_logger = partial(log_message, level="INFO", component="AuthService")
+
+# Simple one-argument calls
+db_error_logger("Connection timed out.")
+auth_info_logger("User logged in successfully.")
+```
+
+Use code with caution.
+
+Would you like to see how to implement a **custom `@curry` decorator** that automatically switches between normal evaluation and partial execution depending on how many arguments you pass?
+
+## fix def curry(func):
+
+"""A simple decorator to curry a function, allowing partial application."""
+
+def curried(\*args, \*\*kwargs):\
+if len(args) + len(kwargs) >= func.\_\_code\_\_.co\_argcount:\
+return func(\*args, \*\*kwargs)\
+return lambda \*brgs, \*\*bkwargs: curried(\
+\*(args + brgs), \*\*{\*\*kwargs, \*\*bkwargs}\
+)
+
+return curried AttributeError: 'builtin\_function\_or\_method' object has no attribute '\_\_code\_\_'. Did you mean: '\_\_call\_\_'?
+
+The error happens because **built-in functions** (like `print`, `sum`, or `math.sin`) are written in C, so they **do not have a `__code__` attribute** or a `co_argcount` property. The `__code__` object only exists on native Python functions.
+
+To fix this and make your decorator robust against built-in functions, methods, and other callables, you should use Python's built-in **`inspect.signature`** instead. It reliably extracts the expected number of arguments for almost any callable.
+
+Here is the corrected and modernized version of your decorator:
+
+python
+
+```
+import inspect
+
+def curry(func):
+    """A robust decorator to curry a function, supporting built-ins and user-defined functions."""
+
+    # Get the number of required parameters safely
+    try:
+        sig = inspect.signature(func)
+        # Count all parameters except positional-only varargs (*args) or keyword varargs (**kwargs)
+        total_args = len([p for p in sig.parameters.values() if p.kind not in (p.VAR_POSITIONAL, p.VAR_KEYWORD)])
+    except ValueError:
+        # Fallback for certain builtins that don't expose a signature
+        total_args = 0
+
+    def curried(*args, **kwargs):
+        # Trigger execution if we have enough arguments
+        if len(args) + len(kwargs) >= total_args:
+            return func(*args, **kwargs)
+
+        # Otherwise, continue accumulating arguments
+        return lambda *brgs, **bkwargs: curried(
+            *(args + brgs), **{**kwargs, **bkwargs}
+        )
+
+    return curried
+```
+
+Use code with caution.
+
+### Why this works:
+
+1. **`inspect.signature(func)`**: Inspects the function metadata safely across both native Python functions and underlying compiled C built-ins.
+2. **Handles `*args` and `**kwargs`edge cases**: By filtering out`VAR_POSITIONAL`and`VAR_KEYWORD`, it counts the actual explicit arguments expected by the function.
+
+### Example Usage:
+
+python
+
+```
+import math
+
+# 1. Fixing your error with a built-in function (e.g., math.pow)
+curried_pow = curry(math.pow)
+square = curried_pow(2)  # Passes the base 'x'
+print(square(5))         # Passes the exponent 'y' -> Outputs: 32.0
+
+# 2. Works perfectly with normal Python functions too
+@curry
+def add_three(a, b, c):
+    return a + b + c
+
+print(add_three(1)(2)(3))  # Outputs: 6
+```
+
+Use code with caution.
+
+Would you like to see how to make this decorator support **positional-only arguments** or **type hinting**, or are you ready to test it in your codebase?
+
+## can you try catch
+
+No problem! We can use a `try/except` block directly inside the returned wrapper function.
+
+However, since a curried function evaluates _one step at a time_, we have to decide **where** to catch the error. There are two options depending on what you want to achieve:
+
+***
+
+### Option 1: Catch errors _during execution_ (Recommended)
+
+This approach catches exceptions (like a `TypeError` or `ZeroDivisionError`) when the function finally has enough arguments and tries to run.
+
+python
+
+```
+import inspect
+
+def curry(func):
+    try:
+        sig = inspect.signature(func)
+        total_args = len([p for p in sig.parameters.values() if p.kind not in (p.VAR_POSITIONAL, p.VAR_KEYWORD)])
+    except ValueError:
+        total_args = 0
+
+    def curried(*args, **kwargs):
+        if len(args) + len(kwargs) >= total_args:
+            # Try to execute the final function safely
+            try:
+                return func(*args, **kwargs)
+            except Exception as e:
+                print(f"Execution Error in {func.__name__}: {e}")
+                return None  # Or re-raise, or return a custom error object
+
+        return lambda *brgs, **bkwargs: curried(
+            *(args + brgs), **{**kwargs, **bkwargs}
+        )
+
+    return curried
+```
+
+Use code with caution.
+
+***
+
+### Option 2: Catch errors _during the argument gathering phase_
+
+If you want to catch errors where someone passes bad keyword arguments _before_ the function even runs, you can check arguments at every step using `sig.bind_partial`:
+
+python
+
+```
+import inspect
+
+def curry(func):
+    try:
+        sig = inspect.signature(func)
+        total_args = len([p for p in sig.parameters.values() if p.kind not in (p.VAR_POSITIONAL, p.VAR_KEYWORD)])
+    except ValueError:
+        sig = None
+        total_args = 0
+
+    def curried(*args, **kwargs):
+        # Validate arguments gathered so far against the signature
+        if sig:
+            try:
+                sig.bind_partial(*args, **kwargs)
+            except TypeError as e:
+                print(f"Argument Validation Error: {e}")
+                raise  # Immediately stop execution for invalid arguments
+
+        if len(args) + len(kwargs) >= total_args:
+            try:
+                return func(*args, **kwargs)
+            except Exception as e:
+                print(f"Runtime Error: {e}")
+                raise
+
+        return lambda *brgs, **bkwargs: curried(
+            *(args + brgs), **{**kwargs, **bkwargs}
+        )
+
+    return curried
+```
+
+Use code with caution.
+
+### Example Behavior (Option 2):
+
+python
+
+```
+@curry
+def divide(a, b):
+    return a / b
+
+# 1. Catches bad arguments instantly during partial application
+# Throws error: "Argument Validation Error: got an unexpected keyword argument 'bad_arg'"
+invalid_call = divide(a=5, bad_arg=10)
+
+# 2. Catches runtime errors at the end
+# Throws error: "Runtime Error: division by zero"
+result = divide(10)(0)
+```
+
+Use code with caution.
+
+Which type of failure are you trying to guard against? **Incorrect/unexpected arguments**, or **runtime calculation errors** (like dividing by zero or missing database connections)?
+
+## can you try catch instead of inspect
+
+Yes, you can absolutely use a **`try/except`** strategy instead of the `inspect` module.
+
+Instead of trying to count or inspect the arguments up front, you simply **try to execute the function** with the arguments you have collected so far. If it throws a `TypeError`, you catch it, assume the function needs more arguments, and return another lambda to collect more.
+
+Here is how you write it:
+
+python
+
+```
+def curry(func):
+    """A pure try/catch decorator for currying."""
+
+    def curried(*args, **kwargs):
+        try:
+            # Try running it. If it has enough arguments, it succeeds!
+            return func(*args, **kwargs)
+        except TypeError as e:
+            # Check if the TypeError happened because arguments are missing
+            # (e.g., "missing 1 required positional argument")
+            # If the error happened *inside* the function, re-raise it.
+            if func.__name__ in str(e) or "argument" in str(e).lower():
+                return lambda *brgs, **bkwargs: curried(
+                    *(args + brgs), **{**kwargs, **bkwargs}
+                )
+            raise e # Re-raise unrelated TypeErrors from inside the function
+
+    return curried
+```
+
+Use code with caution.
+
+### Why this is elegant:
+
+- **Built-in Compatible:** It completely bypasses `__code__` and `inspect`, meaning it works out of the box with built-in functions written in C (like `math.pow`).
+
+- **Duck Typing:** It adheres to Python's "easier to ask for forgiveness than permission" (EAFP) philosophy.
+

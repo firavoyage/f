@@ -462,6 +462,7 @@ desktop:
 - usb types
 - hardware floating ground ungrounded circuit loop powered off plug board laggy keyboard
 - vscode terminal ctrl v binding
+- audio recorder legacy usb2.0 cable compatibility
 
 android:
 
