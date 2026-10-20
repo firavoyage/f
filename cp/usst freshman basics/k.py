@@ -785,13 +785,29 @@ if i < j, then zj will be at most ai
 logics:
 
 - shoot on the last (irrelevant)
-- shoot wherever you like and 
+- shoot starting from the minimum and chain it rightward
+
+in a word, zi = min a1 to ai
+
+---
+
+i may do it imperatively
 
 """
 
 
 def solve():
-  pass
+  _ = read()
+  a = read_ints()
+
+  minimum = a[0]
+  result = 0
+
+  for i in a:
+    minimum = min(minimum, i)
+    result += minimum
+
+  prn(result)
 
 
 __()
