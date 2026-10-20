@@ -230,12 +230,23 @@ def identity(x):
 
 
 def compose(*funcs):
-  """Composes multiple functions from right to left.
-  compose(f, g)(x) is equivalent to f(g(x)).
+  """
+  Composes multiple functions from left to right.
+  compose(f, g)(x) is equivalent to g(f(x)).
   """
   if not funcs:
     return lambda x: x
-  return reduce(funcs, lambda f, g: lambda x: f(g(x)))
+  return reduce(funcs, lambda f, g: lambda x: g(f(x)))
+
+
+# def compose(*funcs):
+#   """
+#   Composes multiple functions from right to left.
+#   compose(f, g)(x) is equivalent to f(g(x)).
+#   """
+#   if not funcs:
+#     return lambda x: x
+#   return reduce(funcs, lambda f, g: lambda x: f(g(x)))
 
 
 def pipe(initial_value, *funcs):
@@ -878,7 +889,17 @@ i guess it must have to be consistent aw for two same scenario.
 
 how do i sum consistency in batch
 
+...
 
+---
+
+seems ive even miscalc some stuff.
+
+_ max _ doesnt gurantee t, as the example output explanation says.
+
+---
+
+wait my solution currently doesnt gurantee it reaches maximum...
 
 """
 
@@ -897,25 +918,36 @@ def solve():
 
   for maximum in closed_each(n, 1):
     factors = base_prime(maximum)
-    log(maximum, factors)
 
     # all same, all distinct, 2=1> (counted only 1 currently), 2=1<
     baseline = prod(
       map(
         factors,
-        compose(partial(add, 1), partial(pow, exp=3)),
+        case_count,
       )
     )
 
-    # 2=1>
-    bonus = prod(
-      map(
-        filter(factors, 0),
-        lambda x: x * (x - 1) // 2 if x >= 2 else 1,
-      )
+    # # 2=1>
+    # bonus = (
+    #   prod(
+    #     map(
+    #       filter(factors, 0),
+    #       lambda x: x * (x - 1) // 2 if x >= 2 else 1,
+    #     )
+    #   )
+    #   if maximum >= 2
+    #   else 0
+    # )
+
+    log(
+      maximum,
+      baseline,
+      # bonus,
+      factors,
     )
 
-    solution_count += baseline + bonus
+    solution_count += baseline
+    # solution_count += baseline + bonus
 
   prn(solution_count)
 
@@ -937,6 +969,32 @@ def solve():
 #     + two_same_one_larger * 2
 #     + two_same_one_smaller * 1
 #   )
+
+
+def case_count(n):
+  """
+  n: factor power
+  """
+
+  if n == 0:
+    return 1
+  elif n == 1:
+    
+
+  all_same = 1
+
+  all_distinct = comb(n + 1, 2)
+
+  two_same_one_larger = n * (n - 1) // 2
+  # two_same_one_larger = n * (n - 1) / 2
+  two_same_one_smaller = two_same_one_larger
+
+  return (
+    all_same * 1
+    + all_distinct * 1
+    + two_same_one_larger * 2
+    + two_same_one_smaller * 1
+  )
 
 
 def base_prime(n):
