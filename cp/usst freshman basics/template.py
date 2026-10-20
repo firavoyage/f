@@ -12,20 +12,23 @@ log = _print
 
 def pr(*args):
   """Writes elements without a trailing newline."""
-  if len(args) == 0:
+
+  contents = list(*args)
+
+  if len(contents) == 0:
     return
   # If the first item is numeric, separate by space; otherwise join directly
-  if isinstance(args[0], (_int, _float)):
+  if isinstance(contents[0], (_int, _float)):
     _write(
       ' '.join(
         map(
-          map(args, lambda n: int(n) if n.is_integer() else n),
+          map(contents, lambda n: int(n) if n.is_integer() else n),
           str,
         )
       )
     )
   else:
-    _write(''.join(map(args, str)))
+    _write(''.join(map(contents, str)))
 
 
 def prn(*args):
