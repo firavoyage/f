@@ -97,4 +97,9 @@ a = dict()
 
 a[1] = 0
 
-log(a.get(1))
+# log(a.get(1))
+
+# log(call(add, 1, 2))
+# log(call(add, [1, 2]))
+
+log(sum(map(closed_each(1, 10), identity)))
