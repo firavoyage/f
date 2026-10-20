@@ -684,7 +684,71 @@ def find_root(term, derivative):
 
 """
 
+so it counts repeating ones.
 
+well maybe it really depends on order
+
+---
+
+what does it mean
+
+gcd lcm a b lcm a c = gcd a c
+
+you merge all ...
+
+---
+
+test.
+
+let's say a < b < c and they only have one factor.
+
+lcm a b = b, lcm a c = c, gcd b c = b, gcd a c = a, (b, a)
+
+- for a < c < b, it's (c, a)
+
+what if b < a < c (~~b and c can swap on the left~~ meaningless, it takes two)
+
+lcm a b = a, lcm a c = c, gcd a c = gcd a c, (a, a): eq
+
+- for c < a < b, gcd a b, gcd a c, (a, c)
+
+what if b < c < a
+
+lcm a b = a, lcm a c = a, gcd a a = a, gcd a c = c, (a, c)
+
+- for c < b < a, same. (a, c)
+
+---
+
+conclusion
+
+for each factor, (here less means leq)
+
+a < b < c -> b == a
+
+a < c < b -> c == a
+
+b < a < c -> t
+
+c < a < b -> a == c
+
+b < c < a -> a == c
+
+c < b < a -> a == c
+
+---
+
+simp
+
+b <= a <= c -> t
+
+a <= b <= c -> a == b
+
+otherwise a == c
+
+---
+
+but i could not iter all combination
 
 """
 
