@@ -682,17 +682,11 @@ def find_root(term, derivative):
   return improve(update, close)
 
 
-# thoughts
-
-
 """
 
 
 
 """
-
-
-# solution
 
 
 def main():
