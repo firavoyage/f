@@ -6,26 +6,29 @@ from template import *
 
 def is_prime(n):
   if n <= 1:
-    return False
+    return false
   # Check divisibility only up to the square root of n
   for i in range(2, int(n**0.5) + 1):
     if n % i == 0:
-      return False
-  return True
+      return false
+  return true
 
 
+# prefer trial division unless n is large
 def is_prime(n):
   """
   Deterministic Miller-Rabin primality test for 64-bit integers.
   100% accurate for n < 2^64. Time Complexity: O(k log^3 n) where k = len(bases).
+
+  intentionally does not quickly resolve small n
   """
   if n < 2:
-    return False
+    return false
   # Check small primes directly to handle edge cases quickly
   if n in (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37):
-    return True
+    return true
   if n % 2 == 0 or n % 3 == 0 or n % 5 == 0:
-    return False
+    return false
 
   # Factor out powers of 2 from n - 1: write n - 1 as d * 2^s
   d = n - 1
@@ -53,9 +56,9 @@ def is_prime(n):
         break
     else:
       # If we didn't break, n is definitely composite
-      return False
+      return false
 
-  return True
+  return true
 
 
 def base_prime(n):
@@ -65,8 +68,9 @@ def base_prime(n):
   May contain trailing zero
   """
   result = [0]
+
   index = 0
-  for i in each(2, ceil(sqrt(n)) + 1):
+  for i in each(2, n + 1, 1):
     if n % i == 0:
       while n % i == 0:
         result[index] += 1
@@ -76,5 +80,3 @@ def base_prime(n):
       result.append(0)
       index += 1
   return result
-
-

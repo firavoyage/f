@@ -368,13 +368,12 @@ def each(*args):
   elif len(args) == 2:
     begin = args[0]
     end = args[1]
+    if (begin - end) * step > 0:
+      step = -1
   elif len(args) == 3:
     begin = args[0]
     end = args[1]
     step = args[2]
-
-  if (begin - end) * step > 0:
-    step = -1
 
   index = begin
   if step > 0:
@@ -430,6 +429,10 @@ range = each
 
 
 def filter(items, f):
+  if not callable(f):
+    value = f
+    f = lambda v: v == value
+
   result = []
 
   for item in items:
@@ -608,11 +611,11 @@ from operator import (
 
 
 def sum(*numbers):
-  return num(reduce(list(*numbers), add))
+  return fallback(num(reduce(list(*numbers), add)), 0)
 
 
 def prod(*numbers):
-  return num(reduce(list(*numbers), mul))
+  return fallback(num(reduce(list(*numbers), mul)), 1)
 
 
 def approx_eq(a, b, tolerance=0.1**5):
@@ -864,10 +867,28 @@ def main():
 def solve():
   n = read()
 
+  solution_count = 0
+
   for maximum in each(n, 0):
     factors = base_prime(maximum)
+    log(maximum, factors)
 
-    baseline = prod(map(factors, partial(pow, exp=3)))
+    # all same, all distinct, 2=1> (counted only 1 currently), 2=1<
+    baseline = prod(
+      map(filter(factors, 0), partial(pow, exp=3))
+    )
+
+    # 2=1>
+    bonus = prod(
+      map(
+        filter(factors, 0),
+        lambda x: x * (x - 1) // 2 if x >= 2 else 1,
+      )
+    )
+
+    solution_count += baseline + bonus
+
+  prn(solution_count)
 
 
 # def solve():
@@ -889,9 +910,6 @@ def solve():
 #   )
 
 
-# __()
-
-
 def base_prime(n):
   """
   List of power of each prime from 2 to ... for n
@@ -899,8 +917,9 @@ def base_prime(n):
   May contain trailing zero
   """
   result = [0]
+
   index = 0
-  for i in each(2, ceil(sqrt(n)) + 1):
+  for i in each(2, n + 1, 1):
     if n % i == 0:
       while n % i == 0:
         result[index] += 1
@@ -912,4 +931,15 @@ def base_prime(n):
   return result
 
 
-log(prod(map([1, 1, 3], partial(pow, exp=3))))
+def is_prime(n):
+  if n <= 1:
+    return False
+  # Check divisibility only up to the square root of n
+  for i in range(2, int(n**0.5) + 1):
+    if n % i == 0:
+      return False
+  return True
+
+
+__()
+
