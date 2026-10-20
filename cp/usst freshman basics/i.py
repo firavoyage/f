@@ -1054,6 +1054,76 @@ better to take a somewhat imperative approach on fc.
 
 you dont need "base prime" or "is prime".
 
+---
+
+fix:
+
+> - n, n, x where x in factors -> 1
+> - n, any, any, where any in real factors -> 2
+
+actually
+
+- n, n, x where x in factors -> 1
+- n, x, y, where x in real factors and y in factors -> 2
+
+it can be merged?
+
+- n, x, y where x, y in factors -> 1
+
+i mean you do not actually see it as a set. you just make it swapped!
+
+---
+
+no need to skip this. i can go the classic cp way: brute force aside.
+
+---
+
+---
+
+clearly my theory of consistency is wrong.
+
+```
+1
+1 1 1
+2
+1 1 2
+2 1 1
+2 1 2
+2 2 2
+3
+1 1 3
+2 1 3
+3 1 1
+3 1 2
+3 1 3
+3 3 3
+4
+1 1 4
+2 1 4
+2 2 4
+3 1 4
+4 1 1
+4 1 2
+4 1 3
+4 1 4
+4 2 2
+4 2 4
+4 4 4
+5
+1 1 5
+2 1 5
+3 1 5
+4 1 5
+5 1 1
+5 1 2
+5 1 3
+5 1 4
+5 1 5
+5 5 5
+```
+
+
+
 """
 
 
@@ -1072,9 +1142,9 @@ def solve():
 
 def solution_count(n):
   fc = factor_count(n)
-  rfc = fc - 1  # wo n itself
+  # rfc = fc - 1  # wo n itself
 
-  return pow(rfc, 2) + fc
+  return pow(fc, 2)
 
 
 def factor_count(n):
@@ -1085,20 +1155,21 @@ def factor_count(n):
   index = -1
 
   for guess in closed_each(2, n, 1):
-  # for guess in each(2, sqrt(n) + 1):
+    # for guess in each(2, sqrt(n) + 1):
     if n % guess == 0:
       exponents.append(0)
       index += 1
       while n % guess == 0:
-      # while n > 1:
+        # while n > 1:
         exponents[index] += 1
         n /= guess
-  
+
   # # prime n?
   # if n > 1:
   #   exponents.append(1)
 
   return prod(map(exponents, partial(add, 1)))
+
 
 # def solve():
 #   n = read()
@@ -1221,5 +1292,16 @@ def factor_count(n):
 
 # __()
 
-for i in closed_each(1, 20):
-  prn(i, factor_count(i), solution_count(i))
+# for i in closed_each(1, 20):
+#   prn(i, factor_count(i), solution_count(i))
+
+for i in closed_each(1, 5):
+  log(i)
+  for a in closed_each(1, i):
+    for b in closed_each(1, i):
+      for c in closed_each(1, i):
+        if (
+          gcd(lcm(a, b), lcm(b, c)) == gcd(a, c)
+          and max(a, b, c) == i
+        ):
+          log(a, b, c)
