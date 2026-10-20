@@ -656,7 +656,8 @@ def min(*numbers):
   return min_(list(*numbers))
 
 
-def improve(update, close, guess=1, timeout=10**5):
+def improve(update, close, guess=1, timeout=10**8):
+# def improve(update, close, guess=1, timeout=10**5):
   """
   Iteratively improves an approximation guess until 'close(guess)' is True
   or the operation limit is hit.
@@ -699,6 +700,28 @@ assume a < b < c,
 
 you may optimize as long as a + b < c
 
+---
+
+wa.
+
+maybe the update fn is not general enough?
+
+i guess timeout is pretty generous.
+
+well i feel update is not for discrete optimization anyway.
+
+it's for like newton, sqrt.
+
+---
+
+yeah it's not timeout issue.
+
+maybe it's just not the right tool.
+
+and unclear code and produce any unexpected result, 
+
+coz you dont even know what's expected
+
 """
 
 
@@ -713,7 +736,35 @@ def main():
 
 
 def solve():
-  
+  a, b, c = read_ints()
+
+  def minimum(a, b, c):
+    a, b, c = sort([a, b, c])
+
+    if a + b >= c:
+      return c - a
+    else:
+      return minimum(a, b, a + b)
+
+  prn(minimum(a, b, c))
+
+
+# def solve():
+#   a, b, c = read_ints()
+
+#   def update(tuple):
+#     a, b, c = sort(tuple)
+
+#     return (a, b, c) if a + b >= c else (a, b, a + b)
+
+#   def close(tuple):
+#     a, b, c = sort(tuple)
+
+#     return a + b >= c
+
+#   a, b, c = improve(update, close, (a, b, c))
+
+#   prn(c - a)
 
 
 __()
