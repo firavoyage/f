@@ -1122,7 +1122,18 @@ clearly my theory of consistency is wrong.
 5 5 5
 ```
 
+---
 
+it's over!
+
+take a look at the eq.
+
+gcd(lcm x y, lcm y z) = gcd x z
+
+x and z are symmetrical.
+
+lcm x y: in base prime, x, y -> max(x, y)
+lcm y z: in base prime, y, z -> max(y, y)
 
 """
 
