@@ -1,3 +1,4 @@
+import time
 from template import *
 from algo import *
 
@@ -50,6 +51,32 @@ from algo import *
 # log(map([1, 2, 3], lambda x: (x + 1) ** 3))
 
 
-log(comb(0, 2))
-log(comb(1, 2))
-log(comb(2, 2))
+# log(comb(0, 2))
+# log(comb(1, 2))
+# log(comb(2, 2))
+
+def cache(f):
+  history = dict()
+
+  def cached_fn(*args):
+    # log('cache?', args)
+    if args in history:
+      # log('hit')
+      return history[args]
+    # log('save')
+    result = f(*args)
+    history[args] = result
+    return result
+  
+  return cached_fn
+
+@cache
+def f(n):
+  time.sleep(1)
+
+  return n+1
+
+for i in each(5):
+  pr(f(i))
+for i in each(5):
+  pr(f(i))

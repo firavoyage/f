@@ -513,6 +513,22 @@ def every(items, f):
 all = every
 
 
+def cache(f):
+  history = dict()
+
+  def cached_fn(*args):
+    # log('cache?', args)
+    if args in history:
+      # log('hit')
+      return history[args]
+    # log('save')
+    result = f(*args)
+    history[args] = result
+    return result
+
+  return cached_fn
+
+
 # iterables
 
 

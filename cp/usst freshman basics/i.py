@@ -1,3 +1,19 @@
+def cache(f):
+  history = dict()
+
+  def cached_fn(*args):
+    # log('cache?', args)
+    if args in history:
+      # log('hit')
+      return history[args]
+    # log('save')
+    result = f(*args)
+    history[args] = result
+    return result
+
+  return cached_fn
+
+
 import sys
 from functools import cmp_to_key
 from types import SimpleNamespace
@@ -1133,7 +1149,42 @@ gcd(lcm x y, lcm y z) = gcd x z
 x and z are symmetrical.
 
 lcm x y: in base prime, x, y -> max(x, y)
-lcm y z: in base prime, y, z -> max(y, y)
+lcm y z: in base prime, y, z -> max(y, z)
+gcd . .: min(. .)
+
+min(max(x, y), max(y, z)) = max(y, min(x, z))
+
+gcd x z = min x z
+
+left = right
+
+max(y, min x z) = min x z
+
+y <= min x z
+
+y <= both x and z
+
+here we are cmp base prime.
+
+if every factor of y <= that of x and z, it simply implies
+
+both x and z are mulitplies of y.
+
+for all y, x and z can be y, 2y, 3y, ... floor(n/y)y <= n
+
+result = sigma m (as in l m r) from 1 to n, floor(n/m)^2
+
+---
+
+wow in py ^ doesnt mean **, debugging nightmare.
+
+---
+
+ac? but tle.
+
+-1. (it doesnt give me part of the score it seems. educational!)
+
+let's have a classic engineering trick: caching.
 
 """
 
@@ -1148,38 +1199,51 @@ def main():
 def solve():
   n = read()
 
-  prn(sum(map(closed_each(1, n), solution_count)))
+  prn(calc(n))
 
 
-def solution_count(n):
-  fc = factor_count(n)
-  # rfc = fc - 1  # wo n itself
+@cache
+def calc(n):
+  return sum(
+    map(closed_each(1, n), lambda m: floor(n / m) ** 2)
+  )
 
-  return pow(fc, 2)
+
+# def solve():
+#   n = read()
+
+#   prn(sum(map(closed_each(1, n), solution_count)))
 
 
-def factor_count(n):
-  # base_prime = [0] # 2, 3, ...
-  # index = 0
+# def solution_count(n):
+#   fc = factor_count(n)
+#   # rfc = fc - 1  # wo n itself
 
-  exponents = []
-  index = -1
+#   return pow(fc, 2)
 
-  for guess in closed_each(2, n, 1):
-    # for guess in each(2, sqrt(n) + 1):
-    if n % guess == 0:
-      exponents.append(0)
-      index += 1
-      while n % guess == 0:
-        # while n > 1:
-        exponents[index] += 1
-        n /= guess
 
-  # # prime n?
-  # if n > 1:
-  #   exponents.append(1)
+# def factor_count(n):
+#   # base_prime = [0] # 2, 3, ...
+#   # index = 0
 
-  return prod(map(exponents, partial(add, 1)))
+#   exponents = []
+#   index = -1
+
+#   for guess in closed_each(2, n, 1):
+#     # for guess in each(2, sqrt(n) + 1):
+#     if n % guess == 0:
+#       exponents.append(0)
+#       index += 1
+#       while n % guess == 0:
+#         # while n > 1:
+#         exponents[index] += 1
+#         n /= guess
+
+#   # # prime n?
+#   # if n > 1:
+#   #   exponents.append(1)
+
+#   return prod(map(exponents, partial(add, 1)))
 
 
 # def solve():
@@ -1301,18 +1365,18 @@ def factor_count(n):
 #   return True
 
 
-# __()
+__()
 
 # for i in closed_each(1, 20):
 #   prn(i, factor_count(i), solution_count(i))
 
-for i in closed_each(1, 5):
-  log(i)
-  for a in closed_each(1, i):
-    for b in closed_each(1, i):
-      for c in closed_each(1, i):
-        if (
-          gcd(lcm(a, b), lcm(b, c)) == gcd(a, c)
-          and max(a, b, c) == i
-        ):
-          log(a, b, c)
+# for i in closed_each(1, 5):
+#   log(i)
+#   for a in closed_each(1, i):
+#     for b in closed_each(1, i):
+#       for c in closed_each(1, i):
+#         if (
+#           gcd(lcm(a, b), lcm(b, c)) == gcd(a, c)
+#           and max(a, b, c) == i
+#         ):
+#           log(a, b, c)
