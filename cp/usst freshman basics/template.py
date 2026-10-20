@@ -320,10 +320,7 @@ def map(items, f):
     if value is halt:
       break
 
-    if (
-      isinstance(value, HaltContainer)
-      and value.halt_symbol is halt_symbol
-    ):
+    if isinstance(value, HaltContainer) and value.halt_symbol is halt_symbol:
       result.append(value.value)
       break
 

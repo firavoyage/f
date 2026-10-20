@@ -1,6 +1,8 @@
 hard problems
 
 - i
+  - math, translate gcd lcm, expand min max, translate back to factors
+  - fast calc 1 to n floor(n/i)^2
 
 on template
 
