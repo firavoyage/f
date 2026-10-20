@@ -789,13 +789,36 @@ observation.
 
 10: 6 5 7 4 8 3 9 2 10 1
 
-even: 
+even: from n/2, i + 1, i, i--, break when i == 1 completes
+
+odd: from ceil n/2, i, i+1, i--, after i == 1
+
+---
+
+no. that's n+1 -i.
 
 """
 
 
 def solve():
-  pass
+  n = read_int()
+
+  result = []
+  if n % 2 == 0:
+    for i in closed_each(n // 2, 1):
+      result.append(n + 1 - i)
+      # result.append(i + 1)
+      result.append(i)
+      # result.append(i + 1, i)
+  else:
+    for i in closed_each(ceil(n / 2), 1):
+      result.append(i)
+      if i != 1:
+        result.append(n + 2 - i)
+        # result.append(i + 1)
+      # result.append(i, i + 1)
+
+  prn(result)
 
 
 __()
