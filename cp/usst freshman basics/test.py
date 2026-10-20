@@ -1,3 +1,4 @@
+import random
 import time
 from template import *
 from algo import *
@@ -81,5 +82,13 @@ from algo import *
 # for i in each(5):
 #   pr(f(i))
 
-for i in each(1,100):
-  log(i, 100/i)
+# for i in each(1,100):
+#   log(i, 100/i)
+
+def f(n):
+  return random.random() >= 0.5
+
+def g(n):
+  return true
+
+diff(closed_each(1, 10), f, g)

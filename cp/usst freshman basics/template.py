@@ -19,9 +19,7 @@ def pr(*args):
     _write(
       ' '.join(
         map(
-          map(
-            args, lambda n: int(n) if n.is_integer() else n
-          ),
+          map(args, lambda n: int(n) if n.is_integer() else n),
           str,
         )
       )
@@ -266,9 +264,7 @@ def pipe(initial_value, *funcs):
   """Passes a value through a sequence of functions from left to right.
   pipe(x, f, g) is equivalent to g(f(x)).
   """
-  return reduce(
-    lambda value, func: func(value), funcs, initial_value
-  )
+  return reduce(lambda value, func: func(value), funcs, initial_value)
 
 
 def curry(func):
@@ -527,6 +523,17 @@ def cache(f):
     return result
 
   return cached_fn
+
+
+# debug
+
+
+def diff(items, current, expected):
+  for i in items:
+    current_result = current(i)
+    expected_result = expected(i)
+    if current_result != expected_result:
+      log('case', i, 'current', current_result, 'expected', expected_result)
 
 
 # iterables
