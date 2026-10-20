@@ -234,6 +234,10 @@ def list(*args):
 # fp
 
 
+def void(*args):
+  return nil
+
+
 def identity(x):
   return x
 
@@ -377,13 +381,12 @@ def each(*args):
   elif len(args) == 2:
     begin = args[0]
     end = args[1]
+    if (begin - end) * step > 0:
+      step = -1
   elif len(args) == 3:
     begin = args[0]
     end = args[1]
     step = args[2]
-
-  if (begin - end) * step > 0:
-    step = -1
 
   index = begin
   if step > 0:
@@ -439,6 +442,10 @@ range = each
 
 
 def filter(items, f):
+  if not callable(f):
+    value = f
+    f = lambda v: v == value
+
   result = []
 
   for item in items:
