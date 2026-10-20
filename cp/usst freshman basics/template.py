@@ -248,7 +248,7 @@ def compose(*funcs):
   """
   if not funcs:
     return lambda x: x
-  return reduce(lambda f, g: lambda x: f(g(x)), funcs)
+  return reduce(funcs, lambda f, g: lambda x: f(g(x)))
 
 
 def pipe(initial_value, *funcs):
@@ -369,8 +369,6 @@ _range = range
 def each(*args):
   """
   Generates a progression from start to end (excluded)
-
-  if step < 0, both start and end are included
   """
   begin = 0
   end = 0
@@ -389,14 +387,35 @@ def each(*args):
     step = args[2]
 
   index = begin
-  if step > 0:
-    while (index - end) * step < 0:
-      yield index
-      index += step
-  else:
-    while (index - end) * step <= 0:
-      yield index
-      index += step
+  while (index - end) * step < 0:
+    yield index
+    index += step
+
+
+def closed_each(*args):
+  """
+  Generates a progression from start to end (included)
+  """
+  begin = 0
+  end = 0
+  step = 1
+
+  if len(args) == 1:
+    end = args[0]
+  elif len(args) == 2:
+    begin = args[0]
+    end = args[1]
+    if (begin - end) * step > 0:
+      step = -1
+  elif len(args) == 3:
+    begin = args[0]
+    end = args[1]
+    step = args[2]
+
+  index = begin
+  while (index - end) * step <= 0:
+    yield index
+    index += step
 
 
 # def each(*args):
