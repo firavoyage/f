@@ -573,7 +573,9 @@ from math import (
   gcd,
   lcm,
   isinf as is_inf,
-  # isnan as is_nan # nan == nil
+  # isnan as is_nan # nan == nil,
+  perm,
+  comb,
 )
 from operator import (
   # abs,
@@ -740,15 +742,48 @@ c < b < a -> a == c
 
 simp
 
-b <= a <= c -> t
+b <= a <= c -> t         mid min max
 
-a <= b <= c -> a == b
+a <= b <= c -> a == b    min mid max
 
-otherwise a == c
+otherwise a == c: ~~never (it's a == c)~~ you may have like a = c < b
 
 ---
 
 but i could not iter all combination
+
+---
+
+that is, for each combination of three numbers, it can yield
+
+- 1 if they are all distinct
+- 1 (when b < a) or 2 (when b > a) if there are two of the same,
+  - i. b < a
+    - (a, a, b) false (a != c, or a != b when sub)
+    - (a, b, a) t (_ min _ always t)
+    - (b, a, a) false (min _ _ but a != b)
+  - ii. b > a
+    - (a, a, b) t (_ _ max)
+    - (a, b, a) t (_ max _ where otherwise a == c that is a == a)
+    - (b, a, a) false
+- 1 if they are all the same
+
+---
+
+for each n
+
+there are n "all same"
+
+there are n(n-1)(n-2)/6, C(n, 3) "all distinct" (0 if n <= 2)
+
+- wait why this formula, seems ive forgotten some basic combinational math
+  - that's exactly ~~P(n, 3)~~ C(n, 3) right?
+  - in P(x, y) (pick y from x distinct numbers, no duplicates, order matters)
+    - it's n(n-1)(n-2)...(n-y+1)
+    - you may write it in cleaner less obvious factorial
+  - in C(x, y) you basically divide by repetitive "order plays"
+
+
 
 """
 
@@ -764,4 +799,6 @@ def solve():
   pass
 
 
-__()
+# __()
+
+log(comb(1, 3))

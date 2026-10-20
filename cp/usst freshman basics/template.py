@@ -574,6 +574,8 @@ from math import (
   lcm,
   isinf as is_inf,
   # isnan as is_nan # nan == nil
+  perm,
+  comb,
 )
 from operator import (
   # abs,
