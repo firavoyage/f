@@ -740,11 +740,7 @@ def find_root(term, derivative):
   return improve(update, close)
 
 
-"""
-
-
-
-"""
+# solution
 
 
 def main():
@@ -752,6 +748,13 @@ def main():
 
   for i in each(task_count):
     solve()
+
+
+"""
+
+
+
+"""
 
 
 def solve():
