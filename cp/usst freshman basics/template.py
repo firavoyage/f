@@ -474,7 +474,7 @@ range = each
 def filter(items, f):
   if not callable(f):
     value = f
-    f = lambda v: v == value
+    f = lambda v: v != value
 
   result = []
 
