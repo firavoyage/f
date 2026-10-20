@@ -55336,6 +55336,10 @@ prefer `items` (strictly noun) over `list` (verb/noun) <!-- js is lisp 1 -->
 
 "for, each, repeat, loop, while"
 
+21
+
+04 30 solve all easy problems on usst freshman programming basics.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
