@@ -829,6 +829,31 @@ all same -> 1
 
 two same on larger...
 
+---
+
+imagine a = (a1, a2), b = (b1, b2), c = (c1, c2) in base prime
+
+gcd lcm a b lcm a c = gcd a c
+
+it means
+
+(min(max a1 b1, max a1 c1), min(max a2 b2, max a2 c2)) = (min a1 c1, min a2 c2)
+
+- all same -> 1
+- all distinct -> it must be consistent, than 1, or 0
+
+consistency means all factors must align in order. 
+that is you can only have one order for a b c
+and each factor tuple must be (mid min max)
+
+i guess it must have to be consistent aw for two same scenario.
+
+---
+
+how do i sum consistency in batch
+
+
+
 """
 
 
