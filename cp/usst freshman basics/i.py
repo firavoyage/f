@@ -821,7 +821,13 @@ comb(20, 3) alone far exceeds example output.
 
 ah! yeah, i assumed they share the factorials, like each is pow of another.
 
+---
 
+then,
+
+all same -> 1
+
+two same on larger...
 
 """
 
