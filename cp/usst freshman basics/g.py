@@ -703,8 +703,34 @@ does it mean i will end up w a stupid solution?
 
 you can win if the largest num is a prime
 
+---
 
+spot on.
 
+if the largest num is prime, it must win. no one can factor it or outlarge it.
+
+otherwise no one can dominate
+
+- the largest num can be factored, and definitely its factor exist
+- for any non largest n, n+1 will beat it (consecutive ints are coprimes)
+
+---
+
+wa
+
+---
+
+yeah, the largest num for input n is n + 1
+
+runtime error?!
+
+---
+
+~~ah, yeah, the builtin int is overriden.~~
+
+that's not the cause.
+
+pow is now the op. and it does not take the 3rd param.
 
 """
 
@@ -720,7 +746,19 @@ def main():
 
 
 def solve():
-  pass
+  n = read()
+
+  prn('yes' if is_prime(n + 1) else 'no')
+
+
+def is_prime(n):
+  if n <= 1:
+    return False
+  # Check divisibility only up to the square root of n
+  for i in range(2, int(n**0.5) + 1):
+    if n % i == 0:
+      return False
+  return True
 
 
 __()
