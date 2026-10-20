@@ -523,6 +523,7 @@ cp: <!-- algorithms -->
 - shell zshrc solve shortcut vscode template
 - codefores python3 pypy mle
 - codefores format icpc format scoreboard formula
+- ds algo templates math nt is prime
 
 pm:
 
