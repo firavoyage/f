@@ -12,20 +12,23 @@ log = _print
 
 def pr(*args):
   """Writes elements without a trailing newline."""
-  if len(args) == 0:
+
+  contents = list(*args)
+
+  if len(contents) == 0:
     return
   # If the first item is numeric, separate by space; otherwise join directly
-  if isinstance(args[0], (_int, _float)):
+  if isinstance(contents[0], (_int, _float)):
     _write(
       ' '.join(
         map(
-          map(args, lambda n: int(n) if n.is_integer() else n),
+          map(contents, lambda n: int(n) if n.is_integer() else n),
           str,
         )
       )
     )
   else:
-    _write(''.join(map(args, str)))
+    _write(''.join(map(contents, str)))
 
 
 def prn(*args):
@@ -844,13 +847,37 @@ and you can take one side all if you set k on inf or -inf.
 
 (it depends on distance, and you can take iff you are farther than it)
 
-n < 5k?! what if i 
+(sigma) n < 5k?! what if i brute force it like n^2.
+
+let's try. (sort + bisect doesnt seem to work)
+
+---
+
+yeah, tle.
+
+but really is it about constants? esp when it's 1.5sec
 
 """
 
 
 def solve():
-  pass
+  _ = read()
+  a = read_ints()
 
+  result = []
+
+  for i in each(0, len(a)):
+    smaller_count = 0
+    larger_count = 0
+
+    for j in each(i + 1, len(a), 1):
+      if a[j] < a[i]:
+        smaller_count += 1
+      elif a[j] > a[i]:
+        larger_count += 1
+      
+    result.append(max(smaller_count, larger_count))
+  
+  prn(result)
 
 __()
