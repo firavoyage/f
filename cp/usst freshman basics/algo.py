@@ -1,6 +1,20 @@
 from template import *
 
 
+# ds
+
+
+def sum_series(a):
+  count = 0
+  result = []
+
+  for i in a:
+    count += i
+    result.append(count)
+
+  return result
+
+
 # math/nt
 
 
