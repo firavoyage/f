@@ -468,7 +468,7 @@ range = each
 def filter(items, f):
   if not callable(f):
     value = f
-    f = lambda v: v == value
+    f = lambda v: v != value
 
   result = []
 
@@ -1029,9 +1029,6 @@ def is_prime(n):
       return False
   return True
 
-
-for i in each(5):
-  log(i, case_count(i))
 
 __()
 
