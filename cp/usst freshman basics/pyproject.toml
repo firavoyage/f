@@ -17,7 +17,7 @@ docstring-code-format = true
 [tool.ruff.lint]
 select = ["F"]
 # select = ["E", "F", "I", "UP", "B"]
-ignore = ["F401"] # unused import
+ignore = ["F401", "F403", "F405"] # unused import, import all, var from import all
 
 [tool.ruff.lint.isort]
 combine-as-imports = true
