@@ -818,6 +818,35 @@ i just wanna check if 0 or 1 exists
 - 0 but no 1: f
 - both 0 and 1: t
 
+---
+
+wa
+
+it's clear that it must contain both 0 and 1.
+
+wait what if it's like 02?
+
+it's fine. the original input is not just filtered.
+
+you can split on "non existent" places.
+
+- no 0: f
+- only 0: f
+- otherwise: t
+  - yeah, look at 0...
+  - no.
+  - 02 works, 002 doesnt
+
+---
+
+final conclusion
+
+- no 0: f
+- all 0: f
+- only a single 0 and anything else: t
+- 1 seen: t
+- otherwise: f
+
 """
 
 
@@ -825,7 +854,15 @@ def solve():
   _ = read()
   numbers = read_ints()
 
-  prn('yes' if some(numbers, 0) and some(numbers, 1) else 'no')
+  prn(
+    'yes'
+    if some(numbers, 0)
+    and some(numbers, 1)
+    or numbers.count(0) == 1
+    and not all(numbers, 0)
+    else 'no'
+  )
+  # prn('yes' if some(numbers, 0) and some(numbers, 1) else 'no')
 
 
 __()
