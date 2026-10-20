@@ -993,6 +993,21 @@ max min mid -> gcd(abc, ab) = ab = ab (guranteed)
 
 max mid min -> gcd(abc, ab) = ab = a
 
+when b = 1 iff min = mid, it's still 2, because swapping makes no sense
+
+when c = 1 iff mid = max, it's 1.
+
+when bc = 1 iff min = mid = max, it's 1.
+
+3!=, 2=1< -> 2
+
+2=1>, 3= -> 1
+
+---
+
+clearly min mid all depend on max. maybe i would just iter max 
+if there isnt some math ad hoc...
+
 
 
 """
@@ -1008,43 +1023,85 @@ def main():
 def solve():
   n = read()
 
-  solution_count = 0
+  # solution_count = 0
 
-  for maximum in closed_each(n, 1):
-    factors = base_prime(maximum)
+  # for maximum in closed_each(n, 1):
+  #   factors = base_prime(maximum)
 
-    # all same, all distinct, 2=1> (counted only 1 currently), 2=1<
-    _ = map(
-      filter(factors, 0),
-      case_count,
-    )
+  #   # all same, all distinct, 2=1> (counted only 1 currently), 2=1<
+  #   _ = map(
+  #     filter(factors, 0),
+  #     case_count,
+  #   )
 
-    baseline = prod(_)
+  #   baseline = prod(_)
 
-    # # 2=1>
-    # bonus = (
-    #   prod(
-    #     map(
-    #       filter(factors, 0),
-    #       lambda x: x * (x - 1) // 2 if x >= 2 else 1,
-    #     )
-    #   )
-    #   if maximum >= 2
-    #   else 0
-    # )
+  #   # # 2=1>
+  #   # bonus = (
+  #   #   prod(
+  #   #     map(
+  #   #       filter(factors, 0),
+  #   #       lambda x: x * (x - 1) // 2 if x >= 2 else 1,
+  #   #     )
+  #   #   )
+  #   #   if maximum >= 2
+  #   #   else 0
+  #   # )
 
-    log(
-      maximum,
-      baseline,
-      # bonus,
-      filter(factors, 0),
-      _
-    )
+  #   log(
+  #     maximum,
+  #     baseline,
+  #     # bonus,
+  #     filter(factors, 0),
+  #     _,
+  #   )
 
-    solution_count += baseline
-    # solution_count += baseline + bonus
+  #   solution_count += baseline
+  #   # solution_count += baseline + bonus
 
-  prn(solution_count)
+  # prn(solution_count)
+
+
+# def solve():
+#   n = read()
+
+#   solution_count = 0
+
+#   for maximum in closed_each(n, 1):
+#     factors = base_prime(maximum)
+
+#     # all same, all distinct, 2=1> (counted only 1 currently), 2=1<
+#     _ = map(
+#       filter(factors, 0),
+#       case_count,
+#     )
+
+#     baseline = prod(_)
+
+#     # # 2=1>
+#     # bonus = (
+#     #   prod(
+#     #     map(
+#     #       filter(factors, 0),
+#     #       lambda x: x * (x - 1) // 2 if x >= 2 else 1,
+#     #     )
+#     #   )
+#     #   if maximum >= 2
+#     #   else 0
+#     # )
+
+#     log(
+#       maximum,
+#       baseline,
+#       # bonus,
+#       filter(factors, 0),
+#       _
+#     )
+
+#     solution_count += baseline
+#     # solution_count += baseline + bonus
+
+#   prn(solution_count)
 
 
 # def solve():
@@ -1125,4 +1182,3 @@ def solve():
 
 
 __()
-
