@@ -1095,6 +1095,7 @@ code:
 - pl design contextual assignent statement equality comparison
 - pl design paren less fn call
 - pl design lexical scoping python scoping
+- py lack of self inc dec
 
 launch:
 

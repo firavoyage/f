@@ -999,16 +999,58 @@ when c = 1 iff mid = max, it's 1.
 
 when bc = 1 iff min = mid = max, it's 1.
 
-3!=, 2=1< -> 2
+3!=, 2=1> -> 2
 
-2=1>, 3= -> 1
+2=1<, 3= -> 1
 
 ---
 
 clearly min mid all depend on max. maybe i would just iter max 
 if there isnt some math ad hoc...
 
+for n
 
+# - n, n, x where x in cap [1, n] factors -> 1
+- n, n, x where x in factors -> 1
+- n, any, any, where any in real factors -> 2
+
+clearly i just need the factor count for n.
+
+it can be done by factorization. prod power + 1 for all power
+
+(or you may call power exp, exponent)
+
+e.g. 6: 6 = 2^1 + 3^1 -> 4, i.e. 1, 2, 3, 6. real fc = f - 1.
+
+solution count for n = rfc^2 + fc
+
+---
+
+(let's try to simp a bit?)
+
+= (fc-1)^2+fc = fc^2-2fc+1+fc = fc^2-fc+1
+= rfc^2 + rfc + 1
+
+doesnt matter. it's not gonna be elegant to the extreme.
+
+---
+
+solved?
+
+let's test.
+
+1 -> fc: 1 -> 0^2 + 1
+2 -> fc: 2 -> 1^2 + 2 ~~that's incorrect.~~ that's correct. 
+
+for input n, you actually output sum(count 1 and count 2)
+
+---
+
+dont over engineer.
+
+better to take a somewhat imperative approach on fc.
+
+you dont need "base prime" or "is prime".
 
 """
 
@@ -1023,44 +1065,27 @@ def main():
 def solve():
   n = read()
 
-  # solution_count = 0
+  prn(sum(map(closed_each(1, n), solution_count)))
 
-  # for maximum in closed_each(n, 1):
-  #   factors = base_prime(maximum)
+def solution_count(n):
+  fc = factor_count(n)
+  rfc = fc - 1 # wo n itself
 
-  #   # all same, all distinct, 2=1> (counted only 1 currently), 2=1<
-  #   _ = map(
-  #     filter(factors, 0),
-  #     case_count,
-  #   )
+  return pow(rfc, 2) + fc
 
-  #   baseline = prod(_)
+def factor_count(n):
+  # base_prime = [0] # 2, 3, ...
+  # index = 0
 
-  #   # # 2=1>
-  #   # bonus = (
-  #   #   prod(
-  #   #     map(
-  #   #       filter(factors, 0),
-  #   #       lambda x: x * (x - 1) // 2 if x >= 2 else 1,
-  #   #     )
-  #   #   )
-  #   #   if maximum >= 2
-  #   #   else 0
-  #   # )
-
-  #   log(
-  #     maximum,
-  #     baseline,
-  #     # bonus,
-  #     filter(factors, 0),
-  #     _,
-  #   )
-
-  #   solution_count += baseline
-  #   # solution_count += baseline + bonus
-
-  # prn(solution_count)
-
+  exponents = []
+  index = -1
+  
+  for guess in each(2, sqrt(n) + 1):
+    if n%guess == 0:
+      exponents.append(0)
+      index+=1
+    
+  
 
 # def solve():
 #   n = read()
