@@ -1,3 +1,7 @@
+hard problems
+
+- i
+
 on template
 
 i guess i will not polymorph `map` for non iterative items
