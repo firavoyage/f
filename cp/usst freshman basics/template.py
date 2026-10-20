@@ -35,6 +35,10 @@ def readline():
   return _readline().rstrip('\r\n')
 
 
+def readlines(n):
+  return map(each(n), readline)
+
+
 def read():
   """Reads a line and parses tokens dynamically into numbers or strings."""
   line = readline()
