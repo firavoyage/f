@@ -787,13 +787,45 @@ a pro?
 
 ---
 
+first it must be consecutive from zero.
 
+it makes no sense for mex to have arbitrary large numbers.
+
+i will assume it be reduction of input.
+
+it's false if it has no zero (thus mex=0 everywhere) or only zero (always mex=1).
+
+**otherwise it's simply true, i think.**
+
+- i will place all zeroes on one side, like on the left
+- if you divide inside zeroes
+  - 0000 | 0000...1...
+  - left = 1, right >= 2
+- if you divide after zeroes
+  - 0* | ...
+  - left = 1, right = 0
+- if you divide somewhere on the right
+  - 0*... | ...
+  - left >= 1, right = 0
+
+---
+
+i dont even have to count
+
+i just wanna check if 0 or 1 exists
+
+- no 0: f
+- 0 but no 1: f
+- both 0 and 1: t
 
 """
 
 
 def solve():
-  pass
+  _ = read()
+  numbers = read_ints()
+
+  prn('yes' if some(numbers, 0) and some(numbers, 1) else 'no')
 
 
 __()
