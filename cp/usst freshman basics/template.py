@@ -626,6 +626,13 @@ def nullish(a, b):
 fallback = nullish
 
 
+def ternary(cond, a, b):
+  if cond:
+    return a
+  else:
+    return b
+
+
 def ln(n):
   # base default to e
   return logab(n)
