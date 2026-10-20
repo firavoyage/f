@@ -808,6 +808,14 @@ wa
 
 it only gives me eg input anyway
 
+---
+
+idk, seems it doesnt want me to flip anything wo 1...
+
+or ive introduced redundant newline maybe.
+
+anyway just make it more logical. inelegant solutions are hacky even if ac.
+
 """
 
 
@@ -828,22 +836,28 @@ def solve():
   # log(map(entries(state), lambda index, char: index if char == '0' else nil))
   # log(map(entries(state), lambda index, char: (index, char)))
 
-  if zero_count % 2 == 1:
+  if one_count == 0:
+    prn(0)
+  elif zero_count % 2 == 1:
     prn(zero_count)
+    prn(map(state, lambda char, index: index + 1 if char == '0' else nil))
 
-    if one_count != 0:
-      prn(map(state, lambda char, index: index + 1 if char == '0' else nil))
+    # prn(zero_count)
+
+    # if one_count != 0:
+    #   prn(map(state, lambda char, index: index + 1 if char == '0' else nil))
 
   elif one_count % 2 == 1:
-    # even 1 odd 1
+    # even 0 odd 1
     prn(-1)
   else:
-    # even 1 even 1
+    # even 0 even 1
     prn(one_count)
 
-    if one_count != 0:
-      prn(map(state, lambda char, index: index + 1 if char == '1' else nil))
-      # prn(map(entries(state), lambda index, char: index if char == '1' else nil))
+    prn(map(state, lambda char, index: index + 1 if char == '1' else nil))
+    # if one_count != 0:
+    #   prn(map(state, lambda char, index: index + 1 if char == '1' else nil))
+    #   # prn(map(entries(state), lambda index, char: index if char == '1' else nil))
 
 
 __()
