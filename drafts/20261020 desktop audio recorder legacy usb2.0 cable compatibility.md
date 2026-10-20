@@ -1,3 +1,5 @@
+<!-- yes it can use the mi pad charger (generally typec to type a) and i have an adapter. i guess it can work on the newly bought legacy cable. -->
+
 # .
 
 ```
