@@ -783,7 +783,25 @@ def main():
 def solve():
   _, h, l = read()
 
-  
+  a = read_ints()
+
+  larger_axis, smaller_axis = max(h, l), min(h, l)
+
+  free_count = 0
+  only_larger_count = 0
+
+  for i in a:
+    if i > larger_axis:
+      continue
+    elif i > smaller_axis and i <= larger_axis:
+      only_larger_count += 1
+    else:
+      free_count += 1
+
+  if only_larger_count >= free_count:
+    prn(free_count)
+  else:
+    prn((free_count + only_larger_count) // 2)
 
 
 __()

@@ -93,13 +93,16 @@ from algo import *
 
 # diff(closed_each(1, 10), f, g)
 
-a = dict()
+# a = dict()
 
-a[1] = 0
+# a[1] = 0
 
 # log(a.get(1))
 
 # log(call(add, 1, 2))
 # log(call(add, [1, 2]))
 
-log(sum(map(closed_each(1, 10), identity)))
+# log(sum(map(closed_each(1, 10), identity)))
+
+log('0001000'.split('1'))
+log('10001'.split('1'))
