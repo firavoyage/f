@@ -134,23 +134,40 @@ def is_given(v):
   return v is not nil
 
 
-# prefer `key in obj`
-def has(obj, key):
+# prefer `key in object`
+def has(object, key):
   """Universal check equivalent to JavaScript's includes / has / hasOwn."""
-  if isinstance(obj, (_list, tuple, str, set, dict)):
-    return key in obj
+  if isinstance(object, (_list, tuple, str, set, dict)):
+    return key in object
   return false
 
 
-def entries(obj):
+def entries(object):
   """Returns iterable entries based on structure."""
-  if isinstance(obj, dict):
-    return _list(obj.items())
-  elif isinstance(obj, (_list, tuple, str)):
-    return _list(enumerate(obj))
-  elif isinstance(obj, set):
-    return _list(enumerate(obj))
+  if isinstance(object, dict):
+    return _list(object.items())
+  elif isinstance(object, (_list, tuple, str)):
+    return _list(enumerate(object))
+  elif isinstance(object, set):
+    return _list(enumerate(object))
   return []
+
+
+def get(object, key):
+  if has(object, key):
+    return object[key]
+  else:
+    return 0
+
+
+def count(object, key):
+  if has(object, key):
+    object[key] += 1
+  else:
+    object[key] = 1
+
+
+increase = count
 
 
 def num(n):
