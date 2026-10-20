@@ -820,7 +820,31 @@ possible, not positive.
 
 then i will place k on a[i] regardless but what does it claim?!
 
+---
 
+i kind of get it. it means "exists" maybe.
+
+and it's not quite well defined when "there can not exist".
+
+also, i and j are 1 indexed, while "index" is 0 indexed.
+
+---
+
+oh i finally get it. "maximum number" means "count", not value.
+
+no ambiguity now.
+
+---
+
+easy.
+
+you can take either all nums above or below.
+
+and you can take one side all if you set k on inf or -inf.
+
+(it depends on distance, and you can take iff you are farther than it)
+
+n < 5k?! what if i 
 
 """
 
