@@ -789,11 +789,44 @@ you may take 6, and sub 3 on lcm, and sub 1 more on lcm 3 (all lcm 3 are lcm 2)
 
 "every" means floordiv
 
+---
+
+wait there are two lcm 2 for 1 lcm3...
+
+fine. you take 6 by default, sub 3 on lcm, and add 2 on lcm 3.
+
 """
 
 
 def solve():
-  pass
+  a, b, c, day_count = read_ints()
+  ab = lcm(a, b)
+  ac = lcm(a, c)
+  bc = lcm(b, c)
+  abc = lcm(a, b, c)
+
+  result_a = (
+    day_count // a * 6
+    - day_count // ab * 3
+    - day_count // ac * 3
+    + day_count // abc * 2
+  )
+
+  result_b = (
+    day_count // b * 6
+    - day_count // ab * 3
+    - day_count // bc * 3
+    + day_count // abc * 2
+  )
+
+  result_c = (
+    day_count // c * 6
+    - day_count // ac * 3
+    - day_count // bc * 3
+    + day_count // abc * 2
+  )
+
+  prn(result_a, result_b, result_c)
 
 
 __()
