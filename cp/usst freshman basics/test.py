@@ -55,28 +55,31 @@ from algo import *
 # log(comb(1, 2))
 # log(comb(2, 2))
 
-def cache(f):
-  history = dict()
+# def cache(f):
+#   history = dict()
 
-  def cached_fn(*args):
-    # log('cache?', args)
-    if args in history:
-      # log('hit')
-      return history[args]
-    # log('save')
-    result = f(*args)
-    history[args] = result
-    return result
+#   def cached_fn(*args):
+#     # log('cache?', args)
+#     if args in history:
+#       # log('hit')
+#       return history[args]
+#     # log('save')
+#     result = f(*args)
+#     history[args] = result
+#     return result
   
-  return cached_fn
+#   return cached_fn
 
-@cache
-def f(n):
-  time.sleep(1)
+# @cache
+# def f(n):
+#   time.sleep(1)
 
-  return n+1
+#   return n+1
 
-for i in each(5):
-  pr(f(i))
-for i in each(5):
-  pr(f(i))
+# for i in each(5):
+#   pr(f(i))
+# for i in each(5):
+#   pr(f(i))
+
+for i in each(1,100):
+  log(i, 100/i)
