@@ -774,7 +774,53 @@ def main():
 
 given i, find max j > i, forall k, 
 
-abs(a[i]-k) > abs()
+abs(a[i]-k) > abs(a[j]-k)
+
+that is
+
+min(abs(a[i]-k) - abs(a[j]-k)) > 0
+
+a[i] can be Z but k is N+.
+
+you want k to be closest to a[i] and farthest to a[j]
+
+let's say a[i] < a[j] (or order doesnt matter for distance),
+
+just you may imagine that
+
+let's say k is already standing on a[i] where a[i] is a large positive.
+
+if k moves left it yields the same result after minus. right? not what you expect.
+
+thus the result will be -abs(a[i] - a[j]). it's the same when a[i] > a[j].
+
+what if a[i] <= 0? you put k on 1. i think it doesnt need a proof.
+
+result = (-a[i] + 1) - abs(a[j] - 1)
+
+---
+
+well how can it even work maybe i missed sth.
+
+1 2 93 84 2 -> 4 2 2 1 0
+
+on 2 you pick 93? forall k in N+, it's claimed that abs(a[i]-k) > abs(a[j]-k).
+
+what if k = 2?
+
+0 > abs(93 - 2)?
+
+---
+
+yeah ive misread. "over all possible integer values of k"
+
+possible, not positive.
+
+---
+
+then i will place k on a[i] regardless but what does it claim?!
+
+
 
 """
 
