@@ -709,7 +709,35 @@ yeah.
 
 ---
 
+you want k+1 th.
 
+1 k 2k+1 m
+
+2(k+1)-1 m, (k+1) in [2, floor((m+1)/2)] = [2, ceil(m/2)]
+
+k doesnt matter, k+1 is a whole.
+
+well you can basically generate 2k-1 free nums
+
+interesting
+
+---
+
+let's pick the shortest, which is 3, and you remove the mid. you can gen any num.
+
+that is you can purge everything but not the leftmost or rightmost.
+
+---
+
+math fact:
+
+you could not inc gcd by introducing new nums.
+
+---
+
+it's so boring. wordplays.
+
+sleep.
 
 """
 
@@ -725,7 +753,11 @@ def main():
 
 
 def solve():
-  pass
+  read()
+
+  nums = read_ints()
+
+  prn(gcd(nums[0], nums[-1]))
 
 
 __()
