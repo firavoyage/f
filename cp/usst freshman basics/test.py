@@ -50,4 +50,6 @@ from algo import *
 # log(map([1, 2, 3], lambda x: (x + 1) ** 3))
 
 
+log(comb(0, 2))
+log(comb(1, 2))
 log(comb(2, 2))

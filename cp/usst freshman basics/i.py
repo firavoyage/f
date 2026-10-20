@@ -920,12 +920,12 @@ def solve():
     factors = base_prime(maximum)
 
     # all same, all distinct, 2=1> (counted only 1 currently), 2=1<
-    baseline = prod(
-      map(
-        factors,
-        case_count,
-      )
+    _ = map(
+      filter(factors, 0),
+      case_count,
     )
+
+    baseline = prod(_)
 
     # # 2=1>
     # bonus = (
@@ -943,7 +943,8 @@ def solve():
       maximum,
       baseline,
       # bonus,
-      factors,
+      filter(factors, 0),
+      _
     )
 
     solution_count += baseline
@@ -976,16 +977,17 @@ def case_count(n):
   n: factor power
   """
 
-  if n == 0:
-    return 1
-  elif n == 1:
-    
-
   all_same = 1
 
-  all_distinct = comb(n + 1, 2)
+  # there are n cases from 0 to n-1 (max has power n, it's not all distinct then)
+  all_distinct = comb(n, 2)
+  # all_distinct = comb(n + 1, 2)
 
-  two_same_one_larger = n * (n - 1) // 2
+  # 001 for 1, one case
+  # 002, 112 for 2 -> 2
+  # 003, 113, 223 for 3 -> 3
+  two_same_one_larger = n
+  # two_same_one_larger = n * (n - 1) // 2
   # two_same_one_larger = n * (n - 1) / 2
   two_same_one_smaller = two_same_one_larger
 
@@ -1028,4 +1030,8 @@ def is_prime(n):
   return True
 
 
+for i in each(5):
+  log(i, case_count(i))
+
 __()
+
