@@ -792,6 +792,12 @@ TypeError: unbound method dict.get() needs an argument
 
 py is wicked
 
+---
+
+tle?
+
+ok fine i need preprocessing. ik this.
+
 """
 
 
@@ -801,22 +807,45 @@ def solve():
   a = read_ints()
   b = read_ints()
 
-  z = dict()
+  z = [0] * n
 
-  z[n - 1] = max(a[n - 1], b[n - 1])
+  for i in closed_each(n - 1, 0):
+    if i == n - 1:
+      z[i] = max(a[i], b[i])
+    else:
+      z[i] = max(a[i], b[i], z[i + 1])
 
-  for i in closed_each(n - 1 - 1, 0):
-    z[i] = max(a[i], b[i], a[i + 1])
+  # z[n - 1] = max(a[n - 1], b[n - 1])
 
+  # for i in closed_each(n - 1 - 1, 0):
+  #   z[i] = max(a[i], b[i], a[i + 1])
+
+  s_z = sum_series(z)
+
+  result = []
   for i in each(q):
     l, r = read_ints()
 
     l -= 1
     r -= 1
 
-    # pr(sum(map(closed_each(l, r), dict.get)), ' ')
-    # prn(sum(map(closed_each(l, r), lambda i: dict[i])))
-    prn(sum(map(closed_each(l, r), identity)))
+    result.append(s_z[r] - s_z[l-1] if l >= 1 else s_z[r])
+    # result.append(sum(map(closed_each(l, r), lambda i: z[i])))
+    # result.append(sum(map(closed_each(l, r), z.get)))
+    # prn(sum(map(closed_each(l, r), lambda i: z[i])))
+
+  prn(result)
+
+
+def sum_series(a):
+  count = 0
+  result = []
+
+  for i in a:
+    count += i
+    result.append(count)
+
+  return result
 
 
 __()
