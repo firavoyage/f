@@ -235,7 +235,7 @@ def compose(*funcs):
   """
   if not funcs:
     return lambda x: x
-  return reduce(lambda f, g: lambda x: f(g(x)), funcs)
+  return reduce(funcs, lambda f, g: lambda x: f(g(x)))
 
 
 def pipe(initial_value, *funcs):
@@ -384,6 +384,32 @@ def each(*args):
     while (index - end) * step <= 0:
       yield index
       index += step
+
+
+def closed_each(*args):
+  """
+  Generates a progression from start to end (included)
+  """
+  begin = 0
+  end = 0
+  step = 1
+
+  if len(args) == 1:
+    end = args[0]
+  elif len(args) == 2:
+    begin = args[0]
+    end = args[1]
+    if (begin - end) * step > 0:
+      step = -1
+  elif len(args) == 3:
+    begin = args[0]
+    end = args[1]
+    step = args[2]
+
+  index = begin
+  while (index - end) * step <= 0:
+    yield index
+    index += step
 
 
 # def each(*args):
@@ -869,13 +895,16 @@ def solve():
 
   solution_count = 0
 
-  for maximum in each(n, 0):
+  for maximum in closed_each(n, 1):
     factors = base_prime(maximum)
     log(maximum, factors)
 
     # all same, all distinct, 2=1> (counted only 1 currently), 2=1<
     baseline = prod(
-      map(filter(factors, 0), partial(pow, exp=3))
+      map(
+        factors,
+        compose(partial(add, 1), partial(pow, exp=3)),
+      )
     )
 
     # 2=1>
@@ -919,7 +948,7 @@ def base_prime(n):
   result = [0]
 
   index = 0
-  for i in each(2, n + 1, 1):
+  for i in closed_each(2, n, 1):
     if n % i == 0:
       while n % i == 0:
         result[index] += 1
@@ -942,4 +971,3 @@ def is_prime(n):
 
 
 __()
-

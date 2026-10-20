@@ -14,13 +14,15 @@ from algo import *
 
 # log(int(m) if m.is_integer() else m)
 
-log(prod())
+# log(prod())
 
-log(prod([]))
+# log(prod([]))
 
-log(sum())
+# log(sum())
 
-log(sum([]))
+# log(sum([]))
 
-log(reduce(list(), mul))
-log(reduce(list([]), mul))
+# log(reduce(list(), mul))
+# log(reduce(list([]), mul))
+
+# log(compose(partial(add, 1), partial(mul, 3))(1))
