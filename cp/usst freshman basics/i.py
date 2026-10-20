@@ -1044,6 +1044,8 @@ let's test.
 
 for input n, you actually output sum(count 1 and count 2)
 
+upd: wait that's actually wrong. 2 -> 3?!
+
 ---
 
 dont over engineer.
@@ -1067,11 +1069,13 @@ def solve():
 
   prn(sum(map(closed_each(1, n), solution_count)))
 
+
 def solution_count(n):
   fc = factor_count(n)
-  rfc = fc - 1 # wo n itself
+  rfc = fc - 1  # wo n itself
 
   return pow(rfc, 2) + fc
+
 
 def factor_count(n):
   # base_prime = [0] # 2, 3, ...
@@ -1079,13 +1083,22 @@ def factor_count(n):
 
   exponents = []
   index = -1
-  
-  for guess in each(2, sqrt(n) + 1):
-    if n%guess == 0:
+
+  for guess in closed_each(2, n, 1):
+  # for guess in each(2, sqrt(n) + 1):
+    if n % guess == 0:
       exponents.append(0)
-      index+=1
-    
+      index += 1
+      while n % guess == 0:
+      # while n > 1:
+        exponents[index] += 1
+        n /= guess
   
+  # # prime n?
+  # if n > 1:
+  #   exponents.append(1)
+
+  return prod(map(exponents, partial(add, 1)))
 
 # def solve():
 #   n = read()
@@ -1206,4 +1219,7 @@ def factor_count(n):
 #   return True
 
 
-__()
+# __()
+
+for i in closed_each(1, 20):
+  prn(i, factor_count(i), solution_count(i))
