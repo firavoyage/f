@@ -15,7 +15,7 @@ def is_prime(n):
 
 
 # prefer trial division unless n is large
-def is_prime(n):
+def is_prime_fast(n):
   """
   Deterministic Miller-Rabin primality test for 64-bit integers.
   100% accurate for n < 2^64. Time Complexity: O(k log^3 n) where k = len(bases).
