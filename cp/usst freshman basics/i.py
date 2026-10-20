@@ -213,7 +213,11 @@ _list = list
 
 def list(*args):
   """Handles spread args fallback or dynamic conversion of an iterable."""
-  if len(args) == 1 and hasattr(args[0], '__iter__') and not isinstance(args[0], str):
+  if (
+    len(args) == 1
+    and hasattr(args[0], '__iter__')
+    and not isinstance(args[0], str)
+  ):
     return _list(args[0])
   return _list(args)
 
@@ -238,7 +242,9 @@ def pipe(initial_value, *funcs):
   """Passes a value through a sequence of functions from left to right.
   pipe(x, f, g) is equivalent to g(f(x)).
   """
-  return reduce(lambda value, func: func(value), funcs, initial_value)
+  return reduce(
+    lambda value, func: func(value), funcs, initial_value
+  )
 
 
 def curry(func):
@@ -247,7 +253,9 @@ def curry(func):
   def curried(*args, **kwargs):
     if len(args) + len(kwargs) >= func.__code__.co_argcount:
       return func(*args, **kwargs)
-    return lambda *brgs, **bkwargs: curried(*(args + brgs), **{**kwargs, **bkwargs})
+    return lambda *brgs, **bkwargs: curried(
+      *(args + brgs), **{**kwargs, **bkwargs}
+    )
 
   return curried
 
@@ -292,7 +300,10 @@ def map(items, f):
     if value is halt:
       break
 
-    if isinstance(value, HaltContainer) and value.halt_symbol is halt_symbol:
+    if (
+      isinstance(value, HaltContainer)
+      and value.halt_symbol is halt_symbol
+    ):
       result.append(value.value)
       break
 
@@ -673,7 +684,9 @@ def improve(update, close, guess=1, timeout=10**5):
 
 
 def find_root(term, derivative):
-  """Solves the roots of an equation using the Newton-Raphson approximation method."""
+  """
+  Solves the roots of an equation using the Newton-Raphson approximation method.
+  """
 
   def update(x):
     return x - term(x) / derivative(x)
@@ -783,6 +796,31 @@ there are n(n-1)(n-2)/6, C(n, 3) "all distinct" (0 if n <= 2)
     - you may write it in cleaner less obvious factorial
   - in C(x, y) you basically divide by repetitive "order plays"
 
+comb works well and gives 0 when it doesnt qualify.
+
+~~there n-1 pairs of a a b where b > a (take a from 1 to n-1)~~
+
+~~there n-1 pairs of a a b where b < a~~
+
+there are (n-1) + (n-2) + ... + 1 pairs of a a b where b > a
+
+(take a from 1 to n - 1)
+
+that is ((n-1)+1)*(n-1)/2 = n(n-1)/2, (first + last) * count / 2, 
+the grade school formula
+
+or "grade school math olym", lol.
+
+it's the same count for b < a i guess. you can basically reverse the list.
+
+---
+
+it's wrong on 20, or maybe every comb.
+
+comb(20, 3) alone far exceeds example output.
+
+ah! yeah, i assumed they share the factorials, like each is pow of another.
+
 
 
 """
@@ -796,9 +834,24 @@ def main():
 
 
 def solve():
-  pass
+  n = read()
+
+  all_same = n
+
+  all_distinct = comb(n, 3)  # works as expeccted for n <= 2
+
+  two_same_one_larger = n * (n - 1) // 2
+  # two_same_one_larger = n * (n - 1) / 2
+  two_same_one_smaller = two_same_one_larger
+
+  prn(
+    all_same * 1
+    + all_distinct * 1
+    + two_same_one_larger * 2
+    + two_same_one_smaller * 1
+  )
 
 
 # __()
 
-log(comb(1, 3))
+log(comb(20, 3))
