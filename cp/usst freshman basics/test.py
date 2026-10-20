@@ -68,7 +68,7 @@ from algo import *
 #     result = f(*args)
 #     history[args] = result
 #     return result
-  
+
 #   return cached_fn
 
 # @cache
@@ -104,5 +104,12 @@ from algo import *
 
 # log(sum(map(closed_each(1, 10), identity)))
 
-log('0001000'.split('1'))
-log('10001'.split('1'))
+# log('0001000'.split('1'))
+# log('10001'.split('1'))
+
+# a = [1, 2, 3, 4]
+# a = [1, 2]
+a = []
+
+log(a[slice(1, -1)])
+
