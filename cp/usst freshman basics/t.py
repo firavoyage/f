@@ -788,20 +788,62 @@ def main():
 seems it depends on oddity alone.
 
 - all 0: t
-- all 1: f
+- ~~all 1: f (?)~~
 - odd 0 odd 1: t (click all zero)
   - 01
   - 000111
-- odd 0 even 1: t (click all zero)
+- odd 0 even 1: t (click all zero or you may also click all 1)
   - 011
   - 0001111
-- 
-  
+- even 0 odd 1: f
+  - 001
+  - 000011111
+- even 0 even 1: t (click all 1)
+  - 11
+  - 0011
+
+---
+
+wa
+
+it only gives me eg input anyway
+
 """
 
 
 def solve():
-  pass
+  n = read()
+  state = readline()
+
+  # zero_count = count(state, '0')
+  # one_count = count(state, '1')
+  zero_count = len(filter(state, '1'))
+  one_count = len(filter(state, '0'))
+  # zero_count = len(filter(state, '0'))
+  # one_count = len(filter(state, '1'))
+
+  # log('__', state, zero_count, one_count)
+
+  # log(entries(state))
+  # log(map(entries(state), lambda index, char: index if char == '0' else nil))
+  # log(map(entries(state), lambda index, char: (index, char)))
+
+  if zero_count % 2 == 1:
+    prn(zero_count)
+
+    if one_count != 0:
+      prn(map(state, lambda char, index: index + 1 if char == '0' else nil))
+
+  elif one_count % 2 == 1:
+    # even 1 odd 1
+    prn(-1)
+  else:
+    # even 1 even 1
+    prn(one_count)
+
+    if one_count != 0:
+      prn(map(state, lambda char, index: index + 1 if char == '1' else nil))
+      # prn(map(entries(state), lambda index, char: index if char == '1' else nil))
 
 
 __()
