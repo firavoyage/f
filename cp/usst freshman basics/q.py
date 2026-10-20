@@ -785,6 +785,45 @@ as long as there is one decreasing pair,
 
 i can purge all others and then one of them
 
+---
+
+yeah i can view the test case!
+
+and test case 1 is example test case...
+
+---
+
+```
+Test: #1, time: 46 ms., memory: 2428 KB, exit code: 0, checker exit code: 1, verdict: WRONG_ANSWER
+Copy
+Input
+3
+4
+1 4 2 3
+1
+100
+2
+6 7
+Copy
+Output
+2
+1
+2
+Copy
+Checker Log
+wrong answer 1st numbers differ - expected: '1', found: '2'
+```
+
+really?!
+
+it works well on my computer...
+
+---
+
+oh i submitted the wrong program file...
+
+i thought single letter files would be always on top...
+
 """
 
 
