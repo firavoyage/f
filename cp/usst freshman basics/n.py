@@ -861,7 +861,33 @@ but really is it about constants? esp when it's 1.5sec
 
 preprocessing...
 
+---
 
+"binary indexed tree"
+
+query n: sum of 1 to n
+
+update i ~~new_value~~ delta: add delta to i
+
+(range l r: query r - query l-1)
+
+when ranked, you query range 0 to n-1 for strictly smaller, 
+and n+1 to end for larger
+
+on usage,
+
+you sort set sequence and map value to index
+
+you count from right to left, query value and update it
+i.e. get its rank, increase value of "seen" count of this rank
+
+on implementation,
+
+tree[i] stores sum from i the left of i of number i & -i
+
+(doesnt seems it works as a standard tree, it can jump and take subtree)
+
+next i = i - i&(-i), e.g. 7 -> 6 -> 4 
 
 """
 
@@ -881,9 +907,31 @@ def solve():
         smaller_count += 1
       elif a[j] > a[i]:
         larger_count += 1
-      
+
     result.append(max(smaller_count, larger_count))
-  
+
   prn(result)
+
+
+# def solve():
+#   _ = read()
+#   a = read_ints()
+
+#   result = []
+
+#   for i in each(0, len(a)):
+#     smaller_count = 0
+#     larger_count = 0
+
+#     for j in each(i + 1, len(a), 1):
+#       if a[j] < a[i]:
+#         smaller_count += 1
+#       elif a[j] > a[i]:
+#         larger_count += 1
+
+#     result.append(max(smaller_count, larger_count))
+
+#   prn(result)
+
 
 __()
