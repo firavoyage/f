@@ -899,24 +899,72 @@ update i = tree[i]++, tree(parent[i])++, ..., parent[i] > len
 
 """
 
+# binary indexed tree
+
+
+def lsb(i):
+  return i & (-i)
+
+
+def next(i):
+  return i - lsb(i)
+
+
+def parent(i):
+  return i + lsb(i)
+
+
+def query(tree, i):
+  result = 0
+
+  while i != 0:
+    result += tree[i]
+
+    i = next(i)
+
+  return result
+
+
+def query_range(tree, l, r):
+  return query(tree, r) - (query(tree, l - 1) if l >= 1 else 0)
+
+
+def update(tree, i):
+  while i < len(tree):
+    tree[i] += 1
+    i = parent(i)
+
 
 def solve():
   _ = read()
   a = read_ints()
 
+  ranks = sort(set(a))
+  value_to_rank = dict()
+
   result = []
 
-  for i in each(0, len(a)):
-    smaller_count = 0
-    larger_count = 0
+  for i in each(0, len(ranks)):
+    value_to_rank[ranks[i]] = i
 
-    for j in each(i + 1, len(a), 1):
-      if a[j] < a[i]:
-        smaller_count += 1
-      elif a[j] > a[i]:
-        larger_count += 1
+  tree = [0] * len(ranks)
 
-    result.append(max(smaller_count, larger_count))
+  for i in closed_each(len(a) - 1, 0):
+
+
+  result.reverse
+
+  # for i in each(0, len(a)):
+  #   smaller_count = 0
+  #   larger_count = 0
+
+  #   for j in each(i + 1, len(a), 1):
+  #     if a[j] < a[i]:
+  #       smaller_count += 1
+  #     elif a[j] > a[i]:
+  #       larger_count += 1
+
+  #   result.append(max(smaller_count, larger_count))
 
   prn(result)
 

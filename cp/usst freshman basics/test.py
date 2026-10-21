@@ -109,7 +109,11 @@ from algo import *
 
 # a = [1, 2, 3, 4]
 # a = [1, 2]
-a = []
+# a = []
 
-log(a[slice(1, -1)])
+# log(a[slice(1, -1)])
 
+a = [1, 2, 3]
+
+for x, y in entries(a):
+  log(x, y)
