@@ -869,6 +869,19 @@ clearly you just move it to the left
 
 ok it's now clear.
 
+you move the first dec element all the way to the left.
+
+there is a specific trick when it starts w a decreasing seq, 
+but it's not general, and might not help much
+
+e.g. 3 2 1 -> 2 2+3 1
+
+you maintain only the last element, the maximum of the starting sorted seq
+
+easy.
+
+---
+
 
 
 """
