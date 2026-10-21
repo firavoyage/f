@@ -1,27 +1,29 @@
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
+using namespace std;
 
-int main() {
-    // Print a message to the screen
-    std::cout << "Enter your name: ";
-    
-    // Store user input in a string variable
-    std::string userName;
+// Quick type aliases instead of long type names
+using ll = long long;
+using pii = pair<int, int>;
 
-    std::getline(std::cin, userName);    
-    
-    // Greet the user;;
-    ;
-    ;
-    ;
-    ;
-    ;
-    ;
-    
-    std::cout << "Hello, " << userName << "! Welcome to C++ programming." << std::endl;;
-    ;
-    ;
-    
-    
-    return 0; // Signals that the program ran successfully
+void solve()
+{
+    // Your modern logic goes here
+}
+
+int main()
+{
+    cout << 1;
+
+    // Fast I/O: Crucial to prevent Time Limit Exceeded (TLE)
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int t = 1;
+    cin >> t; // Comment this out if the problem has only 1 test case
+    while (t--)
+    {
+        solve();
+    }
+
+    return 0;
 }
