@@ -1,28 +1,37 @@
-#include <bits/stdc++.h>
-using namespace std;
+#include <iostream>
+#include <print>
+#include <sstream>
+#include <string>
+#include <variant>
 
-// Quick type aliases instead of long type names
-using ll = long long;
-using pii = pair<int, int>;
+// 1. A smart wrapper around our dynamic data
+struct DynamicBox {
+  std::variant<int, double, std::string> data;
 
-void solve() {
-  // Your modern logic goes here
+  // Implicitly convert to any type T when assigned!
+  template <typename T>
+  operator T() const {
+    // std::get forces the assertion. It extracts T or crashes immediately.
+    return std::get<T>(data);
+  }
+};
+
+// 2. The read function now returns our smart box
+DynamicBox read() {
+  std::string input;
+  std::getline(std::cin, input);
+
+  std::stringstream ss(input);
+  int int_val;
+  if (ss >> int_val && ss.eof()) return DynamicBox{int_val};
+  return DynamicBox{input};
 }
 
 int main() {
-  cout << 1;
+  std::print("Enter an integer: ");
 
-  // Fast I/O: Crucial to prevent Time Limit Exceeded (TLE)
-  ios_base::sync_with_stdio(false);
-  ;
+  // 🔥 SYNTAX COPIED: Looks completely dynamic, but fully asserts at runtime!
+  int var = read();
 
-  cin.tie(nullptr);
-
-  int t = 1;
-  cin >> t;  // Comment this out if the problem has only 1 test case
-  while (t--) {
-    solve();
-  }
-
-  return 0;
+  std::print("Variable locked in as int: {}\n", var);
 }
