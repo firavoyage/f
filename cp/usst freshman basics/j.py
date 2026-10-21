@@ -882,13 +882,30 @@ easy.
 
 ---
 
+logics:
 
+last = first
+
+for each, if < last, add to last
+
+otherwise, replace last
 
 """
 
 
 def solve():
-  pass
+  _ = read()
 
+  a = read_ints()
+
+  last = a[0]
+
+  for i in a:
+    if i < last:
+      last += i
+    else:
+      last = i
+
+  prn(last)
 
 __()
