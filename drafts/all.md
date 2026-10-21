@@ -527,6 +527,7 @@ cp: <!-- algorithms -->
 - ds algo templates math nt is prime
 - shell fn clean strip hints remove py type sig
 - py re causes
+- learning practicing guide resources
 
 pm:
 
