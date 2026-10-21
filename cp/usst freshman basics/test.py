@@ -115,5 +115,5 @@ from algo import *
 
 a = [1, 2, 3]
 
-for x, y in entries(a):
-  log(x, y)
+# for x, y in entries(a):
+#   log(x, y)
