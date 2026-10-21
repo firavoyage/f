@@ -901,6 +901,14 @@ update i = tree[i]++, tree(parent[i])++, ..., parent[i] > len
 
 well, the tree is 1 indexed.
 
+---
+
+ac.
+
+yeah, exactly, confirmed.
+
+cpp players can absolutely n^2 through it
+
 """
 
 # binary indexed tree
