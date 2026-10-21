@@ -23,3 +23,7 @@ ruby stl
 ---
 
 how would it look like if you can declare material design mouse position aware ripple effect in an ideal css alone
+
+---
+
+how to polymorph params, like each end as each 0 end, each begin end, each begin end step, or map that calls the passed fn value, index, array, but the fn doesnt have to take it all (like js)
