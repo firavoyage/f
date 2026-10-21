@@ -841,6 +841,34 @@ if we take the shortcut... -> 4 4~5 4 4~5 4~5+(4~6+6) 4~5+(4~6+6)+6
 -> 4 4 4~5 4~5+4~5+4 4~5+(4~6+6) 4~5+(4~6+6)+6
 clearly i should not take the shortcut.
 
+---
+
+let's take a look at a b c examples, where it's initially c b a
+
+cleary a should get to the left.
+
+if you move directly, it will be a c+a b+a, into a b+a c+a+b+a
+
+you can play like this: b c+b a, b a c+b+a, a b+a c+b+a
+
+(i think it's alreadys solved)
+
+---
+
+it's considered sorted if it's non dec. and you divide sequence a this way.
+
+problem is how do you do if you have sth already sorted on the left
+
+sorted ... sorted ... 
+
+clearly you just move it to the left
+
+4 5 6 1 -> 1 4+1 5+1 6+1
+
+---
+
+ok it's now clear.
+
 
 
 """
