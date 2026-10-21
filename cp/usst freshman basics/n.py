@@ -897,6 +897,10 @@ query i = tree[i] + tree(next[i]) + ... next[i] == 0
 
 update i = tree[i]++, tree(parent[i])++, ..., parent[i] > len
 
+---
+
+well, the tree is 1 indexed.
+
 """
 
 # binary indexed tree
@@ -917,7 +921,7 @@ def parent(i):
 def query(tree, i):
   result = 0
 
-  while i != 0:
+  while i > 0:
     result += tree[i]
 
     i = next(i)
@@ -932,6 +936,7 @@ def query_range(tree, l, r):
 def update(tree, i):
   while i < len(tree):
     tree[i] += 1
+    # log([tree, i, parent(i)])
     i = parent(i)
 
 
@@ -942,17 +947,26 @@ def solve():
   ranks = sort(set(a))
   value_to_rank = dict()
 
+  for i in each(0, len(ranks)):
+    value_to_rank[ranks[i]] = i + 1
+
+  tree = [0] * (len(ranks) + 5)
+
   result = []
 
-  for i in each(0, len(ranks)):
-    value_to_rank[ranks[i]] = i
-
-  tree = [0] * len(ranks)
-
   for i in closed_each(len(a) - 1, 0):
+    rank = value_to_rank[a[i]]
 
+    smaller_count = query_range(tree, 0, rank - 1)
+    larger_count = query_range(tree, rank + 1, len(ranks))
+    # larger_count = query_range(tree, rank + 1, len(ranks) - 1)
+    result.append(max(smaller_count, larger_count))
 
-  result.reverse
+    # log('update')
+
+    update(tree, rank)
+
+    # log('updated')
 
   # for i in each(0, len(a)):
   #   smaller_count = 0
@@ -966,7 +980,8 @@ def solve():
 
   #   result.append(max(smaller_count, larger_count))
 
-  prn(result)
+  prn(reversed(result))
+  # prn(result.reverse())
 
 
 # def solve():
