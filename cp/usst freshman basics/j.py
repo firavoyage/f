@@ -807,6 +807,28 @@ d d+e c b a, d c c+d+e b a, ..., d c b a a+b+c+d+e, ...
 
 c b a a~d a~e, ..., ..., a a~b a~c a~d a~e
 
+(what if you go the other way?)
+like e d c a a+b, then first 4 would be at least a+c+d+e,
+and you will get a+b+a+c+d+e, double a, worse.
+
+---
+
+what about more realistic examples
+no need to guess. you can generalize later
+
+3 2 1 6 5 4 -> ... (1~3) ... (4~6) -> ... (1~3+4~6)
+
+(that may not be optimal. you should follow the theory.)
+
+-> ... (1~3) 6 5 4 -> yes (6+6+5+4) because 6 6 5 4 itself is a dec seq here.
+
+clearly it's optimal to optimize any leftmost seq.
+if you can achieve nondec w lower last value, you can chain easier.
+
+3 2 1 10 9 8 -> ... (1~3) 10 9 8 -> ... (1~3) ... (8~10)
+
+6 5 4 6 5 4 -> 4 4~5 4~6 6 5 4 -> 4 4~5 
+
 
 
 """
