@@ -231,7 +231,7 @@ archi:
 - t3 stack
 - piracy hosting crypto vps maimai charts awmc astrodx
 - naming markdown multiple heading one no title
-- naming prefer singular <!-- action, actions --> 
+- naming prefer singular <!-- action, actions -->
 - react vs vue hypes decision fatigue <!-- politics essentially -->
 - first principles
 - template new repo
@@ -504,7 +504,7 @@ agent: <!-- ai/ml -->
 - claude skills
 - semantic search
 - opencode build mode plan mode
-- spec driven dev 
+- spec driven dev
 - c suite roles flat corp structure <!-- pm? agent, esp. one man company hypes -->
 - llms yes no as the first token
 
@@ -529,6 +529,7 @@ cp: <!-- algorithms -->
 - py re causes
 - learning practicing guide resources
 - dsa binary indexed tree
+- cpp setup
 
 pm:
 
@@ -771,7 +772,7 @@ pure:
 - research writing style first person narrative internal thoughts author conversation textbook
 - methodology eli five
 
-<!-- 
+<!--
 
 - chinese
 - math
@@ -780,7 +781,7 @@ pure:
 - chemistry
 - history
 - geography
-- ... 
+- ...
 
 -->
 
