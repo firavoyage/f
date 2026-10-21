@@ -1,0 +1,21 @@
+---
+# Choose a base style: LLVM, Google, Chromium, Mozilla, WebKit
+BasedOnStyle: Google
+
+# Set your indent width (usually 4 for C++)
+IndentWidth: 2
+TabWidth: 4
+UseTab: Never
+
+# Column limit before code wraps (0 disables wrapping)
+ColumnLimit: 100
+
+# Control pointer alignment (Left: int* p; Right: int *p; Middle: int * p)
+PointerAlignment: Left
+
+# Control brace positions
+BreakBeforeBraces: Attach
+
+# Keep namespaces, public/private keywords, and short functions clean
+NamespaceIndentation: None
+AllowShortFunctionsOnASingleLine: Inline
