@@ -15,3 +15,7 @@ skipped problems
 upsolved problems <!-- editorial/llms -->
 
 - n
+
+<!-- clearly cpp can do n^2 for sigma n<5000? -->
+
+<!-- do they really want me to learn "binary tree" -->
