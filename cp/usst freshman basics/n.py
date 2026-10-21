@@ -887,7 +887,15 @@ tree[i] stores sum from i the left of i of number i & -i
 
 (doesnt seems it works as a standard tree, it can jump and take subtree)
 
-next i = i - i&(-i), e.g. 7 -> 6 -> 4 
+lsb i = i & (-i)
+
+next i = i - lsb i, e.g. 7 -> 6 -> 4 -> 0 (end)
+
+parent i = i + lsb i
+
+query i = tree[i] + tree(next[i]) + ... next[i] == 0 
+
+update i = tree[i]++, tree(parent[i])++, ..., parent[i] > len
 
 """
 
