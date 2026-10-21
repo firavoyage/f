@@ -797,7 +797,8 @@ e d c b a.
 
 eventually a must be on the left right?
 
-min must be on the left regardless, even if you insert some stuff.
+(rightmost) min must be on the left regardless, even if you insert some stuff.
+as is.
 
 ---
 
@@ -827,7 +828,13 @@ if you can achieve nondec w lower last value, you can chain easier.
 
 3 2 1 10 9 8 -> ... (1~3) 10 9 8 -> ... (1~3) ... (8~10)
 
-6 5 4 6 5 4 -> 4 4~5 4~6 6 5 4 -> 4 4~5 
+6 5 4 6 5 4 -> 4 4~5 4~6 6 5 4
+
+if we go the idiomatic way... -> 4 4~5 6 4~6+6 5 4
+-> 4 6 4~5+6 4~5+6 5 4 -> 4 6 4~5+6 5 4~5+6+5 4
+-> 4 6 5 4~5+6+5 4~5+6+5 4
+-> 4 5 5+6 4~5+6+5 4~5+6+5 4
+-> ... -> 4 4 5+4 5+6+4 4~5+6+5+4 4~5+6+5+4
 
 
 
