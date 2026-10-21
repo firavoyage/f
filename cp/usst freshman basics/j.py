@@ -775,6 +775,12 @@ def main():
 
 """
 
+my intuition is you should always make the leftmost possible swap.
+
+i will (dis)prove it.
+
+---
+
 the goal is to perform swaps to make a seq non dec with least last value.
 
 notice how it swaps.
@@ -782,7 +788,26 @@ notice how it swaps.
 (a, b) to (b, a+b)
 
 that is, when you move an element from the right to the left, 
-it will not change its value. and others will be si
+it will not change its value. and others will be strictly increasing. 
+as all nums are positive.
+
+imagine a b c d e (increasing) and you have
+
+e d c b a.
+
+eventually a must be on the left right?
+
+min must be on the left regardless, even if you insert some stuff.
+
+---
+
+there are a few ways to do this, let's take a look
+
+d d+e c b a, d c c+d+e b a, ..., d c b a a+b+c+d+e, ...
+
+c b a a~d a~e, ..., ..., a a~b a~c a~d a~e
+
+
 
 """
 
