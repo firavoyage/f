@@ -20,4 +20,11 @@ i will provide immediate value as i often chat w llms, and i longer need to jump
 
 whenever it's not dynamically loaded (or for any content present in dom).
 
+---
+
+clipboard api seems to be messy. i would not try to fix it.
+
+just make it work. markdown is enough.
+
+
 
