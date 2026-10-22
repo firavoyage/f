@@ -263,7 +263,7 @@ lib:
 - server
 - datetime
 - chainable
-- tsconfig path
+- tsconfig path lib node modules add update
 - web style
 - web component prefix hyperscript
 - b bun root
