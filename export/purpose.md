@@ -26,5 +26,19 @@ clipboard api seems to be messy. i would not try to fix it.
 
 just make it work. markdown is enough.
 
+---
+
+it's possible to hook shadow dom.
+
+but i could not force it.
+
+not necessarily.
+
+and actually i rarely run into these issues personally. for reddit i can use legacy.
+
+... letme check whether inner html works
+
+doesnt feel i should fight too hard on it.
+
 
 
