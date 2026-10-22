@@ -33,9 +33,21 @@ pipeline
 
 add information
 
-- css inlining
+- css inlining <!-- if you need md at last regardless and you dont really use raw html, you may just parse what you need (md supports), like text styling. e.g. md doesnt support font size. -->
 - relative url
-- pseudo elements
+- _pseudo elements_ <!-- they are rarely used for meaningful content, could have -->
 - shadow dom
 
 discard
+
+- aria hidden
+- wrapper tags
+- irrelevant html attrs
+
+<!-- ? i need md -->
+
+when it should keep html...
+
+i guess it's almost always for math latex, just keep svg. doesnt have to strip attrs, they are not generally crazy guys that poison or mess up katex output.
+
+
