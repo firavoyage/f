@@ -40,5 +40,10 @@ and actually i rarely run into these issues personally. for reddit i can use leg
 
 doesnt feel i should fight too hard on it.
 
+---
+
+it works. it's comprehensive. it's modern.
+
+yet the real world is messy. quirky. inefficient.
 
 

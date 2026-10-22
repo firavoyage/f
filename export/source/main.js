@@ -10,6 +10,25 @@ import './popup.css'
 import TurndownService from 'turndown'
 import { gfm } from '@joplin/turndown-plugin-gfm'
 
+const default_config = {
+  format: 'markdown', // text, markdown, html
+  copy_text_threshold: 300,
+  tags_to_preserve: ['svg'],
+  tags_to_preserve_one_layer: ['mark', 'summary', 'details'],
+  tags_to_remove: [
+    'script',
+    'style',
+    'noscript',
+    'iframe',
+    'button',
+    'input',
+    'textarea',
+  ],
+  should_normalize_heading: true,
+  fallback_element: 'body',
+  texts_to_strip: ['Use code with caution.', 'You said: '],
+}
+
 function Config({ onClose }) {
   const [config, set_config_value] = useState(GM_getValue('export_config', ''))
 
@@ -74,7 +93,11 @@ GM_registerMenuCommand('config', open_config)
 
 function set_config(value) {
   if (is(value, 'string')) {
-    GM_setValue('export_config', value)
+    if (value == '') {
+      set_config(default_config)
+    } else {
+      GM_setValue('export_config', value)
+    }
   } else {
     GM_setValue('export_config', stringify(value))
   }
@@ -175,7 +198,7 @@ function normalize_node(parent_node) {
     const el = all_elements[i]
 
     // 1. Remove hidden nodes & CSS hiding hacks on inline styling
-    if (is_hidden_node(el)) {
+    if (is_hidden_node(el) || is_base64_image(el)) {
       el.remove()
       continue
     }
@@ -199,8 +222,8 @@ function is_hidden_node(el) {
 
   // Common CSS hidden properties
   if (style.display === 'none') return true
-  if (style.blockSize === '1px') return true
-  if (style.inlineSize === '1px') return true
+  // if (style.blockSize === '1px') return true
+  // if (style.inlineSize === '1px') return true
   if (style.visibility === 'hidden') return true
   if (style.opacity === '0') return true
 
@@ -221,6 +244,17 @@ function is_hidden_node(el) {
     }
   }
 
+  return false
+}
+
+function is_base64_image(el) {
+  // Check if it's an img tag with a data URI (base64 image source)
+  if (el.tagName && el.tagName.toLowerCase() === 'img') {
+    const src = el.getAttribute('src')
+    if (src && src.trim().toLowerCase().startsWith('data:image/')) {
+      return true
+    }
+  }
   return false
 }
 
@@ -426,20 +460,16 @@ window.addEventListener(
     log('node', node, node.outerHTML)
 
     node = serialize_node(node)
-
     log('serialized_node', node, node.outerHTML)
 
     node = normalize_node(node)
-
     log('normalized_node', node, node.outerHTML)
-    
-    node = standardize_heading(node)
 
+    node = standardize_heading(node)
     log('standarized heading', node, node.outerHTML)
 
     if (should_normalize_heading) {
       node = normalize_heading(node)
-
       log('normalized_heading_node', node, node.outerHTML)
     }
 
@@ -502,6 +532,15 @@ window.addEventListener(
       },
     })
 
+    turndown.addRule('preserveSvg', {
+      filter: 'svg',
+      replacement: function (content, node) {
+        // node is a real DOM element (or a virtual DOM element via JSDOM/Cheerio)
+        // node.outerHTML gives us the exact string representation of the SVG
+        return `\n\n${node.outerHTML}\n\n`
+      },
+    })
+
     turndown.use(gfm)
 
     // Stop Turndown from adding ugly backslashes to normal punctuation/markdown symbols
@@ -511,7 +550,9 @@ window.addEventListener(
       return string
     }
 
-    let html = clean_html(node.outerHTML)
+    let html = node.outerHTML
+
+    // html = clean_html(html)
 
     let markdown = turndown.turndown(html)
 
@@ -532,14 +573,5 @@ window.addEventListener(
 )
 
 if (get_config() == nil) {
-  set_config({
-    format: 'markdown', // text, markdown, html
-    copy_text_threshold: 300,
-    tags_to_preserve: ['svg'],
-    tags_to_preserve_one_layer: ['mark', 'summary', 'details'],
-    tags_to_remove: ['button', 'input', 'textarea'],
-    should_normalize_heading: true,
-    fallback_element: 'body',
-    texts_to_strip: ['Use code with caution.'],
-  })
+  set_config(default_config)
 }
