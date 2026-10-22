@@ -35,6 +35,8 @@
     "util": "0.12.5"
   },
   "dependencies": {
-    "lib": "github:firahq/lib"
+    "lib": "github:firahq/lib",
+    "@hono/node-server": "2.0.8",
+    "hono": "4.12.27"
   }
 }
