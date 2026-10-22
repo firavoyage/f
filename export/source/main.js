@@ -3,7 +3,6 @@ import { useState } from "preact/hooks";
 import { GM_registerMenuCommand, GM_setValue, GM_getValue } from "$";
 import "./popup.css";
 
-// 1. Define the Popup Component using pure Hyperscript function calls
 function PopupConfig({ onClose }) {
   const [config, set_config] = useState(GM_getValue("export_config", ""));
 
