@@ -7372,5 +7372,1831 @@ If your string is **already available in memory** when the user clicks, you can 
 
 Are you seeing a specific **error message** (like `NotAllowedError` or `DOMException`) in your console right now, or are you just architecting a new feature?
 
-# 
+# . test
+
+# npm libs to convert html to markdown
+
+3:38 AM
+
+### npm libs to convert html to markdown
+
+Several high-quality **npm libraries** can convert HTML to Markdown, depending on your environment (Node.js vs. the browser), performance needs, and LLM optimization requirements.
+
+Here are the most popular and efficient packages grouped by use case:
+
+#### 1\. The Industry Standards (Most Versatile)
+
+* **[turndown](https://www.npmjs.com/package/turndown)**: The most widely adopted, highly customizable, and battle-tested HTML-to-Markdown converter. It works seamlessly in both Node.js and the browser.
+  * _Best for:_ General use cases, custom rule definitions, and standard configurations (e.g., choosing between `Atx` and `Setext` headers). [](https://www.npmjs.com/package/turndown)  
+  NPM +2
+* **[node-html-markdown](https://www.npmjs.com/package/node-html-markdown)**: A fast and reliable alternative designed primarily for Node.js environments. It handles HTML block elements cleanly by managing appropriate line spacing out-of-the-box. [](https://www.npmjs.com/package/node-html-markdown)  
+NPM
+
+#### 2\. High-Performance & LLM-Optimized (Fastest)
+
+* **@mdream/js** (or the native Rust-backed **`mdream`**): A performance-first engine specifically optimized to clean up HTML into compact Markdown for Large Language Model (LLM) prompts.
+  * _Best for:_ Massive token savings (claims up to 92% fewer tokens than raw HTML) and edge runtimes via WASM. [](https://github.com/harlan-zw/mdream)  
+  GitHub
+* **@kreuzberg/opencode-html-to-markdown**: Powered by a highly performant native Rust core via NAPI (`html-to-markdown-node`) and a universal WASM layer for browsers and Deno. Great for structural extraction. [](https://crates.io/crates/html-to-markdown-cli/2.3.4)  
+Crates.io +1
+
+#### 3\. Lightweight & Zero-Dependency
+
+* **[html-to-md](https://www.npmjs.com/package/html-to-md)**: Written in TypeScript with **zero external dependencies** and a tiny footprint (\~10kb gzipped).
+  * _Best for:_ Projects looking to minimize bundle size while keeping robust tag-skipping and rendering configurations. [](https://www.npmjs.com/package/html-to-md)  
+  NPM
+
+#### Direct Comparison
+
+| Library                | Primary Environment | Core Strength                       | Extensible / Custom Rules      |
+| ---------------------- | ------------------- | ----------------------------------- | ------------------------------ |
+| **turndown**           | Node & Browser      | Highly customizable ecosystem       | Yes (via .addRule and plugins) |
+| **node-html-markdown** | Node.js             | Quick, standard conversion          | Limited                        |
+| **mdream**             | Node, Edge, Rust    | Extreme speed & LLM token reduction | Yes (Declarative config)       |
+| **html-to-md**         | Node & Browser      | Lightweight, zero-dependency        | Yes (Tag filters & aliases)    |
+
+---
+
+#### Quick Implementation Example (using `turndown`)
+
+javascript
+
+```
+import TurndownService from 'turndown';
+
+const html = `
+  <h1>Hello World</h1>
+  <p>This is a <strong>bold</strong> statement.</p>
+`;
+
+const turndownService = new TurndownService({ headingStyle: 'atx' });
+const markdown = turndownService.turndown(html);
+
+console.log(markdown);
+// Output:
+// # Hello World
+// This is a **bold** statement.
+
+```
+
+
+
+To help narrow down the best choice, could you tell me:
+
+* Will this run in a **Node.js backend, a frontend browser, or an edge function**?
+* Are you converting standard web content, or are you preparing data specifically for **LLM inputs**?
+* Do you need to handle highly custom HTML tags or complex **tables**?
+
+* [](https://www.npmjs.com/package/node-html-markdown)  
+NPM  
+node-html-markdown - NPM  
+In standard Markdown, paragraphs are separated by blank lines. HTML block elements like , , , etc. are surrounded by blank lines i...
+* [](https://www.npmjs.com/package/turndown)  
+NPM  
+turndown - NPM  
+Convert HTML into Markdown with JavaScript. See it in action online. Project Updates to-markdown has been renamed to Turndown. See...
+* [](https://github.com/mixmark-io/turndown)  
+GitHub  
+GitHub - mixmark-io/turndown: 🛏 An HTML to Markdown converter written in JavaScript · GitHub  
+Options: headingStyle (setext/atx), Rules: object with filter (string/array/function) and replacement function. Precedence: Blank ...
+
+Show all
+
+## all turndown config
+
+all turndown config
+
+8:50 AM
+
+### all turndown config
+
+The [turndown](https://www.npmjs.com/package/turndown) library offers a comprehensive API configuration surface. Configuration options can be passed to the constructor during initialization or overridden using built-in service methods. [](https://github.com/mixmark-io/turndown)
+
+GitHub +2
+
+#### 1\. Core Constructor Options
+
+These formatting options style the standard elements in the final Markdown payload: [](https://mixmark-io.github.io/turndown/)
+
+![](https://encrypted-tbn1.gstatic.com/faviconV2?url=https://mixmark-io.github.io&client=AIM&size=128&type=FAVICON&fallback_opts=TYPE,SIZE,URL)GitHub Pages documentation +1
+
+javascript
+
+```
+import TurndownService from 'turndown';
+
+const turndownService = new TurndownService({
+  // Heading syntax format
+  headingStyle: 'setext',      // 'setext' (___ / ===) or 'atx' (#, ##, ###)
+
+  // Markdown block horizontal line character layout
+  hr: '* * *',                 // Any valid CommonMark thematic break string (e.g., '---', '***')
+
+  // Bullet character for unordered lists
+  bulletListMarker: '*',       // '*', '-', or '+'
+
+  // Structure style for multi-line code segments 
+  codeBlockStyle: 'indented',  // 'indented' (4 spaces) or 'fenced' (``` / ~~~)
+
+  // Character used to fence code blocks if codeBlockStyle is 'fenced'
+  fence: '```',                // '```' or '~~~'
+
+  // Formatting boundary for <em> tags
+  emDelimiter: '_',            // '_' or '*'
+
+  // Formatting boundary for <strong> tags
+  strongDelimiter: '**',       // '**' or '__'
+
+  // Layout formatting for hyperlinked URLs
+  linkStyle: 'inlined',        // 'inlined' ([text](url)) or 'referenced' ([text][1])
+
+  // System fallback if linkStyle is set to 'referenced'
+  linkReferenceStyle: 'full',  // 'full' ([text][text]), 'collapsed' ([text][]), or 'shortcut' ([text])
+  
+  // Handles preformatted blocks strictly as code snippets
+  preformattedCode: false,     // false (renders as code blocks only if <pre> contains <code>) or true
+});
+
+```
+
+
+
+---
+
+#### 2\. Node Manipulation Methods (Keep vs. Remove)
+
+Beyond structural formatting options, you can explicitly configure how `turndown` treats untranslatable, heavy, or non-standard HTML tags: [](https://github.com/mixmark-io/turndown)
+
+GitHub +1
+
+##### `keep(filter)`
+
+Forces `turndown` to preserve specific HTML elements intact inside your Markdown rather than converting or purging them. [](https://github.com/mixmark-io/turndown)
+
+GitHub +1
+
+javascript
+
+```
+// Retain single tags
+turndownService.keep('iframe');
+
+// Retain a dynamic array of elements
+turndownService.keep(['iframe', 'video', 'audio']);
+
+// Retain conditionally using a callback filter function
+turndownService.keep((node) => {
+  return node.nodeName === 'DIV' && node.classList.contains('interactive-widget');
+});
+
+```
+
+
+
+##### `remove(filter)`
+
+Instructs `turndown` to purge specific HTML components entirely along with their nested content. [](https://github.com/mixmark-io/turndown)
+
+GitHub +1
+
+javascript
+
+```
+// Remove single tag types completely
+turndownService.remove('script');
+
+// Remove multiple matching tag profiles
+turndownService.remove(['script', 'style', 'noscript']);
+
+// Conditionally drop tags using a callback filter function
+turndownService.remove((node) => {
+  return node.nodeName === 'DIV' && node.id === 'advertisement';
+});
+
+```
+
+
+
+---
+
+#### 3\. Advanced Custom Rules (`.addRule`)
+
+For complete control over HTML parsing, you can define explicit extraction guidelines via custom processing blocks: [](https://github.com/mixmark-io/turndown)
+
+GitHub +1
+
+javascript
+
+```
+turndownService.addRule('customImages', {
+  // Target a string tag, array of strings, or validation function
+  filter: 'img', 
+  
+  // Custom compiler logic returning the string that replaces the tag
+  replacement: function (content, node, options) {
+    const alt = node.getAttribute('alt') || 'Fallback Alt Text';
+    const src = node.getAttribute('src') || '';
+    return `![${alt}](${src})`;
+  }
+});
+
+```
+
+
+
+---
+
+#### 4\. Expanding with GitHub Flavored Markdown (GFM) Plugins
+
+Standard `turndown` compiles purely to CommonMark. To enable complex features like **tables**, **strikethroughs**, or **task lists**, you should integrate the plugin library: [](https://github.com/mixmark-io/turndown-plugin-gfm/blob/master/README.md)
+
+GitHub +2
+
+bash
+
+```
+npm install turndown-plugin-gfm
+
+```
+
+
+
+javascript
+
+```
+import { gfm, tables, strikethrough, taskListItems } from 'turndown-plugin-gfm';
+
+// Register all GFM features at once (Tables, Strikethrough, Task lists)
+turndownService.use(gfm);
+
+// Or registers single specific plugins conditionally
+turndownService.use([tables, taskListItems]);
+
+```
+
+
+
+Would you like assistance drafting a **custom rule (`addRule`)** to target a specific non-standard element, or do you need help setting up **GFM table rendering configurations**?
+
+* [](https://github.com/mixmark-io/turndown)  
+GitHub  
+GitHub - mixmark-io/turndown: 🛏 An HTML to Markdown converter written in JavaScript · GitHub  
+Methods: addRule(key, rule), keep(filter), remove(filter), use(plugin). Rules: object with filter (string/array/function) and repl...
+* [](https://www.npmjs.com/package/turndown)  
+NPM  
+turndown - npm  
+npm install turndown, require('turndown'), or script inclusion; instantiate via new TurndownService(options) and call .turndown(ht...
+* [](https://mixmark-io.github.io/turndown/)  
+GitHub Pages documentation  
+Turndown Demo  
+It aims to be \[CommonMark\](http://commonmark.org/) compliant, and includes options to style the output. These options include: \* h...
+
+Show all
+
+## can it keep one layer for certain elements, like mark, summary details
+
+can it keep one layer for certain elements, like mark, summary details
+
+8:52 AM
+
+### can it keep one layer for certain elements, like mark, summary details
+
+Yes, you can configure `turndown` to preserve specific outer HTML containers (like `<mark>`, `<summary>`, and `<details>`) while ensuring that any standard HTML nested inside them _still_ gets successfully converted to Markdown.
+
+By default, using `.keep(['details'])` will preserve the tag, but it freezes everything inside it as raw, uncoverted HTML. To bypass this and achieve a "**keep the outer layer but convert the inner content**" approach, you use custom rules (`.addRule()`).
+
+Here is how you implement this:
+
+#### The One-Layer Preservation Strategy
+
+javascript
+
+```
+import TurndownService from 'turndown';
+
+const turndownService = new TurndownService({ headingStyle: 'atx' });
+
+// Custom rule to preserve specific container tags but process their inner content
+turndownService.addRule('keepOneLayerContainers', {
+  // Target the elements you want to retain as HTML wrappers
+  filter: ['mark', 'summary', 'details'],
+  
+  replacement: function (content, node) {
+    // 1. Convert the tag name to lowercase
+    const tagName = node.nodeName.toLowerCase();
+    
+    // 2. Extract any attributes if they exist (e.g., <details open>)
+    const attributes = Array.from(node.attributes)
+      .map(attr => ` ${attr.name}="${attr.value}"`)
+      .join('');
+      
+    // 3. Return the outer HTML wrapper, but inject the already-converted 'content' inside
+    // (We add newlines around block elements like details to maintain markdown separation)
+    if (tagName === 'details') {
+      return `\n\n<details${attributes}>\n${content}\n</details>\n\n`;
+    }
+    
+    return `<${tagName}${attributes}>${content}</${tagName}>`;
+  }
+});
+
+```
+
+
+
+#### How it Works under the Hood
+
+1. **`filter`**: Catches any `<mark>`, `<summary>`, or `<details>` elements during parsing.
+2. **`content`**: This argument is the crucial part. Turndown automatically passes the _already-converted Markdown string_ of the child nodes into this variable.
+3. **`replacement`**: By wrapping `content` back into the literal string templates (`<mark>${content}</mark>`), you successfully retain the outer HTML layer while stripping and converting the inner HTML layers.
+
+#### Input vs. Output Example
+
+**Input HTML:**
+
+html
+
+```
+<details open>
+  <summary>Click to see <strong>important</strong> details</summary>
+  <p>Here is a <mark>highlighted</mark> link: <a href="https://example.com">Example</a></p>
+</details>
+
+```
+
+
+
+**Output Markdown:**
+
+markdown
+
+```
+<details open>
+<summary>Click to see **important** details</summary>
+
+Here is a <mark>highlighted</mark> link: [Example](https://example.com)
+
+</details>
+
+```
+
+
+
+Are there other specific elements with complex attribute structures (like **custom data-attributes** or **class names**) that you need to preserve along with these tags?
+
+## turndown default keep remove
+
+turndown default keep remove
+
+8:53 AM
+
+### turndown default keep remove
+
+By default, the `turndown` library **keeps no elements** and **removes no elements**. It passes unrecognized tags straight through as unformatted text content. [](https://github.com/mixmark-io/turndown/blob/master/README.md)
+
+GitHub
+
+Understanding how `keep` and `remove` work under the hood depends entirely on **Rule Precedence**. Turndown checks matching criteria in a strict top-down order and executes the first rule that returns true. [](https://bestofjs.org/projects/turndown)
+
+Best of JS
+
+#### 1\. The Strict Order of Precedence
+
+When Turndown encounters an HTML tag, it evaluates rules in this exact order: [](https://bestofjs.org/projects/turndown)
+
+Best of JS
+
+1. **Blank rule:** Handles empty tags (e.g., `<p></p>`).
+2. **Added rules (`.addRule`):** Any custom parsing rules you manually write.
+3. **CommonMark rules:** Internal handlers for standard Markdown tags (`<h1>`, `<p>`, `<a>`, `<strong>`, etc.).
+4. **Keep rules (`.keep`):** Handlers for preserving tags as literal HTML.
+5. **Remove rules (`.remove`):** Handlers for deleting elements.
+6. **Default rule:** Catch-all fallback for completely unhandled tags. [](https://github.com/mixmark-io/turndown)  
+GitHub +2
+
+---
+
+#### 2\. The `keep()` Default Behavior
+
+* **Default setting:** By default, **no elements are kept**. [](https://github.com/mixmark-io/turndown/blob/master/README.md)  
+GitHub
+* **The Trapping Effect:** When you pass a tag to `.keep(['video'])`, Turndown applies an internal replacement rule that outputs the outer HTML (`<video>...</video>`) exactly as it was received.
+* **The Override Catch:** Because **CommonMark rules rank higher than Keep rules**, calling `turndownService.keep('p')` or `keep('strong')` will do absolutely nothing. Turndown will hit the CommonMark rule first and convert them to standard Markdown syntax (`**text**`) anyway. [](https://bestofjs.org/projects/turndown)  
+Best of JS +1
+
+_To explicitly bypass this hierarchy for standard elements, you must use a custom rule instead:_
+
+javascript
+
+```
+// This fails because CommonMark processes 'strong' first
+turndownService.keep('strong'); 
+
+// This succeeds because Added Rules rank higher than CommonMark
+turndownService.addRule('keepStrongAsHtml', {
+  filter: 'strong',
+  replacement: (content, node) => node.outerHTML
+});
+
+```
+
+
+
+---
+
+#### 3\. The `remove()` Default Behavior
+
+* **Default setting:** By default, **no elements are removed**. Unmapped tags fall through to the "Default rule" which extracts their raw text and throws out the wrapper brackets. [](https://github.com/mixmark-io/turndown)  
+GitHub +1
+* **The Nuclear Option:** Calling `.remove(['script', 'style'])` instructs Turndown to throw away **both the tag and everything nested inside it**. [](https://github.com/mixmark-io/turndown/blob/master/README.md)  
+GitHub +1
+* **The Override Catch:** Just like keeping tags, **Remove rules rank dead last** among active mapping layers. You cannot use `.remove('a')` to clear links because the internal CommonMark link handler will grab it first. [](https://bestofjs.org/projects/turndown)  
+Best of JS +1
+
+_To strip structural markdown elements completely, drop them with an added rule:_
+
+javascript
+
+```
+// Deletes anchor links entirely, along with their anchor text
+turndownService.addRule('stripLinks', {
+  filter: 'a',
+  replacement: () => '' 
+});
+
+```
+
+
+
+Are you seeing unexpected behavior where certain tags are **not being kept or removed**? I can help you debug your **rule precedence array** or rephrase them into `.addRule` formats.
+
+* [](https://bestofjs.org/projects/turndown)  
+Best of JS  
+Turndown  
+Turndown uses backslashes ( \\ ) to escape Markdown characters in the HTML input. This ensures that these characters are not interp...
+* [](https://github.com/mixmark-io/turndown/blob/master/README.md)  
+GitHub  
+README.md - mixmark-io/turndown · GitHub  
+Determines which elements are to be kept and rendered as HTML. By default, Turndown does not keep any elements. The filter paramet...
+* [](https://github.com/mixmark-io/turndown)  
+GitHub  
+GitHub - mixmark-io/turndown: 🛏 An HTML to Markdown converter written in JavaScript · GitHub  
+Rules: object with filter (string/array/function) and replacement function. Precedence: Blank rule, added rules, Commonmark, keep,
+
+Show all
+
+## commonmark rules
+
+commonmark rules
+
+8:54 AM
+
+### commonmark rules
+
+The **CommonMark rules** inside [turndown](https://github.com/mixmark-io/turndown) are the core internal mapping engines that translate standard HTML tags into universally compliant CommonMark Markdown specification formats.
+
+If you want to bypass or override them using `.addRule()`, `.keep()`, or `.remove()`, it is helpful to know exactly which HTML tags are intercepted by this layer. [](https://github.com/mixmark-io/turndown)
+
+GitHub +1
+
+#### The Complete List of Default CommonMark Tags
+
+Turndown groups standard HTML tags into specific internal parsing modules: [](https://www.sentinelone.com/vulnerability-database/cve-2025-9670/)
+
+SentinelOne
+
+| Markdown Category     | Targeted HTML Tags                 | Default Markdown Output Behavior                                                                                   |
+| --------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| **Paragraphs**        | <p>                                | Wraps content in two trailing/leading newlines (\\n\\n).                                                           |
+| **Headings**          | <h1>, <h2>, <h3>, <h4>, <h5>, <h6> | Prepends hashes (#) or appends lines based on headingStyle.                                                        |
+| **Emphasis / Weight** | <em>, <i>, <strong>, <b>           | Wraps strings in emphasis tokens (\* or \_).                                                                       |
+| **Breaks**            | <br>, <hr>                         | Evaluates <br> as a line break (\\n) and <hr> as configuration string layouts (e.g., \* \* \*).                    |
+| **Lists**             | <ul>, <ol>, <li>                   | Intercepts parent containers to track nested indentation levels and formats children using list tags (\*, \-, 1.). |
+| **Hyperlinks**        | <a>                                | Extracts the href attribute to format inline templates \[text\](url).                                              |
+| **Media Assets**      | <img>                              | Extracts src and alt tags to generate standard !\[alt\](src) formats.                                              |
+| **Blockquotes**       | <blockquote>                       | Trims white spaces and prepends standard \> characters to every structural content line.                           |
+| **Code Snippets**     | <code>, <pre>                      | Evaluates code spans (text) vs wrapped structural multi-line blocks.                                               |
+
+---
+
+#### How to Override a CommonMark Rule
+
+Because CommonMark rules sit **higher in precedence** than `.keep()` or `.remove()`, attempting to change them using those basic filters will fail. To modify how a standard tag compiles, you must overwrite it by injecting a rule with `.addRule()` (which ranks higher in precedence). [](https://github.com/mixmark-io/turndown/blob/master/README.md)
+
+GitHub +1
+
+##### Example: Change how `<a>` tags are handled
+
+If you want to strip structural `<a>` links and only display their readable text instead of generating a markdown link:
+
+javascript
+
+```
+import TurndownService from 'turndown';
+const turndownService = new TurndownService();
+
+// Overwrite the default CommonMark 'a' link handler
+turndownService.addRule('stripLinkMarkup', {
+  filter: 'a',
+  replacement: function (content, node) {
+    // Return just the inner text, omitting the href attribute entirely
+    return content; 
+  }
+});
+
+```
+
+
+
+##### Example: Turn `<b>` and `<strong>` into literal HTML instead of Markdown
+
+If you want to force strong tags to remain raw HTML rather than becoming `**text**`:
+
+javascript
+
+```
+turndownService.addRule('forceRawStrongTags', {
+  filter: ['strong', 'b'],
+  replacement: function (content) {
+    return `<strong>${content}</strong>`;
+  }
+});
+
+```
+
+
+
+Are you trying to modify the output of a specific standard tag (like **headings or list layouts**), or are you running into an issue where **escaped backslashes (`\`)** are appearing around your text?
+
+* [](https://github.com/mixmark-io/turndown)  
+GitHub  
+GitHub - mixmark-io/turndown: 🛏 An HTML to Markdown converter written in JavaScript · GitHub  
+Methods: addRule(key, rule), keep(filter), remove(filter), use(plugin). Rules: object with filter (string/array/function) and repl...
+* [](https://github.com/mixmark-io/turndown/blob/master/README.md)  
+GitHub  
+README.md - mixmark-io/turndown · GitHub  
+Keep filters will be overridden by the standard CommonMark rules and any added rules. To keep elements that are normally handled b...
+* [](https://www.sentinelone.com/vulnerability-database/cve-2025-9670/)  
+SentinelOne  
+CVE-2025-9670: Turndown Library RCE Vulnerability  
+The turndown library converts HTML into Markdown using a set of rules defined in src/commonmark-rules.js.
+
+Show all
+
+## does it handle table
+
+does it handle table
+
+8:54 AM
+
+### does it handle table
+
+**No, standard Turndown does not handle tables out of the box.** By default, pure Turndown strips away the table structure (`<table>`, `<tr>`, `<td>`) and outputs the table cells as a flat list of plain unformatted text block strings. 
+
+To parse and render proper Markdown tables (`| Header |`), you must extend Turndown with an external GitHub Flavored Markdown (GFM) plugin. 
+
+Depending on your structural needs, there are three distinct options to choose from:
+
+#### 1\. The Official Option (`turndown-plugin-gfm`)
+
+The standard companion library developed by the original authors. [](https://github.com/mixmark-io/turndown-plugin-gfm)
+
+GitHub
+
+* **Setup:** `npm install turndown-plugin-gfm`
+* **Limitation:** It strictly expects standard, semantic HTML. If a table is missing a explicit `<thead>` element or headers, it will completely break and fallback to stripping the table into raw text. [](https://github.com/domchristie/turndown-plugin-gfm/pull/10)  
+GitHub
+
+javascript
+
+```
+import TurndownService from 'turndown';
+import { tables } from 'turndown-plugin-gfm';
+
+const turndownService = new TurndownService();
+turndownService.use(tables); // Enables standard table support
+
+```
+
+
+
+#### 2\. The Robust Option (`@joplin/turndown-plugin-gfm`)
+
+Maintained by the developers of Joplin (the markdown note app). This fork was designed specifically to scrape messy, real-world web pages. [](https://www.npmjs.com/package/@joplin/turndown-plugin-gfm?activeTab=readme)
+
+NPM +1
+
+* **Setup:** `npm install @joplin/turndown-plugin-gfm`
+* **Strengths:**
+  * Safely renders tables **even if they don't have a header row**.
+  * Cleans up multi-line cell text by automatically inserting HTML line breaks (`<br>`) inside the cells.
+  * Safely handles structural attributes like `colspan`. [](https://www.npmjs.com/package/@joplin/turndown-plugin-gfm?activeTab=readme)  
+  NPM
+
+javascript
+
+```
+import TurndownService from 'turndown';
+import { tables } from '@joplin/turndown-plugin-gfm';
+
+const turndownService = new TurndownService();
+turndownService.use(tables);
+
+```
+
+
+
+#### 3\. The Modern ESM Option (`@truto/turndown-plugin-gfm`)
+
+A modern, zero-dependency, ESM-only fork that brings massive performance improvements to the table plugin engine. [](https://www.npmjs.com/package/@truto/turndown-plugin-gfm)
+
+NPM +1
+
+* **Setup:** `npm install @truto/turndown-plugin-gfm`
+* **Strengths:** Up to **20x faster table compilation** (can parse a 1,000+ row table in under a second). It also includes native TypeScript declarations out of the box. [](https://github.com/trutohq/turndown-plugin-gfm)  
+GitHub +1
+
+javascript
+
+```
+import TurndownService from 'turndown';
+import { tables } from '@truto/turndown-plugin-gfm';
+
+const turndownService = new TurndownService();
+turndownService.use(tables);
+
+```
+
+
+
+---
+
+#### Alternative: `node-html-markdown`
+
+If you are processing highly complex tables and do want to deal with plugin chains, consider using **`node-html-markdown`** instead. It ships with built-in table parsing natively and handles fallback layout configurations automatically without requiring separate dependencies. 
+
+Are you converting **clean database-generated HTML tables**, or scraping arbitrary websites where tables are frequently missing `<thead>` blocks or contain nested cells?
+
+* [](https://github.com/domchristie/turndown-plugin-gfm/pull/10)  
+GitHub  
+Handle tables with no headers by creating an empty Markdown header by laurent22 · Pull Request #10 · mixmark-io/turndown-plugin-gfm · GitHub  
+to handle headerless HTML tables by generating empty Markdown headers instead of returning raw HTML. use a personal fork for the J...
+* [](https://www.npmjs.com/package/@truto/turndown-plugin-gfm)  
+NPM  
+@truto/turndown-plugin-gfm - npm  
+full TypeScript declarations. Included Plugins: tables, strikethrough, taskListItems, highlightedCodeBlock, gfm (combined). Instal...
+* [](https://www.npmjs.com/package/@joplin/turndown-plugin-gfm?activeTab=readme)  
+NPM  
+@joplin/turndown-plugin-gfm - npm  
+Package: @joplin/turndown-plugin-gfm (version 1.0.67, MIT license, 0 dependencies). Description: A Joplin fork of turndown-plugin-
+
+Show all
+
+## how to get a perfect expected turndown
+
+how to get a perfect expected turndown
+
+8:55 AM
+
+### how to get a perfect expected turndown
+
+10 sites
+
+#### Here are top web results for exploring this topic:
+
+[](https://github.com/mixmark-io/turndown)
+
+GitHub·https://github.com
+
+GitHub - mixmark-io/**turndown**: An HTML to **Markdown** converter ...
+
+Turndown uses backslashes ( \\ ) to escape Markdown characters in the HTML input. This ensures that these characters are not interpreted as Markdown when the output is compiled back to HTML. For exampl
+
+[](https://crates.io/crates/turndown/0.1.4)
+
+Crates.io·https://crates.io
+
+**turndown** \- crates.io: Rust Package Registry
+
+Configuration. Basic Example. use turndown::Turndown; let turndown = Turndown::new(); let html = "Hello This is a test. "; let markdown = turndown.convert(html); println!("{}", markdown); // Output: 
+
+[](https://mixmark-io.github.io/turndown/)
+
+GitHub Pages documentation·https://mixmark-io.github.io
+
+**Turndown** Demo
+
+HTML. Turndown Demo This demonstrates turndown – an HTML to Markdown converter in JavaScript. Usage var turndownService = new TurndownService() console.log
+
+[](https://medium.com/@louistrinh/javascript-code-for-html-to-markdown-conversion-5c56d828b4d4)
+
+Medium·https://medium.com
+
+JavaScript Code for HTML to **Markdown** Conversion | by Louis Trinh
+
+Import Turndown: If using a module bundler, install Turndown first ( npm install turndown ). Then, import it into your JavaScript code. Create an Instance: Instantiate TurndownService to create an obj
+
+[](https://posit.co/blog/r-markdown-tips-tricks-4-looks-better-works-better)
+
+Posit·https://posit.co
+
+R **Markdown** Lesser-Known Tips & Tricks #4: Looks Better, Works ...
+
+The R Markdown file format combines R programming and the markdown language to create dynamic, reproducible documents. Authors use R Markdown for reports, slide shows, blogs, books — even Shiny apps! 
+
+[](https://datavizs23.classes.andrewheiss.com/news/2023-07-12%5Fcleaner-nicer-rmd-output.html)
+
+Andrew Heiss·https://datavizs23.classes.andrewheiss.com
+
+Making cleaner, nicer R Markdown output - Data Visualization with R
+
+Now that we're nearing the end of the semester and you're more familiar with working with R and R Markdown, I have a bunch of helpful tips to make sure your documents look as nice and readable as poss
+
+[](https://bulkmd.app/blog/turndown-vs-pandoc-vs-marked-serializers)
+
+bulkmd.app·https://bulkmd.app/blog/turndown-vs-pandoc-vs-marked-serializers
+
+**Turndown** vs Pandoc vs marked: Serializer Benchmark - BulkMD
+
+Three HTML-to-Markdown serializers compared on the same 50 pages — output fidelity, GFM coverage, runtime, and which one fits a browser-side pipeline. M. H. Tawfik Published May 26, 2026 12 min read. 
+
+[](https://www.npmjs.com/package/@truto/turndown-plugin-gfm)
+
+NPM·https://www.npmjs.com
+
+@truto/**turndown**\-plugin-gfm - npm
+
+Enhanced Turndown plugin for GitHub Flavored Markdown with improved table conversion and performance.. Latest version: 1.0.3, last published: a month ago. Start using @truto/turndown-plugin-gfm in you
+
+[](https://www.r-bloggers.com/2019/01/create-r-markdown-reports-and-presentations-even-better-with-these-3-practical-tips/)
+
+R-bloggers·https://www.r-bloggers.com
+
+**Create** R **Markdown** reports and presentations even better with ...
+
+R") : #' # This is just an R script. #' ## Rendered to a html report with knitr::spin(). #' \* just by adding comments we can make a really nice output. #'. #' > And the code runs just like normal, · T
+
+[](https://www.njtierney.com/posts/2018-05-16-rtip-3-rmarkdown-tricks-i-use-every-day/)
+
+Nick Tierney·https://www.njtierney.com
+
+r-tip: 3 rmarkdown tricks I use every day - Nicholas Tierney
+
+I write in rmarkdown (check out that link, it's to the new Rmarkdown book!) most days, and I've been using it for the past few years. I've picked up a few tips along the way, and I wanted to share a c
+
+AI responses may include mistakes. [Learn more](https://support.google.com/websearch?p=aimode&gl=us)
+
+## how to get a perfect expected turndown
+
+how to get a perfect expected turndown
+
+8:55 AM
+
+### how to get a perfect expected turndown
+
+To get a **perfect, predictable, and production-ready output** from Turndown, you cannot rely on its default settings. Web scrapers, CMS exports, and AI pipelines present messy HTML that causes broken links, ruined formatting, and escaped characters (like `\#` or `\[`).
+
+Achieving a flawless output requires a strict orchestration of **pre-cleaning, rule ordering, text escaping overrides, and runtime post-processing**.
+
+Here is the ultimate blueprint to build a bulletproof, perfect Turndown configuration.
+
+---
+
+#### Step 1: Clean the HTML _Before_ Passing it to Turndown
+
+Turndown is a converter, not a sanitizer. If your HTML contains hidden ads, analytics, tracker tags, or malformed nested tables, Turndown will output garbled markdown text.
+
+Use a lightweight parser like `cheerio` (Node.js) or native `DOMParser` (Browser) to run a pre-flight cleanup:
+
+javascript
+
+```
+import * as cheerio from 'cheerio';
+
+function preCleanHTML(rawHtml) {
+  const $ = cheerio.load(rawHtml);
+  
+  // 1. Instantly purge structural garbage along with its inner text
+  $('script, style, noscript, iframe, svg, form, nav, footer, ads').remove();
+  
+  // 2. Standardize tables that are missing <thead> blocks (Fixes turndown-plugin-gfm crash)
+  $('table').each((_, table) => {
+    const $table = $(table);
+    if ($table.find('thead').length === 0) {
+      const firstRow = $table.find('tr').first();
+      // Move the first row into a newly injected <thead> block
+      $table.prepend($('<thead><\/thead>').append(firstRow));
+    }
+  });
+
+  return $.html();
+}
+
+```
+
+
+
+---
+
+#### Step 2: Use the Right Plugin Trio
+
+To support tables, task lists, and strikethroughs reliably without crashing, use the optimized **Joplin** ecosystem extensions.
+
+javascript
+
+```
+import TurndownService from 'turndown';
+// Use the Joplin fork for excellent fallback table rendering
+import { gfm } from '@joplin/turndown-plugin-gfm'; 
+
+const turndown = new TurndownService({
+  headingStyle: 'atx',          // # heading instead of ambiguous lines underneath
+  codeBlockStyle: 'fenced',     // ``` instead of indentation
+  hr: '---',
+  bulletListMarker: '-',
+  blankReplacement: (content, node) => node.isBlock ? '\n\n' : '' // Prevent infinite trailing blank lines
+});
+
+// Enable GFM (GitHub Flavored Markdown)
+turndown.use(gfm);
+
+```
+
+
+
+---
+
+#### Step 3: Stop Aggressive Backslash Escaping
+
+One of Turndown's most frustrating default behaviors is aggressively escaping regular characters. It will often turn standard phrases like `"We won 1st place! 2026 was great."` into `"We won 1st place\! 2026 was great\."` or break markdown formatting because it escapes brackets.
+
+To fix this globally, **override the internal string escape method**:
+
+javascript
+
+```
+// Stop Turndown from adding ugly backslashes to normal punctuation/markdown symbols
+turndown.escape = function (string) {
+  // Only escape syntax markers if absolutely necessary, or return string as-is
+  // For LLM usage or clean pipelines, returning the string directly is often preferred:
+  return string; 
+};
+
+```
+
+
+
+---
+
+#### Step 4: Handle "One-Layer" HTML Containers Safely
+
+If your text contains semantic web elements like `<mark>`, `<details>`, or `<summary>`, ensure they wrap perfectly formatted internal Markdown instead of breaking or dropping them entirely (as detailed earlier):
+
+javascript
+
+```
+turndown.addRule('preserveContainers', {
+  filter: ['mark', 'summary', 'details'],
+  replacement: (content, node) => {
+    const tag = node.nodeName.toLowerCase();
+    const openAttr = (tag === 'details' && node.hasAttribute('open')) ? ' open' : '';
+    
+    // Add structural block padding for block-level <details> elements
+    if (tag === 'details') {
+      return `\n\n<details${openAttr}>\n\n${content}\n\n</details>\n\n`;
+    }
+    return `<${tag}>${content}</${tag}>`;
+  }
+});
+
+```
+
+
+
+---
+
+#### Step 5: Post-Process Whitespace Failures
+
+Turndown frequently leaves behind string artifacts like three consecutive newlines (`\n\n\n`) or weird trailing spaces due to layout blocks in the source HTML.
+
+Run a quick regex pass over your final generated markdown string to unify the spacing structure:
+
+javascript
+
+```
+function perfectMarkdownPipeline(htmlInput) {
+  // Phase 1: Clean raw HTML input strings
+  const cleanHtml = preCleanHTML(htmlInput);
+  
+  // Phase 2: Convert to markdown via Turndown
+  let markdown = turndown.turndown(cleanHtml);
+  
+  // Phase 3: Post-processing string normalization
+  markdown = markdown
+    .replace(/\n{3,}/g, '\n\n')       // Collapse 3+ structural newlines into a standard double newline
+    .replace(/[ \t]+\n/g, '\n')       // Drop invisible trailing spaces at end of text lines
+    .trim();                          // Clean up absolute leading/trailing wrapper boundaries
+    
+  return markdown;
+}
+
+```
+
+
+
+Are you seeing a specific issue right now—such as **broken image links**, **collapsed list formatting**, or **cluttered Markdown tables**? I can give you the exact `addRule` code block to patch it.
+
+## default rule
+
+default rule
+
+9:26 AM
+
+### default rule
+
+The **default rule** in Turndown acts as the final safety net for the library. When Turndown processes an HTML node that is not covered by any custom rule, CommonMark rule, `keep` statement, or `remove` statement, it falls back to this rule.
+
+By default, Turndown's default rule **strips away the HTML tags completely and returns the raw inner text content** of the element.
+
+---
+
+#### The Default Code Mechanism
+
+Internally, Turndown implements the default rule using a special check (`node.isBlock`). If you look at the source code, it behaves essentially like this:
+
+javascript
+
+```
+// A conceptual representation of Turndown's internal default fallback logic
+const defaultRule = {
+  filter: () => true, // Catches everything that falls through the precedence chain
+  replacement: function (content, node) {
+    // If the HTML element is a block-level element (like a <div> or <section>),
+    // it adds vertical spacing around its inner content.
+    // Otherwise, it passes the text inline.
+    return node.isBlock ? '\n\n' + content + '\n\n' : content;
+  }
+};
+
+```
+
+
+
+##### Example Behavior:
+
+* **Input HTML:** `<div>Welcome to the <section>new <span>dashboard</span></section></div>`
+* **Output Markdown:** `Welcome to the new dashboard`  
+_(The `<div>` and `<section>` tags are thrown away, but their internal words are saved and given proper block spacing. The `<span>` tag vanishes entirely, leaving its content seamlessly inline.)_
+
+---
+
+#### How to Override the Default Rule
+
+You can change the fallback behavior if you want unhandled tags to remain as raw HTML instead of being stripped to plain text. To do this, modify the library's `defaultRule` property directly after initializing the service:
+
+javascript
+
+```
+import TurndownService from 'turndown';
+const turndownService = new TurndownService();
+
+// Override the default rule completely
+turndownService.defaultRule = {
+  replacement: function (content, node) {
+    // Fallback: If we don't recognize the tag, keep it exactly as raw HTML
+    // instead of destroying it and isolating the text.
+    return node.outerHTML; 
+  }
+};
+
+```
+
+
+
+---
+
+#### The `blankRule` (The Other Invisible Fallback)
+
+While the default rule handles tags _with_ content, Turndown also uses an internal **`blankRule`** to process empty tags (e.g., `<p></p>`, `<div></div>`, or `<span class="icon"></span>`).
+
+* **Default Behavior:** It removes empty elements entirely, returning an empty string `""` unless the element is an inherently self-closing structural tag (like `<br>` or `<img>`).
+* **Overriding it:** If empty paragraphs or blocks are breaking your expected margins, you can modify it:
+
+javascript
+
+```
+// Force Turndown to preserve blank paragraphs or structural gaps
+turndownService.blankRule = {
+  replacement: function (content, node) {
+    return node.isBlock ? '\n\n' : '';
+  }
+};
+
+```
+
+
+
+Are your unhandled custom elements **losing their text layout structures**, or do you want to **keep unrecognized tags as raw HTML tags** instead of flattening them into text blocks?
+
+AI responses may include mistakes. For legal advice, consult a professional. [Learn more](https://support.google.com/websearch?p=aimode&gl=us)
+
+## how to keep svg
+
+how to keep svg
+
+10:01 AM
+
+### how to keep svg
+
+To handle `<svg>` elements perfectly in Turndown, you cannot use the simple `.keep('svg')` or `.keep(['svg'])` method.
+
+Because an SVG contains nested children elements like `<path>`, `<circle>`, and `<rect>`, Turndown's **default rule** will drill down, strip away those child tags, and mangle your vector graphic into empty lines or raw text attributes.
+
+To preserve an SVG exactly as raw HTML, you must intercept the `<svg>` node at the very top layer using a custom rule (`.addRule`) so Turndown doesn't process its children.
+
+Here are the two best ways to achieve this, depending on your target environment.
+
+---
+
+#### Option 1: The Cross-Platform Way (Node.js & Browser)
+
+This approach leverages the DOM node's native `outerHTML` property to copy the entire element and its contents out of the parsing loop instantly.
+
+javascript
+
+```
+import TurndownService from 'turndown';
+const turndownService = new TurndownService();
+
+// Add a high-precedence rule to lock down SVGs
+turndownService.addRule('preserveSvg', {
+  filter: 'svg',
+  replacement: function (content, node) {
+    // node is a real DOM element (or a virtual DOM element via JSDOM/Cheerio)
+    // node.outerHTML gives us the exact string representation of the SVG
+    return `\n\n${node.outerHTML}\n\n`;
+  }
+});
+
+```
+
+
+
+#### Option 2: The Sanitized/Clean Way (Recommended for Scrapers & LLMs)
+
+Raw SVGs are often massive and cluttered with metadata (like `xml:space`, `viewBox`, or complex embedded CSS paths) that can bloat your markdown file or waste artificial intelligence tokens.
+
+If you just need to keep track of where an icon or an image was, it is often much better to convert the SVG into a compact data-URI or a clean fallback asset string:
+
+javascript
+
+```
+turndownService.addRule('convertSvgToDataUri', {
+  filter: 'svg',
+  replacement: function (content, node) {
+    try {
+      // 1. Convert the SVG node string into a base64 Data URI
+      const svgString = node.outerHTML;
+      const base64Svg = btoa(unescape(encodeURIComponent(svgString)));
+      const dataUri = `data:image/svg+xml;base64,${base64Svg}`;
+      
+      // 2. Fetch or fallback an alt tag reference name
+      const title = node.querySelector('title')?.textContent || 'embedded-icon';
+      
+      // 3. Output a clean standard markdown image syntax line
+      return `![${title}](${dataUri})`;
+    } catch (e) {
+      // If base64 conversion fails, fallback to keeping the raw text template
+      return `\n\n${node.outerHTML}\n\n`;
+    }
+  }
+});
+
+```
+
+
+
+---
+
+#### ⚠️ Critical Warning for Node.js Environments
+
+If you are running Turndown on a Node.js backend using a headless wrapper library like `jsdom`, `outerHTML` on SVGs might return `undefined` due to namespace differences between HTML and SVG documents inside older engine environments.
+
+If your SVG output is coming back blank or broken in Node, update your rule to use a XML Serializer layer:
+
+javascript
+
+```
+turndownService.addRule('nodeJsSvgFix', {
+  filter: 'svg',
+  replacement: function (content, node) {
+    if (typeof window === 'undefined' && node.ownerDocument) {
+      // Use the native or JSDOM XMLSerializer strategy to extract the string cleanly
+      const XMLSerializer = node.ownerDocument.defaultView.XMLSerializer;
+      const serializer = new XMLSerializer();
+      return `\n\n${serializer.serializeToString(node)}\n\n`;
+    }
+    return `\n\n${node.outerHTML}\n\n`;
+  }
+});
+
+```
+
+
+
+Are you rendering these Markdown files back into a **frontend application that renders raw HTML strings**, or are you outputting these markdown documents into **plain-text environments** where inline SVGs won't display?
+
+## how to keep svg on cheerio
+
+how to keep svg on cheerio
+
+10:05 AM
+
+### how to keep svg on cheerio
+
+When you pass a **Cheerio** element structure into Turndown on a Node.js server, standard DOM properties like `node.outerHTML` return **`undefined`**. Cheerio does not use the browser's native DOM API; instead, it constructs a custom virtual JSON object tree. [](https://www.pkgpulse.com/guides/cheerio-vs-jsdom-vs-playwright-html-2026)
+
+PkgPulse +1
+
+To keep `<svg>` elements completely intact using Cheerio and Turndown together, you must serialize the virtual Cheerio element using its own internal reference methods.
+
+The two most bulletproof approaches depend on how you manage your pipeline:
+
+#### Option 1: The Cleaner, Self-Contained Way (Turndown Rule)
+
+You can write a custom `.addRule()` that intercepts the fallback step and utilizes Cheerio’s built-in global reference wrapper to dynamically rebuild the exact HTML code block string of that element:
+
+javascript
+
+```
+import * as cheerio from 'cheerio';
+import TurndownService from 'turndown';
+
+// 1. Setup your scraper content
+const $ = cheerio.load('<div><svg width="10" height="10"><path d="M0 0h10v10H0z"/></svg></div>');
+const turndownService = new TurndownService();
+
+// 2. Add the custom Cheerio-friendly rule
+turndownService.addRule('keepCheerioSvg', {
+  filter: 'svg',
+  replacement: function (content, node) {
+    // 'node' here is a Cheerio element model, not a true browser DOM element.
+    // Wrap it back in the Cheerio context selector to call the .html() string compiler.
+    const svgHtml = $(node).html();
+    
+    // Reconstruct the full parent tag string wrapper safely
+    return `\n\n<svg>${svgHtml}</svg>\n\n`;
+  }
+});
+
+// 3. Process
+const markdown = turndownService.turndown($.html());
+console.log(markdown);
+
+```
+
+
+
+---
+
+#### Option 2: The Best Practice Way (The Pre-Flight HTML Freeze)
+
+If you want to keep the `<svg>` nodes pristine—along with all their native attributes (like `viewBox`, `width`, `height`, `class`, and `fill`)—the easiest way is to use Cheerio to **protect them before Turndown even sees the HTML**. [](https://webscraper.io/blog/headless-scraping-with-cheerio)
+
+Web Scraper
+
+This replaces the vulnerable SVG tag with a simple custom placeholder text token, processes the text cleanly through Turndown without character corruption, and swaps the actual SVG elements right back into place at the end.
+
+javascript
+
+```
+import * as cheerio from 'cheerio';
+import TurndownService from 'turndown';
+
+function convertCheerioHtmlToMarkdown(rawHtml) {
+  const $ = cheerio.load(rawHtml);
+  const turndownService = new TurndownService({ headingStyle: 'atx' });
+  
+  const savedSvgs = [];
+
+  // Phase 1: Intercept all SVGs and freeze them into safely tracked strings
+  $('svg').each((index, element) => {
+    const $svg = $(element);
+    
+    // Fetch the absolute outer HTML of the SVG including all its base attributes
+    const fullSvgString = $.html($svg); 
+    
+    // Replace the element in the tree with an un-escapable structural text string marker
+    const marker = `___SAVED_SVG_MARKER_${index}___`;
+    savedSvgs.push({ marker, rawSvg: fullSvgString });
+    
+    $svg.replaceWith(marker);
+  });
+
+  // Phase 2: Convert the clean document into standard markdown format
+  let markdown = turndownService.turndown($.html());
+
+  // Phase 3: Swap your exact untouched SVGs straight back into position
+  savedSvgs.forEach(({ marker, rawSvg }) => {
+    markdown = markdown.replace(marker, `\n\n${rawSvg}\n\n`);
+  });
+
+  return markdown;
+}
+
+// Execution
+const htmlInput = `<div><h3>My Icon</h3><svg viewBox="0 0 24 24" width="24"><circle cx="12" cy="12" r="10"/></svg></div>`;
+console.log(convertCheerioHtmlToMarkdown(htmlInput));
+
+```
+
+
+
+#### Why Option 2 is superior for web scraping:
+
+* It guarantees that **all attributes** (`viewBox`, `style`, `id`) are preserved 100% exactly as they were written on the original site.
+* It completely completely bypasses Turndown's aggressive text-escaping engine, ensuring that path values like `d="M0 0h10"` don't get printed as mangled strings like `d="M0 0h10"`.
+
+Are you seeing cases where **nested structural HTML elements inside the SVG tags** are losing their custom closing tag lines, or are you ready to hook this directly into your **scraped page extraction runner**?
+
+* [](https://www.pkgpulse.com/guides/cheerio-vs-jsdom-vs-playwright-html-2026)  
+PkgPulse  
+cheerio vs jsdom vs Playwright 2026 — PkgPulse Guides  
+cheerio is the right choice for parsing static HTML … jsdom simulates a full browser DOM in Node.js — good when you need DOM APIs ...
+* [](https://github.com/cheeriojs/cheerio/issues/1803)  
+GitHub  
+append() messing up with SVG · Issue #1803 · cheeriojs/cheerio  
+Disclaimer: First time using Cheeriojs and Node.js. I am trying to append a SVG element inside of another SVG. everything works we...
+* [](https://webscraper.io/blog/headless-scraping-with-cheerio)  
+Web Scraper  
+Headless Scraping with Cheerio  
+In order to parse and read the response from our webpage, we'll next use Cheerio. First, we load in the HTML response from Axios. ...
+
+Show all
+
+# how to listen for ctrl c specifically in js and ignore any other page listeners if exists
+
+9:04 AM
+
+### how to listen for ctrl c specifically in js and ignore any other page listeners if exists
+
+To listen specifically for `Ctrl + C` (or `Cmd + C` on Mac) and prevent any other event listeners on the page from intercepting or reacting to it, you must use **event capturing** combined with **`event.stopImmediatePropagation()`**.
+
+Here is the exact code to achieve this:
+
+javascript
+
+```
+window.addEventListener('keydown', function(event) {
+    // 1. Check if 'C' is pressed while Control (Windows/Linux) or Meta (Mac) is active
+    const isCtrlC = (event.ctrlKey || event.metaKey) && event.code === 'KeyC';
+
+    if (isCtrlC) {
+        // 2. Stop any other listeners on the page from firing
+        event.stopImmediatePropagation();
+        
+        // 3. Optional: Prevent the browser's default copy behavior
+        event.preventDefault();
+
+        // --- Your custom Ctrl+C logic goes here ---
+        console.log('Ctrl+C detected exclusively! Other listeners ignored.');
+    }
+}, { capture: true }); // 4. "capture: true" intercepts the event before it bubbles down
+
+```
+
+
+
+#### Why this works:
+
+1. **`{ capture: true }` (The Capture Phase):** Standard event listeners wait for an event to reach its target and bubble up. By setting `capture: true`, your listener catches the event at the very top level (`window`) as it travels _down_ the DOM tree, way before it hits any local elements or standard listeners.
+2. **`event.stopImmediatePropagation()`:** Unlike `stopPropagation()`, which just stops the event from moving up or down the DOM tree, `stopImmediatePropagation()` additionally prevents any _other_ event listeners attached to the exact same element from executing. Since this is at the `window` level during the capture phase, it completely kills the event for the rest of the application.
+3. **`event.metaKey`:** This ensures that Mac users pressing `Cmd + C` are caught just like Windows/Linux users pressing `Ctrl + C`.
+4. **`event.code === 'KeyC'`:** Using `event.code` is more reliable than `event.key`, as it checks the physical key pressed and is immune to keyboard layout variations or character case issues.
+
+If you want to fine-tune this behavior, let me know:
+
+* Do you want to **allow standard copying inside text input fields** (`<input>` or `<textarea>`), or should it be blocked everywhere?
+* Are you trying to **override existing third-party library shortcuts**, or are you trying to build a custom application shortcut?
+
+## must be exactly ctrl c
+
+must be exactly ctrl c
+
+9:04 AM
+
+### must be exactly ctrl c
+
+To ensure the shortcut triggers **exclusively on Windows/Linux `Ctrl + C`** and completely ignores the Mac `Cmd` key, you just need to isolate the `event.ctrlKey` and ensure `event.metaKey` is false.
+
+Here is the exact code:
+
+javascript
+
+```
+window.addEventListener('keydown', function(event) {
+    // Check for exact Ctrl + C (and explicitly ensure Cmd/Meta on Mac is NOT pressed)
+    const isStrictCtrlC = event.ctrlKey && !event.metaKey && event.code === 'KeyC';
+
+    if (isStrictCtrlC) {
+        // Stop every other listener on the page from executing
+        event.stopImmediatePropagation();
+        
+        // Prevent the browser's default copy behavior 
+        event.preventDefault();
+
+        // Your custom logic here
+        console.log('Strict Ctrl+C caught. All other page listeners bypassed.');
+    }
+}, { capture: true }); // Intercepts the event first during the capture phase
+
+```
+
+
+
+#### What changed:
+
+* **`!event.metaKey`**: This explicitly ensures that if a Mac user presses `Cmd + C` (which triggers `metaKey`), your code will ignore it and let it pass through to other page listeners or the browser defaults.
+* **`event.ctrlKey`**: This strictly checks that the physical `Control` key is held down.
+
+Would you like help adapting this to **read the highlighted text** when `Ctrl + C` is pressed, or do you want to use it to trigger a **completely unrelated app action** (like opening a menu or terminal)?
+
+## i mean not other keys
+
+i mean not other keys
+
+9:05 AM
+
+### i mean not other keys
+
+To ensure that **only `Ctrl` and `C` are pressed**—meaning no extra modifier keys like `Shift` or `Alt` are held down simultaneously—you must explicitly check that `event.shiftKey` and `event.altKey` are both `false`.
+
+Here is the finalized code:
+
+javascript
+
+```
+window.addEventListener('keydown', function(event) {
+    // Strictly match Ctrl + C, ensuring Alt, Shift, and Meta (Cmd) are NOT pressed
+    const isExactCtrlC = event.ctrlKey && 
+                         !event.metaKey && 
+                         !event.shiftKey && 
+                         !event.altKey && 
+                         event.code === 'KeyC';
+
+    if (isExactCtrlC) {
+        // Halt all other event listeners immediately
+        event.stopImmediatePropagation();
+        
+        // Prevent default browser copy behavior
+        event.preventDefault();
+
+        // Your custom logic here
+        console.log('Exact Ctrl+C detected. No other keys were pressed.');
+    }
+}, { capture: true });
+
+```
+
+
+
+#### Why this addresses your requirement:
+
+If a user presses `Ctrl + Shift + C` or `Ctrl + Alt + C`, the conditions `!event.shiftKey` and `!event.altKey` will fail. The event will bypass this block entirely and be handled normally by other listeners on your page.
+
+Would you like to **run a quick test** to ensure this works alongside your existing event handlers, or do you need help implementing a **fallback shortcut** for Mac users?
+
+# use snake case. use fn statement. write a js fn "get\_selection\_text" to get current page selection text or empty string if no selection. 
+
+######   
+
+JavaScript
+
+```
+function get_selection_text() {
+    const selection = window.getSelection();
+    return selection ? selection.toString() : '';
+}
+```
+
+# use snake case. use fn statement. write a js fn "get\_selection\_node" to get current page selection common ancestor. 
+
+######   
+
+JavaScript
+
+```
+function get_selection_node() {
+    const selection = window.getSelection();
+    if (!selection || selection.rangeCount === 0) {
+        return null;
+    }
+    const range = selection.getRangeAt(0);
+    return range.commonAncestorContainer;
+}
+```
+
+# use snake case. use fn statement. write a js fn "normalize\_node" given a parent node to remove all hidden nodes, incl. aria hidden, all css hidden props or tricks/hacks on inline styling. and standarize all tags that markdown supports, like span with font weight bold to b, italic, strike through, etc. 
+
+######   
+
+Here is the JavaScript function `normalize_node` written using snake\_case and standard function statements.
+
+This implementation performs a bottom-up traversal to safely evaluate and clean the DOM tree:
+
+1. **Hidden Node Removal:** Strips elements with `hidden`, `aria-hidden="true"`, and common inline CSS hiding hacks (e.g., `display: none`, `visibility: hidden`, zero-dimension tricks, and off-screen positioning).
+2. **Tag Standardization:** Converts stylized inline elements (like `span` tags with bold, italic, or strikethrough inline styles) into their standard semantic markdown equivalents (`strong`, `em`, `del`).
+
+JavaScript
+
+```
+function normalize_node(parent_node) {
+    if (!parent_node || !(parent_node instanceof Element)) return;
+
+    // Retrieve all descendant elements and include the parent itself
+    const all_elements = Array.from(parent_node.querySelectorAll('*'));
+    all_elements.push(parent_node);
+
+    // Process in reverse (bottom-up) to safely mutate/remove nodes without breaking traversal
+    for (let i = all_elements.length - 1; i >= 0; i--) {
+        const el = all_elements[i];
+
+        // 1. Remove hidden nodes & CSS hiding hacks on inline styling
+        if (is_hidden_node(el)) {
+            el.remove();
+            continue;
+        }
+
+        // 2. Standardize tags supported by Markdown based on inline styles
+        standardize_markdown_tag(el);
+    }
+}
+
+function is_hidden_node(el) {
+    // HTML hidden attribute
+    if (el.hasAttribute('hidden')) return true;
+
+    // ARIA hidden attribute
+    if (el.getAttribute('aria-hidden') === 'true') return true;
+
+    const style = el.style;
+    if (!style) return false;
+
+    // Common CSS hidden properties
+    if (style.display === 'none') return true;
+    if (style.visibility === 'hidden') return true;
+    if (style.opacity === '0') return true;
+
+    // Zero-dimension sizing hacks
+    if ((style.width === '0px' || style.width === '0') && 
+        (style.height === '0px' || style.height === '0')) {
+        return true;
+    }
+
+    // Off-screen positioning hacks (e.g., position: absolute with huge negative offset)
+    if (style.position === 'absolute' || style.position === 'fixed') {
+        const left = parseInt(style.left, 10);
+        const top = parseInt(style.top, 10);
+        if ((!isNaN(left) && left < -999) || (!isNaN(top) && top < -999)) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+function standardize_markdown_tag(el) {
+    const style = el.style;
+    if (!style) return;
+
+    let target_tag = null;
+
+    // Check font-weight for bold -> <strong> (Markdown ** / __)
+    const font_weight = style.fontWeight;
+    if (font_weight === 'bold' || font_weight === 'bolder' || (parseInt(font_weight, 10) >= 600)) {
+        target_tag = 'strong';
+    }
+
+    // Check font-style for italic -> <em> (Markdown * / _)
+    const font_style = style.fontStyle;
+    if (font_style === 'italic' || font_style === 'oblique') {
+        target_tag = 'em';
+    }
+
+    // Check text-decoration for strikethrough -> <del> (Markdown ~~text~~)
+    const text_decoration = style.textDecoration;
+    if (text_decoration && text_decoration.includes('line-through')) {
+        target_tag = 'del';
+    }
+
+    // If a standard markdown tag is matched and the current element isn't already that tag, convert it
+    if (target_tag && el.tagName.toLowerCase() !== target_tag) {
+        const new_element = document.createElement(target_tag);
+        
+        // Move all children over to the new element
+        while (el.firstChild) {
+            new_element.appendChild(el.firstChild);
+        }
+
+        // Replace the old element with the standardized one
+        el.replaceWith(new_element);
+    }
+}
+
+```
+
+### Key Features Included:
+
+* **Robust Hidden Checks:** Catches standard attributes (`hidden`, `aria-hidden`), visibility toggles (`display`, `visibility`, `opacity`), sizing hacks (`width/height: 0`), and screen-reader-only off-screen positioning tricks (`left/top: -9999px`).
+* **Safe Bottom-Up Traversal:** Iterates backwards through the DOM list to ensure nested elements can be removed or transformed cleanly without index corruption.
+* **Semantic Conversion:** Maps inline styling equivalents directly to standard markdown-backed HTML tags (`strong`, `em`, `del`).
+
+##### also remove images of base64 src 
+
+ also remove images of base64 src 
+
+######   
+
+Here is the updated `normalize_node` function. It now includes a check to remove any `<img>` tags that use a Base64-encoded source string (`data:image/...`), while still preserving regular image URLs.
+
+JavaScript
+
+```
+function normalize_node(parent_node) {
+    if (!parent_node || !(parent_node instanceof Element)) return;
+
+    // Retrieve all descendant elements and include the parent itself
+    const all_elements = Array.from(parent_node.querySelectorAll('*'));
+    all_elements.push(parent_node);
+
+    // Process in reverse (bottom-up) to safely mutate/remove nodes without breaking traversal
+    for (let i = all_elements.length - 1; i >= 0; i--) {
+        const el = all_elements[i];
+
+        // 1. Remove hidden nodes, CSS hiding hacks, and base64 images
+        if (is_hidden_node(el) || is_base64_image(el)) {
+            el.remove();
+            continue;
+        }
+
+        // 2. Standardize tags supported by Markdown based on inline styles
+        standardize_markdown_tag(el);
+    }
+}
+
+function is_hidden_node(el) {
+    // HTML hidden attribute
+    if (el.hasAttribute('hidden')) return true;
+
+    // ARIA hidden attribute
+    if (el.getAttribute('aria-hidden') === 'true') return true;
+
+    const style = el.style;
+    if (!style) return false;
+
+    // Common CSS hidden properties
+    if (style.display === 'none') return true;
+    if (style.visibility === 'hidden') return true;
+    if (style.opacity === '0') return true;
+
+    // Zero-dimension sizing hacks
+    if ((style.width === '0px' || style.width === '0') && 
+        (style.height === '0px' || style.height === '0')) {
+        return true;
+    }
+
+    // Off-screen positioning hacks (e.g., position: absolute with huge negative offset)
+    if (style.position === 'absolute' || style.position === 'fixed') {
+        const left = parseInt(style.left, 10);
+        const top = parseInt(style.top, 10);
+        if ((!isNaN(left) && left < -999) || (!isNaN(top) && top < -999)) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+function is_base64_image(el) {
+    // Check if it's an img tag with a data URI (base64 image source)
+    if (el.tagName && el.tagName.toLowerCase() === 'img') {
+        const src = el.getAttribute('src');
+        if (src && src.trim().toLowerCase().startsWith('data:image/')) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function standardize_markdown_tag(el) {
+    const style = el.style;
+    if (!style) return;
+
+    let target_tag = null;
+
+    // Check font-weight for bold -> <strong> (Markdown ** / __)
+    const font_weight = style.fontWeight;
+    if (font_weight === 'bold' || font_weight === 'bolder' || (parseInt(font_weight, 10) >= 600)) {
+        target_tag = 'strong';
+    }
+
+    // Check font-style for italic -> <em> (Markdown * / _)
+    const font_style = style.fontStyle;
+    if (font_style === 'italic' || font_style === 'oblique') {
+        target_tag = 'em';
+    }
+
+    // Check text-decoration for strikethrough -> <del> (Markdown ~~text~~)
+    const text_decoration = style.textDecoration;
+    if (text_decoration && text_decoration.includes('line-through')) {
+        target_tag = 'del';
+    }
+
+    // If a standard markdown tag is matched and the current element isn't already that tag, convert it
+    if (target_tag && el.tagName.toLowerCase() !== target_tag) {
+        const new_element = document.createElement(target_tag);
+        
+        // Move all children over to the new element
+        while (el.firstChild) {
+            new_element.appendChild(el.firstChild);
+        }
+
+        // Replace the old element with the standardized one
+        el.replaceWith(new_element);
+    }
+}
+
+```
+
+### What's Added:
+
+* **`is_base64_image` Helper:** Specifically targets `<img>` elements whose `src` attribute begins with `data:image/`, safely cleaning them out of the tree alongside hidden and stylized elements.
+
+  
+GeminiAuto
+
+# use snake case. use fn statement. write a js fn "normalize\_heading" given a parent node to get the number of highest heading, shift it to h1 if there is only one, shift them to h2 and prepend the first h2 copy as h1 on parent children, by shifting you shift all headings together for certain level delta, h6 min 
+
+######   
+
+JavaScript
+
+```
+function normalize_heading(parent_node) {
+    const headings = Array.from(parent_node.querySelectorAll('h1, h2, h3, h4, h5, h6'));
+    if (headings.length === 0) return;
+
+    const levels = headings.map(h => parseInt(h.tagName.substring(1), 10));
+    const highest_level = Math.min(...levels);
+
+    if (headings.length === 1) {
+        // Shift single heading directly to h1
+        const current_level = levels[0];
+        if (current_level !== 1) {
+            const new_heading = document.createElement('h1');
+            new_heading.innerHTML = headings[0].innerHTML;
+            for (const attr of headings[0].attributes) {
+                new_heading.setAttribute(attr.name, attr.value);
+            }
+            headings[0].replaceWith(new_heading);
+        }
+    } else {
+        // Shift all headings together by a level delta so the highest becomes h2
+        const level_delta = 2 - highest_level;
+
+        headings.forEach((h, index) => {
+            const current_level = levels[index];
+            let new_level = current_level + level_delta;
+            
+            // Ensure level stays within valid HTML heading bounds (h1 to h6)
+            if (new_level > 6) new_level = 6;
+            if (new_level < 1) new_level = 1;
+
+            if (new_level !== current_level) {
+                const new_heading = document.createElement(`h${new_level}`);
+                new_heading.innerHTML = h.innerHTML;
+                for (const attr of h.attributes) {
+                    new_heading.setAttribute(attr.name, attr.value);
+                }
+                h.replaceWith(new_heading);
+                headings[index] = new_heading;
+            }
+        });
+
+        // Prepend a copy of the first h2 as an h1 on the parent node
+        const first_heading = headings[0];
+        const h1_node = document.createElement('h1');
+        h1_node.innerHTML = first_heading.innerHTML;
+        for (const attr of first_heading.attributes) {
+            h1_node.setAttribute(attr.name, attr.value);
+        }
+        parent_node.prepend(h1_node);
+    }
+}
+
+```
+
+##### return new parent node 
+
+ return new parent node 
+
+######   
+
+JavaScript
+
+```
+function normalize_heading(parent_node) {
+    const headings = Array.from(parent_node.querySelectorAll('h1, h2, h3, h4, h5, h6'));
+    if (headings.length === 0) return parent_node;
+
+    const levels = headings.map(h => parseInt(h.tagName.substring(1), 10));
+    const highest_level = Math.min(...levels);
+
+    if (headings.length === 1) {
+        const current_level = levels[0];
+        if (current_level !== 1) {
+            const new_heading = document.createElement('h1');
+            new_heading.innerHTML = headings[0].innerHTML;
+            for (const attr of headings[0].attributes) {
+                new_heading.setAttribute(attr.name, attr.value);
+            }
+            headings[0].replaceWith(new_heading);
+        }
+    } else {
+        const level_delta = 2 - highest_level;
+
+        headings.forEach((h, index) => {
+            const current_level = levels[index];
+            let new_level = current_level + level_delta;
+            
+            if (new_level > 6) new_level = 6;
+            if (new_level < 1) new_level = 1;
+
+            if (new_level !== current_level) {
+                const new_heading = document.createElement(`h${new_level}`);
+                new_heading.innerHTML = h.innerHTML;
+                for (const attr of h.attributes) {
+                    new_heading.setAttribute(attr.name, attr.value);
+                }
+                h.replaceWith(new_heading);
+                headings[index] = new_heading;
+            }
+        });
+
+        const first_heading = headings[0];
+        const h1_node = document.createElement('h1');
+        h1_node.innerHTML = first_heading.innerHTML;
+        for (const attr of first_heading.attributes) {
+            h1_node.setAttribute(attr.name, attr.value);
+        }
+        parent_node.prepend(h1_node);
+    }
+
+    return parent_node;
+}
+```
+
+# use snake case. use fn statement. write a js fn "standardize\_heading" given a parent node return new node to for all children, if it has both role="heading" and aria-level="n", convert its tag to corresponding hn, like level 3 to h3 
+
+######   
+
+JavaScript
+
+```
+function standardize_heading(parent_node) {
+    const headings = parent_node.querySelectorAll('[role="heading"][aria-level]');
+    
+    headings.forEach(el => {
+        const level = el.getAttribute('aria-level');
+        const level_num = parseInt(level, 10);
+        
+        if (level_num >= 1 && level_num <= 6) {
+            const new_tag = `h${level_num}`;
+            
+            if (el.tagName.toLowerCase() !== new_tag) {
+                const new_el = document.createElement(new_tag);
+                
+                // Copy all attributes from the original element
+                Array.from(el.attributes).forEach(attr => {
+                    new_el.setAttribute(attr.name, attr.value);
+                });
+                
+                // Move all child nodes to the new element
+                while (el.firstChild) {
+                    new_el.appendChild(el.firstChild);
+                }
+                
+                // Replace the old element with the new heading element
+                el.replaceWith(new_el);
+            }
+        }
+    });
+    
+    return parent_node;
+}
+
+```
+
+  
+GeminiAuto
 

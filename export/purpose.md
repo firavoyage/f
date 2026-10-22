@@ -54,5 +54,10 @@ get selection, copy to markdown, no config.
 
 that's it.
 
+---
+
+vdom is way faster. yet another proof.
+
+though it's better not to make it long.
 
 

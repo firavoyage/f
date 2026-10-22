@@ -93,5 +93,7 @@ use snake case. use fn statement. write a js fn "normalize_heading" given a pare
 
 use snake case. use fn statement. write a js fn "standardize_heading" given a parent node return new node to for all children, if it has both role="heading" and aria-level="n", convert its tag to corresponding hn, like level 3 to h3
 
-use snake case. use fn statement. write js. listen for ctrl c, exactly, no other modifier keys. 
+---
+
+use snake case. use fn statement. write js. listen for ctrl c, exactly, no other modifier keys. if no selection on page return. capture true, stop propa, prevent default. use node-html-markdown. keep svg. remove base64 images. convert tag of elements with both role="heading" and aria-level="number" to corresponding tag, like level 3 to h3. copy to markdown. handle table. if the first line of markdown is not h1, prepend `# ` to make it h1.
 

@@ -43,6 +43,7 @@
     "cheerio": "1.2.0",
     "hono": "4.12.27",
     "lib": "github:firahq/lib",
+    "node-html-markdown": "2.0.0",
     "preact": "11.0.1",
     "turndown": "7.2.4",
     "vite-plugin-monkey": "8.1.1",
