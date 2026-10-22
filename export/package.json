@@ -39,9 +39,11 @@
   },
   "dependencies": {
     "@hono/node-server": "2.0.8",
+    "@joplin/turndown-plugin-gfm": "1.0.68",
     "hono": "4.12.27",
     "lib": "github:firahq/lib",
     "preact": "11.0.1",
+    "turndown": "7.2.4",
     "vite-plugin-monkey": "8.1.1",
     "yaml": "2.9.1"
   }

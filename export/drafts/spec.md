@@ -69,17 +69,17 @@ get selection common ancestor (or fallback = full page, a css selector in settin
 
 | make bold styling bold, italic i, ... strike through (everything that md supports)
 
-| md converter, preserve certain elements, like mark, svg
-
-- if possible you may choose whether to preserve everything inside
-- even if preserved, it will only preserve a few attrs (styling only maybe)
-
 | normalize headings
 
 - if the number of highest heading is 1, shift it to h1
 - otherwise, shift it to h2, and duplicate the first h2 as h1
 
-| prettier?
+| md converter, preserve certain elements, like mark, svg
+
+- if possible you may choose whether to preserve everything inside
+- even if preserved, it will only preserve a few attrs (styling only maybe)
+
+| ~~prettier?~~ opinionated turndown config
 
 ---
 
@@ -89,4 +89,5 @@ use snake case. use fn statement. write a js fn "get_selection_node" to get curr
 
 use snake case. use fn statement. write a js fn "normalize_node" given a parent node to remove all hidden nodes, incl. aria hidden, all css hidden props or tricks/hacks on inline styling. and standarize all tags that markdown supports, like span with font weight bold to b, italic, strike through, etc.
 
+use snake case. use fn statement. write a js fn "normalize_heading" given a parent node to get the number of highest heading, shift it to h1 if there is only one, shift them to h2 and prepend the first h2 copy as h1 on parent children, by shifting you shift all headings together for certain level delta, h6 min
 
