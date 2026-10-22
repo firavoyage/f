@@ -9200,3 +9200,305 @@ function standardize_heading(parent_node) {
   
 GeminiAuto
 
+# use snake case. use fn statement. write js. listen for ctrl c, exactly, no other modifier keys. if no selection on page return. capture true, stop propa, prevent default. use node-html-markdown. keep svg. remove base64 images. convert tag of elements with both role="heading" and aria-level="number" to corresponding tag, like level 3 to h3\. copy to markdown. handle table. if the first line of markdown is not h1, prepend \`# \` to make it h1\. 
+
+######   
+
+JavaScript
+
+```
+(function () {
+  function load_script(url, callback) {
+    if (window.NodeHtmlMarkdown) {
+      callback();
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = url;
+    script.onload = callback;
+    document.head.appendChild(script);
+  }
+
+  function convert_role_headings(container) {
+    const headings = container.querySelectorAll('[role="heading"][aria-level]');
+    headings.forEach(function (el) {
+      const level = parseInt(el.getAttribute('aria-level'), 10);
+      if (!isNaN(level) && level >= 1 && level <= 6) {
+        const new_tag = 'h' + level;
+        const new_el = document.createElement(new_tag);
+        for (let i = 0; i < el.attributes.length; i++) {
+          const attr = el.attributes[i];
+          if (attr.name !== 'role' && attr.name !== 'aria-level') {
+            new_el.setAttribute(attr.name, attr.value);
+          }
+        }
+        new_el.innerHTML = el.innerHTML;
+        el.parentNode.replaceChild(new_el, el);
+      }
+    });
+  }
+
+  function remove_base64_images(container) {
+    const images = container.querySelectorAll('img');
+    images.forEach(function (img) {
+      const src = img.getAttribute('src') || '';
+      if (src.startsWith('data:image/')) {
+        img.remove();
+      }
+    });
+  }
+
+  function handle_copy_event(event) {
+    if (event.key !== 'c' && event.key !== 'C') {
+      return;
+    }
+
+    if (!event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) {
+      return;
+    }
+
+    const selection = window.getSelection();
+    if (!selection || selection.isCollapsed || selection.rangeCount === 0) {
+      return;
+    }
+
+    event.capture = true;
+    event.stopPropagation();
+    event.preventDefault();
+
+    const range = selection.getRangeAt(0);
+    const container = document.createElement('div');
+    container.appendChild(range.cloneContents());
+
+    convert_role_headings(container);
+    remove_base64_images(container);
+
+    load_script('https://unpkg.com/node-html-markdown/dist/hitm.min.js', function () {
+      const nhm = new window.NodeHtmlMarkdown.NodeHtmlMarkdown({
+        keepDataImages: false,
+        maxConsecutiveNewlines: 2,
+        ignore: []
+      });
+
+      let markdown = nhm.translate(container.innerHTML);
+
+      let lines = markdown.split('\n');
+      if (lines.length > 0) {
+        let first_line_index = 0;
+        while (first_line_index < lines.length && lines[first_line_index].trim() === '') {
+          first_line_index++;
+        }
+        if (first_line_index < lines.length) {
+          if (!lines[first_line_index].startsWith('# ')) {
+            lines[first_line_index] = '# ' + lines[first_line_index];
+          }
+        }
+      }
+      markdown = lines.join('\n');
+
+      navigator.clipboard.writeText(markdown);
+    });
+  }
+
+  window.addEventListener('keydown', handle_copy_event, true);
+})();
+
+```
+
+##### no iife, import node html markdown 
+
+ no iife, import node html markdown 
+
+######   
+
+JavaScript
+
+```
+import { NodeHtmlMarkdown } from 'node-html-markdown';
+
+function convert_role_headings(container) {
+  const headings = container.querySelectorAll('[role="heading"][aria-level]');
+  headings.forEach(function (el) {
+    const level = parseInt(el.getAttribute('aria-level'), 10);
+    if (!isNaN(level) && level >= 1 && level <= 6) {
+      const new_tag = 'h' + level;
+      const new_el = document.createElement(new_tag);
+      for (let i = 0; i < el.attributes.length; i++) {
+        const attr = el.attributes[i];
+        if (attr.name !== 'role' && attr.name !== 'aria-level') {
+          new_el.setAttribute(attr.name, attr.value);
+        }
+      }
+      new_el.innerHTML = el.innerHTML;
+      el.parentNode.replaceChild(new_el, el);
+    }
+  });
+}
+
+function remove_base64_images(container) {
+  const images = container.querySelectorAll('img');
+  images.forEach(function (img) {
+    const src = img.getAttribute('src') || '';
+    if (src.startsWith('data:image/')) {
+      img.remove();
+    }
+  });
+}
+
+function handle_copy_event(event) {
+  if (event.key !== 'c' && event.key !== 'C') {
+    return;
+  }
+
+  if (!event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) {
+    return;
+  }
+
+  const selection = window.getSelection();
+  if (!selection || selection.isCollapsed || selection.rangeCount === 0) {
+    return;
+  }
+
+  event.stopPropagation();
+  event.preventDefault();
+
+  const range = selection.getRangeAt(0);
+  const container = document.createElement('div');
+  container.appendChild(range.cloneContents());
+
+  convert_role_headings(container);
+  remove_base64_images(container);
+
+  const nhm = new NodeHtmlMarkdown();
+  let markdown = nhm.translate(container.innerHTML);
+
+  let lines = markdown.split('\n');
+  if (lines.length > 0) {
+    let first_line_index = 0;
+    while (first_line_index < lines.length && lines[first_line_index].trim() === '') {
+      first_line_index++;
+    }
+    if (first_line_index < lines.length) {
+      if (!lines[first_line_index].startsWith('# ')) {
+        lines[first_line_index] = '# ' + lines[first_line_index];
+      }
+    }
+  }
+  markdown = lines.join('\n');
+
+  navigator.clipboard.writeText(markdown);
+}
+
+window.addEventListener('keydown', handle_copy_event, true);
+
+```
+
+##### remove elements with invisible computed styling 
+
+ remove elements with invisible computed styling 
+
+######   
+
+JavaScript
+
+```
+import { NodeHtmlMarkdown } from 'node-html-markdown';
+
+function remove_invisible_elements(container) {
+  const all_elements = container.querySelectorAll('*');
+  all_elements.forEach(function (el) {
+    const style = window.getComputedStyle(el);
+    if (
+      style.display === 'none' ||
+      style.visibility === 'hidden' ||
+      style.visibility === 'collapse' ||
+      style.opacity === '0'
+    ) {
+      el.remove();
+    }
+  });
+}
+
+function convert_role_headings(container) {
+  const headings = container.querySelectorAll('[role="heading"][aria-level]');
+  headings.forEach(function (el) {
+    const level = parseInt(el.getAttribute('aria-level'), 10);
+    if (!isNaN(level) && level >= 1 && level <= 6) {
+      const new_tag = 'h' + level;
+      const new_el = document.createElement(new_tag);
+      for (let i = 0; i < el.attributes.length; i++) {
+        const attr = el.attributes[i];
+        if (attr.name !== 'role' && attr.name !== 'aria-level') {
+          new_el.setAttribute(attr.name, attr.value);
+        }
+      }
+      new_el.innerHTML = el.innerHTML;
+      el.parentNode.replaceChild(new_el, el);
+    }
+  });
+}
+
+function remove_base64_images(container) {
+  const images = container.querySelectorAll('img');
+  images.forEach(function (img) {
+    const src = img.getAttribute('src') || '';
+    if (src.startsWith('data:image/')) {
+      img.remove();
+    }
+  });
+}
+
+function handle_copy_event(event) {
+  if (event.key !== 'c' && event.key !== 'C') {
+    return;
+  }
+
+  if (!event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) {
+    return;
+  }
+
+  const selection = window.getSelection();
+  if (!selection || selection.isCollapsed || selection.rangeCount === 0) {
+    return;
+  }
+
+  event.stopPropagation();
+  event.preventDefault();
+
+  const range = selection.getRangeAt(0);
+  const container = document.createElement('div');
+  container.appendChild(range.cloneContents());
+
+  document.body.appendChild(container);
+  remove_invisible_elements(container);
+  convert_role_headings(container);
+  remove_base64_images(container);
+  document.body.removeChild(container);
+
+  const nhm = new NodeHtmlMarkdown();
+  let markdown = nhm.translate(container.innerHTML);
+
+  let lines = markdown.split('\n');
+  if (lines.length > 0) {
+    let first_line_index = 0;
+    while (first_line_index < lines.length && lines[first_line_index].trim() === '') {
+      first_line_index++;
+    }
+    if (first_line_index < lines.length) {
+      if (!lines[first_line_index].startsWith('# ')) {
+        lines[first_line_index] = '# ' + lines[first_line_index];
+      }
+    }
+  }
+  markdown = lines.join('\n');
+
+  navigator.clipboard.writeText(markdown);
+}
+
+window.addEventListener('keydown', handle_copy_event, true);
+
+```
+
+  
+GeminiAuto
+
