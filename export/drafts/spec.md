@@ -72,12 +72,14 @@ get selection common ancestor (or fallback = full page, a css selector in settin
 - if possible you may choose whether to preserve everything inside
 - even if preserved, it will only preserve a few attrs (styling only maybe)
 
+| prettier?
+
 ---
 
-use snake case. use fn statement. write a js fn to get current page selection text or empty string if no selection.
+use snake case. use fn statement. write a js fn "get_selection_text" to get current page selection text or empty string if no selection.
 
-use snake case. use fn statement. write a js fn to get current page selection common ancestor.
+use snake case. use fn statement. write a js fn "get_selection_node" to get current page selection common ancestor.
 
-use snake case. use fn statement. write a js fn to remove all hidden nodes given a parent node, incl. aria hidden, all css hidden tricks on inline styling.
+use snake case. use fn statement. write a js fn "normalize_node" given a parent node to remove all hidden nodes, incl. aria hidden, all css hidden props or tricks/hacks on inline styling. and standarize all tags that markdown supports, like span with font weight bold to b, italic, strike through, etc.
 
 

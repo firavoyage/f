@@ -71,7 +71,7 @@ GM_registerMenuCommand("config", open_config);
 /**
  * flatten shadow dom and inline styling
  */
-function normalize_node(sourceNode) {
+function serialize_node(sourceNode) {
   // 1. Base case: Handle text nodes, comments, etc.
   if (sourceNode.nodeType !== Node.ELEMENT_NODE) {
     return sourceNode.cloneNode(false);
@@ -118,11 +118,11 @@ function normalize_node(sourceNode) {
       // Re-map projected content inside web component slots
       const assignedNodes = child.assignedNodes();
       for (const assignedNode of assignedNodes) {
-        clonedNode.appendChild(normalize_node(assignedNode));
+        clonedNode.appendChild(serialize_node(assignedNode));
       }
     } else {
       // Recurse normally into child tree branches
-      clonedNode.appendChild(normalize_node(child));
+      clonedNode.appendChild(serialize_node(child));
     }
   }
 
