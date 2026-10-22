@@ -93,3 +93,5 @@ use snake case. use fn statement. write a js fn "normalize_heading" given a pare
 
 use snake case. use fn statement. write a js fn "standardize_heading" given a parent node return new node to for all children, if it has both role="heading" and aria-level="n", convert its tag to corresponding hn, like level 3 to h3
 
+use snake case. use fn statement. write js. listen for ctrl c, exactly, no other modifier keys. 
+

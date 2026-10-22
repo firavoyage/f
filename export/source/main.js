@@ -26,7 +26,7 @@ const default_config = {
   ],
   should_normalize_heading: true,
   fallback_element: 'body',
-  texts_to_strip: ['Use code with caution.', 'You said: '],
+  texts_to_strip: ['Use code with caution.', 'You said: ', 'AI Mode reply for '],
 }
 
 function Config({ onClose }) {
@@ -459,19 +459,19 @@ window.addEventListener(
 
     log('node', node, node.outerHTML)
 
-    node = serialize_node(node)
-    log('serialized_node', node, node.outerHTML)
+    // node = serialize_node(node)
+    // log('serialized_node', node, node.outerHTML)
 
-    node = normalize_node(node)
-    log('normalized_node', node, node.outerHTML)
+    // node = normalize_node(node)
+    // log('normalized_node', node, node.outerHTML)
 
-    node = standardize_heading(node)
-    log('standarized heading', node, node.outerHTML)
+    // node = standardize_heading(node)
+    // log('standarized heading', node, node.outerHTML)
 
-    if (should_normalize_heading) {
-      node = normalize_heading(node)
-      log('normalized_heading_node', node, node.outerHTML)
-    }
+    // if (should_normalize_heading) {
+    //   node = normalize_heading(node)
+    //   log('normalized_heading_node', node, node.outerHTML)
+    // }
 
     const turndown = new TurndownService({
       // Heading syntax format

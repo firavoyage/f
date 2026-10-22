@@ -46,4 +46,13 @@ it works. it's comprehensive. it's modern.
 
 yet the real world is messy. quirky. inefficient.
 
+---
+
+you could not go that far, wo significant tradeoffs.
+
+get selection, copy to markdown, no config. 
+
+that's it.
+
+
 
