@@ -1,10 +1,11 @@
 import { h, render } from "preact";
 import { useState } from "preact/hooks";
-import { parse } from 'yaml'
-import { bind } from 'lib/web/keyboard'
-import { copy } from 'lib/web/clipboard'
+import { parse } from "yaml";
+import { bind } from "lib/web/keyboard";
+import { copy } from "lib/web/clipboard";
 
 import { GM_registerMenuCommand, GM_setValue, GM_getValue } from "$";
+import "lib/global";
 import "./popup.css";
 
 function Config({ onClose }) {
@@ -68,6 +69,10 @@ function open_config() {
 
 GM_registerMenuCommand("config", open_config);
 
+function get_config() {
+  return parse(GM_getValue("export_config", "")) || {};
+}
+
 /**
  * flatten shadow dom and inline styling
  */
@@ -83,9 +88,9 @@ function serialize_node(sourceNode) {
   // 3. Diff and Inline Non-Default Styles
   // Create a clean dummy element of the same tag type to discover browser defaults
   const dummy = document.createElement(sourceNode.tagName);
-  dummy.style.visibility = 'hidden';
-  dummy.style.position = 'absolute';
-  
+  dummy.style.visibility = "hidden";
+  dummy.style.position = "absolute";
+
   // Attach dummy to the active parent or body to allow correct evaluation
   const parent = sourceNode.parentElement || document.body;
   parent.appendChild(dummy);
@@ -102,19 +107,20 @@ function serialize_node(sourceNode) {
       clonedNode.style.setProperty(property, liveValue);
     }
   }
-  
+
   // Clean up the dummy baseline immediately
   dummy.remove();
 
   // 4. Traverse and flatten the child nodes
   // Detect open shadow root; default to light DOM children if absent
-  const hasShadow = sourceNode.shadowRoot && sourceNode.shadowRoot.mode === 'open';
-  const sourceChildren = hasShadow 
-    ? Array.from(sourceNode.shadowRoot.childNodes) 
+  const hasShadow =
+    sourceNode.shadowRoot && sourceNode.shadowRoot.mode === "open";
+  const sourceChildren = hasShadow
+    ? Array.from(sourceNode.shadowRoot.childNodes)
     : Array.from(sourceNode.childNodes);
 
   for (const child of sourceChildren) {
-    if (child.localName === 'slot') {
+    if (child.localName === "slot") {
       // Re-map projected content inside web component slots
       const assignedNodes = child.assignedNodes();
       for (const assignedNode of assignedNodes) {
@@ -129,4 +135,119 @@ function serialize_node(sourceNode) {
   return clonedNode;
 }
 
+function get_selection_text() {
+  const selection = window.getSelection();
+  return selection ? selection.toString() : "";
+}
 
+function get_selection_node() {
+  const selection = window.getSelection();
+  if (!selection || selection.rangeCount === 0) {
+    return null;
+  }
+  const range = selection.getRangeAt(0);
+  return range.commonAncestorContainer;
+}
+
+function normalize_node(parent_node) {
+  if (!parent_node || !(parent_node instanceof Element)) return;
+
+  // Retrieve all descendant elements and include the parent itself
+  const all_elements = Array.from(parent_node.querySelectorAll("*"));
+  all_elements.push(parent_node);
+
+  // Process in reverse (bottom-up) to safely mutate/remove nodes without breaking traversal
+  for (let i = all_elements.length - 1; i >= 0; i--) {
+    const el = all_elements[i];
+
+    // 1. Remove hidden nodes & CSS hiding hacks on inline styling
+    if (is_hidden_node(el)) {
+      el.remove();
+      continue;
+    }
+
+    // 2. Standardize tags supported by Markdown based on inline styles
+    standardize_markdown_tag(el);
+  }
+}
+
+function is_hidden_node(el) {
+  // HTML hidden attribute
+  if (el.hasAttribute("hidden")) return true;
+
+  // ARIA hidden attribute
+  if (el.getAttribute("aria-hidden") === "true") return true;
+
+  const style = el.style;
+  if (!style) return false;
+
+  // Common CSS hidden properties
+  if (style.display === "none") return true;
+  if (style.visibility === "hidden") return true;
+  if (style.opacity === "0") return true;
+
+  // Zero-dimension sizing hacks
+  if (
+    (style.width === "0px" || style.width === "0") &&
+    (style.height === "0px" || style.height === "0")
+  ) {
+    return true;
+  }
+
+  // Off-screen positioning hacks (e.g., position: absolute with huge negative offset)
+  if (style.position === "absolute" || style.position === "fixed") {
+    const left = parseInt(style.left, 10);
+    const top = parseInt(style.top, 10);
+    if ((!isNaN(left) && left < -999) || (!isNaN(top) && top < -999)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function standardize_markdown_tag(el) {
+  const style = el.style;
+  if (!style) return;
+
+  let target_tag = null;
+
+  // Check font-weight for bold -> <strong> (Markdown ** / __)
+  const font_weight = style.fontWeight;
+  if (
+    font_weight === "bold" ||
+    font_weight === "bolder" ||
+    parseInt(font_weight, 10) >= 600
+  ) {
+    target_tag = "strong";
+  }
+
+  // Check font-style for italic -> <em> (Markdown * / _)
+  const font_style = style.fontStyle;
+  if (font_style === "italic" || font_style === "oblique") {
+    target_tag = "em";
+  }
+
+  // Check text-decoration for strikethrough -> <del> (Markdown ~~text~~)
+  const text_decoration = style.textDecoration;
+  if (text_decoration && text_decoration.includes("line-through")) {
+    target_tag = "del";
+  }
+
+  // If a standard markdown tag is matched and the current element isn't already that tag, convert it
+  if (target_tag && el.tagName.toLowerCase() !== target_tag) {
+    const new_element = document.createElement(target_tag);
+
+    // Move all children over to the new element
+    while (el.firstChild) {
+      new_element.appendChild(el.firstChild);
+    }
+
+    // Replace the old element with the standardized one
+    el.replaceWith(new_element);
+  }
+}
+
+bind("ctrl+c", () => {
+  
+});
