@@ -15,10 +15,12 @@ options
   - also, images may not render well wo styling
 - normalize empty links
 - use prettier
-- removing heading on the first line
+- ~~removing heading on the first line~~ normalize headings
 - ~~intercept paste~~ <!-- irrelevant, it's for copy app, where you can wait for browser to normalize and put copied content into contenteditable or intercept paste directly -->
-- remove you said
-- remove html attrs
+- ~~remove you said~~
+  - use a more general approach instead
+- ~~remove html attrs~~
+  - irrelevant for md
 
 pipeline
 
@@ -71,6 +73,11 @@ get selection common ancestor (or fallback = full page, a css selector in settin
 
 - if possible you may choose whether to preserve everything inside
 - even if preserved, it will only preserve a few attrs (styling only maybe)
+
+| normalize headings
+
+- if the number of highest heading is 1, shift it to h1
+- otherwise, shift it to h2, and duplicate the first h2 as h1
 
 | prettier?
 
