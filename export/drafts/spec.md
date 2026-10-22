@@ -25,6 +25,17 @@ pipeline
 - intercept paste
 - if they like, copy text directly
 - normalize html
-  - implicit fmt: span of bold styling is bold
-  - aria hidden, display none
-- 
+  - add information
+    - implicit fmt: span of bold styling is bold
+    - aria hidden, display none
+  - discard information
+- convert to md, prettier
+
+add information
+
+- css inlining
+- relative url
+- pseudo elements
+- shadow dom
+
+discard
