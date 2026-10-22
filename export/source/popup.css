@@ -1,5 +1,5 @@
 /* Container to overlay the webpage */
-.my-userscript-overlay {
+.export_config_overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -14,7 +14,7 @@
 }
 
 /* The actual popup box */
-.my-userscript-popup {
+.export_config_popup {
   background: #ffffff;
   padding: 20px;
   border-radius: 8px;
@@ -23,12 +23,12 @@
   color: #333333;
 }
 
-.my-userscript-popup h3 {
+.export_config_popup h3 {
   margin-top: 0;
   color: #111111;
 }
 
-.my-userscript-popup input {
+.export_config_popup input {
   width: 100%;
   padding: 8px;
   margin: 10px 0;
@@ -37,25 +37,25 @@
   border-radius: 4px;
 }
 
-.my-userscript-popup .button-group {
+.export_config_button_group {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
 }
 
-.my-userscript-popup button {
+.export_config_popup button {
   padding: 8px 12px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.my-userscript-popup .btn-save {
+.export_config_save {
   background: #007bff;
   color: white;
 }
 
-.my-userscript-popup .btn-cancel {
+.export_config_cancel {
   background: #6c757d;
   color: white;
 }
