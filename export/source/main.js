@@ -199,6 +199,8 @@ function is_hidden_node(el) {
 
   // Common CSS hidden properties
   if (style.display === 'none') return true
+  if (style.blockSize === '1px') return true
+  if (style.inlineSize === '1px') return true
   if (style.visibility === 'hidden') return true
   if (style.opacity === '0') return true
 
@@ -264,17 +266,48 @@ function standardize_markdown_tag(el) {
   }
 }
 
+function standardize_heading(parent_node) {
+  const headings = parent_node.querySelectorAll('[role="heading"][aria-level]')
+
+  headings.forEach((el) => {
+    const level = el.getAttribute('aria-level')
+    const level_num = parseInt(level, 10)
+
+    if (level_num >= 1 && level_num <= 6) {
+      const new_tag = `h${level_num}`
+
+      if (el.tagName.toLowerCase() !== new_tag) {
+        const new_el = document.createElement(new_tag)
+
+        // Copy all attributes from the original element
+        Array.from(el.attributes).forEach((attr) => {
+          new_el.setAttribute(attr.name, attr.value)
+        })
+
+        // Move all child nodes to the new element
+        while (el.firstChild) {
+          new_el.appendChild(el.firstChild)
+        }
+
+        // Replace the old element with the new heading element
+        el.replaceWith(new_el)
+      }
+    }
+  })
+
+  return parent_node
+}
+
 function normalize_heading(parent_node) {
   const headings = Array.from(
     parent_node.querySelectorAll('h1, h2, h3, h4, h5, h6'),
   )
-  if (headings.length === 0) return
+  if (headings.length === 0) return parent_node
 
   const levels = headings.map((h) => parseInt(h.tagName.substring(1), 10))
   const highest_level = Math.min(...levels)
 
   if (headings.length === 1) {
-    // Shift single heading directly to h1
     const current_level = levels[0]
     if (current_level !== 1) {
       const new_heading = document.createElement('h1')
@@ -285,14 +318,12 @@ function normalize_heading(parent_node) {
       headings[0].replaceWith(new_heading)
     }
   } else {
-    // Shift all headings together by a level delta so the highest becomes h2
     const level_delta = 2 - highest_level
 
     headings.forEach((h, index) => {
       const current_level = levels[index]
       let new_level = current_level + level_delta
 
-      // Ensure level stays within valid HTML heading bounds (h1 to h6)
       if (new_level > 6) new_level = 6
       if (new_level < 1) new_level = 1
 
@@ -307,7 +338,6 @@ function normalize_heading(parent_node) {
       }
     })
 
-    // Prepend a copy of the first h2 as an h1 on the parent node
     const first_heading = headings[0]
     const h1_node = document.createElement('h1')
     h1_node.innerHTML = first_heading.innerHTML
@@ -316,6 +346,30 @@ function normalize_heading(parent_node) {
     }
     parent_node.prepend(h1_node)
   }
+
+  return parent_node
+}
+
+import * as cheerio from 'cheerio'
+
+function clean_html(html) {
+  const $ = cheerio.load(html)
+
+  // 1. Instantly purge structural garbage along with its inner text
+  $('script, style, noscript, iframe').remove()
+  // $('script, style, noscript, iframe, form, nav, footer, ads').remove();
+
+  // // 2. Standardize tables that are missing <thead> blocks (Fixes turndown-plugin-gfm crash)
+  // $('table').each((_, table) => {
+  //   const $table = $(table);
+  //   if ($table.find('thead').length === 0) {
+  //     const firstRow = $table.find('tr').first();
+  //     // Move the first row into a newly injected <thead> block
+  //     $table.prepend($('<thead><\/thead>').append(firstRow));
+  //   }
+  // });
+
+  return $.html()
 }
 
 const log = console.log
@@ -374,11 +428,15 @@ window.addEventListener(
     node = serialize_node(node)
 
     log('serialized_node', node, node.outerHTML)
-    
+
     node = normalize_node(node)
 
     log('normalized_node', node, node.outerHTML)
     
+    node = standardize_heading(node)
+
+    log('standarized heading', node, node.outerHTML)
+
     if (should_normalize_heading) {
       node = normalize_heading(node)
 
@@ -444,7 +502,7 @@ window.addEventListener(
       },
     })
 
-    turndown.use(tables)
+    turndown.use(gfm)
 
     // Stop Turndown from adding ugly backslashes to normal punctuation/markdown symbols
     turndown.escape = function (string) {
@@ -453,7 +511,9 @@ window.addEventListener(
       return string
     }
 
-    let markdown = turndown.turndown(node.outerHTML)
+    let html = clean_html(node.outerHTML)
+
+    let markdown = turndown.turndown(html)
 
     log('markdown', markdown)
 

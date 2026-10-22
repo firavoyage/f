@@ -91,3 +91,5 @@ use snake case. use fn statement. write a js fn "normalize_node" given a parent 
 
 use snake case. use fn statement. write a js fn "normalize_heading" given a parent node to get the number of highest heading, shift it to h1 if there is only one, shift them to h2 and prepend the first h2 copy as h1 on parent children, by shifting you shift all headings together for certain level delta, h6 min
 
+use snake case. use fn statement. write a js fn "standardize_heading" given a parent node return new node to for all children, if it has both role="heading" and aria-level="n", convert its tag to corresponding hn, like level 3 to h3
+
