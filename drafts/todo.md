@@ -44,7 +44,7 @@ if you can, you may try to parse katex.
 
 ---
 
-- code?
+- code?, edit?
 - have, record, observe
 - purpose, repo, (journal)
 - humility, pure, ...
