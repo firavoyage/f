@@ -257,34 +257,36 @@ function compileDomToHtmlString({
   return container.innerHTML;
 }
 
-document.addEventListener(
-  "copy",
-  (event) => {
-    // 1. Bypass the page's own copy listeners completely
-    event.stopImmediatePropagation();
+// document.addEventListener(
+//   "copy",
+//   (event) => {
+//     // 1. Bypass the page's own copy listeners completely
+//     event.stopImmediatePropagation();
 
-    // 2. Get the user's current selection
-    const selection = window.getSelection();
-    if (!selection || selection.rangeCount === 0) return;
+//     // 2. Get the user's current selection
+//     const selection = window.getSelection();
+//     if (!selection || selection.rangeCount === 0) return;
 
-    // 3. Extract the actual HTML content of the selection
-    const range = selection.getRangeAt(0);
-    const clonedSelection = range.cloneContents(); // Returns a DocumentFragment
+//     // 3. Extract the actual HTML content of the selection
+//     const range = selection.getRangeAt(0);
+//     const clonedSelection = range.cloneContents(); // Returns a DocumentFragment
 
-    // Convert the DocumentFragment into an HTML string
-    const div = document.createElement("div");
-    div.appendChild(clonedSelection);
-    const copiedHTML = div.innerHTML;
-    const copiedText = selection.toString();
+//     // Convert the DocumentFragment into an HTML string
+//     const div = document.createElement("div");
+//     div.appendChild(clonedSelection);
+//     const copiedHTML = div.innerHTML;
+//     const copiedText = selection.toString();
 
-    // --- Your Custom Logic Here ---
-    console.log("Intercepted HTML:", copiedHTML);
-    console.log("Intercepted Text:", copiedText);
+//     // --- Your Custom Logic Here ---
+//     console.log("Intercepted HTML:", copiedHTML);
+//     console.log("Intercepted Text:", copiedText);
 
-    // Optional: Modify what actually goes into the clipboard
-    // event.preventDefault();
-    // event.clipboardData.setData('text/html', copiedHTML + '<p>Added by userscript</p>');
-    // event.clipboardData.setData('text/plain', copiedText);
-  },
-  { capture: true }
-); // Crucial: forces your script to execute first
+//     // Optional: Modify what actually goes into the clipboard
+//     // event.preventDefault();
+//     // event.clipboardData.setData('text/html', copiedHTML + '<p>Added by userscript</p>');
+//     // event.clipboardData.setData('text/plain', copiedText);
+//   },
+//   { capture: true }
+// ); // Crucial: forces your script to execute first
+
+
