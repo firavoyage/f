@@ -6,13 +6,10 @@ export default defineConfig({
     monkey({
       entry: "source/main.js",
       userscript: {
-        name: "Simple Menu Config Demo",
-        namespace: "http://tampermonkey.net",
+        name: "Export Copied Content to Markdown",
         version: "1.0.0",
-        description: "Vite-bundled userscript using GM_registerMenuCommand",
+        description: "Config via menu command",
         match: ["*://*/*"],
-        // The plugin automatically scans your code for GM_ methods,
-        // but declaring grants here enforces proper loading.
         grant: ["GM_registerMenuCommand", "GM_setValue", "GM_getValue"],
       },
     }),
