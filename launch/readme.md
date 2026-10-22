@@ -67,6 +67,12 @@ structure of apps.yaml
     port_flag: false
 ```
 
-- userspace true: sudo -u the primary user on the desktop
-- port true: run on a generated port and bind `[app].localhost` on caddyfile
-- 
+- userspace: sudo -u the primary user on the desktop
+- port:
+  - run on a generated port or a provided port
+  - bind `[app].localhost` on caddyfile (requires caddy)
+  - restart caddy
+- port_flag:
+  - string (default to `--port`): append a `--port [port]` flag
+  - false: do not pass the flag (crucial for commands that reject unrecognized flags)
+
