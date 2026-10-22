@@ -1531,4 +1531,271 @@ To give you a more specific recommendation, let me know:
 
 Show all
 
+# userscript match syntax
+
+1:00 AM
+
+### AI Mode reply for userscript match syntax
+
+In userscripts, <mark>the<span> </span><strong><code dir="ltr">@match</code><span> </span>metadata directive follows the Chrome Extension Match Pattern syntax</strong></mark>. It is strict, predictable, and preferred over the older `@include` directive because it provides explicit security permissions. [link](https://stackoverflow.com/questions/31817758/what-is-the-difference-between-include-and-match-in-userscripts)
+
+The basic anatomy of a match pattern is:
+
+text
+
+```
+<scheme>://<host><path>
+```
+
+Use code with caution.
+
+***
+
+#### 📋 The Three Core Components
+
+| Component      | Allowed Syntax                                    | Description                                                              |
+| -------------- | ------------------------------------------------- | ------------------------------------------------------------------------ |
+| **`<scheme>`** | `http`, `https`, or `*`                           | The protocol. Using `*` matches **both** `http` and `https`.             |
+| **`<host>`**   | `*`, `*.example.com`, or `example.com`            | The domain. A wildcard `*` at the start matches any subdomain.           |
+| **`<path>`**   | Must start with `/` and can contain `*` wildcards | The specific page path. A single `*` matches any sequence of characters. |
+
+***
+
+#### 💡 Common Syntax Examples
+
+- **Match all HTTP and HTTPS websites:**\
+  javascript
+
+<!---->
+
+```
+// @match *://*/*
+```
+
+Use code with caution.
+
+- **Match a specific domain exactly (any protocol):**\
+  javascript
+
+<!---->
+
+```
+// @match *://://example.com
+```
+
+Use code with caution.
+
+- **Match a domain and any of its subdomains:**\
+  javascript
+
+<!---->
+
+```
+// @match *://*://*
+```
+
+Use code with caution.
+
+- **Match a specific path with a wildcard:**\
+  javascript
+
+<!---->
+
+```
+// @match https://google.com*
+```
+
+Use code with caution.
+
+- **Match a specific file extension anywhere in the path:**\
+  javascript
+
+<!---->
+
+```
+// @match https://example.com
+```
+
+Use code with caution.
+
+***
+
+#### ⚠️ Strict Syntax Rules & Pitfalls
+
+1. **No mid-domain wildcards:** You cannot use `// @match *://example.*/*` to match `.com`, `.org`, and `.net`. The `*` in the host can _only_ be at the very beginning (e.g., `*.example.com`). [link](https://www.tampermonkey.net/documentation.php?locale=en\&q=include)
+2. **Path wildcard requirement:** If you want to match a whole site, you cannot just write `*://example.com`. You **must** include the trailing slash and wildcard: `*://://example.com*`. [link](https://www.youtube.com/watch?v=UCTA9dbrVqc\&t=54)
+3. **No query parameter matching:** You cannot explicitly test query parameters with `@match`. For example, `*://://example.com*` is invalid in strict environments. Instead, use `*://://example.com*` and filter the URL using standard JavaScript inside your script code. [link](https://superuser.com/questions/1833005/how-to-append-a-specific-string-to-a-url-that-matches-constantly-with-tampermon)
+4. **No Regular Expressions:** Unlike `@include`, `@match` does **not** support Regex strings. [link](https://stackoverflow.com/questions/31817758/what-is-the-difference-between-include-and-match-in-userscripts)
+
+Are you trying to target a **specific URL structure** that you are having trouble formatting? If you share the URL, I can write the exact `@match` pattern for you.
+
+- [link](https://stackoverflow.com/questions/31817758/what-is-the-difference-between-include-and-match-in-userscripts)\
+  Stack Overflow\
+  What is the difference between @include and @match in ...\
+  @match specifies a single URL pattern where the userscript should run. It is less flexible than @include because it doesn't suppor...
+- [link](https://developer.chrome.com/docs/extensions/reference/api/userScripts)\
+  Chrome for Developers\
+  browser.userScripts | API\
+  See Match Patterns for more details on the syntax of these strings. The default is \`USER\_SCRIPT\` .
+- [link](https://www.tampermonkey.net/documentation.php?locale=en\&q=include)\
+  Tampermonkey\
+  Documentation - Tampermonkey\
+  It specifies the domain name of the website, such as tmnk.com . You can use the wildcard character \* to match any part of the path...
+
+Show all
+
+## examples
+
+### AI Mode reply for examples
+
+Here is a comprehensive list of **`@match` examples** grouped by common real-world use cases.
+
+#### 🌐 Domain & Subdomain Matching
+
+- **Match a specific domain (and any path):**\
+  javascript
+
+<!---->
+
+```
+// @match *://://example.com*
+```
+
+Use code with caution.\
+_Matches:_ `http://example.com`, `https://example.com`, `https://example.com`\
+_Does not match:_ `https://example.com`
+
+- **Match a domain and all of its subdomains:**\
+  javascript
+
+<!---->
+
+```
+// @match *://*://*
+```
+
+Use code with caution.\
+_Matches:_ `https://example.com`, `https://example.com`, `https://example.com`
+
+- **Match only a specific subdomain:**\
+  javascript
+
+<!---->
+
+```
+// @match https://example.com*
+```
+
+Use code with caution.\
+_Matches:_ `https://example.com`\
+_Does not match:_ `https://example.com` or `https://example.com`
+
+***
+
+#### 📄 Path & File Type Matching
+
+- **Match an exact page only:**\
+  javascript
+
+<!---->
+
+```
+// @match https://example.com
+```
+
+Use code with caution.\
+_Matches:_ `https://example.com`\
+_Does not match:_ `https://example.com` (with trailing slash) or `https://example.com`
+
+- **Match a sub-directory and everything inside it:**\
+  javascript
+
+<!---->
+
+```
+// @match *://://example.com*
+```
+
+Use code with caution.\
+_Matches:_ `https://example.com`, `https://example.com`\
+_Does not match:_ `https://example.com` or `https://example.com`
+
+- **Match paths starting with a specific prefix:**\
+  javascript
+
+<!---->
+
+```
+// @match *://://example.com*
+```
+
+Use code with caution.\
+_Matches:_ `https://example.com`, `https://example.com`, `https://example.com`
+
+- **Match specific file extensions:**\
+  javascript
+
+<!---->
+
+```
+// @match *://*://
+```
+
+Use code with caution.\
+_Matches:_ `https://example.com`\
+_Does not match:_ `https://example.com` (due to the query parameter)
+
+***
+
+#### 🏢 Popular Platform Examples
+
+- **GitHub (all repositories, code pages, and gists):**\
+  javascript
+
+<!---->
+
+```
+// @match *://*://*
+// @match *://gist://*
+```
+
+Use code with caution.
+
+- **YouTube (videos and shorts, excluding the homepage):**\
+  javascript
+
+<!---->
+
+```
+// @match *://*://*
+// @match *://*://*
+```
+
+Use code with caution.
+
+- **Reddit (both old and new layouts):**\
+  javascript
+
+<!---->
+
+```
+// @match *://*://*
+// @match *://old://*
+```
+
+Use code with caution.
+
+***
+
+#### 🛑 Invalid Examples (What NOT to do)
+
+- **❌ Missing path wildcard:** `// @match *://example.com`
+  - _Fix:_ Add a trailing slash and wildcard: `*://://example.com*`
+- **❌ Wildcard in the middle of a domain:** `// @match *://example.*/*`
+  - _Fix:_ You must write separate match lines for each TLD (e.g., one for `.com`, one for `.org`).
+- **❌ Wildcard in the scheme:** `// @match http*://://example.com*`
+  - _Fix:_ Use `*://://example.com*` to cover both HTTP and HTTPS.
+
+Do you have a **specific website or URL** you are trying to write a script for? Paste it here, and I can give you the exact `@match` lines you need!
+
 # 
