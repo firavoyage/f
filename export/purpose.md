@@ -14,4 +14,10 @@ html to md is proven.
 
 it can be a bit hard when it comes to like rendered latex, but would be fine.
 
+---
+
+i will provide immediate value as i often chat w llms, and i longer need to jump between chat and "copy app", or get stuck by builtin clunky copy fn.
+
+whenever it's not dynamically loaded (or for any content present in dom).
+
 

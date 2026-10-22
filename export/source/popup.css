@@ -1,0 +1,61 @@
+/* Container to overlay the webpage */
+.my-userscript-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999; /* Ensure it stays on top of everything */
+  font-family: Arial, sans-serif;
+}
+
+/* The actual popup box */
+.my-userscript-popup {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  width: 300px;
+  color: #333333;
+}
+
+.my-userscript-popup h3 {
+  margin-top: 0;
+  color: #111111;
+}
+
+.my-userscript-popup input {
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+}
+
+.my-userscript-popup .button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.my-userscript-popup button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.my-userscript-popup .btn-save {
+  background: #007bff;
+  color: white;
+}
+
+.my-userscript-popup .btn-cancel {
+  background: #6c757d;
+  color: white;
+}
