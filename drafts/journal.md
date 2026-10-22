@@ -55340,6 +55340,20 @@ prefer `items` (strictly noun) over `list` (verb/noun) <!-- js is lisp 1 -->
 
 04 30 solve all easy problems on usst freshman programming basics.
 
+11 20 setup scaffold.
+
+i may create a more advanced ide on web?!
+
+and cpp cp template.
+
+---
+
+actions should be user actions. like those they see on command palette.
+
+backend endpoints are irrelevant.
+
+there are optimization. like you can render on web, by pure fn, or diliver sth parsed and fully analyzed.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
