@@ -160,6 +160,9 @@ function get_selection_node() {
   return range.commonAncestorContainer
 }
 
+/**
+ * remove hidden elements and standardize text styling on html tag
+ */
 function normalize_node(parent_node) {
   if (!parent_node || !(parent_node instanceof Element)) return
 
@@ -180,6 +183,8 @@ function normalize_node(parent_node) {
     // 2. Standardize tags supported by Markdown based on inline styles
     standardize_markdown_tag(el)
   }
+
+  return parent_node
 }
 
 function is_hidden_node(el) {
@@ -259,6 +264,62 @@ function standardize_markdown_tag(el) {
   }
 }
 
+function normalize_heading(parent_node) {
+  const headings = Array.from(
+    parent_node.querySelectorAll('h1, h2, h3, h4, h5, h6'),
+  )
+  if (headings.length === 0) return
+
+  const levels = headings.map((h) => parseInt(h.tagName.substring(1), 10))
+  const highest_level = Math.min(...levels)
+
+  if (headings.length === 1) {
+    // Shift single heading directly to h1
+    const current_level = levels[0]
+    if (current_level !== 1) {
+      const new_heading = document.createElement('h1')
+      new_heading.innerHTML = headings[0].innerHTML
+      for (const attr of headings[0].attributes) {
+        new_heading.setAttribute(attr.name, attr.value)
+      }
+      headings[0].replaceWith(new_heading)
+    }
+  } else {
+    // Shift all headings together by a level delta so the highest becomes h2
+    const level_delta = 2 - highest_level
+
+    headings.forEach((h, index) => {
+      const current_level = levels[index]
+      let new_level = current_level + level_delta
+
+      // Ensure level stays within valid HTML heading bounds (h1 to h6)
+      if (new_level > 6) new_level = 6
+      if (new_level < 1) new_level = 1
+
+      if (new_level !== current_level) {
+        const new_heading = document.createElement(`h${new_level}`)
+        new_heading.innerHTML = h.innerHTML
+        for (const attr of h.attributes) {
+          new_heading.setAttribute(attr.name, attr.value)
+        }
+        h.replaceWith(new_heading)
+        headings[index] = new_heading
+      }
+    })
+
+    // Prepend a copy of the first h2 as an h1 on the parent node
+    const first_heading = headings[0]
+    const h1_node = document.createElement('h1')
+    h1_node.innerHTML = first_heading.innerHTML
+    for (const attr of first_heading.attributes) {
+      h1_node.setAttribute(attr.name, attr.value)
+    }
+    parent_node.prepend(h1_node)
+  }
+}
+
+const log = console.log
+
 window.addEventListener(
   'keydown',
   (e) => {
@@ -273,18 +334,58 @@ window.addEventListener(
     e.stopImmediatePropagation()
     e.preventDefault()
 
-    const node = get_selection_node()
-    const text = get_selection_text()
+    log('copy')
 
     const {
+      format,
       copy_text_threshold,
       tags_to_preserve,
       tags_to_preserve_one_layer,
+      tags_to_remove,
       should_normalize_heading,
       fallback_element,
+      texts_to_strip,
     } = get_config()
 
-    const turndownService = new TurndownService({
+    let node = get_selection_node()
+    const text = get_selection_text()
+
+    if (
+      (text.length != 0 && text.length <= copy_text_threshold) ||
+      format == 'text'
+    ) {
+      copy(text)
+      return
+    }
+
+    if (text.length == 0) {
+      node = document.querySelector(fallback_element)
+    }
+
+    if (format == 'html') {
+      copy(node.outerHTML)
+      return
+    }
+
+    log(node)
+
+    log('node', node, node.outerHTML)
+
+    node = serialize_node(node)
+
+    log('serialized_node', node, node.outerHTML)
+    
+    node = normalize_node(node)
+
+    log('normalized_node', node, node.outerHTML)
+    
+    if (should_normalize_heading) {
+      node = normalize_heading(node)
+
+      log('normalized_heading_node', node, node.outerHTML)
+    }
+
+    const turndown = new TurndownService({
       // Heading syntax format
       headingStyle: 'atx', // 'setext' (___ / ===) or 'atx' (#, ##, ###)
 
@@ -316,9 +417,11 @@ window.addEventListener(
       preformattedCode: true, // false (renders as code blocks only if <pre> contains <code>) or true
     })
 
-    turndownService.keep(tags_to_preserve)
+    turndown.keep(tags_to_preserve)
 
-    turndownService.addRule('preserve one layer', {
+    turndown.remove(tags_to_remove)
+
+    turndown.addRule('preserve one layer', {
       // Target the elements you want to retain as HTML wrappers
       filter: tags_to_preserve_one_layer,
 
@@ -341,19 +444,42 @@ window.addEventListener(
       },
     })
 
-    turndownService.use(tables)
+    turndown.use(tables)
 
-    
+    // Stop Turndown from adding ugly backslashes to normal punctuation/markdown symbols
+    turndown.escape = function (string) {
+      // Only escape syntax markers if absolutely necessary, or return string as-is
+      // For LLM usage or clean pipelines, returning the string directly is often preferred:
+      return string
+    }
+
+    let markdown = turndown.turndown(node.outerHTML)
+
+    log('markdown', markdown)
+
+    markdown = markdown
+      .replace(/\n{3,}/g, '\n\n') // Collapse 3+ structural newlines into a standard double newline
+      .replace(/[ \t]+\n/g, '\n') // Drop invisible trailing spaces at end of text lines
+      .trim() // Clean up absolute leading/trailing wrapper boundaries
+
+    for (const text of texts_to_strip) {
+      markdown = markdown.replaceAll(text, '')
+    }
+
+    copy(markdown)
   },
   { capture: true },
 )
 
 if (get_config() == nil) {
   set_config({
+    format: 'markdown', // text, markdown, html
     copy_text_threshold: 300,
     tags_to_preserve: ['svg'],
     tags_to_preserve_one_layer: ['mark', 'summary', 'details'],
+    tags_to_remove: ['button', 'input', 'textarea'],
     should_normalize_heading: true,
     fallback_element: 'body',
+    texts_to_strip: ['Use code with caution.'],
   })
 }
