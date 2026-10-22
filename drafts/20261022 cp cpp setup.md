@@ -5493,4 +5493,581 @@ Are you exploring this out of **curiosity about language design**, or are you de
 
 Show all
 
-# 
+# what do ppl say on cpp semicolon design on readability
+
+In the programming community, the debate over C++'s use of **semicolons as statement terminators** and its impact on readability is highly polarized. Because C++ treats whitespace and newlines as arbitrary separators, the semicolon is a critical structural tool, but its effect on human readers is viewed in several distinct ways. [link](https://www.quora.com/What-is-the-use-of-semicolons-at-the-end-of-lines-in-coding-in-the-C-or-C-programming-languages)
+
+The consensus on how semicolons affect C++ readability generally falls into three main perspectives:
+
+### 1. The Pro-Readability Argument: Visual Anchors & Flexibility
+
+Many experienced developers argue that semicolons significantly **enhance readability** by serving as explicit visual anchors. [link](https://algocademy.com/blog/the-secret-life-of-semicolons-a-deep-dive-into-punctuation-psychology/)
+
+- **Clear Intent:** Semicolons provide an unambiguous signal that a thought or instruction is complete, which reduces the cognitive load required to parse dense logic. [link](https://algocademy.com/blog/the-secret-life-of-semicolons-a-deep-dive-into-punctuation-psychology/)
+- **Whitespace Freedom:** Because semicolons handle statement termination, developers can wrap a single long statement across multiple lines or pack short, highly related statements on one line to improve readability without breaking code. [link](https://www.geeksforgeeks.org/dsa/role-of-semicolon-in-various-programming-languages/)
+- **No Hidden Magic:** Unlike JavaScript’s Automatic Semicolon Insertion (ASI), which can lead to unpredictable behaviors and silent bugs, C++’s explicit design means what you see is exactly what the compiler executes. [link](https://stackoverflow.com/questions/2771266/semicolon-in-c)
+
+### 2. The Anti-Readability Argument: Visual Noise & Clutter
+
+Modern developers, especially those coming from languages like Python, Swift, or Go, often view semicolons as **unnecessary visual noise**. [link](https://www.reddit.com/r/AskProgramming/comments/y7l0mb/what%5Fdo%5Fpeople%5Fhave%5Fagainst%5Fsemicolons/)
+
+- **Syntactic Sugar Deficit:** Critics feel that requiring a character at the end of every line forces the brain to filter out meaningless repetitive symbols, leading to unnecessary clutter. [link](https://stackoverflow.com/questions/4701137/why-do-some-languages-need-semicolons)
+- **Flow Disruption:** Beginners and hobbyists frequently find that missing semicolons disrupt their writing flow due to abrupt compiler or syntax errors. [link](https://www.lenovo.com/gb/en/glossary/semicolon/)
+
+### 3. The Great Readability Trap: Trailing Semicolons on Classes
+
+Even defenders of the semicolon generally agree that C++ has one major design quirk that hurts readability: **trailing semicolons after class and struct definitions**. [link](https://www.geeksforgeeks.org/dsa/role-of-semicolon-in-various-programming-languages/)
+
+cpp
+
+```
+class MyClass {
+    // Member variables and methods
+}; // <--- Why is this required, but not after a function?
+```
+
+Use code with caution.
+
+- **The Quirk:** You must put a semicolon after `class {}` or `struct {}`, but _not_ after a function body `void func() {}`.
+- **The Reason:** This exists because C inherited the ability to declare a variable immediately after defining a type (e.g., `struct Point { int x; int y; } p1;`).
+- **The Readability Impact:** This inconsistency is widely considered a readability trap. It breaks the visual intuition of code blocks, leading to frequent syntax errors for those who naturally expect closing curly braces (`}`) to be self-terminating. [link](https://www.quora.com/What-is-the-use-of-semicolons-at-the-end-of-lines-in-coding-in-the-C-or-C-programming-languages)
+
+Are you asking because you are **designing a language** of your own, or are you looking to see how to **configure style guides or linters** to minimize semicolon friction in an existing C++ codebase?
+
+- [link](https://www.geeksforgeeks.org/dsa/role-of-semicolon-in-various-programming-languages/)\
+  GeeksforGeeks\
+  Role of SemiColon in various Programming Languages\
+  Jul 12, 2025 — Usage of Semicolon in C++ is after class and structure definitions, variable declarations, function declarations, after each state...
+- [link](https://www.quora.com/What-is-the-use-of-semicolons-at-the-end-of-lines-in-coding-in-the-C-or-C-programming-languages)\
+  Quora\
+  What is the use of semicolons at the end of lines in coding in ...\
+  C++ use semicolons to terminate a statement, since a statement is not required to fill up line. Semicolons are not required at the...
+- [link](https://www.reddit.com/r/AskProgramming/comments/y7l0mb/what%5Fdo%5Fpeople%5Fhave%5Fagainst%5Fsemicolons/)\
+  Reddit·r/AskProgramming\
+  What do people have against semicolons? : r/AskProgramming\
+  No semicolons, no brackets or braces. turned off by all the semicolons, curly braces, square brackets, parenthesis around conditio...
+
+Show all
+
+## can some vscode fmt ext generally asi for me
+
+<mark><strong><span>No, a standard C++ formatting extension cannot automatically insert missing semicolons for you.</span></strong></mark>
+
+Unlike **JavaScript**—which has native compiler support for [Automatic Semicolon Insertion (ASI)](https://medium.com/@upenpanging/unveiling-the-magic-of-automatic-semicolon-insertion-in-javascript-87ed9d471063) and can be easily fixed on-save by formatters like [Prettier or VS Code's internal settings](https://www.youtube.com/watch?v=4JNp4S2iaqg)—**C++ formatters cannot do this.** [link](https://www.youtube.com/watch?v=4JNp4S2iaqg)
+
+Standard code formatters like [Clang-Format](https://clang.llvm.org/docs/ClangFormatStyleOptions.html) (which powers C++ formatting in VS Code) require your code to be **syntactically valid** before they can format it. If you omit a semicolon in C++, the code is considered broken syntax, and the formatter will simply abort or throw an error rather than try to guess where it goes. [link](https://salesforce.stackexchange.com/questions/353512/how-to-make-vscode-auto-fix-missing-semicolons-apex)
+
+However, there are a few VS Code workflows and niche extensions you can use to alleviate the typing friction:
+
+### 1. The Quality-of-Life Typing Extensions
+
+These don't "fix" your code on save, but they dynamically drop the semicolon at the end of the line _while you are typing_ so you don't have to keep pressing the Right Arrow key or End key:
+
+- [Auto Semicolon by Mohammad Yaaghubi](https://marketplace.visualstudio.com/items?itemName=myaaghubi.auto-semicolon-vscode): This extension allows you to press `;` **anywhere** on the current line, and it will automatically teleport that semicolon to the very end of the statement. [link](https://marketplace.visualstudio.com/items?itemName=myaaghubi.auto-semicolon-vscode)
+- [Smarter Semicolon](https://marketplace.visualstudio.com/items?itemName=IrishBruse.smartersemicolon): A similar utility that dynamically jumps your cursor and inserts the terminator so your hands don't have to leave the home row. [link](https://marketplace.visualstudio.com/items?itemName=IrishBruse.smartersemicolon)
+
+### 2. Tab-to-Complete AI Extensions
+
+Modern AI extensions—like **GitHub Copilot** or **Cursor**—implicitly function like ASI. Because they understand C++ syntax contextually, if you type out an expression and press `Tab` to accept their autocomplete suggestion, the trailing semicolon is almost always included automatically.
+
+### 3. Macros / Custom Keybindings
+
+If you just hate reaching for the arrow keys, you can add a macro natively into VS Code to insert a semicolon at the end of the line and move down. Open your `keybindings.json` and add a custom shortcut like `Ctrl + Enter` (or `Cmd + Enter` on Mac) to fire a terminal command:
+
+json
+
+```
+{
+  "key": "ctrl+enter",
+  "command": "runCommands",
+  "args": {
+    "commands": [
+      "cursorEnd",
+      { "command": "type", "args": { "text": ";" } },
+      "lineBreakInsert"
+    ]
+  },
+  "when": "editorTextFocus && !editorReadonly && editorLangId == cpp"
+}
+```
+
+Use code with caution.
+
+Would you like help **setting up a custom keybinding** like the one above, or are you running into a **specific compiler error** caused by a missing semicolon that you're trying to track down?
+
+- [link](https://marketplace.visualstudio.com/items?itemName=myaaghubi.auto-semicolon-vscode)\
+  Visual Studio Marketplace\
+  Auto Semicolon - Visual Studio Marketplace\
+  Extension: Auto Semicolon by Mohammad Yaaghubi (myaaghubi.auto-semicolon-vscode) for Visual Studio Code. Functionality: Moves curs...
+- [link](https://www.youtube.com/watch?v=4JNp4S2iaqg)\
+  YouTube·Code 2020\
+  VS Code tips — JavaScript › Format: Semicolons\
+  Feb 27, 2020 — Extensions such as Prettier or ESLint can also help you with JavaScript semicolon formatting.\
+  1:14
+- [link](https://sentry.io/answers/semicolon-usage-in-javascript/)\
+  Sentry\
+  JavaScript: When You Need Semicolons - Sentry\
+  JavaScript interpreter has a process called automatic semicolon insertion (ASI) which it uses to insert semicolons where needed, a...
+
+Show all
+
+## what about magic fmt ext
+
+If you are looking for an extension literally named **"Magic Format,"** there is a small [magic/format GitHub library](https://github.com/magic/format), but <mark>it is strictly designed for<span> </span><strong>JavaScript/EcmaScript modules</strong><span> </span>using Prettier</mark>. It does not support C++ or provide C++ ASI. [link](https://github.com/magic/format)
+
+If you are using "magic format" as a general term for an advanced or "smart" formatter that can magically fix your broken syntax on-save, **they still cannot do this for C++.**
+
+The reason is a fundamental barrier in compiler design rather than a limitation of the plugins:
+
+### Why C++ Cannot Have an ASI Formatter
+
+In JavaScript, the language specification explicitly states that a newline _can_ represent a semicolon under specific structural rules. Because the language permits this, formatters like Prettier can parse the code safely and "magically" insert the physical characters for you on-save. [link](https://www.reddit.com/r/vscode/comments/lqgd4s/automatic%5Fsemicolon%5Fafter%5Fsaving%5Fjavascript%5Ffile/)
+
+C++ has no such fallback rules. Without a semicolon, the compiler doesn't just see a missing symbol—it sees a completely different statement structure.
+
+Take this simple example:
+
+cpp
+
+```
+// Missing semicolon on line 1
+auto x = 10
+void function() {}
+```
+
+Use code with caution.
+
+Because C++ ignores newlines, a formatter reads this as:\
+`auto x = 10 void function() {}`
+
+This is completely nonsensical syntax to a C++ parser. Because a formatter cannot know if you meant to assign something else, call a function macro, or terminate the line, it cannot guess where the semicolon belongs. A traditional formatter like **Clang-Format** will simply look at the code, see a broken syntax tree, and refuse to touch the file.
+
+### The Closest "Magic" Workarounds
+
+If your goal is to type code without manually adding semicolons, you have to look outside of formatters and look into **editor automation**:
+
+1. **Use an AI Extension (Cursor / GitHub Copilot):** These act the most like "magic formatters". Because LLMs understand context rather than strict syntax tracking, typing your logic and simply hitting `Tab` to accept the AI auto-completion will automatically lay down your syntax with the semicolons perfectly placed.
+2. **Visual Studio Code Key Macros:** You can create a rule that dynamically inserts a semicolon and drops you to a new line regardless of where your cursor is currently sitting (using the configuration shared in the previous response).
+
+Are you trying to make your **C++ workflow feel more like writing a language like Python or JavaScript**, or is there a specific habit (like hitting a certain key combination) you want to build a macro for?
+
+- [link](https://www.reddit.com/r/vscode/comments/lqgd4s/automatic%5Fsemicolon%5Fafter%5Fsaving%5Fjavascript%5Ffile/)\
+  Reddit·r/vscode\
+  automatic semicolon after saving javascript file. : r/vscode\
+  February 23, 2021 — Prettier can be used to automatically add semicolons to JavaScript files on save. If Prettier is installed but not working, ensure...
+- [link](https://www.youtube.com/watch?v=4JNp4S2iaqg)\
+  YouTube·Code 2020\
+  VS Code tips — JavaScript › Format: Semicolons\
+  Feb 27, 2020 — Extensions such as Prettier or ESLint can also help you with JavaScript semicolon formatting.\
+  1:14
+- [link](https://medium.com/@upenpanging/unveiling-the-magic-of-automatic-semicolon-insertion-in-javascript-87ed9d471063)\
+  Medium·upen panging\
+  Unveiling the Magic of Automatic Semicolon Insertion in ...\
+  If a statement ends with a line break, JavaScript assumes a semicolon is present. It magically inserts the semicolon for you, ensu...
+
+Show all
+
+## why cant they be smarter
+
+It is completely natural to wonder why formatters can't just look at a new line, realize what you meant, and insert the semicolon for you.
+
+The frustrating truth is that C++ formatters can't be "smarter" because **C++ has one of the most context-heavy, structurally ambiguous grammars in software history.**
+
+In JavaScript, if you leave out a semicolon, there are only a handful of ways the parser could interpret the code. In C++, leaving out a single semicolon often transforms your code into a completely different, mathematically valid (but broken) concept. The formatter cannot look at your new lines and know your intent because the options are infinitely complex.
+
+A formatter would have to guess between radically different intents:
+
+### 1. The Multi-line vs. Two-statement Riddle
+
+Imagine you type this without semicolons:
+
+cpp
+
+```
+auto x = y
+(z).doSomething()
+```
+
+Use code with caution.
+
+Did you mean to create **two separate lines** of code?
+
+- `auto x = y;`
+- `z.doSomething();`
+
+Or did you mean to create **one continuous line** where `y` is a function pointer or a functor object being called with `z` as an argument?
+
+- `auto x = y(z).doSomething();`
+
+Both are perfectly valid C++. Because C++ ignores newlines, a formatter cannot read your mind to know if `y` is a variable or a function.
+
+### 2. The Multi-Variable vs. Multiplication Nightmare
+
+Consider this text block:
+
+cpp
+
+```
+DataType* object
+x = y
+```
+
+Use code with caution.
+
+Did you mean to declare a pointer and assign a variable?
+
+- `DataType* object;`
+- `x = y;`
+
+Or did you mean to perform a multiplication equation? If `DataType` is a regular integer variable and `object` is another variable, this can be parsed as:
+
+- `DataType * object x = y;` _(Multiplying DataType by object, which is nonsense syntactically, but the compiler has to check your entire codebase's type registry just to figure that out)._
+
+### 3. The Function Prototype vs. Instantiation Trap
+
+Look at how a missing semicolon completely changes the architecture of a program:
+
+cpp
+
+```
+struct MyType {
+    int value
+}
+foo()
+```
+
+Use code with caution.
+
+- **Intent A:** You wanted a struct definition, and then you wanted to call a function named `foo()`.
+- **Intent B:** You wanted to define a struct and immediately use it as the return type for a new function declaration named `foo()` (e.g., `struct MyType { int value; } foo();`).
+
+### Why JavaScript Can Do It, But C++ Can't
+
+JavaScript's [Automatic Semicolon Insertion (ASI)](https://medium.com/@upenpanging/unveiling-the-magic-of-automatic-semicolon-insertion-in-javascript-87ed9d471063) is governed by simple rules: if a line breaks and the next token can't legally continue the current statement, stick a semicolon in. [link](https://www.youtube.com/watch?v=tvzkFPR2-o4\&t=497)
+
+In C++, because of features like pointer syntax (`*`), operator overloading, macros, and historical C-type declarations, **almost everything can legally continue into the next token.** C++ text doesn't structurally break when you hit Enter; it just morphs into a giant, confusing mega-expression. [link](https://www.zhihu.com/en/answer/1710566556)
+
+For a formatter to insert semicolons accurately, it wouldn't just be formatting text—it would have to fully compile your code, resolve all templates, check your variable types, and evaluate your architectural intent.
+
+Does seeing these syntax traps make you appreciate the strictness of the **C++ compiler**, or does it make you want to go find a language with an **explicit whitespace design** like Go or Python?
+
+- [link](https://www.youtube.com/watch?v=tvzkFPR2-o4\&t=497)\
+  YouTube·Eric Murphy\
+  The Great JavaScript Semicolon Debate\
+  Aug 6, 2021 — ASI automatically inserts semicolons at the end of statements if they are not explicitly present.\
+  30s
+
+- [link](https://www.zhihu.com/en/answer/1710566556)\
+  知乎\
+  Is the semicolon after the class in C++ a design flaw in ...\
+  Because the definition of a class in C++ is actually a type declaration. Here, the type declaration body should be followed by a v...
+
+# should i use the latest cpp version on codeforces
+
+<mark><strong><span>Yes, you should generally use the latest 64-bit C++ version available on Codeforces (such as C++20 or C++23)</span></strong></mark>.
+
+Using the newest 64-bit environment is the standard practice for competitive programming today. However, there are a couple of specific edge cases you need to look out for. [link](https://codeforces.com/topic/142929/en2)
+
+### Why You Should Use the Latest Version
+
+- **64-bit Performance Boost:** Older C++ options on Codeforces (like older versions of G++14) often run on 32-bit architectures. If your code uses `long long` (64-bit integers) heavily, executing it on a 32-bit compiler will cause a massive slowdown. The latest versions default to 64-bit, making operations with large integers significantly faster. [link](https://codeforces.com/blog/entry/105650)
+- **Modern Language Features:** Newer standards give you access to highly useful tools like `std::ranges`, `std::views`, `std::string_view`, and `std::span`. These features can make your code much more concise and easier to implement under time pressure.
+- **More `constexpr` and `consteval` Support:** Newer versions allow more complex math and logic functions to be evaluated at compile-time rather than runtime, optimizing your code's speed. [link](https://codeforces.com/blog/entry/121114)
+
+***
+
+### The One Big Risk: Naming Conflicts
+
+The biggest downside to upgrading immediately to the newest standard on Codeforces comes down to a very common habit: **`using namespace std;`**. [link](https://codeforces.com/blog/entry/139698)
+
+Because modern C++ versions constantly introduce new functions to the standard (`std`) library, global variables or custom functions you write might accidentally share a name with a new built-in function. [link](https://codeforces.com/blog/entry/139698?mobile=true\&locale=en)
+
+- _Example:_ If you name a variable `print` or `y1` in C++23, it can collide with `std::print` or older global identifiers, resulting in a **Compilation Error** on the platform. [link](https://codeforces.com/blog/entry/139698)
+
+### Direct Comparison
+
+| Feature / Detail             | Older Versions (e.g., C++14 32-bit)   | Latest Versions (C++20 / C++23 64-bit)                          |
+| ---------------------------- | ------------------------------------- | --------------------------------------------------------------- |
+| **Speed (with 64-bit ints)** | Slower (requires multiple CPU cycles) | **Significantly Faster**                                        |
+| **Modern Built-ins**         | Standard STL containers only          | Features like Ranges, `std::span`, and `std::optional`          |
+| **Compilation Safety**       | Rare naming conflicts                 | Higher risk of naming conflicts if using `using namespace std;` |
+
+### Summary Recommendation
+
+Submit using **GNU G++20 (64-bit)** or **GNU G++23 (64-bit)**. Just remain mindful of your variable naming conventions so they do not conflict with the expanding standard library. [link](https://codeforces.com/blog/entry/139698)
+
+Would you like to know **which specific C++20/C++23 features** are most helpful for competitive programming, or do you need help **setting up your local compiler** to match Codeforces?
+
+- [link](https://www.reddit.com/r/codeforces/comments/1jdddav/which%5Fversion%5Fof%5Fc%5Fuse%5Ffor%5Fcp%5F172023/)\
+  Reddit·r/codeforces\
+  Which version of C++ use for CP? 17/20/23? : r/codeforces\
+  recent versions also have more constexpr support, eg. most cmath is not constexpr before C++23 & C++26. All versions maintain back...
+- [link](https://codeforces.com/blog/entry/139698)\
+  Codeforces\
+  Sets in C++ 17 vs C++ 20, 23 - Codeforces\
+  Some code fails to compile on a newer C++ version because a new C++ version introduces identifiers that may conflict with user's c...
+- [link](https://codeforces.com/blog/entry/139698?mobile=true\&locale=en)\
+  Codeforces\
+  Sets in C++ 17 vs C++ 20, 23\
+  Some code fails to compile on a newer C++ version because a new C++ version introduces identifiers that may conflict with user's c...
+
+Show all
+
+## can you override the names after using namespace
+
+<mark><strong><span>Yes, you can explicitly override or resolve name conflicts after declaring<span> </span></span><code dir="ltr">using namespace std;</code></strong></mark>, but the exact method depends on whether the conflict happens inside a function or in the global scope.
+
+When you use `using namespace std;`, you bring the entire standard library into the global namespace. If a name clashes with your own code, it creates ambiguity for the compiler. Here is how you can override and fix it:
+
+### 1. Local Variables (Inside a Function)
+
+If you declare a variable inside a function (like `main()`), it will **automatically override** the standard library name within that scope. Local scope always takes priority over namespace scope.
+
+cpp
+
+```
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    // std::distance exists, but this local variable overrides it safely
+    int distance = 5;
+    cout << distance; // Outputs 5
+    return 0;
+}
+```
+
+Use code with caution.
+
+### 2. Global Variables or Custom Functions
+
+If you declare a variable or function globally (outside of `main()`), the compiler won't know whether you mean your global item or the one from `std`. This causes a **"reference to 'X' is ambiguous"** compilation error.
+
+To fix this without deleting `using namespace std;`, you must use the **global scope resolution operator (`::`)** when calling your variable.
+
+cpp
+
+```
+#include <iostream>
+#include <numeric> // contains std::gcd
+
+using namespace std;
+
+int gcd = 10; // Global variable clashing with std::gcd
+
+int main() {
+    // cout << gcd; // ERROR: Ambiguous!
+
+    cout << ::gcd; // SUCCESS: The '::' forces the compiler to look at your global scope
+    return 0;
+}
+```
+
+Use code with caution.
+
+### The Best Practice for Competitive Programming
+
+While `::` works, the cleanest way to avoid naming collisions on Codeforces without giving up `using namespace std;` is to simply **capitalize your global variables or add an underscore**. For example, use `Gcd`, `Distance`, or `my_gcd` instead of exact standard library matches.
+
+Are you currently getting a specific **compilation error** on a Codeforces problem? If you paste the error or the variable name causing trouble, I can show you exactly how to bypass it.
+
+## why doesnt it override by default
+
+<mark><strong><span>It does not override by default at the global scope because C++ prioritizes type safety and predictability.</span></strong></mark>
+
+When you type `using namespace std;`, you are telling the compiler: _"Treat everything inside the `std` namespace as if it were declared in the global scope."_
+
+Because of this, declaring a global variable with the same name creates two identical names at the exact same scope level, leading to a **symbol collision**.
+
+### 1. The Principle of Least Surprise
+
+If the compiler just picked your version by default without warning you, it could silently break your code.
+
+Imagine you are using a library function, but you accidentally named a global variable the same thing. If the compiler silently overrode the library function with your variable, you would get bizarre, hard-to-debug runtime errors instead of a clean, helpful compilation error.
+
+### 2. Identical Scope Priority
+
+The reason it _does_ work inside a function (`main()`) but _fails_ globally comes down to how C++ looks up names:
+
+- **Inside a function (Nested Scope):** The compiler looks at the immediate local scope first. If it finds your variable, it stops looking. Local scope beats global/namespace scope.
+- **Globally (Same Scope):** Both your variable and the `std` function are sitting in the same pool. Because neither has a higher priority than the other, the compiler hits a tie and forces you to break it.
+
+### Modern C++ Context
+
+This is exactly why modern C++ developers discourage using `using namespace std;` in production software. As the C++ committee adds new features to the standard library in newer versions (like C++20 and C++23), code that used to compile perfectly fine can suddenly break because a new `std` feature now matches an old global variable name.
+
+Would you like to see how to quickly **transition away** from `using namespace std;` using targeted shortcuts, or are you looking for a **macro trick** to keep using it safely on Codeforces?
+
+# how to transition away from using namespace std in cp
+
+Transitioning away from `using namespace std;` in **competitive programming (CP)** can be achieved smoothly by <mark>adopting<span> </span><strong>selective<span> </span><code dir="ltr">using</code><span> </span>declarations</strong>,<span> </span><strong>type aliases</strong>, and<span> </span><strong>editor snippets</strong></mark> to keep your typing speed lightning-fast. [link](https://www.youtube.com/watch?v=8gZNFt0YEZI)
+
+While dropping the blanket `using namespace std;` directive prevents painful, hidden name collisions with common CP variable names like `next`, `prev`, `y1`, `count`, or `distance`, you do not have to manually type `std::` hundreds of times during a contest. [link](https://www.youtube.com/watch?v=4NYC-VU-svE\&t=143)
+
+***
+
+### 📥 1. Use Selective `using` Declarations
+
+Instead of dumping the entire standard library into the global scope, explicitly declare only the most frequent I/O operations at the top of your CP template. This gives you the speed of shorthand code without the risk of namespace pollution: [link](https://www.youtube.com/watch?v=AxRxyU43wjE\&t=16)
+
+cpp
+
+```
+#include <iostream>
+#include <vector>
+
+// Only bring in what you use in almost every line
+using std::cin;
+using std::cout;
+using std::endl;
+```
+
+Use code with caution.
+
+### 🏷️ 2. Leverage Type Aliases for Containers
+
+You rarely need to type `std::vector` or `std::pair` if you use C++ type aliases (`using`). They make your code shorter, cleaner, and strictly bound to the correct types: [link](https://www.reddit.com/r/learnprogramming/comments/phwr3w/c%5Fhow%5Fto%5Favoid%5Fusing%5Fnamespace%5Fstd/)
+
+cpp
+
+```
+// Container shortcuts
+using vi = std::vector<int>;
+using pii = std::pair<int, int>;
+using vvi = std::vector<vi>;
+using ll = long long;
+
+// Usage in code:
+vi a(n); // Clean and fast!
+```
+
+Use code with caution.
+
+### ⚡ 3. Automate with Fast I/O Boilerplate
+
+In CP, you should already be using a fast I/O macro or function block. Wrapping your standard stream configurations inside an optimization block naturally isolates your stream usage:
+
+cpp
+
+```
+void solve() {
+    // Your core logic here
+}
+
+int main() {
+    // Fast I/O
+    std::ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int t;
+    cin >> t;
+    while (t--) {
+        solve();
+    }
+    return 0;
+}
+```
+
+Use code with caution.
+
+### 💻 4. Rely on Editor Snippets
+
+The ultimate trick for CP speed is configuring your IDE (like VS Code, CP Editor, or Vim) to auto-populate your template.
+
+- Set up a snippet so that typing `cpin` automatically generates your full, clean boilerplate template.
+- Use auto-completion so that typing `vec` expands to `std::vector`.
+
+### ⚖️ Quick Summary: The Transition
+
+| Old Lazy Way            | New Clean CP Way                     | Why It's Better                            |
+| ----------------------- | ------------------------------------ | ------------------------------------------ |
+| `using namespace std;`  | `using std::cin; using std::cout;`   | Prevents collisions with `next` or `y1`.   |
+| `vector<int> v;`        | `using vi = std::vector<int>; vi v;` | Shorter to type and less cluttered.        |
+| Typing `std::` manually | VS Code / Vim Snippets               | Saves physical keystrokes during contests. |
+
+If you want to optimize your environment, let me know:
+
+- Which **code editor** or IDE do you use for CP?
+- Do you want a complete, modern **C++ template** configured without `using namespace std;`?
+
+I can provide the exact configuration or code snippet to paste right into your setup!
+
+- [link](https://www.youtube.com/watch?v=4NYC-VU-svE\&t=143)\
+  YouTube·The Cherno\
+  Why I don't "using namespace std"\
+  Feb 22, 2018 — A critical rule is to never use \`using namespace\` in header files, The primary benefit of avoiding \`using namespace std\` and expli...\
+  11m
+- [link](https://www.reddit.com/r/learnprogramming/comments/phwr3w/c%5Fhow%5Fto%5Favoid%5Fusing%5Fnamespace%5Fstd/)\
+  Reddit·r/learnprogramming\
+  \[C++] How to avoid using "namespace std" - Reddit\
+  It's as simple as not doing it and continuing to not do it. Also consider using declarations if you use something frequently and d...
+- [link](https://www.youtube.com/watch?v=AxRxyU43wjE\&t=16)\
+  YouTube·Coding Cleverly\
+  Why not "using namespace std" | Programming in C++ | Part 48\
+  Feb 13, 2021 — Namespaces in programming help to avoid redeclaration errors when using the same name for different variables by providing a scope...\
+  7m
+
+Show all
+
+## why does cpp use using instead of use
+
+The choice of **`using`** over `use` in C++ comes down to English grammar and the historical context of how the language evolved. When namespaces were introduced in C++98, the ISO C++ standardization committee chose a keyword that fit naturally into the language's declarative syntax. [link](https://www.youtube.com/watch?v=2lcIKzFHjSM\&t=192)
+
+The design decisions rely on three main factors:
+
+### 1. Grammatical Flow as a "Directive"
+
+In C++, `using namespace std;` is a **directive**—an instruction telling the compiler how to resolve names in the current scope. [link](https://devabdilah.medium.com/using-keyword-in-c-f5b8c8618793)
+
+- **`using`** functions as a continuous participle or descriptive marker. Reading `using namespace std;` flows naturally as an adjective-phrase modifier for the scope: _"For this block of code, we are **using** the namespace `std`."_ [link](https://softwareengineering.stackexchange.com/questions/337804/why-do-the-using-directive-and-using-statement-use-the-same-keyword-in-c)
+- **`use`** is an imperative verb. In programming, imperative verbs are typically reserved for **actions or commands** that execute at runtime (e.g., `return`, `throw`, `goto`). Since declarations happen strictly at compile-time to guide the type system, `using` was felt to better represent an ongoing compile-time state rather than an immediate run-time command.
+
+### 2. Multi-Purpose Keyword Recycling
+
+To keep the compiler efficient and prevent breaking old code, the C++ committee heavily favors recycling existing keywords instead of inventing new ones. The keyword `using` acts as a multi-tool for the language. [link](https://stackoverflow.com/questions/32757571/why-do-the-c-language-designers-keep-re-using-keywords)
+
+Because it is a participle, it grammatically scales beautifully across radically different contexts:
+
+- **Namespace Directive:** `using namespace std;` _(We are using this namespace.)_
+- **Declaration Hoisting:** `using std::cout;` _(We are explicitly using this specific tool.)_
+- **Type Aliases (C++11):** `using vi = std::vector<int>;` _(We are using `vi` as a shorthand for this vector type.)_
+- **Class Inheritance:** `using Base::print;` _(Bring the base class `print` function into the derived class scope.)_ [link](https://www.sandordargo.com/blog/2022/04/27/the-4-use-of-using-in-cpp)
+
+If the keyword were `use`, phrases like `use vi = std::vector<int>;` or `use Base::print;` would read awkwardly as incomplete imperative statements in English.
+
+### 3. Avoiding Conflict with Existing Code
+
+When namespaces were added in the 1990s, millions of lines of C++ code already existed. Because `use` is a very common English word, many programmers had already named their variables, functions, or structures `use` (e.g., `int use = 1;`). [link](https://stackoverflow.com/questions/32757571/why-do-the-c-language-designers-keep-re-using-keywords)
+
+Turning `use` into a reserved keyword would have broken thousands of legacy programs instantly. Choosing `using`—which is much less common as a variable identifier—was a significantly safer bet to maintain backward compatibility. [link](https://stackoverflow.com/questions/32757571/why-do-the-c-language-designers-keep-re-using-keywords)
+
+***
+
+### How Other Languages Handled It
+
+Other languages made different choices based on their own syntax style:
+
+- **Rust & Perl** use `use`, treating it as a straightforward module-importing module command.
+- **C#** copied C++'s rationale but went with `using` for both namespace inclusion (`using System;`) and memory cleanup blocks.
+
+If you're exploring C++ history, would you like to see how **C++11 type aliases** (`using`) completely replaced the old C-style `typedef` keyword, or how **C++20** expanded the keyword even further with `using enum`? [link](https://www.sandordargo.com/blog/2022/04/27/the-4-use-of-using-in-cpp)
+
+- [link](https://www.sandordargo.com/blog/2022/04/27/the-4-use-of-using-in-cpp)\
+  Sandor Dargo\
+  The 4 use of using in C++ | Sandor Dargo's Blog\
+  Aliasing In old C++ we could use typedef to give another name, to give an alias for our types. Sometimes you might want to use it ...
+- [link](https://www.youtube.com/watch?v=2lcIKzFHjSM\&t=192)\
+  YouTube·Bro Code\
+  What are C++ namespaces?\
+  May 20, 2024 — To create a namespace, the keyword 'namespace' is used followed by the namespace name and a block of code. namespaces in C++ preve...\
+  59s
+- [link](https://www.geeksforgeeks.org/cpp/cpp-using-vstypedef/)\
+  GeeksforGeeks\
+  C++ using vs Typedef - GeeksforGeeks\
+  Dec 17, 2022 — C++ using vs Typedef. Last Updated : 17 Dec, 2022. typedef keyword in C++ is used for aliasing existing data types, user-defined d...
+
+Show all
+
+
