@@ -5,11 +5,10 @@ import "./popup.css";
 
 // 1. Define the Popup Component using pure Hyperscript function calls
 function PopupConfig({ onClose }) {
-  const [apiKey, setApiKey] = useState(GM_getValue("apiKey", ""));
+  const [apiKey, setApiKey] = useState(GM_getValue("export_config", ""));
 
   const handleSave = () => {
-    GM_setValue("apiKey", apiKey.trim());
-    console.log("[Userscript] Saved Key via Pure Hyperscript:", apiKey.trim());
+    GM_setValue("export_config", apiKey.trim());
     onClose();
   };
 
@@ -22,12 +21,12 @@ function PopupConfig({ onClose }) {
   // Structure: h(tag_or_component, attributes_object, ...children)
   return h(
     "div",
-    { className: "my-userscript-overlay", onClick: handleOverlayClick },
+    { className: "export_config", onClick: handleOverlayClick },
     h(
       "div",
       { className: "my-userscript-popup" },
       h("h3", null, "Configure API Key"),
-      h("input", {
+      h("textarea", {
         type: "text",
         value: apiKey,
         onInput: (e) => setApiKey(e.target.value),
@@ -43,8 +42,7 @@ function PopupConfig({ onClose }) {
   );
 }
 
-// 2. Control Mount / Unmount State
-function openPureHyperscriptPopup() {
+function open_config() {
   if (document.querySelector(".my-userscript-overlay")) return;
 
   const container = document.createElement("div");
@@ -58,204 +56,66 @@ function openPureHyperscriptPopup() {
   render(h(PopupConfig, { onClose: closePopup }), container);
 }
 
-// 3. Register the menu command into the extension UI
 GM_registerMenuCommand(
-  "⚙️ Configure API Key (Pure H)",
-  openPureHyperscriptPopup
+  "config",
+  open_config
 );
 
-/**
- * Convert DOM to HTML
- *
- * @param {Object} config
- * @param {Node|null} config.targetNode - Direct live DOM element to process (for explicit node extraction).
- * @param {Range|null} config.range - Active user selection range object.
- * @param {string} [config.mode='selection'] - 'selection' (slice exact text), or 'parent' (grab whole parent container if range exists).
- * @param {string} [config.baseUrl=document.baseURI] - URL to resolve relative assets.
- * @returns {string} Fully styled inline HTML string.
- */
-function compileDomToHtmlString({
-  targetNode = null,
-  range = null,
-  mode = "selection",
-  baseUrl = document.baseURI,
-}) {
-  const liveNodeMap = new Map();
-  let idCounter = 0;
+// 1. Use useCapture = true (the 3rd parameter) to intercept during the capturing phase.
+window.addEventListener(
+  "keydown",
+  (event) => {
+    const isCopyKey =
+      (event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "c";
+    if (!isCopyKey) return;
 
-  // Determine the true baseline node we want to start compiling from
-  let rootAnchor = targetNode;
-  if (range && !targetNode) {
-    const commonAncestor = range.commonAncestorContainer;
-    rootAnchor =
-      commonAncestor.nodeType === Node.ELEMENT_NODE
-        ? commonAncestor
-        : commonAncestor.parentElement;
+    // 2. Kill the event immediately. Prevents other listeners on the same element
+    // and elements further down the tree from firing.
+    event.stopImmediatePropagation();
 
-    // OPTION TOGGLE: If mode is 'parent', we discard the strict range filtering
-    // for the top-level nodes, treating the parent as a full target node extraction.
-    if (mode === "parent") {
-      range = null;
-    }
-  }
+    const TEXT_LENGTH_THRESHOLD = 15;
+    const selection = window.getSelection();
+    let targetNode = null;
 
-  if (!rootAnchor) return "";
+    if (selection && selection.rangeCount > 0 && !selection.isCollapsed) {
+      const selectedText = selection.toString();
 
-  // Helper to evaluate if a live node falls inside active selection bounds
-  function isNodeSelected(node) {
-    if (!range) return true; // If no range, everything under the anchor is captured
-
-    if (node.nodeType === Node.TEXT_NODE) {
-      const testRange = document.createRange();
-      testRange.selectNodeContents(node);
-      const startsBeforeEnd =
-        range.compareBoundaryPoints(Range.END_TO_START, testRange) <= 0;
-      const endsAfterStart =
-        range.compareBoundaryPoints(Range.START_TO_END, testRange) >= 0;
-      return startsBeforeEnd && endsAfterStart;
-    }
-
-    if (node.nodeType !== Node.ELEMENT_NODE) return false;
-
-    let current = node;
-    while (current) {
-      try {
-        if (
-          current.nodeType === Node.ELEMENT_NODE &&
-          range.intersectsNode(current)
-        ) {
-          return true;
-        }
-      } catch (e) {}
-
-      if (current instanceof ShadowRoot) {
-        current = current.host;
-      } else {
-        current = current.parentNode;
-      }
-    }
-    return false;
-  }
-
-  // --- PHASE 1: Crawl & Tag the True Live Tree ---
-  function annotateLiveTree(node) {
-    if (!node) return;
-
-    if (node.nodeType === Node.ELEMENT_NODE && isNodeSelected(node)) {
-      const id = `copy-${idCounter++}`;
-      node.setAttribute("data-copy-id", id);
-      liveNodeMap.set(id, node);
-    }
-
-    for (const child of node.childNodes) {
-      annotateLiveTree(child);
-    }
-
-    if (node.shadowRoot) {
-      for (const shadowChild of node.shadowRoot.childNodes) {
-        annotateLiveTree(shadowChild);
-      }
-    }
-  }
-
-  // --- PHASE 2: Reconstruct & Style the Tree Manually ---
-  function compileTree(liveNode) {
-    if (!liveNode) return null;
-
-    if (liveNode.nodeType === Node.TEXT_NODE) {
-      if (!isNodeSelected(liveNode)) return null;
-
-      let textValue = liveNode.nodeValue;
-      if (range) {
-        if (liveNode === range.startContainer) {
-          textValue = textValue.substring(range.startOffset);
-        }
-        if (liveNode === range.endContainer) {
-          textValue = textValue.substring(0, range.endOffset);
-        }
-      }
-      return document.createTextNode(textValue);
-    }
-
-    if (liveNode.nodeType !== Node.ELEMENT_NODE) {
-      return isNodeSelected(liveNode) ? liveNode.cloneNode(true) : null;
-    }
-
-    const clone = liveNode.cloneNode(false);
-    clone.removeAttribute("data-copy-id");
-
-    // Inline computed CSS styles
-    const computedStyle = window.getComputedStyle(liveNode);
-    let cssText = "";
-    for (const key of computedStyle) {
-      cssText += `${key}:${computedStyle.getPropertyValue(key)};`;
-    }
-    clone.setAttribute("style", cssText);
-
-    // Resolve URLs
-    const urlAttributes = ["src", "href", "poster", "action"];
-    for (const attr of urlAttributes) {
-      if (liveNode.hasAttribute(attr)) {
+      // If below threshold, we want default browser behavior, but since we stopped
+      // propagation, we must manually trigger a safe clipboard text write.
+      if (selectedText.length < TEXT_LENGTH_THRESHOLD) {
+        event.preventDefault(); // Stop default browser actions to maintain clean state
         try {
-          clone.setAttribute(
-            attr,
-            new URL(liveNode.getAttribute(attr), baseUrl).href
-          );
-        } catch (e) {}
+          navigator.clipboard.writeText(selectedText);
+        } catch (err) {
+          console.error("Fallback plaintext copy failed:", err);
+        }
+        return;
+      }
+
+      const range = selection.getRangeAt(0);
+      targetNode = range.commonAncestorContainer;
+      if (targetNode.nodeType === Node.TEXT_NODE) {
+        targetNode = targetNode.parentElement;
       }
     }
 
-    // Process Light DOM children
-    for (const child of liveNode.childNodes) {
-      const compiledChild = compileTree(child);
-      if (compiledChild) clone.appendChild(compiledChild);
+    if (!targetNode) {
+      targetNode = document.body;
     }
 
-    // Flatten Shadow DOM children
-    if (liveNode.shadowRoot) {
-      const shadowWrapper = document.createElement("div");
-      shadowWrapper.setAttribute("data-shadow-host", "");
+    // 3. Prevent standard browser behavior for our custom HTML payload pipeline
+    event.preventDefault();
 
-      for (const shadowChild of liveNode.shadowRoot.childNodes) {
-        const compiledShadowChild = compileTree(shadowChild);
-        if (compiledShadowChild) shadowWrapper.appendChild(compiledShadowChild);
-      }
-
-      if (shadowWrapper.childNodes.length > 0) {
-        clone.appendChild(shadowWrapper);
-      }
+    try {
+      const stylizedHtml = elementToHtmlWithStyles(targetNode);
+      navigator.clipboard.writeText(stylizedHtml);
+      console.log("Successfully hijacked copy event and pushed stylized HTML!");
+    } catch (error) {
+      console.error("Failed to copy stylized HTML:", error);
     }
-
-    return clone;
-  }
-
-  // --- PHASE 3: Clean up Tracking Attributes ---
-  function cleanLiveTree(node) {
-    if (!node || node.nodeType !== Node.ELEMENT_NODE) return;
-    node.removeAttribute("data-copy-id");
-    for (const child of node.childNodes) cleanLiveTree(child);
-    if (node.shadowRoot) {
-      for (const shadowChild of node.shadowRoot.childNodes)
-        cleanLiveTree(shadowChild);
-    }
-  }
-
-  const container = document.createElement("div");
-
-  try {
-    annotateLiveTree(rootAnchor);
-    const finalCompiledTree = compileTree(rootAnchor);
-    if (finalCompiledTree) {
-      container.appendChild(finalCompiledTree);
-    }
-    cleanLiveTree(rootAnchor);
-  } catch (error) {
-    cleanLiveTree(rootAnchor);
-    console.error("Compilation error, cleaning up DOM:", error);
-  }
-
-  return container.innerHTML;
-}
+  },
+  true
+); // <--- CRITICAL: 'true' turns on the event capturing phase
 
 // document.addEventListener(
 //   "copy",
@@ -289,4 +149,88 @@ function compileDomToHtmlString({
 //   { capture: true }
 // ); // Crucial: forces your script to execute first
 
+/**
+ * Converts a DOM node into a complete HTML string with all computed styles inlined,
+ * relative links resolved to absolute URLs, and Shadow DOM contents flattened.
+ *
+ * @param {Element} node - The root DOM element to convert.
+ * @param {string} [baseUrl=window.location.href] - Base URL to resolve relative links.
+ * @returns {string} The fully processed HTML string.
+ */
+function elementToHtmlWithStyles(node, baseUrl = window.location.href) {
+  if (!node || node.nodeType !== Node.ELEMENT_NODE) {
+    return "";
+  }
 
+  // Helper function to resolve relative URLs
+  const resolveUrl = (url) => {
+    try {
+      return new URL(url, baseUrl).href;
+    } catch {
+      return url;
+    }
+  };
+
+  // Main recursive cloning and transformation function
+  const cloneAndProcess = (element) => {
+    // 1. Create a shallow clone of the element tag
+    const clone = element.cloneNode(false);
+
+    // 2. Inline Computed CSS Styles
+    // We fetch the computed styles from the live document context
+    const computedStyle = window.getComputedStyle(element);
+    if (computedStyle && computedStyle.cssText) {
+      clone.setAttribute("style", computedStyle.cssText);
+    } else if (computedStyle) {
+      // Fallback for browsers that don't populate cssText completely
+      let cssText = "";
+      for (let i = 0; i < computedStyle.length; i++) {
+        const prop = computedStyle[i];
+        cssText += `${prop}: ${computedStyle.getPropertyValue(prop)}; `;
+      }
+      if (cssText) clone.setAttribute("style", cssText.trim());
+    }
+
+    // 3. Resolve Relative Links (href, src, data, etc.)
+    const urlAttributes = ["src", "href", "data", "poster", "action"];
+    urlAttributes.forEach((attr) => {
+      if (element.hasAttribute(attr)) {
+        // Use element[attr] if available to get resolved URL naturally, otherwise fallback
+        const rawValue = element.getAttribute(attr);
+        clone.setAttribute(attr, resolveUrl(rawValue));
+      }
+    });
+
+    // 4. Handle Shadow DOM and Light DOM Children
+    // Process Shadow DOM if it exists, otherwise process standard light DOM children
+    const shadowRoot = element.shadowRoot;
+    if (shadowRoot) {
+      // Create a wrapper or container if you want to visually segment it,
+      // or simply append shadow children directly into the cloned tag to flatten it.
+      Array.from(shadowRoot.childNodes).forEach((child) => {
+        appendProcessedChild(clone, child);
+      });
+    } else {
+      Array.from(element.childNodes).forEach((child) => {
+        appendProcessedChild(clone, child);
+      });
+    }
+
+    return clone;
+  };
+
+  // Helper to process and append different node types safely
+  const appendProcessedChild = (parentClone, child) => {
+    if (child.nodeType === Node.ELEMENT_NODE) {
+      parentClone.appendChild(cloneAndProcess(child));
+    } else if (child.nodeType === Node.TEXT_NODE) {
+      parentClone.appendChild(document.createTextNode(child.textContent));
+    } else if (child.nodeType === Node.COMMENT_NODE) {
+      parentClone.appendChild(document.createComment(child.textContent));
+    }
+  };
+
+  // Execute the processing loop and return the outerHTML string
+  const processedElement = cloneAndProcess(node);
+  return processedElement.outerHTML;
+}
