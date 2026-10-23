@@ -442,4 +442,398 @@ mutableVec[0] = 99;
 
 Would you like to see how **`std::span`** or **`std::string_view`** are used in modern C++ to create lightweight, read-only views of data without passing vectors around?
 
+# can you abstract absolutely any piece of code in cpp23 in cp if you use fn w reference params
+
+**No, you cannot abstract _absolutely_ any piece of competitive programming (CP) code using just functions with reference parameters**, even with the advancements in **C++23**. While functions utilizing reference parameters (like `&` or `auto&&`) allow you to isolate and mutate external states, they fall short of being a universal abstraction mechanism due to structural, performance, and language design limitations.
+
+Here is a breakdown of why this approach fails for absolute abstraction, along with what C++23 actually brings to the table.
+
+---
+
+### Why Reference Parameters Aren't Enough
+
+While passing variables by reference allows a function to act directly on your global arrays or vectors without copying them, you cannot use them to abstract code blocks that rely on the following concepts: [](https://www.ibm.com/docs/en/xl-c-and-cpp-aix/13.1.0?topic=calls-pass-by-reference-only)
+
+#### 1\. Control Flow Interruption (`break`, `continue`, `return`)
+
+If a block of code inside a loop contains a `break` or `continue` statement, you cannot simply copy-paste that code into a separate function. A `break` inside a function will not break the loop in the calling context; it will result in a compilation error.
+
+* **The fix required:** You would have to return a status flag (e.g., `bool`) from the function and check it inside the loop, adding overhead and boilerplate.
+
+#### 2\. Local Variable Lifetimes & Declarations
+
+If your code block declares a macro or introduces variables that need to remain available in the scope immediately following the block, encapsulating it in a function isolates that scope.
+
+#### 3\. Macro-Like Inlining and Compiler Optimizations
+
+In CP, performance is strict. Passing highly nested or trivial logic into functions can sometimes block optimization paths if the compiler decides not to inline them. While `inline` or `[[msvc::forceinline]]` / `__attribute__((always_inline))` help, they are hints, not absolute guarantees.
+
+---
+
+### What C++23 _Can_ Do: The Ultimate Abstraction Tools
+
+If your goal is to abstract complex, repetitive logic with minimal boilerplate in CP, C++23 offers significantly better tools than just basic reference functions:
+
+#### 1\. "Deducing `this`" (Explicit Object Parameters)
+
+C++23 introduces **explicit object parameters**. This allows you to write recursive lambdas (highly useful for DFS, tree traversals, or DP on trees) without having to pass the lambda to itself or use `std::function` (which has massive performance overhead). [](https://www.sandordargo.com/blog/2022/02/16/deducing-this-cpp23)
+
+cpp
+
+```
+// C++23 Recursive Lambda for DFS
+auto dfs = [](this auto&& self, int u, int p, const auto& adj) -> void {
+    for (int v : adj[u]) {
+        if (v != p) {
+            self(v, u, adj); // self resolves automatically
+        }
+    }
+};
+dfs(0, -1, adj);
+
+```
+
+
+
+#### 2\. Monadic Operations for `std::optional`
+
+If your CP code abstracts deep conditional checks (like grid boundary lookups), C++23's monadic operations (`.and_then()`, `.transform()`, `.or_else()`) allow you to abstract deeply nested `if-else` blocks into clean pipelines.
+
+---
+
+### Comparison for CP Abstractions
+
+| Abstraction Method                    | Can Handle break/continue? | Performance Overhead | Best Used For                                          |
+| ------------------------------------- | -------------------------- | -------------------- | ------------------------------------------------------ |
+| **Reference Functions**               | ❌ No                       | Low (if inlined)     | Modifying specific global states/vectors               |
+| **C++23 Deducing this**               | ❌ No                       | None                 | Clean, high-performance recursive algorithms (DFS/DP)  |
+| **Pre-processor Macros (#define)**    | Yes                        | None                 | Text substitution, short loops, repetitive boilerplate |
+| **Immediately Invoked Lambdas (Ife)** | ❌ No                       | Low                  | Scope isolation and complex initialization             |
+
+Are you trying to abstract a **specific repetitive pattern** (like a multi-dimensional DP transitions or grid boundaries), or are you trying to build a **reusable template library** for algorithms like Segment Trees? Let me know so I can show you the cleanest C++23 way to do it.
+
+* [](https://medium.com/towardsdev/cpp23-deducing-this-remove-const-ref-overloads-c0736665692b)  
+Medium·Sagar  
+C++23 Explicit Object Parameters: Guide to Deducing this  
+Mar 29, 2026 — C++23 introduced explicit object parameters — commonly known as “deducing this " — letting you write the function once while the c...
+* [](https://www.ibm.com/docs/en/xl-c-and-cpp-aix/13.1.0?topic=calls-pass-by-reference-only)  
+IBM  
+Pass by reference (C++ only) - IBM  
+Pass-by-references is more efficient than pass-by-value, because it does not copy the arguments. The formal parameter is an alias ...
+* [](https://www.sandordargo.com/blog/2022/02/16/deducing-this-cpp23)  
+Sandor Dargo  
+C++23: Deducing this | Sandor Dargo's Blog  
+Feb 15, 2022 — A function with an explicit object parameter cannot be static , virtual and they cannot have cv - or ref -qualifiers.
+
+Show all
+
+# how to polymorph fn params in cpp23 in cp
+
+In **C++23**, the most efficient and standard way to polymorph function parameters in competitive programming (CP) is by using **explicit object parameters**, commonly known as **Deducing `this`** \[1\]. This feature allows you to pass the object instance as an explicit parameter in a member function template, enabling elegant compile-time polymorphism without the overhead of virtual functions.
+
+For runtime polymorphism without dynamic allocation overhead, **`std::move_only_function`** (introduced in C++23) is the preferred alternative to `std::function`.
+
+Here is a breakdown of how to use these features effectively in a CP environment.
+
+---
+
+### 1\. Compile-Time Polymorphism: Deducing `this`
+
+Instead of relying on CRTP (Curiously Recurring Template Pattern) or `virtual` methods, you can use an explicit `this` parameter in a template method. This is highly useful in CP when writing reusable graph algorithms, matrix structures, or tree-flattening utilities where you want to support multiple custom types.
+
+cpp
+
+```
+#include <iostream>
+
+// A generic solver base that can access derived class members via deducing 'this'
+struct SolverBase {
+    template <typename Self>
+    void solve(this Self&& self) {
+        // Automatically resolves to the derived class's print at compile time
+        self.print(); 
+    }
+};
+
+struct GraphProblem : SolverBase {
+    void print() const {
+        std::cout << "Solving a Graph Problem!\n";
+    }
+};
+
+struct MathProblem : SolverBase {
+    void print() const {
+        std::cout << "Solving a Math Problem!\n";
+    }
+};
+
+int main() {
+    GraphProblem p1;
+    MathProblem p2;
+
+    p1.solve(); // Outputs: Solving a Graph Problem!
+    p2.solve(); // Outputs: Solving a Math Problem!
+}
+
+```
+
+
+
+### 2\. Type-Erased Type Polymorphism: `std::move_only_function`
+
+If you need to pass a callable (like a lambda or a custom comparator) as a parameter to a function, C++23 introduces `std::move_only_function`.
+
+**Why use it over `std::function`?**
+
+* **No copy overhead:** It does not require the callable to be copyable, meaning it works perfectly with move-only lambdas (e.g., lambdas capturing `std::unique_ptr` or `std::vector` by move).
+* **Better Performance:** It offers lightweight, type-erased polymorphism with stricter const/noexcept guarantees, avoiding unnecessary heap allocations that `std::function` sometimes incurs.
+
+cpp
+
+```
+#include <iostream>
+#include <functional>
+#include <vector>
+
+// Accepts any callable that takes an int and returns void
+void process_queries(int n, std::move_only_function<void(int)> query_handler) {
+    for (int i = 0; i < n; ++i) {
+        query_handler(i);
+    }
+}
+
+int main() {
+    std::vector<int> weights = {10, 20, 30};
+
+    // Lambda capturing a vector by move (cannot be used with std::function)
+    auto handler = [w = std::move(weights)](int id) {
+        if (id < w.size()) std::cout << "Weight: " << w[id] << "\n";
+    };
+
+    process_queries(3, std::move(handler));
+}
+
+```
+
+
+
+---
+
+### Direct Feature Comparison for CP
+
+| Feature                       | Best Used For                                                 | Overhead                          | CP Practicality                                     |
+| ----------------------------- | ------------------------------------------------------------- | --------------------------------- | --------------------------------------------------- |
+| **Deducing this**             | Reusable templates, policy-based designs                      | **Zero** (Compile-time)           | **High** (Keeps execution fast)                     |
+| **std::move\_only\_function** | Custom query handlers, graph traversals with lambda callbacks | **Minimal** (Type-erasure)        | **High** (Cleaner than raw templates for recursion) |
+| **std::variant & std::visit** | Fixed set of geometric shapes or state-machine nodes          | **Minimal** (Stack-allocated)     | **Medium** (Can be verbose to type)                 |
+| **virtual Functions**         | Traditional OOP polymorphism                                  | **High** (Vtable lookup pointers) | **Low** (Avoid due to TLE risks)                    |
+
+Are you trying to polymorph a specific CP structure, like a **generic graph traversal utility** or **custom segment tree lazy propagators**? Let me know the specific use case, and I can write a tailored template for you.
+
+# how to define fn of optional params default value kwargs rest params in cpp23 in cp
+
+In **Competitive Programming (CP)** using **C++23**, maximizing code speed and minimizing typing are key. While C++ doesn't natively support Python-style keyword arguments (`kwargs`), you can mimic them, use standard default arguments, and leverage **variadic templates** (rest parameters) perfectly for CP templates.
+
+Here is how you implement each of these concepts efficiently for competitive programming.
+
+---
+
+### 1\. Optional Parameters & Default Values
+
+In C++, you create optional parameters by assigning a default value in the function signature from **right to left**. [](https://www.youtube.com/watch?v=M9%5FPMvRvtsU)
+
+cpp
+
+```
+#include <bits/stdc++.Society.h> // CP Standard
+using namespace std;
+
+// 'b' and 'c' are optional parameters
+void solve(int a, int b = 10, string c = "No") {
+    cout << a << " " << b << " " << c << "\n";
+}
+
+int main() {
+    solve(5);             // Output: 5 10 No
+    solve(5, 20);         // Output: 5 20 No
+    solve(5, 20, "Yes");  // Output: 5 20 Yes
+}
+
+```
+
+
+
+---
+
+### 2\. Rest Parameters (Variadic Templates & Fold Expressions)
+
+For CP (like writing custom `debug()` or print functions), use **variadic templates** and **C++17/23 fold expressions** to accept any number of arguments of any type.
+
+cpp
+
+```
+#include <iostream>
+
+// Rest parameters: accepts any number of arguments
+template<typename... Args>
+void print(Args... args) {
+    // Fold expression: prints each argument separated by a space
+    (std::cout << ... << (std::to_string(args) + " ")) << "\n"; 
+}
+
+// C++23 specific multi-type printing (using auto pack parameters)
+void print_cpp23(auto... args) {
+    (std::cout << ... << args) << "\n";
+}
+
+int main() {
+    print_cpp23(1, " text ", 3.14, 'c'); // Output: 1 text 3.14c
+}
+
+```
+
+
+
+---
+
+### 3\. Simulating `kwargs` (Keyword Arguments)
+
+C++ doesn't have native named parameters. However, in C++20/C++23, you can clean up complex function configurations using **Designated Initializers** with a `struct`. This is highly readable and extremely fast for CP.
+
+cpp
+
+```
+#include <iostream>
+
+// Define a struct for your named configuration
+struct GraphConfig {
+    int vertices;
+    int edges = 0;          // Default value
+    bool directed = false;  // Default value
+    int weight_limit = 1e9; // Default value
+};
+
+// Function taking the struct as an argument
+void build_graph(GraphConfig config) {
+    std::cout << "V: " << config.vertices 
+              << ", Directed: " << config.directed << "\n";
+}
+
+int main() {
+    // Simulating kwargs using C++ Designated Initializers
+    build_graph({.vertices = 5, .directed = true}); 
+    build_graph({.vertices = 10}); // Uses defaults for everything else
+}
+
+```
+
+
+
+---
+
+### Comparison Summary for CP
+
+| Feature                        | C++23 Implementation Method                          | CP Overhead                          |
+| ------------------------------ | ---------------------------------------------------- | ------------------------------------ |
+| **Optional Params / Defaults** | Standard trailing parameters (int x = 0)             | **Zero** (Compile-time resolution)   |
+| **Rest Params**                | auto... args template packs with fold expressions    | **Zero** (Inlined by compiler)       |
+| **Kwargs**                     | struct with designated initializers ({.param = val}) | **Zero** (Optimized away completely) |
+
+If you want to optimize your template further, tell me:
+
+* What kind of **debug macro** or **custom I/O function** are you trying to build?
+* Do you need to pass **containers like `std::vector`** into your rest parameters?
+
+I can give you the exact macro block to copy-paste into your CP setup.
+
+* [](https://www.youtube.com/watch?v=M9%5FPMvRvtsU)  
+YouTube·CodeLucky  
+C++ Default Parameters: Simplify Function Calls for Beginners  
+Apr 4, 2025 — default parameters allow you to define default values for function parameters making function calls more flexible. default paramet...  
+6:19
+* [](https://www.w3schools.com/cpp/cpp%5Ffunction%5Fdefault.asp)  
+W3Schools  
+C++ Functions - Default Parameter Value (Optional Parameters)  
+C++ Default Parameters: Functions can use default parameter values assigned with the equals sign (=). Optional Parameters: Paramet...
+
+# can you define a fn that takes auto and returns auto in cpp23 in cp
+
+In **C++20 and C++23**, you can define a function that takes `auto` and returns `auto` by utilizing **Abbreviated Function Templates** and **Return Type Deduction**. Under the hood, this syntax is just syntactic sugar for a standard C++ function template. [](https://www.youtube.com/watch?v=Tnl7FnwJ2Uw&t=979)
+
+Here is how you can write it for Competitive Programming (CP):
+
+cpp
+
+```
+#include <iostream>
+
+// Standard function using abbreviated template syntax
+auto process(auto x) {
+    // The compiler deduces the return type based on this expression
+    return x + x; 
+}
+
+int main() {
+    // Fast I/O for Competitive Programming
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(NULL);
+
+    std::cout << process(5) << "\n";       // Passes int, deduces and returns int (10)
+    std::cout << process(3.5) << "\n";     // Passes double, deduces and returns double (7.0)
+    std::cout << process(std::string("a")) << "\n"; // Passes string, returns string ("aa")
+
+    return 0;
+}
+
+```
+
+
+
+### 💡 Alternative: Generic Lambdas (Very popular in CP)
+
+If you are inside `main()` or want to write quick helper functions that you can pass around easily, you can use a generic lambda:
+
+cpp
+
+```
+auto process = [](auto x) {
+    return x * 2;
+};
+
+```
+
+
+
+### ⚠️ Important Things to Keep in Mind for CP:
+
+1. **Perfect Forwarding (`auto&&`):** If you are passing heavy objects (like a `std::vector` or `std::string`) into your function, using plain `auto` will make a full copy. To avoid Time Limit Exceeded (TLE) issues, pass by universal reference: [](https://www.youtube.com/watch?v=5zVQ50LEnuQ)  
+cpp  
+```  
+auto process(const auto& x) { return x; } // Read-only  
+// OR  
+auto process(auto&& x) { return x; }      // Perfect forwarding  
+```  
+
+2. **Multiple Return Statements:** If your function has more than one `return` statement, they must **all return the exact same type**. If one returns an `int` and another returns a `long long`, the code will throw a compilation error. [](https://www.youtube.com/watch?v=uAmOE32JWZ8)
+3. **Implicit Templating:** Every time you call `process()` with a new type, the compiler generates a separate instance of that function behind the scenes. This keeps your runtime code perfectly optimized and fast! [](https://stackoverflow.com/questions/66910231/c-auto-return-type)
+
+Are you trying to use this syntax to write **generic math functions** (like a custom GCD or power function), or are you trying to pass a **lambda function into an STL algorithm**? I can give you a concrete CP example based on what you are building!
+
+* [](https://www.youtube.com/watch?v=Tnl7FnwJ2Uw&t=979)  
+YouTube·CppCon  
+Embracing Trailing Return Types and \`auto\` Return SAFELY ...  
+Dec 7, 2022 — If there are multiple \`return\` statements, they must all deduce to the exact same type; otherwise, a compilation error occurs.  
+17m
+* [](https://www.youtube.com/watch?v=uAmOE32JWZ8)  
+YouTube·Professor Hank Stalica  
+The auto return type // C++ Functions for Beginners \[Part 15\]  
+Apr 2, 2022 — However, there are restrictions: if a function has multiple return statements, they must all return the same type. Return type ded...  
+6:10
+* [](https://stackoverflow.com/questions/66910231/c-auto-return-type)  
+Stack Overflow  
+C++ auto return type  
+Apr 1, 2021 — It seems that the compile-time generated function looks like template; T fn(T x) { return x; } I can't figure out why. Please expl...
+
+Show all
+
 
