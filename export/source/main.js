@@ -8,6 +8,14 @@ const noises = [
   'Gemini said',
 ]
 
+const threshold = 300
+
+const irrelevant_elements = [
+  'button',
+  'input',
+  'textarea',
+]
+
 function remove_invisible_elements(container) {
   const all_elements = container.querySelectorAll('*')
   all_elements.forEach(function (el) {
@@ -18,6 +26,10 @@ function remove_invisible_elements(container) {
       style.visibility === 'collapse' ||
       style.opacity === '0'
     ) {
+      el.remove()
+    }
+
+    if (irrelevant_elements.includes(el.tagName.toLowerCase())) {
       el.remove()
     }
   })
@@ -68,6 +80,13 @@ function handle_copy_event(event) {
 
   event.stopPropagation()
   event.preventDefault()
+
+  const text = selection.toString()
+
+  if (text.length <= threshold) {
+    navigator.clipboard.writeText(text)
+    return 
+  }
 
   const range = selection.getRangeAt(0)
   const container = document.createElement('div')

@@ -1106,6 +1106,10 @@ code:
 - pl design lexical scoping python scoping
 - py lack of self inc dec
 
+edit:
+
+- market analysis
+
 launch:
 
 - research system alternatives

@@ -1,3 +1,2 @@
-let a = '1231123'
-
-log(a.replaceAll('1', ''))
+log('a' in ['a', 'b', 'c'])
+log(['a', 'b', 'c'].includes('a'))
