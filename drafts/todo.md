@@ -864,3 +864,7 @@ what is "ghostty" about?
 why is it complex, if any.
 
 i would like to (auto) save history and export in md.
+
+---
+
+have use case: what if i continuously monitor codeforces scoreboard rather than some retrospective submission log analysis?
