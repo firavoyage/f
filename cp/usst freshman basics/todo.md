@@ -2,3 +2,11 @@
   - test different python versions
   - test explicit gc
   - test list time complexity (it's weird to take 300ms, i guess i can safely drop the list fn if it only needs to be iterable)
+- n
+  - implement a native log n solution
+  - group array by 2^i elements where i = 0... 
+  - dict 'r, c' = sum of the c th (1 indexed) group of 2^r elements each
+  - query 7 = dict '0, 7' + dict '1, 3' + dict '2, 1'
+    - quotient remainder = divmod 2^(i+1), sum += dict 'i, floordiv(n, 2^i)' if rem != 0, n -= remainder
+  - update 7 = update 7 (7, 8), (5~8), (1~8), (1~16), ...
+    - i, ceil(div(n, 2^i))

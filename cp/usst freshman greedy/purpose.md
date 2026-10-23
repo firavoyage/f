@@ -105,4 +105,14 @@ it's over engineering if it works regardless.
 
 and it wont save you if you go 2^n. really, like if you already exceed 1s by n^2.
 
+---
+
+you could not really assign nullptr to int i guess. esp when raw pointers are discouraged in cp.
+
+but you may use optional and nullopt. 
+
+that being said, still you have to unpack via .value or cmp.
+
+better to use -1.
+
 
