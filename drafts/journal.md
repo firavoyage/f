@@ -55354,6 +55354,10 @@ backend endpoints are irrelevant.
 
 there are optimization. like you can render on web, by pure fn, or diliver sth parsed and fully analyzed.
 
+23
+
+14 40 play vimtutor.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
