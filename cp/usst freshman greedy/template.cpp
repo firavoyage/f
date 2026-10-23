@@ -1,4 +1,6 @@
 #include <bits/stdc++.h>
+#define let auto
+// #define int long long
 
 using namespace std;
 
