@@ -531,6 +531,7 @@ cp: <!-- algorithms -->
 - learning practicing guide resources
 - dsa binary indexed tree
 - cpp setup
+- cpp modern syntax
 
 pm:
 
