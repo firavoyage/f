@@ -532,6 +532,8 @@ cp: <!-- algorithms -->
 - dsa binary indexed tree
 - cpp setup
 - cpp modern syntax
+- cpp stdcpp header precompilation speedup
+- cpp test cases diff
 
 pm:
 
