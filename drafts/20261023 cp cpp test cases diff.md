@@ -492,3 +492,66 @@ diff -w -B --strip-trailing-cr "$problem.out" "$problem.ans"
 
 
 Would you like help integrating these flags directly into your **`check` shell function** so it displays the side-by-side differences cleanly whenever a test fails?
+
+# how to silence it if passed check(){
+
+ problem=$1 
+
+ filename="$problem.cpp" 
+
+ build\_filename="$HOME/.cache/$problem.cpp" 
+
+  
+ compile "$filename" -o "$build\_filename" && "$build\_filename" < "$problem.in" > "$problem.out" 
+
+ diff -w -B --strip-trailing-cr -y "$problem.out" "$problem.ans" 
+
+ } 
+
+######   
+
+To silence the output when the test passes, you can add the **`--suppress-common-lines`** flag to your `diff` command. This tells `diff` in side-by-side mode (`-y`) to only print lines that actually differ, meaning **it will output nothing if the files match perfectly**.
+
+Here is your updated function:
+
+Bash
+
+```
+check(){
+  problem=$1
+  filename="$problem.cpp"
+  build_filename="$HOME/.cache/$problem.cpp"
+
+  compile "$filename" -o "$build_filename" && "$build_filename" < "$problem.in" > "$problem.out"
+  
+  # --suppress-common-lines hides matching lines, resulting in zero output on success
+  diff -w -B --strip-trailing-cr -y --suppress-common-lines "$problem.out" "$problem.ans"
+}
+
+```
+
+### Alternative: With Clean Success/Failure Messages
+
+If you prefer a clear status message instead of raw side-by-side diff text when it fails, you can check `diff`'s exit code explicitly:
+
+Bash
+
+```
+check(){
+  problem=$1
+  filename="$problem.cpp"
+  build_filename="$HOME/.cache/$problem.cpp"
+
+  compile "$filename" -o "$build_filename" && "$build_filename" < "$problem.in" > "$problem.out" || return 1
+
+  # diff exits with 0 if files are identical, 1 if they differ
+  if diff -w -B --strip-trailing-cr -q "$problem.out" "$problem.ans" > /dev/null; then
+    echo "$problem: PASSED"
+  else
+    echo "$problem: FAILED ❌"
+    diff -w -B --strip-trailing-cr -y "$problem.out" "$problem.ans"
+  fi
+}
+
+```
+
