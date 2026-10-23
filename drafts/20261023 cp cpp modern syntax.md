@@ -4121,4 +4121,314 @@ auto safe_closed_range(long long start, long long end, long long step) {
 
 Do you need this closed interval function to handle **negative steps** (iterating backwards from a high number down to a lower inclusive number), or are you only iterating **upwards**?
 
+# python dict in cpp in cp
+
+5:36 AM
+
+### python dict in cpp in cp
+
+In C++ Competitive Programming (CP), the equivalent of a Python `dict` is **`std::unordered_map`** or **`std::map`**. 
+
+Because C++ is statically typed, you must declare the data types for both keys and values at initialization (e.g., `unordered_map<string, int>`). [](https://www.youtube.com/watch?v=ydVzsptnRQg)
+
+#### ⚖️ Quick Choice for CP
+
+* **`std::unordered_map`**: Use this **by default**. It uses a hash table, offering O(1) average time complexity for lookups, insertions, and deletions (matching Python's `dict` speed). [](https://stackoverflow.com/questions/27674009/c-equivalent-of-python-dictionaries)
+* **`std::map`**: Use this only if you need the keys to remain **automatically sorted** or if you need operations like `lower_bound`/`upper_bound`. It uses a Red-Black Tree with  
+𝑂  
+(  
+log  
+𝑛  
+)  
+ operations. [](https://www.geeksforgeeks.org/cpp/how-to-create-a-dictionary-in-cpp/)
+
+---
+
+#### 💻 Syntax Translation Guide
+
+Here is a side-by-side comparison of how common dictionary operations map from Python to C++ (`std::unordered_map`):
+
+| Operation             | Python               | C++ (std::unordered\_map)                                       |
+| --------------------- | -------------------- | --------------------------------------------------------------- |
+| **Initialization**    | d = {}               | unordered\_map<string, int> d;                                  |
+| **Prefilled Literal** | d = {"A": 1, "B": 2} | unordered\_map<string, int> d = {{"A", 1}, {"B", 2}};           |
+| **Insert / Update**   | d\["key"\] = 5       | d\["key"\] = 5;                                                 |
+| **Access Value**      | val = d\["key"\]     | int val = d\["key"\]; _(Creates key with default 0 if missing)_ |
+| **Check Existence**   | if "key" in d:       | if (d.find("key") != d.end())                                   |
+| **Delete Key**        | del d\["key"\]       | d.erase("key");                                                 |
+| **Size / Length**     | len(d)               | d.size();                                                       |
+| **Clear Map**         | d.clear()            | d.clear();                                                      |
+
+---
+
+#### 🚀 Code Template for CP
+
+cpp
+
+```
+#include <iostream>
+#include <unordered_map>
+#include <string>
+
+using namespace std;
+
+int main() {
+    // Fast I/O for Competitive Programming
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    // 1. Declaration & Insertion
+    unordered_map<string, int> dict;
+    dict["apple"] = 3;
+    dict["banana"] = 5;
+
+    // 2. Safe Check & Lookup
+    string target = "apple";
+    if (dict.find(target) != dict.end()) {
+        cout << target << " quantity: " << dict[target] << "\n";
+    }
+
+    // 3. Iterating (Equivalent to Python's .items())
+    // Structured binding (C++17) makes this very clean
+    for (auto const& [key, value] : dict) {
+        cout << key << " -> " << value << "\n";
+    }
+
+    return 0;
+}
+
+```
+
+
+
+---
+
+#### ⚠️ Critical CP Warnings for `std::unordered_map`
+
+1. **The Anti-Hash Test Case (TLE Risk):**  
+In platforms like Codeforces, users can look at your solution and craft hack test cases designed to force collisions in the default hash function (`std::hash`). This causes the average O(1) lookup time to degrade to O(n), causing a **Time Limit Exceeded (TLE)** error.
+  * **Fix:** Use a custom random-seeded hash function, or simply switch to `std::map` if the  
+  𝑂  
+  (  
+  log  
+  𝑛  
+  )  
+   overhead is acceptable within the time limit.
+2. **Auto-Initialization Side Effect:**  
+Just like in Python (`defaultdict`), accessing a non-existent key using the bracket operator `d[missing_key]` will **automatically insert** that key into the map with a default value (`0` for integers). Always use `.find()` or `.count()` if you only want to check for existence without altering the map. [](https://zenn.dev/seoi/books/812201b1edb84b/viewer/9d8f2a)
+
+Are you trying to solve a **specific CP problem** (like finding frequencies or two-sum variations), or do you need help setting up a **custom anti-hack hash function** to prevent TLE?
+
+* [](https://stackoverflow.com/questions/27674009/c-equivalent-of-python-dictionaries)  
+Stack Overflow  
+C++ equivalent of Python dictionaries - Stack Overflow  
+The C++ equivalent to a Python dictionary is primarily \`std::unordered\_map\`, which is a hash table and closely matches the behavio...
+* [](https://www.tutorialspoint.com/article/how-we-can-translate-python-dictionary-into-cplusplus)  
+TutorialsPoint  
+How we can translate Python dictionary into C++? - TutorialsPoint  
+Use std::map for ordered key-value pairs similar to Python dictionaries. For hash. Both provide similar functionality with static ...
+* [](https://zenn.dev/seoi/books/812201b1edb84b/viewer/9d8f2a)  
+Zenn  
+辞書｜第二言語としてのC/C++入門  
+Requires key/value types at initialization. - Unregistered key reference initializes value type (returns 0 for int).
+
+Show all
+
+# how does cpp vector work
+
+A **C++ vector** (`std::vector`) works as a **dynamic array** that resides on the heap and automatically resizes itself when you add or remove elements. Unlike standard arrays, which have a fixed size determined at compile-time, vectors manage their own memory under the hood. [](https://www.w3schools.com/cpp/cpp%5Fvectors.asp)
+
+Here is exactly how a vector works internally, broken down into its core mechanics:
+
+### 1\. The Internal Structure
+
+Internally, a vector is quite simple. It typically tracks three private pointers or values to manage a single, continuous block of memory on the heap: [](https://www.geeksforgeeks.org/cpp/how-does-a-vector-work-in-c/)
+
+* **Pointer to data (`T*`):** A pointer to the first element in the allocated heap memory.
+* **Size:** The number of elements _currently_ stored in the vector (retrieved via `.size()`).
+* **Capacity:** The maximum number of elements the current memory block _can_ hold before needing more space (retrieved via `.capacity()`). [](https://www.reddit.com/r/cpp%5Fquestions/comments/zbe6e8/how%5Fdoes%5Fstdvector%5Fwork%5Funder%5Fthe%5Fhood/)
+
+Because the elements are stored in a **contiguous (side-by-side) memory block**, vectors allow **O(1) constant-time random access**. You can jump to `vec[500]` just as fast as `vec[0]` using a simple pointer offset. [](https://www.geeksforgeeks.org/cpp/vector-in-cpp-stl/)
+
+---
+
+### 2\. The Growth Strategy (How Resizing Works)
+
+When you add an element using `.push_back()`, the vector checks if there is room (`Size < Capacity`). [](https://www.geeksforgeeks.org/cpp/how-does-a-vector-work-in-c/)
+
+1. **If room exists:** The element is placed in the next slot, and `Size` increments by 1\. This is an O(1) operation. [](https://www.geeksforgeeks.org/cpp/how-does-a-vector-work-in-c/)
+2. **If the vector is full (`Size == Capacity`):** It triggers a **Growth Step**:
+  * **Allocation:** The vector requests a brand-new, larger block of memory from the heap.
+  * **The Growth Factor:** To prevent resizing every single time you add an item, it exponentially grows. Most compilers (like GCC and Clang) **double (2x)** the capacity, while MSVC (Visual Studio) multiplies it by **1.5x**.
+  * **Data Transfer:** It copies (or moves, since C++11) the existing elements from the old memory block into the new memory block.
+  * **Deallocation:** It destroys the old memory block.
+  * **Insertion:** The new element is finally inserted into the new space. [](https://www.geeksforgeeks.org/cpp/how-does-a-vector-work-in-c/)
+
+#### Amortized O(1) Complexity
+
+Because the growth is exponential, reallocations become increasingly rare the larger the vector gets. Copying elements takes O(N) time, but because it happens so infrequently, the mathematical average cost of inserting an element at the end is **Amortized O(1)**. [](https://www.geeksforgeeks.org/cpp/how-does-a-vector-work-in-c/)
+
+> ⚠️ **Warning:** When a growth step occurs, the data moves to a completely new address in memory. This means all existing **pointers, references, and iterators** to elements inside that vector are instantly **invalidated**. [](https://www.geeksforgeeks.org/cpp/how-does-a-vector-work-in-c/)
+
+---
+
+### 3\. Element Removal (Lazy Deletion)
+
+When you remove an element using `.pop_back()` or `.clear()`, the vector exhibits **lazy deletion**: [](https://www.geeksforgeeks.org/cpp/how-does-a-vector-work-in-c/)
+
+* The vector calls the destructor for the removed objects and decrements its `Size`.
+* **It does NOT shrink its `Capacity`**. [](https://www.geeksforgeeks.org/cpp/how-does-a-vector-work-in-c/)
+
+The vector holds onto the allocated memory block assuming you might add elements again later, saving the performance cost of a reallocation. If you absolutely need to free up that unused memory, you must explicitly call `.shrink_to_fit()`. [](https://en.cppreference.com/cpp/container/vector)
+
+---
+
+### 4\. Direct Comparison of Vector Operations
+
+| Operation              | Method / Syntax       | Time Complexity    | What Happens Under the Hood                                               |
+| ---------------------- | --------------------- | ------------------ | ------------------------------------------------------------------------- |
+| **Access by Index**    | vec\[i\] or vec.at(i) | **O(1)**           | Calculates index pointer offset. .at() adds safety bounds checking.       |
+| **Insert at End**      | vec.push\_back(val)   | **Amortized O(1)** | Places element in the next slot; triggers reallocation if full.           |
+| **Insert in Middle**   | vec.insert(it, val)   | **O(N)**           | Finds position, shifts all subsequent elements right by one to make room. |
+| **Delete from End**    | vec.pop\_back()       | **O(1)**           | Destroys the last object and decreases Size pointer.                      |
+| **Delete from Middle** | vec.erase(it)         | **O(N)**           | Removes element, shifts all subsequent elements left to close the gap.    |
+
+### Pro-Tip: Optimization with `.reserve()`
+
+If you know in advance that your vector will hold 10,000 elements, you should call `vec.reserve(10000);` before inserting anything. This pre-allocates the capacity all at once, completely eliminating the CPU overhead of multiple growth cycles and reallocations. [](https://stackoverflow.com/questions/3167272/how-does-c-stdvector-work)
+
+Would you like to see a **code example** demonstrating how `size()` vs `capacity()` changes during insertions, or would you prefer a breakdown of **how `std::vector<bool>` is specialized differently**?
+
+* [](https://stackoverflow.com/questions/3167272/how-does-c-stdvector-work)  
+Stack Overflow  
+How does c++ std::vector work? - Stack Overflow  
+template class vector { T \*storage; unsigned int length, cap; void resizeStorage() { int \*copy = new T\[cap\]; for (unsigned int i =
+* [](https://www.reddit.com/r/cpp%5Fquestions/comments/zbe6e8/how%5Fdoes%5Fstdvector%5Fwork%5Funder%5Fthe%5Fhood/)  
+Reddit·r/cpp\_questions  
+How does std::vector work under the hood? - Reddit  
+Data is a pointer to the dynamically allocated buffer of the vector. The elements of this buffer are not necessarily initialized. ...
+* [](https://www.geeksforgeeks.org/cpp/how-does-a-vector-work-in-c/)  
+GeeksforGeeks  
+How Does a Vector Internally Works in C++? - GeeksforGeeks  
+Apr 14, 2026 — Even after deletion, capacity does not reduce automatically because vector keeps the allocated memory for future use. allocates a ...
+
+Show all
+
+# can you abstract anything in cpp23 in cp if you use fn w reference params
+
+**Yes, you can absolutely pass abstract classes by reference** in functions for competitive programming (CP) using **C++23**. In fact, passing by reference (or pointer) is the _only_ way to pass an abstract class to a function, because abstract classes cannot be instantiated by value. [](https://stackoverflow.com/questions/20434948/pass-abstract-parameter-to-method-why-not)
+
+However, in competitive programming, traditional object-oriented runtime abstraction (using `virtual` functions and inheritance) is rarely used because it introduces performance overhead (vtable lookups) and requires writing verbose boilerplate code. Instead, C++23 introduces modern features like **"Deducing `this`"** and advanced **compile-time concepts**, which allow you to abstract your code efficiently without sacrificing execution speed. [](https://www.youtube.com/watch?v=bo4VzJb61uI&t=38)
+
+---
+
+### 1\. Modern C++23 Abstraction: "Deducing `this`"
+
+C++23 introduces **explicit object parameters** (commonly called "deducing `this`"). It allows you to pass the current object instance into a member function as an explicit reference parameter. [](https://www.youtube.com/watch?v=bo4VzJb61uI&t=38)
+
+In CP, this completely eliminates the need to duplicate code for `const` and non-`const` versions of complex data structures (like Segment Trees, Fenwick Trees, or Graphs). [](https://www.youtube.com/watch?v=bo4VzJb61uI&t=38)
+
+cpp
+
+```
+#include <iostream>
+#include <vector>
+#include <utility>
+
+struct SegTree {
+    std::vector<int> tree;
+
+    // C++23 Deducing this: 'Self' automatically deduces 
+    // whether the instance is const or non-const, ref or rvalue ref.
+    template <typename Self>
+    auto&& operator[](this Self&& self, int idx) {
+        // Concrete implementation logic abstracted into one function
+        return std::forward<Self>(self).tree[idx];
+    }
+};
+
+```
+
+
+
+### 2\. Traditional Runtime Abstraction (Inheritance)
+
+If you do use runtime polymorphism in CP (e.g., creating an abstract base `Graph` class with concrete `AdjacencyList` and `AdjacencyMatrix` implementations), you **must use references** (`&`) or pointers (`*`). [](https://stackoverflow.com/questions/20434948/pass-abstract-parameter-to-method-why-not)
+
+cpp
+
+```
+#include <iostream>
+
+// Abstract Base Class
+struct Solver {
+    virtual void solve() = 0; // Pure virtual function
+    virtual ~Solver() = default;
+};
+
+struct ProblemA : public Solver {
+    void solve() override {
+        std::cout << "Solving Problem A\n";
+    }
+};
+
+// You MUST pass by reference here to avoid object slicing and compilation errors
+void run_solver(Solver& s) {
+    s.solve(); 
+}
+
+int main() {
+    ProblemA p;
+    run_solver(p); // Works perfectly
+}
+
+```
+
+
+
+### 3\. Compile-Time Abstraction with C++20/23 Concepts
+
+Instead of abstract classes, the standard way to abstract behavior in modern CP is via **Concepts** (introduced in C++20 and refined in C++23). This provides zero-overhead abstraction. You define an interface requirements template, and pass your objects by universal reference (`auto&&`).
+
+cpp
+
+```
+#include <concepts>
+#include <iostream>
+
+// Abstract requirement defined at compile-time
+template<typename T>
+concept Monoid = requires(T a, T b) {
+    { T::identity() } -> std::same_as<T>;
+    { a + b } -> std::same_as<T>; // Associative operation
+};
+
+// Abstract function utilizing the concept
+void compute(Monoid auto&& element) {
+    auto id = element.identity();
+    std::cout << "Abstract computation completed.\n";
+}
+
+```
+
+
+
+### Summary for Competitive Programming
+
+* **Runtime Abstraction:** Always pass abstract types via `Abstract&` (reference) to avoid compilation failures.
+* **C++23 Optimization:** Use `this auto&& self` to abstract away `const` vs non-`const` code duplication in your custom CP templates.
+* **Performance Rule:** Prefer C++20/23 **Concepts** over abstract classes for CP, as concepts are evaluated at compile-time and incur exactly zero runtime overhead. [](https://stackoverflow.com/questions/20434948/pass-abstract-parameter-to-method-why-not)
+
+Are you trying to abstract a specific **data structure** template (like a Graph, Matrix, or Segment Tree), or are you trying to implement a generic **driver/solver framework** for multi-testcase problems? Let me know so I can give you a tailored C++23 template!
+
+* [](https://www.youtube.com/watch?v=bo4VzJb61uI&t=38)  
+YouTube·Andreas Fertig  
+C++23 Game Changer: Behind the curtains of deducing this  
+May 21, 2025 — By using the explicit object parameter in C++23, developers can significantly reduce code duplication for member functions that di...  
+5m
+* [](https://stackoverflow.com/questions/20434948/pass-abstract-parameter-to-method-why-not)  
+Stack Overflow  
+Pass abstract parameter to method, why not? - Stack Overflow  
+If you try to have your function take an Abstract by value, it will create a copy of the object passed in. You can't create a copy...
+
 
