@@ -64,6 +64,18 @@ function remove_base64_images(container) {
   })
 }
 
+function make_markdown_h1(input_str) {
+    const trimmed = input_str.trim();
+    
+    // If it already starts with one or more hash symbols, replace them with a single '# '
+    if (/^#+/.test(trimmed)) {
+        return trimmed.replace(/^#+\s*/, '# ');
+    }
+    
+    // Otherwise, treat it as plain text and add '# ' to the beginning
+    return `# ${trimmed}`;
+}
+
 function handle_copy_event(event) {
   if (event.key !== 'c' && event.key !== 'C') {
     return
@@ -112,7 +124,8 @@ function handle_copy_event(event) {
     }
     if (first_line_index < lines.length) {
       if (!lines[first_line_index].startsWith('# ')) {
-        lines[first_line_index] = '# ' + lines[first_line_index]
+        lines[first_line_index] = make_markdown_h1(lines[first_line_index])
+        // lines[first_line_index] = '# ' + lines[first_line_index]
       }
     }
   }
