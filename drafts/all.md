@@ -529,11 +529,12 @@ cp: <!-- algorithms -->
 - shell fn clean strip hints remove py type sig
 - py re causes
 - learning practicing guide resources
-- dsa binary indexed tree
+- dsa binary indexed tree fenwick tree
 - cpp setup
 - cpp modern syntax
 - cpp stdcpp header precompilation speedup
 - cpp test cases diff
+- dsa segtree segment tree
 
 pm:
 
