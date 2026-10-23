@@ -2,6 +2,7 @@
 
 // typedef auto let;
 typedef long long let;
+typedef double decimal;
 // typedef auto let
 
 auto nil = std::nullopt;
@@ -15,6 +16,9 @@ std::optional<std::string> get_user_nickname(int user_id) {
 }
 
 int main() {
+  double a = 1;
+  decimal b = 2;
+
   auto result = get_user_nickname(42);
 
   if (result == nil) {

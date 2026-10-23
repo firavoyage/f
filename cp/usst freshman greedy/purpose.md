@@ -115,4 +115,19 @@ that being said, still you have to unpack via .value or cmp.
 
 better to use -1.
 
+---
+
+quite weird on syntax highlighting, lsp perhaps.
+
+(also, the order is inconsistent of typedef and define)
+
+```
+# typedef auto let # you cant do that
+#define let auto
+typedef decimal double;
+
+int a = 1 # int is pink
+decimal b = 2 # lightblue
+let ... # let becomes green
+```
 
