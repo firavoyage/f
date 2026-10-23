@@ -1,5 +1,9 @@
 #include <bits/stdc++.h>
 
+// typedef auto let;
+typedef long long let;
+// typedef auto let
+
 auto nil = std::nullopt;
 
 // A function that might return a string, or might return "None"

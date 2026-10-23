@@ -99,4 +99,10 @@ string s = read line
 let a = read ints
 ```
 
+---
+
+it's over engineering if it works regardless.
+
+and it wont save you if you go 2^n. really, like if you already exceed 1s by n^2.
+
 
