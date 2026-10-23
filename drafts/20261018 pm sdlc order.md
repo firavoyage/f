@@ -284,5 +284,3 @@ Think of your development sequence like building a house. You cannot change the 
 ```
 
 Does your app rely heavily on **third-party APIs** (like OpenAI, Google Maps, or Plaid)? If you let me know what **external systems** you need to plug into, I can tell you exactly where they should sit in your development order.
-
-# 
