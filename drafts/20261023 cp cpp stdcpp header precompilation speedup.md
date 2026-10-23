@@ -2338,4 +2338,343 @@ If you never use `-O2` locally, **you can still do competitive programming perfe
 
 Are you currently running into a specific problem where your code is running slow locally, or are you just trying to optimize your template? Let me know if you want to look at a **benchmark test** for a specific data structure.
 
+# how to speedup g++ on stdc++.h on ubuntu in cp
 
+1:36 AM
+
+### how to speedup g++ on stdc++.h on ubuntu in cp
+
+To drastically speed up `g++` compilation times when using `<bits/stdc++.h>` on Ubuntu for competitive programming, you should **precompile the header file**. [](https://medium.com/@shreyassn/how-to-speed-up-c-bits-stdc-h-compilation-for-cp-3d3999203630)
+
+Because `<bits/stdc++.h>` includes the entire standard library, `g++` wastes roughly 1 to 3 seconds parsing it on _every single compile_. Precompiling converts this massive header into a binary `.gch` file, dropping your compile times down to a fraction of a second. [](https://www.youtube.com/watch?v=Nii369Awoz8&t=12)
+
+Here is the cleanest way to set it up locally so that your code remains fully compatible with online judges (like Codeforces or CodeChef) without any modifications.
+
+#### Step 1: Create a local `bits` folder
+
+Open your terminal in your main competitive programming workspace directory and create a directory structure mimicking the standard library: [](https://codeforces.com/blog/entry/53909)
+
+bash
+
+```
+mkdir -p bits
+
+```
+
+
+
+#### Step 2: Find and copy the standard `stdc++.h`
+
+Locate where the standard library headers are stored on your Ubuntu machine and copy `stdc++.h` into your new folder. [](https://codeforces.com/blog/entry/53909)
+
+You can find the location automatically and copy it with this command:
+
+bash
+
+```
+cp $(g++ -H -E -x c++ - <<< '#include <bits/stdc++.h>' 2>&1 | grep -m1 'stdc++.h' | awk '{print $2}') bits/
+
+```
+
+
+
+_(Alternatively, you can manually look in `/usr/include/c++/` if you prefer.)_ [](https://codeforces.com/blog/entry/53909)
+
+#### Step 3: Precompile the header
+
+This is the most critical step. You must compile the header using **the exact same flags** (like the C++ version and optimization levels) that you use to compile your daily problem solutions. [](https://codeforces.com/blog/entry/53909)
+
+Run the following command (adjust `-std=c++20` or `-O2` to match your personal compile script): [](https://stackoverflow.com/questions/71401614/how-to-precompile-bits-stdc-h-header-file-in-ubuntu-20-04-22-04)
+
+bash
+
+```
+g++ -std=c++20 -O2 -x c++-header bits/stdc++.h -o bits/stdc++.h.gch
+
+```
+
+
+
+This generates a `stdc++.h.gch` file inside your local `bits/` directory. [](https://stackoverflow.com/questions/71401614/how-to-precompile-bits-stdc-h-header-file-in-ubuntu-20-04-22-04)
+
+#### Step 4: Compile your code
+
+When compiling your solution files (e.g., `sol.cpp`), tell `g++` to look into your current directory first by adding the `-I.` flag: [](https://stackoverflow.com/questions/71401614/how-to-precompile-bits-stdc-h-header-file-in-ubuntu-20-04-22-04)
+
+bash
+
+```
+g++ -std=c++20 -O2 -I. sol.cpp -o sol
+
+```
+
+
+
+`g++` will see `#include <bits/stdc++.h>` in your code, look into `./bits/`, spot the precompiled `stdc++.h.gch` file, and instantly load it. Your compile times will drop to roughly **0.1 - 0.3 seconds**. [](https://stackoverflow.com/questions/71401614/how-to-precompile-bits-stdc-h-header-file-in-ubuntu-20-04-22-04)
+
+---
+
+#### Important Maintenance Tips 💡
+
+* **Flag Matching:** If you change your compilation flags later (e.g., swapping from `-std=c++20` to `-std=c++23` or adding `-Wall`), the compiler will quietly ignore the `.gch` file and go back to being slow. You must re-run **Step 3** any time you change your default flags. [](https://medium.com/@shreyassn/how-to-speed-up-c-bits-stdc-h-compilation-for-cp-3d3999203630)
+* **Global alternative:** If you don't want a `bits` folder in every workspace, you can perform Step 3 directly inside your system's root folder using `sudo`, though doing it locally inside your workspace is generally safer and keeps system updates from overwriting your hard work.
+
+Would you like help setting up a **terminal alias** or a **Makefile** so you don't have to type the `-I.` flag every time you compile? Let me know what text editor or IDE (like VS Code) you are using! [](https://codeforces.com/blog/entry/53909)
+
+* [](https://codeforces.com/blog/entry/53909)  
+Codeforces  
+Speed up GCC Compile time - Codeforces  
+It is possible to do so by compiling a program which includes the library with the -H flag. To be able to do so, create a bits dir...
+* [](https://stackoverflow.com/questions/71401614/how-to-precompile-bits-stdc-h-header-file-in-ubuntu-20-04-22-04)  
+Stack Overflow  
+How to Precompile header file in ubuntu 20.04 / 22.04?  
+An example creating a precompiled header: \* mkdir -p pch/bits && g++ -O3 … pch/bits/stdc++.h.gch. GCC precompiled header (version ...
+* [](https://medium.com/@shreyassn/how-to-speed-up-c-bits-stdc-h-compilation-for-cp-3d3999203630)  
+Medium  
+How To Speed Up C++ Compilation For  
+Open the terminal in your main -std=c++23\. Make sure to use the correct C++ version—if you change the version, you will need to re...
+
+Show all
+
+## alias compile='g++ -std=c++23 -O2'
+
+alias compile='g++ -std=c++23 -O2'
+
+1:38 AM
+
+### alias compile='g++ -std=c++23 -O2'
+
+To use your custom `compile` alias with the precompiled header, you just need to add the `-I.` flag directly into it and **recompile your header file using the `c++23` flag**.
+
+Here is how to set it up perfectly:
+
+#### 1\. Update your Precompiled Header for C++23
+
+Because you are using `-std=c++23` in your alias, you must re-run the precompilation step with that exact flag. If you don't, `g++` will ignore the speedup file.
+
+Run this in your workspace terminal:
+
+bash
+
+```
+g++ -std=c++23 -O2 -x c++-header bits/stdc++.h -o bits/stdc++.h.gch
+
+```
+
+
+
+#### 2\. Update your `.bashrc` or `.zshrc` Alias
+
+Add the `-I.` flag to your alias so `g++` always checks your local directory for the speedup file.
+
+Open your shell configuration file (usually `~/.bashrc` on Ubuntu):
+
+bash
+
+```
+nano ~/.bashrc
+
+```
+
+
+
+Scroll to the bottom and add or update your alias line to look like this:
+
+bash
+
+```
+alias compile='g++ -std=c++23 -O2 -I.'
+
+```
+
+
+
+Save and exit (`Ctrl+O`, `Enter`, then `Ctrl+X`), then reload your terminal configuration:
+
+bash
+
+```
+source ~/.bashrc
+
+```
+
+
+
+#### How to use it now
+
+Now you can instantly compile any solution using your short alias, and it will automatically leverage the sub-second compile speed:
+
+bash
+
+```
+compile sol.cpp -o sol
+
+```
+
+
+
+Would you also like to append a quick **execution command** to that alias (e.g., making it automatically run `./sol` with an input file if the compilation succeeds)? Let me know how your competitive programming input/output workflow is usually set up!
+
+## how to revert all these actions
+
+how to revert all these actions
+
+1:41 AM
+
+### how to revert all these actions
+
+To completely revert everything and return your system to its original state, follow these quick steps.
+
+#### Step 1: Remove the Local `bits` Folder
+
+Delete the folder structure and the precompiled binary files you created in your workspace:
+
+bash
+
+```
+rm -rf bits
+
+```
+
+
+
+#### Step 2: Remove or Edit the Alias
+
+Open your shell configuration file again:
+
+bash
+
+```
+nano ~/.bashrc
+
+```
+
+
+
+1. Scroll down to the bottom.
+2. Delete the line: `alias compile='g++ -std=c++23 -O2 -I.'` (or change it back to your preferred version).
+3. Save and exit (`Ctrl+O`, `Enter`, then `Ctrl+X`).
+
+#### Step 3: Apply the Changes
+
+To make your terminal forget the alias instantly without closing the window, reset the alias in your current session and reload your configuration:
+
+bash
+
+```
+unalias compile 2>/dev/null
+source ~/.bashrc
+
+```
+
+
+
+Your `g++` compilation environment is now completely back to normal.
+
+Are you running into an **error** or did the **compilation speed** not improve as expected? Let me know what went wrong, and I can help you debug it!
+
+## how to verify whether ...c++/13/bits % cd /usr/include/x86\_64-linux-gnu/c++/13/bitssudo g++ -std=c++23 stdc++.h speeds up
+
+how to verify whether ...c++/13/bits % cd /usr/include/x86\_64-linux-gnu/c++/13/bitssudo g++ -std=c++23 stdc++.h speeds up
+
+1:42 AM
+
+### how to verify whether ...c++/13/bits % cd /usr/include/x86\_64-linux-gnu/c++/13/bits sudo g++ -std=c++23 stdc++.h speeds up
+
+To accurately verify whether precompiling `stdc++.h` inside your system's global directory (`/usr/include/x86_64-linux-gnu/c++/13/bits`) speeds up your competitive programming workflow, you need to test two things: **whether the compiler is actually using the speedup binary** and **the exact time difference**. [](https://stackoverflow.com/questions/77838811/how-do-i-check-if-precompiled-headers-are-really-used)
+
+---
+
+#### Step 1: Verify `g++` is actually reading the `.gch` file
+
+Users on [Stack Overflow](https://stackoverflow.com/questions/77838811/how-do-i-check-if-precompiled-headers-are-really-used) agree that the absolute best way to check if a precompiled header is successfully being consumed by `g++` is by passing the **`-H` (show headers)** flag during compilation. [](https://stackoverflow.com/questions/77838811/how-do-i-check-if-precompiled-headers-are-really-used)
+
+Create a tiny test C++ file (e.g., `test.cpp` containing just `#include <bits/stdc++.h>`) and run:
+
+bash
+
+```
+g++ -std=c++23 -O2 -H test.cpp -c
+
+```
+
+
+
+* **If successful (Speedup Active):** You will see an **`!`** symbol right next to the `.gch` file path in the terminal output. It will look like this:  
+text  
+```  
+! /usr/include/x86_64-linux-gnu/c++/13/bits/stdc++.h.gch  
+```  
+
+* **If it failed (Slow Mode):** You will see an **`x`** next to the path, meaning the compiler rejected your precompiled header and fell back to parsing the massive raw file. It will look like this: [](https://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html)  
+text  
+```  
+x /usr/include/x86_64-linux-gnu/c++/13/bits/stdc++.h.gch  
+```  
+
+
+---
+
+#### Step 2: Measure the speedup duration
+
+You can benchmark the actual compilation time down to the millisecond using the Linux `time` command. [](https://stackoverflow.com/questions/28353585/how-can-i-check-the-time-of-compiling)
+
+1. **Test the speed _with_ your optimization:**  
+bash  
+```  
+time g++ -std=c++23 -O2 test.cpp -o test  
+```  
+  
+_Look at the `real` time output. It should comfortably be around **0.1s to 0.3s**._
+2. **Test the speed _without_ it (to compare):**  
+Temporarily rename or bypass the precompiled file by intentionally changing a flag (like removing `-O2`), forcing `g++` to re-parse the raw header:  
+bash  
+```  
+time g++ -std=c++23 test.cpp -o test  
+```  
+  
+_The `real` time here will likely jump up to **1.5s to 3.0s**._ [](https://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html)
+
+---
+
+#### ⚠️ Critical Warning for your Specific Directory
+
+Because you compiled it inside `/usr/include/x86_64-linux-gnu/c++/13/bits/` using `sudo`, `g++` will strictly search that folder _only_ when your code resolves an exact match structure. [](https://codeforces.com/blog/entry/97704)
+
+If your code uses `#include <bits/stdc++.h>` (with angle brackets), the global precompiled header will kick in seamlessly. If it fails the test in Step 1, make sure your solution doesn't have a typo or any macro definitions/tokens placed **before** the `#include <bits/stdc++.h>` line, as `g++` requires the precompiled header to be the absolute first piece of code it sees. [](https://gcc.gnu.org/onlinedocs/gcc-3.4.4/gcc/Precompiled-Headers.html)
+
+Did the **`-H` test** output an **`!`** or an **`x`** for your setup? If it showed an `x`, tell me what other flags or includes you have in your `.cpp` file so we can fix the mismatch!
+
+* [](https://stackoverflow.com/questions/77838811/how-do-i-check-if-precompiled-headers-are-really-used)  
+Stack Overflow  
+How do I check if precompiled headers are really used?  
+To verify if precompiled headers are being used by GCC, the \`-H\` option can be utilized, which prints the names of header files. d...
+* [](https://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html)  
+GCC, the GNU Compiler Collection  
+Precompiled Headers (Using the GNU Compiler Collection (GCC))  
+Compile header files using \`-x\`. Only one precompiled header is allowed per compilation; it must precede the first C token
+* [](https://gcc.gnu.org/onlinedocs/gcc-3.4.4/gcc/Precompiled-Headers.html)  
+GCC, the GNU Compiler Collection  
+Precompiled Headers  
+A precompiled header file can be used only when these conditions apply: \* Only one precompiled header can be used in a particular ...
+
+Show all
+
+## can it take 3s in slow mode but still 0.6s in fast mode
+
+can it take 3s in slow mode but still 0.6s in fast mode
+
+1:43 AM
+
+### can it take 3s in slow mode but still 0.6s in fast mode
+
+Yes, absolutely. A drop from **3.0 seconds down to 0.6 seconds** is an excellent and completely expected result for `g++` when precompiling `<bits/stdc++.h>`.
+
+While simple programs can sometimes compile in 0.1 to 0.3 seconds, a **0.6-second** fast mode time is very common and usually depends on two factors:
+
+1. **Your CPU Performance:** On older processors, budget laptops, or inside a virtual machine / WSL (Windows Subsystem for Linux), `g++` naturally takes a bit longer to run its basic optimization passes.
+2. **The Size of Your Solution:** The precompiled header only skips the _parsing_ of the standard library. Your computer still has to parse your actual code, run the heavy `-O2` optimizations on your logic, and write the final binary executable to your disk.
+
+A 0.6-second compile time means you are saving roughly **2.4 seconds on every single compile**, which adds up to a massive amount of saved time during a timed coding contest.
+
+Are you seeing **0.6 seconds** on your machine right now? If you want to try pushing it even closer to 0.1 seconds, let me know if you are running this inside **WSL/Docker** or native **Ubuntu**!
