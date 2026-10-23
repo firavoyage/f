@@ -1,37 +1,25 @@
-#include <iostream>
-#include <print>
-#include <sstream>
-#include <string>
-#include <variant>
+#include <bits/stdc++.h>
 
-// 1. A smart wrapper around our dynamic data
-struct DynamicBox {
-  std::variant<int, double, std::string> data;
+auto nil = std::nullopt;
 
-  // Implicitly convert to any type T when assigned!
-  template <typename T>
-  operator T() const {
-    // std::get forces the assertion. It extracts T or crashes immediately.
-    return std::get<T>(data);
+// A function that might return a string, or might return "None"
+std::optional<std::string> get_user_nickname(int user_id) {
+  if (user_id == 42) {
+    return "The Answer";  // Returns a value
   }
-};
-
-// 2. The read function now returns our smart box
-DynamicBox read() {
-  std::string input;
-  std::getline(std::cin, input);
-
-  std::stringstream ss(input);
-  int int_val;
-  if (ss >> int_val && ss.eof()) return DynamicBox{int_val};
-  return DynamicBox{input};
+  return nil;  // Returns the equivalent of Python's None
 }
 
 int main() {
-  std::print("Enter an integer: ");
+  auto result = get_user_nickname(42);
 
-  // 🔥 SYNTAX COPIED: Looks completely dynamic, but fully asserts at runtime!
-  int var = read();
+  if (result == nil) {
+    std::cout << "User has no nickname (Python: None)" << std::endl;
+  } else {
+    std::cout << "Nickname: " << result.value() << std::endl;
+  }
 
-  std::print("Variable locked in as int: {}\n", var);
+  // Fallback default value (similar to Python's: result or "Guest")
+  std::string name = result.value_or("Guest");
+  return 0;
 }
