@@ -85,29 +85,6 @@ inline auto print(auto&&... items) {
   return prn(items...);
 }
 
-// fix
-
-const bool single_task = true;
-
-const int nil = -1;
-
-void solve();
-
-signed main() {
-  ios_base::sync_with_stdio(false);
-  cin.tie(nullptr);
-
-  int t = 1;
-
-  if (!single_task) {
-    cin >> t;
-  }
-  repeat(t) {
-    solve();
-  }
-  return 0;
-}
-
 // fp
 
 template <typename T, typename Func>
@@ -273,6 +250,31 @@ auto permutations(int n, int r) {
   return result;
 }
 
+auto min_ = [](auto a, auto b) { return a < b ? a : b; };
+
+// entry
+
+const int nil = -1;
+
+void solve();
+
+const bool single_task = true;
+
+signed main() {
+  ios_base::sync_with_stdio(false);
+  cin.tie(nullptr);
+
+  int t = 1;
+
+  if (!single_task) {
+    cin >> t;
+  }
+  repeat(t) {
+    solve();
+  }
+  return 0;
+}
+
 // solution
 
 /*
@@ -282,5 +284,26 @@ auto permutations(int n, int r) {
 */
 
 void solve() {
-  
+  int n, k;
+  read(n, k);
+
+  vector<int> a(k + 5);
+
+  int base = (k + 1) * k / 2;
+  int maximum = ceil(truediv(n, base));
+
+  each(i, 1, k) {
+    a[i] = maximum;
+  }
+
+  int rem = maximum * k - n;
+
+  rev_each(i, k, 1) {
+    int deduction = min_(floor(truediv(rem, k)), maximum);
+
+    a[i] -= deduction;
+    rem -= k * deduction;
+  }
+
+  prn_vec(a, 1, n);
 }
