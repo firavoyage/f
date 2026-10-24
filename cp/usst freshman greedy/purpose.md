@@ -146,4 +146,29 @@ force rename preview anyway, though i always accept default of what's in scope
 
 use ctrl h instead. force it. fuck it.
 
+---
+
+```cpp
+#define repeat(n) for (int i = 0; i < n; i += 1)
+// closed interval
+#define each(i, a, b) for (int i = a; i <= b; i += 1)
+#define reveach(i, a, b) for (int i = a; i >= b; i -= 1)
+// #define each_end(i, n) for (int i = 0; i < n; i += 1)
+// #define each_start_end(i, a, b) for (int i = a; i < b; i += 1)
+// // closed interval
+// #define closed(i, a, b) for (int i = a; i <= b; i += 1)
+// #define rev(i, a, b) for (int i = a; i >= b; i -= 1)
+// #define each(...) macro(__VA_ARGS__, each_start_end, each_end)(__VA_ARGS__)
+```
+
+rarely do you want to iter [1, n-1]
+
+if you wanna loop through 0 to n-1... it's likely some 0 indexed ds.
+
+rather for element : vec directly, or for int i; element: vec.
+
+sometimes you wanna make it 1 indexed.
+
+then you would each 1, n anyway.
+
 

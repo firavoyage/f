@@ -7,12 +7,10 @@
 #define append push_back
 // #define push push_back
 
-#define each_end(i, n) for (int i = 0; i < n; i += 1)
-#define each_start_end(i, a, b) for (int i = a; i < b; i += 1)
+#define repeat(n) for (int i = 0; i < n; i += 1)
 // closed interval
-#define closed(i, a, b) for (int i = a; i <= b; i += 1)
-#define rev(i, a, b) for (int i = a; i >= b; i -= 1)
-#define each(...) macro(__VA_ARGS__, each_start_end, each_end)(__VA_ARGS__)
+#define each(i, a, b) for (int i = a; i <= b; i += 1)
+#define reveach(i, a, b) for (int i = a; i >= b; i -= 1)
 
 #define int long long
 
@@ -95,10 +93,10 @@ signed main() {
 */
 
 void solve() {
-  // int n;
-  // read(n);
+  int n;
+  read(n);
 
-  // vector<int> a(n);
+  vector<int> a(n + 5);
   // read(a);
 
   // prn(a);
@@ -106,12 +104,4 @@ void solve() {
   // prn("The final array is:", a);
 
   // prn(n, n + 1, n + 2);
-
-  string s;
-
-  read(s);
-  prn(s);
-
-  readline(s);
-  prn(s);
 }
