@@ -171,4 +171,46 @@ sometimes you wanna make it 1 indexed.
 
 then you would each 1, n anyway.
 
+---
+
+```cpp
+void __print(auto&& scalar) {
+  write(scalar, ' ');
+}
+
+template <typename T>
+void __print(vector<T>& elements) {
+  for (auto& element : elements) {
+    write(element, ' ');
+  }
+}
+```
+
+really i should not polymorph this way.
+
+too often i declare like
+
+```cpp
+  int n;
+  read(n);
+
+  vector<int> a(n + 5);
+  each(i, 1, n) {
+    read(a[i]);
+  }
+  // read(a);
+
+  prn(a);
+```
+
+and the more advanced you get into the more often you will have to manipulate index manually, rather than taking them as general iterables.
+
+and you could not just blindly print it.
+
+```
+2
+1 2 
+0 1 2 0 0 0 0 
+```
+
 

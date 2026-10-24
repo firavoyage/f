@@ -39,13 +39,12 @@ void write(auto&&... args) {
 void __print(auto&& scalar) {
   write(scalar, ' ');
 }
-
-template <typename T>
-void __print(vector<T>& elements) {
-  for (auto& element : elements) {
-    write(element, ' ');
-  }
-}
+// template <typename T>
+// void __print(vector<T>& elements) {
+//   for (auto& element : elements) {
+//     write(element, ' ');
+//   }
+// }
 
 void pr(auto&&... args) {
   (__print(args), ...);
@@ -97,11 +96,14 @@ void solve() {
   read(n);
 
   vector<int> a(n + 5);
-  // read(a);
+  each(i, 1, n) {
+    read(a[i]);
+  }
 
-  // prn(a);
+  each(i, 1, n) {
+    pr(a[i]);
+  }
+  prn();
 
-  // prn("The final array is:", a);
-
-  // prn(n, n + 1, n + 2);
+  prn(n, n + 1, n + 2);
 }
