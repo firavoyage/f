@@ -252,7 +252,7 @@ auto permutations(int n, int r) {
 
 // entry
 
-const bool single_task = true;
+const bool is_single_task = true;
 
 const int nil = -1;
 
@@ -264,7 +264,7 @@ signed main() {
 
   int t = 1;
 
-  if (!single_task) {
+  if (!is_single_task) {
     cin >> t;
   }
   repeat(t) {
@@ -281,4 +281,6 @@ signed main() {
 
 */
 
-void solve() {}
+void solve() {
+  
+}

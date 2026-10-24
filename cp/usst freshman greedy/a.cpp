@@ -258,7 +258,7 @@ const int nil = -1;
 
 void solve();
 
-const bool single_task = true;
+const bool is_single_task = true;
 
 signed main() {
   ios_base::sync_with_stdio(false);
@@ -266,7 +266,7 @@ signed main() {
 
   int t = 1;
 
-  if (!single_task) {
+  if (!is_single_task) {
     cin >> t;
   }
   repeat(t) {
@@ -278,6 +278,26 @@ signed main() {
 // solution
 
 /*
+
+    // rem -= k * deduction;
+
+so interesting, it runs for secs on some test cases (maybe web sync issue)
+
+and... it takes to test case 9 to make it fail.
+
+---
+
+well... i guess it would take a min to finish them all...
+
+test case 21 (?!) now.
+
+or maybe it's in parallel w other submissions, idk.
+
+41 (?!)
+
+does it have to go that crazy...
+
+hack data?!
 
 
 
@@ -299,18 +319,22 @@ void solve() {
   int current = maximum * base;
   int rem = current - n;
 
-  prn(n, k, base, maximum, current, rem);
+  // prn(n, k, base, maximum, current, rem);
 
   rev_each(i, k, 1) {
-    prn("deduct", i, rem);
-
     if (rem <= 0) {
       break;
     }
     int deduction = min_(floor(truediv(rem, i)), maximum);
 
     a[i] -= deduction;
-    rem -= k * deduction;
+
+    int prev_rem = rem;
+
+    rem -= i * deduction;
+    // rem -= k * deduction;
+
+    // prn("deduct", i, deduction, prev_rem, rem);
   }
 
   prn_vec(a, 1, k);
