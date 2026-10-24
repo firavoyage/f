@@ -89,6 +89,16 @@ inline auto log(auto&&... items) {
   prn("log", items...);
 }
 
+// std
+
+inline auto parse_int(auto&&... items) {
+  return stoi(items...);
+}
+
+inline auto parse_float(auto&&... items) {
+  return stod(items...);
+}
+
 // fp
 
 template <typename T, typename Func>
@@ -120,7 +130,8 @@ auto reduce_vec(const vector<T>& vec, Func f, InitType initial_value) {
   for (const auto& x : vec) {
     acc = f(acc, x);
   }
-  return acc;  // Returns pure type directly since an initial seed guarantees a value
+  return acc;  // Returns pure type directly since an initial seed guarantees a
+               // value
 }
 
 template <typename T, typename Func>
@@ -335,18 +346,56 @@ for int wo 0, isnt it just the last digit?
 
 
 
-i want to read them as string, capture their length, 
+i want to read them as string, capture their length,
 merge them into a vec, sort it, and fill them back...
 
 how would i convert string to int?
 
 let's test.
 
+
+
+wait... it can go up to 10^10000?!
+
+998244352 is optimal.
+998244352 + k modolo is also optimal.
+
+
+
+well, i dont wanna ask llms.
+i want dedicated editorials, curated problemsets, and named dsa.
+
+
+
+idk nt!
+
+
+
+
+
 */
 
 void solve() {
   int modolo = 998244353;
 
-  prn(long("123"));
-  
+  string a, b;
+  read(a, b);
+
+  int len_a = a.length(), len_b = b.length();
+
+  vector<int> digits;
+  // vector<int> digits(len_a + len_b);
+
+  for (auto c : a) {
+    digits.append(c - '0');
+  }
+  for (auto c : b) {
+    digits.append(c - '0');
+  }
+
+  ranges::sort(digits);
+
+  prn(digits);
+
+
 }
