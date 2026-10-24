@@ -5217,4 +5217,107 @@ Apr 1, 2021 — It seems that the compile-time generated function looks like tem
 
 Show all
 
+# how to read until eof in cpp23 in cp
 
+In Competitive Programming (CP) using **C++23**, the idiomatic ways to read until the End of File (EOF) depend on whether you are reading token-by-token or line-by-line.
+
+Here are the most efficient techniques used in modern competitive programming:
+
+### 1\. Token-by-Token Reading (Most Common)
+
+If you need to read individual variables (integers, strings, floats) until the input ends, evaluate the stream extraction operation directly within a `while` loop. The `>>` operator returns the stream itself, which evaluates to `false` when EOF or an invalid data type is encountered. [](https://repovive.com/roadmaps/cpp/input-output/reading-until-eof)
+
+cpp
+
+```
+#include <iostream>
+
+int main() {
+    // Fast I/O for CP
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+
+    int x;
+    while (std::cin >> x) {
+        // Process x
+    }
+    return 0;
+}
+
+```
+
+
+
+### 2\. Line-by-Line Reading
+
+If the input format requires you to read whole lines (including spaces) until the file ends, use `std::getline()`. Like the extraction operator, `getline` returns the stream, making it clean and safe against off-by-one loop errors. [](https://stackoverflow.com/questions/201992/how-to-read-until-eof-from-cin-in-c)
+
+cpp
+
+```
+#include <iostream>
+#include <string>
+
+int main() {
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+
+    std::string line;
+    while (std::getline(std::cin, line)) {
+        // Process line
+    }
+    return 0;
+}
+
+```
+
+
+
+### 3\. C-Style Fast Reading (`scanf`)
+
+If you prefer C-style I/O for speed or formatting reasons, `scanf` returns `EOF` (usually `-1`) when it reaches the end of the input stream. 
+
+cpp
+
+```
+#include <cstdio>
+
+int main() {
+    int x;
+    while (scanf("%d", &x) != EOF) {
+        // Process x
+    }
+    return 0;
+}
+
+```
+
+
+
+---
+
+### ⚠️ Common CP Pitfall to Avoid
+
+Never use `while (!cin.eof())` or `while (!file.eof())`. The EOF flag in C++ is only set **after** a read operation attempts to go past the end of the file. If you check `eof()` before reading, your loop will execute one extra time with garbage or duplicated data. Always check the success of the read operation itself. [](https://clarkkromenaker.com/post/cpp-eof/)
+
+If you are dealing with a specific problem, let me know:
+
+* What **data types** are you trying to parse?
+* Do you need a template for **interactive problems** where standard EOF behavior differs?
+
+I can provide a highly optimized template tailored to that setup!
+
+* [](https://stackoverflow.com/questions/201992/how-to-read-until-eof-from-cin-in-c)  
+Stack Overflow  
+How to read until EOF from cin in C++ - Stack Overflow  
+By default getline() reads until a newline. You can specify an alternative termination character, but EOF is not itself a characte...
+* [](https://repovive.com/roadmaps/cpp/input-output/reading-until-eof)  
+Repovive  
+Reading Until EOF - Input & Output | C++ - Repovive  
+This pattern combines reading and checking: while (cin >> x) attempts to read, and if it succeeds, the loop body runs. If it fails...
+* [](https://www.geeksforgeeks.org/cpp/read-input-until-eof-in-cpp/)  
+GeeksforGeeks  
+How to Read Input Until EOF in C++? - GeeksforGeeks  
+The getline() function can be used to read a line in C++. We can use this function to read the entire file until EOF by using it w...
+
+Show all

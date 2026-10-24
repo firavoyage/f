@@ -1,11 +1,19 @@
 #include <bits/stdc++.h>
+#define macro(_1, _2, _3, _4, name, ...) name
+
 // #define all(v) v.begin(), v.end()
 // #define reverse(v) v.rbegin(), v.rend()
 #define len(x) (int)(x).size()
 #define append push_back
 // #define push push_back
-#define each(i, a, b)
-#define each(i, n)
+
+#define each_end(i, n) for (int i = 0; i < n; i += 1)
+#define each_start_end(i, a, b) for (int i = a; i < b; i += 1)
+// closed interval
+#define closed(i, a, b) for (int i = a; i <= b; i += 1)
+#define rev(i, a, b) for (int i = a; i >= b; i -= 1)
+#define each(...) macro(__VA_ARGS__, each_start_end, each_end)(__VA_ARGS__)
+
 #define int long long
 
 using namespace std;
