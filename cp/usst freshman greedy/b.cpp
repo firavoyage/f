@@ -504,12 +504,20 @@ so it isnt really zero counting...
 
 
 
+do you see?
+
+across all solvable cases,
+
+min * 100 % 100 is consistent, while max is .49
+- clearly .49 is a myth
+  - 50 50?
+  - 1 1 99?
 
 
 */
 
 void solve() {
-  int n, zero_count = 0;
+  int n;
   read(n);
 
   vector<string> names(n + 5);
@@ -517,12 +525,19 @@ void solve() {
 
   each(i, 1, n) {
     read(names[i], a[i]);
+
+    a[i] *= 100;  // represent ppl chosen
+  }
+
+  int theoretical_minimum(int i) {
     if (a[i] == 0) {
-      zero_count += 1;
+      return 0;
+    } else {
+      return a[i] - 50;
     }
   }
 
-  int sum = summation(a);
+  
 
   if (sum * 100 + 49 * n < 100 * 100 ||
       sum - 50 * (n - zero_count) > 100 * 100) {
@@ -537,7 +552,7 @@ void solve() {
     minimum = _min(_max(minimum, -50), 49);
     // minimum = _max(minimum, -50);
 
-    int rest_non_zero_count = (n-1) - (zero_count - (a[i] == 0));
+    int rest_non_zero_count = (n - 1) - (zero_count - (a[i] == 0));
     // int rest_non_zero_count = (n-1) - (zero_count - a[i] == 0);
     int maximum = 100 * 100 - (sum * 100 - 50 * rest_non_zero_count);
     maximum = _min(_max(maximum, -50), 49);
@@ -546,7 +561,7 @@ void solve() {
 
     minimum = a[i] * 100 + minimum;
     minimum = _min(_max(minimum, 0), 100 * 100);
-    
+
     maximum = a[i] * 100 + maximum;
     maximum = _min(_max(maximum, 0), 100 * 100);
 
@@ -562,4 +577,59 @@ void solve() {
     prn(names[i], format_float(truediv(minimum, 100), 2),
         format_float(truediv(maximum, 100), 2));
   }
+  // int n, zero_count = 0;
+  // read(n);
+
+  // vector<string> names(n + 5);
+  // vector<int> a(n + 5);
+
+  // each(i, 1, n) {
+  //   read(names[i], a[i]);
+  //   if (a[i] == 0) {
+  //     zero_count += 1;
+  //   }
+  // }
+
+  // int sum = summation(a);
+
+  // if (sum * 100 + 49 * n < 100 * 100 ||
+  //     sum - 50 * (n - zero_count) > 100 * 100) {
+  //   prn("IMPOSSIBLE");
+  //   return;
+  // }
+
+  // // prn(sum);
+
+  // each(i, 1, n) {
+  //   int minimum = 100 * 100 - (sum * 100 + 49 * (n - 1));
+  //   minimum = _min(_max(minimum, -50), 49);
+  //   // minimum = _max(minimum, -50);
+
+  //   int rest_non_zero_count = (n-1) - (zero_count - (a[i] == 0));
+  //   // int rest_non_zero_count = (n-1) - (zero_count - a[i] == 0);
+  //   int maximum = 100 * 100 - (sum * 100 - 50 * rest_non_zero_count);
+  //   maximum = _min(_max(maximum, -50), 49);
+
+  //   // prn("log", i, a[i], minimum, maximum);
+
+  //   minimum = a[i] * 100 + minimum;
+  //   minimum = _min(_max(minimum, 0), 100 * 100);
+
+  //   maximum = a[i] * 100 + maximum;
+  //   maximum = _min(_max(maximum, 0), 100 * 100);
+
+  //   // pr(names[i]);
+  //   // write(minimum / 100, '.', minimum % 100 < 10 ? "0" : "", minimum %
+  //   100,
+  //   //       ' ');
+  //   // write(maximum / 100, '.', maximum % 100 < 10 ? "0" : "", maximum %
+  //   100,
+  //   //       ' ');
+  //   // prn();
+
+  //   // prn(names[i], truediv(minimum, 100),
+  //   //     truediv(maximum, 100));
+  //   prn(names[i], format_float(truediv(minimum, 100), 2),
+  //       format_float(truediv(maximum, 100), 2));
+  // }
 }
