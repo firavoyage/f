@@ -13,11 +13,13 @@
 #define reveach(i, a, b) for (int i = (a); i >= (b); i -= 1)
 #define rev_each reveach
 
-#define enum std::views::enumerate  // dict items, object entries
+#define enum std::views::enumerate  // auto [index, value]: enum(vec)
 
 #define int long long
 
 using namespace std;
+
+// utils
 
 void read(auto&&... variables) {
   (cin >> ... >> variables);
@@ -81,6 +83,10 @@ void prn_vec(vector<T>& elements, int l, int r) {
 inline auto print(auto&&... items) {
   return prn(items...);
 }
+
+// fix
+
+const int nil = -1;
 
 void solve();
 
