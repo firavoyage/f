@@ -12141,3 +12141,143 @@ std::string format_float(double n, int precision) {
 * **Simplified Loop:** Removed the complex and error-prone inline lookahead check (`next_digit >= 5.0`).
 * **Clean Subtraction:** Using `fractional -= digit` instead of `fractional -= (int)fractional` is cleaner since `digit` already holds the truncated integer value.
 
+# how to convert string to int/double in cpp23 in cp
+
+In **C++23 Competitive Programming (CP)**, the absolute best and fastest ways to convert a `std::string` or `std::string_view` to an `int` or `double` rely on **`std::from_chars`** (from the `<charconv>` header) or the classic **`std::stoi` / `std::stod`**. [](https://www.wscubetech.com/resources/cpp/programs/string-to-double)
+
+Because speed, simplicity, and avoiding runtime overhead are crucial in CP, here is exactly how to use the modern, optimal methods.
+
+---
+
+### 1\. The Fastest Method: `std::from_chars` (Highly Recommended for CP)
+
+Introduced in C++17 and fully enhanced in C++23, `std::from_chars` is a low-level, **non-allocating, non-throwing, ultra-fast** function. It is significantly faster than `stringstream` or `stoi`. [](https://www.wscubetech.com/resources/cpp/programs/string-to-double)
+
+* **To `int`:**
+
+cpp
+
+```
+#include <iostream>
+#include <charconv>
+#include <string_view>
+
+int main() {
+    std::string_view s = "12345";
+    int val = 0;
+    
+    // Pass the memory bounds of the string
+    auto [ptr, ec] = std::from_chars(s.data(), s.data() + s.size(), val);
+    
+    if (ec == std::errc()) {
+        std::cout << "Success: " << val << "\n";
+    }
+}
+
+```
+
+
+
+* **To `double`:**
+
+cpp
+
+```
+#include <iostream>
+#include <charconv>
+#include <string_view>
+
+int main() {
+    std::string_view s = "123.456";
+    double val = 0.0;
+    
+    auto [ptr, ec] = std::from_chars(s.data(), s.data() + s.size(), val);
+    
+    if (ec == std::errc()) {
+        std::cout << "Success: " << val << "\n";
+    }
+}
+
+```
+
+
+
+_Note: Floating-point support for `std::fromchars` is fully available in GCC (libstdc++) used in almost all CP platforms._
+
+---
+
+### 2\. The Easiest Method: `std::stoi` and `std::stod`
+
+If you are not in a strict time-limit bind and want short, readable code, use the standard string conversion functions from the `<string>` header. Keep in mind these can throw exceptions if the string is invalid. [](https://www.wscubetech.com/resources/cpp/programs/string-to-double)
+
+cpp
+
+```
+#include <iostream>
+#include <string>
+
+int main() {
+    std::string s_int = "42";
+    std::string s_dbl = "3.14159";
+
+    int my_int = std::stoi(s_int);    // String to Int
+    double my_double = std::stod(s_dbl); // String to Double
+
+    std::cout << my_int << " and " << my_double << "\n";
+}
+
+```
+
+
+
+---
+
+### 3\. CP "Quick & Dirty" Method (For `int` Only)
+
+If you are parsing a substring or character array manually during a custom fast I/O implementation, a simple `for` loop is unbeatable for raw integers: [](https://www.geeksforgeeks.org/cpp/convert-string-to-int-in-cpp/)
+
+cpp
+
+```
+#include <iostream>
+#include <string>
+
+int main() {
+    std::string s = "789";
+    int val = 0;
+    
+    for (char c : s) {
+        val = val * 10 + (c - '0'); // Fast accumulator
+    }
+    
+    std::cout << val << "\n";
+}
+
+```
+
+
+
+### Direct Comparison for CP
+
+| Method                    | Speed                 | Safe for std::string\_view?          | Boilerplate | Recommended Use                    |
+| ------------------------- | --------------------- | ------------------------------------ | ----------- | ---------------------------------- |
+| **std::from\_chars**      | 🚀 **Extremely Fast** | Yes (No null-terminator needed)      | Moderate    | Strict time limits / Large inputs  |
+| **std::stoi / std::stod** | 🟡 Moderate           | No (Requires std::string or .data()) | Low         | Standard problems / Quick coding   |
+| **Custom for loop**       | 🚀 **Extremely Fast** | Yes                                  | Low         | Integers inside Fast I/O templates |
+
+Are you currently building a **custom fast I/O template**, or are you trying to solve a specific problem that requires **parsing heavy string inputs**? I can give you a plug-and-play template block if needed!
+
+* [](https://www.wscubetech.com/resources/cpp/programs/string-to-double)  
+WsCube Tech  
+Convert String to Double in C++ (6 Programs)  
+The easiest way is to use the stod() function from header. Just pass the string to stod() and it will return the converted double ...
+* [](https://www.geeksforgeeks.org/cpp/convert-string-to-int-in-cpp/)  
+GeeksforGeeks  
+Convert String to int in C++ - GeeksforGeeks  
+Methods: stoi(str, pos, base) for C++11 strings, returns int, stops at non-digit; for char arrays, stops at non-numeric; supports ...
+* [](https://www.youtube.com/watch?v=JuvyOJ1iVSM&t=9)  
+YouTube·Programming With Annu  
+How to convert a string to integer Using stoi() in C++  
+Feb 11, 2022 — How to convert a string to integer Using stoi() in C++ | @programmingwithannu hi guys welcome to my channel in this video we will ...  
+1m
+

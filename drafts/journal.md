@@ -55362,6 +55362,10 @@ there are optimization. like you can render on web, by pure fn, or diliver sth p
 
 20 00 draft cpp cp template. submit the first cpp solution.
 
+25
+
+02 10 read usaco guide intro.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
