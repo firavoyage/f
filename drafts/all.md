@@ -538,6 +538,7 @@ cp: <!-- algorithms -->
 - cpp stl methods
 - cpp template
 - common stupid mistakes
+- codeforces platform
 
 pm:
 

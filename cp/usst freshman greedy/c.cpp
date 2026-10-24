@@ -338,7 +338,29 @@ void solve() {
   int a, b, c, d;
   read(a, b, c, d);
 
-  if (a == 0 && c == 0 || b == 0 && d == 0){
+  double result;
+
+
+  if (a == 0 && c == 0 || b == 0 && d == 0) {
+    result = _max(abs(a - c), abs(b - d));
+  }else{
+    double pi = 3.1415926;
+
+    a = abs(a);
+    b = abs(b);
+    c = abs(c);
+    d = abs(d);
+
+    int x = _max(a, b), y = _max(c, d);
     
+    int minimum = _min(x, y);
+    int maximum = _max(x, y);
+
+    // log(a, b, c, d, x, y, minimum, maximum);
+
+    result = 0.25 * 2 * pi * minimum + (maximum - minimum);
+    // result = 0.25 * pi * pow(minimum, 2) + (maximum - minimum);
   }
+
+  prn(format_float(result, 6));
 }

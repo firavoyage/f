@@ -12023,29 +12023,6 @@ Oct 4, 2024 — Global variables can be changed by any part of the code. One of 
 
 Show all
 
-# does it submit the latest file if i select a file on codeforces web, submit, navigate back, and see the file still there, or do i need to choose file again
-
-**Yes, it will typically submit the latest saved version of the file on your disk**, but relying on this behavior can be risky depending on your browser.
-
-When you navigate back and see the filename still populated in the "Choose File" field, the browser is maintaining a reference link to that file on your local file system. When you click **Submit** again, the browser reads the file from your disk at that exact moment, meaning any updates you saved after the first submission will be included.
-
-However, there are important caveats to keep in mind to avoid accidental wrong submissions:
-
-### ⚠️ Potential Risks with Navigating Back
-
-* **Permission Losses:** Some browsers (especially strict or updated versions of Chrome and Firefox) will clear the file handle or block the upload for security reasons when navigating via the back button. This can cause the form to submit an **empty file** or a cached, outdated version.
-* **Wrong Problem Selection:** When you navigate back, the page state might revert to a previous problem index if you aren't careful, leading you to submit code to the wrong problem.
-
-### 💡 Better Alternatives for Frictionless Submissions
-
-To avoid having to repeatedly click "Choose File" or worry about browser back-button bugs, consider these common Codeforces workflows:
-
-* **Use the Toggle to Paste Code:** Click the toggle button on the submission page to switch from "File" to **"Source code"**. You can then simply use `Ctrl+A` \-> `Ctrl+C` in your IDE and `Ctrl+V` into the browser box. Hitting the back button will still keep your old code there, but you can quickly overwrite it.
-* **Submit directly from the Problem Page:** Instead of using the main navigation bar's "Submit" tab, use the sidebar submission box directly on the problem's page.
-* **Use a CLI Tool:** Most competitive programmers completely bypass the web UI using tools like CF-Tool or Competitive Companion combined with an editor extension to submit files directly from the terminal or IDE with a single shortcut.
-
-Are you running into an issue where **blank files** or **old compilation errors** are being submitted? If you want, I can help you set up a **command-line tool** or an **IDE extension** so you never have to manually upload files on the site again.
-
 # fix auto format\_float(auto n, auto precision) {
 
  string result = ""; 
@@ -12163,5 +12140,4 @@ std::string format_float(double n, int precision) {
 * **Pre-rounding (`rounding_factor`):** Adding 0.5×10−precision0.5×10−precision upfront allows standard integer casting and digit extraction to naturally absorb any carryovers (e.g., `0.999` with precision `2` correctly rounds up to `1.00`).
 * **Simplified Loop:** Removed the complex and error-prone inline lookahead check (`next_digit >= 5.0`).
 * **Clean Subtraction:** Using `fractional -= digit` instead of `fractional -= (int)fractional` is cleaner since `digit` already holds the truncated integer value.
-
 

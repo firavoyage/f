@@ -17,8 +17,12 @@
 #define integer (long long)
 #define float double
 
+const int nil = -1;
+
 using namespace std;
 // using namespace ranges; // ranges::sort(vec)
+
+void solve();
 
 // utils
 
@@ -89,6 +93,16 @@ inline auto log(auto&&... items) {
   prn("log", items...);
 }
 
+// std
+
+inline auto parse_int(auto&&... items) {
+  return stoi(items...);
+}
+
+inline auto parse_float(auto&&... items) {
+  return stod(items...);
+}
+
 // fp
 
 template <typename T, typename Func>
@@ -120,7 +134,8 @@ auto reduce_vec(const vector<T>& vec, Func f, InitType initial_value) {
   for (const auto& x : vec) {
     acc = f(acc, x);
   }
-  return acc;  // Returns pure type directly since an initial seed guarantees a value
+  return acc;  // Returns pure type directly since an initial seed guarantees a
+               // value
 }
 
 template <typename T, typename Func>
@@ -304,11 +319,7 @@ auto _ceil = [](auto x) { return static_cast<int>(ceil(x)); };
 
 // entry
 
-const bool is_single_task = false;
-
-const int nil = -1;
-
-void solve();
+const bool is_single_task = true;
 
 signed main() {
   ios_base::sync_with_stdio(false);
@@ -334,5 +345,9 @@ signed main() {
 */
 
 void solve() {
-  
+  prn(parse_float("123.12"));
+  prn(parse_int("0"));
+  string foo = "asdf";
+
+  prn(parse_float(foo));
 }

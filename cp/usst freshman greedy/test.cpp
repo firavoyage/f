@@ -345,5 +345,6 @@ void solve() {
   prn(a);
   cout << a << '\n';
   cout << 6.712389123124124 << '\n';
-
+  
+  prn(format_float(5, 6));
 }
