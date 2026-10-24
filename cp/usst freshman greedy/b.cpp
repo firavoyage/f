@@ -324,7 +324,40 @@ signed main() {
 
 /*
 
+p in [1, 10^4]
 
+p = 1:
+
+must be 100 -> 100.0, 100.0 or impossible
+
+p = 2:
+
+must add to 100.
+
+- e.g. 49, 50: a + b < 100 where a < 49.5 and b < 50.5 
+(original data is perfectly precise)
+
+for 50 50, it can be [49.51, 50.49] (output closed intervals)
+
+
+
+for some reasons all example cases can reach .49...
+
+
+
+it's impossible iff
+
+- sum + .49n < 100 or sum - .5n > 100
+
+you may use multiplication trick to avoid rounding issues.
+
+
+
+your range is
+
+your own range cap [100-(sum)]
+
+where your own range is [-.5, +.49]
 
 */
 
