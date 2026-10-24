@@ -13,13 +13,13 @@
 #define reveach(i, a, b) for (int i = (a); i >= (b); i -= 1)
 #define rev_each reveach
 
-#define enum std::views::enumerate  // auto [index, value]: enum(vec)
+#define enum views::enumerate  // auto [index, value]: enum(vec)
 
 #define int long long
 #define float double
 
 using namespace std;
-// using namespace std::ranges; // ranges::sort(vec)
+// using namespace ranges; // ranges::sort(vec)
 
 // utils
 
@@ -112,9 +112,9 @@ signed main() {
 // fp
 
 template <typename T, typename Func>
-auto map(const std::vector<T>& vec, Func f) {
-  using ReturnType = decltype(f(std::declval<T>()));
-  std::vector<ReturnType> res;
+auto map(const vector<T>& vec, Func f) {
+  using ReturnType = decltype(f(declval<T>()));
+  vector<ReturnType> res;
   res.reserve(vec.size());
   for (const auto& x : vec) {
     res.push_back(f(x));
@@ -123,20 +123,20 @@ auto map(const std::vector<T>& vec, Func f) {
 }
 
 template <typename T, typename Func>
-auto reduce(const std::vector<T>& vec, Func f) {
-  using ReturnType = decltype(f(std::declval<T>(), std::declval<T>()));
-  if (vec.empty()) return std::optional<ReturnType>(std::nullopt);
+auto reduce(const vector<T>& vec, Func f) {
+  using ReturnType = decltype(f(declval<T>(), declval<T>()));
+  if (vec.empty()) return optional<ReturnType>(nullopt);
 
   ReturnType acc = vec[0];
   for (size_t i = 1; i < vec.size(); ++i) {
     acc = f(acc, vec[i]);
   }
-  return std::optional<ReturnType>(acc);
+  return optional<ReturnType>(acc);
 }
 
 template <typename T, typename Func, typename InitType>
-auto reduce(const std::vector<T>& vec, Func f, InitType initial_value) {
-  using ReturnType = decltype(f(std::declval<InitType>(), std::declval<T>()));
+auto reduce(const vector<T>& vec, Func f, InitType initial_value) {
+  using ReturnType = decltype(f(declval<InitType>(), declval<T>()));
   ReturnType acc = initial_value;
   for (const auto& x : vec) {
     acc = f(acc, x);
@@ -145,20 +145,20 @@ auto reduce(const std::vector<T>& vec, Func f, InitType initial_value) {
 }
 
 template <typename T, typename Func>
-auto reduce_right(const std::vector<T>& vec, Func f) {
-  using ReturnType = decltype(f(std::declval<T>(), std::declval<T>()));
-  if (vec.empty()) return std::optional<ReturnType>(std::nullopt);
+auto reduce_right(const vector<T>& vec, Func f) {
+  using ReturnType = decltype(f(declval<T>(), declval<T>()));
+  if (vec.empty()) return optional<ReturnType>(nullopt);
 
   ReturnType acc = vec.back();
   for (size_t i = vec.size() - 1; i > 0; --i) {
     acc = f(vec[i - 1], acc);  // Element first, Accumulator second
   }
-  return std::optional<ReturnType>(acc);
+  return optional<ReturnType>(acc);
 }
 
 template <typename T, typename Func, typename InitType>
-auto reduce_right(const std::vector<T>& vec, Func f, InitType initial_value) {
-  using ReturnType = decltype(f(std::declval<T>(), std::declval<InitType>()));
+auto reduce_right(const vector<T>& vec, Func f, InitType initial_value) {
+  using ReturnType = decltype(f(declval<T>(), declval<InitType>()));
   ReturnType acc = initial_value;
   for (size_t i = vec.size(); i > 0; --i) {
     acc = f(vec[i - 1], acc);  // Element first, Accumulator second
@@ -169,12 +169,40 @@ auto reduce_right(const std::vector<T>& vec, Func f, InitType initial_value) {
 // string
 
 auto format_float(auto n, auto precision) {
-  std::string pattern = "{:.{}f}";
+  string result = "";
+  if (n < 0) {
+    result += '-';
+    n = -n;
+  }
 
-  // Fallback: Works universally on platforms where std::runtime_format fails
-  return std::vformat(pattern, std::make_format_args(precision, n));
-  // return format(std::runtime_format("{:.{}f}"), precision, n);
+  long long int_part = (long long)n;
+  result += to_string(int_part);
+
+  if (precision > 0) {
+    result += '.';
+
+    double fractional = n - int_part;
+
+    for (int i = 0; i < precision; ++i) {
+      fractional *= 10;
+      int digit = (int)fractional;
+
+      if (i == precision - 1) {
+        double next_digit = (fractional - digit) * 10;
+        if (next_digit >= 5.0) {
+          digit++;
+        }
+      }
+
+      result += to_string(digit);
+      fractional -= (int)fractional;
+    }
+  }
+
+  return result;
 }
+
+
 
 // solution
 
@@ -185,20 +213,20 @@ auto format_float(auto n, auto precision) {
 */
 
 void solve() {
-  // int n;
-  // read(n);
-
-  // vector<int> a(n);
-
-  // read(a);
-
-  // ranges::sort(a);
-
-  // prn(a);
-
-  float n;
+  int n;
   read(n);
-  prn(format_float(n, 1));
+
+  vector<int> a(n);
+
+  read(a);
+
+  ranges::sort(a);
+
+  prn(ranges::max(a));
+
+  // float n;
+  // read(n);
+  // prn(format_float(n, 1));
 
   // vector<int> a(n + 5);
 
