@@ -55366,6 +55366,8 @@ there are optimization. like you can render on web, by pure fn, or diliver sth p
 
 02 10 read usaco guide intro.
 
+> For those of you with experience in software development, note that competitive programming is quite different, as the goal is to write programs that compute the correct answer, run quickly, and can be implemented quickly. Note that nowhere was maintainability of code mentioned. You don't need to bother documenting your code because it only needs to be readable to you during the contest. That being said, you probably want to maintain a bare minimum level of readability so you can keep track of what's going on.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
