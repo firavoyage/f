@@ -167,6 +167,7 @@ auto reduce_right_vec(const vector<T>& vec, Func f, InitType initial_value) {
 
 // string
 
+// std::format("{:.4f}", pi)
 auto format_float(auto n, auto precision) {
   string result = "";
   if (n < 0) {
@@ -218,6 +219,20 @@ auto divmod = [](auto numerator, auto denominator) {
   return std::pair{quotient, remainder};
 };
 
+auto pow(auto base, auto exp, auto mod) {
+  int res = 1;
+  base %= mod;
+
+  while (exp > 0) {
+    if (exp & 1) { // exp % 2 == 1
+      res = res * base % mod;
+    }
+    base = base * base % mod;
+    exp >>= 1;  // exp /= 2;
+  }
+  return res;
+}
+
 auto and_ = [](auto a, auto b) { return a & b; };
 auto or_ = [](auto a, auto b) { return a | b; };
 auto not_ = [](auto a) { return !a; };
@@ -244,5 +259,4 @@ void solve() {
   read(a, b);
 
   prn(format_float(truediv(a, b), 3), floordiv(a, b));
-
 }

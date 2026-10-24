@@ -537,6 +537,7 @@ cp: <!-- algorithms -->
 - dsa segtree segment tree
 - cpp stl methods
 - cpp template
+- common stupid mistakes
 
 pm:
 
