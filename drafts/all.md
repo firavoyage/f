@@ -535,6 +535,8 @@ cp: <!-- algorithms -->
 - cpp stdcpp header precompilation speedup
 - cpp test cases diff
 - dsa segtree segment tree
+- cpp stl methods
+- cpp template
 
 pm:
 
