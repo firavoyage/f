@@ -485,10 +485,31 @@ adding these two lines helps me pass up to case 15.
 
 
 
+ok. fine.
+in terms of impossibility.
+"all min" "all max" doesnt mean they can fall below 0 or above 100...
+
+(i guess zero count is all you need. it would not cause problems on 100.)
+
+
+wa on test11 now...
+
+
+
+op priority i guess.
+
+wa test15.
+
+so it isnt really zero counting...
+
+
+
+
+
 */
 
 void solve() {
-  int n;
+  int n, zero_count = 0;
   read(n);
 
   vector<string> names(n + 5);
@@ -496,11 +517,15 @@ void solve() {
 
   each(i, 1, n) {
     read(names[i], a[i]);
+    if (a[i] == 0) {
+      zero_count += 1;
+    }
   }
 
   int sum = summation(a);
 
-  if (sum * 100 + 49 * n < 100 * 100 || sum - 50 * n > 100 * 100) {
+  if (sum * 100 + 49 * n < 100 * 100 ||
+      sum - 50 * (n - zero_count) > 100 * 100) {
     prn("IMPOSSIBLE");
     return;
   }
@@ -512,16 +537,18 @@ void solve() {
     minimum = _min(_max(minimum, -50), 49);
     // minimum = _max(minimum, -50);
 
-    int maximum = 100 * 100 - (sum * 100 - 50 * (n - 1));
+    int rest_non_zero_count = (n-1) - (zero_count - (a[i] == 0));
+    // int rest_non_zero_count = (n-1) - (zero_count - a[i] == 0);
+    int maximum = 100 * 100 - (sum * 100 - 50 * rest_non_zero_count);
     maximum = _min(_max(maximum, -50), 49);
 
     // prn("log", i, a[i], minimum, maximum);
 
     minimum = a[i] * 100 + minimum;
-    minimum = _max(minimum, 0);
-
+    minimum = _min(_max(minimum, 0), 100 * 100);
+    
     maximum = a[i] * 100 + maximum;
-    maximum = _min(maximum, 100 * 100);
+    maximum = _min(_max(maximum, 0), 100 * 100);
 
     // pr(names[i]);
     // write(minimum / 100, '.', minimum % 100 < 10 ? "0" : "", minimum % 100,
