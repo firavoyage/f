@@ -366,4 +366,13 @@ put it straightly, the first works and the second doesnt.
 
 > cpp is amazing!
 
+---
+
+no longer do i need
+
+```
+#define macro(_1, _2, _3, _4, name, ...) name
+```
+
+
 

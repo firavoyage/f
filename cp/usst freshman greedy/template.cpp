@@ -1,11 +1,9 @@
 #include <bits/stdc++.h>
-#define macro(_1, _2, _3, _4, name, ...) name
 
-// #define all(v) v.begin(), v.end()
-// #define reverse(v) v.rbegin(), v.rend()
+#define all(v) v.begin(), v.end()
+#define reverse(v) v.rbegin(), v.rend()
 #define len(x) (int)(x).size()
 #define append push_back
-// #define push push_back
 
 #define repeat(n) for (int __i = 0; __i < n; __i += 1)
 // closed interval
@@ -284,6 +282,5 @@ auto permutations(int n, int r) {
 */
 
 void solve() {
-  prn(1);
   
 }
