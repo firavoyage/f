@@ -250,24 +250,30 @@ auto permutations(int n, int r) {
   return result;
 }
 
-constexpr auto variadic_min(auto first, auto... rest) {
-    // Deduce a safe common return type for all arguments
-    using CommonType = std::common_type_t<decltype(first), decltype(rest)...>;
-    
-    CommonType current_min = first;
-    // Unpack and evaluate each rest parameter using a comma fold expression
-    ((current_min = (rest < current_min) ? rest : current_min), ...);
-    
-    return current_min;
+auto variadic_min(auto first, auto... rest) {
+  // auto current_min = first;
+
+  // Deduce a safe common return type for all arguments
+  using CommonType = std::common_type_t<decltype(first), decltype(rest)...>;
+
+  CommonType current_min = first;
+
+  // Unpack and evaluate each rest parameter using a comma fold expression
+  ((current_min = (rest < current_min) ? rest : current_min), ...);
+
+  return current_min;
 }
 
-constexpr auto variadic_max(auto first, auto... rest) {
-    using CommonType = std::common_type_t<decltype(first), decltype(rest)...>;
-    
-    CommonType current_max = first;
-    ((current_max = (rest > current_max) ? rest : current_max), ...);
-    
-    return current_max;
+auto variadic_max(auto first, auto... rest) {
+  // auto current_max = first;
+
+  using CommonType = std::common_type_t<decltype(first), decltype(rest)...>;
+
+  CommonType current_max = first;
+
+  ((current_max = (rest > current_max) ? rest : current_max), ...);
+
+  return current_max;
 }
 
 // entry
@@ -303,14 +309,22 @@ signed main() {
 
 void solve() {
   prn(max(1, 2));
-  
+  // prn(max(1, 2, 3));
+
   prn(min(1, 2));
-  
+
   int a = 1, b = 2;
 
   prn(max(a, b));
   prn(min(a, b));
 
-  prn(max(3.14, 3));
+  // prn(max(1, 2, 3));
 
+  // prn(max(3, 3.14));
+  prn(max(double(3), 3.14));
+
+  prn(variadic_max(3.14, 3, 2));
+  prn(variadic_min(3.14, 3, 2));
+  prn(variadic_max(3, 2, 3.14));
+  prn(variadic_min(3, 2, 3.14));
 }
