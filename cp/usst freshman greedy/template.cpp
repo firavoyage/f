@@ -16,6 +16,7 @@
 #define enum views::enumerate  // auto [index, value]: enum(vec)
 
 #define int long long
+#define integer (long long)
 #define float double
 
 using namespace std;
@@ -219,12 +220,13 @@ auto divmod = [](auto numerator, auto denominator) {
   return std::pair{quotient, remainder};
 };
 
-auto pow(auto base, auto exp, auto mod) {
+// auto pow(auto base, auto exp, auto mod = 1000000007) {
+auto pow(int base, int exp, int mod = 1000000007) {
   int res = 1;
   base %= mod;
 
   while (exp > 0) {
-    if (exp & 1) { // exp % 2 == 1
+    if (exp & 1) {  // exp % 2 == 1
       res = res * base % mod;
     }
     base = base * base % mod;
@@ -255,8 +257,9 @@ auto multiplication(auto numbers) {
 */
 
 void solve() {
-  int a, b;
-  read(a, b);
+  // int a, b;
+  // read(a, b);
 
-  prn(format_float(truediv(a, b), 3), floordiv(a, b));
+  // prn(pow(a, b));
+  prn(integer(log(2.7)));
 }
