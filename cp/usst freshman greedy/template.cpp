@@ -16,10 +16,6 @@ void write(auto&&... args) {
   (std::cout << ... << args);
 }
 
-template <typename T>
-concept IsVector =
-    requires { typename T::value_type; } && std::is_same_v<T, std::vector<typename T::value_type>>;
-
 void pr(auto&&... args) {
   ((std::cout << args << ' '), ...);
 }
@@ -28,53 +24,29 @@ void pr(auto&&... args) {
 //   ((std::cout << args << (++n == sizeof...(args) ? "" : " ")), ...);
 // }
 
-// void prn_vec(auto& vec) {
-//   size_t n{0};
-//   for (const auto& element : vec) {
-//     pr(element);
-//   }
-//   std::cout << '\n';
-// }
-// template <typename T>
-// void prn(const std::vector<T>& vec) {
-//   size_t n{0};
-//   for (const auto& element : vec) {
-//     pr(element);
-//   }
-//   std::cout << '\n';
-// }
-// template <typename T>
-// void prn(const std::vector<T>& vec) {
-//   size_t n{0};
-//   for (const auto& element : vec) {
-//     std::cout << element << (++n == vec.size() ? "" : " ");
-//   }
-//   std::cout << '\n';
-// }
+template <typename T>
+concept __is_vector =
+    requires { typename T::value_type; } && std::is_same_v<T, std::vector<typename T::value_type>>;
 
-void print_single(auto&& arg) {
-  if constexpr (IsVector<std::decay_t<decltype(arg)>>) {
-    // Safe vector printing internal loop
+void __print(auto&& arg) {
+  if constexpr (__is_vector<std::decay_t<decltype(arg)>>) {
     size_t n{0};
     for (const auto& element : arg) {
       std::cout << element << (++n == arg.size() ? "" : " ");
     }
   } else {
-    // Normal variable printing
     std::cout << arg;
   }
 }
 
-// 3. The universal print function with "Space-Before" logic
 void prn() {
   std::cout << '\n';
 }
 
 void prn(auto&& first, auto&&... rest) {
-  print_single(std::forward<decltype(first)>(first));
+  __print(std::forward<decltype(first)>(first));
 
-  // Expand the remaining elements with a space in front of each
-  ((std::cout << ' ', print_single(std::forward<decltype(rest)>(rest))), ...);
+  ((std::cout << ' ', __print(std::forward<decltype(rest)>(rest))), ...);
 
   std::cout << '\n';
 }
@@ -104,9 +76,9 @@ void prn(auto&& first, auto&&... rest) {
 //   }
 // }
 
-// inline auto print(auto&&... args) {
-//   return prn(args...);
-// }
+inline auto print(auto&&... args) {
+  return prn(args...);
+}
 
 // constexpr auto print = [](auto&&... args) noexcept(
 //                            noexcept(prn(std::forward<decltype(args)>(args)...))) ->
@@ -152,7 +124,7 @@ void solve() {
   prn(a);
 
   // Mixed printing works too
-  // prn("The final array is:", a);
+  prn("The final array is:", a);
 
   prn(n, n + 1, n + 2);
 }

@@ -5,12 +5,12 @@
 
 // 1. Define a helper concept to check if a type is a vector
 template <typename T>
-concept IsVector =
+concept __is_vector =
     requires { typename T::value_type; } && std::is_same_v<T, std::vector<typename T::value_type>>;
 
 // 2. Base element printer (Handles singular values)
-void print_single(auto&& arg) {
-  if constexpr (IsVector<std::decay_t<decltype(arg)>>) {
+void __print(auto&& arg) {
+  if constexpr (__is_vector<std::decay_t<decltype(arg)>>) {
     // Safe vector printing internal loop
     size_t n{0};
     for (const auto& element : arg) {
@@ -28,10 +28,10 @@ void print() {
 }
 
 void print(auto&& first, auto&&... rest) {
-  print_single(std::forward<decltype(first)>(first));
+  __print(std::forward<decltype(first)>(first));
 
   // Expand the remaining elements with a space in front of each
-  ((std::cout << ' ', print_single(std::forward<decltype(rest)>(rest))), ...);
+  ((std::cout << ' ', __print(std::forward<decltype(rest)>(rest))), ...);
 
   std::cout << '\n';
 }
