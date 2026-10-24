@@ -320,4 +320,11 @@ each i a b # or enum cases
         prn i current expected
 ```
 
+---
+
+quite weird to group items. it's not general.
+
+also, i dont feel ive ever necessarily used newton root finding.
+
+
 

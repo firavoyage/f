@@ -16,8 +16,10 @@
 #define enum std::views::enumerate  // auto [index, value]: enum(vec)
 
 #define int long long
+#define float double
 
 using namespace std;
+// using namespace std::ranges; // ranges::sort(vec)
 
 // utils
 
@@ -86,11 +88,11 @@ inline auto print(auto&&... items) {
 
 // fix
 
+const bool single_task = true;
+
 const int nil = -1;
 
 void solve();
-
-const bool single_task = true;
 
 signed main() {
   ios_base::sync_with_stdio(false);
@@ -164,6 +166,16 @@ auto reduce_right(const std::vector<T>& vec, Func f, InitType initial_value) {
   return acc;  // Returns pure type directly
 }
 
+// string
+
+auto format_float(auto n, auto precision) {
+  std::string pattern = "{:.{}f}";
+
+  // Fallback: Works universally on platforms where std::runtime_format fails
+  return std::vformat(pattern, std::make_format_args(precision, n));
+  // return format(std::runtime_format("{:.{}f}"), precision, n);
+}
+
 // solution
 
 /*
@@ -173,13 +185,20 @@ auto reduce_right(const std::vector<T>& vec, Func f, InitType initial_value) {
 */
 
 void solve() {
-  int n;
+  // int n;
+  // read(n);
+
+  // vector<int> a(n);
+
+  // read(a);
+
+  // ranges::sort(a);
+
+  // prn(a);
+
+  float n;
   read(n);
-
-  vector<int> a(n);
-
-  read(a);
-  prn(a);
+  prn(format_float(n, 1));
 
   // vector<int> a(n + 5);
 

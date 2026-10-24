@@ -1,0 +1,74 @@
+{
+  // "File Header": {
+  //   "prefix": "about",
+  //   "body": [
+  //     "/**",
+  //     " * author: fira",
+  //     " * created: ${CURRENT_YEAR}.${CURRENT_MONTH}.${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
+  //     " */",
+  //     "$0"
+  //   ],
+  //   "description": "Add file header with author and creation time"
+  // },
+  // "Competitive Programming Template": {
+  //   "prefix": "cpp",
+  //   "body": [
+  //     "#include <bits/stdc++.h>",
+  //     "using namespace std;",
+  //     "",
+  //     "void solve() {",
+  //     "    $0",
+  //     "}",
+  //     "",
+  //     "int main() {",
+  //     "    ios_base::sync_with_stdio(false);",
+  //     "    cin.tie(nullptr);",
+  //     "",
+  //     "    int t = 1;",
+  //     "    // cin >> t;",
+  //     "    while (t--) {",
+  //     "        solve();",
+  //     "    }",
+  //     "    return 0;",
+  //     "}"
+  //   ],
+  //   "description": "Minimal C++ template for competitive programming"
+  // }
+  "return": {
+		// instead of "raise"
+    "prefix": ["r"],
+    "body": [
+      "return "
+    ],
+  },
+  "log": {
+    "prefix": [
+      "l",
+      "lo"
+    ],
+    "body": [
+      "prn(${0})"
+    ],
+  },
+  "true": {
+    "prefix": "t",
+    "body": [
+      "true",
+    ],
+  },
+  "false": {
+    "prefix": [
+      "f",
+      "fa"
+    ],
+    "body": [
+      "false",
+    ],
+  },
+  "nil": {
+    "prefix": "n",
+    "body": [
+      "nil",
+    ],
+  },
+}
