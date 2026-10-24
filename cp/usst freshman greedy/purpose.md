@@ -213,4 +213,25 @@ and you could not just blindly print it.
 0 1 2 0 0 0 0 
 ```
 
+it's just too dangerous to optimize for non general cases, implicitly.
+
+remember when you used "read" which returns int when the line has one number and int[] when mulitple? and you run into test cases of single element arr.
+
+---
+
+fine to have this for now.
+
+```cpp
+template <typename T>
+void read(vector<T>& vec) {
+  for (auto& element : vec) {
+    read(element);
+  }
+}
+```
+
+`a(n+5)` isnt part of the template.
+
+chances are you may just `a(n)` for simple iterables.
+
 

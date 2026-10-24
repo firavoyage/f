@@ -11,13 +11,14 @@
 // closed interval
 #define each(i, a, b) for (int i = a; i <= b; i += 1)
 #define reveach(i, a, b) for (int i = a; i >= b; i -= 1)
+#define rev_each reveach
 
 #define int long long
 
 using namespace std;
 
-void read(auto&&... args) {
-  (cin >> ... >> args);
+void read(auto&&... variables) {
+  (cin >> ... >> variables);
 }
 
 template <typename T>
@@ -26,14 +27,20 @@ void read(vector<T>& vec) {
     read(element);
   }
 }
+template <typename T>
+void read_vec(vector<T>& vec, int l, int r) {
+  each(i, l, r) {
+    read(vec[i]);
+  }
+}
 
 void readline(auto&&... s) {
   cin >> ws;  // ignore any trailing whitespace
   ((getline(cin, s)), ...);
 }
 
-void write(auto&&... args) {
-  (cout << ... << args);
+void write(auto&&... items) {
+  (cout << ... << items);
 }
 
 void __print(auto&& scalar) {
@@ -46,22 +53,31 @@ void __print(auto&& scalar) {
 //   }
 // }
 
-void pr(auto&&... args) {
-  (__print(args), ...);
+void pr(auto&&... items) {
+  (__print(items), ...);
 }
 
 void prn() {
   write('\n');
 }
 
-void prn(auto&&... args) {
-  pr(args...);
+void prn(auto&&... items) {
+  pr(items...);
 
   write('\n');
 }
 
-inline auto print(auto&&... args) {
-  return prn(args...);
+template <typename T>
+void prn_vec(vector<T>& elements, int l, int r) {
+  reveach(i, r, l) {
+    pr(elements[i]);
+  }
+
+  write('\n');
+}
+
+inline auto print(auto&&... items) {
+  return prn(items...);
 }
 
 void solve();
@@ -96,14 +112,7 @@ void solve() {
   read(n);
 
   vector<int> a(n + 5);
-  each(i, 1, n) {
-    read(a[i]);
-  }
 
-  each(i, 1, n) {
-    pr(a[i]);
-  }
-  prn();
-
-  prn(n, n + 1, n + 2);
+  read_vec(a, 1, n);
+  prn_vec(a, 1, n);
 }
