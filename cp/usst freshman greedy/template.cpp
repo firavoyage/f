@@ -1,4 +1,13 @@
 #include <bits/stdc++.h>
+// #define all(v) v.begin(), v.end()
+// #define reverse(v) v.rbegin(), v.rend()
+#define len(x) (int)(x).size()
+#define append push_back
+// #define push push_back
+#define each(i, a, b)
+#define each(i, n)
+#define int long long
+
 using namespace std;
 
 void read(auto&&... args) {

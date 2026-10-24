@@ -1238,3 +1238,282 @@ int main() {
 
 Would you like to also fix the **`read` function template** using this exact same structural design pattern to avoid input crashes?
 
+# to what extent is it popular of using namespace std among top cp players
+
+10:44 AM
+
+### to what extent is it popular of using namespace std among top cp players
+
+**Using** **`using namespace std;` is incredibly popular and considered standard practice among top competitive programming (CP) players.** While software engineers generally consider it a "bad practice" due to the risk of global name collisions in large, long-lived codebases, competitive programmers operate under entirely different constraints where **speed and code brevity** are paramount. [](https://www.reddit.com/r/cpp%5Fquestions/comments/1tzsd3x/do%5Fyou%5Fall%5Fuse%5Fthe%5Fnamespace%5Fstd/)
+
+The vast majority of top-tier competitive programmers (including Legendary Grandmasters on Codeforces like Tourist, Benq, and Ecnerwala) explicitly use `using namespace std;` in their templates.
+
+#### Why Top CP Players Use It
+
+* **Keystroke Optimization:** In a timed contest, typing `std::` before every `vector`, `pair`, `cin`, `cout`, `string`, and `map` adds massive overhead. Removing this requirement saves hundreds of keystrokes per problem. [](https://www.youtube.com/watch?v=To9%5FfH%5FywFE)
+* **Template-Driven Workflows:** CP players rely heavily on highly optimized pre-written templates. These templates are monolithic `.cpp` files rather than multi-file software projects, mitigating the primary risk of "namespace pollution" spilling across header files. [](https://www.reddit.com/r/cpp%5Fquestions/comments/1tzsd3x/do%5Fyou%5Fall%5Fuse%5Fthe%5Fnamespace%5Fstd/)
+* **Macro Compatibility:** Many CP players use short macros (e.g., `#define pb push_back`). Having `using namespace std;` at the top ensures these macros work seamlessly with standard library containers without cluttering macro definitions.
+
+#### How Software Engineering vs. CP Compare
+
+| Context                     | Practice                            | Primary Reason                                                                            |
+| --------------------------- | ----------------------------------- | ----------------------------------------------------------------------------------------- |
+| **Software Engineering**    | **Avoid using namespace std;**      | Code durability, readability, and avoiding unexpected name collisions in large codebases. |
+| **Competitive Programming** | **Always use using namespace std;** | Typing speed, short-term script life, and fast problem-solving execution.                 |
+
+#### The Small Caveats Even Top Players Avoid
+
+Even though they pull in the whole standard namespace, top players are careful about a few specific pitfalls:
+
+1. **Avoiding Common Variable Names:** C++ keywords or standard library functions like `next`, `prev`, `y1`, `left`, `right`, and `count` can clash with local variable names. Top players either avoid naming their global variables this way or deliberately isolate conflicting functions.
+2. **Local Overriding:** If a player _does_ need to implement a custom function that matches an STL name (like a custom `swap` or `sort`), they will call it using explicit namespace scoping or local overrides to prevent ambiguous compiler errors. [](https://www.reddit.com/r/cpp%5Fquestions/comments/1srrfz4/why%5Fdo%5Fpeople%5Fdo%5For%5Fnot%5Fdo%5Fusing%5Fnamespace%5Fstd/)
+
+Would you like to see an example of a **typical top-tier competitive programming template** to see how `using namespace std;` is structurally integrated with other speed macros?
+
+* [](https://www.reddit.com/r/cpp%5Fquestions/comments/1tzsd3x/do%5Fyou%5Fall%5Fuse%5Fthe%5Fnamespace%5Fstd/)  
+Reddit  
+Do you all use the namespace std? : r/cpp\_questions  
+using namespace anything is, in most cases, a bad idea, and is often forbidden in any C++ project. It's used in competitions to sa...
+* [](https://www.reddit.com/r/Cplusplus/comments/16c2o59/is%5Fusing%5Fnamespace%5Fstd%5Fcommon%5Foutside%5Fof%5Fcollege/)  
+Reddit  
+Is using namespace std common outside of college? - Reddit  
+Is using namespace std common outside of college? Question. Each class that has utilized C++ throughout my college experience has ...
+* [](https://www.quora.com/Why-do-people-hate-using-namespace-std-even-though-it-makes-your-code-cleaner-You-can-even-still-specify-std-when-using-something-from-the-standard-library-so-what-s-the-issue)  
+Quora  
+Why do people hate “using namespace std;” even though it makes ...  
+The purpose of namespaces in C++ is to reduce name collision. \* The C++ standard library is huge, and it's growing with every stan...
+
+Show all
+
+## how to override
+
+how to override
+
+10:47 AM
+
+### how to override
+
+In competitive programming, you **override** or bypass standard template library (STL) names brought in by `using namespace std;` in three primary ways depending on what you are trying to change:
+
+#### 1\. Overriding Functions (like `swap`, `min`, `max`)
+
+If you want to implement a custom version of a standard function, the most common CP approach is to define it globally. To avoid ambiguity, you can use **argument-dependent lookup (ADL)** or explicitly shadow it within the local function scope.
+
+* **Local Shadowing (Safest for CP):** If you only need a custom version inside a specific block or function, define a lambda or variable inside that scope. Local variables always take precedence over the global/namespace scope.
+
+cpp
+
+```
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    // Overriding the behavior of std::min for this local block using a lambda
+    auto min = [](int a, int b) {
+        return (a < b) ? b : a; // Custom behavior: returns the maximum instead
+    };
+
+    cout << min(5, 10) << "\n"; // Outputs 10 instead of 5
+    return 0;
+}
+
+```
+
+
+
+#### 2\. Overriding Variables & Objects (Avoiding Name Clashes)
+
+The most frustrating part of `using namespace std;` is accidentally using a variable name that exists inside the `std` namespace (like `next`, `prev`, `y1`, `left`, `right`, or `count`).
+
+If you define these as **local variables** inside `main()` or a function, C++ naturally overrides the global `std::` scope without any issues. However, if you must define them as **global variables** (common for large arrays/graphs in CP), you will get a compilation error. Top players bypass this by:
+
+* **Using a Custom Namespace for Globals:** Wrap your own global arrays and variables in a short custom namespace (like `G`).
+
+cpp
+
+```
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+// Solves name collisions like 'next' or 'left' for global variables
+namespace G {
+    int next[100005]; 
+    int left[100005];
+}
+
+int main() {
+    G::next[0] = 1; // Explicitly uses your global array, not std::next
+    return 0;
+}
+
+```
+
+
+
+#### 3\. Overriding STL Containers via Macros/Typedefs
+
+If you want to redefine a standard type shorthand (for example, making `vector<int>` easier to write or altering a container's default behavior), you use `using` aliases or `#define`.
+
+cpp
+
+```
+#include <iostream>
+#include <vector>
+#include <queue>
+
+using namespace std;
+
+// Shorthand overrides
+using vi = vector<int>;
+using pii = pair<int, int>;
+
+// Overriding priority_queue to be a Min-Heap by default instead of a Max-Heap
+#define min_heap priority_queue<int, vector<int>, greater<int>>
+
+int main() {
+    vi a = {1, 2, 3}; // Uses vector<int>
+    min_heap pq;      // Instantly gives you a min-heap
+    return 0;
+}
+
+```
+
+
+
+Are you running into a specific compiler error right now (like a **collision with `next` or `y1`**), or are you trying to implement a specific custom algorithm like a **custom comparator** for sorting?
+
+## can you define as normal global fn and override
+
+can you define as normal global fn and override
+
+10:48 AM
+
+### can you define as normal global fn and override
+
+**No, you cannot override an STL function by defining a normal global function with the exact same name and parameters** if you have `using namespace std;` active. Doing this will result in a **"call to '...' is ambiguous"** compiler error.
+
+Because `using namespace std;` dumps everything into the global scope, the compiler cannot decide whether you want to use your global function or the one from the `std` namespace.
+
+#### The Problem (Compiler Error)
+
+cpp
+
+```
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+// This will cause a compilation error later because std::swap already exists
+void swap(int &a, int &b) {
+    // custom logic
+}
+
+int main() {
+    int x = 5, y = 10;
+    swap(x, y); // ERROR: Call to 'swap' is ambiguous
+    return 0;
+}
+
+```
+
+
+
+#### The Solutions for Competitive Programming
+
+If you want to use a normal global function look-alike, you have three primary workarounds:
+
+##### 1\. The `std::` Prefix Bypass (Explicit Scoping)
+
+If you define your own global function, you can bypass the ambiguity at the call site. If you type just `swap()`, it errors. But if you type `::swap()`, the global scope resolution operator `::` forces the compiler to use your global function and ignore `std::swap`.
+
+cpp
+
+```
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+// Your normal global function
+void swap(int &a, int &b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+int main() {
+    int x = 5, y = 10;
+    ::swap(x, y); // SUCCESS: The '::' forces the compiler to use YOUR global function
+    return 0;
+}
+
+```
+
+
+
+##### 2\. The Custom Namespace Hack (Cleanest for CP)
+
+Instead of fighting the global scope, put your custom versions inside a tiny namespace (like `my`). This allows you to write normal functions without collisions.
+
+cpp
+
+```
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+namespace my {
+    void swap(int &a, int &b) {
+        // custom logic
+    }
+}
+
+int main() {
+    int x = 5, y = 10;
+    my::swap(x, y); // Short, clean, and avoids ambiguity completely
+    return 0;
+}
+
+```
+
+
+
+##### 3\. Change the Function Signature (Overloading)
+
+If your global function uses **different parameter types** than the standard library function, it is considered overloading, not a collision. The compiler will successfully choose your function based on the arguments.
+
+cpp
+
+```
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+struct Node { int val; };
+
+// This is perfectly fine because std::swap doesn't take 'Node' by default
+void swap(Node &a, Node &b) {
+    int temp = a.val;
+    a.val = b.val;
+    b.val = temp;
+}
+
+int main() {
+    Node n1{1}, n2{2};
+    swap(n1, n2); // SUCCESS: Compiler safely picks your function
+    return 0;
+}
+
+```
+
+
+
+Which **specific standard library function** (e.g., `swap`, `min`, `sort`) are you trying to replace with your own version? Knowing the function can help me show you the most optimized way to rewrite it.
+
