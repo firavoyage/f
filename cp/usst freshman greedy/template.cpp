@@ -107,6 +107,63 @@ signed main() {
   return 0;
 }
 
+// fp
+
+template <typename T, typename Func>
+auto map(const std::vector<T>& vec, Func f) {
+  using ReturnType = decltype(f(std::declval<T>()));
+  std::vector<ReturnType> res;
+  res.reserve(vec.size());
+  for (const auto& x : vec) {
+    res.push_back(f(x));
+  }
+  return res;
+}
+
+template <typename T, typename Func>
+auto reduce(const std::vector<T>& vec, Func f) {
+  using ReturnType = decltype(f(std::declval<T>(), std::declval<T>()));
+  if (vec.empty()) return std::optional<ReturnType>(std::nullopt);
+
+  ReturnType acc = vec[0];
+  for (size_t i = 1; i < vec.size(); ++i) {
+    acc = f(acc, vec[i]);
+  }
+  return std::optional<ReturnType>(acc);
+}
+
+template <typename T, typename Func, typename InitType>
+auto reduce(const std::vector<T>& vec, Func f, InitType initial_value) {
+  using ReturnType = decltype(f(std::declval<InitType>(), std::declval<T>()));
+  ReturnType acc = initial_value;
+  for (const auto& x : vec) {
+    acc = f(acc, x);
+  }
+  return acc;  // Returns pure type directly since an initial seed guarantees a value
+}
+
+template <typename T, typename Func>
+auto reduce_right(const std::vector<T>& vec, Func f) {
+  using ReturnType = decltype(f(std::declval<T>(), std::declval<T>()));
+  if (vec.empty()) return std::optional<ReturnType>(std::nullopt);
+
+  ReturnType acc = vec.back();
+  for (size_t i = vec.size() - 1; i > 0; --i) {
+    acc = f(vec[i - 1], acc);  // Element first, Accumulator second
+  }
+  return std::optional<ReturnType>(acc);
+}
+
+template <typename T, typename Func, typename InitType>
+auto reduce_right(const std::vector<T>& vec, Func f, InitType initial_value) {
+  using ReturnType = decltype(f(std::declval<T>(), std::declval<InitType>()));
+  ReturnType acc = initial_value;
+  for (size_t i = vec.size(); i > 0; --i) {
+    acc = f(vec[i - 1], acc);  // Element first, Accumulator second
+  }
+  return acc;  // Returns pure type directly
+}
+
 // solution
 
 /*

@@ -133,7 +133,7 @@ decimal b = 2 # lightblue
 let ... # let becomes green
 ```
 
----
+24
 
 "value" "items" feel like swe.
 
@@ -292,5 +292,32 @@ for (auto [idx, pair] : std::views::enumerate(std::views::zip(X, Y))) {
 
 wow.
 
+---
+
+2024, experimental?!
+
+it would have been already outdated if it were in web dev, lol.
+
+---
+
+doesnt feel i would really have `filter` `some` `every`, `cache`, `curry`, `partial`, `void`, `identity`, `compose`, `pipe`
+
+i mean, also it can be inefficient.
+
+and fn are not really first class citizens in cpp.
+
+just go the imperative way.
+
+---
+
+for diffing...
+
+i guess it's just
+
+```
+each i a b # or enum cases
+    if current i != expected i
+        prn i current expected
+```
 
 

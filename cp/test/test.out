@@ -1,1 +1,6 @@
-1
+Reduce (Nil): 10
+Reduce (Seed): 20
+Reduce Right (Nil): -2
+Reduce Right (Seed): 8
+Empty vector with 2 args correctly evaluated to 'nil'!
+Empty vector with 3 args evaluated to seed: 5
