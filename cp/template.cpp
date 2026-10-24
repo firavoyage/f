@@ -148,11 +148,21 @@ auto reduce_right_vec(const vector<T>& vec, Func f, InitType initial_value) {
 // string
 
 // std::format("{:.4f}", pi)
-auto format_float(auto n, auto precision) {
+auto format_float(auto n, int precision) {
   string result = "";
   if (n < 0) {
     result += '-';
     n = -n;
+  }
+
+  // Pre-round the number to correctly handle carries across decimals and
+  // integers
+  if (precision > 0) {
+    double rounding_factor = 0.5;
+    for (int i = 0; i < precision; ++i) {
+      rounding_factor /= 10.0;
+    }
+    n += rounding_factor;
   }
 
   long long int_part = (long long)n;
@@ -160,22 +170,13 @@ auto format_float(auto n, auto precision) {
 
   if (precision > 0) {
     result += '.';
-
     double fractional = n - int_part;
 
     for (int i = 0; i < precision; ++i) {
       fractional *= 10;
       int digit = (int)fractional;
-
-      if (i == precision - 1) {
-        double next_digit = (fractional - digit) * 10;
-        if (next_digit >= 5.0) {
-          digit++;
-        }
-      }
-
       result += to_string(digit);
-      fractional -= (int)fractional;
+      fractional -= digit;  // subtract the integer part of the digit
     }
   }
 

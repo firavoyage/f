@@ -147,11 +147,21 @@ auto reduce_right_vec(const vector<T>& vec, Func f, InitType initial_value) {
 // string
 
 // std::format("{:.4f}", pi)
-auto format_float(auto n, auto precision) {
+auto format_float(auto n, int precision) {
   string result = "";
   if (n < 0) {
     result += '-';
     n = -n;
+  }
+
+  // Pre-round the number to correctly handle carries across decimals and
+  // integers
+  if (precision > 0) {
+    double rounding_factor = 0.5;
+    for (int i = 0; i < precision; ++i) {
+      rounding_factor /= 10.0;
+    }
+    n += rounding_factor;
   }
 
   long long int_part = (long long)n;
@@ -159,22 +169,13 @@ auto format_float(auto n, auto precision) {
 
   if (precision > 0) {
     result += '.';
-
     double fractional = n - int_part;
 
     for (int i = 0; i < precision; ++i) {
       fractional *= 10;
       int digit = (int)fractional;
-
-      if (i == precision - 1) {
-        double next_digit = (fractional - digit) * 10;
-        if (next_digit >= 5.0) {
-          digit++;
-        }
-      }
-
       result += to_string(digit);
-      fractional -= (int)fractional;
+      fractional -= digit;  // subtract the integer part of the digit
     }
   }
 
@@ -377,7 +378,88 @@ the custom logic fails on case 9 aw.
 
 leverage math.
 
-- clearly if everyone + .49 >= 100, 
+- clearly if everyone + .49 >= 100,
+- ...
+
+
+
+well maybe it's really just a = 1 special case
+no there is no special case. when a = 1, it must be 100 100.
+
+
+
+idk if fmt float is flawed. let's test.
+
+
+yes it is
+
+9.17 
+9.18 
+9.19 
+9.110 
+9.21 
+9.22 
+9.23 
+9.24 
+9.25 
+9.26 
+9.27 
+9.28 
+9.29 
+9.30 
+9.31 
+9.32 
+9.33 
+9.34 
+9.35 
+9.36 
+9.37 
+9.38 
+9.39 
+9.40 
+9.41 
+9.42 
+9.43 
+9.44 
+9.45 
+9.46 
+9.47 
+9.48 
+9.49 
+9.50 
+9.51 
+9.52 
+9.53 
+9.54 
+9.55 
+9.56 
+9.57 
+9.58 
+9.59 
+9.510 
+9.61 
+9.62 
+9.63 
+9.64 
+9.65 
+9.66 
+9.67 
+9.68 
+9.69 
+9.610 
+9.71 
+9.72 
+9.73 
+
+
+
+really it still errs on test 9 w fmt float fixed.
+
+
+
+you minimum is 100 - when everyone hits their maximum.
+but can they hit .49 maxmum?
+
 
 */
 
@@ -411,18 +493,19 @@ void solve() {
     // prn("log", i, a[i], minimum, maximum);
 
     minimum = a[i] * 100 + minimum;
+
     maximum = a[i] * 100 + maximum;
 
-    pr(names[i]);
-    write(minimum / 100, '.', minimum % 100 < 10 ? "0" : "", minimum % 100,
-          ' ');
-    write(maximum / 100, '.', maximum % 100 < 10 ? "0" : "", maximum % 100,
-          ' ');
-    prn();
+    // pr(names[i]);
+    // write(minimum / 100, '.', minimum % 100 < 10 ? "0" : "", minimum % 100,
+    //       ' ');
+    // write(maximum / 100, '.', maximum % 100 < 10 ? "0" : "", maximum % 100,
+    //       ' ');
+    // prn();
 
     // prn(names[i], truediv(minimum, 100),
     //     truediv(maximum, 100));
-    // prn(names[i], format_float(truediv(minimum, 100), 2),
-    //     format_float(truediv(maximum, 100), 2));
+    prn(names[i], format_float(truediv(minimum, 100), 2),
+        format_float(truediv(maximum, 100), 2));
   }
 }
