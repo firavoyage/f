@@ -250,9 +250,57 @@ auto permutations(int n, int r) {
   return result;
 }
 
+template <typename T>
+auto _min(vector<T>& vec) {
+  double minimum = vec[0];
+
+  for (auto& element : vec) {
+    if (element < minimum) {
+      minimum = element;
+    }
+  }
+
+  return minimum;
+}
+auto _min(auto first, auto... rest) {
+  using CommonType = std::common_type_t<decltype(first), decltype(rest)...>;
+  CommonType current_min = first;
+  // auto current_min = first;
+
+  ((current_min = (rest < current_min) ? rest : current_min), ...);
+
+  return current_min;
+}
+
+template <typename T>
+auto _max(vector<T>& vec) {
+  double maximum = vec[0];
+
+  for (auto& element : vec) {
+    if (element > maximum) {
+      maximum = element;
+    }
+  }
+
+  return maximum;
+}
+auto _max(auto first, auto... rest) {
+  using CommonType = std::common_type_t<decltype(first), decltype(rest)...>;
+  CommonType current_max = first;
+  // auto current_max = first;
+
+  ((current_max = (rest > current_max) ? rest : current_max), ...);
+
+  return current_max;
+}
+
+auto _floor = [](auto x) { return static_cast<int>(std::floor(x)); };
+auto _ceil = [](auto x) { return static_cast<int>(std::ceil(x)); };
+
 // entry
 
-const bool is_single_task = true;
+bool is_single_task = false;
+is_single_task = true;
 
 const int nil = -1;
 

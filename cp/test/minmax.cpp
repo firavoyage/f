@@ -250,6 +250,18 @@ auto permutations(int n, int r) {
   return result;
 }
 
+template <typename T>
+auto variadic_min(vector<T>& vec) {
+  double minimum = vec[0];
+
+  for (auto& element : vec) {
+    if (element < minimum) {
+      minimum = element;
+    }
+  }
+
+  return minimum;
+}
 auto variadic_min(auto first, auto... rest) {
   // auto current_min = first;
 
@@ -264,9 +276,20 @@ auto variadic_min(auto first, auto... rest) {
   return current_min;
 }
 
+template <typename T>
+auto variadic_max(vector<T>& vec) {
+  double maximum = vec[0];
+
+  for (auto& element : vec) {
+    if (element > maximum) {
+      maximum = element;
+    }
+  }
+
+  return maximum;
+}
 auto variadic_max(auto first, auto... rest) {
   // auto current_max = first;
-
   using CommonType = std::common_type_t<decltype(first), decltype(rest)...>;
 
   CommonType current_max = first;
@@ -275,6 +298,8 @@ auto variadic_max(auto first, auto... rest) {
 
   return current_max;
 }
+
+const int max = 1;
 
 // entry
 
@@ -308,20 +333,22 @@ signed main() {
 */
 
 void solve() {
-  prn(max(1, 2));
+  // prn(max(1, 2));
   // prn(max(1, 2, 3));
 
   prn(min(1, 2));
 
   int a = 1, b = 2;
 
-  prn(max(a, b));
+  // prn(max(a, b));
   prn(min(a, b));
 
   // prn(max(1, 2, 3));
 
   // prn(max(3, 3.14));
-  prn(max(double(3), 3.14));
+  // prn(max(double(3), 3.14));
+
+  // prn(max);
 
   prn(variadic_max(3.14, 3, 2));
   prn(variadic_min(3.14, 3, 2));
@@ -333,4 +360,12 @@ void solve() {
 
   prn(variadic_max(c, d));
   prn(variadic_min(c, d));
+  prn(variadic_min(c));
+  prn(c);
+  prn(format_float(c, 100));
+
+  vector<int> x = {1, 12, 14};
+
+  prn(variadic_min(x));
+  prn(variadic_max(x));
 }
