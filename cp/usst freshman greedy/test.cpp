@@ -327,4 +327,10 @@ void solve() {
   prn(variadic_min(3.14, 3, 2));
   prn(variadic_max(3, 2, 3.14));
   prn(variadic_min(3, 2, 3.14));
+
+  double c = 1.21321312321;
+  long long d = 112312;
+
+  prn(variadic_max(c, d));
+  prn(variadic_min(c, d));
 }

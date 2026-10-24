@@ -374,5 +374,11 @@ no longer do i need
 #define macro(_1, _2, _3, _4, name, ...) name
 ```
 
+---
+
+- floor ceil should return int because mathematically they are
+  - rarely do you need to... well it makes totally no sense to round already imprecise numbers, yk double holds up to 10^15, while long long 10^18, clearly it can fit when float point are truncated
+- min max should polymorph and accept both vector and multiple scalars
+  - return double. more often do you need to 
 
 
