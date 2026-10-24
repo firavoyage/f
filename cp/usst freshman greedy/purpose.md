@@ -139,4 +139,11 @@ let ... # let becomes green
 
 i would name as `scalar` `elements` here.
 
+---
+
+for some reason vscode gives lsp absolute privilege and internal api to
+force rename preview anyway, though i always accept default of what's in scope
+
+use ctrl h instead. force it. fuck it.
+
 

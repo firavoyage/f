@@ -2,23 +2,23 @@
 using namespace std;
 
 void read(auto&&... args) {
-  (std::cin >> ... >> args);
+  (cin >> ... >> args);
 }
 
 template <typename T>
-void read(std::vector<T>& vec) {
+void read(vector<T>& vec) {
   for (auto& element : vec) {
     read(element);
   }
 }
 
-void readline(auto&&... args) {
-  std::cin >> std::ws;  // ignore any trailing whitespace
-  (std::cin >> ... >> args);
+void readline(auto&&... s) {
+  cin >> ws;  // ignore any trailing whitespace
+  ((getline(cin, s)), ...);
 }
 
 void write(auto&&... args) {
-  (std::cout << ... << args);
+  (cout << ... << args);
 }
 
 void __print(auto&& scalar) {
@@ -26,7 +26,7 @@ void __print(auto&& scalar) {
 }
 
 template <typename T>
-void __print(std::vector<T>& elements) {
+void __print(vector<T>& elements) {
   for (auto& element : elements) {
     write(element, ' ');
   }
@@ -78,17 +78,23 @@ signed main() {
 */
 
 void solve() {
-  int n;
-  read(n);
+  // int n;
+  // read(n);
 
-  std::vector<int> a(n);
-  read(a);  // Direct vector input! No manual for-loop needed.
+  // vector<int> a(n);
+  // read(a);
 
-  // Direct printing
-  prn(a);
+  // prn(a);
 
-  // Mixed printing works too
-  prn("The final array is:", a);
+  // prn("The final array is:", a);
 
-  prn(n, n + 1, n + 2);
+  // prn(n, n + 1, n + 2);
+
+  string s;
+
+  read(s);
+  prn(s);
+
+  readline(s);
+  prn(s);
 }
