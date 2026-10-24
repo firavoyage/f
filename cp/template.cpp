@@ -86,7 +86,7 @@ inline auto print(auto&&... items) {
 }
 
 inline auto log(auto&&... items) {
-  prn(items...);
+  prn("log", items...);
 }
 
 // fp

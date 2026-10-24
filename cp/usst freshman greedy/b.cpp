@@ -364,6 +364,21 @@ your own range cap [100-(sum + .49 * (n-1)),
 
 where your own range is [-.5, +.49]
 
+
+
+really, i wonder if format float rounding would cause problem here...
+wait, wrong test 4 (instead of 9) this time?!
+
+
+
+the custom logic fails on case 9 aw.
+
+
+
+leverage math.
+
+- clearly if everyone + .49 >= 100, 
+
 */
 
 void solve() {
@@ -379,12 +394,12 @@ void solve() {
 
   int sum = summation(a);
 
-  if (sum * 100 + 49 * n < 100 || sum - 50 * n > 100) {
+  if (sum * 100 + 49 * n < 100 * 100 || sum - 50 * n > 100 * 100) {
     prn("IMPOSSIBLE");
     return;
   }
 
-  prn(sum);
+  // prn(sum);
 
   each(i, 1, n) {
     int minimum = 100 * 100 - (sum * 100 + 49 * (n - 1));
@@ -397,8 +412,17 @@ void solve() {
 
     minimum = a[i] * 100 + minimum;
     maximum = a[i] * 100 + maximum;
-    
-    prn(names[i], format_float(truediv(minimum, 100), 2),
-        format_float(truediv(maximum, 100), 2));
+
+    pr(names[i]);
+    write(minimum / 100, '.', minimum % 100 < 10 ? "0" : "", minimum % 100,
+          ' ');
+    write(maximum / 100, '.', maximum % 100 < 10 ? "0" : "", maximum % 100,
+          ' ');
+    prn();
+
+    // prn(names[i], truediv(minimum, 100),
+    //     truediv(maximum, 100));
+    // prn(names[i], format_float(truediv(minimum, 100), 2),
+    //     format_float(truediv(maximum, 100), 2));
   }
 }
