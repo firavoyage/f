@@ -240,12 +240,39 @@ auto or_ = [](auto a, auto b) { return a | b; };
 auto not_ = [](auto a) { return !a; };
 auto xor_ = [](auto a, auto b) { return a ^ b; };
 
-auto summation(auto numbers) {
-  return reduce_vec(numbers, add);
+auto summation = [](auto numbers) { return reduce_vec(numbers, add); };
+
+auto multiplication = [](auto numbers) { return reduce_vec(numbers, mul); };
+
+auto ln = [](auto a) { return log(a); };
+
+auto logab = [](auto a, auto b) { return ln(a) / ln(b); };
+
+auto combinations(int n, int r) {
+  if (r < 0 || r > n) return 0;
+  if (r == 0 || r == n) return 1;
+
+  // Optimize calculation since C(n, r) == C(n, n-r)
+  if (r > n - r) {
+    r = n - r;
+  }
+
+  auto result = 1;
+  for (int i = 1; i <= r; ++i) {
+    result *= (n - r + i);
+    result /= i;
+  }
+  return result;
 }
 
-auto multiplication(auto numbers) {
-  return reduce_vec(numbers, mul);
+auto permutations(int n, int r) {
+  if (r < 0 || r > n) return 0;
+
+  auto result = 1;
+  for (int i = 0; i < r; ++i) {
+    result *= (n - i);
+  }
+  return result;
 }
 
 // solution
@@ -257,9 +284,6 @@ auto multiplication(auto numbers) {
 */
 
 void solve() {
-  // int a, b;
-  // read(a, b);
-
-  // prn(pow(a, b));
-  prn(integer(log(2.7)));
+  prn(1);
+  
 }
