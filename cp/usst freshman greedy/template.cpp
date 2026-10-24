@@ -205,18 +205,30 @@ auto format_float(auto n, auto precision) {
 
 auto add = [](auto a, auto b) { return a + b; };
 
-// auto sub = [](auto a, auto b) { return a - b; };
+auto sub = [](auto a, auto b) { return a - b; };
 
 auto mul = [](auto a, auto b) { return a * b; };
 
-// auto mul = [](auto a, auto b) { return a * b; };
+auto truediv = [](auto a, auto b) { return double(a) / b; };
 
-// auto add(auto a, auto b) {
-//   return a + b;
-// }
+auto floordiv = [](auto a, auto b) { return floor(double(a) / b); };
+
+auto divmod = [](auto numerator, auto denominator) {
+  auto quotient = numerator / denominator, remainder = numerator % denominator;
+  return std::pair{quotient, remainder};
+};
+
+auto and_ = [](auto a, auto b) { return a & b; };
+auto or_ = [](auto a, auto b) { return a | b; };
+auto not_ = [](auto a) { return !a; };
+auto xor_ = [](auto a, auto b) { return a ^ b; };
 
 auto summation(auto numbers) {
   return reduce_vec(numbers, add);
+}
+
+auto multiplication(auto numbers) {
+  return reduce_vec(numbers, mul);
 }
 
 // solution
@@ -228,30 +240,9 @@ auto summation(auto numbers) {
 */
 
 void solve() {
-  int n;
-  read(n);
+  int a, b;
+  read(a, b);
 
-  vector<int> a(n);
+  prn(format_float(truediv(a, b), 3), floordiv(a, b));
 
-  read(a);
-
-  // ranges::sort(a);
-  // std::vector<int> nums = {1, 2, 3, 4};
-
-  // prn(sum_nil);
-
-  prn(summation(a));
-
-  // prn(ranges::max(a));
-
-  // float n;
-  // read(n);
-  // prn(format_float(n, 1));
-
-  // vector<int> a(n + 5);
-
-  // read_vec(a, 1, n);
-  // prn_vec(a, 1, n);
-
-  // std::vector<int> nums = {1, 2, 3, 4};
 }
