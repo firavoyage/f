@@ -9,8 +9,11 @@ inspiring problems
 
 failed problems
 
-- b
-  - weird wa, no information/brute force, no progress could be made
+~~b~~
+
+- weird wa, no information/brute force, no progress could be made
+
+> code readability matters. better to compute meaningful intermediate values rather than patching flawed ones. you could not debug messy code.
 
 upsolved problems
 

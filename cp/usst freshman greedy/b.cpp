@@ -514,6 +514,15 @@ min * 100 % 100 is consistent, while max is .49
   - 1 1 99?
 
 
+
+ac.
+
+yeah, isnt it. it's code readability issue.
+
+you should calc meaningful intermediate values at first, rather than patching them.
+
+i could not debug messy code anyway. and im not going to do it.
+
 */
 
 void solve() {
@@ -529,18 +538,33 @@ void solve() {
     a[i] *= 100;  // represent ppl chosen
   }
 
-  int theoretical_minimum(int i) {
+  auto theoretical_minimum = [&](int i) {
     if (a[i] == 0) {
-      return 0;
+      return integer(0);
     } else {
       return a[i] - 50;
     }
+  };
+
+  auto theoretical_maximum = [&](int i) {
+    if (a[i] == 10000) {
+      return integer(10000);
+    } else {
+      return a[i] + 49;
+    }
+  };
+
+  int theoretical_minimum_sum = 0;
+  each(i, 1, n){
+    theoretical_minimum_sum += theoretical_minimum(i);
   }
 
-  
+  int theoretical_maximum_sum = 0;
+  each(i, 1, n){
+    theoretical_maximum_sum += theoretical_maximum(i);
+  }
 
-  if (sum * 100 + 49 * n < 100 * 100 ||
-      sum - 50 * (n - zero_count) > 100 * 100) {
+  if (theoretical_maximum_sum < 10000 || theoretical_minimum_sum > 10000) {
     prn("IMPOSSIBLE");
     return;
   }
@@ -548,32 +572,12 @@ void solve() {
   // prn(sum);
 
   each(i, 1, n) {
-    int minimum = 100 * 100 - (sum * 100 + 49 * (n - 1));
-    minimum = _min(_max(minimum, -50), 49);
-    // minimum = _max(minimum, -50);
+    int rest_minimum = theoretical_minimum_sum - theoretical_minimum(i);
+    int rest_maximum = theoretical_maximum_sum - theoretical_maximum(i);
 
-    int rest_non_zero_count = (n - 1) - (zero_count - (a[i] == 0));
-    // int rest_non_zero_count = (n-1) - (zero_count - a[i] == 0);
-    int maximum = 100 * 100 - (sum * 100 - 50 * rest_non_zero_count);
-    maximum = _min(_max(maximum, -50), 49);
+    int minimum = _max(theoretical_minimum(i), 10000 - rest_maximum);
+    int maximum = _min(theoretical_maximum(i), 10000 - rest_minimum);
 
-    // prn("log", i, a[i], minimum, maximum);
-
-    minimum = a[i] * 100 + minimum;
-    minimum = _min(_max(minimum, 0), 100 * 100);
-
-    maximum = a[i] * 100 + maximum;
-    maximum = _min(_max(maximum, 0), 100 * 100);
-
-    // pr(names[i]);
-    // write(minimum / 100, '.', minimum % 100 < 10 ? "0" : "", minimum % 100,
-    //       ' ');
-    // write(maximum / 100, '.', maximum % 100 < 10 ? "0" : "", maximum % 100,
-    //       ' ');
-    // prn();
-
-    // prn(names[i], truediv(minimum, 100),
-    //     truediv(maximum, 100));
     prn(names[i], format_float(truediv(minimum, 100), 2),
         format_float(truediv(maximum, 100), 2));
   }
