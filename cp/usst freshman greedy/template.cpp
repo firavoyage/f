@@ -112,7 +112,7 @@ signed main() {
 // fp
 
 template <typename T, typename Func>
-auto map(const vector<T>& vec, Func f) {
+auto map_vec(const vector<T>& vec, Func f) {
   using ReturnType = decltype(f(declval<T>()));
   vector<ReturnType> res;
   res.reserve(vec.size());
@@ -123,19 +123,18 @@ auto map(const vector<T>& vec, Func f) {
 }
 
 template <typename T, typename Func>
-auto reduce(const vector<T>& vec, Func f) {
+auto reduce_vec(const vector<T>& vec, Func f) {
   using ReturnType = decltype(f(declval<T>(), declval<T>()));
-  if (vec.empty()) return optional<ReturnType>(nullopt);
 
   ReturnType acc = vec[0];
   for (size_t i = 1; i < vec.size(); ++i) {
     acc = f(acc, vec[i]);
   }
-  return optional<ReturnType>(acc);
+  return acc;
 }
 
 template <typename T, typename Func, typename InitType>
-auto reduce(const vector<T>& vec, Func f, InitType initial_value) {
+auto reduce_vec(const vector<T>& vec, Func f, InitType initial_value) {
   using ReturnType = decltype(f(declval<InitType>(), declval<T>()));
   ReturnType acc = initial_value;
   for (const auto& x : vec) {
@@ -145,7 +144,7 @@ auto reduce(const vector<T>& vec, Func f, InitType initial_value) {
 }
 
 template <typename T, typename Func>
-auto reduce_right(const vector<T>& vec, Func f) {
+auto reduce_right_vec(const vector<T>& vec, Func f) {
   using ReturnType = decltype(f(declval<T>(), declval<T>()));
   if (vec.empty()) return optional<ReturnType>(nullopt);
 
@@ -157,7 +156,7 @@ auto reduce_right(const vector<T>& vec, Func f) {
 }
 
 template <typename T, typename Func, typename InitType>
-auto reduce_right(const vector<T>& vec, Func f, InitType initial_value) {
+auto reduce_right_vec(const vector<T>& vec, Func f, InitType initial_value) {
   using ReturnType = decltype(f(declval<T>(), declval<InitType>()));
   ReturnType acc = initial_value;
   for (size_t i = vec.size(); i > 0; --i) {
@@ -202,7 +201,23 @@ auto format_float(auto n, auto precision) {
   return result;
 }
 
+// math
 
+auto add = [](auto a, auto b) { return a + b; };
+
+// auto sub = [](auto a, auto b) { return a - b; };
+
+auto mul = [](auto a, auto b) { return a * b; };
+
+// auto mul = [](auto a, auto b) { return a * b; };
+
+// auto add(auto a, auto b) {
+//   return a + b;
+// }
+
+auto summation(auto numbers) {
+  return reduce_vec(numbers, add);
+}
 
 // solution
 
@@ -220,9 +235,14 @@ void solve() {
 
   read(a);
 
-  ranges::sort(a);
+  // ranges::sort(a);
+  // std::vector<int> nums = {1, 2, 3, 4};
 
-  prn(ranges::max(a));
+  // prn(sum_nil);
+
+  prn(summation(a));
+
+  // prn(ranges::max(a));
 
   // float n;
   // read(n);
@@ -232,4 +252,6 @@ void solve() {
 
   // read_vec(a, 1, n);
   // prn_vec(a, 1, n);
+
+  // std::vector<int> nums = {1, 2, 3, 4};
 }

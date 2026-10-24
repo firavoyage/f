@@ -326,5 +326,44 @@ quite weird to group items. it's not general.
 
 also, i dont feel ive ever necessarily used newton root finding.
 
+---
+
+interesting,
+
+```
+range::min, range::max
+```
+
+instead of polymorphing std::min for vectors.
+
+and seems i could not override easily w using ns std.
+
+---
+
+it already caused too many troubles naming fn as nouns.
+
+use summation and muliplication instead.
+
+feel free you define sum and prod in your own logics.
+
+---
+
+interesting, your local global definition has no higher priority.
+
+---
+
+wow impressive
+
+```
+auto add = [](auto a, auto b) { return a + b; };
+
+// auto add(auto a, auto b) {
+//   return a + b;
+// }
+```
+
+put it straightly, the first works and the second doesnt.
+
+> cpp is amazing!
 
 
