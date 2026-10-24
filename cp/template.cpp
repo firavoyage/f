@@ -294,13 +294,12 @@ auto _max(auto first, auto... rest) {
   return current_max;
 }
 
-auto _floor = [](auto x) { return static_cast<int>(std::floor(x)); };
-auto _ceil = [](auto x) { return static_cast<int>(std::ceil(x)); };
+auto _floor = [](auto x) { return static_cast<int>(floor(x)); };
+auto _ceil = [](auto x) { return static_cast<int>(ceil(x)); };
 
 // entry
 
-bool is_single_task = false;
-is_single_task = true;
+const bool is_single_task = false;
 
 const int nil = -1;
 

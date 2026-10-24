@@ -382,4 +382,18 @@ no longer do i need
   - return double. more often do you need to keep precise ints than comparing long longs.
   - it's nice to just use common type
 
+---
+
+```cpp
+const bool is_single_task = false;
+```
+
+now i could not as easily comment this line.
+
+and i would not use `#tricks`, as it's even more ambiguous (what does commenting a false flag mean?!).
+
+i guess for the vast majority there would be multiple test cases.
+
+and flags should be ideally false by default.
+
 
