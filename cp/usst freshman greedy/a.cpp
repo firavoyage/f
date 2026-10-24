@@ -296,14 +296,22 @@ void solve() {
     a[i] = maximum;
   }
 
-  int rem = maximum * k - n;
+  int current = maximum * base;
+  int rem = current - n;
+
+  prn(n, k, base, maximum, current, rem);
 
   rev_each(i, k, 1) {
-    int deduction = min_(floor(truediv(rem, k)), maximum);
+    prn("deduct", i, rem);
+
+    if (rem <= 0) {
+      break;
+    }
+    int deduction = min_(floor(truediv(rem, i)), maximum);
 
     a[i] -= deduction;
     rem -= k * deduction;
   }
 
-  prn_vec(a, 1, n);
+  prn_vec(a, 1, k);
 }

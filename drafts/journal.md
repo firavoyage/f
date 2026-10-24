@@ -55358,6 +55358,10 @@ there are optimization. like you can render on web, by pure fn, or diliver sth p
 
 14 40 play vimtutor.
 
+24
+
+20 00 draft cpp cp template. submit the first cpp solution.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

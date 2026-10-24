@@ -555,3 +555,444 @@ check(){
 
 ```
 
+# revise. also look for $problem.\[n\].in, $problem.\[n\].ans, output $problem.\[n\].out and test them all check(){
+
+ problem=$1 
+
+ filename="$problem.cpp" 
+
+ build\_filename="$HOME/.cache/$problem.cpp" 
+
+ input\_file="$problem.in" 
+
+ output\_file="$problem.out" 
+
+ answer\_file="$problem.ans" 
+
+  
+ compile "$filename" -o "$build\_filename" && "$build\_filename" < "$input\_file" > "$output\_file" || return 1 
+
+  
+ \# diff exits with 0 if files are identical, 1 if they differ 
+
+ if diff -w -B --strip-trailing-cr -q "$output\_file" "$answer\_file" > /dev/null; then 
+
+ \# echo "$problem: passed" 
+
+ echo "passed" 
+
+ else 
+
+ cat "$input\_file" 
+
+ echo '' 
+
+ \# echo "$problem: failed" 
+
+ diff -w -B --strip-trailing-cr -y "$output\_file" "$answer\_file" 
+
+ fi 
+
+ } 
+
+######   
+
+Here is the revised and improved `check()` function.
+
+### Key Improvements:
+
+1. **Multiple Test Case Support:** Automatically discovers and tests all matching test files (`$problem.in`, `$problem.1.in`, `$problem.2.in`, `$problem.sample.in`, etc.).
+2. **Dynamic Output/Answer Mapping:** Automatically pairs each input file with its corresponding `.ans` and `.out` files (e.g., `problem.1.in` →→ `problem.1.ans` / `problem.1.out`).
+3. **Compilation Fix:** Corrected the build path from `$HOME/.cache/$problem.cpp` (which had a source extension) to `$HOME/.cache/$problem` and ensured the cache directory is created automatically.
+4. **Per-Test Status & Reporting:** Reports pass/fail status for each individual test case and aggregates the final result.
+
+Bash
+
+```
+check() {
+  local problem=$1
+  local filename="$problem.cpp"
+  local build_dir="$HOME/.cache"
+  local build_filename="$build_dir/$problem"
+
+  # Ensure cache directory exists
+  mkdir -p "$build_dir"
+
+  # Compile once before running tests
+  if ! compile "$filename" -o "$build_filename"; then
+    echo "Compilation failed for $filename"
+    return 1
+  fi
+
+  # Find all input files ($problem.in and $problem.*.in)
+  local input_files=()
+  [[ -f "$problem.in" ]] && input_files+=("$problem.in")
+
+  shopt -s nullglob
+  for f in "$problem."*.in; do
+    input_files+=("$f")
+  done
+  shopt -u nullglob
+
+  if [ ${#input_files[@]} -eq 0 ]; then
+    echo "No test cases found for '$problem'."
+    return 1
+  fi
+
+  local all_passed=true
+
+  # Run and test all found test cases
+  for input_file in "${input_files[@]}"; do
+    local prefix="${input_file%.in}"
+    local output_file="$prefix.out"
+    local answer_file="$prefix.ans"
+    local test_name=$(basename "$input_file")
+
+    if [ ! -f "$answer_file" ]; then
+      echo "[$test_name] Warning: Answer file $answer_file not found, skipping."
+      continue
+    }
+
+    # Execute program
+    if ! "$build_filename" < "$input_file" > "$output_file"; then
+      echo "[$test_name]: Runtime Error"
+      all_passed=false
+      continue
+    }
+
+    # Compare output with answer
+    if diff -w -B --strip-trailing-cr -q "$output_file" "$answer_file" > /dev/null; then
+      echo "[$test_name]: passed"
+    else
+      echo "[$test_name]: failed"
+      echo "--- Input ($input_file) ---"
+      cat "$input_file"
+      echo -e "\n--- Diff (- output | + answer) ---"
+      diff -w -B --strip-trailing-cr -y "$output_file" "$answer_file"
+      echo "-----------------------------------"
+      all_passed=false
+    fi
+  done
+
+  $all_passed && return 0 || return 1
+}
+
+```
+
+##### fix shell parse error 
+
+ fix shell parse error 
+
+######   
+
+The parse error was caused by a typo where an `if` statement was incorrectly closed with a closing brace (`}`) instead of `fi`.
+
+Here is the corrected and fully working version of the `check()` function:
+
+Bash
+
+```
+check() {
+  local problem=$1
+  local filename="$problem.cpp"
+  local build_dir="$HOME/.cache"
+  local build_filename="$build_dir/$problem"
+
+  # Ensure cache directory exists
+  mkdir -p "$build_dir"
+
+  # Compile once before running tests
+  if ! compile "$filename" -o "$build_filename"; then
+    echo "Compilation failed for $filename"
+    return 1
+  fi
+
+  # Find all input files ($problem.in and $problem.*.in)
+  local input_files=()
+  [[ -f "$problem.in" ]] && input_files+=("$problem.in")
+
+  shopt -s nullglob
+  for f in "$problem."*.in; do
+    input_files+=("$f")
+  done
+  shopt -u nullglob
+
+  if [ ${#input_files[@]} -eq 0 ]; then
+    echo "No test cases found for '$problem'."
+    return 1
+  fi
+
+  local all_passed=0
+
+  # Run and test all found test cases
+  for input_file in "${input_files[@]}"; do
+    local prefix="${input_file%.in}"
+    local output_file="$prefix.out"
+    local answer_file="$prefix.ans"
+    local test_name=$(basename "$input_file")
+
+    if [ ! -f "$answer_file" ]; then
+      echo "[$test_name] Warning: Answer file $answer_file not found, skipping."
+      continue
+    fi  # FIXED: changed } to fi
+
+    # Execute program
+    if ! "$build_filename" < "$input_file" > "$output_file"; then
+      echo "[$test_name]: Runtime Error"
+      all_passed=1
+      continue
+    fi
+
+    # Compare output with answer
+    if diff -w -B --strip-trailing-cr -q "$output_file" "$answer_file" > /dev/null; then
+      echo "[$test_name]: passed"
+    else
+      echo "[$test_name]: failed"
+      echo "--- Input ($input_file) ---"
+      cat "$input_file"
+      echo -e "\n--- Diff (- output | + answer) ---"
+      diff -w -B --strip-trailing-cr -y "$output_file" "$answer_file"
+      echo "-----------------------------------"
+      all_passed=1
+    fi
+  done
+
+  return $all_passed
+}
+
+```
+
+##### what is shopt 
+
+ what is shopt 
+
+######   
+
+`shopt` (short for **Shell Options**) is a built-in command in **Bash** used to set, unset, and query shell behavior flags.
+
+It controls advanced options that are specific to Bash (as opposed to `set`, which manages standard POSIX shell options).
+
+### How `shopt` Works
+
+| Command               | Action                                              |
+| --------------------- | --------------------------------------------------- |
+| shopt -s option\_name | **Set** (enable) an option                          |
+| shopt -u option\_name | **Unset** (disable) an option                       |
+| shopt option\_name    | Query whether an option is enabled or disabled      |
+| shopt                 | List all available options and their current status |
+
+### Why it was used in your script (`nullglob`)
+
+In the script provided earlier:
+
+Bash
+
+```
+shopt -s nullglob
+for f in "$problem."*.in; do
+  input_files+=("$f")
+done
+shopt -u nullglob
+
+```
+
+#### Without `nullglob` (Default Bash Behavior):
+
+If no files match a wildcard pattern like `problem.*.in`, Bash leaves the wildcard pattern **as a literal string**.
+
+For example, if `problem.1.in` doesn't exist, the loop will run once with `f="problem.*.in"`, causing file errors when the script tries to open a file literally named `problem.*.in`.
+
+#### With `shopt -s nullglob`:
+
+If no matching files exist, the pattern expands to **nothing** (an empty list). The loop simply doesn't run, preventing file errors.
+
+We then run `shopt -u nullglob` right after to return Bash to its default behavior so it doesn't affect the rest of your shell session.
+
+### Other Frequently Used `shopt` Options
+
+* **`dotglob`**: Includes hidden files (files starting with `.`) in wildcard expansions like `*`.
+* **`globstar`**: Enables recursive matching using `**` (e.g., `ls **/*.cpp` searches all subdirectories).
+* **`nocaseglob`**: Makes wildcard matching case-insensitive (e.g., `*.jpg` matches `.JPG`, `.Jpg`, etc.).
+* **`autocd`**: Allows you to change directory by typing just the path (e.g., typing `/tmp` instead of `cd /tmp`).
+
+Would you like help tweaking any shell behaviors or glob patterns for your competitive programming workflow?
+
+##### make it zsh compatible 
+
+ make it zsh compatible 
+
+######   
+
+To make the script compatible with **Zsh** (the default shell on modern macOS and common in many Linux environments), we need to replace Bash-specific constructs like `shopt` with Zsh's built-in glob qualifiers and options (like `NULL_GLOB`).
+
+Here is the Zsh-compatible version of your `check()` function:
+
+Bash
+
+```
+check() {
+  local problem=$1
+  local filename="$problem.cpp"
+  local build_dir="$HOME/.cache"
+  local build_filename="$build_dir/$problem"
+
+  # Ensure cache directory exists
+  mkdir -p "$build_dir"
+
+  # Compile once before running tests
+  if ! compile "$filename" -o "$build_filename"; then
+    echo "Compilation failed for $filename"
+    return 1
+  fi
+
+  # Find all input files ($problem.in and $problem.*.in)
+  local input_files=()
+  [[ -f "$problem.in" ]] && input_files+=("$problem.in")
+
+  # Zsh equivalent of nullglob using local function scope
+  () {
+    setopt LOCAL_OPTIONS NULL_GLOB
+    local f
+    for f in "$problem."*.in; do
+      input_files+=("$f")
+    done
+  }
+
+  if [ ${#input_files[@]} -eq 0 ]; then
+    echo "No test cases found for '$problem'."
+    return 1
+  fi
+
+  local all_passed=0
+
+  # Run and test all found test cases
+  for input_file in "${input_files[@]}"; do
+    local prefix="${input_file%.in}"
+    local output_file="$prefix.out"
+    local answer_file="$prefix.ans"
+    local test_name=$(basename "$input_file")
+
+    if [ ! -f "$answer_file" ]; then
+      echo "[$test_name] Warning: Answer file $answer_file not found, skipping."
+      continue
+    fi
+
+    # Execute program
+    if ! "$build_filename" < "$input_file" > "$output_file"; then
+      echo "[$test_name]: Runtime Error"
+      all_passed=1
+      continue
+    fi
+
+    # Compare output with answer
+    if diff -w -B --strip-trailing-cr -q "$output_file" "$answer_file" > /dev/null; then
+      echo "[$test_name]: passed"
+    else
+      echo "[$test_name]: failed"
+      echo "--- Input ($input_file) ---"
+      cat "$input_file"
+      echo -e "\n--- Diff (- output | + answer) ---"
+      diff -w -B --strip-trailing-cr -y "$output_file" "$answer_file"
+      echo "-----------------------------------"
+      all_passed=1
+    fi
+  done
+
+  return $all_passed
+}
+
+```
+
+### Key Zsh Adjustments Made:
+
+1. **`NULL_GLOB` Option:** Instead of Bash's `shopt -s nullglob`, Zsh uses `setopt NULL_GLOB`.
+2. **Anonymous Function Scope (`() { ... }`):** We wrap the globbing block inside an anonymous function with `setopt LOCAL_OPTIONS`. This ensures that `NULL_GLOB` is automatically reverted right after the loop finishes, keeping your main shell environment clean.
+
+##### output one "passed" if all passed 
+
+ output one "passed" if all passed 
+
+######   
+
+Here is the updated Zsh-compatible `check()` function. It will now suppress per-test success messages and output just a single **"passed"** if all test cases pass successfully, while still printing details and diffs if any test fails.
+
+Bash
+
+```
+check() {
+  local problem=$1
+  local filename="$problem.cpp"
+  local build_dir="$HOME/.cache"
+  local build_filename="$build_dir/$problem"
+
+  # Ensure cache directory exists
+  mkdir -p "$build_dir"
+
+  # Compile once before running tests
+  if ! compile "$filename" -o "$build_filename"; then
+    echo "Compilation failed for $filename"
+    return 1
+  fi
+
+  # Find all input files ($problem.in and $problem.*.in)
+  local input_files=()
+  [[ -f "$problem.in" ]] && input_files+=("$problem.in")
+
+  # Zsh equivalent of nullglob using local function scope
+  () {
+    setopt LOCAL_OPTIONS NULL_GLOB
+    local f
+    for f in "$problem."*.in; do
+      input_files+=("$f")
+    done
+  }
+
+  if [ ${#input_files[@]} -eq 0 ]; then
+    echo "No test cases found for '$problem'."
+    return 1
+  fi
+
+  local all_passed=0
+
+  # Run and test all found test cases
+  for input_file in "${input_files[@]}"; do
+    local prefix="${input_file%.in}"
+    local output_file="$prefix.out"
+    local answer_file="$prefix.ans"
+    local test_name=$(basename "$input_file")
+
+    if [ ! -f "$answer_file" ]; then
+      echo "[$test_name] Warning: Answer file $answer_file not found, skipping."
+      continue
+    fi
+
+    # Execute program
+    if ! "$build_filename" < "$input_file" > "$output_file"; then
+      echo "[$test_name]: Runtime Error"
+      all_passed=1
+      continue
+    fi
+
+    # Compare output with answer
+    if diff -w -B --strip-trailing-cr -q "$output_file" "$answer_file" > /dev/null; then
+      # Silent on pass for individual tests
+      continue
+    else
+      echo "[$test_name]: failed"
+      echo "--- Input ($input_file) ---"
+      cat "$input_file"
+      echo -e "\n--- Diff (- output | + answer) ---"
+      diff -w -B --strip-trailing-cr -y "$output_file" "$answer_file"
+      echo "-----------------------------------"
+      all_passed=1
+    fi
+  done
+
+  if [ $all_passed -eq 0 ]; then
+    echo "passed"
+    return 0
+  else
+    return 1
+  fi
+}
+```
