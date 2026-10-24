@@ -9,7 +9,8 @@ inspiring problems
 
 failed problems
 
-- weird wa, no information/brute force, no progress could be made
+- b
+  - weird wa, no information/brute force, no progress could be made
 
 upsolved problems
 
