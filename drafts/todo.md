@@ -44,10 +44,10 @@ if you can, you may try to parse katex.
 
 ---
 
-- code?, edit?
-- have, record, observe
-- purpose, repo, (journal)
 - humility, pure, ...
+- have, record, observe
+- code?, edit?
+- purpose, repo, (journal)
 - para, material, ...
 - float
 

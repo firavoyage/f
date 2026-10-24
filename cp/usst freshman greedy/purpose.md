@@ -234,4 +234,63 @@ void read(vector<T>& vec) {
 
 chances are you may just `a(n)` for simple iterables.
 
+---
+
+it's way easier and more intuitive to say
+
+```
+each(0, n-1)
+```
+
+than
+
+```
+open_each(0, n)
+```
+
+it feels.
+
+btw, as ive separated each and rev_each <!-- rather than guessing by is start < end -->, it would not cause problems.
+
+step, rarely relevant, is not supported now. prefer while (yeah, not for of i think) when you need.
+
+and you always pass both start and end. i could easily polymorph macros w some (v arg num) hacks, but you should prefer repeat (yeah! and enum vec) instead.
+
+---
+
+```cpp
+#define enum std::views::enumerate  // dict items, object entries
+#define zip std::views::zip         // [x, y]: zip(vec a, vec b), until shortest len
+```
+
+well, i guess you should explicitly each i, and
+
+```
+a = vec a i
+b = vec b i
+```
+
+instead
+
+enum is also prone if the vec isnt 0 to n-1. (too common you give it 5 additional free space)
+
+```
+each(index, 1, n){
+  index = index
+  value = vec a index
+}
+```
+
+---
+
+```
+for (auto [idx, pair] : std::views::enumerate(std::views::zip(X, Y))) {
+    auto [x, y] = pair;
+    std::cout << idx << ": " << x << " " << y << "\n";
+}
+```
+
+wow.
+
+
 
