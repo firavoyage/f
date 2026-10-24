@@ -458,8 +458,19 @@ really it still errs on test 9 w fmt float fixed.
 
 
 you minimum is 100 - when everyone hits their maximum.
-but can they hit .49 maxmum?
+but can they hit .49 maximum? if they could not, it simply means
+they are too large and will far exceed 100 themselves (e.g. 33 33 34)
+and you will in turn be too low, and be replaced by lower bound -.50
+since it's guranteed to be solvable now.
 
+vice versa for "when everyone hits their minimum" i guess...
+
+
+
+what if minimum is quite large and exceeds 49?
+or maximum < -50?
+
+idk, it must be solvable, but we may test.
 
 */
 
@@ -485,10 +496,11 @@ void solve() {
 
   each(i, 1, n) {
     int minimum = 100 * 100 - (sum * 100 + 49 * (n - 1));
-    minimum = _max(minimum, -50);
+    minimum = _min(_max(minimum, -50), 49);
+    // minimum = _max(minimum, -50);
 
     int maximum = 100 * 100 - (sum * 100 - 50 * (n - 1));
-    maximum = _min(maximum, 49);
+    maximum = _min(_max(maximum, -50), 49);
 
     // prn("log", i, a[i], minimum, maximum);
 

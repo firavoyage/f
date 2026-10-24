@@ -335,7 +335,15 @@ signed main() {
 */
 
 void solve() {
-  each(i, 1, 1000) {
-    prn(format_float(truediv(i, 100), 2));
-  }
+  // each(i, 1, 1000) {
+  //   prn(format_float(truediv(i, 100), 2));
+  // }
+  double a = 6.712389123124124;
+  
+  prn(format_float(a, 6));
+  prn(format_float(a, 10));
+  prn(a);
+  cout << a << '\n';
+  cout << 6.712389123124124 << '\n';
+
 }
