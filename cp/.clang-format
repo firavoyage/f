@@ -8,7 +8,8 @@ TabWidth: 4
 UseTab: Never
 
 # Column limit before code wraps (0 disables wrapping)
-ColumnLimit: 100
+ColumnLimit: 80
+# ColumnLimit: 100
 
 # Control pointer alignment (Left: int* p; Right: int *p; Middle: int * p)
 PointerAlignment: Left

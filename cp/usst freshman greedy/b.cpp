@@ -116,7 +116,8 @@ auto reduce_vec(const vector<T>& vec, Func f, InitType initial_value) {
   for (const auto& x : vec) {
     acc = f(acc, x);
   }
-  return acc;  // Returns pure type directly since an initial seed guarantees a value
+  return acc;  // Returns pure type directly since an
+               // initial seed guarantees a value
 }
 
 template <typename T, typename Func>
@@ -126,7 +127,8 @@ auto reduce_right_vec(const vector<T>& vec, Func f) {
 
   ReturnType acc = vec.back();
   for (size_t i = vec.size() - 1; i > 0; --i) {
-    acc = f(vec[i - 1], acc);  // Element first, Accumulator second
+    acc = f(vec[i - 1],
+            acc);  // Element first, Accumulator second
   }
   return optional<ReturnType>(acc);
 }
@@ -136,7 +138,8 @@ auto reduce_right_vec(const vector<T>& vec, Func f, InitType initial_value) {
   using ReturnType = decltype(f(declval<T>(), declval<InitType>()));
   ReturnType acc = initial_value;
   for (size_t i = vec.size(); i > 0; --i) {
-    acc = f(vec[i - 1], acc);  // Element first, Accumulator second
+    acc = f(vec[i - 1],
+            acc);  // Element first, Accumulator second
   }
   return acc;  // Returns pure type directly
 }
@@ -334,10 +337,11 @@ p = 2:
 
 must add to 100.
 
-- e.g. 49, 50: a + b < 100 where a < 49.5 and b < 50.5 
+- e.g. 49, 50: a + b < 100 where a < 49.5 and b < 50.5
 (original data is perfectly precise)
 
-for 50 50, it can be [49.51, 50.49] (output closed intervals)
+for 50 50, it can be [49.51, 50.49] (output closed
+intervals)
 
 
 
@@ -355,12 +359,46 @@ you may use multiplication trick to avoid rounding issues.
 
 your range is
 
-your own range cap [100-(sum)]
+your own range cap [100-(sum + .49 * (n-1)),
+100-(sum-.5*(n-1))]
 
 where your own range is [-.5, +.49]
 
 */
 
 void solve() {
-  
+  int n;
+  read(n);
+
+  vector<string> names(n + 5);
+  vector<int> a(n + 5);
+
+  each(i, 1, n) {
+    read(names[i], a[i]);
+  }
+
+  int sum = summation(a);
+
+  if (sum * 100 + 49 * n < 100 || sum - 50 * n > 100) {
+    prn("IMPOSSIBLE");
+    return;
+  }
+
+  prn(sum);
+
+  each(i, 1, n) {
+    int minimum = 100 * 100 - (sum * 100 + 49 * (n - 1));
+    minimum = _max(minimum, -50);
+
+    int maximum = 100 * 100 - (sum * 100 - 50 * (n - 1));
+    maximum = _min(maximum, 49);
+
+    // prn("log", i, a[i], minimum, maximum);
+
+    minimum = a[i] * 100 + minimum;
+    maximum = a[i] * 100 + maximum;
+    
+    prn(names[i], format_float(truediv(minimum, 100), 2),
+        format_float(truediv(maximum, 100), 2));
+  }
 }

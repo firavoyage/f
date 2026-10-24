@@ -82,7 +82,11 @@ void prn_vec(vector<T>& elements, int l, int r) {
 }
 
 inline auto print(auto&&... items) {
-  return prn(items...);
+  prn(items...);
+}
+
+inline auto log(auto&&... items) {
+  prn(items...);
 }
 
 // fp
