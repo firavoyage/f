@@ -267,6 +267,7 @@ lib:
 - web style
 - web component prefix hyperscript
 - b bun root
+- tsconfig declare global types
 
 web: <!-- frontend, web, ts/js -->
 
@@ -376,6 +377,7 @@ web: <!-- frontend, web, ts/js -->
 - js async await patterns force async to sync
 - lib std list polymorphism
 - js top level fire and forget await on control flow end nodejs
+- vite setup dev build preview
 
 backend:
 
