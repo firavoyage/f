@@ -1,0 +1,24 @@
+# deprecated
+legacy
+
+# temp
+message.md
+
+# generated deps
+node_modules
+bun.lock
+pnpm-lock.yaml
+# package.json # you may modify it manually
+
+# static config
+# eslint.config.js # do not use eslint
+bunfig.toml
+tsconfig.json
+.prettierrc
+pyproject.toml
+
+# build
+# occasionally you may need to see builds
+
+# aliases
+# AGENTS.md
