@@ -55380,6 +55380,11 @@ there are optimization. like you can render on web, by pure fn, or diliver sth p
 > Arrays
 > Multidimensional Arrays
 
+> Last Resort
+> 
+> Rewrite your solution from the start.
+> Be sure to save a copy of your original solution. It's always possible that you might introduce more bugs in your new solution.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
