@@ -346,9 +346,18 @@ given seq a, you want to find x,
 
 to make k th distance minimal
 
-n < e5, a[i] < e9
+(sigma) n < e5, a[i] < e9
 
 
+
+
+observation tells me i will always place in the middle of sth.
+
+i can take all pairs that span k
+e.g. if k = n, then 1, n, if k = n-1, then 1, n-1 and 2, n
+
+~~sort it~~, or simply just take the min, and print the half.
+x must be int, so it will be floor if it could not be perfectly middled
 
 */
 

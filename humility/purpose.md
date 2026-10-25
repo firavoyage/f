@@ -19,4 +19,4 @@ serverless is not appliable.
 - vendor lock in, lack of choices
 - persistent vps are basically more powerful
 
-
+x
