@@ -16,7 +16,7 @@
     "strict": true,
 
     "skipLibCheck": true,
-    "types": ["node"],
+    "types": ["node", "lib"],
   },
   "include": ["**/*"],
   "exclude": [
