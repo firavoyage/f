@@ -1,17 +1,10 @@
-// @ts-nocheck
-/* eslint-disable */
-
 import { Hono } from 'hono';
 import { serve } from '@hono/node-server';
 import { cors } from 'hono/cors';
 import { serveStatic } from '@hono/node-server/serve-static';
 import fs from 'node:fs'
 
-import { chat } from 'action/chat';
-import { branch } from 'action/branch';
-import { export_to } from 'action/export';
-import { list } from 'action/list';
-import { new_thread } from 'action/new_thread';
+const { stringify: serialize } = JSON
 
 const port = 0;
 // const port = 3000;
@@ -20,7 +13,7 @@ const app = new Hono();
 
 app.use('*', cors());
 
-// log requests
+// Log Requests
 app.use('*', async (c: any, next: any) => {
   const start = Date.now();
   await next();
@@ -28,14 +21,14 @@ app.use('*', async (c: any, next: any) => {
   console.log(`[${c.req.method}] ${c.req.path} - ${c.res.status} (${ms}ms)`);
 });
 
-app.get('/', (c) => {
-  return c.text('hello world');
-});
+// // Show Hello World for Empty Path
+// app.get('/', (c) => {
+//   return c.text('hello world');
+// });
 
 const endpoints = {
-  chat, branch, export: export_to, list, new_thread,
-  mock(payload: any){
-    return {response: payload}
+  mock(payload: any) {
+    return { response: payload }
   }
 }
 
@@ -57,10 +50,10 @@ for (const [endpoint, endpoint_fn] of Object.entries(endpoints)) {
   });
 }
 
-// serve static resources (e.g. css, js, img)
+// Serve Static Resources (e.g. css, js, img)
 app.use('*', serveStatic({ root: '../web/build' }));
 
-// not found
+// Fallback to Not Found
 app.get('*', (c) => {
   if (c.req.path.startsWith('/api')) {
     return c.json({ success: false, message: 'api endpoint not found' }, 404);
@@ -73,10 +66,9 @@ app.get('*', (c) => {
     }
   }
 });
-
-app.notFound((c) => {
-  return c.json({ success: false, message: 'not found' }, 404);
-});
+// app.notFound((c) => {
+//   return c.json({ success: false, message: 'not found' }, 404);
+// });
 
 serve({
   fetch: app.fetch,
@@ -84,5 +76,9 @@ serve({
 }, (info) => {
   log(`Server is running on http://localhost:${info.port}`);
 
-  fs.writeFileSync('../web/port.json', `{"port":${info.port}}`)
+  const port_data = {
+    port: info.port
+  }
+
+  fs.writeFileSync('./port.json', serialize(port_data))
 });

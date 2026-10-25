@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+
+    "baseUrl": "./source",
+
+    "allowJs": true,
+    "checkJs": false,
+    "maxNodeModuleJsDepth": 1,
+    "noEmit": true,
+
+    "jsx": "react-jsx",
+
+    "strict": true,
+    // "noImplicitAny": false,
+    // "strictNullChecks": false,
+
+    "skipLibCheck": true,
+    "types": ["node"] // not to auto-scan the disk for hidden @types packages
+  },
+  "include": ["**/*"],
+  "exclude": [
+    "**/temp",
+    "**/build",
+    "**/.build",
+    "**/dist",
+    "**/.dist",
+    "**/legacy",
+    "**/node_modules"
+  ]
+}

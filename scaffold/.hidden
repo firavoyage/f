@@ -4,21 +4,21 @@ legacy
 # temp
 message.md
 
-# deps
+# generated deps
 node_modules
-package.json
 bun.lock
 pnpm-lock.yaml
+# package.json # you may modify it manually
 
 # static config
-eslint.config.js
+# eslint.config.js # do not use eslint
 bunfig.toml
 tsconfig.json
+.prettierrc
 pyproject.toml
 
 # build
-# build should be hidden in ide but not files
+# occasionally you may need to see builds
 
 # aliases
-AGENTS.md
-CLAUDE.md
+# AGENTS.md
