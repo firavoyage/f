@@ -5,7 +5,9 @@
   ],
   "scripts": {
     "spellcheck": "typos",
-    "dev": "trash .build && parcel serve 'source/index.html' --open --dist-dir .build --cache-dir .build/.parcel-cache"
+    "dev": "trash .build; parcel serve 'source/index.html' --open --dist-dir .build --cache-dir .build/.parcel-cache",
+    "build": "parcel build 'source/index.html' --dist-dir build --cache-dir build/.parcel-cache --no-content-hash",
+    "prod_build": "parcel build 'source/index.html' --dist-dir build --cache-dir build/.parcel-cache  --no-source-maps"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
