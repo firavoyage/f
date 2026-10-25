@@ -2,7 +2,7 @@
   "type": "module",
   "scripts": {
     "spellcheck": "typos",
-    "dev": "trash .build && parcel serve 'source/index.html' --open --dist-dir .build --cache-dir .build/.parcel-cache",
+    "dev": "trash .build; parcel serve 'source/index.html' --open --dist-dir .build --cache-dir .build/.parcel-cache",
     "convert": "'./source/web/script/convert design tokens.sh'"
   },
   "dependencies": {
