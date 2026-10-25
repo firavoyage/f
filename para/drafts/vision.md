@@ -38,4 +38,41 @@ search is powered by rg.
 
 you may search file names or content.
 
+## table of contents
+
+on the right you can see toc.
+
+they are not permalink. but they are stable enough as long as you dont change the text of titles.
+
+## scroll/jump through a page
+
+you can customize the behavior of spacebar.
+
+you can scroll smoothly or jump instantly, or via a cuber bezier curve.
+
+you can scroll by height, by content, or dynamic (e.g. a paragraph by default, 1/3 screen if it's long).
+
+## ~~collapse/expand headings~~
+
+rarely do you really need that.
+
+rather it's highly resulted from vscode's lack of toc.
+
+## navigate
+
+every possible user action is mapped to a key.
+
+every content driven action is mapped to a key -> an input.
+
+- find in page
+- jump to heading/page
+
+## customize and extend
+
+you may have zen mode, to fade out pages hierarchy abd toc when you dont need.
+
+you may inject content, for example esti readtime after title/first line of text.
+
+you may record and reflect on yourself. e.g. time -> page/scroll mapping.
+
 
