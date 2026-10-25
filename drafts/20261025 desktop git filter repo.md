@@ -567,8 +567,58 @@ nothing to commit, working tree clean
 ```
 
 ```
-
+ ~ % repo_sync
+Starting push...
+Enumerating objects: 14, done.
+Counting objects: 100% (14/14), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (8/8), 9.95 KiB | 9.95 MiB/s, done.
+Total 8 (delta 5), reused 4 (delta 1), pack-reused 0
+remote: Resolving deltas: 100% (5/5), completed with 5 local objects.
+To https://github.com/firavoyage/f
+   b7247d9a..d61c8a58  master -> master
+Enumerating objects: 38686, done.
+Counting objects: 100% (38684/38684), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (9271/9271), done.
+Writing objects: 100% (38621/38621), 102.41 MiB | 7.07 MiB/s, done.
+Total 38621 (delta 25311), reused 38321 (delta 25026), pack-reused 0
+error: RPC failed; curl 92 HTTP/2 stream 7 was not closed cleanly: INTERNAL_ERROR (err 2)
+send-pack: unexpected disconnect while reading sideband packet
+fatal: the remote end hung up unexpectedly
+Everything up-to-date
+Enumerating objects: 14, done.
+Counting objects: 100% (14/14), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (8/8), 9.95 KiB | 9.95 MiB/s, done.
+Total 8 (delta 5), reused 4 (delta 1), pack-reused 0
+remote: Powered by GITEE.COM [1.1.23]
+remote: Set trace flag d84c4989
+To https://gitee.com/firavoyage/ff.git
+   b7247d9a..d61c8a58  master -> master
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Push completed successfully.
 ```
+
+<!-- seems a remote fails regardless. idk. nevermind, as long as github works. -->
 
 # how to force remove all large files in git history
 
@@ -1066,3 +1116,148 @@ delta/**git**.**git** \- github.com - Baserock
 \-msgid "Cannot pull with rebase: You have unstaged changes." +#: add-patch.c:790\. +#, c-format. +msgid "". +"expected context line #%d in\\n". +"%.\*s". msgstr "". +"oczekiwano wiersza kontekstu nr %d w
 
 
+
+# how to remove .git-rewrite
+
+9:13 AM
+
+### how to remove .git-rewrite
+
+To remove the `.git-rewrite` directory, you can simply delete it using your standard command-line tools. [](https://stackoverflow.com/questions/30316723/git-filter-branch-remove-folder-failed)
+
+This folder is a temporary directory created inside your `.git` folder when running history-rewriting tools like `git filter-branch`. If a previous filtering operation crashed, was aborted, or didn't finish cleanly, this folder gets left behind and blocks you from running subsequent filter operations. [](https://virtuslab.com/blog/ai/git-rewrite-commits)
+
+#### Step-by-Step Fix
+
+Navigate to the root directory of your Git repository and run the following command depending on your operating system:
+
+**On Linux / macOS / Git Bash:**
+
+bash
+
+```
+rm -rf .git-rewrite
+
+```
+
+
+
+_(Alternatively, if the directory is hidden inside the `.git` folder: `rm -rf .git/.git-rewrite`)_
+
+**On Windows (Command Prompt):**
+
+cmd
+
+```
+rmdir /s /q .git-rewrite
+
+```
+
+
+
+**On Windows (PowerShell):**
+
+powershell
+
+```
+Remove-Item -Recurse -Force .git-rewrite
+
+```
+
+
+
+#### Why does this happen?
+
+When `git filter-branch` runs, it uses `.git-rewrite` to stage the new, incoming repository structure. If you try to run another filter while that folder still exists, Git will fail and throw an error like:  
+`Cannot create a new backup. A previous backup already exists in refs/original/ Force overwriting the backup with -f` or `.git-rewrite already exists please remove it`. [](https://docs.rs/git-rewrite)
+
+#### A Safer Alternative 💡
+
+If you are modifying history frequently, consider using git-filter-repo. The Git project officially strongly discourages `git filter-branch` because it is notoriously slow, error-prone, leaves messy state behind (like `.git-rewrite`), and can easily accidentally corrupt history. `git-filter-repo` is much faster and cleaner. [](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History)
+
+Are you trying to resolve an **active error** while running `git filter-branch`, or were you trying to **completely scrub a file/secret** from your history? If you share the exact error or goal, I can guide you through finishing the rewrite safely. [](https://dev.to/edriso/how-to-remove-a-file-from-git-history-and-what-to-watch-out-for-1o15)
+
+* [](https://stackoverflow.com/questions/30316723/git-filter-branch-remove-folder-failed)  
+Stack Overflow  
+git filter-branch remove folder failed  
+In order to remove a file or directory completely from a git repository you must ensure that it is not referenced anymore. Just tr...
+* [](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History)  
+Git  
+Git - Rewriting History  
+Use git-filter-repo or git filter-branch to remove files, change subdirectory roots, or update global email addresses across histo...
+* [](https://dev.to/edriso/how-to-remove-a-file-from-git-history-and-what-to-watch-out-for-1o15)  
+DEV Community  
+How to Remove a File from Git History (And What to Watch Out ...  
+Step 1 — Make sure the file is deleted locally. If disk, delete it first. Step 2 — Rewrite git history. Step 3 — Clean up local da...
+
+Show all
+
+## i dont see it locally, but i see on github
+
+i dont see it locally, but i see on github
+
+9:13 AM
+
+### i dont see it locally, but i see on github
+
+If you see `.git-rewrite` on GitHub but not locally, **it was accidentally committed to your remote repository** as a regular folder.
+
+Because it is an internal Git folder, your local operating system or your `.gitignore` file is likely hiding it from your local view, but GitHub is treating it like a standard directory.
+
+Here is how to remove it from GitHub without breaking your local repository. Run these commands from your local terminal:
+
+#### 1\. Force remove it from Git's tracking
+
+Run this command from the root of your local repository. The `-r` flag deletes recursively, and `--cached` ensures it **only** removes it from Git's tracking (and GitHub), leaving your local files safe.
+
+bash
+
+```
+git rm -r --cached .git-rewrite
+
+```
+
+
+
+#### 2\. Commit the deletion
+
+bash
+
+```
+git commit -m "Remove accidental .git-rewrite folder from tracking"
+
+```
+
+
+
+#### 3\. Push the change to GitHub
+
+bash
+
+```
+git push origin main
+
+```
+
+
+
+_(Replace `main` with your active branch name, like `master` or `dev`, if necessary)._
+
+---
+
+#### Prevent it from happening again 🛡️
+
+To make sure Git never tries to track or upload this folder again, add it to your global or local `.gitignore` file.
+
+Open your `.gitignore` file at the root of your project and append this line to the bottom:
+
+text
+
+```
+.git-rewrite/
+
+```
+
+
+
+Once you push those commands, check your GitHub page and refresh. Did the folder **disappear from the repository view**, or did you hit an **error during the push**?

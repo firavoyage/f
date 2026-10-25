@@ -30,7 +30,12 @@ serve
 - help
 - port
 - index
+- root
 - not found = index
 - log?
 
+---
 
+well i already have node-srv.
+
+could have.
