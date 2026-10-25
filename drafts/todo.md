@@ -1,8 +1,7 @@
 # plan
 
-- lib/datetime
-- lib/cli
 - lib/web/server
+- lib/web/style
 
 # todo
 
@@ -50,6 +49,17 @@ if you can, you may try to parse katex.
 - purpose, repo, (journal)
 - para, material, ...
 - float
+
+---
+
+intention: foundation
+
+- sidebar of tab groups
+  - rather than a separate tabs.md
+- omnibox
+  - url
+  - message/search/~~command~~
+    - you may config a few search engines and switch via tab maybe
 
 # backlog
 

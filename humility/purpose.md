@@ -19,4 +19,10 @@ serverless is not appliable.
 - vendor lock in, lack of choices
 - persistent vps are basically more powerful
 
-x
+---
+
+it's much easier to have a local md viewer now it feels.
+
+i need that.
+
+
