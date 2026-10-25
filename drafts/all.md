@@ -268,6 +268,7 @@ lib:
 - web component prefix hyperscript
 - b bun root
 - tsconfig declare global types
+- serve static pages github npm bun global workflow
 
 web: <!-- frontend, web, ts/js -->
 

@@ -68,7 +68,7 @@ export function entries(obj: object | Map<any, any>): entries {
 
     return keys.map(key => [key, obj[key]]);
   } else if (is(obj, 'array')) {
-    return Object.entries(obj)
+    return obj.entries()
   } else {
     return []
   }

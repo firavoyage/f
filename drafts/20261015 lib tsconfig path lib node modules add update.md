@@ -1,3 +1,98 @@
+# . add and update
+
+init
+
+```
+name='lib'
+
+export GIT_DIR="/home/fira/Documents/f/.git/.git_$name"
+export GIT_WORK_TREE="/home/fira/Documents/f/$name"
+
+git init
+git remote add g https://github.com/firahq/$name.git
+
+git add .
+git commit -m '.' || true
+
+git push -f g
+```
+
+result of init
+
+```
+ ~ % export GIT_DIR="/home/fira/Documents/f/.git/.git_lib"
+export GIT_WORK_TREE="/home/fira/Documents/f/lib"
+
+git init
+git remote add g https://github.com/firahq/lib.git
+
+git add .
+git commit -m '.' || true
+
+git push -f g
+
+Reinitialized existing Git repository in /home/fira/Documents/f/.git/.git_lib/
+error: remote g already exists.
+On branch master
+nothing to commit, working tree clean
+Enumerating objects: 83, done.
+Counting objects: 100% (83/83), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (75/75), done.
+Writing objects: 100% (83/83), 56.44 KiB | 5.13 MiB/s, done.
+Total 83 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/firahq/lib.git
+ * [new branch]      master -> master
+branch 'master' set up to track 'g/master'.
+```
+
+add
+
+```
+name='lib'
+
+bun add github:firahq/$name
+```
+
+result of add
+
+```
+ ~ % cd /home/fira/Documents/f/apps/tools
+ ...f/apps/tools % b dev
+$ trash .build && parcel serve 'source/index.html' --open --dist-dir .build --cache-dir .build/.parcel-cache
+Server running at http://localhost:1234
+✨ Built in 1.95s
+ ...f/apps/tools %
+ ...f/apps/tools % bun add github:firahq/lib
+
+bun add v1.3.14 (0d9b296a)
+
+installed lib@github:firahq/lib#b863439
+
+6 packages installed [1.58s]
+ ...f/apps/tools % b dev
+$ trash .build && parcel serve 'source/index.html' --open --dist-dir .build --cache-dir .build/.parcel-cache
+Server running at http://localhost:1234
+✨ Built in 1.67s
+```
+
+update
+
+```sh
+export GIT_DIR="/home/fira/Documents/f/.git/.git_lib"
+export GIT_WORK_TREE="/home/fira/Documents/f/lib"
+
+git init
+git remote add g https://github.com/firahq/lib.git
+
+git push -f g
+
+bun add lib@github:firahq/lib --force
+# bun add github:firahq/lib --force # possibly less reliable?
+# bun update lib # might not work due to aggressive local cache
+```
+
 # . test
 
 ```
@@ -228,101 +323,6 @@ Server running at http://localhost:1234
 bun install v1.3.14 (0d9b296a)
 
 Checked 455 installs across 485 packages (no changes) [91.00ms]
-```
-
-# . add and update
-
-init
-
-```
-name='lib'
-
-export GIT_DIR="/home/fira/Documents/f/.git/.git_$name"
-export GIT_WORK_TREE="/home/fira/Documents/f/$name"
-
-git init
-git remote add g https://github.com/firahq/$name.git
-
-git add .
-git commit -m '.' || true
-
-git push -f g
-```
-
-result of init
-
-```
- ~ % export GIT_DIR="/home/fira/Documents/f/.git/.git_lib"
-export GIT_WORK_TREE="/home/fira/Documents/f/lib"
-
-git init
-git remote add g https://github.com/firahq/lib.git
-
-git add .
-git commit -m '.' || true
-
-git push -f g
-
-Reinitialized existing Git repository in /home/fira/Documents/f/.git/.git_lib/
-error: remote g already exists.
-On branch master
-nothing to commit, working tree clean
-Enumerating objects: 83, done.
-Counting objects: 100% (83/83), done.
-Delta compression using up to 12 threads
-Compressing objects: 100% (75/75), done.
-Writing objects: 100% (83/83), 56.44 KiB | 5.13 MiB/s, done.
-Total 83 (delta 1), reused 0 (delta 0), pack-reused 0
-remote: Resolving deltas: 100% (1/1), done.
-To https://github.com/firahq/lib.git
- * [new branch]      master -> master
-branch 'master' set up to track 'g/master'.
-```
-
-add
-
-```
-name='lib'
-
-bun add github:firahq/$name
-```
-
-result of add
-
-```
- ~ % cd /home/fira/Documents/f/apps/tools
- ...f/apps/tools % b dev
-$ trash .build && parcel serve 'source/index.html' --open --dist-dir .build --cache-dir .build/.parcel-cache
-Server running at http://localhost:1234
-✨ Built in 1.95s
- ...f/apps/tools %
- ...f/apps/tools % bun add github:firahq/lib
-
-bun add v1.3.14 (0d9b296a)
-
-installed lib@github:firahq/lib#b863439
-
-6 packages installed [1.58s]
- ...f/apps/tools % b dev
-$ trash .build && parcel serve 'source/index.html' --open --dist-dir .build --cache-dir .build/.parcel-cache
-Server running at http://localhost:1234
-✨ Built in 1.67s
-```
-
-update
-
-```sh
-export GIT_DIR="/home/fira/Documents/f/.git/.git_lib"
-export GIT_WORK_TREE="/home/fira/Documents/f/lib"
-
-git init
-git remote add g https://github.com/firahq/lib.git
-
-git push -f g
-
-bun add lib@github:firahq/lib --force
-# bun add github:firahq/lib --force # possibly less reliable?
-# bun update lib # might not work due to aggressive local cache
 ```
 
 # how to manage path in tsconfig in monorepo

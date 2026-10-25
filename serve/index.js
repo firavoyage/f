@@ -6,6 +6,7 @@ import fs from 'node:fs'
 import { read, cwd, expand_path, does_exist } from 'lib/file'
 import { now, format } from 'lib/time'
 import { format_log } from 'lib/log'
+import 'lib/global'
 
 const { stringify: serialize } = JSON
 
@@ -36,8 +37,9 @@ function parse_args() {
   }
 
   let should_skip = false
-  for (const [index, arg] of Object.entries(args)) {
+  for (const [index, arg] of args.entries()) {
     if (should_skip) {
+      should_skip = false
       continue
     }
 
@@ -75,54 +77,54 @@ function parse_args() {
 function run(options) {
   const { index, not_found, port, root } = options
 
-  const app = new Hono()
+  // const app = new Hono()
 
-  app.use('*', cors())
+  // app.use('*', cors())
 
-  // Log Requests
-  app.use('*', async (c, next) => {
-    await next()
-    log(format_log(`${c.req.method} ${c.req.path}`, 'info'))
-    // const time = format(now())
-    // await next()
-    // log(`${time} ${c.req.method} ${c.req.path}`)
-  })
+  // // Log Requests
+  // app.use('*', async (c, next) => {
+  //   await next()
+  //   log(format_log(`${c.req.method} ${c.req.path}`, 'info'))
+  //   // const time = format(now())
+  //   // await next()
+  //   // log(`${time} ${c.req.method} ${c.req.path}`)
+  // })
 
-  app.get('/', (c) => {
-    const index_file = expand_path(root, index)
+  // app.get('/', (c) => {
+  //   const index_file = expand_path(root, index)
 
-    if (does_exist(index_file)) {
-      return c.html(read(index_file))
-    } else {
-      log(format_log('index file should exist', 'error'))
-      return c.text('not found')
-    } 
-  });
+  //   if (does_exist(index_file)) {
+  //     return c.html(read(index_file))
+  //   } else {
+  //     log(format_log('index file should exist', 'error'))
+  //     return c.text('not found')
+  //   } 
+  // });
 
-  // Serve Static Resources (e.g. css, js, img)
-  app.use('*', serveStatic({ root }))
+  // // Serve Static Resources (e.g. css, js, img)
+  // app.use('*', serveStatic({ root }))
 
-  // Fallback to Not Found
-  app.get('*', (c) => {
-    const not_found_file = expand_path(root, not_found)
+  // // Fallback to Not Found
+  // app.get('*', (c) => {
+  //   const not_found_file = expand_path(root, not_found)
 
-    if (does_exist(not_found_file)) {
-      return c.html(read(not_found_file))
-    } else {
-      log(format_log('not found file should exist', 'error'))
-      return c.text('not found')
-    } 
-  })
+  //   if (does_exist(not_found_file)) {
+  //     return c.html(read(not_found_file))
+  //   } else {
+  //     log(format_log('not found file should exist', 'error'))
+  //     return c.text('not found')
+  //   } 
+  // })
 
-  serve(
-    {
-      fetch: app.fetch,
-      port,
-    },
-    (info) => {
-      log(`Serve on http://localhost:${info.port}`)
-    },
-  )
+  // serve(
+  //   {
+  //     fetch: app.fetch,
+  //     port,
+  //   },
+  //   (info) => {
+  //     log(`Serve on http://localhost:${info.port}`)
+  //   },
+  // )
 }
 
 function main() {

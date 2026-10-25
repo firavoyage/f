@@ -55385,6 +55385,12 @@ there are optimization. like you can render on web, by pure fn, or diliver sth p
 > Rewrite your solution from the start.
 > Be sure to save a copy of your original solution. It's always possible that you might introduce more bugs in your new solution.
 
+26
+
+02 00 create and publish serve, static page server.
+
+i may use it in the future.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
