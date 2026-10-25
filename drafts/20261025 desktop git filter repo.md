@@ -185,6 +185,391 @@ Oct 24 00:00:50 Fira repo_sync.sh[260797]: Everything up-to-date
 Oct 24 00:00:49 Fira repo_sync.sh[260774]: Everything up-to-date
 ```
 
+```
+rm 'apps/copy/.parcel-cache/c23923128c744515-AssetGraph'
+rm 'apps/copy/.parcel-cache/c93c55aa392cf65d-BundleGraph'
+rm 'apps/copy/.parcel-cache/data.mdb'
+rm 'apps/copy/.parcel-cache/e1c7b57f833f142e-AssetGraph'
+rm 'apps/copy/.parcel-cache/e24350fb6648ecf1-RequestGraph'
+rm 'apps/copy/.parcel-cache/lock.mdb'
+rm 'apps/copy/.parcel-cache/snapshot-449a9418504d2bb2.txt'
+rm 'apps/copy/.parcel-cache/snapshot-b268cf1f67e7290d.txt'
+rm 'apps/copy/.parcel-cache/snapshot-e24350fb6648ecf1.txt'
+Rewrite e6feef64b4f35f5bec1ce8e1fa44120612be84e8 (4354/4380) (154 seconds passed, remaining 0 predicted)    rm 'apps/copy/.parcel-cache/0069b0ac7e38cb17-AssetGraph'
+rm 'apps/copy/.parcel-cache/449a9418504d2bb2-RequestGraph'
+rm 'apps/copy/.parcel-cache/4b4ffeaec68a679a-AssetGraph'
+rm 'apps/copy/.parcel-cache/51de1a0f3a954aca-AssetGraph'
+rm 'apps/copy/.parcel-cache/a27320a5a6c934ac-BundleGraph'
+rm 'apps/copy/.parcel-cache/b268cf1f67e7290d-RequestGraph'
+rm 'apps/copy/.parcel-cache/c23923128c744515-AssetGraph'
+rm 'apps/copy/.parcel-cache/c93c55aa392cf65d-BundleGraph'
+rm 'apps/copy/.parcel-cache/data.mdb'
+rm 'apps/copy/.parcel-cache/e1c7b57f833f142e-AssetGraph'
+rm 'apps/copy/.parcel-cache/e24350fb6648ecf1-RequestGraph'
+rm 'apps/copy/.parcel-cache/lock.mdb'
+rm 'apps/copy/.parcel-cache/snapshot-449a9418504d2bb2.txt'
+rm 'apps/copy/.parcel-cache/snapshot-b268cf1f67e7290d.txt'
+rm 'apps/copy/.parcel-cache/snapshot-e24350fb6648ecf1.txt'
+Rewrite db896df6da9b9a21b9a1df93bd6c013b9b328130 (4354/4380) (154 seconds passed, remaining 0 predicted)    rm 'apps/copy/.parcel-cache/0069b0ac7e38cb17-AssetGraph'
+rm 'apps/copy/.parcel-cache/449a9418504d2bb2-RequestGraph'
+rm 'apps/copy/.parcel-cache/4b4ffeaec68a679a-AssetGraph'
+rm 'apps/copy/.parcel-cache/51de1a0f3a954aca-AssetGraph'
+rm 'apps/copy/.parcel-cache/a27320a5a6c934ac-BundleGraph'
+rm 'apps/copy/.parcel-cache/b268cf1f67e7290d-RequestGraph'
+rm 'apps/copy/.parcel-cache/c23923128c744515-AssetGraph'
+rm 'apps/copy/.parcel-cache/c93c55aa392cf65d-BundleGraph'
+rm 'apps/copy/.parcel-cache/data.mdb'
+rm 'apps/copy/.parcel-cache/e1c7b57f833f142e-AssetGraph'
+rm 'apps/copy/.parcel-cache/e24350fb6648ecf1-RequestGraph'
+rm 'apps/copy/.parcel-cache/lock.mdb'
+rm 'apps/copy/.parcel-cache/snapshot-449a9418504d2bb2.txt'
+rm 'apps/copy/.parcel-cache/snapshot-b268cf1f67e7290d.txt'
+rm 'apps/copy/.parcel-cache/snapshot-e24350fb6648ecf1.txt'
+Rewrite 0710007aac259b07f42fb46ccd5110148d26a2a9 (4354/4380) (154 seconds passed, remaining 0 predicted)    rm 'apps/copy/.parcel-cache/0069b0ac7e38cb17-AssetGraph'
+rm 'apps/copy/.parcel-cache/449a9418504d2bb2-RequestGraph'
+rm 'apps/copy/.parcel-cache/4b4ffeaec68a679a-AssetGraph'
+rm 'apps/copy/.parcel-cache/51de1a0f3a954aca-AssetGraph'
+rm 'apps/copy/.parcel-cache/a27320a5a6c934ac-BundleGraph'
+rm 'apps/copy/.parcel-cache/b268cf1f67e7290d-RequestGraph'
+rm 'apps/copy/.parcel-cache/c23923128c744515-AssetGraph'
+rm 'apps/copy/.parcel-cache/c93c55aa392cf65d-BundleGraph'
+rm 'apps/copy/.parcel-cache/data.mdb'
+rm 'apps/copy/.parcel-cache/e1c7b57f833f142e-AssetGraph'
+rm 'apps/copy/.parcel-cache/e24350fb6648ecf1-RequestGraph'
+rm 'apps/copy/.parcel-cache/lock.mdb'
+rm 'apps/copy/.parcel-cache/snapshot-449a9418504d2bb2.txt'
+rm 'apps/copy/.parcel-cache/snapshot-b268cf1f67e7290d.txt'
+rm 'apps/copy/.parcel-cache/snapshot-e24350fb6648ecf1.txt'
+Rewrite 309b0f14fb3fce30f22c8963a6177775bd3e22a5 (4354/4380) (154 seconds passed, remaining 0 predicted)    rm 'apps/copy/.parcel-cache/0069b0ac7e38cb17-AssetGraph'
+rm 'apps/copy/.parcel-cache/449a9418504d2bb2-RequestGraph'
+rm 'apps/copy/.parcel-cache/4b4ffeaec68a679a-AssetGraph'
+rm 'apps/copy/.parcel-cache/51de1a0f3a954aca-AssetGraph'
+rm 'apps/copy/.parcel-cache/a27320a5a6c934ac-BundleGraph'
+rm 'apps/copy/.parcel-cache/b268cf1f67e7290d-RequestGraph'
+rm 'apps/copy/.parcel-cache/c23923128c744515-AssetGraph'
+rm 'apps/copy/.parcel-cache/c93c55aa392cf65d-BundleGraph'
+rm 'apps/copy/.parcel-cache/data.mdb'
+rm 'apps/copy/.parcel-cache/e1c7b57f833f142e-AssetGraph'
+rm 'apps/copy/.parcel-cache/e24350fb6648ecf1-RequestGraph'
+rm 'apps/copy/.parcel-cache/lock.mdb'
+rm 'apps/copy/.parcel-cache/snapshot-449a9418504d2bb2.txt'
+rm 'apps/copy/.parcel-cache/snapshot-b268cf1f67e7290d.txt'
+rm 'apps/copy/.parcel-cache/snapshot-e24350fb6648ecf1.txt'
+Rewrite 4a0fdd1aaf4d374ef2e85f72c8234a9f94a68836 (4354/4380) (154 seconds passed, remaining 0 predicted)    rm 'apps/copy/.parcel-cache/0069b0ac7e38cb17-AssetGraph'
+rm 'apps/copy/.parcel-cache/449a9418504d2bb2-RequestGraph'
+rm 'apps/copy/.parcel-cache/4b4ffeaec68a679a-AssetGraph'
+rm 'apps/copy/.parcel-cache/51de1a0f3a954aca-AssetGraph'
+rm 'apps/copy/.parcel-cache/a27320a5a6c934ac-BundleGraph'
+rm 'apps/copy/.parcel-cache/b268cf1f67e7290d-RequestGraph'
+rm 'apps/copy/.parcel-cache/c23923128c744515-AssetGraph'
+rm 'apps/copy/.parcel-cache/c93c55aa392cf65d-BundleGraph'
+rm 'apps/copy/.parcel-cache/data.mdb'
+rm 'apps/copy/.parcel-cache/e1c7b57f833f142e-AssetGraph'
+rm 'apps/copy/.parcel-cache/e24350fb6648ecf1-RequestGraph'
+rm 'apps/copy/.parcel-cache/lock.mdb'
+rm 'apps/copy/.parcel-cache/snapshot-449a9418504d2bb2.txt'
+rm 'apps/copy/.parcel-cache/snapshot-b268cf1f67e7290d.txt'
+rm 'apps/copy/.parcel-cache/snapshot-e24350fb6648ecf1.txt'
+Rewrite 2a487a9c3c8aaf3b95d95af037a3f2506fb83bdf (4354/4380) (154 seconds passed, remaining 0 predicted)    rm 'apps/copy/.parcel-cache/0069b0ac7e38cb17-AssetGraph'
+rm 'apps/copy/.parcel-cache/449a9418504d2bb2-RequestGraph'
+rm 'apps/copy/.parcel-cache/4b4ffeaec68a679a-AssetGraph'
+rm 'apps/copy/.parcel-cache/51de1a0f3a954aca-AssetGraph'
+rm 'apps/copy/.parcel-cache/a27320a5a6c934ac-BundleGraph'
+rm 'apps/copy/.parcel-cache/b268cf1f67e7290d-RequestGraph'
+rm 'apps/copy/.parcel-cache/c23923128c744515-AssetGraph'
+rm 'apps/copy/.parcel-cache/c93c55aa392cf65d-BundleGraph'
+rm 'apps/copy/.parcel-cache/data.mdb'
+rm 'apps/copy/.parcel-cache/e1c7b57f833f142e-AssetGraph'
+rm 'apps/copy/.parcel-cache/e24350fb6648ecf1-RequestGraph'
+rm 'apps/copy/.parcel-cache/lock.mdb'
+rm 'apps/copy/.parcel-cache/snapshot-449a9418504d2bb2.txt'
+rm 'apps/copy/.parcel-cache/snapshot-b268cf1f67e7290d.txt'
+rm 'apps/copy/.parcel-cache/snapshot-e24350fb6648ecf1.txt'
+Rewrite d1ac43c50ff54c7bd057bc294055cb544ad696f0 (4354/4380) (154 seconds passed, remaining 0 predicted)    rm 'apps/copy/.parcel-cache/0069b0ac7e38cb17-AssetGraph'
+rm 'apps/copy/.parcel-cache/449a9418504d2bb2-RequestGraph'
+rm 'apps/copy/.parcel-cache/4b4ffeaec68a679a-AssetGraph'
+rm 'apps/copy/.parcel-cache/51de1a0f3a954aca-AssetGraph'
+rm 'apps/copy/.parcel-cache/a27320a5a6c934ac-BundleGraph'
+rm 'apps/copy/.parcel-cache/b268cf1f67e7290d-RequestGraph'
+rm 'apps/copy/.parcel-cache/c23923128c744515-AssetGraph'
+rm 'apps/copy/.parcel-cache/c93c55aa392cf65d-BundleGraph'
+rm 'apps/copy/.parcel-cache/data.mdb'
+rm 'apps/copy/.parcel-cache/e1c7b57f833f142e-AssetGraph'
+rm 'apps/copy/.parcel-cache/e24350fb6648ecf1-RequestGraph'
+rm 'apps/copy/.parcel-cache/lock.mdb'
+rm 'apps/copy/.parcel-cache/snapshot-449a9418504d2bb2.txt'
+rm 'apps/copy/.parcel-cache/snapshot-b268cf1f67e7290d.txt'
+rm 'apps/copy/.parcel-cache/snapshot-e24350fb6648ecf1.txt'
+Rewrite c08f56774d41e449e80429139cece64ee9e7b2c8 (4354/4380) (154 seconds passed, remaining 0 predicted)    rm 'apps/copy/.parcel-cache/0069b0ac7e38cb17-AssetGraph'
+rm 'apps/copy/.parcel-cache/449a9418504d2bb2-RequestGraph'
+rm 'apps/copy/.parcel-cache/4b4ffeaec68a679a-AssetGraph'
+rm 'apps/copy/.parcel-cache/51de1a0f3a954aca-AssetGraph'
+rm 'apps/copy/.parcel-cache/a27320a5a6c934ac-BundleGraph'
+rm 'apps/copy/.parcel-cache/b268cf1f67e7290d-RequestGraph'
+rm 'apps/copy/.parcel-cache/c23923128c744515-AssetGraph'
+rm 'apps/copy/.parcel-cache/c93c55aa392cf65d-BundleGraph'
+rm 'apps/copy/.parcel-cache/data.mdb'
+rm 'apps/copy/.parcel-cache/e1c7b57f833f142e-AssetGraph'
+rm 'apps/copy/.parcel-cache/e24350fb6648ecf1-RequestGraph'
+rm 'apps/copy/.parcel-cache/lock.mdb'
+rm 'apps/copy/.parcel-cache/snapshot-449a9418504d2bb2.txt'
+rm 'apps/copy/.parcel-cache/snapshot-b268cf1f67e7290d.txt'
+rm 'apps/copy/.parcel-cache/snapshot-e24350fb6648ecf1.txt'
+Rewrite ba33305d80e92432097300e48de24cc3541aab98 (4354/4380) (154 seconds passed, remaining 0 predicted)    rm 'apps/copy/.parcel-cache/0069b0ac7e38cb17-AssetGraph'
+rm 'apps/copy/.parcel-cache/449a9418504d2bb2-RequestGraph'
+rm 'apps/copy/.parcel-cache/4b4ffeaec68a679a-AssetGraph'
+rm 'apps/copy/.parcel-cache/51de1a0f3a954aca-AssetGraph'
+rm 'apps/copy/.parcel-cache/a27320a5a6c934ac-BundleGraph'
+rm 'apps/copy/.parcel-cache/b268cf1f67e7290d-RequestGraph'
+rm 'apps/copy/.parcel-cache/c23923128c744515-AssetGraph'
+rm 'apps/copy/.parcel-cache/c93c55aa392cf65d-BundleGraph'
+rm 'apps/copy/.parcel-cache/data.mdb'
+rm 'apps/copy/.parcel-cache/e1c7b57f833f142e-AssetGraph'
+rm 'apps/copy/.parcel-cache/e24350fb6648ecf1-RequestGraph'
+rm 'apps/copy/.parcel-cache/lock.mdb'
+rm 'apps/copy/.parcel-cache/snapshot-449a9418504d2bb2.txt'
+rm 'apps/copy/.parcel-cache/snapshot-b268cf1f67e7290d.txt'
+rm 'apps/copy/.parcel-cache/snapshot-e24350fb6648ecf1.txt'
+
+Ref 'refs/heads/master' was rewritten
+Ref 'refs/heads/temp_copy_intercept' was rewritten
+Ref 'refs/heads/useless_test_branch' was rewritten
+Ref 'refs/remotes/a/master' was rewritten
+Ref 'refs/remotes/e/master' was rewritten
+Ref 'refs/remotes/g/master' was rewritten
+WARNING: Ref 'refs/remotes/l/master' is unchanged
+```
+
+```
+ ~/Documents/f % repo_sync
+Starting push...
+Enumerating objects: 38678, done.
+Counting objects: 100% (38676/38676), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (14155/14155), done.
+Writing objects: 100% (38613/38613), 106.03 MiB | 13.55 MiB/s, done.
+Total 38613 (delta 25281), reused 29626 (delta 20135), pack-reused 0
+remote: Resolving deltas: 100% (25281/25281), completed with 38 local objects.
+To https://github.com/firavoyage/f
+ + 7d8607b5...b7247d9a master -> master (forced update)
+Enumerating objects: 38678, done.
+Counting objects: 100% (38676/38676), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (14155/14155), done.
+Writing objects: 100% (38613/38613), 87.86 MiB | 5.73 MiB/s, done.
+Total 38613 (delta 25291), reused 29616 (delta 20135), pack-reused 0
+error: RPC failed; curl 92 HTTP/2 stream 7 was not closed cleanly: INTERNAL_ERROR (err 2)
+send-pack: unexpected disconnect while reading sideband packet
+fatal: the remote end hung up unexpectedly
+Everything up-to-date
+Enumerating objects: 38678, done.
+Counting objects: 100% (38676/38676), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (14155/14155), done.
+Writing objects: 100% (38613/38613), 106.03 MiB | 4.06 MiB/s, done.
+Total 38613 (delta 25282), reused 29625 (delta 20135), pack-reused 0
+error: RPC failed; HTTP 504 curl 22 The requested URL returned error: 504
+send-pack: unexpected disconnect while reading sideband packet
+fatal: the remote end hung up unexpectedly
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Everything up-to-date
+Push completed successfully.
+```
+
+```
+ ~/Documents/f % cd /home/fira/Documents/f
+ ~/Documents/f % cd .git-rewrite
+cd:cd:52: no such file or directory: .git-rewrite
+ ~/Documents/f % rm -rf .git-rewrite
+
+ ~/Documents/f % git rm -r --cached .git-rewrite
+
+rm '.git-rewrite/backup-refs'
+rm '.git-rewrite/commit'
+rm '.git-rewrite/heads'
+rm '.git-rewrite/index'
+rm '.git-rewrite/map/021297d73e4403fdaae95f7068ab7387e342d167'
+rm '.git-rewrite/map/06e6c83ae753b7cded132b837e1ef9afcb563027'
+rm '.git-rewrite/map/0bc0baa28f81d8106a6f3a09f54ea9dd80cadb1b'
+rm '.git-rewrite/map/102a2c69104c104cc6d33dffac3d7595c8f41866'
+rm '.git-rewrite/map/10510d024a3ceac46c21b3ec4416f691359da8fc'
+rm '.git-rewrite/map/1449c06df6578ce9e46ee3bbc9aeda8f9421e4b3'
+rm '.git-rewrite/map/253fad00e2d65abc7c44294277fe942a3022ea32'
+rm '.git-rewrite/map/25df303e1ed3a8ca695a827b355b73eed455a942'
+rm '.git-rewrite/map/28d68014225a507c0ecd03fee4c49386d0d4d6d8'
+rm '.git-rewrite/map/2d6da4af4cad95f54f95f9366a2475c8927a9145'
+rm '.git-rewrite/map/3353d1f1422d446d232693f15954897bdf11173e'
+rm '.git-rewrite/map/339983d5581c7774bdbf02c058e727cc338d2d82'
+rm '.git-rewrite/map/40dc7e994fda6153dc0428d0cba2fed17c573968'
+rm '.git-rewrite/map/49a1b25451662013dcdca277bbf4bf15c4415524'
+rm '.git-rewrite/map/4d8792dbc254641e55010186c859b07c8ff5cb63'
+rm '.git-rewrite/map/4e811c29a09d00a81d75d3b1926f30dd9229c080'
+rm '.git-rewrite/map/5725b35748b205fc6ee8726d2998c9f306757b3f'
+rm '.git-rewrite/map/578ab9bc61410b5c60fc0e298523b43e77d9eae1'
+rm '.git-rewrite/map/5a3ba7831a4f9a227bfd330f3264c45c6b108f0a'
+rm '.git-rewrite/map/5ee2a9b6540fac2312bb401e3e03a0e46acb36e1'
+rm '.git-rewrite/map/602125671f07eb85a5801971746ae94c629d6d9c'
+rm '.git-rewrite/map/620af13de45da595f8894eba25523019c186f590'
+rm '.git-rewrite/map/671f3f53a3680800734959217430e61fce957c97'
+rm '.git-rewrite/map/699806b4ca242aa0798cc8118bf34035cf7c6487'
+rm '.git-rewrite/map/6e947db096492aa93c68427ff6c8782fba71903f'
+rm '.git-rewrite/map/6f16816e39fa0c56cd09cb4beec744469db6ae38'
+rm '.git-rewrite/map/6f281cb35c74ccdb05dacf36240568a35139f294'
+rm '.git-rewrite/map/765fc5f27735e33ecf98c2d0b4b992ee17e546eb'
+rm '.git-rewrite/map/7777e575f3f93d951edd2f6cc5f06ea17fc7785d'
+rm '.git-rewrite/map/7e1183d235ea0e492d41f2f66b754e15ac363975'
+rm '.git-rewrite/map/824ea0a571256d8042075799fe45bc5064c1a111'
+rm '.git-rewrite/map/869b96284aedb28f138102040eba63a7bf8bfd50'
+rm '.git-rewrite/map/86c826acff21a5042fc9baa8973914530c7e7c58'
+rm '.git-rewrite/map/9179bb898a84a72537dc867b812cc3346e94ac25'
+rm '.git-rewrite/map/945ff7de4a50e5de63d10fe2a03cb8df8d6b4a6f'
+rm '.git-rewrite/map/98384857fa8c4cefb441ced8d75fd25bd8a77d30'
+rm '.git-rewrite/map/983d55066c5a704c491ee32cd200858ece7e8d88'
+rm '.git-rewrite/map/a8f70df25c093dd78909d36d05fe692111ed11f0'
+rm '.git-rewrite/map/ab5da2bc6dfb3d402200f394c0bb7db375095370'
+rm '.git-rewrite/map/abd667d9c1df3ec2da43594fe16d6fd9b45e742c'
+rm '.git-rewrite/map/c1f2b1d179944974ee9ac334b671d7ecf978a95e'
+rm '.git-rewrite/map/c249a9d9091d31471254ff70bfd2c64a47f7d566'
+rm '.git-rewrite/map/c270443ae5219759bfcf8727b1ef143284fb4725'
+rm '.git-rewrite/map/c5685c2fd2b5892d2e8881b35008e0e5ea89fba1'
+rm '.git-rewrite/map/ca67173ead5cddb73d7f4b968fdfd2f76c24af33'
+rm '.git-rewrite/map/d2607d472b034cda129cc038158e8dfcaae88bcd'
+rm '.git-rewrite/map/d2dcd922f909e2f75ca660d37b487651d0eeeac4'
+rm '.git-rewrite/map/d45b77e32e8a48660041e7e4511d7a502ab6456b'
+rm '.git-rewrite/map/dd2f7225416e3082dbe9495ce735b149cca074cb'
+rm '.git-rewrite/map/e2dcb92ec8f7b6dd71c5aabecd605caead9a109b'
+rm '.git-rewrite/map/e54e1c9f2c075bda9f1888bbdeab576a7c8c7a50'
+rm '.git-rewrite/map/e70732520e6e52352009bae42dbf2d90dc3a95b6'
+rm '.git-rewrite/map/f0fb7613c5f7a2c2c3869ae4aa92c1d64f20161d'
+rm '.git-rewrite/map/f178aba750469199147dd98d897a9e9206ddca93'
+rm '.git-rewrite/map/fa5d22bf5837a1d048849acf7b6bf765eaa6b600'
+rm '.git-rewrite/map/fc21e2d40c619e1d8bc306cee073d6d165c294b7'
+rm '.git-rewrite/map/ffd0d578278037c983895ecad76c3acd37841fe8'
+rm '.git-rewrite/message'
+rm '.git-rewrite/parse'
+rm '.git-rewrite/raw-refs'
+rm '.git-rewrite/revs'
+```
+
+```
+ ~/Documents/f % repo_save
+Auto packing the repository in background for optimum performance.
+See "git help gc" for manual housekeeping.
+[master d61c8a58] .
+ 68 files changed, 695 insertions(+), 4470 deletions(-)
+ delete mode 100644 .git-rewrite/backup-refs
+ delete mode 100644 .git-rewrite/commit
+ delete mode 100644 .git-rewrite/heads
+ delete mode 100644 .git-rewrite/index
+ delete mode 100644 .git-rewrite/map/021297d73e4403fdaae95f7068ab7387e342d167
+ delete mode 100644 .git-rewrite/map/06e6c83ae753b7cded132b837e1ef9afcb563027
+ delete mode 100644 .git-rewrite/map/0bc0baa28f81d8106a6f3a09f54ea9dd80cadb1b
+ delete mode 100644 .git-rewrite/map/102a2c69104c104cc6d33dffac3d7595c8f41866
+ delete mode 100644 .git-rewrite/map/10510d024a3ceac46c21b3ec4416f691359da8fc
+ delete mode 100644 .git-rewrite/map/1449c06df6578ce9e46ee3bbc9aeda8f9421e4b3
+ delete mode 100644 .git-rewrite/map/253fad00e2d65abc7c44294277fe942a3022ea32
+ delete mode 100644 .git-rewrite/map/25df303e1ed3a8ca695a827b355b73eed455a942
+ delete mode 100644 .git-rewrite/map/28d68014225a507c0ecd03fee4c49386d0d4d6d8
+ delete mode 100644 .git-rewrite/map/2d6da4af4cad95f54f95f9366a2475c8927a9145
+ delete mode 100644 .git-rewrite/map/3353d1f1422d446d232693f15954897bdf11173e
+ delete mode 100644 .git-rewrite/map/339983d5581c7774bdbf02c058e727cc338d2d82
+ delete mode 100644 .git-rewrite/map/40dc7e994fda6153dc0428d0cba2fed17c573968
+ delete mode 100644 .git-rewrite/map/49a1b25451662013dcdca277bbf4bf15c4415524
+ delete mode 100644 .git-rewrite/map/4d8792dbc254641e55010186c859b07c8ff5cb63
+ delete mode 100644 .git-rewrite/map/4e811c29a09d00a81d75d3b1926f30dd9229c080
+ delete mode 100644 .git-rewrite/map/5725b35748b205fc6ee8726d2998c9f306757b3f
+ delete mode 100644 .git-rewrite/map/578ab9bc61410b5c60fc0e298523b43e77d9eae1
+ delete mode 100644 .git-rewrite/map/5a3ba7831a4f9a227bfd330f3264c45c6b108f0a
+ delete mode 100644 .git-rewrite/map/5ee2a9b6540fac2312bb401e3e03a0e46acb36e1
+ delete mode 100644 .git-rewrite/map/602125671f07eb85a5801971746ae94c629d6d9c
+ delete mode 100644 .git-rewrite/map/620af13de45da595f8894eba25523019c186f590
+ delete mode 100644 .git-rewrite/map/671f3f53a3680800734959217430e61fce957c97
+ delete mode 100644 .git-rewrite/map/699806b4ca242aa0798cc8118bf34035cf7c6487
+ delete mode 100644 .git-rewrite/map/6e947db096492aa93c68427ff6c8782fba71903f
+ delete mode 100644 .git-rewrite/map/6f16816e39fa0c56cd09cb4beec744469db6ae38
+ delete mode 100644 .git-rewrite/map/6f281cb35c74ccdb05dacf36240568a35139f294
+ delete mode 100644 .git-rewrite/map/765fc5f27735e33ecf98c2d0b4b992ee17e546eb
+ delete mode 100644 .git-rewrite/map/7777e575f3f93d951edd2f6cc5f06ea17fc7785d
+ delete mode 100644 .git-rewrite/map/7e1183d235ea0e492d41f2f66b754e15ac363975
+ delete mode 100644 .git-rewrite/map/824ea0a571256d8042075799fe45bc5064c1a111
+ delete mode 100644 .git-rewrite/map/869b96284aedb28f138102040eba63a7bf8bfd50
+ delete mode 100644 .git-rewrite/map/86c826acff21a5042fc9baa8973914530c7e7c58
+ delete mode 100644 .git-rewrite/map/9179bb898a84a72537dc867b812cc3346e94ac25
+ delete mode 100644 .git-rewrite/map/945ff7de4a50e5de63d10fe2a03cb8df8d6b4a6f
+ delete mode 100644 .git-rewrite/map/98384857fa8c4cefb441ced8d75fd25bd8a77d30
+ delete mode 100644 .git-rewrite/map/983d55066c5a704c491ee32cd200858ece7e8d88
+ delete mode 100644 .git-rewrite/map/a8f70df25c093dd78909d36d05fe692111ed11f0
+ delete mode 100644 .git-rewrite/map/ab5da2bc6dfb3d402200f394c0bb7db375095370
+ delete mode 100644 .git-rewrite/map/abd667d9c1df3ec2da43594fe16d6fd9b45e742c
+ delete mode 100644 .git-rewrite/map/c1f2b1d179944974ee9ac334b671d7ecf978a95e
+ delete mode 100644 .git-rewrite/map/c249a9d9091d31471254ff70bfd2c64a47f7d566
+ delete mode 100644 .git-rewrite/map/c270443ae5219759bfcf8727b1ef143284fb4725
+ delete mode 100644 .git-rewrite/map/c5685c2fd2b5892d2e8881b35008e0e5ea89fba1
+ delete mode 100644 .git-rewrite/map/ca67173ead5cddb73d7f4b968fdfd2f76c24af33
+ delete mode 100644 .git-rewrite/map/d2607d472b034cda129cc038158e8dfcaae88bcd
+ delete mode 100644 .git-rewrite/map/d2dcd922f909e2f75ca660d37b487651d0eeeac4
+ delete mode 100644 .git-rewrite/map/d45b77e32e8a48660041e7e4511d7a502ab6456b
+ delete mode 100644 .git-rewrite/map/dd2f7225416e3082dbe9495ce735b149cca074cb
+ delete mode 100644 .git-rewrite/map/e2dcb92ec8f7b6dd71c5aabecd605caead9a109b
+ delete mode 100644 .git-rewrite/map/e54e1c9f2c075bda9f1888bbdeab576a7c8c7a50
+ delete mode 100644 .git-rewrite/map/e70732520e6e52352009bae42dbf2d90dc3a95b6
+ delete mode 100644 .git-rewrite/map/f0fb7613c5f7a2c2c3869ae4aa92c1d64f20161d
+ delete mode 100644 .git-rewrite/map/f178aba750469199147dd98d897a9e9206ddca93
+ delete mode 100644 .git-rewrite/map/fa5d22bf5837a1d048849acf7b6bf765eaa6b600
+ delete mode 100644 .git-rewrite/map/fc21e2d40c619e1d8bc306cee073d6d165c294b7
+ delete mode 100644 .git-rewrite/map/ffd0d578278037c983895ecad76c3acd37841fe8
+ delete mode 100644 .git-rewrite/message
+ delete mode 100644 .git-rewrite/parse
+ delete mode 100644 .git-rewrite/raw-refs
+ delete mode 100644 .git-rewrite/revs
+ create mode 100644 drafts/20261025 desktop git filter repo.md
+On branch master
+Your branch is up to date with 'e/master'.
+
+nothing to commit, working tree clean
+On branch master
+Your branch is up to date with 'e/master'.
+
+nothing to commit, working tree clean
+On branch master
+Your branch is ahead of 'l/master' by 8 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+On branch master
+Your branch is up to date with 'e/master'.
+
+nothing to commit, working tree clean
+On branch master
+Your branch is up to date with 'g/master'.
+
+nothing to commit, working tree clean
+On branch master
+Your branch is up to date with 'e/master'.
+
+nothing to commit, working tree clean
+```
+
+```
+
+```
+
 # how to force remove all large files in git history
 
 8:56 AM
