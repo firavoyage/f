@@ -523,6 +523,17 @@ you should calc meaningful intermediate values at first, rather than patching th
 
 i could not debug messy code anyway. and im not going to do it.
 
+
+
+wait ive thought about sth. let me test.
+well not really the case.
+
+
+
+wow. "because sum is unscaled".
+yeah! how could i avoid missing *100 to mitigate float calc,
+if i do not think in "number of ppl"
+
 */
 
 void solve() {

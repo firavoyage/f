@@ -539,6 +539,7 @@ cp: <!-- algorithms -->
 - cpp template
 - common stupid mistakes
 - codeforces platform
+- mistake missing float point calc trick scale
 
 pm:
 

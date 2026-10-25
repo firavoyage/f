@@ -12281,3 +12281,430 @@ How to convert a string to integer Using stoi() in C++
 Feb 11, 2022 — How to convert a string to integer Using stoi() in C++ | @programmingwithannu hi guys welcome to my channel in this video we will ...  
 1m
 
+# can i define fn inside fn in cpp
+
+**No, you cannot define a traditional standard function inside another function** in C++. The C++ standard requires all regular functions to be defined at global or namespace scope. [](https://medium.com/@dilshankmg/can-you-define-a-function-inside-a-function-in-c-80646dfa528b)
+
+However, you can easily achieve the exact same behavior using **lambdas** or **local structs**.
+
+### 1\. The Modern Way: Lambdas (C++11 and newer)
+
+Lambdas are anonymous function objects that you can define directly inside a function. You can assign them to a variable using `auto` and call them just like a regular function. [](https://stackoverflow.com/questions/4324763/can-we-have-functions-inside-functions-in-c)
+
+cpp
+
+```
+#include <iostream>
+
+void outerFunction() {
+    // Define a lambda inside the function
+    auto innerLambda = [](int x) {
+        return x * 2;
+    };
+
+    // Call the lambda
+    std::cout << innerLambda(5); // Outputs: 10
+}
+
+```
+
+
+
+### 2\. The Legacy Way: Local Structs (C++98 / C++03)
+
+If you are working with an ancient version of C++ that doesn't support lambdas, you can declare a `struct` or `class` inside the function, and give it a member function. [](https://stackoverflow.com/questions/4324763/can-we-have-functions-inside-functions-in-c)
+
+cpp
+
+```
+#include <iostream>
+
+void outerFunction() {
+    // Define a local struct
+    struct LocalHelper {
+        static int innerFunc(int x) {
+            return x * 2;
+        }
+    };
+
+    // Call the function via the struct
+    std::cout << LocalHelper::innerFunc(5); // Outputs: 10
+}
+
+```
+
+
+
+### Comparison Matrix
+
+| Feature                          | Regular Function | Lambda (Recommended)                    | Local Struct                  |
+| -------------------------------- | ---------------- | --------------------------------------- | ----------------------------- |
+| **Allowed inside functions?**    | ❌ No             | Yes                                     | Yes                           |
+| **Can capture local variables?** | ❌ N/A            | Yes (via capture clause \[&\] or \[=\]) | ❌ No (unless passed manually) |
+| **Syntax overhead**              | Low              | Low                                     | Medium                        |
+
+Are you trying to structure a complex algorithm or just limit the scope of a helper function? I can help you choose the best implementation or write a **lambda with variable captures** if you need it to interact with the parent function's variables.
+
+* [](https://stackoverflow.com/questions/4324763/can-we-have-functions-inside-functions-in-c)  
+Stack Overflow  
+Can we have functions inside functions in C++? - Stack Overflow  
+Dec 1, 2010 — \- Yes with lambdas! In current versions of c++ (C++11, C++14, and C++17), you can have functions inside functions in the form of a...
+* [](https://medium.com/@dilshankmg/can-you-define-a-function-inside-a-function-in-c-80646dfa528b)  
+Medium·Lahiru Dilshan  
+Can you define a Function Inside a Function in C++? - Medium  
+No, you cannot define a function inside another function in standard C++. C++ requires all function definitions to exist at global...
+* [](https://www.quora.com/Can-a-function-be-declared-inside-another-function-in-C-C)  
+Quora  
+Can a function be declared inside another function in C/C++?  
+Jan 17, 2023 — C++11 introduced lambda functions which are automatic unnamed function objects that perform their body of code like a function, bu...
+
+# cpp23 lamdba syntax in cp
+
+In **Competitive Programming (CP)**, lambdas are extensively used for custom sorting (`std::sort`), writing quick predicate checks (`std::find_if`), and implementing in-line graphs/tree traversals (like DFS).
+
+**C++23 introduces two game-changing features** that significantly clean up lambda syntax, especially when writing fast, recursive functions in CP.
+
+---
+
+### 1\. Clean Recursive Lambdas using `this auto` (Deducing `this`)
+
+Prior to C++23, writing a recursive lambda (like a DFS or a factorial function) was notoriously ugly. You either had to resort to a heavy `std::function` (which is slow and can cause Time Limit Exceeded (TLE) in CP) or pass the lambda to itself as an argument. [](https://codeforces.com/blog/entry/136178)
+
+In **C++23**, you can use **Explicit Object Parameters (`this auto`)** to allow a lambda to reference itself naturally: [](https://codeforces.com/blog/entry/136178)
+
+cpp
+
+```
+// C++23 Recursive DFS style
+auto dfs = [&](this auto self, int u, int p) -> void {
+    for (int v : adj[u]) {
+        if (v != p) {
+            self(v, u); // Call itself cleanly!
+        }
+    }
+};
+dfs(0, -1);
+
+```
+
+
+
+#### The Evolution of Recursive Lambdas:
+
+| Standard          | Syntax Example                                                       | CP Performance Impact                                           |
+| ----------------- | -------------------------------------------------------------------- | --------------------------------------------------------------- |
+| **C++14 / C++20** | auto dfs = \[&\](auto& self, int u) { self(self, u); }; dfs(dfs, 0); | Fast, but incredibly clunky to write and call.                  |
+| **C++23**         | auto dfs = \[&\](this auto self, int u) { self(u); }; dfs(0);        | **Fast and perfectly clean.** No self-passing at the call site. |
+
+---
+
+### 2\. Omitting Parentheses in Specifier Lambdas
+
+In C++20, if you wanted to make a lambda `mutable` or `static` but it didn't take any parameters, you were forced to include empty parentheses `()`. [](https://www.sandordargo.com/blog/2022/11/23/cpp23-changes-to-lambdas)
+
+**C++23** simplifies this by making empty parentheses truly optional in almost all scenarios: [](https://www.sandordargo.com/blog/2022/11/23/cpp23-changes-to-lambdas)
+
+cpp
+
+```
+// C++20 (Illegal without empty parentheses)
+auto lambda = [x]() mutable { x++; }; 
+
+// C++23 (Perfectly legal)
+auto lambda = [x] mutable { x++; }; 
+
+```
+
+
+
+---
+
+### 3\. Static Lambdas (`static`)
+
+If your lambda doesn't capture anything from the outer scope, C++23 allows you to mark it as `static`. This tells the compiler that the lambda does not need an underlying state, which can sometimes help with performance micro-optimizations. [](https://en.cppreference.com/cpp/language/lambda)
+
+cpp
+
+```
+// C++23 Static Lambda for a custom sort comparator
+sort(v.begin(), v.end(), [] static (int a, int b) {
+    return a > b; 
+});
+
+```
+
+
+
+---
+
+### Summary Cheat Sheet for CP
+
+If you are compiling your CP solutions with `-std=c++23` or `-std=gnu++23`, use this ideal boilerplate setup for standard operations:
+
+cpp
+
+```
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    // 1. Clean Recursive lambda for Factorial/DFS
+    auto fact = [](this auto self, int n) -> int {
+        return n <= 1 ? 1 : n * self(n - 1);
+    };
+    cout << fact(5) << "\n"; // Outputs 120
+
+    // 2. Mutable lambda omitting empty brackets
+    int state = 0;
+    auto increment = [state] mutable { state++; }; 
+}
+
+```
+
+
+
+Are you setting up your **local editor** (like VS Code or Vim) or an **online judge** (like Codeforces) to run C++23, and do you need help configuring the compiler flags?
+
+* [](https://codeforces.com/blog/entry/136178)  
+Codeforces  
+std::generator and recursive lambdas in C++23  
+You will not be allowed to do it, because inside the lambda, you use fact before its type is deduced. C++23 helps us, allowing to ...
+* [](https://www.sandordargo.com/blog/2022/11/23/cpp23-changes-to-lambdas)  
+Sandor Dargo  
+C++23: How lambdas are going to change?  
+If a lambda has no parameters (in standardese: if the parameter declaration clause is empty), we can omit the parentheses! you can...
+* [](https://en.cppreference.com/cpp/language/lambda)  
+cppreference.com  
+Lambda expressions (since C++11) - cppreference.com  
+static (C++23) depending on specifiers. capturing by reference does not extend object or this lifetimes, risking dangling referenc...
+
+# cpp23 lamdba syntax
+
+In **C++23**, the syntax for lambda expressions received major upgrades that make them more concise and significantly more powerful. [](https://www.sandordargo.com/blog/2022/11/23/cpp23-changes-to-lambdas)
+
+The full **C++23 lambda syntax grammar** is structured as follows:
+
+\[captures\] <tparams>⏟C++20 requires⏟C++20 (params)⏟Optional in C++23 specifiers⏟mutable, static, etc. \-> return\_type requires⏟C++20 { body }
+
+\[captures\] <tparams\>C++20 requiresC++20 (params)Optional in C++23 specifiersmutable, static, etc. \-\> return\_type requiresC++20 { body }
+
+---
+
+### Key C++23 Syntax Features & Changes
+
+#### 1\. Omitting Empty Parentheses `()` is Now Fully Permitted
+
+In C++20 and older, if you wanted to use specifiers like `mutable`, `constexpr`, or attributes, you were strictly required to include empty parameter parentheses `()`. **C++23 removes this restriction**. If your lambda takes no parameters, you can omit the `()` entirely. [](https://www.sandordargo.com/blog/2022/11/23/cpp23-changes-to-lambdas)
+
+cpp
+
+```
+// Illegal in C++20, perfectly VALID in C++23:
+auto lambda1 = [] mutable { /* ... */ }; 
+auto lambda2 = [] constexpr { return 42; };
+
+```
+
+
+
+#### 2\. Support for `static` Lambdas
+
+C++23 allows you to mark a lambda as `static`, provided it does not capture any variables. A `static` lambda has a static `operator()`, meaning it behaves like a normal function and avoids generating an instance object or dealing with an implicit `this` pointer. [](https://en.cppreference.com/cpp/language/lambda)
+
+cpp
+
+```
+// C++23 static lambda (cannot have captures)
+auto add = [] static (int a, int b) {
+    return a + b;
+};
+
+```
+
+
+
+#### 3\. "Deducing `this`" for Clean Recursive Lambdas
+
+Before C++23, writing a recursive lambda required ugly workarounds like passing the lambda to itself as an argument or wrapping it in a costly `std::function`. [](https://codeforces.com/blog/entry/136178)
+
+C++23 introduces an explicit object parameter (`this auto`). This allows the lambda to reference itself directly and perform clean recursion: [](https://codeforces.com/blog/entry/136178)
+
+cpp
+
+```
+// C++23 clean recursive lambda
+auto factorial = [](this auto self, int n) -> int {
+    return n <= 1 ? 1 : n * self(n - 1);
+};
+
+std::cout << factorial(5); // Outputs 105
+
+```
+
+
+
+---
+
+### Summary of Differences (C++20 vs C++23)
+
+| Feature                         | C++20                                             | C++23                             |
+| ------------------------------- | ------------------------------------------------- | --------------------------------- |
+| **Omitting () with specifiers** | ❌ Forbidden (e.g., \[\] mutable {} is an error)   | Allowed (e.g., \[\] mutable {})   |
+| **static specifier**            | ❌ Not supported                                   | Supported for captureless lambdas |
+| **Native Recursion**            | ❌ Requires passing self explicitly as a parameter | Cleanly handled using this auto   |
+
+Would you like to see a complete **code example** demonstrating how to implement a specific algorithm using these new C++23 lambda capabilities, or are you looking for help with a **compiler support** flag configuration?
+
+* [](https://codeforces.com/blog/entry/136178)  
+Codeforces  
+std::generator and recursive lambdas in C++23  
+While it is attractive, it makes the calls to fact more expensive, C++23, the best practice was. C++23 helps us, allowing to do th...
+* [](https://www.sandordargo.com/blog/2022/11/23/cpp23-changes-to-lambdas)  
+Sandor Dargo  
+C++23: How lambdas are going to change?  
+If a lambda has no parameters (in standardese: if the parameter declaration clause is empty), we can omit the parentheses! Or can'
+* [](https://en.cppreference.com/cpp/language/lambda)  
+cppreference.com  
+Lambda expressions (since C++11) - cppreference.com  
+static (C++23) depending on specifiers. capture-less non-generic and generic lambdas convert to function pointers. Lifetime: captu...
+
+# cpp lamdba syntax
+
+The basic anatomy of a **C++ lambda expression** follows this core structure: [](https://learn.microsoft.com/en-us/cpp/cpp/lambda-expressions-in-cpp?view=msvc-170)
+
+cpp
+
+```
+[ capture_clause ] ( parameters ) specifiers -> return_type { body }
+
+```
+
+
+
+Here is a quick breakdown of every component, ranging from the absolute minimum required to advanced syntax options.
+
+---
+
+### 1\. Structure Breakdown
+
+| Component          | Syntax            | Description                                                                       |
+| ------------------ | ----------------- | --------------------------------------------------------------------------------- |
+| **Capture Clause** | \[...\]           | **Mandatory.** Defines what variables from the outer scope are accessible inside. |
+| **Parameters**     | (...)             | Optional. Function arguments (can be omitted if no arguments are taken).          |
+| **Specifiers**     | mutable, noexcept | Optional. Modifies behavior (e.g., allows modifying value-captured variables).    |
+| **Return Type**    | \-> type          | Optional. Trailing return type (usually deduced automatically).                   |
+| **Body**           | {...}             | **Mandatory.** The actual code logic of the function.                             |
+
+---
+
+### 2\. The Capture Clause (`[]`)
+
+The capture clause dictates how outside variables are brought into the lambda's scope: [](https://www.w3schools.com/cpp/cpp%5Ffunctions%5Flambda.asp)
+
+* `[]` — **Capture nothing.** The lambda cannot see any local variables from the surrounding code.
+* `[=]` — **Capture all by value.** Copies all visible local variables into the lambda (read-only by default).
+* `[&]` — **Capture all by reference.** Accesses the actual outside variables directly (modifications affect the original).
+* `[x, &y]` — **Explicit capture.** Captures `x` by value, and `y` by reference.
+* `[this]` — Captures the current class instance pointer by value. [](https://www.geeksforgeeks.org/cpp/lambda-expression-in-c/)
+
+---
+
+### 3\. Syntax Examples
+
+#### The Minimal Lambda
+
+The absolute shortest valid lambda in C++ does nothing and takes nothing: [](https://stackoverflow.com/questions/7627098/what-is-a-lambda-expression-and-when-should-i-use-one)
+
+cpp
+
+```
+[]{}
+
+```
+
+
+
+#### Basic Inline Usage (e.g., Sorting)
+
+Lambdas are heavily used alongside standard algorithms like `std::sort`: [](https://www.geeksforgeeks.org/cpp/lambda-expression-in-c/)
+
+cpp
+
+```
+#include <vector>
+#include <algorithm>
+
+std::vector<int> nums = {3, 1, 4, 1, 5};
+std::sort(nums.begin(), nums.end(), [](int a, int b) {
+    return a > b; // Sorts descending
+});
+
+```
+
+
+
+#### Storing a Lambda
+
+You can use `auto` to assign a lambda to a variable so you can invoke it later: [](https://coddy.tech/learn/cpp/logic%5Fand%5Fflow/intro%5Flambda%5Fexpressions)
+
+cpp
+
+```
+auto add = [](int a, int b) -> int {
+    return a + b;
+};
+
+int result = add(5, 3); // result is 8
+
+```
+
+
+
+#### The `mutable` Keyword
+
+By default, variables captured **by value** (`[=]`) cannot be modified inside the lambda. Adding `mutable` bypasses this limitation by modifying the local copy: [](https://en.cppreference.com/cpp/language/lambda)
+
+cpp
+
+```
+int counter = 0;
+auto incrementor = [counter]() mutable {
+    counter++; // Allowed because of 'mutable'
+    return counter;
+};
+
+```
+
+
+
+#### Generic Lambdas (C++14 and newer)
+
+You can use `auto` inside the parameter list to accept any data type dynamically: [](https://www.codecademy.com/learn/learn-advanced-c-plus-plus/modules/lambda-expressions-in-cpp/cheatsheet)
+
+cpp
+
+```
+auto print = [](const auto& x) {
+    std::cout << x << '\n';
+};
+
+```
+
+
+
+Would you like to see how to handle **complex object ownership** (like move-only types) using **C++14 init-captures**, or do you need help passing a lambda into a **templated function**?
+
+* [](https://learn.microsoft.com/en-us/cpp/cpp/lambda-expressions-in-cpp?view=msvc-170)  
+Microsoft Learn  
+Lambda expressions in C++ - Microsoft Learn  
+The mutable keyword is optional. throw() is the optional exception specification. The lambda body consists of the statement inside...
+* [](https://en.cppreference.com/cpp/language/lambda)  
+cppreference.com  
+Lambda expressions (since C++11) - cppreference.com  
+Generic Lambda: uses auto parameters (C++14) or explicit template parameter list (C++20). Conversion: capture-less lambdas convert...
+* [](https://stackoverflow.com/questions/7627098/what-is-a-lambda-expression-and-when-should-i-use-one)  
+Stack Overflow  
+c++ - What is a lambda expression, and when should I use one?  
+Oct 2, 2011 — A lambda is an unnamed function that is useful (in actual programming, not theory) for short snippets of code that are impossible ...
+
+Show all
