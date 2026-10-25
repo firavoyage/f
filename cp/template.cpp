@@ -345,9 +345,5 @@ signed main() {
 */
 
 void solve() {
-  prn(parse_float("123.12"));
-  prn(parse_int("0"));
-  string foo = "asdf";
-
-  prn(parse_float(foo));
+  
 }

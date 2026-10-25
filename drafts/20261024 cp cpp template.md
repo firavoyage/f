@@ -12708,3 +12708,114 @@ c++ - What is a lambda expression, and when should I use one?
 Oct 2, 2011 — A lambda is an unnamed function that is useful (in actual programming, not theory) for short snippets of code that are impossible ...
 
 Show all
+
+# number scientific representation in cpp
+
+In C++, scientific notation represents numbers using an **exponent notation** where `e` or `E` stands for "times 10 to the power of". [](https://www.learncpp.com/cpp-tutorial/introduction-to-scientific-notation/)
+
+Here is a complete guide to using scientific representation in C++ for **literals** (writing them in code) and **I/O formatting** (printing them to the console).
+
+---
+
+### 1\. Writing Scientific Literals in Code
+
+You can assign floating-point numbers (`double` or `float`) directly using exponential notation. [](https://www.hellocpp.dev/lesson/scientific-notation-fundamentals)
+
+cpp
+
+```
+#include <iostream>
+
+int main() {
+    // 3.0 x 10^8 (Speed of light)
+    double speedOfLight = 3.0e8;  
+    
+    // 1.6 x 10^-19 (Electron charge)
+    double electronCharge = 1.6e-19; 
+
+    std::cout << speedOfLight << "\n";    // Outputs: 3e+08
+    std::cout << electronCharge << "\n";  // Outputs: 1.6e-19
+}
+
+```
+
+
+
+---
+
+### 2\. Formatting Console Output (`std::scientific`)
+
+By default, C++ only switches to scientific notation if a number is very large or very small. If you want to **force** the console to print every floating-point number in scientific representation, use the `std::scientific` stream manipulator from the `<iostream>` header. [](https://www.youtube.com/watch?v=N0mDVmxtB3c&t=318)
+
+cpp
+
+```
+#include <iostream>
+
+int main() {
+    double num = 123.456;
+
+    // Force scientific notation
+    std::cout << std::scientific << num << "\n"; 
+    // Outputs: 1.234560e+02
+}
+
+```
+
+
+
+---
+
+### 3\. Controlling Precision (`std::setprecision`)
+
+When using `std::scientific`, you can control exactly how many digits appear **after the decimal point** by combining it with `std::setprecision()` from the `<iomanip>` header. [](https://www.geeksforgeeks.org/cpp/stdfixed-stdscientific-stdhexfloat-stddefaultfloat-c/)
+
+cpp
+
+```
+#include <iostream>
+#include <iomanip> // Required for setprecision
+
+int main() {
+    double num = 12345.6789;
+
+    std::cout << std::scientific;
+    std::cout << std::setprecision(2) << num << "\n"; // Outputs: 1.23e+04
+    std::cout << std::setprecision(4) << num << "\n"; // Outputs: 1.2346e+04
+}
+
+```
+
+
+
+---
+
+### Summary of Formatting Manipulators
+
+If you ever need to switch back and forth, here is how the streams behave:
+
+| Manipulator       | Description                                            | Example Output (1234.5) |
+| ----------------- | ------------------------------------------------------ | ----------------------- |
+| std::defaultfloat | Default C++ behavior (uses notation based on size)     | 1234.5                  |
+| std::scientific   | **Forces scientific notation**                         | 1.234500e+03            |
+| std::fixed        | Forces standard decimal notation (disables scientific) | 1234.500000             |
+
+Would you like to know how to **parse and read** scientific notation strings from user input, or are you looking to format data into a **specific string format** using `std::stringstream`?
+
+* [](https://www.learncpp.com/cpp-tutorial/introduction-to-scientific-notation/)  
+LearnCpp.com
+
+4.7 — Introduction to scientific notation – Learn C++  
+Scientific notation writes lengthy numbers concisely as significand x 10 to the exponent (or significande-exponent in C++), conven...
+* [](https://cplusplus.com/reference/ios/scientific/)  
+CPlusPlus.com  
+std::scientific - CPlusPlus.com  
+Use scientific floating-point notation. Sets the floatfield format flag for the str stream to scientific .
+* [](https://www.geeksforgeeks.org/cpp/cpp-program-to-convert-scientific-notation-to-decimal/)  
+GeeksforGeeks  
+C++ Program to Convert Scientific Notation to Decimal - GeeksforGeeks  
+C++ Scientific Notation Conversion: Convert scientific notation resulting from large \`pow(a, b)\` math operations (header \`\`) into ...
+
+Show all
+
+
