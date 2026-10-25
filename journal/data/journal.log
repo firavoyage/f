@@ -170981,3 +170981,4 @@
 2026-10-25 23:56:34+08:00 ghostty sudo journalctl -u repo_sync.service -r
 2026-10-25 23:57:34+08:00 chromium how to force remove all large files in git history - Google Search - Chromium
 2026-10-25 23:58:34+08:00 chromium how to force remove all large files in git history - Google Search - Chromium
+2026-10-25 23:59:34+08:00 ghostty git filter-branch --force --index-filter '  git ls-files -s | awk '\''$4 > 51200000 {print $2}'\'' | xargs -I {} git rm --cached --ignore-unmatch "{}"' --prune-empty --tag-name-filter cat -- --all
