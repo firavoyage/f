@@ -1,7 +1,0 @@
-d1ac43c50ff54c7bd057bc294055cb544ad696f0 commit	refs/heads/master
-45135085ca3a89d303251442f3e3ed8b1c92186c commit	refs/heads/temp_copy_intercept
-8c0e6241b9304a1895bfaf05c3b28bd05022199f commit	refs/heads/useless_test_branch
-f7d4f7246b1497a470121bca7b49359a8c39e0d5 commit	refs/remotes/a/master
-f7d4f7246b1497a470121bca7b49359a8c39e0d5 commit	refs/remotes/e/master
-8cdb0d74f95e2a201d3395fb3dc261aa510a1881 commit	refs/remotes/g/master
-abd667d9c1df3ec2da43594fe16d6fd9b45e742c commit	refs/remotes/l/master
