@@ -25,4 +25,6 @@ it's much easier to have a local md viewer now it feels.
 
 i need that.
 
+btw, in terms of the vision of humility, i can absolutely have an extensible modular archi, like chatgpt first, nextcloud (which links and shows some information from chatgpt) later.
+
 
