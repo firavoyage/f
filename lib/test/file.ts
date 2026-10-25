@@ -16,4 +16,6 @@ import { init_desktop, data, config, cache, write, children, expand_path, relati
 log(cwd())
 
 log(relative_path('/foo', cwd()))
-log(('/foo', cwd()))
+log(expand_path(cwd(), 'foo'))
+log(expand_path(cwd(), '/foo'))
+log(expand_path(cwd(), '/foo'))

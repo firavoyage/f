@@ -60,14 +60,15 @@ export function entries(obj: object | Map<any, any>): entries {
   // export function entries<T>(obj: object | Map<any, any>): entries<T> {
   if (obj instanceof Map) {
     return Array.from(obj.entries())
-  } else if (typeof obj == 'object') {
+  } else if (is(obj, 'object')) {
     const keys = [
       ...Object.getOwnPropertyNames(obj),
       ...Object.getOwnPropertySymbols(obj)
     ];
 
-    // @ts-expect-error stupid ts
     return keys.map(key => [key, obj[key]]);
+  } else if (is(obj, 'array')) {
+    return Object.entries(obj)
   } else {
     return []
   }

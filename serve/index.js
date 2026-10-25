@@ -3,8 +3,9 @@ import { serve } from '@hono/node-server'
 import { cors } from 'hono/cors'
 import { serveStatic } from '@hono/node-server/serve-static'
 import fs from 'node:fs'
-import { read, cwd, relative_path } from 'lib/file'
+import { read, cwd, expand_path, does_exist } from 'lib/file'
 import { now, format } from 'lib/time'
+import { format_log } from 'lib/log'
 
 const { stringify: serialize } = JSON
 
@@ -29,13 +30,17 @@ function parse_args() {
 
   const options = {
     index: 'index.html',
-    not_found: 'index.html',
+    not_found: nil,
     port: 0,
     root: cwd(),
   }
 
   let should_skip = false
-  for (const [index, arg] of entries(args)) {
+  for (const [index, arg] of Object.entries(args)) {
+    if (should_skip) {
+      continue
+    }
+
     if (has(['-h', '--help'], arg)) {
       log(help)
       return nil
@@ -43,28 +48,31 @@ function parse_args() {
       log(version)
       return nil
     } else if (has(['-i', '--index'], arg)) {
-      options.index = arg
+      options.index = args[index + 1]
+      should_skip = true
     } else if (has(['--not-found'], arg)) {
-      options.not_found = arg
+      options.not_found = args[index + 1]
+      should_skip = true
     } else if (has(['-p', '--port'], arg)) {
-      options.port = arg
+      options.port = args[index + 1]
+      should_skip = true
     } else if (has(['-r', '--root'], arg)) {
-      options.root = arg
+      options.root = expand_path(cwd(), args[index + 1])
+      should_skip = true
+    } else {
+      // arg
+      options.index = arg
     }
+  }
+
+  if (options.not_found == nil) {
+    options.not_found = options.index
   }
 
   return options
 }
 
-function main() {
-  const options = parse_args()
-
-  if (options) {
-    serve(options)
-  }
-}
-
-function serve(options) {
+function run(options) {
   const { index, not_found, port, root } = options
 
   const app = new Hono()
@@ -72,26 +80,38 @@ function serve(options) {
   app.use('*', cors())
 
   // Log Requests
-  app.use('*', async (c) => {
-    const time = format(now())
-    log(`${time} ${c.req.method} ${c.req.path}`)
+  app.use('*', async (c, next) => {
+    await next()
+    log(format_log(`${c.req.method} ${c.req.path}`, 'info'))
+    // const time = format(now())
+    // await next()
+    // log(`${time} ${c.req.method} ${c.req.path}`)
   })
 
+  app.get('/', (c) => {
+    const index_file = expand_path(root, index)
+
+    if (does_exist(index_file)) {
+      return c.html(read(index_file))
+    } else {
+      log(format_log('index file should exist', 'error'))
+      return c.text('not found')
+    } 
+  });
+
   // Serve Static Resources (e.g. css, js, img)
-  app.use('*', serveStatic({ root: relative_path() }))
+  app.use('*', serveStatic({ root }))
 
   // Fallback to Not Found
   app.get('*', (c) => {
-    if (c.req.path.startsWith('/api')) {
-      return c.json({ success: false, message: 'api endpoint not found' }, 404)
+    const not_found_file = expand_path(root, not_found)
+
+    if (does_exist(not_found_file)) {
+      return c.html(read(not_found_file))
     } else {
-      try {
-        const html = fs.readFileSync('../web/build/index.html', 'utf-8')
-        return c.html(html)
-      } catch {
-        return c.text('web/build/index.html missing. Run web build first.', 500)
-      }
-    }
+      log(format_log('not found file should exist', 'error'))
+      return c.text('not found')
+    } 
   })
 
   serve(
@@ -103,6 +123,14 @@ function serve(options) {
       log(`Serve on http://localhost:${info.port}`)
     },
   )
+}
+
+function main() {
+  const options = parse_args()
+
+  if (options) {
+    run(options)
+  }
 }
 
 main()
