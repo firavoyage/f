@@ -363,6 +363,21 @@ left 1, right 1. each will be travelled twice.
 
 
 
+for depth d, it will contain 2^(d-1) nodes.
+
+for each node, let's think about the path above it. it will connect
+the size of its subtree * all other nodes, that is
+subtree * (2^n - 1 - subtree) where subtree = 2^(n-(d-1))-1
+
+
+
+take 1 2 2 for an example.
+
+starting from depth = 2, you have two nodes,
+each has subtree of 1, and others of 3 - 1 = 2, i.e.
+2 * (1 * 2) * 2
+you multiply 2 at the end as pairs can be swapped (two direction sides)
+
 */
 
 void solve() {
