@@ -376,8 +376,45 @@ let's observe.
 
 
 
+take n = 5 for an example
+
+5 10, 1 2 3 4 6 7 8 9
+
+4 has two options, others are free (complete perm).
+
+
+
+e.g. n = 8
+
+8 16, 1 2 3 4 5 6 7  9 10 11 12 13 14 15
+8 doesnt have to be special.
+
+1 2 3 4 5 6 7 8  |  9 10 11 12 13 14 15 16
+
+8 requires >= 16, 1 options
+7 14, 3 - 1 already picked
+6 12, 5 - 2
+5 10, 7 - 3
+4 8, 8 - 4
+3 6, 8 - 5
+...
+
+option = min(2*n - 2*i + 1, n) - already picked
+where already picked = n - i
+
+
 */
 
 void solve() {
-  
+  int n;
+  read(n);
+
+  vector<int> options;
+
+  reveach(i, n, 1){
+    options.append(min_(2*n - 2*i + 1, n) - (n - i));
+  }
+
+  prn(multiplication(options));
+
 }
