@@ -14,5 +14,6 @@ skipped
   - i may solve it, but i guess it's better use of my time to go on
 - i
   - lack of prerequisites
-
+- j
+  - feels i will solve it, but i dont feel i wanna solve it right now
 

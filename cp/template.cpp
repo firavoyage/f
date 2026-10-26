@@ -17,6 +17,8 @@
 #define integer (long long)
 #define float double
 
+const int modulo = 1000000007;
+
 // fix
 
 const int nil = -1;
@@ -224,8 +226,8 @@ auto divmod = [](auto numerator, auto denominator) {
   return std::pair{quotient, remainder};
 };
 
-// auto pow(auto base, auto exp, auto mod = 1000000007) {
-auto pow_(int base, int exp, int mod = 1000000007) {
+// auto pow(auto base, auto exp, auto mod = modulo) {
+auto pow_(int base, int exp, int mod = modulo) {
   int res = 1;
   base %= mod;
 
