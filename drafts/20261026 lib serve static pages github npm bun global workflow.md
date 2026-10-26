@@ -5963,7 +5963,443 @@ Serve on http://localhost:41007
 # . update 0.2
 
 ```
+ ~ % serve /home/fira/Documents/f/apps/tools/source/web/build
+Serve on http://localhost:40875
+12 |
+13 | export function handle(...args: any) {
+14 |   const [fn, fallback] = args
+15 |
+16 |   try {
+17 |     const result = fn();
+     ^
+error: Error: EISDIR: illegal operation on a directory, read
+    at readFileSync (unknown)
+    at handle (/home/fira/.bun/install/global/node_modules/lib/handle.ts:17:20)
+    at read (/home/fira/.bun/install/global/node_modules/lib/file.ts:286:18)
+    at <anonymous> (/home/fira/.bun/install/global/node_modules/serve/index.js:99:21)
+    at dispatch (/home/fira/.bun/install/global/node_modules/hono/dist/compose.js:22:23)
+    at <anonymous> (/home/fira/.bun/install/global/node_modules/serve/index.js:88:11)
+    at dispatch (/home/fira/.bun/install/global/node_modules/hono/dist/compose.js:22:23)
+    at cors2 (/home/fira/.bun/install/global/node_modules/hono/dist/middleware/cors/index.js:76:11)
+    at async dispatch (/home/fira/.bun/install/global/node_modules/hono/dist/compose.js:22:23)
+    at async <anonymous> (/home/fira/.bun/install/global/node_modules/hono/dist/hono-base.js:306:31)
+    at processTicksAndRejections (native:7:39)
+      fd: 15,
+ syscall: "read",
+   errno: -21,
+    type: [class Error],
+   error: true,
+    code: "EISDIR"
 
+      at readFileSync (unknown:1:1)
+      at handle (/home/fira/.bun/install/global/node_modules/lib/handle.ts:17:20)
+      at read (/home/fira/.bun/install/global/node_modules/lib/file.ts:286:18)
+      at /home/fira/.bun/install/global/node_modules/serve/index.js:136:16
+      at dispatch (/home/fira/.bun/install/global/node_modules/hono/dist/compose.js:27:23)
+      at /home/fira/.bun/install/global/node_modules/serve/index.js:119:4
+      at dispatch (/home/fira/.bun/install/global/node_modules/hono/dist/compose.js:27:23)
+      at cors2 (/home/fira/.bun/install/global/node_modules/hono/dist/middleware/cors/index.js:76:11)
+      at dispatch (/home/fira/.bun/install/global/node_modules/hono/dist/compose.js:27:23)
+      at /home/fira/.bun/install/global/node_modules/hono/dist/hono-base.js:306:31
+      at processTicksAndRejections (native:7:39)
+
+2026-10-26 10:56:31+08:00 [info] GET /
+
+12 |
+13 | export function handle(...args: any) {
+14 |   const [fn, fallback] = args
+15 |
+16 |   try {
+17 |     const result = fn();
+     ^
+error: Error: EISDIR: illegal operation on a directory, read
+    at readFileSync (unknown)
+    at handle (/home/fira/.bun/install/global/node_modules/lib/handle.ts:17:20)
+    at read (/home/fira/.bun/install/global/node_modules/lib/file.ts:286:18)
+    at <anonymous> (/home/fira/.bun/install/global/node_modules/serve/index.js:114:21)
+    at dispatch (/home/fira/.bun/install/global/node_modules/hono/dist/compose.js:22:23)
+    at async dispatch (/home/fira/.bun/install/global/node_modules/hono/dist/compose.js:22:23)
+    at async <anonymous> (/home/fira/.bun/install/global/node_modules/serve/index.js:88:11)
+    at async dispatch (/home/fira/.bun/install/global/node_modules/hono/dist/compose.js:22:23)
+    at async cors2 (/home/fira/.bun/install/global/node_modules/hono/dist/middleware/cors/index.js:76:11)
+    at async dispatch (/home/fira/.bun/install/global/node_modules/hono/dist/compose.js:22:23)
+    at async <anonymous> (/home/fira/.bun/install/global/node_modules/hono/dist/hono-base.js:306:31)
+    at processTicksAndRejections (native:7:39)
+      fd: 15,
+ syscall: "read",
+   errno: -21,
+    type: [class Error],
+   error: true,
+    code: "EISDIR"
+
+      at readFileSync (unknown:1:1)
+      at handle (/home/fira/.bun/install/global/node_modules/lib/handle.ts:17:20)
+      at read (/home/fira/.bun/install/global/node_modules/lib/file.ts:286:18)
+      at /home/fira/.bun/install/global/node_modules/serve/index.js:114:21
+      at dispatch (/home/fira/.bun/install/global/node_modules/hono/dist/compose.js:27:23)
+      at dispatch (/home/fira/.bun/install/global/node_modules/hono/dist/compose.js:27:23)
+      at /home/fira/.bun/install/global/node_modules/serve/index.js:119:4
+      at dispatch (/home/fira/.bun/install/global/node_modules/hono/dist/compose.js:27:23)
+      at cors2 (/home/fira/.bun/install/global/node_modules/hono/dist/middleware/cors/index.js:76:11)
+      at dispatch (/home/fira/.bun/install/global/node_modules/hono/dist/compose.js:27:23)
+      at /home/fira/.bun/install/global/node_modules/hono/dist/hono-base.js:306:31
+      at processTicksAndRejections (native:7:39)
+
+2026-10-26 10:56:31+08:00 [info] GET /favicon.ico
+
+^C
+```
+
+```
+ ~ % # update
+
+name='serve'
+
+export GIT_DIR="/home/fira/Documents/f/.git/.git_$name"
+export GIT_WORK_TREE="/home/fira/Documents/f/$name"
+
+git add .
+git commit -m '.' || true
+
+git push -f g
+
+bun rm -g $name
+bun add -g github:firahq/$name --force --no-cache
+[master 99dec51] .
+ 2 files changed, 31 insertions(+), 13 deletions(-)
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 637 bytes | 637.00 KiB/s, done.
+Total 4 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/firahq/serve.git
+   352ef9b..99dec51  master -> master
+bun remove v1.3.14 (0d9b296a)
+
+- serve
+1 package removed [5.00ms]
+bun add v1.3.14 (0d9b296a)
+
++ b@github:firahq/b#d6528fb
++ pm2@7.0.4
+
+installed serve@github:firahq/serve#99dec51 with binaries:
+ - serve
+
+145 packages installed [5.00s]
+```
+
+```
+ ~ % serve /home/fira/Documents/f/apps/tools/source/web/build
+Serve on http://localhost:35753
+2026-10-26 10:57:16+08:00 [error] index file should exist
+
+2026-10-26 10:57:16+08:00 [info] GET /
+
+2026-10-26 10:57:16+08:00 [info] GET /favicon.ico
+
+2026-10-26 10:57:18+08:00 [error] index file should exist
+
+2026-10-26 10:57:18+08:00 [info] GET /
+
+2026-10-26 10:57:18+08:00 [info] GET /favicon.ico
+
+2026-10-26 10:57:22+08:00 [error] index file should exist
+
+2026-10-26 10:57:22+08:00 [info] GET /
+
+2026-10-26 10:57:22+08:00 [info] GET /favicon.ico
+
+2026-10-26 10:57:22+08:00 [error] index file should exist
+
+2026-10-26 10:57:22+08:00 [info] GET /
+
+2026-10-26 10:57:22+08:00 [info] GET /favicon.ico
+
+2026-10-26 10:57:23+08:00 [error] index file should exist
+
+2026-10-26 10:57:23+08:00 [info] GET /
+
+2026-10-26 10:57:23+08:00 [info] GET /favicon.ico
+
+2026-10-26 10:57:23+08:00 [error] index file should exist
+
+2026-10-26 10:57:23+08:00 [info] GET /
+
+2026-10-26 10:57:23+08:00 [info] GET /favicon.ico
+
+2026-10-26 10:57:23+08:00 [error] index file should exist
+
+2026-10-26 10:57:23+08:00 [info] GET /
+
+2026-10-26 10:57:23+08:00 [info] GET /favicon.ico
+
+2026-10-26 10:57:23+08:00 [error] index file should exist
+
+2026-10-26 10:57:23+08:00 [info] GET /
+
+2026-10-26 10:57:23+08:00 [info] GET /favicon.ico
+
+2026-10-26 10:57:24+08:00 [error] index file should exist
+
+2026-10-26 10:57:24+08:00 [info] GET /
+
+2026-10-26 10:57:24+08:00 [info] GET /favicon.ico
+
+2026-10-26 10:57:25+08:00 [error] index file should exist
+
+2026-10-26 10:57:25+08:00 [info] GET /
+
+2026-10-26 10:57:25+08:00 [info] GET /favicon.ico
+
+2026-10-26 10:57:25+08:00 [error] index file should exist
+
+2026-10-26 10:57:25+08:00 [info] GET /
+
+2026-10-26 10:57:25+08:00 [info] GET /favicon.ico
+
+2026-10-26 10:57:25+08:00 [error] index file should exist
+
+2026-10-26 10:57:25+08:00 [info] GET /
+
+2026-10-26 10:57:25+08:00 [info] GET /favicon.ico
+
+2026-10-26 10:57:27+08:00 [error] index file should exist
+
+2026-10-26 10:57:27+08:00 [info] GET /
+
+2026-10-26 10:57:27+08:00 [info] GET /favicon.ico
+
+^C
+```
+
+```
+ ~ % # update
+
+name='serve'
+
+export GIT_DIR="/home/fira/Documents/f/.git/.git_$name"
+export GIT_WORK_TREE="/home/fira/Documents/f/$name"
+
+git add .
+git commit -m '.' || true
+
+git push -f g
+
+bun rm -g $name
+bun add -g github:firahq/$name --force --no-cache
+
+[master 6dd3ee4] .
+ 4 files changed, 31 insertions(+), 16 deletions(-)
+Enumerating objects: 11, done.
+Counting objects: 100% (11/11), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 937 bytes | 937.00 KiB/s, done.
+Total 6 (delta 5), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (5/5), completed with 5 local objects.
+To https://github.com/firahq/serve.git
+   99dec51..6dd3ee4  master -> master
+bun remove v1.3.14 (0d9b296a)
+
+- serve
+1 package removed [4.00ms]
+bun add v1.3.14 (0d9b296a)
+  🔍 toggle-selection [60/77] ^C
+ ~ % # update
+
+name='serve'
+
+export GIT_DIR="/home/fira/Documents/f/.git/.git_$name"
+export GIT_WORK_TREE="/home/fira/Documents/f/$name"
+
+git add .
+git commit -m '.' || true
+
+git push -f g
+
+bun rm -g $name
+bun add -g github:firahq/$name --force --no-cache
+
+[master 5507983] .
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 279 bytes | 279.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/firahq/serve.git
+   6dd3ee4..5507983  master -> master
+bun remove v1.3.14 (0d9b296a)
+
+[4.00ms] done
+bun add v1.3.14 (0d9b296a)
+
++ b@github:firahq/b#d6528fb
++ pm2@7.0.4
+
+installed serve@github:firahq/serve#6dd3ee4 with binaries:
+ - serve
+
+145 packages installed [11.35s]
+ ~ % # update
+
+name='serve'
+
+export GIT_DIR="/home/fira/Documents/f/.git/.git_$name"
+export GIT_WORK_TREE="/home/fira/Documents/f/$name"
+
+git add .
+git commit -m '.' || true
+
+git push -f g
+
+bun rm -g $name
+bun add -g github:firahq/$name --force --no-cache
+On branch master
+Your branch is up to date with 'g/master'.
+
+nothing to commit, working tree clean
+Everything up-to-date
+bun remove v1.3.14 (0d9b296a)
+
+- serve
+1 package removed [5.00ms]
+bun add v1.3.14 (0d9b296a)
+
++ b@github:firahq/b#d6528fb
++ pm2@7.0.4
+
+installed serve@github:firahq/serve#6dd3ee4 with binaries:
+ - serve
+
+145 packages installed [5.65s]
+ ~ % # update
+
+name='serve'
+
+export GIT_DIR="/home/fira/Documents/f/.git/.git_$name"
+export GIT_WORK_TREE="/home/fira/Documents/f/$name"
+
+git add .
+git commit -m '.' || true
+
+git push -f g
+
+bun rm -g $name
+bun add -g github:firahq/$name --force --no-cache
+On branch master
+Your branch is up to date with 'g/master'.
+
+nothing to commit, working tree clean
+Everything up-to-date
+bun remove v1.3.14 (0d9b296a)
+
+- serve
+1 package removed [5.00ms]
+bun add v1.3.14 (0d9b296a)
+
++ b@github:firahq/b#d6528fb
++ pm2@7.0.4
+
+installed serve@github:firahq/serve#5507983 with binaries:
+ - serve
+
+145 packages installed [5.04s]
+```
+
+```
+ ~ % serve
+{
+  index: "/home/fira/index.html",
+  not_found: "/home/fira/index.html",
+  port: 0,
+  root: "/home/fira",
+}
+Serve on http://localhost:45441
+^C
+ ~ % serve
+Serve on http://localhost:36125
+2026-10-26 11:17:20 [error] index file should exist on /home/fira/index.html
+
+2026-10-26 11:17:20 [info] GET /
+
+2026-10-26 11:17:20 [error] not found file should exist on /home/fira/index.html
+
+2026-10-26 11:17:20 [info] GET /favicon.ico
+
+^C
+ ~ % serve /home/fira/Documents/f/apps/tools/source/web/build
+Serve on http://localhost:45115
+2026-10-26 11:17:29 [info] GET /
+
+2026-10-26 11:17:29 [info] GET /assets/index-CvlJMKCN.js
+
+2026-10-26 11:17:29 [info] GET /assets/index-CTPI4-Jz.css
+
+2026-10-26 11:17:29 [info] GET /assets/favicon-CNrbILRy.svg
+
+^C
+ ~ % serve /home/fira/Documents/f/apps/tools/source/web/build/index
+Serve on http://localhost:43257
+2026-10-26 11:18:10 [error] index file should exist on /home/fira/Documents/f/apps/tools/source/web/build/index
+
+2026-10-26 11:18:10 [info] GET /
+
+2026-10-26 11:18:11 [error] not found file should exist on /home/fira/Documents/f/apps/tools/source/web/build/index
+
+2026-10-26 11:18:11 [info] GET /favicon.ico
+
+^C
+ ~ % serve /home/fira/Documents/f/apps/tools/source/web/build/
+Serve on http://localhost:37915
+2026-10-26 11:18:29 [info] GET /
+
+2026-10-26 11:18:29 [info] GET /assets/index-CvlJMKCN.js
+
+2026-10-26 11:18:29 [info] GET /assets/index-CTPI4-Jz.css
+
+2026-10-26 11:18:29 [info] GET /assets/favicon-CNrbILRy.svg
+
+2026-10-26 11:18:31 [info] GET /index
+
+2026-10-26 11:18:36 [info] GET /index.html
+
+2026-10-26 11:18:38 [info] GET /a
+
+^C
+ ~ % serve /home/fira/Documents/f/apps/tools/source/web/build/index.html
+Serve on http://localhost:37951
+2026-10-26 11:18:50 [info] GET /
+
+2026-10-26 11:18:50 [info] GET /assets/index-CvlJMKCN.js
+
+2026-10-26 11:18:50 [info] GET /assets/index-CTPI4-Jz.css
+
+2026-10-26 11:18:50 [info] GET /assets/favicon-CNrbILRy.svg
+
+^C
+ ~ % serve /home/fira/Documents/f/apps/tools/source/web/build/index --not-found /home/fira/Documents/f/apps/tools/source/web/build/index.html
+Serve on http://localhost:40711
+2026-10-26 11:19:07 [error] index file should exist on /home/fira/Documents/f/apps/tools/source/web/build/index
+
+2026-10-26 11:19:07 [info] GET /
+
+2026-10-26 11:19:07 [info] GET /favicon.ico
+
+2026-10-26 11:19:12 [info] GET /123
+
+2026-10-26 11:19:13 [info] GET /assets/index-CvlJMKCN.js
+
+2026-10-26 11:19:13 [info] GET /assets/index-CTPI4-Jz.css
+
+2026-10-26 11:19:13 [info] GET /assets/favicon-CNrbILRy.svg
+
+^C
 ```
 
 # how to parse cli args in nodejs
