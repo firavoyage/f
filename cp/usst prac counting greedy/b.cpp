@@ -397,10 +397,25 @@ i remember it's true that
 how can it "double free or corruption (out)" "zsh: IOT instruction ~/.cache/'b'"
 for a specific case...
 
+
+
+it feels there is some issue w log... or lvalue rvalue issues.
+
+
+
+yeah, out of bound as expected, but how
+
+yeah it absolutely out of bound, but hasnt it already failed?
+
+
+
+ah, i forgot to flag appearance initially.
+
 */
 
 void solve() {
   // prn(permutations(4, 4) * permutations(0, 0));
+  log(1);
 
   int n;
   read(n);
@@ -422,19 +437,34 @@ void solve() {
   each(column, 1, n) {
     int remaining = sum;
     vector<bool> has_appeared(n + 5);
-
+    
     bool has_failed = false;
+    
+    // log(column, remaining);
+    // prn(remaining);
+    // log(column, remaining, has_appeared);
 
     each(row, 1, n - 1) {
       int value = a[row][column];
 
+      // prn('column', column, 'row', row, value);
+
       if (has_appeared[value]) {
         has_failed = true;
         break;
+      } else {
+        has_appeared[value] = true;
       }
+      // if (has_appeared[value]) {
+      //   has_failed = true;
+      //   break;
+      // }
 
       remaining -= value;
     }
+
+    // prn("remaining", remaining);
+    // log(remaining);
 
     if (!has_failed) {
       is_desired[remaining] = true;
