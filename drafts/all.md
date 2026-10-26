@@ -545,6 +545,7 @@ cp: <!-- algorithms -->
 - codeforces platform
 - mistake missing float point calc trick scale
 - oj infra
+- modulo number choice
 
 pm:
 
