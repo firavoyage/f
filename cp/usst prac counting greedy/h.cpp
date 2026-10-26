@@ -384,6 +384,11 @@ whenever i see a char, i will give a point to all letters before it.
 and you can simply add each. ~n complexity.
 there would be n "same strings" like this.
 
+
+
+yeah, wa on test 13.
+clearly modulo problems are prone.
+
 */
 
 const int modulo = 1000000007;
@@ -422,14 +427,23 @@ void solve() {
 
   each(i, 1, length) {
     if (chars[i] != prev_char) {
-      current_beatable_count += i - 1;
+      current_beatable_count = i - 1;
     }
 
     prev_char = chars[i];
     ahead_count += current_beatable_count;
+    // log(i, current_beatable_count, ahead_count);
   }
 
+  // log(same_string_count, ahead_count);
+
+  same_string_count %= modulo;
+  ahead_count %= modulo;
+  n %= modulo;
+  
   sum = same_string_count * n + ahead_count * n * (n - 1) / 2;
 
-  prn(sum % modulo);
+  sum %= modulo;
+
+  prn(sum);
 }
