@@ -9,5 +9,6 @@ skipped
 
 - c
   - probs, expectation, an n that could not be simulated
+  - upd: well the numbers are quite special, in terms of expectation, i may at least give it a try
 
 

@@ -363,7 +363,8 @@ left 1, right 1. each will be travelled twice.
 
 
 
-for depth d, it will contain 2^(d-1) nodes.
+for depth d, it will contain 2^(d-1) siblings.
+# for depth d, it will contain 2^(d-1) nodes.
 
 for each node, let's think about the path above it. it will connect
 the size of its subtree * all other nodes, that is
@@ -380,6 +381,29 @@ you multiply 2 at the end as pairs can be swapped (two direction sides)
 
 */
 
+int modulo = 1000000007;
+
 void solve() {
-  
+  int total_depth; read(total_depth);
+
+  int sum = 0;
+  int total_node_count = pow(2, total_depth, modulo) - 1;
+
+  each(depth, 2, total_depth){
+    int sibling_count = pow(2, depth - 1, modulo);
+    int subtree_count = pow(2, total_depth - (depth - 1), modulo) - 1;
+
+    int connection_count = subtree_count * (total_node_count - subtree_count);
+
+    connection_count %= modulo;
+
+    sum += sibling_count * connection_count;
+    sum %= modulo;
+  }
+
+  sum *= 2;
+  sum %= modulo;
+
+  prn(sum);
+
 }

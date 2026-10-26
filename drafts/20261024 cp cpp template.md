@@ -12818,4 +12818,335 @@ C++ Scientific Notation Conversion: Convert scientific notation resulting from l
 
 Show all
 
+# how to create two dimension vector in cpp23
+
+3:40 AM
+
+In **C++23**, you can create a two-dimensional vector using the traditional nested vector syntax `std::vector<std::vector<T>>`. However, C++23 introduces major features like `std::mdspan` and multidimensional subscript operators (`operator[]`) that offer vastly superior alternatives for managing multi-dimensional data. [](https://www.modernescpp.com/index.php/c23-a-multidimensional-view/)
+
+Depending on your use case, there are three primary ways to handle 2D dynamic collections in C++23.
+
+---
+
+### 1\. The Standard Nested Vector approach (Dynamic & Resizable)
+
+If your 2D grid needs rows or columns that dynamically change sizes (or if it is non-rectangular/jagged), use the classic nested vector. [](https://www.geeksforgeeks.org/cpp/2d-vector-in-cpp-with-user-defined-size/)
+
+cpp
+
+```
+#include <iostream>
+#include <vector>
+
+int main() {
+    int rows = 3;
+    int cols = 4;
+
+    // C++23 fully supports traditional nested sizing and fill-initialization
+    std::vector<std::vector<int>> matrix(rows, std::vector<int>(cols, 0));
+
+    // Access elements via chained brackets
+    matrix[1][2] = 42; 
+
+    std::cout << matrix[1][2] << "\n"; // Outputs 42
+}
+
+```
+
+
+
+🔴 **The Catch:** A nested `vector<vector<T>>` is poorly performant for strict mathematical grids because it does not allocate memory in a single continuous block. Instead, it creates an array of pointers pointing to fragmented rows elsewhere in memory. [](https://www.youtube.com/watch?v=rkvKEOCEDqU)
+
+---
+
+### 2\. The Modern C++23 Way: `std::vector` \+ `std::mdspan` (Recommended)
+
+C++23 introduces std::mdspan, a non-owning, multidimensional view over a contiguous block of data. This allows you to allocate a highly efficient **1D vector** in memory but interact with it cleanly as a **2D matrix** using the new **C++23 multi-argument bracket syntax `matrix[r, c]`**. [](https://www.modernescpp.com/index.php/c23-a-multidimensional-view/)
+
+cpp
+
+```
+#include <iostream>
+#include <vector>
+#include <mdspan> // New in C++23
+
+int main() {
+    size_t rows = 3;
+    size_t cols = 4;
+
+    // 1. Allocate a single continuous block of memory (Excellent cache locality)
+    std::vector<int> storage(rows * cols, 0);
+
+    // 2. Wrap it with an mdspan view mapped to 2D
+    std::mdspan matrix(storage.data(), rows, cols);
+
+    // 3. New C++23 Syntax: Multidimensional indexing via commas
+    matrix[1, 2] = 99; 
+
+    // Read and iterate elegantly
+    for (size_t r = 0; r < matrix.extent(0); ++r) {
+        for (size_t c = 0; c < matrix.extent(1); ++c) {
+            std::cout << matrix[r, c] << " ";
+        }
+        std::cout << "\n";
+    }
+}
+
+```
+
+
+
+### Summary Comparison
+
+| Metric                | std::vector<std::vector<T>>                   | 1D std::vector \+ std::mdspan                  |
+| --------------------- | --------------------------------------------- | ---------------------------------------------- |
+| **Memory Allocation** | Multiple small, fragmented allocations        | One single contiguous block                    |
+| **Performance**       | Slower (pointer-chasing)                      | Fast (excellent CPU cache usage)               |
+| **C++23 Indexing**    | matrix\[r\]\[c\]                              | matrix\[r, c\]                                 |
+| **Grid Flexibilty**   | Allows rows of varying lengths (ragged array) | Strict rectangular layout                      |
+| **Resizing**          | Can independently resize or push\_back rows   | Resize requires re-mapping the underlying view |
+
+To understand the underlying structure of 2D vectors and how memory pointers map row sizes inside RAM, you can check out this visual breakdown:
+
+16:47
+
+[](https://www.youtube.com/watch?v=rkvKEOCEDqU)
+
+2D Vectors in C++
+
+1.9K views · 2 years ago
+
+YouTube · udaykiran․tech
+
+Are you developing a **mathematical matrix / game grid** (where `mdspan` is ideal), or do you need a structure that dynamically expands with **variable-length rows**? Let me know, and I can provide tailored utilities for your choice.
+
+* [](https://www.youtube.com/watch?v=jn8%5FXq3z48w&t=6)  
+YouTube·John's Basement  
+How to create a 2D vector with std  
+hey John here let's talk about how do you create a two-dimensional vector okay we know how to create a one-dimensional vector let'  
+11m
+* [](https://stackoverflow.com/questions/17663186/initializing-a-two-dimensional-stdvector)  
+Stack Overflow  
+Initializing a two-dimensional std::vector - Stack Overflow  
+This answer is not useful. Save this answer. Loading when this answer was accepted… Show activity on this post. Use the std::vecto...
+* [](https://learncpp.online/pages/two-dimensional-vectors-553)  
+learncpp.online  
+Two-dimensional vectors  
+Since the two-dimensional vector is non-rectangular, you cannot assume that the subvectors contain an equal number of elements: th...
+
+Show all
+
+# how to force ambiguous fn call for all fn of a specific name on cpp23
+
+5:50 AM
+
+### how to force ambiguous fn call for all fn of a specific name on cpp23
+
+To force an **ambiguous symbol error** for all unqualified calls to a specific function name—regardless of how many overloads it has or what arguments are passed—you can exploit C++'s **namespace name lookup rules**.
+
+Instead of trying to fight overload resolution with conflicting signatures, you can make the **name lookup itself ambiguous** before the compiler even reaches the overload resolution phase.
+
+#### The Namespace Injection Trick
+
+By placing a dummy variable (or type) with the exact same name inside a dedicated namespace and bringing it into your current scope using a `using namespace` directive, the compiler will find both the functions and your dummy variable. Because they are found in different scopes via a `using` directive, the name lookup becomes immediately **ambiguous**. [](https://stackoverflow.com/questions/41858089/poisoning-certain-api-functions-not-being-maintainer?rq=3)
+
+cpp
+
+```
+#include <iostream>
+
+// Existing overloads you want to block/poison
+void target_fn(int) { std::cout << "int\n"; }
+void target_fn(double) { std::cout << "double\n"; }
+void target_fn(const char*) { std::cout << "string\n"; }
+
+// --- Force ambiguity for 'target_fn' ---
+namespace Poisoned {
+    // A dummy variable with the same name
+    inline int target_fn = 0; 
+}
+// Bring it into the current scope
+using namespace Poisoned; 
+
+int main() {
+    // Every single one of these will fail at compile-time with an "ambiguous symbol" error
+    target_fn(42);       
+    target_fn(3.14);    
+    target_fn("hello"); 
+}
+
+```
+
+
+
+#### Why This Works (and why it scales to all overloads)
+
+1. **Name Lookup Precedes Overload Resolution:** The compiler performs name lookup _before_ it tries to match arguments to function parameters. [](https://developercommunity.visualstudio.com/content/problem/269775/ambiguous-call-error-during-compilation-when-expli.html)
+2. **The `using namespace` Rule:** When a name is looked up unqualified and is found in both the current namespace (e.g., the global namespace or an explicit namespace) and a namespace introduced via `using namespace`, C++ rules declare the symbol lookup ambiguous. [](https://stackoverflow.com/questions/41858089/poisoning-certain-api-functions-not-being-maintainer?rq=3)
+3. **Catches Everything:** Because the lookup fails immediately, the compiler never evaluates the arguments. It doesn't matter if your function takes one argument, five arguments, or is a template—they are all blocked at once. [](https://www.youtube.com/watch?v=OgosiMQPGVA)
+
+#### Alternative: Macro-ized Poisoning
+
+If you want to quickly poison specific API or library functions across a codebase, you can wrap this behavior into a macro: [](https://stackoverflow.com/questions/41858089/poisoning-certain-api-functions-not-being-maintainer?rq=3)
+
+cpp
+
+```
+#define POISON_FUNCTION_NAME(name) \
+    namespace Poison_##name { inline int name = 0; } \
+    using namespace Poison_##name;
+
+// Poison a name entirely
+POISON_FUNCTION_NAME(my_legacy_function)
+
+```
+
+
+
+#### Comparison to `= delete`
+
+* Use `= delete` if you want to disable a **specific signature** while keeping other overloads available.
+* Use the **Namespace Injection Trick** if you want to deprecate or completely "poison" a **function name** entirely, forcing developers to either use fully qualified names (e.g., `::target_fn(42)`) or migrate to a new API.
+
+Are you trying to completely **deprecate an internal API name** or **prevent conflicts** with a third-party library? If you're encountering this in a specific context (like inside a **class hierarchy** or dealing with **ADL/templates**), let me know so I can tailor the scope rules!
+
+* [](https://developercommunity.visualstudio.com/content/problem/269775/ambiguous-call-error-during-compilation-when-expli.html)  
+Visual Studio Developer Community  
+Ambiguous call error during compilation when explicit class ...  
+In this case compiler takes both f() functions but it should notice, that first is not available and it should generate code with ...
+* [](https://stackoverflow.com/questions/41858089/poisoning-certain-api-functions-not-being-maintainer?rq=3)  
+Stack Overflow  
+c++  
+Have found a way to enforce ambiguity by adding another declaration of the same function in a namespace. No pragmas or attrbiutes ...
+* [](https://www.reddit.com/r/cpp%5Fquestions/comments/18my3pe/how%5Fto%5Fresolve%5Fambiguous%5Ftemplate%5Ffunction%5Fcall/)  
+Reddit  
+How to resolve ambiguous template function call - Reddit  
+How to resolve ambiguous template function call. OPEN. I have a couple of functions of the same name so as to provide multiple way...
+
+Show all
+
+## why can you namespace and using namespace but not defining in the same scope directly
+
+why can you namespace and using namespace but not defining in the same scope directly
+
+5:52 AM
+
+### why can you namespace and using namespace but not defining in the same scope directly
+
+Defining a dummy variable with the same name directly in the **same scope** will not force an ambiguous call error. Instead, it will cause a **redefinition error** or completely **hide/shadow** the functions.
+
+Here is why the language rules treat direct definitions and `using namespace` directives entirely differently.
+
+---
+
+#### 1\. Direct Definition in the Same Scope = Redefinition Error
+
+In C++, a name can only refer to distinct entities in the same scope if they are **overloads of functions**. You cannot mix functions and variables under the exact same name in the same declarative region.
+
+cpp
+
+```
+void target_fn(int);
+
+// COMPILE ERROR: 'target_fn' redeclared as different kind of entity
+inline int target_fn = 0; 
+
+```
+
+
+
+The compiler stops right here. It rejects the code immediately because you are violating a core syntax rule of the language, rather than generating an ambiguous lookup at the call site.
+
+#### 2\. Direct Definition in a Nested Scope = Name Hiding (Shadowing)
+
+If you define the dummy variable in a nested scope (like inside `main()`), it doesn't cause ambiguity. Instead, C++ rules dictate that the inner scope name **completely hides** the outer scope names.
+
+cpp
+
+```
+void target_fn(int); // Global scope
+
+int main() {
+    int target_fn = 0; // Local scope hides the global function
+    
+    // COMPILE ERROR: "called object type 'int' is not a function"
+    target_fn(42); 
+}
+
+```
+
+
+
+Here, name lookup finds the local `int target_fn` and stops searching. It never even looks at the global scope, meaning you get a "not a function" error rather than an ambiguity error.
+
+---
+
+#### Why `using namespace` Behaves Differently
+
+The `using namespace` directive has a very unique mechanics rule in C++ (often called the **transitive overview rule**).
+
+When you type `using namespace Poisoned;` inside a scope, C++ **does not** actually inject the names directly into that scope. Instead, it effectively tells the compiler:
+
+> _"For the purpose of name lookup, treat the members of `Poisoned` as if they were declared in the **nearest common ancestor namespace** of both scopes."_
+
+Because of this rule:
+
+1. **No Redefinition Error:** The variable and the functions live in separate namespaces, so the code compiles perfectly fine.
+2. **Equal Status Lookup:** When you call `target_fn()`, the compiler looks at the current scope, sees the directive, and looks into `Poisoned`. It finds the functions in the original namespace and the variable in `Poisoned` at the **same structural level** of lookup depth.
+
+Because both names are found simultaneously at the same level, and C++ cannot determine whether you intended to use the function name or the variable name, the lookup algorithm yields an **ambiguous symbol** error.
+
+Would you like to see how this lookup behavior interacts with **Argument-Dependent Lookup (ADL)**, or are you looking to restrict this ambiguity rule strictly to a specific **class/struct scope**?
+
+## can you define vars wo assigning value in the namespace to achieve this
+
+can you define vars wo assigning value in the namespace to achieve this
+
+5:55 AM
+
+### can you define vars wo assigning value in the namespace to achieve this
+
+**Yes, you can define variables without assigning an initial value** inside the namespace to achieve the exact same effect.
+
+The compiler only cares about the **name and entity type** during the name lookup phase; it completely ignores whether the variable has been initialized.
+
+You can declare it in the namespace using any of these formats:
+
+cpp
+
+```
+namespace Poisoned {
+    inline int target_fn; // No initialization needed
+}
+
+```
+
+
+
+#### 🚨 The C++23 Danger: `inline` is Mandatory
+
+Because you are putting this in a header file or a shared namespace, **you must keep the `inline` keyword** (introduced for variables in C++17).
+
+If you omit `inline` and just write `int target_fn;`, you will trigger a **One Definition Rule (ODR) violation** (a linker error for duplicate symbols) if that header is included in more than one `.cpp` file.
+
+#### An Even Cleaner C++23 Alternative: `struct` / `class`
+
+If you want to avoid allocating any variable storage or worrying about `inline` linkages entirely, you can declare a **dummy type** (like a `struct`) with the target name instead. Name lookup treats type names and function names with the same level of ambiguity:
+
+cpp
+
+```
+namespace Poisoned {
+    struct target_fn {}; // No storage, no inline needed, perfectly safe
+}
+using namespace Poisoned;
+
+// Any call to target_fn(...) will still trigger the exact same ambiguity error
+
+```
+
+
+
+Would you prefer using the **`struct` approach** to keep the global namespace free of uninitialized variable footprint, or do you need the dummy entity to have a specific type property?
+
 

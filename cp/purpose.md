@@ -396,4 +396,24 @@ i guess for the vast majority there would be multiple test cases.
 
 and flags should be ideally false by default.
 
+26
+
+```cpp
+auto pow(int base, int exp, int mod = 1000000007) {
+  int res = 1;
+  base %= mod;
+
+  while (exp > 0) {
+    if (exp & 1) {  // exp % 2 == 1
+      res = res * base % mod;
+    }
+    base = base * base % mod;
+    exp >>= 1;  // exp /= 2;
+  }
+  return res;
+}
+```
+
+it's really footgun. it's resolved differently if you do not give the mod param.
+
 

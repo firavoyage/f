@@ -17,10 +17,19 @@
 #define integer (long long)
 #define float double
 
+// fix
+
 const int nil = -1;
 
 using namespace std;
 // using namespace ranges; // ranges::sort(vec)
+
+namespace banned {
+  int pow = nil; // use pow_ instead
+  int floor = nil; // use pow_ instead
+  int ceil = nil; // use pow_ instead
+}
+using namespace banned;
 
 void solve();
 
@@ -208,7 +217,7 @@ auto mul = [](auto a, auto b) { return a * b; };
 
 auto truediv = [](auto a, auto b) { return double(a) / b; };
 
-auto floordiv = [](auto a, auto b) { return floor(double(a) / b); };
+auto floordiv = [](auto a, auto b) { return std::floor(double(a) / b); };
 
 auto divmod = [](auto numerator, auto denominator) {
   auto quotient = numerator / denominator, remainder = numerator % denominator;
@@ -216,7 +225,7 @@ auto divmod = [](auto numerator, auto denominator) {
 };
 
 // auto pow(auto base, auto exp, auto mod = 1000000007) {
-auto pow(int base, int exp, int mod = 1000000007) {
+auto pow_(int base, int exp, int mod = 1000000007) {
   int res = 1;
   base %= mod;
 
@@ -271,7 +280,7 @@ auto permutations(int n, int r) {
 }
 
 template <typename T>
-auto _min(vector<T>& vec) {
+auto min_(vector<T>& vec) {
   double minimum = vec[0];
 
   for (auto& element : vec) {
@@ -282,7 +291,7 @@ auto _min(vector<T>& vec) {
 
   return minimum;
 }
-auto _min(auto first, auto... rest) {
+auto min_(auto first, auto... rest) {
   using CommonType = std::common_type_t<decltype(first), decltype(rest)...>;
   CommonType current_min = first;
   // auto current_min = first;
@@ -293,7 +302,7 @@ auto _min(auto first, auto... rest) {
 }
 
 template <typename T>
-auto _max(vector<T>& vec) {
+auto max_(vector<T>& vec) {
   double maximum = vec[0];
 
   for (auto& element : vec) {
@@ -304,7 +313,7 @@ auto _max(vector<T>& vec) {
 
   return maximum;
 }
-auto _max(auto first, auto... rest) {
+auto max_(auto first, auto... rest) {
   using CommonType = std::common_type_t<decltype(first), decltype(rest)...>;
   CommonType current_max = first;
   // auto current_max = first;
@@ -314,8 +323,8 @@ auto _max(auto first, auto... rest) {
   return current_max;
 }
 
-auto _floor = [](auto x) { return static_cast<int>(floor(x)); };
-auto _ceil = [](auto x) { return static_cast<int>(ceil(x)); };
+auto floor_ = [](auto x) { return static_cast<int>(std::floor(x)); };
+auto ceil_ = [](auto x) { return static_cast<int>(std::ceil(x)); };
 
 // entry
 
