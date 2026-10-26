@@ -25,10 +25,10 @@ using namespace std;
 // using namespace ranges; // ranges::sort(vec)
 
 namespace banned {
-  int pow = nil; // use pow_ instead
-  int floor = nil; // use pow_ instead
-  int ceil = nil; // use pow_ instead
-}
+int pow = nil;    // use pow_ instead
+int floor = nil;  // use pow_ instead
+int ceil = nil;   // use pow_ instead
+}  // namespace banned
 using namespace banned;
 
 void solve();
@@ -386,8 +386,11 @@ there would be n "same strings" like this.
 
 */
 
+const int modulo = 1000000007;
+
 void solve() {
-  string s; int n;
+  string s;
+  int n;
   read(s, n);
 
   int length = s.size();
@@ -395,8 +398,8 @@ void solve() {
   // value in [1, 26]
   vector<int> chars(length + 5);
 
-  each(i, 1, length){
-    chars[i] = s[i-1] - 'a' + 1;
+  each(i, 1, length) {
+    chars[i] = s[i - 1] - 'a' + 1;
   }
 
   int sum = 0;
@@ -405,17 +408,28 @@ void solve() {
 
   vector<int> beatable_count(26 + 5);
 
-  each(i, 1, length){
+  each(i, 1, length) {
     same_string_count += beatable_count[chars[i]];
 
-    each(prev, 1, chars[i] - 1){
+    each(prev, 1, chars[i] - 1) {
       beatable_count[prev] += 1;
     }
   }
 
-  int ahead_count = 0;
+  int ahead_count = 0, current_beatable_count = 0, prev_char = chars[1];
 
   sort(chars.begin() + 1, chars.begin() + length + 1);
 
-  
+  each(i, 1, length) {
+    if (chars[i] != prev_char) {
+      current_beatable_count += i - 1;
+    }
+
+    prev_char = chars[i];
+    ahead_count += current_beatable_count;
+  }
+
+  sum = same_string_count * n + ahead_count * n * (n - 1) / 2;
+
+  prn(sum % modulo);
 }

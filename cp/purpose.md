@@ -416,4 +416,16 @@ auto pow(int base, int exp, int mod = 1000000007) {
 
 it's really footgun. it's resolved differently if you do not give the mod param.
 
+---
+
+i may abstract vector l to r sorting.
+
+```cpp
+  sort(chars.begin() + 1, chars.begin() + length + 1);
+```
+
+yk vectors can be 1 indexed, and padded at the end.
+
+i may not have to, esp considering the benefits of half open ranges.
+
 
