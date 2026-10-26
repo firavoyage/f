@@ -117,3 +117,5 @@ a = [1, 2, 3]
 
 # for x, y in entries(a):
 #   log(x, y)
+
+log(perm(4,4))

@@ -260,12 +260,16 @@ auto combinations(int n, int r) {
   return result;
 }
 
-auto permutations(int n, int r) {
+const int modulo = 1000000007;
+
+int permutations(int n, int r) {
   if (r < 0 || r > n) return 0;
 
-  auto result = 1;
+  int result = 1;
   for (int i = 0; i < r; ++i) {
     result *= (n - i);
+
+    result %= modulo;
   }
   return result;
 }
@@ -359,7 +363,7 @@ a column either
 - has already failed
 - or desires a number
 
-and the answer is len set desired number, 
+and the answer is len set desired number,
 
 and all others are free. perm.
 
@@ -377,12 +381,80 @@ and a bool vector for checks.
 
 and i can have a bool vector for desired numbers.
 
+
+
+i can reorder both fixed ones and free ones.
+they are fundamentally identical actually.
+
+
+
+i remember it's true that
+
+(a * b) % n = ((a % n) * (b % n)) % n
+
+
+
+how can it "double free or corruption (out)" "zsh: IOT instruction ~/.cache/'b'"
+for a specific case...
+
 */
 
 void solve() {
-  
+  // prn(permutations(4, 4) * permutations(0, 0));
 
-  vector<vector<int>> a;
+  int n;
+  read(n);
 
-  
+  vector<vector<int>> a(n + 5, vector<int>(n + 5));
+  // // vector<vector<int>> a(n+5, vector<int>(n+5));
+  // int a[n + 5][n + 5];  // i can assign dynamically?!
+
+  each(row, 1, n - 1) {
+    each(column, 1, n) {
+      read(a[row][column]);
+    }
+  }
+
+  vector<bool> is_desired(n + 5);
+
+  int sum = (n + 1) * n / 2;
+
+  each(column, 1, n) {
+    int remaining = sum;
+    vector<bool> has_appeared(n + 5);
+
+    bool has_failed = false;
+
+    each(row, 1, n - 1) {
+      int value = a[row][column];
+
+      if (has_appeared[value]) {
+        has_failed = true;
+        break;
+      }
+
+      remaining -= value;
+    }
+
+    if (!has_failed) {
+      is_desired[remaining] = true;
+    }
+  }
+
+  int desired_count = 0;
+
+  each(value, 1, n) {
+    if (is_desired[value]) {
+      desired_count += 1;
+    }
+  }
+
+  int free_count = n - desired_count;
+
+  int solution_count = permutations(desired_count, desired_count) *
+                       permutations(free_count, free_count);
+
+  solution_count %= modulo;
+
+  prn(desired_count, solution_count);
 }
