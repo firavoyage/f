@@ -55385,8 +55385,6 @@ there are optimization. like you can render on web, by pure fn, or diliver sth p
 > Rewrite your solution from the start.
 > Be sure to save a copy of your original solution. It's always possible that you might introduce more bugs in your new solution.
 
-> Leave it for a while and do something else for a few hours or days (if you want to solve it wholly on your own). Often you'll come up with new ideas in the meantime.
-
 26
 
 02 00 create and publish serve, static page server.
@@ -55398,6 +55396,34 @@ i may use it in the future.
 > If executing a Node.js script without a shebang somehow dumped a **96.2 MB binary-like file** named `hono` in your home directory that your OS thinks is a **PDF containing a terminal screenshot**, something deeply bizarre happened under the hood.
 > 
 > Definitely a memorable debugging adventure—make sure that `#!/usr/bin/env node` is at line 1 before you ever run it directly again!
+
+12 30 read usaco guide/general: how to practice.
+
+> Note that "give up" is in quotes, because one still learns when they "give up" and read the solution!
+
+> Leave it for a while and do something else for a few hours or days (if you want to solve it wholly on your own). Often you'll come up with new ideas in the meantime.
+
+> * Getting frustrated and quitting CP for a week is worse than giving up
+>   * Whenever I feel like I'm really frustrated with a problem, I read the editorial
+> * CP editorials are usually difficult to understand, so you will still have to spend a lot of time reading and understanding them
+> * You learn a _lot_ by reading editorials
+>   * If you can solve a problem without reading the editorial, that means you probably could have solved the problem in-contest too, so you didn't actually learn that much. However, if you didn't know how to solve a problem and you read the editorial so now you do, then you've learned a lot more.  
+>   * In other words, reading editorials is a _good_ thing, not a bad thing!
+
+> There are two ways to grow from solving a problem:
+>
+> 1 - You learn a new idea/algorithm from it.
+> 2 - Your implementation speed and consistency improves.
+
+> I follow three guidelines (from most important to least important)
+> 
+> Having fun, just doing whatever you feel like doing.
+> Spend about the same amount of time that you would be able to during a real contest.
+> Whether you are making progress or not.
+
+> Do hard problems, and try to learn something from them. If you read the editorial, think about how you would arrive at the solution if you were to solve it again. Also, it's important to implement every problem you read the editorial of. Most importantly, don't burn yourself out, or you'll just be worse off in the end because your practice isn't efficient.
+
+usaco ide?! <!-- well it's basically monaco editor. and it's easy to implement a textarea and a pre built cp evaluation sandbox. -->
 
 
 
