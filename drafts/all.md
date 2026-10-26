@@ -544,6 +544,7 @@ cp: <!-- algorithms -->
 - common stupid mistakes
 - codeforces platform
 - mistake missing float point calc trick scale
+- oj infra
 
 pm:
 
