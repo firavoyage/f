@@ -349,8 +349,26 @@ signed main() {
 
 /*
 
-in terms of expectation, each slot between two numbers will
-yield an increase
+x = 6
+1 1 -> 1/6 0, 5/6 2 -> 1/6 1, 5/6 3
+  1 -> 1/x * 1 + (x-1)/x * 3 = (3x-2)/x
+1 2 -> 2/6 0, 4/6 1 -> 2/6 2, 4/6 3;
+  2 -> 2/x * 2 + (x-2)/x * 3 = (3x-2)/x
+
+(assume an x large enough)
+# in terms of expectation, each slot between two numbers will
+yield an increase of 2/x.
+
+
+
+clearly 1 1 2 and 1 2 yield different results.
+also, 1 1 2 and 1 1 1 yield different results.
+
+
+
+so the number of segs isnt the only measure.
+
+well too hard i guess, reasonable to skip for now to keep the momentum going.
 
 */
 
