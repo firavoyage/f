@@ -366,7 +366,11 @@ odd ones and even ones are independent.
 
 
 
-n in [1, e6], k in [0, e6], 
+n in [1, e6], k in [0, e6], a in [2, 26]
+
+
+
+
 
 */
 
