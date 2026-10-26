@@ -12,4 +12,7 @@ skipped
   - upd: well the numbers are quite special, in terms of expectation, i may at least give it a try
 - g
   - i may solve it, but i guess it's better use of my time to go on
+- i
+  - lack of prerequisites
+
 

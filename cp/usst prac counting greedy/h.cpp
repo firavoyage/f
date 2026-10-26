@@ -388,6 +388,16 @@ there would be n "same strings" like this.
 
 yeah, wa on test 13.
 clearly modulo problems are prone.
+?! add more %= ?!
+
+
+
+ac ?! ?!
+
+
+
+what if n is exactly modulo?!
+(fine accidentally, as it becomes zero, though n - 1 should be patched)
 
 */
 
@@ -415,6 +425,8 @@ void solve() {
 
   each(i, 1, length) {
     same_string_count += beatable_count[chars[i]];
+    same_string_count %= modulo;
+    // same_string_count += beatable_count[chars[i]];
 
     each(prev, 1, chars[i] - 1) {
       beatable_count[prev] += 1;
@@ -432,6 +444,9 @@ void solve() {
 
     prev_char = chars[i];
     ahead_count += current_beatable_count;
+    ahead_count %= modulo;
+    // ahead_count += current_beatable_count;
+
     // log(i, current_beatable_count, ahead_count);
   }
 
@@ -440,8 +455,10 @@ void solve() {
   same_string_count %= modulo;
   ahead_count %= modulo;
   n %= modulo;
-  
-  sum = same_string_count * n + ahead_count * n * (n - 1) / 2;
+
+  sum = ((same_string_count * n) % modulo) +
+        ((ahead_count * ((n * (n - 1) / 2) % modulo)) % modulo);
+  // sum = same_string_count * n + ahead_count * n * (n - 1) / 2;
 
   sum %= modulo;
 
