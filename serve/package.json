@@ -41,9 +41,9 @@
     "util": "0.12.5"
   },
   "dependencies": {
-    "lib": "github:firahq/lib",
     "@hono/node-server": "2.0.8",
     "hono": "4.12.27",
+    "lib": "github:firahq/lib",
     "yaml": "2.9.1"
   }
 }

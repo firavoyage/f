@@ -1,3 +1,47 @@
+# .
+
+add
+
+```sh
+# push
+
+name='lib'
+
+export GIT_DIR="/home/fira/Documents/f/.git/.git_$name"
+export GIT_WORK_TREE="/home/fira/Documents/f/$name"
+
+git init
+git remote add g https://github.com/firahq/$name.git
+
+git add .
+git commit -m '.' || true
+
+git push -f g
+
+# add
+
+bun add github:firahq/$name --force
+```
+
+update
+
+```sh
+# update
+
+name='lib'
+
+export GIT_DIR="/home/fira/Documents/f/.git/.git_$name"
+export GIT_WORK_TREE="/home/fira/Documents/f/$name"
+
+git add .
+git commit -m '.' || true
+
+git push -f g
+
+bun rm $name
+bun add github:firahq/$name --force --no-cache
+```
+
 # . add and update
 
 init

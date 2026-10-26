@@ -5960,6 +5960,12 @@ Serve on http://localhost:41007
 ^C
 ```
 
+# . update 0.2
+
+```
+
+```
+
 # how to parse cli args in nodejs
 
 9:58 AM

@@ -5,7 +5,7 @@ import { serve } from '@hono/node-server'
 import { cors } from 'hono/cors'
 import { serveStatic } from '@hono/node-server/serve-static'
 import fs from 'node:fs'
-import { read, cwd, expand_path, does_exist, is_dir } from 'lib/file'
+import { read, cwd, expand_path, does_exist, is_dir, parent } from 'lib/file'
 import { now, format } from 'lib/time'
 import { format_log } from 'lib/log'
 import 'lib/global'
@@ -17,13 +17,13 @@ const version = `serve 0.1 (2026.10.26)`
 const help = `
 Serve static pages
 
-Usage: serve [file] [options]
+Usage: serve [index/root] [options]
 
 Options:
-  -i, --index [file]     Page to serve (same as file arg)
+  -i, --index [file]     Page to serve (default: cwd/index.html)
   --not-found [file]     Page to show when not found (default: index)
   -p, --port [number]    Port to serve on (default: 0, random)
-  -r, --root [path]      Root folder for reletive paths (default: cwd)
+  -r, --root [path]      Root folder for reletive paths (default: parent(index))
   -h, --help             Print help
   -v, --version          Print version
 `.trim()
@@ -40,6 +40,7 @@ function parse_args() {
 
   let positional_arg = nil
 
+  let is_root_given = false
   let should_skip = false
   for (const [index, arg] of args.entries()) {
     if (should_skip) {
@@ -63,6 +64,8 @@ function parse_args() {
       options.port = +args[index + 1]
       should_skip = true
     } else if (has(['-r', '--root'], arg)) {
+      is_root_given = true
+      
       options.root = expand_path(cwd(), args[index + 1])
       should_skip = true
     } else {
@@ -87,6 +90,10 @@ function parse_args() {
   options.index = expand_path(options.root, options.index)
   options.not_found = expand_path(options.root, options.not_found)
 
+  if (!is_root_given) {
+    options.root = parent(options.index)
+  } 
+
   return options
 }
 
@@ -110,7 +117,7 @@ function run(options) {
     if (does_exist(index)) {
       return c.html(read(index))
     } else {
-      log(format_log('index file should exist', 'error'))
+      log(format_log(`index file should exist on ${index}`, 'error'))
       return c.text('not found')
     }
   })
@@ -123,7 +130,7 @@ function run(options) {
     if (does_exist(not_found)) {
       return c.html(read(not_found))
     } else {
-      log(format_log('not found file should exist', 'error'))
+      log(format_log(`not found file should exist on ${not_found}`, 'error'))
       return c.text('not found')
     }
   })
@@ -142,7 +149,7 @@ function run(options) {
 function main() {
   const options = parse_args()
 
-  log(options)
+  // log(options)
 
   if (options) {
     run(options)

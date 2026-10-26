@@ -22,5 +22,6 @@ export function format_log(message: string, type: 'info' | 'warn' | 'error' = 'i
 }
 
 function log_time() {
-  return format(now(), '%F %T%:z')
+  return format(now())
+  // return format(now(), '%F %T%:z')
 }

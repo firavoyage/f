@@ -6,8 +6,8 @@
       "name": "serve",
       "dependencies": {
         "@hono/node-server": "2.0.8",
-        "hono": "4.12.27",
         "lib": "github:firahq/lib",
+        "hono": "4.12.27",
         "yaml": "2.9.1",
       },
       "devDependencies": {
@@ -606,7 +606,7 @@
 
     "levn": ["levn@0.4.1", "", { "dependencies": { "prelude-ls": "^1.2.1", "type-check": "~0.4.0" } }, "sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ=="],
 
-    "lib": ["lib@github:firahq/lib#b863439", { "dependencies": { "@date-fns/tz": "1.5.0", "@folder/xdg": "4.0.1", "chalk": "6.0.1", "clsx": "2.1.1", "css.escape": "1.5.1", "date-fns": "4.4.0", "date-fns-tz": "3.2.0", "fuzzysort": "4.0.2", "lodash-es": "4.18.1", "mousetrap": "1.6.5", "mousetrap-global-bind": "1.1.0", "react-use": "17.6.1", "style-to-js": "2.0.2", "tabbable": "6.5.0", "the-new-css-reset": "1.11.3", "yaml": "2.9.0" }, "peerDependencies": { "@floating-ui/react": "0.27.20", "react": "19.2.7", "react-dom": "19.2.7" } }, "firahq-lib-b863439", "sha512-stpWyIz/Nj1kLlJCZNnX2LqR8GejkQr2/KLKxEEbcETwX4VZEWAKBg/dt+azdKzXVAJ/BFNUYkHO7m0Rl9brag=="],
+    "lib": ["lib@github:firahq/lib#a708a3d", { "dependencies": { "@date-fns/tz": "1.5.0", "@folder/xdg": "4.0.1", "chalk": "6.0.1", "clsx": "2.1.1", "css.escape": "1.5.1", "date-fns": "4.4.0", "date-fns-tz": "3.2.0", "fuzzysort": "4.0.2", "lodash-es": "4.18.1", "mousetrap": "1.6.5", "mousetrap-global-bind": "1.1.0", "react-use": "17.6.1", "style-to-js": "2.0.2", "tabbable": "6.5.0", "the-new-css-reset": "1.11.3", "yaml": "2.9.0" }, "peerDependencies": { "@floating-ui/react": "0.27.20", "react": "19.2.7", "react-dom": "19.2.7" } }, "firahq-lib-a708a3d", "sha512-UJFdX+dXPWZMQG/4LsAgxnm5v8VEsBWHh52J3OzDFtu9gsJOmSwnNfR0oLzqamcAc8obYRm9zvRnvKqjooj9Vw=="],
 
     "lmdb": ["lmdb@2.8.5", "", { "dependencies": { "msgpackr": "^1.9.5", "node-addon-api": "^6.1.0", "node-gyp-build-optional-packages": "5.1.1", "ordered-binary": "^1.4.1", "weak-lru-cache": "^1.2.2" }, "optionalDependencies": { "@lmdb/lmdb-darwin-arm64": "2.8.5", "@lmdb/lmdb-darwin-x64": "2.8.5", "@lmdb/lmdb-linux-arm": "2.8.5", "@lmdb/lmdb-linux-arm64": "2.8.5", "@lmdb/lmdb-linux-x64": "2.8.5", "@lmdb/lmdb-win32-x64": "2.8.5" }, "bin": { "download-lmdb-prebuilds": "bin/download-prebuilds.js" } }, "sha512-9bMdFfc80S+vSldBmG3HOuLVHnxRdNTlpzR6QDnzqCQtCzGUEAGTzBKYMeIM+I/sU4oZfgbcbS7X7F65/z/oxQ=="],
 
@@ -883,6 +883,8 @@
     "elliptic/bn.js": ["bn.js@4.12.5", "", {}, "sha512-3aRg6/JxfffFD+OlOjOFR3Vo79l39ooBTFucxx+MT3dhCtzn3EmiUPQo+6/OZuI2jbXi3YKgmiTFBgChQMwIRQ=="],
 
     "eslint/ignore": ["ignore@5.3.2", "", {}, "sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g=="],
+
+    "fdir/picomatch": ["picomatch@4.0.7", "", {}, "sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA=="],
 
     "glob/minimatch": ["minimatch@3.1.5", "", { "dependencies": { "brace-expansion": "^1.1.7" } }, "sha512-VgjWUsnnT6n+NUk6eZq77zeFdpW2LWDzP6zFGrCbHXiYNul5Dzqk2HHQ5uFH2DNW5Xbp8+jVzaeNt94ssEEl4w=="],
 

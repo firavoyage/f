@@ -1,5 +1,5 @@
 import desktop from '@folder/xdg';
-import { appendFileSync, cpSync, existsSync, mkdirSync, readdirSync, readFileSync, renameSync, rmdirSync, rmSync, statSync, unlinkSync, writeFileSync } from 'node:fs';
+import { appendFileSync, cpSync, existsSync, mkdirSync, readdirSync, readFileSync, renameSync, rmdirSync, rmSync, stat, statSync, unlinkSync, writeFileSync } from 'node:fs';
 import { homedir } from 'node:os';
 import {
   join as _join, resolve as _resolve, relative,
@@ -128,13 +128,21 @@ export function does_exist(path: path_fs) {
 }
 
 export function is_file(path: path_fs) {
-  const stats = statSync(path)
+  const stats = handle(() => statSync(path))
+
+  if(is_error(stats)){
+    return false
+  }
 
   return stats.isFile()
 }
 
 export function is_dir(path: path_fs) {
-  const stats = statSync(path)
+  const stats = handle(() => statSync(path))
+
+  if(is_error(stats)){
+    return false
+  }
 
   return stats.isDirectory()
 }
