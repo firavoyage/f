@@ -113,9 +113,18 @@ from algo import *
 
 # log(a[slice(1, -1)])
 
-a = [1, 2, 3]
+# a = [1, 2, 3]
 
 # for x, y in entries(a):
 #   log(x, y)
 
-log(perm(4,4))
+# log(perm(4,4))
+
+
+def formula(a, b):
+  return a * (a - 1) / 2 - a * b + b * (b - 1) / 2
+
+
+for i in closed_each(-1, 1):
+  for j in closed_each(-1, 1):
+    prn(i, j, formula(i, j))
