@@ -1,5 +1,8 @@
 # plan
 
+- quote
+- para
+- humility
 - lib/web/server
 - lib/web/style
 
