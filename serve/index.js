@@ -5,14 +5,14 @@ import { serve } from '@hono/node-server'
 import { cors } from 'hono/cors'
 import { serveStatic } from '@hono/node-server/serve-static'
 import fs from 'node:fs'
-import { read, cwd, expand_path, does_exist } from 'lib/file'
+import { read, cwd, expand_path, does_exist, is_dir } from 'lib/file'
 import { now, format } from 'lib/time'
 import { format_log } from 'lib/log'
 import 'lib/global'
 
 const { stringify: serialize } = JSON
 
-const version = `serve 0.0 (2026.10.26)`
+const version = `serve 0.1 (2026.10.26)`
 
 const help = `
 Serve static pages
@@ -38,6 +38,8 @@ function parse_args() {
     root: cwd(),
   }
 
+  let positional_arg = nil
+
   let should_skip = false
   for (const [index, arg] of args.entries()) {
     if (should_skip) {
@@ -58,20 +60,32 @@ function parse_args() {
       options.not_found = args[index + 1]
       should_skip = true
     } else if (has(['-p', '--port'], arg)) {
-      options.port = args[index + 1]
+      options.port = +args[index + 1]
       should_skip = true
     } else if (has(['-r', '--root'], arg)) {
       options.root = expand_path(cwd(), args[index + 1])
       should_skip = true
     } else {
       // arg
-      options.index = arg
+      positional_arg = arg
+      // options.index = arg
+    }
+  }
+
+  if (positional_arg) {
+    if (is_dir(expand_path(options.root, positional_arg))) {
+      options.root = expand_path(options.root, positional_arg)
+    } else {
+      options.index = expand_path(options.root, positional_arg)
     }
   }
 
   if (options.not_found == nil) {
-    options.not_found = options.index
+    options.not_found = expand_path(options.root, options.index)
   }
+
+  options.index = expand_path(options.root, options.index)
+  options.not_found = expand_path(options.root, options.not_found)
 
   return options
 }
@@ -93,29 +107,25 @@ function run(options) {
   })
 
   app.get('/', (c) => {
-    const index_file = expand_path(root, index)
-
-    if (does_exist(index_file)) {
-      return c.html(read(index_file))
+    if (does_exist(index)) {
+      return c.html(read(index))
     } else {
       log(format_log('index file should exist', 'error'))
       return c.text('not found')
-    } 
-  });
+    }
+  })
 
   // Serve Static Resources (e.g. css, js, img)
   app.use('*', serveStatic({ root }))
 
   // Fallback to Not Found
   app.get('*', (c) => {
-    const not_found_file = expand_path(root, not_found)
-
-    if (does_exist(not_found_file)) {
-      return c.html(read(not_found_file))
+    if (does_exist(not_found)) {
+      return c.html(read(not_found))
     } else {
       log(format_log('not found file should exist', 'error'))
       return c.text('not found')
-    } 
+    }
   })
 
   serve(
@@ -131,6 +141,8 @@ function run(options) {
 
 function main() {
   const options = parse_args()
+
+  log(options)
 
   if (options) {
     run(options)
