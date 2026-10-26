@@ -55425,6 +55425,8 @@ i may use it in the future.
 
 usaco ide?! <!-- well it's basically monaco editor. and it's easy to implement a textarea and a pre built cp evaluation sandbox. -->
 
+it's called sample cases, not example cases.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
