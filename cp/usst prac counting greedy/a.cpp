@@ -243,7 +243,9 @@ auto ln = [](auto a) { return log(a); };
 
 auto logab = [](auto a, auto b) { return ln(a) / ln(b); };
 
-auto combinations(int n, int r) {
+const int modulo = 1000000007;
+
+int combinations(int n, int r) {
   if (r < 0 || r > n) return 0;
   if (r == 0 || r == n) return 1;
 
@@ -252,12 +254,18 @@ auto combinations(int n, int r) {
     r = n - r;
   }
 
-  auto result = 1;
+  int result = 1;
   for (int i = 1; i <= r; ++i) {
+    result %= modulo;
     result *= (n - r + i);
     result /= i;
+    result %= modulo;
+    // result %= modulo;
+    // result *= (n - r + i);
+    // result /= i;
   }
-  return result;
+  return result % modulo;
+  // return result;
 }
 
 auto permutations(int n, int r) {
@@ -319,7 +327,7 @@ auto _ceil = [](auto x) { return static_cast<int>(ceil(x)); };
 
 // entry
 
-const bool is_single_task = true;
+const bool is_single_task = false;
 
 signed main() {
   ios_base::sync_with_stdio(false);
@@ -340,10 +348,72 @@ signed main() {
 
 /*
 
+n <= e6, answer %= e9 + 7
 
+
+
+all odd numbers and all even numbers are of no difference.
+
+only the count matters.
+
+
+
+to make sum of three even,
+
+you may take
+
+- three even
+- two odd one even
+
+clearly these two cases do not overlap
+
+
+
+for n, you will have ceil n/2 odd, and florr n/2 even
+
+
+
+it doesnt matter if you swap their position, it's comb.
+
+three even -> comb(even_count, 3)
+
+two odd, one even -> comb(odd_count, 2) * comb(even_count, 1)
+
+
+
+i may specifically handle n < 3.
+
+
+
+and about mod, i can always mod it.
+
+
+
+wa. maybe op priority issue.
+
+long long can hold up to e18.
+
+i can absolutely apply mod later.
+
+
+
+still wa test 12.
 
 */
 
 void solve() {
+  int n; read(n);
+
+  int odd_count = ceil(truediv(n, 2));
+  int even_count = floor(truediv(n, 2));
+
+  int answer = combinations(odd_count, 2) * even_count +
+    combinations(even_count, 3);
+  // int answer = combinations(odd_count, 2) * even_count % modulo +
+  //   combinations(even_count, 3) % modulo;
   
+  answer %= modulo;
+
+  prn(answer);
+
 }
