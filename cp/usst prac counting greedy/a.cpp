@@ -256,7 +256,6 @@ int combinations(int n, int r) {
 
   int result = 1;
   for (int i = 1; i <= r; ++i) {
-    result %= modulo;
     result *= (n - r + i);
     result /= i;
     result %= modulo;
@@ -264,7 +263,7 @@ int combinations(int n, int r) {
     // result *= (n - r + i);
     // result /= i;
   }
-  return result % modulo;
+  return result;
   // return result;
 }
 
@@ -399,13 +398,28 @@ i can absolutely apply mod later.
 
 still wa test 12.
 
+
+
+or maybe in terms of large numbers, i could not apply mod anytime.
+
+
+
+custom _ceil is basically footgun.
+idk if that's the case though.
+
+
+
+coult not figure it out
+
 */
 
 void solve() {
   int n; read(n);
 
-  int odd_count = ceil(truediv(n, 2));
-  int even_count = floor(truediv(n, 2));
+  int odd_count = _ceil(truediv(n, 2));
+  int even_count = _floor(truediv(n, 2));
+  // int odd_count = ceil(truediv(n, 2));
+  // int even_count = floor(truediv(n, 2));
 
   int answer = combinations(odd_count, 2) * even_count +
     combinations(even_count, 3);
