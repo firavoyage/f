@@ -361,7 +361,35 @@ where a, b in [-1, 1] cap Z, or {-1, 0, 1}
 
 a b are symmetric.
 
--1 -1 -> 
+-1 -1 1
+-1 0 1
+-1 1 2
+0 -1 1
+0 0 0
+0 1 0
+1 -1 2
+1 0 0
+1 1 -1
+
+t iff (0, 0) or (0, 1) # symmetric
+
+if you add any zero to the game,
+it can basically mul each, resulting in zero delta, wo changing anything else.
+
+
+
+conclusion:
+
+it works, iff it has
+- any 0, 3x   1, 3x -1
+- any 0, 3x+1 1, 3x -1
+- any 0, 3x   1, 3x+1 -1
+
+
+
+for each non zero consecutive seq,
+i can take a few from the left or from the right
+
 
 
 */
