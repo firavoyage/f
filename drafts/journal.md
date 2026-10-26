@@ -55391,6 +55391,12 @@ there are optimization. like you can render on web, by pure fn, or diliver sth p
 
 i may use it in the future.
 
+> That is wild!
+> 
+> If executing a Node.js script without a shebang somehow dumped a **96.2 MB binary-like file** named `hono` in your home directory that your OS thinks is a **PDF containing a terminal screenshot**, something deeply bizarre happened under the hood.
+> 
+> Definitely a memorable debugging adventure—make sure that `#!/usr/bin/env node` is at line 1 before you ever run it directly again!
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
