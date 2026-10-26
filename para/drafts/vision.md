@@ -75,4 +75,6 @@ you may inject content, for example esti readtime after title/first line of text
 
 you may record and reflect on yourself. e.g. time -> page/scroll mapping.
 
+you may like to quote! <!-- you may like to quote even if you do not read on para! -->
+
 

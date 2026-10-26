@@ -55385,6 +55385,8 @@ there are optimization. like you can render on web, by pure fn, or diliver sth p
 > Rewrite your solution from the start.
 > Be sure to save a copy of your original solution. It's always possible that you might introduce more bugs in your new solution.
 
+> Leave it for a while and do something else for a few hours or days (if you want to solve it wholly on your own). Often you'll come up with new ideas in the meantime.
+
 26
 
 02 00 create and publish serve, static page server.
