@@ -384,10 +384,38 @@ whenever i see a char, i will give a point to all letters before it.
 and you can simply add each. ~n complexity.
 there would be n "same strings" like this.
 
-
-
 */
 
 void solve() {
+  string s; int n;
+  read(s, n);
+
+  int length = s.size();
+
+  // value in [1, 26]
+  vector<int> chars(length + 5);
+
+  each(i, 1, length){
+    chars[i] = s[i-1] - 'a' + 1;
+  }
+
+  int sum = 0;
+
+  int same_string_count = 0;
+
+  vector<int> beatable_count(26 + 5);
+
+  each(i, 1, length){
+    same_string_count += beatable_count[chars[i]];
+
+    each(prev, 1, chars[i] - 1){
+      beatable_count[prev] += 1;
+    }
+  }
+
+  int ahead_count = 0;
+
+  sort(chars.begin() + 1, chars.begin() + length + 1);
+
   
 }
