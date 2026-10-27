@@ -192,13 +192,7 @@ auto reduce_right_vec(const vector<T>& vec, Func f, InitType initial_value) {
 
 // iterables
 
-// template <typename T>
-// void sort_vec(vector<T>& vec, int l, int r) {
-//   std::sort(vec, vec.begin() + l, vec.begin() + r + 1);
-// }
-auto sort_vec(vector<auto>& vec, aut l, int r) {
-  std::sort(vec, vec.begin() + l, vec.begin() + r + 1);
-}
+#define sort_vec(vec, l, r) std::sort((vec).begin() + (l), (vec).begin() + (r) + 1)
 
 // string
 
@@ -423,6 +417,41 @@ which is i - 1
 i dont have to break if you could not afford anymore.
 it's at least worst case.
 
+
+
+5 2 3
+10 1 3 9 2
+
+it's 1, not 2.
+
+there's some misunderstanding.
+
+you can either take 1 or k. not 1 or <= k.
+
+
+
+ah, simple and easy.
+that is from 1 to k - 1 the cost will sum up.
+
+e.g. k = 3.
+1: 1
+2: 1 2
+3: 3
+4: 1 4
+5: 1 2 5
+6: 3 6
+7: 1 4 7
+
+safely, a[0] = 0, powered by vec.
+
+
+
+one shot ac
+
+easy isnt it
+
+why is it hard version?!
+
 */
 
 void solve() {
@@ -438,12 +467,21 @@ void solve() {
   vector<int> cost(n + 5);
 
   int answer = 0;
-  each(i, 1, n) {
-    if (i - k >= 1) {
-      cost[i] = cost[i - k] + a[i];
+  
+  int sum = 0;
+  each(i, 1, k-1){
+    sum += a[i];
+    cost[i] = sum;
+
+    if (money >= cost[i]) {
+      answer = i;
     } else {
-      cost[i] = a[i];
+      // break;
     }
+  }
+  
+  each(i, k, n) {
+    cost[i] = cost[i - k] + a[i];
 
     if (money >= cost[i]) {
       answer = i;
@@ -452,6 +490,19 @@ void solve() {
     }
   }
 
-  prn(answer);
+  // each(i, 1, n) {
+  //   if (i - k >= 1) {
+  //     cost[i] = cost[i - k] + a[i];
+  //   } else {
+  //     cost[i] = a[i];
+  //   }
 
+  //   if (money >= cost[i]) {
+  //     answer = i;
+  //   } else {
+  //     // break;
+  //   }
+  // }
+
+  prn(answer);
 }

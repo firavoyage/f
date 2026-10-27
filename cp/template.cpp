@@ -192,10 +192,7 @@ auto reduce_right_vec(const vector<T>& vec, Func f, InitType initial_value) {
 
 // iterables
 
-template <typename T>
-void sort_vec(vector<T>& vec, int l, int r) {
-  std::sort(vec, vec.begin() + l, vec.begin() + r + 1);
-}
+#define sort_vec(vec, l, r) std::sort((vec).begin() + (l), (vec).begin() + (r) + 1)
 
 // string
 
