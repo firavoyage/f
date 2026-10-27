@@ -55427,6 +55427,12 @@ usaco ide?! <!-- well it's basically monaco editor. and it's easy to implement a
 
 it's called sample cases, not example cases.
 
+27
+
+01 00 learn counting (combinational math) the hard way.
+
+really i should search and read https://usaco.guide/gold/modular https://usaco.guide/gold/combo first feels.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

@@ -328,7 +328,7 @@ auto ceil_ = [](auto x) { return static_cast<int>(std::ceil(x)); };
 
 // entry
 
-const bool is_single_task = true;
+const bool is_single_task = false;
 
 signed main() {
   ios_base::sync_with_stdio(false);
@@ -371,8 +371,36 @@ sigma i in [1, n-1]: i (n-i) 2^(i-1)
 
 
 
+let's say n = modulo + n % modulo
+
+clearly it repeats for i in [1, modulo]
+
+(modeq has all props of eq except div)
+
+but mod log mod is still unacceptable. (2^(i-1))
+
+or maybe you optimize it as you do need the intermediate ones.
+
+
+
+wow, only 1.5 sec.
+
+
+
+quo rem = divmod n-1 modulo
+
+exactly when i == rem i need that result.
+
+if i can never reach rem, it means rem = 0, and i will init the delta as 0.
+
+
+
+wait but there are tasks and there is no constraint of sigma n...
+
+can it really be reduced to like log n or log mod in math?
+
 */
 
 void solve() {
-  
+
 }

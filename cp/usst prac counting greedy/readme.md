@@ -16,4 +16,6 @@ skipped
   - lack of prerequisites
 - j
   - feels i will solve it, but i dont feel i wanna solve it right now
+- k
+  - unknown math optimization formula
 
