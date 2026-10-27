@@ -27,10 +27,10 @@ using namespace std;
 // using namespace ranges; // ranges::sort(vec)
 
 namespace banned {
-  int pow = nil; // use pow_ instead
-  int floor = nil; // use pow_ instead
-  int ceil = nil; // use pow_ instead
-}
+int pow = nil;    // use pow_ instead
+int floor = nil;  // use pow_ instead
+int ceil = nil;   // use pow_ instead
+}  // namespace banned
 using namespace banned;
 
 void solve();
@@ -192,7 +192,8 @@ auto reduce_right_vec(const vector<T>& vec, Func f, InitType initial_value) {
 
 // iterables
 
-#define sort_vec(vec, l, r) std::sort((vec).begin() + (l), (vec).begin() + (r) + 1)
+#define sort_vec(vec, l, r) \
+  std::sort((vec).begin() + (l), (vec).begin() + (r) + 1)
 
 // string
 
@@ -355,7 +356,7 @@ auto ceil_ = [](auto x) { return static_cast<int>(std::ceil(x)); };
 
 const bool is_single_task = true;
 
-const bool should_debug = false;
+const bool should_debug = true;
 
 inline auto info(auto&&... items) {
   if (should_debug) {
@@ -385,10 +386,55 @@ signed main() {
 it will not impact anyone else if i
 swap two adjacent ppl.
 
+n in e5, it's nlogn custom sorting i guess.
 
+e.g. a b i, c d i+1, if i do swap
+delta = a - b - c + d = (a-b) - (c-d)
+
+i should swap iff delta < 0.
+
+
+
+quite straightforward.
+seems simple as my intuition goes. nothing counter intuitive.
 
 */
 
+struct person {
+  int l;
+  int r;
+};
+
 void solve() {
-  
+  int n;
+  read(n);
+
+  vector<person> a(n + 5);
+
+  each(i, 1, n) {
+    read(a[i].l, a[i].r);
+  }
+
+  sort(a.begin() + 1, a.begin() + n + 1, [](auto& a, auto& b) {
+    // info(a.l, a.r, b.l, b.r, (a.l - a.r) - (b.l - b.r));
+
+    return (a.l - a.r) > (b.l - b.r);
+    // return (a.l - a.r) - (b.l - b.r);
+  });
+
+  // each(i, 1, n) {
+  //   info(a[i].l, a[i].r);
+  // }
+
+  int sum = 0;
+
+  each(i, 1, n){
+    auto [l, r] = a[i];
+
+    info(l, r, l * (i-1) + r * (n - r));
+
+    sum += l * (i-1) + r * (n - r);
+  }
+
+  prn(sum);
 }

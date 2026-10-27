@@ -355,7 +355,7 @@ auto ceil_ = [](auto x) { return static_cast<int>(std::ceil(x)); };
 
 const bool is_single_task = true;
 
-const bool should_debug = false;
+const bool should_debug = true;
 
 inline auto info(auto&&... items) {
   if (should_debug) {
