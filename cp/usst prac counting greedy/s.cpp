@@ -429,6 +429,24 @@ Runtime error on test 2?!
 
 damn, which re?!
 
+
+
+wa on test5 this time. maybe re is for wrong sorting and initialized access.
+
+
+
+Wrong answer on test 14	now
+
+sum combo counting really should not be coupled w same.
+
+
+
+let's toggle the same fn
+
+maybe it's not to be solved by same fn.
+it's not collision.
+it might be the way i reverse my action.
+
 */
 
 void solve() {
@@ -446,8 +464,8 @@ void solve() {
     sum[i] = a[i] + b[i];
 
     // hack
-    same[i] = (a[i] - b[i]) * modulo + a[i];
-    // same[i] = a[i] * modulo + b[i];
+    // same[i] = (a[i] - b[i]) * modulo + a[i];
+    same[i] = a[i] * modulo + b[i];
   }
 
   sort(diff.begin() + 1, diff.begin() + n + 1);
@@ -463,10 +481,10 @@ void solve() {
   // int prev = diff[1];
 
   each(i, 2, n) {
-    info("diff", i, diff[i-1], diff[i], combo);
+    info("diff", i, diff[i - 1], diff[i], combo);
     // info("diff", i, prev, diff[i], combo);
 
-    if (diff[i] == diff[i-1]) {
+    if (diff[i] == diff[i - 1]) {
       combo += 1;
     } else {
       answer += combinations(combo + 1, 2);
@@ -481,9 +499,10 @@ void solve() {
   // prev = sum[1];
 
   each(i, 2, n) {
-    info("sum", i, sum[i-1], sum[i], combo);
+    info("sum", i, sum[i - 1], sum[i], combo);
 
-    if (sum[i] == sum[i-1] && same[i] != same[i - 1]) {
+    // if (sum[i] == sum[i-1] && same[i] != same[i - 1]) {
+    if (sum[i] == sum[i - 1]) {
       combo += 1;
     } else {
       answer += combinations(combo + 1, 2);
@@ -494,22 +513,22 @@ void solve() {
   }
   answer += combinations(combo + 1, 2);
 
-  // combo = 0;
+  combo = 0;
   // prev = same[1];
 
-  // each(i, 2, n) {
-  //   info("same", i, prev, same[i], combo);
+  each(i, 2, n) {
+    info("same", i, same[i - 1], same[i], combo);
 
-  //   if (same[i] == prev) {
-  //     combo += 1;
-  //   } else {
-  //     answer -= combinations(combo + 1, 2);
-  //     combo = 0;
-  //   }
+    if (same[i] == same[i - 1]) {
+      combo += 1;
+    } else {
+      answer -= combinations(combo + 1, 2);
+      combo = 0;
+    }
 
-  //   prev = same[i];
-  // }
-  // answer -= combinations(combo + 1, 2);
+    // prev = same[i];
+  }
+  answer -= combinations(combo + 1, 2);
 
   each(i, 1, n) {
     info(diff[i], sum[i], same[i]);
