@@ -32,6 +32,10 @@ skipped
   - no progress
 - t
   - what are they saying
+- u
+  - what's root, branch, node, or subtree?
+  - what's junction?!
+  - could not understand the sample
 
 hacked
 
