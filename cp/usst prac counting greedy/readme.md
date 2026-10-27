@@ -3,7 +3,10 @@ failed
 - a
   - unknown weird test cases or mod logics
 - b
+  - unknown weird test cases
   - idk how mod really works
+- l
+  - tle, ukn math shortcut
 
 skipped
 
@@ -18,4 +21,5 @@ skipped
   - feels i will solve it, but i dont feel i wanna solve it right now
 - k
   - unknown math optimization formula
+
 

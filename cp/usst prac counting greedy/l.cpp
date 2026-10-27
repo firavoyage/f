@@ -424,38 +424,74 @@ ive seen this. what does it mean to sum n/i from 1 to n?
 
 e.g. 100.
 
-1 100
-2 50
-3 33
-4 25
-5 20
-6 16
-7 14
-8 12
-9 11
-10 10
-11 9
-12 8
-13 7
-14 7
-15 6
-16 6
-17 5
-18 5
-19 5
-20 5
-21 4
-22 4
-23 4
-24 4
-25 4
-26 3
-27 3
-28 3
-29 3
-30 3
+1 100 100.0
+2 50 50.0
+3 33 33.3
+4 25 25.0
+5 20 20.0
+6 16 16.7
+7 14 14.3
+8 12 12.5
+9 11 11.1
+10 10 10.0
+11 9 9.1
+12 8 8.3
+13 7 7.7
+14 7 7.1
+15 6 6.7
+16 6 6.2
+17 5 5.9
+18 5 5.6
+19 5 5.3
+20 5 5.0
+21 4 4.8
+22 4 4.5
+23 4 4.3
+24 4 4.2
+25 4 4.0
+26 3 3.8
+27 3 3.7
+28 3 3.6
+29 3 3.4
+30 3 3.3
+
+clearly if n//a yield b while a is the largest possible, then
+n//b yield a.
+
+it will yield 1 for [51, 100]
+
+last = n = 100
+
+each i 2 floor(sqrt n)
+  sum += (last - n//i) * i
+  last = n//i
+
+rev each j last 1
+  do it the hard way
 
 
+
+still tle on 2?!
+
+i could not go the n * sqrt(n)?!
+
+
+
+i wonder if floordiv is fast enough.
+i may just use /.
+
+
+
+doesnt feel it could exceed e18 for n in e5.
+i may mod less, at last, to reduce constant factor.
+
+
+
+tle as well?!
+
+
+
+> how to sum i in [1, n] floordiv(n, i) fast in cp
 
 */
 
@@ -477,10 +513,34 @@ void solve() {
   read(n);
 
   int multiple_sum = 0;
-  each(i, 1, n){
-    multiple_sum += floor_(truediv(n, i)) - 1;
-    multiple_sum %= modulo;
+  int last = n;
+
+  each(i, 1, floor_(sqrt(n))) {
+    multiple_sum += (last - n / i) * i;
+    // multiple_sum += (last - floordiv(n, i)) * i;
+    // multiple_sum %= modulo;
   }
+  multiple_sum %= modulo;
+
+  reveach(j, last, 1){
+    multiple_sum += n / j;
+    // multiple_sum += floordiv(n, j);
+    // multiple_sum %= modulo;
+  }
+  multiple_sum %= modulo;
+  
+  multiple_sum -= n;
+  if(multiple_sum < 0){
+    multiple_sum += modulo;
+  }
+
+  multiple_sum %= modulo;
+  
+  // int multiple_sum = 0;
+  // each(i, 1, n){
+  //   multiple_sum += floor_(truediv(n, i)) - 1;
+  //   multiple_sum %= modulo;
+  // }
 
   int perm = f(n);
 
