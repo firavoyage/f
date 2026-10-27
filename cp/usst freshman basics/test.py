@@ -121,10 +121,14 @@ from algo import *
 # log(perm(4,4))
 
 
-def formula(a, b):
-  return a * (a - 1) / 2 - a * b + b * (b - 1) / 2
+# def formula(a, b):
+#   return a * (a - 1) / 2 - a * b + b * (b - 1) / 2
 
 
-for i in closed_each(-1, 1):
-  for j in closed_each(-1, 1):
-    prn(i, j, formula(i, j))
+# for i in closed_each(-1, 1):
+#   for j in closed_each(-1, 1):
+#     prn(i, j, formula(i, j))
+
+
+for i in closed_each(1, 30):
+  prn(i, 100//i, format_float(100/i, 1))

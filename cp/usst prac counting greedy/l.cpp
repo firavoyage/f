@@ -27,10 +27,10 @@ using namespace std;
 // using namespace ranges; // ranges::sort(vec)
 
 namespace banned {
-  int pow = nil; // use pow_ instead
-  int floor = nil; // use pow_ instead
-  int ceil = nil; // use pow_ instead
-}
+int pow = nil;    // use pow_ instead
+int floor = nil;  // use pow_ instead
+int ceil = nil;   // use pow_ instead
+}  // namespace banned
 using namespace banned;
 
 void solve();
@@ -330,7 +330,7 @@ auto ceil_ = [](auto x) { return static_cast<int>(std::ceil(x)); };
 
 // entry
 
-const bool is_single_task = true;
+const bool is_single_task = false;
 
 signed main() {
   ios_base::sync_with_stdio(false);
@@ -412,14 +412,59 @@ for complete perm, a factorial will handle it.
 
 
 if it doesnt tle, i can sum multiple number from 1 to n, and * perm / 2
+(i can easily optimize like from 1 to n/2, if matters)
+
+
+
+yeah tle on case 2.
+
+
+
+ive seen this. what does it mean to sum n/i from 1 to n?
+
+e.g. 100.
+
+1 100
+2 50
+3 33
+4 25
+5 20
+6 16
+7 14
+8 12
+9 11
+10 10
+11 9
+12 8
+13 7
+14 7
+15 6
+16 6
+17 5
+18 5
+19 5
+20 5
+21 4
+22 4
+23 4
+24 4
+25 4
+26 3
+27 3
+28 3
+29 3
+30 3
+
+
 
 */
 
 // complete perm
-int f(int n, int mod = modulo){
-  int result = 0;
+int f(int n, int mod = modulo) {
+  int result = 1;
+  // int result = 0;
 
-  each(i, 1, n){
+  each(i, 1, n) {
     result *= i;
     result %= modulo;
   }
@@ -428,5 +473,19 @@ int f(int n, int mod = modulo){
 }
 
 void solve() {
-  
+  int n;
+  read(n);
+
+  int multiple_sum = 0;
+  each(i, 1, n){
+    multiple_sum += floor_(truediv(n, i)) - 1;
+    multiple_sum %= modulo;
+  }
+
+  int perm = f(n);
+
+  // log(multiple_sum, perm, n);
+  int answer = ((multiple_sum * perm) % modulo) / 2;
+
+  prn(answer);
 }
