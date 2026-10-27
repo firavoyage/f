@@ -398,7 +398,16 @@ mod op (except div) can be inversed.
 
 every number has a prefix sum.
 
-starting from 
+starting from 0, 
+
+it can take all (0, 0), (1, 0) and (0, 1) later.
+(w prefix substracted)
+
+more generally, (0 - is_1?, 0 - is_-1?) (1...)
+
+
+
+i just dont wanna repeat my code 9 times.
 
 */
 
