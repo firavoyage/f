@@ -52,8 +52,8 @@ auto force_mle() {
   }
 }
 
-auto force_wa(){
-  prn("wrong answer");
+auto force_wa() {
+  cout << "wrong answer";
   quick_exit(0);
 }
 
@@ -122,8 +122,8 @@ inline auto print(auto&&... items) {
   prn(items...);
 }
 
-inline auto log(auto&&... items) {
-  prn("log", items...);
+inline auto info(auto&&... items) {
+  prn("info", items...);
 }
 
 // std

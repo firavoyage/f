@@ -44,10 +44,11 @@
   "log": {
     "prefix": [
       "l",
-      "lo"
+      "lo",
+      "info",
     ],
     "body": [
-      "log(${0});"
+      "info(${0});"
     ],
   },
   "true": {
