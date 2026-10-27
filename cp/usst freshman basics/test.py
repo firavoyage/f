@@ -130,5 +130,11 @@ from algo import *
 #     prn(i, j, formula(i, j))
 
 
-for i in closed_each(1, 30):
-  prn(i, 100//i, format_float(100/i, 1))
+# for i in closed_each(1, 30):
+#   prn(i, 100//i, format_float(100/i, 1))
+
+sum = 0
+for i in closed_each(1, 7):
+  sum += 1/i
+  prn(i, sum)
+

@@ -404,7 +404,8 @@ yeah.
 
 
 
->>> sum=1*(1/1+1/2+1/3+1/4)+2*(1/2+1/1+1/2+1/3)+3*(1/3+1/2+1/1+1/2)+4*(1/4+1/3+1/2+1/1)
+>>>
+sum=1*(1/1+1/2+1/3+1/4)+2*(1/2+1/1+1/2+1/3)+3*(1/3+1/2+1/1+1/2)+4*(1/4+1/3+1/2+1/1)
 >>> count = (4+1)*4/2
 >>> print(sum/count)
 2.208333333333333
@@ -427,7 +428,36 @@ it's really
 1/(1 to 4)
 2/(2 to 4, 1 to 3)
 3/(3 to 4, 2 to 3, 1 to 2)
-4/(4, 3, 1 to 2)
+4/(4 to 1)
+
+take a more complex example. 1 to 7.
+
+1/1 + (1 to 2)/2 + ... + (1 to 7)/7
+2/1 + ... + (2 to 7)/6
+3/1 + ... + (3 to 7)/5
+4/1 + ... + (4 to 7)/4
+
+1/(1 to 7)
+2/(2 to 7, 1 to 6) = /(-1 + 1 to 6)
+3/(3 to 7, 2 to 6, 1 to 5) = /(-2 - 1 + 1 to 5)
+4/(4 to 7, 3 to 6, 2 to 5, 1 to 4) = /(-(1 to 3) + (1 to 4))
+5/(5 to 7, 4 to 6, 3 to 5, 2 to 4, 1 to 5?) n.
+5/(5 to 7, 4 to 6, 3 to 5, 2 to 4, 1 to 3)
++= -(1 to i-1) + (1 to n+1-i)
+
+
+
+(yeah, it's * (1/1 to 1/7) rather than /(1 to 7))
+
+
+
+1 1.0
+2 1.5
+3 1.8333333333333333
+4 2.083333333333333
+5 2.283333333333333
+6 2.4499999999999997
+7 2.5928571428571425
 
 */
 
@@ -438,27 +468,53 @@ void solve() {
   vector<int> a(n + 5);
   read_vec(a, 1, n);
 
-  double factor = 0;
-  each(i, 1, n) {
-    factor += truediv(1, i);
-  }
+  // double factor = 0;
+  // each(i, 1, n) {
+  //   factor += truediv(1, i);
+  // }
 
-  info(factor);
+  // info(factor);
+
+  // double sum = 0;
+  // each(i, 1, n) {
+  //   if (i != 1) {
+  //     factor += -truediv(1, n - (i - 2)) + truediv(1, i);
+  //   }
+
+  //   info(i, factor, a[i], a[i] * factor);
+
+  //   sum += a[i] * factor;
+  // }
+
+  // int avg_count = (n + 1) * n / 2;
+
+  // double avg = sum / avg_count;
+
+  // prn(avg);
+  
+  // sigma 1 to i, 1/i
+  vector<double> factors(n + 5);
+  double current_factor_sum = 0;
+  each(i, 1, n) {
+    current_factor_sum += truediv(1, i);
+    factors[i] = current_factor_sum;
+  }
 
   double sum = 0;
+  double factor = 0;
   each(i, 1, n) {
-    if (i != 1) {
-      factor += -truediv(1, n - (i - 2)) + truediv(1, i);
-    }
-    
-    info(i, factor, a[i], a[i] * factor);
+    factor += -factors[i - 1] + factors[n + 1 - i];
+    sum += a[i] * truediv(1, factor);
 
-    sum += a[i] * factor;
+    // info(i, a[i], sum, factor);
+    info(i, a[i], sum, factor, factors[i]);
   }
 
-  int avg_count = (n+1)*n/2;
+  int avg_count = (n + 1) * n / 2;
 
-  double avg = sum/avg_count;
+  double avg = sum / avg_count;
+
+  info(sum, avg_count, avg);
 
   prn(avg);
 }
