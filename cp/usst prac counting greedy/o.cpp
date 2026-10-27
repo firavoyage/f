@@ -411,6 +411,24 @@ yeah.
 
 rather there's sth wrong w the formula.
 
+>>> sum=1+3/2+6/3+10/4+2+5/2+9/3+3+7/2+4
+>>> print(sum/count)
+2.5
+
+now it works. what's the difference.
+
+it's really
+
+(1)/1 + (1+2)/2 + (1+2+3)/3 + (1+2+3+4)/4
+(2)/1 + (2+3)/2 + (2+3+4)/3
+(3)/1 + (3+4)/2
+(4)/1
+
+1/(1 to 4)
+2/(2 to 4, 1 to 3)
+3/(3 to 4, 2 to 3, 1 to 2)
+4/(4, 3, 1 to 2)
+
 */
 
 void solve() {
