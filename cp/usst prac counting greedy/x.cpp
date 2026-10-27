@@ -401,9 +401,21 @@ you may "mutate in place" and brute force it.
 
 generally, if you see
 
-- ~~adjacent lower -> removed
-- one step higher -> removed
-- two step higher -> reset minimum
+- adjacent lower (e.g. one step higher) -> removed
+- >= two step higher -> 
+- 
+
+1 3 5 4 3 2
+
+2 4 2 3 4 5 6 3
+
+2 4 2 4 3
+
+
+
+brute force it.
+
+
 
 */
 
