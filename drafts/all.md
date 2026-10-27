@@ -1057,6 +1057,10 @@ para:
 - research gnome libadwaita
 - theme adwaita refactor vanillajs
 
+quote:
+
+- foundation
+
 leisure:
 
 - jp books jlpt levels
