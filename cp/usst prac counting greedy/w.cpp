@@ -431,9 +431,10 @@ void solve() {
   each(i, 1, n){
     auto [l, r] = a[i];
 
-    info(l, r, l * (i-1) + r * (n - r));
-
-    sum += l * (i-1) + r * (n - r);
+    // info(l, (i-1), r, (n - i), l * (i-1) + r * (n - r));
+    sum += l * (i-1) + r * (n - i);
+    // info(l, (i-1), r, (n - r), l * (i-1) + r * (n - r));
+    // sum += l * (i-1) + r * (n - r);
   }
 
   prn(sum);

@@ -14350,3 +14350,192 @@ void broken_function() {
 
 
 Are you trying to create a **temporary helper macro** for a specific function, or are you trying to organize your code by putting definitions closer to where they are used?
+
+# how to sort struct in cpp23 in cp
+
+In **C++23**, competitive programming (CP) heavily emphasizes speed, short code, and avoiding boilerplate. The modern and most elegant way to sort a custom `struct` is by using **C++20's default spaceship operator (`<=>`)** for automatic member-wise sorting, or **C++20/C++23's `std::ranges::sort`** paired with projection functions for sorting by specific fields.
+
+Here are the three fastest and cleanest ways to sort a `struct` in modern C++ for CP.
+
+---
+
+### 1\. The C++23 "Meta" Way: `std::ranges::sort` with Projections
+
+Instead of writing an entire custom comparator function or lambda, C++20 and C++23's `std::ranges::sort` allows you to pass a **projection**. This tells the algorithm exactly which member field to use for the comparison.
+
+cpp
+
+```
+#include <iostream>
+#include <vector>
+#include <algorithm> // Required for std::ranges::sort
+
+struct Player {
+    int id;
+    int score;
+    int penalty;
+};
+
+int main() {
+    std::vector<Player> players = {{1, 90, 15}, {2, 95, 10}, {3, 90, 5}};
+
+    // 1. Sort by score ascending (using projection)
+    std::ranges::sort(players, {}, &Player::score);
+
+    // 2. Sort by penalty descending (using a lambda comparator)
+    std::ranges::sort(players, [](int a, int b) { return a > b; }, &Player::penalty);
+}
+
+```
+
+
+
+---
+
+### 2\. Multi-Field Sorting: Default Spaceship Operator (`<=>`)
+
+If you need to sort by multiple fields sequentially (e.g., sort by `score` descending, then by `penalty` ascending, then by `id` ascending), you can use the **default three-way comparison operator (`<=>`)**.
+
+The compiler will automatically generate a lexicographical (member-by-member) comparison in the exact order the fields are declared inside the `struct`.
+
+cpp
+
+```
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <compare> // Required for <=>
+
+struct Element {
+    // ⚠️ Order matters! The compiler will compare 'weight' first, then 'value'.
+    int weight; 
+    int value;  
+
+    // This single line enables automatic member-by-member sorting (<, >, ==, etc.)
+    auto operator<=>(const Element&) const = default;
+};
+
+int main() {
+    std::vector<Element> items = {{10, 100}, {5, 50}, {10, 80}};
+
+    // Automatically sorts by weight ascending, and breaks ties by value ascending
+    std::ranges::sort(items); 
+}
+
+```
+
+
+
+---
+
+### 3\. Tie-Breaking on the Fly: Custom Lambdas
+
+If you don't want to change your `struct` declaration or you need complex, irregular conditions (like ascending for one variable and descending for another), a **lambda function** inside standard `std::sort` or `std::ranges::sort` is still incredibly popular and versatile in CP.
+
+cpp
+
+```
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+struct Team {
+    int points;
+    int goals;
+};
+
+int main() {
+    std::vector<Team> teams = {{15, 30}, {15, 35}, {10, 20}};
+
+    // Sort by points DESCENDING, break ties by goals ASCENDING
+    std::sort(teams.begin(), teams.end(), [](const Team& a, const Team& b) {
+        if (a.points != b.points) {
+            return a.points > b.points; // Higher points come first
+        }
+        return a.goals < b.goals;       // Lower goals break ties
+    });
+}
+
+```
+
+
+
+---
+
+### Summary of CP Best Practices
+
+| Scenario                                  | Best Tool to Use                                 | Why?                                       |
+| ----------------------------------------- | ------------------------------------------------ | ------------------------------------------ |
+| Sorting by a single field                 | std::ranges::sort(v, {}, &Struct::field);        | Shortest code, no lambdas required.        |
+| Strict priority queue / basic multi-field | auto operator<=>(const struct&) const = default; | Compiler writes the tie-breakers for you.  |
+| Complex tie-breakers (Mix of Asc/Desc)    | std::sort with a local lambda                    | Keeps custom logic localized and readable. |
+
+Would you like to see how to implement this for a specific CP problem layout, or do you need help optimizing **custom custom priority queues (`std::priority_queue`)** using these C++23 features?
+
+# how to read a vector of struct in cpp23 in cp
+
+In competitive programming (CP), the most efficient and cleanest way to read a `std::vector` of a custom `struct` using **C++23** combines pre-allocating the vector size, overloading the stream extraction operator (`>>`), and using **structured bindings** for seamless range-based reading or manipulation.
+
+Here is the ultimate boiler-plate template for CP:
+
+cpp
+
+```
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+// 1. Define your struct
+struct Node {
+    int u, v, weight;
+
+    // 2. Overload the >> operator for fast and clean input
+    friend istream& operator>>(istream& in, Node& node) {
+        return in >> node.u >> node.v >> node.weight;
+    }
+};
+
+void solve() {
+    int n;
+    if (!(cin >> n)) return;
+
+    // 3. Pre-allocate the vector for performance (avoids re-allocations)
+    vector<Node> edges(n);
+
+    // 4. Read directly into the vector using range-based loops
+    for (auto& edge : edges) {
+        cin >> edge;
+    }
+
+    // Modern C++23/20 Tip: You can unpack fields cleanly using structured bindings
+    for (const auto& [u, v, w] : edges) {
+        // Your CP logic here (e.g., Kruskal's, Dijkstra, etc.)
+    }
+}
+
+int main() {
+    // Fast I/O optimized for CP
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int t = 1;
+    // cin >> t; // Uncomment if there are multiple test cases
+    while (t--) {
+        solve();
+    }
+    return 0;
+}
+
+```
+
+
+
+### Why this approach is optimal for CP:
+
+* **`ios_base::sync_with_stdio(false); cin.tie(NULL);`**: This unties C++ streams from C streams and flushes, making `cin` just as fast as `scanf`.
+* **Overloading `operator>>`**: Keeps your `solve()` function clutter-free. Instead of writing nested member lookups inside your loops, you just call `cin >> edge;`.
+* **Pre-sizing the vector (`vector<Node> edges(n)`)**: Avoids the performance overhead of dynamic resizing caused by `push_back()`. It changes the time complexity of building the vector from multiple amortized allocations down to a single memory allocation.
+* **Structured Bindings (`auto& [u, v, w]`)**: Standardized in C++17 and widely used in modern C++23 CP. It lets you unpack the struct attributes directly into local variables inside loops without manually writing `edges[i].u`.
+
+Would you like to see how to **sort this vector of structs** using C++20/23 projection ranges (like `std::ranges::sort`), or are you looking to implement a specific algorithm like **Kruskal's** or **Dijkstra's**?
