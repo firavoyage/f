@@ -269,6 +269,7 @@ lib:
 - b bun root
 - tsconfig declare global types
 - serve static pages github npm bun global workflow
+- scaffold vite config setup
 
 web: <!-- frontend, web, ts/js -->
 
