@@ -27,10 +27,10 @@ using namespace std;
 // using namespace ranges; // ranges::sort(vec)
 
 namespace banned {
-  int pow = nil; // use pow_ instead
-  int floor = nil; // use pow_ instead
-  int ceil = nil; // use pow_ instead
-}
+int pow = nil;    // use pow_ instead
+int floor = nil;  // use pow_ instead
+int ceil = nil;   // use pow_ instead
+}  // namespace banned
 using namespace banned;
 
 void solve();
@@ -277,7 +277,7 @@ auto ln = [](auto a) { return log(a); };
 
 auto logab = [](auto a, auto b) { return ln(a) / ln(b); };
 
-auto combinations(int n, int r) {
+int combinations(int n, int r) {
   if (r < 0 || r > n) return 0;
   if (r == 0 || r == n) return 1;
 
@@ -353,7 +353,7 @@ auto ceil_ = [](auto x) { return static_cast<int>(std::ceil(x)); };
 
 // entry
 
-const bool is_single_task = true;
+const bool is_single_task = false;
 
 signed main() {
   ios_base::sync_with_stdio(false);
@@ -374,7 +374,7 @@ signed main() {
 
 /*
 
-what does 
+what does
 
 |a i - a j| = |b i - b j| mean?
 
@@ -401,14 +401,94 @@ i want to keep track of original index and sub 1 if a i = a j.
 
 i may try myself.
 
+~~i could also learn hashmap and map the value of to the count of a i = a j.~~
+
 
 
 yeah! sigma n in 2e5, ideal for nlogn. (hinting)
 
+wait, if i really need both i and j to figure out, a i = a j...
+it might degrade for hack data, where i could not use comb.
+
+
+
+hey, numbers are in e9, and i may play some math trick.
+like, what if i say
+a i - b i + e9 * ai = a j - b j + e9 * aj
+it will hold true for all ... (how about exclusiveness)
+
+if long long handles it well, i think that's it.
+
 */
 
-
-
 void solve() {
-  
+  int n;
+  read(n);
+
+  vector<int> a(n + 5), b(n + 5);
+  read_vec(a, 1, n);
+  read_vec(b, 1, n);
+
+  vector<int> diff(n+5), sum(n+5), same(n+5);
+
+  each(i, 1, n){
+    diff[i] = a[i] - b[i];
+    sum[i] = a[i] + b[i];
+
+    // hack
+    same[i] = a[i] * modulo + b[i];
+  }
+
+  sort(diff.begin() + 1, diff.begin() + n - 1);
+  sort(sum.begin() + 1, sum.begin() + n - 1);
+  sort(same.begin() + 1, same.begin() + n - 1);
+
+  int answer = 0;
+
+  int combo = 0;
+  int prev = diff[0];
+
+  each(i, 2, n){
+    if(diff[i] == prev){
+      combo+=1;
+    } else {
+      answer += combinations(combo, 2);
+      combo = 0;
+    }
+    
+    prev = diff[i];
+  }
+  answer += combinations(combo, 2);
+
+  combo = 0;
+  prev = sum[0];
+
+  each(i, 2, n){
+    if(sum[i] == prev){
+      combo+=1;
+    } else {
+      answer += combinations(combo, 2);
+      combo = 0;
+    }
+    
+    prev = sum[i];
+  }
+  answer += combinations(combo, 2);
+
+  combo = 0;
+  prev = same[0];
+
+  each(i, 2, n){
+    if(same[i] == prev){
+      combo+=1;
+    } else {
+      answer -= combinations(combo, 2);
+      combo = 0;
+    }
+    
+    prev = same[i];
+  }
+  answer -= combinations(combo, 2);
+
+  prn(answer);
 }
