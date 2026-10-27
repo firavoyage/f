@@ -123,10 +123,6 @@ inline auto print(auto&&... items) {
   prn(items...);
 }
 
-inline auto info(auto&&... items) {
-  prn("info", items...);
-}
-
 // std
 
 inline auto parse_int(auto&&... items) {
@@ -354,6 +350,14 @@ auto ceil_ = [](auto x) { return static_cast<int>(std::ceil(x)); };
 // entry
 
 const bool is_single_task = true;
+
+const bool should_debug = false;
+
+inline auto info(auto&&... items) {
+  if (should_debug) {
+    prn("info", items...);
+  }
+}
 
 signed main() {
   ios_base::sync_with_stdio(false);

@@ -123,10 +123,6 @@ inline auto print(auto&&... items) {
   prn(items...);
 }
 
-inline auto info(auto&&... items) {
-  prn("info", items...);
-}
-
 // std
 
 inline auto parse_int(auto&&... items) {
@@ -355,6 +351,14 @@ auto ceil_ = [](auto x) { return static_cast<int>(std::ceil(x)); };
 
 const bool is_single_task = false;
 
+const bool should_debug = false;
+
+inline auto info(auto&&... items) {
+  if (should_debug) {
+    prn("info", items...);
+  }
+}
+
 signed main() {
   ios_base::sync_with_stdio(false);
   cin.tie(nullptr);
@@ -419,6 +423,12 @@ it will hold true for all ... (how about exclusiveness)
 
 if long long handles it well, i think that's it.
 
+
+
+Runtime error on test 2?!
+
+damn, which re?!
+
 */
 
 void solve() {
@@ -429,66 +439,81 @@ void solve() {
   read_vec(a, 1, n);
   read_vec(b, 1, n);
 
-  vector<int> diff(n+5), sum(n+5), same(n+5);
+  vector<int> diff(n + 5), sum(n + 5), same(n + 5);
 
-  each(i, 1, n){
+  each(i, 1, n) {
     diff[i] = a[i] - b[i];
     sum[i] = a[i] + b[i];
 
     // hack
-    same[i] = a[i] * modulo + b[i];
+    same[i] = (a[i] - b[i]) * modulo + a[i];
+    // same[i] = a[i] * modulo + b[i];
   }
 
-  sort(diff.begin() + 1, diff.begin() + n - 1);
-  sort(sum.begin() + 1, sum.begin() + n - 1);
-  sort(same.begin() + 1, same.begin() + n - 1);
+  sort(diff.begin() + 1, diff.begin() + n + 1);
+  sort(sum.begin() + 1, sum.begin() + n + 1);
+  sort(same.begin() + 1, same.begin() + n + 1);
+  // sort(diff.begin() + 1, diff.begin() + n - 1);
+  // sort(sum.begin() + 1, sum.begin() + n - 1);
+  // sort(same.begin() + 1, same.begin() + n - 1);
 
   int answer = 0;
 
   int combo = 0;
-  int prev = diff[0];
+  // int prev = diff[1];
 
-  each(i, 2, n){
-    if(diff[i] == prev){
-      combo+=1;
+  each(i, 2, n) {
+    info("diff", i, diff[i-1], diff[i], combo);
+    // info("diff", i, prev, diff[i], combo);
+
+    if (diff[i] == diff[i-1]) {
+      combo += 1;
     } else {
-      answer += combinations(combo, 2);
+      answer += combinations(combo + 1, 2);
       combo = 0;
     }
-    
-    prev = diff[i];
+
+    // prev = diff[i];
   }
-  answer += combinations(combo, 2);
+  answer += combinations(combo + 1, 2);
 
   combo = 0;
-  prev = sum[0];
+  // prev = sum[1];
 
-  each(i, 2, n){
-    if(sum[i] == prev){
-      combo+=1;
+  each(i, 2, n) {
+    info("sum", i, sum[i-1], sum[i], combo);
+
+    if (sum[i] == sum[i-1] && same[i] != same[i - 1]) {
+      combo += 1;
     } else {
-      answer += combinations(combo, 2);
+      answer += combinations(combo + 1, 2);
       combo = 0;
     }
-    
-    prev = sum[i];
-  }
-  answer += combinations(combo, 2);
 
-  combo = 0;
-  prev = same[0];
-
-  each(i, 2, n){
-    if(same[i] == prev){
-      combo+=1;
-    } else {
-      answer -= combinations(combo, 2);
-      combo = 0;
-    }
-    
-    prev = same[i];
+    // prev = sum[i];
   }
-  answer -= combinations(combo, 2);
+  answer += combinations(combo + 1, 2);
+
+  // combo = 0;
+  // prev = same[1];
+
+  // each(i, 2, n) {
+  //   info("same", i, prev, same[i], combo);
+
+  //   if (same[i] == prev) {
+  //     combo += 1;
+  //   } else {
+  //     answer -= combinations(combo + 1, 2);
+  //     combo = 0;
+  //   }
+
+  //   prev = same[i];
+  // }
+  // answer -= combinations(combo + 1, 2);
+
+  each(i, 1, n) {
+    info(diff[i], sum[i], same[i]);
+  }
 
   prn(answer);
 }
