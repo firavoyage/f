@@ -457,7 +457,9 @@ void solve() {
   read_vec(a, 1, n);
   read_vec(b, 1, n);
 
-  vector<int> diff(n + 5), sum(n + 5), same(n + 5);
+  int answer = 0;
+
+  vector<int> diff(n + 5), sum(n + 5), d_same(n + 5), s_same(n+5);
 
   each(i, 1, n) {
     diff[i] = a[i] - b[i];
@@ -465,17 +467,18 @@ void solve() {
 
     // hack
     // same[i] = (a[i] - b[i]) * modulo + a[i];
-    same[i] = a[i] * modulo + b[i];
+    d_same[i] = (a[i] - b[i]) * modulo + a[i];
+    s_same[i] = (a[i] + b[i]) * modulo + a[i];
   }
 
   sort(diff.begin() + 1, diff.begin() + n + 1);
   sort(sum.begin() + 1, sum.begin() + n + 1);
-  sort(same.begin() + 1, same.begin() + n + 1);
+  sort(d_same.begin() + 1, d_same.begin() + n + 1);
+  sort(s_same.begin() + 1, s_same.begin() + n + 1);
   // sort(diff.begin() + 1, diff.begin() + n - 1);
   // sort(sum.begin() + 1, sum.begin() + n - 1);
   // sort(same.begin() + 1, same.begin() + n - 1);
 
-  int answer = 0;
 
   int combo = 0;
   // int prev = diff[1];
@@ -533,6 +536,82 @@ void solve() {
   each(i, 1, n) {
     info(diff[i], sum[i], same[i]);
   }
+
+  // vector<int> diff(n + 5), sum(n + 5), same(n + 5);
+
+  // each(i, 1, n) {
+  //   diff[i] = a[i] - b[i];
+  //   sum[i] = a[i] + b[i];
+
+  //   // hack
+  //   // same[i] = (a[i] - b[i]) * modulo + a[i];
+  //   same[i] = a[i] * modulo + b[i];
+  // }
+
+  // sort(diff.begin() + 1, diff.begin() + n + 1);
+  // sort(sum.begin() + 1, sum.begin() + n + 1);
+  // sort(same.begin() + 1, same.begin() + n + 1);
+  // // sort(diff.begin() + 1, diff.begin() + n - 1);
+  // // sort(sum.begin() + 1, sum.begin() + n - 1);
+  // // sort(same.begin() + 1, same.begin() + n - 1);
+
+
+  // int combo = 0;
+  // // int prev = diff[1];
+
+  // each(i, 2, n) {
+  //   info("diff", i, diff[i - 1], diff[i], combo);
+  //   // info("diff", i, prev, diff[i], combo);
+
+  //   if (diff[i] == diff[i - 1]) {
+  //     combo += 1;
+  //   } else {
+  //     answer += combinations(combo + 1, 2);
+  //     combo = 0;
+  //   }
+
+  //   // prev = diff[i];
+  // }
+  // answer += combinations(combo + 1, 2);
+
+  // combo = 0;
+  // // prev = sum[1];
+
+  // each(i, 2, n) {
+  //   info("sum", i, sum[i - 1], sum[i], combo);
+
+  //   // if (sum[i] == sum[i-1] && same[i] != same[i - 1]) {
+  //   if (sum[i] == sum[i - 1]) {
+  //     combo += 1;
+  //   } else {
+  //     answer += combinations(combo + 1, 2);
+  //     combo = 0;
+  //   }
+
+  //   // prev = sum[i];
+  // }
+  // answer += combinations(combo + 1, 2);
+
+  // combo = 0;
+  // // prev = same[1];
+
+  // each(i, 2, n) {
+  //   info("same", i, same[i - 1], same[i], combo);
+
+  //   if (same[i] == same[i - 1]) {
+  //     combo += 1;
+  //   } else {
+  //     answer -= combinations(combo + 1, 2);
+  //     combo = 0;
+  //   }
+
+  //   // prev = same[i];
+  // }
+  // answer -= combinations(combo + 1, 2);
+
+  // each(i, 1, n) {
+  //   info(diff[i], sum[i], same[i]);
+  // }
 
   prn(answer);
 }
