@@ -392,6 +392,14 @@ i can take a few from the left or from the right
 
 
 
+clearly i can do it.
+
+mod op (except div) can be inversed.
+
+every number has a prefix sum.
+
+starting from 
+
 */
 
 void solve() {
