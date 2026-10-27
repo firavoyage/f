@@ -27,10 +27,10 @@ using namespace std;
 // using namespace ranges; // ranges::sort(vec)
 
 namespace banned {
-  int pow = nil; // use pow_ instead
-  int floor = nil; // use pow_ instead
-  int ceil = nil; // use pow_ instead
-}
+int pow = nil;    // use pow_ instead
+int floor = nil;  // use pow_ instead
+int ceil = nil;   // use pow_ instead
+}  // namespace banned
 using namespace banned;
 
 void solve();
@@ -192,7 +192,8 @@ auto reduce_right_vec(const vector<T>& vec, Func f, InitType initial_value) {
 
 // iterables
 
-#define sort_vec(vec, l, r) std::sort((vec).begin() + (l), (vec).begin() + (r) + 1)
+#define sort_vec(vec, l, r) \
+  std::sort((vec).begin() + (l), (vec).begin() + (r) + 1)
 
 // string
 
@@ -402,8 +403,8 @@ you may "mutate in place" and brute force it.
 generally, if you see
 
 - adjacent lower (e.g. one step higher) -> removed
-- >= two step higher -> 
-- 
+- >= two step higher ->
+-
 
 1 3 5 4 3 2
 
@@ -417,20 +418,99 @@ brute force it.
 
 
 
+w such constraints, it's not meant to be optimized.
+that is, it might not be optimizable.
+and it's out of my capability to prove it's (not) optimizable.
+
+
+
+i can always remove the largest removable number. because no one depends on it.
+all (locally) already removable numbers will stay removable,
+besides new opportunities created by connecting sequences.
+
+i mean the global largest number.
+not local one (largest in any seq).
+not "only keep minimum for any inc/dec seq".
+
+1 2 3 4 5 3
+
+3 1 2 3 4 5
+
+1 2 3 4 5 8 7 6
+
+and i will simply skip already removed numbers.
+
+
+
+if there are many max, you can remove in any order
+as they do not dep on each other aw
+
 */
 
 void solve() {
-  int n; string s;
+  int n;
+  string s;
   read(n, s);
 
   // value in [1, 26]
-  vector<int> a(n+5);
-  each(i, 1, n){
-    a[i] = s[i-1] - 'a' + 1;
+  vector<int> a(n + 5, nil);
+  each(i, 1, n) {
+    a[i] = s[i - 1] - 'a' + 1;
   }
 
-  int start = 1, minimum = a[1];
-  vector<bool> is_removable(n+5);
+  // int start = 1, minimum = a[1];
+  // vector<bool> is_removable(n+5);
 
-  
+  vector<bool> is_removed(n + 5);
+  int removable_max_value = 0, removable_max_index = nil;
+
+  repeat(10) {
+  // repeat(1000) {
+    removable_max_value = 0;
+    removable_max_index = nil;
+
+    // find removable max
+    each(i, 1, n) {
+      int l = nil, r = nil;
+
+      reveach(j, i - 1, 1) {
+        if (!is_removed[j]) {
+          l = a[j];
+        }
+      }
+
+      each(j, i + 1, n) {
+        if (!is_removed[j]) {
+          r = a[j];
+        }
+      }
+
+      info("find max", i, a[i], l, r);
+
+      if ((l != nil && a[i] == l + 1) || (r != nil && a[i] == r + 1)) {
+        // it's removable
+        if (a[i] >= removable_max_value) {
+          removable_max_index = i;
+          removable_max_value = a[i];
+        }
+      }
+    }
+
+    info(removable_max_index, removable_max_value);
+
+    if (removable_max_index != nil) {
+      is_removed[removable_max_index] = true;
+    } else {
+      break;
+    }
+  }
+
+  int removal_sum = 0;
+  each(i, 1, n) {
+    if (is_removed[i]) {
+      removal_sum += 1;
+    }
+  }
+
+  prn(removal_sum);
 }
