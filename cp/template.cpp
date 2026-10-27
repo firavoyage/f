@@ -54,7 +54,8 @@ auto force_mle() {
 
 auto force_wa() {
   cout << "wrong answer";
-  quick_exit(0);
+  exit(0);
+  // quick_exit(0);
 }
 
 // utils

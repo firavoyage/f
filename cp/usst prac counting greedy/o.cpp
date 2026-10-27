@@ -54,7 +54,7 @@ auto force_mle() {
 
 auto force_wa() {
   cout << "wrong answer";
-  quick_exit(0);
+  exit(0);
 }
 
 // utils
@@ -459,6 +459,52 @@ take a more complex example. 1 to 7.
 6 2.4499999999999997
 7 2.5928571428571425
 
+
+
+Can't compile file:
+program.cpp: In function 'auto force_wa()':
+program.cpp:57:3: error: 'quick_exit' was not declared in this scope; did you mean '_c_exit'?
+   57 |   quick_exit(0);
+      |   ^~~~~~~~~~
+      |   _c_exit
+program.cpp: In function 'auto combinations(long long int, long long int)':
+program.cpp:290:12: warning: conversion from 'long long int' to 'int' may change value [-Wconversion]
+  290 |     result *= (n - r + i);
+      |     ~~~~~~~^~~~~~~~~~~~~~
+program.cpp:291:12: warning: conversion from 'long long int' to 'int' may change value [-Wconversion]
+  291 |     result /= i;
+      |     ~~~~~~~^~~~
+program.cpp: In function 'auto permutations(long long int, long long int)':
+program.cpp:301:12: warning: conversion from 'long long int' to 'int' may change value [-Wconversion]
+  301 |     result *= (n - i);
+      |     ~~~~~~~^~~~~~~~~~
+program.cpp: In instantiation of '<lambda(auto:75, auto:76)> [with auto:75 = int; auto:76 = long long int]':
+program.cpp:499:34:   required from here
+  499 |     current_factor_sum += truediv(1, i);
+      |                           ~~~~~~~^~~~~~
+program.cpp:242:56: warning: conversion from 'long long int' to 'double' may change value [-Wconversion]
+  242 | auto truediv = [](auto a, auto b) { return double(a) / b; };
+      |                                                        ^
+program.cpp: In function 'void solve()':
+program.cpp:507:19: warning: conversion from '__gnu_cxx::__alloc_traits<std::allocator<long long int>, long long int>::value_type' {aka 'long long int'} to 'double' may change value [-Wconversion]
+  507 |     sum += a[i] * factor;
+      |                   ^~~~~~
+program.cpp:516:22: warning: conversion from 'long long int' to 'double' may change value [-Wconversion]
+  516 |   double avg = sum / avg_count;
+      |                      ^~~~~~~~~
+program.cpp: In instantiation of 'auto format_float(auto:68, long long int) [with auto:68 = double]':
+program.cpp:520:19:   required from here
+  520 |   prn(format_float(avg, 10));
+      |       ~~~~~~~~~~~~^~~~~~~~~
+program.cpp:221:29: warning: conversion from 'long long int' to 'double' may change value [-Wconversion]
+  221 |     double fractional = n - int_part;
+      |                             ^~~~~~~~
+program.cpp:227:21: warning: conversion from 'long long int' to 'double' may change value [-Wconversion]
+  227 |       fractional -= digit;  // subtract the integer part of the digit
+      |                     ^~~~~
+
+there is no quick exit?!
+
 */
 
 void solve() {
@@ -504,17 +550,18 @@ void solve() {
   double factor = 0;
   each(i, 1, n) {
     factor += -factors[i - 1] + factors[n + 1 - i];
-    sum += a[i] * truediv(1, factor);
+    sum += a[i] * factor;
+    // sum += a[i] * truediv(1, factor);
 
     // info(i, a[i], sum, factor);
-    info(i, a[i], sum, factor, factors[i]);
+    // info(i, a[i], sum, factor, factors[i]);
   }
 
   int avg_count = (n + 1) * n / 2;
 
   double avg = sum / avg_count;
 
-  info(sum, avg_count, avg);
+  // info(sum, avg_count, avg);
 
-  prn(avg);
+  prn(format_float(avg, 10));
 }
