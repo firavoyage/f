@@ -356,7 +356,7 @@ auto ceil_ = [](auto x) { return static_cast<int>(std::ceil(x)); };
 
 const bool is_single_task = false;
 
-const bool should_debug = true;
+const bool should_debug = false;
 
 inline auto info(auto&&... items) {
   if (should_debug) {
@@ -412,6 +412,20 @@ to find j from a, swap back and forth
 - swap a j and b n, prn j n
 - swap b n and a i, prn i n
 
+
+
+terminate called after throwing an instance of 'std::length_error'
+  what():  cannot create std::vector larger than max_size()
+zsh: IOT instruction  ~/.cache/'z'
+
+free(): invalid next size (fast)
+
+segmentation fault
+
+free(): invalid pointer
+
+free(): invalid pointer
+
 */
 
 void solve() {
@@ -441,22 +455,88 @@ void solve() {
     }
   }
 
-  each(i, 1, n-1){
-    if(a[i] == b[i]){
+  int operation_count = 0;
+  // index in [1, operation count]
+  int operations[2 * n + 5][2 + 5];
+  // vector<vector<int>> operations(2 * n + 5);
+  // vector<vector<int>> operations(2 * n + 5);
+  // vector<vector<int>> operations(2 * n + 5, vector<int>(2));
+  // vector<vector<int>> operations(2 * n + 5, vector<int>(2, 0));
+  // vector<vector<int>> operations(2 * n + 5, vector<int>(0, 0));
+
+  each(i, 1, 2 * n) {
+    each(j, 0, 1) {
+      operations[i][j] = 0;
+    }
+  }
+  // each(i, 1, 2 * n) {
+  //   each(j, 0, 1) {
+  //     operations[i][j] = 0;
+  //   }
+  // }
+
+  each(i, 1, n - 1) {
+    if (a[i] == b[i]) {
       continue;
     }
 
     int b_index = nil;
-    each(j, i+1, n){
-      if(b[j] == a[i]){
+    each(j, i + 1, n) {
+      if (b[j] == b[i]) {
         b_index = j;
         break;
       }
+      // if (b[j] == a[i]) {
+      //   b_index = j;
+      //   break;
+      // }
     }
 
-    if(b_index != nil){
+    if (b_index != nil) {
+      info("swap(b[b_index], a[i])", b_index, i);
+
       swap(b[b_index], a[i]);
-      
+      operation_count += 1;
+      operations[operation_count][0] = i;
+      operations[operation_count][1] = b_index;
+      // operations[operation_count] = vector<int>(i, b_index);
+
+      continue;
     }
+
+    int a_index = nil;
+    each(j, i + 1, n) {
+      if (a[j] == b[i]) {
+        a_index = j;
+      }
+      // if (a[j] == a[i]) {
+      //   a_index = j;
+      // }
+    }
+
+    if (a_index == nil) {
+      info("a_index == nil should not happen");
+      continue;
+    }
+
+    info("swap(a[a_index], b[n])", a_index, n);
+    swap(a[a_index], b[n]);
+    operation_count += 1;
+    operations[operation_count][0] = a_index;
+    operations[operation_count][1] = n;
+    // operations[operation_count] = vector<int>(a_index, n);
+
+    info("swap(b[n], a[i])", n, i);
+    swap(b[n], a[i]);
+    operation_count += 1;
+    operations[operation_count][0] = i;
+    operations[operation_count][1] = n;
+    // operations[operation_count] = vector<int>(i, n);
+  }
+
+  prn("yes");
+  prn(operation_count);
+  each(i, 1, operation_count) {
+    prn(operations[i][0], operations[i][1]);
   }
 }
