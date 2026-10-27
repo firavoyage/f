@@ -384,16 +384,41 @@ signed main() {
 
 stupid.
 
-length in 100.
+length in 100. one task.
 
 you may "mutate in place" and brute force it.
 
 
 
+- you may remove either all or none of consecutive same letters
+- any letter w lower adjacent can be removed
+  - if for each "removable" sequence, you start from the highest one
+  - and go downward
+- anyone > the minimum in a removable sequence can be removed
+  - e.g. a b c d b, the sequence has min a, and b > a
+- iter to the right, if you are one letter lower than the current seq min
+  - you remove them all. and you stop the sequence.
 
+generally, if you see
+
+- ~~adjacent lower -> removed
+- one step higher -> removed
+- two step higher -> reset minimum
 
 */
 
 void solve() {
+  int n; string s;
+  read(n, s);
+
+  // value in [1, 26]
+  vector<int> a(n+5);
+  each(i, 1, n){
+    a[i] = s[i-1] - 'a' + 1;
+  }
+
+  int start = 1, minimum = a[1];
+  vector<bool> is_removable(n+5);
+
   
 }
