@@ -27,6 +27,7 @@ skipped
   - i want to solve it later
 - q
   - no sample explanation, i dont wanna guess or work on it now
-
+- r
+  - no progress
 
 

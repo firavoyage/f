@@ -391,6 +391,33 @@ e a b c d
 
 if your value delta is positional delta reversed, 
 you have two swapped fixed points now.
+e.g. b = 5, d = 3. or d = 5, a = 3. or a = 5, d = 2.
+
+how can it be done at n or nlogn...
+
+n in 2e5. a is perm of n.
+
+
+
+such math is no difference than simul rotating,
+you just avoid rotating in vectors and nothing else.
+
+
+
+how can you count pairs wo iterating pairs?
+
+maybe it's some special prop of perm.
+
+
+
+ideally you have 5 4 3 2 1.
+
+it seems 5 and 4 desire the same things.
+if you sort...
+
+a - b = - (i - j)
+
+let's say you already sort like 5 4 3 2 1 and map their original index.
 
 
 
