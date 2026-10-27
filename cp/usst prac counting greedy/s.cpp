@@ -447,6 +447,10 @@ maybe it's not to be solved by same fn.
 it's not collision.
 it might be the way i reverse my action.
 
+
+
+wa on 10 if i separate them.
+
 */
 
 void solve() {
@@ -487,8 +491,15 @@ void solve() {
     info("diff", i, diff[i - 1], diff[i], combo);
     // info("diff", i, prev, diff[i], combo);
 
-    if (diff[i] == diff[i - 1]) {
+    // if (diff[i] == diff[i - 1]){
+    //   if(d_same[i] != d_same[i-1]){
+    //     combo += 1;
+    //   }
+    //   // combo += 1;
+    // } else {
+    if (diff[i] == diff[i - 1] && d_same[i] != d_same[i-1]){
       combo += 1;
+      // combo += 1;
     } else {
       answer += combinations(combo + 1, 2);
       combo = 0;
@@ -504,9 +515,15 @@ void solve() {
   each(i, 2, n) {
     info("sum", i, sum[i - 1], sum[i], combo);
 
-    // if (sum[i] == sum[i-1] && same[i] != same[i - 1]) {
-    if (sum[i] == sum[i - 1]) {
+    // if (sum[i] == sum[i - 1]) {
+    //   if(s_same[i] != s_same[i-1]){
+    //     combo += 1;
+    //   }
+    //   // combo += 1;
+    // } else {
+    if (sum[i] == sum[i-1] && s_same[i] != s_same[i - 1]) {
       combo += 1;
+      // combo += 1;
     } else {
       answer += combinations(combo + 1, 2);
       combo = 0;
@@ -520,21 +537,23 @@ void solve() {
   // prev = same[1];
 
   each(i, 2, n) {
-    info("same", i, same[i - 1], same[i], combo);
+    info("same", i, d_same[i - 1], d_same[i], combo);
 
-    if (same[i] == same[i - 1]) {
+    if (d_same[i] == d_same[i - 1]) {
       combo += 1;
     } else {
-      answer -= combinations(combo + 1, 2);
+      answer += combinations(combo + 1, 2);
+      // answer -= combinations(combo + 1, 2);
       combo = 0;
     }
 
     // prev = same[i];
   }
-  answer -= combinations(combo + 1, 2);
+  answer += combinations(combo + 1, 2);
+  // answer -= combinations(combo + 1, 2);
 
   each(i, 1, n) {
-    info(diff[i], sum[i], same[i]);
+    info(diff[i], sum[i], d_same[i], s_same[i]);
   }
 
   // vector<int> diff(n + 5), sum(n + 5), same(n + 5);
