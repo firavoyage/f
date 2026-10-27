@@ -35,6 +35,28 @@ using namespace banned;
 
 void solve();
 
+auto force_tle() {
+  while (true) {
+  }
+}
+
+auto force_re() {
+  assert(false);
+  // unreachable();
+}
+
+auto force_mle() {
+  vector<vector<int>> leak;
+  while (true) {
+    leak.push_back(vector<int>(1000000, 42));
+  }
+}
+
+auto force_wa(){
+  prn("wrong answer");
+  quick_exit(0);
+}
+
 // utils
 
 void read(auto&&... variables) {

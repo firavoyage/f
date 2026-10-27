@@ -21,5 +21,7 @@ skipped
   - feels i will solve it, but i dont feel i wanna solve it right now
 - k
   - unknown math optimization formula
+- n
+  - idk what makes a polygon, given a set of edges
 
 

@@ -441,7 +441,8 @@ auto mle() {
 }
 
 auto wa(){
-  prn("garbage output");
+  prn("wrong answer");
+  exit(0);
 }
 
 void solve() {

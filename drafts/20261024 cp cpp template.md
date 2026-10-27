@@ -13551,3 +13551,501 @@ Representing an exact single element as a range is perfectly natural in a closed
 Languages that successfully use closed intervals (like **MATLAB** or **Fortran**) solve the "empty container" problem by avoiding raw pointers and using **1-based indexing**. In a 1-based closed system, an empty range is cleanly expressed as `[1, 0]`. Because `1 > 0`, the loop condition immediately fails safely without risking an unsigned underflow to a massive number.
 
 Would you like to look at how a language like **Python** or **Rust** handles ranges, or see a specific example of how **backward iteration** is structured differently between the two systems?
+
+# can it be re instead of tle if you submit while true on codeforces
+
+**Yes, it can absolutely be a Runtime Error (RE) instead of Time Limit Exceeded (TLE)**, even if you have an infinite loop like `while (true)`.
+
+On Codeforces, the platform's judging sandbox monitors your program's execution concurrently for multiple types of violations. A `while (true)` loop alone will typically trigger a **TLE** once the CPU execution time exceeds the limit. However, a **Runtime Error** can override or precede the TLE due to several common scenarios:
+
+### 1\. Memory Exhaustion (Out of Memory)
+
+If your `while (true)` loop continuously allocates memory or inserts elements into a dynamic data structure, your program will crash due to memory exhaustion before hitting the time limit.
+
+* **Example:** `while(true) vector.push_back(1);` or dynamically allocating memory via `new` inside the loop.
+* **Result:** The operating system terminates the program for violating memory limits, triggering an **RE** (or MLE, depending on how cleanly it crashes).
+
+### 2\. Undefined Behavior or Crashes Inside the Loop
+
+If your infinite loop performs an illegal operation during one of its iterations, it will crash instantly.
+
+* **Examples:** Out-of-bounds array access, dividing by zero, or dereferencing a null/garbage pointer.
+* **Result:** The system catches the hardware exception immediately and throws an **RE**, ignoring the fact that it was inside an infinite loop. [](https://codeforces.com/blog/entry/20551)
+
+### 3\. Stack Overflow from Infinite Recursion
+
+If your `while (true)` logic is implemented via recursion or if the loop calls a function that recurses indefinitely, the program stack will overflow very quickly.
+
+* **Result:** A stack overflow causes an immediate segmentation fault, which triggers an **RE** long before the 1-2 second time limit is reached.
+
+### 4\. Buffer Overflow Corrupting the Loop Variable
+
+Sometimes a bug elsewhere in your code causes a buffer overflow that overwrites memory. If this corruption damages the heap, the stack, or pointers used within your loop, it can cause a sudden crash. [](https://codeforces.com/blog/entry/20551)
+
+### Summary
+
+The final verdict depends entirely on **which limit is broken first**. Because CPU time accumulates slowly (relatively speaking) compared to the instant nature of an invalid memory access or crash, any severe operational error inside your loop will instantly yield an **RE** and cut the execution short.
+
+Are you currently troubleshooting a specific submission that gave a strange verdict? If you'd like, you can share the **programming language** or the **snippet of code** inside the loop, and I can help you spot what might be triggering the crash.
+
+* [](https://codeforces.com/blog/entry/20551)  
+Codeforces  
+Why given TLE instead of RE ?? - Codeforces  
+For this mistake i should have been given RE instead why i was given TLE (Time Limit Exceeded) ? It took me a long time to figure ...
+* [](https://codeforces.com/blog/entry/81173)  
+Codeforces  
+C++14 giving verdict TLE instead of RE - Codeforces  
+Running this code locally gives Runtime Error on test 3 … that deletion might be causing RE. Is this normal behaviour on Codeforce...
+
+# will empty while true block be removed by cpp23 compiler
+
+**Yes, an empty `while (true);` block can be removed or optimized away by a C++23 compiler under certain optimization levels.** However, thanks to a retroactive standard change, this behavior depends entirely on whether your compiler has implemented the recent defect report **P2809R3**. [](https://stackoverflow.com/questions/55734648/infinite-loop-vs-infinite-recursion-are-both-undefined)
+
+### Why It Can Be Removed
+
+Historically (from C++11 through C++23), the C++ Standard specified that the compiler could assume _any_ thread will eventually make forward progress (e.g., via I/O, volatile access, atomic synchronization, or termination). [](http://wg21.link/P2809r0)
+
+An empty `while (true);` loop does none of these things. Because of this, the compiler’s optimization engine would view the loop as **Undefined Behavior (UB)**. It assumed that the loop must terminate somehow, which frequently allowed compilers like `clang` and `gcc` to entirely strip the loop out as dead code, often letting execution weirdly "fall through" into whatever code happened to follow it in memory. [](https://stackoverflow.com/questions/76960441/benefit-of-inifinite-loops-without-side-effects-in-c-being-undefined-behavior)
+
+---
+
+### The Retroactive Fix: C++26 and Defect Reports
+
+To fix this frustration for bare-metal, embedded, and kernel developers who explicitly use `while(true);` to halt a CPU, the ISO C++ committee accepted **[P2809R3: Trivial infinite loops are not Undefined Behavior](https://wg21.link/P2809r3)**. 
+
+* **The Rule:** If an infinite loop has a controlling expression that is a constant expression evaluating to `true` (like `while(true)` or `for(;;)`), and it has an empty body, it is **no longer Undefined Behavior**. [](https://wg21.link/P2809r3)
+* **The Caveat:** Instead of being UB, the standard now treats it as if it implicitly executes a runtime yield. [](https://wg21.link/P2809r3)
+* **The "Defect Report" Status:** Because it was passed as a **Defect Report (DR)**, this change applies **retroactively** to all previous versions of C++, including C++23 and C++20. [](https://stackoverflow.com/questions/55734648/infinite-loop-vs-infinite-recursion-are-both-undefined)
+
+### How to Guarantee a Halt safely in C++23
+
+Depending on how updated your specific compiler version is, it might still optimize the loop away if it hasn't implemented P2809R3 yet. To absolutely guarantee that the compiler will not remove your infinite loop, you should force a side effect inside the block using one of these options: [](https://stackoverflow.com/questions/55734648/infinite-loop-vs-infinite-recursion-are-both-undefined)
+
+* **Use a volatile variable:**  
+cpp  
+```  
+while (true) {  
+    asm volatile(""); // For GCC/Clang: prevents the loop from being optimized away  
+}  
+```  
+
+* **Call an external/opaque function:** If the compiler cannot see inside the function body, it cannot assume it has no side effects.
+
+Are you noticing unexpected **fall-through behavior** in a specific codebase, or are you trying to implement a reliable **halt mechanism** for an embedded/bare-metal system?
+
+* [](https://stackoverflow.com/questions/28269611/understanding-whiletrue-loop)  
+Stack Overflow  
+Understanding While(true) loop - c++  
+Feb 2, 2015 — doing nothing forever, intended to allow compiler transformations such as removal of empty loops, even when termination cannot be ...
+* [](https://stackoverflow.com/questions/76960441/benefit-of-inifinite-loops-without-side-effects-in-c-being-undefined-behavior)  
+Stack Overflow  
+Benefit of inifinite loops without side effects in C++ being ...  
+Aug 23, 2023 — In both C and C++, endless loops without side effects exhibit undefined behavior. However, there might be slight differences in ho...
+* [](https://stackoverflow.com/questions/55734648/infinite-loop-vs-infinite-recursion-are-both-undefined)  
+Stack Overflow  
+Infinite loop vs infinite recursion. Are both undefined?  
+Apr 17, 2019 — P2809R3: Trivial infinite loops are not Undefined Behavior was accepted into C++ as a defect report, meaning all standards are cha...
+
+Show all
+
+
+
+
+# how to assert on codeforces on cpp23
+
+To use standard assertions on Codeforces while compiling under **GNU C++23**, you should use the traditional **`assert()` macro** from the standard library. [](https://codeforces.com/blog/entry/17199)
+
+Because Codeforces compiles your code in "Release" mode, assertions are completely active by default and will trigger a **Runtime Error (RE)** verdict if a condition evaluates to false. [](https://codeforces.com/blog/entry/17199)
+
+### 1\. Basic Runtime Assertions
+
+To assert runtime logic (such as checking if your inputs fall within expected bounds or if a binary search invariant holds), include the `<cassert>` header: [](https://codeforces.com/blog/entry/126011)
+
+cpp
+
+```
+#include <iostream>
+#include <cassert> // Required header
+
+using namespace std;
+
+int main() {
+    int n;
+    if (cin >> n) {
+        // This will trigger a Runtime Error (RE) on Codeforces if n is out of bounds
+        assert(n >= 1 && n <= 200000); 
+        
+        // Your logic here
+    }
+    return 0;
+}
+
+```
+
+
+
+### 2\. Adding Custom Debug Messages
+
+You can make a failed assertion print a custom message alongside the default error by pairing the condition with a string literal using the **logical AND (`&&`) operator**: [](https://www.youtube.com/watch?v=jWXFIsnNI4M&t=7)
+
+cpp
+
+```
+assert(graph.is_connected() && "The input graph must be fully connected!");
+
+```
+
+
+
+_If the assertion fails, the string text is evaluated as part of the expression and printed to the standard error stream (`stderr`)_. [](https://www.youtube.com/watch?v=jWXFIsnNI4M&t=7)
+
+### 3\. Compile-Time Assertions (C++23 Specifics)
+
+If you want to validate properties or templates during compilation rather than execution, use `static_assert`. [](https://www.youtube.com/watch?v=x2fZuu3a90o&t=1)
+
+C++23 introduces a highly useful optimization for template code: **unevaluated static assertions in `if constexpr` blocks**. In earlier standards, a `static_assert(false)` inside a template would often trigger a compilation failure even if it was located within a discarded branch. In C++23, it is ignored unless that branch is actually instantiated: [](https://www.youtube.com/watch?v=pwf45vaXm3Q)
+
+cpp
+
+```
+#include <type_traits>
+
+template <typename T>
+void process(T x) {
+    if constexpr (std::is_integral_v<T>) {
+        // Fast integer math
+    } else {
+        // In C++23, this only fails compilation if process() is called with a non-integer
+        static_assert(std::is_integral_v<T>, "Only integer types are supported!");
+    }
+}
+
+```
+
+
+
+### 4\. Codeforces Performance Warning ⚠️
+
+While `assert()` is fantastic for debugging, **do not leave assertions inside heavy loops** (like an O(N) check inside a loop running N times) when submitting. Doing so can easily cause a **Time Limit Exceeded (TLE)** verdict due to the repeated execution overhead. [](https://www.youtube.com/watch?v=jWXFIsnNI4M&t=7)
+
+If you want to keep them in your code for local testing but turn them off on the judge, add `#define NDEBUG` at the very top of your file before any includes, or wrap your local debug configurations inside a custom macro. [](https://www.youtube.com/watch?v=jWXFIsnNI4M&t=7)
+
+Are you trying to use assertions to **stress-test a solution** against a brute-force generator, or are you trying to debug a specific **Runtime Error** you are encountering on a problem? Let me know so I can provide the exact code wrapper you need!
+
+* [](https://www.youtube.com/watch?v=jWXFIsnNI4M&t=7)  
+YouTube·John's Basement  
+How to use assertions in C/C++ programs  
+Feb 13, 2021 — You can disable all assertions in your code by defining a macro called \`NDEBUG\` before including the \`assert\` header file.  
+22m
+* [](https://codeforces.com/blog/entry/17199)  
+Codeforces  
+assert() in C++ - Codeforces  
+Developers assert specific conditions or compare fast implementations against slower, naive data structures to isolate bugs locall...
+* [](https://codeforces.com/blog/entry/126011)  
+Codeforces  
+\[C++\] Some programming language tips and tricks - Codeforces  
+Verify correctness assert(s1 == s2); // Output time (in nanoseconds) cout << (insert\_finish - insert\_start).
+
+Show all
+
+# what errors can i manually trigger on codeforces via cpp23 via some custom assertions
+
+You can manually trigger compilation errors, runtime errors, or time limit/memory limit issues on Codeforces using **C++23 features and standard assertions**. Codeforces uses GCC to compile C++23, which gives you access to both standard language features and compiler-specific builtins.
+
+Here are the specific errors you can trigger and the code to do it:
+
+### 1\. Compilation Error (CE)
+
+To intentionally fail compilation based on a condition (like checking if a data type size is correct or blocking specific logic), use `static_assert`. In C++23, you can use formatted messages or optional strings.
+
+cpp
+
+```
+// Static assertion will fail at compile time if the condition is false
+static_assert(sizeof(int) == 8, "This system must use 64-bit integers!");
+
+// C++23 also allows user-defined diagnostic messages via constexpr string-like objects
+
+```
+
+
+
+### 2\. Runtime Error (RE)
+
+If you want the program to immediately crash during execution (e.g., if a sanity check fails during a complex graph algorithm), you have a few clean C++23 options:
+
+* **`std::unreachable()` (C++23):** This tells the compiler a piece of code can never be reached. If execution actually hits it, it triggers undefined behavior, which usually results in an immediate crash (`SIGILL` or `SIGSEGV`).
+* **`assert()`:** The classic macro. If the condition is false, it prints an error to `stderr` and calls `std::abort()`.
+* **`std::terminate()`:** Immediately stops the program, triggering a Runtime Error on Codeforces.
+
+cpp
+
+```
+#include <utility>
+#include <cassert>
+#include <exception>
+
+void check_logic(int x) {
+    if (x < 0) {
+        assert(x >= 0); // Triggers RE if x is negative
+    }
+    
+    if (x == 999) {
+        std::terminate(); // Manually force an instant RE
+    }
+
+    switch (x) {
+        case 1: // do something
+            break;
+        default:
+            std::unreachable(); // C++23: Triggers RE if x is anything other than 1
+    }
+}
+
+```
+
+
+
+### 3\. Time Limit Exceeded (TLE)
+
+If you want to force a TLE (for example, if you detect a hacking attempt or an edge case you can't solve optimally), you can trap the program in an infinite loop.
+
+cpp
+
+```
+// A simple infinite loop will easily trigger TLE
+while (true) {
+    // Keeps the CPU spinning until Codeforces cuts it off
+}
+
+```
+
+
+
+### 4\. Memory Limit Exceeded (MLE)
+
+To manually trigger an MLE, you can continuously allocate memory in a loop without freeing it.
+
+cpp
+
+```
+#include <vector>
+
+void force_mle() {
+    std::vector<std::vector<int>> leak;
+    while (true) {
+        // Continuously push large chunks of memory until the limit is hit
+        leak.push_back(std::vector<int>(1000000, 42)); 
+    }
+}
+
+```
+
+
+
+Are you trying to debug a specific **buggy submission**, or are you setting up **stress testing/local validation** for your Codeforces templates? Let me know, and I can help you write a robust debugging macro!
+
+# will codeforces clear empty while true on cpp23
+
+**No, the compiler will not clear (optimize away) an empty `while(true);` loop on Codeforces when using C++23.**
+
+Because Codeforces uses modern versions of **GCC (G++)** and **Clang** with high optimization levels (`-O2` or `-O3`), it _used_ to be true that an infinite loop without side effects was considered Undefined Behavior (UB), allowing the compiler to aggressively strip it out.
+
+However, this behavior has officially changed due to a retroactive language fix:
+
+### 1\. The C++26 Defect Report (P2809R3)
+
+The C++ committee accepted paper **[P2809R3: Trivial infinite loops are not Undefined Behavior](https://wg21.link/P2809r3)**. This paper explicitly states that an infinite loop whose controlling expression is a constant expression evaluating to `true` (like `while(true);` or `for(;;);`) is **well-defined progress**. [](http://wg21.link/P2809r1)
+
+Crucially, this change was passed as a **Defect Report**, meaning it applies **retroactively to all previous C++ standards**, including C++23, C++20, and C++17. [](https://stackoverflow.com/questions/55734648/infinite-loop-vs-infinite-recursion-are-both-undefined)
+
+### 2\. Compiler Implementation
+
+Modern versions of GCC and Clang (which back Codeforces' C++20 and C++23 environments) implement this defect report rule. Instead of optimizing the loop into oblivion or letting execution unsafely bleed into subsequent instructions, the compiler treats it as a legitimate halt point. [](https://www.sandordargo.com/blog/2026/09/16/cpp26-trivial-infinite-loops)
+
+### What will happen on Codeforces instead?
+
+If your code triggers an empty `while(true);` loop during a test case:
+
+* The program will genuinely hang inside that loop.
+* You will predictably receive a **Time Limit Exceeded (TLE)** verdict.
+* It will **not** silently optimize it away to produce a bizarre _Runtime Error_ or _Wrong Answer_ elsewhere down the line. [](https://stackoverflow.com/questions/69060973/does-the-compiler-optimise-condition-checking-for-whiletrue-loops-c)
+
+Are you trying to use an infinite loop for a specific debugging trick (like catching a state mid-execution), or are you trying to safely halt a program? If you share what you're working on, I can suggest the safest way to handle it.
+
+* [](http://wg21.link/P2809r1)  
+wg21.link  
+P2809R1: Trivial infinite loops are not Undefined Behavior  
+Proposes treating trivial infinite loops with constant expressions converting to true as well-formed rather than Undefined Behavio...
+* [](https://stackoverflow.com/questions/55734648/infinite-loop-vs-infinite-recursion-are-both-undefined)  
+Stack Overflow  
+Infinite loop vs infinite recursion. Are both undefined?  
+Apr 17, 2019 — infinite loops are not Undefined Behavior was accepted into C++ as a defect report, meaning all standards are changed retroactivel...
+* [](https://www.sandordargo.com/blog/2026/09/16/cpp26-trivial-infinite-loops)  
+Sandor Dargo  
+C++26: Trivial infinite loops are no longer undefined behaviour  
+The optimizer can therefore no longer treat a trivial infinite loop as undefined behaviour and assume that execution continues pas...
+
+Show all
+
+# how to force terminate the whole program and result in wrong answer on codeforces on cpp23
+
+To force your program to terminate and immediately trigger a **Wrong Answer (WA)** verdict on Codeforces using C++23, the most reliable method is to **exit the program normally with a `return 0;` or `exit(0);` after intentionally printing incorrect output.**
+
+If you terminate abnormally (like using `abort()` or throwing an unhandled exception), Codeforces will give you a **Runtime Error (RE)** instead of a Wrong Answer.
+
+Here are the best ways to achieve a guaranteed **Wrong Answer**:
+
+### 1\. The Standard Method (Recommended)
+
+Print something that is guaranteed to violate the problem's expected output format or constraints, then exit normally.
+
+cpp
+
+```
+#include <iostream>
+
+int main() {
+    // Print something highly unlikely to be the correct answer
+    std::cout << "-1\n0\nWRONG_ANSWER\n"; 
+    
+    // Normal exit ensures you get WA instead of RE
+    return 0; 
+}
+
+```
+
+
+
+### 2\. The `std::unreachable()` Method (C++23 Specific)
+
+C++23 introduced `std::unreachable()`. This tells the compiler that a piece of code cannot be executed. If your program _does_ hit it, it causes **undefined behavior**.
+
+* **Warning:** Depending on how Codeforces compiles it, this might result in a Runtime Error or random behavior rather than a clean WA. If you want a strict WA, stick to Method 1.
+
+cpp
+
+```
+#include <iostream>
+#include <utility> // Required for std::unreachable
+
+int main() {
+    std::cout << "Triggering WA\n";
+    return 0;
+    
+    // This is C++23, but anything after this is undefined
+    std::unreachable(); 
+}
+
+```
+
+
+
+### Why avoid `abort()`, `assert(false)`, or `exit(1)`?
+
+* `std::abort()` or `assert(false)` triggers a `SIGABRT` signal  
+→  
+→
+
+**Runtime Error**
+* `std::exit(1)` or returning any non-zero value  
+→  
+→
+
+**Runtime Error**
+
+Are you trying to **stress-test your code** against a brute-force solution, or are you looking to intentionally fail a specific test case hidden in the system tests? I can help you set up a **conditional exit** if needed.
+
+# how to force terminate the whole program and result in wrong answer on codeforces on cpp23 when main fn hasnt exited
+
+To immediately terminate a C++23 program on Codeforces and ensure it triggers a **Wrong Answer (WA)** verdict (rather than a Runtime Error / RE), you must **exit the program with a return code of `0`** immediately.
+
+Codeforces determines a "Runtime Error" based on non-zero exit codes or unhandled exceptions/signals. If your program exits with `0`, Codeforces assumes it finished successfully and will proceed to check your output against the correct answer. If your output is missing or incomplete, you get a **Wrong Answer**.
+
+Here are the standard ways to force terminate immediately from anywhere in your code:
+
+### 1\. Using `std::quick_exit(0)` (Recommended)
+
+Introduced in C++11 and perfectly supported in C++23, `std::quick_exit` terminates the program immediately. It flushes buffered streams if necessary but does not call destructors for automatic or static objects, making it faster and cleaner for an intentional forced exit.
+
+cpp
+
+```
+#include <cstdlib> // Required for std::quick_exit
+
+void check_condition(int x) {
+    if (x < 0) {
+        // Force terminate immediately with exit code 0
+        std::quick_exit(0); 
+    }
+}
+
+```
+
+
+
+### 2\. Using `std::exit(0)`
+
+`std::exit` also terminates the program immediately from any function. The main difference from `quick_exit` is that it will call destructors for objects with static storage duration, which is usually unnecessary when you want a hard stop.
+
+cpp
+
+```
+#include <cstdlib> // Required for std::exit
+
+void check_condition(int x) {
+    if (x < 0) {
+        std::exit(0); 
+    }
+}
+
+```
+
+
+
+### Why you should avoid `std::abort()` or `std::terminate()`
+
+Functions like `std::abort()` or throwing an unhandled exception will cause the program to crash, returning a non-zero exit status to the operating system. On Codeforces, this will result in a **Runtime Error (RE)** instead of a **Wrong Answer (WA)**.
+
+Are you trying to trigger a **Wrong Answer** to intentionally fail a specific test case, or are you debug-testing a **stress testing script**? Let me know if you need help setting up conditional checks for specific Codeforces constraints!
+
+# why is it re instead of tle or mle when you while true cout in cpp23 on codeforces
+
+When you run an infinite loop containing standard output like `while(true) std::cout << "something";` on **Codeforces**, you will get a **Runtime Error (RE)** instead of a **Time Limit Exceeded (TLE)** or **Memory Limit Exceeded (MLE)** due to how the online judge's sandbox environment intercepts and restricts program output. [](https://www.quora.com/What-is-the-meaning-of-output-limit-exceeded)
+
+Here is exactly what happens behind the scenes:
+
+### 1\. The Output Limit Exceeded (OLE) Ceiling
+
+Online judges cannot let a program write an infinite amount of text to `stdout`, as it would completely fill the server's storage disk or consume massive network/memory resources. To protect the grading servers, Codeforces places a hard limit on the total volume of text your code is allowed to output (typically around **a few megabytes to dozens of megabytes** depending on the specific problem). [](https://www.quora.com/What-is-the-meaning-of-output-limit-exceeded)
+
+### 2\. Why it manifests as a Runtime Error (RE)
+
+When your infinite loop crosses that safety buffer threshold, the Codeforces testing sandbox forces your program to terminate immediately. It does this in one of two ways depending on the sandbox OS configurations: [](https://codeforces.com/contest/1167/problem/B)
+
+* **Operating System Signal:** The OS sends a termination signal to your program, such as `SIGXFSZ` (File Size Limit Exceeded) or `SIGPIPE` (Broken Pipe).
+* **Abrupt Termination:** The platform kills the process entirely, resulting in a non-zero exit code (e.g., `Exit code is 3` or similar failure signals). [](https://codeforces.com/blog/entry/52294)
+
+Because your program crashes or gets killed _by the OS_ before the time limit expires, the platform reports the verdict as a **Runtime Error**. [](https://codeforces.com/gym/104008/problem/B)
+
+### Why it isn't TLE or MLE
+
+* **Not TLE:** A program receives a TLE verdict only if it runs continuously for the full duration of the time limit (e.g., 2.0 seconds) without crashing. Because `while(true) cout` prints so rapidly, it hits the maximum allowed output file size in a matter of **milliseconds**, causing an intentional sandbox crash long before the clock runs out. (If you ran an infinite loop _without_ printing anything, e.g., `while(true);`, it would safely reach the 2.0-second limit and result in TLE). [](https://codeforces.com/blog/entry/133005?locale=en)
+* **Not MLE:** Your program isn't continuously allocating dynamic heap arrays or filling up the RAM stack. Instead, it streams characters straight to the output buffer stream, which gets written out and cleared immediately. Since active memory usage remains flat and low, it will never trigger a Memory Limit Exceeded verdict. [](https://codeforces.com/blog/entry/133005?locale=en)
+
+Are you debugging an **interactive problem** where you need to continually flush the output buffer, or are you trying to troubleshoot an accidental infinite loop in a standard solution? Let me know, and I can help you fix it!
+
+* [](https://codeforces.com/contest/1167/problem/B)  
+Codeforces  
+Problem - B  
+After receiving such an answer, your program should terminate immediately — otherwise you may receive verdict "Runtime error", "Ti...
+* [](https://www.quora.com/What-is-the-meaning-of-output-limit-exceeded)  
+Quora  
+What is the meaning of “output limit exceeded”? - Quora  
+Sep 12, 2019 — This a rare error, usually the file size limit is big enough so even reasonable sized programs are graded
+* [](https://codeforces.com/gym/104008/problem/B)  
+Codeforces  
+Problem - B - Codeforces  
+When a solution passes all tests (correct on all test cases), the maximum time and memory will be shown with the correct verdict.
+
+Show all
