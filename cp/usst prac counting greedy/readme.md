@@ -25,4 +25,7 @@ skipped
   - idk what makes a polygon, given a set of edges
 - p
   - i want to solve it later
-- 
+- q
+  - no sample explanation, i dont wanna guess or work on it now
+
+
