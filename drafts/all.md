@@ -546,6 +546,7 @@ cp: <!-- algorithms -->
 - mistake missing float point calc trick scale
 - oj infra
 - modulo number choice
+- naming letters meaning t period
 
 pm:
 

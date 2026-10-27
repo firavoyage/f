@@ -376,6 +376,15 @@ signed main() {
 
 n, s (sum), t (period/time) in 5e6
 
+across n numbers, it's fundamentally t numbers repeating,
+cut off at the end possibly.
+
+there would be floor(n/t) times, and ceil(n/t) times of partial repetition.
+
+clearly
+sum_partial <= floor(sum/ceil(n/t))
+sum_period <= floor(sum/floor(n/t))
+
 
 
 */

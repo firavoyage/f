@@ -23,4 +23,6 @@ skipped
   - unknown math optimization formula
 - n
   - idk what makes a polygon, given a set of edges
-
+- p
+  - i want to solve it later
+- 
