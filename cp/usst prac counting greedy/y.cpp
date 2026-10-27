@@ -387,11 +387,75 @@ n in e6.
 the fact that it's from 1 to n is quite special.
 because consecutive ints comprime.
 
-i will remove 1 first, and make them no longer 
+i will remove 1 first, and make them no longer coprime asap.
 
+1 2 3 4 5 6 -> 2 4 6
+
+all primes, ~~or odd numbers~~ should be removed first.
+primes have gcd 1 w any other numbers.
+
+1 to 10 -> 2 4 6 8 10.
+
+1 to 3 -> 3 (wait but why do you rm 2 first here...)
+
+well, for any n > 3. coz you wanna rm all primes first.
+
+and 3 5 7 are primes. and it's much easier to rm the rest of odds
+than evens, if you must rm all consecutive numbers.
+i.e. rm all odds or all evens or more than that (even if you do keep 3 and 6).
+
+1 2 3 4 -> 2 4
+1 2 3 4 5 6 -> 2 4 6 ~~or 3 6~~
+
+now you have 2 * (1 2 3) it's recursion.
+
+
+
+1 2 3 4 5 6 7 8 9 10
+2 * 1 2 3 4 5
+4 * 1 2 -> 4 | (1 2) = 4 8
+
+1 2 3 4 5 6
+2 * 1 2 3 -> 2 | (1 1 3) -> 2 2 6
+
+
+generally, for any n > 3, 
+you will rm all odds -> pr 1 ceil(n/2) times
+then you raise factor (make n floor n/2) and go again.
+until a day where n <= 3.
+1 -> 1
+2 -> 1 2
+3 -> 1 1 3
+
+(that's really the samples!)
 
 */
 
 void solve() {
-  
+  int n;
+  read(n);
+
+  int factor = 1;
+
+  while(true){
+    if(n <= 3){
+      if(n == 1){
+        pr(factor * 1);
+        break;
+      } else if (n == 2){
+        pr(factor * 1, factor * 2);
+      } else if (n == 3){
+        pr(factor * 1, factor * 1, factor * 3);
+      }
+      break;
+    }
+
+    repeat(ceil_(truediv(n, 2))){
+      pr(factor * 1);
+    }
+
+    factor *= 2;
+
+    n = floor_(truediv(n, 2));
+  }
 }
