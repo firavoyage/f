@@ -428,6 +428,9 @@ void solve() {
   
   answer %= modulo;
 
-  prn(answer);
+  if(answer < 0){
+    answer += modulo;
+  }
 
+  prn(answer);
 }

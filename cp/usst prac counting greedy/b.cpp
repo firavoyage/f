@@ -437,9 +437,9 @@ void solve() {
   each(column, 1, n) {
     int remaining = sum;
     vector<bool> has_appeared(n + 5);
-    
+
     bool has_failed = false;
-    
+
     // log(column, remaining);
     // prn(remaining);
     // log(column, remaining, has_appeared);
@@ -485,6 +485,9 @@ void solve() {
                        permutations(free_count, free_count);
 
   solution_count %= modulo;
+  if (solution_count < 0) {
+    solution_count += modulo;
+  }
 
   prn(desired_count, solution_count);
 }

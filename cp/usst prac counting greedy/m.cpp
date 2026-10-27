@@ -393,6 +393,34 @@ re on test 7 now. my assertion failed.
 
 it works!
 
+
+
+if(answer >= -modulo){
+  mle();
+} else{
+  tle();
+}
+
+well this kind of hack could only work on the first failure i guess.
+
+i could not gurantee it all if idk how cpp % works for neg.
+
+
+
+ah, yeah 9^n and 3^(3n) are different.
+
+
+
+ac.
+
+or maybe that's also the case for a and b?!
+
+well no help.
+
+
+
+maybe there's some issue w comb perm lib.
+
 */
 
 auto tle() {
@@ -420,17 +448,21 @@ void solve() {
   int n;
   read(n);
 
+  // int answer = pow_(9, n) - pow_(7, n);
   int answer = pow_(3, 3 * n) - pow_(7, n);
   answer %= modulo;
   if (answer < 0) {
-    if(answer >= -modulo){
-      mle();
-    } else{
-      tle();
-    }
-    // re();
-    // tle();
+    answer += modulo;
   }
+  // if (answer < 0) {
+  //   if(answer >= -modulo){
+  //     mle();
+  //   } else{
+  //     tle();
+  //   }
+  //   // re();
+  //   // tle();
+  // }
   // if (answer < 0) {
   //   mle();
   //   // re();
