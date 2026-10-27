@@ -445,6 +445,13 @@ and i will simply skip already removed numbers.
 if there are many max, you can remove in any order
 as they do not dep on each other aw
 
+
+
+the takeaway is 
+
+- it does not break automatically if you think youve already got it
+- it does not continue if you thought it were already out of loop
+
 */
 
 void solve() {
@@ -464,28 +471,39 @@ void solve() {
   vector<bool> is_removed(n + 5);
   int removable_max_value = 0, removable_max_index = nil;
 
-  repeat(10) {
+  repeat(1000) {
   // repeat(1000) {
     removable_max_value = 0;
     removable_max_index = nil;
 
     // find removable max
     each(i, 1, n) {
+      if(is_removed[i]){
+        continue;
+      }
+      // if(is_removed[i]){
+      //   continue;
+      // }
+
       int l = nil, r = nil;
 
       reveach(j, i - 1, 1) {
         if (!is_removed[j]) {
           l = a[j];
+          break;
+          // l = a[j];
         }
       }
 
       each(j, i + 1, n) {
         if (!is_removed[j]) {
           r = a[j];
+          break;
+          // r = a[j];
         }
       }
 
-      info("find max", i, a[i], l, r);
+      // info("find max", i, a[i], l, r, removable_max_index, removable_max_value);
 
       if ((l != nil && a[i] == l + 1) || (r != nil && a[i] == r + 1)) {
         // it's removable
@@ -496,7 +514,7 @@ void solve() {
       }
     }
 
-    info(removable_max_index, removable_max_value);
+    // info(removable_max_index, removable_max_value);
 
     if (removable_max_index != nil) {
       is_removed[removable_max_index] = true;
