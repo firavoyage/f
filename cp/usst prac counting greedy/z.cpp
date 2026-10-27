@@ -426,6 +426,18 @@ free(): invalid pointer
 
 free(): invalid pointer
 
+
+
+one shot ac.
+
+hard?! hack?! wdym.
+
+This problem is different from the easy version. In this version Ujan makes at most 2n
+ swaps. In addition, k≤1000,n≤50
+ and it is necessary to print swaps themselves. You can hack this problem if you solve it. But you can hack the previous problem only if you solve both problems.
+
+well maybe in the easy version you just do the counting and even judgement
+
 */
 
 void solve() {
