@@ -7,6 +7,7 @@ failed
   - idk how mod really works
 - l
   - tle, ukn math shortcut
+- s
 
 skipped
 
@@ -29,6 +30,8 @@ skipped
   - no sample explanation, i dont wanna guess or work on it now
 - r
   - no progress
+- t
+  - what are they saying
 
 hacked
 

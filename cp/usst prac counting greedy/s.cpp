@@ -451,6 +451,14 @@ it might be the way i reverse my action.
 
 wa on 10 if i separate them.
 
+
+
+i think my initial approach was sound, somewhat.
+- you should either have same diff or same sum to be paired
+- if you have the same diff, you can pair w each other, c count 2
+- if you have the same sum, you can pair w each other, c count 2
+- if you have both, you are paired twice w each other.
+
 */
 
 void solve() {
