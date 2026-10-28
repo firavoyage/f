@@ -15,4 +15,5 @@ web
 
 # thoughts
 
-
+- i wonder if it would really adopt adwaita, or to what extent, esp given it might be themed dynamically like any blogs/wikis, rather than general desktop util apps
+- i would like a styling lib
