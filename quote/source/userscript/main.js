@@ -2,8 +2,8 @@ import 'lib/global'
 import { bind } from 'lib/web/keyboard'
 import { now, format } from 'lib/time'
 
-async function post(payload) {
-  const url = 'http://localhost:9005/api/save_quote'
+async function post(endpoint, payload) {
+  const url = `http://localhost:9005/api/${endpoint}`
 
   const response = await fetch(url, {
     method: 'POST',
@@ -74,7 +74,7 @@ bind('q', () => {
   if (has_selection()) {
     const quotation = quote()
     log('quote', quotation)
-    post(quotation)
+    post('save_quote', quotation)
   } else {
     log('no selection to quote')
   }
