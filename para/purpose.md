@@ -81,7 +81,7 @@ define
 style
   switch
     . flex ... # . or _ or "switch" itself
-    thumb px py size color
+    thumb px py size color [font-family: ...; ...] # css doesnt use [] you may use {} aw
     thumb[on]
     thumb[!on]
     thumb[theme=dark]
@@ -99,5 +99,15 @@ you may customize it,
 - article layout container
   - placement
   - (max) width
+
+
+
+well it might be a bit awkward to compose/nest components, but it's relatively easy
+
+```
+h(component, ...)
+```
+
+and you dont have to captalize component names. button and "button" are clearly different (and likely you would not use the latter).
 
 
