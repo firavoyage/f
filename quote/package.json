@@ -6,7 +6,8 @@
   "scripts": {
     "spellcheck": "typos",
     "dev": "vite 'source/web'",
-    "build": "vite build 'source/web'"
+    "build": "vite build 'source/web'",
+    "userscript": "vite build 'source/userscript'"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
@@ -41,6 +42,7 @@
     "@hono/node-server": "2.0.8",
     "hono": "4.12.27",
     "lib": "github:firahq/lib",
+    "vite-plugin-monkey": "8.1.1",
     "yaml": "2.9.1"
   }
 }
