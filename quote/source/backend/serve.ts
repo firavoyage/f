@@ -4,10 +4,13 @@ import { cors } from 'hono/cors';
 import { serveStatic } from '@hono/node-server/serve-static';
 import { read, cwd, expand_path, does_exist, is_dir, parent } from 'lib/file'
 import { format_log } from 'lib/log'
-
+import { init_desktop, data, write } from 'lib/file'
 const { stringify: serialize } = JSON
 
-const port = 0;
+init_desktop('quote', false)
+
+const port = 9005;
+// const port = 0;
 
 const app = new Hono();
 
@@ -18,6 +21,12 @@ app.use('*', async (c, next) => {
   await next()
   log(format_log(`${c.req.method} ${c.req.path}`, 'info'))
 })
+
+app.post('/api/save_quote', async (params:type) => {
+  
+})
+
+// app.get('/)
 
 serve(
   {

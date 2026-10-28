@@ -54,7 +54,7 @@ function normalize(shortcut: string) {
   return normalized_shortcut
 }
 
-export function bind(shortcut: string, action: action, { global = true, priority = 0 }): number {
+export function bind(shortcut: string, action: action, { global = true, priority = 0 } = {}): number {
   shortcut = normalize(shortcut)
 
   if (!shortcuts.has(shortcut)) {

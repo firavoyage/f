@@ -42,7 +42,7 @@ ref:
     ],
   },
   "async function": {
-    "prefix": "af",
+    "prefix": ["af", "afn"],
     "body": [
       "async function ${1:name}(${2}) {",
       "  $0",
@@ -50,7 +50,7 @@ ref:
     ],
   },
   "async arrow function": {
-    "prefix": ["aarf", "aaf", "araf"],
+    "prefix": ["aarf", "aaf", "araf", "aafn"],
     "body": [
       "async (${1}) => $0",
     ],
