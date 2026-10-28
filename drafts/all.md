@@ -270,6 +270,7 @@ lib:
 - tsconfig declare global types
 - serve static pages github npm bun global workflow
 - scaffold vite config setup
+- shell b run script abstraction r
 
 web: <!-- frontend, web, ts/js -->
 

@@ -1,6 +1,6 @@
 # plan
 
-- quote
+- ~~quote~~
 - para
 - humility
 - lib/web/server

@@ -1,4 +1,4 @@
-import "sakura.css/css/sakura.css"
+import 'sakura.css/css/sakura.css'
 
 import { init_request, post } from 'lib/request'
 
@@ -9,28 +9,24 @@ export function App() {
     post('read'),
   )
 
-  log({quotes, is_loading})
+  // log({ quotes, is_loading })
 
   if (!is_loading) {
     return (
       <div>
-        {
-          map(quotes, (quote) => {
-            return (
-              <div>
-                <blockquote>
-                  <div dangerouslySetInnerHTML={{__html: quote.html}}></div>
-                  {/* {quote.html} */}
-                  {/* {quote.text} */}
-                </blockquote>
-                <p>
-                  {quote.time}
-                </p>
-              </div>
-            )            
-          })    
-        }
+        {map(quotes, (quote) => {
+          return (
+            <div>
+              <blockquote>
+                <div dangerouslySetInnerHTML={{ __html: quote.html }}></div>
+                {/* {quote.html} */}
+                {/* {quote.text} */}
+              </blockquote>
+              <p>{quote.time}</p>
+            </div>
+          )
+        })}
       </div>
     )
-  } 
+  }
 }
