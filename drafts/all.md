@@ -937,6 +937,7 @@ history:
 - cpp stl
 - js engines
 - legendary phones mi 6
+- lorem ipsum
 
 politics:
 
