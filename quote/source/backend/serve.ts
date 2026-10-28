@@ -22,8 +22,12 @@ app.use('*', async (c, next) => {
   log(format_log(`${c.req.method} ${c.req.path}`, 'info'))
 })
 
-app.post('/api/save_quote', async (params:type) => {
-  
+app.post('/api/save_quote', async (c) => {
+  const quotation = await c.req.json()
+
+  log(quotation)
+
+  return c.json({})
 })
 
 // app.get('/)

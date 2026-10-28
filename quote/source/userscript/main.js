@@ -3,7 +3,7 @@ import { bind } from 'lib/web/keyboard'
 import { now, format } from 'lib/time'
 
 async function post(payload) {
-  const url = 'https://localhost:9005/api/save_quote'
+  const url = 'http://localhost:9005/api/save_quote'
 
   const response = await fetch(url, {
     method: 'POST',
