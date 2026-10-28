@@ -9,3 +9,5 @@ change
 
 - random: add `random`, `randint`.
 - file/append: touch if non existing
+- request: `get` `post`
+

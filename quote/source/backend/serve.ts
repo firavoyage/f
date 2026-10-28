@@ -54,18 +54,36 @@ app.post('/api/read', async (c) => {
   return c.json(quotes)
 })
 
+app.use('*', serveStatic({ root: '../web/build' }));
+
 app.get('*', (c) => {
-  if (c.req.path.startsWith('/api')) {
-    return c.json({ success: false, message: 'api endpoint not found' }, 404)
-  } else {
-    try {
-      const html = read('../web/build/index.html')
-      return c.html(html)
-    } catch {
-      return c.text('web/build/index.html missing. Run web build first.', 500)
-    }
+  const html = handle(() => read('../web/build/index.html'))
+
+  if (is_error(html)) {
+    log('web/build/index.html should exist, run web build first')
+
+    return c.text('')
   }
+
+  return c.html(html)
 })
+// app.get('*', (c) => {
+//   if (c.req.path.startsWith('/api')) {
+//     log(`api endpoint not found on ${c.req.path}`)
+
+//     return c.json({ message: 'api endpoint not found' }, 404)
+//   } else {
+//     const html = handle(() => read('../web/build/index.html'))
+
+//     if (is_error(html)) {
+//       log('web/build/index.html should exist, run web build first')
+
+//       return c.html('123')
+//     }
+
+//     return c.html(html)
+//   }
+// })
 
 serve(
   {
