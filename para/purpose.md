@@ -62,4 +62,42 @@ r (
 # or r fragment(...)
 ```
 
-on styling, clearly i will not rely on native css or any css styled preprocessers that inherits all its flaws, because it could not be fixed progre
+on styling, clearly i will not rely on native css or any css styled preprocessers that inherits all its flaws, because it could not be fixed gradually or integrated or extended, and when i really wanna move on, i will, one day, all prev work will vanish.
+
+i will use css selectors and inherit all tailwind utils first so i can make it work. if i feel it does not fit my intent, i can always create abstractions as new utils.
+
+i can do it progressively when i feel like it.
+
+```
+define
+  color
+    gray
+      100
+      200
+      ...
+      950
+  font
+
+style
+  switch
+    . flex ... # . or _ or "switch" itself
+    thumb px py size color
+    thumb[on]
+    thumb[!on]
+    thumb[theme=dark]
+    track
+```
+
+by default i would like to left align it because you are not supposed to be reading a book. toc will be on the right.
+
+and if you open sidebar it has to be pushed anyway.
+if you leave the sidebar open, it would be ideally centered rather on the right.
+<!-- wikipedia centers, yk. -->
+
+you may customize it,
+
+- article layout container
+  - placement
+  - (max) width
+
+
