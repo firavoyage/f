@@ -272,4 +272,20 @@ it might help to automate the local one, just in case.
 
 it's simple anyway, a copy and a peer dep rm.
 
+28
+
+easier to just separate by get post.
+
+it's much natural to send payload via post.
+
+and browser default methods (e.g. open page) are hardcoded get.
+
+---
+
+tbh you should never get w payload. actually you should never get.
+
+---
+
+all abstraction leaks, and i can have specific methods, like for backend service integration, in the future.
+
 

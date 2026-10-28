@@ -40,7 +40,8 @@ git push -f g
 
 bun rm $name
 bun add github:firahq/$name --force
-# bun add github:firahq/$name --force --no-cache
+# bun add github:firahq/$name --force
+# bun add $name@github:firahq/$name --force --no-cache
 ```
 
 # . add and update

@@ -91,6 +91,6 @@ serve(
     port,
   },
   (info) => {
-    log(`Serve on http://localhost:${info.port}`)
+    log(`serve on http://localhost:${info.port}`)
   },
 )

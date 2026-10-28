@@ -7,7 +7,8 @@
     "spellcheck": "typos",
     "dev": "vite 'source/web'",
     "build": "vite build 'source/web'",
-    "userscript": "vite build 'source/userscript'"
+    "userscript": "vite build 'source/userscript'",
+    "serve": "./script/serve.sh"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
