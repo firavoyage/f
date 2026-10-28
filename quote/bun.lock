@@ -7,6 +7,7 @@
         "@hono/node-server": "2.0.8",
         "hono": "4.12.27",
         "lib": "github:firahq/lib",
+        "sakura.css": "1.5.1",
         "vite-plugin-monkey": "8.1.1",
         "yaml": "2.9.1",
       },
@@ -895,6 +896,8 @@
     "safe-buffer": ["safe-buffer@5.2.1", "", {}, "sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ=="],
 
     "safe-regex-test": ["safe-regex-test@1.1.0", "", { "dependencies": { "call-bound": "^1.0.2", "es-errors": "^1.3.0", "is-regex": "^1.2.1" } }, "sha512-x/+Cz4YrimQxQccJf5mKEbIa1NzeCRNI5Ecl/ekmlYaampdNLPalVyIcCZNNH3MvmqBugV5TMYZXv0ljslUlaw=="],
+
+    "sakura.css": ["sakura.css@1.5.1", "", {}, "sha512-MAL13eVLmTuiF6a/SjrzK5PItWQwMrsIIldLq7kVwuJjxoxVyzwGJbP+JNSwLt34VF8Eg9yj3q17GG/h8jhvMA=="],
 
     "sass": ["sass@1.106.1", "", { "dependencies": { "chokidar": "^5.0.0", "immutable": "^5.1.5", "source-map-js": ">=0.6.2 <2.0.0" }, "optionalDependencies": { "@parcel/watcher": "^2.4.1" }, "bin": { "sass": "sass.js" } }, "sha512-kD+Gi66vycZcbJt+42NC4z4PXNMcCajVrJPhqoKKXy5cOBMmJQt052CxIBcRjwYXeImHYOpu/ydWWGZQIenl7A=="],
 
