@@ -1453,3 +1453,725 @@ Context - Hono
 Methods and Properties: req (HonoRequest instance); status (set HTTP status code, default 200); header (set HTTP headers); body (r...
 
 Show all
+
+# all hono methods examples
+
+The **Hono instance** provides a robust collection of methods designed for routing, middleware registration, application structuring, and lifecycle orchestration. [](https://hono.dev/docs/api/hono)
+
+Here is a comprehensive breakdown of all major methods available on the `Hono` app class, categorized by their functionality.
+
+---
+
+### 1\. HTTP Methods (Routing)
+
+These methods register a route handler for a specific HTTP verb. They accept an optional path string and one or more handlers or middlewares. [](https://hono.dev/docs/api/hono)
+
+* `app.get(path, ...handlers)` — Handles `GET` requests to retrieve resources.
+* `app.post(path, ...handlers)` — Handles `POST` requests to create resources.
+* `app.put(path, ...handlers)` — Handles `PUT` requests to replace or update resources.
+* `app.delete(path, ...handlers)` — Handles `DELETE` requests to remove resources.
+* `app.patch(path, ...handlers)` — Handles `PATCH` requests to apply partial modifications.
+* `app.options(path, ...handlers)` — Handles `OPTIONS` requests to check communication options.
+* `app.head(path, ...handlers)` — Handles `HEAD` requests to read response headers without the body. [](https://www.youtube.com/watch?v=IkrP0FtLR38&t=35)
+
+typescript
+
+```
+app.get('/users', (c) => c.text('Get all users'))
+app.post('/users', (c) => c.text('Create a user'))
+
+```
+
+
+
+### 2\. Multi-Method Routing & Utilities
+
+Methods that allow a single handler or middleware to map across multiple HTTP methods at once. [](https://hono.dev/docs/api/hono)
+
+* `app.all(path, ...handlers)` — Catches all HTTP methods (`GET`, `POST`, etc.) for the specified path.
+* `app.on(method | method[], path | path[], ...handlers)` — Custom routing that accepts arrays of methods or paths.
+* `app.use(path, ...middleware)` — Registers middleware globally or for a specific path prefix. [](https://www.deployhq.com/guides/hono)
+
+typescript
+
+```
+// Matches any method on /wildcard
+app.all('/wildcard', (c) => c.text('Any method works'))
+
+// Custom multi-method matching
+app.on(['PUT', 'PATCH'], '/update', (c) => c.text('Updated!'))
+
+// Global middleware
+app.use('*', async (c, next) => {
+  console.log('Request received')
+  await next()
+})
+
+```
+
+
+
+### 3\. Application Structuring & Composition
+
+Methods used to modularize, clean up, and construct complex API paths across separate modules. [](https://hono.dev/docs/api/hono)
+
+* `app.route(path, subApp)` — Sub-routes a nested Hono app instance onto a path prefix (similar to Express Router).
+* `app.basePath(path)` — Returns a new Hono instance where all subsequent routes are automatically prefixed with the given path.
+* `app.mount(path, genericApp, options)` — Mounts non-Hono applications (like a standard Web API `fetch` handler) directly into your Hono tree. [](https://hono.dev/docs/api/hono)
+
+typescript
+
+```
+const api = new Hono()
+api.get('/status', (c) => c.json({ ok: true }))
+
+// Mounts api routes under /v1 -> /v1/status
+app.route('/v1', api)
+
+```
+
+
+
+### 4\. Lifecycle & Error Handlers
+
+Catch-all interceptors built directly into Hono to streamline global execution states and exceptions. [](https://hono.dev/docs/api/hono)
+
+* `app.notFound(handler)` — Overrides the default 404 response when no matching route is found.
+* `app.onError(err, handler)` — Global error catcher that intercepts thrown runtime exceptions. [](https://hono.dev/examples/web-api)
+
+typescript
+
+```
+app.notFound((c) => c.text('Custom 404 Not Found', 404))
+
+app.onError((err, c) => {
+  console.error(`${err.message}`)
+  return c.text('Custom Server Error', 500)
+})
+
+```
+
+
+
+### 5\. Runtime Orchestration & Testing
+
+Low-level dispatchers responsible for linking Hono to different servers or performing programmatical internal testing. [](https://hono.dev/docs/api/hono)
+
+* `app.fetch(request, env, executionContext)` — Entry point executing the application's underlying logic. Essential for Cloudflare Workers, Bun, or serverless adapters.
+* `app.request(path, options)` — Executes an internal request simulation against the app container. Ideal for unit testing routes without starting an active HTTP server.
+* `app.fire()` — Starts event listeners for legacy environment styles (such as the standard `FetchEvent` in older Service Worker runtimes). [](https://hono.dev/docs/api/hono)
+
+typescript
+
+```
+// Example using app.request for local testing
+const response = await app.request('/v1/status')
+const data = await response.json()
+
+```
+
+
+
+---
+
+For a deeper dive into routing parameters, context hooks, or performance properties, read the official [Hono App API Documentation](https://hono.dev/docs/api/hono). 
+
+Would you like to look closer at **Context methods** (like `c.json()` or `c.req.param()`), or are you trying to implement a specific pattern like **middleware** or **validation**? [](https://hono.dev/docs/)
+
+* [](https://hono.dev/docs/api/hono)  
+Hono  
+App - Hono  
+Oct 4, 2026 — An instance of Hono has the following methods. The first part of them is used for routing, please refer to the routing section.
+* [](https://www.deployhq.com/guides/hono)  
+DeployHQ  
+Learn Hono: Tutorial, Install & Best Practices for Fast APIs  
+The Cloudflare Workers entry would be export default app in a separate src/worker. The Bun entry would be Bun.
+* [](https://hono.dev/docs/)  
+Hono  
+Web framework built on Web Standards - Hono  
+In RPC mode, you can use your favorite validator such as Zod and easily share server-side API specs with the client and build type...
+
+Show all
+
+# hono get post examples
+
+Here are clear examples of handling **GET** and **POST** requests using the Hono framework. [](https://hono.dev/examples/web-api)
+
+### 1\. Simple Setup
+
+This boilerplate shows how to accept standard **GET** requests (with parameters or queries) and a **POST** request (parsing JSON). [](https://devsheets.io/sheets/hono)
+
+typescript
+
+```
+import { Hono } from 'hono'
+
+const app = new Hono()
+
+// 1. Simple GET request
+app.get('/', (c) => {
+  return c.text('Hello Hono!')
+})
+
+// 2. GET request with URL parameters
+// Matches /posts/123
+app.get('/posts/:id', (c) => {
+  const id = c.req.param('id')
+  return c.json({ message: `Fetching post ${id}`, id })
+})
+
+// 3. GET request with Query parameters
+// Matches /search?q=typescript
+app.get('/search', (c) => {
+  const query = c.req.query('q')
+  return c.json({ query: query || 'no search query provided' })
+})
+
+// 4. POST request parsing JSON data
+app.post('/posts', async (c) => {
+  const body = await c.req.json() // Parses the incoming JSON body
+  
+  // Set an HTTP status code (201 Created)
+  c.status(201) 
+  
+  return c.json({
+    success: true,
+    receivedData: body
+  })
+})
+
+export default app
+
+```
+
+
+
+---
+
+### 2\. Handling Form Data & File Uploads (POST)
+
+If you are submitting data from an HTML `<form>` or uploading files, use `c.req.parseBody()` or `c.req.formData()` instead of `.json()`. [](https://hono.dev/docs/api/request)
+
+typescript
+
+```
+app.post('/register', async (c) => {
+  // Parsed body works for multipart/form-data and application/x-www-form-urlencoded
+  const body = await c.req.parseBody()
+  
+  const username = body['username']
+  const avatar = body['avatar'] // This will be a File object if an image was uploaded
+
+  return c.json({ 
+    message: `User ${username} registered successfully!` 
+  })
+})
+
+```
+
+
+
+### Key Cheat Sheet
+
+You can extract anything you need using Hono's `Context` (`c`) object: [](https://hono.dev/docs/api/context)
+
+| Feature           | Code Example                  | Description                           |
+| ----------------- | ----------------------------- | ------------------------------------- |
+| **URL Parameter** | c.req.param('id')             | Extracts :id out of /users/:id        |
+| **Query String**  | c.req.query('page')           | Extracts ?page=2 from the URL         |
+| **JSON Request**  | await c.req.json()            | Parses an incoming JSON payload       |
+| **Form Request**  | await c.req.parseBody()       | Parses string fields and file uploads |
+| **Headers**       | c.req.header('Authorization') | Reads a request header value          |
+| **Custom Status** | c.status(201)                 | Manually updates the HTTP status code |
+
+Are you setting up your **Hono** application on a specific runtime environment like **Cloudflare Workers**, **Bun**, or **Node.js**? I can give you environment-specific deployment setups if needed!
+
+* [](https://hono.dev/examples/web-api)  
+Hono  
+Web API - Hono  
+import { prettyJSON } import { getPosts, getPost, createPost, Post } use('/posts/\*', cors()) api. const posts = getPosts({ limit, ...
+* [](https://hono.dev/docs/api/request)  
+Hono  
+HonoRequest - Hono  
+You can get the structured value by setting the dot option true … req . parseBody ({ dot : true }) Parses the request body of type...
+* [](https://hono.dev/docs/getting-started/basic)  
+Hono  
+Getting Started  
+The following is an example of handling a GET Request to /api/hello and returning an application/json Response. We can easily hand...
+
+Show all
+
+# npm libs for jsonl
+
+Several quality **npm libraries handle JSONL (JSON Lines)** and NDJSON (Newline Delimited JSON) datasets, depending on your architectural constraints:
+
+### 1\. For Streaming & High-Performance (Large Files)
+
+When dealing with substantial datasets, you must avoid loading the entire file into memory. These libraries process JSONL chunk-by-chunk or line-by-line:
+
+* **[stream-json](https://www.npmjs.com/package/stream-json)**: A highly powerful, lightweight micro-library optimized for processing streams with minimal memory footprints. It includes native parsers specifically built for JSONL and composable pipeline filters. [](https://www.npmjs.com/package/stream-json)
+* **@discoveryjs/json-ext**: An efficient set of utilities designed to extend standard JSON behaviors. It supports massive streaming datasets, webstreams, and asynchronous generator pipelines for NDJSON/JSONL. [](https://www.npmjs.com/search?q=keywords:jsonl)
+* **[node-jsonl](https://www.npmjs.com/package/node-jsonl)**: A simple, zero-dependency utility explicitly written for iterating over JSONL files line-by-line or concurrently in grouped chunks using async iteration (`readlinesChunk`). [](https://www.npmjs.com/package/node-jsonl)
+
+### 2\. For Database & CRUD Operations
+
+* **[jsonl-db](https://github.com/matschik/jsonl-db)**: If you want to use a local `.jsonl` file as a lightweight, flat-file database, this library exposes a clean API to add, search, count, update, and delete individual records without manually parsing streams. [](https://github.com/matschik/jsonl-db)
+
+### 3\. For Basic Parse & Stringify Utilities
+
+* **js-jsonl**: If your dataset is relatively small and can fit safely into memory, this package features standard, synchronous `jsonl.parse()` and `jsonl.stringify()` methods alongside built-in TypeScript support. [](https://www.npmjs.com/package/js-jsonl)
+
+---
+
+### 💡 Pro-Tip: The Zero-Dependency Alternative
+
+For basic scripts, you often **do not need a library** at all. Node.js handles this natively using the built-in `readline` module: [](https://www.reddit.com/r/node/comments/163e9u7/looking%5Ffor%5Fnpm%5Flibrary%5Fto%5Fwork%5Fwith%5Fjson%5Fdata/)
+
+javascript
+
+```
+import fs from 'fs';
+import readline from 'readline';
+
+const fileStream = fs.createReadStream('data.jsonl');
+const rl = readline.createInterface({ input: fileStream, crlfDelay: Infinity });
+
+for await (const line of rl) {
+  if (line.trim()) {
+    const object = JSON.parse(line);
+    console.log(object); // Process your JSON object here
+  }
+}
+
+```
+
+
+
+To narrow this down, tell me:
+
+* What is the approximate **size of your JSONL files**?
+* Are you looking to **read/stream** the data, **write/append** to a file, or build a local **mock database**?
+
+I can write out a quick implementation snippet tailored to your exact goal.
+
+* [](https://www.npmjs.com/package/js-jsonl)  
+NPM  
+js-jsonl - npm  
+TypeScript support with built-in type declarations. Provides \`jsonl.parse\` and \`jsonl.stringify\` methods for handling JSONL data.
+* [](https://www.npmjs.com/package/stream-json)  
+NPM  
+stream-json - npm  
+Micro-library for processing JSON files/streams with minimal memory via composable pipeline stages (parser, filters like pick/igno...
+* [](https://www.reddit.com/r/node/comments/163e9u7/looking%5Ffor%5Fnpm%5Flibrary%5Fto%5Fwork%5Fwith%5Fjson%5Fdata/)  
+Reddit·r/node  
+Looking for NPM library to work with JSON data. : r/node  
+No need for a library IMO, For building, you'll need four npm scripts: test, process-json, process-public, and build. The native f...
+
+Show all
+
+# how to convert jsonl to array
+
+To convert a **JSONL (JSON Lines)** dataset into a single standard **JSON array**, you need to read the data line by line, parse each line as an individual JSON object, and push them into an array structure. This is necessary because a raw JSONL file is not a valid JSON array on its own; it consists of multiple independent JSON objects separated by newlines.
+
+Here is how you can do it across the most common programming environments:
+
+---
+
+### 💻 JavaScript / Node.js
+
+In Node.js, you can read the file, split the text string by the newline character (`\n`), filter out any empty lines, and parse each line.
+
+javascript
+
+```
+const fs = require('fs');
+
+// Read the JSONL file
+const jsonlData = fs.readFileSync('data.jsonl', 'utf8');
+
+// Split by newline, filter out empty rows, and parse each line
+const jsonArray = jsonlData
+  .split('\n')
+  .filter(line => line.trim() !== '')
+  .map(line => JSON.parse(line));
+
+console.log(jsonArray); 
+// Output: [ {id: 1, ...}, {id: 2, ...} ]
+
+```
+
+
+
+---
+
+### 🐍 Python
+
+Python offers a built-in approach using the `json` module, as well as a highly efficient one-liner option if you use the `pandas` library.
+
+#### Option 1: Native Python (Memory Efficient)
+
+python
+
+```
+import json
+
+json_array = []
+with open('data.jsonl', 'r', encoding='utf-8') as f:
+    for line in f:
+        if line.strip(): # Skip empty lines
+            json_array.append(json.loads(line))
+
+print(json_array)
+
+```
+
+
+
+#### Option 2: Using Pandas
+
+python
+
+```
+import pandas as pd
+
+# Read JSONL and immediately output to a Python list of dictionaries
+json_array = pd.read_json('data.jsonl', lines=True).to_dict('records')
+
+```
+
+
+
+---
+
+### 🛠️ Command Line (Using `jq`)
+
+If you want to quickly convert a file directly in your terminal without writing a script, you can use **jq**, the command-line JSON processor.
+
+Run the following command in your terminal:
+
+bash
+
+```
+jq -s '.' input.jsonl > output.json
+
+```
+
+
+
+* **How it works:** The `-s` (or `--slurp`) flag tells `jq` to read all the independent JSON lines into a single, large array.
+
+---
+
+### 🐘 PHP
+
+In PHP, you can read the file into an array of strings using `file()`, then iterate through them to decode each row.
+
+php
+
+```
+<?php
+$lines = file('data.jsonl', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+$json_array = [];
+
+foreach ($lines as $line) {
+    $json_array[] = json_decode($line, true); // 'true' converts it to an associative array
+}
+
+print_r($json_array);
+?>
+
+```
+
+
+
+To give you the most optimized snippet, let me know:
+
+* Which **programming language** or environment are you currently working in?
+* Are you dealing with a **massive file** (multi-gigabyte) that might require stream-processing to avoid crashing your system memory?
+
+# how to convert jsonl to array in js
+
+To convert **JSONL (JSON Lines)** data into a JavaScript array, you must **split the string by newline characters, filter out any trailing empty lines, and parse each line individually** using `JSON.parse()`.
+
+Unlike a standard JSON file, a JSONL file is not valid JSON on its own because it consists of multiple individual JSON objects separated by newlines. [](https://www.youtube.com/watch?v=H%5FYW9fiP6%5FA&t=12)
+
+Here is how to do it in both vanilla JavaScript (for strings/browser) and Node.js (for reading files).
+
+### Method 1: Using Vanilla JavaScript (String Input)
+
+If you already have the JSONL data loaded as a text string, you can convert it to an array with a single line of code.
+
+javascript
+
+```
+const jsonlData = `{"id": 1, "name": "Alice"}
+{"id": 2, "name": "Bob"}
+{"id": 3, "name": "Charlie"}`;
+
+// Convert to an array of JavaScript objects
+const array = jsonlData
+  .trim()                   // Remove trailing or leading whitespace/newlines
+  .split('\n')              // Split the string into an array of lines
+  .map(line => JSON.parse(line)); // Parse each line into a JSON object
+
+console.log(array); 
+// Output: [ { id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }, { id: 3, name: 'Charlie' } ]
+
+```
+
+
+
+---
+
+### Method 2: Using Node.js (File System)
+
+If you are working in Node.js and need to read a `.jsonl` or `.ndjson` file from your disk, use the native `fs` module.
+
+#### For Smaller Files (Synchronous / Fast)
+
+javascript
+
+```
+const fs = require('fs');
+
+const fileContent = fs.readFileSync('data.jsonl', 'utf-8');
+const array = fileContent.trim().split('\n').map(JSON.parse);
+
+```
+
+
+
+#### For Large Files (Memory Efficient Streaming)
+
+If your JSONL file is huge (hundreds of megabytes), splitting the entire file in memory at once might crash your app. Instead, read it line-by-line using the built-in `readline` module:
+
+javascript
+
+```
+const fs = require('fs');
+const readline = require('readline');
+
+async function convertJsonlToArray(filePath) {
+  const fileStream = fs.createReadStream(filePath);
+  const rl = readline.createInterface({
+    input: fileStream,
+    crlfDelay: Infinity
+  });
+
+  const resultArray = [];
+
+  for await (const line of rl) {
+    if (line.trim()) { // Skip empty lines
+      resultArray.push(JSON.parse(line));
+    }
+  }
+
+  return resultArray;
+}
+
+// Usage:
+convertJsonlToArray('large_data.jsonl').then(array => {
+  console.log('Finished! Loaded elements:', array.length);
+});
+
+```
+
+
+
+Are you running this code in the **browser** or in **Node.js**? If you are handling exceptionally **large datasets**, let me know so I can show you how to process the lines without accumulating them all into memory.
+
+* [](https://www.youtube.com/watch?v=H%5FYW9fiP6%5FA&t=12)  
+YouTube·Laurence Svekis  
+Explore JSON and how you can get JSON data as a JavaScript ...  
+Feb 3, 2022 — If the string contains extra characters or an invalid JSON structure, \`JSON.parse()\` will throw an error and fail to extract the c...  
+8m
+
+# how to apply prettierrc to ts
+
+To apply a `.prettierrc` configuration file to a TypeScript (`.ts` or `.tsx`) project, you need to **install Prettier, create your configuration file, and set up your editor or terminal script to run it**. [](https://www.geeksforgeeks.org/typescript/how-to-set-up-prettier-in-your-javascript-typescript-project/)
+
+Here is the complete step-by-step setup guide:
+
+### 1\. Install Prettier
+
+Open your terminal in your project root and install Prettier as a development dependency: [](https://www.youtube.com/watch?v=DqfQ4DPnRqI&t=27)
+
+bash
+
+```
+npm install --save-dev --save-exact prettier
+
+```
+
+
+
+_(Note: If you use Yarn, Bun, or pnpm, replace the command with `yarn add`, `bun add`, or `pnpm add` respectively)._ [](https://dev.to/jordan-sf/set-up-eslint-prettier-and-ts-quickly-3e90)
+
+### 2\. Create your `.prettierrc` configuration file
+
+Create a file named `.prettierrc` (or `.prettierrc.json`) in the root directory of your project. Add your desired formatting rules inside it: [](https://www.youtube.com/watch?v=DqfQ4DPnRqI&t=27)
+
+json
+
+```
+{
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "printWidth": 80
+}
+
+```
+
+
+
+### 3\. Configure your code editor (e.g., VS Code)
+
+To make your editor automatically format your TypeScript files using your `.prettierrc` rules on save, follow these steps: [](https://www.youtube.com/watch?v=oevMG-m4Bg4&t=80)
+
+1. Install the official **Prettier - Code formatter** extension.
+2. Create a `.vscode` folder in your project root, and inside it, create a `settings.json` file.
+3. Add the following block to enforce Prettier as the default formatter for TypeScript and ensure it triggers when you save: [](https://stackoverflow.com/questions/61731587/vscode-prettier-doesnt-format-tsx-file)
+
+json
+
+```
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
+
+```
+
+
+
+### 4\. Add an execution script for your terminal
+
+To format all your TypeScript files at once via the command line or during CI/CD processes, add a custom script to your `package.json` file: [](https://khalilstemmler.com/blogs/tooling/prettier/)
+
+json
+
+```
+"scripts": {
+  "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\""
+}
+
+```
+
+
+
+_(Adjust `"src/**/*.ts"` to match your project's directory structure if your source files are located elsewhere)._ [](https://gist.github.com/santoshshinde2012/39c6d4a234a295f87cd90bdc618b6f82)
+
+You can now format your entire project by running: [](https://khalilstemmler.com/blogs/tooling/prettier/)
+
+bash
+
+```
+npm run format
+
+```
+
+
+
+### 5\. Exclude files using `.prettierignore`
+
+To prevent Prettier from trying to format compiled TypeScript files or build assets, create a `.prettierignore` file in your project root: [](https://dev.to/jordan-sf/set-up-eslint-prettier-and-ts-quickly-3e90)
+
+text
+
+```
+node_modules/
+dist/
+build/
+coverage/
+
+```
+
+
+
+Are you also using **ESLint** alongside TypeScript? If so, let me know, and I can show you how to configure `eslint-config-prettier` to **prevent conflict errors** between the linting and formatting rules.
+
+* [](https://khalilstemmler.com/blogs/tooling/prettier/)  
+Khalil Stemmler  
+How to use Prettier with ESLint and TypeScript in VSCode  
+When we add a script to format all the code in the folder and execute it, the only change we should notice is an added semicolon. ...
+* [](https://stackoverflow.com/questions/61731587/vscode-prettier-doesnt-format-tsx-file)  
+Stack Overflow  
+vscode prettier doesn't format .tsx file - Stack Overflow  
+tsx are JavaScript/TypeScript syntax extensions introduced by React. "editor.defaultFormatter": "esbenp.prettier-vscode", "editor.
+* [](https://www.youtube.com/watch?v=DqfQ4DPnRqI&t=27)  
+YouTube·Web Dev Simplified  
+How To Setup Prettier  
+Dec 27, 2022 — For VS Code, install the "Prettier - Code formatter" extension, then configure "Editor: Default Formatter" to "Prettier - Code for...  
+9m
+
+Show all
+
+# how to apply prettierc to ts as if it's enabled to js by default in vscode
+
+To apply your `.prettierrc` configuration to **TypeScript** files exactly like it works for **JavaScript** by default, you need to explicitly map the Prettier - Code formatter extension to TypeScript in your **VS Code settings**.
+
+VS Code handles formatting on a per-language basis, meaning it doesn't automatically carry over your JavaScript formatter preferences to TypeScript. [](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+
+### Step-by-Step Configuration
+
+1. Open the **Command Palette** by pressing `Ctrl + Shift + P` (Windows/Linux) or `Cmd + Shift + P` (macOS).
+2. Type and select **Preferences: Open User Settings (JSON)**.
+3. Paste the following language-specific overrides inside your root settings object: [](https://stackoverflow.com/questions/61731587/vscode-prettier-doesnt-format-tsx-file)
+
+json
+
+```
+{
+  "editor.formatOnSave": true,
+  
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
+
+```
+
+
+
+### Why this works:
+
+* **`esbenp.prettier-vscode`**: This tells VS Code to use Prettier as the underlying engine for these languages.
+* **Project-level priority**: Once Prettier is targeted as the default formatter for TypeScript, the extension automatically looks for a `.prettierrc` file in your workspace root and overrides any global editor styles with it.
+* **`[typescriptreact]`**: Adding this block ensures that your `.tsx` (React TypeScript) files are formatted identically. [](https://www.youtube.com/watch?v=DqfQ4DPnRqI&t=27)
+
+If your files still aren't formatting on save after adding this, let me know:
+
+* Are you seeing any **error status messages** in the bottom right corner of VS Code?
+* Do you have **ESLint** or another linter installed that might be fighting Prettier for control?
+
+* [](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)  
+Visual Studio Marketplace  
+Prettier - Code formatter  
+This setting can be set for all languages or by a specific language. VS Code does not support combined language syntax for editor.
+* [](https://stackoverflow.com/questions/61731587/vscode-prettier-doesnt-format-tsx-file)  
+Stack Overflow  
+vscode prettier doesn't format .tsx file - Stack Overflow  
+tsx are JavaScript/TypeScript syntax extensions introduced by React. "\[typescriptreact\]":
+* [](https://www.youtube.com/watch?v=DqfQ4DPnRqI&t=27)  
+YouTube·Web Dev Simplified  
+How To Setup Prettier  
+Dec 27, 2022 — Install Prettier by running \`npm init. Use \`npx prettier --write \` to format specific files. For VS Code, install the "Prettier - ...  
+9m
+
+Show all
+
+
