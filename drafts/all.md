@@ -549,6 +549,7 @@ cp: <!-- algorithms -->
 - oj infra
 - modulo number choice
 - naming letters meaning t period
+- cpp vector classic array memory location zca
 
 pm:
 
