@@ -2,7 +2,7 @@ import { Hono } from 'hono';
 import { serve } from '@hono/node-server';
 import { cors } from 'hono/cors';
 import { serveStatic } from '@hono/node-server/serve-static';
-import { read, cwd, expand_path, does_exist, is_dir, parent } from 'lib/file'
+import { read, cwd, expand_path, does_exist, is_dir, parent, append } from 'lib/file'
 import { format_log } from 'lib/log'
 import { init_desktop, data, write } from 'lib/file'
 const { stringify: serialize } = JSON
@@ -26,6 +26,8 @@ app.post('/api/save_quote', async (c) => {
   const quotation = await c.req.json()
 
   log(quotation)
+
+  append(data('quotes.jsonl'), `${serialize(quotation)}\n`)
 
   return c.json({})
 })

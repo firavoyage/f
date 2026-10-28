@@ -277,6 +277,8 @@ export function touch(path: path_fs) {
 }
 
 export function append(path: path_fs, content: string) {
+  touch(path)
+
   const result = handle(() => appendFileSync(path, content))
 
   if (is_error(result)) {

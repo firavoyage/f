@@ -8,3 +8,4 @@ change
 # 2026.10.28
 
 - random: add `random`, `randint`.
+- file/append: touch if non existing
