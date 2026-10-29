@@ -470,6 +470,7 @@ desktop:
 - audio recorder legacy usb2.0 cable compatibility
 - disable auto update kernal panic
 - git filter repo
+- ubuntu debian disable gnome extensions
 
 android:
 
