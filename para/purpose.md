@@ -110,4 +110,14 @@ h(component, ...)
 
 and you dont have to captalize component names. button and "button" are clearly different (and likely you would not use the latter).
 
+29
+
+if the style lib is just a representation of css,
+whether runtime or compile time (perf is premature optimization)
+i can simply go native css for now.
+
+if i just want it to be simple.
+
+as soon as i create design tokens and utils like size, text, microscopic tweaks, i can migrate.
+
 
