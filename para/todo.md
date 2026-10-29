@@ -6,7 +6,13 @@
 
 ## m
 
-
+- list all pages
+  - list all folders
+  - list the hierarchy of any folder
+- search on a specific folder
+  - search by complete keyword matching on filename
+- resolve a path to a file
+- render gfm efficiently
 
 ## s
 
