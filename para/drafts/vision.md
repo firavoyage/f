@@ -1,4 +1,4 @@
-vision, scope, archi
+vision, scope
 
 # problem
 
