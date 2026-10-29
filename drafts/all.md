@@ -551,6 +551,8 @@ cp: <!-- algorithms -->
 - naming letters meaning t period
 - cpp vector classic array memory location zca
 - cpp tle operations baseline sqrt time complexity
+- harmonic number sigma i 1 n div 1 i approxeq ln n
+- division block optimization square root decomposition sigma div n i
 
 pm:
 
