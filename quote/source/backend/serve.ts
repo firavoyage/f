@@ -3,6 +3,9 @@ import { serve } from '@hono/node-server'
 import { cors } from 'hono/cors'
 import { serveStatic } from '@hono/node-server/serve-static'
 import {
+  init_desktop,
+  data,
+  write,
   read,
   cwd,
   expand_path,
@@ -12,7 +15,6 @@ import {
   append,
 } from 'lib/file'
 import { format_log } from 'lib/log'
-import { init_desktop, data, write, read } from 'lib/file'
 const { stringify: serialize } = JSON
 
 init_desktop('quote', false)
@@ -54,7 +56,7 @@ app.post('/api/read', async (c) => {
   return c.json(quotes)
 })
 
-app.use('*', serveStatic({ root: '../web/build' }));
+app.use('*', serveStatic({ root: '../web/build' }))
 
 app.get('*', (c) => {
   const html = handle(() => read('../web/build/index.html'))

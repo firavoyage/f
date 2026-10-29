@@ -5,39 +5,42 @@
   ],
   "scripts": {
     "spellcheck": "typos",
-    "dev": "trash .build && parcel serve 'source/index.html' --open --dist-dir .build --cache-dir .build/.parcel-cache"
+    "dev": "vite 'source/web'",
+    "build": "vite build 'source/web'"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
+    "@parcel/transformer-sass": "2.16.4",
+    "@parcel/transformer-stylus": "2.16.4",
     "@types/node": "25.6.0",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
     "@typescript-eslint/eslint-plugin": "8.60.0",
     "@typescript-eslint/parser": "8.60.0",
     "@typescript-eslint/rule-tester": "8.62.0",
     "@typescript-eslint/utils": "8.62.0",
     "@typescript/native-preview": "7.0.0-dev.20260515.1",
-    "eslint": "10.3.0",
-    "process": "0.11.10",
-    "tsx": "4.21.0",
-    "typescript": "6.0.3",
-    "typescript-eslint": "8.59.3",
-    "@parcel/transformer-sass": "2.16.4",
-    "@parcel/transformer-stylus": "2.16.4",
-    "@types/react": "19.2.17",
-    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.1.2",
     "buffer": "6.0.3",
     "chokidar": "5.0.0",
     "crypto-browserify": "3.12.1",
+    "eslint": "10.3.0",
     "events": "3.3.0",
     "os-browserify": "0.3.0",
     "path-browserify": "1.0.1",
+    "process": "0.11.10",
     "stream-browserify": "3.0.0",
+    "tsx": "4.21.0",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.59.3",
     "url": "0.11.4",
-    "util": "0.12.5"
+    "util": "0.12.5",
+    "vite": "8.3.5"
   },
   "dependencies": {
-    "lib": "github:firahq/lib",
     "@hono/node-server": "2.0.8",
     "hono": "4.12.27",
+    "lib": "github:firahq/lib",
     "yaml": "2.9.1"
   }
 }

@@ -1,84 +1,61 @@
-import { Hono } from 'hono';
-import { serve } from '@hono/node-server';
-import { cors } from 'hono/cors';
-import { serveStatic } from '@hono/node-server/serve-static';
-import fs from 'node:fs'
+import { Hono } from 'hono'
+import { serve } from '@hono/node-server'
+import { cors } from 'hono/cors'
+import { serveStatic } from '@hono/node-server/serve-static'
+import {
+  read,
+  cwd,
+  expand_path,
+  does_exist,
+  is_dir,
+  parent,
+  touch,
+} from 'lib/file'
+import { format_log } from 'lib/log'
 
 const { stringify: serialize } = JSON
 
-const port = 0;
-// const port = 3000;
+const port = 9010
+// const port = 0;
 
-const app = new Hono();
+const app = new Hono()
 
-app.use('*', cors());
+app.use('*', cors())
 
-// Log Requests
-app.use('*', async (c: any, next: any) => {
-  const start = Date.now();
-  await next();
-  const ms = Date.now() - start;
-  console.log(`[${c.req.method}] ${c.req.path} - ${c.res.status} (${ms}ms)`);
-});
+// log requests
+app.use('*', async (c, next) => {
+  await next()
+  log(format_log(`${c.req.method} ${c.req.path}`, 'info'))
+})
 
-// // Show Hello World for Empty Path
-// app.get('/', (c) => {
-//   return c.text('hello world');
-// });
+app.post('/api/read', async (c) => {
+  const location = await c.req.json()
 
-const endpoints = {
-  mock(payload: any) {
-    return { response: payload }
-  }
-}
+  const { folder, path } = location
 
-for (const [endpoint, endpoint_fn] of Object.entries(endpoints)) {
-  app.post(`/api/${endpoint}`, async (c) => {
-    const args = await c.req.json();
+  return c.json({})
+})
 
-    const result = Array.isArray(args) ?
-      await handle(() => endpoint_fn(...args)) :
-      await handle(() => endpoint_fn(args))
+app.use('*', serveStatic({ root: '../web/build' }))
 
-    const json = JSON.stringify(result,
-      (key, value) => typeof value == 'symbol' ? value.description : value
-    );
-
-    return c.body(json, 200, {
-      'Content-Type': 'application/json'
-    });
-  });
-}
-
-// Serve Static Resources (e.g. css, js, img)
-app.use('*', serveStatic({ root: '../web/build' }));
-
-// Fallback to Not Found
 app.get('*', (c) => {
-  if (c.req.path.startsWith('/api')) {
-    return c.json({ success: false, message: 'api endpoint not found' }, 404);
-  } else {
-    try {
-      const html = fs.readFileSync('../web/build/index.html', 'utf-8');
-      return c.html(html);
-    } catch {
-      return c.text('web/build/index.html missing. Run web build first.', 500);
-    }
-  }
-});
-// app.notFound((c) => {
-//   return c.json({ success: false, message: 'not found' }, 404);
-// });
+  const html = handle(() => read('../web/build/index.html'))
 
-serve({
-  fetch: app.fetch,
-  port
-}, (info) => {
-  log(`Server is running on http://localhost:${info.port}`);
+  if (is_error(html)) {
+    log('web/build/index.html should exist, run web build first')
 
-  const port_data = {
-    port: info.port
+    return c.text('')
   }
 
-  fs.writeFileSync('./port.json', serialize(port_data))
-});
+  return c.html(html)
+})
+
+serve(
+  {
+    fetch: app.fetch,
+    port,
+  },
+  (info) => {
+    log(`Serve on http://localhost:${info.port}`)
+  },
+)
