@@ -3,6 +3,9 @@ import { serve } from '@hono/node-server'
 import { cors } from 'hono/cors'
 import { serveStatic } from '@hono/node-server/serve-static'
 import {
+  init_desktop,
+  data,
+  config,
   read,
   cwd,
   expand_path,
@@ -10,10 +13,19 @@ import {
   is_dir,
   parent,
   touch,
+  join,
 } from 'lib/file'
 import { format_log } from 'lib/log'
-
+import { parse, stringify } from 'yaml'
 const { stringify: serialize } = JSON
+import { renderToHtml } from 'md4x'
+import { run } from 'lib/subprocess'
+
+init_desktop('para', false)
+
+const config_file = config('config.yaml')
+
+touch(config_file)
 
 const port = 9010
 // const port = 0;
@@ -33,7 +45,35 @@ app.post('/api/read', async (c) => {
 
   const { folder, path } = location
 
-  return c.json({})
+  const config = parse(read(config_file))
+
+  const dir = config.folders[folder]
+
+  const content = handle(() => read(join(dir, path)))
+
+  if (is_error(content)) {
+    return c.json({ html: 'not found' })
+  }
+
+  return c.json({ html: renderToHtml(content) })
+})
+
+app.post('/api/search', async (c) => {
+  const { query } = await c.req.json()
+
+  const config = parse(read(config_file))
+
+  // todo
+  const dir = config.folders[0]
+
+  const items_text = handle(() => run(`fzf -f '${query.replaceAll("'", '')}'`, { cwd: dir }))
+
+  if (is_error(items_text)) {
+    log('failed to search', items_text)
+    return c.json({ has_failed: true })
+  }
+
+  return c.json({ items: items_text.split('\n') })
 })
 
 app.use('*', serveStatic({ root: '../web/build' }))
