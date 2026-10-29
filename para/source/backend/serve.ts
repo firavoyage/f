@@ -66,6 +66,7 @@ app.post('/api/search', async (c) => {
   // todo
   const dir = config.folders[0]
 
+  log(`fzf -f '${query.replaceAll("'", '')}'`, dir)
   const items_text = handle(() => run(`fzf -f '${query.replaceAll("'", '')}'`, { cwd: dir }))
 
   if (is_error(items_text)) {

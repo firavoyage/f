@@ -17,7 +17,7 @@ export function init_request(base_url) {
 //   return result
 // }
 
-export async function post(endpoint, payload = '') {
+export async function post(endpoint, payload = {}) {
   const url = `${base}/api/${endpoint}`
 
   const response = await fetch(url, {

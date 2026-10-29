@@ -19,14 +19,14 @@ type run = Partial<{
  * better to run the whole script inside userspace
  */
 export function run(command: string, options: run = {}) {
-  const { userspace = false } = options
+  const { userspace = false, cwd } = options
   if (userspace) {
     const primary_user = run("awk -F: '$3 >= 1000 && $3 < 60000 {print $1; exit}' /etc/passwd")
     const user = is(userspace, 'string') ? userspace : primary_user
 
     const default_shell = run(`getent passwd "${user}" | cut -d: -f7`)
 
-    return run(`sudo -u '${user}' -i '${default_shell}' -ic '${command}'`, { ...options, userspace: false })
+    return run(`sudo -u '${user}' -i '${default_shell}' -ic '${options.cwd ? `cd ${options.cwd};`: ''}${command}'`, { ...options, userspace: false })
   }
 
   return trim_trailing_newline(str(execSync(command, { encoding: 'utf-8', ...options })))
