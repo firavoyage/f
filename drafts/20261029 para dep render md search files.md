@@ -5056,6 +5056,509 @@ Jul 17, 2021 — FZF for JavaScript does fuzzy matching and helps you find a str
 
 Show all
 
+# how does fzf rank
+
+The command-line tool fzf ranks its search results using a scoring system calculated for every matching candidate line. The highest-scoring results bubble up to the top. [](https://jeffbailey.us/blog/2026/04/25/what-is-fzf/)
+
+The primary sorting order relies on **Score → Length → Index** (though this can be customized). Here is a breakdown of how `fzf` calculates that score and resolves ties.
+
+---
+
+### 1\. The Core Algorithm (FuzzyMatchV2)
+
+Under the hood, `fzf` uses a customized version of the **Smith-Waterman algorithm**, borrowed from bioinformatics (which is traditionally used for local sequence alignment of DNA or proteins). [](https://jeffbailey.us/blog/2026/04/25/what-is-fzf/)
+
+* **The Requirement:** Every character in your search query must appear somewhere within the result string in the correct sequential order.
+* **The Dynamic Programming Matrix:** `fzf` maps out a matrix to calculate the globally optimal matching path across the candidate string. Characters that sit close together or group logically are awarded exponentially higher points. [](https://github.com/junegunn/fzf/issues/638)
+
+### 2\. Bonus Factors (What Raises the Score)
+
+A simple match will keep a base score, but `fzf` injects **bonus points** based on the positional context of the matched characters. It heavily prioritizes how humans naturally search for files and text: [](https://timothya.com/learning/fzf)
+
+* **Word Boundaries:** Matching a character right after a delimiter (like a space, dash, underscore, slash, or dot) gives a major bonus. For example, typing `cb` will highly rank `component-button` because both letters hit the start of words. [](https://man.archlinux.org/man/fzf.1.en)
+* **CamelCase Matches:** Matching uppercase letters inside a camelCase string (e.g., matching `f` and `b` in `FooBar`) triggers a boundary bonus.
+* **Consecutive Characters:** If you type consecutive letters of the query and they appear consecutively in the result (e.g., typing `act` and matching `a-c-t` vs `actual`), the clustered characters get a high reward. [](https://jeffbailey.us/blog/2026/04/25/what-is-fzf/)
+* **Start of String:** Characters matched closer to the very beginning of the line receive a progressive bonus over matches deep inside the string. [](https://jeffbailey.us/blog/2026/04/25/what-is-fzf/)
+
+### 3\. Penalty Factors (What Lowers the Score)
+
+* **Gaps:** The more "filler" characters that exist between your query letters, the lower the score drops. For example, if you query `ace`, the string `a_c_e` scores significantly better than `a_______c_______e`. [](https://github.com/junegunn/fzf/issues/638)
+
+### 4\. Tiebreakers (When Scores Are Equal)
+
+If two or more lines result in the exact same matching score, `fzf` relies on fallback rules (`--tiebreak`) to choose the order: [](https://man.archlinux.org/man/fzf.1.en)
+
+* **Length (Default):** Shorter lines are ranked higher than longer lines, assuming the shorter line is a tighter match.
+* **Index:** If the lengths are also identical, it falls back to the original chronological order of the input. (If you use `fzf` for your command history, it implicitly reverses this using `--tiebreak=index` so your most recent commands appear first). [](https://fzf.netlify.app/)
+
+### 5\. Multi-Term Queries (AND Logic)
+
+If you type multiple words separated by spaces (e.g., `fzf` `src` `main`), `fzf` treats them as an **AND** operation. [](https://nathancraddock.com/blog/a-different-approach-to-fuzzy-finding/)
+
+1. It looks for lines that contain _all_ of those terms.
+2. It scores each term independently against the candidate line.
+3. It **sums the individual scores** together to determine the final rank of that line. [](https://nathancraddock.com/blog/a-different-approach-to-fuzzy-finding/)
+
+Would you like to know how to customize `fzf`'s ranking behavior—such as changing the **tiebreaker rules**, setting up **exact matches**, or switching to a **chronological-first (`--no-sort`)** view?
+
+* [](https://github.com/junegunn/fzf/issues/638)  
+GitHub  
+Revising ranking algorithm · Issue #638 · junegunn/fzf - GitHub  
+on ace . But it may prefer a\_\_\_\_\_\_\_/c\_\_\_\_\_\_\_/e\_\_\_\_\_\_\_/ . So that's the hard part, finding "the right" threshold that tends to give...
+* [](https://nathancraddock.com/blog/a-different-approach-to-fuzzy-finding/)  
+Nathan Craddock  
+A different approach to fuzzy finding - Nathan Craddock  
+The query is made of space-separated tokens. Each query token is ranked separately, and any candidate that does not match all quer...
+* [](https://jeffbailey.us/blog/2026/04/25/what-is-fzf/)  
+jeffbailey.us  
+What Is fzf? - Jeff Bailey  
+Apr 25, 2026 — fzf scores matches based on how tightly the characters cluster, whether they appear at word boundaries, and how close to the start...
+
+Show all
+
+# what can fzf match or not
+
+**`fzf` uses space-delimited terms to match text** and supports fuzzy, exact, boundary, and inverse (negation) matching. [](https://junegunn.github.io/fzf/search-syntax/)
+
+By default, typing multiple words separated by spaces acts as an implicit **AND** operator. However, `fzf` **does not natively support regular expressions (regex)** or glob patterns (like `*.sh`). [](https://www.freecodecamp.org/news/fzf-a-command-line-fuzzy-finder-missing-demo-a7de312403ff/)
+
+You can review how `fzf` handles matches using its specific search syntax on the [fzf Search Syntax Page](https://junegunn.github.io/fzf/search-syntax/): 
+
+### What `fzf` Can Match (Search Syntax)
+
+| Term Prefix/Suffix | Match Type             | Description & Example                                                                             |
+| ------------------ | ---------------------- | ------------------------------------------------------------------------------------------------- |
+| sbtrkt             | **Fuzzy match**        | Matches characters scattered across the string in order. confprod matches config/production.yaml. |
+| 'wild              | **Exact match**        | Matches the exact substring. 'core matches "core" but not "c-o-r-e".                              |
+| ^music             | **Prefix exact match** | Matches lines that _start_ with the exact term.                                                   |
+| .mp3$              | **Suffix exact match** | Matches lines that _end_ with the exact term.                                                     |
+| go$ \| rb$         | **OR match**           | The pipe (\|) acts as an OR operator. Matches lines ending in either go or rb.                    |
+
+### What `fzf` Can Exclude (Inverse Matching)
+
+To make `fzf` _not_ match something, you prefix the term with an exclamation mark (`!`): [](https://www.youtube.com/watch?v=YwTalCgH2yc&vl=en-US&t=200)
+
+* **`!fire`** (Inverse exact match): Excludes any lines containing the exact word "fire".
+* **`!^music`** (Inverse prefix match): Excludes lines that start with "music".
+* **`!.mp3$`** (Inverse suffix match): Excludes lines that end with ".mp3". [](https://junegunn.github.io/fzf/search-syntax/)
+
+### Customizing Default Matching
+
+If you prefer strict matching over fuzzy matching by default, you can launch it using `fzf --exact` (or `fzf -e`). When exact mode is enabled, typing a term performs an exact match, and prefixing a term with a single quote (`'`) dynamically switches it _back_ to a fuzzy match. [](https://github.com/junegunn/fzf)
+
+* [](https://github.com/junegunn/fzf)  
+GitHub  
+junegunn/fzf - A command-line fuzzy finder · GitHub  
+If you don't prefer fuzzy matching and do start fzf with -e or --exact option. A single bar character term acts as an OR operator.
+* [](https://www.reddit.com/r/vim/comments/dlek92/how%5Fdo%5Fyou%5Fperform%5Fexact%5Fmatch%5Fwith%5Ffzfs%5Fag/)  
+Reddit·r/vim  
+How do you perform exact match with fzf's ag implementation.  
+Oct 22, 2019 — Exact-match (quoted) A term that is prefixed by a single-quote character (') is interpreted as an "exact-match" (or "non-fuzzy") t...
+* [](https://junegunn.github.io/fzf/search-syntax/)  
+GitHub  
+fzf: Search syntax | junegunn.choi.  
+Match Types: Fuzzy-match. Exact Matching: Enable default exact matching via -e or --exact; single quote prefix unquotes when set. ...
+
+Show all
+
+# examples of what filenames can fzf match or not
+
+**`fzf` matches text by scanning for characters in the order they are typed, even if those characters are separated by other letters.** By default, it performs an approximate, case-insensitive string match, though it also supports explicit operators for exact, prefix, suffix, and inverse matches. [](https://thevaluable.dev/practical-guide-fzf-example/)
+
+The table below breaks down exactly what `fzf` can and cannot match based on your search queries and syntax.
+
+### Matching Examples and Rules
+
+| Search Query              | Filename Example      | Match Status  | Why / How it Works                                                                                                             |
+| ------------------------- | --------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| **srcgo** (Fuzzy)         | src/main.go           | **Matches** ✅ | fzf finds s, r, and c, skips the slash, and finds g and o in order.                                                            |
+| **app html** (Space)      | app/index.html        | **Matches** ✅ | Spaces act as an **AND** operator. It looks for "app" and "html" anywhere in the path, in any order.                           |
+| **\*.sh** (Glob syntax)   | script.sh             | **Fails** ❌   | fzf **does not support shell globs** or regular expressions by default. It literally looks for an asterisk \* followed by .sh. |
+| **'config** (Exact match) | config\_old.json      | **Matches** ✅ | The single quote prefix ' forces an **exact substring match**.                                                                 |
+| **'config** (Exact match) | c\_o\_n\_f\_i\_g.json | **Fails** ❌   | Because of the exact prefix ', fuzzy character skipping is completely disabled.                                                |
+| **^src** (Prefix match)   | src/styles.css        | **Matches** ✅ | The caret ^ restricts the match to lines that **start** with "src".                                                            |
+| **^src** (Prefix match)   | lib/src/core.py       | **Fails** ❌   | "src" is present, but it does not appear at the absolute beginning of the line.                                                |
+| **.log$** (Suffix match)  | server.log            | **Matches** ✅ | The dollar sign $ restricts the match to lines that **end** with ".log".                                                       |
+| **.log$** (Suffix match)  | server.log.bak        | **Fails** ❌   | The string ends in .bak, not .log.                                                                                             |
+| **!py** (Inverse match)   | script.sh             | **Matches** ✅ | The exclamation mark ! is an **inverse (NOT)** operator. It matches anything that _excludes_ "py".                             |
+| **!py** (Inverse match)   | main.py               | **Fails** ❌   | The filename contains "py", so it is actively filtered out.                                                                    |
+
+If you are looking to build a specific search workflow, tell me:
+
+* Are you trying to integrate `fzf` with a specific command (like **vim**, **cd**, or **git**)?
+* Do you need to pass filenames with **spaces or special characters** safely to another tool?
+
+I can provide the exact terminal snippet or syntax flag you need.
+
+* [](https://thevaluable.dev/practical-guide-fzf-example/)  
+The Valuable Dev  
+A Practical Guide to fzf: Building a File Explorer  
+This query is not a regex pattern, but only plain text trying to match fzf's input, using an approximate string matching algorithm...
+* [](https://www.youtube.com/watch?v=bowwZMR95p8)  
+YouTube·credibleDEV  
+FZF - Terminal Fuzzy Finder  
+Dec 2, 2025 — The video explains how to perform specific searches, including exact matches using an apostrophe, finding files starting or ending...  
+15:17
+* [](https://www.youtube.com/watch?v=WtyYkJfgvLI&t=80)  
+YouTube·Bread on Penguins  
+fzf, everyone's favorite fuzzy finder  
+Oct 29, 2024 — FZF prioritizes results that closely match, such as \`t-mox.go\`, even if characters are separated. Press Enter on a selected item t...  
+1m
+
+Show all
+
+# compare vscode ctrl p and fzf
+
+While **VS Code’s `Ctrl+P`** (Quick Open) and **`fzf`** (Fuzzy Finder) both solve the problem of quick keyboard navigation through fuzzy matching, they are entirely different in scope, performance, and design philosophy. **`Ctrl+P` is a built-in feature** tailored exclusively for the VS Code ecosystem, whereas **`fzf` is a highly scalable, general-purpose command-line utility** that can be integrated anywhere. [](https://github.com/liuchengxu/space-vim/issues/124)
+
+### Direct Comparison
+
+| Feature                 | VS Code Ctrl+P (Quick Open)                                                                            | fzf (Fuzzy Finder)                                                                      |
+| ----------------------- | ------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------- |
+| **Primary Environment** | Inside Visual Studio Code desktop/web IDEs.                                                            | The terminal / shell (bash, zsh), but heavily integrated into Vim/Neovim.               |
+| **Core Architecture**   | JavaScript/TypeScript API bound to VS Code's internal file indexer.                                    | A standalone, ultra-fast binary written in **Go**.                                      |
+| **Performance**         | Excellent for small-to-medium codebases; can experience micro-stutters or delays in massive monorepos. | Near-instantaneous. It can effortlessly stream millions of lines with zero lag.         |
+| **Matching Algorithm**  | Scoring favors contiguous characters and camelCase matches.                                            | Advanced fuzzy engine with out-of-order matching, precise filtering, and regex support. |
+| **Composability**       | None. It is strictly a GUI dropdown component.                                                         | Extremely high. You can pipe any text into it (cat files.txt \| fzf).                   |
+| **Modifiers/Prefixes**  | Supports actions via prefixes (e.g., : for line number, @ for symbols).                                | Supports interactive preview windows, multi-select, and custom key-bindings.            |
+
+---
+
+### Core Structural Differences
+
+#### VS Code `Ctrl+P`
+
+* **Out-of-the-Box Convenience:** It requires zero configuration. It automatically respects your project's `.gitignore` and `search.exclude` settings.
+* **Context-Aware Tweaks:** Typing a file name gets you to the file, but you can append a colon (e.g., `app.js:42`) to jump directly to a line number. Typing `@` switches the input to look for specific variables or functions within that active file.
+* **Smart UI Integration:** It tracks your recently opened files and surfaces them at the top of the list before you even start typing. [](https://www.reddit.com/r/neovim/comments/1ff4as3/is%5Fthere%5Fanything%5Fthat%5Fme%5Fthe%5Fsame%5Ffunctionality/)
+
+#### `fzf`
+
+* **The Unix Philosophy:** `fzf` doesn't just search files. Because it is a text filter, it can be used to search command history, git commits, docker containers, or processes. [](https://jeffbailey.us/blog/2026/04/25/what-is-fzf/)
+* **Vim/Neovim Integration:** Many developers map `Ctrl+P` in Vim or Neovim to trigger `fzf` (using plugins like `fzf.vim` or `fzf-lua`) to replicate the VS Code experience but with lightning speed. [](https://www.barbarianmeetscoding.com/blog/5-minutes-vim-ctrl-p-considered-harmful/)
+* **Live Previews:** Unlike VS Code's dropdown, `fzf` can spin up an asynchronous terminal pane alongside your search box, showing a syntax-highlighted preview of the file before you press Enter.
+
+### Can you use them together?
+
+Yes. If you prefer the VS Code interface but want the uncompromising speed or layout of `fzf`, you can install community extensions like Find It Faster, which wraps terminal search tools directly inside the editor. [](https://www.reddit.com/r/neovim/comments/1ff4as3/is%5Fthere%5Fanything%5Fthat%5Fme%5Fthe%5Fsame%5Ffunctionality/)
+
+Are you trying to **optimize your workflow inside VS Code**, or are you looking to **replicate VS Code's file searching experience in a terminal environment** like Vim or Zsh?
+
+* [](https://www.reddit.com/r/neovim/comments/1ff4as3/is%5Fthere%5Fanything%5Fthat%5Fme%5Fthe%5Fsame%5Ffunctionality/)  
+Reddit·r/neovim  
+Is there anything that me the same functionality as ctrl+p in vs ...  
+Sep 12, 2024 — fzf plugin on Vscode. Fzf lua and Telescope have pickers files, just assign It to ctrl+p. There are also "smart Fzf" telescope ext...
+* [](https://www.youtube.com/watch?v=r9OcvEJmYbY)  
+YouTube·Code 2020  
+VS Code Shorts — Fuzzy matching in quick open  
+Apr 5, 2024 — using fuzzy matching in quick open can save even more time. Instead of typing the full file name, users can type parts of the file...  
+1:45
+* [](https://www.barbarianmeetscoding.com/blog/5-minutes-vim-ctrl-p-considered-harmful/)  
+Barbarian Meets Coding  
+5 Minutes Vim: CtrlP considered harmful  
+Jan 1, 2020 — In Vim there's a slew of plugins that provide a similar (and often more powerful) functionality: fzf.vim, ctrlP and denite are som...
+
+Show all
+
+# compare vscode ctrl p and fzf matching ranking algo
+
+Both **VS Code's `Ctrl + P` (Quick Open)** and **`fzf` (Fuzzy Finder)** utilize sophisticated ranking algorithms to score and order approximate text matches. However, they are optimized for fundamentally different environments: VS Code treats search through an **IDE-centric file-and-path layout lens**, while `fzf` treats search as a **highly parallel, text-agnostic pipeline** optimized for speed and terminal flexibility. [](https://github.com/junegunn/fzf/discussions/4012)
+
+The primary architectural and algorithm design differences between the two systems are outlined below.
+
+---
+
+### Core Comparison Overview
+
+| Feature                | VS Code (Ctrl + P) Scorer                                                                                                               | fzf (FuzzyMatchV2) Scorer                                                                                                      |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| **Language & Engine**  | Written in **TypeScript / JavaScript**. Runs on the V8 engine thread.                                                                   | Written in **Go**. Highly concurrent compiled execution.                                                                       |
+| **Parsing Strategy**   | Splits the query by whitespace into multi-token phrases; tracks **Target Label** (filename) vs. **Description** (file path) separately. | Multi-token (space-separated) filtering; defaults to a global match sequence but highly customizable with prefix/suffix rules. |
+| **Algorithm Type**     | Sequential character heuristic matrix.                                                                                                  | **Smith-Waterman** inspired Dynamic Programming (O(nm)).                                                                       |
+| **Primary Bonus Bias** | Heavily weights matching characters in the **innermost filename** over the absolute directory path.                                     | Heavily weights **consecutive matches** (contiguous chunks) and substring compactness.                                         |
+| **Performance Edge**   | Optimized for UI updates and client-side memory caching of workspace file paths.                                                        | Optimized via **parallel Goroutines** slicing chunk arrays and a strict query-extension cache.                                 |
+
+---
+
+### 1\. The Matching & Ranking Algorithm Deep Dive
+
+#### VS Code (`fuzzyScorer.ts`)
+
+VS Code evaluates matching candidates using a dual-target approach. It splits a target string into a **Label** (the file name, e.g., `index.js`) and a **Description** (the path, e.g., `/src/components`). [](https://github.com/goliney/vscode-fuzzy-scorer)
+
+* **The Filename Bias:** Characters matching inside the label (the filename) score significantly higher than matches in the path. If you type `comp`, VS Code prioritizes a file named `component.js` over a file named `main.js` inside a `/components/` folder. [](https://stackoverflow.com/questions/49138685/which-algorithm-is-used-to-implement-search-for-files-in-visual-studio-code-go)
+* **Special Position Bonuses:** Points are aggressively added if letters match the start of a word, boundary positions (`/`, `-`, `_`), or capital letters in `camelCase` variations. [](https://github.com/junegunn/fzf/discussions/4012)
+* **Exact vs. Fuzzy:** If a query is wrapped in quotes, it completely bypasses the fuzzy engine for an exact match check. [](https://github.com/microsoft/vscode/blob/main/src/vs/base/common/fuzzyScorer.ts)
+
+#### `fzf` (`FuzzyMatchV2`)
+
+`fzf` uses an algorithm heavily inspired by biological sequence alignment (similar to Smith-Waterman) which determines the global maximum score by looking at text iteratively. [](https://github.com/junegunn/fzf/issues/638)
+
+* **Contiguity Boost:** `fzf` values sequential characters above almost all else. Matching `app` perfectly inside `application` scores much higher than finding `a...p...p` sprinkled across a path. [](https://github.com/junegunn/fzf/discussions/4012)
+* **The "Shortest Match" Penalty:** It actively tracks the total distance between the first and last matched character of your query pattern. A shorter matched span yields a higher position rank because it represents a cleaner block of text. [](https://github.com/junegunn/fzf/issues/638)
+* **Boundary Weights:** Like VS Code, `fzf` rewards matches on word boundaries, non-alphanumeric characters, and uppercase letters. However, because `fzf` reads raw terminal stdout stream-lines blindly, it does _not_ natively know what a "filename" is unless customized, ranking everything as a flat line of text. [](https://nathancraddock.com/blog/a-different-approach-to-fuzzy-finding/)
+
+---
+
+### 2\. Under-the-Hood Architectural Performance
+
+* **`fzf` Performance Engine:** `fzf` scales linearly across multiple CPU cores. It splits arriving input lines into flat data arrays (chunks of \~256 entries) and throws them at a parallel pool of **Go worker threads (Goroutines)**. When refining text, it caches survivors. If you type `foo` followed by `b`, `fzf` instantly discards anything that didn't match `foo`, recalculating scores _only_ for the sub-cache.
+* **VS Code Performance Engine:** VS Code relies on structural workspace indexing. The file trees are mapped out and monitored by internal file watchers. When you invoke `Ctrl + P`, the fuzzy scoring relies heavily on caching strings in standard JavaScript heaps and performing rapid, single-threaded text evaluations during typing loops. [](https://timothya.com/learning/fzf)
+
+---
+
+### Summary Experience: Which behaves better?
+
+* **VS Code (`Ctrl + P`)** feels smarter when working deep within structured coding repositories because it understands project directory trees natively. It is tailored to match filenames over path names.
+* **`fzf`** is a more aggressive, raw fuzzy finder. It is significantly faster on enormous corpuses of generic text and yields superior sorting when you are looking for dense blocks of character combinations or short text sequences. [](https://www.youtube.com/watch?v=r9OcvEJmYbY)
+
+Are you looking to **tweak the sorting behavior** of one of these tools for a specific project, or are you trying to **implement your own fuzzy matching engine** in a script/extension?
+
+* [](https://stackoverflow.com/questions/49138685/which-algorithm-is-used-to-implement-search-for-files-in-visual-studio-code-go)  
+Stack Overflow  
+Which algorithm is used to implement search for files in Visual ...  
+Sorted by: \* 3 I think the name is "fuzzy search" lol. Here's a nice github repo where some kind person released an open source JS...
+* [](https://www.youtube.com/watch?v=r9OcvEJmYbY)  
+YouTube·Code 2020  
+VS Code Shorts — Fuzzy matching in quick open  
+Apr 5, 2024 — Quick open in VS Code, accessed with control P or command P, allows users to quickly open files by typing in their names. However,  
+1:45
+* [](https://github.com/junegunn/fzf/issues/638)  
+GitHub  
+Revising ranking algorithm · Issue #638 · junegunn/fzf - GitHub  
+That is fzf stops immediately when the first match is found. This gives nice O(n) time complexity but it's not guaranteed to find ...
+
+Show all
+
+# why doesnt fd and rg work the same under the hood
+
+While `fd` and `rg` (ripgrep) actually **share the exact same underlying `ignore` crate for parallel directory traversal**, they behave differently because they are engineered for fundamentally **different core purposes**.
+
+`fd` is a replacement for the `find` command (designed to look for _file names_), whereas `rg` is a replacement for `grep` (designed to look for _text inside files_). [](https://news.ycombinator.com/item?id=31448649)
+
+Here is how they differ under the hood and why their execution profiles diverge.
+
+---
+
+### 🔍 1\. Core Engine and Primary Bottlenecks
+
+Because their ultimate goals are different, their performance bottlenecks live in entirely different places.
+
+| Feature                   | fd (Find alternative)                                                              | rg (Grep alternative)                                                                                   |
+| ------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| **Primary Goal**          | Locate **file and directory names**.                                               | Search for **text content inside files**.                                                               |
+| **Under the Hood Engine** | Regex evaluation on **metadata strings** (file paths) only.                        | Heavy **regex matching on byte streams** (file contents).                                               |
+| **System Bottleneck**     | **I/O bound** (waiting on the file system to return directory listings).           | **CPU bound** (waiting on regex execution over millions of lines of text).                              |
+| **Optimizations**         | Optimizes for fast tokenization of path strings and immediate rendering to stdout. | Uses advanced literal optimizations (SIMD/AVX), memory mapping (mmap), and custom inner-loop searching. |
+
+---
+
+### 📂 2\. Directory Traversal vs. File Reading
+
+The creator of `ripgrep` noted on [Reddit](https://www.reddit.com/r/linux4noobs/comments/egb644/fzf%5Fnewcomer%5Ffd%5For%5Fripgrep/) that both tools utilize the same Rust-based multi-threaded directory walking library: [](https://www.reddit.com/r/linux4noobs/comments/egb644/fzf%5Fnewcomer%5Ffd%5For%5Fripgrep/)
+
+“Both ripgrep and fd are built on the same parallel directory traversal code, so performance should be largely quite similar.”
+
+[Reddit · r/linux4noobs](https://www.reddit.com/r/linux4noobs/comments/egb644/fzf%5Fnewcomer%5Ffd%5For%5Fripgrep/)
+
+However, **what they do after finding a file** changes everything:
+
+* **`fd` terminates early:** Once `fd` reads the directory stream, matches the filename against your query, and ensures it isn't hidden by a `.gitignore` file, it outputs the path and moves on. It almost never opens the file itself. [](https://news.ycombinator.com/item?id=31448649)
+* **`rg` starts digging:** `rg` must open the file descriptor, read the file contents into memory (or map it), handle text encoding (Unicode decoding), and stream the bytes through its regex machine. [](https://news.ycombinator.com/item?id=31448649)
+
+### ⚡ 3\. The Impact of the Linux FS Cache
+
+Because of these architectural differences, system caching affects them uniquely: [](https://github.com/sharkdp/fd/issues/2072)
+
+* **Cold Cache (Fresh Boot):** `fd` can sometimes be marginally faster because it only needs to crawl directory trees. `rg` is heavily penalized here because it has to fetch the actual contents of every single file from the physical disk. [](https://github.com/sharkdp/fd/issues/2072)
+* **Warm Cache (Files Loaded in RAM):** `rg` gains a massive advantage once the OS caches file content into RAM. Since it no longer waits on disk I/O, `rg`'s hyper-optimized regex engine can burn through thousands of cached files a second, often scaling incredibly well across multiple CPU cores. [](https://github.com/sharkdp/fd/issues/2072)
+
+### 🛠️ Which one should you use?
+
+If you are piping a tool into a fuzzy finder like `fzf`, **use `fd`**. It is purpose-built to dump a raw list of file paths as fast as possible without wasting overhead on parsing file internals. Use `rg` when you actually care about what is written inside those files. [](https://dev.to/wulymammoth/comment/11dbf)
+
+Are you trying to configure a specific tool like **fzf**, **Neovim**, or a custom shell script? I can help you write the optimal command or pipeline using these tools.
+
+* [](https://www.reddit.com/r/linux4noobs/comments/egb644/fzf%5Fnewcomer%5Ffd%5For%5Fripgrep/)  
+Reddit·r/linux4noobs  
+FZF newcomer: fd or ripgrep? : r/linux4noobs  
+fd is the better choice. It is purpose built for listing files, which is what you want for fzf. Its primary function is to search ...
+* [](https://news.ycombinator.com/item?id=31448649)  
+Hacker News  
+Fd and ripgrep/rg are the two "new" alternatives I use on a regular basis, and w... | Hacker News  
+ripgrep/rg (grep alternative, Ripgrep uses leftmost-first regex, ignores POSIX locales for broad Unicode, and omits complex case f...
+* [](https://dev.to/wulymammoth/comment/11dbf)  
+DEV Community  
+I believe thatfd and rg (ripgrep) are very different utilities, Sami ...  
+Jul 4, 2020 — fd is more of a find substitute and rg is a substitute for grep or ag (The Silver Searcher). use it with the FZF for finding files...
+
+Show all
+
+# why doesnt fd just copy how rg --files | rg works
+
+**`fd` doesn't just copy** **`rg --files | rg` because they are fundamentally different tools designed for different jobs.** While both tools are exceptionally fast, written in Rust, and respect `.gitignore` files by default, they handle text matching, filesystem traversal, and metadata filtering in entirely different ways. [](https://www.reddit.com/r/rust/comments/j8bbgt/alias%5Ffdrg%5Ffiles/)
+
+Here is exactly why piping `rg` to itself is not a replacement for a dedicated file-finding tool like `fd`:
+
+### 1\. The Regex Engine Bottleneck
+
+`rg` (ripgrep) is a tool built to search _inside_ files. When you run `rg --files`, it prints out a flat list of all file paths. If you pipe that into another `rg` command, you are forcing ripgrep to treat thousands of line paths as a giant text block to filter through. [](https://daily.dev/posts/33-linux-commands-every-dev-should-know-b2uii4dgu)
+
+`fd`, on the other hand, applies your search criteria **during** the directory traversal. If `fd` can match or discard a file name using its regex engine immediately upon hitting the file node, it skips unnecessary overhead.
+
+### 2\. Smart Formatting and Defaults
+
+* **The Slash `/` matching problem:** If you search for `rg src` using the piped method, it will match files with "src" in the name, but _also_ every single file inside a directory named `src/` because the directory path string contains those letters. `fd` smart-matches against the filename itself unless you explicitly include a slash in your pattern.
+* **Colorized, typed output:** `fd` color-codes output automatically by file type (directories, executables, regular files, symlinks) because it queries the file metadata during traversal. Piping raw strings into `rg` strips all of that rich structural context away, forcing you to look at uncolored, flat text.
+
+### 3\. Advanced Filtering (File Metadata)
+
+`rg` only knows how to look at text strings. Because `fd` is a structural replacement for the UNIX `find` command, it gives you deep control over filesystem metadata that `rg` cannot parse through a pipe: [](https://www.reddit.com/r/rust/comments/j8bbgt/alias%5Ffdrg%5Ffiles/)
+
+* **File types:** `fd -t d` (directories only), `fd -t x` (executables only), or `fd -t e md` (specific extensions).
+* **File age and size:** `fd --changed-within 2d` or `fd --size +10M`.
+* **Max depth:** `fd --max-depth 2`. [](https://www.reddit.com/r/commandline/comments/uibug7/fd%5Ffind%5Fbut%5Fbetter/)
+
+### Feature Comparison
+
+| Feature                  | fd                                               | rg --files \| rg <pattern>                  |
+| ------------------------ | ------------------------------------------------ | ------------------------------------------- |
+| **Primary Goal**         | Find files by name and metadata                  | Find text hidden inside files               |
+| **Matching Logic**       | Evaluated _during_ filesystem traversal          | Evaluated _after_ listing every single file |
+| **Aware of File Types?** | Yes (filters directories, symlinks, executables) | No (just filters raw path strings)          |
+| **Output Styling**       | Rich color-coding based on file attributes       | Standard regex string match highlighting    |
+| **Execution (\-x/\-X)**  | Can execute commands on results natively         | Requires piping into xargs                  |
+
+Ultimately, using `rg --files | rg` treats your directory structure like a flat text document. `fd` treats it like a live, queryable filesystem.
+
+Are you trying to optimize a specific **shell script workflow**, or are you looking to configure **shell aliases** to speed up your daily terminal navigation?
+
+* [](https://www.reddit.com/r/rust/comments/j8bbgt/alias%5Ffdrg%5Ffiles/)  
+Reddit·r/rust  
+alias fd="rg --files" : r/rust - Reddit  
+Both can traverse the filesystem, but grep just processes all the files' contents, while find looks at the metadata (path, size, p...
+* [](https://daily.dev/posts/33-linux-commands-every-dev-should-know-b2uii4dgu)  
+daily.dev·ForrestKnight  
+33 Linux Commands EVERY Dev Should Know  
+Dec 15, 2025 — \`rip grep\` (\`rg\`) searches for exact words within file contents across directories, such as finding "off" in codebases or specific...  
+[16:27](https://daily.dev/posts/33-linux-commands-every-dev-should-know-b2uii4dgu)
+* [](https://github.com/sharkdp/fd/issues/862)  
+GitHub  
+Combining fd and rg · Issue #862 · sharkdp/fd - GitHub  
+If you use fd s -x option, it will call rg once for each search result. to use fd s capital -X option which calls rg once, fd --ch...
+
+Show all
+
+# how to use fzf non interactively
+
+To use `fzf` non-interactively, you need to use the **`--filter` (or `-f`) flag**. [](https://github.com/junegunn/fzf/issues/1753)
+
+When you pass a search string to this flag, `fzf` bypasses its interactive fullscreen UI entirely. Instead, it acts as a stream filter—similar to `grep` or `ripgrep`—reading from standard input, calculating fuzzy match scores, and printing the matching lines directly to standard output. [](https://github.com/junegunn/fzf/issues/2513)
+
+### Basic Syntax
+
+bash
+
+```
+command | fzf --filter="search_term"
+
+```
+
+
+
+### Examples
+
+**1\. Filter a list of files**  
+If you want to find all files containing "config" in a file list without opening the UI:
+
+* [](https://github.com/junegunn/fzf/issues/1753)  
+GitHub  
+use fzf non interactively or use algorithm separately · Issue #1753 · junegunn/fzf  
+Solution: Use the \`--filter\` command-line option in fzf for non-interactive filtering. Ecosystem: A third-party Python binding nam...
+* [](https://github.com/junegunn/fzf/issues/2513)  
+GitHub  
+How do I use fzf programatically? · Issue #2513 - GitHub  
+Jun 2, 2021 — \-f, --filter=STR Filter mode. Do not start interactive finder. When used with --no-sort, fzf becomes a fuzzy-version of grep. only...  
+![](https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS_rgwwhPNraxiTvfOFRu_29O9zJvOIpUCFoB5erqLHw5PkM06tODgD5IB4LVXMpS-IyEDNkezbqiWmCtRGCBvkbdpV)
+* [](https://liu-111.medium.com/fzf-the-20-line-habit-that-changes-how-you-use-a-terminal-8fd9a8f6ffab)  
+Medium·Jesse L  
+fzf: The 20-Line Habit That Changes How You Use a Terminal  
+Sep 7, 2026 — fzf is interactive. --filter gives you non-interactive matching, but at that point grep or rg is usually clearer. grep is more dir...
+
+# how to use fzf non interactively
+
+To use `fzf` non-interactively, you must use the **`--filter` (or `-f`) flag**. [](https://github.com/junegunn/fzf/issues/1753)
+
+This flag tells `fzf` to act as a passive, command-line filter instead of opening its interactive terminal UI. It matches your query against the standard input and outputs the results directly to standard output. [](https://github.com/junegunn/fzf/issues/1753)
+
+### Basic Syntax
+
+bash
+
+```
+fzf --filter="your_search_term"
+# OR using the short flag
+fzf -f "your_search_term"
+
+```
+
+
+
+### Common Examples
+
+* **Filtering a list of files:**  
+bash  
+```  
+find . -type f | fzf -f "config"  
+```  
+
+* **Filtering a system process list:**  
+bash  
+```  
+ps aux | fzf -f "nginx"  
+```  
+
+
+### Why use `fzf --filter` over `grep`?
+
+While standard tools like `grep` require exact pattern matches, `fzf --filter` applies **fuzzy matching** non-interactively. [](https://liu-111.medium.com/fzf-the-20-line-habit-that-changes-how-you-use-a-terminal-8fd9a8f6ffab)
+
+For instance, if you run:
+
+bash
+
+```
+echo -e "apple\nbanana\napricot" | fzf -f "ap"
+
+```
+
+
+
+It will output both `apple` and `apricot` because it looks for the presence and relative order of the characters, not just strict consecutive strings.
+
+If you are building an automated script, let me know:
+
+* What **kind of data** are you processing?
+* Do you need to adjust the **fuzziness or matching criteria** (like exact match or case-sensitivity)?
+
+I can provide the specific syntax or flags to optimize your script.
+
+* [](https://github.com/junegunn/fzf/issues/1753)  
+GitHub  
+use fzf non interactively or use algorithm separately · Issue #1753 · junegunn/fzf  
+Solution: Use the \`--filter\` command-line option in fzf for non-interactive filtering. Ecosystem: A third-party Python binding nam...
+* [](https://liu-111.medium.com/fzf-the-20-line-habit-that-changes-how-you-use-a-terminal-8fd9a8f6ffab)  
+Medium·Jesse L  
+fzf: The 20-Line Habit That Changes How You Use a Terminal  
+Sep 7, 2026 — fzf is interactive. --filter gives you non-interactive matching, but at that point grep or rg is usually clearer. For exact struct...
+* [](https://www.youtube.com/watch?v=Zq3mFU2T9cw)  
+YouTube·DistroTube  
+This Tool Will Change The Way You Linux ('fzf')  
+Feb 25, 2025 — FuzzyFinder (FZF) is a command line utility. Selecting an item and hitting enter prints the output to standard output. This output...  
+18:44
+
+Show all
+
 
 
 
