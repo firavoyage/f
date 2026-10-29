@@ -38,6 +38,15 @@ github 3p ui.
 
 # backlog
 
+## use cases
+
+what if i continuously monitor codeforces scoreboard rather than some retrospective submission log analysis?
+
+---
+
+
+## misc
+
 research forgejo.
 
 its purpose is clear. but isnt it already accomplished by forgejo?

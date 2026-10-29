@@ -113,6 +113,36 @@ e.g. write a tg bot for fun
 
 ---
 
+---
+
+telegram rev proxy cli.
+
+(assume the desktop is working.)
+
+x11 is really easy to automate. mouse. keyboard. screenshot.
+
+all with one liner.
+
+reg tg with android app and 5sim.
+
+think: which method to use to get data. maybe web, though idk it has all the features i want. ocr is the last resort. official bot is often not enough.
+
+i wanna research ppl, right? maybe i could export data (use the official feature for channel and group chats, use my impl for profiles).
+
+upd:
+
+telegram is one way to dht the internet. there might be appox. 100 people in each small groups, and they overlap aggressively. i suspect there are less than 1k active chinese devs.
+
+disqus is another way. i already know diygod and mewx.
+
+github issues based approaches... well... let me see.
+
+https://www.mewx.org/blog/202603/website-v4-ai-powered-redesign/
+
+the blogging era.
+
+make readme personas clearer.
+
 ## ux, features
 
 research and create some non interactive widgets
