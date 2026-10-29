@@ -8,7 +8,7 @@
 # todo
 
 - humility, pure, ...
-- have, record, observe
+- have, record, observe, grow, eat, ...
 - code?, edit?
 - purpose, repo, (journal)
 - para, material, ...
@@ -20,34 +20,6 @@
 create project para
 
 index and browser knowledge base, read markdown structured books
-
----
-
-copy: refactor and simplify codebase
-
-the generate js blobs are messy and unreadable
-
-it's simple. you should be able to modify wo llms.
-
-i may have a postprocessor to strip all inline citations (politics driven) and specific text like "ai can make mistakes" "use code w caution" (business driven). no idea if para should take the resp, as it cant be bad to have more information.
-
-i may write it in code.
-
-i may compile it as userscript
-
-<!-- how to compile (build) a backend script? -->
-
-<!-- well... it would be always sub optimal compared w a dedicated copy main content button, esp when you rarely select arbitrarily -->
-
----
-
-copy: generalize converter
-
-some info are available in html but stripped.
-
-it's exceptionally easy to get the raw html and keep it.
-
-if you can, you may try to parse katex.
 
 ---
 
@@ -97,12 +69,6 @@ you may view your day(s) in text format. you have log or sqlite db, but it's ine
 
  -->
 
-humility: test find and organize useful agent skills all over the internet
-
-e.g. https://github.com/anthropics/claude-code/blob/main/plugins/frontend-design/skills/frontend-design/SKILL.md
-
----
-
 carte: design the game
 
 it's really hard to copy sth, esp if you go the traditional way.
@@ -120,14 +86,6 @@ https://www.google.com/search?q=fez+gameplay
 https://www.google.com/search?q=braid+gameplay
 
 https://www.google.com/search?q=gamedev+story
-
----
-
-create projects
-
-grow. eat.
-
-para. (supporting grow, and humility code)
 
 ---
 
@@ -187,29 +145,11 @@ also, it's more neutral (safer) than using menci/chyk/leohearts as the first sta
 
 ---
 
-humility: test: research Ideas in Chinese textbook
-
-Tags. Meta. Essence.
-
-(project chinese)
-
----
-
 learn rust-lang/rustlings
 
 interactive. fun.
 
 inspired by chyk.
-
----
-
-humility: test: document and create a (interactive) pre of art movements.
-
----
-
-humility: research mcp to cli
-
-e.g. playwright mcp as cli
 
 ---
 
@@ -230,18 +170,6 @@ cli & ui (gnome)
 what will pure project be at the end of the day. i mean at the end of hs.
 
 i hold the dream since grade 10.
-
----
-
-humility: test: research llm vid transcription
-
-nickle angel made some courses with ppt in her 20s.
-
-https://space.bilibili.com/137863629
-
-transcription? test.
-
-(maybe i could fetch some more proven ones. but she is cute.)
 
 ---
 
@@ -268,10 +196,6 @@ learn and categorize them.
 group the similar ones, e.g. helvetica copies.
 
 it's likely the sophisticated fonts on like claude, google (google sans), duolingo have good foss equivalents.
-
----
-
-humility: build an abstraction to integrate w im platforms, write a tg bot for fun
 
 ---
 
@@ -316,10 +240,6 @@ writing style consistency: maybe i should let llm to write some stuff in compari
 
 ---
 
-humility: test: write editorials for project euler
-
----
-
 telegram rev proxy cli.
 
 (assume the desktop is working.)
@@ -347,14 +267,6 @@ https://www.mewx.org/blog/202603/website-v4-ai-powered-redesign/
 the blogging era.
 
 make readme personas clearer.
-
----
-
-humility: test: generate dicts
-
-i did not found good llms generated dicts on google.
-
-(project leisure: dict)
 
 ---
 
@@ -445,30 +357,6 @@ project eat: research the recommendation algo
 eat: export subs from popular content platforms
 
 https://space.bilibili.com/1156993272/fans/follow
-
----
-
-humility: test: organize berryberry fav.
-
-have: organize berryberry fav.
-
----
-
-humility: research manus use cases
-
----
-
-humility: research and create some non interactive widgets
-
-- math graph
-- color
-- trend
-- weather
-- stock / currency / polymarket
-
-research types. (maybe py lib plus google sans)
-
-<!-- though, i wish google ai mode could show the original code... upd: well, it does. (?) no, it does not. it's not the graph code. though it's quite simple. just a bit default styling (margin, font) and pyplotlib knowledge. it shows an animation on web, but i suppose it's just fetching data, not rendering in js. -->
 
 ---
 
@@ -632,27 +520,9 @@ just
 
 ---
 
-humility: research terminal bench
-
-<!-- inadequate and incomprehensive tasks, seems -->
-
----
-
-humility: test use case dl maimai dx songs.
-
-touhou. vocaloid. etc.
-
----
-
 crawl the web.
 
 <!-- well, you can simply use git repos like menci blog or ruanyf weekly -->
-
----
-
-para: test: host gnome hig and kde hig
-
-humility: test: convert a legacy docs repo to md
 
 ---
 
@@ -685,12 +555,6 @@ Zhihu auto sync, global playwright
 ---
 
 Maimai web port
-
----
-
-all: funshiki films index.
-
-(have, humility)
 
 ---
 
@@ -747,57 +611,6 @@ i may integrate things.
 currently only sabaki is elegant. but it's not well engineered to my standard.
 
 ---
-
-humility: prototype actions
-
-- new thread
-- chat <!-- put everything related to "new node" in chat? -->
-- edit, regen, rearrange, ...
-- read
-- list
-- rename
-
-hooks are easy. they come later.
-
----
-
-humility: prototype simple workflows
-
-```yaml
-name: research project (company)
-- get company name as x
-- x history
-- x philosohpy
-- all features of x
-- all highly requested features of x
-- all limitations of x
-- situation of x
-- future of x
-- ...
-```
-
-it's easy to formalize.
-
-just add some metadata, like the method to use.
-
-- ask
-- parallel or sequential
-
-you can also research a person, or research an english word.
-
-you should also add metadata about what it is (how to render it)
-
-- prompt (yeah you could indicate by role specifically for this, but you do not have to)
-- response
-- parallel (you do not have to show like `< 1/5 >` like normal edit. you have options. but as it's automated, you could differ it, and then you could render as you like.)
-
-all nodes can be referenced directly. you can copy its id.
-
----
-
-humility: research dify and analyze ux
-
-<!-- it has no moat. visual ui is nothing. unlike agents, mcp, skills, tool calls, extensions, hooks, quick unclear. -->
 
 ---
 
@@ -878,16 +691,6 @@ i would include these ppl in the first archive
 copy: support "duplicate the first heading as h1".
 
 nice to have.
-
----
-
-humility: integrate w terminal
-
-what is "ghostty" about?
-
-why is it complex, if any.
-
-i would like to (auto) save history and export in md.
 
 ---
 

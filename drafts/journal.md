@@ -55439,6 +55439,12 @@ really i should search and read https://usaco.guide/gold/modular https://usaco.g
 
 i may adopt azalea git commit style.
 
+plan: tasks relevant today
+
+todo: meaningful endeavors
+
+backlog: random ideas
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

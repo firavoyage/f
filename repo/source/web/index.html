@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>app</title>
+  <script>
+    // separate intentional console.log and noises (typically sent via .info)
+    console.info = () => {}
+    console.warn = () => {}
+    console.error = () => {}
+  </script>
+  <link rel="icon" type="image/svg+xml" href='../asset/favicon.svg'></link>
 </head>
 <body>
   <div id="root"></div>

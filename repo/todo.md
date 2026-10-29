@@ -1,6 +1,8 @@
-todo
+# plan
 
----
+# todo
+
+# backlog
 
 research forgejo.
 
@@ -53,5 +55,3 @@ well, the old logo might matter. you could have a dedicated legacy folder, or pr
 (the latest state is always preserved.)
 
 could have.
-
----
