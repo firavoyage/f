@@ -3458,4 +3458,388 @@ Ubuntu Manpages
 rg  
 ripgrep will emit all data elements as objects with one of two keys: text or bytes. The JSON Lines format is only supported for sh...
 
+# compare fdfind and rg
+
+**`fdfind` (commonly known simply as `fd`) and `rg` (ripgrep) are entirely complementary tools rather than direct competitors.** Both are modern, blazing-fast command-line tools written in **Rust** that respect your `.gitignore` files by default. However, they serve completely different purposes: [](https://dev.to/wulymammoth/comment/11dbf)
+
+* **`fdfind` is for locating files and directories** (a modern replacement for the traditional `find` command).
+* **`rg` is for searching text _inside_ those files** (a modern replacement for the traditional `grep` command). [](https://github.com/sharkdp/fd)
+
+---
+
+### Direct Comparison
+
+| Feature             | fdfind (fd)                                   | rg (ripgrep)                            |
+| ------------------- | --------------------------------------------- | --------------------------------------- |
+| **Primary Purpose** | Finding files/directories by **name or path** | Finding text **content inside files**   |
+| **Replaces**        | find                                          | grep, ack, ag (The Silver Searcher)     |
+| **Core Input**      | Filename pattern or extension                 | RegEx or literal string pattern         |
+| **Output**          | A list of matching file paths                 | Lines of text where the match was found |
+| **Common Syntax**   | fd photo.jpg                                  | rg "TODO: fix this"                     |
+
+_(Note: On Debian/Ubuntu-based systems, the binary for `fd` is named `fdfind` to avoid a naming conflict with another legacy package, but it is exactly the same tool)._
+
+---
+
+### How They Work Together
+
+Because they excel at different tasks, developers frequently combine them. You can use the [fd GitHub repository](https://github.com/sharkdp/fd) and ripgrep GitHub repository together or pipe them into a fuzzy finder like fzf for interactive searching: [](https://addozhang.medium.com/cli-essentials-fd-rg-fzf-bat-6137c34d5d1b)
+
+* **Find a file, then search its contents:**  
+bash  
+```  
+fd -e md | xargs rg "python"  
+```  
+  
+_(Finds all Markdown files using `fd`, then searches for the word "python" inside them using `rg`)._
+
+### Key Shared Features
+
+* **Smart Defaults:** Both tools automatically hide files and directories listed in your `.gitignore`, as well as hidden files (like `.env`). _(To override this and search everything, use `-H` / `--hidden` in `fd` or `-uu` in `rg`)._
+* **Smart Case:** Both search case-insensitively by default, but automatically switch to case-sensitive if you type an uppercase letter. [](https://www.reddit.com/r/commandline/comments/uibug7/fd%5Ffind%5Fbut%5Fbetter/)
+
+Would you like to see some **advanced command examples** or workflow integrations for **`fd`** or **`rg`**?
+
+* [](https://dev.to/fengloulai/fd-vs-find-vs-ripgrep-i-created-10000-files-to-settle-this-debate-1ik4)  
+DEV Community  
+fd vs find vs ripgrep: I Created 10,000 Files to Settle This Debate  
+fd is \~2.5x faster than find for filename searches, rg demolishes grep by \~3x for content searches, and find + grep combined lose ...
+* [](https://github.com/sharkdp/fd)  
+GitHub  
+sharkdp/fd: A simple, fast and user-friendly alternative to 'find'  
+fd is a program to find entries in your filesystem. It is a simple, fast and user-friendly alternative to find . Ignores hidden di...
+* [](https://news.ycombinator.com/item?id=31448649)  
+Hacker News  
+Fd and ripgrep/rg are the two "new" alternatives I use on a regular basis, and w... | Hacker News  
+fd (find alternative, respects gitignore), Ripgrep uses leftmost-first regex, ignores POSIX locales for broad Unicode, and omits c...
+
+Show all
+
+# how to fuzzy search on fd rg
+
+Neither `fd` nor `rg` (ripgrep) have a native, built-in **fuzzy search** algorithm. `fd` is built for finding files by path using regex or glob patterns, and `rg` is built for finding text patterns inside files. [](https://github.com/BurntSushi/ripgrep/issues/1053)
+
+To get true, interactive **fuzzy searching**, you must pipe their outputs into **[fzf (Fuzzy Finder)](https://github.com/junegunn/fzf)**, which is the gold standard terminal tool for this. [](https://dev.to/hayden/optimizing-your-workflow-with-fzf-ripgrep-2eai)
+
+Here is how to combine them for the ultimate fuzzy search workflow.
+
+---
+
+### 1\. Fuzzy Search File Names (Using `fd` \+ `fzf`)
+
+To quickly find a file by fuzzy-typing its name or path, generate the file list with `fd` and pass it to `fzf`: [](https://github.com/sharkdp/fd)
+
+bash
+
+```
+fd --type f | fzf
+
+```
+
+
+
+* **How it works:** `fd` quickly gathers all file paths (respecting `.gitignore` automatically) and hands them to `fzf` to let you interactively fuzzy filter them.
+* **Shortcut trick:** You can configure `fzf` to use `fd` by default for its standard `Ctrl + T` file finder. Add this to your shell config file (`~/.bashrc` or `~/.zshrc`): [](https://penguin-gym-linux.com/en/articles/tutorials/fzf-fuzzy-finder)  
+bash  
+```  
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'  
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"  
+```  
+
+
+---
+
+### 2\. Fuzzy Search File Contents (Using `rg` \+ `fzf`)
+
+There are two ways to fuzzy search the actual text inside your code or files using ripgrep.
+
+#### Option A: The Simple One-Liner (Static `rg` list)
+
+If your codebase is small to medium-sized, you can dump all matching lines into `fzf` and fuzzy find over them: [](https://stackoverflow.com/questions/61740910/how-do-i-fuzzy-find-all-files-containing-specific-text-using-ripgrep-and-fzf-and)
+
+bash
+
+```
+rg --line-number --color=always "." | fzf --ansi
+
+```
+
+
+
+* **How it works:** `rg` scans every file and prints out every single line. `fzf` captures that list and allows you to fuzzy find the exact piece of text you need. [](https://stackoverflow.com/questions/61740910/how-do-i-fuzzy-find-all-files-containing-specific-text-using-ripgrep-and-fzf-and)
+
+#### Option B: The "Live Ripgrep" Search (Recommended)
+
+For large projects, dumping everything into `fzf` is inefficient. Instead, you can configure `fzf` as a **live interactive launcher** where `rg` dynamically updates the list as you type. [](https://junegunn.github.io/fzf/tips/ripgrep-integration/)
+
+Paste this command into your terminal (or save it as an alias/shell function): [](https://www.avonture.be/blog/fzf-ripgrep/)
+
+bash
+
+```
+fzf --disabled --ansi --dup \
+  --bind "start:reload(rg --column --line-number --no-heading --color=always --smart-case {q} || true)" \
+  --bind "change:reload(rg --column --line-number --no-heading --color=always --smart-case {q} || true)"
+
+```
+
+
+
+* **How it works:** `fzf` turns off its native fuzzy engine (`--disabled`) and lets you type freely. Every time you type a letter, it triggers `rg` to instantly scan your project for that query. [](https://junegunn.github.io/fzf/tips/ripgrep-integration/)
+
+---
+
+### 💡 Level Up: Add a Live File Preview Panel
+
+If you install the **[bat utility](https://github.com/sharkdp/fd)** (a syntax-highlighted clone of `cat`), you can view a preview window of the selected file directly inside your terminal: [](https://webcodr.io/2026/07/using-fd-rg-fzf-and-bat-to-find-things-fast/)
+
+**Fuzzy Search Files with Preview:**
+
+bash
+
+```
+fd --type f | fzf --preview 'bat --color=always --style=numbers {}'
+
+```
+
+
+
+**Fuzzy Search Text with Preview:**
+
+bash
+
+```
+rg --line-number --no-heading --color=always "." | fzf --ansi \
+  --delimiter : \
+  --preview 'bat --color=always --highlight-line {2} {1}' \
+  --preview-window 'up,60%,border-bottom,+{2}-5/3'
+
+```
+
+
+
+Would you like to build these commands into a **permanent shell alias** or a custom script so you can use them with a single keyword? Let me know which **shell** you use (e.g., **Bash**, **Zsh**, or **Fish**).
+
+* [](https://github.com/BurntSushi/ripgrep/issues/1053)  
+GitHub  
+\[Discussion\] Fuzzy Search · Issue #1053 · BurntSushi/ripgrep  
+Feature request for fuzzy search and edit distance support in ripgrep ・ a Python-based fuzzy search repository ・ combining ripgrep...
+* [](https://dev.to/markbosire/effortlessly-navigate-and-search-large-scale-repositories-with-fzf-and-ripgrep-376n)  
+DEV Community  
+Effortlessly Navigate and Search Large-Scale Repositories with fzf ...  
+Mar 12, 2025 — Fuzzy Finder (fzf): A command-line fuzzy finder that helps you quickly search and navigate through lists, including files, Git com...
+* [](https://penguin-gym-linux.com/en/articles/tutorials/fzf-fuzzy-finder)  
+Penguin Gym Linux  
+fzf: Fuzzy Finder for the Command Line | Penguin Gym Linux  
+fzf is a UNIX filter that reads a list from stdin, lets you fuzzy-search it interactively, and prints the chosen line to stdout. I...
+
+Show all
+
+# how to install fzf on debian
+
+To install **fzf** (the command-line fuzzy finder) on **Debian**, you can choose between using the official package manager or downloading it via Git to ensure you get the absolute latest version.
+
+---
+
+### Method 1: Using APT (Easiest)
+
+Debian includes `fzf` in its official repositories. However, depending on your version of Debian, this package may be slightly older than the upstream release. [](https://github.com/junegunn/fzf)
+
+1. Update your package index and install `fzf` by running:  
+bash  
+```  
+sudo apt update && sudo apt install fzf  
+```  
+
+2. **Enable shell key bindings** (like `Ctrl+R` and `Ctrl+T`). Unlike other distros, Debian does not enable these automatically. Run the following command to source them into your current Bash shell:  
+bash  
+```  
+echo 'source /usr/share/doc/fzf/examples/key-bindings.bash' >> ~/.bashrc  
+source ~/.bashrc  
+```  
+  
+_(Note: If you are using Zsh, change `.bashrc` to `.zshrc` and use `key-bindings.zsh` instead)._ [](https://www.youtube.com/watch?v=bowwZMR95p8)
+
+---
+
+### Method 2: Using Git (Recommended for Latest Version)
+
+If you want the **absolute newest features** and an interactive setup that automatically configures your autocompletion and shortcuts, installing directly from the source repository is the best option. [](https://www.youtube.com/watch?v=C6tDdKNsvwI&vl=en-US&t=186)
+
+1. Clone the official [junegunn/fzf GitHub repository](https://github.com/junegunn/fzf) to your home directory: [](https://www.akamai.com/cloud/guides/how-to-use-fzf/)  
+bash  
+```  
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf  
+```  
+
+2. Run the interactive installation script: [](https://www.akamai.com/cloud/guides/how-to-use-fzf/)  
+bash  
+```  
+~/.fzf/install  
+```  
+
+3. The script will ask you three questions:
+  * _Do you want to enable fuzzy completion?_ (Press **y**)
+  * _Do you want to enable key bindings?_ (Press **y**)
+  * _Do you want to update your shell configuration files?_ (Press **y**) [](https://www.youtube.com/watch?v=1a5NiMhqAR0)
+4. Restart your terminal or run `source ~/.bashrc` (or `source ~/.zshrc`) to apply the changes. [](https://www.youtube.com/watch?v=C6tDdKNsvwI&vl=en-US&t=186)
+
+---
+
+### Verifying the Installation
+
+To confirm everything is working smoothly, print the installed version: [](https://www.akamai.com/cloud/guides/how-to-use-fzf/)
+
+bash
+
+```
+fzf --version
+
+```
+
+
+
+You can now press **`Ctrl + R`** in your terminal to fuzzy-search your command history, or type **`Ctrl + T`** to quickly locate files. [](https://www.akamai.com/cloud/guides/how-to-use-fzf/)
+
+Would you like help installing companion tools like **`fd-find`** or **`bat`** to get faster searches and syntax-highlighted live previews inside fzf? [](https://medium.com/pragmatic-programmers/find-anything-you-need-with-fzf-the-linux-fuzzy-finder-tool-f48dfd0092b4)
+
+* [](https://github.com/junegunn/fzf)  
+GitHub  
+junegunn/fzf - A command  
+add fzf APT Debian 9+/Ubuntu 19.10+ sudo apt install fzf. To set up shell integration (key bindings and fuzzy completion), see the...
+* [](https://www.akamai.com/cloud/guides/how-to-use-fzf/)  
+Akamai  
+How to Install and Use fzf on Linux | Linode Docs  
+Command-Line Usage: Default search runs \`find \* -type f | fzf\`, triggered via \`Ctrl\` + \`T\` or piping other command outputs. Autoco...
+* [](https://www.youtube.com/watch?v=bowwZMR95p8)  
+YouTube·credibleDEV  
+FZF - Terminal Fuzzy Finder - YouTube  
+to confirm that you have everything set up correctly what you're going to do is you're going to run FCF. and D- version that's goi...
+
+Show all
+
+# how to install fzf on ubuntu
+
+You can install **fzf** (the command-line fuzzy finder) on Ubuntu using two primary methods: the quick **APT package manager** approach, or the **Git source installation** which ensures you get the absolute latest version and automated shell configurations. [](https://wafaicloud.com/blog/fuzzy-finding-made-easy-with-fzf-on-linux/)
+
+### Method 1: Install via APT (Easiest)
+
+This is the fastest method, though the version in the standard Ubuntu repositories might sometimes be slightly older than the upstream release. [](https://penguin-gym-linux.com/en/articles/tutorials/fzf-fuzzy-finder)
+
+1. Open your terminal and update your package lists: [](https://wafaicloud.com/blog/fuzzy-finding-made-easy-with-fzf-on-linux/)  
+bash  
+```  
+sudo apt update  
+```  
+
+2. Install `fzf`: [](https://wafaicloud.com/blog/fuzzy-finding-made-easy-with-fzf-on-linux/)  
+bash  
+```  
+sudo apt install fzf  
+```  
+
+3. _(Optional)_ Enable shell integration (key bindings like `Ctrl+R` and `Ctrl+T`).
+  * **For Bash:** Open your configuration file:  
+  bash  
+  ```  
+  nano ~/.bashrc  
+  ```  
+    
+  Scroll to the bottom of the file and add the following line:  
+  bash  
+  ```  
+  source /usr/share/doc/fzf/examples/key-bindings.bash  
+  ```  
+  
+  * **For Zsh:** Add this line to your `~/.zshrc`: [](https://www.youtube.com/watch?v=F6w1aipf14M&t=24)  
+  bash  
+  ```  
+  source /usr/share/doc/fzf/examples/key-bindings.zsh  
+  ```  
+  
+4. Reload your terminal settings: [](https://discussion.scottibyte.com/t/fuzzy-command-line-finder-fzf-for-linux-windows/696)  
+bash  
+```  
+source ~/.bashrc  # or source ~/.zshrc  
+```  
+
+
+---
+
+### Method 2: Install via Git (Recommended for Latest Version)
+
+This method clones the official repository and runs an interactive script that automatically manages your shell completions and hotkeys. [](https://www.youtube.com/watch?v=C6tDdKNsvwI&vl=en-US&t=186)
+
+1. Clone the [Official fzf GitHub Repository](https://github.com/junegunn/fzf) into a hidden directory: [](https://www.akamai.com/cloud/guides/how-to-use-fzf/)  
+bash  
+```  
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf  
+```  
+
+2. Run the interactive installation script: [](https://www.akamai.com/cloud/guides/how-to-use-fzf/)  
+bash  
+```  
+~ ~/.fzf/install  
+```  
+
+3. The script will ask you a few questions:
+  * _Do you want to enable fuzzy auto-completion?_ (Press **y**)
+  * _Do you want to enable key bindings?_ (Press **y**)
+  * _Do you want to update your shell configuration files?_ (Press **y**) [](https://www.youtube.com/watch?v=1a5NiMhqAR0)
+4. Restart your terminal or run `source ~/.bashrc` (or `source ~/.zshrc`) to apply the changes. [](https://www.youtube.com/watch?v=ybQjTA27NX0)
+
+---
+
+### Verify the Installation
+
+To make sure `fzf` is working perfectly, run: [](https://www.akamai.com/cloud/guides/how-to-use-fzf/)
+
+bash
+
+```
+fzf --version
+
+```
+
+
+
+To see a live demonstration of how to navigate the interactive installer script, configure custom shell configurations, and use foundational shortcuts, watch this detailed guide:
+
+5:54
+
+[](https://www.youtube.com/watch?v=1a5NiMhqAR0)
+
+How to install and use fzf: the command-line fuzzy finder
+
+79K views · 8 years ago
+
+YouTube · The Modern Coder
+
+### Useful Keyboard Shortcuts
+
+Once configured, you can immediately start using these essential hotkeys in your terminal: [](https://www.youtube.com/watch?v=1a5NiMhqAR0)
+
+* **`Ctrl + T`**: Fuzzy search all files and folders in your current directory to paste them directly onto your command line.
+* **`Ctrl + R`**: Fuzzy search your entire terminal command history instead of hitting the up arrow repeatedly.
+* **`Alt + C`**: Fuzzy search a subdirectory and instantly `cd` into it. [](https://www.akamai.com/cloud/guides/how-to-use-fzf/)
+
+Would you like help setting up **custom aliases**, or would you like to know how to pair `fzf` with tools like **`bat`** for syntax-highlighted previews?
+
+* [](https://www.akamai.com/cloud/guides/how-to-use-fzf/)  
+Akamai  
+How to Install and Use fzf on Linux | Linode Docs  
+Installation: Clone repo \`git clone --depth 1 https://github.com/junegunn/fzf.git \~/.fzf\`, run \`\~/.fzf/install\`, verify with \`fzf ...
+* [](https://www.youtube.com/watch?v=1a5NiMhqAR0)  
+YouTube·The Modern Coder  
+How to install and use fzf: the command-line fuzzy finder  
+Nov 17, 2017 — On this episode of 'Coding Tip of the Day' I go through the process of installing, configuring and using the command-line fuzzy fi...  
+5:54
+* [](https://www.youtube.com/watch?v=C6tDdKNsvwI&vl=en-US&t=186)  
+YouTube·Linux Tex  
+FZF - The Command-Line Tool Every Linux User Needs! (But ...  
+Oct 10, 2025 — The process involves running two commands: cloning the repository and then executing the install script located within the cloned ...  
+50s
+
+Show all
+
 
