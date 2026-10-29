@@ -55445,6 +55445,10 @@ todo: meaningful endeavors
 
 backlog: random ideas
 
+---
+
+some could make sense, but they are very likely to be irrelevant for me, or right now <!-- or in the near future -->. moved to todo legacy.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

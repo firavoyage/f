@@ -1,6 +1,10 @@
-todo
+# plan
 
----
+# todo
+
+# backlog
+
+## use cases
 
 archive everything
 
@@ -20,5 +24,9 @@ archive everything
   - "with"
 - twitter
   - "list f"
+
+---
+
+
 
 

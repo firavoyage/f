@@ -1,5 +1,11 @@
 # plan
 
+create a userscript for codeforces standing.
+
+normalize the time to be meaningful, for long running contests.
+
+---
+
 - para
 - humility
 - lib/web/server?
@@ -74,30 +80,6 @@ carte: design the game
 it's really hard to copy sth, esp if you go the traditional way.
 
 esp when its core value is really arts.
-
----
-
-gamedev: research weekend indie games and gamejams
-
-https://www.google.com/search?q=gorogoa+gameplay
-
-https://www.google.com/search?q=fez+gameplay
-
-https://www.google.com/search?q=braid+gameplay
-
-https://www.google.com/search?q=gamedev+story
-
----
-
-pm: research producthunt history in recent years.
-
-what succeeded? what failed?
-
-how to determine?
-
----
-
-have: research pdf parsing, convert to structured data, and convert to md
 
 ---
 
@@ -292,14 +274,6 @@ gemini://estela.moe
 
 ---
 
-have: import wanqu daily archive
-
-https://github.com/NiceLabs/wanqu-daily-dump
-
-https://nicelabs.github.io/wanqu-daily-dump/
-
----
-
 all: tv index (e.g. films, bangumis)
 
 track good new films/bangumis
@@ -374,14 +348,6 @@ well... i could proxy it. somehow. w a format i like.
 
 ---
 
-repo: prototype
-
-build a repo app
-
-github 3p ui.
-
----
-
 para: prototype
 
 Para.
@@ -430,127 +396,9 @@ research: gemini. (lagrange)
 
 ---
 
-have: support import from tg
-
-Have.
-
-Make sure you have enough space and export all tg chats one by one. (I can help with some automation).
-
-Then you can, for example, timeline any user across channels and chats.
-
-(An user can have many accounts, I will simply preprocess, and cache maybe.)
-
----
-
-repo: create an abstraction of cli on top of git
-
-precious, [5/2/26 5:59 PM]
-V.
-
-Write a git ignore before anything.
-
-For each step it will init if needed.
-
-Save. A state. You can give it a name.
-
-Remove. A state from history, forever.
-
-Restore a state. Or export it to a path.
-
-List all states. Paired w export, you can have a list of folders of all past states. I could symlink the same files.
-
-Sync. Push to a remote. Or all remotes. It will do best effort. Error can be network, permission/constraint, or others, like secret key. It will also pull then. If conflict it will convert to a pr. And if forced it will merge everything with local files of higher priority.
-
-Dl. Clone a repo. Make best effort to continue for large repos.
-
-On collaboration/contribution, pr is not git builtin. I will have a dedicated hidden folder for all prs. Each is a yaml. Desc. File diffs. Awa any other metadata you like. Yaml is editable json wo cost. Btw Toml is strict, which is meaningless. Every pr is incremental (a new yaml file), no possible conflict (at the git level).
-
-I suppose when you clone, git does this:
-
-Fetch the metadata. Dl every file with wget continuously in parallel. Apply to fs.
-
-Though it's old and might not be what I've expected. e.g. idk how it handles incompatible filenames.
-
-By default if you dont give an id (primary key meme from cyannyan) it will generate an uuid and tell you.
-
-About commit msg. It's your resp.
-
-Likely another yaml.
-
-It can auto save every sec or file change event (make sure you dont put secrets anywhere). But only some would be mapped w a dedicated msg. Others are for time machine.
-
-I would use a flexible change dot md as always in my style.
-
-Btw, how to v a pre existing folder w another separate git?
-
-...
-
-git abstraction.
-
-i think you could even as daily backup... and sync.
-
-...
-
-try out vscode git features.
-
-- vscode timeline, (and more?)
-- github desktop (seems not much features)
-- ~~gitkraken~~ <!-- that's too much -->
-
-> The diff algorithm was stopped early (after 5000 ms.)
-
-btw, vscode settings: git.enabled.
-
-...
-
-github? forgeio (codeberg)? what. why.
-
-...
-
-https://github.com/regent-vcs/re_gent
-
-...
-
-it can be simple.
-
-just
-
-- alias some commands. e.g. git add all, commit wo message, ...
-- download reliably (never stop halfway even if you turn off wifi), progressively (resume after you reboot), and efficiently (dont dl the same file hash twice)
-
----
-
 crawl the web.
 
 <!-- well, you can simply use git repos like menci blog or ruanyf weekly -->
-
----
-
-have: research and design the format, e.g. activity pub
-
-tg export. standardized activity pub.
-
-https://github.com/one-among-us/tg-blog
-
-https://github.com/one-among-us/TelegramBackup
-
-https://test-tg.one-among.us/test
-
-https://aza.moe/life
-
-...
-
-zhihu to activity pub.
-
-comments.
-
-categories.
-
-traditional blog.
-
----
-
-Zhihu auto sync, global playwright
 
 ---
 
@@ -612,32 +460,6 @@ currently only sabaki is elegant. but it's not well engineered to my standard.
 
 ---
 
----
-
-repo: decide project scope
-
-i guess it's better to be a drop in replacement of github.
-
-identical ui. faster as you serve locally if possible.
-
-assumption: you usually work on a repo yk rather than new ones all over the internet.
-
-...
-
-all (highly requested) features of github desktop
-
-all (highly requested) features of github mobile app
-
-all (highly requested) features of github 3p ui
-
-all (highly requested) features of github
-
-all (highly requested) features of forgejo (compare) <!-- gitlab is closed. gitea is obsolete. codeberg is based on forgejo. -->
-
-scope. <!-- i might not need grill me. i could think myself. -->
-
----
-
 code: test: write shell fn
 
 seems i write shell fn often.
@@ -674,27 +496,9 @@ repo/purpose: analyze linear and github on android.
 
 ---
 
-have: test: display works/posts of some ppl
-
-i would include these ppl in the first archive
-
-- acbox
-- ame akari
-- matrix67
-- ruanyf
-- steven lynn
-- umr
-- nyac.at
-
----
-
 copy: support "duplicate the first heading as h1".
 
 nice to have.
-
----
-
-have use case: what if i continuously monitor codeforces scoreboard rather than some retrospective submission log analysis?
 
 ---
 
