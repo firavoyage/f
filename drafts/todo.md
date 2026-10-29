@@ -1,14 +1,19 @@
 # plan
 
-- ~~quote~~
 - para
 - humility
-- lib/web/server
-- lib/web/style
+- lib/web/server?
+- lib/web/style?
 
 # todo
 
-create project files
+- humility, pure, ...
+- have, record, observe
+- code?, edit?
+- purpose, repo, (journal)
+- para, material, ...
+- float
+- files
 
 ---
 
@@ -46,15 +51,6 @@ if you can, you may try to parse katex.
 
 ---
 
-- humility, pure, ...
-- have, record, observe
-- code?, edit?
-- purpose, repo, (journal)
-- para, material, ...
-- float
-
----
-
 intention: foundation
 
 - sidebar of tab groups
@@ -63,6 +59,29 @@ intention: foundation
   - url
   - message/search/~~command~~
     - you may config a few search engines and switch via tab maybe
+
+intention: create omnibox based on fav and history.
+
+---
+
+journal: record browser history
+
+i spend most time on browser.
+
+for a fixed interval, capture the title, url, and whole mhtml static page.
+i may inline styles, normalize shadow html, or expand iframes if needed. via some userscript.
+
+if matters. (i already have )
+
+---
+
+journal: visualize on web.
+
+reflect the time spent clearly.
+
+journal: create a web ui and support md export
+
+you may view your day(s) in text format. you have log or sqlite db, but it's inelegant ux.
 
 # backlog
 
@@ -78,25 +97,17 @@ intention: foundation
 
  -->
 
----
-
 humility: test find and organize useful agent skills all over the internet
 
 e.g. https://github.com/anthropics/claude-code/blob/main/plugins/frontend-design/skills/frontend-design/SKILL.md
 
 ---
 
-journal: create a web ui and support md export
-
-you may view your day(s) in text format. you have log or sqlite db, but it's just inelegant ux.
-
----
-
 carte: design the game
 
----
+it's really hard to copy sth, esp if you go the traditional way.
 
-intention: create omnibox based on fav and history.
+esp when its core value is really arts.
 
 ---
 
@@ -881,3 +892,10 @@ i would like to (auto) save history and export in md.
 ---
 
 have use case: what if i continuously monitor codeforces scoreboard rather than some retrospective submission log analysis?
+
+---
+
+create project files
+
+if really matters. nautilus is good enough. i want to create sth via some custom archi and libs, but i have more relevant projects to achieve the same meanwhile.
+

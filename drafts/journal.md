@@ -55433,6 +55433,12 @@ it's called sample cases, not example cases.
 
 really i should search and read https://usaco.guide/gold/modular https://usaco.guide/gold/combo first feels.
 
+29
+
+15 50 organize todos. separate project specific ones. trim irrelevant ones.
+
+i may adopt azalea git commit style.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
