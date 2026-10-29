@@ -1,11 +1,5 @@
 # plan
 
-create a userscript for codeforces standing.
-
-normalize the time to be meaningful, for long running contests.
-
----
-
 - para
 - humility
 - lib/web/server?
@@ -160,3 +154,10 @@ create project files
 
 if really matters. nautilus is good enough. i want to create sth via some custom archi and libs, but i have more relevant projects to achieve the same meanwhile.
 
+---
+
+create a userscript for codeforces standing.
+
+normalize the time to be meaningful, for long running contests.
+
+if feasible. absolutely, but not necessarily easy to access on the dom of the same page.
