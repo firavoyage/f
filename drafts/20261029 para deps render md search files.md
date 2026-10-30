@@ -7572,4 +7572,1124 @@ Getting a URL Parameter Assuming that our URL is https://example.com/?product=sh
 
 Show all
 
+# how to query backend search via an input field in react
+
+To query a backend search via an input field in React, you need to combine a **controlled input** (using `useState`) with an API call (typically triggered via `useEffect` or a form submission). [](https://www.youtube.com/watch?v=nwJQBDPfGEk)
+
+Crucially, if you want to fetch data _as the user types_, you must use **debouncing**. Without debouncing, your app will send a network request for _every single keystroke_ (e.g., typing "charger" would fire 7 separate API calls), which can easily crash or overload your backend. [](https://stackoverflow.com/questions/63013532/doing-backend-searches-with-a-react-semantic-dropdown-rerenders-on-every-keypres)
+
+Below are the two most common patterns to implement backend search.
+
+---
+
+### Pattern 1: Search-as-you-type with Debouncing (Recommended)
+
+This approach uses a custom timeout to wait until the user stops typing for a few hundred milliseconds before firing the API request.
+
+jsx
+
+```
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'; // or use standard fetch()
+
+export default function SearchComponent() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [results, setResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    // 1. If the input field is empty, clear results and don't query the backend
+    if (!searchTerm.trim()) {
+      setResults([]);
+      return;
+    }
+
+    // 2. Set up a debounce timer (e.g., 500ms delay)
+    const delayDebounceFn = setTimeout(async () => {
+      setIsLoading(true);
+      try {
+        // Replace with your actual backend API endpoint
+        const response = await axios.get(`https://example.com{searchTerm}`);
+        setResults(response.data);
+      } catch (error) {
+        console.error("Error fetching search results:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    }, 500); 
+
+    // 3. Cleanup function: Clears the timer if the user types another character 
+    // before the 500ms is up, preventing the previous API call from firing.
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchTerm]); // Re-runs the effect whenever searchTerm changes
+
+  return (
+    <div style={{ padding: '20px', maxWidth: '400px' }}>
+      <input
+        type="search"
+        placeholder="Type to search..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
+      />
+
+      {isLoading && <p>Searching...</p>}
+
+      <ul>
+        {results.map((item) => (
+          <li key={item.id}>{item.name}</li>
+        ))}
+      </ul>
+      
+      {!isLoading && searchTerm && results.length === 0 && <p>No results found.</p>}
+    </div>
+  );
+}
+
+```
+
+
+
+---
+
+### Pattern 2: Search only on Form Submission
+
+If you want to conserve network bandwidth and prefer that the user explicitly requests the search (by pressing **Enter** or clicking a **Submit** button), wrap the input inside a standard HTML form. [](https://dr-lucasleibs.medium.com/how-query-a-database-with-a-search-bar-react-app-hooks-ca9df1562742)
+
+jsx
+
+```
+import React, { useState } from 'react';
+
+export default function SearchOnSubmit() {
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState([]);
+
+  const handleSearch = async (e) => {
+    e.preventDefault(); // Prevents the browser from reloading the page
+    if (!query.trim()) return;
+
+    try {
+      const response = await fetch(`https://example.com{encodeURIComponent(query)}`);
+      const data = await response.json();
+      setResults(data);
+    } catch (error) {
+      console.error("Failed to fetch data:", error);
+    }
+  };
+
+  return (
+    <div style={{ padding: '20px' }}>
+      <form onSubmit={handleSearch}>
+        <input 
+          type="text" 
+          value={query} 
+          onChange={(e) => setQuery(e.target.value)} 
+          placeholder="Search items..." 
+        />
+        <button type="submit">Search</button>
+      </form>
+
+      <ul>
+        {results.map(item => <li key={item.id}>{item.title}</li>)}
+      </ul>
+    </div>
+  );
+}
+
+```
+
+
+
+---
+
+### Advanced Optimization: Production Environments
+
+If you are building a production-grade application, consider leveraging data-fetching libraries rather than writing manual `useEffect` hooks:
+
+* **TanStack Query (React Query)**: Offers out-of-the-box caching, request deduplication, and easy loading/error states.
+* **Lodash Debounce**: Instead of a manual `setTimeout` cleanup, you can use the `_.debounce` utility function from the Lodash Library to wrap your API handler. [](https://javascript.plainenglish.io/mastering-search-in-react-from-basic-filtering-to-fuzzy-matching-76932818a4f9)
+
+Would you like to explore how to build this with **TanStack Query (React Query)**, or do you need help setting up the corresponding **Node.js/Express backend API endpoint** to handle the search query?
+
+AI can make mistakes, so double-check responses 
+
+* [](https://stackoverflow.com/questions/63013532/doing-backend-searches-with-a-react-semantic-dropdown-rerenders-on-every-keypres)  
+Stack Overflow  
+Doing Backend Searches with a React Semantic Dropdown ...  
+axios.get, which returns an options array based on the search criteria const response =
+* [](https://www.youtube.com/watch?v=nwJQBDPfGEk)  
+YouTube·Cand Dev  
+How to Fetch Data Effectively on Search Input | React  
+the value into set search value into e dot target dot value like so and basically you can change the type here to search if you wa...
+* [](https://dr-lucasleibs.medium.com/how-query-a-database-with-a-search-bar-react-app-hooks-ca9df1562742)  
+Medium·Lucas Leiberman  
+How Query a Database with a Search Bar: React App/Hooks  
+I am using the useRef hook to handle my user input on the form. This ref attribute allows you to access elements or nodes within t...
+
+Show all
+
+# how to sync a state on url param in react
+
+To sync state with a URL parameter in React, the golden rule is to **treat the URL as the single source of truth**. Instead of duplicating the values inside a standard `useState` and trying to keep them in sync with a `useEffect`, you should derive your state directly from the URL. [](https://www.youtube.com/watch?v=fYqMPvPvVAc&t=273)
+
+How you implement this depends on whether you are using **React Router** (Vite/SPAs) or **Next.js**.
+
+---
+
+### Method 1: Using React Router (`react-router-dom`)
+
+React Router provides the `useSearchParams` hook, which functions almost exactly like `useState`. [](https://www.youtube.com/watch?v=fLx-JvNa450)
+
+jsx
+
+```
+import { useSearchParams } from 'react-router-dom';
+
+function FilterComponent() {
+  // 1. Grab the searchParams object and the setter function
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  // 2. Derive the state directly from the URL (fallback to a default value)
+  const currentQuery = searchParams.get('search') || '';
+
+  const handleInputChange = (event) => {
+    const value = event.target.value;
+
+    // 3. Update the URL parameter when the state changes
+    setSearchParams((prev) => {
+      if (value) {
+        prev.set('search', value);
+      } else {
+        prev.delete('search'); // Clean up the URL if the input is empty
+      }
+      return prev;
+    });
+  };
+
+  return (
+    <input 
+      type="text" 
+      value={currentQuery} 
+      onChange={handleInputChange} 
+      placeholder="Search..." 
+    />
+  );
+}
+
+```
+
+
+
+### Method 2: Using Next.js (App Router)
+
+In Next.js, the URL parameters are read-only via hooks, so updates require using the `useRouter` and `usePathname` hooks together. [](https://www.youtube.com/shorts/upUSgnWWW7U)
+
+jsx
+
+```
+'use client';
+
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+
+function SearchComponent() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  // Derive state from URL
+  const currentQuery = searchParams.get('search') || '';
+
+  const handleSearch = (value) => {
+    // Use the native URLSearchParams API to update values
+    const params = new URLSearchParams(searchParams.toString());
+    
+    if (value) {
+      params.set('search', value);
+    } else {
+      params.delete('search');
+    }
+
+    // Push the new URL to the browser history
+    router.push(`${pathname}?${params.toString()}`);
+  };
+
+  return (
+    <input
+      type="text"
+      value={currentQuery}
+      onChange={(e) => handleSearch(e.target.value)}
+    />
+  );
+}
+
+```
+
+
+
+---
+
+### Best Practices & Pitfalls
+
+* **Avoid Local `useState` Duplication:** Avoid capturing the URL param into a local `useState` on initial load. This creates two sources of truth and causes laggy or out-of-sync UI behavior. [](https://medium.com/@gorzok/state-in-the-url-in-react-the-right-way-3b031a3b183a)
+* **Debounce Text Inputs:** If you are syncing a text input (like a search bar), updating the URL on _every keystroke_ will flood the browser history. Use a debounced function to delay the URL update until the user stops typing. [](https://www.youtube.com/watch?v=t4d1cJarJqs)
+* **Use `replace` instead of `push` for Filters:** If users are clicking through toggles rapidly, use `router.replace` or `{ replace: true }` in React Router. This prevents the browser back-button history from getting clogged up with dozens of minute filtering steps. [](https://blog.logrocket.com/advanced-react-state-management-using-url-parameters/)
+
+Are you building this application using **Next.js** or a standard React SPA with **React Router**? I can provide a copy-pasteable **custom hook** tailored specifically to whichever framework you are using.
+
+* [](https://blog.logrocket.com/advanced-react-state-management-using-url-parameters/)  
+LogRocket Blog  
+Advanced React state management using URL parameters - LogRocket Blog  
+React views depend on URL parameters and query strings to persist application state, creating shareable views, browser history int...
+* [](https://www.youtube.com/watch?v=fYqMPvPvVAc&t=273)  
+YouTube·Sam Selikoff  
+How to share a React Component with the URL  
+Oct 3, 2024 — Duplicate sources of truth, such as having search text in both the URL and React state, lead to frustrating bugs where the applica...  
+9m
+* [](https://www.youtube.com/watch?v=fLx-JvNa450)  
+YouTube·Radzion Dev  
+YouTube  
+Oct 7, 2023 — the push. function which we'll use to update the URL query string you could also use the replace.  
+3:16
+
+Show all
+
+# how to use react query
+
+### how to use react query
+
+To use **React Query** (now officially known as [TanStack Query](https://tanstack.com/query/latest/docs/framework/react/quick-start)), you need to wrap your application with a central provider, use `useQuery` to fetch data, and use `useMutation` to create or modify data. It completely replaces boilerplate-heavy `useEffect` and `useState` patterns by handling caching, loading/error states, and background updates automatically. [](https://tanstack.com/query/latest/docs/framework/react/quick-start)
+
+Here is a step-by-step guide to setting it up and using it.
+
+---
+
+#### 1\. Installation & Setup
+
+First, install the core library. It is also highly recommended to install the Devtools for visual debugging. [](https://medium.com/@farihakausar18/react-query-full-guide-beginner-to-advanced-495afce46a4c)
+
+bash
+
+```
+npm install @tanstack/react-query @tanstack/react-query-devtools
+
+```
+
+
+
+Next, initialize the `QueryClient` and wrap your application root inside the `QueryClientProvider`. [](https://www.youtube.com/watch?v=Hu1dtgK%5FCkU&t=1036)
+
+jsx
+
+```
+// main.jsx or index.jsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import App from './App';
+
+// Create a client instance
+const queryClient = new QueryClient();
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <App />
+      {/* Devtools will only open in development mode */}
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  </React.StrictMode>
+);
+
+```
+
+
+
+---
+
+#### 2\. Fetching Data with `useQuery`
+
+To fetch data (e.g., a `GET` request), use the `useQuery` hook. It requires two core parameters: [](https://www.youtube.com/watch?v=b%5FUQ1bdQddw)
+
+* `queryKey`: An array that acts as a unique cache identifier.
+* `queryFn`: An asynchronous function that returns a promise resolving the data. [](https://www.youtube.com/watch?v=r8Dg0KVnfMA&t=245)
+
+jsx
+
+```
+// components/TodoList.jsx
+import { useQuery } from '@tanstack/react-query';
+
+const fetchTodos = async () => {
+  const res = await fetch('https://typicode.com');
+  if (!res.ok) throw new Error('Network response was not ok');
+  return res.json();
+};
+
+export default function TodoList() {
+  const { data: todos, isLoading, isError, error } = useQuery({
+    queryKey: ['todos'],
+    queryFn: fetchTodos,
+  });
+
+  if (isLoading) return <div>Loading items...</div>;
+  if (isError) return <div>Error: {error.message}</div>;
+
+  return (
+    <ul>
+      {todos.slice(0, 5).map((todo) => (
+        <li key={todo.id}>{todo.title}</li>
+      ))}
+    </ul>
+  );
+}
+
+```
+
+
+
+---
+
+#### 3\. Modifying Data with `useMutation`
+
+To change server data (e.g., `POST`, `PUT`, `DELETE`), use the `useMutation` hook. [](https://www.youtube.com/watch?v=b%5FUQ1bdQddw)
+
+After a successful mutation, you will typically want to clear the old cache entry and trigger a refetch so the UI displays the fresh data. You achieve this by calling `queryClient.invalidateQueries` inside the `onSuccess` callback. [](https://www.youtube.com/watch?v=4n6cD9M21-s&t=162)
+
+jsx
+
+```
+// components/AddTodo.jsx
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useState } from 'react';
+
+const addTodoMutation = async (newTodo) => {
+  const res = await fetch('https://typicode.com', {
+    method: 'POST',
+    body: JSON.stringify(newTodo),
+    headers: { 'Content-type': 'application/json' },
+  });
+  return res.json();
+};
+
+export default function AddTodo() {
+  const [title, setTitle] = useState('');
+  const queryClient = useQueryClient(); // Access the global queryClient instance
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: addTodoMutation,
+    onSuccess: () => {
+      // Invalidate the 'todos' cache key to trigger an automatic refetch
+      queryClient.invalidateQueries({ queryKey: ['todos'] });
+      setTitle('');
+    },
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!title) return;
+    mutate({ title, completed: false }); // Trigger the mutation
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input value={title} onChange={(e) => setTitle(e.target.value)} />
+      <button type="submit" disabled={isPending}>
+        {isPending ? 'Adding...' : 'Add Todo'}
+      </button>
+    </form>
+  );
+}
+
+```
+
+
+
+---
+
+#### 4\. Handling Dynamic Query Keys
+
+If your data fetch relies on a variable parameter (like a specific page number, ID, or filter setting), **include that variable in the `queryKey` array**. Whenever that variable changes, React Query will treat it as a dependency and automatically fetch the new data. [](https://tkdodo.eu/blog/practical-react-query)
+
+jsx
+
+```
+// Fetching a specific todo item by its dynamic ID
+const fetchTodoById = async (id) => {
+  const res = await fetch(`https://typicode.com{id}`);
+  return res.json();
+};
+
+export function TodoDetail({ todoId }) {
+  const { data: todo, isLoading } = useQuery({
+    queryKey: ['todos', todoId], // Automatically re-fetches when todoId changes
+    queryFn: () => fetchTodoById(todoId),
+  });
+
+  if (isLoading) return <p>Loading detail...</p>;
+  return <h1>{todo?.title}</h1>;
+}
+
+```
+
+
+
+For a complete visual walkthrough of caching mechanics, hooks configuration, and error management, watch this step-by-step video:
+
+4m
+
+[](https://www.youtube.com/watch?v=4n6cD9M21-s&t=162)
+
+React Query - Complete Beginners Tutorial
+
+2 years ago
+
+YouTube · Code Complete
+
+---
+
+#### Quick Cheat Sheet
+
+| Hook / Feature        | Primary Purpose                                                                           | Key Configuration Options             |
+| --------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------- |
+| **useQuery**          | Fetching data (GET requests)                                                              | queryKey, queryFn, staleTime, retry   |
+| **useMutation**       | Mutating data (POST, PUT, DELETE)                                                         | mutationFn, onSuccess, onError        |
+| **invalidateQueries** | Manually clearing the cache to force a refetch                                            | { queryKey: \['key\_to\_expire'\] }   |
+| **staleTime**         | Defines how long (in ms) data stays "fresh" in cache before requiring a background update | Passed inside useQuery options object |
+
+Would you like to explore **advanced features** like **optimistic updates**, setting global defaults for **staleTime**, or implementing **pagination**? Let me know what you are building!
+
+* [](https://tkdodo.eu/blog/practical-react-query)  
+TkDodo's blog  
+Practical React Query - TkDodo's blog  
+Because React Query will trigger a refetch whenever the query key changes. So when we pass a variable parameter to our queryFn , w...
+* [](https://www.youtube.com/watch?v=e74rB-14-m8&t=28)  
+YouTube·PedroTech  
+React Query Crash Course  
+Jan 14, 2025 — In this comprehensive tutorial, we dive into the core features of React Query (now known as TanStack React Query) and ... You Shou...  
+2m
+* [](https://tanstack.com/query/latest/docs/framework/react/quick-start)  
+TanStack  
+Quick Start | TanStack Query React Docs  
+wrapping the application root. Fetch data using \`useQuery\`, modify data using \`useMutation\`, and trigger refetching on success via...
+
+Show all
+
+# how to use lodash esm debounce
+
+12:07 AM
+
+### how to use lodash esm debounce
+
+To use Lodash's `debounce` function with ECMAScript Modules (ESM), the most efficient approach is to use the **`lodash-es` package**, which is specifically built and optimized for ESM environments. [](https://www.reddit.com/r/webdev/comments/1f35nw7/how%5Ftoo%5Fimport%5Fonly%5Fdebounce%5Ffrom%5Flodash%5Fin%5Fa/)
+
+Using `lodash-es` allows modern bundlers (like Vite, Webpack, or Rollup) to perform tree-shaking, ensuring only the debounce code is bundled into your final application.
+
+#### 1\. Installation
+
+Install the ESM-native version of Lodash:
+
+bash
+
+```
+npm install lodash-es
+# If using TypeScript, also install the types:
+npm install -D @types/lodash-es
+
+```
+
+
+
+#### 2\. Standard ESM Usage (Vanilla JavaScript)
+
+Import `debounce` directly from the package. It delays executing your function until after a specific amount of time has elapsed since the last time it was called. [](https://lodash.com/docs/)
+
+javascript
+
+```
+import { debounce } from 'lodash-es';
+
+// 1. Define the function you want to delay
+const handleSearch = (query) => {
+  console.log(`Fetching results for: ${query}`);
+};
+
+// 2. Wrap it in debounce (e.g., wait 300 milliseconds)
+const debouncedSearch = debounce(handleSearch, 300);
+
+// 3. Attach it to an event listener
+const searchInput = document.getElementById('search-input');
+searchInput.addEventListener('input', (event) => {
+  debouncedSearch(event.target.value);
+});
+
+```
+
+
+
+---
+
+#### 3\. Usage in Frameworks (React Example)
+
+When using frameworks like React, components re-render frequently. If you create a regular debounced function inside a component, it will be recreated on every single render, which resets the internal timer and breaks the debouncing effect. [](https://stackoverflow.com/questions/68097005/lodash-debounce-in-react)
+
+To fix this, wrap the debounced function in a `useCallback` hook: [](https://stackoverflow.com/questions/68097005/lodash-debounce-in-react)
+
+jsx
+
+```
+import { useCallback } from 'react';
+import { debounce } from 'lodash-es';
+
+export function SearchComponent() {
+  // useCallback ensures the debounced function identity stays consistent across renders
+  const debouncedApiCall = useCallback(
+    debounce((value) => {
+      console.log('API Request sent for:', value);
+    }, 500),
+    [] // Empty dependency array ensures it's only created once
+  );
+
+  const handleChange = (event) => {
+    debouncedApiCall(event.target.value);
+  };
+
+  return <input type="text" onChange={handleChange} placeholder="Search..." />;
+}
+
+```
+
+
+
+---
+
+#### Useful Advanced Features
+
+The function returned by Lodash's `debounce` comes with a couple of handy built-in methods: [](https://lodash.com/docs/)
+
+* **`.cancel()`**: Stops a pending execution. Useful when a user leaves a page or closes a modal and you no longer want the delayed action to trigger.  
+javascript  
+```  
+debouncedSearch.cancel();  
+```  
+
+* **`.flush()`**: Forces the debounced function to execute immediately if a timer is running. [](https://lodash.com/docs/)  
+javascript  
+```  
+debouncedSearch.flush();  
+```  
+
+
+Are you setting this up in a **specific framework** (like React, Vue, or Svelte) or a **TypeScript** project? I can provide code specifically tailored to your setup if you hit any roadblocks.
+
+* [](https://dev.to/devcore/how-to-use-lodash-debounce-method-fkc)  
+DEV Community  
+How to use Lodash debounce method? - DEV Community  
+A debounced function is a function that delays its execution a certain amount of milliseconds after the last call was received. Le...
+* [](https://lodash.com/docs/)  
+Lodash  
+Lodash Documentation  
+The debounced function comes with a cancel method to cancel delayed func invocations and a flush method to immediately invoke them...
+* [](https://www.reddit.com/r/webdev/comments/1f35nw7/how%5Ftoo%5Fimport%5Fonly%5Fdebounce%5Ffrom%5Flodash%5Fin%5Fa/)  
+Reddit  
+How too import only "debounce" from lodash in a typescript ...  
+While importing \`debounce\` directly from \`lodash/debounce\` is still possible, done by creating a wrapper file with an interface or...
+
+Show all
+
+## what if you move it outside the react component
+
+what if you move it outside the react component
+
+12:08 AM
+
+### what if you move it outside the react component
+
+Moving the debounced function **outside the React component** is an excellent and highly recommended approach.
+
+When you move it outside, the function is only created **once** when the file is first loaded by the browser, completely bypassing React's re-render cycle. This means you no longer need `useCallback` or `useMemo`.
+
+Here is how you do it, along with the major trade-off you need to consider.
+
+#### Standard Implementation
+
+jsx
+
+```
+import { debounce } from 'lodash-es';
+
+// 1. Created once when the file loads. No hooks needed!
+const debouncedApiCall = debounce((value) => {
+  console.log('API Request sent for:', value);
+}, 500);
+
+export function SearchComponent() {
+  const handleChange = (event) => {
+    debouncedApiCall(event.target.value);
+  };
+
+  return <input type="text" onChange={handleChange} placeholder="Search..." />;
+}
+
+```
+
+
+
+---
+
+#### ⚠️ The Critical Trade-Off: The "Single Instance" Problem
+
+While cleaner, moving a debounced function outside the component creates a **shared singleton**. Because the function lives globally in the file module, **every instance of that component will share the exact same timer.**
+
+##### When it works perfectly:
+
+* You only render **one** instance of this component on the page at a time (e.g., a single global search bar in your header).
+
+##### When it breaks completely:
+
+* You render **multiple** instances of the component on the same page (e.g., a list of table rows where every row has its own debounced input field).
+* **The Bug:** Typing in Row A will inadvertently cancel or delay the execution of Row B because they are both fighting over the exact same global debounce timer.
+
+#### Summary: Which should you choose?
+
+* **Use Outside Component:** For unique, single-use elements like a main navigation search bar. It keeps your component code clean and hook-free.
+* **Use Inside Component (with `useCallback`):** For reusable UI elements (inputs, buttons, cards) where multiple copies might exist on the screen simultaneously. This gives every copy its own isolated timer.
+
+Will this specific component be **rendered multiple times** on your page, or is it a **single-use** element like a global header search?
+
+# what is throttle or debounce
+
+### what is throttle or debounce
+
+**Debouncing and throttling are rate-limiting techniques used in software development to control how often a function executes over time.** They prevent performance lag or excessive API requests by managing rapid, high-frequency events like scrolling, window resizing, or typing. [](https://www.syncfusion.com/blogs/post/javascript-debounce-vs-throttle)
+
+While both serve to optimize application performance, they handle the execution timing very differently. [](https://www.geeksforgeeks.org/javascript/difference-between-debouncing-and-throttling/)
+
+---
+
+#### Direct Comparison
+
+| Aspect             | **Debouncing** 🛑                                               | **Throttling** ⏳                                                    |
+| ------------------ | --------------------------------------------------------------- | ------------------------------------------------------------------- |
+| **Core Concept**   | Delays execution until a period of **inactivity** passes.       | Limits execution to a **fixed, maximum frequency**.                 |
+| **Execution**      | Executes **once** after you stop triggering the event.          | Executes **at regular intervals** during continuous activity.       |
+| **Reset Behavior** | Every new event **cancels the previous timer** and starts over. | Ignores intermediate calls until the current time interval expires. |
+| **Ideal For...**   | Actions where you only care about the **final result**.         | Actions where you need **steady, controlled updates**.              |
+
+---
+
+#### Detailed Breakdown
+
+##### 1\. What is Debouncing?
+
+Debouncing groups multiple sequential event triggers into a single function execution. If you keep triggering the event, the function will not run. The countdown clock resets with every single interaction and only fires when the user completely pauses. [](https://css-tricks.com/debouncing-throttling-explained-examples/)
+
+* **Real-World Analogy:** Think of an automatic elevator door. Every time someone walks through the door, the closing timer resets. The door will only close after a specified period of silence (no one walking through).
+* **Common Use Case:** **Search Bar Auto-complete**. You want to wait until the user finishes typing "wireless headphones" before making an API database call, rather than querying the database for "w", "wi", "wir", etc. [](https://stackoverflow.com/questions/25991367/difference-between-throttling-and-debouncing-a-function)
+
+##### 2\. What is Throttling?
+
+Throttling guarantees that a function executes at a steady, predictable rate, regardless of how many hundreds of times the event is triggered per second. It acts as a bottleneck that lets an action pass through only once per time window. [](https://kettanaito.com/blog/debounce-vs-throttle)
+
+* **Real-World Analogy:** Think of a water faucet set to drip exactly once every 5 seconds. No matter how much pressure or movement happens up the line, you only get one drop per interval.
+* **Common Use Case:** **Infinite Scrolling or Scroll Animations**. When a user rapidly scrolls down a page, you may need to check how close they are to the bottom to load more content. Throttling ensures you check their position at a reasonable interval (e.g., every 200ms) without lagging the page UI. [](https://stackoverflow.com/questions/25991367/difference-between-throttling-and-debouncing-a-function)
+
+---
+
+#### Implementation Context
+
+For comprehensive technical deep dives and pre-built implementations, check out the [GeeksforGeeks Debouncing and Throttling Guide](https://www.geeksforgeeks.org/javascript/difference-between-debouncing-and-throttling/) or review community-submitted examples on the [DEV Community Explainer](https://dev.to/amitkhonde/explain-to-me-like-i-am-5-debounce-vs-throttle-n7j). 
+
+For production applications, it is generally recommended to use battle-tested utility libraries like **Lodash** or **RxJS** rather than writing custom logic from scratch to avoid subtle timer bugs. [](https://www.syncfusion.com/blogs/post/javascript-debounce-vs-throttle)
+
+Would you like to see a **JavaScript code implementation** of one of these techniques, or do you need help implementing them within a specific framework like **React**?
+
+* [](https://stackoverflow.com/questions/25991367/difference-between-throttling-and-debouncing-a-function)  
+Stack Overflow  
+Difference between throttling and debouncing a function  
+September 23, 2014 — Appropriate Use Cases: Throttling is best suited for scenarios requiring regular updates during continuous events, such as scrolli...
+* [](https://kettanaito.com/blog/debounce-vs-throttle)  
+kettanaito.com  
+Debounce vs Throttle: Definitive Visual Guide - kettanaito.com  
+Throttle: Reduces function calls to exactly one per specified duration (e.g., 500ms), ignoring intermediate calls within the time ...
+* [](https://www.greatfrontend.com/questions/quiz/explain-the-concept-of-debouncing-and-throttling)  
+GreatFrontEnd  
+Explain the concept of debouncing and throttling  
+Debouncing and throttling are techniques used to control the rate at which a function is executed. Debouncing ensures that a funct...
+
+Show all
+
+# what does lodash debounce do
+
+The **`lodash.debounce`** method is a utility function that **delays the execution of a function until a specified amount of time has passed since the last time it was called**. [](https://dev.to/devcore/how-to-use-lodash-debounce-method-fkc)
+
+If the debounced function is triggered multiple times in rapid succession, the countdown timer **resets with every single call**. The underlying function will only run _once_—after the user stops triggering the event and the timer finally runs out. [](https://www.geeksforgeeks.org/javascript/lodash-%5F-debounce-method/)
+
+---
+
+### 💡 Why Use It? (The Problem it Solves)
+
+Some browser events fire dozens of times per second (like typing, scrolling, or resizing a window). If you attach a heavy operation—like an API fetch request—directly to those events, your application will lag, freeze, or spam your server with unnecessary requests. [](https://www.youtube.com/watch?v=UmYfEdKFI-E)
+
+Debouncing acts as a "buffer" to protect application performance. [](https://www.youtube.com/watch?v=lKjKPyIuC70)
+
+### 🛠️ Common Use Cases
+
+* **Search Auto-complete:** Instead of sending an API request on _every single keystroke_, debounce waits until the user pauses typing for 300ms before fetching the search results.
+* **Window Resizing:** Rearranging layout elements only _after_ the user finishes dragging and resizing the window.
+* **Form Validation:** Checking if an email is available only after the user stops typing it in.
+* **Double-Click Prevention:** Preventing a "Submit Order" button from being fired twice if a user rapidly clicks it. [](https://ashuvssut.hashnode.dev/using-lodash-debounce-and-throttle-in-react)
+
+---
+
+### 💻 Code Example
+
+Here is a look at how you apply it in JavaScript:
+
+javascript
+
+```
+import { debounce } from 'lodash'; // or require('lodash/debounce')
+
+// 1. The original function you want to delay
+function saveInput(text) {
+  console.log('Saving data:', text);
+}
+
+// 2. Wrap it in debounce (setting a 500ms delay)
+const processChange = debounce((text) => saveInput(text), 500);
+
+// 3. Simulating a user typing "Hello" rapidly
+processChange('H');  // Timer starts...
+processChange('He'); // Timer resets!
+processChange('Hel');// Timer resets!
+// ...user stops typing...
+
+// RESULT:
+// Only "Saving data: Hel" will print to the console, 
+// exactly 500ms after the last keystroke.
+
+```
+
+
+
+### ⚙️ Extra Features in Lodash
+
+Unlike a basic custom `setTimeout` wrapper, the official Lodash debounce function provides advanced features via an options object: [](https://es-toolkit.dev/compat/reference/function/debounce.html)
+
+* **`leading`**: If set to `true`, it triggers the function on the _very first_ call immediately, then blocks subsequent calls until there is a pause.
+* **`trailing`**: If set to `true` (default), it executes the function _after_ the timeout expires.
+* **`.cancel()`**: Allows you to manually cancel a pending function execution before the timer finishes. [](https://dev.to/devcore/how-to-use-lodash-debounce-method-fkc)
+
+### ⚖️ Debounce vs. Throttle
+
+* **Debounce** groups a burst of events together and fires the function **only once at the very end**.
+* **Throttle** guarantees that a function executes at a **regular, predictable interval** (e.g., exactly once every 200ms) no matter how many times the event is triggered. [](https://www.geeksforgeeks.org/javascript/lodash-%5F-debounce-method/)
+
+Are you trying to implement this in a specific framework like **React** or **Vue**, or would you like to see how to write a **vanilla JavaScript** alternative without loading the Lodash library?
+
+* [](https://dev.to/devcore/how-to-use-lodash-debounce-method-fkc)  
+DEV Community  
+How to use Lodash debounce method? - DEV Community  
+A debounced function is a function that delays its execution a certain amount of milliseconds after the last call was received.
+* [](https://www.geeksforgeeks.org/javascript/lodash-%5F-debounce-method/)  
+GeeksforGeeks  
+Lodash \_.debounce() Method - GeeksforGeeks  
+debounce() creates a debounced version of a function, ensuring it is only called once after a certain wait period has elapsed sinc...
+* [](https://www.youtube.com/watch?v=UmYfEdKFI-E)  
+YouTube·Carmelle Codes  
+React Debounce Uncontrolled Input onChange Example  
+Aug 28, 2021 — The lodash documentation provides further details on the \`debounce\` function, including a \`cancel\` function.  
+4:27
+
+Show all
+
+# what does debounce or throttle do in a timeline
+
+**Debounce** and **throttle** are performance optimization techniques used to control how many times a function executes over time. If you look at them on a timeline, they alter when and how frequently events trigger a response during a rapid burst of action (like continuous typing or scrolling). [](https://tomekdev.com/posts/throttle-vs-debounce-on-real-examples)
+
+Here is exactly how both behaviors look and function on a timeline with a hypothetical **2-second limit**:
+
+---
+
+### ⏳ Debounce: "Wait until I'm done"
+
+Debounce delays execution until there is a **period of total silence**. Every time a new event occurs, the timeline clock resets. [](https://dev.to/amitkhonde/explain-to-me-like-i-am-5-debounce-vs-throttle-n7j)
+
+* **The Behavior:** It groups a cluster of rapid events into a single event. [](https://www.reddit.com/r/reactjs/comments/roy2om/debounce%5Fvs%5Fthrottle/)
+* **Timeline View (2s window):**
+  * You trigger an event at `0s`. The system sets a timer for `2s`.
+  * You trigger it again at `1s`. The old timer is canceled, and a new `2s` timer starts.
+  * You trigger it again at `2s`. The timer resets again.
+  * You stop doing anything. At `4s` (2 seconds after your last action), the function **finally runs once**. [](https://siri-sha.medium.com/debouncetime-vs-throttletime-side-by-side-timeline-rxjs-operators-103f5332f857)
+* **Best Used For:** Text search inputs (waiting until the user stops typing to fetch results) and window resizing. [](https://skilled.dev/guides/debounce-vs-throttle)
+
+---
+
+### ⏱️ Throttle: "Spread it out evenly"
+
+Throttle enforces a **maximum frequency**, allowing the function to execute at steady, controlled intervals regardless of how constantly the event is being triggered. [](https://www.linkedin.com/pulse/debounce-vs-throttle-simplest-explanation-interview-code-hari-mohan-ybfbc)
+
+* **The Behavior:** It provides regular, periodic updates during continuous activity. [](https://skilled.dev/guides/debounce-vs-throttle)
+* **Timeline View (2s window):**
+  * You trigger an event at `0s`. The function **runs immediately**, and a 2-second cooldown begins.
+  * You spam the event at `0.5s`, `1s`, and `1.5s`. The timeline **ignores all of them**.
+  * At `2.0s`, the cooldown ends. The next time you trigger the event (e.g., at `2.1s`), the function **runs again**. [](https://dev.to/amitkhonde/explain-to-me-like-i-am-5-debounce-vs-throttle-n7j)
+* **Best Used For:** Infinite scrolling, mouse movement tracking, and game loop actions. [](https://css-tricks.com/debouncing-throttling-explained-examples/)
+
+---
+
+### 📊 Side-by-Side Timeline Comparison
+
+Imagine a user **constantly spamming a button or scrolling** from `0 seconds` to `5 seconds`:
+
+| Time   | User Action       | Debounce Timeline (2s window)        | Throttle Timeline (2s window)       |
+| ------ | ----------------- | ------------------------------------ | ----------------------------------- |
+| **0s** | ⚡ Trigger         | _Timer starts..._                    | 🟢 **Executes immediately**         |
+| **1s** | ⚡ Trigger         | _Timer resets..._                    | ❌ Ignored (in cooldown)             |
+| **2s** | ⚡ Trigger         | _Timer resets..._                    | ❌ Ignored (in cooldown)             |
+| **3s** | ⚡ Trigger         | _Timer resets..._                    | 🟢 **Executes** (new window starts) |
+| **4s** | ⚡ Trigger         | _Timer resets..._                    | ❌ Ignored (in cooldown)             |
+| **5s** | 🛑 _Stops acting_ | _Waiting for silence..._             | ❌ Ignored                           |
+| **7s** | 💤 Quiet          | 🟢 **Executes once** (2s after stop) | 💤 Cooldown finished, waiting       |
+
+Are you currently building a specific feature (like a **search bar**, **infinite scroll**, or **window resize listener**)? Tell me what you're working on, and I can tell you **which one to choose** and give you the **exact code snippet** for it.
+
+* [](https://dev.to/amitkhonde/explain-to-me-like-i-am-5-debounce-vs-throttle-n7j)  
+DEV Community  
+Explain to me like I am 5: Debounce vs Throttle - DEV Community  
+Throttle: Executes a function at regular, fixed time intervals; if called again before the interval elapses, the request is ignore...
+* [](https://skilled.dev/guides/debounce-vs-throttle)  
+Skilled.dev  
+Debounce vs. throttle in JavaScript - Skilled.dev  
+An event at 600 ms can run immediately because the cooldown has expired. A useful contract specifies more than the word “throttle.
+* [](https://www.reddit.com/r/reactjs/comments/roy2om/debounce%5Fvs%5Fthrottle/)  
+Reddit·r/reactjs  
+Debounce vs throttle : r/reactjs - Reddit  
+Dec 26, 2021 — Debounce - Group calls within a threshold time period into a single call. (user interactive, spam clicking something, changing inp...
+
+Show all
+
+# what does it return when you call a lodash debounced fn
+
+When you call a function created by [Lodash \_.debounce](https://lodash.com/docs/), it returns **the result of the last actual function invocation**, if it has already been executed. If the original function has not yet been executed, calling the debounced function will return **`undefined`**. [](https://lodash.com/docs/)
+
+Because debouncing inherently delays execution, the function you are calling does not immediately run your logic or compute a fresh return value. Instead: [](https://dev.to/devcore/how-to-use-lodash-debounce-method-fkc)
+
+* **Initial/Frequent Calls:** If the underlying function has not been fired yet, calling the debounced function schedules the execution and returns `undefined`. [](https://github.com/lodash/lodash/issues/4700)
+* **Subsequent Calls:** If the underlying function has already fired during a previous cycle, calling the debounced function returns the cached result of that _most recent_ invocation. [](https://github.com/lodash/lodash/issues/4400)
+
+### ⚠️ The Async Gotcha
+
+If your underlying function is asynchronous and returns a `Promise`, calling the debounced function will **not** return a new `Promise` for the upcoming call. It will return either `undefined` or the `Promise` instance from the _previous_ invocation. If you need to handle return values or promises dynamically from a debounced function, you will typically need to use a wrapper pattern, a custom promise-based utility, or an alternative library like [perfect-debounce](https://www.pkgpulse.com/guides/perfect-debounce-vs-lodash-debounce-vs-throttle-2026). 
+
+Are you trying to **extract data** or handle a **Promise/async payload** from your debounced function? I can show you how to handle the result using callbacks or a wrapper.
+
+* [](https://dev.to/devcore/how-to-use-lodash-debounce-method-fkc)  
+DEV Community  
+How to use Lodash debounce method? - DEV Community  
+Jul 8, 2021 — A debounced function is a function that delays its execution a certain amount of milliseconds after the last call was received.
+* [](https://github.com/lodash/lodash/issues/4700)  
+GitHub  
+Debounce return undefined if func return promise · Issue #4700  
+request() { return Promise. resolve(); } const debounced = debounce(request, 2000);
+* [](https://lodash.com/docs/)  
+Lodash  
+Lodash Documentation  
+Subsequent calls to the debounced function return the result of the last func invocation. func invocation is deferred until to the...
+
+Show all
+
+# can you pass an async fn to lodash debounce
+
+### can you pass an async fn to lodash debounce
+
+**Yes, you can pass an async function directly to Lodash's `_.debounce` method.** When the debounced function is triggered, it will correctly execute your asynchronous code after the specified delay. [](https://stackoverflow.com/questions/58055085/lodash-debounce-async-await)
+
+However, you must be aware of an important catch regarding return values: **`_.debounce` cannot return a Promise or be awaited.**
+
+#### The Problem with `await debounced()`
+
+Because Lodash's debounce method is designed to return the cached result of a synchronous function execution, it executes "fire-and-forget" style.
+
+* On the first call, it returns `undefined` (because the delay has not completed yet).
+* Even if you use `await debounced()`, it will **not** pause execution to wait for your API call or database query to finish. [](https://github.com/lodash/lodash/issues/4400)
+
+#### The Right Way to Do It
+
+Instead of trying to await the wrapper, **handle the asynchronous logic entirely inside the inner function**: [](https://carlrippon.com/using-lodash-debounce-with-react-and-ts/)
+
+javascript
+
+```
+import _ from 'lodash';
+
+// 1. Define the debounced wrapper
+const debouncedSearch = _.debounce(async (searchTerm) => {
+  try {
+    const response = await fetch(`https://example.com{searchTerm}`);
+    const data = await response.json();
+    
+    // Handle your data/state update directly within the async function
+    console.log("Search results:", data);
+  } catch (error) {
+    console.error("API error:", error);
+  }
+}, 500);
+
+// 2. Call it fire-and-forget style (Do NOT try to await this call)
+inputElement.addEventListener('input', (e) => {
+  debouncedSearch(e.target.value); 
+});
+
+```
+
+
+
+#### Alternatives if you _must_ await the wrapper
+
+If your architecture relies on receiving the resolved Promise from the debounced wrapper itself, standard Lodash will not work. You should look into dedicated community packages designed specifically for this, such as [debounce-async](https://www.npmjs.com/package/debounce-async). 
+
+Are you using this inside a framework like **React** or **Vue**? If so, let me know which one, as you will likely need to wrap the debounced function in something like `useCallback` or `useRef` to prevent it from resetting on every component rerender.
+
+* [](https://carlrippon.com/using-lodash-debounce-with-react-and-ts/)  
+Carl Rippon  
+Using Lodash debounce with React and TypeScript  
+We can lift the debounced function outside of the handleChange to resolve the problem: there is a more performant approach. the de...
+* [](https://dev.to/alexdrocks/using-lodash-debounce-with-react-hooks-for-an-async-data-fetching-input-2p4g)  
+DEV Community  
+Using Lodash Debounce with React Hooks for an Async Data Fetching Input or use a Custom Hook. - DEV Community  
+Lodash Integration: useMemo or useCallback required to preserve debounce function definition across React rerenders; cleanup via d...
+* [](https://medium.com/@ramunarasinga/asyncdebounce-function-in-refine-codebase-a-react-framework-865d3ba5848c)  
+Medium·Ramu Narasinga  
+asyncDebounce function in Refine codebase, a React ...  
+The original debounce function doesn't work well with async functions, \* It won't return a promise to resolve/reject and therefore...
+
+Show all
+
+# use cases of react-use use async
+
+### use cases of react-use use async
+
+The **`useAsync` hook from the `react-use` library** is a utility designed to manage the lifecycle of asynchronous operations. It eliminates the boilerplate of manually declaring and updating multiple state variables (like `loading`, `error`, and `value`) inside a `useEffect` hook. [](https://javascript.plainenglish.io/i-tried-reacts-use-hook-in-my-project-here-s-what-blew-my-mind-a484bd1bc8e5)
+
+The primary use cases for `useAsync` span any scenario where you execute a JavaScript function that returns a Promise and you need to track its resolution state: [](https://medium.com/@blue%5F%5F%5Fgene/supercharge-your-react-apps-with-useasyncstate-a-seamless-approach-to-asynchronous-state-723757a3c50b)
+
+#### 1\. Standard API Data Fetching on Mount
+
+Instead of setting up separate `loading`, `error`, and `data` states using `useState`, `useAsync` resolves a promise as soon as the component mounts. [](https://reactuse.com/effect/useasynceffect/)
+
+* **Example:** Fetching a user profile, product list, or dashboard statistics from a REST or GraphQL API.
+* **Why it helps:** Automatically transitions your UI seamlessly from a loading spinner, to the actual data, or down an error handling boundary. [](https://github.com/slorber/react-async-hook)
+
+#### 2\. Dependency-Triggered Re-fetching
+
+If the asynchronous task depends on changing variables (like page numbers, search filters, or a selected row ID), `useAsync` can automatically re-execute whenever those dependencies change. [](https://reactuse.com/effect/useasynceffect/)
+
+* **Example:** A search input field where the query changes, or switching between tabs where each tab requires a fresh backend lookup.
+* **Why it helps:** It accepts a dependency array just like React's native `useEffect`, guaranteeing that your async operations track application state changes. [](https://www.youtube.com/watch?v=sf4eGE9GTxc&t=100)
+
+#### 3\. Asynchronous Form Submissions and Mutations
+
+While `useAsync` can run automatically on mount, you can also leverage its manual execution counterpart (`useAsyncRetry` or tracking side-effects) to fire when triggered by a user action. 
+
+* **Example:** Submitting user credentials during login, posting a new blog article, or executing a payment transaction.
+* **Why it helps:** Safely captures backend validation errors and disables submit buttons natively while a network request is pending to prevent duplicate submissions.
+
+#### 4\. Direct Interaction with Browser Web APIs
+
+Not all promises come from backend endpoints. Many local browser APIs operate asynchronously and require the exact same loading/error state management. [](https://www.reddit.com/r/reactjs/comments/1hrsou7/when%5Fshould%5Fi%5Fuse%5Fthe%5Fnew%5Fuse%5Fhook%5Fim%5Fconfused/)
+
+* **Example:**
+  * Querying local databases via IndexedDB.
+  * Requesting device permissions (camera, microphone, geolocation).
+  * Compressing an image via `canvas.toBlob()`.
+  * Reading files using the HTML5 `FileReader` API. [](https://www.reddit.com/r/reactjs/comments/1hrsou7/when%5Fshould%5Fi%5Fuse%5Fthe%5Fnew%5Fuse%5Fhook%5Fim%5Fconfused/)
+
+#### 5\. On-Demand "Retry" and Polling Mechanisms
+
+When network conditions are volatile, users often need a manual "Try Again" fallback without forcing a full page reload. [](https://www.youtube.com/watch?v=B%5F2E96URooA&t=2348)
+
+* **Example:** Pull-to-refresh feeds, financial tickers that allow manual refreshes, or failing connection screens.
+* **Why it helps:** Variants like `useAsyncRetry` expose a `retry()` function directly out of the box, allowing you to re-evaluate the exact same async operation cleanly.
+
+---
+
+#### Comparison: `useAsync` vs. Native React `useEffect`
+
+| Feature                   | Using Native useEffect \+ useState                             | Using react-use useAsync                                         |
+| ------------------------- | -------------------------------------------------------------- | ---------------------------------------------------------------- |
+| **Boilerplate**           | High (Requires 3+ useState calls and a try/catch block)        | Low (One clean destructuring statement)                          |
+| **State Synchronization** | Manual tracking of loading and error states                    | Automatic based on the Promise's state lifecycle                 |
+| **Race Conditions**       | Manual cleaning or ignore-flags required to fix stale closures | Built-in tracking helps insulate against unmounted state updates |
+
+Are you trying to implement `useAsync` for a **specific scenario** (like a fetch request or form submission), or are you evaluating how it compares to newer alternatives like **React 19's native `use` hook** or **TanStack Query**? Let me know so I can provide code snippets or tailored advice! [](https://react.dev/reference/react/use)
+
+* [](https://www.reddit.com/r/reactjs/comments/1hrsou7/when%5Fshould%5Fi%5Fuse%5Fthe%5Fnew%5Fuse%5Fhook%5Fim%5Fconfused/)  
+Reddit·r/reactjs  
+When should I use the new "use()" hook? I'm confused. : r/reactjs  
+January 2, 2025 — The \`use()\` hook can be used with local asynchronous operations like \`canvas.toBlob()\` or IndexedDB lookups by passing a cached pr...
+* [](https://github.com/slorber/react-async-hook)  
+GitHub  
+GitHub - slorber/react-async  
+The ability to inject remote/async data into a React component is a very common React need. Later we might support Suspense as wel...
+* [](https://www.youtube.com/watch?v=B%5F2E96URooA&t=2348)  
+YouTube·React Conf  
+Async React  
+Jan 17, 2026 — Comments · Asynchronous Javascript Tutorial - Promises and Async Await Explained · Frontend Nation 2026: Designing the In-Between ...  
+1m
+
+Show all
+
+# what if you pass no deps array to react-use use async
+
+If you pass no dependency array to `react-use`’s `useAsync` hook, it **defaults to an empty array (`[]`)** under the hood. [](https://github.com/streamich/react-use/blob/master/src/useAsync.ts)
+
+This behavior is defined directly in the react-use source code:
+
+typescript
+
+```
+export default function useAsync<T extends FunctionReturningPromise>(
+  fn: T,
+  deps: DependencyList = [] // Defaults to an empty array if omitted!
+) { ... }
+
+```
+
+
+
+### What this means for your application:
+
+* 🏃‍♂️ **Runs only once:** The asynchronous function will trigger **only on the initial component mount**. [](https://github.com/streamich/react-use/blob/master/src/useAsync.ts)
+* 🛑 **No re-runs on render:** It will not execute again on subsequent component re-renders, even if variables used inside the async function change.
+* ⚠️ **Stale closures:** If your async function references props or local state, those values will become "stale" (frozen at what they were during the initial render) because the hook has no way of knowing it needs to re-evaluate when they update.
+
+### How it differs from native React hooks:
+
+This behavior is **different from native React hooks** like `useEffect` or `useMemo`: [](https://github.com/streamich/react-use/issues/1671)
+
+* In **`useEffect`**, omitting the dependency array causes the effect to run on **every single render**.
+* In **`react-use`'s `useAsync`**, omitting the array treats it exactly like passing `[]`, running it **only once**. [](https://stackoverflow.com/questions/58579426/in-useeffect-whats-the-difference-between-providing-no-dependency-array-and-an)
+
+💡 **Best Practice:** If your asynchronous function relies on any dynamic variables (like an ID, search query, or status), always explicitly provide them in the dependency array to ensure the function re-runs when they change. [](https://github.com/streamich/react-use/blob/master/docs/useAsync.md)
+
+Are you running into an issue where your async function is **failing to update** when props change, or are you trying to optimize your component's **initial load performance**? Let me know what you're building so I can suggest the right approach!
+
+* [](https://github.com/streamich/react-use/issues/1671)  
+GitHub  
+useAsyncFn - deps parameter should be required · Issue #1671  
+dependency array causes the value to be recomputed on every render, and in useEffect an undefined array causes the effect to fire ...
+* [](https://stackoverflow.com/questions/58579426/in-useeffect-whats-the-difference-between-providing-no-dependency-array-and-an)  
+Stack Overflow  
+In useEffect, what's the difference between providing no ...  
+If you pass no dependency array at all, your Effect runs after every single render (and re-render) of your component.
+* [](https://github.com/streamich/react-use/blob/master/docs/useAsync.md)  
+GitHub  
+react-use/docs/useAsync.md at master - GitHub  
+React hook that resolves an async function or a function that returns a promise;.
+
+Show all
+
 
