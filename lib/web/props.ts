@@ -60,7 +60,7 @@ export function p<T>(
 
   for (const [key, value] of Object.entries(props)) {
     if (key == 'class' || key == 'className') {
-      if (Array.isArray(value)) {
+      if (is(value, 'array')) {
         converted_props.className = clsx(...value)
       } else {
         converted_props.className = clsx(value)
