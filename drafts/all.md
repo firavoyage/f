@@ -1066,7 +1066,7 @@ para:
 - research gnome libadwaita
 - theme adwaita refactor vanillajs
 - design layout
-- dep render md search files
+- deps render md search files
 
 quote:
 

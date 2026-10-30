@@ -5559,6 +5559,1653 @@ Feb 25, 2025 — FuzzyFinder (FZF) is a command line utility. Selecting an item 
 
 Show all
 
+# how to santinize shell arg
+
+The best way to sanitize a shell argument is to **avoid passing inputs through a shell entirely by executing commands as an array of arguments.** When you use your programming language's native process execution library to pass arguments directly to an executable, the operating system bypasses shell evaluation (`/bin/sh` or `/bin/bash`), making **command injection physically impossible**. [](https://macosx.com/threads/sanitizing-shell-arguments-in-python.305805/)
+
+If you absolutely must use a shell, escaping rules are complex, highly fragile, and depend entirely on the specific shell being used. Below is a breakdown of how to handle this safely across different scenarios. [](https://docs.rs/shell-sanitize)
+
+---
+
+### 1\. The Ultimate Golden Rule: Avoid the Shell
+
+Most programming languages provide standard APIs to execute system commands safely. Instead of passing a single long string, pass an array where the first element is the command, and the remaining elements are the unescaped arguments. [](https://macosx.com/threads/sanitizing-shell-arguments-in-python.305805/)
+
+| Environment / Language | ❌ Vulnerable (Shell Evaluation)           | Safe (Bypasses Shell)                      |
+| ---------------------- | ----------------------------------------- | ------------------------------------------ |
+| **Python**             | os.system(f"echo {user\_input}")          | subprocess.run(\["echo", user\_input\])    |
+| **Node.js**            | exec(\\echo ${user\_input}\`)\`           | execFile('echo', \[user\_input\]) or spawn |
+| **Go**                 | exec.Command("sh", "-c", "echo " + input) | exec.Command("echo", input)                |
+| **Rust**               | Command::new("sh").arg("-c").arg(...)     | Command::new("echo").arg(user\_input)      |
+
+---
+
+### 2\. When the Shell is Unavoidable
+
+If you are writing a pure Bash script or dealing with remote SSH commands where a shell _must_ parse the input, use the following strategies: [](https://docs.rs/shell-sanitize)
+
+#### A. Use Proper Quoting (Bash/Sh)
+
+In shell scripts, **always wrap your variables in double quotes**. [](https://stackoverflow.com/questions/4273074/sanitize-user-input-in-bash-for-security-purposes)
+
+* **Vulnerable:** `ls $INPUT` (If `INPUT` is `file.txt; rm -rf /`, the shell evaluates the semicolon and executes the destructive command).
+* **Safe:** `ls "$INPUT"` (The shell treats the entire expansion as a single string literal/argument). [](https://stackoverflow.com/questions/4273074/sanitize-user-input-in-bash-for-security-purposes)
+
+#### B. Use Built-in Escaping Engines
+
+If you need to dynamically construct a shell command string safely, leverage built-in utilities designed for escaping:
+
+* **In Bash (using `printf %q`):**  
+The `%q` format modifier forces Bash to escape all special characters safely for re-use as a shell argument.  
+bash  
+```  
+# Safely escapes spaces, semicolons, backticks, etc.  
+printf -v sanitized_arg '%q' "$user_input"  
+# Now safe to use in an evaluation context  
+eval "echo $sanitized_arg"  
+```  
+
+* **In Python (using `shlex.quote`):**  
+If you are forced to use `shell=True` in Python, wrap your string arguments in `shlex.quote()`.  
+python  
+```  
+import shlex  
+import os  
+unsafe_input = "filename; rm -rf /"  
+safe_input = shlex.quote(unsafe_input) # Becomes "'filename; rm -rf /'"  
+os.system(f"ls {safe_input}")  
+```  
+
+
+#### C. Enforce Strict Allowlists (Input Validation)
+
+Instead of trying to "clean" or fix a bad string (blacklisting), **reject any input that doesn't strictly match a known safe pattern** (allowlisting). [](https://www.reddit.com/r/linuxadmin/comments/11l2y25/sanitizing%5Finput%5Fto%5Fa%5Fsu%5Fenabled%5Fbash%5Fscript%5Fto/)
+
+For instance, if your argument should only be an alphanumeric identifier, validate it using a regular expression or a shell `case` statement before using it: [](https://unix.stackexchange.com/questions/355453/how-to-re-write-this-function-to-avoid-argument-injection)
+
+bash
+
+```
+# Bash example to reject anything that isn't a letter, number, hyphen, or underscore
+if [[ ! "$user_input" =~ ^[a-zA-Z0-9_-]+$ ]]; then
+    echo "Error: Invalid characters detected." >&2
+    exit 1
+fi
+
+# Proceed normally
+ls "/vids/$user_input"
+
+```
+
+
+
+To give you the most accurate example, could you tell me:
+
+* What **programming language** or **shell** are you working in?
+* What **command** are you trying to run with this argument?
+
+* [](https://macosx.com/threads/sanitizing-shell-arguments-in-python.305805/)  
+macosx.com  
+Sanitizing shell arguments in Python | Mac Support  
+If you supply just one string, Python sends it to the shell for interpretation, but if you supply a LIST of strings, then it will ...
+* [](https://docs.rs/shell-sanitize)  
+Docs.rs  
+shell\_sanitize - Rust - Docs.rs  
+This crate rejects dangerous input with a clear error instead of trying to transform it into something “safe”. does not parse or v...
+* [](https://stackoverflow.com/questions/4273074/sanitize-user-input-in-bash-for-security-purposes)  
+Stack Overflow  
+Sanitize user input in bash for security purposes  
+Because of the quotes the $INPUT variable does not undergo word splitting. The ls will look for a file named filename; rm -rf / . ...
+
+Show all
+
+# what characters should be replaced to santinize a string of shell arg
+
+To properly sanitize a string for use as a shell argument and prevent command injection, the safest approach is to **avoid manual character replacement entirely and use proper escaping or quoting mechanisms**.
+
+If you must manually inspect or sanitize a string by filtering individual characters, the core strategy depends on how the argument is wrapped.
+
+### 1\. If the argument is wrapped in Single Quotes (`'argument'`)
+
+This is the strongest form of shell quoting. Inside single quotes, **no characters are interpreted as special** except the single quote itself.
+
+* **Character to handle:** `'` (Single Quote)
+* **How to sanitize:** You cannot escape a single quote with a backslash inside single quotes (`'\''` actually ends the quote, adds an escaped quote, and starts a new quote). To safely handle it, you must break out of the quote, insert the escaped quote, and restart the quote.
+* **Replacement pattern:** Replace `'` with `'\''`
+
+### 2\. If the argument is wrapped in Double Quotes (`"argument"`)
+
+Double quotes allow variable expansion and command execution. They are much harder to secure because many characters retain their special meanings.
+
+* **Characters to escape or remove:**
+  * `$` (Dollar sign - triggers variable evaluation or subshells)
+  * `` ` `` (Backtick - triggers command substitution)
+  * `\` (Backslash - the escape character itself)
+  * `"` (Double quote - terminates the argument string)
+  * `!` (Exclamation point - triggers history expansion in some shells)
+* **How to sanitize:** Prepend a backslash (`\`) to each of these characters.
+
+### 3\. If the argument is Unquoted
+
+If an argument is not enclosed in quotes, the shell uses specific characters to separate commands, split arguments, or expand paths.
+
+To be safe, you would need to escape or strip a massive list of **shell metacharacters**:
+
+* **Whitespace:** `` (Space), `\t` (Tab), `\n` (Newline), `\r` (Carriage return)
+* **Command Separators / Control:** `;`, `&`, `|`, `(`, `)`, `{`, `}`, `<`, `>`, `\n`
+* **Expansions / Wildcards:** `*`, `?`, `[`, `]`, `$`, `` ` ``, `~`
+* **Quotes & Escapes:** `'`, `"`, `\`
+
+---
+
+### The Recommended Solution: Use Built-in Tools
+
+Instead of creating a custom replacement function (which often leads to security vulnerabilities), use your programming language's standard library to format the argument safely:
+
+| Language    | Safe Approach                                                                            |
+| ----------- | ---------------------------------------------------------------------------------------- |
+| **Python**  | Use shlex.quote(string)                                                                  |
+| **Node.js** | Avoid shell execution; use execFile or spawn with an array of arguments instead of exec. |
+| **Bash**    | Use printf '%q' "$string" or ${var@Q}                                                    |
+| **PHP**     | Use escapeshellarg($string)                                                              |
+| **Ruby**    | Use Shellwords.escape(string)                                                            |
+
+If you are writing code right now, what **programming language** are you using? I can provide the exact snippet or function to secure your inputs natively.
+
+# what if you pass newline into single quoted shell arg
+
+If you pass a literal newline inside a single-quoted string, the **shell will preserve the newline as a literal part of the argument**. [](https://superuser.com/questions/163515/bash-how-to-pass-command-line-arguments-containing-special-characters)
+
+Because single quotes provide the strongest form of quoting in POSIX shells (like Bash, Zsh, and Sh), they suppress all special meanings of characters, expansions, and word splitting. This includes the newline character itself. [](https://unix.stackexchange.com/questions/560847/is-there-a-way-to-safely-break-a-long-command-line-which-is-inside-quotes)
+
+### What Happens in Practice
+
+When you press `Enter` after opening a single quote, the shell recognizes that the command is not finished yet. Instead of executing the command, it changes the prompt (usually to a secondary prompt like `>`) and lets you continue typing on the next line. [](https://qmacro.org/blog/posts/2020/11/01/the-subtle-art-of-quoting-newline-characters/)
+
+#### Example
+
+bash
+
+```
+echo 'Hello
+World'
+
+```
+
+
+
+**Output:**
+
+text
+
+```
+Hello
+World
+
+```
+
+
+
+The shell treats `'Hello\nWorld'` as a **single, multi-line argument** passed directly to the `echo` command.
+
+### Key Rules to Keep in Mind
+
+* **No Escaping Needed:** You do not need to use `\n` or a backslash. In fact, if you write `'\n'`, it will literally print the characters `\` and `n`. [](https://unix.stackexchange.com/questions/560847/is-there-a-way-to-safely-break-a-long-command-line-which-is-inside-quotes)
+* **The Continuation Prompt:** The `>` you see on your terminal when you hit Enter is just the shell's `PS2` environment variable indicating the string is still open. It is not part of your text data.
+* **Alternative (ANSI-C Quoting):** If you prefer not to hit Enter manually in your script or terminal, you can use Bash's ANSI-C quoting syntax (`$'...'`). This tells the shell to interpret backslash escape sequences: [](https://www.linuxteck.com/bash-quoting-rules-for-cleaner-shell-scripts/)  
+bash  
+```  
+echo $'Hello\nWorld'  
+```  
+
+
+Are you writing a **script** where a multi-line string is breaking formatting, or are you trying to **pass multi-line text** into a specific command like `awk`, `sed`, or `curl`?
+
+* [](https://superuser.com/questions/163515/bash-how-to-pass-command-line-arguments-containing-special-characters)  
+Super User  
+linux  
+Enclosing characters in single quotes preserves the literal value of each character within the quotes. A single quote may not occu...
+* [](https://unix.stackexchange.com/questions/560847/is-there-a-way-to-safely-break-a-long-command-line-which-is-inside-quotes)  
+Unix & Linux Stack Exchange  
+Is there a way to safely break a long command line, which is ...  
+A backslash inside a single-quoted argument stays literal, even if just before a newline; the newline stays literal. Backslash+new...
+* [](https://www.linuxteck.com/bash-quoting-rules-for-cleaner-shell-scripts/)  
+LinuxTeck  
+5 Bash Quoting Rules for Cleaner Shell Scripts  
+ANSI-C Quoting: Uses $'...' syntax to interpret C-style backslash escape sequences like newlines and tabs directly.
+
+Show all
+
+# what if you pass newline into double quoted shell arg
+
+### what if you pass newline into double quoted shell arg
+
+When you pass a newline into a double-quoted shell argument, the behavior depends entirely on whether it is a **literal newline** or an **escaped newline**.
+
+#### 1\. Literal Newline
+
+If you literally press `Enter` inside the double quotes, **the newline is preserved as part of the string argument**, and the shell waits for you to close the quote before executing the command. [](https://unix.stackexchange.com/questions/414349/n-in-double-quotes-does-not-work)
+
+bash
+
+```
+$ echo "hello
+world"
+
+```
+
+
+
+**Output:**
+
+text
+
+```
+hello
+world
+
+```
+
+
+
+The shell treats this as a single argument containing an embedded line feed character (`\n`). [](https://unix.stackexchange.com/questions/414349/n-in-double-quotes-does-not-work)
+
+#### 2\. Escaped Newline
+
+If you place a backslash (`\`) immediately before pressing `Enter`, **the newline is stripped entirely**, acting as a line-continuation character. [](https://qmacro.org/blog/posts/2020/11/01/the-subtle-art-of-quoting-newline-characters/)
+
+bash
+
+```
+$ echo "hello \
+world"
+
+```
+
+
+
+**Output:**
+
+text
+
+```
+hello world
+
+```
+
+
+
+According to the [Bash Reference Manual](https://www.gnu.org/software/bash/manual/html%5Fnode/Double-Quotes.html), the backslash loses its literal meaning only when followed by specific characters, including a newline. When it precedes a newline, both the backslash and the newline are removed from the final argument string. [](https://www.gnu.org/software/bash/manual/html%5Fnode/Double-Quotes.html)
+
+#### Common Pitfall: The literal `\n` sequence
+
+If you type the literal characters `\n` inside double quotes, **the shell does not convert it into a newline character**. [](https://unix.stackexchange.com/questions/414349/n-in-double-quotes-does-not-work)
+
+bash
+
+```
+$ echo "hello\nworld"
+# Output: hello\nworld
+
+```
+
+
+
+If you want to dynamically inject a real newline character inside double quotes without breaking your command across multiple lines, users on [Unix Stack Exchange](https://unix.stackexchange.com/questions/414349/n-in-double-quotes-does-not-work) agree on using **ANSI-C quoting (`$'\n'`)** via a variable or direct concatenation: [](https://unix.stackexchange.com/questions/414349/n-in-double-quotes-does-not-work)
+
+bash
+
+```
+# Alternative 1: Concatenation
+$ echo "hello"$'\n'"world"
+
+# Alternative 2: Variable Expansion
+$ NL=$'\n'
+$ echo "hello${NL}world"
+
+```
+
+
+
+Are you trying to **pass a newline to a specific command** (like `sed`, `awk`, or a script), or are you experiencing unexpected formatting issues in a script?
+
+* [](https://unix.stackexchange.com/questions/414349/n-in-double-quotes-does-not-work)  
+Unix & Linux Stack Exchange  
+bash - $'\\n' in double quotes does not work  
+January 2, 2018 — To pass a newline character within a command-line argument, several methods can be used:\\n\* Embed a literal newline within double ...
+* [](https://www.gnu.org/software/bash/manual/html%5Fnode/Double-Quotes.html)  
+GNU.org  
+Double Quotes (Bash Reference Manual)  
+Double quotes preserve literal character values except for: \* $: retains special meaning. special meaning only when followed by $,
+* [](https://qmacro.org/blog/posts/2020/11/01/the-subtle-art-of-quoting-newline-characters/)  
+qmacro.org  
+The subtle art of quoting newline characters  
+Brian goes on to explain the function of the backslash character in a quoting or escape capacity - to remove the special meaning o...
+
+Show all
+
+# how to use md4x in nodejs
+
+To use **`md4x`** in Node.js, you can install it via npm and import its rendering or parsing functions. It is a highly optimized, fast Markdown parser from the [UnJS ecosystem](https://github.com/unjs/md4x) that natively auto-selects Node's **NAPI (Native Addon)** for maximum performance. [](https://github.com/unjs/md4x)
+
+### 1\. Installation
+
+Install the package using your preferred package manager: [](https://www.npmjs.com/package/@mdx-js/mdx)
+
+bash
+
+```
+npm install md4x
+
+```
+
+
+
+### 2\. Basic Usage
+
+Because `md4x` natively auto-selects NAPI when running inside Node.js, initialization is completely synchronous and optional. [](https://github.com/unjs/md4x)
+
+Here is how to parse and convert Markdown in an **ESM** (`"type": "module"`) Node.js file: [](https://github.com/unjs/md4x)
+
+javascript
+
+```
+import { 
+  renderToHtml, 
+  renderToText, 
+  renderToAnsi, 
+  renderToMarkdown,
+  parseAST,
+  heal 
+} from "md4x";
+
+const markdownInput = "# Hello, **world**!\n\nThis is a streaming test...";
+
+// 1. Convert Markdown to HTML
+const html = renderToHtml(markdownInput);
+console.log("HTML Output:\n", html);
+// Output: <h1>Hello, <strong>world</strong>!</h1>
+
+// 2. Strip Markdown formatting into plain text
+const text = renderToText(markdownInput);
+console.log("Plain Text:\n", text);
+// Output: Hello, world! This is a streaming test...
+
+// 3. Render into ANSI terminal codes (great for CLI apps)
+const ansi = renderToAnsi(markdownInput);
+
+// 4. Parse into a visual Abstract Syntax Tree (AST) object
+const ast = parseAST(markdownInput);
+console.log("AST Root Node:", ast.nodes[0]);
+
+```
+
+
+
+### 3\. Markdown Healing (for LLM Streaming)
+
+One of the standout features of `md4x` is its `heal()` function. It is specifically built to fix broken or incomplete Markdown tags generated in real-time by Large Language Models (LLMs). [](https://github.com/unjs/md4x)
+
+You can use it standalone or pass a `{ heal: true }` option straight to the renderer: [](https://github.com/unjs/md4x)
+
+javascript
+
+```
+// Standalone healing
+console.log(heal("**incomplete bold")); 
+// Output: "**incomplete bold**"
+
+console.log(heal("```javascript\nconst a = 1;")); 
+// Output: "```javascript\nconst a = 1;\n```"
+
+// Healing and rendering in a single pass
+const brokenMarkdown = "Check out this **partial text";
+const cleanHtml = renderToHtml(brokenMarkdown, { heal: true });
+console.log(cleanHtml);
+// Output: <p>Check out this <strong>partial text</strong></p>
+
+```
+
+
+
+Are you building a **CLI tool**, a **documentation site**, or processing **streaming LLM output**? I can help you write a tailored wrapper or integration for your exact project.
+
+* [](https://github.com/unjs/md4x)  
+GitHub  
+unjs/md4x: Fast and small markdown parser and renderer  
+Available as a native Node.js addon (NAPI) for maximum performance, or as a portable WASM module that works in any JavaScript runt...
+* [](https://www.npmjs.com/package/@mdx-js/mdx)  
+NPM  
+@mdx-js/mdx  
+This is the core compiler for turning MDX into JavaScript which gives you the most control. Install This package is ESM only. inst...
+
+Show all
+
+# how to get the full hierarchy of a folder in nodejs
+
+To get the full hierarchy of a folder in Node.js, you can read the file system **recursively using the native `fs` module**. [](https://nodejs.org/learn/manipulating-files/working-with-folders-in-nodejs)
+
+Depending on your Node.js version and what you want to do with the output, you can use the built-in recursive globbing feature (Node.js 22+), a custom async promise-based tree generator, or a fast synchronous function. [](https://www.youtube.com/watch?v=yM9DokruHNQ&t=39)
+
+---
+
+### Method 1: The Modern & Easiest Way (Node.js 22+)
+
+If you are running **Node.js v22 or newer**, you don't need any external dependencies. You can use the built-in native `fs.glob` API with a recursive pattern. [](https://flaviocopes.com/nodejs-get-all-files-folder/)
+
+javascript
+
+```
+import { glob } from 'node:fs/promises';
+
+// '**/*' matches all files and subfolders down the entire tree
+const files = await glob('path/to/your/folder/**/*');
+
+for await (const file of files) {
+  console.log(file);
+}
+
+```
+
+
+
+---
+
+### Method 2: Async/Await (Recommended for Performance)
+
+For older Node versions or when you want deep control without blocking the event loop, use a recursive async function with `fs.promises.readdir`. By passing `{ withFileTypes: true }`, you get `Dirent` objects which let you check if an item is a folder without making an extra network or disk metadata call. [](https://www.youtube.com/watch?v=3xm7spsmtRg&t=43)
+
+javascript
+
+```
+import { readdir } from 'node:fs/promises';
+import { join } from 'node:path';
+
+async function getHierarchy(dir) {
+  // Read directory entries, including file types
+  const entries = await readdir(dir, { withFileTypes: true });
+
+  // Map entries into an array of paths
+  const paths = await Promise.all(
+    entries.map(async (entry) => {
+      const fullPath = join(dir, entry.name);
+      // If it's a directory, recurse into it; otherwise, return the file path
+      return entry.isDirectory() ? getHierarchy(fullPath) : fullPath;
+    })
+  );
+
+  // Flatten the array of arrays into a single list
+  return paths.flat();
+}
+
+// Usage:
+const fullTree = await getHierarchy('./my-folder');
+console.log(fullTree);
+
+```
+
+
+
+---
+
+### Method 3: Clean JSON Tree Structure
+
+If you want to represent the folder hierarchy as a structured visual tree (nested JSON objects) rather than a flat list of paths: [](https://dev.to/peaonunes/loading-a-directory-as-a-tree-structure-in-node-52bg)
+
+javascript
+
+```
+import { readdirSync } from 'node:fs';
+import { join, basename } from 'node:path';
+
+function buildTree(dir) {
+  const stats = readdirSync(dir, { withFileTypes: true });
+  
+  const node = {
+    name: basename(dir),
+    path: dir,
+    type: 'directory',
+    children: []
+  };
+
+  for (const entry of stats) {
+    const fullPath = join(dir, entry.name);
+    if (entry.isDirectory()) {
+      node.children.push(buildTree(fullPath)); // Recursive call
+    } else {
+      node.children.push({
+        name: entry.name,
+        path: fullPath,
+        type: 'file'
+      });
+    }
+  }
+
+  return node;
+}
+
+// Usage:
+const folderTree = buildTree('./my-folder');
+console.log(JSON.stringify(folderTree, null, 2));
+
+```
+
+
+
+---
+
+### Method 4: Synchronous (Fast Scripts / CLI Tools)
+
+If you are writing a simple script where blocking the thread isn't an issue, you can use `fs.readdirSync` to quickly grab everything: [](https://nodejs.org/learn/manipulating-files/working-with-folders-in-nodejs)
+
+javascript
+
+```
+import { readdirSync } from 'node:fs';
+import { join } from 'node:path';
+
+function getHierarchySync(dir) {
+  return readdirSync(dir, { withFileTypes: true }).flatMap(entry => {
+    const fullPath = join(dir, entry.name);
+    return entry.isDirectory() ? getHierarchySync(fullPath) : fullPath;
+  });
+}
+
+// Usage:
+const files = getHierarchySync('./my-folder');
+console.log(files);
+
+```
+
+
+
+Would you like me to show you how to **filter specific file types** (like only `.json` or `.js` files) while scanning, or do you need help **excluding certain folders** like `node_modules`? [](https://www.youtube.com/watch?v=yM9DokruHNQ&t=39)
+
+* [](https://nodejs.org/learn/manipulating-files/working-with-folders-in-nodejs)  
+Node.js  
+Working with folders in Node.js  
+Use fs.readdir() or fs.readdirSync() or fsPromises.readdir() to read the contents of a directory. This piece of code reads the con...
+* [](https://flaviocopes.com/nodejs-get-all-files-folder/)  
+flaviocopes.com  
+Node.js get all files in a folder recursively - Flavio Copes  
+Sep 16, 2026 — To get all the files in a folder recursively in Node. js, the best way I found is the glob library. You give it a pattern, and it ...
+* [](https://www.youtube.com/watch?v=yM9DokruHNQ&t=39)  
+YouTube·Code 4 All  
+Node.js Beginner Series (13/26) How to list the contents in ...  
+Jun 4, 2022 — The video outlines how to use Node.js to list the contents of directories. Utilize \`fs.readdir\` to read folder paths and provide o...  
+4m
+
+Show all
+
+# how to get the full hierarchy of a folder in json in nodejs
+
+To get the full hierarchy of a folder as a JSON object in Node.js, you can recursively traverse the file system using the built-in `fs` and `path` modules. [](https://nodejs.org/learn/manipulating-files/working-with-folders-in-nodejs)
+
+Here are the two best approaches: a **native asynchronous approach** (best for performance and modern code) and a **popular npm package approach** (best if you want an instant, zero-boilerplate solution).
+
+### Method 1: The Native Asynchronous Approach (Recommended)
+
+This approach leverages the native Node.js File System Promises API to scan folders asynchronously without blocking your application.
+
+javascript
+
+```
+import { readdir, lstat } from 'node:fs/promises';
+import { join, basename } from 'node:path';
+
+/**
+ * Recursively builds a JSON structure of a directory hierarchy
+ * @param {string} dirPath - The target directory path
+ * @returns {Promise<Object>} The JSON tree representation
+ */
+async function getFolderHierarchy(dirPath) {
+  const name = basename(dirPath);
+  const stats = await lstat(dirPath);
+
+  const node = {
+    name,
+    path: dirPath,
+    type: stats.isDirectory() ? 'folder' : 'file'
+  };
+
+  if (stats.isDirectory()) {
+    // Read the contents of the folder
+    const files = await readdir(dirPath);
+    
+    // Process all children concurrently
+    node.children = await Promise.all(
+      files.map(file => getFolderHierarchy(join(dirPath, file)))
+    );
+  }
+
+  return node;
+}
+
+// Example Usage:
+const targetFolder = './your-target-folder';
+
+getFolderHierarchy(targetFolder)
+  .then(hierarchy => {
+    console.log(JSON.stringify(hierarchy, null, 2));
+  })
+  .catch(err => console.error('Error reading directory:', err));
+
+```
+
+
+
+### Method 2: Using the `directory-tree` package (Quickest)
+
+If you don't want to maintain custom recursive functions, you can use the highly popular directory-tree npm package. It outputs a clean JSON object and comes with built-in options to filter by extension or regex.
+
+1. **Install the package:**  
+bash  
+```  
+npm install directory-tree  
+```  
+
+2. **Run the script:**  
+javascript  
+```  
+import dirTree from 'directory-tree';  
+const tree = dirTree('./your-target-folder');  
+console.log(JSON.stringify(tree, null, 2));  
+```  
+
+
+### Expected JSON Output Structure
+
+Both methods yield a structured format resembling this layout: [](https://researchhubs.com/post/computing/javascript/convert-directory-structure--to-json-with-node-js.html)
+
+json
+
+```
+{
+  "path": "your-target-folder",
+  "name": "your-target-folder",
+  "type": "folder",
+  "children": [
+    {
+      "path": "your-target-folder/index.js",
+      "name": "index.js",
+      "type": "file"
+    },
+    {
+      "path": "your-target-folder/images",
+      "name": "images",
+      "type": "folder",
+      "children": [
+        {
+          "path": "your-target-folder/images/logo.png",
+          "name": "logo.png",
+          "type": "file"
+        }
+      ]
+    }
+  ]
+}
+
+```
+
+
+
+If you want to customize this further, let me know:
+
+* Do you need to **filter out certain files** (like `.DS_Store` or `node_modules`)?
+* Do you want to include extra metadata like **file sizes** or **creation dates**?
+* Should the output be **saved directly to a `.json` file** automatically?
+
+* [](https://researchhubs.com/post/computing/javascript/convert-directory-structure--to-json-with-node-js.html)  
+researchhubs.com  
+Convert directory structure to JSON with Node.js  
+Each node contains type, name, path and children: Here is the solution: var fs … path: filename, name: path.basename(filename) }; ...
+* [](https://nodejs.org/learn/manipulating-files/working-with-folders-in-nodejs)  
+Node.js  
+Working with folders in Node.js  
+This piece of code reads the content of a folder, both files and subfolders, and returns their relative path: You can get the full...
+
+# how to theme gfm md
+
+To theme **GitHub Flavored Markdown (GFM)**, you must first determine where the final document is being rendered. Because GFM compiles directly into standard HTML elements (like `<h1>`, `<table>`, and `<blockquote>`), **theming is accomplished by applying custom CSS styles** to those generated HTML tags. [](https://talk.commonmark.org/t/how-to-properly-theme-it/2238)
+
+Here is how to theme GFM across the three most common implementations:
+
+---
+
+### 1\. Using Official GitHub Themes (For Web Apps & Static Sites)
+
+If you want your website or application to look exactly like GitHub's light or dark mode, the easiest approach is to use the official CSS modules maintained by GitHub.
+
+* **Get the CSS:** You can use the popular github-markdown-css npm package (or its CDN equivalent).
+* **How to apply it:** Wrap your compiled GFM HTML inside a container element with the class `markdown-body`.
+
+html
+
+```
+<!-- Include the stylesheet in your <head> -->
+<link rel="stylesheet" href="https://cloudflare.com">
+
+<style>
+  /* Optional: Adjust container dimensions and padding */
+  .markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 45px;
+  }
+  
+  /* Support for dark mode switching if desired */
+  @media (prefers-color-scheme: dark) {
+    body { background-color: #0d1117; }
+  }
+</style>
+
+<!-- Wrap your GFM output -->
+<article class="markdown-body">
+  <h1>My GFM Title</h1>
+  <p>This is a ~strikethrough~ example.</p>
+  <ul>
+    <li><input type="checkbox" checked disabled> GFM Tasklist item</li>
+  </ul>
+</article>
+
+```
+
+
+
+### 2\. Custom CSS Theming (Writing Your Own Theme)
+
+If you want a completely custom design (e.g., changing colors, fonts, or borders), target the precise HTML tags generated by GFM parsing engines. [](https://talk.commonmark.org/t/how-to-properly-theme-it/2238)
+
+css
+
+```
+/* Container reset */
+.my-custom-gfm-theme {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  color: #24292e;
+  line-height: 1.5;
+}
+
+/* Headings */
+.my-custom-gfm-theme h1, 
+.my-custom-gfm-theme h2 {
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: 0.3em;
+}
+
+/* GFM Specific: Tables */
+.my-custom-gfm-theme table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.my-custom-gfm-theme table th, 
+.my-custom-gfm-theme table td {
+  border: 1px solid #dfe2e5;
+  padding: 6px 13px;
+}
+.my-custom-gfm-theme tr:nth-child(even) {
+  background-color: #f6f8fa;
+}
+
+/* GFM Specific: Task Lists (Checkboxes) */
+.my-custom-gfm-theme .task-list-item {
+  list-style-type: none;
+}
+.my-custom-gfm-theme .task-list-item input[type="checkbox"] {
+  margin: 0 0.2em 0.25em -1.6em;
+  vertical-align: middle;
+}
+
+/* Blockquotes */
+.my-custom-gfm-theme blockquote {
+  border-left: 0.25em solid #dfe2e5;
+  color: #6a737d;
+  padding: 0 1em;
+}
+
+```
+
+
+
+### 3\. Rendering via JavaScript Engines (MDX / Remark)
+
+If you are compiling `.md` files dynamically in a JavaScript stack (like Next.js, React, or Astro), you will typically use remark-gfm to parse GFM extensions (like tables, autolinks, and strikethroughs). [](https://mdxjs.com/guides/gfm/)
+
+You can map those components directly to themed UI elements using a framework compiler:
+
+javascript
+
+```
+import { compile } from '@mdx-js/mdx';
+import remarkGfm from 'remark-gfm';
+
+// 1. Compile Markdown using the GFM plugin
+const code = String(
+  await compile('# GFM Document\n- [x] Done', {
+    remarkPlugins: [remarkGfm],
+  })
+);
+
+// 2. Map HTML tags to custom components in your React application
+const components = {
+  h1: (props) => <h1 className="text-3xl font-bold my-4 text-blue-600" {...props} />,
+  table: (props) => <table className="table-auto border-collapse w-full" {...props} />,
+  del: (props) => <span className="line-through text-red-400" {...props} /> // Strikethrough
+};
+
+```
+
+
+
+Are you attempting to theme **GitHub profile / repository READMEs** directly on GitHub.com, or are you styling GFM on a **custom application/website**? Let me know your environment so I can give you exact snippets!
+
+* [](https://talk.commonmark.org/t/how-to-properly-theme-it/2238)  
+CommonMark  
+How to properly theme it?  
+Markdown uses literally every HTML element, and supports every HTML element that doesn't even exist yet. So if you want a list of ...
+* [](https://mdxjs.com/guides/gfm/)  
+MDX  
+GitHub flavored markdown (GFM) - MDX  
+This guide explores how to support GFM features such as autolink literals, footnotes, strikethrough, tables, and task lists.
+* [](https://markdownformatting.com/github)  
+markdownformatting.com  
+GitHub Markdown Guide: README Formatting & GFM Syntax  
+GitHub renders Markdown in two places with slightly different rules: To force a break in a file, end the line with a backslash, tw...
+
+# popular themes for gfm md
+
+When building or styling **GitHub Flavored Markdown (GFM)** documents (`.md`), "themes" usually refer to **GitHub Pages Jekyll/Primer themes**, **CSS stylesheets** for custom rendering, or popular **Markdown editor themes** (like Obsidian or VS Code) that mimic the native GitHub aesthetic. [](https://community.obsidian.md/themes/github-flavored-markdown-theme)
+
+The most popular themes for GFM markdown are grouped below by how you plan to use them:
+
+### 1\. Official GitHub Pages Themes (Built-in GFM)
+
+If you are hosting your `.md` files using GitHub Pages, GitHub officially supports a select list of Jekyll themes that format GFM beautifully out of the box: [](https://www.youtube.com/watch?v=cPet2THrEWg&t=35)
+
+* **Minima:** The default, highly readable, and clean theme layout designed for articles and text-heavy READMEs.
+* **Cayman:** A modern, colorful theme featuring a prominent header and sleek layout, making it a favorite for open-source project landing pages.
+* **Midnight & Slate:** Dark, deep-blue and charcoal themes popular for documentation and code-heavy pages.
+* **Hacker:** A nostalgic, terminal-inspired theme featuring neon green monospace typography against a black background. [](https://www.youtube.com/watch?v=cPet2THrEWg&t=35)
+
+### 2\. Custom CSS Stylesheets for GFM Rendering
+
+If you are exporting Markdown to HTML/PDF or using a site generator, you can apply standalone CSS themes to match GitHub's aesthetic: [](https://www.reddit.com/r/Markdown/comments/1sxs4kh/opensource%5Fmarkdownpdf%5Fthat%5Factually%5Fmatches/)
+
+* **Primer Stylesheet:** GitHub’s actual open-source design system. Using the official `primer-markdown` CSS allows you to exactly mirror GitHub's presentation—complete with custom borders, table formatting, and code syntax highlighting. [](https://www.youtube.com/shorts/iGodxbTElCA)
+* **Sindre Sorhus' Github-Markdown-CSS:** The most popular community-maintained stylesheet on GitHub. It replicates the exact look and feel of GitHub's markdown rendering, perfectly adjusting for light and dark modes.
+
+### 3\. Popular Markdown App Themes for GFM
+
+If you write GFM files inside local editors like Obsidian or VS Code, you can toggle dedicated themes to make your vault look exactly like GitHub: [](https://community.obsidian.md/themes/github-flavored-markdown-theme)
+
+* **GitHub Flavored Markdown Theme:** An Obsidian community favorite that brings a native GitHub experience, retaining full support for custom GFM callouts and Kanban formatting. [](https://community.obsidian.md/themes/github-flavored-markdown-theme)
+* **Minimal:** While a multi-purpose theme, its specialized styling presets let you configure a clean layout highly compatible with GitHub’s typographic guidelines. [](https://community.obsidian.md/themes/github-flavored-markdown-theme)
+
+### Key GFM Theme Elements to Keep in Mind
+
+No matter which theme you choose, a true GFM theme must support GitHub-specific formatting extensions: [](https://www.markdowntools.io/github-markdown-cheat-sheet)
+
+* **GFM Alerts:** Styled blockquotes (`> [!NOTE]`, `> [!WARNING]`) that map to distinct colored warning or tip boxes.
+* **Mermaid Diagrams:** Automated styling for embedded `mermaid` block syntax to render visual graphs natively.
+* **Task Lists:** Checkboxes (`- [x]`) that cleanly replace bullet points. [](https://github.com/rayeddev/markdown-appealing)
+
+How are you intending to **publish or view** these GFM files? If you tell me whether you are using **GitHub Pages, a local app like Obsidian, or creating a custom website**, I can guide you on how to install your favorite theme.
+
+* [](https://community.obsidian.md/themes/github-flavored-markdown-theme)  
+Obsidian Community  
+GitHub Flavored Markdown - Obsidian Theme  
+Theme settings can be found in the Obsidian Style Settings plugin. is available on the Obsidian Theme Store. Settings -> Appearanc...
+* [](https://www.youtube.com/watch?v=cPet2THrEWg&t=35)  
+YouTube·John Francis  
+Complete GitHub pages THEMES review 2023  
+Jul 21, 2023 — 14 supported GitHub Pages themes: Architect, Cayman, Merlot, Midnight, Minima, Minimal, Modernist, Slate, displaying line numbers ...  
+8m
+* [](https://www.reddit.com/r/Markdown/comments/1sxs4kh/opensource%5Fmarkdownpdf%5Fthat%5Factually%5Fmatches/)  
+Reddit·Personal\_Citron9609  
+Primer stylesheet, Mermaid in PDF, GFM alerts : r/Markdown  
+Apr 28, 2026 — r/Markdown document: Mermaid theme auto-matches the doc theme (dark themes get dark mermaid). This is the 2nd time I've seen a md ...  
+[0:47](https://www.reddit.com/r/Markdown/comments/1sxs4kh/opensource%5Fmarkdownpdf%5Fthat%5Factually%5Fmatches/)
+
+Show all
+
+# how to use popular themes for gfm md on a blog
+
+Using popular themes for **GitHub-Flavored Markdown (GFM)** on a blog is an excellent way to give your technical writing a familiar, polished, and readable look. Because GFM outputs standard semantic HTML elements (like `<h1>`, `<table>`, and `<code>`), applying a theme comes down to styling those elements using CSS or framework plugins. [](https://danielwoodward.dev/posts/nextjs/how-i-built-my-personal-blog-with-nextjs-13-vercel-and-contentlayer-post-3/)
+
+---
+
+### Step 1: Choose Your Theme Strategy
+
+Depending on how your blog is built, select the approach that matches your architecture:
+
+#### Approach A: The "Drop-In" CSS Class (Easiest)
+
+If you already have HTML generated from your Markdown, you can wrap your blog content in a container and apply a community-built stylesheet.
+
+* **GitHub Markdown CSS:** Sindre Sorhus maintains the most accurate replica of GitHub's styling via github-markdown-css.
+* **How to use:**
+  1. Install it via npm or link it via a CDN like cdnjs.
+  2. Import the CSS file into your blog layout.
+  3. Add the class `markdown-body` to the container surrounding your post content.  
+html  
+```  
+<div class="markdown-body">  
+  <!-- Your rendered GFM HTML goes here -->  
+</div>  
+```  
+
+
+#### Approach B: Tailwind CSS Typography (Most Customizable)
+
+If your blog uses Tailwind CSS, the official typography plugin is the standard solution. [](https://danielwoodward.dev/posts/nextjs/how-i-built-my-personal-blog-with-nextjs-13-vercel-and-contentlayer-post-3/)
+
+* **How to use:**
+  1. Install the package `@tailwindcss/typography`.
+  2. Add the `prose` class to your content wrapper.
+  3. Tailor it specifically for standard or dark-themed lookalikes. [](https://danielwoodward.dev/posts/nextjs/how-i-built-my-personal-blog-with-nextjs-13-vercel-and-contentlayer-post-3/)  
+html  
+```  
+<!-- For a classic clean tech blog look -->  
+<article class="prose prose-slate max-w-none">  
+  <!-- Content -->  
+</article>  
+```  
+
+
+#### Approach C: Static Site Generator Plugins (Jekyll, Hugo, Astro)
+
+If you use a static framework, they often have built-in support or plugins to configure themes natively.
+
+* **Jekyll:** Uses the `jekyll-theme-primer` which reflects the classic GitHub documentation aesthetics.
+* **Astro/Next.js:** Relies on ecosystem integrations like `remark-gfm` to parse the syntax and `rehype-pretty-code` or `shiki` to style the code blocks. [](https://danielwoodward.dev/posts/nextjs/how-i-built-my-personal-blog-with-nextjs-13-vercel-and-contentlayer-post-3/)
+
+---
+
+### Step 2: Implement Key GFM Theme Elements
+
+A complete GFM experience requires styling a few specific elements that go beyond basic text formatting: [](https://developer.mozilla.org/en-US/docs/MDN/Writing%5Fguidelines/Howto/Markdown%5Fin%5FMDN)
+
+| Element               | Essential GFM Style Note                                                                      |
+| --------------------- | --------------------------------------------------------------------------------------------- |
+| **Tables**            | Add subtle light-gray borders, alternate row shading (zebra striping), and padding.           |
+| **Task Lists**        | Ensure checkboxes (\[ \] and \[x\]) render cleanly without standard bullet point indentation. |
+| **Code Syntax**       | Use a engine like Shiki paired with themes like github-dark or github-light.                  |
+| **Alerts / Callouts** | Match GitHub's modern blockquote syntax (\[!NOTE\], \[!WARNING\]) using accent left borders.  |
+
+---
+
+### Step 3: Handle Dark and Light Mode Transitions
+
+True GFM themes support automatic dark mode switching. If you are using the `github-markdown-css` library, it includes built-in media queries that respect the user's system preferences automatically: [](https://www.youtube.com/watch?v=ftOBvusMHjQ)
+
+css
+
+```
+@media (prefers-color-scheme: dark) {
+  .markdown-body {
+    background-color: #0d1117; /* GitHub's exact dark canvas */
+    color: #c9d1d9;
+  }
+}
+
+```
+
+
+
+To help you set this up perfectly, could you tell me:
+
+* What **framework or platform** is your blog built on? (e.g., WordPress, Next.js, Astro, Jekyll, or pure HTML)
+* Do you want your blog to **exactly mirror GitHub**, or do you just want a **clean, developer-friendly tech theme**?
+
+* [](https://danielwoodward.dev/posts/nextjs/how-i-built-my-personal-blog-with-nextjs-13-vercel-and-contentlayer-post-3/)  
+danielwoodward.dev  
+How I built my Personal Blog - Enabling GitHub Flavoured Markdown & Code Syntax Highlighting - Part 3 | <DanielWoodward />  
+remark-gfm@^3.0.1\. Code Syntax Highlighting: Installed rehype-pretty-code and shiki; configured rehypePlugins with theme, grid, an...
+* [](https://developer.mozilla.org/en-US/docs/MDN/Writing%5Fguidelines/Howto/Markdown%5Fin%5FMDN)  
+MDN Web Docs  
+How to write in Markdown - MDN Web Docs | MDN  
+Custom format using GFM. Use GFM with leading/trailing pipes and equal cell lengths; fall back to HTML for unsupported features, w...
+* [](https://pixlane.media/markdown-cheatsheet/)  
+Pixlane  
+Markdown Cheatsheet: GFM, MDX, Live Editor  
+The right pane renders live with GFM extensions: tables, task lists \[ \], strikethrough, footnotes\[^1\], automatic URL linking. Copy...
+
+Show all
+
+# npm libs of popular gfm css
+
+The absolute gold standard and most popular npm library for adding GitHub-Flavored Markdown (GFM) styling to your project is **`github-markdown-css`**. [](https://npmtrends.com/gfm.css-vs-github-markdown-vs-github-markdown-css)
+
+Here are the best npm packages available for GFM CSS and related markdown rendering utilities:
+
+### 🎨 The Best GFM CSS Libraries
+
+* **`github-markdown-css`**
+  * **What it is:** The definitive package maintained by Sindre Sorhus. It automatically scrapes the exact, official styles directly from GitHub.
+  * **Features:** Includes 7 themes out of the box, including auto-switching light/dark modes based on the system theme (`prefers-color-scheme`), dark-dimmed, and colorblind-friendly modes.
+  * **Usage:** Wrap your rendered HTML block in a element with the class `markdown-body`. [](https://www.npmjs.com/package/github-markdown-css?activeTab=versions)
+* **`gfm-stylesheet`**
+  * **What it is:** A modified variant based on `github-markdown-css`.
+  * **Features:** It removes the required `.markdown-body` wrapper rule. This is ideal if you want to style an entire standalone HTML page directly using GFM styles without nesting it in a wrapper element. [](https://github.com/pixelbrackets/gfm-stylesheet)
+* **⚠️ Note on `gfm.css`:** There is an older library called `gfm.css`, but it is **no longer maintained** and the author explicitly recommends using `github-markdown-css` instead. [](https://github.com/ungoldman/gfm.css/)
+
+---
+
+### ⚙️ Complementary Ecosystem Packages
+
+If you are generating the HTML from Markdown yourself in JavaScript, you will often need to pair your CSS with these popular parsing libraries to make sure standard GFM features (like task lists, tables, and strikethroughs) actually render into HTML structures:
+
+* **`remark-gfm`**: The most widely used plugin for the `remark` compiler ecosystem to add support for GitHub Markdown extensions.
+* **`starry-night`**: A syntax highlighting library designed to mimic GitHub's exact code highlight styling, which beautifully matches `github-markdown-css`. [](https://www.npmjs.com/package/remark-gfm)
+
+Are you trying to apply these styles to a specific framework like **Next.js**, **React**, or a **Vue/Nuxt** project? I can show you exactly how to import the CSS and wrap your content for your specific environment.
+
+* [](https://www.npmjs.com/package/github-markdown-css?activeTab=versions)  
+NPM  
+github-markdown-css - NPM  
+To mimic how GitHub highlights code, you can use starry-night with your Markdown parser of choice. There are 7 themes provided in ...
+* [](https://www.npmjs.com/package/remark-gfm)  
+NPM  
+remark-gfm  
+A different plugin, remark-frontmatter , adds support for frontmatter. GitHub … support for how markdown works in relation to a ce...
+* [](https://github.com/ungoldman/gfm.css/)  
+GitHub  
+GitHub - ungoldman/gfm.css: Styles for github flavored markdown. · GitHub  
+You can take gfm.scss as a base set of styles … gfm.css is an OPEN Open Source Project. This project is more like an open wiki tha...
+
+Show all
+
+# how to use npm libs of popular gfm css
+
+To use **GitHub Flavored Markdown (GFM)** CSS styles via npm, you typically rely on highly popular packages like `github-markdown-css` or `gfm.css`. These packages provide the exact stylesheets GitHub uses to render Markdown files.
+
+Here is a step-by-step guide to installing and importing them into your project.
+
+---
+
+### 1\. Install the Package
+
+The most widely used and officially maintained-style package is `github-markdown-css`. Open your terminal in your project directory and run:
+
+bash
+
+```
+npm install github-markdown-css
+
+```
+
+
+
+_(Alternatively, if you prefer a minimal version, you can install `gfm.css` via `npm install gfm.css`)._ [](https://ungoldman.com/gfm.css/)
+
+### 2\. Import the CSS into Your Project
+
+Depending on your project setup, import the stylesheet into your main JavaScript or CSS file.
+
+#### In a JavaScript / Framework Environment (React, Vue, Next.js, Webpack, Vite)
+
+Import the CSS directly at the root of your application (e.g., `index.js`, `App.jsx`, or `main.js`):
+
+javascript
+
+```
+import 'github-markdown-css/github-markdown.css';
+
+```
+
+
+
+#### In a Pure CSS File
+
+If you want to pull it into an existing CSS stylesheet, use an `@import` rule:
+
+css
+
+```
+@import 'github-markdown-css/github-markdown.css';
+
+```
+
+
+
+#### Media Query Variants (Optional)
+
+`github-markdown-css` also provides separate files if you want to explicitly handle light or dark mode switching via CSS:
+
+* `github-markdown-css/github-markdown-light.css`
+* `github-markdown-css/github-markdown-dark.css`
+
+### 3\. Apply the CSS Wrapper Class
+
+The styles in these libraries do not automatically apply to the whole page. They are scoped to a specific class to prevent overriding your main application styles.
+
+To apply the GFM theme, you must wrap your rendered Markdown HTML inside an element containing the **`markdown-body`** class:
+
+html
+
+```
+<div class="markdown-body">
+  <h1>This is a GFM Heading</h1>
+  <p>Your rendered markdown content goes here.</p>
+</div>
+
+```
+
+
+
+### 4\. Adjust Layout and Themes (Recommended)
+
+By default, the `markdown-body` class expects a bounding box. For a clean, GitHub-like documentation layout, add these structural rules to your own global CSS:
+
+css
+
+```
+.markdown-body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 45px;
+}
+
+/* Optional responsive tweak for mobile screens */
+@media (max-width: 767px) {
+  .markdown-body {
+    padding: 15px;
+  }
+}
+
+```
+
+
+
+### Automatic Light/Dark Mode
+
+If you imported the standard `github-markdown.css`, it automatically respects the user's system preferences using the `@media (prefers-color-scheme: dark)` media query.
+
+If you want to manually force a dark or light theme using a data attribute or class (like `data-theme="dark"`), you may need to look at the customized theme compilation instructions on the official `github-markdown-css` GitHub Repository.
+
+Are you using this with a specific **Markdown parser** (like `marked`, `remark`, or `micromark`), or building a **framework app** (React, Vue, Next.js)? I can provide targeted code examples if you share your tech stack.
+
+* [](https://ungoldman.com/gfm.css/)  
+ungoldman.com  
+gfm.css  
+Build gfm.css from source/ by running npm run build . Contributing. gfm.css is an OPEN Open Source Project. This project is more l...
+
+# how to scroll to prev terminal outputs in tmux
+
+To scroll through previous terminal outputs in tmux, you need to enter **"Copy Mode."** This freezes the live terminal and lets you look through the pane's history buffer. [](https://www.atera.com/blog/how-to-scroll-up-in-tmux/)
+
+Here is exactly how to do it using your keyboard or mouse.
+
+### Method 1: Using the Keyboard (Default)
+
+1. Press your tmux prefix shortcut, which is **`Ctrl` \+ `b`** by default. [](https://superuser.com/questions/209437/how-do-i-scroll-in-tmux)
+2. Release those keys, then press the open square bracket key: **`[`**. _(You will see a small line/page indicator appear in the top-right corner of the pane)._ [](https://superuser.com/questions/209437/how-do-i-scroll-in-tmux)
+3. Use your standard navigation keys to scroll:
+  * **`Up / Down Arrow`** to scroll line-by-line
+  * **`Page Up / Page Down`** to scroll full pages [](https://superuser.com/questions/209437/how-do-i-scroll-in-tmux)
+4. Press **`q`** to exit copy mode and return to your live terminal. [](https://superuser.com/questions/209437/how-do-i-scroll-in-tmux)
+
+_Pro-tip:_ You can bypass step 2 entirely by pressing **`Ctrl` \+ `b`** followed by **`Page Up`** to instantly enter copy mode and jump up one full page. [](https://superuser.com/questions/209437/how-do-i-scroll-in-tmux)
+
+---
+
+### Method 2: Enabling Mouse Scrolling
+
+If you prefer to scroll naturally with your mouse wheel or trackpad just like a normal terminal, you can turn on mouse mode: [](https://github.com/ranareehanaslam/TMUX-Scrollable-Copy-Mode-Guide)
+
+1. Press **`Ctrl` \+ `b`**, then type a colon **`:`** to open the tmux command prompt.
+2. Type **`set -g mouse on`** and press **`Enter`**.
+
+Once active, simply **scroll up with your mouse wheel**. Tmux will automatically jump into copy mode. When you scroll all the way back down to the bottom, it will automatically exit copy mode and return you to the live prompt. 
+
+To make this change permanent, add `set -g mouse on` to your `~/.tmux.conf` file. [](https://github.com/ranareehanaslam/TMUX-Scrollable-Copy-Mode-Guide)
+
+---
+
+### Method 3: Vi-Style Navigation (Optional)
+
+If you prefer `vi`/`vim` keybindings for navigating your terminal history, you can add `setw -g mode-keys vi` to your `~/.tmux.conf`. Once enabled, you can enter copy mode (`Ctrl` \+ `b`, `[`) and use:
+
+* **`k`** to scroll up, **`j`** to scroll down
+* **`Ctrl` \+ `u`** (Page Up), **`Ctrl` \+ `d`** (Page Down) [](https://superuser.com/questions/209437/how-do-i-scroll-in-tmux)
+
+If you find yourself scrolling back to look for specific errors or text patterns, I can show you how to **search backwards** through the scroll history or how to **increase the buffer limit** if tmux is cutting off your older terminal outputs. Which would you prefer?
+
+* [](https://superuser.com/questions/209437/how-do-i-scroll-in-tmux)  
+Super User  
+How do I scroll in tmux? - Super User  
+Nov 10, 2010 — In vi mode (see below), you can also scroll the page up/down line by line using Shift - k and Shift - j (if you're already in scro...
+* [](https://www.youtube.com/watch?v=bVcGXGU9Cno)  
+YouTube·Trashy Tips n sTuff  
+tmux - Scrolling  
+Dec 30, 2021 — To enable mouse scrolling, press the leader key combination, then type \`:set -g mouse on\` and press enter; this will automatically...  
+1:23
+* [](https://github.com/ranareehanaslam/TMUX-Scrollable-Copy-Mode-Guide)  
+GitHub  
+ranareehanaslam/TMUX-Scrollable-Copy-Mode-Guide - GitHub  
+Add the following line to your \~/.tmux.conf file to enable mouse support across TMUX sessions: set -g mouse on This command allows...
+
+Show all
+
+# how to fix generic node error error: Command failed: fzf -f 'hello'
+
+9:11 AM
+
+### how to fix generic node error error: Command failed: fzf -f 'hello'
+
+To fix the **`Error: Command failed: fzf -f 'hello'`** in Node.js, you need to address the underlying issue: Node's `child_process` module is trying to execute the command-line tool `fzf` (fuzzy finder), but it is either **not installed** on your system or **not available in Node's environment path**.
+
+Here is how to solve it step-by-step:
+
+#### 1\. Install `fzf` on your system
+
+The most common cause is that `fzf` isn't installed. Open your terminal and run the installation command for your operating system:
+
+* **macOS:** Install via Homebrew:  
+bash  
+```  
+brew install fzf  
+```  
+
+* **Linux (Ubuntu/Debian):**  
+bash  
+```  
+sudo apt install fzf  
+```  
+
+* **Windows:** Install via Chocolatey or Scoop:  
+bash  
+```  
+choco install fzf  
+# OR  
+scoop install fzf  
+```  
+
+
+#### 2\. Verify the installation
+
+After installing, restart your terminal and verify that your system can find the tool by running:
+
+bash
+
+```
+fzf --version
+
+```
+
+
+
+If this prints a version number, the tool is properly installed globally.
+
+#### 3\. Fix Environment PATH issues (If still failing)
+
+If the command works in your terminal but _still_ fails inside your Node.js application, Node cannot see the folder where `fzf` is installed.
+
+You can explicitly pass your system's current `PATH` environment variable to the Node process:
+
+javascript
+
+```
+const { execSync } = require('child_process');
+
+try {
+  // Pass process.env to ensure Node inherits your terminal's PATH
+  const output = execSync("fzf -f 'hello'", { 
+    env: process.env, 
+    encoding: 'utf-8' 
+  });
+  console.log(output);
+} catch (error) {
+  console.error("Command failed to execute:", error.message);
+}
+
+```
+
+
+
+#### 4\. Implement a JavaScript Fallback (Recommended)
+
+If your Node.js code is meant to be shared or run on machines where you can't guarantee `fzf` is installed, you should implement a fallback using a native JavaScript fuzzy matching library instead of relying on a system CLI tool. [](https://www.reddit.com/r/LLMDevs/comments/1ul560p/pro%5Ftip%5Fexplicitly%5Ftell%5Fyour%5Fagent%5Fthe%5Fcli/)
+
+You can use a library like Fuse.js or `fuzzy`:
+
+bash
+
+```
+npm install fuse.js
+
+```
+
+
+
+If you are still experiencing the error, let me know:
+
+* What **operating system** you are running?
+* Is this happening inside a **Docker container**, **VS Code extension**, or **CI/CD pipeline**?
+* Can you share the **exact Node.js snippet** triggering the error?
+
+I can help you debug the specific environment configuration causing the disconnect.
+
+* [](https://github.com/vscode-kubernetes-tools/vscode-kubernetes-tools/issues/1149)  
+GitHub  
+Kubectl command failed: #1149 - vscode-kubernetes-tools  
+If I add my Kubeconfig (which works fine on the command-line and in K9s), and then press "reload" in the "Clusters" windows, I get...
+* [](https://www.reddit.com/r/LLMDevs/comments/1ul560p/pro%5Ftip%5Fexplicitly%5Ftell%5Fyour%5Fagent%5Fthe%5Fcli/)  
+Reddit  
+Pro Tip: Explicitly tell your agent the CLI tooling that is present ...  
+the fzf case someone mentioned: "use fzf if present, otherwise fall back to a plain glob." When the model can't be sure, command -
+
+## fzf --version can work, but fzf -f 'hello' fails
+
+fzf --version can work, but fzf -f 'hello' fails
+
+9:12 AM
+
+### fzf --version can work, but fzf -f 'hello' fails
+
+If `fzf --version` runs successfully but `fzf -f 'hello'` crashes your Node.js application, the issue is **how `fzf` handles empty matches or missing input streams**. [](https://github.com/junegunn/fzf/issues/1696)
+
+By default, Node's `execSync` treats any non-zero exit code as a fatal error and throws an exception. `fzf` uses exit codes to communicate the state of your search: [](https://www.mankier.com/1/)
+
+* **Exit code `0`**: A match was found.
+* **Exit code `1`**: No match was found.
+* **Exit code `2`**: An error occurred. [](https://github.com/junegunn/fzf/issues/1696)
+
+There are two primary reasons this command is throwing an error in Node:
+
+#### Reason 1: No matches were found (Exit Code 1)
+
+If `fzf -f 'hello'` runs against a list of files or an input stream and **cannot find the string "hello"**, it returns an exit code of `1`. Node interprets this `1` as a failed command and throws `Error: Command failed`. [](https://manpages.ubuntu.com/manpages/jammy/man1/fzf.1.html)
+
+#### Reason 2: Missing Standard Input (`STDIN`)
+
+`fzf` is designed to filter a stream of data. When you run `fzf -f 'hello'` inside a headless Node process without piping data into it, it defaults to scanning your current directory. If your current working directory is empty, or if Node blocks its file-traversal walker, it will immediately exit with `1`. [](https://github.com/junegunn/fzf)
+
+---
+
+#### How to Fix It
+
+##### Solution A: Wrap it in a `try/catch` block (Safest)
+
+Instead of letting Node crash on exit code `1`, catch the error and handle it as an "empty result". [](https://github.com/junegunn/fzf/issues/1696)
+
+javascript
+
+```
+const { execSync } = require('child_process');
+
+let output = '';
+
+try {
+  // Feed a list of items into fzf via standard input (stdio)
+  output = execSync("fzf -f 'hello'", {
+    input: "hello world\ntest string\nanother item", // Provide data to search through
+    encoding: 'utf-8'
+  });
+  console.log("Match found:", output.trim());
+} catch (error) {
+  // If exit status is 1, it just means "no match found"
+  if (error.status === 1) {
+    console.log("No match found for 'hello'.");
+  } else {
+    console.error("A real system error occurred:", error.message);
+  }
+}
+
+```
+
+
+
+##### Solution B: Force a successful exit code in the shell
+
+You can append `|| true` or `|| :` to the command. This forces the underlying terminal process to always return an exit code of `0` to Node, preventing the exception entirely. [](https://github.com/junegunn/fzf.vim/issues/1075)
+
+javascript
+
+```
+const { execSync } = require('child_process');
+
+// The '|| true' ensures Node never throws an error even if fzf returns 1
+const output = execSync("fzf -f 'hello' || true", { 
+  encoding: 'utf-8' 
+});
+
+if (output.trim() === '') {
+  console.log("No matches found.");
+} else {
+  console.log("Matches:", output);
+}
+
+```
+
+
+
+If the code still errors out, let me know:
+
+* What data are you trying to search through with `fzf`?
+* Are you piping a list into it, or hoping it searches the filesystem?
+
+Knowing how you map your **input data** will help me give you the exact command block.
+
+* [](https://github.com/junegunn/fzf)  
+GitHub  
+junegunn/fzf - A command-line fuzzy finder · GitHub  
+Without STDIN pipe, fzf will traverse the file system under the current directory to get the list of files. You can override the d...
+* [](https://github.com/junegunn/fzf.vim/issues/1075)  
+GitHub  
+FZF :Files returns "Command Failed" when using rg in an empty directory in Windows · Issue #1075 · junegunn/fzf.vim  
+"Command Failed" error in empty Windows directories. Users can bypass this by chaining commands (e.g., \`cmd || :\`).
+* [](https://github.com/junegunn/fzf/issues/1696)  
+GitHub  
+How to send the result to stdout when there are no matches?  
+When I try to use fzf in this manner, I get empty stdout and exit status 1\. Is there a way to override this behavior? I've read th...
+
+Show all
+
+## it fails regardless, but it can work in terminal
+
+it fails regardless, but it can work in terminal
+
+9:15 AM
+
+### it fails regardless, but it can work in terminal
+
+If the command works seamlessly when typed into your terminal but fails _regardless_ of what you do inside Node.js, the issue is that **`fzf` is trying to look up its default file-finding command (like `fd` or `find`), but Node's underlying shell environment is missing it or stripping quotes.**
+
+When you run `fzf -f 'hello'` without piping any `stdin` data into it, `fzf` implicitly triggers a background filesystem scanner. [](https://www.youtube.com/watch?v=Zq3mFU2T9cw&t=959)
+
+The primary culprits and how to force it to work in Node include:
+
+#### 1\. `fzf` is missing its finder backend (`fd` or `find`)
+
+In your native terminal, `fzf` might be using a modern tool like `fd` to scan directories, or it relies on your default shell configuration. When Node.js spawns `child_process`, it triggers a bare-bones non-interactive shell that doesn't load your terminal aliases or shell profile configurations. [](https://www.redhat.com/en/blog/fzf-linux-fuzzy-finder)
+
+* **The Fix:** If `fzf` doesn't have a reliable default fallback command in that sterile Node environment, it exits with an error code. To bypass this, **pipe an explicit list of files or data into it** so `fzf` doesn't have to look for a filesystem scanner: [](https://github.com/junegunn/fzf.vim/issues/1075)
+
+javascript
+
+```
+const { execSync } = require('child_process');
+
+try {
+  // Feed the filesystem list explicitly via standard find
+  const output = execSync("find . | fzf -f 'hello'", { encoding: 'utf-8' });
+  console.log(output);
+} catch (e) {
+  console.error(e.message);
+}
+
+```
+
+
+
+#### 2\. Windows Quote Stripping (If you are on Windows)
+
+If you are running Node on Windows, the single quotes around `'hello'` (`fzf -f 'hello'`) work perfectly in bash/zsh terminals but **fail miserably inside Node's default Windows shell (`cmd.exe`)**. Windows `cmd.exe` does not treat single quotes as string wrappers; it passes them literally, making `fzf` look for a string containing physical single quotes.
+
+* **The Fix:** Escape double quotes instead:
+
+javascript
+
+```
+// Change 'hello' to \"hello\"
+const output = execSync("fzf -f \"hello\"", { encoding: 'utf-8' });
+
+```
+
+
+
+#### 3\. Forcing Node to run in your exact terminal shell
+
+If you want Node to execute the command using your exact terminal settings (inheriting all your active paths, environments, and tool integrations), explicitly define the `shell` option inside your `execSync` options block:
+
+* **macOS / Linux:** Force Node to use `bash` or `zsh` instead of the bare `/bin/sh` shell:
+
+javascript
+
+```
+const output = execSync("fzf -f 'hello'", { 
+  shell: '/bin/zsh', // or '/bin/bash'
+  env: process.env,
+  encoding: 'utf-8' 
+});
+
+```
+
+
+
+* **Windows (PowerShell):** Force Node to use PowerShell instead of standard `cmd`:
+
+javascript
+
+```
+const output = execSync("fzf -f 'hello'", { 
+  shell: 'powershell.exe', 
+  env: process.env,
+  encoding: 'utf-8' 
+});
+
+```
+
+
+
+If it still crashes, let's look at the hidden error stream. Run this snippet and tell me **what prints in the console**:
+
+javascript
+
+```
+const { execSync } = require('child_process');
+try {
+  execSync("fzf -f 'hello'", { stdio: 'pipe' });
+} catch (e) {
+  console.log("STATUS CODE:", e.status);
+  console.log("STDERR OUTPUT:", e.stderr?.toString());
+}
+
+```
+
+
+
+Seeing the **STDERR OUTPUT** will pinpoint exactly what part of `fzf` is complaining.
+
+* [](https://github.com/junegunn/fzf.vim/issues/1075)  
+GitHub  
+FZF :Files returns "Command Failed" when using rg ... - GitHub  
+This is the expected behavior. fzf is just warning you that your custom command reported a non-zero exit status. If you do not wis...
+* [](https://github.com/junegunn/fzf/issues/3759)  
+GitHub  
+Command failed on starting fzf · Issue #3759 - GitHub  
+Problem / Steps to reproduce. When I run fzf I get the output \[Command failed: fd --hidden --strip-cwd-prefix --exclude .git\] as a...
+* [](https://www.youtube.com/watch?v=Zq3mFU2T9cw&t=959)  
+YouTube·DistroTube  
+This Tool Will Change The Way You Linux ('fzf')  
+FZF, when run without flags or options, performs a recursive \`ls\` in the home directory, creating a searchable menu of files.  
+1m
+
+Show all
+
+## why does it work iff i pass stdin in nodejs
+
+why does it work iff i pass stdin in nodejs
+
+9:20 AM
+
+### why does it work iff i pass stdin in nodejs
+
+It works **if and only if** you pass standard input (`stdin`) because of a fundamental design rule of `fzf`: **`fzf` refuses to start if it doesn't have an input stream to filter, and Node's `child_process` spawns commands without one by default.**
+
+Here is the exact technical breakdown of why this discrepancy happens between your terminal and Node.js.
+
+#### 1\. In your Terminal (Interactive Mode)
+
+When you type `fzf -f 'hello'` into your normal terminal, your terminal's standard input is **interactive (a TTY device)**.
+
+Because `fzf` detects it is running in an interactive terminal, it says: _"Aha! The user didn't pipe any text to me, so I will automatically spawn a background process (like `find .` or `fd`) to scan the current directory and generate a list of files for them to search."_
+
+#### 2\. In Node.js (Headless/Closed Mode)
+
+When you run `execSync("fzf -f 'hello'")`, Node.js spawns a background shell to run the command.
+
+* By default, Node sets the standard input (`stdin`) of this child process to `'pipe'` or `/dev/null`.
+* This means the stream is **closed** or **detached**—it is not an interactive terminal (TTY).
+
+When `fzf` starts up inside Node, it checks its input stream:
+
+1. It sees that `stdin` is **not a TTY** (no human is typing into it).
+2. It sees that `stdin` is completely **empty** (no data was piped into it).
+
+Because `stdin` is closed and empty, `fzf` assumes there is literally **zero data** available for it to search through. Rather than hanging forever waiting for data that will never arrive, **`fzf` immediately terminates with a failure exit code.** Node sees this non-zero exit code and throws the `Command failed` error.
+
+---
+
+#### The Two Ways to Keep it Happy
+
+If you **must** use `fzf` inside Node, you have to satisfy its requirement for data using one of two approaches:
+
+##### Approach A: Feed it data (The `stdin` method)
+
+Give it a list of items to search through via the `input` option or a shell pipe:
+
+javascript
+
+```
+// Node provides the string directly to fzf's stdin
+execSync("fzf -f 'hello'", { input: "item1\nitem2\nhello world" });
+
+// OR using a shell pipe
+execSync("echo 'hello world' | fzf -f 'hello'");
+
+```
+
+
+
+##### Approach B: Inherit your terminal's environment (`stdio: 'inherit'`)
+
+If you want `fzf` to behave exactly like it does in your terminal (scanning the filesystem automatically), you must tell Node to attach the command directly to your actual terminal's input/output streams:
+
+javascript
+
+```
+const { execSync } = require('child_process');
+
+// 'inherit' passes your terminal's interactive TTY directly to fzf
+const output = execSync("fzf -f 'hello'", { 
+  stdio: 'inherit', 
+  encoding: 'utf-8' 
+});
+
+```
+
+
+
+Are you using `fzf` to **search through a specific list of strings** generated by your Node app, or are you trying to use it to **find files on the hard drive**?
+
+Knowing your target will let me show you how to structure the input correctly.
+
 
 
 

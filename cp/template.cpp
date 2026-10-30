@@ -19,13 +19,6 @@ const int nil = -1;
 
 using namespace std;
 
-namespace banned {
-int pow = nil;
-int floor = nil;
-int ceil = nil;
-}  // namespace banned
-using namespace banned;
-
 void solve();
 
 auto force_tle() {
@@ -192,7 +185,7 @@ auto divmod = [](auto numerator, auto denominator) {
   return std::pair{quotient, remainder};
 };
 
-auto power(int base, int exp, int mod = modulo) {
+auto pow_(int base, int exp, int mod = modulo) {
   int res = 1;
   base %= mod;
 
@@ -292,6 +285,12 @@ auto max_(auto first, auto... rest) {
 
 auto floor_ = [](auto x) { return static_cast<int>(std::floor(x)); };
 auto ceil_ = [](auto x) { return static_cast<int>(std::ceil(x)); };
+
+#define pow pow_
+#define floor floor_
+#define ceil ceil_
+#define min min_
+#define max max_
 
 // entry
 
