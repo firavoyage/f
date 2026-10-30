@@ -66,7 +66,7 @@ app.post('/api/search', async (c) => {
   // todo
   const dir = entries(config.folders)[0][1]
 
-  const command = `find . | fzf -f '${query.replaceAll("'", '')}'`
+  const command = `find . | fzf -f ${santinize(query)}`
   log(command, dir)
   const items_text = handle(() => run(command, { cwd: dir }))
 
@@ -103,3 +103,7 @@ serve(
     log(`Serve on http://localhost:${info.port}`)
   },
 )
+
+function santinize(arg) {
+  return `'${arg.replaceAll("'", '')}'`
+}

@@ -20,7 +20,7 @@ const int nil = -1;
 using namespace std;
 
 namespace banned {
-int pow = nil;  // use pow_ instead
+int pow = nil;
 int floor = nil;
 int ceil = nil;
 }  // namespace banned
@@ -89,14 +89,14 @@ void prn(auto&&... items) {
   write('\n');
 }
 
-inline auto print(auto&&... items) {
+auto print(auto&&... items) {
   prn(items...);
 }
 
 #define prn_vec(vec, l, r) \
-  each(i, l, r) {               \
+  each(i, l, r) {          \
     pr(vec[i]);            \
-  }                             \
+  }                        \
   write('\n');
 
 // std
@@ -168,41 +168,12 @@ auto reduce_right_vec(const vector<T>& vec, Func f, InitType initial_value) {
 
 // string
 
-// std::format("{:.4f}", pi)
-auto format_float(auto n, int precision) {
-  string result = "";
-  if (n < 0) {
-    result += '-';
-    n = -n;
-  }
-
-  // Pre-round the number to correctly handle carries across decimals and
-  // integers
-  if (precision > 0) {
-    double rounding_factor = 0.5;
-    for (int i = 0; i < precision; ++i) {
-      rounding_factor /= 10.0;
-    }
-    n += rounding_factor;
-  }
-
-  long long int_part = (long long)n;
-  result += to_string(int_part);
-
-  if (precision > 0) {
-    result += '.';
-    double fractional = n - int_part;
-
-    for (int i = 0; i < precision; ++i) {
-      fractional *= 10;
-      int digit = (int)fractional;
-      result += to_string(digit);
-      fractional -= digit;  // subtract the integer part of the digit
-    }
-  }
-
-  return result;
-}
+#define format_float(number, precision)                                     \
+  ([&]() {                                                                  \
+    char buf[64];                                                           \
+    std::snprintf(buf, sizeof(buf), "%.*f", (precision), (double)(number)); \
+    return std::string(buf);                                                \
+  }())
 
 // math
 
@@ -221,8 +192,7 @@ auto divmod = [](auto numerator, auto denominator) {
   return std::pair{quotient, remainder};
 };
 
-// auto pow(auto base, auto exp, auto mod = modulo) {
-auto pow_(int base, int exp, int mod = modulo) {
+auto power(int base, int exp, int mod = modulo) {
   int res = 1;
   base %= mod;
 
@@ -329,7 +299,7 @@ const bool is_single_task = true;
 
 const bool should_debug = true;
 
-inline auto info(auto&&... items) {
+auto info(auto&&... items) {
   if (should_debug) {
     prn("info", items...);
   }
@@ -358,4 +328,6 @@ signed main() {
 
 */
 
-void solve() {}
+void solve() {
+
+}
