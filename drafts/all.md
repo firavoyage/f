@@ -272,6 +272,7 @@ lib:
 - serve static pages github npm bun global workflow
 - scaffold vite config setup
 - shell b run script abstraction r
+- web state s overhaul simplification
 
 web: <!-- frontend, web, ts/js -->
 

@@ -6,6 +6,8 @@ import { s } from 'lib/web/state'
 import { structure } from 'lib/web/component'
 import { use_sync_theme } from 'lib/web/use sync theme'
 
+import { debounce } from 'lodash-es'
+
 init_request('http://localhost:9010')
 
 export function App() {
