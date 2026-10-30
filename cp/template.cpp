@@ -13,36 +13,9 @@
 
 const int modulo = 1e9 + 7;
 
-// fix
-
 const int nil = -1;
 
 using namespace std;
-
-void solve();
-
-auto force_tle() {
-  while (true) {
-  }
-}
-
-auto force_re() {
-  assert(false);
-  // unreachable();
-}
-
-auto force_mle() {
-  vector<vector<int>> leak;
-  while (true) {
-    leak.push_back(vector<int>(1000000, 42));
-  }
-}
-
-auto force_wa() {
-  cout << "wrong answer";
-  exit(0);
-  // quick_exit(0);
-}
 
 // utils
 
@@ -91,6 +64,34 @@ auto print(auto&&... items) {
     pr(vec[i]);            \
   }                        \
   write('\n');
+
+// debug
+
+#define info(...)             \
+  if (should_debug) {         \
+    prn("info", __VA_ARGS__); \
+  }
+
+auto force_tle() {
+  while (true) {
+  }
+}
+
+auto force_re() {
+  assert(false);
+}
+
+auto force_mle() {
+  vector<vector<int>> leak;
+  while (true) {
+    leak.push_back(vector<int>(1000000, 42));
+  }
+}
+
+auto force_wa() {
+  // cout << "wrong answer";
+  exit(0);
+}
 
 // std
 
@@ -239,52 +240,48 @@ auto permutations(int n, int r) {
   return result;
 }
 
-template <typename T>
-auto min_(vector<T>& vec) {
-  double minimum = vec[0];
+#define min_vec(vec, l, r)    \
+  []() {                      \
+    auto minimum = vec[l];    \
+    each(i, l, r) {           \
+      if (vec[i] < minimum) { \
+        minimum = element;    \
+      }                       \
+    }                         \
+    return minimum            \
+  }()
 
-  for (auto& element : vec) {
-    if (element < minimum) {
-      minimum = element;
-    }
-  }
+auto min_(auto first, auto... rest) {
+  auto minimum = first;
+
+  ((minimum = (rest < minimum) ? rest : minimum), ...);
 
   return minimum;
 }
-auto min_(auto first, auto... rest) {
-  using CommonType = std::common_type_t<decltype(first), decltype(rest)...>;
-  CommonType current_min = first;
-  // auto current_min = first;
 
-  ((current_min = (rest < current_min) ? rest : current_min), ...);
+#define max_vec(vec, l, r)    \
+  []() {                      \
+    auto maximum = vec[l];    \
+    each(i, l, r) {           \
+      if (vec[i] > maximum) { \
+        maximum = element;    \
+      }                       \
+    }                         \
+    return maximum            \
+  }()
 
-  return current_min;
-}
+auto max_(auto first, auto... rest) {
+  auto maximum = first;
 
-template <typename T>
-auto max_(vector<T>& vec) {
-  double maximum = vec[0];
-
-  for (auto& element : vec) {
-    if (element > maximum) {
-      maximum = element;
-    }
-  }
+  ((maximum = (rest > maximum) ? rest : maximum), ...);
 
   return maximum;
-}
-auto max_(auto first, auto... rest) {
-  using CommonType = std::common_type_t<decltype(first), decltype(rest)...>;
-  CommonType current_max = first;
-  // auto current_max = first;
-
-  ((current_max = (rest > current_max) ? rest : current_max), ...);
-
-  return current_max;
 }
 
 auto floor_ = [](auto x) { return static_cast<int>(std::floor(x)); };
 auto ceil_ = [](auto x) { return static_cast<int>(std::ceil(x)); };
+
+// fix
 
 #define pow pow_
 #define floor floor_
@@ -292,17 +289,13 @@ auto ceil_ = [](auto x) { return static_cast<int>(std::ceil(x)); };
 #define min min_
 #define max max_
 
+void solve();
+
 // entry
 
 const bool is_single_task = true;
 
 const bool should_debug = true;
-
-auto info(auto&&... items) {
-  if (should_debug) {
-    prn("info", items...);
-  }
-}
 
 signed main() {
   ios_base::sync_with_stdio(false);
@@ -311,7 +304,7 @@ signed main() {
   int t = 1;
 
   if (!is_single_task) {
-    cin >> t;
+    read(t);
   }
   repeat(t) {
     solve();
