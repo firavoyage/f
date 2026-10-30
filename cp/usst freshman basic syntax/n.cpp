@@ -222,7 +222,7 @@ auto combinations(int n, int r, int mod = modulo) {
   }
 
   auto result = 1;
-  each(i, 1, r){
+  each(i, 1, r) {
     result = (result * (n - r + i) * mod_inverse(i, mod)) % mod;
   }
   return result;
@@ -322,26 +322,74 @@ signed main() {
 
 quite naive drawing
 
+
+
+it doesnt read naturally at all.
+
 */
 
 void solve() {
   int n;
   read(n);
 
-  seq a(n+5);
-  // odd -> 0, even -> 1;
-  read_vec(a, 1, n);
+  // seq a(n + 5);
+  // // odd -> 0, even -> 1;
+  // read_vec(a, 1, n);
 
   // %n == 0 after printing -> return
   int count = 0;
-  
-  each(i, 1, n){
-    if(i % 2 == 1){
-      repeat(a[i]){
+
+  each(i, 1, 1e5) {
+    int a;
+    read(a);
+
+    if (i % 2 == 1) {
+      repeat(a) {
         write(0);
-        count +=1;
-        if(count % n == 0)
+        count += 1;
+        if (count % n == 0) {
+          write("\n");
+        }
+      }
+    } else {
+      repeat(a) {
+        write(1);
+        count += 1;
+        if (count % n == 0) {
+          write("\n");
+        }
       }
     }
+
+    if (count >= n * n) {
+      return;
+    }
   }
+
+  // seq a(n + 5);
+  // // odd -> 0, even -> 1;
+  // read_vec(a, 1, n);
+
+  // // %n == 0 after printing -> return
+  // int count = 0;
+
+  // each(i, 1, n) {
+  //   if (i % 2 == 1) {
+  //     repeat(a[i]) {
+  //       write(0);
+  //       count += 1;
+  //       if (count % n == 0) {
+  //         write("\n");
+  //       }
+  //     }
+  //   } else {
+  //     repeat(a[i]) {
+  //       write(1);
+  //       count += 1;
+  //       if (count % n == 0) {
+  //         write("\n");
+  //       }
+  //     }
+  //   }
+  // }
 }
