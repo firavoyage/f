@@ -18117,4 +18117,70 @@ int ifloor(int a, int b) {
 
 Are you currently hitting **Precision Limit (WA)** or **Time Limit Exceeded (TLE)** on a specific problem involving `floor` or `ceil`? If you share the problem constraints, I can show you how to rewrite it entirely using pure integer arithmetic.
 
+# can you use auto instead of void in cpp
+
+### can you use auto instead of void in cpp
+
+**Yes, you can use `auto` instead of `void` in certain contexts, but they serve completely different purposes.**
+
+How they interact depends entirely on whether you are talking about **function return types** or **pointers**.
+
+---
+
+#### 1\. Function Return Types
+
+In modern C++ (C++14 and later), you can use `auto` as a function return type. The compiler will deduce what the function returns based on its `return` statements. [](https://www.youtube.com/watch?v=uAmOE32JWZ8&t=140)
+
+* **If the function returns nothing:** If your function does not have a `return` statement (or has a blank `return;`), **`auto` will deduce to `void`**.
+* **The Catch:** If someone later adds a `return 5;` inside that function, the return type will silently change from `void` to `int`. [](https://www.reddit.com/r/cpp%5Fquestions/comments/emodpt/is%5Freplacing%5Fthe%5Fvoid%5Freturning%5Ftype%5Fwith%5Fauto%5Fis/)
+
+| Traditional void                                                | Modern auto (Deduces to void)                                                      |
+| --------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| cpp<br>void printMessage() {<br> std::cout << "Hello";<br>}<br> | cpp<br>auto printMessage() {<br> std::cout << "Hello";<br>} // Deduces to void<br> |
+
+**Is it good practice?** Generally, **no**. As discussed by users on [Reddit's r/cpp\_questions](https://www.reddit.com/r/cpp%5Fquestions/comments/emodpt/is%5Freplacing%5Fthe%5Fvoid%5Freturning%5Ftype%5Fwith%5Fauto%5Fis/), replacing a known `void` return type with `auto` provides no real benefit, makes code less readable, and introduces the risk of accidental type changes if a return statement is added later. [](https://www.reddit.com/r/cpp%5Fquestions/comments/emodpt/is%5Freplacing%5Fthe%5Fvoid%5Freturning%5Ftype%5Fwith%5Fauto%5Fis/)
+
+---
+
+#### 2\. `auto` vs `void*` (Pointers)
+
+You **cannot** use `auto` as a direct drop-in replacement for a raw `void*` pointer. They represent opposite concepts in C++: [](https://stackoverflow.com/questions/36895014/difference-between-auto-and-void)
+
+* **`void*` is Type-Erasure:** It means _"this is a pointer to raw memory, and the compiler has no idea what data type lives here"_.
+* **`auto` is Type-Inference:** It means _"the compiler will look at the right-hand side and figure out the exact, strong data type"_. [](https://www.quora.com/What-are-the-dangers-of-using-auto-for-pointers-or-references-in-C)
+
+cpp
+
+```
+int x = 42;
+
+void* ptr1 = &x;  // Valid. Type information is stripped away.
+auto  ptr2 = &x;  // Valid. But ptr2 is strictly deduced as an 'int*', NOT a 'void*'.
+
+void* ptr3;       // Valid (points to uninitialized/null memory).
+auto ptr4;        // ERROR! auto requires an immediate initializer to work.
+
+```
+
+
+
+If a function or API forces you to pass a `void*` (common in older C-style libraries), writing `auto` will just deduce the concrete pointer type (`int*`, `double*`, etc.), which may still implicitly convert to `void*` when passed to the function, but `auto` itself never means "generic pointer". [](https://stackoverflow.com/questions/36895014/difference-between-auto-and-void)
+
+Are you trying to **clean up a function signature**, or are you working with **generic pointers (`void*`)** that you want to make safer? Let me know so I can show you the best modern C++ alternative (like templates or `std::any`)!
+
+* [](https://stackoverflow.com/questions/36895014/difference-between-auto-and-void)  
+Stack Overflow  
+Difference between Auto and Void? - c++ - Stack Overflow  
+April 27, 2016 — \`auto\` uses compile-time type inference based on the initializer, resulting in a strongly typed variable, while \`void\*\` is a speci...
+* [](https://www.reddit.com/r/cpp%5Fquestions/comments/emodpt/is%5Freplacing%5Fthe%5Fvoid%5Freturning%5Ftype%5Fwith%5Fauto%5Fis/)  
+Reddit·r/cpp\_questions  
+Is replacing the void returning type with auto is a bad practice ...  
+It provides no benefits and only introduces risks. It doesn't shorten the code and one big risk is someone (possibly yourself) at ...
+* [](https://www.quora.com/What-are-the-dangers-of-using-auto-for-pointers-or-references-in-C)  
+Quora  
+What are the dangers of using 'auto' for pointers or references ...  
+A void pointer is a pointer with no particular type. A “void \*” pointer doesn't claim to point to any type in particular, it's jus...
+
+Show all
+
 

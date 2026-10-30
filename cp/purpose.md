@@ -428,4 +428,26 @@ yk vectors can be 1 indexed, and padded at the end.
 
 i may not have to, esp considering the benefits of half open ranges.
 
+30
+
+```cpp
+void __print(auto&& scalar) {
+  write(scalar, ' ');
+}
+template <typename T>
+void __print(vector<T>& elements) {
+  for (auto& element : elements) {
+    write(element, ' ');
+  }
+}
+
+void pr(auto&&... items) {
+  (__print(items), ...);
+}
+```
+
+deprecate __print as a whole.
+
+finally.
+
 

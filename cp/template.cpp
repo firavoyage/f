@@ -18,7 +18,7 @@ using namespace std;
 
 // utils
 
-void read(auto&&... variables) {
+auto read(auto&&... variables) {
   (cin >> ... >> variables);
 }
 
@@ -27,36 +27,30 @@ void read(auto&&... variables) {
     read(vec[i]);           \
   }
 
-void readline(auto&&... s) {
+auto readline(auto&&... s) {
   cin >> ws;  // ignore any trailing whitespace
   ((getline(cin, s)), ...);
 }
 
-void write(auto&&... items) {
+auto write(auto&&... items) {
   (cout << ... << items);
 }
 
-void __print(auto&& scalar) {
-  write(scalar, ' ');
+auto pr(auto&&... items) {
+  (write(items, ' '), ...);
 }
 
-void pr(auto&&... items) {
-  (__print(items), ...);
-}
-
-void prn() {
+auto prn() {
   write('\n');
 }
 
-void prn(auto&&... items) {
+auto prn(auto&&... items) {
   pr(items...);
 
   write('\n');
 }
 
-auto print(auto&&... items) {
-  prn(items...);
-}
+#define print prn
 
 #define prn_vec(vec, l, r) \
   each(i, l, r) {          \
@@ -158,6 +152,8 @@ auto reduce_right_vec(const vector<T>& vec, Func f, InitType initial_value) {
 
 #define sort_vec(vec, l, r) \
   std::sort((vec).begin() + (l), (vec).begin() + (r) + 1)
+
+#define sort sort_vec
 
 // string
 
