@@ -384,7 +384,7 @@ export function s<T>(initial_value: T, options: s<T>) {
       state = new_value(state)
     } else {
       state = new_value
-    } 
+    }
 
     for (const sub of subs) {
       sub(state)
@@ -405,17 +405,41 @@ export function s<T>(initial_value: T, options: s<T>) {
     return [state, set_state]
   }
 
-  init_from_localstorage()
-  if (is_given(persist)) {
-    subscribe(sync_localstorage)
+  const { parse: deserialize } = JSON
+  function serialize() {
+    return JSON.stringify(state)
   }
 
+  if (is_given(localstorage)) {
+    const key = `${app_prefix}${localstorage}`
+
+    const value = localStorage.getItem(key)
+
+    if (is_given(value)) {
+      state = deserialize(value)
+    }
+
+    subscribe(() => {
+      localStorage.setItem(key, serialize())
+    })
+  }
+
+  if (is_given(url_param)) {
+    const params = new URLSearchParams(window.location.search)
+
+    
+
+    // 3. Get specific values using .get()
+    const product = urlParams.get('product') // "shirt"
+    const id = urlParams.get('id') // "101"
+    const nonExistent = urlParams.get('size') // null
+  }
   init_from_url()
   if (should_sync_url) {
     subscribe(sync_url)
   }
 
-  
+  return use_state
 }
 
 function use_update() {

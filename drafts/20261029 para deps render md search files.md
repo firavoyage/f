@@ -7394,6 +7394,182 @@ Are you using `fzf` to **search through a specific list of strings** generated b
 
 Knowing your target will let me show you how to structure the input correctly.
 
+# how to parse url params in js
 
+The most modern and efficient way to parse URL parameters in JavaScript is by using the native **[URLSearchParams API](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams)**. You don't need any external libraries or complex regex strings. [](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams)
+
+Here is how to do it depending on your context:
+
+### 1\. Parsing from the Current Browser Window
+
+If you want to grab the query parameters from the page the user is currently visiting, pass `window.location.search` directly into the constructor: [](https://www.sitepoint.com/get-url-parameters-with-javascript/)
+
+javascript
+
+```
+// Assume the browser URL is: https://example.com/?product=shirt&color=blue
+
+// 1. Get the query string (e.g., "?product=shirt&color=blue")
+const queryString = window.location.search;
+
+// 2. Initialize URLSearchParams
+const urlParams = new URLSearchParams(queryString);
+
+// 3. Get individual values
+const product = urlParams.get('product'); // "shirt"
+const color = urlParams.get('color');     // "blue"
+const size = urlParams.get('size');       // null (parameter doesn't exist)
+
+```
+
+
+
+### 2\. Parsing a Specific URL String
+
+If you are processing a random URL string rather than the active browser page, combine the **[URL interface](https://dmitripavlutin.com/parse-url-javascript/)** with `searchParams`: [](https://dmitripavlutin.com/parse-url-javascript/)
+
+javascript
+
+```
+const myUrl = new URL("https://example.com");
+
+// Use the built-in searchParams property
+const query = myUrl.searchParams.get('query'); // "javascript"
+const page = myUrl.searchParams.get('page');   // "2"
+
+```
+
+
+
+### Useful `URLSearchParams` Methods
+
+Once you have initialized your `urlParams` object, you have access to a few handy built-in utilities: [](https://www.sitepoint.com/get-url-parameters-with-javascript/)
+
+* **Check if a parameter exists:**  
+javascript  
+```  
+urlParams.has('color'); // true  
+```  
+
+* **Convert all params into a standard object:**  
+javascript  
+```  
+const paramsObject = Object.fromEntries(urlParams.entries());  
+console.log(paramsObject); // { product: "shirt", color: "blue" }  
+```  
+
+* **Handle duplicate parameters:** If a URL passes the same parameter multiple times (like `?tags=js&tags=css`), use `getAll()` to grab an array of those values: [](https://philna.sh/blog/2021/04/11/dont-ever-write-your-own-function-to-parse-url-parameters/)  
+javascript  
+```  
+const tagsParams = new URLSearchParams("?tags=js&tags=css");  
+tagsParams.getAll('tags'); // ["js", "css"]  
+```  
+
+
+Are you trying to parse these parameters on the **frontend (browser)** or on the **backend (Node.js)**? If you have an edge-case scenario—like handling deeply nested arrays or brackets in your parameters—let me know so I can provide a more tailored approach!
+
+* [](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams)  
+MDN Web Docs  
+URLSearchParams - Web APIs  
+We can parse location.search with URLSearchParams . Duplicate search parameters js … only handles percent-encoding when serializin...
+* [](https://philna.sh/blog/2021/04/11/dont-ever-write-your-own-function-to-parse-url-parameters/)  
+Phil Nash  
+Don't ever write your own function to parse URL parameters  
+URLSearchParams has a specification. The URLSearchParams class is specified in the URL standard. It handles all of the parsing pro...
+* [](https://www.sitepoint.com/get-url-parameters-with-javascript/)  
+SitePoint  
+How to Get URL Parameters with JavaScript - SitePoint  
+This defines a host of utility methods to work with the query string of a URL. we can grab the query string using window.location.
+
+Show all
+
+# how to parse and set url params in js and get original arbitrary string
+
+To parse and set URL parameters in JavaScript while preserving or retrieving an original, arbitrary string (even one with special characters like spaces, symbols, or JSON), you should use the native **`URL`** and **`URLSearchParams`** APIs. [](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams)
+
+These built-in APIs **automatically handle URL encoding and decoding (`encodeURIComponent` / `decodeURIComponent`)** under the hood, ensuring your arbitrary strings do not break the URL format. [](https://dev.to/robert96/get-url-parameters-with-javascript-1ah6)
+
+---
+
+### 1\. Setting a Parameter with an Arbitrary String
+
+When you pass a raw string into `URLSearchParams.set()`, the browser automatically encodes it so that it is safe to be sent over the web. [](https://developer.mozilla.org/en-US/docs/Web/API/URL)
+
+javascript
+
+```
+// 1. Create a URL object (can be an absolute URL or window.location.href)
+const url = new URL("https://example.com");
+
+// 2. Define your raw, arbitrary string (e.g., JSON, symbols, or spaces)
+const originalString = '{"user": "Alice", "status": "active & ready!"}';
+
+// 3. Set the parameter using .searchParams
+url.searchParams.set("data", originalString);
+
+// 4. Get the final formatted URL string
+const serializedUrl = url.toString(); 
+
+console.log(serializedUrl);
+// Output: https://example.com?data=%7B%22user%22%3A+%22Alice%22%2C+%22status%22%3A+%22active+%26+ready%21%22%7D
+
+```
+
+
+
+### 2\. Parsing the URL to Get the Original String Back
+
+When reading the URL later, using `.get()` automatically reverses the encoding process and hands you back the **exact, untouched raw string**. [](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams)
+
+javascript
+
+```
+// Assume this is the incoming URL string
+const incomingUrlString = "https://example.com";
+
+// 1. Parse the string using the URL constructor
+const parsedUrl = new URL(incomingUrlString);
+
+// 2. Retrieve the specific key using .get()
+const retrievedString = parsedUrl.searchParams.get("data");
+
+console.log(retrievedString);
+// Output: {"user": "Alice", "status": "active & ready!"}
+
+// Proof of integrity:
+console.log(retrievedString === originalString); // true
+
+```
+
+
+
+---
+
+### Quick Cheat Sheet for `URLSearchParams`
+
+| Action                           | Code Example                                                | Notes                                    |
+| -------------------------------- | ----------------------------------------------------------- | ---------------------------------------- |
+| **Initialize from current page** | const params = new URLSearchParams(window.location.search); | Grabs the current browser URL query      |
+| **Get a value**                  | params.get("key");                                          | Automatically decodes special characters |
+| **Set/Update a value**           | params.set("key", "new value");                             | Automatically encodes special characters |
+| **Check if key exists**          | params.has("key");                                          | Returns true or false                    |
+| **Delete a key**                 | params.delete("key");                                       | Removes the parameter completely         |
+
+Are you trying to pass **large data objects** through the URL, or are you running into issues with **character length limits** in specific browsers? I can show you how to compress your strings into shorter URL-safe tokens if needed!
+
+* [](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams)  
+MDN Web Docs  
+URLSearchParams - Web APIs - MDN Web Docs  
+URLSearchParams.getAll() Returns all the values associated with a given search parameter. URL.search encodes a subset of character...
+* [](https://developer.mozilla.org/en-US/docs/Web/API/URL)  
+MDN Web Docs  
+URL - Web APIs - MDN Web Docs  
+Oct 25, 2026 — The URLSearchParams interface can be used to build and manipulate the URL query string. To get the search params from the current ...
+* [](https://www.sitepoint.com/get-url-parameters-with-javascript/)  
+SitePoint  
+How to Get URL Parameters with JavaScript  
+Getting a URL Parameter Assuming that our URL is https://example.com/?product=shirt&color=blue&newuser&size=m , we can grab the qu...
+
+Show all
 
 
