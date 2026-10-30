@@ -106,7 +106,9 @@ type variable_type = 'nil' | 'array' | "string" | "number" | "bigint" | "boolean
 export function is(v: any, type: variable_type) {
   if (v === nil) {
     return type == 'nil' || type === nil
-  } else if (type == 'numeric') {
+  } else if (v === undefined) {
+    return type == 'undefined'
+  }  else if (type == 'numeric') {
     return is(v, 'number') || is(v, 'bigint')
   } else if (type == 'iterable') {
     return is(v[Symbol.iterator], 'function') && !is(v, 'string')
@@ -178,11 +180,11 @@ export function list(...args) {
   }
 }
 
-export function set(v) {
+export function set(v?) {
   return new Set(v)
 }
 
-export function dict(v) {
+export function dict(v?) {
   if (!is(v, 'iterable')) {
     v = entries(v)
   }
@@ -193,7 +195,7 @@ export function dict(v) {
   return new Map(v)
 }
 
-export function obj(v) {
+export function obj(v = []) {
   return Object.fromEntries(v)
 }
 

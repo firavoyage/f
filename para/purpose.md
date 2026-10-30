@@ -120,4 +120,20 @@ if i just want it to be simple.
 
 as soon as i create design tokens and utils like size, text, microscopic tweaks, i can migrate.
 
+30
+
+i will overhaul the state lib.
+
+in fact you dont have a lot of states.
+
+if you do, usually that's a config object.
+
+instead of one giant global state, you declare (ec) a few, like
+
+use search params. you may not have to export which.
+
+and you decide whether to persist or sync each, via clear names like local storage or search params. (persist is ambiguous, local? idb? session? backend sync? webdav?)
+
+you may init app name first, and i will name all local storage items after which.
+
 

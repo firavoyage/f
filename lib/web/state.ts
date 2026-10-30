@@ -5,12 +5,6 @@ type NonFunction = any
 // type NonFunction = all & { [K in any]: any } & { (): never; new(): never };
 // type NonFunction<T> = T extends Function ? never : T;
 
-function use_update() {
-  const [, update] = useState(false)
-
-  return () => update(v => !v)
-}
-
 type state<T> = {
   persist?: string
   version?: string
@@ -346,6 +340,32 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
   init?.(data)
 
   return use_global
+}
+
+let app_name = ''
+
+export function init_app_name(app: string) {
+  app_name = app
+}
+
+type s<T> = {
+  localstorage?: string
+  url_param?: string
+}
+
+export function s<T>(initial_value: T, options: s<T>) {
+  let data = initial_value
+
+  const subs = set()
+  function subscribe(listener: Function) {
+    subs.add(listener)
+  }  
+}
+
+function use_update() {
+  const [, update] = useState(false)
+
+  return () => update(v => !v)
 }
 
 type state_fn = typeof state
