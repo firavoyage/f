@@ -5,7 +5,7 @@
 #define len(x) (int)(x).size()
 #define append push_back
 
-#define repeat(n) for (int __i = 0; __i < n; __i += 1)
+#define repeat(n) for (int _ = 0; _ < n; _ += 1)
 // closed interval
 #define each(i, a, b) for (int i = (a); i <= (b); i += 1)
 #define reveach(i, a, b) for (int i = (a); i >= (b); i -= 1)
