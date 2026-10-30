@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 
-#define all(v) v.begin(), v.end()
-#define reverse(v) v.rbegin(), v.rend()
-#define len(x) (int)(x).size()
+// #define all(v) v.begin(), v.end()
+// #define reverse(v) v.rbegin(), v.rend()
+// #define len(x) (int)(x).size()
 #define append push_back
 
 #define repeat(n) for (int _ = 0; _ < n; _ += 1)
@@ -17,7 +17,7 @@
 #define integer (long long)
 #define float double
 
-const int modulo = 1000000007;
+const int modulo = 1e7;
 
 // fix
 
