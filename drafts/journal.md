@@ -55449,6 +55449,10 @@ backlog: random ideas
 
 some could make sense, but they are very likely to be irrelevant for me, or right now <!-- or in the near future -->. moved to todo legacy.
 
+30
+
+12 00 polish cpp cp template and copy on a notebook for a contest.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

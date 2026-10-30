@@ -14539,3 +14539,110 @@ int main() {
 * **Structured Bindings (`auto& [u, v, w]`)**: Standardized in C++17 and widely used in modern C++23 CP. It lets you unpack the struct attributes directly into local variables inside loops without manually writing `edges[i].u`.
 
 Would you like to see how to **sort this vector of structs** using C++20/23 projection ranges (like `std::ranges::sort`), or are you looking to implement a specific algorithm like **Kruskal's** or **Dijkstra's**?
+
+# how to format float in cp cpp
+
+In competitive programming (CP) using C++, you can format floating-point numbers using two primary methods: standard I/O manipulators (`std::fixed` and `std::setprecision`) or the faster C-style `printf`. [](https://www.woolseyworkshop.com/2019/11/22/quick-tip-how-to-format-floating-point-output-in-c/)
+
+Here is how to use both approaches to format a float to a specific number of decimal places (e.g., 6 decimal places).
+
+### 1\. The C++ Way (`iostream` \+ `iomanip`)
+
+This is the standard C++ approach. To use it, you must include the `<iomanip>` header. [](https://www.youtube.com/watch?v=LzZtQLAsFTw)
+
+* **`std::fixed`**: Forces the compiler to print numbers in fixed-point notation instead of scientific notation.
+* **`std::setprecision(n)`**: Sets the exact number of digits to display after the decimal point. [](https://stackoverflow.com/questions/14432043/float-formatting-in-c)
+
+cpp
+
+```
+#include <iostream>
+#include <iomanip> // Required for setprecision
+
+using namespace std;
+
+int main() {
+    // Fast I/O for Competitive Programming
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    double pi = 3.141592653589793;
+
+    // Format to 6 decimal places
+    cout << fixed << setprecision(6) << pi << "\n"; 
+    // Output: 3.141593 (Note: it automatically rounds the last digit)
+
+    // Format to 2 decimal places
+    cout << setprecision(2) << pi << "\n"; 
+    // Output: 3.14
+
+    return 0;
+}
+
+```
+
+
+
+_Note: Once you call `cout << fixed`, it persists for all subsequent float outputs in your program until changed._ [](https://stackoverflow.com/questions/14432043/float-formatting-in-c)
+
+### 2\. The C-Style Way (`printf`)
+
+In CP, many programmers prefer `printf` because it is **faster by default**, less verbose for complex formatting, and doesn't require extra headers if you already include `<iostream>` (or `<cstdio>`). [](https://www.woolseyworkshop.com/2019/11/22/quick-tip-how-to-format-floating-point-output-in-c/)
+
+* Syntax: `%.nf` where `n` is the number of decimal places.
+
+cpp
+
+```
+#include <iostream>
+#include <cstdio> // Required if not using bits/stdc++.h
+
+using namespace std;
+
+int main() {
+    double pi = 3.141592653589793;
+
+    // Format to 6 decimal places
+    printf("%.6f\n", pi); // Output: 3.141593
+
+    // Format to 2 decimal places
+    printf("%.2f\n", pi); // Output: 3.14
+
+    return 0;
+}
+
+```
+
+
+
+### Direct Comparison
+
+| Feature    | cout << fixed << setprecision(n)           | printf("%.nf", x)                         |
+| ---------- | ------------------------------------------ | ----------------------------------------- |
+| **Speed**  | Fast _only_ if Fast I/O lines are included | Inherently fast                           |
+| **Header** | Requires <iomanip>                         | Requires <cstdio> or <iostream>           |
+| **State**  | Sticky (affects future cout calls)         | Temporary (local to that print statement) |
+
+### CP Pro-Tip
+
+Always prefer using `double` over `float` in competitive programming to avoid precision issues, as `float` only guarantees about 7 digits of precision, whereas `double` provides about 15\. If a problem requires extremely high precision, use `long double` and format it using `printf("%.nlf", x)` or `cout`. [](https://www.youtube.com/watch?v=KS7jbf6QeLA)
+
+Are you currently running into a specific precision problem or looking to optimize your **Fast I/O template** for an upcoming contest? Let me know and I can share a complete setup!
+
+* [](https://stackoverflow.com/questions/14432043/float-formatting-in-c)  
+Stack Overflow  
+Float formatting in C++ - Stack Overflow  
+Jan 21, 2013 — Use cout << fixed or cout.setf(ios::fixed) The output from this is. This is the simple version. In lieu of using cout << fixed; , ...
+* [](https://www.woolseyworkshop.com/2019/11/22/quick-tip-how-to-format-floating-point-output-in-c/)  
+www.woolseyworkshop.com  
+Quick Tip: How To Format Floating Point Output In C++  
+Standard C formatting method printf("floatA = %5.2f\\n", floatA); printf("floatB = %5.2f\\n", floatB); Preferred C++ formatting meth...
+* [](https://www.youtube.com/watch?v=LzZtQLAsFTw)  
+YouTube·United Top Tech  
+Formatting and rounding off decimal number when printing in ...  
+Dec 13, 2022 — The argument \`n\` within \`std::setprecision()\` determines the number of digits to display after the decimal point. Numbers are roun...  
+1:35
+
+Show all
+
+

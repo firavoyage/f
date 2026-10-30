@@ -6,7 +6,6 @@
 // closed interval
 #define each(i, a, b) for (int i = (a); i <= (b); i += 1)
 #define reveach(i, a, b) for (int i = (a); i >= (b); i -= 1)
-#define rev_each reveach
 
 #define int long long
 #define float double
@@ -200,6 +199,10 @@ auto pow_(int base, int exp, int mod = modulo) {
   return res;
 }
 
+auto mod_inverse(int n, int mod = modulo) {
+  return pow_(n, mod, mod);
+}
+
 auto and_ = [](auto a, auto b) { return a & b; };
 auto or_ = [](auto a, auto b) { return a | b; };
 auto not_ = [](auto a) { return !a; };
@@ -278,8 +281,14 @@ auto max_(auto first, auto... rest) {
   return maximum;
 }
 
-auto floor_ = [](auto x) { return static_cast<int>(std::floor(x)); };
-auto ceil_ = [](auto x) { return static_cast<int>(std::ceil(x)); };
+auto floor_ = [](auto x) {
+  int result = std::floor(x);
+  return result;
+};
+auto ceil_ = [](auto x) {
+  int result = std::ceil(x);
+  return result;
+};
 
 // fix
 
@@ -321,5 +330,5 @@ signed main() {
 */
 
 void solve() {
-
+  
 }
