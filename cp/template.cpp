@@ -9,7 +9,7 @@
 
 #define int long long
 #define float double
-#define arr vector<int>
+#define seq vector<int>
 
 const int modulo = 1e9 + 7;
 

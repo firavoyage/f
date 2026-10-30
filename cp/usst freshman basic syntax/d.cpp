@@ -324,6 +324,10 @@ wa on 3
 
 
 
+wow, how can it get 90/100.
+it's so weak.
+
+
 
 
 */
@@ -333,11 +337,18 @@ void solve() {
 
   read(n, k);
 
+  int coupon = 0;
   int count = 0;
 
-  while (n > 0) {
+  while (n > 0 || coupon >= k) {
     count += n;
-    n /= k;
+    coupon += n;
+    n = 0;
+
+    auto [gift, rem] = divmod(coupon, k);
+
+    n += gift;
+    coupon = rem;
   }
 
   prn(count);
