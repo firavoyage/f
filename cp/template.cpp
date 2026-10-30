@@ -1,9 +1,6 @@
 #include <bits/stdc++.h>
 
-// #define all(v) v.begin(), v.end()
-// #define reverse(v) v.rbegin(), v.rend()
-// #define len(x) (int)(x).size()
-#define append push_back
+// #define append push_back
 
 #define repeat(n) for (int _ = 0; _ < n; _ += 1)
 // closed interval
@@ -11,26 +8,22 @@
 #define reveach(i, a, b) for (int i = (a); i >= (b); i -= 1)
 #define rev_each reveach
 
-#define enum views::enumerate  // auto [index, value]: enum(vec)
-
 #define int long long
-#define integer (long long)
 #define float double
 
-const int modulo = 1e7;
+const int modulo = 1e9 + 7;
 
 // fix
 
 const int nil = -1;
 
 using namespace std;
-// using namespace ranges; // ranges::sort(vec)
 
 namespace banned {
-  int pow = nil; // use pow_ instead
-  int floor = nil; // use pow_ instead
-  int ceil = nil; // use pow_ instead
-}
+int pow = nil;  // use pow_ instead
+int floor = nil;
+int ceil = nil;
+}  // namespace banned
 using namespace banned;
 
 void solve();
@@ -64,18 +57,10 @@ void read(auto&&... variables) {
   (cin >> ... >> variables);
 }
 
-template <typename T>
-void read(vector<T>& vec) {
-  for (auto& element : vec) {
-    read(element);
+#define read_vec(vec, l, r) \
+  each(i, l, r) {           \
+    read(vec[i]);           \
   }
-}
-template <typename T>
-void read_vec(vector<T>& vec, int l, int r) {
-  each(i, l, r) {
-    read(vec[i]);
-  }
-}
 
 void readline(auto&&... s) {
   cin >> ws;  // ignore any trailing whitespace
@@ -88,12 +73,6 @@ void write(auto&&... items) {
 
 void __print(auto&& scalar) {
   write(scalar, ' ');
-}
-template <typename T>
-void __print(vector<T>& elements) {
-  for (auto& element : elements) {
-    write(element, ' ');
-  }
 }
 
 void pr(auto&&... items) {
@@ -110,28 +89,20 @@ void prn(auto&&... items) {
   write('\n');
 }
 
-template <typename T>
-void prn_vec(vector<T>& elements, int l, int r) {
-  each(i, l, r) {
-    pr(elements[i]);
-  }
-
-  write('\n');
-}
-
 inline auto print(auto&&... items) {
   prn(items...);
 }
 
+#define prn_vec(vec, l, r) \
+  each(i, l, r) {               \
+    pr(vec[i]);            \
+  }                             \
+  write('\n');
+
 // std
 
-inline auto parse_int(auto&&... items) {
-  return stoi(items...);
-}
-
-inline auto parse_float(auto&&... items) {
-  return stod(items...);
-}
+#define parse_int stoi
+#define parse_float stod
 
 // fp
 
@@ -192,7 +163,8 @@ auto reduce_right_vec(const vector<T>& vec, Func f, InitType initial_value) {
 
 // iterables
 
-#define sort_vec(vec, l, r) std::sort((vec).begin() + (l), (vec).begin() + (r) + 1)
+#define sort_vec(vec, l, r) \
+  std::sort((vec).begin() + (l), (vec).begin() + (r) + 1)
 
 // string
 
@@ -386,6 +358,4 @@ signed main() {
 
 */
 
-void solve() {
-  
-}
+void solve() {}
