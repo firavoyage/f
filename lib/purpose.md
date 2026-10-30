@@ -313,4 +313,21 @@ how complicated is that, despite seemingly self explantory names.
 
 i dont really wanna use it.
 
+```ts
+   function does_type_mismatch(old_value: any, new_value: any) {
+      return (
+        typeof old_value == "boolean" &&
+        typeof new_value != "boolean" &&
+        typeof new_value != "function"
+      );
+    }
+
+    const toggle = (v: boolean) => !v;
+    const new_value =
+      args.length == 0 || does_type_mismatch(data, args[0]) ? toggle : args[0];
+```
+
+how awkward. it might provide better dx on certain scenarios, but just how awkward.
+it shouldnt be fixed here.
+
 

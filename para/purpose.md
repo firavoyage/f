@@ -134,6 +134,16 @@ use search params. you may not have to export which.
 
 and you decide whether to persist or sync each, via clear names like local storage or search params. (persist is ambiguous, local? idb? session? backend sync? webdav?)
 
-you may init app name first, and i will name all local storage items after which.
+you may init app name first, and i will name all local storage items after which, wo heavy json serialization overhead if they were all a single value.
+
+i dont wanna care "push" or "correct" url. it must be spa first. and if i do wanna auto fix typos, i could extend later.
+
+---
+
+and i will not use "folder and path". one single path.
+
+i would take the first "dir" as folder on backend.
+
+you may provide a single default folder (could have).
 
 

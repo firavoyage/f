@@ -17,25 +17,28 @@ type state<T> = {
     keys_to_sync?: (keyof T)[] | Set<keyof T>
     param_mapping?: Record<string, keyof T>
     path_mapping?: keyof T
-  },
-  init?: (state: T) => void,
+  }
+  init?: (state: T) => void
   change?: (state: T) => void
 }
 
 /**
  * Store a global state and get use_global hook
- * 
+ *
  * when persist is on, data must be serializable
- * 
+ *
  * do not accept fn value
- * 
+ *
  * value can be undefined but setter fn must not return undefined
- * 
+ *
  * path can not exceed one nesting level
- * 
+ *
  * local storage sync is best effort
  */
-export function state<T extends NonFunction>(initial: T, options: state<T> = {}) {
+export function state<T extends NonFunction>(
+  initial: T,
+  options: state<T> = {},
+) {
   type key = string & keyof T
 
   const {
@@ -54,11 +57,12 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
     should_sync_after_init = true,
     keys_to_sync: flexible_keys_to_sync = new Set(),
     param_mapping = {},
-    path_mapping
+    path_mapping,
   } = sync_url_options
 
-  let keys_to_sync = Array.isArray(flexible_keys_to_sync) ?
-    new Set(flexible_keys_to_sync) : flexible_keys_to_sync
+  let keys_to_sync = Array.isArray(flexible_keys_to_sync)
+    ? new Set(flexible_keys_to_sync)
+    : flexible_keys_to_sync
 
   const key_to_param_mapping: any = {}
   for (const [key, value] of Object.entries(param_mapping)) {
@@ -91,7 +95,7 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
 
       if (is_given(version) && current_version != version) {
         if (should_migrate(current_version)) {
-          for (const [key,] of Object.entries(data)) {
+          for (const [key] of Object.entries(data)) {
             if (has(old_data, key)) {
               data[key] = old_data[key]
             }
@@ -166,7 +170,7 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
         continue
       }
 
-      // @ts-expect-error 
+      // @ts-expect-error
       if (keys_to_sync.has(key) || should_apply_all_given_params) {
         data[key] = value
       }
@@ -190,7 +194,7 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
   let should_correct_url = false
   /**
    * sync url from the latest state
-   * 
+   *
    * push to navigation history only if path changes
    */
   function sync_url() {
@@ -226,12 +230,16 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
 
   function set(...args: any[]) {
     function does_type_mismatch(old_value: any, new_value: any) {
-      return typeof old_value == 'boolean' && typeof new_value != 'boolean'
-        && typeof new_value != 'function'
+      return (
+        typeof old_value == 'boolean' &&
+        typeof new_value != 'boolean' &&
+        typeof new_value != 'function'
+      )
     }
 
     const toggle = (v: boolean) => !v
-    const new_value = args.length == 0 || does_type_mismatch(data, args[0]) ? toggle : args[0]
+    const new_value =
+      args.length == 0 || does_type_mismatch(data, args[0]) ? toggle : args[0]
 
     if (typeof new_value == 'function') {
       const result = new_value(data)
@@ -248,12 +256,18 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
 
   function set_prop(path: key, ...args: any[]) {
     function does_type_mismatch(old_value: any, new_value: any) {
-      return typeof old_value == 'boolean' && typeof new_value != 'boolean'
-        && typeof new_value != 'function'
+      return (
+        typeof old_value == 'boolean' &&
+        typeof new_value != 'boolean' &&
+        typeof new_value != 'function'
+      )
     }
 
     const toggle = (v: boolean) => !v
-    const new_value = args.length == 0 || does_type_mismatch(data[path], args[0]) ? toggle : args[0]
+    const new_value =
+      args.length == 0 || does_type_mismatch(data[path], args[0])
+        ? toggle
+        : args[0]
 
     if (typeof new_value == 'function') {
       const result = new_value(data[path])
@@ -274,7 +288,9 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
     useEffect(() => {
       subs.add(update)
 
-      return () => { subs.delete(update) }
+      return () => {
+        subs.delete(update)
+      }
     })
 
     if (is_given(path)) {
@@ -291,7 +307,7 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
     },
     set(v) {
       data = v
-    }
+    },
   })
 
   use_global.set = set
@@ -308,7 +324,7 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
     },
     set(v) {
       keys_to_sync = v
-    }
+    },
   })
 
   use_global.should_correct_url = should_correct_url
@@ -318,7 +334,7 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
     },
     set(v) {
       should_correct_url = v
-    }
+    },
   })
 
   // set maintains insertion order, change should fire first
@@ -342,10 +358,10 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
   return use_global
 }
 
-let app_name = ''
+let app_prefix = ''
 
 export function init_app_name(app: string) {
-  app_name = app
+  app_prefix = `${app} `
 }
 
 type s<T> = {
@@ -354,18 +370,62 @@ type s<T> = {
 }
 
 export function s<T>(initial_value: T, options: s<T>) {
-  let data = initial_value
+  const { localstorage, url_param } = options
+
+  let state = initial_value
 
   const subs = set()
   function subscribe(listener: Function) {
     subs.add(listener)
-  }  
+  }
+
+  function set_state(new_value: T | ((old_value: T) => T) = toggle) {
+    if (is(new_value, 'function')) {
+      state = new_value(state)
+    } else {
+      state = new_value
+    } 
+
+    for (const sub of subs) {
+      sub(state)
+    }
+  }
+
+  function use_state(): [state: T, set_state: typeof set_state] {
+    const update = use_update()
+
+    useEffect(() => {
+      subs.add(update)
+
+      return () => {
+        subs.delete(update)
+      }
+    })
+
+    return [state, set_state]
+  }
+
+  init_from_localstorage()
+  if (is_given(persist)) {
+    subscribe(sync_localstorage)
+  }
+
+  init_from_url()
+  if (should_sync_url) {
+    subscribe(sync_url)
+  }
+
+  
 }
 
 function use_update() {
   const [, update] = useState(false)
 
-  return () => update(v => !v)
+  return () => update((v) => !v)
+}
+
+function toggle(v: boolean) {
+  return !v
 }
 
 type state_fn = typeof state
