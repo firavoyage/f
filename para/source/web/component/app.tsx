@@ -1,6 +1,14 @@
 import 'github-markdown-css/github-markdown.css';
 
 import { init_request, post } from 'lib/request'
+import { state } from 'lib/web/state'
+
+export const use_global = state({
+  folder: '',
+  path: ''
+}, {
+  
+})
 
 init_request('http://localhost:9010')
 
