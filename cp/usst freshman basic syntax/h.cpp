@@ -336,5 +336,26 @@ void solve() {
   int n;
   read(n);
 
-  
+  seq is_lit(max_n);
+
+  repeat(n){
+    double base;
+    int max_factor;
+
+    read(base, max_factor);
+
+    each(i, 1, max_factor){
+      int number = floor(base * i);
+
+      is_lit[number] = !is_lit[number];
+    }
+  }
+
+  each(i, 1, max_n){
+    // no error handling
+    if(is_lit[i]){
+      prn(i);
+      break;
+    }
+  }
 }
