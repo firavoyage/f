@@ -3201,6 +3201,194 @@ usage: fzf [options]
     FZF_API_KEY            X-API-Key header for HTTP server (--listen)
 ```
 
+```
+ ~ % fzf -f "hello"
+^C
+ ~ % cd Documents/f/drafts
+ ...Documents/f/drafts % fzf -f "hello"
+20260302 1900 intuitive npm publish hello world.md
+20260311 0200 intuitive android hello world first day.md
+20260311 0200 intuitive android hello world first day.zip
+20260130 1700 fira research hello world arxiv zenoob osf.md
+20260602 1900 humility research manus test hello world android app.md
+20260602 1900 humility research manus test hello world android app expo.zip
+20260602 1900 humility research manus test hello world android app gradle.zip
+20260602 1900 humility research manus test hello world android app dep free.zip
+20260602 1900 humility research manus test hello world android app expo code.zip
+20260509 0000 intuitive ubuntu setup firefox nightly create hello world extension.md
+20260531 0300 intuitive android test declarative predictable hello world compilation.md
+20260502 0300 pure psychology learned helplessness generalized emh very lossy heuristic.md
+20260508 1600 life house plant longevity.md
+20260219 2200 humility log level location docs.md
+20260303 0100 intuitive shell output to file head fix auto push secret key failure.md
+20260510 0500 philosophy haskell philosophy history syntax ideas.md
+20260521 2000 rhetoric lol laugh out loud.md
+20260224 1700 intuitive ubuntu setup wget shell flags order.md
+20261016 shell cp non overwriting copy.md
+20260101 float appreciate hotel california.md
+20251115 float appreciate hotel california eagles.md
+20261002 english phrasing compare how does sth look and what does sth look like.md
+20260815 pure math problem first one hundred million digits of sqrt two nickel angel mi challenge.md
+20260921 shell job control fg bg jobs advanced tmux systemd pm2 abstraction.md
+20260507 intuitive shell ghostty bell emoji bel event.md
+20260825 shell typos cli config.md
+20260825 shell typos abstraction.md
+20260713 intuitive shell chmod x abstraction normalize.md
+20260623 0900 intuitive desktop shell chmod x command history.md
+20260603 1800 copy remove heading on the first line make terminology consistent.md
+20260314 1900 humility research exploit novita ai 1mt loc.md
+20260602 1800 ux laws the law of least effort the law of least surprise parkinson law.md
+20260218 1600 intuitive shell check port.md
+20261020 cp shell zshrc solve shortcut vscode template.md
+20260302 2200 intuitive shell chain commands shell syntax.md
+20260608 1800 pure history android powerful enough at lowest security ubuntu touch.md
+20260306 0000 intuitive js node fs shell child process stream.md
+20260326 1300 intuitive abstraction leak nodemation evaluate challenge visual low code self hosting ai hypes foss.md
+20260525 1900 intuitive shell symlink command.md
+20260303 0200 intuitive shell builtin commands.md
+20260120 1720 humility play threejs ball one ball.md
+20260225 0400 intuitive shell single quote double quote.md
+20251213 pure society chinese hide real name and selfie on github.md
+20260423 2300 humility research shell abstraction childprocess execa.md
+20260303 2200 intuitive ubuntu setup ghostty simplify remove warning popups shell cat tee eof heredoc quirks.md
+20251230 life ethics existentialism llms censorship meaning.md
+20260119 2400 humility check feasibility hardest challenges learn from claude code cursor.md
+20260227 0400 intuitive shell wget with cookies.md
+20260607 1900 intuitive desktop shell timestamp to utc.md
+20260429 2100 pure psychology hexaco model meaning implication why.md
+20260429 2100 pure psychology hexaco model meaning implication why.pdf
+20260806 shell cd abstraction.md
+20260101 life psychology telling story of a friend.md
+20260301 2200 intuitive shell fix wifi network refresh infra.md
+20260306 1800 intuitive shell variable heredoc.md
+20260709 intuitive shell tmux abstraction riptmux.md
+20260126 1400 humility research opencode low level methods edit.md
+20260802 web css layout props box model position width height flex grid border outline box shadow.md
+20260510 pure english meaning hollow bamboo walking canes.md
+20260801 have extension zhihu export collection following.md
+20260101 intuitive userscript zhihu export collection info.md
+20260319 0300 life lichess time mode player pool long waiting.md
+20260118 2340 humility design logo origami perfect sphere geometry ball with one paper.md
+20260622 1900 humility web routing history api auto correct typos link like hover info.md
+20260715 intuitive shell ffmpeg abstraction tput colors to_mp3.md
+20260805 ux content design ux writing kde hig text and labels apple hig typography.md
+20261009 desktop hardware floating ground ungrounded circuit loop powered off plug board laggy keyboard.md
+20260811 pure english wording fortuitously serendipitously unwittingly luckily as it turned out without even trying against all odds.md
+20251209 pure english compare learn explore.md
+20260905 shell systemd abstraction autostart.md
+20260712 intuitive shell symlink abstraction link.md
+20260914 archi npm zipped bundle size loc meaning feeling.md
+20260111 fira phone choose call forwarding.md
+20260120 2340 humility play evaluate playwright browser automation tricks.md
+20260314 0000 intuitive ts runtime type check intelligent compiler number range prime snake case key.md
+20260730 pure english phrasing automatically better always optimal has strict dominance over unconditionally outperforms intrinsically redundant free upgrade.md
+20260705 humility web design utilitarian yaml oklch tailwind stylex.md
+20260116 humility check budget feasibility llms with cookies workarounds.md
+20260129 0200 humility see pglite sqlite postgres uuid.md
+20260806 shell fn syntax args variables input output return heredoc here string.md
+20260929 chemistry thermochemistry ideal gas law formula standard enthalpy of reaction from enthalpies of formation.md
+20261028 lib shell b run script abstraction r.md
+20260725 pure english compare logical conceptual.md
+20251103 pure english handwritten digital journal journaling.md
+20260629 1700 humility research llms free tier limit subscription model cost price margin self hosting.md
+20260105 intuitive vibe coding ask questions certainty efficiency clarity why and when to use will can do.md
+20260109 grow whole world catalog.md
+20260217 1800 humility launch choose installation method.md
+20260615 1900 rhetoric man fucking eight billion ppl at once.md
+20260425 0400 pure society chinese bloggers friend link blogroll.md
+20260604 1900 intuitive desktop dot hidden file history nautilus solution xdg spec home projects folder.md
+20260612 1700 shelf the mythical man month.md
+20261020 cp shell fn clean strip hints remove py type sig.md
+20260103 pure english describe allusion abstraction implication.md
+20260101 pure history mao zedong selected works poems life story.md
+20260409 1200 pure english grammar touch me a life dulled menci blog.md
+20260624 1400 humility lib result pascalcase for types.md
+20260121 0020 humility write web extension any check feasibility hot reload script.md
+20260118 1200 humility design technical architecture programming language learn from opencode typescript rust python.md
+20260630 0100 humility lib result handle refactor to throw.md
+20260111 fira phone turn off all notifications feasibility check fail.md
+20260107 pure politics chinese online ideaologies.md
+20251124 life choose llms test philistine imagination.md
+20260824 web parceljs cache whole repo tracking reload.md
+20260727 pure english grammar object relative clause omission.md
+20260511 0300 pure english compare internationalization and localization.md
+20260510 0200 pure chinese meaning linche slang google ai mode citing failure hallu.md
+20260612 2300 humility research google ai mode system prompt tools skills llms follow up criticism.md
+20260930 math limit trigonometric identities lhopital taylor series.md
+20260119 0020 humility play opencode logo geometry ball light right to left earth sun.md
+20260119 0020 humility play opencode logo geometry ball light right to left earth sun.zip
+20260827 pure english wording polymorph overload polymorphize.md
+20260118 1500 humility check budget feasibility claude free limit others.md
+20260131 1600 humility research evaluate openclaw clawdbot moltbot deprecate.md
+20260222 0000 intuitive llms transformer algorithms attention is all you need.md
+20260116 humility research market evaluate claude code general purpose continuous autonomy compare with manus.md
+20260611 1600 archi version control legacy folder.md
+20260215 0100 humility compute tools metadata format learn from userscript.md
+20260520 1600 rhetoric code example placeholder acme corp john doe jane doe average joe.md
+20260111 fira phone disable telecom notification safely.md
+20260919 math godel completeness incompleteness theorem.md
+20260520 1800 intuitive archi centralized tests colocated tests.md
+20251111 pure english translation a set is a collection of objects.md
+20260119 0040 humility play claude code logo geometry ball light right to left earth sun.zip
+20260119 0040 humility play claude code logo geometry ball light right to left earth sun.txt
+20260510 0400 rhetoric always a only b for cond.md
+20260601 0400 philosophy avoid success at all costs.md
+20260110 fira phone remove missed calls notification worked.md
+20260112 intuitive share ideas find english speaking people online.md
+20260408 2300 intuitive llm history papers transformer attention is all you need.md
+20260730 web css inherited props implicitly inherited props global keywords css layer.md
+20260617 2300 pure english grammar will not be will be not.md
+20251216 pure english compare how would you like to how would you.md
+20260731 pure english compare continually and continuously.md
+20260515 2000 pure math problem grade 11 summer holidays 1.14 am gm inequality special property dths oi maimai player.md
+20260825 web parceljs fix whole repo file tracking tsconfig baseurl auto reload after sleep.md
+20260328 bird research telegram matrix bot cli automation.md
+20260116 humility play automation chemistry textbook aops style groqcloud.md
+20260122 2100 humility check feasibility playwright choose patchright.md
+20260304 2100 humility knowledge research manus builtin skills tools sandbox.md
+20260304 2100 humility knowledge research manus builtin skills tools sandbox.zip
+20251204 pure chinese verbs translation literary comment reading comprehension.md
+20251223 intuitive llms test censorship opensource no safety layer harmful prompts.md
+20260716 life game maimai dx achievement rate formula algorithm.md
+20260524 life game maimai dx achievement rate dx score calculation.md
+20260619 2300 humility research google ai mode inline citations change.md
+20260801 pure english wording counterbalance neutralize offset even out.md
+20260514 0300 intuitive pm the unsolved in possible new personal softwares.md
+20260120 1800 check feasibility reliable background userscripts choose web extension.md
+20260521 1900 intuitive archi corporate boilerplate programming criticism.md
+20260227 2100 intuitive ubuntu setup ghostty secure dont close terminal after failure or exit.md
+20260805 sre self hosting serverless cross device file syncing through github.md
+20260201 0000 humility research building with the claude api convert transcript.md
+20260224 1900 intuitive ubuntu setup chromium mv3 compare ublock origin ublock origin lite.md
+20251128 pure english compare similar related synonyms.md
+20260429 pure english compare humility and modesty philosophy.md
+20260730 humility research google ai mode data visualization matplotlib.md
+20260801 pure english wording counterintuitively ironically paradoxically unexpectedly.md
+20260101 life psychology existentialism cynicism accelerationism nerd otaku appearing together.md
+20260608 2100 intuitive archi naming vscode seti theme material icons theme filenames folder names.md
+20260116 humility research market claude continuous autonomy workflow.md
+20251209 fira how to think leverages problem solving software engineering create something big.md
+20260904 pure english compare factor multiplier and coefficient.md
+20260117 humility research market opencode big pickle model provider.md
+20260825 archi code style comment code style comment title case sentence case.md
+20260805 sre self hosting spa ios web app limitations success app store monopoly google play bypass.md
+20251111 pure chemistry prompt problem solving explanation.md
+20260126 1040 pure chemistry compare angle orbital hybridisation.md
+20260606 1800 para theme adwaita design tokens yaml try claude code gemma.md
+20260122 1600 fira clash verge rule ytdlp update 20260202 google to googlevideo.md
+20260606 1800 para theme adwaita design tokens yaml try claude code gemma index.html
+20260606 1800 para theme adwaita design tokens yaml try claude code gemma page-002.html
+20260606 1800 para theme adwaita design tokens yaml try claude code gemma page-001.html
+20260114 intention dev check feasibility new tab auto focus steal workaround.md
+20260612 0200 copy debug weird git removal commit humility research opencode undo feature critical accidental code removal issue.md
+20260704 0200 humility research ai agent problems features capabilities tools.md
+20260624 2100 humility research database or flat file system searching algorithms.md
+20260524 2000 intuitive archi over generalization opencode markdown export code block backticks.md
+20260714 pure english wording mece orthogonal and complete taxonomical.md
+20260726 humility research google ai mode content filter and actual system prompt.md
+20260606 1600 intuitive archi telegram fat clients versus smart backends security through obscurity.md
+```
+
 # how does vscode render md
 
 **Visual Studio Code (VS Code)** renders Markdown (`.md`) files by leveraging a combination of an **under-the-hood parsing library** and **Electron webviews**. [](https://code.visualstudio.com/docs/languages/markdown)
