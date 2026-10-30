@@ -360,7 +360,7 @@ export function state<T extends NonFunction>(
 
 let app_prefix = ''
 
-export function init_app_name(app: string) {
+export function init_localstorage_prefix(app: string) {
   app_prefix = `${app} `
 }
 
@@ -425,18 +425,23 @@ export function s<T>(initial_value: T, options: s<T>) {
   }
 
   if (is_given(url_param)) {
-    const params = new URLSearchParams(window.location.search)
+    const key = url_param
 
-    
+    const current_params = new URLSearchParams(window.location.search)
 
-    // 3. Get specific values using .get()
-    const product = urlParams.get('product') // "shirt"
-    const id = urlParams.get('id') // "101"
-    const nonExistent = urlParams.get('size') // null
-  }
-  init_from_url()
-  if (should_sync_url) {
-    subscribe(sync_url)
+    if (has(current_params, key)) {
+      state = deserialize(current_params.get(key))
+    }
+
+    subscribe(() => {
+      const current_params = new URLSearchParams(window.location.search)
+
+      current_params.set(key, serialize())
+
+      const new_url = `${window.location.pathname}?${current_params.toString()}`
+
+      window.history.pushState({}, '', new_url)
+    })
   }
 
   return use_state
