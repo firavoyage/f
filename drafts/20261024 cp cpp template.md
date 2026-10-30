@@ -14645,4 +14645,3476 @@ Dec 13, 2022 — The argument \`n\` within \`std::setprecision()\` determines th
 
 Show all
 
+# how to format float into a string in cp cpp
+
+7:55 PM
+
+### how to format float into a string in cp cpp
+
+In Competitive Programming (CP) using C++, efficiency, ease of writing, and precision control are your top priorities. Depending on your compiler version, you have three highly effective ways to format a `float` or `double` into a `std::string`.
+
+---
+
+#### 1\. `std::format` (Best for C++20 and newer)
+
+If your platform supports C++20, **`std::format` is the fastest and cleanest modern way** to format a float with precision. It works similarly to Python's formatting syntax. [](https://stackoverflow.com/questions/29200635/convert-float-to-string-with-precision-number-of-decimal-digits-specified)
+
+cpp
+
+```
+#include <iostream>
+#include <format>
+#include <string>
+
+int main() {
+    double pi = 3.14159265359;
+    
+    // Formats to exactly 2 decimal places
+    std::string s = std::format("{:.2f}", pi); 
+    
+    std::cout << s << "\n"; // Output: 3.14
+}
+
+```
+
+
+
+#### 2\. `std::to_string()` (Fastest to type, C++11+)
+
+If you do not need a specific number of decimal places and just need a quick conversion, use **`std::to_string()`**. [](https://en.cppreference.com/cpp/string/basic%5Fstring/to%5Fstring)
+
+* **Warning:** It defaults to exactly **6 decimal places** and pads with trailing zeros. [](https://www.geeksforgeeks.org/cpp/convert-float-to-string-in-cpp/)
+
+cpp
+
+```
+#include <iostream>
+#include <string>
+
+int main() {
+    double num = 45.2;
+    std::string s = std::to_string(num);
+    
+    std::cout << s << "\n"; // Output: 45.200000
+}
+
+```
+
+
+
+#### 3\. `sprintf` / `snprintf` (Safest and fastest for older C++)
+
+If your environment is stuck on C++14/17 and you need explicit precision control, **`snprintf` is the standard choice**. It avoids the heavy overhead of standard streams (`stringstream`). [](https://community.particle.io/t/best-way-to-convert-float-to-string/26511)
+
+cpp
+
+```
+#include <iostream>
+#include <cstdio>
+#include <string>
+
+int main() {
+    double pi = 3.14159265359;
+    char buffer[50];
+    
+    // Writes to a C-style char array with 4 decimal places
+    std::snprintf(buffer, sizeof(buffer), "%.4f", pi);
+    
+    // Direct conversion to std::string
+    std::string s(buffer); 
+    
+    std::cout << s << "\n"; // Output: 3.1416
+}
+
+```
+
+
+
+---
+
+#### Quick Comparison Summary
+
+| Method              | C++ Version | Pros                                       | Cons                                       |
+| ------------------- | ----------- | ------------------------------------------ | ------------------------------------------ |
+| **std::format**     | C++20       | Fast, clean syntax, full precision control | Not available in older compilers           |
+| **std::to\_string** | C++11       | Minimal typing, great for quick debugging  | Hard-coded to 6 decimal places             |
+| **std::snprintf**   | C++11 / C   | Highly performant, universally available   | Requires an intermediate char array buffer |
+
+Which **compiler version** or **online judge platform** (e.g., Codeforces, LeetCode, AtCoder) are you writing code for? If you are running into specific **time limit exceeded (TLE)** issues, I can help optimize your I/O flow.
+
+* [](https://stackoverflow.com/questions/29200635/convert-float-to-string-with-precision-number-of-decimal-digits-specified)  
+Stack Overflow  
+c++ - Convert float to string with precision & number of decimal ...  
+C++20's \`std::format\` … offers a modern, faster, and locale-independent approach to format floats with precision.
+* [](https://www.geeksforgeeks.org/cpp/convert-float-to-string-in-cpp/)  
+GeeksforGeeks  
+Convert Float to String In C++ - GeeksforGeeks  
+Methods for converting float to string in C++: converts a float directly, outputting with standard padding … provides an alternati...
+* [](https://community.particle.io/t/best-way-to-convert-float-to-string/26511)  
+Particle  
+Best way to convert float to String? - Particle Community  
+The \`snprintf\` function is a preferred method for converting a float to a C string, enabling control over formatting and the numbe...
+
+Show all
+
+## how to create a define macro format\_float(number, precision)
+
+how to create a define macro format\_float(number, precision)
+
+8:00 PM
+
+### how to create a define macro format\_float(number, precision)
+
+To create a `format_float(number, precision)` macro for competitive programming, you can leverage **`std::format` (if using C++20)** or **`std::snprintf` (for backward compatibility)**.
+
+Because macros do not naturally handle string manipulation or complex syntax well, using modern C++ inline helpers or basic string tokenization within the macro is necessary to pass a dynamic precision.
+
+Here are the best ways to implement it depending on your compiler version.
+
+#### 1\. The C++20 Way (Recommended)
+
+If your online judge supports C++20, you can use `std::runtime_format` to pass a dynamic precision variable into `std::format`.
+
+cpp
+
+```
+#include <iostream>
+#include <string>
+#include <format>
+
+// The macro dynamically builds the format string: "{:.{}f}"
+#define format_float(number, precision) \
+    std::format(std::runtime_format("{:.{}f}"), (number), (precision))
+
+int main() {
+    double pi = 3.14159265359;
+    int p = 4;
+
+    std::string s = format_float(pi, p);
+    std::cout << s << "\n"; // Output: 3.1416
+}
+
+```
+
+
+
+#### 2\. The Universal C++11 Way (Safest for CP)
+
+If you are competing on platforms that use older versions (like C++14 or C++17), a C-style buffer approach via `std::snprintf` is universally supported and highly performant.
+
+cpp
+
+```
+#include <iostream>
+#include <string>
+#include <cstdio>
+
+// Creates a local buffer, writes to it using dynamic precision, and returns a std::string
+#define format_float(number, precision) ([&]() { \
+    char buf[64]; \
+    std::snprintf(buf, sizeof(buf), "%.*f", (precision), (double)(number)); \
+    return std::string(buf); \
+}())
+
+int main() {
+    double pi = 3.14159265359;
+    
+    std::string s1 = format_float(pi, 2);
+    std::string s2 = format_float(pi, 6);
+
+    std::cout << s1 << "\n"; // Output: 3.14
+    std::cout << s2 << "\n"; // Output: 3.141593
+}
+
+```
+
+
+
+_Note: The `([&]() { ... }())` syntax is an immediately invoked lambda expression (IIFE). It wraps the macro logic so you can safely use it inside expressions or assignments (e.g., `cout << formatfloat(num, 3);`) without breaking your code structure._
+
+---
+
+#### ⚠️ Why a standard `#define` fails without these tricks
+
+If you try a naive approach like `#define format_float(n, p) std::format("{:." #p "f}", n)`, it will only work if `p` is a hardcoded literal number (like `2`). It will cause a compile error if `p` is a variable because macro stringification (`#`) happens at compile time, not runtime. The two options above handle both literal numbers and variables perfectly.
+
+Are you planning to use this macro inside **heavy I/O loops**? If you are printing thousands of floats, I can show you how to bypass `std::string` creation entirely to **maximize performance and prevent TLE**.
+
+## how to go the naive approach and use hardcoded literal
+
+how to go the naive approach and use hardcoded literal
+
+8:03 PM
+
+### how to go the naive approach and use hardcoded literal
+
+If you only plan to pass hardcoded integer literals (like `2`, `4`, or `6`) directly into the macro, you can use **macro stringification (`#`) and token pasting (`##`)**. This completely avoids runtime overhead and template magic, generating a clean format string at compile time.
+
+Here is how to write the naive approach for both C++20 and C++11/17.
+
+#### 1\. The C++20 Naive Way (`std::format`)
+
+To build a format string like `"{:.2f}"` at compile time using a macro, you need a helper macro to expand the precision argument before turning it into a string.
+
+cpp
+
+```
+#include <iostream>
+#include <string>
+#include <format>
+
+// Helper macros to expand and stringify the precision literal
+#define STR_HELPER(x) #x
+#define STR(x) STR_HELPER(x)
+
+// Generates std::format("{:." "2" "f}", number) at compile time
+#define format_float(number, precision) \
+    std::format("{:." STR(precision) "f}", (number))
+
+int main() {
+    double pi = 3.14159265359;
+
+    // Must use literal integers directly
+    std::string s = format_float(pi, 4); 
+    
+    std::cout << s << "\n"; // Output: 3.1416
+}
+
+```
+
+
+
+#### 2\. The Universal Naive Way (`std::snprintf`)
+
+If you are on an older compiler, you can use the exact same stringification trick to bake the format specifier (like `"%.4f"`) directly into `snprintf`.
+
+cpp
+
+```
+#include <iostream>
+#include <string>
+#include <cstdio>
+
+#define STR_HELPER(x) #x
+#define STR(x) STR_HELPER(x)
+
+// Generates a clean stack buffer and formats into it
+#define format_float(number, precision) ([&]() { \
+    char buf[64]; \
+    std::snprintf(buf, sizeof(buf), "%." STR(precision) "f", (double)(number)); \
+    return std::string(buf); \
+}())
+
+int main() {
+    double pi = 3.14159265359;
+
+    std::string s = format_float(pi, 2);
+    
+    std::cout << s << "\n"; // Output: 3.14
+}
+
+```
+
+
+
+#### ⚠️ The Hard Constraint
+
+Because these macros rely on the preprocessor turning your argument into a raw string literal at compile time, **you cannot pass a variable**.
+
+cpp
+
+```
+int p = 3;
+format_float(pi, p); // ❌ COMPILE ERROR: Tries to format using "%pf" instead of "%3f"
+
+```
+
+
+
+Would you like to see how to adapt this macro to **print directly to `std::cout`** without allocating a `std::string` buffer at all? This is a common trick used to shave off execution time in competitive programming.
+
+## can you pass a const variable
+
+can you pass a const variable
+
+8:03 PM
+
+### can you pass a const variable
+
+**No, you cannot pass a standard `const` variable** to this naive macro. Even though a `const int p = 2;` is unchangeable at runtime, it is still a variable in the eyes of the preprocessor.
+
+Because macros process your code _before_ the compiler looks at types or `const` qualifiers, passing a `const` variable will still cause a compile error or incorrect behavior (it turns the variable name into a string like `"p"` instead of `"2"`).
+
+However, you **can** pass constants if they are defined in one of the following three ways, as they evaluate to literal values at compile time:
+
+#### 1\. The `constexpr` Exception (C++20 `std::format` Only)
+
+If you are using the C++20 `std::format` macro, you can pass a `constexpr` variable **if you modify the macro to drop the stringification (`#`) process**. `std::format` naturally accepts compile-time constants.
+
+cpp
+
+```
+#include <iostream>
+#include <format>
+#include <string>
+
+// Notice: No stringification helpers needed here!
+#define format_float(number, precision) \
+    std::format(std::runtime_format(std::string("{:.") + std::to_string(precision) + "f"), (number))
+// Better yet, for absolute pure compile-time string building with constexpr:
+#define format_float_constexpr(number, precision) \
+    std::format([](){ return "{:." + std::to_string(precision) + "f}"; }(), (number)) 
+
+```
+
+
+
+_Note: True compile-time string parsing of variables requires C++20's extended `constexpr` string support._
+
+#### 2\. The Universal Workarounds (C++11 and older)
+
+If you want to use named constants with the raw stringification macro (`STR(precision)`), you must define your constants using **macros** or **anonymous enums**:
+
+cpp
+
+```
+#include <iostream>
+#include <cstdio>
+#include <string>
+
+#define STR_HELPER(x) #x
+#define STR(x) STR_HELPER(x)
+
+#define format_float(number, precision) ([&]() { \
+    char buf[64]; \
+    std::snprintf(buf, sizeof(buf), "%." STR(precision) "f", (double)(number)); \
+    return std::string(buf); \
+}())
+
+// These work because they expand directly to literal tokens at compile time:
+#define MACRO_PRECISION 3
+enum { ENUM_PRECISION = 4 };
+
+int main() {
+    double pi = 3.14159265359;
+    
+    const int standard_const = 2; // ❌ WILL NOT WORK with this macro
+
+    std::cout << format_float(pi, MACRO_PRECISION) << "\n"; // Works: 3.142
+    std::cout << format_float(pi, ENUM_PRECISION) << "\n";  // Works: 3.1416
+}
+
+```
+
+
+
+#### Summary Rule of Thumb
+
+* Use **`#define CONST_NAME value`** or **`enum { CONST_NAME = value }`** if your macro relies on raw preprocessor stringification (`#`).
+* Use **`constexpr`** if you are building modern C++ template-driven helpers.
+
+Would you like to drop the preprocessor macros entirely and use a modern **`inline` template function** instead? It handles `const`, `constexpr`, and literals seamlessly without any macro bugs.
+
+# write comb perm int n int r int mod for cp cpp
+
+8:07 PM
+
+### write comb perm int n int r int mod for cp cpp
+
+For competitive programming (CP) in C++, calculating combinations (nCr) and permutations (nPr) modulo a prime number (like 10⁹+7 or 998244353) is typically done using **Fermat's Little Theorem** for modular inverse.
+
+Depending on your constraints, you either need a 
+
+**𝐎**
+
+**(**
+
+**𝟏**
+
+**)**
+
+ **precomputed approach** (best for multiple queries) or a 
+
+**𝐎**
+
+**(**
+
+**𝒓**
+
+**)**
+
+ **on-the-fly approach** (best if n is massive but r is small, or if there's only one query).
+
+---
+
+#### Option 1: Fast Precomputation 
+
+𝒪
+
+(
+
+𝑁
+
+)
+
+ precalc, 
+
+𝒪
+
+(
+
+1
+
+)
+
+ query
+
+_Use this when you have many test cases or queries, and N ≤ 10⁷._
+
+cpp
+
+```
+#include <bits/stdc++.h>
+using namespace std;
+
+// Standard templates for Competitive Programming
+const int MOD = 1e9 + 7; // Or 998244353
+const int MAXN = 1000005; // Change based on constraints
+
+long long fact[MAXN];
+long long invFact[MAXN];
+
+// Fast modular exponentiation: (base^exp) % MOD
+long long power(long long base, long long exp) {
+    long long res = 1;
+    base %= MOD;
+    while (exp > 0) {
+        if (exp % 2 == 1) res = (res * base) % MOD;
+        base = (base * base) % MOD;
+        exp /= 2;
+    }
+    return res;
+}
+
+// Modular inverse via Fermat's Little Theorem (works when MOD is prime)
+long long modInverse(long long n) {
+    return power(n, MOD - 2);
+}
+
+// Precompute factorials and inverse factorials in O(N)
+void precompute() {
+    fact[0] = 1;
+    invFact[0] = 1;
+    for (int i = 1; i < MAXN; i++) {
+        fact[i] = (fact[i - 1] * i) % MOD;
+    }
+    // Compute the inverse of the last factorial
+    invFact[MAXN - 1] = modInverse(fact[MAXN - 1]);
+    
+    // Fill the rest backwards: 1/(i!) = 1/((i+1)!) * (i+1)
+    for (int i = MAXN - 2; i >= 1; i--) {
+        invFact[i] = (invFact[i + 1] * (i + 1)) % MOD;
+    }
+}
+
+// nCr % MOD in O(1)
+long long nCr(int n, int r) {
+    if (r < 0 || r > n) return 0;
+    return fact[n] * invFact[r] % MOD * invFact[n - r] % MOD;
+}
+
+// nPr % MOD in O(1)
+long long nPr(int n, int r) {
+    if (r < 0 || r > n) return 0;
+    return fact[n] * invFact[n - r] % MOD;
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    
+    precompute(); // Don't forget to call this!
+    
+    cout << "10C3 % MOD = " << nCr(10, 3) << "\n";
+    cout << "10P3 % MOD = " << nPr(10, 3) << "\n";
+    
+    return 0;
+}
+
+```
+
+
+
+---
+
+#### Option 2: On-the-fly Calculation 
+
+𝒪
+
+(
+
+𝑟
+
+)
+
+_Use this if N is very large (e.g., N = 10⁹) but r is small (e.g., r ≤ 10⁵), or if you only need to calculate it once._
+
+cpp
+
+```
+#include <bits/stdc++.h>
+using namespace std;
+
+const int MOD = 1e9 + 7;
+
+long long power(long long base, long long exp) {
+    long long res = 1;
+    base %= MOD;
+    while (exp > 0) {
+        if (exp % 2 == 1) res = (res * base) % MOD;
+        base = (base * base) % MOD;
+        exp /= 2;
+    }
+    return res;
+}
+
+long long modInverse(long long n) {
+    return power(n, MOD - 2);
+}
+
+// O(r) Combination
+long long nCr_large(long long n, long long r) {
+    if (r < 0 || r > n) return 0;
+    if (r == 0 || r == n) return 1;
+    if (r > n - r) r = n - r; // Optimize loop iterations
+    
+    long long num = 1, den = 1;
+    for (long long i = 0; i < r; i++) {
+        num = (num * (n - i)) % MOD;
+        den = (den * (i + 1)) % MOD;
+    }
+    return (num * modInverse(den)) % MOD;
+}
+
+// O(r) Permutation
+long long nPr_large(long long n, long long r) {
+    if (r < 0 || r > n) return 0;
+    long long res = 1;
+    for (long long i = 0; i < r; i++) {
+        res = (res * (n - i)) % MOD;
+    }
+    return res;
+}
+
+int main() {
+    // Works perfectly even if N is 10^9 as long as r is small
+    cout << "1000000000 C 3 % MOD = " << nCr_large(1000000000, 3) << "\n";
+    return 0;
+}
+
+```
+
+
+
+#### Quick Reference Table
+
+| Approach                   | Precomputation | Query Complexity | Best Used For                       | Max N                 |
+| -------------------------- | -------------- | ---------------- | ----------------------------------- | --------------------- |
+| **Option 1 (Precomputed)** | 𝒪(𝑁)         | 𝒪(1)            | Multiple test cases / queries       | ≤ 10⁷                 |
+| **Option 2 (On-the-fly)**  | 𝒪(1)          | 𝒪(𝑟)           | Single query or extremely massive N | ≤ 10¹⁸ (with small r) |
+
+Would you like to extend this template to handle **Lucas' Theorem** (for when the `MOD` is small but N is massive) or do you need it to support non-prime moduli where **Fermat's Little Theorem** doesn't apply?
+
+## how common is each scenario
+
+how common is each scenario
+
+9:21 PM
+
+### how common is each scenario
+
+In competitive programming, **Option 1 (Precomputation)** is by far the most common scenario, appearing in roughly **80% to 90%** of combinatorics problems.
+
+Here is a breakdown of how frequently you will encounter each scenario in contests (like Codeforces, AtCoder, or CodeChef) and how to instantly recognize them.
+
+---
+
+#### 1\. Precomputed 
+
+𝒪
+
+(
+
+𝑁
+
+)
+
+ Template (The Industry Standard)
+
+* **Frequency:** **\~85% of combinatorics problems**
+* **Why it's so common:** Most problems require you to count configurations of an array, string, or tree of size  
+N  
+𝑁  
+. Because you are processing the entire structure,  
+N  
+𝑁  
+ is naturally bounded by standard time limits (usually  
+𝑁  
+≤2  
+×105  
+ or  
+𝑁  
+≤106  
+). Since you already need to loop up to  
+N  
+𝑁  
+, precomputing factorials adds zero relative overhead.
+* **Dead giveaways in the problem statement:**
+  * Constraints like:  
+  𝑁  
+  ≤2  
+  ×105  
+   or  
+  𝑁  
+  ≤106  
+  .
+  * Multiple test cases (  
+  𝑇  
+  ≤104  
+  ) where you must print an answer for each  
+  N  
+  𝑁  
+  .
+
+#### 2\. On-the-fly 
+
+𝒪
+
+(
+
+𝑟
+
+)
+
+ Calculation (Large 
+
+N
+
+𝑁
+
+, Small 
+
+r
+
+𝑟
+
+)
+
+* **Frequency:** **\~10% of problems**
+* **Why it happens:** This occurs when the problem takes place on a massive grid, an infinite coordinate plane, or involves a game-theory state where  
+N  
+𝑁  
+ can scale up to  
+109  
+109  
+ or  
+1018  
+1018  
+, but you only need to choose a tiny handful of elements (  
+𝑟  
+≤105  
+).
+* **Dead giveaways in the problem statement:**
+  * Constraints like:  
+  𝑁  
+  ≤109  
+   or  
+  𝑁  
+  ≤1018  
+   alongside  
+  𝐾  
+  ,  
+  𝑅  
+  ≤105  
+  .
+  * Coordinate geometry tracking paths from  
+  (  
+  0  
+  ,  
+  0  
+  )  
+   to  
+  (  
+  𝑋  
+  ,  
+  𝑌  
+  )  
+   where the coordinates are very large.
+
+#### 3\. Lucas' Theorem (Large 
+
+N
+
+𝑁
+
+, Small Prime Modulo)
+
+* **Frequency:** **\~3% of problems**
+* **Why it happens:** This is a niche scenario usually reserved for "math-heavy" problems or when the author explicitly wants to block standard precomputation. Instead of a huge prime like  
+109
+
++7  
+, they will give you a tiny prime like  
+𝑀𝑂𝐷  
+\=13  
+ or  
+𝑀𝑂𝐷  
+\=97  
+, while  
+N  
+𝑁  
+ is huge (  
+1018  
+1018  
+).
+* **Dead giveaways in the problem statement:**
+  * Constraints like:  
+  𝑁  
+  ≤1018  
+   and  
+  𝑀𝑂𝐷  
+  ≤105  
+   (and  
+  MOD  
+  𝑀𝑂𝐷  
+   is explicitly prime).
+
+#### 4\. Non-Prime Modulo (Extended Euclidean / Prime Factorization)
+
+* **Frequency:** **\~2% of problems**
+* **Why it happens:** This is a pure "trap" scenario designed to break Fermat's Little Theorem. If  
+MOD  
+𝑀𝑂𝐷  
+ is composite (like  
+109  
+109  
+ or  
+998244352  
+998244352  
+), numbers do not have modular inverses because they share common factors with the base. You are forced to maintain a count of prime factors or use the Extended Euclidean Algorithm.
+* **Dead giveaways in the problem statement:**
+  * Text stating: "Modulo  
+  M  
+  𝑀  
+   (Note:  
+  M  
+  𝑀  
+   is not necessarily prime)."
+
+---
+
+#### Quick Selection Rule of Thumb
+
+```
+Is N <= 10^7? 
+   ├── YES: Use Option 1 (Precomputation) ──> 9 times out of 10, this is what you want.
+   └── NO: Look at r or Modulo
+        ├── Is r <= 10^6? ──> Use Option 2 (On-the-fly)
+        └── Is MOD a tiny prime? ──> Use Lucas' Theorem
+
+```
+
+Are you currently solving a problem with **massive constraints** or a **weird modulo** right now? If you share the constraints, I can tell you exactly which template to copy-paste.
+
+## why precompute forward and backward, and use factorial and inv factorial this way
+
+why precompute forward and backward, and use factorial and inv factorial this way
+
+9:22 PM
+
+### why precompute forward and backward, and use factorial and inv factorial this way
+
+In competitive programming, the two-step precomputation (computing factorials forward, then inverse factorials backward) is an optimization technique used to calculate **modular inverses for an entire array in** 
+
+**𝒪**
+
+**(**
+
+**𝑁**
+
+**)**
+
+ **time instead of** 
+
+**𝒪**
+
+**(**
+
+**𝑁**
+
+**log**
+
+**MOD**
+
+**)**
+
+.
+
+If you tried to compute each inverse factorial individually, your code would likely **Time Limit Exceeded (TLE)** on tight constraints.
+
+Here is the exact structural breakdown of why it is built this way.
+
+---
+
+#### 1\. The Bottleneck: Modular Inverse is Slow 
+
+𝒪
+
+(
+
+log
+
+MOD
+
+)
+
+To find a single modular inverse using Fermat's Little Theorem, you must calculate:  
+
+inv(x)≡xMOD−2(modMOD)
+
+inv(𝑥)≡𝑥MOD−2(modMOD)
+
+  
+Using binary exponentiation, this takes 
+
+𝒪
+
+(
+
+log
+
+MOD
+
+)
+
+ operations.
+
+* If  
+𝑁  
+\=106  
+ and  
+MOD  
+\=109
+
++7  
+, computing the inverse for every single factorial individually would take  
+106  
+×30  
+≈3  
+×107  
+ operations.
+* While that _might_ pass within a 1-second time limit, it is dangerously close to the limit and completely fails if  
+𝑁  
+\=107  
+ or if there are multiple test cases.
+
+---
+
+#### 2\. The Solution: The Backward Trick 
+
+𝒪
+
+(
+
+1
+
+)
+
+Instead of calculating 
+
+106
+
+106
+
+ expensive modular exponents, we only calculate **exactly one** exponent for the very last element, and then derive all previous ones using basic arithmetic.
+
+Look at the mathematical relationship between adjacent inverse factorials:  
+
+1i!\=1(i+1)!×(i+1)
+
+1𝑖!\=1(𝑖+1)!×(𝑖+1)
+
+Because of this property, if we know the inverse of the largest factorial (`invFact[MAXN - 1]`), we can find the previous one (`invFact[MAXN - 2]`) with a **single multiplication** 
+
+𝒪
+
+(
+
+1
+
+)
+
+.
+
+##### Step-by-Step Execution:
+
+1. **Forward Pass:** Compute standard factorials up to  
+N  
+𝑁  
+. This takes  
+𝒪  
+(  
+𝑁  
+)  
+ operations.  
+cpp  
+```  
+fact[i] = (fact[i - 1] * i) % MOD;  
+```  
+
+2. **The "Bridge":** Compute the modular inverse of _only_ the very last factorial. This takes one  
+𝒪  
+(  
+log  
+MOD  
+)  
+ operation.  
+cpp  
+```  
+invFact[MAXN - 1] = modInverse(fact[MAXN - 1]);  
+```  
+
+3. **Backward Pass:** Linearly cascade backwards to fill the rest of the array. This takes  
+𝒪  
+(  
+𝑁  
+)  
+ operations.  
+cpp  
+```  
+invFact[i] = (invFact[i + 1] * (i + 1)) % MOD;  
+```  
+
+
+By using this trick, the total time complexity drops to a clean 
+
+**𝒪**
+
+**(**
+
+**𝑁**
+
+**+log**
+
+**MOD**
+
+**)**
+
+.
+
+---
+
+#### 3\. Why decouple into `fact` and `invFact`?
+
+We store these in two separate arrays so that the 
+
+𝒪
+
+(
+
+1
+
+)
+
+ query formula for 
+
+nCr
+
+𝑛𝐶𝑟
+
+ mirrors the exact algebraic formula:
+
+(nr)\=n!r!⋅(n−r)!\=n!×1r!×1(n−r)!
+
+𝑛𝑟\=𝑛!𝑟!⋅(𝑛−𝑟)!\=𝑛!×1𝑟!×1(𝑛−𝑟)!
+
+In C++, dividing under a modulo is invalid (e.g., `(A / B) % MOD` does not work). Instead, you must multiply by the modular inverse. Having both arrays precomputed allows you to turn the division into a blazing-fast three-way multiplication:
+
+cpp
+
+```
+long long nCr(int n, int r) {
+    return fact[n] * invFact[r] % MOD * invFact[n - r] % MOD;
+}
+
+```
+
+
+
+Would you like to see how this same linear approach can be adapted to precompute the **modular inverses of regular numbers** (`inv[i]`) up to 
+
+N
+
+𝑁
+
+ without factorials?
+
+## what does inv factorial mean, how does it work
+
+what does inv factorial mean, how does it work
+
+9:24 PM
+
+### what does inv factorial mean, how does it work
+
+An **inverse factorial** (often written in code as `invFact[i]`) is the **modular multiplicative inverse** of a factorial.
+
+In normal math, it represents the fraction 
+
+**1i!**
+
+**1𝑖!**
+
+.
+
+Because we cannot perform division under a modulo in competitive programming, we precompute these "fractions" as integers so we can multiply by them instead.
+
+---
+
+#### 1\. The Core Problem: Modulo Breaks Division
+
+In standard arithmetic, combinations are calculated using division:  
+
+(52)\=5!2!×3!\=1202×6\=10
+
+52\=5!2!×3!\=1202×6\=10
+
+However, under a modulo, **division does not work directly.**  
+For example:  
+
+(120/2)(mod7)≠(120(mod7))/(2(mod7))
+
+(120/2)(mod7)≠(120(mod7))/(2(mod7))
+
+To fix this, number theory states that dividing by a number 
+
+X
+
+𝑋
+
+ is the exact same as **multiplying by its modular inverse**, written as 
+
+X\-1
+
+𝑋−1
+
+.
+
+Therefore, `invFact[i]` is an integer that satisfies this rule:  
+
+(fact\[i\]×invFact\[i\])(modMOD)\=1
+
+(fact\[𝑖\]×invFact\[𝑖\])(modMOD)\=1
+
+#### 2\. Concrete Example (Modulo 7)
+
+Let's find the inverse factorial for 
+
+3
+
+!
+
+ using a small prime modulo, 
+
+MOD
+
+\=7
+
+.
+
+1. **Calculate the factorial:**  
+3  
+!  
+\=6
+2. **Find the inverse factorial:**  
+We need an integer `invFact[3]` such that  
+(  
+6  
+×invFact  
+\[  
+3  
+\]  
+)  
+(mod7)  
+\=1  
+.
+  * Let's test numbers:  
+  6  
+  ×6  
+  \=36  
+  .
+  * 36  
+  (mod7)  
+  \=1  
+   (since  
+  7  
+  ×5  
+  \=35  
+  ).
+3. **The Result:**  
+Under modulo 7, the value of `invFact[3]` is **6**. Anytime you need to "divide by  
+3  
+!  
+", you multiply by **6** instead.
+
+#### 3\. How the Backward Chain Works
+
+The most elegant part of the C++ template is how `invFact` populates itself backwards using a domino effect.
+
+Mathematically, you know that:  
+
+15!\=16!×6
+
+15!\=16!×6
+
+If we translate that exact fraction logic into our modular inverse integers, it looks like this:
+
+cpp
+
+```
+invFact[5] = (invFact[6] * 6) % MOD;
+
+```
+
+
+
+By calculating the modular inverse of _only the very last element_ using Fermat's Little Theorem, we establish our starting domino. The code then runs backward to dynamically generate every other fraction in 
+
+𝒪
+
+(
+
+1
+
+)
+
+ time per element:
+
+```
+[  ?  ] <─── [  ?  ] <─── [  ?  ] <─── [ Found via Fermat ]
+invFact[1]   invFact[2]   invFact[3]       invFact[4]
+
+```
+
+#### 4\. Summary of the Workflow
+
+When you call `nCr(n, r)`, the function fetches three precomputed integers from memory:
+
+1. `fact[n]` (represents  
+𝑛  
+!  
+)
+2. `invFact[r]` (represents  
+1r!  
+1𝑟!  
+) \[3\]
+3. `invFact[n-r]` (represents  
+1(n−r)!  
+1(𝑛−𝑟)!  
+) \[3\]
+
+It multiplies them together, resulting in a perfectly precise, 
+
+𝒪
+
+(
+
+1
+
+)
+
+ answer without a single division operation.
+
+Would you like to walk through a **complete trace** of a small example (like calculating `5C2 % 7`) step-by-step using these arrays to see how the numbers line up?
+
+# write comb perm int n int r int mod for cp cpp
+
+8:07 PM
+
+### write comb perm int n int r int mod for cp cpp
+
+For competitive programming (CP) in C++, calculating combinations (nCr) and permutations (nPr) modulo a prime number (like 10⁹+7 or 998244353) is typically done using **Fermat's Little Theorem** for modular inverse.
+
+Depending on your constraints, you either need a 
+
+**𝐎**
+
+**(**
+
+**𝟏**
+
+**)**
+
+ **precomputed approach** (best for multiple queries) or a 
+
+**𝐎**
+
+**(**
+
+**𝒓**
+
+**)**
+
+ **on-the-fly approach** (best if n is massive but r is small, or if there's only one query).
+
+---
+
+#### Option 1: Fast Precomputation 
+
+𝒪
+
+(
+
+𝑁
+
+)
+
+ precalc, 
+
+𝒪
+
+(
+
+1
+
+)
+
+ query
+
+_Use this when you have many test cases or queries, and N ≤ 10⁷._
+
+cpp
+
+```
+#include <bits/stdc++.h>
+using namespace std;
+
+// Standard templates for Competitive Programming
+const int MOD = 1e9 + 7; // Or 998244353
+const int MAXN = 1000005; // Change based on constraints
+
+long long fact[MAXN];
+long long invFact[MAXN];
+
+// Fast modular exponentiation: (base^exp) % MOD
+long long power(long long base, long long exp) {
+    long long res = 1;
+    base %= MOD;
+    while (exp > 0) {
+        if (exp % 2 == 1) res = (res * base) % MOD;
+        base = (base * base) % MOD;
+        exp /= 2;
+    }
+    return res;
+}
+
+// Modular inverse via Fermat's Little Theorem (works when MOD is prime)
+long long modInverse(long long n) {
+    return power(n, MOD - 2);
+}
+
+// Precompute factorials and inverse factorials in O(N)
+void precompute() {
+    fact[0] = 1;
+    invFact[0] = 1;
+    for (int i = 1; i < MAXN; i++) {
+        fact[i] = (fact[i - 1] * i) % MOD;
+    }
+    // Compute the inverse of the last factorial
+    invFact[MAXN - 1] = modInverse(fact[MAXN - 1]);
+    
+    // Fill the rest backwards: 1/(i!) = 1/((i+1)!) * (i+1)
+    for (int i = MAXN - 2; i >= 1; i--) {
+        invFact[i] = (invFact[i + 1] * (i + 1)) % MOD;
+    }
+}
+
+// nCr % MOD in O(1)
+long long nCr(int n, int r) {
+    if (r < 0 || r > n) return 0;
+    return fact[n] * invFact[r] % MOD * invFact[n - r] % MOD;
+}
+
+// nPr % MOD in O(1)
+long long nPr(int n, int r) {
+    if (r < 0 || r > n) return 0;
+    return fact[n] * invFact[n - r] % MOD;
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    
+    precompute(); // Don't forget to call this!
+    
+    cout << "10C3 % MOD = " << nCr(10, 3) << "\n";
+    cout << "10P3 % MOD = " << nPr(10, 3) << "\n";
+    
+    return 0;
+}
+
+```
+
+
+
+---
+
+#### Option 2: On-the-fly Calculation 
+
+𝒪
+
+(
+
+𝑟
+
+)
+
+_Use this if N is very large (e.g., N = 10⁹) but r is small (e.g., r ≤ 10⁵), or if you only need to calculate it once._
+
+cpp
+
+```
+#include <bits/stdc++.h>
+using namespace std;
+
+const int MOD = 1e9 + 7;
+
+long long power(long long base, long long exp) {
+    long long res = 1;
+    base %= MOD;
+    while (exp > 0) {
+        if (exp % 2 == 1) res = (res * base) % MOD;
+        base = (base * base) % MOD;
+        exp /= 2;
+    }
+    return res;
+}
+
+long long modInverse(long long n) {
+    return power(n, MOD - 2);
+}
+
+// O(r) Combination
+long long nCr_large(long long n, long long r) {
+    if (r < 0 || r > n) return 0;
+    if (r == 0 || r == n) return 1;
+    if (r > n - r) r = n - r; // Optimize loop iterations
+    
+    long long num = 1, den = 1;
+    for (long long i = 0; i < r; i++) {
+        num = (num * (n - i)) % MOD;
+        den = (den * (i + 1)) % MOD;
+    }
+    return (num * modInverse(den)) % MOD;
+}
+
+// O(r) Permutation
+long long nPr_large(long long n, long long r) {
+    if (r < 0 || r > n) return 0;
+    long long res = 1;
+    for (long long i = 0; i < r; i++) {
+        res = (res * (n - i)) % MOD;
+    }
+    return res;
+}
+
+int main() {
+    // Works perfectly even if N is 10^9 as long as r is small
+    cout << "1000000000 C 3 % MOD = " << nCr_large(1000000000, 3) << "\n";
+    return 0;
+}
+
+```
+
+
+
+#### Quick Reference Table
+
+| Approach                   | Precomputation | Query Complexity | Best Used For                       | Max N                 |
+| -------------------------- | -------------- | ---------------- | ----------------------------------- | --------------------- |
+| **Option 1 (Precomputed)** | 𝒪(𝑁)         | 𝒪(1)            | Multiple test cases / queries       | ≤ 10⁷                 |
+| **Option 2 (On-the-fly)**  | 𝒪(1)          | 𝒪(𝑟)           | Single query or extremely massive N | ≤ 10¹⁸ (with small r) |
+
+Would you like to extend this template to handle **Lucas' Theorem** (for when the `MOD` is small but N is massive) or do you need it to support non-prime moduli where **Fermat's Little Theorem** doesn't apply?
+
+## how common is each scenario
+
+how common is each scenario
+
+9:21 PM
+
+### how common is each scenario
+
+In competitive programming, **Option 1 (Precomputation)** is by far the most common scenario, appearing in roughly **80% to 90%** of combinatorics problems.
+
+Here is a breakdown of how frequently you will encounter each scenario in contests (like Codeforces, AtCoder, or CodeChef) and how to instantly recognize them.
+
+---
+
+#### 1\. Precomputed 
+
+𝒪
+
+(
+
+𝑁
+
+)
+
+ Template (The Industry Standard)
+
+* **Frequency:** **\~85% of combinatorics problems**
+* **Why it's so common:** Most problems require you to count configurations of an array, string, or tree of size  
+N  
+𝑁  
+. Because you are processing the entire structure,  
+N  
+𝑁  
+ is naturally bounded by standard time limits (usually  
+𝑁  
+≤2  
+×105  
+ or  
+𝑁  
+≤106  
+). Since you already need to loop up to  
+N  
+𝑁  
+, precomputing factorials adds zero relative overhead.
+* **Dead giveaways in the problem statement:**
+  * Constraints like:  
+  𝑁  
+  ≤2  
+  ×105  
+   or  
+  𝑁  
+  ≤106  
+  .
+  * Multiple test cases (  
+  𝑇  
+  ≤104  
+  ) where you must print an answer for each  
+  N  
+  𝑁  
+  .
+
+#### 2\. On-the-fly 
+
+𝒪
+
+(
+
+𝑟
+
+)
+
+ Calculation (Large 
+
+N
+
+𝑁
+
+, Small 
+
+r
+
+𝑟
+
+)
+
+* **Frequency:** **\~10% of problems**
+* **Why it happens:** This occurs when the problem takes place on a massive grid, an infinite coordinate plane, or involves a game-theory state where  
+N  
+𝑁  
+ can scale up to  
+109  
+109  
+ or  
+1018  
+1018  
+, but you only need to choose a tiny handful of elements (  
+𝑟  
+≤105  
+).
+* **Dead giveaways in the problem statement:**
+  * Constraints like:  
+  𝑁  
+  ≤109  
+   or  
+  𝑁  
+  ≤1018  
+   alongside  
+  𝐾  
+  ,  
+  𝑅  
+  ≤105  
+  .
+  * Coordinate geometry tracking paths from  
+  (  
+  0  
+  ,  
+  0  
+  )  
+   to  
+  (  
+  𝑋  
+  ,  
+  𝑌  
+  )  
+   where the coordinates are very large.
+
+#### 3\. Lucas' Theorem (Large 
+
+N
+
+𝑁
+
+, Small Prime Modulo)
+
+* **Frequency:** **\~3% of problems**
+* **Why it happens:** This is a niche scenario usually reserved for "math-heavy" problems or when the author explicitly wants to block standard precomputation. Instead of a huge prime like  
+109
+
++7  
+, they will give you a tiny prime like  
+𝑀𝑂𝐷  
+\=13  
+ or  
+𝑀𝑂𝐷  
+\=97  
+, while  
+N  
+𝑁  
+ is huge (  
+1018  
+1018  
+).
+* **Dead giveaways in the problem statement:**
+  * Constraints like:  
+  𝑁  
+  ≤1018  
+   and  
+  𝑀𝑂𝐷  
+  ≤105  
+   (and  
+  MOD  
+  𝑀𝑂𝐷  
+   is explicitly prime).
+
+#### 4\. Non-Prime Modulo (Extended Euclidean / Prime Factorization)
+
+* **Frequency:** **\~2% of problems**
+* **Why it happens:** This is a pure "trap" scenario designed to break Fermat's Little Theorem. If  
+MOD  
+𝑀𝑂𝐷  
+ is composite (like  
+109  
+109  
+ or  
+998244352  
+998244352  
+), numbers do not have modular inverses because they share common factors with the base. You are forced to maintain a count of prime factors or use the Extended Euclidean Algorithm.
+* **Dead giveaways in the problem statement:**
+  * Text stating: "Modulo  
+  M  
+  𝑀  
+   (Note:  
+  M  
+  𝑀  
+   is not necessarily prime)."
+
+---
+
+#### Quick Selection Rule of Thumb
+
+```
+Is N <= 10^7? 
+   ├── YES: Use Option 1 (Precomputation) ──> 9 times out of 10, this is what you want.
+   └── NO: Look at r or Modulo
+        ├── Is r <= 10^6? ──> Use Option 2 (On-the-fly)
+        └── Is MOD a tiny prime? ──> Use Lucas' Theorem
+
+```
+
+Are you currently solving a problem with **massive constraints** or a **weird modulo** right now? If you share the constraints, I can tell you exactly which template to copy-paste.
+
+## why precompute forward and backward, and use factorial and inv factorial this way
+
+why precompute forward and backward, and use factorial and inv factorial this way
+
+9:22 PM
+
+### why precompute forward and backward, and use factorial and inv factorial this way
+
+In competitive programming, the two-step precomputation (computing factorials forward, then inverse factorials backward) is an optimization technique used to calculate **modular inverses for an entire array in** 
+
+**𝒪**
+
+**(**
+
+**𝑁**
+
+**)**
+
+ **time instead of** 
+
+**𝒪**
+
+**(**
+
+**𝑁**
+
+**log**
+
+**MOD**
+
+**)**
+
+.
+
+If you tried to compute each inverse factorial individually, your code would likely **Time Limit Exceeded (TLE)** on tight constraints.
+
+Here is the exact structural breakdown of why it is built this way.
+
+---
+
+#### 1\. The Bottleneck: Modular Inverse is Slow 
+
+𝒪
+
+(
+
+log
+
+MOD
+
+)
+
+To find a single modular inverse using Fermat's Little Theorem, you must calculate:  
+
+inv(x)≡xMOD−2(modMOD)
+
+inv(𝑥)≡𝑥MOD−2(modMOD)
+
+  
+Using binary exponentiation, this takes 
+
+𝒪
+
+(
+
+log
+
+MOD
+
+)
+
+ operations.
+
+* If  
+𝑁  
+\=106  
+ and  
+MOD  
+\=109
+
++7  
+, computing the inverse for every single factorial individually would take  
+106  
+×30  
+≈3  
+×107  
+ operations.
+* While that _might_ pass within a 1-second time limit, it is dangerously close to the limit and completely fails if  
+𝑁  
+\=107  
+ or if there are multiple test cases.
+
+---
+
+#### 2\. The Solution: The Backward Trick 
+
+𝒪
+
+(
+
+1
+
+)
+
+Instead of calculating 
+
+106
+
+106
+
+ expensive modular exponents, we only calculate **exactly one** exponent for the very last element, and then derive all previous ones using basic arithmetic.
+
+Look at the mathematical relationship between adjacent inverse factorials:  
+
+1i!\=1(i+1)!×(i+1)
+
+1𝑖!\=1(𝑖+1)!×(𝑖+1)
+
+Because of this property, if we know the inverse of the largest factorial (`invFact[MAXN - 1]`), we can find the previous one (`invFact[MAXN - 2]`) with a **single multiplication** 
+
+𝒪
+
+(
+
+1
+
+)
+
+.
+
+##### Step-by-Step Execution:
+
+1. **Forward Pass:** Compute standard factorials up to  
+N  
+𝑁  
+. This takes  
+𝒪  
+(  
+𝑁  
+)  
+ operations.  
+cpp  
+```  
+fact[i] = (fact[i - 1] * i) % MOD;  
+```  
+
+2. **The "Bridge":** Compute the modular inverse of _only_ the very last factorial. This takes one  
+𝒪  
+(  
+log  
+MOD  
+)  
+ operation.  
+cpp  
+```  
+invFact[MAXN - 1] = modInverse(fact[MAXN - 1]);  
+```  
+
+3. **Backward Pass:** Linearly cascade backwards to fill the rest of the array. This takes  
+𝒪  
+(  
+𝑁  
+)  
+ operations.  
+cpp  
+```  
+invFact[i] = (invFact[i + 1] * (i + 1)) % MOD;  
+```  
+
+
+By using this trick, the total time complexity drops to a clean 
+
+**𝒪**
+
+**(**
+
+**𝑁**
+
+**+log**
+
+**MOD**
+
+**)**
+
+.
+
+---
+
+#### 3\. Why decouple into `fact` and `invFact`?
+
+We store these in two separate arrays so that the 
+
+𝒪
+
+(
+
+1
+
+)
+
+ query formula for 
+
+nCr
+
+𝑛𝐶𝑟
+
+ mirrors the exact algebraic formula:
+
+(nr)\=n!r!⋅(n−r)!\=n!×1r!×1(n−r)!
+
+𝑛𝑟\=𝑛!𝑟!⋅(𝑛−𝑟)!\=𝑛!×1𝑟!×1(𝑛−𝑟)!
+
+In C++, dividing under a modulo is invalid (e.g., `(A / B) % MOD` does not work). Instead, you must multiply by the modular inverse. Having both arrays precomputed allows you to turn the division into a blazing-fast three-way multiplication:
+
+cpp
+
+```
+long long nCr(int n, int r) {
+    return fact[n] * invFact[r] % MOD * invFact[n - r] % MOD;
+}
+
+```
+
+
+
+Would you like to see how this same linear approach can be adapted to precompute the **modular inverses of regular numbers** (`inv[i]`) up to 
+
+N
+
+𝑁
+
+ without factorials?
+
+## what does inv factorial mean, how does it work
+
+what does inv factorial mean, how does it work
+
+9:24 PM
+
+### what does inv factorial mean, how does it work
+
+An **inverse factorial** (often written in code as `invFact[i]`) is the **modular multiplicative inverse** of a factorial.
+
+In normal math, it represents the fraction 
+
+**1i!**
+
+**1𝑖!**
+
+.
+
+Because we cannot perform division under a modulo in competitive programming, we precompute these "fractions" as integers so we can multiply by them instead.
+
+---
+
+#### 1\. The Core Problem: Modulo Breaks Division
+
+In standard arithmetic, combinations are calculated using division:  
+
+(52)\=5!2!×3!\=1202×6\=10
+
+52\=5!2!×3!\=1202×6\=10
+
+However, under a modulo, **division does not work directly.**  
+For example:  
+
+(120/2)(mod7)≠(120(mod7))/(2(mod7))
+
+(120/2)(mod7)≠(120(mod7))/(2(mod7))
+
+To fix this, number theory states that dividing by a number 
+
+X
+
+𝑋
+
+ is the exact same as **multiplying by its modular inverse**, written as 
+
+X\-1
+
+𝑋−1
+
+.
+
+Therefore, `invFact[i]` is an integer that satisfies this rule:  
+
+(fact\[i\]×invFact\[i\])(modMOD)\=1
+
+(fact\[𝑖\]×invFact\[𝑖\])(modMOD)\=1
+
+#### 2\. Concrete Example (Modulo 7)
+
+Let's find the inverse factorial for 
+
+3
+
+!
+
+ using a small prime modulo, 
+
+MOD
+
+\=7
+
+.
+
+1. **Calculate the factorial:**  
+3  
+!  
+\=6
+2. **Find the inverse factorial:**  
+We need an integer `invFact[3]` such that  
+(  
+6  
+×invFact  
+\[  
+3  
+\]  
+)  
+(mod7)  
+\=1  
+.
+  * Let's test numbers:  
+  6  
+  ×6  
+  \=36  
+  .
+  * 36  
+  (mod7)  
+  \=1  
+   (since  
+  7  
+  ×5  
+  \=35  
+  ).
+3. **The Result:**  
+Under modulo 7, the value of `invFact[3]` is **6**. Anytime you need to "divide by  
+3  
+!  
+", you multiply by **6** instead.
+
+#### 3\. How the Backward Chain Works
+
+The most elegant part of the C++ template is how `invFact` populates itself backwards using a domino effect.
+
+Mathematically, you know that:  
+
+15!\=16!×6
+
+15!\=16!×6
+
+If we translate that exact fraction logic into our modular inverse integers, it looks like this:
+
+cpp
+
+```
+invFact[5] = (invFact[6] * 6) % MOD;
+
+```
+
+
+
+By calculating the modular inverse of _only the very last element_ using Fermat's Little Theorem, we establish our starting domino. The code then runs backward to dynamically generate every other fraction in 
+
+𝒪
+
+(
+
+1
+
+)
+
+ time per element:
+
+```
+[  ?  ] <─── [  ?  ] <─── [  ?  ] <─── [ Found via Fermat ]
+invFact[1]   invFact[2]   invFact[3]       invFact[4]
+
+```
+
+#### 4\. Summary of the Workflow
+
+When you call `nCr(n, r)`, the function fetches three precomputed integers from memory:
+
+1. `fact[n]` (represents  
+𝑛  
+!  
+)
+2. `invFact[r]` (represents  
+1r!  
+1𝑟!  
+) \[3\]
+3. `invFact[n-r]` (represents  
+1(n−r)!  
+1(𝑛−𝑟)!  
+) \[3\]
+
+It multiplies them together, resulting in a perfectly precise, 
+
+𝒪
+
+(
+
+1
+
+)
+
+ answer without a single division operation.
+
+Would you like to walk through a **complete trace** of a small example (like calculating `5C2 % 7`) step-by-step using these arrays to see how the numbers line up?
+
+# what is modular inverse in cp
+
+### what is modular inverse in cp
+
+In competitive programming (CP), the **modular inverse** of an integer A modulo M is another integer B such that 
+
+**(**
+
+**𝑨**
+
+**×𝑩**
+
+**)**
+
+**≡𝟏**
+
+**(𝐦𝐨𝐝𝑴)**
+
+. It is often written as A⁻¹. [](https://cp-algorithms.com/algebra/module-inverse.html)
+
+#### Why is it needed in CP?
+
+In CP, problems often require you to calculate an answer modulo a large prime (like 10⁹ + 7 or 998244353) to prevent integer overflow. While modular arithmetic plays nicely with addition, subtraction, and multiplication, **you cannot directly divide numbers under a modulo**. [](https://usaco.guide/gold/modular)
+
+To compute 
+
+𝐴𝐵
+
+(mod𝑀)
+
+, you must instead find the modular inverse of B and multiply:  
+
+(AB)(modM)\=(A×B\-1)(modM)
+
+𝐴𝐵(mod𝑀)\=(𝐴×𝐵−1)(mod𝑀)
+
+#### Key Condition
+
+A modular inverse 
+
+𝐴−1
+
+(mod𝑀)
+
+ exists **if and only if A and M are coprime**, meaning 
+
+gcd
+
+(
+
+𝐴
+
+,
+
+𝑀
+
+)
+
+\=1
+
+. If they share a common factor greater than 1, the inverse does not exist. [](https://cp-algorithms.com/algebra/module-inverse.html)
+
+---
+
+#### How to Calculate It in CP
+
+Depending on your constraints and the nature of M, you will use one of three core approaches:
+
+##### 1\. Fermat's Little Theorem (When M is Prime)
+
+This is the most common method in CP because the modulo M is almost always a prime number.  
+Fermat's theorem states that if M is prime, then 
+
+𝐴𝑀−1
+
+≡1
+
+(mod𝑀)
+
+. Dividing both sides by A gives: [](https://www.youtube.com/watch?v=RAAq2YJuHM4)  
+
+A\-1≡AM−2(modM)
+
+𝐴−1≡𝐴𝑀−2(mod𝑀)
+
+You can compute 
+
+𝐴𝑀−2
+
+(mod𝑀)
+
+ efficiently in 
+
+**𝑶**
+
+**(**
+
+**log**
+
+**𝑴**
+
+**)**
+
+ **time** using **binary exponentiation** (fast power). [](https://usaco.guide/gold/modular)
+
+**C++ Code:**
+
+cpp
+
+```
+long long power(long long base, long long exp) {
+    long long res = 1;
+    base %= 1000000007; // Assuming M = 10^9 + 7
+    while (exp > 0) {
+        if (exp % 2 == 1) res = (res * base) % 1000000007;
+        base = (base * base) % 1000000007;
+        exp /= 2;
+    }
+    return res;
+}
+
+long long modInverse(long long n) {
+    return power(n, 1000000007 - 2);
+}
+
+```
+
+
+
+##### 2\. Extended Euclidean Algorithm (When M is NOT Prime)
+
+If M is a composite number but 
+
+gcd
+
+(
+
+𝐴
+
+,
+
+𝑀
+
+)
+
+\=1
+
+, Fermat's Little Theorem fails. Instead, you use the Extended Euclidean Algorithm to find integers x and y such that:  
+
+A⋅x+M⋅y\=gcd(A,M)\=1
+
+𝐴⋅𝑥+𝑀⋅𝑦\=gcd(𝐴,𝑀)\=1
+
+  
+Taking modulo M on both sides eliminates M ⋅ y, leaving 
+
+𝐴
+
+⋅𝑥
+
+≡1
+
+(mod𝑀)
+
+. Thus, x is your modular inverse. This also runs in 
+
+**𝑶**
+
+**(**
+
+**log**
+
+**𝑴**
+
+**)**
+
+ **time**. [](https://cp-algorithms.com/algebra/module-inverse.html)
+
+**C++ Code:**
+
+cpp
+
+```
+long long extGCD(long long a, long long b, long long &x, long long &y) {
+    if (b == 0) {
+        x = 1; y = 0;
+        return a;
+    }
+    long long x1, y1;
+    long long d = extGCD(b, a % b, x1, y1);
+    x = y1;
+    y = x1 - y1 * (a / b);
+    return d;
+}
+
+long long modInverseComposite(long long a, long long m) {
+    long long x, y;
+    long long g = extGCD(a, m, x, y);
+    if (g != 1) return -1; // Inverse doesn't exist
+    return (x % m + m) % m; // Ensure positive result
+}
+
+```
+
+
+
+##### 3\. Linear Precomputation for a Range (1 to N)
+
+If you need to find the modular inverse for every number from 1 to N modulo a prime M (for instance, when calculating factorials and combinations like nCr under a time limit), invoking binary exponentiation for each number is too slow (
+
+𝑂
+
+(
+
+𝑁
+
+log
+
+𝑀
+
+)
+
+). [](https://usaco.guide/gold/modular)
+
+You can precalculate all inverses up to N in **O(N) time** using a dynamic programming relation: [](https://cp-algorithms.com/algebra/module-inverse.html)
+
+cpp
+
+```
+void precomputeInverses(int n, int m) {
+    vector<long long> inv(n + 1);
+    inv[1] = 1;
+    for (int i = 2; i <= n; ++i) {
+        inv[i] = m - (m / i) * inv[m % i] % m;
+    }
+}
+
+```
+
+
+
+Would you like to see how to use modular inverse to implement **nCr (combinations / binomial coefficients)** efficiently for a CP problem, or do you have a specific **modulo** value you are working with?
+
+* [](https://cp-algorithms.com/algebra/module-inverse.html)  
+Algorithms for Competitive Programming  
+Modular Inverse - Algorithms for Competitive Programming  
+In this article, we present two methods for finding the modular inverse in case it exists, and one method for finding the modular ...
+* [](https://usaco.guide/gold/modular)  
+USACO Guide  
+Modular Arithmetic · USACO Guide  
+Modular Inverse: Equivalent to reciprocals for division under prime moduli p. Fermat's Little Theorem yields a^(p-2) as an inverse...
+* [](https://leetcode.com/discuss/study-guide/5893031/Modular-Arithmetic-and-Fundamental-Math-Revision-for-CP-with-template-codes/)  
+LeetCode  
+Modular Arithmetic and Fundamental Math Revision for CP ...  
+Oct 9, 2024 — The modular inverse of a number a with respect to a modulus m is another number x such that (a\*x) mod m = 1 . a\*x = 1 (mod m) , x ...
+
+Show all
+
+# can macro override wo ambiguous fn call after using namespace std in cp cpp
+
+### can macro override wo ambiguous fn call after using namespace std in cp cpp
+
+**Yes, a preprocessor macro can successfully override a function name and prevent an "ambiguous call" error** caused by `using namespace std;` in competitive programming (CP).
+
+Because the preprocessor runs **before** the compiler parses any namespace rules or types, it substitutes the macro text directly. The compiler never sees the conflicting function call; it only sees whatever the macro expands into.
+
+Here is how you can use this to bypass or override `std` name clashes cleanly:
+
+#### 1\. Directly Overriding with a Macro
+
+If you define a function or an operation via a macro with the exact same name as a `std` function (like `cnt`, `sz`, `pow`, etc.), the preprocessor replaces it everywhere in your code before name resolution occurs.
+
+cpp
+
+```
+#include <bits/stdc++.h>
+using namespace std;
+
+// This macro completely replaces any text matching "count(...)"
+#define count(a, b) ((a) + (b)) 
+
+int main() {
+    // Even though std::count exists via 'using namespace std;', 
+    // the preprocessor changes this line to: int result = ((5) + (10));
+    int result = count(5, 10); 
+    cout << result; // Outputs 15
+}
+
+```
+
+
+
+#### 2\. Preventing Clashes Using the Global Scope Resolution Operator (`::`)
+
+If you have written your own custom function (e.g., `void distance()`) and it is clashing with `std::distance` due to `using namespace std;`, you can use a macro to explicitly force the compiler to look at your global function instead of guessing:
+
+cpp
+
+```
+#include <bits/stdc++.h>
+using namespace std;
+
+// Your custom function in the global scope
+void distance(int x) {
+    // custom logic
+}
+
+// Macro overrides any bare call to 'distance' and prefixes it with '::'
+#define distance ::distance 
+
+int main() {
+    distance(5); // Expands to ::distance(5), resolving the ambiguity perfectly.
+}
+
+```
+
+
+
+#### ⚠️ Important Gotchas in CP
+
+* **Token Paste Danger:** If you use `#define distance ::distance`, any usage of `std::distance` later in your code will expand to `std::::distance`, throwing a syntax error.
+* **Argument Side Effects:** Remember that standard macros evaluate expressions multiple times if you don't write them carefully (e.g., `#define square(x) ((x)*(x))` will fail spectacularly if you pass `square(i++)`).
+
+Are you running into a conflict with a **specific function name** (like `next`, `distance`, `count`, or `__gcd`)? If you share the exact function clashing in your CP template, I can give you the exact macro or workaround to fix it.
+
+# how to define macros of arg length overloads in cp cpp
+
+### how to define macros of arg length overloads in cp cpp
+
+In C++ Competitive Programming (CP), macro overloading based on the number of arguments is typically achieved by combining **variadic macros (`__VA_ARGS__`)** with a **"sliding" argument-counting trick**. [](https://stackoverflow.com/questions/11761703/overloading-macro-on-number-of-arguments)
+
+This allows you to create highly ergonomic macros—such as a single `dbg(...)` macro that prints 1, 2, or 3 variables cleanly depending on how many you pass it.
+
+Here is the industry-standard implementation used in CP, broken down by how it works and how to use it.
+
+---
+
+#### The Standard Implementation
+
+Copy and paste this pattern into your CP template:
+
+cpp
+
+```
+#include <iostream>
+
+// 1. Define the base handlers for 1, 2, or 3 arguments
+#define BUG1(x)          cerr << #x << " = " << x << endl;
+#define BUG2(x, y)       cerr << #x << " = " << x << ", " << #y << " = " << y << endl;
+#define BUG3(x, y, z)    cerr << #x << " = " << x << ", " << #y << " = " << y << ", " << #z << " = " << z << endl;
+
+// 2. The sliding argument counter trick
+// It shifts __VA_ARGS__ down to select the correct macro name
+#define GET_MACRO(_1, _2, _3, NAME, ...) NAME
+
+// 3. The unified macro interface
+// Pass the arguments, along with the specific macros in descending order
+#define dbg(...) GET_MACRO(__VA_ARGS__, BUG3, BUG2, BUG1)(__VA_ARGS__)
+
+int main() {
+    int a = 5, b = 10, c = 15;
+    
+    dbg(a);        // Resolves to BUG1(a) -> Prints: a = 5
+    dbg(a, b);     // Resolves to BUG2(a, b) -> Prints: a = 5, b = 10
+    dbg(a, b, c);  // Resolves to BUG3(a, b, c) -> Prints: a = 5, b = 10, c = 15
+}
+
+```
+
+
+
+---
+
+#### How the Magic Works (The Mechanics)
+
+The underlying mechanics rely on how the preprocessor expands the placeholders in `GET_MACRO`: [](https://codecraft.co/variadic-macros-tricks/)
+
+##### Case 1: You call `dbg(a)`
+
+1. `dbg(a)` expands to `GET_MACRO(a, BUG3, BUG2, BUG1)(a)`.
+2. Look at how `GET_MACRO` binds its parameters:
+  * `_1` → `a`
+  * `_2` → `BUG3`
+  * `_3` → `BUG2`
+  * `NAME` → `BUG1`
+  * `...` → empty
+3. `GET_MACRO` evaluates to `NAME`, which is **`BUG1`**.
+4. The remaining `(a)` appends to it, leaving you with `BUG1(a)`.
+
+##### Case 2: You call `dbg(a, b, c)`
+
+1. `dbg(a, b, c)` expands to `GET_MACRO(a, b, c, BUG3, BUG2, BUG1)(a, b, c)`.
+2. Map the positions:
+  * `_1` → `a`
+  * `_2` → `b`
+  * `_3` → `c`
+  * `NAME` → **`BUG3`**
+  * `...` → `BUG2, BUG1`
+3. `GET_MACRO` evaluates to `NAME`, which is **`BUG3`**.
+4. The remaining parameters append to it, leaving you with `BUG3(a, b, c)`.
+
+---
+
+#### Scaling up to More Arguments
+
+If you need your macro to support up to 5 or more arguments, you just need to slide the sequence further down: [](https://codecraft.co/variadic-macros-tricks/)
+
+cpp
+
+```
+#define BUG1(x) ...
+#define BUG2(x, y) ...
+#define BUG3(x, y, z) ...
+#define BUG4(x, y, z, w) ...
+#define BUG5(x, y, z, w, v) ...
+
+// Sequence counts backwards down to your maximum limit
+#define GET_MACRO(_1, _2, _3, _4, _5, NAME, ...) NAME
+
+#define dbg(...) GET_MACRO(__VA_ARGS__, BUG5, BUG4, BUG3, BUG2, BUG1)(__VA_ARGS__)
+
+```
+
+
+
+#### ⚠️ Common Pitfalls in CP
+
+1. **Zero Arguments:** Standard C++ variadic macros prior to C++20 will throw a compilation error or warning if you pass _completely empty_ arguments to `dbg()`. If you need a 0-argument fallback, you usually have to use compiler-specific extensions like `##__VA_ARGS__` (GCC/Clang). [](https://wiki.disenone.site/en/cpp-C%E5%92%8CCpp%E5%AE%8F%E7%BC%96%E7%A8%8B%E8%A7%A3%E6%9E%90/)
+2. **MSVC Compiler Issues:** If you use an older MSVC compiler environment (e.g., local testing on Windows without C++20 standard flags enabled), `__VA_ARGS__` is often treated as a single token during macro expansions. You can fix this by wrapping the macro expansion in an explicit evaluation step (e.g., `#define EXPAND(x) x`). [](https://stackoverflow.com/questions/11761703/overloading-macro-on-number-of-arguments)
+
+Would you like help extending this template to **print STL containers** (like `std::vector` or `std::pair`) automatically inside the overloaded macro?
+
+* [](https://stackoverflow.com/questions/11761703/overloading-macro-on-number-of-arguments)  
+Stack Overflow  
+Overloading Macro on Number of Arguments - Stack Overflow  
+August 1, 2012 — Macro overloading in C/C++ can be achieved by using a variadic macro. Some implementations may require an \`EXPAND\` macro for corre...
+* [](https://codecraft.co/variadic-macros-tricks/)  
+codecraft.co  
+Variadic macros tricks - Codecraft  
+Simple variadic macros But it's not enough The "paired, sliding arg list" trick define
+* [](https://wiki.disenone.site/en/cpp-C%E5%92%8CCpp%E5%AE%8F%E7%BC%96%E7%A8%8B%E8%A7%A3%E6%9E%90/)  
+wiki.disenone.site  
+C/C++ Macro Programming Analysis  
+However, this macro is not complete; in the case where the variable-length parameters are empty, it will incorrectly return 1 .
+
+Show all
+
+# cp cpp define macro syntax
+
+### cp cpp define macro syntax
+
+The **`#define` preprocessor directive** creates macros that the compiler replaces with text or code snippets _before_ actual compilation begins. Macros do not use assignment operators (`=`) and do not end with a semicolon (`;`). [](https://www.geeksforgeeks.org/cpp/cpp-macros/)
+
+There are two primary types of macros: **object-like** and **function-like**. [](https://gcc.gnu.org/onlinedocs/cpp/Macros.html)
+
+---
+
+#### 1\. Object-Like Macros (Constants / Labels)
+
+These are commonly used to define constants or configuration constants across your source files. [](https://www.geeksforgeeks.org/cpp/cpp-macros/)
+
+cpp
+
+```
+#define IDENTIFIER replacement_text
+
+```
+
+
+
+* **`IDENTIFIER`**: The name of the macro (conventionally written in `UPPERCASE`).
+* **`replacement_text`**: The raw text, value, or expression that substitutes the identifier. [](https://learn.microsoft.com/en-us/cpp/preprocessor/hash-define-directive-c-cpp?view=msvc-170)
+
+##### Example
+
+cpp
+
+```
+#define BUFFER_SIZE 1024  // Every instance of BUFFER_SIZE becomes 1024
+#define VERSION_LABEL "v2.1.0"
+
+```
+
+
+
+---
+
+#### 2\. Function-Like Macros (Parameterized)
+
+These behave similarly to regular function calls but operate strictly via text substitution, bypassing runtime call overhead. [](https://www.geeksforgeeks.org/cpp/cpp-macros/)
+
+cpp
+
+```
+#define IDENTIFIER(parameter1, parameter2) (expression_using_parameters)
+
+```
+
+
+
+> ⚠️ **Critical Rule:** There **must be no space** between the macro name (`IDENTIFIER`) and the opening parenthesis `(`. If a space is introduced, the preprocessor treats the parenthesis as part of an object-like macro's text substitution. [](https://learn.microsoft.com/en-us/cpp/preprocessor/hash-define-directive-c-cpp?view=msvc-170)
+
+##### Example
+
+cpp
+
+```
+// Correct: Parentheses protect operational precedence
+#define SQUARE(x) ((x) * (x)) 
+
+// Usage:
+int area = SQUARE(5); // Expands directly to ((5) * (5))
+
+```
+
+
+
+---
+
+#### 3\. Advanced Syntax Capabilities
+
+##### Multi-Line Macros
+
+To extend a macro across multiple lines, append a trailing backslash (`\`) at the end of each continuation line. Ensure no spaces follow the backslash. [](https://medium.com/@aserdargun/introduction-to-c-macros-define-12d37371cc96)
+
+cpp
+
+```
+#define PRINT_COORDINATES(x, y) \
+    std::cout << "X: " << (x) << "\n"; \
+    std::cout << "Y: " << (y) << "\n";
+
+```
+
+
+
+##### Variadic Macros (Variable Arguments)
+
+You can build macros that accept a variable number of parameters using `...` and the `__VA_ARGS__` string identifier. [](https://en.cppreference.com/cpp/preprocessor/replace)
+
+cpp
+
+```
+#define LOG_ERR(format, ...) printf(format, __VA_ARGS__)
+
+```
+
+
+
+##### Special Preprocessor Operators
+
+* **Stringizing Operator (`#`)**: Converts a macro parameter into a string literal.
+* **Token-Pasting / Concatenation Operator (`##`)**: Merges two tokens into a single token during preprocessing.
+
+cpp
+
+```
+#define TO_STRING(x) #x          // TO_STRING(Hello) becomes "Hello"
+#define CONCAT(a, b) a##b        // CONCAT(num, 1) becomes num1
+
+```
+
+
+
+---
+
+#### Best Practices & Pitfalls
+
+* **Parenthesize heavily**: Always wrap macro parameters and the global expression in parentheses. Otherwise, expressions like `SQUARE(5 + 1)` evaluate to `5 + 1 * 5 + 1` (which equals `11` instead of `36`) due to standard operator precedence rules. [](https://medium.com/@aserdargun/introduction-to-c-macros-define-12d37371cc96)
+* **No Type Safety**: Preprocessor substitution performs no type checking. In modern C++, **`const`**, **`constexpr`**, or **`inline` functions** are preferred over `#define` macros for constants and simple shortcuts wherever possible. [](https://www.geeksforgeeks.org/cpp/cpp-macros/)
+
+Would you like help rewriting a specific **macro logic into safer modern C++ alternatives** (like `constexpr` or `template`), or are you debugging a **multi-line macro issue**?
+
+* [](https://learn.microsoft.com/en-us/cpp/preprocessor/hash-define-directive-c-cpp?view=msvc-170)  
+Microsoft Learn  
+#define directive (C/C++) | Microsoft Learn  
+No spaces between identifier and opening parenthesis. Redefinition: Microsoft C/C++ allows redefinition with different parameter n...
+* [](https://www.geeksforgeeks.org/cpp/cpp-macros/)  
+GeeksforGeeks  
+Macros In C++ - GeeksforGeeks  
+Jul 31, 2026 — Macros provide a simple way to improve code reusability, flexibility, and performance by replacing code during preprocessing. Macr...
+* [](https://en.cppreference.com/cpp/preprocessor/replace)  
+cppreference.com  
+Replacing text macros  
+The additional arguments (called variable arguments) can be accessed using \_\_VA\_ARGS\_\_ identifier, which is then replaced with arg...
+
+Show all
+
+# can you define object like macros instead of fn like macros in cp cpp if it just aliases a fn name and pass all args down
+
+### can you define object like macros instead of fn like macros in cp cpp if it just aliases a fn name and pass all args down
+
+**No, you cannot use an object-like macro to alias a function name and automatically pass down all arguments in C++.**
+
+An object-like macro (e.g., `#define PI 3.14`) does a simple text replacement. If you try to use it to alias a function name, it will only replace the name itself. While this technically works if you manually type out the arguments later in your code, it does not automatically capture or forward arguments on its own.
+
+For competitive programming (CP), there are much cleaner, type-safe, and modern C++ alternatives to achieve this.
+
+---
+
+#### Why Object-Like Macros Fail to "Pass Down" Args
+
+If you define an object-like macro like this:
+
+cpp
+
+```
+#define my_print std::cout
+
+```
+
+
+
+When you write `my_print("Hello", 42);`, the preprocessor blindly replaces `my_print` with `std::cout`. The resulting code becomes `std::cout("Hello", 42);`, which will cause a compilation error because `std::cout` is not a function. Object-like macros cannot manipulate or forward an argument list.
+
+---
+
+#### Best Alternatives for Competitive Programming
+
+##### 1\. Function-Like Macro with Variadic Arguments (The Preprocessor Way)
+
+If you must use the preprocessor, you need a function-like macro utilizing `__VA_ARGS__` to capture and pass down a variable number of arguments.
+
+cpp
+
+```
+// Correct way using a function-like macro
+#define my_alias(...) actual_function(__VA_ARGS__)
+
+```
+
+
+
+##### 2\. C++14 Generic Lambdas (Recommended)
+
+The most modern, robust, and debugger-friendly way in CP to alias a function or create a shortcut is using a generic lambda with `auto&&...`. This perfectly forwards any number of arguments of any type.
+
+cpp
+
+```
+// Perfect alias that passes all arguments down
+const auto my_alias = [](auto&&... args) {
+    return actual_function(std::forward<decltype(args)>(args)...);
+};
+
+```
+
+
+
+* **Why it's great for CP:** It is entirely type-safe, avoids preprocessor side-effects (like double evaluation bugs), and compiles just as fast due to compiler optimization.
+
+##### 3\. Function Pointers or `std::invoke` Shortcuts
+
+If you are just aliasing a standard, non-overloaded function, you can bind it to a constant reference or function pointer:
+
+cpp
+
+```
+auto& my_sort = std::sort; // Works if there's no ambiguity/overloads
+
+```
+
+
+
+If you want to optimize your setup further, let me know:
+
+* **Which specific function** are you trying to alias?
+* Are you trying to make a shortcut for a **standard library function** (like `memset` or `precision`) or a **custom debugging function**?
+
+I can provide the exact, optimized snippet for your template.
+
+# can you define object like macros instead of fn like macros in cp cpp if it just aliases a fn name
+
+### can you define object like macros instead of fn like macros in cp cpp if it just aliases a fn name
+
+**Yes, you can define object-like macros to alias function names, and it is a common practice in competitive programming (CP).**
+
+When you use an object-like macro to alias a function, the preprocessor simply replaces the macro name with the function name before compilation. Because the text replacement happens exactly as written, any arguments passed in parentheses immediately following the macro name will naturally apply to the aliased function.
+
+#### How it Works
+
+cpp
+
+```
+#include <iostream>
+#include <algorithm>
+
+// Object-like macro aliasing a function name
+#define pb push_back
+#define sz size
+#define reversed reverse
+
+int main() {
+    std::string s = "hello";
+    
+    // The preprocessor expands this to: std::reversed(s.begin(), s.end());
+    // Which further expands (due to the macro) to: std::reverse(s.begin(), s.end());
+    reversed(s.begin(), s.end()); 
+    
+    std::cout << s << " " << s.sz() << "\n"; // Expands to s.size()
+}
+
+```
+
+
+
+#### ⚠️ The Major Edge Case: Function Pointers and Namespaces
+
+While it works perfectly for direct function calls like `pb(...)` or `sz()`, object-like macros replace the text _everywhere_. This can cause unexpected syntax errors if you try to pass the alias as a function pointer or use it inside a namespace where it shouldn't be touched.
+
+cpp
+
+```
+#define pb push_back
+
+// This works perfectly:
+vector<int> v;
+v.pb(1); // Expands to v.push_back(1);
+
+// This breaks completely:
+auto my_pointer = &v.pb; // Expands to &v.push_back, which is a syntax error
+
+```
+
+
+
+#### The Modern Alternative: `using` or `inline`
+
+If you want a safer, modern C++ way to alias functions or types without risking macro side-effects, you can use `using` for types or `inline` wrapper functions. However, for raw speed and minimal typing in CP, the object-like macro `#define pb push_back` remains the industry standard.
+
+If you are trying to optimize your setup template, let me know:
+
+* Which **specific functions** you are looking to alias
+* If you want to see a **standard CP template** containing the most optimized shorthand macros
+
+I can help you build a clean, bug-free shorthand list.
+
+# how to declare fn first and define fn later in cp cpp
+
+In C++ competitive programming (CP), declaring a function first and defining it later is known as creating a **forward declaration** or a **function prototype**. [](https://stackoverflow.com/questions/21718361/whats-the-difference-between-declaring-functions-before-or-after-main)
+
+This allows you to write your `main()` function at the very top of your file so you can look at the core logic immediately, while keeping your helper implementations at the bottom. [](https://www.youtube.com/watch?v=6SnxFx9aRps&t=132)
+
+### 🛠️ Syntax Overview
+
+1. **Declaration (Prototype):** Tell the compiler the function exists, what it returns, and what it accepts. **End it with a semicolon**. Place this above `main()`.
+2. **Definition:** Write the actual implementation with curly braces `{}`. Place this below `main()`. [](https://www.youtube.com/watch?v=vKTYM-DJDiw)
+
+---
+
+### 💻 Standard CP Template Example
+
+cpp
+
+```
+#include <bits/stdc++.h>
+using namespace std;
+
+// 1. FUNCTION DECLARATIONS (Prototypes)
+// You only need the data types here, but including variable names is fine.
+void solve();
+long long power(long long base, long long exp);
+bool is_prime(int n);
+
+int main() {
+    // Fast I/O for Competitive Programming
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int t = 1;
+    cin >> t;
+    while (t--) {
+        solve(); // The compiler knows solve() exists because of the declaration above!
+    }
+    return 0;
+}
+
+// 2. FUNCTION DEFINITIONS
+void solve() {
+    long long b, e;
+    cin >> b >> e;
+    cout << power(b, e) << "\n";
+}
+
+long long power(long long base, long long exp) {
+    long long res = 1;
+    base %= 1e9 + 7; // Example modulo
+    while (exp > 0) {
+        if (exp % 2 == 1) res = (res * base) % 1000000007;
+        base = (base * base) % 1000000007;
+        exp /= 2;
+    }
+    return res;
+}
+
+bool is_prime(int n) {
+    if (n <= 1) return false;
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0) return false;
+    }
+    return true;
+}
+
+```
+
+
+
+---
+
+### ⚠️ Crucial Edge Case for CP: Default Arguments
+
+If your CP helper function relies on **default arguments**, you must declare the default values in the **declaration only**, not the definition. Redeclaring them in the definition will throw a compilation error.
+
+cpp
+
+```
+// CORRECT ✅
+void graph_dfs(int node, int parent = -1); // Default value goes here
+
+int main() {
+    graph_dfs(1); // Calls graph_dfs(1, -1)
+}
+
+void graph_dfs(int node, int parent) {     // Do NOT put "=-1" here
+    // DFS Logic
+}
+
+```
+
+
+
+### 🧠 Why this is useful in CP
+
+* **Mutually Recursive Functions:** If `functionA` calls `functionB`, and `functionB` calls `functionA`, one of them _must_ be forward-declared, or your code won't compile.
+* **Clean Layout:** It keeps your template macro blocks, prototypes, and `main()` cleanly stacked at the top of the file where you do 90% of your initial coding. [](https://ece.uwaterloo.ca/~ece150/Other%5Ffeatures/17/)
+
+Are you setting up a **reusable CP template**, or are you currently debugging a **specific compilation error** related to your function scopes? I can help you fix any error messages or format your template.
+
+* [](https://stackoverflow.com/questions/21718361/whats-the-difference-between-declaring-functions-before-or-after-main)  
+Stack Overflow  
+c++ - What's the difference between declaring functions before ...  
+Forward declarations would also be necessary in the case of mutually recursive functions.
+* [](https://www.youtube.com/watch?v=6SnxFx9aRps&t=132)  
+YouTube·Bro Code  
+C++ user defined functions explained 📞  
+May 20, 2024 — A solution to this is that before the main function, you can declare functions but define them later. We can now use this function...  
+46s
+* [](https://www.youtube.com/watch?v=vKTYM-DJDiw)  
+YouTube·Bro Code  
+C++ user defined functions (#15) 📬  
+May 11, 2020 — Inside these curly braces, you write the code that you want the function to execute when it's called.  
+17:14
+
+Show all
+
+# can you use statement in expression in cpp
+
+**No, standard C++ does not allow you to use a statement inside an expression.** By definition, statements (like loops, `if` conditions, or variable declarations) do not return a value and cannot be nested inside an expression. [](https://www.reddit.com/r/cpp%5Fquestions/comments/plg8ij/expression%5Fvs%5Fstatement/)
+
+However, **GCC and Clang compilers support a non-standard extension** called **"Statement Expressions"** that allows this exact behavior. [](https://www.quora.com/Is-using-statement-expressions-considered-bad-practice-If-not-for-what-reason-is-it-not-in-the-C-Standard)
+
+---
+
+### The Extension: GCC/Clang Statement Expressions
+
+If you are compiling with GCC or Clang, you can enclose a compound statement (a block of code enclosed in `{}`) inside parentheses `()`. The last expression in the block serves as the return value for the entire expression.
+
+cpp
+
+```
+// This is a GCC/Clang extension, NOT standard C++
+int x = ({
+    int a = 5;
+    int b = 10;
+    a + b; // The last statement determines the value of the expression
+}); 
+
+// x is now 15
+
+```
+
+
+
+### Standard C++ Alternatives
+
+If you want to keep your code portable and compliant with standard C++, you should use the following native features instead:
+
+#### 1\. Lambda Expressions (C++11 and newer)
+
+You can wrap complex logic or multiple statements inside an immediately invoked lambda expression (IIFE). This is the standard, modern way to achieve the same result.
+
+cpp
+
+```
+int x = []() {
+    int a = 5;
+    int b = 10;
+    return a + b;
+}(); // The () at the end immediately executes the lambda
+
+```
+
+
+
+#### 2\. The Conditional (Ternary) Operator
+
+For simple conditional statements, you can use the ternary operator (`? :`), which is inherently an expression and returns a value.
+
+cpp
+
+```
+int x = (condition) ? value_if_true : value_if_false;
+
+```
+
+
+
+---
+
+### Direct Comparison
+
+| Feature         | GCC/Clang Statement Expressions | Standard C++ Lambda (IIFE)            |
+| --------------- | ------------------------------- | ------------------------------------- |
+| **Standard?**   | No (Compiler extension)         | Yes (C++11+)                          |
+| **Syntax**      | ({ statements; value; })        | \[\](){ statements; return value; }() |
+| **Portability** | Breaks on MSVC (Visual Studio)  | Works on all compliant compilers      |
+
+If you are looking to solve a specific problem with this syntax, let me know:
+
+* What **logic** are you trying to embed inside the expression?
+* Which **compiler** (GCC, Clang, or MSVC) are you targeting?
+
+I can help you write the cleanest standard C++ alternative.
+
+* [](https://www.reddit.com/r/cpp%5Fquestions/comments/plg8ij/expression%5Fvs%5Fstatement/)  
+Reddit·r/cpp\_questions  
+Expression vs Statement : r/cpp\_questions - Reddit  
+Statements do not have a return type. An expression is not a statement but it can be turned into a statement by placing a semicolo...
+* [](https://www.quora.com/Is-using-statement-expressions-considered-bad-practice-If-not-for-what-reason-is-it-not-in-the-C-Standard)  
+Quora  
+Is using statement expressions considered bad practice? If not ...  
+An expression statement is literally just an expression followed by a semicolon. A null statement omits the expression.
+
+# can cpp define macro take rest args
+
+### can cpp define macro take rest args
+
+Yes, C++ preprocessor macros can take a variable number of arguments (often referred to as "rest args" or "trailing arguments"). This is achieved using **variadic macros**. [](https://stackoverflow.com/questions/3046889/optional-parameters-with-c-macros)
+
+To capture the remaining arguments, you use an ellipsis (`...`) as the last parameter in the macro definition, and then access those arguments inside the macro using the identifier `__VA_ARGS__`. [](https://www.ibm.com/docs/en/i/7.6.0?topic=directive-function-like-macros)
+
+#### Basic Implementation
+
+cpp
+
+```
+#include <iostream>
+
+// The ... captures all the trailing arguments, and __VA_ARGS__ injects them
+#include <cstdio>
+#define LOG_MESSAGE(format, ...) std::printf(format, __VA_ARGS__)
+
+int main() {
+    // __VA_ARGS__ expands to: 10, "apples"
+    LOG_MESSAGE("I have %d %s.\n", 10, "apples"); 
+}
+
+```
+
+
+
+#### The Trailing Comma Issue (and how to fix it)
+
+A classic problem with the standard implementation occurs if you pass _zero_ arguments to the `...` parameter.
+
+cpp
+
+```
+#define LOG_MESSAGE(format, ...) std::printf(format, __VA_ARGS__)
+
+LOG_MESSAGE("Hello World\n"); 
+// Expands to: std::printf("Hello World\n", );  <-- Syntax error due to trailing comma!
+
+```
+
+
+
+Depending on the version of C++ you are using, there are two common ways to handle this trailing comma:
+
+##### 1\. C++20 Standard Solution (`__VA_OPT__`)
+
+C++20 introduced the `__VA_OPT__` functional macro. It expands its contents **only** if there are variable arguments passed to the ellipsis.
+
+cpp
+
+```
+// The comma is only included if __VA_ARGS__ is not empty
+#define LOG_MESSAGE(format, ...) std::printf(format __VA_OPT__(,) __VA_ARGS__)
+
+LOG_MESSAGE("Hello World\n");   // Expands to: std::printf("Hello World\n");
+LOG_MESSAGE("Value: %d\n", 42); // Expands to: std::printf("Value: %d\n", 42);
+
+```
+
+
+
+##### 2\. Pre-C++20 GCC/Clang/MSVC Extension (`##__VA_ARGS__`)
+
+If you are working with an older C++ standard, most compilers support a non-standard extension where placing a `##` token right before `__VA_ARGS__` will cause the preprocessor to automatically swallow the preceding comma if the variable argument list is completely empty. [](https://www.reddit.com/r/C%5FProgramming/comments/ox4vwr/how%5Fdo%5Fi%5Fpass%5Fvariable%5Farguments%5Fin%5Fa%5Fmacro%5Fto/)
+
+cpp
+
+```
+// Works in GCC, Clang, and MSVC (even before C++20)
+#define LOG_MESSAGE(format, ...) std::printf(format, ##__VA_ARGS__)
+
+```
+
+
+
+Would you like to see how to use variadic macros to **loop through individual arguments**, or are you looking to use them for a specific use case like **custom logging frameworks**?
+
+* [](https://stackoverflow.com/questions/3046889/optional-parameters-with-c-macros)  
+Stack Overflow  
+Optional Parameters with C++ Macros - Stack Overflow  
+June 15, 2010 — While C++ macros do not natively support overloading or optional parameters, complex techniques using variadic macros and argument...
+* [](https://www.ibm.com/docs/en/i/7.6.0?topic=directive-function-like-macros)  
+IBM  
+Function  
+If trailing arguments are permitted by the macro definition, they are merged with the intervening commas to replace the identifier...
+* [](https://dev.to/pauljlucas/cc-preprocessor-macros-fh5)  
+DEV Community  
+C/C++ Preprocessor Macros - DEV Community  
+function-like macros can take a variable number of arguments (including zero). Such a macro is known as variadic. To declare such ...
+
+Show all
+
+# compare static cast and assign to a new variable of that type in cp cpp
+
+In C++, **`static_cast` and implicit assignment to a new variable** serve different roles in type conversion, though they often end up generating identical machine code for simple primitive types.
+
+The primary difference lies in **compiler strictness, readability, and intent**.
+
+### Core Differences
+
+| Feature                                     | static\_cast<T>(expression)                                        | T new\_var = expression; (Implicit Assignment)                                     |
+| ------------------------------------------- | ------------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
+| **Type Conversion Mode**                    | Explicit conversion.                                               | Implicit conversion.                                                               |
+| **Compiler Enforcement**                    | Strong. Fails to compile if types are completely incompatible.     | Moderate. Can trigger compiler warnings for unsafe conversions.                    |
+| **Lossy Conversions** (e.g., double to int) | Allowed without warning (suppresses truncation warnings).          | Compiles, but triggers **"loss of data" warnings** depending on compiler settings. |
+| **Code Readability**                        | High intent. Tells readers you are deliberately changing the type. | Low intent. Can look like a programming mistake or oversight.                      |
+| **Pointer Hierarchy**                       | Allows safe upcasting and unchecked downcasting.                   | Only allows safe upcasting (Derived\* to Base\*).                                  |
+
+---
+
+### Detailed Comparison
+
+#### 1\. Handling Narrowing and Warnings (Demotion)
+
+When converting a larger data type to a smaller one (like a `double` to an `int`), data is truncated. [](https://www.youtube.com/watch?v=1W4xvW%5FFGkI)
+
+* **Implicit Assignment:** The compiler will often allow this to compile but will throw a warning (e.g., `warning: implicit conversion turns floating-point number into integer`).  
+cpp  
+```  
+double pi = 3.14159;  
+int truncated_pi = pi; // Compiles, but likely triggers a compiler warning  
+```  
+
+* **`static_cast`:** By using `static_cast`, you explicitly tell the compiler, _"I know data loss is happening here, and I am fine with it."_ This silence or bypasses the narrowing warning. [](https://www.reddit.com/r/cpp%5Fquestions/comments/kjdaah/can%5Fsomebody%5Fexplain%5Fme%5Fthe%5Fdifferences%5Fbetween/)  
+cpp  
+```  
+double pi = 3.14159;  
+int truncated_pi = static_cast<int>(pi); // Compiles cleanly with no warnings  
+```  
+
+
+#### 2\. Class Hierarchies and Inheritance
+
+The differences become much more critical when you work with pointers or references in Object-Oriented Programming.
+
+* **Upcasting (Derived to Base):** Both methods work seamlessly.  
+cpp  
+```  
+Dog* myDog = new Dog();  
+Animal* myAnimal = myDog; // Allowed implicitly  
+```  
+
+* **Downcasting (Base to Derived):** Implicit assignment **will fail to compile**. The compiler protects you from assigning a generic base pointer to a specific derived pointer. `static_cast` allows you to force this downcast at compile time without a runtime safety check. [](https://www.youtube.com/shorts/3cBF5W4PN%5FM)  
+cpp  
+```  
+Animal* myAnimal = new Dog();  
+// Dog* myDog = myAnimal;  
+// ^ ERROR: Cannot implicitly convert 'Animal*' to 'Dog*'  
+Dog* myDog = static_cast<Dog*>(myAnimal);  
+// ^ COMPILES: But it's your responsibility to ensure myAnimal actually points to a Dog!  
+```  
+
+
+#### 3\. Modern Braced Initialization `{}`
+
+If you use modern C++ uniform initialization (curly braces `{}`), **implicit narrowing conversions are completely blocked by the compiler**. If you want to force a conversion inside braces, you _must_ use `static_cast`.
+
+cpp
+
+```
+double max_score = 99.5;
+
+// int score{ max_score }; 
+// ^ ERROR: Narrowing conversion from 'double' to 'int' inside braces is forbidden.
+
+int score{ static_cast<int>(max_score) }; 
+// ^ COMPILES: Explicitly permitted.
+
+```
+
+
+
+### Summary Recommendation
+
+For performance in competitive programming (CP), both compile to the exact same assembly for primitive data types (`int`, `double`, `char`), resulting in zero runtime difference.
+
+However, you should use **`static_cast`** whenever you want to be explicit, suppress compiler warnings, or cleanly handle object-oriented class pointers. Use **implicit assignment** only when moving safely from smaller types to larger types (e.g., `int` to `long long`).
+
+Are you asking this in the context of optimizing **Competitive Programming (CP)** code execution speeds, or are you trying to resolve a specific compiler warning/error in your **C++ object hierarchy**?
+
+* [](https://www.reddit.com/r/cpp%5Fquestions/comments/kjdaah/can%5Fsomebody%5Fexplain%5Fme%5Fthe%5Fdifferences%5Fbetween/)  
+Reddit·r/cpp\_questions  
+Explain differences between C++ casts - Reddit  
+Dec 24, 2020 — static\_cast attempts to make one variable type into another using standard conversion functions. A static\_cast can be used here to...
+* [](https://en.cppreference.com/cpp/language/static%5Fcast)  
+cppreference.com  
+static\_cast conversion - cppreference.com  
+static\_cast(expression) returns a value of target-type. Conversions: Derived-to-Base and Base-to-Derived references/pointers … voi...
+* [](https://www.youtube.com/watch?v=1W4xvW%5FFGkI)  
+YouTube·Professor Hank Stalica  
+C++ type casting with the static\_cast operator \[4\]  
+Jul 12, 2023 — The \`static\_cast\` operator can also be used for demotion, such as converting a double to an integer, which truncates the decimal p...  
+9:19
+
+Show all
+
+# compare static cast and assign to a new variable of that type in cp cpp
+
+In C++, **`static_cast` and implicit assignment to a new variable** serve different roles in type conversion, though they often end up generating identical machine code for simple primitive types.
+
+The primary difference lies in **compiler strictness, readability, and intent**.
+
+### Core Differences
+
+| Feature                                     | static\_cast<T>(expression)                                        | T new\_var = expression; (Implicit Assignment)                                     |
+| ------------------------------------------- | ------------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
+| **Type Conversion Mode**                    | Explicit conversion.                                               | Implicit conversion.                                                               |
+| **Compiler Enforcement**                    | Strong. Fails to compile if types are completely incompatible.     | Moderate. Can trigger compiler warnings for unsafe conversions.                    |
+| **Lossy Conversions** (e.g., double to int) | Allowed without warning (suppresses truncation warnings).          | Compiles, but triggers **"loss of data" warnings** depending on compiler settings. |
+| **Code Readability**                        | High intent. Tells readers you are deliberately changing the type. | Low intent. Can look like a programming mistake or oversight.                      |
+| **Pointer Hierarchy**                       | Allows safe upcasting and unchecked downcasting.                   | Only allows safe upcasting (Derived\* to Base\*).                                  |
+
+---
+
+### Detailed Comparison
+
+#### 1\. Handling Narrowing and Warnings (Demotion)
+
+When converting a larger data type to a smaller one (like a `double` to an `int`), data is truncated. [](https://www.youtube.com/watch?v=1W4xvW%5FFGkI)
+
+* **Implicit Assignment:** The compiler will often allow this to compile but will throw a warning (e.g., `warning: implicit conversion turns floating-point number into integer`).  
+cpp  
+```  
+double pi = 3.14159;  
+int truncated_pi = pi; // Compiles, but likely triggers a compiler warning  
+```  
+
+* **`static_cast`:** By using `static_cast`, you explicitly tell the compiler, _"I know data loss is happening here, and I am fine with it."_ This silence or bypasses the narrowing warning. [](https://www.reddit.com/r/cpp%5Fquestions/comments/kjdaah/can%5Fsomebody%5Fexplain%5Fme%5Fthe%5Fdifferences%5Fbetween/)  
+cpp  
+```  
+double pi = 3.14159;  
+int truncated_pi = static_cast<int>(pi); // Compiles cleanly with no warnings  
+```  
+
+
+#### 2\. Class Hierarchies and Inheritance
+
+The differences become much more critical when you work with pointers or references in Object-Oriented Programming.
+
+* **Upcasting (Derived to Base):** Both methods work seamlessly.  
+cpp  
+```  
+Dog* myDog = new Dog();  
+Animal* myAnimal = myDog; // Allowed implicitly  
+```  
+
+* **Downcasting (Base to Derived):** Implicit assignment **will fail to compile**. The compiler protects you from assigning a generic base pointer to a specific derived pointer. `static_cast` allows you to force this downcast at compile time without a runtime safety check. [](https://www.youtube.com/shorts/3cBF5W4PN%5FM)  
+cpp  
+```  
+Animal* myAnimal = new Dog();  
+// Dog* myDog = myAnimal;  
+// ^ ERROR: Cannot implicitly convert 'Animal*' to 'Dog*'  
+Dog* myDog = static_cast<Dog*>(myAnimal);  
+// ^ COMPILES: But it's your responsibility to ensure myAnimal actually points to a Dog!  
+```  
+
+
+#### 3\. Modern Braced Initialization `{}`
+
+If you use modern C++ uniform initialization (curly braces `{}`), **implicit narrowing conversions are completely blocked by the compiler**. If you want to force a conversion inside braces, you _must_ use `static_cast`.
+
+cpp
+
+```
+double max_score = 99.5;
+
+// int score{ max_score }; 
+// ^ ERROR: Narrowing conversion from 'double' to 'int' inside braces is forbidden.
+
+int score{ static_cast<int>(max_score) }; 
+// ^ COMPILES: Explicitly permitted.
+
+```
+
+
+
+### Summary Recommendation
+
+For performance in competitive programming (CP), both compile to the exact same assembly for primitive data types (`int`, `double`, `char`), resulting in zero runtime difference.
+
+However, you should use **`static_cast`** whenever you want to be explicit, suppress compiler warnings, or cleanly handle object-oriented class pointers. Use **implicit assignment** only when moving safely from smaller types to larger types (e.g., `int` to `long long`).
+
+Are you asking this in the context of optimizing **Competitive Programming (CP)** code execution speeds, or are you trying to resolve a specific compiler warning/error in your **C++ object hierarchy**?
+
+* [](https://www.reddit.com/r/cpp%5Fquestions/comments/kjdaah/can%5Fsomebody%5Fexplain%5Fme%5Fthe%5Fdifferences%5Fbetween/)  
+Reddit·r/cpp\_questions  
+Explain differences between C++ casts - Reddit  
+Dec 24, 2020 — static\_cast attempts to make one variable type into another using standard conversion functions. A static\_cast can be used here to...
+* [](https://en.cppreference.com/cpp/language/static%5Fcast)  
+cppreference.com  
+static\_cast conversion - cppreference.com  
+static\_cast(expression) returns a value of target-type. Conversions: Derived-to-Base and Base-to-Derived references/pointers … voi...
+* [](https://www.youtube.com/watch?v=1W4xvW%5FFGkI)  
+YouTube·Professor Hank Stalica  
+C++ type casting with the static\_cast operator \[4\]  
+Jul 12, 2023 — The \`static\_cast\` operator can also be used for demotion, such as converting a double to an integer, which truncates the decimal p...  
+9:19
+
+Show all
+
+# can it be possibly flawed somewhat by cpp to make ceil and floor return double if you define int long long in cp
+
+### can it be possibly flawed somewhat by cpp to make ceil and floor return double if you define int long long in cp
+
+Yes, defining `#define int long long` in competitive programming (CP) while relying on `std::ceil` and `std::floor` is a **highly flawed approach that frequently causes Wrong Answers (WA)** due to silent precision bugs.
+
+#### 🚨 The Precision Pitfall
+
+A standard IEEE 754 `double` has **53 bits of precision** (roughly 15–17 decimal digits). A `long long` integer (which your `int` becomes) has **63 bits of precision** (roughly 19 decimal digits, up to 
+
+≈9
+
+×1018
+
+).
+
+When you pass a massive `long long` integer or a large result from an operation into `ceil()` or `floor()`, C++ implicitly promotes that value to a `double`. Because `double` lacks the bit capacity to represent large integers perfectly, **your large numbers get rounded to the nearest representable floating-point number, losing precision before the math functions even run.**
+
+#### 🛑 1\. Floating-Point Inaccuracies
+
+For numbers greater than 
+
+253
+
+253
+
+ (
+
+≈9
+
+×1015
+
+), a `double` can no longer increment by 
+
+1
+
+1
+
+. It starts skipping integers.
+
+* If your `long long` calculation results in `9007199254740993`, converting it to `double` implicitly rounds it down to `9007199254740992`.
+* Calling `ceil()` or `floor()` on that corrupted `double` value will yield an incorrect result.
+
+#### 🛑 2\. Unexpected Scientific Notation Output
+
+As noted by members on the [Codeforces Blog](https://codeforces.com/blog/entry/125954), because `ceil()` and `floor()` return a floating-point type (`double` or `long double`), printing them directly using `std::cout` without an explicit integer cast can trigger scientific notation output. Printing `8.49371e+06` instead of `8493712` will instantly fail a judge's exact string matching. [](https://codeforces.com/blog/entry/125954)
+
+---
+
+#### 🛠️ The CP-Safe Alternatives (Pure Integer Math)
+
+In competitive programming, if you are working purely with integers, you should **never use floating-point functions like `ceil` or `floor`**. You can achieve identical results safely using integer arithmetic, which is perfectly precise up to the limits of `long long`.
+
+##### 1\. Safe Integer Ceiling for 
+
+⌈
+
+𝑎𝑏
+
+⌉
+
+For two positive integers 
+
+a
+
+𝑎
+
+ and 
+
+b
+
+𝑏
+
+:
+
+cpp
+
+```
+long long ans = (a + b - 1) / b;
+
+```
+
+
+
+_If_ 
+
+_a_
+
+_𝑎_
+
+ _can be negative, use standard library integer utilities or handle the signs manually to avoid truncation quirks._
+
+##### 2\. Safe Integer Flooring for 
+
+⌊
+
+𝑎𝑏
+
+⌋
+
+C++ integer division `/` truncates toward zero. For positive numbers, this naturally acts as a floor function:
+
+cpp
+
+```
+long long ans = a / b; 
+
+```
+
+
+
+##### 3\. If you absolutely must use floating-point types
+
+If your problem forces you to compute fractions using floats, upgrade your precision from `double` to `long double` (which uses 80 or 128 bits depending on the architecture) and explicitly use the type-generic or casted variants:
+
+cpp
+
+```
+// Use ceill and floorl for long double tracking
+long long ans_ceil = std::ceill( (long double)a / b );
+
+// Or cast it directly back to your integer type
+long long fixed_ceil = (long long)std::ceil(some_double);
+
+```
+
+
+
+Are you running into this issue on a **specific problem or test case** right now? If you share the equation or problem statement, I can help you **rewrite it into pure integer math**.
+
+* [](https://codeforces.com/blog/entry/125954)  
+Codeforces  
+Be careful when using ceil() in C++ :( - Codeforces  
+Be careful when using ceil() in C++ :( When you use cout output, your ceil may return a value of 8.49371e+06 instead of 8493712\. I...
+
+# could it be better in some scenarios if cpp return int for floor and ceil assuming you always define int long long in cp
+
+**Yes, it would be significantly better** in competitive programming (CP) if `floor()` and `ceil()` directly returned an integer type rather than a floating-point type (`double`).
+
+Even when you use the common CP macro `#define int long long`, the fact that `std::floor` and `std::ceil` return a `double` creates hidden traps. Having them return an integer by default would eliminate several bugs.
+
+Here is a breakdown of why a native integer return would be better in CP, along with the dangers of the current implementation:
+
+### 1\. It would prevent Precision Loss & Floating-Point Bugs
+
+Floating-point numbers (`double`) only have 53 bits of precision (roughly 15–17 decimal digits). A 64-bit integer (`long long`), however, can precisely hold up to roughly 19 decimal digits (up to ≈ 9 × 10¹⁸).
+
+If you pass a large number or perform operations inside `floor()` that approach the limits of `long long`, a `double` **cannot represent the exact value**.
+
+* **The Problem:** `floor(900000000000000001LL)` might return a `double` approximation like `900000000000000000.0`. When you cast that back to an integer, your answer is permanently wrong by 1.
+* **The Fix:** If it natively returned an `int` (`long long`), it would maintain exact integer precision up to the 64-bit hardware limit without any floating-point degradation.
+
+### 2\. It avoids Implicit Cast Truncation Errors
+
+Because `floor` and `ceil` return a `double`, assigning their results back to an integer triggers an implicit cast. Due to how floating-point numbers are represented in binary, a value that should mathematically be `5` might be stored as `4.999999999999999`.
+
+* **The Problem:**  
+cpp  
+```  
+int x = floor(some_double); // If some_double is 4.999999999999999, x becomes 4.  
+```  
+  
+This forces CP participants to write messy code like `int x = floor(some_double + 1e-9);` to avoid precision drop during truncation.
+* **The Fix:** A native integer return would remove the risk of truncation errors during assignment.
+
+### 3\. Clean Code for Integer Division
+
+Often in CP, you need to find the floor or ceil of an integer division (e.g., 
+
+⌊
+
+𝑎
+
+/𝑏
+
+⌋
+
+). Using `floor((double)a / b)` introduces floating-point errors.
+
+If C++ had native integer versions, you wouldn't have to use standard CP workarounds like:
+
+* **Floor of a/b:** `a / b` (if positive) or `(a - b + 1) / b` (for handling negatives carefully).
+* **Ceil of a/b:** `(a + b - 1) / b` (for positive numbers).
+
+---
+
+### ⚠️ The Catch: Why `#define int long long` makes it trickier
+
+If you use `#define int long long`, you must remember that **it does not affect standard library functions** like `std::floor` or `std::ceil`. Their signatures remain bound to `double` or `long double`.
+
+If you want `floor` and `ceil` to behave safely as integers right now, the best practice in CP is to **override them yourself** using integer-only math:
+
+cpp
+
+```
+#define int long long
+
+// Safe integer ceil for a / b (assuming b > 0)
+int iceil(int a, int b) {
+    return a / b + ((a % b != 0) ^ ((a < 0) ^ (b < 0)));
+}
+
+// Safe integer floor for a / b (assuming b > 0)
+int ifloor(int a, int b) {
+    return a / b - ((a % b != 0) && ((a < 0) ^ (b < 0)));
+}
+
+```
+
+
+
+Are you currently hitting **Precision Limit (WA)** or **Time Limit Exceeded (TLE)** on a specific problem involving `floor` or `ceil`? If you share the problem constraints, I can show you how to rewrite it entirely using pure integer arithmetic.
+
 
