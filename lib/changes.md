@@ -11,3 +11,6 @@ change
 - file/append: touch if non existing
 - request: add `post`
 
+# 2026.10.30
+
+- subprocess: fix cwd no effect when userspace hack is on

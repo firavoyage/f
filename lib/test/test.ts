@@ -28,8 +28,33 @@ import { run } from 'subprocess'
 //   cwd: '/home/fira/.para'
 // }))
 
-log(run(`fd .`, {
-  userspace: true,
+// log(run(`fzf -f 'c'`, {
+//   userspace: true,
+//   cwd: '/home/fira/.para'
+// }))
+
+// log(run(`fd . | fzf -f 'c'`, {
+//   userspace: true,
+//   cwd: '/home/fira/.para'
+// }))
+
+log(run(`find . | fzf -f 'c'`, {
+  // userspace: true,
   cwd: '/home/fira/.para'
 }))
+
+log(run(`find . | fzf -f ''`, {
+  // userspace: true,
+  cwd: '/home/fira/.para'
+}))
+
+log(run(`find . | fzf -f 'hello'`, {
+  // userspace: true,
+  cwd: '/home/fira/.para'
+}))
+
+// log(run(`fd .`, {
+//   userspace: true,
+//   cwd: '/home/fira/.para'
+// }))
 

@@ -64,14 +64,17 @@ app.post('/api/search', async (c) => {
   const config = parse(read(config_file))
 
   // todo
-  const dir = config.folders[0]
+  const dir = entries(config.folders)[0][1]
 
-  log(`fzf -f '${query.replaceAll("'", '')}'`, dir)
-  const items_text = handle(() => run(`fzf -f '${query.replaceAll("'", '')}'`, { cwd: dir }))
+  const command = `find . | fzf -f '${query.replaceAll("'", '')}'`
+  log(command, dir)
+  const items_text = handle(() => run(command, { cwd: dir }))
 
+  // it fails when no matches
   if (is_error(items_text)) {
-    log('failed to search', items_text)
-    return c.json({ has_failed: true })
+    return c.json({ items: [] })
+    // log('failed to search', items_text)
+    // return c.json({ has_failed: true })
   }
 
   return c.json({ items: items_text.split('\n') })
