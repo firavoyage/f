@@ -222,7 +222,7 @@ auto combinations(int n, int r, int mod = modulo) {
   }
 
   auto result = 1;
-  each(i, 1, r){
+  each(i, 1, r) {
     result = (result * (n - r + i) * mod_inverse(i, mod)) % mod;
   }
   return result;
@@ -330,18 +330,23 @@ void solve() {
 
   bool has_solution = false;
 
-  each(i, 1e4, 3e4){
-    int a = i/100;
+  each(i, 1e4, 3e4) {
+    int a = i / 100;
     int b = i / 10 % 1000;
     int c = i % 1000;
 
-    if(a % i == 0 && b % i == 0 && c % i == 0){
+    // if (i == 22555) {
+    //   info(a, b, c, a % i, b % i, c % i);
+    // }
+
+    if (a % k == 0 && b % k == 0 && c % k == 0) {
+    // if (a % i == 0 && b % i == 0 && c % i == 0) {
       prn(i);
       has_solution = true;
     }
   }
 
-  if(!has_solution){
+  if (!has_solution) {
     prn("No");
   }
 }

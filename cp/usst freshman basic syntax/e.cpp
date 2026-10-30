@@ -299,7 +299,7 @@ void solve();
 
 const bool is_single_task = true;
 
-const bool should_debug = true;
+const bool should_debug = false;
 
 signed main() {
   ios_base::sync_with_stdio(false);
@@ -328,6 +328,10 @@ classic...
 
 "注意，洛谷不需要进行文件输入输出，而是标准输入输出。"
 
+
+
+well, contrary to my expectation, it doesnt exit at all.
+
 */
 
 void solve() {
@@ -337,6 +341,8 @@ void solve() {
 
   int balance = 0, bank = 0;
 
+  bool has_bankrupt = false;
+
   each(i, 1, 12) {
     balance += 300;
 
@@ -344,8 +350,12 @@ void solve() {
 
     if (balance < 0) {
       prn(-i);
+      has_bankrupt = true;
+
       break;
-      exit(0);
+      // prn(-i);
+      // break;
+      // exit(0);
     }
 
     if (balance >= 100) {
@@ -353,7 +363,11 @@ void solve() {
 
       balance %= 100;
     }
+
+    info(i, balance, bank);
   }
 
-  prn(balance + bank * 6 / 5);
+  if(!has_bankrupt){
+    prn(balance + bank * 6 / 5);
+  }
 }
