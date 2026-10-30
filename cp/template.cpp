@@ -196,7 +196,7 @@ auto pow_(int base, int exp, int mod = modulo) {
 }
 
 auto mod_inverse(int n, int mod = modulo) {
-  return pow_(n, mod, mod);
+  return pow_(n, mod - 2, mod);
 }
 
 auto and_ = [](auto a, auto b) { return a & b; };
@@ -212,35 +212,33 @@ auto ln = [](auto a) { return log(a); };
 
 auto logab = [](auto a, auto b) { return ln(a) / ln(b); };
 
-auto combinations(int n, int r) {
+auto combinations(int n, int r, int mod = modulo) {
   if (r < 0 || r > n) return 0;
   if (r == 0 || r == n) return 1;
 
-  // Optimize calculation since C(n, r) == C(n, n-r)
   if (r > n - r) {
     r = n - r;
   }
 
   auto result = 1;
-  for (int i = 1; i <= r; ++i) {
-    result *= (n - r + i);
-    result /= i;
+  each(i, 1, r){
+    result = (result * (n - r + i) * mod_inverse(i, mod)) % mod;
   }
   return result;
 }
 
-auto permutations(int n, int r) {
+auto permutations(int n, int r, int mod = modulo) {
   if (r < 0 || r > n) return 0;
 
   auto result = 1;
-  for (int i = 0; i < r; ++i) {
-    result *= (n - i);
+  each(i, n, n - r + 1) {
+    result = (result * i) % mod;
   }
   return result;
 }
 
 #define min_vec(vec, l, r)    \
-  []() {                      \
+  [&]() {                     \
     auto minimum = vec[l];    \
     each(i, l, r) {           \
       if (vec[i] < minimum) { \
@@ -259,7 +257,7 @@ auto min_(auto first, auto... rest) {
 }
 
 #define max_vec(vec, l, r)    \
-  []() {                      \
+  [&]() {                     \
     auto maximum = vec[l];    \
     each(i, l, r) {           \
       if (vec[i] > maximum) { \
@@ -325,6 +323,4 @@ signed main() {
 
 */
 
-void solve() {
-  
-}
+void solve() {}
