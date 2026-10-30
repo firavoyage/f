@@ -222,7 +222,7 @@ auto combinations(int n, int r, int mod = modulo) {
   }
 
   auto result = 1;
-  each(i, 1, r){
+  each(i, 1, r) {
     result = (result * (n - r + i) * mod_inverse(i, mod)) % mod;
   }
   return result;
@@ -318,4 +318,18 @@ signed main() {
 
 // solution
 
+bool is_prime(int n) {
+  if (n <= 2) {
+    return n == 2;
+  }
 
+  int upperbound = ceil(sqrt(n)) + 1;
+
+  each(i, 2, upperbound) {
+    if (n % i == 0 && i != 1 && i != n) {
+      return false;
+    }
+  }
+
+  return true;
+}
