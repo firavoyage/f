@@ -330,4 +330,22 @@ i dont really wanna use it.
 how awkward. it might provide better dx on certain scenarios, but just how awkward.
 it shouldnt be fixed here.
 
+---
+
+on style
+
+```
+.component_element
+```
+
+alternatively, you make ahve
+
+```
+.component.element
+```
+
+it's the same.
+
+
+
 

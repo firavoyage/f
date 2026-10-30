@@ -42,7 +42,8 @@ function parse(...args) {
     children = []
 
   // if (is(args[0], 'object') && !has(args[0], children_symbol)) {
-  if (is(args[0], 'object') && !(args[0].$$typeof == Symbol.for('react.element'))) {
+  // if (is(args[0], 'object') && !(args[0].$$typeof == Symbol.for('react.element'))) {
+  if (is(args[0], 'object') && !has(args[0], '$$typeof')) {
     ;[props, ...children] = args
   } else {
     children = args

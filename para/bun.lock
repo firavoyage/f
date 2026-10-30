@@ -6,8 +6,9 @@
       "dependencies": {
         "@hono/node-server": "2.0.8",
         "github-markdown-css": "5.9.0",
-        "lib": "github:firahq/lib",
         "hono": "4.12.27",
+        "lib": "github:firahq/lib",
+        "lodash-es": "4.18.1",
         "md4x": "0.0.30",
         "yaml": "2.9.1",
       },
@@ -647,7 +648,7 @@
 
     "levn": ["levn@0.4.1", "", { "dependencies": { "prelude-ls": "^1.2.1", "type-check": "~0.4.0" } }, "sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ=="],
 
-    "lib": ["lib@github:firahq/lib#bcc5ab0", { "dependencies": { "@date-fns/tz": "1.5.0", "@folder/xdg": "4.0.1", "chalk": "6.0.1", "clsx": "2.1.1", "css.escape": "1.5.1", "date-fns": "4.4.0", "date-fns-tz": "3.2.0", "fuzzysort": "4.0.2", "lodash-es": "4.18.1", "mousetrap": "1.6.5", "mousetrap-global-bind": "1.1.0", "react-use": "17.6.1", "style-to-js": "2.0.2", "tabbable": "6.5.0", "the-new-css-reset": "1.11.3", "yaml": "2.9.0" }, "peerDependencies": { "@floating-ui/react": "0.27.20", "react": "19.2.7", "react-dom": "19.2.7" } }, "firahq-lib-bcc5ab0", "sha512-wG/22D0Rtu+bSkN7MD6YxWKt2pjdrgXG6YyG4b+X4p18h6HF+2ZvcyXriTmbaaSyyGMZDz/w9r5UCbvaHX3BIA=="],
+    "lib": ["lib@github:firahq/lib#febf2a5", { "dependencies": { "@date-fns/tz": "1.5.0", "@folder/xdg": "4.0.1", "chalk": "6.0.1", "clsx": "2.1.1", "css.escape": "1.5.1", "date-fns": "4.4.0", "date-fns-tz": "3.2.0", "fuzzysort": "4.0.2", "lodash-es": "4.18.1", "mousetrap": "1.6.5", "mousetrap-global-bind": "1.1.0", "react-use": "17.6.1", "style-to-js": "2.0.2", "tabbable": "6.5.0", "the-new-css-reset": "1.11.3", "yaml": "2.9.0" }, "peerDependencies": { "@floating-ui/react": "0.27.20", "react": "19.2.7", "react-dom": "19.2.7" } }, "firahq-lib-febf2a5", "sha512-xlIUL/DzWkoXxbh2HMW3NYqNyedjHOdl5yj5k0jUXVkTMy5cAZm8LKyZrTnEvgQyN6Xolg/UO5njVt4z904zUA=="],
 
     "lightningcss": ["lightningcss@1.33.0", "", { "dependencies": { "detect-libc": "^2.0.3" }, "optionalDependencies": { "lightningcss-android-arm64": "1.33.0", "lightningcss-darwin-arm64": "1.33.0", "lightningcss-darwin-x64": "1.33.0", "lightningcss-freebsd-x64": "1.33.0", "lightningcss-linux-arm-gnueabihf": "1.33.0", "lightningcss-linux-arm64-gnu": "1.33.0", "lightningcss-linux-arm64-musl": "1.33.0", "lightningcss-linux-x64-gnu": "1.33.0", "lightningcss-linux-x64-musl": "1.33.0", "lightningcss-win32-arm64-msvc": "1.33.0", "lightningcss-win32-x64-msvc": "1.33.0" } }, "sha512-WkUDrojuJs0xkgGf2udWxa3yGBRxPtxUkB79i6aCZLRgc7PM8fZe9TosfPDcvEpQZbuFASnHYmRLBLUbmLOIIA=="],
 

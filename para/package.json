@@ -42,6 +42,7 @@
     "github-markdown-css": "5.9.0",
     "hono": "4.12.27",
     "lib": "github:firahq/lib",
+    "lodash-es": "4.18.1",
     "md4x": "0.0.30",
     "yaml": "2.9.1"
   }

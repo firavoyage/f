@@ -1,13 +1,15 @@
 import 'github-markdown-css/github-markdown.css'
+import './app.css'
 
 import { init_request, post } from 'lib/request'
 import { s } from 'lib/web/state'
 import { structure } from 'lib/web/component'
+import { use_sync_theme } from 'lib/web/use sync theme'
 
 init_request('http://localhost:9010')
 
 export function App() {
-  const { content } = structure()
+  use_sync_theme('system')
 
   const { loading: is_loading, value: response } = useAsync(() =>
     post('read', {
@@ -31,7 +33,9 @@ export function App() {
 
   const { html } = response
 
-  return content({ class: 'markdown-body',  html })
+  const { app, container, content } = structure()
+
+  return app(container({ class: 'markdown-body' }, content({ html })))
   // return <div className='markdown-body'
   // // style={{maxWidth: '80ch'}}
   // dangerouslySetInnerHTML={{ __html: html }}></div>
