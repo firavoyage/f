@@ -335,12 +335,18 @@ signed main() {
 
 it only matters if you multiply their extremes.
 
+
+wow interesting
+−2147483648 not declared in scope
+
+latex (at least when rendered on web) doesnt use standard -.
+
 */
 
 void solve() {
   readint(al, ar, bl, br);
 
-  const int min_int = −2147483648;
+  const int min_int = -2147483648;
   const int max_int = 2147483647;
 
   auto will_exceed = [&](auto n) { return n < min_int || n > max_int; };
