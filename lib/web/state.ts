@@ -369,7 +369,7 @@ type s<T> = {
   url_param?: string
 }
 
-export function s<T>(initial_value: T, options: s<T>) {
+export function s<T>(initial_value: T, options: s<T> = {}) {
   const { localstorage, url_param } = options
 
   let state = initial_value

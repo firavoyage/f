@@ -43,7 +43,10 @@ app.use('*', async (c, next) => {
 app.post('/api/read', async (c) => {
   const location = await c.req.json()
 
-  const { folder, path } = location
+  const { page } = location
+  // const { folder, path } = location
+  const [folder, ...path_parts] = page.split('/')
+  const path = path_parts.join('/')
 
   const config = parse(read(config_file))
 

@@ -10,23 +10,54 @@ import { debounce } from 'lodash-es'
 
 init_request('http://localhost:9010')
 
+const use_page = s(
+  'drafts/20260302 1900 intuitive npm publish hello world.md',
+  {
+    url_param: 'page',
+  },
+)
+
+export function use_query(endpoint, query) {
+  const [result, set_result] = useState([])
+
+  useEffect(() => {
+    if (!query) {
+      set_result([])
+      return
+    }
+
+    let is_current_request = true
+
+    post(endpoint, query).then((data) => {
+      if (is_current_request) {
+        set_result(data)
+      }
+    })
+
+    return () => {
+      is_current_request = false
+    }
+  }, [query])
+
+  return result
+  // return [result, is_loading]
+}
+
 export function App() {
+  const [page] = use_page()
+  const [query, set_query] = useState({
+    query: 'hello'
+  })
+
   use_sync_theme('system')
 
   const { loading: is_loading, value: response } = useAsync(() =>
-    post('read', {
-      folder: 'drafts',
-      path: '20260302 1900 intuitive npm publish hello world.md',
-    }),
+    post('read', { page }),
   )
 
-  const { loading: is_loading_, value: response_ } = useAsync(() =>
-    post('search', {
-      query: 'hello',
-    }),
-  )
+  const search_results = use_query('search', query)
 
-  log(response_)
+  log(search_results)
 
   if (is_loading) {
     // todo
