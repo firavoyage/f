@@ -17,7 +17,7 @@ const use_page = s(
   },
 )
 
-export function use_query(endpoint, query) {
+export function use_query(endpoint, query, debounce = 0) {
   const [result, set_result] = useState([])
 
   useEffect(() => {
@@ -28,14 +28,17 @@ export function use_query(endpoint, query) {
 
     let is_current_request = true
 
-    post(endpoint, query).then((data) => {
-      if (is_current_request) {
-        set_result(data)
-      }
-    })
+    const timer = setTimeout(function() {
+      post(endpoint, query).then((data) => {
+        if (is_current_request) {
+          set_result(data)
+        }
+      })
+    }, debounce)  
 
     return () => {
       is_current_request = false
+      clearTimeout(timer)
     }
   }, [query])
 
