@@ -11,6 +11,11 @@
 #define float double
 #define seq vector<int>
 
+#define readint(...) int __VA_ARGS__; read(__VA_ARGS__);
+#define readfloat(...) float __VA_ARGS__; read(__VA_ARGS__);
+#define readstr(...) string __VA_ARGS__; read(__VA_ARGS__);
+#define readseq(v, a, b) seq v((b)+5); read_vec(v, (a), (b));
+
 const int modulo = 1e9 + 7;
 
 const int nil = -1;
