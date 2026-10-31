@@ -343,11 +343,25 @@ and it seems it's not complicated like that at all.
 
 notice it doesnt matter of the order. a + b = b + a.
 
+
+
+?!
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+zsh: IOT instruction  ~/.cache/'o'
+
+
+
+wow so interesting how did i do this
+
+  read(v+5);
+
 */
 
 void solve() {
   int v;
-  read(v+5);
+  read(v);
+  // read(v+5);
   
   int n;
   read(n);
@@ -360,10 +374,17 @@ void solve() {
   is_reachable[v] = true;
 
   each(i, 1, n){
-    each(size, 0, v){
-      if(is_reachable[j] && j - options[i] >= 0){
-
+    each(rem, 0, v){
+      if(is_reachable[rem] && rem - options[i] >= 0){
+        is_reachable[rem - options[i]] = true;
       }
+    }
+  }
+
+  each(rem, 0, v){
+    if(is_reachable[rem]){
+      prn(rem);
+      break;
     }
   }
 }
