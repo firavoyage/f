@@ -18,11 +18,24 @@
   position: fixed;
 
   top: 0;
+  width: 100%;
 
-  max-width: 80ch;
   display: flex;
+
+  align-items: center;
+  justify-content: center;
 }
 
 .search_search_content {
-  
+  max-width: 80ch;
+
+  max-height: 20rem;
+
+  overflow-y: scroll;
+
+  background: black;
+}
+
+.input_input {
+  width: 100%;
 }

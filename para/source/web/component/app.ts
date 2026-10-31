@@ -18,7 +18,7 @@ const use_page = s(
 )
 
 export function use_query(endpoint, query, debounce = 0) {
-  const [result, set_result] = useState([])
+  const [result, set_result] = useState()
 
   useEffect(() => {
     if (!query) {
@@ -40,7 +40,7 @@ export function use_query(endpoint, query, debounce = 0) {
       is_current_request = false
       clearTimeout(timer)
     }
-  }, [query])
+  }, [JSON.stringify(query)])
 
   return result
   // return [result, is_loading]
@@ -56,22 +56,23 @@ export function App() {
 
   use_sync_theme('system')
 
-  const { loading: is_loading, value: response } = useAsync(() =>
-    post('read', { page }),
-  )
+  // const { loading: is_loading, value: response } = useAsync(() =>
+  //   post('read', { page }),
+  // )
+  const page_response = use_query('read', { page })
 
-  const search_results = use_query('search', query)
+  const search_response = use_query('search', query)
+
+  const search_results = search_response?.items || []
 
   use_keyboard('ctrl+p', () => set_is_search_open(true))
   use_keyboard('esc', () => set_is_search_open(false))
 
-  log(search_results)
-
-  if (is_loading) {
+  if (!page_response) {
     return
   }
 
-  const { html } = response
+  const { html } = page_response
 
   const { app, container, content } = structure()
   const { search, search_content } = structure('search')
@@ -82,14 +83,18 @@ export function App() {
     is_search_open &&
       search(
         search_content(
-          input({ value: query, set_value: set_query }),
+          input({
+            value: query.query,
+            set_value: (text) =>
+              set_query({
+                query: text,
+              }),
+          }),
           map(search_results, (result) =>
             search_result(
               {
                 onclick() {
-                  set_query({
-                    query: result,
-                  })
+                  set_page(result)
                 },
               },
               result,

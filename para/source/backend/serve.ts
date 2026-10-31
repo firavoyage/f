@@ -64,6 +64,8 @@ app.post('/api/read', async (c) => {
 app.post('/api/search', async (c) => {
   const { query } = await c.req.json()
 
+  log('search', query)
+
   const config = parse(read(config_file))
 
   // todo
@@ -80,7 +82,7 @@ app.post('/api/search', async (c) => {
     // return c.json({ has_failed: true })
   }
 
-  return c.json({ items: map(items_text.split('\n'), (s) => `${folder}/${s}`) })
+  return c.json({ items: map(items_text.split('\n'), (s) => `${folder}/${s.slice(2)}`) })
 })
 
 app.use('*', serveStatic({ root: '../web/build' }))
