@@ -55457,6 +55457,8 @@ some could make sense, but they are very likely to be irrelevant for me, or righ
 
 13 00 participate in freshman cp contest. 17 40
 
+nov 2026
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

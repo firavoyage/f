@@ -67,7 +67,7 @@ app.post('/api/search', async (c) => {
   const config = parse(read(config_file))
 
   // todo
-  const dir = entries(config.folders)[0][1]
+  const [folder, dir] = entries(config.folders)[0]
 
   const command = `find . | fzf -f ${santinize(query)}`
   log(command, dir)
@@ -80,7 +80,7 @@ app.post('/api/search', async (c) => {
     // return c.json({ has_failed: true })
   }
 
-  return c.json({ items: items_text.split('\n') })
+  return c.json({ items: map(items_text.split('\n'), (s) => `${folder}/${s}`) })
 })
 
 app.use('*', serveStatic({ root: '../web/build' }))

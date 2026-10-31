@@ -14,3 +14,15 @@
   /* max-width: 80ch; */
 }
 
+.search_search {
+  position: fixed;
+
+  top: 0;
+
+  max-width: 80ch;
+  display: flex;
+}
+
+.search_search_content {
+  
+}

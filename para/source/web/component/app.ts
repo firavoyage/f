@@ -6,7 +6,7 @@ import { s } from 'lib/web/state'
 import { structure } from 'lib/web/component'
 import { use_sync_theme } from 'lib/web/use sync theme'
 
-import { debounce } from 'lodash-es'
+import { input } from './input'
 
 init_request('http://localhost:9010')
 
@@ -28,13 +28,13 @@ export function use_query(endpoint, query, debounce = 0) {
 
     let is_current_request = true
 
-    const timer = setTimeout(function() {
+    const timer = setTimeout(function () {
       post(endpoint, query).then((data) => {
         if (is_current_request) {
           set_result(data)
         }
       })
-    }, debounce)  
+    }, debounce)
 
     return () => {
       is_current_request = false
@@ -47,9 +47,11 @@ export function use_query(endpoint, query, debounce = 0) {
 }
 
 export function App() {
-  const [page] = use_page()
+  const [is_search_open, set_is_search_open] = useState(false)
+
+  const [page, set_page] = use_page()
   const [query, set_query] = useState({
-    query: 'hello'
+    query: 'hello',
   })
 
   use_sync_theme('system')
@@ -60,18 +62,42 @@ export function App() {
 
   const search_results = use_query('search', query)
 
+  use_keyboard('ctrl+p', () => set_is_search_open(true))
+  use_keyboard('esc', () => set_is_search_open(false))
+
   log(search_results)
 
   if (is_loading) {
-    // todo
     return
   }
 
   const { html } = response
 
   const { app, container, content } = structure()
+  const { search, search_content } = structure('search')
+  const { search_result } = structure('search', 'button')
 
-  return app(container({ class: 'markdown-body' }, content({ html })))
+  return app(
+    container({ class: 'markdown-body' }, content({ html })),
+    is_search_open &&
+      search(
+        search_content(
+          input({ value: query, set_value: set_query }),
+          map(search_results, (result) =>
+            search_result(
+              {
+                onclick() {
+                  set_query({
+                    query: result,
+                  })
+                },
+              },
+              result,
+            ),
+          ),
+        ),
+      ),
+  )
   // return <div className='markdown-body'
   // // style={{maxWidth: '80ch'}}
   // dangerouslySetInnerHTML={{ __html: html }}></div>

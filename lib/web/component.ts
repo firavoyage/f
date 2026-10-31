@@ -53,3 +53,8 @@ function parse(...args) {
 
   return { props, children }
 }
+
+type structure = typeof structure
+declare global {
+  var structure: structure
+}
