@@ -55453,6 +55453,10 @@ some could make sense, but they are very likely to be irrelevant for me, or righ
 
 12 00 polish cpp cp template and copy on a notebook for a contest.
 
+31
+
+13 00 participate in freshman cp contest. 17 40
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
