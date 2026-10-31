@@ -11,10 +11,18 @@
 #define float double
 #define seq vector<int>
 
-#define readint(...) int __VA_ARGS__; read(__VA_ARGS__);
-#define readfloat(...) float __VA_ARGS__; read(__VA_ARGS__);
-#define readstr(...) string __VA_ARGS__; read(__VA_ARGS__);
-#define readseq(v, a, b) seq v((b)+5); read_vec(v, (a), (b));
+#define readint(...) \
+  int __VA_ARGS__;   \
+  read(__VA_ARGS__);
+#define readfloat(...) \
+  float __VA_ARGS__;   \
+  read(__VA_ARGS__);
+#define readstr(...)  \
+  string __VA_ARGS__; \
+  read(__VA_ARGS__);
+#define readseq(v, a, b) \
+  seq v((b) + 5);        \
+  read_vec(v, (a), (b));
 
 const int modulo = 1e9 + 7;
 
@@ -227,7 +235,7 @@ auto combinations(int n, int r, int mod = modulo) {
   }
 
   auto result = 1;
-  each(i, 1, r){
+  each(i, 1, r) {
     result = (result * (n - r + i) * mod_inverse(i, mod)) % mod;
   }
   return result;
@@ -325,7 +333,17 @@ signed main() {
 
 /*
 
+ah, yeah, readline doesnt make it 1, n;
 
+
+
+re on 4.
+
+maybe string is tricky.
+
+
+
+"this submit method is not currently allowed"
 
 */
 
@@ -336,31 +354,53 @@ void solve() {
 
   int n = first_line.size();
 
-  vector<string> lines(n + 5);
+  int lines[n + 5][n + 5];
+  // vector<string> lines(n + 5);
 
-  lines[1] = first_line;
-
-  each(i, 2, n){
-    readline(lines[i]);
+  each(i, 1, n) {
+    lines[1][i] = first_line[i - 1] - '0';
+    // lines[1][i] = first_line[i - 1];
   }
+  // lines[1] = first_line;
+
+  each(i, 2, n) {
+    string s;
+    readline(s);
+    each(j, 1, n) {
+      lines[i][j] = s[j - 1] - '0';
+      // lines[i][j] = s[j - 1];
+    }
+    // readline(lines[i]);
+  }
+
+  // each(i, 1, n){
+  //   each(j, 1, n){
+  //     pr(lines[i][j]);
+  //   }
+  //   prn();
+  // }
 
   pr(n);
 
   int combo = 0;
   // int combo = 1;
-  
+
   // it wants the number of consecutive zero as the first number...
   // and lines[1][0], lines[0][n] is clearly 0
 
-  each(row, 1, n){
-    each(column, 1, n){
-      auto prev = column == 1 ? lines[row-1][n]: lines[row][column - 1];
+  // idk, maybe lines[0][n] is unreadable mess or int 0;
+  lines[0][n] = 0;
+  // lines[0][n] = '0';
+
+  each(row, 1, n) {
+    each(column, 1, n) {
+      auto prev = column == 1 ? lines[row - 1][n] : lines[row][column - 1];
       auto current = lines[row][column];
 
-      info(row, column, prev, current);
+      // info(row, column, prev, current);
 
-      if(current != prev){
-        // pr(combo);
+      if (current != prev) {
+        pr(combo);
         combo = 1;
         // combo = 0;
       } else {
@@ -369,7 +409,7 @@ void solve() {
     }
   }
 
-  if(combo != 0){
-    // pr(combo);
+  if (combo != 0) {
+    pr(combo);
   }
 }

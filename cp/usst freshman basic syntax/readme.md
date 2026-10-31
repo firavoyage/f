@@ -1,3 +1,10 @@
+# inspiring problems
+
+- p
+  - strings are quirky
+  - you could not random access to set value, and you have to know how to reserve space
+  - always convert to int first
+
 # pitfalls
 
 i often mess up w variable names.
