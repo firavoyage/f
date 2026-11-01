@@ -46,7 +46,7 @@ export function use_query(endpoint, query, debounce = 0) {
   // return [result, is_loading]
 }
 
-export function App() {
+function App() {
   const [is_search_open, set_is_search_open] = useState(false)
 
   const [page, set_page] = use_page()
@@ -111,3 +111,7 @@ export function App() {
   // // style={{maxWidth: '80ch'}}
   // dangerouslySetInnerHTML={{ __html: html }}></div>
 }
+
+App = component(App)
+
+export { App }

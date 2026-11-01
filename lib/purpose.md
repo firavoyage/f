@@ -346,6 +346,48 @@ alternatively, you make ahve
 
 it's the same.
 
+nov 2026
 
+01
 
+clearly i could go the idiomatic way, or one of the common abstractions, each w their distinct tradeoffs.
+
+i dont like it. i dont like jsx.
+
+but idk if it's really worth it... it helps to see it clearer.
+
+perf is generally negligible. import boilerplate can be omitted by some clean hacks.
+
+```
+ef app
+  r (
+    <div className="..." foo={foo} bar={bar}>
+      <Input/>
+      {
+        map(items, afn item (
+          <div className="item">
+            item
+          </div>
+        ))
+      }
+    </div>
+  )
+```
+
+```
+ef app
+  r h('.foo', {foo, bar}, 
+    h(input, ...),
+    # h('input'),
+    h('.item')
+  )
+```
+
+```
+ef app
+  r foo(
+    {foo, bar}
+  )
+  
+```
 
