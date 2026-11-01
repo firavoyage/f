@@ -17,7 +17,7 @@ const use_page = s(
   },
 )
 
-export function use_query(endpoint, query, debounce = 0) {
+function use_query(endpoint, query, debounce = 0) {
   const [result, set_result] = useState()
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export function use_query(endpoint, query, debounce = 0) {
   // return [result, is_loading]
 }
 
-function App() {
+function app() {
   const [is_search_open, set_is_search_open] = useState(false)
 
   const [page, set_page] = use_page()
@@ -76,26 +76,21 @@ function App() {
 
   const { html } = page_response
 
-  const { app, container, content } = structure()
-  const { search, search_content } = structure('search')
-  const { search_result } = structure('search', 'button')
-
-  return app(
-    container({ class: 'markdown-body' }, content({ html })),
+  return h(
+    'app',
+    h('markdown-body', h({ html })),
     is_search_open &&
-      search(
-        search_content(
-          input({
+      h(
+        'app_search',
+        h(
+          'app_search_content',
+          h(input, {
             value: query,
-            // value: query.query,
             set_value: set_query,
-            // set_value: (text) =>
-            //   set_query({
-            //     query: text,
-            //   }),
           }),
           map(search_results, (result) =>
-            search_result(
+            h(
+              'button.app_search_result',
               {
                 onclick() {
                   set_page(result)
@@ -112,6 +107,5 @@ function App() {
   // dangerouslySetInnerHTML={{ __html: html }}></div>
 }
 
-App = component(App)
-
+const App = app
 export { App }

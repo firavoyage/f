@@ -1,3 +1,5 @@
+import { p } from 'lib/web/props'
+
 export function h(...args) {
   let tag,
     props,
@@ -17,16 +19,24 @@ export function h(...args) {
     children = args
   }
 
-  const { tag: parsed_tag, classname: parsed_classname } = parse_tag(given_tag)
-  if (parsed_tag) {
-    tag = parsed_tag
+  if (is(given_tag, 'string')) {
+    props = p(given_props)
+
+    const { tag: parsed_tag, classname: parsed_classname } =
+      parse_tag(given_tag)
+
+    if (parsed_tag) {
+      tag = parsed_tag
+    }
+
+    if (parsed_classname) {
+      props.className = `${props.className ?? ''} ${parsed_classname}`
+    }
+  } else {
+    tag = given_tag
+
+    props = given_props
   }
-
-  props = p(given_props)
-
-  if (parsed_classname) {
-    props.className = `${(props.className ?? '')} ${parsed_classname}`
-  } 
 
   return createElement(tag, props, ...children)
 }

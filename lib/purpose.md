@@ -539,5 +539,14 @@ also, i would avoid the weird prefixed `app_app` wo any special handling. it's f
 
 deprecate `component`.
 
+---
+
+most logics of `props` should actually be moved to `hyperscript`.
+
+they are specific handling of react quirks (e.g. `classname` not strictly no `class` allowed), and should only be applied when tag is string.
+
+could have.
+
+(wait, i could entirely keep props, wo export p, and just use props on hyperscript!)
 
 

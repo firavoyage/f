@@ -58,9 +58,9 @@ function parse(...args) {
   return { props, children }
 }
 
-type component = typeof component
-type structure = typeof structure
-declare global {
-  var component: component
-  var structure: structure
-}
+// type component = typeof component
+// type structure = typeof structure
+// declare global {
+//   var component: component
+//   var structure: structure
+// }

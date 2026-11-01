@@ -1,26 +1,26 @@
-import clsx from 'clsx';
+import clsx from 'clsx'
 import parse from 'style-to-js'
 
 function kebab_to_camel(str: string): string {
-  let result = "";
-  let capitalize_next = false;
+  let result = ''
+  let capitalize_next = false
 
   for (let i = 0; i < str.length; i++) {
-    const char = str[i];
+    const char = str[i]
 
-    if (char == "-") {
-      capitalize_next = true;
+    if (char == '-') {
+      capitalize_next = true
     } else {
       if (capitalize_next) {
-        result += char.toUpperCase();
-        capitalize_next = false;
+        result += char.toUpperCase()
+        capitalize_next = false
       } else {
-        result += char;
+        result += char
       }
     }
   }
 
-  return result;
+  return result
 }
 
 type RelaxedProps = Record<any, any> & {
@@ -42,15 +42,13 @@ type RelaxedProps = Record<any, any> & {
 
 /**
  * Write jsx props in js object flexibly
- * 
+ *
  * idempotent
  */
-export function p<T>(
-  props: RelaxedProps & T
-): T {
+export function p<T>(props: RelaxedProps & T): T {
   if (typeof props != 'object') {
     return {}
-  } 
+  }
 
   // export function p<Tag extends keyof React.JSX.IntrinsicElements>(
   //   props: RelaxedProps<React.JSX.IntrinsicElements[Tag]>
@@ -69,21 +67,27 @@ export function p<T>(
       // assume style couldnt map to an array
 
       converted_props.style = parse(value)
+    } else if (key == 'html') {
+      converted_props.dangerouslySetInnerHTML = { __html: value }
     } else {
       if (key.startsWith('data-') || key.startsWith('aria-')) {
         converted_props[key] = value
       } else if (key.startsWith('on_')) {
-        const normalized_key = key.slice(0, 2) + key[3].toUpperCase() + key.slice(4)
+        const normalized_key =
+          key.slice(0, 2) + key[3].toUpperCase() + key.slice(4)
         converted_props[normalized_key] = value
       } else if (key.startsWith('on')) {
-        const normalized_key = key.slice(0, 2) + key[2].toUpperCase() + key.slice(3)
+        const normalized_key =
+          key.slice(0, 2) + key[2].toUpperCase() + key.slice(3)
         converted_props[normalized_key] = value
       } else {
+        // converted_props[key] = value
+
         const normalized_key = kebab_to_camel(key)
 
-        if (typeof value == 'boolean') {
+        if (is(value, 'boolean')) {
           if (value == true) {
-            converted_props[normalized_key] = "true"
+            converted_props[normalized_key] = 'true'
             // converted_props[normalized_key] = "t"
             // converted_props[normalized_key] = true
           } else {
@@ -100,9 +104,3 @@ export function p<T>(
 
   return converted_props
 }
-
-type p = typeof p
-declare global {
-  var p: p
-}
-
