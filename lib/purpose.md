@@ -426,4 +426,70 @@ input = component input
 e input
 ```
 
+---
+
+conclusion.
+
+you dont like jsx. so you will need a constructer of some kind.
+
+that's `h`.
+
+you want them to be component scoped. and you dont wanna hack css (e.g. `.inside the right component {:not(inside another .component) ...}`, or via some js listener based css `mutation observer`). and you dont wanna style based css (e.g. `component_stylehash` or `px-2 styles themselves wo naming`). you want them to be named, to be clear, self explanatory, and extensible later (though that rarely yields real utility or roi for fast paced startups).
+
+and you would take a simple approach. `app_foo` `app_bar`.
+
+you had an idea.
+
+```
+foo bar = prefix app # or structure app
+
+r h(foo, ..., ...) # or r foo(..., ...)
+```
+
+let's see how well it works. let's compare.
+
+```
+r h("app_foo", ..., ...)
+```
+
+you really avoids typing app via proxy hack. but now you type foo again. yeah you have autocomplete because foo is a variable now but just... and typically you would not come up w the whole picture initially, that is you might jump between structure and reference of such class to add an element.
+
+well, dont over do that. dx maxxing.
+
+and, yeah, it made `foo(..., ...)` possible.
+
+but what about components? you could not reliably call them directly, which would break the rule of hooks. so you
+
+```
+fn app
+
+app = component app
+
+export {app}
+
+# ...
+
+app(..., ...)
+```
+
+instead of 
+
+```
+ef app
+
+h(app, ..., ...)
+```
+
+clearly the latter is much cleaner (if you really type "app = component app yourself"), and if you really setup transpiler for such decorator, you can abstract on top of the latter aw!
+
+```
+ef app
+
+app(..., ...) # component like fn call auto wrapped
+```
+
+so the conclusion is, no `structure`, no `component`. just `h`.
+
+despite 
+
 
