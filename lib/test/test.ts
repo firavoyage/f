@@ -1,1 +1,11 @@
-log('./123'.slice(2))
+function identity(x) {
+  return (x) => x * 2
+}
+
+function foo(bar) {
+  return bar + 1
+}
+
+foo = identity(foo)
+
+export { foo }

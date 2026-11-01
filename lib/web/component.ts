@@ -1,3 +1,7 @@
+export function component<T>(fn: T): T {
+  return (...args) => h(fn, ...args)
+}
+
 export function structure(component = 'app', tag = 'div') {  
   return new Proxy(
     {},
@@ -54,7 +58,9 @@ function parse(...args) {
   return { props, children }
 }
 
+type component = typeof component
 type structure = typeof structure
 declare global {
+  var component: component
   var structure: structure
 }
