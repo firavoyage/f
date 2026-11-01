@@ -515,4 +515,29 @@ but what about `h('lorem', 'ipsum')`? it would not be treated as two text.
 
 well, you should do like `h('article', 'lorem', 'ipsum')` or `h('', ...)`. and more commonly you will have `h(items)`.
 
+more generally,
+
+```
+h(str/fn, obj, ...) -> tag, props, children...
+h(str/fn, ...) -> tag, {}, children...
+h(obj, ...) -> div, props, children...
+h(...) -> fragment, children...
+
+on tag, 
+'' -> fragment
+foo -> div.foo # wo .
+.foo -> div.foo
+foo. -> foo
+foo.bar -> foo.bar
+```
+
+it's considered an obj if it's not an array (excluded by modern is by default), and not a react component/element (which typically have `$$typeof`)
+
+also, i would avoid the weird prefixed `app_app` wo any special handling. it's first `app`, and then `app_child` `app_kid` `app_boy` `app_girl`.
+
+---
+
+deprecate `component`.
+
+
 

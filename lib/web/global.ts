@@ -3,22 +3,25 @@ import { use } from 'lib/global'
 
 // Prelude for Web
 import * as react from 'react'
-import * as react_use from 'react-use'
-import * as react_hooks from 'lib/web/react'
-import * as p from 'lib/web/props'
-import * as state from 'lib/web/state'
-import * as component from 'lib/web/component'
 use(react)
-use(react_use)
-use(react_hooks)
-use(p)
-use(state)
-use(component)
 
 // override react.use (you never utilize react.use)
 use({ use })
 
-// type use = typeof use
-// declare global {
-//   var use: use
-// }
+import * as react_use from 'react-use'
+use(react_use)
+
+import * as react_hooks from 'lib/web/react'
+use(react_hooks)
+
+import * as p from 'lib/web/props'
+use(p)
+
+import * as state from 'lib/web/state'
+use(state)
+
+// import * as component from 'lib/web/component'
+// use(component)
+
+import * as hyperscript from 'lib/web/hyperscript'
+use(hyperscript)
