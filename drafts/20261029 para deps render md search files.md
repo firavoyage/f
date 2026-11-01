@@ -9592,4 +9592,88 @@ You **cannot** use a function call like `[isEqual(obj1, obj2)]` inside the depen
 
 Are you trying to prevent a specific bug like an **infinite API fetch loop**, or are you looking to optimize **component performance**?
 
+# how to create react fragment wo jsx
+
+### how to create react fragment wo jsx
+
+To create a React fragment without JSX, you use **`React.createElement(React.Fragment, null, ...children)`**. [](https://stackoverflow.com/questions/72662078/how-to-create-react-fragment-by-createelement-function)
+
+#### The Pure JavaScript Syntax
+
+javascript
+
+```
+import React from 'react';
+
+function MyComponent() {
+  return React.createElement(
+    React.Fragment,
+    null,
+    React.createElement('h1', null, 'Hello World'),
+    React.createElement('p', null, 'This is rendered without JSX.')
+  );
+}
+
+```
+
+
+
+#### Key Variations & Features
+
+* **With Keys (for Lists):** If you are iterating over an array and need to pass a `key` prop to the fragment, replace `null` with the properties object:  
+javascript  
+```  
+React.createElement(React.Fragment, { key: item.id }, ...children);  
+```  
+
+* **Using Modern Destructuring:** You can import `Fragment` directly to make the code cleaner: [](https://www.youtube.com/watch?v=pftgMPlzRew&vl=en&t=143)  
+javascript  
+```  
+import { createElement, Fragment } from 'react';  
+createElement(Fragment, null, /* children */);  
+```  
+
+
+#### Direct Alternative: Returning an Array
+
+If you are completely avoiding JSX and compiler tooling, you often don't even need `React.Fragment`. Modern React allows you to **return a direct array of elements**, provided you include a `key` attribute on each item: [](https://www.youtube.com/watch?v=5dZOOYgLXpA&t=92)
+
+javascript
+
+```
+function MyComponent() {
+  return [
+    React.createElement('h1', { key: 'heading' }, 'Hello World'),
+    React.createElement('p', { key: 'text' }, 'No fragment container required.')
+  ];
+}
+
+```
+
+
+
+If you want to optimize your raw JS workflow, let me know:
+
+* Are you using a specific alternative build tool (like **hyperscript** or **htm**)?
+* Do you need help handling dynamic lists without JSX?
+
+I can provide tailored helper functions or patterns.
+
+* [](https://www.youtube.com/watch?v=5dZOOYgLXpA&t=92)  
+YouTube·basarat  
+What are ReactJS Fragments // JSX Special Syntax  
+Feb 13, 2023 — React components must return a single value, conventionally a single element like a div. Returning multiple divs side by side dire...  
+28s
+* [](https://stackoverflow.com/questions/72662078/how-to-create-react-fragment-by-createelement-function)  
+Stack Overflow  
+How to create react fragment by createElement function  
+Jun 17, 2022 — To create a react fragment using createElement , Just do. React.createElement(React.Fragment);.
+* [](https://www.youtube.com/watch?v=pftgMPlzRew&vl=en&t=143)  
+YouTube·RUDE LABS  
+How to Use React Fragments | React JS Masterclass #22  
+Sep 1, 2025 — React fragments are used to group elements together without creating a new DOM node. You can import \`Fragment\` directly from \`reac...  
+22s
+
+Show all
+
 

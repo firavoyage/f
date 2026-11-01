@@ -30,7 +30,7 @@ export function h(...args) {
     }
 
     if (parsed_classname) {
-      props.className = `${props.className ?? ''} ${parsed_classname}`
+      props.className = `${props.className ?? ''} ${parsed_classname}`.trim()
     }
   } else {
     tag = given_tag
@@ -57,7 +57,10 @@ function parse_tag(s) {
   if (!has(s, '.')) {
     return { tag: 'div', classname: s }
   } else {
-    const [tag, classname] = s.split('.')
+    let [tag, ...classname] = s.split('.')
+
+    tag = tag || 'div'
+    classname = classname.join(' ')
 
     return {
       tag,

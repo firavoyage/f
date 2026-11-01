@@ -78,19 +78,19 @@ function app() {
 
   return h(
     'app',
-    h('markdown-body', h({ html })),
+    h('page', h('page_content', h('markdown-body', h({ html })))),
     is_search_open &&
       h(
-        'app_search',
+        'search',
         h(
-          'app_search_content',
+          'search_content',
           h(input, {
             value: query,
             set_value: set_query,
           }),
           map(search_results, (result) =>
             h(
-              'button.app_search_result',
+              'button.search_result',
               {
                 onclick() {
                   set_page(result)
