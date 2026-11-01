@@ -1,5 +1,3 @@
-import { structure } from 'lib/web/component'
-
 type input = {
   value: string
   placeholder?: string
@@ -16,4 +14,6 @@ function input({ value, set_value, ...props }: input) {
   return input({ value, onchange: handle_change, ...props })
 }
 
+input = component(input)
 
+export { input }
