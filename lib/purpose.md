@@ -376,6 +376,22 @@ ef app
 
 ```
 ef app
+  r (
+    <div {...pr}>
+      <Input/>
+      {
+        map(items, afn item (
+          <div className="item">
+            item
+          </div>
+        ))
+      }
+    </div>
+  )
+```
+
+```
+ef app
   r h('.foo', {foo, bar}, 
     h(input, ...),
     # h('input'),
@@ -384,10 +400,30 @@ ef app
 ```
 
 ```
-ef app
+f app
+  dc foo, item = structure app
+  # dc input = structure app input
+
   r foo(
-    {foo, bar}
+    {foo, bar},
+    input(...),
+    item(...)
   )
-  
+
+app = component app # or it will be eager evaluated, breaking rules of hooks
+
+e {app}
+
+f input
+  dc input = structure input
+
+  r input(
+    {value, change, ...props}
+  )
+
+input = component input
+
+e input
 ```
+
 
