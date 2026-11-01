@@ -490,6 +490,29 @@ app(..., ...) # component like fn call auto wrapped
 
 so the conclusion is, no `structure`, no `component`. just `h`.
 
-despite 
+despite `component({props}, children...)` like syntax is largely why i favored which over jsx initially.
+
+and about h itself.
+
+`h("foo")` is never considerred text of `"foo"`. if you wanna have text, do not wrap it in `h` at all.
+
+what if you wanna have (possibly) a bunch of text as a fragment? `h(items)`. arrays are always arrays.
+
+```
+h() -> raw fragment
+h('') -> raw fragment
+h('foo') -> div.foo # yeah! i assume you will never have raw tag.
+h('.foo') -> div.foo
+h('button.foo') -> button.foo
+h(comp, props, ...children)
+
+if the first arg isnt string/fn...
+h(obj, ...) -> div, obj, ... # ~~or fragment?~~
+h(...), div, {}, ... # or fragment? yeah. fragment.
+```
+
+but what about `h('lorem', 'ipsum')`? it would not be treated as two text.
+
+well, you should do like `h('article', 'lorem', 'ipsum')` or `h('', ...)`. and more commonly you will have `h(items)`.
 
 
