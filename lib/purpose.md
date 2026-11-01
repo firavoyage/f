@@ -377,7 +377,7 @@ ef app
 ```
 ef app
   r (
-    <div {...pr}>
+    <div {...props({class: 'app', foo, bar})}>
       <Input/>
       {
         map(items, afn item (
