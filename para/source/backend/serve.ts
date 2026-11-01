@@ -41,9 +41,10 @@ app.use('*', async (c, next) => {
 })
 
 app.post('/api/read', async (c) => {
-  const location = await c.req.json()
+  const page = await c.req.json()
+  // const location = await c.req.json()
+  // const { page } = location
 
-  const { page } = location
   // const { folder, path } = location
   const [folder, ...path_parts] = page.split('/')
   const path = path_parts.join('/')
@@ -62,7 +63,8 @@ app.post('/api/read', async (c) => {
 })
 
 app.post('/api/search', async (c) => {
-  const { query } = await c.req.json()
+  const query = await c.req.json()
+  // const { query } = await c.req.json()
 
   log('search', query)
 

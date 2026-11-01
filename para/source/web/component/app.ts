@@ -50,18 +50,20 @@ export function App() {
   const [is_search_open, set_is_search_open] = useState(false)
 
   const [page, set_page] = use_page()
-  const [query, set_query] = useState({
-    query: 'hello',
-  })
+  const [query, set_query] = useState('hello')
+  // const [query, set_query] = useState({
+  //   query: 'hello',
+  // })
 
   use_sync_theme('system')
 
   // const { loading: is_loading, value: response } = useAsync(() =>
   //   post('read', { page }),
   // )
-  const page_response = use_query('read', { page })
+  const page_response = use_query('read', page)
 
-  const search_response = use_query('search', query)
+  const search_response = use_query('search', query, 200)
+  // const search_response = use_query('search', query)
 
   const search_results = search_response?.items || []
 
@@ -84,11 +86,13 @@ export function App() {
       search(
         search_content(
           input({
-            value: query.query,
-            set_value: (text) =>
-              set_query({
-                query: text,
-              }),
+            value: query,
+            // value: query.query,
+            set_value: set_query,
+            // set_value: (text) =>
+            //   set_query({
+            //     query: text,
+            //   }),
           }),
           map(search_results, (result) =>
             search_result(
