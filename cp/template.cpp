@@ -9,12 +9,20 @@
 
 #define int long long
 #define float double
-#define seq vector<int>
+#define seq(a, n) vector<int> a(n + 5)
 
-#define readint(...) int __VA_ARGS__; read(__VA_ARGS__);
-#define readfloat(...) float __VA_ARGS__; read(__VA_ARGS__);
-#define readstr(...) string __VA_ARGS__; read(__VA_ARGS__);
-#define readseq(v, a, b) seq v((b)+5); read_vec(v, (a), (b));
+#define readint(...) \
+  int __VA_ARGS__;   \
+  read(__VA_ARGS__);
+#define readfloat(...) \
+  float __VA_ARGS__;   \
+  read(__VA_ARGS__);
+#define readstr(...)  \
+  string __VA_ARGS__; \
+  read(__VA_ARGS__);
+#define readseq(v, a, b) \
+  seq v((b) + 5);        \
+  read_vec(v, (a), (b));
 
 const int modulo = 1e9 + 7;
 
@@ -97,69 +105,23 @@ auto force_wa() {
 #define parse_int stoi
 #define parse_float stod
 
-// fp
-
-template <typename T, typename Func>
-auto map_vec(const vector<T>& vec, Func f) {
-  using ReturnType = decltype(f(declval<T>()));
-  vector<ReturnType> res;
-  res.reserve(vec.size());
-  for (const auto& x : vec) {
-    res.push_back(f(x));
-  }
-  return res;
-}
-
-template <typename T, typename Func>
-auto reduce_vec(const vector<T>& vec, Func f) {
-  using ReturnType = decltype(f(declval<T>(), declval<T>()));
-
-  ReturnType acc = vec[0];
-  for (size_t i = 1; i < vec.size(); ++i) {
-    acc = f(acc, vec[i]);
-  }
-  return acc;
-}
-
-template <typename T, typename Func, typename InitType>
-auto reduce_vec(const vector<T>& vec, Func f, InitType initial_value) {
-  using ReturnType = decltype(f(declval<InitType>(), declval<T>()));
-  ReturnType acc = initial_value;
-  for (const auto& x : vec) {
-    acc = f(acc, x);
-  }
-  return acc;  // Returns pure type directly since an initial seed guarantees a
-               // value
-}
-
-template <typename T, typename Func>
-auto reduce_right_vec(const vector<T>& vec, Func f) {
-  using ReturnType = decltype(f(declval<T>(), declval<T>()));
-  if (vec.empty()) return optional<ReturnType>(nullopt);
-
-  ReturnType acc = vec.back();
-  for (size_t i = vec.size() - 1; i > 0; --i) {
-    acc = f(vec[i - 1], acc);  // Element first, Accumulator second
-  }
-  return optional<ReturnType>(acc);
-}
-
-template <typename T, typename Func, typename InitType>
-auto reduce_right_vec(const vector<T>& vec, Func f, InitType initial_value) {
-  using ReturnType = decltype(f(declval<T>(), declval<InitType>()));
-  ReturnType acc = initial_value;
-  for (size_t i = vec.size(); i > 0; --i) {
-    acc = f(vec[i - 1], acc);  // Element first, Accumulator second
-  }
-  return acc;  // Returns pure type directly
-}
-
 // iterables
 
-#define sort_vec(vec, l, r) \
-  std::sort((vec).begin() + (l), (vec).begin() + (r) + 1)
+auto sort_arr(auto arr, auto l, auto r) {
+  sort((arr) + (l), (arr) + (r) + 1);
+}
 
-#define sort sort_vec
+auto sort_arr(auto arr, auto l, auto r, auto cmp) {
+  sort((arr) + (l), (arr) + (r) + 1, cmp);
+}
+
+auto sort_vec(auto vec, auto l, auto r) {
+  sort((vec) + (l), (vec) + (r) + 1);
+}
+
+auto sort_vec(auto vec, auto l, auto r, auto cmp) {
+  sort((vec) + (l), (vec) + (r) + 1, cmp);
+}
 
 // string
 
@@ -172,19 +134,13 @@ auto reduce_right_vec(const vector<T>& vec, Func f, InitType initial_value) {
 
 // math
 
-auto add = [](auto a, auto b) { return a + b; };
-
-auto sub = [](auto a, auto b) { return a - b; };
-
-auto mul = [](auto a, auto b) { return a * b; };
-
 auto truediv = [](auto a, auto b) { return double(a) / b; };
 
 auto floordiv = [](auto a, auto b) { return std::floor(double(a) / b); };
 
 auto divmod = [](auto numerator, auto denominator) {
   auto quotient = numerator / denominator, remainder = numerator % denominator;
-  return std::pair{quotient, remainder};
+  return pair{quotient, remainder};
 };
 
 auto pow_(int base, int exp, int mod = modulo) {
@@ -210,10 +166,6 @@ auto or_ = [](auto a, auto b) { return a | b; };
 auto not_ = [](auto a) { return !a; };
 auto xor_ = [](auto a, auto b) { return a ^ b; };
 
-auto summation = [](auto numbers) { return reduce_vec(numbers, add); };
-
-auto multiplication = [](auto numbers) { return reduce_vec(numbers, mul); };
-
 auto ln = [](auto a) { return log(a); };
 
 auto logab = [](auto a, auto b) { return ln(a) / ln(b); };
@@ -227,7 +179,7 @@ auto combinations(int n, int r, int mod = modulo) {
   }
 
   auto result = 1;
-  each(i, 1, r){
+  each(i, 1, r) {
     result = (result * (n - r + i) * mod_inverse(i, mod)) % mod;
   }
   return result;
