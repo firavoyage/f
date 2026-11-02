@@ -3,7 +3,6 @@ import './app.css'
 
 import { init_request, post } from 'lib/request'
 import { s } from 'lib/web/state'
-import { structure } from 'lib/web/component'
 import { use_sync_theme } from 'lib/web/use sync theme'
 
 import { input } from './input'
