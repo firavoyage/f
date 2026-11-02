@@ -182,5 +182,11 @@ no idea if the keybinding hint auto binds. likely not. and seems it's only for m
 
 if feasible i might customize and use tailwind apply.
 
+---
+
+really it's tricky. contextual token is a non nego requirement nowadays. and it's still so weird. it's not really optimized for dx and i could not bare it anymore.
+
+let's do it manually.
+
 
 
