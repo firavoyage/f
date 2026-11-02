@@ -73,8 +73,9 @@ app.post('/api/search', async (c) => {
   // todo
   const [folder, dir] = entries(config.folders)[0]
 
-  const command = `find . | fzf -f ${santinize(query)}`
-  log(command, dir)
+  const command = `rg --files -g "*.md" | fzf -f ${santinize(query)}`
+  // const command = `find . | fzf -f ${santinize(query)}`
+
   const items_text = handle(() => run(command, { cwd: dir }))
 
   // it fails when no matches
@@ -84,7 +85,8 @@ app.post('/api/search', async (c) => {
     // return c.json({ has_failed: true })
   }
 
-  return c.json({ items: map(items_text.split('\n'), (s) => `${folder}/${s.slice(2)}`) })
+  return c.json({ items: map(items_text.split('\n'), (s) => `${folder}/${s}`) })
+  // return c.json({ items: map(items_text.split('\n'), (s) => `${folder}/${s.slice(2)}`) })
 })
 
 app.use('*', serveStatic({ root: '../web/build' }))
