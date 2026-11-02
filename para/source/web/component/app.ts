@@ -62,7 +62,7 @@ function app() {
   // )
   const page_response = use_query('read', page)
 
-  const search_response = use_query('search', query, 200)
+  const search_response = use_query('search', query)
   // const search_response = use_query('search', query)
 
   const search_results = search_response?.items || []

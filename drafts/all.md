@@ -383,6 +383,7 @@ web: <!-- frontend, web, ts/js -->
 - lib std list polymorphism
 - js top level fire and forget await on control flow end nodejs
 - vite setup dev build preview
+- fix react dangerously set inner html perf lag
 
 backend:
 

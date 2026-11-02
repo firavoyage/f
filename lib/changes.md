@@ -16,3 +16,7 @@ change
 - subprocess: fix cwd no effect when userspace hack is on
 - web/state: overhaul the overly complicated `state`, have an atomic `s` instead
 - web/component: + `structure(tag?)`
+
+# 2026.11.02
+
+- web/props: cache dangerously set innerhtml

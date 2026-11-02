@@ -23,29 +23,23 @@ function kebab_to_camel(str: string): string {
   return result
 }
 
-type RelaxedProps = Record<any, any> & {
-  key?: never
-  class?: string | object | any[]
-  style?: string | object
+let caches = dict()
+
+function cache(k, v) {
+  if (has(caches, k)) {
+    return caches.get(k)
+  } else {
+    caches.set(k, v)
+    return v
+  }
 }
-// type RelaxedProps = Record<any, any>
-// type RelaxedProps<T> = Omit<T, 'className'> & {
-//   class?: string;
-//   [key: string]: any;
-// };
-// type RelaxedProps = {
-//   key?: never,
-//   class?: string | object | Array<any>,
-//   style?: string | object,
-//   [key: string]: any,
-// };
 
 /**
- * Write jsx props in js object flexibly
+ * Write react props flexibly
  *
  * idempotent
  */
-export function p<T>(props: RelaxedProps & T): T {
+export function p<T>(props: T): T {
   if (typeof props != 'object') {
     return {}
   }
@@ -53,7 +47,7 @@ export function p<T>(props: RelaxedProps & T): T {
   // export function p<Tag extends keyof React.JSX.IntrinsicElements>(
   //   props: RelaxedProps<React.JSX.IntrinsicElements[Tag]>
   // ): any {
-  const converted_props: RelaxedProps = {}
+  const converted_props = {}
   // const converted_props: RelaxedProps<React.JSX.IntrinsicElements[Tag]> = {}
 
   for (const [key, value] of Object.entries(props)) {
@@ -68,7 +62,7 @@ export function p<T>(props: RelaxedProps & T): T {
 
       converted_props.style = parse(value)
     } else if (key == 'html') {
-      converted_props.dangerouslySetInnerHTML = { __html: value }
+      converted_props.dangerouslySetInnerHTML = cache(value, { __html: value })
     } else {
       if (key.startsWith('data-') || key.startsWith('aria-')) {
         converted_props[key] = value
