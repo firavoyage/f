@@ -1,7 +1,5 @@
 # plan
 
-
-
 # todo
 
 ## m
@@ -14,15 +12,24 @@
 - resolve a path to a file
 - render gfm efficiently
 
+- have a complete component system
+  - handling keyboard navigation well, e.g.
+    - open modal, close/esc, initial focus, focus trapping, (shift) tab, (ctrl) j/k
+
 ## s
+
+- have a consistent design system
+- show toc
+- handle multi folder
+  - search everywhere
+  - search on a specific folder
+  - you may have an array of path
 
 ## c
 
 ## w
 
 # backlog
-
-
 
 ## misc
 
@@ -71,5 +78,3 @@ vscode md preview is not feature rich.
 i could not ctrl f. i could not have toc.
 
 research: gemini. (lagrange)
-
-
