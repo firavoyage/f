@@ -107,20 +107,20 @@ auto force_wa() {
 
 // iterables
 
-auto sort_arr(auto arr, auto l, auto r) {
+auto sort_arr(auto&& arr, auto l, auto r) {
   sort((arr) + (l), (arr) + (r) + 1);
 }
 
-auto sort_arr(auto arr, auto l, auto r, auto cmp) {
+auto sort_arr(auto&& arr, auto l, auto r, auto cmp) {
   sort((arr) + (l), (arr) + (r) + 1, cmp);
 }
 
-auto sort_vec(auto vec, auto l, auto r) {
-  sort((vec) + (l), (vec) + (r) + 1);
+auto sort_vec(auto&& vec, auto l, auto r) {
+  sort(vec.begin() + (l), vec.begin() + (r) + 1);
 }
 
-auto sort_vec(auto vec, auto l, auto r, auto cmp) {
-  sort((vec) + (l), (vec) + (r) + 1, cmp);
+auto sort_vec(auto&& vec, auto l, auto r, auto cmp) {
+  sort(vec.begin() + (l), vec.begin() + (r) + 1, cmp);
 }
 
 // string
@@ -300,7 +300,25 @@ void solve() {
 
   prn_vec(a, 1, 10);
 
-  seq a(10 + 5);
+  seq(b, 10);
 
+  each(i, 1, 10){
+    b[i] = 10 - i;
+  }
+
+  prn_vec(b, 1, 10);
+
+  // std::sort(b.begin() + 1, b.begin() + 10 + 1);
+
+  sort_vec(b, 1, 10);
+
+  prn_vec(b, 1, 10);
+
+  sort_vec(b, 1, 10, [&](auto a, auto b){
+    // return a < b;
+    return a % 2 == 0 && b % 2 == 0;
+  });
+
+  prn_vec(b, 1, 10);
 
 }

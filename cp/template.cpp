@@ -21,8 +21,8 @@
   string __VA_ARGS__; \
   read(__VA_ARGS__);
 #define readseq(v, a, b) \
-  seq v((b) + 5);        \
-  read_vec(v, (a), (b));
+  seq(v, b);        \
+  read_vec(v, a, b);
 
 const int modulo = 1e9 + 7;
 
@@ -107,30 +107,29 @@ auto force_wa() {
 
 // iterables
 
-auto sort_arr(auto arr, auto l, auto r) {
+auto sort_arr(auto&& arr, auto l, auto r) {
   sort((arr) + (l), (arr) + (r) + 1);
 }
 
-auto sort_arr(auto arr, auto l, auto r, auto cmp) {
+auto sort_arr(auto&& arr, auto l, auto r, auto cmp) {
   sort((arr) + (l), (arr) + (r) + 1, cmp);
 }
 
-auto sort_vec(auto vec, auto l, auto r) {
-  sort((vec) + (l), (vec) + (r) + 1);
+auto sort_vec(auto&& vec, auto l, auto r) {
+  sort(vec.begin() + (l), vec.begin() + (r) + 1);
 }
 
-auto sort_vec(auto vec, auto l, auto r, auto cmp) {
-  sort((vec) + (l), (vec) + (r) + 1, cmp);
+auto sort_vec(auto&& vec, auto l, auto r, auto cmp) {
+  sort(vec.begin() + (l), vec.begin() + (r) + 1, cmp);
 }
 
 // string
 
-#define format_float(number, precision)                                     \
-  ([&]() {                                                                  \
-    char buf[64];                                                           \
-    std::snprintf(buf, sizeof(buf), "%.*f", (precision), (double)(number)); \
-    return std::string(buf);                                                \
-  }())
+auto format_float(auto number, auto precision) {
+  char buf[64];
+  std::snprintf(buf, sizeof(buf), "%.*f", (precision), (double)(number));
+  return std::string(buf);
+}
 
 // math
 
@@ -161,16 +160,11 @@ auto mod_inverse(int n, int mod = modulo) {
   return pow_(n, mod - 2, mod);
 }
 
-auto and_ = [](auto a, auto b) { return a & b; };
-auto or_ = [](auto a, auto b) { return a | b; };
-auto not_ = [](auto a) { return !a; };
-auto xor_ = [](auto a, auto b) { return a ^ b; };
-
 auto ln = [](auto a) { return log(a); };
 
 auto logab = [](auto a, auto b) { return ln(a) / ln(b); };
 
-auto combinations(int n, int r, int mod = modulo) {
+auto comb(int n, int r, int mod = modulo) {
   if (r < 0 || r > n) return 0;
   if (r == 0 || r == n) return 1;
 
@@ -185,7 +179,7 @@ auto combinations(int n, int r, int mod = modulo) {
   return result;
 }
 
-auto permutations(int n, int r, int mod = modulo) {
+auto perm(int n, int r, int mod = modulo) {
   if (r < 0 || r > n) return 0;
 
   auto result = 1;
@@ -195,16 +189,15 @@ auto permutations(int n, int r, int mod = modulo) {
   return result;
 }
 
-#define min_vec(vec, l, r)    \
-  [&]() {                     \
-    auto minimum = vec[l];    \
-    each(i, l, r) {           \
-      if (vec[i] < minimum) { \
-        minimum = element;    \
-      }                       \
-    }                         \
-    return minimum            \
-  }()
+auto min_vec(auto&& vec, auto l, auto r) {
+  auto minimum = vec[l];
+  each(i, l, r) {
+    if (vec[i] < minimum) {
+      minimum = element;
+    }
+  }
+  return minimum
+}
 
 auto min_(auto first, auto... rest) {
   auto minimum = first;
@@ -214,16 +207,15 @@ auto min_(auto first, auto... rest) {
   return minimum;
 }
 
-#define max_vec(vec, l, r)    \
-  [&]() {                     \
-    auto maximum = vec[l];    \
-    each(i, l, r) {           \
-      if (vec[i] > maximum) { \
-        maximum = element;    \
-      }                       \
-    }                         \
-    return maximum            \
-  }()
+auto max_vec(auto&& vec, auto l, auto r) {
+  auto maximum = vec[l];
+  each(i, l, r) {
+    if (vec[i] > maximum) {
+      maximum = element;
+    }
+  }
+  return maximum
+}
 
 auto max_(auto first, auto... rest) {
   auto maximum = first;
