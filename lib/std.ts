@@ -195,7 +195,7 @@ export function dict(v?) {
   return new Map(v)
 }
 
-export function obj(v = []) {
+export function obj(v) {
   return Object.fromEntries(v)
 }
 
