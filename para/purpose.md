@@ -168,10 +168,19 @@ maybe the text is a bit too high here.
 
 for some reason "brand ui" adapts system dark theme by defualt, while "product ui" doesnt.
 
-well, the scrollbar doesnt adapt, and there is fouc.
+well, the scrollbar doesnt adapt, and there is fouc. (besides across browser tab auto sync)
 
 interesting they provide ruby on rails variants. and it's not csr. "refused to connect". well it hits hard wall, despite somewhat elegant syntax. rails do have their sophisticated ecosystem. "lookbook".
 
 you can edit directly wo "cdpn stackblitz codesandbox", copy and reset.
+
+things are aligned here. https://primer.style/product/components/button/
+
+no idea if the keybinding hint auto binds. likely not. and seems it's only for mac.
+
+---
+
+if feasible i might customize and use tailwind apply.
+
 
 
