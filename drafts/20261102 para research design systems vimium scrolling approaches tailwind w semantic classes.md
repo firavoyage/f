@@ -2250,3 +2250,396 @@ Sep 8, 2025 — The brand collection holds elements in their purest form, such a
 
 Show all
 
+# how do big tech create design systems
+
+Big Tech companies create design systems by **treating them as standalone products** rather than secondary side projects. Industry giants like Google (Material Design), Apple (Human Interface Guidelines), and Airbnb (Design Language System) scale their user interfaces by building a centralized infrastructure, maintaining dedicated cross-functional teams, and implementing strict governance models. [](https://newsletter.pragmaticengineer.com/p/design-systems-for-software-engineers)
+
+The exact playbook Big Tech uses to build, scale, and maintain these systems breaks down into several key areas:
+
+### 1\. Dedicated Teams & Infrastructure
+
+Unlike smaller startups where a single product designer manages a UI kit, Big Tech hires a cross-functional unit often called **Design System Engineering (DSE)**. [](https://www.untitledui.com/blog/what-is-a-design-system)
+
+* **The Team Structure:** This standalone org consists of visual designers, accessibility specialists, interaction designers, and dedicated frontend engineers. They do not build features for the core app; their sole customer is the company’s internal product teams. [](https://www.nngroup.com/articles/design-systems-101/)
+* **The Technical Bridge:** DSE teams act as the translation layer. When a designer builds a component in Figma, the engineering side of the DSE team translates that look and feel into native code. [](https://www.figma.com/blog/design-systems-102-how-to-build-your-design-system/)
+
+### 2\. Multi-Platform Architectural Tiering
+
+Big Tech apps span iOS, Android, web, and desktop. To keep things consistent without rewriting code from scratch every time, they architect their systems using a **tiered token hierarchy**: [](https://www.youtube.com/watch?v=opTANvl9G1g&t=13)
+
+```
+[Global/Primitive Tokens] -> (Hex codes, base pixel scales)
+          │
+          ▼
+[Semantic Tokens]         -> (Contextual meaning: e.g., "bg-primary", "text-disabled")
+          │
+          ▼
+[Component Components]    -> (Actual UI elements: Buttons, Modals, Inputs)
+
+```
+
+* **Design Tokens:** They use central, platform-agnostic JSON or YAML files to house variables like colors, typography, border-radii, and spacing. [](https://www.parallelhq.com/blog/automating-design-systems-with-ai)
+* **Automated Pipelines:** They use tools like Amazon's Style Dictionary to automatically compile these raw tokens into target formats—like CSS variables for Web, Swift for iOS, and XML/Compose for Android.
+
+### 3\. Production-Ready Code Libraries
+
+Big Tech ensures that code and design share a **1-to-1 matching structure**. [](https://www.untitledui.com/blog/what-is-a-design-system)
+
+* **Framework Agnosticism:** Companies that manage massive, fragmented codebases (like Salesforce or Apple) heavily rely on native **Web Components**. This allows their design elements to run smoothly whether a product team is using React, Angular, Vue, or pure HTML.
+* **Versioned Distributions:** The final code components are bundled into private standalone package repositories (such as NPM or Cocoapods). Product teams simply install the design system library like any other third-party dependency. [](https://www.reddit.com/r/reactjs/comments/1fxdrj7/what%5Ftechnology%5Fdo%5Fbig%5Fcompanies%5Fuse%5Ffor%5Ftheir/)
+
+### 4\. Direct Comparison: Design System Ecosystems
+
+| Pillar                 | Component Type                                   | Responsibility                                                                     |
+| ---------------------- | ------------------------------------------------ | ---------------------------------------------------------------------------------- |
+| **Foundations**        | Tokens, grids, accessibility (A11y) rules.       | Establishes the visual identity and foundational constraints.                      |
+| **Components**         | Buttons, inputs, modals, navigation bars.        | Reusable building blocks that match exactly across design files and code packages. |
+| **Patterns & Recipes** | Login layouts, checkout flows, error states.     | Pre-arranged groupings of components answering _how_ things work together.         |
+| **Documentation**      | Code snippets, UX do's & don'ts, editorial tone. | The ultimate source of truth hosted on internal sites to align teams.              |
+
+### 5\. Strict Governance & Contribution Cycles
+
+A design system fails if it is too rigid. Big Tech utilizes distinct models to handle updates:
+
+* **The Federated/Inverted Model:** While a core team maintains the infrastructure, feature teams across the company are allowed to propose changes. If an engineer on the Checkout team builds a new dropdown variant, they submit a request to the Design System team.
+* **Rigorous Linting & CI/CD:** Automated checks are built directly into the engineering workflow. Code linters automatically flag hard-coded hex values and require developers to use a token instead, ensuring zero drift from the system guidelines. [](https://www.linkedin.com/posts/danmall%5Fheres-how-id-create-a-design-system-in-activity-7256696288006606849--Ysz)
+
+Are you asking because you want to **pitch a design system** to your stakeholders, or are you **architecting a new one** from scratch for your team?
+
+* [](https://www.reddit.com/r/reactjs/comments/1fxdrj7/what%5Ftechnology%5Fdo%5Fbig%5Fcompanies%5Fuse%5Ffor%5Ftheir/)  
+Reddit·r/reactjs  
+What technology do big companies use for their Digital Design ...  
+Oct 6, 2024 — We use Figma and Frontify for the Design Systems of our customers. After that we build them with react + styled-components in npm ...
+* [](https://newsletter.pragmaticengineer.com/p/design-systems-for-software-engineers)  
+The Pragmatic Engineer  
+Design Systems for Software Engineers  
+The design team creates the look and feel of the software in Figma. The DSE team converts that into working React code (or Angular...
+* [](https://www.youtube.com/watch?v=opTANvl9G1g&t=13)  
+YouTube·UI Collective  
+Build a Design System - Full Course  
+Sep 8, 2025 — It also details setting up design tokens using a three-tiered architecture, which includes brand, alias, and map collections.  
+11m
+
+Show all
+
+# how to create design systems for new projects like big tech
+
+Creating a design system for a new project that scales like Big Tech—such as **Google Material 3**, **Apple Human Interface Guidelines**, or **Salesforce Lightning**—requires treating the system as a product itself. Big Tech succeeds not because they have prettier buttons, but because they bridge the gap between design and engineering seamlessly. [](https://www.figma.com/blog/design-systems-102-how-to-build-your-design-system/)
+
+Here is the blueprint to create a scalable, high-performing design system from scratch.
+
+---
+
+### 1\. Build the Foundations (The Visual DNA)
+
+Before building components, define the global styles. In modern workflows, these are managed using **Design Tokens** (variables that store values like hex codes or pixel dimensions). [](https://www.instagram.com/reel/DK9JF20tndO/?hl=en)
+
+* **Color Palette:** Standardize a functional palette. A common framework is the 60-30-10 rule: **60% neutrals** (backgrounds, surfaces), **30% primary brand colors** (buttons, links), and **10% secondary/accent colors**. [](https://www.figma.com/blog/design-systems-102-how-to-build-your-design-system/)
+* **Typography:** Establish a clear type scale. Map out font families, weights, and line heights optimized for readability across devices. [](https://www.figma.com/blog/design-systems-102-how-to-build-your-design-system/)
+* **Spacing & Grid:** Enforce a consistent spatial layout system (like a 4px or 8px grid) to make sizing decisions predictable for developers. [](https://www.figma.com/blog/design-systems-102-how-to-build-your-design-system/)
+* **Semantic Tokens:** Instead of naming a variable `color-blue-500`, name it `color-button-primary-background`. This allows you to swap themes (like Dark Mode) instantly. [](https://www.reddit.com/r/DesignSystems/comments/1oe505j/how%5Fto%5Fbuild%5Fa%5Flightweight%5Fdesign%5Fsystem%5Ffor%5Fa/)
+
+### 2\. Map Design to Code (The Component Level)
+
+A design system fails if the design files don't match the live code. You must create exact duplicates of components in both environments. [](https://www.infragistics.com/blogs/design-systems)
+
+* **Figma Execution:** Build reusable UI components (Buttons, Inputs, Modals) using **Figma Auto Layout** and component variants.
+* **Engineering Framework:** Do not build a custom component library from scratch. Big tech-level scaling leverages high-quality, open-source headless libraries—such as Radix UI, Base UI, or Tailwind CSS via Shadcn. Style these pre-built, accessible libraries to match your brand.
+* **Bridging the Gap:** Tools like **Figma Code Connect** allow engineers to see the exact code implementation directly inside Figma, reducing handoff friction. [](https://medium.com/design-bootcamp/how-to-build-your-startups-first-design-system-4d8724fbb802)
+
+### 3\. Establish Governance & Documentation
+
+A system is only as good as its adoption. You need clear rules on how the system scales. [](https://zeroheight.com/blog/how-do-you-start-a-design-system/)
+
+* **Documentation Hub:** Use a platform like Zeroheight to host guidelines, clear "Do's and Don'ts", and copyable code snippets.
+* **UX Patterns:** Document full user experience flows (e.g., standard login forms, error states, and loading states), not just isolated buttons.
+* **Governance Model:** Define how new components are proposed, approved, and updated so the library doesn't become bloated. [](https://figr.design/blog/process-design-system-creation-implementation)
+
+---
+
+### Big Tech vs. Lean Startup Approaches
+
+Depending on your project's maturity, choose the right strategy:
+
+| Strategy       | **Big Tech Approach** (Google, Apple)                                      | **Lean Project / Startup Approach**                                           |
+| -------------- | -------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| **Focus**      | Multi-platform, rigid governance, custom token architecture.               | High speed, low maintenance, fast product-market fit.                         |
+| **Team Setup** | Dedicated cross-functional teams (Designers, Devs, Accessibility Experts). | "Federated" model (Product designers contribute part-time).                   |
+| **Execution**  | Built completely custom or deeply fork open-source engines.                | Duplicate an existing Figma Community Kit and connect to Mantine or Tailwind. |
+
+To see a practical breakdown of how a leading design expert structures the initial strategy and builds organizational empathy before pushing pixels, watch this video:
+
+[1:30](https://www.linkedin.com/posts/danmall%5Fheres-how-id-create-a-design-system-in-activity-7256696288006606849--Ysz)
+
+[](https://www.linkedin.com/posts/danmall%5Fheres-how-id-create-a-design-system-in-activity-7256696288006606849--Ysz)
+
+Here's how I'd create a design system in 90 seconds. | Dan ...
+
+2 years ago
+
+LinkedIn · Dan Mall
+
+To tailer this strategy to your specific project, tell me:
+
+* What **frontend framework** is your engineering team using? (React, Vue, Swift, Flutter?)
+* Are you building an **entirely new brand**, or refactoring an existing application?
+* How many **designers and developers** will be actively using this system?
+
+I can provide the exact tech stack or naming convention template for your team.
+
+* [](https://www.instagram.com/reel/DK9JF20tndO/?hl=en)  
+Instagram·Pierluigi Giglio  
+How to Structure a Design System (Without Overcomplicating It) ...  
+Jun 16, 2025 — Components such as buttons, inputs, cards, and navbars serve as reusable building blocks adhering to these foundations.  
+[0:51](https://www.instagram.com/reel/DK9JF20tndO/?hl=en)
+* [](https://www.figma.com/blog/design-systems-102-how-to-build-your-design-system/)  
+Figma  
+How to Build a Design System | Design Systems 102 | Figma Blog  
+Map designs to code, apply functional semantic naming, structure shared libraries, and link components using Code Connect.
+* [](https://www.reddit.com/r/DesignSystems/comments/1oe505j/how%5Fto%5Fbuild%5Fa%5Flightweight%5Fdesign%5Fsystem%5Ffor%5Fa/)  
+Reddit·r/DesignSystems  
+How to build a lightweight design system for a small startup?  
+Almost any design system has theming options where you can change colors, rounding level. I would check out the shadcn paid librar...
+
+Show all
+
+# how to create design system for new projects
+
+Creating a design system for new projects requires a structured workflow that moves from foundational styling rules to reusable components and shared documentation. Building a **comprehensive design system** from scratch ensures visual consistency, prevents repetitive work, and bridges the gap between **designers and developers**. [](https://zeroheight.com/blog/how-do-you-start-a-design-system/)
+
+For new projects, you should avoid over-engineering early on; instead, focus on a phased approach that scales as the product grows. [](https://ux.stackexchange.com/questions/147102/what-can-be-the-strategy-to-build-a-design-system)
+
+---
+
+### Step 1: Establish the Groundwork & Principles
+
+Before jumping into a design tool, align your team on the functional requirements and core aesthetic. [](https://www.figma.com/blog/design-systems-102-how-to-build-your-design-system/)
+
+* **Define the goals:** Determine if the system needs to support multiple platforms (Web, iOS, Android) or multiple brands. [](https://www.youtube.com/watch?v=L-tpK7Eeuow)
+* **Choose your approach:** Decide if you will build completely from scratch or customize an existing open-source boilerplate framework like Material Design, MUI, or Fluent UI to save time. [](https://www.reddit.com/r/UXDesign/comments/15sy2tb/tips%5Fon%5Fcreating%5Fa%5Fdesign%5Fsystem%5Ffor%5Fmy%5Fcompany/)
+* **Set core design principles:** Establish 3–5 guiding pillars (e.g., "Accessibility first," "Minimalist hierarchy") that will dictate future UI choices. [](https://ux.stackexchange.com/questions/147102/what-can-be-the-strategy-to-build-a-design-system)
+
+### Step 2: Build the Visual Foundations (Design Tokens)
+
+Design tokens are the atomic values of your system (the single source of truth for variables). Map these out in your design software like Figma using variable collections. [](https://www.youtube.com/watch?v=opTANvl9G1g&t=13)
+
+* **Color System:** Build a balanced palette (typically 60% neutrals, 30% primary brand colors, 10% secondary/accent colors). Organize them into a tiered system: raw primitive values (e.g., `blue-500`) mapped to semantic roles (e.g., `button-bg-primary`).
+* **Typography Scale:** Select your font families and define a clear, readable mathematical type scale for headers, body text, and captions.
+* **Spacing & Grid:** Enforce a layout grid system, preferably based on an **8pt geometric scale** (4px, 8px, 16px, 24px, 32px) to ensure layout proportionality.
+* **Elevation & Borders:** Standardize corner radii (border-radius) and drop shadows to establish spatial depth and visual hierarchy. [](https://blog.maximeheckel.com/posts/building-a-design-system-from-scratch/)
+
+### Step 3: Create Reusable UI Components
+
+Using your foundational design tokens, begin modeling individual interface components. Utilize your design tool's component features (like Figma's components and variants) so changes cascade globally. [](https://www.reddit.com/r/UXDesign/comments/15sy2tb/tips%5Fon%5Fcreating%5Fa%5Fdesign%5Fsystem%5Ffor%5Fmy%5Fcompany/)
+
+Group your layout assembly logically:
+
+* **Form Inputs:** Buttons, text fields, checkboxes, dropdown menus, and radio buttons. Ensure you account for states: default, hover, active, focused, disabled, and error.
+* **Navigation:** Header bars, breadcrumbs, side drawers, and pagination menus.
+* **Feedback Indicators:** Tooltips, toast alerts, badges, and progress spinners.
+* **Data Containers:** Cards, list items, and table rows. [](https://www.reddit.com/r/UXDesign/comments/15sy2tb/tips%5Fon%5Fcreating%5Fa%5Fdesign%5Fsystem%5Ffor%5Fmy%5Fcompany/)
+
+### Step 4: Translate Design into Code
+
+A design system fails if developers cannot easily reference it. Ensure your technical implementation directly mirrors your design canvas. [](https://medium.com/@cesarmartinezd/creating-and-coding-a-design-system-from-scratch-part-1-co-authored-by-zuzanna-sobiecka-4c10c15aa343)
+
+* **Export variables:** Export your design tokens as CSS variables, SCSS variables, or JSON tokens that feed directly into your codebase.
+* **Map components:** Build matching coded components (using React, Vue, or native CSS utility classes) that utilize those tokens 1-to-1\. Tools like Figma Code Connect can link coded components directly back to design files. [](https://www.figma.com/blog/design-systems-102-how-to-build-your-design-system/)
+
+### Step 5: Document and Govern
+
+Centralize your system in a collaborative workspace so that teams can find answers without constant messaging. [](https://zeroheight.com/blog/how-do-you-start-a-design-system/)
+
+* **Publish a central hub:** Use platforms like zeroheight or internal wiki pages to host interactive examples, code snippets, and usage guidelines. [](https://www.youtube.com/watch?v=vmH8Q7G69iY)
+* **Define "Do's and Don'ts":** Clearly outline when to use specific components (e.g., "Use a tooltip for icon explanation, never for critical error messages"). [](https://www.instagram.com/reel/DK9JF20tndO/?hl=en)
+* **Establish a contribution model:** Create a workflow for how team members can suggest modifications or create a new token when a unique feature arises. [](https://figr.design/blog/process-design-system-creation-implementation)
+
+If you are working inside Figma and want a complete step-by-step walkthrough on setting up tokens, organizing variables, and structuring component layers from scratch, check out this tutorial:
+
+11m
+
+[](https://www.youtube.com/watch?v=opTANvl9G1g&t=13)
+
+Build a Design System - Full Course
+
+320K views · 1 year ago
+
+YouTube · UI Collective
+
+To help narrow down the immediate next steps for your system, tell me:
+
+* What **tech stack** or **framework** is your development team using? (e.g., React, Tailwind, Flutter)
+* Which **design tool** do you plan to build this in? (e.g., Figma, Adobe XD)
+* Are you designing for a **single product** or a **multi-brand ecosystem**?
+
+* [](https://www.reddit.com/r/UXDesign/comments/15sy2tb/tips%5Fon%5Fcreating%5Fa%5Fdesign%5Fsystem%5Ffor%5Fmy%5Fcompany/)  
+Reddit·r/UXDesign  
+Tips on creating a design system for my company : r/UXDesign  
+Start with colors and color shades, then go to some components. You can use pre-built libraries like MUI or Fluent UI and customiz...
+* [](https://www.figma.com/blog/design-systems-102-how-to-build-your-design-system/)  
+Figma  
+How to Build a Design System | Design Systems 102 | Figma Blog  
+variables and styles. Figma Execution: Map designs to code, apply functional semantic naming, structure shared libraries, and link...
+* [](https://www.youtube.com/watch?v=opTANvl9G1g&t=13)  
+YouTube·UI Collective  
+Build a Design System - Full Course  
+Sep 8, 2025 — This video is a re-filmed, comprehensive tutorial. It also details setting up design tokens using a three-tiered architecture, whi...  
+11m
+
+Show all
+
+# how to create design system for new personal projects
+
+Building a design system from scratch can feel daunting, but starting lean ensures you spend time building your projects rather than managing unnecessary overhead. Watch this comprehensive walkthrough on establishing foundational tokens and scalable components to kickstart your workflow:
+
+Building a **design system for personal projects** requires a different approach than building one for an enterprise company. Instead of focusing on exhaustive documentation and infinite edge cases, your goal is **speed, flexibility, and stopping repetitive work**. [](https://www.reddit.com/r/UXDesign/comments/1r9ybsw/creating%5Fa%5Fdesign%5Fsystem%5Fwhat%5Fdo%5Fyou%5Fwish%5Fyou%5Fknew/)
+
+A personal design system should serve as a lightweight starter kit that accelerates your coding or prototyping phases, rather than becoming a time-consuming "pet project" in itself. [](https://www.reddit.com/r/UXDesign/comments/1r9ybsw/creating%5Fa%5Fdesign%5Fsystem%5Fwhat%5Fdo%5Fyou%5Fwish%5Fyou%5Fknew/)
+
+---
+
+### 🧱 1\. The Core Architecture
+
+A scalable system relies on **Atomic Design principles**—building from the smallest possible elements up to layout structures. For personal use, keep this architecture strictly flat to prevent management headache. [](https://www.youtube.com/watch?v=%5Fuva2dQPlV8&t=61)
+
+```
+Foundations (Tokens)  ──>  Primitive Components  ──>  Layout Compositions
+(Colors, Typography)       (Buttons, Inputs)          (Cards, Navigation)
+
+```
+
+---
+
+### 🎨 2\. Define Your Foundations (Design Tokens)
+
+Design tokens are the visual DNA of your system. In code, these are your CSS variables; in design, they are your Figma Variables. [](https://www.instagram.com/reel/DK9JF20tndO/?hl=en)
+
+For a personal project, stick to a **two-tier token architecture** to keep updating simple: [](https://blog.maximeheckel.com/posts/building-a-design-system-from-scratch/)
+
+* **Tier 1: Global Primitives:** Raw values (e.g., `blue-500: #3b82f6`, `space-4: 16px`).
+* **Tier 2: Semantic Meanings:** Functional aliases mapped to your primitives (e.g., `button-bg: blue-500`, `card-padding: space-4`). [](https://www.figma.com/blog/design-systems-102-how-to-build-your-design-system/)
+
+#### The Minimum Viable Token Set
+
+* **Color Scale:** Follow the **60-30-10 Rule**. Use 60% Neutrals (backgrounds, text, borders), 30% Primary Brand (dominant UI elements, primary buttons), and 10% Secondary Accent (success, errors, warnings). [](https://www.youtube.com/watch?v=tdpnCXlBZTc&t=42)
+* **Typography:** Pick **one versatile font family** (like Inter or Roboto) to minimize performance loading. Define exactly 4–5 sizes using a standard mathematical scale (like a 1.25 Major Third scale):
+  * _Display / Hero text_ (32px)
+  * _Heading_ (24px)
+  * _Subheading_ (18px)
+  * _Body text_ (16px)
+  * _Caption / Small text_ (12px)
+* **Spacing Grid:** Standardize on an **8px grid system**. Limit your choices to `4px`, `8px`, `16px`, `24px`, `32px`, and `64px` for all margins, paddings, and structural layouts. [](https://www.instagram.com/reel/DK9JF20tndO/?hl=en)
+
+---
+
+### 🕹️ 3\. Build "Marie Kondo" Components
+
+Do not build components until you actually need them. For a brand new project, build only the high-frequency UI components that cover roughly 80% of your interface interactions: [](https://zeroheight.com/blog/how-do-you-start-a-design-system/)
+
+| Component Category | Key Elements to Build First                   | What to Avoid Early On                          |
+| ------------------ | --------------------------------------------- | ----------------------------------------------- |
+| **Actions**        | Primary Button, Secondary Button, Icon Button | Floating Action Buttons (FABs), Split Dropdowns |
+| **Data Entry**     | Text Input, Checkbox                          | Date Range Pickers, Advanced Autocompletes      |
+| **Navigation**     | Simple Top Navbar, Mobile Bottom Nav          | Mega Menus, Multi-tier Sidebars                 |
+| **Containers**     | Standard Content Card, Alert Banner           | Draggable Modals, Collapsible Accordions        |
+
+---
+
+### 🚀 4\. Use Boilerplates and Frameworks
+
+Unless you are building a design system specifically to learn how to build design systems, **do not build everything from scratch**. [](https://www.youtube.com/watch?v=tdpnCXlBZTc&t=42)
+
+* **If you are designing in Figma:** Start with a high-quality free community library like Untitled UI or Figma's official Starter kits. Tweak the global colors and typography variables to match your personal brand rather than adjusting individual components manually. [](https://www.youtube.com/watch?v=tdpnCXlBZTc&t=42)
+* **If you are coding:** Pair a utility-first framework like Tailwind CSS with a headless component framework like Radix UI or shadcn/ui. This gives you robust, fully accessible component logic out-of-the-box while giving you total control over structural theme styling using your tokens.
+
+---
+
+### 🔁 5\. The Personal Project Workflow
+
+Keep the feedback loop between design and code as short as possible.
+
+1. **Get messy first:** When starting a new feature, sketch it out freely without restricting yourself to system rules.
+2. **Audit patterns:** Once the layout feels right, identify elements you repeated.
+3. **Refactor into tokens:** Replace raw color hexes or hardcoded margins with your system variables.
+4. **Sync immediately:** Update your design file and code definitions alongside your actual app development cycle. Treat your system like an evolving infrastructure, not a rigid set of static rules. [](https://medium.com/design-bootcamp/how-to-build-your-startups-first-design-system-4d8724fbb802)
+
+To help narrow this down into an actionable setup, tell me:
+
+* What **tech stack** are you planning to build these projects with? (e.g., React, Next.js, Flutter, basic HTML/CSS)
+* Are you planning to use a design tool like **Figma**, or do you prefer to **design directly in code**?
+* What **kind of projects** are you building? (e.g., SaaS tools, portfolios, mobile apps)
+
+* [](https://blog.maximeheckel.com/posts/building-a-design-system-from-scratch/)  
+Maxime Heckel's Blog  
+Building a Design System from scratch - Maxime Heckel's Blog  
+A small scoped design system mainly composed of primitive components focused solely on personal branding and personal use.
+* [](https://www.reddit.com/r/UXDesign/comments/1r9ybsw/creating%5Fa%5Fdesign%5Fsystem%5Fwhat%5Fdo%5Fyou%5Fwish%5Fyou%5Fknew/)  
+Reddit·r/UXDesign  
+Creating a design system - what do you wish you knew? - Reddit  
+It's easy to get excited and start defining tokens, edge cases, perfect documentation, Start with what's already repeated in produ...
+* [](https://www.figma.com/blog/design-systems-102-how-to-build-your-design-system/)  
+Figma  
+How to Build a Design System | Design Systems 102 | Figma Blog  
+Implement accessibility standards, balanced color palettes (60% neutral, 30% primary, 10% secondary), readable type scales, elevat...
+
+Show all
+
+# how to create design system for new personal projects
+
+To create a design system for new personal projects, **start with a lean, flexible foundation rather than trying to build a massive enterprise system**. When you are the primary designer and developer, overcomplicating the system will only stall your progress. The goal is to build a reusable toolkit that makes shipping new ideas fast and cohesive. [](https://www.reddit.com/r/UXDesign/comments/1r9ybsw/creating%5Fa%5Fdesign%5Fsystem%5Fwhat%5Fdo%5Fyou%5Fwish%5Fyou%5Fknew/)
+
+---
+
+### 🛠️ Step 1: Establish Your Design Tokens (The DNA)
+
+Before building complex components, establish your global styles, often referred to as design tokens. [](https://blog.maximeheckel.com/posts/building-a-design-system-from-scratch/)
+
+* **Color Palette:** Stick to a 60-30-10 rule (60% dominant neutral background/surface colors, 30% secondary text/borders, and 10% primary accent color). Use an HSL-based or semantic naming scheme (like `--bg-primary` or `--text-success`) so you can swap themes or toggle dark mode instantly. [](https://www.figma.com/blog/design-systems-102-how-to-build-your-design-system/)
+* **Typography:** Select one or two versatile typefaces. Set a predictable type scale (e.g., a major third or perfect fourth scale) for consistent headings and body sizes. [](https://www.youtube.com/watch?v=%5Fuva2dQPlV8)
+* **Spacing & Grid:** Establish a base unit (usually **8px**). All margins, padding, and layout gaps should use multipliers of this base (4px, 8px, 16px, 24px, 32px, etc.) to keep layouts visually balanced. [](https://www.figma.com/blog/design-systems-102-how-to-build-your-design-system/)
+
+### 🧱 Step 2: Build Lean Atomic Components
+
+Instead of designing dozens of variations, apply Brad Frost’s **Atomic Design methodology** to focus only on what you actually need right now. [](https://uxdesign.cc/building-a-design-system-from-scratch-ae6ffda515b5)
+
+* **Atoms (The basics):** Build standalone primitives like buttons, input fields, checkboxes, and a consistent icon set.
+* **Molecules & Organisms (The structures):** Combine those atoms to build structural patterns like a Navigation Bar, a Form, or a Card. [](https://zeroheight.com/blog/how-do-you-start-a-design-system/)
+
+### 💻 Step 3: Align Design and Code Early
+
+A design system is only real once it exists in code. Do not spend weeks over-polishing mockups. [](https://medium.com/design-bootcamp/how-to-build-your-startups-first-design-system-4d8724fbb802)
+
+* If you design in Figma, use Figma Variables to export your tokens directly into code or leverage modern plugins to accelerate your workflow. [](https://www.youtube.com/watch?v=CEsE-JePuVc)
+* Translate those tokens into global CSS variables or configuration objects (like a `tailwind.config.js` file if you use Tailwind CSS).
+* Build your component library using a framework component architecture (like React, Vue, or Web Components) so you can copy and paste them across your personal project repositories. [](https://www.youtube.com/watch?v=nafNPuElCtY&vl=en)
+
+### 🔄 Step 4: Document the "Why" Simply
+
+You don't need a sprawling documentation website like a massive tech company. A simple Markdown file (`DESIGN_SYSTEM.md`) in your repository is perfect. Track: [](https://www.nngroup.com/articles/design-systems-101/)
+
+* When to use specific button variants.
+* Code snippets for quick implementations.
+* Known edge cases or accessibility choices you made. [](https://www.figma.com/blog/design-systems-102-how-to-build-your-design-system/)
+
+---
+
+To help narrow down the fastest setup for you, tell me:
+
+* What **tech stack** (like React, Next.js, HTML/CSS) do you plan to build your personal projects with?
+* Do you prefer writing **custom CSS / Tailwind**, or do you want to adapt an **existing library** (like shadcn/ui or Material UI)?
+
+* [](https://blog.maximeheckel.com/posts/building-a-design-system-from-scratch/)  
+Maxime Heckel's Blog  
+Building a Design System from scratch - Maxime Heckel's Blog  
+The first layer is a series of variables representing the HSL (Hue, Saturation, Lightness) values of the different colors within t...
+* [](https://www.figma.com/blog/design-systems-102-how-to-build-your-design-system/)  
+Figma  
+How to Build a Design System | Design Systems 102 | Figma Blog  
+Define goals, inventory existing designs and code, establish guiding principles. Foundations: Implement accessibility standards, c...
+* [](https://www.reddit.com/r/UXDesign/comments/1r9ybsw/creating%5Fa%5Fdesign%5Fsystem%5Fwhat%5Fdo%5Fyou%5Fwish%5Fyou%5Fknew/)  
+Reddit·r/UXDesign  
+Creating a design system - what do you wish you knew? - Reddit  
+If Design Leadership isn't actively championing the system, adoption can stall out and you'll have an uphill battle trying to get ...
+
+Show all
+
