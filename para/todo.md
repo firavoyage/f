@@ -22,8 +22,10 @@
 - show toc
 - handle multi folder
   - search everywhere
-  - search on a specific folder
-  - you may have an array of path
+  - search on a specific folder (by prefixing)
+  - you may have an array of hierarchy for each folder in lib/file (wo "find" command), prefix them, and fzf (preferrably in js)
+- customize scrolling
+  - it might be as userscript rather than para specific extension, as they are likely to prefer it across sites (e.g. vimium)
 
 ## c
 

@@ -1068,6 +1068,7 @@ para:
 - theme adwaita refactor vanillajs
 - design layout
 - deps render md search files
+- research design systems vimium scrolling approaches tailwind w semantic classes
 
 quote:
 
