@@ -114,7 +114,7 @@ serve(
 function santinize(arg) {
   const replacements = ['$', '`', '\\', '"', '!']
 
-  return map(arg, (char) => has(replacements, char)? `\\${char}`: char).join('')
+  return `'${map(arg, (char) => has(replacements, char)? `\\${char}`: char).join('')}'`
   // return `'${arg.replaceAll("'", '')}'`
 }
 

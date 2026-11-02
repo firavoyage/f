@@ -1,9 +1,8 @@
 # plan
 
+- lib/web/style?
 - para
 - humility
-- lib/web/server?
-- lib/web/style?
 
 # todo
 

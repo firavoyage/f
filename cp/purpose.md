@@ -461,3 +461,14 @@ finally.
 
 looks great.
 
+nov 2026
+
+02
+
+it's not really reasonable to jump to usaco guide gold math first, just to complete a specific training.
+
+learn the fundamentals first.
+
+i love engineering. and i may create a simple llm interface.
+
+
