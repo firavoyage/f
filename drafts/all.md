@@ -1224,6 +1224,7 @@ humility:
 - use case university ai intro course tasks img vid gen
 - use case university advanced math ref answer judgement chaoxing
 - foundation
+- use case uni py basics homework
 
 legacy:
 
