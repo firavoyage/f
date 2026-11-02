@@ -273,6 +273,7 @@ lib:
 - scaffold vite config setup
 - shell b run script abstraction r
 - web state s overhaul simplification
+- web style vite yaml
 
 web: <!-- frontend, web, ts/js -->
 
@@ -1070,6 +1071,7 @@ para:
 - design layout
 - deps render md search files
 - research design systems vimium scrolling approaches tailwind w semantic classes
+- extension table of contents
 
 quote:
 

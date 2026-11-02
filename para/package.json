@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "@hono/node-server": "2.0.8",
+    "@rollup/plugin-yaml": "5.0.1",
     "github-markdown-css": "5.9.0",
     "hono": "4.12.27",
     "lib": "github:firahq/lib",
