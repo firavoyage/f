@@ -146,4 +146,32 @@ i would take the first "dir" as folder on backend.
 
 you may provide a single default folder (could have).
 
+nov 2026
+
+02
+
+have a consistent design system. build a component lib.
+
+since i already use github md theming (a default for gfm)
+
+i may adopt github primer ui. it's open, already built for react.
+
+but i would go my way. if i could replicate it easily by its look, i could replicate any theme.
+
+---
+
+doesnt feel the icons are really aligned.
+
+https://primer.style/brand/components/Button/react/
+
+maybe the text is a bit too high here.
+
+for some reason "brand ui" adapts system dark theme by defualt, while "product ui" doesnt.
+
+well, the scrollbar doesnt adapt, and there is fouc.
+
+interesting they provide ruby on rails variants. and it's not csr. "refused to connect". well it hits hard wall, despite somewhat elegant syntax. rails do have their sophisticated ecosystem. "lookbook".
+
+you can edit directly wo "cdpn stackblitz codesandbox", copy and reset.
+
 
