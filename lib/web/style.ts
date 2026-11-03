@@ -1251,7 +1251,8 @@ export function style(theme) {
     if (key == last) {
       return prefix
     } else {
-      return [...prefix_parts, key].join('-')
+      return [...prefix_parts, key].join('.')
+      // return [...prefix_parts, key].join('-')
     } 
   }
 
@@ -1260,7 +1261,73 @@ export function style(theme) {
   let has_reference = set()
 
   for (const [k, v] of entries(design_tokens)) {
-    let parts = v.split(' ')
+    const separators = [' ', ',', '/', '(', ')', '+', '-', '*', '/']
+
+    let separated_value: string = v
+    for (const sep of separators) {
+      separated_value = separated_value.replaceAll(sep, '__separator__')
+    }
+
+    let parts = separated_value.split('__separator__')
+
+    let dereferenced_value = map(parts, (part) => {
+      // let escaped_part = part.replaceAll()
+      if (has(design_tokens, part)) {
+        has_reference.add(part)
+
+        return css_variable(part)
+      } else {
+        return part
+      } 
+    }).join('')
+
+    design_tokens[k] = dereferenced_value
+  }
+
+  let components = {}
+
+  for (const [k, v] of entries(theme)) {
+    if (!is(v, 'object')) {
+      continue
+    } 
+
+    let is_component = true
+
+    for (const [element_k, element_v] of entries(v)) {
+      if (!is(element_v, 'string')) {
+        is_component = false
+        break
+      } 
+    }
+
+    if (is_component) {
+      components[k] = v
+    } 
+  }
+
+  // selector -> (prop, value)[]
+  let styles = {}
+
+  for (const [component, elements] of entries(components)) {
+    for (const [element, utility_classes] of entries(elements)) {
+      // todo
+      let selector = `${component}_${element}`
+
+      if (!has(styles, selector)) {
+        styles[selector] = {}
+      } 
+      
+      // todo
+      let utilities = utility_classes.split(' ')
+      
+      for (const utility of utilities) {
+        let parts = utility.split('-')
+
+        for (const i of each(1, parts.length, -1)) {
+          
+        }
+      }
+    }
   }
 }
 
