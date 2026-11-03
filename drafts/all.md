@@ -1098,6 +1098,10 @@ have: <!-- eat, grow -->
 - use case berkeley cs61a current semester
 - use case university ai intro final project analyze faces daylily channel
 
+proxy:
+
+- foundation
+
 export:
 
 - userscript copy to markdown
@@ -1231,6 +1235,7 @@ humility:
 - use case university advanced math ref answer judgement chaoxing
 - foundation
 - use case uni py basics homework
+- research forum grok bot
 
 legacy:
 

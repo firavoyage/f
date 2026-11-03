@@ -4334,3 +4334,91 @@ May 11, 2010 — The charset doesn't matter. The allowed characters matters more
 Show all
 
 
+# compare using both padding left and right and using padding inline
+
+In CSS, `padding-left` + `padding-right` and `padding-inline` can achieve the same result, but they differ in how they handle writing direction.
+
+## 1. Using `padding-left` and `padding-right`
+
+```
+.container {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+```
+
+- `padding-left` controls the physical left padding.
+- `padding-right` controls the physical right padding.
+- The padding stays on the same physical sides regardless of writing direction.
+
+## 2. Using `padding-inline`
+
+```
+.container {
+  padding-inline: 20px;
+}
+```
+
+This is shorthand for:
+
+```
+.container {
+  padding-inline-start: 20px;
+  padding-inline-end: 20px;
+}
+```
+
+- `padding-inline-start` controls the beginning of the text's inline direction.
+- `padding-inline-end` controls the end of the text's inline direction.
+- Automatically adapts to writing direction (LTR or RTL).
+
+## 3. Key differences
+
+| Feature                 | Left + Right   | Inline         |
+| ----------------------- | -------------- | -------------- |
+| CSS properties          | Physical       | Logical        |
+| LTR layout              | Left and right | Left and right |
+| RTL layout              | Left and right | Right and left |
+| Supports writing modes  | No             | Yes            |
+| Responsive to direction | No             | Yes            |
+| Modern CSS              | Yes            | Yes            |
+
+## 4. Visual example
+
+LTR (English)
+
+Content
+
+Both approaches produce the same result.
+
+RTL (Arabic / Hebrew)
+
+المحتوى
+
+`padding-inline` follows the writing direction, while left/right always refer to physical sides.
+
+## 5. Which should you use?
+
+Recommendation: Use `padding-inline` for modern web development.
+
+```
+/* Horizontal spacing */
+.card {
+  padding-inline: 24px;
+}
+
+/* Vertical spacing */
+.card {
+  padding-block: 16px;
+}
+
+/* All four sides */
+.card {
+  padding: 16px 24px;
+}
+```
+
+The main advantage is internationalization (i18n). Your layout can support both LTR and RTL languages without needing separate left/right CSS rules.
+
+In short: `padding-left` and `padding-right` describe physical sides; `padding-inline` describes logical inline directions.
+

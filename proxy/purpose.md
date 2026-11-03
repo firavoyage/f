@@ -23,4 +23,23 @@ well that's a bit too stupid. but anyway, since they dont really want to surf tw
 
 all my dormmates play gok and surf short vids in zhcn. quite weird. one (two) of them play the latest soullike aw.
 
+---
+
+given all these working, i could easily go wo a vps.
+
+like
+
+- codeberg pages
+  - which would work out of box
+  - if cors allows, i can fetch on the fly, or i have to build via forgejo actions maybe
+  - storage is limited i remember
+- github pages
+  - plenty of storage
+  - would not work for this use case
+  - (wait, they have a windows laptop though... though they are quite uneducated. i remember when they wanted to hide zhcn ver "windows spotlight" desktop icon and could not nothing after right clicking fails, they asked doubao, or bytedance seed llm, wo internet search enabled. and it's just easy as expected when i prompt google ai mode in english.)
+
+but it's quite cheap (maybe 5usd/mo), and it has to be running anyway.
+
+let's just host it normally.
+
 
