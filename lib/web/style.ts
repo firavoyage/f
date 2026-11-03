@@ -1352,8 +1352,22 @@ export function style(theme) {
               const [prop, value] = glossary[stem].style
 
               styles[selector][prop] = value
-            } else {
-              let possible_matches = glossary[stem].prop
+
+              break
+            }
+            
+            let possible_matches = glossary[stem].prop
+
+            for (const [type, prop] of possible_matches) {
+              if (type == 'length' && int(value)) {
+                value = `${int(value)/4}rem`
+                styles[selector][prop] = value
+                break
+              } else if (type == 'color' && has(design_tokens, `color.${value}`)) {
+                value = css_variable(`color.${value}`)
+                styles[selector][prop] = value
+                break
+              } 
             }
 
             break
