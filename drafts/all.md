@@ -645,7 +645,7 @@ typography:
 - indent paragraphs
 - snake case more scannable than camel case
 
-linguistics: <!-- grammar, etymology -->
+linguistics: <!-- grammar, etymology, languages in general -->
 
 - translation meaning loss
 - describe allusion abstraction implication
@@ -670,6 +670,7 @@ linguistics: <!-- grammar, etymology -->
 - stop words
 - spanish info
 - translation reduction formulas zhcn
+- john smith
 
 literature:
 
