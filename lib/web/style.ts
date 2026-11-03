@@ -1,6 +1,6 @@
 const glossary = {
   aspect: {
-    prop: [['ratio', 'aspectRatio']],
+    prop: [['ratio', 'aspect-ratio']],
   },
   columns: {
     prop: [
@@ -40,7 +40,7 @@ const glossary = {
           'right',
           'column',
         ],
-        'breakAfter',
+        'break-after',
       ],
     ],
   },
@@ -57,18 +57,18 @@ const glossary = {
           'right',
           'column',
         ],
-        'breakBefore',
+        'break-before',
       ],
     ],
   },
   'break-inside': {
-    prop: [[['auto', 'avoid', 'avoid-page', 'avoid-column'], 'breakInside']],
+    prop: [[['auto', 'avoid', 'avoid-page', 'avoid-column'], 'break-inside']],
   },
   'box-decoration': {
-    prop: [[['slice', 'clone'], 'boxDecorationBreak']],
+    prop: [[['slice', 'clone'], 'box-decoration-break']],
   },
   box: {
-    prop: [[['border', 'content'], 'boxSizing']],
+    prop: [[['border', 'content'], 'box-sizing']],
   },
   block: {
     style: ['display', 'block'],
@@ -135,15 +135,15 @@ const glossary = {
   },
   object: {
     prop: [
-      [['contain', 'cover', 'fill', 'none', 'scale-down'], 'objectFit'],
-      ['position', 'objectPosition'],
+      [['contain', 'cover', 'fill', 'none', 'scale-down'], 'object-fit'],
+      ['position', 'object-position'],
     ],
   },
   overflow: {
     prop: [
       [
         ['auto', 'hidden', 'clip', 'visible', 'scroll'],
-        ['overflow', 'overflowX', 'overflowY'],
+        ['overflow', 'overflow-x', 'overflow-y'],
       ],
     ],
   },
@@ -151,7 +151,7 @@ const glossary = {
     prop: [
       [
         ['auto', 'contain', 'none'],
-        ['overscrollBehavior', 'overscrollBehaviorX', 'overscrollBehaviorY'],
+        ['overscroll-behavior', 'overscroll-behavior-x', 'overscroll-behavior-y'],
       ],
     ],
   },
@@ -171,7 +171,7 @@ const glossary = {
     style: ['position', 'sticky'],
   },
   inset: {
-    prop: [['length', ['insetTop', 'insetRight', 'insetBottom', 'insetLeft']]],
+    prop: [['length', ['inset-top', 'inset-right', 'inset-bottom', 'inset-left']]],
   },
   'inset-x': {
     prop: [['length', ['left', 'right']]],
@@ -180,10 +180,10 @@ const glossary = {
     prop: [['length', ['top', 'bottom']]],
   },
   'inset-s': {
-    prop: [['length', 'insetInlineStart']],
+    prop: [['length', 'inset-inline-start']],
   },
   'inset-e': {
-    prop: [['length', 'insetInlineEnd']],
+    prop: [['length', 'inset-inline-end']],
   },
   top: {
     prop: [['length', 'top']],
@@ -198,10 +198,10 @@ const glossary = {
     prop: [['length', 'left']],
   },
   start: {
-    prop: [['length', 'insetInlineStart']],
+    prop: [['length', 'inset-inline-start']],
   },
   end: {
-    prop: [['length', 'insetInlineEnd']],
+    prop: [['length', 'inset-inline-end']],
   },
   visible: {
     style: ['visibility', 'visible'],
@@ -213,13 +213,13 @@ const glossary = {
     style: ['visibility', 'collapse'],
   },
   z: {
-    prop: [['number', 'zIndex']],
+    prop: [['number', 'z-index']],
   },
   basis: {
     prop: [
-      ['length', 'flexBasis'],
-      ['percentage', 'flexBasis'],
-      [['auto', 'full', 'min', 'max', 'fit'], 'flexBasis'],
+      ['length', 'flex-basis'],
+      ['percentage', 'flex-basis'],
+      [['auto', 'full', 'min', 'max', 'fit'], 'flex-basis'],
     ],
   },
   flex: {
@@ -230,12 +230,12 @@ const glossary = {
     style: ['display', 'flex'],
   },
   grow: {
-    prop: [['number', 'flexGrow']],
-    style: ['flexGrow', '1'],
+    prop: [['number', 'flex-grow']],
+    style: ['flex-grow', '1'],
   },
   shrink: {
-    prop: [['number', 'flexShrink']],
-    style: ['flexShrink', '1'],
+    prop: [['number', 'flex-shrink']],
+    style: ['flex-shrink', '1'],
   },
   order: {
     prop: [
@@ -245,69 +245,69 @@ const glossary = {
   },
   'grid-cols': {
     prop: [
-      ['number', 'gridTemplateColumns'],
-      ['grid-template', 'gridTemplateColumns'],
+      ['number', 'grid-template-columns'],
+      ['grid-template', 'grid-template-columns'],
     ],
   },
   'col-span': {
     prop: [
-      ['number', 'gridColumn'],
-      [['full'], 'gridColumn'],
+      ['number', 'grid-column'],
+      [['full'], 'grid-column'],
     ],
   },
   'col-start': {
     prop: [
-      ['number', 'gridColumnStart'],
-      [['auto'], 'gridColumnStart'],
+      ['number', 'grid-column-start'],
+      [['auto'], 'grid-column-start'],
     ],
   },
   'col-end': {
     prop: [
-      ['number', 'gridColumnEnd'],
-      [['auto'], 'gridColumnEnd'],
+      ['number', 'grid-column-end'],
+      [['auto'], 'grid-column-end'],
     ],
   },
   'grid-rows': {
     prop: [
-      ['number', 'gridTemplateRows'],
-      ['grid-template', 'gridTemplateRows'],
+      ['number', 'grid-template-rows'],
+      ['grid-template', 'grid-template-rows'],
     ],
   },
   'row-span': {
     prop: [
-      ['number', 'gridRow'],
-      [['full'], 'gridRow'],
+      ['number', 'grid-row'],
+      [['full'], 'grid-row'],
     ],
   },
   'row-start': {
     prop: [
-      ['number', 'gridRowStart'],
-      [['auto'], 'gridRowStart'],
+      ['number', 'grid-row-start'],
+      [['auto'], 'grid-row-start'],
     ],
   },
   'row-end': {
     prop: [
-      ['number', 'gridRowEnd'],
-      [['auto'], 'gridRowEnd'],
+      ['number', 'grid-row-end'],
+      [['auto'], 'grid-row-end'],
     ],
   },
   'grid-flow': {
-    prop: [[['row', 'col', 'dense', 'row-dense', 'col-dense'], 'gridAutoFlow']],
+    prop: [[['row', 'col', 'dense', 'row-dense', 'col-dense'], 'grid-auto-flow']],
   },
   'auto-cols': {
-    prop: [[['auto', 'min', 'max', 'fr'], 'gridAutoColumns']],
+    prop: [[['auto', 'min', 'max', 'fr'], 'grid-auto-columns']],
   },
   'auto-rows': {
-    prop: [[['auto', 'min', 'max', 'fr'], 'gridAutoRows']],
+    prop: [[['auto', 'min', 'max', 'fr'], 'grid-auto-rows']],
   },
   gap: {
-    prop: [['length', ['gap', 'columnGap', 'rowGap']]],
+    prop: [['length', ['gap', 'column-gap', 'row-gap']]],
   },
   'gap-x': {
-    prop: [['length', 'columnGap']],
+    prop: [['length', 'column-gap']],
   },
   'gap-y': {
-    prop: [['length', 'rowGap']],
+    prop: [['length', 'row-gap']],
   },
   justify: {
     prop: [
@@ -322,14 +322,14 @@ const glossary = {
           'evenly',
           'stretch',
         ],
-        'justifyContent',
+        'justify-content',
       ],
-      [['start', 'end', 'center', 'stretch'], 'justifyItems'],
-      [['auto', 'start', 'end', 'center', 'stretch'], 'justifySelf'],
+      [['start', 'end', 'center', 'stretch'], 'justify-items'],
+      [['auto', 'start', 'end', 'center', 'stretch'], 'justify-self'],
     ],
   },
   items: {
-    prop: [[['start', 'end', 'center', 'baseline', 'stretch'], 'alignItems']],
+    prop: [[['start', 'end', 'center', 'baseline', 'stretch'], 'align-items']],
   },
   content: {
     prop: [
@@ -345,14 +345,14 @@ const glossary = {
           'baseline',
           'stretch',
         ],
-        'alignContent',
+        'align-content',
       ],
       ['content', 'content'],
     ],
   },
   self: {
     prop: [
-      [['auto', 'start', 'end', 'center', 'stretch', 'baseline'], 'alignSelf'],
+      [['auto', 'start', 'end', 'center', 'stretch', 'baseline'], 'align-self'],
     ],
   },
   'place-content': {
@@ -368,82 +368,82 @@ const glossary = {
           'baseline',
           'stretch',
         ],
-        'placeContent',
+        'place-content',
       ],
     ],
   },
   'place-items': {
-    prop: [[['start', 'end', 'center', 'baseline', 'stretch'], 'placeItems']],
+    prop: [[['start', 'end', 'center', 'baseline', 'stretch'], 'place-items']],
   },
   'place-self': {
-    prop: [[['auto', 'start', 'end', 'center', 'stretch'], 'placeSelf']],
+    prop: [[['auto', 'start', 'end', 'center', 'stretch'], 'place-self']],
   },
   p: {
     prop: [
       [
         'length',
-        ['paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft'],
+        ['padding-top', 'padding-right', 'padding-bottom', 'padding-left'],
       ],
     ],
   },
   px: {
-    prop: [['length', ['paddingLeft', 'paddingRight']]],
+    prop: [['length', ['padding-left', 'padding-right']]],
   },
   py: {
-    prop: [['length', ['paddingTop', 'paddingBottom']]],
+    prop: [['length', ['padding-top', 'padding-bottom']]],
   },
   ps: {
-    prop: [['length', 'paddingInlineStart']],
+    prop: [['length', 'padding-inline-start']],
   },
   pe: {
-    prop: [['length', 'paddingInlineEnd']],
+    prop: [['length', 'padding-inline-end']],
   },
   pt: {
-    prop: [['length', 'paddingTop']],
+    prop: [['length', 'padding-top']],
   },
   pr: {
-    prop: [['length', 'paddingRight']],
+    prop: [['length', 'padding-right']],
   },
   pb: {
-    prop: [['length', 'paddingBottom']],
+    prop: [['length', 'padding-bottom']],
   },
   pl: {
-    prop: [['length', 'paddingLeft']],
+    prop: [['length', 'padding-left']],
   },
   m: {
     prop: [
-      ['length', ['marginTop', 'marginRight', 'marginBottom', 'marginLeft']],
+      ['length', ['margin-top', 'margin-right', 'margin-bottom', 'margin-left']],
     ],
   },
   mx: {
-    prop: [['length', ['marginLeft', 'marginRight']]],
+    prop: [['length', ['margin-left', 'margin-right']]],
   },
   my: {
-    prop: [['length', ['marginTop', 'marginBottom']]],
+    prop: [['length', ['margin-top', 'margin-bottom']]],
   },
   ms: {
-    prop: [['length', 'marginInlineStart']],
+    prop: [['length', 'margin-inline-start']],
   },
   me: {
-    prop: [['length', 'marginInlineEnd']],
+    prop: [['length', 'margin-inline-end']],
   },
   mt: {
-    prop: [['length', 'marginTop']],
+    prop: [['length', 'margin-top']],
   },
   mr: {
-    prop: [['length', 'marginRight']],
+    prop: [['length', 'margin-right']],
   },
   mb: {
-    prop: [['length', 'marginBottom']],
+    prop: [['length', 'margin-bottom']],
   },
   ml: {
-    prop: [['length', 'marginLeft']],
+    prop: [['length', 'margin-left']],
   },
   'space-x': {
-    prop: [['length', 'marginInlineStart']],
+    prop: [['length', 'margin-inline-start']],
   },
   'space-y': {
-    prop: [['length', 'marginTop']],
+    prop: [['length', 'margin-top']],
   },
   size: {
     prop: [['length', ['width', 'height']]],
@@ -462,19 +462,19 @@ const glossary = {
   },
   'min-w': {
     prop: [
-      ['length', 'minWidth'],
-      [['0', 'full', 'min', 'max', 'fit'], 'minWidth'],
+      ['length', 'min-width'],
+      [['0', 'full', 'min', 'max', 'fit'], 'min-width'],
     ],
   },
   'min-h': {
     prop: [
-      ['length', 'minHeight'],
-      [['0', 'full', 'screen', 'min', 'max', 'fit'], 'minHeight'],
+      ['length', 'min-height'],
+      [['0', 'full', 'screen', 'min', 'max', 'fit'], 'min-height'],
     ],
   },
   'max-w': {
     prop: [
-      ['length', 'maxWidth'],
+      ['length', 'max-width'],
       [
         [
           'none',
@@ -489,41 +489,41 @@ const glossary = {
           'screen-xl',
           'screen-2xl',
         ],
-        'maxWidth',
+        'max-width',
       ],
     ],
   },
   'max-h': {
     prop: [
-      ['length', 'maxHeight'],
-      [['none', 'full', 'screen', 'min', 'max', 'fit'], 'maxHeight'],
+      ['length', 'max-height'],
+      [['none', 'full', 'screen', 'min', 'max', 'fit'], 'max-height'],
     ],
   },
   font: {
     prop: [
-      ['font-family', 'fontFamily'],
-      ['font-weight', 'fontWeight'],
+      ['font-family', 'font-family'],
+      ['font-weight', 'font-weight'],
     ],
   },
   text: {
     prop: [
-      ['length', 'fontSize'],
+      ['length', 'font-size'],
       ['color', 'color'],
-      [['left', 'center', 'right', 'justify', 'start', 'end'], 'textAlign'],
-      [['ellipsis', 'clip'], 'textOverflow'],
-      [['wrap', 'nowrap', 'balance', 'pretty'], 'textWrap'],
+      [['left', 'center', 'right', 'justify', 'start', 'end'], 'text-align'],
+      [['ellipsis', 'clip'], 'text-overflow'],
+      [['wrap', 'nowrap', 'balance', 'pretty'], 'text-wrap'],
     ],
   },
   tracking: {
-    prop: [['length', 'letterSpacing']],
+    prop: [['length', 'letter-spacing']],
   },
   leading: {
-    prop: [['length', 'lineHeight']],
+    prop: [['length', 'line-height']],
   },
   'line-clamp': {
     prop: [
-      ['number', 'lineClamp'],
-      [['none'], 'lineClamp'],
+      ['number', 'line-clamp'],
+      [['none'], 'line-clamp'],
     ],
   },
   list: {
@@ -540,10 +540,10 @@ const glossary = {
           'upper-roman',
           'lower-roman',
         ],
-        'listStyleType',
+        'list-style-type',
       ],
-      [['inside', 'outside'], 'listStylePosition'],
-      ['image', 'listStyleImage'],
+      [['inside', 'outside'], 'list-style-position'],
+      ['image', 'list-style-image'],
     ],
   },
   placeholder: {
@@ -551,16 +551,16 @@ const glossary = {
   },
   decoration: {
     prop: [
-      ['color', 'textDecorationColor'],
-      [['solid', 'double', 'dotted', 'dashed', 'wavy'], 'textDecorationStyle'],
-      ['length', 'textDecorationThickness'],
+      ['color', 'text-decoration-color'],
+      [['solid', 'double', 'dotted', 'dashed', 'wavy'], 'text-decoration-style'],
+      ['length', 'text-decoration-thickness'],
     ],
   },
   'underline-offset': {
-    prop: [['length', 'textUnderlineOffset']],
+    prop: [['length', 'text-underline-offset']],
   },
   indent: {
-    prop: [['length', 'textIndent']],
+    prop: [['length', 'text-indent']],
   },
   align: {
     prop: [
@@ -575,7 +575,7 @@ const glossary = {
           'sub',
           'super',
         ],
-        'verticalAlign',
+        'vertical-align',
       ],
     ],
   },
@@ -583,14 +583,14 @@ const glossary = {
     prop: [
       [
         ['normal', 'nowrap', 'pre', 'pre-line', 'pre-wrap', 'break-spaces'],
-        'whiteSpace',
+        'white-space',
       ],
     ],
   },
   break: {
     prop: [
-      [['normal', 'words', 'all', 'keep'], 'overflowWrap'],
-      [['normal', 'words', 'all'], 'wordBreak'],
+      [['normal', 'words', 'all', 'keep'], 'overflow-wrap'],
+      [['normal', 'words', 'all'], 'word-break'],
     ],
   },
   hyphens: {
@@ -603,41 +603,41 @@ const glossary = {
     style: ['-webkit-font-smoothing', 'auto'],
   },
   italic: {
-    style: ['fontStyle', 'italic'],
+    style: ['font-style', 'italic'],
   },
   'not-italic': {
-    style: ['fontStyle', 'normal'],
+    style: ['font-style', 'normal'],
   },
   uppercase: {
-    style: ['textTransform', 'uppercase'],
+    style: ['text-transform', 'uppercase'],
   },
   lowercase: {
-    style: ['textTransform', 'lowercase'],
+    style: ['text-transform', 'lowercase'],
   },
   capitalize: {
-    style: ['textTransform', 'capitalize'],
+    style: ['text-transform', 'capitalize'],
   },
   'normal-case': {
-    style: ['textTransform', 'none'],
+    style: ['text-transform', 'none'],
   },
   underline: {
-    style: ['textDecorationLine', 'underline'],
+    style: ['text-decoration-line', 'underline'],
   },
   overline: {
-    style: ['textDecorationLine', 'overline'],
+    style: ['text-decoration-line', 'overline'],
   },
   'line-through': {
-    style: ['textDecorationLine', 'line-through'],
+    style: ['text-decoration-line', 'line-through'],
   },
   'no-underline': {
-    style: ['textDecorationLine', 'none'],
+    style: ['text-decoration-line', 'none'],
   },
   bg: {
     prop: [
-      ['color', 'backgroundColor'],
-      ['image', 'backgroundImage'],
-      ['position', 'backgroundPosition'],
-      [['auto', 'cover', 'contain'], 'backgroundSize'],
+      ['color', 'background-color'],
+      ['image', 'background-image'],
+      ['position', 'background-position'],
+      [['auto', 'cover', 'contain'], 'background-size'],
       [
         [
           'repeat',
@@ -647,11 +647,11 @@ const glossary = {
           'repeat-round',
           'repeat-space',
         ],
-        'backgroundRepeat',
+        'background-repeat',
       ],
-      [['fixed', 'local', 'scroll'], 'backgroundAttachment'],
-      [['border', 'padding', 'content', 'text'], 'backgroundClip'],
-      [['border', 'padding', 'content'], 'backgroundOrigin'],
+      [['fixed', 'local', 'scroll'], 'background-attachment'],
+      [['border', 'padding', 'content', 'text'], 'background-clip'],
+      [['border', 'padding', 'content'], 'background-origin'],
     ],
   },
   from: {
@@ -677,136 +677,136 @@ const glossary = {
       [
         'length',
         [
-          'borderTopLeftRadius',
-          'borderTopRightRadius',
-          'borderBottomRightRadius',
-          'borderBottomLeftRadius',
+          'border-top-left-radius',
+          'border-top-right-radius',
+          'border-bottom-right-radius',
+          'border-bottom-left-radius',
         ],
       ],
       [
         ['none', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', 'full'],
         [
-          'borderTopLeftRadius',
-          'borderTopRightRadius',
-          'borderBottomRightRadius',
-          'borderBottomLeftRadius',
+          'border-top-left-radius',
+          'border-top-right-radius',
+          'border-bottom-right-radius',
+          'border-bottom-left-radius',
         ],
       ],
     ],
   },
   'rounded-t': {
-    prop: [['length', ['borderTopLeftRadius', 'borderTopRightRadius']]],
+    prop: [['length', ['border-top-left-radius', 'border-top-right-radius']]],
   },
   'rounded-r': {
-    prop: [['length', ['borderTopRightRadius', 'borderBottomRightRadius']]],
+    prop: [['length', ['border-top-right-radius', 'border-bottom-right-radius']]],
   },
   'rounded-b': {
-    prop: [['length', ['borderBottomRightRadius', 'borderBottomLeftRadius']]],
+    prop: [['length', ['border-bottom-right-radius', 'border-bottom-left-radius']]],
   },
   'rounded-l': {
-    prop: [['length', ['borderTopLeftRadius', 'borderBottomLeftRadius']]],
+    prop: [['length', ['border-top-left-radius', 'border-bottom-left-radius']]],
   },
   'rounded-s': {
-    prop: [['length', ['borderStartStartRadius', 'borderEndStartRadius']]],
+    prop: [['length', ['border-start-start-radius', 'border-end-start-radius']]],
   },
   'rounded-e': {
-    prop: [['length', ['borderStartEndRadius', 'borderEndEndRadius']]],
+    prop: [['length', ['border-start-end-radius', 'border-end-end-radius']]],
   },
   border: {
     prop: [
       [
         'length',
         [
-          'borderTopWidth',
-          'borderRightWidth',
-          'borderBottomWidth',
-          'borderLeftWidth',
+          'border-top-width',
+          'border-right-width',
+          'border-bottom-width',
+          'border-left-width',
         ],
       ],
       [
         'color',
         [
-          'borderTopColor',
-          'borderRightColor',
-          'borderBottomColor',
-          'borderLeftColor',
+          'border-top-color',
+          'border-right-color',
+          'border-bottom-color',
+          'border-left-color',
         ],
       ],
       [
         ['solid', 'dashed', 'dotted', 'double', 'hidden', 'none'],
-        'borderStyle',
+        'border-style',
       ],
     ],
   },
   'border-x': {
     prop: [
-      ['length', ['borderLeftWidth', 'borderRightWidth']],
-      ['color', ['borderLeftColor', 'borderRightColor']],
+      ['length', ['border-left-width', 'border-right-width']],
+      ['color', ['border-left-color', 'border-right-color']],
     ],
   },
   'border-y': {
     prop: [
-      ['length', ['borderTopWidth', 'borderBottomWidth']],
-      ['color', ['borderTopColor', 'borderBottomColor']],
+      ['length', ['border-top-width', 'border-bottom-width']],
+      ['color', ['border-top-color', 'border-bottom-color']],
     ],
   },
   'border-s': {
     prop: [
-      ['length', 'borderInlineStartWidth'],
-      ['color', 'borderInlineStartColor'],
+      ['length', 'border-inline-start-width'],
+      ['color', 'border-inline-start-color'],
     ],
   },
   'border-e': {
     prop: [
-      ['length', 'borderInlineEndWidth'],
-      ['color', 'borderInlineEndColor'],
+      ['length', 'border-inline-end-width'],
+      ['color', 'border-inline-end-color'],
     ],
   },
   'border-t': {
     prop: [
-      ['length', 'borderTopWidth'],
-      ['color', 'borderTopColor'],
+      ['length', 'border-top-width'],
+      ['color', 'border-top-color'],
     ],
   },
   'border-r': {
     prop: [
-      ['length', 'borderRightWidth'],
-      ['color', 'borderRightColor'],
+      ['length', 'border-right-width'],
+      ['color', 'border-right-color'],
     ],
   },
   'border-b': {
     prop: [
-      ['length', 'borderBottomWidth'],
-      ['color', 'borderBottomColor'],
+      ['length', 'border-bottom-width'],
+      ['color', 'border-bottom-color'],
     ],
   },
   'border-l': {
     prop: [
-      ['length', 'borderLeftWidth'],
-      ['color', 'borderLeftColor'],
+      ['length', 'border-left-width'],
+      ['color', 'border-left-color'],
     ],
   },
   'divide-x': {
     prop: [
-      ['length', 'borderInlineStartWidth'],
-      ['color', 'borderColor'],
+      ['length', 'border-inline-start-width'],
+      ['color', 'border-color'],
     ],
   },
   'divide-y': {
     prop: [
-      ['length', 'borderTopWidth'],
-      ['color', 'borderColor'],
+      ['length', 'border-top-width'],
+      ['color', 'border-color'],
     ],
   },
   outline: {
     prop: [
-      ['length', 'outlineWidth'],
-      ['color', 'outlineColor'],
+      ['length', 'outline-width'],
+      ['color', 'outline-color'],
       [
         ['none', 'hidden', 'dotted', 'dashed', 'solid', 'double'],
-        'outlineStyle',
+        'outline-style',
       ],
-      ['length', 'outlineOffset'],
+      ['length', 'outline-offset'],
     ],
   },
   ring: {
@@ -823,13 +823,13 @@ const glossary = {
   },
   shadow: {
     prop: [
-      ['shadow', 'boxShadow'],
-      ['color', 'boxShadowColor'],
+      ['shadow', 'box-shadow'],
+      ['color', 'box-shadow-color'],
     ],
   },
   'text-shadow': {
     prop: [
-      ['shadow', 'textShadow'],
+      ['shadow', 'text-shadow'],
       ['color', '--tw-text-shadow-color'],
     ],
   },
@@ -862,7 +862,7 @@ const glossary = {
           'plus-darker',
           'plus-lighter',
         ],
-        'mixBlendMode',
+        'mix-blend-mode',
       ],
     ],
   },
@@ -887,7 +887,7 @@ const glossary = {
           'color',
           'luminosity',
         ],
-        'backgroundBlendMode',
+        'background-blend-mode',
       ],
     ],
   },
@@ -925,40 +925,40 @@ const glossary = {
     prop: [['length', '--tw-backdrop-blur']],
   },
   'backdrop-brightness': {
-    prop: [['percentage', 'backdropFilter']],
+    prop: [['percentage', 'backdrop-filter']],
   },
   'backdrop-contrast': {
-    prop: [['percentage', 'backdropFilter']],
+    prop: [['percentage', 'backdrop-filter']],
   },
   'backdrop-grayscale': {
-    prop: [['percentage', 'backdropFilter']],
+    prop: [['percentage', 'backdrop-filter']],
   },
   'backdrop-hue-rotate': {
-    prop: [['angle', 'backdropFilter']],
+    prop: [['angle', 'backdrop-filter']],
   },
   'backdrop-invert': {
-    prop: [['percentage', 'backdropFilter']],
+    prop: [['percentage', 'backdrop-filter']],
   },
   'backdrop-opacity': {
-    prop: [['percentage', 'backdropFilter']],
+    prop: [['percentage', 'backdrop-filter']],
   },
   'backdrop-saturate': {
-    prop: [['percentage', 'backdropFilter']],
+    prop: [['percentage', 'backdrop-filter']],
   },
   'backdrop-sepia': {
-    prop: [['percentage', 'backdropFilter']],
+    prop: [['percentage', 'backdrop-filter']],
   },
   transform: {
     prop: [[['gpu', 'cpu', 'none'], 'transform']],
   },
   'transform-gpu': {
-    style: ['transform', 'translateZ(0)'],
+    style: ['transform', 'translate-z(0)'],
   },
   'transform-cpu': {
     style: ['transform', 'none'],
   },
   origin: {
-    prop: [['position', 'transformOrigin']],
+    prop: [['position', 'transform-origin']],
   },
   perspective: {
     prop: [
@@ -970,42 +970,42 @@ const glossary = {
     ],
   },
   'perspective-origin': {
-    prop: [['position', 'perspectiveOrigin']],
+    prop: [['position', 'perspective-origin']],
   },
   rotate: {
     prop: [['angle', 'rotate']],
   },
   scale: {
     prop: [
-      ['number', ['scale', 'scaleX', 'scaleY']],
-      ['percentage', ['scale', 'scaleX', 'scaleY']],
+      ['number', ['scale', 'scale-x', 'scale-y']],
+      ['percentage', ['scale', 'scale-x', 'scale-y']],
     ],
   },
   skew: {
-    prop: [['angle', ['skewX', 'skewY']]],
+    prop: [['angle', ['skew-x', 'skew-y']]],
   },
   translate: {
     prop: [
-      ['length', ['translate', 'translateX', 'translateY']],
-      ['percentage', ['translate', 'translateX', 'translateY']],
+      ['length', ['translate', 'translate-x', 'translate-y']],
+      ['percentage', ['translate', 'translate-x', 'translate-y']],
     ],
   },
   transition: {
     prop: [
       [
         ['none', 'all', 'colors', 'opacity', 'shadow', 'transform', 'all'],
-        'transitionProperty',
+        'transition-property',
       ],
     ],
   },
   duration: {
-    prop: [['time', 'transitionDuration']],
+    prop: [['time', 'transition-duration']],
   },
   ease: {
-    prop: [['easing', 'transitionTimingFunction']],
+    prop: [['easing', 'transition-timing-function']],
   },
   delay: {
-    prop: [['time', 'transitionDelay']],
+    prop: [['time', 'transition-delay']],
   },
   animate: {
     prop: [[['none', 'spin', 'ping', 'pulse', 'bounce'], 'animation']],
@@ -1016,23 +1016,23 @@ const glossary = {
   stroke: {
     prop: [
       ['color', 'stroke'],
-      ['length', 'strokeWidth'],
+      ['length', 'stroke-width'],
     ],
   },
   accent: {
-    prop: [['color', 'accentColor']],
+    prop: [['color', 'accent-color']],
   },
   appearance: {
     prop: [[['none', 'auto'], 'appearance']],
   },
   caret: {
-    prop: [['color', 'caretColor']],
+    prop: [['color', 'caret-color']],
   },
   scheme: {
     prop: [
       [
         ['normal', 'light', 'dark', 'light-dark', 'only-light', 'only-dark'],
-        'colorScheme',
+        'color-scheme',
       ],
     ],
   },
@@ -1078,68 +1078,68 @@ const glossary = {
     ],
   },
   'field-sizing': {
-    prop: [[['fixed', 'content'], 'fieldSizing']],
+    prop: [[['fixed', 'content'], 'field-sizing']],
   },
   'pointer-events': {
-    prop: [[['auto', 'none'], 'pointerEvents']],
+    prop: [[['auto', 'none'], 'pointer-events']],
   },
   resize: {
     prop: [[['none', 'x', 'y'], 'resize']],
   },
   scroll: {
     prop: [
-      [['auto', 'smooth'], 'scrollBehavior'],
-      [['auto', 'contain', 'none'], 'overscrollBehavior'],
+      [['auto', 'smooth'], 'scroll-behavior'],
+      [['auto', 'contain', 'none'], 'overscroll-behavior'],
     ],
   },
   'scroll-m': {
-    prop: [['length', 'scrollMargin']],
+    prop: [['length', 'scroll-margin']],
   },
   'scroll-mx': {
-    prop: [['length', ['scrollMarginLeft', 'scrollMarginRight']]],
+    prop: [['length', ['scroll-margin-left', 'scroll-margin-right']]],
   },
   'scroll-my': {
-    prop: [['length', ['scrollMarginTop', 'scrollMarginBottom']]],
+    prop: [['length', ['scroll-margin-top', 'scroll-margin-bottom']]],
   },
   'scroll-mt': {
-    prop: [['length', 'scrollMarginTop']],
+    prop: [['length', 'scroll-margin-top']],
   },
   'scroll-mr': {
-    prop: [['length', 'scrollMarginRight']],
+    prop: [['length', 'scroll-margin-right']],
   },
   'scroll-mb': {
-    prop: [['length', 'scrollMarginBottom']],
+    prop: [['length', 'scroll-margin-bottom']],
   },
   'scroll-ml': {
-    prop: [['length', 'scrollMarginLeft']],
+    prop: [['length', 'scroll-margin-left']],
   },
   'scroll-p': {
-    prop: [['length', 'scrollPadding']],
+    prop: [['length', 'scroll-padding']],
   },
   'scroll-px': {
-    prop: [['length', ['scrollPaddingLeft', 'scrollPaddingRight']]],
+    prop: [['length', ['scroll-padding-left', 'scroll-padding-right']]],
   },
   'scroll-py': {
-    prop: [['length', ['scrollPaddingTop', 'scrollPaddingBottom']]],
+    prop: [['length', ['scroll-padding-top', 'scroll-padding-bottom']]],
   },
   'scroll-pt': {
-    prop: [['length', 'scrollPaddingTop']],
+    prop: [['length', 'scroll-padding-top']],
   },
   'scroll-pr': {
-    prop: [['length', 'scrollPaddingRight']],
+    prop: [['length', 'scroll-padding-right']],
   },
   'scroll-pb': {
-    prop: [['length', 'scrollPaddingBottom']],
+    prop: [['length', 'scroll-padding-bottom']],
   },
   'scroll-pl': {
-    prop: [['length', 'scrollPaddingLeft']],
+    prop: [['length', 'scroll-padding-left']],
   },
   snap: {
     prop: [
-      [['none', 'x', 'y', 'both'], 'scrollSnapType'],
-      [['mandatory', 'proximity'], 'scrollSnapType'],
-      [['start', 'end', 'center', 'align-none'], 'scrollSnapAlign'],
-      [['normal', 'always'], 'scrollSnapStop'],
+      [['none', 'x', 'y', 'both'], 'scroll-snap-type'],
+      [['mandatory', 'proximity'], 'scroll-snap-type'],
+      [['start', 'end', 'center', 'align-none'], 'scroll-snap-align'],
+      [['normal', 'always'], 'scroll-snap-stop'],
     ],
   },
   touch: {
@@ -1157,15 +1157,15 @@ const glossary = {
           'pinch-zoom',
           'manipulation',
         ],
-        'touchAction',
+        'touch-action',
       ],
     ],
   },
   select: {
-    prop: [[['none', 'text', 'all', 'auto'], 'userSelect']],
+    prop: [[['none', 'text', 'all', 'auto'], 'user-select']],
   },
   'will-change': {
-    prop: [[['auto', 'scroll', 'contents', 'transform'], 'willChange']],
+    prop: [[['auto', 'scroll', 'contents', 'transform'], 'will-change']],
   },
   'sr-only': {
     style: ['position', 'absolute'],
@@ -1174,8 +1174,20 @@ const glossary = {
     style: ['position', 'static'],
   },
   'forced-color-adjust': {
-    prop: [[['auto', 'none'], 'forcedColorAdjust']],
+    prop: [[['auto', 'none'], 'forced-color-adjust']],
   },
+}
+
+export function style(theme) {
+  let modes = {}
+
+  for (const [k, v] of entries(theme)) {
+    if (is(v, 'array')) {
+      modes[k] = v
+    } 
+  }
+
+  
 }
 
 
