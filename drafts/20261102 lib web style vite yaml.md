@@ -2382,4 +2382,1953 @@ Searched 5 websites
 * [nexbit.artTailwind CSS Reference & Cheat Sheet | NexBit ToolsTAILWIND CSS REFERENCE Searchable cheat sheet for Tailwind CSS utility classes. Click any class to copy it. Shows the generated CSS for each utility. 166 classes Layout (8) block display: block;...](https://tools.nexbit.art/tailwind-reference?utm%5Fsource=chatgpt.com)
 ``````
 
+Assuming Tailwind CSS v4, the structure below uses:
+
+- `prop`: maps a value type to the CSS property or properties it controls. Multiple types are ordered from most specific to least specific.
+- `style`: a `[property, value]` tuple for a utility that has a standalone, fixed value.
+- Property names use CSS-standard kebab-case.
+- Arrays represent multiple CSS properties.
+
+This covers the built-in utility families rather than enumerating individual classes such as `p-1`, `p-2`, `p-3`. Tailwind supports dynamically generated and arbitrary values, so the complete set of possible class names is not finite.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://tailwindcss.com\&sz=32)
+
+Tailwind CSS+2
+
+
+
+```
+{
+  "aspect": {
+    "prop": {
+      "ratio": "aspect-ratio"
+    }
+  },
+  "columns": {
+    "prop": {
+      "length": "columns"
+    }
+  },
+  "break-before": {
+    "prop": {
+      "keyword": "break-before"
+    }
+  },
+  "break-after": {
+    "prop": {
+      "keyword": "break-after"
+    }
+  },
+  "break-inside": {
+    "prop": {
+      "keyword": "break-inside"
+    }
+  },
+  "box-decoration": {
+    "prop": {
+      "keyword": "box-decoration-break"
+    }
+  },
+  "box-border": {
+    "style": ["box-sizing", "border-box"]
+  },
+  "box-content": {
+    "style": ["box-sizing", "content-box"]
+  },
+  "block": {
+    "style": ["display", "block"]
+  },
+  "inline": {
+    "style": ["display", "inline"]
+  },
+  "inline-block": {
+    "style": ["display", "inline-block"]
+  },
+  "flow-root": {
+    "style": ["display", "flow-root"]
+  },
+  "flex": {
+    "prop": {
+      "number": "flex",
+      "keyword": ["flex-direction", "flex-wrap"]
+    },
+    "style": ["display", "flex"]
+  },
+  "grid": {
+    "style": ["display", "grid"]
+  },
+  "inline-flex": {
+    "style": ["display", "inline-flex"]
+  },
+  "inline-grid": {
+    "style": ["display", "inline-grid"]
+  },
+  "inline-table": {
+    "style": ["display", "inline-table"]
+  },
+  "table": {
+    "prop": {
+      "keyword": "table-layout"
+    },
+    "style": ["display", "table"]
+  },
+  "table-caption": {
+    "style": ["display", "table-caption"]
+  },
+  "table-cell": {
+    "style": ["display", "table-cell"]
+  },
+  "table-column": {
+    "style": ["display", "table-column"]
+  },
+  "table-column-group": {
+    "style": ["display", "table-column-group"]
+  },
+  "table-footer-group": {
+    "style": ["display", "table-footer-group"]
+  },
+  "table-header-group": {
+    "style": ["display", "table-header-group"]
+  },
+  "table-row-group": {
+    "style": ["display", "table-row-group"]
+  },
+  "table-row": {
+    "style": ["display", "table-row"]
+  },
+  "contents": {
+    "style": ["display", "contents"]
+  },
+  "list-item": {
+    "style": ["display", "list-item"]
+  },
+  "hidden": {
+    "style": ["display", "none"]
+  },
+  "static": {
+    "style": ["position", "static"]
+  },
+  "fixed": {
+    "style": ["position", "fixed"]
+  },
+  "absolute": {
+    "style": ["position", "absolute"]
+  },
+  "relative": {
+    "style": ["position", "relative"]
+  },
+  "sticky": {
+    "style": ["position", "sticky"]
+  },
+  "visible": {
+    "style": ["visibility", "visible"]
+  },
+  "invisible": {
+    "style": ["visibility", "hidden"]
+  },
+  "collapse": {
+    "style": ["visibility", "collapse"]
+  },
+  "float": {
+    "prop": {
+      "keyword": "float"
+    }
+  },
+  "clear": {
+    "prop": {
+      "keyword": "clear"
+    }
+  },
+  "isolate": {
+    "style": ["isolation", "isolate"]
+  },
+  "isolation-auto": {
+    "style": ["isolation", "auto"]
+  },
+  "object": {
+    "prop": {
+      "keyword": "object-fit",
+      "position": "object-position"
+    }
+  },
+  "overflow": {
+    "prop": {
+      "keyword": "overflow"
+    }
+  },
+  "overflow-x": {
+    "prop": {
+      "keyword": "overflow-x"
+    }
+  },
+  "overflow-y": {
+    "prop": {
+      "keyword": "overflow-y"
+    }
+  },
+  "overscroll": {
+    "prop": {
+      "keyword": "overscroll-behavior"
+    }
+  },
+  "overscroll-x": {
+    "prop": {
+      "keyword": "overscroll-behavior-x"
+    }
+  },
+  "overscroll-y": {
+    "prop": {
+      "keyword": "overscroll-behavior-y"
+    }
+  },
+  "inset": {
+    "prop": {
+      "length": "inset"
+    }
+  },
+  "inset-x": {
+    "prop": {
+      "length": "inset-inline"
+    }
+  },
+  "inset-y": {
+    "prop": {
+      "length": "inset-block"
+    }
+  },
+  "start": {
+    "prop": {
+      "length": "inset-inline-start"
+    }
+  },
+  "end": {
+    "prop": {
+      "length": "inset-inline-end"
+    }
+  },
+  "top": {
+    "prop": {
+      "length": "top"
+    }
+  },
+  "right": {
+    "prop": {
+      "length": "right"
+    }
+  },
+  "bottom": {
+    "prop": {
+      "length": "bottom"
+    }
+  },
+  "left": {
+    "prop": {
+      "length": "left"
+    }
+  },
+  "z": {
+    "prop": {
+      "integer": "z-index"
+    }
+  },
+  "basis": {
+    "prop": {
+      "length": "flex-basis"
+    }
+  },
+  "order": {
+    "prop": {
+      "integer": "order"
+    }
+  },
+  "col": {
+    "prop": {
+      "integer": "grid-column",
+      "keyword": "grid-column"
+    }
+  },
+  "row": {
+    "prop": {
+      "integer": "grid-row",
+      "keyword": "grid-row"
+    }
+  },
+  "grid-cols": {
+    "prop": {
+      "integer": "grid-template-columns",
+      "keyword": "grid-template-columns"
+    }
+  },
+  "grid-rows": {
+    "prop": {
+      "integer": "grid-template-rows",
+      "keyword": "grid-template-rows"
+    }
+  },
+  "auto-cols": {
+    "prop": {
+      "length": "grid-auto-columns"
+    }
+  },
+  "auto-rows": {
+    "prop": {
+      "length": "grid-auto-rows"
+    }
+  },
+  "grid-flow": {
+    "prop": {
+      "keyword": "grid-auto-flow"
+    }
+  },
+  "gap": {
+    "prop": {
+      "length": ["row-gap", "column-gap"]
+    }
+  },
+  "space-x": {
+    "prop": {
+      "length": "margin-inline-start"
+    }
+  },
+  "space-y": {
+    "prop": {
+      "length": "margin-block-start"
+    }
+  },
+  "place-content": {
+    "prop": {
+      "keyword": "place-content"
+    }
+  },
+  "place-items": {
+    "prop": {
+      "keyword": "place-items"
+    }
+  },
+  "place-self": {
+    "prop": {
+      "keyword": "place-self"
+    }
+  },
+  "items": {
+    "prop": {
+      "keyword": "align-items"
+    }
+  },
+  "justify": {
+    "prop": {
+      "keyword": "justify-content"
+    }
+  },
+  "justify-items": {
+    "prop": {
+      "keyword": "justify-items"
+    }
+  },
+  "justify-self": {
+    "prop": {
+      "keyword": "justify-self"
+    }
+  },
+  "self": {
+    "prop": {
+      "keyword": "align-self"
+    }
+  },
+  "content": {
+    "prop": {
+      "keyword": "align-content",
+      "string": "content"
+    }
+  },
+  "grow": {
+    "prop": {
+      "number": "flex-grow"
+    }
+  },
+  "shrink": {
+    "prop": {
+      "number": "flex-shrink"
+    }
+  },
+  "p": {
+    "prop": {
+      "length": "padding"
+    }
+  },
+  "px": {
+    "prop": {
+      "length": "padding-inline"
+    }
+  },
+  "py": {
+    "prop": {
+      "length": "padding-block"
+    }
+  },
+  "ps": {
+    "prop": {
+      "length": "padding-inline-start"
+    }
+  },
+  "pe": {
+    "prop": {
+      "length": "padding-inline-end"
+    }
+  },
+  "pt": {
+    "prop": {
+      "length": "padding-top"
+    }
+  },
+  "pr": {
+    "prop": {
+      "length": "padding-right"
+    }
+  },
+  "pb": {
+    "prop": {
+      "length": "padding-bottom"
+    }
+  },
+  "pl": {
+    "prop": {
+      "length": "padding-left"
+    }
+  },
+  "m": {
+    "prop": {
+      "length": "margin"
+    }
+  },
+  "mx": {
+    "prop": {
+      "length": "margin-inline"
+    }
+  },
+  "my": {
+    "prop": {
+      "length": "margin-block"
+    }
+  },
+  "ms": {
+    "prop": {
+      "length": "margin-inline-start"
+    }
+  },
+  "me": {
+    "prop": {
+      "length": "margin-inline-end"
+    }
+  },
+  "mt": {
+    "prop": {
+      "length": "margin-top"
+    }
+  },
+  "mr": {
+    "prop": {
+      "length": "margin-right"
+    }
+  },
+  "mb": {
+    "prop": {
+      "length": "margin-bottom"
+    }
+  },
+  "ml": {
+    "prop": {
+      "length": "margin-left"
+    }
+  },
+  "size": {
+    "prop": {
+      "length": ["width", "height"]
+    }
+  },
+  "w": {
+    "prop": {
+      "length": "width"
+    }
+  },
+  "min-w": {
+    "prop": {
+      "length": "min-width"
+    }
+  },
+  "max-w": {
+    "prop": {
+      "length": "max-width"
+    }
+  },
+  "h": {
+    "prop": {
+      "length": "height"
+    }
+  },
+  "min-h": {
+    "prop": {
+      "length": "min-height"
+    }
+  },
+  "max-h": {
+    "prop": {
+      "length": "max-height"
+    }
+  },
+  "font": {
+    "prop": {
+      "family": "font-family",
+      "weight": "font-weight",
+      "stretch": "font-stretch"
+    }
+  },
+  "text": {
+    "prop": {
+      "length": "font-size",
+      "color": "color",
+      "keyword": [
+        "text-align",
+        "text-overflow",
+        "text-wrap",
+        "vertical-align"
+      ]
+    }
+  },
+  "antialiased": {
+    "style": ["-webkit-font-smoothing", "antialiased"]
+  },
+  "subpixel-antialiased": {
+    "style": ["-webkit-font-smoothing", "auto"]
+  },
+  "italic": {
+    "style": ["font-style", "italic"]
+  },
+  "not-italic": {
+    "style": ["font-style", "normal"]
+  },
+  "leading": {
+    "prop": {
+      "length": "line-height"
+    }
+  },
+  "tracking": {
+    "prop": {
+      "length": "letter-spacing"
+    }
+  },
+  "list": {
+    "prop": {
+      "keyword": [
+        "list-style-type",
+        "list-style-position"
+      ],
+      "image": "list-style-image"
+    }
+  },
+  "placeholder": {
+    "prop": {
+      "color": "color"
+    }
+  },
+  "indent": {
+    "prop": {
+      "length": "text-indent"
+    }
+  },
+  "align": {
+    "prop": {
+      "keyword": "vertical-align"
+    }
+  },
+  "whitespace": {
+    "prop": {
+      "keyword": "white-space"
+    }
+  },
+  "hyphens": {
+    "prop": {
+      "keyword": "hyphens"
+    }
+  },
+  "decoration": {
+    "prop": {
+      "color": "text-decoration-color",
+      "length": "text-decoration-thickness",
+      "keyword": "text-decoration-style"
+    }
+  },
+  "underline-offset": {
+    "prop": {
+      "length": "text-underline-offset"
+    }
+  },
+  "bg": {
+    "prop": {
+      "color": "background-color",
+      "image": "background-image",
+      "position": "background-position",
+      "length": "background-size",
+      "keyword": [
+        "background-repeat",
+        "background-attachment",
+        "background-clip",
+        "background-origin",
+        "background-blend-mode"
+      ]
+    }
+  },
+  "from": {
+    "prop": {
+      "color": "--tw-gradient-from",
+      "percentage": "--tw-gradient-from-position"
+    }
+  },
+  "via": {
+    "prop": {
+      "color": "--tw-gradient-via",
+      "percentage": "--tw-gradient-via-position"
+    }
+  },
+  "to": {
+    "prop": {
+      "color": "--tw-gradient-to",
+      "percentage": "--tw-gradient-to-position"
+    }
+  },
+  "mask": {
+    "prop": {
+      "image": "mask-image",
+      "position": "mask-position",
+      "length": "mask-size",
+      "color": "mask-mode",
+      "keyword": [
+        "mask-repeat",
+        "mask-clip",
+        "mask-origin",
+        "mask-composite",
+        "mask-type"
+      ]
+    }
+  },
+  "rounded": {
+    "prop": {
+      "length": "border-radius"
+    }
+  },
+  "border": {
+    "prop": {
+      "length": "border-width",
+      "color": "border-color",
+      "keyword": "border-style"
+    }
+  },
+  "border-x": {
+    "prop": {
+      "length": ["border-left-width", "border-right-width"],
+      "color": ["border-left-color", "border-right-color"],
+      "keyword": ["border-left-style", "border-right-style"]
+    }
+  },
+  "border-y": {
+    "prop": {
+      "length": ["border-top-width", "border-bottom-width"],
+      "color": ["border-top-color", "border-bottom-color"],
+      "keyword": ["border-top-style", "border-bottom-style"]
+    }
+  },
+  "border-s": {
+    "prop": {
+      "length": "border-inline-start-width",
+      "color": "border-inline-start-color",
+      "keyword": "border-inline-start-style"
+    }
+  },
+  "border-e": {
+    "prop": {
+      "length": "border-inline-end-width",
+      "color": "border-inline-end-color",
+      "keyword": "border-inline-end-style"
+    }
+  },
+  "border-t": {
+    "prop": {
+      "length": "border-top-width",
+      "color": "border-top-color",
+      "keyword": "border-top-style"
+    }
+  },
+  "border-r": {
+    "prop": {
+      "length": "border-right-width",
+      "color": "border-right-color",
+      "keyword": "border-right-style"
+    }
+  },
+  "border-b": {
+    "prop": {
+      "length": "border-bottom-width",
+      "color": "border-bottom-color",
+      "keyword": "border-bottom-style"
+    }
+  },
+  "border-l": {
+    "prop": {
+      "length": "border-left-width",
+      "color": "border-left-color",
+      "keyword": "border-left-style"
+    }
+  },
+  "divide-x": {
+    "prop": {
+      "length": "border-inline-end-width",
+      "color": "border-color",
+      "keyword": "border-style"
+    }
+  },
+  "divide-y": {
+    "prop": {
+      "length": "border-bottom-width",
+      "color": "border-color",
+      "keyword": "border-style"
+    }
+  },
+  "outline": {
+    "prop": {
+      "length": ["outline-width", "outline-offset"],
+      "color": "outline-color",
+      "keyword": "outline-style"
+    }
+  },
+  "ring": {
+    "prop": {
+      "length": "--tw-ring-width",
+      "color": "--tw-ring-color"
+    }
+  },
+  "ring-offset": {
+    "prop": {
+      "length": "--tw-ring-offset-width",
+      "color": "--tw-ring-offset-color"
+    }
+  },
+  "inset-ring": {
+    "prop": {
+      "length": "--tw-inset-ring-width",
+      "color": "--tw-inset-ring-color"
+    }
+  },
+  "shadow": {
+    "prop": {
+      "shadow": "box-shadow",
+      "color": "--tw-shadow-color"
+    }
+  },
+  "inset-shadow": {
+    "prop": {
+      "shadow": "box-shadow",
+      "color": "--tw-inset-shadow-color"
+    }
+  },
+  "text-shadow": {
+    "prop": {
+      "shadow": "text-shadow",
+      "color": "--tw-text-shadow-color"
+    }
+  },
+  "opacity": {
+    "prop": {
+      "number": "opacity",
+      "percentage": "opacity"
+    }
+  },
+  "mix-blend": {
+    "prop": {
+      "keyword": "mix-blend-mode"
+    }
+  },
+  "bg-blend": {
+    "prop": {
+      "keyword": "background-blend-mode"
+    }
+  },
+  "filter": {
+    "style": ["filter", "var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia)"]
+  },
+  "blur": {
+    "prop": {
+      "length": "filter"
+    }
+  },
+  "brightness": {
+    "prop": {
+      "number": "filter",
+      "percentage": "filter"
+    }
+  },
+  "contrast": {
+    "prop": {
+      "number": "filter",
+      "percentage": "filter"
+    }
+  },
+  "drop-shadow": {
+    "prop": {
+      "shadow": "filter",
+      "color": "filter"
+    }
+  },
+  "grayscale": {
+    "prop": {
+      "number": "filter",
+      "percentage": "filter"
+    }
+  },
+  "hue-rotate": {
+    "prop": {
+      "angle": "filter"
+    }
+  },
+  "invert": {
+    "prop": {
+      "number": "filter",
+      "percentage": "filter"
+    }
+  },
+  "saturate": {
+    "prop": {
+      "number": "filter",
+      "percentage": "filter"
+    }
+  },
+  "sepia": {
+    "prop": {
+      "number": "filter",
+      "percentage": "filter"
+    }
+  },
+  "backdrop": {
+    "prop": {
+      "length": "backdrop-filter",
+      "color": "backdrop-filter",
+      "number": "backdrop-filter",
+      "percentage": "backdrop-filter",
+      "angle": "backdrop-filter",
+      "shadow": "backdrop-filter",
+      "keyword": "backdrop-filter"
+    }
+  },
+  "border-collapse": {
+    "style": ["border-collapse", "collapse"]
+  },
+  "border-separate": {
+    "style": ["border-collapse", "separate"]
+  },
+  "border-spacing": {
+    "prop": {
+      "length": "border-spacing"
+    }
+  },
+  "caption": {
+    "prop": {
+      "keyword": "caption-side"
+    }
+  },
+  "scale": {
+    "prop": {
+      "number": "scale",
+      "percentage": "scale"
+    }
+  },
+  "rotate": {
+    "prop": {
+      "angle": "rotate"
+    }
+  },
+  "translate": {
+    "prop": {
+      "length": "translate",
+      "percentage": "translate"
+    }
+  },
+  "skew": {
+    "prop": {
+      "angle": ["--tw-skew-x", "--tw-skew-y"]
+    }
+  },
+  "origin": {
+    "prop": {
+      "position": "transform-origin"
+    }
+  },
+  "transform": {
+    "prop": {
+      "keyword": "transform"
+    }
+  },
+  "perspective": {
+    "prop": {
+      "length": "perspective"
+    }
+  },
+  "zoom": {
+    "prop": {
+      "number": "zoom",
+      "percentage": "zoom",
+      "keyword": "zoom"
+    }
+  },
+  "transition": {
+    "prop": {
+      "keyword": "transition-property"
+    }
+  },
+  "duration": {
+    "prop": {
+      "duration": "transition-duration"
+    }
+  },
+  "ease": {
+    "prop": {
+      "timing-function": "transition-timing-function"
+    }
+  },
+  "delay": {
+    "prop": {
+      "duration": "transition-delay"
+    }
+  },
+  "animate": {
+    "prop": {
+      "animation": "animation"
+    }
+  },
+  "accent": {
+    "prop": {
+      "color": "accent-color"
+    }
+  },
+  "appearance": {
+    "prop": {
+      "keyword": "appearance"
+    }
+  },
+  "caret": {
+    "prop": {
+      "color": "caret-color"
+    }
+  },
+  "scheme": {
+    "prop": {
+      "keyword": "color-scheme"
+    }
+  },
+  "cursor": {
+    "prop": {
+      "keyword": "cursor"
+    }
+  },
+  "field-sizing": {
+    "prop": {
+      "keyword": "field-sizing"
+    }
+  },
+  "pointer-events": {
+    "prop": {
+      "keyword": "pointer-events"
+    }
+  },
+  "resize": {
+    "prop": {
+      "keyword": "resize"
+    }
+  },
+  "scroll": {
+    "prop": {
+      "keyword": "scroll-behavior"
+    }
+  },
+  "scroll-m": {
+    "prop": {
+      "length": "scroll-margin"
+    }
+  },
+  "scroll-mx": {
+    "prop": {
+      "length": "scroll-margin-inline"
+    }
+  },
+  "scroll-my": {
+    "prop": {
+      "length": "scroll-margin-block"
+    }
+  },
+  "scroll-mt": {
+    "prop": {
+      "length": "scroll-margin-top"
+    }
+  },
+  "scroll-mr": {
+    "prop": {
+      "length": "scroll-margin-right"
+    }
+  },
+  "scroll-mb": {
+    "prop": {
+      "length": "scroll-margin-bottom"
+    }
+  },
+  "scroll-ml": {
+    "prop": {
+      "length": "scroll-margin-left"
+    }
+  },
+  "scroll-p": {
+    "prop": {
+      "length": "scroll-padding"
+    }
+  },
+  "scroll-px": {
+    "prop": {
+      "length": "scroll-padding-inline"
+    }
+  },
+  "scroll-py": {
+    "prop": {
+      "length": "scroll-padding-block"
+    }
+  },
+  "scroll-pt": {
+    "prop": {
+      "length": "scroll-padding-top"
+    }
+  },
+  "scroll-pr": {
+    "prop": {
+      "length": "scroll-padding-right"
+    }
+  },
+  "scroll-pb": {
+    "prop": {
+      "length": "scroll-padding-bottom"
+    }
+  },
+  "scroll-pl": {
+    "prop": {
+      "length": "scroll-padding-left"
+    }
+  },
+  "snap": {
+    "prop": {
+      "keyword": [
+        "scroll-snap-type",
+        "scroll-snap-align",
+        "scroll-snap-stop"
+      ]
+    }
+  },
+  "touch": {
+    "prop": {
+      "keyword": "touch-action"
+    }
+  },
+  "select": {
+    "prop": {
+      "keyword": "user-select"
+    }
+  },
+  "will-change": {
+    "prop": {
+      "keyword": "will-change"
+    }
+  },
+  "fill": {
+    "prop": {
+      "color": "fill"
+    }
+  },
+  "stroke": {
+    "prop": {
+      "length": "stroke-width",
+      "color": "stroke"
+    }
+  },
+  "tab": {
+    "prop": {
+      "integer": "tab-size"
+    }
+  },
+  "line-clamp": {
+    "prop": {
+      "integer": "line-clamp"
+    }
+  },
+  "forced-color-adjust": {
+    "prop": {
+      "keyword": "forced-color-adjust"
+    }
+  }
+}
+```
+
+Parsing note: Use the longest matching key first. For example, match `border-x` before `border`, `scroll-mt` before `scroll-m`, and `grid-cols` before `grid`. This prevents ambiguous prefix matches. Variants such as `hover:`, `focus:`, `sm:`, and `dark:` should be parsed separately from this utility map.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://tailwindcss.com\&sz=32)
+
+Tailwind CSS+1
+
+# write a json object where keys are all first words of tailwind util classes and values are an object of optional prop and optional style, where prop is an array of tuple of type and prop, where type is a string like length color or an array of string keywords and prop is a string or an array of string, if it can accept value, and style is a tuple of prop and value if it can be used alone wo value
+
+```
+Worked for 1m 2s
+
+Structured Tailwind metadata and defined utility coverage
+
+I’ll structure this as a utility-prefix dictionary, including value-taking families and standalone utilities. Tailwind’s arbitrary values and project-defined extensions make the class space open-ended, so I’ll cover the built-in core families rather than pretend the set is mathematically finite.
+
+Built and organized the utility taxonomy and metadata
+
+![](https://www.google.com/s2/favicons?domain=tailwindcss.com&sz=128)![](https://www.google.com/s2/favicons?domain=github.com&sz=128)
+
+Searched 4 websites
+```
+
+```
+# * [![](https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Ftailwindcss.com&size=32&drop_404_icon=true)Tailwind CSSStyling with utility classes - Core conceptsCore concepts STYLING WITH UTILITY CLASSES Building complex components from a constrained set of primitive utilities. OVERVIEW You style things with Tailwind by combining many single-purpose pres...](https://tailwindcss.com/docs/styling-with-utility-classes?utm%5Fsource=chatgpt.com)
+* [![](https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Ftailwindcss.com&size=32&drop_404_icon=true)Tailwind CSSUpgrade guide - Getting startedCHANGES FROM V3 Here's a comprehensive list of all the breaking changes in Tailwind CSS v4.0\. Our upgrade tool will handle most of these changes for you automatically, so we highly recommend using...](https://tailwindcss.com/docs/upgrade-guide?utm%5Fsource=chatgpt.com)
+
+### More
+
+* [![](https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Ftailwindcss.com&size=32&drop_404_icon=true)tailwindcss.comStyling with utility classes - Core concepts - Tailwind CSSTHINKING IN UTILITY CLASSES STYLING HOVER AND FOCUS STATES To style an element on states like hover or focus, prefix any utility with the state you want to target, for example \`hover:bg-sky-700\`: H...](https://tailwindcss.com/docs/styling-with-utility-classes?trk=public%5Fpost%5Fcomment-text&utm%5Fsource=chatgpt.com)
+* [![](https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Ftailwindcss.com&size=32&drop_404_icon=true)tailwindcss.comUpgrade guide - Getting started - Tailwind CSSWe've removed any utilities that were deprecated in v3 and have been undocumented for several years. Here's a list of what's been removed along with the modern alternative: Deprecated | Replacement...](https://tailwindcss.com/docs/upgrade-guide?from=20423&from%5Fcolumn=20423&utm%5Fsource=chatgpt.com)
+* [![](https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Fv2.tailwindcss.com&size=32&drop_404_icon=true)tailwindcss.comAdding New Utilities - Tailwind CSSADDING NEW UTILITIES Extending Tailwind with your own custom utility classes. Although Tailwind provides a pretty comprehensive set of utility classes out of the box, you may run into situations wh...](https://v2.tailwindcss.com/docs/adding-new-utilities?utm%5Fsource=chatgpt.com)
+* [![](https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Fv2.tailwindcss.com&size=32&drop_404_icon=true)tailwindcss.comFunctions & Directives - Tailwind CSSFUNCTIONS & DIRECTIVES A reference for the custom functions and directives Tailwind exposes to your CSS. @TAILWIND Use the \`@tailwind\` directive to insert Tailwind’s \`base\`, \`components\`, \`utiliti...](https://v2.tailwindcss.com/docs/functions-and-directives?utm%5Fsource=chatgpt.com)
+* [![](https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Ftailwindcss.com&size=32&drop_404_icon=true)tailwindcss.comAdding custom styles - Core concepts - Tailwind CSSHTML \`<div class="before:content-\['hello\\\_world'\]"> <!-- ... --></div>\` If you're using something like JSX where the backslash is stripped from the rendered HTML, use String.raw() so the backslash...](https://tailwindcss.com/docs/adding-custom-styles?source=post%5Fpage---------------------------&utm%5Fsource=chatgpt.com)
+* [![](https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Fv1.tailwindcss.com&size=32&drop_404_icon=true)tailwindcss.comAdding New Utilities - Tailwind CSSADDING NEW UTILITIES Extending Tailwind with your own custom utility classes. \* \* \* Although Tailwind provides a pretty comprehensive set of utility classes out of the box, you may run into situat...](https://v1.tailwindcss.com/docs/adding-new-utilities?utm%5Fsource=chatgpt.com)
+* [![](https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Fv3.tailwindcss.com&size=32&drop_404_icon=true)tailwindcss.comAdding Custom Styles - Tailwind CSSADDING CUSTOM UTILITIES Add any of your own custom utility classes to Tailwind’s \`utilities\` layer: main.css \`@tailwind base; @tailwind components; @tailwind utilities; @layer utilities { .conten...](https://v3.tailwindcss.com/docs/adding-custom-styles?utm%5Fsource=chatgpt.com)
+* [github.comtailwindcss.com/src/docs/functions-and-directives.mdx at main · tailwindlabs/tailwindcss.com · GitHub\--color-avocado-500: oklch(0.84 0.18 117.33); --color-avocado-600: oklch(0.53 0.12 118.34); --ease-fluid: cubic-bezier(0.3, 0, 0, 1); --ease-snappy: cubic-bezier(0.2, 0, 0, 1); /\* ... \*/ } Learn mo...](https://github.com/tailwindlabs/tailwindcss.com/blob/main/src/docs/functions-and-directives.mdx?utm%5Fsource=chatgpt.com)
+* [prajwalchnayak.github.ioFunctions & Directives · Tailwind CSS HandbookFUNCTIONS & DIRECTIVES A reference for every Tailwind v4 CSS directive and function — @import, @theme, @source, @utility, @variant, @config, --alpha() and --spacing(). Tailwind v4 is configured in...](https://prajwalchnayak.github.io/tailwind%5Fdoc/advanced/functions-and-directives/?utm%5Fsource=chatgpt.com)
+* [prajwalchnayak.github.ioCustom Utilities · Tailwind CSS HandbookCUSTOM UTILITIES Extend Tailwind with @utility — simple, complex and functional utilities using --value(), --modifier() and --default() — plus when @apply is the right tool. Tailwind ships a lot of...](https://prajwalchnayak.github.io/tailwind%5Fdoc/advanced/custom-utilities/?utm%5Fsource=chatgpt.com)
+```
+
+Here is a Tailwind CSS v4-oriented utility dictionary. The structure is:
+
+- `prop`: array of `[type, cssProperty]` tuples for utilities that accept values.
+- `type`: a value category such as `"length"`, `"color"`, `"number"`, or an array of permitted keywords.
+- `cssProperty`: a CSS property name or an array of CSS property names.
+- `style`: `[cssProperty, fixedValue]` for standalone utilities that have a fixed value.
+
+```
+{
+  "aspect": {
+    "prop": [["ratio", "aspectRatio"]]
+  },
+  "columns": {
+    "prop": [["number", "columns"], ["length", "columns"], [["auto", "3xs", "2xs", "xs", "sm", "md", "lg", "xl", "2xl", "3xl", "4xl", "5xl", "6xl", "7xl"], "columns"]]
+  },
+  "break-after": {
+    "prop": [[["auto", "avoid", "all", "avoid-page", "page", "left", "right", "column"], "breakAfter"]]
+  },
+  "break-before": {
+    "prop": [[["auto", "avoid", "all", "avoid-page", "page", "left", "right", "column"], "breakBefore"]]
+  },
+  "break-inside": {
+    "prop": [[["auto", "avoid", "avoid-page", "avoid-column"], "breakInside"]]
+  },
+  "box-decoration": {
+    "prop": [[["slice", "clone"], "boxDecorationBreak"]]
+  },
+  "box": {
+    "prop": [[["border", "content"], "boxSizing"]]
+  },
+  "block": {
+    "style": ["display", "block"]
+  },
+  "inline": {
+    "style": ["display", "inline"]
+  },
+  "inline-block": {
+    "style": ["display", "inline-block"]
+  },
+  "flow-root": {
+    "style": ["display", "flow-root"]
+  },
+  "contents": {
+    "style": ["display", "contents"]
+  },
+  "hidden": {
+    "style": ["display", "none"]
+  },
+  "table": {
+    "style": ["display", "table"]
+  },
+  "inline-table": {
+    "style": ["display", "inline-table"]
+  },
+  "table-caption": {
+    "style": ["display", "table-caption"]
+  },
+  "table-cell": {
+    "style": ["display", "table-cell"]
+  },
+  "table-column": {
+    "style": ["display", "table-column"]
+  },
+  "table-column-group": {
+    "style": ["display", "table-column-group"]
+  },
+  "table-footer-group": {
+    "style": ["display", "table-footer-group"]
+  },
+  "table-header-group": {
+    "style": ["display", "table-header-group"]
+  },
+  "table-row-group": {
+    "style": ["display", "table-row-group"]
+  },
+  "table-row": {
+    "style": ["display", "table-row"]
+  },
+  "list-item": {
+    "style": ["display", "list-item"]
+  },
+  "float": {
+    "prop": [[["start", "end", "right", "left", "none"], "float"]]
+  },
+  "clear": {
+    "prop": [[["start", "end", "right", "left", "both", "none"], "clear"]]
+  },
+  "isolate": {
+    "style": ["isolation", "isolate"]
+  },
+  "isolation-auto": {
+    "style": ["isolation", "auto"]
+  },
+  "object": {
+    "prop": [
+      [["contain", "cover", "fill", "none", "scale-down"], "objectFit"],
+      ["position", "objectPosition"]
+    ]
+  },
+  "overflow": {
+    "prop": [[["auto", "hidden", "clip", "visible", "scroll"], ["overflow", "overflowX", "overflowY"]]]
+  },
+  "overscroll": {
+    "prop": [[["auto", "contain", "none"], ["overscrollBehavior", "overscrollBehaviorX", "overscrollBehaviorY"]]]
+  },
+  "static": {
+    "style": ["position", "static"]
+  },
+  "fixed": {
+    "style": ["position", "fixed"]
+  },
+  "absolute": {
+    "style": ["position", "absolute"]
+  },
+  "relative": {
+    "style": ["position", "relative"]
+  },
+  "sticky": {
+    "style": ["position", "sticky"]
+  },
+  "inset": {
+    "prop": [["length", ["insetTop", "insetRight", "insetBottom", "insetLeft"]]]
+  },
+  "inset-x": {
+    "prop": [["length", ["left", "right"]]]
+  },
+  "inset-y": {
+    "prop": [["length", ["top", "bottom"]]]
+  },
+  "inset-s": {
+    "prop": [["length", "insetInlineStart"]]
+  },
+  "inset-e": {
+    "prop": [["length", "insetInlineEnd"]]
+  },
+  "top": {
+    "prop": [["length", "top"]]
+  },
+  "right": {
+    "prop": [["length", "right"]]
+  },
+  "bottom": {
+    "prop": [["length", "bottom"]]
+  },
+  "left": {
+    "prop": [["length", "left"]]
+  },
+  "start": {
+    "prop": [["length", "insetInlineStart"]]
+  },
+  "end": {
+    "prop": [["length", "insetInlineEnd"]]
+  },
+  "visible": {
+    "style": ["visibility", "visible"]
+  },
+  "invisible": {
+    "style": ["visibility", "hidden"]
+  },
+  "collapse": {
+    "style": ["visibility", "collapse"]
+  },
+  "z": {
+    "prop": [["number", "zIndex"]]
+  },
+  "basis": {
+    "prop": [["length", "flexBasis"], ["percentage", "flexBasis"], [["auto", "full", "min", "max", "fit"], "flexBasis"]]
+  },
+  "flex": {
+    "prop": [[["1", "auto", "initial", "none"], "flex"], ["number", "flex"]],
+    "style": ["display", "flex"]
+  },
+  "grow": {
+    "prop": [["number", "flexGrow"]],
+    "style": ["flexGrow", "1"]
+  },
+  "shrink": {
+    "prop": [["number", "flexShrink"]],
+    "style": ["flexShrink", "1"]
+  },
+  "order": {
+    "prop": [["number", "order"], [["first", "last", "none"], "order"]]
+  },
+  "grid-cols": {
+    "prop": [["number", "gridTemplateColumns"], ["grid-template", "gridTemplateColumns"]]
+  },
+  "col-span": {
+    "prop": [["number", "gridColumn"], [["full"], "gridColumn"]]
+  },
+  "col-start": {
+    "prop": [["number", "gridColumnStart"], [["auto"], "gridColumnStart"]]
+  },
+  "col-end": {
+    "prop": [["number", "gridColumnEnd"], [["auto"], "gridColumnEnd"]]
+  },
+  "grid-rows": {
+    "prop": [["number", "gridTemplateRows"], ["grid-template", "gridTemplateRows"]]
+  },
+  "row-span": {
+    "prop": [["number", "gridRow"], [["full"], "gridRow"]]
+  },
+  "row-start": {
+    "prop": [["number", "gridRowStart"], [["auto"], "gridRowStart"]]
+  },
+  "row-end": {
+    "prop": [["number", "gridRowEnd"], [["auto"], "gridRowEnd"]]
+  },
+  "grid-flow": {
+    "prop": [[["row", "col", "dense", "row-dense", "col-dense"], "gridAutoFlow"]]
+  },
+  "auto-cols": {
+    "prop": [[["auto", "min", "max", "fr"], "gridAutoColumns"]]
+  },
+  "auto-rows": {
+    "prop": [[["auto", "min", "max", "fr"], "gridAutoRows"]]
+  },
+  "gap": {
+    "prop": [["length", ["gap", "columnGap", "rowGap"]]]
+  },
+  "gap-x": {
+    "prop": [["length", "columnGap"]]
+  },
+  "gap-y": {
+    "prop": [["length", "rowGap"]]
+  },
+  "justify": {
+    "prop": [
+      [["normal", "start", "end", "center", "between", "around", "evenly", "stretch"], "justifyContent"],
+      [["start", "end", "center", "stretch"], "justifyItems"],
+      [["auto", "start", "end", "center", "stretch"], "justifySelf"]
+    ]
+  },
+  "items": {
+    "prop": [[["start", "end", "center", "baseline", "stretch"], "alignItems"]]
+  },
+  "content": {
+    "prop": [
+      [["normal", "center", "start", "end", "between", "around", "evenly", "baseline", "stretch"], "alignContent"],
+      ["content", "content"]
+    ]
+  },
+  "self": {
+    "prop": [[["auto", "start", "end", "center", "stretch", "baseline"], "alignSelf"]]
+  },
+  "place-content": {
+    "prop": [[["center", "start", "end", "between", "around", "evenly", "baseline", "stretch"], "placeContent"]]
+  },
+  "place-items": {
+    "prop": [[["start", "end", "center", "baseline", "stretch"], "placeItems"]]
+  },
+  "place-self": {
+    "prop": [[["auto", "start", "end", "center", "stretch"], "placeSelf"]]
+  },
+  "p": {
+    "prop": [["length", ["paddingTop", "paddingRight", "paddingBottom", "paddingLeft"]]]
+  },
+  "px": {
+    "prop": [["length", ["paddingLeft", "paddingRight"]]]
+  },
+  "py": {
+    "prop": [["length", ["paddingTop", "paddingBottom"]]]
+  },
+  "ps": {
+    "prop": [["length", "paddingInlineStart"]]
+  },
+  "pe": {
+    "prop": [["length", "paddingInlineEnd"]]
+  },
+  "pt": {
+    "prop": [["length", "paddingTop"]]
+  },
+  "pr": {
+    "prop": [["length", "paddingRight"]]
+  },
+  "pb": {
+    "prop": [["length", "paddingBottom"]]
+  },
+  "pl": {
+    "prop": [["length", "paddingLeft"]]
+  },
+  "m": {
+    "prop": [["length", ["marginTop", "marginRight", "marginBottom", "marginLeft"]]]
+  },
+  "mx": {
+    "prop": [["length", ["marginLeft", "marginRight"]]]
+  },
+  "my": {
+    "prop": [["length", ["marginTop", "marginBottom"]]]
+  },
+  "ms": {
+    "prop": [["length", "marginInlineStart"]]
+  },
+  "me": {
+    "prop": [["length", "marginInlineEnd"]]
+  },
+  "mt": {
+    "prop": [["length", "marginTop"]]
+  },
+  "mr": {
+    "prop": [["length", "marginRight"]]
+  },
+  "mb": {
+    "prop": [["length", "marginBottom"]]
+  },
+  "ml": {
+    "prop": [["length", "marginLeft"]]
+  },
+  "space-x": {
+    "prop": [["length", "marginInlineStart"]]
+  },
+  "space-y": {
+    "prop": [["length", "marginTop"]]
+  },
+  "size": {
+    "prop": [["length", ["width", "height"]]]
+  },
+  "w": {
+    "prop": [["length", "width"], [["auto", "full", "screen", "min", "max", "fit"], "width"]]
+  },
+  "h": {
+    "prop": [["length", "height"], [["auto", "full", "screen", "min", "max", "fit"], "height"]]
+  },
+  "min-w": {
+    "prop": [["length", "minWidth"], [["0", "full", "min", "max", "fit"], "minWidth"]]
+  },
+  "min-h": {
+    "prop": [["length", "minHeight"], [["0", "full", "screen", "min", "max", "fit"], "minHeight"]]
+  },
+  "max-w": {
+    "prop": [["length", "maxWidth"], [["none", "full", "min", "max", "fit", "prose", "screen-sm", "screen-md", "screen-lg", "screen-xl", "screen-2xl"], "maxWidth"]]
+  },
+  "max-h": {
+    "prop": [["length", "maxHeight"], [["none", "full", "screen", "min", "max", "fit"], "maxHeight"]]
+  },
+  "font": {
+    "prop": [["font-family", "fontFamily"], ["font-weight", "fontWeight"]]
+  },
+  "text": {
+    "prop": [
+      ["length", "fontSize"],
+      ["color", "color"],
+      [["left", "center", "right", "justify", "start", "end"], "textAlign"],
+      [["ellipsis", "clip"], "textOverflow"],
+      [["wrap", "nowrap", "balance", "pretty"], "textWrap"]
+    ]
+  },
+  "tracking": {
+    "prop": [["length", "letterSpacing"]]
+  },
+  "leading": {
+    "prop": [["length", "lineHeight"]]
+  },
+  "line-clamp": {
+    "prop": [["number", "lineClamp"], [["none"], "lineClamp"]]
+  },
+  "list": {
+    "prop": [
+      [["none", "disc", "decimal", "circle", "square", "upper-alpha", "lower-alpha", "upper-roman", "lower-roman"], "listStyleType"],
+      [["inside", "outside"], "listStylePosition"],
+      ["image", "listStyleImage"]
+    ]
+  },
+  "placeholder": {
+    "prop": [["color", "color"]]
+  },
+  "decoration": {
+    "prop": [
+      ["color", "textDecorationColor"],
+      [["solid", "double", "dotted", "dashed", "wavy"], "textDecorationStyle"],
+      ["length", "textDecorationThickness"]
+    ]
+  },
+  "underline-offset": {
+    "prop": [["length", "textUnderlineOffset"]]
+  },
+  "indent": {
+    "prop": [["length", "textIndent"]]
+  },
+  "align": {
+    "prop": [[["baseline", "top", "middle", "bottom", "text-top", "text-bottom", "sub", "super"], "verticalAlign"]]
+  },
+  "whitespace": {
+    "prop": [[["normal", "nowrap", "pre", "pre-line", "pre-wrap", "break-spaces"], "whiteSpace"]]
+  },
+  "break": {
+    "prop": [
+      [["normal", "words", "all", "keep"], "overflowWrap"],
+      [["normal", "words", "all"], "wordBreak"]
+    ]
+  },
+  "hyphens": {
+    "prop": [[["none", "manual", "auto"], "hyphens"]]
+  },
+  "antialiased": {
+    "style": ["-webkit-font-smoothing", "antialiased"]
+  },
+  "subpixel-antialiased": {
+    "style": ["-webkit-font-smoothing", "auto"]
+  },
+  "italic": {
+    "style": ["fontStyle", "italic"]
+  },
+  "not-italic": {
+    "style": ["fontStyle", "normal"]
+  },
+  "uppercase": {
+    "style": ["textTransform", "uppercase"]
+  },
+  "lowercase": {
+    "style": ["textTransform", "lowercase"]
+  },
+  "capitalize": {
+    "style": ["textTransform", "capitalize"]
+  },
+  "normal-case": {
+    "style": ["textTransform", "none"]
+  },
+  "underline": {
+    "style": ["textDecorationLine", "underline"]
+  },
+  "overline": {
+    "style": ["textDecorationLine", "overline"]
+  },
+  "line-through": {
+    "style": ["textDecorationLine", "line-through"]
+  },
+  "no-underline": {
+    "style": ["textDecorationLine", "none"]
+  },
+  "bg": {
+    "prop": [
+      ["color", "backgroundColor"],
+      ["image", "backgroundImage"],
+      ["position", "backgroundPosition"],
+      [["auto", "cover", "contain"], "backgroundSize"],
+      [["repeat", "no-repeat", "repeat-x", "repeat-y", "repeat-round", "repeat-space"], "backgroundRepeat"],
+      [["fixed", "local", "scroll"], "backgroundAttachment"],
+      [["border", "padding", "content", "text"], "backgroundClip"],
+      [["border", "padding", "content"], "backgroundOrigin"]
+    ]
+  },
+  "from": {
+    "prop": [["color", "--tw-gradient-from"], ["percentage", "--tw-gradient-from-position"]]
+  },
+  "via": {
+    "prop": [["color", "--tw-gradient-via"], ["percentage", "--tw-gradient-via-position"]]
+  },
+  "to": {
+    "prop": [["color", "--tw-gradient-to"], ["percentage", "--tw-gradient-to-position"]]
+  },
+  "rounded": {
+    "prop": [
+      ["length", ["borderTopLeftRadius", "borderTopRightRadius", "borderBottomRightRadius", "borderBottomLeftRadius"]],
+      [["none", "xs", "sm", "md", "lg", "xl", "2xl", "3xl", "full"], ["borderTopLeftRadius", "borderTopRightRadius", "borderBottomRightRadius", "borderBottomLeftRadius"]]
+    ]
+  },
+  "rounded-t": {
+    "prop": [["length", ["borderTopLeftRadius", "borderTopRightRadius"]]]
+  },
+  "rounded-r": {
+    "prop": [["length", ["borderTopRightRadius", "borderBottomRightRadius"]]]
+  },
+  "rounded-b": {
+    "prop": [["length", ["borderBottomRightRadius", "borderBottomLeftRadius"]]]
+  },
+  "rounded-l": {
+    "prop": [["length", ["borderTopLeftRadius", "borderBottomLeftRadius"]]]
+  },
+  "rounded-s": {
+    "prop": [["length", ["borderStartStartRadius", "borderEndStartRadius"]]]
+  },
+  "rounded-e": {
+    "prop": [["length", ["borderStartEndRadius", "borderEndEndRadius"]]]
+  },
+  "border": {
+    "prop": [
+      ["length", ["borderTopWidth", "borderRightWidth", "borderBottomWidth", "borderLeftWidth"]],
+      ["color", ["borderTopColor", "borderRightColor", "borderBottomColor", "borderLeftColor"]],
+      [["solid", "dashed", "dotted", "double", "hidden", "none"], "borderStyle"]
+    ]
+  },
+  "border-x": {
+    "prop": [["length", ["borderLeftWidth", "borderRightWidth"]], ["color", ["borderLeftColor", "borderRightColor"]]]
+  },
+  "border-y": {
+    "prop": [["length", ["borderTopWidth", "borderBottomWidth"]], ["color", ["borderTopColor", "borderBottomColor"]]]
+  },
+  "border-s": {
+    "prop": [["length", "borderInlineStartWidth"], ["color", "borderInlineStartColor"]]
+  },
+  "border-e": {
+    "prop": [["length", "borderInlineEndWidth"], ["color", "borderInlineEndColor"]]
+  },
+  "border-t": {
+    "prop": [["length", "borderTopWidth"], ["color", "borderTopColor"]]
+  },
+  "border-r": {
+    "prop": [["length", "borderRightWidth"], ["color", "borderRightColor"]]
+  },
+  "border-b": {
+    "prop": [["length", "borderBottomWidth"], ["color", "borderBottomColor"]]
+  },
+  "border-l": {
+    "prop": [["length", "borderLeftWidth"], ["color", "borderLeftColor"]]
+  },
+  "divide-x": {
+    "prop": [["length", "borderInlineStartWidth"], ["color", "borderColor"]]
+  },
+  "divide-y": {
+    "prop": [["length", "borderTopWidth"], ["color", "borderColor"]]
+  },
+  "outline": {
+    "prop": [
+      ["length", "outlineWidth"],
+      ["color", "outlineColor"],
+      [["none", "hidden", "dotted", "dashed", "solid", "double"], "outlineStyle"],
+      ["length", "outlineOffset"]
+    ]
+  },
+  "ring": {
+    "prop": [["length", "--tw-ring-width"], ["color", "--tw-ring-color"]]
+  },
+  "ring-offset": {
+    "prop": [["length", "--tw-ring-offset-width"], ["color", "--tw-ring-offset-color"]]
+  },
+  "shadow": {
+    "prop": [["shadow", "boxShadow"], ["color", "boxShadowColor"]]
+  },
+  "text-shadow": {
+    "prop": [["shadow", "textShadow"], ["color", "--tw-text-shadow-color"]]
+  },
+  "opacity": {
+    "prop": [["percentage", "opacity"], ["number", "opacity"]]
+  },
+  "mix-blend": {
+    "prop": [[["normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity", "plus-darker", "plus-lighter"], "mixBlendMode"]]
+  },
+  "bg-blend": {
+    "prop": [[["normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity"], "backgroundBlendMode"]]
+  },
+  "blur": {
+    "prop": [["length", "--tw-blur"]]
+  },
+  "brightness": {
+    "prop": [["percentage", "filter"]]
+  },
+  "contrast": {
+    "prop": [["percentage", "filter"]]
+  },
+  "drop-shadow": {
+    "prop": [["shadow", "filter"], ["color", "--tw-drop-shadow-color"]]
+  },
+  "grayscale": {
+    "prop": [["percentage", "filter"]]
+  },
+  "hue-rotate": {
+    "prop": [["angle", "filter"]]
+  },
+  "invert": {
+    "prop": [["percentage", "filter"]]
+  },
+  "saturate": {
+    "prop": [["percentage", "filter"]]
+  },
+  "sepia": {
+    "prop": [["percentage", "filter"]]
+  },
+  "backdrop-blur": {
+    "prop": [["length", "--tw-backdrop-blur"]]
+  },
+  "backdrop-brightness": {
+    "prop": [["percentage", "backdropFilter"]]
+  },
+  "backdrop-contrast": {
+    "prop": [["percentage", "backdropFilter"]]
+  },
+  "backdrop-grayscale": {
+    "prop": [["percentage", "backdropFilter"]]
+  },
+  "backdrop-hue-rotate": {
+    "prop": [["angle", "backdropFilter"]]
+  },
+  "backdrop-invert": {
+    "prop": [["percentage", "backdropFilter"]]
+  },
+  "backdrop-opacity": {
+    "prop": [["percentage", "backdropFilter"]]
+  },
+  "backdrop-saturate": {
+    "prop": [["percentage", "backdropFilter"]]
+  },
+  "backdrop-sepia": {
+    "prop": [["percentage", "backdropFilter"]]
+  },
+  "transform": {
+    "prop": [[["gpu", "cpu", "none"], "transform"]]
+  },
+  "transform-gpu": {
+    "style": ["transform", "translateZ(0)"]
+  },
+  "transform-cpu": {
+    "style": ["transform", "none"]
+  },
+  "origin": {
+    "prop": [["position", "transformOrigin"]]
+  },
+  "perspective": {
+    "prop": [["length", "perspective"], [["none", "dramatic", "near", "normal", "midrange", "distant"], "perspective"]]
+  },
+  "perspective-origin": {
+    "prop": [["position", "perspectiveOrigin"]]
+  },
+  "rotate": {
+    "prop": [["angle", "rotate"]]
+  },
+  "scale": {
+    "prop": [["number", ["scale", "scaleX", "scaleY"]], ["percentage", ["scale", "scaleX", "scaleY"]]]
+  },
+  "skew": {
+    "prop": [["angle", ["skewX", "skewY"]]]
+  },
+  "translate": {
+    "prop": [["length", ["translate", "translateX", "translateY"]], ["percentage", ["translate", "translateX", "translateY"]]]
+  },
+  "transition": {
+    "prop": [[["none", "all", "colors", "opacity", "shadow", "transform", "all"], "transitionProperty"]]
+  },
+  "duration": {
+    "prop": [["time", "transitionDuration"]]
+  },
+  "ease": {
+    "prop": [["easing", "transitionTimingFunction"]]
+  },
+  "delay": {
+    "prop": [["time", "transitionDelay"]]
+  },
+  "animate": {
+    "prop": [[["none", "spin", "ping", "pulse", "bounce"], "animation"]]
+  },
+  "fill": {
+    "prop": [["color", "fill"]]
+  },
+  "stroke": {
+    "prop": [["color", "stroke"], ["length", "strokeWidth"]]
+  },
+  "accent": {
+    "prop": [["color", "accentColor"]]
+  },
+  "appearance": {
+    "prop": [[["none", "auto"], "appearance"]]
+  },
+  "caret": {
+    "prop": [["color", "caretColor"]]
+  },
+  "scheme": {
+    "prop": [[["normal", "light", "dark", "light-dark", "only-light", "only-dark"], "colorScheme"]]
+  },
+  "cursor": {
+    "prop": [[["auto", "default", "pointer", "wait", "text", "move", "help", "not-allowed", "none", "context-menu", "progress", "cell", "crosshair", "vertical-text", "alias", "copy", "no-drop", "grab", "grabbing", "all-scroll", "col-resize", "row-resize", "n-resize", "e-resize", "s-resize", "w-resize", "ew-resize", "ns-resize", "nesw-resize", "nwse-resize", "zoom-in", "zoom-out"], "cursor"]]
+  },
+  "field-sizing": {
+    "prop": [[["fixed", "content"], "fieldSizing"]]
+  },
+  "pointer-events": {
+    "prop": [[["auto", "none"], "pointerEvents"]]
+  },
+  "resize": {
+    "prop": [[["none", "x", "y"], "resize"]]
+  },
+  "scroll": {
+    "prop": [
+      [[ "auto", "smooth" ], "scrollBehavior"],
+      [["auto", "contain", "none"], "overscrollBehavior"]
+    ]
+  },
+  "scroll-m": {
+    "prop": [["length", "scrollMargin"]]
+  },
+  "scroll-mx": {
+    "prop": [["length", ["scrollMarginLeft", "scrollMarginRight"]]]
+  },
+  "scroll-my": {
+    "prop": [["length", ["scrollMarginTop", "scrollMarginBottom"]]]
+  },
+  "scroll-mt": {
+    "prop": [["length", "scrollMarginTop"]]
+  },
+  "scroll-mr": {
+    "prop": [["length", "scrollMarginRight"]]
+  },
+  "scroll-mb": {
+    "prop": [["length", "scrollMarginBottom"]]
+  },
+  "scroll-ml": {
+    "prop": [["length", "scrollMarginLeft"]]
+  },
+  "scroll-p": {
+    "prop": [["length", "scrollPadding"]]
+  },
+  "scroll-px": {
+    "prop": [["length", ["scrollPaddingLeft", "scrollPaddingRight"]]]
+  },
+  "scroll-py": {
+    "prop": [["length", ["scrollPaddingTop", "scrollPaddingBottom"]]]
+  },
+  "scroll-pt": {
+    "prop": [["length", "scrollPaddingTop"]]
+  },
+  "scroll-pr": {
+    "prop": [["length", "scrollPaddingRight"]]
+  },
+  "scroll-pb": {
+    "prop": [["length", "scrollPaddingBottom"]]
+  },
+  "scroll-pl": {
+    "prop": [["length", "scrollPaddingLeft"]]
+  },
+  "snap": {
+    "prop": [
+      [["none", "x", "y", "both"], "scrollSnapType"],
+      [["mandatory", "proximity"], "scrollSnapType"],
+      [["start", "end", "center", "align-none"], "scrollSnapAlign"],
+      [["normal", "always"], "scrollSnapStop"]
+    ]
+  },
+  "touch": {
+    "prop": [[["auto", "none", "pan-x", "pan-left", "pan-right", "pan-y", "pan-up", "pan-down", "pinch-zoom", "manipulation"], "touchAction"]]
+  },
+  "select": {
+    "prop": [[["none", "text", "all", "auto"], "userSelect"]]
+  },
+  "will-change": {
+    "prop": [[["auto", "scroll", "contents", "transform"], "willChange"]]
+  },
+  "sr-only": {
+    "style": ["position", "absolute"]
+  },
+  "not-sr-only": {
+    "style": ["position", "static"]
+  },
+  "forced-color-adjust": {
+    "prop": [[["auto", "none"], "forcedColorAdjust"]]
+  }
+}
+```
+
+Implementation notes:
+
+1. The keys represent utility stems, not every possible generated class. For example, `bg` covers `bg-red-500`, `bg-cover`, and `bg-[url(...)]`.
+2. The keyword arrays describe named values; the string types describe value categories, including arbitrary values.
+3. Tailwind variants such as `hover:`, `focus:`, `md:`, and `dark:` should be parsed separately from the utility.
+4. Negative values, important modifiers (`!`), opacity modifiers (`/50`), arbitrary properties, and custom utilities need separate parser handling.
+5. A single `style` tuple cannot represent multi-property utilities such as `truncate` or `sr-only` completely. Those need a richer representation if you want exact CSS output.
+
+Tailwind's official documentation describes arbitrary values and dynamically generated utilities, while the v4 upgrade guide documents renamed and removed utilities.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://tailwindcss.com\&sz=32)
+
+Tailwind CSS+1
+
+# what characters can you use in css var
+
+In CSS, variable names (technically known as **custom properties**) follow the rules of CSS identifiers. They are incredibly flexible and support a wide range of characters, but they do have specific starting and formatting constraints. [](https://stackoverflow.com/questions/2812072/allowed-characters-for-css-identifiers)
+
+### 🛑 Crucial Starting Rule
+
+Every CSS variable name **must begin with two hyphens (`--`)**. [](https://ishadeed.com/article/css-vars-101/)
+
+* Directly after those two hyphens, you **cannot** use a digit (0-9). For example, `--1color` is invalid, but `--color1` is perfectly fine. [](https://stackoverflow.com/questions/2812072/allowed-characters-for-css-identifiers)
+
+---
+
+### ✅ Allowed Characters
+
+Inside the name (after the initial `--`), you can use:
+
+* **Alphanumeric characters:** Letters (`a-z`, `A-Z`) and digits (`0-9`).
+* **Dashes and Underscores:** Hyphens (`-`) and underscores (`_`).
+* **Emoji and Non-ASCII characters:** Any UTF-8 character, including [emojis](https://www.w3.org/TR/css-variables-1/) and international characters (like `ñ`, `é`, or `文`).
+* **Escaped Special Characters:** If you want to use punctuation or characters that normally disrupt CSS (like spaces, periods, commas, or colons), you must escape them with a backslash (`\`). [](https://www.w3.org/TR/css-variables-1/)
+
+### 🚫 Forbidden / Problematic Characters
+
+* **Unescaped Spaces:** `--main color` will fail because spaces break the identifier. Use `--main-color`, `--main_color`, or an escaped space `--main\ color`.
+* **Unescaped Special Punctuation:** Characters like `.`, `:`, `;`, `,`, `!`, `@`, `#`, `$`, `%`, `^`, `&`, `*`, `(`, `)` must be escaped to avoid breaking the CSS parser. [](https://forum.bricksbuilder.io/t/css-variable-manager-feedback/22120)
+
+---
+
+### Quick Examples of Valid vs. Invalid Names
+
+| Variable Name    | Status        | Reason                                                     |
+| ---------------- | ------------- | ---------------------------------------------------------- |
+| \--primary-color | **Valid**     | Standard use of alphanumeric characters and hyphens.       |
+| \--font\_size\_2 | **Valid**     | Contains underscores and ends with a number.               |
+| \--🔥            | **Valid**     | Emojis are fully valid UTF-8 symbols.                      |
+| \--bg\\ color    | **Valid**     | The space is properly escaped with a backslash.            |
+| \--2nd-accent    | ❌ **Invalid** | Cannot have a digit immediately following the initial \--. |
+| \--brand color   | ❌ **Invalid** | Contains an unescaped space.                               |
+
+> ⚠️ **Note on Case Sensitivity:** CSS variable names are strictly **case-sensitive**. This means `--main-color` and `--Main-Color` are treated by the browser as two completely separate variables. [](https://www.fisherdesignandadvertising.com/css-variables/)
+
+Would you like help looking at **how to use emojis as variables** in a real project, or are you trying to troubleshoot an **invalid variable name** that isn't working?
+
+AI can make mistakes, so double-check responses 
+
+* [](https://ishadeed.com/article/css-vars-101/)  
+Ahmad Shadeed  
+CSS Variables 101  
+Variables use double hyphens (\`--\`), are case-sensitive, and support alphanumeric characters, underscores, and dashes.
+* [](https://forum.bricksbuilder.io/t/css-variable-manager-feedback/22120)  
+Bricks Community Forum  
+CSS Variable Manager Feedback - Bricks Community Forum  
+Apr 24, 2024 — variable names do not have to be lowercase across the board or separated by hyphens. The valid naming for a CSS variable should co...
+* [](https://stackoverflow.com/questions/2812072/allowed-characters-for-css-identifiers)  
+Stack Overflow  
+Allowed characters for CSS identifiers - Stack Overflow  
+May 11, 2010 — The charset doesn't matter. The allowed characters matters more. Identifiers can also contain escaped characters and any ISO 10646...
+
+Show all
+
 

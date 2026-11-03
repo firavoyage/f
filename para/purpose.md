@@ -188,5 +188,16 @@ really it's tricky. contextual token is a non nego requirement nowadays. and it'
 
 let's do it manually.
 
+---
+
+on design.
+
+i have no anchor of what "utilitarian" is.
+
+it's basically gnome adwaita, w all rounded corners stripped, all box shadows removed, and "as long as it feels right".
+
+it might not be really relevant here.
+
+better to start w github primer since i already use gfm default theme in para.
 
 
