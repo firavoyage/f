@@ -709,4 +709,907 @@ How to Delete a Vultr Server/Instance:
 Oct 10, 2021 — To stop Vultr from charging for an instance, destroy it. Access your account, locate the desired server, and either right-click to...  
 1m
 
+# . thinking
+
+sec is irrelevant. dx matters.
+
+# . setup vps (failed)
+
+```sh
+# ===== CONFIGURATION =====
+# export VPS_IP="100.68.9.245"
+export VPS_IP="2001:19f0:4000:415c:5400:07ff:fe00:3619"
+export ROOT_PASSWORD="!B5mJ]XQCN%STXmg"
+
+SSH_KEY="$HOME/.ssh/id_ed25519"
+SSH_ALIAS="twitter"
+
+# ===== LOCAL DEPENDENCIES =====
+# sudo apt-get update -qq
+# sudo apt-get install -y sshpass openssh-client
+
+# ===== GENERATE SSH KEY =====
+mkdir -p "$HOME/.ssh"
+chmod 700 "$HOME/.ssh"
+
+if [[ ! -f "$SSH_KEY" ]]; then
+    ssh-keygen -t ed25519 -f "$SSH_KEY" -N "" -C "vps-root"
+fi
+
+# ===== INSTALL PUBLIC KEY ON VPS =====
+export SSHPASS="$ROOT_PASSWORD"
+
+sshpass -e ssh-copy-id \
+    -i "${SSH_KEY}.pub" \
+    -o StrictHostKeyChecking=accept-new \
+    -o PreferredAuthentications=password \
+    -o PubkeyAuthentication=no \
+    root@"$VPS_IP"
+
+unset SSHPASS ROOT_PASSWORD
+
+# ===== CONFIGURE VPS SSH =====
+ssh -i "$SSH_KEY" \
+    -o StrictHostKeyChecking=accept-new \
+    root@"$VPS_IP" 'bash -s' <<'REMOTE'
+
+set -euo pipefail
+
+# Ensure correct permissions
+mkdir -p /root/.ssh
+chmod 700 /root/.ssh
+chmod 600 /root/.ssh/authorized_keys
+
+# Enable public key authentication and disable password login
+mkdir -p /etc/ssh/sshd_config.d
+
+cat > /etc/ssh/sshd_config.d/00-key-auth.conf <<'EOF'
+PubkeyAuthentication yes
+PermitRootLogin prohibit-password
+PasswordAuthentication no
+KbdInteractiveAuthentication no
+EOF
+
+# Validate before applying
+sshd -t
+
+# Reload SSH
+systemctl reload ssh
+
+REMOTE
+
+# ===== CONFIGURE LOCAL SSH SHORTCUT =====
+SSH_CONFIG="$HOME/.ssh/config"
+touch "$SSH_CONFIG"
+chmod 600 "$SSH_CONFIG"
+
+if ! grep -q "^Host $SSH_ALIAS\$" "$SSH_CONFIG"; then
+cat >> "$SSH_CONFIG" <<EOF
+
+Host $SSH_ALIAS
+    HostName $VPS_IP
+    User root
+    Port 22
+    IdentityFile $SSH_KEY
+    IdentitiesOnly yes
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+EOF
+fi
+
+# ===== TEST LOGIN =====
+echo "Testing SSH key login..."
+
+ssh "$SSH_ALIAS" 'echo "SSH login successful!"; hostname; uname -a'
+
+echo "Setup complete. Connect anytime using:"
+echo "ssh $SSH_ALIAS"
+```
+
+# . test
+
+```
+ ~ % >....
+sshd -t
+
+# Reload SSH
+systemctl reload ssh
+
+REMOTE
+
+# ===== CONFIGURE LOCAL SSH SHORTCUT =====
+SSH_CONFIG="$HOME/.ssh/config"
+touch "$SSH_CONFIG"
+chmod 600 "$SSH_CONFIG"
+
+if ! grep -q "^Host $SSH_ALIAS\$" "$SSH_CONFIG"; then
+cat >> "$SSH_CONFIG" <<EOF
+
+Host $SSH_ALIAS
+    HostName $VPS_IP
+    User root
+    Port 22
+    IdentityFile $SSH_KEY
+    IdentitiesOnly yes
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+EOF
+fi
+
+# ===== TEST LOGIN =====
+echo "Testing SSH key login..."
+
+ssh "$SSH_ALIAS" 'echo "SSH login successful!"; hostname; uname -a'
+
+echo "Setup complete. Connect anytime using:"
+echo "ssh $SSH_ALIAS"
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/fira/.ssh/id_ed25519.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+
+/usr/bin/ssh-copy-id: ERROR: Connection closed by 100.68.9.245 port 22
+
+Connection closed by 100.68.9.245 port 22
+Testing SSH key login...
+Connection closed by 100.68.9.245 port 22
+Setup complete. Connect anytime using:
+ssh twitter
+```
+
+```
+ ~ % ssh twitter
+Connection closed by 100.68.9.245 port 22
+```
+
+```
+ ~ % >....
+# Reload SSH
+systemctl reload ssh
+
+REMOTE
+
+# ===== CONFIGURE LOCAL SSH SHORTCUT =====
+SSH_CONFIG="$HOME/.ssh/config"
+touch "$SSH_CONFIG"
+chmod 600 "$SSH_CONFIG"
+
+if ! grep -q "^Host $SSH_ALIAS\$" "$SSH_CONFIG"; then
+cat >> "$SSH_CONFIG" <<EOF
+
+Host $SSH_ALIAS
+    HostName $VPS_IP
+    User root
+    Port 22
+    IdentityFile $SSH_KEY
+    IdentitiesOnly yes
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+EOF
+fi
+
+# ===== TEST LOGIN =====
+echo "Testing SSH key login..."
+
+ssh "$SSH_ALIAS" 'echo "SSH login successful!"; hostname; uname -a'
+
+echo "Setup complete. Connect anytime using:"
+echo "ssh $SSH_ALIAS"
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/fira/.ssh/id_ed25519.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+
+/usr/bin/ssh-copy-id: ERROR: Connection closed by 2001:19f0:4000:415c:5400:7ff:fe00:3619 port 22
+
+Connection closed by 2001:19f0:4000:415c:5400:7ff:fe00:3619 port 22
+Testing SSH key login...
+Connection closed by 100.68.9.245 port 22
+Setup complete. Connect anytime using:
+ssh twitter
+ ~ % ssh -vvv -i ~/.ssh/id_ed25519 root@2001:19f0:4000:415c:5400:07ff:fe00:3619
+OpenSSH_9.6p1 Ubuntu-3ubuntu13.20, OpenSSL 3.0.13 30 Jan 2024
+debug1: Reading configuration data /home/fira/.ssh/config
+debug1: Reading configuration data /etc/ssh/ssh_config
+debug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files
+debug1: /etc/ssh/ssh_config line 21: Applying options for *
+debug2: resolve_canonicalize: hostname 2001:19f0:4000:415c:5400:07ff:fe00:3619 is address
+debug2: resolve_canonicalize: canonicalised address "2001:19f0:4000:415c:5400:07ff:fe00:3619" => "2001:19f0:4000:415c:5400:7ff:fe00:3619"
+debug3: expanded UserKnownHostsFile '~/.ssh/known_hosts' -> '/home/fira/.ssh/known_hosts'
+debug3: expanded UserKnownHostsFile '~/.ssh/known_hosts2' -> '/home/fira/.ssh/known_hosts2'
+debug3: channel_clear_timeouts: clearing
+debug3: ssh_connect_direct: entering
+debug1: Connecting to 2001:19f0:4000:415c:5400:7ff:fe00:3619 [2001:19f0:4000:415c:5400:7ff:fe00:3619] port 22.
+debug3: set_sock_tos: set socket 3 IPV6_TCLASS 0x10
+debug1: Connection established.
+debug1: identity file /home/fira/.ssh/id_ed25519 type 3
+debug1: identity file /home/fira/.ssh/id_ed25519-cert type -1
+debug1: Local version string SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.20
+debug1: Remote protocol version 2.0, remote software version OpenSSH_10.0p2 Debian-7+deb13u4
+debug1: compat_banner: match: OpenSSH_10.0p2 Debian-7+deb13u4 pat OpenSSH* compat 0x04000000
+debug2: fd 3 setting O_NONBLOCK
+debug1: Authenticating to 2001:19f0:4000:415c:5400:7ff:fe00:3619:22 as 'root'
+debug1: load_hostkeys: fopen /home/fira/.ssh/known_hosts2: No such file or directory
+debug1: load_hostkeys: fopen /etc/ssh/ssh_known_hosts: No such file or directory
+debug1: load_hostkeys: fopen /etc/ssh/ssh_known_hosts2: No such file or directory
+debug3: order_hostkeyalgs: no algorithms matched; accept original
+debug3: send packet: type 20
+debug1: SSH2_MSG_KEXINIT sent
+debug3: receive packet: type 20
+debug1: SSH2_MSG_KEXINIT received
+debug2: local client KEXINIT proposal
+debug2: KEX algorithms: sntrup761x25519-sha512@openssh.com,curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256,ext-info-c,kex-strict-c-v00@openssh.com
+debug2: host key algorithms: ssh-ed25519-cert-v01@openssh.com,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521-cert-v01@openssh.com,sk-ssh-ed25519-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256
+debug2: ciphers ctos: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com
+debug2: ciphers stoc: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com
+debug2: MACs ctos: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1
+debug2: MACs stoc: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1
+debug2: compression ctos: none,zlib@openssh.com,zlib
+debug2: compression stoc: none,zlib@openssh.com,zlib
+debug2: languages ctos:
+debug2: languages stoc:
+debug2: first_kex_follows 0
+debug2: reserved 0
+debug2: peer server KEXINIT proposal
+debug2: KEX algorithms: mlkem768x25519-sha256,sntrup761x25519-sha512,sntrup761x25519-sha512@openssh.com,curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,ext-info-s,kex-strict-s-v00@openssh.com
+debug2: host key algorithms: rsa-sha2-512,rsa-sha2-256,ecdsa-sha2-nistp256,ssh-ed25519
+debug2: ciphers ctos: chacha20-poly1305@openssh.com,aes128-gcm@openssh.com,aes256-gcm@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr
+debug2: ciphers stoc: chacha20-poly1305@openssh.com,aes128-gcm@openssh.com,aes256-gcm@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr
+debug2: MACs ctos: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1
+debug2: MACs stoc: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1
+debug2: compression ctos: none,zlib@openssh.com
+debug2: compression stoc: none,zlib@openssh.com
+debug2: languages ctos:
+debug2: languages stoc:
+debug2: first_kex_follows 0
+debug2: reserved 0
+debug3: kex_choose_conf: will use strict KEX ordering
+debug1: kex: algorithm: sntrup761x25519-sha512@openssh.com
+debug1: kex: host key algorithm: ssh-ed25519
+debug1: kex: server->client cipher: chacha20-poly1305@openssh.com MAC: <implicit> compression: none
+debug1: kex: client->server cipher: chacha20-poly1305@openssh.com MAC: <implicit> compression: none
+debug3: send packet: type 30
+debug1: expecting SSH2_MSG_KEX_ECDH_REPLY
+debug3: receive packet: type 31
+debug1: SSH2_MSG_KEX_ECDH_REPLY received
+debug1: Server host key: ssh-ed25519 SHA256:I2nACUmAX0n7WESJKl5/Nqnlz1SPQdYL/gV44VYpx9Y
+debug1: load_hostkeys: fopen /home/fira/.ssh/known_hosts2: No such file or directory
+debug1: load_hostkeys: fopen /etc/ssh/ssh_known_hosts: No such file or directory
+debug1: load_hostkeys: fopen /etc/ssh/ssh_known_hosts2: No such file or directory
+debug3: hostkeys_find_by_key_hostfile: trying user hostfile "/home/fira/.ssh/known_hosts"
+debug3: hostkeys_foreach: reading file "/home/fira/.ssh/known_hosts"
+debug3: hostkeys_find_by_key_hostfile: trying user hostfile "/home/fira/.ssh/known_hosts2"
+debug1: hostkeys_find_by_key_hostfile: hostkeys file /home/fira/.ssh/known_hosts2 does not exist
+debug3: hostkeys_find_by_key_hostfile: trying system hostfile "/etc/ssh/ssh_known_hosts"
+debug1: hostkeys_find_by_key_hostfile: hostkeys file /etc/ssh/ssh_known_hosts does not exist
+debug3: hostkeys_find_by_key_hostfile: trying system hostfile "/etc/ssh/ssh_known_hosts2"
+debug1: hostkeys_find_by_key_hostfile: hostkeys file /etc/ssh/ssh_known_hosts2 does not exist
+The authenticity of host '2001:19f0:4000:415c:5400:7ff:fe00:3619 (2001:19f0:4000:415c:5400:7ff:fe00:3619)' can't be established.
+ED25519 key fingerprint is SHA256:I2nACUmAX0n7WESJKl5/Nqnlz1SPQdYL/gV44VYpx9Y.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? y
+Please type 'yes', 'no' or the fingerprint: yes
+Warning: Permanently added '2001:19f0:4000:415c:5400:7ff:fe00:3619' (ED25519) to the list of known hosts.
+debug3: send packet: type 21
+debug1: ssh_packet_send2_wrapped: resetting send seqnr 3
+debug2: ssh_set_newkeys: mode 1
+debug1: rekey out after 134217728 blocks
+debug1: SSH2_MSG_NEWKEYS sent
+debug1: Sending SSH2_MSG_EXT_INFO
+debug3: send packet: type 7
+debug1: expecting SSH2_MSG_NEWKEYS
+debug3: receive packet: type 21
+debug1: ssh_packet_read_poll2: resetting read seqnr 3
+debug1: SSH2_MSG_NEWKEYS received
+debug2: ssh_set_newkeys: mode 0
+debug1: rekey in after 134217728 blocks
+debug3: send packet: type 5
+debug3: receive packet: type 7
+debug1: SSH2_MSG_EXT_INFO received
+debug3: kex_input_ext_info: extension server-sig-algs
+debug1: kex_ext_info_client_parse: server-sig-algs=<ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256>
+debug3: kex_input_ext_info: extension publickey-hostbound@openssh.com
+debug1: kex_ext_info_check_ver: publickey-hostbound@openssh.com=<0>
+debug3: kex_input_ext_info: extension ping@openssh.com
+debug1: kex_ext_info_check_ver: ping@openssh.com=<0>
+debug3: receive packet: type 6
+debug2: service_accept: ssh-userauth
+debug1: SSH2_MSG_SERVICE_ACCEPT received
+debug3: send packet: type 50
+debug3: receive packet: type 7
+debug1: SSH2_MSG_EXT_INFO received
+debug3: kex_input_ext_info: extension server-sig-algs
+debug1: kex_ext_info_client_parse: server-sig-algs=<ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256>
+debug3: receive packet: type 51
+debug1: Authentications that can continue: publickey,password
+debug3: start over, passed a different list publickey,password
+debug3: preferred gssapi-with-mic,publickey,keyboard-interactive,password
+debug3: authmethod_lookup publickey
+debug3: remaining preferred: keyboard-interactive,password
+debug3: authmethod_is_enabled publickey
+debug1: Next authentication method: publickey
+debug3: ssh_get_authentication_socket_path: path '/run/user/1000/keyring/ssh'
+debug1: get_agent_identities: bound agent to hostkey
+debug1: get_agent_identities: agent returned 2 keys
+debug1: Will attempt key: /home/fira/.ssh/id_ed25519 ED25519 SHA256:x7CiNSFwkue/LGZT0fsBXK0tbIuCKFVn1TqGsj1LDV0 explicit agent
+debug1: Will attempt key: fira@Fira RSA SHA256:caqYN6kNr3TyBYfJaxnwjO8BNya0/B1s2VWo8730nno agent
+debug2: pubkey_prepare: done
+debug1: Offering public key: /home/fira/.ssh/id_ed25519 ED25519 SHA256:x7CiNSFwkue/LGZT0fsBXK0tbIuCKFVn1TqGsj1LDV0 explicit agent
+debug3: send packet: type 50
+debug2: we sent a publickey packet, wait for reply
+debug3: receive packet: type 51
+debug1: Authentications that can continue: publickey,password
+debug1: Offering public key: fira@Fira RSA SHA256:caqYN6kNr3TyBYfJaxnwjO8BNya0/B1s2VWo8730nno agent
+debug3: send packet: type 50
+debug2: we sent a publickey packet, wait for reply
+debug3: receive packet: type 51
+debug1: Authentications that can continue: publickey,password
+debug2: we did not send a packet, disable method
+debug3: authmethod_lookup password
+debug3: remaining preferred: ,password
+debug3: authmethod_is_enabled password
+debug1: Next authentication method: password
+root@2001:19f0:4000:415c:5400:7ff:fe00:3619's password:
+debug3: send packet: type 50
+debug2: we sent a password packet, wait for reply
+debug3: receive packet: type 52
+Authenticated to 2001:19f0:4000:415c:5400:7ff:fe00:3619 ([2001:19f0:4000:415c:5400:7ff:fe00:3619]:22) using "password".
+debug1: channel 0: new session [client-session] (inactive timeout: 0)
+debug3: ssh_session2_open: channel_new: 0
+debug2: channel 0: send open
+debug3: send packet: type 90
+debug1: Requesting no-more-sessions@openssh.com
+debug3: send packet: type 80
+debug1: Entering interactive session.
+debug1: pledge: filesystem
+debug3: client_repledge: enter
+debug3: receive packet: type 80
+debug1: client_input_global_request: rtype hostkeys-00@openssh.com want_reply 0
+debug3: client_input_hostkeys: received RSA key SHA256:rnZJglZ/iVZxJCG+4FB4Q8mJfjuruGqNAIEwPTC3q0Y
+debug3: client_input_hostkeys: received ECDSA key SHA256:0CMWf867qXRxeGC9CEOGEjoJcdyvDNtJpOetUiIYcrY
+debug3: client_input_hostkeys: received ED25519 key SHA256:I2nACUmAX0n7WESJKl5/Nqnlz1SPQdYL/gV44VYpx9Y
+debug1: client_input_hostkeys: searching /home/fira/.ssh/known_hosts for 2001:19f0:4000:415c:5400:7ff:fe00:3619 / (none)
+debug3: hostkeys_foreach: reading file "/home/fira/.ssh/known_hosts"
+debug3: hostkeys_find: found ssh-ed25519 key at /home/fira/.ssh/known_hosts:8
+debug1: client_input_hostkeys: searching /home/fira/.ssh/known_hosts2 for 2001:19f0:4000:415c:5400:7ff:fe00:3619 / (none)
+debug1: client_input_hostkeys: hostkeys file /home/fira/.ssh/known_hosts2 does not exist
+debug3: client_input_hostkeys: 3 server keys: 2 new, 18446744073709551615 retained, 2 incomplete match. 0 to remove
+debug3: client_input_hostkeys: asking server to prove ownership for 2 keys
+debug3: send packet: type 80
+debug3: receive packet: type 91
+debug2: channel_input_open_confirmation: channel 0: callback start
+debug2: fd 3 setting TCP_NODELAY
+debug3: set_sock_tos: set socket 3 IPV6_TCLASS 0x10
+debug2: client_session2_setup: id 0
+debug2: channel 0: request pty-req confirm 1
+debug3: send packet: type 98
+debug1: Sending environment.
+debug3: Ignored env USER
+debug3: Ignored env GHOSTTY_RESOURCES_DIR
+debug3: Ignored env XDG_SESSION_TYPE
+debug3: Ignored env SHLVL
+debug3: Ignored env HOME
+debug3: Ignored env TERMINFO
+debug3: Ignored env TERM_PROGRAM_VERSION
+debug3: Ignored env DESKTOP_SESSION
+debug3: Ignored env SDL_IM_MODULE
+debug3: Ignored env GTK_MODULES
+debug3: Ignored env GNOME_SHELL_SESSION_MODE
+debug3: Ignored env MANAGERPID
+debug3: Ignored env GSM_SKIP_SSH_AGENT_WORKAROUND
+debug3: Ignored env SYSTEMD_EXEC_PID
+debug3: Ignored env GLFW_IM_MODULE
+debug3: Ignored env DBUS_SESSION_BUS_ADDRESS
+debug3: Ignored env LIBVIRT_DEFAULT_URI
+debug3: Ignored env COLORTERM
+debug3: Ignored env GNOME_KEYRING_CONTROL
+debug3: Ignored env DEBUGINFOD_URLS
+debug3: Ignored env LOGNAME
+debug3: Ignored env GTK_IM_MODULE
+debug3: Ignored env WINDOWID
+debug3: Ignored env XDG_SESSION_CLASS
+debug3: Ignored env MEMORY_PRESSURE_WATCH
+debug3: Ignored env TERM
+debug3: Ignored env USERNAME
+debug3: Ignored env GNOME_DESKTOP_SESSION_ID
+debug3: Ignored env WINDOWPATH
+debug3: Ignored env PATH
+debug3: Ignored env SESSION_MANAGER
+debug3: Ignored env XDG_MENU_PREFIX
+debug3: Ignored env XDG_RUNTIME_DIR
+debug3: Ignored env DISPLAY
+debug1: channel 0: setting env LANG = "en_US.UTF-8"
+debug2: channel 0: request env confirm 0
+debug3: send packet: type 98
+debug3: Ignored env XDG_CURRENT_DESKTOP
+debug3: Ignored env GHOSTTY_SHELL_FEATURES
+debug3: Ignored env XAUTHORITY
+debug3: Ignored env XMODIFIERS
+debug3: Ignored env TERM_PROGRAM
+debug3: Ignored env XDG_SESSION_DESKTOP
+debug3: Ignored env SSH_AUTH_SOCK
+debug3: Ignored env SHELL
+debug3: Ignored env GHOSTTY_BIN_DIR
+debug3: Ignored env QT_ACCESSIBILITY
+debug3: Ignored env GDMSESSION
+debug3: Ignored env GPG_AGENT_INFO
+debug3: Ignored env QT_IM_MODULE
+debug3: Ignored env PWD
+debug3: Ignored env XDG_CONFIG_DIRS
+debug3: Ignored env XDG_DATA_DIRS
+debug3: Ignored env QTWEBENGINE_DICTIONARIES_PATH
+debug3: Ignored env MEMORY_PRESSURE_WRITE
+debug3: Ignored env OLDPWD
+debug3: Ignored env LS_COLORS
+debug3: Ignored env ANTHROPIC_BASE_URL
+debug3: Ignored env ANTHROPIC_AUTH_TOKEN
+debug3: Ignored env ANTHROPIC_MODEL
+debug3: Ignored env OPENAI_API_BASE
+debug3: Ignored env OPENAI_API_KEY
+debug3: Ignored env CODEX_MODEL
+debug3: Ignored env HTTP_PROXY
+debug3: Ignored env HTTPS_PROXY
+debug3: Ignored env ALL_PROXY
+debug3: Ignored env OLLAMA_HOST
+debug3: Ignored env BUN_INSTALL
+debug3: Ignored env PNPM_HOME
+debug3: Ignored env NVM_DIR
+debug3: Ignored env VPS_IP
+debug3: Ignored env _
+debug2: channel 0: request shell confirm 1
+debug3: send packet: type 98
+debug3: client_repledge: enter
+debug2: channel_input_open_confirmation: channel 0: callback done
+debug2: channel 0: open confirm rwindow 0 rmax 32768
+debug3: receive packet: type 81
+debug3: client_global_hostkeys_prove_confirm: verify RSA key 0 using sigalg rsa-sha2-512
+debug3: client_global_hostkeys_prove_confirm: verify ECDSA key 1 using sigalg ecdsa-sha2-nistp256
+Learned new hostkey: RSA SHA256:rnZJglZ/iVZxJCG+4FB4Q8mJfjuruGqNAIEwPTC3q0Y
+Learned new hostkey: ECDSA SHA256:0CMWf867qXRxeGC9CEOGEjoJcdyvDNtJpOetUiIYcrY
+debug3: hostkeys_foreach: reading file "/home/fira/.ssh/known_hosts"
+debug3: host_delete: ED25519 key already at /home/fira/.ssh/known_hosts:8
+Adding new key for 2001:19f0:4000:415c:5400:7ff:fe00:3619 to /home/fira/.ssh/known_hosts: ssh-rsa SHA256:rnZJglZ/iVZxJCG+4FB4Q8mJfjuruGqNAIEwPTC3q0Y
+Adding new key for 2001:19f0:4000:415c:5400:7ff:fe00:3619 to /home/fira/.ssh/known_hosts: ecdsa-sha2-nistp256 SHA256:0CMWf867qXRxeGC9CEOGEjoJcdyvDNtJpOetUiIYcrY
+debug1: update_known_hosts: known hosts file /home/fira/.ssh/known_hosts2 does not exist
+debug3: client_repledge: enter
+debug1: pledge: fork
+debug3: receive packet: type 99
+debug2: channel_input_status_confirm: type 99 id 0
+debug2: PTY allocation request accepted on channel 0
+debug2: channel 0: rcvd adjust 2097152
+debug3: receive packet: type 99
+debug2: channel_input_status_confirm: type 99 id 0
+debug2: shell request accepted on channel 0
+Linux vultr 6.12.113+deb13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.12.113-1 (2026-10-15) x86_64
+******************************PLEASE NOTE********************************
+* If this a new instance, cloud-init may still be running and normal    *
+* operations may not work as expected.                                  *
+*                                                                       *
+* Please use `cloud-init status' to check on the status of the instance *
+* provisioning                                                          *
+*                                                                       *
+* Remove this message by editing /etc/motd                              *
+*************************************************************************
+root@vultr:~# debug3: obfuscate_keystroke_timing: starting: interval ~20ms
+^C
+root@vultr:~# exit
+logoutdebug3: receive packet: type 96
+debug2: channel 0: rcvd eof
+debug2: channel 0: output open -> drain
+debug3: receive packet: type 98
+debug1: client_input_channel_req: channel 0 rtype exit-status reply 0
+debug3: receive packet: type 98
+debug1: client_input_channel_req: channel 0 rtype eow@openssh.com reply 0
+debug2: channel 0: rcvd eow
+debug2: chan_shutdown_read: channel 0: (i0 o1 sock -1 wfd 4 efd 6 [write])
+debug2: channel 0: input open -> closed
+debug3: receive packet: type 97
+debug2: channel 0: rcvd close
+debug3: channel 0: will not send data after close
+
+debug3: channel 0: will not send data after close
+debug2: channel 0: obuf empty
+debug2: chan_shutdown_write: channel 0: (i3 o1 sock -1 wfd 5 efd 6 [write])
+debug2: channel 0: output drain -> closed
+debug2: channel 0: almost dead
+debug2: channel 0: gc: notify user
+debug2: channel 0: gc: user detached
+debug2: channel 0: send close
+debug3: send packet: type 97
+debug2: channel 0: is dead
+debug2: channel 0: garbage collecting
+debug1: channel 0: free: client-session, nchannels 1
+debug3: channel 0: status: The following connections are open:
+  #0 client-session (t4 [session] r0 i3/0 o3/0 e[write]/0 fd -1/-1/6 sock -1 cc -1 io 0x00/0x00)
+
+debug3: obfuscate_keystroke_timing: stopping: no active channels (216 chaff packets sent)
+debug3: send packet: type 1
+Connection to 2001:19f0:4000:415c:5400:7ff:fe00:3619 closed.
+Transferred: sent 9324, received 9088 bytes, in 115.2 seconds
+Bytes per second: sent 80.9, received 78.9
+debug1: Exit status 130
+```
+
+```
+ ~ % ssh twitter
+Connection closed by 100.68.9.245 port 22
+ ~ % ssh twitter
+Connection closed by 100.68.9.245 port 22
+```
+
+# . setup vps again
+
+```sh
+#!/usr/bin/env bash
+set -euo pipefail
+
+export VPS_IP="2001:19f0:4000:415c:5400:07ff:fe00:3619"
+export ROOT_PASSWORD="!B5mJ]XQCN%STXmg"
+
+KEY="$HOME/.ssh/id_ed25519"
+
+# sudo apt-get update -qq
+# sudo apt-get install -y sshpass openssh-client
+
+mkdir -p ~/.ssh
+chmod 700 ~/.ssh
+
+# Generate key if missing
+if [[ ! -f "$KEY" ]]; then
+    ssh-keygen -t ed25519 -N "" -f "$KEY"
+fi
+
+# Install public key using password authentication
+PUBKEY=$(cat "$KEY.pub")
+
+SSHPASS="$ROOT_PASSWORD" sshpass -e ssh \
+    -o StrictHostKeyChecking=accept-new \
+    -o PreferredAuthentications=password \
+    -o PubkeyAuthentication=no \
+    root@"$VPS_IP" \
+    "mkdir -p /root/.ssh && chmod 700 /root/.ssh && \
+     touch /root/.ssh/authorized_keys && \
+     chmod 600 /root/.ssh/authorized_keys && \
+     grep -qxF '$PUBKEY' /root/.ssh/authorized_keys || \
+     echo '$PUBKEY' >> /root/.ssh/authorized_keys"
+
+unset ROOT_PASSWORD
+
+# Test key authentication BEFORE disabling passwords
+ssh -o BatchMode=yes \
+    -i "$KEY" \
+    root@"$VPS_IP" \
+    'echo KEY_AUTH_SUCCESS'
+```
+
+<!-- command failed -->
+
+# . setup script
+
+<!-- i guess it's quite simple wo the need of thinking -->
+
+```zsh
+#!/usr/bin/env zsh
+
+# set -euo pipefail
+
+# ==========================================
+# Configuration
+# ==========================================
+
+vps_ip="2001:19f0:4000:415c:5400:07ff:fe00:3619"
+ssh_name="twi"
+root_password="!B5mJ]XQCN%STXmg"
+
+ssh_dir="${HOME}/.ssh"
+ssh_key="${ssh_dir}/${ssh_name}"
+
+# ==========================================
+# Validation
+# ==========================================
+
+if [[ -z "$vps_ip" || -z "$ssh_name" || -z "$root_password" ]]; then
+    echo "Usage:"
+    echo "VPS_ROOT_PASSWORD='password' $0 <vps_ip> <ssh_name>"
+    exit 1
+fi
+
+if [[ ! "$ssh_name" =~ '^[a-zA-Z0-9_-]+$' ]]; then
+    echo "Invalid SSH name."
+    exit 1
+fi
+
+if ! command -v sshpass >/dev/null 2>&1; then
+    echo "sshpass is required. Install it with:"
+    echo "sudo apt-get install -y sshpass"
+    exit 1
+fi
+
+# ==========================================
+# SSH Key Generation
+# ==========================================
+
+mkdir -p "$ssh_dir"
+chmod 700 "$ssh_dir"
+
+if [[ ! -f "${ssh_key}" ]]; then
+    echo "[1/6] Generating SSH key..."
+
+    ssh-keygen \
+        -t ed25519 \
+        -f "$ssh_key" \
+        -N "" \
+        -C "$ssh_name"
+else
+    echo "[1/6] SSH key already exists."
+fi
+
+public_key="$(<"${ssh_key}.pub")"
+
+# ==========================================
+# VPS Provisioning
+# ==========================================
+
+echo "[2/6] Connecting to VPS..."
+
+export SSHPASS="$root_password"
+
+sshpass -e ssh \
+    -o StrictHostKeyChecking=accept-new \
+    -o ConnectTimeout=15 \
+    -o PreferredAuthentications=password \
+    -o PubkeyAuthentication=no \
+    "root@${vps_ip}" \
+    bash -s -- "$public_key" <<'REMOTE'
+
+set -euo pipefail
+
+public_key="$1"
+
+echo "[3/6] Updating Ubuntu..."
+
+export DEBIAN_FRONTEND=noninteractive
+
+# apt-get update
+# apt-get upgrade -y
+
+echo "[4/6] Installing packages..."
+
+apt-get install -y \
+    curl \
+    wget \
+    git \
+    vim \
+    nano \
+    htop \
+    unzip \
+    zip \
+    jq \
+    ca-certificates \
+    gnupg \
+    ufw \
+    fail2ban \
+    unattended-upgrades \
+    openssh-server
+
+# ==========================================
+# Configure SSH Key
+# ==========================================
+
+echo "Installing SSH public key..."
+
+mkdir -p /root/.ssh
+chmod 700 /root/.ssh
+
+touch /root/.ssh/authorized_keys
+chmod 600 /root/.ssh/authorized_keys
+
+if ! grep -qxF "$public_key" /root/.ssh/authorized_keys; then
+    echo "$public_key" >> /root/.ssh/authorized_keys
+fi
+
+# ==========================================
+# SSH Hardening
+# ==========================================
+
+echo "Configuring SSH..."
+
+cat > /etc/ssh/sshd_config.d/99-vps-hardening.conf <<'SSH'
+PubkeyAuthentication yes
+PasswordAuthentication no
+KbdInteractiveAuthentication no
+PermitRootLogin prohibit-password
+SSH
+
+# Validate before reloading SSH.
+sshd -t
+
+systemctl enable ssh
+systemctl reload ssh
+
+# ==========================================
+# Firewall
+# ==========================================
+
+echo "Configuring firewall..."
+
+ufw allow 22/tcp
+ufw --force enable
+
+# ==========================================
+# Fail2ban
+# ==========================================
+
+echo "Configuring Fail2ban..."
+
+cat > /etc/fail2ban/jail.d/sshd.local <<'FAIL2BAN'
+[sshd]
+enabled = true
+backend = systemd
+maxretry = 5
+findtime = 10m
+bantime = 1h
+FAIL2BAN
+
+systemctl enable fail2ban
+systemctl restart fail2ban
+
+# ==========================================
+# Automatic Security Updates
+# ==========================================
+
+echo "Enabling automatic security updates..."
+
+cat > /etc/apt/apt.conf.d/20auto-upgrades <<'APT'
+APT::Periodic::Update-Package-Lists "1";
+APT::Periodic::Unattended-Upgrade "1";
+APT
+
+systemctl enable --now apt-daily.timer
+systemctl enable --now apt-daily-upgrade.timer
+
+echo "VPS provisioning completed."
+
+REMOTE
+
+unset SSHPASS
+
+# ==========================================
+# Local SSH Configuration
+# ==========================================
+
+echo "[5/6] Configuring local SSH alias..."
+
+mkdir -p "${ssh_dir}/config.d"
+
+chmod 700 "${ssh_dir}/config.d"
+
+cat > "${ssh_dir}/config.d/${ssh_name}.conf" <<SSH_CONFIG
+Host ${ssh_name}
+    HostName ${vps_ip}
+    User root
+    IdentityFile ${ssh_key}
+    IdentitiesOnly yes
+SSH_CONFIG
+
+chmod 600 "${ssh_dir}/config.d/${ssh_name}.conf"
+
+config_file="${ssh_dir}/config"
+touch "$config_file"
+chmod 600 "$config_file"
+
+include_line='Include ~/.ssh/config.d/*.conf'
+
+if ! grep -qxF "$include_line" "$config_file"; then
+    temp_config="$(mktemp)"
+    printf '%s\n' "$include_line" > "$temp_config"
+    cat "$config_file" >> "$temp_config"
+    mv "$temp_config" "$config_file"
+    chmod 600 "$config_file"
+fi
+
+# ==========================================
+# Done
+# ==========================================
+
+echo "[6/6] Setup complete!"
+
+echo ""
+echo "VPS IP:     ${vps_ip}"
+echo "SSH alias:  ${ssh_name}"
+echo "SSH key:    ${ssh_key}"
+echo ""
+echo "Connect using:"
+echo "ssh ${ssh_name}"
+echo ""
+```
+
+<!-- command failed -->
+
+# . setup script
+
+```sh
+#!/usr/bin/env zsh
+set -euo pipefail
+
+# Usage: ROOT_PASSWORD=... ./setup_vps.zsh <server_ip> <ssh_name>
+
+if [[ $# -ne 2 || -z "${ROOT_PASSWORD:-}" ]]; then
+  print -u2 "Usage: ROOT_PASSWORD=... $0 <server_ip> <ssh_name>"
+  exit 1
+fi
+
+server_ip="$1"
+ssh_name="$2"
+key_path="$HOME/.ssh/id_ed25519"
+ssh_config="$HOME/.ssh/config"
+
+if ! command -v sshpass >/dev/null; then
+  print -u2 "Please install sshpass: sudo apt-get install sshpass"
+  exit 1
+fi
+
+if [[ ! "$ssh_name" =~ '^[a-zA-Z0-9_-]+$' ]]; then
+  print -u2 "SSH name must contain only letters, numbers, _ or -"
+  exit 1
+fi
+
+# Create an SSH key if one does not exist.
+mkdir -p "$HOME/.ssh"
+chmod 700 "$HOME/.ssh"
+
+if [[ ! -f "$key_path" ]]; then
+  ssh-keygen -q -t ed25519 -N "" -f "$key_path"
+fi
+
+# Install the public key on the VPS using the root password.
+export SSHPASS="$ROOT_PASSWORD"
+
+sshpass -e ssh-copy-id \
+  -i "$key_path.pub" \
+  -o StrictHostKeyChecking=accept-new \
+  "root@$server_ip"
+
+unset SSHPASS
+unset ROOT_PASSWORD
+
+# Verify key-based SSH access.
+ssh -i "$key_path" \
+  -o IdentitiesOnly=yes \
+  -o BatchMode=yes \
+  "root@$server_ip" true
+
+# Add a convenient SSH alias.
+touch "$ssh_config"
+chmod 600 "$ssh_config"
+
+if ! grep -Eq "^Host[[:space:]]+$ssh_name([[:space:]]|$)" "$ssh_config"; then
+  cat >> "$ssh_config" <<EOF
+
+Host $ssh_name
+  HostName $server_ip
+  User root
+  IdentityFile $key_path
+  IdentitiesOnly yes
+  ServerAliveInterval 30
+EOF
+fi
+
+# Update and configure the Debian VPS.
+ssh "$ssh_name" 'bash -s' <<'REMOTE'
+set -euo pipefail
+
+export DEBIAN_FRONTEND=noninteractive
+
+apt-get update
+apt-get -y upgrade
+apt-get install -y ufw fail2ban curl git vim-tiny
+
+ufw allow OpenSSH
+ufw --force enable
+
+systemctl enable --now fail2ban
+REMOTE
+
+print ""
+print "VPS setup complete."
+print "Connect using: ssh $ssh_name"
+```
+
 
