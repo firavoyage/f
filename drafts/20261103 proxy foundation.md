@@ -4928,4 +4928,1289 @@ root@vultr:/home/test/test# Connection to 108.61.187.226 closed by remote host.
 Connection to 108.61.187.226 closed.
 ```
 
+# how to sync a local folder on ubuntu to a debian ssh remote
 
+The best tool for syncing a local Ubuntu folder to a remote Debian server over SSH is `rsync`. It's fast, secure, and transfers only changed files.
+
+## 1. Install rsync
+
+On Ubuntu (local machine):
+
+```
+sudo apt update
+sudo apt install rsync openssh-client
+```
+
+On Debian (remote server):
+
+```
+sudo apt update
+sudo apt install rsync openssh-server
+```
+
+## 2. Set up SSH access
+
+Test your connection:
+
+```
+ssh username@remote-server-ip
+```
+
+For passwordless authentication, generate an SSH key:
+
+```
+ssh-keygen -t ed25519
+ssh-copy-id username@remote-server-ip
+```
+
+## 3. Sync the local folder to Debian
+
+For example, sync `/home/user/projects/` to `/home/user/backup/projects/`:
+
+```
+rsync -avz --progress \
+  /home/user/projects/ \
+  username@remote-server-ip:/home/user/backup/projects/
+```
+
+Options:
+
+| Option       | Meaning                                                          |
+| ------------ | ---------------------------------------------------------------- |
+| `-a`         | Archive mode (preserves permissions, timestamps, symlinks, etc.) |
+| `-v`         | Verbose output                                                   |
+| `-z`         | Compress data during transfer                                    |
+| `--progress` | Show transfer progress                                           |
+
+Important: The trailing `/` on the source means sync the contents of `projects`, rather than creating another `projects` directory inside the destination.
+
+## 4. Make the remote folder an exact mirror
+
+If you want the remote directory to exactly match your local folder, including deleting files that no longer exist locally:
+
+```
+rsync -avz --delete --progress \
+  /home/user/projects/ \
+  username@remote-server-ip:/home/user/backup/projects/
+```
+
+
+
+Caution
+
+`--delete` permanently deletes remote files that aren't present locally.
+
+
+
+You can preview changes first:
+
+```
+rsync -avzn --delete \
+  /home/user/projects/ \
+  username@remote-server-ip:/home/user/backup/projects/
+```
+
+The `-n` flag performs a dry run without modifying anything.
+
+## 5. Automate synchronization
+
+If you want to sync periodically, use cron.
+
+Open your crontab:
+
+```
+crontab -e
+```
+
+For synchronization every 5 minutes:
+
+```
+*/5 * * * * rsync -az /home/user/projects/ username@remote-server-ip:/home/user/backup/projects/ >> /tmp/rsync.log 2>&1
+```
+
+## 6. Useful variations
+
+Use a custom SSH port (e.g. 2222):
+
+```
+rsync -avz -e "ssh -p 2222" \
+  /home/user/projects/ \
+  username@remote-server-ip:/home/user/backup/projects/
+```
+
+Exclude certain files:
+
+```
+rsync -avz \
+  --exclude='.git/' \
+  --exclude='node_modules/' \
+  --exclude='*.log' \
+  /home/user/projects/ \
+  username@remote-server-ip:/home/user/backup/projects/
+```
+
+Sync in the opposite direction (Debian → Ubuntu):
+
+```
+rsync -avz \
+  username@remote-server-ip:/home/user/projects/ \
+  /home/user/projects/
+```
+
+## My recommendation
+
+Use `rsync` over SSH with SSH key authentication.
+
+One question: Do you want one-way synchronization (Ubuntu → Debian), or two-way synchronization (changes on either machine propagate to the other)?
+
+The distinction matters because `rsync` is ideal for one-way sync, while two-way sync needs a different approach.
+
+# use this vps() {
+
+```
+use this vps() {
+&#x20;   SSHPASS="$vps_password" sshpass -e ssh \\
+&#x20;       -o StrictHostKeyChecking=no \\
+&#x20;       -o UserKnownHostsFile=/dev/null \\
+&#x20;       "root@$vps_ip" "*$@*"
+}
+```
+
+You can use your existing `vps()` function with `rsync` by passing the same SSH options through `rsync`'s `-e` option.
+
+However, `rsync` needs to invoke SSH directly; it cannot use your `vps()` wrapper as-is.
+
+### 1. Define an SSH wrapper for rsync
+
+```
+vps() {
+    SSHPASS="$vps_password" sshpass -e ssh \
+        -o StrictHostKeyChecking=no \
+        -o UserKnownHostsFile=/dev/null \
+        "root@$vps_ip" "$@"
+}
+
+vps_rsync() {
+    SSHPASS="$vps_password" rsync \
+        -avz --progress \
+        -e "sshpass -e ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
+        "$@"
+}
+```
+
+### 2. Sync a local folder to your VPS
+
+```
+vps_rsync /home/user/projects/ "root@$vps_ip:/home/backup/projects/"
+```
+
+### 3. Mirror the local folder (including deletions)
+
+```
+vps_rsync --delete /home/user/projects/ "root@$vps_ip:/home/backup/projects/"
+```
+
+### 4. Make it a reusable function
+
+You can simplify the interface further:
+
+```
+vps_sync() {
+    SSHPASS="$vps_password" rsync \
+        -avz --progress \
+        -e "sshpass -e ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
+        "$1" "root@$vps_ip:$2"
+}
+```
+
+Usage:
+
+```
+vps_sync "/home/user/projects/" "/home/backup/projects/"
+```
+
+Security note: Your current SSH options disable host-key verification, making connections vulnerable to server impersonation. For a production VPS, it's better to configure SSH host-key verification.
+
+Also, password-based SSH works with this approach, provided `sshpass` and `rsync` are installed on Ubuntu and `rsync` is installed on Debian.
+
+#
+
+# how to host a http site on a new debian low end vps, given a folder of images, when accessed, show the last image by name in the folder, when onclick show the prev one and alter url
+
+You can do this very easily on a low-end Debian VPS using Nginx + a small Python Flask application.
+
+However, for your use case, I'd actually recommend Nginx + PHP or even a static HTML/JavaScript solution. You don't need a database, Node.js, or a heavy framework.
+
+Here's a lightweight solution:
+
+## 1. How it will work
+
+Suppose your image folder contains:
+
+```
+images/
+├── 001.jpg
+├── 002.jpg
+├── 003.jpg
+├── 004.jpg
+└── 005.jpg
+```
+
+The website behaves like this:
+
+- Visiting `/` displays `005.jpg` (the last image alphabetically).
+- Clicking the image displays `004.jpg`.
+- Clicking again displays `003.jpg`.
+- The URL changes with every image.
+- Refreshing or sharing the URL opens the same image.
+- When reaching the first image, it can loop back to the last.
+
+Example URLs:
+
+```
+https://example.com/
+https://example.com/004.jpg
+https://example.com/003.jpg
+https://example.com/002.jpg
+```
+
+## 2. Install Nginx on Debian
+
+Connect to your VPS:
+
+```
+ssh root@YOUR_SERVER_IP
+```
+
+Install Nginx:
+
+```
+apt update
+apt install nginx -y
+```
+
+Create the website directory:
+
+```
+mkdir -p /var/www/gallery/images
+```
+
+Upload your images into:
+
+```
+/var/www/gallery/images/
+```
+
+For example, using SCP:
+
+```
+scp -r ./images/* root@YOUR_SERVER_IP:/var/www/gallery/images/
+```
+
+## 3. Install PHP
+
+PHP is useful here because it can automatically discover images in the directory without needing a manually maintained image list.
+
+```
+apt install php-fpm -y
+```
+
+Find the PHP-FPM socket:
+
+```
+ls /run/php/
+```
+
+You'll see something similar to:
+
+```
+php8.4-fpm.sock
+```
+
+## 4. Create the gallery application
+
+Create:
+
+```
+mkdir -p /var/www/gallery/public
+nano /var/www/gallery/public/index.php
+```
+
+Paste this code:
+
+```
+
+<?php
+$dir = __DIR__ . '/images';
+
+// Supported image extensions
+$extensions = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'avif'];
+
+$files = array_filter(scandir($dir), function ($file) use ($dir, $extensions) {
+    $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+
+    return is_file("$dir/$file") && in_array($ext, $extensions);
+});
+
+// Sort alphabetically by filename
+sort($files, SORT_STRING);
+
+if (!$files) {
+    http_response_code(404);
+    exit('No images found.');
+}
+
+// Current image from URL
+$current = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+
+if ($current === '' || $current === 'index.php') {
+    $current = end($files);
+}
+
+// Validate requested filename
+if (!in_array($current, $files, true)) {
+    http_response_code(404);
+    exit('Image not found.');
+}
+
+// Find previous image
+$index = array_search($current, $files, true);
+$previous = $files[$index - 1] ?? end($files);
+
+$imageUrl = '/images/' . rawurlencode($current);
+$previousUrl = '/' . rawurlencode($previous);
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image Gallery</title>
+<style>
+* {
+    box-sizing: border-box;
+}
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background: #111;
+}
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+<a href="<?= htmlspecialchars($previousUrl, ENT_QUOTES) ?>">
+    <img src="<?= htmlspecialchars($imageUrl, ENT_QUOTES) ?>"
+         alt="<?= htmlspecialchars($current, ENT_QUOTES) ?>">
+</a>
+</body>
+</html>
+
+```
+
+This implementation:
+
+- Automatically scans the image folder.
+- Sorts filenames alphabetically.
+- Displays the last filename by default.
+- Goes to the previous filename when clicked.
+- Loops to the last image when reaching the beginning.
+- Uses the filename in the URL.
+
+For example:
+
+```
+/             → 005.jpg
+/005.jpg      → 004.jpg
+/004.jpg      → 003.jpg
+/003.jpg      → 002.jpg
+```
+
+## 5. Configure Nginx
+
+Create:
+
+```
+nano /etc/nginx/sites-available/gallery
+```
+
+Paste:
+
+```
+
+server {
+    listen 80;
+    server_name example.com;
+
+    root /var/www/gallery/public;
+    index index.php;
+
+    location /images/ {
+        alias /var/www/gallery/public/images/;
+        expires 7d;
+    }
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php8.4-fpm.sock;
+    }
+
+    location ~ /\. {
+        deny all;
+    }
+}
+
+```
+
+Replace `example.com` with your domain and `php8.4-fpm.sock` with the socket you found earlier.
+
+Move your images into the public image directory:
+
+```
+mkdir -p /var/www/gallery/public/images
+```
+
+Enable the site:
+
+```
+ln -s /etc/nginx/sites-available/gallery \
+      /etc/nginx/sites-enabled/gallery
+
+nginx -t
+systemctl reload nginx
+```
+
+Make sure PHP-FPM is running:
+
+```
+systemctl enable --now php8.4-fpm
+```
+
+Adjust the service name if your PHP version differs.
+
+## 6. Move images and set permissions
+
+If you uploaded images to the original directory:
+
+```
+mv /var/www/gallery/images/* /var/www/gallery/public/images/
+```
+
+Set permissions:
+
+```
+chown -R www-data:www-data /var/www/gallery
+chmod -R 755 /var/www/gallery
+```
+
+Check that your images are accessible:
+
+```
+http://YOUR_SERVER_IP/
+```
+
+## 7. Optional: Enable HTTPS
+
+If you have a domain pointed to your VPS:
+
+```
+apt install certbot python3-certbot-nginx -y
+
+certbot --nginx -d example.com
+```
+
+## 8. A few useful improvements
+
+For a low-end VPS, this implementation is very lightweight. You can also add:
+
+- Keyboard navigation: Left arrow to previous image.
+- Touch navigation: Swipe to previous image on mobile.
+- Preloading: Preload the next image for faster navigation.
+- Natural sorting: So `image10.jpg` and `image2.jpg` appear in numerical order rather than ordinary alphabetical order.
+- Random access: Add a URL for each image so individual images can be shared.
+
+One important detail: the current implementation uses alphabetical filename sorting, not modification date sorting.
+
+My recommendation: Keep it server-rendered with PHP and Nginx. No database, no JavaScript framework, and almost no VPS resources required.
+
+#
+
+# how to host a http site on a new debian low end vps in py, given a folder of images, when accessed, show the last image by name in the folder, when onclick show the prev one and alter url
+
+The simplest solution is to use Python + Flask + Gunicorn + Nginx on your Debian VPS.
+
+You can make a lightweight image gallery with exactly this behavior:
+
+1. Visit `http://your-domain.com/` → show the image with the latest filename (alphabetically).
+2. Click the image → show the previous image.
+3. URL changes to something like `/image/photo_0042.jpg`.
+4. Refreshing or sharing the URL opens that exact image.
+5. When reaching the first image, loop back to the last image.
+
+No database or JavaScript framework needed.
+
+## 1. Project structure
+
+```
+image-site/
+├── app.py
+├── images/
+│   ├── photo_0001.jpg
+│   ├── photo_0002.jpg
+│   ├── photo_0003.jpg
+│   └── ...
+└── templates/
+    └── index.html
+```
+
+## 2. Python backend (app.py)
+
+We'll sort filenames alphabetically, case-insensitively, and use the last one as the starting image.
+
+```
+from flask import Flask, render_template, abort, url_forfrom pathlib import Pathfrom urllib.parse import quoteapp = Flask(__name__)IMAGE_DIR = Path(__file__).parent / "images"EXTENSIONS = {".jpg", ".jpeg", ".png", ".gif", ".webp", ".avif"}def get_images():    return sorted(        [            f.name for f in IMAGE_DIR.iterdir()            if f.is_file() and f.suffix.lower() in EXTENSIONS        ],        key=str.casefold    )@app.route("/")def index():    images = get_images()    if not images:        return "No images found", 404    return show_image(images[-1])@app.route("/image/<path:filename>")def show_image(filename):    images = get_images()    if filename not in images:        abort(404)    current = images.index(filename)    previous = images[(current - 1) % len(images)]    return render_template(        "index.html",        filename=filename,        previous=previous    )@app.route("/images/<path:filename>")def serve_image(filename):    from flask import send_from_directory    return send_from_directory(IMAGE_DIR, filename)if __name__ == "__main__":    app.run(host="127.0.0.1", port=8000)
+```
+
+## 3. HTML frontend (templates/index.html)
+
+Click anywhere on the image to navigate to the previous image.
+
+```
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Image Viewer</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #111;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 100vh;
+            object-fit: contain;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <img
+        src="{{ url_for('serve_image', filename=filename) }}"
+        onclick="location.href={{ url_for('show_image', filename=previous)|tojson }}"
+        alt="{{ filename }}"
+    >
+</body>
+</html>
+
+```
+
+For example:
+
+```
+/                         → photo_0042.jpg
+/image/photo_0042.jpg     → photo_0042.jpg
+/image/photo_0041.jpg     → photo_0041.jpg
+/image/photo_0040.jpg     → photo_0040.jpg
+```
+
+## 4. Install on Debian VPS
+
+SSH into your VPS:
+
+```
+sudo apt update
+sudo apt install -y python3 python3-venv python3-pip nginx
+```
+
+Create the project:
+
+```
+mkdir -p ~/image-site/templates ~/image-site/images
+cd ~/image-site
+```
+
+Put your `app.py`, HTML template and images into their respective directories.
+
+Install Flask and Gunicorn:
+
+```
+python3 -m venv venv
+source venv/bin/activate
+
+pip install flask gunicorn
+```
+
+Test it:
+
+```
+gunicorn --bind 127.0.0.1:8000 app:app
+```
+
+Visit:
+
+```
+http://YOUR_SERVER_IP:8000
+```
+
+Note: This test binds to localhost, so use an SSH tunnel or temporarily change the bind address to `0.0.0.0` to test directly.
+
+## 5. Configure Nginx
+
+Create:
+
+```
+sudo nano /etc/nginx/sites-available/image-site
+```
+
+Paste:
+
+```
+server {
+    listen 80;
+    server_name YOUR_DOMAIN_OR_IP;
+
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    client_max_body_size 10M;
+}
+```
+
+Enable it:
+
+```
+sudo ln -s /etc/nginx/sites-available/image-site \
+    /etc/nginx/sites-enabled/
+
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
+## 6. Run permanently with systemd
+
+Create:
+
+```
+sudo nano /etc/systemd/system/image-site.service
+```
+
+Paste (replace `YOUR_USER` with your Linux username):
+
+```
+[Unit]
+Description=Python Image Viewer
+After=network.target
+
+[Service]
+User=YOUR_USER
+WorkingDirectory=/home/YOUR_USER/image-site
+ExecStart=/home/YOUR_USER/image-site/venv/bin/gunicorn \
+    --workers 1 \
+    --bind 127.0.0.1:8000 \
+    app:app
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Start it:
+
+```
+sudo systemctl daemon-reload
+sudo systemctl enable --now image-site
+```
+
+Now your site should be accessible at:
+
+```
+http://YOUR_SERVER_IP/
+```
+
+## A few useful optimizations
+
+For a low-end VPS, I'd recommend:
+
+- One Gunicorn worker: saves RAM.
+- Nginx for static images: better than sending every image through Flask.
+- No database: the directory itself is your image index.
+- No JavaScript framework: just one click handler.
+- No image preloading: saves bandwidth and memory.
+
+One important detail: this implementation sorts filenames alphabetically, not by modification date. If your filenames contain numbers, use zero-padding (`0001`, `0002`, etc.) to get the expected ordering.
+
+One possible improvement: I can also make this a pure Python standard-library solution using `http.server`, with no Flask, Gunicorn or other Python dependencies. That's particularly attractive for a very low-end VPS.
+
+#
+
+# how to host a http site on a new debian low end vps in py w minimal code, disable firewall and enable direct ip access, given a folder of images, when accessed, show the last image by name in the folder, when onclick show the prev one and alter url, i can sync a folder of code to vps, and i want to make it live after pasting a block of command on remote
+
+You can do this with one small Python file, zero frameworks, and a single deployment command.
+
+I'd use Python's built-in `http.server` on Debian. No Node.js, Flask, Django, database, or Nginx required.
+
+The result will work like this:
+
+- Visit `http://YOUR_VPS_IP/`.
+- Automatically display the image with the alphabetically last filename.
+- Click the image to display the previous image.
+- The URL changes to identify the currently displayed image.
+- Images are served directly from your synced folder.
+- Restart automatically after VPS reboot.
+
+## 1. Folder structure
+
+Sync your files to `/opt/gallery/`:
+
+```
+/opt/gallery/
+├── app.py
+└── images/
+    ├── 001.jpg
+    ├── 002.jpg
+    ├── 003.png
+    └── 004.webp
+```
+
+Images are sorted by filename, alphabetically (case-insensitive).
+
+## 2. Python server — app.py
+
+Create this file locally and sync it to your VPS, or paste it directly into the deployment command below.
+
+```
+#!/usr/bin/env python3from http.server import HTTPServer, BaseHTTPRequestHandlerfrom pathlib import Pathfrom urllib.parse import urlparse, parse_qs, quotefrom html import escapeimport mimetypesROOT = Path(__file__).parentIMAGES = ROOT / "images"class Handler(BaseHTTPRequestHandler):    def do_GET(self):        path = urlparse(self.path).path        if path.startswith("/images/"):            name = Path(path[len("/images/"):]).name            file = IMAGES / name            if file.is_file() and file.parent == IMAGES:                self.send_response(200)                self.send_header("Content-Type", mimetypes.guess_type(name)[0] or "application/octet-stream")                self.end_headers()                self.wfile.write(file.read_bytes())                return            self.send_error(404)            return        files = sorted(            (f for f in IMAGES.iterdir()             if f.is_file() and f.suffix.lower() in             (".jpg", ".jpeg", ".png", ".gif", ".webp", ".avif")),            key=lambda f: f.name.lower()        )        if not files:            self.send_error(404, "No images found")            return        requested = parse_qs(urlparse(self.path).query).get("img", [None])[0]        names = [f.name for f in files]        current = names.index(requested) if requested in names else len(names) - 1        previous = (current - 1) % len(names)        name = names[current]        html = f"""<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"><title>{escape(name)}</title><style>body {{    margin: 0; background: #111; color: white;    height: 100vh; display: flex;    align-items: center; justify-content: center;    font-family: sans-serif;}}img {{ max-width: 100vw; max-height: 90vh; object-fit: contain; }}a {{ display: block; }}</style>
+```
+
+## 3. Deploy — paste this on your Debian VPS
+
+Assumptions:
+
+- You have synced `/opt/gallery/app.py` and `/opt/gallery/images/`.
+- You are logged in as root, or can run commands using `sudo`.
+- Your VPS has a public IPv4 address.
+
+Single-command deployment
+
+```
+set -e
+
+apt-get update
+apt-get install -y python3
+
+# Disable UFW if installed
+if command -v ufw >/dev/null 2>&1; then
+    ufw disable
+fi
+
+# Allow the web server to read the synced files
+chmod -R a+rX /opt/gallery
+
+# Create systemd service
+cat > /etc/systemd/system/gallery.service <<'EOF'
+[Unit]
+Description=Minimal Python Image Gallery
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/opt/gallery
+ExecStart=/usr/bin/python3 /opt/gallery/app.py
+Restart=always
+RestartSec=3
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# Start now and automatically on reboot
+systemctl daemon-reload
+systemctl enable --now gallery
+
+echo "================================"
+echo "Gallery deployed!"
+echo "Visit: http://YOUR_VPS_IP/"
+echo "================================"
+systemctl status gallery --no-pager
+```
+
+## 4. Open your website
+
+Visit:
+
+```
+http://YOUR_VPS_IP/
+```
+
+Example navigation:
+
+| Action               | URL             |
+| -------------------- | --------------- |
+| Initial visit        | `/`             |
+| Click image 004.webp | `/?img=003.png` |
+| Click image 003.png  | `/?img=002.jpg` |
+| Click image 002.jpg  | `/?img=001.jpg` |
+
+Clicking the first image loops back to the last one.
+
+## 5. Updating images later
+
+Whenever you sync new images:
+
+```
+chmod -R a+rX /opt/gallery
+```
+
+No restart is needed because the folder is scanned on every request.
+
+If you update `app.py`, restart:
+
+```
+systemctl restart gallery
+```
+
+Useful troubleshooting:
+
+```
+systemctl status gallery
+journalctl -u gallery -f
+```
+
+## 6. Important network settings
+
+For direct public IP access:
+
+- TCP port 80 must be allowed in your VPS provider's network firewall/security group.
+- UFW is disabled by the deployment command.
+- Debian's default installation generally doesn't require another firewall service to be disabled.
+- You don't need a domain name.
+
+Security note: This exposes an unauthenticated HTTP service to the entire internet. Plain HTTP is unencrypted, and disabling the firewall removes an important layer of protection. For a public VPS, ideally allow only TCP 80 (and SSH from your own IP) rather than disabling every firewall rule.
+
+My recommendation: Keep this architecture. For a low-end VPS serving an image archive, Python's standard library is more than sufficient. No heavyweight application stack needed.
+
+# handle filename w spaces instead of 404 not found
+
+The current code already handles spaces in filenames when generating image URLs using `quote()`. The issue is that the browser may send spaces as `%20`, while your code compares the encoded URL against the actual filename.
+
+Fix it by URL-decoding the filename before looking it up.
+
+Add `unquote` to the import:
+
+```
+from urllib.parse import urlparse, parse_qs, quote, unquote
+```
+
+Then change:
+
+```
+name = Path(path[len("/images/"):]).name
+```
+
+to:
+
+```
+name = Path(unquote(path[len("/images/"):])).name
+```
+
+Also decode the requested image name:
+
+```
+requested = unquote(    parse_qs(urlparse(self.path).query).get("img", [None])[0] or "")
+```
+
+That's it. Filenames such as these will work:
+
+```
+my photo.jpg
+2026 summer trip.png
+image (1).webp
+hello world final.jpg
+```
+
+Apply the change and restart:
+
+```
+systemctl restart gallery
+```
+
+No other changes needed.
+
+# . deploy
+
+```
+ ~ % vps_sync /home/fira/.proxy/data/screenshots/test /home/test
+ ~ % vps_sync /home/fira/.proxy/data/gallery /opt
+Warning: Permanently added '108.61.187.226' (ED25519) to the list of known hosts.
+sending incremental file list
+gallery/
+gallery/app.py
+          2,344 100%    0.00kB/s    0:00:00 (xfr#1, to-chk=22/24)
+gallery/images/
+gallery/images/2026-11-03 18:59:47 1.png
+      1,888,906 100%  100.08MB/s    0:00:00 (xfr#2, to-chk=20/24)
+gallery/images/2026-11-03 18:59:49 2.png
+      1,926,099 100%  654.25kB/s    0:00:02 (xfr#3, to-chk=19/24)
+gallery/images/2026-11-03 18:59:51 3.png
+      1,936,476 100%  642.35kB/s    0:00:02 (xfr#4, to-chk=18/24)
+gallery/images/2026-11-03 18:59:53 4.png
+      1,936,131 100%  527.26kB/s    0:00:03 (xfr#5, to-chk=17/24)
+gallery/images/2026-11-03 18:59:54 5.png
+      1,934,890 100%  836.45kB/s    0:00:02 (xfr#6, to-chk=16/24)
+gallery/images/2026-11-03 19:06:19 1.png
+      1,344,488 100%  633.06kB/s    0:00:02 (xfr#7, to-chk=15/24)
+gallery/images/2026-11-03 19:06:21 2.png
+      1,423,912 100%  576.75kB/s    0:00:02 (xfr#8, to-chk=14/24)
+gallery/images/2026-11-03 19:06:24 3.png
+      1,607,947 100% 1020.98kB/s    0:00:01 (xfr#9, to-chk=13/24)
+gallery/images/2026-11-03 19:06:26 4.png
+      1,870,591 100%  809.73kB/s    0:00:02 (xfr#10, to-chk=12/24)
+gallery/images/2026-11-03 19:06:29 5.png
+      1,775,960 100%  644.73kB/s    0:00:02 (xfr#11, to-chk=11/24)
+gallery/images/2026-11-03 19:07:46 1.png
+        367,869 100%  379.35kB/s    0:00:00 (xfr#12, to-chk=10/24)
+gallery/images/2026-11-03 19:07:47 2.png
+        316,479 100%  180.00kB/s    0:00:01 (xfr#13, to-chk=9/24)
+gallery/images/2026-11-03 19:07:49 3.png
+        258,100 100%  292.06kB/s    0:00:00 (xfr#14, to-chk=8/24)
+gallery/images/2026-11-03 19:07:50 4.png
+        214,576 100%  146.23kB/s    0:00:01 (xfr#15, to-chk=7/24)
+gallery/images/2026-11-03 19:07:51 5.png
+        256,837 100%  458.53kB/s    0:00:00 (xfr#16, to-chk=6/24)
+gallery/images/2026-11-03 19:10:41 1.png
+         82,127 100%   74.82kB/s    0:00:01 (xfr#17, to-chk=5/24)
+gallery/images/2026-11-03 19:10:42 2.png
+         82,127 100%   78.32MB/s    0:00:00 (xfr#18, to-chk=4/24)
+gallery/images/2026-11-03 19:10:43 3.png
+         82,127 100%   78.32MB/s    0:00:00 (xfr#19, to-chk=3/24)
+gallery/images/2026-11-03 19:10:44 4.png
+         82,127 100%   78.32MB/s    0:00:00 (xfr#20, to-chk=2/24)
+gallery/images/2026-11-03 19:10:45 5.png
+         82,127 100%   78.32MB/s    0:00:00 (xfr#21, to-chk=1/24)
+gallery/images/2026-11-03 19:12:20 1.png
+         82,403 100%   39.29MB/s    0:00:00 (xfr#22, to-chk=0/24)
+
+sent 16,765,023 bytes  received 450 bytes  588,262.21 bytes/sec
+total size is 19,554,643  speedup is 1.17
+```
+
+```
+ ~ % vps
+Warning: Permanently added '108.61.187.226' (ED25519) to the list of known hosts.
+Linux vultr 6.12.113+deb13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.12.113-1 (2026-10-15) x86_64
+******************************PLEASE NOTE********************************
+* If this a new instance, cloud-init may still be running and normal    *
+* operations may not work as expected.                                  *
+*                                                                       *
+* Please use `cloud-init status' to check on the status of the instance *
+* provisioning                                                          *
+*                                                                       *
+* Remove this message by editing /etc/motd                              *
+*************************************************************************
+Last login: Tue Nov  3 13:34:34 2026 from 103.151.173.99
+root@vultr:~# cd /opt
+root@vultr:/opt# ls
+gallery  vultr
+root@vultr:/opt# cd gallery
+root@vultr:/opt/gallery# ls
+app.py  images
+root@vultr:/opt/gallery# exit
+logout
+Connection to 108.61.187.226 closed.
+```
+
+```
+ ~ % vps
+Warning: Permanently added '108.61.187.226' (ED25519) to the list of known hosts.
+Linux vultr 6.12.113+deb13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.12.113-1 (2026-10-15) x86_64
+******************************PLEASE NOTE********************************
+* If this a new instance, cloud-init may still be running and normal    *
+* operations may not work as expected.                                  *
+*                                                                       *
+* Please use `cloud-init status' to check on the status of the instance *
+* provisioning                                                          *
+*                                                                       *
+* Remove this message by editing /etc/motd                              *
+*************************************************************************
+Last login: Tue Nov  3 13:53:31 2026 from 103.151.173.99
+root@vultr:~# set -e
+root@vultr:~#
+root@vultr:~# apt-get update
+Hit:1 https://deb.debian.org/debian trixie InRelease
+Get:2 https://deb.debian.org/debian-security trixie-security InRelease [43.4 kB]
+Get:3 https://deb.debian.org/debian trixie-updates InRelease [47.3 kB]
+Get:4 https://deb.debian.org/debian-security trixie-security/main Sources [258 kB]
+Get:5 https://deb.debian.org/debian trixie-updates/main Sources.diff/Index [7,239 B]
+Get:6 https://deb.debian.org/debian trixie-updates/main amd64 Packages.diff/Index [7,239 B]
+Get:7 https://deb.debian.org/debian trixie-updates/main Translation-en.diff/Index [7,239 B]
+Get:8 https://deb.debian.org/debian trixie-updates/main Sources T-2026-10-30-1402.07-F-2026-10-22-2004.53.pdiff [1,367 B]
+Get:8 https://deb.debian.org/debian trixie-updates/main Sources T-2026-10-30-1402.07-F-2026-10-22-2004.53.pdiff [1,367 B]
+Hit:9 https://debian.mirror.constant.com trixie InRelease
+Get:10 https://deb.debian.org/debian trixie-updates/main amd64 Packages T-2026-10-30-1402.07-F-2026-10-22-2004.53.pdiff [1,053 B]
+Get:10 https://deb.debian.org/debian trixie-updates/main amd64 Packages T-2026-10-30-1402.07-F-2026-10-22-2004.53.pdiff [1,053 B]
+Get:11 https://deb.debian.org/debian trixie-updates/main Translation-en T-2026-10-30-1402.07-F-2026-10-22-2004.53.pdiff [935 B]
+Get:11 https://deb.debian.org/debian trixie-updates/main Translation-en T-2026-10-30-1402.07-F-2026-10-22-2004.53.pdiff [935 B]
+Get:12 https://deb.debian.org/debian-security trixie-security/main amd64 Packages [297 kB]
+Get:13 https://deb.debian.org/debian-security trixie-security/main Translation-en [178 kB]
+Fetched 850 kB in 1s (1,077 kB/s)
+Reading package lists... Done
+N: Missing Signed-By in the sources.list(5) entry for 'https://deb.debian.org/debian'
+N: Missing Signed-By in the sources.list(5) entry for 'https://debian.mirror.constant.com'
+N: Missing Signed-By in the sources.list(5) entry for 'https://deb.debian.org/debian-security'
+N: Missing Signed-By in the sources.list(5) entry for 'https://deb.debian.org/debian'
+root@vultr:~# apt-get install -y python3
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+python3 is already the newest version (3.13.5-1).
+0 upgraded, 0 newly installed, 0 to remove and 12 not upgraded.
+root@vultr:~#
+root@vultr:~# # Disable UFW if installed
+root@vultr:~# if command -v ufw >/dev/null 2>&1; then
+>     ufw disable
+> fi
+Firewall stopped and disabled on system startup
+root@vultr:~#
+root@vultr:~# # Allow the web server to read the synced files
+root@vultr:~# chmod -R a+rX /opt/gallery
+root@vultr:~#
+root@vultr:~# # Create systemd service
+root@vultr:~# cat > /etc/systemd/system/gallery.service <<'EOF'
+> [Unit]
+> Description=Minimal Python Image Gallery
+> After=network.target
+>
+> [Service]
+> Type=simple
+> User=www-data
+> WorkingDirectory=/opt/gallery
+> ExecStart=/usr/bin/python3 /opt/gallery/app.py
+> Restart=always
+> RestartSec=3
+> AmbientCapabilities=CAP_NET_BIND_SERVICE
+> CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+> NoNewPrivileges=true
+>
+> [Install]
+> WantedBy=multi-user.target
+> EOF
+root@vultr:~#
+root@vultr:~# # Start now and automatically on reboot
+root@vultr:~# systemctl daemon-reload
+root@vultr:~# systemctl enable --now gallery
+Created symlink '/etc/systemd/system/multi-user.target.wants/gallery.service' → '/etc/systemd/system/gallery.service'.
+root@vultr:~#
+root@vultr:~# echo "================================"
+================================
+root@vultr:~# echo "Gallery deployed!"
+Gallery deployed!
+root@vultr:~# echo "Visit: http://YOUR_VPS_IP/"
+Visit: http://YOUR_VPS_IP/
+root@vultr:~# echo "================================"
+================================
+root@vultr:~# systemctl status gallery --no-pager
+● gallery.service - Minimal Python Image Gallery
+     Loaded: loaded (/etc/systemd/system/gallery.service; enabled; preset: enabled)
+     Active: active (running) since Tue 2026-11-03 13:54:29 UTC; 5s ago
+ Invocation: 0b5071b30e544b52bd26e754c421f5ad
+   Main PID: 2684 (python3)
+      Tasks: 1 (limit: 1055)
+     Memory: 9.7M (peak: 11.3M)
+        CPU: 95ms
+     CGroup: /system.slice/gallery.service
+             └─2684 /usr/bin/python3 /opt/gallery/app.py
+
+Nov 03 13:54:29 vultr systemd[1]: Started gallery.service - Minimal Python Image Gallery.
+root@vultr:~# systemctl restart gallery
+```
+
+```
+ ~ % vps_sync /home/fira/.proxy/data/gallery /opt
+Warning: Permanently added '108.61.187.226' (ED25519) to the list of known hosts.
+sending incremental file list
+gallery/app.py
+          2,479 100%  238.28kB/s    0:00:00 (xfr#1, to-chk=22/24)
+
+sent 1,445 bytes  received 61 bytes  430.29 bytes/sec
+total size is 19,554,778  speedup is 12,984.58
+```
+
+# what can you do w a vps
+
+A VPS (Virtual Private Server) is basically a computer running 24/7 in a data center that you control remotely. Think of it as having your own little Linux server on the internet.
+
+You can do A LOT with one.
+
+## 🚀 Things you can do with a VPS
+
+[Tailscale, a virtual programmable network for DevOps](https://images.openai.com/static-rsc-4/aiMypXzGuFaupTPRUoRFc7MV-A_bsNN5o2HyEMMntHHuYDO9X9ronFR6piAC0Gjx9h8e0jKGFHneP_cSh4-9kQsclPw4kaISJ9UJvFJwbmUj8fqhOqI4M8AbIrtnHAYLrcMrx43SOgJuhTMD0e76iNW9Hmzn2-o8SVq98ic_VIY?purpose=inline)
+
+1\. Host websites and apps
+
+- Host personal websites
+- Run APIs and backend services
+- Host Node.js, Python, PHP apps
+- Deploy SaaS projects
+
+[Tech With Tim (@TechWithTimm) on X](https://images.openai.com/static-rsc-4/xGkEA9GZKkmRmqoQ-LxNunZ_IWPMrtMzwg62A1sHiXLde-LcsOenTzJ3XgvqUrR_kIpxCFfwsoh2FgaG1o6Hy7CrZPy7gCWhC6JkLdbHcukbISTDvewbzMDbxSKXB0nnmwhNt5GQq2PyqnRo1RJAaUmJDgzCN-eiauqFHNYL5LI?purpose=inline)
+
+2\. Run bots 24/7
+
+- Discord bots
+- Telegram bots
+- Reddit monitoring bots
+- Automated workflows
+- Web scraping (respecting site rules)
+
+[My Favorite Self-Hosted Apps Launched in 2025](https://images.openai.com/static-rsc-4/m0Bq6Prqxh_jFD5aLIdouutaGcZHOjgEkomOj8i7VDMSje_hmUjx1ZHqqiwBh9GpwYNGFJfli4Qtj-srsiGhIFLfpY7C_5oYtXHZxgnNHEssQJq9iHqjj2esOHxHXKZoRAzAzPsY4H5VhIPzGWcxsqLMBO4TwRtKAXPHyoMsZm4?purpose=inline)
+
+3\. Self-host your own services
+
+- Nextcloud (personal cloud)
+- Jellyfin (media server)
+- Vaultwarden (password manager)
+- n8n (automation)
+- Immich (photo backup)
+
+[StarDix | Full PvP | BedWars | And More Minecraft Server](https://images.openai.com/static-rsc-4/IrejXW1RxmQwR80wxnvSQr2ecit9XWuqrzV76bdV3wg_DBFIGLZXg2_FbgsjEnnaHDYqqdu05KjlGMyZ-OqyzWqMWuD0aYP5t6yw_nhRqTkaiJJvKWY9ztDuGeuMHGQmfebHyaC1gJnCm0aLTfEJ4QymDZgdB7MjsqQqMTrShKs?purpose=inline)
+
+4\. Game servers
+
+- Minecraft
+- Terraria
+- CS2
+- Palworld
+- Private multiplayer servers
+
+[I Told Copilot to SSH Into My Switches So I Didn't Have To | Eric Marquez](https://images.openai.com/static-rsc-4/Xyh2Gke0KD1vhNrPoUQlqjhDsDbfIXRoJ3PsrOm1lG4Md_r7qniWEWm3YWwJWC1OJ2VcUYQoEAMdU48Ms2gEQPFamCUZYSVDDJxuHfnpA14ZeG3Iadostaosp914WLC2VNsuGPwh4eh-3t6UpLNGQRjAQ1d4_QM2shK2H9MfOec?purpose=inline)
+
+5\. Networking and cybersecurity labs
+
+- VPN server (WireGuard)
+- Private DNS
+- Reverse proxy
+- Firewall experiments
+- Linux and networking practice
+
+[Automate with Shahrukh | Premium AI & Automation Agency](https://images.openai.com/static-rsc-4/J41O2pD7ur-upmKuh6it4baQP6XKAxWNNSmR8LdV-EOyU18FuN9P5BUIKuZfDVn3wsUsUOXPADZfm-I78bnCudyySvhDxUNGW8kmxOvouDNJ0l5L0VtNZQQnJ__MxkvQLqCDtoIojgHy9LEFyD7ENDW9NdaRuuMcO7CXJAb1hVE?purpose=inline)
+
+6\. AI and automation
+
+- Run AI-powered bots using APIs
+- Host automation agents
+- Schedule AI tasks
+- Connect apps through APIs
+- Run lightweight local AI models (depending on RAM/CPU)
+
+## 💡 Some cool projects I'd recommend
+
+| Project        | What it does                            |
+| -------------- | --------------------------------------- |
+| Personal cloud | Your own Google Drive alternative       |
+| Uptime Kuma    | Monitors whether websites are online    |
+| n8n            | Automates tasks between apps            |
+| Pi-hole        | Blocks ads and trackers on your network |
+| Homepage       | Personal server dashboard               |
+| Docker         | Runs multiple isolated applications     |
+| WireGuard      | Creates your own VPN                    |
+| Git server     | Your own private code hosting           |
+
+## Let me know what VPS you have
+
+1\. Which OS is installed?
+
+Ubuntu
+
+Debian
+
+Windows Server
+
+Other / Not sure
+
+2\. How much RAM?
+
+1 GB
+
+2 GB
+
+4 GB
+
+8 GB
+
+16 GB
+
+32 GB+
+
+3\. What do you want to do with it?
+
+Cool projects / experimenting
+
+Make money / build a business
+
+AI agents and automation
+
+Bots and scripts
+
+Hosting websites / apps
+
+Cybersecurity / networking
+
+Self-hosted services
+
+I want to explore everything
+
+4\. How do you access it?
+
+SSH / Terminal
+
+Remote Desktop
+
+Web control panel
+
+Not sure
+
+Show me what I can build
+
+I can also walk you through setting up projects from scratch, including commands, Docker configurations, security and deployment.
+
+```
+<div class="Box-IGz62a" data-d-component="box" data-d-direction="col" data-d-has-border="" style="border: 1px solid var(--color-border); border-radius: var(--dil-radius-lg); --w-box-gutter-block-end: calc(var(--spacing, 0.25rem) * 3); --w-box-gutter-block-start: calc(var(--spacing, 0.25rem) * 3); --w-box-gutter-inline-end: calc(var(--spacing, 0.25rem) * 3); --w-box-gutter-inline-start: calc(var(--spacing, 0.25rem) * 3); padding-block: calc(var(--spacing, 0.25rem) * 3); padding-inline: calc(var(--spacing, 0.25rem) * 3); gap: calc(var(--spacing, 0.25rem) * 3);"><p class="TextBase-qM5iDq Text-nubxrT" data-d-text-flow="" data-d-component="text"><span class="TextBase-qM5iDq Text-nubxrT" data-d-text-flow="" data-d-component="text" data-d-default-strong="" data-d-inline=""><span data-d-stream-run="" data-d-text-flow="run" style="--d-stream-ink: rgb(237, 237, 237);">1. Which OS is installed?</span></span></p><div role="radiogroup" aria-required="false" class="RadioGroup-tMSWPY RadioGroup-sFHFZn" data-direction="col" aria-label="Options" data-d-component="radio-group" tabindex="0" style="outline: none;"><div class="flex" data-d-component="radio"><label for="Ubuntu-_r_c9_" class="RadioLabel-aEyICO"><div class="RadioIndicatorWrapper-VjVXTu"><button type="button" role="radio" aria-checked="true" data-state="checked" value="Ubuntu" id="Ubuntu-_r_c9_" class="RadioItem-eqbQKh" tabindex="-1" data-radix-collection-item=""><span data-state="checked" class="RadioIndicator-QSL7RM"></span></button></div>Ubuntu</label></div><div class="flex" data-d-component="radio"><label for="Debian-_r_cb_" class="RadioLabel-aEyICO"><div class="RadioIndicatorWrapper-VjVXTu"><button type="button" role="radio" aria-checked="false" data-state="unchecked" value="Debian" id="Debian-_r_cb_" class="RadioItem-eqbQKh" tabindex="-1" data-radix-collection-item=""></button></div>Debian</label></div><div class="flex" data-d-component="radio"><label for="Windows Server-_r_cd_" class="RadioLabel-aEyICO"><div class="RadioIndicatorWrapper-VjVXTu"><button type="button" role="radio" aria-checked="false" data-state="unchecked" value="Windows Server" id="Windows Server-_r_cd_" class="RadioItem-eqbQKh" tabindex="-1" data-radix-collection-item=""></button></div>Windows Server</label></div><div class="flex" data-d-component="radio"><label for="Other / Not sure-_r_cf_" class="RadioLabel-aEyICO"><div class="RadioIndicatorWrapper-VjVXTu"><button type="button" role="radio" aria-checked="false" data-state="unchecked" value="Other / Not sure" id="Other / Not sure-_r_cf_" class="RadioItem-eqbQKh" tabindex="-1" data-radix-collection-item=""></button></div>Other / Not sure</label></div></div><div class="Divider-__JU1b" data-d-component="divider" style="--divider-color: var(--color-border-subtle); --divider-size: 1px;"></div><p class="TextBase-qM5iDq Text-nubxrT" data-d-text-flow="" data-d-component="text"><span class="TextBase-qM5iDq Text-nubxrT" data-d-text-flow="" data-d-component="text" data-d-default-strong="" data-d-inline=""><span data-d-stream-run="" data-d-text-flow="run" style="--d-stream-ink: rgb(237, 237, 237);">2. How much RAM?</span></span></p><div role="radiogroup" aria-required="false" class="RadioGroup-tMSWPY RadioGroup-sFHFZn" data-direction="col" aria-label="Options" data-d-component="radio-group" tabindex="0" style="outline: none;"><div class="flex" data-d-component="radio"><label for="1 GB-_r_ch_" class="RadioLabel-aEyICO"><div class="RadioIndicatorWrapper-VjVXTu"><button type="button" role="radio" aria-checked="false" data-state="unchecked" value="1 GB" id="1 GB-_r_ch_" class="RadioItem-eqbQKh" tabindex="-1" data-radix-collection-item=""></button></div>1 GB</label></div><div class="flex" data-d-component="radio"><label for="2 GB-_r_cj_" class="RadioLabel-aEyICO"><div class="RadioIndicatorWrapper-VjVXTu"><button type="button" role="radio" aria-checked="false" data-state="unchecked" value="2 GB" id="2 GB-_r_cj_" class="RadioItem-eqbQKh" tabindex="-1" data-radix-collection-item=""></button></div>2 GB</label></div><div class="flex" data-d-component="radio"><label for="4 GB-_r_cl_" class="RadioLabel-aEyICO"><div class="RadioIndicatorWrapper-VjVXTu"><button type="button" role="radio" aria-checked="true" data-state="checked" value="4 GB" id="4 GB-_r_cl_" class="RadioItem-eqbQKh" tabindex="-1" data-radix-collection-item=""><span data-state="checked" class="RadioIndicator-QSL7RM"></span></button></div>4 GB</label></div><div class="flex" data-d-component="radio"><label for="8 GB-_r_cn_" class="RadioLabel-aEyICO"><div class="RadioIndicatorWrapper-VjVXTu"><button type="button" role="radio" aria-checked="false" data-state="unchecked" value="8 GB" id="8 GB-_r_cn_" class="RadioItem-eqbQKh" tabindex="-1" data-radix-collection-item=""></button></div>8 GB</label></div><div class="flex" data-d-component="radio"><label for="16 GB-_r_cp_" class="RadioLabel-aEyICO"><div class="RadioIndicatorWrapper-VjVXTu"><button type="button" role="radio" aria-checked="false" data-state="unchecked" value="16 GB" id="16 GB-_r_cp_" class="RadioItem-eqbQKh" tabindex="-1" data-radix-collection-item=""></button></div>16 GB</label></div><div class="flex" data-d-component="radio"><label for="32 GB+-_r_cr_" class="RadioLabel-aEyICO"><div class="RadioIndicatorWrapper-VjVXTu"><button type="button" role="radio" aria-checked="false" data-state="unchecked" value="32 GB+" id="32 GB+-_r_cr_" class="RadioItem-eqbQKh" tabindex="-1" data-radix-collection-item=""></button></div>32 GB+</label></div></div><div class="Divider-__JU1b" data-d-component="divider" style="--divider-color: var(--color-border-subtle); --divider-size: 1px;"></div><p class="TextBase-qM5iDq Text-nubxrT" data-d-text-flow="" data-d-component="text"><span class="TextBase-qM5iDq Text-nubxrT" data-d-text-flow="" data-d-component="text" data-d-default-strong="" data-d-inline=""><span data-d-stream-run="" data-d-text-flow="run" style="--d-stream-ink: rgb(237, 237, 237);">3. What do you want to do with it?</span></span></p><div role="radiogroup" aria-required="false" class="RadioGroup-tMSWPY RadioGroup-sFHFZn" data-direction="col" aria-label="Options" data-d-component="radio-group" tabindex="0" style="outline: none;"><div class="flex" data-d-component="radio"><label for="Cool projects / experimenting-_r_d0_" class="RadioLabel-aEyICO"><div class="RadioIndicatorWrapper-VjVXTu"><button type="button" role="radio" aria-checked="true" data-state="checked" value="Cool projects / experimenting" id="Cool projects / experimenting-_r_d0_" class="RadioItem-eqbQKh" tabindex="-1" data-radix-collection-item=""><span data-state="checked" class="RadioIndicator-QSL7RM"></span></button></div>Cool projects / experimenting</label></div><div class="flex" data-d-component="radio"><label for="Make money / build a business-_r_d2_" class="RadioLabel-aEyICO"><div class="RadioIndicatorWrapper-VjVXTu"><button type="button" role="radio" aria-checked="false" data-state="unchecked" value="Make money / build a business" id="Make money / build a business-_r_d2_" class="RadioItem-eqbQKh" tabindex="-1" data-radix-collection-item=""></button></div>Make money / build a business</label></div><div class="flex" data-d-component="radio"><label for="AI agents and automation-_r_d4_" class="RadioLabel-aEyICO"><div class="RadioIndicatorWrapper-VjVXTu"><button type="button" role="radio" aria-checked="false" data-state="unchecked" value="AI agents and automation" id="AI agents and automation-_r_d4_" class="RadioItem-eqbQKh" tabindex="-1" data-radix-collection-item=""></button></div>AI agents and automation</label></div><div class="flex" data-d-component="radio"><label for="Bots and scripts-_r_d6_" class="RadioLabel-aEyICO"><div class="RadioIndicatorWrapper-VjVXTu"><button type="button" role="radio" aria-checked="false" data-state="unchecked" value="Bots and scripts" id="Bots and scripts-_r_d6_" class="RadioItem-eqbQKh" tabindex="-1" data-radix-collection-item=""></button></div>Bots and scripts</label></div><div class="flex" data-d-component="radio"><label for="Hosting websites / apps-_r_d8_" class="RadioLabel-aEyICO"><div class="RadioIndicatorWrapper-VjVXTu"><button type="button" role="radio" aria-checked="false" data-state="unchecked" value="Hosting websites / apps" id="Hosting websites / apps-_r_d8_" class="RadioItem-eqbQKh" tabindex="-1" data-radix-collection-item=""></button></div>Hosting websites / apps</label></div><div class="flex" data-d-component="radio"><label for="Cybersecurity / networking-_r_da_" class="RadioLabel-aEyICO"><div class="RadioIndicatorWrapper-VjVXTu"><button type="button" role="radio" aria-checked="false" data-state="unchecked" value="Cybersecurity / networking" id="Cybersecurity / networking-_r_da_" class="RadioItem-eqbQKh" tabindex="-1" data-radix-collection-item=""></button></div>Cybersecurity / networking</label></div><div class="flex" data-d-component="radio"><label for="Self-hosted services-_r_dc_" class="RadioLabel-aEyICO"><div class="RadioIndicatorWrapper-VjVXTu"><button type="button" role="radio" aria-checked="false" data-state="unchecked" value="Self-hosted services" id="Self-hosted services-_r_dc_" class="RadioItem-eqbQKh" tabindex="-1" data-radix-collection-item=""></button></div>Self-hosted services</label></div><div class="flex" data-d-component="radio"><label for="I want to explore everything-_r_de_" class="RadioLabel-aEyICO"><div class="RadioIndicatorWrapper-VjVXTu"><button type="button" role="radio" aria-checked="false" data-state="unchecked" value="I want to explore everything" id="I want to explore everything-_r_de_" class="RadioItem-eqbQKh" tabindex="-1" data-radix-collection-item=""></button></div>I want to explore everything</label></div></div><div class="Divider-__JU1b" data-d-component="divider" style="--divider-color: var(--color-border-subtle); --divider-size: 1px;"></div><p class="TextBase-qM5iDq Text-nubxrT" data-d-text-flow="" data-d-component="text"><span class="TextBase-qM5iDq Text-nubxrT" data-d-text-flow="" data-d-component="text" data-d-default-strong="" data-d-inline=""><span data-d-stream-run="" data-d-text-flow="run" style="--d-stream-ink: rgb(237, 237, 237);">4. How do you access it?</span></span></p><div role="radiogroup" aria-required="false" class="RadioGroup-tMSWPY RadioGroup-sFHFZn" data-direction="col" aria-label="Options" data-d-component="radio-group" tabindex="0" style="outline: none;"><div class="flex" data-d-component="radio"><label for="SSH-_r_dg_" class="RadioLabel-aEyICO"><div class="RadioIndicatorWrapper-VjVXTu"><button type="button" role="radio" aria-checked="true" data-state="checked" value="SSH" id="SSH-_r_dg_" class="RadioItem-eqbQKh" tabindex="-1" data-radix-collection-item=""><span data-state="checked" class="RadioIndicator-QSL7RM"></span></button></div>SSH / Terminal</label></div><div class="flex" data-d-component="radio"><label for="Remote Desktop-_r_di_" class="RadioLabel-aEyICO"><div class="RadioIndicatorWrapper-VjVXTu"><button type="button" role="radio" aria-checked="false" data-state="unchecked" value="Remote Desktop" id="Remote Desktop-_r_di_" class="RadioItem-eqbQKh" tabindex="-1" data-radix-collection-item=""></button></div>Remote Desktop</label></div><div class="flex" data-d-component="radio"><label for="Web control panel-_r_dk_" class="RadioLabel-aEyICO"><div class="RadioIndicatorWrapper-VjVXTu"><button type="button" role="radio" aria-checked="false" data-state="unchecked" value="Web control panel" id="Web control panel-_r_dk_" class="RadioItem-eqbQKh" tabindex="-1" data-radix-collection-item=""></button></div>Web control panel</label></div><div class="flex" data-d-component="radio"><label for="Not sure-_r_dm_" class="RadioLabel-aEyICO"><div class="RadioIndicatorWrapper-VjVXTu"><button type="button" role="radio" aria-checked="false" data-state="unchecked" value="Not sure" id="Not sure-_r_dm_" class="RadioItem-eqbQKh" tabindex="-1" data-radix-collection-item=""></button></div>Not sure</label></div></div><button type="button" class="Button-MckCnJ Button-Ng7lPh" data-color="primary" data-variant="solid" data-pill="" data-size="lg" data-block="" data-d-component="button" data-d-block="" style="--scale: 0.995;"><span class="ButtonInner-okLAMd">Show me what I can build</span></button></div>
+```
