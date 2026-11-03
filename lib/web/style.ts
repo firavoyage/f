@@ -1293,8 +1293,6 @@ export function style(theme) {
     let dereferenced_value = map(parts, (part) => {
       // let escaped_part = part.replaceAll()
       if (has(design_tokens, part)) {
-        has_reference.add(part)
-
         return css_variable(part)
       } else {
         return part
@@ -1355,19 +1353,24 @@ export function style(theme) {
 
               break
             }
-            
+
             let possible_matches = glossary[stem].prop
 
             for (const [type, prop] of possible_matches) {
               if (type == 'length' && int(value)) {
-                value = `${int(value)/4}rem`
+                value = `${int(value) / 4}rem`
                 styles[selector][prop] = value
                 break
-              } else if (type == 'color' && has(design_tokens, `color.${value}`)) {
+              } else if (
+                type == 'color' &&
+                has(design_tokens, `color.${value}`)
+              ) {
                 value = css_variable(`color.${value}`)
                 styles[selector][prop] = value
                 break
-              } 
+              }
+
+              // todo
             }
 
             break
@@ -1376,10 +1379,39 @@ export function style(theme) {
       }
     }
   }
-}
 
-function css_variable(k) {
-  return `var(--${CSS.escape(k)})`
+  let css = ''
+
+  // todo
+  // let variable_brackets = {
+  //   ":root": {}
+  // }
+
+  for (const [k, v] of entries(design_tokens)) {
+    if (!has_reference(k)) {
+      continue
+    }
+
+    css += `:root {${css_variable_definition(k)}: ${v}}\n`
+  }
+
+  for (const [selector, pairs] of entries(styles)) {
+    const [prop, value] = pairs
+
+    css += `${selector} {${prop}: ${value}}\n`
+  }
+
+  function css_variable(k) {
+    has_reference.add(k)
+    return `var(--${CSS.escape(k)})`
+  }
+
+  function css_variable_definition(k) {
+    has_reference.add(k)
+    return `--${CSS.escape(k)}`
+  }
+
+  return css
 }
 
 function glossary_types() {
@@ -1388,12 +1420,12 @@ function glossary_types() {
   for (const [k, v] of entries(glossary)) {
     if (!has(v, 'prop')) {
       continue
-    } 
+    }
 
     for (const [type, prop] of v.prop) {
       if (is(type, 'string')) {
         types.add(type)
-      } 
+      }
     }
   }
 
