@@ -153,7 +153,11 @@ const glossary = {
     prop: [
       [
         ['auto', 'contain', 'none'],
-        ['overscroll-behavior', 'overscroll-behavior-x', 'overscroll-behavior-y'],
+        [
+          'overscroll-behavior',
+          'overscroll-behavior-x',
+          'overscroll-behavior-y',
+        ],
       ],
     ],
   },
@@ -173,7 +177,9 @@ const glossary = {
     style: ['position', 'sticky'],
   },
   inset: {
-    prop: [['length', ['inset-top', 'inset-right', 'inset-bottom', 'inset-left']]],
+    prop: [
+      ['length', ['inset-top', 'inset-right', 'inset-bottom', 'inset-left']],
+    ],
   },
   'inset-x': {
     prop: [['length', ['left', 'right']]],
@@ -294,7 +300,9 @@ const glossary = {
     ],
   },
   'grid-flow': {
-    prop: [[['row', 'col', 'dense', 'row-dense', 'col-dense'], 'grid-auto-flow']],
+    prop: [
+      [['row', 'col', 'dense', 'row-dense', 'col-dense'], 'grid-auto-flow'],
+    ],
   },
   'auto-cols': {
     prop: [[['auto', 'min', 'max', 'fr'], 'grid-auto-columns']],
@@ -414,7 +422,10 @@ const glossary = {
   },
   m: {
     prop: [
-      ['length', ['margin-top', 'margin-right', 'margin-bottom', 'margin-left']],
+      [
+        'length',
+        ['margin-top', 'margin-right', 'margin-bottom', 'margin-left'],
+      ],
     ],
   },
   mx: {
@@ -554,7 +565,10 @@ const glossary = {
   decoration: {
     prop: [
       ['color', 'text-decoration-color'],
-      [['solid', 'double', 'dotted', 'dashed', 'wavy'], 'text-decoration-style'],
+      [
+        ['solid', 'double', 'dotted', 'dashed', 'wavy'],
+        'text-decoration-style',
+      ],
       ['length', 'text-decoration-thickness'],
     ],
   },
@@ -700,16 +714,22 @@ const glossary = {
     prop: [['length', ['border-top-left-radius', 'border-top-right-radius']]],
   },
   'rounded-r': {
-    prop: [['length', ['border-top-right-radius', 'border-bottom-right-radius']]],
+    prop: [
+      ['length', ['border-top-right-radius', 'border-bottom-right-radius']],
+    ],
   },
   'rounded-b': {
-    prop: [['length', ['border-bottom-right-radius', 'border-bottom-left-radius']]],
+    prop: [
+      ['length', ['border-bottom-right-radius', 'border-bottom-left-radius']],
+    ],
   },
   'rounded-l': {
     prop: [['length', ['border-top-left-radius', 'border-bottom-left-radius']]],
   },
   'rounded-s': {
-    prop: [['length', ['border-start-start-radius', 'border-end-start-radius']]],
+    prop: [
+      ['length', ['border-start-start-radius', 'border-end-start-radius']],
+    ],
   },
   'rounded-e': {
     prop: [['length', ['border-start-end-radius', 'border-end-end-radius']]],
@@ -1186,27 +1206,27 @@ export function style(theme) {
   for (const [k, v] of entries(theme)) {
     if (is(v, 'array')) {
       modes[k] = v
-      
+
       delete theme[k]
-    } 
+    }
   }
 
   function is_value(leaf) {
     if (is(leaf, 'number') || is(leaf, 'string')) {
       return true
-    } 
+    }
 
     if (!is(leaf, 'object')) {
       return false
-    } 
+    }
 
     let keys = set()
     for (const [k, v] of entries(leaf)) {
       keys.add(k)
-      
+
       if (!is_value(v)) {
         return false
-      } 
+      }
     }
 
     for (const [mode, variants] of entries(modes)) {
@@ -1216,12 +1236,12 @@ export function style(theme) {
         if (!has(variants, k)) {
           is_subset_of_variants = false
           break
-        } 
+        }
       }
 
       if (is_subset_of_variants) {
         return true
-      } 
+      }
     }
 
     return false
@@ -1235,7 +1255,7 @@ export function style(theme) {
         design_tokens[extend_prefix(prefix, k)] = v
       } else {
         traverse(v, extend_prefix(prefix, k))
-      } 
+      }
     }
   }
 
@@ -1243,17 +1263,17 @@ export function style(theme) {
   function extend_prefix(prefix, key) {
     let prefix_parts = prefix.split('-')
     let last = prefix_parts[prefix_parts.length - 1]
-    
+
     if (prefix_parts[0] == '') {
       prefix_parts = []
-    } 
+    }
 
     if (key == last) {
       return prefix
     } else {
       return [...prefix_parts, key].join('.')
       // return [...prefix_parts, key].join('-')
-    } 
+    }
   }
 
   traverse(theme)
@@ -1278,7 +1298,7 @@ export function style(theme) {
         return css_variable(part)
       } else {
         return part
-      } 
+      }
     }).join('')
 
     design_tokens[k] = dereferenced_value
@@ -1289,7 +1309,7 @@ export function style(theme) {
   for (const [k, v] of entries(theme)) {
     if (!is(v, 'object')) {
       continue
-    } 
+    }
 
     let is_component = true
 
@@ -1297,12 +1317,12 @@ export function style(theme) {
       if (!is(element_v, 'string')) {
         is_component = false
         break
-      } 
+      }
     }
 
     if (is_component) {
       components[k] = v
-    } 
+    }
   }
 
   // selector -> (prop, value)[]
@@ -1315,16 +1335,29 @@ export function style(theme) {
 
       if (!has(styles, selector)) {
         styles[selector] = {}
-      } 
-      
+      }
+
       // todo
       let utilities = utility_classes.split(' ')
-      
+
       for (const utility of utilities) {
         let parts = utility.split('-')
 
-        for (const i of each(1, parts.length, -1)) {
-          
+        for (const i of each(parts.length - 1 + 1, 1, -1)) {
+          let stem = parts.slice(0, i).join('-')
+          let value = parts.slice(i).join('-')
+
+          if (has(glossary, stem)) {
+            if (has(glossary[stem], 'style')) {
+              const [prop, value] = glossary[stem].style
+
+              styles[selector][prop] = value
+            } else {
+              let possible_matches = glossary[stem].prop
+            }
+
+            break
+          }
         }
       }
     }
@@ -1334,3 +1367,23 @@ export function style(theme) {
 function css_variable(k) {
   return `var(--${CSS.escape(k)})`
 }
+
+function glossary_types() {
+  let types = set()
+
+  for (const [k, v] of entries(glossary)) {
+    if (!has(v, 'prop')) {
+      continue
+    } 
+
+    for (const [type, prop] of v.prop) {
+      if (is(type, 'string')) {
+        types.add(type)
+      } 
+    }
+  }
+
+  return types
+}
+
+log(glossary_types())
