@@ -858,6 +858,7 @@ chem: <!-- chemistry -->
 
 - thermochemistry ideal gas law formula standard enthalpy of reaction from enthalpies of formation
 - thermodynamics formulas quiz
+- acid base 
 
 biology:
 
