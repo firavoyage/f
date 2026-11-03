@@ -4,7 +4,7 @@ import { init_desktop, data } from 'lib/file'
 init_desktop('proxy')
 
 const context = await chromium.launchPersistentContext(
-  data('twitter'),
+  data('profile/twitter'),
   {
     headless: false,
     viewport: null,
