@@ -4804,4 +4804,128 @@ Requires `sshpass` and `ssh` installed.
 
 # 
 
+# . run
+
+```
+ ~ % vps
+Warning: Permanently added '108.61.187.226' (ED25519) to the list of known hosts.
+Linux vultr 6.12.113+deb13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.12.113-1 (2026-10-15) x86_64
+******************************PLEASE NOTE********************************
+* If this a new instance, cloud-init may still be running and normal    *
+* operations may not work as expected.                                  *
+*                                                                       *
+* Please use `cloud-init status' to check on the status of the instance *
+* provisioning                                                          *
+*                                                                       *
+* Remove this message by editing /etc/motd                              *
+*************************************************************************
+Last login: Tue Nov  3 13:25:15 2026 from 103.151.173.99
+root@vultr:~# sudo apt install rsync openssh-server
+rsync is already the newest version (3.5.0+ds1-0+deb13u1).
+openssh-server is already the newest version (1:10.0p1-7+deb13u4).
+Summary:
+  Upgrading: 0, Installing: 0, Removing: 0, Not Upgrading: 0
+root@vultr:~# Connection to 108.61.187.226 closed by remote host.
+Connection to 108.61.187.226 closed.
+```
+
+```
+ ~ % rsync
+```
+
+```
+ ~ % vps_sync /home/fira/.proxy/data/screenshots/test /home/test
+Warning: Permanently added '108.61.187.226' (ED25519) to the list of known hosts.
+sending incremental file list
+created directory /home/test
+test/
+test/2026-11-03 18:59:47 1.png
+      1,888,906 100%  118.01MB/s    0:00:00 (xfr#1, to-chk=20/22)
+test/2026-11-03 18:59:49 2.png
+      1,926,099 100%  659.52kB/s    0:00:02 (xfr#2, to-chk=19/22)
+test/2026-11-03 18:59:51 3.png
+      1,936,476 100%  715.24kB/s    0:00:02 (xfr#3, to-chk=18/22)
+test/2026-11-03 18:59:53 4.png
+      1,936,131 100%  590.68kB/s    0:00:03 (xfr#4, to-chk=17/22)
+test/2026-11-03 18:59:54 5.png
+      1,934,890 100%  744.21kB/s    0:00:02 (xfr#5, to-chk=16/22)
+test/2026-11-03 19:06:19 1.png
+      1,344,488 100%  577.39kB/s    0:00:02 (xfr#6, to-chk=15/22)
+test/2026-11-03 19:06:21 2.png
+      1,423,912 100%  875.10kB/s    0:00:01 (xfr#7, to-chk=14/22)
+test/2026-11-03 19:06:24 3.png
+      1,607,947 100%  554.86kB/s    0:00:02 (xfr#8, to-chk=13/22)
+test/2026-11-03 19:06:26 4.png
+      1,870,591 100%  502.96kB/s    0:00:03 (xfr#9, to-chk=12/22)
+test/2026-11-03 19:06:29 5.png
+      1,775,960 100%  402.68kB/s    0:00:04 (xfr#10, to-chk=11/22)
+test/2026-11-03 19:07:46 1.png
+        367,869 100%   21.93MB/s    0:00:00 (xfr#11, to-chk=10/22)
+test/2026-11-03 19:07:47 2.png
+        316,479 100%   16.77MB/s    0:00:00 (xfr#12, to-chk=9/22)
+test/2026-11-03 19:07:49 3.png
+        258,100 100%  381.90kB/s    0:00:00 (xfr#13, to-chk=8/22)
+test/2026-11-03 19:07:50 4.png
+        214,576 100%  235.45kB/s    0:00:00 (xfr#14, to-chk=7/22)
+test/2026-11-03 19:07:51 5.png
+        256,837 100%  188.58kB/s    0:00:01 (xfr#15, to-chk=6/22)
+test/2026-11-03 19:10:41 1.png
+         82,127 100%  350.23kB/s    0:00:00 (xfr#16, to-chk=5/22)
+test/2026-11-03 19:10:42 2.png
+         82,127 100%  350.23kB/s    0:00:00 (xfr#17, to-chk=4/22)
+test/2026-11-03 19:10:43 3.png
+         82,127 100%  348.70kB/s    0:00:00 (xfr#18, to-chk=3/22)
+test/2026-11-03 19:10:44 4.png
+         82,127 100%  348.70kB/s    0:00:00 (xfr#19, to-chk=2/22)
+test/2026-11-03 19:10:45 5.png
+         82,127 100%  348.70kB/s    0:00:00 (xfr#20, to-chk=1/22)
+test/2026-11-03 19:12:20 1.png
+         82,403 100%  207.94kB/s    0:00:00 (xfr#21, to-chk=0/22)
+
+sent 16,763,792 bytes  received 452 bytes  549,647.34 bytes/sec
+total size is 19,552,299  speedup is 1.17
+```
+
+```
+ ~ % vps
+Warning: Permanently added '108.61.187.226' (ED25519) to the list of known hosts.
+Linux vultr 6.12.113+deb13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.12.113-1 (2026-10-15) x86_64
+******************************PLEASE NOTE********************************
+* If this a new instance, cloud-init may still be running and normal    *
+* operations may not work as expected.                                  *
+*                                                                       *
+* Please use `cloud-init status' to check on the status of the instance *
+* provisioning                                                          *
+*                                                                       *
+* Remove this message by editing /etc/motd                              *
+*************************************************************************
+Last login: Tue Nov  3 13:26:46 2026 from 103.151.173.99
+root@vultr:~# pwd
+/root
+root@vultr:~# cd /home
+root@vultr:/home# ls
+linuxuser  test
+root@vultr:/home# cd test
+root@vultr:/home/test# ls
+test
+root@vultr:/home/test# ls
+test
+root@vultr:/home/test# cd ..
+root@vultr:/home# ls
+linuxuser  test
+root@vultr:/home# cd test
+root@vultr:/home/test# ls
+test
+root@vultr:/home/test# cd test
+root@vultr:/home/test/test# ls
+'2026-11-03 18:59:47 1.png'  '2026-11-03 19:06:21 2.png'  '2026-11-03 19:07:49 3.png'  '2026-11-03 19:10:44 4.png'
+'2026-11-03 18:59:49 2.png'  '2026-11-03 19:06:24 3.png'  '2026-11-03 19:07:50 4.png'  '2026-11-03 19:10:45 5.png'
+'2026-11-03 18:59:51 3.png'  '2026-11-03 19:06:26 4.png'  '2026-11-03 19:07:51 5.png'  '2026-11-03 19:12:20 1.png'
+'2026-11-03 18:59:53 4.png'  '2026-11-03 19:06:29 5.png'  '2026-11-03 19:10:41 1.png'
+'2026-11-03 18:59:54 5.png'  '2026-11-03 19:07:46 1.png'  '2026-11-03 19:10:42 2.png'
+'2026-11-03 19:06:19 1.png'  '2026-11-03 19:07:47 2.png'  '2026-11-03 19:10:43 3.png'
+root@vultr:/home/test/test# Connection to 108.61.187.226 closed by remote host.
+Connection to 108.61.187.226 closed.
+```
+
 
