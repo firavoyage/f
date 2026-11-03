@@ -1358,6 +1358,7 @@ export function style(theme) {
       // todo
       let selector = `${component}_${element}`
 
+
       // todo
       let utilities = utility_classes.split(' ')
 
@@ -1472,10 +1473,10 @@ log(
         dark: 'palette.gray.100',
         foo: 'palette.gray.100'
       },
-      secondary: {
-        light: 'palette.gray.900',
-        dark: 'palette.gray.100',
-      },
+      // secondary: {
+        // light: 'palette.gray.900',
+        // dark: 'palette.gray.100',
+      // },
     },
     foo: {
       bar: 'p-4 px-2 text-primary text-10',
