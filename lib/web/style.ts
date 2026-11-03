@@ -1326,14 +1326,25 @@ export function style(theme) {
   // selector -> (prop, value)[]
   let styles = {}
 
+  function apply(selector, prop, value) {
+    if (is(prop, 'array')) {
+      const props = prop
+      for (const prop of props) {
+        apply(selector, prop, value)
+      }
+    } else {
+      if (!has(styles, selector)) {
+        styles[selector] = {}
+      }
+
+      styles[selector][prop] = value
+    }
+  }
+
   for (const [component, elements] of entries(components)) {
     for (const [element, utility_classes] of entries(elements)) {
       // todo
       let selector = `${component}_${element}`
-
-      if (!has(styles, selector)) {
-        styles[selector] = {}
-      }
 
       // todo
       let utilities = utility_classes.split(' ')
@@ -1349,7 +1360,7 @@ export function style(theme) {
             if (has(glossary[stem], 'style')) {
               const [prop, value] = glossary[stem].style
 
-              styles[selector][prop] = value
+              apply(selector, prop, value)
 
               break
             }
@@ -1359,14 +1370,14 @@ export function style(theme) {
             for (const [type, prop] of possible_matches) {
               if (type == 'length' && int(value)) {
                 value = `${int(value) / 4}rem`
-                styles[selector][prop] = value
+                apply(selector, prop, value)
                 break
               } else if (
                 type == 'color' &&
                 has(design_tokens, `color.${value}`)
               ) {
                 value = css_variable(`color.${value}`)
-                styles[selector][prop] = value
+                apply(selector, prop, value)
                 break
               }
 
@@ -1388,7 +1399,7 @@ export function style(theme) {
   // }
 
   for (const [k, v] of entries(design_tokens)) {
-    if (!has_reference(k)) {
+    if (!has_reference[k]) {
       continue
     }
 
@@ -1396,9 +1407,9 @@ export function style(theme) {
   }
 
   for (const [selector, pairs] of entries(styles)) {
-    const [prop, value] = pairs
-
-    css += `${selector} {${prop}: ${value}}\n`
+    for (const [prop, value] of entries(pairs)) {
+      css += `${selector} {${prop}: ${value}}\n`
+    }
   }
 
   function css_variable(k) {
@@ -1432,4 +1443,12 @@ function glossary_types() {
   return types
 }
 
-log(glossary_types())
+// log(glossary_types())
+
+log(
+  style({
+    foo: {
+      bar: 'p-4 px-2',
+    },
+  }),
+)
