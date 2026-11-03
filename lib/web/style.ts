@@ -1,4 +1,4 @@
-// import 'css.escape'
+import 'css.escape'
 
 const glossary = {
   aspect: {
@@ -1398,7 +1398,9 @@ export function style(theme) {
   //   ":root": {}
   // }
 
+  log(design_tokens)
   for (const [k, v] of entries(design_tokens)) {
+
     if (!has_reference[k]) {
       continue
     }
@@ -1447,8 +1449,11 @@ function glossary_types() {
 
 log(
   style({
+    color: {
+      primary: '#000',
+    },
     foo: {
-      bar: 'p-4 px-2',
+      bar: 'p-4 px-2 text-primary',
     },
   }),
 )

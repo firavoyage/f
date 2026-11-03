@@ -32,6 +32,7 @@
     "@typescript-eslint/rule-tester": "8.62.0",
     "@typescript-eslint/utils": "8.62.0",
     "@typescript/native-preview": "7.0.0-dev.20260515.1",
+    "css.escape": "1.5.1",
     "eslint": "10.3.0",
     "process": "0.11.10",
     "tsx": "4.21.0",
