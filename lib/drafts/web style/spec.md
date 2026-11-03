@@ -18,7 +18,8 @@ pipeline
   - concat all path, escape special characters as hyphen
   - strip duplicate consecutive keys, e.g. `palette: gray: gray, 100, 200` -> `palette-gray` instead of `palette-gray-gray`
 - iterate all (as) design tokens, dereference (e.g. color-primary: dark -> palette-gray-..., light -> ...)
-  - split the string value by space and a few css standard separators, like slash
+  - split the string value by space ~~and a few css standard separators, like slash~~
+    - space only. they are tokens, not css values now, yk.
   - for each part, check whether it's a reference to any known design token, if so replace and increase rc
   - concat back
 - iterate all (as) components, after filtering all keys of object of literals, like `comp: element: util classes string`

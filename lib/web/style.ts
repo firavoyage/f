@@ -1278,17 +1278,29 @@ export function style(theme) {
 
   traverse(theme)
 
-  let has_reference = set()
+  let references = set()
 
+  log(design_tokens)
   for (const [k, v] of entries(design_tokens)) {
-    const separators = [' ', ',', '/', '(', ')', '+', '-', '*', '/']
+    // const separators = [' ', ',', '/', '(', ')', '+', '-', '*', '/']
 
-    let separated_value: string = v
-    for (const sep of separators) {
-      separated_value = separated_value.replaceAll(sep, '__separator__')
-    }
+    // let separated_value: string = v
+    // for (const sep of separators) {
+    //   separated_value = separated_value.replaceAll(sep, '__separator__')
+    // }
 
-    let parts = separated_value.split('__separator__')
+    // let parts = separated_value.split('__separator__')
+
+    // let dereferenced_value = map(parts, (part) => {
+    //   // let escaped_part = part.replaceAll()
+    //   if (has(design_tokens, part)) {
+    //     return css_variable(part)
+    //   } else {
+    //     return part
+    //   }
+    // }).join('')
+
+    let parts = v.split(' ')
 
     let dereferenced_value = map(parts, (part) => {
       // let escaped_part = part.replaceAll()
@@ -1297,7 +1309,7 @@ export function style(theme) {
       } else {
         return part
       }
-    }).join('')
+    }).join(' ')
 
     design_tokens[k] = dereferenced_value
   }
@@ -1398,10 +1410,8 @@ export function style(theme) {
   //   ":root": {}
   // }
 
-  log(design_tokens)
   for (const [k, v] of entries(design_tokens)) {
-
-    if (!has_reference[k]) {
+    if (!has(references, k)) {
       continue
     }
 
@@ -1415,12 +1425,12 @@ export function style(theme) {
   }
 
   function css_variable(k) {
-    has_reference.add(k)
+    references.add(k)
     return `var(--${CSS.escape(k)})`
   }
 
   function css_variable_definition(k) {
-    has_reference.add(k)
+    references.add(k)
     return `--${CSS.escape(k)}`
   }
 
@@ -1449,11 +1459,26 @@ function glossary_types() {
 
 log(
   style({
+    theme: ['light', 'dark'],
+    palette: {
+      gray: {
+        100: '#eee',
+        900: '#111',
+      },
+    },
     color: {
-      primary: '#000',
+      primary: {
+        light: 'palette.gray.900',
+        dark: 'palette.gray.100',
+        foo: 'palette.gray.100'
+      },
+      secondary: {
+        light: 'palette.gray.900',
+        dark: 'palette.gray.100',
+      },
     },
     foo: {
-      bar: 'p-4 px-2 text-primary',
+      bar: 'p-4 px-2 text-primary text-10',
     },
   }),
 )
