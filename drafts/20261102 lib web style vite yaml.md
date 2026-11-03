@@ -1,0 +1,2385 @@
+# all tailwind utils
+
+### all tailwind utils
+
+Because Tailwind CSS works on an **on-demand generation engine** and supports **arbitrary values** (like `mt-[13px]`), it is mathematically impossible to list every single individual class name. [](https://github.com/tailwindlabs/tailwindcss/discussions/9368)
+
+However, you can explore the complete, structured index of all core utility categories directly on the official [Tailwind CSS Documentation](https://tailwindcss.com/docs). If you need a comprehensive, searchable reference tool while coding, you can check out the interactive [Tailwind CSS Cheat Sheet by Creative Tim](https://www.creative-tim.com/twcomponents/cheatsheet) or reference the full categorical breakdown on Tailwind Build. [](https://design.gitlab.com/product-foundations/tailwind-utilities)
+
+#### Core Tailwind Utility Categorization
+
+| Category                    | Key Utility Patterns                                     | Purpose & Examples                                                |
+| --------------------------- | -------------------------------------------------------- | ----------------------------------------------------------------- |
+| **Layout**                  | block, flex, grid, hidden, top-\*, z-\*                  | Controls display type, positioning, and layering.                 |
+| **Flexbox & Grid**          | flex-row, grid-cols-\*, gap-\*, justify-\*, items-\*     | Manages complex responsive layouts and spacing.                   |
+| **Spacing**                 | p-\*, px-\*, pt-\*, m-\*, mx-\*, my-\*                   | Controls internal padding and external margins.                   |
+| **Sizing**                  | w-\*, h-\*, size-\*, max-w-\*, min-h-\*                  | Sets dimensions (size-\* handles height and width together).      |
+| **Typography**              | text-\*, font-\*, leading-\*, tracking-\*, line-clamp-\* | Configures text size, color, weight, alignment, and wrapping.     |
+| **Backgrounds**             | bg-\*, bg-gradient-to-\*, from-\*, to-\*                 | Configures solid colors, opacities, and gradient states.          |
+| **Borders & Rings**         | border-\*, rounded-\*, divide-\*, ring-\*                | Applies border widths, radius styling, dividers, and outlines.    |
+| **Effects & Filters**       | shadow-\*, opacity-\*, blur-\*, mix-blend-\*             | Controls box shadows, transparency, and element blending.         |
+| **Transitions & Animation** | transition-\*, duration-\*, ease-\*, animate-\*          | Handles hover effects, timing functions, and keyframe animations. |
+| **Transforms**              | scale-\*, rotate-\*, translate-\*, skew-\*               | Coordinates element scaling, rotation, and 2D/3D moving.          |
+
+#### Programmatically Extracting All Generated "Base" Classes
+
+If you are building an autocomplete tool or need the raw list of core static classes inside a JavaScript/TypeScript environment, you can pull Tailwind's internal class list using its compiler architecture: [](https://github.com/tailwindlabs/tailwindcss/discussions/9368)
+
+javascript
+
+```
+// Example for extracting the base configuration class list
+const plugin = require('tailwindcss/plugin')
+const createContext = require('tailwindcss/lib/lib/setupContextUtils').createContext
+const resolveConfig = require('tailwindcss/resolveConfig')
+const tailwindConfig = require('./tailwind.config.js')
+
+const context = createContext(resolveConfig(tailwindConfig))
+const allGeneratedClasses = Object.keys(context.getClassList())
+
+console.log(allGeneratedClasses) // Outputs an array of thousands of base utilities
+
+```
+
+
+
+Are you trying to **generate a cheat sheet**, configure a custom **design token framework**, or look up a specific utility pattern like **gradients or grid items**? Let me know so I can give you the exact syntax.
+
+* [](https://tailwindcss.com/docs/styling-with-utility-classes)  
+Tailwind CSS  
+Styling with utility classes - Core concepts - Tailwind CSS  
+The display and padding utilities ( flex , shrink-0 , and p-6 ) to control the overall layout The max-width and margin utilities (
+* [](https://www.youtube.com/watch?v=x1RJ5Q09PqM&t=598)  
+YouTube·Web Dev Simplified  
+10 Tailwind Classes I Wish I Knew Earlier  
+Feb 20, 2024 — 10 Tailwind Classes I Wish I Knew Earlier but did you know there's also classes that add on even more features than just a single ...  
+49s
+* [](https://design.gitlab.com/product-foundations/tailwind-utilities)  
+Pajamas Design System  
+Tailwind utilities - Pajamas Design System - GitLab  
+All Tailwind utilities can be viewed in Tailwind Documentation. A utility is a small, single-purpose CSS class that does one thing...
+
+Show all
+
+# how many first words of util classes are there in tailwind, what are they
+
+Because Tailwind CSS features **thousands of individual utility classes**, they are structured into **dozens of distinct "first words"** (or core utility prefixes) separated by hyphens (e.g., `text-`, `bg-`, `p-`).
+
+If we look strictly at the unique root keywords/prefixes that start a base utility class (excluding modifier prefixes like `hover:`, `md:`, or `dark:`), there are **roughly 120 to 140 core first words** depending on the specific version.
+
+The absolute core "first words" of Tailwind utility classes are grouped by their design category:
+
+### Layout & Sizing
+
+* **`w-`** / **`h-`** / **`size-`**: Width, height, and combined size.
+* **`min-w-`** / **`max-w-`** / **`min-h-`** / **`max-h-`**: Boundary sizing.
+* **`flex`** / **`grid`** / **`inline`** / **`block`** / **`hidden`**: Display and layout modes.
+* **`columns-`**: Multi-column layouts.
+* **`object-`** / **`aspect-`**: Video and image fitting.
+* **`position` roots**: `absolute`, `relative`, `fixed`, `sticky`, `static`.
+* **`top-`** / **`bottom-`** / **`left-`** / **`right-`** / **`inset-`**: Coordinate positioning.
+* **`z-`**: Z-index depth.
+
+### Box Model & Spacing
+
+* **`p-`** / **`px-`** / **`py-`** / **`pt-`** / **`pb-`** / **`pl-`** / **`pr-`** / **`ps-`** / **`pe-`**: Padding options (including logical properties).
+* **`m-`** / **`mx-`** / **`my-`** / **`mt-`** / **`mb-`** / **`ml-`** / **`mr-`** / **`ms-`** / **`me-`**: Margin options.
+* **`space-`**: Parent-driven spacing between elements.
+
+### Flexbox & Grid Children
+
+* **`flex-`**: Flex direction, wrap, grow, and shrink configurations.
+* **`grid-cols-`** / **`grid-rows-`**: Grid template structures.
+* **`col-`** / **`row-`**: Grid column/row spanning and placements.
+* **`gap-`**: Gap spacing (`gap-x-`, `gap-y-`).
+* **`justify-`** / **`content-`** / **`items-`** / **`self-`**: Alignment and justification.
+* **`order-`**: Element ordering.
+
+### Typography
+
+* **`text-`**: Font sizes, text colors, and alignments.
+* **`font-`**: Font families and weights.
+* **`tracking-`** / **`leading-`**: Letter spacing and line height.
+* **`list-`**: List styles and marker positions.
+* **`underline`** / **`line-through`** / **`no-underline`**: Text decorations.
+* **`uppercase`** / **`lowercase`** / **`capitalize`** / **`normal-case`**: Text transformations.
+* **`truncate`** / **`whitespace-`** / **`break-`**: Text overflow controls.
+
+### Backgrounds & Borders
+
+* **`bg-`**: Background colors, images, positions, and sizes.
+* **`from-`** / **`via-`** / **`to-`**: Gradient color stops.
+* **`border-`**: Border widths, colors, and styles.
+* **`rounded-`**: Border radius (corners).
+* **`outline-`**: Focus outline styles and widths.
+* **`ring-`**: Box-shadow based outline rings.
+
+### Effects, Filters, & Transitions
+
+* **`shadow-`**: Box shadows.
+* **`opacity-`**: Element opacity.
+* **`blur-`** / **`brightness-`** / **`contrast-`** / **`grayscale-`** / **`invert-`** / **`sepia-`**: CSS filter effects.
+* **`transition-`**: CSS transition properties.
+* **`duration-`** / **`delay-`** / **`ease-`**: Animation and transition timing.
+* **`animate-`**: Core animations.
+* **`scale-`** / **`rotate-`** / **`translate-`** / **`skew-`**: Transform utilities.
+
+### Interactivity & Miscellaneous
+
+* **`cursor-`**: Mouse cursor styles.
+* **`pointer-events-`**: Pointer event interception.
+* **`select-`**: User text selection rules.
+* **`resize-`**: Textarea resizing controls.
+* **`accent-`** / **`caret-`**: Form control coloring.
+* **`sr-only`**: Screen reader visibility.
+
+Are you looking for the exact count of a **specific version** of Tailwind (like v3 vs the newer v4), or are you trying to programmatically extract these prefixes for a **custom regex / build tool**?
+
+# how to import a yaml file in vite
+
+To import YAML files into a Vite project as plain JavaScript objects, you need to use a Vite or Rollup plugin, as Vite does not natively support YAML imports out of the box. [](https://tutorial-vite-plugin.pages.dev/)
+
+The most efficient and widely used tool for this is **`@rollup/plugin-yaml`** (or the alternative community choice **`@modyfi/vite-plugin-yaml`**). [](https://github.com/figma/vite-plugin-yaml)
+
+Here is the step-by-step setup:
+
+### 1\. Install the Plugin
+
+Open your terminal and install the plugin as a development dependency: [](https://docs.astro.build/en/recipes/add-yaml-support/)
+
+bash
+
+```
+# Using npm
+npm install @rollup/plugin-yaml --save-dev
+
+# Using pnpm
+pnpm add @rollup/plugin-yaml --save-dev
+
+# Using yarn
+yarn add @rollup/plugin-yaml --dev
+
+```
+
+
+
+### 2\. Configure Vite
+
+Add the plugin to your `vite.config.js` or `vite.config.ts` file: [](https://github.com/figma/vite-plugin-yaml)
+
+javascript
+
+```
+// vite.config.js
+import { defineConfig } from 'vite';
+import yaml from '@rollup/plugin-yaml';
+
+export default defineConfig({
+  plugins: [
+    yaml() // Add the plugin to Vite's pipeline
+  ]
+});
+
+```
+
+
+
+### 3\. Import and Use
+
+You can now import your `.yaml` or `.yml` files directly in your JavaScript or TypeScript files. The contents will automatically parse into an object: [](https://docs.astro.build/en/recipes/add-yaml-support/)
+
+javascript
+
+```
+import data from './config.yaml';
+
+console.log(data); 
+// Output: { title: "My App", version: 1.0 }
+
+```
+
+
+
+---
+
+### 💡 TypeScript Configuration (Optional)
+
+If you are using **TypeScript**, your IDE will throw an error saying it cannot find the module for `.yaml` files. To fix this, create an environment definition file (e.g., `src/vite-env.d.ts` or `src/files.d.ts`) and add the declaration: [](https://docs.astro.build/en/recipes/add-yaml-support/)
+
+typescript
+
+```
+// src/vite-env.d.ts
+declare module '*.yaml' {
+  const value: any;
+  export default value;
+}
+
+declare module '*.yml' {
+  const value: any;
+  export default value;
+}
+
+```
+
+
+
+Are you using **TypeScript** or standard **JavaScript**? If you run into issues with a framework like **Astro, Nuxt, or Vitest**, let me know so I can tailor the configuration for you!
+
+* [](https://github.com/figma/vite-plugin-yaml)  
+GitHub  
+figma/vite-plugin-yaml: Transform a YAML file to a JS object  
+Add ViteYAML to vite.config.js / you may configure the plugin by passing in an object. Then you can simply import yaml files like ...
+* [](https://docs.astro.build/en/recipes/add-yaml-support/)  
+docs.astro.build  
+Installing a Vite or Rollup plugin  
+While you can now import YAML data in your Astro project, your editor will not provide types for the imported data. This will allo...
+* [](https://tutorial-vite-plugin.pages.dev/)  
+Cloudflare  
+YAML Plugin / Importing YAML files  
+We'll create custom Vite plugins step by step, starting with a custom Vite plugin for loading. Our goal is to be able to import a ...
+
+# what characters can the value of a css prop include
+
+### what characters can the value of a css prop include
+
+**A CSS property value can theoretically include almost any character in the Unicode spectrum**, but how they are used depends entirely on whether they are written as raw tokens, enclosed in strings, or utilized inside custom properties.
+
+Here is a breakdown of what characters are allowed based on the context of the value:
+
+#### 1\. Standard Property Values (Unquoted)
+
+When writing standard, unquoted values (like keywords, lengths, or colors), the following characters are syntactically valid:
+
+* **Alphanumeric characters:** Letters (`a-z`, `A-Z`) and digits (`0-9`).
+* **Dashes and Underscores:** `-` and `_` (commonly used in keywords like `inline-block` or font names).
+* **Decimals and Signs:** `.` for decimals, and `+` or `-` for indicating positive or negative values (e.g., `+10px`, `-2rem`).
+* **Hash/Pound Sign:** `#` used exclusively to define hexadecimal color codes (e.g., `#ffffff`).
+* **Punctuation Literals:** The comma `,` (to separate items in a list or function parameters) and the forward slash `/` (used as a separator in shorthand properties like `font` or `grid`).
+* **Parentheses:** `(` and `)` used to enclose arguments for CSS functions like `calc()`, `var()`, `url()`, or `rgba()`. [](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Values%5Fand%5Funits/Value%5Fdefinition%5Fsyntax)
+
+#### 2\. Inside Quoted Strings
+
+Inside properties that accept quoted strings (such as the `content` property or `font-family`), **virtually any Unicode character** can be included directly if your stylesheet uses a modern encoding like UTF-8. [](https://stackoverflow.com/questions/15643803/allowed-characters-in-css-content-property)
+
+* **Special Symbols & Emojis:** Characters like `★`, `→`, or `🚀` can be typed directly into the string. [](https://stackoverflow.com/questions/15643803/allowed-characters-in-css-content-property)
+* **Escape Sequences:** Any character can be represented using a backslash `\` followed by its hexadecimal Unicode code point (e.g., `\2192` for an arrow). [](https://www.bennadel.com/blog/4207-using-unicode-and-special-characters-within-the-content-property-in-css.htm)
+* **Restrictions:** Direct, unescaped literal newlines and unescaped matching quote characters (e.g., a double quote inside a double-quoted string) are prohibited. [](https://stackoverflow.com/questions/15643803/allowed-characters-in-css-content-property)
+
+#### 3\. Custom Properties (CSS Variables)
+
+CSS custom properties (`--variable-name`) are incredibly permissive. Their values can include **nearly any character sequence** as long as it follows basic tokenization rules. [](https://css-tricks.com/a-complete-guide-to-custom-properties/)
+
+* **Allowed:** You can store symbols, unquoted strings, or complex mathematical expressions.
+* **Restrictions:** They cannot contain unmatched closing parentheses `)`, brackets `]`, or braces `}`, nor can they include top-level semicolons `;` (which would prematurely end the declaration). [](https://css-tricks.com/a-complete-guide-to-custom-properties/)
+
+---
+
+#### Character Allowance Overview
+
+| Context              | Allowed Characters                                         | Prohibited / Restricted Characters                                    |
+| -------------------- | ---------------------------------------------------------- | --------------------------------------------------------------------- |
+| **Standard Values**  | Letters, numbers, \-, \_, ., +, #, ,, /, ()                | Most symbols (@, &, $, ^), spaces within single identifiers           |
+| **Quoted Strings**   | Almost all Unicode characters, spaces, punctuation, emojis | Unescaped newlines, unescaped matching quotes                         |
+| **Custom Variables** | Nearly any valid CSS token sequence                        | Top-level semicolons ;, unmatched closing brackets/braces/parentheses |
+
+Are you trying to figure out if a **specific character** is safe to use, or are you looking to sanitize user input for **custom CSS properties**?
+
+* [](https://www.bennadel.com/blog/4207-using-unicode-and-special-characters-within-the-content-property-in-css.htm)  
+Ben Nadel  
+Using Unicode And Special Characters Within The content Property In CSS  
+Use a backslash followed by the hexadecimal code point value. Unicode escape sequence in the content property is swallowed and not...
+* [](https://stackoverflow.com/questions/15643803/allowed-characters-in-css-content-property)  
+Stack Overflow  
+Allowed characters in CSS 'content' property? - Stack Overflow  
+March 26, 2013 — While direct input is often possible, using Unicode escapes (\`\\\\\` followed by the hexadecimal number) may be necessary if the char...
+* [](https://css-tricks.com/a-complete-guide-to-custom-properties/)  
+CSS-Tricks  
+CSS Custom Properties Guide  
+Best to stick with letters, numbers, and dashes while making sure the custom property is defined inside of a valid selector.
+
+Show all
+
+# what characters might standard prop values of a css prop include
+
+Standard property values in **CSS** can include a wide variety of characters depending on the data type (numbers, strings, functions, or identifiers) being used.
+
+The standard character types and specific symbols allowed in CSS property values are categorized below:
+
+### 🔤 Alphanumeric Characters
+
+* **Letters (a-z, A-Z):** Used for pre-defined keyword values (e.g., `block`, `auto`), font names (e.g., `Arial`), and units (e.g., `px`, `em`, `rem`, `vh`).
+* **Digits (0-9):** Used for numeric values, lengths, grid tracks, and color formats (e.g., `line-height: 1.5;`, `width: 200px;`, `font-weight: 700;`).
+
+### 🛠️ Punctuation and Separators
+
+According to the [MDN Value Definition Syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Values%5Fand%5Funits/Value%5Fdefinition%5Fsyntax), certain literal symbols serve as crucial structural dividers: [](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Values%5Fand%5Funits/Value%5Fdefinition%5Fsyntax)
+
+* **Space ( ):** Separates multiple values in shorthand properties or multi-component values (e.g., `margin: 10px 20px;`, `border: 1px solid red;`).
+* **Comma ( , ):** Separates items in an enumeration, like font stacks, or parameters inside functions (e.g., `font-family: Helvetica, Arial, sans-serif;`, `rgb(255, 0, 0)`).
+* **Slash ( / ):** Separates semantically different components that share a common syntax, most commonly used in shorthand properties like `font` (to separate font-size and line-height) or `grid-row` (e.g., `grid-area: 1 / 2 / 3 / 4;`, `font: 16px / 1.5 sans-serif;`).
+* **Hyphen ( - ):** Used in multi-word keywords (e.g., `inline-block`, `space-between`) and custom property variables (e.g., `var(--main-color)`).
+* **Underscore ( \_ ):** Allowed inside user-defined identifiers like custom property names.
+* **Period / Dot ( . ):** Serves as a decimal point for fractional numbers (e.g., `opacity: 0.5;`, `seconds: 0.2s;`). [](https://css-tricks.com/a-complete-guide-to-custom-properties/)
+
+### 🎨 Special Mathematical & Functional Symbols
+
+* **Parentheses ( `()` ):** Used to enclose arguments for CSS functions (e.g., `calc(100% - 20px)`, `url("image.png")`, `clamp(1rem, 2vw, 3rem)`).
+* **Percent Sign ( `%` ):** Denotes relative percentage values (e.g., `width: 100%;`).
+* **Hash / Pound Sign ( `#` ):** Prefixes hexadecimal color codes (e.g., `background-color: #f0e765;`).
+* **Plus ( `+` ) and Minus ( `-` ):** Explicitly denotes positive or negative numbers and acts as mathematical operators inside the `calc()` function (e.g., `top: -50px;`, `width: calc(50% + 5px);`).
+* **Asterisk ( `*` ) and Forward Slash ( `/` ):** Act as multiplication and division operators inside `calc()`. [](https://info340.github.io/css-properties.html)
+
+### 🔏 Quotation Marks and Strings
+
+* **Single ( `'` ) and Double ( `"` ) Quotes:** Encloses string literals, such as specific font family names with spaces, the `content` property in pseudo-elements, or attribute selectors (e.g., `font-family: "Times New Roman";`, `content: '•';`). [](https://bobrov.dev/blog/css-custom-properties-in-depth/)
+
+### 🌐 Unicode and Escaped Characters
+
+* **Backslash ( `\` ):** Used to escape special characters or to input any ISO 10646 character via its hexadecimal numeric code (e.g., injecting an icon via content: `content: "\2022";`). [](https://stackoverflow.com/questions/2812072/allowed-characters-for-css-identifiers)
+
+_(Note: While the exclamation mark `!` is frequently seen alongside property values in `!important`, it is technically classified as a delimiter component of the declaration rather than a part of the actual value string itself.)_ [](https://www.w3.org/TR/css-variables-1/)
+
+Are you asking to help **validate a parser** you are writing, or are you trying to figure out what characters are allowed when naming **CSS custom properties (variables)**?
+
+* [](https://css-tricks.com/a-complete-guide-to-custom-properties/)  
+CSS-Tricks  
+CSS Custom Properties Guide  
+numbers, and dashes … set the value of a custom property #f0e765; --warning: var(--yellow); } it allows the name of a custom prope...
+* [](https://www.w3.org/TR/css-variables-1/)  
+W3C  
+CSS Custom Properties for Cascading Variables Module Level 1  
+Custom properties can contain a trailing ! important, but this is automatically removed from the property's value makes the custom...
+* [](https://info340.github.io/css-properties.html)  
+GitHub  
+Chapter 7 CSS Properties | Client-Side Web Development  
+Property name, colon, semicolon; multiple values separated by spaces. Children inherit parent properties unless non-inherited (e.g...
+
+Show all
+
+# write a json object where keys are all first words of tailwind util classes and values are an object of type prop and optional style, where type is a string of the value it accepts like length color, prop is a string or an array of css props it maps to, and style is a tuple of prop and value if it can be used alone wo value
+
+### write a json object where keys are all first words of tailwind util classes and values are an object of type prop and optional style, where type is a string of the value it accepts like length color, prop is a string or an array of css props it maps to, and style is a tuple of prop and value if it can be used alone wo value
+
+8 sites
+
+#### Here are top web results for exploring this topic:
+
+[](https://tailwindcss.com/docs/styling-with-utility-classes)
+
+Tailwind CSS·https://tailwindcss.com
+
+**Styling** with **utility classes** \- Core concepts - **Tailwind CSS**
+
+Styling with utility classes. Building complex components from a constrained set of primitive utilities. Overview. You style things with Tailwind by combining many single-purpose presentational classe
+
+[](https://stackoverflow.com/questions/77142963/building-multiple-default-tailwind-classes)
+
+Stack Overflow·https://stackoverflow.com
+
+Building Multiple Default **Tailwind Classes** \- Stack Overflow
+
+Create custom plugin and add these utilities manually. You need to do some job to read through the json file and extract the values from it, and define it too as utilities. So here is the minimum proc
+
+[](https://github.com/tailwindlabs/tailwindcss/discussions/8995)
+
+GitHub·https://github.com
+
+how to pass **tailwind classes** via **props** in next js? #8995 - GitHub
+
+these tailwind classes(except placeholder ) are for my input and form element. i send these values to my input and form component as props and i use them to style them. but the problem starts here tha
+
+[](https://stackoverflow.com/questions/76551463/tailwindcss-styling-not-applied-when-passing-prop-value-and-using-it-in-template)
+
+Stack Overflow·https://stackoverflow.com
+
+TailwindCSS **styling** not applied when passing **prop value** and using ...
+
+Tailwind searches your source code for complete class names so it knows what CSS it needs to generate. This means that you cannot dynamically concatenate strings together to form a single class name, 
+
+[](https://github.com/tailwindlabs/tailwindcss/discussions/10379)
+
+GitHub·https://github.com
+
+How do I get a **list** of **all tailwind classes**/utilities in development?
+
+I'm trying to create a tool around Tailwind. What I need is a list/object of all available Tailwind classes in dev mode, so I can parse it and do some stuff with it. I looked in node\_modules/tailwindc
+
+[](https://stackoverflow.com/questions/72213469/types-for-tailwind)
+
+Stack Overflow·https://stackoverflow.com
+
+**Types** for **tailwind** \- Stack Overflow
+
+Highest score (default), Trending (recent votes count more), Date modified (newest first), Date created (oldest first). This answer is useful. -1\. This answer is not useful. Save this answer. Loading 
+
+[](https://stackoverflow.com/questions/77926059/how-to-dynamically-pass-tailwind-styles-from-props)
+
+Stack Overflow·https://stackoverflow.com
+
+How to dynamically pass **tailwind styles** from **props** \- Stack Overflow
+
+Loading when this answer was accepted… Show activity on this post. As per the documentation: The most important implication of how Tailwind extracts class names is that it will only find classes that 
+
+[](https://stackoverflow.com/questions/74008042/how-to-use-props-variables-in-tailwind)
+
+Stack Overflow·https://stackoverflow.com
+
+How to use **props** variables in **Tailwind**? - **css** \- Stack Overflow
+
+This answer is not useful. Save this answer. Loading when this answer was accepted… Show activity on this post. You can use a ternary expression with the prop you are passing as a condition to figure
+
+# write a json object where keys are all first words of tailwind util classes and values are an object of type prop and optional style, where type is a string of the value it accepts like length color, prop is a string or an array of css props it maps to, and style is a tuple of prop and value if it can be used alone wo value
+
+Below is a JSON mapping of common Tailwind CSS utility prefixes to their accepted value types, CSS properties, and standalone styles.
+
+- `type`: Expected value type (`length`, `color`, `number`, `angle`, `percentage`, etc.).
+- `prop`: CSS property or array of CSS properties affected.
+- `style`: Optional `[property, value]` tuple for utilities that work without an additional value.
+
+This covers the major Tailwind CSS v4 core utility families. It excludes responsive/state modifiers, arbitrary variants, and plugin-specific utilities.
+
+```
+{
+  "p": { "type": "length", "prop": ["padding"] },
+  "px": { "type": "length", "prop": ["padding-left", "padding-right"] },
+  "py": { "type": "length", "prop": ["padding-top", "padding-bottom"] },
+  "ps": { "type": "length", "prop": ["padding-inline-start"] },
+  "pe": { "type": "length", "prop": ["padding-inline-end"] },
+  "pt": { "type": "length", "prop": ["padding-top"] },
+  "pr": { "type": "length", "prop": ["padding-right"] },
+  "pb": { "type": "length", "prop": ["padding-bottom"] },
+  "pl": { "type": "length", "prop": ["padding-left"] },
+
+  "m": { "type": "length", "prop": ["margin"] },
+  "mx": { "type": "length", "prop": ["margin-left", "margin-right"] },
+  "my": { "type": "length", "prop": ["margin-top", "margin-bottom"] },
+  "ms": { "type": "length", "prop": ["margin-inline-start"] },
+  "me": { "type": "length", "prop": ["margin-inline-end"] },
+  "mt": { "type": "length", "prop": ["margin-top"] },
+  "mr": { "type": "length", "prop": ["margin-right"] },
+  "mb": { "type": "length", "prop": ["margin-bottom"] },
+  "ml": { "type": "length", "prop": ["margin-left"] },
+
+  "w": { "type": "length | percentage | fraction | keyword", "prop": ["width"] },
+  "min-w": { "type": "length | percentage | keyword", "prop": ["min-width"] },
+  "max-w": { "type": "length | percentage | keyword", "prop": ["max-width"] },
+  "h": { "type": "length | percentage | keyword", "prop": ["height"] },
+  "min-h": { "type": "length | percentage | keyword", "prop": ["min-height"] },
+  "max-h": { "type": "length | percentage | keyword", "prop": ["max-height"] },
+  "size": { "type": "length | percentage | keyword", "prop": ["width", "height"] },
+
+  "inset": { "type": "length | percentage", "prop": ["top", "right", "bottom", "left"] },
+  "inset-x": { "type": "length | percentage", "prop": ["left", "right"] },
+  "inset-y": { "type": "length | percentage", "prop": ["top", "bottom"] },
+  "top": { "type": "length | percentage", "prop": ["top"] },
+  "right": { "type": "length | percentage", "prop": ["right"] },
+  "bottom": { "type": "length | percentage", "prop": ["bottom"] },
+  "left": { "type": "length | percentage", "prop": ["left"] },
+  "start": { "type": "length | percentage", "prop": ["inset-inline-start"] },
+  "end": { "type": "length | percentage", "prop": ["inset-inline-end"] },
+
+  "gap": { "type": "length", "prop": ["gap"] },
+  "gap-x": { "type": "length", "prop": ["column-gap"] },
+  "gap-y": { "type": "length", "prop": ["row-gap"] },
+  "space-x": { "type": "length", "prop": ["margin-left"] },
+  "space-y": { "type": "length", "prop": ["margin-top"] },
+
+  "basis": { "type": "length | percentage | fraction", "prop": ["flex-basis"] },
+  "grow": { "type": "number", "prop": ["flex-grow"] },
+  "shrink": { "type": "number", "prop": ["flex-shrink"] },
+  "order": { "type": "number", "prop": ["order"] },
+
+  "grid-cols": { "type": "number | custom-grid-template", "prop": ["grid-template-columns"] },
+  "grid-rows": { "type": "number | custom-grid-template", "prop": ["grid-template-rows"] },
+  "col": { "type": "number | span", "prop": ["grid-column"] },
+  "col-start": { "type": "number", "prop": ["grid-column-start"] },
+  "col-end": { "type": "number", "prop": ["grid-column-end"] },
+  "row": { "type": "number | span", "prop": ["grid-row"] },
+  "row-start": { "type": "number", "prop": ["grid-row-start"] },
+  "row-end": { "type": "number", "prop": ["grid-row-end"] },
+  "auto-cols": { "type": "length | keyword", "prop": ["grid-auto-columns"] },
+  "auto-rows": { "type": "length | keyword", "prop": ["grid-auto-rows"] },
+
+  "text": { "type": "length | color", "prop": ["font-size", "color"] },
+  "font": { "type": "font-family | font-weight", "prop": ["font-family", "font-weight"] },
+  "leading": { "type": "length | number", "prop": ["line-height"] },
+  "tracking": { "type": "length", "prop": ["letter-spacing"] },
+  "indent": { "type": "length", "prop": ["text-indent"] },
+  "decoration": { "type": "color | length | style", "prop": ["text-decoration-color", "text-decoration-thickness", "text-decoration-style"] },
+  "underline-offset": { "type": "length", "prop": ["text-underline-offset"] },
+  "align": { "type": "keyword", "prop": ["vertical-align"] },
+
+  "bg": { "type": "color | image | size | position", "prop": ["background-color", "background-image", "background-size", "background-position"] },
+  "from": { "type": "color | percentage", "prop": ["--tw-gradient-from"] },
+  "via": { "type": "color | percentage", "prop": ["--tw-gradient-via"] },
+  "to": { "type": "color | percentage", "prop": ["--tw-gradient-to"] },
+
+  "border": { "type": "length | color | style", "prop": ["border-width", "border-color", "border-style"] },
+  "border-x": { "type": "length | color | style", "prop": ["border-left-width", "border-right-width"] },
+  "border-y": { "type": "length | color | style", "prop": ["border-top-width", "border-bottom-width"] },
+  "border-t": { "type": "length | color | style", "prop": ["border-top-width", "border-top-color"] },
+  "border-r": { "type": "length | color | style", "prop": ["border-right-width", "border-right-color"] },
+  "border-b": { "type": "length | color | style", "prop": ["border-bottom-width", "border-bottom-color"] },
+  "border-l": { "type": "length | color | style", "prop": ["border-left-width", "border-left-color"] },
+  "rounded": { "type": "length | keyword", "prop": ["border-radius"] },
+  "rounded-t": { "type": "length | keyword", "prop": ["border-top-left-radius", "border-top-right-radius"] },
+  "rounded-b": { "type": "length | keyword", "prop": ["border-bottom-left-radius", "border-bottom-right-radius"] },
+  "rounded-l": { "type": "length | keyword", "prop": ["border-top-left-radius", "border-bottom-left-radius"] },
+  "rounded-r": { "type": "length | keyword", "prop": ["border-top-right-radius", "border-bottom-right-radius"] },
+
+  "outline": { "type": "length | color | style", "prop": ["outline-width", "outline-color", "outline-style"] },
+  "outline-offset": { "type": "length", "prop": ["outline-offset"] },
+  "ring": { "type": "length | color", "prop": ["--tw-ring-width", "--tw-ring-color"] },
+  "ring-offset": { "type": "length | color", "prop": ["--tw-ring-offset-width", "--tw-ring-offset-color"] },
+  "shadow": { "type": "length | color | keyword", "prop": ["box-shadow"] },
+
+  "opacity": { "type": "percentage | number", "prop": ["opacity"] },
+  "z": { "type": "number | auto", "prop": ["z-index"] },
+  "overflow": { "type": "keyword", "prop": ["overflow"] },
+  "overflow-x": { "type": "keyword", "prop": ["overflow-x"] },
+  "overflow-y": { "type": "keyword", "prop": ["overflow-y"] },
+  "overscroll": { "type": "keyword", "prop": ["overscroll-behavior"] },
+  "overscroll-x": { "type": "keyword", "prop": ["overscroll-behavior-x"] },
+  "overscroll-y": { "type": "keyword", "prop": ["overscroll-behavior-y"] },
+
+  "object": { "type": "keyword", "prop": ["object-fit", "object-position"] },
+  "aspect": { "type": "ratio", "prop": ["aspect-ratio"] },
+  "columns": { "type": "number | length", "prop": ["columns"] },
+  "break": { "type": "keyword", "prop": ["break-before", "break-after", "break-inside"] },
+
+  "cursor": { "type": "keyword", "prop": ["cursor"] },
+  "select": { "type": "keyword", "prop": ["user-select"] },
+  "resize": { "type": "keyword", "prop": ["resize"] },
+  "scroll": { "type": "length | keyword", "prop": ["scroll-margin", "scroll-padding"] },
+  "scroll-m": { "type": "length", "prop": ["scroll-margin"] },
+  "scroll-p": { "type": "length", "prop": ["scroll-padding"] },
+  "snap": { "type": "keyword", "prop": ["scroll-snap-type"] },
+  "touch": { "type": "keyword", "prop": ["touch-action"] },
+
+  "transition": { "type": "keyword | property", "prop": ["transition-property"] },
+  "duration": { "type": "time", "prop": ["transition-duration"] },
+  "delay": { "type": "time", "prop": ["transition-delay"] },
+  "ease": { "type": "keyword | function", "prop": ["transition-timing-function"] },
+  "animate": { "type": "keyword | animation", "prop": ["animation"] },
+
+  "scale": { "type": "number | percentage", "prop": ["scale"] },
+  "rotate": { "type": "angle", "prop": ["rotate"] },
+  "translate": { "type": "length | percentage", "prop": ["translate"] },
+  "transform": { "type": "keyword", "prop": ["transform"] },
+  "origin": { "type": "keyword | position", "prop": ["transform-origin"] },
+
+  "blur": { "type": "length", "prop": ["filter"] },
+  "brightness": { "type": "percentage", "prop": ["filter"] },
+  "contrast": { "type": "percentage", "prop": ["filter"] },
+  "grayscale": { "type": "percentage", "prop": ["filter"] },
+  "hue-rotate": { "type": "angle", "prop": ["filter"] },
+  "invert": { "type": "percentage", "prop": ["filter"] },
+  "saturate": { "type": "percentage", "prop": ["filter"] },
+  "sepia": { "type": "percentage", "prop": ["filter"] },
+  "drop-shadow": { "type": "shadow", "prop": ["filter"] },
+  "backdrop": { "type": "keyword | length | color", "prop": ["backdrop-filter", "backdrop-blur", "backdrop-brightness", "backdrop-opacity"] },
+
+  "fill": { "type": "color", "prop": ["fill"] },
+  "stroke": { "type": "color | length", "prop": ["stroke", "stroke-width"] },
+  "accent": { "type": "color", "prop": ["accent-color"] },
+  "caret": { "type": "color", "prop": ["caret-color"] },
+
+  "display": { "type": "keyword", "prop": ["display"] },
+  "position": { "type": "keyword", "prop": ["position"] },
+  "static": { "type": "keyword", "prop": ["position"], "style": ["position", "static"] },
+  "fixed": { "type": "keyword", "prop": ["position"], "style": ["position", "fixed"] },
+  "absolute": { "type": "keyword", "prop": ["position"], "style": ["position", "absolute"] },
+  "relative": { "type": "keyword", "prop": ["position"], "style": ["position", "relative"] },
+  "sticky": { "type": "keyword", "prop": ["position"], "style": ["position", "sticky"] },
+
+  "flex": { "type": "keyword | number", "prop": ["display", "flex"], "style": ["display", "flex"] },
+  "inline": { "type": "keyword", "prop": ["display"], "style": ["display", "inline"] },
+  "block": { "type": "keyword", "prop": ["display"], "style": ["display", "block"] },
+  "hidden": { "type": "keyword", "prop": ["display"], "style": ["display", "none"] },
+  "grid": { "type": "keyword", "prop": ["display"], "style": ["display", "grid"] },
+  "table": { "type": "keyword", "prop": ["display"], "style": ["display", "table"] },
+
+  "items": { "type": "keyword", "prop": ["align-items"] },
+  "justify": { "type": "keyword", "prop": ["justify-content"] },
+  "content": { "type": "keyword", "prop": ["align-content"] },
+  "self": { "type": "keyword", "prop": ["align-self"] },
+  "place": { "type": "keyword", "prop": ["place-content", "place-items", "place-self"] },
+  "flex-row": { "type": "keyword", "prop": ["flex-direction"], "style": ["flex-direction", "row"] },
+  "flex-col": { "type": "keyword", "prop": ["flex-direction"], "style": ["flex-direction", "column"] },
+  "flex-wrap": { "type": "keyword", "prop": ["flex-wrap"], "style": ["flex-wrap", "wrap"] },
+  "flex-nowrap": { "type": "keyword", "prop": ["flex-wrap"], "style": ["flex-wrap", "nowrap"] },
+
+  "uppercase": { "type": "keyword", "prop": ["text-transform"], "style": ["text-transform", "uppercase"] },
+  "lowercase": { "type": "keyword", "prop": ["text-transform"], "style": ["text-transform", "lowercase"] },
+  "capitalize": { "type": "keyword", "prop": ["text-transform"], "style": ["text-transform", "capitalize"] },
+  "normal-case": { "type": "keyword", "prop": ["text-transform"], "style": ["text-transform", "none"] },
+  "italic": { "type": "keyword", "prop": ["font-style"], "style": ["font-style", "italic"] },
+  "not-italic": { "type": "keyword", "prop": ["font-style"], "style": ["font-style", "normal"] },
+  "antialiased": { "type": "keyword", "prop": ["-webkit-font-smoothing", "-moz-osx-font-smoothing"] },
+
+  "visible": { "type": "keyword", "prop": ["visibility"], "style": ["visibility", "visible"] },
+  "invisible": { "type": "keyword", "prop": ["visibility"], "style": ["visibility", "hidden"] },
+  "collapse": { "type": "keyword", "prop": ["visibility"], "style": ["visibility", "collapse"] },
+  "sr-only": { "type": "keyword", "prop": ["position", "width", "height", "overflow", "clip", "white-space"] },
+  "not-sr-only": { "type": "keyword", "prop": ["position", "width", "height", "overflow", "clip", "white-space"] }
+}
+```
+
+Important implementation detail: Some prefixes are overloaded. For example, `text-red-500` maps to `color`, while `text-lg` maps to `font-size`. Similarly, `border` can represent border width or color.
+
+For a Tailwind class parser, you'll eventually want to support multiple possible types per prefix or use the actual suffix to determine the property.
+
+# write a json object where keys are all first words of tailwind util classes and values are an object of optional type and prop and optional style, where type is a string or an array of string of the value it accepts like length color, prop is a string or an array of css props it maps to, if it can accept value, and style is a tuple of prop and value if it can be used alone wo value
+
+For Tailwind CSS v4, these are the utility prefixes whose accepted values can map to different CSS properties depending on the suffix/value.
+
+The most important ambiguous utilities for your dictionary are:
+
+## 1. Core ambiguous utilities
+
+| Prefix       | Possible CSS properties                                                                               | Example                                                   |
+| ------------ | ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| `bg`         | `background-color`, `background-image`, `background-size`, `background-position`, `background-repeat` | `bg-red-500`, `bg-cover`, `bg-gradient-to-r`              |
+| `text`       | `color`, `font-size`, `text-align`, `text-overflow`                                                   | `text-red-500`, `text-lg`, `text-center`, `text-ellipsis` |
+| `font`       | `font-family`, `font-weight`                                                                          | `font-sans`, `font-bold`                                  |
+| `border`     | `border-width`, `border-color`, `border-style`                                                        | `border-2`, `border-red-500`, `border-dashed`             |
+| `border-x`   | `border-left-width`, `border-right-width`, corresponding colors                                       | `border-x-2`, `border-x-red-500`                          |
+| `border-y`   | `border-top-width`, `border-bottom-width`, corresponding colors                                       | `border-y-2`, `border-y-red-500`                          |
+| `border-t`   | `border-top-width`, `border-top-color`, `border-top-style`                                            | `border-t-2`, `border-t-red-500`                          |
+| `border-r`   | `border-right-width`, `border-right-color`, `border-right-style`                                      | `border-r-2`, `border-r-red-500`                          |
+| `border-b`   | `border-bottom-width`, `border-bottom-color`, `border-bottom-style`                                   | `border-b-2`, `border-b-red-500`                          |
+| `border-l`   | `border-left-width`, `border-left-color`, `border-left-style`                                         | `border-l-2`, `border-l-red-500`                          |
+| `outline`    | `outline-width`, `outline-color`, `outline-style`, `outline-offset`                                   | `outline-2`, `outline-red-500`, `outline-dashed`          |
+| `ring`       | ring width, ring color, ring inset                                                                    | `ring-2`, `ring-red-500`, `ring-inset`                    |
+| `shadow`     | `box-shadow`, shadow color                                                                            | `shadow-lg`, `shadow-red-500`                             |
+| `object`     | `object-fit`, `object-position`                                                                       | `object-cover`, `object-center`                           |
+| `decoration` | `text-decoration-color`, `text-decoration-thickness`, `text-decoration-style`, `text-decoration-line` | `decoration-red-500`, `decoration-2`, `decoration-dashed` |
+| `stroke`     | `stroke`, `stroke-width`                                                                              | `stroke-red-500`, `stroke-2`                              |
+| `flex`       | `flex`, `flex-direction`, `flex-wrap`                                                                 | `flex-1`, `flex-col`, `flex-wrap`                         |
+| `grid`       | `display`, grid template configuration                                                                | `grid`, `grid-cols-3`                                     |
+| `translate`  | `translate`, X/Y translation                                                                          | `translate-4`, `translate-x-4`                            |
+| `scale`      | `scale`, individual X/Y scale                                                                         | `scale-110`, `scale-x-50`                                 |
+| `rotate`     | `rotate`, 3D rotation                                                                                 | `rotate-45`, `rotate-x-45`                                |
+| `content`    | `align-content`, `content`                                                                            | `content-center`, `content-['hello']`                     |
+| `list`       | `list-style-type`, `list-style-position`, `list-style-image`                                          | `list-disc`, `list-inside`                                |
+| `columns`    | `columns`, column width                                                                               | `columns-3`, `columns-sm`                                 |
+
+## 2. Additional prefixes with value-dependent behavior
+
+These are worth handling separately because their suffixes select different variants of a CSS property.
+
+| Prefix       | Possible CSS properties                                                 |
+| ------------ | ----------------------------------------------------------------------- |
+| `overflow`   | `overflow`, `overflow-x`, `overflow-y`                                  |
+| `overscroll` | `overscroll-behavior`, `overscroll-behavior-x`, `overscroll-behavior-y` |
+| `justify`    | `justify-content`, `justify-items`, `justify-self`                      |
+| `place`      | `place-content`, `place-items`, `place-self`                            |
+| `self`       | `align-self`, `justify-self`                                            |
+| `items`      | `align-items`                                                           |
+| `backdrop`   | `backdrop-filter` (multiple filter functions)                           |
+| `transition` | `transition-property`, with named transition presets                    |
+| `animate`    | `animation`                                                             |
+| `filter`     | `filter` (multiple filter functions)                                    |
+| `rounded`    | Different directional and corner-specific border-radius properties      |
+| `divide`     | Border width, color and style on child elements                         |
+| `gap`        | `gap`, `row-gap`, `column-gap` (via `gap-x` and `gap-y`)                |
+
+## 3. Suggested parser strategy
+
+Rather than treating every prefix as a direct CSS property, I'd recommend this structure:
+
+```
+{
+  "text": {
+    "color": {
+      "type": "color",
+      "prop": "color"
+    },
+    "size": {
+      "type": "length",
+      "prop": "font-size"
+    },
+    "alignment": {
+      "type": "alignment",
+      "prop": "text-align"
+    },
+    "overflow": {
+      "type": "string",
+      "prop": "text-overflow"
+    }
+  },
+  "border": {
+    "width": {
+      "type": "length",
+      "prop": "border-width"
+    },
+    "color": {
+      "type": "color",
+      "prop": "border-color"
+    },
+    "style": {
+      "type": "string",
+      "prop": "border-style"
+    }
+  },
+  "bg": {
+    "color": {
+      "type": "color",
+      "prop": "background-color"
+    },
+    "image": {
+      "type": "image",
+      "prop": "background-image"
+    },
+    "size": {
+      "type": "string",
+      "prop": "background-size"
+    },
+    "position": {
+      "type": "position",
+      "prop": "background-position"
+    }
+  }
+}
+```
+
+Important: This is a classification of ambiguous utilities, not an exhaustive list of every Tailwind utility. Some cases require checking the actual Tailwind utility grammar and theme configuration. See the official [Tailwind utility documentation](https://tailwindcss.com/docs/styling-with-utility-classes?utm_source=chatgpt.com) and [theme variable reference](https://tailwindcss.com/docs/theme?utm_source=chatgpt.com).
+
+For your parser, I'd use a two-stage resolution:
+
+1. Match the longest utility prefix (`border-t` before `border`).
+2. Resolve the remaining suffix against the accepted value categories.
+
+This avoids incorrectly interpreting `border-t-red-500` as a generic border utility.
+
+# write a json object where keys are all first words of tailwind util classes and values are an object of optional prop and optional style, where prop is a record of type and prop, where type is a string like length color and prop can be a string or an array of string of what it maps to and the most specific type comes first, if it can accept value, and style is a tuple of prop and value if it can be used alone wo value
+
+Assuming Tailwind CSS v4, the structure below maps utility-class roots to their CSS property mappings.
+
+Conventions:
+
+- `prop` describes utilities that require a value.
+- `type` describes the expected value type (`length`, `color`, `number`, `position`, etc.).
+- `prop` can be a string or an array of CSS properties, ordered from most specific to least specific.
+- `style` is `[cssProperty, cssValue]` for standalone utilities that work without a value.
+- Both `prop` and `style` are optional.
+
+```
+{
+  "p": {
+    "prop": { "type": "length", "prop": "padding" }
+  },
+  "px": {
+    "prop": { "type": "length", "prop": ["padding-inline"] }
+  },
+  "py": {
+    "prop": { "type": "length", "prop": ["padding-block"] }
+  },
+  "pt": {
+    "prop": { "type": "length", "prop": "padding-top" }
+  },
+  "pr": {
+    "prop": { "type": "length", "prop": "padding-right" }
+  },
+  "pb": {
+    "prop": { "type": "length", "prop": "padding-bottom" }
+  },
+  "pl": {
+    "prop": { "type": "length", "prop": "padding-left" }
+  },
+  "ps": {
+    "prop": { "type": "length", "prop": "padding-inline-start" }
+  },
+  "pe": {
+    "prop": { "type": "length", "prop": "padding-inline-end" }
+  },
+  "m": {
+    "prop": { "type": "length", "prop": "margin" }
+  },
+  "mx": {
+    "prop": { "type": "length", "prop": "margin-inline" }
+  },
+  "my": {
+    "prop": { "type": "length", "prop": "margin-block" }
+  },
+  "mt": {
+    "prop": { "type": "length", "prop": "margin-top" }
+  },
+  "mr": {
+    "prop": { "type": "length", "prop": "margin-right" }
+  },
+  "mb": {
+    "prop": { "type": "length", "prop": "margin-bottom" }
+  },
+  "ml": {
+    "prop": { "type": "length", "prop": "margin-left" }
+  },
+  "gap": {
+    "prop": { "type": "length", "prop": "gap" }
+  },
+  "space": {
+    "prop": { "type": "length", "prop": ["margin-inline", "margin-block"] }
+  },
+  "w": {
+    "prop": { "type": "length", "prop": "width" }
+  },
+  "h": {
+    "prop": { "type": "length", "prop": "height" }
+  },
+  "min": {
+    "prop": { "type": "length", "prop": ["min-width", "min-height"] }
+  },
+  "max": {
+    "prop": { "type": "length", "prop": ["max-width", "max-height"] }
+  },
+  "size": {
+    "prop": { "type": "length", "prop": ["width", "height"] }
+  },
+  "inset": {
+    "prop": { "type": "length", "prop": ["inset", "top", "right", "bottom", "left"] }
+  },
+  "top": {
+    "prop": { "type": "length", "prop": "top" }
+  },
+  "right": {
+    "prop": { "type": "length", "prop": "right" }
+  },
+  "bottom": {
+    "prop": { "type": "length", "prop": "bottom" }
+  },
+  "left": {
+    "prop": { "type": "length", "prop": "left" }
+  },
+  "start": {
+    "prop": { "type": "length", "prop": "inset-inline-start" }
+  },
+  "end": {
+    "prop": { "type": "length", "prop": "inset-inline-end" }
+  },
+  "basis": {
+    "prop": { "type": "length", "prop": "flex-basis" }
+  },
+  "grow": {
+    "prop": { "type": "number", "prop": "flex-grow" },
+    "style": ["flex-grow", "1"]
+  },
+  "shrink": {
+    "prop": { "type": "number", "prop": "flex-shrink" },
+    "style": ["flex-shrink", "1"]
+  },
+  "order": {
+    "prop": { "type": "number", "prop": "order" }
+  },
+  "grid": {
+    "prop": { "type": "number", "prop": ["grid-template-columns", "grid-template-rows", "grid-column", "grid-row"] },
+    "style": ["display", "grid"]
+  },
+  "col": {
+    "prop": { "type": "number", "prop": ["grid-column", "grid-column-start",
+```
+
+# write a json object where keys are all first words of tailwind util classes and values are an object of optional prop and optional style, where prop is a record of type as key and prop as value, where type is a string like length color and prop can be a string or an array of string of what it maps to and the most specific type comes first, if it can accept value, and style is a tuple of prop and value if it can be used alone wo value
+
+Below is a JSON mapping of common Tailwind CSS utility roots to their corresponding CSS properties.
+
+Schema:
+
+- `prop`: Maps a value type to one or more CSS properties. More specific types come first.
+- `style`: A `[property, value]` tuple for utilities that have a fixed CSS value and don't require a user-supplied value.
+- Both fields are optional.
+
+```
+{
+  "container": {
+    "style": ["width", "100%"]
+  },
+  "sr": {
+    "style": ["position", "absolute"]
+  },
+  "not-sr": {
+    "style": ["position", "static"]
+  },
+  "static": {
+    "style": ["position", "static"]
+  },
+  "fixed": {
+    "style": ["position", "fixed"]
+  },
+  "absolute": {
+    "style": ["position", "absolute"]
+  },
+  "relative": {
+    "style": ["position", "relative"]
+  },
+  "sticky": {
+    "style": ["position", "sticky"]
+  },
+  "inset": {
+    "prop": {
+      "length": ["inset", "top", "right", "bottom", "left"]
+    }
+  },
+  "top": {
+    "prop": {
+      "length": "top"
+    }
+  },
+  "right": {
+    "prop": {
+      "length": "right"
+    }
+  },
+  "bottom": {
+    "prop": {
+      "length": "bottom"
+    }
+  },
+  "left": {
+    "prop": {
+      "length": "left"
+    }
+  },
+  "start": {
+    "prop": {
+      "length": "inset-inline-start"
+    }
+  },
+  "end": {
+    "prop": {
+      "length": "inset-inline-end"
+    }
+  },
+  "z": {
+    "prop": {
+      "number": "z-index"
+    }
+  },
+  "order": {
+    "prop": {
+      "number": "order"
+    }
+  },
+  "col": {
+    "prop": {
+      "number": ["grid-column", "grid-column-start", "grid-column-end"]
+    }
+  },
+  "row": {
+    "prop": {
+      "number": ["grid-row", "grid-row-start", "grid-row-end"]
+    }
+  },
+  "float": {
+    "prop": {
+      "keyword": "float"
+    }
+  },
+  "clear": {
+    "prop": {
+      "keyword": "clear"
+    }
+  },
+  "m": {
+    "prop": {
+      "length": "margin"
+    }
+  },
+  "mx": {
+    "prop": {
+      "length": ["margin-inline", "margin-left", "margin-right"]
+    }
+  },
+  "my": {
+    "prop": {
+      "length": ["margin-block", "margin-top", "margin-bottom"]
+    }
+  },
+  "mt": {
+    "prop": {
+      "length": "margin-top"
+    }
+  },
+  "mr": {
+    "prop": {
+      "length": "margin-right"
+    }
+  },
+  "mb": {
+    "prop": {
+      "length": "margin-bottom"
+    }
+  },
+  "ml": {
+    "prop": {
+      "length": "margin-left"
+    }
+  },
+  "ms": {
+    "prop": {
+      "length": "margin-inline-start"
+    }
+  },
+  "me": {
+    "prop": {
+      "length": "margin-inline-end"
+    }
+  },
+  "p": {
+    "prop": {
+      "length": "padding"
+    }
+  },
+  "px": {
+    "prop": {
+      "length": ["padding-inline", "padding-left", "padding-right"]
+    }
+  },
+  "py": {
+    "prop": {
+      "length": ["padding-block", "padding-top", "padding-bottom"]
+    }
+  },
+  "pt": {
+    "prop": {
+      "length": "padding-top"
+    }
+  },
+  "pr": {
+    "prop": {
+      "length": "padding-right"
+    }
+  },
+  "pb": {
+    "prop": {
+      "length": "padding-bottom"
+    }
+  },
+  "pl": {
+    "prop": {
+      "length": "padding-left"
+    }
+  },
+  "ps": {
+    "prop": {
+      "length": "padding-inline-start"
+    }
+  },
+  "pe": {
+    "prop": {
+      "length": "padding-inline-end"
+    }
+  },
+  "space": {
+    "prop": {
+      "length": ["margin-inline", "margin-block"]
+    }
+  },
+  "w": {
+    "prop": {
+      "length": "width"
+    }
+  },
+  "min": {
+    "prop": {
+      "length": ["min-width", "min-height"]
+    }
+  },
+  "max": {
+    "prop": {
+      "length": ["max-width", "max-height"]
+    }
+  },
+  "h": {
+    "prop": {
+      "length": "height"
+    }
+  },
+  "size": {
+    "prop": {
+      "length": ["width", "height"]
+    }
+  },
+  "aspect": {
+    "prop": {
+      "ratio": "aspect-ratio"
+    }
+  },
+  "columns": {
+    "prop": {
+      "number": "columns"
+    }
+  },
+  "break": {
+    "prop": {
+      "keyword": ["break-before", "break-after", "break-inside"]
+    }
+  },
+  "box": {
+    "prop": {
+      "keyword": "box-sizing"
+    }
+  },
+  "block": {
+    "style": ["display", "block"]
+  },
+  "inline": {
+    "style": ["display", "inline"]
+  },
+  "flex": {
+    "style": ["display", "flex"]
+  },
+  "grid": {
+    "style": ["display", "grid"]
+  },
+  "table": {
+    "style": ["display", "table"]
+  },
+  "hidden": {
+    "style": ["display", "none"]
+  },
+  "contents": {
+    "style": ["display", "contents"]
+  },
+  "flow-root": {
+    "style": ["display", "flow-root"]
+  },
+  "visible": {
+    "style": ["visibility", "visible"]
+  },
+  "invisible": {
+    "style": ["visibility", "hidden"]
+  },
+  "collapse": {
+    "style": ["visibility", "collapse"]
+  },
+  "flex-row": {
+    "style": ["flex-direction", "row"]
+  },
+  "flex-col": {
+    "style": ["flex-direction", "column"]
+  },
+  "flex-wrap": {
+    "style": ["flex-wrap", "wrap"]
+  },
+  "flex-nowrap": {
+    "style": ["flex-wrap", "nowrap"]
+  },
+  "flex-1": {
+    "style": ["flex", "1 1 0%"]
+  },
+  "flex-auto": {
+    "style": ["flex", "1 1 auto"]
+  },
+  "flex-none": {
+    "style": ["flex", "none"]
+  },
+  "grow": {
+    "prop": {
+      "number": "flex-grow"
+    }
+  },
+  "shrink": {
+    "prop": {
+      "number": "flex-shrink"
+    }
+  },
+  "basis": {
+    "prop": {
+      "length": "flex-basis"
+    }
+  },
+  "order": {
+    "prop": {
+      "number": "order"
+    }
+  },
+  "justify": {
+    "prop": {
+      "keyword": "justify-content"
+    }
+  },
+  "items": {
+    "prop": {
+      "keyword": "align-items"
+    }
+  },
+  "content": {
+    "prop": {
+      "keyword": ["align-content", "content"]
+    }
+  },
+  "self": {
+    "prop": {
+      "keyword": ["align-self", "justify-self"]
+    }
+  },
+  "place": {
+    "prop": {
+      "keyword": ["place-content", "place-items", "place-self"]
+    }
+  },
+  "gap": {
+    "prop": {
+      "length": ["gap", "row-gap", "column-gap"]
+    }
+  },
+  "space-x": {
+    "prop": {
+      "length": "margin-inline"
+    }
+  },
+  "space-y": {
+    "prop": {
+      "length": "margin-block"
+    }
+  },
+  "grid-cols": {
+    "prop": {
+      "number": "grid-template-columns"
+    }
+  },
+  "grid-rows": {
+    "prop": {
+      "number": "grid-template-rows"
+    }
+  },
+  "auto-cols": {
+    "prop": {
+      "length": "grid-auto-columns"
+    }
+  },
+  "auto-rows": {
+    "prop": {
+      "length": "grid-auto-rows"
+    }
+  },
+  "col-span": {
+    "prop": {
+      "number": "grid-column"
+    }
+  },
+  "row-span": {
+    "prop": {
+      "number": "grid-row"
+    }
+  },
+  "grid-flow": {
+    "prop": {
+      "keyword": "grid-auto-flow"
+    }
+  },
+  "overflow": {
+    "prop": {
+      "keyword": ["overflow", "overflow-x", "overflow-y"]
+    }
+  },
+  "overscroll": {
+    "prop": {
+      "keyword": ["overscroll-behavior", "overscroll-behavior-x", "overscroll-behavior-y"]
+    }
+  },
+  "truncate": {
+    "style": ["text-overflow", "ellipsis"]
+  },
+  "text": {
+    "prop": {
+      "font-size": "font-size",
+      "color": "color",
+      "alignment": "text-align",
+      "decoration-color": "text-decoration-color",
+      "indent": "text-indent",
+      "overflow": "text-overflow",
+      "wrap": "text-wrap",
+      "transform": "text-transform",
+      "decoration-style": "text-decoration-style",
+      "decoration-thickness": "text-decoration-thickness",
+      "underline-offset": "text-underline-offset",
+      "length": "text-decoration-thickness"
+    }
+  },
+  "font": {
+    "prop": {
+      "font-family": "font-family",
+      "font-weight": "font-weight",
+      "keyword": "font-variant"
+    }
+  },
+  "leading": {
+    "prop": {
+      "length": "line-height"
+    }
+  },
+  "tracking": {
+    "prop": {
+      "length": "letter-spacing"
+    }
+  },
+  "indent": {
+    "prop": {
+      "length": "text-indent"
+    }
+  },
+  "decoration": {
+    "prop": {
+      "color": "text-decoration-color",
+      "length": "text-decoration-thickness",
+      "keyword": "text-decoration-line"
+    }
+  },
+  "underline": {
+    "style": ["text-decoration-line", "underline"]
+  },
+  "overline": {
+    "style": ["text-decoration-line", "overline"]
+  },
+  "line-through": {
+    "style": ["text-decoration-line", "line-through"]
+  },
+  "no-underline": {
+    "style": ["text-decoration-line", "none"]
+  },
+  "whitespace": {
+    "prop": {
+      "keyword": "white-space"
+    }
+  },
+  "break": {
+    "prop": {
+      "keyword": ["overflow-wrap", "word-break"]
+    }
+  },
+  "hyphens": {
+    "prop": {
+      "keyword": "hyphens"
+    }
+  },
+  "list": {
+    "prop": {
+      "keyword": ["list-style-type", "list-style-position", "list-style-image"]
+    }
+  },
+  "placeholder": {
+    "prop": {
+      "color": "color"
+    }
+  },
+  "bg": {
+    "prop": {
+      "color": "background-color",
+      "image": "background-image",
+      "position": "background-position",
+      "size": "background-size",
+      "repeat": "background-repeat",
+      "attachment": "background-attachment",
+      "clip": "background-clip",
+      "origin": "background-origin"
+    }
+  },
+  "from": {
+    "prop": {
+      "color": "--tw-gradient-from"
+    }
+  },
+  "via": {
+    "prop": {
+      "color": "--tw-gradient-via"
+    }
+  },
+  "to": {
+    "prop": {
+      "color": "--tw-gradient-to"
+    }
+  },
+  "rounded": {
+    "prop": {
+      "length": "border-radius"
+    }
+  },
+  "border": {
+    "prop": {
+      "color": "border-color",
+      "length": "border-width",
+      "style": "border-style"
+    }
+  },
+  "border-x": {
+    "prop": {
+      "length": ["border-left-width", "border-right-width"],
+      "color": ["border-left-color", "border-right-color"]
+    }
+  },
+  "border-y": {
+    "prop": {
+      "length": ["border-top-width", "border-bottom-width"],
+      "color": ["border-top-color", "border-bottom-color"]
+    }
+  },
+  "border-t": {
+    "prop": {
+      "length": "border-top-width",
+      "color": "border-top-color"
+    }
+  },
+  "border-r": {
+    "prop": {
+      "length": "border-right-width",
+      "color": "border-right-color"
+    }
+  },
+  "border-b": {
+    "prop": {
+      "length": "border-bottom-width",
+      "color": "border-bottom-color"
+    }
+  },
+  "border-l": {
+    "prop": {
+      "length": "border-left-width",
+      "color": "border-left-color"
+    }
+  },
+  "outline": {
+    "prop": {
+      "color": "outline-color",
+      "length": "outline-width",
+      "style": "outline-style"
+    }
+  },
+  "ring": {
+    "prop": {
+      "color": "--tw-ring-color",
+      "length": "--tw-ring-width",
+      "number": "--tw-ring-offset-width"
+    }
+  },
+  "shadow": {
+    "prop": {
+      "color": "--tw-shadow-color",
+      "length": "box-shadow"
+    }
+  },
+  "opacity": {
+    "prop": {
+      "number": "opacity"
+    }
+  },
+  "mix-blend": {
+    "prop": {
+      "keyword": "mix-blend-mode"
+    }
+  },
+  "bg-blend": {
+    "prop": {
+      "keyword": "background-blend-mode"
+    }
+  },
+  "object": {
+    "prop": {
+      "keyword": ["object-fit", "object-position"]
+    }
+  },
+  "fill": {
+    "prop": {
+      "color": "fill"
+    }
+  },
+  "stroke": {
+    "prop": {
+      "color": "stroke",
+      "length": "stroke-width"
+    }
+  },
+  "cursor": {
+    "prop": {
+      "keyword": "cursor"
+    }
+  },
+  "pointer-events": {
+    "prop": {
+      "keyword": "pointer-events"
+    }
+  },
+  "resize": {
+    "prop": {
+      "keyword": "resize"
+    }
+  },
+  "select": {
+    "prop": {
+      "keyword": "user-select"
+    }
+  },
+  "appearance": {
+    "prop": {
+      "keyword": "appearance"
+    }
+  },
+  "transition": {
+    "prop": {
+      "keyword": "transition-property"
+    }
+  },
+  "duration": {
+    "prop": {
+      "time": "transition-duration"
+    }
+  },
+  "delay": {
+    "prop": {
+      "time": "transition-delay"
+    }
+  },
+  "ease": {
+    "prop": {
+      "keyword": "transition-timing-function"
+    }
+  },
+  "animate": {
+    "prop": {
+      "keyword": "animation"
+    }
+  },
+  "scale": {
+    "prop": {
+      "number": ["scale", "scale-x", "scale-y"]
+    }
+  },
+  "rotate": {
+    "prop": {
+      "angle": "rotate"
+    }
+  },
+  "translate": {
+    "prop": {
+      "length": ["translate", "translate-x", "translate-y"]
+    }
+  },
+  "skew": {
+    "prop": {
+      "angle": ["skew-x", "skew-y"]
+    }
+  },
+  "origin": {
+    "prop": {
+      "keyword": "transform-origin"
+    }
+  },
+  "blur": {
+    "prop": {
+      "length": "filter"
+    }
+  },
+  "brightness": {
+    "prop": {
+      "number": "filter"
+    }
+  },
+  "contrast": {
+    "prop": {
+      "number": "filter"
+    }
+  },
+  "grayscale": {
+    "prop": {
+      "number": "filter"
+    }
+  },
+  "invert": {
+    "prop": {
+      "number": "filter"
+    }
+  },
+  "saturate": {
+    "prop": {
+      "number": "filter"
+    }
+  },
+  "sepia": {
+    "prop": {
+      "number": "filter"
+    }
+  },
+  "hue-rotate": {
+    "prop": {
+      "angle": "filter"
+    }
+  },
+  "backdrop": {
+    "prop": {
+      "length": "backdrop-filter",
+      "color": "backdrop-filter",
+      "keyword": "backdrop-filter"
+    }
+  },
+  "grayscale": {
+    "prop": {
+      "number": "filter"
+    }
+  },
+  "divide": {
+    "prop": {
+      "length": ["border-width", "border-color"],
+      "keyword": "border-style"
+    }
+  },
+  "space": {
+    "prop": {
+      "length": ["margin-inline", "margin-block"]
+    }
+  },
+  "accent": {
+    "prop": {
+      "color": "accent-color"
+    }
+  },
+  "caret": {
+    "prop": {
+      "color": "caret-color"
+    }
+  },
+  "scroll": {
+    "prop": {
+      "length": ["scroll-margin", "scroll-padding"],
+      "keyword": ["scroll-behavior", "scroll-snap-type"]
+    }
+  },
+  "snap": {
+    "prop": {
+      "keyword": ["scroll-snap-align", "scroll-snap-stop", "scroll-snap-type"]
+    }
+  },
+  "will-change": {
+    "prop": {
+      "keyword": "will-change"
+    }
+  },
+  "isolation": {
+    "style": ["isolation", "isolate"]
+  },
+  "antialiased": {
+    "style": ["-webkit-font-smoothing", "antialiased"]
+  },
+  "subpixel-antialiased": {
+    "style": ["-webkit-font-smoothing", "auto"]
+  },
+  "italic": {
+    "style": ["font-style", "italic"]
+  },
+  "not-italic": {
+    "style": ["font-style", "normal"]
+  },
+  "uppercase": {
+    "style": ["text-transform", "uppercase"]
+  },
+  "lowercase": {
+    "style": ["text-transform", "lowercase"]
+  },
+  "capitalize": {
+    "style": ["text-transform", "capitalize"]
+  },
+  "normal-case": {
+    "style": ["text-transform", "none"]
+  },
+  "underline-offset": {
+    "prop": {
+      "length": "text-underline-offset"
+    }
+  },
+  "sr-only": {
+    "style": ["position", "absolute"]
+  }
+}
+```
+
+Note: This is a practical utility-root mapping, not an exhaustive Tailwind grammar. Some roots are overloaded or context-dependent (`text`, `border`, `object`, `scroll`, etc.). Also, Tailwind variants such as `hover:`, `focus:`, `dark:`, and responsive prefixes such as `md:` are modifiers rather than utility roots.
+
+# write a json object where keys are all first words of tailwind util classes and values are an object of optional prop and optional style, where prop is an array of tuple of type and prop, where type is a string like length color or an array of string keywords and prop is a string or an array of string, if it can accept value, and style is a tuple of prop and value if it can be used alone wo value
+
+Assuming Tailwind CSS v4 core utilities, the structure below uses:
+
+- `prop`: An array of `[type, cssProperty]` tuples for utilities that accept values.
+- `style`: A `[cssProperty, value]` tuple for standalone utilities that have a fixed CSS declaration.
+- `type`: Either a value type (`length`, `color`, `number`, etc.) or an array of allowed keywords.
+- `prop`: Can be a string or an array of strings when multiple CSS properties are affected.
+
+```
+{
+  "p": {
+    "prop": [["length", "padding"]]
+  },
+  "px": {
+    "prop": [["length", ["padding-left", "padding-right"]]]
+  },
+  "py": {
+    "prop": [["length", ["padding-top", "padding-bottom"]]]
+  },
+  "pt": {
+    "prop": [["length", "padding-top"]]
+  },
+  "pb": {
+    "prop": [["length", "padding-bottom"]]
+  },
+  "pl": {
+    "prop": [["length", "padding-left"]]
+  },
+  "pr": {
+    "prop": [["length", "padding-right"]]
+  },
+  "ps": {
+    "prop": [["length", "padding-inline-start"]]
+  },
+  "pe": {
+    "prop": [["length", "padding-inline-end"]]
+  },
+  "m": {
+    "prop": [["length", "margin"]]
+  },
+  "mx": {
+    "prop": [["length", ["margin-left", "margin-right"]]]
+  },
+  "my": {
+    "prop": [["length", ["margin-top", "margin-bottom"]]]
+  },
+  "mt": {
+    "prop": [["length", "margin-top"]]
+  },
+  "mb": {
+    "prop": [["length", "margin-bottom"]]
+  },
+  "ml": {
+    "prop": [["length", "margin-left"]]
+  },
+  "mr": {
+    "prop": [["length", "margin-right"]]
+  },
+  "ms": {
+    "prop": [["length", "margin-inline-start"]]
+  },
+  "me": {
+    "prop": [["length", "margin-inline-end"]]
+  },
+  "gap": {
+    "prop": [["length", "gap"]]
+  },
+  "gap-x": {
+    "prop": [["length", "column-gap"]]
+  },
+  "gap-y": {
+    "prop": [["length", "row-gap"]]
+  },
+  "space-x": {
+    "prop": [["length", "margin-inline-start"]]
+  },
+  "space-y": {
+    "prop": [["length", "margin-block-start"]]
+  },
+  "w": {
+    "prop": [["length", "width"]]
+  },
+  "min-w": {
+    "prop": [["length", "min-width"]]
+  },
+  "max-w": {
+    "prop": [["length", "max-width"]]
+  },
+  "h": {
+    "prop": [["length", "height"]]
+  },
+  "min-h": {
+    "prop": [["length", "min-height"]]
+  },
+  "max-h": {
+    "prop": [["length", "max-height"]]
+  },
+  "size": {
+    "prop": [["length", ["width", "height"]]]
+  },
+  "inset": {
+    "prop": [["length", ["top", "right", "bottom", "left"]]]
+  },
+  "inset-x": {
+    "prop": [["length", ["left", "right"]]]
+  },
+  "inset-y": {
+    "prop": [["length", ["top", "bottom"]]]
+  },
+  "top": {
+    "prop": [["length", "top"]]
+  },
+  "right": {
+    "prop": [["length", "right"]]
+  },
+  "bottom": {
+    "prop": [["length", "bottom"]]
+  },
+  "left": {
+    "prop": [["length", "left"]]
+  },
+  "start": {
+    "prop": [["length", "inset-inline-start"]]
+  },
+  "end": {
+    "prop": [["length", "inset-inline-end"]]
+  },
+  "z": {
+    "prop": [["number", "z-index"]]
+  },
+  "order": {
+    "prop": [["number", "order"]]
+  },
+  "flex": {
+    "prop": [["flex", "flex"]],
+    "style": ["display", "flex"]
+  },
+  "basis": {
+    "prop": [["length", "flex-basis"]]
+  },
+  "grow": {
+    "prop": [[["number", "grow"], "flex-grow"]],
+    "style": ["flex-grow", "1"]
+  },
+  "shrink": {
+    "prop": [["number", "flex-shrink"]],
+    "style": ["flex-shrink", "1"]
+  },
+  "grid": {
+    "style": ["display", "grid"]
+  },
+  "grid-cols": {
+    "prop": [["number", "grid-template-columns"]]
+  },
+  "grid-rows": {
+    "prop": [["number", "grid-template-rows"]]
+  },
+  "col": {
+    "prop": [["number", "grid-column"]]
+  },
+  "row": {
+    "prop": [["number", "grid-row"]]
+  },
+  "col-span": {
+    "prop": [["number", "grid-column"]]
+  },
+  "row-span": {
+    "prop": [["number", "grid-row"]]
+  },
+  "auto-cols": {
+    "prop": [["length", "grid-auto-columns"]]
+  },
+  "auto-rows": {
+    "prop": [["length", "grid-auto-rows"]]
+  },
+  "block": {
+    "style": ["display", "block"]
+  },
+  "inline": {
+    "style": ["display", "inline"]
+  },
+  "hidden": {
+    "style": ["display", "none"]
+  },
+  "contents": {
+    "style": ["display", "contents"]
+  },
+  "table": {
+    "style": ["display", "table"]
+  },
+  "flow-root": {
+    "style": ["display", "flow-root"]
+  },
+  "inline-block": {
+    "style": ["display", "inline-block"]
+  },
+  "inline-flex": {
+    "style": ["display", "inline-flex"]
+  },
+  "inline-grid": {
+    "style": ["display", "inline-grid"]
+  },
+  "static": {
+    "style": ["position", "static"]
+  },
+  "relative": {
+    "style": ["position", "relative"]
+  },
+  "absolute": {
+    "style": ["position", "absolute"]
+  },
+  "fixed": {
+    "style": ["position", "fixed"]
+  },
+  "sticky": {
+    "style": ["position", "sticky"]
+  },
+  "float": {
+    "prop": [[["left", "right", "none", "start", "end"], "float"]]
+  },
+  "clear": {
+    "prop": [[["left", "right", "both", "none", "start", "end"], "clear"]]
+  },
+  "overflow": {
+    "prop": [[["auto", "hidden", "clip", "visible", "scroll"], "overflow"]]
+  },
+  "overflow-x": {
+    "prop": [[["auto", "hidden", "clip", "visible", "scroll"], "overflow-x"]]
+  },
+  "overflow-y": {
+    "prop": [[["auto", "hidden", "clip", "visible", "scroll"], "overflow-y"]]
+  },
+  "overscroll": {
+    "prop": [[["auto", "contain", "none"], "overscroll-behavior"]]
+  },
+  "overscroll-x": {
+    "prop": [[["auto", "contain", "none"], "overscroll-behavior-x"]]
+  },
+  "overscroll-y": {
+    "prop": [[["auto", "contain", "none"], "overscroll-behavior-y"]]
+  },
+  "object": {
+    "prop": [[["contain", "cover", "fill", "none", "scale-down"], "object-fit"]]
+  },
+  "object-position": {
+    "prop": [["position", "object-position"]]
+  },
+  "visible": {
+    "style": ["visibility", "visible"]
+  },
+  "invisible": {
+    "style": ["visibility", "hidden"]
+  },
+  "collapse": {
+    "style": ["visibility", "collapse"]
+  },
+  "opacity": {
+    "prop": [["number", "opacity"]]
+  },
+  "bg": {
+    "prop": [
+      ["color", "background-color"],
+      ["image", "background-image"],
+      ["position", "background-position"],
+      ["size", "background-size"],
+      ["attachment", "background-attachment"],
+      ["repeat", "background-repeat"]
+    ]
+  },
+  "from": {
+    "prop": [["color", "--tw-gradient-from"]]
+  },
+  "via": {
+    "prop": [["color", "--tw-gradient-via"]]
+  },
+  "to": {
+    "prop": [["color", "--tw-gradient-to"]]
+  },
+  "text": {
+    "prop": [
+      ["color", "color"],
+      ["length", "font-size"],
+      [["left", "center", "right", "justify", "start", "end"], "text-align"],
+      [["wrap", "nowrap", "balance", "pretty"], "text-wrap"]
+    ]
+  },
+  "font": {
+    "prop": [
+      ["font-family", "font-family"],
+      [["thin", "extralight", "light", "normal", "medium", "semibold", "bold", "extrabold", "black"], "font-weight"]
+    ]
+  },
+  "tracking": {
+    "prop": [["length", "letter-spacing"]]
+  },
+  "leading": {
+    "prop": [["length", "line-height"]]
+  },
+  "indent": {
+    "prop": [["length", "text-indent"]]
+  },
+  "decoration": {
+    "prop": [
+      ["color", "text-decoration-color"],
+      ["length", "text-decoration-thickness"],
+      [["solid", "double", "dotted", "dashed", "wavy"], "text-decoration-style"]
+    ]
+  },
+  "underline": {
+    "style": ["text-decoration-line", "underline"]
+  },
+  "overline": {
+    "style": ["text-decoration-line", "overline"]
+  },
+  "line-through": {
+    "style": ["text-decoration-line", "line-through"]
+  },
+  "no-underline": {
+    "style": ["text-decoration-line", "none"]
+  },
+  "uppercase": {
+    "style": ["text-transform", "uppercase"]
+  },
+  "lowercase": {
+    "style": ["text-transform", "lowercase"]
+  },
+  "capitalize": {
+    "style": ["text-transform", "capitalize"]
+  },
+  "normal-case": {
+    "style": ["text-transform", "none"]
+  },
+  "whitespace": {
+    "prop": [[["normal", "nowrap", "pre", "pre-line", "pre-wrap", "break-spaces"], "white-space"]]
+  },
+  "break": {
+    "prop": [[["normal", "words", "all", "keep"], "overflow-wrap"]]
+  },
+  "hyphens": {
+    "prop": [[["none", "manual", "auto"], "hyphens"]]
+  },
+  "list": {
+    "prop": [
+      [["none", "disc", "decimal"], "list-style-type"],
+      [["inside", "outside"], "list-style-position"]
+    ]
+  },
+  "align": {
+    "prop": [[["baseline", "top", "middle", "bottom", "text-top", "text-bottom", "sub", "super"], "vertical-align"]]
+  },
+  "decoration-skip": {
+    "prop": [[["none", "auto", "all"], "text-decoration-skip-ink"]]
+  },
+  "antialiased": {
+    "style": ["-webkit-font-smoothing", "antialiased"]
+  },
+  "subpixel-antialiased": {
+    "style": ["-webkit-font-smoothing", "auto"]
+  },
+  "italic": {
+    "style": ["font-style", "italic"]
+  },
+  "not-italic": {
+    "style": ["font-style", "normal"]
+  },
+  "normal-nums": {
+    "style": ["font-variant-numeric", "normal"]
+  },
+  "border": {
+    "prop": [
+      ["length", "border-width"],
+      ["color", "border-color"],
+      [["solid", "dashed", "dotted", "double", "hidden", "none"], "border-style"]
+    ]
+  },
+  "border-x": {
+    "prop": [
+      ["length", ["border-left-width", "border-right-width"]],
+      ["color", ["border-left-color", "border-right-color"]]
+    ]
+  },
+  "border-y": {
+    "prop": [
+      ["length", ["border-top-width", "border-bottom-width"]],
+      ["color", ["border-top-color", "border-bottom-color"]]
+    ]
+  },
+  "border-t": {
+    "prop": [["length", "border-top-width"], ["color", "border-top-color"]]
+  },
+  "border-b": {
+    "prop": [["length", "border-bottom-width"], ["color", "border-bottom-color"]]
+  },
+  "border-l": {
+    "prop": [["length", "border-left-width"], ["color", "border-left-color"]]
+  },
+  "border-r": {
+    "prop": [["length", "border-right-width"], ["color", "border-right-color"]]
+  },
+  "rounded": {
+    "prop": [["length", "border-radius"]]
+  },
+  "rounded-t": {
+    "prop": [["length", ["border-top-left-radius", "border-top-right-radius"]]]
+  },
+  "rounded-b": {
+    "prop": [["length", ["border-bottom-left-radius", "border-bottom-right-radius"]]]
+  },
+  "rounded-l": {
+    "prop": [["length", ["border-top-left-radius", "border-bottom-left-radius"]]]
+  },
+  "rounded-r": {
+    "prop": [["length", ["border-top-right-radius", "border-bottom-right-radius"]]]
+  },
+  "rounded-tl": {
+    "prop": [["length", "border-top-left-radius"]]
+  },
+  "rounded-tr": {
+    "prop": [["length", "border-top-right-radius"]]
+  },
+  "rounded-bl": {
+    "prop": [["length", "border-bottom-left-radius"]]
+  },
+  "rounded-br": {
+    "prop": [["length", "border-bottom-right-radius"]]
+  },
+  "outline": {
+    "prop": [
+      ["length", "outline-width"],
+      ["color", "outline-color"],
+      [["none", "solid", "dashed", "dotted", "double"], "outline-style"]
+    ]
+  },
+  "ring": {
+    "prop": [
+      ["length", "--tw-ring-width"],
+      ["color", "--tw-ring-color"]
+    ]
+  },
+  "ring-offset": {
+    "prop": [
+      ["length", "--tw-ring-offset-width"],
+      ["color", "--tw-ring-offset-color"]
+    ]
+  },
+  "shadow": {
+    "prop": [["color", "--tw-shadow-color"], ["shadow", "box-shadow"]]
+  },
+  "inset-shadow": {
+    "prop": [["shadow", "box-shadow"]]
+  },
+  "opacity": {
+    "prop": [["number", "opacity"]]
+  },
+  "mix-blend": {
+    "prop": [[["normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity"], "mix-blend-mode"]]
+  },
+  "bg-blend": {
+    "prop": [[["normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity"], "background-blend-mode"]]
+  },
+  "blur": {
+    "prop": [["length", "filter"]]
+  },
+  "brightness": {
+    "prop": [["number", "filter"]]
+  },
+  "contrast": {
+    "prop": [["number", "filter"]]
+  },
+  "grayscale": {
+    "prop": [["number", "filter"]]
+  },
+  "hue-rotate": {
+    "prop": [["angle", "filter"]]
+  },
+  "invert": {
+    "prop": [["number", "filter"]]
+  },
+  "saturate": {
+    "prop": [["number", "filter"]]
+  },
+  "sepia": {
+    "prop": [["number", "filter"]]
+  },
+  "drop-shadow": {
+    "prop": [["shadow", "filter"]]
+  },
+  "backdrop": {
+    "prop": [["filter", "backdrop-filter"]]
+  },
+  "transform": {
+    "prop": [[["none", "gpu", "cpu"], "transform"]]
+  },
+  "translate": {
+    "prop": [["length", "translate"]]
+  },
+  "translate-x": {
+    "prop": [["length", "translate"]]
+  },
+  "translate-y": {
+    "prop": [["length", "translate"]]
+  },
+  "scale": {
+    "prop": [["number", "scale"]]
+  },
+  "scale-x": {
+    "prop": [["number", "scale"]]
+  },
+  "scale-y": {
+    "prop": [["number", "scale"]]
+  },
+  "rotate": {
+    "prop": [["angle", "rotate"]]
+  },
+  "skew": {
+    "prop": [["angle", "transform"]]
+  },
+  "skew-x": {
+    "prop": [["angle", "transform"]]
+  },
+  "skew-y": {
+    "prop": [["angle", "transform"]]
+  },
+  "origin": {
+    "prop": [["position", "transform-origin"]]
+  },
+  "cursor": {
+    "prop": [[["auto", "default", "pointer", "wait", "text", "move", "help", "not-allowed", "none", "context-menu", "progress", "cell", "crosshair", "vertical-text", "alias", "copy", "no-drop", "grab", "grabbing", "all-scroll", "col-resize", "row-resize", "n-resize", "e-resize", "s-resize", "w-resize", "ne-resize", "nw-resize", "se-resize", "sw-resize", "ew-resize", "ns-resize", "nesw-resize", "nwse-resize", "zoom-in", "zoom-out"], "cursor"]]
+  },
+  "pointer-events": {
+    "prop": [[["none", "auto"], "pointer-events"]]
+  },
+  "select": {
+    "prop": [[["none", "text", "all", "auto"], "user-select"]]
+  },
+  "resize": {
+    "prop": [[["none", "both", "x", "y"], "resize"]]
+  },
+  "appearance": {
+    "prop": [[["none", "auto"], "appearance"]]
+  },
+  "accent": {
+    "prop": [["color", "accent-color"]]
+  },
+  "caret": {
+    "prop": [["color", "caret-color"]]
+  },
+  "scroll": {
+    "prop": [
+      ["length", "scroll-margin"],
+      ["length", "scroll-padding"]
+    ]
+  },
+  "scroll-m": {
+    "prop": [["length", "scroll-margin"]]
+  },
+  "scroll-p": {
+    "prop": [["length", "scroll-padding"]]
+  },
+  "snap": {
+    "prop": [[["none", "x", "y", "both", "mandatory", "proximity", "always", "normal"], "scroll-snap-type"]]
+  },
+  "duration": {
+    "prop": [["time", "transition-duration"]]
+  },
+  "delay": {
+    "prop": [["time", "transition-delay"]]
+  },
+  "ease": {
+    "prop": [["easing", "transition-timing-function"]]
+  },
+  "transition": {
+    "prop": [["property", "transition-property"]]
+  },
+  "animate": {
+    "prop": [["animation", "animation"]]
+  },
+  "will-change": {
+    "prop": [[["auto", "scroll", "contents", "transform"], "will-change"]]
+  },
+  "content": {
+    "prop": [["string", "content"]]
+  },
+  "aspect": {
+    "prop": [["ratio", "aspect-ratio"]]
+  },
+  "columns": {
+    "prop": [["number", "columns"]]
+  },
+  "break-inside": {
+    "prop": [[["auto", "avoid", "avoid-page", "avoid-column"], "break-inside"]]
+  },
+  "break-before": {
+    "prop": [[["auto", "avoid", "all", "page", "left", "right", "column"], "break-before"]]
+  },
+  "break-after": {
+    "prop": [[["auto", "avoid", "all", "page", "left", "right", "column"], "break-after"]]
+  },
+  "items": {
+    "prop": [[["start", "end", "center", "baseline", "stretch"], "align-items"]]
+  },
+  "justify": {
+    "prop": [[["normal", "start", "end", "center", "between", "around", "evenly", "stretch"], "justify-content"]]
+  },
+  "self": {
+    "prop": [[["auto", "start", "end", "center", "stretch", "baseline"], "align-self"]]
+  },
+  "place": {
+    "prop": [[["start", "end", "center", "stretch"], "place-items"]]
+  },
+  "content": {
+    "prop": [["string", "content"]]
+  },
+  "decoration": {
+    "prop": [["color", "text-decoration-color"]]
+  },
+  "fill": {
+    "prop": [["color", "fill"]]
+  },
+  "stroke": {
+    "prop": [["color", "stroke"], ["length", "stroke-width"]]
+  },
+  "sr-only": {
+    "style": ["position", "absolute"]
+  },
+  "not-sr-only": {
+    "style": ["position", "static"]
+  }
+}
+```
+
+Important implementation notes:
+
+1. This is a broad core-utility mapping, not a literally exhaustive Tailwind catalog. Tailwind versions, plugins, arbitrary properties, and custom theme extensions can add more utilities.
+2. Some prefixes are ambiguous. For example, `text-` can mean `font-size`, `color`, `text-align`, or `text-wrap`; the parser needs to inspect the suffix.
+3. Standalone utilities such as `flex`, `hidden`, and `underline` belong in `style`, while value-taking utilities belong in `prop`.
+4. The JSON above should be deduplicated before use (`opacity`, `content`, and `decoration` occur more than once).
+
+A useful next step would be to generate a strictly deduplicated, machine-valid Tailwind v4 JSON dictionary, including all core utility prefixes and their correct CSS property mappings.
+
+# write a json object where keys are all first words of tailwind util classes and values are an object of optional prop and optional style, where prop is a record of type as key and prop as value, where type is a string like length color and prop can be a string or an array of string of what it maps to and the most specific type comes first, if it can accept value, and style is a tuple of prop and value if it can be used alone wo value
+
+``````md
+Worked for 1m 11s
+
+Clarified Tailwind mappings
+
+I’ll structure this as a parser-oriented JSON map: utility prefixes that take values get a prop type map, while standalone utilities get a style tuple. I’m using Tailwind CSS v4’s utility naming as the baseline and will include common arbitrary-value-capable families.
+
+Designed schema, refined utility coverage, and structured mappings
+
+Covered utility families
+
+![](https://www.google.com/s2/favicons?domain=tailwindcss.com&sz=128)![](https://www.google.com/s2/favicons?domain=github.com&sz=128)
+
+Searched 5 websites
+``````
+
+``````
+# * [![](https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Ftailwindcss.com&size=32&drop_404_icon=true)Tailwind CSSStyling with utility classes - Core conceptsTHINKING IN UTILITY CLASSES STYLING HOVER AND FOCUS STATES To style an element on states like hover or focus, prefix any utility with the state you want to target, for example \`hover:bg-sky-700\`:...](https://tailwindcss.com/docs/styling-with-utility-classes?utm%5Fsource=chatgpt.com)
+* [GitHubtailwindcss.com/src/docs/theme.mdx at main · tailwindlabs/tailwindcss.comimport { CodeExampleStack } from "@/components/code-example"; import { TipGood, TipBad, TipInfo } from "@/components/tips"; import { Iframe } from "@/components/iframe"; import { Example } from "@/co...](https://github.com/tailwindlabs/tailwindcss.com/blob/main/src/docs/theme.mdx?utm%5Fsource=chatgpt.com)
+* [![](https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Ftailwindcss.com&size=32&drop_404_icon=true)Tailwind CSSTailwind CSS v4.0January 22, 2025 — BUILT-IN IMPORT SUPPORT Before v4.0, if you wanted to inline other CSS files using \`@import\` you'd have to configure another plugin like \`postcss-import\` to handle it for you. Now we handle this ou...](https://tailwindcss.com/blog/tailwindcss-v4?utm%5Fsource=chatgpt.com)
+* [![](https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Ftailwindcss.com&size=32&drop_404_icon=true)Tailwind CSSUpgrade guide - Getting startedCHANGES FROM V3 Here's a comprehensive list of all the breaking changes in Tailwind CSS v4.0\. Our upgrade tool will handle most of these changes for you automatically, so we highly recommend using...](https://tailwindcss.com/docs/upgrade-guide?utm%5Fsource=chatgpt.com)
+
+### More
+
+* [![](https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Fwe.inc&size=32&drop_404_icon=true)we.incTailwind CSS v4 Cheat Sheet (Searchable) | How-to GuideOctober 13, 2026 — TAILWIND CSS V4 CHEAT SHEET (SEARCHABLE) | HOW-TO GUIDE A searchable Tailwind CSS v4 cheat sheet: type any class or plain word and see the exact CSS v4 generates, from var(--spacing) multiples to OK...](https://we.inc/guides/tailwind-cheat-sheet?utm%5Fsource=chatgpt.com)
+* [![](https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Ftoolsox.com&size=32&drop_404_icon=true)toolsox.comTailwind CSS v4 Cheat Sheet (2026) - All 3000+ Utility Classes with Live Preview | ToolsOxJanuary 15, 2025 — TAILWIND CSS V4 CHEAT SHEET: 3000+ UTILITY CLASSES WITH LIVE PREVIEW AND V3 MIGRATION GUIDE Published: January 15, 2025 Updated: June 6, 2026 This is the most thorough Tailwind CSS v4 cheat sheet a...](https://toolsox.com/tailwind-css-tools-online/tailwind-css-v4-cheat-sheet-updated?utm%5Fsource=chatgpt.com)
+* [![](https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Ftailwindcss.com&size=32&drop_404_icon=true)tailwindcss.comFunctions and directives - Core concepts - Tailwind CSSFUNCTIONS Tailwind provides the following build-time functions to make working with colors and the spacing scale easier. --ALPHA() Use the \`--alpha()\` function to adjust the opacity of a color: I...](https://tailwindcss.com/docs/functions-and-directives?utm%5Fsource=chatgpt.com)
+* [![](https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Ftailwindcss.com&size=32&drop_404_icon=true)tailwindcss.comStyling with utility classes - Core concepts - Tailwind CSSCore concepts STYLING WITH UTILITY CLASSES Building complex components from a constrained set of primitive utilities. OVERVIEW You style things with Tailwind by combining many single-purpose pres...](https://tailwindcss.com/docs/styling-with-utility-classes?trk=public%5Fpost%5Fcomment-text&utm%5Fsource=chatgpt.com)
+* [![](https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Ftailwindcss.com&size=32&drop_404_icon=true)tailwindcss.comUpgrade guide - Getting started - Tailwind CSSWe recommend running the upgrade tool in a new branch, then carefully reviewing the diff and testing your project in the browser to make sure all of the changes look correct. You may need to tweak a...](https://tailwindcss.com/docs/upgrade-guide?from=20423&from%5Fcolumn=20423&utm%5Fsource=chatgpt.com)
+* [![](https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Fv2.tailwindcss.com&size=32&drop_404_icon=true)tailwindcss.comConfiguration - Tailwind CSS\`// tailwind.config.js module.exports = { presets: \[ require('@acmecorp/base-tailwind-config') \], // Project-specific customizations theme: { //... }, // ... }\` Learn more about presets in the pres...](https://v2.tailwindcss.com/docs/configuration?utm%5Fsource=chatgpt.com)
+* [![](https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Fv3.tailwindcss.com&size=32&drop_404_icon=true)tailwindcss.comConfiguration - Tailwind CSSPREFIX The \`prefix\` option allows you to add a custom prefix to all of Tailwind’s generated utility classes. This can be really useful when layering Tailwind on top of existing CSS where there might...](https://v3.tailwindcss.com/docs/configuration?utm%5Fsource=chatgpt.com)
+* [![](https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Fv3.tailwindcss.com&size=32&drop_404_icon=true)tailwindcss.comTheme Configuration - Tailwind CSSCustomization THEME CONFIGURATION Customizing the default theme for your project. The \`theme\` section of your \`tailwind.config.js\` file is where you define your project’s color palette, type scale...](https://v3.tailwindcss.com/docs/theme?utm%5Fsource=chatgpt.com)
+* [![](https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Fv2.tailwindcss.com&size=32&drop_404_icon=true)tailwindcss.comTheme Configuration - Tailwind CSSCOLORS The \`colors\` key allows you to customize the global color palette for your project. \`// tailwind.config.js module.exports = { theme: { colors: { transparent: 'transparent', black: '#000', wh...](https://v2.tailwindcss.com/docs/theme?utm%5Fsource=chatgpt.com)
+* [![](https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Fv2.tailwindcss.com&size=32&drop_404_icon=true)tailwindcss.comFunctions & Directives - Tailwind CSSFUNCTIONS & DIRECTIVES A reference for the custom functions and directives Tailwind exposes to your CSS. @TAILWIND Use the \`@tailwind\` directive to insert Tailwind’s \`base\`, \`components\`, \`utiliti...](https://v2.tailwindcss.com/docs/functions-and-directives?utm%5Fsource=chatgpt.com)
+* [![](https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Fv3.tailwindcss.com&size=32&drop_404_icon=true)tailwindcss.comTailwind CSS v4.0 Beta - Tailwind CSSCSS-FIRST CONFIGURATION One of the biggest changes in Tailwind CSS v4.0 is the shift from configuring your project in JavaScript to configuring it in CSS. Instead of a \`tailwind.config.js\` file, yo...](https://v3.tailwindcss.com/docs/v4-beta?utm%5Fsource=chatgpt.com)
+* [github.comtailwindcss.com/src/docs/functions-and-directives.mdx at main · tailwindlabs/tailwindcss.com · GitHubimport { CodeExampleStack } from "@/components/code-example"; export const title = "Functions and directives"; export const description = "A reference for the custom functions and directives Tailwin...](https://github.com/tailwindlabs/tailwindcss.com/blob/main/src/docs/functions-and-directives.mdx?utm%5Fsource=chatgpt.com)
+* [prajwalchnayak.github.ioSpacing · Tailwind CSS HandbookSPACING Margin, padding, gap and space-between in Tailwind — the single spacing scale that drives them, and which tool to reach for when. Spacing in Tailwind comes from one scale. Learn it once and...](https://prajwalchnayak.github.io/tailwind%5Fdoc/layout/spacing/?utm%5Fsource=chatgpt.com)
+* [prajwalchnayak.github.ioTailwind CSS Handbook — A practical, up-to-date guide to Tailwind CSS v47\. Own your design tokens — \`@theme\`, colours, spacing, typography. 8\. Extend Tailwind — custom utilities, variants and plugins. 9\. Ship it — production builds, bundle size and performance. See the a...](https://prajwalchnayak.github.io/tailwind%5Fdoc/?utm%5Fsource=chatgpt.com)
+* [prajwalchnayak.github.ioTheme & Design Tokens · Tailwind CSS HandbookTHEME & DESIGN TOKENS Configure Tailwind v4 with the @theme directive — namespaces, overriding defaults, referencing tokens as CSS variables, and the difference from tailwind.config.js. Rewritten i...](https://prajwalchnayak.github.io/tailwind%5Fdoc/core-concepts/theme/?utm%5Fsource=chatgpt.com)
+* [prajwalchnayak.github.ioFunctions & Directives · Tailwind CSS HandbookFUNCTIONS & DIRECTIVES A reference for every Tailwind v4 CSS directive and function — @import, @theme, @source, @utility, @variant, @config, --alpha() and --spacing(). Tailwind v4 is configured in...](https://prajwalchnayak.github.io/tailwind%5Fdoc/advanced/functions-and-directives/?utm%5Fsource=chatgpt.com)
+* [irurueta.comTailwind Cheat Sheet :: Irurueta DocsTAILWIND CHEAT SHEET | This section documents Tailwind CSS v4.x — the CSS-first configuration line, whose v4.0 release shipped in January 2025 — as published at the official Tailwind CSS documentati...](https://www.irurueta.com/web/tailwind/cheat-sheet.html?utm%5Fsource=chatgpt.com)
+* [irurueta.comTailwind Reference :: Irurueta Docs\* Layout — display, box-sizing, position and inset, overflow, \`aspect-ratio\`, columns, \`container\`, and the table utilities. \* Flexbox and Grid — flex containers and items, grid templates and placem...](https://www.irurueta.com/web/tailwind/index.html?utm%5Fsource=chatgpt.com)
+* [nexbit.artTailwind CSS Reference & Cheat Sheet | NexBit ToolsTAILWIND CSS REFERENCE Searchable cheat sheet for Tailwind CSS utility classes. Click any class to copy it. Shows the generated CSS for each utility. 166 classes Layout (8) block display: block;...](https://tools.nexbit.art/tailwind-reference?utm%5Fsource=chatgpt.com)
+``````
+
+
