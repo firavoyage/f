@@ -16,11 +16,25 @@ pipeline
 - parse all as design tokens
   - consider literal or an object of all literal values and keys representing subset of any mode as leaves
   - concat all path, escape special characters as hyphen
+  - strip duplicate consecutive keys, e.g. `palette: gray: gray, 100, 200` -> `palette-gray` instead of `palette-gray-gray`
 - iterate all (as) design tokens, dereference (e.g. color-primary: dark -> palette-gray-..., light -> ...)
   - split the string value by space and a few css standard separators, like slash
   - for each part, check whether it's a reference to any known design token, if so replace and increase rc
   - concat back
 - iterate all (as) components, after filtering all keys of object of literals, like `comp: element: util classes string`
-  - 
-
+  - for selector, make it `.comp_element` or `.comp` if element is named the same as comp
+  - you may make `comp: element[state]` `.comp[state] .comp_element`
+  - for style...
+  - split the util classes. ideally by space, simply. you may handle `p-[arbitrary value]` or `[prop: value]` if you want
+    - `[]` could not nest. you may match all starting and closing brackets, iterate chars and check whether it's a space and not inside a bracket, append to stops, and create parts of slices by stops.
+  - for each util,
+  - you may look up the glossary and find the matching prop and type
+  - only append prop if it matches
+  - e.g. `text-red`, you look up red in color (if existing), increase rc, and that's it
+- produce the final css
+  - for each design token, put it in the correct bracket (root or mode specific)
+  - you may omit zero rc, if you can gurantee no false negatives
+  - iterate and dump
+  - for each component, iterate and sim
+    - quite straightfwd
 
