@@ -1,11 +1,3 @@
-function identity(x) {
-  return (x) => x * 2
-}
+// log([0, 1, 2, 3].slice(0, -1))
 
-function foo(bar) {
-  return bar + 1
-}
-
-foo = identity(foo)
-
-export { foo }
+log([...''.split('-'), 'foo'].join('-'))

@@ -1,3 +1,5 @@
+// import 'css.escape'
+
 const glossary = {
   aspect: {
     prop: [['ratio', 'aspect-ratio']],
@@ -1184,10 +1186,84 @@ export function style(theme) {
   for (const [k, v] of entries(theme)) {
     if (is(v, 'array')) {
       modes[k] = v
+      
+      delete theme[k]
     } 
   }
 
-  
+  function is_value(leaf) {
+    if (is(leaf, 'number') || is(leaf, 'string')) {
+      return true
+    } 
+
+    if (!is(leaf, 'object')) {
+      return false
+    } 
+
+    let keys = set()
+    for (const [k, v] of entries(leaf)) {
+      keys.add(k)
+      
+      if (!is_value(v)) {
+        return false
+      } 
+    }
+
+    for (const [mode, variants] of entries(modes)) {
+      let is_subset_of_variants = true
+
+      for (const k of keys) {
+        if (!has(variants, k)) {
+          is_subset_of_variants = false
+          break
+        } 
+      }
+
+      if (is_subset_of_variants) {
+        return true
+      } 
+    }
+
+    return false
+  }
+
+  let design_tokens = {}
+
+  function traverse(obj, prefix = '') {
+    for (const [k, v] of entries(obj)) {
+      if (is_value(v)) {
+        design_tokens[extend_prefix(prefix, k)] = v
+      } else {
+        traverse(v, extend_prefix(prefix, k))
+      } 
+    }
+  }
+
+  // strip consecutive duplicate keys, e.g. color-red-red -> color-red
+  function extend_prefix(prefix, key) {
+    let prefix_parts = prefix.split('-')
+    let last = prefix_parts[prefix_parts.length - 1]
+    
+    if (prefix_parts[0] == '') {
+      prefix_parts = []
+    } 
+
+    if (key == last) {
+      return prefix
+    } else {
+      return [...prefix_parts, key].join('-')
+    } 
+  }
+
+  traverse(theme)
+
+  let has_reference = set()
+
+  for (const [k, v] of entries(design_tokens)) {
+    let parts = v.split(' ')
+  }
 }
 
-
+function css_variable(k) {
+  return `var(--${CSS.escape(k)})`
+}
