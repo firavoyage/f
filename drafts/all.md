@@ -1164,6 +1164,7 @@ observe:
 record:
 
 - recording quality kbps volume stats container environment acoustic theory
+- research ffmpeg post processing pipeline philips newsmy hardware battery drain dsp
 
 files:
 
