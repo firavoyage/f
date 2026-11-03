@@ -1,25 +1,24 @@
 theme:
   - light
   - dark
-accent:
-  - blue
-  - teal
-  - green
-  - yellow
-  - orange
-  - orange-ubuntu
-  - red
-  - pink
-  - purple
-  - slate
-density:
-  - comfortable
-  - cozy
-  - compact
-window:
-  - active
-  - inactive
-animation:
-  - fluid
-  - reduced
+# accent:
+#   - blue
+#   - teal
+#   - green
+#   - yellow
+#   - orange
+#   - red
+#   - pink
+#   - purple
+#   - slate
+# density:
+#   - comfortable
+#   - cozy
+#   - compact
+# window:
+#   - active
+#   - inactive
+# animation:
+#   - fluid
+#   - reduced
 

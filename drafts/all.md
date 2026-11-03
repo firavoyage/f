@@ -273,7 +273,7 @@ lib:
 - scaffold vite config setup
 - shell b run script abstraction r
 - web state s overhaul simplification
-- web style vite yaml
+- web style vite yaml util classes
 
 web: <!-- frontend, web, ts/js -->
 

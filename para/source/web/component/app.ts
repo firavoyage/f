@@ -4,6 +4,7 @@ import './app.css'
 import { init_request, post } from 'lib/request'
 import { s } from 'lib/web/state'
 import { use_sync_theme } from 'lib/web/use sync theme'
+import { use_window_active } from 'lib/web/use window active'
 
 import { input } from './input'
 
@@ -56,6 +57,7 @@ function app() {
   // })
 
   use_sync_theme('system')
+  use_window_active()
 
   // const { loading: is_loading, value: response } = useAsync(() =>
   //   post('read', { page }),
