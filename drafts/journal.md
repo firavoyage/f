@@ -55469,11 +55469,13 @@ would i really record these tweets?
 
 npx is-down
 
-llm ctf. phone hacks. flashes.
+llm ctf. phone hacks. flashes. cyan hoshino lina.
 
 acbox feels the coldness in shanghai. so does cyandev. <!-- which i said in engineering intro this evening. -->
 
 yanagi 24yro birthday. <!-- tomiya celebrates. they really social a lot. -->
+
+day.
 
 
 
