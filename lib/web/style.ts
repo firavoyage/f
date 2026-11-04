@@ -1312,6 +1312,31 @@ const font_weights = {
   black: 900,
 }
 
+const lengths = {
+  none: 'none',
+  xs: '20rem',
+  sm: '24rem',
+  md: '28rem',
+  lg: '32rem',
+  xl: '36rem',
+  '2xl': '42rem',
+  '3xl': '48rem',
+  '4xl': '56rem',
+  '5xl': '64rem',
+  '6xl': '72rem',
+  '7xl': '80rem',
+  prose: '65ch',
+  full: '100%',
+  min: 'min-content',
+  max: 'max-content',
+  fit: 'fit-content',
+  'screen-sm': '640px',
+  'screen-md': '768px',
+  'screen-lg': '1024px',
+  'screen-xl': '1280px',
+  'screen-2xl': '1536px',
+}
+
 export function style(theme) {
   let modes = {}
 
@@ -1556,10 +1581,10 @@ export function style(theme) {
                   append_style(selector, prop, value)
                 } else {
                   append_style(selector, prop, font_weights[value])
-                } 
+                }
               } else if (type == 'font-family' && does_exist(value, fonts)) {
                 append_style(selector, prop, resolve(value, fonts))
-              }  else {
+              } else {
                 continue
               }
 
@@ -1572,37 +1597,44 @@ export function style(theme) {
                 return value.replaceAll('-', '.')
               }
 
+              // does exist such design token
               function does_exist(value, prefixes) {
                 value = design_token(value)
 
                 for (const prefix of prefixes) {
                   if (has(design_tokens, `${prefix}.${value}`)) {
                     return true
-                  } 
+                  }
                 }
 
                 return false
               }
 
+              // resolve to css variable
               function resolve(value, prefixes) {
                 value = design_token(value)
 
                 for (const prefix of prefixes) {
                   if (has(design_tokens, `${prefix}.${value}`)) {
                     return css_variable(`${prefix}.${value}`)
-                  } 
+                  }
                 }
               }
 
-              function is_length(s: string) {
+              function is_length(value: string) {
                 // number('4px') -> nil, int/parseint('4px') -> 4
                 return (
-                  !is(Number(s), 'nil') || s.endsWith('rem') || s.endsWith('px')
+                  is_number(value) || value.endsWith('rem') || value.endsWith('px')
+                  || has(lengths, value)
                 )
               }
 
-              function length(s) {
-                return !is(Number(s), 'nil') ? `${int(s) / 4}rem` : s
+              function length(value) {
+                if (is_number(value)) {
+                  return `${int(value) / 4}rem`
+                }
+
+                return lengths[value] ?? value
               }
 
               break
@@ -1719,6 +1751,7 @@ log(
     foo: {
       // bar: 'text-gray',
       joe: 'text-gray-100',
+      john: 'max-w-sm min-w-fit'
       // asdf: 'text-primary',
     },
   }),
