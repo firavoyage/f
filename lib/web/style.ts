@@ -775,7 +775,7 @@ const glossary = {
   rounded: {
     prop: [
       [
-        'length',
+        'radius',
         [
           'border-top-left-radius',
           'border-top-right-radius',
@@ -783,40 +783,49 @@ const glossary = {
           'border-bottom-left-radius',
         ],
       ],
-      [
-        ['none', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', 'full'],
-        [
-          'border-top-left-radius',
-          'border-top-right-radius',
-          'border-bottom-right-radius',
-          'border-bottom-left-radius',
-        ],
-      ],
+      // [
+      //   'length',
+      //   [
+      //     'border-top-left-radius',
+      //     'border-top-right-radius',
+      //     'border-bottom-right-radius',
+      //     'border-bottom-left-radius',
+      //   ],
+      // ],
+      // [
+      //   ['none', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', 'full'],
+      //   [
+      //     'border-top-left-radius',
+      //     'border-top-right-radius',
+      //     'border-bottom-right-radius',
+      //     'border-bottom-left-radius',
+      //   ],
+      // ],
     ],
   },
   'rounded-t': {
-    prop: [['length', ['border-top-left-radius', 'border-top-right-radius']]],
+    prop: [['radius', ['border-top-left-radius', 'border-top-right-radius']]],
   },
   'rounded-r': {
     prop: [
-      ['length', ['border-top-right-radius', 'border-bottom-right-radius']],
+      ['radius', ['border-top-right-radius', 'border-bottom-right-radius']],
     ],
   },
   'rounded-b': {
     prop: [
-      ['length', ['border-bottom-right-radius', 'border-bottom-left-radius']],
+      ['radius', ['border-bottom-right-radius', 'border-bottom-left-radius']],
     ],
   },
   'rounded-l': {
-    prop: [['length', ['border-top-left-radius', 'border-bottom-left-radius']]],
+    prop: [['radius', ['border-top-left-radius', 'border-bottom-left-radius']]],
   },
   'rounded-s': {
     prop: [
-      ['length', ['border-start-start-radius', 'border-end-start-radius']],
+      ['radius', ['border-start-start-radius', 'border-end-start-radius']],
     ],
   },
   'rounded-e': {
-    prop: [['length', ['border-start-end-radius', 'border-end-end-radius']]],
+    prop: [['radius', ['border-start-end-radius', 'border-end-end-radius']]],
   },
   border: {
     prop: [
@@ -1335,6 +1344,33 @@ const lengths = {
   'screen-lg': '1024px',
   'screen-xl': '1280px',
   'screen-2xl': '1536px',
+  'icon-xs': '0.75rem',
+  'icon-sm': '0.875rem',
+  'icon-base': '1rem',
+  'icon-lg': '1.125rem',
+  'icon-xl': '1.25rem',
+  'icon-2xl': '1.5rem',
+  'icon-3xl': '1.875rem',
+  'icon-4xl': '2.25rem',
+  'icon-5xl': '3rem',
+  'icon-6xl': '3.75rem',
+  'icon-7xl': '4.5rem',
+  'icon-8xl': '6rem',
+  'icon-9xl': '8rem',
+}
+
+const radii = {
+  none: '0px',
+  xs: '2px',
+  sm: '2px',
+  base: '4px',
+  md: '6px',
+  lg: '8px',
+  xl: '12px',
+  '2xl': '16px',
+  '3xl': '24px',
+  '4xl': '32px',
+  full: '9999px',
 }
 
 export function style(theme) {
@@ -1561,6 +1597,10 @@ export function style(theme) {
               if (type == 'length' && is_length(value)) {
                 value = length(value)
                 append_style(selector, prop, value)
+              } else if (type == 'radius' && has(radii, value)) {
+                append_style(selector, prop, radii[value])
+              } else if (type == 'radius' && is_number(value)) {
+                append_style(selector, prop, `${value}px`)
               } else if (type == 'color' && does_exist(value, colors)) {
                 append_style(selector, prop, resolve(value, colors))
               } else if (type == 'number' && is_number(value)) {
@@ -1573,15 +1613,10 @@ export function style(theme) {
                 append_style(selector, prop, value)
               } else if (type == 'position' && has(positions, value)) {
                 append_style(selector, prop, positions[value])
-              } else if (
-                type == 'font-weight' &&
-                (has(font_weights, value) || is_number(value))
-              ) {
-                if (is_number(value)) {
-                  append_style(selector, prop, value)
-                } else {
-                  append_style(selector, prop, font_weights[value])
-                }
+              } else if (type == 'font-weight' && has(font_weights, value)) {
+                append_style(selector, prop, font_weights[value])
+              } else if (type == 'font-weight' && is_number(value)) {
+                append_style(selector, prop, value)
               } else if (type == 'font-family' && does_exist(value, fonts)) {
                 append_style(selector, prop, resolve(value, fonts))
               } else {
@@ -1624,8 +1659,10 @@ export function style(theme) {
               function is_length(value: string) {
                 // number('4px') -> nil, int/parseint('4px') -> 4
                 return (
-                  is_number(value) || value.endsWith('rem') || value.endsWith('px')
-                  || has(lengths, value)
+                  is_number(value) ||
+                  value.endsWith('rem') ||
+                  value.endsWith('px') ||
+                  has(lengths, value)
                 )
               }
 
@@ -1751,7 +1788,8 @@ log(
     foo: {
       // bar: 'text-gray',
       joe: 'text-gray-100',
-      john: 'max-w-sm min-w-fit'
+      john: 'max-w-sm min-w-fit',
+      smith: 'size-icon-sm',
       // asdf: 'text-primary',
     },
   }),
