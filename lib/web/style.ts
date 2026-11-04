@@ -1777,6 +1777,20 @@ export function style(theme) {
   return css
 }
 
+export function use_style(theme) {
+  useEffect(() => {
+    let element = document.getElementById('style')
+
+    if (!element) {
+      element = document.createElement('style')
+      element.id = 'style'
+      document.head.appendChild(element)
+    } 
+
+    element.textContent = style(theme)
+  }, [theme])
+}
+
 log(
   style({
     theme: ['light', 'dark'],

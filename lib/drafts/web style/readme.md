@@ -114,4 +114,12 @@ idk how to create layout in tailwind though.
 
 and i will have use style, use effect that injects style.
 
+---
+
+in the idiomatic way, you would import a yaml for theming,
+
+and the object identity would stay the same.
+
+it's not expected to create style objects on the fly (though it's just some perf issues).
+
 
