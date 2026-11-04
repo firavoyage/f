@@ -1300,18 +1300,28 @@ export function style(theme) {
     //   }
     // }).join('')
 
-    let parts = v.split(' ')
+    function dereference(v) {
+      let parts = v.split(' ')
 
-    let dereferenced_value = map(parts, (part) => {
-      // let escaped_part = part.replaceAll()
-      if (has(design_tokens, part)) {
-        return css_variable(part)
-      } else {
-        return part
+      let dereferenced_value = map(parts, (part) => {
+        // let escaped_part = part.replaceAll()
+        if (has(design_tokens, part)) {
+          return css_variable(part)
+        } else {
+          return part
+        }
+      }).join(' ')
+
+      return dereferenced_value
+    }
+
+    if (is(v, 'object')) {
+      for (const [variant, value] of entries(v)) {
+        design_tokens[k][variant] = dereference(value)
       }
-    }).join(' ')
-
-    design_tokens[k] = dereferenced_value
+    } else {
+      design_tokens[k] = dereference(v)
+    }
   }
 
   let components = {}
@@ -1338,11 +1348,11 @@ export function style(theme) {
   // selector -> (prop, value)[]
   let styles = {}
 
-  function apply(selector, prop, value) {
+  function append_style(selector, prop, value) {
     if (is(prop, 'array')) {
       const props = prop
       for (const prop of props) {
-        apply(selector, prop, value)
+        append_style(selector, prop, value)
       }
     } else {
       if (!has(styles, selector)) {
@@ -1356,8 +1366,10 @@ export function style(theme) {
   for (const [component, elements] of entries(components)) {
     for (const [element, utility_classes] of entries(elements)) {
       // todo
-      let selector = `${component}_${element}`
-
+      let selector = `.${component}_${element}`
+      if (component == element) {
+        selector += `, .${component}`
+      }
 
       // todo
       let utilities = utility_classes.split(' ')
@@ -1373,7 +1385,7 @@ export function style(theme) {
             if (has(glossary[stem], 'style')) {
               const [prop, value] = glossary[stem].style
 
-              apply(selector, prop, value)
+              append_style(selector, prop, value)
 
               break
             }
@@ -1383,14 +1395,14 @@ export function style(theme) {
             for (const [type, prop] of possible_matches) {
               if (type == 'length' && int(value)) {
                 value = `${int(value) / 4}rem`
-                apply(selector, prop, value)
+                append_style(selector, prop, value)
                 break
               } else if (
                 type == 'color' &&
                 has(design_tokens, `color.${value}`)
               ) {
                 value = css_variable(`color.${value}`)
-                apply(selector, prop, value)
+                append_style(selector, prop, value)
                 break
               }
 
@@ -1406,22 +1418,50 @@ export function style(theme) {
 
   let css = ''
 
-  // todo
-  // let variable_brackets = {
-  //   ":root": {}
-  // }
+  function append_css(selector, prop, value) {
+    css += `${selector} { ${prop}: ${value} }\n`
+  }
 
   for (const [k, v] of entries(design_tokens)) {
     if (!has(references, k)) {
       continue
     }
 
-    css += `:root {${css_variable_definition(k)}: ${v}}\n`
+    if (is(v, 'object')) {
+      let current_mode
+
+      for (const [mode, variants] of entries(modes)) {
+        let is_subset = true
+
+        for (const [key, value] of entries(v)) {
+          if (!has(variants, key)) {
+            is_subset = false
+            break
+          }
+        }
+
+        if (is_subset) {
+          current_mode = mode
+          break
+        }
+      }
+
+      for (const [variant, value] of entries(v)) {
+        let selector = `[${current_mode}=${variant}]`
+        if (variant == entries(v)[0][0]) {
+          selector += `, :root`
+        }
+
+        append_css(selector, css_variable_definition(k), value)
+      }
+    } else {
+      append_css(':root', css_variable_definition(k), v)
+    }
   }
 
   for (const [selector, pairs] of entries(styles)) {
     for (const [prop, value] of entries(pairs)) {
-      css += `${selector} {${prop}: ${value}}\n`
+      append_css(selector, prop, value)
     }
   }
 
@@ -1471,12 +1511,11 @@ log(
       primary: {
         light: 'palette.gray.900',
         dark: 'palette.gray.100',
-        foo: 'palette.gray.100'
       },
-      // secondary: {
-        // light: 'palette.gray.900',
-        // dark: 'palette.gray.100',
-      // },
+      secondary: {
+        light: 'palette.gray.900',
+        dark: 'palette.gray.100',
+      },
     },
     foo: {
       bar: 'p-4 px-2 text-primary text-10',
