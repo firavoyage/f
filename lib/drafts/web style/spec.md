@@ -39,4 +39,17 @@ pipeline
   - for each component, iterate and sim
     - quite straightfwd
 
+---
+
+currently it might output variables that are referenced by variables that are not referenced.
+
+e.g.
+
+```
+palette.gray: ...
+color.primary: palette.gray
+... # irrelevant
+```
+
+im not gonna fix it.
 

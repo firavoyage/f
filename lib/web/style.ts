@@ -1300,6 +1300,18 @@ const positions = {
   'right-bottom': 'bottom right',
 }
 
+const font_weights = {
+  thin: 100,
+  extralight: 200,
+  light: 300,
+  normal: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700,
+  extrabold: 800,
+  black: 900,
+}
+
 export function style(theme) {
   let modes = {}
 
@@ -1518,16 +1530,15 @@ export function style(theme) {
                 }
               }
 
+              const colors = ['color', 'palette']
+              const fonts = ['font', 'typeface']
+
               if (type == 'length' && is_length(value)) {
                 value = length(value)
                 append_style(selector, prop, value)
-              } else if (
-                type == 'color' &&
-                has(design_tokens, `color.${value}`)
-              ) {
-                value = css_variable(`color.${value}`)
-                append_style(selector, prop, value)
-              } else if (type == 'number' && !is(Number(value), 'nil')) {
+              } else if (type == 'color' && does_exist(value, colors)) {
+                append_style(selector, prop, resolve(value, colors))
+              } else if (type == 'number' && is_number(value)) {
                 append_style(selector, prop, value)
               } else if (type == 'ratio' && has(value, '/')) {
                 append_style(selector, prop, value)
@@ -1537,8 +1548,50 @@ export function style(theme) {
                 append_style(selector, prop, value)
               } else if (type == 'position' && has(positions, value)) {
                 append_style(selector, prop, positions[value])
-              } else {
+              } else if (
+                type == 'font-weight' &&
+                (has(font_weights, value) || is_number(value))
+              ) {
+                if (is_number(value)) {
+                  append_style(selector, prop, value)
+                } else {
+                  append_style(selector, prop, font_weights[value])
+                } 
+              } else if (type == 'font-family' && does_exist(value, fonts)) {
+                append_style(selector, prop, resolve(value, fonts))
+              }  else {
                 continue
+              }
+
+              // is plain number wo suffix
+              function is_number(value) {
+                return !is(Number(value), 'nil')
+              }
+
+              function design_token(value: string) {
+                return value.replaceAll('-', '.')
+              }
+
+              function does_exist(value, prefixes) {
+                value = design_token(value)
+
+                for (const prefix of prefixes) {
+                  if (has(design_tokens, `${prefix}.${value}`)) {
+                    return true
+                  } 
+                }
+
+                return false
+              }
+
+              function resolve(value, prefixes) {
+                value = design_token(value)
+
+                for (const prefix of prefixes) {
+                  if (has(design_tokens, `${prefix}.${value}`)) {
+                    return css_variable(`${prefix}.${value}`)
+                  } 
+                }
               }
 
               function is_length(s: string) {
@@ -1644,28 +1697,29 @@ function glossary_types() {
 
 log(glossary_types())
 
-// log(
-//   style({
-//     theme: ['light', 'dark'],
-//     palette: {
-//       gray: {
-//         100: '#eee',
-//         900: '#111',
-//       },
-//     },
-//     color: {
-//       primary: {
-//         light: 'palette.gray.900',
-//         dark: 'palette.gray.100',
-//       },
-//       secondary: {
-//         light: 'palette.gray.900',
-//         dark: 'palette.gray.100',
-//       },
-//     },
-//     foo: {
-//       bar: 'text-xs text-4',
-//       asdf: 'text-9xl',
-//     },
-//   }),
-// )
+log(
+  style({
+    theme: ['light', 'dark'],
+    palette: {
+      gray: {
+        100: '#eee',
+        900: '#111',
+      },
+    },
+    color: {
+      primary: {
+        light: 'palette.gray.900',
+        dark: 'palette.gray.100',
+      },
+      secondary: {
+        light: 'palette.gray.900',
+        dark: 'palette.gray.100',
+      },
+    },
+    foo: {
+      // bar: 'text-gray',
+      joe: 'text-gray-100',
+      // asdf: 'text-primary',
+    },
+  }),
+)
