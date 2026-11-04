@@ -1377,9 +1377,10 @@ export function style(theme) {
       for (const utility of utilities) {
         let parts = utility.split('-')
 
-        for (const i of each(parts.length - 1 + 1, 1, -1)) {
-          let stem = parts.slice(0, i).join('-')
-          let value = parts.slice(i).join('-')
+        // try to match longest stem first
+        for (const last_index of each(parts.length - 1 + 1, 1, -1)) {
+          let stem = parts.slice(0, last_index).join('-')
+          let value = parts.slice(last_index).join('-')
 
           if (has(glossary, stem)) {
             if (has(glossary[stem], 'style')) {
@@ -1393,20 +1394,37 @@ export function style(theme) {
             let possible_matches = glossary[stem].prop
 
             for (const [type, prop] of possible_matches) {
+              if (is(type, 'array')) {
+                let can_match = false
+                
+                // keywords
+                for (const keyword of type) {
+                  if (value == keyword) {
+                    can_match = true
+
+                    append_style(selector, prop, value)
+                  } 
+                }
+
+                if (can_match) {
+                  break
+                } 
+              } 
+
               if (type == 'length' && int(value)) {
                 value = `${int(value) / 4}rem`
                 append_style(selector, prop, value)
-                break
               } else if (
                 type == 'color' &&
                 has(design_tokens, `color.${value}`)
               ) {
                 value = css_variable(`color.${value}`)
                 append_style(selector, prop, value)
-                break
-              }
+              } else {
+                continue
+              } 
 
-              // todo
+              break
             }
 
             break
