@@ -55459,6 +55459,18 @@ some could make sense, but they are very likely to be irrelevant for me, or righ
 
 nov 2026
 
+04
+
+21 10 surf twitter. play gok. (21 30)
+
+would i really record these tweets?
+
+---
+
+npx is-down
+
+
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
