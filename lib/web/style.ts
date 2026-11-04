@@ -830,7 +830,7 @@ const glossary = {
   border: {
     prop: [
       [
-        'length',
+        'radius',
         [
           'border-top-width',
           'border-right-width',
@@ -855,84 +855,84 @@ const glossary = {
   },
   'border-x': {
     prop: [
-      ['length', ['border-left-width', 'border-right-width']],
+      ['radius', ['border-left-width', 'border-right-width']],
       ['color', ['border-left-color', 'border-right-color']],
     ],
   },
   'border-y': {
     prop: [
-      ['length', ['border-top-width', 'border-bottom-width']],
+      ['radius', ['border-top-width', 'border-bottom-width']],
       ['color', ['border-top-color', 'border-bottom-color']],
     ],
   },
   'border-s': {
     prop: [
-      ['length', 'border-inline-start-width'],
+      ['radius', 'border-inline-start-width'],
       ['color', 'border-inline-start-color'],
     ],
   },
   'border-e': {
     prop: [
-      ['length', 'border-inline-end-width'],
+      ['radius', 'border-inline-end-width'],
       ['color', 'border-inline-end-color'],
     ],
   },
   'border-t': {
     prop: [
-      ['length', 'border-top-width'],
+      ['radius', 'border-top-width'],
       ['color', 'border-top-color'],
     ],
   },
   'border-r': {
     prop: [
-      ['length', 'border-right-width'],
+      ['radius', 'border-right-width'],
       ['color', 'border-right-color'],
     ],
   },
   'border-b': {
     prop: [
-      ['length', 'border-bottom-width'],
+      ['radius', 'border-bottom-width'],
       ['color', 'border-bottom-color'],
     ],
   },
   'border-l': {
     prop: [
-      ['length', 'border-left-width'],
+      ['radius', 'border-left-width'],
       ['color', 'border-left-color'],
     ],
   },
   'divide-x': {
     prop: [
-      ['length', 'border-inline-start-width'],
+      ['radius', 'border-inline-start-width'],
       ['color', 'border-color'],
     ],
   },
   'divide-y': {
     prop: [
-      ['length', 'border-top-width'],
+      ['radius', 'border-top-width'],
       ['color', 'border-color'],
     ],
   },
   outline: {
     prop: [
-      ['length', 'outline-width'],
+      ['radius', 'outline-width'],
       ['color', 'outline-color'],
       [
         ['none', 'hidden', 'dotted', 'dashed', 'solid', 'double'],
         'outline-style',
       ],
-      ['length', 'outline-offset'],
+      ['radius', 'outline-offset'],
     ],
   },
   ring: {
     prop: [
-      ['length', '--tw-ring-width'],
+      ['radius', '--tw-ring-width'],
       ['color', '--tw-ring-color'],
     ],
   },
   'ring-offset': {
     prop: [
-      ['length', '--tw-ring-offset-width'],
+      ['radius', '--tw-ring-offset-width'],
       ['color', '--tw-ring-offset-color'],
     ],
   },
@@ -1453,7 +1453,6 @@ export function style(theme) {
 
   let references = set()
 
-  log(design_tokens)
   for (const [k, v] of entries(design_tokens)) {
     // const separators = [' ', ',', '/', '(', ')', '+', '-', '*', '/']
 
@@ -1746,26 +1745,6 @@ export function style(theme) {
   return css
 }
 
-function glossary_types() {
-  let types = set()
-
-  for (const [k, v] of entries(glossary)) {
-    if (!has(v, 'prop')) {
-      continue
-    }
-
-    for (const [type, prop] of v.prop) {
-      if (is(type, 'string')) {
-        types.add(type)
-      }
-    }
-  }
-
-  return types
-}
-
-log(glossary_types())
-
 log(
   style({
     theme: ['light', 'dark'],
@@ -1786,11 +1765,10 @@ log(
       },
     },
     foo: {
-      // bar: 'text-gray',
+      foo: 'text-gray-900',
       joe: 'text-gray-100',
       john: 'max-w-sm min-w-fit',
       smith: 'size-icon-sm',
-      // asdf: 'text-primary',
     },
   }),
 )
