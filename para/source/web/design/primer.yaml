@@ -2,6 +2,7 @@ theme:
   - light
   - dark
 palette:
+  black: '#000'
 color:
   primary:
     light: palette.gray.900
@@ -10,15 +11,19 @@ color:
     light: palette.gray.900
     dark: palette.gray.100
 typeface:
-  sans: Ubuntu Sans, sans-serif
+  sans: Noto Sans, sans-serif
   serif: EB Garamond, serif
+  # sans: Ubuntu Sans, sans-serif
+  # serif: EB Garamond, serif
 app:
   app: h-100dvh
 page:
   page: flex justify-center
-  content: max-w-80ch
+  content: w-xl
+  # content: w-80ch
 search:
-  search: fixed top-0 w-100% flex justify-center items-center
-  content: max-w-80ch max-h-20rem overflow-y-scroll
+  search: fixed top-0 w-100% flex justify-center items-center font-sans
+  content: w-xl max-h-20rem overflow-y-scroll bg-black
+  # content: w-80ch max-h-20rem overflow-y-scroll
 input:
   input: w-100%

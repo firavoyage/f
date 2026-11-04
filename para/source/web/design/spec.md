@@ -1,8 +1,9 @@
 for a design system
 
 - color palette
-  - accent
-  - primary, secondary, ...
+  - accent (primary, secondary, tertiary)
+  - surface
+  - outline
   - semantic (success, warning, error, info)
 - typography
   - typeface
