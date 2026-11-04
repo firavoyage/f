@@ -6499,6 +6499,142 @@ When this (infrequently) breaks, it can be difficult to detect, Adding tailwind 
 
 Show all
 
+# what are accent primary secondary in a design system
 
+### what are accent primary secondary in a design system
+
+In a UI design system, **primary, secondary, and accent colors define the visual hierarchy and brand identity** of a digital product. They translate abstract brand colors into functional, consistent interface tokens that guide users through a workflow. [](https://m3.material.io/styles/color/roles)
+
+Here is how these three core color roles break down:
+
+---
+
+#### 1\. Primary Colors
+
+* **The Core Brand Driver:** This is the dominant color that defines the overall product vibe and brand recognition.
+* **Where it’s used:** High-profile structural elements like headers, key navigation components, active states, and major section backdrops.
+* **Design intent:** To anchor the interface visually so the user immediately recognizes the environment they are in. [](https://www.thomastsoi.com/blog/how-to-choose-primary-secondary-and-tertiary-colors)
+
+#### 2\. Secondary Colors
+
+* **The Supporting Cast:** Secondary colors complement and support the primary palette, providing visual depth without overcrowding the user's attention. [](https://supercharge.design/blog/a-guide-to-colors-in-design-systems)
+* **Where it’s used:** Secondary layout elements, subheadings, background cards, filter chips, borders, or toggle states. [](https://uxcel.com/lessons/color-systems-439)
+* **Design intent:** To break up the interface, establish structural order, and give the eye a middle ground between the heavy brand colors and the neutral backgrounds. [](https://medium.com/rutgers-creative-x/understanding-color-for-ui-design-ec53719e880e)
+
+#### 3\. Accent Colors
+
+* **The Attention Grabber:** The accent color is used deliberately and sparingly to introduce stark contrast against the primary and secondary colors. In some minimalist systems or frameworks like [Material Design 3](https://m3.material.io/styles/color/roles), "accent" acts as an umbrella family containing primary, secondary, and tertiary roles to dictate emphasis. [](https://m3.material.io/styles/color/roles)
+* **Where it’s used:** Primary Call-to-Action (CTA) buttons, interactive links, progress indicators, floating action buttons (FABs), and critical badges. [](https://imperavi.com/blog/designing-semantic-colors-for-your-system/)
+* **Design intent:** To instantly direct user attention to a specific focal point or critical interaction. [](https://www.youtube.com/watch?v=ewRYw4pnKQU)
+
+---
+
+#### The 60-30-10 Rule for Balance
+
+To ensure an interface does not feel overwhelming, digital design systems frequently adopt the traditional **60-30-10 distribution rule** for applying these colors: [](https://www.youtube.com/watch?v=vhqdJKXQWrY)
+
+| Color Role               | Visual Volume | UI Application                                                                                                    |
+| ------------------------ | ------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **Dominant Tone / Base** | **60%**       | Canvas background, surface cards, and primary text colors (typically neutrals like grays, whites, or deep tints). |
+| **Secondary & Brand**    | **30%**       | Structural headers, secondary elements, and brand-building sections to create depth.                              |
+| **Accent / CTA**         | **10%**       | Sparingly used for interaction cues, vital notifications, and buttons demanding immediate action.                 |
+
+Are you **building out tokens** for a new design system, or are you **updating an existing palette** in a tool like Figma? I can provide code token structures or help you check the accessibility contrast of your colors.
+
+* [](https://m3.material.io/styles/color/roles)  
+Material Design  
+Color roles - Material Design 3  
+Primary roles are for important actions and elements needing the most emphasis, like a FAB to start a new message.
+* [](https://www.youtube.com/watch?v=ewRYw4pnKQU)  
+YouTube·Rachel How  
+How to pick the right colors for your website or app  
+Sep 5, 2021 — Implement the 60-30-10 rule for UI design, allocating 60% to the dominant color, 30% to a secondary. Choose an accent color to dra...  
+13:22
+* [](https://www.youtube.com/watch?v=vhqdJKXQWrY)  
+YouTube·Nick Babich  
+YouTube  
+Sep 29, 2023 — A simple, 3-step process that will help you find the right colors for your design. Step 1: Choosing a base (dominant color) Step 2...  
+7:52
+
+Show all
+
+# how to inject style in js
+
+You can inject CSS styles into a webpage using JavaScript in several ways.
+
+### 1. Inject CSS using a `<style>` element (recommended)
+
+```
+const style = document.createElement("style");
+
+style.textContent = `
+  body {
+    background-color: black;
+    color: white;
+  }
+
+  .container {
+    padding: 20px;
+    border-radius: 10px;
+  }
+`;
+
+document.head.appendChild(style);
+```
+
+### 2. Inject CSS using `style` property
+
+For a single element:
+
+```
+const element = document.querySelector(".container");
+
+element.style.backgroundColor = "red";
+element.style.color = "white";
+element.style.padding = "20px";
+```
+
+### 3. Inject CSS using `insertAdjacentHTML`
+
+```
+document.head.insertAdjacentHTML(
+  "beforeend",
+  `<style>
+    .title {
+      color: blue;
+      font-size: 24px;
+    }
+  </style>`
+);
+```
+
+### 4. Inject an external CSS file
+
+```
+const link = document.createElement("link");
+
+link.rel = "stylesheet";
+link.href = "https://example.com/style.css";
+
+document.head.appendChild(link);
+```
+
+### 5. Remove injected styles
+
+```
+document.getElementById("my-style")?.remove();
+```
+
+You can assign an ID when injecting:
+
+```
+const style = document.createElement("style");
+style.id = "my-style";
+style.textContent = `.title { color: red; }`;
+
+document.head.appendChild(style);
+```
+
+My recommendation: Use method 1 for injecting multiple CSS rules dynamically, since it's clean, reusable, and easy to remove or update.
 
 

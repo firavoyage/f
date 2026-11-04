@@ -1821,3 +1821,39 @@ log(glossary_types())
 //     },
 //   }),
 // )
+
+log(
+  style({
+    theme: ['light', 'dark'],
+    palette: {
+      gray: {
+        100: '#eee',
+        900: '#111',
+      },
+    },
+    color: {
+      primary: {
+        light: 'palette.gray.900',
+        dark: 'palette.gray.100',
+      },
+      secondary: {
+        light: 'palette.gray.900',
+        dark: 'palette.gray.100',
+      },
+    },
+    app: {
+      app: 'h-100dvh',
+    },
+    page: {
+      page: 'flex justify-center',
+      content: 'max-w-80ch',
+    },
+    search: {
+      search: 'fixed top-0 w-100% flex justify-center items-center',
+      content: 'max-w-80ch max-h-20rem overflow-y-scroll bg-black',
+    },
+    input: {
+      input: 'w-100%',
+    },
+  }),
+)

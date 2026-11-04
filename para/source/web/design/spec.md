@@ -2,7 +2,7 @@ for a design system
 
 - color palette
   - accent
-  - primary, secondary, or neutral/slate
+  - primary, secondary, ...
   - semantic (success, warning, error, info)
 - typography
   - typeface
