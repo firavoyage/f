@@ -1,10 +1,12 @@
 import 'github-markdown-css/github-markdown.css'
 // import './app.css'
+import theme from 'web/design/primer.yaml'
 
 import { init_request, post } from 'lib/request'
 import { s } from 'lib/web/state'
 import { use_sync_theme } from 'lib/web/use sync theme'
 import { use_window_active } from 'lib/web/use window active'
+import { use_style } from 'lib/web/style'
 
 import { input } from './input'
 
@@ -47,6 +49,11 @@ function use_query(endpoint, query, debounce = 0) {
 }
 
 function app() {
+  use_sync_theme('system')
+  use_window_active()
+
+  use_style(theme)
+
   const [is_search_open, set_is_search_open] = useState(false)
 
   const [page, set_page] = use_page()
@@ -55,9 +62,6 @@ function app() {
   // const [query, set_query] = useState({
   //   query: 'hello',
   // })
-
-  use_sync_theme('system')
-  use_window_active()
 
   // const { loading: is_loading, value: response } = useAsync(() =>
   //   post('read', { page }),

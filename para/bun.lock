@@ -7,8 +7,8 @@
         "@hono/node-server": "2.0.8",
         "@rollup/plugin-yaml": "5.0.1",
         "github-markdown-css": "5.9.0",
-        "hono": "4.12.27",
         "lib": "github:firahq/lib",
+        "hono": "4.12.27",
         "md4x": "0.0.30",
         "yaml": "2.9.1",
       },
@@ -474,8 +474,6 @@
 
     "css-tree": ["css-tree@1.1.3", "", { "dependencies": { "mdn-data": "2.0.14", "source-map": "^0.6.1" } }, "sha512-tRpdppF7TRazZrjJ6v3stzv93qxRcSsFmW6cX0Zm2NVKpxE1WV1HblnghVv9TreireHkqI/VDEsfolRF1p6y7Q=="],
 
-    "css.escape": ["css.escape@1.5.1", "", {}, "sha512-YUifsXXuknHlUsmlgyY0PKzgPOr7/FjCePfHNt0jxm83wHZi44VDMQ7/fGNkjY3/jV1MC+1CmZbaHzugyeRtpg=="],
-
     "csstype": ["csstype@3.2.3", "", {}, "sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ=="],
 
     "date-fns": ["date-fns@4.4.0", "", {}, "sha512-+1UMbeh68lH1SegH83CGWwpb6OHHbpSgr3+s5Eww5M4CAgswBpoWS0AjTOfEJ33HiYKz1hdj/KTFprzXHmq/6w=="],
@@ -658,7 +656,7 @@
 
     "levn": ["levn@0.4.1", "", { "dependencies": { "prelude-ls": "^1.2.1", "type-check": "~0.4.0" } }, "sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ=="],
 
-    "lib": ["lib@github:firahq/lib#bc5f3c3", { "dependencies": { "@date-fns/tz": "1.5.0", "@folder/xdg": "4.0.1", "chalk": "6.0.1", "clsx": "2.1.1", "css.escape": "1.5.1", "date-fns": "4.4.0", "date-fns-tz": "3.2.0", "fuzzysort": "4.0.2", "lodash-es": "4.18.1", "mousetrap": "1.6.5", "mousetrap-global-bind": "1.1.0", "react-use": "17.6.1", "style-to-js": "2.0.2", "tabbable": "6.5.0", "the-new-css-reset": "1.11.3", "yaml": "2.9.0" }, "peerDependencies": { "@floating-ui/react": "0.27.20", "react": "19.2.7", "react-dom": "19.2.7" } }, "firahq-lib-bc5f3c3", "sha512-3DzYXsDt37rJ0Uuc3A7at7wetlsB/j5pXRYHS6bAgOMUqfwHGJD5hRiZFNRCyB3JLSDtByAfD/JOUe4TBylVnw=="],
+    "lib": ["lib@github:firahq/lib#5943232", { "dependencies": { "@date-fns/tz": "1.5.0", "@folder/xdg": "4.0.1", "chalk": "6.0.1", "clsx": "2.1.1", "date-fns": "4.4.0", "date-fns-tz": "3.2.0", "fuzzysort": "4.0.2", "lodash-es": "4.18.1", "mousetrap": "1.6.5", "mousetrap-global-bind": "1.1.0", "react-use": "17.6.1", "style-to-js": "2.0.2", "tabbable": "6.5.0", "the-new-css-reset": "1.11.3", "yaml": "2.9.0" }, "peerDependencies": { "@floating-ui/react": "0.27.20", "react": "19.2.7", "react-dom": "19.2.7" } }, "firahq-lib-5943232", "sha512-1eyXSDSrQkd+zDxC3DIEg50qH7BHKdJQl15uc71Zb4kInXC4mu0aZWsYRZPCXW0+JCuW8wMUDyHmmck4q/9m8A=="],
 
     "lightningcss": ["lightningcss@1.33.0", "", { "dependencies": { "detect-libc": "^2.0.3" }, "optionalDependencies": { "lightningcss-android-arm64": "1.33.0", "lightningcss-darwin-arm64": "1.33.0", "lightningcss-darwin-x64": "1.33.0", "lightningcss-freebsd-x64": "1.33.0", "lightningcss-linux-arm-gnueabihf": "1.33.0", "lightningcss-linux-arm64-gnu": "1.33.0", "lightningcss-linux-arm64-musl": "1.33.0", "lightningcss-linux-x64-gnu": "1.33.0", "lightningcss-linux-x64-musl": "1.33.0", "lightningcss-win32-arm64-msvc": "1.33.0", "lightningcss-win32-x64-msvc": "1.33.0" } }, "sha512-WkUDrojuJs0xkgGf2udWxa3yGBRxPtxUkB79i6aCZLRgc7PM8fZe9TosfPDcvEpQZbuFASnHYmRLBLUbmLOIIA=="],
 
