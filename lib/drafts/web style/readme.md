@@ -104,4 +104,14 @@ currently style is a tuple of prop and value.
 
 i may support an array of tuple.
 
+---
+
+i wanna test and see whether i could migrate existing css in para in the style lib.
+
+not much.
+
+idk how to create layout in tailwind though.
+
+and i will have use style, use effect that injects style.
+
 

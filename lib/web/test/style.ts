@@ -1765,31 +1765,31 @@ function glossary_types() {
 
 log(glossary_types())
 
-log(
-  style({
-    theme: ['light', 'dark'],
-    palette: {
-      gray: {
-        100: '#eee',
-        900: '#111',
-      },
-    },
-    color: {
-      primary: {
-        light: 'palette.gray.900',
-        dark: 'palette.gray.100',
-      },
-      secondary: {
-        light: 'palette.gray.900',
-        dark: 'palette.gray.100',
-      },
-    },
-    foo: {
-      // bar: 'text-gray',
-      joe: 'text-gray-100',
-      john: 'max-w-sm min-w-fit',
-      smith: 'size-icon-sm',
-      // asdf: 'text-primary',
-    },
-  }),
-)
+// log(
+//   style({
+//     theme: ['light', 'dark'],
+//     palette: {
+//       gray: {
+//         100: '#eee',
+//         900: '#111',
+//       },
+//     },
+//     color: {
+//       primary: {
+//         light: 'palette.gray.900',
+//         dark: 'palette.gray.100',
+//       },
+//       secondary: {
+//         light: 'palette.gray.900',
+//         dark: 'palette.gray.100',
+//       },
+//     },
+//     foo: {
+//       // bar: 'text-gray',
+//       joe: 'text-gray-100',
+//       john: 'max-w-sm min-w-fit',
+//       smith: 'size-icon-sm',
+//       // asdf: 'text-primary',
+//     },
+//   }),
+// )

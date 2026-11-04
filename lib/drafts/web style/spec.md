@@ -53,3 +53,10 @@ color.primary: palette.gray
 
 im not gonna fix it.
 
+---
+
+letter spacing (tracking) and line height (leading) names are not currently supported.
+
+use numeric value instead.
+
+
