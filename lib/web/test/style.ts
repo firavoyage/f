@@ -1793,3 +1793,31 @@ log(glossary_types())
 //     },
 //   }),
 // )
+
+// log(
+//   style({
+//     theme: ['light', 'dark'],
+//     palette: {
+//       gray: {
+//         100: '#eee',
+//         900: '#111',
+//       },
+//     },
+//     color: {
+//       primary: {
+//         light: 'palette.gray.900',
+//         dark: 'palette.gray.100',
+//       },
+//       secondary: {
+//         light: 'palette.gray.900',
+//         dark: 'palette.gray.100',
+//       },
+//     },
+//     foo: {
+//       foo: 'text-gray-900',
+//       joe: 'text-gray-100',
+//       john: 'max-w-sm min-w-fit',
+//       smith: 'size-icon-sm',
+//     },
+//   }),
+// )

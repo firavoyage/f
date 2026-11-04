@@ -145,7 +145,23 @@ const glossary = {
     prop: [
       [
         ['auto', 'hidden', 'clip', 'visible', 'scroll'],
-        ['overflow', 'overflow-x', 'overflow-y'],
+        'overflow',
+      ],
+    ],
+  },
+  'overflow-x': {
+    prop: [
+      [
+        ['auto', 'hidden', 'clip', 'visible', 'scroll'],
+        'overflow-x',
+      ],
+    ],
+  },
+  'overflow-y': {
+    prop: [
+      [
+        ['auto', 'hidden', 'clip', 'visible', 'scroll'],
+        'overflow-y',
       ],
     ],
   },
@@ -1656,22 +1672,27 @@ export function style(theme) {
               }
 
               function is_length(value: string) {
+                const length_units = [
+                  'rem',
+                  'px',
+                  'ch',
+                  '%',
+                  'vh',
+                  'vw',
+                  'dvh',
+                  'dvw',
+                  'svh',
+                  'svw',
+                  'lvh',
+                  'lvw',
+                  'vmin',
+                  'vmax',
+                ]
+
                 // number('4px') -> nil, int/parseint('4px') -> 4
                 return (
                   is_number(value) ||
-                  value.endsWith('rem') ||
-                  value.endsWith('px') ||
-                  value.endsWith('%') ||
-                  value.endsWith('vh') ||
-                  value.endsWith('vw') ||
-                  value.endsWith('dvh') ||
-                  value.endsWith('dvw') ||
-                  value.endsWith('svh') ||
-                  value.endsWith('svw') ||
-                  value.endsWith('lvh') ||
-                  value.endsWith('lvw') ||
-                  value.endsWith('vmin') ||
-                  value.endsWith('vmax') ||
+                  length_units.some((unit) => value.endsWith(unit)) ||
                   has(lengths, value)
                 )
               }
@@ -1777,37 +1798,17 @@ log(
     },
     app: {
       app: 'h-100dvh',
-      foo: 'text-gray-900',
-      joe: 'text-gray-100',
-      john: 'max-w-sm min-w-fit',
-      smith: 'size-icon-sm',
+    },
+    page: {
+      page: 'flex justify-center',
+      content: 'max-w-80ch',
+    },
+    search: {
+      search: 'fixed top-0 w-100% flex justify-center items-center',
+      content: 'max-w-80ch max-h-20rem overflow-y-scroll bg-black',
+    },
+    input: {
+      input: 'w-100%',
     },
   }),
 )
-// log(
-//   style({
-//     theme: ['light', 'dark'],
-//     palette: {
-//       gray: {
-//         100: '#eee',
-//         900: '#111',
-//       },
-//     },
-//     color: {
-//       primary: {
-//         light: 'palette.gray.900',
-//         dark: 'palette.gray.100',
-//       },
-//       secondary: {
-//         light: 'palette.gray.900',
-//         dark: 'palette.gray.100',
-//       },
-//     },
-//     foo: {
-//       foo: 'text-gray-900',
-//       joe: 'text-gray-100',
-//       john: 'max-w-sm min-w-fit',
-//       smith: 'size-icon-sm',
-//     },
-//   }),
-// )

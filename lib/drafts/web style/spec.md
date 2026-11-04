@@ -65,5 +65,18 @@ there are some --tw utils which are effectively workarounds of css limitations
 
 i might not use these.
 
+---
+
+clearly, yaml is the idiomatic way to style, and
+
+you can easily write `foo:hover`, `foo[size=large]`.
+
+however, currently you might not target the state of a parent, like the component itself
+
+<!-- and it wont be fixed. -->
+
+better to just pass down directly.
+
+though, rarely do you nest components of the same, and i may consider hacking it, targeting the component directly if needed.
 
 

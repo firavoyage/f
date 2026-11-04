@@ -6385,5 +6385,120 @@ We need units in CSS because they determine how to size elements on a page, whet
 
 Show all
 
+# is tailwindcss opinionated
+
+**Yes, Tailwind CSS is highly opinionated about _how_ you write CSS, but completely unopinionated about** **_what_ your website looks like.** [](https://www.youtube.com/shorts/bJ-4rpbWKqg)
+
+Whether it is considered "opinionated" depends entirely on whether you are looking at its structural philosophy or its visual design.
+
+---
+
+### 🎨 Visual Design: Unopinionated
+
+Unlike older UI frameworks like Bootstrap or Bulma, Tailwind doesn't come with pre-styled, ready-to-use components like `.btn`, `.card`, or `.navbar`. [](https://www.quora.com/What-is-Tailwind-CSS-and-what-are-its-pros-and-cons)
+
+* It will **never force an aesthetic** on you.
+* It provides raw, low-level utility primitives (e.g., `bg-blue-500`, `pt-4`, `flex`).
+* You can build any layout, style, or unique brand identity from scratch without fighting predefined themes. [](https://www.youtube.com/watch?v=RdWF0ZIEwkU)
+
+### 💻 Workflow and Architecture: Highly Opinionated
+
+Tailwind enforces a strict architectural philosophy known as **Utility-First** or **Atomic CSS**. It has strong, unwavering opinions on how developers should approach styling: [](https://www.youtube.com/shorts/Q-fixvOKr8w)
+
+| Opinionated Aspect          | Tailwind's Stance                                                                                                                                                                                                                                      |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Where Styles Live**       | **In the HTML / markup.** Tailwind firmly rejects the traditional separation of concerns (keeping HTML and CSS files separate). It forces you to style inline via class names.                                                                         |
+| **Design Restrictions**     | **Strict constraints over infinite choices.** Tailwind forces you to choose from a predefined mathematical scale for spacing, sizing, and colors. You can't just type any random pixel value (unless using explicit escape hatches like top-\[13px\]). |
+| **No Naming Arbitrariness** | **Class naming is a waste of time.** Instead of spending brainpower debating whether a component should be named .card-wrapper or .card-container, Tailwind forces you to bypass naming entirely.                                                      |
+
+### Summary
+
+If you hate frameworks dictating your website's visual look, Tailwind is a breath of fresh air. However, if you hate bloated HTML strings, dislike learning a specialized utility-class shorthand, or prefer native CSS semantic class separation, Tailwind's architectural opinions will feel quite aggressive. [](https://daily.dev/posts/why-i-don-t-recommend-tailwind-css-kqnuxrv44)
+
+Are you trying to decide if **Tailwind is the right fit for your team**, or are you hitting a **specific limitation** while trying to customize its default layout system?
+
+* [](https://www.reddit.com/r/reactjs/comments/1hey5ma/why%5Falmost%5Feveryone%5Fi%5Fsee%5Fuses%5Ftailwind%5Fcss%5Fwhats/)  
+Reddit·r/reactjs  
+Why almost everyone I see uses Tailwind CSS? What's the ...  
+Dec 15, 2024 — The Tailwind workflow is very elegant in my opinion. If you need to change the styling of an element, you go directly to the file ...
+* [](https://www.youtube.com/shorts/Q-fixvOKr8w)  
+YouTube·Uma Abu  
+Here's what makes Tailwind CSS so popular and why frontend ...  
+Jul 1, 2025 — Tailwind CSS is a utility-first CSS framework that allows developers to style elements by stacking small, single-purpose utility c...  
+2:24
+* [](https://www.youtube.com/shorts/MhKVdgU-yW4)  
+YouTube·Brandon - Shopify Expert  
+Why Opinionated Themes Pair Well With Tailwind CSS #Shopify  
+Oct 6, 2026 — Opinionated themes and Tailwind CSS work well together because both lean into fewer decisions and more consistent output.  
+0:49
+
+Show all
+
+# what do ppl criticize on tailwind css
+
+While **Tailwind CSS** is one of the most popular utility-first frameworks in modern web development, it faces strong pushback from purists and developers who prefer traditional styling methods. [](https://news.ycombinator.com/item?id=49141891)
+
+The most common criticisms of Tailwind CSS revolve around **messy HTML markup, the disruption of separation of concerns, and an unnecessary learning abstraction** over native CSS. [](https://www.viget.com/articles/what-i-love-hate-about-tailwind-css)
+
+---
+
+### 🧱 1\. Ugly, Verbose, and Bloated HTML (The "Class Soup")
+
+The most immediate and visual complaint is that Tailwind moves the styling complexity directly into your HTML. Instead of a clean class name like `btn-primary`, a single element can end up with dozens of utilities: [](https://www.reddit.com/r/webdev/comments/y7lkgs/why%5Fi%5Fpersonally%5Fhate%5Ftailwind/)
+
+* **Readability Issues:** Long strings of classes expand horizontally, making code difficult to read and scan.
+* **Maintenance Headaches:** If you aren't using a component-driven framework (like React, Vue, or Svelte) to encapsulate elements, you have to copy-paste massive blocks of text across HTML files just to reuse a style. [](https://medium.com/vivid-dev/why-your-friends-cant-shut-up-about-tailwindcss-and-why-they-never-will-d4a5d88326d8)
+
+### 🛑 2\. Destruction of the "Separation of Concerns"
+
+For decades, web design preached separating **structure (HTML)** from **presentation (CSS)**. [](https://www.reddit.com/r/webdev/comments/y7lkgs/why%5Fi%5Fpersonally%5Fhate%5Ftailwind/)
+
+* Critics argue that Tailwind completely reverses this best practice by tightly coupling styling to the markup.
+* If you want to completely redesign the look of a site later, you often have to rewrite the HTML itself rather than just swapping out a stylesheet. [](https://www.reddit.com/r/webdev/comments/y7lkgs/why%5Fi%5Fpersonally%5Fhate%5Ftailwind/)
+
+### 🧠 3\. Learning a New "Dialect" For No Reason
+
+Developers who already know vanilla CSS feel that Tailwind introduces an arbitrary layer of translation. [](https://www.mux.com/blog/tailwind-is-the-worst-form-of-css-except-for-all-the-others)
+
+* Instead of typing `display: flex; align-items: center;`, you have to memorize Tailwind's shorthand: `flex items-center`.
+* Critics argue this creates an unnecessary learning curve for teams and locks developers into a proprietary ecosystem instead of teaching them foundational CSS. [](https://www.aleksandrhovhannisyan.com/blog/why-i-dont-like-tailwind-css/)
+
+### 🛠️ 4\. Difficult Browser Debugging
+
+When inspecting a website using browser developer tools (like Chrome DevTools), Tailwind can make debugging tedious. [](https://www.aleksandrhovhannisyan.com/blog/why-i-dont-like-tailwind-css/)
+
+* Instead of unchecking a single CSS class to see how a component behaves, you have to sort through dozens of tiny, individual utility rules to find the one causing a layout glitch. [](https://www.aleksandrhovhannisyan.com/blog/why-i-dont-like-tailwind-css/)
+
+### 🎨 5\. Handling Dynamic Styles and Complex CSS Features
+
+Because Tailwind relies on static analysis to compile only the classes you actually use, it struggles with highly dynamic styles. [](https://mikebifulco.com/newsletter/i-hate-tailwind-css-heres-why-i-use-it)
+
+* **Dynamic Concatenation:** You cannot write string interpolation like `bg-${color}-500` because Tailwind's compiler won't recognize it. You are forced to write out the full class names.
+* **Complex Selectors:** Advanced CSS features like complex grid layouts, intricate pseudo-elements (`::before`/`::after`), or nested child selectors can feel clumsy and unreadable when crammed into a utility class string. [](https://dev.to/lixeletto/the-limits-of-tailwind-css-2pg0)
+
+---
+
+### Summary: Is it a dealbreaker?
+
+Most developers agree that Tailwind's criticisms are the exact **trade-offs** for its speed and constraint-based design benefits. While it solves the problem of "CSS file bloat" and naming fatigue, it shifts that complexity directly into your component templates. [](https://forum.devtalk.com/t/why-i-dont-like-tailwind-css/7830)
+
+Are you considering **Tailwind CSS** for a specific project, or are you trying to decide between **Tailwind** and an alternative like **CSS Modules** or **Sass**? Let me know your setup so I can help you weigh the pros and cons!
+
+* [](https://www.reddit.com/r/webdev/comments/y7lkgs/why%5Fi%5Fpersonally%5Fhate%5Ftailwind/)  
+Reddit·r/webdev  
+Why I personally hate Tailwind : r/webdev - Reddit  
+Oct 18, 2022 — Frameworks like Tailwind don't remove the need to write CSS, but they do remove the need to write inane CSS just to add flex or pa...
+* [](https://medium.com/vivid-dev/why-your-friends-cant-shut-up-about-tailwindcss-and-why-they-never-will-d4a5d88326d8)  
+Medium·Jorge Zreik  
+Why Your Friends Can't Shut Up About TailwindCSS - Medium  
+Nov 1, 2022 — Tailwind styles are NOT reusable. Whereas with traditional CSS you can combine all the styles for a heading, including size, font ...
+* [](https://mikebifulco.com/newsletter/i-hate-tailwind-css-heres-why-i-use-it)  
+Mike Bifulco  
+I hate Tailwind CSS. Here's why I use it. | Mike Bifulco  
+When this (infrequently) breaks, it can be difficult to detect, Adding tailwind classes to html means that we often have long list...
+
+Show all
+
+
 
 
