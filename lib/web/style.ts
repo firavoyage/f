@@ -527,6 +527,90 @@ const glossary = {
       [['wrap', 'nowrap', 'balance', 'pretty'], 'text-wrap'],
     ],
   },
+  'text-xs': {
+    style: [
+      ['font-size', '0.75rem'],
+      ['line-height', '1rem'],
+    ],
+  },
+  'text-sm': {
+    style: [
+      ['font-size', '0.875rem'],
+      ['line-height', '1.25rem'],
+    ],
+  },
+  'text-md': {
+    style: [
+      ['font-size', '1rem'],
+      ['line-height', '1.5rem'],
+    ],
+  },
+  'text-base': {
+    style: [
+      ['font-size', '1rem'],
+      ['line-height', '1.5rem'],
+    ],
+  },
+  'text-lg': {
+    style: [
+      ['font-size', '1.125rem'],
+      ['line-height', '1.75rem'],
+    ],
+  },
+  'text-xl': {
+    style: [
+      ['font-size', '1.25rem'],
+      ['line-height', '1.75rem'],
+    ],
+  },
+  'text-2xl': {
+    style: [
+      ['font-size', '1.5rem'],
+      ['line-height', '2rem'],
+    ],
+  },
+  'text-3xl': {
+    style: [
+      ['font-size', '1.875rem'],
+      ['line-height', '2.25rem'],
+    ],
+  },
+  'text-4xl': {
+    style: [
+      ['font-size', '2.25rem'],
+      ['line-height', '2.5rem'],
+    ],
+  },
+  'text-5xl': {
+    style: [
+      ['font-size', '3rem'],
+      ['line-height', '1'],
+    ],
+  },
+  'text-6xl': {
+    style: [
+      ['font-size', '3.75rem'],
+      ['line-height', '1'],
+    ],
+  },
+  'text-7xl': {
+    style: [
+      ['font-size', '4.5rem'],
+      ['line-height', '1'],
+    ],
+  },
+  'text-8xl': {
+    style: [
+      ['font-size', '6rem'],
+      ['line-height', '1'],
+    ],
+  },
+  'text-9xl': {
+    style: [
+      ['font-size', '8rem'],
+      ['line-height', '1'],
+    ],
+  },
   tracking: {
     prop: [['length', 'letter-spacing']],
   },
@@ -1389,9 +1473,9 @@ export function style(theme) {
               if (is(pairs[0], 'string')) {
                 const pair = pairs
                 pairs = [pair]
-              } 
+              }
 
-              for (const [prop, value] of entries(pairs)) {
+              for (const [prop, value] of pairs) {
                 append_style(selector, prop, value)
               }
 
@@ -1403,23 +1487,23 @@ export function style(theme) {
             for (const [type, prop] of possible_matches) {
               if (is(type, 'array')) {
                 let can_match = false
-                
+
                 // keywords
                 for (const keyword of type) {
                   if (value == keyword) {
                     can_match = true
 
                     append_style(selector, prop, value)
-                  } 
+                  }
                 }
 
                 if (can_match) {
                   break
-                } 
-              } 
+                }
+              }
 
-              if (type == 'length' && int(value)) {
-                value = `${int(value) / 4}rem`
+              if (type == 'length' && is_length(value)) {
+                value = length(value)
                 append_style(selector, prop, value)
               } else if (
                 type == 'color' &&
@@ -1429,7 +1513,18 @@ export function style(theme) {
                 append_style(selector, prop, value)
               } else {
                 continue
-              } 
+              }
+
+              function is_length(s: string) {
+                // number('4px') -> nil, int/parseint('4px') -> 4
+                return (
+                  !is(Number(s), 'nil') || s.endsWith('rem') || s.endsWith('px')
+                )
+              }
+
+              function length(s) {
+                return !is(Number(s), 'nil') ? `${int(s) / 4}rem` : s
+              }
 
               break
             }
@@ -1543,7 +1638,8 @@ log(
       },
     },
     foo: {
-      bar: 'p-4 px-2 text-primary text-10 ',
+      bar: 'text-xs text-4',
+      asdf: 'text-9xl',
     },
   }),
 )
