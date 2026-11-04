@@ -848,6 +848,7 @@ math:
 - limit common taylor series
 - triangle area heron formula
 - solve fn newton method
+- derivative hidden fn second derivative meaning
 
 physics:
 
@@ -1237,6 +1238,7 @@ humility:
 - foundation
 - use case uni py basics homework
 - research forum grok bot
+- research forum dsh
 
 legacy:
 
