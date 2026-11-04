@@ -2,9 +2,6 @@ theme:
   - light
   - dark
 palette:
-  gray:
-    100: '#eee'
-    900: '#111'
 color:
   primary:
     light: palette.gray.900
@@ -12,6 +9,9 @@ color:
   secondary:
     light: palette.gray.900
     dark: palette.gray.100
+typeface:
+  sans: Ubuntu Sans, sans-serif
+  serif: EB Garamond, serif
 app:
   app: h-100dvh
 page:
