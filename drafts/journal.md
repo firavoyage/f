@@ -55471,6 +55471,10 @@ npx is-down
 
 llm ctf. phone hacks. flashes.
 
+acbox feels the coldness in shanghai. so does cyandev. <!-- which i said in engineering intro this evening. -->
+
+yanagi 24yro birthday. <!-- tomiya celebrates. they really social a lot. -->
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
