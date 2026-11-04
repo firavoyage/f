@@ -1384,9 +1384,16 @@ export function style(theme) {
 
           if (has(glossary, stem)) {
             if (has(glossary[stem], 'style')) {
-              const [prop, value] = glossary[stem].style
+              let pairs = glossary[stem].style
 
-              append_style(selector, prop, value)
+              if (is(pairs[0], 'string')) {
+                const pair = pairs
+                pairs = [pair]
+              } 
+
+              for (const [prop, value] of entries(pairs)) {
+                append_style(selector, prop, value)
+              }
 
               break
             }
@@ -1516,27 +1523,27 @@ function glossary_types() {
 
 log(glossary_types())
 
-// log(
-//   style({
-//     theme: ['light', 'dark'],
-//     palette: {
-//       gray: {
-//         100: '#eee',
-//         900: '#111',
-//       },
-//     },
-//     color: {
-//       primary: {
-//         light: 'palette.gray.900',
-//         dark: 'palette.gray.100',
-//       },
-//       secondary: {
-//         light: 'palette.gray.900',
-//         dark: 'palette.gray.100',
-//       },
-//     },
-//     foo: {
-//       bar: 'p-4 px-2 text-primary text-10',
-//     },
-//   }),
-// )
+log(
+  style({
+    theme: ['light', 'dark'],
+    palette: {
+      gray: {
+        100: '#eee',
+        900: '#111',
+      },
+    },
+    color: {
+      primary: {
+        light: 'palette.gray.900',
+        dark: 'palette.gray.100',
+      },
+      secondary: {
+        light: 'palette.gray.900',
+        dark: 'palette.gray.100',
+      },
+    },
+    foo: {
+      bar: 'p-4 px-2 text-primary text-10 ',
+    },
+  }),
+)

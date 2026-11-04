@@ -90,4 +90,18 @@ i will smartly parse the utils. there are about just 120 to 140 core utils.
 
 it's manageable w/wo llms.
 
+---
+
+i may handle text tshirt sizes specially.
+
+doesnt feel there are quite a lot of style like that, unless css is severely flawed.
+
+<!-- well there are quite a lot actually, but i dont need all these -->
+
+i may do it myself. dk if it would be faster to describe it precisely to an llm. but it's reliable and predictable in the manual way.
+
+currently style is a tuple of prop and value.
+
+i may support an array of tuple.
+
 
