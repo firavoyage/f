@@ -1496,29 +1496,29 @@ function glossary_types() {
   return types
 }
 
-// log(glossary_types())
+log(glossary_types())
 
-log(
-  style({
-    theme: ['light', 'dark'],
-    palette: {
-      gray: {
-        100: '#eee',
-        900: '#111',
-      },
-    },
-    color: {
-      primary: {
-        light: 'palette.gray.900',
-        dark: 'palette.gray.100',
-      },
-      secondary: {
-        light: 'palette.gray.900',
-        dark: 'palette.gray.100',
-      },
-    },
-    foo: {
-      bar: 'p-4 px-2 text-primary text-10',
-    },
-  }),
-)
+// log(
+//   style({
+//     theme: ['light', 'dark'],
+//     palette: {
+//       gray: {
+//         100: '#eee',
+//         900: '#111',
+//       },
+//     },
+//     color: {
+//       primary: {
+//         light: 'palette.gray.900',
+//         dark: 'palette.gray.100',
+//       },
+//       secondary: {
+//         light: 'palette.gray.900',
+//         dark: 'palette.gray.100',
+//       },
+//     },
+//     foo: {
+//       bar: 'p-4 px-2 text-primary text-10',
+//     },
+//   }),
+// )

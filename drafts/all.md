@@ -1075,6 +1075,7 @@ para:
 - deps render md search files
 - research design systems vimium scrolling approaches tailwind w semantic classes
 - extension table of contents
+- extension remember scroll position
 
 quote:
 

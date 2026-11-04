@@ -4422,3 +4422,117 @@ The main advantage is internationalization (i18n). Your layout can support both 
 
 In short: `padding-left` and `padding-right` describe physical sides; `padding-inline` describes logical inline directions.
 
+# (?) tailwind tshirt sizes
+
+Here’s a standard T-shirt size chart (unisex, Asian/oversized streetwear fit):
+
+## Tailwind T-shirt size guide
+
+| Size | Chest (in) | Chest (cm) | Length (cm) |
+| ---- | ---------- | ---------- | ----------- |
+| XS   | 34–36      | 86–91      | 64–66       |
+| S    | 36–38      | 91–97      | 67–69       |
+| M    | 38–40      | 97–102     | 70–72       |
+| L    | 40–42      | 102–107    | 73–75       |
+| XL   | 42–44      | 107–112    | 76–78       |
+| 2XL  | 44–46      | 112–117    | 79–81       |
+
+Note: These are general reference measurements, not a verified official Tailwind size chart. Actual sizing depends on the manufacturer and fit.
+
+## T-shirt measurement guide
+
+[How to Read T-Shirt Size Chart (Width, Length, CM Guide)](https://images.openai.com/static-rsc-4/6l2K0t85Qf3oLwTidI4ylri-NwjBCcvZ9za8UkksWCRMo6Mooy3lCbzXPLIMuO57yS1pS1B5VIHcnbRlj1facVJKseUU_VojIceYTYH7iIq2A-F0wayOo6TdYzVoEVTgADWLcZuFv9KgIZyilNhM9f0B6a4u8tr5MXgAJcA3M3s?purpose=inline)
+
+[clavisapparel.shop](https://clavisapparel.shop/blogs/news/how-to-read-tshirt-size-chart?utm_source=chatgpt.com)
+
+- Chest: Across the shirt, measured armpit to armpit.
+- Length: From the highest shoulder point to the bottom hem.
+- Shoulder: From one shoulder seam to the other.
+
+I can also create a Tailwind T-shirt size chart graphic suitable for a clothing brand or online shop.
+
+# tailwind css tshirt sizes
+
+Here’s a Tailwind CSS T-shirt size chart you can use for an online clothing store.
+
+### T-shirt size chart (Unisex)
+
+| Size | Chest (inches) | Chest (cm) | Length (cm) |
+| ---- | -------------- | ---------- | ----------- |
+| XS   | 32–34          | 81–86      | 65          |
+| S    | 35–37          | 89–94      | 68          |
+| M    | 38–40          | 97–102     | 71          |
+| L    | 41–43          | 104–109    | 74          |
+| XL   | 44–46          | 112–117    | 77          |
+| 2XL  | 47–49          | 119–124    | 80          |
+| 3XL  | 50–52          | 127–132    | 83          |
+
+These are general sizing estimates. Actual measurements vary by manufacturer and fit.
+
+### Tailwind CSS size selector
+
+```
+<div class="flex flex-wrap gap-3">
+  <button class="border rounded-lg px-4 py-2 hover:bg-black hover:text-white">
+    XS
+  </button>
+  <button class="border rounded-lg px-4 py-2 hover:bg-black hover:text-white">
+    S
+  </button>
+  <button class="border rounded-lg px-4 py-2 hover:bg-black hover:text-white">
+    M
+  </button>
+  <button class="border rounded-lg px-4 py-2 hover:bg-black hover:text-white">
+    L
+  </button>
+  <button class="border rounded-lg px-4 py-2 hover:bg-black hover:text-white">
+    XL
+  </button>
+  <button class="border rounded-lg px-4 py-2 hover:bg-black hover:text-white">
+    2XL
+  </button>
+</div>
+```
+
+### Tailwind CSS size chart component
+
+```
+<div class="overflow-x-auto">
+  <table class="w-full text-sm text-left border-collapse">
+    <thead class="bg-gray-100">
+      <tr>
+        <th class="p-3">Size</th>
+        <th class="p-3">Chest</th>
+        <th class="p-3">Length</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="border-b">
+        <td class="p-3 font-medium">S</td>
+        <td class="p-3">89–94 cm</td>
+        <td class="p-3">68 cm</td>
+      </tr>
+      <tr class="border-b">
+        <td class="p-3 font-medium">M</td>
+        <td class="p-3">97–102 cm</td>
+        <td class="p-3">71 cm</td>
+      </tr>
+      <tr class="border-b">
+        <td class="p-3 font-medium">L</td>
+        <td class="p-3">104–109 cm</td>
+        <td class="p-3">74 cm</td>
+      </tr>
+      <tr class="border-b">
+        <td class="p-3 font-medium">XL</td>
+        <td class="p-3">112–117 cm</td>
+        <td class="p-3">77 cm</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+```
+
+I can also create a visual T-shirt size guide infographic with XS–3XL measurements for your clothing store.
+
+# 
+
