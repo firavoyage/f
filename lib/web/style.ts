@@ -1284,6 +1284,22 @@ const glossary = {
   },
 }
 
+const positions = {
+  center: 'center',
+  top: 'top',
+  bottom: 'bottom',
+  left: 'left',
+  right: 'right',
+  'top-left': 'top left',
+  'left-top': 'top left',
+  'bottom-left': 'bottom left',
+  'left-bottom': 'bottom left',
+  'top-right': 'top right',
+  'right-top': 'top right',
+  'bottom-right': 'bottom right',
+  'right-bottom': 'bottom right',
+}
+
 export function style(theme) {
   let modes = {}
 
@@ -1511,6 +1527,16 @@ export function style(theme) {
               ) {
                 value = css_variable(`color.${value}`)
                 append_style(selector, prop, value)
+              } else if (type == 'number' && !is(Number(value), 'nil')) {
+                append_style(selector, prop, value)
+              } else if (type == 'ratio' && has(value, '/')) {
+                append_style(selector, prop, value)
+              } else if (type == 'percentage' && has(value, '%')) {
+                append_style(selector, prop, value)
+              } else if (type == 'angle' && has(value, 'deg')) {
+                append_style(selector, prop, value)
+              } else if (type == 'position' && has(positions, value)) {
+                append_style(selector, prop, positions[value])
               } else {
                 continue
               }
@@ -1618,28 +1644,28 @@ function glossary_types() {
 
 log(glossary_types())
 
-log(
-  style({
-    theme: ['light', 'dark'],
-    palette: {
-      gray: {
-        100: '#eee',
-        900: '#111',
-      },
-    },
-    color: {
-      primary: {
-        light: 'palette.gray.900',
-        dark: 'palette.gray.100',
-      },
-      secondary: {
-        light: 'palette.gray.900',
-        dark: 'palette.gray.100',
-      },
-    },
-    foo: {
-      bar: 'text-xs text-4',
-      asdf: 'text-9xl',
-    },
-  }),
-)
+// log(
+//   style({
+//     theme: ['light', 'dark'],
+//     palette: {
+//       gray: {
+//         100: '#eee',
+//         900: '#111',
+//       },
+//     },
+//     color: {
+//       primary: {
+//         light: 'palette.gray.900',
+//         dark: 'palette.gray.100',
+//       },
+//       secondary: {
+//         light: 'palette.gray.900',
+//         dark: 'palette.gray.100',
+//       },
+//     },
+//     foo: {
+//       bar: 'text-xs text-4',
+//       asdf: 'text-9xl',
+//     },
+//   }),
+// )
