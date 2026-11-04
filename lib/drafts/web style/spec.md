@@ -59,4 +59,11 @@ letter spacing (tracking) and line height (leading) names are not currently supp
 
 use numeric value instead.
 
+---
+
+there are some --tw utils which are effectively workarounds of css limitations
+
+i might not use these.
+
+
 

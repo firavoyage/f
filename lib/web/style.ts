@@ -1282,15 +1282,15 @@ const glossary = {
   'will-change': {
     prop: [[['auto', 'scroll', 'contents', 'transform'], 'will-change']],
   },
-  'sr-only': {
-    style: ['position', 'absolute'],
-  },
-  'not-sr-only': {
-    style: ['position', 'static'],
-  },
-  'forced-color-adjust': {
-    prop: [[['auto', 'none'], 'forced-color-adjust']],
-  },
+  // 'sr-only': {
+  //   style: ['position', 'absolute'],
+  // },
+  // 'not-sr-only': {
+  //   style: ['position', 'static'],
+  // },
+  // 'forced-color-adjust': {
+  //   prop: [[['auto', 'none'], 'forced-color-adjust']],
+  // },
 }
 
 const positions = {
@@ -1661,7 +1661,17 @@ export function style(theme) {
                   is_number(value) ||
                   value.endsWith('rem') ||
                   value.endsWith('px') ||
+                  value.endsWith('%') ||
+                  value.endsWith('vh') ||
+                  value.endsWith('vw') ||
                   value.endsWith('dvh') ||
+                  value.endsWith('dvw') ||
+                  value.endsWith('svh') ||
+                  value.endsWith('svw') ||
+                  value.endsWith('lvh') ||
+                  value.endsWith('lvw') ||
+                  value.endsWith('vmin') ||
+                  value.endsWith('vmax') ||
                   has(lengths, value)
                 )
               }
