@@ -168,23 +168,23 @@ export function scroll(props: scroll) {
   })
 
   // handle mouse enter when it's already stationary there on mount
-  useMount(() => {
-    if (!content.current) {
-      return 
-    } 
+  // useMount(() => {
+  //   if (!content.current) {
+  //     return 
+  //   } 
 
-    let element = content.current
+  //   let element = content.current
 
-    const rect = element.getBoundingClientRect()
+  //   const rect = element.getBoundingClientRect()
 
-    const does_hover =
-      window.mouseX >= rect.left &&
-      window.mouseX <= rect.right &&
-      window.mouseY >= rect.top &&
-      window.mouseY <= rect.bottom
+  //   const does_hover =
+  //     window.mouseX >= rect.left &&
+  //     window.mouseX <= rect.right &&
+  //     window.mouseY >= rect.top &&
+  //     window.mouseY <= rect.bottom
     
-    set_hover(does_hover)
-  })
+  //   set_hover(does_hover)
+  // })
 
   use_event('mouseenter', () => set_hover(true), content)
   use_event('mouseleave', () => set_hover(false), content)

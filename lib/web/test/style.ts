@@ -145,7 +145,23 @@ const glossary = {
     prop: [
       [
         ['auto', 'hidden', 'clip', 'visible', 'scroll'],
-        ['overflow', 'overflow-x', 'overflow-y'],
+        'overflow',
+      ],
+    ],
+  },
+  'overflow-x': {
+    prop: [
+      [
+        ['auto', 'hidden', 'clip', 'visible', 'scroll'],
+        'overflow-x',
+      ],
+    ],
+  },
+  'overflow-y': {
+    prop: [
+      [
+        ['auto', 'hidden', 'clip', 'visible', 'scroll'],
+        'overflow-y',
       ],
     ],
   },
@@ -223,19 +239,31 @@ const glossary = {
   z: {
     prop: [['number', 'z-index']],
   },
-  basis: {
-    prop: [
-      ['length', 'flex-basis'],
-      ['percentage', 'flex-basis'],
-      [['auto', 'full', 'min', 'max', 'fit'], 'flex-basis'],
-    ],
-  },
   flex: {
     prop: [
       [['1', 'auto', 'initial', 'none'], 'flex'],
       ['number', 'flex'],
     ],
     style: ['display', 'flex'],
+  },
+  'flex-col': {
+    style: [
+      ['display', 'flex'],
+      ['flex-direction', 'column'],
+    ],
+  },
+  'flex-row': {
+    style: [
+      ['display', 'flex'],
+      ['flex-direction', 'row'],
+    ],
+  },
+  basis: {
+    prop: [
+      ['length', 'flex-basis'],
+      ['percentage', 'flex-basis'],
+      [['auto'], 'flex-basis'],
+    ],
   },
   grow: {
     prop: [['number', 'flex-grow']],
@@ -254,7 +282,6 @@ const glossary = {
   'grid-cols': {
     prop: [
       ['number', 'grid-template-columns'],
-      ['grid-template', 'grid-template-columns'],
     ],
   },
   'col-span': {
@@ -278,7 +305,6 @@ const glossary = {
   'grid-rows': {
     prop: [
       ['number', 'grid-template-rows'],
-      ['grid-template', 'grid-template-rows'],
     ],
   },
   'row-span': {
@@ -357,7 +383,6 @@ const glossary = {
         ],
         'align-content',
       ],
-      ['content', 'content'],
     ],
   },
   self: {
@@ -464,52 +489,35 @@ const glossary = {
   w: {
     prop: [
       ['length', 'width'],
-      [['auto', 'full', 'screen', 'min', 'max', 'fit'], 'width'],
+      [['auto'], 'width'],
     ],
   },
   h: {
     prop: [
       ['length', 'height'],
-      [['auto', 'full', 'screen', 'min', 'max', 'fit'], 'height'],
+      [['auto'], 'height'],
     ],
   },
   'min-w': {
     prop: [
       ['length', 'min-width'],
-      [['0', 'full', 'min', 'max', 'fit'], 'min-width'],
+      [['0'], 'min-width'],
     ],
   },
   'min-h': {
     prop: [
       ['length', 'min-height'],
-      [['0', 'full', 'screen', 'min', 'max', 'fit'], 'min-height'],
+      [['0'], 'min-height'],
     ],
   },
   'max-w': {
     prop: [
       ['length', 'max-width'],
-      [
-        [
-          'none',
-          'full',
-          'min',
-          'max',
-          'fit',
-          'prose',
-          'screen-sm',
-          'screen-md',
-          'screen-lg',
-          'screen-xl',
-          'screen-2xl',
-        ],
-        'max-width',
-      ],
     ],
   },
   'max-h': {
     prop: [
       ['length', 'max-height'],
-      [['none', 'full', 'screen', 'min', 'max', 'fit'], 'max-height'],
     ],
   },
   font: {
@@ -539,13 +547,13 @@ const glossary = {
       ['line-height', '1.25rem'],
     ],
   },
-  'text-md': {
+  'text-base': {
     style: [
       ['font-size', '1rem'],
       ['line-height', '1.5rem'],
     ],
   },
-  'text-base': {
+  'text-md': {
     style: [
       ['font-size', '1rem'],
       ['line-height', '1.5rem'],
@@ -783,24 +791,6 @@ const glossary = {
           'border-bottom-left-radius',
         ],
       ],
-      // [
-      //   'length',
-      //   [
-      //     'border-top-left-radius',
-      //     'border-top-right-radius',
-      //     'border-bottom-right-radius',
-      //     'border-bottom-left-radius',
-      //   ],
-      // ],
-      // [
-      //   ['none', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', 'full'],
-      //   [
-      //     'border-top-left-radius',
-      //     'border-top-right-radius',
-      //     'border-bottom-right-radius',
-      //     'border-bottom-left-radius',
-      //   ],
-      // ],
     ],
   },
   'rounded-t': {
@@ -1282,15 +1272,15 @@ const glossary = {
   'will-change': {
     prop: [[['auto', 'scroll', 'contents', 'transform'], 'will-change']],
   },
-  'sr-only': {
-    style: ['position', 'absolute'],
-  },
-  'not-sr-only': {
-    style: ['position', 'static'],
-  },
-  'forced-color-adjust': {
-    prop: [[['auto', 'none'], 'forced-color-adjust']],
-  },
+  // 'sr-only': {
+  //   style: ['position', 'absolute'],
+  // },
+  // 'not-sr-only': {
+  //   style: ['position', 'static'],
+  // },
+  // 'forced-color-adjust': {
+  //   prop: [[['auto', 'none'], 'forced-color-adjust']],
+  // },
 }
 
 const positions = {
@@ -1451,11 +1441,7 @@ export function style(theme) {
 
   traverse(theme)
 
-  design_tokens = obj(
-    map(design_tokens, ([k, v]) => [k.replaceAll('-', '.'), v]),
-  )
-
-  log(design_tokens)
+  design_tokens = obj(map(design_tokens, ([k, v]) => [k.replaceAll('-', '.'), v]))
 
   let references = set()
 
@@ -1479,6 +1465,10 @@ export function style(theme) {
     // }).join('')
 
     function dereference(v) {
+      if (!is(v, 'string')) {
+        return v
+      } 
+
       let parts = v.split(' ')
 
       let dereferenced_value = map(parts, (part) => {
@@ -1545,8 +1535,15 @@ export function style(theme) {
     for (const [element, utility_classes] of entries(elements)) {
       // todo
       let selector = `.${component}_${element}`
-      if (component == element) {
-        selector += `, .${component}`
+      if (is_component_container_itself()) {
+        selector += `, .${element}`
+      }
+      // if (component == element) {
+      //   selector += `, .${component}`
+      // }
+
+      function is_component_container_itself() {
+        return component == element || element.startsWith(component)
       }
 
       // todo
@@ -1559,10 +1556,9 @@ export function style(theme) {
         for (const last_index of each(parts.length - 1 + 1, 1, -1)) {
           let stem = parts.slice(0, last_index).join('-')
           let value = parts.slice(last_index).join('-')
-          log({last_index, stem, value})
 
           if (has(glossary, stem)) {
-            if (has(glossary[stem], 'style')) {
+            if (value == '' && has(glossary[stem], 'style')) {
               let pairs = glossary[stem].style
 
               if (is(pairs[0], 'string')) {
@@ -1600,6 +1596,7 @@ export function style(theme) {
               const colors = ['color', 'palette']
               const fonts = ['font', 'typeface']
 
+              // todo: image, shadow, easing
               if (type == 'length' && is_length(value)) {
                 value = length(value)
                 append_style(selector, prop, value)
@@ -1625,6 +1622,8 @@ export function style(theme) {
                 append_style(selector, prop, value)
               } else if (type == 'font-family' && does_exist(value, fonts)) {
                 append_style(selector, prop, resolve(value, fonts))
+              } else if (type == 'time') {
+                append_style(selector, prop, value)
               } else {
                 continue
               }
@@ -1663,11 +1662,27 @@ export function style(theme) {
               }
 
               function is_length(value: string) {
+                const length_units = [
+                  'rem',
+                  'px',
+                  'ch',
+                  '%',
+                  'vh',
+                  'vw',
+                  'dvh',
+                  'dvw',
+                  'svh',
+                  'svw',
+                  'lvh',
+                  'lvw',
+                  'vmin',
+                  'vmax',
+                ]
+
                 // number('4px') -> nil, int/parseint('4px') -> 4
                 return (
                   is_number(value) ||
-                  value.endsWith('rem') ||
-                  value.endsWith('px') ||
+                  length_units.some((unit) => value.endsWith(unit)) ||
                   has(lengths, value)
                 )
               }

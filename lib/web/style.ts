@@ -1556,7 +1556,7 @@ export function style(theme) {
           let value = parts.slice(last_index).join('-')
 
           if (has(glossary, stem)) {
-            if (has(glossary[stem], 'style')) {
+            if (value == '' && has(glossary[stem], 'style')) {
               let pairs = glossary[stem].style
 
               if (is(pairs[0], 'string')) {
