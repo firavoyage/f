@@ -7,6 +7,7 @@
   - decouple styling
   - ~~always focus input~~ current behavior it seems, actually
     - yes, enforce it more, even if you use your mouse to drag the scrollbar
+- search
   - close upon outside click
   - result hover/focus
 - toc

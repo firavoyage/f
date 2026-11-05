@@ -43,46 +43,51 @@ export function scroll(props: scroll) {
 
   // set container w h
   useLayoutEffect(() => {
-    log(container)
-
     if (!container.current) {
-      return 
-    } 
+      return
+    }
 
     let child = container.current
-
-    log(child)
 
     const parent = child.parentElement
 
     if (!parent) return
 
-    const parentRect = parent.getBoundingClientRect()
-    const childRect = child.getBoundingClientRect()
+    log(parent.scrollHeight, parent.clientHeight, child.clientHeight)
+    if (parent.scrollHeight > parent.clientHeight) {
+      let delta = parent.scrollHeight - parent.clientHeight
 
-    const parentStyle = getComputedStyle(parent)
+      let height = child.clientHeight - delta
 
-    const width =
-      parentRect.width -
-      childRect.left +
-      parentRect.left -
-      parseFloat(parentStyle.paddingRight)
-
-    const height =
-      parentRect.height -
-      childRect.top +
-      parentRect.top -
-      parseFloat(parentStyle.paddingBottom)
-    
-    let w = Math.max(0, width)
-    let h = Math.max(0, height)
-
-    if (w == 0 || h == 0) {
-      return 
+      child.style.height = `${height}px`
     } 
 
-    child.style.width = `${w}px`
-    child.style.height = `${h}px`
+    // const parentRect = parent.getBoundingClientRect()
+    // const childRect = child.getBoundingClientRect()
+
+    // const parentStyle = getComputedStyle(parent)
+
+    // const width =
+    //   parentRect.width -
+    //   childRect.left +
+    //   parentRect.left -
+    //   parseFloat(parentStyle.paddingRight)
+
+    // const height =
+    //   parentRect.height -
+    //   childRect.top +
+    //   parentRect.top -
+    //   parseFloat(parentStyle.paddingBottom)
+
+    // let w = Math.max(0, width)
+    // let h = Math.max(0, height)
+
+    // if (w == 0 || h == 0) {
+    //   return
+    // }
+
+    // child.style.width = `${w}px`
+    // child.style.height = `${h}px`
   })
 
   // show scrollbar track for a while when position changes
