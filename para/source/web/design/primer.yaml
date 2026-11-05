@@ -27,7 +27,7 @@ page:
   # content: w-80ch
 search:
   search: fixed top-0 w-full flex justify-center items-center font-sans
-  content: w-xl max-h-20rem flex flex-column overflow-hidden bg-primary rounded-md
+  content: w-xl max-h-20rem overflow-hidden bg-primary rounded-md
   results: px-2
   result: w-full px-2 py-0.5 rounded-md
   result[focus]: bg-hover

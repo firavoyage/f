@@ -53,6 +53,8 @@
   - an alternative approach would be to have the file hierarchy in memory
 - component/scroll: show scrollbar when programmatically scrolled
   - refactor code
+  - decouple scroll start end
+    - e.g. omit crossing/rounded (like vscode command palette)
 
 ## w
 

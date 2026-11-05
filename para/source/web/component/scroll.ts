@@ -24,7 +24,8 @@ export function scroll(props: scroll) {
   const [hover, set_hover] = useState(false)
   const [did_scroll, set_did_scroll] = useState(false)
 
-  const [container] = useMeasure()
+  const container = useRef()
+  // const [container] = useMeasure()
   const content = useRef()
   const vertical_track = useRef()
   const vertical_thumb = useRef()
@@ -39,6 +40,50 @@ export function scroll(props: scroll) {
   })
 
   const position = useScroll(content)
+
+  // set container w h
+  useLayoutEffect(() => {
+    log(container)
+
+    if (!container.current) {
+      return 
+    } 
+
+    let child = container.current
+
+    log(child)
+
+    const parent = child.parentElement
+
+    if (!parent) return
+
+    const parentRect = parent.getBoundingClientRect()
+    const childRect = child.getBoundingClientRect()
+
+    const parentStyle = getComputedStyle(parent)
+
+    const width =
+      parentRect.width -
+      childRect.left +
+      parentRect.left -
+      parseFloat(parentStyle.paddingRight)
+
+    const height =
+      parentRect.height -
+      childRect.top +
+      parentRect.top -
+      parseFloat(parentStyle.paddingBottom)
+    
+    let w = Math.max(0, width)
+    let h = Math.max(0, height)
+
+    if (w == 0 || h == 0) {
+      return 
+    } 
+
+    child.style.width = `${w}px`
+    child.style.height = `${h}px`
+  })
 
   // show scrollbar track for a while when position changes
   useEffect(() => {
@@ -169,8 +214,6 @@ export function scroll(props: scroll) {
 
   // consider hover regardless on content or on track/thumb
   function check_hover(e) {
-    log('check')
-
     if (!content.current) {
       return
     }
