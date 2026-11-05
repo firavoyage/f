@@ -1,5 +1,14 @@
 # plan
 
+- ~~flex-col flex-row~~
+- outline/box shadow in css
+- scroll
+  - programmatic wo flex requirement if feasible
+  - show
+  - ~~always focus input~~ current behavior it seems, actually
+  - result hover/focus
+- toc
+
 # todo
 
 ## m

@@ -1077,6 +1077,7 @@ para:
 - extension table of contents
 - extension remember scroll position
 - design system google material design github primer
+- web component scroll
 
 quote:
 

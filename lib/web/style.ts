@@ -237,19 +237,31 @@ const glossary = {
   z: {
     prop: [['number', 'z-index']],
   },
-  basis: {
-    prop: [
-      ['length', 'flex-basis'],
-      ['percentage', 'flex-basis'],
-      [['auto', 'full', 'min', 'max', 'fit'], 'flex-basis'],
-    ],
-  },
   flex: {
     prop: [
       [['1', 'auto', 'initial', 'none'], 'flex'],
       ['number', 'flex'],
     ],
     style: ['display', 'flex'],
+  },
+  'flex-col': {
+    style: [
+      ['display', 'flex'],
+      ['flex-direction', 'column'],
+    ],
+  },
+  'flex-row': {
+    style: [
+      ['display', 'flex'],
+      ['flex-direction', 'row'],
+    ],
+  },
+  basis: {
+    prop: [
+      ['length', 'flex-basis'],
+      ['percentage', 'flex-basis'],
+      [['auto', 'full', 'min', 'max', 'fit'], 'flex-basis'],
+    ],
   },
   grow: {
     prop: [['number', 'flex-grow']],
