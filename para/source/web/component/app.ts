@@ -14,12 +14,9 @@ import { search } from './search'
 
 init_request('http://localhost:9010')
 
-const use_page = s(
-  '',
-  {
-    url_param: 'page',
-  },
-)
+const use_page = s('', {
+  url_param: 'page',
+})
 
 function use_query(endpoint, query, debounce = 0) {
   const [result, set_result] = useState()
@@ -87,33 +84,13 @@ function app() {
   return h(
     'app',
     h('page', h('page_content', h('markdown-body', h({ html })))),
-    h(search, {query, set_query, results: search_results, select_result: set_page})
-    // is_search_open &&
-    //   h(
-    //     'search',
-    //     h(
-    //       'search_content',
-    //       h(input, {
-    //         value: query,
-    //         set_value: set_query,
-    //       }),
-    //       map(search_results, (result) =>
-    //         h(
-    //           'button.search_result',
-    //           {
-    //             onclick() {
-    //               set_page(result)
-    //             },
-    //           },
-    //           result,
-    //         ),
-    //       ),
-    //     ),
-    //   ),
+    h(search, {
+      query,
+      set_query,
+      results: search_results,
+      select_result: set_page,
+    }),
   )
-  // return <div className='markdown-body'
-  // // style={{maxWidth: '80ch'}}
-  // dangerouslySetInnerHTML={{ __html: html }}></div>
 }
 
 const App = app

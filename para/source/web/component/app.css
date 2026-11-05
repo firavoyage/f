@@ -7,9 +7,6 @@
 
 .scroll {
   position: relative;
-  overflow: hidden;
-
-  display: flex;
 
   .scroll_content {
     > * {

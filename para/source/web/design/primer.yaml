@@ -27,15 +27,15 @@ page:
   # content: w-80ch
 search:
   search: fixed top-0 w-full flex justify-center items-center font-sans
-  content: w-xl max-h-20rem flex flex-column overflow-hidden bg-primary
-  # content: w-xl max-h-20rem overflow-y-auto bg-primary
+  content: w-xl max-h-20rem flex flex-column overflow-hidden bg-primary rounded-md
+  results: px-2
   result: w-full px-2 py-0.5 rounded-md
   result[focus]: bg-hover
 input:
-  input: w-full
+  input: w-full p-2
   'input:focus-visble': outline-focus outline-sm offset-2 rounded-md
 scroll:
-  scroll: flex relative
+  scroll: flex flex-1 relative overflow-hidden
   content: flex-1 overflow-auto
   vertical_scrollbar: absolute right-0 top-0 bottom-0
   vertical_track: w-2 h-full opacity-0 transition-opacity duration-0.3s

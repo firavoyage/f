@@ -167,27 +167,29 @@ export function scroll(props: scroll) {
     when: is_dragging,
   })
 
-  // handle mouse enter when it's already stationary there on mount
-  // useMount(() => {
-  //   if (!content.current) {
-  //     return 
-  //   } 
+  // consider hover regardless on content or on track/thumb
+  function check_hover(e) {
+    log('check')
 
-  //   let element = content.current
+    if (!content.current) {
+      return
+    }
 
-  //   const rect = element.getBoundingClientRect()
+    let element = content.current
 
-  //   const does_hover =
-  //     window.mouseX >= rect.left &&
-  //     window.mouseX <= rect.right &&
-  //     window.mouseY >= rect.top &&
-  //     window.mouseY <= rect.bottom
-    
-  //   set_hover(does_hover)
-  // })
+    const rect = element.getBoundingClientRect()
 
-  use_event('mouseenter', () => set_hover(true), content)
-  use_event('mouseleave', () => set_hover(false), content)
+    const does_hover =
+      e.clientX >= rect.left &&
+      e.clientX <= rect.right &&
+      e.clientY >= rect.top &&
+      e.clientY <= rect.bottom
+
+    set_hover(does_hover)
+  }
+
+  use_event('mouseenter', check_hover, content)
+  use_event('mousemove', check_hover)
 
   const show = hover || did_scroll
 
