@@ -90,12 +90,15 @@ export function search(props: search) {
       'search',
       h(
         'search_content',
-        h(input, {
-          value: query,
-          set_value: set_query,
-          ref: field,
-          type: 'text',
-        }),
+        h(
+          'search_input',
+          h(input, {
+            value: query,
+            set_value: set_query,
+            ref: field,
+            type: 'text',
+          }),
+        ),
         h(
           scroll,
           h(
@@ -114,7 +117,7 @@ export function search(props: search) {
               ),
             ),
           ),
-        )
+        ),
       ),
     )
   )

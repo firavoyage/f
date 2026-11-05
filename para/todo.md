@@ -3,11 +3,11 @@
 - ~~flex-col flex-row~~
 - outline/box shadow in css
 - scroll
-  - programmatic wo flex requirement if feasible
-  - decouple styling
-  - ~~always focus input~~ current behavior it seems, actually
-    - yes, enforce it more, even if you use your mouse to drag the scrollbar
+  - ~~programmatic wo flex requirement if feasible~~
+  - ~~decouple styling~~
 - search
+  - always focus input ~~current behavior it seems, actually~~
+    - yes, enforce it more, even if you use your mouse to drag the scrollbar
   - close upon outside click
   - result hover/focus
 - toc

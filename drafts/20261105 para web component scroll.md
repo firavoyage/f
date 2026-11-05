@@ -476,5 +476,193 @@ Quick reference:
 
 Tip: `:has()` is often called the CSS parent selector, and is supported by all modern major browsers.
 
+# how to track mouseenter in js when it initially mounts and mouse hovers but doesnt move
+
+The issue is that `mouseenter` only fires when the pointer enters an element. If the mouse is already stationary over the element when it mounts, the browser might not fire `mouseenter` again.
+
+You can handle this by checking the pointer position when the element mounts.
+
+### Solution: Check on mount + listen for mouseenter
+
+```
+const element = document.querySelector(".my-element");
+
+function handleMouseEnter() {
+  console.log("Mouse is inside!");
+}
+
+element.addEventListener("mouseenter", handleMouseEnter);
+
+// Check if mouse is already inside on mount
+const rect = element.getBoundingClientRect();
+
+const isMouseInside =
+  window.mouseX >= rect.left &&
+  window.mouseX <= rect.right &&
+  window.mouseY >= rect.top &&
+  window.mouseY <= rect.bottom;
+
+if (isMouseInside) {
+  handleMouseEnter();
+}
+```
+
+You'll need to track the pointer position globally:
+
+```
+window.addEventListener("mousemove", (e) => {
+  window.mouseX = e.clientX;
+  window.mouseY = e.clientY;
+});
+```
+
+### Better approach: Use `elementFromPoint`
+
+If you only care whether the mouse is currently over the element:
+
+```
+function isMouseOver(element) {
+  const el = document.elementFromPoint(
+    window.mouseX,
+    window.mouseY
+  );
+
+  return el && (el === element || element.contains(el));
+}
+```
+
+### Important
+
+If you're using React, you can combine this with `useEffect`:
+
+```
+useEffect(() => {
+  const el = ref.current;
+  if (!el) return;
+
+  const handleEnter = () => setHovered(true);
+  const handleLeave = () => setHovered(false);
+
+  el.addEventListener("mouseenter", handleEnter);
+  el.addEventListener("mouseleave", handleLeave);
+
+  return () => {
+    el.removeEventListener("mouseenter", handleEnter);
+    el.removeEventListener("mouseleave", handleLeave);
+  };
+}, []);
+```
+
+One catch: To detect a stationary mouse on initial mount, you need to know its last position (or have another way to query pointer position). Browsers don't expose the current mouse coordinates directly.
+
+If you're using React, I can show you a reusable `useIsMouseOver` hook that handles this case.
+
+# how to mimic flex grow 1 in js, check and filling all remaining width height of the parent given the child node
+
+To mimic CSS `flex-grow: 1` in JavaScript, you need to calculate the remaining available width and height of the parent after accounting for the child's position and the other elements.
+
+There are two approaches depending on what you're trying to achieve.
+
+## 1. Recommended: Use `flex-grow: 1` directly
+
+If you can modify CSS styles, this is the simplest solution:
+
+```
+child.style.flex = "1 1 0";
+child.style.minWidth = "0";
+child.style.minHeight = "0";
+```
+
+This automatically fills the remaining space in a flex container.
+
+## 2. Calculate remaining width and height using JavaScript
+
+If you need to implement this manually for an arbitrary child node:
+
+```
+function fillRemainingSpace(child) {
+  const parent = child.parentElement;
+
+  if (!parent) return;
+
+  const parentRect = parent.getBoundingClientRect();
+  const childRect = child.getBoundingClientRect();
+
+  const parentStyle = getComputedStyle(parent);
+
+  const width =
+    parentRect.width -
+    childRect.left + parentRect.left -
+    parseFloat(parentStyle.paddingRight);
+
+  const height =
+    parentRect.height -
+    childRect.top + parentRect.top -
+    parseFloat(parentStyle.paddingBottom);
+
+  child.style.width = `${Math.max(0, width)}px`;
+  child.style.height = `${Math.max(0, height)}px`;
+}
+```
+
+This assumes the child starts at its current position and should fill toward the parent's right and bottom edges.
+
+## 3. More robust: Account for parent padding and child margins
+
+If you want to calculate the remaining space based on the child's actual position:
+
+```
+function getRemainingSpace(child) {
+  const parent = child.parentElement;
+
+  if (!parent) return null;
+
+  const p = parent.getBoundingClientRect();
+  const c = child.getBoundingClientRect();
+
+  const ps = getComputedStyle(parent);
+
+  const right = p.right - parseFloat(ps.borderRightWidth)
+    - parseFloat(ps.paddingRight);
+
+  const bottom = p.bottom - parseFloat(ps.borderBottomWidth)
+    - parseFloat(ps.paddingBottom);
+
+  return {
+    width: Math.max(0, right - c.left),
+    height: Math.max(0, bottom - c.top),
+  };
+}
+```
+
+Usage:
+
+```
+const { width, height } = getRemainingSpace(child);
+
+child.style.width = `${width}px`;
+child.style.height = `${height}px`;
+```
+
+Important: This calculates the remaining space based on the child's current top-left position. It doesn't account for sibling elements that might affect layout or automatically recalculate when the parent resizes.
+
+## My recommendation
+
+If you're implementing a custom layout engine and want to mimic `flex-grow: 1`, I'd use this conceptual formula:
+
+\\[ \text{remaining} = \text{parentSize} - \text{occupiedSpace} \\]
+
+For horizontal layout:
+
+\\[ W\_{\text{child}} = W\_{\text{parent}} - X\_{\text{child}} - X\_{\text{remaining padding}} \\]
+
+For vertical layout:
+
+\\[ H\_{\text{child}} = H\_{\text{parent}} - Y\_{\text{child}} - Y\_{\text{remaining padding}} \\]
+
+One question: Are you implementing a custom layout engine (like a mini Flexbox), or do you simply want a DOM child to fill the remaining space after its siblings?
+
+The implementation differs significantly, especially when handling multiple siblings with `flex-grow`.
+
 
 

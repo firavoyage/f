@@ -1,3 +1,7 @@
+*:focus-visible {
+  box-shadow: 0 0 0 2px oklch(57% 0.20 259.67);
+}
+
 .scroll {
   position: relative;
 
