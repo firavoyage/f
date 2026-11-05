@@ -13,7 +13,7 @@ import { input } from './input'
 init_request('http://localhost:9010')
 
 const use_page = s(
-  'drafts/20261102 para research design systems vimium scrolling approaches tailwind w semantic classes.md',
+  '',
   {
     url_param: 'page',
   },
@@ -58,7 +58,7 @@ function app() {
 
   const [page, set_page] = use_page()
 
-  const [query, set_query] = useState('hello')
+  const [query, set_query] = useState('')
   // const [query, set_query] = useState({
   //   query: 'hello',
   // })
