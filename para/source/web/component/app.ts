@@ -9,6 +9,7 @@ import { use_window_active } from 'lib/web/use window active'
 import { use_style } from 'lib/web/style'
 
 import { input } from './input'
+import { search } from './search'
 
 init_request('http://localhost:9010')
 
@@ -85,28 +86,29 @@ function app() {
   return h(
     'app',
     h('page', h('page_content', h('markdown-body', h({ html })))),
-    is_search_open &&
-      h(
-        'search',
-        h(
-          'search_content',
-          h(input, {
-            value: query,
-            set_value: set_query,
-          }),
-          map(search_results, (result) =>
-            h(
-              'button.search_result',
-              {
-                onclick() {
-                  set_page(result)
-                },
-              },
-              result,
-            ),
-          ),
-        ),
-      ),
+    h(search, {query, set_query, results: search_results})
+    // is_search_open &&
+    //   h(
+    //     'search',
+    //     h(
+    //       'search_content',
+    //       h(input, {
+    //         value: query,
+    //         set_value: set_query,
+    //       }),
+    //       map(search_results, (result) =>
+    //         h(
+    //           'button.search_result',
+    //           {
+    //             onclick() {
+    //               set_page(result)
+    //             },
+    //           },
+    //           result,
+    //         ),
+    //       ),
+    //     ),
+    //   ),
   )
   // return <div className='markdown-body'
   // // style={{maxWidth: '80ch'}}
