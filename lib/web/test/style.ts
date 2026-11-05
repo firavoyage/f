@@ -1451,7 +1451,9 @@ export function style(theme) {
 
   traverse(theme)
 
-  design_tokens = obj(map(design_tokens, ([k, v]) => [k.replaceAll('-', '.'), v]))
+  design_tokens = obj(
+    map(design_tokens, ([k, v]) => [k.replaceAll('-', '.'), v]),
+  )
 
   log(design_tokens)
 
@@ -1557,6 +1559,7 @@ export function style(theme) {
         for (const last_index of each(parts.length - 1 + 1, 1, -1)) {
           let stem = parts.slice(0, last_index).join('-')
           let value = parts.slice(last_index).join('-')
+          log({last_index, stem, value})
 
           if (has(glossary, stem)) {
             if (has(glossary[stem], 'style')) {
@@ -1862,3 +1865,9 @@ log(glossary_types())
 //     },
 //   }),
 // )
+
+log(
+  style({
+    foo: { bar: 'flex-1' },
+  }),
+)

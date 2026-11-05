@@ -35,6 +35,8 @@ input:
   input: w-full
   'input:focus-visble': outline-focus outline-sm offset-2 rounded-md
 scroll:
+  scroll: flex relative
+  content: flex-1 overflow-auto
   vertical_scrollbar: absolute right-0 top-0 bottom-0
   vertical_track: w-2 h-full opacity-0 transition-opacity duration-0.3s
   vertical_track[show]: opacity-1

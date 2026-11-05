@@ -20,7 +20,7 @@ export function scroll(props: scroll) {
     useToggle(false)
   const [is_horizontally_scrollable, toggle_is_horizontally_scrollable] =
     useToggle(false)
-  
+
   const [hover, set_hover] = useState(false)
   const [did_scroll, set_did_scroll] = useState(false)
 
@@ -44,7 +44,7 @@ export function scroll(props: scroll) {
   useEffect(() => {
     set_did_scroll(true)
 
-    const timer = setTimeout(function() {
+    const timer = setTimeout(function () {
       set_did_scroll(false)
     }, scroll_hint_duration)
 
@@ -63,8 +63,6 @@ export function scroll(props: scroll) {
     }
 
     const view = content.current
-
-    log(view.scrollHeight, view.clientHeight)
 
     toggle_is_vertically_scrollable(view.scrollHeight > view.clientHeight)
     toggle_is_horizontally_scrollable(view.scrollWidth > view.clientWidth)
@@ -167,6 +165,25 @@ export function scroll(props: scroll) {
 
   use_event('mouseup', () => set_is_dragging(false), window, {
     when: is_dragging,
+  })
+
+  // handle mouse enter when it's already stationary there on mount
+  useMount(() => {
+    if (!content.current) {
+      return 
+    } 
+
+    let element = content.current
+
+    const rect = element.getBoundingClientRect()
+
+    const does_hover =
+      window.mouseX >= rect.left &&
+      window.mouseX <= rect.right &&
+      window.mouseY >= rect.top &&
+      window.mouseY <= rect.bottom
+    
+    set_hover(does_hover)
   })
 
   use_event('mouseenter', () => set_hover(true), content)
