@@ -29,6 +29,12 @@
 
 ## c
 
+- support search results limit
+  - rarely do you need a thousand search results after typing a letter
+    - even if json parse is cheap, layout of a thousand dynamic elements takes 100ms
+  - throttling/debouncing would not be a good idea
+  - an alternative approach would be to have the file hierarchy in memory
+
 ## w
 
 # backlog

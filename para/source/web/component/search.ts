@@ -1,4 +1,5 @@
 import { input } from './input'
+import { scroll } from './scroll'
 
 type search = {
   query
@@ -87,26 +88,33 @@ export function search(props: search) {
     open &&
     h(
       'search',
-      h(input, {
-        value: query,
-        set_value: set_query,
-        ref: field,
-      }),
       h(
-        'search_results',
-        { ref: items },
-        map(results, (result, index) =>
+        'search_content',
+        h(input, {
+          value: query,
+          set_value: set_query,
+          ref: field,
+          type: 'text',
+        }),
+        h(
+          scroll,
           h(
-            'button.search_result',
-            {
-              focus: focus == index,
-              onclick() {
-                select_result(result)
-              },
-            },
-            result,
+            'search_results',
+            { ref: items },
+            map(results, (result, index) =>
+              h(
+                'button.search_result',
+                {
+                  focus: focus == index,
+                  onclick() {
+                    select_result(result)
+                  },
+                },
+                result,
+              ),
+            ),
           ),
-        ),
+        )
       ),
     )
   )

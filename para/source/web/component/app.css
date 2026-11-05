@@ -1,41 +1,76 @@
-.app {
-  height: 100dvh;
+.scroll {
+  position: relative;
+  overflow: hidden;
+
+  max-height: 100%;
+
+  .scroll_content {
+    overflow: auto;
+    /* overflow-y: auto; */
+    > * {
+      flex-shrink: 0;
+    }
+
+    /* use a custom scrollbar */
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    /* &[noscrollbar] {
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    } */
+  }
+
+  .track {
+    opacity: 0;
+    transition: opacity 0.3s;
+    /* transition: opacity var(--transition-scrollbar); */
+
+    .thumb {
+      position: absolute;
+
+      background-color: white;
+    }
+  }
+
+  &:hover .track,
+  &[drag] .track {
+    opacity: 1;
+  }
+
+  .vertical_scrollbar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    .track {
+      width: 0.5rem;
+      height: 100%;
+
+      .thumb {
+        width: 100%;
+      }
+    }
+  }
+
+  .horizontal_scrollbar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    .track {
+      height: 0.5rem;
+      width: 100%;
+
+      .thumb {
+        height: 100%;
+      }
+    }
+  }
 }
 
-.page {
-  display: flex;
-
-  justify-content: center;
-}
-
-.page_content {
-  /* max-width: 65ch; */
-  /* max-width: 70ch; */
-  max-width: 80ch;
-}
-
-.search {
-  position: fixed;
-
-  top: 0;
-  width: 100%;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-}
-
-.search_content {
-  max-width: 80ch;
-
-  max-height: 20rem;
-
-  overflow-y: scroll;
-
-  background: black;
-}
-
-.input {
-  width: 100%;
-}

@@ -1,6 +1,7 @@
 import 'github-markdown-css/github-markdown.css'
 // import './app.css'
 import theme from 'web/design/primer.yaml'
+import './app.css'
 
 import { init_request, post } from 'lib/request'
 import { s } from 'lib/web/state'
