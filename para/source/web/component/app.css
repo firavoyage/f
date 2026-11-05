@@ -1,10 +1,23 @@
+.search {
+  .search_content {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .scroll {
   position: relative;
   overflow: hidden;
 
-  max-height: 100%;
+  display: flex;
+  flex: 1;
+  /* height: 200px; */
+  /* max-height: 100%; */
 
   .scroll_content {
+    flex: 1;
+    /* height: 200px; */
+
     overflow: auto;
     /* overflow-y: auto; */
     > * {
@@ -24,50 +37,50 @@
     } */
   }
 
-  .track {
+  .scroll_track {
     opacity: 0;
     transition: opacity 0.3s;
     /* transition: opacity var(--transition-scrollbar); */
 
-    .thumb {
+    .scroll_thumb {
       position: absolute;
 
       background-color: white;
     }
   }
 
-  &:hover .track,
-  &[drag] .track {
+  &:hover .scroll_track,
+  &[drag] .scroll_track {
     opacity: 1;
   }
 
-  .vertical_scrollbar {
+  .scroll_vertical_scrollbar {
     position: absolute;
     right: 0;
     top: 0;
     bottom: 0;
 
-    .track {
+    .scroll_track {
       width: 0.5rem;
       height: 100%;
 
-      .thumb {
+      .scroll_thumb {
         width: 100%;
       }
     }
   }
 
-  .horizontal_scrollbar {
+  .scroll_horizontal_scrollbar {
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
 
-    .track {
+    .scroll_track {
       height: 0.5rem;
       width: 100%;
 
-      .thumb {
+      .scroll_thumb {
         height: 100%;
       }
     }

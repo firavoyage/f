@@ -47,6 +47,8 @@ export function scroll(props: scroll) {
 
     const view = content.current
 
+    log(view.scrollHeight, view.clientHeight)
+
     toggle_is_vertically_scrollable(view.scrollHeight > view.clientHeight)
     toggle_is_horizontally_scrollable(view.scrollWidth > view.clientWidth)
 
@@ -163,6 +165,9 @@ export function scroll(props: scroll) {
 
       view.scrollLeft = scroll_pos + (delta_x / max_thumb_travel) * max_scroll
     }
+
+    // prevent select
+    e.preventDefault()
   }
 
   function mouse_up() {
