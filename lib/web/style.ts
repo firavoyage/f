@@ -553,13 +553,13 @@ const glossary = {
       ['line-height', '1.25rem'],
     ],
   },
-  'text-md': {
+  'text-base': {
     style: [
       ['font-size', '1rem'],
       ['line-height', '1.5rem'],
     ],
   },
-  'text-base': {
+  'text-md': {
     style: [
       ['font-size', '1rem'],
       ['line-height', '1.5rem'],
@@ -1553,8 +1553,15 @@ export function style(theme) {
     for (const [element, utility_classes] of entries(elements)) {
       // todo
       let selector = `.${component}_${element}`
-      if (component == element) {
-        selector += `, .${component}`
+      if (is_component_container_itself()) {
+        selector += `, .${element}`
+      }
+      // if (component == element) {
+      //   selector += `, .${component}`
+      // }
+
+      function is_component_container_itself() {
+        return component == element || element.startsWith(component)
       }
 
       // todo
@@ -1697,7 +1704,7 @@ export function style(theme) {
 
               function length(value) {
                 if (is_number(value)) {
-                  return `${int(value) / 4}rem`
+                  return `${float(value) / 4}rem`
                 }
 
                 return lengths[value] ?? value

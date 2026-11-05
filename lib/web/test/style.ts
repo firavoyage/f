@@ -1667,7 +1667,7 @@ export function style(theme) {
 
               function length(value) {
                 if (is_number(value)) {
-                  return `${int(value) / 4}rem`
+                  return `${float(value) / 4}rem`
                 }
 
                 return lengths[value] ?? value
@@ -1794,34 +1794,6 @@ log(glossary_types())
 //   }),
 // )
 
-// log(
-//   style({
-//     theme: ['light', 'dark'],
-//     palette: {
-//       gray: {
-//         100: '#eee',
-//         900: '#111',
-//       },
-//     },
-//     color: {
-//       primary: {
-//         light: 'palette.gray.900',
-//         dark: 'palette.gray.100',
-//       },
-//       secondary: {
-//         light: 'palette.gray.900',
-//         dark: 'palette.gray.100',
-//       },
-//     },
-//     foo: {
-//       foo: 'text-gray-900',
-//       joe: 'text-gray-100',
-//       john: 'max-w-sm min-w-fit',
-//       smith: 'size-icon-sm',
-//     },
-//   }),
-// )
-
 log(
   style({
     theme: ['light', 'dark'],
@@ -1841,19 +1813,47 @@ log(
         dark: 'palette.gray.100',
       },
     },
-    app: {
-      app: 'h-100dvh',
-    },
-    page: {
-      page: 'flex justify-center',
-      content: 'max-w-80ch',
-    },
-    search: {
-      search: 'fixed top-0 w-100% flex justify-center items-center',
-      content: 'max-w-80ch max-h-20rem overflow-y-scroll bg-black',
-    },
-    input: {
-      input: 'w-100%',
+    foo: {
+      foo: 'text-gray-900',
+      joe: 'text-gray-100',
+      john: 'max-w-sm min-w-fit',
+      smith: 'size-icon-sm p-0.5',
     },
   }),
 )
+
+// log(
+//   style({
+//     theme: ['light', 'dark'],
+//     palette: {
+//       gray: {
+//         100: '#eee',
+//         900: '#111',
+//       },
+//     },
+//     color: {
+//       primary: {
+//         light: 'palette.gray.900',
+//         dark: 'palette.gray.100',
+//       },
+//       secondary: {
+//         light: 'palette.gray.900',
+//         dark: 'palette.gray.100',
+//       },
+//     },
+//     app: {
+//       app: 'h-100dvh',
+//     },
+//     page: {
+//       page: 'flex justify-center',
+//       content: 'max-w-80ch',
+//     },
+//     search: {
+//       search: 'fixed top-0 w-100% flex justify-center items-center',
+//       content: 'max-w-80ch max-h-20rem overflow-y-scroll bg-black',
+//     },
+//     input: {
+//       input: 'w-100%',
+//     },
+//   }),
+// )
