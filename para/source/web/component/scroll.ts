@@ -3,6 +3,7 @@ import { useMeasure, useScroll } from 'react-use'
 const { max } = Math
 
 const min_thumb_length = 16
+const scroll_hint_duration = 500
 
 type scroll = {
   children
@@ -19,6 +20,9 @@ export function scroll(props: scroll) {
     useToggle(false)
   const [is_horizontally_scrollable, toggle_is_horizontally_scrollable] =
     useToggle(false)
+  
+  const [hover, set_hover] = useState(false)
+  const [did_scroll, set_did_scroll] = useState(false)
 
   const [container] = useMeasure()
   const content = useRef()
@@ -35,6 +39,19 @@ export function scroll(props: scroll) {
   })
 
   const position = useScroll(content)
+
+  // show scrollbar track for a while when position changes
+  useEffect(() => {
+    set_did_scroll(true)
+
+    const timer = setTimeout(function() {
+      set_did_scroll(false)
+    }, scroll_hint_duration)
+
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [JSON.stringify(position)])
 
   useLayoutEffect(() => {
     toggle_is_on_top?.(position.y == 0)
@@ -152,6 +169,11 @@ export function scroll(props: scroll) {
     when: is_dragging,
   })
 
+  use_event('mouseenter', () => set_hover(true), content)
+  use_event('mouseleave', () => set_hover(false), content)
+
+  const show = hover || did_scroll
+
   return h(
     'scroll',
     { noscrollbar: !scrollbar, drag: is_dragging, ref: container },
@@ -161,7 +183,7 @@ export function scroll(props: scroll) {
         'scroll_vertical_scrollbar',
         h(
           'scroll_vertical_track',
-          { ref: vertical_track },
+          { ref: vertical_track, show },
           h('scroll_vertical_thumb', {
             ref: vertical_thumb,
             onMouseDown(e) {
@@ -183,7 +205,7 @@ export function scroll(props: scroll) {
         'scroll_horizontal_scrollbar',
         h(
           'scroll_horizontal_track',
-          { ref: horizontal_track },
+          { ref: horizontal_track, show },
           h('scroll_horizontal_thumb', {
             ref: horizontal_thumb,
             onMouseDown(e) {

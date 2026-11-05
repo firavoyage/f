@@ -30,52 +30,5 @@
       display: none;
     }
   }
-
-  .scroll_track {
-    opacity: 0;
-    transition: opacity 0.3s;
-    /* transition: opacity var(--transition-scrollbar); */
-
-    .scroll_thumb {
-      position: absolute;
-    }
-  }
-
-  &:hover .scroll_track,
-  &[drag] .scroll_track {
-    opacity: 1;
-  }
-
-  .scroll_vertical_scrollbar {
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-
-    .scroll_track {
-      width: 0.5rem;
-      height: 100%;
-
-      .scroll_thumb {
-        width: 100%;
-      }
-    }
-  }
-
-  .scroll_horizontal_scrollbar {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    .scroll_track {
-      height: 0.5rem;
-      width: 100%;
-
-      .scroll_thumb {
-        height: 100%;
-      }
-    }
-  }
 }
 

@@ -35,6 +35,11 @@ input:
   input: w-full
   'input:focus-visble': outline-focus outline-sm offset-2 rounded-md
 scroll:
-  vertical_track: w-2 h-full
+  vertical_scrollbar: absolute right-0 top-0 bottom-0
+  vertical_track: w-2 h-full opacity-0 transition-opacity duration-0.3s
+  vertical_track[show]: opacity-1
   vertical_thumb: w-full bg-on-primary
-  horizontal_thumb: bg-on-primary
+  horizontal_scrollbar: absolute bottom-0 left-0 right-0
+  horizontal_track: h-2 w-full opacity-0 transition-opacity duration-0.3s
+  horizontal_track[show]: opacity-1
+  horizontal_thumb: h-full bg-on-primary

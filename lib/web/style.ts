@@ -280,7 +280,6 @@ const glossary = {
   'grid-cols': {
     prop: [
       ['number', 'grid-template-columns'],
-      ['grid-template', 'grid-template-columns'],
     ],
   },
   'col-span': {
@@ -304,7 +303,6 @@ const glossary = {
   'grid-rows': {
     prop: [
       ['number', 'grid-template-rows'],
-      ['grid-template', 'grid-template-rows'],
     ],
   },
   'row-span': {
@@ -383,7 +381,6 @@ const glossary = {
         ],
         'align-content',
       ],
-      ['content', 'content'],
     ],
   },
   self: {
@@ -1597,6 +1594,7 @@ export function style(theme) {
               const colors = ['color', 'palette']
               const fonts = ['font', 'typeface']
 
+              // todo: image, shadow, easing
               if (type == 'length' && is_length(value)) {
                 value = length(value)
                 append_style(selector, prop, value)
@@ -1622,6 +1620,8 @@ export function style(theme) {
                 append_style(selector, prop, value)
               } else if (type == 'font-family' && does_exist(value, fonts)) {
                 append_style(selector, prop, resolve(value, fonts))
+              } else if (type == 'time') {
+                append_style(selector, prop, value)
               } else {
                 continue
               }

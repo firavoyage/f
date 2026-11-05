@@ -1798,34 +1798,34 @@ log(glossary_types())
 //   }),
 // )
 
-log(
-  style({
-    theme: ['light', 'dark'],
-    palette: {
-      gray: {
-        100: '#eee',
-        900: '#111',
-      },
-      foo: {
-        bar: '456',
-      },
-      'foo-bar': '123',
-    },
-    color: {
-      primary: {
-        light: 'palette.gray.900',
-        dark: 'palette.gray.100',
-      },
-      secondary: {
-        light: 'palette.gray.900',
-        dark: 'palette.gray.100',
-      },
-    },
-    foo: {
-      john: 'bg-gray-100 text-foo-bar',
-    },
-  }),
-)
+// log(
+//   style({
+//     theme: ['light', 'dark'],
+//     palette: {
+//       gray: {
+//         100: '#eee',
+//         900: '#111',
+//       },
+//       foo: {
+//         bar: '456',
+//       },
+//       'foo-bar': '123',
+//     },
+//     color: {
+//       primary: {
+//         light: 'palette.gray.900',
+//         dark: 'palette.gray.100',
+//       },
+//       secondary: {
+//         light: 'palette.gray.900',
+//         dark: 'palette.gray.100',
+//       },
+//     },
+//     foo: {
+//       john: 'bg-gray-100 text-foo-bar',
+//     },
+//   }),
+// )
 
 // log(
 //   style({
