@@ -29,12 +29,6 @@
     &::-webkit-scrollbar {
       display: none;
     }
-    /* &[noscrollbar] {
-      scrollbar-width: none;
-      &::-webkit-scrollbar {
-        display: none;
-      }
-    } */
   }
 
   .scroll_track {
@@ -44,8 +38,6 @@
 
     .scroll_thumb {
       position: absolute;
-
-      background-color: white;
     }
   }
 

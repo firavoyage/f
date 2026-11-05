@@ -106,74 +106,51 @@ export function scroll(props: scroll) {
   })
 
   // window can capture mouse up outside body
-  use_event('mousemove', mouse_move, window, { when: is_dragging })
-  use_event('mouseup', mouse_up, window, { when: is_dragging })
+  use_event(
+    'mousemove',
+    (e) => {
+      const view = content.current
+      const { orientation, mouse_pos, scroll_pos } = drag_start.current
+      if (!view) return
 
-  function handle_mouse_down_v(e: React.MouseEvent) {
-    if (!content.current) return
-    set_is_dragging(true)
+      if (
+        orientation == 'v' &&
+        vertical_track.current &&
+        vertical_thumb.current
+      ) {
+        const delta_y = e.clientY - mouse_pos
+        const max_thumb_travel =
+          vertical_track.current.clientHeight -
+          vertical_thumb.current.offsetHeight
+        const max_scroll = view.scrollHeight - view.clientHeight
 
-    drag_start.current = {
-      orientation: 'v',
-      mouse_pos: e.clientY,
-      scroll_pos: position.y,
-    }
-    // document.body.style.userSelect = "none"
-  }
+        view.scrollTop = scroll_pos + (delta_y / max_thumb_travel) * max_scroll
+      }
 
-  function mouse_down_h(e: React.MouseEvent) {
-    if (!content.current) return
-    set_is_dragging(true)
+      if (
+        orientation == 'h' &&
+        horizontal_track.current &&
+        horizontal_thumb.current
+      ) {
+        const delta_x = e.clientX - mouse_pos
+        const max_thumb_travel =
+          horizontal_track.current.clientWidth -
+          horizontal_thumb.current.offsetWidth
+        const max_scroll = view.scrollWidth - view.clientWidth
 
-    drag_start.current = {
-      orientation: 'h',
-      mouse_pos: e.clientX,
-      scroll_pos: position.x,
-    }
-    // document.body.style.userSelect = "none"
-  }
+        view.scrollLeft = scroll_pos + (delta_x / max_thumb_travel) * max_scroll
+      }
 
-  function mouse_move(e: MouseEvent) {
-    const view = content.current
-    const { orientation, mouse_pos, scroll_pos } = drag_start.current
-    if (!view) return
+      // prevent select
+      e.preventDefault()
+    },
+    window,
+    { when: is_dragging },
+  )
 
-    if (
-      orientation == 'v' &&
-      vertical_track.current &&
-      vertical_thumb.current
-    ) {
-      const delta_y = e.clientY - mouse_pos
-      const max_thumb_travel =
-        vertical_track.current.clientHeight -
-        vertical_thumb.current.offsetHeight
-      const max_scroll = view.scrollHeight - view.clientHeight
-
-      view.scrollTop = scroll_pos + (delta_y / max_thumb_travel) * max_scroll
-    }
-
-    if (
-      orientation == 'h' &&
-      horizontal_track.current &&
-      horizontal_thumb.current
-    ) {
-      const delta_x = e.clientX - mouse_pos
-      const max_thumb_travel =
-        horizontal_track.current.clientWidth -
-        horizontal_thumb.current.offsetWidth
-      const max_scroll = view.scrollWidth - view.clientWidth
-
-      view.scrollLeft = scroll_pos + (delta_x / max_thumb_travel) * max_scroll
-    }
-
-    // prevent select
-    e.preventDefault()
-  }
-
-  function mouse_up() {
-    set_is_dragging(false)
-    // document.body.style.userSelect = ""
-  }
+  use_event('mouseup', () => set_is_dragging(false), window, {
+    when: is_dragging,
+  })
 
   return h(
     'scroll',
@@ -183,11 +160,21 @@ export function scroll(props: scroll) {
       h(
         'scroll_vertical_scrollbar',
         h(
-          'scroll_track',
+          'scroll_vertical_track',
           { ref: vertical_track },
-          h('scroll_thumb', {
+          h('scroll_vertical_thumb', {
             ref: vertical_thumb,
-            onMouseDown: handle_mouse_down_v,
+            onMouseDown(e) {
+              if (!content.current) return
+              set_is_dragging(true)
+
+              drag_start.current = {
+                orientation: 'v',
+                mouse_pos: e.clientY,
+                scroll_pos: position.y,
+              }
+              // document.body.style.userSelect = "none"
+            },
           }),
         ),
       ),
@@ -195,11 +182,21 @@ export function scroll(props: scroll) {
       h(
         'scroll_horizontal_scrollbar',
         h(
-          'scroll_track',
+          'scroll_horizontal_track',
           { ref: horizontal_track },
-          h('scroll_thumb', {
+          h('scroll_horizontal_thumb', {
             ref: horizontal_thumb,
-            onMouseDown: mouse_down_h,
+            onMouseDown(e) {
+              if (!content.current) return
+              set_is_dragging(true)
+
+              drag_start.current = {
+                orientation: 'h',
+                mouse_pos: e.clientX,
+                scroll_pos: position.x,
+              }
+              // document.body.style.userSelect = "none"
+            },
           }),
         ),
       ),

@@ -1451,6 +1451,10 @@ export function style(theme) {
 
   traverse(theme)
 
+  design_tokens = obj(map(design_tokens, ([k, v]) => [k.replaceAll('-', '.'), v]))
+
+  log(design_tokens)
+
   let references = set()
 
   for (const [k, v] of entries(design_tokens)) {
@@ -1802,6 +1806,10 @@ log(
         100: '#eee',
         900: '#111',
       },
+      foo: {
+        bar: '456',
+      },
+      'foo-bar': '123',
     },
     color: {
       primary: {
@@ -1814,10 +1822,7 @@ log(
       },
     },
     foo: {
-      foo: 'text-gray-900',
-      joe: 'text-gray-100',
-      john: 'max-w-sm min-w-fit',
-      smith: 'size-icon-sm p-0.5',
+      john: 'bg-gray-100 text-foo-bar',
     },
   }),
 )

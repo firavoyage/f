@@ -260,7 +260,7 @@ const glossary = {
     prop: [
       ['length', 'flex-basis'],
       ['percentage', 'flex-basis'],
-      [['auto', 'full', 'min', 'max', 'fit'], 'flex-basis'],
+      [['auto'], 'flex-basis'],
     ],
   },
   grow: {
@@ -490,52 +490,35 @@ const glossary = {
   w: {
     prop: [
       ['length', 'width'],
-      [['auto', 'full', 'screen', 'min', 'max', 'fit'], 'width'],
+      [['auto'], 'width'],
     ],
   },
   h: {
     prop: [
       ['length', 'height'],
-      [['auto', 'full', 'screen', 'min', 'max', 'fit'], 'height'],
+      [['auto'], 'height'],
     ],
   },
   'min-w': {
     prop: [
       ['length', 'min-width'],
-      [['0', 'full', 'min', 'max', 'fit'], 'min-width'],
+      [['0'], 'min-width'],
     ],
   },
   'min-h': {
     prop: [
       ['length', 'min-height'],
-      [['0', 'full', 'screen', 'min', 'max', 'fit'], 'min-height'],
+      [['0'], 'min-height'],
     ],
   },
   'max-w': {
     prop: [
       ['length', 'max-width'],
-      [
-        [
-          'none',
-          'full',
-          'min',
-          'max',
-          'fit',
-          'prose',
-          'screen-sm',
-          'screen-md',
-          'screen-lg',
-          'screen-xl',
-          'screen-2xl',
-        ],
-        'max-width',
-      ],
     ],
   },
   'max-h': {
     prop: [
       ['length', 'max-height'],
-      [['none', 'full', 'screen', 'min', 'max', 'fit'], 'max-height'],
     ],
   },
   font: {
@@ -809,24 +792,6 @@ const glossary = {
           'border-bottom-left-radius',
         ],
       ],
-      // [
-      //   'length',
-      //   [
-      //     'border-top-left-radius',
-      //     'border-top-right-radius',
-      //     'border-bottom-right-radius',
-      //     'border-bottom-left-radius',
-      //   ],
-      // ],
-      // [
-      //   ['none', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', 'full'],
-      //   [
-      //     'border-top-left-radius',
-      //     'border-top-right-radius',
-      //     'border-bottom-right-radius',
-      //     'border-bottom-left-radius',
-      //   ],
-      // ],
     ],
   },
   'rounded-t': {
@@ -1477,6 +1442,8 @@ export function style(theme) {
 
   traverse(theme)
 
+  design_tokens = obj(map(design_tokens, ([k, v]) => [k.replaceAll('-', '.'), v]))
+
   let references = set()
 
   for (const [k, v] of entries(design_tokens)) {
@@ -1499,6 +1466,10 @@ export function style(theme) {
     // }).join('')
 
     function dereference(v) {
+      if (!is(v, 'string')) {
+        return v
+      } 
+
       let parts = v.split(' ')
 
       let dereferenced_value = map(parts, (part) => {

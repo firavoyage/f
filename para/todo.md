@@ -4,10 +4,18 @@
 - outline/box shadow in css
 - scroll
   - programmatic wo flex requirement if feasible
-  - show
+  - decouple styling
   - ~~always focus input~~ current behavior it seems, actually
+    - yes, enforce it more, even if you use your mouse to drag the scrollbar
+  - close upon outside click
   - result hover/focus
 - toc
+  - attach id
+  - jump to id on load
+  - (jump to remembered scroll position on load)
+  - show current heading?
+- fix navigation
+  - listen for url change on state lib?
 
 # todo
 

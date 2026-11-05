@@ -26,11 +26,15 @@ page:
   content: w-xl
   # content: w-80ch
 search:
-  search: fixed top-0 w-100% flex justify-center items-center font-sans
+  search: fixed top-0 w-full flex justify-center items-center font-sans
   content: w-xl max-h-20rem flex flex-column overflow-hidden bg-primary
   # content: w-xl max-h-20rem overflow-y-auto bg-primary
-  result: w-100% px-2 py-0.5 rounded-md
+  result: w-full px-2 py-0.5 rounded-md
   result[focus]: bg-hover
 input:
-  input: w-100%
+  input: w-full
   'input:focus-visble': outline-focus outline-sm offset-2 rounded-md
+scroll:
+  vertical_track: w-2 h-full
+  vertical_thumb: w-full bg-on-primary
+  horizontal_thumb: bg-on-primary
