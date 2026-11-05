@@ -2,14 +2,12 @@ theme:
   - light
   - dark
 palette:
-  black: '#000'
 color:
-  primary:
-    light: palette.gray.900
-    dark: palette.gray.100
-  secondary:
-    light: palette.gray.900
-    dark: palette.gray.100
+  accent: oklch(55% 0.15 146.26)
+  surface:
+    dark: black
+  surface-high:
+    dark: oklch(27% 0.02 251.92)
 typeface:
   sans: Noto Sans, sans-serif
   serif: EB Garamond, serif
