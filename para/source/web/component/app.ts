@@ -86,7 +86,7 @@ function app() {
   return h(
     'app',
     h('page', h('page_content', h('markdown-body', h({ html })))),
-    h(search, {query, set_query, results: search_results})
+    h(search, {query, set_query, results: search_results, select_result: set_page})
     // is_search_open &&
     //   h(
     //     'search',

@@ -10,6 +10,8 @@ color:
     dark: white
   secondary:
     dark: oklch(27% 0.02 251.92)
+  hover:
+    dark: oklch(29% 0.02 260.62)
 typeface:
   sans: Noto Sans, sans-serif
   serif: EB Garamond, serif
@@ -24,5 +26,7 @@ page:
 search:
   search: fixed top-0 w-100% flex justify-center items-center font-sans
   content: w-xl max-h-20rem overflow-y-auto bg-primary
+  result: w-100%
+  result[focus]: bg-hover
 input:
   input: w-100%

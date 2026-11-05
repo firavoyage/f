@@ -17,7 +17,7 @@ export function search(props: search) {
   const items = useRef()
 
   use_keyboard('ctrl+p', () => set_open(true))
-  use_keyboard('esc', () => close, {
+  use_keyboard('esc', close, {
     // when it shows on top of others, close search first
     priority: 100,
     // do not take priority when it's hidden
@@ -54,9 +54,9 @@ export function search(props: search) {
       return
     }
 
-    const child = items.current?.children?.[focus];
+    const child = items.current?.children?.[focus]
 
-    child?.scrollIntoView?.({ behavior: 'auto', block: 'nearest' });
+    child?.scrollIntoView?.({ behavior: 'auto', block: 'nearest' })
   }, [focus])
 
   const first_index = 0
@@ -83,30 +83,34 @@ export function search(props: search) {
     select_result(results[index])
   }
 
-  return open && h(
-    'search',
+  return (
+    open &&
     h(
-      'search_content',
-      h(input, {
-        value: query,
-        set_value: set_query,
-        ref: field,
-      }),
+      'search',
       h(
-        'search_results',
-        map(results, (result, index) =>
-          h(
-            'button.search_result',
-            {
-              focus: focus == index,
-              onclick() {
-                select_result(result)
+        'search_content',
+        h(input, {
+          value: query,
+          set_value: set_query,
+          ref: field,
+        }),
+        h(
+          'search_results',
+          { ref: items },
+          map(results, (result, index) =>
+            h(
+              'button.search_result',
+              {
+                focus: focus == index,
+                onclick() {
+                  select_result(result)
+                },
               },
-            },
-            result,
+              result,
+            ),
           ),
         ),
       ),
-    ),
+    )
   )
 }
