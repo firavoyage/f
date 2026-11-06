@@ -11,6 +11,10 @@ export function h<
 
 export function h(tag: string, ...children: any[])
 
+export function h(tag: any[], ...children: any[])
+
+// export function h(tag: object, ...children: any[])
+
 export function h(...args) {
   let tag,
     props,

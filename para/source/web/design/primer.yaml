@@ -26,19 +26,26 @@ typeface:
   # sans: Ubuntu Sans, sans-serif
   # serif: EB Garamond, serif
 app:
-  app: h-100dvh
+  app: h-100dvh font-sans
 page:
   page: flex justify-center
   content: w-xl
   # content: w-80ch
 search:
-  search: fixed top-0 w-full flex justify-center items-center font-sans
+  search: fixed top-0 w-full flex justify-center items-center
   content: w-xl max-h-20rem overflow-hidden bg-dropdown rounded-md
   query: p-2
   results: px-2
   result: w-full px-2 py-0.5 rounded-md
   'result:hover': bg-hover
   result[focus]: bg-select
+toc:
+  toc: fixed right-4 top-10 bottom-10 w-xs
+  h2: ml-2
+  h3: ml-4
+  h4: ml-6
+  h5: ml-8
+  h6: ml-10
 input:
   input: w-full px-2 py-1 rounded-md
   'input:focus-visble': outline-focus outline-sm offset-2 rounded-md

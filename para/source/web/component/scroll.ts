@@ -47,15 +47,16 @@ export function scroll(props: scroll) {
 
   // bound container w h to parent, mimicing flex grow 1
   useLayoutEffect(() => {
-    bound_size_to_parent()
-
-    if (!container.current) {
+    if (!container.current || !content.current) {
       return
     }
 
-    let child = container.current
+    bound_size_to_parent()
 
-    const parent = child.parentElement
+    let container_node = container.current
+    let content_node = content.current
+
+    const parent = container_node.parentElement
 
     const observer = new ResizeObserver(() => {
       bound_size_to_parent()
@@ -63,6 +64,8 @@ export function scroll(props: scroll) {
     })
 
     observer.observe(parent)
+    observer.observe(container_node)
+    observer.observe(content_node)
   }, [])
 
   // show scrollbar track for a while when position changes

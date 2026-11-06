@@ -12,6 +12,7 @@ import { use_style } from 'lib/web/style'
 import { input } from './input'
 import { search } from './search'
 import { scroll } from './scroll'
+import { toc } from './toc'
 
 const App = app
 export { App }
@@ -60,6 +61,7 @@ function app() {
   const content = useRef()
 
   const [page, set_page] = use_page()
+  const [headings, set_headings] = useState([])
 
   const [query, set_query] = useState('')
   const page_response = use_query('read', page)
@@ -71,17 +73,20 @@ function app() {
 
   useEffect(() => {
     if (!content.current) {
-      return 
-    } 
+      return
+    }
 
-    
-  })
+    set_headings(extract_headings(content.current))
+  }, [page_response])
 
   return h(
     'app',
     h(
       scroll,
-      h('page', h('page_content', {ref: content}, h('markdown-body', h({ html })))),
+      h(
+        'page',
+        h('page_content', { ref: content }, h('markdown-body', h({ html }))),
+      ),
     ),
     h(search, {
       query,
@@ -89,16 +94,17 @@ function app() {
       results: search_results,
       select_result: set_page,
     }),
+    h(toc, { headings }),
   )
 }
 
 function extract_headings(node) {
-  const headings = [];
+  const headings = []
 
-  const heading_nodes = node.querySelectorAll('h1, h2, h3, h4, h5, h6');
+  const heading_nodes = node.querySelectorAll('h1, h2, h3, h4, h5, h6')
 
   heading_nodes.forEach((heading) => {
-    const type = heading.tagName.toLowerCase();
+    const type = heading.tagName.toLowerCase()
 
     // Generate an id if one doesn't exist
     if (!heading.id) {
@@ -106,17 +112,17 @@ function extract_headings(node) {
         .trim()
         .toLowerCase()
         .replace(/[^\w\s-]/g, '')
-        .replace(/\s+/g, '-');
+        .replace(/\s+/g, '-')
 
-      heading.id = slug;
+      heading.id = slug
     }
 
     headings.push({
       type,
       id: heading.id,
       content: heading.textContent.trim(),
-    });
-  });
+    })
+  })
 
-  return headings;
+  return headings
 }

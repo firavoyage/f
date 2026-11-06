@@ -61,6 +61,8 @@
   - ~~fix fouc like jump~~
     - use sth like use layout effect (that is, sync operation)
     - easy. just unwrap "req anim frame". no idea what it does. or if it makes any sense. likely llm pattern.
+- toc: highlight current heading
+  - a common feature. i dont necessarily like this though. could be distracting if not taken properly.
 
 ## w
 
