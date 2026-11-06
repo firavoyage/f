@@ -87,31 +87,29 @@ function app() {
   }, [page_response])
 
   const distances = {
-    
+    j: jk_scroll_distance,
+    k: -jk_scroll_distance,
+    d: du_scroll_percentage,
+    u: -du_scroll_percentage,
+    space: space_scroll_percentage,
+    'shift+space': -space_scroll_percentage,
   }
 
-  use_keyboard('j', () => {
-    scroll_by(jk_scroll_distance)
-  })
+  const field_tags = ['input', 'textarea']
 
-  use_keyboard('k', () => {
-    scroll_by(-jk_scroll_distance)
-  })
+  map(distances, ([key, distance]) => {
+    use_keyboard(
+      key,
+      (e) => {
+        if (has(field_tags, document.activeElement?.tagName.toLowerCase())) {
+          return
+        }
 
-  use_keyboard('d', () => {
-    scroll_by(window.innerHeight * du_scroll_percentage)
-  })
-
-  use_keyboard('u', () => {
-    scroll_by(-window.innerHeight * du_scroll_percentage)
-  })
-  
-  use_keyboard('space', () => {
-    scroll_by(window.innerHeight * space_scroll_percentage)
-  })
-  
-  use_keyboard('shift+space', () => {
-    scroll_by(-window.innerHeight * space_scroll_percentage)
+        e.preventDefault()
+        scroll_by(distance)
+      },
+      { prevent_default: false },
+    )
   })
 
   // reset scrolltop on page change
@@ -125,9 +123,13 @@ function app() {
       return
     }
 
+    if (abs(distance) <= 1) {
+      distance = window.innerHeight * distance
+    }
+
     content.current.scrollBy({
-      top: content.current.scrollTop + distance,
-      behavior: scroll_behavior
+      top: distance,
+      behavior: scroll_behavior,
     })
   }
 

@@ -1911,5 +1911,498 @@ const wrapper: Wrapper = (fn, params, ...args) => {
 
 Note: If the rest arguments are intended to be arguments of the passed function after its object parameter, rather than extra arguments to the wrapper, the type can be simplified using `Parameters<F>`.
 
+# how much does each key scroll in vimium
 
+In [Vimium](https://vimium.github.io/), the default scroll distance depends entirely on the specific navigation key you press: [](https://keycombiner.com/collections/vimium/)
+
+* **`j` / `k` (Scroll Down / Up):** Scrolls by **60 pixels** per keypress.
+* **`h` / `l` (Scroll Left / Right):** Scrolls horizontally by **40 pixels** per keypress.
+* **`d` / `u` (Scroll Half-Page Down / Up):** Scrolls exactly **0.5 (half) of the window's height**.
+* **`gg` / `G` (Top / Bottom):** Scrolls **100%** to the absolute edge of the document. [](https://www.youtube.com/watch?v=7x9Zc05TfDI)
+
+### ⚙️ How to Change the Scroll Distance
+
+If 60 pixels feels too slow or too fast, you can easily customize the exact step size in Vimium's advanced settings: 
+
+1. Type **`?`** on any webpage to bring up the Vimium help dialog, and click **Options** in the top right.
+2. Scroll to the bottom and click **Show Advanced Options**.
+3. Look for the **"Scroll step size"** field (set to `60` by default) and change it to your preferred pixel value.
+4. Click **Save Changes** at the bottom of the page. [](https://www.youtube.com/watch?v=7x9Zc05TfDI)
+
+Would you like to know how to adjust the **smooth scrolling animation speed**, or do you need help mapping custom keys to scroll by specific pixel intervals?
+
+* [](https://keycombiner.com/collections/vimium/)  
+KeyCombiner  
+Vimium Keyboard Shortcuts - KeyCombiner  
+Scroll down | j or ctrl + e | | Scroll up | k or ctrl + y. Scroll all the way to the left. Scroll Lookup up/down
+* [](https://maketecheasier.com/use-vim-shortcuts-navigate-web-browser/)  
+Make Tech Easier  
+How to Use Vim Shortcuts to Navigate Your Web Browser  
+To see the advanced options, select “Show Advanced Options” on the Vimium Options page. You can also download the configuration fi...
+* [](https://www.youtube.com/watch?v=7x9Zc05TfDI)  
+YouTube·Igor Babko  
+Vim In The Browser - #1 Remaps  
+Sep 19, 2025 — changes saved by pressing "save" or \`command +. To jump to the bottom of the page, press \`shift + G\`, and to jump to the top, pres...  
+7:00
+
+Show all
+
+# does vimium scroll by px or rem why
+
+**Vimium scrolls by pixels (px), not rem.** [](https://lifehacker.com/make-chrome-less-distracting-with-vimium-and-these-set-5925220)
+
+### Why Pixels?
+
+* **Browser API Architecture:** Vimium interacts directly with the browser's JavaScript engine to trigger movements. Standard web API commands like `window.scrollBy()` or modern variations that handle target positions accept numbers mapping directly to **CSS pixels**, not relative layout units like `rem`. [](https://github.com/philc/vimium/issues/4306)
+* **Predictable Viewport Control:** A pixel maps directly to the visible viewport dimensions. Vimium defaults to a specific pixel value (e.g., `scrollStepSize = 60` or `100`) so that tapping `j` or `k` moves the page down or up by a consistent, predictable physical distance. [](https://github.com/philc/vimium/issues/1862)
+* **Independence from Site Styles:** The `rem` unit stands for "root em" and is tied entirely to a website's base font size (typically `16px`). If Vimium used `rem`, the physical distance a page moves would change drastically depending on the design choices of the web developer. A site with a giant base font size would fly down the page wildly, while a site with tiny font settings would barely move at all.
+
+You can customize this exact distance inside the Vimium options menu under the **Scroll step size** setting, where the value you provide specifies the exact number of pixels per step. [](https://lifehacker.com/make-chrome-less-distracting-with-vimium-and-these-set-5925220)
+
+Are you trying to **adjust your scrolling speed**, or are you running into an issue where **scrolling feels stuttered** on specific websites?
+
+* [](https://lifehacker.com/make-chrome-less-distracting-with-vimium-and-these-set-5925220)  
+Lifehacker  
+Make Chrome Less Distracting with Vimium (and These ...  
+Jul 11, 2012 — Head to your Chrome settings, change to the Extensions section, and scroll down to find the "Options" link for Vimium. The "Scroll...
+* [](https://github.com/gdh1995/vimium-c/issues/518)  
+GitHub  
+Precise scrolling with scrollPxDown/Up · Issue #518 - GitHub  
+When scrolling pixel by pixel, Vimium C will do a first scrolling action and then wait for a while, and it will do a second one if...
+* [](https://www.youtube.com/watch?v=uFUwk2fWU7k&t=7)  
+YouTube·AdamFrenzen  
+Control the Browser With Vim (Vimium Extension)  
+Jul 20, 2025 — Vimium allows scrolling with the J and K keys and searching within a page using the slash key, with N and capital N for navigating...  
+6m
+
+Show all
+
+# would it be better if vimium scroll by px or rem why
+
+For a browser extension like Vimium, it is significantly better to scroll by **pixels (`px`)** rather than root ems (`rem`).
+
+While `rem` units are essential for accessible website design and responsive typography, they are poorly suited for controlling browser window movement. [](https://www.youtube.com/watch?v=xCSw6bPXZks)
+
+---
+
+### Direct Comparison
+
+| Feature              | Scrolling by Pixels (px)                                                    | Scrolling by rem                                                                               |
+| -------------------- | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| **Predictability**   | **Excellent.** 50px is always the same physical distance on a given screen. | **Poor.** The actual distance changes depending on a website's custom CSS font sizes.          |
+| **Performance**      | **High.** Browsers handle absolute pixel offsets natively and efficiently.  | **Lower.** Forces the extension to calculate the root font-size before moving.                 |
+| **Website Immunity** | **Immune.** Works perfectly regardless of how poorly a website is coded.    | **Fragile.** Breaks entirely if a website sets html { font-size: 0; } or uses extreme sizes.   |
+| **Consistency**      | **High.** Pressing j feels identical across all tabs and websites.          | **Low.** Pressing j will scroll a tiny distance on one site and a massive distance on another. |
+
+---
+
+### Why Pixels Win for Vimium Scrolling
+
+#### 1\. Consistency Across the Web
+
+The primary goal of Vimium is to provide a seamless, muscle-memory-driven browsing experience. If you configure Vimium to scroll by `60px` per keypress, pressing `j` will move the page down by exactly 60 physical pixels on every single website. [](https://www.reddit.com/r/vim/comments/l1bl0l/adding%5Fvimium%5Fto%5Fchrome%5Fwas%5Fa%5Fgamechanger%5Fit/)
+
+If Vimium used `rem`, the distance would depend on the target website's CSS. On a site with a standard root font size (16px), a `4rem` scroll would move the page 64 pixels. However, if a developer sets the root font size to a mini scale (like the popular 62.5% hack to make 1rem = 10px), that same `4rem` scroll would only move the page 40 pixels. Your scrolling speed would constantly change as you click between different browser tabs. [](https://austingil.com/px-or-rem-in-css/)
+
+#### 2\. Protection Against Bad Website Code
+
+Browser extensions have to execute on millions of unpredictably designed websites. If a website has broken, missing, or weirdly scaled root `html` styles, `rem` calculations can yield unexpected results. If a site hides text by setting the root font size to `0`, a `rem`\-based scroll step would evaluate to `0px`—effectively **breaking Vimium's ability to scroll at all**. Pixels bypass the website's stylesheet entirely, ensuring the extension always works.
+
+#### 3\. True UX Intent
+
+Web developers use `rem` so that text elements scale beautifully when a visually impaired user zooms in or changes their system font settings. [](https://www.youtube.com/watch?v=pKX7YnkyR8g&t=26)
+
+However, scrolling isn't text—it is a viewport interaction. When you scroll, you want to move the screen relative to the physical window dimensions, not relative to how large the paragraphs are.
+
+Are you trying to **tweak your Vimium custom key mappings** to change your step size, or are you looking into **how the Vimium codebase handles** scrolling defaults? Let me know and I can give you the exact configuration snippets or details!
+
+* [](https://www.youtube.com/watch?v=pKX7YnkyR8g&t=26)  
+YouTube·Frontend FYI – by Jeroen  
+Why You Should Use REM Instead of Pixels  
+Nov 16, 2022 — The \`rem\` unit is relative to the root HTML element, allowing all page elements to scale proportionally when the base font size ch...  
+7m
+* [](https://www.bighuman.com/blog/px-rem-in-website-design-and-development)  
+Big Human  
+How and Why You Should Use REM Instead of PX In Your ...  
+If you designate sizes and spacing using Rem, font size can be scaled by users in their browser settings. When they adjust the roo...
+* [](https://www.reddit.com/r/vim/comments/l1bl0l/adding%5Fvimium%5Fto%5Fchrome%5Fwas%5Fa%5Fgamechanger%5Fit/)  
+Reddit·Suboptimal Engineer  
+Adding Vimium to Chrome was a game-changer, it added a lot ...  
+Jan 20, 2021 — The Vimium Chrome extension enables Vim commands for internet browsing, allowing faster navigation and improved ergonomics by keep...  
+[6:38](https://www.reddit.com/r/vim/comments/l1bl0l/adding%5Fvimium%5Fto%5Fchrome%5Fwas%5Fa%5Fgamechanger%5Fit/)
+
+Show all
+
+# how to scroll smoothly or discretely in js
+
+To scroll **smoothly** or **discretely** (instantly) in JavaScript, you can pass a configuration object containing the `behavior` property to the browser's native scroll methods. [](https://www.youtube.com/watch?v=vCBl%5FbJUCKE)
+
+You can use the native methods `window.scrollTo()`, `window.scrollBy()`, or `element.scrollIntoView()` depending on your use case. [](https://www.sitepoint.com/smooth-scrolling-vanilla-javascript/)
+
+---
+
+### 1\. Scrolling to Specific Coordinates
+
+To move the window or a specific container to an absolute coordinate, use `scrollTo`. [](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollTo)
+
+#### Smooth Scroll
+
+javascript
+
+```
+window.scrollTo({
+  top: 500,       // Distance from top in pixels
+  left: 0,
+  behavior: 'smooth' // Animated transition
+});
+
+```
+
+
+
+#### Discrete (Instant) Scroll
+
+javascript
+
+```
+window.scrollTo({
+  top: 500,
+  left: 0,
+  behavior: 'instant' // Snaps directly to the position
+});
+
+```
+
+
+
+_(Note: You can also use `behavior: 'auto'`, which defaults to the element's CSS `scroll-behavior` setting)._ [](https://stackoverflow.com/questions/51689653/how-to-smoothly-scroll-to-an-element-in-pure-javascript)
+
+---
+
+### 2\. Scrolling by a Relative Amount
+
+If you want to scroll _relative_ to the user's current scroll position (e.g., a "Scroll Down 200px" button), use `scrollBy`. [](https://www.youtube.com/watch?v=MjHlltcA-nA)
+
+#### Smooth Scroll
+
+javascript
+
+```
+window.scrollBy({
+  top: 200,       // Scrolls down 200px from current position
+  behavior: 'smooth'
+});
+
+```
+
+
+
+#### Discrete Scroll
+
+javascript
+
+```
+window.scrollBy({
+  top: 200,
+  behavior: 'instant'
+});
+
+```
+
+
+
+---
+
+### 3\. Scrolling an Element into View
+
+If you want the page to move so that a specific HTML element becomes visible to the user, use `scrollIntoView`. [](https://www.youtube.com/watch?v=vCBl%5FbJUCKE)
+
+javascript
+
+```
+const targetElement = document.querySelector('#my-section');
+
+```
+
+
+
+#### Smooth Scroll
+
+javascript
+
+```
+targetElement.scrollIntoView({ 
+  behavior: 'smooth', 
+  block: 'start' // Aligns element to top of viewport
+});
+
+```
+
+
+
+#### Discrete Scroll
+
+javascript
+
+```
+targetElement.scrollIntoView({ 
+  behavior: 'instant', 
+  block: 'start'
+});
+
+```
+
+
+
+---
+
+### Alternative: Global CSS Configuration
+
+If you want **all** JavaScript scroll movements (and standard anchor link clicks) to be smooth by default without specifying it in your script every time, you can apply it directly via CSS: [](https://www.w3schools.com/howto/howto%5Fcss%5Fsmooth%5Fscroll.asp)
+
+css
+
+```
+html {
+  scroll-behavior: smooth;
+}
+
+```
+
+
+
+If you do this, calling `window.scrollTo(0, 500)` will automatically be smooth. To force a discrete/instant scroll while the global CSS is active, you must explicitly pass `behavior: 'instant'`. [](https://stackoverflow.com/questions/51689653/how-to-smoothly-scroll-to-an-element-in-pure-javascript)
+
+Are you trying to implement this for a specific feature, like a **sticky navigation menu**, a **"back to top" button**, or a **full-page snap scrolling slider**? Let me know and I can provide the exact code snippet for it!
+
+* [](https://www.youtube.com/watch?v=vCBl%5FbJUCKE)  
+YouTube·dcode  
+Want Smooth Scrolling? You Can Have It  
+Dec 21, 2023 — For smooth scrolling to an element, use \`dotscroll.intoView\` with \`behavior: 'smooth'\` in the argument object.  
+6:43
+* [](https://stackoverflow.com/questions/51689653/how-to-smoothly-scroll-to-an-element-in-pure-javascript)  
+Stack Overflow  
+How to smoothly scroll to an element in pure JavaScript  
+Modern browsers support the scroll-behavior CSS property, which can be used to make scrolling in the document smooth (without the ...
+* [](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollTo)  
+MDN Web Docs  
+Window: scrollTo() method - Web APIs - MDN Web Docs  
+scrollTo() can be used to respond to the end of a scrolling operation. This technique is mostly useful in cases where the scrollin...
+
+Show all
+
+# css scroll behavior
+
+The **`scroll-behavior`** CSS property sets the behavior for a scrolling box when a scroll is triggered by anchor navigation links or JavaScript scrolling APIs. [](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/scroll-behavior)
+
+### 💡 Syntax and Values
+
+css
+
+```
+/* Core Values */
+scroll-behavior: auto;
+scroll-behavior: smooth;
+
+/* Global Values */
+scroll-behavior: inherit;
+scroll-behavior: initial;
+scroll-behavior: revert;
+scroll-behavior: unset;
+
+```
+
+
+
+* **`auto` (Default):** The scrolling box jumps **instantly** to the target element or position.
+* **`smooth`:** The browser transitions to the target position using a **smooth, fluid animation**. [](https://www.w3schools.com/cssref/pr%5Fscroll-behavior.php)
+
+---
+
+### 🛠️ Common Implementations
+
+#### 1\. Page-Wide Smooth Scroll
+
+To make all anchor links (e.g., `<a href="#section-id">`) glide smoothly down the page, apply the property directly to the `html` root element: [](https://samuellawrentz.com/blog/smooth-scrolling-css-scroll-behavior/)
+
+css
+
+```
+html {
+  scroll-behavior: smooth;
+}
+
+```
+
+
+
+#### 2\. Specific Scroll Container
+
+You can also restrict smooth scrolling to a specific container, like a custom carousel or sidebar gallery: [](https://tillitsdone.com/blogs/css-property-scroll-behavior/)
+
+css
+
+```
+.carousel-container {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+```
+
+
+
+---
+
+### ⚠️ Critical Best Practices
+
+* **Respect Accessibility Preference (`prefers-reduced-motion`):** Sudden or unexpected screen motion can cause nausea or disorientation for users with vestibular disorders. You should always wrap your smooth scroll behavior in a media query that checks if the user has disabled animations in their operating system: [](https://samuellawrentz.com/blog/smooth-scrolling-css-scroll-behavior/)  
+css  
+```  
+html {  
+  scroll-behavior: smooth;  
+}  
+@media (prefers-reduced-motion: reduce) {  
+  html {  
+    scroll-behavior: auto;  
+  }  
+}  
+```  
+
+* **Handling Fixed Headers:** If you use `scroll-behavior: smooth` alongside a fixed/sticky navigation header, your target content might get cut off or hidden beneath the header when you click a link. You can fix this by adding `scroll-margin-top` to your target sections: [](https://www.youtube.com/watch?v=HXIHpDnsizk)  
+css  
+```  
+/* Offset targets by the height of your fixed nav header */  
+section {  
+  scroll-margin-top: 70px;  
+}  
+```  
+
+* **JavaScript Control:** The CSS property controls how the browser handles jumps. However, if you are writing custom JavaScript and want to trigger a one-off smooth scroll, you can pass it directly via the `scrollTo` options: [](https://www.coddykit.com/courses/css/scroll-behavior-smooth-4532902)  
+javascript  
+```  
+window.scrollTo({  
+  top: 1000,  
+  behavior: 'smooth'  
+});  
+```  
+
+
+For full browser details and interactive test cases, you can reference the comprehensive [MDN Web Docs Scroll Behavior Guide](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/scroll-behavior).
+
+Are you trying to fix an issue with a **fixed navbar covering content**, or are you building something specific like a **carousel or table of contents**? Let me know and I can write out the exact HTML and CSS setup for you!
+
+* [](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/scroll-behavior)  
+MDN Web Docs  
+scroll-behavior CSS property - MDN Web Docs - Mozilla  
+The scroll-behavior CSS property sets the behavior for a scrolling box when scrolling is triggered by the navigation or CSSOM scro...
+* [](https://www.w3schools.com/cssref/pr%5Fscroll-behavior.php)  
+W3Schools  
+CSS scroll-behavior property  
+auto | Allows a straight jump "scroll effect" between elements within the scrolling box. This is default | | smooth
+* [](https://www.coddykit.com/courses/css/scroll-behavior-smooth-4532902)  
+CoddyKit  
+scroll  
+scroll-behavior controls whether scrolling that is triggered by navigation (anchor links, JavaScript scrollTo() ) should animate s...
+
+Show all
+
+# how to check whether some input field is focused in js
+
+To check if a specific input field is currently focused in JavaScript, compare the element directly to **`document.activeElement`**. [](https://stackoverflow.com/questions/36430561/how-can-i-check-if-my-element-id-has-focus)
+
+Here are the three best ways to handle focus depending on your needs.
+
+### 1\. Check a Specific Element Immediately
+
+If you already have a reference to your input element, you can check if it is focused using a strict equality comparison (`===`): [](https://stackoverflow.com/questions/36430561/how-can-i-check-if-my-element-id-has-focus)
+
+javascript
+
+```
+const myInput = document.getElementById('my-input-id');
+
+// Check if it is currently focused
+if (document.activeElement === myInput) {
+    console.log('The input field is focused!');
+} else {
+    console.log('The input field is NOT focused.');
+}
+
+```
+
+
+
+### 2\. Check if _Any_ Input is Focused
+
+If you want to know if the user is currently typing in _any_ input or textarea on the page, check the tag name of the active element: [](https://www.htmlgoodies.com/javascript/javascript-element-focus/)
+
+javascript
+
+```
+const isAnyInputFocused = 
+  document.activeElement.tagName === 'INPUT' || 
+  document.activeElement.tagName === 'TEXTAREA';
+
+if (isAnyInputFocused) {
+    console.log('The user is typing in an input field.');
+}
+
+```
+
+
+
+### 3\. Track Focus Fluently (Event Listeners)
+
+If you need to trigger an action the exact moment an input gains or loses focus, add `focus` and `blur` event listeners to the element: [](https://github.com/alpinejs/alpine/discussions/1951)
+
+javascript
+
+```
+const myInput = document.getElementById('my-input-id');
+
+myInput.addEventListener('focus', () => {
+    console.log('Input just gained focus');
+});
+
+myInput.addEventListener('blur', () => {
+    console.log('Input just lost focus');
+});
+
+```
+
+
+
+### 💡 Pro-Tip for CSS
+
+If you only need to change the style of the input when it is focused, you do not need JavaScript at all. Use the **`:focus`** pseudo-class in your CSS:
+
+css
+
+```
+input:focus {
+    border-color: blue;
+    background-color: #f0f8ff;
+}
+
+```
+
+
+
+Are you trying to run this check **inside a framework** like React or Vue, or do you need to **prevent a specific behavior** (like closing a dropdown) when the input is active? Let me know so I can tailor the solution!
+
+* [](https://stackoverflow.com/questions/36430561/how-can-i-check-if-my-element-id-has-focus)  
+Stack Overflow  
+How can I check if my Element ID has focus? - Stack Overflow  
+activeElement with the element you want to check for focus. If they are the same, the element is focused; otherwise, it isn't.
+* [](https://www.htmlgoodies.com/javascript/javascript-element-focus/)  
+HTML Goodies  
+How to Determine Which Element Has Focus in JavaScript | HTML Goodies  
+Focusable Elements: Form controls (input, select, textarea, button), visible objects, anchors with href/tabindex, and elements wit...
+* [](https://github.com/alpinejs/alpine/discussions/1951)  
+GitHub  
+How to check if input has focus? #1951 - alpinejs alpine  
+In v3, only properties in x-data are reactive by default. You can do something like this instead …
+
+Show all
 

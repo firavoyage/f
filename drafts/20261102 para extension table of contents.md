@@ -861,5 +861,4 @@ function navigateToHeading(id) {
 
 This gives you clean browser history while keeping the URL synchronized with the current section.
 
-# 
 
