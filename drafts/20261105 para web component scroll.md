@@ -1301,5 +1301,615 @@ This alone won't solve overflow caused by margins, though.
 
 My recommendation: If you're using `width: 100%` with horizontal margins, move those margins to the parent's padding. It avoids unnecessary width calculations and is easier to maintain.
 
+# how to monitor size change of a node in js, like react use use measure
+
+In vanilla JavaScript, the best way to monitor a DOM element's size changes is `ResizeObserver`.
+
+It's essentially the browser-native equivalent of React's `useMeasure`.
+
+### 1. Basic usage
+
+```
+const element = document.querySelector("#my-element");
+
+const observer = new ResizeObserver((entries) => {
+  for (const entry of entries) {
+    const { width, height } = entry.contentRect;
+
+    console.log("Size changed:", { width, height });
+  }
+});
+
+observer.observe(element);
+
+// Stop observing when no longer needed
+// observer.disconnect();
+```
+
+Unlike listening to the `window.resize` event, `ResizeObserver` detects size changes caused by:
+
+- Parent element resizing
+- CSS changes
+- Content changes
+- Flexbox or Grid layout changes
+- Element becoming visible or hidden
+
+### 2. Create a reusable `useMeasure` React hook
+
+If you want something similar to `react-use-measure`:
+
+```
+import { useState, useEffect, useRef } from "react";
+
+function useMeasure() {
+  const ref = useRef(null);
+  const [bounds, setBounds] = useState({
+    width: 0,
+    height: 0,
+  });
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    const observer = new ResizeObserver(([entry]) => {
+      const { width, height } = entry.contentRect;
+
+      setBounds({ width, height });
+    });
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
+  return [ref, bounds];
+}
+```
+
+Usage:
+
+```
+function App() {
+  const [ref, bounds] = useMeasure();
+
+  return (
+    <div ref={ref}>
+      <p>Width: {bounds.width}</p>
+      <p>Height: {bounds.height}</p>
+    </div>
+  );
+}
+```
+
+### 3. Which API should you use?
+
+| API                    | What it monitors                    |
+| ---------------------- | ----------------------------------- |
+| `ResizeObserver`       | Element size changes                |
+| `MutationObserver`     | DOM structure and attribute changes |
+| `IntersectionObserver` | Element visibility/intersection     |
+| `window.resize`        | Browser viewport size changes       |
+
+My recommendation: Use `ResizeObserver` directly. It's performant, native, and specifically designed for this use case.
+
+One important detail: `entry.contentRect` measures the content box. If you need the element's border-box dimensions, use `entry.borderBoxSize` instead.
+
+# how to preserve scroll position after change dimension of a node in js
+
+When you change a DOM node's dimensions (such as `width`, `height`, or content size), the browser may shift the scroll position because the layout is recalculated.
+
+The best solution depends on what you want to preserve.
+
+## 1. Preserve the scroll position using `scrollTop`
+
+If you're changing the dimensions of a node inside a scrollable container:
+
+```
+const container = document.querySelector(".container");
+const node = document.querySelector(".node");
+
+// Save current scroll position
+const scrollTop = container.scrollTop;
+const scrollLeft = container.scrollLeft;
+
+// Change dimensions
+node.style.width = "500px";
+node.style.height = "300px";
+
+// Restore scroll position
+container.scrollTop = scrollTop;
+container.scrollLeft = scrollLeft;
+```
+
+## 2. Preserve the visual position of a specific node
+
+If the node's dimensions change and you want it to remain at exactly the same visual position in the viewport:
+
+```
+const node = document.querySelector(".node");
+
+const before = node.getBoundingClientRect();
+
+// Change dimensions
+node.style.width = "500px";
+node.style.height = "300px";
+
+// Restore its original viewport position
+const after = node.getBoundingClientRect();
+
+window.scrollBy({
+  top: after.top - before.top,
+  left: after.left - before.left,
+});
+```
+
+This is useful when resizing elements dynamically.
+
+## 3. Use `requestAnimationFrame` for asynchronous layout updates
+
+If the dimension change involves rendering or DOM updates:
+
+```
+const scrollY = window.scrollY;
+
+node.style.height = "500px";
+
+requestAnimationFrame(() => {
+  window.scrollTo({
+    top: scrollY,
+    behavior: "instant",
+  });
+});
+```
+
+## Which should you use?
+
+| Scenario                                 | Recommended approach              |
+| ---------------------------------------- | --------------------------------- |
+| Scrollable div                           | Save and restore `scrollTop`      |
+| Window scrolling                         | Save and restore `window.scrollY` |
+| Keep a specific node visually stationary | Compare `getBoundingClientRect()` |
+| React/Vue dynamic rendering              | Restore after DOM update          |
+
+One important question: Are you changing the dimensions of a node inside a scrollable container, and do you want to preserve the container's scroll position or keep the resized node at exactly the same position on screen?
+
+# how to preserve scroll position after changing dimension of a node in js, as if you resized the browser when reading an article
+
+What you're looking for is scroll position preservation relative to an element, rather than preserving the absolute `scrollTop`.
+
+When reading an article, if a node above the current reading position changes height, you want the browser to compensate for that change so the same content remains at the same visual position.
+
+There are a few ways to achieve this in JavaScript.
+
+## 1. Recommended: Preserve an anchor element's position
+
+Before resizing the node, record the position of an element near the reader's current viewport. After resizing, adjust the scroll position by the difference.
+
+```
+function preserveScrollPosition(callback) {
+  const scrollContainer = document.documentElement;
+
+  // Find an anchor near the top of the viewport
+  const anchor = document.elementFromPoint(
+    window.innerWidth / 2,
+    100
+  );
+
+  if (!anchor) {
+    callback();
+    return;
+  }
+
+  const before = anchor.getBoundingClientRect().top;
+
+  // Change the DOM
+  callback();
+
+  requestAnimationFrame(() => {
+    const after = anchor.getBoundingClientRect().top;
+
+    // Compensate for layout shift
+    window.scrollBy(0, after - before);
+  });
+}
+```
+
+Usage:
+
+```
+preserveScrollPosition(() => {
+  document.querySelector("#my-node").style.height = "500px";
+});
+```
+
+This keeps the anchor at approximately the same viewport position.
+
+## 2. Simpler: Preserve scroll position by measuring height difference
+
+If you know the node being resized is entirely above the reading position, you can simply compensate for its height change.
+
+```
+function resizeWithoutScrollJump(element, newHeight) {
+  const oldHeight = element.offsetHeight;
+
+  element.style.height = `${newHeight}px`;
+
+  const newHeightActual = element.offsetHeight;
+
+  window.scrollBy(0, newHeightActual - oldHeight);
+}
+```
+
+This is simpler but doesn't work reliably if:
+
+- The element is partially visible.
+- Multiple elements change dimensions.
+- Layout changes affect elements outside the resized node.
+
+## 3. Browser-native solution: overflow-anchor
+
+Modern browsers support CSS scroll anchoring.
+
+```
+html {
+  overflow-anchor: auto;
+}
+```
+
+The browser automatically tries to preserve the reader's visual position when content above the viewport changes size.
+
+You can also disable it on specific elements:
+
+```
+.no-scroll-anchor {
+  overflow-anchor: none;
+}
+```
+
+This is often the best solution if your use case is dynamically loading images, expanding article sections, or changing content height.
+
+## Which approach should you use?
+
+| Situation                                   | Recommended                            |
+| ------------------------------------------- | -------------------------------------- |
+| Article content dynamically changes height  | `overflow-anchor: auto`                |
+| You control the resize operation            | Anchor element compensation            |
+| A single node above viewport changes height | Height difference compensation         |
+| Multiple nodes resize asynchronously        | `ResizeObserver` + anchor compensation |
+
+My recommendation: If you're implementing an article reader (similar to Medium or a news reader), use anchor-based compensation. It behaves most like resizing the browser window while keeping your reading position stable.
+
+One important detail: if you're changing the width of a node, not just its height, anchor-based compensation is especially useful because text reflows and changes the heights of multiple elements.
+
+# how does the browser preserve the scroll position when you resize the window, how to mimic that in js
+
+Browsers generally preserve scroll position during window resizing by maintaining the document's scroll offset (`scrollY`) and adjusting the layout without intentionally resetting the scroll position.
+
+However, there's a subtle distinction: the browser preserves the scroll offset, not necessarily the visual position of every element.
+
+For example, if you resize the window and text wraps differently, the height of content above your current position may change. Your scroll offset might stay the same, but the content you were looking at moves.
+
+There are a few mechanisms involved.
+
+## 1. Browser-native scroll preservation
+
+The browser maintains:
+
+```
+window.scrollY
+window.scrollX
+```
+
+When the viewport resizes, CSS layout recalculates. Normally, the browser tries to retain the current scroll position.
+
+Browsers also implement scroll anchoring. This is particularly important.
+
+Scroll anchoring attempts to keep a visible element in approximately the same visual position when content above it changes size.
+
+For example:
+
+1. You're reading paragraph 50.
+2. The window gets narrower.
+3. Paragraphs above paragraph 50 wrap onto additional lines.
+4. Their heights increase.
+5. The browser adjusts the scroll offset to keep paragraph 50 in place.
+
+You can control scroll anchoring with CSS:
+
+```
+.container {
+  overflow-anchor: auto;
+}
+
+/* Disable anchoring */
+.container {
+  overflow-anchor: none;
+}
+```
+
+## 2. Mimicking this behavior in JavaScript
+
+If you want to preserve the exact visual position of an element during resizing, you can implement your own scroll anchoring.
+
+The idea:
+
+1. Find an element currently visible in the viewport.
+2. Record its position relative to the viewport.
+3. Allow the layout to resize.
+4. Measure its new position.
+5. Adjust `scrollY` by the difference.
+
+Here's a practical implementation:
+
+```
+const anchor = document.querySelector(".content");
+
+let previousTop = anchor.getBoundingClientRect().top;
+
+const observer = new ResizeObserver(() => {
+  const newTop = anchor.getBoundingClientRect().top;
+
+  const delta = newTop - previousTop;
+
+  window.scrollBy(0, delta);
+
+  previousTop = anchor.getBoundingClientRect().top;
+});
+
+observer.observe(document.body);
+```
+
+This is a simplified implementation. For production, you'll want to handle anchor selection and avoid observing layout changes caused by your own scroll adjustments.
+
+## 3. A more robust implementation
+
+This version captures an anchor before resizing and restores its visual position afterward:
+
+```
+let anchor;
+let previousTop;
+
+function findAnchor() {
+  const elements = document.querySelectorAll(".content-item");
+
+  for (const el of elements) {
+    const rect = el.getBoundingClientRect();
+
+    if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+      return el;
+    }
+  }
+
+  return null;
+}
+
+function beforeResize() {
+  anchor = findAnchor();
+
+  if (anchor) {
+    previousTop = anchor.getBoundingClientRect().top;
+  }
+}
+
+function afterResize() {
+  if (!anchor) return;
+
+  const newTop = anchor.getBoundingClientRect().top;
+  const delta = newTop - previousTop;
+
+  window.scrollBy(0, delta);
+
+  anchor = null;
+}
+
+// Capture before resize using the previous frame's geometry.
+window.addEventListener("resize", () => {
+  requestAnimationFrame(afterResize);
+});
+```
+
+For this approach, you'd need to capture the anchor before the resize starts (for example, on pointer interaction with the resize handle, where available). The browser's `resize` event itself fires after resizing has begun.
+
+## 4. Which approach should you use?
+
+| Scenario                                    | Recommended approach          |
+| ------------------------------------------- | ----------------------------- |
+| Normal document scrolling                   | Browser default               |
+| Content dynamically inserted above viewport | Native scroll anchoring       |
+| Custom scroll container                     | `overflow-anchor: auto`       |
+| Complex responsive layout                   | JavaScript anchor restoration |
+| Virtualized list                            | Preserve item ID + offset     |
+
+My recommendation: If you're building something like a document editor, IDE, or responsive reader, use element-based anchoring rather than storing `window.scrollY`.
+
+The key formula is:
+
+\\[ \text{newScrollY} = \text{oldScrollY} + (\text{newAnchorTop} - \text{oldAnchorTop}) \\]
+
+This preserves the visual position of the content, even when its height changes.
+
+One important detail: if you're implementing this yourself, avoid fighting the browser's native scroll anchoring. Either let the browser handle it or disable it with `overflow-anchor: none` on the relevant container before implementing your own.
+
+# does broswer gurantee unchanged scroll position when you resize back and forth
+
+No. Browsers do not guarantee that the scroll position remains unchanged when you resize the viewport back and forth.
+
+The behavior depends on several factors:
+
+1. Viewport resizing: The browser generally tries to preserve the current scroll position, but it may adjust it when the document layout changes.
+2. Responsive layouts: CSS media queries may change element dimensions, positioning, or visibility, shifting content.
+3. Dynamic content: Images, fonts, and asynchronously loaded elements can change document height and cause scroll shifts.
+4. Scroll anchoring: Browsers implement scroll anchoring to reduce unexpected jumps, but it is not an absolute guarantee.
+5. Browser zoom vs. window resizing: These can produce different scroll-position behaviors.
+
+### What is guaranteed?
+
+There is no general browser specification guarantee that resizing from viewport A → B → A restores the exact original scroll position.
+
+### How to preserve it yourself
+
+If you need reliable restoration, explicitly save and restore the scroll position:
+
+```
+const savedY = window.scrollY;
+
+// Resize or change layout...
+
+window.scrollTo({
+  top: savedY,
+  behavior: "instant"
+});
+```
+
+However, if the document layout changes, restoring the same `scrollY` does not necessarily restore the same visual content at the same position.
+
+For stronger preservation: Save an element's identity and its offset relative to the viewport, then restore its position after resizing.
+
+This is more robust than saving `scrollY` alone.
+
+# why doesnt broswer scroll anchoring gurantee unchanged scroll position when you resize back and forth
+
+Browser scroll anchoring doesn't guarantee that resizing back and forth restores the exact original scroll position because scroll anchoring preserves the position of an anchor element, not the numerical scroll offset or the entire layout state.
+
+There are several reasons for this.
+
+### 1. Scroll anchoring is relative, not absolute
+
+The browser selects an anchor node in the document and tries to keep that node at approximately the same visual position when layout changes.
+
+For example:
+
+- Initial state: anchor is 200px from the top of the viewport.
+- You resize the window: content reflows, and the browser adjusts `scrollY` to keep the anchor at 200px.
+- You resize back: the browser attempts to preserve the anchor's position again.
+
+But this doesn't mean the browser restores the exact original `scrollY`.
+
+### 2. Layout changes aren't necessarily reversible
+
+Suppose resizing causes text wrapping:
+
+```
+Before:
+Line 1
+Line 2
+Line 3
+
+After:
+Line 1 wraps
+Line 2
+Line 3
+```
+
+When you resize back, the browser recalculates layout. Even if the viewport dimensions return to their original values, other factors might have changed:
+
+- Font loading or font metrics.
+- Image dimensions becoming available.
+- Dynamic content insertion or removal.
+- Subpixel rounding.
+- Different anchor selection.
+
+Consequently, the final layout might not have exactly the same geometry.
+
+### 3. The browser can select a different anchor
+
+Anchor selection is dynamic.
+
+During the first resize, the browser might select element A. During the second resize, it might select element B.
+
+Since these elements have different positions and layout behavior, the adjustments won't necessarily cancel each other out.
+
+### 4. Scroll anchoring has limitations
+
+The browser may also suppress anchoring adjustments in certain situations, such as when:
+
+- The anchor is inside an excluded subtree.
+- The scrolling box is being actively scrolled.
+- The layout change falls under certain suppression triggers.
+- The browser determines that an adjustment should not be performed.
+
+### 5. Subpixel rounding accumulates
+
+Layout calculations often involve fractional CSS pixels.
+
+For example:
+
+```
+element.getBoundingClientRect().top
+// 123.4375
+```
+
+After several layout recalculations, rounding and geometry changes can produce small differences.
+
+### The fundamental distinction
+
+There are two different guarantees:
+
+| Behavior                 | What it guarantees                                                  |
+| ------------------------ | ------------------------------------------------------------------- |
+| Scroll anchoring         | Attempts to keep an anchor visually stable during layout changes    |
+| Exact scroll restoration | Restores the same scroll offset or the same visual content position |
+
+Scroll anchoring implements the first, not the second.
+
+If you need exact restoration across resize operations, you should explicitly capture and restore a reference position.
+
+For example:
+
+```
+const anchor = document.querySelector("#my-anchor");
+
+const originalTop = anchor.getBoundingClientRect().top;
+
+// Perform resize/layout changes...
+
+const newTop = anchor.getBoundingClientRect().top;
+
+window.scrollBy(0, newTop - originalTop);
+```
+
+This attempts to restore the element to its original viewport position, assuming the element still exists and the layout has stabilized.
+
+One important caveat: if you're investigating this for a browser layout engine, scroll anchoring is intentionally not a transactional mechanism. It doesn't maintain a history of previous layouts that it can roll back to.
+
+# write ts type for a fn that takes another fn as the first arg, the single object param of the passed fn as the second, and any rest arg
+
+You can use a generic function type with `Parameters` to infer the second argument and `...args` for the rest:
+
+```
+type Wrapper = <
+  F extends (params: object) => any,
+  R extends unknown[]
+>(
+  fn: F,
+  params: Parameters<F>[0],
+  ...args: R
+) => void;
+```
+
+If the passed function can also have its own return type, or you want to preserve it:
+
+```
+type Wrapper = <
+  F extends (params: object) => any,
+  R extends unknown[]
+>(
+  fn: F,
+  params: Parameters<F>[0],
+  ...args: R
+) => ReturnType<F>;
+```
+
+Example:
+
+```
+const wrapper: Wrapper = (fn, params, ...args) => {
+  return fn(params);
+};
+```
+
+Note: If the rest arguments are intended to be arguments of the passed function after its object parameter, rather than extra arguments to the wrapper, the type can be simplified using `Parameters<F>`.
+
 
 

@@ -56,6 +56,8 @@
   - refactor code
   - decouple scroll start end
     - e.g. omit crossing/rounded (like vscode command palette)
+  - have smooth ideal transition easing for scrollbar
+    - when you scroll on vscode ctrl p, it fades in quickly, and fades out slowly
 
 ## w
 
