@@ -151,6 +151,7 @@ life:
 - coffee packaging formats brewing types beverage types popularity demography
 - voice recorder
 - notebook paper sizes lines
+- pencil hardness
 
 create something:
 
@@ -475,6 +476,7 @@ desktop:
 - disable auto update kernal panic
 - git filter repo
 - ubuntu debian disable gnome extensions
+- shell rm rf
 
 android:
 

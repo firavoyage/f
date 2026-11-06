@@ -12,11 +12,21 @@ color:
     dark: oklch(10% 0.02 248.35)
   button:
     dark: oklch(27% 0.02 251.92)
+  button-hover:
+    dark: oklch(29% 0.02 260.62)
+  table:
+    dark: oklch(18% 0.01 258.36)
+  table-heading:
+    dark: oklch(22% 0.02 255.71)
+  table-hover:
+    dark: oklch(26% 0.01 248.38)
   border:
     dark: oklch(38% 0.02 254.74)
-  hover:
+  field:
+    dark: oklch(18% 0.01 258.36)
+  selection-hover:
     dark: oklch(21% 0.01 258.37)
-  select:
+  selection-select:
     dark: oklch(29% 0.02 260.62)
   focus:
     dark: oklch(57% 0.20 259.67)
@@ -35,22 +45,24 @@ page:
   # content: w-80ch
 search:
   search: fixed top-0 w-full flex justify-center items-center
-  content: w-xl max-h-20rem overflow-hidden bg-dropdown rounded-md
+  content: w-xl max-h-20rem overflow-hidden bg-dropdown rounded-lg
   query: p-2
   results: px-2
   result: w-full px-2 py-0.5 rounded-md
-  result:hover: bg-hover
-  result[focus]: bg-select
+  result:hover: bg-selection-hover
+  result[focus]: bg-selection-select
 toc:
-  toc: fixed right-8 top-10 bottom-10 w-xs bg-dropdown
-  h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover: bg-hover
+  toc: fixed right-8 top-10 bottom-10 w-xs rounded-lg
+  content: px-2 py-4
+  h1, h2, h3, h4, h5, h6: px-2 py-1 rounded-md
+  h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover: bg-selection-hover
   h2: ml-2
   h3: ml-4
   h4: ml-6
   h5: ml-8
   h6: ml-10
 input:
-  input: w-full px-2 py-1 rounded-md
+  input: w-full px-2 py-1 rounded-md bg-field
   input:focus-visble: outline-focus outline-sm offset-2 rounded-md
 scroll:
   scroll: flex flex-1 relative overflow-hidden

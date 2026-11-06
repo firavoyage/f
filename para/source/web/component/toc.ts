@@ -12,10 +12,14 @@ export function toc(props: toc) {
     h(
       scroll,
       { scrollbar: false },
-      map(headings, (heading) =>
-        h(
-          `toc_${heading.type}`,
-          h('a.', { href: `#${heading.id}` }, heading.content),
+      h(
+        'toc_content',
+        map(headings, (heading) =>
+          h(
+            'a.',
+            { href: `#${heading.id}` },
+            h(`toc_${heading.type}`, heading.content),
+          ),
         ),
       ),
     ),
