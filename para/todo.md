@@ -52,7 +52,7 @@ https://m3.material.io/styles/color/roles
   - you may have an array of hierarchy for each folder in lib/file (wo "find" command), prefix them, and fzf (preferrably in js)
 - customize scrolling
   - it might be as userscript rather than para specific extension, as they are likely to prefer it across sites (e.g. vimium)
-- prioritize on ctrl p
+- prioritize on this page headings on search
 
 ## c
 
