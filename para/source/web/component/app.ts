@@ -11,6 +11,7 @@ import { use_style } from 'lib/web/style'
 
 import { input } from './input'
 import { search } from './search'
+import { scroll } from './scroll'
 
 init_request('http://localhost:9010')
 
@@ -83,7 +84,10 @@ function app() {
 
   return h(
     'app',
-    h('page', h('page_content', h('markdown-body', h({ html })))),
+    h(
+      scroll,
+      h('page', h('page_content', h('markdown-body', h({ html })))),
+    ),
     h(search, {
       query,
       set_query,

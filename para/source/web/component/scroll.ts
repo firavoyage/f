@@ -41,8 +41,7 @@ export function scroll(props: scroll) {
 
   const position = useScroll(content)
 
-  // bound container w h to parent
-  useLayoutEffect(() => {
+  function bound_size_to_parent() {
     if (!container.current) {
       return
     }
@@ -53,22 +52,43 @@ export function scroll(props: scroll) {
 
     if (!parent) return
 
+    child.style.maxHeight = nil
     if (parent.scrollHeight > parent.clientHeight) {
       let delta = parent.scrollHeight - parent.clientHeight
 
       let height = child.clientHeight - delta
 
       child.style.maxHeight = `${height}px`
-    } 
+    }
 
+    child.style.maxWidth = nil
     if (parent.scrollWidth > parent.clientWidth) {
       let delta = parent.scrollWidth - parent.clientWidth
 
       let width = child.clientWidth - delta
 
       child.style.maxWidth = `${width}px`
-    } 
-  })
+    }
+  }
+
+  // bound container w h to parent, mimicing flex grow 1
+  useLayoutEffect(() => {
+    bound_size_to_parent()
+
+    if (!container.current) {
+      return
+    }
+
+    let child = container.current
+
+    const parent = child.parentElement
+
+    const observer = new ResizeObserver(() => {
+      bound_size_to_parent()
+    })
+
+    observer.observe(parent)
+  }, [])
 
   // show scrollbar track for a while when position changes
   useEffect(() => {
