@@ -18,17 +18,26 @@ export function is_given<T>(foo: T): foo is NonNullable<T> {
 }
 
 export function has<K extends PropertyKey>(obj: any[], key: K): boolean
-export function has<K extends PropertyKey>(string: string, substring: K): boolean
+export function has<K extends PropertyKey>(
+  string: string,
+  substring: K,
+): boolean
 export function has<K extends PropertyKey>(obj: Set<any>, key: K): boolean
 export function has<K extends PropertyKey>(obj: Map<any, any>, key: K): boolean
-export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, any>
+export function has<K extends PropertyKey>(
+  obj: any,
+  key: K,
+): obj is Record<K, any>
 export function has<K>(obj: any, key: K): boolean
 // export function has<K>(obj: any, key: K): obj is Record<K, any>
 
 /**
  * Check if an object/map has a key, or an array/set has an element
  */
-export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, any> {
+export function has<K extends PropertyKey>(
+  obj: any,
+  key: K,
+): obj is Record<K, any> {
   if (Array.isArray(obj)) {
     return obj.includes(key)
   }
@@ -49,8 +58,14 @@ export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, a
     return obj.has(key)
   }
 
-  return (typeof key == 'string' || typeof key == 'number' || typeof key == 'symbol') &&
-    obj && typeof obj == 'object' && Object.hasOwn(obj, key);
+  return (
+    (typeof key == 'string' ||
+      typeof key == 'number' ||
+      typeof key == 'symbol') &&
+    obj &&
+    typeof obj == 'object' &&
+    Object.hasOwn(obj, key)
+  )
 }
 
 type entries = [k: any, v: any][]
@@ -63,10 +78,10 @@ export function entries(obj: object | Map<any, any>): entries {
   } else if (is(obj, 'object')) {
     const keys = [
       ...Object.getOwnPropertyNames(obj),
-      ...Object.getOwnPropertySymbols(obj)
-    ];
+      ...Object.getOwnPropertySymbols(obj),
+    ]
 
-    return keys.map(key => [key, obj[key]]);
+    return keys.map((key) => [key, obj[key]])
   } else if (is(obj, 'array')) {
     return obj.entries()
   } else {
@@ -76,9 +91,9 @@ export function entries(obj: object | Map<any, any>): entries {
 
 /**
  * Merge objects to target (the first param)
- * 
+ *
  * shallow
- * 
+ *
  * less quirky than Object.assign
  */
 export function merge(target: object, ...sources: object[]) {
@@ -92,15 +107,28 @@ export function merge(target: object, ...sources: object[]) {
 }
 
 // for some reason, ts sees constructures as Function, not any to any fn
-type variable_type = 'nil' | 'array' | "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" | Function |
-  'numeric' | 'iterable'
+type variable_type =
+  | 'nil'
+  | 'array'
+  | 'string'
+  | 'number'
+  | 'bigint'
+  | 'boolean'
+  | 'symbol'
+  | 'undefined'
+  | 'object'
+  | 'function'
+  | Function
+  | 'numeric'
+  | 'literal'
+  | 'iterable'
 // type variable_type = 'nil' | 'array' | "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" | fn
 
 /**
  * check if type matches
- * 
+ *
  * arrays are not objects
- * 
+ *
  * strings are not iterable
  */
 export function is(v: any, type: variable_type) {
@@ -108,10 +136,19 @@ export function is(v: any, type: variable_type) {
     return type == 'nil' || type === nil
   } else if (v === undefined) {
     return type == 'undefined'
-  }  else if (type == 'numeric') {
+  } else if (type == 'numeric') {
     return is(v, 'number') || is(v, 'bigint')
   } else if (type == 'iterable') {
     return is(v[Symbol.iterator], 'function') && !is(v, 'string')
+  } else if (type == 'literal') {
+    return (
+      is(v, 'numeric') ||
+      is(v, 'boolean') ||
+      is(v, 'nil') ||
+      is(v, 'undefined') ||
+      is(v, 'string') ||
+      is(v, 'symbol')
+    )
   } else if (typeof type == 'function') {
     return v instanceof type
   } else {
@@ -167,7 +204,7 @@ export function str(s) {
 
 /**
  * you may pass spread args or an array
- * 
+ *
  * you should not spread it if it can contain iterable elements, pass an array instead
  */
 export function list(...args) {
@@ -189,7 +226,7 @@ export function dict(v?) {
     v = entries(v)
   }
   // if (is(v, 'object')) {
-  //   v = entries(v)    
+  //   v = entries(v)
   // }
 
   return new Map(v)

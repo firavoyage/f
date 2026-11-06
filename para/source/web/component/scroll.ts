@@ -261,9 +261,9 @@ export function scroll(props: scroll) {
 
   return h(
     'scroll',
-    { noscrollbar: !scrollbar, drag: is_dragging, ref: container },
+    { drag: is_dragging, ref: container },
     h('scroll_content', { ref: content }, children),
-    is_vertically_scrollable &&
+    scrollbar && is_vertically_scrollable &&
       h(
         'scroll_vertical_scrollbar',
         h(
@@ -285,7 +285,7 @@ export function scroll(props: scroll) {
           }),
         ),
       ),
-    is_horizontally_scrollable &&
+    scrollbar && is_horizontally_scrollable &&
       h(
         'scroll_horizontal_scrollbar',
         h(

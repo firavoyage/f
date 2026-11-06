@@ -20,10 +20,16 @@ export function s<T>(initial_value: T, options: s<T> = {}) {
   }
 
   function set_state(new_value: T | ((old_value: T) => T) = toggle) {
+    let prev_state = state
+
     if (is(new_value, 'function')) {
       state = new_value(state)
     } else {
       state = new_value
+    }
+
+    if (is(state, 'literal') && state == prev_state) {
+      return
     }
 
     for (const sub of subs) {
@@ -65,23 +71,27 @@ export function s<T>(initial_value: T, options: s<T> = {}) {
   }
 
   if (is_given(url_param)) {
-    const key = url_param
-
     const current_params = obj(new URL(window.location.href).searchParams)
-    // const current_params = new URLSearchParams(window.location.search)
-    
-    if (has(current_params, key)) {
-      state = deserialize(current_params[key])
+
+    if (has(current_params, url_param)) {
+      state = deserialize(current_params[url_param])
     }
 
     subscribe(() => {
-      const current_params = new URLSearchParams(window.location.search)
+      const url = new URL(window.location.href)
 
-      current_params.set(key, serialize())
+      url.searchParams.set(key, serialize())
 
-      const new_url = `${window.location.pathname}?${current_params.toString()}`
+      window.history.pushState({}, '', url)
+    })
 
-      window.history.pushState({}, '', new_url)
+    // Browser back / forward
+    window.addEventListener('popstate', () => {
+      const current_params = obj(new URL(window.location.href).searchParams)
+
+      if (has(current_params, url_param)) {
+        set_state(deserialize(current_params[url_param]))
+      }
     })
   }
 

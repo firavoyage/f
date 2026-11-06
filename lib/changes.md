@@ -20,3 +20,11 @@ change
 # 2026.11.02
 
 - web/props: cache dangerously set innerhtml
+
+# 2026.11.06
+
+- web/state: listen for navigation events and sync state
+- web/state: use url instead of url search params plus string op, fix quirks (e.g. hash disappearing)
+- web/state: ignore unchanged set state for literals
+- web/std/is: support type `literal`
+
