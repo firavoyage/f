@@ -39,10 +39,11 @@ search:
   query: p-2
   results: px-2
   result: w-full px-2 py-0.5 rounded-md
-  'result:hover': bg-hover
+  result:hover: bg-hover
   result[focus]: bg-select
 toc:
   toc: fixed right-8 top-10 bottom-10 w-xs bg-dropdown
+  h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover: bg-hover
   h2: ml-2
   h3: ml-4
   h4: ml-6
@@ -50,7 +51,7 @@ toc:
   h6: ml-10
 input:
   input: w-full px-2 py-1 rounded-md
-  'input:focus-visble': outline-focus outline-sm offset-2 rounded-md
+  input:focus-visble: outline-focus outline-sm offset-2 rounded-md
 scroll:
   scroll: flex flex-1 relative overflow-hidden
   content: flex-1 overflow-auto

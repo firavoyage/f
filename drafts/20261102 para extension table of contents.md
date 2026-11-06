@@ -310,4 +310,440 @@ May 17, 2023 — Frameworks like React utilize DOM manipulation to update specif
 
 Show all
 
+# use snake case. write a js fn given a node to attach an id for all headings, and return an array of objects of type h1 to h6, id, and content
+
+```
+function extract_headings(node) {
+  const headings = [];
+
+  const heading_nodes = node.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+  heading_nodes.forEach((heading) => {
+    const type = heading.tagName.toLowerCase();
+
+    // Generate an id if one doesn't exist
+    if (!heading.id) {
+      const slug = heading.textContent
+        .trim()
+        .toLowerCase()
+        .replace(/[^\w\s-]/g, '')
+        .replace(/\s+/g, '-');
+
+      heading.id = slug;
+    }
+
+    headings.push({
+      type,
+      id: heading.id,
+      content: heading.textContent.trim(),
+    });
+  });
+
+  return headings;
+}
+```
+
+Usage:
+
+```
+const content_node = document.querySelector('#content');
+
+const headings = extract_headings(content_node);
+
+console.log(headings);
+```
+
+Example output:
+
+```
+[
+  {
+    type: 'h1',
+    id: 'introduction',
+    content: 'Introduction'
+  },
+  {
+    type: 'h2',
+    id: 'getting-started',
+    content: 'Getting Started'
+  }
+]
+```
+
+Note: This preserves existing IDs. If two headings generate the same slug, their IDs may collide.
+
+# react use use update
+
+The phrase **"react use use update"** typically refers to **`useUpdate`**, a popular custom utility hook from the well-known **`react-use`** library. [](https://github.com/streamich/react-use/blob/master/docs/useUpdate.md)
+
+### What is `useUpdate`?
+
+`useUpdate` is a simple utility hook that returns a stable function. When you invoke this function, it forces the React component to manually re-render. [](https://reactuse.com/effect/useupdate/)
+
+Under the hood, it uses a simple `useReducer` counter increment. Because a new state value is forced, React initiates a fresh reconciliation and re-render cycle. [](https://reactuse.com/effect/useupdate/)
+
+### 💻 Basic Usage Example
+
+You can import and implement it from [react-use on GitHub](https://github.com/streamich/react-use) like this: [](https://github.com/streamich/react-use/blob/master/docs/useUpdate.md)
+
+jsx
+
+```
+import React from 'react';
+import { useUpdate } from 'react-use';
+
+const ForceRenderDemo = () => {
+  const update = useUpdate();
+
+  return (
+    <div>
+      <p>Current Timestamp: {Date.now()}</p>
+      {/* Clicking this button forces the component to re-render */}
+      <button onClick={update}>Force Re-render</button>
+    </div>
+  );
+};
+
+export default ForceRenderDemo;
+
+```
+
+
+
+### When should you use it?
+
+You should generally use this hook **sparingly**, as it bypasses React's declarative state model. However, it is useful when: [](https://reactuse.com/effect/useupdate/)
+
+* Working with **mutable external variables** or `useRef` objects that React doesn't track naturally.
+* Integrating with **imperative third-party libraries** that modify data outside of React's awareness.
+* Forcing a quick UI refresh to poll on-demand data (like `Date.now()`). [](https://reactuse.com/effect/useupdate/)
+
+---
+
+### Alternative Meanings
+
+Depending on the exact context of your search, you might also be looking for:
+
+* **`useUpdateEffect` (also in `react-use`):** A hook that acts exactly like `useEffect`, but **skips the initial mount** and only runs on subsequent component updates.
+* **The `use` hook in React 19:** React 19 introduces a built-in `use()` API to consume Promises or Context inline within loops and conditional statements.
+* **State Updater Functions:** Passing an anonymous function to a standard state setter (e.g., `setCount(prev => prev + 1)`) to ensure safe state updates. [](https://github.com/streamich/react-use/blob/master/docs/useUpdateEffect.md)
+
+Are you trying to **force a manual re-render** using the `react-use` library, or were you looking for information on how to **update state** using standard React hooks?
+
+* [](https://github.com/streamich/react-use/blob/master/docs/useUpdate.md)  
+GitHub  
+react-use/docs/useUpdate.md at master - GitHub  
+React utility hook that returns a function that forces component to re-render when called. Usage. import {useUpdate} from 'react-u...
+* [](https://reactuse.com/effect/useupdate/)  
+ReactUse  
+useUpdate – Effect Hook Usage & Examples - ReactUse  
+When to Use Forcing a re-render after mutating a ref or external mutable value that React does not track Integrating with imperati...
+* [](https://github.com/streamich/react-use/blob/master/docs/useUpdateEffect.md)  
+GitHub  
+react-use/docs/useUpdateEffect.md at master  
+{useUpdateEffect} useUpdateEffect(() => { console. // will only show 1 and beyond return () // do something on unmount } }) // you...
+
+Show all
+
+# how to observe user navigation in js and set state rather than having stale page content on changed url
+
+In JavaScript, the best approach depends on whether you're using a framework or plain JavaScript.
+
+If you want to detect URL changes and update application state instead of displaying stale page content, you need to observe browser navigation events.
+
+## 1. Plain JavaScript: listen for URL changes
+
+The browser provides two important events:
+
+- `popstate`: Fires when the user navigates using Back/Forward.
+- `hashchange`: Fires when the URL hash changes.
+
+However, `pushState()` and `replaceState()` do not trigger `popstate`.
+
+Here's a practical solution:
+
+```
+function onUrlChange() {
+  const url = new URL(window.location.href);
+
+  console.log("URL changed:", url.pathname);
+
+  // Update your application state
+  setState({
+    pathname: url.pathname,
+    search: url.search,
+    hash: url.hash
+  });
+
+  // Re-render your page content
+  renderPage(url.pathname);
+}
+
+// Browser back / forward
+window.addEventListener("popstate", onUrlChange);
+
+// Hash navigation
+window.addEventListener("hashchange", onUrlChange);
+```
+
+To handle programmatic navigation, wrap the History API:
+
+```
+const originalPushState = history.pushState;
+const originalReplaceState = history.replaceState;
+
+history.pushState = function (...args) {
+  originalPushState.apply(this, args);
+  window.dispatchEvent(new Event("urlchange"));
+};
+
+history.replaceState = function (...args) {
+  originalReplaceState.apply(this, args);
+  window.dispatchEvent(new Event("urlchange"));
+};
+
+window.addEventListener("urlchange", onUrlChange);
+window.addEventListener("popstate", onUrlChange);
+```
+
+Now all three navigation methods can trigger your state update.
+
+## 2. React: use a location state hook
+
+If you're using React without React Router:
+
+```
+import { useEffect, useState } from "react";
+
+function useLocation() {
+  const [location, setLocation] = useState(
+    () => window.location.pathname + window.location.search
+  );
+
+  useEffect(() => {
+    const updateLocation = () => {
+      setLocation(
+        window.location.pathname + window.location.search
+      );
+    };
+
+    window.addEventListener("popstate", updateLocation);
+    window.addEventListener("urlchange", updateLocation);
+
+    return () => {
+      window.removeEventListener("popstate", updateLocation);
+      window.removeEventListener("urlchange", updateLocation);
+    };
+  }, []);
+
+  return location;
+}
+```
+
+Usage:
+
+```
+function App() {
+  const location = useLocation();
+
+  return <Page key={location} />;
+}
+```
+
+The `key` forces React to remount the page component when the URL changes, which can help prevent stale component state.
+
+## 3. Recommended: React Router
+
+If you're building a React SPA, React Router already handles navigation state.
+
+```
+import { useLocation } from "react-router-dom";
+
+function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log("Navigation:", location.pathname);
+  }, [location.pathname, location.search]);
+
+  return <Page />;
+}
+```
+
+You can also use `location.key` to distinguish navigation entries.
+
+## 4. Important: prevent stale asynchronous content
+
+Sometimes the URL changes correctly, but an old API request finishes later and overwrites the new page's data.
+
+Use `AbortController`:
+
+```
+useEffect(() => {
+  const controller = new AbortController();
+
+  async function loadPage() {
+    try {
+      const response = await fetch(`/api${location}`, {
+        signal: controller.signal
+      });
+
+      const data = await response.json();
+      setData(data);
+    } catch (error) {
+      if (error.name !== "AbortError") {
+        console.error(error);
+      }
+    }
+  }
+
+  loadPage();
+
+  return () => controller.abort();
+}, [location]);
+```
+
+This prevents an old request from overwriting content belonging to a newer URL.
+
+## My recommendation
+
+| Situation                    | Recommended approach   |
+| ---------------------------- | ---------------------- |
+| Plain JavaScript             | History API + popstate |
+| React SPA                    | React Router           |
+| Custom SPA router            | Custom location hook   |
+| Stale API responses          | AbortController        |
+| Force page component refresh | React `key`            |
+
+One important distinction: URL observation and page rendering are separate concerns. Detecting a URL change updates your location state; your rendering logic must then use that state to load and display the correct content.
+
+Are you using React, Vue, Next.js, or vanilla JavaScript? I can show you the cleanest implementation for your setup.
+
+# how to modify a url param in js
+
+In JavaScript, the easiest way to modify URL parameters is using the built-in `URL` and `URLSearchParams` APIs.
+
+### 1. Modify an existing URL parameter
+
+```
+const url = new URL(window.location.href);
+
+// Update a parameter
+url.searchParams.set('page', '2');
+
+// Update another parameter
+url.searchParams.set('sort', 'asc');
+
+// Update browser URL without refreshing
+window.history.replaceState({}, '', url);
+```
+
+### 2. Add a new parameter
+
+```
+const url = new URL(window.location.href);
+
+url.searchParams.set('name', 'John');
+
+console.log(url.toString());
+```
+
+### 3. Remove a parameter
+
+```
+const url = new URL(window.location.href);
+
+url.searchParams.delete('page');
+```
+
+### 4. Get a parameter
+
+```
+const url = new URL(window.location.href);
+
+const page = url.searchParams.get('page');
+```
+
+### 5. Replace vs. append
+
+```
+url.searchParams.set('tag', 'javascript'); 
+// Replaces existing tag values
+
+url.searchParams.append('tag', 'typescript');
+// Adds another tag parameter
+```
+
+### 6. Modify URL without reloading the page
+
+Use:
+
+```
+window.history.replaceState({}, '', url);
+```
+
+Or, if you want to create a new browser history entry:
+
+```
+window.history.pushState({}, '', url);
+```
+
+Tip: Prefer `URL` and `URLSearchParams` over manually concatenating strings. They automatically handle URL encoding and existing query parameters.
+
+# should url hash push state or replace state
+
+Use `history.pushState()` by default when the URL change represents a meaningful navigation, and `history.replaceState()` when you're just updating the current state without wanting another browser history entry.
+
+### When to use each
+
+| Scenario                              | Method                 |
+| ------------------------------------- | ---------------------- |
+| User navigates to another tab/section | `pushState`            |
+| User changes a filter                 | Usually `pushState`    |
+| User changes pagination               | `pushState`            |
+| User opens a detail view              | `pushState`            |
+| Debounced search input updates URL    | `replaceState`         |
+| URL normalization or canonicalization | `replaceState`         |
+| Updating URL during initialization    | `replaceState`         |
+| Updating transient UI state           | Usually `replaceState` |
+
+### Example
+
+1\. pushState — user can go back
+
+```
+history.pushState({}, "", "#settings");
+```
+
+Navigation:
+
+- `#home` → `#settings`
+- Browser Back → `#home`
+- Browser Forward → `#settings`
+
+2\. replaceState — overwrite current entry
+
+```
+history.replaceState({}, "", "#settings");
+```
+
+Navigation:
+
+- `#home` → `#settings`
+- Browser Back skips the previous `#home` state.
+
+### My recommendation
+
+A useful rule of thumb:
+
+- Push when the user would reasonably expect the Back button to undo the change.
+- Replace when the change is an implementation detail or an intermediate update.
+
+One additional detail: if you're only changing the URL hash, `location.hash = "settings"` already creates a history entry (similar to push). `history.replaceState()` avoids creating one.
+
+Also, `pushState()` and `replaceState()` do not trigger the `hashchange` event, even when changing the hash.
+
+# should url hash push state or replace state when they jump through headings
+
+
 

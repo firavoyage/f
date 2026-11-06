@@ -79,10 +79,15 @@ export function s<T>(initial_value: T, options: s<T> = {}) {
 
     subscribe(() => {
       const url = new URL(window.location.href)
+      const prev_params = obj(url.searchParams)
 
-      url.searchParams.set(key, serialize())
+      const prev_serialized_state = prev_params[url_param]
+      const current_serialized_state = serialize()
 
-      window.history.pushState({}, '', url)
+      if (prev_serialized_state != current_serialized_state) {
+        url.searchParams.set(url_param, serialize())
+        window.history.pushState({}, '', url)
+      } 
     })
 
     // Browser back / forward

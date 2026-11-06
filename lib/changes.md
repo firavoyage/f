@@ -25,6 +25,7 @@ change
 
 - web/state: listen for navigation events and sync state
 - web/state: use url instead of url search params plus string op, fix quirks (e.g. hash disappearing)
+- web/state: prevent confusing push state when it doesnt change (e.g. url changes first, state syncs, and tries to sync back)
 - web/state: ignore unchanged set state for literals
 - web/std/is: support type `literal`
-
+- web/style: support selector w commas

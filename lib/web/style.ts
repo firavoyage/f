@@ -140,28 +140,13 @@ const glossary = {
     ],
   },
   overflow: {
-    prop: [
-      [
-        ['auto', 'hidden', 'clip', 'visible', 'scroll'],
-        'overflow',
-      ],
-    ],
+    prop: [[['auto', 'hidden', 'clip', 'visible', 'scroll'], 'overflow']],
   },
   'overflow-x': {
-    prop: [
-      [
-        ['auto', 'hidden', 'clip', 'visible', 'scroll'],
-        'overflow-x',
-      ],
-    ],
+    prop: [[['auto', 'hidden', 'clip', 'visible', 'scroll'], 'overflow-x']],
   },
   'overflow-y': {
-    prop: [
-      [
-        ['auto', 'hidden', 'clip', 'visible', 'scroll'],
-        'overflow-y',
-      ],
-    ],
+    prop: [[['auto', 'hidden', 'clip', 'visible', 'scroll'], 'overflow-y']],
   },
   overscroll: {
     prop: [
@@ -278,9 +263,7 @@ const glossary = {
     ],
   },
   'grid-cols': {
-    prop: [
-      ['number', 'grid-template-columns'],
-    ],
+    prop: [['number', 'grid-template-columns']],
   },
   'col-span': {
     prop: [
@@ -301,9 +284,7 @@ const glossary = {
     ],
   },
   'grid-rows': {
-    prop: [
-      ['number', 'grid-template-rows'],
-    ],
+    prop: [['number', 'grid-template-rows']],
   },
   'row-span': {
     prop: [
@@ -509,14 +490,10 @@ const glossary = {
     ],
   },
   'max-w': {
-    prop: [
-      ['length', 'max-width'],
-    ],
+    prop: [['length', 'max-width']],
   },
   'max-h': {
-    prop: [
-      ['length', 'max-height'],
-    ],
+    prop: [['length', 'max-height']],
   },
   font: {
     prop: [
@@ -1439,7 +1416,9 @@ export function style(theme) {
 
   traverse(theme)
 
-  design_tokens = obj(map(design_tokens, ([k, v]) => [k.replaceAll('-', '.'), v]))
+  design_tokens = obj(
+    map(design_tokens, ([k, v]) => [k.replaceAll('-', '.'), v]),
+  )
 
   let references = set()
 
@@ -1465,7 +1444,7 @@ export function style(theme) {
     function dereference(v) {
       if (!is(v, 'string')) {
         return v
-      } 
+      }
 
       let parts = v.split(' ')
 
@@ -1530,173 +1509,177 @@ export function style(theme) {
   }
 
   for (const [component, elements] of entries(components)) {
-    for (const [element, utility_classes] of entries(elements)) {
-      // todo
-      let selector = `.${component}_${element}`
-      if (is_component_container_itself()) {
-        selector += `, .${element}`
-      }
-      // if (component == element) {
-      //   selector += `, .${component}`
-      // }
+    for (const [selectors, utility_classes] of entries(elements)) {
+      for (let element of selectors.split(',')) {
+        element = element.trim()
 
-      function is_component_container_itself() {
-        return component == element || element.startsWith(component)
-      }
+        // todo
+        let selector = `.${component}_${element}`
+        if (is_component_container_itself()) {
+          selector += `, .${element}`
+        }
+        // if (component == element) {
+        //   selector += `, .${component}`
+        // }
 
-      // todo
-      let utilities = utility_classes.split(' ')
+        function is_component_container_itself() {
+          return component == element || element.startsWith(component)
+        }
 
-      for (const utility of utilities) {
-        let parts = utility.split('-')
+        // todo
+        let utilities = utility_classes.split(' ')
 
-        // try to match longest stem first
-        for (const last_index of each(parts.length - 1 + 1, 1, -1)) {
-          let stem = parts.slice(0, last_index).join('-')
-          let value = parts.slice(last_index).join('-')
+        for (const utility of utilities) {
+          let parts = utility.split('-')
 
-          if (has(glossary, stem)) {
-            if (value == '' && has(glossary[stem], 'style')) {
-              let pairs = glossary[stem].style
+          // try to match longest stem first
+          for (const last_index of each(parts.length - 1 + 1, 1, -1)) {
+            let stem = parts.slice(0, last_index).join('-')
+            let value = parts.slice(last_index).join('-')
 
-              if (is(pairs[0], 'string')) {
-                const pair = pairs
-                pairs = [pair]
+            if (has(glossary, stem)) {
+              if (value == '' && has(glossary[stem], 'style')) {
+                let pairs = glossary[stem].style
+
+                if (is(pairs[0], 'string')) {
+                  const pair = pairs
+                  pairs = [pair]
+                }
+
+                for (const [prop, value] of pairs) {
+                  append_style(selector, prop, value)
+                }
+
+                break
               }
 
-              for (const [prop, value] of pairs) {
-                append_style(selector, prop, value)
+              let possible_matches = glossary[stem].prop
+
+              for (const [type, prop] of possible_matches) {
+                if (is(type, 'array')) {
+                  let can_match = false
+
+                  // keywords
+                  for (const keyword of type) {
+                    if (value == keyword) {
+                      can_match = true
+
+                      append_style(selector, prop, value)
+                    }
+                  }
+
+                  if (can_match) {
+                    break
+                  }
+                }
+
+                const colors = ['color', 'palette']
+                const fonts = ['font', 'typeface']
+
+                // todo: image, shadow, easing
+                if (type == 'length' && is_length(value)) {
+                  value = length(value)
+                  append_style(selector, prop, value)
+                } else if (type == 'radius' && has(radii, value)) {
+                  append_style(selector, prop, radii[value])
+                } else if (type == 'radius' && is_number(value)) {
+                  append_style(selector, prop, `${value}px`)
+                } else if (type == 'color' && does_exist(value, colors)) {
+                  append_style(selector, prop, resolve(value, colors))
+                } else if (type == 'number' && is_number(value)) {
+                  append_style(selector, prop, value)
+                } else if (type == 'ratio' && has(value, '/')) {
+                  append_style(selector, prop, value)
+                } else if (type == 'percentage' && has(value, '%')) {
+                  append_style(selector, prop, value)
+                } else if (type == 'angle' && has(value, 'deg')) {
+                  append_style(selector, prop, value)
+                } else if (type == 'position' && has(positions, value)) {
+                  append_style(selector, prop, positions[value])
+                } else if (type == 'font-weight' && has(font_weights, value)) {
+                  append_style(selector, prop, font_weights[value])
+                } else if (type == 'font-weight' && is_number(value)) {
+                  append_style(selector, prop, value)
+                } else if (type == 'font-family' && does_exist(value, fonts)) {
+                  append_style(selector, prop, resolve(value, fonts))
+                } else if (type == 'time') {
+                  append_style(selector, prop, value)
+                } else {
+                  continue
+                }
+
+                // is plain number wo suffix
+                function is_number(value) {
+                  return !is(Number(value), 'nil')
+                }
+
+                function design_token(value: string) {
+                  return value.replaceAll('-', '.')
+                }
+
+                // does exist such design token
+                function does_exist(value, prefixes) {
+                  value = design_token(value)
+
+                  for (const prefix of prefixes) {
+                    if (has(design_tokens, `${prefix}.${value}`)) {
+                      return true
+                    }
+                  }
+
+                  return false
+                }
+
+                // resolve to css variable
+                function resolve(value, prefixes) {
+                  value = design_token(value)
+
+                  for (const prefix of prefixes) {
+                    if (has(design_tokens, `${prefix}.${value}`)) {
+                      return css_variable(`${prefix}.${value}`)
+                    }
+                  }
+                }
+
+                function is_length(value: string) {
+                  const length_units = [
+                    'rem',
+                    'px',
+                    'ch',
+                    '%',
+                    'vh',
+                    'vw',
+                    'dvh',
+                    'dvw',
+                    'svh',
+                    'svw',
+                    'lvh',
+                    'lvw',
+                    'vmin',
+                    'vmax',
+                  ]
+
+                  // number('4px') -> nil, int/parseint('4px') -> 4
+                  return (
+                    is_number(value) ||
+                    length_units.some((unit) => value.endsWith(unit)) ||
+                    has(lengths, value)
+                  )
+                }
+
+                function length(value) {
+                  if (is_number(value)) {
+                    return `${float(value) / 4}rem`
+                  }
+
+                  return lengths[value] ?? value
+                }
+
+                break
               }
 
               break
             }
-
-            let possible_matches = glossary[stem].prop
-
-            for (const [type, prop] of possible_matches) {
-              if (is(type, 'array')) {
-                let can_match = false
-
-                // keywords
-                for (const keyword of type) {
-                  if (value == keyword) {
-                    can_match = true
-
-                    append_style(selector, prop, value)
-                  }
-                }
-
-                if (can_match) {
-                  break
-                }
-              }
-
-              const colors = ['color', 'palette']
-              const fonts = ['font', 'typeface']
-
-              // todo: image, shadow, easing
-              if (type == 'length' && is_length(value)) {
-                value = length(value)
-                append_style(selector, prop, value)
-              } else if (type == 'radius' && has(radii, value)) {
-                append_style(selector, prop, radii[value])
-              } else if (type == 'radius' && is_number(value)) {
-                append_style(selector, prop, `${value}px`)
-              } else if (type == 'color' && does_exist(value, colors)) {
-                append_style(selector, prop, resolve(value, colors))
-              } else if (type == 'number' && is_number(value)) {
-                append_style(selector, prop, value)
-              } else if (type == 'ratio' && has(value, '/')) {
-                append_style(selector, prop, value)
-              } else if (type == 'percentage' && has(value, '%')) {
-                append_style(selector, prop, value)
-              } else if (type == 'angle' && has(value, 'deg')) {
-                append_style(selector, prop, value)
-              } else if (type == 'position' && has(positions, value)) {
-                append_style(selector, prop, positions[value])
-              } else if (type == 'font-weight' && has(font_weights, value)) {
-                append_style(selector, prop, font_weights[value])
-              } else if (type == 'font-weight' && is_number(value)) {
-                append_style(selector, prop, value)
-              } else if (type == 'font-family' && does_exist(value, fonts)) {
-                append_style(selector, prop, resolve(value, fonts))
-              } else if (type == 'time') {
-                append_style(selector, prop, value)
-              } else {
-                continue
-              }
-
-              // is plain number wo suffix
-              function is_number(value) {
-                return !is(Number(value), 'nil')
-              }
-
-              function design_token(value: string) {
-                return value.replaceAll('-', '.')
-              }
-
-              // does exist such design token
-              function does_exist(value, prefixes) {
-                value = design_token(value)
-
-                for (const prefix of prefixes) {
-                  if (has(design_tokens, `${prefix}.${value}`)) {
-                    return true
-                  }
-                }
-
-                return false
-              }
-
-              // resolve to css variable
-              function resolve(value, prefixes) {
-                value = design_token(value)
-
-                for (const prefix of prefixes) {
-                  if (has(design_tokens, `${prefix}.${value}`)) {
-                    return css_variable(`${prefix}.${value}`)
-                  }
-                }
-              }
-
-              function is_length(value: string) {
-                const length_units = [
-                  'rem',
-                  'px',
-                  'ch',
-                  '%',
-                  'vh',
-                  'vw',
-                  'dvh',
-                  'dvw',
-                  'svh',
-                  'svw',
-                  'lvh',
-                  'lvw',
-                  'vmin',
-                  'vmax',
-                ]
-
-                // number('4px') -> nil, int/parseint('4px') -> 4
-                return (
-                  is_number(value) ||
-                  length_units.some((unit) => value.endsWith(unit)) ||
-                  has(lengths, value)
-                )
-              }
-
-              function length(value) {
-                if (is_number(value)) {
-                  return `${float(value) / 4}rem`
-                }
-
-                return lengths[value] ?? value
-              }
-
-              break
-            }
-
-            break
           }
         }
       }
@@ -1773,7 +1756,7 @@ export function use_style(theme) {
       element = document.createElement('style')
       element.id = 'style'
       document.head.appendChild(element)
-    } 
+    }
 
     element.textContent = style(theme)
   }, [theme])
