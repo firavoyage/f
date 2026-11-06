@@ -18,6 +18,14 @@
 - fix navigation
   - listen for url change on state lib?
 
+---
+
+ref:
+
+https://primer.style/product/getting-started/foundations/
+
+https://m3.material.io/styles/color/roles
+
 # todo
 
 ## m
@@ -66,6 +74,8 @@
 - toc: use replace state instead of push state
   - hide url hash hint
   - idk if it matters
+- lib/state: reset to nil (or initial state) if the url param disappears
+  - idk if it would work as expected
 
 ## w
 

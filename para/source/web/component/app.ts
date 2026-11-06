@@ -17,7 +17,14 @@ import { toc } from './toc'
 const App = app
 export { App }
 
-init_request('http://localhost:9010')
+const jk_scroll_distance = 60
+const du_scroll_percentage = 0.5
+const space_scroll_percentage = 0.9
+const scroll_behavior: 'smooth' | 'instant' = 'instant'
+
+const port = 9010
+
+init_request(`http://localhost:${port}`)
 
 const use_page = s('', {
   url_param: 'page',
@@ -79,14 +86,57 @@ function app() {
     set_headings(extract_headings(content.current))
   }, [page_response])
 
+  const distances = {
+    
+  }
+
+  use_keyboard('j', () => {
+    scroll_by(jk_scroll_distance)
+  })
+
+  use_keyboard('k', () => {
+    scroll_by(-jk_scroll_distance)
+  })
+
+  use_keyboard('d', () => {
+    scroll_by(window.innerHeight * du_scroll_percentage)
+  })
+
+  use_keyboard('u', () => {
+    scroll_by(-window.innerHeight * du_scroll_percentage)
+  })
+  
+  use_keyboard('space', () => {
+    scroll_by(window.innerHeight * space_scroll_percentage)
+  })
+  
+  use_keyboard('shift+space', () => {
+    scroll_by(-window.innerHeight * space_scroll_percentage)
+  })
+
+  // reset scrolltop on page change
+  // todo: remember scroll top/anchor
+  useEffect(() => {
+    content.current.scrollTop = 0
+  }, [page_response])
+
+  function scroll_by(distance) {
+    if (!content.current) {
+      return
+    }
+
+    content.current.scrollBy({
+      top: content.current.scrollTop + distance,
+      behavior: scroll_behavior
+    })
+  }
+
   return h(
     'app',
     h(
       scroll,
-      h(
-        'page',
-        h('page_content', { ref: content }, h('markdown-body', h({ html }))),
-      ),
+      { ref: content },
+      h('page', h('page_content', h('markdown-body', h({ html })))),
     ),
     h(search, {
       query,

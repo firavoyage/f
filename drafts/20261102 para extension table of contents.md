@@ -745,5 +745,121 @@ Also, `pushState()` and `replaceState()` do not trigger the `hashchange` event, 
 
 # should url hash push state or replace state when they jump through headings
 
+Generally, use `history.replaceState()` when users scroll through headings, and `history.pushState()` when users explicitly navigate to a heading.
 
+The distinction is whether heading navigation should create a browser-history entry.
+
+### Recommended behavior
+
+| Interaction                             | API            | Reason                                     |
+| --------------------------------------- | -------------- | ------------------------------------------ |
+| User scrolls past headings (scroll spy) | `replaceState` | Avoids polluting browser history           |
+| User clicks a table-of-contents link    | `pushState`    | Back button can return to previous heading |
+| User clicks an in-page anchor           | `pushState`    | Represents intentional navigation          |
+| Programmatic initial hash restoration   | Neither        | Preserve existing history                  |
+
+### Example
+
+```
+function navigateToHeading(id) {
+  const url = new URL(window.location);
+  url.hash = id;
+
+  history.pushState(null, "", url);
+  document.getElementById(id)?.scrollIntoView({
+    behavior: "smooth",
+  });
+}
+
+function updateHashOnScroll(id) {
+  const url = new URL(window.location);
+  url.hash = id;
+
+  history.replaceState(null, "", url);
+}
+```
+
+### One important UX consideration
+
+If you're building a documentation site or long-form article:
+
+- Clicking a heading or TOC item → `pushState`.
+- Automatically updating the URL as the reader scrolls → `replaceState`.
+- Pressing Back → restore the previous intentional navigation position.
+
+My recommendation: Treat explicit navigation and passive scrolling as two different events. This gives users shareable heading URLs without making the browser Back button frustrating.
+
+# what if you replace state instead of push state when they click a toc heading link
+
+If you use `history.replaceState()` instead of `history.pushState()` when someone clicks a Table of Contents (TOC) heading link, the main difference is whether the browser creates a new history entry.
+
+### `pushState()` vs `replaceState()`
+
+Suppose the user navigates through your page like this:
+
+1. Opens `/article`
+2. Clicks TOC heading `#introduction`
+3. Clicks TOC heading `#installation`
+4. Clicks TOC heading `#examples`
+
+With `pushState()`:
+
+Each heading navigation creates a new browser history entry.
+
+```
+history.pushState(null, "", "#introduction");
+history.pushState(null, "", "#installation");
+history.pushState(null, "", "#examples");
+```
+
+Pressing Back navigates through the headings:
+
+`#examples` → `#installation` → `#introduction` → previous page.
+
+With `replaceState()`:
+
+Each heading navigation replaces the current history entry.
+
+```
+history.replaceState(null, "", "#introduction");
+history.replaceState(null, "", "#installation");
+history.replaceState(null, "", "#examples");
+```
+
+Pressing Back skips all those intermediate headings and returns to the page visited before the article.
+
+### Which should you use?
+
+| Behavior                                                            | Recommendation   |
+| ------------------------------------------------------------------- | ---------------- |
+| TOC navigation shouldn't clutter browser history                    | `replaceState()` |
+| Users should be able to go back through previously visited headings | `pushState()`    |
+| Reading experience should treat scrolling as one continuous page    | `replaceState()` |
+| Each heading is meaningful navigation                               | `pushState()`    |
+
+### My recommendation
+
+For a typical documentation site or long-form article, I'd lean toward `replaceState()` if TOC clicks are primarily for scrolling around the same document.
+
+One important detail: `replaceState()` only updates the URL and history entry. It does not automatically scroll to the heading or trigger a `hashchange` event.
+
+You'll need to handle scrolling yourself:
+
+```
+function navigateToHeading(id) {
+  const element = document.getElementById(id);
+
+  if (!element) return;
+
+  history.replaceState(null, "", `#${id}`);
+
+  element.scrollIntoView({
+    behavior: "smooth"
+  });
+}
+```
+
+This gives you clean browser history while keeping the URL synchronized with the current section.
+
+# 
 

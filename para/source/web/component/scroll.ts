@@ -9,6 +9,7 @@ type scroll = {
   children
   scrollbar?: boolean
   should_preserve_position_on_resize?: boolean
+  ref
 }
 
 export function scroll(props: scroll) {
@@ -16,6 +17,7 @@ export function scroll(props: scroll) {
     children,
     scrollbar = true,
     should_preserve_position_on_resize = true,
+    ref = {}
   } = props
   const [is_vertically_scrollable, toggle_is_vertically_scrollable] =
     useToggle(false)
@@ -193,6 +195,10 @@ export function scroll(props: scroll) {
 
   use_event('mouseenter', check_hover, content)
   use_event('mousemove', check_hover)
+
+  useEffect(() => {
+    ref.current = content.current
+  })
 
   // consider hover regardless on content or on track/thumb
   function check_hover(e) {
