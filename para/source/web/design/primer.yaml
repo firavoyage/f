@@ -4,13 +4,19 @@ theme:
 palette:
 color:
   accent: oklch(55% 0.15 146.26)
-  primary:
+  surface:
     dark: black
-  on-primary:
+  on-surface:
     dark: white
-  secondary:
+  dropdown:
+    dark: oklch(10% 0.02 248.35)
+  button:
     dark: oklch(27% 0.02 251.92)
+  border:
+    dark: oklch(38% 0.02 254.74)
   hover:
+    dark: oklch(21% 0.01 258.37)
+  select:
     dark: oklch(29% 0.02 260.62)
   focus:
     dark: oklch(57% 0.20 259.67)
@@ -27,11 +33,12 @@ page:
   # content: w-80ch
 search:
   search: fixed top-0 w-full flex justify-center items-center font-sans
-  input: p-2
-  content: w-xl max-h-20rem overflow-hidden bg-primary rounded-md
+  content: w-xl max-h-20rem overflow-hidden bg-dropdown rounded-md
+  query: p-2
   results: px-2
   result: w-full px-2 py-0.5 rounded-md
-  result[focus]: bg-hover
+  'result:hover': bg-hover
+  result[focus]: bg-select
 input:
   input: w-full px-2 py-1 rounded-md
   'input:focus-visble': outline-focus outline-sm offset-2 rounded-md
@@ -39,10 +46,10 @@ scroll:
   scroll: flex flex-1 relative overflow-hidden
   content: flex-1 overflow-auto
   vertical_scrollbar: absolute right-0 top-0 bottom-0
-  vertical_track: w-2 h-full opacity-0 transition-opacity duration-0.3s
+  vertical_track: w-3 h-full opacity-0 transition-opacity duration-0.3s
   vertical_track[show]: opacity-1
-  vertical_thumb: w-full bg-on-primary
+  vertical_thumb: w-full bg-border
   horizontal_scrollbar: absolute bottom-0 left-0 right-0
-  horizontal_track: h-2 w-full opacity-0 transition-opacity duration-0.3s
+  horizontal_track: h-3 w-full opacity-0 transition-opacity duration-0.3s
   horizontal_track[show]: opacity-1
-  horizontal_thumb: h-full bg-on-primary
+  horizontal_thumb: h-full bg-border

@@ -91,7 +91,7 @@ export function search(props: search) {
       h(
         'search_content',
         h(
-          'search_input',
+          'search_query',
           h(input, {
             value: query,
             set_value: set_query,

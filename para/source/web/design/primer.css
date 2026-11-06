@@ -1,5 +1,9 @@
+.button, .input {
+  box-shadow: 0 0 0 1px oklch(38% 0.02 254.74);
+}
+
 *:focus-visible {
-  box-shadow: 0 0 0 2px oklch(57% 0.20 259.67);
+  box-shadow: 0 0 0 2px oklch(57% 0.2 259.67);
 }
 
 .scroll {
@@ -17,4 +21,3 @@
     }
   }
 }
-
