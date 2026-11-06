@@ -58,6 +58,9 @@
     - e.g. omit crossing/rounded (like vscode command palette)
   - have smooth ideal transition easing for scrollbar
     - when you scroll on vscode ctrl p, it fades in quickly, and fades out slowly
+  - ~~fix fouc like jump~~
+    - use sth like use layout effect (that is, sync operation)
+    - easy. just unwrap "req anim frame". no idea what it does. or if it makes any sense. likely llm pattern.
 
 ## w
 

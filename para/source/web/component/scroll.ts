@@ -1,4 +1,4 @@
-import { useMeasure, useScroll } from 'react-use'
+import { useMeasure, useScroll, useUpdate } from 'react-use'
 
 const { max } = Math
 
@@ -22,6 +22,9 @@ export function scroll(props: scroll) {
   const [is_horizontally_scrollable, toggle_is_horizontally_scrollable] =
     useToggle(false)
 
+  // recalc thumb position/length
+  const handle_resize = useUpdate()
+
   const [hover, set_hover] = useState(false)
   const [did_scroll, set_did_scroll] = useState(false)
 
@@ -42,48 +45,6 @@ export function scroll(props: scroll) {
 
   const position = useScroll(content)
 
-  function bound_size_to_parent() {
-    if (!container.current || !content.current) {
-      return
-    }
-
-    let container_node = container.current
-    let content_node = content.current
-
-    const container_parent = container_node.parentElement
-
-    if (!container_parent) return
-
-    const anchor = document.elementFromPoint(window.innerWidth / 2, 100)
-
-    const before = anchor.getBoundingClientRect().top
-
-    container_node.style.maxHeight = nil
-    if (container_parent.scrollHeight > container_parent.clientHeight) {
-      let delta = container_parent.scrollHeight - container_parent.clientHeight
-
-      let height = container_node.clientHeight - delta
-
-      container_node.style.maxHeight = `${height}px`
-    }
-
-    container_node.style.maxWidth = nil
-    if (container_parent.scrollWidth > container_parent.clientWidth) {
-      let delta = container_parent.scrollWidth - container_parent.clientWidth
-
-      let width = container_node.clientWidth - delta
-
-      container_node.style.maxWidth = `${width}px`
-    }
-
-    if (should_preserve_position_on_resize) {
-      requestAnimationFrame(() => {
-        const after = anchor.getBoundingClientRect().top
-        content_node.scrollBy(0, after - before)
-      })
-    }
-  }
-
   // bound container w h to parent, mimicing flex grow 1
   useLayoutEffect(() => {
     bound_size_to_parent()
@@ -98,6 +59,7 @@ export function scroll(props: scroll) {
 
     const observer = new ResizeObserver(() => {
       bound_size_to_parent()
+      handle_resize()
     })
 
     observer.observe(parent)
@@ -226,6 +188,9 @@ export function scroll(props: scroll) {
     when: is_dragging,
   })
 
+  use_event('mouseenter', check_hover, content)
+  use_event('mousemove', check_hover)
+
   // consider hover regardless on content or on track/thumb
   function check_hover(e) {
     if (!content.current) {
@@ -245,8 +210,49 @@ export function scroll(props: scroll) {
     set_hover(does_hover)
   }
 
-  use_event('mouseenter', check_hover, content)
-  use_event('mousemove', check_hover)
+  function bound_size_to_parent() {
+    if (!container.current || !content.current) {
+      return
+    }
+
+    let container_node = container.current
+    let content_node = content.current
+
+    const container_parent = container_node.parentElement
+
+    if (!container_parent) return
+
+    const anchor = document.elementFromPoint(window.innerWidth / 2, 100)
+
+    const before = anchor.getBoundingClientRect().top
+
+    container_node.style.maxHeight = nil
+    if (container_parent.scrollHeight > container_parent.clientHeight) {
+      let delta = container_parent.scrollHeight - container_parent.clientHeight
+
+      let height = container_node.clientHeight - delta
+
+      container_node.style.maxHeight = `${height}px`
+    }
+
+    container_node.style.maxWidth = nil
+    if (container_parent.scrollWidth > container_parent.clientWidth) {
+      let delta = container_parent.scrollWidth - container_parent.clientWidth
+
+      let width = container_node.clientWidth - delta
+
+      container_node.style.maxWidth = `${width}px`
+    }
+
+    if (should_preserve_position_on_resize) {
+      const after = anchor.getBoundingClientRect().top
+      content_node.scrollBy(0, after - before)
+      // requestAnimationFrame(() => {
+      //   const after = anchor.getBoundingClientRect().top
+      //   content_node.scrollBy(0, after - before)
+      // })
+    }
+  }
 
   const show = hover || did_scroll
 

@@ -13,6 +13,9 @@ import { input } from './input'
 import { search } from './search'
 import { scroll } from './scroll'
 
+const App = app
+export { App }
+
 init_request('http://localhost:9010')
 
 const use_page = s('', {
@@ -54,39 +57,31 @@ function app() {
 
   use_style(theme)
 
-  const [is_search_open, set_is_search_open] = useState(false)
+  const content = useRef()
 
   const [page, set_page] = use_page()
 
   const [query, set_query] = useState('')
-  // const [query, set_query] = useState({
-  //   query: 'hello',
-  // })
-
-  // const { loading: is_loading, value: response } = useAsync(() =>
-  //   post('read', { page }),
-  // )
   const page_response = use_query('read', page)
-
   const search_response = use_query('search', query)
-  // const search_response = use_query('search', query)
 
-  const search_results = search_response?.items || []
+  const html = page_response?.html ?? ''
 
-  use_keyboard('ctrl+p', () => set_is_search_open(true))
-  use_keyboard('esc', () => set_is_search_open(false))
+  const search_results = search_response?.items ?? []
 
-  if (!page_response) {
-    return
-  }
+  useEffect(() => {
+    if (!content.current) {
+      return 
+    } 
 
-  const { html } = page_response
+    
+  })
 
   return h(
     'app',
     h(
       scroll,
-      h('page', h('page_content', h('markdown-body', h({ html })))),
+      h('page', h('page_content', {ref: content}, h('markdown-body', h({ html })))),
     ),
     h(search, {
       query,
@@ -97,5 +92,31 @@ function app() {
   )
 }
 
-const App = app
-export { App }
+function extract_headings(node) {
+  const headings = [];
+
+  const heading_nodes = node.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+  heading_nodes.forEach((heading) => {
+    const type = heading.tagName.toLowerCase();
+
+    // Generate an id if one doesn't exist
+    if (!heading.id) {
+      const slug = heading.textContent
+        .trim()
+        .toLowerCase()
+        .replace(/[^\w\s-]/g, '')
+        .replace(/\s+/g, '-');
+
+      heading.id = slug;
+    }
+
+    headings.push({
+      type,
+      id: heading.id,
+      content: heading.textContent.trim(),
+    });
+  });
+
+  return headings;
+}
