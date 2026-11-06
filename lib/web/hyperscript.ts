@@ -1,5 +1,16 @@
 import { p } from 'lib/web/props'
 
+export function h<
+  F extends (params: any) => any
+>(
+  fn: F,
+  params: Partial<Parameters<F>[0]>,
+  // params: Parameters<F>[0],
+  ...children: any[]
+)
+
+export function h(tag: string, ...children: any[])
+
 export function h(...args) {
   let tag,
     props,

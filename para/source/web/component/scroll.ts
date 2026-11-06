@@ -7,15 +7,16 @@ const scroll_hint_duration = 500
 
 type scroll = {
   children
-  // scroll_top?: number
-  // set_scroll_top?: fn
-  toggle_is_on_top?: fn
-  // set_is_top?: fn
   scrollbar?: boolean
+  should_preserve_position_on_resize?: boolean
 }
 
 export function scroll(props: scroll) {
-  const { children, toggle_is_on_top, scrollbar = true } = props
+  const {
+    children,
+    scrollbar = true,
+    should_preserve_position_on_resize = true,
+  } = props
   const [is_vertically_scrollable, toggle_is_vertically_scrollable] =
     useToggle(false)
   const [is_horizontally_scrollable, toggle_is_horizontally_scrollable] =
@@ -42,32 +43,44 @@ export function scroll(props: scroll) {
   const position = useScroll(content)
 
   function bound_size_to_parent() {
-    if (!container.current) {
+    if (!container.current || !content.current) {
       return
     }
 
-    let child = container.current
+    let container_node = container.current
+    let content_node = content.current
 
-    const parent = child.parentElement
+    const container_parent = container_node.parentElement
 
-    if (!parent) return
+    if (!container_parent) return
 
-    child.style.maxHeight = nil
-    if (parent.scrollHeight > parent.clientHeight) {
-      let delta = parent.scrollHeight - parent.clientHeight
+    const anchor = document.elementFromPoint(window.innerWidth / 2, 100)
 
-      let height = child.clientHeight - delta
+    const before = anchor.getBoundingClientRect().top
 
-      child.style.maxHeight = `${height}px`
+    container_node.style.maxHeight = nil
+    if (container_parent.scrollHeight > container_parent.clientHeight) {
+      let delta = container_parent.scrollHeight - container_parent.clientHeight
+
+      let height = container_node.clientHeight - delta
+
+      container_node.style.maxHeight = `${height}px`
     }
 
-    child.style.maxWidth = nil
-    if (parent.scrollWidth > parent.clientWidth) {
-      let delta = parent.scrollWidth - parent.clientWidth
+    container_node.style.maxWidth = nil
+    if (container_parent.scrollWidth > container_parent.clientWidth) {
+      let delta = container_parent.scrollWidth - container_parent.clientWidth
 
-      let width = child.clientWidth - delta
+      let width = container_node.clientWidth - delta
 
-      child.style.maxWidth = `${width}px`
+      container_node.style.maxWidth = `${width}px`
+    }
+
+    if (should_preserve_position_on_resize) {
+      requestAnimationFrame(() => {
+        const after = anchor.getBoundingClientRect().top
+        content_node.scrollBy(0, after - before)
+      })
     }
   }
 
@@ -102,10 +115,6 @@ export function scroll(props: scroll) {
       clearTimeout(timer)
     }
   }, [JSON.stringify(position)])
-
-  useLayoutEffect(() => {
-    toggle_is_on_top?.(position.y == 0)
-  })
 
   useLayoutEffect(() => {
     if (!content.current) {

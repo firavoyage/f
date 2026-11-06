@@ -101,6 +101,7 @@ export function search(props: search) {
         ),
         h(
           scroll,
+          { should_preserve_position_on_resize: false },
           h(
             'search_results',
             { ref: items },
