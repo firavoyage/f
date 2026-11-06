@@ -1,7 +1,7 @@
 # plan
 
 - ~~flex-col flex-row~~
-- outline/box shadow in css
+- ~~outline/box shadow in css~~
 - scroll
   - ~~programmatic wo flex requirement if feasible~~
   - ~~decouple styling~~
