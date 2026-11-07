@@ -54,5 +54,16 @@ well, fine to have a non streaming version first.
 
 anyway.
 
+---
+
+clearly i can have mvp scope first.
+
+ideally i could extend by appending (injecting actually) wo modifying/removing later, e.g.
+
+- search threads smartly
+  - as smart as possible
+- keyboard shortcuts
+- config
+- ...
 
 

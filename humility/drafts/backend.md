@@ -1,0 +1,21 @@
+backend
+
+- new thread ~~first msg~~ -> thread (thread id)
+  - ~~it makes no sense to create a few empty threads~~
+  - ~~i may support empty first msg~~
+  - better to separate concerns clearly on backend
+  - whether it makes sense, that's ux stuff
+  - generate uuid
+    - best prac, at least commonly used
+    - i could argue for self explanatory url
+      - i may have best of both worlds, i.e. reddit (could have)
+- send message thread -> content (json, or event stream maybe)
+  - read history of that thread
+  - query llm
+  - respond
+    - whether or not they can hear
+  - append once to that thread
+    - more precisely, 
+- read thread -> history
+  - array of content and metadata (just be flat, no need to group inside an object literally called metadata)
+- list range? -> array of thread

@@ -8,7 +8,10 @@ archi
       - or better, id -> metadata
         - you can iterate the same, w faster query seems
     - (thread)
-      - msg id -> content, metadata, ...
+      - ~~msg id -> content, metadata, ...~~
+      - array of content and metadata (you may have id)
+        - you would never query a msg given a thread it seems, at least currently
+        - they are interchangeable in information, you can change your mind later
       - branches may share some same msg id (a msg id is of the full history of input and the random seed at the generation time)
       - ~~you may have msg id -> edits later~~ have msg position id instead (though it's highly irrelevant really feels)
   - avoid over engineering, better to store all messages in a thread (rather than external id of nodes on a tree)
