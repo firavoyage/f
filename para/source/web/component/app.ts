@@ -22,9 +22,9 @@ const du_scroll_percentage = 0.5
 const space_scroll_percentage = 0.9
 const scroll_behavior: 'smooth' | 'instant' = 'instant'
 
-const port = 9010
+// const port = 9010
 
-init_request(`http://localhost:${port}`)
+// init_request(`http://localhost:${port}`)
 
 const use_page = s('', {
   url_param: 'page',

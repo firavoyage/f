@@ -11,6 +11,11 @@ export default defineConfig({
   server: {
     port: 0,
     open: true,
+    proxy: {
+      '/api':{
+        target: 'http://localhost:9050'
+      }
+    }
   },
   build: {
     outDir: 'build',

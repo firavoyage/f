@@ -200,7 +200,10 @@ it might not be really relevant here.
 
 better to start w github primer since i already use gfm default theme in para.
 
----
+07
 
+wish i had read [this](https://primer.style/product/getting-started/foundations/color-usage/) first...
+
+i dont really need to color picking.
 
 

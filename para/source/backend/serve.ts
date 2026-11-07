@@ -27,7 +27,7 @@ const config_file = config('config.yaml')
 
 touch(config_file)
 
-const port = 9010
+const port = 9050
 // const port = 0;
 
 const app = new Hono()

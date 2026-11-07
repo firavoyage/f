@@ -1,5 +1,11 @@
 # plan
 
+setup vite dev port fwd.
+
+release mvp.
+
+---
+
 - ~~flex-col flex-row~~
 - ~~outline/box shadow in css~~
 - scroll
@@ -25,6 +31,8 @@ ref:
 https://primer.style/product/getting-started/foundations/
 
 https://m3.material.io/styles/color/roles
+
+https://primer.style/product/getting-started/foundations/color-usage/
 
 # todo
 

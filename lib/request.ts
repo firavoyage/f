@@ -1,5 +1,9 @@
 let base = location.href
 
+if (base.endsWith('/')) {
+  base = base.slice(0, -1)
+} 
+
 export function init_request(base_url) {
   base = base_url
 }
