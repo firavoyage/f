@@ -3,7 +3,7 @@ import 'github-markdown-css/github-markdown.css'
 import theme from 'web/design/primer.yaml'
 import 'web/design/primer.css'
 
-import { init_request, post } from 'lib/request'
+import { post } from 'lib/request'
 import { s } from 'lib/web/state'
 import { use_sync_theme } from 'lib/web/use sync theme'
 import { use_window_active } from 'lib/web/use window active'
@@ -21,10 +21,6 @@ const jk_scroll_distance = 60
 const du_scroll_percentage = 0.5
 const space_scroll_percentage = 0.9
 const scroll_behavior: 'smooth' | 'instant' = 'instant'
-
-// const port = 9010
-
-// init_request(`http://localhost:${port}`)
 
 const use_page = s('', {
   url_param: 'page',

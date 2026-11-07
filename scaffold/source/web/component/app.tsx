@@ -1,3 +1,3 @@
-export function App() {
+export function app() {
   return ''
 }

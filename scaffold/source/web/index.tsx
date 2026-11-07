@@ -5,6 +5,8 @@ import 'lib/web/global'
 
 import { createRoot } from 'react-dom/client'
 
-import { App } from './component/app'
+import { app } from './component/app'
+
+const App = app
 
 createRoot(document.getElementById('root')).render(<App />)
