@@ -1,5 +1,14 @@
 archi
 
+- store chats
+  - you may list all threads, read and update a thread, or change metadata (e.g. title, folder, has deleted)
+  - you may store as text (yaml) first and migrate to sqlite (or jsonl) for scalability later
+    - threads
+      - array of id and metadata
+      - or better, id -> metadata
+        - you can iterate the same, w faster query seems
+    - (thread)
+  - avoid over engineering, better to store all messages in a thread (rather than external id of nodes on a tree)
 - query llm
   - build manually, would be easy
   - think in inputs and outputs
