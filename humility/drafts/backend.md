@@ -12,10 +12,20 @@ backend
 - send message thread -> content (json, or event stream maybe)
   - read history of that thread
   - query llm
-  - respond
+  - respond or stream
     - whether or not they can hear
-  - append once to that thread
-    - more precisely, 
+  - append the final result once to that thread
+    - more precisely, append to the in memory array, and overwrite after yaml serialization
+    - it's not expected to timeout within one single request, no need to save partial content
+      - logging is another thing
 - read thread -> history
   - array of content and metadata (just be flat, no need to group inside an object literally called metadata)
 - list range? -> array of thread
+- search query -> array of thread results
+  - you may cache thread titles
+    - it might not be feasible to have all thread history in memory even on small scale
+    - actually, that's how you do on command palette
+      - on search component, results can be an array of all possible results (search would default to sth like fzf), or query -> results
+- . edit
+- . branch
+- . delete
