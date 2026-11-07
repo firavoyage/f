@@ -9,6 +9,8 @@ archi
         - you can iterate the same, w faster query seems
     - (thread)
   - avoid over engineering, better to store all messages in a thread (rather than external id of nodes on a tree)
+  - what about editing?
+    - i can absolutely implement the same as branching
 - query llm
   - build manually, would be easy
   - think in inputs and outputs
