@@ -277,6 +277,7 @@ lib:
 - web state s overhaul simplification
 - web style vite yaml util classes
 - scaffold vite dev proxy serve script
+- request fix default location
 
 web: <!-- frontend, web, ts/js -->
 

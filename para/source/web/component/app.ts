@@ -1,5 +1,4 @@
 import 'github-markdown-css/github-markdown.css'
-// import './app.css'
 import theme from 'web/design/primer.yaml'
 import 'web/design/primer.css'
 
@@ -9,7 +8,6 @@ import { use_sync_theme } from 'lib/web/use sync theme'
 import { use_window_active } from 'lib/web/use window active'
 import { use_style } from 'lib/web/style'
 
-import { input } from './input'
 import { search } from './search'
 import { scroll } from './scroll'
 import { toc } from './toc'
@@ -21,6 +19,15 @@ const jk_scroll_distance = 60
 const du_scroll_percentage = 0.5
 const space_scroll_percentage = 0.9
 const scroll_behavior: 'smooth' | 'instant' = 'instant'
+const distances = {
+  j: jk_scroll_distance,
+  k: -jk_scroll_distance,
+  d: du_scroll_percentage,
+  u: -du_scroll_percentage,
+  space: space_scroll_percentage,
+  'shift+space': -space_scroll_percentage,
+}
+const field_tags = ['input', 'textarea']
 
 const use_page = s('', {
   url_param: 'page',
@@ -82,17 +89,7 @@ function app() {
     set_headings(extract_headings(content.current))
   }, [page_response])
 
-  const distances = {
-    j: jk_scroll_distance,
-    k: -jk_scroll_distance,
-    d: du_scroll_percentage,
-    u: -du_scroll_percentage,
-    space: space_scroll_percentage,
-    'shift+space': -space_scroll_percentage,
-  }
-
-  const field_tags = ['input', 'textarea']
-
+  // bind scrolling shortcuts
   map(distances, ([key, distance]) => {
     use_keyboard(
       key,
@@ -129,7 +126,7 @@ function app() {
     })
   }
 
-  const title = headings?.[0]?.content ?? 'Para'
+  let title = headings?.[0]?.content ?? 'Para'
 
   return h(
     h('title.', title),

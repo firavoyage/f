@@ -35,4 +35,15 @@ doesnt feel i would create a util of merge.
 
 it's nice to have same files automatically filtered though.
 
+---
+
+> as someone, i would like to do sth w some feature to achieve sth...
+
+> as any user in general, i would like to ... w any existing features for the sake of doing sth (well it's obvious, ik what im doing)
+> 
+> - do sth
+> - create sth
+> - polish sth
+> - feel satisfied w sth
+
 
