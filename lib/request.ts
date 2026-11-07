@@ -1,4 +1,4 @@
-let base = location.href
+let base = location.origin
 
 if (base.endsWith('/')) {
   base = base.slice(0, -1)

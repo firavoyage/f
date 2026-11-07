@@ -129,20 +129,25 @@ function app() {
     })
   }
 
+  const title = headings?.[0]?.content ?? 'Para'
+
   return h(
-    'app',
+    h('title.', title),
     h(
-      scroll,
-      { ref: content },
-      h('page', h('page_content', h('markdown-body', h({ html })))),
+      'app',
+      h(
+        scroll,
+        { ref: content },
+        h('page', h('page_content', h('markdown-body', h({ html })))),
+      ),
+      h(search, {
+        query,
+        set_query,
+        results: search_results,
+        select_result: set_page,
+      }),
+      h(toc, { headings }),
     ),
-    h(search, {
-      query,
-      set_query,
-      results: search_results,
-      select_result: set_page,
-    }),
-    h(toc, { headings }),
   )
 }
 

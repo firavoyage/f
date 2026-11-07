@@ -9,5 +9,7 @@ export function app() {
   use_window_active()
   use_style(theme)
 
-  return ''
+  return h(
+    h('title.', 'Humility')
+  )
 }
