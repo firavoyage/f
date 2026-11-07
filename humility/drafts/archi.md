@@ -8,9 +8,15 @@ archi
       - or better, id -> metadata
         - you can iterate the same, w faster query seems
     - (thread)
+      - msg id -> content, metadata, ...
+      - branches may share some same msg id (a msg id is of the full history of input and the random seed at the generation time)
+      - ~~you may have msg id -> edits later~~ have msg position id instead (though it's highly irrelevant really feels)
   - avoid over engineering, better to store all messages in a thread (rather than external id of nodes on a tree)
   - what about editing?
-    - i can absolutely implement the same as branching
+    - it comes later, and i can absolutely implement the same as branching, w some additional metadata
+      - i could engineer this, which makes sense. but actually, if it matters, the idiomatic way is to branch it, otherwise it's just another deleted thread (e.g. copy and mark as deleted, modify in place, and link w metadata).
+        - it's easy to _extend_ it for scalability, like you may create msg position id, where all edits will share.
+        - you may cache all msgs on the tree in memory. (wont have, not meaningful in the idiomatic way)
 - query llm
   - build manually, would be easy
   - think in inputs and outputs
