@@ -34,6 +34,10 @@ backend
   - to sync the threads list, you take the cup of two servers, download all threads, and ignore possible last update discrepancy for the same thread
 - sync thread
   - you append if in sync
-  - if conflict, i.e. you send
-  - you may sync thread on read, write, or websocket
+  - if conflict, i.e. you send a msg on phone, and then a msg on the laptop on the same thread wo refreshing the page
+    - it will be considered branching, and eventually you will have two threads on every server, after id renaming
+      - it will keep local thread id first, copy the remote conflicting thread as a branch, and mark the branch w metadata pointing to the original id
+      - it will sync w remote. when the remote sees a new id (the branch) w metadata, it compares the content and find it mergable (otherwise it's just any thread), and renames the conflicting thread on the branch id, before syncing the now missing local thread id
+      - when another device sees, it will do the same (new thread pointing to existing thread, and mergable)
+  - you may sync thread on read, write, or via websocket if implemented
 
