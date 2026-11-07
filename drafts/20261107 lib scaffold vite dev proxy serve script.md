@@ -617,4 +617,432 @@ Node.js Yargs module creates interactive command-line interfaces and flexible ar
 
 Show all
 
+# how to parse shell args in nodejs forgivingly
 
+8:10 PM
+
+### how to parse shell args in nodejs forgivingly
+
+To parse shell arguments in Node.js **forgivingly** (meaning the parser will not throw errors if a user passes unexpected, undeclared, or misconfigured flags), you should use the built-in `util.parseArgs` function with `strict: false`. [](https://stackoverflow.com/questions/4351521/how-do-i-pass-command-line-arguments-to-a-node-js-program-and-receive-them)
+
+Introduced as a stable feature in Node.js v20, `util.parseArgs` allows you to handle unknown flags gracefully without pulling in heavy external dependencies like Yargs or Commander. [](https://oneuptime.com/blog/post/2026-01-22-nodejs-parse-command-line-arguments/view)
+
+#### The Forgiving Approach: `strict: false`
+
+By default, most parsers throw an error when they encounter an unknown option. Setting `strict: false` instructs Node.js to collect everything it doesn't recognize into a separate `values` object or treat it as a positional argument.
+
+javascript
+
+```
+import { parseArgs } from 'node:util';
+
+// Pass process.argv.slice(2) to ignore the node binary and script path
+const args = process.argv.slice(2); 
+
+const options = {
+  args: args,
+  strict: false, // <-- This makes it forgiving
+  options: {
+    // You only need to define the flags you explicitly care about
+    environment: {
+      type: 'string',
+      short: 'e',
+    },
+    verbose: {
+      type: 'boolean',
+      short: 'v',
+    }
+  },
+};
+
+try {
+  const { values, positionals } = parseArgs(options);
+  
+  console.log('Known & Unknown Flags:', values);
+  console.log('Positional Arguments:', positionals);
+} catch (err) {
+  // This block will rarely trigger when strict is false
+  console.error('Parsing error:', err.message);
+}
+
+```
+
+
+
+#### How `strict: false` behaves in practice
+
+If a user runs your script with a mix of expected, unknown, and misplaced inputs:
+
+bash
+
+```
+node script.js -e production --verbose --temporary-flag=true extra-file.txt
+
+```
+
+
+
+The output will safely map out without crashing:
+
+javascript
+
+```
+Known & Unknown Flags: {
+  environment: 'production',
+  verbose: true,
+  'temporary-flag': 'true' // Node still captures it as a string instead of throwing an error!
+}
+Positional Arguments: [ 'extra-file.txt' ]
+
+```
+
+
+
+#### Key Behaviors to Keep in Mind:
+
+* **Undeclared Flags:** Any unknown long flag (like `--temporary-flag`) is treated as a `string` type by default when `strict: false` is active.
+* **Undeclared Short Flags:** If a user passes an undeclared short flag (e.g., `-x`), Node.js cannot know if it's a boolean or a string that expects a value. It defaults to treating it as a boolean set to `true`.
+* **The `--` Terminator:** If users pass `--`, everything after it is immediately treated as a positional argument, which is highly useful for safely passing raw file paths or treating negative numbers as text rather than flag options. [](https://mojoauth.com/dev-guides/command-line-argument-escaping-in-nodejs)
+
+Are you trying to match these arguments against a **predefined configuration file**, or do you need to pass these processed flags down to a **secondary CLI shell script**? Let me know, and I can give you the exact implementation.
+
+* [](https://stackoverflow.com/questions/4351521/how-do-i-pass-command-line-arguments-to-a-node-js-program-and-receive-them)  
+Stack Overflow  
+How do I pass command line arguments to a Node.js program ...  
+Node.js versions 18.3.0 and 16.17.0 introduced the \`util.parseArgs\` function for native command-line argument parsing, which reach...
+* [](https://mojoauth.com/dev-guides/command-line-argument-escaping-in-nodejs)  
+MojoAuth  
+Node.js Command Line Arguments and Escaping  
+A user value that starts with - , such as -rf , can be read as an option by the target program. Put -- before untrusted positional...
+* [](https://oneuptime.com/blog/post/2026-01-22-nodejs-parse-command-line-arguments/view)  
+OneUptime  
+How to Parse Command Line Arguments in Node.js  
+Commander.js or Yargs for complex CLI tools; minimist for speed; add inquirer for interactive user input.
+
+Show all
+
+## TypeError: The "options.strict" property must be of type object, got boolean
+
+TypeError: The "options.strict" property must be of type object, got boolean
+
+8:11 PM
+
+### TypeError: The "options.strict" property must be of type object, got boolean
+
+This error happens because you accidentally nested the `strict` configuration inside your flag declarations rather than keeping it at the top level of the configuration object.
+
+The `util.parseArgs` function expects `options` to be an object mapping **only flag names** to their metadata. Because you passed `strict: false` inside that block, Node.js read `strict` as if it were a command-line flag named `--strict`, and immediately threw a `TypeError` because its value was a boolean instead of a flag configuration object. [](https://github.com/pkgjs/parseargs)
+
+#### The Fix
+
+Move `strict` and `args` up to the top level of the configuration, completely separate from the `options` block.
+
+javascript
+
+```
+import { parseArgs } from 'node:util';
+
+const args = process.argv.slice(2); 
+
+// ❌ WRONG (Causes your error):
+// const config = {
+//   args: args,
+//   options: {
+//     strict: false,  <-- Node thinks `--strict` is a CLI flag definition!
+//     verbose: { type: 'boolean' }
+//   }
+// };
+
+//  FIXED STRUCTURE:
+const config = {
+  args: args,
+  strict: false,          // <-- Keep this at the top level
+  allowPositionals: true, // <-- Keep this at the top level (optional)
+  options: {              // <-- ONLY put your actual CLI flags inside here
+    environment: {
+      type: 'string',
+      short: 'e',
+    },
+    verbose: {
+      type: 'boolean',
+      short: 'v',
+    }
+  },
+};
+
+const { values, positionals } = parseArgs(config);
+console.log(values);
+
+```
+
+
+
+Are you seeing this error on a specific **Node.js version**? Let me know if you also need help managing **positional arguments** safely while using this configuration!
+
+* [](https://nodejs.org/api/util.html)  
+Node.js  
+Util | Node.js v26.13.0 Documentation  
+When options.strict is true , invocation times are tracked individually. This ensures that no more than limit calls begin during a...
+* [](https://github.com/pkgjs/parseargs)  
+GitHub  
+pkgjs/parseargs: Polyfill of \`util.parseArgs()\` - GitHub  
+Used to provide arguments for parsing and to configure the parser. A mapping of parsed option names with their {string} or {boolea...
+
+# can npm package json scripts pass down args
+
+8:16 PM
+
+### can npm package json scripts pass down args
+
+**Yes, npm scripts can pass down arguments**. You can achieve this using two primary methods depending on how you want the underlying script to receive them. [](https://stackoverflow.com/questions/11580961/sending-command-line-arguments-to-npm-script)
+
+#### Method 1: Using the Double Hyphen (`--`)
+
+The most common way to forward arguments directly to the underlying command is by using `--`. Anything you type _after_ the double hyphen is appended directly to your script. [](https://dev.to/felipperegazio/handling-command-line-arguments-in-npm-scripts-2ean)
+
+**`package.json`:**
+
+json
+
+```
+{
+  "scripts": {
+    "dev": "next dev",
+    "test": "jest"
+  }
+}
+
+```
+
+
+
+**Terminal command:**
+
+bash
+
+```
+npm run dev -- --port 8080
+# Executes as: next dev --port 8080
+
+npm run test -- --watch
+# Executes as: jest --watch
+
+```
+
+
+
+_(Note: If you are using **pnpm** or **Yarn**, you can omit the `--` entirely and just run `pnpm dev --port 8080`)._ [](https://github.com/orgs/pnpm/discussions/4844)
+
+---
+
+#### Method 2: Using Custom Flag Parsing (`npm_config_`)
+
+If you want to pass named flags that your Node.js code can tap into without manually parsing process arguments, npm automatically turns custom parameters into environment variables prefixed with `npm_config_`. [](https://stackoverflow.com/questions/11580961/sending-command-line-arguments-to-npm-script)
+
+**Terminal command:**
+
+bash
+
+```
+npm run dev --stage=production
+
+```
+
+
+
+**Inside your JavaScript code (`server.js`):**
+
+javascript
+
+```
+// npm automatically parses --stage into process.env.npm_config_stage
+const stage = process.env.npm_config_stage || 'development'; 
+
+console.log(`Running in ${stage} mode.`);
+
+```
+
+
+
+#### Summary Comparison
+
+| Approach                | Command Example         | How the Code Receives It     | Best For                                                   |
+| ----------------------- | ----------------------- | ---------------------------- | ---------------------------------------------------------- |
+| **Double Hyphen (\--)** | npm run test -- --watch | process.argv                 | Forwarding flags to CLI tools (Jest, Vite, Prettier, etc.) |
+| **Named Flags**         | npm run dev --env=prod  | process.env.npm\_config\_env | Custom Node.js scripts needing key-value configuration     |
+
+Are you trying to pass these arguments to a **third-party CLI tool** (like Vite, Webpack, Jest) or a **custom Node.js file** you wrote yourself? Knowing this can help me show you the exact code implementation.
+
+* [](https://stackoverflow.com/questions/11580961/sending-command-line-arguments-to-npm-script)  
+Stack Overflow  
+Sending command line arguments to npm script - Stack Overflow  
+Arguments can be passed to npm scripts using environment variables. This can be done by setting the variable inline before the \`np...
+* [](https://dev.to/felipperegazio/handling-command-line-arguments-in-npm-scripts-2ean)  
+DEV Community  
+Handling Command-line Arguments in NPM Scripts - DEV Community  
+Named Parameters: Environment variables starting with npm\_config\_ interpret passed arguments as configuration parameters when exec...
+* [](https://medium.com/@samn.krki/how-i-passed-dynamic-command-line-arguments-to-a-file-through-a-npm-script-in-windows-and-linux-25b77c184b0)  
+Medium·Samin karki  
+How I passed dynamic command line arguments to a file ...  
+"sample":"node index.js file=$npm\_config\_name" }. and ran npm run sample --name=trustme. And it worked again. But there was a prob...
+
+Show all
+
+## how to call a .sh file directly wo caring npm
+
+how to call a .sh file directly wo caring npm
+
+8:20 PM
+
+### how to call a .sh file directly wo caring npm
+
+To run a `.sh` (Shell) script directly in your terminal without using `npm`, you execute it using your system's shell interpreter.
+
+Here is the quickest way to make it executable and run it **directly**:
+
+#### Step 1: Make it executable
+
+Before a script can run on its own, you must grant it execution permissions. Run this command in your terminal:
+
+bash
+
+```
+chmod +x script.sh
+
+```
+
+
+
+#### Step 2: Run it
+
+Once permissions are granted, you run it by pointing to its file path (the `./` tells your terminal to look in the current folder):
+
+bash
+
+```
+./script.sh
+
+```
+
+
+
+---
+
+#### Alternative: Run it without changing permissions
+
+If you don't want to change the file permissions, you can explicitly call the shell interpreter (**Bash** or **Zsh**) to run the file for you:
+
+bash
+
+```
+# Using Bash
+bash script.sh
+
+# Using Zsh
+zsh script.sh
+
+```
+
+
+
+#### Passing Arguments Directly
+
+When running a `.sh` file directly, any arguments you type after the file name are passed straight into the script automatically—**no special hyphens required**:
+
+bash
+
+```
+./script.sh --port 8080 prod
+
+```
+
+
+
+Inside your `.sh` file, you can catch those variables using `$1`, `$2`, etc.:
+
+bash
+
+```
+#!/bin/bash
+echo "First argument: $1"  # Outputs: --port
+echo "Second argument: $2" # Outputs: 8080
+echo "Third argument: $3"  # Outputs: prod
+
+```
+
+
+
+Are you running into a specific error like **"Permission denied"** or **"command not found"**? Let me know your OS (Mac, Linux, or Windows Git Bash) if it isn't running cleanly!
+
+## how to pass down all args in the shell script
+
+how to pass down all args in the shell script
+
+8:21 PM
+
+### how to pass down all args in the shell script
+
+To pass down **all** arguments inside a shell script to another command, use the **`"$@"`** syntax.
+
+This is the standard and safest way to forward everything because it preserves spaces and keeps individual arguments completely intact.
+
+#### The Standard Implementation
+
+**`script.sh`:**
+
+bash
+
+```
+#!/bin/bash
+
+# Forward ALL received arguments to another command (e.g., node, python, or another script)
+node server.js "$@"
+
+```
+
+
+
+#### Why use `"$@"` instead of `$*`?
+
+While there are a few ways to represent "all arguments" in Bash, they behave differently when your arguments contain spaces:
+
+| Syntax                        | Behavior                                                                                                        | Best Used For                                            |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| **"$@"**                      | **Recommended.** Loops through each argument exactly as it was received. Preserves spaces perfectly.            | Forwarding flags and values cleanly to other tools.      |
+| **$\*** or **$@** (No quotes) | Breaks arguments apart at every space. If you pass "John Doe", it becomes two separate arguments: John and Doe. | Rarely recommended; leads to bugs with paths or strings. |
+| **"$\*"**                     | Combines every single argument into **one single string**, separated by spaces.                                 | Logging all inputs to a file as a single line of text.   |
+
+#### Complete Example
+
+Imagine your shell script wraps a `git` or `docker` command, and you want to pass multiple flags through it:
+
+**`deploy.sh`:**
+
+bash
+
+```
+#!/bin/bash
+echo "Starting deployment process..."
+
+# Forwarding all arguments to the docker build command
+docker build "$@" .
+
+```
+
+
+
+**Running the command:**
+
+bash
+
+```
+./deploy.sh --build-arg VERSION=1.2 --no-cache -t my-app:latest
+
+```
+
+
+
+Inside the script, `docker build "$@" .` expands flawlessly to:  
+`docker build --build-arg VERSION=1.2 --no-cache -t my-app:latest .`
+
+What is the **underlying command or tool** that your script is trying to pass these arguments to? I can help you structure the file to handle any default arguments if needed!
