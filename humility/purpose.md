@@ -46,4 +46,13 @@ it's nice to have same files automatically filtered though.
 > - polish sth
 > - feel satisfied w sth
 
+---
+
+no need to rush.
+
+well, fine to have a non streaming version first.
+
+anyway.
+
+
 
