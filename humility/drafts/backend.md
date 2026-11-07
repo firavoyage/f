@@ -29,3 +29,11 @@ backend
 - . edit
 - . branch
 - . delete
+- sync list
+  - we do not expect stable centralized server
+  - to sync the threads list, you take the cup of two servers, download all threads, and ignore possible last update discrepancy for the same thread
+- sync thread
+  - you append if in sync
+  - if conflict, i.e. you send
+  - you may sync thread on read, write, or websocket
+
