@@ -549,4 +549,10 @@ could have.
 
 (wait, i could entirely keep props, wo export p, and just use props on hyperscript!)
 
+---
 
+you might not just have a command like `scaffold foo`
+
+chances are foo already exists.
+
+it's good to remove nodes and bun lock though.

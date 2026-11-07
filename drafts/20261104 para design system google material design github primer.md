@@ -58,8 +58,6 @@ github primer simply uses rgb hex.
 
 yeah, it doesnt really matter a lot when you use no gradient.
 
-
-
 # google material design color roles
 
 8:01 AM

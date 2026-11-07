@@ -275,6 +275,7 @@ lib:
 - shell b run script abstraction r
 - web state s overhaul simplification
 - web style vite yaml util classes
+- scaffold vite dev proxy serve script
 
 web: <!-- frontend, web, ts/js -->
 
