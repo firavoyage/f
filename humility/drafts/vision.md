@@ -4,7 +4,10 @@ vision
   - in the primitive way primarily
     - chatbots can be to an extent quite capable, or sufficient
   - extensions _on top_ like search or domain knowledge (e.g. explicitly triggered injection, prompt templates, quotations "ask about") are welcomed
+    - or such as branching, editing (anywhere), or in place history modifying
+      - you may attach rendering metadata to match their intent
   - foundational mechanisms, such as workflows or agentic capabilities, would be better specifically tailored for actual use cases
+  - support text to text first
 - export chats
   - in md primarily, which can be in turn converted to pdf or html or anything
   - in yaml if you want an exact representation of the original structured data
@@ -15,5 +18,6 @@ vision
 - sync the chats to some folder, or git repo
 - share chats
   - you may share static md if you like
+- sync chats across devices
 
 
