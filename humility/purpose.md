@@ -27,4 +27,12 @@ i need that.
 
 btw, in terms of the vision of humility, i can absolutely have an extensible modular archi, like chatgpt first, nextcloud (which links and shows some information from chatgpt) later.
 
+nov 2026
+
+07
+
+doesnt feel i would create a util of merge.
+
+it's nice to have same files automatically filtered though.
+
 

@@ -17,7 +17,11 @@ prototype actions
 
 hooks are easy. they come later.
 
+## s
 
+## c
+
+## w
 
 # backlog
 
@@ -220,4 +224,9 @@ research dify and analyze ux
 
 ---
 
+
+
+# done
+
+<!-- purpose.md -->
 

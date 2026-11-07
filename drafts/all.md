@@ -152,6 +152,7 @@ life:
 - voice recorder
 - notebook paper sizes lines
 - pencil hardness
+- glue stick liquid glue
 
 create something:
 
@@ -1035,6 +1036,7 @@ rhetoric:
 - kids are dangerous
 - interesting facts
 - compare quotation and italic
+- moology three things a small amount of work
 
 poetry:
 
