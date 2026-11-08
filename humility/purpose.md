@@ -68,15 +68,28 @@ ideally i could extend by appending (injecting actually) wo modifying/removing l
 
 08
 
-there is no correct answer for visual design.
+there is no right answer for visual design.
 
 and i would choose primer ui as a reference.
 
 clearly it's way easier than building everything from scratch, and why primer.
 
-- it's web based and modern
+- it's web based and comprehensive
+  - well documented, in both react and rails
+    - foundations, explanations, and components
+    - interactive mdx
   - i would like adwaita, but i dont really learn a lot from adwaita demo alone
     - times are i may challenge their decisions
     - and it's not web & css based
-- it's more like design systems
+- it's more like general design systems, less opinionated
+  - unlike google material design or apple hig, which tailors everything for their specific goals
+- it has a clear opensource foundation, in modern western culture
+  - unlike commercial ones like adobe spectrum or shopify ones
+
+i would make it utilitarian. be simple and functional first.
+
+---
+
+(backend comes first though)
+
 

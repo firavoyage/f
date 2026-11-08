@@ -403,3 +403,27 @@ i would omit anyway, but humans should know this.
 prefer `items` (strictly noun) over `list` (verb/noun)
 
 (js is lisp 1)
+
+# 0.8 2026.11.08
+
+- use:
+  - typescript
+  - pnpm
+  - bun
+  - parceljs
+- naming:
+  - snake case by default
+  - verb noun for actions, predicate for bools
+  - plural for iterables
+  - noun for factory functions, verb for callbacks, no prefix like create or handle
+- style:
+  - functional programming
+  - modular and cohesive
+  - es module
+  - always function statement, only arrow function for props
+  - always type, never interface
+  - self explanatory, no comments
+- notes:
+  - prefer modern proven libraries when needed
+
+
