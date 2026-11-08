@@ -66,4 +66,17 @@ ideally i could extend by appending (injecting actually) wo modifying/removing l
 - config
 - ...
 
+08
+
+there is no correct answer for visual design.
+
+and i would choose primer ui as a reference.
+
+clearly it's way easier than building everything from scratch, and why primer.
+
+- it's web based and modern
+  - i would like adwaita, but i dont really learn a lot from adwaita demo alone
+    - times are i may challenge their decisions
+    - and it's not web & css based
+- it's more like design systems
 
