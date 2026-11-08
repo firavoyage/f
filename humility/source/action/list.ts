@@ -5,5 +5,5 @@ import { threads_file } from 'action/index'
 
 // todo: list range?
 export function list() {
-  return read(threads_file) || {}
+  return deserialize(read(threads_file))
 }

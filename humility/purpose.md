@@ -92,4 +92,10 @@ i would make it utilitarian. be simple and functional first.
 
 (backend comes first though)
 
+---
+
+drafts are designs choices of devs
+
+docs are guides and references.
+
 
