@@ -98,4 +98,16 @@ drafts are designs choices of devs
 
 docs are guides and references.
 
+09
+
+actually i may consider the web only approach, if openrouter supports cors.
+
+you may store permanently via github api, lol.
+
+chances are, you just wanna drop a key and start chatting on a thread. that's it.
+
+anyway, it matters less and has almost no impact on ux.
+
+and seems it conflicts w some core purpose why i need this. yeah you may export the chats, but it's hard to automate it, and if you really do so, often you could not benefit from web only any more.
+
 
