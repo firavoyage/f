@@ -29,3 +29,7 @@ change
 - web/state: ignore unchanged set state for literals
 - web/std/is: support type `literal`
 - web/style: support selector w commas
+
+# 2026.11.08
+
+- file/touch: support initial content optional param

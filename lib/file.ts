@@ -268,12 +268,12 @@ export function write(path: path_w, content: string) {
   return
 }
 
-export function touch(path: path_fs) {
+export function touch(path: path_fs, initial_content: string = '') {
   if (does_exist(path)) {
     return
   }
 
-  return write(path, '')
+  return write(path, initial_content)
 }
 
 export function append(path: path_fs, content: string) {
