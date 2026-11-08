@@ -27,6 +27,14 @@ database
 
 when a message has failed, both the user msg and the "response" will be marked, which would be ignored when constructing history.
 
-error will be injected
+error will be as code block of lang "chat error".
+
+you may render it w dedicated component.
+
+---
+
+it's recommended to have a server, whether local or remote.
+
+_you may store these in localstorage if feasible._
 
 
