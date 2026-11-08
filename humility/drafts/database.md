@@ -2,9 +2,11 @@ database
 
 - data
   - chat
-    - threads.yaml: thread id -> thread metadata
+    - threads.yaml: thread -> thread metadata
       - is deleted
       - creation time
+    - (thread).yaml
+      - 
 - config
   - chat
     - config.yaml
