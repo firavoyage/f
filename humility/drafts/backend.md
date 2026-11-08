@@ -1,6 +1,8 @@
 backend
 
-- new thread ~~first msg~~ -> thread (thread id)
+<!-- m: bold, s: regular, c: italic, w: strikethrough -->
+
+- **new thread** ~~first msg~~ -> thread (thread id)
   - ~~it makes no sense to create a few empty threads~~
   - ~~i may support empty first msg~~
   - better to separate concerns clearly on backend
@@ -9,7 +11,7 @@ backend
     - best prac, at least commonly used
     - i could argue for self explanatory url
       - i may have best of both worlds, i.e. reddit (could have)
-- send message thread -> content (json, or event stream maybe)
+- **send** message thread -> content (json, or event stream maybe)
   - read history of that thread
   - query llm
   - respond or stream
@@ -18,21 +20,21 @@ backend
     - more precisely, append to the in memory array, and overwrite after yaml serialization
     - it's not expected to timeout within one single request, no need to save partial content
       - logging is another thing
-- read thread -> history
+- **read** thread -> history
   - array of content and metadata (just be flat, no need to group inside an object literally called metadata)
-- list range? -> array of thread
+- **list** range? -> array of thread
 - search query -> array of thread results
   - you may cache thread titles
     - it might not be feasible to have all thread history in memory even on small scale
     - actually, that's how you do on command palette
       - on search component, results can be an array of all possible results (search would default to sth like fzf), or query -> results
-- . edit
-- . branch
-- . delete
-- sync list
+- edit
+- branch
+- delete
+- _sync list_
   - we do not expect stable centralized server
   - to sync the threads list, you take the cup of two servers, download all threads, and ignore possible last update discrepancy for the same thread
-- sync thread
+- _sync thread_
   - you append if in sync
   - if conflict, i.e. you send a msg on phone, and then a msg on the laptop on the same thread wo refreshing the page
     - it will be considered branching, and eventually you will have two threads on every server, after id renaming
