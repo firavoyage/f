@@ -488,6 +488,7 @@ android:
 - export apk aab
 - set up one ui
 - set up hyper os
+- phone battery protection timeline
 
 ops: <!-- devops, ci, vcs, ... -->
 
