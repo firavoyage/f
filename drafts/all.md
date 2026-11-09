@@ -1251,6 +1251,7 @@ humility:
 - use case uni py basics homework
 - research forum grok bot
 - research forum dsh
+- implement web search tool call thinking model list
 
 legacy:
 
