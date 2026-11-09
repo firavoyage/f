@@ -18,11 +18,27 @@ type message = {
   }
   start_time: number
   end_time: number
+  payload?
 }
 
 export function chat(messages: message[], endpoint, key?) {
-  messages = map(messages, (message) => {
-    
+  messages = map(messages, (message, index) => {
+    const { has_failed, role, content } = message
+
+    if (has_failed || role == 'user' && messages?.[index + 1]?.has_failed) {
+      return 
+    } 
+
+    return { role, content }
   })
+
+  let start_time = now().timestamp
+
+  
+
+  let end_time = now().timestamp
+
+
 }
+
 
