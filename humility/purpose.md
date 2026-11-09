@@ -230,5 +230,6 @@ stats on openrouter says they
 
 well doesnt feel these stats are quite helpful. would be better if i create a clearer data viz of models, w more meaningful metrics, or real world benches.
 
+<!-- dont really know how "model" and "model-latest" differ on openrouter, if both do not pin an exact rel date. interesting. would be better if called stable/experimental instead guess. -->
 
 
