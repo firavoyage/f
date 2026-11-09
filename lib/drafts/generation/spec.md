@@ -1,8 +1,14 @@
 generation
 
-- chat endpoint key? messages -> message, metrics
-
-
+- chat endpoint key? messages -> message
+  - has failed
+  - id # local generated
+  - role: system | user | assistant | tool
+  - content
+  - usage # input and output token usage
+  - perf # metrics such as ttft, tps (might not be available wo streaming)
+  - start_time
+  - end_time
 
 ```js
 async function queryOpenRouter() {
@@ -118,3 +124,5 @@ fetchData("https://example.com");
   }
 }
 ```
+
+

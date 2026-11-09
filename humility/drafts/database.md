@@ -12,8 +12,13 @@ database
         - type: network, status code, ...
         - message?
         - payload? -->
+      - id # local generated
       - role: system | user | assistant | tool
       - content
+      - usage # input and output token usage
+      - perf # metrics such as ttft, tps (might not be available wo streaming)
+      - start_time
+      - end_time
 - config
   - chat
     - config.yaml
@@ -61,5 +66,11 @@ like the way you do on zshrc. you have public zshrc which sources zshrc.private.
 for now let's keep it simple.
 
 <!-- btw, it can be a bit tricky to have a string both representing env var and api key, if you dont wrap them properly w explanation. it can lead to confusing ux (as seen on openclaw). -->
+
+---
+
+rather align w openai compatible naming.
+
+e.g. usage instead of a general "metrics" or "metadata".
 
 
