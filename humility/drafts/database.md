@@ -23,6 +23,8 @@ database
       - default model
         - can be lab/id or provider:lab/id
       - default provider = first provider
+      - export?:
+        - dir
 
 ---
 
@@ -45,5 +47,9 @@ doesnt seem it would yield meaningful result if failed.
 so it either has failed w error content (yaml of type msg payload), or succeeded w actual generated response.
 
 whether it fails at network or via http error code
+
+---
+
+clearly it works for wo local endpoints wo keys. just omit it, and it would parse undefined key properly.
 
 
