@@ -278,6 +278,7 @@ lib:
 - web style vite yaml util classes
 - scaffold vite dev proxy serve script
 - request fix default location
+- generation
 
 web: <!-- frontend, web, ts/js -->
 
