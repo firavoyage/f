@@ -30,7 +30,7 @@ type plain_message = {
 }
 
 type chat = {
-  messages: Partial<message>[]
+  messages: plain_message & Partial<message>[]
   model: string
   endpoint: string
   key?: string
@@ -97,7 +97,7 @@ export async function chat(options: chat): Promise<message> {
         serialize({
           type: 'endpoint',
           message: `${response.status} ${response.statusText}`,
-          payload: response,
+          payload: await handle(() => response.json()),
         }) +
         '```\n',
       start_time,
@@ -127,13 +127,17 @@ export async function chat(options: chat): Promise<message> {
 
   const { role, content } = payload.choices[0].message
 
-  const { usage } = payload
+  const { prompt_tokens, completion_tokens, total_tokens } = payload.usage
+  const usage = {
+    prompt_tokens,
+    completion_tokens,
+    total_tokens,
+  }
+  // const { usage } = payload
 
   const perf = {
-    tokens_per_second:
-      usage.completion_tokens / ((end_time - start_time) / 1000),
-    time_to_first_token:
-      usage.completion_tokens / ((end_time - start_time) / 1000),
+    tokens_per_second: usage.completion_tokens / (end_time - start_time),
+    time_to_first_token: usage.completion_tokens / (end_time - start_time),
   }
 
   return {

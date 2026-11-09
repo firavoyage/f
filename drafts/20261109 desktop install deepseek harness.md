@@ -50,6 +50,14 @@ _怎么还在装..._
 fine.
 ```
 
+---
+
+upd: well, anyway
+
+seems they dont even know how to type on a keyboard yet...
+
+(missing semester content)
+
 # . test
 
 ```
