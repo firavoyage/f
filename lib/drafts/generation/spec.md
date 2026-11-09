@@ -125,4 +125,8 @@ fetchData("https://example.com");
 }
 ```
 
+---
+
+a user msg will be ignored if it's followed by a failed response
+
 
