@@ -214,6 +214,21 @@ like, you can absolutely go wo mcp and just write code via foss libs.
 
 i may like to see how thinking works. maybe it would be some rendered response outside history. or maybe i send thinking of prev threads aw.
 
-i would like to know how search works. it can be hacky. but i guess it's fine to pay for it.
+i would like to know how search works. it can be hacky, where i can abstract (query search engines, and scrape main content of pages, maybe clicking cf turnstile or fetching caches). but i think it's fine to pay for it.
+
+web search alongside thinking would make it vastly more capable, maybe even sufficient as mvp personally speaking.
+
+dk if i would include prev searches in history. ideally i could toggle it. fine to include everything in history if context allows (and if i dont care whether it's "clean" "mathematically pure/relevant" or sth), since input cache is quite cheap.
+
+---
+
+stats on openrouter says they
+
+- are prompted massively
+- just reason a little
+- output slightly less than reasoning
+
+well doesnt feel these stats are quite helpful. would be better if i create a clearer data viz of models, w more meaningful metrics, or real world benches.
+
 
 

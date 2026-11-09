@@ -55477,6 +55477,16 @@ yanagi 24yro birthday. <!-- tomiya celebrates. they really social a lot. -->
 
 day.
 
+09
+
+17 00 a student plays gok w a furious "pro" dormmate on history class, so they do not leave after class.
+
+chat a bit w them.
+
+it takes about tens of games to reach master in a season they say. and theyve played about a thousand lifetime games.
+
+they are aware of the elo mechanism, but not lei bro gaming or wr baiting.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
