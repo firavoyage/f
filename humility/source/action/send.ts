@@ -6,6 +6,7 @@ import {
 } from 'action/index'
 import { chat } from 'lib/generation'
 import { read, join, write } from 'lib/file'
+import { random_id } from 'lib/random'
 
 type send = {
   content: string
@@ -36,13 +37,7 @@ export async function send(options: send) {
 
   const history = deserialize(read(thread_file))
 
-  const messages = [
-    ...history,
-    {
-      role: 'user',
-      content,
-    },
-  ]
+  const messages = [...history, user_message(content)]
 
   write(thread_file, serialize(messages))
 
@@ -53,12 +48,17 @@ export async function send(options: send) {
     key,
   })
 
-  const new_thread_content = [
-    ...messages,
-    reply
-  ]
+  const new_thread_content = [...messages, reply]
 
   write(thread_file, serialize(new_thread_content))
 
   return reply
+}
+
+function user_message(content: string) {
+  return {
+    id: random_id(),
+    role: 'user',
+    content,
+  }
 }
