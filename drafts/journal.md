@@ -55487,6 +55487,14 @@ it takes about tens of games to reach master in a season they say. and theyve pl
 
 they are aware of the elo mechanism, but not lei bro gaming or wr baiting.
 
+10
+
+01 30 finish watching nju jyy gen swe lecture 1.
+
+it's boring to take uni lectures or play gok alone.
+
+it's fun when you mix them together, w unread chats as you like.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
