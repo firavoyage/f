@@ -29,7 +29,7 @@ type chat = {
   key?: string
 }
 
-export async function chat(options: chat): message {
+export async function chat(options: chat): Promise<message> {
   let { messages, model, endpoint, key } = options
 
   messages = map(messages, (message, index) => {
@@ -62,20 +62,21 @@ export async function chat(options: chat): message {
 
   let end_time = now().timestamp
 
-  if(is_error(response)){
+  if (is_error(response)) {
     return {
       has_failed: true,
       id,
       role: 'assistant',
-      content: '```chat error\n' +
-      serialize({
-        type: 'network',
-        message: response.message,
-        payload: response
-      }) +
-      '```\n',
+      content:
+        '```chat error\n' +
+        serialize({
+          type: 'network',
+          message: response.message,
+          payload: response,
+        }) +
+        '```\n',
       start_time,
-      end_time
+      end_time,
     }
   }
 
@@ -84,17 +85,58 @@ export async function chat(options: chat): message {
       has_failed: true,
       id,
       role: 'assistant',
-      content: '```chat error\n' +
-      serialize({
-        type: 'endpoint',
-        message: `${response.status} ${response.statusText}`,
-        payload: response
-      }) +
-      '```\n',
+      content:
+        '```chat error\n' +
+        serialize({
+          type: 'endpoint',
+          message: `${response.status} ${response.statusText}`,
+          payload: response,
+        }) +
+        '```\n',
       start_time,
-      end_time
+      end_time,
     }
-  } 
+  }
 
-  
+  let payload = await handle(() => response.json())
+
+  if (is_error(payload)) {
+    return {
+      has_failed: true,
+      id,
+      role: 'assistant',
+      content:
+        '```chat error\n' +
+        serialize({
+          type: 'endpoint',
+          message: `endpoint should return parsable json`,
+          payload: response,
+        }) +
+        '```\n',
+      start_time,
+      end_time,
+    }
+  }
+
+  const { role, content } = payload.choices[0].message
+
+  const { usage } = payload
+
+  const perf = {
+    tokens_per_second:
+      usage.completion_tokens / ((end_time - start_time) / 1000),
+    time_to_first_token:
+      usage.completion_tokens / ((end_time - start_time) / 1000),
+  }
+
+  return {
+    id,
+    role,
+    content,
+    usage,
+    perf,
+    start_time,
+    end_time,
+    payload
+  }
 }
