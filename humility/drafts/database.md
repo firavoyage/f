@@ -4,7 +4,7 @@ database
   - chat
     - threads.yaml: thread -> thread metadata
       - title
-      - is deleted
+      - is deleted?
       - creation time
     - thread
       - (thread).yaml: message[]

@@ -7,6 +7,9 @@
 //   strict: false,
 // })
 
-import { parse as deserialize, stringify as serialize } from 'yaml'
+// import { parse as deserialize, stringify as serialize } from 'yaml'
 
-log('``\n' + serialize({foo: 'bar', asdf: 'asdf'}) + '``\n')
+// log('``\n' + serialize({foo: 'bar', asdf: 'asdf'}) + '``\n')
+
+log(list({ foo: 'bar', asdf: 123 }))
+log(entries({ foo: 'bar', asdf: 123 }))

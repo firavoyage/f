@@ -21,6 +21,7 @@ type message = {
   }
   start_time: number
   end_time: number
+  model?: string
   payload?
 }
 
@@ -148,6 +149,7 @@ export async function chat(options: chat): Promise<message> {
     perf,
     start_time,
     end_time,
+    model,
     payload,
   }
 }
