@@ -556,3 +556,11 @@ you might not just have a command like `scaffold foo`
 chances are foo already exists.
 
 it's good to remove nodes and bun lock though.
+
+09
+
+just doesnt have to introduce "secure context" constraints for pure fn
+
+could be over engineering
+
+

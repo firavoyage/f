@@ -33,3 +33,7 @@ change
 # 2026.11.08
 
 - file/touch: support initial content optional param
+
+# 2026.11.09
+
+- random: + `random_id`

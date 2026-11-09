@@ -1,4 +1,5 @@
 import { now } from 'lib/time'
+import { random_id } from 'lib/random'
 
 type message = {
   has_failed?: boolean
@@ -20,17 +21,8 @@ type message = {
 }
 
 export function chat(messages: message[], endpoint, key?) {
-
+  messages = map(messages, (message) => {
+    
+  })
 }
 
-function generate_id() {
-  return crypto.randomUUID()
-}
-
-function generateUUID() {
-  return ('[1x10^7]+-1e3+-4e3+-8e3+-1e11').replace(/[018]/g, c =>
-    (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16)
-  );
-}
-
-console.log(generateUUID());
