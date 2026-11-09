@@ -1,9 +1,14 @@
-import { serialize, deserialize, config_file, thread_folder } from 'action/index'
+import {
+  serialize,
+  deserialize,
+  config_file,
+  thread_folder,
+} from 'action/index'
 import { chat } from 'lib/generation'
-import { read, join } from 'lib/file'
+import { read, join, write } from 'lib/file'
 
 type send = {
-  message: string
+  content: string
   thread: string
   model?: string
 }
@@ -15,7 +20,7 @@ export async function send(options: send) {
   // providers must not be empty
   const { default_provider = entries(providers)[0][0] } = current_config
 
-  let { message, thread, model = default_model } = options
+  let { content, thread, model = default_model } = options
 
   let provider = default_provider
 
@@ -24,11 +29,36 @@ export async function send(options: send) {
     ;[provider, model] = model.split(':')
   }
 
+  // must exist
   const { key, endpoint } = providers[provider]
 
-  const history = deserialize(parse())
+  const thread_file = join(thread_folder, thread)
 
-  return chat({
-    
+  const history = deserialize(read(thread_file))
+
+  const messages = [
+    ...history,
+    {
+      role: 'user',
+      content,
+    },
+  ]
+
+  write(thread_file, serialize(messages))
+
+  const reply = await chat({
+    messages,
+    model,
+    endpoint,
+    key,
   })
+
+  const new_thread_content = [
+    ...messages,
+    reply
+  ]
+
+  write(thread_file, serialize(new_thread_content))
+
+  return reply
 }

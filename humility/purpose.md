@@ -176,4 +176,14 @@ doesnt feel it quite meaningful to keep the original payload.
 
 you may record in logs if you like.
 
+---
+
+yeah you should send msg rather than sending some content.
+
+but let's just standardize naming.
+
+guess it would benefit more.
+
+<!-- yeah, i (somewhat) hand code -->
+
 

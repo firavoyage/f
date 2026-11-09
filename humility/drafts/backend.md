@@ -11,7 +11,7 @@ backend
     - best prac, at least commonly used
     - i could argue for self explanatory url
       - i may have best of both worlds, i.e. reddit (could have)
-- **send** message thread -> ~~content~~ message (json, or event stream maybe)
+- **send** ~~message~~ content thread -> ~~content~~ message (json, or event stream maybe)
   - read history of that thread
   - query llm
   - respond or stream
