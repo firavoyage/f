@@ -481,7 +481,8 @@ desktop:
 - git filter repo
 - ubuntu debian disable gnome extensions
 - shell rm rf
-- install deepseek harness
+- install deepseek harness dsh
+- update pi agent
 
 android:
 
