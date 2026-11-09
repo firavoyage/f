@@ -565,4 +565,12 @@ just doesnt have to introduce "secure context" constraints for pure fn
 
 could be over engineering
 
+---
+
+generation
+
+backend could be the local/remote centralized chat server.
+
+endpoint means model api endpoint.
+
 

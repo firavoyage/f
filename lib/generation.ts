@@ -1,5 +1,6 @@
 import { now } from 'lib/time'
 import { random_id } from 'lib/random'
+import { parse as deserialize, stringify as serialize } from 'yaml'
 
 type message = {
   has_failed?: boolean
@@ -7,12 +8,12 @@ type message = {
   role: 'system' | 'user' | 'assistant'
   // role: 'system' | 'user' | 'assistant' | 'tool'
   content: string
-  usage: {
+  usage?: {
     prompt_tokens: number
     completion_tokens: number
     total_tokens: number
   }
-  perf: {
+  perf?: {
     tokens_per_second: number
     time_to_first_token: number
   }
@@ -28,7 +29,7 @@ type chat = {
   key?: string
 }
 
-export async function chat(options: chat) {
+export async function chat(options: chat): message {
   let { messages, model, endpoint, key } = options
 
   messages = map(messages, (message, index) => {
@@ -41,6 +42,8 @@ export async function chat(options: chat) {
     return { role, content }
   })
 
+  let id = random_id()
+
   let start_time = now().timestamp
 
   const response = await handle(() =>
@@ -52,12 +55,46 @@ export async function chat(options: chat) {
       },
       body: JSON.stringify({
         model,
-        messages: [
-          { role: 'user', content: 'Write a short poem about coding.' },
-        ],
+        messages,
       }),
     }),
   )
 
   let end_time = now().timestamp
+
+  if(is_error(response)){
+    return {
+      has_failed: true,
+      id,
+      role: 'assistant',
+      content: '```chat error\n' +
+      serialize({
+        type: 'network',
+        message: response.message,
+        payload: response
+      }) +
+      '```\n',
+      start_time,
+      end_time
+    }
+  }
+
+  if (!response.ok) {
+    return {
+      has_failed: true,
+      id,
+      role: 'assistant',
+      content: '```chat error\n' +
+      serialize({
+        type: 'endpoint',
+        message: `${response.status} ${response.statusText}`,
+        payload: response
+      }) +
+      '```\n',
+      start_time,
+      end_time
+    }
+  } 
+
+  
 }
