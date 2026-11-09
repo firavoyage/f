@@ -149,6 +149,25 @@ maybe just have a config of build folder.
 
 clearly it's an opinionated extension. and it's quite opinionated, from naming to the structure of such md file.
 
+let's have an build dir. 
 
+to be safe, it would not empty build dir. and it would overwrite iff conflicting. i.e. if you rename a file, a stale pre renamed build would be kept, as you dont keep renaming history. _well you can._
+
+so better to name properly at first under the right folder.
+
+about resolution, e.g.
+
+- a
+- b
+- c
+- foo
+  - bar
+    - asdf
+    - fdas
+  - xyz
+
+it would take all first level threads separately, and merge asdf and fdas (all sibling leaves, like `time foo bar.md` incl asdf fdas, where time would be ctime of bar). metadata like the mtime of individual msgs and models used might be omitted (you may toggle the extension!). _if i do so, i may have them as code block (of special lang like chat metadata... i guess code langs w spaces would be parsed.) below the heading of each msg._
+
+yes it's opinionated.
 
 
