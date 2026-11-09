@@ -38,4 +38,12 @@ it's recommended to have a server, whether local or remote.
 
 _you may store these in localstorage if feasible._
 
+---
+
+doesnt seem it would yield meaningful result if failed.
+
+so it either has failed w error content (yaml of type msg payload), or succeeded w actual generated response.
+
+whether it fails at network or via http error code
+
 
