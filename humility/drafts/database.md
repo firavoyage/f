@@ -52,4 +52,14 @@ whether it fails at network or via http error code
 
 clearly it works for wo local endpoints wo keys. just omit it, and it would parse undefined key properly.
 
+---
+
+alternatively, you may separate secrets on env (whether in shell format, injected on shell command, or via some env.yaml).
+
+like the way you do on zshrc. you have public zshrc which sources zshrc.private.
+
+for now let's keep it simple.
+
+<!-- btw, it can be a bit tricky to have a string both representing env var and api key, if you dont wrap them properly w explanation. it can lead to confusing ux (as seen on openclaw). -->
+
 
