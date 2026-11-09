@@ -966,4 +966,361 @@ Parallel Web Systems
 OpenAI Tool Calling  
 This guide shows how to define Parallel Search as an OpenAI function and handle tool calls in your application. JSON. parse(toolCa...
 
+# what if you implement tool calling manually via prompting for agents for personal projects
+
+Implementing tool calling manually via prompting (often referred to as building a **"ReAct" (Reason + Act) loop** or structured output parsing from scratch) is an **excellent, highly educational choice for a personal project**. [](https://www.youtube.com/watch?v=7-je5oEUMwo&t=61)
+
+Before modern LLM provider APIs natively supported the `tools=[...]` parameter, this was exactly how early agent frameworks like LangChain were built. Doing this manually gives you full visibility into the "magic" behind AI agents. [](https://www.reddit.com/r/LangChain/comments/1p1ktbs/can%5Fi%5Fcreate%5Fagents%5Fusing%5Fmodels%5Fthat%5Fdo%5Fnot/)
+
+Here is a breakdown of what happens when you take this approach, including the architectural loop, the benefits, and the major hurdles you will encounter.
+
+---
+
+### 🛠️ The Manual Agent Loop
+
+When you implement this manually, your application architecture follows a strict 5-step loop controlled by your python code: [](https://www.decodingai.com/p/tool-calling-from-scratch-to-production)
+
+1. **The System Prompt:** You inject the "Tool Schema" directly into the system instructions. You tell the model what tools exist, their arguments, and the exact string format it must reply with if it wants to use one. [](https://community.openai.com/t/prompting-best-practices-for-tool-use-function-calling/1123036)
+2. **The Reason Step:** The LLM evaluates the user request and textually outputs its "Thought". [](https://www.promptingguide.ai/agents/function-calling)
+3. **The Stop / Trap:** If the LLM wants to use a tool, it outputs a specifically formatted string (e.g., JSON inside a markdown code block, or a custom string like `Action: calculate_taxes[income=50000]`).
+4. **The Execution (Your Code):** Your backend parses that exact string, extracts the tool name and arguments, halts the LLM, and executes the actual Python function. [](https://towardsdatascience.com/tool-calling-explained-how-ai-agents-decide-what-to-do-next/)
+5. **The Feedback (Observation):** Your backend appends the tool's result back into the conversation context as an `Observation:` and hands control back to the LLM to either pick another tool or output a final response. [](https://machinelearningmastery.com/tool-calling-vs-code-execution-for-ai-agents-choosing-the-right-action-primitive/)
+
+---
+
+### 👍 The Big Advantages
+
+* **Ultimate Model Portability:** Native tool calling formatting varies wildly between OpenAI, Anthropic, and Google Gemini. If you handle tool calling purely via text prompting, your agent can seamlessly swap to virtually _any_ cheap open-source or local model (like Llama 3 or Qwen) without changing your backend code layout. [](https://www.freecodecamp.org/news/how-to-build-your-own-local-ai-agent-with-tool-calling-and-memory/)
+* **Deep Mastery of Agent Architecture:** You will understand exactly how stateless LLMs mimic "stateful" multi-step planning. It strips away framework abstraction, showing you how token contexts expand over time. [](https://www.youtube.com/watch?v=R7OCrqyGMeY&t=99)
+* **Complete Customization:** You are not bound by a provider's rigid JSON schema validation. You can invent your own concise shorthand to drastically save on prompt tokens. [](https://www.youtube.com/watch?v=R7OCrqyGMeY&t=99)
+
+---
+
+### ⚠️ The Challenges (What You'll Have to Solve)
+
+While rewarding, manual prompting introduces a few highly predictable failure modes that you will have to engineer around:
+
+| Challenge                | What Happens                                                                                                                             | The Manual Fix                                                                                             |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| **Format Hallucination** | The LLM misses a bracket, uses single quotes instead of double quotes in JSON, or writes conversational fluff before the tool call.      | Use rigid regex parsing or python's json.loads() inside a try/except block.                                |
+| **The Endless Loop**     | The model gets stuck repeatedly calling the exact same tool with the same arguments because it doesn't "understand" the failure message. | Implement a manual max\_iterations = 5 counter in your execution loop to force a hard stop.                |
+| **Argument Confusion**   | The model inputs a string where an integer belongs, or hallucinates an argument that doesn't exist in your tool definition.              | Write strict type-validation helper functions to sanitize the arguments before passing them to your tools. |
+
+---
+
+### 🚀 A Minimal Starter Prompt Blueprint
+
+If you write this code yourself, your system prompt will look something like this:
+
+text
+
+```
+You are an AI Agent with access to external tools. 
+To answer the user's request, you must follow a Thought, Action, Observation loop.
+
+Available Tools:
+- calculate_distance: Expects JSON {"origin": string, "destination": string}. Returns miles.
+- get_weather: Expects JSON {"location": string}. Returns temperature.
+
+Format your responses strictly like this:
+Thought: [Reason about what you need to do next]
+Action: [The exact name of the tool to use]
+Action Input: [The valid JSON arguments for the tool]
+
+Stop generating text immediately after writing 'Action Input:'. Wait for the environment to provide an Observation.
+
+Example:
+Thought: I need to check the weather in Tokyo.
+Action: get_weather
+Action Input: {"location": "Tokyo"}
+
+```
+
+
+
+Are you planning to build this using a **local open-source model** or a **commercial API**? If you'd like, I can provide a **bare-minimum Python script** demonstrating how to write the regex string-parser and execution loop without any external frameworks.
+
+* [](https://www.decodingai.com/p/tool-calling-from-scratch-to-production)  
+Decoding AI Magazine  
+AI Tool Calling: From Scratch to Production  
+October 28, 2025 — 5-step request-execute-respond flow mapping LLM function calls to environment feedback and outputs. Manual definitions using schem...
+* [](https://www.reddit.com/r/LangChain/comments/1p1ktbs/can%5Fi%5Fcreate%5Fagents%5Fusing%5Fmodels%5Fthat%5Fdo%5Fnot/)  
+Reddit·r/LangChain  
+Can I create agents using models that do NOT support tool ...  
+November 19, 2025 — While models that do not natively support tool calling, like Gemma 3, can theoretically be used with agents by generating structur...
+* [](https://www.youtube.com/watch?v=7-je5oEUMwo&t=61)  
+YouTube·Cloud With Raj  
+How AI Agents Choose Tools (And How to Explain It)  
+Sep 18, 2026 — When an AI agent needs to use tools, the user's prompt is sent to a piece of code, not directly to the LLM. Each tool provides its...  
+10m
+
+Show all
+
+# how to toggle the options of a model on openrouter in js depfree
+
+To toggle or switch options (like the model name, temperature, or max tokens) on OpenRouter using **dependency-free JavaScript** (no external packages like `openai` or `@openrouter/sdk`), you simply need to make a standard HTTP POST request using the native `fetch` API and change the variables in your payload dynamically. [](https://openrouter.ai/docs/quickstart)
+
+### Dependency-Free Implementation
+
+Here is a complete, lightweight function that allows you to easily pass and toggle any model and parameter options on the fly. This works natively in modern browsers, Node.js (v18+), Bun, or Deno.
+
+javascript
+
+```
+/**
+ * Sends a chat completion request to OpenRouter using native fetch.
+ * @param {string} apiKey - Your OpenRouter API Key
+ * @param {Object} options - Dynamic options to switch models or parameters
+ * @param {string} options.model - The OpenRouter model ID (e.g., 'google/gemini-flash-1.5-8b:free')
+ * @param {Array} options.messages - Array of chat messages
+ * @param {number} [options.temperature] - Optional sampling temperature
+ * @param {number} [options.max_tokens] - Optional maximum token limit
+ */
+async function queryOpenRouter(apiKey, options = {}) {
+  const url = 'https://openrouter.ai/api/v1/chat/completions';
+  
+  // Destructure with default fallbacks
+  const { 
+    model = 'openrouter/auto', // Toggles to auto-router if none specified
+    messages = [], 
+    temperature = 0.7, 
+    max_tokens = 1000 
+  } = options;
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+        // Optional but recommended by OpenRouter for rankings:
+        'HTTP-Referer': 'https://your-domain.com', 
+        'X-Title': 'My App' 
+      },
+      body: JSON.stringify({
+        model: model, // Toggling this changes the AI model
+        messages: messages,
+        temperature: temperature, // Toggling this adjusts creativity
+        max_tokens: max_tokens
+      })
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(`OpenRouter Error: ${response.status} - ${JSON.stringify(errorData)}`);
+    }
+
+    const data = await response.json();
+    return data.choices[0].message.content;
+
+  } catch (error) {
+    console.error('Request failed:', error);
+    throw error;
+  }
+}
+
+```
+
+
+
+### How to Toggle Options in Practice
+
+Because the function takes an options object, toggling models or adjusting generation settings is as simple as switching out variables in your request:
+
+javascript
+
+```
+const API_KEY = 'your_openrouter_api_key_here';
+const conversation = [{ role: 'user', content: 'Explain quantum computing in one sentence.' }];
+
+// Scenario 1: Toggle to a fast, free model for simple queries
+const fastResponse = await queryOpenRouter(API_KEY, {
+  model: 'meta-llama/llama-3-8b-instruct:free',
+  messages: conversation,
+  temperature: 0.3 // Lower temperature for more factual responses
+});
+console.log('Fast Model:', fastResponse);
+
+// Scenario 2: Toggle to a high-reasoning flagship model for complex tasks
+const flagshipResponse = await queryOpenRouter(API_KEY, {
+  model: 'anthropic/claude-3.5-sonnet',
+  messages: conversation,
+  temperature: 0.9, // Higher temperature for creativity
+  max_tokens: 500
+});
+console.log('Flagship Model:', flagshipResponse);
+
+```
+
+
+
+### Key Considerations
+
+* **Model IDs**: Always grab the correct exact identifier string (e.g., `google/gemini-2.5-flash` or `openrouter/auto`) directly from the OpenRouter Models Directory.
+* **Provider Routing**: If you want to toggle specific provider settings (like forcing a model to run on Lepton vs. Together AI), you can append a routing preference to your payload using the `provider` object inside the body, as outlined in the OpenRouter API Docs. [](https://www.youtube.com/watch?v=l-JZm60cpUU&t=33)
+
+Would you like assistance in implementing a **fallback mechanism** so that if your primary model fails, it automatically toggles to a secondary one? Or are you looking to implement **streaming responses** using dependency-free JavaScript?
+
+* [](https://openrouter.ai/docs/quickstart)  
+OpenRouter  
+OpenRouter Quickstart Guide  
+OpenRouter gives you access to hundreds of AI models through a single API endpoint. It handles fallbacks automatically and picks t...
+* [](https://www.youtube.com/watch?v=l-JZm60cpUU&t=33)  
+YouTube·Real Python  
+Accessing Multiple AI Models With the OpenRouter API  
+Jun 11, 2026 — The OpenRouter API provides a routing layer between an application and AI providers, enabling development, experimentation, and it...  
+7m
+* [](https://meta.discourse.org/t/configuring-openrouter-language-models/341526)  
+Discourse Meta  
+Configuring OpenRouter language models - Discourse Meta  
+Dec 10, 2024 — Manual configuration for other models. To use an OpenRouter. Click on the Set up button on “Manual configuration”; Configure the f...
+
+Show all
+
+# how to know the specific options like reasoning effort and toggle a model on openrouter in js depfree
+
+To configure reasoning and toggle model behaviors on OpenRouter in a dependency-free JavaScript environment, you interact directly with the [OpenRouter Models API](https://openrouter.ai/docs/client-sdks/typescript/models/modelreasoning) and the [Responses API](https://openrouter.ai/docs/api%5Freference/responses/reasoning) using native `fetch`. [](https://openrouter.ai/docs/api%5Freference/responses/reasoning)
+
+### 1\. Discovering Specific Model Options
+
+To dynamically know whether a model supports reasoning, requires it, or what effort levels it allows, fetch the live capabilities from the OpenRouter models endpoint:
+
+javascript
+
+```
+async function getModelReasoningOptions(modelId) {
+  try {
+    const response = await fetch('https://openrouter.ai');
+    const data = await response.json();
+    
+    // Find the specific model you want to inspect
+    const model = data.data.find(m => m.id === modelId);
+    
+    if (!model) {
+      console.log("Model not found.");
+      return null;
+    }
+
+    // Inspect the architecture or reasoning parameters
+    // Note: OpenRouter details are provided in the model metadata object
+    const reasoning = model.architecture?.reasoning; 
+    
+    if (!reasoning) {
+      console.log(`${modelId} does not support reasoning features.`);
+      return null;
+    }
+
+    return {
+      mandatory: reasoning.mandatory, // true if it cannot be turned off
+      supportedEfforts: reasoning.supportedEfforts, // e.g., ['high', 'medium', 'low']
+      supportsMaxTokens: reasoning.supportsMaxTokens // true if it accepts max_tokens instead of effort
+    };
+  } catch (error) {
+    console.error("Error fetching model info:", error);
+  }
+}
+
+// Example usage:
+// getModelReasoningOptions('openai/o4-mini').then(console.log);
+
+```
+
+
+
+### 2\. Toggling Reasoning and Setting Effort
+
+When sending your text generation payload via `fetch`, you control reasoning explicitly through the `reasoning` parameter block inside your JSON payload. [](https://x.com/OpenRouter/status/1969427723098435738)
+
+#### To Enable and Request Specific Effort
+
+If a model supports effort-level adjustments (like `high`, `medium`, `low`), pass the `effort` string: [](https://openrouter.ai/docs/api%5Freference/responses/reasoning)
+
+You can configure the `reasoning.effort` parameter (e.g., `'high'`, `'medium'`, or `'low'`) directly inside the request body sent to the chat completions endpoint. [](https://openrouter.ai/docs/api%5Freference/responses/reasoning)
+
+To disable reasoning on models where it is active by default, pass the `reasoning: { enabled: false }` configuration object in your payload. [](https://x.com/OpenRouter/status/1969427723098435738)
+
+Would you like assistance setting up **streaming** to capture the thinking process tokens in real time, or do you need help parsing out the **reasoning text** from the final response object?
+
+* [](https://openrouter.ai/docs/api%5Freference/responses/reasoning)  
+OpenRouter  
+Responses API Reasoning - Advanced AI Reasoning  
+reasoning: { effort: 'high' }, Reasoning Enable streaming to see reasoning develop in real-time: reasoning: { effort: 'medium' },
+* [](https://x.com/OpenRouter/status/1969427723098435738)  
+X  
+OpenRouter on X: "@xai Reasoning is enabled by default, giving you ...  
+Sep 20, 2025 — Reasoning is enabled by default, giving you deeper insights and more thoughtful responses out of the box. To disable reasoning, si...
+* [](https://openrouter.ai/docs/client-sdks/typescript/models/modelreasoning)  
+OpenRouter  
+ModelReasoning - OpenRouter | Documentation  
+Reasoning effort configuration. Omitted for non-reasoning models and dynamic router models. Default reasoning enabled state when t...
+
+# compare classic openai compatible api and responses api
+
+The **classic OpenAI-compatible API** (the `/v1/chat/completions` endpoint) and the newer **OpenAI Responses API** (the `/v1/responses` endpoint) represent two distinct generations of AI interaction design. While Chat Completions is a stateless text-generation interface, the Responses API is a unified, stateful interface built explicitly for multi-turn agentic workflows. [](https://developers.openai.com/api/docs/guides/migrate-to-responses)
+
+Here is a direct comparison of how they operate, their key differences, and when to use each.
+
+### At a Glance Comparison
+
+| Feature                 | Classic OpenAI-Compatible API (/v1/chat/completions)                                               | OpenAI Responses API (/v1/responses)                                                                     |
+| ----------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| **Primary Design Goal** | Stateless text generation and basic chat.                                                          | Complex multi-turn agentic workflows and tool-heavy tasks.                                               |
+| **Ecosystem Support**   | **Universal**. Supported by virtually all open models, local runners, and third-party wrappers.    | **Growing**. Primarily native to OpenAI and select early adopters via the Open Responses standard.       |
+| **State Management**    | **Stateless**. The developer must manually track and resend the entire message history every turn. | **Stateful**. Context is preserved natively on the server. Developers can pass a previous\_response\_id. |
+| **Request Structure**   | Array of messages with explicit roles (system, user, assistant).                                   | Sequence of typed "items" (inputs, tool calls, tool results, reasoning).                                 |
+| **Built-in Tools**      | Limited to basic function calling and text vision.                                                 | Deep, native support for web search, file search, computer use, and MCP servers.                         |
+| **Output Format**       | A nested choices\[\] array containing message text.                                                | A flexible output\[\] timeline mapping the agent's exact execution steps.                                |
+
+---
+
+### Key Architectural Differences
+
+#### 1\. State and Context Management
+
+* **Chat Completions:** Completely stateless. If you have a conversation that is 10 turns long, you must package all 10 previous messages and send them back to the server on the 11th turn. This requires manual token truncation and context management on your end. [](https://live.paloaltonetworks.com/t5/engineering-blogs/openai-responses-api-vs-chat-completions-vs-anthropic-messages/ba-p/1264688)
+* **Responses API:** Introduces server-side context tracking. You only need to send the new user prompt alongside a `previous_response_id`. The server automatically pieces together the history, reducing the code complexity needed to build chatbots. [](https://restfulapi.net/responses-api-vs-chat-completions/)
+
+#### 2\. Structural Paradigms (Messages vs. Items)
+
+* **Chat Completions:** Operates strictly on a text transcript paradigm. Even tool calls and tool results must be jammed into the message history array as specific message types. [](https://hackernoon.com/openai-responses-api-vs-chat-completions-what-changes-for-agents)
+* **Responses API:** Shifts the core primitive to an "item sequence". A single API call doesn't just return a text block; it generates an enumerable timeline of what the model thought (reasoning blocks), what tools it decided to trigger, what those tools returned, and its final response. [](https://gist.github.com/jazzenchen/46b2a5301fb5b6d6dce312b2272d7d8f)
+
+#### 3\. Agentic & Tool Tooling Capabilities
+
+* **Chat Completions:** Expects the developer to execute functions locally. If a model wants to call a tool, the API pauses, hands control to the client, waits for the client to run the tool, and requires the client to push the result back in a new API call.
+* **Responses API:** Handles the entire agent loop natively. It supports built-in, hosted execution of complex actions like **Web Search**, **File Search**, and **Computer Use** directly inside OpenAI’s environment. [](https://developers.openai.com/api/docs/guides/migrate-to-responses)
+
+---
+
+### Which one should you use?
+
+**Choose the Classic OpenAI-Compatible API if:**
+
+* You are building applications intended to work across multiple LLM providers (e.g., swapping OpenAI for local models running on Ollama or vLLM).
+* You are maintaining legacy codebases, building simple single-turn apps, or using developer tooling (like Cursor or LiteLLM) optimized for universal endpoint mapping.
+* Users on [Reddit](https://www.reddit.com/r/OpenAI/comments/1nf034r/responses%5Fapi%5Fvs%5Fchat%5Fcompletions%5Fapi/) note that sticking to Chat Completions is best if model flexibility and avoiding provider lock-in are high priorities for your stack. [](https://www.youtube.com/watch?v=b-BzeHF6WLA)
+
+**Choose the OpenAI Responses API if:**
+
+* You are starting a brand new project natively within the OpenAI ecosystem and want to leverage their latest agent features.
+* Your application relies heavily on multi-turn interactions, deep reasoning steps, or multi-agent architectures.
+* You want to drastically simplify your backend codebase by offloading state-tracking, session management, and tool execution orchestration to the API server. [](https://www.youtube.com/watch?v=MK2rPpQP8pw)
+
+Are you planning to integrate this into an **existing codebase** or start a **new project**? Let me know if you would like to see a brief **code comparison** of how a multi-turn conversation looks in both formats!
+
+* [](https://developers.openai.com/api/docs/guides/migrate-to-responses)  
+OpenAI Developers  
+Migrate to the Responses API - OpenAI Developers  
+The Responses API is our new API primitive, an evolution of Chat Completions which brings added simplicity and powerful agentic pr...
+* [](https://live.paloaltonetworks.com/t5/engineering-blogs/openai-responses-api-vs-chat-completions-vs-anthropic-messages/ba-p/1264688)  
+Palo Alto Networks  
+OpenAI Responses API vs. Chat Completions vs. Anthropic ...  
+September 18, 2026 — Stateless text generation | Agentic workflows with built-in tools | Claude-native capabilities | | State management
+* [](https://crazyrouter.com/en/blog/chat-completions-vs-responses-vs-messages-api)  
+Crazyrouter  
+v1/chat/completions vs /v1/responses vs /v1/messages  
+June 4, 2026 — A practical guide to choosing the correct AI API endpoint. Learn the differences between OpenAI Chat Completions, OpenAI Responses...
+
+Show all
+
 
