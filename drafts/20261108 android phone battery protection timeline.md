@@ -1,3 +1,5 @@
+<!-- despite some psychological effects, it should generally drop linearly i guess -->
+
 # compare full and 95 capped phone charging
 
 8:51 PM
