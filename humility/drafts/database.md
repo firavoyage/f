@@ -6,19 +6,23 @@ database
       - title
       - is deleted
       - creation time
-    - (thread).yaml: message[]
-      - has failed
-      <!-- - error? # can exist whether or not has failed
-        - type: network, status code, ...
-        - message?
-        - payload? -->
-      - id # local generated
-      - role: system | user | assistant | tool
-      - content
-      - usage # input and output token usage
-      - perf # metrics such as ttft, tps (might not be available wo streaming)
-      - start_time
-      - end_time
+    - thread
+      - (thread).yaml: message[]
+        - has failed
+        <!-- - error? # can exist whether or not has failed
+          - type: network, status code, ...
+          - message?
+          - payload? -->
+        - id # local generated
+        - role: system | user | assistant | tool
+        - content
+        - usage # input and output token usage
+        - perf # metrics such as ttft, tps (might not be available wo streaming)
+        - start_time
+        - end_time
+    - log
+      - message
+        - (message).yaml: payload
 - config
   - chat
     - config.yaml

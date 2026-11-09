@@ -12,92 +12,104 @@ generation
 
 ```js
 async function queryOpenRouter() {
-  const apiKey = "YOUR_OPENROUTER_API_KEY";
-  
-  const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${apiKey}`,
-      "HTTP-Referer": "https://your-site-url.com", // Optional
-      "X-OpenRouter-Title": "Your App Name",       // Optional
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      model: "openrouter/free",
-      messages: [{ role: "user", content: "Explain quantum computing in one sentence." }]
-    })
-  });
+  const apiKey = 'YOUR_OPENROUTER_API_KEY'
 
-  const data = await response.json();
-  console.log(data.choices[0].message.content);
+  const response = await fetch(
+    'https://openrouter.ai/api/v1/chat/completions',
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'HTTP-Referer': 'https://your-site-url.com', // Optional
+        'X-OpenRouter-Title': 'Your App Name', // Optional
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'openrouter/free',
+        messages: [
+          {
+            role: 'user',
+            content: 'Explain quantum computing in one sentence.',
+          },
+        ],
+      }),
+    },
+  )
+
+  const data = await response.json()
+  console.log(data.choices[0].message.content)
 }
 
-queryOpenRouter();
+queryOpenRouter()
 ```
 
 ```js
 async function streamOpenRouter() {
-  const apiKey = "YOUR_OPENROUTER_API_KEY";
+  const apiKey = 'YOUR_OPENROUTER_API_KEY'
 
-  const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${apiKey}`,
-      "Content-Type": "application/json"
+  const response = await fetch(
+    'https://openrouter.ai/api/v1/chat/completions',
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'openrouter/free',
+        messages: [
+          { role: 'user', content: 'Write a short poem about coding.' },
+        ],
+        stream: true,
+      }),
     },
-    body: JSON.stringify({
-      model: "openrouter/free",
-      messages: [{ role: "user", content: "Write a short poem about coding." }],
-      stream: true
-    })
-  });
+  )
 
-  const reader = response.body.getReader();
-  const decoder = new TextDecoder("utf-8");
+  const reader = response.body.getReader()
+  const decoder = new TextDecoder('utf-8')
 
   while (true) {
-    const { done, value } = await reader.read();
-    if (done) break;
+    const { done, value } = await reader.read()
+    if (done) break
 
-    const chunk = decoder.decode(value, { stream: true });
-    chunk.split("\n").forEach(line => {
-      if (line.startsWith("data: ") && !line.includes("[DONE]")) {
+    const chunk = decoder.decode(value, { stream: true })
+    chunk.split('\n').forEach((line) => {
+      if (line.startsWith('data: ') && !line.includes('[DONE]')) {
         try {
-          const parsed = JSON.parse(line.replace("data: ", "").trim());
-          process.stdout.write(parsed.choices[0]?.delta?.content || "");
+          const parsed = JSON.parse(line.replace('data: ', '').trim())
+          process.stdout.write(parsed.choices[0]?.delta?.content || '')
         } catch (e) {}
       }
-    });
+    })
   }
 }
 
-streamOpenRouter();
+streamOpenRouter()
 ```
 
 ```js
 async function fetchData(url) {
   try {
-    const response = await fetch(url);
+    const response = await fetch(url)
 
     // 1. Check if the HTTP status code is in the 200–299 range
     if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+      throw new Error(`HTTP error! Status: ${response.status}`)
     }
 
     // 2. Parse the JSON if the response is successful
-    const data = await response.json();
-    return data;
-
+    const data = await response.json()
+    return data
   } catch (error) {
     // 3. Catch both network errors AND the manual HTTP errors thrown above
-    console.error("Fetch operation failed:", error.message);
-    
+    console.error('Fetch operation failed:', error.message)
+
     // Perform UI updates here (e.g., hide loading spinner, show error message)
   }
 }
 
 // Example usage:
-fetchData("https://example.com");
+fetchData('https://example.com')
 ```
 
 ```json
@@ -128,5 +140,3 @@ fetchData("https://example.com");
 ---
 
 a user msg will be ignored if it's followed by a failed response
-
-

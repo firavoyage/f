@@ -21,24 +21,43 @@ type message = {
   payload?
 }
 
-export function chat(messages: message[], endpoint, key?) {
+type chat = {
+  messages: message[]
+  model: string
+  endpoint: string
+  key?: string
+}
+
+export async function chat(options: chat) {
+  let { messages, model, endpoint, key } = options
+
   messages = map(messages, (message, index) => {
     const { has_failed, role, content } = message
 
-    if (has_failed || role == 'user' && messages?.[index + 1]?.has_failed) {
-      return 
-    } 
+    if (has_failed || (role == 'user' && messages?.[index + 1]?.has_failed)) {
+      return
+    }
 
     return { role, content }
   })
 
   let start_time = now().timestamp
 
-  
+  const response = await handle(() =>
+    fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${key}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model,
+        messages: [
+          { role: 'user', content: 'Write a short poem about coding.' },
+        ],
+      }),
+    }),
+  )
 
   let end_time = now().timestamp
-
-
 }
-
-

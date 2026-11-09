@@ -86,12 +86,24 @@ ref:
       "const { ${0} } = ${1}"
     ],
   },
+  "deconstruct let": {
+    "prefix": "dl",
+    "body": [
+      "let { ${0} } = ${1}"
+    ],
+  },
   "deconstruct array const": {
     "prefix": "da",
     "body": [
       "const [${0}] = ${1}"
       // "const [${1:name}, set_${1:name}] = use_${0:global}"
       // "const [${1:name}, ${2:set_}${1:name}] = use_${0:global}"
+    ],
+  },
+  "deconstruct array let": {
+    "prefix": "dal",
+    "body": [
+      "let [${0}] = ${1}"
     ],
   },
   "export const": {

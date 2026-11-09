@@ -170,4 +170,10 @@ it would take all first level threads separately, and merge asdf and fdas (all s
 
 yes it's opinionated.
 
+---
+
+doesnt feel it quite meaningful to keep the original payload.
+
+you may record in logs if you like.
+
 
