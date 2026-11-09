@@ -1,5 +1,9 @@
 generation
 
+- chat endpoint key? messages -> message, metrics
+
+
+
 ```js
 async function queryOpenRouter() {
   const apiKey = "YOUR_OPENROUTER_API_KEY";

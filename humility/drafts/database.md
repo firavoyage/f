@@ -6,7 +6,7 @@ database
       - title
       - is deleted
       - creation time
-    - (thread).yaml
+    - (thread).yaml: message[]
       - has failed
       <!-- - error? # can exist whether or not has failed
         - type: network, status code, ...
