@@ -3,6 +3,7 @@ database
 - data
   - chat
     - threads.yaml: thread -> thread metadata
+      - title
       - is deleted
       - creation time
     - (thread).yaml

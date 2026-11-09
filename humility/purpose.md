@@ -110,4 +110,19 @@ anyway, it matters less and has almost no impact on ux.
 
 and seems it conflicts w some core purpose why i need this. yeah you may export the chats, but it's hard to automate it, and if you really do so, often you could not benefit from web only any more.
 
+---
+
+you may have folders. maybe nested.
+
+you will be able to create folders and navigate through folders.
+
+likely you will work inside a project continuously, rather than chatting in different folders every thread you create.
+
+so you would have a stateful cwd, and you will have new threads automatically placed inside.
+
+you dont necessarily have to name your threads explicitly. it can be just the first msg you send, trimmed. you may also auto gen the title or change the title dynamically on the fly as you progress in the thread.
+
+well, you may have an option to 
+
+
 
