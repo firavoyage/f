@@ -186,4 +186,10 @@ guess it would benefit more.
 
 <!-- yeah, i (somewhat) hand code -->
 
+---
+
+> Your billing address is in a region that does not have access to models from OpenAI, Anthropic, and Google. All other models remain available.
+
+technically it's virtually non existent it seems.
+
 
