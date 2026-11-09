@@ -309,5 +309,661 @@ September 24, 2026 — agents receive the full markdown content of each result p
 
 Show all
 
+# what if you query and scrape manually to implement web search for agents for personal projects
+
+Building a manual web scraper and query system for your AI agents is a fantastic personal project. It gives you complete control over costs, data formatting, and privacy.
+
+**Yes, you can absolutely do this**, but you will quickly run into three major roadblocks: **IP blocking/CAPTCHAs**, the complexity of **parsing modern Javascript-heavy websites**, and the need to **turn messy HTML into clean text/markdown** for the LLM.
+
+Here is a blueprint of how to build it, the tech stack to use, and the pitfalls to watch out for.
+
+---
+
+### 🏛️ The Architecture
+
+A manual search tool for an agent usually follows a **two-step pipeline**:
+
+1. **The Searcher (Querying):** The agent inputs a query  
+→  
+→  
+⁠ your script fetches search engine results (URLs).
+2. **The Scraper (Fetching):** The agent picks the most relevant URL(s)  
+→  
+→  
+⁠ your script visits the page, extracts the text, and feeds it back to the agent.
+
+---
+
+### 🛠️ The Recommended Tech Stack (Python)
+
+#### 1\. For Querying (Finding URLs)
+
+Instead of scraping Google directly (which will block you almost instantly), use alternative search endpoints or lightweight aggregators.
+
+* **DuckDuckGo Python Library (`duckduckgo_search`):** A free, unofficial library that queries DDG without an API key. It is highly reliable for personal projects.
+* **SearXNG:** An open-source, privacy-respecting metasearch engine. You can host your own instance via Docker and query its JSON API for free, aggregated results from Google, Bing, and Brave.
+
+#### 2\. For Scraping (Extracting Content)
+
+* **Static Pages:** Use `httpx` or `requests` to fetch the HTML, and `BeautifulSoup` (bs4) to parse it.
+* **Dynamic/JS Pages (SPAs):** Websites built with React or Next.js won't show content via standard requests. Use **Playwright** or **Selenium** in headless mode to let the Javascript load before grabbing the HTML.
+
+#### 3\. For LLM Optimization (Cleaning data)
+
+LLMs don't need raw HTML; it wastes tokens.
+
+* **`crawl4ai` or `markdownify`:** Turn the raw HTML into clean Markdown. LLMs understand Markdown syntax (headers, links, tables) exceptionally well.
+* **`Trafilatura`:** A specialized Python library designed to strip away ads, headers, footers, and sidebars, leaving _only_ the core article text.
+
+---
+
+### ⚠️ The Core Challenges & Solutions
+
+| Challenge              | Why it happens                                                  | The Manual Fix                                                                                              |
+| ---------------------- | --------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| **IP Bans & CAPTCHAs** | Google/Bing detect automated traffic immediately.               | Use **DuckDuckGo**, rotate your User-Agents, add random delays between requests, or use a proxy service.    |
+| **Token Bloat**        | Raw HTML contains thousands of lines of CSS, JS, and nav menus. | Run the text through **Trafilatura** or convert it to **Markdown** before sending it to the agent.          |
+| **Infinite Loading**   | The page requires a user scroll or button click to reveal data. | Use **Playwright** to script basic interactions (e.g., scroll down, wait 2 seconds) before extracting text. |
+
+---
+
+### 🚀 A Quick Code Conceptual Example
+
+Here is how you can write a quick, free search tool for your agent using DuckDuckGo and Trafilatura:
+
+python
+
+```
+from duckduckgo_search import DDGS
+import trafilatura
+
+def agent_search_tool(query: str, max_results: int = 3):
+    # 1. Query the search engine
+    with DDGS() as ddgs:
+        results = [r for r in ddgs.text(query, max_results=max_results)]
+    
+    scraped_data = []
+    
+    # 2. Scrape the top URLs found
+    for result in results:
+        url = result['href']
+        print(f"Scraping: {url}")
+        
+        # Fetch and extract clean main text content
+        downloaded = trafilatura.fetch_url(url)
+        clean_text = trafilatura.extract(downloaded) if downloaded else ""
+        
+        scraped_data.append({
+            "title": result['title'],
+            "url": url,
+            "content": clean_text[:2000] # Limit characters to save tokens
+        })
+        
+    return scraped_data
+
+```
+
+
+
+If you want to build this out, tell me:
+
+* What **framework** are you using for your agents (LangChain, AutoGen, CrewAI, or a custom loop)?
+* Are you planning to scrape **specific target websites** (like e-commerce or forums), or just **general web searches**?
+
+I can help you write the exact tool integration or custom scraping selectors you need.
+
+# what if you query and scrape manually to implement web search for agents for personal projects
+
+Building a manual query-and-scrape system for your personal AI agents is a fantastic, highly customizable approach. **Implementing this manually gives you total control over costs, data formatting, and filtering, but you will trade that control for continuous maintenance.**
+
+Here is how a manual search-and-scrape pipeline breaks down, along with the technical stack, architectural flow, and major hurdles you will need to handle.
+
+---
+
+### 🗺️ The Architecture Flow
+
+A typical DIY search agent follows a four-step pipeline:
+
+```
+[Agent Query] ➔ [1. Search Provider] ➔ [2. Link Extractor] ➔ [3. Web Scraper] ➔ [4. Context Optimizer] ➔ [LLM Response]
+
+```
+
+1. **Query Generation:** The agent takes a user prompt and rewrites it into search-engine-friendly keywords.
+2. **Search / HTML Fetching:** The system hits a search engine (like Google, Bing, or DuckDuckGo) to get the results page.
+3. **Scraping & Parsing:** The system extracts the top 3–5 URLs, fetches the raw HTML of those pages, and strips away the noise (ads, nav bars, footers).
+4. **Context Stuffing:** The clean text is chunked, ranked, and fed into your LLM's context window as reference material.
+
+---
+
+### 🛠️ Recommended Tech Stack for Personal Projects
+
+Depending on how deeply you want to build this yourself, here are the best tools for the job:
+
+| Pipeline Step             | Light / Low-Code Stack                                                                       | Hardcore DIY Stack                                                              |
+| ------------------------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| **1\. Search Extraction** | **DuckDuckGo Python library** (duckduckgo\_search) or **SearXNG** (self-hosted meta-search). | Raw HTTP requests to Google/Bing using rotating user-agents (High maintenance). |
+| **2\. HTML Scraping**     | **Trafilatura** or **BeautifulSoup4** (Python).                                              | **Playwright** or **Selenium** (for JavaScript-heavy, dynamic websites).        |
+| **3\. Content Cleaning**  | **Markdownify** (converts raw HTML straight to clean, compressed markdown).                  | Custom Regex and HTML tag stripping.                                            |
+
+---
+
+### ⚠️ The Major Challenges (And How to Fix Them)
+
+If you build this manually, you will immediately run into three major roadblocks. Here is how to anticipate them:
+
+#### 1\. CAPTCHAs and Bot Detection
+
+Search engines and major websites hate being scraped. If your agent makes 50 requests an hour from your home IP address, you will quickly see **403 Forbidden** errors or Cloudflare CAPTCHA blocks.
+
+* **The Personal Project Fix:** Use **DuckDuckGo** instead of Google. They are significantly more lenient with basic scripting. Alternatively, route your scraper through a cheap rotating proxy service or use a self-hosted **SearXNG** instance on a local Docker container.
+
+#### 2\. JavaScript-Heavy Websites (SPAs)
+
+Many modern sites (built on React or Next.js) return a blank HTML page initially. The actual content loads via JavaScript _after_ the page opens. A basic tool like `requests` or `BeautifulSoup` will capture nothing but a loading spinner.
+
+* **The Personal Project Fix:** Use **Playwright** in "headless" mode. It spins up a background browser instance, lets the JavaScript execute for a second, and then grabs the fully rendered text.
+
+#### 3\. Context Window Overload (Noise)
+
+A single web page can easily contain 50,000 words of legal text, sidebar links, and ad scripts, but only 500 words of actual article content. Dumping raw HTML into your LLM will waste your API tokens and confuse the agent.
+
+* **The Personal Project Fix:** Use Python libraries like **Trafilatura** or **Readability** (the engine behind Safari's Reader Mode). They use clever algorithms to strip out everything except the core article text.
+
+---
+
+### 💡 The Alternative: Hybrid Approach
+
+Before going full DIY, consider **free-tier search APIs designed specifically for LLMs**. Services like **Jina AI Reader** (`r.jina.ai/URL`), **Firecrawl**, or **Tavily** offer free monthly tiers for hobbyists. You simply pass them a URL or search query, and they return perfectly formatted, LLM-ready markdown, handling all the proxies, CAPTCHAs, and cleaning for you behind the scenes.
+
+To help you narrow down the best setup, tell me:
+
+* Do you prefer a **pure Python/script-based** setup, or are you open to running **Docker containers** (like SearXNG)?
+* What kind of websites do you expect your agent to read most? (**News articles, documentation, or dynamic social media sites?**)
+* Would you like a **minimal Python code template** using DuckDuckGo and Trafilatura to get you started?
+
+# how to parse thinking on openrouter api in js depfree
+
+To parse the **thinking** process (reasoning tokens) from the **OpenRouter API** in JavaScript without any dependencies, you can use the native `fetch` API along with a `ReadableStream`.
+
+OpenRouter returns reasoning tokens inside the streaming chunks, typically using the **`choices[0].delta.reasoning`** field (or sometimes wrapped in `<think>` tags depending on the underlying model's raw output).
+
+Here is a complete, **dependency-free JavaScript implementation** for Node.js (v18+) or the browser:
+
+javascript
+
+```
+async function streamOpenRouter() {
+  const apiKey = "YOUR_OPENROUTER_API_KEY";
+  
+  const response = await fetch("https://openrouter.ai", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model: "deepseek/deepseek-r1", // Example model that supports reasoning
+      messages: [{ role: "user", content: "Calculate 15 * 24 and explain step by step." }],
+      stream: true
+    })
+  });
+
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder("utf-8");
+  let buffer = "";
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+
+    // Decode the chunk and add it to our buffer
+    buffer += decoder.decode(value, { stream: true });
+    const lines = buffer.split("\n");
+
+    // Save the last incomplete line back to the buffer
+    buffer = lines.pop() || "";
+
+    for (const line of lines) {
+      const cleanedLine = line.trim();
+      if (!cleanedLine || cleanedLine === "data: [DONE]") continue;
+
+      if (cleanedLine.startsWith("data: ")) {
+        try {
+          const parsed = JSON.parse(cleanedLine.replace(/^data: /, ""));
+          const delta = parsed.choices?.[0]?.delta;
+
+          // 1. Check for explicit OpenRouter reasoning field
+          if (delta?.reasoning) {
+            process.stdout.write(`[Thinking] ${delta.reasoning}`);
+          } 
+          // 2. Check for standard content (final answer)
+          else if (delta?.content) {
+            process.stdout.write(delta.content);
+          }
+        } catch (e) {
+          // Handle potential JSON parsing errors for partial stream fragments
+        }
+      }
+    }
+  }
+}
+
+streamOpenRouter();
+
+```
+
+
+
+### Key Details to Know
+
+* **The Field:** OpenRouter standardizes reasoning tokens into `delta.reasoning`. Content tokens go into `delta.content`.
+* **Fallback Behavior:** If you use a model where OpenRouter doesn't extract the reasoning into its own field, the thinking process will arrive inside `delta.content` surrounded by `<think>` and `</think>` tags. You can parse those out using a basic string state machine or regex if needed.
+
+Are you running this code in the **browser** or **Node.js**, and which specific **model** are you planning to target?
+
+# how to parse thinking on non streaming openrouter api in js depfree
+
+To parse the "thinking" or reasoning process of models like DeepSeek-R1 on a **non-streaming** OpenRouter API call using dependency-free JavaScript (`fetch`), you need to target a specific property inside the response payload.
+
+OpenRouter adheres to the OpenAI-compatible standard. For non-streaming requests, reasoning tokens are provided inside the `message` object of the choice under the `reasoning` parameter (or `reasoning_content` depending on the provider upstream, though OpenRouter normalizes this as `reasoning`). [](https://openrouter.ai/docs/api%5Freference/overview)
+
+Here is the clean, **dependency-free JavaScript solution** using native `fetch` and modern `async/await` syntax:
+
+javascript
+
+```
+async function getModelResponse() {
+  const apiKey = 'YOUR_OPENROUTER_API_KEY'; // Replace with your actual key
+  
+  try {
+    const response = await fetch('https://openrouter.ai', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+        // Optional headers to identify your app on OpenRouter ranking leaderboards
+        'HTTP-Referer': 'https://your-site.com', 
+        'X-Title': 'My App'
+      },
+      body: JSON.stringify({
+        model: 'deepseek/deepseek-r1', // A model that outputs thinking tokens
+        messages: [
+          { role: 'user', content: 'Why is the sky blue?' }
+        ],
+        stream: false // Non-streaming mode
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    
+    // Extracting the payload
+    const choice = data.choices[0].message;
+    
+    // OpenRouter maps the thinking block to .reasoning
+    const thinking = choice.reasoning || choice.reasoning_content || null;
+    const finalAnswer = choice.content;
+
+    console.log('--- THINKING PROCESS ---');
+    console.log(thinking ? thinking : 'No reasoning tokens returned.');
+    
+    console.log('\n--- FINAL ANSWER ---');
+    console.log(finalAnswer);
+
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
+
+getModelResponse();
+
+```
+
+
+
+### Key Considerations
+
+1. **Fallback Strategy:** OpenRouter passes reasoning through `.reasoning`. However, depending on the internal routing provider it maps to, it can occasionally present as `.reasoning_content`. The line `choice.reasoning || choice.reasoning_content` safely captures both fallback options.
+2. **Text-based fallback:** In rare instances where a provider does not support distinct fields, the thinking block might be included inside the standard `content` block wrapped in `<think>...</think>` tags. If `choice.reasoning` returns undefined, you can parse it from `choice.content` using a simple regular expression:  
+javascript  
+```  
+const match = choice.content.match(/<think>([\s\S]*?)<\/think>/);  
+const extractedThinking = match ? match[1].trim() : null;  
+const cleanAnswer = choice.content.replace(/<think>[\s\S]*?<\/think>/, '').trim();  
+```  
+
+
+Are you using a **Node.js** backend or running this code directly in the **browser**? I can adjust the code block to include proxy considerations or environment variable management depending on your environment.
+
+* [](https://openrouter.ai/docs/api%5Freference/overview)  
+OpenRouter  
+OpenRouter API Reference  
+OpenRouter normalizes the schema across models and providers to comply with the OpenAI Chat API. This means that choices is always...
+* [](https://openrouter.ai/blog/insights/every-modality-one-api/)  
+OpenRouter  
+One API for Image, Video, Audio, Embeddings & Transcription  
+Jul 16, 2026 — On OpenRouter, every one of those modalities runs through a single OpenAI-compatible base … you change the model string and the co...
+
+# how does openai compatible api output reasoning
+
+### how does openai compatible api output reasoning
+
+OpenAI-compatible APIs expose a model's step-by-step thinking process—often referred to as reasoning or chain-of-thought (CoT) tokens—primarily through **non-standard additions to the `Chat Completions` and `Responses` API structures**. [](https://github.com/vllm-project/vllm/issues/27755)
+
+Because OpenAI's native API historically kept its reasoning tokens hidden from the output (only billing for them), open-weight providers and gateways had to establish their own extensions to expose this data. [](https://github.com/vllm-project/vllm/issues/27755)
+
+Here is how OpenAI-compatible APIs structure and output reasoning across different formats:
+
+#### 1\. The `reasoning` Field (Chat Completions)
+
+The standard way for OpenAI-compatible servers (such as [vLLM](https://docs.vllm.ai/en/latest/serving/online%5Fserving/openai%5Fcompatible%5Fserver/), Ollama, and gateways like OpenRouter) to deliver chain-of-thought data is by injecting a new key alongside `content` in the message object: [](https://github.com/openai/openai-dotnet/issues/813)
+
+json
+
+```
+{
+  "id": "chatcmpl-12345",
+  "object": "chat.completion",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "reasoning": "Let's first calculate 15% of 80. 10% is 8, 5% is 4, so 8 + 4 = 12...", 
+        "content": "The answer is 12."
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 15,
+    "completion_tokens": 45,
+    "total_tokens": 60
+  }
+}
+
+```
+
+
+
+* **Historical Variant:** Some older implementations or specific model architectures used `reasoning_content` instead of `reasoning`. Most frameworks have standardized around `reasoning` for simplicity and compatibility. [](https://github.com/anomalyco/opencode/issues/13130)
+* **Impact on multi-turn conversations:** When passing the assistant's previous message back to the API for the next turn, developers often include the `reasoning` block so the model retains its state of mind. [](https://docs.vllm.ai/en/v0.30.0/examples/reasoning/openai%5Fchat%5Fcompletion%5Fwith%5Freasoning/)
+
+#### 2\. Server-Sent Events (Streaming)
+
+When streaming data (`"stream": true`), reasoning tokens are usually emitted first, allowing UI components to show a live "Thinking..." block before the actual text generates. [](https://openrouter.ai/docs/guides/best-practices/reasoning-tokens)
+
+The chunks arrive via data deltas containing a `reasoning` key: [](https://github.com/openai/openai-dotnet/issues/813)
+
+json
+
+```
+data: {"choices": [{"delta": {"reasoning": "Let's "}}]}
+data: {"choices": [{"delta": {"reasoning": "analyze "}}]}
+...
+data: {"choices": [{"delta": {"content": "The "}}]}
+data: {"choices": [{"delta": {"content": "answer "}}]}
+
+```
+
+
+
+Once the reasoning block is complete, the API transitions to emitting standard `content` tokens. [](https://github.com/openai/openai-dotnet/issues/813)
+
+#### 3\. The OpenAI Responses API (The Modern Standard)
+
+With the transition toward OpenAI's newer [Responses API specification](https://developers.openai.com/api/docs/guides/reasoning), reasoning is handled cleanly through an array of structured **output items**: [](https://developers.openai.com/api/docs/guides/reasoning)
+
+json
+
+```
+{
+  "output": [
+    {
+      "type": "reasoning",
+      "content": [
+        { "type": "text", "text": "Analyzing the dataset for outliers..." }
+      ],
+      "summary": [
+        { "type": "text", "text": "Identified 3 data anomalies." }
+      ]
+    },
+    {
+      "type": "output_text",
+      "text": "Based on my analysis..."
+    }
+  ]
+}
+
+```
+
+
+
+In this arrangement, the response features distinct `type: "reasoning"` elements containing either the raw thinking process or an algorithmic summary. [](https://developers.openai.com/api/docs/guides/reasoning)
+
+#### 4\. Controlling Reasoning Output
+
+If you are hosting or querying an OpenAI-compatible endpoint, you can frequently tweak how reasoning behaves using incoming request parameters passed through `extra_body` or root parameters: [](https://docs.vllm.ai/en/stable/features/reasoning%5Foutputs/)
+
+* **`reasoning_effort`** (or `reasoning.effort`): Maps to values like `"low"`, `"medium"`, or `"high"` to adjust token allocations for deeper problem-solving.
+* **`include_reasoning: false`**: Supported by some inference backends to hide reasoning arrays entirely if your frontend client only expects standard text strings. [](https://developers.openai.com/api/docs/guides/reasoning)
+
+Are you trying to parse reasoning outputs using a specific framework (like **LangChain**, **vLLM**, or the **official OpenAI Python SDK**), or are you configuring a custom API gateway?
+
+* [](https://developers.openai.com/api/docs/guides/reasoning)  
+OpenAI Developers  
+Reasoning models | OpenAI API  
+OpenAI reasoning models utilize internal reasoning tokens via the Responses API for planning, tool use, and multi-step tasks. cont...
+* [](https://www.youtube.com/watch?v=b-BzeHF6WLA&t=373)  
+YouTube·Sam Witteveen  
+Open Responses - The NEW Standard API for Open Models  
+Jan 20, 2026 — It also standardizes how reasoning is handled, potentially solving the issue of inconsistent reasoning implementations across diff...  
+23s
+* [](https://www.reddit.com/r/openrouter/comments/1njyzpq/why%5Fdoes%5Fthe%5Foutput%5Fof%5Fopenais%5Fo4mini%5Ffrom/)  
+Reddit·r/openrouter  
+Why does the output of OpenAI's o4-mini from OpenRouter ...  
+Sep 18, 2025 — In the official API of OpenAI for these reasoning models … users only can get the final output texts without the access of interva...
+
+Show all
+
+# timeline of openai responses api
+
+The **OpenAI Responses API** represents a major shift in how developers interact with OpenAI models, moving away from stateless completion loops toward native, server-side conversation management and agentic behaviors. [](https://medium.com/@praveenkumarsingh/openais-api-evolution-responses-api-vs-chat-completions-api-0463d73ce631)
+
+Here is the timeline of the **OpenAI Responses API** and the broader API architecture evolution that led to it:
+
+### 🏗️ Precursor Foundations
+
+* **June 2020 — Completions API Released:** OpenAI introduces the original `/v1/completions` endpoint. It uses a single, freeform text prompt structure and is now considered a legacy architecture. [](https://medium.com/@praveenkumarsingh/openais-api-evolution-responses-api-vs-chat-completions-api-0463d73ce631)
+* **March 2023 — Chat Completions API Released:** Shifting the industry toward conversation design, OpenAI introduces the `/v1/chat/completions` endpoint structured around an array of `messages` (`system`, `user`, `assistant`). [](https://medium.com/@praveenkumarsingh/openais-api-evolution-responses-api-vs-chat-completions-api-0463d73ce631)
+* **November 2023 — Assistants API Introduced:** OpenAI attempts to solve server-side state management by introducing "Threads" and "Runs". While useful for complex agents, developers often find the orchestration loop, polling, and strict thread architectures cumbersome. [](https://www.youtube.com/watch?v=-HrILeVJwMY&t=941)
+
+### 🚀 The Responses API Era
+
+* **March 2025 — Launch of the Responses API:** OpenAI officially releases the `/v1/responses` endpoint. Designed using lessons learned from the Assistants API, it provides a unified interface that natively handles multi-turn state tracking via a `previous_response_id` instead of a rigid thread structure. It features built-in tool execution loops (such as running web searches and code execution) within a single API request. [](https://community.openai.com/t/introducing-the-responses-api/1140929)
+* **Late 2025 / Early 2026 — Becoming the New Standard:** The Responses API officially begins replacing Chat Completions as the default recommendation for new projects. Advanced models like `gpt-6-astra` are natively integrated using the `client.responses.create()` method. [](https://developers.openai.com/api/docs/guides/migrate-to-responses)
+* **October 8, 2026 — Ultrafast Mode Integration:** OpenAI expands the Responses API by introducing **Ultrafast mode** for `gpt-6-1-sol`. By passing `service_tier: "ultrafast"`, developers using the Responses API can drastically minimize the latency between generated output tokens, backed by regional U.S. and EU data residency. [](https://developers.openai.com/api/docs/changelog)
+
+### 🔄 Summary Comparison of API Paradigms
+
+| API Interface                   | State Management                                  | Tool Execution                     | Best Used For                                                      |
+| ------------------------------- | ------------------------------------------------- | ---------------------------------- | ------------------------------------------------------------------ |
+| **Completions API** (2020)      | None (Stateless)                                  | None                               | Legacy text generation                                             |
+| **Chat Completions API** (2023) | Client-side (Send full history every turn)        | Client-side loop orchestration     | Simple, single-turn tasks or custom state logic                    |
+| **Assistants API** (2023)       | Server-side (Rigid Thread objects)                | Managed via polling runs           | Complex, long-running background agents                            |
+| **Responses API** (2025+)       | **Server-side (Flexible previous\_response\_id)** | **Autonomous single-request loop** | Modern agent pipelines, multi-turn apps, and low-latency workflows |
+
+For technical migration steps and formatting code comparisons, you can review the official guide on [Migrating to the Responses API](https://developers.openai.com/api/docs/guides/migrate-to-responses). 
+
+Are you looking to **migrate an existing application** from Chat Completions to the Responses API, or are you building a **new agentic workflow** from scratch? Let me know, and I can provide the exact code differences or architectural patterns for your stack.
+
+* [](https://community.openai.com/t/introducing-the-responses-api/1140929)  
+OpenAI Developer Community  
+Introducing the Responses API - OpenAI Developer Community  
+March 11, 2025 — The Responses API manages chat history by linking sequential calls using a \`previous\_response\_id\` parameter, which references the ...
+* [](https://developers.openai.com/api/docs/guides/migrate-to-responses)  
+OpenAI Developers  
+Migrate to the Responses API  
+When you get a response back from the Responses API, the fields differ slightly. Instead of a message , you receive a typed respon...
+* [](https://developers.openai.com/api/docs/changelog)  
+OpenAI Developers  
+Changelog | OpenAI API  
+Use gpt-6.1-sol with service\_tier: "ultrafast" to reduce the time between generated output tokens. It is available to all API user...
+
+Show all
+
+# how to use tool call on openai compatible api in js depfree
+
+To implement tool calling on an OpenAI-compatible API without any dependencies (`depfree`), you can use the native global **`fetch`** API available in modern JavaScript and Node.js.
+
+The complete loop for tool calling requires two steps:
+
+1. Sending the user's prompt and tool definitions to the API, and handling the model's request to call a tool.
+2. Executing your local function, sending the result back to the API, and receiving the final textual response. [](https://www.generalcompute.com/blog/tool-calling-with-open-source-llms)
+
+Here is a clean, comprehensive implementation:
+
+javascript
+
+```
+// 1. Define your base configuration
+const BASE_URL = "https://your-provider.com"; // Replace with your OpenAI-compatible endpoint
+const API_KEY = "your-api-key-here";
+const MODEL = "your-model-name";
+
+// 2. Define the local function(s) the model can use
+function getWeather(location) {
+  if (location.toLowerCase().includes("tokyo")) {
+    return { temperature: "12", unit: "C", condition: "Rainy" };
+  }
+  return { temperature: "22", unit: "C", condition: "Sunny" };
+}
+
+// 3. Define the tool metadata structure (JSON Schema)
+const tools = [
+  {
+    type: "function",
+    function: {
+      name: "getWeather",
+      description: "Get the current weather for a given location",
+      parameters: {
+        type: "object",
+        properties: {
+          location: {
+            type: "string",
+            description: "The city and state, e.g. San Francisco, CA"
+          }
+        },
+        required: ["location"]
+      }
+    }
+  }
+];
+
+// Helper to make the HTTP POST requests
+async function makeChatRequest(messages) {
+  const response = await fetch(`${BASE_URL}/chat/completions`, {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${API_KEY}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      model: MODEL,
+      messages: messages,
+      tools: tools,
+      tool_choice: "auto"
+    })
+  });
+
+  if (!response.ok) {
+    const errText = await response.text();
+    throw new Error(`API Error (${response.status}): ${errText}`);
+  }
+
+  const data = await response.json();
+  return data.choices[0].message;
+}
+
+// 4. Orchestrate the complete agent loop
+async function runAgent(userPrompt) {
+  const messages = [{ role: "user", content: userPrompt }];
+
+  console.log(`User: ${userPrompt}`);
+  
+  // --- First Turn: Ask the model ---
+  let assistantMessage = await makeChatRequest(messages);
+  
+  // Append the model's thoughts/tool requests to the history
+  messages.push(assistantMessage);
+
+  // Check if the model decided to call any tools
+  if (assistantMessage.tool_calls && assistantMessage.tool_calls.length > 0) {
+    
+    // Iterate and execute all requested tool calls
+    for (const toolCall of assistantMessage.tool_calls) {
+      const functionName = toolCall.function.name;
+      const functionArgs = JSON.parse(toolCall.function.arguments);
+      
+      console.log(`\n[Model requested tool]: ${functionName} with args:`, functionArgs);
+
+      let toolResult;
+      if (functionName === "getWeather") {
+        toolResult = getWeather(functionArgs.location);
+      } else {
+        toolResult = { error: `Tool ${functionName} not found.` };
+      }
+
+      console.log(`[Tool executed result]:`, toolResult);
+
+      // Append the tool execution response back to the message history
+      messages.push({
+        role: "tool",
+        tool_call_id: toolCall.id, // Must match the ID sent by the model
+        name: functionName,
+        content: JSON.stringify(toolResult)
+      });
+    }
+
+    // --- Second Turn: Send the results back for the final answer ---
+    assistantMessage = await makeChatRequest(messages);
+  }
+
+  console.log(`\nAI Final Answer: ${assistantMessage.content}`);
+}
+
+// Run the script
+runAgent("What is the weather like in Tokyo right now?")
+  .catch(console.error);
+
+```
+
+
+
+### Critical Rules for OpenAI-Compatible Tool Formatting
+
+* **`tool_call_id` Match:** When returning the `role: "tool"` message, you _must_ pass the exact `id` provided by the incoming `tool_calls` object.
+* **Stringified Arguments:** The arguments returned by the LLM (`toolCall.function.arguments`) come back as a JSON string. You must parse them with `JSON.parse()` before handing them to your functions.
+* **Stringified Results:** The tool's output array payload payload (`content`) must be sent back to the API strictly as a string (use `JSON.stringify()`). [](https://www.youtube.com/watch?v=I1qOfbNVur0)
+
+Are you running this script in **Node.js** or directly in a **Browser** environment? I can help you adapt this for streaming responses (`ReadableStream`) or add error boundary checks if needed.
+
+* [](https://www.generalcompute.com/blog/tool-calling-with-open-source-llms)  
+General Compute  
+Tool Calling With Open-Source LLMs: A Complete Guide  
+Execute each tool call and add results for tool\_call … tool\_call.function.name func\_args = json.loads(tool\_call.function.arguments...
+* [](https://www.youtube.com/watch?v=I1qOfbNVur0)  
+YouTube·Irtiza Hafiz  
+OpenAI Function Calling | LLM Tools Essentials  
+Jan 7, 2026 — ID this is the ID associated with this function call so when you send the result back to the model you need to give it the same it...  
+14:49
+* [](https://docs.parallel.ai/integrations/openai-tool-calling)  
+Parallel Web Systems  
+OpenAI Tool Calling  
+This guide shows how to define Parallel Search as an OpenAI function and handle tool calls in your application. JSON. parse(toolCa...
 
 
