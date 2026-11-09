@@ -2,11 +2,13 @@ import { now } from 'lib/time'
 import { random_id } from 'lib/random'
 import { parse as deserialize, stringify as serialize } from 'yaml'
 
+type role = 'system' | 'user' | 'assistant'
+// type role = 'system' | 'user' | 'assistant' | 'tool'
+
 type message = {
   has_failed?: boolean
   id: string
-  role: 'system' | 'user' | 'assistant'
-  // role: 'system' | 'user' | 'assistant' | 'tool'
+  role: role
   content: string
   usage?: {
     prompt_tokens: number
@@ -22,8 +24,13 @@ type message = {
   payload?
 }
 
+type plain_message = {
+  role: role
+  content: string
+}
+
 type chat = {
-  messages: message[]
+  messages: Partial<message>[]
   model: string
   endpoint: string
   key?: string
@@ -137,6 +144,6 @@ export async function chat(options: chat): Promise<message> {
     perf,
     start_time,
     end_time,
-    payload
+    payload,
   }
 }
