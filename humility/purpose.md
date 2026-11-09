@@ -120,9 +120,35 @@ likely you will work inside a project continuously, rather than chatting in diff
 
 so you would have a stateful cwd, and you will have new threads automatically placed inside.
 
-you dont necessarily have to name your threads explicitly. it can be just the first msg you send, trimmed. you may also auto gen the title or change the title dynamically on the fly as you progress in the thread.
+you dont necessarily have to name your threads. it can be just the first msg you send, trimmed. you may also auto gen the title or change the title dynamically on the fly as you progress in the thread.
 
-well, you may have an option to 
+well, you may have an option if you like to name explicitly. then, it would look like `cwd/`, w your cursor on the right. you may hardcode cwd as root. and there would be ideally some autocomplete.
+
+you will have extensive shortcuts just like the power apps you love, in a way you already know.
+
+- new thread `ctrl n`
+- new folder `ctrl shift n`
+  - it will auto cd there
+- navigate `ctrl l` `ctrl p`
+  - actually l would be for folders, and p would be files, while shift p for commands
+  - but it's nice to have global search, esp when "no results"
+  - _ideally there would be autocomplete_
+- navigate up `alt up` `alt down`
+  - you may map jkhl
+    - well, could be a bit confusing when you use ctrl jk for reading/scrolling, and alt jk for navigating
+  - clearly, browser uses alt leftarrow rightarrow for navigation
+  - you may use ctrl h l for folder navigation, matching the visual of parent/child/dir
+    - i may keep a history of that, if you dont necessarily know where you came from
+    - or maybe a single "nav up" is enough
+
+to build it, i may go the same way as ive done manually.
+
+symlinking would be a bit hacky w git (if they dont resolve by default, esp when referencing the outer world), and could be incompatible.
+
+maybe just have a config of build folder.
+
+clearly it's an opinionated extension. and it's quite opinionated, from naming to the structure of such md file.
+
 
 
 
