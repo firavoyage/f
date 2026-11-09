@@ -192,4 +192,28 @@ guess it would benefit more.
 
 technically it's virtually non existent it seems.
 
+---
+
+i guess you would new thread w (trimmed) first msg as title on frontend, rather than modifying when sending (unless you have extensions).
+
+---
+
+it's already very powerful when you can
+
+- use any model on any endpoint
+- new thread
+- begin/continue ("send") a thread
+- read a thread
+- list all threads
+
+editing and branching are basically abstractions.
+
+if you can make tool calls... it's easy, whether native or simulated. you can perform file op and shell commands, and you can basically do anything, esp when you can call yourself.
+
+like, you can absolutely go wo mcp and just write code via foss libs.
+
+i may like to see how thinking works. maybe it would be some rendered response outside history. or maybe i send thinking of prev threads aw.
+
+i would like to know how search works. it can be hacky. but i guess it's fine to pay for it.
+
 
