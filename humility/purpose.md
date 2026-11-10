@@ -244,5 +244,36 @@ if backend comes first,
 
 i would like to have export feature next
 
+<!-- you may like to omit some folders, like the test threads -->
+
+---
+
+folders are metadata. obviously you dont have to match that on real fs.
+
+---
+
+an alternative approach of managing secrets.
+
+you have `env.yaml` alongside `config.yaml`
+
+in the idiomatic way, you define
+
+```
+{provider}: key
+```
+
+on env.
+
+i guess that would be fine as env here is really reserved for private tokens rather than general tweaks. and typically you would only have api keys here. it's fine to have irrelevant fields later, like `{provider}_foo`.
+
+on config,
+
+if you define key it's raw key, otherwise it defaults to `env:{provider}`
+
+you would never have an even more dangerous "raw api key not found on env" visible log, or confusing "auth failure" as env var name isnt key.
+
+that is, you may share your config w secrets safely separated.
+
+<!-- it matters less to be compatible w shell env here i guess. -->
 
 
