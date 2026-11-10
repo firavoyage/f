@@ -21,6 +21,8 @@ palette:
 color:
   surface:
     dark: palette.gray.900
+  on-surface:
+    dark: palette.gray.100
   field:
     dark: palette.gray.800
   scrollbar-thumb:
@@ -31,7 +33,7 @@ typeface:
   # sans: Ubuntu Sans, sans-serif
   # serif: EB Garamond, serif
 app:
-  app: h-100dvh font-sans bg-surface
+  app: h-100dvh font-sans bg-surface text-on-surface
 thread:
   thread: flex
   content: w-prose

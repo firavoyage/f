@@ -348,4 +348,14 @@ that's wild!
 
 i thought it would be efficient to design in code until running into quirks.
 
+---
+
+absolutely web style abstraction leaks.
+
+what if you could not use any advanced selectors in css?
+
+basically you could not style a component differently in different components.
+
+it could make things explicit when you enforce variants. it's not usually a good thing on dx, which is argubly the primary purpose of such yaml based approach.
+
 
