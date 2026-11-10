@@ -28,10 +28,9 @@ color:
   scrollbar-thumb:
     dark: palette.gray.600
 typeface:
-  sans: Noto Sans, sans-serif
+  # sans: Noto Sans, sans-serif
+  sans: Ubuntu Sans, sans-serif
   serif: EB Garamond, serif
-  # sans: Ubuntu Sans, sans-serif
-  # serif: EB Garamond, serif
 app:
   app: h-100dvh font-sans bg-surface text-on-surface
 thread:
