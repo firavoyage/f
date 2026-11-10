@@ -23,6 +23,8 @@ color:
     dark: palette.gray.900
   field:
     dark: palette.gray.800
+  scrollbar-thumb:
+    dark: palette.gray.600
 typeface:
   sans: Noto Sans, sans-serif
   serif: EB Garamond, serif
@@ -37,7 +39,7 @@ message:
   message: fixed bottom-0 w-full h-40 flex justify-center bg-field
   field: w-prose
 textarea:
-  textarea: w-full h-full p-4 rounded-md text-lg
+  textarea: w-full h-fit p-4 rounded-md text-lg
   textarea:focus-visble: outline-focus outline-sm offset-2 rounded-md
 input:
   input: w-full h-full p-4 rounded-md text-lg
@@ -48,9 +50,9 @@ scroll:
   vertical_scrollbar: absolute right-0 top-0 bottom-0
   vertical_track: w-3 h-full opacity-0 transition-opacity duration-0.5s
   vertical_track[show]: opacity-1
-  vertical_thumb: w-full bg-border
+  vertical_thumb: w-full bg-scrollbar-thumb
   horizontal_scrollbar: absolute bottom-0 left-0 right-0
   horizontal_track: h-3 w-full opacity-0 transition-opacity duration-0.5s
   horizontal_track[show]: opacity-1
-  horizontal_thumb: h-full bg-border
+  horizontal_thumb: h-full bg-scrollbar-thumb
 

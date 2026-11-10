@@ -5,6 +5,7 @@ import theme from 'web/design/utilitarian.yaml'
 import 'web/design/utilitarian.css'
 import { input } from './input'
 import { textarea } from './textarea'
+import { scroll } from './scroll'
 
 export function app() {
   use_sync_theme('system')
@@ -20,7 +21,13 @@ export function app() {
       h('thread'),
       h(
         'message',
-        h('message_field', h(textarea, { value: prompt, set_value: set_prompt })),
+        h(
+          'message_field',
+          h(
+            scroll,
+            h(textarea, { value: prompt, set_value: set_prompt }),
+          ),
+        ),
       ),
     ),
   )

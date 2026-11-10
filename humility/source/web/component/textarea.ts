@@ -9,6 +9,13 @@ export function textarea({ value, set_value, ...props }: textarea) {
     set_value(event.target.value)
   }
 
-  return h('textarea.textarea', { value, onchange: handle_change, ...props })
+  return h('textarea.textarea', {
+    value,
+    onchange: handle_change,
+    oninput(e) {
+      e.target.style.height = ''
+      e.target.style.height = e.target.scrollHeight + 'px'
+    },
+    ...props,
+  })
 }
-

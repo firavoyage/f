@@ -47,3 +47,5 @@ change
 - file: + `santinize(filename, replacement)`
 - web/query: + `use_query(endpoint, payload)`
 - web/hyperscript: fix wrong div that should be fragment
+- math: fix inf recursion on min and max
+  - unclean code can lead to anything

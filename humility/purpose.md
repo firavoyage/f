@@ -338,4 +338,14 @@ dont have to learn color theories.
 
 really i should consider event listener instead of use request
 
+---
+
+that's wild!
+
+"make textarea fit content"
+
+<!-- yeah, for custom scrollbar -->
+
+i thought it would be efficient to design in code until running into quirks.
+
 

@@ -1,0 +1,1 @@
+log(is(1, 'numeric'))
