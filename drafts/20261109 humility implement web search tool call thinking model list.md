@@ -1620,3 +1620,683 @@ Sep 18, 2026 — When an AI agent needs to use tools, the user's prompt is sent 
 
 Show all
 
+# what constraints does openai compatible api often require on messages
+
+While **OpenAI-compatible APIs** are designed to accept the standard `POST /v1/chat/completions` payload format, they often enforce strict **structural constraints and ordering rules** on the `messages` array. Because these APIs translate your requests into prompts for non-OpenAI models (like Llama, Mistral, or Claude), breaking these constraints will result in immediate API errors. [](https://www.truefoundry.com/blog/what-is-openai-compatible-api)
+
+Here are the most common constraints required by OpenAI-compatible endpoints:
+
+### 1\. Object Structure Constraints
+
+Every message object inside the array must conform to the minimum schema: [](https://www.truefoundry.com/blog/what-is-openai-compatible-api)
+
+* **Required Fields:** Each object must contain exactly `role` and `content` keys. Missing either key, or passing empty objects, will cause validation to fail. [](https://www.truefoundry.com/blog/what-is-openai-compatible-api)
+* **Allowed Roles:** The `role` string must strictly match one of the recognized types: `system` (or `developer` in newer schemas), `user`, or `assistant`. Passing custom string roles like `human` or `ai` will cause an error. [](https://community.openai.com/t/system-and-developer-roles-in-messages-and-instructions-in-responses-create/1370516)
+
+### 2\. Message Sequence & Alternation Rules
+
+OpenAI's official API is highly permissive and allows you to string multiple `user` messages together consecutively. However, many compatible open-weight serving frameworks (such as vLLM or SGLang) rely strictly on the underlying model's chat template: [](https://neevcloud.com/blogs/openai-compatible-apis-what-the-label-actually-guarantees)
+
+* **Strict Alternation:** Many endpoints require that `user` and `assistant` messages strictly alternate. You cannot have two `user` messages in a row.
+* **Ending with a User Message:** The final message in the array must almost always be from the `user`. The system will throw an error if the last message is from the `assistant`, as the model cannot generate a reply to its own text. [](https://www.truefoundry.com/blog/what-is-openai-compatible-api)
+
+### 3\. System Message Restrictions
+
+* **Placement:** If a `system` message is present, it must be the **very first element** in the array.
+* **Quantity:** Most endpoints allow only _one_ system message per request. Injecting system messages into the middle of a chat conversation to update behavior midway will fail on many open-source backends. [](https://handbook.modular.com/model-interaction/openai-compatible-api/)
+
+### 4\. Tool / Function Calling Format Drift
+
+If your application uses function calling, this is the area most prone to failure: [](https://neuro-block.com/news/what-an-openai-compatible-api-means-for-your-integration)
+
+* **Strict Sequence:** If an `assistant` message contains a `tool_calls` block, the next message(s) in the array must be of the role `tool`.
+* **Tool IDs:** The `tool` message must contain a `tool_call_id` that perfectly matches the `id` provided by the preceding assistant message.
+
+### 5\. Multi-Modal Content Payload Limits
+
+If you are passing images or audio instead of plain text strings, the `content` block must switch to an array of objects (e.g., `{"type": "image_url", "image_url": ...}`). Many compatible APIs that support vision models do not accept base64 strings if they exceed a certain payload size, or they might completely lack support for processing local file uploads compared to hosted URLs. [](https://neuro-block.com/news/what-an-openai-compatible-api-means-for-your-integration)
+
+Are you running into a specific **error message**, or are you configuring a specific provider/framework (like **vLLM, Ollama, OpenRouter, or LiteLLM**)? If you share your setup, I can give you the exact formatting rules it enforces.
+
+* [](https://www.truefoundry.com/blog/what-is-openai-compatible-api)  
+TrueFoundry  
+What Is an OpenAI-Compatible API? The Interface Explained  
+November 6, 2026 — Tool-calling dialects differ, usage token accounting varies, and parameters like seed , logit\_bias , and penalties often silently ...
+* [](https://community.openai.com/t/system-and-developer-roles-in-messages-and-instructions-in-responses-create/1370516)  
+OpenAI Developer Community  
+System and Developer Roles in messages and Instructions in ...  
+December 30, 2025 — When multiple roles (system, developer, user) are present, the AI model applies them in a strict hierarchy. Platform/system-level ...
+* [](https://neuro-block.com/news/what-an-openai-compatible-api-means-for-your-integration)  
+neuro-block.com  
+OpenAI-compatible API: what it really means for your integration  
+September 8, 2026 — Before relying on a compatible API in production, check the points your application actually depends on: Endpoints: chat completio...
+
+Show all
+
+# how long can you chat in modern llms for simple user messages wo files and tools injection
+
+For simple text-only conversations without files or tools, **the length of your chat is determined by the model's context window**, measured in tokens (where 1 token is roughly 4 characters or 0.75 words). [](https://medium.com/@aloy.banerjee30/infinite-context-length-in-llms-the-next-big-advantage-in-ai-2550e9e6ce9b)
+
+While major AI platforms like OpenAI's ChatGPT list everyday text chat as "unlimited" in terms of how many messages you can physically send per hour, the system will eventually block you or start forgetting things once the technical context limit of that specific thread is full. [](https://www.ai-toolbox.co/chatgpt-management-and-productivity/chatgpt-maximum-length-conversation-fix-2026)
+
+The exact limits vary significantly depending on the model you use:
+
+### Estimated Conversation Lengths by Model
+
+| Model Family / Provider           | Context Window (Tokens) | Approximate Length (Simple Text Chat)                                                                                                                                                                                                                |
+| --------------------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Google Gemini (1.5 Pro / 2.0)** | **2,000,000 tokens**    | \~1.5 million words (Equivalent to several full-length novel series). Practically impossible to hit in a standard text-only chat.                                                                                                                    |
+| **Anthropic Claude (3.5 Sonnet)** | **200,000 tokens**      | \~150,000 words (Equivalent to a 500-page book). You will hit a ["length limit" error](https://www.reddit.com/r/ClaudeAI/comments/1orgjvj/i%5Fjust%5Fhit%5Fchat%5Flength%5Flimit%5Fon%5Fone%5Fof%5Fmy%5Fmost/) if you push it too far in one thread. |
+| **OpenAI GPT (GPT-4o / GPT-5)**   | **128,000 tokens**      | \~96,000 words. However, ChatGPT's consumer interface typically caps web-client threads shorter (often dynamically managed around 32k–40k tokens to save server costs).                                                                              |
+| **DeepSeek (V3 / R1)**            | **128,000 tokens**      | \~96,000 words.                                                                                                                                                                                                                                      |
+
+### How It Works in Practice
+
+1. **The "Rolling" Context vs. Hard Stops:** Some platforms (like ChatGPT) use a sliding window. Once you exceed the limit, the AI doesn't stop talking; it simply "forgets" the very first messages you sent at the top of the chat. Other platforms (like Claude) will throw a hard error and lock the text field completely once the threshold is reached. [](https://www.reddit.com/r/ClaudeAI/comments/1orgjvj/i%5Fjust%5Fhit%5Fchat%5Flength%5Flimit%5Fon%5Fone%5Fof%5Fmy%5Fmost/)
+2. **The "Hidden" Cost of Long Chats:** Every time you send a new message, the LLM has to re-read the _entire_ chat history from the very beginning. This means a 100-message chat burns computing resources exponentially faster than a fresh chat, which is why platforms often apply stricter interface limits during peak hours. [](https://www.youtube.com/watch?v=VttYY22NKrE&t=50)
+3. **Quality Degradation:** Users on tech forums like [](https://www.reddit.com/r/LLMDevs/comments/1qm5729/at%5Fwhat%5Fpoint%5Fdo%5Flong%5Fllm%5Fchats%5Fbecome/) note that even before you hit a technical token limit, very long chat threads suffer from quality degradation—the AI may begin mixing up old context, hallucinating, or ignoring new instructions.
+
+Are you asking to figure out how to **manage a massive codebase/writing project** in a single thread, or are you trying to **optimize API costs** for an app you're building?
+
+* [](https://medium.com/@aloy.banerjee30/infinite-context-length-in-llms-the-next-big-advantage-in-ai-2550e9e6ce9b)  
+Medium·Aloy Banerjee  
+Infinite Context Length in LLMs — The Next Big Advantage in AI  
+May 6, 2025 — If you went beyond that, the model's performance would drop and it might ignore or overwrite the beginning of the text. This limit...
+* [](https://www.izzedo.chat/blog/chatgpt-limits)  
+izzedo chat  
+ChatGPT Limits 2026: Every Cap and Error Explained  
+August 31, 2026 — ChatGPT stops. OpenAI now lists everyday text chat as unlimited. A limit that varies with system conditions cannot be published, b...
+* [](https://www.reddit.com/r/ClaudeAI/comments/1orgjvj/i%5Fjust%5Fhit%5Fchat%5Flength%5Flimit%5Fon%5Fone%5Fof%5Fmy%5Fmost/)  
+Reddit·salihoff  
+I just hit chat length limit on one of my most productive AI ...  
+Nov 8, 2025 — This "length limit" error prevents the AI from processing new input within that specific thread.  
+[0:10](https://www.reddit.com/r/ClaudeAI/comments/1orgjvj/i%5Fjust%5Fhit%5Fchat%5Flength%5Flimit%5Fon%5Fone%5Fof%5Fmy%5Fmost/)
+
+Show all
+
+# how long can you chat in context of modern llms for simple text messages wo files and tools
+
+For simple text messages without tools or file uploads, the length of time you can chat with a modern Large Language Model (LLM) before it "forgets" or forces you to start over is determined by its **context window**. [](https://www.ibm.com/think/topics/context-window)
+
+Because text messages consume relatively few tokens compared to code or documents, you can comfortably chat for **hundreds of messages—and in some cases, thousands**—before hitting a limit.
+
+### The Math Behind Simple Text Chats
+
+In AI models, text is broken down into "tokens" (roughly 1 token = 0.75 words or 4 characters). [](https://www.youtube.com/watch?v=TeQDr4DkLYo)
+
+* **Average Text Message:** \~30 words (\~40 tokens).
+* **AI Reply:** \~150 words (\~200 tokens).
+* **Total per turn:** \~240 tokens.
+
+Every time you send a new message, the **entire history of the conversation** is bundled together and sent back to the model so it can remember what you said previously. [](https://www.youtube.com/watch?v=-uW5-TaVXu4)
+
+### Capacity by Leading LLMs
+
+Modern LLMs have massively expanded their context windows. If you are exclusively using simple text, here is roughly how long a single conversation can last before hitting the model's technical limit:
+
+| Model / Platform                                     | Stated Context Window         | Approximate Back-and-Forth Capacity (Simple Text)                                       |
+| ---------------------------------------------------- | ----------------------------- | --------------------------------------------------------------------------------------- |
+| **Google Gemini 1.5 Pro / 2.0**                      | 1,000,000 to 2,000,000 tokens | **4,000 to 8,000+ messages.** You could practically chat for months in a single thread. |
+| **Anthropic Claude 3.5 Sonnet**                      | 200,000 tokens                | **800 to 1,000 messages.** Long enough to write a full-length novel collaboratively.    |
+| **OpenAI GPT-4o / GPT-6**                            | 128,000 tokens                | **500 to 600 messages.** Generous for extensive personal or professional brainstorming. |
+| **ChatGPT App Interface** _(Standard Web/App Tiers)_ | 27K to 128K tokens            | **100 to 500 messages** before seeing a "maximum conversation length reached" warning.  |
+
+### The Two Invisible "Catch-22s"
+
+Even though the technical context window allows for thousands of text messages, you will likely hit two practical boundaries first:
+
+1. **The "Lost in the Middle" Effect (Attention Degradation):** Even if a model _can_ technically hold 200,000 tokens, studies show LLMs get "forgetful" or less accurate in the middle of massive threads. The AI may start contradicting things you agreed on 50 messages ago. [](https://www.youtube.com/watch?v=-uW5-TaVXu4)
+2. **Rate Limits & System Slowness:** Because the platform has to re-process every single text message from the beginning of the chat with every new turn, giant chat threads become computationally expensive and slow. Chat apps will often prompt you to start a new thread to keep the performance snappy. [](https://www.ssdnodes.com/learn/lang/pcm/chatgpt-maximum-conversation-length-reached)
+
+Are you running into a **"maximum length reached" error** in a specific app, or are you trying to gauge the limits for an **API-based project** you are building? Let me know so I can give you more specific advice! [](https://www.ssdnodes.com/learn/lang/pcm/chatgpt-maximum-conversation-length-reached)
+
+* [](https://www.youtube.com/watch?v=-uW5-TaVXu4)  
+YouTube·Matt Pocock  
+Most devs don't understand how context windows work  
+Oct 22, 2025 — Shorter, more focused context windows mitigate this "lost-in-the-middle" problem, leading to better performance, similar to how hu...  
+9:33
+* [](https://www.ssdnodes.com/learn/lang/pcm/chatgpt-maximum-conversation-length-reached)  
+SSD Nodes  
+ChatGPT chat don reach maximum length, wetin to do  
+Nov 7, 2026 — The ChatGPT maximum conversation length reached message mean say one chat don full, so e no go accept another message. Start new c...
+* [](https://www.ibm.com/think/topics/context-window)  
+IBM  
+What is a context window? - IBM  
+November 25, 2024 — The context window (or “context length”) of a large language model (LLM) is the amount of text, in tokens, that the model can cons...
+
+Show all
+
+# does llm web search rely on search engines under the hood
+
+**Yes, LLM web search absolutely relies on traditional search engines under the hood** **.** [](https://www.reddit.com/r/MachineLearning/comments/1bcq8zy/d%5Fcan%5Fsomeone%5Fplease%5Fclarify%5Fif%5Fweb%5Fsearch%5Fllms/)
+
+Large Language Models (LLMs) themselves cannot directly crawl, browse, or index the live internet in real time. Instead, when you ask an AI assistant to search the web, it acts as an intelligent coordinator that interacts with classical search technology using a framework called **Retrieval-Augmented Generation (RAG)**. [](https://www.quora.com/Are-LLMs-replacing-traditional-search-engines-or-just-changing-how-search-works)
+
+### How the LLM Web Search Pipeline Works
+
+Instead of browsing the web like a human, the AI system handles your query through a multi-step background process:
+
+* **Query Optimization:** The LLM application takes your natural language prompt and rewrites it into one or more optimized keyword search terms (a process called "fan out"). [](https://www.youtube.com/watch?v=a3GJoFgpzko&t=33)
+* **The Search Engine Call:** The underlying infrastructure sends these optimized queries to a traditional search engine index (like the **Google Search API** or **Bing Search API**). The search engine does what it does best: it quickly crawls, matches, and ranks the most relevant live web pages. [](https://builtin.com/artificial-intelligence/search-engines-for-ai-llms)
+* **Scraping and Chunking:** The AI application's backend server grabs the top URLs returned by the search engine, extracts the raw text from those pages, and breaks it down into small paragraphs or "chunks". [](https://www.instagram.com/reel/DaxfFZWEhf5/)
+* **Synthesis:** These text chunks are fed back into the LLM's temporary context window as "reference facts". The LLM then reads this text and uses its natural language generation skills to write a smooth, cohesive summary for you, complete with inline citations. [](https://www.ml6.eu/en/blog/how-llms-access-real-time-data-from-the-web)
+
+### Why AI Companies Don't Build Independent Search Indexes
+
+Building and maintaining a web crawler that continuously indexes billions of live web pages requires massive server infrastructure, decades of engineering, and billions of dollars. [](https://builtin.com/artificial-intelligence/search-engines-for-ai-llms)
+
+While a few AI-first companies (like Perplexity or You.com) maintain smaller, custom web crawlers to scrape specific data-dense sites or cache frequent results, they still heavily rely on Bing and Google to handle the vast majority of their broad web search infrastructure. [](https://www.reddit.com/r/MachineLearning/comments/1bcq8zy/d%5Fcan%5Fsomeone%5Fplease%5Fclarify%5Fif%5Fweb%5Fsearch%5Fllms/)
+
+In short, traditional search engines act as the "eyes and ears" that gather the data, while the LLM acts as the "brain" that reads, synthesizes, and explains it to you. 
+
+Would you like to explore **how AI search engines decide which sources to trust**, or are you interested in **how to build a custom RAG application** using a search API?
+
+* [](https://www.reddit.com/r/MachineLearning/comments/1bcq8zy/d%5Fcan%5Fsomeone%5Fplease%5Fclarify%5Fif%5Fweb%5Fsearch%5Fllms/)  
+Reddit·r/MachineLearning  
+\[D\] Can someone please clarify if web search LLMs ... - Reddit  
+March 12, 2024 — LLM web search tools like Perplexity and You.com primarily rely on existing search engines such as Bing and Google for their resul...
+* [](https://builtin.com/artificial-intelligence/search-engines-for-ai-llms)  
+Built In  
+What Are Search Engines for AI? What Makes Them Different?  
+October 1, 2025 — Connecting to these search engines via search APIs delivers the vast amounts of real-time data needed to train large language mode...
+* [](https://www.quora.com/Are-LLMs-replacing-traditional-search-engines-or-just-changing-how-search-works)  
+Quora  
+Are LLMs replacing traditional search engines or just ... - Quora  
+February 22, 2026 — The LLM then instantly reads those top results and synthesizes them into a coherent answer, complete with footnotes.
+
+Show all
+
+# how to extract the main content for any web page in js
+
+To extract the **main content** (the core article text, title, and excerpt) from any arbitrary web page while ignoring headers, sidebars, ads, and footers, the industry standard is to use **Mozilla's Readability library** `@mozilla/readability`. This is the exact same engine that powers Firefox's "Reader View." [](https://webcrawlerapi.com/blog/how-to-extract-article-or-blogpost-content-in-js-using-readabilityjs)
+
+Because web pages have completely unpredictable HTML layouts, manually writing CSS selectors like `document.querySelector('article')` will fail on millions of sites. Readability parses the document structure and uses a scoring algorithm based on class names, densities of text, and link-to-text ratios to programmatically isolate the core text. [](https://stackoverflow.com/questions/30520582/extraction-of-main-content-of-an-article-javascript)
+
+Here is how you can implement this in both **Node.js** (backend) and the **Browser** (frontend).
+
+---
+
+### 1\. In Node.js (Backend)
+
+Since Node.js doesn't natively have a DOM (Document Object Model), you must pair `@mozilla/readability` with `jsdom` to simulate a browser environment. [](https://webcrawlerapi.com/blog/how-to-extract-article-or-blogpost-content-in-js-using-readabilityjs)
+
+**Install the packages:**
+
+bash
+
+```
+npm install @mozilla/readability jsdom axios
+
+```
+
+
+
+**The Code:**
+
+javascript
+
+```
+import { JSDOM } from "jsdom";
+import { Readability } from "@mozilla/readability";
+import axios from "axios";
+
+async function extractMainContent(url) {
+  try {
+    // 1. Fetch the raw HTML of the webpage
+    const response = await axios.get(url, {
+      headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" }
+    });
+    const html = response.data;
+
+    // 2. Load the HTML into a virtual DOM
+    const dom = new JSDOM(html, { url });
+    
+    // 3. Pass the DOM document to Readability
+    const reader = new Readability(dom.window.document);
+    const article = reader.parse();
+
+    if (article) {
+      console.log("--- Extraction Success ---");
+      console.log("Title:", article.title);
+      console.log("Author:", article.byline);
+      console.log("Excerpt:", article.excerpt);
+      // Cleaned text content
+      console.log("Clean Text:\n", article.textContent.trim().substring(0, 500) + "..."); 
+      // Cleaned HTML containing only the core content (paragraphs, images, headings)
+      // console.log("Clean HTML:\n", article.content); 
+    } else {
+      console.log("Failed to parse the main content.");
+    }
+  } catch (error) {
+    console.error("Error fetching or parsing page:", error.message);
+  }
+}
+
+extractMainContent("https://example-blog.com");
+
+```
+
+
+
+---
+
+### 2\. In the Browser (Frontend / Extension)
+
+If you are building a browser extension or running code in the DevTools console, the browser already provides the `document` object, meaning you do not need `jsdom`. [](https://stackoverflow.com/questions/30520582/extraction-of-main-content-of-an-article-javascript)
+
+**Using a CDN Link:**
+
+javascript
+
+```
+// Load Readability dynamically if you are pasting this into the DevTools Console
+const script = document.createElement('script');
+script.src = 'https://cloudflare.com';
+document.head.appendChild(script);
+
+script.onload = () => {
+  // Parse the current active page
+  const reader = new Readability(document);
+  const article = reader.parse();
+  
+  console.log({
+    title: article.title,
+    excerpt: article.excerpt,
+    text: article.textContent.trim()
+  });
+};
+
+```
+
+
+
+---
+
+### What to do if the web page requires JavaScript to render?
+
+Many modern websites (built with React, Vue, or Next.js) return a blank HTML page initially, loading content dynamically via Client-Side Rendering. Simple `axios` or `fetch` requests will miss the text entirely. [](https://www.youtube.com/watch?v=-PmNcIX9En4)
+
+If you run into this layout barrier, you must control a headless browser using **Puppeteer** or **Playwright** to let the page fully render before parsing it with Readability: [](https://www.youtube.com/watch?v=rAgKfb7u6SQ)
+
+javascript
+
+```
+import puppeteer from 'puppeteer';
+import { JSDOM } from 'jsdom';
+import { Readability } from '@mozilla/readability';
+
+async function scrapeDynamicPage(url) {
+  const browser = await puppeteer.launch({ headless: true });
+  const page = await browser.newPage();
+  
+  // Go to page and wait until the network goes completely quiet
+  await page.goto(url, { waitUntil: 'networkidle0' }); 
+  
+  // Get the fully evaluated HTML from the browser context
+  const html = await page.content(); 
+  await browser.close();
+
+  // Parse normally with Readability
+  const dom = new JSDOM(html, { url });
+  const article = new Readability(dom.window.document).parse();
+  console.log(article.textContent.trim());
+}
+
+```
+
+
+
+Are you building this for a **Node.js backend app**, a **browser extension**, or an automation script? Let me know if you run into any **CORS errors** or **bot blocks**, as I can show you how to bypass them.
+
+* [](https://stackoverflow.com/questions/30520582/extraction-of-main-content-of-an-article-javascript)  
+Stack Overflow  
+Extraction of main content of an article (JavaScript)  
+May 29, 2015 — What you could do is to use the Parser API from Readability. If you are using NodeJS you can do a http.get request, if you are usi...
+* [](https://webcrawlerapi.com/blog/how-to-extract-article-or-blogpost-content-in-js-using-readabilityjs)  
+WebCrawler API  
+Extracting article or blogpost content with Mozilla Readability  
+October 15, 2026 — Here's a standalone JavaScript function that combines HTML cleaning with Mozilla's Readability parser: //npm install @mozilla/read...
+* [](https://www.youtube.com/watch?v=%5FYWwDM6jUYY)  
+YouTube·browserless  
+How to Scrape Any Website (Python & JavaScript)  
+Apr 9, 2026 — The solution involves using a headless browser to render the page, execute JavaScript, and then provide the fully loaded HTML.  
+12:58
+
+Show all
+
+# how do llm web search providers extract the main content for any web page in js
+
+**LLM web search providers** (such as Firecrawl, Jina AI Reader, and Tavily) use a specific programmatic pipeline in JavaScript/Node.js to turn a cluttered webpage into clean, LLM-ready context. [](https://www.youtube.com/watch?v=7kbQnLN2y%5FI&t=88)
+
+Because raw HTML wastes valuable context window tokens and confuses models with headers, footers, and tracking scripts, providers follow a strict **four-stage execution flow** to isolate the core text. [](https://parallel.ai/articles/how-to-build-an-ai-agent-that-can-research-monitor-and-extract-data-from-the-web)
+
+---
+
+### 1\. Dynamic DOM Rendering (The Fetch Stage)
+
+Many modern websites rely heavily on client-side rendering (React, Vue, Angular). Simply downloading the HTML via `axios` or `fetch` results in an empty shell or a "JS disabled" warning. [](https://www.scoutos.com/blog/the-beginner-s-guide-to-scraping-websites-for-llm-data-enrichment)
+
+Providers use headless browser automation tools to load the page and execute its JavaScript: [](https://www.context.dev/blog/building-an-ai-web-research-agent)
+
+* **Playwright or Puppeteer**: To launch a headless Chromium instance, navigate to the URL, and wait until network activity is idle (`networkidle`), ensuring all lazy-loaded content or API fetches are finished. [](https://dev.to/shreyvijayvargiya/scraping-content-for-llm-hc9)
+* **`jsdom`**: If they are handling pre-rendered or static HTML, they parse the string into a virtual Document Object Model (DOM) to navigate it like a browser without running a heavy engine. [](https://www.youtube.com/watch?v=D8A11vqshv8&t=131)
+
+### 2\. Boilerplate & Noise Elimination (The Cleaning Stage)
+
+Once the complete DOM is available, the script strips elements that offer zero value to an LLM. They programmatically drop non-content tags using standard DOM manipulation: [](https://www.youtube.com/watch?v=JWfNLF%5Fg%5FV0&t=57)
+
+javascript
+
+```
+// Example of element scrubbing in Node.js/Playwright
+const elementsToRemove = ['script', 'style', 'nav', 'footer', 'header', 'aside', 'noscript', 'iframe', 'form', '.ads', '.cookie-banner'];
+elementsToRemove.forEach(selector => {
+  page.evaluate((sel) => {
+    document.querySelectorAll(sel).forEach(el => el.remove());
+  }, selector);
+});
+
+```
+
+
+
+### 3\. Core Structural Extraction (The Heuristics Stage)
+
+After sweeping away known noise, providers must find the "meat" of the page out of what remains. They primarily rely on **Mozilla's Readability.js**, which is the open-source engine behind Firefox's "Reader View". [](https://www.youtube.com/watch?v=D8A11vqshv8&t=131)
+
+`Readability.js` uses a scoring heuristic to find the main content block: [](https://www.youtube.com/watch?v=D8A11vqshv8&t=131)
+
+* **Tag weighting**: It looks for structural containers like `<article>`, `<main>`, or blocks with dense text.
+* **Class/ID scoring**: It checks for keywords in class and ID names (e.g., scoring up `content`, `body`, `story`; scoring down `sidebar`, `comment`, `widget`).
+* **Density math**: It analyzes text-to-link density. A container packed with text but few hyperlinks scores highly (likely a paragraph). A container packed with links but minimal text scores poorly (likely a navigation menu).
+
+javascript
+
+```
+import { Readability } from '@mozilla/readability';
+import { JSDOM } from 'jsdom';
+
+// 1. Get the cleaned HTML string from your browser / scraper
+const doc = new JSDOM(cleanedHtml);
+
+// 2. Let Readability run its heuristics to isolate the main article
+const reader = new Readability(doc.window.document);
+const article = reader.parse(); 
+
+console.log(article.title);   // Extracted Main Title
+console.log(article.textContent); // Pure isolated text content
+
+```
+
+
+
+### 4\. Markdown Conversion & Token Optimization (The Output Stage)
+
+Providers do not usually send pure plain text to an LLM, because plain text strips out headings, lists, code blocks, and data tables. Structural layout is vital for an LLM to accurately reason over data. Instead, they convert the isolated HTML into **Markdown**. [](https://www.browserbase.com/fetch)
+
+The industry standard library for this in JavaScript is **Turndown**. [](https://dev.to/shreyvijayvargiya/scraping-content-for-llm-hc9)
+
+javascript
+
+```
+import TurndownService from 'turndown';
+const turndownService = new TurndownService();
+
+// Optional: Add plugins to preserve complex elements like tables (GFM)
+import { gfm } from 'turndown-plugin-gfm';
+turndownService.use(gfm);
+
+// Convert isolated main content HTML to tightly packed Markdown
+const markdownForLLM = turndownService.turndown(article.content);
+
+```
+
+
+
+### Summary of the JS Data Pipeline
+
+```
+[Playwright/Browser] ➔ Load & execute heavy client-side JavaScript
+        ↓
+[DOM Manipulation]   ➔ Strip <script>, <nav>, <iframe>, ads, and footers
+        ↓
+[Readability.js]     ➔ Use text-density scoring to find the main content block
+        ↓
+[Turndown.js]        ➔ Convert HTML elements into compact Markdown structure
+
+```
+
+By turning unstructured HTML into cleanly formatted Markdown, providers shrink the payload size by **5x to 10x**, which prevents context window bloat and keeps LLM token processing fees low. [](https://parallel.ai/articles/how-to-build-an-ai-agent-that-can-research-monitor-and-extract-data-from-the-web)
+
+Are you planning to build your own **custom scraping utility** in Node.js, or are you looking to integrate with an existing **managed search API**? Let me know, and I can provide specific implementation code or tool comparisons!
+
+* [](https://dev.to/shreyvijayvargiya/scraping-content-for-llm-hc9)  
+DEV Community  
+Scraping Content for LLM - DEV Community  
+September 7, 2025 — Scraping web and URL content via RSS XML feeds or Axios requests, storing data in databases, and converting HTML into LLM-ready ma...
+* [](https://www.youtube.com/watch?v=D8A11vqshv8&t=131)  
+YouTube·DataStax Developers  
+How to Scrape Web Content for RAG with Readability.js  
+Jan 2, 2025 — Readability.js automatically extracts the main article content, title, author, and publication time, eliminating extraneous elemen...  
+3m
+* [](https://www.context.dev/blog/building-an-ai-web-research-agent)  
+Context.dev  
+Building an AI Web Research Agent: Web Scraping to ...  
+April 1, 2026 — Markdown (GFM) keeps headings, lists, links, tables, and code blocks while stripping everything else. 5-10x fewer tokens than the ...
+
+Show all
+
+# what are the main approaches of llm web search to construct query
+
+**Large Language Models (LLMs) use several distinct approaches to construct search queries**, transforming conversational, human text into optimized search strings that external search APIs can understand. Because raw user prompts are often too long, vague, or conversational for traditional keyword indexes, LLMs act as translators to maximize retrieval accuracy. [](https://www.elastic.co/search-labs/blog/query-rewriting-llm-search-improve)
+
+The primary approaches to query construction in LLM web search systems include:
+
+### 1\. Query Rewriting and Keyword Extraction
+
+Users naturally interact with LLMs using complete, conversational sentences (e.g., _"Can you find me that one movie where the guy gets stuck on Mars and has to grow potatoes?"_). Traditional search engines choke on conversational filler.
+
+* **How it works:** The LLM strips out conversational stop words, grammatical formatting, and filler phrases. It isolates core entities and concepts to generate dense, keyword-rich search terms.
+* **Output:** `movie guy stuck on Mars grows potatoes` or `The Martian movie plot`. [](https://www.youtube.com/watch?v=nfYlaX6b8E4)
+
+### 2\. Query Expansion (Parallel Querying)
+
+A single user prompt often requires information from multiple angles to form a complete answer. [](https://opensourceconnections.com/blog/2024/02/20/what-do-you-actually-mean-query-understanding-with-llms/)
+
+* **How it works:** The LLM is instructed to generate multiple, distinct variations or sub-queries from a single prompt. These queries are executed in parallel across the web search API. The results are later merged and de-duplicated (often using Reciprocal Rank Fusion). [](https://opensourceconnections.com/blog/2024/02/20/what-do-you-actually-mean-query-understanding-with-llms/)
+* **Example:** For the prompt _"How does the iPhone 17 compare to the Samsung S26?"_, the LLM might construct three separate queries:
+  * `iPhone 17 vs Samsung Galaxy S26 specs`
+  * `iPhone 17 release date price reviews`
+  * `Samsung Galaxy S26 benchmarks performance`
+
+### 3\. Self-Querying and Structured Query Construction
+
+When dealing with databases or web search components that rely heavily on filtering, LLMs break down queries into both semantic text and metadata filters. [](https://www.langchain.com/blog/query-construction)
+
+* **How it works:** The LLM separates the _semantic meaning_ of the query from explicit constraints like dates, locations, or categories. It maps these constraints into structured formats (like JSON, SQL, or Elasticsearch DSL) to query the target index. [](https://weaviate.io/blog/llms-and-search)
+* **Output:**
+  * _Semantic Query:_ `AI regulations`
+  * _Filter:_ `{"date": { "gt": "2026-01-01" }, "region": "EU"}` [](https://www.langchain.com/blog/query-construction)
+
+### 4\. Step-by-Step Multi-Turn Query Generation (Agentic / ReAct)
+
+For complex research tasks, an LLM cannot find the final answer with a single search. [](https://you.com/resources/llm-web-search-api)
+
+* **How it works:** Using agentic frameworks like **ReAct** (Reason + Act), the LLM generates a preliminary query, evaluates the initial web snippets, and iteratively decides what to search for next based on gaps in its knowledge. [](https://www.lesswrong.com/posts/uAEhvX6scvcZANWwg/a-guide-for-llm-assisted-web-research)
+* **Example:** If tasked to find a company's current CEO, the agent might search `Company X history` → read that it was acquired by Company Y → generate a secondary query for `Company Y executive leadership 2026`.
+
+### 5\. Query Hyponymy and Hypothetical Document Embeddings (HyDE)
+
+Sometimes, searching for the user's question directly doesn't surface the best answer. Instead, systems look for text that _resembles_ an answer.
+
+* **How it works:** The LLM takes the user prompt and generates a _hypothetical, idealized answer_ (even if it contains hallucinated details). The system then converts this hypothetical answer into a vector embedding and uses it to search for real web documents that share the same semantic structure.
+
+### Summary Comparison of Approaches
+
+| Approach                | Best Used For                                   | Primary Advantage                                |
+| ----------------------- | ----------------------------------------------- | ------------------------------------------------ |
+| **Keyword Extraction**  | Simple, conversational questions                | Strips noise; fits standard search engine limits |
+| **Query Expansion**     | Multi-faceted or comparative topics             | Increases coverage; gathers diverse source links |
+| **Structured Querying** | Searches constrained by dates, types, or prices | High precision; eliminates irrelevant timelines  |
+| **Agentic Loops**       | Deep research and multi-step verification       | Can pivot strategy based on live web findings    |
+
+Are you designing a **custom RAG pipeline** or trying to optimize your website's **SEO** so that LLMs construct queries that find your content? Let me know your specific goal so I can provide relevant technical prompts or strategies.
+
+* [](https://www.elastic.co/search-labs/blog/query-rewriting-llm-search-improve)  
+Elastic Search  
+Query rewriting strategies for LLMs & search engines - Elastic  
+Jan 29, 2026 — LLMs can optimize user queries by rewriting them in natural language to improve retrieval accuracy or by mapping them to structure...
+* [](https://you.com/resources/llm-web-search-api)  
+You.com  
+You.com | LLM Web Search API: Connecting Language Models to Live Web Data  
+August 17, 2026 — Specialized search interface for language models during inference to access live data, overcoming training cutoffs and reducing ha...
+* [](https://www.lesswrong.com/posts/uAEhvX6scvcZANWwg/a-guide-for-llm-assisted-web-research)  
+LessWrong  
+A Guide For LLM-Assisted Web Research - LessWrong  
+June 26, 2025 — web research tasks, carefully worked out the correct answers, and scraped … a ReAct agent with tools to search the internet and qu...
+
+Show all
+
+# how do different agents construct query for web search
+
+**AI agents construct web search queries through a process called query rewriting or query planning.** Instead of dropping a user's natural language question directly into a search engine, an agent evaluates the intent, breaks down complex ideas, and structures the query to maximize the quality of the search engine's results. [](https://www.youtube.com/watch?v=EdB%5FatI0dMk&t=23)
+
+Different types of agents handle this construction in distinct ways, depending on their architecture and goals:
+
+---
+
+### 1\. One-Shot Assistants (Standard Chatbots)
+
+These are basic implementations found in everyday chat UIs (like early Copilot or basic ChatGPT implementations). [](https://support.microsoft.com/en-us/microsoft-365-copilot/how-web-search-works-in-microsoft-365-copilot-chat-and-agents)
+
+* **Construction Style:** Direct Translation.
+* **How it works:** The agent uses an internal instruction prompt to take the user's natural input and condense it into a single, punchy keyword query. [](https://support.microsoft.com/en-us/microsoft-365-copilot/how-web-search-works-in-microsoft-365-copilot-chat-and-agents)
+* **Example:** If you type, _"Can you check if it's going to rain in San Francisco today because I want to go to the park?"_, the agent will strip out the conversational fluff and generate a single query like: `San Francisco weather forecast today`.
+
+### 2\. Sequential Multi-Query Agents (Prompt Chains)
+
+These agents are programmed to realize that a single query rarely captures the full context of a multifaceted question. [](https://medium.com/@me%5F53022/search-the-web-with-agents-bf239a363a02)
+
+* **Construction Style:** Parallel Fan-Out.
+* **How it works:** The agent utilizes an internal Large Language Model (LLM) to generate a Python list or JSON array of multiple distinct queries simultaneously. It pushes all these queries to a search engine at once to gather a wide dragnet of information. [](https://medium.com/@me%5F53022/search-the-web-with-agents-bf239a363a02)
+* **Example:** For a query like _"Which CRMs added AI features this year?"_, it might generate:
+  * `Salesforce AI feature releases 2026`
+  * `HubSpot AI updates 2026`
+  * `Top CRM platforms generative AI additions` [](https://exa.ai/blog/what-is-a-search-agent)
+
+### 3\. Agentic RAG Loops (Reasoning Agents)
+
+Advanced systems—like Anthropic's research agents or custom LangGraph setups—rely on an iterative loop. [](https://www.youtube.com/watch?v=359s4VxAKaw&t=676)
+
+* **Construction Style:** Adaptive & Dynamic.
+* **How it works:** The agent constructs a primary query, reads the snippets returned by the server, evaluates if it has the answer, and then _dynamically constructs subsequent queries_ based on what it just learned. It acts like a human researcher, drilling deeper or shifting strategies if the first search yields a dead end. [](https://community.openai.com/t/building-an-autonomous-agent-that-can-actually-answer-questions-using-the-web/257983)
+* **Example:** If searching for a specialized corporate policy, it might start broad with `Company X travel policy`. If it finds a snippet mentioning "managed via Concur," it adapts its next query to `Company X Concur travel booking rules`.
+
+### 4\. Tool-Optimized Agents (Tavily / Exa / MCP Servers)
+
+Some agents are built to bypass traditional keyword search engines (like Google or Bing) entirely, opting for search engines built specifically for AI context ingestion (like Tavily Search or [Exa AI](https://exa.ai/blog/what-is-a-search-agent)). [](https://www.youtube.com/watch?v=2XypYVvq6B8)
+
+* **Construction Style:** Structured API Parameterization.
+* **How it works:** Instead of writing a text block, the agent populates JSON parameters. It constructs queries using specific search types (e.g., swapping between "keyword" search and "neural/semantic" search) and injects filters directly into the query object, such as date ranges or site exclusions.
+* **Example:** The agent might construct a payload requesting: `query: "generative AI breakthrough", include_domains: ["arxiv.org", "nature.com"], published_after: "2026-01-01"`.
+
+---
+
+### The Underlying Workflow
+
+Regardless of the agent's complexity, the technical construction happens behind the scenes in a multi-step pipeline:
+
+1. **Intent Detection:** The agent determines what kind of answer is needed (e.g., a time-sensitive fact, a direct comparison, or a summary).
+2. **Context Injection:** The agent appends underlying variables to the query construction prompt, such as the current date, the user's geographic location, or prior conversation history.
+3. **Structured Function Calling:** The LLM outputs a specific tool token (e.g., `web_search(query="...")`), which the application infrastructure executes on an actual web server before feeding the text results back to the agent's context window. [](https://saad.sh/posts/how-web-search-works-in-ai-agents)
+
+Are you looking to **build a web search agent** yourself using a framework like LangChain or n8n, or are you trying to **optimize prompts** so an existing agent searches the web more effectively? Let me know, and I can provide specific templates or code workflows!
+
+* [](https://www.youtube.com/watch?v=359s4VxAKaw&t=676)  
+YouTube·Tech With Nanor  
+Build a Web Search AI Agent with LangChain in Minutes  
+Jul 18, 2026 — Create the AI agent by calling \`create\_agent\` and passing the initialized \`LLM\` as the \`model\` argument. Provide the \`search\_web\` ...  
+4m
+* [](https://medium.com/@me%5F53022/search-the-web-with-agents-bf239a363a02)  
+Medium·Anando Ghose  
+Search the web with agents - by Anando Ghose  
+July 13, 2025 — Rather than directly inputing we will have our agent construct multiple search queries based on what it understood and run these s...
+* [](https://support.microsoft.com/en-us/microsoft-365-copilot/how-web-search-works-in-microsoft-365-copilot-chat-and-agents)  
+Microsoft Support  
+How web search works in Microsoft Copilot Chat and agents | Microsoft Support  
+Copilot Chat and Agents generate short Bing queries from prompts or files to retrieve current public web data for enhanced relevan...
+
+Show all
+
+
+
+# how well does mozilla readability work for agents to extract main content, what do ppl say
+
+**Mozilla Readability** (often utilized via `Readability.js`) works **exceptionally well** as a lightweight, rule-based text extractor for AI agents, scoring the highest fidelity rates in benchmark testing. 
+
+However, engineers and developers emphasize that it comes with distinct technical trade-offs. It is highly reliable for standard article layouts, but it requires a pre-rendered DOM and struggles with highly dynamic or non-traditional websites. [](https://stackoverflow.com/questions/3652657/what-algorithm-does-readability-use-for-extracting-text-from-urls)
+
+---
+
+### How It Works for AI Agents
+
+Mozilla Readability is a **heuristic, rule-based engine**—not an AI model. It scores HTML structural blocks (like `<div>` and `<p>`) based on text density and sentence structure, penalizes blocks flooded with links (like sidebars and menus), and passes the highest-scoring subtree to your agent. [](https://webcrawlerapi.com/blog/mozilla-readability-algorithm-readabilityjs)
+
+For AI developers, its main benefits include:
+
+* **Token Optimization:** By stripping out "page furniture" (ads, headers, footers, and tracking scripts), it dramatically reduces token usage and prevents "boilerplate burial"—a common failure mode where an agent's context window gets choked by 80,000+ characters of inline CSS or navigation links. [](https://www.youtube.com/watch?v=OlNZCtk100Q&t=30)
+* **Speed:** In 2026 developer benchmarks, when paired with a cold-start DOM library like `jsdom`, it extracts text in a median time of just **\~14 ms per page**, vastly outperforming heavy LLM-based scrapers.
+* **High Accuracy:** In a 50-page real-world corpus test, Mozilla Readability matched human-verified "ground truth" content within 5% on **88% of articles**, setting the industry standard for traditional content parsing.
+
+---
+
+### What People & Developers Say
+
+#### 1\. The Good: The "Golden Standard" for Standard Layouts
+
+Developers widely praise it for being a robust, low-maintenance solution for browser extensions and agentic search pipelines. Because it uses zero per-site rules or training data, it successfully extracts core text from websites it has never seen before. [](https://thunderbit.com/blog/mozilla-readability-review)
+
+Popular developer workflows frequently pipe Readability’s JSON output into markdown tools like **Turndown** or command-line utilities like **shot-scraper** to hand AI agents clean, LLM-optimized Markdown files. [](https://til.simonwillison.net/shot-scraper/readability)
+
+#### 2\. The Bad: The "Not a Renderer" Trap
+
+The most common critique among engineering teams is that **Readability is not a web fetcher or a JavaScript renderer**. [](https://thunderbit.com/blog/mozilla-readability-review)
+
+* If a modern Single-Page Application (SPA) relies on React or element hydration, handing the raw HTML source to Readability will yield an empty page or a loading spinner. [](https://www.youtube.com/watch?v=OlNZCtk100Q&t=30)
+* To make it work for agents, developers agree you _must_ run it inside a headless browser framework (like Playwright or Puppeteer) **after** JavaScript has executed. [](https://til.simonwillison.net/shot-scraper/readability)
+
+#### 3\. Mixed Consensus on Complex Data
+
+As noted in developer community discussions on [Stack Overflow](https://stackoverflow.com/questions/3652657/what-algorithm-does-readability-use-for-extracting-text-from-urls), its reliance on heuristics means it is **not 100% accurate**. [](https://stackoverflow.com/questions/3652657/what-algorithm-does-readability-use-for-extracting-text-from-urls)
+
+If a webpage relies heavily on multi-language code tabs (e.g., swapping between Python and Java examples), interactive data tables, or embedded comment sections, Readability’s cleanup passes can be too aggressive and accidentally delete sections the agent actually needs to see. Alternatives like _Trafilatura_ are often preferred if out-of-the-box multilingual processing or comment preservation is a priority. [](https://webcrawlerapi.com/blog/mozilla-readability-algorithm-readabilityjs)
+
+---
+
+### 📊 Quick Comparison: Readability vs. Alternatives
+
+| Feature         | Mozilla Readability              | Trafilatura                   | Raw HTML to Markdown            |
+| --------------- | -------------------------------- | ----------------------------- | ------------------------------- |
+| **Strategy**    | Heuristic scoring (DOM analysis) | Text-to-code ratio algorithms | Naive conversion                |
+| **Speed**       | 🚀 Ultra-fast (\~14ms)           | Moderate (\~85ms)             | Fast                            |
+| **Token Waste** | 📉 Minimal (cleans clutter)      | 📉 Minimal                    | 📈 High (keeps boilerplate)     |
+| **Best For**    | Blogs, news, documentation       | Comments, multilingual pages  | Highly unpredictable structures |
+
+Are you building an **autonomous web-scraping agent**, or are you looking to feed clean data into an **LLM application (RAG)**? I can provide the **JavaScript code snippet** required to pipe Readability into a headless browser if you need it.
+
+* [](https://www.bulkmd.app/blog/readability-vs-trafilatura-extractors)  
+www.bulkmd.app  
+Readability vs Trafilatura vs jsdom: 2026 Benchmark - BulkMD  
+May 26, 2026 — Trafilatura was the only extractor that handled multilingual pages and embedded comments out of the box without configuration. jsd...
+* [](https://thunderbit.com/blog/mozilla-readability-review)  
+Thunderbit  
+Mozilla Readability Benchmark: Recall vs Leakage - Thunderbit  
+Aug 16, 2026 — Not a fetcher. It takes a document , not a URL. Fetching, retries, anti-bot, and headers are your problem. Not a renderer. No Java...
+* [](https://webcrawlerapi.com/blog/mozilla-readability-algorithm-readabilityjs)  
+WebCrawler API  
+Mozilla Readability Algorithm (Readability.js) explanation  
+Oct 15, 2026 — Text blocks with real sentences get points. Blocks with too many links lose points. It removes “unlikely” blocks early, but it can...
+
+Show all
+
+
