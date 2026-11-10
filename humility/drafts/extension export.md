@@ -50,6 +50,7 @@ for each included thread,
 
 would be easier w no special cases. so, for any folder in general,
 
+- for those wo folder, use title as folder
 - output `%Y%m%d %H%M folder santinized.md` on build dir
   - _linux only reserves slash. but you may convert all possibly incompatible chars to spaces, and trim it a bit for readability, maybe stripping stop words. and you will have them in lowercase._
 - for content
