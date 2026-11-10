@@ -5,7 +5,7 @@ database
     - threads.yaml: thread -> thread metadata
       - title
       - folder
-      - is deleted?
+      - ~~is deleted?~~ is hidden?
       - creation time
     - thread
       - (thread).yaml: message[]

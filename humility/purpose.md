@@ -298,4 +298,24 @@ advanced capabilities are not the priority now.
 
 build foundation first.
 
+---
+
+delete is reserved word. doesnt feel i should workaround js quirks.
+
+but actually it doesnt delete at all. i may rename as hide.
+
+<!-- on ux, i may name it as delete if it's practically irreversible currently. or i may add metadata like trash folder prefix, and render specifically. -->
+
+---
+
+interesting, e name too long when i swapped params of write.
+
+"write content to file", "write file as content"
+
+a tradeoff of positional params.
+
+---
+
+export is reserved. let's just call it build for simplicity. i already call it build dir.
+
 
