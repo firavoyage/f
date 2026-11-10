@@ -153,12 +153,12 @@ type parse_options = Record<
   string,
   {
     type: 'number' | 'string' | 'boolean'
-    short?: string
+    short?: string // must be single char
     default?
   }
 >
 
-function parse_options(options: parse_options) {
+export function parse_options(options: parse_options) {
   let results = {}
 
   let normalized_env = obj(map(process.env, ([k, v]) => [k.toLowerCase(), v]))
@@ -174,17 +174,37 @@ function parse_options(options: parse_options) {
       default_value = normalized_env[key]
     }
 
-    converted_options[key] = {
-      type: type == 'boolean' ? 'boolean' : 'string',
-      default: default_value
+    if (type == 'boolean') {
+      converted_options[key] = {
+        type,
+        default: default_value,
+      }
+    } else {
+      converted_options[key] = {
+        type: 'string',
+        default: str(default_value),
+      }
     }
 
     if (short) {
       converted_options[key].short = short
-    } 
+    }
   })
 
-  const { values, positionals } = parseArgs(converted_options)
+  const { values, positionals } = parseArgs({
+    options: converted_options,
+    strict: false,
+  })
 
-  
+  map(options, ([key, option]) => {
+    const { type, short, default: default_ } = option
+
+    results[key] = values[key]
+
+    if (type == 'number') {
+      results[key] = num(values[key])
+    }
+  })
+
+  return results
 }

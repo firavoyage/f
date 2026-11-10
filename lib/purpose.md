@@ -573,4 +573,12 @@ backend could be the local/remote centralized chat server.
 
 endpoint means model api endpoint.
 
+---
+
+cli: parse options
+
+dk whether boolean default makes sense.
+
+feels it has to be false, unless there's some magic like "--not-foo".
+
 

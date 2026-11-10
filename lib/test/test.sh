@@ -1,1 +1,1 @@
-b 'test.ts' "$@"
+b 'cli.ts' "$@"

@@ -1,20 +1,20 @@
-import { parseArgs } from 'node:util'
 import { Hono } from 'hono';
 import { serve } from '@hono/node-server';
 import { cors } from 'hono/cors';
 import { serveStatic } from '@hono/node-server/serve-static';
 import { read, cwd, expand_path, does_exist, is_dir, parent } from 'lib/file'
 import { format_log } from 'lib/log'
+import { parse_options } from 'lib/cli'
 
 const { stringify: serialize } = JSON
 
-let {
-  values: { port },
-} = parseArgs({
-  options: { port: { type: 'string', short: 'p', default: '8192' } },
-  strict: false,
+const { port } = parse_options({
+  port: {
+    type: 'number',
+    short: 'p',
+    default: 8192
+  }
 })
-port = int(port)
 
 const app = new Hono();
 
