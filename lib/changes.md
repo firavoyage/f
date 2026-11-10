@@ -37,3 +37,11 @@ change
 # 2026.11.09
 
 - random: + `random_id`
+
+# 2026.11.10
+
+- cli: + `parse_options`
+  - take default value?
+  - take any env var, case insensitive
+  - parse anything into number string or boolean
+

@@ -1,6 +1,7 @@
 import { new_thread, send } from 'action/index'
 
-const thread = new_thread()
+const thread = new_thread('be concise, what do ppl feel')
+// const thread = new_thread()
 
 log(thread)
 

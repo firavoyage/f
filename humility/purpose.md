@@ -232,4 +232,10 @@ well doesnt feel these stats are quite helpful. would be better if i create a cl
 
 <!-- dont really know how "model" and "model-latest" differ on openrouter, if both do not pin an exact rel date. interesting. would be better if called stable/experimental instead guess. -->
 
+10
+
+doesnt matter whether to incl yaml suffix i guess for machine readable files.
+
+and even better, vscode would guess and highlight anyway. (well, it may guess as md, but it's fine)
+
 

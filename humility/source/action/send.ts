@@ -3,6 +3,7 @@ import {
   deserialize,
   config_file,
   thread_folder,
+  log_folder,
 } from 'action/index'
 import { chat } from 'lib/generation'
 import { read, join, write } from 'lib/file'
@@ -48,11 +49,16 @@ export async function send(options: send) {
     key,
   })
 
-  const new_thread_content = [...messages, reply]
+  const { payload, ...reply_message } = reply
 
+  const new_thread_content = [...messages, reply_message]
+
+  const payload_file = join(log_folder, reply.id)
+
+  write(payload_file, serialize(payload))
   write(thread_file, serialize(new_thread_content))
 
-  return reply
+  return reply_message
 }
 
 function user_message(content: string) {

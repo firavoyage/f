@@ -11,5 +11,5 @@
 
 // log('``\n' + serialize({foo: 'bar', asdf: 'asdf'}) + '``\n')
 
-log(list({ foo: 'bar', asdf: 123 }))
-log(entries({ foo: 'bar', asdf: 123 }))
+log(process.env.key)
+
