@@ -1,5 +1,5 @@
 import { serialize, deserialize, threads_file, thread_folder } from 'action/index'
-import { read, write, join } from 'lib/file'
+import { read, write, join, santinize } from 'lib/file'
 import { at } from 'lib/time'
 
 export function build({ dir, include = [''], ignore = [] }) {
@@ -59,8 +59,7 @@ export function build({ dir, include = [''], ignore = [] }) {
   for (const [folder, { creation_time, threads: current_threads }] of entries(
     folders,
   )) {
-    // todo
-    let santinized_folder = folder.replaceAll('/', ' ')
+    let santinized_folder = santinize(folder)
 
     let filename = `${at(creation_time).format(
       '%Y%m%d %H%M',

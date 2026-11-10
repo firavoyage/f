@@ -1,12 +1,28 @@
-import desktop from '@folder/xdg';
-import { appendFileSync, cpSync, existsSync, mkdirSync, readdirSync, readFileSync, renameSync, rmdirSync, rmSync, stat, statSync, unlinkSync, writeFileSync } from 'node:fs';
-import { homedir } from 'node:os';
+import desktop from '@folder/xdg'
 import {
-  join as _join, resolve as _resolve, relative,
+  appendFileSync,
+  cpSync,
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  renameSync,
+  rmdirSync,
+  rmSync,
+  stat,
+  statSync,
+  unlinkSync,
+  writeFileSync,
+} from 'node:fs'
+import { homedir } from 'node:os'
+import {
+  join as _join,
+  resolve as _resolve,
+  relative,
   basename as _basename,
   dirname as _dirname,
   extname as _extname,
-} from 'node:path';
+} from 'node:path'
 import { run } from 'lib/subprocess'
 
 export const stdin = 0
@@ -37,9 +53,11 @@ let data_folder, config_folder, cache_folder
 
 export function init_desktop(app: string, xdg = false) {
   if (xdg) {
-    (
-      { data: data_folder, config: config_folder, cache: cache_folder } = desktop({ subdir: app })
-    )
+    ;({
+      data: data_folder,
+      config: config_folder,
+      cache: cache_folder,
+    } = desktop({ subdir: app }))
   } else {
     data_folder = home(`.${app}`, 'data')
     config_folder = home(`.${app}`, 'config')
@@ -130,7 +148,7 @@ export function does_exist(path: path_fs) {
 export function is_file(path: path_fs) {
   const stats = handle(() => statSync(path))
 
-  if(is_error(stats)){
+  if (is_error(stats)) {
     return false
   }
 
@@ -140,7 +158,7 @@ export function is_file(path: path_fs) {
 export function is_dir(path: path_fs) {
   const stats = handle(() => statSync(path))
 
-  if(is_error(stats)){
+  if (is_error(stats)) {
     return false
   }
 
@@ -188,7 +206,7 @@ export function birthtime(path: path_fs) {
 
 export function children(path: path_fs, with_dir = true) {
   const items = readdirSync(path)
-  return with_dir? map(items, (item) => join(path, item)): items
+  return with_dir ? map(items, (item) => join(path, item)) : items
 }
 
 // Utils
@@ -201,7 +219,7 @@ export const mv = rename
 
 /**
  * delete an individual file
- * 
+ *
  * err if non existing
  */
 export function unlink(path: path_fs) {
@@ -213,7 +231,7 @@ export const remove = unlink
 
 /**
  * delete an empty folder
- * 
+ *
  * err if non existing or not empty
  */
 export function rmdir(path: path_fs) {
@@ -286,7 +304,7 @@ export function append(path: path_fs, content: string) {
       return run(`head -c -1 << 'EOF' | sudo tee -a ${path}\n${content}\nEOF`)
     } else {
       throw result
-    }    
+    }
   }
 
   return result
@@ -300,8 +318,62 @@ export function read(path: path_r) {
       return run(`sudo cat ${path}`)
     } else {
       throw result
-    }    
+    }
   }
 
   return result
+}
+
+// Filename op
+
+export function santinize(filename: string, replacement = ' ') {
+  const possibly_incompatible_chars = [
+    '/',
+    '\\',
+    ':',
+    '*',
+    '?',
+    '"',
+    '<',
+    '>',
+    '|',
+    '\u0000',
+    '\u0001',
+    '\u0002',
+    '\u0003',
+    '\u0004',
+    '\u0005',
+    '\u0006',
+    '\u0007',
+    '\b',
+    '\t',
+    '\n',
+    '\u000B',
+    '\f',
+    '\r',
+    '\u000E',
+    '\u000F',
+    '\u0010',
+    '\u0011',
+    '\u0012',
+    '\u0013',
+    '\u0014',
+    '\u0015',
+    '\u0016',
+    '\u0017',
+    '\u0018',
+    '\u0019',
+    '\u001A',
+    '\u001B',
+    '\u001C',
+    '\u001D',
+    '\u001E',
+    '\u001F',
+  ]
+
+  for (const char of possibly_incompatible_chars) {
+    filename = filename.replaceAll(char, replacement)
+  }
+
+  return filename
 }

@@ -44,5 +44,6 @@ change
   - take default value?
   - take any env var, case insensitive
   - parse anything into number string or boolean
+- file: + `santinize(filename, replacement)`
 
 
