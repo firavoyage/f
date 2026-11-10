@@ -276,4 +276,16 @@ that is, you may share your config w secrets safely separated.
 
 <!-- it matters less to be compatible w shell env here i guess. -->
 
+---
+
+on backend you would likely to simply map wildcard to action/index.
+
+and you would likely to post(endpoint, payload) rather than dc endpoint fn from some proxy (async wrappers w advanced tsism, i.e. infer).
+
+that is, you should just use obj params from day one.
+
+especially flexible if you do not care types.
+
+<!-- well, you may argue it's a bit awkward to write {...} = {} when all options are optional -->
+
 

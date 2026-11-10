@@ -4,6 +4,7 @@ database
   - chat
     - threads.yaml: thread -> thread metadata
       - title
+      - folder
       - is deleted?
       - creation time
     - thread

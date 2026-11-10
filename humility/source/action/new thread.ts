@@ -1,9 +1,14 @@
-import { serialize, deserialize, threads_file, thread_folder } from 'action/index'
+import {
+  serialize,
+  deserialize,
+  threads_file,
+  thread_folder,
+} from 'action/index'
 import { read, write, join } from 'lib/file'
 import { now } from 'lib/time'
 import { random_id } from 'lib/random'
 
-export function new_thread(title: string = '') {
+export function new_thread({ title = '', folder = '' }) {
   const thread = random_id()
   // const id = random_id()
 
@@ -13,9 +18,7 @@ export function new_thread(title: string = '') {
 
   threads[thread] = {
     title,
-    // // will be instantly initialized as the first msg
-    // title: '',
-    // // title: 'New Thread',
+    folder,
     creation_time,
   }
 
