@@ -324,5 +324,8 @@ wow, build works wo debugging.
 
 thanks to the elegant abstraction of lib.
 
+---
+
+you can build sth functional now.
 
 
