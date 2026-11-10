@@ -1,6 +1,7 @@
 import { thread_folder, deserialize } from 'action/index'
-import { read as read_file, join } from 'lib/file'
+import * as file from 'lib/file'
+import { join } from 'lib/file'
 
 export function read(thread: string) {
-  return deserialize(read_file(join(thread_folder, thread)))
+  return deserialize(file.read(join(thread_folder, thread)))
 }
