@@ -292,5 +292,10 @@ especially flexible if you do not care types.
 
 you should include both request and payload on logs.
 
+---
+
+advanced capabilities are not the priority now.
+
+build foundation first.
 
 
