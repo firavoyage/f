@@ -2,17 +2,44 @@ theme:
   - light
   - dark
 palette:
+  white: oklch(100% 0.00 90.00)
+  black: oklch(0% 0.00 0.00)
   gray:
-    0: oklch(1 0 0)
-    100: oklch(0.985 0 0)
-    200: oklch(0.95 0 0)
-    300: oklch(0.89 0 0)
-    400: oklch(0.8 0 0)
-    500: oklch(0.68 0 0)
-    600: oklch(0.54 0 0)
-    700: oklch(0.38 0 0)
-    800: oklch(0.22 0 0)
-    850: oklch(0.16 0 0)
-    900: oklch(0.11 0 0)
-    950: oklch(0.075 0 0)
+    50: oklch(99.5% 0 0)
+    100: oklch(98.5% 0 0)
+    150: oklch(97% 0 0)
+    200: oklch(95% 0 0)
+    250: oklch(92.5% 0 0)
+    300: oklch(89% 0 0)
+    400: oklch(80% 0 0)
+    500: oklch(68% 0 0)
+    600: oklch(54% 0 0)
+    700: oklch(38% 0 0)
+    800: oklch(22% 0 0)
+    900: oklch(11% 0 0)
+    950: oklch(7.5% 0 0)
+typeface:
+  sans: Noto Sans, sans-serif
+  serif: EB Garamond, serif
+  # sans: Ubuntu Sans, sans-serif
+  # serif: EB Garamond, serif
+app:
+  app: h-100dvh font-sans
+page:
+  page: flex ml-48
+  content: w-prose
+input:
+  input: w-full px-2 py-1 rounded-md bg-field
+  input:focus-visble: outline-focus outline-sm offset-2 rounded-md
+scroll:
+  scroll: flex flex-1 relative overflow-hidden
+  content: flex-1 overflow-auto
+  vertical_scrollbar: absolute right-0 top-0 bottom-0
+  vertical_track: w-3 h-full opacity-0 transition-opacity duration-0.5s
+  vertical_track[show]: opacity-1
+  vertical_thumb: w-full bg-border
+  horizontal_scrollbar: absolute bottom-0 left-0 right-0
+  horizontal_track: h-3 w-full opacity-0 transition-opacity duration-0.5s
+  horizontal_track[show]: opacity-1
+  horizontal_thumb: h-full bg-border
 

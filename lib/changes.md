@@ -45,5 +45,4 @@ change
   - take any env var, case insensitive
   - parse anything into number string or boolean
 - file: + `santinize(filename, replacement)`
-
-
+- web/query: + `use_query(endpoint, payload)`

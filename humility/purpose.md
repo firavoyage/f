@@ -334,4 +334,8 @@ likely you only need a grayscale color ramp now.
 
 dont have to learn color theories.
 
+---
+
+really i should consider event listener instead of use request
+
 

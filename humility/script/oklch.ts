@@ -24,4 +24,4 @@ const scale = {
   1000: 0.05,
 }
 
-log(serialize(obj(map(scale, ([number, l]) => [number, `oklch(${l} 0 0)`]))))
+log(serialize(obj(map(scale, ([number, l]) => [number, `oklch(${l * 100}% 0 0)`]))))
