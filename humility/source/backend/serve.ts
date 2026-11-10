@@ -26,6 +26,29 @@ app.use('*', async (c, next) => {
   log(format_log(`${c.req.method} ${c.req.path}`, 'info'))
 })
 
+app.use('*', serveStatic({ root: '../web/build' }))
+
+app.get('*', (c) => {
+  const html = handle(() => read('../web/build/index.html'))
+
+  if (is_error(html)) {
+    log('web/build/index.html should exist, run web build first')
+
+    return c.text('')
+  }
+
+  return c.html(html)
+})
+
+app.post('/api/:action{.+}', (c) => {
+  const action = c.req.param('action') 
+  
+  return c.json({
+    message: "Catch-all triggered",
+    capturedPath: action
+  })
+})
+
 serve(
   {
     fetch: app.fetch,
