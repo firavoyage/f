@@ -42,10 +42,14 @@ export async function send(options: send) {
 
   write(thread_file, serialize(messages))
 
-  const reply = await chat({
+  const request = {
     messages,
     model,
     endpoint,
+  }
+
+  const reply = await chat({
+    ...request,
     key,
   })
 
@@ -53,9 +57,9 @@ export async function send(options: send) {
 
   const new_thread_content = [...messages, reply_message]
 
-  const payload_file = join(log_folder, reply.id)
+  const log_file = join(log_folder, reply.id)
 
-  write(payload_file, serialize(payload))
+  write(log_file, serialize({ request, payload }))
   write(thread_file, serialize(new_thread_content))
 
   return reply_message

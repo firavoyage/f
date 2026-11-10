@@ -288,4 +288,9 @@ especially flexible if you do not care types.
 
 <!-- well, you may argue it's a bit awkward to write {...} = {} when all options are optional -->
 
+---
+
+you should include both request and payload on logs.
+
+
 
