@@ -2,7 +2,7 @@ let base = location.origin
 
 if (base.endsWith('/')) {
   base = base.slice(0, -1)
-} 
+}
 
 export function init_request(base_url) {
   base = base_url
@@ -39,4 +39,3 @@ export async function post(endpoint, payload = {}) {
   const result = await response.json()
   return result
 }
-

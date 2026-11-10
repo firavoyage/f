@@ -2,9 +2,10 @@ import { Hono } from 'hono';
 import { serve } from '@hono/node-server';
 import { cors } from 'hono/cors';
 import { serveStatic } from '@hono/node-server/serve-static';
-import { read, cwd, expand_path, does_exist, is_dir, parent } from 'lib/file'
+import { read } from 'lib/file'
 import { format_log } from 'lib/log'
 import { parse_options } from 'lib/cli'
+import * as actions from 'action/index'
 
 const { stringify: serialize } = JSON
 
@@ -40,13 +41,11 @@ app.get('*', (c) => {
   return c.html(html)
 })
 
-app.post('/api/:action{.+}', (c) => {
+app.post('/api/:action{.+}', async (c) => {
   const action = c.req.param('action') 
+  const payload = await c.req.json()
   
-  return c.json({
-    message: "Catch-all triggered",
-    capturedPath: action
-  })
+  return c.json(await actions[action](payload))
 })
 
 serve(
