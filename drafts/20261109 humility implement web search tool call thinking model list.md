@@ -816,246 +816,6 @@ Use gpt-6.1-sol with service\_tier: "ultrafast" to reduce the time between gener
 
 Show all
 
-# how to use tool call on openai compatible api in js depfree
-
-To implement tool calling on an OpenAI-compatible API without any dependencies (`depfree`), you can use the native global **`fetch`** API available in modern JavaScript and Node.js.
-
-The complete loop for tool calling requires two steps:
-
-1. Sending the user's prompt and tool definitions to the API, and handling the model's request to call a tool.
-2. Executing your local function, sending the result back to the API, and receiving the final textual response. [](https://www.generalcompute.com/blog/tool-calling-with-open-source-llms)
-
-Here is a clean, comprehensive implementation:
-
-javascript
-
-```
-// 1. Define your base configuration
-const BASE_URL = "https://your-provider.com"; // Replace with your OpenAI-compatible endpoint
-const API_KEY = "your-api-key-here";
-const MODEL = "your-model-name";
-
-// 2. Define the local function(s) the model can use
-function getWeather(location) {
-  if (location.toLowerCase().includes("tokyo")) {
-    return { temperature: "12", unit: "C", condition: "Rainy" };
-  }
-  return { temperature: "22", unit: "C", condition: "Sunny" };
-}
-
-// 3. Define the tool metadata structure (JSON Schema)
-const tools = [
-  {
-    type: "function",
-    function: {
-      name: "getWeather",
-      description: "Get the current weather for a given location",
-      parameters: {
-        type: "object",
-        properties: {
-          location: {
-            type: "string",
-            description: "The city and state, e.g. San Francisco, CA"
-          }
-        },
-        required: ["location"]
-      }
-    }
-  }
-];
-
-// Helper to make the HTTP POST requests
-async function makeChatRequest(messages) {
-  const response = await fetch(`${BASE_URL}/chat/completions`, {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${API_KEY}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      model: MODEL,
-      messages: messages,
-      tools: tools,
-      tool_choice: "auto"
-    })
-  });
-
-  if (!response.ok) {
-    const errText = await response.text();
-    throw new Error(`API Error (${response.status}): ${errText}`);
-  }
-
-  const data = await response.json();
-  return data.choices[0].message;
-}
-
-// 4. Orchestrate the complete agent loop
-async function runAgent(userPrompt) {
-  const messages = [{ role: "user", content: userPrompt }];
-
-  console.log(`User: ${userPrompt}`);
-  
-  // --- First Turn: Ask the model ---
-  let assistantMessage = await makeChatRequest(messages);
-  
-  // Append the model's thoughts/tool requests to the history
-  messages.push(assistantMessage);
-
-  // Check if the model decided to call any tools
-  if (assistantMessage.tool_calls && assistantMessage.tool_calls.length > 0) {
-    
-    // Iterate and execute all requested tool calls
-    for (const toolCall of assistantMessage.tool_calls) {
-      const functionName = toolCall.function.name;
-      const functionArgs = JSON.parse(toolCall.function.arguments);
-      
-      console.log(`\n[Model requested tool]: ${functionName} with args:`, functionArgs);
-
-      let toolResult;
-      if (functionName === "getWeather") {
-        toolResult = getWeather(functionArgs.location);
-      } else {
-        toolResult = { error: `Tool ${functionName} not found.` };
-      }
-
-      console.log(`[Tool executed result]:`, toolResult);
-
-      // Append the tool execution response back to the message history
-      messages.push({
-        role: "tool",
-        tool_call_id: toolCall.id, // Must match the ID sent by the model
-        name: functionName,
-        content: JSON.stringify(toolResult)
-      });
-    }
-
-    // --- Second Turn: Send the results back for the final answer ---
-    assistantMessage = await makeChatRequest(messages);
-  }
-
-  console.log(`\nAI Final Answer: ${assistantMessage.content}`);
-}
-
-// Run the script
-runAgent("What is the weather like in Tokyo right now?")
-  .catch(console.error);
-
-```
-
-
-
-### Critical Rules for OpenAI-Compatible Tool Formatting
-
-* **`tool_call_id` Match:** When returning the `role: "tool"` message, you _must_ pass the exact `id` provided by the incoming `tool_calls` object.
-* **Stringified Arguments:** The arguments returned by the LLM (`toolCall.function.arguments`) come back as a JSON string. You must parse them with `JSON.parse()` before handing them to your functions.
-* **Stringified Results:** The tool's output array payload payload (`content`) must be sent back to the API strictly as a string (use `JSON.stringify()`). [](https://www.youtube.com/watch?v=I1qOfbNVur0)
-
-Are you running this script in **Node.js** or directly in a **Browser** environment? I can help you adapt this for streaming responses (`ReadableStream`) or add error boundary checks if needed.
-
-* [](https://www.generalcompute.com/blog/tool-calling-with-open-source-llms)  
-General Compute  
-Tool Calling With Open-Source LLMs: A Complete Guide  
-Execute each tool call and add results for tool\_call … tool\_call.function.name func\_args = json.loads(tool\_call.function.arguments...
-* [](https://www.youtube.com/watch?v=I1qOfbNVur0)  
-YouTube·Irtiza Hafiz  
-OpenAI Function Calling | LLM Tools Essentials  
-Jan 7, 2026 — ID this is the ID associated with this function call so when you send the result back to the model you need to give it the same it...  
-14:49
-* [](https://docs.parallel.ai/integrations/openai-tool-calling)  
-Parallel Web Systems  
-OpenAI Tool Calling  
-This guide shows how to define Parallel Search as an OpenAI function and handle tool calls in your application. JSON. parse(toolCa...
-
-# what if you implement tool calling manually via prompting for agents for personal projects
-
-Implementing tool calling manually via prompting (often referred to as building a **"ReAct" (Reason + Act) loop** or structured output parsing from scratch) is an **excellent, highly educational choice for a personal project**. [](https://www.youtube.com/watch?v=7-je5oEUMwo&t=61)
-
-Before modern LLM provider APIs natively supported the `tools=[...]` parameter, this was exactly how early agent frameworks like LangChain were built. Doing this manually gives you full visibility into the "magic" behind AI agents. [](https://www.reddit.com/r/LangChain/comments/1p1ktbs/can%5Fi%5Fcreate%5Fagents%5Fusing%5Fmodels%5Fthat%5Fdo%5Fnot/)
-
-Here is a breakdown of what happens when you take this approach, including the architectural loop, the benefits, and the major hurdles you will encounter.
-
----
-
-### 🛠️ The Manual Agent Loop
-
-When you implement this manually, your application architecture follows a strict 5-step loop controlled by your python code: [](https://www.decodingai.com/p/tool-calling-from-scratch-to-production)
-
-1. **The System Prompt:** You inject the "Tool Schema" directly into the system instructions. You tell the model what tools exist, their arguments, and the exact string format it must reply with if it wants to use one. [](https://community.openai.com/t/prompting-best-practices-for-tool-use-function-calling/1123036)
-2. **The Reason Step:** The LLM evaluates the user request and textually outputs its "Thought". [](https://www.promptingguide.ai/agents/function-calling)
-3. **The Stop / Trap:** If the LLM wants to use a tool, it outputs a specifically formatted string (e.g., JSON inside a markdown code block, or a custom string like `Action: calculate_taxes[income=50000]`).
-4. **The Execution (Your Code):** Your backend parses that exact string, extracts the tool name and arguments, halts the LLM, and executes the actual Python function. [](https://towardsdatascience.com/tool-calling-explained-how-ai-agents-decide-what-to-do-next/)
-5. **The Feedback (Observation):** Your backend appends the tool's result back into the conversation context as an `Observation:` and hands control back to the LLM to either pick another tool or output a final response. [](https://machinelearningmastery.com/tool-calling-vs-code-execution-for-ai-agents-choosing-the-right-action-primitive/)
-
----
-
-### 👍 The Big Advantages
-
-* **Ultimate Model Portability:** Native tool calling formatting varies wildly between OpenAI, Anthropic, and Google Gemini. If you handle tool calling purely via text prompting, your agent can seamlessly swap to virtually _any_ cheap open-source or local model (like Llama 3 or Qwen) without changing your backend code layout. [](https://www.freecodecamp.org/news/how-to-build-your-own-local-ai-agent-with-tool-calling-and-memory/)
-* **Deep Mastery of Agent Architecture:** You will understand exactly how stateless LLMs mimic "stateful" multi-step planning. It strips away framework abstraction, showing you how token contexts expand over time. [](https://www.youtube.com/watch?v=R7OCrqyGMeY&t=99)
-* **Complete Customization:** You are not bound by a provider's rigid JSON schema validation. You can invent your own concise shorthand to drastically save on prompt tokens. [](https://www.youtube.com/watch?v=R7OCrqyGMeY&t=99)
-
----
-
-### ⚠️ The Challenges (What You'll Have to Solve)
-
-While rewarding, manual prompting introduces a few highly predictable failure modes that you will have to engineer around:
-
-| Challenge                | What Happens                                                                                                                             | The Manual Fix                                                                                             |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| **Format Hallucination** | The LLM misses a bracket, uses single quotes instead of double quotes in JSON, or writes conversational fluff before the tool call.      | Use rigid regex parsing or python's json.loads() inside a try/except block.                                |
-| **The Endless Loop**     | The model gets stuck repeatedly calling the exact same tool with the same arguments because it doesn't "understand" the failure message. | Implement a manual max\_iterations = 5 counter in your execution loop to force a hard stop.                |
-| **Argument Confusion**   | The model inputs a string where an integer belongs, or hallucinates an argument that doesn't exist in your tool definition.              | Write strict type-validation helper functions to sanitize the arguments before passing them to your tools. |
-
----
-
-### 🚀 A Minimal Starter Prompt Blueprint
-
-If you write this code yourself, your system prompt will look something like this:
-
-text
-
-```
-You are an AI Agent with access to external tools. 
-To answer the user's request, you must follow a Thought, Action, Observation loop.
-
-Available Tools:
-- calculate_distance: Expects JSON {"origin": string, "destination": string}. Returns miles.
-- get_weather: Expects JSON {"location": string}. Returns temperature.
-
-Format your responses strictly like this:
-Thought: [Reason about what you need to do next]
-Action: [The exact name of the tool to use]
-Action Input: [The valid JSON arguments for the tool]
-
-Stop generating text immediately after writing 'Action Input:'. Wait for the environment to provide an Observation.
-
-Example:
-Thought: I need to check the weather in Tokyo.
-Action: get_weather
-Action Input: {"location": "Tokyo"}
-
-```
-
-
-
-Are you planning to build this using a **local open-source model** or a **commercial API**? If you'd like, I can provide a **bare-minimum Python script** demonstrating how to write the regex string-parser and execution loop without any external frameworks.
-
-* [](https://www.decodingai.com/p/tool-calling-from-scratch-to-production)  
-Decoding AI Magazine  
-AI Tool Calling: From Scratch to Production  
-October 28, 2025 — 5-step request-execute-respond flow mapping LLM function calls to environment feedback and outputs. Manual definitions using schem...
-* [](https://www.reddit.com/r/LangChain/comments/1p1ktbs/can%5Fi%5Fcreate%5Fagents%5Fusing%5Fmodels%5Fthat%5Fdo%5Fnot/)  
-Reddit·r/LangChain  
-Can I create agents using models that do NOT support tool ...  
-November 19, 2025 — While models that do not natively support tool calling, like Gemma 3, can theoretically be used with agents by generating structur...
-* [](https://www.youtube.com/watch?v=7-je5oEUMwo&t=61)  
-YouTube·Cloud With Raj  
-How AI Agents Choose Tools (And How to Explain It)  
-Sep 18, 2026 — When an AI agent needs to use tools, the user's prompt is sent to a piece of code, not directly to the LLM. Each tool provides its...  
-10m
-
-Show all
-
 # how to toggle the options of a model on openrouter in js depfree
 
 To toggle or switch options (like the model name, temperature, or max tokens) on OpenRouter using **dependency-free JavaScript** (no external packages like `openai` or `@openrouter/sdk`), you simply need to make a standard HTTP POST request using the native `fetch` API and change the variables in your payload dynamically. [](https://openrouter.ai/docs/quickstart)
@@ -1323,4 +1083,540 @@ June 4, 2026 — A practical guide to choosing the correct AI API endpoint. Lear
 
 Show all
 
+# can you do everything on openrouter w classic openai compatible api wo responses api
+
+### can you do everything on openrouter w classic openai compatible api wo responses api
+
+**Yes, you can do almost everything on OpenRouter using the classic OpenAI-compatible API** (`POST /api/v1/chat/completions`) without touching the newer Responses API (`POST /api/v1/responses`). [](https://openrouter.ai/docs/api%5Freference/overview)
+
+OpenRouter was built from the ground up as a **drop-in replacement for OpenAI’s Chat Completions API**. However, there are a few subtle trade-offs and advanced features to consider if you choose to stick purely to the classic endpoint. [](https://openrouter.ai/blog/insights/every-modality-one-api/)
+
+#### 🔄 What You Can Do (Via `/chat/completions`)
+
+* **Full Model Catalog Access:** You can prompt any model on the platform (including Claude, Gemini, DeepSeek, Llama, and GPT variants) simply by changing the `model` string in your payload. [](https://www.youtube.com/watch?v=VvJvJ0uXiVQ)
+* **Standard Tool Calling & Structured Outputs:** Traditional function calling and `response_format` (JSON mode/schemas) work seamlessly through the classic endpoint, provided the underlying model and provider support them.
+* **Multi-Modality:** OpenRouter routes multi-modal requests (like passing image URLs or base64 data inside the `messages` array) perfectly through the standard chat completions structure. [](https://openrouter.ai/blog/insights/every-modality-one-api/)
+
+#### ⚠️ What You Miss (Exclusive to the Responses API)
+
+The [OpenRouter Responses API](https://openrouter.ai/docs/api%5Freference/responses/overview) is designed to normalize advanced "native" provider features that don't always map cleanly to OpenAI's classic spec. If you bypass it, you lose out on: [](https://openrouter.ai/docs/api%5Freference/responses/overview)
+
+1. **Unified Web Search & Reasoning Toggles:** The Responses API abstracts built-in web search and extended reasoning tokens into cleaner, provider-agnostic parameters. [](https://openrouter.ai/docs/api%5Freference/responses/overview)
+2. **Simplified Fallbacks & Provider Hints:** Advanced orchestration (like instructing OpenRouter exactly how to handle failovers or selecting specific downstream hosting providers) is cleaner and more deeply integrated into the Responses payload. [](https://openrouter.ai/docs/api%5Freference/responses/overview)
+3. **Certain Service Tier Reporting:** Some deeper metadata tracking (such as special application tags or specific service tier reporting required by developer tools like Claude Code) defaults to the Responses architecture. [](https://www.developersdigest.tech/reference/api-compatibility/openrouter)
+
+#### 💻 Zero-Modification Setup
+
+If you are using the official OpenAI SDK, you don't need any new libraries. You only need to swap the `base_url` and use an OpenRouter API key: 
+
+python
+
+```
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key="your-openrouter-api-key"
+)
+
+response = client.chat.completions.create(
+    model="anthropic/claude-3.5-sonnet", # Change to any OpenRouter model identifier
+    messages=[{"role": "user", "content": "Hello!"}]
+)
+
+```
+
+
+
+Are you running into a **specific feature or error** (like tool calling or a specific framework integration) that makes you think you need the Responses API? Let me know what you are building and I can confirm if the classic endpoint supports it.
+
+* [](https://openrouter.ai/docs/api%5Freference/responses/overview)  
+OpenRouter  
+OpenAI-compatible Responses API - OpenRouter  
+OpenRouter's Responses API provides OpenAI-compatible access to multiple AI models … enhanced capabilities including reasoning, to...
+* [](https://openrouter.ai/docs/api%5Freference/overview)  
+OpenRouter  
+OpenRouter API Reference - Complete Documentation  
+OpenRouter's request and response schemas are very similar to OpenAI's APIs, only need to learn one. OpenRouter supports two reque...
+* [](https://openrouter.ai/blog/insights/every-modality-one-api/)  
+OpenRouter  
+One API for Image, Video, Audio, Embeddings & Transcription  
+July 16, 2026 — One base URL serves every modality, and you switch between them by changing the model string and the request content type.
+
+Show all
+
+# can you toggle reasoning effort on classic openai compatible api
+
+**Yes, you can toggle reasoning effort** on an OpenAI-compatible API by including the **`reasoning_effort`** parameter directly in the payload body of your standard `/v1/chat/completions` request. [](https://github.com/ollama/ollama/issues/14820)
+
+Most major self-hosted LLM engines (like Ollama) and proxy routers that mimic OpenAI's API have adopted this parameter to manage "thinking" or reasoning tokens for models that support it (such as Qwen 2.5/3.5 VL, Mistral-Thinking, or DeepSeek-R1). [](https://github.com/cline/cline/issues/13539)
+
+### How to Implement It
+
+#### 1\. Direct cURL Request
+
+If you are interacting directly with an OpenAI-compatible endpoint, pass `reasoning_effort` as a root-level property alongside `messages` and `model`: [](https://community.n8n.io/t/add-none-option-to-existing-reasoning-effort-dropdown-on-openai-chat-model-sub-node-for-gpt-5-4-mini-and-other-supported-models/302315)
+
+bash
+
+```
+curl http://localhost:11434/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "qwen3.5",
+    "messages": [{"role": "user", "content": "Solve this complex math problem..."}],
+    "reasoning_effort": "low"
+  }'
+
+```
+
+
+
+#### 2\. Python (Using the Official `openai` SDK)
+
+Because the official OpenAI SDK allows passing extra body arguments through `extra_body`, you don't need to wait for custom providers to update their SDK packages. You can inject it directly:
+
+python
+
+```
+from openai import OpenAI
+
+# Point to your custom OpenAI-compatible server (e.g., Ollama, vLLM, OpenWebUI)
+client = OpenAI(
+    base_url="http://localhost:11434/v1", 
+    api_key="ollama"  # or your custom provider key
+)
+
+response = client.chat.completions.create(
+    model="thinking-model-name",
+    messages=[{"role": "user", "content": "Explain quantum computing."}],
+    extra_body={
+        "reasoning_effort": "none"  # Options typically include: "none", "low", "medium", "high"
+    }
+)
+
+print(response.choices[0].message.content)
+
+```
+
+
+
+### Supported Values
+
+While standard OpenAI models accept `"minimal"`, `"low"`, `"medium"`, and `"high"`, OpenAI-compatible backends frequently support an extra toggle to disable the thinking process completely: [](https://reference.langchain.com/python/langchain-openai/chat%5Fmodels/base/BaseChatOpenAI/reasoning%5Feffort)
+
+* **`"none"`**: Disables thinking/reasoning completely to save latency and token costs (heavily utilized in routers like Ollama to turn off the `<think>` tag generation).
+* **`"low"` / `"medium"` / `"high"`**: Adjusts the internal token budget or constraints assigned to the model's reasoning phase. [](https://community.openai.com/t/o1s-reasoning-effort-parameter/1062308)
+
+### ⚠️ Caveats to Keep in Mind
+
+* **Silent Failures:** Some compatibility layers (like Anthropic’s OpenAI SDK compatibility wrapper) will parse the request successfully but silently ignore `reasoning_effort` if the backend model does not natively support adjustable thinking. [](https://sobalabs.ai/glossary/reasoning-effort/)
+* **UI/Frontend Tool Restrictions:** If you are using third-party agent frameworks or UIs (like Cline or n8n), the "Reasoning Effort" dropdown might not appear in the settings panel for "OpenAI Compatible" configurations. In those environments, you must use their "Custom HTTP Request" node or "Extra Parameters" field to bypass the UI restriction. [](https://community.n8n.io/t/add-none-option-to-existing-reasoning-effort-dropdown-on-openai-chat-model-sub-node-for-gpt-5-4-mini-and-other-supported-models/302315)
+
+Which **backend provider or engine** (e.g., Ollama, OpenWebUI, vLLM, LiteLLM) are you routing your OpenAI-compatible API calls through? I can provide the exact syntax or configuration required for that specific platform.
+
+* [](https://github.com/ollama/ollama/issues/14820)  
+GitHub  
+Document reasoning\_effort support in OpenAI-compatible /v1 ...  
+Mar 13, 2026 — reasoning\_effort is mapped to the internal Think field: "high" , "medium" , "low" → thinking ON (with varying effort);
+* [](https://community.n8n.io/t/add-none-option-to-existing-reasoning-effort-dropdown-on-openai-chat-model-sub-node-for-gpt-5-4-mini-and-other-supported-models/302315)  
+n8n Community  
+Add "None" option to existing Reasoning Effort dropdown on ...  
+July 7, 2026 — a workaround: use an HTTP Request node instead of the OpenAI Chat Model sub-node for those lightweight calls. set the Authorizatio...
+* [](https://github.com/cline/cline/issues/13539)  
+GitHub  
+No way to enable Reasoning Effort for custom/self-hosted ...  
+Aug 25, 2026 — "Reasoning Effort" control never appears in the settings panel, and reasoning\_effort is never sent in the request
+
+Show all
+
+# how to query the list of models on openai compatible api, or how to know the stats specific props or options for each
+
+To query the list of available models on an OpenAI-compatible API, you can use the standard **`GET /v1/models`** endpoint. [](https://developers.openai.com/api/reference/resources/models/methods/list)
+
+However, because the official OpenAI spec **does not provide detailed model options, token limits, or specific parameters** (like whether it supports vision or tools) within that endpoint, you have to rely on provider-specific solutions to find model capabilities. [](https://community.openai.com/t/api-models-for-a-specific-feature/1128474)
+
+---
+
+### 1\. How to Query the List of Models
+
+Any standard OpenAI-compatible server (e.g., Ollama, vLLM, LM Studio, LiteLLM, Groq, DeepSeek) implements the `/v1/models` route. [](https://developers.openai.com/api/reference/resources/models/methods/list)
+
+#### Via cURL
+
+bash
+
+```
+curl http://localhost:8000/v1/models \
+  -H "Authorization: Bearer your-api-key"
+
+```
+
+
+
+#### Via Python (`openai` SDK)
+
+python
+
+```
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="http://localhost:8000/v1", # Change to your compatible API URL
+    api_key="your-api-key"
+)
+
+models = client.models.list()
+for model in models.data:
+    print(model.id)
+
+```
+
+
+
+---
+
+### 2\. How to Get Specific Options & Stats for Each Model
+
+The standard OpenAI payload only returns basic information (`id`, `created`, `owned_by`). One point of agreement among users on the [OpenAI Developer Community Forum](https://community.openai.com/t/how-do-i-programmatically-fetch-and-manage-all-available-models-to-be-used-via-openai-api/1237558) is that there is no official, programmatic OpenAI endpoint to fetch structural model parameters like context length or vision support. [](https://community.openai.com/t/how-do-i-programmatically-fetch-and-manage-all-available-models-to-be-used-via-openai-api/1237558)
+
+To get these metrics, use the strategy that matches your API backend:
+
+#### Strategy A: If you are using LiteLLM (Recommended Proxy)
+
+If you manage multiple OpenAI-compatible APIs via LiteLLM, they provide a dedicated custom endpoint that returns the exact maximum tokens, capabilities, and pricing for every model.
+
+* **Endpoint:** `GET /v1/model/info`
+* **What it returns:** A full breakdown of max tokens, input/output costs, and supported capabilities for each model connected to the proxy.
+
+#### Strategy B: If you are using vLLM
+
+If your compatible API is powered by vLLM, you can query its specific backend engine configuration to find the maximum context window (`max_model_len`).
+
+* **Endpoint:** `GET /v1/version` or looking at the initialization logs.
+* Many developers query the Hugging Face API or look at the local `config.json` properties of the model folder to dynamically extract parameters like `max_position_embeddings` (context length).
+
+#### Strategy C: If you are using Ollama
+
+If running Ollama locally with its OpenAI-compatible layer:
+
+* **Endpoint:** `POST /api/show`
+* **Payload:** `{"name": "llama3"}`
+* **What it returns:** The exact system parameters, prompt templates, and architecture details for that model.
+
+#### Strategy D: Hardcoded Mapping (The Industry Norm)
+
+Because OpenAI-compatible APIs don't have a universal standard for returning capabilities, most open-source web UIs (like Open WebUI or LibreChat) use the `/v1/models` endpoint to get the string names, and then match them against a local dictionary of model limits.
+
+Which **API backend or framework** (e.g., vLLM, Ollama, LiteLLM, LM Studio) are you currently using to host your OpenAI-compatible endpoint? I can give you the exact custom endpoint or configuration commands for it.
+
+* [](https://developers.openai.com/api/reference/resources/models/methods/list)  
+OpenAI Developers  
+List models | OpenAI API Reference  
+Oct 23, 2026 — Lists the currently available models, and provides basic information about each one such as the owner and availability. "owned\_by"
+* [](https://community.openai.com/t/how-do-i-programmatically-fetch-and-manage-all-available-models-to-be-used-via-openai-api/1237558)  
+OpenAI Developer Community  
+How do I Programmatically Fetch and Manage All Available ...  
+April 22, 2025 — There is no official API endpoint or programmatic method provided by OpenAI to retrieve detailed information about models, includi...
+* [](https://community.openai.com/t/api-models-for-a-specific-feature/1128474)  
+OpenAI Developer Community  
+Api models for a specific feature - OpenAI Developer Community  
+February 24, 2025 — However, the OpenAI documentation lists models by endpoint, and the OpenAPI spec can be used to identify models for each endpoint.
+
+Show all
+
+# how to get the dict of models like name pricing stats perf specific options if openai compatible api doesnt always provide
+
+When an **OpenAI-compatible API** server drops the ball on providing detailed metadata via its standard `/v1/models` endpoint, you have to look outside the standard API stream. Most self-hosted runners or alternative providers only return basic lists of strings (the model IDs) without fields for pricing, performance stats, or context lengths.
+
+To reliably fetch a comprehensive dictionary of model metadata (names, pricing, benchmarks, context windows, and specific features), you can use three main workarounds:
+
+### 1\. Leverage the LiteLLM Model List (Best for Code Integration)
+
+LiteLLM acts as an excellent universal proxy. They maintain a constantly updated, programmatic dictionary of virtually every open-source and proprietary model's pricing, maximum tokens, and capabilities.
+
+You can import their model dictionary directly in Python without spinning up a server:
+
+python
+
+```
+# pip install litellm
+import litellm
+
+# Get the massive global dictionary of all models and their specs
+model_dict = litellm.model_prices_and_context_window
+
+# Example lookup
+if "anthropic/claude-3-5-sonnet" in model_dict:
+    specs = model_dict["anthropic/claude-3-5-sonnet"]
+    print(f"Input Price per 1M tokens: ${specs['input_cost_per_token'] * 1_000_000}")
+    print(f"Max Tokens: {specs['max_tokens']}")
+
+```
+
+
+
+### 2\. Query Public Aggregator APIs
+
+If you need live, third-party tracked statistics (like real-time cost, time-to-first-token, and throughput benchmarks), you can pull data from aggregators that track provider metadata:
+
+* **OpenRouter API:** Even if you aren't routing traffic through them, OpenRouter's Models Endpoint is completely public and returns a highly detailed JSON array containing token pricing, context length, performance tier, and architecture details for hundreds of open and closed models.
+* **Artificial Analysis:** For hardware performance and true latency stats, you can reference the ArtificialAnalysis Database to manually map provider metrics to your dictionary.
+
+### 3\. Fetch Provider-Specific Metadata Endpoints
+
+Many popular OpenAI-compatible engines actually _do_ expose this data, just not inside `/v1/models`.
+
+* **Ollama:** If you are running locally, use the specific tags endpoint (`GET /api/tags` or `GET /api/show?name=model_name`). This provides details on parameter size, quantization family, and performance configurations.
+* **vLLM:** Query the engine's internal config directly by accessing `GET /version` or viewing the launch arguments on the host to parse the maximum model context and attention settings.
+
+### Summary Comparison of Options
+
+| Method                | Pricing Info?       | Performance Stats?    | Implementation Effort         | Best For                          |
+| --------------------- | ------------------- | --------------------- | ----------------------------- | --------------------------------- |
+| **LiteLLM Package**   | Yes (Updated daily) | No (Static caps only) | **Very Low** (Pure Python)    | Offline apps, cost tracking       |
+| **OpenRouter API**    | Yes (Live market)   | Yes (Relative speed)  | **Low** (Simple HTTP Request) | Dynamic apps, web dashboards      |
+| **Local Engine APIs** | No                  | Yes (Hardware bounds) | **Medium** (Engine-dependent) | Self-hosted hardware optimization |
+
+Are you trying to map this metadata for a **locally hosted server** (like vLLM or Ollama) or for a **third-party cloud provider**? Let me know, and I can give you the exact Python snippet to parse it.
+
+# how to use tool call on openai compatible api in js depfree
+
+To implement tool calling on an OpenAI-compatible API without any dependencies (`depfree`), you can use the native global **`fetch`** API available in modern JavaScript and Node.js.
+
+The complete loop for tool calling requires two steps:
+
+1. Sending the user's prompt and tool definitions to the API, and handling the model's request to call a tool.
+2. Executing your local function, sending the result back to the API, and receiving the final textual response. [](https://www.generalcompute.com/blog/tool-calling-with-open-source-llms)
+
+Here is a clean, comprehensive implementation:
+
+javascript
+
+```
+// 1. Define your base configuration
+const BASE_URL = "https://your-provider.com"; // Replace with your OpenAI-compatible endpoint
+const API_KEY = "your-api-key-here";
+const MODEL = "your-model-name";
+
+// 2. Define the local function(s) the model can use
+function getWeather(location) {
+  if (location.toLowerCase().includes("tokyo")) {
+    return { temperature: "12", unit: "C", condition: "Rainy" };
+  }
+  return { temperature: "22", unit: "C", condition: "Sunny" };
+}
+
+// 3. Define the tool metadata structure (JSON Schema)
+const tools = [
+  {
+    type: "function",
+    function: {
+      name: "getWeather",
+      description: "Get the current weather for a given location",
+      parameters: {
+        type: "object",
+        properties: {
+          location: {
+            type: "string",
+            description: "The city and state, e.g. San Francisco, CA"
+          }
+        },
+        required: ["location"]
+      }
+    }
+  }
+];
+
+// Helper to make the HTTP POST requests
+async function makeChatRequest(messages) {
+  const response = await fetch(`${BASE_URL}/chat/completions`, {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${API_KEY}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      model: MODEL,
+      messages: messages,
+      tools: tools,
+      tool_choice: "auto"
+    })
+  });
+
+  if (!response.ok) {
+    const errText = await response.text();
+    throw new Error(`API Error (${response.status}): ${errText}`);
+  }
+
+  const data = await response.json();
+  return data.choices[0].message;
+}
+
+// 4. Orchestrate the complete agent loop
+async function runAgent(userPrompt) {
+  const messages = [{ role: "user", content: userPrompt }];
+
+  console.log(`User: ${userPrompt}`);
+  
+  // --- First Turn: Ask the model ---
+  let assistantMessage = await makeChatRequest(messages);
+  
+  // Append the model's thoughts/tool requests to the history
+  messages.push(assistantMessage);
+
+  // Check if the model decided to call any tools
+  if (assistantMessage.tool_calls && assistantMessage.tool_calls.length > 0) {
+    
+    // Iterate and execute all requested tool calls
+    for (const toolCall of assistantMessage.tool_calls) {
+      const functionName = toolCall.function.name;
+      const functionArgs = JSON.parse(toolCall.function.arguments);
+      
+      console.log(`\n[Model requested tool]: ${functionName} with args:`, functionArgs);
+
+      let toolResult;
+      if (functionName === "getWeather") {
+        toolResult = getWeather(functionArgs.location);
+      } else {
+        toolResult = { error: `Tool ${functionName} not found.` };
+      }
+
+      console.log(`[Tool executed result]:`, toolResult);
+
+      // Append the tool execution response back to the message history
+      messages.push({
+        role: "tool",
+        tool_call_id: toolCall.id, // Must match the ID sent by the model
+        name: functionName,
+        content: JSON.stringify(toolResult)
+      });
+    }
+
+    // --- Second Turn: Send the results back for the final answer ---
+    assistantMessage = await makeChatRequest(messages);
+  }
+
+  console.log(`\nAI Final Answer: ${assistantMessage.content}`);
+}
+
+// Run the script
+runAgent("What is the weather like in Tokyo right now?")
+  .catch(console.error);
+
+```
+
+
+
+### Critical Rules for OpenAI-Compatible Tool Formatting
+
+* **`tool_call_id` Match:** When returning the `role: "tool"` message, you _must_ pass the exact `id` provided by the incoming `tool_calls` object.
+* **Stringified Arguments:** The arguments returned by the LLM (`toolCall.function.arguments`) come back as a JSON string. You must parse them with `JSON.parse()` before handing them to your functions.
+* **Stringified Results:** The tool's output array payload payload (`content`) must be sent back to the API strictly as a string (use `JSON.stringify()`). [](https://www.youtube.com/watch?v=I1qOfbNVur0)
+
+Are you running this script in **Node.js** or directly in a **Browser** environment? I can help you adapt this for streaming responses (`ReadableStream`) or add error boundary checks if needed.
+
+* [](https://www.generalcompute.com/blog/tool-calling-with-open-source-llms)  
+General Compute  
+Tool Calling With Open-Source LLMs: A Complete Guide  
+Execute each tool call and add results for tool\_call … tool\_call.function.name func\_args = json.loads(tool\_call.function.arguments...
+* [](https://www.youtube.com/watch?v=I1qOfbNVur0)  
+YouTube·Irtiza Hafiz  
+OpenAI Function Calling | LLM Tools Essentials  
+Jan 7, 2026 — ID this is the ID associated with this function call so when you send the result back to the model you need to give it the same it...  
+14:49
+* [](https://docs.parallel.ai/integrations/openai-tool-calling)  
+Parallel Web Systems  
+OpenAI Tool Calling  
+This guide shows how to define Parallel Search as an OpenAI function and handle tool calls in your application. JSON. parse(toolCa...
+
+# what if you implement tool calling manually via prompting for agents for personal projects
+
+Implementing tool calling manually via prompting (often referred to as building a **"ReAct" (Reason + Act) loop** or structured output parsing from scratch) is an **excellent, highly educational choice for a personal project**. [](https://www.youtube.com/watch?v=7-je5oEUMwo&t=61)
+
+Before modern LLM provider APIs natively supported the `tools=[...]` parameter, this was exactly how early agent frameworks like LangChain were built. Doing this manually gives you full visibility into the "magic" behind AI agents. [](https://www.reddit.com/r/LangChain/comments/1p1ktbs/can%5Fi%5Fcreate%5Fagents%5Fusing%5Fmodels%5Fthat%5Fdo%5Fnot/)
+
+Here is a breakdown of what happens when you take this approach, including the architectural loop, the benefits, and the major hurdles you will encounter.
+
+---
+
+### 🛠️ The Manual Agent Loop
+
+When you implement this manually, your application architecture follows a strict 5-step loop controlled by your python code: [](https://www.decodingai.com/p/tool-calling-from-scratch-to-production)
+
+1. **The System Prompt:** You inject the "Tool Schema" directly into the system instructions. You tell the model what tools exist, their arguments, and the exact string format it must reply with if it wants to use one. [](https://community.openai.com/t/prompting-best-practices-for-tool-use-function-calling/1123036)
+2. **The Reason Step:** The LLM evaluates the user request and textually outputs its "Thought". [](https://www.promptingguide.ai/agents/function-calling)
+3. **The Stop / Trap:** If the LLM wants to use a tool, it outputs a specifically formatted string (e.g., JSON inside a markdown code block, or a custom string like `Action: calculate_taxes[income=50000]`).
+4. **The Execution (Your Code):** Your backend parses that exact string, extracts the tool name and arguments, halts the LLM, and executes the actual Python function. [](https://towardsdatascience.com/tool-calling-explained-how-ai-agents-decide-what-to-do-next/)
+5. **The Feedback (Observation):** Your backend appends the tool's result back into the conversation context as an `Observation:` and hands control back to the LLM to either pick another tool or output a final response. [](https://machinelearningmastery.com/tool-calling-vs-code-execution-for-ai-agents-choosing-the-right-action-primitive/)
+
+---
+
+### 👍 The Big Advantages
+
+* **Ultimate Model Portability:** Native tool calling formatting varies wildly between OpenAI, Anthropic, and Google Gemini. If you handle tool calling purely via text prompting, your agent can seamlessly swap to virtually _any_ cheap open-source or local model (like Llama 3 or Qwen) without changing your backend code layout. [](https://www.freecodecamp.org/news/how-to-build-your-own-local-ai-agent-with-tool-calling-and-memory/)
+* **Deep Mastery of Agent Architecture:** You will understand exactly how stateless LLMs mimic "stateful" multi-step planning. It strips away framework abstraction, showing you how token contexts expand over time. [](https://www.youtube.com/watch?v=R7OCrqyGMeY&t=99)
+* **Complete Customization:** You are not bound by a provider's rigid JSON schema validation. You can invent your own concise shorthand to drastically save on prompt tokens. [](https://www.youtube.com/watch?v=R7OCrqyGMeY&t=99)
+
+---
+
+### ⚠️ The Challenges (What You'll Have to Solve)
+
+While rewarding, manual prompting introduces a few highly predictable failure modes that you will have to engineer around:
+
+| Challenge                | What Happens                                                                                                                             | The Manual Fix                                                                                             |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| **Format Hallucination** | The LLM misses a bracket, uses single quotes instead of double quotes in JSON, or writes conversational fluff before the tool call.      | Use rigid regex parsing or python's json.loads() inside a try/except block.                                |
+| **The Endless Loop**     | The model gets stuck repeatedly calling the exact same tool with the same arguments because it doesn't "understand" the failure message. | Implement a manual max\_iterations = 5 counter in your execution loop to force a hard stop.                |
+| **Argument Confusion**   | The model inputs a string where an integer belongs, or hallucinates an argument that doesn't exist in your tool definition.              | Write strict type-validation helper functions to sanitize the arguments before passing them to your tools. |
+
+---
+
+### 🚀 A Minimal Starter Prompt Blueprint
+
+If you write this code yourself, your system prompt will look something like this:
+
+text
+
+```
+You are an AI Agent with access to external tools. 
+To answer the user's request, you must follow a Thought, Action, Observation loop.
+
+Available Tools:
+- calculate_distance: Expects JSON {"origin": string, "destination": string}. Returns miles.
+- get_weather: Expects JSON {"location": string}. Returns temperature.
+
+Format your responses strictly like this:
+Thought: [Reason about what you need to do next]
+Action: [The exact name of the tool to use]
+Action Input: [The valid JSON arguments for the tool]
+
+Stop generating text immediately after writing 'Action Input:'. Wait for the environment to provide an Observation.
+
+Example:
+Thought: I need to check the weather in Tokyo.
+Action: get_weather
+Action Input: {"location": "Tokyo"}
+
+```
+
+
+
+Are you planning to build this using a **local open-source model** or a **commercial API**? If you'd like, I can provide a **bare-minimum Python script** demonstrating how to write the regex string-parser and execution loop without any external frameworks.
+
+* [](https://www.decodingai.com/p/tool-calling-from-scratch-to-production)  
+Decoding AI Magazine  
+AI Tool Calling: From Scratch to Production  
+October 28, 2025 — 5-step request-execute-respond flow mapping LLM function calls to environment feedback and outputs. Manual definitions using schem...
+* [](https://www.reddit.com/r/LangChain/comments/1p1ktbs/can%5Fi%5Fcreate%5Fagents%5Fusing%5Fmodels%5Fthat%5Fdo%5Fnot/)  
+Reddit·r/LangChain  
+Can I create agents using models that do NOT support tool ...  
+November 19, 2025 — While models that do not natively support tool calling, like Gemma 3, can theoretically be used with agents by generating structur...
+* [](https://www.youtube.com/watch?v=7-je5oEUMwo&t=61)  
+YouTube·Cloud With Raj  
+How AI Agents Choose Tools (And How to Explain It)  
+Sep 18, 2026 — When an AI agent needs to use tools, the user's prompt is sent to a piece of code, not directly to the LLM. Each tool provides its...  
+10m
+
+Show all
 
