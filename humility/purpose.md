@@ -328,4 +328,10 @@ thanks to the elegant abstraction of lib.
 
 you can build sth functional now.
 
+---
+
+likely you only need a grayscale color ramp now.
+
+dont have to learn color theories.
+
 
