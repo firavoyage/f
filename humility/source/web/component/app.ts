@@ -25,7 +25,10 @@ export function app() {
           'message_field',
           h(
             scroll,
-            h(textarea, { value: prompt, set_value: set_prompt }),
+            h(
+              'message_textarea',
+              h(textarea, { value: prompt, set_value: set_prompt }),
+            )
           ),
         ),
       ),

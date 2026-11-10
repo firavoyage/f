@@ -40,8 +40,9 @@ thread:
 message:
   message: fixed bottom-0 w-full h-40 flex justify-center bg-field
   field: w-prose
+  textarea: py-8
 textarea:
-  textarea: w-full h-fit p-4 rounded-md text-lg
+  textarea: w-full h-fit rounded-md text-lg
   textarea:focus-visble: outline-focus outline-sm offset-2 rounded-md
 input:
   input: w-full h-full p-4 rounded-md text-lg

@@ -1257,6 +1257,7 @@ humility:
 - research codex cli
 - extension build
 - design utilitarian
+- implement web frontend
 
 legacy:
 

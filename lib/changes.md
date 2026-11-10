@@ -49,3 +49,8 @@ change
 - web/hyperscript: fix wrong div that should be fragment
 - math: fix inf recursion on min and max
   - unclean code can lead to anything
+
+# 2026.11.11
+
+- web/reset.css: make textarea display block
+  - same quirk as svg, confusing margin bottom
