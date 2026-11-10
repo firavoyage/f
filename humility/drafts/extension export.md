@@ -28,4 +28,17 @@ for each included thread,
   - random threads wo folders will not be grouped
     - i may handle this specifically in code
 - for all threads w folder
-  - output `$Y` on build dir
+  - output `%Y%m%d %H%M project feature one.md` on build dir
+    - previously ive adopted hour and minute, but deprecated for manual work
+    - now i can automate it, i guess it would not be a constraint
+      - why not, it can be clearer for you
+  - slashes -> spaces
+  - for content
+    - system prompts are ignored
+    - _tools would behave as part of content when supported_
+    - first msg of each thread as h1
+      - _ideally trimmed_
+    - all msgs as h2
+      - _ideally trimmed_
+    - content below each heading
+      - 
