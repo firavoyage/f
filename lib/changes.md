@@ -46,3 +46,4 @@ change
   - parse anything into number string or boolean
 - file: + `santinize(filename, replacement)`
 - web/query: + `use_query(endpoint, payload)`
+- web/hyperscript: fix wrong div that should be fragment

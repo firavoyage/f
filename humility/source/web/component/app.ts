@@ -4,6 +4,7 @@ import { use_style } from 'lib/web/style'
 import theme from 'web/design/utilitarian.yaml'
 import 'web/design/utilitarian.css'
 import { input } from './input'
+import { textarea } from './textarea'
 
 export function app() {
   use_sync_theme('system')
@@ -16,8 +17,11 @@ export function app() {
     h('title.', 'Humility'),
     h(
       'app',
-      h('page'),
-      h('message', h(input, { value: prompt, set_value: set_prompt })),
+      h('thread'),
+      h(
+        'message',
+        h('message_field', h(textarea, { value: prompt, set_value: set_prompt })),
+      ),
     ),
   )
 }

@@ -29,7 +29,7 @@ export function h(...args) {
   } else if (is_plain_object(args[0])) {
     ;[given_props, ...children] = args
   } else {
-    tag = Fragment
+    given_tag = Fragment
 
     children = args
   }
