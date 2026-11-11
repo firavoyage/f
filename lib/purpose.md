@@ -607,4 +607,10 @@ i could check deep eq. alternatively, if i dont wanna make nil valid state, i co
 
 wait, i have to explicitly do this. in the state lib i update state directly. but react performs hardcoded shallow eq check under the hood anyway.
 
+dont feel undefined/nil separation would work. times are you omit entirely (undefined) after mutation, or early return directly (same as undefined). very prone if you enforce a rule of nil (or special symbol) for early return.
+
+wait. i have hardcoded json stringify in all use effect. perf is trivial.
+
+so the only problem is to force set state to work. no immer or lodash needed. shadow clone will make it.
+
 

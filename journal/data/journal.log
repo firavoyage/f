@@ -178896,3 +178896,23 @@
 2026-11-11 16:37:58+08:00 code ● purpose.md - f (Workspace) - Visual Studio Code
 2026-11-11 16:38:58+08:00 chromium Intention - Chromium
 2026-11-11 16:39:58+08:00 chromium how to mutate obj state directly in react - Google Search - Chromium
+2026-11-11 16:40:58+08:00 chromium how to mutate obj state directly in react at the cost of perf - Google Search - Chromium
+2026-11-11 16:41:58+08:00 chromium how to mutate obj state directly in react at the cost of perf - Google Search - Chromium
+2026-11-11 16:42:58+08:00 code ● purpose.md - f (Workspace) - Visual Studio Code
+2026-11-11 16:43:58+08:00 code ● purpose.md - f (Workspace) - Visual Studio Code
+2026-11-11 16:44:58+08:00 chromium compare immer and shallow cloning - Google Search - Chromium
+2026-11-11 16:45:58+08:00 chromium compare immer and shallow cloning - Google Search - Chromium
+2026-11-11 16:46:58+08:00 chromium compare immer and shallow cloning - Google Search - Chromium
+2026-11-11 16:47:58+08:00 chromium can you use immer to update a to b given two objects - Google Search - Chromium
+2026-11-11 16:48:58+08:00 chromium can you use immer to update a to b given two objects - Google Search - Chromium
+2026-11-11 16:49:58+08:00 chromium can you use immer to update a to b given two objects - Google Search - Chromium
+2026-11-11 16:50:58+08:00 chromium Intention - Chromium
+2026-11-11 16:51:58+08:00 chromium can you use immer to update a to b, keeping a or any unchanged parts of a immutable iff deep eq, and work for any non literal js object - Google Search - Chromium
+2026-11-11 16:52:58+08:00 chromium Intention - Chromium
+2026-11-11 16:53:58+08:00 chromium does immer produce the same reference if you do not mutate the obj at all - Google Search - Chromium
+2026-11-11 16:54:58+08:00 chromium can you use immer to update a to b, keeping a or any unchanged parts of a immutable iff deep eq, and work for any non literal js object - Google Search - Chromium
+2026-11-11 16:55:58+08:00 code purpose.md - f (Workspace) - Visual Studio Code
+2026-11-11 16:56:58+08:00 code purpose.md - f (Workspace) - Visual Studio Code
+2026-11-11 16:57:58+08:00 chromium Intention - Chromium
+2026-11-11 16:58:58+08:00 chromium how to change the reference of any non literal object in general in js keeping things unchanged - Google Search - Chromium
+2026-11-11 16:59:58+08:00 chromium how to force react set state to work regardless of shallow eq when you mutate directly, and work for any non literal objects - Google Search - Chromium
