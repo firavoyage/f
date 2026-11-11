@@ -5,8 +5,8 @@ svg {
   max-height: 100%;
 }
 
-textarea {
-  vertical-align: top;
+input, button, select, textarea {
+  vertical-align: middle;
 }
 
 [theme="dark"] {

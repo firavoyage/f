@@ -52,5 +52,6 @@ change
 
 # 2026.11.11
 
-- web/reset.css: ~~make textarea display block~~ make form elements vertical align non baseline
+- web/reset.css: ~~make textarea display block~~ make form elements vertical align middle
   - same quirk as svg, confusing margin bottom
+  - strictly better for modern ui when you never embed form elements inside running text
