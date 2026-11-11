@@ -358,4 +358,24 @@ basically you could not style a component differently in different components.
 
 it could make things explicit when you enforce variants. it's not usually a good thing on dx, which is argubly the primary purpose of such yaml based approach.
 
+11
+
+it doesnt really work to have factory fn ("wrappers") in snake case.
+
+```ts
+const thread_file = join(thread_folder, thread)
+```
+
+it feels you never interact w thread folder directly. you almost always need the thread itself. not necessarily its content though (like when you write).
+
+to mitigate this (you could not write `thread file = thread file(thread)`), you expand the impl everywhere. that's not a good thing.
+
+<!-- js is lisp1 -->
+
+solutions are
+
+- to make it pascal case `thread file = ThreadFile(thread)`
+- to just have consistent verb noun naming for non boolean fn `thread file = get_thread_file(thread)`
+- or namespacing
+
 
