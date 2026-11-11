@@ -20,29 +20,37 @@ export function s<T>(initial_value: T, options: s<T> = {}) {
   }
 
   function set_state(
-    new_value: T | Promise<T> | ((old_value: T) => T | Promise<T> | undefined) = toggle,
-  ) {
+    new_value: T | Promise<T> | ((old_value: T) => T | Promise<T> | undefined),
+  ): void
+
+  function set_state(...args) {
+    let new_value
+    if (args.length == 0) {
+      new_value = toggle
+    } else {
+      ;[new_value] = args
+    }
+
     let prev_state = state
-    let new_state
 
     if (is(new_value, 'function')) {
-      new_state = new_value(state)
-    } else if (!is(new_value, 'undefined')) {
-      new_state = new_value
-    } else {
+      new_value = new_value(state)
+    }
+
+    if (is(new_value, 'undefined')) {
       return
     }
 
-    if (is(new_state, 'literal') && new_state == prev_state) {
+    if (is(new_value, 'literal') && new_value == prev_state) {
       return
     }
 
-    if (is(new_state, Promise)) {
-      new_state.then((new_value) => set_state(new_value))
+    if (is(new_value, Promise)) {
+      new_value.then(set_state)
       return
     }
 
-    state = new_state
+    state = new_value
 
     for (const sub of subs) {
       sub(state)
@@ -52,13 +60,13 @@ export function s<T>(initial_value: T, options: s<T> = {}) {
   function use_state(): [state: T, set_state: typeof set_state] {
     const update = use_update()
 
-    useEffect(() => {
+    use_effect(() => {
       subs.add(update)
 
       return () => {
         subs.delete(update)
       }
-    })
+    }, [])
 
     return [state, set_state]
   }
@@ -116,7 +124,7 @@ export function s<T>(initial_value: T, options: s<T> = {}) {
 }
 
 function use_update() {
-  const [, update] = useState(false)
+  const [, update] = use_state(false)
 
   return () => update((v) => !v)
 }

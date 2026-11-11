@@ -623,6 +623,21 @@ i may implement query lib when i need.
 
 for now i may simply post directly.
 
----
+12
+
+quirky.
+
+```js
+function foo(bar = '123') {
+  return bar
+}
+
+log(foo())
+log(foo('456'))
+log(foo(undefined))
+log(foo(nil))
+```
+
+wwjd?
 
 
