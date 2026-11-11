@@ -617,4 +617,12 @@ ah. i dont even have to force react set state to work. it's already (whether or 
 
 and it will work the same as state lib at least.
 
+---
+
+i may implement query lib when i need.
+
+for now i may simply post directly.
+
+---
+
 
