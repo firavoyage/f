@@ -420,4 +420,10 @@ idk if it feels flawed when you prefer `thread` over `thread_id` first, and use 
 
 well you dont really map msg id to log files. you never log a user msg. you log requests.
 
+---
+
+it's likely that obj are sorted by insertion order or original order on a file.
+
+it's not guranteed. would be easy to solve though.
+
 

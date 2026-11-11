@@ -2996,3 +2996,9 @@ Advanced Options: Add table of contents (--toc), set margins (-V geometry:margin
 Markdown To Image Converter  
 Batch Markdown to PDF: Browser and CLI | Markdown2Image  
 November 2, 2026 — For several files, open Batch export: this paid tool accepts up to 15 Markdown files per run and downloads a ZIP with one output p...
+
+# . thinking
+
+i dont have to convert to pdf!
+
+docx. that's it. out of box.
