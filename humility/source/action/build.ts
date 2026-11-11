@@ -1,4 +1,4 @@
-import { serialize, deserialize, threads_file, thread_folder } from 'action/index'
+import { serialize, deserialize, threads_file, get_thread_file } from 'action/index'
 import { read, write, join, santinize } from 'lib/file'
 import { at } from 'lib/time'
 
@@ -72,7 +72,7 @@ export function build({ dir, include = [''], ignore = [] }) {
 
       contents.push(`# ${title}`)
 
-      let messages = deserialize(read(join(thread_folder, thread)))
+      let messages = deserialize(read(get_thread_file(thread)))
 
       for (const message of messages) {
         const { role, content } = message

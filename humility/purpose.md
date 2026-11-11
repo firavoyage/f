@@ -412,4 +412,12 @@ namespacing solves different problem. (e.g. `file.read` `action/read`)
 
 <!-- though the importing syntax can feel awkward (import {foo as bar} from somewhere, dc {foo: bar} = math, import * as file from lib/file, declare global fn) compard w py (import file, from file import foo bar) -->
 
+and there is nothing wrong w handle prefix for callbacks though i may not write it manually. same for create/get prefix for "factory fn", depending on intent.
+
+---
+
+idk if it feels flawed when you prefer `thread` over `thread_id` first, and use `messages` for `thread content` later. then what about msg id?
+
+well you dont really map msg id to log files. you never log a user msg. you log requests.
+
 

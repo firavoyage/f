@@ -4,7 +4,7 @@ import {
   threads_file,
   get_thread_file,
 } from 'action/index'
-import { read, write, join } from 'lib/file'
+import { read, write } from 'lib/file'
 import { now } from 'lib/time'
 import { random_id } from 'lib/random'
 

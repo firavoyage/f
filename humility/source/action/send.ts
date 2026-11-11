@@ -2,11 +2,11 @@ import {
   serialize,
   deserialize,
   config_file,
-  log_folder,
   get_thread_file,
+  get_log_file,
 } from 'action/index'
 import { chat } from 'lib/generation'
-import { read, join, write } from 'lib/file'
+import { read, write } from 'lib/file'
 import { random_id } from 'lib/random'
 
 type send = {
@@ -57,7 +57,7 @@ export async function send(options: send) {
 
   const new_thread_content = [...messages, reply_message]
 
-  const log_file = join(log_folder, reply.id)
+  const log_file = get_log_file(reply.id)
 
   write(log_file, serialize({ request, payload }))
   write(thread_file, serialize(new_thread_content))

@@ -426,4 +426,25 @@ prefer `items` (strictly noun) over `list` (verb/noun)
 - notes:
   - prefer modern proven libraries when needed
 
+# 0.9 2026.11.11
+
+- use:
+  - typescript
+  - pnpm
+  - bun
+  - parceljs
+- naming:
+  - snake case by default
+  - verb noun for actions, predicate for bools
+  - plural for iterables
+- style:
+  - functional programming
+  - modular and cohesive
+  - es module
+  - always function statement, only arrow function for props
+  - always type, never interface
+  - self explanatory, no comments
+- notes:
+  - prefer modern proven libraries when needed
+
 

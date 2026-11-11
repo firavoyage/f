@@ -5,15 +5,19 @@ init_desktop('humility')
 
 export const threads_file = data('chat', 'threads.yaml')
 export const config_file = config('chat', 'config.yaml')
-export const thread_folder = data('chat', 'thread')
-export const log_folder = data('chat', 'log', 'message')
-
 touch(threads_file, serialize({}))
 touch(config_file, serialize({}))
+
+const thread_folder = data('chat', 'thread')
+const log_folder = data('chat', 'log', 'message')
 
 mkpath(thread_folder)
 mkpath(log_folder)
 
-export function get_thread_file(thread) {
+export function get_thread_file(thread: string) {
   return join(thread_folder, thread)
+}
+
+export function get_log_file(request: string) {
+  return join(log_folder, request)
 }
