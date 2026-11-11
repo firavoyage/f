@@ -88,16 +88,16 @@ export function app() {
             ),
           ),
         ),
-      ),
-      h(
-        'prompt',
         h(
-          'prompt_field',
+          'prompt',
           h(
-            scroll,
+            'prompt_field',
             h(
-              'prompt_textarea',
-              h(textarea, { value: prompt, set_value: set_prompt }),
+              scroll,
+              h(
+                'prompt_textarea',
+                h(textarea, { value: prompt, set_value: set_prompt }),
+              ),
             ),
           ),
         ),
