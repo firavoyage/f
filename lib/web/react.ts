@@ -16,7 +16,7 @@ export * from 'lib/web/use mouse glitch'
 
 export const use_ref = useRef
 
-export function use_state<T>(initial_value: T): [state: T, set_state: typeof set_state] {
+export function use_state<T>(initial_value?: T): [state: T, set_state: typeof set_state] {
   const [state, _set_state] = useState(initial_value)
 
   function set_state(new_value: T | ((old_value: T) => T) = toggle) {

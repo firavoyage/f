@@ -581,7 +581,30 @@ dk whether boolean default makes sense.
 
 feels it has to be false, unless there's some magic like "--not-foo".
 
----
+11
 
+clearly debounce doesnt have to be "use query" specific,
+
+if you ignore undefined when set state
+
+<!-- well, that might still trigger a rerender but who cares. (and you may check eq if matters, or wrap in immer.) -->
+
+- query foo = debounce post 'seaech' foo
+- when q changes, query q
+  - maintain is current and timer
+  - sto
+    - if sync, go ahead
+      - if not cleared, subsequent call will fire later
+    - if return promise
+      - r then if current r result otherwise return nil
+  - if called again
+    - clear timer
+    - not current
+    - if sto fires and resolves to promise...
+      - it will be handled
+
+i could check deep eq. alternatively, if i dont wanna make nil valid state, i could see undefined as mutation and nil as no change.
+
+wait, i have to explicitly do this. in the state lib i update state directly. but react performs hardcoded shallow eq check under the hood anyway.
 
 
