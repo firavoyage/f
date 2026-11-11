@@ -16,11 +16,15 @@ export * from 'lib/web/use mouse glitch'
 
 export const use_ref = useRef
 
-export function use_state<T>(initial_value?: T): [state: T, set_state: typeof set_state] {
+export function use_state<T>(
+  initial_value?: T,
+): [state: T, set_state: typeof set_state] {
   const [state, _set_state] = useState(initial_value)
   const update = use_update()
 
-  function set_state(new_value: T | ((old_value: T) => T) = toggle) {
+  function set_state(
+    new_value: T | Promise<T> | ((old_value: T) => T | Promise<T>) = toggle,
+  ) {
     let prev_state = state
     let new_state
 
@@ -97,7 +101,7 @@ function normalize_deps(deps?: any[]) {
     return nil
   } else {
     return [JSON.stringify(deps)]
-  } 
+  }
 }
 
 export function set_timeout(fn: fn, delay: number) {

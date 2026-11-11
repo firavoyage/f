@@ -14,7 +14,7 @@ export function app() {
   use_style(theme)
 
   const [prompt, set_prompt] = use_state('')
-  const [foo, set_foo] = use_state()
+  const [foo, set_foo] = use_state([])
 
   use_keyboard('enter', () => {
     set_foo(post('list'))
@@ -22,6 +22,7 @@ export function app() {
 
   use_effect(() => {
     log(foo)
+    log(entries(foo))
   })
 
   return h(

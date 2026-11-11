@@ -19,7 +19,9 @@ export function s<T>(initial_value: T, options: s<T> = {}) {
     subs.add(listener)
   }
 
-  function set_state(new_value: T | ((old_value: T) => T) = toggle) {
+  function set_state(
+    new_value: T | Promise<T> | ((old_value: T) => T | Promise<T>) = toggle,
+  ) {
     let prev_state = state
     let new_state
 
@@ -28,8 +30,8 @@ export function s<T>(initial_value: T, options: s<T> = {}) {
     } else if (!is(new_value, 'undefined')) {
       new_state = new_value
     } else {
-      return 
-    } 
+      return
+    }
 
     if (is(new_state, 'literal') && new_state == prev_state) {
       return

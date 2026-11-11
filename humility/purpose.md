@@ -426,4 +426,6 @@ it's likely that obj are sorted by insertion order or original order on a file.
 
 it's not guranteed. would be easy to solve though.
 
+<!-- upd: fine. it's just devtools console display. things are expected on entries. -->
+
 
