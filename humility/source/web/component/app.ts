@@ -6,6 +6,7 @@ import 'web/design/utilitarian.css'
 import { input } from './input'
 import { textarea } from './textarea'
 import { scroll } from './scroll'
+import { post } from 'lib/web/request'
 
 export function app() {
   use_sync_theme('system')
@@ -13,6 +14,15 @@ export function app() {
   use_style(theme)
 
   const [prompt, set_prompt] = use_state('')
+  const [foo, set_foo] = use_state()
+
+  use_keyboard('enter', () => {
+    set_foo(post('list'))
+  })
+
+  use_effect(() => {
+    log(foo)
+  })
 
   return h(
     h('title.', 'Humility'),

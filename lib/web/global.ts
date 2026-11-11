@@ -20,8 +20,5 @@ use(p)
 import * as state from 'lib/web/state'
 use(state)
 
-import * as component from 'lib/web/component'
-use(component)
-
 import * as hyperscript from 'lib/web/hyperscript'
 use(hyperscript)

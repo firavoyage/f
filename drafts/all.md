@@ -279,6 +279,7 @@ lib:
 - scaffold vite dev proxy serve script
 - request fix default location
 - generation
+- web react use state use effect
 
 web: <!-- frontend, web, ts/js -->
 
@@ -1257,7 +1258,7 @@ humility:
 - research codex cli
 - extension build
 - design utilitarian
-- implement web frontend
+- implement web frontend component textarea
 
 legacy:
 

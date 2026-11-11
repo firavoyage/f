@@ -62,3 +62,7 @@ change
   - allow direct mutation
   - resolve promises
   - auto cleanup
+- web/request: move request to web/request
+  - really it's for web
+  - you would not go this way in nodejs
+  - breaking change. migrate if needed.
