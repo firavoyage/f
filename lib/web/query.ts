@@ -1,33 +1,22 @@
 import { post } from 'lib/request'
 
-export function query() {
+export function use_query(endpoint, payload, debounce = 0) {
+  const [result, set_result] = use_state()
   
-}
-
-export function use_query(endpoint, query, debounce = 0) {
-  const [result, set_result] = useState()
-
-  useEffect(() => {
-    if (!query) {
-      set_result([])
-      return
-    }
-
+  use_effect(() => {
     let is_current_request = true
-
-    const timer = setTimeout(function () {
-      post(endpoint, query).then((data) => {
-        if (is_current_request) {
-          set_result(data)
-        }
-      })
+    
+    set_timeout(async function() {
+      let data = await post(endpoint, payload)
+      if (is_current_request) {
+        set_result(data)
+      } 
     }, debounce)
 
     return () => {
       is_current_request = false
-      clearTimeout(timer)
     }
-  }, [JSON.stringify(query)])
+  }, [payload])
 
   return result
   // return [result, is_loading]

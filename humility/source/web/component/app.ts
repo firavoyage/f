@@ -12,7 +12,7 @@ export function app() {
   use_window_active()
   use_style(theme)
 
-  const [prompt, set_prompt] = useState('')
+  const [prompt, set_prompt] = use_state('')
 
   return h(
     h('title.', 'Humility'),
