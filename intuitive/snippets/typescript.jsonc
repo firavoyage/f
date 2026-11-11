@@ -631,6 +631,14 @@ ref:
   //     "{...p({ $0 })}",
   //   ],
   // },
+  "use ref": {
+    "prefix": [
+      "ur",
+    ],
+    "body": [
+      "const ${1:name} = use_ref($0)",
+    ],
+  },
   "use state": {
     "prefix": [
       "us",

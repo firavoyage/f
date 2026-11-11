@@ -21,16 +21,26 @@ export function s<T>(initial_value: T, options: s<T> = {}) {
 
   function set_state(new_value: T | ((old_value: T) => T) = toggle) {
     let prev_state = state
+    let new_state
 
     if (is(new_value, 'function')) {
-      state = new_value(state)
+      new_state = new_value(state)
     } else if (!is(new_value, 'undefined')) {
-      state = new_value
-    }
+      new_state = new_value
+    } else {
+      return 
+    } 
 
-    if (is(state, 'literal') && state == prev_state) {
+    if (is(new_state, 'literal') && new_state == prev_state) {
       return
     }
+
+    if (is(new_state, Promise)) {
+      new_state.then((new_value) => set_state(new_value))
+      return
+    }
+
+    state = new_state
 
     for (const sub of subs) {
       sub(state)
@@ -87,7 +97,7 @@ export function s<T>(initial_value: T, options: s<T> = {}) {
       if (prev_serialized_state != current_serialized_state) {
         url.searchParams.set(url_param, serialize())
         window.history.pushState({}, '', url)
-      } 
+      }
     })
 
     // Browser back / forward

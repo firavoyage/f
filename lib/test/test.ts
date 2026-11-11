@@ -1,15 +1,10 @@
-// import { parseArgs } from 'node:util'
+async function foo() {
+}
 
-// const {
-//   values: { port },
-// } = parseArgs({
-//   options: { port: { type: 'string', short: 'p', default: '8080' } },
-//   strict: false,
-// })
+function bar() {
+}
 
-// import { parse as deserialize, stringify as serialize } from 'yaml'
+let a = foo()
+let b = bar()
 
-// log('``\n' + serialize({foo: 'bar', asdf: 'asdf'}) + '``\n')
-
-log(process.env.key)
-
+log(is(a, Promise), is(b, Promise))
