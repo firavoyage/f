@@ -434,5 +434,11 @@ it's not guranteed. would be easy to solve though.
 
 i dont have to go that crazy.
 
+12
+
+chances are it could not be fully declarative.
+
+chances are it has to be declarative in some way.
+
 
 

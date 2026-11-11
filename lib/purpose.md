@@ -640,4 +640,19 @@ log(foo(nil))
 
 wwjd?
 
+---
+
+crucially, a manual update isnt really the solution.
+
+it doesnt update! debugging nightmare (you would not expect lib to be flawed).
+
+that is, you may use use effect. but the component itself is a hardcoded react effect.
+
+---
+
+ah! you should not early return when undefined...
+
+late night. confusion. heuristics.
+
+
 
