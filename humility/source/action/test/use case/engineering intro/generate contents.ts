@@ -33,21 +33,20 @@ const toc = [
   // '参考文献 (References)',
 ]
 
-const result_file = data('test')
+const result_file = data('chat', 'test use case engineering intro')
+
+const chapters = []
 
 for (const heading of toc) {
-  
-}
+  const thread = new_thread({ title: `engineering intro toc ${heading}` })
 
-const thread = new_thread({ title: 'engineering intro toc' })
-
-log(thread)
-
-log(
-  await send({
+  const message = await send({
     thread,
-    content: 'output a flat json string array of table of contents of 工程学导论 综述类论文 on mechanical engineering in zhcn for around 3k chars from the perspective of uni freshmen.',
+    content:
+      `you are writing a chapter on 工程学导论 综述类论文 in zhcn around 3k chars, 
+      `,
     model: 'google/gemma-4-26b-a4b-it',
-  }),
-)
+  })
 
+
+}
