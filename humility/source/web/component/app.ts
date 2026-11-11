@@ -7,6 +7,18 @@ import { input } from './input'
 import { textarea } from './textarea'
 import { scroll } from './scroll'
 import { post } from 'lib/web/request'
+import type { message } from 'lib/generation'
+
+type thread = {
+  title: string
+  folder: string
+  creation_time: number
+  is_hidden?: boolean
+}
+
+export const use_thread = s('', {
+  url_param: 'thread',
+})
 
 export function app() {
   use_sync_theme('system')
@@ -14,32 +26,65 @@ export function app() {
   use_style(theme)
 
   const [prompt, set_prompt] = use_state('')
-  const [foo, set_foo] = use_state([])
-
-  use_keyboard('enter', () => {
-    set_foo(post('list'))
-  })
+  const [threads, set_threads] = use_state<Record<string, thread>>({})
+  const [thread, set_thread] = use_thread()
+  const [messages, set_messages] = use_state<message[]>([])
 
   use_effect(() => {
-    log(foo)
-    log(entries(foo))
-  })
+    set_threads(post('list'))
+  }, [])
+
+  use_effect(() => {
+    set_messages(post('read', thread))
+  }, [thread])
+
+  use_effect(() => {
+    log(messages)
+  }, [messages])
 
   return h(
     h('title.', 'Humility'),
     h(
       'app',
-      h('thread'),
       h(
-        'message',
+        'sidebar',
         h(
-          'message_field',
+          'threads',
+          map(threads, ([thread, metadata]) =>
+            h(
+              'button.threads_thread',
+              {
+                onclick() {
+                  set_thread(thread)
+                },
+              },
+              metadata.title,
+            ),
+          ),
+        ),
+      ),
+      h(
+        'page',
+        h(
+          'page_content',
+          h(
+            'messages',
+            map(messages, (message) =>
+              h('messages_message', { role: message.role }, message.content),
+            ),
+          ),
+        ),
+      ),
+      h(
+        'prompt',
+        h(
+          'prompt_field',
           h(
             scroll,
             h(
-              'message_textarea',
+              'prompt_textarea',
               h(textarea, { value: prompt, set_value: set_prompt }),
-            )
+            ),
           ),
         ),
       ),

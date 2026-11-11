@@ -672,7 +672,7 @@ ref:
       "state",
     ],
     "body": [
-      "export const use_${1:global} = state(${0})",
+      "export const use_${1:global} = s(${0})",
     ],
   },
   "use global": {
@@ -683,7 +683,7 @@ ref:
       "ugs",
     ],
     "body": [
-      "const [${1:name}, set_${1:name}] = use_global(${0})"
+      "const [${0:state}, set_${0:state}] = use_${0:state}()"
       // "const [${1:name}, set_${1:name}] = use_global('${0}')"
       // "const [${1:name}, set_${1:name}] = use_${0:global}"
     ],

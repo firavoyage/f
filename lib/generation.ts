@@ -2,10 +2,10 @@ import { now } from 'lib/time'
 import { random_id } from 'lib/random'
 import { parse as deserialize, stringify as serialize } from 'yaml'
 
-type role = 'system' | 'user' | 'assistant'
+export type role = 'system' | 'user' | 'assistant'
 // type role = 'system' | 'user' | 'assistant' | 'tool'
 
-type message = {
+export type message = {
   has_failed?: boolean
   id: string
   role: role

@@ -32,12 +32,14 @@ typeface:
   sans: Ubuntu Sans, sans-serif
   serif: EB Garamond, serif
 app:
-  app: h-100dvh font-sans bg-surface text-on-surface
-thread:
-  thread: flex
-  content: w-prose
-message:
-  message: fixed bottom-0 w-full h-40 flex justify-center bg-field
+  app: flex h-100dvh font-sans bg-surface text-on-surface
+sidebar:
+  sidebar: w-sm h-full
+page:
+  page: flex w-full h-full
+  content: w-prose justify-center
+prompt:
+  prompt: fixed bottom-0 w-full h-40 flex justify-center bg-field
   field: w-prose
   textarea: py-8
 textarea:
