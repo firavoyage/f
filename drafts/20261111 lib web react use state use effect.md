@@ -477,5 +477,957 @@ June 3, 2025 — When a functional component that contains a useEffect Hook is i
 
 Show all
 
+# how to mutate obj state directly in react
+
+In short, **you should never mutate object state directly in React**.
+
+React relies on **immutability** to detect state changes. It performs a shallow equality check (`===`) on object references. If you modify a property directly (e.g., `user.name = 'Alice'`), the object's reference in memory stays exactly the same. Because the reference didn't change, React thinks nothing happened, skips re-rendering the component, and your UI will not update. [](https://reacttraining.com/blog/state-in-react-is-immutable)
+
+However, if you want the _convenience_ of writing direct mutations while keeping React happy, you have two core approaches: the standard React way (using copies) or using a helper library like Immer.
+
+---
+
+### Method 1: The React Way (Create a copy using Spread Syntax)
+
+Instead of modifying the original object, you use the JavaScript spread operator (`...`) to clone the properties into a **brand new object**, overwrite the specific fields you want to change, and pass it to your state setter. [](https://react.dev/learn/updating-objects-in-state)
+
+javascript
+
+```
+import { useState } from 'react';
+
+function UserProfile() {
+  const [user, setUser] = useState({ name: 'John', age: 30 });
+
+  function updateName() {
+    // ❌ WRONG: Mutates state directly (UI won't update)
+    // user.name = 'Alice'; 
+    
+    // ✅ CORRECT: Creates a new object reference
+    setUser({
+      ...user,      // Copy all existing properties
+      name: 'Alice' // Overwrite the one you want to change
+    });
+  }
+}
+
+```
+
+
+
+#### If your state depends on the previous state:
+
+If you are doing sequential updates or your new state relies directly on the old state, use a **functional update** to avoid race conditions: [](https://www.youtube.com/watch?v=YxQlt3n1ZPA)
+
+javascript
+
+```
+setUser(prevUser => ({
+  ...prevUser,
+  age: prevUser.age + 1
+}));
+
+```
+
+
+
+---
+
+### Method 2: Use Immer (To safely write "mutating" code)
+
+If your object is deeply nested, copying layers with `...` becomes incredibly messy. React officially recommends using Immer via the `use-immer` package if you want to write mutating code safely. [](https://www.youtube.com/shorts/zum%5FujxFY1Y)
+
+Immer gives you a temporary `draft` object. You can mutate this draft directly, and behind the scenes, Immer tracks your changes and builds a pristine, immutable copy for React. [](https://www.youtube.com/shorts/zum%5FujxFY1Y)
+
+1. **Install it:** `npm install use-immer`
+2. **Use it:**
+
+javascript
+
+```
+import { useImmer } from 'use-immer';
+
+function SharedForm() {
+  // Deeply nested object state
+  const [profile, updateProfile] = useImmer({
+    name: 'John',
+    preferences: {
+      theme: 'light',
+      notifications: true
+    }
+  });
+
+  function toggleTheme() {
+    // ✅ CORRECT: You can mutate the "draft" directly!
+    updateProfile(draft => {
+      draft.preferences.theme = draft.preferences.theme === 'light' ? 'dark' : 'light';
+    });
+  }
+}
+
+```
+
+
+
+Are you dealing with a **deeply nested object** or a **list of objects**? If you share the structure of your state, I can show you the exact code to update it cleanly.
+
+* [](https://react.dev/learn/updating-objects-in-state)  
+React  
+Updating Objects in State – React  
+Copy existing data level by level upwards or use the Immer library (\`useImmer\`) to write concise update logic with mutating draft ...
+* [](https://www.youtube.com/shorts/zum%5FujxFY1Y)  
+YouTube·Cosden Solutions  
+How to Update State Objects in React  
+August 1, 2025 — first you're going to want to install the immer JS library that's an immutability library ・ we get access to the draft which is go...  
+1:44
+* [](https://reacttraining.com/blog/state-in-react-is-immutable)  
+ReactTraining.com  
+State in React is Immutable  
+March 10, 2023 — React requires immutable state updates because it uses shallow equality checks (\`Object.is()\` or \`===\` comparing identity referenc...
+
+Show all
+
+# how to mutate obj state directly in react at the cost of perf
+
+In React, you can mutate an object state directly by **modifying its properties before passing it back to the state setter, or by forcing a re-render using a dummy state variable.**
+
+While this bypasses React's immutability guidelines and **breaks change detection and optimizations**, it can be forced using the methods below.
+
+---
+
+### Method 1: Mutate and Force State Assignment
+
+React uses `Object.is` to check if a state has changed. If you mutate an object and pass the _same_ object reference to the state setter, React will skip the re-render. To bypass this, you can mutate the object and then pass it into a new object shell using the spread operator (`...`).
+
+javascript
+
+```
+// ❌ Directly mutating (React will NOT re-render)
+state.user.name = 'Alex';
+setState(state); 
+
+// ⚠️ Mutating directly, then forcing React to see a new reference
+state.user.name = 'Alex';
+setState({ ...state }); 
+
+```
+
+
+
+* **Performance Cost:** You still end up paying the price of shallow-cloning the top-level object, and any child components relying on nested references won't know they need to update efficiently.
+
+### Method 2: Mutate and Use a Force Update Trick
+
+If you want to absolutely mutate the object in place without creating any new references at all, you must manually trigger a re-render using a "dummy" toggle or counter state.
+
+javascript
+
+```
+import { useState } from 'react';
+
+function MyComponent() {
+  const [myObj] = useState({ count: 0 });
+  const [, forceUpdate] = useState(0); // Dummy state
+
+  const handleIncrement = () => {
+    // ⚠️ Pure mutation (completely bypasses React's state tracker)
+    myObj.count += 1; 
+    
+    // Force the component to re-render manually
+    forceUpdate(prev => prev + 1); 
+  };
+
+  return <button onClick={handleIncrement}>{myObj.count}</button>;
+}
+
+```
+
+
+
+* **Performance Cost:** This triggers a heavy, blind re-render of the entire component tree below this component. React cannot optimize elements via `React.memo` because the object reference `myObj` never changes, meaning children might fail to render the new data unless they are blindly forced to rewrite.
+
+### Method 3: Use a Mutable Ref (`useRef`)
+
+If you want a truly mutable object where changes **do not** immediately trigger a visual update, use `useRef`. You can mutate `.current` directly at zero performance cost, and then call a dummy state setter only when you finally want to paint the screen.
+
+javascript
+
+```
+const userRef = useRef({ name: 'Alex', age: 30 });
+
+const updateData = () => {
+  userRef.current.name = 'Sam'; // Instant mutation, 0 perf cost
+  userRef.current.age = 31;
+  
+  forceUpdate(prev => prev + 1); // Trigger render only when done
+};
+
+```
+
+
+
+---
+
+### The actual "Cost" you pay
+
+1. **Broken `useEffect` Dependencies:** If you pass `myObj` into a dependency array `[myObj]`, the effect will **never run** because the reference never changes.
+2. **Pure Component Breakdown:** Specialized optimization wrappers like `React.memo` or `useMemo` become completely useless because they rely on shallow reference checks.
+3. **Strict Mode Instability:** In React's Strict Mode, your component functions run twice. Direct mutations will bleed across renders, causing unpredictable UI bugs and ghost values.
+
+Are you trying to optimize a **high-frequency input/animation**, or are you dealing with a **deeply nested object** that is annoying to update cleanly? I can show you how to handle either scenario using performance-safe tools like **Immer** or standard state isolation.
+
+# compare perf of immer and lodash deep eq
+
+Comparing **Immer** and **Lodash** for deep equality checks represents a fundamental architectural choice rather than a traditional function-to-function comparison.
+
+**Immer does not provide a deep equality function.** Instead, [Immer's immutability architecture](https://immerjs.github.io/immer/) utilizes **structural sharing**, which allows you to use a standard **strict equality check (`===`)** running in **O(1) constant time**. In contrast, Lodash's **`_.isEqual()`** must recursively traverse your entire object structure, executing in **O(N) linear time**. [](https://redux.js.org/faq/immutable-data)
+
+Using Immer to manage state lets you completely replace expensive deep equality operations with instant pointer comparisons. [](https://codeburst.io/immutable-data-with-immer-and-react-setstate-887e8f3ad667)
+
+---
+
+### Direct Performance Comparison
+
+| Feature / Metric                | Immer State Management (\===)                               | Lodash Deep Equality (\_.isEqual)                              |
+| ------------------------------- | ----------------------------------------------------------- | -------------------------------------------------------------- |
+| **Performance Complexity**      | **O(1)** (Constant time pointer comparison)                 | **O(N)** (Linear time recursive tree traversal)                |
+| **Execution Speed**             | **Nanoseconds** (Instantaneous)                             | **Milliseconds** (Scales poorly with large/deep trees)         |
+| **Garbage Collection / Memory** | Zero extra allocation during the check                      | High overhead (creates temporary call stacks during recursion) |
+| **Referential Integrity**       | **Preserved** (Unchanged nodes maintain the same reference) | **Irrelevant** (Compares values regardless of references)      |
+| **Ideal Use Case**              | Optimizing React/Redux updates and avoiding re-renders      | Comparing two completely un-tracked, arbitrary object trees    |
+
+---
+
+### How Immer Eliminates the Need for Deep Equality
+
+When you use [Immer's produce function](https://benchmarklab.azurewebsites.net/Benchmarks/Show/10865/0/lodash-clonedeep-vs-immer-produce) to update an object, it intercepts mutations using a temporary Proxy. When the update finishes, Immer outputs a new object with **structural sharing**: [](https://immerjs.github.io/immer/)
+
+* Any part of the object tree that **changed** receives a completely new reference.
+* Any part of the object tree that **did not change** maintains its original reference exactly. [](https://hmos.dev/en/deep-dive-to-immer)
+
+Because of this contract, you never need to ask _"Did the data inside this nested object change?"_ via deep equality. You simply ask `oldState.nested === newState.nested`. If the reference is identical, the data is guaranteed to be deeply identical. [](https://codeburst.io/immutable-data-with-immer-and-react-setstate-887e8f3ad667)
+
+### When to Choose Which
+
+* **Use Immer (`===`)** if you control the data pipeline (like a React component state, Redux store, or Zustand state). It ensures performance remains lightning-fast regardless of how large your datasets grow. [](https://github.com/immerjs/immer/issues/619)
+* **Use Lodash (`_.isEqual`)** only when you are handed two completely independent, untracked objects (e.g., comparing an API response payload directly against a local user-submitted form payload) and you have no concept of a "previous state" reference. [](https://www.syncfusion.com/blogs/post/deep-compare-javascript-objects)
+
+_(Note: If you genuinely need a raw deep equality function because you are dealing with untracked objects, libraries like [fast-deep-equal](https://www.pkgpulse.com/guides/fast-deep-equal-vs-dequal-vs-lodash-isequal-deep-2026) or **dequal** are significantly faster alternatives to Lodash.)_ [](https://www.pkgpulse.com/guides/fast-deep-equal-vs-dequal-vs-lodash-isequal-deep-2026)
+
+To help tailor this to your specific project, tell me:
+
+* Are you looking to optimize **React components from re-rendering**?
+* Are you managing a **global state architecture** (like Redux, Zustand, etc.)?
+* Or do you need to compare **freestanding API payloads**?
+
+* [](https://github.com/immerjs/immer/issues/619)  
+GitHub  
+Immer's produce() or Lodash's cloneDeep()? · Issue #619 · immerjs/immer  
+June 15, 2020 — Immer produce(): O(depth of change) complexity, utilizes structural sharing for unchanged state parts, preserves referential equal...
+* [](https://www.syncfusion.com/blogs/post/deep-compare-javascript-objects)  
+Syncfusion  
+5 Different Ways to Deep Compare JavaScript Objects (When === Isn't Enough) | Syncfusion Blogs  
+September 21, 2026 — Lodash's \_. isEqual() performs a deep equivalence comparison. It supports arrays, ArrayBuffers, booleans, Dates, Errors, Maps, num...
+* [](https://benchmarklab.azurewebsites.net/Benchmarks/Show/10865/0/lodash-clonedeep-vs-immer-produce)  
+benchmarklab.azurewebsites.net  
+Benchmark: Lodash CloneDeep vs Immer Produce  
+Immer's produce: This function creates a new state by merging the original state with a draft object that contains the updated val...
+
+Show all
+
+# compare immer and shallow cloning
+
+When managing state in JavaScript, **Immer utilizes structural sharing to efficiently update nested structures**, whereas **shallow cloning duplicates only the top-level properties** of an object, leaving nested structures shared by reference. [](https://dev.to/alifa%5Fara%5Fheya/understanding-object-mutability-shallow-vs-deep-copy-and-the-power-of-immer-in-javascript-571k)
+
+While a shallow clone risks accidental state mutations in deep objects, Immer acts as a smart engine that tracks your modifications and safely creates a new state without copying untouched data. [](https://news.ycombinator.com/item?id=26386763)
+
+### Core Comparison
+
+| Feature                 | Shallow Cloning (e.g., { ...obj })                                                         | Immer (produce(state, draft => {}))                                                            |
+| ----------------------- | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
+| **Cloning Depth**       | **Top-level only**. Nested objects keep their memory references.                           | **Structural sharing**. Only deep branches that are modified are cloned.                       |
+| **Mutation Risk**       | **High**. Modifying a nested property mutates the original object.                         | **Zero**. You write "mutative" code on a draft, but the original remains completely untouched. |
+| **Syntax Boilerplate**  | **High for deep updates**. Requires manual, tedious nested spreading.                      | **Very Low**. Clean, straightforward mutative syntax regardless of depth.                      |
+| **Performance**         | **Fastest** for flat objects, but inefficient if forced to spread manually for deep trees. | Slightly more overhead than flat copies, but **highly optimized** for deeply nested states.    |
+| **React Compatibility** | Breaks reference checks if top-level links aren't updated properly.                        | Perfect for React/Redux as it **preserves identical references** for unchanged data branches.  |
+
+---
+
+### How They Handle Nested Data
+
+#### 1\. Shallow Cloning
+
+If you use the spread operator on a nested object, only the first layer gets a new memory reference. [](https://dev.to/alifa%5Fara%5Fheya/understanding-object-mutability-shallow-vs-deep-copy-and-the-power-of-immer-in-javascript-571k)
+
+javascript
+
+```
+const original = { name: "Alice", details: { age: 30 } };
+const clone = { ...original };
+
+clone.details.age = 31; // ❌ This MUTATES original.details.age too!
+
+```
+
+
+
+#### 2\. Immer
+
+Immer's `produce` function provides a temporary `draft`. You alter the draft as if it were a normal mutable object, and Immer produces a securely cloned output behind the scenes. [](https://dev.to/alifa%5Fara%5Fheya/understanding-object-mutability-shallow-vs-deep-copy-and-the-power-of-immer-in-javascript-571k)
+
+javascript
+
+```
+import { produce } from "immer";
+
+const original = { name: "Alice", details: { age: 30 } };
+const safeClone = produce(original, draft => {
+    draft.details.age = 31; // ✅ Safe! original remains unchanged.
+});
+
+```
+
+
+
+### When to Use Which
+
+* Use **shallow cloning** if your data structure is **100% flat** (no nested arrays or objects) or if you are doing simple top-level variable reassignments. [](https://dev.to/alifa%5Fara%5Fheya/understanding-object-mutability-shallow-vs-deep-copy-and-the-power-of-immer-in-javascript-571k)
+* Use **Immer** when dealing with **deeply nested state** (like in React, Redux Toolkit, or complex form states) where manual tracking of references becomes unmaintainable. [](https://dev.to/alifa%5Fara%5Fheya/understanding-object-mutability-shallow-vs-deep-copy-and-the-power-of-immer-in-javascript-571k)
+
+Are you trying to optimize state management for a specific framework like **React** or **Redux**, or are you evaluating this for a **pure JavaScript/Node.js** architecture?
+
+* [](https://dev.to/alifa%5Fara%5Fheya/understanding-object-mutability-shallow-vs-deep-copy-and-the-power-of-immer-in-javascript-571k)  
+DEV Community  
+Understanding Object Mutability, Shallow vs Deep Copy, and ...  
+June 26, 2025 — Use structuredClone or Immer for deeply nested updates. \* Immer is especially useful in React state management scenarios where imm...
+* [](https://benchmarklab.azurewebsites.net/Benchmarks/Show/10865/0/lodash-clonedeep-vs-immer-produce)  
+benchmarklab.azurewebsites.net  
+Benchmark: Lodash CloneDeep vs Immer Produce  
+Immer's produce: This function creates a new state by merging the original state with a draft object that contains the updated val...
+* [](https://news.ycombinator.com/item?id=26386763)  
+Hacker News  
+Why do we need Immer? Can't we just do our object copying ourselves? It seems us... | Hacker News  
+Immer performs efficient nested shallow cloning by copying only changed parts, preserving unchanged references and saving memory.
+
+Show all
+
+# can you use immer to update a to b given two objects
+
+**Yes, you can use Immer to update object A so that it matches object B.** Immer allows you to mutate a "draft" state directly to produce the next immutable state.
+
+Here are the two main ways to handle this, depending on whether you want to completely overwrite the top-level keys or deep-merge the properties.
+
+### Option 1: Complete Overwrite (Using `produce`)
+
+If you want to replace all contents of `a` with `b` while keeping `a` as the base immutable structure, you can clear the draft and assign the new properties.
+
+javascript
+
+```
+import { produce } from "immer";
+
+const a = { name: "Alice", age: 25, status: "active" };
+const b = { name: "Bob", age: 30 };
+
+const updatedA = produce(a, (draft) => {
+  // 1. Clear out keys in A that aren't in B (optional)
+  Object.keys(draft).forEach((key) => {
+    if (!(key in b)) {
+      delete draft[key];
+    }
+  });
+
+  // 2. Assign all keys from B to the draft
+  Object.assign(draft, b);
+});
+
+console.log(updatedA); 
+// Output: { name: 'Bob', age: 30 }
+
+```
+
+
+
+### Option 2: Deep Update / Merge (Using `recipe`)
+
+If you only want to update changed fields or perform a deep merge where nested objects are preserved unless changed, you can loop through the keys of `b` and update the draft.
+
+javascript
+
+```
+import { produce } from "immer";
+
+const a = { id: 1, profile: { name: "Alice", role: "User" } };
+const b = { profile: { name: "Bob" } };
+
+const updatedA = produce(a, (draft) => {
+  // Example of a targeted nested update
+  draft.profile.name = b.profile.name;
+});
+
+console.log(updatedA);
+// Output: { id: 1, profile: { name: 'Bob', role: 'User' } }
+
+```
+
+
+
+To give you the most efficient code snippet, could you tell me:
+
+* Do the objects have **nested structures** (like arrays or objects inside objects)?
+* Do you want to **completely replace** A with B, or just **merge/patch** the differences?
+
+# can you use immer to update a to b, keeping a or any unchanged parts of a immutable iff deep eq, and work for any non literal js object
+
+**Yes, but with crucial limitations depending on your definition of "any non-literal JS object."**
+
+You can accomplish a deep diff and structural-sharing sync using Immer's `produce` combined with a recursive patching algorithm. Immer natively guarantees that **if a node in the draft doesn't change, its original reference is preserved perfectly**.
+
+However, Immer's proxy system is explicitly optimized for plain JavaScript objects, arrays, `Map`s, and `Set`s. It does **not** support arbitrary complex objects (like class instances, DOM elements, or prototypes with custom setters) out of the box.
+
+---
+
+### The Solution: Immer-Powered Reconciliation
+
+To update object `a` to match object `b` while maximizing structural sharing (keeping unchanged parts of `a` strictly identical if they are deeply equal), you can recursively reconcile the Immer draft of `a` against the source data `b`.
+
+javascript
+
+```
+import { produce } from 'immer';
+import isEqual from 'lodash/isEqual'; // Or any deep-equality utility
+
+export function reconcile(a, b) {
+  // If the root structures are completely deeply equal, return original 'a' intact
+  if (isEqual(a, b)) return a;
+
+  return produce(a, (draft) => {
+    updateDraft(draft, b);
+  });
+}
+
+function updateDraft(draft, b) {
+  // 1. Handle Array reconciliation
+  if (Array.isArray(draft) && Array.isArray(b)) {
+    // Trim extra elements
+    if (draft.length > b.length) {
+      draft.splice(b.length);
+    }
+    
+    b.forEach((bVal, i) => {
+      if (i >= draft.length) {
+        draft.push(bVal); // Append new elements
+      } else if (!isEqual(draft[i], bVal)) {
+        if (typeof draft[i] === 'object' && draft[i] !== null && typeof bVal === 'object' && bVal !== null) {
+          updateDraft(draft[i], bVal); // Recurse nested objects
+        } else {
+          draft[i] = bVal; // Overwrite primitives
+        }
+      }
+    });
+    return;
+  }
+
+  // 2. Handle Plain Object reconciliation
+  if (typeof draft === 'object' && draft !== null && typeof b === 'object' && b !== null) {
+    // Remove keys present in draft but missing in b
+    Object.keys(draft).forEach((key) => {
+      if (!(key in b)) {
+        delete draft[key];
+      }
+    });
+
+    // Sync keys from b to draft
+    Object.keys(b).forEach((key) => {
+      const bVal = b[key];
+      
+      if (!(key in draft)) {
+        draft[key] = bVal;
+      } else if (!isEqual(draft[key], bVal)) {
+        if (typeof draft[key] === 'object' && draft[key] !== null && typeof bVal === 'object' && bVal !== null) {
+          updateDraft(draft[key], bVal); // Recurse nested structures
+        } else {
+          draft[key] = bVal;
+        }
+      }
+    });
+  }
+}
+
+```
+
+
+
+---
+
+### Critical Constraints for "Non-Literal" Objects
+
+While the algorithm above works perfectly for plain trees, JavaScript's **non-literal objects** bring rules you must watch out for:
+
+1. **Class Instances (OOP):** If your non-literal object is a class instance (e.g., `new User()`), Immer will copy its prototype chain upon mutation, but it does **not** recursively proxy custom class methods or private fields correctly. You must use Immer's `immerable` symbol on the class prototype to explicitly opt them into proxying.
+2. **Maps and Sets:** If your non-literal objects include native `Map` or `Set` collections, standard `Object.keys()` iterations will fail. You have to expand your recursive `updateDraft` function to explicitly clear, delete, and add keys using the native `.set()` and `.add()` methods on the draft proxy.
+3. **Circular References:** If your object graphs contain cyclic references, a naive deep equality check (`isEqual`) and the recursive function will fall into an infinite loop unless you maintain a `Map` of visited nodes.
+
+Are your non-literal objects **class instances**, native collections like **Maps/Sets**, or do they contain **circular references**? I can help you extend the reconciliation algorithm to handle those specific data structures.
+
+# does immer produce the same reference if you do not mutate the obj at all
+
+**Yes, [Immer](https://immerjs.github.io/immer/) will return the exact same reference** if you pass an object to `produce` and do not perform any mutations on the draft.
+
+Immer uses a structural sharing approach. During the execution of the `produce` recipe, Immer tracks whether any modifications were made to the proxy-wrapped draft. If the draft remains untouched, Immer completely bypasses the creation of a new object tree and returns the original base state unchanged. [](https://redux.js.org/toolkit/usage/immer-reducers)
+
+### Example Behavior
+
+javascript
+
+```
+import { produce } from "immer";
+
+const baseState = {
+  user: { name: "Alice", age: 30 },
+  tags: ["admin", "moderator"]
+};
+
+// No mutations performed inside the recipe
+const nextState = produce(baseState, (draft) => {
+  // We just read from it, or do nothing at all
+  console.log(draft.user.name); 
+});
+
+// Both references point to the exact same object in memory
+console.log(baseState === nextState); // true
+
+```
+
+
+
+### Key Considerations
+
+* **Reading does not count as mutating:** You can safely read nested properties or access elements without triggering a new reference. [](https://www.youtube.com/watch?v=4EXFBNRqS6U&t=210)
+* **No-op assignments might create a new reference:** If you re-assign a property to the _same_ value it already had (e.g., `draft.user.name = "Alice"`), Immer is usually smart enough to recognize that the value didn't change and will still return the original reference. However, explicitly performing operations like `.push()` on an array inside the draft will flag it as modified, even if you undo it later.
+* **Returning a new value:** If your recipe explicitly returns a completely new object or value (instead of modifying the `draft`), Immer will return that new value instead of the original reference. [](https://immerjs.github.io/immer/pitfalls/)
+
+Are you seeing unexpected reference updates in a specific piece of code, or are you trying to optimize **React rendering performance** or **Redux selectors** using reference equality?
+
+* [](https://redux.js.org/toolkit/usage/immer-reducers)  
+Redux  
+Writing Reducers with Immer | Redux  
+Immer uses produce, track/replay mutations, requires JS objects/arrays; mutate OR return state, never both; avoid implicit arrow r...
+* [](https://immerjs.github.io/immer/pitfalls/)  
+GitHub Pages documentation  
+Pitfalls | Immer  
+Rules: Do not reassign the draft argument; modify the draft or return a new state. no circular references or shared objects. Alway...
+* [](https://www.youtube.com/watch?v=4EXFBNRqS6U&t=210)  
+YouTube·Mehul Mohan  
+Immer.js Crash Course - And Why Immutability Is Very Important  
+Feb 10, 2022 — You can directly mutate this draft object as desired, and Immer.js ensures that these mutations are applied to a \*new\* object that...  
+4m
+
+Show all
+
+# what if you json stringify in react use effect dep
+
+Using `JSON.stringify(object)` inside a React `useEffect` dependency array is a common workaround to force React to perform a **value-based (deep) comparison** instead of a **reference-based (shallow) comparison**. [](https://medium.com/courtly-intrepid/the-react-hook-chronicles-decoding-the-mysteries-of-json-stringify-7342916fa0a4)
+
+While it does solve the immediate problem of preventing unwanted re-runs or infinite loops caused by fresh object references on every render, **it introduces several hidden bugs and performance trade-offs**. [](https://medium.com/courtly-intrepid/the-react-hook-chronicles-decoding-the-mysteries-of-json-stringify-7342916fa0a4)
+
+---
+
+### Why People Do It
+
+React uses `Object.is()` to check if dependencies have changed. In JavaScript, two objects with identical keys and values are completely different by reference:
+
+javascript
+
+```
+const obj1 = { id: 1 };
+const obj2 = { id: 1 };
+console.log(obj1 === obj2); // false!
+
+```
+
+
+
+If you pass a raw object created inline during rendering into your dependencies, `useEffect` thinks it's a completely new variable every single time and re-runs the effect. By stringifying it (`"[JSON.stringify(obj)]"`), you turn it into a primitive string (`'{"id":1}'`), which React _can_ accurately compare by value. [](https://javascript.plainenglish.io/a-less-known-trick-with-react-hook-dependencies-8dafaca7a150)
+
+---
+
+### The Hidden Risks & Pitfalls
+
+#### 1\. Keys Ordering Problem
+
+`JSON.stringify` relies on the order of an object's properties. If the keys of your object change order, the resulting strings will not match, triggering the effect anyway—even if the data is identical. [](https://medium.com/courtly-intrepid/the-react-hook-chronicles-decoding-the-mysteries-of-json-stringify-7342916fa0a4)
+
+javascript
+
+```
+JSON.stringify({ a: 1, b: 2 }); // '{"a":1,"b":2}'
+JSON.stringify({ b: 2, a: 1 }); // '{"b":2,"a":1}' -> Triggers unnecessary re-run!
+
+```
+
+
+
+#### 2\. Performance Issues
+
+Serializing a large, complex, or deeply nested object on _every single render_ is highly CPU-intensive. For large datasets, this can cause noticeable frame drops and slow down your application. [](https://www.reddit.com/r/reactnative/comments/v2zbxz/jsonstringify%5Fin%5Fuseeffect/)
+
+#### 3\. Loss of Data Types
+
+`JSON.stringify` ignores or strips out `undefined`, functions, and `Symbol` types. If your object relies on those values, changes to them will go completely unnoticed by your effect. [](https://medium.com/courtly-intrepid/the-react-hook-chronicles-decoding-the-mysteries-of-json-stringify-7342916fa0a4)
+
+#### 4\. Circular References Break the App
+
+If your object references itself or contains circular structures, `JSON.stringify` will throw a fatal error (`TypeError: Converting circular structure to JSON`), entirely crashing your UI. [](https://medium.com/courtly-intrepid/the-react-hook-chronicles-decoding-the-mysteries-of-json-stringify-7342916fa0a4)
+
+---
+
+### Better Alternatives
+
+Instead of using `JSON.stringify`, use one of these standard React approaches:
+
+#### Approach A: Destructure to Primitives (Best for small objects)
+
+If you know exactly what properties you care about, extract them directly into the dependency array. [](https://haybeecodes.hashnode.dev/having-objects-as-dependencies-in-react-useeffect-hook)
+
+javascript
+
+```
+// Instead of [JSON.stringify(filters)]
+useEffect(() => {
+  fetchData(filters.region, filters.status);
+}, [filters.region, filters.status]); // React easily compares strings/numbers
+
+```
+
+
+
+#### Approach B: Memoize the Object with `useMemo`
+
+Ensure the object keeps the same reference across renders unless its actual data changes. [](https://medium.com/courtly-intrepid/the-react-hook-chronicles-decoding-the-mysteries-of-json-stringify-7342916fa0a4)
+
+javascript
+
+```
+const filters = useMemo(() => {
+  return { region, status };
+}, [region, status]); 
+
+useEffect(() => {
+  fetchData(filters);
+}, [filters]); // Reference stays the same unless region or status changes
+
+```
+
+
+
+#### Approach C: Use a Deep Compare Hook (Best for complex objects)
+
+For highly dynamic, nested configurations where destructuring isn't practical, use a community tool like `useDeepCompareEffect` from the use-deep-compare-effect package or react-use. It performs a recursive value check behind the scenes without the stringify overhead. [](https://www.linkedin.com/posts/vikram-singh-04b464188%5Freactjs-webdevelopment-javascript-activity-7346939915152101376-NaQe)
+
+javascript
+
+```
+import useDeepCompareEffect from 'use-deep-compare-effect';
+
+useDeepCompareEffect(() => {
+  fetchData(nestedFilters);
+}, [nestedFilters]); // Safely handles deep comparisons
+
+```
+
+
+
+Are you currently dealing with an **infinite render loop** in your component? If you share the **structure of the object** you are trying to track, I can help you refactor it into the cleanest approach.
+
+* [](https://www.reddit.com/r/reactnative/comments/v2zbxz/jsonstringify%5Fin%5Fuseeffect/)  
+Reddit·r/reactnative  
+JSON.stringify in UseEffect? : r/reactnative - Reddit  
+June 2, 2022 — While using \`JSON.stringify\` in a \`useEffect\` … it is generally advised against due to performance concerns and reduced code reada...
+* [](https://medium.com/courtly-intrepid/the-react-hook-chronicles-decoding-the-mysteries-of-json-stringify-7342916fa0a4)  
+Medium·Deepak Surya  
+Medium  
+January 10, 2024 — Use useMemo for object memoization, write custom comparison functions, keep state/props primitive and simple, use lodash.isEqual
+* [](https://haybeecodes.hashnode.dev/having-objects-as-dependencies-in-react-useeffect-hook)  
+haybeecodes.hashnode.dev  
+Having objects as dependencies in React useEffect hook  
+August 31, 2022 — Using objects as dependencies in React useEffect causes the effect callback to run on every render even when object values remain ...
+
+Show all
+
+# how to change the reference of any non literal object in general in js keeping things unchanged
+
+In JavaScript, **you cannot directly change an object's underlying memory reference** to force other variables pointing to it to update automatically. Variables point to a specific memory address, not to each other. [](https://www.reddit.com/r/learnjavascript/comments/41iynm/can%5Fi%5Fchange%5Fthe%5Foriginal%5Freference%5Fto%5Fan%5Fobject/)
+
+However, depending on your goal, you can achieve the exact same behavior using one of the following two approaches.
+
+---
+
+### Method 1: Mutate the Original Object In-Place (Preserve Reference Identity)
+
+If other parts of your application hold a reference to `objA` and you want them to instantly see the data of `objB`, you must **keep the reference identical but replace its contents**. [](https://www.youtube.com/watch?v=KOR8iRlNL84&t=10)
+
+javascript
+
+```
+const objA = { name: "Alice", age: 25 };
+const objB = { name: "Bob", location: "NY" };
+
+// 1. Clear existing properties of objA
+for (const key in objA) {
+  delete objA[key];
+}
+
+// 2. Copy properties from objB into objA
+Object.assign(objA, objB); 
+
+console.log(objA); // { name: "Bob", location: "NY" }
+// Any other variable pointing to objA will now see Bob, keeping references unchanged!
+
+```
+
+
+
+### Method 2: Use a Container Object (Indirect Referencing)
+
+If you want to seamlessly swap the actual reference of an object without breaking your code, the best practice is to avoid referencing the object directly. Instead, **wrap it inside a container object**. [](https://www.reddit.com/r/learnjavascript/comments/41iynm/can%5Fi%5Fchange%5Fthe%5Foriginal%5Freference%5Fto%5Fan%5Fobject/)
+
+Users on [Stack Overflow](https://stackoverflow.com/questions/50178894/how-to-reassign-an-object-so-that-it-changes-the-referenced-object-as-well) and [Reddit](https://www.reddit.com/r/learnjavascript/comments/41iynm/can%5Fi%5Fchange%5Fthe%5Foriginal%5Freference%5Fto%5Fan%5Fobject/) agree that passing a "pointer" or container is the most robust way to handle dynamic reassignment. [](https://stackoverflow.com/questions/50178894/how-to-reassign-an-object-so-that-it-changes-the-referenced-object-as-well)
+
+javascript
+
+```
+// Wrap the object in a container
+const container = {
+  current: { name: "Alice" }
+};
+
+// Functions or other modules hold onto 'container'
+function printUser(holder) {
+  console.log(holder.current.name);
+}
+
+printUser(container); // "Alice"
+
+// Now you can easily change the underlying reference
+container.current = { name: "Bob" }; 
+
+printUser(container); // "Bob" (The reference swapped, but container remained unchanged)
+
+```
+
+
+
+### Summary Comparison
+
+| Goal                                                                    | Strategy                                      | Impact on External References                                              |
+| ----------------------------------------------------------------------- | --------------------------------------------- | -------------------------------------------------------------------------- |
+| **Keep the reference target identity** but change the values inside it. | Clear keys + Object.assign(target, source)    | **Preserved**. All external variables see the new data.                    |
+| **Swap out the actual object reference** smoothly over time.            | Use a wrapper object (e.g., { current: obj }) | **Preserved**. External variables look at the wrapper, not the raw object. |
+
+To give you the most optimized snippet, tell me:
+
+* Are you dealing with standard **Object literals**, **Arrays**, or class instances like **Map/Set**?
+* Is this object being passed into a **function**, or shared across different **files/modules**?
+
+* [](https://www.reddit.com/r/learnjavascript/comments/41iynm/can%5Fi%5Fchange%5Fthe%5Foriginal%5Freference%5Fto%5Fan%5Fobject/)  
+Reddit·r/learnjavascript  
+Can I change the original reference to an object inside of a ...  
+Jan 18, 2016 — Assignment is how you change the reference, you can change the arguments to accept the container object and reference name rather ...
+* [](https://stackoverflow.com/questions/50178894/how-to-reassign-an-object-so-that-it-changes-the-referenced-object-as-well)  
+Stack Overflow  
+How to reassign an object so that it changes the referenced ...  
+May 4, 2018 — Use \`Object.assign(array\_element, new\_object)\` to copy properties from a new object into an existing object within an array, prese...
+* [](https://www.youtube.com/watch?v=KOR8iRlNL84&t=10)  
+YouTube·Peter  
+JavaScript Tutorial 19 - Object References and Copying  
+Jun 7, 2023 — To create an independent copy of an object without creating a reference, iterate through the original object's keys and values and...  
+15m
+
+Show all
+
+# how to force react set state to work regardless of shallow eq when you mutate directly, and work for any non literal objects
+
+To force React to trigger a re-render when you directly mutate a complex object (including **class instances, maps, sets, or deeply nested non-literal objects**), you must **bypass React's internal `Object.is()` identity check**.
+
+Because React will bail out of a render if the next state reference equals the previous state reference, you cannot simply pass the mutated object back into your state setter.
+
+Here are the two best ways to do this.
+
+---
+
+### Method 1: The Dummy State Trigger (Best for Class Instances & Non-Literal Objects)
+
+If you are dealing with strict non-literal objects like **class instances** (e.g., `new FabricCanvas()`, custom stateful classes, or complex DOM nodes) where cloning or destructuring (`{...obj}`) will destroy private methods, prototypes, or internal closures, **do not pass the mutated object to the state setter**.
+
+Instead, mutate your object directly and trigger a re-render using a independent **force-update counter**.
+
+javascript
+
+```
+import { useState, useCallback } from 'react';
+
+// A custom hook to force a re-render on command
+function useForceUpdate() {
+  const [, setTick] = useState(0);
+  return useCallback(() => setTick(tick => tick + 1), []);
+}
+
+export function MyComponent() {
+  // Store your non-literal object in a ref so its identity never changes
+  const [myComplexObject] = useState(() => new MyCustomClass());
+  const forceUpdate = useForceUpdate();
+
+  const handleMutation = () => {
+    // 1. Mutate the object directly
+    myComplexObject.someInternalArray.push('new item');
+    myComplexObject.updateInternalStatus(); 
+
+    // 2. Force React to re-render regardless of state equality
+    forceUpdate();
+  };
+
+  return <button onClick={handleMutation}>Mutate & Render</button>;
+}
+
+```
+
+
+
+### Method 2: The Spreadsheet / New Reference Wrapper
+
+If your object is technically capable of being wrapped or you are dealing with native non-literals like `Map` or `Set`, you can pass a **brand new object reference** to the state setter wrapping your mutated object.
+
+#### For standard objects/arrays:
+
+javascript
+
+```
+// If you mutated `myStateObject.nested.value = 123` directly:
+myStateObject.nested.value = 123;
+
+// Force update by breaking shallow equality using an array or object wrapper
+setMyStateObject(current => {
+  return Array.isArray(current) ? [...current] : { ...current };
+});
+
+```
+
+
+
+#### For native non-literals (`Map`, `Set`):
+
+Direct mutations like `.set()` or `.add()` will not trigger updates unless you instantiate a new class wrapper:
+
+javascript
+
+```
+const [myMap, setMyMap] = useState(new Map());
+
+const updateMap = () => {
+  myMap.set('key', 'mutated value'); // Direct mutation
+  setMyMap(new Map(myMap));          // Forces shallow eq to fail (new reference)
+};
+
+```
+
+
+
+---
+
+### Pro-Tip: Using Immer for Draft Mutations
+
+If you want the luxury of mutating objects directly without breaking React's paradigms or risking class instance breaking changes, you should use Immer. It provides a `draft` proxy that you can mutate like a normal object, and it outputs a cleanly cloned new reference automatically.
+
+javascript
+
+```
+import { useImmer } from 'use-immer';
+
+const [state, updateState] = useImmer({ deep: { nested: { value: 0 } } });
+
+function handleClick() {
+  updateState(draft => {
+    // You can mutate directly here! Immer handles the shallow eq trick under the hood.
+    draft.deep.nested.value = 42; 
+  });
+}
+
+```
+
+
+
+Are these non-literal objects **custom class instances** (with methods and prototypes) or built-in JavaScript structures like **Maps, Sets, or deep JSON objects**? I can give you an optimized pattern depending on how your data structure is constructed.
+
+# why does react use object is instead of strict eq
+
+React uses **`Object.is()`** instead of the strict equality operator (`===`) because it provides a more accurate and predictable algorithm (called the **SameValue algorithm**) for comparing previous and next states. [](https://ultimatecourses.com/blog/object-is-vs-comparison-operators)
+
+When deciding whether a component needs to re-render, React checks if the state or props have actually changed. The strict equality operator (`===`) has two notorious edge cases in JavaScript that would cause bugs or unnecessary re-renders in a framework context: [](https://medium.com/@manojrakp/object-is-in-the-react-native-93a6b84d80f1)
+
+### 1\. The `NaN` Problem (State Loops)
+
+In standard JavaScript, `NaN` is never equal to anything, including itself:
+
+javascript
+
+```
+NaN === NaN; // false
+
+```
+
+
+
+If your React state holds a value that becomes `NaN` (for instance, a failed math operation like `0 / 0`), and you try to set the state to `NaN` again on the next user action, `===` would claim the two values are different (`false`). [](https://dev.to/vishwark/objectis-in-javascript-the-equality-check-nobody-talks-about-2dge)
+
+* **With `===`:** React would think the state changed and trigger an infinite re-render loop.
+* **With `Object.is()`:** `Object.is(NaN, NaN)` evaluates to **`true`**. React correctly recognizes that the value hasn't changed and skips the unnecessary render. [](https://ultimatecourses.com/blog/object-is-vs-comparison-operators)
+
+### 2\. The Signed Zero Problem (`+0` vs `-0`)
+
+In JavaScript's mathematical engine, positive zero (`+0`) and negative zero (`-0`) exist uniquely, but strict equality treats them as identical:
+
+javascript
+
+```
++0 === -0; // true
+
+```
+
+
+
+However, in certain precise computational or graphing scenarios, transitioning from `+0` to `-0` is a meaningful state change.
+
+* **With `===`:** React would miss this transition and fail to update the UI.
+* **With `Object.is()`:** `Object.is(+0, -0)` evaluates to **`false`**. React correctly identifies this as a state change and updates the component. [](https://ultimatecourses.com/blog/object-is-vs-comparison-operators)
+
+### Summary Comparison
+
+| Scenario                   | Strict Equality (\===)             | Object.is() (React's choice)             |
+| -------------------------- | ---------------------------------- | ---------------------------------------- |
+| NaN vs NaN                 | false (Triggers broken re-renders) | **true** (Safely skips re-renders)       |
+| +0 vs \-0                  | true (Misses real math changes)    | **false** (Triggers necessary re-render) |
+| Normal values (5, 'hello') | Compares values exactly            | Compares values exactly                  |
+| Objects/Arrays             | Compares by reference              | Compares by reference                    |
+
+By building its shallow equality checks on top of `Object.is()`, React guarantees that a component only updates when a value has _logically_ transitioned into something new. [](https://medium.com/@manojrakp/object-is-in-the-react-native-93a6b84d80f1)
+
+Are you running into an **infinite re-render loop** with your state, or are you debugging a specific issue with a hook like **`useEffect`** or **`React.memo`**? Let me know and I can help you fix it!
+
+* [](https://ultimatecourses.com/blog/object-is-vs-comparison-operators)  
+Ultimate Courses  
+Object.is() vs === in JavaScript - Ultimate Courses  
+June 6, 2020 — Object.is(+0, -0) returns false whereas +0 === -0 returns true; Object.is(NaN, NaN) and Object.is(Number.NaN, Number.NaN) return t...
+* [](https://medium.com/@manojrakp/object-is-in-the-react-native-93a6b84d80f1)  
+Medium·Manoj AKP  
+Object.is in the React (Native) :- | by Manoj AKP | Medium  
+January 19, 2025 — Object.is is a JavaScript method used to determine whether two values are the same value. It is similar to === (strict equality) b...
+* [](https://livebook.manning.com/learn/concepts/equality-check--technique/react-in-depth)  
+liveBook · Manning  
+Equality in React in Depth - liveBook · Manning  
+As explained in React in Depth The strict equality operator (===) compares two JavaScript values without type conversion and retur...
+
+Show all
+
 
 

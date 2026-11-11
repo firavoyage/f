@@ -613,4 +613,8 @@ wait. i have hardcoded json stringify in all use effect. perf is trivial.
 
 so the only problem is to force set state to work. no immer or lodash needed. shadow clone will make it.
 
+ah. i dont even have to force react set state to work. it's already (whether or not) mutated under the hood. and i just need to force an update (it's hard to change the js reference only for any non literal objects in general).
+
+and it will work the same as state lib at least.
+
 
