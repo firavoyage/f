@@ -217,7 +217,7 @@ export function list(...args) {
   }
 }
 
-export function set(v?) {
+export function set(v?): Set<any> {
   return new Set(v)
 }
 

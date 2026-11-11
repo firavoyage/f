@@ -390,9 +390,9 @@ ref:
   "set interval": {
     "prefix": "si",
     "body": [
-      "setInterval(function() {",
+      "set_interval(function() {",
       "  $0",
-      "}, ${1:1000})"
+      "}, ${1})"
     ],
   },
   "set timeout": {
@@ -401,9 +401,9 @@ ref:
       "sto",
     ],
     "body": [
-      "setTimeout(function() {",
+      "set_timeout(function() {",
       "  $0",
-      "}, ${1:1000})"
+      "}, ${1})"
     ],
   },
   "true": {
@@ -636,7 +636,7 @@ ref:
       "us",
     ],
     "body": [
-      "const [${1:name}, set_${1:name}] = useState($0)",
+      "const [${1:name}, set_${1:name}] = use_state($0)",
     ],
   },
   "use effect": {
@@ -644,7 +644,7 @@ ref:
       "ue",
     ],
     "body": [
-      "useEffect(() => {",
+      "use_effect(() => {",
       "  $0",
       "})"
     ],
