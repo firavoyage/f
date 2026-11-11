@@ -16,4 +16,4 @@ use snake case. write a js fn to generate oklch color ramp given a hue, return a
 
 write a json object of number token to lightness for grayscale oklch color ramp, non linear, more subtle steps on light end
 
-
+what can you do w raspberry pi <!-- jyy gen swe lecture 4: dorm lab -->
