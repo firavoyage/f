@@ -2,7 +2,7 @@ import {
   serialize,
   deserialize,
   threads_file,
-  thread_folder,
+  get_thread_file,
 } from 'action/index'
 import { read, write, join } from 'lib/file'
 import { now } from 'lib/time'
@@ -24,7 +24,7 @@ export function new_thread({ title = '', folder = '' }) {
 
   write(threads_file, serialize(threads))
 
-  write(join(thread_folder, thread), serialize([]))
+  write(get_thread_file(thread), serialize([]))
 
   return thread
 }

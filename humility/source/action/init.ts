@@ -1,4 +1,4 @@
-import { init_desktop, data, touch, config, mkpath, read } from 'lib/file'
+import { init_desktop, data, touch, config, mkpath, read, join } from 'lib/file'
 import { parse as deserialize, stringify as serialize } from 'yaml'
 
 init_desktop('humility')
@@ -13,3 +13,7 @@ touch(config_file, serialize({}))
 
 mkpath(thread_folder)
 mkpath(log_folder)
+
+export function get_thread_file(thread) {
+  return join(thread_folder, thread)
+}

@@ -2,8 +2,8 @@ import {
   serialize,
   deserialize,
   config_file,
-  thread_folder,
   log_folder,
+  get_thread_file,
 } from 'action/index'
 import { chat } from 'lib/generation'
 import { read, join, write } from 'lib/file'
@@ -34,7 +34,7 @@ export async function send(options: send) {
   // must exist
   const { key, endpoint } = providers[provider]
 
-  const thread_file = join(thread_folder, thread)
+  const thread_file = get_thread_file(thread)
 
   const history = deserialize(read(thread_file))
 

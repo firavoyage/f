@@ -378,4 +378,38 @@ solutions are
 - to just have consistent verb noun naming for non boolean fn `thread file = get_thread_file(thread)`
 - or namespacing
 
+also, you have `path = pathname(...)`, `time = time(...) # or time = now()`
+so it's not a general solution to leverage "plural iterables" (e.g. `thread_files(thread id)`)
+
+i guess you may just tailor each for usage rather than enforcing global rules.
+
+```ts
+export function pathname(...args: string[])
+
+export const join = pathname
+
+path = join(...)
+```
+
+```ts
+start_time = now()
+```
+
+```
+thread_file = get_thread_file(thread)
+```
+
+on intent, constructors that accepts params are somewhere different than the variables.
+
+path is the current path. and pathname joins some static folder and the dynamic filename.
+thread file is the current one. get thread file gets one based on its id.
+
+for fn that takes no param, usually it's impure. either (it's void and) you would call it directly wo assigning a var (e.g. `init`), or they have dynamic return (then generally they have contextual meaning, like start end ctime mtime). otherwise you may just export const.
+
+i would generally avoid casing unless it's really a wrapper (e.g. `Time` on lib/time, which makes things chainable under tsism). because i dont like every fn to be cased, and there is no clear line whether sth is a "constructor". it basically takes params and derive results based on which.
+
+namespacing solves different problem. (e.g. `file.read` `action/read`)
+
+<!-- though the importing syntax can feel awkward (import {foo as bar} from somewhere, dc {foo: bar} = math, import * as file from lib/file, declare global fn) compard w py (import file, from file import foo bar) -->
+
 
