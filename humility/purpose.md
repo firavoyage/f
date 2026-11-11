@@ -428,4 +428,11 @@ it's not guranteed. would be easy to solve though.
 
 <!-- upd: fine. it's just devtools console display. things are expected on entries. -->
 
+---
+
+> Uncaught Error: md4x: WASM not initialized. Call `await init()` first.
+
+i dont have to go that crazy.
+
+
 

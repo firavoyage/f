@@ -3,12 +3,13 @@ import { use_window_active } from 'lib/web/use window active'
 import { use_style } from 'lib/web/style'
 import theme from 'web/design/utilitarian.yaml'
 import 'web/design/utilitarian.css'
-import { input } from './input'
 import { textarea } from './textarea'
 import { scroll } from './scroll'
 import { post } from 'lib/web/request'
 import type { message } from 'lib/generation'
 import { sidebar } from './sidebar'
+import { marked } from 'marked'
+const { parse: render } = marked
 
 type thread = {
   title: string
@@ -36,12 +37,12 @@ export function app() {
   }, [])
 
   use_effect(() => {
+    if (!thread) {
+      return 
+    } 
+
     set_messages(post('read', thread))
   }, [thread])
-
-  use_effect(() => {
-    log(messages)
-  }, [messages])
 
   return h(
     h('title.', 'Humility'),
@@ -75,10 +76,13 @@ export function app() {
               h(
                 'messages',
                 map(messages, (message) =>
-                  h('messages_message',
+                  h(
+                    'messages_message',
                     { role: message.role },
-                    h('messages_message_content', message.content),
-                  )
+                    h('messages_message_content', {
+                      html: render(message.content),
+                    }),
+                  ),
                 ),
               ),
             ),

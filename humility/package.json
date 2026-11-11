@@ -40,6 +40,7 @@
     "@hono/node-server": "2.0.8",
     "hono": "4.12.27",
     "lib": "github:firahq/lib",
+    "marked": "18.2.0",
     "yaml": "2.9.1"
   }
 }

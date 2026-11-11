@@ -32,7 +32,7 @@ typeface:
   sans: Ubuntu Sans, sans-serif
   serif: EB Garamond, serif
 app:
-  app: flex h-100dvh font-sans bg-surface text-on-surface
+  app: flex h-100dvh font-sans bg-surface text-on-surface text-lg
 sidebar:
   sidebar: w-xs h-full
 main:
@@ -50,7 +50,7 @@ prompt:
   field: w-prose
   textarea: py-8
 textarea:
-  textarea: w-full h-fit rounded-md text-lg
+  textarea: w-full h-fit rounded-md
   textarea:focus-visble: outline-focus outline-sm offset-2 rounded-md
 input:
   input: w-full h-full p-4 rounded-md text-lg
