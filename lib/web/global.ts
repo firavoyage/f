@@ -5,7 +5,7 @@ import { use } from 'lib/global'
 import * as react from 'react'
 use(react)
 
-// override react.use (you never utilize react.use)
+// override react.use
 use({ use })
 
 import * as react_use from 'react-use'
@@ -20,8 +20,8 @@ use(p)
 import * as state from 'lib/web/state'
 use(state)
 
-// import * as component from 'lib/web/component'
-// use(component)
+import * as component from 'lib/web/component'
+use(component)
 
 import * as hyperscript from 'lib/web/hyperscript'
 use(hyperscript)

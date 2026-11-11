@@ -1,6 +1,3 @@
-// everything from react and react-use is available
-// these are the ones you would actually use
-
 import React, { useEffect, useLayoutEffect, useState, useRef, useCallback } from "react";
 import { useAsync, useAsyncFn, useMeasure, useToggle, useMount } from "react-use";
 import { use_keyboard } from 'lib/web/use keyboard'

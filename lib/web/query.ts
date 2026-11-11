@@ -1,5 +1,9 @@
 import { post } from 'lib/request'
 
+export function query() {
+  
+}
+
 export function use_query(endpoint, query, debounce = 0) {
   const [result, set_result] = useState()
 

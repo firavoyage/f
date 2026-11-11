@@ -24,7 +24,7 @@ export function s<T>(initial_value: T, options: s<T> = {}) {
 
     if (is(new_value, 'function')) {
       state = new_value(state)
-    } else {
+    } else if (!is(new_value, 'undefined')) {
       state = new_value
     }
 
