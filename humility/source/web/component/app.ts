@@ -38,8 +38,9 @@ export function app() {
 
   use_effect(() => {
     if (!thread) {
-      return 
-    } 
+      set_messages([])
+      // return
+    }
 
     set_messages(post('read', thread))
   }, [thread])
@@ -51,17 +52,44 @@ export function app() {
       h(
         sidebar,
         h(
+          'button.new_thread',
+          {
+            onclick() {
+              set_thread('')
+              // set_thread(post('new_thread'))
+            },
+          },
+          'new thread',
+        ),
+        h(
           'threads',
-          map(threads, ([thread, metadata]) =>
-            h(
-              'button.threads_thread',
-              {
-                onclick() {
-                  set_thread(thread)
-                },
-              },
-              metadata.title,
-            ),
+          map(
+            threads,
+            ([thread, metadata]) =>
+              !metadata.is_hidden &&
+              h(
+                h(
+                  'threads_thread',
+                  h(
+                    'button.threads_set_thread',
+                    {
+                      onclick() {
+                        set_thread(thread)
+                      },
+                    },
+                    metadata.title,
+                  ),
+                  h(
+                    'button.threads_delete_thread',
+                    {
+                      onclick() {
+                        post('hide', thread)
+                      },
+                    },
+                    'delete',
+                  ),
+                ),
+              ),
           ),
         ),
       ),
