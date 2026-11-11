@@ -8,6 +8,7 @@ import { textarea } from './textarea'
 import { scroll } from './scroll'
 import { post } from 'lib/web/request'
 import type { message } from 'lib/generation'
+import { sidebar } from './sidebar'
 
 type thread = {
   title: string
@@ -47,7 +48,7 @@ export function app() {
     h(
       'app',
       h(
-        'sidebar',
+        sidebar,
         h(
           'threads',
           map(threads, ([thread, metadata]) =>
@@ -64,13 +65,22 @@ export function app() {
         ),
       ),
       h(
-        'page',
+        'main',
         h(
-          'page_content',
+          scroll,
           h(
-            'messages',
-            map(messages, (message) =>
-              h('messages_message', { role: message.role }, message.content),
+            'page',
+            h(
+              'page_content',
+              h(
+                'messages',
+                map(messages, (message) =>
+                  h('messages_message',
+                    { role: message.role },
+                    h('messages_message_content', message.content),
+                  )
+                ),
+              ),
             ),
           ),
         ),
