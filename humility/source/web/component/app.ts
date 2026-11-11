@@ -22,6 +22,55 @@ export const use_thread = s('', {
   url_param: 'thread',
 })
 
+export function use_state<T>(
+  initial_value?: T,
+): [state: T, set_state: typeof set_state] {
+  const [state, _set_state] = useState(initial_value)
+  const update = use_update()
+
+  function set_state(
+    new_value:
+      | T
+      | Promise<T>
+      | ((old_value: T) => T | Promise<T> | undefined) = toggle,
+  ) {
+    let prev_state = state
+    // let new_state
+
+    if (is(new_value, 'function')) {
+      new_value = new_value(state)
+    }
+   
+    if (is(new_value, 'undefined')) {
+      return
+    }
+
+    if (is(new_value, 'literal') && new_value == prev_state) {
+      return
+    }
+
+    if (is(new_value, Promise)) {
+      new_value.then(set_state)
+      return
+    }
+
+    _set_state(new_value)
+    update()
+  }
+
+  return [state, set_state]
+}
+
+function use_update() {
+  const [, update] = useState(false)
+
+  return () => update((v) => !v)
+}
+
+function toggle(v: boolean) {
+  return !v
+}
+
 export function app() {
   use_sync_theme('system')
   use_window_active()
@@ -36,14 +85,13 @@ export function app() {
     set_threads(post('list'))
   }, [])
 
-  use_effect(() => {
+  use_effect(async () => {
     if (!thread) {
       set_messages([])
       return
     }
 
     set_messages(post('read', thread))
-    set_threads(post('list'))
   }, [thread])
 
   use_keyboard('enter', async () => {
@@ -54,6 +102,7 @@ export function app() {
       })
 
       set_thread(current_thread)
+      set_threads(post('list'))
 
       set_messages((messages) => {
         messages.push({
@@ -89,6 +138,10 @@ export function app() {
         }),
       )
     })
+  })
+
+  use_effect(() => {
+    log(messages)
   })
 
   return h(
@@ -134,6 +187,7 @@ export function app() {
                         if (thread == current_thread) {
                           set_thread('')
                         }
+                        set_threads(post('list'))
                       },
                     },
                     'delete',

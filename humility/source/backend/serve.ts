@@ -44,8 +44,10 @@ app.get('*', (c) => {
 app.post('/api/:action{.+}', async (c) => {
   const action = c.req.param('action') 
   const payload = await c.req.json()
+
+  const result = await actions[action](payload)
   
-  return c.json(await actions[action](payload))
+  return c.json(result ?? {})
 })
 
 serve(

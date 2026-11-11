@@ -41,7 +41,7 @@ export function use_state<T>(
     }
 
     if (is(new_state, Promise)) {
-      new_state.then((new_value) => set_state(new_value))
+      new_state.then((new_value) => set_state(() => new_value))
       return
     }
 
@@ -79,8 +79,9 @@ function effect(fn: fn) {
     let effect_cleanup = fn()
 
     if (is(effect_cleanup, Promise)) {
+      const promise = effect_cleanup
       effect_cleanup = () => {
-        effect_cleanup.then((fn) => fn?.())
+        promise.then((fn) => fn?.())
       }
     }
 
