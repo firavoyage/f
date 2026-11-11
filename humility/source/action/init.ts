@@ -1,5 +1,5 @@
-import { init_desktop, data, touch, config, mkpath, read, join } from 'lib/file'
-import { parse as deserialize, stringify as serialize } from 'yaml'
+import { deserialize, serialize } from 'action/index'
+import { init_desktop, data, touch, config, mkpath, join } from 'lib/file'
 
 init_desktop('humility')
 
