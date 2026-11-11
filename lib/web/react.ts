@@ -23,7 +23,7 @@ export function use_state<T>(
   const update = use_update()
 
   function set_state(
-    new_value: T | Promise<T> | ((old_value: T) => T | Promise<T>) = toggle,
+    new_value: T | Promise<T> | ((old_value: T) => T | Promise<T> | undefined) = toggle,
   ) {
     let prev_state = state
     let new_state

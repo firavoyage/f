@@ -39,11 +39,57 @@ export function app() {
   use_effect(() => {
     if (!thread) {
       set_messages([])
-      // return
+      return
     }
 
     set_messages(post('read', thread))
+    set_threads(post('list'))
   }, [thread])
+
+  use_keyboard('enter', async () => {
+    if (messages.length == 0) {
+      const current_thread = await post('new_thread', {
+        title: prompt,
+        folder: '',
+      })
+
+      set_thread(current_thread)
+
+      set_messages((messages) => {
+        messages.push({
+          role: 'user',
+          content: prompt,
+        })
+      })
+
+      set_messages(async (messages) => {
+        messages.push(
+          await post('send', {
+            content: prompt,
+            thread: current_thread,
+          }),
+        )
+      })
+
+      return
+    }
+
+    set_messages((messages) => {
+      messages.push({
+        role: 'user',
+        content: prompt,
+      })
+    })
+
+    set_messages(async (messages) => {
+      messages.push(
+        await post('send', {
+          content: prompt,
+          thread,
+        }),
+      )
+    })
+  })
 
   return h(
     h('title.', 'Humility'),
@@ -65,7 +111,7 @@ export function app() {
           'threads',
           map(
             threads,
-            ([thread, metadata]) =>
+            ([current_thread, metadata]) =>
               !metadata.is_hidden &&
               h(
                 h(
@@ -74,16 +120,20 @@ export function app() {
                     'button.threads_set_thread',
                     {
                       onclick() {
-                        set_thread(thread)
+                        set_thread(current_thread)
                       },
                     },
-                    metadata.title,
+                    metadata.title || 'Untitled',
+                    // metadata.title,
                   ),
                   h(
                     'button.threads_delete_thread',
                     {
-                      onclick() {
-                        post('hide', thread)
+                      async onclick() {
+                        await post('hide', current_thread)
+                        if (thread == current_thread) {
+                          set_thread('')
+                        }
                       },
                     },
                     'delete',
