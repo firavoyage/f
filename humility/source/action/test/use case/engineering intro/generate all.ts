@@ -1,5 +1,14 @@
 /**
  * they say it's an anti pattern to have similar wc on every chapter.
+ * 
+ * "这是合格性考试"
+ * 
+ * seems luna can generate 3k chars directly.
+ * and clearly it would yield better result than any harnessing, 
+ * if it can be one shotted.
+ * 
+ * well, i think it's awkward whether or not or however heavy they use llm
+ * no student would naturally write in the academic way.
  */
 
 import { new_thread, send } from 'action/index'
