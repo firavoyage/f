@@ -29,7 +29,7 @@ export function app() {
 
   const [prompt, set_prompt] = use_state('')
   const [threads, set_threads] = use_state<Record<string, thread>>({})
-  let [thread, set_thread] = use_thread()
+  const [thread, set_thread] = use_thread()
   const [messages, set_messages] = use_state<message[]>([])
   const [is_new_thread, set_is_new_thread] = use_state(false)
 
@@ -52,8 +52,10 @@ export function app() {
   }, [thread])
 
   use_keyboard('enter', async () => {
+    let current_thread = thread
+
     if (messages.length == 0) {
-      const current_thread = await post('new_thread', {
+      current_thread = await post('new_thread', {
         title: prompt,
         folder: '',
       })
@@ -62,8 +64,6 @@ export function app() {
       set_is_new_thread(true)
 
       set_threads(post('list'))
-
-      thread = current_thread
     }
 
     set_messages((messages) => {
@@ -77,7 +77,7 @@ export function app() {
       messages.push(
         await post('send', {
           content: prompt,
-          thread,
+          thread: current_thread,
         }),
       )
     })

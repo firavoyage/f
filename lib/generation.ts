@@ -30,8 +30,10 @@ type plain_message = {
   content: string
 }
 
+export type messages = (plain_message & Partial<message>)[]
+
 type chat = {
-  messages: plain_message & Partial<message>[]
+  messages: messages
   model: string
   endpoint: string
   key?: string

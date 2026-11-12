@@ -654,5 +654,18 @@ ah! you should not early return when undefined...
 
 late night. confusion. heuristics.
 
+---
 
+consider a simpler approach.
 
+when you update lib, you traverse to the nearest parent w node modules, swap lib...
+
+well you should manage deps and peer deps.
+
+and force refresh vite cache.
+
+you push w best effort to github
+
+<!-- fine, you can absolutely do that as long as you do not update the deps of lib. you can keep all node modules untouched, remove all other files, and cp all other files. -->
+
+---
