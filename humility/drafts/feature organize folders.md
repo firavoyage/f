@@ -41,4 +41,12 @@ to select threads...
 - you may search (e.g. ctrl k) like on vscode command palette
   - f2 and del key has no conflict, it can work as expected
 
+alternatively, you may rename folders, rather than moving files.
+
+- on backend, it will "move" all files of such prefix of folders
+
+alternatively, you may ctrl x (ctrl c) and ctrl 
+
 you may ctrl (shift) z
+
+
