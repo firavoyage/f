@@ -472,4 +472,19 @@ doesnt matter.
 
 ---
 
+things changed!
+
+> (really i should modernize such methodology first. e.g. drafts/backend, priority todo, ...)
+> 
+> prototype actions
+> 
+> - new thread
+> - chat <!-- put everything related to "new node" in chat? -->
+> - edit, regen, rearrange, ...
+> - read
+> - list
+> - rename
+> 
+> hooks are easy. they come later.
+
 

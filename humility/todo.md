@@ -4,22 +4,47 @@
 
 ## m
 
-(really i should modernize such methodology first. e.g. drafts/backend, priority todo, ...)
+organize in folders
 
-prototype actions
-
-- new thread
-- chat <!-- put everything related to "new node" in chat? -->
-- edit, regen, rearrange, ...
-- read
-- list
-- rename
-
-hooks are easy. they come later.
+rename thread
 
 ## s
 
+tool calls
+
+---
+
+fetch, search, scrape
+
+---
+
+thinking
+
+is it included in subsequent messages?
+
+---
+
+- edit
+- branch
+- regenerate
+
+---
+
+export ("build")
+
+share <!-- ? -->
+
+---
+
+import
+
 ## c
+
+think: hide or delete? trash folder?
+
+---
+
+
 
 ## w
 
