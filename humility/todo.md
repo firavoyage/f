@@ -1,18 +1,14 @@
 # plan
 
-# todo
-
-## m
-
 organize (things as) drafts.
 
 > quite weird, some drafts/todo are in purpose
 
----
+# todo
 
-organize in folders
+## m
 
-rename thread
+organize folders, rename thread
 
 ## s
 
