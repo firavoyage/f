@@ -487,3 +487,60 @@ find "$target_dir" -mindepth 1 -maxdepth 1 ! -name "node_modules" -print
 ```
 
 This shows exactly what will be removed.
+
+# what does 6 instant on chatgpt web mean, what are the underlying models for different display names
+
+On the ChatGPT web interface, **"6 Instant"** (appearing when you select **GPT-6** with the Thinking slider set to **Instant**) refers to the fastest, lowest-latency response mode for everyday questions. Rather than spending extended time on deep step-by-step reasoning, it prioritizes immediate answers and supports OpenAI's **Intelligent UI** features (combining text with inline charts, buttons, and interactive tools). [](https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt)
+
+Because OpenAI abstracts its underlying model architecture behind simplified labels and a Thinking slider in the Chat tab, the actual model running behind a display name depends on your **subscription plan** and **selected effort level**. [](https://toloka.ai/blog/gpt-models-explained/)
+
+### How OpenAI's Model Tiers Work
+
+OpenAI categorizes its underlying models into four capability tiers that advance independently: [](https://toloka.ai/blog/gpt-models-explained/)
+
+* **Astra.** The flagship tier built for the hardest, longest-running reasoning tasks.
+* **Sol.** The high-capability workhorse tier used across most paid ChatGPT tiers.
+* **Terra.** A balanced, mid-tier model optimized for visual reasoning, computer use, and everyday professional tasks (primarily used in API, Work, and Codex rather than standard Chat).
+* **Luna.** The fast, cost-efficient tier designed for high-volume workloads and free-tier access. [](https://learn.chatgpt.com/docs/models)
+
+---
+
+### Underlying Models by ChatGPT Display Name
+
+In the ChatGPT web interface, selecting **GPT-6** (which replaced the "Latest" option) maps to different underlying models depending on your plan and Thinking slider position: [](https://www.ai-toolbox.co/chatgpt-models/chatgpt-models-explained-complete-comparison-2026)
+
+| ChatGPT Display / Mode          | Subscription Plan                     | Underlying Model                                  | Key Behavior                                                                    |
+| ------------------------------- | ------------------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------- |
+| **GPT-6 (Instant)**             | Free & Go                             | **GPT-6 Luna** _(or GPT-5.6 Luna during rollout)_ | Immediate answers for everyday prompts with Intelligent UI.                     |
+| **GPT-6 (Instant)**             | Plus, Pro, Business, Enterprise       | **GPT-6 Sol**                                     | Fast, low-latency responses with Intelligent UI.                                |
+| **GPT-6 (Think)**               | Free & Go                             | **GPT-6 Luna** _(or GPT-5.6 Luna)_                | Extended reasoning time for harder questions on free/entry plans.               |
+| **GPT-6 (Medium / High)**       | Plus, Pro, Business, Enterprise       | **GPT-6 Sol**                                     | Standard to extended step-by-step reasoning with interleaved answering.         |
+| **GPT-6 (Extra High)**          | Pro, Business, Enterprise             | **GPT-6 Sol**                                     | Maximum reasoning effort available on the Sol architecture.                     |
+| **GPT-6 Pro** _(Pro slider)_    | Pro ($100/$200), Business, Enterprise | **GPT-6 Astra**                                   | Deepest analysis for complex workflows; disables Intelligent UI visuals.        |
+| **GPT-5.6 (Legacy / Fallback)** | All eligible plans                    | **GPT-5.6 Sol / Luna**                            | Available via legacy selection or as a fallback when weekly Pro limits are hit. |
+
+_(Note: Outside of the standard Chat tab—such as in **ChatGPT Work**, **Codex**, or the **OpenAI API**—OpenAI exposes newer point releases directly, including **GPT-6.1 Sol** and **GPT-6.1 Terra**.)_ [](https://developers.openai.com/api/docs/models/all)
+
+For full details on workspace controls and plan-specific availability, see the [OpenAI Help Center guide on GPT-6](https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt) and the [OpenAI API Models documentation](https://developers.openai.com/api/docs/models/all). 
+
+If you'd like to narrow down what you're seeing in your menu, let me know:
+
+* Which **ChatGPT plan** you are using (Free, Plus, Pro, or Enterprise)
+* Whether you are looking at the **Chat tab**, **Work**, or **Codex**
+
+I can break down your exact **usage limits** and **best thinking-level settings** for your workflow.
+
+* [](https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt)  
+OpenAI Help Center  
+GPT-6 and other models in ChatGPT - OpenAI Help Center  
+October 28, 2026 — Available options depend on your plan and workspace settings. For model availability, thinking levels, and workspace controls, see...
+* [](https://toloka.ai/blog/gpt-models-explained/)  
+Toloka AI  
+GPT models explained: ChatGPT models from GPT-1 to GPT  
+October 26, 2026 — The generation introduced three durable capability tiers: Sol: Terra: A balanced tier for everyday and professional work. the Chat...
+* [](https://learn.chatgpt.com/docs/models)  
+ChatGPT  
+Models - ChatGPT Learn  
+In ChatGPT, GPT-6.1 Sol, GPT-6 Sol, and GPT-6 Luna are available in Work and Codex. They aren't available in Chat. GPT-5.6 Sol, GP...
+
+Show all
