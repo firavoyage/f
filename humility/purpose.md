@@ -460,7 +460,16 @@ well really style is instant. it takes 5ms, despite tons of entries traverse der
 
 totally fine. v8.dev has dom loaded 340ms anyway and load 400.
 
-app component takes 7ms.
+app component takes 7ms (hyperscript or react create elem takes 4).
 
+app takes 40ms w complete state. expected and acceptable for md rendering.
+
+cpp gc takes 200ms.
+
+well... most are react, md rendering, or browser itself.
+
+doesnt matter.
+
+---
 
 

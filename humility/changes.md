@@ -8,4 +8,4 @@ changes
   - new thread
   - send
   - delete thread
-
+- db/config: separate env from config

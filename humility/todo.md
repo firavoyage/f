@@ -117,8 +117,6 @@ e.g. write a tg bot for fun
 
 ---
 
----
-
 telegram rev proxy cli.
 
 (assume the desktop is working.)

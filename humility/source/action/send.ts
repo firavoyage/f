@@ -4,10 +4,13 @@ import {
   config_file,
   get_thread_file,
   get_log_file,
+  env_file,
 } from 'action/index'
 import { chat } from 'lib/generation'
 import { read, write } from 'lib/file'
 import { random_id } from 'lib/random'
+
+const env_prefix = 'env:'
 
 type send = {
   content: string
@@ -17,6 +20,7 @@ type send = {
 
 export async function send(options: send) {
   const current_config = deserialize(read(config_file))
+  const current_env = deserialize(read(env_file))
 
   const { providers, default_model } = current_config
   // providers must not be empty
@@ -32,7 +36,14 @@ export async function send(options: send) {
   }
 
   // must exist
-  const { key, endpoint } = providers[provider]
+  let { key = `${env_prefix}${provider}`, endpoint } = providers[provider]
+
+  if (key.startsWith(env_prefix)) {
+    const env_var = key.slice(env_prefix.length)
+
+    // must exist (otherwise just return an auth failure from endpoint)
+    key = current_env[env_var]
+  } 
 
   const thread_file = get_thread_file(thread)
 
