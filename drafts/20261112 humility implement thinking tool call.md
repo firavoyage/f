@@ -882,3 +882,735 @@ Use openrouter/free with the OpenRouter API: OpenRouter supports reasoning-enabl
 
 Show all
 
+# how does llms output tool calls under the hood
+
+Under the hood, an LLM does not actually execute tools or run external code. Instead, it acts as a **structured text generator that outputs a formatted request** (usually in JSON) telling your application which function to run and what arguments to pass. [](https://heygaia.io/blog/tool-calling-under-the-hood)
+
+Here is how the mechanics work across both the model's internal token generation and the surrounding application loop.
+
+### 1\. Inside the Model: How the Call is Generated
+
+At its core, an LLM only predicts the next token. Modern models reliably output valid tool calls through four internal mechanisms: [](https://heygaia.io/blog/tool-calling-under-the-hood)
+
+* **System Prompt Injection.** When you pass a list of tools to an API, the backend converts your tool definitions (names, descriptions, and parameter schemas) into text and injects them directly into the model's hidden system prompt. [](https://heygaia.io/blog/tool-calling-under-the-hood)
+* **Special Control Tokens.** During post-training and fine-tuning, models are taught to use special reserved tokens (such as `<|tool_call|>`, `<|im_start|>`, or XML-style tags) to signal a mode switch from normal conversation to structured code output.
+* **Post-Training & Reinforcement Learning.** Models undergo supervised fine-tuning and reinforcement learning to recognize when they lack information. They are rewarded for emitting a tool call instead of hallucinating an answer. [](https://www.youtube.com/watch?v=TKelv4nBz5U)
+* **Constrained Decoding (Grammar Enforcement).** To guarantee the model does not produce broken JSON, inference engines often apply constrained decoding. Using a Context-Free Grammar (CFG) or state machine, the engine masks out any vocabulary tokens that would violate your tool's JSON schema during generation, forcing the next sampled token to be structurally valid. [](https://www.reddit.com/r/LangChain/comments/1d8y7mq/how%5Fdoes%5Ffunction%5Fcalling%5Fwork%5Funder%5Fthe%5Fhood/)
+
+### 2\. The Application Loop: How It Executes
+
+Because the model is isolated from the outside world, tool calling relies on a multi-turn message loop managed by your code (or an agent framework). [](https://www.youtube.com/shorts/GIHZJC8gGKQ)
+
+1. **Request & Schema Binding.** Your app sends the user's prompt alongside the available tool schemas to the LLM API.
+2. **Structured Emission.** The model evaluates the prompt, predicts the special tool-call tokens, and outputs a JSON object containing the function name, a unique call ID, and the arguments. The API stops generating and returns a `finish_reason` of `tool_calls`.
+3. **Local Execution.** Your application parses the JSON payload, validates the arguments, and executes the actual function in your own environment.
+4. **Observation Injection.** Your app takes the return value (or error message) from your function, wraps it in a `ToolMessage` matching the original call ID, and appends it to the conversation history.
+5. **Final Synthesis.** You send the updated conversation history back to the LLM for a second inference pass. The model reads the tool's output and generates the final user-facing response (or triggers another tool call). [](https://www.youtube.com/shorts/V94BUC1kop8)
+
+For a deeper look at implementing this loop manually, see Decoding AI's guide on building tool calling from scratch or [Anthropic's research on prompt engineering tools](https://www.anthropic.com/research/building-effective-agents). 
+
+Would you like to explore a specific part of this pipeline, such as how **constrained decoding** enforces JSON schemas at the token level, or see a **raw Python implementation** without frameworks?
+
+* [](https://www.reddit.com/r/LangChain/comments/1d8y7mq/how%5Fdoes%5Ffunction%5Fcalling%5Fwork%5Funder%5Fthe%5Fhood/)  
+Reddit·r/LangChain  
+How does function calling work under the hood? : r/LangChain  
+June 5, 2024 — For models that support JSON schema output but. OpenAI, in contrast, uses constrained decoding for its function calling. The imple...
+* [](https://heygaia.io/blog/tool-calling-under-the-hood)  
+heygaia  
+How does tool calling work under the hood? - GAIA AI  
+Nov 14, 2025 — When you “bind” a tool to the LLM, you're giving it the schema, arguments, types, and description of that tool. User Prompt → Mode...
+* [](https://www.youtube.com/shorts/V94BUC1kop8)  
+YouTube·Matt Pocock  
+How LLM tools work under the hood  
+Sep 22, 2025 — When an LLM decides to use a tool, it produces an assistant message that includes a tool call, which is an instruction indicating ...  
+1m
+
+Show all
+
+# can it output malformated tool call when you call openrouter api
+
+**Yes, calling the OpenRouter API can still return malformed tool calls** **.** While OpenRouter standardizes the tool-calling format across different models, it passes through responses from underlying inference providers, which can still generate broken JSON or invalid parameters. [](https://openrouter.ai/blog/insights/agent-frameworks-compared-tool-calling-schema-handling/)
+
+### Why Malformed Tool Calls Happen
+
+* **Token truncation.** If a model hits its `max_tokens` limit while generating arguments, the JSON payload cuts off mid-stream, leaving unclosed brackets or quotes. [](https://github.com/TanStack/ai/issues/1689)
+* **Model or provider quirks.** Smaller or quantized models hosted by third-party providers sometimes output trailing commas, raw newlines, or markdown fences inside the arguments string. [](https://www.linkedin.com/posts/saastr%5Fagents-just-passed-humans-in-ai-token-usage-activity-7467711706312581120-wfIC)
+* **Schema mismatches.** A model might hallucinate a function name that was not declared, omit required fields, or pass the wrong data type. [](https://openrouter.ai/blog/tutorials/how-to-test-tool-calling-accuracy-in-ai-agents/)
+* **Raw text output.** Occasionally, a model writes the tool call directly inside the standard message content instead of using the structured `tool_calls` array.
+
+### How OpenRouter Helps Prevent Them
+
+OpenRouter includes built-in routing and monitoring features to reduce these failures:
+
+* **Auto Exacto routing.** By default on requests with tools, [OpenRouter Auto Exacto](https://openrouter.ai/docs/guides/routing/auto-exacto) prioritizes providers with the lowest **Tool Call Error Rate** based on live JSON Schema validation. [](https://openrouter.ai/docs/guides/routing/auto-exacto)
+* **Error rate visibility.** You can inspect the **Tool Call Error Rate** on any model's Performance tab on OpenRouter to avoid unreliable providers. [](https://openrouter.ai/blog/insights/agent-frameworks-compared-tool-calling-schema-handling/)
+
+### How to Handle Them in Your Code
+
+Because malformed calls are never 100% eliminated, your application should handle them defensively: [](https://ccapi.ai/blog/build-reliable-tool-calling-agent-loop-openrouter)
+
+* **Wrap parsing in try-catch blocks.** Never pass `tool_call.function.arguments` directly into `JSON.parse()` without error handling, especially when streaming.
+* **Check the finish reason.** Verify whether `finish_reason` is `length` (indicating truncation) rather than `tool_calls` before attempting to execute a function.
+* **Validate against your schema.** Use a library like Zod or Ajv to confirm that required fields and types match your tool definition before running local code.
+* **Feed errors back to the model.** If parsing or validation fails, return the error message as the tool response so the model can correct its syntax on the next turn. [](https://openrouter.ai/blog/tutorials/how-to-test-tool-calling-accuracy-in-ai-agents/)
+
+Are you running into a specific error with a certain **model** or **SDK** (such as Vercel AI SDK, LangChain, or OpenAI's client)? Let me know, and I can share targeted configuration fixes or retry patterns.
+
+* [](https://ccapi.ai/blog/build-reliable-tool-calling-agent-loop-openrouter)  
+CCAPI  
+Build a Reliable Tool-Calling Agent Loop on… | CCAPI Blog  
+September 20, 2026 — Malformed tool calls happen when a model emits invalid JSON or missing required fields. Provider-specific schema differences appea...
+* [](https://openrouter.ai/blog/insights/agent-frameworks-compared-tool-calling-schema-handling/)  
+OpenRouter  
+Agent Frameworks Compared: Tool  
+October 2, 2026 — the Tool Call Error Rate metric behind it is visible on each model's Performance tab.
+* [](https://openrouter.ai/blog/tutorials/how-to-test-tool-calling-accuracy-in-ai-agents/)  
+OpenRouter  
+How to Test Tool-Calling Accuracy in AI Agents - OpenRouter  
+September 30, 2026 — Structural validation catches malformed JSON, missing required fields, incorrect types, invalid enum values, and parameters the to...
+
+Show all
+
+# what do you see on payload when it output malformated tool call when you call openrouter api
+
+When a model produces a malformed tool call through the [OpenRouter API](https://openrouter.ai/docs/api%5Freference/errors-and-debugging), the HTTP request still returns a `200 OK` status, while the JSON payload reflects the failure in one of three ways depending on the underlying provider. [](https://openrouter.ai/docs/api%5Freference/errors-and-debugging)
+
+### 1\. Upstream Provider Rejection (e.g., Gemini `MALFORMED_FUNCTION_CALL`)
+
+If the underlying provider (such as Google Gemini) detects a malformed tool call on its end before streaming it back, it aborts the generation and sends an empty message. [](https://github.com/earendil-works/pi/issues/11931)
+
+* **Empty content and no `tool_calls` array.** The `message` (or `delta` in streaming mode) has `content: ""` or `null`, and the `tool_calls` field is omitted entirely.
+* **Mapped `finish_reason`.** OpenRouter sets `finish_reason` to `"error"` or `"stop"` rather than `"tool_calls"`.
+* **Diagnostic clue in `native_finish_reason`.** OpenRouter exposes the provider's exact error in `choices[0].native_finish_reason` (for example, `"MALFORMED_FUNCTION_CALL"`). [](https://github.com/agno-agi/agno/issues/3649)
+
+json
+
+```
+{
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": ""
+      },
+      "finish_reason": "error",
+      "native_finish_reason": "MALFORMED_FUNCTION_CALL"
+    }
+  ]
+}
+
+```
+
+
+
+### 2\. Broken JSON Inside `function.arguments`
+
+If the provider passes the raw output through without catching the syntax error, OpenRouter returns a standard tool-call structure containing broken string data: [](https://openrouter.ai/blog/tutorials/tool-calling/)
+
+* **Standard `tool_calls` wrapper.** The `finish_reason` is `"tool_calls"`, and `choices[0].message.tool_calls` is populated with an `id`, `type: "function"`, and `function.name`.
+* **Unparseable `arguments` string.** Because `function.arguments` is returned as a raw string generated by the model, it will contain syntax errors like trailing commas, unescaped quotes, or missing closing brackets. Calling `JSON.parse()` directly on this field will throw a syntax error.
+* **Truncated payloads.** If the model runs out of tokens mid-call, the string cuts off abruptly (e.g., `"{\"sql\": \"SELECT * FROM"`), and `native_finish_reason` will typically show `"max_output_tokens"` or `"length"`. [](https://openrouter.ai/blog/announcements/response-healing-reduce-json-defects-by-80percent/)
+
+json
+
+```
+{
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_abc123",
+            "type": "function",
+            "function": {
+              "name": "get_weather",
+              "arguments": "{\"location\": \"Tokyo\", \"unit\": \"celsius\","
+            }
+          }
+        ]
+      },
+      "finish_reason": "tool_calls"
+    }
+  ]
+}
+
+```
+
+
+
+### 3\. Raw Tool Syntax Leaked into `message.content`
+
+Some open-weight or less capable models fail to trigger the native tool-calling parser when formatting breaks down. [](https://community.n8n.io/t/tool-calling-bug-for-agents-using-openrouter-various-models/295318/4)
+
+* **Text fallback.** Instead of a `tool_calls` array, the model dumps raw XML tags (such as `<tool_call>...</tool_call>`), markdown code blocks, or raw JSON directly into `choices[0].message.content` with `finish_reason: "stop"`. [](https://www.datastudios.org/post/openrouter-tool-calling-function-schemas-structured-responses-and-app-integration-across-producti)
+
+### How to Handle It
+
+* **Wrap argument parsing.** Always wrap `JSON.parse(toolCall.function.arguments)` in a `try/catch` block and validate keys against your schema before executing code. [](https://openrouter.ai/blog/tutorials/how-to-test-tool-calling-accuracy-in-ai-agents/)
+* **Check `native_finish_reason`.** Inspect `choices[0].native_finish_reason` whenever you receive an empty `content` string with no `tool_calls`. [](https://github.com/earendil-works/pi/issues/11931)
+* **Return errors to the model.** If JSON parsing fails or `MALFORMED_FUNCTION_CALL` occurs, append a `role: "tool"` message (or a follow-up user/system nudge) explaining the syntax error so the model can retry cleanly. [](https://github.com/TanStack/ai/issues/1689)
+* **Use Response Healing.** For non-streaming requests, you can enable OpenRouter's free [Response Healing plugin](https://openrouter.ai/docs/guides/features/plugins/response-healing) to automatically repair trailing commas, missing brackets, and unescaped characters before the payload reaches your app. [](https://openrouter.ai/blog/announcements/response-healing-reduce-json-defects-by-80percent/)
+
+If you're seeing this happen right now, let me know:
+
+* Which **model** and **endpoint** (`/chat/completions` or `/responses`) you are calling
+* Whether you are using **streaming** or **non-streaming** mode
+
+I can help you write a parser fallback or retry handler tailored to that setup.
+
+* [](https://openrouter.ai/blog/announcements/response-healing-reduce-json-defects-by-80percent/)  
+OpenRouter  
+Response Healing: Reduce JSON Defects by 80%+ — OpenRouter Blog  
+December 18, 2025 — Fixes JSON syntax errors (trailing commas, unescaped characters, missing brackets) and can heal XML; Reduces defect rates signific...
+* [](https://openrouter.ai/docs/api%5Freference/errors-and-debugging)  
+OpenRouter  
+API Error Handling and Debugging - Complete Guide  
+October 11, 2026 — the returned HTTP response status will be 200 and any error occurred while the LLM is producing the output will be emitted in the ...
+* [](https://openrouter.ai/blog/tutorials/how-to-test-tool-calling-accuracy-in-ai-agents/)  
+OpenRouter  
+How to Test Tool-Calling Accuracy in AI Agents  
+September 30, 2026 — Run the same eval across models For a multi-step agent, collect calls across the full trace and compare the sequence or the result...
+
+Show all
+
+# what does it generate under the hood when llms output tool calls
+
+When a Large Language Model (LLM) outputs a tool call, it does not actually execute any code. Instead, **it generates a structured text payload—usually a JSON object—framed by special control tokens** that tells your application which function to run and what arguments to pass. [](https://heygaia.io/blog/tool-calling-under-the-hood)
+
+At its core, an LLM is still just predicting the next token in a sequence. Tool calling works because the model has been trained to recognize special formatting tokens and adhere to strict schemas. [](https://datacream.substack.com/p/structured-outputs-with-llms-json)
+
+### 1\. Special Control Tokens (Raw Model Output)
+
+Before an API cleans up the response for you, the model's raw output stream looks like normal text mixed with invisible "control" or "sentinel" tokens. While exact tokens vary by model family (such as Llama, OpenAI, or Claude), the raw token generation looks conceptually like this:
+
+text
+
+```
+<|thought|> The user wants the weather in Tokyo. I should use the weather tool. <|end_thought|>
+<|tool_call_start|>
+{
+  "name": "get_weather",
+  "arguments": {
+    "city": "Tokyo",
+    "unit": "celsius"
+  }
+}
+<|tool_call_end|>
+<|eot_id|>
+
+```
+
+
+
+* **Trigger Tokens:** Tokens like `<|tool_call_start|>` signal to the inference engine that the model is switching from generating conversational prose to generating a machine-readable instruction.
+* **Constrained Decoding:** On many modern APIs, once the model outputs the trigger token, the inference engine uses **constrained decoding** (often via context-free grammars). This mathematically masks out invalid tokens at each step, guaranteeing the model produces valid JSON that matches your tool's exact schema. [](https://www.reddit.com/r/LangChain/comments/1d8y7mq/how%5Fdoes%5Ffunction%5Fcalling%5Fwork%5Funder%5Fthe%5Fhood/)
+* **Stop Tokens:** Once the JSON object is complete, the model predicts an end-of-turn token (like `<|eot_id|>` or `<|tool_call_end|>`), which immediately halts generation.
+
+### 2\. The API Payload (What Your App Receives)
+
+The model provider's API intercepts those raw tokens, parses the JSON, and packages it into a structured HTTP response for your application. Instead of populating the standard `content` text field, it populates a dedicated `tool_calls` array and changes the `finish_reason`: [](https://heygaia.io/blog/tool-calling-under-the-hood)
+
+json
+
+```
+{
+  "id": "chatcmpl-98765",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_abc123",
+            "type": "function",
+            "function": {
+              "name": "get_weather",
+              "arguments": "{\"city\": \"Tokyo\", \"unit\": \"celsius\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "tool_calls"
+    }
+  ]
+}
+
+```
+
+
+
+* **`finish_reason: "tool_calls"`:** Normally, a response ends with `stop` (finished talking) or `length` (ran out of tokens). Setting this to `tool_calls` tells your client code to pause the conversation and execute local functions.
+* **`id` (`call_abc123`):** A unique tracking ID generated for that specific call. If the model outputs multiple tool calls in parallel, each gets its own ID so you can match the outputs back to the right requests. [](https://www.youtube.com/shorts/V94BUC1kop8)
+* **`arguments`:** Notice that the arguments are typically returned as a **stringified JSON object** rather than a raw nested object, ensuring safe transport before your code parses and validates it.
+
+### 3\. The Execution Loop
+
+Because the LLM stops running the moment it emits the tool call, your application's "harness" (or framework like LangChain) takes over: [](https://www.instagram.com/reel/DdZ0iZ6Mk6e/)
+
+1. **Parse and Execute:** Your code reads `finish_reason`, extracts `"get_weather"`, parses the arguments string, and runs the actual function on your server.
+2. **Append to History:** Your app appends the model's tool-call message to the conversation history, followed immediately by a new message with `role: "tool"` containing the function's return value and the matching `tool_call_id` (`call_abc123`).
+3. **Resume Generation:** You send the entire updated conversation back to the LLM. The model reads the tool's output in its context window and generates the final, human-readable answer. [](https://www.youtube.com/shorts/V94BUC1kop8)
+
+If you are working with a specific setup, let me know:
+
+* Which **model or API** you are using (e.g., OpenAI, Anthropic Claude, Llama)
+* Whether you are using an **agent framework** (like LangChain or Vercel AI SDK) or writing raw API calls
+
+I can show you the exact raw token format or API payload structure for that specific stack.
+
+* [](https://www.reddit.com/r/LangChain/comments/1d8y7mq/how%5Fdoes%5Ffunction%5Fcalling%5Fwork%5Funder%5Fthe%5Fhood/)  
+Reddit·r/LangChain  
+How does function calling work under the hood? : r/LangChain  
+June 5, 2024 — OpenAI, in contrast, uses constrained decoding for its function calling. The implementation varies significantly between different...
+* [](https://heygaia.io/blog/tool-calling-under-the-hood)  
+heygaia  
+How does tool calling work under the hood?  
+November 14, 2025 — (LLM) is just a text prediction engine. “LLM → decides what needs to happen → emits a JSON tool call → your app executes the code ...
+* [](https://www.youtube.com/shorts/V94BUC1kop8)  
+YouTube·Matt Pocock  
+How LLM tools work under the hood  
+Sep 22, 2025 — When an LLM decides to use a tool, it produces an assistant message that includes a tool call, The LLM then sees the entire messag...  
+1m
+
+Show all
+
+# can llms use tool call special tokens freely in an output
+
+**No, LLMs generally cannot use tool-call special tokens freely in their regular output.** In production environments, both the model's training and the surrounding software harness actively restrict when and how these tokens appear. [](https://www.linkedin.com/pulse/llm-tool-use-standardization-should-happen-token-level-joshua-nielsen-tw8nc)
+
+While a raw, unconstrained model theoretically predicts any token in its vocabulary, several architectural and engineering safeguards prevent free usage:
+
+### 1\. API & Inference Engine Interception
+
+* **Stop Sequences & Parsers.** Inference engines and API layers continuously monitor the generated token stream. The moment a model outputs a tool-call end token (or specific delimiter), generation halts immediately so the external application can execute the function. [](https://www.youtube.com/watch?v=QiRdYCNXAxk&t=386)
+* **Output Stripping.** API providers (like OpenAI or Anthropic) separate tool-call tokens from standard text responses. If a model emits a tool token, it is routed into a structured `tool_calls` payload rather than shown as plain text to the user. [](https://virtuslab.com/blog/ai/how-mcp-llm-tool-calls-work)
+* **Token Masking (Logit Bias).** When no tools are provided in the API request, inference servers often mask out tool-related special token IDs (setting their probability to negative infinity) so the model cannot emit them at all.
+
+### 2\. Constrained Decoding
+
+* **Grammar Enforcement.** Many providers use [constrained decoding](https://blog.sylph.ai/posts/ultimate-guide-agentic-tool-calling) (such as Finite State Automata or JSON schemas) to strictly control token generation. [](https://blog.sylph.ai/posts/ultimate-guide-agentic-tool-calling)
+* **State-Specific Rules.** Once a model emits a `<tool_call>` start token, the grammar forces the very next tokens to match a valid tool name and parameter schema. It cannot simply drop a tool token into the middle of a casual sentence and continue writing prose. [](https://blog.sylph.ai/posts/ultimate-guide-agentic-tool-calling)
+
+### 3\. Fine-Tuning & Alignment
+
+* **Strict Chat Templates.** Models are heavily fine-tuned on rigid [chat templates](https://www.youtube.com/watch?v=hl6mROfFhE8) that dictate exact turn boundaries. They are trained with negative examples so they learn not to emit tool tokens during normal conversation.
+* **Decision Tokens.** Some architectures use explicit classification tokens (like `<|answer|>` vs. `<|use_tool|>`) at the start of a turn to lock the model into either a text response or a tool-calling mode. [](https://arxiv.org/html/2412.01130v1)
+
+### When _Can_ They Appear Freely?
+
+* **Raw Local Inference.** If you run an open-weights model locally (e.g., via `llama.cpp` or `vLLM`) with chat template parsing disabled and `skip_special_tokens=False`, the model can technically output raw special tokens anywhere if prompted to do so—though this usually breaks the conversation flow or confuses the model's attention mechanism.
+* **Prompt Injection.** Attackers sometimes try to trick models into outputting literal text representations of special tokens (like `<|im_end|>` or `<tool_call>`), which is why tokenizers treat registered special tokens as single, indivisible IDs distinct from regular text characters. [](https://www.youtube.com/shorts/SzQgN85atts)
+
+Are you exploring this for **building a custom agent parser**, **fine-tuning an open-weights model**, or **preventing prompt injection**? Let me know and I can share specific implementation details or tokenizer behaviors.
+
+* [](https://blog.sylph.ai/posts/ultimate-guide-agentic-tool-calling)  
+blog.sylph.ai  
+The Ultimate Guide to Agentic Tool Calling - SylphAI Blog - AdaL  
+February 16, 2026 — Tags like are registered as indivisible tokens — preventing subword fragmentation Think-before-act training: Datasets include reas...
+* [](https://www.linkedin.com/pulse/llm-tool-use-standardization-should-happen-token-level-joshua-nielsen-tw8nc)  
+LinkedIn·Joshua Nielsen  
+LLM Tool Use: Standardization Should Happen at the Token ...  
+April 9, 2025 — Special tokens are reserved markers in LLMs, distinct from regular words, used internally to structure input, signal actions like ...
+* [](https://arxiv.org/html/2412.01130v1)  
+arXiv  
+Enhancing Function-Calling Capabilities in LLMs  
+December 2, 2024 — The Decision Token concept involves fine-tuning LLMs to perform a classification task before providing any detailed response—speci...
+
+Show all
+
+# what constraints do llm apis often enforce on tool calls
+
+LLM APIs enforce several layers of constraints on tool calls (function calling) to ensure predictable parsing, manage compute costs, and prevent runaway execution. [](https://achan2013.medium.com/how-many-tools-functions-can-an-ai-agent-has-21e0a82b7847)
+
+These restrictions fall into four main categories:
+
+### 1\. Schema and Structural Constraints
+
+To ensure your code can reliably parse the model's output without syntax errors, APIs enforce strict structural rules using **JSON Schema**. [](https://www.adaline.ai/blog/understanding-llms-and-tool-calling)
+
+* **Constrained Decoding (Strict Mode).** Many providers compile your JSON Schema into a grammar-based token mask. This physically prevents the model from generating tokens that violate your schema, guaranteeing valid JSON, matching data types, and adherence to `enum` values. [](https://arxiv.org/html/2606.25605v1)
+* **Supported Schema Subsets.** APIs rarely support the full JSON Schema specification. They often reject or ignore complex features like recursive references (`$ref`), `allOf`/`oneOf` combinations, or arbitrary regex patterns.
+* **Required vs. Optional Fields.** In strict modes, providers often require that every property defined in an object be listed in the `required` array, forcing you to use nullable types (e.g., `["string", "null"]`) for optional parameters.
+* **Naming Rules.** Function and parameter names must typically follow strict character limits (often 64 characters max) and alphanumeric/underscore patterns (`^[a-zA-Z0-9_-]+$`).
+
+### 2\. Capacity and Token Limits
+
+Tool definitions are injected directly into the model's prompt behind the scenes, meaning they are subject to context and payload limits. [](https://achan2013.medium.com/how-many-tools-functions-can-an-ai-agent-has-21e0a82b7847)
+
+* **Maximum Tool Count.** Providers enforce hard caps on how many tools you can pass in a single request (for example, OpenAI enforces a limit of 128 tools per request).
+* **Context Window Consumption.** Every tool name, description, and parameter schema consumes input tokens. Passing dozens of complex tools can easily eat up thousands of tokens before the user even asks a question.
+* **Nesting Depth and String Lengths.** APIs frequently cap the maximum nesting depth of JSON objects and the total character length of function descriptions to prevent payload bloat and reasoning degradation. [](https://achan2013.medium.com/how-many-tools-functions-can-an-ai-agent-has-21e0a82b7847)
+
+### 3\. Execution and State Machine Rules
+
+LLM APIs treat tool calling as a strict turn-based conversation protocol. If your message history violates this sequence, the API will throw a validation error. [](https://www.adaline.ai/blog/understanding-llms-and-tool-calling)
+
+* **Mandatory Tool Responses.** If the model emits a tool call with a specific `tool_call_id`, the very next message in the conversation array _must_ be a `tool` role message matching that exact ID. You cannot skip it or insert a user message in between.
+* **Tool Choice Modes.** APIs let you constrain _how_ the model selects tools via a `tool_choice` parameter. You can force it to use a specific tool, require it to call _at least one_ tool, allow it to decide automatically (`auto`), or forbid tool calls entirely (`none`).
+* **Feature Mutual Exclusivity.** Combining tool calling with other constrained features—such as forcing a structured JSON response format (`response_format`) or enabling extended thinking/reasoning modes—is either blocked by the API or can cause decoding conflicts. [](https://arxiv.org/html/2606.25605v1)
+
+### 4\. Operational and Rate Limits
+
+* **Throughput Caps.** Tool calls are subject to standard API rate limits, including Requests Per Minute (RPM) and Tokens Per Minute (TPM). Because tool schemas inflate input token counts and multi-step tool loops require multiple round-trip API calls, agents hit TPM limits much faster than standard chat completions. [](https://mlflow.org/articles/rate-limiting-llm/)
+* **Payload Size Limits.** If a tool returns a massive amount of data (like a raw webpage or large database dump), the resulting tool output message can exceed the API's maximum request payload size or context window, causing the next turn to fail.
+
+### What APIs _Do Not_ Enforce
+
+While APIs guarantee **syntactic validity** (the shape of the data), they do not enforce **semantic safety**. An API will not stop a model from hallucinating a fake user ID that matches your string schema, calling a destructive tool out of order, or falling victim to prompt injection from untrusted tool outputs. Those constraints must be built into your application's execution layer. [](https://blog.sentry.security/exploiting-tool-and-function-calling-in-llm-agents/)
+
+Are you working with a specific **LLM provider** (like OpenAI, Anthropic, or Gemini) or troubleshooting a particular **schema or runtime error**? If you share what you're building, I can give you the exact limits and workarounds for that setup.
+
+* [](https://achan2013.medium.com/how-many-tools-functions-can-an-ai-agent-has-21e0a82b7847)  
+Medium·Allen Chan  
+Medium  
+February 7, 2025 — OpenAI enforces a hard limit of 128 tools per agent. Smaller models (4K-8K context) handle fewer than 10 tools. Larger models (128...
+* [](https://ai-tldr.dev/learn/llm-apis/function-calling/tool-calling-best-practices/)  
+ai-tldr.dev  
+Tool Calling Best Practices for LLMs (2026 Guide) - AI/TLDR  
+June 11, 2026 — The JSON Schema block you pass to the API. Deeply nested objects increase the chance of structural errors. One level of nesting is...
+* [](https://arxiv.org/html/2606.25605v1)  
+arXiv  
+An Empirical Study of Tool Calling Suppression Under ... - arXiv  
+June 24, 2026 — Tool Calling and JSON Schema constraints are simultaneously enabled, multiple open-weight models cease invoking tools despite main...
+
+Show all
+
+# what constraints do llm apis often enforce on tool calls output
+
+LLM APIs primarily enforce **structural and syntactic constraints** on tool call outputs rather than semantic accuracy. Providers like OpenAI, Anthropic, and Google use decoding-level techniques—such as token masking and context-free grammars—to ensure the model's generated arguments match your defined parameters before your application receives them. [](https://arxiv.org/html/2606.25605v1)
+
+### Schema and Formatting Constraints
+
+* **JSON Schema Adherence.** When "strict mode" or structured outputs are enabled, the API forces the output to follow your exact JSON Schema. The decoder guarantees valid JSON syntax and prevents missing or extra keys. [](https://developers.openai.com/api/docs/guides/function-calling)
+* **Strict Data Types and Enums.** APIs enforce primitive types like strings, integers, booleans, and arrays. If you define an `enum` list, the model is mathematically restricted to choosing only from those exact values. [](https://mlflow.org/articles/structured-outputs-llm/)
+* **Grammar and Regex Rules.** Some platforms allow custom tools to accept plain text constrained by context-free grammars (like Lark) or regular expressions. This ensures generated strings match specific patterns, such as ISO dates or custom syntax. [](https://developers.openai.com/api/docs/guides/function-calling)
+
+### Operational and Decoding Limits
+
+* **Tool Selection and Count.** APIs limit how many tools you can pass in a single request, such as [OpenAI's hard cap of 128 tools](https://developers.openai.com/api/docs/guides/function-calling). You can also force the model to call a specific tool, choose from a subset, or disable tool calls entirely via parameters like `tool_choice`. [](https://achan2013.medium.com/how-many-tools-functions-can-an-ai-agent-has-21e0a82b7847)
+* **Parallel Call Controls.** Developers can constrain whether the model is allowed to emit multiple tool calls in a single turn or must execute them one at a time. [](https://developers.openai.com/api/docs/guides/function-calling)
+* **Token and Nesting Limits.** Providers often restrict schema complexity, capping the depth of nested objects or the total character count of parameter names and descriptions. If a tool call hits the model's `max_tokens` limit mid-generation, the output can still cut off and produce incomplete JSON. [](https://www.honeyhive.ai/learn/structured-output-llm)
+
+### What LLM APIs Do Not Enforce
+
+* **Semantic Accuracy.** Schema constraints only validate the shape of the data, not whether the values make sense. A model can still pass a syntactically valid string that contains a hallucinated ID or wrong date.
+* **Business Logic and Permissions.** The API will not stop a model from calling a destructive tool or accessing unauthorized records. Your application's execution layer must enforce access controls, rate limits, and value validation.
+* **Refusal Overrides.** Safety filters take precedence over formatting rules, meaning a model may output a plain-text refusal instead of a valid tool call if a prompt triggers a policy violation. [](https://www.youtube.com/watch?v=9z03nZ0KpNY&t=368)
+
+If you're building with a specific provider, let me know:
+
+* Which **LLM API** you are using (e.g., OpenAI, Claude, Gemini)
+* Whether you are facing **schema errors** or **hallucinated arguments**
+
+I can share the exact configuration flags and validation patterns for your setup.
+
+* [](https://www.honeyhive.ai/learn/structured-output-llm)  
+HoneyHive  
+Structured output from LLMs: JSON mode, schemas and what ...  
+November 10, 2026 — OpenAI's guide says outputs can still contain mistakes. \* Can structured output fail. Yes, in two documented cases. A refusal need...
+* [](https://developers.openai.com/api/docs/guides/function-calling)  
+OpenAI Developers  
+Function calling | OpenAI API  
+August 7, 2025 — Function calling (tool calling) connects OpenAI models to external systems using function tools … parallel calls, and strict mode
+* [](https://mlflow.org/articles/structured-outputs-llm/)  
+MLflow  
+Enforce, Validate, Observe: 3 LLM Structured Output Patterns ...  
+September 16, 2026 — Keep schemas minimal with required fields, strict types, and enums to prevent ambiguous outputs and simplify validation at scale.
+
+Show all
+
+# do llm apis allow at most one tool call per response
+
+**No, modern LLM APIs generally allow multiple tool calls in a single response**. This feature is known as **parallel tool calling**, and it is enabled by default on most major platforms like OpenAI, Anthropic, and Google Gemini. [](https://codeant.ai/blogs/parallel-tool-calling)
+
+### How Multiple Tool Calls Work
+
+* **Single-turn batching.** When an LLM needs independent pieces of data—such as checking the weather in three different cities—it can return an array of several tool-call objects in a single API response rather than asking for them one by one. [](https://restfulapi.net/llm-function-calling-rest-api/)
+* **Unique call IDs.** Each requested tool call comes with a unique identifier. Your application executes all the requested functions and sends every result back in the next message turn, tagged with its matching call ID. [](https://restfulapi.net/llm-function-calling-rest-api/)
+* **Strict matching rules.** If an LLM returns three tool calls in one turn, you must return three corresponding tool outputs in the next turn. Omitting a result—even if one of the tools threw an error—will cause the API to reject the next request as malformed. [](https://restfulapi.net/llm-function-calling-rest-api/)
+
+### Restricting to One Tool Call per Turn
+
+If your architecture requires strict step-by-step execution where the model only calls one tool per response, most providers offer parameters to disable parallel calling: [](https://stackoverflow.com/questions/79738038/model-returns-mutiple-tools-to-call-even-when-parallel-tool-calls-is-set-to-f)
+
+* **OpenAI.** Set `parallel_tool_calls=False` in your API request to restrict the model to at most one tool call per turn.
+* **Anthropic (Claude).** Pass `disable_parallel_tool_use=True` inside the `tool_choice` configuration object.
+* **Exceptions.** Older models, lightweight open-source models, or certain custom fine-tunes may only support single tool calls per turn natively, depending on how their chat templates and function-calling tokens were trained. [](https://codeant.ai/blogs/parallel-tool-calling)
+
+Are you working with a **specific LLM provider** (like OpenAI, Anthropic, or Gemini) or **agent framework**? I can share the exact code snippet for configuring or parsing parallel tool calls for your setup.
+
+* [](https://codeant.ai/blogs/parallel-tool-calling)  
+CodeAnt AI  
+Why Parallel Tool Calling Matters for LLM Agents  
+January 17, 2026 — OpenAI's models support parallel function calling through the parallel\_tool\_calls parameter in the API. When enabled, the model ca...
+* [](https://stackoverflow.com/questions/79738038/model-returns-mutiple-tools-to-call-even-when-parallel-tool-calls-is-set-to-f)  
+Stack Overflow  
+Model returns mutiple tools to call even when ... - Stack Overflow  
+Aug 17, 2025 — LLM is calling both tools even when parallel\_tool\_calls is set to False. With parallel it may execute all tools at the same time -
+* [](https://restfulapi.net/llm-function-calling-rest-api/)  
+restfulapi.net  
+LLM Function Calling with a REST API  
+Oct 22, 2026 — A tool call without a matching tool result makes the model API reject the next request with an error.
+
+Show all
+
+# how do ppl prompt llms to tool call when they do not use the native way
+
+When developers cannot use an LLM’s native tool-calling API (such as with older models, certain reasoning models, or custom gateways), they simulate it using **prompt engineering and a client-side parsing loop**. Instead of relying on built-in special tokens, the developer explicitly defines the rules for calling tools inside the system prompt and uses application code to catch and run the model's requests. [](https://www.reddit.com/r/LangChain/comments/1pd58iv/implementing%5Ftool%5Fcalling%5Fwhen%5Fgateway%5Flacks/)
+
+### 1\. Define Tools and Formatting Rules in the System Prompt
+
+Developers inject text instructions into the system prompt detailing what tools exist, what arguments they expect, and the exact syntax the model must output to trigger them. [](https://www.linkedin.com/posts/garrettgalloway%5Fhow-an-llm-calls-a-tool-llms-dont-run-code-activity-7372285817366401024-4mQ0)
+
+* **XML Tag Wrapping.** A common approach instructs the model to wrap tool requests in custom XML tags like `<tool_call>` or `<function>`. This makes it easy for application code to extract the payload using regex or string matching without accidentally catching normal conversational text. [](https://www.landeranalytics.com/post/the-anatomy-of-an-llm-tool-call)
+* **JSON Schemas.** Prompts often ask the model to output a raw JSON object containing a `tool` or `name` key alongside an `arguments` object. [](https://www.youtube.com/watch?v=QiRdYCNXAxk)
+* **The ReAct Pattern (Reasoning + Acting).** Users on r/LangChain agree that prompting models with the ReAct framework is a standard fallback when native support is missing. The prompt forces the model to follow a strict text template (`Thought:` \-> `Action:` \-> `Action Input:`) so the application can easily parse the action name and input. [](https://medium.com/@rushing%5Fandrei/function-calling-with-open-source-llms-594aa5b3a304)
+
+### 2\. Use Stop Sequences to Halt Generation
+
+In native tool calling, the model stops generating as soon as it emits a special tool-call token. To replicate this manually, developers pass a **stop sequence** (such as `</tool_call>` or `Observation:`) into the LLM API request. When the model generates that exact string, the API immediately halts text generation so the model does not hallucinate the tool's output. [](https://www.ikuma.cloud/blog/article/llm-tool-call)
+
+### 3\. Parse, Execute, and Return the "Observation"
+
+Once generation stops, the developer's application code takes over. [](https://www.ikuma.cloud/blog/article/llm-tool-call)
+
+* **Parsing and Execution.** The code scans the model's response for the agreed-upon JSON or XML pattern, extracts the arguments, and executes the actual function locally. [](https://arxiv.org/html/2407.04997v1)
+* **Injecting Results.** Because APIs without native tool calling lack a `role: "tool"` message type, the application appends the function's output back into the chat history as a standard `user` or `system` message. This message is usually prefixed with a label like `Observation:` or `Tool Result:`, prompting the model to continue generating its final answer. [](https://arxiv.org/html/2407.04997v1)
+
+### Example System Prompt
+
+To implement this manually, a developer might pass a system prompt like this:
+
+text
+
+```
+You have access to the following tool:
+- get_weather(location: string): Returns the current weather for a city.
+
+If you need to use a tool to answer the user, output ONLY a JSON block wrapped in <tool> tags and stop. Do not guess the answer.
+Format:
+<tool>
+{"name": "get_weather", "arguments": {"location": "Boston"}}
+</tool>
+
+If you do not need a tool, answer the user directly.
+
+```
+
+
+
+_(Note: When sending this request, the developer would set `stop=["</tool>"]` in the API parameters.)_ [](https://www.ikuma.cloud/blog/article/llm-tool-call)
+
+If you are building this right now, let me know:
+
+* Which **LLM or API gateway** you are using
+* Whether you need to support **multiple tool calls** in a single turn
+
+I can help you write a tailored **system prompt** and **parsing loop** in Python or JavaScript.
+
+* [](https://www.ikuma.cloud/blog/article/llm-tool-call)  
+www.ikuma.cloud  
+Why LLMs without tool calling capability can call tools?  
+May 7, 2026 — Decoding halts when the closing tag appears; Detect the pattern in the text, parse it, and execute the tool. a hosted provider's s...
+* [](https://www.reddit.com/r/LangChain/comments/1pd58iv/implementing%5Ftool%5Fcalling%5Fwhen%5Fgateway%5Flacks/)  
+Reddit·r/LangChain  
+Implementing Tool Calling When Gateway Lacks Native Support  
+December 4, 2025 — This involves instructing the LLM directly in the system prompt to output in a parsable format, which is then parsed by client-sid...
+* [](https://medium.com/@rushing%5Fandrei/function-calling-with-open-source-llms-594aa5b3a304)  
+Medium·Andrei Bondarev  
+Function Calling with Open  
+July 17, 2024 — LLMs that natively support function calling utilize special tokens to wrap this capability. In the example below an open-source LL...
+
+Show all
+
+# what prompts do popular libs use to make llms tool call in non native way
+
+When an LLM does not support native API function calling (or when a framework avoids it for local models, streaming, or multi-step reasoning), libraries inject tool definitions into the system prompt and parse the raw text output. [](https://agenta.ai/blog/the-guide-to-structured-outputs-and-function-calling-with-llms)
+
+Across popular libraries, non-native tool calling relies on **four standard prompt patterns**. [](https://forum.langchain.com/t/react-prompt-template/1696)
+
+---
+
+### 1\. The ReAct (Key-Value Text) Pattern
+
+Used by **LangChain** (`create_react_agent`) and **LlamaIndex** (`ReActAgent`), this pattern forces the model to follow a strict alternating loop of `Thought`, `Action`, `Action Input`, and `Observation`. The framework sets `Observation:` as a **stop sequence** so the model halts generation while the host code runs the function and appends the result. [](https://developers.llamaindex.ai/python/examples/agent/react%5Fagent/)
+
+**Typical Prompt Template ([LangChain](https://smith.langchain.com/hub/langchain-ai/react-agent-template) style):**
+
+> Users can reference the full ReAct prompt structure, parsing mechanics (using regular expressions on `Action:` and `Action Input:`), and trade-offs (such as occasional formatting breaks or hallucinated observations) in the source documentation. [](https://github.com/run-llama/llama%5Findex/issues/13726)
+
+---
+
+#### 2\. The XML Tag Pattern
+
+Popularized by coding agents like **Cline**, **Roo Code**, and older **Anthropic** workflows, this pattern uses XML-style tags (`<tool_name><param>value</param></tool_name>`) to bypass JSON escaping complications. [](https://cline.bot/blog/cline-v3-35)
+
+* **Parsing mechanism & Trade-offs:** Streaming detectors monitor token streams for opening and closing tags. This approach excels when passing large code blocks or markdown where escaping quotes or newlines would cause syntax errors. [](https://github.com/RooCodeInc/Roo-Code/issues/10325)
+
+---
+
+#### 3\. The JSON Schema + Pydantic Retry Pattern
+
+Used by **Instructor**, **Outlines**, and **Pydantic AI**, this method injects raw JSON schemas into the prompt. [](https://agenta.ai/blog/the-guide-to-structured-outputs-and-function-calling-with-llms)
+
+* **Parsing mechanism & Trade-offs:** The framework strips markdown code blocks, parses the JSON, and validates types with Pydantic. If validation fails, it loops the error message back to the LLM for self-correction, ensuring strict type safety on non-native models. [](https://agenta.ai/blog/the-guide-to-structured-outputs-and-function-calling-with-llms)
+
+---
+
+#### 4\. The Signature / Field-Marker Pattern
+
+Used by **DSPy** (`ChatAdapter`), this lightweight strategy replaces verbose JSON with custom markdown field headers (such as `[[ ## next_tool_name ## ]]`). [](https://dspy.ai/current/getting-started/react-and-tools/)
+
+* **Parsing mechanism & Trade-offs:** Outputs are split along delimiter headers and coerced into typed objects, significantly lowering token overhead compared to standard JSON schematics. [](https://dspy.ai/current/diving-deeper/tools/)
+
+---
+
+#### Quick Comparison
+
+| Pattern           | Representative Libraries | Output Format                        | Best Used When                                                             |
+| ----------------- | ------------------------ | ------------------------------------ | -------------------------------------------------------------------------- |
+| **ReAct**         | LangChain, LlamaIndex    | Plain text (Action: / Action Input:) | Using older or smaller completion models that struggle with strict JSON.   |
+| **XML Tags**      | Cline, Roo Code          | <tool><param>val</param></tool>      | Passing multi-line code, file contents, or text with heavy punctuation.    |
+| **JSON + Retry**  | Instructor, Pydantic AI  | \`\`\`json { ... } \`\`\`            | Strict schema validation and automatic error self-correction are required. |
+| **Field Markers** | DSPy                     | \[\[ ## field ## \]\] headers        | Optimizing prompts programmatically with minimal token bloat.              |
+
+If you are building your own parser or choosing a fallback strategy, let me know:
+
+* **Which model** you are targeting (e.g., a small local model like Llama 3 8B or a larger API model)
+* **What kind of arguments** your tools take (simple strings/numbers vs. multi-line code or nested objects)
+
+I can share a copy-pasteable prompt and parser snippet tailored to your setup.
+
+* [](https://agenta.ai/blog/the-guide-to-structured-outputs-and-function-calling-with-llms)  
+Agenta  
+The guide to structured outputs and function calling with LLMs — Agenta Blog  
+September 10, 2025 — Validation: JSON Schema, Pydantic, Zod for type constraints and error catching. Function Calling: Defining schemas, extracting nam...
+* [](https://arxiv.org/html/2407.04997v1)  
+arXiv  
+Achieving Tool Calling Functionality in LLMs Using Only Prompt Engineering Without Fine-Tuning  
+July 6, 2024 — Prompt injection embeds tool metadata and formatting instructions into the system prompt; tool result feedback parses outputs via ...
+* [](https://medium.com/@rushing%5Fandrei/function-calling-with-open-source-llms-594aa5b3a304)  
+Medium·Andrei Bondarev  
+Function Calling with Open  
+July 17, 2024 — If the LLM does not natively support function calling then a combination of prompt engineering, fine-tuning and constrained decodi...
+
+Show all
+
+# can llms output valid tool calls freely in an output
+
+**Yes, modern LLMs can output valid tool calls freely alongside or instead of normal text** **.** However, the exact reliability and mechanics depend on whether you use native API tool-calling features or prompt the model to generate them in plain text. [](https://www.langchain.com/blog/tool-calling-with-langchain)
+
+### How Tool Calls Are Output
+
+* **Dedicated output channels.** When using API-native tool calling, the model does not execute code directly. Instead, it generates a structured intent payload (usually JSON) in a separate response field while optionally outputting normal text. [](https://zaingz.medium.com/understanding-tool-calling-how-llms-interact-with-the-real-world-2cd9088b99a8)
+* **Autonomous decision-making.** By default (`tool_choice: "auto"`), the model decides freely whether to answer with regular text, call one tool, or invoke multiple tools in parallel based on the conversation context. [](https://www.langchain.com/blog/tool-calling-with-langchain)
+* **Interleaved text and calls.** Models can output reasoning or conversational text before emitting a tool call, though strict schema settings can sometimes alter how freely they generate text beforehand. [](https://community.openai.com/t/how-can-i-ensure-every-llm-reply-includes-exactly-one-message-and-one-tool-call/1283087)
+
+### Guaranteeing Validity
+
+* **Guided decoding and strict schemas.** Without constraints, an LLM generating tool calls in free-form text can produce malformed JSON, trailing commas, or hallucinated parameters. As noted by users on the [vLLM Forum](https://discuss.vllm.ai/t/how-does-tool-choice-effect-vllm/1945), inference engines use guided decoding (such as finite state machines) to restrict token generation so every tool call strictly matches your defined JSON schema. [](https://discuss.vllm.ai/t/how-does-tool-choice-effect-vllm/1945)
+* **Reasoning trade-offs.** Research on [arXiv](https://arxiv.org/html/2408.02442v1) shows that forcing an LLM to strictly adhere to rigid formats during its entire generation can degrade its reasoning abilities. Allowing the model to think or write freely before triggering a structured tool call preserves accuracy. [](https://arxiv.org/html/2408.02442v1)
+* **Runtime validation.** Even when syntax is 100% valid JSON, a model can still pick the wrong tool or pass logically invalid arguments. Your application code still needs to parse, validate, and execute the call before feeding the result back to the model. [](https://www.youtube.com/watch?v=JytjrbDaI44)
+
+Are you trying to implement **free-form tool calling** in a specific framework (like OpenAI, Anthropic, or a local model via vLLM), or are you looking to **interleave reasoning text** with tool executions? Let me know so I can share the exact configuration details.
+
+* [](https://community.openai.com/t/how-can-i-ensure-every-llm-reply-includes-exactly-one-message-and-one-tool-call/1283087)  
+OpenAI Developer Community  
+How can I ensure every LLM reply includes exactly one ...  
+June 9, 2025 — using structured JSON output with a \`json\_schema\` and \`strict\` setting can force the LLM to adhere to a specific format that inclu...
+* [](https://spice.ai/learn/llm-tool-calling)  
+Spice AI  
+What is LLM Tool Calling? AI Function Calling  
+This approach has several problems: Unreliable formatting: The model might include markdown code fences, explanatory text, or malf...
+* [](https://www.langchain.com/blog/tool-calling-with-langchain)  
+LangChain  
+Tool Calling with LangChain  
+April 11, 2024 — Tool calling is a powerful technique that allows developers to build sophisticated applications that can leverage LLMs to access, ...
+
+Show all
+
+# what do you see on payload when llms output valid tool calls freely in an output
+
+When an LLM outputs a valid tool call via a modern API (such as OpenAI, Anthropic, or Gemini), the response payload replaces standard conversational text with **structured metadata and a `tool_calls` array**, while setting the **`finish_reason` to `"tool_calls"`**. [](https://medium.com/@jamestang/llm-function-calling-explained-a-deep-dive-into-the-request-and-response-payloads-894800fcad75)
+
+Instead of returning a final answer, the model pauses generation and asks your application to run a specific function with generated arguments. [](https://www.youtube.com/watch?v=QiRdYCNXAxk&t=386)
+
+### Key Elements in the Response Payload
+
+In a standard Chat Completions API response, you will see the following structure: [](https://datacream.substack.com/p/structured-outputs-with-llms-json)
+
+* **Empty or Null Content.** The `message.content` field is typically set to `null` (or left empty) because the model chose to invoke a tool rather than speak to the user. Some reasoning models or specific providers may include a brief "thought" or status message alongside the call. [](https://datacream.substack.com/p/structured-outputs-with-llms-json)
+* **The `tool_calls` Array.** This list holds one or more tool invocation objects requested by the model. If the model supports parallel tool calling, multiple objects will appear here at once. [](https://www.youtube.com/watch?v=QiRdYCNXAxk&t=386)
+* **Unique Call ID.** Each item in the array has an `id` (e.g., `call_abc123`). Your application must pass this exact ID back when returning the function's output so the model knows which request the data belongs to.
+* **Function Name and Arguments.** Inside each tool call object is a `function` block containing the exact `name` of the tool and a JSON-encoded string of `arguments` populated from the user's prompt. [](https://datacream.substack.com/p/structured-outputs-with-llms-json)
+* **Stop Reason.** The top-level `finish_reason` changes from `"stop"` to `"tool_calls"` (or `"tool_use"` depending on the provider). This signals your code to parse the JSON, run the local function, and send the result back in a new API turn. [](https://medium.com/@jamestang/llm-function-calling-explained-a-deep-dive-into-the-request-and-response-payloads-894800fcad75)
+
+### Example Payload Structure
+
+Here is what a typical JSON payload looks like when an LLM decides to call a weather tool:
+
+json
+
+```
+{
+  "id": "chatcmpl-987654321",
+  "object": "chat.completion",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_9x8y7z6w",
+            "type": "function",
+            "function": {
+              "name": "get_current_weather",
+              "arguments": "{\"location\": \"Mountain View, CA\", \"unit\": \"fahrenheit\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "tool_calls"
+    }
+  ]
+}
+
+```
+
+
+
+### Raw Token Output vs. API Payload
+
+If you are looking at the **raw tokens** generated by the model before the API provider's inference engine parses them, the payload looks different:
+
+* **Special Control Tokens.** Behind the scenes, fine-tuned models output special delimiters (such as `<|tool_call|>` or `<function=get_weather>`) followed by raw JSON or XML.
+* **API Middleware Parsing.** Inference servers intercept these special tokens, validate the syntax against your schema, and package them cleanly into the `tool_calls` JSON object shown above.
+* **Unconstrained Text ("Freely" Outputting).** If you prompt an open-weights model without using native tool-calling parameters, the model outputs the JSON or XML directly inside the standard `message.content` text string, often wrapped in markdown code fences (```` ```json ````) that your code must manually strip and parse. [](https://dev.to/ayinedjimi-consultants/llm-output-validation-5-patterns-that-actually-work-in-production-1edi)
+
+Are you working with a specific **API provider** (like OpenAI, Anthropic, or Gemini) or running an **open-weights model** locally? Let me know if you'd like to see how to parse the payload or send the tool's output back to the model.
+
+* [](https://www.youtube.com/watch?v=QiRdYCNXAxk&t=386)  
+YouTube·Tommy Eberle  
+How LLM Tool Calling Works  
+Mar 27, 2025 — if a tool call is made, it adheres to the provided instructions and outputs a predictable JSON format. The developer then needs to...  
+7m
+* [](https://medium.com/@jamestang/llm-function-calling-explained-a-deep-dive-into-the-request-and-response-payloads-894800fcad75)  
+Medium·James Tang  
+LLM Function Calling Explained: A Deep Dive into the Request and Response Payloads | by James Tang | Medium  
+June 10, 2025 — LLM function calling bridges language models ・ payload (tools); the LLM responds with tool\_calls ・ the loop repeats until finish\_r...
+* [](https://datacream.substack.com/p/structured-outputs-with-llms-json)  
+Substack·DataCream🍨  
+Structured Outputs with LLMs: JSON Mode, Function Calling ...  
+July 21, 2026 — The model returns a tool\_calls object instead of a regular text response … filled in the arguments on its own. Function Calling is...
+
+Show all
+
+

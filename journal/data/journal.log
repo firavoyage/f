@@ -179511,3 +179511,23 @@
 2026-11-12 23:57:14+08:00 code 20261112 humility implement thinking tool call.md - f (Workspace) - Visual Studio Code
 2026-11-12 23:58:14+08:00 code ● chat.ts - f (Workspace) - Visual Studio Code
 2026-11-12 23:59:14+08:00 chromium Gemma 4 26B A4B - API Pricing & Benchmarks | OpenRouter - Chromium
+2026-11-13 00:00:14+08:00 org.gnome.Nautilus message
+2026-11-13 00:01:14+08:00 code 82fb0068-6669-482b-9b48-7ba94542dbeb - f (Workspace) - Visual Studio Code
+2026-11-13 00:02:14+08:00 code 5ca855e5-6c84-4856-8b34-226971a6f732 - f (Workspace) - Visual Studio Code
+2026-11-13 00:03:14+08:00 code 5ca855e5-6c84-4856-8b34-226971a6f732 - f (Workspace) - Visual Studio Code
+2026-11-13 00:04:15+08:00 code 52bcc42a-11be-4d20-abe4-934e9dbd44fd - f (Workspace) - Visual Studio Code
+2026-11-13 00:05:15+08:00 code send.ts - f (Workspace) - Visual Studio Code
+2026-11-13 00:06:15+08:00 code 8385b467-89de-48e6-abc3-f6428419cb71 - f (Workspace) - Visual Studio Code
+2026-11-13 00:07:15+08:00 org.gnome.Nautilus message
+2026-11-13 00:08:15+08:00 chromium how do ppl prompt llms to tool call when they do not use the native way - Google Search - Chromium
+2026-11-13 00:09:15+08:00 chromium Intention - Chromium
+2026-11-13 00:10:15+08:00 chromium can llms output valid tool calls freely in an output - Google Search - Chromium
+2026-11-13 00:11:15+08:00 chromium Intention - Chromium
+2026-11-13 00:12:15+08:00 chromium Intention - Chromium
+2026-11-13 00:13:15+08:00 chromium Intention - Chromium
+2026-11-13 00:14:15+08:00 chromium does it matter for you where they place the tool calls in the original text output for the same order when llms output valid tool calls freely alongside normal text in an output on openai compatible api - Google Search - Chromium
+2026-11-13 00:15:15+08:00 chromium can you see the original placement of tool calls in text iff you stream when llms output valid tool calls freely alongside normal text in an output on openai compatible api - Google Search - Chromium
+2026-11-13 00:16:15+08:00 chromium how well does it work if you use manual prompting tool calls instead of native ones - Google Search - Chromium
+2026-11-13 00:17:15+08:00 chromium do llms train the common names of tool calls - Google Search - Chromium
+2026-11-13 00:18:15+08:00 code send.ts - f (Workspace) - Visual Studio Code
+2026-11-13 00:19:15+08:00 code generation.ts - f (Workspace) - Visual Studio Code
