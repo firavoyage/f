@@ -39,10 +39,6 @@ export function use_state<T>(
       new_value = new_value(state)
     }
 
-    if (is(new_value, 'undefined')) {
-      return
-    }
-
     if (is(new_value, 'literal') && new_value == prev_state) {
       return
     }
@@ -52,7 +48,9 @@ export function use_state<T>(
       return
     }
 
-    _set_state(new_value)
+    if (!is(new_value, 'undefined')) {
+      _set_state(new_value)
+    }
     update()
   }
 

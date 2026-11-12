@@ -22,65 +22,6 @@ export const use_thread = s('', {
   url_param: 'thread',
 })
 
-export function use_state<T>(
-  initial_value?: T,
-): [state: T, set_state: typeof set_state] {
-  const [state, _set_state] = useState(initial_value)
-  const update = use_update()
-
-  function set_state(
-    new_value: T | Promise<T> | ((old_value: T) => T | Promise<T> | undefined),
-  ): void
-
-  function set_state(...args) {
-    let new_value
-    if (args.length == 0) {
-      new_value = toggle
-    } else {
-      ;[new_value] = args
-    }
-
-    log('set state', new_value)
-
-    let prev_state = state
-
-    if (is(new_value, 'function')) {
-      new_value = new_value(state)
-    }
-
-    if (is(new_value, 'literal') && new_value == prev_state) {
-      return
-    }
-
-    if (is(new_value, Promise)) {
-      log('a promise is here')
-      new_value.then((new_value) => {
-        log('promise resolves, set state')
-        set_state(new_value)
-      })
-      // new_value.then(set_state)
-      return
-    }
-
-    if (!is(new_value, 'undefined')) {
-      _set_state(new_value)
-    }
-    update()
-  }
-
-  return [state, set_state]
-}
-
-function use_update() {
-  const [, update] = useState(false)
-
-  return () => update((v) => !v)
-}
-
-function toggle(v: boolean) {
-  return !v
-}
-
 export function app() {
   use_sync_theme('system')
   use_window_active()
@@ -132,8 +73,6 @@ export function app() {
       })
     })
 
-    log('push user prompt')
-    
     set_messages(async (messages) => {
       messages.push(
         await post('send', {
@@ -141,15 +80,11 @@ export function app() {
           thread,
         }),
       )
-      log('push reply')
     })
-
-    log('fire reply promise')
   })
 
   use_effect(() => {
-    log('rerender!')
-    log(JSON.stringify(messages))
+
   })
 
   return h(

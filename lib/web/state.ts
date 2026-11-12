@@ -37,10 +37,6 @@ export function s<T>(initial_value: T, options: s<T> = {}) {
       new_value = new_value(state)
     }
 
-    if (is(new_value, 'undefined')) {
-      return
-    }
-
     if (is(new_value, 'literal') && new_value == prev_state) {
       return
     }
@@ -50,7 +46,9 @@ export function s<T>(initial_value: T, options: s<T> = {}) {
       return
     }
 
-    state = new_value
+    if (!is(new_value, 'undefined')) {
+      state = new_value
+    }
 
     for (const sub of subs) {
       sub(state)
