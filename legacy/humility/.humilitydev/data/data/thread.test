@@ -1,0 +1,13 @@
+- value: root
+  children:
+    - 1
+  focus: 1
+- value: node.123
+  children:
+    - 4
+    - 3
+    - 2
+  focus: 2
+- value: node.123
+- value: node.edited
+- value: node.edited.2

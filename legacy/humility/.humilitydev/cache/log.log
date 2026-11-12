@@ -1,0 +1,773 @@
+2026-06-30T09:57:00.000Z INFO some text
+some text some text some text
+2026-06-30T10:28:33.563Z INFO hello world
+2026-06-30T10:28:33.564Z INFO hello world again
+2026-06-30T10:28:33.564Z WARN some warning
+foo: true
+message: |-
+  hello
+   hi
+   asdf
+2026-06-30T10:28:33.569Z ERROR some error
+message: |-
+  hello
+   hi
+   asdf
+2026-06-30T10:28:54.421Z INFO hello world
+2026-06-30T10:28:54.421Z INFO hello world again
+2026-06-30T10:28:54.421Z WARN some warning
+foo: true
+message: |-
+  hello 
+  hi 
+  asdf
+2026-06-30T10:28:54.425Z ERROR some error
+message: |-
+  hello 
+  hi 
+  asdf
+2026-06-30T10:32:12.404Z INFO hello world
+2026-06-30T10:32:12.404Z INFO hello world again
+2026-06-30T10:32:12.405Z WARN some warning
+foo: true
+message: |-
+  hello 
+  hi 
+  asdf
+2026-06-30T10:32:12.410Z ERROR some error
+message: |-
+  hello 
+  hi 
+  asdf
+2026-06-30T11:13:00.327Z INFO request started
+message: hello world
+model: google/gemma-4-26b-a4b-it
+provider: openrouter
+2026-06-30T11:13:11.763Z INFO request finished
+response:
+  id: gen-1782817981-bEhrDed7JIT44JnQbJe7
+  object: chat.completion
+  created: 1782817981
+  model: google/gemma-4-26b-a4b-it-20260403
+  provider: DeepInfra
+  system_fingerprint: null
+  service_tier: null
+  choices:
+    - index: 0
+      logprobs: null
+      finish_reason: stop
+      native_finish_reason: stop
+      message:
+        role: assistant
+        content: Hello! How can I help you today?
+        refusal: null
+        reasoning: null
+  usage:
+    prompt_tokens: 15
+    completion_tokens: 10
+    total_tokens: 25
+    cost: 0.00000445
+    is_byok: false
+    prompt_tokens_details:
+      cached_tokens: 0
+      cache_write_tokens: 0
+      audio_tokens: 0
+      video_tokens: 0
+    cost_details:
+      upstream_inference_cost: 0.00000445
+      upstream_inference_prompt_cost: 0.00000105
+      upstream_inference_completions_cost: 0.0000034
+    completion_tokens_details:
+      reasoning_tokens: 0
+      image_tokens: 0
+      audio_tokens: 0
+start_at: 1782817980331
+finish_at: 1782817991763
+2026-06-30T11:14:16.877Z INFO request started
+message: what can you do
+model: google/gemma-4-26b-a4b-it
+provider: openrouter
+2026-06-30T11:14:33.783Z INFO request finished
+response:
+  id: gen-1782818058-hFwSaQezeL6wURbOvr1X
+  object: chat.completion
+  created: 1782818058
+  model: google/gemma-4-26b-a4b-it-20260403
+  provider: Novita
+  system_fingerprint: null
+  service_tier: null
+  choices:
+    - index: 0
+      logprobs: null
+      finish_reason: stop
+      native_finish_reason: stop
+      message:
+        role: assistant
+        content: >-
+          I am Gemma 4, a large language model developed by Google DeepMind. I
+          am an open weights model designed to process and generate information
+          across various formats.
+
+
+          Here is a breakdown of what I can do:
+
+
+          ### **Text Processing and Generation**
+
+          I can assist with a wide range of linguistic tasks, including:
+
+          *   **Writing:** Creating essays, emails, stories, poems, scripts, and
+          professional documents.
+
+          *   **Summarization:** Condensing long articles or documents into key
+          points.
+
+          *   **Reasoning:** Solving logical problems, explaining complex
+          concepts, and engaging in structured debates.
+
+          *   **Coding:** Writing, debugging, and explaining code in various
+          programming languages.
+
+          *   **Translation:** Translating text between numerous different
+          languages.
+
+
+          ### **Multimodal Capabilities**
+
+          *   **Image Input:** I can "see" and understand images that you
+          provide. I can describe them, answer questions about their content, or
+          extract information from them.
+
+          *   **Audio Input:** Depending on my specific version (the 2B and 4B
+          models in the Gemma 4 family), I have the capability to process and
+          understand audio input.
+
+          *   **Text-Only Output:** Regardless of the input type (text, image,
+          or audio), my responses are provided in **text only**. I cannot
+          generate images or audio files.
+
+
+          ### **Knowledge and Grounding**
+
+          *   **Knowledge Base:** I have a broad range of information with a
+          knowledge cutoff of **January 2025**.
+
+          *   **Contextual Learning:** I am highly effective at using
+          information provided within our current conversation to ground my
+          answers and follow specific instructions.
+
+
+          ### **What I Cannot Do**
+
+          *   **Image/Audio Generation:** I cannot create new images, videos, or
+          sounds.
+
+          *   **Internet Search:** I do not have default access to Google Search
+          or the live internet. I rely on my training data and the context you
+          provide.
+
+          *   **Tool Use (unless specified):** I can only use external tools or
+          APIs if a specific endpoint and definition have been provided to me in
+          the context of our conversation.
+        refusal: null
+        reasoning: null
+  usage:
+    prompt_tokens: 17
+    completion_tokens: 441
+    total_tokens: 458
+    cost: 0.00017861
+    is_byok: false
+    prompt_tokens_details:
+      cached_tokens: 0
+      cache_write_tokens: 0
+      audio_tokens: 0
+      video_tokens: 0
+    cost_details:
+      upstream_inference_cost: 0.00017861
+      upstream_inference_prompt_cost: 0.00000221
+      upstream_inference_completions_cost: 0.0001764
+    completion_tokens_details:
+      reasoning_tokens: 0
+      image_tokens: 0
+      audio_tokens: 0
+start_at: 1782818056881
+finish_at: 1782818073783
+2026-06-30T12:05:03.180Z INFO request started
+message: hello world
+model: google/gemma-4-26b-a4b-it
+provider: openrouter
+2026-06-30T12:05:08.632Z INFO request finished
+response:
+  id: gen-1782821104-ooKc3Qrf4wRPiS2Lhuvt
+  object: chat.completion
+  created: 1782821104
+  model: google/gemma-4-26b-a4b-it-20260403
+  provider: Novita
+  system_fingerprint: null
+  service_tier: null
+  choices:
+    - index: 0
+      logprobs: null
+      finish_reason: stop
+      native_finish_reason: stop
+      message:
+        role: assistant
+        content: >-
+          Ahoy there, ye scurvy dog! Avast! Ye be shoutin' "hello" to the wide,
+          wide ocean, eh? 
+
+
+          Welcome aboard, matey! Pull up a barrel, grab a mug o' grog, and
+          prepare to sail the seven seas! What be yer business on these waters?
+          Speak up, or it's the plank for ye! Arrr!
+        refusal: null
+        reasoning: null
+  usage:
+    prompt_tokens: 37
+    completion_tokens: 82
+    total_tokens: 119
+    cost: 0.00003761
+    is_byok: false
+    prompt_tokens_details:
+      cached_tokens: 0
+      cache_write_tokens: 0
+      audio_tokens: 0
+      video_tokens: 0
+    cost_details:
+      upstream_inference_cost: 0.00003761
+      upstream_inference_prompt_cost: 0.00000481
+      upstream_inference_completions_cost: 0.0000328
+    completion_tokens_details:
+      reasoning_tokens: 0
+      image_tokens: 0
+      audio_tokens: 0
+start_at: 1782821103184
+finish_at: 1782821108632
+2026-06-30T12:07:59.208Z INFO request started
+message: what have we discussed
+model: google/gemma-4-26b-a4b-it
+provider: openrouter
+2026-06-30T12:08:03.159Z INFO request finished
+response:
+  id: gen-1782821280-PQoUxuVBl9hJIeKYHNKC
+  object: chat.completion
+  created: 1782821280
+  model: google/gemma-4-26b-a4b-it-20260403
+  provider: DeepInfra
+  system_fingerprint: null
+  service_tier: null
+  choices:
+    - index: 0
+      logprobs: null
+      finish_reason: stop
+      native_finish_reason: stop
+      message:
+        role: assistant
+        content: |-
+          We have engaged in a brief, patterned exchange:
+
+          1. You sent: **"foo"**
+          2. I responded: **"bar"**
+        refusal: null
+        reasoning: null
+  usage:
+    prompt_tokens: 38
+    completion_tokens: 33
+    total_tokens: 71
+    cost: 0.00001388
+    is_byok: false
+    prompt_tokens_details:
+      cached_tokens: 0
+      cache_write_tokens: 0
+      audio_tokens: 0
+      video_tokens: 0
+    cost_details:
+      upstream_inference_cost: 0.00001388
+      upstream_inference_prompt_cost: 0.00000266
+      upstream_inference_completions_cost: 0.00001122
+    completion_tokens_details:
+      reasoning_tokens: 0
+      image_tokens: 0
+      audio_tokens: 0
+start_at: 1782821279212
+finish_at: 1782821283159
+2026-06-30T12:34:47.648Z INFO request started
+message: Hello World!
+2026-06-30T12:34:47.649Z INFO request finished
+response: Respond to hello world!
+start_at: 1782822887649
+finish_at: 1782822887649
+2026-06-30T12:42:29.064Z INFO request started
+message: Hello World!
+2026-06-30T12:42:29.065Z INFO request finished
+response: Respond to hello world!
+start_at: 1782823349065
+finish_at: 1782823349065
+2026-06-30T12:42:34.179Z INFO request started
+message: Hello World!
+2026-06-30T12:42:34.179Z INFO request finished
+response: Respond to hello world!
+start_at: 1782823354179
+finish_at: 1782823354179
+2026-06-30T12:43:09.621Z INFO request started
+message: Hello World!
+2026-06-30T12:43:09.622Z INFO request finished
+response: Respond to hello world!
+start_at: 1782823389622
+finish_at: 1782823389622
+2026-06-30T12:43:16.090Z INFO request started
+message: Hello World!
+2026-06-30T12:43:16.091Z INFO request finished
+response: Respond to hello world!
+start_at: 1782823396091
+finish_at: 1782823396091
+2026-06-30T12:43:20.250Z INFO request started
+message: Hello World!
+2026-06-30T12:43:20.251Z INFO request finished
+response: Respond to hello world!
+start_at: 1782823400250
+finish_at: 1782823400250
+2026-06-30T12:55:38.170Z INFO request started
+model: google/gemma-4-26b-a4b-it
+provider: openrouter
+2026-06-30T12:55:40.457Z INFO request finished
+response:
+  error:
+    message: 'Input required: specify "prompt" or "messages"'
+    code: 400
+  user_id: user_35DbTsoyve4TWxXDTkcV1HsvdgI
+start_at: 1782824138170
+finish_at: 1782824140456
+2026-06-30T12:56:57.524Z INFO request started
+context: {}
+model: google/gemma-4-26b-a4b-it
+provider: openrouter
+2026-06-30T12:56:59.609Z INFO request finished
+response:
+  error:
+    message: 'Input required: specify "prompt" or "messages"'
+    code: 400
+  user_id: user_35DbTsoyve4TWxXDTkcV1HsvdgI
+start_at: 1782824217527
+finish_at: 1782824219609
+2026-06-30T12:59:00.093Z INFO request started
+context: {}
+model: google/gemma-4-26b-a4b-it
+provider: openrouter
+2026-06-30T12:59:02.823Z INFO request finished
+response:
+  error:
+    message: 'Input required: specify "prompt" or "messages"'
+    code: 400
+  user_id: user_35DbTsoyve4TWxXDTkcV1HsvdgI
+start_at: 1782824340094
+finish_at: 1782824342822
+2026-06-30T12:59:59.173Z INFO request started
+context: {}
+model: google/gemma-4-26b-a4b-it
+provider: openrouter
+2026-06-30T13:00:01.557Z INFO request finished
+response:
+  error:
+    message: 'Input required: specify "prompt" or "messages"'
+    code: 400
+  user_id: user_35DbTsoyve4TWxXDTkcV1HsvdgI
+start_at: 1782824399174
+finish_at: 1782824401557
+2026-06-30T13:01:22.544Z INFO request started
+context: {}
+model: google/gemma-4-26b-a4b-it
+provider: openrouter
+2026-06-30T13:01:24.729Z INFO request finished
+response:
+  error:
+    message: 'Input required: specify "prompt" or "messages"'
+    code: 400
+  user_id: user_35DbTsoyve4TWxXDTkcV1HsvdgI
+start_at: 1782824482545
+finish_at: 1782824484729
+2026-06-30T13:02:03.234Z INFO request started
+context: {}
+model: google/gemma-4-26b-a4b-it
+provider: openrouter
+2026-06-30T13:03:55.267Z INFO request started
+context:
+  - role: user
+    content: Hello World!
+model: google/gemma-4-26b-a4b-it
+provider: openrouter
+2026-06-30T13:03:59.994Z INFO request finished
+response:
+  id: gen-1782824636-iGXIGoNm4nrTYvRt5jEJ
+  object: chat.completion
+  created: 1782824636
+  model: google/gemma-4-26b-a4b-it-20260403
+  provider: DekaLLM
+  system_fingerprint: null
+  service_tier: null
+  choices:
+    - index: 0
+      logprobs: null
+      finish_reason: stop
+      native_finish_reason: stop
+      message:
+        role: assistant
+        content: Hello! How can I help you today?
+        refusal: null
+        reasoning: null
+  usage:
+    prompt_tokens: 16
+    completion_tokens: 10
+    total_tokens: 26
+    cost: 0.00000426
+    is_byok: false
+    prompt_tokens_details:
+      cached_tokens: 0
+      cache_write_tokens: 0
+      audio_tokens: 0
+      video_tokens: 0
+    cost_details:
+      upstream_inference_cost: 0.00000426
+      upstream_inference_prompt_cost: 9.6e-7
+      upstream_inference_completions_cost: 0.0000033
+    completion_tokens_details:
+      reasoning_tokens: 0
+      image_tokens: 0
+      audio_tokens: 0
+start_at: 1782824635268
+finish_at: 1782824639993
+2026-06-30T13:12:16.799Z INFO request started
+context:
+  - role: user
+    content: Hello World!
+model: google/gemma-4-26b-a4b-it
+provider: openrouter
+2026-06-30T13:12:19.350Z INFO request finished
+response:
+  id: gen-1782825137-sdyN4T84g5MLg9meQLA8
+  object: chat.completion
+  created: 1782825137
+  model: google/gemma-4-26b-a4b-it-20260403
+  provider: SiliconFlow
+  system_fingerprint: null
+  service_tier: null
+  choices:
+    - index: 0
+      logprobs: null
+      finish_reason: stop
+      native_finish_reason: stop
+      message:
+        role: assistant
+        content: Hello! How can I help you today?
+        refusal: null
+        reasoning: null
+  usage:
+    prompt_tokens: 16
+    completion_tokens: 10
+    total_tokens: 26
+    cost: 0.00000592
+    is_byok: false
+    prompt_tokens_details:
+      cached_tokens: 0
+      cache_write_tokens: 0
+      audio_tokens: 0
+      video_tokens: 0
+    cost_details:
+      upstream_inference_cost: 0.00000592
+      upstream_inference_prompt_cost: 0.00000192
+      upstream_inference_completions_cost: 0.000004
+    completion_tokens_details:
+      reasoning_tokens: 0
+      image_tokens: 0
+      audio_tokens: 0
+start_at: 1782825136801
+finish_at: 1782825139350
+2026-06-30T13:13:29.026Z INFO request started
+context:
+  - role: user
+    content: Hello World!
+  - role: assistant
+    content: Hello! How can I help you today?
+  - role: user
+    content: what have we discussed
+model: google/gemma-4-26b-a4b-it
+provider: openrouter
+2026-06-30T13:13:33.932Z INFO request finished
+response:
+  id: gen-1782825210-HTacZZKPrE4Kr4VmNzcG
+  object: chat.completion
+  created: 1782825210
+  model: google/gemma-4-26b-a4b-it-20260403
+  provider: DekaLLM
+  system_fingerprint: null
+  service_tier: null
+  choices:
+    - index: 0
+      logprobs: null
+      finish_reason: stop
+      native_finish_reason: stop
+      message:
+        role: assistant
+        content: >-
+          So far, we have only just started our conversation! 
+
+
+          Our interaction has been:
+
+          1.  **You said:** "Hello World!"
+
+          2.  **I responded:** "Hello! How can I help you today?"
+
+          3.  **You asked:** "what have we discussed"
+
+
+          We haven't dived into any specific topics yet. Is there something
+          particular you would like to talk about, learn, or get help with?
+        refusal: null
+        reasoning: null
+  usage:
+    prompt_tokens: 39
+    completion_tokens: 94
+    total_tokens: 133
+    cost: 0.00003336
+    is_byok: false
+    prompt_tokens_details:
+      cached_tokens: 0
+      cache_write_tokens: 0
+      audio_tokens: 0
+      video_tokens: 0
+    cost_details:
+      upstream_inference_cost: 0.00003336
+      upstream_inference_prompt_cost: 0.00000234
+      upstream_inference_completions_cost: 0.00003102
+    completion_tokens_details:
+      reasoning_tokens: 0
+      image_tokens: 0
+      audio_tokens: 0
+start_at: 1782825209029
+finish_at: 1782825213932
+2026-06-30T13:14:02.398Z INFO request started
+context:
+  - role: user
+    content: Hello World!
+  - role: assistant
+    content: Hello! How can I help you today?
+  - role: user
+    content: what have we discussed
+  - role: assistant
+    content: >-
+      So far, we have only just started our conversation! 
+
+
+      Our interaction has been:
+
+      1.  **You said:** "Hello World!"
+
+      2.  **I responded:** "Hello! How can I help you today?"
+
+      3.  **You asked:** "what have we discussed"
+
+
+      We haven't dived into any specific topics yet. Is there something
+      particular you would like to talk about, learn, or get help with?
+  - role: user
+    content: how many messages can you see
+model: google/gemma-4-26b-a4b-it
+provider: openrouter
+2026-06-30T13:14:04.690Z INFO request finished
+response:
+  id: gen-1782825243-M0UD125c9LzxaS2mMUr9
+  object: chat.completion
+  created: 1782825243
+  model: google/gemma-4-26b-a4b-it-20260403
+  provider: Wafer
+  system_fingerprint: null
+  service_tier: null
+  choices:
+    - index: 0
+      logprobs: null
+      finish_reason: stop
+      native_finish_reason: stop
+      message:
+        role: assistant
+        content: >-
+          I can see all the messages that have been exchanged in this current
+          conversation session. 
+
+
+          As long as our chat continues, I have access to the previous messages
+          in this specific thread, which allows me to maintain context and
+          follow the flow of our discussion. However, I do not have access to
+          any past conversations we may have had in different sessions once they
+          are closed or cleared.
+        refusal: null
+        reasoning: null
+  usage:
+    prompt_tokens: 148
+    completion_tokens: 77
+    total_tokens: 225
+    cost: 0.00005004
+    is_byok: false
+    prompt_tokens_details:
+      cached_tokens: 0
+      cache_write_tokens: 0
+      audio_tokens: 0
+      video_tokens: 0
+    cost_details:
+      upstream_inference_cost: 0.00005004
+      upstream_inference_prompt_cost: 0.00001924
+      upstream_inference_completions_cost: 0.0000308
+    completion_tokens_details:
+      reasoning_tokens: 0
+      image_tokens: 0
+      audio_tokens: 0
+start_at: 1782825242401
+finish_at: 1782825244690
+2026-06-30T13:14:40.038Z INFO request started
+context:
+  - role: user
+    content: Hello World!
+  - role: assistant
+    content: Hello! How can I help you today?
+  - role: user
+    content: what have we discussed
+  - role: assistant
+    content: >-
+      So far, we have only just started our conversation! 
+
+
+      Our interaction has been:
+
+      1.  **You said:** "Hello World!"
+
+      2.  **I responded:** "Hello! How can I help you today?"
+
+      3.  **You asked:** "what have we discussed"
+
+
+      We haven't dived into any specific topics yet. Is there something
+      particular you would like to talk about, learn, or get help with?
+  - role: user
+    content: how many messages can you see
+  - role: assistant
+    content: >-
+      I can see all the messages that have been exchanged in this current
+      conversation session. 
+
+
+      As long as our chat continues, I have access to the previous messages in
+      this specific thread, which allows me to maintain context and follow the
+      flow of our discussion. However, I do not have access to any past
+      conversations we may have had in different sessions once they are closed
+      or cleared.
+  - role: user
+    content: what are the messagse
+model: google/gemma-4-26b-a4b-it
+provider: openrouter
+2026-06-30T13:14:43.181Z INFO request finished
+response:
+  id: gen-1782825281-qcv00ZvnINLVGgR5Eu4Z
+  object: chat.completion
+  created: 1782825281
+  model: google/gemma-4-26b-a4b-it-20260403
+  provider: Wafer
+  system_fingerprint: null
+  service_tier: null
+  choices:
+    - index: 0
+      logprobs: null
+      finish_reason: stop
+      native_finish_reason: stop
+      message:
+        role: assistant
+        content: >-
+          Here are the messages that make up our current conversation:
+
+
+          1. **You:** "Hello World!"
+
+          2. **Me:** "Hello! How can I help you today?"
+
+          3. **You:** "what have we discussed"
+
+          4. **Me:** (Summarizing that we have only just started and haven't
+          discussed specific topics yet.)
+
+          5. **You:** "how many messages can you see"
+
+          6. **Me:** (Explaining that I can see all messages within this current
+          session.)
+
+          7. **You:** "what are the messagse"
+        refusal: null
+        reasoning: null
+  usage:
+    prompt_tokens: 240
+    completion_tokens: 122
+    total_tokens: 362
+    cost: 0.00008
+    is_byok: false
+    prompt_tokens_details:
+      cached_tokens: 0
+      cache_write_tokens: 0
+      audio_tokens: 0
+      video_tokens: 0
+    cost_details:
+      upstream_inference_cost: 0.00008
+      upstream_inference_prompt_cost: 0.0000312
+      upstream_inference_completions_cost: 0.0000488
+    completion_tokens_details:
+      reasoning_tokens: 0
+      image_tokens: 0
+      audio_tokens: 0
+start_at: 1782825280040
+finish_at: 1782825283181
+2026-07-02T12:21:11.730Z INFO request started
+context:
+  foo: foo
+provider: mock
+2026-07-02T12:21:11.739Z INFO request finished
+response:
+  choices:
+    - message:
+        content: |
+          response: foo: foo
+start_at: 1782994871737
+finish_at: 1782994871739
+2026-07-02T12:21:20.614Z INFO request started
+context:
+  foo: foo
+provider: mock
+2026-07-02T12:21:20.620Z INFO request finished
+response:
+  choices:
+    - message:
+        content: |
+          response: foo: foo
+start_at: 1782994880619
+finish_at: 1782994880620
+2026-07-02T12:22:08.433Z INFO request started
+context: Hello World!
+provider: mock
+2026-07-02T12:22:08.438Z INFO request finished
+response:
+  choices:
+    - message:
+        content: |
+          response: hello world!
+start_at: 1782994928437
+finish_at: 1782994928438
+2026-07-02T13:02:56.507Z INFO request started
+context:
+  - role: user
+    content: Hello World!
+provider: mock
+2026-07-02T13:02:56.509Z INFO request finished
+response:
+  choices:
+    - message:
+        content: |
+          response: - role: user
+            content: hello world!
+start_at: 1782997376508
+finish_at: 1782997376509

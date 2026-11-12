@@ -1,0 +1,5 @@
+type: response
+role: assistant
+content: |
+  response: - role: user
+    content: hello world!

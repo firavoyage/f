@@ -1,0 +1,6 @@
+openrouter:
+  key: sk-or-v1-
+  url: https://openrouter.ai/api/v1/chat/completions
+mock:
+  is_module: true
+  url: backend/mock

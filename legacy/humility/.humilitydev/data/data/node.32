@@ -1,0 +1,21 @@
+type: response
+role: assistant
+content: >-
+  Here are the messages that make up our current conversation:
+
+
+  1. **You:** "Hello World!"
+
+  2. **Me:** "Hello! How can I help you today?"
+
+  3. **You:** "what have we discussed"
+
+  4. **Me:** (Summarizing that we have only just started and haven't discussed
+  specific topics yet.)
+
+  5. **You:** "how many messages can you see"
+
+  6. **Me:** (Explaining that I can see all messages within this current
+  session.)
+
+  7. **You:** "what are the messagse"

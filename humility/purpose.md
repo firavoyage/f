@@ -440,5 +440,27 @@ chances are it could not be fully declarative.
 
 chances are it has to be declarative in some way.
 
+---
+
+it says it takes 300ms or even 800ms for dom content loaded.
+
+i dont quite feel that.
+
+maybe it matters to build style aot.
+
+or maybe it's vite dev server specific issue...
+
+now dom load 200, load 500.
+
+well really style is instant. it takes 5ms, despite tons of entries traverse dereference string op...
+
+(maybe array + join is faster than string add, i remember)
+
+---
+
+totally fine. v8.dev has dom loaded 340ms anyway and load 400.
+
+app component takes 7ms.
+
 
 
