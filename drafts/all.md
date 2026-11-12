@@ -153,6 +153,7 @@ life:
 - notebook paper sizes lines
 - pencil hardness
 - glue stick liquid glue
+- mtf hrt dosing methods
 
 create something:
 
@@ -1261,6 +1262,7 @@ humility:
 - design utilitarian
 - implement web frontend component textarea
 - use case writing engineering intro essay
+- implement thinking tool call
 
 legacy:
 
