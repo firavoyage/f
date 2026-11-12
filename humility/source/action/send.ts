@@ -16,6 +16,8 @@ type send = {
   content: string
   thread: string
   model?: string
+  reasoning_effort?: 'none' | 'minimal' | 'low' | 'medium' | 'high' | 'max'
+  [param: string]: any
 }
 
 export async function send(options: send) {
@@ -26,7 +28,7 @@ export async function send(options: send) {
   // providers must not be empty
   const { default_provider = entries(providers)[0][0] } = current_config
 
-  let { content, thread, model = default_model } = options
+  let { content, thread, model = default_model, ...params } = options
 
   let provider = default_provider
 
@@ -43,7 +45,7 @@ export async function send(options: send) {
 
     // must exist (otherwise just return an auth failure from endpoint)
     key = current_env[env_var]
-  } 
+  }
 
   const thread_file = get_thread_file(thread)
 
@@ -57,6 +59,7 @@ export async function send(options: send) {
     messages,
     model,
     endpoint,
+    ...params,
   }
 
   const reply = await chat({

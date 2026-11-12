@@ -66,3 +66,10 @@ change
   - really it's for web
   - you would not go this way in nodejs
   - breaking change. migrate if needed.
+
+# nov 2026
+
+## 12
+
+- generation: + request params
+

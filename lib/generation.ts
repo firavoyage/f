@@ -37,10 +37,11 @@ type chat = {
   model: string
   endpoint: string
   key?: string
+  [param: string]: any
 }
 
 export async function chat(options: chat): Promise<message> {
-  let { messages, model, endpoint, key } = options
+  let { messages, model, endpoint, key, ...params } = options
 
   messages = map(messages, (message, index) => {
     const { has_failed, role, content } = message
@@ -66,6 +67,7 @@ export async function chat(options: chat): Promise<message> {
       body: JSON.stringify({
         model,
         messages,
+        ...params,
       }),
     }),
   )
