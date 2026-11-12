@@ -280,6 +280,7 @@ lib:
 - request fix default location
 - generation
 - web react use state use effect
+- vite quick local update
 
 web: <!-- frontend, web, ts/js -->
 

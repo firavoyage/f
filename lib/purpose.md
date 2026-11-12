@@ -669,3 +669,9 @@ you push w best effort to github
 <!-- fine, you can absolutely do that as long as you do not update the deps of lib. you can keep all node modules untouched, remove all other files, and cp all other files. -->
 
 ---
+
+wow, void isnt undefined in ts.
+
+reasonable though.
+
+

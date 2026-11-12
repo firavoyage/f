@@ -19,6 +19,9 @@ export default defineConfig({
         target: 'http://localhost:8192',
       },
     },
+    watch: {
+      ignored: ['!**/node_modules/lib/**'],
+    },
   },
   build: {
     outDir: 'build',

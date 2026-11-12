@@ -6,7 +6,7 @@ import 'web/design/utilitarian.css'
 import { textarea } from './textarea'
 import { scroll } from './scroll'
 import { post } from 'lib/web/request'
-import type { message } from 'lib/generation'
+import type { messages } from 'lib/generation'
 import { sidebar } from './sidebar'
 import { marked } from 'marked'
 const { parse: render } = marked
@@ -30,7 +30,7 @@ export function app() {
   const [prompt, set_prompt] = use_state('')
   const [threads, set_threads] = use_state<Record<string, thread>>({})
   const [thread, set_thread] = use_thread()
-  const [messages, set_messages] = use_state<message[]>([])
+  const [messages, set_messages] = use_state<messages>([])
   const [is_new_thread, set_is_new_thread] = use_state(false)
 
   use_effect(() => {

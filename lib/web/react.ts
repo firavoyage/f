@@ -22,7 +22,10 @@ export function use_state<T>(
   const update = use_update()
 
   function set_state(
-    new_value: T | Promise<T> | ((old_value: T) => T | Promise<T> | undefined),
+    new_value:
+      | T
+      | Promise<T>
+      | ((old_value: T) => T | Promise<T> | void | Promise<void>),
   ): void
 
   function set_state(...args) {
