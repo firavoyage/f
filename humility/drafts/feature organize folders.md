@@ -45,7 +45,9 @@ alternatively, you may rename folders, rather than moving files.
 
 - on backend, it will "move" all files of such prefix of folders
 
-alternatively, you may ctrl x (ctrl c) and ctrl 
+alternatively, you may ctrl x (ctrl c) and ctrl v. that's a common approach. 
+
+you could define the full path of one individual file arbitrarily. it's clearly powerful though. dk if that matters.
 
 you may ctrl (shift) z
 
