@@ -1,12 +1,15 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import yaml from '@rollup/plugin-yaml';
+import yaml from '@rollup/plugin-yaml'
 
 export default defineConfig({
   logLevel: 'silent',
   plugins: [react(), yaml()],
   resolve: {
     tsconfigPaths: true,
+  },
+  optimizeDeps: {
+    exclude: ['lib'],
   },
   server: {
     port: 0,

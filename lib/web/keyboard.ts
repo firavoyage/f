@@ -1,5 +1,5 @@
-import mousetrap from 'mousetrap';
-import 'mousetrap-global-bind';
+// import mousetrap from 'mousetrap';
+// import 'mousetrap-global-bind';
 
 const { max } = Math
 
