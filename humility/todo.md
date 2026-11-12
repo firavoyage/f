@@ -4,6 +4,12 @@
 
 ## m
 
+organize (things as) drafts.
+
+> quite weird, some drafts/todo are in purpose
+
+---
+
 organize in folders
 
 rename thread
@@ -37,6 +43,10 @@ share <!-- ? -->
 ---
 
 import
+
+---
+
+search threads
 
 ## c
 
@@ -227,11 +237,6 @@ what is "ghostty" about?
 why is it complex, if any.
 
 i would like to (auto) save history and export in md.
-
----
-
-
-
 
 ## market
 

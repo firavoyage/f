@@ -487,4 +487,7 @@ things changed!
 > 
 > hooks are easy. they come later.
 
+---
+
+quite weird, some drafts/todo are in purpose
 

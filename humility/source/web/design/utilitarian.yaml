@@ -31,6 +31,7 @@ typeface:
   # sans: Noto Sans, sans-serif
   sans: Ubuntu Sans, sans-serif
   serif: EB Garamond, serif
+  mono: Fira Code, monospace
 app:
   app: flex h-100dvh font-sans bg-surface text-on-surface text-lg
 sidebar:

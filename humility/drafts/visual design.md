@@ -10,7 +10,7 @@ visual
 
 ## color palette
 
-- hues from primer
-- linear number mapping, more subtle steps on light end
-- 
+- ~~hues from primer~~
+- ~~linear number mapping, more subtle steps on light end~~
+- generated
 
