@@ -604,3 +604,4 @@ i wonder if it's really ideal of react "state is a snapshot", or if it's just a 
 
 but that makes such out of order set state possible.
 
+

@@ -9,7 +9,7 @@ export default defineConfig({
         name: "Export Copied Content to Markdown",
         version: "1.0.0",
         description: "Config via menu command",
-        match: ["https://google.com/*"],
+        match: ["https://*.google.com/*"],
         grant: ["GM_registerMenuCommand", "GM_setValue", "GM_getValue"],
       },
     }),

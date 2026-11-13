@@ -18,11 +18,11 @@ const du_scroll_percentage = 0.5
 const space_scroll_percentage = 0.9
 // const space_scroll_percentage = 0.9
 const scroll_behavior: 'smooth' | 'instant' = 'instant'
-const distances = {
-  j: jk_scroll_distance,
-  k: -jk_scroll_distance,
-  d: du_scroll_percentage,
-  u: -du_scroll_percentage,
+const scroll_shortcuts = {
+  'ctrl+j': jk_scroll_distance,
+  'ctrl+k': -jk_scroll_distance,
+  'ctrl+d': du_scroll_percentage,
+  'ctrl+u': -du_scroll_percentage,
   space: space_scroll_percentage,
   'shift+space': -space_scroll_percentage,
 }
@@ -114,37 +114,24 @@ export function app() {
   // todo: make typing wo focus work, rather than making it always focused.
   // _you may handle cjk im._
 
-  use_keyboard(
-    'space',
-    (e) => {
-      if (
-        has(field_tags, document.activeElement?.tagName.toLowerCase()) &&
-        prompt
-      ) {
-        return
-      }
+  map(scroll_shortcuts, ([shortcut, distance]) => {
+    use_keyboard(
+      shortcut,
+      (e) => {
+        if (
+          shortcut == 'space' &&
+          has(field_tags, document.activeElement?.tagName.toLowerCase()) &&
+          prompt
+        ) {
+          return
+        }
 
-      e.preventDefault()
-      scroll_by(distances.space)
-    },
-    { prevent_default: false },
-  )
-
-  use_keyboard(
-    'shift+space',
-    (e) => {
-      if (
-        has(field_tags, document.activeElement?.tagName.toLowerCase()) &&
-        prompt
-      ) {
-        return
-      }
-
-      e.preventDefault()
-      scroll_by(distances['shift+space'])
-    },
-    { prevent_default: false },
-  )
+        e.preventDefault()
+        scroll_by(distance)
+      },
+      { prevent_default: false },
+    )
+  })
 
   function new_thread() {
     set_thread('')
