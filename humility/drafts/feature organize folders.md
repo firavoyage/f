@@ -67,3 +67,9 @@ in that case, you may treat (shift) tab like folder traversal (assuming omnibox)
 - ~~'foo/bar'/asdf~~ 'foo'/bar/asdf
 - tab: 'bar', 'asdf'
   - shift tab vice versa
+- when you type, it will try to autocomplete
+  - tab doesnt complete it, it jumps to the next field.
+
+that's it.
+
+
