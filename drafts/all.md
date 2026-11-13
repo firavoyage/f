@@ -1262,6 +1262,7 @@ humility:
 - design utilitarian
 - implement web frontend component textarea
 - use case writing engineering intro essay
+- implement web render md
 - implement thinking tool call
 
 legacy:

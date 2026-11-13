@@ -10,6 +10,7 @@ export type message = {
   id: string
   role: role
   content: string
+  reasoning?: string
   usage?: {
     prompt_tokens: number
     completion_tokens: number
@@ -130,13 +131,12 @@ export async function chat(options: chat): Promise<message> {
     }
   }
 
-  const { role, content } = payload.choices[0].message
+  const { role, content, reasoning } = payload.choices[0].message
 
-  const { prompt_tokens, completion_tokens, total_tokens } = payload.usage
   const usage = {
-    prompt_tokens,
-    completion_tokens,
-    total_tokens,
+    prompt_tokens: payload.usage.prompt_tokens,
+    completion_tokens: payload.usage.completion_tokens,
+    total_tokens: payload.usage.total_tokens,
   }
   // const { usage } = payload
 
@@ -149,6 +149,7 @@ export async function chat(options: chat): Promise<message> {
     id,
     role,
     content,
+    reasoning,
     usage,
     perf,
     start_time,
