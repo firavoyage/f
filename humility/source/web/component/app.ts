@@ -111,7 +111,6 @@ export function app() {
           }),
         )
 
-        log('i want it to be false')
         set_is_pending(false)
       })
     },
@@ -168,10 +167,6 @@ export function app() {
       behavior: scroll_behavior,
     })
   }
-
-  use_effect(() => {
-    log(is_pending)
-  }, [is_pending])
 
   return h(
     h('title.', 'Humility'),

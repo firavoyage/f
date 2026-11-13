@@ -122,9 +122,9 @@ export function s<T>(initial_value: T, options: s<T> = {}) {
 }
 
 function use_update() {
-  const [, update] = use_state(false)
+  const [, update] = useState(0)
 
-  return () => update((v) => !v)
+  return () => update((v) => v + 1)
 }
 
 function toggle(v: boolean) {

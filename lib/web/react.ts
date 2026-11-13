@@ -20,6 +20,7 @@ export function use_ref(initial_value?: any) {
 export function use_state<T>(
   initial_value?: T,
 ): [state: T, set_state: typeof set_state] {
+  const current_state = use_ref(initial_value)
   const [state, _set_state] = useState(initial_value)
   const update = use_update()
 
@@ -31,8 +32,6 @@ export function use_state<T>(
   ): void
 
   function set_state(...args) {
-    log('set_state', ...args)
-
     let new_value
     if (args.length == 0) {
       new_value = toggle
@@ -40,28 +39,23 @@ export function use_state<T>(
       ;[new_value] = args
     }
 
-    let prev_state = state
-
     if (is(new_value, 'function')) {
       new_value = new_value(state)
     }
 
-    if (is(new_value, 'literal') && new_value == prev_state) {
-      log('same literal, return')
+    if (is(new_value, 'literal') && new_value == current_state.current) {
       return
     }
 
     if (is(new_value, Promise)) {
-      log('promise')
       new_value.then(set_state)
       return
     }
 
     if (!is(new_value, 'undefined')) {
-      log('_set_state', new_value)
+      current_state.current = new_value
       _set_state(new_value)
     }
-    log('update')
     update()
   }
 
@@ -69,9 +63,9 @@ export function use_state<T>(
 }
 
 function use_update() {
-  const [, update] = useState(false)
+  const [, update] = useState(0)
 
-  return () => update((v) => !v)
+  return () => update((v) => v + 1)
 }
 
 function toggle(v: boolean) {
@@ -123,6 +117,12 @@ function normalize_deps(deps?: any[]) {
   } else {
     return [JSON.stringify(deps)]
   }
+}
+
+export function use_debug(...args) {
+  use_effect(() => {
+    log(...args)
+  }, [args])
 }
 
 export function set_timeout(fn: fn, delay: number) {

@@ -84,3 +84,9 @@ change
 - web/style: + first class font weights, support numerical font weights, `regular` (alias of `normal`)
   - no idea why italic is first class while bold isnt
   - i dont care how css or tailwind thinks or traditionally defines
+- web/react: fix state is a snapshot
+  - use js variable instead
+  - web/state, which runs outside fn and doesnt rely on react use state, doesnt have to change
+- web/react: + use_debug
+
+
