@@ -4,6 +4,8 @@ export function init_clipboard(on_copy) {
   _on_copy = on_copy
 }
 
+export const hook_after_copy = init_clipboard
+
 async function copy_text(text: string) {
   await navigator.clipboard.writeText(text);
 }

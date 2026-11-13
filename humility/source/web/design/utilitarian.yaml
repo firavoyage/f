@@ -69,16 +69,22 @@ palette:
   focus: color-mix(in oklab, palette.accent 50%, transparent)
 color:
   surface:
+    light: palette.gray.100
     dark: palette.gray.900
   on-surface:
+    light: palette.gray.900
     dark: palette.gray.100
   sidebar:
+    light: palette.gray.250
     dark: palette.gray.700
   user:
+    light: palette.gray.150
     dark: palette.gray.800
   field:
+    light: palette.gray.200
     dark: palette.gray.750
   scrollbar-thumb:
+    light: palette.gray.400
     dark: palette.gray.600
 typeface:
   # sans: Noto Sans, sans-serif

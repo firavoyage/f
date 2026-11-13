@@ -88,5 +88,6 @@ change
   - use js variable instead
   - web/state, which runs outside fn and doesnt rely on react use state, doesnt have to change
 - web/react: + use_debug
+- web/clipboard: alias(rename) `init_clipboard` as `hook_after_copy`
 
 

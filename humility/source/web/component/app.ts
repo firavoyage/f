@@ -10,6 +10,7 @@ import type { messages } from 'lib/generation'
 import { sidebar } from './sidebar'
 import { marked } from 'marked'
 const { parse: render } = marked
+import { copy } from 'lib/web/clipboard'
 
 const max_title_length = 65 * 2
 
@@ -115,7 +116,8 @@ export function app() {
       })
     },
     {
-      when: () => prompt && document.activeElement == field.current && !is_pending,
+      when: () =>
+        prompt && document.activeElement == field.current && !is_pending,
     },
   )
 
@@ -171,9 +173,9 @@ export function app() {
   // focus prompt on mount
   use_mount(() => {
     if (!field.current) {
-      return 
-    } 
-    
+      return
+    }
+
     field.current.focus()
   })
 
@@ -246,6 +248,15 @@ export function app() {
                     h('messages_message_content', {
                       html: render(message.content),
                     }),
+                    h(
+                      'button.message_copy',
+                      {
+                        onclick() {
+                          copy(message.content)
+                        },
+                      },
+                      'copy',
+                    ),
                   ),
                 ),
               ),
