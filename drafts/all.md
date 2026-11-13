@@ -1265,6 +1265,7 @@ humility:
 - implement web render md
 - implement thinking tool call
 - implement web
+- research web scraping
 
 legacy:
 

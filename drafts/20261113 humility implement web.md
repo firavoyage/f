@@ -242,76 +242,79 @@ Jan 8, 2025 — SEOs who emphasize Core Web Vitals and high page speed scores ar
 
 Show all
 
-# does google spider run js
+# what do ppl say on google core web vitals on ux, like whether it's exact these that matters the most, not more or others
 
-**Yes, Google’s web spider (Googlebot) runs JavaScript.** According to [Google Search Central](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics?gl=us), it uses a headless Chromium engine to execute scripts and render pages like a modern browser. [](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics?gl=us)
+The consensus among UX designers, developers, and SEO professionals is that **Google’s Core Web Vitals are a baseline floor for technical performance, not a complete measure of good user experience**. [](https://www.reddit.com/r/TechSEO/comments/1uftl8x/thoughts%5Fabout%5Fcore%5Fweb%5Fvitals%5Fin%5F2026/)
 
-### How Googlebot Processes JavaScript
+People generally agree that while these three metrics accurately capture the most frustrating technical issues, they do not cover everything that makes a website genuinely usable or enjoyable. [](https://www.redevolution.com/blog/everything-you-need-to-know-about-core-web-vitals)
 
-Google handles JavaScript web pages in three distinct phases rather than all at once: 
+### What Core Web Vitals Get Right
 
-* **Crawling.** Googlebot first fetches the raw HTML of a page. If the page returns a valid 200 HTTP status code, it is sent to a rendering queue. [](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics?gl=us)
-* **Rendering.** When Google’s computing resources allow, a headless Chromium browser loads the page, fetches CSS and JavaScript files, and executes the scripts to generate the final DOM. A study by [Onely](https://www.onely.com/blog/google-needs-9x-more-time-to-crawl-js-than-html/) notes that this rendering step can cause JavaScript-heavy pages to take significantly longer to process than static HTML. [](https://support.google.com/webmasters/thread/101240855/googlebot-crawling-my-js-files-why?hl=en&gl=us)
-* **Indexing.** Once rendering finishes, Google parses the resulting HTML for new links to crawl and uses the rendered content to index the page. [](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics?gl=us)
+* **They capture major technical frustrations.** According to [Google Search Central](https://developers.google.com/search/docs/appearance/core-web-vitals?gl=us), the three metrics—Largest Contentful Paint (LCP), Interaction to Next Paint (INP), and Cumulative Layout Shift (CLS)—measure loading speed, responsiveness, and visual stability. Developers agree these are the exact technical failures that cause users to immediately bounce from a site. [](https://developers.google.com/search/docs/appearance/core-web-vitals?gl=us)
+* **They reflect real-world user devices.** Instead of relying only on lab tests, these metrics use real field data from actual visitors, which gives a realistic picture of how a site performs on slower phones and networks. [](https://developers.google.com/search/docs/appearance/core-web-vitals?gl=us)
+* **They set a clear minimum standard.** As noted in discussions on [r/TechSEO on Reddit](https://www.reddit.com/r/TechSEO/comments/1uftl8x/thoughts%5Fabout%5Fcore%5Fweb%5Fvitals%5Fin%5F2026/), passing these metrics proves your site is functional and free of broken scripts or jumping layouts. [](https://www.reddit.com/r/TechSEO/comments/1uftl8x/thoughts%5Fabout%5Fcore%5Fweb%5Fvitals%5Fin%5F2026/)
 
-### Key Limitations and Caveats
+### Where They Fall Short (What Else Matters)
 
-Even though Googlebot executes JavaScript, developers and SEO specialists still face important constraints:
+* **Technical speed is not true UX.** Passing performance scores does not mean a site is easy to use. A page can load in under a second and still have confusing navigation, terrible copywriting, or a broken checkout flow.
+* **Diminishing returns after passing.** Once your scores reach the "Good" threshold, spending extra time squeezing out tiny millisecond gains rarely improves user satisfaction or search rankings.
+* **Broader UX signals exist outside the "Core" three.** Google’s wider Page Experience signals also look at HTTPS security, mobile-friendliness, and avoiding intrusive pop-ups.
+* **Human factors cannot be automated.** Visual design, accessibility for screen readers, clear information architecture, and helpful content matter far more for conversions and trust than technical speed alone. [](https://shopify.engineering/core-web-vitals)
 
-* **Blocked resources.** As users on [Webmasters Stack Exchange](https://webmasters.stackexchange.com/questions/5653/does-the-google-spider-render-javascript) agree, Googlebot cannot run scripts if your `robots.txt` file blocks access to your JavaScript or CSS files. [](https://webmasters.stackexchange.com/questions/5653/does-the-google-spider-render-javascript)
-* **Initial `noindex` tags.** SEO practitioners on [Reddit](https://www.reddit.com/r/TechSEO/comments/1kg117e/does%5Fgooglebot%5Fexecute%5Fjavascript%5Ffor%5Fmeta%5Ftags/) note that if a `noindex` meta tag is present in the initial raw HTML, Googlebot will skip the rendering phase completely and will not execute JavaScript meant to remove that tag. [](https://www.reddit.com/r/TechSEO/comments/1kg117e/does%5Fgooglebot%5Fexecute%5Fjavascript%5Ffor%5Fmeta%5Ftags/)
-* **Other crawlers and AI bots.** While Googlebot renders modern frameworks like React and Next.js reliably, a study highlighted on [LinkedIn](https://www.linkedin.com/posts/chris-long-marketing%5Fseo-study-new-data-shows-that-most-major-activity-7282388026167595009-0KFr) shows that most other AI crawlers (such as GPTBot, ClaudeBot, and PerplexityBot) do not execute JavaScript. Relying purely on client-side rendering can make your site invisible to those platforms. [](https://vercel.com/blog/how-google-handles-javascript-throughout-the-indexing-process)
+### The Bottom Line
 
-To check how Googlebot renders a specific page on your site, you can test it using the URL Inspection tool in Google Search Console. [](https://stackoverflow.com/questions/22588705/when-does-googlebot-execute-javascript)
+Think of Core Web Vitals like the plumbing and electricity in a house. You need them to work properly so the house is livable, and failing them ruins the experience. However, once the utilities work, what actually makes people want to stay is the layout, comfort, and usefulness of the rooms inside. [](https://www.reddit.com/r/TechSEO/comments/1uftl8x/thoughts%5Fabout%5Fcore%5Fweb%5Fvitals%5Fin%5F2026/)
 
-If you are troubleshooting a specific website, let me know:
+Are you looking at Core Web Vitals to improve **SEO rankings**, **conversion rates**, or **general site usability**? Let me know your main goal, and I can share which specific metrics or UX audits to prioritize first.
 
-* Which **framework** or tech stack you are using (e.g., React, Next.js, Vue)
-* Whether you are noticing **missing content** in Google Search or **slow indexing**
-
-I can help you check if server-side rendering or dynamic rendering would improve your setup.
-
-* [](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics?gl=us)  
-Google for Developers  
-Understand JavaScript SEO Basics | Google Search Central  
-March 4, 2026 — Googlebot parses the rendered HTML for links again and queues the URLs it finds for crawling. Google also uses the rendered HTML t...
-* [](https://www.reddit.com/r/TechSEO/comments/1kg117e/does%5Fgooglebot%5Fexecute%5Fjavascript%5Ffor%5Fmeta%5Ftags/)  
+* [](https://www.reddit.com/r/TechSEO/comments/1uftl8x/thoughts%5Fabout%5Fcore%5Fweb%5Fvitals%5Fin%5F2026/)  
 Reddit·r/TechSEO  
-Does Googlebot Execute JavaScript for Meta Tags? - Reddit  
-May 6, 2025 — If a \`noindex\` tag is present in the initial HTML, Googlebot tends to skip JavaScript rendering, which means any subsequent JavaSc...
-* [](https://stackoverflow.com/questions/22588705/when-does-googlebot-execute-javascript)  
-Stack Overflow  
-When does Googlebot execute javascript? - Stack Overflow  
-March 23, 2014 — Tools like "Fetch as Google" (now in Google Search Console's URL Inspection Tool) can help analyze how Googlebot sees a page.
+Thoughts about Core Web Vitals in 2026? : r/TechSEO - Reddit  
+June 26, 2026 — Core Web Vitals matter mainly as a baseline. Once you're in the “good” range, returns diminish, and work on UX, content structure,
+* [](https://www.redevolution.com/blog/everything-you-need-to-know-about-core-web-vitals)  
+Red Evolution  
+Everything You Need To Know About Core Web Vitals  
+June 18, 2025 — Google's Core Web Vitals are actually a set of metrics designed to measure the speed, responsiveness and visual stability of your ...
+* [](https://developers.google.com/search/docs/appearance/core-web-vitals?gl=us)  
+Google for Developers  
+Understanding Core Web Vitals and Google search results | Google Search Central | Documentation | Google for Developers  
+December 10, 2025 — Metrics measuring real-world user experience for loading … page experience also includes mobile friendliness, HTTPS usage, safe br...
 
 Show all
 
-# does cf turnstile greenlight googlebot specifically
+# how to avoid box shadow cropping
 
-**No, Cloudflare Turnstile does not automatically greenlight Googlebot** **.** Turnstile is a standalone widget designed to verify human visitors using browser and behavioral signals rather than an IP- or user-agent-based allowlist. [](https://developers.cloudflare.com/turnstile/tutorials/integrating-turnstile-waf-and-bot-management/)
+To avoid `box-shadow` cropping, give the shadow space to render outside the element's bounds or remove clipping rules on its parent containers. Shadows are drawn outside an element's border box, so any parent container with `overflow: hidden` or tight boundaries will cut them off. [](https://www.sitepoint.com/community/t/shadow-effect-is-being-clipped/29739)
 
-How Googlebot interacts with Turnstile and Cloudflare's broader bot protections depends on how you implement them:
+### Solutions for CSS & Web Development
 
-* **Standalone Turnstile widgets.** When you embed [Cloudflare Turnstile](https://developers.cloudflare.com/turnstile/get-started/) directly into a page or form, it treats all automated clients—including Googlebot—as non-human. Because Googlebot uses a headless Chromium browser for rendering and will not pass Turnstile's interactive or proof-of-work challenges, it cannot submit forms or load content gated behind a Turnstile token. [](https://developers.cloudflare.com/turnstile/get-started/)
-* **Cloudflare WAF and Challenges.** If you are using Cloudflare's Web Application Firewall (WAF) or Bot Management to serve Turnstile-powered challenges at the edge, Cloudflare maintains a list of **Verified Bots** (which includes Googlebot). Users on the [Cloudflare Community](https://community.cloudflare.com/t/allow-google-bot-with-rules/504109) agree that Cloudflare typically bypasses known good bots by default so they do not hit edge challenges. [](https://community.cloudflare.com/t/allow-google-bot-with-rules/504109)
-* **Custom Rules and Exceptions.** If you configure strict WAF rules (such as geo-blocking or aggressive rate limiting) that trigger Managed Challenges on search crawlers, you must explicitly greenlight them. You can do this by creating a WAF Skip rule using the `cf.client.bot` field, as outlined in the [Cloudflare WAF documentation](https://developers.cloudflare.com/waf/custom-rules/use-cases/allow-traffic-from-verified-bots/).
-* **AI Crawler Rules.** Under Cloudflare's AI Crawl Control policies (effective September 2026), Googlebot is classified as a multi-purpose crawler. If you enable settings to block **AI Training** crawlers, Cloudflare will block Googlebot at the edge regardless of Turnstile settings. [](https://www.seo-kreativ.de/en/blog/cloudflare-ki-crawler-googlebot/)
+* **Change parent overflow settings.** Set `overflow: visible` on the parent container so the shadow can extend past its edges. Note that setting `overflow-x: visible` alongside `overflow-y: auto` or `scroll` will still clip horizontal shadows due to W3C CSS Overflow specifications. [](https://medium.com/@timothyde/using-overflow-y-while-retaining-shadows-de5938f8fe1b)
+* **Add internal padding to the container.** Give the enclosing container enough `padding` to cover the shadow's blur radius and offset. This keeps the entire shadow inside the parent's content area so it never hits the clipping boundary. [](https://community.fandom.com/f/p/4400000000003628036)
+* **Use matching negative margins and padding.** When a parent must keep `overflow: hidden` or `overflow-y: scroll` (such as in a scrollable list or carousel), expand the container outward with a negative margin (e.g., `margin: -20px;`) and compensate with equal positive padding (`padding: 20px;`). This preserves your layout alignment while giving the shadow room to breathe. [](https://medium.com/@timothyde/using-overflow-y-while-retaining-shadows-de5938f8fe1b)
+* **Adjust stacking context and positioning.** If a sibling element covers your shadow, apply `position: relative` and a higher `z-index` to the shadowed element so it paints on top of neighboring blocks.
+* **Use inset shadows or tighter spreads.** If you cannot alter the parent container, switch to an `inset` shadow or apply a negative spread radius (e.g., `box-shadow: 0 4px 6px -4px rgba(0,0,0,0.3);`) to pull the shadow inward. [](https://css-tricks.com/snippets/css/css-box-shadow/)
 
-Are you trying to **allow Googlebot to index content** behind a Turnstile widget, or are you seeing **Googlebot get blocked** in your Cloudflare Security Events? Let me know your setup and I can walk you through the exact configuration to fix it.
+### Solutions for Design Tools (Figma & Framer)
 
-* [](https://www.linkedin.com/posts/goutham-shravan%5Fwebdev-cloudflare-websecurity-activity-7455915925997817857-gaOT)  
-LinkedIn·Goutham Shravan  
-Cloudflare Turnstile vs Google reCAPTCHA v3: Key Differences  
-May 1, 2026 — Turnstile: rotating non-interactive challenges Turnstile doesn't profile the user. It issues the browser a challenge — proof-of-wo...
-* [](https://www.seo-kreativ.de/en/blog/cloudflare-ki-crawler-googlebot/)  
-SEO-Kreativ  
-Cloudflare AI Crawler Rules: Does Your Block Lock Out Google?  
-October 24, 2026 — Ask AI about this article In its own announcement from 1 July 2026, Cloudflare names three bots that its own customers can lock ou...
-* [](https://developers.cloudflare.com/turnstile/tutorials/integrating-turnstile-waf-and-bot-management/)  
-Cloudflare Docs  
-Integrate Turnstile, WAF, & Bot Management - Cloudflare Docs  
-May 5, 2026 — WAF filters malicious traffic based on network signals. Bot Management analyzes requests to identify and mitigate automated threat...
+* **Disable content clipping in Figma.** Select the parent frame or auto-layout container and uncheck **Clip content** in the right-hand Design panel.
+* **Set overflow to visible in Framer.** Select the parent stack or grid and change the **Overflow** property from `Hidden` to `Visible`. [](https://www.youtube.com/watch?v=uzRyEWq9W0Y)
+
+Are you running into this issue in **CSS** (like inside a scrollable container or flexbox/grid) or a **design tool** like Figma? If you share your code snippet or layout setup, I can give you the exact fix.
+
+* [](https://www.reddit.com/r/framer/comments/1b25nha/shadow%5Fbeing%5Fcut%5Fby%5Fthe%5Fbox/)  
+Reddit·r/framer  
+shadow being cut by the box : r/framer - Reddit  
+Feb 28, 2024 — To fix this, you can try changing the overflow setting of your grid to 'visible'. This should allow the drop shadow to be visible ...
+* [](https://www.sitepoint.com/community/t/shadow-effect-is-being-clipped/29739)  
+SitePoint  
+Shadow Effect Is Being Clipped - HTML & CSS - SitePoint  
+Apr 22, 2013 — Padding sir, padding. Box shadows cannot extend outside the bounds of the containing element.
+* [](https://medium.com/@timothyde/using-overflow-y-while-retaining-shadows-de5938f8fe1b)  
+Medium·Timothy Krechel  
+Using overflow-y while retaining shadows | by Timothy Krechel  
+June 13, 2019 — setting a negative margin for the horizontal axis on the container, which makes it 64px wider in total. Then I added a horizontal ...
 
 Show all
+
 
 
