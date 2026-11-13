@@ -243,19 +243,22 @@ export function app() {
                 'messages',
                 map(messages, (message) =>
                   h(
-                    'messages_message',
+                    'message',
                     { role: message.role },
-                    h('messages_message_content', {
-                      html: render(message.content),
-                    }),
                     h(
-                      'button.message_copy',
-                      {
-                        onclick() {
-                          copy(message.content)
+                      'message_content',
+                      h('message_prose', {
+                        html: render(message.content),
+                      }),
+                      h(
+                        'button.message_copy',
+                        {
+                          onclick() {
+                            copy(message.content)
+                          },
                         },
-                      },
-                      'copy',
+                        'copy',
+                      ),
                     ),
                   ),
                 ),

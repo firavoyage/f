@@ -120,10 +120,13 @@ page:
   '& b, strong': font-semibold
   '& i, em, cite, dfn, address': italic
   '& pre, code': font-mono
-messages:
-  message: w-full py-8 flex justify-center
+message:
+  message: w-full pt-8 flex justify-center
+  # message: w-full py-8 flex justify-center
   message[role=user]: bg-user
-  message_content: w-prose
+  content: w-prose
+  copy: h-8
+  # copy: px-2
 prompt:
   prompt: w-full h-40 flex justify-center bg-field
   # prompt: absolute bottom-0 w-full h-40 flex justify-center bg-field

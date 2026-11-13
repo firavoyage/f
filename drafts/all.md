@@ -1045,6 +1045,7 @@ rhetoric:
 - interesting facts
 - compare quotation and italic
 - moology three things a small amount of work
+- rhetoric xianxue
 
 poetry:
 
