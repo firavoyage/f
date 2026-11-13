@@ -109,3 +109,9 @@ i may like `copy:has(content:hover)` to signal what's being styled first, though
 it's not really faster to join an array of strings than string add.
 
 <!-- maybe i missed sth from nickel angel discussion tg group, if i remembered -->
+
+14
+
+- time: do not floor milisec timestamp
+  - clearly such abstraction leaks
+  - and you dont have to use perf api

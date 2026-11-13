@@ -127,7 +127,8 @@ function timezone_to_offset(timezone?: timezone) {
 }
 
 function parse_js_time(date) {
-  const timestamp = floor(date.getTime() / 1000);
+  const timestamp = date.getTime() / 1000;
+  // const timestamp = floor(date.getTime() / 1000);
   const offset = date.getTimezoneOffset() * (-60);
 
   const year = date.getFullYear()
