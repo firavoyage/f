@@ -13,7 +13,9 @@ export * from 'lib/web/use variants'
 export * from 'lib/web/use event'
 export * from 'lib/web/use mouse glitch'
 
-export const use_ref = useRef
+export function use_ref(initial_value?: any) {
+  return useRef(initial_value)
+}
 
 export function use_state<T>(
   initial_value?: T,

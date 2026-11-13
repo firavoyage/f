@@ -13,6 +13,21 @@ const { parse: render } = marked
 
 const max_title_length = 65 * 2
 
+const jk_scroll_distance = 60
+const du_scroll_percentage = 0.5
+const space_scroll_percentage = 0.9
+// const space_scroll_percentage = 0.9
+const scroll_behavior: 'smooth' | 'instant' = 'instant'
+const distances = {
+  j: jk_scroll_distance,
+  k: -jk_scroll_distance,
+  d: du_scroll_percentage,
+  u: -du_scroll_percentage,
+  space: space_scroll_percentage,
+  'shift+space': -space_scroll_percentage,
+}
+const field_tags = ['input', 'textarea']
+
 type thread = {
   title: string
   folder: string
@@ -35,6 +50,8 @@ export function app() {
   const [thread, set_thread] = use_thread()
   const [messages, set_messages] = use_state<messages>([])
   const [is_new_thread, set_is_new_thread] = use_state(false)
+
+  const content = use_ref()
 
   use_effect(() => {
     set_threads(post('list'))
@@ -94,9 +111,61 @@ export function app() {
 
   use_keyboard('alt+n', new_thread)
 
+  // todo: make typing wo focus work, rather than making it always focused.
+  // _you may handle cjk im._
+
+  use_keyboard(
+    'space',
+    (e) => {
+      if (
+        has(field_tags, document.activeElement?.tagName.toLowerCase()) &&
+        prompt
+      ) {
+        return
+      }
+
+      e.preventDefault()
+      scroll_by(distances.space)
+    },
+    { prevent_default: false },
+  )
+
+  use_keyboard(
+    'shift+space',
+    (e) => {
+      if (
+        has(field_tags, document.activeElement?.tagName.toLowerCase()) &&
+        prompt
+      ) {
+        return
+      }
+
+      e.preventDefault()
+      scroll_by(distances['shift+space'])
+    },
+    { prevent_default: false },
+  )
+
   function new_thread() {
     set_thread('')
     // set_thread(post('new_thread'))
+  }
+
+  function scroll_by(distance: number) {
+    if (!content.current) {
+      return
+    }
+
+    let element = content.current
+
+    if (abs(distance) <= 1) {
+      distance = element.clientHeight * distance
+    }
+
+    element.scrollBy({
+      top: distance,
+      behavior: scroll_behavior,
+    })
   }
 
   return h(
@@ -156,6 +225,7 @@ export function app() {
           'page',
           h(
             scroll,
+            { ref: content },
             h(
               'page_content',
               h(
