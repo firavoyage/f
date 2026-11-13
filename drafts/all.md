@@ -1266,6 +1266,7 @@ humility:
 - implement thinking tool call
 - implement web
 - research web scraping
+- sec compare config file shell env vars and cli flags
 
 legacy:
 

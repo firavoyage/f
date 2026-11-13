@@ -595,4 +595,602 @@ September 27, 2025 — There currently is no way to automate headless Chromium b
 
 Show all
 
+# patchright alternatives
+
+The strongest alternatives to Patchright for stealth web scraping and browser automation are **Camoufox**, **nodriver**, and **CloakBrowser**. Each replaces or improves upon Patchright's approach by modifying browser binaries at the C++ level or eliminating the Playwright driver layer altogether. [](https://github.com/pim97/anti-detect-browser-tools-tech-comparison)
+
+### Top Patchright Alternatives
+
+Because Patchright focuses strictly on Chromium CDP-session leaks without altering hardware fingerprints, switching tools often depends on whether you need C++ fingerprint spoofing, a lighter footprint, or a different browser engine. [](https://github.com/feder-cr/invisible%5Fplaywright/wiki/vs-patchright)
+
+| Tool                                                                                   | Browser Engine    | Modification Method                                             | Languages             | Best For                                                               |
+| -------------------------------------------------------------------------------------- | ----------------- | --------------------------------------------------------------- | --------------------- | ---------------------------------------------------------------------- |
+| **Camoufox**                                                                           | Firefox fork      | C++ source patches with compiled fingerprint controls           | Python, TypeScript    | High-security enterprise WAFs and full fingerprint spoofing            |
+| **nodriver**                                                                           | Stock Chrome      | Direct async CDP over WebSocket without Playwright or WebDriver | Python                | Lightweight, fast crawls with minimal automation overhead              |
+| **[CloakBrowser](https://github.com/pim97/anti-detect-browser-tools-tech-comparison)** | Chromium fork     | C++ binary patches (open wrapper, proprietary binary)           | Python, Node.js, .NET | Drop-in Playwright/Puppeteer workflows needing deeper Chromium patches |
+| **SeleniumBase**                                                                       | Chrome / Chromium | Patched ChromeDriver (UC Mode) plus native CDP driver           | Python                | Built-in CAPTCHA handling and hybrid WebDriver/CDP automation          |
+| **Botasaurus**                                                                         | Chrome / Chromium | Raw CDP over WebSocket with human-like mouse simulation         | Python                | All-in-one scraping framework with built-in caching and anti-bot tools |
+
+### Other Notable Options
+
+* **Alternative Firefox wrappers.** Tools like **invisible\_playwright** apply C++ patches directly to a public Firefox fork. It gives you a Playwright-compatible interface on a non-Chromium engine. [](https://github.com/pim97/anti-detect-browser-tools-tech-comparison)
+* **All-in-one scraping frameworks.** **Scrapling** bundles stealth browser engines alongside fast TLS-spoofed HTTP clients like **curl\_cffi**. This lets you fall back to full browser rendering only when a site blocks lightweight requests. [](https://ianlpaterson.com/blog/anti-detect-browser-benchmark-patchright-nodriver-curl-cffi/)
+* **Chromium C++ forks.** Projects like **Clearcote** and **Donut Browser** maintain open-source C++ patch sets on Chromium for teams that want binary-level stealth without closed-source dependencies. [](https://github.com/pim97/anti-detect-browser-tools-tech-comparison)
+
+### How to Choose
+
+* **Prioritize fingerprint spoofing.** Choose **Camoufox** if your target checks canvas, WebGL, fonts, or audio fingerprints, as Patchright leaves machine-level signals untouched. [](https://github.com/feder-cr/invisible%5Fplaywright/wiki/vs-patchright)
+* **Maximize speed and lower RAM.** Choose **nodriver** (or its fork **Zendriver**) if you use Python and want to strip out the Playwright driver layer to reduce memory usage.
+* **Keep multi-language Playwright compatibility.** Choose **CloakBrowser** if you need Node.js or .NET support with deeper Chromium C++ modifications than Patchright's driver-level rewrite provides. [](https://github.com/pim97/anti-detect-browser-tools-tech-comparison)
+
+If you'd like help narrowing these down, let me know:
+
+* Your preferred **programming language** (Python, Node.js, or .NET)
+* The **anti-bot system** you are targeting (such as Cloudflare, Akamai, or DataDome)
+
+I can recommend the best setup and launch configuration for your stack.
+
+* [](https://github.com/pim97/anti-detect-browser-tools-tech-comparison)  
+GitHub  
+GitHub - pim97/anti-detect-browser-tools-tech  
+Playwright driver source patched at build time via AST rewrite | Python, Node, .NET. CloakBrowser | Chromium fork with C++ patches...
+* [](https://ianlpaterson.com/blog/anti-detect-browser-benchmark-patchright-nodriver-curl-cffi/)  
+ianlpaterson.com  
+Anti-Detect Browser Benchmark 2026: 7 Tools, 651 Verdicts  
+August 15, 2026 — 7 tools tested across 31 targets (651 verdicts). CloakBrowser and curl\_cffi scored 26 OK (2 blocked). Tool Specs: nodriver
+* [](https://github.com/feder-cr/invisible%5Fplaywright/wiki/vs-patchright)  
+GitHub  
+vs patchright · feder-cr/invisible\_playwright Wiki - GitHub  
+Sep 7, 2026 — Does Patchright fix fingerprinting? No, by its own scope. It fixes CDP-session automation tells, not fonts, GPU, canvas, or audio,
+
+Show all
+
+# pros cons of patchright and alternatives
+
+10:16 PM
+
+**Patchright is an open-source, drop-in fork of Playwright that patches Chrome DevTools Protocol (CDP) leaks at the driver level to bypass bot detection.** While it provides a fast migration path for existing Playwright users, it focuses strictly on Chromium and struggles against advanced behavioral or non-Chromium fingerprinting. [](https://github.com/pim97/anti-detect-browser-tools-tech-comparison/blob/master/patchright.md)
+
+### Pros of Patchright
+
+* **Drop-in Playwright replacement.** You can keep your existing Playwright codebase and simply swap the import statement. It supports Python, Node.js, and community .NET packages. [](https://github.com/pim97/anti-detect-browser-tools-tech-comparison/blob/master/patchright.md)
+* **Clean CDP-level patching.** Instead of injecting easily detected JavaScript shims, it removes `Runtime.enable` leaks and automation flags directly in the driver source. [](https://github.com/pim97/anti-detect-browser-tools-tech-comparison/blob/master/patchright.md)
+* **Automated upstream tracking.** Automated workflows test and release updates quickly after new upstream Playwright versions ship, reducing version lag. [](https://github.com/pim97/anti-detect-browser-tools-tech-comparison/blob/master/patchright.md)
+* **Enhanced DOM access.** It can interact with closed shadow roots and XPath selectors that standard Playwright cannot reach. [](https://github.com/pim97/anti-detect-browser-tools-tech-comparison/blob/master/patchright.md)
+* **Free and transparent.** Licensed under Apache 2.0, every patch is stored as a readable file so you can audit the exact changes. [](https://github.com/pim97/anti-detect-browser-tools-tech-comparison/blob/master/patchright.md)
+
+### Cons of Patchright
+
+* **Chromium-only support.** Unlike standard Playwright, it drops support for Firefox and WebKit.
+* **Limited behavioral protection.** It fixes protocol leaks, not human interaction patterns, leaving it vulnerable to systems that score mouse movements or advanced TLS/network signals.
+* **Reliance on system Chrome.** Achieving strong fingerprint protection often requires pairing it with a genuine local Chrome installation (`channel="chrome"`) rather than bundled Chromium binaries.
+* **Maintainer concentration.** Because it relies on a relatively small contributor base to rebase patches against frequent Playwright releases, there is ongoing maintenance risk. [](https://blog.send.win/patchright-vs-playwright-stealth-complete-comparison-alternatives-2026/)
+
+---
+
+### Top Alternatives to Patchright
+
+Depending on your target websites and infrastructure constraints, several alternatives solve different parts of the anti-detection problem. 
+
+| Tool                                                                                               | Engine / Base     | Primary Stealth Approach                                        | Best For                                                          | Key Trade-offs                                                          |
+| -------------------------------------------------------------------------------------------------- | ----------------- | --------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| **Camoufox**                                                                                       | Firefox (Gecko)   | C++-level fingerprint spoofing + Juggler protocol               | Hard targets that specifically flag Chromium browsers             | Higher memory usage and slower challenge resolution                     |
+| **Nodriver**                                                                                       | Chrome / Chromium | Direct asynchronous CDP without Playwright or Selenium overhead | Lightweight, fast execution (\~80–120MB RAM)                      | Lacks built-in behavioral simulation and requires custom scraping logic |
+| **SeleniumBase (UC Mode)**                                                                         | Chrome            | Undetected-Chromedriver patches + PyAutoGUI                     | Sites requiring automated CAPTCHA clicking and visual interaction | Slower execution and heavier Selenium API compared to Playwright        |
+| **Botasaurus**                                                                                     | Chrome            | CDP evasion + Bézier-curve human mouse movements                | Built-in human behavior simulation and caching out of the box     | Opinionated all-in-one framework rather than a simple driver swap       |
+| **[CloakBrowser](https://scrappey.com/qa/web-scraping-apis/anti-detect-browser-tools-comparison)** | Chromium          | 33 C++ engine-level patches + built-in humanization             | Deep Chromium fingerprint spoofing beyond CDP tweaks              | Heavier setup than a standard Python/Node library                       |
+| **TLS Clients (e.g., curl\_cffi)**                                                                 | HTTP / No Browser | Impersonates browser TLS and HTTP/2 fingerprints directly       | High-volume scraping on Akamai or API-heavy sites                 | Cannot execute JavaScript or render dynamic single-page apps            |
+
+### How to Choose
+
+* **Stick with Patchright** if you already have a Playwright codebase and need a fast, free way to bypass standard Cloudflare or DataDome checks on Chromium.
+* **Switch to Camoufox** if your target aggressively blocks Chromium environments or checks deep WebRTC, canvas, and audio fingerprints. On [Reddit](https://www.reddit.com/r/webscraping/comments/1lnam5u/camoufox%5Fvs%5Fpatchright/), users express mixed opinions on the trade-off, noting that while Camoufox often outperforms Patchright on strict anti-bot systems, its higher resource usage leads many developers to save it for targets where lighter tools fail.
+* **Drop the browser entirely** and use a TLS-impersonating HTTP client if your target relies heavily on network-level checks (like Akamai) and does not require full DOM rendering. [](https://www.reddit.com/r/webscraping/comments/1lnam5u/camoufox%5Fvs%5Fpatchright/)
+
+To help narrow down the best tool for your setup, let me know:
+
+* **Which anti-bot systems** you are encountering (e.g., Cloudflare, Akamai, DataDome)
+* Your **programming language** (Python, Node.js, etc.)
+* Your **scale and speed** requirements (high-frequency bulk scraping vs. low-volume workflows)
+
+I can recommend the exact configuration and proxy setup to match your target.
+
+* [](https://scrapewise.ai/blogs/patchright-vs-playwright-2026)  
+Scrapewise  
+Patchright vs Playwright 2026: What It Actually Patches  
+TLS impersonation beats every browser we tested (87% against Patchright's 74%) for roughly a quarter of the compute.
+* [](https://github.com/pim97/anti-detect-browser-tools-tech-comparison/blob/master/patchright.md)  
+GitHub  
+anti-detect-browser-tools-tech  
+Removes the Runtime.enable sends and the listed Chromium flags in the driver source. Drop-in Playwright API. Every patch is a read...
+* [](https://humanbrowser.cloud/blog/playwright-stealth-not-working-2026)  
+Human Browser  
+Playwright Stealth Not Working? Patchright vs Camoufox (2026)  
+Camoufox — Firefox stealth with C++-level patches. Best for: Hard targets that fingerprint Chromium variants specifically. Stronge...
+
+Show all
+
+# how to use patchright in js on ubuntu in headed mode wo showing window
+
+10:21 PM
+
+### how to use patchright in js on ubuntu in headed mode wo showing window
+
+To run [Patchright](https://ai.miraheze.org/wiki/Patchright) in headed mode on Ubuntu without showing a visible window on your screen, use **Xvfb (X Virtual Framebuffer)**. Xvfb creates an invisible virtual display in memory, allowing Chrome to run with `headless: false` so you keep full anti-bot stealth without needing a physical monitor or popping up a window. [](https://github.com/borski/patchright-docker)
+
+#### 1\. Install Dependencies on Ubuntu
+
+Update your system packages and install `xvfb` along with the required browser libraries. [](https://www.tothenew.com/blog/playwright-with-ci-cd-harnessing-headless-browsers-xvfb-for-seamless-automation-in-node-js/)
+
+bash
+
+```
+sudo apt-get update
+sudo apt-get install -y xvfb libnss3 libnspr4 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2
+
+```
+
+
+
+#### 2\. Install Patchright and Chrome
+
+Install the Patchright Node.js package and download the Google Chrome binary. Using the real `chrome` channel in headed mode provides the lowest bot detection rates. [](https://ai.miraheze.org/wiki/Patchright)
+
+bash
+
+```
+npm install patchright
+npx patchright install chrome
+
+```
+
+
+
+#### 3\. Configure Your JavaScript Script
+
+Set `headless: false` in your launch options. For maximum stealth as recommended by the [Patchright documentation](https://scrapewise.ai/blogs/what-is-patchright-guide-2026), use a persistent context with `channel: 'chrome'` and `viewport: null`. [](https://www.tothenew.com/blog/playwright-with-ci-cd-harnessing-headless-browsers-xvfb-for-seamless-automation-in-node-js/)
+
+javascript
+
+```
+// index.js
+import { chromium } from 'patchright';
+
+(async () => {
+  const context = await chromium.launchPersistentContext('./user_data', {
+    channel: 'chrome',
+    headless: false,
+    viewport: null,
+  });
+
+  const page = await context.newPage();
+  await page.goto('https://bot.sannysoft.com/');
+  console.log('Page title:', await page.title());
+
+  await context.close();
+})();
+
+```
+
+
+
+#### 4\. Run with `xvfb-run`
+
+Wrap your Node execution command with `xvfb-run`. The `-a` (auto-servernum) flag automatically finds a free virtual display number, and `--server-args` sets a realistic screen resolution. [](https://github.com/b1zya/patchright-cli/blob/main/README.md)
+
+bash
+
+```
+xvfb-run -a --server-args="-screen 0 1920x1080x24" node index.js
+
+```
+
+
+
+#### Optional: Run Xvfb as a Background Service
+
+If you run multiple scripts frequently and want to avoid starting and stopping Xvfb on every execution, start a persistent virtual display in the background and point Node to it via the `DISPLAY` environment variable.
+
+* **Start the virtual display** in the background on display `:99`.  
+bash  
+```  
+Xvfb :99 -screen 0 1920x1080x24 &  
+```  
+
+* **Run your script** by passing the display variable directly.  
+bash  
+```  
+DISPLAY=:99 node index.js  
+```  
+
+
+If you'd like help taking this further, let me know:
+
+* Whether you are running this inside a **Docker container** or on a **bare-metal/VPS Ubuntu server**
+* If you need to route traffic through **authenticated proxies**
+
+I can share a ready-to-use `Dockerfile` or proxy configuration snippet tailored to your setup.
+
+* [](https://www.tothenew.com/blog/playwright-with-ci-cd-harnessing-headless-browsers-xvfb-for-seamless-automation-in-node-js/)  
+TO THE NEW  
+Playwright with CI/CD: Harnessing Headless Browsers (Xvfb) for ...  
+To run browsers in headed mode with Xvfb, add xvfb-run before the test execution node command. xvfb-run npx playwright test
+* [](https://scrapewise.ai/blogs/what-is-patchright-guide-2026)  
+Scrapewise  
+What Is Patchright? Install, Patches, Limits (2026) - Scrapewise  
+For the fullest effect, the project's README recommends real Google Chrome (patchright install chrome), a persistent context, head...
+* [](https://github.com/b1zya/patchright-cli/blob/main/README.md)  
+GitHub  
+patchright-cli/README.md at main - b1zya - GitHub  
+opens a maximized real window. The mode is chosen in this order: an explicit flag, then stealth.headless … env reports whether a d...
+
+Show all
+
+## can you see it for debugging
+
+can you see it for debugging
+
+10:21 PM
+
+### can you see it for debugging
+
+**Yes, you can view and interact with the hidden Xvfb browser window** for debugging without changing your script or switching out of virtual display mode. You have three main ways to see what is happening inside Xvfb.
+
+#### 1\. Live Stream with x11vnc (Best for Interactive Debugging)
+
+You can attach a VNC server to your running Xvfb display to view the live browser screen and click around using any VNC client (like RealVNC, TigerVNC, or macOS Screen Sharing).
+
+* **Install x11vnc** on your Ubuntu machine.  
+bash  
+```  
+sudo apt-get install -y x11vnc  
+```  
+
+* **Start Xvfb** on a specific display number (such as `:99`) so you know where to connect.  
+bash  
+```  
+Xvfb :99 -screen 0 1920x1080x24 &  
+```  
+
+* **Attach x11vnc** to that same display in a separate terminal tab or in the background.  
+bash  
+```  
+x11vnc -display :99 -nopw -forever -shared &  
+```  
+
+* **Run your script** on display `:99`.  
+bash  
+```  
+DISPLAY=:99 node index.js  
+```  
+
+* **Connect your VNC viewer** to `your-server-ip:5900` (use an SSH tunnel like `ssh -L 5900:localhost:5900 user@server` if you are on a remote VPS).
+
+#### 2\. View in a Web Browser with noVNC
+
+If you do not want to install a VNC desktop client, you can wrap `x11vnc` with `noVNC` to watch the virtual screen directly in a web browser tab.
+
+* **Install novnc and websockify** alongside `x11vnc`.  
+bash  
+```  
+sudo apt-get install -y x11vnc novnc websockify  
+```  
+
+* **Launch the web proxy** after starting Xvfb and `x11vnc` on port 5900.  
+bash  
+```  
+websockify -D --web=/usr/share/novnc/ 6080 localhost:5900  
+```  
+
+* **Open the live view** by visiting `http://localhost:6080/vnc.html` in your local browser.
+
+#### 3\. Snapshots, Videos, and Traces (Best for Quick Checks)
+
+If you do not need live mouse control, you can capture visual output directly through Patchright or X11 tools.
+
+* **Patchright screenshots and video**: Add `recordVideo: { dir: './videos/' }` to your `launchPersistentContext` options, or call `await page.screenshot({ path: 'debug.png' })` right before a failing step.
+* **Playwright Trace Viewer**: Record a full step-by-step timeline with DOM snapshots by calling `await context.tracing.start({ screenshots: true, snapshots: true })` and saving it with `await context.tracing.stop({ path: 'trace.zip' })`.
+* **Instant Xvfb screenshot**: Grab a raw image of whatever is currently on display `:99` from your terminal using ImageMagick (`sudo apt-get install -y imagemagick`).  
+bash  
+```  
+DISPLAY=:99 import -window root screen.png  
+```  
+
+
+Are you debugging on a **local Ubuntu desktop** or a **remote VPS/Docker container**? Knowing your setup will let me give you the exact SSH tunnel or port-forwarding commands to view the screen safely.
+
+## how to use functions inside indexjs normally
+
+how to use functions inside indexjs normally
+
+10:26 PM
+
+### how to use functions inside indexjs normally
+
+You can handle the Xvfb setup directly inside `index.js` using the **`xvfb` npm package**, allowing you to run `node index.js` normally without needing special terminal wrapper commands.
+
+#### 1\. Install the `xvfb` Node Package
+
+Keep the system `xvfb` package installed on Ubuntu, and add the lightweight `xvfb` Node wrapper to your project.
+
+bash
+
+```
+npm install xvfb
+
+```
+
+
+
+#### 2\. Wrap Your Patchright Functions in `index.js`
+
+Start the virtual display right before launching Patchright, run your normal async functions, and stop the display in a `finally` block so it never leaves orphaned processes running.
+
+javascript
+
+```
+// index.js
+import { chromium } from 'patchright';
+import Xvfb from 'xvfb';
+
+// Configure the virtual screen
+const xvfb = new Xvfb({
+  silent: true,
+  xvfb_args: ['-screen', '0', '1920x1080x24', '-ac'],
+});
+
+// Your normal scraping/automation functions
+async function scrapeTarget(page, url) {
+  await page.goto(url, { waitUntil: 'networkidle' });
+  const title = await page.title();
+  return title;
+}
+
+async function run() {
+  // Start virtual display only on Linux (skips automatically if testing on Mac/Windows)
+  if (process.platform === 'linux') {
+    xvfb.startSync();
+  }
+
+  let context;
+  try {
+    context = await chromium.launchPersistentContext('./user_data', {
+      channel: 'chrome',
+      headless: false,
+      viewport: null,
+    });
+
+    const page = await context.newPage();
+
+    // Call your functions normally
+    const pageTitle = await scrapeTarget(page, 'https://sannysoft.com');
+    console.log('Result:', pageTitle);
+
+  } finally {
+    if (context) await context.close();
+    if (process.platform === 'linux') {
+      xvfb.stopSync();
+    }
+  }
+}
+
+run();
+
+```
+
+
+
+#### 3\. Run Normally
+
+You can now execute your script with standard Node commands, npm scripts, or process managers like PM2.
+
+bash
+
+```
+node index.js
+
+```
+
+
+
+#### Optional: Easy Toggle for Debugging
+
+If you want to quickly switch between hiding the window and seeing it on your Ubuntu desktop (or via VNC), use an environment variable to skip `xvfb.startSync()`.
+
+* **Add a toggle check** in your code.  
+javascript  
+```  
+const useXvfb = process.platform === 'linux' && process.env.DEBUG !== 'true';  
+if (useXvfb) xvfb.startSync();  
+```  
+
+* **Run invisibly** as your default behavior.  
+bash  
+```  
+node index.js  
+```  
+
+* **Run visibly** on your main screen whenever you need to debug.  
+bash  
+```  
+DEBUG=true node index.js  
+```  
+
+
+If you'd like to structure this into a reusable module, let me know:
+
+* Whether you are using **ESM (`import`)** or **CommonJS (`require`)** in your project
+* If you need to run **multiple browser instances concurrently**
+
+I can show you how to export a clean `launchStealthBrowser()` helper function for your codebase.
+
+## how does it work to just have one line to capture the window
+
+how does it work to just have one line to capture the window
+
+10:27 PM
+
+### how does it work to just have one line to capture the window
+
+To capture a screenshot of your hidden browser in a single line inside `index.js`, use Patchright's built-in **`page.screenshot()`** method or wrap the whole script with **`context.tracing`**.
+
+#### Option 1: One-Line Screenshot Anywhere in Your Code
+
+Place this single line right after any action or inside a `catch` block to save an image of the current browser viewport to your project folder.
+
+javascript
+
+```
+await page.screenshot({ path: 'debug.png' });
+
+```
+
+
+
+* **Capture the entire scrollable page** instead of just the visible screen by adding `fullPage: true`.  
+javascript  
+```  
+await page.screenshot({ path: 'debug.png', fullPage: true });  
+```  
+
+
+#### Option 2: Record Every Step Automatically (2 Lines)
+
+If you do not know where your script is failing, add one line after creating your `context` and one line before closing it to record a complete visual timeline.
+
+javascript
+
+```
+await context.tracing.start({ screenshots: true, snapshots: true }); // Line 1: Start recording
+
+// ... your normal automation functions ...
+
+await context.tracing.stop({ path: 'trace.zip' }); // Line 2: Save recording
+
+```
+
+
+
+* **View the recording** by running `npx playwright show-trace trace.zip` in your terminal or dragging `trace.zip` onto `trace.playwright.dev` in any browser.
+
+#### Example Inside `index.js`
+
+Here is how a single screenshot line fits cleanly into your normal functions.
+
+javascript
+
+```
+async function scrapeTarget(page, url) {
+  await page.goto(url, { waitUntil: 'networkidle' });
+  
+  // One line to capture what the hidden browser sees right now
+  await page.screenshot({ path: 'debug.png' });
+  
+  return await page.title();
+}
+
+```
+
+
+
+#### How It Works Under the Hood
+
+Even though Xvfb has no physical monitor attached, Chrome still renders every pixel into Xvfb's virtual memory buffer just like a real screen. Patchright communicates directly with Chrome via the Chrome DevTools Protocol (CDP) to copy that rendered frame buffer and save it straight to your disk as a PNG file.
+
+Would you like to see how to automatically trigger that one-line screenshot **only when an error occurs** using a `try/catch` wrapper?
+
+## how does it work to just have one magic line of start sync to capture the window in void wo showing
+
+how does it work to just have one magic line of start sync to capture the window in void wo showing
+
+10:28 PM
+
+### how does it work to just have one magic line of start sync to capture the window in void wo showing
+
+You can achieve this by adding a single **`new Xvfb().startSync()`** line at the very top of `index.js`, and registering a cleanup listener on the same line or relying on process exit so you never have to touch your existing functions.
+
+#### The One-Line Magic Setup
+
+Add this single line right after your imports at the top of `index.js`.
+
+javascript
+
+```
+// index.js
+import { chromium } from 'patchright';
+import Xvfb from 'xvfb';
+
+// Magic line: starts virtual display in void and cleans up automatically when Node exits
+if (process.platform === 'linux') { const x = new Xvfb({ silent: true }); x.startSync(); process.on('exit', () => x.stopSync()); }
+
+// --- Your existing code stays 100% untouched below ---
+async function main() {
+  const context = await chromium.launchPersistentContext('./user_data', {
+    channel: 'chrome',
+    headless: false,
+    viewport: null,
+  });
+
+  const page = await context.newPage();
+  await page.goto('https://sannysoft.com');
+  console.log(await page.title());
+  await context.close();
+}
+
+main();
+
+```
+
+
+
+#### How That Single Line Works
+
+* **`new Xvfb({ silent: true })`**: Creates a virtual X11 display instance in memory and suppresses console logs.
+* **`.startSync()`**: Spawns the hidden `Xvfb` background process on an unused display number (like `:99`) and immediately sets `process.env.DISPLAY = ':99'` inside your current Node process.
+* **Automatic Window Capture**: Because `process.env.DISPLAY` is now pointed at the virtual framebuffer before Patchright launches Chrome, Chrome automatically attaches its GUI window to that invisible void instead of your real desktop screen.
+* **`process.on('exit', () => x.stopSync())`**: Hooks into Node's native exit event so the background `Xvfb` process is killed cleanly the moment your script finishes or crashes, preventing zombie processes.
+
+If you'd like to pass custom screen dimensions (like `1920x1080`) or toggle visibility with an environment variable inside that one-liner, let me know and I can adjust it for you!
+
+## how does it work to just have one magic line of start sync to capture the window in void wo showing, i mean to capture inside such display, not screenshot
+
+how does it work to just have one magic line of start sync to capture the window in void wo showing, i mean to capture inside such display, not screenshot
+
+10:28 PM
+
+### how does it work to just have one magic line of start sync to capture the window in void wo showing, i mean to capture inside such display, not screenshot
+
+Calling **`new Xvfb().startSync()`** at the top of `index.js` intercepts Chrome's graphical output by **overwriting the `DISPLAY` environment variable** before Chrome launches. Chrome automatically paints its window into that invisible display buffer instead of your physical monitor.
+
+#### How the Interception Works Under the Hood
+
+1. **Chrome checks `DISPLAY` on launch:** Whenever a headed GUI application starts on Linux, it reads `process.env.DISPLAY` (normally `:0` or `:1` for your real monitor) to ask the X11 server where to draw its window.
+2. **`startSync()` hijacks `process.env.DISPLAY`:** When `new Xvfb().startSync()` runs, it spawns a headless virtual X server in RAM on a free display number (for example, `:99`) and immediately sets `process.env.DISPLAY = ':99'` inside your Node process.
+3. **Child process inheritance:** When Patchright spawns the Chrome binary, Chrome inherits Node's modified environment variables. Chrome connects to display `:99` instead of `:0`, trapping its window inside the virtual display in memory without ever touching your desktop window manager.
+
+#### The Single-Line Setup
+
+Put this single line at the very top of `index.js` before calling Patchright.
+
+javascript
+
+```
+import { chromium } from 'patchright';
+import Xvfb from 'xvfb';
+
+// Magic line: spawns invisible display :99, hijacks process.env.DISPLAY, and auto-cleans on exit
+if (process.platform === 'linux') { const x = new Xvfb({ silent: true }); x.startSync(); process.on('exit', () => x.stopSync()); }
+
+```
+
+
+
+#### Important Rules for This to Work
+
+* **Must run before `chromium.launch`:** `startSync()` has to execute before Patchright starts the browser so Chrome inherits the new `DISPLAY` value.
+* **No code changes needed inside functions:** Because `process.env.DISPLAY` is set globally for the Node process, any browser instance you launch anywhere in your functions automatically goes straight into that void display.
+* **Works with `headless: false`:** Chrome thinks it is rendering to a real physical screen, preserving full headed graphics, WebGL, and anti-bot fingerprint signals while staying completely invisible.
+
+Would you like to know how to set a **custom screen resolution** (like `1920x1080`) inside that one-liner so Chrome doesn't default to a small `1280x1024` virtual screen?
+
 

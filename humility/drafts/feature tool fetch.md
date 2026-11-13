@@ -3,11 +3,10 @@ fetch
 deps
 
 - patchright
-  - you may assign some preconfigured persistent chrome profile (e.g. w ublock plugin).
+  - you may plug in some preconfigured persistent chrome profile (e.g. w ublock plugin).
 - xvfb (for headed wo window)
   - alternatively you may do it on x11 level, which can be hacky
 - mozilla readability
-
 
 output
 
