@@ -1,4 +1,4 @@
-import { new_thread, send } from 'action/index'
+import { hide, new_thread, send } from 'action/index'
 
 const thread = new_thread({ title: 'be concise, what do ppl feel' })
 // const thread = new_thread()
@@ -20,3 +20,5 @@ log(
     model: 'google/gemma-4-26b-a4b-it',
   }),
 )
+
+hide(thread)

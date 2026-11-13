@@ -491,3 +491,33 @@ things changed!
 
 quite weird, some drafts/todo are in purpose
 
+13
+
+```
+    900: oklch(11% 0 0)
+    950: oklch(7.5% 0 0)
+```
+
+well you can hardly tell that.
+
+```
+    50: oklch(99.5% 0 0)
+    100: oklch(98.5% 0 0)
+    150: oklch(97% 0 0)
+    200: oklch(95% 0 0)
+    250: oklch(92.5% 0 0)
+```
+
+it's true that humans notice subtle differences in light colors!
+
+---
+
+i do wanna keep the 50 steps!
+
+---
+
+alternatively, you may start from actual use cases and think what's needed for it to be achieved
+
+that's the way to go when you are stuck, or when you just finished a bunch of todos.
+
+

@@ -1,7 +1,9 @@
+// oklch.ts
+
 import { serialize, deserialize } from 'action/index'
 
 const scale = {
-  0: 1.0,
+  // 0: 1.0,
   50: 0.995,
   100: 0.985,
   150: 0.97,
@@ -20,8 +22,9 @@ const scale = {
   800: 0.22,
   850: 0.16,
   900: 0.11,
-  950: 0.075,
-  1000: 0.05,
+  // 950: 0.075,
+  // 1000: 0.05,
 }
 
-log(serialize(obj(map(scale, ([number, l]) => [number, `oklch(${l * 100}% 0 0)`]))))
+log(map(scale, ([number, l]) => `${number}: oklch(${l * 100}% 0 0)`).join('\n'))
+// log(serialize(obj(map(scale, ([number, l]) => [number, `oklch(${l * 100}% 0 0)`]))))

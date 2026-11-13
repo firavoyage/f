@@ -87,9 +87,7 @@ export function app() {
     })
   })
 
-  use_effect(() => {})
-
-  use_keyboard('ctrl+n', new_thread)
+  use_keyboard('alt+n', new_thread)
 
   function new_thread() {
     set_thread('')

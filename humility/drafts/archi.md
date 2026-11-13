@@ -38,5 +38,24 @@ plugins
 
 plugins are decorators.
 
-a decorator takes the fn itself along w 
+a decorator takes the fn itself along w all args.
 
+hooks are specific decorators.
+
+for example, search
+
+- search
+  - (generate search query)
+  - query results: query -> link[]
+  - decide pages to fetch: link[] -> link[]
+  - fetch pages: link[] -> page[]
+
+functions are pure.
+
+they either abstract or compose (pipe).
+
+chances are these pages are generally static but 
+
+and you can cache.
+
+it's especially

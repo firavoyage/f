@@ -24,9 +24,12 @@ export async function send(options: send) {
   const current_config = deserialize(read(config_file))
   const current_env = deserialize(read(env_file))
 
-  const { providers, default_model } = current_config
   // providers must not be empty
-  const { default_provider = entries(providers)[0][0] } = current_config
+  const {
+    providers,
+    default_model,
+    default_provider = entries(providers)[0][0],
+  } = current_config
 
   let { content, thread, model = default_model, ...params } = options
 

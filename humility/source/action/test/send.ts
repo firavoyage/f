@@ -1,4 +1,4 @@
-import { new_thread, send } from 'action/index'
+import { hide, new_thread, send } from 'action/index'
 
 // const prompt = 'be concise, what do ppl feel'
 const prompt = 'hello world'
@@ -16,3 +16,5 @@ log(
     reasoning_effort: 'high'
   }),
 )
+
+hide(thread)
