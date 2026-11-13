@@ -60,6 +60,10 @@ for autocomplete, you may go
 - like omnibox, treating autocomplete as content, unless explicitly deleted
 - like shell, treating autocomplete as content only when after tab
 
-you may trigger mv dest on ctrl x. 
+you may trigger mv dest on ctrl x if you do not expect navigation to ctrl v (e.g. you dont wanna traverse items or "focus an item").
 
+in that case, you may treat (shift) tab like folder traversal (assuming omnibox)
 
+- ~~'foo/bar'/asdf~~ 'foo'/bar/asdf
+- tab: 'bar', 'asdf'
+  - shift tab vice versa
