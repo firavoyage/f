@@ -35,4 +35,22 @@ it's easy and it doesnt matter whether it's in scope.
 
 ---
 
+a scraping bot would be easy as soon as you can fetch any page.
+
+a naive approach:
+
+- append all links to pending set, excluding
+  - currently visited
+    - maybe this run, maybe in a time range (or ever)
+  - outside current site
+    - or certain url structure: url -> boolean
+  - too deep
+    - you may maintain map url -> depth
+    - like, after fetching, you may check its depth to decide whether to append, and if you do you append all w depth + 1
+  - too many
+    - you may count the pages visited
+  - timeout, etc.
+
+you may fetch and update pending set at an interval or dynamically (randomly or specifically)
+
 

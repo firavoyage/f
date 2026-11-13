@@ -129,6 +129,7 @@ export function app() {
 
   // todo: make typing wo focus work, rather than making it always focused.
   // _you may handle cjk im._
+  
 
   map(scroll_shortcuts, ([shortcut, distance]) => {
     use_keyboard(
@@ -177,8 +178,6 @@ export function app() {
 
     field.current.focus()
   })
-
-  use_debug(prompt)
 
   return h(
     h('title.', 'Humility'),
