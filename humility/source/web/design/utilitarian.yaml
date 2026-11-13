@@ -56,17 +56,22 @@ app:
 sidebar:
   sidebar: w-xs h-full
 main:
-  main: relative grow-1
+  main: grow-1 flex-col
+  # main: grow-1 relative
 page:
   # page: flex justify-center py-8 pb-48
   # content: w-prose
-  content: overflow-x-hidden mb-40
+  page: overflow-hidden flex-1
+  # page: size-full
+  content: overflow-x-hidden
+  # content: overflow-x-hidden mb-40
 messages:
   message: w-full py-8 flex justify-center
   message[role=user]: bg-user
   message_content: w-prose
 prompt:
-  prompt: absolute bottom-0 w-full h-40 flex justify-center bg-field
+  prompt: w-full h-40 flex justify-center bg-field
+  # prompt: absolute bottom-0 w-full h-40 flex justify-center bg-field
   field: w-prose
   textarea: py-8
 textarea:

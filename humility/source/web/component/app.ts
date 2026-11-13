@@ -150,9 +150,9 @@ export function app() {
       h(
         'main',
         h(
-          scroll,
+          'page',
           h(
-            'page',
+            scroll,
             h(
               'page_content',
               h(

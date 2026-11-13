@@ -532,4 +532,10 @@ that's not how humility works. it's not engineered to prevent hackers.
 
 for max title length, it will be implemented on app, and "users" can actually change their sec policies. we assume local servers first.
 
+---
+
+it can be over engineering to care whether to use 65ch or rem representation for now.
+
+i see on google ai mode they use hardcoded `--center-width: 652px`. but it's flawed engineering anyway w tons of debts originating from big tech governance problems.
+
 
