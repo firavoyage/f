@@ -38,7 +38,7 @@ plugins
 
 plugins are decorators.
 
-a decorator takes the fn itself along w all args.
+~~a decorator takes the fn itself along w all args.~~ a decorator takes the fn and returns the wrapped one.
 
 hooks are specific decorators.
 
@@ -46,7 +46,7 @@ for example, search
 
 - search
   - (generate search query)
-  - query results: query -> link[]
+  - get search results: query -> link[]
   - decide pages to fetch: link[] -> link[]
   - fetch pages: link[] -> html[]
   - read pages: html[] -> md[]
@@ -66,7 +66,12 @@ specifically
 - you would decorate the fetch fn to use caches in project have
   - you could not alter fn type though. if you wanna introduce some new param, like "no cache", you may disable the builtin fn and add your own. you may name the same as long as they are not enabled simultaneously
 - you may decorate send
-  - you may simulate llm tool call, like fetch, directly if you know it needs such page content or file content
+  - you may simulate llm tool call, like fetch, directly, if you know it needs such page content or file content
+  - simply, you may just alter user msg to append or prepend such attachment
+  - alternatively, ~~you may prepend tool call (assistant) and tool result (user)~~
+    - well you could not start w assistant msg
+      - though conceptually it could be proactive
+  - or append user msg, assistant tool call, and send the tool result instead (or you may send alongside the initial msg if matters)
 
 on web, it can get a little bit tricky, as they are not strictly pure fn.
 
@@ -83,5 +88,13 @@ so, in conclusion
 - on backend
   - you hook specific fn on tool calls
   - to implement, you may wrap everything on index, which tries to read hooks by fn name (fn -> hook[] -> hook js), and await import, so you can dynamically inject hooks on the fly
+
+multiple decorators pipe from first to last.
+
+for search, it doesnt even have a standard implementation. so a decorator might not have to really literally "decorate" it.
+
+for example, you may put the foundation implementation of such decorator first.
+
+a function wo implementation is identity fn.
 
 

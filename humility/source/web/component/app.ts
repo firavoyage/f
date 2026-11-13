@@ -11,6 +11,8 @@ import { sidebar } from './sidebar'
 import { marked } from 'marked'
 const { parse: render } = marked
 
+const max_title_length = 65 * 2
+
 type thread = {
   title: string
   folder: string

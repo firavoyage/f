@@ -520,4 +520,16 @@ alternatively, you may start from actual use cases and think what's needed for i
 
 that's the way to go when you are stuck, or when you just finished a bunch of todos.
 
+---
+
+ideally, sec should be implemented on server side, and sync w client w best effort (e.g. to optimize frontend wo making an api call, like for invalid input)
+
+that's not the easy way.
+
+and actually there are infinite ways to crush your server if you do not rate limit, implement max payload size, or use captchas.
+
+that's not how humility works. it's not engineered to prevent hackers.
+
+for max title length, it will be implemented on app, and "users" can actually change their sec policies. we assume local servers first.
+
 
