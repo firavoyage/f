@@ -51,4 +51,15 @@ you could define the full path of one individual file arbitrarily. it's clearly 
 
 you may ctrl (shift) z
 
+---
+
+you may have all prompts on the top of the screen like vscode command palette or browser native prompt.
+
+for autocomplete, you may go
+
+- like omnibox, treating autocomplete as content, unless explicitly deleted
+- like shell, treating autocomplete as content only when after tab
+
+you may trigger mv dest on ctrl x. 
+
 

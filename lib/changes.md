@@ -106,4 +106,6 @@ i may like `copy:has(content:hover)` to signal what's being styled first, though
 
 - web/style: produce cleaner css by merging utils of the same selector into one
 
+it's not really faster to join an array of strings than string add.
 
+<!-- maybe i missed sth from nickel angel discussion tg group, if i remembered -->

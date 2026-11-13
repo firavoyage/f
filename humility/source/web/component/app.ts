@@ -9,7 +9,6 @@ import { post } from 'lib/web/request'
 import type { messages } from 'lib/generation'
 import { sidebar } from './sidebar'
 import { marked } from 'marked'
-const { parse: render } = marked
 import { copy } from 'lib/web/clipboard'
 
 const max_title_length = 65 * 2
@@ -179,6 +178,8 @@ export function app() {
     field.current.focus()
   })
 
+  use_debug(prompt)
+
   return h(
     h('title.', 'Humility'),
     h(
@@ -286,4 +287,11 @@ export function app() {
       ),
     ),
   )
+}
+
+function render(md: string) {
+  return marked.parse(md, {
+    gfm: true,
+    breaks: true
+  })
 }

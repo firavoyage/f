@@ -58,6 +58,13 @@ you may fade in loc if it's merely a code block.
 
 web: scrollbar transition
 
+---
+
+web: drag
+
+- resize sidebar
+- move threads
+
 ## w
 
 # backlog

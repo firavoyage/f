@@ -163,6 +163,7 @@ type use_state = typeof use_state
 type use_effect = typeof use_effect
 type use_mount = typeof use_mount
 type use_layout_effect = typeof use_layout_effect
+type use_debug = typeof use_debug
 type set_timeout = typeof set_timeout
 type set_interval = typeof set_interval
 type listen = typeof listen
@@ -178,6 +179,7 @@ declare global {
   var use_effect: use_effect
   var use_mount: use_mount
   var use_layout_effect: use_layout_effect
+  var use_debug: use_debug
   var set_timeout: set_timeout
   var set_interval: set_interval
   var listen: listen

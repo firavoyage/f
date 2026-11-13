@@ -1740,8 +1740,11 @@ export function style(theme) {
   let css = ''
 
   function append_css(selector, props) {
-    
-    css += `${selector} { ${prop}: ${value} }\n`
+    css += `${selector} {\n`
+    for (const [prop, value] of entries(props)) {
+      css += `  ${prop}: ${value};\n`
+    }
+    css += `}\n\n`
   }
   // function append_css(selector, prop, value) {
   //   css += `${selector} { ${prop}: ${value} }\n`
@@ -1777,17 +1780,20 @@ export function style(theme) {
           selector += `, :root`
         }
 
-        append_css(selector, css_variable_definition(k), value)
+        append_style(selector, css_variable_definition(k), value)
+        // append_css(selector, css_variable_definition(k), value)
       }
     } else {
-      append_css(':root', css_variable_definition(k), v)
+      append_style(':root', css_variable_definition(k), v)
+      // append_css(':root', css_variable_definition(k), v)
     }
   }
 
-  for (const [selector, pairs] of entries(styles)) {
-    for (const [prop, value] of entries(pairs)) {
-      append_css(selector, prop, value)
-    }
+  for (const [selector, props] of entries(styles)) {
+    append_css(selector, props)
+    // for (const [prop, value] of entries(pairs)) {
+    //   append_css(selector, prop, value)
+    // }
   }
 
   function css_variable(k) {
