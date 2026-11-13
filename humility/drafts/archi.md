@@ -48,14 +48,40 @@ for example, search
   - (generate search query)
   - query results: query -> link[]
   - decide pages to fetch: link[] -> link[]
-  - fetch pages: link[] -> page[]
+  - fetch pages: link[] -> html[]
+  - read pages: html[] -> md[]
 
 functions are pure.
 
 they either abstract or compose (pipe).
 
-chances are these pages are generally static but 
+chances are these pages are generally static but sometimes inaccessible.
 
-and you can cache.
+so you can cache.
 
-it's especially
+it's especially useful for like codeforces.
+
+specifically
+
+- you would decorate the fetch fn to use caches in project have
+  - you could not alter fn type though. if you wanna introduce some new param, like "no cache", you may disable the builtin fn and add your own. you may name the same as long as they are not enabled simultaneously
+- you may decorate send
+  - you may simulate llm tool call, like fetch, directly if you know it needs such page content or file content
+
+on web, it can get a little bit tricky, as they are not strictly pure fn.
+
+generally you have to inspect the structure on (react) devtools first, or via agents.
+
+you have semantic classes so it's straightforward if css alone can do it.
+
+thanks to hyperscript lib. you can map some built components to your specific ones. you might still have to look at the implementation of the original fn if you just wanna modify a bit though. that's expected.
+
+so, in conclusion
+
+- on web
+  - you inject css, or map some components for hyperscript
+- on backend
+  - you hook specific fn on tool calls
+  - to implement, you may wrap everything on index, which tries to read hooks by fn name (fn -> hook[] -> hook js), and await import, so you can dynamically inject hooks on the fly
+
+

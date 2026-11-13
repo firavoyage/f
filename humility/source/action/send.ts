@@ -32,17 +32,14 @@ export async function send(options: send) {
   } = current_config
 
   let { content, thread, model = default_model, ...params } = options
-
   let provider = default_provider
-
-  // provider name or model id must not include colon
+  // it must not include colon on provider name or model id
   if (has(model, ':')) {
     ;[provider, model] = model.split(':')
   }
 
-  // must exist
+  // must exist on either config or env
   let { key = `${env_prefix}${provider}`, endpoint } = providers[provider]
-
   if (key.startsWith(env_prefix)) {
     const env_var = key.slice(env_prefix.length)
 
@@ -70,14 +67,12 @@ export async function send(options: send) {
     key,
   })
 
-  const { payload, ...reply_message } = reply
-
-  const new_thread_content = [...messages, reply_message]
-
   const log_file = get_log_file(reply.id)
 
+  const { payload, ...reply_message } = reply
+
+  write(thread_file, serialize([...messages, reply_message]))
   write(log_file, serialize({ request, payload }))
-  write(thread_file, serialize(new_thread_content))
 
   return reply_message
 }
