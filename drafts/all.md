@@ -1131,6 +1131,7 @@ grow:
 - politics trump transistors transgender
 - tech tesla flying car
 - tech example dot org ui update
+- tech nvidia jensen huang scandal ceo resignation
 
 tools:
 
