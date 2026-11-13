@@ -74,6 +74,9 @@ color:
   on-surface:
     light: palette.gray.900
     dark: palette.gray.100
+  on-surface-low:
+    light: palette.gray.700
+    dark: palette.gray.300
   sidebar:
     light: palette.gray.250
     dark: palette.gray.700
@@ -121,12 +124,13 @@ page:
   '& i, em, cite, dfn, address': italic
   '& pre, code': font-mono
 message:
-  message: w-full pt-8 flex justify-center
-  # message: w-full py-8 flex justify-center
+  # message: w-full pt-8 flex justify-center
+  message: w-full py-4 flex justify-center
   message[role=user]: bg-user
-  content: w-prose
-  copy: h-8
-  # copy: px-2
+  content: relative py-4 w-prose
+  copy: absolute bottom-0 right-0 px-2 h-8 text-on-surface-low opacity-0
+  content:hover .message_copy, copy:focus-visible: opacity-1
+  # copy: absolute bottom-0 right-0 px-2 h-8 text-on-surface-low
 prompt:
   prompt: w-full h-40 flex justify-center bg-field
   # prompt: absolute bottom-0 w-full h-40 flex justify-center bg-field
