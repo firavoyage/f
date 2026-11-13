@@ -604,4 +604,20 @@ i wonder if it's really ideal of react "state is a snapshot", or if it's just a 
 
 but that makes such out of order set state possible.
 
+---
 
+**actually you can easily host an in browser server, polymorphing lib/post, w fs swapped in idb.**
+
+provided w modern libs, w or wo ai agents.
+
+lib/post + backend/server doesnt host much code. and you never actually touch nodejs fs, you use lib/file.
+
+a simple approach would be to polymorph post to use ~~action/"index browser" directly for certain "browser local" paths~~ action/index directly.
+
+~~easier, you may await import nodejs fs (and xdg) in lib/file, which can work on backend.~~
+
+you may await import xdg on nodejs backend behind if checks.
+
+and vite config aliases to zenfs will handle the heavy lifting it seems.
+
+---

@@ -1269,6 +1269,7 @@ humility:
 - research web scraping
 - sec compare config file shell env vars and cli flags
 - archi plugin
+- archi browser local fs idb zenfs vite
 
 legacy:
 
