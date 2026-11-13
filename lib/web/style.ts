@@ -1556,26 +1556,25 @@ export function style(theme) {
         )})`
 
         apply_utils(selector, utility_classes)
-      }
-
-      for (let element of selectors.split(',')) {
-        element = element.trim()
-
-        // todo
-        let selector = `.${component}_${element}`
-        if (is_component_container_itself()) {
-          selector += `, .${element}`
-        }
-        // if (component == element) {
-        //   selector += `, .${component}`
-        // }
-
-        function is_component_container_itself() {
-          return component == element || element.startsWith(component)
-        }
+      } else {
+        let selector = map(selectors.split(','), (target) => {
+          target = target.trim()
+  
+          let elements = map(target.split(' '), (element) => {
+            if (target.startsWith(component)) {
+              return `:is(.${component}_${element}, .${element})`
+            } else {
+              return `.${component}_${element}`
+            } 
+          })
+  
+          let selector = elements.join(' ')
+          
+          return selector
+        }).join(', ')
 
         apply_utils(selector, utility_classes)
-      }
+      } 
 
       function apply_utils(selector: string, utility_classes) {
         // todo
@@ -1740,9 +1739,13 @@ export function style(theme) {
 
   let css = ''
 
-  function append_css(selector, prop, value) {
+  function append_css(selector, props) {
+    
     css += `${selector} { ${prop}: ${value} }\n`
   }
+  // function append_css(selector, prop, value) {
+  //   css += `${selector} { ${prop}: ${value} }\n`
+  // }
 
   for (const [k, v] of entries(design_tokens)) {
     if (!has(references, k)) {

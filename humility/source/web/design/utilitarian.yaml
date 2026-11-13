@@ -129,7 +129,7 @@ message:
   message[role=user]: bg-user
   content: relative py-4 w-prose
   copy: absolute bottom-0 right-0 px-2 h-8 text-on-surface-low opacity-0
-  content:hover .message_copy, copy:focus-visible: opacity-1
+  content:hover copy, copy:focus-visible: opacity-1
   # copy: absolute bottom-0 right-0 px-2 h-8 text-on-surface-low
 prompt:
   prompt: w-full h-40 flex justify-center bg-field

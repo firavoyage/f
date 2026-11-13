@@ -90,4 +90,20 @@ change
 - web/react: + use_debug
 - web/clipboard: alias(rename) `init_clipboard` as `hook_after_copy`
 
+---
+
+web/style: handle parent selector, e.g. `content:hover copy` instead of `content:hover .message_copy`
+
+chances are you want explict inline attr (e.g. variants) for strict component scoping.
+
+chances are you want css pseudo classes like hover states out of box.
+
+it only leaks when a component nests itself, which is rarely the case.
+
+i may like `copy:has(content:hover)` to signal what's being styled first, though that would makes things way more complex.
+
+---
+
+- web/style: produce cleaner css by merging utils of the same selector into one
+
 
