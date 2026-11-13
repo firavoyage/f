@@ -66,6 +66,7 @@ palette:
     pink: oklch(65.1% 0.158 352)
     purple: oklch(52.5% 0.175 317)
     slate: oklch(60.1% 0.037 247)
+  focus: color-mix(in oklab, palette.accent 50%, transparent)
 color:
   surface:
     dark: palette.gray.900
@@ -79,7 +80,6 @@ color:
     dark: palette.gray.750
   scrollbar-thumb:
     dark: palette.gray.600
-  focus: palette.accent
 typeface:
   # sans: Noto Sans, sans-serif
   sans: Ubuntu Sans, sans-serif
@@ -89,9 +89,12 @@ app:
   app: flex h-100dvh font-sans bg-surface text-on-surface text-lg
 sidebar:
   sidebar: w-xs h-full bg-sidebar
+nav:
+  new_thread: px-2
 threads:
-  thread: flex px-2
-  set_thread: flex-1
+  thread: flex
+  set_thread: flex-1 px-2
+  delete_thread: px-2
 main:
   main: grow-1 flex-col
   # main: grow-1 relative

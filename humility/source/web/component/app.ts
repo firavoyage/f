@@ -105,7 +105,7 @@ export function app() {
       h(
         sidebar,
         h(
-          'button.new_thread',
+          'button.nav_new_thread',
           {
             onclick: new_thread,
           },
