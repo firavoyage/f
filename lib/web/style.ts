@@ -1511,7 +1511,9 @@ export function style(theme) {
   for (const [component, elements] of entries(components)) {
     for (const [selectors, utility_classes] of entries(elements)) {
       if (selectors.startsWith('& ')) {
-        let selector = `.${component} :where(${selectors.slice(2)})`
+        let selector = `:is(.${component}_${component}, .${component}) :is(${selectors.slice(2)})`
+
+        apply_utils(selector, utility_classes)
       } 
 
       for (let element of selectors.split(',')) {
@@ -1530,10 +1532,10 @@ export function style(theme) {
           return component == element || element.startsWith(component)
         }
 
-        apply_styles(selector, utility_classes)
+        apply_utils(selector, utility_classes)
       }
 
-      function apply_styles(selector: string, utility_classes) {
+      function apply_utils(selector: string, utility_classes) {
         // todo
         let utilities = utility_classes.split(' ')
 

@@ -52,6 +52,7 @@ export function app() {
   const [is_new_thread, set_is_new_thread] = use_state(false)
 
   const content = use_ref()
+  const field = use_ref()
 
   use_effect(() => {
     set_threads(post('list'))
@@ -71,43 +72,51 @@ export function app() {
     set_messages(post('read', thread))
   }, [thread])
 
-  use_keyboard('enter', async () => {
-    if (!prompt) {
-      return
-    }
+  use_keyboard(
+    'enter',
+    async (e) => {
+      if (!prompt || !(document.activeElement == field.current)) {
+        return
+      }
 
-    set_prompt('')
+      e.preventDefault()
 
-    let current_thread = thread
+      set_prompt('')
 
-    if (messages.length == 0) {
-      current_thread = await post('new_thread', {
-        title: prompt.slice(0, max_title_length),
-        folder,
-      })
+      let current_thread = thread
 
-      set_thread(current_thread)
-      set_is_new_thread(true)
+      if (messages.length == 0) {
+        current_thread = await post('new_thread', {
+          title: prompt.slice(0, max_title_length),
+          folder,
+        })
 
-      set_threads(post('list'))
-    }
+        set_thread(current_thread)
+        set_is_new_thread(true)
 
-    set_messages((messages) => {
-      messages.push({
-        role: 'user',
-        content: prompt,
-      })
-    })
+        set_threads(post('list'))
+      }
 
-    set_messages(async (messages) => {
-      messages.push(
-        await post('send', {
+      set_messages((messages) => {
+        messages.push({
+          role: 'user',
           content: prompt,
-          thread: current_thread,
-        }),
-      )
-    })
-  })
+        })
+      })
+
+      set_messages(async (messages) => {
+        messages.push(
+          await post('send', {
+            content: prompt,
+            thread: current_thread,
+          }),
+        )
+      })
+    },
+    {
+      prevent_default: false,
+    },
+  )
 
   use_keyboard('alt+n', new_thread)
 
@@ -238,7 +247,11 @@ export function app() {
               scroll,
               h(
                 'prompt_textarea',
-                h(textarea, { value: prompt, set_value: set_prompt }),
+                h(textarea, {
+                  value: prompt,
+                  set_value: set_prompt,
+                  ref: field,
+                }),
               ),
             ),
           ),

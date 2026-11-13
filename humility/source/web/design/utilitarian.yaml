@@ -92,8 +92,8 @@ sidebar:
 nav:
   new_thread: px-2
 threads:
-  thread: flex
-  set_thread: flex-1 px-2
+  thread: flex h-8
+  set_thread: flex-1 px-2 text-nowrap text-ellipsis
   delete_thread: px-2
 main:
   main: grow-1 flex-col

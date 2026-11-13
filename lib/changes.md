@@ -76,3 +76,8 @@ change
 ## 13
 
 - web/style: + `& css selector`
+  - so you can style rendered md articles
+    - you may write `& .foo, .bar, .asdf`
+    - they will all belong to `&`
+  - `&selectors` isnt supported, better to make it cleaner
+- web/use keyboard: + function when option
