@@ -81,3 +81,6 @@ change
     - they will all belong to `&`
   - `&selectors` isnt supported, better to make it cleaner
 - web/use keyboard: + function when option
+- web/style: + first class font weights, support numerical font weights, `regular` (alias of `normal`)
+  - no idea why italic is first class while bold isnt
+  - i dont care how css or tailwind thinks or traditionally defines

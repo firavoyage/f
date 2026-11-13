@@ -50,7 +50,13 @@ think: hide or delete? trash folder?
 
 ---
 
+web: streaming, full paragraph (or blocks) fade in animation
 
+you may fade in loc if it's merely a code block.
+
+---
+
+web: scrollbar transition
 
 ## w
 

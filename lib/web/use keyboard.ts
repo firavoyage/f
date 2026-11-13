@@ -6,7 +6,8 @@ type use_keyboard = Partial<{
   stop_propagation: boolean
   global: boolean
   priority: number
-  when: boolean | ((...args: any) => boolean)
+  when: boolean | fn
+  // when: boolean | ((...args: any) => boolean)
 }>
 
 /**

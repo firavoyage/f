@@ -74,13 +74,7 @@ export function app() {
 
   use_keyboard(
     'enter',
-    async (e) => {
-      if (!prompt || !(document.activeElement == field.current)) {
-        return
-      }
-
-      e.preventDefault()
-
+    async () => {
       set_prompt('')
 
       let current_thread = thread
@@ -114,7 +108,7 @@ export function app() {
       })
     },
     {
-      prevent_default: false,
+      when: () => prompt && document.activeElement == field.current,
     },
   )
 
@@ -126,19 +120,17 @@ export function app() {
   map(scroll_shortcuts, ([shortcut, distance]) => {
     use_keyboard(
       shortcut,
-      (e) => {
-        if (
-          shortcut == 'space' &&
-          has(field_tags, document.activeElement?.tagName.toLowerCase()) &&
-          prompt
-        ) {
-          return
-        }
-
-        e.preventDefault()
+      () => {
         scroll_by(distance)
       },
-      { prevent_default: false },
+      {
+        when: () =>
+          !(
+            shortcut == 'space' &&
+            has(field_tags, document.activeElement?.tagName.toLowerCase()) &&
+            prompt
+          ),
+      },
     )
   })
 

@@ -501,6 +501,36 @@ const glossary = {
       ['font-weight', 'font-weight'],
     ],
   },
+  thin: {
+    style: [['font-weight', 100]],
+  },
+  extralight: {
+    style: [['font-weight', 200]],
+  },
+  light: {
+    style: [['font-weight', 300]],
+  },
+  normal: {
+    style: [['font-weight', 400]],
+  },
+  regular: {
+    style: [['font-weight', 400]],
+  },
+  medium: {
+    style: [['font-weight', 500]],
+  },
+  semibold: {
+    style: [['font-weight', 600]],
+  },
+  bold: {
+    style: [['font-weight', 700]],
+  },
+  extrabold: {
+    style: [['font-weight', 800]],
+  },
+  black: {
+    style: [['font-weight', 900]],
+  },
   text: {
     prop: [
       ['length', 'font-size'],
@@ -1279,11 +1309,21 @@ const font_weights = {
   extralight: 200,
   light: 300,
   normal: 400,
+  regular: 400,
   medium: 500,
   semibold: 600,
   bold: 700,
   extrabold: 800,
   black: 900,
+  100: 100,
+  200: 200,
+  300: 300,
+  400: 400,
+  500: 500,
+  600: 600,
+  700: 700,
+  800: 800,
+  900: 900,
 }
 
 const lengths = {
@@ -1511,10 +1551,12 @@ export function style(theme) {
   for (const [component, elements] of entries(components)) {
     for (const [selectors, utility_classes] of entries(elements)) {
       if (selectors.startsWith('& ')) {
-        let selector = `:is(.${component}_${component}, .${component}) :is(${selectors.slice(2)})`
+        let selector = `:is(.${component}_${component}, .${component}) :is(${selectors.slice(
+          2,
+        )})`
 
         apply_utils(selector, utility_classes)
-      } 
+      }
 
       for (let element of selectors.split(',')) {
         element = element.trim()
