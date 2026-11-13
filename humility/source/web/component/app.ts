@@ -30,6 +30,7 @@ export function app() {
   use_style(theme)
 
   const [prompt, set_prompt] = use_state('')
+  const [folder, set_folder] = use_state('')
   const [threads, set_threads] = use_state<Record<string, thread>>({})
   const [thread, set_thread] = use_thread()
   const [messages, set_messages] = use_state<messages>([])
@@ -64,8 +65,8 @@ export function app() {
 
     if (messages.length == 0) {
       current_thread = await post('new_thread', {
-        title: prompt,
-        folder: '',
+        title: prompt.slice(0, max_title_length),
+        folder,
       })
 
       set_thread(current_thread)

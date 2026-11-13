@@ -2,7 +2,13 @@ import { serialize, deserialize, threads_file, get_thread_file } from 'action/in
 import { read, write, join, santinize } from 'lib/file'
 import { at } from 'lib/time'
 
-export function build({ dir, include = [''], ignore = [] }) {
+type build = {
+  dir: string
+  include?: string[]
+  ignore?: string[]
+}
+
+export function build({ dir, include = [''], ignore = [] }: build) {
   let threads = deserialize(read(threads_file))
 
   let included_threads = set(

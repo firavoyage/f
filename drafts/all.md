@@ -1267,6 +1267,7 @@ humility:
 - implement web
 - research web scraping
 - sec compare config file shell env vars and cli flags
+- archi plugin
 
 legacy:
 
