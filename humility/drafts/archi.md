@@ -32,3 +32,11 @@ archi
     - you may stream code blocks line by line
 
 
+---
+
+plugins
+
+plugins are decorators.
+
+a decorator takes the fn itself along w 
+

@@ -40,8 +40,8 @@ export function app() {
   use_effect(async () => {
     if (is_new_thread) {
       set_is_new_thread(false)
-      return 
-    } 
+      return
+    }
 
     if (!thread) {
       set_messages([])
@@ -52,6 +52,10 @@ export function app() {
   }, [thread])
 
   use_keyboard('enter', async () => {
+    if (!prompt) {
+      return
+    }
+
     let current_thread = thread
 
     if (messages.length == 0) {
@@ -83,9 +87,14 @@ export function app() {
     })
   })
 
-  use_effect(() => {
+  use_effect(() => {})
 
-  })
+  use_keyboard('ctrl+n', new_thread)
+
+  function new_thread() {
+    set_thread('')
+    // set_thread(post('new_thread'))
+  }
 
   return h(
     h('title.', 'Humility'),
@@ -96,10 +105,7 @@ export function app() {
         h(
           'button.new_thread',
           {
-            onclick() {
-              set_thread('')
-              // set_thread(post('new_thread'))
-            },
+            onclick: new_thread,
           },
           'new thread',
         ),

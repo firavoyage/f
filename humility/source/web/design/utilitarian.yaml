@@ -41,7 +41,7 @@ main:
 page:
   # page: flex justify-center py-8 pb-48
   # content: w-prose
-  content: mb-40
+  content: overflow-x-hidden mb-40
 messages:
   message: w-full py-8 flex justify-center
   message[role=user]: bg-field
