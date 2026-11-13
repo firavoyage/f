@@ -81,7 +81,7 @@ export async function chat(options: chat): Promise<message> {
       id,
       role: 'assistant',
       content:
-        '```chat error\n' +
+        '```chat_error\n' +
         serialize({
           type: 'network',
           message: response.message,
@@ -99,7 +99,7 @@ export async function chat(options: chat): Promise<message> {
       id,
       role: 'assistant',
       content:
-        '```chat error\n' +
+        '```chat_error\n' +
         serialize({
           type: 'endpoint',
           message: `${response.status} ${response.statusText}`,
@@ -119,7 +119,7 @@ export async function chat(options: chat): Promise<message> {
       id,
       role: 'assistant',
       content:
-        '```chat error\n' +
+        '```chat_error\n' +
         serialize({
           type: 'endpoint',
           message: `endpoint should return parsable json`,

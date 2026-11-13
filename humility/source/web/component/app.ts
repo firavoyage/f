@@ -58,6 +58,8 @@ export function app() {
       return
     }
 
+    set_prompt('')
+
     let current_thread = thread
 
     if (messages.length == 0) {

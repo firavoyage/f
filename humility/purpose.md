@@ -538,4 +538,69 @@ it can be over engineering to care whether to use 65ch or rem representation for
 
 i see on google ai mode they use hardcoded `--center-width: 652px`. but it's flawed engineering anyway w tons of debts originating from big tech governance problems.
 
+---
+
+i wonder if i would really apply overflow hidden to all elements by default.
+
+i guess i will do it. it should not show a scrollbar unless told to.
+
+just, it's really awkward when fit content can take priority over size.
+
+---
+
+md renderers may strip "md thinking" to md, and "chat error" to chat.
+
+use snake case maybe.
+
+still, it doesnt?!
+
+oh update lib.
+
+ok snake case works.
+
+---
+
+i wonder if it's really ideal of react "state is a snapshot", or if it's just a byproduct of fn structure (ref current is current)
+
+```
+  use_keyboard('enter', async () => {
+    if (!prompt) {
+      return
+    }
+
+    set_prompt('')
+
+    let current_thread = thread
+
+    if (messages.length == 0) {
+      current_thread = await post('new_thread', {
+        title: prompt,
+        folder: '',
+      })
+
+      set_thread(current_thread)
+      set_is_new_thread(true)
+
+      set_threads(post('list'))
+    }
+
+    set_messages((messages) => {
+      messages.push({
+        role: 'user',
+        content: prompt,
+      })
+    })
+
+    set_messages(async (messages) => {
+      messages.push(
+        await post('send', {
+          content: prompt,
+          thread: current_thread,
+        }),
+      )
+    })
+  })
+```
+
+but that makes such out of order set state possible.
 

@@ -1,6 +1,27 @@
 theme:
   - light
   - dark
+accent:
+  - blue
+  - teal
+  - green
+  - yellow
+  - orange
+  - orange-ubuntu
+  - red
+  - pink
+  - purple
+  - slate
+density:
+  - comfortable
+  - cozy
+  - compact
+window:
+  - active
+  - inactive
+animation:
+  - fluid
+  - reduced
 palette:
   white: oklch(100% 0.00 90.00)
   black: oklch(0% 0.00 0.00)
@@ -35,17 +56,30 @@ palette:
     800: oklch(22% 0 0)
     850: oklch(16% 0 0)
     900: oklch(11% 0 0)
+  accent:
+    blue: oklch(61.4% 0.164 255)
+    teal: oklch(60.3% 0.098 213)
+    green: oklch(59.4% 0.139 147)
+    yellow: oklch(67.4% 0.142 76)
+    orange: oklch(65.4% 0.196 42)
+    red: oklch(60.3% 0.217 22)
+    pink: oklch(65.1% 0.158 352)
+    purple: oklch(52.5% 0.175 317)
+    slate: oklch(60.1% 0.037 247)
 color:
   surface:
     dark: palette.gray.900
   on-surface:
     dark: palette.gray.100
+  sidebar:
+    dark: palette.gray.700
   user:
     dark: palette.gray.800
   field:
     dark: palette.gray.750
   scrollbar-thumb:
     dark: palette.gray.600
+  focus: palette.accent
 typeface:
   # sans: Noto Sans, sans-serif
   sans: Ubuntu Sans, sans-serif
@@ -54,16 +88,20 @@ typeface:
 app:
   app: flex h-100dvh font-sans bg-surface text-on-surface text-lg
 sidebar:
-  sidebar: w-xs h-full
+  sidebar: w-xs h-full bg-sidebar
+threads:
+  thread: flex px-2
+  set_thread: flex-1
 main:
   main: grow-1 flex-col
   # main: grow-1 relative
 page:
   # page: flex justify-center py-8 pb-48
   # content: w-prose
-  page: overflow-hidden flex-1
+  page: flex-1
+  # page: overflow-hidden flex-1
   # page: size-full
-  content: overflow-x-hidden
+  # content: overflow-x-hidden
   # content: overflow-x-hidden mb-40
 messages:
   message: w-full py-8 flex justify-center
@@ -81,7 +119,8 @@ input:
   input: w-full h-full p-4 rounded-md text-lg
   input:focus-visble: outline-focus outline-sm offset-2 rounded-md
 scroll:
-  scroll: flex flex-1 relative overflow-hidden
+  scroll: flex flex-1 relative
+  # scroll: flex flex-1 relative overflow-hidden
   content: flex-1 overflow-auto
   vertical_scrollbar: z-100 absolute right-0 top-0 bottom-0
   vertical_track: w-3 h-full opacity-0 transition-opacity duration-0.5s

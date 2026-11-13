@@ -2,9 +2,19 @@
   box-shadow: 0 0 0 1px oklch(38% 0.02 254.74);
 } */
 
-/* *:focus-visible {
-  box-shadow: 0 0 0 2px oklch(57% 0.2 259.67);
-} */
+a, button {
+  &:focus-visible {
+    overflow: visible;
+    /* z-index: 100; */
+    box-shadow: 0 0 0 2px var(--palette\.accent);
+    /* box-shadow: 0 0 0 2px var(--palette\.accent) inset; */
+    /* box-shadow: 0 0 0 2px oklch(57% 0.2 259.67); */
+  }
+}
+
+* {
+  overflow: hidden;
+}
 
 .scroll {
   position: relative;
