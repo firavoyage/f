@@ -45,6 +45,9 @@ export function app() {
   use_style(theme)
 
   const [prompt, set_prompt] = use_state('')
+  // waiting for reply
+  const [is_pending, set_is_pending] = use_state(false)
+
   const [folder, set_folder] = use_state('')
   const [threads, set_threads] = use_state<Record<string, thread>>({})
   const [thread, set_thread] = use_thread()
@@ -77,6 +80,8 @@ export function app() {
     async () => {
       set_prompt('')
 
+      set_is_pending(true)
+
       let current_thread = thread
 
       if (messages.length == 0) {
@@ -105,12 +110,20 @@ export function app() {
             thread: current_thread,
           }),
         )
+
+        log('i want it to be false')
+        set_is_pending(false)
       })
     },
     {
-      when: () => prompt && document.activeElement == field.current,
+      when: () => prompt && document.activeElement == field.current && !is_pending,
     },
   )
+
+  // have no effect (rather than new line) on empty prompt
+  use_keyboard('enter', () => {}, {
+    when: () => !prompt && document.activeElement == field.current,
+  })
 
   use_keyboard('alt+n', new_thread)
 
@@ -155,6 +168,10 @@ export function app() {
       behavior: scroll_behavior,
     })
   }
+
+  use_effect(() => {
+    log(is_pending)
+  }, [is_pending])
 
   return h(
     h('title.', 'Humility'),

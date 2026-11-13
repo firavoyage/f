@@ -106,6 +106,8 @@ page:
   # page: size-full
   # content: overflow-x-hidden
   # content: overflow-x-hidden mb-40
+  '& p': my-5
+  '& h1': mt-0 mb-4
   '& b, strong': font-semibold
   '& i, em, cite, dfn, address': italic
   '& pre, code': font-mono

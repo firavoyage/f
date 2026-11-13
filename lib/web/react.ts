@@ -31,6 +31,8 @@ export function use_state<T>(
   ): void
 
   function set_state(...args) {
+    log('set_state', ...args)
+
     let new_value
     if (args.length == 0) {
       new_value = toggle
@@ -45,17 +47,21 @@ export function use_state<T>(
     }
 
     if (is(new_value, 'literal') && new_value == prev_state) {
+      log('same literal, return')
       return
     }
 
     if (is(new_value, Promise)) {
+      log('promise')
       new_value.then(set_state)
       return
     }
 
     if (!is(new_value, 'undefined')) {
+      log('_set_state', new_value)
       _set_state(new_value)
     }
+    log('update')
     update()
   }
 

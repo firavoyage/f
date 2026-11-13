@@ -28,12 +28,12 @@ export function use_keyboard(shortcut: string, action: (event: KeyboardEvent) =>
     if (is(when, 'boolean') && !when) {
       return
     }
-
-    if (is(when, 'function') && !when()) {
-      return
-    }
-
+    
     const shortcutid = bind(shortcut, (e) => {
+      if (is(when, 'function') && !when()) {
+        return
+      }
+
       prevent_default && e.preventDefault?.()
       stop_propagation && e.stopPropagation?.()
 
