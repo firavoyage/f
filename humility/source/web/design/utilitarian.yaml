@@ -23,6 +23,7 @@ animation:
   - fluid
   - reduced
 palette:
+  transparent: transparent
   white: oklch(100% 0.00 90.00)
   black: oklch(0% 0.00 0.00)
   gray:
@@ -135,6 +136,7 @@ prompt:
   prompt: w-full h-40 flex justify-center bg-field
   # prompt: absolute bottom-0 w-full h-40 flex justify-center bg-field
   field: w-prose
+  field[empty]: caret-transparent
   textarea: py-8
 textarea:
   textarea: w-full h-fit rounded-md

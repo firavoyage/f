@@ -94,3 +94,57 @@ GitHub - showdownjs/showdown: A bidirectional Markdown to HTML to Markdown conve
 Showdown is a bidirectional JavaScript Markdown-to-HTML and HTML-to-Markdown converter based on John Gruber's work, usable client-
 
 Show all
+
+# how to config marked to treat newline wo trailing spaces as newline
+
+To make Marked treat a single newline (`\n`) as a `<br>` tag without needing two trailing spaces, set the **`breaks` option to `true`**. This requires the `gfm` (GitHub Flavored Markdown) option to also be `true`, which is enabled by default. [](https://marked.js.org/using%5Fadvanced)
+
+### Configuration Methods
+
+* **Global configuration with `marked.use()`.** This is the recommended method in modern versions of Marked.  
+javascript  
+```  
+import { marked } from 'marked';  
+marked.use({  
+  gfm: true, // true by default  
+  breaks: true  
+});  
+const html = marked.parse('Line 1\nLine 2');  
+// Output: <p>Line 1<br>Line 2</p>  
+```  
+
+* **Per-call configuration.** Pass the options directly into `marked.parse()` if you only want this behavior for specific strings.  
+javascript  
+```  
+const html = marked.parse('Line 1\nLine 2', {  
+  gfm: true,  
+  breaks: true  
+});  
+```  
+
+* **CLI usage.** Pass a JSON config file or flag when running Marked from the command line. [](https://marked.js.org/)  
+bash  
+```  
+marked -s "Line 1\nLine 2" --breaks  
+```  
+
+
+### Important Caveats
+
+* **Avoid `pedantic: true`.** If you enable `pedantic` mode, it overrides and disables `gfm`, which prevents `breaks: true` from working.
+* **Multiple consecutive newlines.** Setting `breaks: true` only converts single newlines within a paragraph into `<br>` tags. Two or more consecutive newlines (`\n\n`) will still create a separate `<p>` paragraph block rather than multiple `<br>` tags. [](https://marked.js.org/using%5Fadvanced)
+
+If you are trying to preserve **multiple consecutive blank lines** (like `\n\n\n`) as extra `<br>` tags rather than collapsing them into a single paragraph break, let me know and I can show you how to write a custom **Marked tokenizer extension** for that.
+
+* [](https://marked.js.org/using%5Fadvanced)  
+Marked Documentation  
+Using Advanced - Marked Documentation  
+pedantic, boolean, false, If true, conform to the original markdown.pl as much as possible. Don't fix original markdown bugs or be...
+* [](https://marked.js.org/)  
+Marked Documentation  
+Marked Documentation  
+remove the most common zerowidth characters from the start of the file marked.parse( Example with custom config echo … Marked in t...
+* [](https://marked.js.org/using%5Fpro)  
+Marked Documentation  
+Using Pro - Marked Documentation  
+a Marked Extension is the top-level plugin configuration, marked.use(extension) is the recommended way to extend Marked. The exten...

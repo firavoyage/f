@@ -1389,6 +1389,8 @@ export function style(theme) {
     }
   }
 
+  
+
   function is_value(leaf) {
     if (is(leaf, 'number') || is(leaf, 'string')) {
       return true

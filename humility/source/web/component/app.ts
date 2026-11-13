@@ -115,21 +115,53 @@ export function app() {
       })
     },
     {
-      when: () =>
-        prompt && document.activeElement == field.current && !is_pending,
+      when: () => prompt && is_focused() && !is_pending,
     },
   )
 
   // have no effect (rather than new line) on empty prompt
   use_keyboard('enter', () => {}, {
-    when: () => !prompt && document.activeElement == field.current,
+    when: () => !prompt && is_focused(),
   })
 
   use_keyboard('alt+n', new_thread)
 
-  // todo: make typing wo focus work, rather than making it always focused.
-  // _you may handle cjk im._
-  
+  // focus on input
+  for (const char of each(1, 26)) {
+    const letter = String.fromCodePoint('a'.charCodeAt(0) + char - 1)
+
+    use_keyboard(
+      letter,
+      () => {
+        if (!field.current) {
+          return
+        }
+
+        set_prompt(prompt + letter)
+        field.current.focus()
+      },
+      {
+        when: () => !is_focused(),
+      },
+    )
+  }
+  for (const char of each(0, 9)) {
+    const key = str(char)
+    use_keyboard(
+      key,
+      () => {
+        if (!field.current) {
+          return
+        }
+
+        set_prompt(prompt + key)
+        field.current.focus()
+      },
+      {
+        when: () => !is_focused(),
+      },
+    )
+  }
 
   map(scroll_shortcuts, ([shortcut, distance]) => {
     use_keyboard(
@@ -146,6 +178,15 @@ export function app() {
           ),
       },
     )
+  })
+
+  // focus prompt on mount
+  use_mount(() => {
+    if (!field.current) {
+      return
+    }
+
+    field.current.focus()
   })
 
   function new_thread() {
@@ -170,14 +211,9 @@ export function app() {
     })
   }
 
-  // focus prompt on mount
-  use_mount(() => {
-    if (!field.current) {
-      return
-    }
-
-    field.current.focus()
-  })
+  function is_focused() {
+    return document.activeElement == field.current
+  }
 
   return h(
     h('title.', 'Humility'),
@@ -270,6 +306,7 @@ export function app() {
           'prompt',
           h(
             'prompt_field',
+            { empty: !prompt },
             h(
               scroll,
               h(
@@ -291,6 +328,6 @@ export function app() {
 function render(md: string) {
   return marked.parse(md, {
     gfm: true,
-    breaks: true
+    breaks: true,
   })
 }

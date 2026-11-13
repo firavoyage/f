@@ -620,4 +620,18 @@ you may await import xdg on nodejs backend behind if checks.
 
 and vite config aliases to zenfs will handle the heavy lifting it seems.
 
+14
+
+focus on key
+
+numbers and alphabets maybe
+
+```
+  // todo: make typing wo focus work, rather than making it always focused.
+  // _you may handle cjk im._
+```
+
 ---
+
+
+

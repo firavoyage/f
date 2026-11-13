@@ -12,12 +12,6 @@ organize folders, rename thread
 
 ## s
 
-focus on key
-
-numbers and alphabets maybe
-
----
-
 handle desync frontend and backend
 
 i.e. know and manage what's ongoing on a separate request
