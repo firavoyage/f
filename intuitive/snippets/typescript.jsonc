@@ -657,6 +657,16 @@ ref:
       "})"
     ],
   },
+  "use mount": {
+    "prefix": [
+      "um",
+    ],
+    "body": [
+      "use_mount(() => {",
+      "  $0",
+      "})"
+    ],
+  },
   "use toggle": {
     "prefix": [
       "ut",

@@ -168,6 +168,15 @@ export function app() {
     })
   }
 
+  // focus prompt on mount
+  use_mount(() => {
+    if (!field.current) {
+      return 
+    } 
+    
+    field.current.focus()
+  })
+
   return h(
     h('title.', 'Humility'),
     h(
