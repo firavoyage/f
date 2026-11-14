@@ -1116,6 +1116,7 @@ have: <!-- eat, grow -->
 - research tor <!-- ? -->
 - use case berkeley cs61a current semester
 - use case university ai intro final project analyze faces daylily channel
+- foundation
 
 proxy:
 

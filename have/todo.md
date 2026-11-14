@@ -6,8 +6,27 @@ init db
 
 setup persistent browser profile
 
+support xvfb toggle
 
+---
 
+fetch page
+
+create result object
+
+store html source
+
+store rendered page
+
+---
+
+fetch assets
+
+store binaries
+
+---
+
+read main content
 
 # todo
 
