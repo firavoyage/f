@@ -7,10 +7,11 @@ backend
     - assets?
   - whether to store some specific asset
   - make it dynamic?
-- read url options?: result
+- ~~read url options?: result~~
   - fetch if non existing
   - r last cache
-- check url: result[]
+- read id | url: html | nil
+- list ~~check~~ url: result[]
 - store cache id: hash
 
 ---

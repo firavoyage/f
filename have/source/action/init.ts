@@ -1,9 +1,9 @@
 import { deserialize, serialize } from 'action/index'
 import { init_desktop, data, config, cache, touch, mkpath, join } from 'lib/file'
 
-export const browser_profile = data('browser', 'default')
-
 init_desktop('have')
+
+export const browser_profile = data('browser', 'default')
 
 export const object_index_file = data('object', 'index.yaml')
 export const webpage_index_file = data('webpage', 'index.yaml')
@@ -37,5 +37,5 @@ export type result = {
   id: string
   url: string
   creation_time: number
-  
+  metadata: any
 }

@@ -63,4 +63,9 @@ legacy? release instead.
 
 well just call it legacy. i dont really release it.
 
+---
+
+dont feel i have to make "index.html" cas.
+
+
 

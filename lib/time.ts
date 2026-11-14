@@ -30,12 +30,16 @@ export function time(year: number, month: number, day: number, hour: number, min
 }
 
 export function now(timezone?: timezone) {
-  const { year, month, day, hour, min, sec, timestamp, offset } = parse_js_time(new Date())
-  return Time({
-    timestamp, offset,
-    year, month, day, hour, min, sec
-  })
+  const { timestamp } = parse_js_time(new Date())
+  return at(timestamp, timezone)
 }
+// export function now(timezone?: timezone) {
+//   const { year, month, day, hour, min, sec, timestamp, offset } = parse_js_time(new Date())
+//   return Time({
+//     timestamp, offset,
+//     year, month, day, hour, min, sec
+//   })
+// }
 // export function now(timezone?: timezone) {
 //   const { year, month, day, hour, min, sec } = parse_js_time(new Date())
 //   return time(year, month, day, hour, min, sec, timezone)
@@ -43,9 +47,21 @@ export function now(timezone?: timezone) {
 
 export function at(timestamp: number, timezone?: timezone) {
   const timestamp_ms = timestamp * 1000
-  const { year, month, day, hour, min, sec } = parse_js_time(new Date(timestamp_ms))
-  return time(year, month, day, hour, min, sec, timezone)
+  const tz_time = new TZDate(timestamp_ms, format_offset(timezone_to_offset(timezone)));
+  const { year, month, day, hour, min, sec, offset } = parse_js_time(tz_time)
+
+  return Time({
+    // core
+    timestamp, offset,
+    // derived
+    year, month, day, hour, min, sec
+  })
 }
+// export function at(timestamp: number, timezone?: timezone) {
+//   const timestamp_ms = timestamp * 1000
+//   const { year, month, day, hour, min, sec } = parse_js_time(new Date(timestamp_ms))
+//   return time(year, month, day, hour, min, sec, timezone)
+// }
 
 export function format(t: time, pattern: string = '%F %T') {
   const { year, month, day, hour, min, sec, offset } = t
@@ -79,12 +95,16 @@ export function format(t: time, pattern: string = '%F %T') {
 }
 
 export function get_local(t: time, timezone?: timezone) {
-  const old_tz_time = new TZDate(t.timestamp * 1000, format_offset(t.offset))
-  const new_tz_time = new TZDate(old_tz_time, format_offset(timezone_to_offset(timezone)))
-
-  const { year, month, day, hour, min, sec } = parse_js_time(new_tz_time)
-  return time(year, month, day, hour, min, sec, timezone)
+  const { timestamp } = t
+  return at(timestamp, timezone)
 }
+// export function get_local(t: time, timezone?: timezone) {
+//   const old_tz_time = new TZDate(t.timestamp * 1000, format_offset(t.offset))
+//   const new_tz_time = new TZDate(old_tz_time, format_offset(timezone_to_offset(timezone)))
+
+//   const { year, month, day, hour, min, sec } = parse_js_time(new_tz_time)
+//   return time(year, month, day, hour, min, sec, timezone)
+// }
 
 export function get_utc(t: time) {
   return get_local(t, 'utc')
