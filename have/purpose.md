@@ -14,4 +14,8 @@ omission means default which is light.
 
 nil... or no pref, that means system.
 
+---
+
+**do not care tsism! it's flawed. it's flawed. let it go.**
+
 
