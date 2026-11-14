@@ -80,7 +80,7 @@ export async function fetch(
         const hash = create_hash('sha256')
           .update(buffer)
           .digest('hex')
-          .slice(0, 16)
+          // .slice(0, 16)
         // const hash = createHash('md5').update(url).digest('hex').slice(0, 10)
         const filename = `${hash}${ext}`
 
@@ -125,6 +125,10 @@ export async function fetch(
     log_file,
     format_log(`Saved ${url} to ${dir}/index.html w ${assets.size} assets`),
   )
+
+  const target = object_folder
+  const link = join(dir, 'asset')
+  symlink(target, link, 'dir')
 
   let webpage_index = deserialize(read(webpage_index_file))
   let record = {
@@ -373,4 +377,8 @@ function snapshot(html) {
   $('script, iframe, object, embed').remove()
 
   return $.root().html() ?? ''
+}
+
+function scalable_filename(hash: string) {
+  let first = filename.slice(2)
 }
