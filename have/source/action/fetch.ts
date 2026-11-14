@@ -28,9 +28,9 @@ export async function fetch(url: string, options = {}) {
   const id = random_id()
   const dir = get_result_folder(id)
 
-  // if (should_hide_window) {
-  //   process.env.DISPLAY = display_number
-  // }
+  if (should_hide_window) {
+    process.env.DISPLAY = display_number
+  }
 
   let colorScheme = theme == 'system' ? 'no-preference' : theme
   const browser = await chromium.launchPersistentContext(browser_profile, {
@@ -80,37 +80,27 @@ export async function fetch(url: string, options = {}) {
   const creation_time = now().timestamp
   await page.goto(url, { waitUntil: 'networkidle' })
 
-  // Rewrite asset URLs inside the live DOM to point to local files
-  await page.evaluate((entries) => {
-    const map = new Map(entries)
-    const attrs = ['src', 'href', 'poster']
+  // // Rewrite asset URLs inside the live DOM to point to local files
+  // await page.evaluate((entries) => {
+  //   const map = new Map(entries)
+  //   const attrs = ['src', 'href', 'poster']
 
-    document.querySelectorAll('*').forEach((element) => {
-      for (const attr of attrs) {
-        const value = element.getAttribute(attr)
-        if (!value) continue
-        // Resolve relative URLs against the page's base URL
-        const absolute_url = new URL(value, document.baseURI).href
-        if (map.has(absolute_url)) {
-          element.setAttribute(attr, map.get(absolute_url))
-        }
-      }
-    })
-  }, entries(assets))
+  //   document.querySelectorAll('*').forEach((element) => {
+  //     for (const attr of attrs) {
+  //       const value = element.getAttribute(attr)
+  //       if (!value) continue
+  //       // Resolve relative URLs against the page's base URL
+  //       const absolute_url = new URL(value, document.baseURI).href
+  //       if (map.has(absolute_url)) {
+  //         element.setAttribute(attr, map.get(absolute_url))
+  //       }
+  //     }
+  //   })
+  // }, entries(assets))
 
   // Save the final rendered HTML
-  const html = await page.content()
+  const html = await inline_assets(await page.content(), url, assets)
   write(join(dir, 'index.html'), html)
-
-  function get_fallback_ext(type) {
-    const map = {
-      stylesheet: '.css',
-      script: '.js',
-      image: '.png',
-      font: '.woff2',
-    }
-    return map[type] || '.bin'
-  }
 
   log(`Saved ${url} to ${dir}/index.html w ${assets.size} assets`)
 
@@ -126,6 +116,140 @@ export async function fetch(url: string, options = {}) {
   write(webpage_index_file, serialize(webpage_index))
   log(`Updated index`)
 
-  await browser.close();
+  await browser.close()
+}
+
+function get_fallback_ext(type) {
+  const map = {
+    stylesheet: '.css',
+    script: '.js',
+    image: '.png',
+    font: '.woff2',
+  }
+  return map[type] || '.bin'
+}
+
+
+import * as cheerio from 'cheerio';
+import postcss from 'postcss';
+import { parse as parse_srcset, stringify as stringify_srcset } from 'srcset';
+
+const url_attributes = [
+  'src',
+  'href',
+  'poster',
+  'action',
+  'formaction',
+  'data',
+  'cite',
+  'background',
+  'xlink:href',
+];
+
+function inline_assets(html, url, assets) {
+  const asset_map = assets instanceof Map
+    ? assets
+    : new Map(Object.entries(assets));
+
+  const base_url = new URL(url);
+
+  function replace_url(value) {
+    if (!value || value.startsWith('#')) {
+      return value;
+    }
+
+    let absolute_url;
+
+    try {
+      absolute_url = new URL(value, base_url).href;
+    } catch {
+      return value;
+    }
+
+    return asset_map.get(absolute_url) ?? value;
+  }
+
+  function replace_srcset(value) {
+    try {
+      const candidates = parse_srcset(value);
+
+      return stringify_srcset(
+        candidates.map(candidate => ({
+          ...candidate,
+          url: replace_url(candidate.url),
+        })),
+      );
+    } catch {
+      return value;
+    }
+  }
+
+  function replace_css(css) {
+    const root = postcss.parse(css);
+
+    root.walkDecls(decl => {
+      decl.value = replace_css_urls(decl.value);
+    });
+
+    root.walkAtRules('import', rule => {
+      rule.params = replace_css_urls(rule.params);
+    });
+
+    return root.toString();
+  }
+
+  function replace_css_urls(value) {
+    return value.replace(
+      /url\(\s*(?:(["'])(.*?)\1|([^)]*?))\s*\)/gi,
+      (match, quote, quoted_url, unquoted_url) => {
+        const original_url = quoted_url ?? unquoted_url.trim();
+        const replacement = replace_url(original_url);
+
+        if (replacement === original_url) {
+          return match;
+        }
+
+        const output_quote = quote || '"';
+
+        return `url(${output_quote}${replacement}${output_quote})`;
+      },
+    );
+  }
+
+  const $ = cheerio.load(html, {
+    decodeEntities: false,
+  });
+
+  $('*').each((_, element) => {
+    const node = $(element);
+
+    for (const attribute of url_attributes) {
+      const value = node.attr(attribute);
+
+      if (value !== undefined) {
+        node.attr(attribute, replace_url(value));
+      }
+    }
+
+    const srcset = node.attr('srcset');
+
+    if (srcset !== undefined) {
+      node.attr('srcset', replace_srcset(srcset));
+    }
+
+    const style = node.attr('style');
+
+    if (style !== undefined) {
+      node.attr('style', replace_css(style));
+    }
+  });
+
+  $('style').each((_, element) => {
+    const node = $(element);
+
+    node.text(replace_css(node.html() ?? ''));
+  });
+
+  return $.html();
 }
 
