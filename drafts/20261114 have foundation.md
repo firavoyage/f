@@ -3702,4 +3702,1388 @@ July 26, 2017 — UUIDs with hyphens are the standard string representation the 
 
 Show all
 
+# use snake case. write js traverse(fetch, url, options). async fetch: string url -> string of html. url is initial page. you should parse all links on the page and traverse recursively. options include should visit url -> bool = same site, max depth (0 indexed, any link on the initial page is of depth 1) = inf, max page count = inf, max duration (in secs) = inf, interval (in sec) = 1
+
+Here's an implementation using breadth-first traversal (BFS), with snake_case throughout.
+
+```
+async function traverse(fetch, url, options = {}) {
+    const {
+        should_visit = (target_url) => {
+            return new URL(target_url).origin === new URL(url).origin;
+        },
+        max_depth = Infinity,
+        max_page_count = Infinity,
+        max_duration = Infinity,
+        interval = 1,
+    } = options;
+
+    const start_time = Date.now();
+    const visited = new Set();
+    const queue = [{ url, depth: 0 }];
+    const results = [];
+
+    while (queue.length > 0) {
+        if (results.length >= max_page_count) break;
+        if ((Date.now() - start_time) / 1000 >= max_duration) break;
+
+        const { url: current_url, depth } = queue.shift();
+
+        if (visited.has(current_url)) continue;
+        visited.add(current_url);
+
+        let html;
+
+        try {
+            html = await fetch(current_url);
+        } catch (error) {
+            results.push({
+                url: current_url,
+                depth,
+                html: null,
+                error,
+            });
+            continue;
+        }
+
+        results.push({
+            url: current_url,
+            depth,
+            html,
+            error: null,
+        });
+
+        if (depth >= max_depth) continue;
+
+        const links = [
+            ...html.matchAll(/<a\b[^>]*\bhref\s*=\s*["']([^"']+)["'][^>]*>/gi),
+        ].map((match) => match[1]);
+
+        for (const href of links) {
+            let target_url;
+
+            try {
+                target_url = new URL(href, current_url).href;
+            } catch {
+                continue;
+            }
+
+            if (visited.has(target_url)) continue;
+
+            if (!should_visit(target_url)) continue;
+
+            if (!queue.some((item) => item.url === target_url)) {
+                queue.push({
+                    url: target_url,
+                    depth: depth + 1,
+                });
+            }
+        }
+
+        if (queue.length > 0 && interval > 0) {
+            await new Promise((resolve) =>
+                setTimeout(resolve, interval * 1000)
+            );
+        }
+    }
+
+    return results;
+}
+```
+
+### **Usage**
+
+```
+const pages = await traverse(fetch, "https://example.com", {
+    should_visit: (url) => new URL(url).hostname === "example.com",
+    max_depth: 3,
+    max_page_count: 100,
+    max_duration: 30,
+    interval: 1,
+});
+
+console.log(pages);
+```
+
+### **Behavior**
+
+- **BFS traversal:** Visits pages level by level.
+- **Depth:** Initial page is depth `0`; its links are depth `1`.
+- **Deduplication:** Avoids visiting the same URL more than once.
+- **Relative URLs:** Resolves links against the current page URL.
+- **Same-site default:** Only visits URLs with the initial page's origin.
+- **Page count:** Counts attempted fetches, including failed fetches.
+- **Duration:** Checks elapsed time between fetches; an in-progress fetch cannot be interrupted.
+- **Interval:** Waits between page fetches.
+
+**Note:** The regex handles ordinary quoted `href` attributes but is not a full HTML parser. For production use, prefer an HTML parser such as `parse5` or `cheerio`.
+
+# use snake case. use cheerio esm. write js traverse(fetch, url, options). async fetch: string url -> string of html. url is initial page. you should parse all links on the page and traverse recursively. options include should visit url -> bool = same site, max depth (0 indexed, any link on the initial page is of depth 1) = inf, max page count = inf, max duration (in secs) = inf, interval (in sec) = 1
+
+Here's an implementation using **Cheerio's ESM API**. It performs breadth-first traversal, tracks visited URLs, respects same-site restrictions, and supports depth, page-count, duration, and interval limits.
+
+```
+
+import * as cheerio from "cheerio";
+
+export async function traverse(fetch, url, options = {}) {
+  const {
+    should_visit = (target_url, current_url) =>
+      new URL(target_url).origin === new URL(url).origin,
+    max_depth = Infinity,
+    max_page_count = Infinity,
+    max_duration = Infinity,
+    interval = 1,
+  } = options;
+
+  const start_time = Date.now();
+  const visited = new Set();
+  const results = [];
+  const queue = [{ url: new URL(url).href, depth: 0 }];
+
+  const sleep = (seconds) =>
+    new Promise((resolve) => setTimeout(resolve, seconds * 1000));
+
+  while (queue.length > 0) {
+    if (results.length >= max_page_count) break;
+    if ((Date.now() - start_time) / 1000 >= max_duration) break;
+
+    const current = queue.shift();
+    const current_url = current.url;
+
+    if (visited.has(current_url)) continue;
+    visited.add(current_url);
+
+    let html;
+
+    try {
+      html = await fetch(current_url);
+    } catch (error) {
+      results.push({
+        url: current_url,
+        depth: current.depth,
+        error,
+      });
+      continue;
+    }
+
+    results.push({
+      url: current_url,
+      depth: current.depth,
+      html,
+    });
+
+    if (current.depth >= max_depth) continue;
+
+    const $ = cheerio.load(html);
+    const links = $("a[href]")
+      .map((_, element) => $(element).attr("href"))
+      .get();
+
+    for (const href of links) {
+      let target_url;
+
+      try {
+        const parsed_url = new URL(href, current_url);
+
+        if (!["http:", "https:"].includes(parsed_url.protocol)) {
+          continue;
+        }
+
+        parsed_url.hash = "";
+        target_url = parsed_url.href;
+      } catch {
+        continue;
+      }
+
+      if (visited.has(target_url)) continue;
+      if (queue.some((item) => item.url === target_url)) continue;
+
+      let allowed = false;
+
+      try {
+        allowed = await should_visit(target_url, current_url);
+      } catch {
+        continue;
+      }
+
+      if (allowed) {
+        queue.push({
+          url: target_url,
+          depth: current.depth + 1,
+        });
+      }
+    }
+
+    if (queue.length > 0 && interval > 0) {
+      await sleep(interval);
+    }
+  }
+
+  return results;
+}
+
+```
+
+### **Usage**
+
+```
+const fetch_html = async (url) => {
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  return response.text();
+};
+
+const pages = await traverse(
+  fetch_html,
+  "https://example.com",
+  {
+    max_depth: 3,
+    max_page_count: 50,
+    max_duration: 60,
+    interval: 1,
+  }
+);
+```
+
+### **Options**
+
+| Option           | Default     | Description                            |
+| ---------------- | ----------- | -------------------------------------- |
+| `should_visit`   | Same origin | Whether to visit a URL                 |
+| `max_depth`      | `Infinity`  | Maximum link depth                     |
+| `max_page_count` | `Infinity`  | Maximum pages fetched                  |
+| `max_duration`   | `Infinity`  | Maximum elapsed seconds                |
+| `interval`       | `1`         | Delay between page fetches, in seconds |
+
+### **Notes**
+
+- Breadth-first traversal ensures shallower pages are visited first.
+- The initial URL has depth `0`; links on it have depth `1`.
+- Relative URLs are resolved against the current page.
+- URL fragments are removed to avoid duplicate visits.
+- Only HTTP and HTTPS links are followed.
+- Failed fetches are recorded in the results.
+- `should_visit` receives `(target_url, current_url)` and can be asynchronous.
+
+**One limitation:** `max_duration` is checked between fetches, not during a fetch. If `fetch` hangs, traversal can exceed the specified duration.
+
+# use snake case. use cheerio esm. write ts traverse(fetch, url, options). async fetch: string url -> string of html. url is initial page. you should parse all links on the page and traverse recursively. options include should visit url -> bool = same site, max depth (0 indexed, any link on the initial page is of depth 1) = inf, max page count = inf, max duration (in secs) = inf, interval (in sec) = 1
+
+This implementation uses **depth-first recursive traversal**. It returns every successfully fetched page as `{ url, depth, html }`.
+
+```
+import { load as load_html } from "cheerio";
+
+export type html_fetch = (url: string) => Promise<string>;
+
+export interface traverse_options {
+  should_visit?: (url: string) => boolean;
+  max_depth?: number;
+  max_page_count?: number;
+  max_duration?: number; // seconds
+  interval?: number; // seconds between fetch starts
+}
+
+export interface traversed_page {
+  url: string;
+  depth: number;
+  html: string;
+}
+
+export async function traverse(
+  fetch: html_fetch,
+  url: string,
+  options: traverse_options = {},
+): Promise<traversed_page[]> {
+  const initial_url = normalize_url(url);
+
+  if (!initial_url) {
+    throw new Error(`Invalid initial URL: ${url}`);
+  }
+
+  const initial_origin = new URL(initial_url).origin;
+
+  const max_depth = normalize_limit(
+    options.max_depth,
+    Infinity,
+    "max_depth",
+    true,
+  );
+
+  const max_page_count = normalize_limit(
+    options.max_page_count,
+    Infinity,
+    "max_page_count",
+    true,
+  );
+
+  const max_duration_ms =
+    normalize_limit(options.max_duration, Infinity, "max_duration") * 1000;
+
+  const interval_ms =
+    normalize_limit(options.interval, 1, "interval") * 1000;
+
+  const should_visit =
+    options.should_visit ??
+    ((candidate_url: string) =>
+      new URL(candidate_url).origin === initial_origin);
+
+  const started_at = Date.now();
+  let last_fetch_started_at: number | undefined;
+
+  const pages: traversed_page[] = [];
+  const scheduled_urls = new Set<string>([initial_url]);
+
+  const can_continue = (): boolean =>
+    pages.length < max_page_count &&
+    Date.now() - started_at < max_duration_ms;
+
+  const wait_for_slot = async (): Promise<boolean> => {
+    if (!can_continue()) return false;
+
+    if (last_fetch_started_at !== undefined) {
+      const elapsed_since_last_fetch =
+        Date.now() - last_fetch_started_at;
+
+      const wait_ms = Math.max(
+        0,
+        interval_ms - elapsed_since_last_fetch,
+      );
+
+      if (Date.now() - started_at + wait_ms >= max_duration_ms) {
+        return false;
+      }
+
+      if (wait_ms > 0) {
+        await new Promise((resolve) => setTimeout(resolve, wait_ms));
+      }
+    }
+
+    if (!can_continue()) return false;
+
+    last_fetch_started_at = Date.now();
+    return true;
+  };
+
+  const visit = async (
+    current_url: string,
+    depth: number,
+  ): Promise<void> => {
+    if (depth > max_depth || !(await wait_for_slot())) return;
+
+    const html = await fetch(current_url);
+
+    pages.push({
+      url: current_url,
+      depth,
+      html,
+    });
+
+    // Do not follow links beyond the depth limit.
+    if (depth >= max_depth || !can_continue()) return;
+
+    const html_doc = load_html(html);
+
+    // Respect the document's <base href>, if present.
+    const base_href = html_doc("base[href]").first().attr("href");
+    const link_base = base_href
+      ? normalize_url(base_href, current_url) ?? current_url
+      : current_url;
+
+    const links = html_doc("a[href], area[href]")
+      .toArray()
+      .map((element) => html_doc(element).attr("href"))
+      .filter((href): href is string => Boolean(href));
+
+    for (const href of links) {
+      if (!can_continue()) break;
+
+      const next_url = normalize_url(href, link_base);
+
+      if (!next_url || scheduled_urls.has(next_url)) continue;
+
+      scheduled_urls.add(next_url);
+
+      if (!should_visit(next_url)) continue;
+
+      await visit(next_url, depth + 1);
+    }
+  };
+
+  await visit(initial_url, 0);
+
+  return pages;
+}
+
+function normalize_url(
+  url: string,
+  base?: string,
+): string | undefined {
+  try {
+    const parsed_url = new URL(url, base);
+
+    if (
+      parsed_url.protocol !== "http:" &&
+      parsed_url.protocol !== "https:"
+    ) {
+      return undefined;
+    }
+
+    // Treat URLs differing only by fragment as the same page.
+    parsed_url.hash = "";
+
+    return parsed_url.href;
+  } catch {
+    return undefined;
+  }
+}
+
+function normalize_limit(
+  value: number | undefined,
+  fallback: number,
+  name: string,
+  integer = false,
+): number {
+  const limit = value ?? fallback;
+
+  if (Number.isNaN(limit) || limit < 0) {
+    throw new RangeError(`${name} must be a non-negative number`);
+  }
+
+  return integer ? Math.floor(limit) : limit;
+}
+```
+
+### **Example**
+
+```
+const pages = await traverse(
+  async (url) => {
+    const response = await fetch(url);
+    return response.text();
+  },
+  "https://example.com",
+  {
+    max_depth: 2,
+    max_page_count: 50,
+    max_duration: 30,
+    interval: 0.5,
+  },
+);
+
+console.log(pages);
+```
+
+### **Behavior**
+
+- The initial URL has depth `0`; its links have depth `1`.
+- `max_depth: 0` fetches only the initial page.
+- `max_page_count` includes the initial page and counts successfully fetched pages.
+- The default `should_visit` allows URLs with the same **origin** as the initial URL.
+- Duplicate URLs and fragment-only variations are skipped.
+- Only HTTP and HTTPS links are followed.
+- The interval is measured between fetch start times.
+- The duration limit is checked between fetches. It cannot interrupt a fetch already in progress because the supplied `fetch` function does not accept an abort signal.
+- Fetch errors are propagated to the caller.
+
+# use snake case. use cheerio esm. use bfs. fetch can be complex like some browser automation. do not parallel. write ts traverse(fetch, url, options). async fetch: string url -> string of html. url is initial page. you should parse all links on the page and traverse recursively. options include should visit url -> bool = same site, max depth (0 indexed, any link on the initial page is of depth 1) = inf, max page count = inf, max duration (in secs) = inf, interval (in sec) = 1
+
+```
+Worked for 1m
+Designed and finalized crawler traversal semantics
+
+I’ll make the traversal sequential and breadth-first, with the initial page at depth 0, and apply the page, depth, and duration limits before scheduling each fetch.
+
+Drafted and implemented traversal code
+
+
+Searched the web for Cheerio official documentation ESM import load parse HTML
+```
+
+This uses a sequential BFS queue: each page is fetched and parsed before its discovered links are added to the queue. There is no concurrent fetching.
+
+```
+import { load } from "cheerio";
+
+export type html_fetcher = (url: string) => Promise<string>;
+
+export interface traverse_options {
+  should_visit_url?: (url: string) => boolean | Promise<boolean>;
+  max_depth?: number;
+  max_page_count?: number;
+  max_duration_secs?: number;
+  interval_secs?: number;
+}
+
+export interface traversed_page {
+  url: string;
+  depth: number;
+  html: string;
+}
+
+export interface traversal_error {
+  url: string;
+  depth: number;
+  error: unknown;
+}
+
+export interface traverse_result {
+  pages: traversed_page[];
+  errors: traversal_error[];
+  stop_reason: "queue_empty" | "max_page_count" | "max_duration";
+}
+
+interface queue_item {
+  url: string;
+  depth: number;
+}
+
+function normalize_http_url(
+  value: string,
+  base_url?: string,
+): string | null {
+  try {
+    const parsed_url = new URL(value, base_url);
+
+    if (
+      parsed_url.protocol !== "http:" &&
+      parsed_url.protocol !== "https:"
+    ) {
+      return null;
+    }
+
+    // Fragments do not identify different pages.
+    parsed_url.hash = "";
+
+    return parsed_url.href;
+  } catch {
+    return null;
+  }
+}
+
+function validate_limit(
+  name: string,
+  value: number,
+  allow_infinity: boolean,
+  require_integer = false,
+): void {
+  if (
+    (allow_infinity && value === Infinity) ||
+    (
+      Number.isFinite(value) &&
+      value >= 0 &&
+      (!require_integer || Number.isInteger(value))
+    )
+  ) {
+    return;
+  }
+
+  throw new RangeError(
+    `${name} must be a non-negative ${
+      require_integer ? "integer" : "number"
+    }${allow_infinity ? " or Infinity" : ""}`,
+  );
+}
+
+function delay(milliseconds: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
+}
+
+export async function traverse(
+  fetch: html_fetcher,
+  url: string,
+  options: traverse_options = {},
+): Promise<traverse_result> {
+  const initial_url = normalize_http_url(url);
+
+  if (!initial_url) {
+    throw new Error("url must be an absolute HTTP(S) URL");
+  }
+
+  const max_depth = options.max_depth ?? Infinity;
+  const max_page_count = options.max_page_count ?? Infinity;
+  const max_duration_secs = options.max_duration_secs ?? Infinity;
+  const interval_secs = options.interval_secs ?? 1;
+
+  validate_limit("max_depth", max_depth, true, true);
+  validate_limit("max_page_count", max_page_count, true, true);
+  validate_limit("max_duration_secs", max_duration_secs, true);
+  validate_limit("interval_secs", interval_secs, false);
+
+  const initial_origin = new URL(initial_url).origin;
+
+  // Default policy: visit only URLs on the initial site's origin.
+  const should_visit_url =
+    options.should_visit_url ??
+    ((candidate_url: string) =>
+      new URL(candidate_url).origin === initial_origin);
+
+  // FIFO queue guarantees breadth-first traversal.
+  const queue: queue_item[] = [
+    { url: initial_url, depth: 0 },
+  ];
+
+  let queue_index = 0;
+  let attempted_page_count = 0;
+  let last_fetch_finished_at: number | undefined;
+
+  // Mark URLs when considered, preventing duplicate scheduling.
+  const considered_urls = new Set<string>([initial_url]);
+
+  const pages: traversed_page[] = [];
+  const errors: traversal_error[] = [];
+
+  const start_time = Date.now();
+
+  const duration_exceeded = () =>
+    (Date.now() - start_time) / 1000 >= max_duration_secs;
+
+  let stop_reason: traverse_result["stop_reason"] = "queue_empty";
+
+  while (queue_index < queue.length) {
+    // Enforce page limit.
+    if (attempted_page_count >= max_page_count) {
+      stop_reason = "max_page_count";
+      break;
+    }
+
+    // Enforce duration limit.
+    if (duration_exceeded()) {
+      stop_reason = "max_duration";
+      break;
+    }
+
+    // Wait between fetches, not before the initial fetch.
+    if (last_fetch_finished_at !== undefined) {
+      const elapsed_ms = Date.now() - last_fetch_finished_at;
+      const remaining_ms = interval_secs * 1000 - elapsed_ms;
+
+      if (remaining_ms > 0) {
+        await delay(remaining_ms);
+      }
+
+      if (duration_exceeded()) {
+        stop_reason = "max_duration";
+        break;
+      }
+    }
+
+    const current_item = queue[queue_index++];
+    const current_url = current_item.url;
+    const current_depth = current_item.depth;
+
+    attempted_page_count++;
+
+    let html: string;
+
+    // Fetch failures are recorded without aborting the traversal.
+    try {
+      html = await fetch(current_url);
+    } catch (error) {
+      last_fetch_finished_at = Date.now();
+
+      errors.push({
+        url: current_url,
+        depth: current_depth,
+        error,
+      });
+
+      continue;
+    }
+
+    last_fetch_finished_at = Date.now();
+
+    pages.push({
+      url: current_url,
+      depth: current_depth,
+      html,
+    });
+
+    // Do not discover children beyond the depth limit.
+    if (current_depth >= max_depth) {
+      continue;
+    }
+
+    const $ = load(html);
+
+    // Respect an HTML <base href="..."> when resolving relative links.
+    let link_base_url = current_url;
+    const base_href = $("base[href]").first().attr("href");
+
+    if (base_href) {
+      link_base_url =
+        normalize_http_url(base_href, current_url) ?? current_url;
+    }
+
+    // Extract navigational links in document order.
+    const links = $("a[href], area[href]").toArray();
+
+    for (const element of links) {
+      if (duration_exceeded()) {
+        stop_reason = "max_duration";
+        break;
+      }
+
+      const href = $(element).attr("href");
+
+      if (href === undefined) {
+        continue;
+      }
+
+      const next_url = normalize_http_url(
+        href.trim(),
+        link_base_url,
+      );
+
+      if (!next_url || considered_urls.has(next_url)) {
+        continue;
+      }
+
+      considered_urls.add(next_url);
+
+      const next_depth = current_depth + 1;
+
+      if (next_depth > max_depth) {
+        continue;
+      }
+
+      // Await each decision before processing the next link.
+      if (!(await should_visit_url(next_url))) {
+        continue;
+      }
+
+      if (duration_exceeded()) {
+        stop_reason = "max_duration";
+        break;
+      }
+
+      queue.push({
+        url: next_url,
+        depth: next_depth,
+      });
+    }
+
+    if (stop_reason === "max_duration") {
+      break;
+    }
+  }
+
+  return {
+    pages,
+    errors,
+    stop_reason,
+  };
+}
+```
+
+### **Usage**
+
+```
+const result = await traverse(
+  async (url: string): Promise<string> => {
+    // This can be native fetch, Playwright, Puppeteer,
+    // or any browser automation returning rendered HTML.
+    return await browser_fetch_html(url);
+  },
+  "https://example.com",
+  {
+    max_depth: 3,
+    max_page_count: 100,
+    max_duration_secs: 60,
+    interval_secs: 1,
+  },
+);
+
+console.log(result.pages);
+console.log(result.errors);
+console.log(result.stop_reason);
+```
+
+### **Behavior**
+
+| Option              | Default     | Meaning                                                    |
+| ------------------- | ----------- | ---------------------------------------------------------- |
+| `should_visit_url`  | Same origin | Filter discovered URLs                                     |
+| `max_depth`         | `Infinity`  | Initial page = 0; its links = 1                            |
+| `max_page_count`    | `Infinity`  | Maximum fetch attempts, including failures                 |
+| `max_duration_secs` | `Infinity`  | Maximum traversal duration                                 |
+| `interval_secs`     | `1`         | Minimum delay after a fetch finishes before the next fetch |
+
+A few implementation details:
+
+- The initial URL is always eligible, regardless of the URL filter.
+- URLs are deduplicated, including fragments.
+- Fetch errors are recorded and traversal continues.
+- The page limit counts failed fetch attempts.
+- Duration is checked throughout traversal. An already-running fetch cannot be forcibly cancelled because the supplied `fetch` callback does not accept an abort signal.
+- Browser-rendered links are discovered as long as your custom fetch function returns the rendered HTML.
+
+Cheerio's ESM `load` function parses the supplied HTML string and provides the selector API used here.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://cheerio.js.org\&sz=32)
+
+Cheerio+1
+
+# use snake case. use cheerio esm. use bfs. return void. log its behavior. write ts traverse(fetch, url, options). async fetch: string url -> string of html. url is initial page. you should parse all links on the page and traverse recursively. options include should visit url -> bool = same site, max depth (0 indexed, any link on the initial page is of depth 1) = inf, max page count = inf, max duration (in secs) = inf, interval (in sec) = 1
+
+Here's a TypeScript implementation using **Cheerio (ESM)** and **breadth-first search (BFS)**. It respects the depth, page count, duration, visit predicate, and interval limits.
+
+```
+import * as cheerio from "cheerio";
+
+type traverse_options = {
+  should_visit?: (url: string) => boolean;
+  max_depth?: number;
+  max_page_count?: number;
+  max_duration?: number;
+  interval?: number;
+};
+
+export async function traverse(
+  fetch: (url: string) => Promise<string>,
+  url: string,
+  options: traverse_options = {},
+): Promise<void> {
+  const {
+    should_visit = (target_url: string) =>
+      new URL(target_url).origin === new URL(url).origin,
+    max_depth = Infinity,
+    max_page_count = Infinity,
+    max_duration = Infinity,
+    interval = 1,
+  } = options;
+
+  const start_time = Date.now();
+  const queue: { url: string; depth: number }[] = [
+    { url, depth: 0 },
+  ];
+
+  const visited = new Set<string>();
+  let page_count = 0;
+
+  const log = (...args: unknown[]) => {
+    console.log("[traverse]", ...args);
+  };
+
+  while (queue.length > 0) {
+    // Check duration limit.
+    if ((Date.now() - start_time) / 1000 >= max_duration) {
+      log("Maximum duration reached.");
+      break;
+    }
+
+    // Check page count limit.
+    if (page_count >= max_page_count) {
+      log("Maximum page count reached.");
+      break;
+    }
+
+    const current = queue.shift()!;
+
+    if (visited.has(current.url)) {
+      continue;
+    }
+
+    visited.add(current.url);
+
+    if (!should_visit(current.url)) {
+      log("Skipping URL (visit predicate):", current.url);
+      continue;
+    }
+
+    log("Visiting:", current.url, "Depth:", current.depth);
+
+    try {
+      const html = await fetch(current.url);
+      page_count++;
+
+      log("Fetched:", current.url);
+
+      if (current.depth >= max_depth) {
+        log("Maximum depth reached:", current.url);
+        continue;
+      }
+
+      const $ = cheerio.load(html);
+
+      $("a[href]").each((_, element) => {
+        const href = $(element).attr("href");
+
+        if (!href) return;
+
+        try {
+          const next_url = new URL(href, current.url).href;
+
+          if (
+            !visited.has(next_url) &&
+            should_visit(next_url)
+          ) {
+            queue.push({
+              url: next_url,
+              depth: current.depth + 1,
+            });
+
+            log("Queued:", next_url);
+          }
+        } catch {
+          log("Ignoring invalid URL:", href);
+        }
+      });
+    } catch (error) {
+      log("Fetch failed:", current.url, error);
+    }
+
+    // Respect request interval.
+    if (queue.length > 0 && interval > 0) {
+      await new Promise((resolve) =>
+        setTimeout(resolve, interval * 1000),
+      );
+    }
+  }
+
+  log("Traversal complete.", {
+    page_count,
+    visited_count: visited.size,
+    elapsed_seconds: (Date.now() - start_time) / 1000,
+  });
+}
+```
+
+### **Usage**
+
+```
+await traverse(
+  async (url) => {
+    const response = await fetch(url);
+    return response.text();
+  },
+  "https://example.com",
+  {
+    should_visit: (url) =>
+      new URL(url).hostname === "example.com",
+    max_depth: 3,
+    max_page_count: 100,
+    max_duration: 60,
+    interval: 1,
+  },
+);
+```
+
+### **Behavior**
+
+- **BFS:** Visits pages level by level using a FIFO queue.
+- **Depth:** Initial page is depth `0`; its links are depth `1`.
+- **Deduplication:** Prevents visiting the same URL more than once.
+- **Same-site default:** Only visits URLs with the initial page's origin.
+- **Page count:** Counts successfully fetched pages.
+- **Duration:** Stops starting new requests after the time limit.
+- **Interval:** Waits between requests.
+- **Logging:** Reports visits, queued links, skipped URLs, failures, and completion.
+
+Note: `max_duration` cannot interrupt an already-running `fetch`. Also, the interval is measured between request starts approximately, including fetch duration.
+
+# use snake case. use cheerio esm. use bfs. return void. log its behavior. ignore in page toc navigation links. write ts traverse(fetch, url, options). async fetch: string url -> string of html. url is initial page. you should parse all links on the page and traverse recursively. options include should visit url -> bool = same site, max depth (0 indexed, any link on the initial page is of depth 1) = inf, max page count = inf, max duration (in secs) = inf, interval (in sec) = 1
+
+Here's a TypeScript implementation using **Cheerio (ESM)** and **breadth-first search (BFS)**. It uses snake_case for variables and options, returns `Promise<void>`, and logs traversal behavior.
+
+```
+
+import * as cheerio from "cheerio";
+
+export type traverse_options = {
+  should_visit?: (url: string) => boolean;
+  max_depth?: number;
+  max_page_count?: number;
+  max_duration?: number;
+  interval?: number;
+};
+
+export async function traverse(
+  fetch: (url: string) => Promise<string>,
+  url: string,
+  options: traverse_options = {},
+): Promise<void> {
+  const {
+    should_visit = (target_url: string) => {
+      try {
+        return new URL(target_url).origin === new URL(url).origin;
+      } catch {
+        return false;
+      }
+    },
+    max_depth = Infinity,
+    max_page_count = Infinity,
+    max_duration = Infinity,
+    interval = 1,
+  } = options;
+
+  const start_time = Date.now();
+  const visited = new Set<string>();
+  const queue: Array<{ url: string; depth: number }> = [
+    { url, depth: 0 },
+  ];
+
+  const sleep = (seconds: number) =>
+    new Promise<void>((resolve) =>
+      setTimeout(resolve, seconds * 1000),
+    );
+
+  const normalize_url = (href: string, base_url: string) => {
+    try {
+      const parsed_url = new URL(href, base_url);
+
+      // Ignore non-HTTP links, fragments, and page TOC navigation.
+      if (!["http:", "https:"].includes(parsed_url.protocol)) {
+        return null;
+      }
+
+      if (parsed_url.hash) {
+        parsed_url.hash = "";
+      }
+
+      return parsed_url.href;
+    } catch {
+      return null;
+    }
+  };
+
+  while (queue.length > 0) {
+    const elapsed_seconds = (Date.now() - start_time) / 1000;
+
+    if (elapsed_seconds >= max_duration) {
+      console.log("[traverse] Maximum duration reached.");
+      break;
+    }
+
+    if (visited.size >= max_page_count) {
+      console.log("[traverse] Maximum page count reached.");
+      break;
+    }
+
+    const current = queue.shift()!;
+
+    if (current.depth > max_depth) {
+      continue;
+    }
+
+    if (visited.has(current.url)) {
+      continue;
+    }
+
+    if (!should_visit(current.url)) {
+      console.log(`[traverse] Skipping: ${current.url}`);
+      continue;
+    }
+
+    visited.add(current.url);
+
+    console.log(
+      `[traverse] Visiting (depth ${current.depth}): ${current.url}`,
+    );
+
+    try {
+      const html = await fetch(current.url);
+      const $ = cheerio.load(html);
+
+      const links = new Set<string>();
+
+      $("a[href]").each((_, element) => {
+        const href = $(element).attr("href");
+
+        if (!href) return;
+
+        // Ignore in-page TOC navigation links.
+        const is_toc_link =
+          href.startsWith("#") ||
+          $(element).closest(
+            [
+              "nav",
+              "[role='navigation']",
+              ".toc",
+              "#toc",
+              ".table-of-contents",
+              "[class*='toc']",
+              "[id*='toc']",
+            ].join(","),
+          ).length > 0;
+
+        if (is_toc_link) return;
+
+        const normalized_url = normalize_url(href, current.url);
+
+        if (!normalized_url) return;
+        if (visited.has(normalized_url)) return;
+        if (!should_visit(normalized_url)) return;
+
+        links.add(normalized_url);
+      });
+
+      console.log(
+        `[traverse] Found ${links.size} new links on ${current.url}`,
+      );
+
+      if (current.depth < max_depth) {
+        for (const link of links) {
+          if (!visited.has(link)) {
+            queue.push({
+              url: link,
+              depth: current.depth + 1,
+            });
+          }
+        }
+      }
+    } catch (error) {
+      console.error(
+        `[traverse] Failed to fetch ${current.url}:`,
+        error,
+      );
+    }
+
+    if (queue.length > 0 && interval > 0) {
+      await sleep(interval);
+    }
+  }
+
+  console.log(
+    `[traverse] Finished. Visited ${visited.size} pages in ${
+      ((Date.now() - start_time) / 1000).toFixed(2)
+    } seconds.`,
+  );
+}
+
+```
+
+### **Behavior and defaults**
+
+| Option           | Default     | Behavior                             |
+| ---------------- | ----------- | ------------------------------------ |
+| `should_visit`   | Same origin | Controls which URLs are eligible     |
+| `max_depth`      | `Infinity`  | Initial page = depth 0               |
+| `max_page_count` | `Infinity`  | Maximum pages fetched                |
+| `max_duration`   | `Infinity`  | Maximum elapsed seconds              |
+| `interval`       | `1`         | Delay between page fetches (seconds) |
+
+### **Implementation details**
+
+- **BFS:** Uses a FIFO queue (`shift` / `push`).
+- **Deduplication:** Tracks normalized URLs in a `Set`.
+- **Relative links:** Resolves against the current page URL.
+- **TOC exclusion:** Ignores fragment-only links and links inside common TOC/navigation containers.
+- **Error handling:** Logs fetch failures and continues traversal.
+- **Limits:** Checks duration and page count before each fetch.
+- **Return:** Resolves to `void`.
+
+**Note:** The interval is a delay between completed page fetches, not a fixed-rate scheduler. The implementation is sequential, so it won't fetch multiple pages concurrently.
+
+# use snake case. use cheerio esm. use bfs. return void. log its behavior. remove toc hash from url if exists. write ts traverse(fetch, url, options). async fetch: string url -> string of html. url is initial page. you should parse all links on the page and traverse recursively. options include should visit url -> bool = same site, max depth (0 indexed, any link on the initial page is of depth 1) = inf, max page count = inf, max duration (in secs) = inf, interval (in sec) = 1
+
+```
+import * as cheerio from "cheerio";
+
+type traverse_options = {
+  should_visit?: (url: string) => boolean;
+  max_depth?: number;
+  max_page_count?: number;
+  max_duration?: number;
+  interval?: number;
+};
+
+export async function traverse(
+  fetch: (url: string) => Promise<string>,
+  url: string,
+  options: traverse_options = {},
+): Promise<void> {
+  const {
+    should_visit = (candidate_url) => {
+      try {
+        return new URL(candidate_url).origin === new URL(url).origin;
+      } catch {
+        return false;
+      }
+    },
+    max_depth = Infinity,
+    max_page_count = Infinity,
+    max_duration = Infinity,
+    interval = 1,
+  } = options;
+
+  const normalize_url = (value: string): string => {
+    const parsed_url = new URL(value);
+    parsed_url.hash = "";
+    return parsed_url.href;
+  };
+
+  const initial_url = normalize_url(url);
+  const start_time = Date.now();
+
+  const queue: Array<{ url: string; depth: number }> = [
+    { url: initial_url, depth: 0 },
+  ];
+
+  const visited = new Set<string>();
+  let page_count = 0;
+
+  const log = (message: string, details?: unknown): void => {
+    if (details !== undefined) {
+      console.log(`[traverse] ${message}`, details);
+    } else {
+      console.log(`[traverse] ${message}`);
+    }
+  };
+
+  const is_expired = (): boolean => {
+    return (Date.now() - start_time) / 1000 >= max_duration;
+  };
+
+  log("Starting traversal", {
+    initial_url,
+    max_depth,
+    max_page_count,
+    max_duration,
+    interval,
+  });
+
+  while (
+    queue.length > 0 &&
+    page_count < max_page_count &&
+    !is_expired()
+  ) {
+    const current = queue.shift()!;
+
+    if (visited.has(current.url)) {
+      continue;
+    }
+
+    if (!should_visit(current.url)) {
+      log("Skipping URL (should_visit returned false)", current.url);
+      continue;
+    }
+
+    if (current.depth > max_depth) {
+      log("Skipping URL (max depth exceeded)", current.url);
+      continue;
+    }
+
+    visited.add(current.url);
+
+    log("Fetching page", {
+      url: current.url,
+      depth: current.depth,
+      page_count: page_count + 1,
+    });
+
+    try {
+      const html = await fetch(current.url);
+      page_count++;
+
+      log("Fetched page successfully", {
+        url: current.url,
+        html_length: html.length,
+      });
+
+      const $ = cheerio.load(html);
+
+      if (current.depth >= max_depth) {
+        log("Maximum depth reached; not discovering child links", current.url);
+        continue;
+      }
+
+      const links = new Set<string>();
+
+      $("a[href]").each((_, element) => {
+        const href = $(element).attr("href");
+
+        if (!href) {
+          return;
+        }
+
+        try {
+          const candidate_url = normalize_url(
+            new URL(href, current.url).href,
+          );
+
+          if (
+            !visited.has(candidate_url) &&
+            !links.has(candidate_url) &&
+            should_visit(candidate_url)
+          ) {
+            links.add(candidate_url);
+          }
+        } catch {
+          log("Ignoring invalid link", href);
+        }
+      });
+
+      log("Discovered links", {
+        url: current.url,
+        count: links.size,
+      });
+
+      for (const link of links) {
+        queue.push({
+          url: link,
+          depth: current.depth + 1,
+        });
+      }
+    } catch (error) {
+      log("Failed to fetch or parse page", {
+        url: current.url,
+        error,
+      });
+    }
+
+    if (
+      queue.length > 0 &&
+      page_count < max_page_count &&
+      !is_expired() &&
+      interval > 0
+    ) {
+      await new Promise((resolve) =>
+        setTimeout(resolve, interval * 1000),
+      );
+    }
+  }
+
+  log("Traversal completed", {
+    visited_count: visited.size,
+    page_count,
+    remaining_queue: queue.length,
+    elapsed_seconds: (Date.now() - start_time) / 1000,
+    stopped_by: is_expired()
+      ? "max_duration"
+      : page_count >= max_page_count
+        ? "max_page_count"
+        : "queue_exhausted",
+  });
+}
+```
+
+### **Behavior**
+
+- **BFS:** Uses a FIFO queue, traversing links breadth-first.
+- **URL normalization:** Removes fragments (`#toc`, `#section`, etc.) before deduplication and fetching.
+- **Same-site default:** Compares origins, including protocol and port.
+- **Depth:** Initial page is depth `0`; its links are depth `1`.
+- **Page count:** Counts successfully fetched pages.
+- **Duration:** Checks elapsed time before each fetch.
+- **Interval:** Waits between fetches, in seconds.
+- **Errors:** Logs failures and continues traversal.
+- **Logging:** Reports fetches, discovered links, skipped URLs, failures, and completion statistics.
+
+### **Usage**
+
+```
+await traverse(fetch, "https://example.com", {
+  max_depth: 3,
+  max_page_count: 100,
+  max_duration: 60,
+  interval: 0.5,
+  should_visit: (url) => url.startsWith("https://example.com"),
+});
+```
+
+**Note:** The duration limit is cooperative: it prevents starting new fetches after the deadline but does not abort an already-running `fetch`.
+
+
 

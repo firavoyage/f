@@ -1,15 +1,18 @@
-import { traverse, fetch } from 'action/index'
+import { traverse, fetch, setup_browser } from 'action/index'
 
-traverse(
-  (url) =>
-    fetch(url, {
-      should_hide_window: false,
-    }),
-  'https://en.wikipedia.org/',
+const browser = await setup_browser({
+  should_hide_window: false,
+})
+
+await traverse(
+  fetch,
+  // 'https://en.wikipedia.org/',
   // 'https://wikipedia.org/',
-  // 'https://cs61a.org/fa26/',
+  'https://cs61a.org/fa26/',
   {
     max_depth: 1,
     max_page_count: 10,
   },
 )
+
+

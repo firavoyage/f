@@ -29,11 +29,36 @@ const viewport = {
   // height: 900,
 }
 
+let browser: Awaited<ReturnType<typeof chromium.launchPersistentContext>>
+
+export async function setup_browser({
+  should_hide_window = true,
+  display_number = ':99',
+  // undefined (omitted) means light, while nil/no pref evaluates to system
+  theme = 'system' as 'system' | 'light' | 'dark',
+} = {}) {
+  if (should_hide_window) {
+    process.env.DISPLAY = display_number
+  }
+
+  let colorScheme = theme == 'system' ? 'no-preference' : theme
+
+  browser = await chromium.launchPersistentContext(browser_profile, {
+    channel: 'chrome',
+    headless: false,
+    viewport: nil,
+    colorScheme,
+  })
+  
+  return browser
+}
+
 export async function fetch(
   url: string,
   {
     should_hide_window = true,
-    should_close_window_when_finish = true,
+    should_close_window_when_finish = false,
+    should_close_page_when_finish = true,
     display_number = ':99',
     is_static = true,
     timeout = 10000,
@@ -44,19 +69,23 @@ export async function fetch(
   const id = scalable_filename(random_id())
   const dir = get_result_folder(id)
 
-  if (should_hide_window) {
-    process.env.DISPLAY = display_number
+  if (!browser) {
+    if (should_hide_window) {
+      process.env.DISPLAY = display_number
+    }
+
+    let colorScheme = theme == 'system' ? 'no-preference' : theme
+
+    browser = await chromium.launchPersistentContext(browser_profile, {
+      channel: 'chrome',
+      headless: false,
+      viewport: nil,
+      colorScheme,
+    })
   }
 
-  let colorScheme = theme == 'system' ? 'no-preference' : theme
-  const browser = await chromium.launchPersistentContext(browser_profile, {
-    channel: 'chrome',
-    headless: false,
-    viewport: nil,
-    colorScheme,
-  })
-
-  const page = browser.pages()[0] || (await browser.newPage())
+  const page = await browser.newPage()
+  // const page = browser.pages()[0] || (await browser.newPage())
 
   const assets = dict()
 
@@ -78,10 +107,8 @@ export async function fetch(
         const buffer = await response.body()
         const parsed_url = new URL(url)
         const ext = extname(parsed_url.pathname) || get_fallback_ext(type)
-        const hash = create_hash('sha256')
-          .update(buffer)
-          .digest('hex')
-          // .slice(0, 16)
+        const hash = create_hash('sha256').update(buffer).digest('hex')
+        // .slice(0, 16)
         // const hash = createHash('md5').update(url).digest('hex').slice(0, 10)
         const filename = `${scalable_filename(hash)}${ext}`
         // const filename = `${hash}${ext}`
@@ -106,7 +133,7 @@ export async function fetch(
       timeout,
     }),
   )
-  if(is_error(loading)){
+  if (is_error(loading)) {
     append(log_file, format_log(`${url} timeout after ${timeout}ms`, 'error'))
   }
 
@@ -147,9 +174,13 @@ export async function fetch(
   write(webpage_index_file, serialize(webpage_index))
   append(log_file, format_log(`Added ${url} to index`))
 
+  if (should_close_page_when_finish) {
+    page.close()
+  } 
+
   if (should_close_window_when_finish) {
     await browser.close()
-  } 
+  }
 
   return html
 }
@@ -391,4 +422,3 @@ function scalable_filename(hash: string) {
 
   return `${first}/${second}/${rest}`
 }
-
