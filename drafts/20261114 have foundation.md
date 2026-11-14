@@ -707,4 +707,1512 @@ srwxrwxrwx   1 fira fira     0 Nov 14 14:57 X99
  ~ % sudo systemctl restart launch
 ```
 
+# how to save a rendered page in html alongside all static assets via patchright in js esm
+
+11:03 PM
+
+### how to save a rendered page in html alongside all static assets via patchright in js esm
+
+To save a rendered page alongside all its static assets (CSS, images, fonts, scripts) using **Patchright** in JavaScript (ESM), you have two primary approaches. Since [Patchright](https://scrapewise.ai/blogs/what-is-patchright-guide-2026) is a drop-in replacement for Playwright, standard Playwright network interception and Chrome DevTools Protocol (CDP) methods apply directly. [](https://scrapewise.ai/blogs/what-is-patchright-guide-2026)
+
+#### 1\. Intercept Network Responses & Rewrite Paths (Recommended)
+
+To save a standalone `.html` file alongside a local `./assets/` folder so it renders offline without broken links, listen to the `response` event during navigation, save each static file locally, and rewrite the asset URLs in the rendered DOM before calling `page.content()`. [](https://stackoverflow.com/questions/74845527/extract-images-from-playwright-page-without-requesting-them-again)
+
+javascript
+
+```
+import { chromium } from 'patchright';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import crypto from 'node:crypto';
+
+const TARGET_URL = 'https://example.com';
+const OUT_DIR = './saved_page';
+const ASSETS_DIR = path.join(OUT_DIR, 'assets');
+
+await fs.mkdir(ASSETS_DIR, { recursive: true });
+
+const browser = await chromium.launch({ headless: false });
+const page = await browser.newPage();
+
+// Map original URLs to local relative paths
+const assetMap = new Map();
+
+// 1. Intercept and save static assets as they load
+page.on('response', async (response) => {
+  try {
+    const url = response.url();
+    const type = response.request().resourceType();
+    const status = response.status();
+
+    // Filter for static assets and successful responses
+    if (
+      status >= 200 &&
+      status < 300 &&
+      ['stylesheet', 'image', 'font', 'script', 'media'].includes(type) &&
+      !url.startsWith('data:')
+    ) {
+      const buffer = await response.body();
+      const parsedUrl = new URL(url);
+      const ext = path.extname(parsedUrl.pathname) || getFallbackExt(type);
+      const hash = crypto.createHash('md5').update(url).digest('hex').slice(0, 10);
+      const filename = `${hash}${ext}`;
+      const localFilePath = path.join(ASSETS_DIR, filename);
+
+      await fs.writeFile(localFilePath, buffer);
+      assetMap.set(url, `./assets/${filename}`);
+    }
+  } catch {
+    // Ignore failed or aborted background requests (e.g., preflight/redirects)
+  }
+});
+
+// 2. Navigate and wait for dynamic rendering to settle
+await page.goto(TARGET_URL, { waitUntil: 'networkidle' });
+
+// 3. Rewrite asset URLs inside the live DOM to point to local files
+await page.evaluate((entries) => {
+  const map = new Map(entries);
+  const attrs = ['src', 'href', 'poster'];
+
+  document.querySelectorAll('*').forEach((el) => {
+    for (const attr of attrs) {
+      const val = el.getAttribute(attr);
+      if (!val) continue;
+      // Resolve relative URLs against the page's base URL
+      const absUrl = new URL(val, document.baseURI).href;
+      if (map.has(absUrl)) {
+        el.setAttribute(attr, map.get(absUrl));
+      }
+    }
+  });
+}, Array.from(assetMap.entries()));
+
+// 4. Save the final rendered HTML
+const html = await page.content();
+await fs.writeFile(path.join(OUT_DIR, 'index.html'), html, 'utf-8');
+
+await browser.close();
+console.log(`Saved index.html and ${assetMap.size} assets to ${OUT_DIR}`);
+
+function getFallbackExt(resourceType) {
+  const map = { stylesheet: '.css', script: '.js', image: '.png', font: '.woff2' };
+  return map[resourceType] || '.bin';
+}
+
+```
+
+
+
+#### 2\. Single-File Archive via CDP (`MHTML`)
+
+If you do not strictly need a separate folder of raw asset files and just want a single self-contained file that browsers can open offline with all images and styles intact, you can use Chrome's native `Page.captureSnapshot` CDP command: [](https://github.com/microsoft/playwright/issues/13629)
+
+javascript
+
+```
+import { chromium } from 'patchright';
+import fs from 'node:fs/promises';
+
+const browser = await chromium.launch({ headless: false });
+const context = await browser.newContext();
+const page = await context.newPage();
+
+await page.goto('https://example.com', { waitUntil: 'networkidle' });
+
+// Capture full page + all assets into one .mhtml file
+const cdpSession = await context.newCDPSession(page);
+const { data } = await cdpSession.send('Page.captureSnapshot', { format: 'mhtml' });
+
+await fs.writeFile('./page.mhtml', data, 'utf-8');
+await browser.close();
+
+```
+
+
+
+#### Important Caveats to Watch For
+
+* **CSS `url()` references.** The DOM attribute rewriter in Approach 1 updates HTML tags (`<img>`, `<link>`, `<script>`), but background images or `@font-face` rules declared inside external `.css` files still point to remote URLs unless you also run a regex replacement on saved CSS text buffers.
+* **Single-Page App (SPA) hydration.** If a framework like React or Next.js re-executes saved `<script>` tags when you open `index.html` locally, it may wipe out the pre-rendered DOM or throw CORS errors; strip `<script>` tags before saving if you only want a static visual snapshot.
+* **Stealth footprint.** Note that `newCDPSession` in Approach 2 interacts with the Chrome DevTools Protocol; while `Page.captureSnapshot` does not trigger Patchright's patched `Runtime.enable` leak, running it after the page finishes loading avoids detection during initial page checks. [](https://scrapewise.ai/blogs/what-is-patchright-guide-2026)
+
+If you'd like to refine the script for your specific target site, let me know:
+
+* Whether you also need **CSS `url()` assets** (like background images and web fonts) rewritten inside downloaded stylesheets
+* If the page uses **lazy-loading** on scroll or **shadow DOM** elements
+* Whether you want **JavaScript stripped** so the saved HTML stays completely static offline
+
+I can update the ESM snippet to handle those edge cases.
+
+* [](https://stackoverflow.com/questions/40975902/nodejs-how-to-save-a-rendered-view-as-a-static-html-file)  
+Stack Overflow  
+NodeJS : How to save a rendered view as a static .html file?  
+This question does not show any research effort; it is unclear or not useful. Save this question. Show activity on this post. i'm ...
+* [](https://scrapewise.ai/blogs/what-is-patchright-guide-2026)  
+Scrapewise  
+What Is Patchright? Install, Patches, Limits (2026) - Scrapewise  
+Patchright is a patched version of the Playwright driver. Its main patch avoids the Runtime.enable CDP call. It fixes fingerprint ...
+* [](https://github.com/microsoft/playwright/issues/13629)  
+GitHub  
+\[Feature\] Ability to save a web page as HTML/MHTML · Issue #13629 · microsoft/playwright  
+requesting a feature to save web pages as HTML/MHTML files for large documents and debugging reproduction. provided a CDP session ...
+
+Show all
+
+## is the filename content addressable
+
+is the filename content addressable
+
+11:20 PM
+
+### is the filename content addressable
+
+**No, the filename in that script is URL-addressed, not content-addressed.** It hashes the request `url` string rather than the downloaded file `buffer`.
+
+#### Why That Matters
+
+* **URL-addressed (`update(url)`):** Two identical files served from different URLs (such as CDN mirrors or cache-busted query strings) get saved as separate duplicate files. Conversely, if a URL's content changes on a later run, it still produces the exact same filename and overwrites the old file.
+* **Content-addressed (`update(buffer)`):** Hashing the actual file bytes guarantees that identical assets always share one filename, and any change to a file's contents automatically generates a brand-new filename.
+
+#### How to Make It Content-Addressed
+
+Swap `url` for `buffer` inside `crypto.createHash()` and use SHA-256 instead of MD5 for stronger collision resistance:
+
+javascript
+
+```
+const buffer = await response.body();
+const parsedUrl = new URL(url);
+const ext = path.extname(parsedUrl.pathname) || getFallbackExt(type);
+
+// Hash the file bytes (buffer) instead of the URL string
+const hash = crypto.createHash('sha256').update(buffer).digest('hex').slice(0, 16);
+const filename = `${hash}${ext}`;
+const localFilePath = path.join(ASSETS_DIR, filename);
+
+// Optional: avoid rewriting the file if an identical asset was already saved
+await fs.writeFile(localFilePath, buffer);
+assetMap.set(url, `./assets/${filename}`);
+
+```
+
+
+
+Would you like to add **deduplication checks** (skipping `fs.writeFile` when the hash already exists on disk) or **content-type header detection** so extensionless CDN URLs always get accurate file extensions?
+
+# how to get its hash given a file path in nodejs via some esm libs for content addressable storage
+
+You can compute a file's hash for content-addressable storage (CAS) in Node.js using **pure ESM libraries** like `hasha` or `multiformats`, or with **built-in Node.js streams**. The right choice depends on whether you want a simple hex string or a self-describing Content Identifier (CID). [](https://www.npmjs.com/package/multiformats)
+
+### 1\. Simple File Hashing with `hasha` (Pure ESM)
+
+If your CAS system stores files by standard cryptographic digests (like SHA-256), [hasha](https://github.com/sindresorhus/hasha) is a popular pure-ESM wrapper around Node's crypto module. It automatically streams the file in a worker thread so it won't block your event loop or exhaust memory on large files. 
+
+bash
+
+```
+npm install hasha
+
+```
+
+
+
+javascript
+
+```
+import { hashFile } from 'hasha';
+
+// Computes SHA-256 hex digest via worker thread streaming
+const hash = await hashFile('./path/to/file.bin', { algorithm: 'sha256' });
+console.log(hash); 
+// => 'b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9'
+
+```
+
+
+
+### 2\. Self-Describing CIDs with `multiformats` (IPFS / IPLD Standard)
+
+If you are building a future-proof CAS (like IPFS or AT Protocol) where the address encodes both the hashing algorithm and data format, use [multiformats](https://www.npmjs.com/package/multiformats). Because `multiformats` hashes byte arrays in memory, you can stream the file through Node's native `crypto` module first and wrap the raw digest into a **CIDv1**. [](https://github.com/multiformats/js-cid)
+
+bash
+
+```
+npm install multiformats
+
+```
+
+
+
+javascript
+
+```
+import { createReadStream } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { pipeline } from 'node:stream/promises';
+import { CID } from 'multiformats/cid';
+import * as raw from 'multiformats/codecs/raw';
+import { create as createDigest } from 'multiformats/hashes/digest';
+
+const SHA2_256_CODE = 0x12; // Multicodec table code for sha2-256
+
+async function getFileCID(filePath) {
+  const hash = createHash('sha256');
+  await pipeline(createReadStream(filePath), hash);
+  
+  // Wrap the raw SHA-256 buffer into a Multihash digest, then a CIDv1
+  const digest = createDigest(SHA2_256_CODE, new Uint8Array(hash.digest()));
+  const cid = CID.createV1(raw.code, digest);
+  
+  return cid.toString(); // Base32 string by default
+}
+
+const cid = await getFileCID('./path/to/file.bin');
+console.log(cid); 
+// => 'bafkreifzjut3te2nhyekklss27nh3k72ysco7y32koao5eei66wof36n5e'
+
+```
+
+
+
+### 3\. Zero-Dependency Built-in ESM (`node:fs` \+ `node:crypto`)
+
+If you prefer avoiding third-party packages, Node's `crypto.Hash` class acts as a writable stream. Pairing it with `stream/promises` gives you clean, non-blocking async code. [](https://beta.docs.nodejs.org/crypto/Hash)
+
+javascript
+
+```
+import { createReadStream } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { pipeline } from 'node:stream/promises';
+
+async function getFileHash(filePath, algorithm = 'sha256') {
+  const hash = createHash(algorithm);
+  await pipeline(createReadStream(filePath), hash);
+  return hash.digest('hex');
+}
+
+const hash = await getFileHash('./path/to/file.bin');
+console.log(hash);
+
+```
+
+
+
+### Quick Comparison
+
+| Approach               | Output Format           | Best For                                                             | Memory Footprint                          |
+| ---------------------- | ----------------------- | -------------------------------------------------------------------- | ----------------------------------------- |
+| **hasha**              | Hex / Base64 string     | Simple local or S3-backed CAS, high concurrency via worker threads.  | Low (streamed)                            |
+| **multiformats**       | Base32 CID (bafkrei...) | Distributed CAS, algorithm agility, and IPFS compatibility.          | Low (when paired with node:crypto stream) |
+| **Native node:crypto** | Hex / Base64 / Buffer   | Zero-dependency projects needing standard SHA-256 or BLAKE2b hashes. | Low (streamed)                            |
+
+If you're designing the storage layer next, let me know:
+
+* **File sizes** you expect to handle (small configs vs. multi-gigabyte media)
+* Whether you need **content chunking** (like FastCDC for deduplicating modified files)
+
+I can show you how to structure the directory sharding or chunking pipeline.
+
+* [](https://beta.docs.nodejs.org/crypto/Hash)  
+Node.js  
+Hash | Node.js 26.13.0 Documentation  
+The Hash class is a utility for creating hash digests of data. It can be used in one of two ways: As a stream that is both readabl...
+* [](https://medium.com/@Yasirgaji/understanding-hashing-in-node-js-a-comprehensive-guide-4141a8406077)  
+Medium·Yasir Gaji  
+Understanding Hashing in Node.js: A Comprehensive Guide | by Yasir Gaji | Medium  
+December 4, 2024 — Fundamentals: Hashing transforms input data into irreversible, fixed-length, deterministic, collision-resistant strings. Algorithm...
+* [](https://www.geeksforgeeks.org/node-js/node-js-hash-digest-method/)  
+GeeksforGeeks  
+Node.js hash.digest() Method - GeeksforGeeks  
+Apr 11, 2023 — Node.js hash.digest() Method. Last Updated : 11 Apr, 2023\. The hash.digest( ) method is an inbuilt function of the crypto module's...
+
+Show all
+
+# compare sha256 and md5 for cas
+
+**SHA-256 is the clear winner for almost any modern Content-Addressable Storage (CAS) system.** It prevents malicious hash collisions and runs significantly faster than MD5 on modern CPUs with hardware cryptographic extensions. [](https://mojoauth.com/security-guides/md5-vs-sha-256)
+
+In a CAS architecture, an object's hash serves as its unique address and deduplication key. Because the storage engine assumes identical hashes mean identical data, a hash collision causes silent data corruption or allows an attacker to overwrite legitimate files with malicious payloads.
+
+### Key Differences for CAS
+
+| Attribute                    | SHA-256                                     | MD5                                        |
+| ---------------------------- | ------------------------------------------- | ------------------------------------------ |
+| **Digest Size**              | 256 bits (64 hex characters)                | 128 bits (32 hex characters)               |
+| **Collision Resistance**     | Cryptographically secure (128-bit security) | Broken (practical collision attacks exist) |
+| **Modern Hardware Speed**    | \~2.6 to 3.4 GB/s (with SHA extensions)     | \~0.5 to 0.98 GB/s                         |
+| **Software-Only Speed**      | \~88 MB/s (without hardware acceleration)   | \~534 MB/s (simpler math in pure software) |
+| **Storage & Index Overhead** | 32 bytes raw per key                        | 16 bytes raw per key                       |
+
+### How They Impact CAS Architecture
+
+* **Data Integrity and Security.** MD5 is vulnerable to chosen-prefix collision attacks. If untrusted users can upload data to your CAS, an attacker can craft two different files with the exact same MD5 hash, poisoning your storage deduplication. SHA-256 eliminates this risk. [](https://security.stackexchange.com/questions/203344/how-likely-is-a-collision-using-md5-compared-to-sha256-for-checking-file-integr)
+* **Throughput and Compute Cost.** Modern x86 and ARM processors include dedicated SHA hardware instructions. According to benchmarks cited on [Shattered.io](https://shattered.io/md5-vs-sha-256-2026/) and [Daniel Lemire's blog](https://lemire.me/blog/2025/01/11/javascript-hashing-speed-comparison-md5-versus-sha-256/), hardware-accelerated SHA-256 hashes data over three times faster than MD5 on current chips. MD5 only outperforms SHA-256 on legacy hardware or pure-software runtimes lacking crypto extensions. [](https://lemire.me/blog/2025/01/11/javascript-hashing-speed-comparison-md5-versus-sha-256/)
+* **Metadata and Memory Footprint.** SHA-256 keys require twice as much space in memory indexes, database primary keys, and file paths compared to MD5\. Unless you are storing tens of billions of tiny objects in RAM-constrained lookup tables, the extra 16 bytes per entry is negligible. [](https://mojoauth.com/security-guides/md5-vs-sha-256)
+* **Filesystem Fan-Out.** Both algorithms produce evenly distributed hex strings, making them equally effective for directory sharding (such as `ab/cd/abcdef...`) to avoid filesystem bottlenecks.
+
+### Recommendation
+
+* **Use SHA-256** as your default for any new CAS implementation. It guarantees tamper-proof deduplication and takes full advantage of modern CPU acceleration. [](https://shattered.io/md5-vs-sha-256-2026/)
+* **Use MD5** only if you are maintaining a legacy system with fixed 128-bit schemas, operating in a strictly closed environment with zero untrusted inputs, or running on older embedded hardware without SHA instructions. (If you need extreme speed without cryptographic security, consider modern non-cryptographic hashes like BLAKE3 or xxHash instead of MD5). [](https://shattered.io/md5-vs-sha-256-2026/)
+
+Are you designing a **new CAS system** or evaluating a **migration** from an existing MD5-based store? Let me know your **target hardware** or **expected object count**, and I can help with indexing strategies or migration paths.
+
+* [](https://mojoauth.com/security-guides/md5-vs-sha-256)  
+MojoAuth  
+MD5 vs SHA256: Hash Differences and Checksums | MojoAuth Security Guides  
+September 28, 2026 — MD5 outputs 128 bits … is cryptographically broken with practical collisions, and fails tamper checks; ensures 128-bit security.
+* [](https://shattered.io/md5-vs-sha-256-2026/)  
+shattered.io  
+MD5 vs SHA-256: SHA-256 Is Faster on Some CPUs \[2026\]  
+October 25, 2026 — MD5 is slower than SHA-256 and not as safe.” MD5's simpler math still runs faster in pure software. Both are designed to be fast, ...
+* [](https://security.stackexchange.com/questions/203344/how-likely-is-a-collision-using-md5-compared-to-sha256-for-checking-file-integr)  
+Information Security Stack Exchange  
+How likely is a collision using MD5 compared to SHA256 (for ...  
+February 11, 2019 — MD5 is considered 'broken' because it is vulnerable to collision attacks, allowing attackers to intentionally create two different...
+
+Show all
+
+# how to create sha256 for cas for response.body buffer in nodejs via esm libs
+
+To generate a SHA-256 hash for Content-Addressable Storage (CAS) from a `response.body` buffer in Node.js using ES Modules (ESM), use the built-in **`node:crypto`** module.
+
+### Hashing a Buffer in Memory
+
+If you have already read the response into a `Buffer` or `Uint8Array` (for example, via `response.arrayBuffer()`), pass it directly to `createHash`.
+
+javascript
+
+```
+import { createHash } from 'node:crypto';
+
+async function getCasHash(response) {
+  // Convert the Fetch API response body into a Buffer
+  const arrayBuffer = await response.arrayBuffer();
+  const buffer = Buffer.from(arrayBuffer);
+
+  // Generate the SHA-256 hex digest
+  const hash = createHash('sha256').update(buffer).digest('hex');
+  return hash;
+}
+
+```
+
+
+
+### Streaming Large Responses (Recommended for CAS)
+
+In Content-Addressable Storage systems, responses can be large. Instead of loading the entire buffer into memory at once, pipe the stream directly into the hash object.
+
+javascript
+
+```
+import { createHash } from 'node:crypto';
+import { Readable } from 'node:stream';
+import { pipeline } from 'node:stream/promises';
+
+async function streamCasHash(response) {
+  const hash = createHash('sha256');
+  
+  // Convert the Web ReadableStream (response.body) to a Node.js stream
+  const nodeStream = Readable.fromWeb(response.body);
+
+  // Pipe the stream into the hasher
+  await pipeline(nodeStream, hash);
+
+  return hash.digest('hex');
+}
+
+```
+
+
+
+### Key Considerations for CAS
+
+* **Output Encoding:** Use `.digest('hex')` for standard 64-character hexadecimal keys, or `.digest('base64url')` if you need shorter, URL-safe filenames.
+* **Stream Consumption:** Reading `response.body` to calculate the hash consumes the stream. If you also need to save the file to disk or S3, clone the response first using `response.clone()` or use a `PassThrough` stream to write and hash simultaneously.
+
+If you are also writing the file to storage at the same time, would you like to see how to **simultaneously hash and save the stream** to disk without reading it twice?
+
+# what if i pass response body buffer into writeFileSync(path, content, 'utf-8') nodejs
+
+When you pass a Node.js `Buffer` into `fs.writeFileSync(path, content, 'utf-8')`, **the `'utf-8'` encoding option is completely ignored**. Node.js writes the raw bytes of the buffer directly to the file without trying to decode or re-encode them. [](https://blog.logrocket.com/using-writefilesync-node-js/)
+
+### How `writeFileSync` Handles a Buffer
+
+* **Raw byte writing.** Because a `Buffer` already represents raw binary data, Node.js bypasses character encoding conversions. It simply dumps the exact bytes from memory onto the disk. [](https://blog.logrocket.com/using-writefilesync-node-js/)
+* **Encoding option behavior.** The third argument (`'utf-8'`) only applies when `content` is a JavaScript `string`. Passing a `Buffer` overrides the options parameter's encoding setting. [](https://blog.logrocket.com/using-writefilesync-node-js/)
+* **Binary safety.** If your response body is a binary file (like a PDF, PNG, or ZIP), passing `'utf-8'` will **not** corrupt the file, provided `content` is genuinely a `Buffer`.
+
+### When You Might Run Into Issues
+
+* **Accidental string conversion.** If you converted the response body to a string before passing it in (for example, calling `response.text()` instead of `response.arrayBuffer()`), binary files will get corrupted. In that scenario, invalid UTF-8 byte sequences get replaced with the `U+FFFD` replacement character (\`\`).
+* **Synchronous blocking.** Using `writeFileSync` blocks the Node.js event loop until the entire file finishes writing to disk. For large HTTP responses or concurrent server requests, `await fs.promises.writeFile(path, buffer)` is preferred. [](https://www.geeksforgeeks.org/node-js/node-js-fs-writefilesync-method/)
+
+### Best Practice
+
+For clarity and cleaner code, omit the encoding argument altogether when writing a `Buffer`: [](https://blog.logrocket.com/using-writefilesync-node-js/)
+
+javascript
+
+```
+// Recommended when `buffer` is a Buffer
+fs.writeFileSync(path, buffer);
+
+// Or asynchronous (non-blocking)
+await fs.promises.writeFile(path, buffer);
+
+```
+
+
+
+If you are seeing corrupted files or errors, let me know:
+
+* **How you are fetching** the response (`fetch`, `axios`, `http`?)
+* **What type of file** you are saving (JSON, image, PDF?)
+
+I can help you check if the buffer is being decoded properly before it reaches `writeFileSync`.
+
+* [](https://blog.logrocket.com/using-writefilesync-node-js/)  
+LogRocket Blog  
+Using the writeFileSync method in Node.js - LogRocket Blog  
+Jul 28, 2022 — The encoding of the Buffer class used as the data in the writeFileSync method will override the encoding here.
+* [](https://www.geeksforgeeks.org/node-js/node-js-fs-writefilesync-method/)  
+GeeksforGeeks  
+Node.js fs.writeFileSync() Method - GeeksforGeeks  
+March 2, 2026 — Synchronous file writing, blocks event loop until complete, creates non-existent files, overwrites existing content by default.
+* [](https://www.youtube.com/watch?v=ynpsQzv-OXM&t=12)  
+YouTube·Arya AI  
+writeFile vs writeFileSync for Absolute Beginners | Node JS  
+Jul 25, 2023 — the \`writeFileSync\` method operates synchronously, blocking further code execution until the file write operation is complete.  
+6m
+
+# how to inline all url inside a string of html and its url given a map of absolute url of assets to replacements in nodejs via libs
+
+To replace or inline all URLs inside an HTML string using Node.js, combine an HTML parser like **cheerio** (or **parse5** / **posthtml**) with Node's native **`URL`** class. [](https://nodejs.org/api/url.html)
+
+Using a real DOM parser instead of regular expressions prevents accidentally corrupting text content, inline scripts, or complex attribute structures.
+
+### Step 1: Install Dependencies
+
+Install `cheerio` to parse and manipulate the HTML string, and `postcss` with `postcss-url` if you also need to rewrite `url(...)` inside `<style>` tags and inline `style=""` attributes.
+
+bash
+
+```
+npm install cheerio postcss postcss-url
+
+```
+
+
+
+### Step 2: Implementation
+
+Given `htmlString`, the page's `baseUrl`, and an `assetMap` (mapping absolute URLs to replacement strings or data URIs), you can resolve every relative URL against `baseUrl` and look it up in your map.
+
+javascript
+
+```
+import * as cheerio from 'cheerio';
+import postcss from 'postcss';
+import postcssUrl from 'postcss-url';
+
+/**
+ * Replaces URLs in HTML attributes and CSS blocks using an absolute-URL lookup map.
+ *
+ * @param {string} html - Raw HTML string
+ * @param {string} baseUrl - The URL where this HTML came from (used to resolve relative links)
+ * @param {Map<string, string> | Record<string, string>} assetMap - Map of absolute URL -> replacement URL/data-URI
+ * @returns {Promise<string>}
+ */
+export async function inlineHtmlAssets(html, baseUrl, assetMap) {
+  const lookup = assetMap instanceof Map 
+    ? assetMap 
+    : new Map(Object.entries(assetMap));
+
+  const $ = cheerio.load(html);
+
+  // Helper to resolve a raw URL against baseUrl and return its replacement if found
+  const resolveAndReplace = (rawUrl) => {
+    if (!rawUrl || rawUrl.startsWith('data:') || rawUrl.startsWith('#')) {
+      return rawUrl;
+    }
+    try {
+      const absoluteUrl = new URL(rawUrl.trim(), baseUrl).href;
+      return lookup.has(absoluteUrl) ? lookup.get(absoluteUrl) : rawUrl;
+    } catch {
+      // Ignore malformed URLs (e.g., template syntax like {{url}})
+      return rawUrl;
+    }
+  };
+
+  // Helper to rewrite url(...) inside CSS strings
+  const rewriteCss = async (cssText) => {
+    const result = await postcss([
+      postcssUrl({
+        url: (asset) => resolveAndReplace(asset.url),
+      }),
+    ]).process(cssText, { from: undefined });
+    return result.css;
+  };
+
+  // 1. Standard single-URL attributes (src, href, poster, data, etc.)
+  const urlAttributes = ['src', 'href', 'poster', 'data', 'action', 'formaction'];
+  for (const attr of urlAttributes) {
+    $(`[${attr}]`).each((_, el) => {
+      const currentVal = $(el).attr(attr);
+      const nextVal = resolveAndReplace(currentVal);
+      if (nextVal !== currentVal) {
+        $(el).attr(attr, nextVal);
+      }
+    });
+  }
+
+  // 2. Responsive image srcset attributes (comma-separated "url descriptor" pairs)
+  $('[srcset]').each((_, el) => {
+    const srcset = $(el).attr('srcset');
+    const updatedSrcset = srcset
+      .split(',')
+      .map((entry) => {
+        const parts = entry.trim().split(/\s+/);
+        if (parts.length === 0) return entry;
+        parts[0] = resolveAndReplace(parts[0]);
+        return parts.join(' ');
+      })
+      .join(', ');
+    $(el).attr('srcset', updatedSrcset);
+  });
+
+  // 3. Inline style="..." attributes
+  const inlineStyledEls = $('[style]').toArray();
+  for (const el of inlineStyledEls) {
+    const styleVal = $(el).attr('style');
+    if (styleVal && styleVal.includes('url(')) {
+      $(el).attr('style', await rewriteCss(styleVal));
+    }
+  }
+
+  // 4. <style> blocks
+  const styleTags = $('style').toArray();
+  for (const el of styleTags) {
+    const cssText = $(el).html();
+    if (cssText && cssText.includes('url(')) {
+      $(el).html(await rewriteCss(cssText));
+    }
+  }
+
+  return $.html();
+}
+
+```
+
+
+
+### Example Usage
+
+javascript
+
+```
+const html = `
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/assets/main.css">
+  <style>
+    .hero { background-image: url('../img/banner.png'); }
+  </style>
+</head>
+<body>
+  <img src="logo.svg" srcset="logo.svg 1x, https://example.com 2x">
+  <div style="background: url('/img/icon.png')"></div>
+</body>
+</html>
+`;
+
+const pageUrl = 'https://example.com';
+
+const replacements = {
+  'https://example.com': 'data:text/css;base64,Ym9keXt9',
+  'https://example.com': 'data:image/png;base64,iVBORw0KGgo...',
+  'https://example.comlogo.svg': 'data:image/svg+xml;utf8,<svg></svg>',
+  'https://example.com': 'data:image/svg+xml;utf8,<svg></svg>',
+  'https://example.com': 'data:image/png;base64,R0lGODlh...',
+};
+
+const inlinedHtml = await inlineHtmlAssets(html, pageUrl, replacements);
+console.log(inlinedHtml);
+
+```
+
+
+
+### Key Details to Keep in Mind
+
+* **`<base>` tag handling.** If your HTML documents might contain a `<base href="...">` tag, read `$('base').attr('href')` first and resolve it against `pageUrl` before using it as your `baseUrl`.
+* **Query strings and hashes.** `new URL(rawUrl, baseUrl).href` preserves query parameters (`?v=123`) and fragments (`#section`). If your asset map keys strip query strings, normalize both sides using `urlObj.origin + urlObj.pathname`.
+* **Fragment preservation.** If you only want to parse full fragments rather than wrapping output in `<html><head><body>`, pass `null, false` as the second and third arguments to `cheerio.load(html, null, false)`.
+
+If you'd like to tailor this further, let me know:
+
+* Whether your HTML input is a **full document** or a **partial HTML snippet**
+* Whether you also need to **inline `<link rel="stylesheet">` or `<script>` tags** directly into `<style>` and `<script>` blocks instead of replacing their `href`/`src` with data URIs
+
+I can adjust the parser configuration and tag replacement logic to fit your exact pipeline.
+
+* [](https://nodejs.org/api/url.html)  
+Node.js  
+URL | Node.js v26.8.1 Documentation  
+node:url provides utilities for URL resolution and parsing via WHATWG and Legacy APIs. methods like URL.createObjectURL, URL.canPa...
+
+# use snake case. write inline_assets(*html*, *url*, *assets*), inline all url inside a string of html and its url given a map of absolute url of assets to replacements in nodejs via libs, handle srcset, use cheerio srcset postcss esm
+
+## use snake case. write inline_assets(*html*, *url*, *assets*), inline all url inside a string of html and its url given a map of absolute url of assets to replacements in nodejs via libs, handle srcset, use cheerio srcset postcss esm
+
+Below is an ESM implementation using `cheerio`, `srcset`, and `postcss`.
+
+It:
+
+- Resolves relative URLs against `url`.
+- Replaces matching absolute asset URLs using `assets` (`Map` or plain object).
+- Handles `src`, `href`, `poster`, `srcset`, CSS `url()` and `@import`.
+- Handles inline `style` attributes and `<style>` elements.
+- Preserves unmatched URLs.
+
+### **Install**
+
+```
+npm install cheerio srcset postcss
+```
+
+### **Implementation**
+
+```
+
+import * as cheerio from 'cheerio';
+import postcss from 'postcss';
+import { parse as parse_srcset, stringify as stringify_srcset } from 'srcset';
+
+const url_attributes = [
+  'src',
+  'href',
+  'poster',
+  'action',
+  'formaction',
+  'data',
+  'cite',
+  'background',
+  'xlink:href',
+];
+
+export function inline_assets(html, url, assets) {
+  const asset_map = assets instanceof Map
+    ? assets
+    : new Map(Object.entries(assets));
+
+  const base_url = new URL(url);
+
+  function replace_url(value) {
+    if (!value || value.startsWith('#')) {
+      return value;
+    }
+
+    let absolute_url;
+
+    try {
+      absolute_url = new URL(value, base_url).href;
+    } catch {
+      return value;
+    }
+
+    return asset_map.get(absolute_url) ?? value;
+  }
+
+  function replace_srcset(value) {
+    try {
+      const candidates = parse_srcset(value);
+
+      return stringify_srcset(
+        candidates.map(candidate => ({
+          ...candidate,
+          url: replace_url(candidate.url),
+        })),
+      );
+    } catch {
+      return value;
+    }
+  }
+
+  function replace_css(css) {
+    const root = postcss.parse(css);
+
+    root.walkDecls(decl => {
+      decl.value = replace_css_urls(decl.value);
+    });
+
+    root.walkAtRules('import', rule => {
+      rule.params = replace_css_urls(rule.params);
+    });
+
+    return root.toString();
+  }
+
+  function replace_css_urls(value) {
+    return value.replace(
+      /url\(\s*(?:(["'])(.*?)\1|([^)]*?))\s*\)/gi,
+      (match, quote, quoted_url, unquoted_url) => {
+        const original_url = quoted_url ?? unquoted_url.trim();
+        const replacement = replace_url(original_url);
+
+        if (replacement === original_url) {
+          return match;
+        }
+
+        const output_quote = quote || '"';
+
+        return `url(${output_quote}${replacement}${output_quote})`;
+      },
+    );
+  }
+
+  const $ = cheerio.load(html, {
+    decodeEntities: false,
+  });
+
+  $('*').each((_, element) => {
+    const node = $(element);
+
+    for (const attribute of url_attributes) {
+      const value = node.attr(attribute);
+
+      if (value !== undefined) {
+        node.attr(attribute, replace_url(value));
+      }
+    }
+
+    const srcset = node.attr('srcset');
+
+    if (srcset !== undefined) {
+      node.attr('srcset', replace_srcset(srcset));
+    }
+
+    const style = node.attr('style');
+
+    if (style !== undefined) {
+      node.attr('style', replace_css(style));
+    }
+  });
+
+  $('style').each((_, element) => {
+    const node = $(element);
+
+    node.text(replace_css(node.html() ?? ''));
+  });
+
+  return $.html();
+}
+
+```
+
+### **Usage**
+
+```
+const html = `
+  <img
+    src="/images/logo.png"
+    srcset="/images/small.png 1x, /images/large.png 2x"
+    style="background-image: url('/images/bg.png')"
+  />
+
+  <link rel="stylesheet" href="/styles/main.css" />
+
+  <style>
+    .hero {
+      background: url('/images/hero.png');
+    }
+  </style>
+`;
+
+const assets = new Map([
+  ['https://example.com/images/logo.png', 'data:image/png;base64,LOGO'],
+  ['https://example.com/images/small.png', 'data:image/png;base64,SMALL'],
+  ['https://example.com/images/large.png', 'data:image/png;base64,LARGE'],
+  ['https://example.com/images/bg.png', 'data:image/png;base64,BG'],
+  ['https://example.com/images/hero.png', 'data:image/png;base64,HERO'],
+  ['https://example.com/styles/main.css', 'data:text/css;base64,CSS'],
+]);
+
+const result = inline_assets(
+  html,
+  'https://example.com/page/index.html',
+  assets,
+);
+
+console.log(result);
+```
+
+### **Important implementation notes**
+
+1. `srcset` must be parsed rather than split on commas because data URLs can contain commas.
+2. `postcss` handles CSS declaration parsing, but the `url()` replacement above uses a regular expression. For fully robust CSS parsing (including escaped parentheses and quoted strings), I'd recommend replacing that part with a dedicated CSS value parser such as `postcss-value-parser`.
+3. This implementation replaces URL references, not the contents of external stylesheets fetched through `<link>`. It also doesn't recursively inline CSS files referenced by `@import`.
+
+I can also provide a fully recursive version that fetches linked CSS, processes its dependencies, and inlines everything into the HTML.
+
+## it should inline <img class="central-featured-logo" src="./asset/75038605ff9e35cc.png" srcset="portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png 2x" width="200" height="183" alt=""> properly
+
+```
+Worked for 1m 20s
+The srcset entry needs to be resolved against the page URL just like src; it must not be treated as a plain comma-separated string. I’m checking the package API so the corrected ESM example uses its actual parser shape.
+
+Corrected srcset handling, updated image inlining, and tested sample output
+
+Implemented the replacement 亚洲国产
+
+
+Searched the web for npm srcset package parse stringify API JavaScript
+```
+
+The issue is the `srcset` import in my previous implementation. The `srcset` npm package exports `parseSrcset`**&#x20;and&#x20;**`stringifySrcset`, not `parse` and `stringify`.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://www.npmjs.com\&sz=32)
+
+npm
+
+
+
+Use these named exports, and resolve every candidate against the same page URL used for `src`.
+
+### **Corrected implementation**
+
+```
+
+import * as cheerio from 'cheerio';
+import postcss from 'postcss';
+import {
+  parseSrcset as parse_srcset,
+  stringifySrcset as stringify_srcset,
+} from 'srcset';
+
+export function inline_assets(html, url, assets) {
+  const asset_entries = assets instanceof Map
+    ? [...assets.entries()]
+    : Object.entries(assets);
+
+  const asset_map = new Map(
+    asset_entries.map(([asset_url, replacement]) => [
+      new URL(asset_url).href,
+      replacement,
+    ]),
+  );
+
+  const base_url = new URL(url);
+
+  function replace_url(value) {
+    if (!value || value.startsWith('#')) {
+      return value;
+    }
+
+    try {
+      const absolute_url = new URL(value.trim(), base_url).href;
+      return asset_map.get(absolute_url) ?? value;
+    } catch {
+      return value;
+    }
+  }
+
+  function replace_srcset(value) {
+    try {
+      const candidates = parse_srcset(value);
+
+      return stringify_srcset(
+        candidates.map(candidate => ({
+          ...candidate,
+          url: replace_url(candidate.url),
+        })),
+      );
+    } catch {
+      return value;
+    }
+  }
+
+  function replace_css_urls(value) {
+    return value.replace(
+      /url\(\s*(?:(["'])(.*?)\1|([^)]*?))\s*\)/gi,
+      (match, quote, quoted_url, unquoted_url) => {
+        const original_url = quoted_url ?? unquoted_url.trim();
+        const replacement = replace_url(original_url);
+
+        if (replacement === original_url) {
+          return match;
+        }
+
+        const output_quote = quote || '"';
+
+        return `url(${output_quote}${replacement}${output_quote})`;
+      },
+    );
+  }
+
+  function replace_css(css) {
+    const root = postcss.parse(css);
+
+    root.walkDecls(decl => {
+      decl.value = replace_css_urls(decl.value);
+    });
+
+    root.walkAtRules('import', rule => {
+      rule.params = replace_css_urls(rule.params);
+
+      // Handle @import "file.css" as well as @import url(file.css).
+      const match = rule.params.match(/^(['"])(.*?)\1$/);
+
+      if (match) {
+        rule.params = `${match[1]}${replace_url(match[2])}${match[1]}`;
+      }
+    });
+
+    return root.toString();
+  }
+
+  const $ = cheerio.load(html, {
+    decodeEntities: false,
+  });
+
+  $('*').each((_, element) => {
+    const node = $(element);
+
+    for (const attribute of [
+      'src',
+      'href',
+      'poster',
+      'action',
+      'formaction',
+      'data',
+      'cite',
+      'background',
+      'xlink:href',
+    ]) {
+      const value = node.attr(attribute);
+
+      if (value !== undefined) {
+        node.attr(attribute, replace_url(value));
+      }
+    }
+
+    const srcset = node.attr('srcset');
+
+    if (srcset !== undefined) {
+      node.attr('srcset', replace_srcset(srcset));
+    }
+
+    const style = node.attr('style');
+
+    if (style !== undefined) {
+      node.attr('style', replace_css(style));
+    }
+  });
+
+  $('style').each((_, element) => {
+    const node = $(element);
+    node.text(replace_css(node.html() ?? ''));
+  });
+
+  return $.html();
+}
+
+```
+
+### **Your exact example**
+
+```
+const html = `
+<img
+  class="central-featured-logo"
+  src="./asset/75038605ff9e35cc.png"
+  srcset="portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png 2x"
+  width="200"
+  height="183"
+  alt=""
+>`;
+```
+
+```
+const assets = new Map([
+  [
+    'https://www.wikipedia.org/asset/75038605ff9e35cc.png',
+    'data:image/png;base64,BASE64_IMAGE_1',
+  ],
+  [
+    'https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png',
+    'data:image/png;base64,BASE64_IMAGE_2',
+  ],
+]);
+
+const result = inline_assets(
+  html,
+  'https://www.wikipedia.org/',
+  assets,
+);
+```
+
+Expected result
+
+```
+<img
+  class="central-featured-logo"
+  src="data:image/png;base64,BASE64_IMAGE_1"
+  srcset="data:image/png;base64,BASE64_IMAGE_2 2x"
+  width="200"
+  height="183"
+  alt=""
+>
+```
+
+**Important:** Both relative URLs resolve independently against the supplied page URL. The `srcset` descriptor (`2x`) is preserved, and the replacement data URI is not mistaken for another candidate.
+
+This handles HTML URL attributes and CSS references, but does not recursively fetch external stylesheets or resources.
+
+## it doesnt fetch such 2x variant at all, but it doesnt display when you just inline the real img wo removing the srcset attr, why
+
+Because the browser treats `src` and `srcset` as competing image sources.
+
+When an `<img>` has `srcset`, the browser uses the `srcset` candidate-selection algorithm rather than necessarily displaying `src`.
+
+In your example:
+
+```
+<img
+  src="data:image/png;base64,..."
+  srcset="portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png 2x"
+>
+```
+
+The browser sees a `2x` candidate in `srcset`. Depending on device pixel ratio and browser selection, it can choose that candidate instead of `src`.
+
+If you haven't inlined the `2x` asset, the browser attempts to fetch the original relative URL. If that URL is unavailable, the image can fail even though `src` contains valid image data.
+
+**The correct fix:** If you cannot inline every `srcset` candidate, remove `srcset` after successfully inlining `src`.
+
+For example, change the implementation to:
+
+```
+$('img').each((_, element) => {
+  const node = $(element);
+  const src = node.attr('src');
+
+  if (src) {
+    const replacement = replace_url(src);
+
+    if (replacement !== src) {
+      node.attr('src', replacement);
+      node.removeAttr('srcset');
+      node.removeAttr('sizes');
+    }
+  }
+});
+```
+
+Alternatively, if you want to preserve responsive images, keep `srcset` only when **all its candidates have been successfully replaced**.
+
+My recommendation for an HTML self-contained snapshot/inliner:
+
+- Inline `src`.
+- Inline every `srcset` candidate when available.
+- If any candidate remains external, remove `srcset` and `sizes`.
+- Preserve `src` as the fallback.
+
+This prevents the browser from selecting an external image that your inliner hasn't embedded.
+
+## update inline_assets
+
+Updated `inline_assets` to ensure images display correctly:
+
+- Replaces `src` and `srcset` URLs.
+- Preserves `srcset` only when every candidate is successfully inlined.
+- Removes `srcset` and `sizes` if any candidate remains external.
+- Keeps the successfully inlined `src` as fallback.
+- Handles CSS `url()`, `@import`, inline styles, and `<style>` elements.
+- Uses snake_case throughout.
+
+```
+
+import * as cheerio from 'cheerio';
+import postcss from 'postcss';
+import {
+  parseSrcset as parse_srcset,
+  stringifySrcset as stringify_srcset,
+} from 'srcset';
+
+export function inline_assets(html, url, assets) {
+  const asset_entries = assets instanceof Map
+    ? [...assets.entries()]
+    : Object.entries(assets);
+
+  const asset_map = new Map(
+    asset_entries.map(([asset_url, replacement]) => [
+      new URL(asset_url).href,
+      replacement,
+    ]),
+  );
+
+  const base_url = new URL(url);
+
+  function resolve_url(value) {
+    if (!value || value.startsWith('#')) {
+      return null;
+    }
+
+    try {
+      return new URL(value.trim(), base_url).href;
+    } catch {
+      return null;
+    }
+  }
+
+  function replace_url(value) {
+    const absolute_url = resolve_url(value);
+
+    if (!absolute_url) {
+      return {
+        value,
+        replaced: false,
+      };
+    }
+
+    if (!asset_map.has(absolute_url)) {
+      return {
+        value,
+        replaced: false,
+      };
+    }
+
+    return {
+      value: asset_map.get(absolute_url),
+      replaced: true,
+    };
+  }
+
+  function replace_srcset(value) {
+    try {
+      const candidates = parse_srcset(value);
+
+      if (!candidates.length) {
+        return {
+          value,
+          replaced: false,
+          complete: false,
+        };
+      }
+
+      const replacements = candidates.map(candidate => ({
+        ...candidate,
+        ...replace_url(candidate.url),
+      }));
+
+      const complete = replacements.every(
+        candidate => candidate.replaced,
+      );
+
+      return {
+        value: complete
+          ? stringifySrcset(replacements.map(({ replaced, ...candidate }) => candidate))
+          : value,
+        replaced: replacements.some(candidate => candidate.replaced),
+        complete,
+      };
+    } catch {
+      return {
+        value,
+        replaced: false,
+        complete: false,
+      };
+    }
+  }
+
+  function replace_css_urls(value) {
+    return value.replace(
+      /url\(\s*(?:(["'])(.*?)\1|([^)]*?))\s*\)/gi,
+      (match, quote, quoted_url, unquoted_url) => {
+        const original_url = quoted_url ?? unquoted_url.trim();
+        const replacement = replace_url(original_url);
+
+        if (!replacement.replaced) {
+          return match;
+        }
+
+        const output_quote = quote || '"';
+
+        return `url(${output_quote}${replacement.value}${output_quote})`;
+      },
+    );
+  }
+
+  function replace_css(css) {
+    const root = postcss.parse(css);
+
+    root.walkDecls(decl => {
+      decl.value = replace_css_urls(decl.value);
+    });
+
+    root.walkAtRules('import', rule => {
+      rule.params = replace_css_urls(rule.params);
+
+      const match = rule.params.match(/^(['"])(.*?)\1$/);
+
+      if (match) {
+        const replacement = replace_url(match[2]);
+
+        if (replacement.replaced) {
+          rule.params = `${match[1]}${replacement.value}${match[1]}`;
+        }
+      }
+    });
+
+    return root.toString();
+  }
+
+  const $ = cheerio.load(html, {
+    decodeEntities: false,
+  });
+
+  $('*').each((_, element) => {
+    const node = $(element);
+
+    // Handle image sources separately.
+    if (element.tagName === 'img') {
+      const src = node.attr('src');
+
+      if (src !== undefined) {
+        const replacement = replace_url(src);
+
+        if (replacement.replaced) {
+          node.attr('src', replacement.value);
+        }
+      }
+
+      const srcset = node.attr('srcset');
+
+      if (srcset !== undefined) {
+        const result = replace_srcset(srcset);
+
+        if (result.complete) {
+          node.attr('srcset', result.value);
+        } else {
+          // Prevent browser selection of unavailable external candidates.
+          node.removeAttr('srcset');
+          node.removeAttr('sizes');
+        }
+      }
+    } else {
+      for (const attribute of [
+        'src',
+        'href',
+        'poster',
+        'action',
+        'formaction',
+        'data',
+        'cite',
+        'background',
+        'xlink:href',
+      ]) {
+        const value = node.attr(attribute);
+
+        if (value !== undefined) {
+          const replacement = replace_url(value);
+
+          if (replacement.replaced) {
+            node.attr(attribute, replacement.value);
+          }
+        }
+      }
+
+      const srcset = node.attr('srcset');
+
+      if (srcset !== undefined) {
+        const result = replace_srcset(srcset);
+
+        if (result.complete) {
+          node.attr('srcset', result.value);
+        } else {
+          node.removeAttr('srcset');
+          node.removeAttr('sizes');
+        }
+      }
+    }
+
+    const style = node.attr('style');
+
+    if (style !== undefined) {
+      node.attr('style', replace_css(style));
+    }
+  });
+
+  $('style').each((_, element) => {
+    const node = $(element);
+    node.text(replace_css(node.html() ?? ''));
+  });
+
+  return $.html();
+}
+
+```
+
+**One important behavior:** If `srcset` contains even one unavailable candidate, the entire attribute is removed rather than retaining a partially inlined responsive source set. This avoids broken image selection on high-DPI displays.
+
+For your Wikipedia example, if the 2x image is missing from `assets`, the resulting `<img>` will use the inlined `src` alone.
+
+# use snake case. write santinize(html) in js to remove all dynamic stuff like script whatever in an html string using cheerio esm, mimicing mhtml.
+
+Using Cheerio ESM, you can remove scripts, styles, embedded content, event handlers, dynamic attributes, and other elements that could execute or mutate the document.
+
+This implementation uses **snake_case** and aims to produce a static, MHTML-like HTML snapshot.
+
+```
+
+import cheerio from "cheerio";
+
+export function santinize(html) {
+  const $ = cheerio.load(html, {
+    xml: false,
+    decodeEntities: false,
+  });
+
+  // Remove executable or dynamically rendered elements.
+  const remove_tags = [
+    "script",
+    "noscript",
+    "style",
+    "link",
+    "iframe",
+    "frame",
+    "frameset",
+    "object",
+    "embed",
+    "applet",
+    "portal",
+    "fencedframe",
+    "template",
+    "canvas",
+    "svg",
+    "math",
+    "audio",
+    "video",
+    "source",
+    "track",
+  ];
+
+  $(remove_tags.join(",")).remove();
+
+  // Remove elements that can execute code or submit data.
+  $("form").each((_, el) => {
+    $(el).replaceWith($(el).contents());
+  });
+
+  $("input, button, select, textarea").remove();
+
+  // Remove event handlers, dynamic attributes, and unsafe URLs.
+  const dynamic_attrs = [
+    /^on/i,               // onclick, onload, etc.
+    /^data-/i,            // data-* dynamic state
+    /^aria-/i,            // optional: remove dynamic accessibility state
+    /^hx-/i,              // htmx
+    /^x-/i,               // Alpine.js
+    /^ng-/i,              // Angular
+    /^v-/i,               // Vue
+    /^:|^@/,              // Vue shorthand
+    /^bind:/i,
+    /^wire:/i,            // Livewire
+    /^phx-/i,             // Phoenix LiveView
+    /^svelte-/i,
+  ];
+
+  const url_attrs = [
+    "href",
+    "src",
+    "srcset",
+    "action",
+    "formaction",
+    "poster",
+    "xlink:href",
+  ];
+
+  $("*").each((_, el) => {
+    const $el = $(el);
+
+    for (const attr of Object.keys(el.attribs || {})) {
+      const value = $el.attr(attr) || "";
+
+      // Remove dynamic attributes.
+      if (dynamic_attrs.some((pattern) => pattern.test(attr))) {
+        $el.removeAttr(attr);
+        continue;
+      }
+
+      // Remove inline styles.
+      if (attr === "style") {
+        $el.removeAttr(attr);
+        continue;
+      }
+
+      // Remove dangerous URL schemes.
+      if (url_attrs.includes(attr.toLowerCase())) {
+        const normalized = value
+          .replace(/[\u0000-\u0020]+/g, "")
+          .toLowerCase();
+
+        if (
+          normalized.startsWith("javascript:") ||
+          normalized.startsWith("vbscript:") ||
+          normalized.startsWith("data:text/html")
+        ) {
+          $el.removeAttr(attr);
+        }
+      }
+    }
+  });
+
+  // Remove empty metadata and resource hints.
+  $("meta[http-equiv='refresh']").remove();
+
+  // Remove SVG and other potentially executable namespace attributes.
+  $("*").removeAttr("xmlns");
+
+  // Remove empty elements left behind by sanitization.
+  $("*").each((_, el) => {
+    const $el = $(el);
+
+    if (
+      !["html", "head", "body", "br", "hr", "img"].includes(
+        el.tagName?.toLowerCase()
+      ) &&
+      $el.contents().length === 0 &&
+      !$el.text().trim()
+    ) {
+      // Preserve structural elements.
+      if (!["div", "span", "p"].includes(el.tagName?.toLowerCase())) {
+        $el.remove();
+      }
+    }
+  });
+
+  return $.html();
+}
+
+```
+
+### **Important considerations**
+
+1. **Cheerio is not a browser.** It cannot execute JavaScript or capture DOM changes produced by JavaScript. For an actual rendered snapshot, use Playwright first, then sanitize the resulting HTML.
+2. **MHTML is more than static HTML.** It can preserve images, CSS, and other resources as MIME parts. The implementation above removes CSS and does not package resources.
+3. **Security:** This is a conservative cleanup, not a complete security-grade HTML sanitizer. For untrusted HTML, consider an allowlist-based sanitizer such as DOMPurify with an appropriate server-side DOM implementation.
+
+**One recommendation:** If your goal is to mimic a browser's saved-page snapshot, I'd preserve images, links, text, and semantic layout while stripping executable behavior, rather than deleting all CSS and SVG.
+
+# use snake case. write santinize(html) in js to remove all dynamic stuff like script whatever in an html string using dompurify
+
+## use snake case. write santinize(html) in js to remove all dynamic stuff like script whatever in an html string using dompurify
+
 

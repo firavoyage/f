@@ -16,7 +16,7 @@ import {
   parseSrcset as parse_srcset,
   stringifySrcset as stringify_srcset,
 } from 'srcset'
-import DOMPurify from 'dompurify'
+import { load } from 'cheerio'
 
 const should_hide_window = true
 const display_number = ':99'
@@ -106,15 +106,13 @@ export async function fetch(url: string, { is_static = true } = {}) {
   //   })
   // }, entries(assets))
 
-  log(assets)
-
   // Save the final rendered HTML
   let html = await page.content()
 
   html = inline_assets(html, url, assets)
 
   if (is_static) {
-    html = santinize(html)
+    html = snapshot(html)
   }
 
   write(join(dir, 'index.html'), html)
@@ -126,6 +124,9 @@ export async function fetch(url: string, { is_static = true } = {}) {
     id,
     url,
     creation_time,
+    metadata: {
+      assets
+    }
   }
 
   webpage_index.push(record)
@@ -357,47 +358,10 @@ export function inline_assets(html, url, assets) {
   return $.html()
 }
 
-function santinize(html) {
-  return DOMPurify.sanitize(html, {
-    FORBID_TAGS: [
-      'script',
-      'iframe',
-      'frame',
-      'frameset',
-      'object',
-      'embed',
-      'applet',
-      'portal',
-    ],
+function snapshot(html) {
+  const $ = load(html)
 
-    FORBID_ATTR: ['srcdoc'],
+  $('script, iframe, object, embed').remove()
 
-    ADD_TAGS: ['style'],
-
-    ADD_ATTR: [
-      'style',
-      'class',
-      'id',
-      'src',
-      'srcset',
-      'href',
-      'target',
-      'rel',
-      'width',
-      'height',
-      'loading',
-      'alt',
-    ],
-
-    ALLOW_DATA_ATTR: true,
-    ALLOW_ARIA_ATTR: false,
-    // ALLOW_ARIA_ATTR: true,
-
-    WHOLE_DOCUMENT: true,
-    SANITIZE_DOM: true,
-    SANITIZE_NAMED_PROPS: true,
-
-    // Keep static styling and content.
-    FORCE_BODY: false,
-  })
+  return $.root().html() ?? ''
 }
