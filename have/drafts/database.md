@@ -15,11 +15,17 @@ db
         - (static asset)
   - category
     - index
-      - category id
-      - name
-      - external id? # platform specific permalink
-      - ...
-    - (category id): id[]
+      - id # category id
+      - name? # display name
+      - type? # e.g. platform name, or "photo"
+      - url? # permalink/platform specific external id, e.g. zhihu:article/id
+        - no double slash required (a widely criticized historical design quirk of url)
+      - metadata?
+    - map
+      - category
+        - (category id): content id[]
+      - content
+        - (content id): category id[]
 
 ---
 
@@ -31,7 +37,7 @@ result
 - ~~fetch time # initial request~~
 - creation time
 - metadata # in case it's statically and consistently structured
-  - is_hidden?
+  - is hidden?
   - perf?
     - fetch time # = creation time
     - finish time # after all processing
@@ -47,6 +53,16 @@ all res on results are symlinks to content addressible storage.
 the assumption is, binary files are large. text, while redundant in information, are relatively negligible.
 
 you may have the same lookup speed on some compressed text file (e.g. git delta). you dont have to go that far.
+
+---
+
+you may have content -> category[] and category -> content[].
+
+---
+
+you may have a "status" field (or a few) rather than metadata.is hidden, to filter efficiently
+
+identical in information though. could just preprocess or convert when needed.
 
 ---
 
@@ -69,12 +85,19 @@ for example, zhihu comments
       - author avatar/pfp?: object hash
       - publish time
       - modification time # last update
-      - article id?
-- webpage/result/(id)
+      - article id? # you may make it a category to track updates
+- webpage/result/(content id)
   - index.html
   - index.md?
   - prose.html? # main content
   - prose.md?
   - asset/...
+- category/index?
+  - id
+  - name
+  - type? # e.g. platform name, or "photo"
+  - url? # permalink/platform specific external id, e.g. zhihu:article/id
+    - no double slash required (a widely criticized historical design quirk of url)
+  - metadata?
 
 
