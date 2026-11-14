@@ -1,45 +1,8 @@
 # plan
 
-symlink storage
+# todo
 
-you may copy all assets to a unified storage, e.g. object/storage
-
-and symlink the folder.
-
-you already know the specific deps of one site.
-
----
-
-traverse a site
-
-traverse(fetch, url, options)
-
-- should visit url -> boolean (default: same site)
-- max depth (0 indexed) = inf
-- max page = inf
-- max duration (in sec) = inf
-- interval (in sec) = 1
-
-i dont have to specify the algorithm. (e.g. my naive set, url -> depth map, plus is visited flags)
-
----
-
-list all snapshots of a site
-
-you may just render md.
-
-e.g. 
-
-```
-# [title](site)
-
-- [2026-11-14 22:40:21](snapshot)
-- ...
-```
-
-typically like project humility
-
----
+## m
 
 view the snapshot of a site
 
@@ -51,9 +14,17 @@ if you can read (static), you can easily do that.
 - read the page (or "not archived") of such param, rp body innerhtml
 - intercept link to rp such param
 
-# todo
+doesnt feel you have to live proxy.
 
-## m
+you may just swap some links to caches. (dont worry, you have a copy of static aside.)
+i.e. webpage/ab/cd/foo/index.html -> webpage/ef/gf/bar/index.html, you cd .. three times before diving into the new index
+
+btw, you may have scalable id for results aw.
+if you have 1m for each result (e.g. plain text htmls), 1m results is just 1g. typically easy to reach and unscable.
+
+you can absolutely postprocess for this.
+
+well, you may proxy anyway. it would be even easier. you dont have to make it a react app. you can just serve from the starting point of such results, serve everything static, and inject some navigation script.
 
 ## s
 

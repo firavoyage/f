@@ -33,6 +33,7 @@ export async function fetch(
   url: string,
   {
     should_hide_window = true,
+    should_close_window_when_finish = true,
     display_number = ':99',
     is_static = true,
     timeout = 10000,
@@ -40,7 +41,7 @@ export async function fetch(
     theme = 'system' as 'system' | 'light' | 'dark',
   } = {},
 ) {
-  const id = random_id()
+  const id = scalable_filename(random_id())
   const dir = get_result_folder(id)
 
   if (should_hide_window) {
@@ -146,7 +147,9 @@ export async function fetch(
   write(webpage_index_file, serialize(webpage_index))
   append(log_file, format_log(`Added ${url} to index`))
 
-  await browser.close()
+  if (should_close_window_when_finish) {
+    await browser.close()
+  } 
 
   return html
 }

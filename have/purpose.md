@@ -67,5 +67,45 @@ well just call it legacy. i dont really release it.
 
 dont feel i have to make "index.html" cas.
 
+---
+
+symlink storage
+
+you may copy all assets to a unified storage, e.g. object/storage
+
+and symlink the folder.
+
+you already know the specific deps of one site.
+
+---
+
+traverse a site
+
+traverse(fetch, url, options)
+
+- should visit url -> boolean (default: same site)
+- max depth (0 indexed) = inf
+- max page = inf
+- max duration (in sec) = inf
+- interval (in sec) = 1
+
+i dont have to specify the algorithm. (e.g. my naive set, url -> depth map, plus is visited flags)
+
+---
+
+list all snapshots of a site
+
+you may just render md.
+
+e.g.
+
+```
+# [title](site)
+
+- [2026-11-14 22:40:21](snapshot)
+- ...
+```
+
+typically like project humility
 
 
