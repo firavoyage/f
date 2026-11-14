@@ -5,7 +5,7 @@ import {
   browser_profile,
   webpage_index_file,
   get_result_folder,
-  log_file
+  log_file,
 } from 'action/index'
 import { random_id } from 'lib/random'
 import { now } from 'lib/time'
@@ -20,12 +20,6 @@ import {
 } from 'srcset'
 import { load } from 'cheerio'
 
-const should_hide_window = true
-const display_number = ':99'
-
-// undefined (omitted) means light, while nil/no pref evaluates to system
-const theme: 'system' | 'light' | 'dark' = 'system'
-
 const viewport = {
   width: 1920,
   height: 1080,
@@ -33,7 +27,17 @@ const viewport = {
   // height: 900,
 }
 
-export async function fetch(url: string, { is_static = true } = {}) {
+export async function fetch(
+  url: string,
+  {
+    should_hide_window = true,
+    display_number = ':99',
+    is_static = true,
+    timeout = 10000,
+    // undefined (omitted) means light, while nil/no pref evaluates to system
+    theme = 'system' as 'system' | 'light' | 'dark',
+  } = {},
+) {
   const id = random_id()
   const dir = get_result_folder(id)
 
@@ -45,8 +49,7 @@ export async function fetch(url: string, { is_static = true } = {}) {
   const browser = await chromium.launchPersistentContext(browser_profile, {
     channel: 'chrome',
     headless: false,
-    viewport,
-    // viewport: nil,
+    viewport: nil,
     colorScheme,
   })
 
@@ -90,40 +93,35 @@ export async function fetch(url: string, { is_static = true } = {}) {
   const creation_time = now().timestamp
 
   let response = await page.goto(url, { waitUntil: 'commit' })
-  let source_html = response?.text()
+  let source_html = await response?.text()
+  write(join(dir, 'index.source.html'), source_html)
 
-  await page.waitForLoadState('networkidle')
+  const loading = await handle(() =>
+    page.waitForLoadState('load', {
+      timeout,
+    }),
+  )
+  if(is_error(loading)){
+    append(log_file, format_log(`${url} timeout after ${timeout}ms`, 'error'))
+  }
 
-  // // Rewrite asset URLs inside the live DOM to point to local files
-  // await page.evaluate((entries) => {
-  //   const map = new Map(entries)
-  //   const attrs = ['src', 'href', 'poster']
-
-  //   document.querySelectorAll('*').forEach((element) => {
-  //     for (const attr of attrs) {
-  //       const value = element.getAttribute(attr)
-  //       if (!value) continue
-  //       // Resolve relative URLs against the page's base URL
-  //       const absolute_url = new URL(value, document.baseURI).href
-  //       if (map.has(absolute_url)) {
-  //         element.setAttribute(attr, map.get(absolute_url))
-  //       }
-  //     }
-  //   })
-  // }, entries(assets))
-
-  // Save the final rendered HTML
   let html = await page.content()
+  write(join(dir, 'index.rendered.html'), html)
 
   html = inline_assets(html, url, assets)
+  write(join(dir, 'index.inlined.html'), html)
 
   if (is_static) {
     html = snapshot(html)
+    write(join(dir, 'index.static.html'), html)
   }
 
   write(join(dir, 'index.html'), html)
 
-  append(log_file, format_log(`Saved ${url} to ${dir}/index.html w ${assets.size} assets`))
+  append(
+    log_file,
+    format_log(`Saved ${url} to ${dir}/index.html w ${assets.size} assets`),
+  )
 
   let webpage_index = deserialize(read(webpage_index_file))
   let record = {
@@ -131,8 +129,8 @@ export async function fetch(url: string, { is_static = true } = {}) {
     url,
     creation_time,
     metadata: {
-      assets
-    }
+      assets,
+    },
   }
 
   webpage_index.push(record)
@@ -141,6 +139,8 @@ export async function fetch(url: string, { is_static = true } = {}) {
   append(log_file, format_log(`Added ${url} to index`))
 
   await browser.close()
+
+  return html
 }
 
 function get_fallback_ext(type) {
@@ -153,7 +153,7 @@ function get_fallback_ext(type) {
   return map[type] || '.bin'
 }
 
-export function inline_assets(html, url, assets) {
+function inline_assets(html, url, assets) {
   const asset_entries =
     assets instanceof Map ? [...assets.entries()] : Object.entries(assets)
 

@@ -2823,4 +2823,416 @@ Output:
 
 **Security note:** This is intentionally a minimal blacklist sanitizer, not a complete XSS sanitizer. For untrusted HTML, attributes such as `href="javascript:..."` can still execute JavaScript.
 
+# how to get source html in playwright
+
+To get the full HTML source code of a page in Playwright, use the **`page.content()`** method. It returns the complete HTML document—including the `<!DOCTYPE>` and any changes rendered by JavaScript—as a string. [](https://stackoverflow.com/questions/69980581/get-entire-playwright-page-in-html-and-text)
+
+### Full Page HTML
+
+* **JavaScript / TypeScript.** Call `await page.content()` after navigating to the page.  
+javascript  
+```  
+const { chromium } = require('playwright');  
+(async () => {  
+  const browser = await chromium.launch();  
+  const page = await browser.newPage();  
+  await page.goto('https://example.com');  
+  const html = await page.content();  
+  console.log(html);  
+  await browser.close();  
+})();  
+```  
+
+* **Python (Sync API).** Call `page.content()` on your active page instance. [](https://www.youtube.com/watch?v=H6D5ZL01D7A&t=29)  
+python  
+```  
+from playwright.sync_api import sync_playwright  
+with sync_playwright() as p:  
+    browser = p.chromium.launch()  
+    page = browser.new_page()  
+    page.goto("https://example.com")  
+    html = page.content()  
+    print(html)  
+    browser.close()  
+```  
+
+
+### Alternative Methods for Specific Use Cases
+
+Depending on whether you need raw server data or just a portion of the DOM, Playwright offers other methods described in the [Playwright Page API](https://playwright.dev/docs/api/class-page):
+
+* **Specific element HTML.** Use `locator.inner_html()` (or `innerHTML()` in JS) to extract the HTML inside a specific tag rather than the whole page.
+* **Raw, unrendered HTML.** Use `await response.text()` on the object returned by `page.goto()` if you want the initial HTML sent by the server before JavaScript modifies the page. [](https://github.com/microsoft/playwright/issues/2528)
+
+> **Tip:** If you plan to parse or extract data from the returned HTML string, users on [Reddit](https://www.reddit.com/r/QualityAssurance/comments/1eqsvkg/how%5Fto%5Fbest%5Fparse%5Fhtml%5Fin%5Fplaywright/) agree that you should pass the output into a dedicated HTML parser (like BeautifulSoup in Python or `node-html-parser` in Node.js) instead of relying on regex. 
+
+If you'd like help parsing specific data out of the HTML, let me know:
+
+* Which **programming language** you are using (JavaScript, TypeScript, Python, etc.)
+* Whether you need to **wait for dynamic content** (like a single-page app) to finish loading first
+
+I can write a tailored snippet for your exact setup.
+
+* [](https://stackoverflow.com/questions/69980581/get-entire-playwright-page-in-html-and-text)  
+Stack Overflow  
+Get entire Playwright page in html and Text - Stack Overflow  
+November 15, 2021 — For the full html of the page, this is what you need: const html = await page.content() To get the inner text of the div, this sho...
+* [](https://github.com/microsoft/playwright/issues/2528)  
+GitHub  
+\[Question\] - How can you obtain the current HTML content of the page you are on? · Issue #2528 · microsoft/playwright  
+June 10, 2020 — For retrieving rendered HTML content of specific elements after JavaScript execution, navigate to the page … extract the HTML via ...
+* [](https://www.youtube.com/watch?v=H6D5ZL01D7A&t=29)  
+YouTube·QAFox  
+31\. Retrieving HTML Source code, CSS Property value, Size & ...  
+Jul 20, 2026 — Navigate to the desired URL using \`await page.goto('URL')\`. Then, execute \`await page.content()\` to get the HTML source code as a ...  
+3m
+
+Show all
+
+# how to get the initial unrendered source html via playwright js in processing pipeline
+
+To get the **initial, unrendered source HTML** (the exact raw payload sent by the server before any client-side JavaScript modifies the DOM), capture the text directly from the network response using **`await response.text()`**. [](https://github.com/microsoft/playwright/issues/2528)
+
+Using `page.content()` returns the live, rendered DOM _after_ JavaScript execution. In a data processing or scraping pipeline, intercepting the network response ensures you get the untouched source code. [](https://stackoverflow.com/questions/69980581/get-entire-playwright-page-in-html-and-text)
+
+### 1\. Using `page.goto()` Response (Simplest)
+
+When navigating directly to a URL, `page.goto()` resolves to the main document's `Response` object. Calling `.text()` on it extracts the raw HTML string.
+
+javascript
+
+```
+const { chromium } = require('playwright');
+
+(async () => {
+  const browser = await chromium.launch();
+  const page = await browser.newPage();
+
+  // Capture the response object from navigation
+  const response = await page.goto('https://example.com', { 
+    waitUntil: 'commit' // Stops waiting as soon as headers/response arrive
+  });
+
+  // Extract the raw, unrendered HTML
+  const rawHtml = await response.text();
+  console.log(rawHtml);
+
+  await browser.close();
+})();
+
+```
+
+
+
+* **Optimize pipeline speed.** Set `waitUntil: 'commit'` in your `page.goto()` options so Playwright doesn't waste time waiting for images, stylesheets, or client-side scripts to finish loading.
+
+### 2\. Using a Response Listener (Best for Redirects or SPAs)
+
+If your pipeline handles multi-step redirects or clicks links that trigger page loads, attach a `page.on('response')` listener before navigating.
+
+javascript
+
+```
+let rawHtml = '';
+
+page.on('response', async (response) => {
+  // Target only the main HTML document request
+  if (response.request().isNavigationRequest() && response.request().resourceType() === 'document') {
+    try {
+      rawHtml = await response.text();
+    } catch (err) {
+      // Handle cases where a redirect response has no body
+    }
+  }
+});
+
+await page.goto('https://example.com');
+
+```
+
+
+
+### 3\. Using the `APIRequestContext` (Fastest for Pure Raw HTML)
+
+If your pipeline never needs a browser engine for any step (e.g., no CAPTCHA solving or cookie generation via JS), bypass browser rendering entirely using Playwright's built-in `request` API.
+
+javascript
+
+```
+const { request } = require('playwright');
+
+(async () => {
+  const apiContext = await request.newContext();
+  const response = await apiContext.get('https://example.com');
+  
+  const rawHtml = await response.text();
+  console.log(rawHtml);
+})();
+
+```
+
+
+
+* **Save compute resources.** This executes a standard HTTP request while still letting you share cookies and storage state with full browser contexts if needed later in your pipeline.
+
+### Comparison of Methods
+
+| Method                   | Captures Raw HTML?    | Runs Client JS?                      | Pipeline Speed | Best Use Case                                                         |
+| ------------------------ | --------------------- | ------------------------------------ | -------------- | --------------------------------------------------------------------- |
+| **response.text()**      | Yes                   | Optional (waitUntil: 'commit' skips) | Fast           | Standard navigation where you also need browser context/cookies.      |
+| **page.on('response')**  | Yes                   | Yes                                  | Medium         | Complex flows with redirects or capturing both raw and rendered HTML. |
+| **request.newContext()** | Yes                   | No                                   | Fastest        | High-throughput scraping where browser execution isn't needed.        |
+| **page.content()**       | **No** (Rendered DOM) | Yes                                  | Slowest        | Extracting content generated dynamically by React/Vue/Angular.        |
+
+Are you trying to capture **both** the unrendered source and the post-JS rendered DOM in the same pipeline step, or do you need to handle **authentication/cookies** before fetching the HTML? Let me know so I can tailor the pipeline setup!
+
+* [](https://github.com/microsoft/playwright/issues/2528)  
+GitHub  
+\[Question\] - How can you obtain the current HTML content of the page you are on? · Issue #2528 · microsoft/playwright  
+June 10, 2020 — For retrieving rendered HTML content of specific elements after JavaScript execution, navigate to the page with \`page.goto()\`, sel...
+* [](https://stackoverflow.com/questions/69980581/get-entire-playwright-page-in-html-and-text)  
+Stack Overflow  
+Get entire Playwright page in html and Text - Stack Overflow  
+November 15, 2021 — For the full html of the page, this is what you need: const html = await page.content() To get the inner text of the div, this sho...
+
+# how to get the initial unrendered source html via playwright js in processing pipeline when you render it later
+
+To get the initial, unrendered HTML source before JavaScript modifies the DOM—while still letting the page finish rendering in the same pipeline—capture the raw text from the **main navigation response** using `await response.text()`. Calling `page.content()` later will give you the final, rendered DOM. [](https://github.com/microsoft/playwright/issues/2528)
+
+### 1\. Using `page.goto()` Response (Simplest)
+
+When you navigate to a URL, `page.goto()` returns a `Response` object representing the initial document request. You can extract the raw body from that response and then wait for the page to render.
+
+javascript
+
+```
+import { chromium } from 'playwright';
+
+const browser = await chromium.launch();
+const page = await browser.newPage();
+
+// 1. Navigate and capture the initial HTTP response (waitUntil: 'commit' fires as soon as headers arrive)
+const response = await page.goto('https://example.com', { waitUntil: 'commit' });
+
+// 2. Extract the raw, unrendered HTML string directly from the network payload
+const initialHtml = await response.text();
+
+// 3. Let the page finish loading and executing client-side JavaScript
+await page.waitForLoadState('networkidle'); // or waitForSelector(...)
+
+// 4. Extract the fully rendered DOM HTML
+const renderedHtml = await page.content();
+
+console.log('Raw length:', initialHtml.length);
+console.log('Rendered length:', renderedHtml.length);
+
+await browser.close();
+
+```
+
+
+
+### 2\. Using a Response Listener (Best for Redirects or Multi-Step Pipelines)
+
+If your pipeline involves client-side redirects, form submissions, or you want to decouple network capture from navigation logic, listen to the `response` event on the page and filter for the main frame's `document` resource.
+
+javascript
+
+```
+let initialHtml = null;
+
+page.on('response', async (response) => {
+  // Target only the main document navigation (ignore XHR, fetch, scripts, iframes)
+  if (
+    response.request().resourceType() === 'document' &&
+    response.frame() === page.mainFrame() &&
+    !initialHtml // Capture only the first/target document
+  ) {
+    try {
+      initialHtml = await response.text();
+    } catch (err) {
+      // Handle redirects (3xx responses have no body)
+    }
+  }
+});
+
+await page.goto('https://example.com', { waitUntil: 'networkidle' });
+const renderedHtml = await page.content();
+
+```
+
+
+
+### Key Caveats
+
+* **HTTP Redirects (301/302).** If a URL redirects, `response.text()` on a 3xx response will throw an error because redirect responses have no body. In the event listener approach, check `response.status() >= 200 && response.status() < 300` before calling `.text()`.
+* **Timing with `waitUntil: 'commit'`.** Using `waitUntil: 'commit'` in `page.goto()` lets you grab `response.text()` immediately before heavy scripts block the main thread, after which you can safely call `page.waitForLoadState()` or `page.locator().waitFor()` to complete rendering. [](https://github.com/microsoft/playwright/issues/2528)
+* **Stream Consumption.** Playwright buffers response bodies in memory automatically, so calling `await response.text()` does not prevent the browser engine from parsing and rendering that same HTML.
+
+If you're handling specific edge cases in your pipeline—such as **HTTP redirects**, **Bot/Cloudflare challenges**, or **Single Page App (SPA) route changes**—let me know and I can adjust the snippet to handle them cleanly.
+
+* [](https://github.com/microsoft/playwright/issues/2528)  
+GitHub  
+\[Question\] - How can you obtain the current HTML content of the page you are on? · Issue #2528 · microsoft/playwright  
+June 10, 2020 — For retrieving rendered HTML content of specific elements after JavaScript execution, navigate to the page with \`page.goto()\`, sel...
+* [](https://www.reddit.com/r/Playwright/comments/1x1vr99/i%5Fbuilt%5Fa%5Fplaywright%5Fapi%5Fthat%5Freturns%5Frendered/)  
+Reddit·r/Playwright  
+I built a Playwright API that returns rendered HTML ... - Reddit  
+October 9, 2026 — The Playwright API provides rendered HTML, metadata, and screenshots from public web pages after JavaScript has executed, useful f...
+
+# what does different load state mean in playwright
+
+In Playwright, **load states** tell your test how far along a web page is in its loading lifecycle before moving to the next step. You typically pass these options into methods like `page.waitForLoadState()` or the `waitUntil` option in `page.goto()`. [](https://www.xtivia.com/blog/handling-dynamic-content-in-playwright/)
+
+Playwright uses three main page load states. [](https://www.testmuai.com/blog/playwright-wait-for-navigation-methods/)
+
+### The 3 Page Load States
+
+| Load State           | What It Waits For                                                                                                         | Speed    | Best Use Case                                                                                               |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------- |
+| **domcontentloaded** | The browser finishes parsing the initial HTML document. External stylesheets, images, and subframes may still be loading. | Fastest  | Scraping static text or testing pages where images and heavy styling do not matter.                         |
+| **load** _(Default)_ | The entire page finishes loading, including HTML, CSS, JavaScript, and images.                                            | Moderate | General navigation and standard web apps. Playwright uses this by default when you omit the state argument. |
+| **networkidle**      | There are zero active network connections for at least 500 milliseconds.                                                  | Slowest  | Legacy apps that load critical data via immediate background API calls without clear UI indicators.         |
+
+### Key Details & Best Practices
+
+* **Avoid `networkidle` for modern apps.** The official [Playwright Documentation](https://playwright.dev/docs/navigations) discourages using `networkidle` for testing because it adds unnecessary delays. Apps with real-time updates, WebSockets, or constant background polling will never reach a quiet network state and will cause your test to time out. [](https://www.testmuai.com/blog/playwright-wait-for-navigation-methods/)
+* **Prefer web-first assertions over manual load states.** A browser load event only proves that files finished downloading, not that your app is ready for a user. Instead of manually waiting for a load state, rely on Playwright's built-in auto-waiting or assert that a specific UI element is visible. [](https://www.youtube.com/watch?v=a8RKJzbTTI0)
+* **Element states are separate.** Page load states track the whole document. If you call `locator.waitFor()`, Playwright uses different element-level states: `attached`, `detached`, `visible`, and `hidden`. [](https://www.testmuai.com/blog/playwright-wait-for-navigation-methods/)
+
+### Example Usage
+
+javascript
+
+```
+// Wait only for HTML parsing (fast)
+await page.goto('https://example.com', { waitUntil: 'domcontentloaded' });
+
+// Wait for full page load after a button click (default)
+await page.getByRole('button', { name: 'Submit' }).click();
+await page.waitForLoadState('load');
+
+```
+
+
+
+Are you trying to fix a **flaky test** or speed up a **specific page navigation**? Let me know what kind of app you are testing, and I can suggest the best waiting strategy for it.
+
+* [](https://www.youtube.com/shorts/dXPE6PMoLaY)  
+YouTube·Akansha Academy  
+Understanding Playwright Load States ...  
+November 1, 2026 — never use on apps with websocket polling you can mention polling option as well or realtime updates it will never end okay so if y...  
+0:53
+* [](https://qajobfit.com/resources/playwright-waitforloadstate)  
+QAJobFit  
+How to Use Playwright waitForLoadState (2026) - QAJobFit  
+A load state is a browser event, not proof that the feature is correct. 1\. What waitForLoadState does and does not prove page. You...
+* [](https://www.testmuai.com/blog/playwright-wait-for-navigation-methods/)  
+TestMu AI  
+Playwright Wait for Page to Load, Navigation, and Elements  
+September 29, 2026 — Page load states and element states are separate enums. Load takes load, domcontentloaded, or networkidle; elements take attached,
+
+Show all
+
+# what if you pass timeout to playwright wait for load state
+
+Passing a `timeout` option to `page.waitForLoadState()` sets the **maximum time (in milliseconds) Playwright will wait for that specific load state before throwing a `TimeoutError`**. It does not act as a fixed sleep or delay; if the page reaches the requested state (`load`, `domcontentloaded`, or `networkidle`) earlier, Playwright immediately moves to the next line of code. [](https://playwright.dev/docs/test-timeouts)
+
+### Key Behaviors to Know
+
+* **Syntax.** Pass the timeout as an options object in the second argument, such as `await page.waitForLoadState('networkidle', { timeout: 10000 })`. [](https://playwright.dev/docs/test-timeouts)
+* **Immediate resolution.** If the page has already reached the target load state before the method is called, it resolves instantly without waiting at all.
+* **Disabling the limit.** Passing `{ timeout: 0 }` disables the method's own navigation timeout, though the call will still fail if it hits your overall [Playwright test timeout](https://playwright.dev/docs/test-timeouts).
+* **Test timeout ceiling.** In `@playwright/test`, the overall test timeout defaults to **30,000 ms (30 seconds)**. If you pass `{ timeout: 60000 }` to `waitForLoadState` without increasing the test timeout via `test.setTimeout()`, the test will still fail at the 30-second mark. [](https://hyperping.com/learn/playwright/playwright-waits-and-timeouts)
+* **Fallback behavior.** If you omit the `timeout` parameter, `waitForLoadState` falls back to the page's default navigation timeout (which defaults to 30,000 ms in standalone Playwright or inherits the test timeout in the test runner). [](https://www.testmuai.com/blog/playwright-wait-for-navigation-methods/)
+
+### Best Practice Note
+
+Playwright's documentation and testing guides generally discourage relying on `waitForLoadState('networkidle')` with custom timeouts. Modern web apps often keep background polling or analytics requests open, causing `networkidle` to hang until it hits your timeout limit. Instead, prefer waiting for a specific UI element to appear using Playwright web-first assertions like `await expect(locator).toBeVisible({ timeout: 10000 })`. [](https://circleci.com/blog/mastering-waits-and-timeouts-in-playwright/)
+
+Are you trying to fix a **flaky test** or work around a **slow-loading page**? If you share the **load state** you are using and your **language** (TypeScript, Python, Java, or C#), I can show you a more reliable wait pattern.
+
+* [](https://playwright.dev/docs/test-timeouts)  
+Playwright  
+Timeouts | Playwright  
+Playwright Test supports a timeout for the whole test run. This prevents excess resource usage when everything went wrong.
+* [](https://circleci.com/blog/mastering-waits-and-timeouts-in-playwright/)  
+CircleCI  
+Mastering waits and timeouts in Playwright - CircleCI  
+January 21, 2026 — Auto-waits perform actionability checks … before actions like click or. Rely on auto-waits and web-first assertions (expect(locato...
+* [](https://www.checklyhq.com/docs/learn/playwright/waits-and-timeouts/)  
+Checkly  
+Dealing with waits and timeouts in Playwright - Checkly Docs  
+Avoid hard-coded timeouts and fixed waits; they cause test flakiness, are always too short or too long, and degrade performance. u...
+
+Show all
+
+# can you work w the page if you try catch playwright wait for loading timeout
+
+**Yes, you can continue working with the page after catching a loading timeout in Playwright.** A `TimeoutError` only cancels the specific wait or navigation command that timed out; it does not close the browser tab or freeze the underlying DOM. [](https://playwright.dev/docs/actionability)
+
+### What Happens When You Catch a Timeout
+
+When you wrap `page.goto()` or `page.waitForLoadState()` in a `try/catch` block, Playwright leaves the page in whatever partial state it reached when the timer ran out: [](https://screenshotone.com/blog/playwright-wait-for-page-to-load/)
+
+* **The `page` object stays active.** You can still query elements, read text, take screenshots, or click buttons on whatever HTML has already rendered.
+* **Background loading continues.** Unless you stop it, the browser will keep downloading scripts, images, and API responses in the background even after the `catch` block runs.
+* **Caveat for blank pages.** If the timeout occurred because the server never responded at all (e.g., DNS hang or dropped connection), the page will simply be `about:blank` or an empty document.
+
+### Common Pattern: Soft Navigation Timeout
+
+If a page has slow third-party trackers or hanging assets that prevent the `load` or `networkidle` event from firing, catching the timeout lets you proceed with the content that already loaded: [](https://github.com/feder-cr/invisible%5Fplaywright/wiki/how-to-wait-for-page-load-playwright)
+
+javascript
+
+```
+try {
+  await page.goto('https://example.com', { timeout: 10000 });
+} catch (error) {
+  if (error.name === 'TimeoutError') {
+    console.log('Page load timed out, continuing with partial DOM...');
+    // Optional: Stop further resource downloads (like window.stop())
+    await page.evaluate(() => window.stop());
+  } else {
+    throw error; // Re-throw network errors like ERR_NAME_NOT_RESOLVED
+  }
+}
+
+// You can still interact with the page normally here
+const heading = await page.locator('h1').textContent();
+
+```
+
+
+
+### Better Alternatives to `try/catch`
+
+Relying on `try/catch` for page loads can hide real failures or add unnecessary delays. Consider these cleaner approaches in the [Playwright Navigation Docs](https://playwright.dev/docs/navigations): 
+
+* **Use `waitUntil: 'domcontentloaded'`.** Instead of waiting for all images and stylesheets (`load`), tell `page.goto()` to resolve as soon as the initial HTML is parsed.
+* **Wait for a specific element.** Navigate without a strict full-page wait and let Playwright's [Auto-waiting](https://playwright.dev/docs/actionability) pause until the exact button or container you need becomes visible.
+* **Block heavy resources.** Use `page.route()` to abort unnecessary ads, fonts, or tracking scripts that stall the page load. [](https://playwright.dev/docs/navigations)
+
+If you're hitting a timeout on a specific site, let me know:
+
+* **Which method** is timing out (`goto`, `waitForLoadState`, or a `locator` action)
+* **What happens** on the screen when it stalls (e.g., spinning loader, partial content, or blank screen)
+
+I can help you tailor a faster wait strategy for it.
+
+* [](https://circleci.com/blog/mastering-waits-and-timeouts-in-playwright/)  
+CircleCI  
+Mastering waits and timeouts in Playwright - CircleCI  
+January 21, 2026 — Writing it in your test code leads to flakiness and slowness. The time needs to elapse without knowledge of whether the action or ...
+* [](https://github.com/feder-cr/invisible%5Fplaywright/wiki/how-to-wait-for-page-load-playwright)  
+GitHub  
+how to wait for page load playwright - GitHub  
+September 7, 2026 — You are waiting for one specific element - Playwright can wait for exactly that: auto-waits for the element before reading it
+* [](https://screenshotone.com/blog/playwright-wait-for-page-to-load/)  
+ScreenshotOne  
+Playwright wait for page to load  
+October 2, 2026 — waitUntil: "domcontentloaded", wait\_until="domcontentloaded") It waits for the load event by default. It waits for a document life...
+
+Show all
+
 

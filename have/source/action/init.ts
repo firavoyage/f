@@ -13,7 +13,7 @@ touch(object_index_file, serialize([]))
 touch(webpage_index_file, serialize([]))
 touch(category_index_file, serialize([]))
 
-export const log_file = data('log', 'log.txt')
+export const log_file = data('log', 'log.log')
 touch(log_file)
 
 const result_folder = data('webpage', 'result')
