@@ -5,6 +5,7 @@ init_desktop('have')
 
 // init browser profile
 
+export const browser_profile = data('browser', 'default')
 export const object_index_file = data('object', 'index.yaml')
 export const webpage_index_file = data('webpage', 'index.yaml')
 export const category_index_file = data('category', 'index.yaml')

@@ -22,7 +22,18 @@ store rendered page
 
 fetch assets
 
-store binaries
+_store binaries_
+
+you may make it content addressed on filename. you dont necessarily have to symlink right now.
+
+_you may save url and url hash alongside._
+
+fine, easy.
+
+append object index
+
+- id # content id
+- url # you may not have to derive hash right now.
 
 ---
 

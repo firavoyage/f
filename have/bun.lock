@@ -7,6 +7,7 @@
         "@hono/node-server": "2.0.8",
         "hono": "4.12.27",
         "lib": "github:firahq/lib",
+        "patchright": "1.64.3",
         "yaml": "2.9.1",
       },
       "devDependencies": {
@@ -488,6 +489,10 @@
     "p-locate": ["p-locate@5.0.0", "", { "dependencies": { "p-limit": "^3.0.2" } }, "sha512-LaNjtRWUBY++zB5nE/NwcaoMylSPk+S+ZHNB1TzdbMJMny6dynpAGt7X/tl/QYq3TIeE6nxHppbo2LGymrG5Pw=="],
 
     "parse-asn1": ["parse-asn1@5.1.10", "", { "dependencies": { "asn1.js": "^4.10.1", "browserify-aes": "^1.2.0", "evp_bytestokey": "^1.0.3", "pbkdf2": "^3.1.7", "safe-buffer": "^5.2.1" } }, "sha512-gBlTKLbYnAJN9WjmawVOMfaGvVoy4lX0LH18t7ccwtEG9RgAa4ETf2eu3d2J4e/5SoCjCms0A0UF4tTw/Eyn6Q=="],
+
+    "patchright": ["patchright@1.64.3", "", { "dependencies": { "patchright-core": "1.64.3" }, "bin": { "patchright": "cli.js" } }, "sha512-DjdhKOHRMW2RcvCJJ4MW9B4Mn7dh4Tu5IAkeiYgmoMfVdG6w2klfNdw0Ci8F/jibp870EIfJhzyN14GN6jDVPg=="],
+
+    "patchright-core": ["patchright-core@1.64.3", "", { "bin": { "patchright-core": "cli.js" } }, "sha512-AikBjQ6CcsEtk7pJGlZ7ITxIInVd0a8HWPtuGjx2Y0Ogb88sj1wqICiYFz4du6fbaLQStLNEnWCmYm5uODsEzQ=="],
 
     "path-browserify": ["path-browserify@1.0.1", "", {}, "sha512-b7uo2UCUOYZcnF/3ID0lulOJi/bafxa1xPe7ZPsammBSpjSWQkjNxlt635YGS2MiR9GjvuXCtz2emr3jbsz98g=="],
 
