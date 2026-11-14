@@ -82,7 +82,8 @@ export async function fetch(
           .digest('hex')
           // .slice(0, 16)
         // const hash = createHash('md5').update(url).digest('hex').slice(0, 10)
-        const filename = `${hash}${ext}`
+        const filename = `${scalable_filename(hash)}${ext}`
+        // const filename = `${hash}${ext}`
 
         const asset_file = join(object_folder, filename)
         // const asset_file = join(dir, 'asset', filename)
@@ -380,5 +381,11 @@ function snapshot(html) {
 }
 
 function scalable_filename(hash: string) {
-  let first = filename.slice(2)
+  // typically 64 char sha256 hash
+  let first = hash.slice(0, 2)
+  let second = hash.slice(2, 4)
+  let rest = hash.slice(4)
+
+  return `${first}/${second}/${rest}`
 }
+

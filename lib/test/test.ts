@@ -1,5 +1,4 @@
-function fetch() {
-  
-}
+import { now } from 'lib/time'
 
-log(fetch(), globalThis.fetch())
+log(now().timestamp)
+log(new Date().getTime() / 1000)

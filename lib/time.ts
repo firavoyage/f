@@ -30,9 +30,16 @@ export function time(year: number, month: number, day: number, hour: number, min
 }
 
 export function now(timezone?: timezone) {
-  const { year, month, day, hour, min, sec } = parse_js_time(new Date())
-  return time(year, month, day, hour, min, sec, timezone)
+  const { year, month, day, hour, min, sec, timestamp, offset } = parse_js_time(new Date())
+  return Time({
+    timestamp, offset,
+    year, month, day, hour, min, sec
+  })
 }
+// export function now(timezone?: timezone) {
+//   const { year, month, day, hour, min, sec } = parse_js_time(new Date())
+//   return time(year, month, day, hour, min, sec, timezone)
+// }
 
 export function at(timestamp: number, timezone?: timezone) {
   const timestamp_ms = timestamp * 1000
