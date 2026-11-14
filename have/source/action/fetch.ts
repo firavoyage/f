@@ -1,18 +1,31 @@
-import { chromium } from 'patchright';
+import { chromium } from 'patchright'
 import { browser_profile } from 'action/index'
 
+const should_hide_window = true
+const display_number = ':99'
+const theme: 'system' | 'light' | 'dark' = 'system'
+
 async function run() {
-  const context = await chromium.launchPersistentContext(browser_profile, {
+  // if (should_hide_window) {
+  //   process.env.DISPLAY = display_number
+  // }
+
+  let colorScheme = theme == 'system' ? 'no-preference': theme
+
+  const browser = await chromium.launchPersistentContext(browser_profile, {
     channel: 'chrome',
     headless: false,
     viewport: null,
-  });
+    colorScheme,
+  })
 
-  // const page = context.pages()[0] || await context.newPage();
+  const page = browser.pages()[0] || (await browser.newPage())
 
-  // await page.goto('https://example.com');
-  
-  // await context.close();
+  await page.goto('https://example.org')
+
+  log(await page.evaluate(() => document.body.innerHTML))
+
+  // await browser.close();
 }
 
-run();
+run()
