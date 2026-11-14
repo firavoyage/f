@@ -35,6 +35,10 @@ database
       - default provider = first provider
       - export?:
         - dir
+- cache
+  - chat
+    - lock
+      - (thread)?: boolean
 
 ---
 

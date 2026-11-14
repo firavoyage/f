@@ -12,9 +12,31 @@ organize folders, rename thread
 
 ## s
 
-handle desync frontend and backend
+implement thread locking for chat
 
-i.e. know and manage what's ongoing on a separate request
+> handle desync frontend and backend
+> 
+> i.e. know and manage what's ongoing on a separate request
+
+when you read a thread, it would typically return the thread of all requests settled.
+
+otherwise it will wait. it's feasible to do that on nodejs backend.
+
+it's a simple approach.
+
+_you could display prev msgs first, set is pending, and wait for update. well actually it's easy. you send a "fast read" for display before waiting for the locked read._
+
+like, when you send, the network fluctuates, and you refresh the page (w the prev request abandoned)
+
+if the endpoint request fails or _timeouts_ an error would be appended. it's very unlikely to have corrupted thread unless the server is killed halfway. and it would still work (i.e. to empty lock on server startup) as you merge consecutive msgs of the same role. it's reasonable though, to append user msg only after the reply. doesnt matter to change the behavior now.
+
+---
+
+implement fetch tool.
+
+use cache if available.
+
+connect to have via cli, through json (e.g. action, payload). stdin maybe.
 
 ---
 
