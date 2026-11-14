@@ -9,6 +9,7 @@ import {
 import { random_id } from 'lib/random'
 import { now } from 'lib/time'
 import { extname, join, read, write } from 'lib/file'
+import { createHash as create_hash } from 'crypto'
 
 const should_hide_window = true
 const display_number = ':99'
@@ -23,10 +24,9 @@ const viewport = {
   // height: 900,
 }
 
-async function fetch(url: string, options = {}) {
+export async function fetch(url: string, options = {}) {
   const id = random_id()
   const dir = get_result_folder(id)
-  const creation_time = now().timestamp
 
   // if (should_hide_window) {
   //   process.env.DISPLAY = display_number
@@ -42,7 +42,7 @@ async function fetch(url: string, options = {}) {
 
   const page = browser.pages()[0] || (await browser.newPage())
 
-  const assets = new Map()
+  const assets = dict()
 
   page.on('response', async (response) =>
     handle(async () => {
@@ -62,59 +62,70 @@ async function fetch(url: string, options = {}) {
         const buffer = await response.body()
         const parsed_url = new URL(url)
         const ext = extname(parsed_url.pathname) || get_fallback_ext(type)
-        const hash = crypto
-          .createHash('md5')
-          .update(url)
+        const hash = create_hash('sha256')
+          .update(buffer)
           .digest('hex')
-          .slice(0, 10)
+          .slice(0, 16)
+        // const hash = createHash('md5').update(url).digest('hex').slice(0, 10)
         const filename = `${hash}${ext}`
-        
+
         const asset_file = join(dir, 'asset', filename)
 
         write(asset_file, buffer)
-        assets.set(url, `./assets/${filename}`)
+        assets.set(url, `./asset/${filename}`)
       }
     }),
   )
 
+  const creation_time = now().timestamp
   await page.goto(url, { waitUntil: 'networkidle' })
 
-  // 3. Rewrite asset URLs inside the live DOM to point to local files
+  // Rewrite asset URLs inside the live DOM to point to local files
   await page.evaluate((entries) => {
     const map = new Map(entries)
     const attrs = ['src', 'href', 'poster']
 
-    document.querySelectorAll('*').forEach((el) => {
+    document.querySelectorAll('*').forEach((element) => {
       for (const attr of attrs) {
-        const val = el.getAttribute(attr)
-        if (!val) continue
+        const value = element.getAttribute(attr)
+        if (!value) continue
         // Resolve relative URLs against the page's base URL
-        const absUrl = new URL(val, document.baseURI).href
-        if (map.has(absUrl)) {
-          el.setAttribute(attr, map.get(absUrl))
+        const absolute_url = new URL(value, document.baseURI).href
+        if (map.has(absolute_url)) {
+          element.setAttribute(attr, map.get(absolute_url))
         }
       }
     })
-  }, Array.from(assets.entries()))
+  }, entries(assets))
 
-  // 4. Save the final rendered HTML
+  // Save the final rendered HTML
   const html = await page.content()
-  await fs.writeFile(path.join(OUT_DIR, 'index.html'), html, 'utf-8')
+  write(join(dir, 'index.html'), html)
 
-  await browser.close()
-  log(`Saved index.html and ${assets.size} assets to ${OUT_DIR}`)
-
-  function get_fallback_ext(resourceType) {
+  function get_fallback_ext(type) {
     const map = {
       stylesheet: '.css',
       script: '.js',
       image: '.png',
       font: '.woff2',
     }
-    return map[resourceType] || '.bin'
+    return map[type] || '.bin'
   }
 
-  // await browser.close();
+  log(`Saved ${url} to ${dir}/index.html w ${assets.size} assets`)
+
+  let webpage_index = deserialize(read(webpage_index_file))
+  let record = {
+    id,
+    url,
+    creation_time,
+  }
+
+  webpage_index.push(record)
+
+  write(webpage_index_file, serialize(webpage_index))
+  log(`Updated index`)
+
+  await browser.close();
 }
 
-fetch('https://example.org')
