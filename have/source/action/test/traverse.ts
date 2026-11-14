@@ -15,4 +15,4 @@ await traverse(
   },
 )
 
-
+browser.close()
