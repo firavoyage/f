@@ -6,10 +6,12 @@ import {
   webpage_index_file,
   get_result_folder,
   log_file,
+  object_folder,
 } from 'action/index'
 import { random_id } from 'lib/random'
 import { now } from 'lib/time'
 import { extname, join, read, write, append } from 'lib/file'
+import { symlinkSync as symlink } from 'fs'
 import { format_log } from 'lib/log'
 import { createHash as create_hash } from 'crypto'
 import * as cheerio from 'cheerio'
@@ -82,7 +84,8 @@ export async function fetch(
         // const hash = createHash('md5').update(url).digest('hex').slice(0, 10)
         const filename = `${hash}${ext}`
 
-        const asset_file = join(dir, 'asset', filename)
+        const asset_file = join(object_folder, filename)
+        // const asset_file = join(dir, 'asset', filename)
 
         write(asset_file, buffer)
         assets.set(url, `./asset/${filename}`)

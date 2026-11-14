@@ -57,4 +57,10 @@ append object index
 
 ---
 
+legacy? release instead.
+
+~~typically you do not , but rather release before change.~~
+
+well just call it legacy. i dont really release it.
+
 

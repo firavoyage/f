@@ -32,7 +32,7 @@ db
         - (category id): content id[]
       - content
         - (content id): category id[]
-- cache
+- ~~cache~~ # you might not have to use it
   - object
     - storage
       - (any) # temporary uuid

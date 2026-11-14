@@ -1,5 +1,15 @@
 # plan
 
+symlink storage
+
+you may copy all assets to a unified storage, e.g. object/storage
+
+and symlink the folder.
+
+you already know the specific deps of one site.
+
+---
+
 traverse a site
 
 traverse(fetch, url, options)
@@ -16,11 +26,30 @@ i dont have to specify the algorithm. (e.g. my naive set, url -> depth map, plus
 
 list all snapshots of a site
 
+you may just render md.
+
+e.g. 
+
+```
+# [title](site)
+
+- [2026-11-14 22:40:21](snapshot)
+- ...
+```
+
+typically like project humility
+
 ---
 
 view the snapshot of a site
 
-rp the links
+rp the links.
+
+if you can read (static), you can easily do that.
+
+- show nothing wo param
+- read the page (or "not archived") of such param, rp body innerhtml
+- intercept link to rp such param
 
 # todo
 
@@ -28,18 +57,7 @@ rp the links
 
 ## s
 
-symlink storage
-
-you may copy all assets to a unified storage, e.g. object/storage
-
-and symlink the folder.
-
-you already know the specific deps of one site.
-
----
-
 read main content
-
 
 ## c
 
