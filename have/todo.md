@@ -1,49 +1,45 @@
 # plan
 
-init db
+traverse a site
+
+traverse(fetch, url, options)
+
+- should visit url -> boolean (default: same site)
+- max depth (0 indexed) = inf
+- max page = inf
+- max duration (in sec) = inf
+- interval (in sec) = 1
+
+i dont have to specify the algorithm. (e.g. my naive set, url -> depth map, plus is visited flags)
 
 ---
 
-setup persistent browser profile
-
-support xvfb toggle
+list all snapshots of a site
 
 ---
 
-fetch page
+view the snapshot of a site
 
-create result object
-
-store html source
-
-store rendered page
-
----
-
-fetch assets
-
-_store binaries_
-
-you may make it content addressed on filename. you dont necessarily have to symlink right now.
-
-_you may save url and url hash alongside._
-
-fine, easy.
-
-append object index
-
-- id # content id
-- url # you may not have to derive hash right now.
-
----
-
-read main content
+rp the links
 
 # todo
 
 ## m
 
 ## s
+
+symlink storage
+
+you may copy all assets to a unified storage, e.g. object/storage
+
+and symlink the folder.
+
+you already know the specific deps of one site.
+
+---
+
+read main content
+
 
 ## c
 
