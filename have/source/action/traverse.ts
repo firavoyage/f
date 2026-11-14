@@ -1,4 +1,7 @@
 import * as cheerio from 'cheerio'
+import { append } from 'lib/file'
+import { log_file, serialize } from 'action/index'
+import { format_log } from 'lib/log'
 
 type traverse_options = {
   should_visit?: (url: string) => boolean
@@ -43,12 +46,16 @@ export async function traverse(
   const visited = new Set<string>()
   let page_count = 0
 
-  const log = (message: string, details?: unknown): void => {
-    if (details !== undefined) {
-      console.log(`[traverse] ${message}`, details)
-    } else {
-      console.log(`[traverse] ${message}`)
-    }
+  const log = (message: string, details?: unknown, level = 'info' as 'info' | 'warn' | 'error'): void => {
+    append(
+      log_file,
+      format_log(`[traverse] ${message}\n${serialize(details)}`, level),
+    )
+    // if (details !== undefined) {
+    //   console.log(`[traverse] ${message}`, details)
+    // } else {
+    //   console.log(`[traverse] ${message}`)
+    // }
   }
 
   const is_expired = (): boolean => {
@@ -143,7 +150,7 @@ export async function traverse(
       log('Failed to fetch or parse page', {
         url: current.url,
         error,
-      })
+      }, 'error')
     }
 
     if (

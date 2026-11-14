@@ -61,6 +61,7 @@ export async function fetch(
     should_close_page_when_finish = true,
     display_number = ':99',
     is_static = true,
+    load_state = 'networkidle' as 'domcontentloaded' | 'load' | 'networkidle',
     timeout = 10000,
     // undefined (omitted) means light, while nil/no pref evaluates to system
     theme = 'system' as 'system' | 'light' | 'dark',
@@ -129,7 +130,7 @@ export async function fetch(
   write(join(dir, 'index.source.html'), source_html)
 
   const loading = await handle(() =>
-    page.waitForLoadState('load', {
+    page.waitForLoadState(load_state, {
       timeout,
     }),
   )
