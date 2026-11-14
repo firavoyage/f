@@ -938,3 +938,175 @@ bash
 
 
 Are you running this directly in an **interactive terminal** or saving it inside a **`.sh` script file**? If it's going into a script file, I can show you how to make sure your editor preserves **real tab characters**.
+
+# . test
+
+finally worked. you should go tmux the modern way.
+
+# how to use tmux to run a few commands silently under a named terminal
+
+Use the **`tmux new-session -d -s`** command to start a detached, named background session and execute your commands inside it without taking over your current terminal. [](https://www.reddit.com/r/linuxquestions/comments/3sdytq/starting%5Ftmux%5Fsilently%5Fin%5Fa%5Fbash%5Fscript/)
+
+### 1\. Run Commands in One Step
+
+To launch a named session silently and execute multiple commands sequentially, pass them as a single quoted string: [](https://superuser.com/questions/575909/optionally-run-several-commands-when-starting-tmux)
+
+bash
+
+```
+tmux new-session -d -s my_session "command1 && command2 && command3"
+
+```
+
+
+
+* **`-d` (Detached):** Starts the session in the background so your current terminal stays free.
+* **`-s my_session`:** Assigns a custom name to the terminal session.
+* **`&&`:** Chains multiple commands together so the next one runs only if the previous one succeeds. Use `;` instead if you want all commands to run regardless of errors. [](https://www.reddit.com/r/linuxquestions/comments/3sdytq/starting%5Ftmux%5Fsilently%5Fin%5Fa%5Fbash%5Fscript/)
+
+_(Note: By default, the tmux session automatically closes as soon as the final command finishes.)_
+
+### 2\. Keep the Session Alive After Commands Finish
+
+If you want the named terminal to stay open after your commands finish running, append `exec bash` (or your preferred shell) to the end of the command string: [](https://superuser.com/questions/575909/optionally-run-several-commands-when-starting-tmux)
+
+bash
+
+```
+tmux new-session -d -s my_session "command1; command2; exec bash"
+
+```
+
+
+
+### 3\. Send Commands to an Existing Named Session
+
+If you prefer to create an empty named session first and feed commands into it silently—which mimics typing them directly into the terminal—use **`send-keys`**: [](https://www.reddit.com/r/linuxquestions/comments/3sdytq/starting%5Ftmux%5Fsilently%5Fin%5Fa%5Fbash%5Fscript/)
+
+bash
+
+```
+# 1. Create the named session silently
+tmux new-session -d -s my_session
+
+# 2. Send commands to it ('C-m' simulates pressing Enter)
+tmux send-keys -t my_session "command1" C-m
+tmux send-keys -t my_session "command2" C-m
+
+```
+
+
+
+### 4\. Suppress Output & Check Status
+
+* **Hide internal output:** If you want zero output recorded even inside the hidden session, redirect output to `/dev/null`:  
+bash  
+```  
+tmux new-session -d -s my_session "command1 > /dev/null 2>&1"  
+```  
+
+* **Verify it is running:** Run `tmux ls` to see your active named sessions.
+* **View the session:** Run `tmux attach -t my_session` whenever you want to check on progress. Press `Ctrl+B` then `D` to detach back to the background. [](https://www.redhat.com/en/blog/introduction-tmux-linux)
+
+For more details on session management and flags, see the official [tmux Getting Started Wiki](https://github.com/tmux/tmux/wiki/Getting-Started). 
+
+If you are putting this into an automated script or cron job, let me know:
+
+* Whether the commands need to run **sequentially or simultaneously** in separate panes
+* If you need the **terminal logs saved** to a file
+
+I can help you write the exact shell script snippet for your workflow.
+
+* [](https://www.reddit.com/r/linuxquestions/comments/3sdytq/starting%5Ftmux%5Fsilently%5Fin%5Fa%5Fbash%5Fscript/)  
+Reddit·r/linuxquestions  
+Starting tmux "silently" in a bash script : r/linuxquestions  
+November 11, 2015 — tmux new-session -s yeah -d will create new session, named "yeah", but put it in background - You can see that it exists by doing:
+* [](https://superuser.com/questions/575909/optionally-run-several-commands-when-starting-tmux)  
+Super User  
+Optionally run several commands when starting tmux  
+Mar 31, 2013 — There are at least a couple of ways you can fix this: Start \~/.tmux/dev with new-window so that pane 0 is running your “default co...
+* [](https://github.com/tmux/tmux/wiki/Getting-Started)  
+GitHub  
+Getting Started · tmux/tmux Wiki - GitHub  
+tmux is a program which runs in a terminal and allows multiple other terminal programs to be run inside it. Each program inside tm...
+
+Show all
+
+# how to use tmux to run some multiline commands silently under a named terminal
+
+To run multiline commands silently in the background under a named **tmux** terminal, use the **`tmux new-session -d -s`** command combined with either a subshell string or **`tmux send-keys`**. The `-d` flag starts the session detached (silently in the background), and `-s` assigns your custom session name. [](https://askubuntu.com/questions/1337536/how-do-i-make-a-bash-script-that-opens-tmux-runs-multiple-lines-of-commands-th)
+
+### Method 1: Pass a Single Multiline String (Cleanest)
+
+You can pass a multiline script directly into a new detached session by wrapping your commands inside `bash -c`. [](https://unix.stackexchange.com/questions/292137/tmux-script-to-launch-several-commands)
+
+bash
+
+```
+tmux new-session -d -s my_job 'bash -c "
+  echo \"Starting task...\"
+  sleep 2
+  echo \"Step 2 complete\"
+  sleep 2
+  echo \"All done\"
+"'
+
+```
+
+
+
+* **Session Persistence.** By default, the tmux session closes automatically as soon as the final command finishes.
+* **Keep Session Open.** Add `; exec bash` at the very end of the command string if you want the named terminal to stay alive after your script completes so you can inspect the output later.
+
+### Method 2: Use `send-keys` for Step-by-Step Execution
+
+As noted by users on [Unix & Linux Stack Exchange](https://unix.stackexchange.com/questions/292137/tmux-script-to-launch-several-commands) and [Ask Ubuntu](https://askubuntu.com/questions/1337536/how-do-i-make-a-bash-script-that-opens-tmux-runs-multiple-lines-of-commands-th), another reliable approach is creating an empty detached session first and sending commands to it line by line. [](https://askubuntu.com/questions/1337536/how-do-i-make-a-bash-script-that-opens-tmux-runs-multiple-lines-of-commands-th)
+
+bash
+
+```
+# 1. Create a detached session named "my_job"
+tmux new-session -d -s my_job
+
+# 2. Send commands followed by "C-m" or "Enter" to execute them
+tmux send-keys -t my_job 'cd /path/to/directory' C-m
+tmux send-keys -t my_job 'python3 script_one.py' C-m
+tmux send-keys -t my_job 'python3 script_two.py' C-m
+
+```
+
+
+
+* **Sequential Queueing.** Using `send-keys` types the commands into the terminal buffer just like a human would. Even if the first script takes an hour, the subsequent lines wait in the input buffer and execute sequentially.
+* **Persistent Shell.** Because this starts an interactive shell by default, the session remains open after all commands finish. [](https://askubuntu.com/questions/1337536/how-do-i-make-a-bash-script-that-opens-tmux-runs-multiple-lines-of-commands-th)
+
+### Managing Your Silent Session
+
+Once your commands are running in the background, you can check on or manage the terminal using standard [tmux](https://github.com/tmux/tmux/wiki/Getting-Started) commands: [](https://github.com/tmux/tmux/wiki/Getting-Started)
+
+* **Check active sessions.** Run `tmux ls` to verify that your named session is running.
+* **View live output.** Run `tmux attach -t my_job` to jump into the terminal and watch the progress.
+* **Detach again.** Press `Ctrl+B` followed by `D` to leave the session running silently in the background again.
+* **Stop the session.** Run `tmux kill-session -t my_job` to force-close the terminal and stop any running processes inside it. [](https://www.youtube.com/watch?v=7KEaC9c18fY)
+
+If you'd like help tailoring this to your exact setup, let me know:
+
+* Whether you need the session to **auto-close** or **stay open** when finished
+* If your commands involve **complex quotes** or **environment variables** that might break inside a string
+
+I can write out the exact snippet ready for you to copy and paste.
+
+* [](https://unix.stackexchange.com/questions/292137/tmux-script-to-launch-several-commands)  
+Unix & Linux Stack Exchange  
+tmux script to launch several commands  
+June 26, 2016 — For more generic commands, use \`tmux new-session -d bash\`, then \`tmux send … to send commands to specific panes, Named sessions ca...
+* [](https://askubuntu.com/questions/1337536/how-do-i-make-a-bash-script-that-opens-tmux-runs-multiple-lines-of-commands-th)  
+Ask Ubuntu  
+How do I make a Bash script that opens tmux, runs multiple ...  
+May 11, 2021 — To make the script more resilient, you should add checks to. By default, it does not attach to the session, so you return back to ...
+* [](https://teamdynamix.umich.edu/TDClient/47/LSAPortal/KB/PrintArticle?ID=1688)  
+University of Michigan  
+Using tmux  
+Tmux is an actively developed terminal multiplexer alternative to screen for Linux, WSL, and macOS, allowing multiple terminal ses...
+
+Show all

@@ -12,8 +12,10 @@ touch(object_index_file, serialize([]))
 touch(webpage_index_file, serialize([]))
 touch(category_index_file, serialize([]))
 
+const object_folder = data('object', 'storage')
 const cache_folder = cache('object', 'storage')
 
+mkpath(object_folder)
 mkpath(cache_folder)
 
 export function get_cache_file(id: string) {
