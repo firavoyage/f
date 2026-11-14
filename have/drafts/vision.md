@@ -1,6 +1,6 @@
 vision
 
-you want a place to save the world, and automate it.
+you want somewhere to save the world, and automate it.
 
 you may have a persistent profile of patchright. one is enough. _though you may create some new ones and set which to use for specific tasks._ you might not be able to automate profiles. use cookies instead.
 

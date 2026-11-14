@@ -1,8 +1,10 @@
 db
 
 - data
+  - object: content addressible storage
+    - (hash)
   - webpage
-    - index (index.sqlite or index.yaml): result[]
+    - index (.sqlite, .jsonl, or .yaml): result[]
     - result
       - (id)
         - index.html
