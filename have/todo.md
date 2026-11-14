@@ -2,6 +2,20 @@
 
 # todo
 
+## m
+
+init database
+
+---
+
+setup persistent browser profile
+
+## s
+
+## c
+
+## w
+
 # backlog
 
 ## use cases
@@ -9,7 +23,7 @@
 archive everything
 
 - public internet <!-- clearnet -->
-  - blog indices 
+  - blog indices
     - travellings
     - moe
     - ...
@@ -53,8 +67,6 @@ i would include these ppl in the first archive
 
 ---
 
-
-
 ## archi, deps, integrations
 
 research pdf parsing, convert to structured data, and convert to md
@@ -94,9 +106,6 @@ comments.
 categories.
 
 traditional blog.
-
-
-
 
 ## experiments
 
@@ -141,4 +150,3 @@ we can build an afo on it.
 (ref: eat.)
 
 also, it's more neutral (safer) than using menci/chyk/leohearts as the first starting node. (though, i could pick some foregin chinese to make sure they are safe after citing.)
-

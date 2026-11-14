@@ -1,14 +1,25 @@
 db
 
 - data
+  - browser: browser profiles
+    - default
   - object: content addressible storage
-    - (hash)
+    - storage
+      - (hash)
+    - index? hash -> metadata
   - webpage
     - index (.sqlite, .jsonl, or .yaml): result[]
     - result
       - (id)
         - index.html
         - (static asset)
+  - category
+    - index
+      - category id
+      - name
+      - external id? # platform specific permalink
+      - ...
+    - (category id): id[]
 
 ---
 
@@ -16,14 +27,54 @@ result
 
 - id
 - url
+- ~~creation time # after processing~~
+- ~~fetch time # initial request~~
 - creation time
-- fetch time
 - metadata # in case it's statically and consistently structured
-  - perf?
-    - fetch time
-    - ...
   - is_hidden?
+  - perf?
+    - fetch time # = creation time
+    - finish time # after all processing
+  - content?
+    - ... (e.g. author, mtime/last update, ...)
 
 arrays and maps are identical. you basically just assign one as primary key, if it doesnt collide.
+
+---
+
+all res on results are symlinks to content addressible storage.
+
+the assumption is, binary files are large. text, while redundant in information, are relatively negligible.
+
+you may have the same lookup speed on some compressed text file (e.g. git delta). you dont have to go that far.
+
+---
+
+it's no difference for zhihu or tg.
+
+zhihu is basically normal webpages w some metadata.
+
+for tg, you can make chat a category (e.g. by internal id, or temporary name if not available), and content as content addressible pages
+
+for example, zhihu comments
+
+- webpage/index
+  - id
+  - url
+  - creation time
+  - metadata
+    - content
+      - author id
+      - author name
+      - author avatar/pfp?: object hash
+      - publish time
+      - modification time # last update
+      - article id?
+- webpage/result/(id)
+  - index.html
+  - index.md?
+  - prose.html? # main content
+  - prose.md?
+  - asset/...
 
 
