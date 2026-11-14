@@ -53,4 +53,13 @@ a naive approach:
 
 you may fetch and update pending set at an interval or dynamically (randomly or specifically)
 
+---
+
+view the snapshot of a site
+
+prefix links
+
+---
+
+list the hierarchy of all cached sites
 

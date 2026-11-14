@@ -1389,7 +1389,22 @@ export function style(theme) {
     }
   }
 
-  
+  theme.palette ??= {}
+  theme.palette.white = `oklch(100% 0.00 90.00)`
+  theme.palette.black = `oklch(0% 0.00 0.00)`
+  theme.palette.transparent = `transparent`
+
+  let design_tokens = {}
+
+  function traverse(obj, prefix = '') {
+    for (const [k, v] of entries(obj)) {
+      if (is_value(v)) {
+        design_tokens[extend_prefix(prefix, k)] = v
+      } else {
+        traverse(v, extend_prefix(prefix, k))
+      }
+    }
+  }
 
   function is_value(leaf) {
     if (is(leaf, 'number') || is(leaf, 'string')) {
@@ -1425,18 +1440,6 @@ export function style(theme) {
     }
 
     return false
-  }
-
-  let design_tokens = {}
-
-  function traverse(obj, prefix = '') {
-    for (const [k, v] of entries(obj)) {
-      if (is_value(v)) {
-        design_tokens[extend_prefix(prefix, k)] = v
-      } else {
-        traverse(v, extend_prefix(prefix, k))
-      }
-    }
   }
 
   // strip consecutive duplicate keys, e.g. color-red-red -> color-red
@@ -1561,22 +1564,22 @@ export function style(theme) {
       } else {
         let selector = map(selectors.split(','), (target) => {
           target = target.trim()
-  
+
           let elements = map(target.split(' '), (element) => {
             if (target.startsWith(component)) {
               return `:is(.${component}_${element}, .${element})`
             } else {
               return `.${component}_${element}`
-            } 
+            }
           })
-  
+
           let selector = elements.join(' ')
-          
+
           return selector
         }).join(', ')
 
         apply_utils(selector, utility_classes)
-      } 
+      }
 
       function apply_utils(selector: string, utility_classes) {
         // todo

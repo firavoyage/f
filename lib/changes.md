@@ -115,3 +115,4 @@ it's not really faster to join an array of strings than string add.
 - time: do not floor milisec timestamp
   - clearly such abstraction leaks
   - and you dont have to use perf api
+- web/style: hardcode white black and transparent into palette
