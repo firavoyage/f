@@ -1,14 +1,17 @@
 # plan
 
-# todo
-
-## m
-
-init database
+init db
 
 ---
 
 setup persistent browser profile
+
+
+
+
+# todo
+
+## m
 
 ## s
 

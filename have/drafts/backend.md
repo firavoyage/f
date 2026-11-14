@@ -1,6 +1,20 @@
 backend
 
-- fetch url
-  - return the last cache
-  - or nil # on the fly fetching is out of scope
-- read_webpage id
+- fetch url options?: result
+  - should store html source: false
+    - assets?
+  - should store rendered page
+    - assets?
+  - whether to store some specific asset
+  - make it dynamic?
+- read url options?: result
+  - fetch if non existing
+  - r last cache
+- check url: result[]
+- store cache id: hash
+
+---
+
+you may just store as mhtml for now.
+
+

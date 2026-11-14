@@ -2,11 +2,15 @@ db
 
 - data
   - browser: browser profiles
-    - default
+    - default # you may just have one default profile for now
   - object: content addressible storage
     - storage
       - (hash)
-    - index? hash -> metadata
+    - index?: hash -> metadata
+      - hash
+      - url # e.g. you may skip dl entirely if it's cached before expiration
+      - creation time
+      - expiration time?
   - webpage
     - index (.sqlite, .jsonl, or .yaml): result[]
     - result
@@ -26,6 +30,10 @@ db
         - (category id): content id[]
       - content
         - (content id): category id[]
+- cache
+  - object
+    - storage
+      - (any) # temporary uuid
 
 ---
 
@@ -76,7 +84,7 @@ for example, zhihu comments
 
 - webpage/index
   - id
-  - url
+  - url: public or domain specific protocol
   - creation time
   - metadata
     - content
@@ -86,6 +94,19 @@ for example, zhihu comments
       - publish time
       - modification time # last update
       - article id? # you may make it a category to track updates
+      - comments id
+- webpage/index
+  - id
+  - url: zhihu/article/id/comments # you can absolutely have multiple comments pointing to the same url. it makes sense. it's just for filtering rather than "permalink".
+  - creation time
+  - metadata
+    - content
+      - commenter id
+      - commenter name
+      - commenter avatar/pfp?: object hash
+      - publish time
+      - modification time # last update
+      - comment id?
 - webpage/result/(content id)
   - index.html
   - index.md?
@@ -94,10 +115,25 @@ for example, zhihu comments
   - asset/...
 - category/index?
   - id
-  - name
-  - type? # e.g. platform name, or "photo"
-  - url? # permalink/platform specific external id, e.g. zhihu:article/id
-    - no double slash required (a widely criticized historical design quirk of url)
+  - ~~name~~
+  - ~~type?~~
+  - url: zhihu:article/id
   - metadata?
+    - is internal
+- category/map?
+  - category
+    - category id
+      - content[] # updates, if any
+    - comments id
+      - comment[]
+  - content
+    - content id
+      - category id[]
+        - category id of updates of such zhihu article
+        - category id of your favorites
+        - category id of your read later
+        - ...
+
+you may just store it if you fetch multiple times before it changes a bit. since it's content addressible.
 
 
