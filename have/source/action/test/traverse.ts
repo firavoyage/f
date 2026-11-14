@@ -6,13 +6,24 @@ const browser = await setup_browser({
 
 await traverse(
   fetch,
-  // 'https://en.wikipedia.org/',
-  // 'https://wikipedia.org/',
   'https://cs61a.org/fa26/',
   {
-    max_depth: 1,
-    max_page_count: 10,
+    max_depth: 3,
+    // interval: 0
   },
 )
 
-browser.close()
+// browser.close()
+
+// await traverse(
+//   fetch,
+//   // 'https://en.wikipedia.org/',
+//   // 'https://wikipedia.org/',
+//   'https://cs61a.org/fa26/',
+//   {
+//     max_depth: 1,
+//     max_page_count: 10,
+//   },
+// )
+
+// browser.close()
