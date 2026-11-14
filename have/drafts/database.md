@@ -1,6 +1,8 @@
 db
 
 - data
+  - log
+    - log.txt
   - browser: browser profiles
     - default # you may just have one default profile for now
   - object: content addressible storage

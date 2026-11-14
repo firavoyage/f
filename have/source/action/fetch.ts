@@ -5,10 +5,12 @@ import {
   browser_profile,
   webpage_index_file,
   get_result_folder,
+  log_file
 } from 'action/index'
 import { random_id } from 'lib/random'
 import { now } from 'lib/time'
-import { extname, join, read, write } from 'lib/file'
+import { extname, join, read, write, append } from 'lib/file'
+import { format_log } from 'lib/log'
 import { createHash as create_hash } from 'crypto'
 import * as cheerio from 'cheerio'
 import postcss from 'postcss'
@@ -86,7 +88,11 @@ export async function fetch(url: string, { is_static = true } = {}) {
   )
 
   const creation_time = now().timestamp
-  await page.goto(url, { waitUntil: 'networkidle' })
+
+  let response = await page.goto(url, { waitUntil: 'commit' })
+  let source_html = response?.text()
+
+  await page.waitForLoadState('networkidle')
 
   // // Rewrite asset URLs inside the live DOM to point to local files
   // await page.evaluate((entries) => {
@@ -117,7 +123,7 @@ export async function fetch(url: string, { is_static = true } = {}) {
 
   write(join(dir, 'index.html'), html)
 
-  log(`Saved ${url} to ${dir}/index.html w ${assets.size} assets`)
+  append(log_file, format_log(`Saved ${url} to ${dir}/index.html w ${assets.size} assets`))
 
   let webpage_index = deserialize(read(webpage_index_file))
   let record = {
@@ -132,7 +138,7 @@ export async function fetch(url: string, { is_static = true } = {}) {
   webpage_index.push(record)
 
   write(webpage_index_file, serialize(webpage_index))
-  log(`Updated index`)
+  append(log_file, format_log(`Added ${url} to index`))
 
   await browser.close()
 }

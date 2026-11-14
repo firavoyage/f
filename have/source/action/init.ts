@@ -13,6 +13,9 @@ touch(object_index_file, serialize([]))
 touch(webpage_index_file, serialize([]))
 touch(category_index_file, serialize([]))
 
+export const log_file = data('log', 'log.txt')
+touch(log_file)
+
 const result_folder = data('webpage', 'result')
 const object_folder = data('object', 'storage')
 const cache_folder = cache('object', 'storage')

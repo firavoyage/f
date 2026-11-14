@@ -2215,4 +2215,612 @@ export function santinize(html) {
 
 ## use snake case. write santinize(html) in js to remove all dynamic stuff like script whatever in an html string using dompurify
 
+```
+import DOMPurify from "dompurify";
+
+export function santinize(html) {
+  return DOMPurify.sanitize(html, {
+    ALLOWED_TAGS: [
+      "a", "abbr", "b", "blockquote", "br",
+      "caption", "code", "div", "em", "h1",
+      "h2", "h3", "h4", "h5", "h6",
+      "hr", "i", "li", "ol", "p", "pre",
+      "span", "strong", "sub", "sup",
+      "table", "tbody", "td", "th",
+      "thead", "tr", "u", "ul"
+    ],
+    ALLOWED_ATTR: [
+      "href", "title", "target", "rel",
+      "class", "id", "colspan", "rowspan"
+    ],
+    FORBID_TAGS: [
+      "script", "style", "iframe", "object",
+      "embed", "form", "input", "button",
+      "textarea", "select", "option",
+      "svg", "math", "template", "noscript",
+      "link", "meta", "base"
+    ],
+    FORBID_ATTR: [
+      "style", "src", "srcdoc", "onerror",
+      "onload", "onclick"
+    ],
+    ALLOW_DATA_ATTR: false,
+    ALLOW_ARIA_ATTR: false,
+    SANITIZE_DOM: true,
+    SANITIZE_NAMED_PROPS: true
+  });
+}
+```
+
+### **What this removes**
+
+- JavaScript: `<script>` tags and inline event handlers.
+- Embedded content: iframes, objects, embeds.
+- Dynamic forms and interactive elements.
+- Inline CSS and stylesheets.
+- SVG and MathML.
+- Data attributes and ARIA attributes.
+- Dangerous URL schemes such as `javascript:`.
+
+**Security notes:**
+
+- This uses an allowlist approach: only explicitly permitted HTML elements and attributes survive.
+- DOMPurify handles dangerous URL schemes automatically.
+- `target="_blank"` links should ideally receive `rel="noopener noreferrer"`.
+- Don't use `DOMPurify.removed` as a security decision mechanism.
+
+If you need to preserve images, add `"img"` to `ALLOWED_TAGS` and `"alt", "width", "height"` to `ALLOWED_ATTR`, with an appropriate URL policy for `src`.
+
+## just make it static, like mhtml. trust it. be permissive on styling.
+
+Use DOMPurify with a permissive HTML allowlist: preserve CSS, classes, inline styles, images, tables, and layout, while removing executable JavaScript and dynamic/embedded content.
+
+```
+import DOMPurify from "dompurify";
+
+export function santinize(html) {
+  return DOMPurify.sanitize(html, {
+    FORBID_TAGS: [
+      "script",
+      "iframe",
+      "frame",
+      "frameset",
+      "object",
+      "embed",
+      "applet",
+      "portal"
+    ],
+
+    FORBID_ATTR: [
+      "srcdoc"
+    ],
+
+    ADD_TAGS: [
+      "style"
+    ],
+
+    ADD_ATTR: [
+      "style",
+      "class",
+      "id",
+      "src",
+      "srcset",
+      "href",
+      "target",
+      "rel",
+      "width",
+      "height",
+      "loading",
+      "alt"
+    ],
+
+    ALLOW_DATA_ATTR: true,
+    ALLOW_ARIA_ATTR: true,
+
+    WHOLE_DOCUMENT: true,
+    SANITIZE_DOM: true,
+    SANITIZE_NAMED_PROPS: true,
+
+    // Keep static styling and content.
+    FORCE_BODY: false
+  });
+}
+```
+
+**Preserved:** CSS, inline styles, images, links, tables, fonts, layout, data attributes, and ordinary HTML.
+
+**Removed:** scripts, event-handler attributes (`onclick`, `onload`, etc.), iframes, embedded executable content, and dangerous URL schemes.
+
+One caveat: DOMPurify's default URI protection remains enabled. Don't enable `ALLOW_UNKNOWN_PROTOCOLS` or `ADD_URI_SAFE_ATTR` just to make it more permissive.
+
+# how to use dompurify
+
+To use **DOMPurify**, install the package (or load it via a `<script>` tag) and pass untrusted HTML strings to the **`DOMPurify.sanitize()`** method before inserting them into the DOM. It strips dangerous tags like `<script>`, malicious attributes like `onerror`, and harmful URIs while preserving safe formatting. [](https://github.com/cure53/dompurify)
+
+### 1\. Installation and Setup
+
+You can add [DOMPurify on GitHub](https://github.com/cure53/dompurify) to your project using a package manager or a CDN. [](https://dompurify.com/)
+
+* **Using npm or Yarn.** Install the [DOMPurify npm package](https://www.npmjs.com/package/dompurify) in your project directory.  
+bash  
+```  
+npm install dompurify  
+```  
+
+* **Using a `<script>` tag.** Include the minified file from a CDN like cdnjs in your HTML file. [](https://www.npmjs.com/package/dompurify)  
+html  
+```  
+<script src="https://cloudflare.com"></script>  
+```  
+
+
+### 2\. Basic Browser Usage
+
+Once imported or loaded globally, pass your raw HTML string to `DOMPurify.sanitize()` before rendering it. [](https://www.youtube.com/watch?v=YjFTidoXOOk)
+
+javascript
+
+```
+import DOMPurify from 'dompurify';
+
+const dirtyHTML = '<p>Hello <b>world</b>!</p><img src="x" onerror="alert(\'XSS\')">';
+const cleanHTML = DOMPurify.sanitize(dirtyHTML);
+
+// Result: '<p>Hello <b>world</b>!</p><img src="x">'
+document.getElementById('content').innerHTML = cleanHTML;
+
+```
+
+
+
+### 3\. Node.js (Server-Side) Usage
+
+Because DOMPurify relies on a browser DOM to parse markup, running it in Node.js requires a simulated DOM environment like `jsdom`. [](https://github.com/cure53/dompurify)
+
+* **Install dependencies.** Install both `dompurify` and `jsdom` via npm.  
+bash  
+```  
+npm install dompurify jsdom  
+```  
+
+* **Initialize with JSDOM.** Pass a `JSDOM` window object into DOMPurify before calling `sanitize()`.  
+javascript  
+```  
+import { JSDOM } from 'jsdom';  
+import createDOMPurify from 'dompurify';  
+const window = new JSDOM('').window;  
+const DOMPurify = createDOMPurify(window);  
+const cleanHTML = DOMPurify.sanitize('<script>evil()</script><b>Safe text</b>');  
+```  
+
+* **Use Isomorphic DOMPurify.** If your app renders on both the server and client (such as Next.js), install `isomorphic-dompurify` to handle environment switching automatically. [](https://github.com/cure53/dompurify)
+
+### 4\. Customizing Rules
+
+You can pass a configuration object as the second argument to `DOMPurify.sanitize()` to tighten or adjust what is permitted. [](https://github.com/cure53/DOMPurify/blob/main/demos/README.md)
+
+* **Restrict allowed tags.** Use `ALLOWED_TAGS` to permit only specific HTML elements.  
+javascript  
+```  
+const clean = DOMPurify.sanitize(dirtyHTML, {  
+  ALLOWED_TAGS: ['b', 'i', 'em', 'strong', 'a']  
+});  
+```  
+
+* **Restrict allowed attributes.** Use `ALLOWED_ATTR` to control which attributes stay on permitted tags.  
+javascript  
+```  
+const clean = DOMPurify.sanitize(dirtyHTML, {  
+  ALLOWED_TAGS: ['a'],  
+  ALLOWED_ATTR: ['href', 'target']  
+});  
+```  
+
+* **Forbid specific tags or attributes.** Use `FORBID_TAGS` or `FORBID_ATTR` to block elements that are otherwise allowed by default.  
+javascript  
+```  
+const clean = DOMPurify.sanitize(dirtyHTML, {  
+  FORBID_TAGS: ['style', 'img'],  
+  FORBID_ATTR: ['style']  
+});  
+```  
+
+* **Use HTML profiles.** Set `USE_PROFILES` to limit parsing strictly to standard HTML while blocking SVG and MathML. [](https://github.com/cure53/dompurify)  
+javascript  
+```  
+const clean = DOMPurify.sanitize(dirtyHTML, {  
+  USE_PROFILES: { html: true }  
+});  
+```  
+
+
+### Best Practices
+
+* **Sanitize right before rendering.** Clean the HTML immediately before injecting it into the DOM (such as right before `innerHTML` or React's `dangerouslySetInnerHTML`) rather than relying solely on sanitized data stored in a database.
+* **Test your payloads.** You can experiment with different inputs and configuration presets using the official [DOMPurify Live Demo](https://cure53.de/purify).
+
+If you'd like, let me know:
+
+* Which **framework or environment** you are using (React, Vue, Angular, vanilla JS, or Node.js)
+* What kind of **content** you need to allow (plain formatting, links, images, or embeds)
+
+I can share a tailored setup and configuration snippet for your project.
+
+* [](https://github.com/cure53/dompurify)  
+GitHub  
+GitHub - cure53/DOMPurify: DOMPurify - a DOM-only, super-fast, uber-tolerant XSS sanitizer for HTML, MathML and SVG. DOMPurify works with a secure default, but offers a lot of configurability and hooks. Demo: · GitHub  
+The resulting HTML can be written into a DOM element using innerHTML or the DOM using document.write() .
+* [](https://www.youtube.com/watch?v=YjFTidoXOOk)  
+YouTube·Coding in Public  
+Prevent Cross Site Scripting with DOMPurify  
+Aug 24, 2021 — DOMPurify sanitizes HTML strings by stripping out malicious code, protecting your page from attacks. sanitizes it using \`DOMPurify...  
+9:34
+* [](https://www.npmjs.com/package/dompurify)  
+NPM  
+DOMPurify - NPM  
+Oct 12, 2026 — DOMPurify runs as JavaScript and works in all modern browsers (Safari (10+), Opera (15+), Edge, Firefox and Chrome
+
+Show all
+
+# how to use dompurify on nodejs
+
+To use **DOMPurify** on Node.js, you must pair it with **`jsdom`** because Node.js does not have a built-in browser Document Object Model (DOM). [](https://www.npmjs.com/package/dompurify)
+
+### 1\. Install the Packages
+
+Install both `dompurify` and `jsdom` via npm: [](https://www.npmjs.com/package/dompurify)
+
+bash
+
+```
+npm install dompurify jsdom
+
+```
+
+
+
+_(Note: If you use TypeScript, also run `npm install --save-dev @types/dompurify @types/jsdom`.)_ [](https://medium.com/@vkrntteotia/safe-html-sanitization-dompurify-2c1cbdd8714f)
+
+---
+
+### 2\. Basic Usage
+
+#### Using ES Modules (`import`)
+
+javascript
+
+```
+import { JSDOM } from 'jsdom';
+import DOMPurify from 'dompurify';
+
+const window = new JSDOM('').window;
+const purify = DOMPurify(window);
+
+const dirtyHTML = '<p>Hello <script>alert("XSS")</script><b>World</b></p>';
+const cleanHTML = purify.sanitize(dirtyHTML);
+
+console.log(cleanHTML);
+// Output: <p>Hello <b>World</b></p>
+
+```
+
+
+
+[](https://www.npmjs.com/package/dompurify)
+
+#### Using CommonJS (`require`)
+
+javascript
+
+```
+const createDOMPurify = require('dompurify');
+const { JSDOM } = require('jsdom');
+
+const window = new JSDOM('').window;
+const DOMPurify = createDOMPurify(window);
+
+const dirtyHTML = '<img src="x" onerror="alert(1)"><b>Safe text</b>';
+const cleanHTML = DOMPurify.sanitize(dirtyHTML);
+
+console.log(cleanHTML);
+// Output: <img src="x"><b>Safe text</b>
+
+```
+
+
+
+[](https://www.npmjs.com/package/dompurify)
+
+---
+
+### 3\. Alternative: `isomorphic-dompurify`
+
+If your codebase shares code between the server (Node.js) and the client (browser), you can use **isomorphic-dompurify** to avoid manually setting up `JSDOM`. [](https://github.com/cure53/DOMPurify/blob/main/README.md?plain=1)
+
+bash
+
+```
+npm install isomorphic-dompurify
+
+```
+
+
+
+[](https://www.npmjs.com/package/dompurify)
+
+javascript
+
+```
+import DOMPurify from 'isomorphic-dompurify';
+
+const clean = DOMPurify.sanitize('<script>alert("xss")</script><b>Hello</b>');
+
+```
+
+
+
+[](https://www.npmjs.com/package/dompurify)
+
+---
+
+### Important Best Practices
+
+* **Keep `jsdom` updated.** Always use the latest version of `jsdom`. Older versions have known parsing vulnerabilities that can allow Cross-Site Scripting (XSS) bypasses even when DOMPurify is configured properly. [](https://www.npmjs.com/package/dompurify)
+* **Avoid `happy-dom` for security.** The [DOMPurify documentation](https://www.npmjs.com/package/dompurify) explicitly warns against pairing DOMPurify with `happy-dom`, as it is not considered safe against XSS attacks. [](https://www.npmjs.com/package/dompurify)
+* **Reuse the `JSDOM` instance.** Creating a `new JSDOM('')` on every single HTTP request is slow and memory-intensive. Initialize `window` and `purify` once at the module level and reuse `purify.sanitize()` across requests.
+* **Watch out for async hooks.** As noted in discussions on [Stack Overflow](https://stackoverflow.com/questions/73750971/how-to-use-dompurify-hooks-with-async-await-functions), `DOMPurify.sanitize()` runs synchronously, so any `async/await` logic inside hooks like `afterSanitizeElements` will not finish before the sanitized string is returned. [](https://stackoverflow.com/questions/73750971/how-to-use-dompurify-hooks-with-async-await-functions)
+* **Restrict profiles if needed.** By default, DOMPurify allows HTML, SVG, and MathML. If you only want standard HTML tags, pass `{ USE_PROFILES: { html: true } }` as the second argument to `.sanitize()`. [](https://www.npmjs.com/package/dompurify)
+
+If you're integrating this into a specific framework (like **Express**, **Next.js**, or **NestJS**) or need help configuring **custom allowed tags and attributes**, let me know and I can share a tailored setup!
+
+* [](https://www.npmjs.com/package/dompurify)  
+NPM  
+DOMPurify  
+October 12, 2026 — Note that by default, we permit HTML, SVG and MathML. If you only need HTML, which might be a very common use-case, you can easily...
+* [](https://stackoverflow.com/questions/73750971/how-to-use-dompurify-hooks-with-async-await-functions)  
+Stack Overflow  
+How to use DOMPurify hooks with async/await functions  
+September 16, 2022 — The \`afterSanitizeElements\` hook, when containing async/await operations … runs asynchronously, causing \`purify.sanitize\` to final...
+* [](https://github.com/cure53/DOMPurify/blob/main/README.md?plain=1)  
+GitHub  
+DOMPurify/README.md at main  
+This really depends on \_jsdom\_ or whatever DOM you utilize server-side. If you can live with that, this is how you get it to work:
+
+Show all
+
+# how to config dompurify
+
+To configure **DOMPurify**, pass a configuration object as the second argument to `DOMPurify.sanitize(dirty, config)` or set global rules using `DOMPurify.setConfig(config)`.
+
+By default, the [DOMPurify library](https://github.com/cure53/dompurify) starts with secure settings that allow safe HTML, SVG, and MathML while stripping dangerous scripts and event handlers. You can customize this behavior depending on your application's needs.
+
+### 1\. Ways to Apply Configuration
+
+You can apply settings per call or globally across your entire app:
+
+* **Per-Call Configuration.** Pass a JavaScript object directly into the sanitize function. This only applies to that specific execution.  
+javascript  
+```  
+const clean = DOMPurify.sanitize(dirtyHTML, {  
+  ALLOWED_TAGS: ['b', 'i', 'em', 'strong', 'a'],  
+  ALLOWED_ATTR: ['href']  
+});  
+```  
+
+* **Persistent Global Configuration.** Call `DOMPurify.setConfig()` to apply rules to every subsequent `sanitize()` call. Note that setting a global config causes DOMPurify to ignore any per-call config objects until you call `DOMPurify.clearConfig()`. [](https://fossies.org/linux/DOMPurify/demos/README.md)  
+javascript  
+```  
+DOMPurify.setConfig({ USE_PROFILES: { html: true } });  
+const clean = DOMPurify.sanitize(dirtyHTML);  
+// Reset back to default settings later if needed  
+DOMPurify.clearConfig();  
+```  
+
+
+### 2\. Common Configuration Options
+
+You can mix and match directives inside your configuration object to tighten or expand what gets through:
+
+| Option                     | Type    | Description & Example                                                                                                                                  |
+| -------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **USE\_PROFILES**          | Object  | Enforces preset allow-lists for specific markup languages. Example: { USE\_PROFILES: { html: true } } blocks all SVG and MathML.                       |
+| **ALLOWED\_TAGS**          | Array   | Replaces the default allow-list with _only_ the specified tags. Example: \['p', 'b', 'a'\].                                                            |
+| **ALLOWED\_ATTR**          | Array   | Replaces the default attribute list with _only_ the specified attributes. Example: \['href', 'target'\].                                               |
+| **ADD\_TAGS**              | Array   | Adds extra tags to the existing default allow-list without overwriting it. Example: \['iframe'\] _(Use with caution)_.                                 |
+| **ADD\_ATTR**              | Array   | Adds extra attributes to the existing default allow-list. Example: \['target'\].                                                                       |
+| **FORBID\_TAGS**           | Array   | Blocks specific tags even if they are normally allowed. Example: \['style', 'table'\].                                                                 |
+| **FORBID\_ATTR**           | Array   | Blocks specific attributes across all tags. Example: \['style', 'onerror'\].                                                                           |
+| **KEEP\_CONTENT**          | Boolean | Determines whether to keep inner text when a forbidden tag is stripped (defaults to true). Set to false to delete the tag and its contents completely. |
+| **SANITIZE\_NAMED\_PROPS** | Boolean | Protects against DOM Clobbering by prefixing id and name attributes with user-content- (defaults to false).                                            |
+
+### 3\. Practical Configuration Recipes
+
+* **Plain Text Only.** To strip all HTML tags and return pure text, pass an empty array for allowed tags.  
+javascript  
+```  
+const plainText = DOMPurify.sanitize(dirtyHTML, { ALLOWED_TAGS: [] });  
+```  
+
+* **HTML Only (No SVG or MathML).** Use profiles if you accept standard rich text (like from a WYSIWYG editor) and want to block complex vector or math exploits. Note that `USE_PROFILES` overrides `ALLOWED_TAGS` and `ALLOWED_ATTR`.  
+javascript  
+```  
+const htmlOnly = DOMPurify.sanitize(dirtyHTML, {  
+  USE_PROFILES: { html: true }  
+});  
+```  
+
+* **Allow Custom Web Components.** If your app uses custom elements, use the `CUSTOM_ELEMENT_HANDLING` object to allow tags matching a specific prefix or pattern. [](https://github.com/cure53/dompurify)  
+javascript  
+```  
+const clean = DOMPurify.sanitize(dirtyHTML, {  
+  CUSTOM_ELEMENT_HANDLING: {  
+    tagNameCheck: /^my-app-/, // Allows <my-app-card>, etc.  
+    attributeNameCheck: /.*/,  
+    allowCustomizedBuiltInElements: false  
+  }  
+});  
+```  
+
+
+### 4\. Using Hooks for Advanced Logic
+
+When static configuration lists aren't enough—such as forcing external links to open in a new tab—you can register lifecycle hooks via `DOMPurify.addHook()`. [](https://fossies.org/linux/DOMPurify/demos/README.md)
+
+javascript
+
+```
+// Automatically add rel="noopener noreferrer" to links with target="_blank"
+DOMPurify.addHook('afterSanitizeAttributes', function (node) {
+  if ('target' in node && node.getAttribute('target') === '_blank') {
+    node.setAttribute('rel', 'noopener noreferrer');
+  }
+});
+
+```
+
+
+
+_(You can review the full list of hooks and options in the DOMPurify Demos Documentation.)_
+
+If you have a specific setup in mind, let me know:
+
+* Your **framework or environment** (React, Vue, Node.js/JSDOM, vanilla JS)
+* The **type of input** you are sanitizing (Markdown output, rich-text editor HTML, SVGs)
+
+I can put together a tailored, copy-pasteable configuration snippet for your use case.
+
+* [](https://github.com/cure53/dompurify)  
+GitHub  
+DOMPurify - a DOM-only, super-fast, uber-tolerant ...  
+HTML and nothing else, no SVG, MathML or the like. allow all safe HTML elements but neither SVG nor MathML ・ and SVG Filters, no H...
+* [](https://stackoverflow.com/questions/78456941/most-strict-dompurify-configuration)  
+Stack Overflow  
+Most strict DOMPurify configuration? - Stack Overflow  
+May 9, 2024 — default DOMPurify … tags like "h3" are allowed. I was wondering what the most strict DOMPurify configuration is (to only allow tex...
+* [](https://sajadtorkamani.com/dompurify/)  
+Sajad Torkamani  
+Sanitize HTML on the client  
+October 31, 2025 — Configure allowed tags and attributes for each usage sanitize(dirty, {SANITIZE\_DOM: false}); // enforce strict DOM Clobbering prot...
+
+Show all
+
+# how to config dompurify to blacklist only
+
+**DOMPurify does not support a pure blacklist-only mode out of the box**. It is strictly built on a secure allowlist (whitelist) architecture, meaning it strips any tag or attribute not explicitly permitted. [](https://github.com/cure53/DOMPurify/wiki/Default-TAGs-ATTRIBUTEs-allow-list-&-blocklist)
+
+However, you can configure DOMPurify to act like a blocklist for custom or unknown elements while blocking specific items. [](https://github.com/cure53/DOMPurify/wiki/Default-TAGs-ATTRIBUTEs-allow-list-&-blocklist)
+
+### How to Approximate a Blacklist
+
+To allow almost everything except specific forbidden items, combine custom element wildcarding with explicit blocklists: [](https://github.com/cure53/DOMPurify/wiki/Default-TAGs-ATTRIBUTEs-allow-list-&-blocklist)
+
+javascript
+
+```
+const clean = DOMPurify.sanitize(dirtyHTML, {
+  // Allow unknown/custom tags (like <my-component>)
+  CUSTOM_ELEMENT_HANDLING: {
+    tagNameCheck: /.*/,
+    attributeNameCheck: /.*/,
+    allowCustomizedBuiltInElements: true
+  },
+  // Explicitly block specific tags and attributes
+  FORBID_TAGS: ['script', 'iframe', 'object', 'embed', 'style'],
+  FORBID_ATTR: ['onerror', 'onload', 'onclick', 'style']
+});
+
+```
+
+
+
+### Key Configuration Options
+
+* **Explicit Blocklists.** Use `FORBID_TAGS` and `FORBID_ATTR` to strip specific elements and attributes. Blocklists always override allowlists. [](https://github.com/cure53/DOMPurify/wiki/Default-TAGs-ATTRIBUTEs-allow-list-&-blocklist)
+* **Custom Elements.** By default, DOMPurify strips non-standard tags. Setting `CUSTOM_ELEMENT_HANDLING` with a broad regex (`/.*/`) tells it to allow custom tags unless they are in `FORBID_TAGS`.
+* **Built-in Protections.** Even with relaxed settings, DOMPurify still enforces core security rules, such as blocking `javascript:` URIs unless explicitly bypassed via `ALLOWED_URI_REGEXP`.
+
+### Security Warning
+
+* **Avoid true blacklisting for untrusted input.** Allowing arbitrary tags and attributes makes it nearly impossible to block every Cross-Site Scripting (XSS) vector, as attackers can use obscure HTML5 events, SVG tricks, or MathML payloads.
+* **Use `ADD_TAGS` instead.** If you only need a few extra tags beyond the safe defaults, pass `ADD_TAGS: ['custom-tag']` and `ADD_ATTR: ['custom-attr']` rather than opening up the entire parser. [](https://dompurify.com/how-does-dompurify-ensure-that-sanitized-html-is-safe-for-injection-into-the-dom/)
+
+If you let me know **what specific tags or custom markup** you are trying to preserve, I can write a safer, targeted DOMPurify configuration for your use case.
+
+* [](https://github.com/cure53/DOMPurify/wiki/Default-TAGs-ATTRIBUTEs-allow-list-&-blocklist)  
+GitHub  
+Default TAGs ATTRIBUTEs allow list & blocklist  
+May 15, 2026 — Tags and attributes can be explicitly forbidden via the FORBID\_TAGS and FORBID\_ATTR config options. These blocklists are empty by ...
+* [](https://dompurify.com/how-does-dompurify-ensure-that-sanitized-html-is-safe-for-injection-into-the-dom/)  
+dompurify.com  
+How does DOMPurify ensure that sanitized HTML is safe for ...  
+May 6, 2025 — DOMPurify traverses the DOM tree and applies a series of filtering rules. It removes unsafe elements such as
+* [](https://www.youtube.com/watch?v=3mDT5wPwAa0)  
+YouTube·SecureTechIn  
+DOMPurify v3.4.15 Security Guide Explained for Web ...  
+Sep 12, 2026 — DOMPurify is a JavaScript sanitizer that focuses on the browser DOM and supports HTML, MathML, and SVG. It starts with secure defa...  
+4:17
+
+# write sanitize(html) using cheerio esm, only blacklist 'script', 'iframe', 'object', 'embed' and on handlers
+
+Using Cheerio's ESM API, you can parse the HTML, remove the four blacklisted elements, and strip all attributes whose names start with `on` (case-insensitive).
+
+```
+
+import { load } from 'cheerio';
+
+export function sanitize(html) {
+  const $ = load(html);
+
+  // Remove blacklisted elements
+  $('script, iframe, object, embed').remove();
+
+  // Remove inline event handlers
+  $('*').each((_, element) => {
+    for (const attr of Object.keys(element.attribs ?? {})) {
+      if (/^on/i.test(attr)) {
+        $(element).removeAttr(attr);
+      }
+    }
+  });
+
+  return $.root().html() ?? '';
+}
+
+```
+
+**Usage:**
+
+```
+const dirty = `
+  <div onclick="alert(1)">
+    Hello
+    <script>alert(1)</script>
+    <iframe src="evil"></iframe>
+    <img src="photo.jpg" onerror="alert(1)">
+  </div>
+`;
+
+console.log(sanitize(dirty));
+```
+
+Output:
+
+```
+<div>
+    Hello
+
+
+
+    <img src="photo.jpg">
+  </div>
+```
+
+**Scope:**
+
+- Removes `script`, `iframe`, `object`, `embed`.
+- Removes `onclick`, `onerror`, `onload`, etc.
+- Preserves all other elements and attributes, including `style`, `href`, and `src`.
+
+**Security note:** This is intentionally a minimal blacklist sanitizer, not a complete XSS sanitizer. For untrusted HTML, attributes such as `href="javascript:..."` can still execute JavaScript.
+
 
