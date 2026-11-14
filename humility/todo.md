@@ -36,7 +36,11 @@ implement fetch tool.
 
 use cache if available.
 
-connect to have via cli, through json (e.g. action, payload). stdin maybe.
+connect to have via cli, through json (e.g. action, payload). stdin maybe, or flag.
+
+would be easy to escape and dump some string.
+
+alternatively, you can leverage js ecosystem (await import).
 
 ---
 
