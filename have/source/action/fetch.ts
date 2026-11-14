@@ -10,6 +10,13 @@ import { random_id } from 'lib/random'
 import { now } from 'lib/time'
 import { extname, join, read, write } from 'lib/file'
 import { createHash as create_hash } from 'crypto'
+import * as cheerio from 'cheerio'
+import postcss from 'postcss'
+import {
+  parseSrcset as parse_srcset,
+  stringifySrcset as stringify_srcset,
+} from 'srcset'
+import DOMPurify from 'dompurify'
 
 const should_hide_window = true
 const display_number = ':99'
@@ -24,7 +31,7 @@ const viewport = {
   // height: 900,
 }
 
-export async function fetch(url: string, options = {}) {
+export async function fetch(url: string, { is_static = true } = {}) {
   const id = random_id()
   const dir = get_result_folder(id)
 
@@ -36,7 +43,8 @@ export async function fetch(url: string, options = {}) {
   const browser = await chromium.launchPersistentContext(browser_profile, {
     channel: 'chrome',
     headless: false,
-    viewport: nil,
+    viewport,
+    // viewport: nil,
     colorScheme,
   })
 
@@ -98,8 +106,17 @@ export async function fetch(url: string, options = {}) {
   //   })
   // }, entries(assets))
 
+  log(assets)
+
   // Save the final rendered HTML
-  const html = await inline_assets(await page.content(), url, assets)
+  let html = await page.content()
+
+  html = inline_assets(html, url, assets)
+
+  if (is_static) {
+    html = santinize(html)
+  }
+
   write(join(dir, 'index.html'), html)
 
   log(`Saved ${url} to ${dir}/index.html w ${assets.size} assets`)
@@ -129,127 +146,258 @@ function get_fallback_ext(type) {
   return map[type] || '.bin'
 }
 
+export function inline_assets(html, url, assets) {
+  const asset_entries =
+    assets instanceof Map ? [...assets.entries()] : Object.entries(assets)
 
-import * as cheerio from 'cheerio';
-import postcss from 'postcss';
-import { parse as parse_srcset, stringify as stringify_srcset } from 'srcset';
+  const asset_map = new Map(
+    asset_entries.map(([asset_url, replacement]) => [
+      new URL(asset_url).href,
+      replacement,
+    ]),
+  )
 
-const url_attributes = [
-  'src',
-  'href',
-  'poster',
-  'action',
-  'formaction',
-  'data',
-  'cite',
-  'background',
-  'xlink:href',
-];
+  const base_url = new URL(url)
 
-function inline_assets(html, url, assets) {
-  const asset_map = assets instanceof Map
-    ? assets
-    : new Map(Object.entries(assets));
-
-  const base_url = new URL(url);
-
-  function replace_url(value) {
+  function resolve_url(value) {
     if (!value || value.startsWith('#')) {
-      return value;
+      return null
     }
-
-    let absolute_url;
 
     try {
-      absolute_url = new URL(value, base_url).href;
+      return new URL(value.trim(), base_url).href
     } catch {
-      return value;
+      return null
+    }
+  }
+
+  function replace_url(value) {
+    const absolute_url = resolve_url(value)
+
+    if (!absolute_url) {
+      return {
+        value,
+        replaced: false,
+      }
     }
 
-    return asset_map.get(absolute_url) ?? value;
+    if (!asset_map.has(absolute_url)) {
+      return {
+        value,
+        replaced: false,
+      }
+    }
+
+    return {
+      value: asset_map.get(absolute_url),
+      replaced: true,
+    }
   }
 
   function replace_srcset(value) {
     try {
-      const candidates = parse_srcset(value);
+      const candidates = parse_srcset(value)
 
-      return stringify_srcset(
-        candidates.map(candidate => ({
-          ...candidate,
-          url: replace_url(candidate.url),
-        })),
-      );
+      if (!candidates.length) {
+        return {
+          value,
+          replaced: false,
+          complete: false,
+        }
+      }
+
+      const replacements = candidates.map((candidate) => ({
+        ...candidate,
+        ...replace_url(candidate.url),
+      }))
+
+      const complete = replacements.every((candidate) => candidate.replaced)
+
+      return {
+        value: complete
+          ? stringifySrcset(
+              replacements.map(({ replaced, ...candidate }) => candidate),
+            )
+          : value,
+        replaced: replacements.some((candidate) => candidate.replaced),
+        complete,
+      }
     } catch {
-      return value;
+      return {
+        value,
+        replaced: false,
+        complete: false,
+      }
     }
-  }
-
-  function replace_css(css) {
-    const root = postcss.parse(css);
-
-    root.walkDecls(decl => {
-      decl.value = replace_css_urls(decl.value);
-    });
-
-    root.walkAtRules('import', rule => {
-      rule.params = replace_css_urls(rule.params);
-    });
-
-    return root.toString();
   }
 
   function replace_css_urls(value) {
     return value.replace(
       /url\(\s*(?:(["'])(.*?)\1|([^)]*?))\s*\)/gi,
       (match, quote, quoted_url, unquoted_url) => {
-        const original_url = quoted_url ?? unquoted_url.trim();
-        const replacement = replace_url(original_url);
+        const original_url = quoted_url ?? unquoted_url.trim()
+        const replacement = replace_url(original_url)
 
-        if (replacement === original_url) {
-          return match;
+        if (!replacement.replaced) {
+          return match
         }
 
-        const output_quote = quote || '"';
+        const output_quote = quote || '"'
 
-        return `url(${output_quote}${replacement}${output_quote})`;
+        return `url(${output_quote}${replacement.value}${output_quote})`
       },
-    );
+    )
+  }
+
+  function replace_css(css) {
+    const root = postcss.parse(css)
+
+    root.walkDecls((decl) => {
+      decl.value = replace_css_urls(decl.value)
+    })
+
+    root.walkAtRules('import', (rule) => {
+      rule.params = replace_css_urls(rule.params)
+
+      const match = rule.params.match(/^(['"])(.*?)\1$/)
+
+      if (match) {
+        const replacement = replace_url(match[2])
+
+        if (replacement.replaced) {
+          rule.params = `${match[1]}${replacement.value}${match[1]}`
+        }
+      }
+    })
+
+    return root.toString()
   }
 
   const $ = cheerio.load(html, {
     decodeEntities: false,
-  });
+  })
 
   $('*').each((_, element) => {
-    const node = $(element);
+    const node = $(element)
 
-    for (const attribute of url_attributes) {
-      const value = node.attr(attribute);
+    // Handle image sources separately.
+    if (element.tagName === 'img') {
+      const src = node.attr('src')
 
-      if (value !== undefined) {
-        node.attr(attribute, replace_url(value));
+      if (src !== undefined) {
+        const replacement = replace_url(src)
+
+        if (replacement.replaced) {
+          node.attr('src', replacement.value)
+        }
+      }
+
+      const srcset = node.attr('srcset')
+
+      if (srcset !== undefined) {
+        const result = replace_srcset(srcset)
+
+        if (result.complete) {
+          node.attr('srcset', result.value)
+        } else {
+          // Prevent browser selection of unavailable external candidates.
+          node.removeAttr('srcset')
+          node.removeAttr('sizes')
+        }
+      }
+    } else {
+      for (const attribute of [
+        'src',
+        'href',
+        'poster',
+        'action',
+        'formaction',
+        'data',
+        'cite',
+        'background',
+        'xlink:href',
+      ]) {
+        const value = node.attr(attribute)
+
+        if (value !== undefined) {
+          const replacement = replace_url(value)
+
+          if (replacement.replaced) {
+            node.attr(attribute, replacement.value)
+          }
+        }
+      }
+
+      const srcset = node.attr('srcset')
+
+      if (srcset !== undefined) {
+        const result = replace_srcset(srcset)
+
+        if (result.complete) {
+          node.attr('srcset', result.value)
+        } else {
+          node.removeAttr('srcset')
+          node.removeAttr('sizes')
+        }
       }
     }
 
-    const srcset = node.attr('srcset');
-
-    if (srcset !== undefined) {
-      node.attr('srcset', replace_srcset(srcset));
-    }
-
-    const style = node.attr('style');
+    const style = node.attr('style')
 
     if (style !== undefined) {
-      node.attr('style', replace_css(style));
+      node.attr('style', replace_css(style))
     }
-  });
+  })
 
   $('style').each((_, element) => {
-    const node = $(element);
+    const node = $(element)
+    node.text(replace_css(node.html() ?? ''))
+  })
 
-    node.text(replace_css(node.html() ?? ''));
-  });
-
-  return $.html();
+  return $.html()
 }
 
+function santinize(html) {
+  return DOMPurify.sanitize(html, {
+    FORBID_TAGS: [
+      'script',
+      'iframe',
+      'frame',
+      'frameset',
+      'object',
+      'embed',
+      'applet',
+      'portal',
+    ],
+
+    FORBID_ATTR: ['srcdoc'],
+
+    ADD_TAGS: ['style'],
+
+    ADD_ATTR: [
+      'style',
+      'class',
+      'id',
+      'src',
+      'srcset',
+      'href',
+      'target',
+      'rel',
+      'width',
+      'height',
+      'loading',
+      'alt',
+    ],
+
+    ALLOW_DATA_ATTR: true,
+    ALLOW_ARIA_ATTR: false,
+    // ALLOW_ARIA_ATTR: true,
+
+    WHOLE_DOCUMENT: true,
+    SANITIZE_DOM: true,
+    SANITIZE_NAMED_PROPS: true,
+
+    // Keep static styling and content.
+    FORCE_BODY: false,
+  })
+}
