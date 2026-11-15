@@ -1274,6 +1274,8 @@ humility:
 - sec compare config file shell env vars and cli flags
 - archi plugin
 - archi browser local fs idb zenfs vite
+- archi thread lock
+- research agent providers
 
 legacy:
 
