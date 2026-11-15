@@ -48,8 +48,10 @@ export async function setup_browser({
     headless: false,
     viewport: nil,
     colorScheme,
+    chromiumSandbox: true,
+    args: ['--unsafely-disable-devtools-self-xss-warnings'],
   })
-  
+
   return browser
 }
 
@@ -71,18 +73,19 @@ export async function fetch(
   const dir = get_result_folder(id)
 
   if (!browser) {
-    if (should_hide_window) {
-      process.env.DISPLAY = display_number
-    }
+    throw err('it should setup browser first')
+    // if (should_hide_window) {
+    //   process.env.DISPLAY = display_number
+    // }
 
-    let colorScheme = theme == 'system' ? 'no-preference' : theme
+    // let colorScheme = theme == 'system' ? 'no-preference' : theme
 
-    browser = await chromium.launchPersistentContext(browser_profile, {
-      channel: 'chrome',
-      headless: false,
-      viewport: nil,
-      colorScheme,
-    })
+    // browser = await chromium.launchPersistentContext(browser_profile, {
+    //   channel: 'chrome',
+    //   headless: false,
+    //   viewport: nil,
+    //   colorScheme,
+    // })
   }
 
   const page = await browser.newPage()
@@ -177,7 +180,7 @@ export async function fetch(
 
   if (should_close_page_when_finish) {
     page.close()
-  } 
+  }
 
   if (should_close_window_when_finish) {
     await browser.close()

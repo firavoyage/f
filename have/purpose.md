@@ -173,4 +173,16 @@ a simple approach would be to serve id specifically, and replace all links direc
 
 view list of all snapshots of some url
 
+---
 
+dk if the console only script would work for cookies.
+
+anyway if it works it works.
+
+---
+
+wtf, ai assitance icon hardcoded on devtools.
+
+"only avail when you sign in to google on chrome".
+
+---
