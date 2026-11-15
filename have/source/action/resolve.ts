@@ -21,8 +21,15 @@ export function resolve_url(id: string) {
   return nil
 }
 
-export function resolve_id(url: string) {
-  const pages = list(url)
+export function resolve_id(
+  url: string,
+  webpage_index = deserialize(read(webpage_index_file)),
+) {
+  if (is(webpage_index, Map)) {
+    return webpage_index.get(url)
+  } 
+
+  const pages = list(url, webpage_index)
   // const webpage_index: result[] = deserialize(file.read(webpage_index_file))
 
   if (pages.length == 0) {

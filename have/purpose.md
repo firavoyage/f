@@ -108,4 +108,14 @@ e.g.
 
 typically like project humility
 
+15
+
+it takes 16s for dcl when you (sync) read and deserialize (yaml) index, iterate to list for every url.
+
+744ms when you cache the index now.
+
+what if you preprocess it to a map?
+
+e.g. iterate, for every url you see, map to id. the last will naturally win.
+
 
