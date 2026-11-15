@@ -41,6 +41,7 @@
     "cheerio": "1.2.0",
     "hono": "4.12.27",
     "lib": "github:firahq/lib",
+    "marked": "18.2.0",
     "patchright": "1.64.3",
     "postcss": "8.5.33",
     "postcss-url": "10.1.4",

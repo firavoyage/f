@@ -7,7 +7,7 @@ import { format_log } from 'lib/log'
 import { parse_options } from 'lib/cli'
 import * as actions from 'action/index'
 
-const { stringify: serialize } = JSON
+const { stringify } = JSON
 
 const { port } = parse_options({
   port: {

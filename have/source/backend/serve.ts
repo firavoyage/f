@@ -7,13 +7,19 @@ import { format_log } from 'lib/log'
 import { parse_options } from 'lib/cli'
 import * as actions from 'action/index'
 import {
+  deserialize,
+  serialize,
   result_folder,
   resolve_url,
   webpage_index_file,
-  deserialize,
+  list,
+  result,
 } from 'action/index'
+import { load } from 'cheerio'
+import { marked } from 'marked'
+import * as time from 'lib/time'
 
-const { stringify: serialize } = JSON
+const { stringify } = JSON
 
 const { port } = parse_options({
   port: {
@@ -41,9 +47,27 @@ app.use('*', async (c, next) => {
 // })
 
 app.get('list/*', async (c, next) => {
-  log(c.req.path)
+  const _url = new URL(c.req.url)
 
-  return c.text(`nil`)
+  const prefix = '/list/'
+  const url = (_url.pathname + _url.search + _url.hash).slice(prefix.length)
+
+  const pages = list(url)
+
+  return c.html(
+    `<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sakura.css/css/sakura.css" type="text/css">
+    ${render(
+      `# ${url}
+
+${map(pages, (page) => {
+  const { id, url, creation_time } = page
+
+  return `- [${time.at(creation_time).format()}](/${id}/)`
+}).join('\n')}`,
+    )}`,
+  )
+
+  // return c.text(`nil`)
 })
 
 app.get('*', async (c, next) => {
@@ -62,13 +86,7 @@ app.get('*', async (c, next) => {
     return c.text('nil')
   }
 
-  const webpage_index: result[] = deserialize(read(webpage_index_file))
-  const webpage_map = dict()
-  for (const page of webpage_index) {
-    const { id, url } = page
-
-    webpage_map.set(url, id)
-  }
+  let webpage_map = get_webpage_map()
 
   // return c.html(html)
   return c.html(hook_navigation(html, url, (url) => replace(url, webpage_map)))
@@ -96,8 +114,6 @@ serve(
     log(`Serve on http://localhost:${info.port}`)
   },
 )
-
-import { load } from 'cheerio'
 
 export function hook_navigation(
   html: string,
@@ -155,11 +171,8 @@ function trim_end(s: string, char: TrimChar = ' \t\n\r'): string {
   return s.slice(0, i)
 }
 
-function replace(
-  url: string,
-  webpage_index = deserialize(read(webpage_index_file)),
-) {
-  const id = resolve_id(normalize_url(url), webpage_index)
+function replace(url: string, webpage_map = get_webpage_map()) {
+  const id = resolve_id(normalize_url(url), webpage_map)
   // const id = resolve_id(url, webpage_index)
 
   // log({ url, id })
@@ -169,7 +182,7 @@ function replace(
   }
 }
 
-function resolve_id(url, webpage_map) {
+function resolve_id(url, webpage_map = get_webpage_map()) {
   return webpage_map.get(url)
 }
 
@@ -177,4 +190,23 @@ function normalize_url(value: string) {
   const parsed_url = new URL(value)
   parsed_url.hash = ''
   return parsed_url.href
+}
+
+function render(md: string) {
+  return marked.parse(md, {
+    gfm: true,
+    breaks: true,
+  })
+}
+
+function get_webpage_map() {
+  const webpage_index: result[] = deserialize(read(webpage_index_file))
+  const webpage_map = dict()
+  for (const page of webpage_index) {
+    const { id, url } = page
+
+    webpage_map.set(url, id)
+  }
+
+  return webpage_map
 }

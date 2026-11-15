@@ -122,4 +122,13 @@ fine and you dont need resolve id any more.
 
 400ms avg now.
 
+---
+
+well, 
+
+**devtool simply just style dcl in red, and load in green.**
+
+it doesnt mean your 100ms dcl is poor!
+
+
 
