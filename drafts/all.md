@@ -571,6 +571,7 @@ cp: <!-- algorithms -->
 - harmonic number sigma i 1 n div 1 i approxeq ln n
 - division block optimization square root decomposition sigma div n i
 - cpp lexical scoping shadowing repeat macro
+- time complexity p vs np
 
 pm:
 

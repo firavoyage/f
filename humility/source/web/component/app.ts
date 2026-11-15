@@ -286,15 +286,15 @@ export function app() {
                       h('message_prose', {
                         html: render(message.content),
                       }),
-                      h(
-                        'button.message_copy',
-                        {
-                          onclick() {
-                            copy(message.content)
-                          },
-                        },
-                        'copy',
-                      ),
+                      // h(
+                      //   'button.message_copy',
+                      //   {
+                      //     onclick() {
+                      //       copy(message.content)
+                      //     },
+                      //   },
+                      //   'copy',
+                      // ),
                     ),
                   ),
                 ),
