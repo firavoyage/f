@@ -15,6 +15,14 @@
 
 ---
 
+refactor journal
+
+use scalable file storage for screenshots.
+
+rather store outside git repo, and make it a separate repo if you want it to be tracked.
+
+---
+
 create project para
 
 index and browser knowledge base, read markdown structured books
