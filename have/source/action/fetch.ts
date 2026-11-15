@@ -48,7 +48,6 @@ export async function setup_browser({
     headless: false,
     viewport: nil,
     colorScheme,
-    chromiumSandbox: true,
     args: ['--unsafely-disable-devtools-self-xss-warnings'],
   })
 

@@ -186,3 +186,13 @@ wtf, ai assitance icon hardcoded on devtools.
 "only avail when you sign in to google on chrome".
 
 ---
+
+there are actually a bunch of "unsupported flags" and chrome itself is flawed and heaviliy commercialized by google.
+
+dont fight it.
+
+abstract it. leave it. do not workaround w specific hacks.
+
+---
+
+
