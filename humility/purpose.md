@@ -40,7 +40,7 @@ it's nice to have same files automatically filtered though.
 > as someone, i would like to do sth w some feature to achieve sth...
 
 > as any user in general, i would like to ... w any existing features for the sake of doing sth (well it's obvious, ik what im doing)
-> 
+>
 > - do sth
 > - create sth
 > - polish sth
@@ -149,7 +149,7 @@ maybe just have a config of build folder.
 
 clearly it's an opinionated extension. and it's quite opinionated, from naming to the structure of such md file.
 
-let's have an build dir. 
+let's have an build dir.
 
 to be safe, it would not empty build dir. and it would overwrite iff conflicting. i.e. if you rename a file, a stale pre renamed build would be kept, as you dont keep renaming history. _well you can._
 
@@ -475,16 +475,16 @@ doesnt matter.
 things changed!
 
 > (really i should modernize such methodology first. e.g. drafts/backend, priority todo, ...)
-> 
+>
 > prototype actions
-> 
+>
 > - new thread
 > - chat <!-- put everything related to "new node" in chat? -->
 > - edit, regen, rearrange, ...
 > - read
 > - list
 > - rename
-> 
+>
 > hooks are easy. they come later.
 
 ---
@@ -648,5 +648,28 @@ or dsh, "extensible". (well, it would be opinionated in core i guess)
 <!-- jyy publicly uses pi agent it seems. doesnt seem they depart from industry, despite being an educator. they produce real results. -->
 
 ---
+
+it's not about how you dev.
+
+it's easy. and you use llms anyway. you are not slow and you dont have to race.
+
+maybe you can see how dsh works.
+
+just walkthrough it.
+
+there is nothing special here. and fundamentally, it's
+
+- some opinionated ui
+  - things like scrolling behavior should really be extensions
+  - hacky sometimes
+- some lib
+  - you basically lose sth when you dont stream
+  - hyperscript...
+- db storage
+  - to power exporting
+- some specific agentic hacks
+  - like non native tool call...
+
+think clearly and you will have it.
 
 
