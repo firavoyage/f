@@ -1117,6 +1117,7 @@ have: <!-- eat, grow -->
 - use case berkeley cs61a current semester
 - use case university ai intro final project analyze faces daylily channel
 - foundation
+- frontend
 
 proxy:
 

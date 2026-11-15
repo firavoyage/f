@@ -130,5 +130,47 @@ well,
 
 it doesnt mean your 100ms dcl is poor!
 
+---
+
+view the snapshot of a site
+
+rp the links.
+
+if you can read (static), you can easily do that.
+
+- show nothing wo param
+- read the page (or "not archived") of such param, rp body innerhtml
+- intercept link to rp such param
+
+doesnt feel you have to live proxy.
+
+you may just swap some links to caches. (dont worry, you have a copy of static aside.)
+i.e. webpage/ab/cd/foo/index.html -> webpage/ef/gf/bar/index.html, you cd .. three times before diving into the new index
+
+btw, you may have scalable id for results aw.
+if you have 1m for each result (e.g. plain text htmls), 1m results is just 1g. typically easy to reach and unscable.
+
+you can absolutely postprocess for this.
+
+well, you may proxy anyway. it would be even easier. you dont have to make it a react app. you can just serve from the starting point of such results, serve everything static, and inject some navigation script.
+
+conclusion
+
+- you can read cache url: html | nil
+  - it doesnt matter whether to fetch in real time or return nil
+  - complete traveral is expected
+- you host a server `?url=...`
+  - dont get trapped! you dont always need react vite spa.
+  - you read cache and return html
+  - you inject navigation js
+    - you may take a brute force approach, e.g. function to string, find and replace head tag (if you could not append after closing html tag), and call it
+
+impl
+
+a simple approach would be to serve id specifically, and replace all links directly if possible. ids are permalink. urls generally mean last cache, which is instable.
+
+---
+
+view list of all snapshots of some url
 
 

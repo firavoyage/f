@@ -70,6 +70,30 @@ ${map(pages, (page) => {
   // return c.text(`nil`)
 })
 
+app.get('http*', async (c, next) => {
+  const _url = new URL(c.req.url)
+
+  const prefix = '/'
+  const url = (_url.pathname + _url.search + _url.hash).slice(prefix.length)
+
+  const pages = list(url)
+
+  return c.html(
+    `<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sakura.css/css/sakura.css" type="text/css">
+    ${render(
+      `# ${url}
+
+${map(pages, (page) => {
+  const { id, url, creation_time } = page
+
+  return `- [${time.at(creation_time).format()}](/${id}/)`
+}).join('\n')}`,
+    )}`,
+  )
+
+  // return c.text(`nil`)
+})
+
 app.get('*', async (c, next) => {
   // hash auto trimmed on c.req.path it seems
   const id = trim(c.req.path, '/')

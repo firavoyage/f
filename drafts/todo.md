@@ -1,15 +1,14 @@
 # plan
 
-- lib/web/style?
-- para
 - humility
+- purpose
 
 # todo
 
 - humility, pure, ...
 - have, record, observe, grow, eat, ...
-- code?, edit?
 - purpose, repo, (journal)
+- code?, edit?
 - para, material, ...
 - float
 - files
