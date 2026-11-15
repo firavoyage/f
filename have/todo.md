@@ -37,6 +37,10 @@ conclusion
   - you inject navigation js
     - you may take a brute force approach, e.g. function to string, find and replace head tag (if you could not append after closing html tag), and call it
 
+impl
+
+a simple approach would be to serve id specifically, and replace all links directly if possible. ids are permalink. urls generally mean last cache, which is instable.
+
 ## s
 
 read main content

@@ -2,7 +2,7 @@ import { Hono } from 'hono';
 import { serve } from '@hono/node-server';
 import { cors } from 'hono/cors';
 import { serveStatic } from '@hono/node-server/serve-static';
-import { read } from 'lib/file'
+import { join, read } from 'lib/file'
 import { format_log } from 'lib/log'
 import { parse_options } from 'lib/cli'
 import * as actions from 'action/index'
@@ -29,13 +29,16 @@ app.use('*', async (c, next) => {
   log(format_log(`${c.req.method} ${c.req.path}`, 'info'))
 })
 
-app.get('*', (c) => {
-  const html = handle(() => read('../web/build/index.html'))
+app.get('*', async (c, next) => {
+  const html = handle(() => read(join(result_folder, c.req.path, 'index.html')))
+  // const html = handle(() => read('../web/build/index.html'))
 
   if (is_error(html)) {
-    log('web/build/index.html should exist, run web build first')
+    await next()
+    
+    // log('web/build/index.html should exist, run web build first')
 
-    return c.text('')
+    return c.text('nil')
   }
 
   return c.html(html)
