@@ -631,7 +631,12 @@ numbers and alphabets maybe
   // _you may handle cjk im._
 ```
 
----
+15
 
+~~tool calls...~~
+
+agent is now commodity.
+
+what if you just plugin some pi agent?
 
 
