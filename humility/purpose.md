@@ -639,4 +639,14 @@ agent is now commodity.
 
 what if you just plugin some pi agent?
 
+yeah, "a minimal agent".
+
+or dsh, "extensible". (well, it would be opinionated in core i guess)
+
+**you may use one to dev your own. chances are you would like that.**
+
+<!-- jyy publicly uses pi agent it seems. doesnt seem they depart from industry, despite being an educator. they produce real results. -->
+
+---
+
 

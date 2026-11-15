@@ -195,4 +195,8 @@ abstract it. leave it. do not workaround w specific hacks.
 
 ---
 
+wow, what if you can easily have 40k lines of yaml, just after saving a few sites...
+
+sqlite.
+
 

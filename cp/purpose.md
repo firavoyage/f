@@ -471,4 +471,10 @@ learn the fundamentals first.
 
 i love engineering. and i may create a simple llm interface.
 
+15
+
+didnt prac for maybe a week. quite nostalgia.
+
+let's see if i can solve p a.
+
 
