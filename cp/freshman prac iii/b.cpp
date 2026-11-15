@@ -21,7 +21,7 @@
   string __VA_ARGS__; \
   read(__VA_ARGS__);
 #define readseq(v, a, b) \
-  seq(v, b);        \
+  seq(v, b);             \
   read_vec(v, a, b);
 
 const int modulo = 1e9 + 7;
@@ -283,14 +283,125 @@ but i still dont get it.
 
 re... maybe too much output.
 
-(ok all contestants face at least +1)
+(ok all contestants face at least +1 on that)
+
+---
+
+if m <= n - 1 (or <), it's m numbers downward from n and the rest increasing
+
+e.g. 5 4 3 2 1 for 4, 5 4 1 2 3 for 2.
+
+if rest op = even, where rest = m - (n - 1), it's m downward.
+
+e.g. 5 4 3 2 1 for 6, where you swap 2 1 twice
+
+otherwise, it's 5 4 3 1 2. that is you swap 1 2 first to reduce to the even
+scenario.
+
+---
+
+n in [1, e5], m in [1, e9]
+
+for small n, let's handle 1 specifically.
+
+for 2... it works. for 1 3 5 it's optimal. otherwise you can just say 1 2 
+and reveach 2 3 will do nothing.
+
+for 3 and above i guess it's normal.
+
+---
+
+wa on 2 now. no explanation.
+
+for even rest, i guess it's always optimal.
+
+5 4 3 2 1
+
+you can spam swap (for any normal n), until it's n - 1 and here you go.
+
+maybe there is better approach for odd rest.
+
+yeah really you can. e.g. 7.
+
+5 4 3 2 1.
+
+first you mess it up for 2. like 3 2 1 5 4.
+
+then, you 1 2 3 4 5 w 5 op.
+
+
 
 */
 
 void solve() {
+  // 1 to n, operation count
   readint(n, m);
 
+  if(n == 1){
+    prn(1);
+    return;
+  }
+
+  if (m < n - 1) {
+    reveach(i, n, n - (m - 1)) {
+      pr(i);
+    }
+
+    each(i, 1, n - m) {
+      pr(i);
+    }
+  } else {
+    int rest = m - (n - 1);
+
+    if (rest % 2 == 0) {
+      reveach(i, n, 1){
+        pr(i);
+      }
+    } else {
+      reveach(i, n, 3){
+        pr(i);
+      }
+      pr(1, 2);
+    }
+  }
+
+  prn();
 }
+
+// void solve() {
+//   // 1 to n, operation count
+//   readint(n, m);
+
+//   if(n == 1){
+//     prn(1);
+//     return;
+//   }
+
+//   if (m < n - 1) {
+//     reveach(i, n, n - (m - 1)) {
+//       pr(i);
+//     }
+
+//     each(i, 1, n - m) {
+//       pr(i);
+//     }
+//   } else {
+//     int rest = m - (n - 1);
+
+//     if (rest % 2 == 0) {
+//       reveach(i, n, 1){
+//         pr(i);
+//       }
+//     } else {
+//       reveach(i, n, 3){
+//         pr(i);
+//       }
+//       pr(1, 2);
+//     }
+//   }
+
+//   prn();
+// }
 
 // void solve() {
 //   readint(a, b);
