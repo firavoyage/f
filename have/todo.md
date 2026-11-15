@@ -26,6 +26,17 @@ you can absolutely postprocess for this.
 
 well, you may proxy anyway. it would be even easier. you dont have to make it a react app. you can just serve from the starting point of such results, serve everything static, and inject some navigation script.
 
+conclusion
+
+- you can read cache url: html | nil
+  - it doesnt matter whether to fetch in real time or return nil
+  - complete traveral is expected
+- you host a server `?url=...`
+  - dont get trapped! you dont always need react vite spa.
+  - you read cache and return html
+  - you inject navigation js
+    - you may take a brute force approach, e.g. function to string, find and replace head tag (if you could not append after closing html tag), and call it
+
 ## s
 
 read main content
