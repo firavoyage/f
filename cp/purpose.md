@@ -477,4 +477,8 @@ didnt prac for maybe a week. quite nostalgia.
 
 let's see if i can solve p a.
 
+i could not work it out.
+
+p b.
+
 

@@ -193,10 +193,10 @@ auto min_vec(auto&& vec, auto l, auto r) {
   auto minimum = vec[l];
   each(i, l, r) {
     if (vec[i] < minimum) {
-      minimum = element;
+      minimum = vec[i];
     }
   }
-  return minimum
+  return minimum;
 }
 
 auto min_(auto first, auto... rest) {
@@ -211,10 +211,10 @@ auto max_vec(auto&& vec, auto l, auto r) {
   auto maximum = vec[l];
   each(i, l, r) {
     if (vec[i] > maximum) {
-      maximum = element;
+      maximum = vec[i];
     }
   }
-  return maximum
+  return maximum;
 }
 
 auto max_(auto first, auto... rest) {
