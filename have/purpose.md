@@ -118,4 +118,8 @@ what if you preprocess it to a map?
 
 e.g. iterate, for every url you see, map to id. the last will naturally win.
 
+fine and you dont need resolve id any more.
+
+400ms avg now.
+
 

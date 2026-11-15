@@ -6,7 +6,12 @@ import { join, read } from 'lib/file'
 import { format_log } from 'lib/log'
 import { parse_options } from 'lib/cli'
 import * as actions from 'action/index'
-import { result_folder, resolve_id, resolve_url, webpage_index_file, deserialize } from 'action/index'
+import {
+  result_folder,
+  resolve_url,
+  webpage_index_file,
+  deserialize,
+} from 'action/index'
 
 const { stringify: serialize } = JSON
 
@@ -29,7 +34,20 @@ app.use('*', async (c, next) => {
   log(format_log(`${c.req.method} ${c.req.path}`, 'info'))
 })
 
+// app.get('list/:url{.+}', async (c, next) => {
+//   log(c.req.param('url'))
+
+//   return c.text(`nil`)
+// })
+
+app.get('list/*', async (c, next) => {
+  log(c.req.path)
+
+  return c.text(`nil`)
+})
+
 app.get('*', async (c, next) => {
+  // hash auto trimmed on c.req.path it seems
   const id = trim(c.req.path, '/')
   const url = resolve_url(id)
 
@@ -44,10 +62,17 @@ app.get('*', async (c, next) => {
     return c.text('nil')
   }
 
-  const webpage_index = deserialize(read(webpage_index_file))
+  const webpage_index: result[] = deserialize(read(webpage_index_file))
+  const webpage_map = dict()
+  for (const page of webpage_index) {
+    const { id, url } = page
+
+    webpage_map.set(url, id)
+  }
 
   // return c.html(html)
-  return c.html(hook_navigation(html, url, (url) => replace(url, webpage_index)))
+  return c.html(hook_navigation(html, url, (url) => replace(url, webpage_map)))
+  // return c.html(hook_navigation(html, url, (url) => replace(url, webpage_index)))
 })
 
 app.use('*', serveStatic({ root: result_folder }))
@@ -134,11 +159,22 @@ function replace(
   url: string,
   webpage_index = deserialize(read(webpage_index_file)),
 ) {
-  const id = resolve_id(url, webpage_index)
+  const id = resolve_id(normalize_url(url), webpage_index)
+  // const id = resolve_id(url, webpage_index)
 
   // log({ url, id })
 
   if (id) {
     return `../../../${id}/`
   }
+}
+
+function resolve_id(url, webpage_map) {
+  return webpage_map.get(url)
+}
+
+function normalize_url(value: string) {
+  const parsed_url = new URL(value)
+  parsed_url.hash = ''
+  return parsed_url.href
 }
