@@ -3,7 +3,7 @@ import { append } from 'lib/file'
 import { log_file, serialize } from 'action/index'
 import { format_log } from 'lib/log'
 
-type traverse_options = {
+export type traverse_options = {
   should_visit?: (url: string) => boolean
   max_depth?: number
   max_page_count?: number

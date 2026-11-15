@@ -17,8 +17,7 @@ const viewport = {
   // height: 900,
 }
 
-export async function test(
-  url: string,
+export async function config_browser(
   {
     should_hide_window = false,
     display_number = ':99',

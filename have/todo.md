@@ -16,6 +16,12 @@ decouple display and storage
 
 use scalable filename only on storage
 
+---
+
+handle hash properly
+
+match wo hash, but normalize back w hash
+
 ## w
 
 # backlog

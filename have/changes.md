@@ -13,3 +13,9 @@ changes
 - fetch: + setup_browser
   - use a persistent always on browser and close page rather than closing the browser
   - fix unknown weird issue (timeout after 10s, and get stuck forever, while the browser exits after 1s, which doesnt reproduce on manual testing but consistently happen on traversal)
+
+## 15
+
+- web: + frontend for listing and viewing, w proper interlinks
+  - based on specialized ssr (rather than app.ts) though
+- rename action/test to /config browser
