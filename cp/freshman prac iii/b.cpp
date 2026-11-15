@@ -304,7 +304,7 @@ n in [1, e5], m in [1, e9]
 
 for small n, let's handle 1 specifically.
 
-for 2... it works. for 1 3 5 it's optimal. otherwise you can just say 1 2 
+for 2... it works. for 1 3 5 it's optimal. otherwise you can just say 1 2
 and reveach 2 3 will do nothing.
 
 for 3 and above i guess it's normal.
@@ -329,7 +329,70 @@ first you mess it up for 2. like 3 2 1 5 4.
 
 then, you 1 2 3 4 5 w 5 op.
 
+and seems you can do it as long as it > n.
 
+so you only 1 2 when n = m. i guess that's it.
+
+---
+
+still wa. i was too confident.
+
+i dont quite get it.
+
+for m <= n - 1 it's optimal.
+
+when rest is even, you can spam swap (on last - 1) to reduce it to n - 1.
+
+when m >= n + 2, you can have n to 1,
+send two to the right to make 1 no longer rightmost,
+spam swap to make n = m, and click 1 to n in order.
+
+wait what if n == 2 and you can not send two?
+
+~~i can hack it! (make it tle)~~
+
+(and what about n == m? i guess it's right.)
+
+for n == 2 it depends on whether it's odd or even.
+odd -> 2 1, even -> 1 2
+
+---
+
+still wa.
+
+(btw, it's 0ms when you forget to early return, maybe length issue)
+
+---
+
+well, you can achieve 5 4 3 2 1 on 5.
+
+5 4 3 2 1
+5 4 2 1 3
+5 4 1 3 2
+5 4 1 2 3
+
+compared w 4
+
+5 4 3 2 1
+5 4 3 1 2
+5 4 1 2 3
+
+you spam one more move.
+
+for n = 4 you can play the same trick.
+
+for n = 3
+
+3 2 1
+2 1 3
+1 3 2
+1 2 3
+
+same. (well obviously actually)
+
+---
+
+ac +5
 
 */
 
@@ -337,12 +400,21 @@ void solve() {
   // 1 to n, operation count
   readint(n, m);
 
-  if(n == 1){
+  if (n == 1) {
     prn(1);
     return;
   }
 
-  if (m < n - 1) {
+  if (n == 2) {
+    if (m % 2 == 0) {
+      prn(1, 2);
+    } else {
+      prn(2, 1);
+    }
+    return;
+  }
+
+  if (m <= n - 1) {
     reveach(i, n, n - (m - 1)) {
       pr(i);
     }
@@ -351,22 +423,87 @@ void solve() {
       pr(i);
     }
   } else {
-    int rest = m - (n - 1);
-
-    if (rest % 2 == 0) {
-      reveach(i, n, 1){
-        pr(i);
-      }
-    } else {
-      reveach(i, n, 3){
-        pr(i);
-      }
-      pr(1, 2);
+    reveach(i, n, 1) {
+      pr(i);
     }
   }
 
   prn();
 }
+
+// void solve() {
+//   // 1 to n, operation count
+//   readint(n, m);
+
+//   if(n == 1){
+//     prn(1);
+//     return;
+//   }
+
+//   if(n == 2){
+//     if(m % 2 == 0){
+//       prn(1, 2);
+//     } else {
+//       prn(2, 1);
+//     }
+//   }
+
+//   if (m <= n - 1) {
+//     reveach(i, n, n - (m - 1)) {
+//       pr(i);
+//     }
+
+//     each(i, 1, n - m) {
+//       pr(i);
+//     }
+//   } else {
+//     if (n != m) {
+//       reveach(i, n, 1){
+//         pr(i);
+//       }
+//     } else {
+//       reveach(i, n, 3){
+//         pr(i);
+//       }
+//       pr(1, 2);
+//     }
+//   }
+
+//   prn();
+// }
+
+// void solve() {
+//   // 1 to n, operation count
+//   readint(n, m);
+
+//   if(n == 1){
+//     prn(1);
+//     return;
+//   }
+
+//   if (m < n - 1) {
+//     reveach(i, n, n - (m - 1)) {
+//       pr(i);
+//     }
+
+//     each(i, 1, n - m) {
+//       pr(i);
+//     }
+//   } else {
+//     if (n != m) {
+//       reveach(i, n, 1){
+//         pr(i);
+//       }
+//     } else {
+//       reveach(i, n, 3){
+//         pr(i);
+//       }
+//       pr(1, 2);
+//     }
+//   }
+
+//   prn();
+// }
 
 // void solve() {
 //   // 1 to n, operation count
