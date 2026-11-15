@@ -672,4 +672,8 @@ there is nothing special here. and fundamentally, it's
 
 think clearly and you will have it.
 
+doesnt feel very interesting.
+
+and i would not research memoh arkloop or lobehub for now. similar at its heart. generally akin to codex gui or codex tui (or dify).
+
 
