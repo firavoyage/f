@@ -17,7 +17,7 @@ you run single server instance. and js is inherently single threaded. no possibl
       - current value
       - listeners of receive (both receive and finish actually)
       - listeners of finish
-  - send
+  - send msg
     - check thread status
       - if locked, it will return failure
         - frontend should generally sync (same as read)
@@ -25,7 +25,8 @@ you run single server instance. and js is inherently single threaded. no possibl
             - esp fit local single machine deployment
           - _if you wanna be fluid, you have to retract that msg then_
       - otherwise, it will start streaming and return msg id
-  - stream message on thread
+  - call tool
+  - stream message on thread # can be msg or tool
     - if such message is active in memory
       - it will sse the current value and immediately listen for receive
         - you should listen immediately, but sse receiving packet only after sse the current value
@@ -46,6 +47,27 @@ you run single server instance. and js is inherently single threaded. no possibl
     - all msgs on disk alongside the status
       - if active, you should stream the msg
 
-before finishing, humility will parse tool calls and attach to such msg. it should be the same when you attach on frontend or backend.
+before finishing, humility will parse tool calls and attach to such msg. it should be the same when you attach on frontend or straight from backend db.
+
+you may continue a thread directly for completed thread w last msg of role user or tool.
+
+on frontend, you may (auto) approve it or ignore it. you may show such prompt if you see tool calls on last msg. if you ignore, you may inject a "cancelled" tool result.
+
+you may behave the same when you auto run tools on an active thread, or after refreshing the tab. _though you may argue it should do nothing immediately after opening a thread._
+
+_it doesnt matter whether to auto tool call on backend. you can absolutely hook it though._
+
+thread is append only. you construct msg payload by using the last system prompt and connecting consecutive msgs of the same role (tool = user). _it should fail iff starting or ending w assitant (which is never the scenario, tbh, you cant start w a reply, and you must have sent a user msg or continue directly iff it already fits the constraints)._ , ignoring failed replies. (so you may still continue directly here.) you may see all unmatched tool id as pending. (yes you may cancel that explicitly, even if such tool call has no content.)
+
+tools are of no difference than reply on such streaming archi. 
+
+clearly you can auto start tools sequentially or in parallel after approval. you request simultaneously. when you read you can have multiple pending msgs, ordered.
+
+on frontend,
+
+- map msg id -> msg content
+- thread
+
+you may just cache the render md fn for simplicity wo a stateful "whether it's already rendered" or direct dom mutation. you dont have to rely on react specific dom memo. _you may implement such cache by completed msg id._
 
 
