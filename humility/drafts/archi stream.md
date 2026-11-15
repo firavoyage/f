@@ -8,6 +8,7 @@ you run single server instance. and js is inherently single threaded. no possibl
       - you could separate to receive and finish, it's the same payload underlying and it doesnt matter whether you place the if branch on lib or on your own code
       - single fn benefits from polymorphism
     - return void, generally
+    - you may put receive on the second param
 - backend
   - maintain a map of thread status and message status
     - thread
