@@ -1281,6 +1281,7 @@ humility:
 - archi browser local fs idb zenfs vite
 - archi thread lock
 - research agent providers
+- archi stream
 
 legacy:
 
