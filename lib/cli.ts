@@ -158,7 +158,7 @@ type parse_options = Record<
   }
 >
 
-export function parse_options(options: parse_options) {
+export function parse_options(options: parse_options): any {
   let results = {}
 
   let normalized_env = obj(map(process.env, ([k, v]) => [k.toLowerCase(), v]))
