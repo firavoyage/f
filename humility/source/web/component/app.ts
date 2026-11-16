@@ -13,21 +13,6 @@ import { copy } from 'lib/web/clipboard'
 
 const max_title_length = 65 * 2
 
-const jk_scroll_distance = 60
-const du_scroll_percentage = 0.5
-const space_scroll_percentage = 0.9
-// const space_scroll_percentage = 0.9
-const scroll_behavior: 'smooth' | 'instant' = 'instant'
-const scroll_shortcuts = {
-  'ctrl+j': jk_scroll_distance,
-  'ctrl+k': -jk_scroll_distance,
-  'ctrl+d': du_scroll_percentage,
-  'ctrl+u': -du_scroll_percentage,
-  space: space_scroll_percentage,
-  'shift+space': -space_scroll_percentage,
-}
-const field_tags = ['input', 'textarea']
-
 type thread = {
   title: string
   folder: string
@@ -126,60 +111,6 @@ export function app() {
 
   use_keyboard('alt+n', new_thread)
 
-  // focus on input
-  for (const char of each(1, 26)) {
-    const letter = String.fromCodePoint('a'.charCodeAt(0) + char - 1)
-
-    use_keyboard(
-      letter,
-      () => {
-        if (!field.current) {
-          return
-        }
-
-        set_prompt(prompt + letter)
-        field.current.focus()
-      },
-      {
-        when: () => !is_focused(),
-      },
-    )
-  }
-  for (const char of each(0, 9)) {
-    const key = str(char)
-    use_keyboard(
-      key,
-      () => {
-        if (!field.current) {
-          return
-        }
-
-        set_prompt(prompt + key)
-        field.current.focus()
-      },
-      {
-        when: () => !is_focused(),
-      },
-    )
-  }
-
-  map(scroll_shortcuts, ([shortcut, distance]) => {
-    use_keyboard(
-      shortcut,
-      () => {
-        scroll_by(distance)
-      },
-      {
-        when: () =>
-          !(
-            shortcut == 'space' &&
-            has(field_tags, document.activeElement?.tagName.toLowerCase()) &&
-            prompt
-          ),
-      },
-    )
-  })
-
   // focus prompt on mount
   use_mount(() => {
     if (!field.current) {
@@ -192,23 +123,6 @@ export function app() {
   function new_thread() {
     set_thread('')
     // set_thread(post('new_thread'))
-  }
-
-  function scroll_by(distance: number) {
-    if (!content.current) {
-      return
-    }
-
-    let element = content.current
-
-    if (abs(distance) <= 1) {
-      distance = element.clientHeight * distance
-    }
-
-    element.scrollBy({
-      top: distance,
-      behavior: scroll_behavior,
-    })
   }
 
   function is_focused() {

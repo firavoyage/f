@@ -112,6 +112,18 @@ web: drag
 - resize sidebar
 - move threads
 
+---
+
+web: + extension scroll to bottom on delta or on read, or scroll to top on read
+
+currently it preserves scroll top across threads, quite awkward.
+
+---
+
+web: + vimlike navigation extension
+
+vimium works. you may make it app specific.
+
 ## w
 
 # backlog

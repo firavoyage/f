@@ -95,7 +95,7 @@ typeface:
 app:
   app: flex h-100dvh font-sans bg-surface text-on-surface text-lg
 sidebar:
-  sidebar: w-xs h-full bg-sidebar
+  sidebar: w-md h-full bg-sidebar
 nav:
   new_thread: px-2
 threads:
@@ -133,7 +133,7 @@ prompt:
   prompt: w-full h-40 flex justify-center bg-field
   # prompt: absolute bottom-0 w-full h-40 flex justify-center bg-field
   field: w-prose
-  field[empty]: caret-transparent
+  # field[empty]: caret-transparent
   textarea: py-8
 textarea:
   textarea: w-full h-fit rounded-md

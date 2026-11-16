@@ -9,3 +9,9 @@ changes
   - send
   - delete thread
 - db/config: separate env from config
+
+## 16
+
+- web: - extensions, incl. emac like scrolling shortcuts, focus on (en) input
+  - doesnt feel right to hardcode on app.ts
+  - await import if needed
