@@ -1178,4 +1178,87 @@ Apr 17, 2019 — You can hide any level of messages. Click the Log Levels drop-d
 
 Show all
 
+# what do ppl say on the three lines of quote of make it work
+
+The three-line quote **"Make it work, make it right, make it fast"** is a famous software engineering maxim popularized by Kent Beck (who originally phrased it as _"Make it run, make it right, make it fast"_). Developers, designers, and project managers frequently discuss it as a rule of thumb for avoiding perfectionism and premature optimization. [](https://wiki.c2.com/?MakeItWorkMakeItRightMakeItFast)
+
+### What the Three Lines Mean
+
+* **Make it work.** Focus on getting a basic, functional prototype running first. At this stage, messy shortcuts are acceptable because the main goal is proving the idea actually works. [](https://medium.com/swlh/coding-faster-make-it-work-then-make-it-good-6aa988ebd8ab)
+* **Make it right.** Clean up the mess, handle edge cases, and fix bugs once the core idea is proven. Developers use this step to organize their work so it is reliable, secure, and easy for others to understand. [](https://www.makingdatamistakes.com/make-it-work-make-it-right-make-it-fast/)
+* **Make it fast.** Optimize for speed, efficiency, and scale only at the very end. By waiting until the final stage, you avoid wasting hours speeding up features that might get cut or rewritten anyway. [](https://ntietz.com/blog/make-it-fast-from-the-start/)
+
+### What People Say About It
+
+Online discussions around the quote generally highlight both its practical value for solo builders and its limitations on large teams:
+
+* **Fighting analysis paralysis.** On [Quora](https://www.quora.com/What-is-the-make-it-work-make-it-right-then-make-it-fast-approach-to-programming), users agree that following this exact order prevents people from getting stuck over-engineering things before they even know if the solution works. [](https://www.quora.com/What-is-the-make-it-work-make-it-right-then-make-it-fast-approach-to-programming)
+* **The trap of skipping step two.** A common complaint among engineers is that managers or tight deadlines force teams to stop right after "make it work". When teams never go back to "make it right," messy prototypes turn into permanent, fragile systems. [](https://www.linkedin.com/posts/abdirahman-sj%5Fsoftwareengineering-activity-7389695123728691200-NDtW)
+* **Architectural limits at scale.** Opinions are mixed on [Reddit](https://www.reddit.com/r/programming/comments/1fqsa9v/make%5Fit%5Fwork%5Ffirst%5Fbefore%5Foptimizing/) regarding how well the quote applies to massive systems. While many praise it for rapid prototyping, critics point out that ignoring speed and architecture early on can lock you into bad foundations that require a complete rewrite later. [](https://www.reddit.com/r/programming/comments/1fqsa9v/make%5Fit%5Fwork%5Ffirst%5Fbefore%5Foptimizing/)
+
+Are you looking to apply this quote to a **coding project**, a **business workflow**, or were you thinking of a **different three-line quote**? Let me know so I can tailor the examples to what you need.
+
+AI can make mistakes, so double-check responses 
+
+* [](https://wiki.c2.com/?MakeItWorkMakeItRightMakeItFast)  
+C2 Wiki  
+Make It Work Make It Right Make It Fast  
+November 27, 2014 — finally make it fast (optimize performance or eliminate waste only when necessary). Interpretation: Represents an evolutionary pro...
+* [](https://medium.com/swlh/coding-faster-make-it-work-then-make-it-good-6aa988ebd8ab)  
+Medium·Michael Parker  
+Coding faster: Make it work, then make it good | by Michael Parker | The Startup | Medium  
+March 29, 2020 — code up to 10x slower and suffer paralysis. Process: Make it work by hacking together functionality rapidly
+* [](https://www.linkedin.com/posts/abdirahman-sj%5Fsoftwareengineering-activity-7389695123728691200-NDtW)  
+LinkedIn·Abdirahman Jama  
+Lessons from Kent Beck on "make it run, make it right, make it fast"  
+October 30, 2025 — I spoke with Kent Beck recently. Most people quote him as saying: "make it work, make it right, make it fast".
+
+Show all
+
+# what do ppl say on Make it work, make it right, make it fast
+
+**"Make it work, make it right, make it fast"** is a famous software engineering mantra—most widely attributed to **Kent Beck** (though he has noted his original phrasing was _"Make it run, make it right, make it fast"_). [](https://wiki.c2.com/?MakeItWorkMakeItRightMakeItFast)
+
+Among developers, the phrase is broadly praised as a blueprint for avoiding over-engineering, though it also sparks debate over how it gets abused in the real world. [](https://www.reddit.com/r/PHP/comments/1aibisq/just%5Fmake%5Fit%5Fwork/)
+
+### What the Three Steps Mean
+
+* **Make it work.** Focus strictly on solving the core problem and proving the concept works, even if the code is messy or skips edge cases.
+* **Make it right.** Refactor the working code to be clean, readable, well-tested, and able to handle edge cases before moving on.
+* **Make it fast.** Measure performance and optimize bottlenecks only after the code is accurate and clean. [](https://ntietz.com/blog/make-it-fast-from-the-start/)
+
+### Why Developers Love It
+
+* **Prevents premature optimization.** As outlined by Epic Web, developers often waste hours optimizing systems or features that end up not needing to exist. [](https://www.epicweb.dev/principles/craft/thinking-like-craftsperson/make-it-work-make-it-right-make-it-fast)
+* **Beats analysis paralysis.** According to [Weekly Dev Tips](https://dev.to/weeklydevtips/make-it-work-make-it-right-make-it-fast), breaking work into small pieces and following this sequence keeps momentum high and stops "gold plating". [](https://dev.to/weeklydevtips/make-it-work-make-it-right-make-it-fast)
+* **Builds confidence for refactoring.** Getting tests passing first gives you a safety net to clean up the architecture later without breaking functionality. [](https://keyholesoftware.com/writing-quality-code-practicing-make-it-work-make-it-right-make-it-fast/)
+
+### Common Criticisms & Real-World Pitfalls
+
+* **Teams stop after step one.** A frequent complaint across tech circles is that managers and deadlines force developers to ship after "make it work" and never allocate time for "make it right". On [Reddit](https://www.reddit.com/r/PHP/comments/1aibisq/just%5Fmake%5Fit%5Fwork/), opinions are mixed, with some developers arguing that "just make it work" often turns into a permanent excuse for shipping unmaintainable "spaghetti code" and accumulating massive technical debt. [](https://www.youtube.com/shorts/g8BtNI4h6K0)
+* **Performance cannot always be tacked on.** Engineers like [Nicole Tietz](https://ntietz.com/blog/make-it-fast-from-the-start/) point out that leaving speed for last can trap you in a slow architecture that requires a total rewrite to fix later. [](https://ntietz.com/blog/make-it-fast-from-the-start/)
+* **Micro-cycle vs. macro-cycle confusion.** Fans of the quote emphasize that the three steps are meant to be repeated in **tiny, 15-minute loops** on small pieces of code—not used as an excuse to write an entire messy application and promise to clean it up months later. [](https://dev.to/weeklydevtips/make-it-work-make-it-right-make-it-fast)
+
+If you're thinking about applying this to a current project, let me know:
+
+* Whether you're working on a **brand-new prototype** or **legacy code**
+* Your main **team constraints** (tight deadlines, performance bottlenecks, or messy codebase?)
+
+I can help you map out a practical workflow for balancing speed and code quality.
+
+* [](https://wiki.c2.com/?MakeItWorkMakeItRightMakeItFast)  
+C2 Wiki  
+Make It Work Make It Right Make It Fast - C2 Wiki  
+November 27, 2014 — Make it run, make it right, make it fast. In other words, get to a running system first. Once it is running, make it right. Then m...
+* [](https://keyholesoftware.com/writing-quality-code-practicing-make-it-work-make-it-right-make-it-fast/)  
+Keyhole Software  
+Quality Code Using "Make It Work, Make It Right, Make It Fast"  
+March 23, 2023 — Philosophy: Kent Beck's "Make it work, make it right, make it fast" translated to "Solve the problem, make it maintainable, make i...
+* [](https://dev.to/weeklydevtips/make-it-work-make-it-right-make-it-fast)  
+DEV Community  
+Make It Work. Make It Right. Make It Fast. - DEV Community  
+Sep 17, 2017 — Summary. Your key takeaways from this episode should be: Work on small pieces of work. For each piece: Make it work; Make it right...
+
+Show all
+
 
