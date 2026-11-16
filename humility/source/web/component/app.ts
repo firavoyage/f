@@ -10,7 +10,7 @@ import type { message, messages } from 'lib/generation'
 import { sidebar } from './sidebar'
 import { marked } from 'marked'
 import { copy } from 'lib/web/clipboard'
-import { parse as deserialize, stringify as serialize } from 'yaml'
+const { stringify, parse } = JSON
 
 const max_title_length = 65 * 2
 
@@ -101,12 +101,12 @@ export function app() {
     }
 
     ws.onmessage = (event) => {
-      log(`Server: ${serialize(event.data)}`)
+      log(parse(event.data), parse(event.data).foo)
     }
     ws.onclose = () => {
       log('Disconnected')
 
-      set_timeout(function() {
+      set_timeout(function () {
         connect_ws()
       }, 2000)
     }
@@ -117,13 +117,13 @@ export function app() {
 
     function send(payload) {
       if (ws.readyState === WebSocket.OPEN) {
-        ws.send(payload)
+        ws.send(stringify({ foo: payload }))
       }
     }
 
-    set_interval(function() {
+    set_interval(function () {
       send('hello world')
-    }, 1000)    
+    }, 1000)
   }
 
   use_mount(() => {

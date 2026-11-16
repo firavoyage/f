@@ -45,15 +45,11 @@ app.get(
     },
 
     onMessage(event, ws) {
-      console.log('Received:', event.data)
+      console.log(event.data)
+      // console.log('Received:', event.data)
 
       // Echo message back to client
-      ws.send(
-        JSON.stringify({
-          type: 'message',
-          data: serialize(event.data),
-        }),
-      )
+      ws.send(event.data)
     },
 
     onClose() {
