@@ -88,19 +88,61 @@ _you may cache such prompt individually on localstorage for each client. you may
 
 ## use tool
 
-when you parse a tool, you may prompt it.
+when you parse a tool, you may run it.
+
+it's just regular streaming msg w role tool. but it doesnt (necessarily) call llms.
+
+_auto tool call should be ideally implemented on server side... or not._
+
+anyway you may default to frontend initialized actions, and call on both sides w id (fail silently when duplicates.)
+
+as an extension that hooks (decorates) finish message.
+
+you may
+
+- click such tool yaml
+- approve when prompt
+- or manually directly actually
+  - you can! e.g. fetch any page directly wo an assistant "tool call" if such url mentioned on prompt
+  - for fetch specifically, you may default to md and truncate
+
+idk, maybe you should not run the same tool twice, or you should cancel explicitly if you ignore. doesnt matter.
 
 ---
 
-for "sub agent"... well you may recursively call yourself.
+a tool may point to index.js/index.ts that exports `tool`.
 
-you either use some workflow, 
+(await import).
+
+---
+
+_for "sub agent"... i.e. you may recursively call yourself. well that's out of scope._
+
+you either use some workflow, that is js fn including a few llm steps maybe, which is just a tool.
+
+or agent. typically you branch this thread (or start new, or copy some template), send a prompt, and that's it. the master agent might inspect.
+
+the master agent isnt a regular user. and things should tailor specifically.
 
 ## generate
 
 you can generate iff it's user/tool on the last msg (it's guranteed it always starts w user if i apply such constraint consistently).
 
 ideally you should generate when the last (or all, really) msg finishes.
+
+---
+
+by default, it will start generation on server when you send a msg.
+
+**the server is a user!**
+
+## _stop generation_
+
+you unhook the listener and finish abruptly w specific reason.
+
+you may stop shell or llm fetch. that's irrelevant.
+
+tools should not be harmful regardless and tokens are cheap (and you might not force it on all endpoints).
 
 # possible server actions
 
