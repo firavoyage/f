@@ -14,8 +14,10 @@ log(current_time.timestamp)
 
 log(current_precise_time)
 
-log(monotonic())
+const start_time = monotonic()
 
 await sleep(1)
 
-log(monotonic())
+const end_time = monotonic()
+
+log(start_time, end_time, end_time - start_time)
