@@ -15,6 +15,16 @@
 
 ---
 
+have: integrate w tg and zhihu
+
+tg: personal journal (you may export to md later), chats
+
+zhihu: favlist
+
+you could integrate w berryberry.
+
+---
+
 refactor journal
 
 use scalable file storage for screenshots.
