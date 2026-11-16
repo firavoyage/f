@@ -6,7 +6,20 @@ every browser request should take response.
 
 server broadcast doesnt have to.
 
+it will work if you can display correct for a state, and update the state on event.
 
+---
+
+impl generation lib
+
+stream payload, receive
+
+---
+
+use case:
+
+- analyze py intro pre issues
+- analyze math ref ans issues
 
 ---
 
