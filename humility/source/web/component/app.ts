@@ -10,6 +10,7 @@ import type { message, messages } from 'lib/generation'
 import { sidebar } from './sidebar'
 import { marked } from 'marked'
 import { copy } from 'lib/web/clipboard'
+import { parse as deserialize, stringify as serialize } from 'yaml'
 
 const max_title_length = 65 * 2
 
@@ -39,7 +40,6 @@ export function app() {
   use_style(theme)
 
   const [prompt, set_prompt] = use_state('')
-  // waiting for reply
   const [is_pending, set_is_pending] = use_state(false)
 
   const [folder, set_folder] = use_state('')
@@ -81,7 +81,7 @@ export function app() {
       current_node = focus
     } else {
       break
-    } 
+    }
   }
 
   const content = use_ref()
@@ -93,13 +93,37 @@ export function app() {
 
   use_keyboard('alt+n', new_thread)
 
+  use_mount(() => {
+    const ws = new WebSocket('ws://localhost:8192/api/ws')
+
+    ws.onopen = () => {
+      log('Connected!')
+    }
+
+    ws.onmessage = (event) => {
+      log(`Server: ${serialize(event.data)}`)
+    }
+    ws.onclose = () => {
+      log('Disconnected')
+    }
+
+    ws.onerror = (error) => {
+      console.error('WebSocket error:', error)
+    }
+
+    function send(payload) {
+      if (ws.readyState === WebSocket.OPEN) {
+        ws.send(payload)
+      }
+    }
+
+    set_interval(function() {
+      send({ message: 'hello world' })
+    }, 1000)
+  })
+
   function new_thread() {
     set_thread('')
-    // set_thread(post('new_thread'))
-  }
-
-  function is_focused() {
-    return document.activeElement == field.current
   }
 
   return h(
@@ -202,7 +226,7 @@ export function app() {
                   value: prompt,
                   set_value: set_prompt,
                   ref: field,
-                  autofocus: true
+                  autofocus: true,
                 }),
               ),
             ),
@@ -213,9 +237,28 @@ export function app() {
   )
 }
 
+function cache<T extends (...args: any[]) => any>(fn: T): T {
+  const cache_map = new Map<string, ReturnType<T>>()
+
+  return function (...args: Parameters<T>): ReturnType<T> {
+    const key = JSON.stringify(args)
+
+    if (cache_map.has(key)) {
+      return cache_map.get(key)!
+    }
+
+    const result = fn(...args)
+    cache_map.set(key, result)
+
+    return result
+  } as T
+}
+
 function render(md: string) {
   return marked.parse(md, {
     gfm: true,
     breaks: true,
   })
 }
+
+render = cache(render)

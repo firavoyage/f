@@ -33,5 +33,3 @@ receive (payload){
 
 listen to receive on ws
 ```
-
-

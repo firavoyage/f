@@ -1285,6 +1285,7 @@ humility:
 - archi stream
 - research llm web ux
 - archi thread state websocket
+- refactor websocket
 
 legacy:
 
