@@ -676,4 +676,20 @@ doesnt feel very interesting.
 
 and i would not research memoh arkloop or lobehub for now. similar at its heart. generally akin to codex gui or codex tui (or dify).
 
+16
+
+alternatively, you may consider the usage of websocket.
+
+it doesnt matter how you sync.
+
+- in memory (no network fetch, whether local or not)
+- manual refresh
+- polling
+- streaming (ndjson text streaming, or "standard" sse)
+- websocket
+
+fundamentally, it's a state machine.
+
+see archi thread
+
 

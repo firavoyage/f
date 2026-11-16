@@ -1948,4 +1948,1504 @@ async function main() {
 
 Would you like to add **error handling** (`try/catch` support) or **`for await...of` loop compatibility** (`Symbol.asyncIterator`) to this wrapper?
 
+# how to stream openrouter via js fetch
+
+To stream responses from OpenRouter using JavaScript's native `fetch` API, send a `POST` request with **`stream: true`** in the JSON body and read the Server-Sent Events (SSE) chunks from `response.body.getReader()`. [](https://openrouter.ai/docs/api%5Freference/streaming)
+
+OpenRouter supports both the modern Responses API (`/api/v1/responses`) and the OpenAI-compatible Chat Completions API (`/api/v1/chat/completions`). [](https://www.youtube.com/watch?v=88DEikbzvE4)
+
+### 1\. Chat Completions API (Standard)
+
+Most JavaScript applications use the `/api/v1/chat/completions` endpoint because it matches standard OpenAI formatting. [](https://openrouter.ai/docs/quickstart)
+
+javascript
+
+```
+async function streamOpenRouter(prompt) {
+  const response = await fetch('https://openrouter.ai', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+      'Content-Type': 'application/json',
+      // Optional headers for OpenRouter rankings
+      'HTTP-Referer': 'https://your-site.com',
+      'X-OpenRouter-Title': 'Your App Name',
+    },
+    body: JSON.stringify({
+      model: 'openai/gpt-4o',
+      messages: [{ role: 'user', content: prompt }],
+      stream: true,
+    }),
+  });
+
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.error?.message || `HTTP error! status: ${response.status}`);
+  }
+
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = '';
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+
+    buffer += decoder.decode(value, { stream: true });
+    const lines = buffer.split('\n');
+    
+    // Keep the last incomplete line in the buffer
+    buffer = lines.pop() || '';
+
+    for (const line of lines) {
+      const trimmed = line.trim();
+      
+      // Skip empty lines and OpenRouter keep-alive comments (e.g. ": OPENROUTER PROCESSING")
+      if (!trimmed || trimmed.startsWith(':')) continue;
+
+      if (trimmed.startsWith('data: ')) {
+        const dataStr = trimmed.slice(6);
+        if (dataStr === '[DONE]') return;
+
+        try {
+          const parsed = JSON.parse(dataStr);
+          const content = parsed.choices?.[0]?.delta?.content;
+          if (content) {
+            process.stdout.write(content); // Or append to your UI state
+          }
+        } catch (err) {
+          console.error('Error parsing JSON chunk:', err);
+        }
+      }
+    }
+  }
+}
+
+```
+
+
+
+---
+
+### 2\. Responses API (Alternative)
+
+If you are using the newer `/api/v1/responses` endpoint recommended in the [OpenRouter Streaming Docs](https://openrouter.ai/docs/api%5Freference/streaming), the payload and delta structure differ slightly: [](https://openrouter.ai/docs/api%5Freference/streaming)
+
+* **Request Body.** Pass `input` instead of `messages`.
+* **Stream Event.** Look for `parsed.type === 'response.output_text.delta'` and extract `parsed.delta`. [](https://openrouter.ai/docs/api%5Freference/streaming)
+
+javascript
+
+```
+// Inside the fetch body:
+body: JSON.stringify({
+  model: 'openai/gpt-4o',
+  input: 'Hello!',
+  stream: true,
+})
+
+// Inside the JSON.parse try block:
+if (parsed.type === 'response.output_text.delta') {
+  process.stdout.write(parsed.delta);
+}
+
+```
+
+
+
+---
+
+### Key Implementation Details
+
+* **Handle SSE Comments.** OpenRouter periodically sends `: OPENROUTER PROCESSING` comments to prevent connection timeouts while a model warms up. Always ignore lines starting with `:` before calling `JSON.parse()`, or your stream loop will crash. [](https://openrouter.ai/docs/api%5Freference/streaming)
+* **Buffer Incomplete Lines.** Network chunks do not align cleanly with newline characters. Always store the trailing partial line in a `buffer` variable and prepend it to the next decoded chunk. [](https://openrouter.ai/docs/api%5Freference/streaming)
+* **Use a Parser Library for Production.** For complex apps, OpenRouter recommends installing `eventsource-parser` to handle multi-line fields, comments, and chunk buffering automatically. [](https://openrouter.ai/docs/api%5Freference/streaming)
+* **Handle Pre-Stream Errors.** If your API key is invalid or the model is unavailable, OpenRouter returns a standard JSON error object rather than an SSE stream. Check `if (!response.ok)` before initializing the stream reader. [](https://openrouter.ai/docs/api%5Freference/streaming)
+* **Support Cancellation.** Pass an `AbortController` `signal` into the `fetch` options if you want users to be able to stop generation mid-stream. [](https://froala.com/wysiwyg-editor/examples/stream-ai-chat-openrouter/)
+
+If you're integrating this into a specific setup, let me know:
+
+* **Environment** (Browser/React, Node.js, or Edge runtime?)
+* **Features needed** (e.g., **tool calling**, **abort/cancel buttons**, or **token usage tracking**?)
+
+I can adapt the snippet to fit your exact stack.
+
+* [](https://openrouter.ai/docs/api%5Freference/streaming)  
+OpenRouter  
+API Streaming - Real-time Model Response Integration  
+Nov 12, 2026 — OpenRouter occasionally sends comments to prevent connection timeouts. If you parse the stream by hand, skip lines that start with...
+* [](https://openrouter.ai/docs/quickstart)  
+OpenRouter  
+OpenRouter Quickstart Guide  
+November 11, 2026 — The most direct way to use OpenRouter. Send standard HTTP requests to the /api/v1/responses endpoint. It works with any language o...
+* [](https://www.youtube.com/watch?v=88DEikbzvE4)  
+YouTube·Md Al Mamun  
+How to Use OpenRouter API (Step-by-Step)  
+Sep 18, 2026 — Utilize the OpenRouter API by sending a standard HTTP request to the chat completions endpoint, which is compatible with any progr...  
+2:41
+
+Show all
+
+# how to use sse on hono
+
+You can implement Server-Sent Events (SSE) in Hono using the built-in **`streamSSE`** helper from `hono/streaming`. This helper automatically sets the required `Content-Type: text/event-stream` and caching headers for you, while managing the open connection lifecycle. [](https://devsheets.io/sheets/hono/server-sent-events)
+
+### Server-Side Implementation
+
+Import `streamSSE` from `hono/streaming` and return it from your route handler. Inside the callback, use `stream.writeSSE()` to push formatted messages to the client. [](https://hono.dev/docs/helpers/streaming)
+
+typescript
+
+```
+import { Hono } from 'hono'
+import { streamSSE } from 'hono/streaming'
+
+const app = new Hono()
+let id = 0
+
+app.get('/sse', async (c) => {
+  return streamSSE(
+    c,
+    async (stream) => {
+      // Optional: run cleanup logic when the client disconnects
+      stream.onAbort(() => {
+        console.log('Client disconnected')
+      })
+
+      while (!stream.aborted) {
+        const message = JSON.stringify({ time: new Date().toISOString() })
+        
+        await stream.writeSSE({
+          data: message,
+          event: 'time-update',
+          id: String(id++),
+        })
+
+        // Pause between messages without blocking
+        await stream.sleep(1000)
+      }
+    },
+    (err, stream) => {
+      // Optional error handler
+      console.error('SSE Error:', err)
+    }
+  )
+})
+
+export default app
+
+```
+
+
+
+### Key Helper Methods & Best Practices
+
+* **Formatting messages with `stream.writeSSE()`.** Pass an object containing `data` (required string) along with optional `event` (custom event name), `id` (for client reconnection tracking), and `retry` (reconnection time in milliseconds) fields. [](https://github.com/st3w4r/hono-sse)
+* **Pausing with `stream.sleep(ms)`.** Always use `await stream.sleep()` instead of standard `setTimeout` promises so the stream cleanly interrupts if the client disconnects. [](https://devsheets.io/sheets/hono/server-sent-events)
+* **Detecting disconnections.** Check `!stream.aborted` inside loops to stop generating data when a user closes the tab, or register a callback with `stream.onAbort()` to clean up database listeners or intervals. [](https://hono.dev/docs/helpers/streaming)
+* **Handling errors.** Hono's global `app.onError` hook will not catch errors thrown inside an active stream because the HTTP response headers have already been sent. Pass a third callback argument to `streamSSE(c, callback, onError)` to handle mid-stream exceptions. [](https://hono.dev/docs/helpers/streaming)
+* **Cloudflare Workers local dev.** If streaming buffers instead of arriving in real time while testing locally on Wrangler, set `c.header('Content-Encoding', 'Identity')` right before returning `streamSSE`. [](https://hono.dev/docs/helpers/streaming)
+
+### Client-Side Consumption
+
+On the frontend, use the browser's native **`EventSource`** API to connect to your endpoint and listen for incoming events. [](https://devsheets.io/sheets/hono/server-sent-events)
+
+javascript
+
+```
+const eventSource = new EventSource('/sse')
+
+// Listen for the custom 'time-update' event defined on the server
+eventSource.addEventListener('time-update', (event) => {
+  const parsedData = JSON.parse(event.data)
+  console.log('Received:', parsedData)
+})
+
+// Listen for default unnamed messages (when no 'event' property is sent)
+eventSource.onmessage = (event) => {
+  console.log('Default message:', event.data)
+}
+
+eventSource.onerror = (err) => {
+  console.error('EventSource failed:', err)
+}
+
+```
+
+
+
+For more details on stream behavior across different runtimes, check the official [Hono Streaming Helper documentation](https://hono.dev/docs/helpers/streaming). 
+
+If you're building a specific feature, let me know:
+
+* Which **JavaScript runtime** you are targeting (Node.js, Cloudflare Workers, Bun, Deno?)
+* Whether you need to **broadcast events** from outside the route handler (like via an event emitter or Redis)
+
+I can show you how to structure a pub/sub setup or handle runtime-specific timeouts.
+
+* [](https://hono.dev/docs/helpers/streaming)  
+Hono  
+Streaming Helper - Hono  
+November 6, 2026 — It returns a simple streaming response as Response object.get('/stream', It returns a streaming response with. It allows you to st...
+* [](https://github.com/st3w4r/hono-sse)  
+GitHub  
+st3w4r/hono-sse: Use Server Sent Event with Hono - GitHub  
+Open in browser, Inspect > Network tab to observe SSE events open public/index.html Receive SSE events with curl curl http://local...
+* [](https://dev.to/yanael/hono-with-server-sent-events-6gf)  
+DEV Community  
+Hono with Server Sent Events  
+January 18, 2024 — Sending Data with SSE Format. SSE allows us to send custom event types to handle specific client-side actions: stream.write('event...
+
+Show all
+
+# how to listen sse on web
+
+To listen to Server-Sent Events (SSE) on the web, use the browser's built-in **EventSource API** in JavaScript. It opens a persistent HTTP connection to a server endpoint and handles incoming messages and automatic reconnections automatically. [](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent%5Fevents/Using%5Fserver-sent%5Fevents)
+
+### 1\. Basic Setup with `EventSource`
+
+Pass the URL of your SSE endpoint to a new `EventSource` instance, then attach event listeners to process the incoming stream. [](https://web.dev/articles/eventsource-basics)
+
+javascript
+
+```
+// 1. Open the connection
+const eventSource = new EventSource('/api/events');
+
+// 2. Listen for standard unnamed messages
+eventSource.onmessage = (event) => {
+  console.log('New message:', event.data);
+  
+  // If your server sends JSON strings, parse them:
+  // const parsedData = JSON.parse(event.data);
+};
+
+// 3. Handle connection open
+eventSource.onopen = () => {
+  console.log('SSE connection established.');
+};
+
+// 4. Handle errors (the browser will auto-reconnect by default)
+eventSource.onerror = (error) => {
+  console.error('SSE error:', error);
+  if (eventSource.readyState === EventSource.CLOSED) {
+    console.log('Connection was closed.');
+  }
+};
+
+// 5. Close the connection manually when no longer needed
+// eventSource.close();
+
+```
+
+
+
+### 2\. Listening for Custom Named Events
+
+If your server sends messages with a specific `event:` field (for example, `event: userJoined`), `onmessage` will ignore them. Use `addEventListener` to listen for custom event names. [](https://www.youtube.com/watch?v=dlA8iokrUjU)
+
+javascript
+
+```
+eventSource.addEventListener('userJoined', (event) => {
+  const user = JSON.parse(event.data);
+  console.log(`${user.name} joined the room.`);
+});
+
+```
+
+
+
+### 3\. Cross-Origin Requests (CORS)
+
+If your SSE endpoint is on a different domain and requires cookies or authentication credentials, pass `{ withCredentials: true }` as the second argument. Your server must also return the `Access-Control-Allow-Origin` header. [](https://auth0.com/blog/developing-real-time-web-applications-with-server-sent-events/)
+
+javascript
+
+```
+const eventSource = new EventSource('https://example.com', {
+  withCredentials: true,
+});
+
+```
+
+
+
+### 4\. Handling `POST` Requests or Custom Headers
+
+The native `EventSource` API only supports `GET` requests and does not allow you to set custom HTTP headers like `Authorization: Bearer <token>`. If you need to send a `POST` body or custom headers (common when streaming AI responses), use the **Fetch API** with a `ReadableStream` or a lightweight library like Microsoft's **@microsoft/fetch-event-source**. [](https://www.youtube.com/watch?v=GpOTaKdxamY)
+
+javascript
+
+```
+// Example using native fetch() for a POST SSE stream
+async function listenWithFetch() {
+  const response = await fetch('/api/stream', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer YOUR_TOKEN'
+    },
+    body: JSON.stringify({ prompt: 'Hello' })
+  });
+
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+
+  while (true) {
+    const { value, done } = await reader.read();
+    if (done) break;
+    
+    const chunk = decoder.decode(value, { stream: true });
+    console.log('Received chunk:', chunk);
+  }
+}
+
+```
+
+
+
+### Key Checklist for Success
+
+* **Server Headers.** Ensure your backend responds with `Content-Type: text/event-stream`, `Cache-Control: no-cache`, and `Connection: keep-alive`.
+* **Message Formatting.** Every message sent by the server must start with `data: ` and end with two newline characters (`\n\n`).
+* **Cleanup.** Always call `eventSource.close()` when the user leaves the page or a UI component unmounts (such as inside a `useEffect` cleanup function in React) to avoid hitting browser connection limits. [](https://dev.to/tom-takeru/the-simplest-demo-on-sseserver-send-events-1mib)
+
+If you're integrating this into a specific setup, let me know:
+
+* **Frontend framework** (Vanilla JS, React, Vue, etc.)
+* **Authentication method** (Cookies, Bearer token, or public endpoint)
+
+I can provide a tailored code snippet with proper lifecycle cleanup or header handling.
+
+* [](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent%5Fevents/Using%5Fserver-sent%5Fevents)  
+MDN Web Docs  
+Using server-sent events - Web APIs | MDN  
+September 3, 2026 — To open a connection to the server to begin receiving events from it, create a new EventSource object with the URL of a script tha...
+* [](https://www.youtube.com/watch?v=dlA8iokrUjU)  
+YouTube·CodeLucky  
+HTML Server-Sent Events (SSE) Tutorial  
+Apr 5, 2025 — \`Cache-Control\` to \`no-cache\`, ensuring correct headers and empty line delimiters.  
+6:42
+* [](https://leanmind.es/en/blog/server-sent-events-sse-simplified-real-time-communication)  
+Lean Mind  
+Server-Sent Events (SSE): Simplified Real-Time Communication  
+December 17, 2025 — Messages are sent as text with a specific syntax. Each event ends with a blank line ( \\n\\n ). Example: data: {"stock": "GOOG", "pr...
+
+Show all
+
+# how to listen sse on web w js fetch
+
+To listen to Server-Sent Events (SSE) using the JavaScript `fetch` API, you read the response body incrementally via a **`ReadableStream` reader (** **`response.body.getReader()`)**. Unlike the built-in `EventSource` API, `fetch` lets you send `POST` requests, include custom headers like `Authorization` tokens, and pass request payloads. [](https://www.web-developpeur.com/en/blog/sse-fetch-readable-stream-api-key)
+
+---
+
+### 1\. Native `fetch` \+ `ReadableStream` (Zero Dependencies)
+
+Because network chunks do not always align with SSE event boundaries (which end with `\n\n`), you must decode the bytes with `TextDecoder` and maintain a string buffer to split complete events. [](https://www.youtube.com/watch?v=DYtfD3tXGEA&t=130)
+
+javascript
+
+```
+async function listenSSE(url, payload, token) {
+  const controller = new AbortController();
+
+  const response = await fetch(url, {
+    method: 'POST', // Supports POST, PUT, GET, etc.
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'text/event-stream',
+      'Authorization': `Bearer ${token}`,
+    },
+    body: JSON.stringify(payload),
+    signal: controller.signal,
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP error: ${response.status}`);
+  }
+
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = '';
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+
+    // Decode incoming bytes and append to buffer
+    buffer += decoder.decode(value, { stream: true });
+
+    // SSE messages are separated by double newlines
+    const events = buffer.split('\n\n');
+    // Keep the last incomplete chunk in the buffer
+    buffer = events.pop() || '';
+
+    for (const rawEvent of events) {
+      parseAndHandleEvent(rawEvent);
+    }
+  }
+}
+
+function parseAndHandleEvent(rawEvent) {
+  const lines = rawEvent.split('\n');
+  let eventType = 'message';
+  let data = '';
+
+  for (const line of lines) {
+    if (line.startsWith('event:')) {
+      eventType = line.slice(6).trim();
+    } else if (line.startsWith('data:')) {
+      // Spec allows multiple data: lines per event, joined by \n
+      data += (data ? '\n' : '') + line.slice(5).trim();
+    }
+  }
+
+  if (data) {
+    console.log(`[${eventType}]`, data);
+    // Optional: JSON.parse(data) if your server sends JSON
+  }
+}
+
+```
+
+
+
+#### Key Considerations for Native `fetch`
+
+* **Chunk Boundaries.** Never assume one `reader.read()` call equals one SSE message. Always buffer until `\n\n`.
+* **Multi-byte Characters.** Pass `{ stream: true }` to `decoder.decode()` so UTF-8 characters (like emojis) split across chunks do not corrupt.
+* **Canceling Streams.** Pass an `AbortController` signal to `fetch()` and call `controller.abort()` to close the connection when leaving a page or stopping a stream.
+* **Manual Reconnection.** Unlike `EventSource`, native `fetch` does not automatically reconnect or track `Last-Event-ID` if the network drops. [](https://www.youtube.com/watch?v=TznzonTliRI&t=25)
+
+---
+
+### 2\. Using `@microsoft/fetch-event-source` (Recommended for Production)
+
+If you want `fetch` capabilities (custom headers, `POST` bodies) alongside `EventSource` features (automatic retries, `Last-Event-ID` tracking, and built-in SSE parsing), use Microsoft's `@microsoft/fetch-event-source` library. [](https://milanjovanovic.tech/blog/fetch-event-source)
+
+bash
+
+```
+npm install @microsoft/fetch-event-source
+
+```
+
+
+
+javascript
+
+```
+import { fetchEventSource } from '@microsoft/fetch-event-source';
+
+const controller = new AbortController();
+
+await fetchEventSource('https://example.com', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer YOUR_TOKEN',
+  },
+  body: JSON.stringify({ prompt: 'Hello world' }),
+  signal: controller.signal,
+
+  async onopen(response) {
+    if (response.ok && response.headers.get('content-type')?.includes('text/event-stream')) {
+      return; // Connection established
+    }
+    throw new Error(`Unexpected response: ${response.status}`);
+  },
+
+  onmessage(event) {
+    // Automatically parses event.id, event.event, and event.data
+    console.log(event.event, JSON.parse(event.data));
+  },
+
+  onerror(err) {
+    console.error('Stream error:', err);
+    // Throw the error to stop automatic retries; otherwise, it retries automatically
+    throw err;
+  },
+});
+
+```
+
+
+
+---
+
+### Comparison: `EventSource` vs. `fetch` vs. `fetch-event-source`
+
+| Feature                  | Native EventSource | Native fetch \+ ReadableStream   | @microsoft/fetch-event-source |
+| ------------------------ | ------------------ | -------------------------------- | ----------------------------- |
+| **HTTP Methods**         | GET only           | Any (POST, PUT, GET, etc.)       | Any (POST, PUT, GET, etc.)    |
+| **Custom Headers**       | Not supported      | Supported                        | Supported                     |
+| **Auto-Reconnection**    | Built-in           | Manual implementation required   | Built-in                      |
+| **SSE Protocol Parsing** | Built-in           | Manual \\n\\n buffering required | Built-in                      |
+| **Bundle Size**          | 0 KB (Browser API) | 0 KB (Browser API)               | \~3 KB                        |
+
+If you're integrating this into a specific setup, let me know:
+
+* **Your framework** (React, Vue, vanilla JS, or Node.js)
+* **Your backend payload format** (e.g., OpenAI-style `[DONE]` markers or custom event types)
+
+I can tailor the stream parser and cleanup lifecycle for your exact stack.
+
+* [](https://www.web-developpeur.com/en/blog/sse-fetch-readable-stream-api-key)  
+www.web-developpeur.com  
+SSE with fetch + ReadableStream: beyond EventSource  
+Jul 15, 2025 — With fetch , the HTTP response arrives normally, but instead of waiting for the body to be complete, you can read it incrementally...
+* [](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent%5Fevents/Using%5Fserver-sent%5Fevents)  
+MDN Web Docs  
+Using server-sent events - Web APIs | MDN  
+September 3, 2026 — To open a connection to the server to begin receiving events from it, create a new EventSource object with the URL of a script tha...
+* [](https://www.youtube.com/watch?v=TznzonTliRI&t=25)  
+YouTube·Learn with Whiteboard  
+Server-Sent Events vs WebSockets vs Webhooks Explained  
+Oct 23, 2026 — \`EventSource\` only supports GET requests without custom headers, so chat applications may use \`fetch\` or a helper library for POST...  
+1m
+
+Show all
+
+# how to use pi ai sdk
+
+To use the Pi AI SDK, you can either embed the native **`@earendil-works/pi-coding-agent`** package directly into a Node.js or Bun process or connect Pi as an agent harness inside the **Vercel AI SDK** using `@ai-sdk/harness-pi`. Both approaches give your TypeScript application programmatic access to Pi's file-editing and shell-execution capabilities. [](https://ai-sdk.dev/providers/ai-sdk-harnesses/pi)
+
+---
+
+#### Option 1: Using the Native Pi SDK
+
+The native package gives TypeScript applications direct access to Pi agent sessions, tools, and local storage. Full API details are available in the [Pi SDK Documentation](https://pi.dev/docs/latest/sdk). 
+
+* **Installation:** Install the core agent package (requires Node.js 22.19+ or Bun):  
+bash  
+```  
+npm install @earendil-works/pi-coding-agent  
+```  
+
+* **Basic Usage:** Initialize an agent session, prompt the model, and dispose of the session when finished:  
+typescript  
+```  
+import { createAgentSession } from "@earendil-works/pi-coding-agent";  
+const { session } = await createAgentSession();  
+try {  
+  await session.prompt("What files are in the current directory?");  
+  console.log(session.getLastAssistantText());  
+} finally {  
+  session.dispose();  
+}  
+```  
+
+* **Session Persistence:** Pi writes session history to JSONL files by default, or you can configure an in-memory manager to avoid disk writes: [](https://pi.dev/docs/latest/sdk)  
+typescript  
+```  
+import { createAgentSession, SessionManager } from "@earendil-works/pi-coding-agent";  
+const { session } = await createAgentSession({  
+  sessionManager: SessionManager.inMemory(),  
+});  
+```  
+
+
+---
+
+#### Option 2: Using Pi with the Vercel AI SDK
+
+You can integrate Pi as a `HarnessAgent` within the Vercel AI SDK ecosystem. Review the Vercel AI SDK Pi Harness Guide for experimental options. [](https://ai-sdk.dev/providers/ai-sdk-harnesses/pi)
+
+* **Installation:** Install the harness and sandbox dependencies:  
+bash  
+```  
+npm install @ai-sdk/harness @ai-sdk/harness-pi @ai-sdk/sandbox-vercel  
+```  
+
+* **Configuration & Streaming:** Set up your API credentials, launch a sandbox session, and stream the agent's real-time output. You can find the complete implementation structure in the referenced web document. [](https://ai-sdk.dev/providers/ai-sdk-harnesses/pi)
+
+If you'd like to dive deeper, let me know:
+
+* Whether you are using the **native Pi SDK** or the **Vercel AI SDK harness**
+* Which **LLM provider** or **custom credential store** you plan to connect
+* If you want to **stream events**, **fork sessions**, or add **custom tools**
+
+I can share a tailored code example for your exact setup.
+
+* [](https://ai-sdk.dev/providers/ai-sdk-harnesses/pi)  
+AI SDK  
+Pi | AI SDK  
+Pi runs in the host Node. js process and uses the sandbox as a remote filesystem and shell. It does not install a bridge inside th...
+* [](https://pi.dev/docs/latest/sdk)  
+Pi.dev  
+SDK · Documentation  
+This uses the working directory, discovered resources, stored settings, and configured credentials. prompt() resolves when the run...
+* [](https://pi.dev/docs/latest/quickstart)  
+Pi.dev  
+Quickstart · Documentation · Pi  
+Installation: Installer script (Node.js 22.19+), Usage: Run pi in working folder; configure model via /login and /model; enter tas...
+
+Show all
+
+# how to use pi model sdk
+
+To use the **Pi SDK** (`@earendil-works/pi-coding-agent`), install the package in a Node.js or Bun project and instantiate an agent session with `createAgentSession()`. This gives you direct programmatic TypeScript access to Pi's models, tools, and session state without running the standalone terminal UI. [](https://pi.dev/docs/latest/sdk)
+
+### 1\. Installation and Setup
+
+Before running prompts through the SDK, install the core package and configure your model credentials. [](https://pi.dev/docs/latest/quickstart)
+
+* **Install the package.** Run `npm install @earendil-works/pi-coding-agent` (requires Node.js 22.19+) or `bun add @earendil-works/pi-coding-agent` in your project directory.
+* **Authenticate a model provider.** Run `pi` in your terminal and use `/login` to connect an account, or set your provider's API key (such as `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, or `OPENROUTER_API_KEY`) as an environment variable. [](https://www.youtube.com/watch?v=BZ0w0JhPQ9o&t=61)
+
+### 2\. Basic Usage
+
+The core workflow involves creating a session, sending a prompt, reading the response, and disposing of the session when finished. [](https://pi.dev/docs/latest/sdk)
+
+typescript
+
+```
+import { createAgentSession } from "@earendil-works/pi-coding-agent";
+
+async function run() {
+  // Initializes the agent using your current directory and configured credentials
+  const { session } = await createAgentSession();
+
+  try {
+    await session.prompt("What files are in the current directory?");
+    console.log(session.getLastAssistantText());
+  } finally {
+    // Always clean up resources when done
+    session.dispose();
+  }
+}
+
+run();
+
+```
+
+
+
+_Source: [Pi SDK Documentation](https://pi.dev/docs/latest/sdk)_ 
+
+### 3\. Key SDK Capabilities
+
+You can customize how the agent stores history, streams output, and interacts with custom functions:
+
+* **In-memory sessions.** By default, Pi saves session history as local JSONL files. Pass `sessionManager: SessionManager.inMemory()` into `createAgentSession()` if you want stateless runs that do not write to disk. [](https://pi.dev/docs/latest/sdk)
+* **Event streaming.** Instead of waiting for `session.prompt()` to finish, attach an event listener with `session.subscribe()` to stream text chunks and tool execution updates in real time. [](https://roman.pt/posts/pi-sdk-version/)
+* **Custom tools.** Extend the model's capabilities by passing inline tools built with `defineTool()` and TypeBox schemas directly into the session configuration. [](https://roman.pt/posts/pi-sdk-version/)
+* **Vercel AI SDK integration.** If you already use the Vercel AI SDK, you can use the `@ai-sdk/harness-pi` adapter (`createPi`) to run Pi as a model harness inside a sandboxed environment. [](https://ai-sdk.dev/providers/ai-sdk-harnesses/pi)
+* **Python wrapper.** While the official SDK is built for TypeScript, a user on [Reddit](https://www.reddit.com/r/PiCodingAgent/comments/1wm2g7w/piagentpythonsdk%5Fuse%5Fyour%5Finstalled%5Fpi%5Fcoding/) shared a community wrapper (`pip install pi-agent-python-sdk`) that exposes `PiClient` and `AsyncPiClient` for Python projects. [](https://www.reddit.com/r/PiCodingAgent/comments/1wm2g7w/piagentpythonsdk%5Fuse%5Fyour%5Finstalled%5Fpi%5Fcoding/)
+
+For a visual walkthrough of setting up Pi and using its TypeScript SDK in a project, watch this tutorial:
+
+9:24
+
+[](https://www.youtube.com/watch?v=hV%5FhnPJ2r6k)
+
+How to Use Pi as a Coding Agent (Standalone + SDK Basics)
+
+11K views · 7 months ago
+
+YouTube · Vilson Vieira
+
+If you'd like help writing a specific integration, let me know:
+
+* Which **model provider** you are connecting (e.g., Anthropic, OpenAI, OpenRouter, or a local model)
+* Whether you need **streaming responses** or **custom tools**
+
+I can put together a tailored code snippet for your setup.
+
+* [](https://pi.dev/docs/latest/sdk)  
+Pi.dev  
+SDK · Documentation · Pi  
+SessionManager is authoritative for finalized model context. Use an in-memory manager when the host does not want session files: S...
+* [](https://roman.pt/posts/pi-sdk-version/)  
+Roman Imankulov  
+Agent engineering: Pi SDK - Roman Imankulov  
+June 7, 2026 — TypeScript programmatic SDK for embedding the Pi coding agent in scripts with inline tools using \`defineTool()\` and TypeBox. custo...
+* [](https://ai-sdk.dev/providers/ai-sdk-harnesses/pi)  
+AI SDK  
+Pi | AI SDK  
+Setup: pnpm add @ai-sdk/harness. Tools: read, write, edit, bash, grep, glob, ls. text parts must precede image parts in user messa...
+
+Show all
+
+# how to use sse on hono whenever a callback fires until finish
+
+To push events to a client every time an external callback or event listener fires, wrap the subscription inside a **`Promise`** inside [Hono's streamSSE helper](https://hono.dev/docs/helpers/streaming). Because `streamSSE` automatically closes the HTTP connection as soon as its async callback finishes, awaiting an unresolved Promise keeps the stream open until your process finishes or the client disconnects. [](https://github.com/honojs/hono/issues/2050)
+
+### Complete Example
+
+Below is a pattern using an `EventEmitter` (or any callback-based SDK/job runner) that pushes data whenever a `'data'` callback fires and closes cleanly on `'done'` or client abort.
+
+typescript
+
+```
+import { Hono } from 'hono'
+import { streamSSE } from 'hono/streaming'
+import { EventEmitter } from 'node:events'
+
+const app = new Hono()
+
+app.get('/events', (c) => {
+  return streamSSE(c, async (stream) => {
+    let id = 0
+    const emitter = new EventEmitter()
+
+    // 1. Wrap the lifecycle in a Promise so streamSSE stays open
+    await new Promise<void>((resolve) => {
+      const onData = async (payload: unknown) => {
+        if (stream.aborted) return
+        await stream.writeSSE({
+          data: JSON.stringify(payload),
+          event: 'update',
+          id: String(id++),
+        })
+      }
+
+      const cleanup = () => {
+        emitter.off('data', onData)
+        emitter.off('done', onDone)
+        resolve() // Resolves the Promise, letting streamSSE close the stream
+      }
+
+      const onDone = async () => {
+        if (!stream.aborted) {
+          await stream.writeSSE({ data: 'completed', event: 'done' })
+        }
+        cleanup()
+      }
+
+      // 2. Clean up listeners if the client closes the browser/connection early
+      stream.onAbort(() => {
+        cleanup()
+      })
+
+      // 3. Attach your callbacks
+      emitter.on('data', onData)
+      emitter.on('done', onDone)
+
+      // Trigger or start your background process here
+      startBackgroundTask(emitter)
+    })
+  })
+})
+
+```
+
+
+
+### Key Mechanics to Keep in Mind
+
+* **Keep the handler alive.** `streamSSE` ends the response the moment its callback resolves. Wrapping your listener setup in `await new Promise((resolve) => ...)` pauses execution without polling or `stream.sleep()` loops until you explicitly call `resolve()`. [](https://hono.dev/docs/helpers/streaming)
+* **Clean up on client disconnect.** Always register `stream.onAbort()` to remove your event listeners and call `resolve()`. Without this, closed connections can leak memory or throw errors when trying to write to a closed stream. [](https://hono.dev/docs/helpers/streaming)
+* **Preserve write ordering.** If your callback fires rapidly in parallel, `await stream.writeSSE()` calls might interleave. You can chain writes onto a promise queue (`writeQueue = writeQueue.then(() => stream.writeSSE(...))`) to guarantee strict chronological delivery.
+* **Check `Content-Encoding` on Cloudflare Workers.** If you deploy to Cloudflare Workers and notice responses buffering instead of streaming immediately, set `c.header('Content-Encoding', 'Identity')` before returning `streamSSE`. [](https://hono.dev/docs/helpers/streaming)
+
+If you'd like to tailor this further, let me know:
+
+* **What runtime** you are deploying to (Node.js, Bun, Cloudflare Workers, Deno)
+* **What triggers the callbacks** (an SDK callback, Redis pub/sub, database listener, or AI stream)
+
+I can adapt the exact cleanup and backpressure handling for your setup.
+
+* [](https://hono.dev/docs/helpers/streaming)  
+Hono  
+Streaming Helper - Hono  
+November 6, 2026 — If you are developing an application for Cloudflare Workers, streaming may not work well on Wrangler. If so, add Identity for Cont...
+* [](https://github.com/honojs/hono/issues/2050)  
+GitHub  
+Hono streams immediately closes the connection unless sleep is used  
+January 20, 2024 — Basically the streamSSE callback never resolves. Without this, Hono immediately resolves the callback, returns and closes the conn...
+
+# how to use sse on hono whenever a callback fires until finish in dep free js
+
+9:49 AM
+
+### how to use sse on hono whenever a callback fires until finish in dep free js
+
+To stream Server-Sent Events (SSE) in Hono whenever a callback fires until it finishes—without adding any external dependencies—combine Hono's built-in **`streamSSE`** helper with a native JavaScript **`Promise`**.
+
+By default, Hono automatically closes the SSE connection as soon as the `streamSSE` async function finishes executing. Wrapping your callback listener inside an `await new Promise(...)` keeps the stream open while events fire, and calling `resolve()` inside your finish callback cleanly closes the connection. [](https://hono.dev/docs/helpers/streaming)
+
+#### Dependency-Free Implementation
+
+You can import `streamSSE` directly from `hono/streaming` (included in Hono out of the box) and use standard JS promises and event cleanup: [](https://hono.dev/docs/helpers/streaming)
+
+javascript
+
+```
+import { Hono } from 'hono'
+import { streamSSE } from 'hono/streaming'
+
+const app = new Hono()
+
+app.get('/events', (c) => {
+  return streamSSE(c, async (stream) => {
+    let id = 0
+
+    // Keep the stream open until the task finishes or the client disconnects
+    await new Promise((resolve) => {
+      const cleanup = () => {
+        // Unsubscribe or remove your event listeners here
+        yourTask.off('data', onData)
+        yourTask.off('done', onFinish)
+        resolve()
+      }
+
+      // 1. Fire SSE whenever your callback triggers
+      const onData = (payload) => {
+        // Check stream.aborted to avoid writing to a closed connection
+        if (stream.aborted) return
+
+        stream.writeSSE({
+          data: typeof payload === 'string' ? payload : JSON.stringify(payload),
+          event: 'update',
+          id: String(id++),
+        })
+      }
+
+      // 2. Resolve the promise when your task finishes
+      const onFinish = async () => {
+        if (!stream.aborted) {
+          await stream.writeSSE({
+            data: 'complete',
+            event: 'done',
+            id: String(id++),
+          })
+        }
+        cleanup()
+      }
+
+      // 3. Clean up if the client closes the browser/connection early
+      stream.onAbort(() => {
+        cleanup()
+      })
+
+      // Register your callbacks / start your task
+      yourTask.on('data', onData)
+      yourTask.on('done', onFinish)
+    })
+  })
+})
+
+export default app
+
+```
+
+
+
+#### Key Details
+
+* **Holding the connection open.** `streamSSE` stays active until its callback function returns. Awaiting an unresolved `Promise` prevents Hono from closing the HTTP response prematurely. [](https://github.com/honojs/hono/issues/2050)
+* **Handling client disconnects.** Always register `stream.onAbort()` so you can detach your listeners and resolve the promise if the user closes the tab before the task finishes. [](https://hono.dev/docs/helpers/streaming)
+* **Avoiding race conditions.** When `onFinish` runs, `await` the final `stream.writeSSE(...)` call before calling `resolve()`. Otherwise, Hono may close the stream before the final message flushes to the client.
+* **Custom error handling.** You can pass an optional third argument `(err, stream) => { ... }` to `streamSSE` if you want to intercept stream errors rather than letting Hono log them to the console. [](https://hono.dev/docs/helpers/streaming)
+
+If you are using a specific **runtime** (like Cloudflare Workers, Node.js, or Bun) or a particular **callback pattern** (like `EventEmitter` or a third-party SDK), let me know and I can tailor the listener setup and cleanup logic to match.
+
+* [](https://hono.dev/docs/helpers/streaming)  
+Hono  
+Streaming Helper - Hono  
+The third argument of the streaming helper is an error handler. This argument is optional, if you don't specify it, the error will...
+* [](https://github.com/honojs/hono/issues/2050)  
+GitHub  
+Hono streams immediately closes the connection unless sleep is used  
+Basically the streamSSE callback never resolves. Without this, Hono immediately resolves the callback, returns and closes the conn...
+
+## how to fetch w callback on frontend
+
+how to fetch w callback on frontend
+
+9:52 AM
+
+### how to fetch w callback on frontend
+
+To receive those Server-Sent Events on the frontend with zero dependencies and trigger a callback whenever data arrives until the stream ends, use the browser's built-in **`EventSource` API** (for simple `GET` requests) or the **`fetch` API with `ReadableStream`** (if you need `POST` requests or custom headers).
+
+#### Option 1: Using `EventSource` (Best for `GET` requests)
+
+`EventSource` is built into all modern browsers. It automatically parses `event`, `data`, and `id` fields from your Hono `streamSSE` endpoint.
+
+javascript
+
+```
+function subscribeToEvents(url, { onData, onDone, onError }) {
+  const source = new EventSource(url)
+
+  // 1. Listen for the custom 'update' event sent by Hono
+  source.addEventListener('update', (event) => {
+    const parsed = JSON.parse(event.data)
+    onData(parsed)
+  })
+
+  // 2. Listen for the custom 'done' event and close the connection
+  source.addEventListener('done', (event) => {
+    onDone?.(event.data)
+    source.close() // Crucial: prevents EventSource from auto-reconnecting
+  })
+
+  // 3. Handle connection drops or server errors
+  source.onerror = (err) => {
+    onError?.(err)
+    source.close()
+  }
+
+  // Return an unsubscribe function for manual cleanup (e.g., on component unmount)
+  return () => source.close()
+}
+
+// Usage
+const stop = subscribeToEvents('/events', {
+  onData: (payload) => console.log('Received:', payload),
+  onDone: () => console.log('Stream finished!'),
+  onError: (err) => console.error('Stream error:', err),
+})
+
+```
+
+
+
+* **Closing explicitly.** `EventSource` automatically tries to reconnect whenever the server closes the connection. Calling `source.close()` inside your `done` listener stops it from restarting the stream.
+
+---
+
+#### Option 2: Using `fetch` \+ `TextDecoderStream` (Best for `POST` or Auth Headers)
+
+If your Hono route is a `POST` endpoint (for example, submitting a prompt or payload to start a job) or requires an `Authorization` header, use `fetch` and read `response.body` chunk by chunk.
+
+javascript
+
+```
+async function fetchSSE(url, options, { onData, onDone }) {
+  const response = await fetch(url, {
+    ...options,
+    headers: {
+      Accept: 'text/event-stream',
+      ...options?.headers,
+    },
+  })
+
+  if (!response.ok || !response.body) {
+    throw new Error(`HTTP error: ${response.status}`)
+  }
+
+  // Pipe raw bytes into a UTF-8 text stream
+  const reader = response.body
+    .pipeThrough(new TextDecoderStream())
+    .getReader()
+
+  let buffer = ''
+
+  while (true) {
+    const { value, done } = await reader.read()
+    if (done) break
+
+    buffer += value
+    // SSE messages are separated by double newlines
+    const messages = buffer.split('\n\n')
+    buffer = messages.pop() // Keep any incomplete trailing chunk in the buffer
+
+    for (const msg of messages) {
+      let eventType = 'message'
+      let data = ''
+
+      for (const line of msg.split('\n')) {
+        if (line.startsWith('event:')) eventType = line.slice(6).trim()
+        if (line.startsWith('data:')) data += line.slice(5).trim()
+      }
+
+      if (eventType === 'done') {
+        onDone?.(data)
+        return
+      }
+      if (data) {
+        onData(JSON.parse(data))
+      }
+    }
+  }
+}
+
+// Usage
+fetchSSE(
+  '/events',
+  {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ taskId: 123 }),
+  },
+  {
+    onData: (payload) => console.log('Chunk:', payload),
+    onDone: () => console.log('All done!'),
+  }
+)
+
+```
+
+
+
+#### Which One Should You Pick?
+
+| Feature            | EventSource       | fetch \+ ReadableStream       |
+| ------------------ | ----------------- | ----------------------------- |
+| **HTTP Methods**   | GET only          | GET, POST, PUT, etc.          |
+| **Custom Headers** | No (cookies only) | Yes (Authorization, API keys) |
+| **SSE Parsing**    | Automatic         | Manual line splitting         |
+| **Auto-Reconnect** | Built-in          | Manual                        |
+
+If you are using a frontend framework like **React, Vue, or Svelte**, or need to support **request cancellation (`AbortController`)** mid-stream, let me know and I can show you how to wire that up cleanly.
+
+## can you send arbitrary json payload directly wo conventional sse format like event colon
+
+can you send arbitrary json payload directly wo conventional sse format like event colon
+
+9:54 AM
+
+### can you send arbitrary json payload directly wo conventional sse format like event colon
+
+**Yes, you can stream raw JSON payloads directly without `event:` or `data:` prefixes by using Hono's `streamText` (or `stream`) helper alongside Newline-Delimited JSON (NDJSON).**
+
+If you omit the `data:` prefix, you are no longer using the formal SSE protocol—meaning the browser's `EventSource` API will ignore the messages. However, if you are reading the response with `fetch()` on the frontend, streaming raw JSON lines separated by `\n` (NDJSON) is cleaner, faster to parse, and avoids SSE formatting overhead.
+
+#### 1\. Backend: Hono with `streamText` (NDJSON)
+
+Instead of `streamSSE`, import `streamText` from `hono/streaming` and write each serialized JSON object followed by a newline (`\n`) using `stream.writeln()`.
+
+javascript
+
+```
+import { Hono } from 'hono'
+import { streamText } from 'hono/streaming'
+
+const app = new Hono()
+
+app.post('/stream', (c) => {
+  // Optional: standard MIME type for newline-delimited JSON
+  c.header('Content-Type', 'application/x-ndjson')
+
+  return streamText(c, async (stream) => {
+    await new Promise((resolve) => {
+      const cleanup = () => {
+        yourTask.off('data', onData)
+        yourTask.off('done', onFinish)
+        resolve()
+      }
+
+      // 1. Write raw JSON + newline whenever your callback fires
+      const onData = (payload) => {
+        if (stream.aborted) return
+        stream.writeln(JSON.stringify(payload))
+      }
+
+      // 2. Optionally write a final object, then close the stream
+      const onFinish = async () => {
+        if (!stream.aborted) {
+          await stream.writeln(JSON.stringify({ done: true }))
+        }
+        cleanup()
+      }
+
+      stream.onAbort(cleanup)
+
+      yourTask.on('data', onData)
+      yourTask.on('done', onFinish)
+    })
+  })
+})
+
+export default app
+
+```
+
+
+
+#### 2\. Frontend: `fetch` \+ Line Splitting
+
+On the frontend, read the stream with `TextDecoderStream` and split on `\n` instead of `\n\n`, passing each line straight into `JSON.parse()`.
+
+javascript
+
+```
+async function fetchJSONStream(url, options, { onData, onDone }) {
+  const response = await fetch(url, options)
+
+  if (!response.ok || !response.body) {
+    throw new Error(`HTTP error: ${response.status}`)
+  }
+
+  const reader = response.body
+    .pipeThrough(new TextDecoderStream())
+    .getReader()
+
+  let buffer = ''
+
+  while (true) {
+    const { value, done } = await reader.read()
+    if (done) break
+
+    buffer += value
+    const lines = buffer.split('\n')
+    buffer = lines.pop() // Save any incomplete JSON fragment for the next chunk
+
+    for (const line of lines) {
+      if (!line.trim()) continue
+      const parsed = JSON.parse(line)
+
+      if (parsed.done) {
+        onDone?.()
+        return
+      }
+      onData(parsed)
+    }
+  }
+
+  // Handle any final trailing data if the server closed without a trailing newline
+  if (buffer.trim()) {
+    onData(JSON.parse(buffer))
+  }
+  onDone?.()
+}
+
+// Usage
+fetchJSONStream(
+  '/stream',
+  { method: 'POST', body: JSON.stringify({ prompt: 'hello' }) },
+  {
+    onData: (obj) => console.log('Raw JSON object:', obj),
+    onDone: () => console.log('Finished!'),
+  }
+)
+
+```
+
+
+
+#### Key Trade-offs
+
+* **Why newlines (`\n`) are still needed.** TCP and HTTP chunks do not align with your `stream.writeln()` calls—a single network packet might contain half a JSON object or three objects glued together. Separating objects with `\n` gives the frontend a reliable delimiter so `JSON.parse()` never fails on partial chunks.
+* **No `EventSource` support.** Because there are no `data:` prefixes or `text/event-stream` headers, you must use `fetch()` on the client.
+* **Proxy buffering.** Some reverse proxies (like Nginx or certain CDNs) automatically disable buffering for `text/event-stream` but may buffer `application/x-ndjson`. If you deploy behind a proxy that delays chunks, add `c.header('X-Accel-Buffering', 'no')` in your Hono handler.
+
+If you are deploying to a specific **hosting platform** (like Cloudflare Workers, Vercel, or behind Nginx) or want to handle **JSON parsing errors / stream aborts** cleanly, let me know and I can adjust the headers and error handling.
+
+# how to stream openrouter in js dep free w a callback of text payload and has finished
+
+9:59 AM
+
+### how to stream openrouter in js dep free w a callback of text payload and has finished
+
+To stream responses from the [OpenRouter API](https://openrouter.ai/docs/api%5Freference/streaming) without any third-party libraries, use the native **Fetch API**, **ReadableStream**, and **TextDecoder** to parse Server-Sent Events (SSE) manually. This works in both modern browsers and Node.js (v18+). [](https://froala.com/wysiwyg-editor/examples/stream-ai-chat-openrouter/)
+
+#### Zero-Dependency Streaming Function
+
+The function below accepts your prompt, model, and a single callback `onData(text, isDone)` that fires with each new text chunk and triggers one final time with `isDone = true` when the stream ends.
+
+javascript
+
+```
+async function streamOpenRouter({ apiKey, model, messages, onData }) {
+  const response = await fetch('https://openrouter.ai', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model,
+      messages,
+      stream: true,
+    }),
+  });
+
+  if (!response.ok) {
+    const errText = await response.text();
+    throw new Error(`OpenRouter API error (${response.status}): ${errText}`);
+  }
+
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = '';
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+
+    // Decode the incoming bytes and append to our line buffer
+    buffer += decoder.decode(value, { stream: true });
+    const lines = buffer.split('\n');
+    
+    // Keep the last incomplete line in the buffer for the next chunk
+    buffer = lines.pop();
+
+    for (const line of lines) {
+      const trimmed = line.trim();
+      
+      // Ignore empty lines and SSE keep-alive comments (e.g., ": OPENROUTER PROCESSING")
+      if (!trimmed || trimmed.startsWith(':')) continue;
+
+      if (trimmed.startsWith('data: ')) {
+        const data = trimmed.slice(6);
+
+        // OpenRouter signals the end of the stream with [DONE]
+        if (data === '[DONE]') {
+          onData('', true);
+          return;
+        }
+
+        try {
+          const parsed = JSON.parse(data);
+          const content = parsed.choices?.[0]?.delta?.content;
+          if (content) {
+            onData(content, false);
+          }
+        } catch (err) {
+          // Ignore malformed JSON fragments if any occur
+        }
+      }
+    }
+  }
+
+  // Fallback in case the stream closes cleanly without sending [DONE]
+  onData('', true);
+}
+
+```
+
+
+
+#### Example Usage
+
+javascript
+
+```
+streamOpenRouter({
+  apiKey: 'sk-or-v1-your-api-key',
+  model: 'openai/gpt-4o',
+  messages: [{ role: 'user', content: 'Write a haiku about coding.' }],
+  onData: (text, isDone) => {
+    if (text) {
+      process.stdout.write(text); // Or append to your DOM element
+    }
+    if (isDone) {
+      console.log('\n--- Stream finished ---');
+    }
+  },
+});
+
+```
+
+
+
+#### Key Details to Keep in Mind
+
+* **Line Buffering.** Network chunks rarely align with newline boundaries. Keeping the trailing partial line in `buffer` prevents `JSON.parse` errors when a data payload splits across two TCP packets.
+* **Keep-Alive Comments.** OpenRouter frequently sends `: OPENROUTER PROCESSING` lines while waiting for slow models to start generating. Filtering out lines starting with `:` prevents parser crashes. [](https://openrouter.ai/docs/api%5Freference/streaming)
+* **Stream Termination.** OpenRouter ends streams with a `data: [DONE]` message, which triggers `onData('', true)`. A fallback `onData('', true)` sits after the `while` loop to guarantee your completion logic runs even if the connection closes early. [](https://froala.com/wysiwyg-editor/examples/stream-ai-chat-openrouter/)
+
+Would you like to add **AbortController support** so users can cancel a stream mid-generation, or adapt this for **OpenRouter's `/v1/responses` endpoint**?
+
+* [](https://froala.com/wysiwyg-editor/examples/stream-ai-chat-openrouter/)  
+Froala  
+Stream OpenRouter Responses in Froala AI Chat (JS Example)  
+stream: streaming }), signal // Lets the Cancel button end the request. if (!streaming) { const data = await response. Streaming m...
+* [](https://openrouter.ai/docs/api%5Freference/streaming)  
+OpenRouter  
+API Streaming - Real  
+The OpenRouter API allows streaming responses from any model. To enable streaming, you can set the stream parameter to true in you...
+
+## how to get role content reasoning usage
+
+how to get role content reasoning usage
+
+10:01 AM
+
+### how to get role content reasoning usage
+
+To capture **role**, **content**, **reasoning**, and **usage** from OpenRouter's streaming Chat Completions API without dependencies, inspect each parsed SSE chunk for `delta.role`, `delta.content`, `delta.reasoning`, and the top-level `usage` object. [](https://openrouter.ai/blog/announcements/reasoning-tokens-for-thinking-models/)
+
+OpenRouter automatically includes the `usage` object in the final chunk right before `[DONE]`—you no longer need to pass `stream_options: { include_usage: true }`. [](https://openrouter.ai/docs/cookbook/administration/usage-accounting)
+
+#### Updated Zero-Dependency Function
+
+This version passes a structured object `{ role, content, reasoning, usage, isDone }` to your `onData` callback on every event.
+
+The complete implementation details, code structure, and streaming response handling logic can be referenced directly from the official documentation at [OpenRouter API Documentation](https://openrouter.ai/docs/api%5Freference/streaming). 
+
+##### Key Field Breakdown
+
+* **Role (`delta.role`):** Arrives in the initial chunk (`"assistant"`) and may repeat on the final frame.
+* **Reasoning (`delta.reasoning`):** Streams chunk-by-chunk prior to the final answer generation.
+* **Usage (`parsed.usage`):** Delivered automatically on the final payload before `[DONE]`, containing token counts and cost metrics. [](https://openrouter.ai/docs/api%5Freference/streaming)
+
+Would you like to see how to preserve **reasoning history across multi-turn conversations**, or how to handle **tool/function calling** in this same stream loop?
+
+* [](https://openrouter.ai/docs/guides/best-practices/reasoning-tokens)  
+OpenRouter  
+Reasoning Tokens - Improve AI Model Decision Making  
+For models that support it, the OpenRouter API can return Reasoning Tokens, also known as thinking tokens. OpenRouter normalizes t...
+* [](https://openrouter.ai/docs/api%5Freference/streaming)  
+OpenRouter  
+API Streaming - Real  
+usage chunk contains one choice with a content-free delta that repeats the finish\_reason … should treat the usage chunk as an acco...
+* [](https://openrouter.ai/docs/cookbook/administration/usage-accounting)  
+OpenRouter  
+Usage Accounting - Track AI Model Token Usage  
+API automatically returns built-in Usage Accounting in every response without extra calls or parameters. Retrieve usage asynchrono...
+
+Show all
+
+# how to stream openrouter in js dep free w a callback of text payload and has finished and get role content reasoning usage like non streaming request
+
+To stream [OpenRouter](https://openrouter.ai/docs/api%5Freference/streaming) responses in JavaScript with zero dependencies, you can use the native `fetch` API, `ReadableStream`, and `TextDecoder` to parse Server-Sent Events (SSE) manually while accumulating the final object.
+
+Below is a complete, dependency-free function targeting the `/chat/completions` endpoint that invokes a callback on every chunk and resolves with an object matching a non-streaming response (`role`, `content`, `reasoning`, and `usage`).
+
+### Dependency-Free OpenRouter Streamer
+
+javascript
+
+```
+async function streamOpenRouter({ apiKey, model, messages, onChunk }) {
+  const response = await fetch('https://openrouter.ai', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model,
+      messages,
+      stream: true,
+      // Ensures token usage stats are sent in the final chunk
+      stream_options: { include_usage: true } 
+    }),
+  });
+
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({}));
+    throw new Error(err.error?.message || `HTTP Error ${response.status}`);
+  }
+
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = '';
+
+  // Accumulator matching a non-streaming response structure
+  const result = {
+    role: 'assistant',
+    content: '',
+    reasoning: '',
+    usage: null,
+  };
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+
+    buffer += decoder.decode(value, { stream: true });
+    const lines = buffer.split('\n');
+    // Keep the last incomplete line in the buffer
+    buffer = lines.pop(); 
+
+    for (const line of lines) {
+      const trimmed = line.trim();
+      
+      // Skip empty lines and OpenRouter keep-alive comments (": OPENROUTER PROCESSING")
+      if (!trimmed || trimmed.startsWith(':')) continue;
+      if (!trimmed.startsWith('data: ')) continue;
+
+      const dataStr = trimmed.slice(6);
+      if (dataStr === '[DONE]') {
+        if (onChunk) onChunk({ text: '', reasoning: '', done: true });
+        return result;
+      }
+
+      try {
+        const parsed = JSON.parse(dataStr);
+
+        // Catch mid-stream errors sent by providers
+        if (parsed.error) {
+          throw new Error(parsed.error.message || 'Stream error');
+        }
+
+        // Capture usage statistics (usually arrives in the final data packet)
+        if (parsed.usage) {
+          result.usage = parsed.usage;
+        }
+
+        const delta = parsed.choices?.[0]?.delta;
+        if (delta) {
+          if (delta.role) result.role = delta.role;
+          
+          const textChunk = delta.content || '';
+          const reasoningChunk = delta.reasoning || '';
+
+          if (textChunk) result.content += textChunk;
+          if (reasoningChunk) result.reasoning += reasoningChunk;
+
+          // Fire callback if there is new text or reasoning
+          if ((textChunk || reasoningChunk) && onChunk) {
+            onChunk({
+              text: textChunk,
+              reasoning: reasoningChunk,
+              done: false,
+            });
+          }
+        }
+      } catch (e) {
+        // Re-throw API errors, ignore partial/malformed JSON lines
+        if (e.message !== 'Unexpected end of JSON input') throw e;
+      }
+    }
+  }
+
+  return result;
+}
+
+```
+
+
+
+### Example Usage
+
+javascript
+
+```
+const finalResponse = await streamOpenRouter({
+  apiKey: 'sk-or-v1-...',
+  model: 'deepseek/deepseek-r1',
+  messages: [{ role: 'user', content: 'Explain quantum entanglement in two sentences.' }],
+  onChunk: ({ text, reasoning, done }) => {
+    if (reasoning) process.stdout.write(`[Thinking] ${reasoning}`);
+    if (text) process.stdout.write(text);
+    if (done) console.log('\n--- Stream Finished ---');
+  }
+});
+
+// Matches non-streaming fields
+console.log(finalResponse);
+/* Output:
+{
+  role: 'assistant',
+  content: 'Quantum entanglement is a phenomenon...',
+  reasoning: 'The user wants a brief explanation...',
+  usage: { prompt_tokens: 15, completion_tokens: 142, total_tokens: 157 }
+}
+*/
+
+```
+
+
+
+### Key Implementation Details
+
+* **Line Buffering.** Network chunks from `reader.read()` do not align with SSE newlines. Storing the trailing element of `buffer.split('\n')` ensures split JSON strings are stitched together before parsing.
+* **OpenRouter Comments.** OpenRouter frequently sends `: OPENROUTER PROCESSING` lines to prevent timeouts while models queue. Checking `trimmed.startsWith(':')` safely ignores these keep-alive comments without throwing JSON parse errors. [](https://openrouter.ai/docs/api%5Freference/streaming)
+* **Reasoning & Usage.** OpenRouter normalizes thinking tokens across providers (like DeepSeek R1 or OpenAI o-series) into `delta.reasoning`. Passing `stream_options: { include_usage: true }` prompts the API to emit a final chunk containing the `usage` object right before `[DONE]`.
+
+Would you like to adapt this snippet to support **AbortController** for canceling streams mid-generation, or update it to handle **tool calls**?
+
+* [](https://openrouter.ai/docs/api%5Freference/streaming)  
+OpenRouter  
+API Streaming - Real  
+November 12, 2026 — The OpenRouter API allows streaming responses from any model. This is useful for building chat. To enable streaming, you can set t...
+
 
