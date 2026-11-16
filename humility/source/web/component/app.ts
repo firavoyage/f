@@ -6,12 +6,21 @@ import 'web/design/utilitarian.css'
 import { textarea } from './textarea'
 import { scroll } from './scroll'
 import { post } from 'lib/web/request'
-import type { messages } from 'lib/generation'
+import type { message, messages } from 'lib/generation'
 import { sidebar } from './sidebar'
 import { marked } from 'marked'
 import { copy } from 'lib/web/clipboard'
 
 const max_title_length = 65 * 2
+
+type role = 'system' | 'user' | 'assistant' | 'tool'
+
+type plain_message = {
+  role: role
+  content: string
+  reasoning?: string
+  tools?: any[]
+}
 
 type thread = {
   title: string
@@ -36,8 +45,44 @@ export function app() {
   const [folder, set_folder] = use_state('')
   const [threads, set_threads] = use_state<Record<string, thread>>({})
   const [thread, set_thread] = use_thread()
-  const [messages, set_messages] = use_state<messages>([])
-  const [is_new_thread, set_is_new_thread] = use_state(false)
+
+  const [message_tree, set_message_tree] = use_state({
+    0: {
+      children: ['foo'],
+    },
+    foo: {
+      children: ['bar'],
+    },
+    bar: {
+      children: [],
+    },
+  })
+
+  const [message_dict, set_message_dict] = use_state<
+    Record<string, plain_message>
+  >({
+    foo: {
+      role: 'user',
+      content: 'foo',
+    },
+    bar: {
+      role: 'user',
+      content: 'bar',
+    },
+  })
+
+  let messages = [],
+    current_node = 0
+  while (true) {
+    const { children = [], focus = children[0] } = message_tree[current_node]
+
+    if (focus) {
+      messages.push(message_dict[focus])
+      current_node = focus
+    } else {
+      break
+    } 
+  }
 
   const content = use_ref()
   const field = use_ref()
@@ -46,79 +91,7 @@ export function app() {
     set_threads(post('list'))
   }, [])
 
-  use_effect(async () => {
-    if (is_new_thread) {
-      set_is_new_thread(false)
-      return
-    }
-
-    if (!thread) {
-      set_messages([])
-      return
-    }
-
-    set_messages(post('read', thread))
-  }, [thread])
-
-  use_keyboard(
-    'enter',
-    async () => {
-      set_prompt('')
-
-      set_is_pending(true)
-
-      let current_thread = thread
-
-      if (messages.length == 0) {
-        current_thread = await post('new_thread', {
-          title: prompt.slice(0, max_title_length),
-          folder,
-        })
-
-        set_thread(current_thread)
-        set_is_new_thread(true)
-
-        set_threads(post('list'))
-      }
-
-      set_messages((messages) => {
-        messages.push({
-          role: 'user',
-          content: prompt,
-        })
-      })
-
-      set_messages(async (messages) => {
-        messages.push(
-          await post('send', {
-            content: prompt,
-            thread: current_thread,
-          }),
-        )
-
-        set_is_pending(false)
-      })
-    },
-    {
-      when: () => prompt && is_focused() && !is_pending,
-    },
-  )
-
-  // have no effect (rather than new line) on empty prompt
-  use_keyboard('enter', () => {}, {
-    when: () => !prompt && is_focused(),
-  })
-
   use_keyboard('alt+n', new_thread)
-
-  // focus prompt on mount
-  use_mount(() => {
-    if (!field.current) {
-      return
-    }
-
-    field.current.focus()
-  })
 
   function new_thread() {
     set_thread('')
@@ -229,6 +202,7 @@ export function app() {
                   value: prompt,
                   set_value: set_prompt,
                   ref: field,
+                  autofocus: true
                 }),
               ),
             ),

@@ -1,1 +1,4 @@
-log(has('foooo', 'oo'))
+log(dict({
+  foo: 1,
+  bar: 2
+}))

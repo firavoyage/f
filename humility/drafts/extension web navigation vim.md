@@ -60,3 +60,15 @@ app(){
 typically vimium would handle it.
 
 clearly you can have i/esc rather than mod key.
+
+---
+
+```ts
+app(){
+  // have no effect (rather than new line) on empty prompt
+  use_keyboard('enter', () => {}, {
+    when: () => !prompt && is_focused(),
+  })
+}
+```
+

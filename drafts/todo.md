@@ -1,5 +1,9 @@
 # plan
 
+how to use vimium chromium ext
+
+---
+
 - humility
 - purpose
 
