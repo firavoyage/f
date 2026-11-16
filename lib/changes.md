@@ -117,3 +117,7 @@ it's not really faster to join an array of strings than string add.
   - and you dont have to use perf api
 - web/style: hardcode white black and transparent into palette
 
+16
+
+- web/react: remove redundant react use state on use state
+  - use ref plus use update is enough

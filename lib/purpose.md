@@ -680,3 +680,18 @@ really, it's prone when you forget to "update lib".
 
 > do not work at late night
 
+16
+
+for some reason, ts highlights `_set_state` as if it's referenced.
+
+```
+  const [state, _set_state] = useState(initial_value)
+```
+
+but not `a_set_state`
+
+```
+  const [state, a_set_state] = useState(initial_value)
+```
+
+

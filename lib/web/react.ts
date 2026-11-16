@@ -21,7 +21,6 @@ export function use_state<T>(
   initial_value?: T,
 ): [state: T, set_state: typeof set_state] {
   const current_state = use_ref(initial_value)
-  const [state, _set_state] = useState(initial_value)
   const update = use_update()
 
   function set_state(
@@ -40,7 +39,7 @@ export function use_state<T>(
     }
 
     if (is(new_value, 'function')) {
-      new_value = new_value(state)
+      new_value = new_value(current_state.current)
     }
 
     if (is(new_value, 'literal') && new_value == current_state.current) {
@@ -54,12 +53,11 @@ export function use_state<T>(
 
     if (!is(new_value, 'undefined')) {
       current_state.current = new_value
-      _set_state(new_value)
     }
     update()
   }
 
-  return [state, set_state]
+  return [current_state.current, set_state]
 }
 
 function use_update() {
