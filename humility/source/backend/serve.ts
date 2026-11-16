@@ -7,6 +7,7 @@ import { read } from 'lib/file'
 import { format_log } from 'lib/log'
 import { parse_options } from 'lib/cli'
 import * as actions from 'action/index'
+import { serialize } from 'action/index'
 
 const { stringify } = JSON
 
@@ -50,7 +51,7 @@ app.get(
       ws.send(
         JSON.stringify({
           type: 'message',
-          data: event.data,
+          data: serialize(event.data),
         }),
       )
     },

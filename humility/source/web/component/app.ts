@@ -93,7 +93,7 @@ export function app() {
 
   use_keyboard('alt+n', new_thread)
 
-  use_mount(() => {
+  function connect_ws() {
     const ws = new WebSocket('ws://localhost:8192/api/ws')
 
     ws.onopen = () => {
@@ -105,6 +105,10 @@ export function app() {
     }
     ws.onclose = () => {
       log('Disconnected')
+
+      set_timeout(function() {
+        connect_ws()
+      }, 2000)
     }
 
     ws.onerror = (error) => {
@@ -118,8 +122,12 @@ export function app() {
     }
 
     set_interval(function() {
-      send({ message: 'hello world' })
-    }, 1000)
+      send('hello world')
+    }, 1000)    
+  }
+
+  use_mount(() => {
+    connect_ws()
   })
 
   function new_thread() {
