@@ -852,5 +852,320 @@ Oct 27, 2026 — openbot is a free desktop app for Mac Windows and Linux with iP
 
 Show all
 
+# compare grok bot w byok free alternatives
+
+**Grok Bot** offers a fully managed cloud Linux workspace tied to pricey subscriptions, whereas free BYOK (Bring Your Own Key/Subscription) alternatives like **Rakazo**, **OpenBot**, and **Open Mousebot** run locally on your hardware using existing AI plans or API keys. While Grok Bot handles infrastructure automatically, open-source alternatives eliminate subscription lock-in and support multiple models. [](https://www.youtube.com/watch?v=%5FrQPVOpjljE)
+
+### Side-by-Side Comparison
+
+| Feature               | Grok Bot (xAI)                                                                               | Rakazo                                                                | OpenBot (Nightly Labs)                                           | Open Mousebot                                            |
+| --------------------- | -------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------- | -------------------------------------------------------- |
+| **Software Cost**     | Requires paid plan ($30–$200/mo via SuperGrok or [Cursor](https://cursor.com/docs/grok-bot)) | Free & open-source (Apache license)                                   | Free desktop app (public source on GitHub)                       | Free & open-source                                       |
+| **AI Model Support**  | Locked to xAI Grok models with weekly usage caps                                             | BYOK APIs, free LLMs (OpenRouter/OpenCode), or existing ChatGPT plans | Connects existing Claude, ChatGPT, Gemini, or Grok subscriptions | Mix-and-match Claude, Codex, or Grok per individual bot  |
+| **Hosting & Compute** | Always-on managed cloud Linux machine per member                                             | Self-hosted locally via Docker or optional cloud waitlist             | Local computer execution with remote mobile/web control          | Runs locally on your PC or uses dedicated cloud desktops |
+| **Integrations**      | Built-in browser, shell, and demonstration learning                                          | 1,000+ tools, Slack messaging, and sandboxed browser                  | Autonomous browser, workspace logins, and CLI harnesses          | 500+ integrations (Gmail, Slack, Notion, GitHub) + MCP   |
+| **Platforms**         | macOS, Windows, iOS (no Linux desktop client)                                                | Web, Mac, Linux, iOS, Android                                         | Mac, Windows, Linux, iOS, Android, Web                           | Desktop PC + voice/CLI interfaces                        |
+
+### Key Trade-Offs
+
+* **Setup vs. Maintenance.** Grok Bot requires zero setup because xAI manages the virtual Linux desktop and cloud uptime. Open-source tools like Rakazo require you to install Docker or run desktop apps on your own machine. [](https://www.helio.im/blog/grok-bot-alternatives/)
+* **Subscription Flexibility.** Grok Bot locks you into xAI's ecosystem and weekly rate limits. BYOK alternatives let you route tasks through API keys or existing consumer plans like Claude Pro and ChatGPT Plus without paying extra per-seat bot fees. [](https://www.reddit.com/r/GrokBot/comments/1xp0dbt/alternative%5Fto%5Fgrok%5Fbot/)
+* **Privacy and Control.** Grok Bot stores sessions on xAI's cloud infrastructure. Self-hosted tools keep files, credentials, and audit logs locally on your drive, often adding approval prompts before executing terminal commands. [](https://www.youtube.com/shorts/gDUqgVV2w04)
+* **Other Lightweight Options.** If you only need terminal-based coding or chat messaging rather than a full virtual desktop, **Hermes Agent** (MIT-licensed desktop assistant) and **OpenClaw** (runs via WhatsApp, Telegram, and Discord) offer simpler self-hosted setups. [](https://daily.dev/posts/best-grok-bot-alternatives-compared-byq8qnsa7)
+
+### Which One Should You Pick?
+
+* **Choose Grok Bot** if you already pay for Cursor or SuperGrok and want an always-on cloud computer without managing local Docker containers.
+* **Choose Rakazo** if you want full open-source privacy, plain-markdown audit logs, and support for free third-party LLM routers.
+* **Choose OpenBot or Open Mousebot** if you want to reuse existing Claude, ChatGPT, or Gemini subscriptions across a team of specialized bots without paying per-token API bills. [](https://www.youtube.com/watch?v=iuBuavIinH8)
+
+If you'd like to narrow down the best setup for your workflow, let me know:
+
+* Which **AI subscriptions or API keys** you already pay for
+* Your **primary operating system** (Windows, macOS, or Linux)
+* Whether you need **24/7 cloud uptime** or only run tasks while your computer is awake
+
+I can help you pick the easiest option and walk through the setup steps.
+
+* [](https://www.youtube.com/watch?v=%5FrQPVOpjljE)  
+YouTube·Julian Goldie SEO  
+NEW Open Source Grok Bot is INSANE (FREE!) 🤯  
+Nov 14, 2026 — Open Mousebot is a free, open-source alternative to Grokbot, This application allows each bot to utilize different AI models like ...  
+17:22
+* [](https://www.helio.im/blog/grok-bot-alternatives/)  
+www.helio.im  
+Grok Bot alternatives: 7 options compared — Helio  
+August 12, 2026 — Grok Bot: xAI's named-agent product featuring persistent single-job bots, learning by demonstration, and a dedicated per-member cl...
+* [](https://www.youtube.com/watch?v=iuBuavIinH8)  
+YouTube·AICodeKing  
+OpenBot + Deepseek is the best Grok Bot & Muse Alternative!  
+Oct 27, 2026 — openbot is a free desktop app for Mac Windows and Linux with iPhone Android. and web apps that connect back to your machine. so yo...  
+11:53
+
+Show all
+
+# what do ppl say comparing grok bot w byok free alternatives
+
+Users and reviewers comparing **Grok Bot** to free, Bring-Your-Own-Key (BYOK) open-source alternatives—such as **OpenBot**, **Open Mousebot**, **Hermes Agent**, **OpenClaw**, and **Rakazo**—generally frame the debate around **cloud convenience versus local control and API costs**. [](https://www.youtube.com/watch?v=%5FrQPVOpjljE)
+
+### What People Like About Grok Bot
+
+* **Zero Setup and Always-On Cloud.** Reviewers highlight that Grok Bot runs inside a pre-configured cloud virtual machine. You can close your laptop and it continues executing scheduled routines, web tasks, and terminal commands without needing Docker or server maintenance. [](https://www.youtube.com/shorts/4XSBjL2JIQo)
+* **Predictable Flat Pricing.** Because Grok Bot is bundled into paid plans like SuperGrok or Cursor subscriptions, heavy users appreciate not having to worry about surprise API bills. In side-by-side tests on [YouTube](https://www.youtube.com/watch?v=ZC9pkl1WB1E), testers noted that running complex multi-step tasks on a BYOK alternative can easily burn $18 in API tokens across just two tasks, meaning heavy usage quickly exceeds a flat monthly subscription. [](https://www.youtube.com/watch?v=1m11QCwHTkA)
+* **Sandboxed Security.** Running tasks in xAI's cloud VM keeps autonomous browser and terminal actions isolated from your personal laptop's local files.
+
+### Where Grok Bot Gets Criticized
+
+* **Quota Burn and Model Routing.** On the [Cursor Community Forum](https://forum.cursor.com/t/grok-bot-alternatives/177309), several users complain about rapid quota burn rates. Others point out that Grok Bot automatically routes prompts to internal models that sometimes feel lower quality than expected, without letting you lock in a specific model. [](https://forum.cursor.com/t/grok-bot-alternatives/177309)
+* **Platform Lock-In.** You are restricted to xAI's ecosystem and weekly usage pools rather than mixing and matching models from Anthropic, OpenAI, or Google. [](https://www.reddit.com/r/GrokBot/comments/1xp0dbt/alternative%5Fto%5Fgrok%5Fbot/)
+
+### What People Say About Free BYOK Alternatives
+
+* **Model Freedom and Existing Logins.** Tools like [OpenBot](https://www.youtube.com/watch?v=iuBuavIinH8) and [Open Mousebot](https://www.youtube.com/watch?v=%5FrQPVOpjljE) let you pick the exact model per agent—such as Claude, Codex, Gemini, or DeepSeek—and automatically fall back to a backup provider if you hit a rate limit. Some alternatives even let you authenticate using existing consumer logins rather than paying raw API rates.
+* **Higher Setup Friction and Hardware Needs.** Communities on r/GrokBot and [Daily.dev](https://daily.dev/posts/best-grok-bot-alternatives-compared-byq8qnsa7) note that tools like Hermes Agent, Rakazo, and OpenClaw require technical setup like Docker or self-hosting. Because they are local-first, your computer must stay awake for agents to work unless you pay \~$25/month to host them on a cloud server.
+* **Local Security Trade-Offs.** Giving a local bot access to your file system and terminal carries real risk. Reviewers warn that tools like OpenBot run with full system permissions by default and recommend running them on a spare machine, though newer forks like Open Mousebot address this by adding explicit approval cards before a bot modifies files or runs commands. [](https://daily.dev/posts/best-grok-bot-alternatives-compared-byq8qnsa7)
+
+### Quick Comparison
+
+| Feature              | Grok Bot                                                    | Free BYOK Alternatives (e.g., OpenBot, Rakazo, Hermes)          |
+| -------------------- | ----------------------------------------------------------- | --------------------------------------------------------------- |
+| **Hosting & Uptime** | Always-on cloud VM; works when your PC is off.              | Local-first; PC must stay on unless you rent a VPS.             |
+| **Setup Difficulty** | Plug-and-play desktop, web, and mobile apps.                | Requires local installation, Docker, or CLI configuration.      |
+| **Cost Structure**   | Included in paid subscriptions (no per-token fees).         | Free software, but pay-as-you-go API costs can spike fast.      |
+| **Model Choice**     | Locked to Grok's internal routing.                          | Full control over models (Claude, GPT, Gemini, DeepSeek).       |
+| **Privacy & Safety** | Isolated in the cloud, though data is processed off-device. | Local data storage, but requires caution with file permissions. |
+
+If you are thinking about trying one out, let me know:
+
+* **What tasks** you want to automate (coding, browser research, email management?)
+* Whether you already have **paid AI subscriptions or API keys**
+* Your comfort level with **local setup** (like Docker or terminal tools)
+
+I can recommend the specific open-source agent that best fits your setup.
+
+* [](https://www.reddit.com/r/GrokBot/comments/1xp0dbt/alternative%5Fto%5Fgrok%5Fbot/)  
+Reddit·r/GrokBot  
+Alternative to Grok bot : r/GrokBot - Reddit  
+Nov 6, 2026 — Bots with routines on schedules and events, one chat per person, and real coding work items. There's a free plan for solo use.
+* [](https://www.youtube.com/watch?v=M8wuZVXGDrc&t=6)  
+YouTube·SouryaTalks  
+OpenBot vs Grok Bot: Is the FREE One Actually Better?  
+Oct 30, 2026 — It runs 10 agent tools that perform tasks autonomously. Openbot agents can be moved between different AI models, retaining their j...  
+3m
+* [](https://www.youtube.com/watch?v=ZC9pkl1WB1E)  
+YouTube·Tengency AI | 10x Your Agentic Output  
+I Tested a Free Grok Bot Alternative (OpenBot)  
+Nov 1, 2026 — Grokbot costs $30 per month and offers a polished, easy-to-set-up experience where the bot runs in the cloud and can continue work...  
+14:38
+
+Show all
+
+# can you run grok bot like local coding agent
+
+**No, you cannot natively run Grok Bot locally** because it has no local runtime or self-hosted option. Its desktop and mobile apps are thin clients that connect to a persistent Linux virtual machine hosted in the cloud. [](https://alook.ai/blog/alook-vs-grok-bot)
+
+However, you can still use Grok's models or connect Grok Bot to your local machine for coding through a few workarounds.
+
+### Workarounds for Local Coding
+
+* **Use Grok Build CLI.** If you want an official terminal-based coding agent like Claude Code or Codex, use Grok Build instead. It runs directly in your local terminal interface or headlessly in scripts. [](https://docs.x.ai/build/overview)
+* **Connect a Cursor self-hosted worker.** You can register your Mac or Linux machine as a local worker using the [Cursor CLI](https://forum.cursor.com/t/local-computer-use-for-grok-bots/174043) (`agent worker start`). Once linked, Grok Bot can delegate coding tasks to Cursor Agent to execute inside your local project environment. [](https://www.youtube.com/watch?v=yC8vMywtUEA)
+* **Enable local command execution.** You can register your machine with Grok Bot to run local terminal commands and read local repository files. By default, it prompts you for per-command approval before executing anything on your computer. [](https://alook.ai/blog/alook-vs-grok-bot)
+* **Bridge to a local LLM.** You can run an open-weight model on a Mac via tools like oMLX and register your `machineId` with Grok Bot. You then instruct a specialist routing bot to forward prompts to your local server.
+
+### Key Limitations to Keep in Mind
+
+* **Cloud-first repo changes.** Recent updates to Grok Bot increasingly force repository tasks into isolated Cloud Agent sessions that create branches and open pull requests rather than editing files directly on a single machine.
+* **Hosted model selection.** Grok Bot does not offer a customer-facing model picker and automatically routes tasks through cloud-hosted models. [](https://www.youtube.com/watch?v=7b6cMUBxUtw)
+
+Are you trying to run **coding tasks offline with local models**, or do you just want **Grok Bot to edit files in a local repository** on your machine? Let me know your setup (OS and editor) and I can walk you through the exact configuration.
+
+* [](https://www.youtube.com/watch?v=7b6cMUBxUtw)  
+YouTube·Leon van Zyl  
+Grok Bot Full Guide: Get More Done Than 99% of People  
+Nov 11, 2026 — Grok Bot Full Guide: Get More Done Than 99% of People so I've been spending a lot of time on Grogbot. and it's so much more than a...  
+16:16
+* [](https://www.youtube.com/watch?v=yC8vMywtUEA)  
+YouTube·Ben Davis  
+How I Do All My Dev Work With Grok Bot  
+Nov 5, 2026 — Delegate actual coding work to other agents running in Cursor or T3 Code, as Grokbot primarily handles orchestration and administr...  
+18:04
+* [](https://mlynn.org/blog/wire-grok-bot-to-local-llm)  
+mlynn.org  
+Wire Grok Bot to a Local LLM on Your Mac  
+September 6, 2026 — 1\. Install oMLX. Register your Mac with Grok Bot Your Local LLM Ops agent needs a machineId for that Mac. answers must go through ...
+
+Show all
+
+# can grok bot access and edit local files easily
+
+**Yes, Grok Bot can access and edit local files, though it requires enabling a specific setting in the desktop app first.** By default, Grok Bot operates on its own persistent cloud computer rather than your personal hard drive. [](https://forum.cursor.com/t/local-computer-use-for-grok-bots/174043)
+
+### How Local File Access Works
+
+* **Desktop App Requirement.** You must run the [Grok Bot desktop app](https://docs.x.ai/grok-bot/computer-and-apps) on your machine to connect it to local folders. Users on [Reddit](https://www.reddit.com/r/GrokBot/comments/1wbk2fw/how%5Fare%5Fyou%5Fgetting%5Fgrokbot%5Fto%5Fconnect%5Fto%5Fyour/) agree that connecting to local files requires either keeping the desktop app running or syncing through cloud storage. [](https://docs.x.ai/grok-bot/computer-and-apps)
+* **Opt-In Permissions.** Local execution is disabled or restricted by default for security. You can turn it on in the desktop app under **Settings → Computer → Execution on this computer**. [](https://docs.x.ai/grok-bot/computer-and-apps)
+* **Approval Prompts.** Even after enabling local access, the default behavior asks for your explicit approval before the bot runs commands, edits, or moves files on your computer. [](https://forum.cursor.com/t/local-computer-use-for-grok-bots/174043)
+
+### What It Can and Cannot Do Locally
+
+* **File Management and Edits.** Once you grant permission and provide a file path, Grok Bot can read, analyze, rename, edit, and move files across your local directories. [](https://www.facebook.com/officialrobauto/videos/grok-bot-it-can-rename-and-move-files-on-your-own-computer/1609347007232871/)
+* **Coding Defaults.** If you ask Grok Bot to edit a code repository, it defaults to using [Cursor](https://cursor.com/docs/grok-bot) cloud agents for isolation unless you explicitly instruct it to handle the files locally.
+* **No Screen Control.** While it can manipulate files and run terminal commands on your machine with approval, it cannot see your local screen or click and type inside your desktop apps. All visual browser and app automation happens on its separate cloud machine. [](https://forum.cursor.com/t/local-computer-use-for-grok-bots/174043)
+
+### Easier Cloud Alternatives
+
+* **Cloud Storage Connectors.** If you do not want to manage local execution permissions, you can connect Google Drive, OneDrive, or SharePoint. Grok Bot can pull files from these accounts onto its cloud computer, edit them, and save the updated versions back.
+* **Direct Chat Uploads.** For quick, one-off tasks, you can drag and drop local documents, spreadsheets, or code directly into the chat window for analysis. [](https://docs.x.ai/grok-bot/files-and-results)
+
+If you'd like help setting this up, let me know:
+
+* Your **operating system** (Mac or Windows)
+* The **type of files** you want to edit (code repos, documents, or general folders)
+
+I can walk you through the exact permission steps or suggest the cleanest workflow.
+
+* [](https://forum.cursor.com/t/local-computer-use-for-grok-bots/174043)  
+Cursor - Community Forum  
+Local computer use for Grok Bots - Feature Requests - Cursor  
+October 8, 2026 — Grok Bot does its screen work on its own cloud computer. On your Mac it can run commands and move files (with your approval), but ...
+* [](https://x.com/grok/status/2118924608652865621)  
+X·grok  
+Grok Bot runs primarily on its own persistent cloud computer ...  
+Nov 6, 2026 — Repo code edits default to Cursor cloud agents for proper tooling and isolation.
+* [](https://docs.x.ai/grok-bot/computer-and-apps)  
+docs.x.ai  
+Use the computer and apps | SpaceXSI Docs  
+November 13, 2026 — Review local-computer permissions in Approvals, security, and privacy. \* One computer, shared by all your Bots \* Watch computer wo...
+
+Show all
+
+# can grok bot work w local files easily like codex cli
+
+**Yes, Grok Bot can work with your local files, though it operates differently from Codex CLI** **.** While Codex CLI runs natively inside your local terminal with immediate, direct access to your directory, Grok Bot is cloud-first and requires an extra setup step to interact with your physical machine. [](https://docs.x.ai/grok-bot/computer-and-apps)
+
+### How Grok Bot Handles Local Files
+
+* **Cloud-First Default.** By default, a Grok Bot lives on a persistent cloud Linux computer rather than your hard drive. To work on local projects there, you typically clone your Git repository onto the Bot's cloud machine. [](https://www.youtube.com/watch?v=9%5FiJSAu9c8s&t=248)
+* **Local Execution Mode.** You can grant Grok Bot access to your Mac or Windows PC using its **Execution on Local Computer** feature via the desktop app. Once enabled, the Bot can read your local filesystem, edit files, and run terminal commands directly on your machine. [](https://forum.cursor.com/t/bot-as-the-orchestrator-of-local-clis/169588)
+* **Approval Friction.** For security, local execution defaults to an "Ask every time" policy that requires you to manually approve each command. You can change this setting to "Always allow" for a smoother, uninterrupted workflow. [](https://alook.ai/blog/alook-vs-grok-bot)
+
+### Grok Bot vs. Codex CLI for Local Work
+
+| Feature                 | Grok Bot                                                          | Codex CLI                                                     |
+| ----------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------- |
+| **Primary Environment** | Persistent cloud VM (with optional local bridge)                  | Native local terminal and IDE                                 |
+| **Local File Access**   | Requires desktop app setup and permission toggles                 | Immediate access to your current working directory            |
+| **Coding Engine**       | Built-in tools, Cursor Cloud Agents, or delegates to local CLIs   | Dedicated OpenAI coding agent                                 |
+| **Best Use Case**       | Multi-app business routines, scheduling, and cross-tool workflows | Fast, terminal-first coding, refactoring, and local debugging |
+
+### Combining Both Tools
+
+* **Delegation Setup.** Many developers use Grok Bot as a high-level manager rather than a direct code editor.
+* **Orchestrating Codex.** With local execution enabled, you can instruct Grok Bot to invoke your locally installed Codex CLI to handle heavy multi-file edits while Grok Bot manages surrounding tasks like Git commits, Slack updates, or scheduled triggers. [](https://www.youtube.com/watch?v=8dxzMgr2tow)
+
+If you want to set this up, let me know:
+
+* Your **operating system** (macOS or Windows)
+* Whether you want Grok Bot to **edit files directly** or **trigger Codex CLI** for you
+
+I can walk you through the exact steps to configure local execution.
+
+* [](https://forum.cursor.com/t/bot-as-the-orchestrator-of-local-clis/169588)  
+Cursor - Community Forum  
+Bot as the Orchestrator of local CLIs - Help - Cursor  
+August 26, 2026 — A persistent Manager Bot periodically observes local project/workflow state using read-only filesystem, Git, process, and applicat...
+* [](https://docs.x.ai/grok-bot/computer-and-apps)  
+docs.x.ai  
+Use the computer and apps | SpaceXSI Docs  
+Nov 13, 2026 — A Bot only runs commands on your local computer when that capability is enabled. Ask every time by default, or Always allow or Nev...
+* [](https://aiprofitboardroom.com/blog/grok-bot-vs-codex/)  
+AI Profit Boardroom  
+Grok Bot Vs Codex: Complete Guide (2026)  
+October 31, 2026 — Can Grok Bot and Codex work together? Not directly in either changelog. You can run Codex on your repo and let Grok Bot handle the...
+
+Show all
+
+# can grok bot be local first like codex cli
+
+**No, Grok Bot cannot run entirely local-first like Codex CLI** **.** Its core brain and persistent environment live on an xAI cloud virtual machine, though it can bridge to your local computer to execute commands or trigger local tools. [](https://stealwhatworks.com/blogs/news/grok-bot-claude-code-codex)
+
+### Architectural Differences
+
+| Feature                  | Grok Bot                                                                      | Codex CLI                                                              |
+| ------------------------ | ----------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| **Core Runtime**         | Cloud-first. Runs on a persistent Linux VM hosted by xAI.                     | Local-first. Runs natively on your own machine inside an OS sandbox.   |
+| **Offline Capability**   | Requires an active internet connection to communicate with xAI's cloud.       | Works on local files with network access disabled by default.          |
+| **Always-On Execution**  | Continues running routines and tasks while your laptop is closed.             | Stops when your terminal or computer goes to sleep.                    |
+| **Local Machine Access** | Opt-in bridge. Uses a local desktop client to run approved terminal commands. | Direct access to your local workspace, Git repos, and system binaries. |
+
+### How Grok Bot Interacts With Local Machines
+
+While you cannot self-host the Grok Bot runtime itself, you can extend its reach onto your hardware in two ways: 
+
+* **Local Computer Execution.** Under the official [xAI Grok Bot documentation](https://docs.x.ai/grok-bot/computer-and-apps), you can enable local command execution on your Mac or Windows machine. By default, it prompts you for approval before running each command, though you can configure "Always allow" policies. [](https://docs.x.ai/grok-bot/computer-and-apps)
+* **MCP & CLI Delegation.** Developers use custom Model Context Protocol (MCP) bridges like [Locum](https://mcpmarket.com/server/locum) to connect Grok's cloud agent to local coding tools. This lets Grok Bot act as a remote project manager that delegates heavy file edits directly to your local Codex CLI or Claude Code installations. [](https://mcpmarket.com/server/locum)
+
+### Local-First Alternatives
+
+If you want an always-on agentic experience where the orchestrator, state, and execution live completely on your own hardware, consider these alternatives:
+
+* **Codex CLI.** OpenAI's open-source terminal agent operates directly on your local filesystem and uses OS-level sandboxing for security.
+* **OpenDot.** Highlighted in community comparisons like this [YouTube overview of OpenDot](https://www.youtube.com/watch?v=XXY2h8b8gZg), OpenDot replicates the Grok Bot workflow natively on a Mac while letting you swap in local or API models. [](https://www.youtube.com/watch?v=XXY2h8b8gZg)
+
+If you are trying to set up a hybrid workflow, let me know:
+
+* Your **operating system** (macOS, Windows, or Linux)
+* Whether you want **Grok Bot to trigger your local Codex CLI** or replace it entirely
+
+I can walk you through the exact configuration steps.
+
+* [](https://aiprofitboardroom.com/blog/grok-bot-vs-codex/)  
+AI Profit Boardroom  
+Grok Bot Vs Codex: Complete Guide (2026)  
+October 31, 2026 — OpenAI's security docs say the agent runs with network access off by default, inside an OS-enforced sandbox that usually limits it...
+* [](https://docs.x.ai/grok-bot/computer-and-apps)  
+docs.x.ai  
+Use the computer and apps | SpaceXSI Docs  
+Nov 13, 2026 — A Bot only runs commands on your local computer when that capability is enabled and you approve it under your local-computer polic...
+* [](https://continuumcode.ai/guides/run-grok-bot-locally/)  
+continuumcode.ai  
+Can you run Grok Bot locally? The self-host answer - Continuum  
+Aug 20, 2026 — Grok Bot cannot be run locally or self-hosted in any form as of 22 August 2026\. The macOS, Windows and iOS apps are thin clients; ...
+
+Show all
+
+# can grok bot wo cloud computer
+
+**No, Grok Bot cannot operate without its built-in cloud computer** **.** Every Grok Bot account relies on a persistent, xAI-hosted Linux virtual machine to perform tasks, run browsers, and stay active 24/7 even when your own device is turned off. [](https://docs.x.ai/grok-bot/faq)
+
+### How Grok Bot Handles Local vs. Cloud Work
+
+* **Core Cloud Architecture.** All screen-based tasks, web browsing, and background automations happen strictly on Grok Bot's remote cloud computer rather than on your personal hardware. You cannot disable the cloud environment or run the entire platform purely locally. [](https://forum.cursor.com/t/local-computer-use-for-grok-bots/174043)
+* **Limited Local Mac Access.** If you use the desktop app on a Mac, a bot can run terminal commands and move local files on your machine with your explicit approval. However, it cannot see your local screen, open your local desktop apps, or click around on your personal computer. [](https://x.com/mattyp/article/2087252657589412119)
+* **No Separate Setup Required.** You do not need to buy, rent, or configure an external cloud server yourself. The persistent cloud computer is automatically included and managed inside your [Grok Bot](https://docs.x.ai/grok-bot/how-grok-bot-works) subscription. [](https://docs.x.ai/grok-bot/how-grok-bot-works)
+
+### Why It Requires the Cloud Computer
+
+* **Always-On Execution.** Running on [SpaceXSI](https://x.ai/news/introducing-grok-bot) infrastructure allows your bots to finish multi-step jobs and run scheduled routines while your laptop is closed. [](https://x.ai/news/introducing-grok-bot)
+* **Shared Workspace.** All bots on your account share that single cloud machine, allowing them to access the same saved browser sessions, files, and 1Password logins without needing your personal computer to stay awake. [](https://docs.x.ai/grok-bot/computer-and-apps)
+
+Are you trying to avoid cloud usage for **data privacy** reasons, or are you trying to get Grok Bot to interact with **specific local apps** on your computer? Let me know your goal and I can suggest workarounds or local-first alternatives.
+
+* [](https://docs.x.ai/grok-bot/computer-and-apps)  
+docs.x.ai  
+Use the computer and apps | SpaceXSI Docs  
+Nov 13, 2026 — Add Another Account Give the account a label, like work or personal. Choose Authorize and sign in to the second account. On the ph...
+* [](https://x.ai/news/introducing-grok-bot)  
+xAI  
+Introducing Grok Bot | SpaceXAI  
+August 11, 2026 — Overview: Grok Bot is an early beta AI teammate launched by SpaceXAI featuring its own cloud computer to execute end-to-end multi-
+* [](https://docs.x.ai/grok-bot/faq)  
+docs.x.ai  
+Frequently asked questions | SpaceXSI Docs  
+Nov 12, 2026 — Does Grok Bot keep working when my laptop is closed? Yes. Bot work runs on the cloud computer.
+
+Show all
+
 
 
