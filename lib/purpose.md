@@ -698,4 +698,16 @@ but not `a_set_state`
 
 ## 16
 
+time.
+
+generally you dont need such high precision.
+
+it has tradeoff. it can drift over time it seems.
+
+be simple.
+
+---
+
+well, though you may not have it strictly better, you may have a separate monotonic time.
+
 

@@ -1,4 +1,4 @@
-import { TZDate } from '@date-fns/tz';
+import { TZDate } from '@date-fns/tz'
 import { getTimezoneOffset } from 'date-fns-tz'
 
 type time = {
@@ -17,15 +17,37 @@ type offset = number
 
 type timezone = 'utc' | 'local' | iana_timezone_name | offset
 
-export function time(year: number, month: number, day: number, hour: number, min: number, sec: number, timezone?: timezone) {
-  const tz_time = new TZDate(year, month - 1, day, hour, min, sec, format_offset(timezone_to_offset(timezone)));
+export function time(
+  year: number,
+  month: number,
+  day: number,
+  hour: number,
+  min: number,
+  sec: number,
+  timezone?: timezone,
+) {
+  const tz_time = new TZDate(
+    year,
+    month - 1,
+    day,
+    hour,
+    min,
+    sec,
+    format_offset(timezone_to_offset(timezone)),
+  )
   const { timestamp, offset } = parse_js_time(tz_time)
 
   return Time({
     // core
-    timestamp, offset,
+    timestamp,
+    offset,
     // derived
-    year, month, day, hour, min, sec
+    year,
+    month,
+    day,
+    hour,
+    min,
+    sec,
   })
 }
 
@@ -47,14 +69,23 @@ export function now(timezone?: timezone) {
 
 export function at(timestamp: number, timezone?: timezone) {
   const timestamp_ms = timestamp * 1000
-  const tz_time = new TZDate(timestamp_ms, format_offset(timezone_to_offset(timezone)));
+  const tz_time = new TZDate(
+    timestamp_ms,
+    format_offset(timezone_to_offset(timezone)),
+  )
   const { year, month, day, hour, min, sec, offset } = parse_js_time(tz_time)
 
   return Time({
     // core
-    timestamp, offset,
+    timestamp,
+    offset,
     // derived
-    year, month, day, hour, min, sec
+    year,
+    month,
+    day,
+    hour,
+    min,
+    sec,
   })
 }
 // export function at(timestamp: number, timezone?: timezone) {
@@ -80,7 +111,7 @@ export function format(t: time, pattern: string = '%F %T') {
   const shortcuts = {
     F: '%Y-%m-%d',
     T: '%H:%M:%S',
-    R: '%H:%M'
+    R: '%H:%M',
   }
 
   map(shortcuts, ([shortcut, value]) => {
@@ -118,7 +149,7 @@ function Time(data: time) {
   return chainable(data, {
     format,
     get_local,
-    get_utc
+    get_utc,
   })
 }
 // function Time<T>(data: T) {
@@ -154,9 +185,9 @@ function timezone_to_offset(timezone?: timezone) {
 }
 
 function parse_js_time(date) {
-  const timestamp = date.getTime() / 1000;
+  const timestamp = date.getTime() / 1000
   // const timestamp = floor(date.getTime() / 1000);
-  const offset = date.getTimezoneOffset() * (-60);
+  const offset = date.getTimezoneOffset() * -60
 
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -168,4 +199,12 @@ function parse_js_time(date) {
   return { timestamp, offset, year, month, day, hour, min, sec }
 }
 
+export function monotonic() {
+  return (performance.timeOrigin + performance.now()) / 1000
+}
 
+export async function sleep(seconds: number) {
+  const ms = seconds * 1000
+
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
