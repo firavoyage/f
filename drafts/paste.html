@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>WebSocket Demo</h2>
+
+    <input id="message" placeholder="Enter message">
+    <button onclick="sendMessage()">Send</button>
+
+    <ul id="messages"></ul>
+
+    <script>
+        const socket = new WebSocket(
+            "wss://echo.websocket.org"
+        );
+
+        socket.onopen = () => {
+            console.log("Connected!");
+        };
+
+        socket.onmessage = (event) => {
+            const li = document.createElement("li");
+            li.textContent = event.data;
+            document.getElementById("messages")
+                .appendChild(li);
+        };
+
+        function sendMessage() {
+            const input = document.getElementById("message");
+
+            if (socket.readyState === WebSocket.OPEN) {
+                socket.send(input.value);
+                input.value = "";
+            }
+        };
+
+        socket.onclose = () => {
+            console.log("Connection closed");
+        };
+    </script>
+</body>
+</html>

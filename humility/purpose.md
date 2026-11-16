@@ -692,4 +692,7 @@ fundamentally, it's a state machine.
 
 see archi thread
 
+perf doesnt matter. you may assume expected app state and read all history on disconnection. see disconnection as page reload.
+
+
 
