@@ -51,7 +51,7 @@ when you perform an action on web, you gen req id and add to a temporary set. it
 
 # possible user actions
 
-## init_thread <!-- new thread(id = random id) -->
+## listen(thread = random id)
 
 preferably you generate the id on web.
 
@@ -72,7 +72,13 @@ the default fallback.
 
 connection does nothing. it reads (at least it tries). it doesnt mutate.
 
----
+you (the send fn of your ws client object) would be added to listeners.
+
+## unlisten(thread)
+
+rm such listener on the backend.
+
+## init_thread <!-- new thread(id = random id) -->
 
 you may setup some template like system prompt or default tool list. this can happen on either frontend or backend.
 

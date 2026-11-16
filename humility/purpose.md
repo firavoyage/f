@@ -694,5 +694,13 @@ see archi thread
 
 perf doesnt matter. you may assume expected app state and read all history on disconnection. see disconnection as page reload.
 
+---
+
+maybe you should rather have one persistent ws, 
+and (un)listen thread within ws.
+
+i.e. use effect thread
+
+---
 
 
