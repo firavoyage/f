@@ -12,7 +12,7 @@ an editable chat thread is fundamentally a tree.
 thread:
   tree:
     0: # 0 is always 0, representing root
-      children:
+      children: 
         - 1
       current_focus: 1
     1: # "1" can be (or should be) message id
@@ -84,7 +84,70 @@ it adds a user msg. period.
 
 user msg doesnt stream.
 
-_you may cache such prompt individually on localstorage for each client. you may sync it like tg if you expect *one* draft._
+_you may cache such prompt individually on localstorage for each client. you may sync it like tg if you expect one consistent draft._
+
+## use tool
+
+when you parse a tool, you may prompt it.
+
+---
+
+for "sub agent"... well you may recursively call yourself.
+
+you either use some workflow, 
+
+## generate
+
+you can generate iff it's user/tool on the last msg (it's guranteed it always starts w user if i apply such constraint consistently).
+
+ideally you should generate when the last (or all, really) msg finishes.
+
+# possible server actions
+
+## prepend thread state
+
+loads the full (relevant) thread when you open a thread.
+
+includes
+
+- full tree
+- all completed msgs
+- current value of all ongoing msgs
+
+does not include
+
+- full thread history (i.e. full user action log plus all completed server actions, or delta batched for each msg, as if non streaming)
+- full user action log
+  - _you may show on a separate tab_
+- full server action (e.g. delta) log
+- full server request/response (e.g. to endpoint) log
+
+## update tree
+
+no need to be surgical. rather swap the tree entirely.
+
+## append message
+
+```yaml
+id:
+role:
+content:
+reasoning:
+```
+
+you should append the string to each field.
+
+<!-- clearly you should not append to role, lol. -->
+
+## finish message
+
+```yaml
+id:
+tools:
+usage:
+perf:
+...
+```
 
 # impl
 
@@ -94,7 +157,7 @@ when you stream some response (e.g. llm or tool call),
 
 you listen for delta.
 
-specifically,
+specifically, 
 
 when receive, you append that to current value of such msg and broadcast to all listeners of that thread.
 
@@ -102,7 +165,7 @@ when finish, you broadcast finish event and some derived results, such as parsed
 
 ---
 
-when a new client listens for some thread,
+when a new client listens for some thread, 
 
 you pull the state of all completed msgs (full action history or payload/broadcasting log might be irrelevant) from like disk, append current value of ongoing msgs, and send to the client. besides, you add them to listeners.
 
