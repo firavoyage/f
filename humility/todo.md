@@ -1,5 +1,15 @@
 # plan
 
+impl websocket lib.
+
+every browser request should take response.
+
+server broadcast doesnt have to.
+
+
+
+---
+
 organize (things as) drafts.
 
 > quite weird, some drafts/todo are in purpose
