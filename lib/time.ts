@@ -167,15 +167,5 @@ function parse_js_time(date) {
 
   return { timestamp, offset, year, month, day, hour, min, sec }
 }
-// function js_time(...args: ConstructorParameters<typeof Date>) {
-//   const _time = new Date(...args)
 
-//   const year = _time.getFullYear()
-//   const month = _time.getMonth() + 1
-//   const day = _time.getDate()
-//   const hour = _time.getHours()
-//   const min = _time.getMinutes()
-//   const sec = _time.getSeconds()
 
-//   return { year, month, day, hour, min, sec }
-// }

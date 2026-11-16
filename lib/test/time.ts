@@ -1,14 +1,10 @@
-import { format, now } from "lib/time"
+import { now } from "lib/time"
 
-function log_time() {
-  return now().format('%F %T%:z')
-  // return format(now(), '%F %T%:z')
-}
+const current_time = now()
+const current_precise_time = performance.timeOrigin / 1000 + performance.now() / 1000
 
-log(log_time())
+log(current_time.format())
 
-log(now().format())
+log(current_time.timestamp)
 
-log(now().get_utc().format())
-
-// log(now().get_local(10000).format())
+log(current_precise_time)

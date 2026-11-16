@@ -694,4 +694,8 @@ but not `a_set_state`
   const [state, a_set_state] = useState(initial_value)
 ```
 
+# nov 2026
+
+## 16
+
 
