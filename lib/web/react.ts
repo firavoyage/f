@@ -13,12 +13,17 @@ export * from 'lib/web/use variants'
 export * from 'lib/web/use event'
 export * from 'lib/web/use mouse glitch'
 
-export function use_ref(initial_value?: any) {
-  return useRef(initial_value)
+export function use_ref<T>(initial_value?: T) {
+  const ref = useRef<T>(initial_value)
+
+  ref.set = (new_value: any) => (ref.current = new_value)
+
+  return ref
 }
 
 export function use_state<T>(
   initial_value?: T,
+  should_rerender = true,
 ): [state: T, set_state: typeof set_state] {
   const current_state = use_ref(initial_value)
   const update = use_update()
@@ -54,7 +59,10 @@ export function use_state<T>(
     if (!is(new_value, 'undefined')) {
       current_state.current = new_value
     }
-    update()
+
+    if (should_rerender) {
+      update()
+    }
   }
 
   return [current_state.current, set_state]

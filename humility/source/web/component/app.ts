@@ -39,7 +39,7 @@ export function app() {
   use_window_active()
   use_style(theme)
 
-  const [prompt, set_prompt] = use_state('')
+  const [prompt, set_prompt] = use_state('', false)
   const [is_pending, set_is_pending] = use_state(false)
 
   const [folder, set_folder] = use_state('')
