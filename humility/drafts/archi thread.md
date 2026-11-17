@@ -38,7 +38,10 @@ thread:
         time_to_first_token:
       model?:
 config:
-  current_model:
+  current_model: openrouter:openai/gpt-6-luna
+  # current_model:
+  #   provider: = providers[0]
+  #   model: gpt-6-luna
   system_prompt:
   tools: # just be separate because that how it shows on ux
 ```
