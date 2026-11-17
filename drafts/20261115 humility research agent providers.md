@@ -1167,5 +1167,100 @@ Nov 12, 2026 — Does Grok Bot keep working when my laptop is closed? Yes. Bot w
 
 Show all
 
+# grok bot yt walkthrough
+
+Here are several top-rated YouTube walkthroughs covering beginner setup, app integrations, and advanced agent workflows for Grok Bot:
+
+9:00
+
+[](https://www.youtube.com/watch?v=G6AwOYT-Gbw&vl=en)
+
+How to Use Grok Bot for Beginners
+
+126K views · 20 days ago
+
+YouTube · Kevin Stratvert
+
+24:01
+
+[](https://www.youtube.com/watch?v=E-d7m6Gn2eE)
+
+Grok Bot Full Tutorial for Beginners: How to Use & Set up ...
+
+90K views · 19 days ago
+
+YouTube · Mikey No Code
+
+49:32
+
+[](https://www.youtube.com/watch?v=bH2x8jtHyXM)
+
+GROK BOT FULL COURSE: All 7 Levels Explained (2027)
+
+19K views · 23 hours ago
+
+YouTube · Brock Mesarich | AI for Non Techies
+
+28:17
+
+[](https://www.youtube.com/watch?v=nIgKOAe3dxs)
+
+The ONLY Grok Bot Tutorial You'll Ever Need (ALL 38 ...
+
+157K views · 12 days ago
+
+YouTube · Jay E | RoboNuggets
+
+**Grok Bot** is an AI agent workspace by xAI that lets you build specialized digital teammates capable of operating their own cloud computers and executing recurring tasks. Instead of managing separate chat threads like traditional chatbots, you assign each bot a dedicated role and interact with it continuously. [](https://www.youtube.com/watch?v=nIgKOAe3dxs)
+
+### 1\. Download and Account Access
+
+* **Get the app.** Visit the xAI Grok Bot Portal to download the native client for Windows, macOS, or iOS.
+* **Choose a plan.** Access is included with an eligible X subscription (Premium tier or higher, starting at $30/month), an eligible Cursor plan, or standalone Grok Bot plans starting at $20/month after a 7-day free trial. [](https://www.youtube.com/watch?v=7b6cMUBxUtw&t=293)
+* **Complete onboarding.** Sign in and answer a few quick questions about your daily work and preferred tools so the workspace can tailor your first agent. [](https://www.youtube.com/watch?v=E-d7m6Gn2eE)
+
+### 2\. Navigate the Workspace
+
+* **Left sidebar.** Displays your roster of active bots, along with the Marketplace and app connection settings.
+* **Center chat panel.** Functions as a continuous message thread where you give instructions, review deliverables, and approve actions.
+* **Right cloud computer view.** Shows the virtual cloud environment where your bot executes tasks, browses files, and runs software in the background. [](https://www.youtube.com/watch?v=xHYp3LvPCTA)
+
+### 3\. Build and Train Your First Bot
+
+* **Create a specialized agent.** Click the plus (`+`) button in the sidebar, give your bot a name, icon, and color, and follow the rule of one bot per job type (such as an Executive Assistant or Receipt Tracker). [](https://www.youtube.com/watch?v=q1IwR88mhaA)
+* **Set rules in plain language.** Message the bot directly to define its label, daily responsibilities, and safety boundaries—for example, instructing it never to send emails or cancel subscriptions without asking first. [](https://www.youtube.com/watch?v=c9%5FSR0d1LLk&t=561)
+* **Connect your apps.** Click **Connect Apps** in the bottom left to link plugins like Gmail, Google Drive, Google Sheets, Slack, Notion, or ClickUp. For sensitive services like banking, use the secure password vault or API token fields rather than typing credentials into the chat. [](https://www.youtube.com/watch?v=bH2x8jtHyXM)
+
+### 4\. Automate with Routines and Multi-Bot Teams
+
+* **Schedule cloud routines.** Tell a bot to repeat a task on a schedule, such as summarizing your inbox every weekday at 7:00 AM. Because bots run in the cloud, routines execute even when your computer is closed.
+* **Manage multiple agents.** Type `/inbox` in your main bot's chat to get a quick digest of every other bot waiting on you for a decision.
+* **Collaborate across bots.** Set up routing rules so one bot passes finished work to another—for instance, having a meeting agent send content tasks to a content bot and billing items to an invoice agent. With **Grok Bot 1.0**, you can also flip a switch to turn any agent into a Team Bot that joins live meetings and responds to voice or chat cues. [](https://www.youtube.com/watch?v=kjlDV-vf0-A&t=26)
+
+If you'd like to narrow this down, let me know:
+
+* Which **specific workflow** you want to automate first (email triage, finance tracking, content creation, or coding)
+* Which **apps or tools** you want to connect (Google Workspace, Slack, Notion, etc.)
+
+I can walk you through the exact setup steps and prompts for that specific bot.
+
+* [](https://www.youtube.com/watch?v=7b6cMUBxUtw&t=293)  
+YouTube·Leon van Zyl  
+Grok Bot Full Guide: Get More Done Than 99% of People  
+Nov 11, 2026 — To create additional bots, click the plus button and provide a name, icon, and color. Bots can also be accessed from the left side...  
+3m
+* [](https://www.youtube.com/watch?v=q1IwR88mhaA)  
+YouTube·Charlie Chang  
+The ONLY Grok Bot Tutorial You Need 2026  
+September 30, 2026 — the first type of thing you should make is an executive assistant. click on this plus button right here you're going to click on. ...  
+14:01
+* [](https://www.youtube.com/watch?v=bH2x8jtHyXM)  
+YouTube·Brock Mesarich | AI for Non Techies  
+GROK BOT FULL COURSE: All 7 Levels Explained (2027)  
+November 15, 2026 — setting this up is very very simple … you're going to need a Granola account and there's a link in the description. click on conne...  
+49:32
+
+Show all
+
 
 
