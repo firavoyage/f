@@ -216,7 +216,7 @@ you may receive
 
 <!-- no need to be surgical. rather swap the tree entirely. -->
 
-when you open (i.e. subscribe) a thread
+when you open (i.e. subscribe) a thread, when you send new msg (you could just add one node, but you may just update it for simplicity), edit, or change focus.
 
 current tree. not all historical actions.
 
@@ -247,6 +247,29 @@ you would read all these when opening a thread but it can update individually.
 
 you would read all these when opening a thread but it can update individually.
 
+## set message (thread, message)
+
+when you send a new msg, or modify it in place.
+
+```yaml
+# id:
+role:
+content: ''
+reasoning?: ''
+# tools?:
+start_time:
+# end_time:
+# usage?:
+#   prompt_tokens:
+#   completion_tokens:
+#   total_tokens:
+# perf?:
+#   tokens_per_second:
+#   time_to_first_token:
+```
+
+you may attach id yourself on the object if needed.
+
 ## append (thread, message)
 
 ```yaml
@@ -259,7 +282,9 @@ you should append the string to each field.
 
 <!-- clearly you should not append to role, lol. -->
 
-## finish (message)
+for any persistent connection, it's expected you only append existing msg. you may assert that.
+
+## finish (thread, message)
 
 ```yaml
 has_failed?:

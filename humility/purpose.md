@@ -720,4 +720,17 @@ interesting, vimium does use mod key (ctrl jk)
 
 when you are inside vomnibar
 
+---
+
+you may think this way.
+
+you would support every user flow, likely crud. and you may optimize a few 
+
+---
+
+fundamentally it depends on generation lib.
+
+you can absolutely point it to a mock generation lib, rather than local network setups.
+
+
 
