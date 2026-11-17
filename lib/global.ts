@@ -41,4 +41,15 @@ use({ use })
 type use = typeof use
 declare global {
   var use: use
+
+  type Key = PropertyKey
+
+  type Optional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
+
+  type Extend<T> = T & {[key: Key]: any}
+
+  // will not work anyway, ts sees it as required (possibly nil) param and you could not dc nil options
+  // type Options<T> = Partial<T> | undefined
+
+  type fn = (...args: any) => any
 }

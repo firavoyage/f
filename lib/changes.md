@@ -127,5 +127,11 @@ it's not really faster to join an array of strings than string add.
 17
 
 - time: + `set_timeout` `set_interval`
-- std: + `type nil` alongside `nil`
+- std: + `type nil` alongside `nil`, alias `bool` to `boolean`
 - web/state: see undefined and nil the same. remove url param for nullish value.
+- std/is: + `nullish` type
+- std/is: support `(...types)`, like py tuple
+- global: merge `global types`
+  - would fix some intellisense issues
+
+

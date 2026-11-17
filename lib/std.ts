@@ -108,21 +108,21 @@ export function merge(target: object, ...sources: object[]) {
 
 // for some reason, ts sees constructures as Function, not any to any fn
 type variable_type =
-  | 'nil'
+  | 'undefined'
+  | 'nil' // nil | not a number
+  | 'nullish'
   | 'array'
   | 'string'
   | 'number'
   | 'bigint'
   | 'boolean'
   | 'symbol'
-  | 'undefined'
   | 'object'
   | 'function'
   | Function
   | 'numeric'
   | 'literal'
-  | 'iterable'
-// type variable_type = 'nil' | 'array' | "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" | fn
+  | 'iterable' // iterable & !string
 
 /**
  * check if type matches
@@ -131,32 +131,25 @@ type variable_type =
  *
  * strings are not iterable
  */
-export function is(v: any, type: variable_type) {
-  if (v === nil) {
-    return type == 'nil' || type === nil
-  } else if (v === undefined) {
-    return type == 'undefined'
-  } else if (type == 'numeric') {
-    return is(v, 'number') || is(v, 'bigint')
-  } else if (type == 'iterable') {
-    return is(v[Symbol.iterator], 'function') && !is(v, 'string')
-  } else if (type == 'literal') {
-    return (
-      is(v, 'numeric') ||
-      is(v, 'boolean') ||
-      is(v, 'nil') ||
-      is(v, 'undefined') ||
-      is(v, 'string') ||
-      is(v, 'symbol')
-    )
-  } else if (typeof type == 'function') {
-    return v instanceof type
-  } else {
-    return real_type(v) == type
-  }
+export function is(v: any, ...type: variable_type[]): bool {
+  return type.some((type) => {
+    if (type == 'nullish') {
+      return is(v, 'nil', 'undefined')
+    } else if (type == 'numeric') {
+      return is(v, 'number', 'bigint')
+    } else if (type == 'iterable') {
+      return is(v[Symbol.iterator], 'function') && !is(v, 'string')
+    } else if (type == 'literal') {
+      return is(v, 'nullish', 'boolean', 'numeric', 'string', 'symbol')
+    } else if (typeof type == 'function') {
+      return v instanceof type
+    } else {
+      return type == real_type(v)
+    }
+  })
 }
 
-function real_type(v) {
+function real_type(v: any) {
   if (v === nil || Number.isNaN(v)) {
     return 'nil'
   } else if (Array.isArray(v)) {
@@ -246,7 +239,7 @@ type is = typeof is
 type num = typeof num
 type int = typeof int
 type float = typeof float
-type bool = typeof bool
+type bool_ = typeof bool
 type str = typeof str
 type list = typeof list
 type set = typeof set
@@ -255,6 +248,7 @@ type obj = typeof obj
 declare global {
   type nil = typeof nil
   var nil: nil_
+  type bool = boolean
   var variable: variable
   var is_given: is_given
   var has: has
@@ -264,7 +258,7 @@ declare global {
   var num: num
   var int: int
   var float: float
-  var bool: bool
+  var bool: bool_
   var str: str
   var list: list
   var set: set

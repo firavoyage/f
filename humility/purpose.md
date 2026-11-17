@@ -714,4 +714,10 @@ if you set focus, it should sync, at least it's reasonable if it does. why not.
 
 it will be messy imagining you change it back and forth and i have no idea which to follow.
 
+---
+
+interesting, vimium does use mod key (ctrl jk)
+
+when you are inside vomnibar
+
 
