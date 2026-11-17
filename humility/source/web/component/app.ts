@@ -157,7 +157,6 @@ export function app() {
     set_threads(async () => {
       let promise = perform('list')
 
-      window.a = promise
       log('promise', promise)
 
       let result = await promise
@@ -361,7 +360,7 @@ function connect() {
 let pending_actions: Set<fn> = set()
 let pending_requests: Record<string, fn> = {}
 
-async function perform(
+function perform(
   action,
   payload?,
   timeout = action_timeout,
@@ -383,11 +382,18 @@ async function perform(
     ws.send(stringify(request_payload))
   }
 
-  return new Promise((resolve, reject) => {
+  // const p = new Promise((resolve) => {
+  //   window.foo = resolve
+  // })
+  // console.log(p) // Promise {<pending>}
+  // foo('done')
+  // console.log(p) // Promise {<fulfilled>: "done"}
+
+  const p = new Promise((resolve, reject) => {
+    window.foo = resolve
+
     pending_requests[id] = (v) => {
       log('resolve', id, v)
-
-      log(resolve)
 
       resolve(v)
     }
@@ -402,4 +408,7 @@ async function perform(
       }
     }, timeout)
   })
+  window.p = p
+
+  return p
 }

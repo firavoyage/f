@@ -748,4 +748,63 @@ ws obj of the same client is stable across callbacks.
 
 for some reason, i could resolve and reject the same id twice, or even more times.
 
+---
+
+ah, interesting. an hour of debugging?
+
+```
+function perform(
+  action,
+  payload?,
+  timeout = action_timeout,
+  id = random_id(),
+): Promise<any> {
+  if (!(ws?.readyState == WebSocket.OPEN)) {
+    log(`wait for ws to perform ${action}`)
+    pending_actions.add(() => perform(action, payload, timeout, id))
+  } else {
+    const request_payload = {
+      type: 'request',
+      id,
+      action,
+      payload,
+    }
+
+    log('perform', request_payload)
+
+    ws.send(stringify(request_payload))
+  }
+
+  // const p = new Promise((resolve) => {
+  //   window.foo = resolve
+  // })
+  // console.log(p) // Promise {<pending>}
+  // foo('done')
+  // console.log(p) // Promise {<fulfilled>: "done"}
+
+  const p = new Promise((resolve, reject) => {
+    window.foo = resolve
+
+    pending_requests[id] = (v) => {
+      log('resolve', id, v)
+
+      resolve(v)
+    }
+
+    set_timeout(function () {
+      if (is(pending_requests[id], 'present')) {
+        reject(
+          err(
+            `response for action ${action} should arrive within ${timeout}ms`,
+          ),
+        )
+      }
+    }, timeout)
+  })
+  window.p = p
+
+  return p
+}
+```
+
 
