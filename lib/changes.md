@@ -140,5 +140,5 @@ it's not really faster to join an array of strings than string add.
 - map: enhance ts typing
 - std: remove `variable`
   - that's not clean code to implicitly match things (labels and code) by name, i.e. `name.toLowerCase().replaceAll(' ', '_')`
-- std: + `identity` `call`
+- std: + `identity` `call` `pipe`
 

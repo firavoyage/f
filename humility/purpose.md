@@ -807,4 +807,137 @@ function perform(
 }
 ```
 
+ah, even more interesting, you are thinking bout this?
+
+```
+    if (pending_requests[id]) {
+      pending_requests[id].add(resolve)
+    } else {
+      pending_requests[id] = set([resolve])
+    }
+```
+
+oh, you would still see an error, lol!
+
+```
+function perform(
+  action,
+  payload?,
+  timeout = action_timeout,
+  id = random_id(),
+): Promise<any> {
+  if (!(ws?.readyState == WebSocket.OPEN)) {
+    log(`wait for ws to perform ${action}`)
+    pending_actions.add(() => perform(action, payload, timeout, id))
+  } else {
+    const request_payload = {
+      type: 'request',
+      id,
+      action,
+      payload,
+    }
+
+    log('perform', request_payload)
+
+    ws.send(stringify(request_payload))
+  }
+
+  return new Promise((resolve, reject) => {
+    if (is(pending_requests[id], 'absent')) {
+      pending_requests[id] = resolve
+    }
+
+    set_timeout(function () {
+      reject(
+        err(`response for action ${action} should arrive within ${timeout}ms`),
+      )
+    }, timeout)
+  })
+}
+```
+
+it's fine, but it's not clean code.
+
+```
+function perform(
+  action,
+  payload?,
+  timeout = action_timeout,
+  id = random_id(),
+): Promise<any> {
+  if (!(ws?.readyState == WebSocket.OPEN)) {
+    log(`wait for ws to perform ${action}`)
+    pending_actions.add(() => perform(action, payload, timeout, id))
+  } else {
+    const request_payload = {
+      type: 'request',
+      id,
+      action,
+      payload,
+    }
+
+    log('perform', request_payload)
+
+    ws.send(stringify(request_payload))
+  }
+
+  return new Promise((resolve, reject) => {
+    if (is(pending_requests[id], 'absent')) {
+      pending_requests[id] = resolve
+
+      set_timeout(function () {
+        reject(
+          err(
+            `response for action ${action} should arrive within ${timeout}ms`,
+          ),
+        )
+      }, timeout)
+    }
+  })
+}
+```
+
+now again it does not resolve!
+
+```
+async function perform(
+  action,
+  payload?,
+  timeout = action_timeout,
+  id = random_id(),
+): Promise<any> {
+  if (!(ws?.readyState == WebSocket.OPEN)) {
+    log(`wait for ws to perform ${action}`)
+    pending_actions.add(() => send(action, payload, id))
+
+    return
+  }
+
+  send(action, payload, id)
+
+  return new Promise((resolve, reject) => {
+    pending_requests[id] = resolve
+
+    set_timeout(function () {
+      reject(
+        err(`response for action ${action} should arrive within ${timeout}ms`),
+      )
+    }, timeout)
+  })
+}
+
+async function send(action, payload, id) {
+  const request_payload = {
+    type: 'request',
+    id,
+    action,
+    payload,
+  }
+
+  log('perform', request_payload)
+
+  ws.send(stringify(request_payload))
+}
+```
+
 

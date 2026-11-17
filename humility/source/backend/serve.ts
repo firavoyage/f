@@ -52,13 +52,6 @@ app.get(
   upgradeWebSocket(() => ({
     onOpen(_event, ws) {
       console.log('Client connected')
-
-      ws.send(
-        stringify({
-          type: 'connected',
-          message: 'Welcome!',
-        }),
-      )
     },
 
     onMessage(event, ws) {

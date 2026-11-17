@@ -126,13 +126,11 @@ export function app() {
 
       const { type, id, action, payload } = response
 
-      log('receive', response, event.data)
+      log('receive', action, payload)
 
       if (type == 'response') {
-        if (has(pending_requests, id)) {
-          pending_requests[id](payload)
-          pending_requests[id] = nil
-        }
+        pending_requests?.[id]?.(payload)
+        pending_requests[id] = nil
       } else if (type == 'broadcast') {
         if (response.thread == thread) {
           broadcasts[action](payload)
@@ -154,23 +152,13 @@ export function app() {
   })
 
   use_mount(() => {
-    set_threads(async () => {
-      let promise = perform('list')
-
-      log('promise', promise)
-
-      let result = await promise
-
-      log('result', result)
-
-      return result
-    })
+    set_threads(perform('list'))
     // set_threads(post('list'))
   })
 
   use_keyboard('alt+n', new_thread)
 
-  use_debug(threads)
+  // use_debug(threads)
 
   function new_thread() {
     set_thread(nil)
@@ -360,7 +348,7 @@ function connect() {
 let pending_actions: Set<fn> = set()
 let pending_requests: Record<string, fn> = {}
 
-function perform(
+async function perform(
   action,
   payload?,
   timeout = action_timeout,
@@ -368,47 +356,31 @@ function perform(
 ): Promise<any> {
   if (!(ws?.readyState == WebSocket.OPEN)) {
     log(`wait for ws to perform ${action}`)
-    pending_actions.add(() => perform(action, payload, timeout, id))
+    pending_actions.add(() => send(action, payload, id))
   } else {
-    const request_payload = {
-      type: 'request',
-      id,
-      action,
-      payload,
-    }
-
-    log('perform', request_payload)
-
-    ws.send(stringify(request_payload))
+    send(action, payload, id)
   }
 
-  // const p = new Promise((resolve) => {
-  //   window.foo = resolve
-  // })
-  // console.log(p) // Promise {<pending>}
-  // foo('done')
-  // console.log(p) // Promise {<fulfilled>: "done"}
-
-  const p = new Promise((resolve, reject) => {
-    window.foo = resolve
-
-    pending_requests[id] = (v) => {
-      log('resolve', id, v)
-
-      resolve(v)
-    }
+  return new Promise((resolve, reject) => {
+    pending_requests[id] = resolve
 
     set_timeout(function () {
-      if (is(pending_requests[id], 'present')) {
-        reject(
-          err(
-            `response for action ${action} should arrive within ${timeout}ms`,
-          ),
-        )
-      }
+      reject(
+        err(`response for action ${action} should arrive within ${timeout}ms`),
+      )
     }, timeout)
   })
-  window.p = p
+}
 
-  return p
+async function send(action, payload, id) {
+  const request_payload = {
+    type: 'request',
+    id,
+    action,
+    payload,
+  }
+
+  log('perform', action, payload)
+
+  ws.send(stringify(request_payload))
 }
