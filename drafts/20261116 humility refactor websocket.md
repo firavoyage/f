@@ -1893,4 +1893,296 @@ April 13, 2026 — The Browser WebSocket API The native browser API is straightf
 
 Show all
 
+# when does default param in js evaluate
+
+In JavaScript, default parameters are evaluated **at call time**, every single time the function is invoked. They are not evaluated when the function is defined. [](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default%5Fparameters)
+
+### Key Evaluation Rules
+
+* **Triggered only by `undefined`.** The default expression runs only if the argument is omitted or explicitly passed as `undefined`. Other falsy values like `null`, `0`, `false`, or `""` will bypass the default and use the passed value. [](https://github.com/yangshun/top-javascript-interview-questions/blob/main/questions/what-are-default-parameters-and-how-are-they-used/en-US.mdx)
+* **Fresh objects on every call.** Because the expression re-evaluates on each call, passing an object or array literal (like `items = []`) creates a brand-new instance every time. This prevents the shared mutable state bugs common in languages like Python. [](https://dev.to/kenbellows/javascript-vs-python-default-function-parameter-values-7dc)
+* **Evaluated left to right.** Parameters are processed sequentially from left to right. A default parameter can safely reference any parameter listed before it, but referencing a parameter declared after it will throw a `ReferenceError`. [](https://codeburst.io/understanding-default-parameters-in-javascript-5f3c4dcfc838)
+* **Lazy execution.** If a valid argument is provided during the call, the default expression is completely skipped and never runs. [](https://kentcdodds.com/blog/javascript-default-parameters)
+
+### Code Example
+
+According to the [MDN Web Docs on Default Parameters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default%5Fparameters), call-time evaluation works with both new object creation and function calls:
+
+javascript
+
+```
+function append(value, array = []) {
+  array.push(value);
+  return array;
+}
+
+append(1); // [1] (evaluates `[]` to create a new array)
+append(2); // [2] (evaluates `[]` again, rather than mutating the first array)
+
+```
+
+
+
+Because defaults execute lazily and at call time, developers also use them to enforce required arguments by setting a function call that throws an error as the default value: [](https://medium.com/free-code-camp/default-parameters-in-javascript-4302958331f7)
+
+javascript
+
+```
+function required(name) {
+  throw new Error(`Missing required parameter: ${name}`);
+}
+
+function greet(user = required('user')) {
+  return `Hello, ${user}`;
+}
+
+greet('Alice'); // "Hello, Alice" (required() is never called)
+greet();        // Throws Error: Missing required parameter: user
+
+```
+
+
+
+If you're running into a specific edge case with **parameter scope** or **destructuring defaults**, share your code snippet and I can walk through how JavaScript evaluates it!
+
+* [](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default%5Fparameters)  
+MDN Web Docs  
+Default parameters - JavaScript - MDN Web Docs  
+Jul 8, 2025 — The default argument is evaluated at call time. Unlike with Python (for example), a new object is created each time the function i...
+* [](https://dev.to/kenbellows/javascript-vs-python-default-function-parameter-values-7dc)  
+DEV Community  
+JavaScript vs. Python: Default Function Parameter Values  
+December 20, 2018 — JavaScript a similar functionality to default parameter values in Python (and several other languages).
+* [](https://kentcdodds.com/blog/javascript-default-parameters)  
+Kent C. Dodds  
+JavaScript default parameters  
+June 25, 2018 — Default Parameters: Evaluated when a parameter is undefined; allows calling validation functions like requiredParam() conditionall...
+
+Show all
+
+# how can you resolve a promise in js
+
+You can resolve a JavaScript `Promise` by calling the **`resolve()` callback** inside its constructor, using **`Promise.resolve()`** for immediate values, returning from an **`async` function**, or using **`Promise.withResolvers()`** for external control. [](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Promise/resolve)
+
+Once a promise resolves, its state changes from _pending_ to _fulfilled_ and cannot be changed again. [](https://www.freecodecamp.org/news/javascript-promise-tutorial-how-to-resolve-or-reject-promises-in-js/)
+
+### 1\. Inside the `Promise` Constructor
+
+When creating an asynchronous operation from scratch, pass an executor function to `new Promise()`. Call the first parameter (`resolve`) when your task succeeds. [](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Promise)
+
+javascript
+
+```
+const myPromise = new Promise((resolve, reject) => {
+  const success = true;
+
+  setTimeout(() => {
+    if (success) {
+      resolve("Data loaded!"); // Fulfill the promise with a value
+    } else {
+      reject(new Error("Failed to load."));
+    }
+  }, 1000);
+});
+
+```
+
+
+
+### 2\. Using `Promise.resolve()`
+
+If you already have a value and want to wrap it in a resolved promise immediately, use the static [Promise.resolve()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Promise/resolve) method. This is useful when a function needs to return a consistent promise type even for cached or synchronous data. [](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Promise/resolve)
+
+javascript
+
+```
+const resolvedPromise = Promise.resolve(42);
+
+```
+
+
+
+### 3\. Returning from an `async` Function
+
+Any function declared with the `async` keyword automatically wraps its return value in a resolved promise.
+
+javascript
+
+```
+async function getUser() {
+  return { name: "Alex" }; // Automatically resolves to this object
+}
+
+```
+
+
+
+### 4\. Resolving Externally with `Promise.withResolvers()`
+
+If you need to resolve a promise from outside its executor scope (such as waiting for a DOM event or user action), use `Promise.withResolvers()`.
+
+javascript
+
+```
+const { promise, resolve, reject } = Promise.withResolvers();
+
+// Resolve it later from anywhere in your code
+button.addEventListener("click", () => {
+  resolve("Button clicked!");
+});
+
+```
+
+
+
+---
+
+### How to Consume a Resolved Promise
+
+After a promise resolves, access its value using `.then()` or the `await` keyword: [](https://stackoverflow.com/questions/57086135/confusion-the-use-of-resolve-and-then-methods-with-promise)
+
+* **Using `async` / `await`.** Pause execution inside an `async` function until the promise resolves and assign the result directly to a variable.  
+javascript  
+```  
+const result = await myPromise;  
+console.log(result); // "Data loaded!"  
+```  
+
+* **Using `.then()`.** Pass a callback function to [.then()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Promise), which runs once the promise fulfills.  
+javascript  
+```  
+myPromise.then((result) => {  
+  console.log(result); // "Data loaded!"  
+});  
+```  
+
+
+If you are working on a specific use case—such as **converting a callback-based function**, **handling multiple promises at once**, or **catching errors**—let me know and I can share a tailored code example.
+
+* [](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Promise/resolve)  
+MDN Web Docs  
+Promise.resolve() - JavaScript  
+September 14, 2026 — Promise.resolve() reuses existing Promise instances. If it's resolving a native promise, it returns the same promise instance with...
+* [](https://stackoverflow.com/questions/57086135/confusion-the-use-of-resolve-and-then-methods-with-promise)  
+Stack Overflow  
+Confusion the use of resolve() and then() methods with Promise  
+July 18, 2019 — The \`resolve()\` method is used to transition a Promise from a 'Pending' to a 'Resolved' state, passing data to its \`.then()\` callb...
+* [](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Promise)  
+MDN Web Docs  
+Promise - JavaScript - MDN Web Docs  
+October 26, 2026 — resolve will not only resolve promises, but also trace thenables. resolve(thenable); to resolve or reject the. We define what to d...
+
+Show all
+
+# why do i need Promise.withResolvers in js
+
+You need **[Promise.withResolvers()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Promise/withResolvers)** when you want to create a Promise in one place and resolve or reject it from somewhere else, without wrapping all your logic inside the `new Promise()` callback. [](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Promise/withResolvers)
+
+Normally, `resolve` and `reject` are trapped inside the executor function of a Promise. `Promise.withResolvers()` lifts them into the same scope as the Promise itself in a single line. [](https://www.youtube.com/watch?v=MN6A0rb6vVs&t=10)
+
+### The Old Way vs. The New Way
+
+Before this method existed, developers had to declare variables outside the Promise and assign them inside the constructor, which felt clunky and broke TypeScript type inference: [](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Promise/withResolvers)
+
+javascript
+
+```
+// Old workaround (boilerplate and awkward scoping)
+let resolve, reject;
+const promise = new Promise((res, rej) => {
+  resolve = res;
+  reject = rej;
+});
+
+```
+
+
+
+With `Promise.withResolvers()`, you get all three pieces cleanly destructured: [](https://www.youtube.com/watch?v=1g%5FfBCGHLyg)
+
+javascript
+
+```
+// Modern approach (clean, flat, and TypeScript-friendly)
+const { promise, resolve, reject } = Promise.withResolvers();
+
+```
+
+
+
+### Common Use Cases
+
+* **Turning events into Promises.** You can wait for a user action (like clicking a confirmation modal button) or a single WebSocket message without nesting your UI code inside a Promise constructor. [](https://blog.master.dev/control-javascript-promises-from-anywhere-using-promise-withresolvers/)
+* **Managing queues and streams.** When building async queues or coordinating producer-consumer patterns, you can store `resolve` functions in an array and trigger them as data arrives. [](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Promise/withResolvers)
+* **Canceling or timing out operations.** You can expose `reject` externally so a separate abort button or timeout handler can cancel an ongoing task. [](https://medium.com/design-bootcamp/a-deep-dive-into-promise-withresolvers-a-powerful-javascript-utility-55e2d41ff556)
+* **Cleaner testing.** In unit tests, you can easily control the exact moment an asynchronous mock resolves or fails. [](https://medium.com/design-bootcamp/a-deep-dive-into-promise-withresolvers-a-powerful-javascript-utility-55e2d41ff556)
+
+### When You Don't Need It
+
+* **Standard async operations.** If you are already using `async/await` or wrapping a single callback (like `setTimeout`), a standard `new Promise((resolve) => ...)` is safer because it automatically catches synchronous errors thrown inside the executor. [](https://www.reddit.com/r/node/comments/19fh08j/deferred%5Fjavascript%5Fpromises%5Fusing/)
+
+Would you like to see a practical code example for **waiting on a DOM event** or building an **async queue** using `Promise.withResolvers()`?
+
+* [](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Promise/withResolvers)  
+MDN Web Docs  
+Promise.withResolvers() - JavaScript  
+October 26, 2026 — The Promise. withResolvers() static method returns an object containing a new Promise object and two functions to resolve or rejec...
+* [](https://www.reddit.com/r/node/comments/19fh08j/deferred%5Fjavascript%5Fpromises%5Fusing/)  
+Reddit·r/node  
+Deferred JavaScript promises using Promise.withResolvers  
+January 25, 2024 — I think it's still normally cleaner to wrap with a new Promise((resolve, reject) => ...) signature, personally. It helps make sure...
+* [](https://www.youtube.com/watch?v=1g%5FfBCGHLyg)  
+YouTube·Software Developer Diaries  
+Promises have just gotten nicer! (withResolvers)  
+May 27, 2024 — Instead of the traditional promise construction, you can directly destructure the result of \`Promise.withResolvers()\` into \`promis...  
+4:46
+
+Show all
+
+# why does it work when i resolve a js promise directly but doesnt when i window.foo = resolve and then foo in devtools it's always pending
+
+Assigning `window.foo = resolve` and calling `foo()` in DevTools normally **does** resolve the promise, meaning a pending state points to a **breakpoint pause**, a **wrong execution context**, or a **missing function invocation**.
+
+### Common Causes
+
+* **Execution is paused at a breakpoint.** If you stopped the code at a `debugger` statement or breakpoint to inspect `window.foo`, the JavaScript engine freezes the event loop. Calling `foo()` in the console queues the resolution, which will not complete until you resume script execution. [](https://www.reddit.com/r/learnjavascript/comments/1mlbb3v/why%5Fdoesnt%5Fchrome%5Fdevtools%5Fstep%5Fthrough%5Fpromises/)
+* **Wrong frame or execution context in DevTools.** The DevTools console defaults to the `top` page context, which may differ from where your code ran. If your script runs inside an `<iframe>`, a browser extension content script, or a Web Worker, `window.foo` is attached to that isolated global object rather than the console's `window`.
+* **Evaluating `foo` instead of calling `foo()`.** Typing `foo` without parentheses only inspects the function reference in the console and does not trigger resolution. You must invoke it with `foo()` or `foo('someValue')`.
+* **Promise constructor error or overwritten variable.** If an error occurred inside the `new Promise((resolve) => ...)` executor before `window.foo = resolve` ran, the promise rejected silently and `window.foo` remained `undefined`. Alternatively, another script or a subsequent promise creation may have overwritten `window.foo`.
+* **Resolving with another pending promise.** If you called `foo(anotherPromise)`, your promise adopts the state of `anotherPromise` and stays pending until that inner promise settles. [](https://stackoverflow.com/questions/78249480/why-when-i-resolve-a-promise-the-output-is-in-pending-state)
+
+### How to Test It
+
+Run this snippet directly in your DevTools console to confirm that exposing `resolve` on `window` works:
+
+javascript
+
+```
+const p = new Promise(resolve => { window.foo = resolve; });
+console.log(p); // Promise {<pending>}
+foo('done');
+console.log(p); // Promise {<fulfilled>: "done"}
+
+```
+
+
+
+If this works in your console, check the **JavaScript context dropdown** at the top-left of the DevTools Console panel (usually labeled `top`) to ensure it matches the frame where your script is running.
+
+If you're still stuck, let me know:
+
+* The **code snippet** creating the promise
+* Whether you are using **breakpoints** or **iframes**
+
+I can pinpoint why the promise isn't settling in your setup.
+
+* [](https://www.reddit.com/r/learnjavascript/comments/1mlbb3v/why%5Fdoesnt%5Fchrome%5Fdevtools%5Fstep%5Fthrough%5Fpromises/)  
+Reddit·r/learnjavascript  
+Why doesn't Chrome Devtools step through promises? (I'm a ...  
+August 9, 2025 — Pausing execution in the debugger stops all other JavaScript from running, including asynchronous callbacks like \`setTimeout\` or P...
+* [](https://stackoverflow.com/questions/78249480/why-when-i-resolve-a-promise-the-output-is-in-pending-state)  
+Stack Overflow  
+why when I resolve a promise, the output is in pending state?  
+March 30, 2024 — When a promise is resolved with another promise, its state initially remains pending because the final settlement is handled async...
+
 
