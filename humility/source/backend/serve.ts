@@ -9,7 +9,7 @@ import { parse_options } from 'lib/cli'
 import * as actions from 'action/index'
 import { serialize } from 'action/index'
 
-const { stringify } = JSON
+const { parse, stringify } = JSON
 
 const { port } = parse_options({
   port: {
@@ -36,8 +36,9 @@ app.get(
   upgradeWebSocket(() => ({
     onOpen(_event, ws) {
       console.log('Client connected')
+
       ws.send(
-        JSON.stringify({
+        stringify({
           type: 'connected',
           message: 'Welcome!',
         }),
@@ -45,11 +46,23 @@ app.get(
     },
 
     onMessage(event, ws) {
-      console.log(event.data)
-      // console.log('Received:', event.data)
+      const request: {
+        type: 'request'
+        id: string
+        action: string
+        payload: any
+      } = parse(event.data)
 
-      // Echo message back to client
-      ws.send(event.data)
+      const { type, id, action, payload } = request
+
+      // log(request)
+
+      ws.send(stringify({
+        type: 'response',
+        id,
+        action,
+        payload,
+      }))
     },
 
     onClose() {

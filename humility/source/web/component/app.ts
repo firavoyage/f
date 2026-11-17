@@ -101,33 +101,35 @@ export function app() {
   use_keyboard('alt+n', new_thread)
 
   use_mount(() => {
-    connect()
-
-    ws.onmessage = (event) => {
+    function receive(event) {
       const response: {
-        type: 'response' | 'broadcast',
-        id: string,
+        type: 'response' | 'broadcast'
+        id: string
         // id?: string,
-        action: string,
+        action: string
         payload: any
       } = parse(event.data)
-
+  
       const { type, id, action, payload } = response
-
+  
+      log('receive', response, event.data)
+  
       if (type == 'response') {
         if (has(pending_requests, id)) {
           pending_requests[id](payload)
-        } 
-      } 
-
-      
+        }
+      }
     }
 
-    set_interval(async function() {
+    receive_ = receive
+
+    connect()
+
+    set_interval(async function () {
       perform('hello', {
-        message: 'hello world'
+        message: 'hello world',
       })
-    }, 1000)
+    }, 10000)
   })
 
   function new_thread() {
@@ -272,6 +274,7 @@ function render(md: string) {
 render = cache(render)
 
 let ws: InstanceType<typeof WebSocket>
+let receive_
 
 function connect() {
   ws = new WebSocket('ws://localhost:8192/api/ws')
@@ -282,18 +285,18 @@ function connect() {
     map(pending_actions, call)
   }
 
+  ws.onmessage = receive_
+
   ws.onclose = () => {
     log('Disconnected')
 
     const delay = ws_retry_delay + random() * ws_max_jitter
 
     set_timeout(function () {
+      log('Reconnecting...')
+      
       connect()
     }, delay)
-  }
-
-  ws.onerror = (error) => {
-    log('WebSocket error:', error)
   }
 }
 
@@ -327,9 +330,7 @@ async function perform(
 
     set_timeout(function () {
       reject(
-        err(
-          `response for action ${action} should arrive within ${timeout}ms as you await`,
-        ),
+        err(`response for action ${action} should arrive within ${timeout}ms`),
       )
     }, timeout)
   })
