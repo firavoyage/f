@@ -41,42 +41,45 @@ besides, you can have an append only thread history, or request/response (or sse
 
 you may save logs into separate files, or have "scalable" filenames (e.g. ab/cd/efghlog.log) in the future.
 
-# actions
-
-actions include user actions and server actions (e.g. new incoming delta for some msgs, change from other users or clients).
+# actions <!-- user actions -->
 
 action and state sync (for rendering) are already decoupled.
 
-when you perform an action on web, you gen req id and add to a temporary set. it will return the status of such action (rather than what it mutates). when you see an action result that matches, you toast or cleanup maybe (e.g. clear prompt textarea _wo appending to chat_). _you may consider no success after timeout as failure._
+you send
 
-# possible user actions
+- type: request <!-- you dont have to send it. just be clear and explicit. -->
+- id
+- action
+- payload?
 
-## listen(thread = random id)
+you may receive <!-- ideally void req should have a resp indicating success -->
 
-preferably you generate the id on web.
+- type: response
+- id (same)
+- action
+- payload
 
-then you will connect to that thread.
+on top of the abstraction, you
 
-backend should response an empty ~~initial~~ thread like.
+```
+# (re)connect -> ws
 
-```yaml
-thread:
-  tree:
-    0:
-      children: []
-      current_focus:
-  message: {}
+await perform(action, req payload) -> resp payload
 ```
 
-the default fallback.
+## subscribe (thread = random id)
 
-connection does nothing. it reads (at least it tries). it doesnt mutate.
+you subscribe when you open a thread.
 
-you (the send fn of your ws client object) would be added to listeners.
+you will receive its state soon.
 
-## unlisten(thread)
+specifically, when you are on homepage/new thread, you do not subscribe.
 
-rm such listener on the backend.
+after sending the first msg (check thread), you will 
+
+## unsubscribe (thread)
+
+you unsub when you thread changes.
 
 ## init_thread <!-- new thread(id = random id) -->
 
@@ -150,7 +153,40 @@ you may stop shell or llm fetch. that's irrelevant.
 
 tools should not be harmful regardless and tokens are cheap (and you might not force it on all endpoints).
 
-# possible server actions
+# broadcasts <!-- server actions -->
+
+broadcasts doesnt have to have some id like responses for user actions.
+
+you may receive
+
+- type: broadcast
+- action <!-- would possibly benefit polymorphism when named the same -->
+- payload
+
+## set tree (thread)
+
+when you open (i.e. listen for) a thread
+
+current tree. not all historical actions.
+
+specifically, for new (non existing) threads, it returns
+
+```yaml
+0:
+  children: []
+```
+
+## set messages (thread)
+
+when you open (i.e. listen for) a thread
+
+incl. all msgs of whatever status
+
+specifically, for new (non existing) threads, it returns
+
+```yaml
+{}
+```
 
 ## prepend thread state
 

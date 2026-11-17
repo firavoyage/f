@@ -103,7 +103,11 @@ export function s<T>(initial_value: T, options: s<T> = {}) {
       const current_serialized_state = serialize()
 
       if (prev_serialized_state != current_serialized_state) {
-        url.searchParams.set(url_param, serialize())
+        if (!is_given(state)) {
+          url.searchParams.delete(url_param)
+        } else {
+          url.searchParams.set(url_param, serialize())
+        } 
         window.history.pushState({}, '', url)
       }
     })

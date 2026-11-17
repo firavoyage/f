@@ -30,7 +30,7 @@ type thread = {
   is_hidden?: boolean
 }
 
-export const use_thread = s('', {
+export const use_thread = s(nil as string | nil, {
   url_param: 'thread',
 })
 
@@ -131,7 +131,7 @@ export function app() {
   })
 
   function new_thread() {
-    set_thread('')
+    set_thread(nil)
   }
 
   return h(
@@ -173,7 +173,7 @@ export function app() {
                       async onclick() {
                         await post('hide', current_thread)
                         if (thread == current_thread) {
-                          set_thread('')
+                          set_thread(nil)
                         }
                         set_threads(post('list'))
                       },

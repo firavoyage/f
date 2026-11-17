@@ -236,7 +236,7 @@ export function obj(v) {
   return Object.fromEntries(v)
 }
 
-type nil = typeof nil
+type nil_ = typeof nil
 type variable = typeof variable
 type is_given = typeof is_given
 type has = typeof has
@@ -253,7 +253,8 @@ type set = typeof set
 type dict = typeof dict
 type obj = typeof obj
 declare global {
-  var nil: nil
+  type nil = typeof nil
+  var nil: nil_
   var variable: variable
   var is_given: is_given
   var has: has

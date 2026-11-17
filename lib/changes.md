@@ -127,3 +127,5 @@ it's not really faster to join an array of strings than string add.
 17
 
 - time: + `set_timeout` `set_interval`
+- std: + `type nil` alongside `nil`
+- web/state: see undefined and nil the same. remove url param for nullish value.
