@@ -79,6 +79,9 @@ export function app() {
     },
   })
 
+  const content = use_ref()
+  const field = use_ref()
+
   let broadcasts = {
     set_tree(payload) {
       set_message_tree(payload)
@@ -95,20 +98,20 @@ export function app() {
     set_metadata() {
       throw err('todo')
     },
-    set_message(payload){
+    set_message(payload) {
       const { id } = payload
 
       message_dict[id] = payload
     },
-    append_message(payload){
+    append_message(payload) {
       const { id, content, reasoning } = payload
 
       message_dict[id].content += content
       message_dict[id].reasoning += reasoning
     },
-    finish_message(payload){
+    finish_message(payload) {
       message_dict[id] = merge(message_dict[id], payload)
-    }
+    },
   }
 
   use_mount(() => {
@@ -143,22 +146,28 @@ export function app() {
 
     set_interval(async function () {
       // await perform('subscribe', thread)
-
       // await perform('unsubscribe', thread)
-
       // perform('hello', {
       //   message: 'hello world',
       // })
-    }, 20000)
+    }, 10000)
   })
 
-  const content = use_ref()
-  const field = use_ref()
+  use_mount(() => {
+    set_threads(async () => {
+      let promise = perform('list')
 
-  use_effect(() => {
-    set_threads(perform('list'))
+      window.a = promise
+      log('promise', promise)
+
+      let result = await promise
+
+      log('result', result)
+
+      return result
+    })
     // set_threads(post('list'))
-  }, [])
+  })
 
   use_keyboard('alt+n', new_thread)
 
@@ -376,16 +385,21 @@ async function perform(
 
   return new Promise((resolve, reject) => {
     pending_requests[id] = (v) => {
-      log('resolve', id)
+      log('resolve', id, v)
+
+      log(resolve)
 
       resolve(v)
     }
 
     set_timeout(function () {
-      reject(
-        err(`response for action ${action} should arrive within ${timeout}ms`),
-      )
+      if (is(pending_requests[id], 'present')) {
+        reject(
+          err(
+            `response for action ${action} should arrive within ${timeout}ms`,
+          ),
+        )
+      }
     }, timeout)
   })
 }
-

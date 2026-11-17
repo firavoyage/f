@@ -746,4 +746,6 @@ ws obj of the same client is stable across callbacks.
 
 ---
 
+for some reason, i could resolve and reject the same id twice, or even more times.
+
 
