@@ -940,4 +940,47 @@ async function send(action, payload, id) {
 }
 ```
 
+that's it.
+
+```
+async function perform(
+  action,
+  payload?,
+  timeout = action_timeout,
+  id = random_id(),
+): Promise<any> {
+  if (!(ws?.readyState == WebSocket.OPEN)) {
+    log(`wait for ws to perform ${action}`)
+    pending_actions.add(() => send(action, payload, id))
+  } else {
+    send(action, payload, id)
+  }
+
+  return new Promise((resolve, reject) => {
+    pending_requests[id] = resolve
+
+    set_timeout(function () {
+      reject(
+        err(`response for action ${action} should arrive within ${timeout}ms`),
+      )
+    }, timeout)
+  })
+}
+
+async function send(action, payload, id) {
+  const request_payload = {
+    type: 'request',
+    id,
+    action,
+    payload,
+  }
+
+  log('perform', action, payload)
+
+  ws.send(stringify(request_payload))
+}
+```
+
+to satisfy tsism, that's out of scope.
+
 
