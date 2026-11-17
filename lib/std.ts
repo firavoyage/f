@@ -110,7 +110,7 @@ export function merge(target: object, ...sources: object[]) {
 type variable_type =
   | 'undefined'
   | 'nil' // nil | not a number
-  | 'nullish'
+  | 'absent'
   | 'array'
   | 'string'
   | 'number'
@@ -133,14 +133,14 @@ type variable_type =
  */
 export function is(v: any, ...type: variable_type[]): bool {
   return type.some((type) => {
-    if (type == 'nullish') {
+    if (type == 'absent') {
       return is(v, 'nil', 'undefined')
     } else if (type == 'numeric') {
       return is(v, 'number', 'bigint')
     } else if (type == 'iterable') {
       return is(v[Symbol.iterator], 'function') && !is(v, 'string')
     } else if (type == 'literal') {
-      return is(v, 'nullish', 'boolean', 'numeric', 'string', 'symbol')
+      return is(v, 'absent', 'boolean', 'numeric', 'string', 'symbol')
     } else if (typeof type == 'function') {
       return v instanceof type
     } else {

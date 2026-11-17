@@ -10,7 +10,13 @@ import type { message, messages } from 'lib/generation'
 import { sidebar } from './sidebar'
 import { marked } from 'marked'
 import { copy } from 'lib/web/clipboard'
+import { random, random_id } from 'lib/random'
 const { stringify, parse } = JSON
+
+const ws_retry_delay = 1000
+const ws_max_jitter = 1000
+
+const action_timeout = 10000
 
 const max_title_length = 65 * 2
 
@@ -94,7 +100,7 @@ export function app() {
   use_keyboard('alt+n', new_thread)
 
   use_mount(() => {
-    connect_ws()
+    connect()
   })
 
   function new_thread() {
@@ -240,7 +246,7 @@ render = cache(render)
 
 let ws: InstanceType<typeof WebSocket>
 
-function connect_ws() {
+function connect() {
   ws = new WebSocket('ws://localhost:8192/api/ws')
 
   ws.onopen = () => {
@@ -250,25 +256,41 @@ function connect_ws() {
   ws.onmessage = (event) => {
     log(parse(event.data), parse(event.data).foo)
   }
+
   ws.onclose = () => {
     log('Disconnected')
 
+    const delay = ws_retry_delay + random() * ws_max_jitter
+
     set_timeout(function () {
-      connect_ws()
-    }, 2000)
+      connect()
+    }, delay)
   }
 
   ws.onerror = (error) => {
     console.error('WebSocket error:', error)
   }
+}
 
-  function send(payload) {
-    if (ws.readyState === WebSocket.OPEN) {
-      ws.send(stringify({ foo: payload }))
-    }
+let pending_requests: Record<string, fn> = {}
+
+async function perform(action, payload, timeout = action_timeout) {
+  const id = random_id()
+
+  const request_payload = {
+    type: 'request',
+    id,
+    action,
+    payload,
   }
 
-  set_interval(function () {
-    send('hello world')
-  }, 1000)
+  if (ws.readyState === WebSocket.OPEN) {
+    ws.send(stringify(request_payload))
+  }
+
+  return new Promise((resolve) => {
+    pending_requests[id] = resolve
+
+    
+  })
 }

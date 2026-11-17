@@ -129,7 +129,10 @@ it's not really faster to join an array of strings than string add.
 - time: + `set_timeout` `set_interval`
 - std: + `type nil` alongside `nil`, alias `bool` to `boolean`
 - web/state: see undefined and nil the same. remove url param for nullish value.
-- std/is: + `nullish` type
+- std/is: + ~~`nullish`~~ `absent` type, deprecate `!is given`
+  - just use `!` if you wanna handle `''` specifically
+  - unlikely you would separate all of valid strings, empty strings, and other falsy values
+  - you may still use is given if you like
 - std/is: support `(...types)`, like py tuple
 - global: merge `global types`
   - would fix some intellisense issues
