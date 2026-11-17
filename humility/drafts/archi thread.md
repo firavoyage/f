@@ -12,7 +12,7 @@ an editable chat thread is fundamentally a tree.
 thread:
   tree:
     0: # 0 is always 0, representing root
-      children: 
+      children:
         - 1
       current_focus: 1
     1: # "1" can be (or should be) message id
@@ -67,6 +67,8 @@ on top of the abstraction, you
 await perform(action, req payload) -> resp payload
 ```
 
+most actions takes current thread. you may curry it.
+
 ## subscribe (thread = random id)
 
 you subscribe when you open a thread.
@@ -75,79 +77,65 @@ you will receive its state soon.
 
 specifically, when you are on homepage/new thread, you do not subscribe.
 
-after sending the first msg (check thread), you will 
+after sending the first msg (check thread), you will set random thread id, sub, init, send, and generate
 
 ## unsubscribe (thread)
 
-you unsub when you thread changes.
+you unsub when you thread changes via effect cleanup.
 
-## init_thread <!-- new thread(id = random id) -->
+## init (thread)
 
-you may setup some template like system prompt or default tool list. this can happen on either frontend or backend.
+when you init, it formally adds such thread to index, and scaffold, on persistent storage.
 
-when you init, it may write such (current) default thread on disk.
+you may setup some template like system prompt or default tool list.
 
-## send(prompt)
+it typically looks like this
+
+```yaml
+tree:
+  0: # 0 is always 0, representing root (it doesnt matter whether it's number or string 0, it always works on js. you may name like 'root'.)
+    children: []
+message: {}
+config:
+  system_prompt: # the current one, history is separate
+  tools: # separate like on ux, though technically inside system prompt (esp in the diy approach)
+```
+
+## send (thread, prompt)
 
 it adds a user msg. period.
 
-user msg doesnt stream.
+it doesnt immediately start generation.
+
+<!-- obviously user msg doesnt stream. -->
 
 _you may cache such prompt individually on localstorage for each client. you may sync it like tg if you expect one consistent draft._
 
-## use tool
+## call tool (thread, tool)
 
-when you parse a tool, you may run it.
+it starts streaming immediately, unlike send. you do not add a tool yourself.
 
-it's just regular streaming msg w role tool. but it doesnt (necessarily) call llms.
-
-_auto tool call should be ideally implemented on server side... or not._
-
-anyway you may default to frontend initialized actions, and call on both sides w id (fail silently when duplicates.)
-
-as an extension that hooks (decorates) finish message.
-
-you may
-
-- click such tool yaml
-- approve when prompt
-- or manually directly actually
-  - you can! e.g. fetch any page directly wo an assistant "tool call" if such url mentioned on prompt
-  - for fetch specifically, you may default to md and truncate
-
-idk, maybe you should not run the same tool twice, or you should cancel explicitly if you ignore. doesnt matter.
-
----
-
-a tool may point to index.js/index.ts that exports `tool`.
-
-(await import).
-
----
-
-_for "sub agent"... i.e. you may recursively call yourself. well that's out of scope._
-
-you either use some workflow, that is js fn including a few llm steps maybe, which is just a tool.
-
-or agent. typically you branch this thread (or start new, or copy some template), send a prompt, and that's it. the master agent might inspect.
-
-the master agent isnt a regular user. and things should tailor specifically.
+_well you can, e.g. auto fetch mentioned url wo assistant. you may have info of what you are doing._
 
 ## generate
 
-you can generate iff it's user/tool on the last msg (it's guranteed it always starts w user if i apply such constraint consistently).
+you can generate iff it's user/tool on the last msg.
 
-ideally you should generate when the last (or all, really) msg finishes.
+<!-- it's guranteed it always starts w user if i apply such constraint consistently. -->
 
----
+ideally you should generate for a user msg when all thing settles, if it depends on prev resp.
 
-by default, it will start generation on server when you send a msg.
+on ux, you may
 
-**the server is a user!**
+- queue that msg
+- force gen on partial prev resp
+- stop prev resp and start generation
+
+typically it will auto start generation. if that might not be what you want (e.g. when you forcefully stopped a prev tool call or didnt approve at all, or when you just open a thread whe), on ux, you may see a continue button.
 
 ## _stop generation_
 
-you unhook the listener and finish abruptly w specific reason.
+you unhook the subscriber and finish abruptly w specific reason.
 
 you may stop shell or llm fetch. that's irrelevant.
 
@@ -165,7 +153,7 @@ you may receive
 
 ## set tree (thread)
 
-when you open (i.e. listen for) a thread
+when you open (i.e. subscribe) a thread
 
 current tree. not all historical actions.
 
@@ -178,7 +166,7 @@ specifically, for new (non existing) threads, it returns
 
 ## set messages (thread)
 
-when you open (i.e. listen for) a thread
+when you open (i.e. subscribe) a thread
 
 incl. all msgs of whatever status
 
@@ -187,6 +175,14 @@ specifically, for new (non existing) threads, it returns
 ```yaml
 {}
 ```
+
+## set config (thread)
+
+you would read all these when opening a thread but it can update individually.
+
+## set metadata (thread)
+
+you would read all these when opening a thread but it can update individually.
 
 ## prepend thread state
 
@@ -230,7 +226,6 @@ id:
 tools:
 usage:
 perf:
-...
 ```
 
 # impl
@@ -241,23 +236,23 @@ when you stream some response (e.g. llm or tool call),
 
 you listen for delta.
 
-specifically, 
+specifically,
 
-when receive, you append that to current value of such msg and broadcast to all listeners of that thread.
+when receive, you append that to current value of such msg and broadcast to all subscribers of that thread.
 
 when finish, you broadcast finish event and some derived results, such as parsed tool calls, perf, or usage. and you write into persistent storage (e.g. serializing as yaml on disk).
 
 ---
 
-when a new client listens for some thread, 
+when a new client subscribes some thread,
 
-you pull the state of all completed msgs (full action history or payload/broadcasting log might be irrelevant) from like disk, append current value of ongoing msgs, and send to the client. besides, you add them to listeners.
+you pull the state of all completed msgs (full action history or payload/broadcasting log might be irrelevant) from like disk, append current value of ongoing msgs, and send to the client. besides, you add them to subscribers.
 
 these should be sync, or effectively sync.
 
 ---
 
-you broadcast _all_ actions on one thread to all listeners. no special case. you may ignore on frontend.
+you broadcast _all_ actions on one thread to all subscribers. no special case. you may ignore on frontend.
 
 ---
 
@@ -267,7 +262,7 @@ you may implement like heartbeating. these are general abstractions.
 
 you use web socket.
 
-when you open a thread on frontend, you (clear all current state, ) listen for that thread (you unsubscribe vice versa).
+when you open a thread on frontend, you (clear all current state, ) sub thread (you unsubscribe vice versa).
 
 for initial read, you add the tree and prepend all msgs.
 
@@ -276,4 +271,3 @@ you append delta.
 when you disconnect, you reconnect.
 
 reconnection can be of no difference than opening a thread.
-
