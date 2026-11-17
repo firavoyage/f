@@ -46,7 +46,7 @@ declare global {
 
   type Optional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
 
-  type Extend<T> = T & {[key: Key]: any}
+  type Extend<T, K = {[key: Key]: any}> = T & Partial<K>
 
   // will not work anyway, ts sees it as required (possibly nil) param and you could not dc nil options
   // type Options<T> = Partial<T> | undefined

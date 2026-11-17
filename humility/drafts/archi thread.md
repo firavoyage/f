@@ -21,13 +21,26 @@ thread:
   message:
     # you do not render 0
     1:
+      has_failed?:
+      id:
       role:
       content:
       reasoning?:
       tools?:
-  config:
-    system_prompt:
-    tools: # just be separate because that how it shows on ux
+      start_time:
+      end_time:
+      usage?:
+        prompt_tokens:
+        completion_tokens:
+        total_tokens:
+      perf?:
+        tokens_per_second:
+        time_to_first_token:
+      model?:
+config:
+  current_model:
+  system_prompt:
+  tools: # just be separate because that how it shows on ux
 ```
 
 besides, you can have an append only thread history, or request/response (or sse delta) payload log.
@@ -101,7 +114,7 @@ config:
   tools: # separate like on ux, though technically inside system prompt (esp in the diy approach)
 ```
 
-## send (thread, prompt)
+## send (thread, prompt, options)
 
 it adds a user msg. period.
 
@@ -131,15 +144,60 @@ on ux, you may
 - force gen on partial prev resp
 - stop prev resp and start generation
 
-typically it will auto start generation. if that might not be what you want (e.g. when you forcefully stopped a prev tool call or didnt approve at all, or when you just open a thread whe), on ux, you may see a continue button.
+typically it will auto start generation. if that might not be what you want (e.g. when you forcefully stopped a prev tool call or didnt approve at all, or when you just open a thread while the last resp errs, which would be ignored and you could just continue), on ux, you may see a continue button.
 
-## _stop generation_
+## _stop generation (thread, message)_
 
-you unhook the subscriber and finish abruptly w specific reason.
+you will no longer receive any new delta for that msg _on backend_.
 
-you may stop shell or llm fetch. that's irrelevant.
+you may try to stop endpoint llm gen or such shell tool abruptly.
 
-tools should not be harmful regardless and tokens are cheap (and you might not force it on all endpoints).
+## _read history (thread)_
+
+you get the full history of
+
+```yaml
+action:
+start_time:
+end_time?:
+```
+
+```yaml
+action: send
+prompt: ...
+user?: id
+```
+
+```yaml
+action: generation
+has_failed?:
+id:
+role:
+content:
+reasoning?:
+usage?:
+  prompt_tokens:
+  completion_tokens:
+  total_tokens:
+perf?:
+  tokens_per_second:
+  time_to_first_token:
+start_time:
+end_time:
+model:
+request payload?:
+response payload?:
+```
+
+only completed generation will be add to history.
+
+## _read log (thread)_
+
+every server delta received and sent.
+
+maybe irrelevant.
+
+e.g. you may see the full endpoint payload, incl. proprietary fields.
 
 # broadcasts <!-- server actions -->
 
@@ -152,6 +210,8 @@ you may receive
 - payload
 
 ## set tree (thread)
+
+<!-- no need to be surgical. rather swap the tree entirely. -->
 
 when you open (i.e. subscribe) a thread
 
@@ -184,32 +244,9 @@ you would read all these when opening a thread but it can update individually.
 
 you would read all these when opening a thread but it can update individually.
 
-## prepend thread state
-
-loads the full (relevant) thread when you open a thread.
-
-includes
-
-- full tree
-- all completed msgs
-- current value of all ongoing msgs
-
-does not include
-
-- full thread history (i.e. full user action log plus all completed server actions, or delta batched for each msg, as if non streaming)
-- full user action log
-  - _you may show on a separate tab_
-- full server action (e.g. delta) log
-- full server request/response (e.g. to endpoint) log
-
-## update tree
-
-no need to be surgical. rather swap the tree entirely.
-
-## append message
+## append (thread, message)
 
 ```yaml
-id:
 role:
 content:
 reasoning:
@@ -219,14 +256,27 @@ you should append the string to each field.
 
 <!-- clearly you should not append to role, lol. -->
 
-## finish message
+## finish (message)
 
 ```yaml
-id:
-tools:
-usage:
-perf:
+has_failed?:
+# id:
+# role:
+# content:
+# reasoning?:
+tools?:
+# start_time:
+end_time:
+usage?:
+  prompt_tokens:
+  completion_tokens:
+  total_tokens:
+perf?:
+  tokens_per_second:
+  time_to_first_token:
 ```
+
+it should not finish w the last delta. append instead.
 
 # impl
 
