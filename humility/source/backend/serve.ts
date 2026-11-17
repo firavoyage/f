@@ -31,6 +31,20 @@ app.use('*', async (c, next) => {
 
 app.use('*', serveStatic({ root: '../web/build' }))
 
+let subscribers = {}
+
+let actions = {}
+
+function broadcast(thread, action, payload) {
+  map(subscribers[thread] ?? [], (send) => {
+    send({
+      type: 'broadcast',
+      action,
+      payload,
+    })
+  })
+}
+
 app.get(
   '/api/ws',
   upgradeWebSocket(() => ({
@@ -57,12 +71,14 @@ app.get(
 
       // log(request)
 
-      ws.send(stringify({
-        type: 'response',
-        id,
-        action,
-        payload,
-      }))
+      ws.send(
+        stringify({
+          type: 'response',
+          id,
+          action,
+          payload,
+        }),
+      )
     },
 
     onClose() {

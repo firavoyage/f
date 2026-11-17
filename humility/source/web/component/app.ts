@@ -52,6 +52,8 @@ export function app() {
   const [threads, set_threads] = use_state<Record<string, thread>>({})
   const [thread, set_thread] = use_thread()
 
+  const [active_messages, set_active_messages] = use_state([])
+
   const [message_tree, set_message_tree] = use_state({
     0: {
       children: ['foo'],
@@ -78,7 +80,35 @@ export function app() {
   })
 
   let broadcasts = {
-    
+    set_tree(payload) {
+      set_message_tree(payload)
+    },
+    set_active_messages(payload) {
+      set_active_messages(payload)
+    },
+    set_messages(payload) {
+      set_message_dict(payload)
+    },
+    set_config() {
+      throw err('todo')
+    },
+    set_metadata() {
+      throw err('todo')
+    },
+    set_message(payload){
+      const { id } = payload
+
+      message_dict[id] = payload
+    },
+    append_message(payload){
+      const { id, content, reasoning } = payload
+
+      message_dict[id].content += content
+      message_dict[id].reasoning += reasoning
+    },
+    finish_message(payload){
+      message_dict[id] = merge(message_dict[id], payload)
+    }
   }
 
   const content = use_ref()
@@ -94,8 +124,8 @@ export function app() {
     function receive(event) {
       const response: {
         type: 'response' | 'broadcast'
-        id: string
-        // id?: string,
+        id?: string
+        thread?: string
         action: string
         payload: any
       } = parse(event.data)
@@ -107,6 +137,10 @@ export function app() {
       if (type == 'response') {
         if (has(pending_requests, id)) {
           pending_requests[id](payload)
+        }
+      } else if (type == 'broadcast') {
+        if (response.thread == thread) {
+          broadcasts[action](payload)
         }
       }
     }
@@ -341,6 +375,3 @@ async function perform(
   })
 }
 
-function call(fn: fn) {
-  fn?.()
-}

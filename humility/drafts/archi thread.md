@@ -211,8 +211,13 @@ broadcasts doesnt have to have some id like responses for user actions.
 you may receive
 
 - type: broadcast
+- thread
 - action <!-- would possibly benefit polymorphism when named the same -->
 - payload
+
+---
+
+message belongs to payload.
 
 ## set tree (thread)
 
@@ -264,7 +269,7 @@ you would read all these when opening a thread but it can update individually.
 when you send a new msg, or modify it in place.
 
 ```yaml
-# id:
+id:
 role:
 content: ''
 reasoning?: ''
@@ -280,19 +285,20 @@ start_time:
 #   time_to_first_token:
 ```
 
-you may attach id yourself on the object if needed.
+~~you may attach id yourself on the object if needed.~~
 
 ## append (thread, message)
 
 ```yaml
-role:
+id:
+# role:
 content:
 reasoning:
 ```
 
 you should append the string to each field.
 
-<!-- clearly you should not append to role, lol. -->
+<!-- ~~clearly you should not append to role, lol.~~ have role in set message. -->
 
 for any persistent connection, it's expected you only append existing msg. you may assert that.
 
