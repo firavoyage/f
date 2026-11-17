@@ -133,8 +133,9 @@ it's not really faster to join an array of strings than string add.
   - just use `!` if you wanna handle `''` specifically
   - unlikely you would separate all of valid strings, empty strings, and other falsy values
   - you may still use is given if you like
+- std/is: + `present` type
 - std/is: support `(...types)`, like py tuple
 - global: merge `global types`
   - would fix some intellisense issues
-
+- map: enhance ts typing
 

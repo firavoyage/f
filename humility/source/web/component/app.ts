@@ -16,7 +16,8 @@ const { stringify, parse } = JSON
 const ws_retry_delay = 1000
 const ws_max_jitter = 1000
 
-const action_timeout = 10000
+const action_timeout = 1000
+// const action_timeout = 10000
 
 const max_title_length = 65 * 2
 
@@ -101,6 +102,8 @@ export function app() {
 
   use_mount(() => {
     connect()
+
+    
   })
 
   function new_thread() {
@@ -251,6 +254,8 @@ function connect() {
 
   ws.onopen = () => {
     log('Connected!')
+  
+    map(pending_actions, call)
   }
 
   ws.onmessage = (event) => {
@@ -272,25 +277,32 @@ function connect() {
   }
 }
 
+let pending_actions: Set<fn> = set()
 let pending_requests: Record<string, fn> = {}
 
-async function perform(action, payload, timeout = action_timeout) {
-  const id = random_id()
-
-  const request_payload = {
-    type: 'request',
-    id,
-    action,
-    payload,
-  }
-
-  if (ws.readyState === WebSocket.OPEN) {
+async function perform(action, payload, timeout = action_timeout, id = random_id()) {
+  if (!(ws.readyState == WebSocket.OPEN)) {
+    pending_actions.add(() => perform(action, payload, timeout, id))
+  } else {
+    const request_payload = {
+      type: 'request',
+      id,
+      action,
+      payload,
+    }
+  
     ws.send(stringify(request_payload))
-  }
+  } 
 
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     pending_requests[id] = resolve
 
-    
+    set_timeout(function() {
+      reject(err(`response for action ${action} should arrive within ${timeout}ms as you await`))
+    }, timeout)
   })
+}
+
+function call(fn: fn) {
+  fn()
 }

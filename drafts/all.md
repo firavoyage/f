@@ -284,6 +284,7 @@ lib:
 - web react use state use effect
 - vite quick local update
 - types ts type utils helpers
+- std is absent
 
 web: <!-- frontend, web, ts/js -->
 

@@ -3,11 +3,13 @@ export function halt(value: any) {
   return { [halt_symbol]: true, value }
 }
 
-type entry = [key: any, value: any]
+type pair<K = any, V = any> = [key: K, value: V]
 
 export function map<T>(items: T[], fn: (item: T, index: number, array: T[]) => any): any[]
-export function map(items: Map<any, any>, fn: (item: entry, index: number, array: entry[]) => any): any[]
+export function map<K, V>(items: Map<K, V>, fn: (item: [k: K, v: V], index: number, array: [k: K, v: V]) => any): any[]
+export function map<T>(items: Set<T>, fn: (item: T[], index: number, array: T[]) => any): any[]
 export function map(items: object, fn: (item: entry, index: number, array: entry[]) => any): any[]
+export function map(items: any, fn: (item: any, index: number, array: any[]) => any): any[]
 
 /**
  * Map an array to a fn
