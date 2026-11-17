@@ -47,7 +47,6 @@ export function app() {
   use_style(theme)
 
   const [prompt, set_prompt] = use_state('', false)
-  const [is_pending, set_is_pending] = use_state(false)
 
   const [folder, set_folder] = use_state('')
   const [threads, set_threads] = use_state<Record<string, thread>>({})
@@ -78,17 +77,8 @@ export function app() {
     },
   })
 
-  let messages = [],
-    current_node = 0
-  while (true) {
-    const { children = [], focus = children[0] } = message_tree[current_node]
-
-    if (focus) {
-      messages.push(message_dict[focus])
-      current_node = focus
-    } else {
-      break
-    }
+  let broadcasts = {
+    
   }
 
   const content = use_ref()
@@ -163,7 +153,6 @@ export function app() {
                     {
                       onclick() {
                         set_thread(current_thread)
-                        set_is_new_thread(false)
                       },
                     },
                     metadata.title || 'Untitled',
@@ -198,7 +187,7 @@ export function app() {
               'page_content',
               h(
                 'messages',
-                map(messages, (message) =>
+                map(current_messages(message_tree, message_dict), (message) =>
                   h(
                     'message',
                     { role: message.role },
@@ -245,6 +234,23 @@ export function app() {
       ),
     ),
   )
+}
+
+function current_messages(message_tree, message_dict) {
+  let messages = [],
+    current_node = 0
+  while (true) {
+    const { children = [], focus = children[0] } = message_tree[current_node]
+
+    if (focus) {
+      messages.push(message_dict[focus])
+      current_node = focus
+    } else {
+      break
+    }
+  }
+
+  return messages
 }
 
 function cache<T extends (...args: any[]) => any>(fn: T): T {

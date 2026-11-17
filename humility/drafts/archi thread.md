@@ -229,6 +229,16 @@ specifically, for new (non existing) threads, it returns
   children: []
 ```
 
+## set active messages (thread)
+
+```yaml
+[]
+```
+
+empty -> finished.
+
+otherwise -> some pending.
+
 ## set messages (thread)
 
 when you open (i.e. subscribe) a thread
