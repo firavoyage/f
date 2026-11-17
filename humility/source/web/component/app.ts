@@ -93,39 +93,6 @@ export function app() {
 
   use_keyboard('alt+n', new_thread)
 
-  function connect_ws() {
-    const ws = new WebSocket('ws://localhost:8192/api/ws')
-
-    ws.onopen = () => {
-      log('Connected!')
-    }
-
-    ws.onmessage = (event) => {
-      log(parse(event.data), parse(event.data).foo)
-    }
-    ws.onclose = () => {
-      log('Disconnected')
-
-      set_timeout(function () {
-        connect_ws()
-      }, 2000)
-    }
-
-    ws.onerror = (error) => {
-      console.error('WebSocket error:', error)
-    }
-
-    function send(payload) {
-      if (ws.readyState === WebSocket.OPEN) {
-        ws.send(stringify({ foo: payload }))
-      }
-    }
-
-    set_interval(function () {
-      send('hello world')
-    }, 1000)
-  }
-
   use_mount(() => {
     connect_ws()
   })
@@ -270,3 +237,38 @@ function render(md: string) {
 }
 
 render = cache(render)
+
+let ws: InstanceType<typeof WebSocket>
+
+function connect_ws() {
+  ws = new WebSocket('ws://localhost:8192/api/ws')
+
+  ws.onopen = () => {
+    log('Connected!')
+  }
+
+  ws.onmessage = (event) => {
+    log(parse(event.data), parse(event.data).foo)
+  }
+  ws.onclose = () => {
+    log('Disconnected')
+
+    set_timeout(function () {
+      connect_ws()
+    }, 2000)
+  }
+
+  ws.onerror = (error) => {
+    console.error('WebSocket error:', error)
+  }
+
+  function send(payload) {
+    if (ws.readyState === WebSocket.OPEN) {
+      ws.send(stringify({ foo: payload }))
+    }
+  }
+
+  set_interval(function () {
+    send('hello world')
+  }, 1000)
+}
