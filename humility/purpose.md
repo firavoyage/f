@@ -740,4 +740,10 @@ interesting
 let ws: InstanceType<typeof WebSocket>
 ```
 
+---
+
+ws obj of the same client is stable across callbacks.
+
+---
+
 

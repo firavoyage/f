@@ -5,7 +5,7 @@ import theme from 'web/design/utilitarian.yaml'
 import 'web/design/utilitarian.css'
 import { textarea } from './textarea'
 import { scroll } from './scroll'
-import { post } from 'lib/web/request'
+// import { post } from 'lib/web/request'
 import type { message, messages } from 'lib/generation'
 import { sidebar } from './sidebar'
 import { marked } from 'marked'
@@ -111,15 +111,6 @@ export function app() {
     }
   }
 
-  const content = use_ref()
-  const field = use_ref()
-
-  use_effect(() => {
-    set_threads(post('list'))
-  }, [])
-
-  use_keyboard('alt+n', new_thread)
-
   use_mount(() => {
     function receive(event) {
       const response: {
@@ -137,6 +128,7 @@ export function app() {
       if (type == 'response') {
         if (has(pending_requests, id)) {
           pending_requests[id](payload)
+          pending_requests[id] = nil
         }
       } else if (type == 'broadcast') {
         if (response.thread == thread) {
@@ -150,11 +142,27 @@ export function app() {
     connect()
 
     set_interval(async function () {
-      perform('hello', {
-        message: 'hello world',
-      })
-    }, 10000)
+      // await perform('subscribe', thread)
+
+      // await perform('unsubscribe', thread)
+
+      // perform('hello', {
+      //   message: 'hello world',
+      // })
+    }, 20000)
   })
+
+  const content = use_ref()
+  const field = use_ref()
+
+  use_effect(() => {
+    set_threads(perform('list'))
+    // set_threads(post('list'))
+  }, [])
+
+  use_keyboard('alt+n', new_thread)
+
+  use_debug(threads)
 
   function new_thread() {
     set_thread(nil)
@@ -196,11 +204,13 @@ export function app() {
                     'button.threads_delete_thread',
                     {
                       async onclick() {
-                        await post('hide', current_thread)
+                        await perform('hide', current_thread)
+                        // await post('hide', current_thread)
                         if (thread == current_thread) {
                           set_thread(nil)
                         }
-                        set_threads(post('list'))
+                        set_threads(perform('list'))
+                        // set_threads(post('list'))
                       },
                     },
                     'delete',
@@ -344,11 +354,11 @@ let pending_requests: Record<string, fn> = {}
 
 async function perform(
   action,
-  payload,
+  payload?,
   timeout = action_timeout,
   id = random_id(),
-) {
-  if (!(ws.readyState == WebSocket.OPEN)) {
+): Promise<any> {
+  if (!(ws?.readyState == WebSocket.OPEN)) {
     log(`wait for ws to perform ${action}`)
     pending_actions.add(() => perform(action, payload, timeout, id))
   } else {
@@ -365,7 +375,11 @@ async function perform(
   }
 
   return new Promise((resolve, reject) => {
-    pending_requests[id] = resolve
+    pending_requests[id] = (v) => {
+      log('resolve', id)
+
+      resolve(v)
+    }
 
     set_timeout(function () {
       reject(

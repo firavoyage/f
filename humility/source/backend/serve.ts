@@ -6,7 +6,7 @@ import { serveStatic } from '@hono/node-server/serve-static'
 import { read } from 'lib/file'
 import { format_log } from 'lib/log'
 import { parse_options } from 'lib/cli'
-import * as actions from 'action/index'
+import * as action_index from 'action/index'
 import { serialize } from 'action/index'
 
 const { parse, stringify } = JSON
@@ -33,7 +33,9 @@ app.use('*', serveStatic({ root: '../web/build' }))
 
 let subscribers = {}
 
-let actions = {}
+let actions = {
+  ...action_index,
+}
 
 function broadcast(thread, action, payload) {
   map(subscribers[thread] ?? [], (send) => {
@@ -67,16 +69,34 @@ app.get(
         payload: any
       } = parse(event.data)
 
-      const { type, id, action, payload } = request
+      const { id, action, payload } = request
 
       // log(request)
+
+      if (action == 'subscribe') {
+        let thread = payload
+        let send = ws.send
+
+        if (has(subscribers, thread)) {
+          subscribers[thread].add(send)
+        } else {
+          subscribers[thread] = set([send])
+        }
+      }
+
+      if (action == 'unsubscribe') {
+        let thread = payload
+        let send = ws.send
+
+        subscribers?.[thread]?.delete(send)
+      }
 
       ws.send(
         stringify({
           type: 'response',
           id,
           action,
-          payload,
+          payload: actions?.[action]?.(payload),
         }),
       )
     },
@@ -103,14 +123,14 @@ app.get('*', (c) => {
   return c.html(html)
 })
 
-app.post('/api/:action{.+}', async (c) => {
-  const action = c.req.param('action')
-  const payload = await c.req.json()
+// app.post('/api/:action{.+}', async (c) => {
+//   const action = c.req.param('action')
+//   const payload = await c.req.json()
 
-  const result = await actions[action](payload)
+//   const result = await actions[action](payload)
 
-  return c.json(result ?? {})
-})
+//   return c.json(result ?? {})
+// })
 
 const ws = new WebSocketServer({ noServer: true })
 
