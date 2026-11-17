@@ -109,11 +109,11 @@ export function app() {
         action: string
         payload: any
       } = parse(event.data)
-  
+
       const { type, id, action, payload } = response
-  
+
       log('receive', response, event.data)
-  
+
       if (type == 'response') {
         if (has(pending_requests, id)) {
           pending_requests[id](payload)
@@ -121,7 +121,7 @@ export function app() {
       }
     }
 
-    receive_ = receive
+    use({ receive })
 
     connect()
 
@@ -274,7 +274,6 @@ function render(md: string) {
 render = cache(render)
 
 let ws: InstanceType<typeof WebSocket>
-let receive_
 
 function connect() {
   ws = new WebSocket('ws://localhost:8192/api/ws')
@@ -285,7 +284,7 @@ function connect() {
     map(pending_actions, call)
   }
 
-  ws.onmessage = receive_
+  ws.onmessage = receive
 
   ws.onclose = () => {
     log('Disconnected')
@@ -294,7 +293,7 @@ function connect() {
 
     set_timeout(function () {
       log('Reconnecting...')
-      
+
       connect()
     }, delay)
   }

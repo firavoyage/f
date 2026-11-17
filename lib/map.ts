@@ -7,7 +7,7 @@ type pair<K = any, V = any> = [key: K, value: V]
 
 export function map<T>(items: T[], fn: (item: T, index: number, array: T[]) => any): any[]
 export function map<K, V>(items: Map<K, V>, fn: (item: pair<K, V>, index: number, array: pair<K, V>[]) => any): any[]
-export function map<T>(items: Set<T>, fn: (item: T[], index: number, array: T[]) => any): any[]
+export function map<T>(items: Set<T>, fn: (item: T, index: number, array: T[]) => any): any[]
 export function map<K extends Key, V>(items: Record<K, V>, fn: (item: pair<K, V>, index: number, array: pair<K, V>[]) => any): any[]
 // export function map(items: any, fn: (item: any, index: number, array: any[]) => any): any[]
 
