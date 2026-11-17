@@ -414,6 +414,7 @@ sec: <!-- security -->
 - script kiddies
 - android data privacy phone number ip geolocation ip government structure isp ip faking scraping mass registeration
 - wifi phishing
+- ic card cloning campus lib seminar room min stu count requirement
 
 desktop:
 
