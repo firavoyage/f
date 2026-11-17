@@ -983,4 +983,17 @@ async function send(action, payload, id) {
 
 to satisfy tsism, that's out of scope.
 
+18
+
+to separate from "user actions", i may call it controls (as in mvc) or commands.
+
+maybe controls. i would like to reserver commands for ux, which incl. internationalization maybe.
+
+---
+
+you may structure the api like crud.
+
+you may code step by step following user flow.
+
+
 

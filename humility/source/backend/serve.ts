@@ -3,11 +3,17 @@ import { serve, upgradeWebSocket } from '@hono/node-server'
 import { WebSocketServer } from 'ws'
 import { cors } from 'hono/cors'
 import { serveStatic } from '@hono/node-server/serve-static'
-import { read } from 'lib/file'
+import { read, write } from 'lib/file'
 import { format_log } from 'lib/log'
 import { parse_options } from 'lib/cli'
 import * as action_index from 'action/index'
-import { serialize } from 'action/index'
+import {
+  deserialize,
+  get_thread_file,
+  serialize,
+  thread_index_file,
+} from 'action/index'
+import { now } from 'lib/time'
 
 const { parse, stringify } = JSON
 
@@ -35,6 +41,46 @@ let subscribers = {}
 
 let actions = {
   ...action_index,
+  init({ thread }) {
+    let thread_structure = {
+      tree: {
+        0: {
+          children: [],
+        },
+      },
+      messages: {},
+    }
+
+    const threads = deserialize(read(thread_index_file))
+
+    // todo
+    threads[thread] = {
+      title: '',
+      folder: '',
+      creation_time: now().timestamp,
+    }
+
+    write(thread_index_file, serialize(threads))
+
+    write(get_thread_file(thread), serialize(thread_structure))
+  },
+  send({ thread, prompt, options }) {
+    const thread_structure = read(get_thread_file(thread))
+    const { tree, messages } = thread_structure
+
+    let last_node = 0
+    let messages = [],
+    while (true) {
+      const { children = [], focus = children[0] } = tree[last_node]
+
+      if (focus) {
+        messages.push(message_dict[focus])
+        current_node = focus
+      } else {
+        break
+      }
+    }
+  },
 }
 
 function broadcast(thread, action, payload) {

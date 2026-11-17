@@ -23,6 +23,7 @@
     "**/build",
     "**/.build",
     "**/legacy",
+    "**/archive",
     "**/node_modules"
   ],
 }

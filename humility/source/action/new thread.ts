@@ -1,7 +1,7 @@
 import {
   serialize,
   deserialize,
-  threads_file,
+  thread_index_file,
   get_thread_file,
 } from 'action/index'
 import { read, write } from 'lib/file'
@@ -14,7 +14,7 @@ export function new_thread({ title = '', folder = '' }) {
 
   const creation_time = now().timestamp
 
-  const threads = deserialize(read(threads_file))
+  const threads = deserialize(read(thread_index_file))
 
   threads[thread] = {
     title,
@@ -22,7 +22,7 @@ export function new_thread({ title = '', folder = '' }) {
     creation_time,
   }
 
-  write(threads_file, serialize(threads))
+  write(thread_index_file, serialize(threads))
 
   write(get_thread_file(thread), serialize([]))
 

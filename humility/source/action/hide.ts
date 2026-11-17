@@ -1,10 +1,10 @@
-import { serialize, deserialize, threads_file } from 'action/index'
+import { serialize, deserialize, thread_index_file } from 'action/index'
 import { read, write } from 'lib/file'
 
 export function hide(thread: string) {
-  let threads = deserialize(read(threads_file))
+  let threads = deserialize(read(thread_index_file))
 
   threads[thread].is_hidden = true
 
-  write(threads_file, serialize(threads))
+  write(thread_index_file, serialize(threads))
 }

@@ -82,6 +82,29 @@ export function app() {
   const content = use_ref()
   const field = use_ref()
 
+  let controls = {
+    new_thread() {
+      set_thread(nil)
+    },
+    send_prompt() {
+      if (is(thread, 'absent')) {
+        let thread_id = random_id()
+
+        set_thread(thread_id)
+
+        perform('init', { thread })
+      }
+
+      perform('send', {
+        thread,
+        prompt,
+        options: {},
+      })
+
+      perform('generate', { thread })
+    },
+  }
+
   let broadcasts = {
     set_tree(payload) {
       set_message_tree(payload)
@@ -114,6 +137,7 @@ export function app() {
     },
   }
 
+  // open websocket
   use_mount(() => {
     function receive(event) {
       const response: {
@@ -151,18 +175,21 @@ export function app() {
     }, 10000)
   })
 
+  // list threads on sidebar
   use_mount(() => {
     set_threads(perform('list'))
     // set_threads(post('list'))
   })
 
-  use_keyboard('alt+n', new_thread)
+  // subscribe broadcast of current thread
+  use_effect(() => {
+    perform('subscribe', thread)
 
-  // use_debug(threads)
+    return () => perform('unsubscribe', thread)
+  }, [thread])
 
-  function new_thread() {
-    set_thread(nil)
-  }
+  // bind shortcuts
+  use_keyboard('alt+n', controls.new_thread)
 
   return h(
     h('title.', 'Humility'),
@@ -173,7 +200,7 @@ export function app() {
         h(
           'button.nav_new_thread',
           {
-            onclick: new_thread,
+            onclick: controls.new_thread,
           },
           'new thread',
         ),
