@@ -208,3 +208,24 @@ export async function sleep(seconds: number) {
 
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
+
+export function set_timeout(fn: fn, delay: number) {
+  const timer = setTimeout(fn, delay)
+
+  return timer
+}
+
+export function set_interval(fn: fn, interval: number) {
+  const timer = setInterval(fn, interval)
+
+  return timer
+}
+
+type sleep = typeof sleep
+type set_timeout = typeof set_timeout
+type set_interval = typeof set_interval
+declare global {
+  var set_interval: set_interval
+  var set_timeout: set_timeout
+  var sleep: sleep
+}

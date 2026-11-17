@@ -240,3 +240,4 @@ you append delta.
 when you disconnect, you reconnect.
 
 reconnection can be of no difference than opening a thread.
+

@@ -30,7 +30,7 @@ export function min(...args) {
 //     return max(array, compare)
 //   } else {
 //     return max(args)
-//   } 
+//   }
 // }
 
 // export function min(...args) {
@@ -51,10 +51,10 @@ export function min(...args) {
 //     return min(array, compare)
 //   } else {
 //     return min(args)
-//   } 
+//   }
 // }
 
-export const {abs, floor, ceil} = Math
+export const { abs, floor, ceil } = Math
 
 type max = typeof max
 type min = typeof min

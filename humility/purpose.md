@@ -701,6 +701,14 @@ and (un)listen thread within ws.
 
 i.e. use effect thread
 
+
+17
+
+you may assume reliable connection as long as it's connected.
+
+~~so you send wo~~ well chances are you need a response.
+
 ---
+
 
 

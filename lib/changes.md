@@ -124,4 +124,6 @@ it's not really faster to join an array of strings than string add.
 - time: + `monotonic` `sleep`
 - web/react: + `use_state(initial value, false)` that doesnt rerender, `ref.set = afn ref.current = _`
 
+17
 
+- time: + `set_timeout` `set_interval`

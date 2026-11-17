@@ -14,9 +14,6 @@ use(log)
 import * as std from 'lib/std'
 use(std)
 
-import * as math from 'lib/math'
-use(math)
-
 import * as each from 'lib/each'
 use(each)
 
@@ -32,6 +29,12 @@ use(collection)
 
 import * as chainable from 'lib/chainable'
 use(chainable)
+
+import * as math from 'lib/math'
+use(math)
+
+import { sleep, set_timeout, set_interval } from 'lib/time'
+use({ sleep, set_timeout, set_interval })
 
 use({ use })
 
