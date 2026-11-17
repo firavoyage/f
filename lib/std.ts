@@ -141,7 +141,7 @@ export function is(v: any, ...type: variable_type[]): bool {
     } else if (type == 'numeric') {
       return is(v, 'number', 'bigint')
     } else if (type == 'iterable') {
-      return is(v[Symbol.iterator], 'function') && !is(v, 'string')
+      return is(v?.[Symbol.iterator], 'function') && !is(v, 'string')
     } else if (type == 'literal') {
       return is(v, 'absent', 'boolean', 'numeric', 'string', 'symbol')
     } else if (typeof type == 'function') {

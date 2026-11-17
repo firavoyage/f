@@ -103,7 +103,31 @@ export function app() {
   use_mount(() => {
     connect()
 
-    
+    ws.onmessage = (event) => {
+      const response: {
+        type: 'response' | 'broadcast',
+        id: string,
+        // id?: string,
+        action: string,
+        payload: any
+      } = parse(event.data)
+
+      const { type, id, action, payload } = response
+
+      if (type == 'response') {
+        if (has(pending_requests, id)) {
+          pending_requests[id](payload)
+        } 
+      } 
+
+      
+    }
+
+    set_interval(async function() {
+      perform('hello', {
+        message: 'hello world'
+      })
+    }, 1000)
   })
 
   function new_thread() {
@@ -254,12 +278,8 @@ function connect() {
 
   ws.onopen = () => {
     log('Connected!')
-  
-    map(pending_actions, call)
-  }
 
-  ws.onmessage = (event) => {
-    log(parse(event.data), parse(event.data).foo)
+    map(pending_actions, call)
   }
 
   ws.onclose = () => {
@@ -273,15 +293,21 @@ function connect() {
   }
 
   ws.onerror = (error) => {
-    console.error('WebSocket error:', error)
+    log('WebSocket error:', error)
   }
 }
 
 let pending_actions: Set<fn> = set()
 let pending_requests: Record<string, fn> = {}
 
-async function perform(action, payload, timeout = action_timeout, id = random_id()) {
+async function perform(
+  action,
+  payload,
+  timeout = action_timeout,
+  id = random_id(),
+) {
   if (!(ws.readyState == WebSocket.OPEN)) {
+    log(`wait for ws to perform ${action}`)
     pending_actions.add(() => perform(action, payload, timeout, id))
   } else {
     const request_payload = {
@@ -290,19 +316,25 @@ async function perform(action, payload, timeout = action_timeout, id = random_id
       action,
       payload,
     }
-  
+
+    log('perform', request_payload)
+
     ws.send(stringify(request_payload))
-  } 
+  }
 
   return new Promise((resolve, reject) => {
     pending_requests[id] = resolve
 
-    set_timeout(function() {
-      reject(err(`response for action ${action} should arrive within ${timeout}ms as you await`))
+    set_timeout(function () {
+      reject(
+        err(
+          `response for action ${action} should arrive within ${timeout}ms as you await`,
+        ),
+      )
     }, timeout)
   })
 }
 
 function call(fn: fn) {
-  fn()
+  fn?.()
 }

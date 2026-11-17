@@ -72,7 +72,7 @@ you may receive <!-- ideally void req should have a resp indicating success -->
 
 - type: response
 - id (same)
-- action
+- action (same)
 - payload
 
 on top of the abstraction, you
@@ -82,6 +82,8 @@ on top of the abstraction, you
 
 await perform(action, req payload) -> resp payload
 ```
+
+<!-- safe to simply reject on timeout. every action is expected to be responsed. -->
 
 most actions takes current thread. you may curry it.
 
