@@ -31,7 +31,7 @@ type thread_structure = {
       focus?: node
     }
   >
-  message: Record<id, message_structure>
+  messages: Record<id, message_structure>
   config?: {
     system_prompt: string
     model: string
@@ -108,11 +108,11 @@ export function app() {
   use_effect(() => {
     if (
       is(display_thread, 'absent') &&
-      entries(thread_structure.message).length > 0
+      entries(thread_structure.messages).length > 0
     ) {
       set_display_thread(thread)
     }
-  }, [thread_structure.message])
+  }, [thread_structure.messages])
 
   const content = use_ref()
   const field = use_ref()
