@@ -3,15 +3,17 @@ import { use_window_active } from 'lib/web/use window active'
 import { use_style } from 'lib/web/style'
 import theme from 'web/design/utilitarian.yaml'
 import 'web/design/utilitarian.css'
+
 import { textarea } from './textarea'
 import { scroll } from './scroll'
-// import { post } from 'lib/web/request'
-import type { message, messages } from 'lib/generation'
 import { sidebar } from './sidebar'
-import { marked } from 'marked'
+
+// import { post } from 'lib/web/request'
 import { copy } from 'lib/web/clipboard'
 import { random, random_id } from 'lib/random'
 const { stringify, parse } = JSON
+
+import { marked } from 'marked'
 
 const ws_retry_delay = 1000
 const ws_max_jitter = 1000
@@ -144,7 +146,7 @@ export function app() {
   // open websocket
   use_mount(() => {
     function receive(event) {
-      const response: {
+      const data: {
         type: 'response' | 'broadcast'
         id?: string
         thread?: string
@@ -152,7 +154,7 @@ export function app() {
         payload: any
       } = parse(event.data)
 
-      const { type, id, action, payload } = response
+      const { type, id, action, payload } = data
 
       log('receive', action, payload)
 
@@ -160,9 +162,10 @@ export function app() {
         pending_requests?.[id]?.(payload)
         pending_requests[id] = nil
       } else if (type == 'broadcast') {
-        if (response.thread == thread) {
-          broadcasts[action](payload)
-        }
+        broadcasts[action](payload)
+        // if (data.thread == thread) {
+        //   broadcasts[action](payload)
+        // }
       }
     }
 

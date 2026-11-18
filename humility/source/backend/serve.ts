@@ -57,7 +57,7 @@ type broadcast = {
   payload
 }
 
-let subscribers = {}
+let subscribers: Record<id, Set<WebSocket>> = {}
 
 let actions = {
   ...action_index,
@@ -181,7 +181,7 @@ app.get(
         if (has(subscribers, thread)) {
           subscribers[thread].add(send)
         } else {
-          subscribers[thread] = set([send])
+          subscribers[thread] = set(send)
         }
 
         const thread_content = handle(() => read(get_thread_file(thread)))
@@ -239,7 +239,7 @@ app.get(
         stringify({
           type: 'response',
           request,
-          payload: actions?.[action]?.(payload),
+          payload: actions[action](payload),
         }),
       )
     },

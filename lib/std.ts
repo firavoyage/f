@@ -206,7 +206,9 @@ export function list(...args) {
   }
 }
 
-export function set(v?): Set<any> {
+export function set(...args): Set<any> {
+  let v = list(...args)
+
   return new Set(v)
 }
 

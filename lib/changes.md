@@ -151,5 +151,5 @@ it's not really faster to join an array of strings than string add.
   - just use afn
 - fp: + `memoize`
   - renamed from `cache` to avoid naming conflict w lib/file
-
+- std: support `set(list(...args))`
 
