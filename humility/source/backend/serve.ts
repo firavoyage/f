@@ -14,6 +14,8 @@ import {
   thread_index_file,
 } from 'action/index'
 import { now } from 'lib/time'
+import { random_id } from 'lib/random'
+import { generate } from 'action/generate'
 
 const { parse, stringify } = JSON
 
@@ -53,7 +55,6 @@ let actions = {
 
     const threads = deserialize(read(thread_index_file))
 
-    // todo
     threads[thread] = {
       title: '',
       folder: '',
@@ -65,31 +66,67 @@ let actions = {
     write(get_thread_file(thread), serialize(thread_structure))
   },
   send({ thread, prompt, options }) {
-    const thread_structure = read(get_thread_file(thread))
+    const thread_structure = deserialize(read(get_thread_file(thread)))
     const { tree, messages } = thread_structure
 
-    let last_node = 0
-    let messages = [],
+    const message_id = random_id()
+
+    let last_message_id = 0
     while (true) {
-      const { children = [], focus = children[0] } = tree[last_node]
+      const { children = [], focus = children[0] } = tree[last_message_id]
 
       if (focus) {
-        messages.push(message_dict[focus])
-        current_node = focus
+        last_message_id = focus
       } else {
         break
       }
     }
+
+    let last_node = tree[last_message_id]
+    // if (is(last_node.children, 'absent')) {
+    //   last_node.children = []
+    // }
+    last_node.children.push(message_id)
+    last_node.focus = message_id
+
+    tree[message_id] = {
+      children: [],
+    }
+
+    let message = {
+      id: message_id,
+      role: 'user',
+      content: prompt,
+      start_time: now().timestamp,
+      end_time: now().timestamp,
+    }
+
+    messages[message_id] = message
+
+    write(get_thread_file(thread), serialize(thread_structure))
+
+    broadcast(thread, 'set_tree', tree)
+    broadcast(thread, 'set_message', message)
+  },
+  generate({ thread }) {
+    // construct context
+
+    // call mock generation
+
+    // setup listeners to broadcast on delta
   },
 }
 
 function broadcast(thread, action, payload) {
   map(subscribers[thread] ?? [], (send) => {
-    send({
-      type: 'broadcast',
-      action,
-      payload,
-    })
+    send(
+      stringify({
+        type: 'broadcast',
+        thread,
+        action,
+        payload,
+      }),
+    )
   })
 }
 
@@ -121,6 +158,24 @@ app.get(
         } else {
           subscribers[thread] = set([send])
         }
+
+        const { tree, messages } = deserialize(read(get_thread_file(thread)))
+
+        send(
+          stringify({
+            type: 'broadcast',
+            action: 'set_tree',
+            payload: tree,
+          }),
+        )
+
+        send(
+          stringify({
+            type: 'broadcast',
+            action: 'set_messages',
+            payload: messages,
+          }),
+        )
       }
 
       if (action == 'unsubscribe') {
