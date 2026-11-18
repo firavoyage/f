@@ -15,6 +15,7 @@ import {
 } from 'action/index'
 import { now } from 'lib/time'
 import { random, random_id } from 'lib/random'
+import { empty_thread_structure } from 'utility/thread'
 
 const { parse, stringify } = JSON
 
@@ -41,7 +42,7 @@ app.use('*', serveStatic({ root: '../web/build' }))
 type action = 'subscribe' | 'unsubscribe' | 'init' | 'send' | 'generate'
 // list hide
 type event =
-  | 'set_thread'
+  | 'set_thread_structure'
   | 'set_tree'
   | 'set_message'
   | 'append_message'
@@ -70,96 +71,39 @@ let subscribers: Record<id, Set<WebSocket>> = {}
 
 let actions: Record<action, fn> = {
   ...action_index,
-  subscribe() {},
-  unsubscribe() {},
-  init({ thread }) {
-    let thread_structure = {
-      tree: {
-        0: {
-          children: [],
-        },
-      },
-      messages: {},
+  subscribe({ thread, client }) {
+    if (is(subscribers[thread], 'absent')) {
+      subscribers[thread] = set(client)
+    } else {
+      subscribers[thread].add(client)
     }
 
-    const threads = deserialize(read(thread_index_file))
+    let thread_structure = handle(
+      () => deserialize(read(get_thread_file(thread))),
+      empty_thread_structure(),
+    )
 
-    threads[thread] = {
-      title: '',
-      folder: '',
-      creation_time: now().timestamp,
-    }
-
-    write(thread_index_file, serialize(threads))
+    // todo: ongoing messages
+    broadcast('set_thread_structure', thread_structure)
+  },
+  unsubscribe({ thread, client }) {
+    subscribers[thread].delete(client)
+  },
+  init({ thread, options: { title = '',folder = '' } = {} }) {
+    let thread_structure = empty_thread_structure()
 
     write(get_thread_file(thread), serialize(thread_structure))
-  },
-  send({ thread, prompt, options }) {
-    // const thread_content = handle(() => read(get_thread_file(thread)))
-    // if(is_error(thread_content)){
-    //   return
-    // }
-    // const thread_structure = deserialize(thread_content)
-    const thread_structure = deserialize(read(get_thread_file(thread)))
 
-    let { tree, messages } = thread_structure
+    let thread_index: thread_index = deserialize(read(thread_index_file))
 
-    const message_id = random_id()
-
-    tree = append_node(tree, message_id)
-
-    let message = {
-      id: message_id,
-      role: 'user',
-      content: prompt,
-      start_time: now().timestamp,
-      end_time: now().timestamp,
+    thread_index[thread] = {
+      title,
+      folder,
     }
-
-    messages[message_id] = message
-
-    write(get_thread_file(thread), serialize({ tree, messages }))
-
-    event(thread, 'set_tree', tree)
-    event(thread, 'set_message', message)
-  },
-  generate({ thread }) {
-    let reply_id = random_id()
-
-    const thread_structure = deserialize(read(get_thread_file(thread)))
-
-    let context = construct_context(thread_structure)
-
-    let { tree, messages } = thread_structure
-    tree = append_node(tree, reply_id)
-
-    write(get_thread_file(thread), serialize({ tree, messages }))
-
-    event('set_message', thread, {
-      id: reply_id,
-      role: 'assistant',
-      content: '',
-      reasoning: '',
-      start_time: now().timestamp,
-    })
-
-    generate_mock(
-      {
-        context,
-        id: reply_id,
-      },
-      (payload) => {
-        if (payload.type == 'append') {
-          event('append', thread, payload)
-        } else {
-          event('finish', thread, payload)
-        }
-      },
-    )
   },
 }
 
-function broadcast(event: event, payload, client) {
+function broadcast(event: event, payload, client?) {
   if (is(client, 'absent')) {
     client = subscribers[payload.thread]
   }
@@ -176,16 +120,17 @@ function broadcast(event: event, payload, client) {
   })
 }
 
-function respond(request, payload, client) {
+function respond(request: id, payload: any, client: WebSocket) {
   const ws = client
 
-  ws.send(stringify({
-    type: 'response',
-    request,
-    payload
-  }))
+  ws.send(
+    stringify({
+      type: 'response',
+      request,
+      payload,
+    }),
+  )
 }
-
 
 app.get(
   '/api/ws',
@@ -199,13 +144,11 @@ app.get(
 
       log(action, payload)
 
-      send(
-        stringify({
-          type: 'response',
-          request,
-          payload: actions[action](payload),
-        }),
-      )
+      if (action == 'subscribe' || action == 'unsubscribe') {
+        payload.client = ws
+      }
+
+      respond(request, actions[action](payload), ws)
     },
 
     onClose() {
@@ -293,4 +236,3 @@ function append_node(tree, message_id) {
 
   return tree
 }
-

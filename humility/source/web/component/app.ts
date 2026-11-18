@@ -14,6 +14,7 @@ import { random, random_id } from 'lib/random'
 const { stringify, parse } = JSON
 
 import { marked } from 'marked'
+import { empty_thread_structure } from 'utility/thread'
 
 const ws_retry_delay = 1000
 const ws_max_jitter = 1000
@@ -22,65 +23,6 @@ const action_timeout = 1000
 // const action_timeout = 10000
 
 const max_title_length = 65 * 2
-
-type thread_structure = {
-  tree: Record<
-    node,
-    {
-      children: node[]
-      focus?: node
-    }
-  >
-  messages: Record<id, message_structure>
-  config?: {
-    system_prompt: string
-    model: string
-    provider: string
-  }
-  roots?: number[]
-}
-
-type message_structure = {
-  id: id
-  role: role
-  content: string
-  reasoning?: string
-  tools?: tool[]
-  usage?: {
-    prompt_tokens: number
-    completion_tokens: number
-    total_tokens: number
-  }
-  perf?: {
-    tokens_per_second: number
-    time_to_first_token: number
-  }
-  has_failed?: bool
-  start_time: string
-  end_time: string
-  model?: string
-}
-
-type plain_message_structure = {
-  role: role
-  content: string
-}
-
-type tool = {
-  tool: string
-  args: Record<Key, any>
-}
-
-type thread_index = Record<
-  id,
-  {
-    title: string
-    folder: string
-    is_hidden?: boolean
-    creation_time?: number
-    modification_time?: number
-  }
->
 
 export const use_display_thread = s(nil as id | nil, {
   url_param: 'thread',
@@ -381,20 +323,68 @@ async function send(action, payload, request) {
   ws.send(stringify(request_payload))
 }
 
-function empty_thread_structure() {
-  return {
-    tree: {
-      0: {
-        children: [],
-      },
-    },
-    messages: {},
-  }
-}
-
 declare global {
   type id = string
   type node = number | id
 
   type role = 'system' | 'user' | 'assistant' | 'tool'
+
+  type thread_structure = {
+    tree: Record<
+      node,
+      {
+        children: node[]
+        focus?: node
+      }
+    >
+    messages: Record<id, message_structure>
+    config?: {
+      system_prompt: string
+      model: string
+      provider: string
+    }
+    roots?: number[]
+  }
+
+  type message_structure = {
+    id: id
+    role: role
+    content: string
+    reasoning?: string
+    tools?: tool[]
+    usage?: {
+      prompt_tokens: number
+      completion_tokens: number
+      total_tokens: number
+    }
+    perf?: {
+      tokens_per_second: number
+      time_to_first_token: number
+    }
+    has_failed?: bool
+    start_time: string
+    end_time: string
+    model?: string
+  }
+
+  type plain_message_structure = {
+    role: role
+    content: string
+  }
+
+  type tool = {
+    tool: string
+    args: Record<Key, any>
+  }
+
+  type thread_index = Record<
+    id,
+    {
+      title: string
+      folder: string
+      is_hidden?: boolean
+      creation_time?: number
+      modification_time?: number
+    }
+  >
 }
