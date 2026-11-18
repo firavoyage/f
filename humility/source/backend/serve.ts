@@ -14,7 +14,7 @@ import {
   thread_index_file,
 } from 'action/index'
 import { now } from 'lib/time'
-import { random_id } from 'lib/random'
+import { random, random_id } from 'lib/random'
 import { generate } from 'action/generate'
 
 const { parse, stringify } = JSON
@@ -66,7 +66,12 @@ let actions = {
     write(get_thread_file(thread), serialize(thread_structure))
   },
   send({ thread, prompt, options }) {
-    const thread_structure = deserialize(read(get_thread_file(thread)))
+    const thread_content = handle(() => read(get_thread_file(thread)))
+    if(is_error(thread_content)){
+      return 
+    }
+
+    const thread_structure = deserialize(thread_content)
     const { tree, messages } = thread_structure
 
     const message_id = random_id()
@@ -110,9 +115,7 @@ let actions = {
   },
   generate({ thread }) {
     // construct context
-
     // call mock generation
-
     // setup listeners to broadcast on delta
   },
 }
@@ -147,7 +150,7 @@ app.get(
 
       const { id, action, payload } = request
 
-      // log(request)
+      log(action, payload)
 
       if (action == 'subscribe') {
         let thread = payload
@@ -159,23 +162,54 @@ app.get(
           subscribers[thread] = set([send])
         }
 
-        const { tree, messages } = deserialize(read(get_thread_file(thread)))
+        const thread_content = handle(() => read(get_thread_file(thread)))
 
-        send(
-          stringify({
-            type: 'broadcast',
-            action: 'set_tree',
-            payload: tree,
-          }),
-        )
+        if(!is_error(thread_content)){
+          const { tree, messages } = deserialize(thread_content)
+  
+          send(
+            stringify({
+              type: 'broadcast',
+              thread,
+              action: 'set_tree',
+              payload: tree,
+            }),
+          )
+  
+          send(
+            stringify({
+              type: 'broadcast',
+              thread,
+              action: 'set_messages',
+              payload: messages,
+            }),
+          )
+        }
 
-        send(
-          stringify({
-            type: 'broadcast',
-            action: 'set_messages',
-            payload: messages,
-          }),
-        )
+
+        set_interval(function () {
+          broadcast(thread, 'set_tree', {
+            0: {
+              children: ['foo'],
+            },
+            foo: {
+              children: ['bar'],
+            },
+            bar: {
+              children: [],
+            },
+          })
+          broadcast(thread, 'set_messages', {
+            foo: {
+              role: 'user',
+              content: `foo ${random()} ${now().format()}`,
+            },
+            bar: {
+              role: 'assistant',
+              content: `bar  ${random()} ${now().format()}`,
+            },
+          })
+        }, 2000)
       }
 
       if (action == 'unsubscribe') {

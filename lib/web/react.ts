@@ -23,7 +23,6 @@ export function use_ref<T>(initial_value?: T) {
 
 export function use_state<T>(
   initial_value?: T,
-  should_rerender = true,
 ): [state: T, set_state: typeof set_state] {
   const current_state = use_ref(initial_value)
   const update = use_update()
@@ -62,9 +61,7 @@ export function use_state<T>(
       current_state.current = new_value
     }
 
-    if (should_rerender) {
-      update()
-    }
+    update()
   }
 
   return [current_state.current, set_state]

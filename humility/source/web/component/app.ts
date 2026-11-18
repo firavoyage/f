@@ -46,7 +46,7 @@ export function app() {
   use_window_active()
   use_style(theme)
 
-  const [prompt, set_prompt] = use_state('', false)
+  const [prompt, set_prompt] = use_state('')
 
   const [folder, set_folder] = use_state('')
   const [threads, set_threads] = use_state<Record<string, thread>>({})
@@ -165,14 +165,6 @@ export function app() {
     use({ receive })
 
     connect()
-
-    set_interval(async function () {
-      // await perform('subscribe', thread)
-      // await perform('unsubscribe', thread)
-      // perform('hello', {
-      //   message: 'hello world',
-      // })
-    }, 10000)
   })
 
   // list threads on sidebar
@@ -183,6 +175,10 @@ export function app() {
 
   // subscribe broadcast of current thread
   use_effect(() => {
+    if (!thread) {
+      return
+    }
+
     perform('subscribe', thread)
 
     return () => perform('unsubscribe', thread)
