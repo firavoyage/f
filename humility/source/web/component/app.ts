@@ -396,7 +396,7 @@ declare global {
   }
 
   type message_structure = {
-    id: id
+    id?: id
     role: role
     content: string
     reasoning?: string

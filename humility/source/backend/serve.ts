@@ -264,9 +264,17 @@ serve(
   },
 )
 
-async function generate({ context, endpoint, model, key }, append, finish) {
-  try {
-    const response = await fetch(endpoint, {
+async function generate(
+  { context, endpoint, model, key },
+  append: append,
+  finish: finish,
+) {
+  let start_time = now().timestamp,
+    end_time
+  let content = ''
+
+  const response = await handle(() =>
+    fetch(endpoint, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${key}`,
@@ -277,82 +285,125 @@ async function generate({ context, endpoint, model, key }, append, finish) {
         messages: context,
         stream: true,
       }),
-    })
+    }),
+  )
+  if (is_error(response)) {
+    finish(fail('network', response.message))
+    return
+  }
 
-    if (!response.ok) {
-      const error = await response.json()
-      throw new Error(error.error?.message || 'API request failed')
-    }
+  if (!response.ok) {
+    finish(
+      fail(
+        'endpoint',
+        `${response.status} ${response.statusText}`,
+        await handle(() => response.json()),
+      ),
+    )
+    return
+  }
 
-    if (!response.body) {
-      throw new Error('No response stream')
-    }
+  if (!response.body) {
+    finish(
+      fail(
+        'endpoint',
+        `endpoint should send response stream`,
+        await handle(() => response.json()),
+      ),
+    )
+    return
+  }
 
-    const reader = response.body.getReader()
-    const decoder = new TextDecoder()
+  const reader = response.body.getReader()
+  const decoder = new TextDecoder()
 
-    let buffer = ''
-    let fullText = ''
+  let buffer = ''
 
-    while (true) {
-      const { value, done } = await reader.read()
+  while (true) {
+    const { value, done } = await reader.read()
 
-      if (done) break
+    if (done) break
 
-      buffer += decoder.decode(value, { stream: true })
+    buffer += decoder.decode(value, { stream: true })
 
-      const lines = buffer.split('\n')
-      buffer = lines.pop() || ''
+    const lines = buffer.split('\n')
+    buffer = lines.pop() || ''
 
-      for (const line of lines) {
-        const trimmed = line.trim()
+    for (const line of lines) {
+      const trimmed = line.trim()
 
-        // Ignore SSE comments and empty lines
-        if (!trimmed || trimmed.startsWith(':')) continue
+      // Ignore SSE comments and empty lines
+      if (!trimmed || trimmed.startsWith(':')) continue
 
-        if (!trimmed.startsWith('data:')) continue
+      if (!trimmed.startsWith('data:')) continue
 
-        const data = trimmed.slice(5).trim()
+      const data = trimmed.slice(5).trim()
 
-        if (data === '[DONE]') {
-          onComplete?.(fullText)
-          return fullText
+      if (data == '[DONE]') {
+        finish?.(content)
+        return content
+      }
+
+      const parsed = JSON.parse(data)
+
+      const new_content = parsed.choices?.[0]?.delta?.content
+
+      if (new_content) {
+        content += new_content
+
+        let delta = {
+          content: new_content,
         }
 
-        try {
-          const parsed = JSON.parse(data)
-
-          const token = parsed.choices?.[0]?.delta?.content
-
-          if (token) {
-            fullText += token
-            onToken?.(token)
-          }
-
-          if (parsed.error) {
-            throw new Error(parsed.error.message)
-          }
-        } catch (error) {
-          if (error instanceof SyntaxError) continue
-          throw error
-        }
+        append(delta)
       }
     }
+  }
 
-    // Flush any remaining decoder data
-    buffer += decoder.decode()
+  // Flush any remaining decoder data
+  buffer += decoder.decode()
 
-    onComplete?.(fullText)
-    return fullText
-  } catch (error) {
-    if (error.name === 'AbortError') return
+  finish(content)
 
-    onError?.(error)
-    throw error
+  function fail(
+    type: 'network' | 'endpoint',
+    message: string,
+    payload = response,
+  ) {
+    end_time = now().timestamp
+
+    return {
+      has_failed: true,
+      role: 'assistant' as const,
+      content:
+        content +
+        '\n```chat_error\n' +
+        serialize({
+          type,
+          message,
+          payload,
+        }) +
+        '```\n',
+      start_time,
+      end_time,
+      model,
+    }
+  }
+
+  function complete() {
+    end_time = now().timestamp
+
+    return {
+      role: 'assistant' as const,
+      content,
+      start_time,
+      end_time,
+      model,
+    }
   }
 }
 
-async function generate_mock({ context }, append: fn, finish: fn) {
+async function generate_mock({ context }, append: append, finish: finish) {
   let content = ''
 
   for (const i of each(5)) {
@@ -374,6 +425,9 @@ async function generate_mock({ context }, append: fn, finish: fn) {
     reasoning: '',
   })
 }
+
+type append = (delta: delta) => any
+type finish = (message_structure: message_structure) => any
 
 declare global {
   type action =
