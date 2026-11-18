@@ -276,7 +276,7 @@ async function generate_mock({ context }, receive: fn) {
   for (const i of each(5)) {
     let delta = `reply for ${
       context.length
-    }, ${now().format()} ${i} ${random()}\n`
+    } messages, ${now().format()} ${i} ${random()}\n`
 
     content += delta
 

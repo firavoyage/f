@@ -84,6 +84,8 @@ export function app() {
         options: {},
       })
 
+      set_prompt('')
+
       await perform('generate', { thread })
     },
   }
@@ -163,7 +165,15 @@ export function app() {
   }, [thread])
 
   // bind shortcuts
+
   use_keyboard('alt+n', controls.new_thread)
+  use_keyboard('enter', controls.send_prompt, {
+    when: () => prompt,
+  })
+  // disable entering on empty prompt
+  use_keyboard('enter', identity, {
+    when: () => !prompt,
+  })
 
   return h(
     h('title.', 'Humility'),
@@ -196,19 +206,26 @@ export function app() {
                     },
                     title || 'Untitled',
                   ),
-                  // h(
-                  //   'button.threads_delete_thread',
-                  //   {
-                  //     async onclick() {
-                  //       await perform('hide', current_thread)
-                  //       if (thread == current_thread) {
-                  //         controls.new_thread()
-                  //       }
-                  //       set_thread_index(perform('list'))
-                  //     },
-                  //   },
-                  //   'delete',
-                  // ),
+                  h(
+                    'button.threads_delete_thread',
+                    {
+                      async onclick() {
+                        perform('hide', { thread: current_thread })
+                        set_thread_index((index) => {
+                          index[current_thread].is_hidden = true
+                        })
+                        if (thread == current_thread) {
+                          controls.new_thread()
+                        }
+                        // await perform('hide', { thread: current_thread })
+                        // if (thread == current_thread) {
+                        //   controls.new_thread()
+                        // }
+                        // set_thread_index(perform('list'))
+                      },
+                    },
+                    'delete',
+                  ),
                 ),
               ),
           ),
@@ -268,13 +285,13 @@ export function app() {
               ),
             ),
           ),
-          h(
-            'button.prompt_send',
-            {
-              onclick: controls.send_prompt,
-            },
-            'send',
-          ),
+          // h(
+          //   'button.prompt_send',
+          //   {
+          //     onclick: controls.send_prompt,
+          //   },
+          //   'send',
+          // ),
         ),
       ),
     ),

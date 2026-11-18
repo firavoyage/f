@@ -35,23 +35,13 @@ organize folders, rename thread
 
 ## s
 
-implement thread locking for chat
+support more broadcasting events
 
-> handle desync frontend and backend
-> 
-> i.e. know and manage what's ongoing on a separate request
+- list
 
-when you read a thread, it would typically return the thread of all requests settled.
+support more actions
 
-otherwise it will wait. it's feasible to do that on nodejs backend.
-
-it's a simple approach.
-
-_you could display prev msgs first, set is pending, and wait for update. well actually it's easy. you send a "fast read" for display before waiting for the locked read._
-
-like, when you send, the network fluctuates, and you refresh the page (w the prev request abandoned)
-
-if the endpoint request fails or _timeouts_ an error would be appended. it's very unlikely to have corrupted thread unless the server is killed halfway. and it would still work (i.e. to empty lock on server startup) as you merge consecutive msgs of the same role. it's reasonable though, to append user msg only after the reply. doesnt matter to change the behavior now.
+- edit title
 
 ---
 
@@ -64,16 +54,6 @@ connect to have via cli, through json (e.g. action, payload). stdin maybe, or fl
 would be easy to escape and dump some string.
 
 alternatively, you can leverage js ecosystem (await import).
-
----
-
-implement timeout
-
-idk why it does nothing when wifi is disabled
-
-well seems it continues and works anyway
-
-expected?
 
 ---
 
@@ -116,6 +96,12 @@ search threads
 
 ## c
 
+web: create fadein animation per block
+
+like google ai mode
+
+---
+
 think: hide or delete? trash folder?
 
 ---
@@ -154,6 +140,16 @@ action/list: support range
 ## w
 
 # backlog
+
+## impl
+
+implement timeout
+
+idk why it does nothing when wifi is disabled
+
+well seems it continues and works anyway
+
+expected?
 
 ## use cases
 
