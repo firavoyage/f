@@ -164,6 +164,8 @@ set message thread messge
 append message thread message delta
 
 finish message thread message message structure
+
+set thread status status: 'ready' | 'pending'
 ```
 
 # abstractions
