@@ -69,20 +69,6 @@ server log?
 # server history represented in log format, e.g.
 
 2026-11-15 01:54:08 [info] [traverse] Starting traversal
-initial_url: https://cs61a.org/fa26/
-max_depth: .inf
-max_page_count: .inf
-max_duration: .inf
-interval: 1
-2026-11-15 01:54:08 [info] [traverse] Fetching page
-url: https://cs61a.org/fa26/
-depth: 0
-page_count: 1
-2026-11-15 01:54:09 [info] Saved https://cs61a.org/fa26/ to /home/fira/.have/data/webpage/result/34/c0/e66b-6b3a-43f4-81cc-4ea6fa709629/index.html w 13 assets
-2026-11-15 01:54:09 [info] Added https://cs61a.org/fa26/ to index
-2026-11-15 01:54:09 [info] [traverse] Fetched page successfully
-url: https://cs61a.org/fa26/
-html_length: 129453
 ```
 
 message structure

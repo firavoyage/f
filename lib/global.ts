@@ -14,6 +14,9 @@ use(log)
 import * as std from 'lib/std'
 use(std)
 
+import * as fp from 'lib/fp'
+use(fp)
+
 import * as each from 'lib/each'
 use(each)
 

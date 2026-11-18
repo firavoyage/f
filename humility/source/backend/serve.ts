@@ -160,7 +160,7 @@ app.get(
         payload: any
       } = parse(event.data)
 
-      const { id, action, payload } = request
+      const { id: request, action, payload } = request
 
       log(action, payload)
 
@@ -227,8 +227,7 @@ app.get(
       send(
         stringify({
           type: 'response',
-          id,
-          action,
+          request,
           payload: actions?.[action]?.(payload),
         }),
       )

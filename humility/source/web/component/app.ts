@@ -22,19 +22,43 @@ const action_timeout = 1000
 const max_title_length = 65 * 2
 
 type id = string
+type node = number | id
 
-type role = 'system' | 'user' | 'assistant' | 'tool'
+type thread_structure = {
+  tree: Record<
+    node,
+    {
+      children: node[]
+      focus?: node
+    }
+  >
+  message: Record<id, message_structure>
+  config?: {
+    system_prompt: string
+    model: string
+    provider: string
+  }
+  metadata?: {
+    roots: number[]
+  }
+}
 
-type message = {
+type message_structure = {
+  id: id
+  role: role
+  content: string
+  reasoning?: string
   
 }
 
-type plain_message = {
+type plain_message_structure = {
   role: role
   content: string
   reasoning?: string
   tools?: any[]
 }
+
+type role = 'system' | 'user' | 'assistant' | 'tool'
 
 type thread_index = Record<
   id,
@@ -47,9 +71,11 @@ type thread_index = Record<
   }
 >
 
-export const use_thread = s(nil as string | nil, {
+export const use_display_thread = s(nil as id | nil, {
   url_param: 'thread',
 })
+
+export const use_thread = s(nil as id | nil)
 
 export function app() {
   use_sync_theme('system')
@@ -59,8 +85,21 @@ export function app() {
   const [prompt, set_prompt] = use_state('')
 
   const [folder, set_folder] = use_state('')
+  const [thread_structure, set_thread_structure] = use_state()
   const [thread_index, set_thread_index] = use_state<thread_index>({})
   const [thread, set_thread] = use_thread()
+  const [display_thread, set_display_thread] = use_display_thread()
+  use_effect(() => {
+    set_thread(display_thread ?? random_id())
+  }, [display_thread])
+  use_effect(() => {
+    if (
+      is(display_thread, 'absent') &&
+      entries(thread_structure.message).length > 0
+    ) {
+      set_display_thread(thread)
+    }
+  }, [thread_structure.message])
 
   const [message_tree, set_message_tree] = use_state({
     0: {
@@ -302,23 +341,6 @@ export function app() {
   )
 }
 
-function memoize<T extends (...args: any[]) => any>(fn: T): T {
-  const cache_map = new Map<string, ReturnType<T>>()
-
-  return function (...args: Parameters<T>): ReturnType<T> {
-    const key = JSON.stringify(args)
-
-    if (cache_map.has(key)) {
-      return cache_map.get(key)!
-    }
-
-    const result = fn(...args)
-    cache_map.set(key, result)
-
-    return result
-  } as T
-}
-
 function render(md: string) {
   return marked.parse(md, {
     gfm: true,
@@ -328,7 +350,9 @@ function render(md: string) {
 
 render = memoize(render)
 
-let ws: InstanceType<typeof WebSocket>
+let ws: WebSocket
+let pending_actions: Set<fn> = set()
+let pending_requests: Record<id, fn> = {}
 
 function connect() {
   ws = new WebSocket('ws://localhost:8192/api/ws')
@@ -354,24 +378,21 @@ function connect() {
   }
 }
 
-let pending_actions: Set<fn> = set()
-let pending_requests: Record<string, fn> = {}
-
 async function perform(
   action,
   payload?,
   timeout = action_timeout,
-  id = random_id(),
+  request = random_id(),
 ): Promise<any> {
   if (!(ws?.readyState == WebSocket.OPEN)) {
-    log(`wait for ws to perform ${action}`)
-    pending_actions.add(() => send(action, payload, id))
+    // log(`wait for ws to perform ${action}`)
+    pending_actions.add(() => send(action, payload, request))
   } else {
-    send(action, payload, id)
+    send(action, payload, request)
   }
 
   return new Promise((resolve, reject) => {
-    pending_requests[id] = resolve
+    pending_requests[request] = resolve
 
     set_timeout(function () {
       reject(
@@ -381,10 +402,10 @@ async function perform(
   })
 }
 
-async function send(action, payload, id) {
+async function send(action, payload, request) {
   const request_payload = {
     type: 'request',
-    id,
+    request,
     action,
     payload,
   }

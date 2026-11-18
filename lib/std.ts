@@ -1,19 +1,5 @@
 export const nil = null
 
-export function identity(v) {
-  return v
-}
-
-export function call(fn: fn) {
-  fn?.()
-}
-
-export function pipe(...args) {
-  return (fn: fn) => {
-    fn(...args)
-  }
-}
-
 export function is_given<T>(foo: T): foo is NonNullable<T> {
   const missing_symbol = Symbol('missing')
 
@@ -239,9 +225,6 @@ export function obj(v) {
   return Object.fromEntries(v)
 }
 
-type identity = typeof identity
-type call = typeof call
-type pipe = typeof pipe
 type nil_ = typeof nil
 // type is_given = typeof is_given
 type has = typeof has
@@ -258,9 +241,6 @@ type set = typeof set
 type dict = typeof dict
 type obj = typeof obj
 declare global {
-  var identity: identity
-  var call: call
-  var pipe: pipe
   type nil = typeof nil
   var nil: nil_
   type bool = boolean

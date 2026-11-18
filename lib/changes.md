@@ -146,6 +146,10 @@ it's not really faster to join an array of strings than string add.
 
 - web/react: - `should_rerender`
   - quirky perf engineering
-
+- fp: separate `identity` and `call` from std, rm `pipe`
+  - current impl of pipe is quite weird and doesnt align w its name
+  - just use afn
+- fp: + `memoize`
+  - renamed from `cache` to avoid naming conflict w lib/file
 
 
