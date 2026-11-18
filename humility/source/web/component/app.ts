@@ -113,7 +113,7 @@ export function app() {
       set_display_thread(thread)
     } else {
       set_display_thread(nil)
-    } 
+    }
   }, [thread_structure.messages])
 
   const content = use_ref()
@@ -126,9 +126,9 @@ export function app() {
     async send_prompt() {
       if (entries(thread_structure.messages).length == 0) {
         await perform('init', {
-          thread
+          thread,
         })
-      } 
+      }
 
       await perform('send', {
         thread,
@@ -144,24 +144,22 @@ export function app() {
 
   // open websocket
   use_mount(() => {
-    function receive(event) {
-      const data: {
-        type: 'response' | 'broadcast'
-        id?: string
-        thread?: string
-        action: string
-        payload: any
-      } = parse(event.data)
+    function receive(e) {
+      const data = parse(e.data)
 
-      const { type, id, action, payload } = data
+      const { type, payload } = data
 
-      log('receive', action, payload)
+      log('receive', payload)
 
       if (type == 'response') {
-        pending_requests?.[id]?.(payload)
-        pending_requests[id] = nil
+        const { request, action } = data
+
+        pending_requests?.[request]?.(payload)
+        pending_requests[request] = nil
       } else if (type == 'broadcast') {
-        broadcasts[action](payload)
+        const { event } = data
+
+        broadcasts[event](payload)
         // if (data.thread == thread) {
         //   broadcasts[action](payload)
         // }
@@ -397,6 +395,6 @@ function empty_thread_structure() {
 declare global {
   type id = string
   type node = number | id
-  
+
   type role = 'system' | 'user' | 'assistant' | 'tool'
 }

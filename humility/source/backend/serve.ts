@@ -38,31 +38,40 @@ app.use('*', async (c, next) => {
 
 app.use('*', serveStatic({ root: '../web/build' }))
 
-type action = ''
+type action = 'subscribe' | 'unsubscribe' | 'init' | 'send' | 'generate'
+// list hide
+type event =
+  | 'set_thread'
+  | 'set_tree'
+  | 'set_message'
+  | 'append_message'
+  | 'finish_message'
 
 type request = {
   type: 'request'
   request: id
-  action
-  payload
+  action: action
+  payload: any
 }
 
 type response = {
   type: 'response'
   request: id
-  payload
+  payload: any
 }
 
 type broadcast = {
   type: 'broadcast'
-  broadcast
-  payload
+  event: event
+  payload: any
 }
 
 let subscribers: Record<id, Set<WebSocket>> = {}
 
-let actions = {
+let actions: Record<action, fn> = {
   ...action_index,
+  subscribe() {},
+  unsubscribe() {},
   init({ thread }) {
     let thread_structure = {
       tree: {
@@ -111,8 +120,8 @@ let actions = {
 
     write(get_thread_file(thread), serialize({ tree, messages }))
 
-    broadcast(thread, 'set_tree', tree)
-    broadcast(thread, 'set_message', message)
+    event(thread, 'set_tree', tree)
+    event(thread, 'set_message', message)
   },
   generate({ thread }) {
     let reply_id = random_id()
@@ -126,7 +135,7 @@ let actions = {
 
     write(get_thread_file(thread), serialize({ tree, messages }))
 
-    broadcast('set_message', thread, {
+    event('set_message', thread, {
       id: reply_id,
       role: 'assistant',
       content: '',
@@ -141,27 +150,42 @@ let actions = {
       },
       (payload) => {
         if (payload.type == 'append') {
-          broadcast('append', thread, payload)
+          event('append', thread, payload)
         } else {
-          broadcast('finish', thread, payload)
+          event('finish', thread, payload)
         }
       },
     )
   },
 }
 
-function broadcast(thread, action, payload) {
-  map(subscribers[thread] ?? [], (send) => {
-    send(
+function broadcast(event: event, payload, client) {
+  if (is(client, 'absent')) {
+    client = subscribers[payload.thread]
+  }
+  client = list(client)
+
+  map(client, (ws) => {
+    ws.send(
       stringify({
         type: 'broadcast',
-        thread,
-        action,
+        event,
         payload,
       }),
     )
   })
 }
+
+function respond(request, payload, client) {
+  const ws = client
+
+  ws.send(stringify({
+    type: 'response',
+    request,
+    payload
+  }))
+}
+
 
 app.get(
   '/api/ws',
@@ -171,71 +195,9 @@ app.get(
     },
 
     onMessage(event, ws) {
-      let send = ws.send
-
       const { request, action, payload }: request = parse(event.data)
 
       log(action, payload)
-
-      if (action == 'subscribe') {
-        let thread = payload
-
-        if (has(subscribers, thread)) {
-          subscribers[thread].add(send)
-        } else {
-          subscribers[thread] = set(send)
-        }
-
-        const thread_content = handle(() => read(get_thread_file(thread)))
-
-        let tree, messages
-        if (is_error(thread_content)) {
-          tree = {
-            0: {
-              children: [],
-            },
-          }
-
-          messages = {}
-        } else {
-          ;({ tree, messages } = deserialize(thread_content))
-        }
-
-        send(
-          stringify({
-            type: 'broadcast',
-            thread,
-            action: 'set_tree',
-            payload: tree,
-          }),
-        )
-
-        send(
-          stringify({
-            type: 'broadcast',
-            thread,
-            action: 'set_messages',
-            payload: messages,
-          }),
-        )
-
-        set_interval(function () {
-          let id = random_id()
-          broadcast(thread, 'set_tree', append_node(tree, id))
-          broadcast(thread, 'set_message', {
-            id,
-            role: 'user',
-            content: `foo ${now().format()}`,
-          })
-        }, 2000)
-      }
-
-      if (action == 'unsubscribe') {
-        let thread = payload
-        let send = ws.send
-
-        subscribers?.[thread]?.delete(send)
-      }
 
       send(
         stringify({
@@ -268,15 +230,6 @@ app.get('*', (c) => {
   return c.html(html)
 })
 
-// app.post('/api/:action{.+}', async (c) => {
-//   const action = c.req.param('action')
-//   const payload = await c.req.json()
-
-//   const result = await actions[action](payload)
-
-//   return c.json(result ?? {})
-// })
-
 const ws = new WebSocketServer({ noServer: true })
 
 serve(
@@ -290,28 +243,7 @@ serve(
   },
 )
 
-function construct_context(thread_structure) {
-  const { tree, messages } = thread_structure
-
-  let context = []
-
-  let message_id = 0
-  while (true) {
-    const { children = [], focus = children[0] } = tree[message_id]
-
-    if (focus) {
-      message_id = focus
-
-      context.push(messages[message_id])
-    } else {
-      break
-    }
-  }
-
-  return context
-}
-
-async function generate_mock({ context, id = random_id() }, receive: fn) {
+async function generate_mock({ context }, receive: fn) {
   let content = ''
 
   for (const i of each(5)) {
@@ -323,7 +255,6 @@ async function generate_mock({ context, id = random_id() }, receive: fn) {
 
     receive({
       type: 'append',
-      id,
       content: delta,
       reasoning: '',
     })
@@ -332,7 +263,6 @@ async function generate_mock({ context, id = random_id() }, receive: fn) {
 
   receive({
     type: 'finish',
-    id,
     content,
     reasoning: '',
   })
@@ -363,3 +293,4 @@ function append_node(tree, message_id) {
 
   return tree
 }
+

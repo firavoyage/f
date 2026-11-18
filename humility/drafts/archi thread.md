@@ -142,7 +142,7 @@ init thread options
 
   broadcast set thread structure
 
-send prompt thread prompt
+send prompt thread prompt # send
   message = random id
 
   message structure =
@@ -315,7 +315,7 @@ broadcast
 
 ```
 type: broadcast
-broadcast:
+event:
 payload
 ```
 
