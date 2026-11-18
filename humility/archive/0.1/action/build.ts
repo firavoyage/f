@@ -1,4 +1,4 @@
-import { serialize, deserialize, threads_file, get_thread_file } from 'action/index'
+import { serialize, deserialize, thread_index_file, get_thread_file } from 'action/index'
 import { read, write, join, santinize } from 'lib/file'
 import { at } from 'lib/time'
 
@@ -9,7 +9,7 @@ type build = {
 }
 
 export function build({ dir, include = [''], ignore = [] }: build) {
-  let threads = deserialize(read(threads_file))
+  let threads = deserialize(read(thread_index_file))
 
   let included_threads = set(
     map(threads, ([thread, metadata]) => {

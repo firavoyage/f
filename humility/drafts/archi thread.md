@@ -378,8 +378,6 @@ set focus tree message -> new tree
 build context tree
 
 build plain context tree
-
-
 ```
 
 ## web
@@ -387,38 +385,99 @@ build plain context tree
 ```
 controls: control -> fn # behavior of each button/shortcut/command
 
-# payload includes
-await perform(action, payload, timeout)
+# payload includes thread message if available. no default currying.
+await perform(action, payload, timeout) -> response
 
+# filter irrelevant broadcasts yourself
+broadcasts: broadcast action -> fn # state transition for each broadcast
 ```
 
 ## backend
 
-when you stream some response (e.g. llm or tool call),
+```
+actions: action -> fn # response for each user action, e.g. build state from persistent storage and in memory cache (e.g. ongoing msg), mutate state if appliable
 
-you listen for delta.
+# seems broadcasts are always thread specific, only broadcast to subscribers in the first place
+# thread is included in payload to be general
+await? broadcast(broadcast, payload)
+```
 
-specifically,
+## payload
 
-when receive, you append that to current value of such msg and broadcast to all subscribers of that thread.
+request (i.e. user action)
 
-when finish, you broadcast finish event and some derived results, such as parsed tool calls, perf, or usage. and you write into persistent storage (e.g. serializing as yaml on disk).
+```
+type: request
+request: request id
+action
+payload
+```
 
----
+response
 
-when a new client subscribes some thread,
+```
+type: response
+request: request id
+payload
+```
 
-you pull the state of all completed msgs (full action history or payload/broadcasting log might be irrelevant) from like disk, append current value of ongoing msgs, and send to the client. besides, you add them to subscribers.
+broadcast
 
-these should be sync, or effectively sync.
-
----
-
-you broadcast _all_ actions on one thread to all subscribers. no special case. you may ignore on frontend.
-
----
-
-you may implement like heartbeating. these are general abstractions.
+```
+type: broadcast
+broadcast:
+payload
+```
 
 # flow
+
+## open the app
+
+connect to ws
+
+- auto reconnect
+- heartbeat
+
+list all threads
+
+```
+action: list
+```
+
+## open a thread
+
+for empty thread, do nothing
+
+subscribe (read) the read
+
+```
+action: subscribe thread
+
+broadcast: set thread structure
+```
+
+## send message on new thread
+
+set thread to a random id
+
+```
+thread = random thread
+
+action: init thread
+
+action: send thread prompt options
+```
+
+as you change current thread,
+
+```
+broadcast: set thread structure
+
+broadcast: set message
+
+broadcast: append message...
+
+broadcast: finish message
+```
+
 

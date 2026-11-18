@@ -427,4 +427,37 @@ Specify a port (0 = random) Do not open a browser automatically. The workspace i
 
 Show all
 
+# . test nov 18
 
+```
+ ~ % dsh web --port 3081
+
+dsh: ALL_PROXY names a SOCKS proxy, which is not supported; connecting directly for that scheme — set an http:// or https:// proxy URL instead
+dsh web: http://127.0.0.1:3081/?token=GzOOYuR1mgLpmeTpmEFbU8hZqI7-ew1PmcldzuXWSnA
+dsh web: opening the default browser; pass --no-open to disable
+dsh: warning: 4 entries did not activate
+workspace (@deepseek-ai/dsh-workspace): Error: session artifact "/home/fira/.dsh/sessions/--root--/session-2ce7d944-bb7f-49fd-8af1-a760d303fa6b/session.v4.jsonl" uses .jsonl, but this backend is configured for compression "zstd"; use a separate root or select the matching compression mode
+    at Proxy.encodingMismatch (file:///home/fira/.bun/install/global/node_modules/@deepseek-ai/dsh-session-persistence-jsonl/lib/index.js:3583:26)
+    at Object.apply (file:///home/fira/.bun/install/global/node_modules/@deepseek-ai/cordis/lib/index.js:122:36)
+    at file:///home/fira/.bun/install/global/node_modules/@deepseek-ai/dsh-session-persistence-jsonl/lib/index.js:3542:44
+session-controller (@deepseek-ai/dsh-api-session-controller): pending (waiting for service: workspaceRegistry)
+workspace-controller (@deepseek-ai/dsh-api-workspace-controller): pending (waiting for service: workspaceRegistry)
+ui-deliverables (@deepseek-ai/dsh-client-ui-deliverables): pending (waiting for service: sessionController)
+^C%                                                                                                                                    ~ % rm -rf ~/.dsh
+ ~ % dsh web --port 3081
+
+dsh: ALL_PROXY names a SOCKS proxy, which is not supported; connecting directly for that scheme — set an http:// or https:// proxy URL instead
+dsh web: http://127.0.0.1:3081/?token=W4J-zMc7pptDti2AVcTG6sZO25XpV1BztfzmxGtnGa4
+dsh web: opening the default browser; pass --no-open to disable
+```
+
+```
+Preview Notice
+DeepSeek Harness 0.2 is still in preview, and many areas need continued improvement and refinement. We welcome feedback and suggestions from all developers and users. The new desktop app now targets a broad range of users, while developer-related advanced features can be enabled in the settings. DeepSeek Harness’s product features and plugin APIs are expected to continue rapid iteration and evolution, and will gradually stabilize over time.
+
+We look forward to exploring the limits of intelligence together with users and developers around the world, building on open-source, reusable, and composable infrastructure. We welcome everyone to bring their ideas to life with DeepSeek Harness and participate in the community to enrich the plugin ecosystem.
+```
+
+interesting, dsh doesnt even set thread param on url.
+
+seems it stores in localstorage maybe.
