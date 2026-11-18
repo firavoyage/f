@@ -70,11 +70,9 @@ export function app() {
     },
     async send_prompt() {
       if (entries(thread_structure.messages).length == 0) {
-        log(prompt, prompt.slice(max_title_length))
-
         await perform('init', {
           thread,
-          title: prompt.slice(max_title_length)
+          title: prompt.slice(0, max_title_length),
         })
       }
 

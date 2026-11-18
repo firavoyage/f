@@ -65,7 +65,7 @@ let actions: Record<action, fn> = {
   unsubscribe({ thread, client }) {
     subscribers[thread].delete(client)
   },
-  init({ thread, options: { title = '', folder = '' } = {} }) {
+  init({ thread, title = '', folder = '', options }) {
     let thread_structure = empty_thread_structure()
 
     write(get_thread_file(thread), serialize(thread_structure))
