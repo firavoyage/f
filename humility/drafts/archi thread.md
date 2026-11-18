@@ -332,12 +332,25 @@ it should not finish w the last delta. append instead.
 thread: thread id
 thread_content: serialized thread text
 thread_structure: in memory thread object, incl.
-  tree
+  tree: message ->
+    children: []
+    focus: message = first children
+  # specifically,
+  # for leaf,
+  # children: []
+  # focus: nil
+  # for stem,
+  # children: [foo, bar]
+  # focus: foo
   messages: message -> message structure
   metadata
     title
     folder
     time...
+  config: # current config
+    system prompt
+    model
+    provider
 message: message id
 message_content
 message_structure:
@@ -345,14 +358,29 @@ message_structure:
   role
   content
   time...
+  has_failed?
 plain_message_structure:
   role
   content
-context_display: message_structure[]
-context: plain_message_structure[] # payload to endpoint
+context: message_structure[]
+plain_context: plain_message_structure[] # payload to endpoint
 ```
 
 <!-- it doesnt matter which one you make simpler. -->
+
+## utils
+
+```
+append message tree message -> new tree
+
+set focus tree message -> new tree
+
+build context tree
+
+build plain context tree
+
+
+```
 
 ## web
 
