@@ -93,16 +93,16 @@ export function app() {
 
         set_thread(thread_id)
 
-        perform('init', { thread })
+        perform('init', { thread: thread_id })
       }
 
       perform('send', {
-        thread,
+        thread: thread_id,
         prompt,
         options: {},
       })
 
-      perform('generate', { thread })
+      perform('generate', { thread: thread_id })
     },
   }
 

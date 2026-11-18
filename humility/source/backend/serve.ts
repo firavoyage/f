@@ -153,6 +153,8 @@ app.get(
     },
 
     onMessage(event, ws) {
+      let send = ws.send
+
       const request: {
         type: 'request'
         id: string
@@ -166,7 +168,6 @@ app.get(
 
       if (action == 'subscribe') {
         let thread = payload
-        let send = ws.send
 
         if (has(subscribers, thread)) {
           subscribers[thread].add(send)
@@ -206,7 +207,7 @@ app.get(
         subscribers?.[thread]?.delete(send)
       }
 
-      ws.send(
+      send(
         stringify({
           type: 'response',
           id,
@@ -285,10 +286,12 @@ async function generate_mock({ context, id = random_id() }, receive: fn) {
   for (const i of each(5)) {
     receive({
       id,
-      content: `reply for ${context.length}, ${now().format()} ${random()}`,
+      content: `reply for ${
+        context.length
+      }, ${now().format()} ${i} ${random()}`,
       reasoning: '',
     })
-    await sleep(1000)
+    await sleep(1)
   }
 }
 
