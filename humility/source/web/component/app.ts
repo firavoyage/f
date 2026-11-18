@@ -62,7 +62,7 @@ export function app() {
   }, [thread_structure.messages])
 
   const content = use_ref()
-  const field = use_ref()
+  const prompt_field = use_ref()
 
   let controls = {
     new_thread() {
@@ -168,7 +168,7 @@ export function app() {
 
   use_keyboard('alt+n', controls.new_thread)
   use_keyboard('enter', controls.send_prompt, {
-    when: () => prompt,
+    when: () => prompt && document.activeElement == prompt_field.current,
   })
   // disable entering on empty prompt
   use_keyboard('enter', identity, {
@@ -279,7 +279,7 @@ export function app() {
                 h(textarea, {
                   value: prompt,
                   set_value: set_prompt,
-                  ref: field,
+                  ref: prompt_field,
                   autofocus: true,
                 }),
               ),
@@ -419,6 +419,11 @@ declare global {
   type plain_message_structure = {
     role: role
     content: string
+  }
+
+  type delta = {
+    content: string
+    reasoning?: string
   }
 
   type tool = {

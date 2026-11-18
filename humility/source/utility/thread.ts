@@ -87,7 +87,7 @@ export function build_plain_context(thread_structure: thread_structure) {
 export function append_message(
   thread_structure: thread_structure,
   message: id,
-  message_structure: message_structure,
+  message_structure: Partial<message_structure>,
 ): thread_structure {
   let { tree, messages } = thread_structure
 

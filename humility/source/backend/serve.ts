@@ -67,16 +67,15 @@ let actions: Record<action, fn> = {
   },
   init({ thread, title = '', folder = '', options }) {
     let thread_structure = empty_thread_structure()
-
     write(get_thread_file(thread), serialize(thread_structure))
 
-    let thread_index: thread_index = deserialize(read(thread_index_file))
-    thread_index[thread] = {
-      title,
-      folder,
-      creation_time: now().timestamp,
-    }
-    write(thread_index_file, serialize(thread_index))
+    mutate(thread_index_file, (thread_index: thread_index) => {
+      thread_index[thread] = {
+        title,
+        folder,
+        creation_time: now().timestamp,
+      }
+    })
 
     broadcast('set_thread_structure', { thread, thread_structure })
   },
@@ -88,15 +87,11 @@ let actions: Record<action, fn> = {
       content: prompt,
     }
 
-    let thread_structure = deserialize(read(get_thread_file(thread)))
-    thread_structure = append_message(
-      thread_structure,
-      message,
-      message_structure,
-    )
-    write(get_thread_file(thread), serialize(thread_structure))
-
-    const { tree } = thread_structure
+    let tree
+    mutate(get_thread_file(thread), (thread_structure: thread_structure) => {
+      append_message(thread_structure, message, message_structure)
+      ;({ tree } = thread_structure)
+    })
 
     broadcast('set_message', {
       thread,
@@ -118,18 +113,14 @@ let actions: Record<action, fn> = {
       start_time: now().timestamp,
     }
 
-    let thread_structure = deserialize(read(get_thread_file(thread)))
+    let context, tree
 
-    let context = build_plain_context(thread_structure)
+    mutate(get_thread_file(thread), (thread_structure: thread_structure) => {
+      context = build_plain_context(thread_structure)
 
-    thread_structure = append_message(
-      thread_structure,
-      message,
-      message_structure,
-    )
-    write(get_thread_file(thread), serialize(thread_structure))
-
-    const { tree } = thread_structure
+      append_message(thread_structure, message, message_structure)
+      ;({ tree } = thread_structure)
+    })
 
     broadcast('set_message', { thread, message, message_structure })
 
@@ -142,37 +133,28 @@ let actions: Record<action, fn> = {
       {
         context,
       },
-      receive,
+      append,
+      finish,
     )
 
-    function receive(event) {
-      const { type, payload } = event
+    function append(delta: delta) {
+      broadcast('append_message', {
+        thread,
+        message,
+        delta,
+      })
+    }
 
-      if (type == 'append') {
-        broadcast('append_message', {
-          thread,
-          message,
-          delta: payload,
-        })
-      }
+    function finish(message_structure: message_structure) {
+      mutate(get_thread_file(thread), (thread_structure: thread_structure) => {
+        thread_structure.messages[message] = message_structure
+      })
 
-      if (type == 'finish') {
-        // todo: merge message structure
-
-        let thread_structure: thread_structure = deserialize(
-          read(get_thread_file(thread)),
-        )
-
-        thread_structure.messages[message] = payload
-
-        write(get_thread_file(thread), serialize(thread_structure))
-
-        broadcast('finish_message', {
-          thread,
-          message,
-          message_structure: payload,
-        })
-      }
+      broadcast('finish_message', {
+        thread,
+        message,
+        message_structure,
+      })
     }
   },
 }
@@ -216,6 +198,18 @@ function respond(request: id, payload: any, client: WebSocket) {
       payload,
     }),
   )
+}
+
+function mutate(file, fn) {
+  let file_structure = deserialize(read(file))
+
+  let new_file_structure = fn(file_structure)
+  if (is(new_file_structure, 'absent')) {
+    // direct mutation
+    new_file_structure = file_structure
+  }
+
+  write(file, serialize(new_file_structure))
 }
 
 app.get(
@@ -270,7 +264,95 @@ serve(
   },
 )
 
-async function generate_mock({ context }, receive: fn) {
+async function generate({ context, endpoint, model, key }, append, finish) {
+  try {
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${key}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model,
+        messages: context,
+        stream: true,
+      }),
+    })
+
+    if (!response.ok) {
+      const error = await response.json()
+      throw new Error(error.error?.message || 'API request failed')
+    }
+
+    if (!response.body) {
+      throw new Error('No response stream')
+    }
+
+    const reader = response.body.getReader()
+    const decoder = new TextDecoder()
+
+    let buffer = ''
+    let fullText = ''
+
+    while (true) {
+      const { value, done } = await reader.read()
+
+      if (done) break
+
+      buffer += decoder.decode(value, { stream: true })
+
+      const lines = buffer.split('\n')
+      buffer = lines.pop() || ''
+
+      for (const line of lines) {
+        const trimmed = line.trim()
+
+        // Ignore SSE comments and empty lines
+        if (!trimmed || trimmed.startsWith(':')) continue
+
+        if (!trimmed.startsWith('data:')) continue
+
+        const data = trimmed.slice(5).trim()
+
+        if (data === '[DONE]') {
+          onComplete?.(fullText)
+          return fullText
+        }
+
+        try {
+          const parsed = JSON.parse(data)
+
+          const token = parsed.choices?.[0]?.delta?.content
+
+          if (token) {
+            fullText += token
+            onToken?.(token)
+          }
+
+          if (parsed.error) {
+            throw new Error(parsed.error.message)
+          }
+        } catch (error) {
+          if (error instanceof SyntaxError) continue
+          throw error
+        }
+      }
+    }
+
+    // Flush any remaining decoder data
+    buffer += decoder.decode()
+
+    onComplete?.(fullText)
+    return fullText
+  } catch (error) {
+    if (error.name === 'AbortError') return
+
+    onError?.(error)
+    throw error
+  }
+}
+
+async function generate_mock({ context }, append: fn, finish: fn) {
   let content = ''
 
   for (const i of each(5)) {
@@ -280,22 +362,16 @@ async function generate_mock({ context }, receive: fn) {
 
     content += delta
 
-    receive({
-      type: 'append',
-      payload: {
-        content: delta,
-        reasoning: '',
-      },
+    append({
+      content: delta,
+      reasoning: '',
     })
     await sleep(1)
   }
 
-  receive({
-    type: 'finish',
-    payload: {
-      content,
-      reasoning: '',
-    },
+  finish({
+    content,
+    reasoning: '',
   })
 }
 
