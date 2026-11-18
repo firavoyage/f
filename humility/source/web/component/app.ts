@@ -124,22 +124,19 @@ export function app() {
       set_thread(random_id())
     },
     async send_prompt() {
-      let thread_id = thread
-      if (is(thread, 'absent')) {
-        thread_id = random_id()
-
-        set_thread(thread_id)
-
-        await perform('init', { thread: thread_id })
-      }
+      if (entries(thread_structure.messages).length == 0) {
+        await perform('init', {
+          thread
+        })
+      } 
 
       await perform('send', {
-        thread: thread_id,
+        thread,
         prompt,
         options: {},
       })
 
-      await perform('generate', { thread: thread_id })
+      await perform('generate', { thread })
     },
   }
 
@@ -393,7 +390,7 @@ function empty_thread_structure() {
         children: [],
       },
     },
-    message: {},
+    messages: {},
   }
 }
 

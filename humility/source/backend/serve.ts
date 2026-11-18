@@ -38,6 +38,8 @@ app.use('*', async (c, next) => {
 
 app.use('*', serveStatic({ root: '../web/build' }))
 
+type action = ''
+
 type request = {
   type: 'request'
   request: id
