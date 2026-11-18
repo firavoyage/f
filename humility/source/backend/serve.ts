@@ -307,6 +307,7 @@ declare global {
     | 'send'
     | 'generate'
     | 'list'
+    | 'hide'
   type event =
     | 'set_thread_structure'
     | 'set_tree'

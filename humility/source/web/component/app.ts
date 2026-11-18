@@ -74,6 +74,8 @@ export function app() {
           thread,
           title: prompt.slice(0, max_title_length),
         })
+
+        set_thread_index(perform('list'))
       }
 
       await perform('send', {
