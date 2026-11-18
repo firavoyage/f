@@ -457,7 +457,7 @@ prefer `items` (strictly noun) over `list` (verb/noun)
 - naming:
   - snake case by default
   - verb noun for actions, predicate for bools
-  - plural for iterables
+  - plural for iterables and records
 - style:
   - functional programming
   - modular and cohesive

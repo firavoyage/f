@@ -21,7 +21,7 @@ tree:
     children:
       - asdf
     focus: asdf
-message:
+messages:
   # you do not render 0
   1: message structure
 config:
@@ -392,3 +392,19 @@ broadcast: append message...
 # full message structure as if non streaming
 broadcast: finish message
 ```
+
+# controls
+
+```
+new thread
+  set thread random id
+
+send
+  init if needed
+  
+  send prompt
+
+  generate
+```
+
+

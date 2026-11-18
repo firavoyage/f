@@ -111,7 +111,9 @@ export function app() {
       entries(thread_structure.messages).length > 0
     ) {
       set_display_thread(thread)
-    }
+    } else {
+      set_display_thread(nil)
+    } 
   }, [thread_structure.messages])
 
   const content = use_ref()
