@@ -446,17 +446,36 @@ action: list
 
 ## open a thread
 
-for empty thread, do nothing
+~~for empty thread, do nothing~~
 
 subscribe (read) the read
 
 ```
 action: subscribe thread
 
+# for non existing thread, set an empty template
 broadcast: set thread structure
 ```
 
-## send message on new thread
+you always subscribe a thread and decouple thread and displayed thread on url.
+
+```
+thread = nil
+displayed thread = nil bind url
+
+app(){
+  thread = display thread ?? random id
+
+  if displayed thread = nil
+    displayed thread = thread if there are some messages
+  
+  thread is always present. you ignore nil thread (ininit)
+}
+```
+
+## 
+
+## send message
 
 set thread to a random id
 
@@ -468,7 +487,7 @@ action: init thread
 action: send thread prompt options
 ```
 
-as you change current thread,
+as you change the current thread,
 
 ```
 broadcast: set thread structure
