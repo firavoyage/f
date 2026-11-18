@@ -89,7 +89,7 @@ let actions: Record<action, fn> = {
   unsubscribe({ thread, client }) {
     subscribers[thread].delete(client)
   },
-  init({ thread, options: { title = '',folder = '' } = {} }) {
+  init({ thread, options: { title = '', folder = '' } = {} }) {
     let thread_structure = empty_thread_structure()
 
     write(get_thread_file(thread), serialize(thread_structure))
@@ -99,6 +99,81 @@ let actions: Record<action, fn> = {
     thread_index[thread] = {
       title,
       folder,
+      creation_time: now().timestamp,
+    }
+
+    write(thread_index_file, serialize(thread_index))
+
+    broadcast('set_thread_structure', thread_structure)
+  },
+  send({ thread, prompt, options }) {
+    let message = random_id()
+
+    let message_structure: Partial<message_structure> = {
+      role: 'user',
+      content: prompt,
+    }
+
+    // append message
+
+    broadcast('set_message', {
+      thread,
+      message,
+      message_structure,
+    })
+
+    broadcast('set_tree', {
+      thread,
+      tree,
+    })
+  },
+  generate({ thread, options }) {
+    let message = random_id()
+
+    let message_structure: Partial<message_structure> = {
+      role: 'assistant',
+      content: '',
+      start_time: now().timestamp,
+    }
+
+    // append msg
+
+    broadcast('set_message', { thread, message, message_structure })
+
+    broadcast('set_tree', {
+      thread,
+      tree,
+    })
+
+    // build plain context
+
+    generate_mock(
+      {
+        context,
+      },
+      receive,
+    )
+
+    function receive(event) {
+      const { type, payload } = event
+
+      if (type == 'append') {
+        broadcast('append_message', {
+          thread,
+          message,
+          delta: payload,
+        })
+      }
+
+      if (type == 'finish') {
+        // todo: merge message structure
+
+        broadcast('finish_message', {
+          thread,
+          message,
+          message_structure: payload,
+        })
+      }
     }
   },
 }
@@ -198,16 +273,20 @@ async function generate_mock({ context }, receive: fn) {
 
     receive({
       type: 'append',
-      content: delta,
-      reasoning: '',
+      payload: {
+        content: delta,
+        reasoning: '',
+      },
     })
     await sleep(1)
   }
 
   receive({
     type: 'finish',
-    content,
-    reasoning: '',
+    payload: {
+      content,
+      reasoning: '',
+    },
   })
 }
 

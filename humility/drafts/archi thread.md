@@ -253,9 +253,9 @@ append node tree message -> new tree
 
 set focus tree message -> new tree
 
-build context tree
+build context thread structure
 
-build plain context tree
+build plain context thread structure
 
 append message thread structure -> new structure
   append node

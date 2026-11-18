@@ -362,8 +362,8 @@ declare global {
       time_to_first_token: number
     }
     has_failed?: bool
-    start_time: string
-    end_time: string
+    start_time: number
+    end_time: number
     model?: string
   }
 
