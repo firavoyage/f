@@ -87,8 +87,9 @@ export function app() {
       set_thread(nil)
     },
     send_prompt() {
+      let thread_id = thread
       if (is(thread, 'absent')) {
-        let thread_id = random_id()
+        thread_id = random_id()
 
         set_thread(thread_id)
 
@@ -293,6 +294,13 @@ export function app() {
               ),
             ),
           ),
+          h(
+            'button.prompt_send',
+            {
+              onclick: controls.send_prompt
+            },
+            'send'
+          )
         ),
       ),
     ),

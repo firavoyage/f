@@ -66,37 +66,18 @@ let actions = {
     write(get_thread_file(thread), serialize(thread_structure))
   },
   send({ thread, prompt, options }) {
-    const thread_content = handle(() => read(get_thread_file(thread)))
-    if(is_error(thread_content)){
-      return 
-    }
+    // const thread_content = handle(() => read(get_thread_file(thread)))
+    // if(is_error(thread_content)){
+    //   return
+    // }
+    // const thread_structure = deserialize(thread_content)
+    const thread_structure = deserialize(read(get_thread_file(thread)))
 
-    const thread_structure = deserialize(thread_content)
-    const { tree, messages } = thread_structure
+    let { tree, messages } = thread_structure
 
     const message_id = random_id()
 
-    let last_message_id = 0
-    while (true) {
-      const { children = [], focus = children[0] } = tree[last_message_id]
-
-      if (focus) {
-        last_message_id = focus
-      } else {
-        break
-      }
-    }
-
-    let last_node = tree[last_message_id]
-    // if (is(last_node.children, 'absent')) {
-    //   last_node.children = []
-    // }
-    last_node.children.push(message_id)
-    last_node.focus = message_id
-
-    tree[message_id] = {
-      children: [],
-    }
+    tree = append_node(tree, message_id)
 
     let message = {
       id: message_id,
@@ -108,15 +89,46 @@ let actions = {
 
     messages[message_id] = message
 
-    write(get_thread_file(thread), serialize(thread_structure))
+    write(get_thread_file(thread), serialize({ tree, messages }))
 
     broadcast(thread, 'set_tree', tree)
     broadcast(thread, 'set_message', message)
   },
   generate({ thread }) {
-    // construct context
-    // call mock generation
-    // setup listeners to broadcast on delta
+    let reply_id = random_id()
+
+    const thread_structure = deserialize(read(get_thread_file(thread)))
+
+    let context = construct_context(thread_structure)
+
+    let { tree, messages } = thread_structure
+    tree = append_node(tree, reply_id)
+
+    write(get_thread_file(thread), serialize({ tree, messages }))
+
+    broadcast('set_message', {
+      thread,
+      payload: {
+        id: reply_id,
+        role: 'assistant',
+        content: '',
+        reasoning: '',
+        start_time: now().timestamp,
+      },
+    })
+
+    generate_mock(
+      {
+        context,
+        id: reply_id,
+      },
+      (payload) => {
+        broadcast('append', {
+          thread,
+          payload,
+        })
+      },
+    )
   },
 }
 
@@ -164,9 +176,9 @@ app.get(
 
         const thread_content = handle(() => read(get_thread_file(thread)))
 
-        if(!is_error(thread_content)){
+        if (!is_error(thread_content)) {
           const { tree, messages } = deserialize(thread_content)
-  
+
           send(
             stringify({
               type: 'broadcast',
@@ -175,7 +187,7 @@ app.get(
               payload: tree,
             }),
           )
-  
+
           send(
             stringify({
               type: 'broadcast',
@@ -185,31 +197,6 @@ app.get(
             }),
           )
         }
-
-
-        set_interval(function () {
-          broadcast(thread, 'set_tree', {
-            0: {
-              children: ['foo'],
-            },
-            foo: {
-              children: ['bar'],
-            },
-            bar: {
-              children: [],
-            },
-          })
-          broadcast(thread, 'set_messages', {
-            foo: {
-              role: 'user',
-              content: `foo ${random()} ${now().format()}`,
-            },
-            bar: {
-              role: 'assistant',
-              content: `bar  ${random()} ${now().format()}`,
-            },
-          })
-        }, 2000)
       }
 
       if (action == 'unsubscribe') {
@@ -272,3 +259,61 @@ serve(
     log(`Serve on http://localhost:${info.port}`)
   },
 )
+
+function construct_context(thread_structure) {
+  const { tree, messages } = thread_structure
+
+  let context = []
+
+  let message_id = 0
+  while (true) {
+    const { children = [], focus = children[0] } = tree[message_id]
+
+    if (focus) {
+      message_id = focus
+
+      context.push(messages[message_id])
+    } else {
+      break
+    }
+  }
+
+  return context
+}
+
+async function generate_mock({ context, id = random_id() }, receive: fn) {
+  for (const i of each(5)) {
+    receive({
+      id,
+      content: `reply for ${context.length}, ${now().format()} ${random()}`,
+      reasoning: '',
+    })
+    await sleep(1000)
+  }
+}
+
+function append_node(tree, message_id) {
+  let last_message_id = 0
+  while (true) {
+    const { children = [], focus = children[0] } = tree[last_message_id]
+
+    if (focus) {
+      last_message_id = focus
+    } else {
+      break
+    }
+  }
+
+  let last_node = tree[last_message_id]
+  // if (is(last_node.children, 'absent')) {
+  //   last_node.children = []
+  // }
+  last_node.children.push(message_id)
+  last_node.focus = message_id
+
+  tree[message_id] = {
+    children: [],
+  }
+
+  return tree
+}
