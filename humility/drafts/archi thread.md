@@ -324,7 +324,45 @@ perf?:
 
 it should not finish w the last delta. append instead.
 
-# impl
+# abstractions
+
+## naming
+
+```
+thread: thread id
+thread_content: serialized thread text
+thread_structure: in memory thread object, incl.
+  tree
+  messages: message -> message structure
+  metadata
+    title
+    folder
+    time...
+message: message id
+message_content
+message_structure:
+  id?
+  role
+  content
+  time...
+plain_message_structure:
+  role
+  content
+context_display: message_structure[]
+context: plain_message_structure[] # payload to endpoint
+```
+
+<!-- it doesnt matter which one you make simpler. -->
+
+## web
+
+```
+controls: control -> fn # behavior of each button/shortcut/command
+
+# payload includes
+await perform(action, payload, timeout)
+
+```
 
 ## backend
 
@@ -354,16 +392,5 @@ you broadcast _all_ actions on one thread to all subscribers. no special case. y
 
 you may implement like heartbeating. these are general abstractions.
 
-## web
+# flow
 
-you use web socket.
-
-when you open a thread on frontend, you (clear all current state, ) sub thread (you unsubscribe vice versa).
-
-for initial read, you add the tree and prepend all msgs.
-
-you append delta.
-
-when you disconnect, you reconnect.
-
-reconnection can be of no difference than opening a thread.
