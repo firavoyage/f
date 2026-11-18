@@ -2,6 +2,8 @@ import { serialize, deserialize, config_file, env_file } from 'action/index'
 import { random } from 'lib/random'
 import { monotonic, now } from 'lib/time'
 
+const { parse, stringify } = JSON
+
 export async function generate(
   { context, endpoint, model, key },
   append: append,
@@ -9,9 +11,11 @@ export async function generate(
 ) {
   let start_time = monotonic(),
     end_time
-  let content = ''
+  let content = '',
+    reasoning = ''
   let usage = {}
   let first_append_time: number
+  let last_payload
 
   const response = await handle(() =>
     fetch(endpoint, {
@@ -20,7 +24,7 @@ export async function generate(
         Authorization: `Bearer ${key}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
+      body: stringify({
         model,
         messages: context,
         stream: true,
@@ -72,24 +76,27 @@ export async function generate(
     const lines = buffer.split('\n')
     buffer = lines.pop() || ''
 
-    for (const line of lines) {
-      const trimmed = line.trim()
+    for (let line of lines) {
+      line = line.trim()
 
       // Ignore SSE comments and empty lines
-      if (!trimmed || trimmed.startsWith(':')) continue
+      if (!line || line.startsWith(':')) continue
 
-      if (!trimmed.startsWith('data:')) continue
+      if (!line.startsWith('data:')) continue
 
-      const data = trimmed.slice(5).trim()
+      const payload_text = line.slice(5).trim()
 
-      if (data == '[DONE]') {
+      if (payload_text == '[DONE]') {
         finish(complete())
-        return content
+        return last_payload
       }
 
-      const parsed = JSON.parse(data)
+      const payload = parse(payload_text)
 
-      const new_content = parsed.choices?.[0]?.delta?.content
+      last_payload = payload
+
+      const new_content = payload.choices?.[0]?.delta?.content
+      const new_reasoning = payload.choices?.[0]?.delta?.reasoning ?? ''
 
       if (new_content) {
         if (is(first_append_time, 'absent')) {
@@ -97,17 +104,23 @@ export async function generate(
         }
 
         content += new_content
+        reasoning += new_content
 
         let delta = {
           content: new_content,
+          reasoning: new_reasoning,
         }
 
         append(delta)
       }
 
-      // assume it works
-      if (parsed.usage) {
-        ;({ usage } = parsed)
+      if (payload.usage) {
+        const { prompt_tokens, completion_tokens, total_tokens } = payload.usage
+        usage = {
+          prompt_tokens,
+          completion_tokens,
+          total_tokens,
+        }
       }
     }
   }
@@ -149,12 +162,15 @@ export async function generate(
 
     let perf = {
       tokens_per_second: (usage?.total_tokens ?? 0) / duration,
-      time_to_first_token: end_time - first_append_time,
+      time_to_first_token: first_append_time - start_time,
     }
+
+    // parse tools
 
     return {
       role: 'assistant' as const,
       content,
+      reasoning,
       start_time,
       end_time,
       usage,
@@ -190,5 +206,3 @@ export async function generate_mock(
     reasoning: '',
   })
 }
-
-

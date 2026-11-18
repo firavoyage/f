@@ -5,18 +5,20 @@ import { generate } from 'utility/generate'
 const config = deserialize(read(config_file))
 const env = deserialize(read(env_file))
 
-generate(
-  {
-    context: [
-      {
-        role: 'user',
-        content: 'hello world',
-      },
-    ],
-    endpoint: config.providers.openrouter.endpoint,
-    model: config.default_model,
-    key: env.openrouter,
-  },
-  log,
-  log,
+log(
+  await generate(
+    {
+      context: [
+        {
+          role: 'user',
+          content: 'hello world',
+        },
+      ],
+      endpoint: config.providers.openrouter.endpoint,
+      model: config.default_model,
+      key: env.openrouter,
+    },
+    identity,
+    log,
+  ),
 )
