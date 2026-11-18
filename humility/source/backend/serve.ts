@@ -15,7 +15,6 @@ import {
 } from 'action/index'
 import { now } from 'lib/time'
 import { random, random_id } from 'lib/random'
-import { generate } from 'action/generate'
 
 const { parse, stringify } = JSON
 
@@ -38,6 +37,25 @@ app.use('*', async (c, next) => {
 })
 
 app.use('*', serveStatic({ root: '../web/build' }))
+
+type request = {
+  type: 'request'
+  request: id
+  action
+  payload
+}
+
+type response = {
+  type: 'response'
+  request: id
+  payload
+}
+
+type broadcast = {
+  type: 'broadcast'
+  broadcast
+  payload
+}
 
 let subscribers = {}
 
@@ -153,14 +171,7 @@ app.get(
     onMessage(event, ws) {
       let send = ws.send
 
-      const request: {
-        type: 'request'
-        id: string
-        action: string
-        payload: any
-      } = parse(event.data)
-
-      const { id: request, action, payload } = request
+      const { request, action, payload }: request = parse(event.data)
 
       log(action, payload)
 
@@ -179,8 +190,8 @@ app.get(
         if (is_error(thread_content)) {
           tree = {
             0: {
-              children: []
-            }
+              children: [],
+            },
           }
 
           messages = {}
@@ -212,7 +223,7 @@ app.get(
           broadcast(thread, 'set_message', {
             id,
             role: 'user',
-            content: `foo ${now().format()}`
+            content: `foo ${now().format()}`,
           })
         }, 2000)
       }

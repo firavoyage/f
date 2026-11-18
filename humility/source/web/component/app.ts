@@ -21,11 +21,6 @@ const action_timeout = 1000
 
 const max_title_length = 65 * 2
 
-type role = 'system' | 'user' | 'assistant' | 'tool'
-
-type id = string
-type node = number | id
-
 type thread_structure = {
   tree: Record<
     node,
@@ -58,9 +53,9 @@ type message_structure = {
     tokens_per_second: number
     time_to_first_token: number
   }
+  has_failed?: bool
   start_time: string
   end_time: string
-  has_failed?: bool
   model?: string
 }
 
@@ -79,10 +74,9 @@ type thread_index = Record<
   {
     title: string
     folder: string
-    tags?: []
+    is_hidden?: boolean
     creation_time?: number
     modification_time?: number
-    // is_hidden?: boolean
   }
 >
 
@@ -100,7 +94,9 @@ export function app() {
   const [prompt, set_prompt] = use_state('')
 
   const [folder, set_folder] = use_state('')
-  const [thread_structure, set_thread_structure] = use_state()
+  const [thread_structure, set_thread_structure] = use_state<thread_structure>(
+    empty_thread_structure(),
+  )
   const [thread_index, set_thread_index] = use_state<thread_index>({})
   const [thread, set_thread] = use_thread()
   const [display_thread, set_display_thread] = use_display_thread()
@@ -116,22 +112,12 @@ export function app() {
     }
   }, [thread_structure.message])
 
-  const [message_tree, set_message_tree] = use_state({
-    0: {
-      children: [],
-    },
-  })
-
-  const [message_dict, set_message_dict] = use_state<
-    Record<string, plain_message>
-  >({})
-
   const content = use_ref()
   const field = use_ref()
 
   let controls = {
     new_thread() {
-      set_thread(nil)
+      set_thread(random_id())
     },
     async send_prompt() {
       let thread_id = thread
@@ -153,9 +139,7 @@ export function app() {
     },
   }
 
-  let broadcasts = {
-
-  }
+  let broadcasts = {}
 
   // open websocket
   use_mount(() => {
@@ -224,8 +208,8 @@ export function app() {
           'threads',
           map(
             thread_index,
-            ([current_thread, metadata]) =>
-              !metadata.is_hidden &&
+            ([current_thread, { title, is_hidden }]) =>
+              !is_hidden &&
               h(
                 h(
                   'threads_thread',
@@ -236,20 +220,17 @@ export function app() {
                         set_thread(current_thread)
                       },
                     },
-                    metadata.title || 'Untitled',
-                    // metadata.title,
+                    title || 'Untitled',
                   ),
                   h(
                     'button.threads_delete_thread',
                     {
                       async onclick() {
                         await perform('hide', current_thread)
-                        // await post('hide', current_thread)
                         if (thread == current_thread) {
-                          set_thread(nil)
+                          controls.new_thread()
                         }
                         set_thread_index(perform('list'))
-                        // set_threads(post('list'))
                       },
                     },
                     'delete',
@@ -398,4 +379,22 @@ async function send(action, payload, request) {
   log('perform', action, payload)
 
   ws.send(stringify(request_payload))
+}
+
+function empty_thread_structure() {
+  return {
+    tree: {
+      0: {
+        children: [],
+      },
+    },
+    message: {},
+  }
+}
+
+declare global {
+  type id = string
+  type node = number | id
+  
+  type role = 'system' | 'user' | 'assistant' | 'tool'
 }

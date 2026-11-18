@@ -147,6 +147,10 @@ web: + vimlike navigation extension
 
 vimium works. you may make it app specific.
 
+---
+
+action/list: support range
+
 ## w
 
 # backlog

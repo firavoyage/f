@@ -94,7 +94,7 @@ metadata?:
   tags?:
 ```
 
-jructure
+tool structure
 
 ```yaml
 tool:
