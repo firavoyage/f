@@ -86,23 +86,23 @@ export function app() {
     new_thread() {
       set_thread(nil)
     },
-    send_prompt() {
+    async send_prompt() {
       let thread_id = thread
       if (is(thread, 'absent')) {
         thread_id = random_id()
 
         set_thread(thread_id)
 
-        perform('init', { thread: thread_id })
+        await perform('init', { thread: thread_id })
       }
 
-      perform('send', {
+      await perform('send', {
         thread: thread_id,
         prompt,
         options: {},
       })
 
-      perform('generate', { thread: thread_id })
+      await perform('generate', { thread: thread_id })
     },
   }
 
@@ -125,7 +125,9 @@ export function app() {
     set_message(payload) {
       const { id } = payload
 
-      message_dict[id] = payload
+      set_message_dict((dict) => {
+        dict[id] = payload
+      })
     },
     append_message(payload) {
       const { id, content, reasoning } = payload
@@ -254,11 +256,11 @@ export function app() {
                 map(current_messages(message_tree, message_dict), (message) =>
                   h(
                     'message',
-                    { role: message.role },
+                    { role: message?.role },
                     h(
                       'message_content',
                       h('message_prose', {
-                        html: render(message.content),
+                        html: render(message?.content ?? ''),
                       }),
                       // h(
                       //   'button.message_copy',
