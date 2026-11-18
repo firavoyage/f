@@ -1,42 +1,29 @@
-thread state
-
-an editable chat thread is fundamentally a tree.
-
-<!-- you may implement editing via branching plus renaming hacks, which would be very unintuitive -->
-
-<!-- you can duplicate msg content across branches. it could be over engineering if you referencing which as external id on some sqlite table, where reading latency might even outweigh memory (or disk storage actually) saving. -->
+thread state machine for chat
 
 # structure
 
+thread structure
+
 ```yaml
-thread:
-  tree:
-    0: # 0 is always 0, representing root
-      children:
-        - 1
-      current_focus: 1
-    1: # "1" can be (or should be) message id
-      children: []
-      current_focus:
-  message:
-    # you do not render 0
-    1:
-      has_failed?:
-      id:
-      role:
-      content:
-      reasoning?:
-      tools?:
-      start_time:
-      end_time:
-      usage?:
-        prompt_tokens:
-        completion_tokens:
-        total_tokens:
-      perf?:
-        tokens_per_second:
-        time_to_first_token:
-      model?:
+tree:
+  0: # 0 is always 0, representing root
+    children:
+      - foo
+    focus: foo
+  foo: # "1" can be (or should be) message id
+    children: []
+    current_focus:
+  1: # title naming workflow/agent
+    children:
+      - bar
+    focus: bar
+  2: # search workflow/agent
+    children:
+      - asdf
+    focus: asdf
+message:
+  # you do not render 0
+  1: message structure
 config:
   current_model: openrouter:openai/gpt-6-luna
   # current_model:
@@ -44,142 +31,70 @@ config:
   #   model: gpt-6-luna
   system_prompt:
   tools: # just be separate because that how it shows on ux
+metadata?:
+  roots: [0, 1, 2]
+  title:
+  folder:
 ```
 
-besides, you can have an append only thread history, or request/response (or sse delta) payload log.
+thread history?
 
 ```yaml
 - action: init
-- action: send user msg
-  args:
-    content: ...
+  ...:
+- action: send message
+  user?:
+  payload:
+    prompt:
+  time...:
+- action: generate
+  payload: complete finished message, as if non streaming
+- action: set system prompt # historical actions might not be relevant or designed to be reversible, or technically replayable (informationally yes if done properly)
 ```
 
-you may save logs into separate files, or have "scalable" filenames (e.g. ab/cd/efghlog.log) in the future.
-
-# actions <!-- user actions -->
-
-action and state sync (for rendering) are already decoupled.
-
-you send
-
-- type: request <!-- you dont have to send it. just be clear and explicit. -->
-- id
-- action
-- payload?
-
-you may receive <!-- ideally void req should have a resp indicating success -->
-
-- type: response
-- id (same)
-- action (same)
-- payload
-
-on top of the abstraction, you
-
-```
-# (re)connect -> ws
-
-await perform(action, req payload) -> resp payload
-```
-
-<!-- safe to simply reject on timeout. every action is expected to be responsed. -->
-
-most actions takes current thread. you may curry it.
-
-## subscribe (thread = random id)
-
-you subscribe when you open a thread.
-
-you will receive its state soon.
-
-specifically, when you are on homepage/new thread, you do not subscribe.
-
-after sending the first msg (check thread), you will set random thread id, sub, init, send, and generate
-
-## unsubscribe (thread)
-
-you unsub when you thread changes via effect cleanup.
-
-## init (thread)
-
-when you init, it formally adds such thread to index, and scaffold, on persistent storage.
-
-you may setup some template like system prompt or default tool list.
-
-it typically looks like this
+server history?
 
 ```yaml
-tree:
-  0: # 0 is always 0, representing root (it doesnt matter whether it's number or string 0, it always works on js. you may name like 'root'.)
-    children: []
-message: {}
-config:
-  system_prompt: # the current one, history is separate
-  tools: # separate like on ux, though technically inside system prompt (esp in the diy approach)
+- client connected!
+- receive delta
+- respond
 ```
 
-## send (thread, prompt, options)
+server log?
 
-it adds a user msg. period.
+```log
+# you may use "scalable file name (e.g. ab/cd/foobar.log)"
 
-it doesnt immediately start generation.
+# server history represented in log format, e.g.
 
-<!-- obviously user msg doesnt stream. -->
-
-_you may cache such prompt individually on localstorage for each client. you may sync it like tg if you expect one consistent draft._
-
-## call tool (thread, tool)
-
-it starts streaming immediately, unlike send. you do not add a tool yourself.
-
-_well you can, e.g. auto fetch mentioned url wo assistant. you may have info of what you are doing._
-
-## generate
-
-you can generate iff it's user/tool on the last msg.
-
-<!-- it's guranteed it always starts w user if i apply such constraint consistently. -->
-
-ideally you should generate for a user msg when all thing settles, if it depends on prev resp.
-
-on ux, you may
-
-- queue that msg
-- force gen on partial prev resp
-- stop prev resp and start generation
-
-typically it will auto start generation. if that might not be what you want (e.g. when you forcefully stopped a prev tool call or didnt approve at all, or when you just open a thread while the last resp errs, which would be ignored and you could just continue), on ux, you may see a continue button.
-
-## _stop generation (thread, message)_
-
-you will no longer receive any new delta for that msg _on backend_.
-
-you may try to stop endpoint llm gen or such shell tool abruptly.
-
-## _read history (thread)_
-
-you get the full history of
-
-```yaml
-action:
-start_time:
-end_time?:
+2026-11-15 01:54:08 [info] [traverse] Starting traversal
+initial_url: https://cs61a.org/fa26/
+max_depth: .inf
+max_page_count: .inf
+max_duration: .inf
+interval: 1
+2026-11-15 01:54:08 [info] [traverse] Fetching page
+url: https://cs61a.org/fa26/
+depth: 0
+page_count: 1
+2026-11-15 01:54:09 [info] Saved https://cs61a.org/fa26/ to /home/fira/.have/data/webpage/result/34/c0/e66b-6b3a-43f4-81cc-4ea6fa709629/index.html w 13 assets
+2026-11-15 01:54:09 [info] Added https://cs61a.org/fa26/ to index
+2026-11-15 01:54:09 [info] [traverse] Fetched page successfully
+url: https://cs61a.org/fa26/
+html_length: 129453
 ```
 
-```yaml
-action: send
-prompt: ...
-user?: id
-```
+message structure
 
 ```yaml
-action: generation
 has_failed?:
 id:
 role:
 content:
 reasoning?:
+tools?: tool structure[]
+start_time:
+end_time:
 usage?:
   prompt_tokens:
   completion_tokens:
@@ -187,142 +102,50 @@ usage?:
 perf?:
   tokens_per_second:
   time_to_first_token:
-start_time:
-end_time:
-model:
-request payload?:
-response payload?:
+model?:
 ```
 
-only completed generation will be add to history.
+tool structure
 
-## _read log (thread)_
+```yaml
+tool:
+args: # just nest a bit to be simple
+  ...
+```
 
-every server delta received and sent.
+thread index
 
-maybe irrelevant.
+```yaml
+# for listing only
+id:
+title:
+folder:
+categories: ['hidden', ''] # set of tags
+```
 
-e.g. you may see the full endpoint payload, incl. proprietary fields.
+# actions
+
+you process actions on backend.
+
+```
+subscribe thread
+  add client
+
+  thread struture = read thread || empty thread
+
+  broadcast set thread structure thread structure to client
+
+unsubscribe thread
+  rm client # ws is stable for the same client across events
+
+init thread options
+
+send thread
+```
 
 # broadcasts <!-- server actions -->
 
-broadcasts doesnt have to have some id like responses for user actions.
-
-you may receive
-
-- type: broadcast
-- thread
-- action <!-- would possibly benefit polymorphism when named the same -->
-- payload
-
----
-
-message belongs to payload.
-
-## set tree (thread)
-
-<!-- no need to be surgical. rather swap the tree entirely. -->
-
-when you open (i.e. subscribe) a thread, when you send new msg (you could just add one node, but you may just update it for simplicity), edit, or change focus.
-
-current tree. not all historical actions.
-
-specifically, for new (non existing) threads, it returns
-
-```yaml
-0:
-  children: []
-```
-
-## set active messages (thread)
-
-```yaml
-[]
-```
-
-empty -> finished.
-
-otherwise -> some pending.
-
-## set messages (thread)
-
-when you open (i.e. subscribe) a thread
-
-incl. all msgs of whatever status
-
-specifically, for new (non existing) threads, it returns
-
-```yaml
-{}
-```
-
-## set config (thread)
-
-you would read all these when opening a thread but it can update individually.
-
-## set metadata (thread)
-
-you would read all these when opening a thread but it can update individually.
-
-## set message (thread, message)
-
-when you send a new msg, or modify it in place.
-
-```yaml
-id:
-role:
-content: ''
-reasoning?: ''
-# tools?:
-start_time:
-# end_time:
-# usage?:
-#   prompt_tokens:
-#   completion_tokens:
-#   total_tokens:
-# perf?:
-#   tokens_per_second:
-#   time_to_first_token:
-```
-
-~~you may attach id yourself on the object if needed.~~
-
-## append (thread, message)
-
-```yaml
-id:
-# role:
-content:
-reasoning:
-```
-
-you should append the string to each field.
-
-<!-- ~~clearly you should not append to role, lol.~~ have role in set message. -->
-
-for any persistent connection, it's expected you only append existing msg. you may assert that.
-
-## finish (thread, message)
-
-```yaml
-has_failed?:
-# id:
-# role:
-# content:
-# reasoning?:
-tools?:
-# start_time:
-end_time:
-usage?:
-  prompt_tokens:
-  completion_tokens:
-  total_tokens:
-perf?:
-  tokens_per_second:
-  time_to_first_token:
-```
-
-it should not finish w the last delta. append instead.
+you sync w broadcasts on frontend.
 
 # abstractions
 
@@ -342,7 +165,7 @@ thread_structure: in memory thread object, incl.
   # for stem,
   # children: [foo, bar]
   # focus: foo
-  messages: message -> message structure
+  message: message -> message structure
   metadata
     title
     folder
@@ -383,6 +206,9 @@ build plain context tree
 ## web
 
 ```
+# binds reconnect, setup heartbeat
+connect
+
 controls: control -> fn # behavior of each button/shortcut/command
 
 # payload includes thread message if available. no default currying.
@@ -398,8 +224,13 @@ broadcasts: broadcast action -> fn # state transition for each broadcast
 actions: action -> fn # response for each user action, e.g. build state from persistent storage and in memory cache (e.g. ongoing msg), mutate state if appliable
 
 # seems broadcasts are always thread specific, only broadcast to subscribers in the first place
-# thread is included in payload to be general
-await? broadcast(broadcast, payload)
+# thread is included in payload to be general, err when both client and thread in payload non existing
+await? broadcast(broadcast, payload, client = all subs of this thread)
+
+respond(request, payload, client)
+
+send(client, payload)
+  ws.send(stringify(payload))
 ```
 
 ## payload
@@ -468,35 +299,35 @@ app(){
 
   if displayed thread = nil
     displayed thread = thread if there are some messages
-  
-  thread is always present. you ignore nil thread (ininit)
+
+  thread will be always present. you ignore nil thread (init...).
 }
 ```
 
-## 
+## new thread
+
+set thread random id
 
 ## send message
 
-set thread to a random id
-
 ```
-thread = random thread
-
-action: init thread
+if no messages,
+  # do it on frontend to make it easier to work w options
+  action: init thread options
 
 action: send thread prompt options
 ```
 
-as you change the current thread,
+you will receive any change on the current thread
 
 ```
 broadcast: set thread structure
 
+# e.g. model, role, start time... you dont wanna include all these on any "append"
 broadcast: set message
 
 broadcast: append message...
 
+# full message structure as if non streaming
 broadcast: finish message
 ```
-
-
