@@ -246,7 +246,7 @@ archi:
 - parentheses brackets braces feeling
 - naming flags options
 - perfectionism procrastination over engineering premature optimization
-- compare type and kind
+- compare type and kind categorize classify aristotelian prototype theory
 - code style comment title case sentence case
 - ts import import type
 - compare null and nil

@@ -447,4 +447,59 @@ prefer `items` (strictly noun) over `list` (verb/noun)
 - notes:
   - prefer modern proven libraries when needed
 
+# 0.10 nov 18
+
+- use:
+  - typescript
+  - pnpm
+  - bun
+  - parceljs
+- naming:
+  - snake case by default
+  - verb noun for actions, predicate for bools
+  - plural for iterables
+- style:
+  - functional programming
+  - modular and cohesive
+  - es module
+  - always function statement, only arrow function for props
+  - always type, never interface
+  - self explanatory, no comments
+- notes:
+  - prefer modern proven libraries when needed
+
+# . thinking 0.10
+
+> Function names typically evoke operations applied to arguments by the interpreter (e.g., print, add, square) or the name of the quantity that results (e.g., max, abs, sum).
+
+it can cause problems when you name fn as the quantity they results, (js is lisp1).
+
+```
+# so you invent like maximum, summation or total...
+
+max = max(1, 2, 3)
+
+sum = sum([])
+
+date = date(1)
+
+# generally you make the assigned variable more specific, such as
+
+current_max = max(...)
+max_spending = max(costs)
+```
+
+sometimes i like it though.
+
+---
+
+> name as the quantity they result for general pure fn
+
+that's mostly irrelevant in domain logics. and irrelevant stuff wastes attention.
+
+---
+
+> do not rename existing stuff (unless told)
+
+clearly that's already the default
 

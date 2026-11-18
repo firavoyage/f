@@ -33,8 +33,9 @@ config:
   tools: # just be separate because that how it shows on ux
 metadata?:
   roots: [0, 1, 2]
-  title:
-  folder:
+  # get title and folder from thread index instead, no redundancy
+  # title:
+  # folder:
 ```
 
 thread history?
@@ -120,7 +121,7 @@ thread index
 id:
 title:
 folder:
-categories: ['hidden', ''] # set of tags
+tags: ['hidden', 'pinned'] # technically a set, categorization on prototype theory
 ```
 
 # actions
@@ -139,13 +140,31 @@ unsubscribe thread
   rm client # ws is stable for the same client across events
 
 init thread options
+  thread structure = empty thread structure + scaffolding options
+
+  commit to db (both thread and index)
+
+  broadcast set thread structure
 
 send thread
+  
+
+generate thread
 ```
 
 # broadcasts <!-- server actions -->
 
 you sync w broadcasts on frontend.
+
+```
+set thread structure thread thread structure
+
+set message thread messge
+
+append message thread message delta
+
+finish message thread message message structure
+```
 
 # abstractions
 
@@ -187,6 +206,9 @@ plain_message_structure:
   content
 context: message_structure[]
 plain_context: plain_message_structure[] # payload to endpoint
+delta:
+  content
+  reasoning?
 ```
 
 <!-- it doesnt matter which one you make simpler. -->
@@ -316,6 +338,8 @@ if no messages,
   action: init thread options
 
 action: send thread prompt options
+
+action: generate thread options
 ```
 
 you will receive any change on the current thread
