@@ -396,6 +396,7 @@ web: <!-- frontend, web, ts/js -->
 - js top level fire and forget await on control flow end nodejs
 - vite setup dev build preview
 - fix react dangerously set inner html perf lag
+- css app dvh unit lolicon here site quirk mobile dynamic navigation bar
 
 backend:
 
