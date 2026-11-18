@@ -10,6 +10,8 @@ export function empty_thread_structure() {
 }
 
 export function append_node(tree: thread_structure['tree'], message: id) {
+  log(tree)
+
   let node: node = 0
   while (true) {
     const { children, focus } = tree[node]
@@ -23,6 +25,10 @@ export function append_node(tree: thread_structure['tree'], message: id) {
 
   tree[node].children.push(message)
   tree[node].focus = message
+
+  tree[message] = {
+    children: [],
+  }
 
   return tree
 }

@@ -60,7 +60,7 @@ let actions: Record<action, fn> = {
     )
 
     // todo: ongoing messages
-    broadcast('set_thread_structure', { thread_structure })
+    broadcast('set_thread_structure', { thread, thread_structure })
   },
   unsubscribe({ thread, client }) {
     subscribers[thread].delete(client)
@@ -78,7 +78,7 @@ let actions: Record<action, fn> = {
     }
     write(thread_index_file, serialize(thread_index))
 
-    broadcast('set_thread_structure', { thread_structure })
+    broadcast('set_thread_structure', { thread, thread_structure })
   },
   send({ thread, prompt, options }) {
     let message = random_id()
@@ -119,6 +119,9 @@ let actions: Record<action, fn> = {
     }
 
     let thread_structure = deserialize(read(get_thread_file(thread)))
+
+    let context = build_plain_context(thread_structure)
+
     thread_structure = append_message(
       thread_structure,
       message,
@@ -134,8 +137,6 @@ let actions: Record<action, fn> = {
       thread,
       tree,
     })
-
-    let context = build_plain_context(thread_structure)
 
     generate_mock(
       {
@@ -176,12 +177,23 @@ let actions: Record<action, fn> = {
   },
 }
 
-function broadcast(event: event, payload, client?) {
+function broadcast(
+  event: event,
+  payload: Extend<{
+    thread: id
+  }>,
+  client?,
+) {
   if (is(client, 'absent')) {
+    if (is(payload.thread, 'absent')) {
+      throw err(
+        'it should either broadcast to subscribers of a thread or an explicit client',
+      )
+    }
+
     client = subscribers[payload.thread]
   }
   client = list(client)
-  log(client)
 
   map(client, (ws) => {
     ws.send(
@@ -210,7 +222,7 @@ app.get(
   '/api/ws',
   upgradeWebSocket(() => ({
     onOpen(_event, ws) {
-      console.log('Client connected')
+      log('Client connected')
     },
 
     onMessage(event, ws) {
@@ -228,11 +240,7 @@ app.get(
     },
 
     onClose() {
-      console.log('Client disconnected')
-    },
-
-    onError(event) {
-      console.error('WebSocket error:', event)
+      log('Client disconnected')
     },
   })),
 )
@@ -289,32 +297,6 @@ async function generate_mock({ context }, receive: fn) {
       reasoning: '',
     },
   })
-}
-
-function append_node(tree, message_id) {
-  let last_message_id = 0
-  while (true) {
-    const { children = [], focus = children[0] } = tree[last_message_id]
-
-    if (focus) {
-      last_message_id = focus
-    } else {
-      break
-    }
-  }
-
-  let last_node = tree[last_message_id]
-  // if (is(last_node.children, 'absent')) {
-  //   last_node.children = []
-  // }
-  last_node.children.push(message_id)
-  last_node.focus = message_id
-
-  tree[message_id] = {
-    children: [],
-  }
-
-  return tree
 }
 
 declare global {

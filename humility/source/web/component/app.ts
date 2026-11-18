@@ -44,9 +44,12 @@ export function app() {
   const [thread_index, set_thread_index] = use_state<thread_index>({})
   const [thread, set_thread] = use_thread()
   const [display_thread, set_display_thread] = use_display_thread()
-  use_effect(() => {
+  use_mount(() => {
     set_thread(display_thread ?? random_id())
-  }, [display_thread])
+  })
+  // use_effect(() => {
+  //   set_thread(display_thread ?? random_id())
+  // }, [display_thread])
   use_effect(() => {
     if (
       is(display_thread, 'absent') &&
@@ -67,8 +70,11 @@ export function app() {
     },
     async send_prompt() {
       if (entries(thread_structure.messages).length == 0) {
+        log(prompt, prompt.slice(max_title_length))
+
         await perform('init', {
           thread,
+          title: prompt.slice(max_title_length)
         })
       }
 
@@ -117,10 +123,10 @@ export function app() {
 
       const { type, payload } = data
 
-      log('receive', payload)
+      log('receive', type, payload)
 
       if (type == 'response') {
-        const { request, action } = data
+        const { request } = data
 
         pending_requests?.[request]?.(payload)
         pending_requests[request] = nil
