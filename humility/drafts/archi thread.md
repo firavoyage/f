@@ -146,10 +146,26 @@ init thread options
 
   broadcast set thread structure
 
-send thread
-  
+send prompt thread prompt
+  message = random id
+
+  message structure =
+    role user
+    content prompt
+    ...
+
+  append tree
+
+  set message
+
+  broadcast set message, set tree
+
+# thread status...
+
+# thread state
 
 generate thread
+
 ```
 
 # broadcasts <!-- server actions -->
