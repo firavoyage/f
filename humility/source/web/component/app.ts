@@ -21,6 +21,8 @@ const action_timeout = 1000
 
 const max_title_length = 65 * 2
 
+type role = 'system' | 'user' | 'assistant' | 'tool'
+
 type id = string
 type node = number | id
 
@@ -38,9 +40,7 @@ type thread_structure = {
     model: string
     provider: string
   }
-  metadata?: {
-    roots: number[]
-  }
+  roots?: number[]
 }
 
 type message_structure = {
@@ -48,17 +48,31 @@ type message_structure = {
   role: role
   content: string
   reasoning?: string
-  
+  tools?: tool[]
+  usage?: {
+    prompt_tokens: number
+    completion_tokens: number
+    total_tokens: number
+  }
+  perf?: {
+    tokens_per_second: number
+    time_to_first_token: number
+  }
+  start_time: string
+  end_time: string
+  has_failed?: bool
+  model?: string
 }
 
 type plain_message_structure = {
   role: role
   content: string
-  reasoning?: string
-  tools?: any[]
 }
 
-type role = 'system' | 'user' | 'assistant' | 'tool'
+type tool = {
+  tool: string
+  args: Record<Key, any>
+}
 
 type thread_index = Record<
   id,
@@ -66,7 +80,8 @@ type thread_index = Record<
     title: string
     folder: string
     tags?: []
-    creation_time: number
+    creation_time?: number
+    modification_time?: number
     // is_hidden?: boolean
   }
 >
@@ -139,37 +154,7 @@ export function app() {
   }
 
   let broadcasts = {
-    set_tree(payload) {
-      set_message_tree(payload)
-    },
-    set_active_messages(payload) {
-      set_active_messages(payload)
-    },
-    set_messages(payload) {
-      set_message_dict(payload)
-    },
-    set_config() {
-      throw err('todo')
-    },
-    set_metadata() {
-      throw err('todo')
-    },
-    set_message(payload) {
-      const { id } = payload
 
-      set_message_dict((dict) => {
-        dict[id] = payload
-      })
-    },
-    append_message(payload) {
-      const { id, content, reasoning } = payload
-
-      message_dict[id].content += content
-      message_dict[id].reasoning += reasoning
-    },
-    finish_message(payload) {
-      message_dict[id] = merge(message_dict[id], payload)
-    },
   }
 
   // open websocket

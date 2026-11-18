@@ -74,7 +74,6 @@ server log?
 message structure
 
 ```yaml
-has_failed?:
 id:
 role:
 content:
@@ -89,10 +88,13 @@ usage?:
 perf?:
   tokens_per_second:
   time_to_first_token:
-model?:
+metadata?:
+  has_failed?:
+  model?:
+  tags?:
 ```
 
-tool structure
+jructure
 
 ```yaml
 tool:
@@ -108,12 +110,14 @@ id:
 title:
 folder:
 # boolean metadata
-tags: ['hidden', 'pinned'] # technically a set, categorization on prototype theory
+# tags: ['hidden', 'pinned'] # technically a set, categorization on prototype theory
+# likely you will not have arbitrary tags. add when you need.
 metadata...: 
   ctime: 
   mtime: 
   foo: bar
   ...:
+# move ctime mtime up. reserve "metadata" for actual arbitrary user defined "tags" or kv pairs.
 ```
 
 # actions
