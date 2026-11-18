@@ -77,3 +77,21 @@ export function build_plain_context(thread_structure: thread_structure) {
 
   return context
 }
+
+export function append_message(
+  thread_structure: thread_structure,
+  message: id,
+  message_structure: message_structure,
+): thread_structure {
+  let { tree, messages } = thread_structure
+
+  tree = append_node(tree, message)
+
+  messages[message] = message_structure
+
+  return {
+    ...thread_structure,
+    tree,
+    messages,
+  }
+}

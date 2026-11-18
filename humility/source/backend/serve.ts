@@ -15,7 +15,11 @@ import {
 } from 'action/index'
 import { now } from 'lib/time'
 import { random, random_id } from 'lib/random'
-import { empty_thread_structure } from 'utility/thread'
+import {
+  append_message,
+  build_plain_context,
+  empty_thread_structure,
+} from 'utility/thread'
 
 const { parse, stringify } = JSON
 
@@ -39,34 +43,6 @@ app.use('*', async (c, next) => {
 
 app.use('*', serveStatic({ root: '../web/build' }))
 
-type action = 'subscribe' | 'unsubscribe' | 'init' | 'send' | 'generate'
-// list hide
-type event =
-  | 'set_thread_structure'
-  | 'set_tree'
-  | 'set_message'
-  | 'append_message'
-  | 'finish_message'
-
-type request = {
-  type: 'request'
-  request: id
-  action: action
-  payload: any
-}
-
-type response = {
-  type: 'response'
-  request: id
-  payload: any
-}
-
-type broadcast = {
-  type: 'broadcast'
-  event: event
-  payload: any
-}
-
 let subscribers: Record<id, Set<WebSocket>> = {}
 
 let actions: Record<action, fn> = {
@@ -84,7 +60,7 @@ let actions: Record<action, fn> = {
     )
 
     // todo: ongoing messages
-    broadcast('set_thread_structure', thread_structure)
+    broadcast('set_thread_structure', { thread_structure })
   },
   unsubscribe({ thread, client }) {
     subscribers[thread].delete(client)
@@ -95,16 +71,14 @@ let actions: Record<action, fn> = {
     write(get_thread_file(thread), serialize(thread_structure))
 
     let thread_index: thread_index = deserialize(read(thread_index_file))
-
     thread_index[thread] = {
       title,
       folder,
       creation_time: now().timestamp,
     }
-
     write(thread_index_file, serialize(thread_index))
 
-    broadcast('set_thread_structure', thread_structure)
+    broadcast('set_thread_structure', { thread_structure })
   },
   send({ thread, prompt, options }) {
     let message = random_id()
@@ -114,7 +88,15 @@ let actions: Record<action, fn> = {
       content: prompt,
     }
 
-    // append message
+    let thread_structure = deserialize(read(get_thread_file(thread)))
+    thread_structure = append_message(
+      thread_structure,
+      message,
+      message_structure,
+    )
+    write(get_thread_file(thread), serialize(thread_structure))
+
+    const { tree } = thread_structure
 
     broadcast('set_message', {
       thread,
@@ -136,7 +118,15 @@ let actions: Record<action, fn> = {
       start_time: now().timestamp,
     }
 
-    // append msg
+    let thread_structure = deserialize(read(get_thread_file(thread)))
+    thread_structure = append_message(
+      thread_structure,
+      message,
+      message_structure,
+    )
+    write(get_thread_file(thread), serialize(thread_structure))
+
+    const { tree } = thread_structure
 
     broadcast('set_message', { thread, message, message_structure })
 
@@ -145,7 +135,7 @@ let actions: Record<action, fn> = {
       tree,
     })
 
-    // build plain context
+    let context = build_plain_context(thread_structure)
 
     generate_mock(
       {
@@ -168,6 +158,14 @@ let actions: Record<action, fn> = {
       if (type == 'finish') {
         // todo: merge message structure
 
+        let thread_structure: thread_structure = deserialize(
+          read(get_thread_file(thread)),
+        )
+
+        thread_structure.messages[message] = payload
+
+        write(get_thread_file(thread), serialize(thread_structure))
+
         broadcast('finish_message', {
           thread,
           message,
@@ -183,6 +181,7 @@ function broadcast(event: event, payload, client?) {
     client = subscribers[payload.thread]
   }
   client = list(client)
+  log(client)
 
   map(client, (ws) => {
     ws.send(
@@ -215,7 +214,9 @@ app.get(
     },
 
     onMessage(event, ws) {
-      const { request, action, payload }: request = parse(event.data)
+      const { request, action, payload: _payload }: request = parse(event.data)
+
+      let payload = { ..._payload }
 
       log(action, payload)
 
@@ -314,4 +315,39 @@ function append_node(tree, message_id) {
   }
 
   return tree
+}
+
+declare global {
+  type action =
+    | 'subscribe'
+    | 'unsubscribe'
+    | 'init'
+    | 'send'
+    | 'generate'
+    | 'list'
+  type event =
+    | 'set_thread_structure'
+    | 'set_tree'
+    | 'set_message'
+    | 'append_message'
+    | 'finish_message'
+
+  type request = {
+    type: 'request'
+    request: id
+    action: action
+    payload: any
+  }
+
+  type response = {
+    type: 'response'
+    request: id
+    payload: any
+  }
+
+  type broadcast = {
+    type: 'broadcast'
+    event: event
+    payload: any
+  }
 }

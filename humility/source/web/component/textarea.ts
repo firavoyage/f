@@ -2,6 +2,7 @@ type textarea = {
   value: string
   placeholder?: string
   set_value: (value: string | ((...args: any) => string)) => void
+  [key: Key]: any
 }
 
 export function textarea({ value, set_value, ...props }: textarea) {

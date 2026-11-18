@@ -176,6 +176,9 @@ generate thread
       broadcast append message thread message delta
     if finish
       # payload = message structure
+
+      commit to db
+
       broadcast finish message thread message message structure
 ```
 

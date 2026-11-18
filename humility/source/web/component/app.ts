@@ -14,7 +14,7 @@ import { random, random_id } from 'lib/random'
 const { stringify, parse } = JSON
 
 import { marked } from 'marked'
-import { empty_thread_structure } from 'utility/thread'
+import { build_context, empty_thread_structure } from 'utility/thread'
 
 const ws_retry_delay = 1000
 const ws_max_jitter = 1000
@@ -82,7 +82,33 @@ export function app() {
     },
   }
 
-  let broadcasts = {}
+  let broadcasts: Record<event, fn> = {
+    set_thread_structure({ thread_structure }) {
+      set_thread_structure(thread_structure)
+    },
+    set_tree({ tree }) {
+      set_thread_structure((t) => {
+        t.tree = tree
+      })
+    },
+    set_message({ message, message_structure }) {
+      set_thread_structure((t) => {
+        t.messages[message] = message_structure
+      })
+    },
+    append_message({ message, delta }) {
+      const { content } = delta
+
+      set_thread_structure((t) => {
+        t.messages[message].content += content
+      })
+    },
+    finish_message({ message, message_structure }) {
+      set_thread_structure((t) => {
+        t.messages[message] = message_structure
+      })
+    },
+  }
 
   // open websocket
   use_mount(() => {
@@ -125,9 +151,9 @@ export function app() {
       return
     }
 
-    perform('subscribe', thread)
+    perform('subscribe', { thread })
 
-    return () => perform('unsubscribe', thread)
+    return () => perform('unsubscribe', { thread })
   }, [thread])
 
   // bind shortcuts
@@ -164,19 +190,19 @@ export function app() {
                     },
                     title || 'Untitled',
                   ),
-                  h(
-                    'button.threads_delete_thread',
-                    {
-                      async onclick() {
-                        await perform('hide', current_thread)
-                        if (thread == current_thread) {
-                          controls.new_thread()
-                        }
-                        set_thread_index(perform('list'))
-                      },
-                    },
-                    'delete',
-                  ),
+                  // h(
+                  //   'button.threads_delete_thread',
+                  //   {
+                  //     async onclick() {
+                  //       await perform('hide', current_thread)
+                  //       if (thread == current_thread) {
+                  //         controls.new_thread()
+                  //       }
+                  //       set_thread_index(perform('list'))
+                  //     },
+                  //   },
+                  //   'delete',
+                  // ),
                 ),
               ),
           ),
@@ -193,7 +219,7 @@ export function app() {
               'page_content',
               h(
                 'messages',
-                map(current_messages(message_tree, message_dict), (message) =>
+                map(build_context(thread_structure), (message) =>
                   h(
                     'message',
                     { role: message?.role },
@@ -287,8 +313,8 @@ function connect() {
 }
 
 async function perform(
-  action,
-  payload?,
+  action: action,
+  payload?: object,
   timeout = action_timeout,
   request = random_id(),
 ): Promise<any> {
@@ -310,7 +336,7 @@ async function perform(
   })
 }
 
-async function send(action, payload, request) {
+async function send(action: action, payload: any, request: id) {
   const request_payload = {
     type: 'request',
     request,
