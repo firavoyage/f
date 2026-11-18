@@ -121,7 +121,13 @@ thread index
 id:
 title:
 folder:
+# boolean metadata
 tags: ['hidden', 'pinned'] # technically a set, categorization on prototype theory
+metadata...: 
+  ctime: 
+  mtime: 
+  foo: bar
+  ...:
 ```
 
 # actions
@@ -154,18 +160,33 @@ send prompt thread prompt
     content prompt
     ...
 
-  append tree
-
-  set message
+  append message
 
   broadcast set message, set tree
 
 # thread status...
-
-# thread state
+# in memory pending msgs content...
 
 generate thread
+  msg id
 
+  append message
+
+  broadcast set message, set tree
+
+  build plain context
+
+  generate_mock context, options, receive
+
+  receive event
+    if append
+      # payload = delta
+
+      # append to pending msgs...
+      broadcast append message thread message delta
+    if finish
+      # payload = message structure
+      broadcast finish message thread message message structure
 ```
 
 # broadcasts <!-- server actions -->
@@ -175,13 +196,17 @@ you sync w broadcasts on frontend.
 ```
 set thread structure thread thread structure
 
+# set thread config, metadata...
+
+set tree thread tree
+
 set message thread messge
 
 append message thread message delta
 
 finish message thread message message structure
 
-set thread status status: 'ready' | 'pending'
+# set thread status status: 'ready' | 'pending'
 ```
 
 # abstractions
@@ -234,13 +259,17 @@ delta:
 ## utils
 
 ```
-append message tree message -> new tree
+append node tree message -> new tree
 
 set focus tree message -> new tree
 
 build context tree
 
 build plain context tree
+
+append message thread structure -> new structure
+  append node
+  set message
 ```
 
 ## web

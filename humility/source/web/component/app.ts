@@ -21,7 +21,13 @@ const action_timeout = 1000
 
 const max_title_length = 65 * 2
 
+type id = string
+
 type role = 'system' | 'user' | 'assistant' | 'tool'
+
+type message = {
+  
+}
 
 type plain_message = {
   role: role
@@ -30,12 +36,16 @@ type plain_message = {
   tools?: any[]
 }
 
-type thread = {
-  title: string
-  folder: string
-  creation_time: number
-  is_hidden?: boolean
-}
+type thread_index = Record<
+  id,
+  {
+    title: string
+    folder: string
+    tags?: []
+    creation_time: number
+    // is_hidden?: boolean
+  }
+>
 
 export const use_thread = s(nil as string | nil, {
   url_param: 'thread',
@@ -49,35 +59,18 @@ export function app() {
   const [prompt, set_prompt] = use_state('')
 
   const [folder, set_folder] = use_state('')
-  const [threads, set_threads] = use_state<Record<string, thread>>({})
+  const [thread_index, set_thread_index] = use_state<thread_index>({})
   const [thread, set_thread] = use_thread()
-
-  const [active_messages, set_active_messages] = use_state([])
 
   const [message_tree, set_message_tree] = use_state({
     0: {
-      children: ['foo'],
-    },
-    foo: {
-      children: ['bar'],
-    },
-    bar: {
       children: [],
     },
   })
 
   const [message_dict, set_message_dict] = use_state<
     Record<string, plain_message>
-  >({
-    foo: {
-      role: 'user',
-      content: 'foo',
-    },
-    bar: {
-      role: 'user',
-      content: 'bar',
-    },
-  })
+  >({})
 
   const content = use_ref()
   const field = use_ref()
@@ -172,7 +165,7 @@ export function app() {
 
   // list threads on sidebar
   use_mount(() => {
-    set_threads(perform('list'))
+    set_thread_index(perform('list'))
     // set_threads(post('list'))
   })
 
@@ -206,7 +199,7 @@ export function app() {
         h(
           'threads',
           map(
-            threads,
+            thread_index,
             ([current_thread, metadata]) =>
               !metadata.is_hidden &&
               h(
@@ -231,7 +224,7 @@ export function app() {
                         if (thread == current_thread) {
                           set_thread(nil)
                         }
-                        set_threads(perform('list'))
+                        set_thread_index(perform('list'))
                         // set_threads(post('list'))
                       },
                     },
@@ -299,34 +292,17 @@ export function app() {
           h(
             'button.prompt_send',
             {
-              onclick: controls.send_prompt
+              onclick: controls.send_prompt,
             },
-            'send'
-          )
+            'send',
+          ),
         ),
       ),
     ),
   )
 }
 
-function current_messages(message_tree, message_dict) {
-  let messages = [],
-    current_node = 0
-  while (true) {
-    const { children = [], focus = children[0] } = message_tree[current_node]
-
-    if (focus) {
-      messages.push(message_dict[focus])
-      current_node = focus
-    } else {
-      break
-    }
-  }
-
-  return messages
-}
-
-function cache<T extends (...args: any[]) => any>(fn: T): T {
+function memoize<T extends (...args: any[]) => any>(fn: T): T {
   const cache_map = new Map<string, ReturnType<T>>()
 
   return function (...args: Parameters<T>): ReturnType<T> {
@@ -350,7 +326,7 @@ function render(md: string) {
   })
 }
 
-render = cache(render)
+render = memoize(render)
 
 let ws: InstanceType<typeof WebSocket>
 
