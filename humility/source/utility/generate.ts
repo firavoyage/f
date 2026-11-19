@@ -8,6 +8,7 @@ export async function generate(
   { context, endpoint, model, key },
   append: append,
   finish: finish,
+  stream = identity,
 ) {
   let start_time = monotonic(),
     end_time
@@ -95,10 +96,12 @@ export async function generate(
 
       last_payload = payload
 
-      const new_content = payload.choices?.[0]?.delta?.content
+      stream(payload)
+
+      const new_content = payload.choices?.[0]?.delta?.content ?? ''
       const new_reasoning = payload.choices?.[0]?.delta?.reasoning ?? ''
 
-      if (new_content) {
+      if (new_content || new_reasoning) {
         if (is(first_append_time, 'absent')) {
           first_append_time = monotonic()
         }
