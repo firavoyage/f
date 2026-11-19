@@ -1,6 +1,6 @@
 purpose
 
-oct 2026
+# oct 2026
 
 25
 
@@ -27,7 +27,7 @@ i need that.
 
 btw, in terms of the vision of humility, i can absolutely have an extensible modular archi, like chatgpt first, nextcloud (which links and shows some information from chatgpt) later.
 
-nov 2026
+# nov 2026
 
 07
 
@@ -1017,11 +1017,28 @@ like, when you send, the network fluctuates, and you refresh the page (w the pre
 
 if the endpoint request fails or _timeouts_ an error would be appended. it's very unlikely to have corrupted thread unless the server is killed halfway. and it would still work (i.e. to empty lock on server startup) as you merge consecutive msgs of the same role. it's reasonable though, to append user msg only after the reply. doesnt matter to change the behavior now.
 
----
+## 19
 
 > trajectory?
 
 history?
 
-how can you 
+---
 
+how can you have a default model wo default provider?
+
+first provider?! anyone available?
+
+that's guessing.
+
+nothing wrong w
+
+```
+default_model:
+  provider:
+  model:
+```
+
+simple and clear.
+
+---
