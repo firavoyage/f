@@ -1,13 +1,13 @@
 const math = Math
 
 export function max(...args) {
-  const numbers = list(...args)
+  const numbers = array(...args)
 
   return math.max(...numbers)
 }
 
 export function min(...args) {
-  const numbers = list(...args)
+  const numbers = array(...args)
 
   return math.min(...numbers)
 }

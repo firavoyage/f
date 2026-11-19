@@ -1,8 +1,5 @@
 # plan
 
-- array
-- release 0.3
-  - align drafts by version
 - roots main
 - tools
 

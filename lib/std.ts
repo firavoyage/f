@@ -196,7 +196,7 @@ export function str(s) {
  *
  * you should not spread it if it can contain iterable elements, pass an array instead
  */
-export function list(...args) {
+export function array(...args) {
   if (args.length == 1 && is(args[0], 'iterable')) {
     const [v] = args
     return Array.from(v)
@@ -206,8 +206,10 @@ export function list(...args) {
   }
 }
 
+export const list = array
+
 export function set(...args): Set<any> {
-  let v = list(...args)
+  let v = array(...args)
 
   return new Set(v)
 }
@@ -238,7 +240,7 @@ type int = typeof int
 type float = typeof float
 type bool_ = typeof bool
 type str = typeof str
-type list = typeof list
+type array = typeof array
 type set = typeof set
 type dict = typeof dict
 type obj = typeof obj
@@ -256,7 +258,7 @@ declare global {
   var float: float
   var bool: bool_
   var str: str
-  var list: list
+  var array: array
   var set: set
   var dict: dict
   var obj: obj

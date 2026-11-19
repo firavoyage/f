@@ -1,0 +1,83 @@
+database
+
+- data
+  - chat
+    - index.yaml: thread -> thread metadata
+      - title
+      - folder
+      - ~~is deleted?~~ is hidden?
+      - creation time
+    - thread
+      - (thread).yaml: message[]
+        - has failed
+        <!-- - error? # can exist whether or not has failed
+          - type: network, status code, ...
+          - message?
+          - payload? -->
+        - id # local generated
+        - role: system | user | assistant | tool
+        - content
+        - usage # input and output token usage
+        - perf # metrics such as ttft, tps (might not be available wo streaming)
+        - start_time
+        - end_time
+    - log
+      - message
+        - (message).yaml: payload
+- config
+  - chat
+    - config.yaml
+      - providers: provider ->
+        - key: raw | {env: string} = {env: provider}
+        - endpoint
+      - default model
+        - provider:model_id or {provider, model}
+      - export?:
+        - dir
+    - env.yaml: env -> value
+- cache
+  - chat
+    - lock
+      - (thread)?: boolean
+
+---
+
+when a message has failed, both the user msg and the "response" will be marked, which would be ignored when constructing history.
+
+error will be as code block of lang "chat error".
+
+you may render it w dedicated component.
+
+---
+
+it's recommended to have a server, whether local or remote.
+
+_you may store these in localstorage if feasible._
+
+---
+
+doesnt seem it would yield meaningful result if failed.
+
+so it either has failed w error content (yaml of type msg payload), or succeeded w actual generated response.
+
+whether it fails at network or via http error code
+
+---
+
+clearly it works for wo local endpoints wo keys. just omit it, and it would parse undefined key properly.
+
+---
+
+alternatively, you may separate secrets on env (whether in shell format, injected on shell command, or via some env.yaml).
+
+like the way you do on zshrc. you have public zshrc which sources zshrc.private.
+
+for now let's keep it simple.
+
+<!-- btw, it can be a bit tricky to have a string both representing env var and api key, if you dont wrap them properly w explanation. it can lead to confusing ux (as seen on openclaw). -->
+
+---
+
+rather align w openai compatible naming.
+
+e.g. usage instead of a general "metrics" or "metadata".

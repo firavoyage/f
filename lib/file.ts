@@ -42,7 +42,7 @@ type path_r = path_fs | stdin
 // Path
 
 export function pathname(...args: string[]) {
-  const parts = list(...args)
+  const parts = array(...args)
 
   return _join(...parts)
 }
@@ -66,13 +66,13 @@ export function init_desktop(app: string, xdg = false) {
 }
 
 export function home(...args: string[]) {
-  const parts = list(...args)
+  const parts = array(...args)
 
   return join(homedir(), ...parts)
 }
 
 export function data(...args: string[]) {
-  const parts = list(...args)
+  const parts = array(...args)
 
   if (is(data_folder, 'undefined')) {
     throw err('desktop folders should be initialized')
@@ -82,7 +82,7 @@ export function data(...args: string[]) {
 }
 
 export function config(...args: string[]) {
-  const parts = list(...args)
+  const parts = array(...args)
 
   if (is(config_folder, 'undefined')) {
     throw err('desktop folders should be initialized')
@@ -92,7 +92,7 @@ export function config(...args: string[]) {
 }
 
 export function cache(...args: string[]) {
-  const parts = list(...args)
+  const parts = array(...args)
 
   if (is(cache_folder, 'undefined')) {
     throw err('desktop folders should be initialized')
@@ -110,7 +110,7 @@ export const getwd = cwd
 export const getcwd = cwd
 
 export function expand_path(...args: string[]) {
-  const parts = list(...args)
+  const parts = array(...args)
 
   return _resolve(...parts)
 }

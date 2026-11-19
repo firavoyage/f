@@ -1,2 +1,2 @@
-log(list(set()))
-log(list([set()]))
+log(array(set()))
+log(array([set()]))

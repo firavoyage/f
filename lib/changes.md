@@ -153,3 +153,14 @@ it's not really faster to join an array of strings than string add.
   - renamed from `cache` to avoid naming conflict w lib/file
 - std: support `set(list(...args))`
 
+20
+
+- std: rename (alias) `list` to `array`, deprecate `list`
+  - too often do you list some stuff in crud logic
+  - list on global takes least priority, existing code would work, new code should use array
+  - typically, you would use array to 
+    - make any iterable real array
+    - polymorph to support both an array of params or rest params
+    - consider scalar as single element array, wo necessarily wrap it (for ux/dx)
+
+

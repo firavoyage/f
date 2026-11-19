@@ -1,11 +1,11 @@
 log(is({}, 'object'))
 log(is([], 'object'))
 
-log(list(1, 2, 3))
-log(list([1, 2, 3]))
-log(list(1))
+log(array(1, 2, 3))
+log(array([1, 2, 3]))
+log(array(1))
 
-log(list([1, 2, 3]))
-log(list([[1, 2, 3]]))
-log(list([1]))
+log(array([1, 2, 3]))
+log(array([[1, 2, 3]]))
+log(array([1]))
 
