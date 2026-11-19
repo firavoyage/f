@@ -55,6 +55,8 @@ let actions: Record<action, fn> = {
   list,
   hide,
   subscribe({ thread, client }) {
+    log('subscribe', { thread, client })
+
     if (is(subscribers[thread], 'absent')) {
       subscribers[thread] = set(client)
     } else {
@@ -67,7 +69,7 @@ let actions: Record<action, fn> = {
     )
 
     // todo: ongoing messages
-    broadcast('set_thread_structure', { thread, thread_structure })
+    broadcast('set_thread_structure', { thread, thread_structure }, client)
   },
   unsubscribe({ thread, client }) {
     subscribers[thread]?.delete?.(client)
@@ -146,7 +148,7 @@ let actions: Record<action, fn> = {
       model,
     })
 
-    generate(
+    let stream_text = await generate(
       {
         context,
         endpoint,
@@ -155,6 +157,7 @@ let actions: Record<action, fn> = {
       },
       append,
       finish,
+      stream,
     )
 
     function append(delta: delta) {
@@ -175,7 +178,18 @@ let actions: Record<action, fn> = {
         message,
         message_structure,
       })
+
+      append_json_log(get_thread_log_file(thread), 'finish_message', {
+        message,
+        ...message_structure,
+      })
     }
+
+    function stream(data) {
+      append_json_log(get_message_log_file(message), 'data', data)
+    }
+
+    append_json_log(get_message_log_file(message), 'done', stream_text)
   },
 }
 
@@ -186,6 +200,8 @@ function broadcast(
   }>,
   client?,
 ) {
+  log(client?.send, payload.thread)
+
   if (is(client, 'absent')) {
     if (is(payload.thread, 'absent')) {
       throw err(
@@ -196,6 +212,8 @@ function broadcast(
     client = subscribers[payload.thread]
   }
   client = list(client)
+
+  log(client)
 
   map(client, (ws) => {
     ws.send(
@@ -245,9 +263,6 @@ app.get(
 
     async onMessage(event, ws) {
       const { request, action, payload }: request = parse(event.data)
-      // const { request, action, payload: _payload }: request = parse(event.data)
-
-      // let payload = { ..._payload }
 
       log(action, payload)
       append_server_log(action, payload)
@@ -260,6 +275,7 @@ app.get(
         payload.client = ws
       }
 
+      log(ws, ws.send)
       respond(request, await actions[action](payload), ws)
     },
 

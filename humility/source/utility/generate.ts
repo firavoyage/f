@@ -64,6 +64,7 @@ export async function generate(
   const reader = response.body.getReader()
   const decoder = new TextDecoder()
 
+  let stream_text = ''
   let buffer = ''
 
   while (true) {
@@ -71,7 +72,9 @@ export async function generate(
 
     if (done) break
 
-    buffer += decoder.decode(value, { stream: true })
+    let current_value = decoder.decode(value, { stream: true })
+    buffer += current_value
+    stream_text += current_value
 
     const lines = buffer.split('\n')
     buffer = lines.pop() || ''
@@ -88,7 +91,7 @@ export async function generate(
 
       if (payload_text == '[DONE]') {
         finish(complete())
-        return response.text()
+        return stream_text
       }
 
       const payload = parse(payload_text)
@@ -179,7 +182,7 @@ export async function generate(
     }
   }
 
-  return response.text()
+  return stream_text
 }
 
 export async function generate_mock(

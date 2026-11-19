@@ -52,4 +52,4 @@ let result = await generate(
 //   log,
 // )
 
-log(result)
+// log(result)

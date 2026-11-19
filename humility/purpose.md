@@ -1092,12 +1092,16 @@ payload
 
 types for a message
 
-- request (no secret key)
-- delta: both "append" delta and last payload w metadata
+- request <!-- stream --> (no secret key)
+  - it's not raw network payload besides secrets stripped
+  - stuff like `'Content-Type': 'application/json'` doesnt matter regardless
+- data ~~delta~~: both "append" delta and last payload w metadata
   - it's basically just specially formatted text stream
   - before an explicit "done" or eof, everything is just the same
   - do not typically record "finish". it's derived.
-- stream: raw text stream
+- done ~~complete~~ ~~stream~~: raw text stream
+
+<!-- name as data to differentiate from append delta (e.g. content and reasoning extracted to be useful for you). -->
 
 do not care whether it's literally "relevant", just check if there is a thread id.
 
