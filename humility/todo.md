@@ -162,6 +162,8 @@ action/list: support range
 
 ## w
 
+serve/append server log: give every ws client a readable id when they (dis)connect/(un)subscribe to a thread
+
 # backlog
 
 ## impl

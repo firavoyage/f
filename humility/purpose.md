@@ -1102,4 +1102,14 @@ types for a message
 
 do not care whether it's literally "relevant", just check if there is a thread id.
 
+you can just append. it's touched if needed it seems underneath. but you have to append newline manually. dk if it would be faster to append another time or concat string. maybe in memory would generally be better.
+
+util
+
+```
+append json log file type payload
+
+append server log message type = info
+```
+
 

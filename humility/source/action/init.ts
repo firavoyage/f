@@ -11,14 +11,10 @@ touch(config_file, serialize({}))
 touch(env_file, serialize({}))
 
 const thread_folder = data('chat', 'thread')
-const message_log_folder = data('chat', 'log', 'message')
 const thread_log_folder = data('chat', 'log', 'thread')
-const server_log_folder = data('chat', 'log', 'server')
-
-mkpath(thread_folder)
-mkpath(message_log_folder)
+const message_log_folder = data('chat', 'log', 'message')
 mkpath(thread_log_folder)
-mkpath(server_log_folder)
+mkpath(message_log_folder)
 
 export function get_thread_file(thread: id) {
   return join(thread_folder, thread)
@@ -32,7 +28,5 @@ export function get_message_log_file(message: id) {
   return join(message_log_folder, `${message}.jsonl`)
 }
 
-export function get_server_log_file() {
-  return join(message_log_folder, `server.log`)
-}
-
+export const server_log_file = data('chat', 'log', 'server', `server.log`)
+touch(server_log_file)

@@ -3,7 +3,7 @@ import { serve, upgradeWebSocket } from '@hono/node-server'
 import { WebSocketServer } from 'ws'
 import { cors } from 'hono/cors'
 import { serveStatic } from '@hono/node-server/serve-static'
-import { children, read, write } from 'lib/file'
+import { append, children, read, write } from 'lib/file'
 import { format_log } from 'lib/log'
 import { parse_options } from 'lib/cli'
 import * as action_index from 'action/index'
@@ -11,9 +11,10 @@ import {
   deserialize,
   get_thread_file,
   serialize,
+  server_log_file,
   thread_index_file,
 } from 'action/index'
-import { now } from 'lib/time'
+import { monotonic, now } from 'lib/time'
 import { random, random_id } from 'lib/random'
 import {
   append_message,
@@ -136,7 +137,7 @@ let actions: Record<action, fn> = {
     generate(
       {
         context,
-        ...(await resolve_endpoint_model_key())
+        ...(await resolve_endpoint_model_key()),
       },
       append,
       finish,
@@ -222,14 +223,18 @@ app.get(
   upgradeWebSocket(() => ({
     onOpen(_event, ws) {
       log('Client connected')
+
+      append_server_log('Client connected')
     },
 
     async onMessage(event, ws) {
-      const { request, action, payload: _payload }: request = parse(event.data)
+      const { request, action, payload }: request = parse(event.data)
+      // const { request, action, payload: _payload }: request = parse(event.data)
 
-      let payload = { ..._payload }
+      // let payload = { ..._payload }
 
       log(action, payload)
+      append_server_log(`${action}\n${serialize(payload)}`)
 
       if (action == 'subscribe' || action == 'unsubscribe') {
         payload.client = ws
@@ -240,6 +245,8 @@ app.get(
 
     onClose() {
       log('Client disconnected')
+      
+      append_server_log('Client disconnected')
     },
   })),
 )
@@ -306,4 +313,21 @@ declare global {
 
   type append = (delta: delta) => any
   type finish = (message_structure: message_structure) => any
+}
+
+function append_json_log(file, type, payload) {
+  let time = monotonic()
+
+  append(
+    file,
+    `${stringify({
+      type,
+      time,
+      payload,
+    })}\n`,
+  )
+}
+
+function append_server_log(message, type: 'info' | 'warn' | 'error' = 'info') {
+  append(server_log_file, format_log(message, type))
 }
