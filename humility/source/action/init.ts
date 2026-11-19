@@ -3,7 +3,7 @@ import { init_desktop, data, touch, config, mkpath, join } from 'lib/file'
 
 init_desktop('humility')
 
-export const thread_index_file = data('chat', 'threads.yaml')
+export const thread_index_file = data('chat', 'index.yaml')
 export const config_file = config('chat', 'config.yaml')
 export const env_file = config('chat', 'env.yaml')
 touch(thread_index_file, serialize({}))

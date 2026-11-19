@@ -1291,6 +1291,7 @@ humility:
 - archi thread state websocket
 - refactor websocket
 - implement streaming
+- use case uni chem lab regulatory exam
 
 legacy:
 
