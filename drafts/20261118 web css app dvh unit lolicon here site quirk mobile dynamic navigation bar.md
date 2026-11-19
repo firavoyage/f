@@ -358,3 +358,376 @@ addLog("initial");
 **Important:** Browser behavior varies by OS and browser version. In particular, `100dvh` updates may not happen synchronously with every navigation-bar animation frame.
 
 This test is useful for investigating differences between iOS Safari, Android Chrome, and WebViews.
+
+# write a html page to test different full height on mobile w dynamic navigation bar, have an element that is described to stretch to full height, and have some buttons to change the approach
+
+Here's a self-contained HTML test page for comparing mobile viewport height strategies, particularly how they behave when the mobile browser's navigation bar expands or collapses (Safari on iOS, Chrome on Android).
+
+It includes five approaches you can switch between, a full-height test element, live viewport measurements, and a visual indicator of the available space.
+
+```
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mobile Full Height Test</title>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, sans-serif;
+    background: #111827;
+    color: white;
+  }
+
+  /* Height strategies */
+
+  body[data-mode="vh"] .viewport {
+    height: 100vh;
+  }
+
+  body[data-mode="dvh"] .viewport {
+    height: 100dvh;
+  }
+
+  body[data-mode="svh"] .viewport {
+    height: 100svh;
+  }
+
+  body[data-mode="lvh"] .viewport {
+    height: 100lvh;
+  }
+
+  body[data-mode="visual"] .viewport {
+    height: var(--visual-height, 100vh);
+  }
+
+  .viewport {
+    width: 100%;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: #1e293b;
+    border: 3px solid #38bdf8;
+    transition: height 150ms ease;
+  }
+
+  .header {
+    flex-shrink: 0;
+    background: #334155;
+    padding: 16px;
+    padding-top: max(16px, env(safe-area-inset-top));
+  }
+
+  .content {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    padding: 24px 20px;
+    background: #1e293b;
+  }
+
+  .content-inner {
+    min-height: 100%;
+    border: 2px dashed #64748b;
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .footer {
+    flex-shrink: 0;
+    background: #334155;
+    padding: 16px;
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
+  }
+
+  h1 {
+    font-size: 20px;
+    margin: 0 0 6px;
+  }
+
+  h2 {
+    font-size: 16px;
+    margin-top: 0;
+  }
+
+  p {
+    color: #cbd5e1;
+    line-height: 1.5;
+  }
+
+  .controls {
+    padding: 20px;
+  }
+
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0 20px;
+  }
+
+  button {
+    padding: 10px 14px;
+    background: #334155;
+    border: 1px solid #64748b;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  button.active {
+    background: #0284c7;
+    border-color: #38bdf8;
+  }
+
+  .metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .metric {
+    background: #1e293b;
+    padding: 12px;
+    border-radius: 8px;
+  }
+
+  .metric small {
+    display: block;
+    color: #94a3b8;
+    margin-bottom: 4px;
+  }
+
+  .metric strong {
+    font-size: 18px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .description {
+    font-size: 13px;
+    color: #94a3b8;
+  }
+
+  .tag {
+    color: #38bdf8;
+    font-weight: 600;
+  }
+
+  .spacer {
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+  }
+</style>
+</head>
+
+<body data-mode="dvh">
+
+<!-- Full-height test element -->
+<div class="viewport" id="viewport">
+
+  <header class="header">
+    <h1>Full Height Test</h1>
+    <div class="description">
+      This header should stay at the top.
+    </div>
+  </header>
+
+  <main class="content">
+    <div class="content-inner">
+      <h2>Full-height content area</h2>
+
+      <p>
+        The outer blue-bordered element is set to stretch
+        to the full viewport height using the selected CSS
+        or JavaScript strategy.
+      </p>
+
+      <p>
+        The content area uses flex: 1 to fill all remaining
+        available space between the header and footer.
+      </p>
+
+      <div class="spacer">
+        Scrollable content area
+      </div>
+
+      <p>End of content.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    Footer — should stay at the bottom
+  </footer>
+
+</div>
+
+<!-- Controls -->
+<section class="controls">
+  <h2>Height strategy</h2>
+
+  <p class="description">
+    Switch between viewport sizing methods and observe
+    how the test element responds to browser UI changes.
+  </p>
+
+  <div class="buttons">
+    <button data-mode="vh">100vh</button>
+    <button data-mode="dvh" class="active">100dvh</button>
+    <button data-mode="svh">100svh</button>
+    <button data-mode="lvh">100lvh</button>
+    <button data-mode="visual">visualViewport</button>
+  </div>
+
+  <div class="metrics">
+    <div class="metric">
+      <small>Selected strategy</small>
+      <strong id="selected">100dvh</strong>
+    </div>
+
+    <div class="metric">
+      <small>Element height</small>
+      <strong id="element-height">-</strong>
+    </div>
+
+    <div class="metric">
+      <small>window.innerHeight</small>
+      <strong id="window-height">-</strong>
+    </div>
+
+    <div class="metric">
+      <small>visualViewport.height</small>
+      <strong id="visual-height">-</strong>
+    </div>
+
+    <div class="metric">
+      <small>document.clientHeight</small>
+      <strong id="document-height">-</strong>
+    </div>
+
+    <div class="metric">
+      <small>Screen height</small>
+      <strong id="screen-height">-</strong>
+    </div>
+  </div>
+
+  <p class="description" id="explanation"></p>
+</section>
+
+<script>
+const body = document.body;
+const viewport = document.getElementById('viewport');
+
+const descriptions = {
+  vh: '100vh: Legacy viewport height. On many mobile browsers this corresponds to the large viewport and may extend behind expanded browser UI.',
+  dvh: '100dvh: Dynamic viewport height. Changes as browser UI expands or collapses.',
+  svh: '100svh: Small viewport height. Uses the conservative height with browser UI expanded.',
+  lvh: '100lvh: Large viewport height. Uses the height with browser UI retracted.',
+  visual: 'visualViewport: JavaScript-based height using the currently visible viewport. Useful for testing actual visible space, including some keyboard and zoom scenarios.'
+};
+
+function setMode(mode) {
+  body.dataset.mode = mode;
+
+  document.querySelectorAll('button[data-mode]').forEach(button => {
+    button.classList.toggle(
+      'active',
+      button.dataset.mode === mode
+    );
+  });
+
+  document.getElementById('selected').textContent =
+    mode === 'visual' ? 'visualViewport' : '100' + mode;
+
+  document.getElementById('explanation').textContent =
+    descriptions[mode];
+
+  update();
+}
+
+function update() {
+  const visualHeight = window.visualViewport
+    ? window.visualViewport.height
+    : window.innerHeight;
+
+  // Update JS-based viewport strategy
+  document.documentElement.style.setProperty(
+    '--visual-height',
+    visualHeight + 'px'
+  );
+
+  // Read actual rendered element height
+  document.getElementById('element-height').textContent =
+    Math.round(viewport.getBoundingClientRect().height) + 'px';
+
+  document.getElementById('window-height').textContent =
+    window.innerHeight + 'px';
+
+  document.getElementById('visual-height').textContent =
+    Math.round(visualHeight) + 'px';
+
+  document.getElementById('document-height').textContent =
+    document.documentElement.clientHeight + 'px';
+
+  document.getElementById('screen-height').textContent =
+    screen.height + 'px';
+}
+
+document.querySelectorAll('button[data-mode]').forEach(button => {
+  button.addEventListener('click', () => {
+    setMode(button.dataset.mode);
+  });
+});
+
+window.addEventListener('resize', update);
+window.addEventListener('orientationchange', update);
+
+if (window.visualViewport) {
+  window.visualViewport.addEventListener('resize', update);
+  window.visualViewport.addEventListener('scroll', update);
+}
+
+const observer = new ResizeObserver(update);
+observer.observe(viewport);
+
+setMode('dvh');
+</script>
+
+</body>
+</html>
+
+```
+
+## **What you're testing**
+
+| Approach         | Behavior                           |
+| ---------------- | ---------------------------------- |
+| `100vh`          | Legacy viewport sizing             |
+| `100dvh`         | Tracks dynamic browser viewport    |
+| `100svh`         | Uses the smaller viewport          |
+| `100lvh`         | Uses the larger viewport           |
+| `visualViewport` | JS measurement of visible viewport |
+
+## **How to test on mobile**
+
+1. Open the HTML page directly in Safari or Chrome.
+2. Scroll down to collapse the browser navigation bar.
+3. Scroll back up to expand it.
+4. Switch between the five approaches.
+5. Watch the element height and viewport measurements.
+
+**One important distinction:** `100dvh` is generally the best starting point for a full-screen mobile layout that should adapt to browser navigation bar changes. `100svh` is useful when you want to guarantee that the content doesn't get covered by expanded browser controls.
+
+Also, the demo deliberately uses a flex layout: the outer element controls the height, while the content area stretches to fill the remaining space. This lets you test both viewport sizing and actual full-height layout behavior.
