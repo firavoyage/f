@@ -21,6 +21,7 @@ import {
   empty_thread_structure,
 } from 'utility/thread'
 import { generate, generate_mock } from 'utility/generate'
+import { resolve_endpoint_model_key } from 'utility/resolve'
 
 const { parse, stringify } = JSON
 
@@ -64,7 +65,8 @@ let actions: Record<action, fn> = {
     broadcast('set_thread_structure', { thread, thread_structure })
   },
   unsubscribe({ thread, client }) {
-    subscribers[thread].delete(client)
+    subscribers[thread]?.delete?.(client)
+    // subscribers[thread].delete(client)
   },
   init({ thread, title = '', folder = '', options }) {
     let thread_structure = empty_thread_structure()
@@ -105,12 +107,13 @@ let actions: Record<action, fn> = {
       tree,
     })
   },
-  generate({ thread, options }) {
+  async generate({ thread, options }) {
     let message = random_id()
 
     let message_structure: Partial<message_structure> = {
       role: 'assistant',
       content: '',
+      reasoning: '',
       start_time: now().timestamp,
     }
 
@@ -130,9 +133,10 @@ let actions: Record<action, fn> = {
       tree,
     })
 
-    generate_mock(
+    generate(
       {
         context,
+        ...(await resolve_endpoint_model_key())
       },
       append,
       finish,
@@ -220,7 +224,7 @@ app.get(
       log('Client connected')
     },
 
-    onMessage(event, ws) {
+    async onMessage(event, ws) {
       const { request, action, payload: _payload }: request = parse(event.data)
 
       let payload = { ..._payload }
@@ -231,7 +235,7 @@ app.get(
         payload.client = ws
       }
 
-      respond(request, actions[action](payload), ws)
+      respond(request, await actions[action](payload), ws)
     },
 
     onClose() {

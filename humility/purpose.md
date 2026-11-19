@@ -1050,3 +1050,16 @@ nothing wrong w it honestly.
 alternatively, you use an approach called release.
 
 ---
+
+it really automatically reasons.
+
+sometimes it does. sometimes not.
+
+---
+
+may call it "reasoning" rather than "thinking".
+
+you are (or at least you should be) really doing inference rather than wandering randomly in thought space.
+
+---
+

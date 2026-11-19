@@ -105,10 +105,13 @@ export function app() {
       })
     },
     append_message({ message, delta }) {
-      const { content } = delta
+      const { content = '', reasoning = '' } = delta
 
       set_thread_structure((t) => {
-        t.messages[message].content += content
+        t.messages[message].content = (t.messages[message].content ?? '') + content
+        t.messages[message].reasoning = (t.messages[message].reasoning ?? '') + reasoning
+        // t.messages[message].content += content
+        // t.messages[message].reasoning += reasoning
       })
     },
     finish_message({ message, message_structure }) {
@@ -172,7 +175,7 @@ export function app() {
   })
   // disable entering on empty prompt
   use_keyboard('enter', identity, {
-    when: () => !prompt,
+    when: () => !prompt && document.activeElement == prompt_field.current,
   })
 
   return h(
@@ -248,6 +251,9 @@ export function app() {
                     { role: message?.role },
                     h(
                       'message_content',
+                      h('message_prose_reasoning', {
+                        html: render(message?.reasoning ?? ''),
+                      }),
                       h('message_prose', {
                         html: render(message?.content ?? ''),
                       }),

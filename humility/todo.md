@@ -96,6 +96,18 @@ search threads
 
 ## c
 
+lib/style: check what it really imports and ignore implicit nil.
+
+---
+
+utility/generate: log payload (raw delta and metadata, i.e. last payload typically, or any in general) while streaming
+
+---
+
+utility/generate: support openrouter specific details, such as reasoning tokens and costs
+
+---
+
 web: create fadein animation per block
 
 like google ai mode
