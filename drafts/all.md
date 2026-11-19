@@ -1182,6 +1182,7 @@ code:
 - pl design lexical scoping python scoping
 - py lack of self inc dec
 - py first class complex
+- pl design lisp homoiconicity
 
 edit:
 
