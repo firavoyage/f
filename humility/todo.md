@@ -1,5 +1,13 @@
 # plan
 
+- array
+- release 0.3
+  - align drafts by version
+- roots main
+- tools
+
+---
+
 use case:
 
 - analyze py intro pre issues
