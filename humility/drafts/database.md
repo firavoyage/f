@@ -2,7 +2,7 @@ database
 
 - data
   - chat
-    - threads.yaml: thread -> thread metadata
+    - index.yaml: thread -> thread metadata
       - title
       - folder
       - ~~is deleted?~~ is hidden?
@@ -27,14 +27,14 @@ database
 - config
   - chat
     - config.yaml
-      - providers: name -> options
-        - key
+      - providers: provider ->
+        - key: raw | {env: string} = {env: provider}
         - endpoint
       - default model
-        - can be lab/id or provider:lab/id
-      - default provider = first provider
+        - provider:model_id or {provider, model}
       - export?:
         - dir
+    - env.yaml: env -> value
 - cache
   - chat
     - lock
@@ -81,5 +81,3 @@ for now let's keep it simple.
 rather align w openai compatible naming.
 
 e.g. usage instead of a general "metrics" or "metadata".
-
-

@@ -224,12 +224,21 @@ ref:
   "declare global function": {
     "prefix": "dgf",
     "body": [
-      "type $1 = typeof $1",
+      "type $0 = typeof $0",
       "declare global {",
-      "  var $1: $1",
-      "}$0",
+      "  var $0: $0",
+      "}",
     ],
   },
+  // "declare global function": {
+  //   "prefix": "dgf",
+  //   "body": [
+  //     "type $1 = typeof $1",
+  //     "declare global {",
+  //     "  var $1: $1",
+  //     "}$0",
+  //   ],
+  // },
   // you can shift enter to new line
   "log": {
     "prefix": "lo",
@@ -258,26 +267,50 @@ ref:
     "prefix": ["i", "if"],
     "body": [
       "if ($1) {",
-      "  $2",
-      "} $0",
+      "  $0",
+      "} ",
     ],
   },
+  // "if": {
+  //   "prefix": ["i", "if"],
+  //   "body": [
+  //     "if ($1) {",
+  //     "  $2",
+  //     "} $0",
+  //   ],
+  // },
   "else if": {
     "prefix": ["ei"],
     "body": [
       "else if ($1) {",
-      "  $2",
-      "} $0",
+      "  $0",
+      "} ",
     ],
   },
+  // "else if": {
+  //   "prefix": ["ei"],
+  //   "body": [
+  //     "else if ($1) {",
+  //     "  $2",
+  //     "} $0",
+  //   ],
+  // },
   "else": {
     "prefix": ["e", "el"],
     "body": [
       "else {",
-      "  $1",
-      "} $0",
+      "  $0",
+      "} ",
     ],
   },
+  // "else": {
+  //   "prefix": ["e", "el"],
+  //   "body": [
+  //     "else {",
+  //     "  $1",
+  //     "} $0",
+  //   ],
+  // },
   // "if": {
   //   "prefix": ["i", "if"],
   //   "body": [

@@ -1042,3 +1042,11 @@ default_model:
 simple and clear.
 
 ---
+
+i archive (e.g. move to legacy) when drafting a change rather than when completing sth.
+
+nothing wrong w it honestly.
+
+alternatively, you use an approach called release.
+
+---

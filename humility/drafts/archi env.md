@@ -9,7 +9,7 @@ key: value
 foo: bar
 ```
 
-# reference 
+# reference (deprecated)
 
 ## prev
 
@@ -35,16 +35,37 @@ foo: bar
 
 if you would not have a key w `env:` prefix.
 
-# better reference
+# reference
 
 ## raw
 
+config
+
+```
+key: bar
+```
+
 ## secure
 
-
+config
 
 ```
 key:
   env: foo
 ```
+
+env
+
+```
+foo: bar
+```
+
+# utils
+
+```
+resolve env
+  raw -> raw
+  env -> read env
+```
+
 

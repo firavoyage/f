@@ -15,7 +15,7 @@ log(
         },
       ],
       endpoint: config.providers.openrouter.endpoint,
-      model: config.default_model,
+      model: config.default_model.model,
       key: env.openrouter,
     },
     identity,

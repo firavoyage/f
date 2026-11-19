@@ -104,7 +104,7 @@ export async function generate(
         }
 
         content += new_content
-        reasoning += new_content
+        reasoning += new_reasoning
 
         let delta = {
           content: new_content,
