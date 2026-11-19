@@ -1,21 +1,5 @@
 # plan
 
-impl websocket lib.
-
-every browser request should take response.
-
-server broadcast doesnt have to.
-
-it will work if you can display correct for a state, and update the state on event.
-
----
-
-impl generation lib
-
-stream payload, receive
-
----
-
 use case:
 
 - analyze py intro pre issues
@@ -158,11 +142,29 @@ vimium works. you may make it app specific.
 
 ---
 
-action/list: support range
+serve/append server log: give every ws client a readable id when they (dis)connect/(un)subscribe to a thread
 
 ## w
 
-serve/append server log: give every ws client a readable id when they (dis)connect/(un)subscribe to a thread
+action/list: support range
+
+---
+
+abstract websocket as lib
+
+~~impl websocket lib.~~
+
+every browser request should take response.
+
+server broadcast doesnt have to.
+
+it will work if you can display correct for a state, and update the state on event.
+
+---
+
+abstract generate as lib ~~impl generation lib~~
+
+stream payload, receive
 
 # backlog
 

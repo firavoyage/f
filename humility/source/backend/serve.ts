@@ -7,7 +7,7 @@ import { append, children, read, write } from 'lib/file'
 import { format_log } from 'lib/log'
 import { parse_options } from 'lib/cli'
 // import * as action_index from 'action/index'
-import { list, hide } from 'action/index'
+import { list as action_list, hide } from 'action/index'
 import {
   deserialize,
   get_message_log_file,
@@ -52,11 +52,9 @@ app.use('*', serveStatic({ root: '../web/build' }))
 let subscribers: Record<id, Set<WebSocket>> = {}
 
 let actions: Record<action, fn> = {
-  list,
+  list: action_list,
   hide,
   subscribe({ thread, client }) {
-    log('subscribe', { thread, client })
-
     if (is(subscribers[thread], 'absent')) {
       subscribers[thread] = set(client)
     } else {
@@ -200,8 +198,6 @@ function broadcast(
   }>,
   client?,
 ) {
-  log(client?.send, payload.thread)
-
   if (is(client, 'absent')) {
     if (is(payload.thread, 'absent')) {
       throw err(
@@ -212,8 +208,6 @@ function broadcast(
     client = subscribers[payload.thread]
   }
   client = list(client)
-
-  log(client)
 
   map(client, (ws) => {
     ws.send(
@@ -275,7 +269,6 @@ app.get(
         payload.client = ws
       }
 
-      log(ws, ws.send)
       respond(request, await actions[action](payload), ws)
     },
 

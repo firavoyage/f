@@ -1119,4 +1119,403 @@ quite weird to return "last payload" on generate.
 it's redundant after stream (raw payload) listener is available.
 return full payload text instead.
 
+---
 
+so interesting. 
+
+```
+  client = list(client)
+```
+
+list is overriden!
+
+```
+ ...Documents/f/humility % r serve
+$ ./script/serve.sh
+Serve on http://localhost:8192
+2026-11-19 19:42:25 [info] GET /api/ws
+
+Client connected
+list undefined
+{
+  binaryType: "arraybuffer",
+  close: [Function: close],
+  protocol: "",
+  raw: BunWebSocketMocked {
+    _events: [Object: null prototype] {
+      close: [
+        [Function], [Function]
+      ],
+      message: [
+        [Function]
+      ],
+      error: [
+        [Function]
+      ],
+    },
+    _eventsCount: 3,
+    _maxListeners: undefined,
+    [Symbol(kCapture)]: false,
+    [Symbol(::bunternal::)]: {
+      message: [Function: #message],
+      open: [Function: #open],
+      close: [Function: #close],
+      drain: [Function: #drain],
+      ping: [Function: #ping],
+      pong: [Function: #pong],
+    },
+    ping: [Function: ping],
+    pong: [Function: pong],
+    send: [Function: send],
+    close: [Function: close],
+    terminate: [Function: terminate],
+    binaryType: [Getter/Setter],
+    readyState: [Getter],
+    url: [Getter],
+    protocol: [Getter],
+    extensions: [Getter],
+    bufferedAmount: [Getter],
+    setSocket: [Function: setSocket],
+    onclose: [Getter/Setter],
+    onerror: [Getter/Setter],
+    onmessage: [Getter/Setter],
+    onopen: [Getter/Setter],
+    addEventListener: [Function: addEventListener],
+    removeEventListener: [Function: removeEventListener],
+    CONNECTING: 0,
+    OPEN: 1,
+    CLOSING: 2,
+    CLOSED: 3,
+    setMaxListeners: [Function: setMaxListeners],
+    getMaxListeners: [Function: getMaxListeners],
+    emit: [Function: emit],
+    addListener: [Function: addListener],
+    on: [Function: addListener],
+    prependListener: [Function: prependListener],
+    once: [Function: once],
+    prependOnceListener: [Function: prependOnceListener],
+    removeListener: [Function: removeListener],
+    off: [Function: removeListener],
+    removeAllListeners: [Function: removeAllListeners],
+    listeners: [Function: listeners],
+    rawListeners: [Function: rawListeners],
+    listenerCount: [Function: listenerCount],
+    eventNames: [Function: eventNames],
+  },
+  readyState: [Getter],
+  send: [Function: send],
+  url: URL {
+    href: "http://localhost:8192/api/ws",
+    origin: "http://localhost:8192",
+    protocol: "http:",
+    username: "",
+    password: "",
+    host: "localhost:8192",
+    hostname: "localhost",
+    port: "8192",
+    pathname: "/api/ws",
+    hash: "",
+    search: "",
+    searchParams: URLSearchParams {},
+    toJSON: [Function: toJSON],
+    toString: [Function: toString],
+  },
+} [Function: send]
+subscribe {
+  thread: "96b6538b-5206-4f77-8368-64eea60bc10b",
+}
+{
+  binaryType: "arraybuffer",
+  close: [Function: close],
+  protocol: "",
+  raw: BunWebSocketMocked {
+    _events: [Object: null prototype] {
+      close: [
+        [Function], [Function]
+      ],
+      message: [
+        [Function]
+      ],
+      error: [
+        [Function]
+      ],
+    },
+    _eventsCount: 3,
+    _maxListeners: undefined,
+    [Symbol(kCapture)]: false,
+    [Symbol(::bunternal::)]: {
+      message: [Function: #message],
+      open: [Function: #open],
+      close: [Function: #close],
+      drain: [Function: #drain],
+      ping: [Function: #ping],
+      pong: [Function: #pong],
+    },
+    ping: [Function: ping],
+    pong: [Function: pong],
+    send: [Function: send],
+    close: [Function: close],
+    terminate: [Function: terminate],
+    binaryType: [Getter/Setter],
+    readyState: [Getter],
+    url: [Getter],
+    protocol: [Getter],
+    extensions: [Getter],
+    bufferedAmount: [Getter],
+    setSocket: [Function: setSocket],
+    onclose: [Getter/Setter],
+    onerror: [Getter/Setter],
+    onmessage: [Getter/Setter],
+    onopen: [Getter/Setter],
+    addEventListener: [Function: addEventListener],
+    removeEventListener: [Function: removeEventListener],
+    CONNECTING: 0,
+    OPEN: 1,
+    CLOSING: 2,
+    CLOSED: 3,
+    setMaxListeners: [Function: setMaxListeners],
+    getMaxListeners: [Function: getMaxListeners],
+    emit: [Function: emit],
+    addListener: [Function: addListener],
+    on: [Function: addListener],
+    prependListener: [Function: prependListener],
+    once: [Function: once],
+    prependOnceListener: [Function: prependOnceListener],
+    removeListener: [Function: removeListener],
+    off: [Function: removeListener],
+    removeAllListeners: [Function: removeAllListeners],
+    listeners: [Function: listeners],
+    rawListeners: [Function: rawListeners],
+    listenerCount: [Function: listenerCount],
+    eventNames: [Function: eventNames],
+  },
+  readyState: [Getter],
+  send: [Function: send],
+  url: URL {
+    href: "http://localhost:8192/api/ws",
+    origin: "http://localhost:8192",
+    protocol: "http:",
+    username: "",
+    password: "",
+    host: "localhost:8192",
+    hostname: "localhost",
+    port: "8192",
+    pathname: "/api/ws",
+    hash: "",
+    search: "",
+    searchParams: URLSearchParams {},
+    toJSON: [Function: toJSON],
+    toString: [Function: toString],
+  },
+} [Function: send]
+subscribe {
+  thread: "96b6538b-5206-4f77-8368-64eea60bc10b",
+  client: {
+    binaryType: "arraybuffer",
+    close: [Function: close],
+    protocol: "",
+    raw: BunWebSocketMocked {
+      _events: [Object ...],
+      _eventsCount: 3,
+      _maxListeners: undefined,
+      [Symbol(kCapture)]: false,
+      [Symbol(::bunternal::)]: [Object ...],
+      ping: [Function: ping],
+      pong: [Function: pong],
+      send: [Function: send],
+      close: [Function: close],
+      terminate: [Function: terminate],
+      binaryType: [Getter/Setter],
+      readyState: [Getter],
+      url: [Getter],
+      protocol: [Getter],
+      extensions: [Getter],
+      bufferedAmount: [Getter],
+      setSocket: [Function: setSocket],
+      onclose: [Getter/Setter],
+      onerror: [Getter/Setter],
+      onmessage: [Getter/Setter],
+      onopen: [Getter/Setter],
+      addEventListener: [Function: addEventListener],
+      removeEventListener: [Function: removeEventListener],
+      CONNECTING: 0,
+      OPEN: 1,
+      CLOSING: 2,
+      CLOSED: 3,
+      setMaxListeners: [Function: setMaxListeners],
+      getMaxListeners: [Function: getMaxListeners],
+      emit: [Function: emit],
+      addListener: [Function: addListener],
+      on: [Function: addListener],
+      prependListener: [Function: prependListener],
+      once: [Function: once],
+      prependOnceListener: [Function: prependOnceListener],
+      removeListener: [Function: removeListener],
+      off: [Function: removeListener],
+      removeAllListeners: [Function: removeAllListeners],
+      listeners: [Function: listeners],
+      rawListeners: [Function: rawListeners],
+      listenerCount: [Function: listenerCount],
+      eventNames: [Function: eventNames],
+    },
+    readyState: [Getter],
+    send: [Function: send],
+    url: URL {
+      href: "http://localhost:8192/api/ws",
+      origin: "http://localhost:8192",
+      protocol: "http:",
+      username: "",
+      password: "",
+      host: "localhost:8192",
+      hostname: "localhost",
+      port: "8192",
+      pathname: "/api/ws",
+      hash: "",
+      search: "",
+      searchParams: [URLSearchParams ...],
+      toJSON: [Function: toJSON],
+      toString: [Function: toString],
+    },
+  },
+}
+broadcast [Function: send] 96b6538b-5206-4f77-8368-64eea60bc10b
+broadcast before list {
+  binaryType: "arraybuffer",
+  close: [Function: close],
+  protocol: "",
+  raw: BunWebSocketMocked {
+    _events: [Object: null prototype] {
+      close: [
+        [Function], [Function]
+      ],
+      message: [
+        [Function]
+      ],
+      error: [
+        [Function]
+      ],
+    },
+    _eventsCount: 3,
+    _maxListeners: undefined,
+    [Symbol(kCapture)]: false,
+    [Symbol(::bunternal::)]: {
+      message: [Function: #message],
+      open: [Function: #open],
+      close: [Function: #close],
+      drain: [Function: #drain],
+      ping: [Function: #ping],
+      pong: [Function: #pong],
+    },
+    ping: [Function: ping],
+    pong: [Function: pong],
+    send: [Function: send],
+    close: [Function: close],
+    terminate: [Function: terminate],
+    binaryType: [Getter/Setter],
+    readyState: [Getter],
+    url: [Getter],
+    protocol: [Getter],
+    extensions: [Getter],
+    bufferedAmount: [Getter],
+    setSocket: [Function: setSocket],
+    onclose: [Getter/Setter],
+    onerror: [Getter/Setter],
+    onmessage: [Getter/Setter],
+    onopen: [Getter/Setter],
+    addEventListener: [Function: addEventListener],
+    removeEventListener: [Function: removeEventListener],
+    CONNECTING: 0,
+    OPEN: 1,
+    CLOSING: 2,
+    CLOSED: 3,
+    setMaxListeners: [Function: setMaxListeners],
+    getMaxListeners: [Function: getMaxListeners],
+    emit: [Function: emit],
+    addListener: [Function: addListener],
+    on: [Function: addListener],
+    prependListener: [Function: prependListener],
+    once: [Function: once],
+    prependOnceListener: [Function: prependOnceListener],
+    removeListener: [Function: removeListener],
+    off: [Function: removeListener],
+    removeAllListeners: [Function: removeAllListeners],
+    listeners: [Function: listeners],
+    rawListeners: [Function: rawListeners],
+    listenerCount: [Function: listenerCount],
+    eventNames: [Function: eventNames],
+  },
+  readyState: [Getter],
+  send: [Function: send],
+  url: URL {
+    href: "http://localhost:8192/api/ws",
+    origin: "http://localhost:8192",
+    protocol: "http:",
+    username: "",
+    password: "",
+    host: "localhost:8192",
+    hostname: "localhost",
+    port: "8192",
+    pathname: "/api/ws",
+    hash: "",
+    search: "",
+    searchParams: URLSearchParams {},
+    toJSON: [Function: toJSON],
+    toString: [Function: toString],
+  },
+}
+broadcast final {
+  "88395fb2-c426-4d20-a336-811e32476e80": {
+    title: "hello world",
+    folder: "",
+    creation_time: 1795073101.996,
+    is_hidden: true,
+  },
+  "aea34f36-7781-41eb-b3de-e453eeb89418": {
+    title: "hello world",
+    folder: "",
+    creation_time: 1795073117.616,
+  },
+  "99392deb-299d-4e47-9e74-c95839044801": {
+    title: "hi",
+    folder: "",
+    creation_time: 1795073756.74,
+  },
+  "96da15b5-e188-4a6a-81ae-23d02352920a": {
+    title: "think hard about anything",
+    folder: "",
+    creation_time: 1795074081.762,
+  },
+}
+215 |   log('broadcast before list', client)
+216 |   client = list(client)
+217 |   log('broadcast final', client)
+218 |
+219 |   map(client, (ws) => {
+220 |     ws.send(
+             ^
+TypeError: ws.send is not a function. (In 'ws.send(stringify({
+      type: "broadcast",
+      event,
+      payload
+    }))', 'ws.send' is undefined)
+      at <anonymous> (/home/fira/Documents/f/humility/source/backend/serve.ts:220:8)
+      at map (/home/fira/Documents/f/humility/node_modules/lib/map.ts:36:19)
+      at broadcast (/home/fira/Documents/f/humility/source/backend/serve.ts:219:3)
+      at subscribe (/home/fira/Documents/f/humility/source/backend/serve.ts:72:5)
+      at onMessage (/home/fira/Documents/f/humility/source/backend/serve.ts:280:38)
+      at handleMessage (/home/fira/Documents/f/humility/node_modules/@hono/node-server/dist/index.mjs:979:13)
+      at <anonymous> (/home/fira/Documents/f/humility/node_modules/@hono/node-server/dist/index.mjs:987:4)
+      at emit (node:events:98:22)
+      at #message (ws:599:14)
+      at message (node:_http_server:293:26)
+
+error: script "serve" exited with code 1
+```
+
+---
+
+web: fix thread/display thread syncing quirk.
+
+determine whether it's temporary new thread after loading thread index.
+
+---

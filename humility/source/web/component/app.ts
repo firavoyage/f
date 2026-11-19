@@ -41,7 +41,7 @@ export function app() {
   const [thread_structure, set_thread_structure] = use_state<thread_structure>(
     empty_thread_structure(),
   )
-  const [thread_index, set_thread_index] = use_state<thread_index>({})
+  const [thread_index, set_thread_index] = use_state<thread_index | nil>(nil)
   const [thread, set_thread] = use_thread()
   const [display_thread, set_display_thread] = use_display_thread()
   use_mount(() => {
@@ -53,7 +53,7 @@ export function app() {
   use_effect(() => {
     if (has(thread_index, thread)) {
       set_display_thread(thread)
-    } else {
+    } else if (thread_index != nil) {
       set_display_thread(nil)
     }
   }, [thread_structure.messages])
@@ -177,6 +177,8 @@ export function app() {
     when: () => !prompt && document.activeElement == prompt_field.current,
   })
 
+  use_debug(thread, display_thread)
+
   return h(
     h('title.', 'Humility'),
     h(
@@ -193,7 +195,7 @@ export function app() {
         h(
           'threads',
           map(
-            thread_index,
+            thread_index ?? {},
             ([current_thread, { title, is_hidden }]) =>
               !is_hidden &&
               h(
