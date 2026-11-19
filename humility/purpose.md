@@ -1063,3 +1063,43 @@ you are (or at least you should be) really doing inference rather than wandering
 
 ---
 
+impl jsonl based thread history and message history. jsonl based.
+
+all events would be preserved.
+
+irrelevant events (e.g. list all threads) would be saved as server log. i might not handle "irrelevant events" specifically. just log every request (like currently in console).
+
+files
+
+```
+# data
+chat:
+  log:
+    thread:
+      (thread).jsonl
+    message:
+      (message).jsonl
+    server: # just call it server (instead of "backend")
+      server.log
+```
+
+structure of a line in jsonl
+
+```
+type
+time
+payload
+```
+
+types for a message
+
+- request (no secret key)
+- delta: both "append" delta and last payload w metadata
+  - it's basically just specially formatted text stream
+  - before an explicit "done" or eof, everything is just the same
+  - do not typically record "finish". it's derived.
+- stream: raw text stream
+
+do not care whether it's literally "relevant", just check if there is a thread id.
+
+

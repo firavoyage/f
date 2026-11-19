@@ -35,6 +35,15 @@ organize folders, rename thread
 
 ## s
 
+utility/thread: generalize build plain context
+
+- support system prompt
+- handle failed messages
+- connect consecutive messages of the same role, serialize tool results as user
+- reject invalid context?
+
+---
+
 support more broadcasting events
 
 - list
@@ -96,7 +105,9 @@ search threads
 
 ## c
 
-lib/style: check what it really imports and ignore implicit nil.
+lib/style: check what it really imports and if feasible ignore implicit nil.
+
+or anything other than string | number. you may consider converting numbers to strings.
 
 ---
 
