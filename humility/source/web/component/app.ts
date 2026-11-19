@@ -51,10 +51,7 @@ export function app() {
   //   set_thread(display_thread ?? random_id())
   // }, [display_thread])
   use_effect(() => {
-    if (
-      is(display_thread, 'absent') &&
-      entries(thread_structure.messages).length > 0
-    ) {
+    if (has(thread_index, thread)) {
       set_display_thread(thread)
     } else {
       set_display_thread(nil)
@@ -108,8 +105,10 @@ export function app() {
       const { content = '', reasoning = '' } = delta
 
       set_thread_structure((t) => {
-        t.messages[message].content = (t.messages[message].content ?? '') + content
-        t.messages[message].reasoning = (t.messages[message].reasoning ?? '') + reasoning
+        t.messages[message].content =
+          (t.messages[message].content ?? '') + content
+        t.messages[message].reasoning =
+          (t.messages[message].reasoning ?? '') + reasoning
         // t.messages[message].content += content
         // t.messages[message].reasoning += reasoning
       })

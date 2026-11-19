@@ -6,10 +6,13 @@ import { serveStatic } from '@hono/node-server/serve-static'
 import { append, children, read, write } from 'lib/file'
 import { format_log } from 'lib/log'
 import { parse_options } from 'lib/cli'
-import * as action_index from 'action/index'
+// import * as action_index from 'action/index'
+import { list, hide } from 'action/index'
 import {
   deserialize,
+  get_message_log_file,
   get_thread_file,
+  get_thread_log_file,
   serialize,
   server_log_file,
   thread_index_file,
@@ -49,7 +52,8 @@ app.use('*', serveStatic({ root: '../web/build' }))
 let subscribers: Record<id, Set<WebSocket>> = {}
 
 let actions: Record<action, fn> = {
-  ...action_index,
+  list,
+  hide,
   subscribe({ thread, client }) {
     if (is(subscribers[thread], 'absent')) {
       subscribers[thread] = set(client)
@@ -134,10 +138,20 @@ let actions: Record<action, fn> = {
       tree,
     })
 
+    const { endpoint, model, key } = await resolve_endpoint_model_key()
+
+    append_json_log(get_message_log_file(message), 'request', {
+      context,
+      endpoint,
+      model,
+    })
+
     generate(
       {
         context,
-        ...(await resolve_endpoint_model_key()),
+        endpoint,
+        model,
+        key,
       },
       append,
       finish,
@@ -197,6 +211,8 @@ function broadcast(
 function respond(request: id, payload: any, client: WebSocket) {
   const ws = client
 
+  append_server_log('respond', payload)
+
   ws.send(
     stringify({
       type: 'response',
@@ -234,7 +250,11 @@ app.get(
       // let payload = { ..._payload }
 
       log(action, payload)
-      append_server_log(`${action}\n${serialize(payload)}`)
+      append_server_log(action, payload)
+
+      if (has(payload, 'thread')) {
+        append_json_log(get_thread_log_file(payload.thread), action, payload)
+      }
 
       if (action == 'subscribe' || action == 'unsubscribe') {
         payload.client = ws
@@ -245,7 +265,7 @@ app.get(
 
     onClose() {
       log('Client disconnected')
-      
+
       append_server_log('Client disconnected')
     },
   })),
@@ -328,6 +348,10 @@ function append_json_log(file, type, payload) {
   )
 }
 
-function append_server_log(message, type: 'info' | 'warn' | 'error' = 'info') {
-  append(server_log_file, format_log(message, type))
+function append_server_log(message, payload?) {
+  if (is(payload, 'present')) {
+    append(server_log_file, `${format_log(message)}\n${serialize(payload)}`)
+  } else {
+    append(server_log_file, format_log(message))
+  }
 }

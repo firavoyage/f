@@ -16,7 +16,6 @@ export async function generate(
     reasoning = ''
   let usage = {}
   let first_append_time: number
-  let last_payload
 
   const response = await handle(() =>
     fetch(endpoint, {
@@ -89,12 +88,10 @@ export async function generate(
 
       if (payload_text == '[DONE]') {
         finish(complete())
-        return last_payload
+        return response.text()
       }
 
       const payload = parse(payload_text)
-
-      last_payload = payload
 
       stream(payload)
 
@@ -181,6 +178,8 @@ export async function generate(
       model,
     }
   }
+
+  return response.text()
 }
 
 export async function generate_mock(

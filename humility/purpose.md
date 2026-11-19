@@ -696,11 +696,10 @@ perf doesnt matter. you may assume expected app state and read all history on di
 
 ---
 
-maybe you should rather have one persistent ws, 
+maybe you should rather have one persistent ws,
 and (un)listen thread within ws.
 
 i.e. use effect thread
-
 
 17
 
@@ -724,7 +723,7 @@ when you are inside vomnibar
 
 you may think this way.
 
-you would support every user flow, likely crud. and you may optimize a few 
+you would support every user flow, likely crud. and you may optimize a few
 
 ---
 
@@ -1002,7 +1001,7 @@ made irrelevant w web socket
 ~~implement thread locking for chat~~
 
 > handle desync frontend and backend
-> 
+>
 > i.e. know and manage what's ongoing on a separate request
 
 when you read a thread, it would typically return the thread of all requests settled.
@@ -1111,5 +1110,9 @@ append json log file type payload
 
 append server log message type = info
 ```
+
+quite weird to return "last payload" on generate.
+it's redundant after stream (raw payload) listener is available.
+return full payload text instead.
 
 
