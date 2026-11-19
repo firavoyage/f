@@ -2,7 +2,7 @@
   box-shadow: 0 0 0 1px oklch(38% 0.02 254.74);
 } */
 
-a, button {
+a, button, summary {
   &:focus-visible {
     /* margin: 2px; */
     /* overflow: visible; */

@@ -58,6 +58,8 @@ export function app() {
     }
   }, [thread_structure.messages])
 
+  const [should_show_reasoning, set_should_show_reasoning] = use_state(false)
+
   const content = use_ref()
   const prompt_field = use_ref()
 
@@ -252,9 +254,17 @@ export function app() {
                     { role: message?.role },
                     h(
                       'message_content',
-                      h('message_prose_reasoning', {
-                        html: render(message?.reasoning ?? ''),
-                      }),
+                      message?.reasoning && should_show_reasoning &&
+                        h(
+                          'message_prose_reasoning',
+                          h(
+                            'details.',
+                            h('summary.', 'Reasoning'),
+                            h('message_prose_reasoning_details', {
+                              html: render(message?.reasoning ?? ''),
+                            }),
+                          ),
+                        ),
                       h('message_prose', {
                         html: render(message?.content ?? ''),
                       }),

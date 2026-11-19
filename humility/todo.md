@@ -109,6 +109,8 @@ utility/generate: log payload (raw delta and metadata, i.e. last payload typical
 
 utility/generate: support openrouter specific details, such as reasoning tokens and costs
 
+w that, you may show sum of costs directly, wo guessing/calc (by model cost and tokens), wo checking the provider site
+
 ---
 
 web: create fadein animation per block
