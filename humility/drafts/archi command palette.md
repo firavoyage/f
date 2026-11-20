@@ -55,7 +55,8 @@ app(){
   # it binds shortcuts itself when provided (why not)
   # for text, you may prefix w "commands" on localization files, or not. it can be fn or dict (preferably dict i guess)
   # for search, it must index by display text, but it may use internal id or some tags or metadata info if provided (pass a fn if you really wanna do that)
-  command palette is open? set is open? commands shortcuts? text: command -> localized text = title case, search: query, command[] = commands.keys -> command[] = fzf
+  # call it open instead of is open to align w conventional attrs
+  command palette open? set open? commands shortcuts? text: command -> localized text = title case, search: query, command[] = commands.keys -> command[] = fzf
 }
 ```
 
@@ -77,6 +78,7 @@ foo = use state initial value?
 
 ```
 # modal isnt needed. it basically provides a class for styling and passes all its children. it should be focus trapped but it might not be actively trapping/looping but rather disable tab/shift tab and hide on outside click, as the input/query is always focused.
+# well you may have one
 # modal
 
 input_modal value set value
