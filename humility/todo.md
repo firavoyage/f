@@ -1,5 +1,15 @@
 # plan
 
+web ux.
+
+refine vimium and make normal/insert mode more deterministic?
+
+command palette.
+
+folder.
+
+---
+
 implement tool calls
 
 > archi thread
