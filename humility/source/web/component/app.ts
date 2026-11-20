@@ -103,15 +103,9 @@ export function app() {
       when: () => on && !is_inserting(),
     })
 
-    use_mount(() => {
-      set_interval(function() {
-        scroll_by(content, distances['j'])
-      }, 1000)
-    })
-
     map(distances, ([key, distance]) =>
-      use_keyboard(key, () => scroll_by(content, distances[key]), {
-        when: on && !is_inserting(),
+      use_keyboard(key, () => scroll_by(content, distance), {
+        when: () => on && !is_inserting(),
       }),
     )
   }
@@ -261,6 +255,14 @@ export function app() {
     when: () => !prompt && document.activeElement == prompt_field.current,
   })
 
+  // focus prompt when thread change
+  use_effect(() => {
+    // you may want to just browse existing threads
+    if (is_new_thread) {
+      prompt_field.current?.focus()
+    } 
+  }, [thread, is_new_thread])  
+
   return h(
     h('title.', 'Humility'),
     h(
@@ -378,7 +380,7 @@ export function app() {
                   value: prompt,
                   set_value: set_prompt,
                   ref: prompt_field,
-                  autofocus: true,
+                  // autofocus: true,
                 }),
               ),
             ),
@@ -483,8 +485,6 @@ function scroll_by(
   distance,
   scroll_behavior: 'smooth' | 'instant' = 'instant',
 ) {
-  log('scroll?')
-
   if (!ref.current) {
     return
   }
