@@ -15,6 +15,7 @@ const { stringify, parse } = JSON
 
 import { marked } from 'marked'
 import { build_context, empty_thread_structure } from 'utility/thread'
+import { modal_prompt } from './modal_prompt'
 
 const ws_retry_delay = 1000
 const ws_max_jitter = 1000
@@ -47,12 +48,25 @@ export function app() {
 
   const [should_show_reasoning, set_should_show_reasoning] = use_state(false)
 
+  const [modal_prompt_open, set_modal_prompt_open] = use_state(true)
+  const modal_prompt_set_value = use_ref()
+  const modal_prompt_initial_value = use_ref()
+  const modal_prompt_placeholder = use_ref()
+
   let is_new_thread = thread_index != nil && !has(thread_index, thread)
 
-  use_debug(thread, display_thread)
+  use_debug(folder)
 
   const content = use_ref()
   const prompt_field = use_ref()
+
+  function open_prompt_modal({ value, set_value, placeholder }) {
+    set_modal_prompt_open(true)
+
+    modal_prompt_initial_value.current = value
+    modal_prompt_set_value.current = set_value
+    modal_prompt_placeholder.current = placeholder
+  }
 
   // set thread url param: nil for new thread, otherwise existing
   // for simplicity, it technically subscribes a (random) thread regardless
@@ -70,6 +84,16 @@ export function app() {
     }
   }, [thread_structure.messages])
 
+  let commands = {
+    change_current_folder(){
+      open_prompt_modal({
+        value: folder,
+        set_value: set_folder,
+        placeholder: text('folder')
+      })
+    }
+  }
+
   let controls = {
     new_thread() {
       set_thread(random_id())
@@ -79,7 +103,7 @@ export function app() {
         await perform('init', {
           thread,
           title: prompt.slice(0, max_title_length),
-          folder
+          folder,
         })
 
         set_thread_index(perform('list'))
@@ -260,7 +284,8 @@ export function app() {
                     { role: message?.role },
                     h(
                       'message_content',
-                      message?.reasoning && should_show_reasoning &&
+                      message?.reasoning &&
+                        should_show_reasoning &&
                         h(
                           'message_prose_reasoning',
                           h(
@@ -317,6 +342,13 @@ export function app() {
           // ),
         ),
       ),
+      h(modal_prompt, {
+        open: modal_prompt_open,
+        set_open: set_modal_prompt_open,
+        initial_value: modal_prompt_initial_value.current,
+        set_value: modal_prompt_set_value.current,
+        placeholder: modal_prompt_placeholder.current,
+      }),
     ),
   )
 }
@@ -395,9 +427,11 @@ async function send(action: action, payload: any, request: id) {
   ws.send(stringify(request_payload))
 }
 
+let text = identity
+
 declare global {
   type node = root | id
-  
+
   type root = number
   type id = string
 
@@ -411,8 +445,8 @@ declare global {
         focus?: node
       }
     >
-    roots: root[],
-    focus: root,
+    roots: root[]
+    focus: root
     messages: Record<id, message_structure>
     config?: {
       system_prompt: string

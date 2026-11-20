@@ -1,4 +1,4 @@
-export function identity(v) {
+export function identity<T>(v: T) {
   return v
 }
 

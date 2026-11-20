@@ -137,6 +137,10 @@ prompt:
   field: w-prose
   # field[empty]: caret-transparent
   textarea: py-8
+modal:
+  modal: fixed top-0 bottom-0 left-0 right-0 pointer-events-none flex justify-center
+  backdrop: fixed top-0 bottom-0 left-0 right-0 pointer-events-none
+  content: z-800 w-prose h-sm bg-white pointer-events-all
 textarea:
   textarea: w-full h-fit rounded-md
   textarea:focus-visble: outline-focus outline-sm offset-2 rounded-md
