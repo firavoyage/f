@@ -11,7 +11,7 @@ import { sidebar } from './sidebar'
 // import { post } from 'lib/web/request'
 import { copy } from 'lib/web/clipboard'
 import { random, random_id } from 'lib/random'
-const { stringify, parse } = JSON
+const { stringify, deserialize: parse } = JSON
 
 import { marked } from 'marked'
 import { build_context, empty_thread_structure } from 'utility/thread'

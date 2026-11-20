@@ -1,5 +1,3 @@
-export const invalid_args = 'invalid arguments'
-
 export function each(end: number): number[];
 export function each(begin: number, end: number): number[];
 export function each(begin: number, end: number, step: number): number[];
@@ -20,7 +18,7 @@ export function each(...args: number[]) {
     end = args[1]
     step = args[2]
   } else {
-    throw err(invalid_args)
+    throw err('invalid arguments')
   }
 
   const numbers = []

@@ -2,7 +2,7 @@ import { serialize, deserialize, config_file, env_file } from 'action/index'
 import { random } from 'lib/random'
 import { monotonic, now } from 'lib/time'
 
-const { parse, stringify } = JSON
+const { deserialize: parse, stringify } = JSON
 
 export async function generate(
   { context, endpoint, model, key },

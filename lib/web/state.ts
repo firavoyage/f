@@ -69,9 +69,9 @@ export function s<T>(initial_value: T, options: s<T> = {}) {
     return [state, set_state]
   }
 
-  const { parse: deserialize } = JSON
+  const { parse: deserialize, stringify } = JSON
   function serialize() {
-    return JSON.stringify(state)
+    return stringify(state)
   }
 
   if (is_given(localstorage)) {
@@ -95,7 +95,9 @@ export function s<T>(initial_value: T, options: s<T> = {}) {
       state = deserialize(current_params[url_param])
     }
 
-    subscribe(() => {
+    subscribe(sync_to_url)
+
+    function sync_to_url() {
       const url = new URL(window.location.href)
       const prev_params = obj(url.searchParams)
 
@@ -107,20 +109,24 @@ export function s<T>(initial_value: T, options: s<T> = {}) {
           url.searchParams.delete(url_param)
         } else {
           url.searchParams.set(url_param, serialize())
-        } 
+        }
         window.history.pushState({}, '', url)
       }
-    })
+    }
 
     // Browser back / forward
     window.addEventListener('popstate', () => {
       const current_params = obj(new URL(window.location.href).searchParams)
 
+      subs.delete(sync_to_url)
+
       if (has(current_params, url_param)) {
         set_state(deserialize(current_params[url_param]))
       } else {
         set_state(initial_value)
-      } 
+      }
+
+      subs.add(sync_to_url)
     })
   }
 

@@ -164,4 +164,6 @@ it's not really faster to join an array of strings than string add.
     - consider scalar as single element array, wo necessarily wrap it (for ux/dx)
 - web/state: reset value to initial value if not found on url params, when in sync
 - web/state: fix url navigation syncing quirk
-  - do not push state again after user navigation
+  - ~~do not push state again after user navigation~~
+  - ~~mutate state directly~~
+  - temporarily disable sync url

@@ -27,7 +27,7 @@ import {
 import { generate, generate_mock } from 'utility/generate'
 import { resolve_endpoint_model_key } from 'utility/resolve'
 
-const { parse, stringify } = JSON
+const { deserialize: parse, stringify } = JSON
 
 const { port } = parse_options({
   port: {
