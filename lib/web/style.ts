@@ -1,3 +1,5 @@
+const { parse, stringify } = JSON
+
 const glossary = {
   aspect: {
     prop: [['ratio', 'aspect-ratio']],
@@ -1388,6 +1390,8 @@ export function style(theme) {
       delete theme[k]
     }
   }
+
+  theme = parse(stringify(theme).replaceAll('null', '""'))
 
   theme.palette ??= {}
   theme.palette.white = `oklch(100% 0.00 90.00)`

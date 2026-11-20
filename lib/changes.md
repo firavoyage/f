@@ -167,3 +167,5 @@ it's not really faster to join an array of strings than string add.
   - ~~do not push state again after user navigation~~
   - ~~mutate state directly~~
   - temporarily disable sync url
+- web/style: (try to) ignore null values explicitly
+
