@@ -2,8 +2,11 @@ import { go } from 'fuzzysort'
 
 import { input } from './input'
 import { modal } from './modal'
+import { scroll } from './scroll'
 
 const max_search_results = 100
+
+const command_prefix = '>'
 
 export function modal_search({ files, commands, shortcuts }) {
   const [open, set_open] = use_state(false)
@@ -12,10 +15,12 @@ export function modal_search({ files, commands, shortcuts }) {
   const field = use_ref()
 
   use_keyboard('ctrl+p', () => {
+    set_query('')
     set_open(true)
   })
 
   use_keyboard('ctrl+shift+p', () => {
+    set_query(command_prefix)
     set_open(true)
   })
 
@@ -37,13 +42,14 @@ export function modal_search({ files, commands, shortcuts }) {
     field.current.focus()
   }, [open])
 
-  let items = map(commands, ([command, fn]) => ({
-    // id: command,
-    label: text(command),
-    fn,
-  }))
+  let items
+  if (query.startsWith(command_prefix)) {
+    items = commands
+  } else {
+    items = files
+  } 
 
-  let results = search(query, items)
+  let results = search(normalize_query(query), items)
 
   let first_index = 0
   let last_index = items.length - 1
@@ -71,11 +77,6 @@ export function modal_search({ files, commands, shortcuts }) {
       } 
     },
   }
-
-  use_effect(() => {
-    // set_focus(0)
-    field.current?.select()
-  }, [open])
 
   use_effect(() => {
     set_focus(0)
@@ -115,16 +116,19 @@ export function modal_search({ files, commands, shortcuts }) {
         ),
         h(
           'modal_search_results',
-          map(results, ({ label, fn }, index) =>
-            h(
-              'button.modal_search_result',
-              {
-                focus: focus == index,
-                onclick: () => controls.select(index),
-              },
-              label,
+          h(
+            scroll,
+            map(results, ({ label, fn }, index) =>
+              h(
+                'button.modal_search_result',
+                {
+                  focus: focus == index,
+                  onclick: () => controls.select(index),
+                },
+                label,
+              ),
             ),
-          ),
+          )
         ),
       ),
     )
@@ -139,4 +143,14 @@ function search(query, items) {
     }),
     (result) => result.obj,
   )
+}
+
+function normalize_query(query: string) {
+  if (query.startsWith(command_prefix)) {
+    query = query.slice(1)
+  } 
+
+  query = query.trim()
+
+  return query
 }

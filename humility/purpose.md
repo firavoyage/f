@@ -1559,9 +1559,24 @@ it doesnt really do much or work consistently on modern web app.
 
 interesting, on vscode, ctrl p after ctrl shift p works.
 
-but within ctrl p, pressing ctrl p again navigates through recent files, and ctrl shift p backward.
+but within ctrl p, pressing ctrl p again navigates through recent files, and ctrl shift p backward. <!-- then when you release ctrl, it immediately proceeds (e.g. alt tab). -->
 
 reasonable.
 
 ---
 
+lib/style: check what it really imports and if feasible ignore implicit nil.
+
+or anything other than string | number. you may consider converting numbers to strings.
+
+---
+
+web ux.
+
+refine vimium and make normal/insert mode more deterministic?
+
+command palette.
+
+folder.
+
+---

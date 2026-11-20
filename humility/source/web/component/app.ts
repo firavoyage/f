@@ -135,9 +135,9 @@ export function app() {
         placeholder: text('folder'),
       })
     },
-    toggle_sidebar(){
+    toggle_sidebar() {
       set_sidebar_open()
-    }
+    },
   }
 
   use_keyboard('ctrl+b', commands.toggle_sidebar)
@@ -273,7 +273,7 @@ export function app() {
       'app',
       h(
         sidebar,
-        {open: sidebar_open, set_open: set_sidebar_open},
+        { open: sidebar_open, set_open: set_sidebar_open },
         h(
           'button.nav_new_thread',
           {
@@ -407,7 +407,21 @@ export function app() {
         placeholder: modal_prompt_placeholder.current,
       }),
       h(modal_search, {
-        commands
+        files: map(thread_index ?? {}, ([id, { title, is_hidden }]) => {
+          if (!is_hidden) {
+            return {
+              label: title,
+              fn() {
+                set_thread(id)
+              },
+            }
+          }
+        }),
+        commands: map(commands, ([command, fn]) => ({
+          // id: command,
+          label: text(command),
+          fn,
+        })),
       }),
     ),
   )

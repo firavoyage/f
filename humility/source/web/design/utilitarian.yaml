@@ -64,20 +64,25 @@ palette:
     pink: oklch(65.1% 0.158 352)
     purple: oklch(52.5% 0.175 317)
     slate: oklch(60.1% 0.037 247)
-  focus: color-mix(in oklab, palette.accent 50%, transparent)
+  focus: 
+    light: color-mix(in oklab, palette.accent 30%, transparent)
+    dark: color-mix(in oklab, palette.accent 50%, transparent)
 color:
   surface:
     light: palette.gray.100
     dark: palette.gray.900
+  surface-high:
+    light: palette.gray.250
+    dark: palette.gray.750
+  surface-higher:
+    light: palette.gray.300
+    dark: palette.gray.700
   on-surface:
     light: palette.gray.900
     dark: palette.gray.100
   on-surface-low:
     light: palette.gray.700
     dark: palette.gray.300
-  surface-high:
-    # light: palette.gray.100
-    dark: palette.gray.700
   sidebar:
     light: palette.gray.250
     dark: palette.gray.700
@@ -143,9 +148,9 @@ prompt:
 modal:
   modal: fixed top-0 bottom-0 left-0 right-0 pointer-events-none flex justify-center
   backdrop: fixed top-0 bottom-0 left-0 right-0 pointer-events-none
-  content: fixed z-800 w-prose h-sm bg-surface-high pointer-events-auto
+  content: fixed z-800 w-prose max-h-sm bg-surface-high pointer-events-auto
   search: w-full h-full flex-col
-  search_query: w-full h-12
+  search_query: w-full h-12 bg-surface-higher
   search_results: grow-1
   search_result: w-full px-8 h-8
   search_result[focus]: bg-focus
