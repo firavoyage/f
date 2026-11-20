@@ -191,6 +191,8 @@ let actions: Record<action, fn> = {
   },
 }
 
+let non_mutative_actions: action[] = ['subscribe', 'unsubscribe']
+
 function broadcast(
   event: event,
   payload: Extend<{
@@ -261,7 +263,7 @@ app.get(
       log(action, payload)
       append_server_log(action, payload)
 
-      if (has(payload, 'thread')) {
+      if (has(payload, 'thread') && !has(non_mutative_actions, action)) {
         append_json_log(get_thread_log_file(payload.thread), action, payload)
       }
 
