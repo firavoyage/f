@@ -11,6 +11,10 @@ export function modal_search({ files, commands, shortcuts }) {
     set_open(true)
   })
 
+  use_keyboard('ctrl+shift+p', () => {
+    set_open(true)
+  })
+
   use_keyboard(
     'esc',
     () => {
@@ -44,9 +48,16 @@ export function modal_search({ files, commands, shortcuts }) {
         }),
         h(
           'modal_search_results',
-          map(commands, ([command, fn]) => {
-            return text(command)
-          })
+          map(commands, ([command, fn]) => h(
+            'button.modal_search_result',
+            {
+              onclick: () => {
+                fn()
+                set_open(false)
+              }
+            },
+            text(command)
+          ))
         )
       ),
     )

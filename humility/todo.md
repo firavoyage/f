@@ -1,5 +1,11 @@
 # plan
 
+lib/style: check what it really imports and if feasible ignore implicit nil.
+
+or anything other than string | number. you may consider converting numbers to strings.
+
+---
+
 web ux.
 
 refine vimium and make normal/insert mode more deterministic?
@@ -100,12 +106,6 @@ import
 search threads
 
 ## c
-
-lib/style: check what it really imports and if feasible ignore implicit nil.
-
-or anything other than string | number. you may consider converting numbers to strings.
-
----
 
 utility/generate: log payload (raw delta and metadata, i.e. last payload typically, or any in general) while streaming
 

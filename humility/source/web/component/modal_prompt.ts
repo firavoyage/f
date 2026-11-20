@@ -20,6 +20,14 @@ export function modal_prompt({ open, set_open, initial_value, set_value, placeho
     when: open
   })
 
+  use_effect(() => {
+    if (!open || !field.current) {
+      return
+    }
+
+    field.current.focus()
+  }, [open])
+
   return open && h(
     modal,
     h(

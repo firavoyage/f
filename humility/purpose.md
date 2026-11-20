@@ -1555,4 +1555,13 @@ well actually vimium might be for traditional blogs w links and a few inputs lik
 
 it doesnt really do much or work consistently on modern web app.
 
+---
+
+interesting, on vscode, ctrl p after ctrl shift p works.
+
+but within ctrl p, pressing ctrl p again navigates through recent files, and ctrl shift p backward.
+
+reasonable.
+
+---
 

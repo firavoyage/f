@@ -149,6 +149,7 @@ textarea:
   textarea:focus-visble: outline-focus outline-sm offset-2 rounded-md
 input:
   input: w-full h-full p-4 rounded-md text-lg
+  # input::placeholder: text-on-surface-low # todo
   input:focus-visble: outline-focus outline-sm offset-2 rounded-md
 scroll:
   scroll: flex flex-1 relative
