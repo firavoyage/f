@@ -1518,4 +1518,19 @@ web: fix thread/display thread syncing quirk.
 
 determine whether it's temporary new thread after loading thread index.
 
+## 20
+
+better to separate individual settings.
+
+you group iff you would occassionally define/extract as a whole.
+though they might be conceptually related anyway.
+
 ---
+
+command palette...
+
+on vscode, when you choose set color theme (or fmt docu w...), and esc on selection menu, it would 
+
+(well, i would argue it should be consistent. it should be suffixed w three dots in unicode `…` iff there is secondary menu.)
+
+
