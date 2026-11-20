@@ -43,10 +43,59 @@ export function modal_search({ files, commands, shortcuts }) {
     fn,
   }))
 
-  let results = items
+  let results = search(query, items)
 
   let first_index = 0
   let last_index = items.length - 1
+  const [focus, set_focus] = use_state(0)
+
+  let controls = {
+    down() {
+      if (focus == last_index) {
+        set_focus(first_index)
+      } else {
+        set_focus((focus) => focus + 1)
+      }
+    },
+    up() {
+      if (focus == first_index) {
+        set_focus(last_index)
+      } else {
+        set_focus((focus) => focus - 1)
+      }
+    },
+    select(index) {
+      if (results.length > 0) {
+        results[index].fn()
+        set_open(false)
+      } 
+    },
+  }
+
+  use_effect(() => {
+    // set_focus(0)
+    field.current?.select()
+  }, [open])
+
+  use_effect(() => {
+    set_focus(0)
+  }, [query])
+
+  use_keyboard('ctrl+j', controls.down, {
+    when: open,
+  })
+  use_keyboard('tab', controls.down, {
+    when: open,
+  })
+  use_keyboard('ctrl+k', controls.up, {
+    when: open,
+  })
+  use_keyboard('shift+tab', controls.up, {
+    when: open,
+  })
+  use_keyboard('enter', () => controls.select(focus), {
+    when: open
+  })
 
   return (
     open &&
@@ -66,14 +115,12 @@ export function modal_search({ files, commands, shortcuts }) {
         ),
         h(
           'modal_search_results',
-          map(results, ({label, fn}) =>
+          map(results, ({ label, fn }, index) =>
             h(
               'button.modal_search_result',
               {
-                onclick: () => {
-                  fn()
-                  set_open(false)
-                },
+                focus: focus == index,
+                onclick: () => controls.select(index),
               },
               label,
             ),
@@ -85,8 +132,11 @@ export function modal_search({ files, commands, shortcuts }) {
 }
 
 function search(query, items) {
-  return go(query, items, {
-    key: 'label',
-    limit: max_search_results
-  })
+  return map(
+    go(query, items, {
+      key: 'label',
+      limit: max_search_results,
+    }),
+    (result) => result.obj,
+  )
 }

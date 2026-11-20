@@ -55501,6 +55501,10 @@ it's fun when you mix them together, w unread chats as you like.
 
 > "Essential Complexity"
 
+23 20 consume a bit ruanyf weekly.
+
+as usual. "econ".
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
