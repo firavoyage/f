@@ -79,6 +79,7 @@ export function app() {
         await perform('init', {
           thread,
           title: prompt.slice(0, max_title_length),
+          folder
         })
 
         set_thread_index(perform('list'))

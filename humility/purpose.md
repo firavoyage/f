@@ -1533,4 +1533,12 @@ on vscode, when you choose set color theme (or fmt docu w...), and esc on select
 
 (well, i would argue it should be consistent. it should be suffixed w three dots in unicode `…` iff there is secondary menu. well anyway it doesnt matter very much when rendered. just follow the prac.)
 
+---
+
+you can solve a specific problem.
+
+you make it work. you reuse when needed. easier and more efficient in most scanarios.
+
+---
+
 
