@@ -1529,8 +1529,8 @@ though they might be conceptually related anyway.
 
 command palette...
 
-on vscode, when you choose set color theme (or fmt docu w...), and esc on selection menu, it would 
+on vscode, when you choose set color theme (or fmt docu w...), and esc on selection menu, it would esc both. likely it simply opens another modal (select w fzf/input prompt) after closing command palette on selection.
 
-(well, i would argue it should be consistent. it should be suffixed w three dots in unicode `…` iff there is secondary menu.)
+(well, i would argue it should be consistent. it should be suffixed w three dots in unicode `…` iff there is secondary menu. well anyway it doesnt matter very much when rendered. just follow the prac.)
 
 

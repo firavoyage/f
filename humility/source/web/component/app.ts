@@ -44,6 +44,18 @@ export function app() {
   const [thread_index, set_thread_index] = use_state<thread_index | nil>(nil)
   const [thread, set_thread] = use_thread()
   const [display_thread, set_display_thread] = use_display_thread()
+
+  const [should_show_reasoning, set_should_show_reasoning] = use_state(false)
+
+  let is_new_thread = thread_index != nil && !has(thread_index, thread)
+
+  use_debug(thread, display_thread)
+
+  const content = use_ref()
+  const prompt_field = use_ref()
+
+  // set thread url param: nil for new thread, otherwise existing
+  // for simplicity, it technically subscribes a (random) thread regardless
   use_mount(() => {
     set_thread(display_thread ?? random_id())
   })
@@ -53,15 +65,10 @@ export function app() {
   use_effect(() => {
     if (has(thread_index, thread)) {
       set_display_thread(thread)
-    } else if (thread_index != nil) {
+    } else if (is_new_thread) {
       set_display_thread(nil)
     }
   }, [thread_structure.messages])
-
-  const [should_show_reasoning, set_should_show_reasoning] = use_state(false)
-
-  const content = use_ref()
-  const prompt_field = use_ref()
 
   let controls = {
     new_thread() {
@@ -178,8 +185,6 @@ export function app() {
   use_keyboard('enter', identity, {
     when: () => !prompt && document.activeElement == prompt_field.current,
   })
-
-  use_debug(thread, display_thread)
 
   return h(
     h('title.', 'Humility'),
