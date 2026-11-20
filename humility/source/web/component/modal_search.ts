@@ -11,8 +11,6 @@ export function modal_search({ files, commands, shortcuts }) {
     set_open(true)
   })
 
-  use_keyboard('esc', () => log('esc pressed'))
-
   use_keyboard(
     'esc',
     () => {

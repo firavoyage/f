@@ -50,9 +50,8 @@ export function app() {
   const [should_show_reasoning, set_should_show_reasoning] = use_state(false)
 
   const [modal_prompt_open, set_modal_prompt_open] = use_state(false)
-  const modal_prompt_set_value = use_ref()
-  const modal_prompt_initial_value = use_ref()
-  const modal_prompt_placeholder = use_ref()
+
+  const [should_use_vimium, set_should_use_vimium] = use_state(true)
 
   let is_new_thread = thread_index != nil && !has(thread_index, thread)
 
@@ -60,6 +59,9 @@ export function app() {
 
   const content = use_ref()
   const prompt_field = use_ref()
+  const modal_prompt_set_value = use_ref()
+  const modal_prompt_initial_value = use_ref()
+  const modal_prompt_placeholder = use_ref()
 
   function open_prompt_modal({ value, set_value, placeholder }) {
     set_modal_prompt_open(true)
@@ -68,6 +70,53 @@ export function app() {
     modal_prompt_set_value.current = set_value
     modal_prompt_placeholder.current = placeholder
   }
+
+  function use_vimium(on) {
+    const jk_scroll_distance = 60
+    const du_scroll_percentage = 0.5
+    const space_scroll_percentage = 0.9
+    const distances = {
+      j: jk_scroll_distance,
+      k: -jk_scroll_distance,
+      d: du_scroll_percentage,
+      u: -du_scroll_percentage,
+      space: space_scroll_percentage,
+      'shift+space': -space_scroll_percentage,
+    }
+    const field_tags = ['input', 'textarea']
+
+    function is_inserting() {
+      return has(field_tags, document.activeElement?.tagName.toLowerCase())
+    }
+
+    use_keyboard(
+      'esc',
+      () => {
+        document.activeElement?.blur()
+      },
+      {
+        when: on && is_inserting(),
+      },
+    )
+
+    use_keyboard('i', () => prompt_field?.current?.focus(), {
+      when: () => on && !is_inserting(),
+    })
+
+    use_mount(() => {
+      set_interval(function() {
+        scroll_by(content, distances['j'])
+      }, 1000)
+    })
+
+    map(distances, ([key, distance]) =>
+      use_keyboard(key, () => scroll_by(content, distances[key]), {
+        when: on && !is_inserting(),
+      }),
+    )
+  }
+
+  use_vimium(should_use_vimium)
 
   // set thread url param: nil for new thread, otherwise existing
   // for simplicity, it technically subscribes a (random) thread regardless
@@ -427,6 +476,27 @@ async function send(action: action, payload: any, request: id) {
   log('perform', action, payload)
 
   ws.send(stringify(request_payload))
+}
+
+function scroll_by(
+  ref,
+  distance,
+  scroll_behavior: 'smooth' | 'instant' = 'instant',
+) {
+  log('scroll?')
+
+  if (!ref.current) {
+    return
+  }
+
+  if (abs(distance) <= 1) {
+    distance = ref.current.clientHeight * distance
+  }
+
+  ref.current.scrollBy({
+    top: distance,
+    behavior: scroll_behavior,
+  })
 }
 
 let text = identity
