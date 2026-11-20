@@ -1,10 +1,12 @@
-export function empty_thread_structure() {
+export function empty_thread_structure(): thread_structure {
   return {
     tree: {
       0: {
         children: [],
       },
     },
+    roots: [0],
+    focus: 0,
     messages: {},
   }
 }

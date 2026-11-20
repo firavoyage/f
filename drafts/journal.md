@@ -55495,6 +55495,12 @@ it's boring to take uni lectures or play gok alone.
 
 it's fun when you mix them together, w unread chats as you like.
 
+20
+
+01 40 stick a new quote on the laptop.
+
+> "Essential Complexity"
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

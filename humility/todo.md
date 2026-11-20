@@ -1,7 +1,8 @@
 # plan
 
-- roots main
-- tools
+implement tool calls
+
+> archi thread
 
 ---
 
@@ -52,10 +53,6 @@ connect to have via cli, through json (e.g. action, payload). stdin maybe, or fl
 would be easy to escape and dump some string.
 
 alternatively, you can leverage js ecosystem (await import).
-
----
-
-tool calls
 
 ---
 

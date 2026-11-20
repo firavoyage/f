@@ -21,6 +21,8 @@ tree:
     children:
       - asdf
     focus: asdf
+roots: [0, 1, 2] # root[] where root: number
+focus: 0 # root, current main thread (e.g. after compact)
 messages:
   # you do not render 0
   1: message structure
@@ -31,45 +33,17 @@ config:
   #   model: gpt-6-luna
   system_prompt:
   tools: # just be separate because that how it shows on ux
-metadata?:
-  roots: [0, 1, 2]
-  # get title and folder from thread index instead, no redundancy
-  # title:
-  # folder:
+metadata?: # for arbitrary data?
+  # get title and folder from thread index (no redundancy)
 ```
 
-thread history?
+thread history: jsonl of type, time, payload
 
-```yaml
-- action: init
-  ...:
-- action: send message
-  user?:
-  payload:
-    prompt:
-  time...:
-- action: generate
-  payload: complete finished message, as if non streaming
-- action: set system prompt # historical actions might not be relevant or designed to be reversible, or technically replayable (informationally yes if done properly)
-```
+message history: jsonl of type, time, payload
 
-server history?
+server history: plain text log
 
-```yaml
-- client connected!
-- receive delta
-- respond
-```
-
-server log?
-
-```log
-# you may use "scalable file name (e.g. ab/cd/foobar.log)"
-
-# server history represented in log format, e.g.
-
-2026-11-15 01:54:08 [info] [traverse] Starting traversal
-```
+<!-- you may use "scalable file name (e.g. ab/cd/foobar.log)" -->
 
 message structure
 

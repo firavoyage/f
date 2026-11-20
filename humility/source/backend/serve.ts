@@ -359,7 +359,8 @@ function append_json_log(file, type, payload) {
 
 function append_server_log(message, payload?) {
   if (is(payload, 'present')) {
-    append(server_log_file, `${format_log(message)}\n${serialize(payload)}`)
+    append(server_log_file, `${format_log(message)}${serialize(payload)}`)
+    // append(server_log_file, `${format_log(message)}\n${serialize(payload)}`)
   } else {
     append(server_log_file, format_log(message))
   }

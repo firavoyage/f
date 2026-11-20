@@ -390,8 +390,10 @@ async function send(action: action, payload: any, request: id) {
 }
 
 declare global {
+  type node = root | id
+  
+  type root = number
   type id = string
-  type node = number | id
 
   type role = 'system' | 'user' | 'assistant' | 'tool'
 
@@ -403,13 +405,14 @@ declare global {
         focus?: node
       }
     >
+    roots: root[],
+    focus: root,
     messages: Record<id, message_structure>
     config?: {
       system_prompt: string
       model: string
       provider: string
     }
-    roots?: number[]
   }
 
   type message_structure = {
