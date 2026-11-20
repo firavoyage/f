@@ -77,14 +77,22 @@ foo = use state initial value?
 # components
 
 ```
-# modal isnt needed. it basically provides a class for styling and passes all its children. it should be focus trapped but it might not be actively trapping/looping but rather disable tab/shift tab and hide on outside click, as the input/query is always focused.
-# well you may have one
-# modal
+modal
+  backdrop # let clicks pass though via css
+  modal
+    children
 
 input_modal value set value
-  # no backdrop
   modal
     input
 
+select_modal items: {id, label, render = label, select}[], search: query -> id[] = fzf
+  modal
+    input query
+    items
+      item focus?
 
+command palette open? set open? commands shortcuts? text: command -> localized text = title case, search: query = commands.keys -> command[] = fzf
 ```
+
+
