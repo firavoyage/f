@@ -75,6 +75,9 @@ color:
   on-surface-low:
     light: palette.gray.700
     dark: palette.gray.300
+  surface-high:
+    # light: palette.gray.100
+    dark: palette.gray.700
   sidebar:
     light: palette.gray.250
     dark: palette.gray.700
@@ -140,7 +143,7 @@ prompt:
 modal:
   modal: fixed top-0 bottom-0 left-0 right-0 pointer-events-none flex justify-center
   backdrop: fixed top-0 bottom-0 left-0 right-0 pointer-events-none
-  content: z-800 w-prose h-sm bg-white pointer-events-all
+  content: fixed z-800 w-prose h-sm bg-surface-high pointer-events-auto
 textarea:
   textarea: w-full h-fit rounded-md
   textarea:focus-visble: outline-focus outline-sm offset-2 rounded-md

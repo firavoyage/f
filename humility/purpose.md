@@ -1541,4 +1541,18 @@ you make it work. you reuse when needed. easier and more efficient in most scana
 
 ---
 
+you dont have to polymorph use state.
+
+it's a kind of generalization to "take iff provided". in practical logic you would almost always choose either but not both on one specific component.
+
+---
+
+refine vimium and make normal/insert mode more deterministic.
+
+e.g. it really hooks esc. dont wanna fight it.
+
+well actually vimium might be for traditional blogs w links and a few inputs like search.
+
+it doesnt really do much or work consistently on modern web app.
+
 

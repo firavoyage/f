@@ -16,6 +16,8 @@ export function modal_prompt({ open, set_open, initial_value, set_value, placeho
 
   use_keyboard('esc', () => {
     set_open(false)
+  }, {
+    when: open
   })
 
   return open && h(

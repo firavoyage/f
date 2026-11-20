@@ -16,6 +16,7 @@ const { stringify, parse } = JSON
 import { marked } from 'marked'
 import { build_context, empty_thread_structure } from 'utility/thread'
 import { modal_prompt } from './modal_prompt'
+import { modal_search } from './modal_search'
 
 const ws_retry_delay = 1000
 const ws_max_jitter = 1000
@@ -48,7 +49,7 @@ export function app() {
 
   const [should_show_reasoning, set_should_show_reasoning] = use_state(false)
 
-  const [modal_prompt_open, set_modal_prompt_open] = use_state(true)
+  const [modal_prompt_open, set_modal_prompt_open] = use_state(false)
   const modal_prompt_set_value = use_ref()
   const modal_prompt_initial_value = use_ref()
   const modal_prompt_placeholder = use_ref()
@@ -85,13 +86,13 @@ export function app() {
   }, [thread_structure.messages])
 
   let commands = {
-    change_current_folder(){
+    change_current_folder() {
       open_prompt_modal({
         value: folder,
         set_value: set_folder,
-        placeholder: text('folder')
+        placeholder: text('folder'),
       })
-    }
+    },
   }
 
   let controls = {
@@ -349,6 +350,7 @@ export function app() {
         set_value: modal_prompt_set_value.current,
         placeholder: modal_prompt_placeholder.current,
       }),
+      h(modal_search),
     ),
   )
 }
@@ -428,6 +430,7 @@ async function send(action: action, payload: any, request: id) {
 }
 
 let text = identity
+use({ text })
 
 declare global {
   type node = root | id
@@ -501,4 +504,7 @@ declare global {
       modification_time?: number
     }
   >
+
+  var text: text
 }
+type text = typeof text
