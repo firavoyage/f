@@ -34,7 +34,7 @@ export function modal_search({ files, commands, shortcuts }) {
     h(
       modal,
       h(
-        'modal_prompt',
+        'modal_search',
         h(input, {
           value: query,
           set_value: set_query,
@@ -42,6 +42,12 @@ export function modal_search({ files, commands, shortcuts }) {
           ref: field,
           // autofocus: true
         }),
+        h(
+          'modal_search_results',
+          map(commands, ([command, fn]) => {
+            return text(command)
+          })
+        )
       ),
     )
   )

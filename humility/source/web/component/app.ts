@@ -53,6 +53,8 @@ export function app() {
 
   const [should_use_vimium, set_should_use_vimium] = use_state(true)
 
+  const [sidebar_open, set_sidebar_open] = use_state(false)
+
   let is_new_thread = thread_index != nil && !has(thread_index, thread)
 
   use_debug({ folder, thread, display_thread })
@@ -133,7 +135,12 @@ export function app() {
         placeholder: text('folder'),
       })
     },
+    toggle_sidebar(){
+      set_sidebar_open()
+    }
   }
+
+  use_keyboard('ctrl+b', commands.toggle_sidebar)
 
   let controls = {
     new_thread() {
@@ -266,6 +273,7 @@ export function app() {
       'app',
       h(
         sidebar,
+        {open: sidebar_open, set_open: set_sidebar_open},
         h(
           'button.nav_new_thread',
           {
@@ -398,7 +406,9 @@ export function app() {
         set_value: modal_prompt_set_value.current,
         placeholder: modal_prompt_placeholder.current,
       }),
-      h(modal_search),
+      h(modal_search, {
+        commands
+      }),
     ),
   )
 }
@@ -496,7 +506,12 @@ function scroll_by(
   })
 }
 
-let text = identity
+// let text = identity
+function text(s: string) {
+  return map(s.split('_'), (word) => {
+    return word.slice(0, 1).toUpperCase() + word.slice(1)
+  }).join(' ')
+}
 use({ text })
 
 declare global {
