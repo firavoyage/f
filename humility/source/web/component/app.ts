@@ -55,7 +55,7 @@ export function app() {
 
   let is_new_thread = thread_index != nil && !has(thread_index, thread)
 
-  use_debug(folder)
+  use_debug({ folder, thread, display_thread })
 
   const content = use_ref()
   const prompt_field = use_ref()
@@ -114,19 +114,16 @@ export function app() {
 
   // set thread url param: nil for new thread, otherwise existing
   // for simplicity, it technically subscribes a (random) thread regardless
-  use_mount(() => {
+  use_effect(() => {
     set_thread(display_thread ?? random_id())
-  })
-  // use_effect(() => {
-  //   set_thread(display_thread ?? random_id())
-  // }, [display_thread])
+  }, [display_thread])
   use_effect(() => {
     if (has(thread_index, thread)) {
       set_display_thread(thread)
     } else if (is_new_thread) {
       set_display_thread(nil)
     }
-  }, [thread_structure.messages])
+  }, [thread, is_new_thread])
 
   let commands = {
     change_current_folder() {
@@ -260,8 +257,8 @@ export function app() {
     // you may want to just browse existing threads
     if (is_new_thread) {
       prompt_field.current?.focus()
-    } 
-  }, [thread, is_new_thread])  
+    }
+  }, [thread, is_new_thread])
 
   return h(
     h('title.', 'Humility'),

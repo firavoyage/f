@@ -118,7 +118,9 @@ export function s<T>(initial_value: T, options: s<T> = {}) {
 
       if (has(current_params, url_param)) {
         set_state(deserialize(current_params[url_param]))
-      }
+      } else {
+        set_state(initial_value)
+      } 
     })
   }
 
