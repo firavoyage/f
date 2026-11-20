@@ -97,7 +97,7 @@ export function app() {
         document.activeElement?.blur()
       },
       {
-        when: on && is_inserting(),
+        when: () => on && is_inserting(),
       },
     )
 

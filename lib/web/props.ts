@@ -85,7 +85,8 @@ export function p<T>(props: T): T {
             // converted_props[normalized_key] = "t"
             // converted_props[normalized_key] = true
           } else {
-            converted_props[normalized_key] = false
+            converted_props[normalized_key] = nil
+            // converted_props[normalized_key] = false
             // continue
           }
         } else {

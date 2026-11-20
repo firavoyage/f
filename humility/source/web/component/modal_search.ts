@@ -13,6 +13,7 @@ export function modal_search({ files, commands, shortcuts }) {
 
   const [query, set_query] = use_state('')
   const field = use_ref()
+  const focus_element = use_ref()
 
   use_keyboard('ctrl+p', () => {
     set_query('')
@@ -47,7 +48,7 @@ export function modal_search({ files, commands, shortcuts }) {
     items = commands
   } else {
     items = files
-  } 
+  }
 
   let results = search(normalize_query(query), items)
 
@@ -74,13 +75,20 @@ export function modal_search({ files, commands, shortcuts }) {
       if (results.length > 0) {
         results[index].fn()
         set_open(false)
-      } 
+      }
     },
   }
 
   use_effect(() => {
     set_focus(0)
   }, [query])
+
+  use_effect(() => {
+    focus_element.current?.scrollIntoView?.({
+      behavior: 'auto',
+      block: 'nearest',
+    })
+  }, [focus])
 
   use_keyboard('ctrl+j', controls.down, {
     when: open,
@@ -95,7 +103,7 @@ export function modal_search({ files, commands, shortcuts }) {
     when: open,
   })
   use_keyboard('enter', () => controls.select(focus), {
-    when: open
+    when: open,
   })
 
   return (
@@ -124,11 +132,12 @@ export function modal_search({ files, commands, shortcuts }) {
                 {
                   focus: focus == index,
                   onclick: () => controls.select(index),
+                  ref: focus == index && focus_element,
                 },
                 label,
               ),
             ),
-          )
+          ),
         ),
       ),
     )
@@ -148,7 +157,7 @@ function search(query, items) {
 function normalize_query(query: string) {
   if (query.startsWith(command_prefix)) {
     query = query.slice(1)
-  } 
+  }
 
   query = query.trim()
 
