@@ -6,7 +6,6 @@ import 'web/design/utilitarian.css'
 
 import { textarea } from './textarea'
 import { scroll } from './scroll'
-import { sidebar } from './sidebar'
 
 // import { post } from 'lib/web/request'
 import { copy } from 'lib/web/clipboard'
@@ -17,6 +16,7 @@ import { marked } from 'marked'
 import { build_context, empty_thread_structure } from 'utility/thread'
 import { modal_prompt } from './modal_prompt'
 import { modal_search } from './modal_search'
+import { init_localstorage_prefix } from 'lib/web/state'
 
 const ws_retry_delay = 1000
 const ws_max_jitter = 1000
@@ -26,8 +26,13 @@ const action_timeout = 1000
 
 const max_title_length = 65 * 2
 
+init_localstorage_prefix('humility')
+
 export const use_display_thread = s(nil as id | nil, {
   url_param: 'thread',
+})
+export const use_sidebar_open = s(false, {
+  localstorage: 'sidebar',
 })
 
 export const use_thread = s(nil as id | nil)
@@ -53,7 +58,7 @@ export function app() {
 
   const [should_use_vimium, set_should_use_vimium] = use_state(true)
 
-  const [sidebar_open, set_sidebar_open] = use_state(false)
+  const [sidebar_open, set_sidebar_open] = use_sidebar_open()
 
   let is_new_thread = thread_index != nil && !has(thread_index, thread)
 
@@ -278,6 +283,19 @@ export function app() {
     }
   }, [thread, is_new_thread])
 
+  let threads: {
+    id: id
+    title: string
+    folder: string
+    creation_time: number
+    is_hidden?: bool
+  }[] = thread_index
+  threads = map(threads ?? {}, ([thread, thread_index_item]) => ({
+    ...thread_index_item,
+    id: thread,
+  }))
+  threads = threads.filter(({ is_hidden }) => !is_hidden)
+
   return h(
     h('title.', 'Humility'),
     h(
@@ -294,44 +312,37 @@ export function app() {
           ),
           h(
             'threads',
-            map(
-              thread_index ?? {},
-              ([current_thread, { title, is_hidden }]) =>
-                !is_hidden &&
+            map(threads, ({ id, title }) =>
+              h(
                 h(
+                  'threads_thread',
+                  { focus: thread == id },
                   h(
-                    'threads_thread',
-                    h(
-                      'button.threads_set_thread',
-                      {
-                        onclick() {
-                          set_thread(current_thread)
-                        },
+                    'button.threads_set_thread',
+                    {
+                      onclick() {
+                        set_thread(id)
                       },
-                      title || 'Untitled',
-                    ),
-                    h(
-                      'button.threads_delete_thread',
-                      {
-                        async onclick() {
-                          perform('hide', { thread: current_thread })
-                          set_thread_index((index) => {
-                            index[current_thread].is_hidden = true
-                          })
-                          if (thread == current_thread) {
-                            controls.new_thread()
-                          }
-                          // await perform('hide', { thread: current_thread })
-                          // if (thread == current_thread) {
-                          //   controls.new_thread()
-                          // }
-                          // set_thread_index(perform('list'))
-                        },
+                    },
+                    title || 'Untitled',
+                  ),
+                  h(
+                    'button.threads_delete_thread',
+                    {
+                      async onclick() {
+                        perform('hide', { thread: id })
+                        set_thread_index((index) => {
+                          index[id].is_hidden = true
+                        })
+                        if (thread == id) {
+                          controls.new_thread()
+                        }
                       },
-                      'delete',
-                    ),
+                    },
+                    'delete',
                   ),
                 ),
+              ),
             ),
           ),
         ),
@@ -603,16 +614,14 @@ declare global {
     args: Record<Key, any>
   }
 
-  type thread_index = Record<
-    id,
-    {
-      title: string
-      folder: string
-      is_hidden?: boolean
-      creation_time?: number
-      modification_time?: number
-    }
-  >
+  type thread_index = Record<id, thread_index_item>
+  type thread_index_item = {
+    title: string
+    folder: string
+    is_hidden?: boolean
+    creation_time?: number
+    modification_time?: number
+  }
 
   var text: text
 }

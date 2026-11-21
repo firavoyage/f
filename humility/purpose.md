@@ -1593,6 +1593,8 @@ organize folders
 
 interesting, seems `archi folder` is really detailed spec. but what if i just impl manually? <!-- i dont wanna name as original "intent spec implementation". clearly drafts could do nothingo on implementation. -->
 
+15 40
+
 ---
 
 tool calls are easy. but know that they are not particularly useful when you just wanna attach sth (text based) for an answer. it's very easy to copy paste stuff. maybe even easier than some url pasting + browser automation or browser ext/userscript + readability (heuristic, guessing!) + localhost endpoint based extraction.
@@ -1602,5 +1604,12 @@ it's essential for many workflows though, e.g. homework auto solving, problem/le
 well, it's essential for searching to be general, tbh.
 
 ---
+
+lib/state... quite weird when you have localstorage prefix ending w a space... well... would work fine as long as app name contains no spaces (and generally you would have only one app per site unless on localstorage dev server on the same port)
+
+---
+
+js array.filter returns those true.
+
 
 

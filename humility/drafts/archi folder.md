@@ -26,6 +26,13 @@ thread index
   folder
   creation time
   is hidden?
+
+threads
+  id
+  title
+  folder
+  creation time
+  is hidden?
 ```
 
 output
