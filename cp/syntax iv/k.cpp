@@ -298,6 +298,12 @@ wa?!
 
 still wa?!
 
+
+
+0pt.
+
+
+
 */
 
 int min_attack_count(int x){

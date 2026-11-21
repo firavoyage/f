@@ -16,6 +16,14 @@ g
 
 in cpp sort, return true if you wanna put a before b on cmp
 
+o
+
+variable name issue.
+
+yk, conceptually, `i` and `a[i]` are really the same. you say, "for the i th number".
+
+and the same number can appear everywhere in cp. like the original array a, prefix sum a, some derived ds it maps to, etc.
+
 # wonderings
 
 h

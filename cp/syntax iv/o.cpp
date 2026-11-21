@@ -285,8 +285,95 @@ sim?
 
 y, sim. you would rm at most n numbers.
 
+
+
+n in e5.
+
+
+
+(unordered) map is easy to use it seems.
+
+
+
+wa
+
+0pt?! not even sample?!
+
+
+
+ah, variable name issue.
+
+
+
 */
 
 void solve() {
-  
+  unordered_map<int, int> first_appearance;
+
+  readint(n);
+
+  readseq(a, 1, n);
+
+  // 0 indexed, [0, count - 1]
+  seq(stack, n);
+
+  int count = 0;
+
+  each(i, 1, n){
+    if(first_appearance.count(a[i])){
+      int index = first_appearance[a[i]];
+
+      each(j, index, count - 1){
+        first_appearance.erase(stack[j]);
+
+      }
+
+      count = index;
+
+
+    }else{
+      stack[count] = a[i];
+      first_appearance[a[i]] = count;
+
+      count += 1;
+    }
+  }
+
+  prn(count);
+
 }
+// void solve() {
+//   unordered_map<int, int> first_appearance;
+
+//   readint(n);
+
+//   readseq(a, 1, n);
+
+//   // 0 indexed, [0, count - 1]
+//   seq(stack, n);
+
+//   int count = 0;
+
+//   each(i, 1, n){
+//     if(first_appearance.count(i)){
+//       int index = first_appearance[a[i]];
+
+//       each(j, index, count - 1){
+//         first_appearance.erase(a[j]);
+
+//       }
+
+//       count = index;
+
+
+//     }else{
+//       stack[count] = a[i];
+//       first_appearance[a[i]] = count;
+
+//       count += 1;
+//     }
+//   }
+
+//   prn(count);
+
+// }
