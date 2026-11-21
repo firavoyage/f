@@ -283,6 +283,23 @@ you will lose (n - i + 1) * a[i]
 
 you wanna minimize lose
 
+
+
+wa?
+
+wa only on test 8
+
+
+
+let's make some assertion
+like is it nil?
+
+
+
+ah, when you delete one, it has no impact on prev,
+it simply deducts a[i] on all i to n, but...
+on a[i] itself, it deducts all prev.
+
 */
 
 int inf = 1e18;
@@ -296,8 +313,57 @@ void solve() {
   readseq(a, 1, n);
 
   int min_lose = inf;
+  int min_index = nil;
+
+  int prefix_sum = 0;
+
 
   each(i, 1, n){
-    
+    prefix_sum += a[i];
+
+
+    int lose = a[i] * (n-i) + prefix_sum;
+
+    if(lose < min_lose){
+      min_lose = lose;
+      min_index = i;
+
+    }
   }
+
+  // if(min_index == nil || min_lose == inf){
+  //   force_tle();
+
+  // }
+  prn(min_index);
+
 }
+// void solve() {
+//   // info(inf);
+
+
+//   readint(n);
+
+//   readseq(a, 1, n);
+
+//   int min_lose = inf;
+//   int min_index = nil;
+
+
+//   each(i, 1, n){
+//     int lose = a[i] * (n-i+1);
+
+//     if(lose < min_lose){
+//       min_lose = lose;
+//       min_index = i;
+
+//     }
+//   }
+
+//   // if(min_index == nil || min_lose == inf){
+//   //   force_tle();
+
+//   // }
+//   prn(min_index);
+
+// }
