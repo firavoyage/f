@@ -451,6 +451,102 @@ export function app() {
   )
 }
 
+function build_flat_hierarchy(
+  thread_index: thread_index,
+  expanded_folders: Set<string>,
+): ({
+  type: 'file',
+  label: string,
+  id: id
+} | {
+  type: 'folder',
+  label: string,
+  id: string
+})[] {
+  let threads: {
+    id: id
+    title: string
+    folder: string
+    creation_time: number
+    is_hidden?: bool
+  }[] = thread_index
+  threads = map(threads ?? {}, ([thread, thread_index_item]) => ({
+    ...thread_index_item,
+    id: thread,
+  }))
+  threads = threads.filter(({ is_hidden }) => !is_hidden)
+
+  let root = {}
+
+  for (const thread of threads) {
+    let current_children = root
+
+    let dirs = thread.folder.split('/').filter((dir) => dir != '')
+
+    for (const dir of dirs) {
+      if (!has(current_children, dir)) {
+        current_children[dir] = {
+          type: 'folder',
+          label: dir,
+          creation_time: thread.creation_time,
+          children: {},
+        }
+      }
+
+      current_children = current_children[dir].children
+    }
+
+    current_children[thread.id] = {
+      type: 'file',
+      label: thread.title,
+      creation_time: thread.creation_time,
+    }
+  }
+
+  let whitespace = {
+    type: 'whitespace',
+  }
+
+  let items = []
+
+  function append_children(children, dir = '') {
+    map(children, ([id, child]) => {
+      const { type, label, creation_time, children } = child
+
+      if (type == 'file') {
+        items.push({
+          type,
+          label,
+          id,
+        })
+      } else if (type == 'folder') {
+        let folder_path = `${dir}/${label}`
+
+        items.push({
+          type,
+          label,
+          id: folder_path,
+        })
+
+        append_children(children, folder_path)
+
+        items.push(whitespace)
+      }
+    })
+  }
+
+  append_children(root)
+
+  items = map(items, (item, index) => {
+    if (items?.[index + 1]?.type == 'whitespace') {
+      return
+    }
+    return item
+  })
+
+  return items
+}
+
 function render(md: string) {
   return marked.parse(md, {
     gfm: true,

@@ -186,28 +186,56 @@ export async function generate(
 }
 
 export async function generate_mock(
-  { context },
+  { context, endpoint, model, key },
   append: append,
   finish: finish,
+  stream = identity,
 ) {
-  let content = ''
+  let start_time = monotonic(),
+    end_time
+  let content = '',
+    reasoning = ''
+  let usage = {}
+  let first_append_time: number = monotonic() + 1
 
-  for (const i of each(5)) {
-    let delta = `reply for ${
-      context.length
-    } messages, ${now().format()} ${i} ${random()}\n`
+  let stream_text = 'foo bar'
 
-    content += delta
+  for (const i of each(3)) {
+    let delta = {
+      content: `hello ${now().format()}`,
+      reasoning: 'some thoughts',
+    }
 
-    append({
-      content: delta,
-      reasoning: '',
-    })
+    append(delta)
+
     await sleep(1)
   }
 
-  finish({
-    content,
-    reasoning: '',
-  })
+  finish(complete())
+
+  function complete() {
+    end_time = monotonic()
+
+    let duration = end_time - (first_append_time ?? start_time)
+
+    let perf = {
+      tokens_per_second: (usage?.total_tokens ?? 0) / duration,
+      time_to_first_token: first_append_time - start_time,
+    }
+
+    // parse tools
+
+    return {
+      role: 'assistant' as const,
+      content,
+      reasoning,
+      start_time,
+      end_time,
+      usage,
+      perf,
+      model,
+    }
+  }
+
+  return stream_text
 }
