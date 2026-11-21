@@ -20,7 +20,7 @@ export function modal_search({ files, commands, shortcuts }) {
 
   map(shortcuts, (shortcut) => {
     const { command, key, when = true } = shortcut
-    
+
     shortcut_map[command] = key
     use_keyboard(key, commands[command], {
       when,

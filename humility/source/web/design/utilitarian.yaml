@@ -152,8 +152,9 @@ modal:
   search: w-full max-h-sm flex-col
   search_query: w-full h-12 bg-surface-higher
   search_results: grow-1
-  search_result: w-full px-8 h-8 flex text-md
-  search_result_label: h-full grow-1 text-nowrap text-ellipsis
+  search_result: w-full px-8 h-8 flex items-center
+  # search_result: w-full px-8 h-8 flex text-md items-center
+  search_result_label: grow-1 text-nowrap text-ellipsis
   search_result_info: text-on-surface-low
   search_result[focus]: bg-focus
 textarea:
