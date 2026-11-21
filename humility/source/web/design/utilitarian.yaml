@@ -122,7 +122,7 @@ main:
   main: grow-1 flex-col
   # main: grow-1 relative
 status:
-  status: w-full h-8 bg-surface-semihigh text-on-surface-low flex-col justify-center
+  status: w-full h-8 bg-surface-semihigh text-on-surface-low px-2 flex-col justify-center
   folder: text-right
 page:
   # page: flex justify-center py-8 pb-48

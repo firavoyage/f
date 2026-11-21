@@ -145,7 +145,7 @@ export function app() {
     change_current_folder() {
       open_prompt_modal({
         value: folder,
-        set_value(folder: string){
+        set_value(folder: string) {
           set_folder(trim(trim(folder), '/'))
         },
         placeholder: text('folder'),
@@ -195,17 +195,17 @@ export function app() {
 
       await perform('generate', { thread })
     },
-    toggle_folder(folder){
+    toggle_folder(folder) {
       let folders = set(expanded_folders)
 
       if (has(folders, folder)) {
         folders.delete(folder)
       } else {
         folders.add(folder)
-      } 
+      }
 
       set_expanded_folders(array(folders))
-    }
+    },
   }
 
   let broadcasts: Record<event, fn> = {
@@ -317,7 +317,10 @@ export function app() {
     set_expanded_folders(array(folders))
   }, [folder])
 
-  let flat_hierarchy = build_flat_hierarchy(thread_index ?? {}, expanded_folders)
+  let flat_hierarchy = build_flat_hierarchy(
+    thread_index ?? {},
+    expanded_folders,
+  )
 
   return h(
     h('title.', 'Humility'),
@@ -411,9 +414,9 @@ export function app() {
                     h(
                       'message_content',
                       {
-                        onclick(){
+                        onclick() {
                           copy(message.content)
-                        }
+                        },
                       },
                       message?.reasoning &&
                         should_show_reasoning &&
@@ -505,7 +508,7 @@ export function app() {
 function build_flat_hierarchy(
   thread_index: thread_index,
   expanded_folders: string[],
-  options = {}
+  options = {},
 ): (
   | {
       type: 'file'
@@ -588,11 +591,9 @@ function build_flat_hierarchy(
 
         let is_expanded = has(expanded_folders, folder_path)
 
-        if (!is_expanded) {
-          return
+        if (is_expanded) {
+          append_children(children, `${folder_path}/`)
         }
-
-        append_children(children, `${folder_path}/`)
 
         items.push(whitespace)
       }
@@ -713,25 +714,25 @@ function text(s: string) {
 use({ text })
 
 function trim_start(s: string, char: string = ' '): string {
-  if (char === '') return s;
+  if (char === '') return s
 
   while (s.startsWith(char)) {
-    s = s.slice(char.length);
+    s = s.slice(char.length)
   }
-  return s;
+  return s
 }
 
 function trim_end(s: string, char: string = ' '): string {
-  if (char === '') return s;
+  if (char === '') return s
 
   while (s.endsWith(char)) {
-    s = s.slice(0, -char.length);
+    s = s.slice(0, -char.length)
   }
-  return s;
+  return s
 }
 
 function trim(s: string, char: string = ' '): string {
-  return trim_end(trim_start(s, char), char);
+  return trim_end(trim_start(s, char), char)
 }
 
 declare global {
