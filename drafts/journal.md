@@ -55510,15 +55510,16 @@ as usual. "econ".
 20 20 change vscode "vim" shortcuts.
 
 ```
-alt j: move cursor down
-alt k: move cursor up
-alt h: move cursor left
-alt l: move cursor right
+ctrl j, alt j: move cursor down
+ctrl k, alt k: move cursor up
+ctrl h, alt h: move cursor left
+ctrl l, alt l: move cursor right
 ctrl lr: move cursor by word
 ctrl du: move viewport
 shift lrdu: select
+ctrl shift du: select
 ctrl shift lr: select by word
-ctrl jk: move current line
+# ctrl jk: move current line
 ctrl shift jk: add cursor
 ```
 
