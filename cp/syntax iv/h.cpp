@@ -296,19 +296,63 @@ still 91.3. maybe there's sth wrong w my code. idk.
 
 
 
+ah template issue, fast pow.
+
+it typically takes mod. but mod doesnt work for neg numbers.
+
+
+
+(and on the board my score is typically weird, unlike those missing one, i missed two)
+
+
+
+still 91.3...
+swap?
+
+
+
+or maybe you should avoid sqrt precision loss?!
+
+ah damn it i used int for distance.
+not sqrt issue anymore.
+
+
+
+still...
+
+
+
+unbelievable.
+
+that's wild!
+
+
+
+wait... n in 1 e3, and can they choose the same point?
+
 */
 
 struct point
 {
   int x;
   int y;
-
 };
 
 int distance(point a, point b){
-  return sqrt(pow((a.x - b.x), 2) + pow((a.y - b.y), 2));
-
+  int dx = a.x - b.x, dy = a.y - b.y;
+  return dx * dx + dy * dy;
 }
+// float distance(point a, point b){
+//   int dx = a.x - b.x, dy = a.y - b.y;
+//   return sqrt(dx * dx + dy * dy);
+// }
+// int distance(point a, point b){
+//   int dx = a.x - b.x, dy = a.y - b.y;
+//   return sqrt(dx * dx + dy * dy);
+// }
+// int distance(point a, point b){
+//   return sqrt(pow((a.x - b.x), 2) + pow((a.y - b.y), 2));
+// }
 
 void solve() {
   readint(n);
@@ -318,14 +362,13 @@ void solve() {
   each(i, 1, n){
     read(a[i].x);
     read(a[i].y);
-
   }
 
-  float max_distance = 0;
+  int max_distance = -inf;
   point max_a, max_b;
 
   each(i, 1, n){
-    each(j, i + 1, n){
+    each(j, i, n){
       if(distance(a[i], a[j]) > max_distance){
         max_distance = distance(a[i], a[j]);
         max_a = a[i];
@@ -334,11 +377,58 @@ void solve() {
     }
   }
 
-  prn(max_b.x, max_b.y, max_a.x, max_a.y);
-
+  prn(max_a.x, max_a.y, max_b.x, max_b.y);
 }
+// void solve() {
+//   readint(n);
 
+//   vector<point> a(n + 5);
 
+//   each(i, 1, n){
+//     read(a[i].x);
+//     read(a[i].y);
+//   }
+
+//   int max_distance = 0;
+//   point max_a, max_b;
+
+//   each(i, 1, n){
+//     each(j, i + 1, n){
+//       if(distance(a[i], a[j]) > max_distance){
+//         max_distance = distance(a[i], a[j]);
+//         max_a = a[i];
+//         max_b = a[j];
+//       }
+//     }
+//   }
+
+//   prn(max_a.x, max_a.y, max_b.x, max_b.y);
+// }
+// void solve() {
+//   readint(n);
+
+//   vector<point> a(n + 5);
+
+//   each(i, 1, n){
+//     read(a[i].x);
+//     read(a[i].y);
+//   }
+
+//   float max_distance = 0;
+//   point max_a, max_b;
+
+//   each(i, 1, n){
+//     each(j, i + 1, n){
+//       if(distance(a[i], a[j]) > max_distance){
+//         max_distance = distance(a[i], a[j]);
+//         max_a = a[i];
+//         max_b = a[j];
+//       }
+//     }
+//   }
+
+//   prn(max_b.x, max_b.y, max_a.x, max_a.y);
+// }
 // void solve() {
 //   readint(n);
 

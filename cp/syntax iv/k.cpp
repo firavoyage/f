@@ -304,10 +304,21 @@ still wa?!
 
 
 
+floor sq 2x might be already a bit large.
+obviously (sq + 1)(sq) >= sq^2
+
+
+
+
+ah, really! variable name issue.
+especially confusing and a[i] = i on the sample
+
 */
 
+int inf = 1e18;
+
 int min_attack_count(int x){
-  each(i, floor(sqrt(2 * x)), x){
+  each(i, max(floor(sqrt(2 * x)) - 5, 0), inf){
     if((i+1)*i >= 2 * x){
       return i;
 
@@ -317,6 +328,17 @@ int min_attack_count(int x){
   return 0;
 
 }
+// int min_attack_count(int x){
+//   each(i, floor(sqrt(2 * x)), x){
+//     if((i+1)*i >= 2 * x){
+//       return i;
+
+//     }
+//   }
+
+//   return 0;
+
+// }
 // int min_attack_count(int x){
 //   each(i, floor(sqrt(2 * x)), x){
 //     if((i+1)*i >= x){
@@ -345,9 +367,23 @@ void solve() {
   readseq(a, 1, n);
 
   each(i, 1, n){
-    count += min_attack_count(i);
+    count += min_attack_count(a[i]);
   }
 
   prn(count);
 
 }
+// void solve() {
+//   readint(n);
+  
+//   int count = 0;
+
+//   readseq(a, 1, n);
+
+//   each(i, 1, n){
+//     count += min_attack_count(i);
+//   }
+
+//   prn(count);
+
+// }

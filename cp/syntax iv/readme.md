@@ -16,7 +16,7 @@ g
 
 in cpp sort, return true if you wanna put a before b on cmp
 
-o
+o, k
 
 variable name issue.
 
@@ -29,5 +29,15 @@ and the same number can appear everywhere in cp. like the original array a, pref
 h
 
 find the pair of most euclidean distance among n points, could it be faster than n^2
+
+# upsolved problems
+
+h
+
+really it can be done in nlogn it seems.
+
+geometry!
+
+diameter of a convex hull ~~fat polygon~~!
 
 
