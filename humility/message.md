@@ -21,3 +21,9 @@ what can you do w raspberry pi <!-- jyy gen swe lecture 4: dorm lab -->
 what does event stream look like, why do they use event stream instead of ndjson text stream
 
 why is jsonl overwhelmingly popular in agent engineering
+
+all vimium keyboard shortcuts
+
+how easy and comfortable is it to use vimium to navigate through links or to click links, what do ppl say
+
+

@@ -140,6 +140,10 @@ export function app() {
     },
   }
 
+  let shortcuts = {
+    
+  }
+
   use_keyboard('ctrl+b', commands.toggle_sidebar)
 
   let controls = {
@@ -271,9 +275,8 @@ export function app() {
     h('title.', 'Humility'),
     h(
       'app',
-      h(
-        sidebar,
-        { open: sidebar_open, set_open: set_sidebar_open },
+      sidebar_open && h(
+        'sidebar',
         h(
           'button.nav_new_thread',
           {

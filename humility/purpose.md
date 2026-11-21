@@ -1579,4 +1579,10 @@ command palette.
 
 folder.
 
----
+## 21
+
+polish ux.
+
+bind shortcuts on search (command palette) component.
+
+
