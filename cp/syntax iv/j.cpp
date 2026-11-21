@@ -251,7 +251,7 @@ void solve();
 
 const bool is_single_task = false;
 
-const bool should_debug = true;
+const bool should_debug = false;
 
 signed main() {
   ios_base::sync_with_stdio(false);
@@ -272,7 +272,19 @@ signed main() {
 
 /*
 
+tle?!
 
+
+
+wow impressive,
+t in e4 while l r in 1 e9
+
+
+
+it cant work for any > 200
+
+one of 10 digits and produce at most 20 on pow
+each yield 10 (9 actually) at most
 
 */
 
@@ -297,13 +309,18 @@ void solve() {
 
   int count = 0;
 
-  each(i, l, r){
+  each(i, l, min(r, 200)){
     string s = to_string(pow(i, 2));
+
+    info(i, s);
 
     int digit_sum = 0;
 
     each(c, 0, last(s)){
-      int digit = c - '0';
+      int digit = s[c] - '0';
+      // int digit = c - '0';
+
+      info(digit);
 
       digit_sum += digit;
     }
@@ -315,5 +332,37 @@ void solve() {
   }
 
   prn(count);
-  
+
 }
+// void solve() {
+//   // test();
+
+//   readint(l, r);
+
+//   int count = 0;
+
+//   each(i, l, r){
+//     string s = to_string(pow(i, 2));
+
+//     info(i, s);
+
+//     int digit_sum = 0;
+
+//     each(c, 0, last(s)){
+//       int digit = s[c] - '0';
+//       // int digit = c - '0';
+
+//       info(digit);
+
+//       digit_sum += digit;
+//     }
+
+//     if(i == digit_sum){
+//       count += 1;
+
+//     }
+//   }
+
+//   prn(count);
+
+// }
