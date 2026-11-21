@@ -27,7 +27,7 @@ import {
 import { generate, generate_mock } from 'utility/generate'
 import { resolve_endpoint_model_key } from 'utility/resolve'
 
-const { deserialize: parse, stringify } = JSON
+const { parse, stringify } = JSON
 
 const { port } = parse_options({
   port: {
@@ -146,7 +146,7 @@ let actions: Record<action, fn> = {
       model,
     })
 
-    let stream_text = await generate(
+    let stream_text = await generate_mock(
       {
         context,
         endpoint,
@@ -157,6 +157,17 @@ let actions: Record<action, fn> = {
       finish,
       stream,
     )
+    // let stream_text = await generate(
+    //   {
+    //     context,
+    //     endpoint,
+    //     model,
+    //     key,
+    //   },
+    //   append,
+    //   finish,
+    //   stream,
+    // )
 
     function append(delta: delta) {
       broadcast('append_message', {

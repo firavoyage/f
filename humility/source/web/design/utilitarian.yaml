@@ -71,6 +71,9 @@ color:
   surface:
     light: palette.gray.100
     dark: palette.gray.900
+  surface-semihigh:
+    light: palette.gray.150
+    dark: palette.gray.800
   surface-high:
     light: palette.gray.200
     dark: palette.gray.750
@@ -86,9 +89,6 @@ color:
   sidebar:
     light: palette.gray.250
     dark: palette.gray.700
-  user:
-    light: palette.gray.150
-    dark: palette.gray.800
   field:
     light: palette.gray.200
     dark: palette.gray.750
@@ -103,16 +103,21 @@ typeface:
 app:
   app: flex h-100dvh font-sans bg-surface text-on-surface text-lg
 sidebar:
-  sidebar: w-md h-full bg-sidebar
+  sidebar: w-md h-full bg-sidebar flex-col
 nav:
   new_thread: px-2
 threads:
-  thread: flex h-8
-  set_thread: flex-1 px-2 text-nowrap text-ellipsis
+  threads: grow-1
+  thread, folder, whitespace: flex h-8
+  folder: text-on-surface-low
+  set_thread, toggle_folder: flex-1 px-2 text-nowrap text-ellipsis
   delete_thread: px-2
 main:
   main: grow-1 flex-col
   # main: grow-1 relative
+status:
+  status: w-full h-8 bg-surface-semihigh text-on-surface-low flex-col justify-center
+  folder: text-right
 page:
   # page: flex justify-center py-8 pb-48
   # content: w-prose
@@ -132,7 +137,7 @@ page:
 message:
   # message: w-full pt-8 flex justify-center
   message: w-full py-4 flex justify-center
-  message[role=user]: bg-user
+  message[role=user]: bg-surface-semihigh
   content: relative py-4 w-prose
   # prose:
   prose_reasoning: text-on-surface-low

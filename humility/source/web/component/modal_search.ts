@@ -67,6 +67,8 @@ export function modal_search({ files, commands, shortcuts }) {
     items = files
   }
 
+  // items = [...items, ...items, ...items]
+
   let results = search(normalize_query(query), items)
 
   let first_index = 0

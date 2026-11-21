@@ -28,14 +28,19 @@ const max_title_length = 65 * 2
 
 init_localstorage_prefix('humility')
 
-export const use_display_thread = s(nil as id | nil, {
-  url_param: 'thread',
-})
 export const use_sidebar_open = s(false, {
   localstorage: 'sidebar',
 })
 
+export const use_display_thread = s(nil as id | nil, {
+  url_param: 'thread',
+})
 export const use_thread = s(nil as id | nil)
+
+export const use_folder = s('', {
+  localstorage: 'folder',
+  // localstorage: 'cwd',
+})
 
 export function app() {
   use_sync_theme('system')
@@ -44,7 +49,7 @@ export function app() {
 
   const [prompt, set_prompt] = use_state('')
 
-  const [folder, set_folder] = use_state('')
+  const [folder, set_folder] = use_folder()
   const [thread_structure, set_thread_structure] = use_state<thread_structure>(
     empty_thread_structure(),
   )
@@ -283,18 +288,7 @@ export function app() {
     }
   }, [thread, is_new_thread])
 
-  let threads: {
-    id: id
-    title: string
-    folder: string
-    creation_time: number
-    is_hidden?: bool
-  }[] = thread_index
-  threads = map(threads ?? {}, ([thread, thread_index_item]) => ({
-    ...thread_index_item,
-    id: thread,
-  }))
-  threads = threads.filter(({ is_hidden }) => !is_hidden)
+  let flat_hierarchy = build_flat_hierarchy(thread_index)
 
   return h(
     h('title.', 'Humility'),
@@ -312,37 +306,60 @@ export function app() {
           ),
           h(
             'threads',
-            map(threads, ({ id, title }) =>
-              h(
-                h(
-                  'threads_thread',
-                  { focus: thread == id },
-                  h(
-                    'button.threads_set_thread',
-                    {
-                      onclick() {
-                        set_thread(id)
-                      },
-                    },
-                    title || 'Untitled',
-                  ),
-                  h(
-                    'button.threads_delete_thread',
-                    {
-                      async onclick() {
-                        perform('hide', { thread: id })
-                        set_thread_index((index) => {
-                          index[id].is_hidden = true
-                        })
-                        if (thread == id) {
-                          controls.new_thread()
-                        }
-                      },
-                    },
-                    'delete',
-                  ),
-                ),
-              ),
+            h(
+              scroll,
+              map(flat_hierarchy, ({ type, label, id }) => {
+                if (type == 'file') {
+                  return h(
+                    h(
+                      'threads_thread',
+                      { focus: thread == id },
+                      h(
+                        'button.threads_set_thread',
+                        {
+                          onclick() {
+                            set_thread(id)
+                          },
+                        },
+                        label || 'Untitled',
+                      ),
+                      h(
+                        'button.threads_delete_thread',
+                        {
+                          async onclick() {
+                            perform('hide', { thread: id })
+                            set_thread_index((index) => {
+                              index[id].is_hidden = true
+                            })
+                            if (thread == id) {
+                              controls.new_thread()
+                            }
+                          },
+                        },
+                        'delete',
+                      ),
+                    ),
+                  )
+                } else if (type == 'folder') {
+                  return h(
+                    h(
+                      'threads_folder',
+                      { focus: thread == id },
+                      h(
+                        'button.threads_toggle_folder',
+                        {
+                          onclick() {
+                            // toggle expanded
+                          },
+                        },
+                        label,
+                      ),
+                    ),
+                  )
+                } else if (type == 'whitespace') {
+                  return h('threads_whitespace')
+                }
+              }),
             ),
           ),
         ),
@@ -454,15 +471,21 @@ export function app() {
 function build_flat_hierarchy(
   thread_index: thread_index,
   expanded_folders: Set<string>,
-): ({
-  type: 'file',
-  label: string,
-  id: id
-} | {
-  type: 'folder',
-  label: string,
-  id: string
-})[] {
+): (
+  | {
+      type: 'file'
+      label: string
+      id: id
+    }
+  | {
+      type: 'folder'
+      label: string
+      id: string
+    }
+  | {
+      type: 'whitespace'
+    }
+)[] {
   let threads: {
     id: id
     title: string
@@ -528,6 +551,13 @@ function build_flat_hierarchy(
           id: folder_path,
         })
 
+        // todo
+        let is_expanded = true
+
+        if (!is_expanded) {
+          return
+        }
+
         append_children(children, folder_path)
 
         items.push(whitespace)
@@ -538,7 +568,7 @@ function build_flat_hierarchy(
   append_children(root)
 
   items = map(items, (item, index) => {
-    if (items?.[index + 1]?.type == 'whitespace') {
+    if (item.type == 'whitespace' && items?.[index + 1]?.type == 'whitespace') {
       return
     }
     return item

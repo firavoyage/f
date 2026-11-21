@@ -1611,5 +1611,16 @@ lib/state... quite weird when you have localstorage prefix ending w a space... w
 
 js array.filter returns those true.
 
+---
+
+16 30 (~40min)?
+
+fine result.
+
+waste time just because ive plenty of them? lol.
+
+anyway nothing wrong to hand code if i feel like it at the moment.
+
+---
 
 

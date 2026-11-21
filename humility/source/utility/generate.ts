@@ -202,11 +202,14 @@ export async function generate_mock(
 
   for (const i of each(3)) {
     let delta = {
-      content: `hello ${now().format()}`,
-      reasoning: 'some thoughts',
+      content: `hello ${now().format()}\n`,
+      reasoning: 'some thoughts\n',
     }
 
     append(delta)
+
+    content += delta.content
+    reasoning += delta.reasoning
 
     await sleep(1)
   }
