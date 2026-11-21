@@ -1,7 +1,5 @@
 #include <bits/stdc++.h>
 
-// #define append push_back
-
 #define repeat(n) for (int _ = 0; _ < n; _ += 1)
 // closed interval
 #define each(i, a, b) for (int i = (a); i <= (b); i += 1)
@@ -23,6 +21,9 @@
 #define readseq(v, a, b) \
   seq(v, b);        \
   read_vec(v, a, b);
+
+#define last(a) ((a).size() - 1)
+// #define append push_back
 
 const int modulo = 1e9 + 7;
 
@@ -122,6 +123,8 @@ auto sort_vec(auto&& vec, auto l, auto r) {
 auto sort_vec(auto&& vec, auto l, auto r, auto cmp) {
   sort(vec.begin() + (l), vec.begin() + (r) + 1, cmp);
 }
+
+#define sort sort_vec
 
 // string
 

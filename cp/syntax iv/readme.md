@@ -10,4 +10,16 @@ feels alt would be easier to type than ctrl.
 
 also, i could scroll w keys now. massive win.
 
+# til
+
+g
+
+in cpp sort, return true if you wanna put a before b on cmp
+
+# wonder
+
+h
+
+find the pair of most euclidean distance among n points, could it be faster than n^2
+
 
