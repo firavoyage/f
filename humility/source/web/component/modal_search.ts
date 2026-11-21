@@ -107,7 +107,7 @@ export function modal_search({ files, commands, shortcuts }) {
       behavior: 'auto',
       block: 'nearest',
     })
-  }, [focus])
+  }, [open, focus])
 
   use_keyboard('ctrl+j', controls.down, {
     when: open,

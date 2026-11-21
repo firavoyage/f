@@ -55505,6 +55505,23 @@ it's fun when you mix them together, w unread chats as you like.
 
 as usual. "econ".
 
+21
+
+20 20 change vscode "vim" shortcuts.
+
+```
+alt j: move cursor down
+alt k: move cursor up
+alt h: move cursor left
+alt l: move cursor right
+ctrl lr: move cursor by word
+ctrl du: move viewport
+shift lrdu: select
+ctrl shift lr: select by word
+ctrl jk: move current line
+ctrl shift jk: add cursor
+```
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

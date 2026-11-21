@@ -1,20 +1,28 @@
-import { serialize, deserialize, thread_index_file, get_thread_file } from 'action/index'
+import {
+  serialize,
+  deserialize,
+  thread_index_file,
+  get_thread_file,
+} from 'action/index'
 import { read, write, join, santinize } from 'lib/file'
 import { at } from 'lib/time'
+import { build_context } from 'utility/thread'
 
-type build = {
+type export_to_dir = {
   dir: string
   include?: string[]
   ignore?: string[]
 }
 
-export function build({ dir, include = [''], ignore = [] }: build) {
+export function export_to_dir({
+  dir,
+  include = [''],
+  ignore = [],
+}: export_to_dir) {
   let threads = deserialize(read(thread_index_file))
 
   let included_threads = set(
-    map(threads, ([thread, metadata]) => {
-      const { folder = '' } = metadata
-
+    map(threads, ([thread, { folder = '' }]) => {
       for (const parent of include) {
         if (does_match(parent, folder)) {
           return thread
@@ -24,9 +32,7 @@ export function build({ dir, include = [''], ignore = [] }: build) {
   )
 
   let non_ignored_threads = set(
-    map(threads, ([thread, metadata]) => {
-      const { folder = '', is_hidden } = metadata
-
+    map(threads, ([thread, { folder = '', is_hidden }]) => {
       if (is_hidden) {
         return
       }
@@ -78,7 +84,8 @@ export function build({ dir, include = [''], ignore = [] }: build) {
 
       contents.push(`# ${title}`)
 
-      let messages = deserialize(read(get_thread_file(thread)))
+      let thread_structure = deserialize(read(get_thread_file(thread)))
+      let messages = build_context(thread_structure)
 
       for (const message of messages) {
         const { role, content } = message
@@ -87,7 +94,7 @@ export function build({ dir, include = [''], ignore = [] }: build) {
           contents.push(`## ${content}`)
         } else if (role == 'assistant') {
           contents.push(content)
-        } 
+        }
       }
     }
 
