@@ -67,13 +67,13 @@ export function app() {
 
   let is_new_thread = thread_index != nil && !has(thread_index, thread)
 
-  // use_debug({ folder, thread, display_thread })
-
   const content = use_ref()
   const prompt_field = use_ref()
   const modal_prompt_set_value = use_ref()
   const modal_prompt_initial_value = use_ref()
   const modal_prompt_placeholder = use_ref()
+
+  use_debug({ folder, modal_prompt_initial_value })
 
   function open_prompt_modal({ value, set_value, placeholder }) {
     set_modal_prompt_open(true)

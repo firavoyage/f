@@ -82,6 +82,8 @@ you maintain a state of expanded (or collapsed) folders, a set mathematically.
 
 by default, you may expand current folder (and all its parents). _you may expand all or collapse all (show only random threads)._
 
+_ideally you should scroll to cwd on sidebar._
+
 to flatten a hierarchy, 
 
 you apply custom sorting, i.e. flatten to entries, and sort, ~~and convert back to obj if needed~~
@@ -116,4 +118,6 @@ you may indicate cwd on new thread.
 
 _the creation time of a folder may be the first thread inside. you may update all parent folders for each thread in linear time (folder depth is generally constant compared)._
 
+_you may have h1 h2 h3 on different nesting level._
 
+_you may treat it as complete fs and have all (batch) fs operations (e.g. batch renaming, cp mv -r)_

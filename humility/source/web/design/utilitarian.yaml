@@ -108,8 +108,10 @@ nav:
   new_thread: px-2
 threads:
   threads: grow-1
-  thread, folder, whitespace: flex h-8
-  folder: text-on-surface-low
+  thread: flex h-8
+  whitespace: h-4
+  folder: flex text-on-surface-low text-2xl bold
+  # folder: flex text-on-surface-low text-xl semibold
   set_thread, toggle_folder: flex-1 px-2 text-nowrap text-ellipsis
   delete_thread: px-2
 main:

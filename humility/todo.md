@@ -113,6 +113,13 @@ component:
   element: [raw prop: raw value]
 ```
 
+---
+
+lib/style: support both css var and mixins.
+
+e.g. `h2: mt-12 mb-6 text-2xl bold, ... text.h2`
+
+you may consider it mixin if each (space separated) is valid util.
 
 ---
 
