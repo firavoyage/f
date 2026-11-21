@@ -69,8 +69,10 @@ export function app() {
 
   const content = use_ref()
   const prompt_field = use_ref()
+
+  const [modal_prompt_initial_value, set_modal_prompt_initial_value] =
+    use_state()
   const modal_prompt_set_value = use_ref()
-  const modal_prompt_initial_value = use_ref()
   const modal_prompt_placeholder = use_ref()
 
   use_debug({ folder, modal_prompt_initial_value })
@@ -78,7 +80,7 @@ export function app() {
   function open_prompt_modal({ value, set_value, placeholder }) {
     set_modal_prompt_open(true)
 
-    modal_prompt_initial_value.current = value
+    set_modal_prompt_initial_value(value)
     modal_prompt_set_value.current = set_value
     modal_prompt_placeholder.current = placeholder
   }
@@ -442,7 +444,7 @@ export function app() {
       h(modal_prompt, {
         open: modal_prompt_open,
         set_open: set_modal_prompt_open,
-        initial_value: modal_prompt_initial_value.current,
+        initial_value: modal_prompt_initial_value,
         set_value: modal_prompt_set_value.current,
         placeholder: modal_prompt_placeholder.current,
       }),

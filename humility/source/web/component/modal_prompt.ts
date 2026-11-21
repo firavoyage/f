@@ -1,24 +1,42 @@
 import { input } from './input'
 import { modal } from './modal'
 
-export function modal_prompt({ open, set_open, initial_value, set_value, placeholder }) {
+export function modal_prompt({
+  open,
+  set_open,
+  initial_value,
+  set_value,
+  placeholder,
+}) {
   const [content, set_content] = use_state(initial_value)
 
   const field = use_ref()
 
-  use_keyboard('enter', () => {
-    set_value(content)
+  use_effect(() => {
+    set_content(initial_value)
+  }, [initial_value])
 
-    set_open(false)
-  }, {
-    when: document.activeElement == field.current
-  })
+  use_keyboard(
+    'enter',
+    () => {
+      set_value(content)
 
-  use_keyboard('esc', () => {
-    set_open(false)
-  }, {
-    when: open
-  })
+      set_open(false)
+    },
+    {
+      when: document.activeElement == field.current,
+    },
+  )
+
+  use_keyboard(
+    'esc',
+    () => {
+      set_open(false)
+    },
+    {
+      when: open,
+    },
+  )
 
   use_effect(() => {
     if (!open || !field.current) {
@@ -28,11 +46,19 @@ export function modal_prompt({ open, set_open, initial_value, set_value, placeho
     field.current.focus()
   }, [open])
 
-  return open && h(
-    modal,
+  return (
+    open &&
     h(
-      'modal_prompt',
-      h(input, { value: content, set_value: set_content, placeholder, ref: field }),
-    ),
+      modal,
+      h(
+        'modal_prompt',
+        h(input, {
+          value: content,
+          set_value: set_content,
+          placeholder,
+          ref: field,
+        }),
+      ),
+    )
   )
 }
