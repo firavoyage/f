@@ -419,6 +419,11 @@ such an answer can work?!
 
 anyway. hacks are common in cp.
 
+
+
+a groupmate insists that order matters and it works after it runs a custom cmp
+to swap the two outputs...
+
 */
 
 struct point
@@ -443,6 +448,8 @@ int distance(point a, point b){
 //   return sqrt(pow((a.x - b.x), 2) + pow((a.y - b.y), 2));
 // }
 
+bool should_swap = true;
+
 void solve() {
   readint(n);
 
@@ -466,6 +473,9 @@ void solve() {
     }
   }
 
+  if(should_swap){
+    swap(max_a, max_b);
+  }
   prn(max_a.x, max_a.y, max_b.x, max_b.y);
 }
 // void solve() {

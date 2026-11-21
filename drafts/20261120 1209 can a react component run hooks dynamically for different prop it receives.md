@@ -1,7 +1,5 @@
 # can a react component run hooks dynamically for different prop it receives
 
-## can a react component run hooks dynamically for different prop it receives
-
 Not safely by changing *which* hooks or *how many* hooks run based on a prop. React expects hooks to be called in the same order on every render.
 
 You **can** pass a prop into a hook:
@@ -28,7 +26,7 @@ function ViewA() {
 
 Avoid conditionally calling a hook, such as `if (mode === "a") useHookA()`, or calling hooks in a loop.
 
-## for example, when you take the state and set state if passed, and get one locally otherwise, what if you just use some if branch or default value when deconstructing props
+# for example, when you take the state and set state if passed, and get one locally otherwise, what if you just use some if branch or default value when deconstructing props
 
 Yes—use a conditional **value**, but call the hook unconditionally. This is the common controlled/uncontrolled pattern:
 
@@ -58,7 +56,7 @@ The hook is always called in the same order. The conditional only selects which 
 
 One important detail: `useState(defaultValue)` uses `defaultValue` only on the first render. If the parent later changes `value`, `currentValue` follows it because the component is controlled. Use `value !== undefined` to detect control if `false` or `null` might be valid values.
 
-## what if you really use hooks dynamically
+# what if you really use hooks dynamically
 
 If you mean calling a different hook—or a different number of hooks—depending on a prop, don’t do that. React relies on hooks being called in the same order on every render, so this can associate state with the wrong hook or trigger a “Rendered more/fewer hooks than expected” error.
 
@@ -95,7 +93,7 @@ function PanelB() {
 
 Each component has its own fixed hook order. Avoid putting the conditional inside one component’s hook calls, or inside a custom hook in a way that changes which hooks it calls.
 
-## does react care hook order or number when the props are already changed and prev state could not be used anyway, or do they preserve states even when props change
+# does react care hook order or number when the props are already changed and prev state could not be used anyway, or do they preserve states even when props change
 
 React still cares about hook order, even when props change. **Changing props does not reset the component’s state**: React preserves hook state for the same component instance, matching each hook to its position in the call order.
 
@@ -103,7 +101,7 @@ For example, if a prop makes you skip a `useState` call, later hooks shift posit
 
 State is generally reset when the component is removed and a different component is rendered in its place (or its `key` changes). So for genuinely different hook sets, split the branches into separate components; each then has a stable hook order. Switching branches may unmount one component and mount the other, resetting its local state when you switch back.
 
-## does state persist when props change
+# does state persist when props change
 
 Yes. **State persists when props change** as long as React keeps the same component instance in the same position in the render tree.
 

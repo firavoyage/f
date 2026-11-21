@@ -1,7 +1,5 @@
 # how to set text vertical align in css
 
-## how to set text vertical align in css
-
 `vertical-align` works on inline elements, inline-blocks, and table cells—not regular block elements.
 
 ```css

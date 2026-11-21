@@ -1625,4 +1625,14 @@ or maybe 60min after testing.
 
 ---
 
+`wondering`
 
+within one folder,
+
+you may export individual threads, or grouping them as the same topic.
+
+idk, maybe it would be better when i do not separate them.
+
+and more consistent
+
+---

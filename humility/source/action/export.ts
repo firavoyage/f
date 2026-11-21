@@ -56,7 +56,12 @@ export function export_to_dir({
 
     if (folder == '') {
       folder = title
-    }
+    } else {
+      folder = `${folder} ${title}`
+    } 
+    // if (folder == '') {
+    //   folder = title
+    // }
 
     if (!has(folders, folder)) {
       folders[folder] = {
@@ -82,7 +87,7 @@ export function export_to_dir({
     for (const thread of current_threads) {
       const { title } = threads[thread]
 
-      contents.push(`# ${title}`)
+      // contents.push(`# ${title}`)
 
       let thread_structure = deserialize(read(get_thread_file(thread)))
       let messages = build_context(thread_structure)
@@ -91,7 +96,8 @@ export function export_to_dir({
         const { role, content } = message
 
         if (role == 'user') {
-          contents.push(`## ${content}`)
+          contents.push(`# ${content}`)
+          // contents.push(`## ${content}`)
         } else if (role == 'assistant') {
           contents.push(content)
         }
