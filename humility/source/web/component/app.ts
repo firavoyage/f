@@ -57,7 +57,7 @@ export function app() {
 
   let is_new_thread = thread_index != nil && !has(thread_index, thread)
 
-  use_debug({ folder, thread, display_thread })
+  // use_debug({ folder, thread, display_thread })
 
   const content = use_ref()
   const prompt_field = use_ref()
@@ -337,6 +337,7 @@ export function app() {
         ),
       h(
         'main',
+        is_new_thread && h('status', h('status_folder', folder)),
         h(
           'page',
           h(

@@ -1591,5 +1591,16 @@ organize folders
 
 ---
 
+interesting, seems `archi folder` is really detailed spec. but what if i just impl manually? <!-- i dont wanna name as original "intent spec implementation". clearly drafts could do nothingo on implementation. -->
+
+---
+
+tool calls are easy. but know that they are not particularly useful when you just wanna attach sth (text based) for an answer. it's very easy to copy paste stuff. maybe even easier than some url pasting + browser automation or browser ext/userscript + readability (heuristic, guessing!) + localhost endpoint based extraction.
+
+it's essential for many workflows though, e.g. homework auto solving, problem/lecture pre linter/verifier, scraping researching, coding. i.e. any research based, iterative, or batch processing.
+
+well, it's essential for searching to be general, tbh.
+
+---
 
 
