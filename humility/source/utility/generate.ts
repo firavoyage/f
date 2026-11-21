@@ -2,13 +2,13 @@ import { serialize, deserialize, config_file, env_file } from 'action/index'
 import { random } from 'lib/random'
 import { monotonic, now } from 'lib/time'
 
-const { deserialize: parse, stringify } = JSON
+const { parse, stringify } = JSON
 
 export async function generate(
   { context, endpoint, model, key },
   append: append,
   finish: finish,
-  stream = identity,
+  stream: fn = identity,
 ) {
   let start_time = monotonic(),
     end_time

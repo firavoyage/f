@@ -146,7 +146,7 @@ let actions: Record<action, fn> = {
       model,
     })
 
-    let stream_text = await generate_mock(
+    let stream_text = await generate(
       {
         context,
         endpoint,
@@ -157,17 +157,6 @@ let actions: Record<action, fn> = {
       finish,
       stream,
     )
-    // let stream_text = await generate(
-    //   {
-    //     context,
-    //     endpoint,
-    //     model,
-    //     key,
-    //   },
-    //   append,
-    //   finish,
-    //   stream,
-    // )
 
     function append(delta: delta) {
       broadcast('append_message', {

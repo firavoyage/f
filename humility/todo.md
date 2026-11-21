@@ -182,6 +182,14 @@ serve/append server log: give every ws client a readable id when they (dis)conne
 
 ## w
 
+web/vimium: support mod key navigation
+
+e.g. ctrl jkhl
+
+dont quite know. maybe you should use alt jkhl 
+
+---
+
 action/list: support range
 
 ---
