@@ -64,7 +64,7 @@ palette:
     pink: oklch(65.1% 0.158 352)
     purple: oklch(52.5% 0.175 317)
     slate: oklch(60.1% 0.037 247)
-  focus: 
+  focus:
     light: color-mix(in oklab, palette.accent 20%, transparent)
     dark: color-mix(in oklab, palette.accent 50%, transparent)
 color:
@@ -166,7 +166,7 @@ modal:
   search_result: w-full px-8 h-8 flex items-center
   # search_result: w-full px-8 h-8 flex text-md items-center
   search_result_label: grow-1 text-nowrap text-ellipsis
-  search_result_info: text-on-surface-low
+  search_result_info: shrink-0 text-on-surface-low text-nowrap text-ellipsis
   search_result[focus]: bg-focus
 textarea:
   textarea: w-full h-fit rounded-md

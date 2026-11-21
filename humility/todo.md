@@ -27,6 +27,16 @@ rename thread
 
 ## s
 
+extension/export: migrate
+
+---
+
+web/modal search: fix search algorithm
+
+fuzzysort doesnt work as expected. some valid results are omitted, idk.
+
+---
+
 utility/thread: generalize build plain context
 
 - support system prompt

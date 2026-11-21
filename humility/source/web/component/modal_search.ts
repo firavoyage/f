@@ -60,7 +60,7 @@ export function modal_search({ files, commands, shortcuts }) {
     items = map(commands, ([command, fn]) => ({
       // id: command,
       label: text(command),
-      info: shortcut_map[command],
+      info: shortcut_map[command] ?? '',
       fn,
     }))
   } else {
@@ -166,8 +166,13 @@ export function modal_search({ files, commands, shortcuts }) {
 
 function search(query, items) {
   return map(
-    go(query, items, {
-      key: 'label',
+    go(query, map(items, (item) => (
+      {
+        ...item,
+        target: `${item.label} ${item.info}`
+      }
+    )), {
+      key: 'target',
       limit: max_search_results,
     }),
     (result) => result.obj,
