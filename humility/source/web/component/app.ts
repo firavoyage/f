@@ -76,8 +76,6 @@ export function app() {
   const modal_prompt_set_value = use_ref()
   const modal_prompt_placeholder = use_ref()
 
-  use_debug({ folder, modal_prompt_initial_value })
-
   function open_prompt_modal({ value, set_value, placeholder }) {
     set_modal_prompt_open(true)
 
@@ -141,13 +139,14 @@ export function app() {
   }, [thread, is_new_thread])
 
   let commands = {
+    new_thread() {
+      set_thread(random_id())
+    },
     change_current_folder() {
       open_prompt_modal({
         value: folder,
         set_value(folder: string){
-
-
-          set_folder(folder)
+          set_folder(trim(trim(folder), '/'))
         },
         placeholder: text('folder'),
       })
@@ -168,12 +167,13 @@ export function app() {
       command: 'toggle_sidebar',
       key: 'ctrl+b',
     },
+    {
+      command: 'new_thread',
+      key: 'alt+n',
+    },
   ]
 
   let controls = {
-    new_thread() {
-      set_thread(random_id())
-    },
     async send_prompt() {
       if (entries(thread_structure.messages).length == 0) {
         await perform('init', {
@@ -195,6 +195,17 @@ export function app() {
 
       await perform('generate', { thread })
     },
+    toggle_folder(folder){
+      let folders = set(expanded_folders)
+
+      if (has(folders, folder)) {
+        folders.delete(folder)
+      } else {
+        folders.add(folder)
+      } 
+
+      set_expanded_folders(array(folders))
+    }
   }
 
   let broadcasts: Record<event, fn> = {
@@ -276,9 +287,7 @@ export function app() {
     return () => perform('unsubscribe', { thread })
   }, [thread])
 
-  // bind shortcuts
-
-  use_keyboard('alt+n', controls.new_thread)
+  // bind shortcuts for controls
   use_keyboard('enter', controls.send_prompt, {
     when: () => prompt && document.activeElement == prompt_field.current,
   })
@@ -301,12 +310,14 @@ export function app() {
 
     let dirs = folder.split('/')
 
-
+    for (const i of each(1, dirs.length)) {
+      folders.add(dirs.slice(0, i).join('/'))
+    }
 
     set_expanded_folders(array(folders))
   }, [folder])
 
-  let flat_hierarchy = build_flat_hierarchy(thread_index)
+  let flat_hierarchy = build_flat_hierarchy(thread_index ?? {}, expanded_folders)
 
   return h(
     h('title.', 'Humility'),
@@ -318,7 +329,7 @@ export function app() {
           h(
             'button.nav_new_thread',
             {
-              onclick: controls.new_thread,
+              onclick: commands.new_thread,
             },
             'new thread',
           ),
@@ -350,7 +361,7 @@ export function app() {
                               index[id].is_hidden = true
                             })
                             if (thread == id) {
-                              controls.new_thread()
+                              commands.new_thread()
                             }
                           },
                         },
@@ -367,7 +378,7 @@ export function app() {
                         'button.threads_toggle_folder',
                         {
                           onclick() {
-                            // toggle expanded
+                            controls.toggle_folder(id)
                           },
                         },
                         label,
@@ -567,7 +578,7 @@ function build_flat_hierarchy(
           id,
         })
       } else if (type == 'folder') {
-        let folder_path = `${dir}/${label}`
+        let folder_path = `${dir}${label}`
 
         items.push({
           type,
@@ -575,14 +586,13 @@ function build_flat_hierarchy(
           id: folder_path,
         })
 
-        // todo
-        let is_expanded = true
+        let is_expanded = has(expanded_folders, folder_path)
 
         if (!is_expanded) {
           return
         }
 
-        append_children(children, folder_path)
+        append_children(children, `${folder_path}/`)
 
         items.push(whitespace)
       }
@@ -701,6 +711,28 @@ function text(s: string) {
   }).join(' ')
 }
 use({ text })
+
+function trim_start(s: string, char: string = ' '): string {
+  if (char === '') return s;
+
+  while (s.startsWith(char)) {
+    s = s.slice(char.length);
+  }
+  return s;
+}
+
+function trim_end(s: string, char: string = ' '): string {
+  if (char === '') return s;
+
+  while (s.endsWith(char)) {
+    s = s.slice(0, -char.length);
+  }
+  return s;
+}
+
+function trim(s: string, char: string = ' '): string {
+  return trim_end(trim_start(s, char), char);
+}
 
 declare global {
   type node = root | id

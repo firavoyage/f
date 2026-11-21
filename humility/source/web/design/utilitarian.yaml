@@ -83,6 +83,9 @@ color:
   on-surface:
     light: palette.gray.900
     dark: palette.gray.100
+  on-surface-high:
+    light: palette.gray.950
+    dark: palette.gray.50
   on-surface-low:
     light: palette.gray.700
     dark: palette.gray.300
@@ -108,11 +111,12 @@ nav:
   new_thread: px-2
 threads:
   threads: grow-1
-  thread: flex h-8
   whitespace: h-4
-  folder: flex text-on-surface-low text-2xl bold
-  # folder: flex text-on-surface-low text-xl semibold
+  thread: flex h-8
+  folder: flex h-8 text-on-surface-high semibold
+  # folder: flex h-8 text-on-surface-high text-xl semibold
   set_thread, toggle_folder: flex-1 px-2 text-nowrap text-ellipsis
+  toggle_folder: flex-col justify-end
   delete_thread: px-2
 main:
   main: grow-1 flex-col
