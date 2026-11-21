@@ -24,6 +24,21 @@ yk, conceptually, `i` and `a[i]` are really the same. you say, "for the i th num
 
 and the same number can appear everywhere in cp. like the original array a, prefix sum a, some derived ds it maps to, etc.
 
+h
+
+read the problem carefully.
+
+prefer int if feasible when comparing floats.
+
+> if they can choose the same one
+
+init max to -inf and min to inf,
+where inf = 1e18.
+
+~~do not assign max to 0 when you need to take one index that achieves max.~~
+
+assign the ans index as first initially, rather than undefined.
+
 # wonderings
 
 h

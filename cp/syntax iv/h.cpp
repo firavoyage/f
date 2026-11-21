@@ -29,6 +29,8 @@ const int modulo = 1e9 + 7;
 
 const int nil = -1;
 
+const int inf = 1e18;
+
 using namespace std;
 
 // utils
@@ -329,6 +331,93 @@ that's wild!
 
 
 wait... n in 1 e3, and can they choose the same point?
+
+
+
+ac.
+
+ah clearly here's the edge case, like n points of the same.
+
+
+
+let's see if int distance would work...
+
+
+
+interesting, silencer76 showcases hypot on nowcoder solution posts index
+
+```
+#include <iostream>
+#include <cmath>
+using namespace std;
+using ld=long double;
+const int N=1010;
+int x[N],y[N];
+int main(void)
+{
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    ld ans=0;
+    int n,i,j,idx1=1,idx2=1;
+    cin>>n;
+    for(i=1;i<=n;++i)
+        cin>>x[i]>>y[i];
+    for(i=1;i<=n;++i)
+        for(j=i+1;j<=n;++j)
+            if(hypotl(x[i]-x[j],y[i]-y[j])>ans)
+            {
+                ans=hypotl(x[i]-x[j],y[i]-y[j]);
+                idx1=i;
+                idx2=j;
+            }
+    cout<<x[idx1]<<' '<<y[idx1]<<' '<<x[idx2]<<' '<<y[idx2];
+    return 0;
+}
+```
+
+
+
+many solutions actually start at i+1.
+but assign the first one on ans pair as initial value.
+
+anyway.
+
+
+
+```
+#include <iostream>
+#include<vector>
+using namespace std;
+struct point{
+    double x,y;
+};
+int main() {
+   int n;
+   cin>>n;
+   vector<point>p(n);
+   for(int i=0;i<n;i++){
+    cin>>p[i].x>>p[i].y;
+   }
+   double dx1=0,dx2=0,dy1=0,dy2=0;
+   double ans=0;
+   for(int i=0;i<n;i++){
+    for(int j=i+1;j<n;j++){
+        double x1=p[i].x,x2=p[j].x;
+        double y1=p[i].y,y2=p[j].y;
+        if(((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))>=ans){
+            ans=(x1-x2)*(x1-x2)+(y1-y2)*(y1-y2);
+            dx1=x1,dx2=x2,dy1=y1,dy2=y2;
+        }
+    }
+   }
+   cout<<dx1<<" "<<dy1<<" "<<dx2<<" "<<dy2<<"\n";
+}
+// 64 位输出请用 printf("%lld")
+```
+
+such an answer can work?!
+
+anyway. hacks are common in cp.
 
 */
 

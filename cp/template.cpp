@@ -32,6 +32,8 @@ const int modulo = 1e9 + 7;
 
 const int nil = -1;
 
+const int inf = 1e18;
+
 using namespace std;
 
 // utils
