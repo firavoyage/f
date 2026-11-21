@@ -91,6 +91,29 @@ search threads
 
 ## c
 
+lib/style: compile at build time to avoid full page reload
+
+config vite to run a script whenever certain file changes.
+
+---
+
+lib/style: support all css capability
+
+```
+[raw selector]: | # e.g. css animation
+  raw content (design tokens supported)
+[raw selector]:
+  prop: value
+component:
+  element: prop-[raw value] # resolution for raw value should be supported, wo guessing
+  element: p-16px # px is automatically recognized
+  element: [raw prop]-[raw value]
+  element: [raw prop: raw value]
+```
+
+
+---
+
 web/modal search: save history, put recent threads/commands first wo query
 
 localstorage? sync?
