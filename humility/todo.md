@@ -10,6 +10,7 @@ use case:
 
 - analyze py intro pre issues
 - analyze math ref ans issues
+- setup forgejo (or _repo_) via ssh, register free domain name on duckdns via browser automation (human may pick a name or handles a bit captcha stuff maybe), and binds
 
 ---
 
