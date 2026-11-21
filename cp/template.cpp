@@ -18,6 +18,9 @@
 #define readstr(...)  \
   string __VA_ARGS__; \
   read(__VA_ARGS__);
+#define readchar(...)  \
+  char __VA_ARGS__; \
+  read(__VA_ARGS__);
 #define readseq(v, a, b) \
   seq(v, b);        \
   read_vec(v, a, b);

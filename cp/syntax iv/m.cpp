@@ -18,6 +18,9 @@
 #define readstr(...)  \
   string __VA_ARGS__; \
   read(__VA_ARGS__);
+#define readchar(...)  \
+  char __VA_ARGS__; \
+  read(__VA_ARGS__);
 #define readseq(v, a, b) \
   seq(v, b);        \
   read_vec(v, a, b);
@@ -251,7 +254,7 @@ void solve();
 
 const bool is_single_task = true;
 
-const bool should_debug = true;
+const bool should_debug = false;
 
 signed main() {
   ios_base::sync_with_stdio(false);
@@ -272,10 +275,97 @@ signed main() {
 
 /*
 
+searching as sim?!
 
+blockage count = 1
+
+
+n rows, m columns in 2, e3
+right = D, down = S
+
+if blockage on first line or last column, down m-1 times and right n-1 times
+
+else, right n-1 times and down m-1 times
 
 */
 
 void solve() {
+  readint(n, m);
   
+  // blockage position, 1 indexed
+  int x, y;
+
+  string right = "D", down = "S";
+
+  
+  each(i, 1, n){
+    each(j, 1, m){
+      readchar(c);
+      if(c == '#'){
+        y = i;
+        x = j;
+
+      }
+    }
+  }
+
+  info(n, m, x, y);
+
+
+  if(y == 1 || x == m){
+    repeat(n-1){
+      write(down);
+    }
+    repeat(m-1){
+      write(right);
+    }
+  } else {
+    repeat(m-1){
+      write(right);
+    }
+    repeat(n-1){
+      write(down);
+    }
+
+  }
 }
+// void solve() {
+//   readint(n, m);
+  
+//   // blockage position, 1 indexed
+//   int x, y;
+
+//   string right = "D", down = "S";
+
+  
+//   each(i, 1, n){
+//     each(j, 1, m){
+//       readchar(c);
+//       if(c == '#'){
+//         y = i;
+//         x = j;
+
+//       }
+//     }
+//   }
+
+//   info(n, m, x, y);
+
+
+//   if(y == 0 || x == m){
+//     repeat(n-1){
+//       write(down);
+//     }
+//     repeat(m-1){
+//       write(right);
+//     }
+//   } else {
+//     repeat(m-1){
+//       write(right);
+//     }
+//     repeat(n-1){
+//       write(down);
+//     }
+
+//   }
+// }
