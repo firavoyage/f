@@ -279,7 +279,11 @@ void solve() {
   seq(a, n);
   seq(b, n);
 
-  repeat(n){
-    
+  each(i, 1, n){
+    read(a[i]);
+    read(b[i]);
   }
+
+  prn_vec(a, 1, n);
+  prn_vec(b, 1, n);
 }
