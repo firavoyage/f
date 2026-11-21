@@ -16,7 +16,7 @@ g
 
 in cpp sort, return true if you wanna put a before b on cmp
 
-# wonder
+# wonderings
 
 h
 

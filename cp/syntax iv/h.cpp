@@ -280,8 +280,91 @@ clearly it's n^2 complete search.
 
 idk if it could be optimized meaningfully.
 
+
+
+there is some documented quirks on the special judge discussed in the group i remember.
+on the order of output.
+
+
+
+ok fine,
+91.3/100 first attempt.
+
+what if i swap the order?
+
+still 91.3. maybe there's sth wrong w my code. idk.
+
+
+
 */
 
-void solve() {
-  
+struct point
+{
+  int x;
+  int y;
+
+};
+
+int distance(point a, point b){
+  return sqrt(pow((a.x - b.x), 2) + pow((a.y - b.y), 2));
+
 }
+
+void solve() {
+  readint(n);
+
+  vector<point> a(n + 5);
+
+  each(i, 1, n){
+    read(a[i].x);
+    read(a[i].y);
+
+  }
+
+  float max_distance = 0;
+  point max_a, max_b;
+
+  each(i, 1, n){
+    each(j, i + 1, n){
+      if(distance(a[i], a[j]) > max_distance){
+        max_distance = distance(a[i], a[j]);
+        max_a = a[i];
+        max_b = a[j];
+      }
+    }
+  }
+
+  prn(max_b.x, max_b.y, max_a.x, max_a.y);
+
+}
+
+
+// void solve() {
+//   readint(n);
+
+//   vector<point> a(n + 5);
+
+//   each(i, 1, n){
+//     read(a[i].x);
+//     read(a[i].y);
+
+//   }
+
+//   float max_distance = 0;
+//   point max_a, max_b;
+
+//   each(i, 1, n){
+//     each(j, i + 1, n){
+//       if(distance(a[i], a[j]) > max_distance){
+//         max_distance = distance(a[i], a[j]);
+//         max_a = a[i];
+//         max_b = a[j];
+//       }
+//     }
+//   }
+
+//   prn(max_a.x, max_a.y, max_b.x, max_b.y);
+
+// }
+
+
