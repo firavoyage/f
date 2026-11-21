@@ -1585,4 +1585,11 @@ polish ux.
 
 bind shortcuts on search (command palette) component.
 
+---
+
+organize folders
+
+---
+
+
 

@@ -21,7 +21,9 @@ organize (things as) drafts.
 
 ## m
 
-organize folders, rename thread
+move thread
+
+rename thread
 
 ## s
 
