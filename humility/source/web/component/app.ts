@@ -140,11 +140,18 @@ export function app() {
     },
   }
 
-  let shortcuts = {
-    
+  type shortcut = {
+    command: keyof typeof commands
+    key: string
+    when?: fn
   }
 
-  use_keyboard('ctrl+b', commands.toggle_sidebar)
+  let shortcuts: shortcut[] = [
+    {
+      command: 'toggle_sidebar',
+      key: 'ctrl+b',
+    },
+  ]
 
   let controls = {
     new_thread() {
@@ -275,58 +282,59 @@ export function app() {
     h('title.', 'Humility'),
     h(
       'app',
-      sidebar_open && h(
-        'sidebar',
+      sidebar_open &&
         h(
-          'button.nav_new_thread',
-          {
-            onclick: controls.new_thread,
-          },
-          'new thread',
-        ),
-        h(
-          'threads',
-          map(
-            thread_index ?? {},
-            ([current_thread, { title, is_hidden }]) =>
-              !is_hidden &&
-              h(
+          'sidebar',
+          h(
+            'button.nav_new_thread',
+            {
+              onclick: controls.new_thread,
+            },
+            'new thread',
+          ),
+          h(
+            'threads',
+            map(
+              thread_index ?? {},
+              ([current_thread, { title, is_hidden }]) =>
+                !is_hidden &&
                 h(
-                  'threads_thread',
                   h(
-                    'button.threads_set_thread',
-                    {
-                      onclick() {
-                        set_thread(current_thread)
+                    'threads_thread',
+                    h(
+                      'button.threads_set_thread',
+                      {
+                        onclick() {
+                          set_thread(current_thread)
+                        },
                       },
-                    },
-                    title || 'Untitled',
-                  ),
-                  h(
-                    'button.threads_delete_thread',
-                    {
-                      async onclick() {
-                        perform('hide', { thread: current_thread })
-                        set_thread_index((index) => {
-                          index[current_thread].is_hidden = true
-                        })
-                        if (thread == current_thread) {
-                          controls.new_thread()
-                        }
-                        // await perform('hide', { thread: current_thread })
-                        // if (thread == current_thread) {
-                        //   controls.new_thread()
-                        // }
-                        // set_thread_index(perform('list'))
+                      title || 'Untitled',
+                    ),
+                    h(
+                      'button.threads_delete_thread',
+                      {
+                        async onclick() {
+                          perform('hide', { thread: current_thread })
+                          set_thread_index((index) => {
+                            index[current_thread].is_hidden = true
+                          })
+                          if (thread == current_thread) {
+                            controls.new_thread()
+                          }
+                          // await perform('hide', { thread: current_thread })
+                          // if (thread == current_thread) {
+                          //   controls.new_thread()
+                          // }
+                          // set_thread_index(perform('list'))
+                        },
                       },
-                    },
-                    'delete',
+                      'delete',
+                    ),
                   ),
                 ),
-              ),
+            ),
           ),
         ),
-      ),
       h(
         'main',
         h(
@@ -410,21 +418,22 @@ export function app() {
         placeholder: modal_prompt_placeholder.current,
       }),
       h(modal_search, {
-        files: map(thread_index ?? {}, ([id, { title, is_hidden }]) => {
-          if (!is_hidden) {
-            return {
-              label: title,
-              fn() {
-                set_thread(id)
-              },
+        files: map(
+          thread_index ?? {},
+          ([id, { title, folder = '', is_hidden }]) => {
+            if (!is_hidden) {
+              return {
+                label: title,
+                info: folder,
+                fn() {
+                  set_thread(id)
+                },
+              }
             }
-          }
-        }),
-        commands: map(commands, ([command, fn]) => ({
-          // id: command,
-          label: text(command),
-          fn,
-        })),
+          },
+        ),
+        commands,
+        shortcuts,
       }),
     ),
   )

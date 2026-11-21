@@ -15,6 +15,18 @@ export function modal_search({ files, commands, shortcuts }) {
   const field = use_ref()
   const focus_element = use_ref()
 
+  // command -> shortut
+  let shortcut_map = {}
+
+  map(shortcuts, (shortcut) => {
+    const { command, key, when = true } = shortcut
+    
+    shortcut_map[command] = key
+    use_keyboard(key, commands[command], {
+      when,
+    })
+  })
+
   use_keyboard('ctrl+p', () => {
     set_query('')
     set_open(true)
@@ -45,7 +57,12 @@ export function modal_search({ files, commands, shortcuts }) {
 
   let items
   if (query.startsWith(command_prefix)) {
-    items = commands
+    items = map(commands, ([command, fn]) => ({
+      // id: command,
+      label: text(command),
+      info: shortcut_map[command],
+      fn,
+    }))
   } else {
     items = files
   }
@@ -126,7 +143,7 @@ export function modal_search({ files, commands, shortcuts }) {
           'modal_search_results',
           h(
             scroll,
-            map(results, ({ label, fn }, index) =>
+            map(results, ({ id, label, info, fn }, index) =>
               h(
                 'button.modal_search_result',
                 {
@@ -134,7 +151,8 @@ export function modal_search({ files, commands, shortcuts }) {
                   onclick: () => controls.select(index),
                   ref: focus == index && focus_element,
                 },
-                label,
+                h('modal_search_result_label', label),
+                h('modal_search_result_info', info),
               ),
             ),
           ),

@@ -3,17 +3,6 @@ global search (command palette)
 # structure
 
 ```
-commands: command -> fn
-shortcuts: shortcut[]
-  command
-  key
-  when
-
-files: file[]
-  
-```
-
-```
 global states
 
 app(){
@@ -23,7 +12,12 @@ app(){
 
   @use commands = command -> fn that possibly mutates states
 
-  # for controls, keybindings are often too fundamental to express as "keyboard shortcuts", e.g. enter works differently depending on where you are focusing, and generally you dont have to learn to know this key.
+  shortcuts: shortcut[]
+    command
+    key
+    when?
+
+  # controls are those event handlers that do not typically appear on searchable commands w specific keybindings (e.g. enter, down, up)
   controls
   use keyboard for controls
 
@@ -31,6 +25,22 @@ app(){
 }
 
 @use text
+
+search(){
+  files: file[]
+    id
+    label
+    info: folder # shown on the right
+    fn = select that thread
+
+  items: files | map commands command, fn ->
+    id?: command
+    label: text command
+    info?: shortcut[command]
+    fn
+
+
+}
 ```
 
 # utils

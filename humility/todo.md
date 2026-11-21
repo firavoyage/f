@@ -91,6 +91,12 @@ search threads
 
 ## c
 
+web/modal search: save history, put recent threads/commands first wo query
+
+localstorage? sync?
+
+---
+
 utility/generate: log payload (raw delta and metadata, i.e. last payload typically, or any in general) while streaming
 
 ---
