@@ -50,6 +50,7 @@ export function app() {
   const [prompt, set_prompt] = use_state('')
 
   const [folder, set_folder] = use_folder()
+  const [expanded_folders, set_expanded_folders] = use_state<string[]>([])
   const [thread_structure, set_thread_structure] = use_state<thread_structure>(
     empty_thread_structure(),
   )
@@ -143,7 +144,11 @@ export function app() {
     change_current_folder() {
       open_prompt_modal({
         value: folder,
-        set_value: set_folder,
+        set_value(folder: string){
+
+
+          set_folder(folder)
+        },
         placeholder: text('folder'),
       })
     },
@@ -290,6 +295,17 @@ export function app() {
     }
   }, [thread, is_new_thread])
 
+  // expand all folders on path to cwd
+  use_effect(() => {
+    let folders = set(expanded_folders)
+
+    let dirs = folder.split('/')
+
+
+
+    set_expanded_folders(array(folders))
+  }, [folder])
+
   let flat_hierarchy = build_flat_hierarchy(thread_index)
 
   return h(
@@ -383,6 +399,11 @@ export function app() {
                     { role: message?.role },
                     h(
                       'message_content',
+                      {
+                        onclick(){
+                          copy(message.content)
+                        }
+                      },
                       message?.reasoning &&
                         should_show_reasoning &&
                         h(
@@ -472,7 +493,8 @@ export function app() {
 
 function build_flat_hierarchy(
   thread_index: thread_index,
-  expanded_folders: Set<string>,
+  expanded_folders: string[],
+  options = {}
 ): (
   | {
       type: 'file'

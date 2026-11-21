@@ -186,7 +186,22 @@ web/vimium: support mod key navigation
 
 e.g. ctrl jkhl
 
-dont quite know. maybe you should use alt jkhl 
+dont quite know. maybe you should use alt jkhl instead. alt arrow keys have no effects (unlike ctrl or shift), and it's easier to press. same for vscode.
+
+could be a bit difficult to mirror an element and measure visual wrapping for jk. not suppported in terminals.
+
+typically, on vscode
+
+- arrowkeys (alt jkhl): move
+- ctrl alt hl: move by word <!-- currently alt hl works the same as ctrl alt. redundancy... -->
+- ctrl alt jk: move viewport
+- shift alt hjlk: select by char
+- ctrl shift alt hjlk: select by word
+
+wait... currently
+
+- alt jk moves current line (same as alt up down, while alt left right has no effect)
+- alt hl does the same as ctrl alt hl
 
 ---
 
