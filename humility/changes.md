@@ -1,10 +1,10 @@
 changes
 
-# 0.0 ~ 0.3
+# nov 2026
 
-nov 2026
+> 0.0 ~ 0.3
 
-12
+## 12
 
 - web: + mvp, finalize scaffolding and libs
   - new thread

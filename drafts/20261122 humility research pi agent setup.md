@@ -467,6 +467,24 @@ doesnt feel thinking necessary.
 
 it's more consistently reliable if you toggle it on though. maybe not a good tradeoff. idk. i may try.
 
+---
+
+i could make a plan.
+
+i could permit their first edit.
+
+i could not really code review. it's unformatted json w tons of `\n` in their write.
+
+---
+
+```jsonl
+{"type":"thinking_level_change","id":"70d388b6","parentId":"c8638bee","timestamp":"2026-11-22T12:25:07.328Z","thinkingLevel":"off"}
+```
+
+why isnt timestamp number?!
+
+
+
 # how to use pi agent like a pro
 
 Using **Pi Agent** like a pro means embracing its minimalist philosophy—a tiny core of basic tools (`read`, `write`, `edit`, `bash`) paired with aggressive customization at the edges. Rather than relying on heavy built-in guardrails, power users treat Pi like a programmable editor (similar to Neovim) and tailor it directly to their workflow. [](https://www.youtube.com/watch?v=yAPKzHrx3eo)

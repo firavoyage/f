@@ -1677,4 +1677,22 @@ times are you could not get best of both worlds.
 
 choose your way and let go.
 
+---
 
+hyperscript is manageable.
+
+it's under 100 loc. no need to document it.
+
+it's trivial for llms.
+
+---
+
+i may adopt a git less git approach.
+
+i.e. release every change (commit) as a version, document in md, and paste all code.
+
+duplicate files (even delta) are compressed under the hood anyway.
+
+and text files are trivial for disk.
+
+---

@@ -70,6 +70,35 @@
   --spacing-icon-8xl: 6rem;
   --spacing-icon-9xl: 8rem;
 
+  --text-xs-font-size: 0.75rem;
+  --text-xs-line-height: 1rem;
+  --text-sm-font-size: 0.875rem;
+  --text-sm-line-height: 1.25rem;
+  --text-base-font-size: 1rem;
+  --text-base-line-height: 1.5rem;
+  --text-md-font-size: 1rem;
+  --text-md-line-height: 1.5rem;
+  --text-lg-font-size: 1.125rem;
+  --text-lg-line-height: 1.75rem;
+  --text-xl-font-size: 1.25rem;
+  --text-xl-line-height: 1.75rem;
+  --text-2xl-font-size: 1.5rem;
+  --text-2xl-line-height: 2rem;
+  --text-3xl-font-size: 1.875rem;
+  --text-3xl-line-height: 2.25rem;
+  --text-4xl-font-size: 2.25rem;
+  --text-4xl-line-height: 2.5rem;
+  --text-5xl-font-size: 3rem;
+  --text-5xl-line-height: 1;
+  --text-6xl-font-size: 3.75rem;
+  --text-6xl-line-height: 1;
+  --text-7xl-font-size: 4.5rem;
+  --text-7xl-line-height: 1;
+  --text-8xl-font-size: 6rem;
+  --text-8xl-line-height: 1;
+  --text-9xl-font-size: 8rem;
+  --text-9xl-line-height: 1;
+
   --rounded-none: 0px;
   --rounded-xs: 2px;
   --rounded-sm: 2px;
@@ -115,7 +144,10 @@
   --typeface-sans: 'Ubuntu Sans', sans-serif;
   --typeface-serif: 'EB Garamond', serif;
   --typeface-mono: 'Fira Code', monospace;
+}
 
+[theme='light'],
+:root {
   --color-surface: var(--palette-gray-100);
   --color-surface-semihigh: var(--palette-gray-150);
   --color-surface-high: var(--palette-gray-200);
@@ -151,8 +183,8 @@
   display: flex;
   height: 100dvh;
   font-family: var(--typeface-sans);
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+  font-size: var(--text-lg-font-size);
+  line-height: var(--text-lg-line-height);
   background-color: var(--color-surface);
   color: var(--color-on-surface);
 }
@@ -165,8 +197,10 @@
   background-color: var(--color-sidebar);
 }
 
-.nav_new_thread {
-  padding-inline: var(--spacing-2);
+.nav {
+  .nav_new_thread {
+    padding-inline: var(--spacing-2);
+  }
 }
 .threads {
   flex-grow: 1;
@@ -228,29 +262,29 @@
   & h1 {
     margin-top: 0;
     margin-bottom: var(--spacing-8);
-    font-size: 2.25rem;
-    line-height: 2.5rem;
+    font-size: var(--text-4xl-font-size);
+    line-height: var(--text-4xl-line-height);
     font-weight: 800;
   }
   & h2 {
     margin-top: var(--spacing-12);
     margin-bottom: var(--spacing-6);
-    font-size: 1.5rem;
-    line-height: 2rem;
+    font-size: var(--text-2xl-font-size);
+    line-height: var(--text-2xl-line-height);
     font-weight: 700;
   }
   & h3 {
     margin-top: var(--spacing-8);
     margin-bottom: var(--spacing-3);
-    font-size: 1.25rem;
-    line-height: 1.75rem;
+    font-size: var(--text-xl-font-size);
+    line-height: var(--text-xl-line-height);
     font-weight: 600;
   }
   & h4 {
     margin-top: 1.6875rem;
     margin-bottom: 0.5625rem;
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+    font-size: var(--text-lg-font-size);
+    line-height: var(--text-lg-line-height);
     font-weight: 600;
   }
   & b,
@@ -389,8 +423,8 @@
   height: 100%;
   padding: var(--spacing-4);
   border-radius: var(--rounded-md);
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+  font-size: var(--text-lg-font-size);
+  line-height: var(--text-lg-line-height);
 }
 
 .scroll {
@@ -458,7 +492,9 @@
   }
 }
 
-a, button, summary {
+a,
+button,
+summary {
   &:focus-visible {
     box-shadow: 0 0 0 2px var(--color-focus) inset;
   }

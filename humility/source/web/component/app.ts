@@ -328,11 +328,14 @@ export function app() {
         h(
           'sidebar',
           h(
-            'button.nav_new_thread',
-            {
-              onclick: commands.new_thread,
-            },
-            'new thread',
+            'nav',
+            h(
+              'button.nav_new_thread',
+              {
+                onclick: commands.new_thread,
+              },
+              'new thread',
+            ),
           ),
           h(
             'threads',
