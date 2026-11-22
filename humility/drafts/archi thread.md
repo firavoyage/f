@@ -1,40 +1,64 @@
 thread state machine
 
+# intent
+
+you may
+
+- subscribe (read) a thread
+- leave an opened thread
+- new thread
+- init thread
+- send message on existing thread
+- config tools
+- call a pending tool
+- generate
+
+everything should be in sync by default as in data, wo relying on memory or specific control flows, via websocket.
+
 # structure
 
 thread structure
 
 ```yaml
-tree:
+tree: root | message -> children: message[], focus?: message
   0: # 0 is always 0, representing root
     children:
       - foo
     focus: foo
-  foo: # "1" can be (or should be) message id
+  foo:
     children: []
-    current_focus:
-  1: # title naming workflow/agent
+    focus:
+  1: # title naming
     children:
       - bar
     focus: bar
-  2: # search workflow/agent
+  2: # web search
     children:
       - asdf
     focus: asdf
-roots: [0, 1, 2] # root[] where root: number
-focus: 0 # root, current main thread (e.g. after compact)
-messages:
-  # you do not render 0
-  1: message structure
-config:
-  current_model: openrouter:openai/gpt-6-luna
-  # current_model:
-  #   provider: = providers[0]
-  #   model: gpt-6-luna
-  system_prompt:
-  tools: # just be separate because that how it shows on ux
-metadata?: # for arbitrary data?
-  # get title and folder from thread index (no redundancy)
+roots: root -> config
+  0:
+    system_prompt?:
+    model?: provider_model
+    tools?: tool id[]
+    # you may shift starting position after compact
+    start?: node
+messages: message -> message structure
+```
+
+```
+is_active?: # whether there is ongoing
+```
+
+thread index
+
+```yaml
+# id:
+title:
+folder:
+is_hidden?:
+creation_time: 
+modification_time: 
 ```
 
 thread history: jsonl of type, time, payload
@@ -43,12 +67,10 @@ message history: jsonl of type, time, payload
 
 server history: plain text log
 
-<!-- you may use "scalable file name (e.g. ab/cd/foobar.log)" -->
-
 message structure
 
 ```yaml
-id:
+# id:
 role:
 content:
 reasoning?:
@@ -74,24 +96,6 @@ tool structure
 tool:
 args: # just nest a bit to be simple
   ...
-```
-
-thread index
-
-```yaml
-# for listing only
-id:
-title:
-folder:
-# boolean metadata
-# tags: ['hidden', 'pinned'] # technically a set, categorization on prototype theory
-# likely you will not have arbitrary tags. add when you need.
-metadata...: 
-  ctime: 
-  mtime: 
-  foo: bar
-  ...:
-# move ctime mtime up. reserve "metadata" for actual arbitrary user defined "tags" or kv pairs.
 ```
 
 # actions
@@ -384,4 +388,11 @@ send
   generate
 ```
 
+# rationale
+
+you always chat on root 0.
+
+when you compact, you start a compact workflow on new root, inject the result to root 0, and shift starting point instead.
+
+that's one of the main approaches.
 
