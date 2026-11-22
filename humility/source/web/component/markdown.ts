@@ -5,7 +5,7 @@ type markdown = {
   ref?: any
 }
 
-export const markdown = memo(function markdown({
+export function markdown({
   markdown: value,
   ref: forwarded_ref,
 }: markdown) {
@@ -19,15 +19,16 @@ export const markdown = memo(function markdown({
     const template = document.createElement('template')
     template.innerHTML = render(value)
     ref.current.replaceChildren(template.content.cloneNode(true))
-
   }, [value])
 
-  if (forwarded_ref) {
-    forwarded_ref.current = ref.current
-  }
+  use_effect(() => {
+    if (forwarded_ref) {
+      forwarded_ref.current = ref.current
+    }
+  }, [])
 
   return h('markdown', { ref })
-})
+}
 
 function render(value: string) {
   return marked.parse(value, {
@@ -35,5 +36,4 @@ function render(value: string) {
     breaks: true,
   })
 }
-
 render = memoize(render)
