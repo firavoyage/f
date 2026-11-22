@@ -1635,8 +1635,36 @@ idk, maybe it would be better when i do not separate them.
 
 and more consistent
 
----
+## 22
 
 implement tool calls
 
 ---
+
+you will eventually migrate.
+
+maybe not now. maybe not tommorrow. but one day.
+
+for example, the style lib, in yaml, is really for conciseness and for human. it doesnt abstract a lot, informatically.
+
+what if you just prepend the component prefix as well as a dot as the class name?
+
+what if you just "apply"?
+
+what if you just define variables in css?
+
+and you would not hand code that. (youve already seen much of that configuring style lib glossary manually)
+
+you should at least try.
+
+that said, you can still achieve exactly the same if you really guide it and point to the exact files to be written, managing permissions, etc.
+
+it might be easier to read tailwind llm docs via web search than reading local style lib. simple llms can handle this anyway.
+
+maybe pi cli. delete home dir. import keys. config web search. start fresh.
+
+you may just leave llm history (or "trajectory") local. it does not always matter. dont be too obsessed. 
+
+> the modern swe
+
+

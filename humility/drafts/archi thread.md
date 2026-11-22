@@ -107,7 +107,16 @@ you process actions on backend.
 
 ```
 call tool {tool id}
-  
+  msg id
+
+  append message
+
+  broadcast set message, set tree
+
+  broadcast append message
+    content
+
+  broadcast finish message
 ```
 
 ```
