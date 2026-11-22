@@ -2,7 +2,7 @@ import { use_sync_theme } from 'lib/web/use sync theme'
 import { use_window_active } from 'lib/web/use window active'
 import { use_style } from 'lib/web/style'
 import theme from 'web/design/utilitarian.yaml'
-import 'web/design/utilitarian.css'
+import 'web/design/app.css'
 
 import { textarea } from './textarea'
 import { scroll } from './scroll'

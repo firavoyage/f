@@ -369,6 +369,27 @@ Options:
  ~ % link /home/fira/Documents/f/humility/contributing.md ~/.pi/agent/AGENTS.md
 ```
 
+```
+
+ ▀▀█  v1.6.0
+ █▀ █ escape interrupt · ctrl+c/ctrl+d clear/exit · / commands · ! bash · ctrl+o more
+ Press ctrl+o to show full startup help and loaded resources.
+
+ Pi can explain its own features and look up its docs. Ask it how to use or extend Pi.
+
+
+[Context]
+  ~/.pi/agent/AGENTS.md
+
+[Extensions]
+  pi-bar:status-footer.ts, pi-toolset-permissions:src, pi-web-access:dist
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+gpt-6-luna  ❯  medium  ❯  0.0% / 1.1M
+```
+
 # . thoughts
 
 it copys on any selection, whether response or prompt.
