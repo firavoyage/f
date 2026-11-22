@@ -2,8 +2,6 @@ changes
 
 # nov 2026
 
-> 0.0 ~ 0.3
-
 ## 12
 
 - web: + mvp, finalize scaffolding and libs
@@ -12,24 +10,22 @@ changes
   - delete thread
 - db/config: separate env from config
 
-16
+## 16
 
 - web: - extensions, incl. emac like scrolling shortcuts, focus on (en) input
   - doesnt feel right to hardcode on app.ts
   - await import if needed
 
-20
+## 20
 
 - log/thread: exclude non mutative thread history, such as sub, unsub
   - that's generally irrelevant
 
-22
+> 0.0 ~ 0.3
+> 
+> functional chat app
 
-archive version 0.3, functional chat app
-
-# 0.4
-
-22
+## 22
 
 web/design: migrate to ~~tailwind css~~ native css
 
@@ -39,6 +35,14 @@ by trying to push dx, or just conciseness actually, to the extreme, it creates a
 
 clearly such abstraction leaks as you lose the full power of css.
 
+> 0.4.1
+
 ---
+
+web/app: show response line by line w fade in animation, deprecate "dangerous html" prop
+
+utility/generate: generate_mock_realistic, slower generate w more subtle steps
+
+text is not considered dangerous and you can inject directly.
 
 
