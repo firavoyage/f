@@ -41,6 +41,8 @@ clearly such abstraction leaks as you lose the full power of css.
 
 web/app: + `markdown` component, deprecate "dangerous html" prop
 
+text is not considered dangerous and you can inject directly. lol. (i wonder why there is html for innerhtml but not innertext)
+
 > 0.4.2
 
 web/app: document web libs on contributing, refactor codebase for coding agents
@@ -53,12 +55,16 @@ web/utility/text: have localization
 
 > 0.4.4
 
-utility/generate: generate_mock_realistic, slower generate w more subtle steps
+<!-- utility/generate: generate_mock_realistic, slower generate w more subtle steps -->
 
+<!-- web/app: show response line by line w fade in animation -->
 
+that's not what you should do right now...
 
-web/app: show response line by line w fade in animation
+> 0.4
+>
+> refactoring for coding agents, localization
 
-text is not considered dangerous and you can inject directly.
+---
 
 

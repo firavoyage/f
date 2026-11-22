@@ -98,6 +98,12 @@ search threads
 
 ## c
 
+web/app: show response line by line w fade in animation
+
+utility/generate: generate_mock_realistic, slower generate w more subtle steps
+
+---
+
 web/modal search: save history, put recent threads/commands first wo query
 
 localstorage? sync?

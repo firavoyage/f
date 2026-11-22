@@ -28,6 +28,14 @@ thread structure
 
 see archi thread.
 
+---
+
+have tool calls in yaml.
+
+---
+
+on build context, combine consecutive messages of the same role and consider tool as user
+
 # rationale
 
 you can really have dynamic tools.
