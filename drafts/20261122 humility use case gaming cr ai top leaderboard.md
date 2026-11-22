@@ -2,6 +2,8 @@
 
 <!-- and they really made it. -->
 
+<!-- many. actually. chyk on samsung phone font, game mahou judge gba port, ... socialsisyi on rev engineering... it's o over. -->
+
 # clash royale recent ai
 
 9:53 PM
