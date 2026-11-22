@@ -38,16 +38,19 @@ tree: root | message -> children: message[], focus?: message
     focus: asdf
 roots: root -> config
   0:
-    system_prompt?:
     model?: provider_model
-    tools?: tool id[]
+    system_prompt?:
+    tools?: tool name[]
     # you may shift starting position after compact
     start?: node
+    pending_tools?: tool -> tool structure
 messages: message -> message structure
 ```
 
-```
-is_active?: # whether there is ongoing
+thread state
+
+```yaml
+is_active?: # whether there is ongoing streaming msg/tool
 ```
 
 thread index
