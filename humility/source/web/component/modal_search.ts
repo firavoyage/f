@@ -60,7 +60,6 @@ export function modal_search({ files, commands, shortcuts }) {
   let items
   if (query.startsWith(command_prefix)) {
     items = map(commands, ([command, fn]) => ({
-      // id: command,
       label: text(command),
       info: shortcut_map[command] ?? '',
       fn,

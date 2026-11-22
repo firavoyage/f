@@ -39,7 +39,7 @@ clearly such abstraction leaks as you lose the full power of css.
 
 ---
 
-web/app: + `markdown` component
+web/app: + `markdown` component, deprecate "dangerous html" prop
 
 > 0.4.2
 
@@ -49,11 +49,15 @@ llms can really handle this, even a simple and fast one wo reasoning, as long as
 
 > 0.4.3
 
+web/utility/text: have localization
 
-
-web/app: show response line by line w fade in animation, deprecate "dangerous html" prop
+> 0.4.4
 
 utility/generate: generate_mock_realistic, slower generate w more subtle steps
+
+
+
+web/app: show response line by line w fade in animation
 
 text is not considered dangerous and you can inject directly.
 

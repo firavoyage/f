@@ -23,3 +23,4 @@ do not build or test
 - `use_keyboard(key, handler, options)` from `lib/web/use keyboard.ts` registers a shortcut; use `when` for conditional activation.
 - `use_sync_theme` and `use_window_active` are hooks from `lib/web/use sync theme.ts` and `lib/web/use window active.ts`.
 - The web prelude `lib/web/global.ts` installs React, web helpers, and shared utilities as globals. For an unfamiliar unimported name, check the prelude and its defining module; don't assume it is a React built-in.
+- tsconfig path starts from source, not source/web
