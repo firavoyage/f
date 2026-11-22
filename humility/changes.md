@@ -78,4 +78,12 @@ refactor codebase
   - generally better for current workflow, both for humans and agents
 - web/utility? utility.
 
+> 0.5.1
+
+---
+
+web/modal: dismiss on outside click
+
+> 0.6
+
 

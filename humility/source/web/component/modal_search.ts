@@ -1,6 +1,6 @@
 import { go } from 'fuzzysort'
 
-import { text } from 'web/utility/text'
+import { text } from 'utility/text'
 
 import { input } from './input'
 import { modal } from './modal'

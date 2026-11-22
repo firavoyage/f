@@ -1,5 +1,5 @@
 import { scroll } from './scroll'
-import type { thread_hierarchy_item } from 'web/utility/thread_hierarchy'
+import type { thread_hierarchy_item } from 'utility/thread_hierarchy'
 
 type sidebar = {
   threads: thread_hierarchy_item[]

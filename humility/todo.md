@@ -244,7 +244,11 @@ stream payload, receive
 
 # backlog
 
-## impl
+document structure a bit
+
+maybe not needed
+
+---
 
 implement timeout
 
@@ -253,6 +257,8 @@ idk why it does nothing when wifi is disabled
 well seems it continues and works anyway
 
 expected?
+
+# misc
 
 ## use cases
 
