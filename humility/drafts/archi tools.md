@@ -28,10 +28,24 @@ thread structure
 
 
 
-
 ```tool
 web_search:
   query: foo
 ```
 
+# rationale
+
+you can really have dynamic tools.
+
+but let's make it fixed. generally you would have a set of "current enabled" tools on every thread, at least on ux. root 0 is the main user thread.
+
+that's easier to implement, and beneficial on cost (input cache) out of box. and modern llms can really handle it anyway, generally speaking.
+
+---
+
+rather have no metadata when you do not define any, esp when you even have no way to define programmatically.
+
+you can always add new fields and existing code will work (as long as they dont take as a whole and parse everything).
+
+---
 

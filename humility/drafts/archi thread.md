@@ -1,4 +1,4 @@
-thread state machine for chat
+thread state machine
 
 # structure
 
