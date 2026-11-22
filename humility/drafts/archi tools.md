@@ -26,12 +26,7 @@ start the next generation.
 
 thread structure
 
-
-
-```tool
-web_search:
-  query: foo
-```
+see archi thread.
 
 # rationale
 
@@ -48,4 +43,12 @@ rather have no metadata when you do not define any, esp when you even have no wa
 you can always add new fields and existing code will work (as long as they dont take as a whole and parse everything).
 
 ---
+
+```tool
+web_search:
+  query: foo
+```
+
+---
+
 

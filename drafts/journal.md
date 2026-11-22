@@ -55523,6 +55523,30 @@ ctrl shift lr: select by word
 ctrl shift jk: add cursor
 ```
 
+<!-- 22, 16 50 -->
+
+and so collapse/expand.
+
+```
+alt (shift) s: collapse (all)
+alt (shift) e: expand (all)
+```
+
+and
+
+```
+alt (shift) p: command palette
+alt i: insert
+alt f
+alt shift f
+alt shift i
+alt backspace
+alt d
+alt b
+```
+
+idk.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

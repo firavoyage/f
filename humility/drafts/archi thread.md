@@ -106,6 +106,11 @@ args: # just nest a bit to be simple
 you process actions on backend.
 
 ```
+call tool {tool id}
+  
+```
+
+```
 subscribe thread
   add client
 
@@ -163,7 +168,7 @@ generate thread
       broadcast finish message thread message message structure
 ```
 
-# broadcasts <!-- server actions -->
+# broadcasts
 
 you sync w broadcasts on frontend.
 
