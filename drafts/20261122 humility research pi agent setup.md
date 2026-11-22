@@ -69,6 +69,17 @@ added 1 package in 1s
 Installed npm:pi-toolset-permissions
 ```
 
+```
+ ~ % pi install npm:pi-bar
+
+Installing npm:pi-bar...
+npm warn Unknown user config "prefer-frozen-lockfile". This will stop working in the next major version of npm.
+npm warn Unknown user config "resolution-mode". This will stop working in the next major version of npm.
+
+added 1 package in 2s
+Installed npm:pi-bar
+```
+
 # . sessions
 
 ```
@@ -144,7 +155,219 @@ toolsets: 6 on 0 ask 0 off sandboxes:off filesystem:off PROJECT ONLY toolsets: 6
 {"type":"message","id":"e5782268","parentId":"166aebf2","timestamp":"2026-11-22T10:26:49.986Z","message":{"role":"assistant","content":[{"type":"text","text":"Web search is working. It returned results for “test,” including the Cambridge Dictionary definition."}],"api":"openai-completions","provider":"openrouter","model":"openai/gpt-6-luna","usage":{"input":3,"output":22,"cacheRead":2340,"cacheWrite":598,"reasoning":0,"totalTokens":2963,"cost":{"input":3.0000000000000004e-7,"output":0.000011,"cacheRead":0.0000234,"cacheWrite":0.00007475,"total":0.00010945,"totalFromProvider":true}},"stopReason":"stop","timestamp":1795343208448,"responseId":"gen-1795343209-iyFFEwZyX3JIc0OUG0wo","rawStopReason":"stop","durationMs":1538,"thinkingLevel":"medium"}}
 ```
 
+```
 
+ ▀▀█  v1.6.0
+ █▀ █ escape interrupt · ctrl+c/ctrl+d clear/exit · / commands · ! bash · ctrl+o more
+ Press ctrl+o to show full startup help and loaded resources.
+
+ Pi can explain its own features and look up its docs. Ask it how to use or extend Pi.
+
+[Extensions]
+  pi-toolset-permissions:src, pi-web-access:dist
+
+
+ what tools do you have
+
+
+ Thinking...
+
+ I can:
+
+ - Inspect and modify files: read, write, and make targeted edits.
+ - Run shell commands: list/search files, run tests, and other commands in the workspace.
+ - Research the web: search for sources, check claims, and fetch pages or other content.
+ - Manage tool permissions: check or request changes to available tools and workspace access.
+
+ I can also run independent tool calls in parallel.
+
+ A new session starts from these settings. The template is /home/fira/.pi/agent/permissions.json.
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+~
+↑3 ↓140 W2.3k CH0.0% $0.000 0.2%/1.1M (auto)                                                                openai/gpt-6-luna • medium
+toolsets: 4 on 1 ask 0 off sandboxes:off filesystem:off EVERYWHERE toolsets: 4 on 1 ask 0 off sandboxes:off filesystem:off EVERYWHERE
+```
+
+```
+ A new session starts from these settings. The template is /home/fira/.pi/agent/permissions.json.
+ Permissions
+
+ Toolsets
+   > read                    [ON] 4 patterns
+     write                   [ASK] 4 patterns
+     execute                 [ON] 4 patterns
+     subagent                [ON] 1 pattern
+     permissions             [ON] 1 pattern
+
+ Sandboxes (ALL tools · Linux)
+     Applies to all tools except unsandboxed tools.
+     Filesystem              [OFF] [disabled: requires project or custom scope]
+     Network                 [ALLOW CONNECTIONS]
+     Filesystem is disabled. Select project or custom scope to use it.
+     Unsandboxed tools        0 patterns
+     Unsandboxed tools run on the host even while a layer is on.
+     Custom mounts            0 mounts
+     A mounted directory is visible to the sandboxed tools.
+
+ Scope
+     Scope defines the paths exposed to the read and write toolsets and to the sandboxed tools.
+     Modality                [EVERYWHERE]
+     Custom Paths             0 extra paths
+
+ Defaults
+     Make these settings default
+     New sessions start from /home/fira/.pi/agent/permissions.json
+
+ Toolsets: OFF blocked · ON no request · ASK approve each call
+ The permissions toolset has only OFF and ON.
+ If several toolsets match, ON takes priority over ASK and OFF.
+ j/k move · l enter · h back · space off → on → ask
+~
+↑3 ↓140 W2.3k CH0.0% $0.000 0.2%/1.1M (auto)                                                                openai/gpt-6-luna • medium
+```
+
+```
+
+ ▀▀█  v1.6.0
+ █▀ █ escape interrupt · ctrl+c/ctrl+d clear/exit · / commands · ! bash · ctrl+o more
+ Press ctrl+o to show full startup help and loaded resources.
+
+ Pi can explain its own features and look up its docs. Ask it how to use or extend Pi.
+
+[Extensions]
+  pi-bar:status-footer.ts, pi-toolset-permissions:src, pi-web-access:dist
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+gpt-6-luna ❯ medium ❯ 0.0% / 1.1M ❯ toolsets: 4 on 1 ask 0 off sandboxes:off filesystem:off EVERYWHERE ❯ +1
+```
+
+```
+
+ ▀▀█  v1.6.0
+ █▀ █ escape interrupt · ctrl+c/ctrl+d clear/exit · / commands · ! bash · ctrl+o more
+ Press ctrl+o to show full startup help and loaded resources.
+
+ Pi can explain its own features and look up its docs. Ask it how to use or extend Pi.
+
+[Extensions]
+  pi-bar:status-footer.ts, pi-toolset-permissions:src, pi-web-access:dist
+
+
+ Opening web search curator...
+
+
+ [web-search-results]
+
+ No completed search results were available when the curator session finished.
+
+ Sources
+ - None
+
+ ────────────────────────────────────────────────────────────────────────────────
+
+ Full search results are stored as responseId "mwrpjz3sb4wnnz". Use get_search_content({ responseId: "mwrpjz3sb4wnnz", queryIndex: 0,
+ offset: 0, limit: 30000 }) to retrieve the first bounded page.
+
+
+ Thinking...
+
+ I’ll retrieve the stored results for query 0 so we can see what the curator session found.
+
+
+ get_content queryIndex=0 @ 0
+  Index out of range
+
+
+ There are no indexed queries in that response, so I’ll check whether it contains any stored content without selecting a query.
+
+
+ get_content offset=0
+  No query specified
+
+
+ Operation aborted
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+gpt-6-luna  ❯  medium  ❯  0.3% / 1.1M
+```
+
+```
+pi-bar settings
+Choose what appears in your footer. Changes save immediately.
+
+>
+
+→ Model                   shown
+  Show provider           hidden
+  Thinking level          shown
+  Context usage           shown
+  Cache hit ratio         hidden
+  Estimated session cost  hidden
+  Session token totals    hidden
+  Current directory       hidden
+  Progress update         shown
+  Progress model          auto
+  Extension badges        hidden
+  Choose badges           2/2 enabled
+
+  Show the current chat model's name. This does not change your model.
+
+  Type to search · Enter/Space to change · Esc to close
+gpt-6-luna  ❯  medium  ❯  0.3% / 1.1M
+```
+
+```
+
+ ▀▀█  v1.6.0
+ █▀ █ escape interrupt · ctrl+c/ctrl+d clear/exit · / commands · ! bash · ctrl+o more
+ Press ctrl+o to show full startup help and loaded resources.
+
+ Pi can explain its own features and look up its docs. Ask it how to use or extend Pi.
+
+
+[Context]
+  .pi/agent/AGENTS.md
+
+[Extensions]
+  pi-bar:status-footer.ts, pi-toolset-permissions:src, pi-web-access:dist
+
+
+ can you see some coding style guide
+
+
+ Thinking...
+
+ Yes. The project style guide is in /home/fira/.pi/agent/AGENTS.md. It says to use TypeScript, Bun, and Vite; prefer snake_case
+ naming, functional and modular code, function declarations for named functions, and type rather than interface. It also favors
+ self-explanatory code over comments.
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+gpt-6-luna  ❯  medium  ❯  0.2% / 1.1M
+```
+
+```
+ ~ % link
+Create and check symlinks
+
+Usage:
+  link <source> <target>    Create symlink
+  link <target>             Check symlink
+  link [flag]               Check version or help
+
+Options:
+  -v, --version             Print version
+  -h, --help                Print help
+ ~ % link /home/fira/Documents/f/humility/contributing.md ~/.pi/agent/AGENTS.md
+```
 
 # . thoughts
 
@@ -159,5 +382,733 @@ idk why kimi 2.7 default.
 i can not really inspect the exact sources and content in context for web search.
 
 ---
+
+extensions are not first class citizens. they are usually prefixed w a nonsensical npm (or git) everywhere, and seems they are using npm directly, which is deprecated imo.
+
+---
+
+extension can inject badges. but on bar it's either shown or not. all extension badges. while badges of pi itself are surgical.
+
+---
+
+it's reasonable to recognize claude md by default.
+
+it might not be good.
+
+it's political and ugly.
+
+# how to use pi agent like a pro
+
+Using **Pi Agent** like a pro means embracing its minimalist philosophy—a tiny core of basic tools (`read`, `write`, `edit`, `bash`) paired with aggressive customization at the edges. Rather than relying on heavy built-in guardrails, power users treat Pi like a programmable editor (similar to Neovim) and tailor it directly to their workflow. [](https://www.youtube.com/watch?v=yAPKzHrx3eo)
+
+Here are the best practices and power-user workflows to master Pi:
+
+### 1\. Master Non-Linear Session Navigation
+
+Unlike standard linear chat interfaces, Pi stores sessions as trees, allowing you to explore different coding paths without losing your original context. [](https://www.youtube.com/watch?v=8Dt0HM8HIq4&vl=en)
+
+* **Navigate history with `/tree`.** Jump back to any earlier message in your conversation, edit your prompt, and resubmit while preserving the alternate branch in the same session file. [](https://www.youtube.com/watch?v=8Dt0HM8HIq4&vl=en)
+* **Branch experiments with `/fork` and `/clone`.** Use `/fork` to start a new conversation branch from a previous message, or `/clone` to duplicate your current state before trying a risky refactor. [](https://www.youtube.com/watch?v=8Dt0HM8HIq4&vl=en)
+* **Multitask with `/resume`.** Switch cleanly between different tasks and session trees within the same terminal window. [](https://www.youtube.com/watch?v=1ND1IsFcgGc)
+
+### 2\. Optimize Models and Thinking Levels on the Fly
+
+You don't need to stick to one model for an entire task. Power users switch models mid-session based on complexity and cost. [](https://www.youtube.com/watch?v=04EL2%5FLlenc&t=156)
+
+* **Switch models rapidly.** Press `Ctrl+L` to open the model selector or `Ctrl+P` to quickly cycle through your configured models. [](https://www.youtube.com/watch?v=8Dt0HM8HIq4&vl=en)
+* **Dial in reasoning effort.** Press `Shift+Tab` (or use `/settings`) to adjust the model's "thinking level" on the fly, using low thinking for quick boilerplate and high thinking for complex architecture. [](https://www.youtube.com/watch?v=04EL2%5FLlenc&t=156)
+* **Leverage Virtual Models and Code Mode.** In newer versions (Pi 1.5+), you can use virtual models to let Pi automatically route requests to the best model based on task difficulty. Enable "code mode" so Pi writes small JavaScript filters to process tool outputs before they hit your context window, keeping token usage low and speed high. [](https://www.youtube.com/watch?v=3giACfGjwpE)
+
+### 3\. Keep Context Lean with Skills and `AGENTS.md`
+
+Loading massive system prompts slows down responses and degrades accuracy. Pi is designed to keep your context window clean. [](https://www.youtube.com/watch?v=BZ0w0JhPQ9o&t=5)
+
+* **Scope project rules with `AGENTS.md`.** Place an `AGENTS.md` file in your project root for codebase-specific instructions, and use `~/.pi/agent/` (`system.md` or `APPEND_SYSTEM.md`) for global behavioral rules.
+* **Use lazy-loaded Skills.** Store reusable workflows as `SKILL.md` folders inside `~/.pi/agent/skills/` or `.pi/skills/`. Pi only feeds the skill's name and description to the model at startup, loading the full instructions only when relevant or when you manually trigger `/skill:<skill-name>`.
+* **Pinpoint files with `@`.** Use `@` symbols in your prompts to explicitly scope context to exact files rather than letting the agent guess. [](https://composio.dev/content/top-pi-agent-skills)
+
+### 4\. Have Pi Write Its Own TypeScript Extensions
+
+One point of agreement among users on [Reddit](https://www.reddit.com/r/PiCodingAgent/comments/1sttlg9/any%5Fgreat%5Ftutorial%5Fof%5Fhow%5Fuse%5Fthis%5Ftool/) is that Pi's biggest superpower is self-extension. Because Pi understands its own architecture, you can prompt it to build custom TypeScript extensions for its own harness. [](https://www.reddit.com/r/PiCodingAgent/comments/1sttlg9/any%5Fgreat%5Ftutorial%5Fof%5Fhow%5Fuse%5Fthis%5Ftool/)
+
+* **Build custom hooks and UI.** Ask Pi to write TypeScript extensions for custom safety guardrails (since Pi runs in "YOLO" mode without permission blocks by default), automated linters, or custom UI widgets.
+* **Hot-reload changes.** After Pi writes or modifies an extension, run `/reload` to immediately incorporate the new behavior into your active session without restarting.
+* **Install community packages.** Extend capabilities instantly via npm or Git using `pi install npm:<package-name>` or `pi install git:github.com/<user>/<repo>` (for example, adding web search or vision handoff packages). [](https://www.youtube.com/watch?v=FJxgz5pN4wU&t=7)
+
+### 5\. Use `tmux` and Headless Modes for Automation
+
+By default, Pi runs on a single main thread without background bash execution. [](https://www.youtube.com/watch?v=yAPKzHrx3eo)
+
+* **Pair with `tmux`.** When you need Pi to run dev servers, watch logs, or execute long-running background processes, instruct it to spawn and read `tmux` sessions.
+* **Run outside the interactive TUI.** For CI/CD pipelines or shell scripts, invoke Pi in print mode (`pi -p`), stream structured output via JSON event mode, or run it as an RPC daemon. [](https://hoangyell.com/pi-agent-setup-best-practices/)
+
+For a visual walkthrough of setting up custom prompts, navigating session trees, and extending Pi's harness, watch this quick guide:
+
+16:50
+
+[](https://www.youtube.com/watch?v=8Dt0HM8HIq4&vl=en)
+
+Learn 90% Of Pi Agent in Under 17 Minutes
+
+212K views · 6 months ago
+
+YouTube · Brandon Melville
+
+If you'd like to dive deeper into setting up your workflow, let me know:
+
+* Which **LLM providers or local models** (e.g., Anthropic, OpenAI, OpenRouter, Ollama) you plan to use
+* What **specific workflow** you want to automate (e.g., custom safety hooks, MCP servers, or automated code reviews)
+
+I can give you exact configuration snippets or extension prompts to get started.
+
+* [](https://www.youtube.com/watch?v=04EL2%5FLlenc&t=156)  
+YouTube·Christian Lempa  
+Pi: Open-Source AI Agent Terminal Set-Up  
+May 19, 2026 — Adjust settings like "thinking mode" via the \`/settings\` command to control the LLM's reasoning level for different task complexit...  
+5m
+* [](https://www.youtube.com/watch?v=8Dt0HM8HIq4&vl=en)  
+YouTube·Brandon Melville  
+Learn 90% Of Pi Agent in Under 17 Minutes  
+May 15, 2026 — Pi's navigation includes \`Ctrl+L\` to choose models, \`Ctrl+P\` to cycle models, and \`Shift+Tab\` to change the thinking level.  
+16:50
+* [](https://www.youtube.com/watch?v=3giACfGjwpE)  
+YouTube·DevOps Toolbox  
+Wait… Pi Can Do WHAT?!  
+Nov 18, 2026 — allows Pi to write small JavaScript scripts. Virtual models enable automatic model switching, where Pi decides which model (e.g., ...  
+11:29
+
+Show all
+
+# how to config pi agent like a pro
+
+2:13 AM
+
+Configuring the **Pi coding agent** (`@mariozechner/pi-coding-agent`) like a pro centers on keeping its core minimal while layering global defaults, project-specific rules, and custom extensions. Because Pi deliberately avoids bloated built-in features to save context tokens, power users treat its configuration much like Neovim—building a tailored harness using local directories and TypeScript. [](https://news.ycombinator.com/item?id=48847407)
+
+### 1\. Structure Your Two-Tier Config
+
+Pi splits configuration into a global user directory (`~/.pi/agent/`) and a local project directory (`.pi/`). Project files override global settings once you grant folder trust, and you can apply manual edits anytime without restarting by running `/reload`. [](https://docs.pi.dev/latest/configuration)
+
+* **`settings.json`** stores your default model, reasoning levels, and installed packages.
+* **`models.json`** configures custom OpenAI-compatible endpoints or local LLMs like Ollama and LM Studio.
+* **`keybindings.json`** remaps terminal UI shortcuts to match your muscle memory.
+* **`AGENTS.md` (or `CLAUDE.md`)** injects standing behavioral rules across directories. Put personal workflow rules globally (such as "never auto-commit" or "use `jj` instead of `git`") and repository architecture rules in the project root.
+* **`APPEND_SYSTEM.md` & `SYSTEM.md`** let you append instructions to Pi's lightweight system prompt or completely replace it for specialized workflows. [](https://www.youtube.com/watch?v=04EL2%5FLlenc&t=156)
+
+### 2\. Master Multi-Model Routing & Shortcuts
+
+Power users avoid sticking to one expensive frontier model for every task, instead using Pi's instant mid-session model switching while preserving conversation state. 
+
+* **Authenticate multiple providers** via `/login` (supporting subscriptions like Claude Pro/Max and ChatGPT Plus/Pro alongside standard API keys) so you can mix models freely. [](https://www.youtube.com/watch?v=8Dt0HM8HIq4&vl=en)
+* **Route models by task complexity** using `Ctrl+L` to pick a specific model or `Ctrl+P` to cycle through favorites. For example, you can use a fast, cheap model for file scraping, a vision model for UI screenshots, and a heavy reasoning model for architecture. [](https://www.youtube.com/watch?v=8Dt0HM8HIq4&vl=en)
+* **Toggle reasoning dynamically** with `Shift+Tab` (or `/settings`) to dial "thinking mode" up for tricky debugging and down for simple edits. [](https://www.youtube.com/watch?v=04EL2%5FLlenc&t=156)
+
+### 3\. Build on the 4-Tier Customization Ladder
+
+Instead of overloading your system prompt, move repeated workflows up Pi's customization ladder: [](https://hoangyell.com/pi-agent-setup-best-practices/)
+
+* **Prompt Templates (`prompts/*.md`)** turn frequently used prompts into custom slash commands.
+* **Agent Skills (`skills/<name>/SKILL.md`)** package domain-specific instructions and helper scripts that load only when relevant, preventing context bloat.
+* **TypeScript Extensions (`extensions/*.ts`)** hook directly into Pi's lifecycle to add custom tools, pre-tool security hooks, or UI widgets. You can ask Pi itself to write and hot-reload these extensions using its built-in documentation.
+* **Community Packages** can be installed via `pi install npm:<package>` or `pi install git:<repo>`. Popular community additions include `pi-mcp-adapter` (for Model Context Protocol servers), `pi-web-access` (for web search), and `pi-observational-memory`. [](https://www.reddit.com/r/PiCodingAgent/comments/1t41thp/my%5Fpowerful%5Fpi%5Fagent%5Fsetup/)
+
+### 4\. Pro Workflow & Context Habits
+
+* **Navigate sessions as trees.** Pi saves conversations as JSONL trees rather than flat logs. Use `/tree` to jump back to an earlier node and fix a bad prompt without polluting the context window, or use `/fork` to branch off a sub-task. [](https://www.youtube.com/watch?v=8Dt0HM8HIq4&vl=en)
+* **Scope context aggressively.** Use `@filename` to pull exact files into context, and start fresh branches when switching features so token costs stay low and reasoning stays sharp. [](https://news.ycombinator.com/item?id=48847407)
+* **Avoid bloated starter distros.** While pre-packaged setups like `oh-my-pi` and `lazypi` exist, developers on [Hacker News](https://news.ycombinator.com/item?id=48847407) largely favor starting minimal and adding only the extensions you actively need to prevent token inflation. Meanwhile, users on [Reddit](https://www.reddit.com/r/PiCodingAgent/comments/1t41thp/my%5Fpowerful%5Fpi%5Fagent%5Fsetup/) note that pairing `pi-observational-memory` with `pi-fork` is especially effective for keeping long sessions dense without hitting context limits. [](https://www.reddit.com/r/PiCodingAgent/comments/1t41thp/my%5Fpowerful%5Fpi%5Fagent%5Fsetup/)
+
+Check out the official [Pi Configuration Documentation](https://docs.pi.dev/latest/configuration) for full JSON schemas and file path rules. [](https://docs.pi.dev/latest/configuration)
+
+Would you like help setting up a specific part of your config, such as:
+
+* Writing a global **`AGENTS.md`** template for your coding style
+* Configuring **`models.json`** for local LLMs or multi-provider routing
+* Building a custom **TypeScript extension** or **slash command**?
+
+* [](https://www.youtube.com/watch?v=04EL2%5FLlenc&t=156)  
+YouTube·Christian Lempa  
+Pi: Open-Source AI Agent Terminal Set-Up  
+Custom providers, including local LLMs like Lama and LM Studio, can be configured in the \`models.json\` file. Select your desired c...  
+5m
+* [](https://deepakness.com/blog/pi-agent-setup/)  
+DeepakNess  
+Setting Up and Using the Pi Coding Agent | DeepakNess  
+Overview: Pi is an open-source terminal coding agent by Mario Zechner featuring a small core with read, write, edit, and bash tool...
+* [](https://docs.pi.dev/latest/configuration)  
+Pi.dev  
+Configuration - Pi Documentation  
+User-level settings, including preferences, defaults, resource paths, and Pi package declarations. /models.json Compatible endpoin...
+
+Show all
+
+# popular extensions of pi agent
+
+Because the **Pi coding agent** ships with a minimalist core of just four built-in tools (read, bash, edit, and write), its most popular extensions focus on adding web access, sub-agent delegation, Model Context Protocol (MCP) support, persistent memory, and terminal UI upgrades. [](https://pi.dev/packages)
+
+According to download metrics from the official [Pi Package Catalog](https://pi.dev/packages) and the [Awesome Pi Coding Agent directory](https://awesome-pi.site/extensions/), the top community extensions fall into a few key categories. [](https://pi.dev/packages)
+
+### Core Capabilities & Integrations
+
+* **`pi-web-access` (1.4M/mo downloads).** Adds web search, URL fetching, GitHub repo cloning, PDF extraction, and video analysis. It supports search providers like OpenAI, Brave, Tavily, and Firecrawl. [](https://pi.dev/packages)
+* **`pi-mcp-extension` (1M/mo downloads).** Connects Pi to external tools and data sources using the Model Context Protocol. It supports stdio, SSE, and Streamable HTTP transports with minimal bloat. [](https://pi.dev/packages)
+* **`pi-web-search` (93.4k/mo downloads).** Provides native web search directly through model providers, including Gemini, xAI Grok, OpenAI Responses, and Anthropic.
+* **`@gotgenes/pi-anthropic-auth` (48.7k/mo downloads).** Enables Anthropic OAuth compatibility for authenticating models. [](https://pi.dev/packages)
+
+#### Multi-Agent, Memory, and Monorepo Extensions
+
+* **Multi-Agent & Workflow Orchestration:** Popular options include `pi-subagents` (1.1M/mo downloads) for agent delegation and scripted workflows, `@tintinweb/pi-subagents` (86.6k/mo downloads) for Claude Code-style parallel subagents with a live fleet widget, `@opengsd/gsd-core` (92k/mo downloads) for meta-prompting and spec-driven development, and `pi-advisor-flow` (89.9k/mo downloads) for Executor-Advisor patterns. For task tracking, `@juicesharp/rpiv-todo` (89.9k/mo downloads) adds session todo lists.
+* **Memory & Security:** `pi-memory` (91.9k/mo downloads) provides semantic search across logs and long-term memory, `@gotgenes/pi-permission-system` (51.1k/mo downloads) adds safety prompts before executing sensitive commands, and `@heyhuynhgiabuu/pi-pretty` (44.7k/mo downloads) enhances terminal output with syntax highlighting and tree views.
+* **Monorepos & Bundles:** Curated collections like [narumiruna/pi-extensions](https://github.com/narumiruna/pi-extensions) offer modular tools like `pi-goal` and `pi-lsp`, while [tmustier/pi-extensions](https://github.com/tmustier/pi-extensions) features file viewers and session recap dashboards. Community discussions on [Reddit's r/PiCodingAgent](https://www.reddit.com/r/PiCodingAgent/comments/1vj6wjo/which%5Fextensions%5Fdo%5Fyou%5Fuse/) note mixed feedback on session intercoms, often favoring `pi-link` for stability. [](https://www.reddit.com/r/PiCodingAgent/comments/1vj6wjo/which%5Fextensions%5Fdo%5Fyou%5Fuse/)
+
+#### How to Install Extensions
+
+Install any package permanently via the CLI using `pi install npm:<package-name>` (e.g., `pi install npm:pi-web-access`), or test an extension for a single session without saving by running `pi -e npm:<package-name>`. [](https://github.com/narumiruna/pi-extensions)
+
+If you'd like to build out a specific setup, let me know:
+
+* Your **primary use case** (e.g., web research, parallel sub-agents, or safer permissions)
+* Which **LLM provider** you are using
+
+I can put together a tailored starter command with compatible extensions for your workflow.
+
+* [](https://www.reddit.com/r/PiCodingAgent/comments/1vj6wjo/which%5Fextensions%5Fdo%5Fyou%5Fuse/)  
+Reddit·r/PiCodingAgent  
+Which extensions do you use? : r/PiCodingAgent - Reddit  
+August 8, 2026 — The \`pi-intercom\` extension, designed for messaging between Pi sessions, has reported issues such as orphaned sub-agents sending m...
+* [](https://pi.dev/packages)  
+Pi.dev  
+Package Catalog  
+PDF extraction, YouTube video understanding, and local video analysis for Pi coding agent. pi install npm:pi-web-access
+* [](https://github.com/tmustier/pi-extensions)  
+GitHub  
+GitHub - tmustier/pi-extensions: A set of delightful extensions for Pi. Note I now use different extensions for my pi setup, see https://github.com/tmustier/vibes · GitHub  
+tmustier/pi-extensions … provides example extensions and agent skills for the Pi coding agent, Extensions: /readfiles (in-terminal...
+
+Show all
+
+# how to config pi agent
+
+Configure the **Pi coding agent** across two levels: **global user settings** located in `~/.pi/agent/` and **project-specific settings** located in `.pi/` inside your working directory. Most basic preferences can be adjusted interactively in the terminal, while advanced setups rely on JSON and Markdown files. [](https://docs.pi.dev/latest/configuration)
+
+### 1\. Interactive Terminal Setup
+
+Launch Pi by typing `pi` in your terminal, then use built-in slash commands to configure core features: 
+
+* **Authenticate providers.** Run `/login` to connect subscriptions (such as Claude Pro or ChatGPT Plus) or paste API keys for providers like Anthropic, OpenAI, and Google Gemini. Credentials save automatically to `~/.pi/agent/auth.json`.
+* **Select models.** Run `/model` (or press `Ctrl+L`) to pick your active coding model. Press `Shift+Tab` to adjust the reasoning or "thinking" level.
+* **Adjust preferences.** Run `/settings` to toggle options like UI themes, default models, and terminal scrollback behavior (`tuiMode`).
+* **Apply manual edits.** Run `/reload` whenever you edit configuration files, instructions, or extensions outside the interface. [](https://www.youtube.com/watch?v=04EL2%5FLlenc&t=156)
+
+### 2\. Core Configuration Files
+
+For deeper control, edit files directly in your global directory (`~/.pi/agent/`) or your local project folder (`.pi/`). Project files override global ones once you grant trust to the workspace. [](https://gist.github.com/schpet/85531b6a05a5d8119e859bdec6b0e0b8)
+
+| File Name            | Location         | Purpose                                                                                                     |
+| -------------------- | ---------------- | ----------------------------------------------------------------------------------------------------------- |
+| **settings.json**    | Global & Project | Controls UI preferences, default models, resource paths, and package declarations.                          |
+| **models.json**      | Global           | Configures custom endpoints and local LLMs (such as Ollama or Llama.cpp) with context limits and base URLs. |
+| **mcp.json**         | Global & Project | Registers Model Context Protocol (MCP) servers using command, args, or HTTP url properties.                 |
+| **keybindings.json** | Global           | Customizes terminal UI keyboard shortcuts.                                                                  |
+
+### 3\. Instructions and System Prompts
+
+Pi uses Markdown files to shape how the agent behaves and understands your codebase: [](https://docs.pi.dev/latest/configuration)
+
+* **Project and user context.** Create an `AGENTS.md` or `CLAUDE.md` file in your global agent directory, project root, or subdirectories. Pi automatically reads and combines these files for any folder you work in. [](https://docs.pi.dev/latest/configuration)
+* **Extend default behavior.** Add an `APPEND_SYSTEM.md` file in `~/.pi/agent/` or `.pi/` to tack extra behavioral rules onto Pi's built-in system prompt. [](https://docs.pi.dev/latest/configuration)
+* **Replace the system prompt.** Add a `SYSTEM.md` file to completely overwrite Pi's default prompt. A project-level `SYSTEM.md` takes priority over the global one. [](https://docs.pi.dev/latest/configuration)
+
+### 4\. Extensions, MCP Servers, and Skills
+
+Pi keeps its core minimal and relies on add-ons for extra tools: [](https://www.sitepoint.com/pi-1-0-coding-agent-setup-mcp/)
+
+* **Add MCP servers.** Run `pi mcp add` in your terminal or edit `mcp.json` directly. Check active servers with `pi mcp list`.
+* **Install packages and extensions.** Run `pi install npm:<package-name>` to add community tools like `pi-web-access` or `pi-mcp-adapter`. You can also drop custom TypeScript files into `~/.pi/agent/extensions/` or `.pi/extensions/`.
+* **Add reusable skills and prompts.** Place task-specific instructions in `skills/` and custom slash-command templates in `prompts/` inside either configuration directory. [](https://hoangyell.com/pi-agent-setup-best-practices/)
+
+For full schema details and advanced examples, check the [Pi Configuration Documentation](https://docs.pi.dev/latest/configuration) or the [Pi 1.0 Setup Guide on SitePoint](https://www.sitepoint.com/pi-1-0-coding-agent-setup-mcp/). 
+
+If you'd like help setting up a specific part of Pi, let me know:
+
+* Which **model provider** or **local LLM** (like Ollama or LM Studio) you want to connect
+* Whether you need examples for **`models.json`**, **`mcp.json`**, or **`AGENTS.md`**
+
+I can generate the exact configuration file snippet for your setup.
+
+* [](https://www.youtube.com/watch?v=04EL2%5FLlenc&t=156)  
+YouTube·Christian Lempa  
+Pi: Open-Source AI Agent Terminal Set-Up  
+May 19, 2026 — Select your desired coding model using the \`/model\` command. Adjust settings like "thinking mode" via the \`/settings\` command to c...  
+5m
+* [](https://docs.pi.dev/latest/configuration)  
+Pi.dev  
+Configuration - Pi Documentation  
+Configuration Pi supports user-level and project configuration. In interactive mode, use /settings to change common preferences. s...
+* [](https://deepakness.com/blog/pi-agent-setup/)  
+DeepakNess  
+Setting Up and Using the Pi Coding Agent | DeepakNess  
+May 29, 2026 — Pi is an open-source terminal coding agent by Mario Zechner featuring a small core with read, write, edit, and bash tools, extensi...
+
+Show all
+
+# how to setup pi-web-access
+
+To set up **pi-web-access**—the web search, content extraction, and video understanding extension for the **Pi coding agent**—install the package via Pi's CLI and optionally configure API keys for custom search providers. [](https://www.npmjs.com/package/pi-web-access?activeTab=readme)
+
+### 1\. Install the Extension
+
+* **Run the install command.** Open your terminal and run `pi install npm:pi-web-access` to add the package to your Pi installation.
+* **Reload Pi.** Restart your active Pi session or run `/reload` inside the terminal interface to activate the new tools.
+* **Start using zero-config search.** The extension works out of the box with no API keys by routing searches through Exa MCP. If you are signed into Pi with an OpenAI Codex subscription or Kimi Code Plan via `/login`, it can also reuse that authentication automatically. [](https://pi.dev/packages/@yassimba/pi-web-access)
+
+### 2\. Optional: Configure Search & Media Providers
+
+For higher rate limits, private search, or video analysis, create or edit the configuration file at **`~/.pi/agent/web-search.json`**. [](https://www.npmjs.com/package/pi-web-access?activeTab=readme)
+
+json
+
+```
+{
+  "provider": "exa",
+  "exaApiKey": "exa-...",
+  "openaiApiKey": "sk-...",
+  "braveApiKey": "BSA_...",
+  "perplexityApiKey": "pplx-...",
+  "geminiApiKey": "AIza...",
+  "tavilyApiKey": "tvly-...",
+  "allowBrowserCookies": false
+}
+
+```
+
+
+
+* **Set your preferred provider.** Leave `"provider"` unset (or set to `"auto"`) to let the extension cascade through available providers automatically. You can also specify a single provider like `"exa"`, `"brave"`, `"openai"`, `"perplexity"`, or `"gemini"`. [](https://www.npmjs.com/package/pi-web-access?activeTab=readme)
+* **Enable video and PDF features.** Adding a `geminiApiKey` or enabling `"allowBrowserCookies": true` (while signed into Google in Chrome) unlocks YouTube video understanding, local screen recording analysis, and enhanced PDF extraction. [](https://www.npmjs.com/package/@wirebabel/pi-web-access)
+* **Use self-hosted search.** You can configure a local SearXNG endpoint in the config file if you prefer private, self-hosted web search. [](https://www.npmjs.com/package/pi-web-access?activeTab=readme)
+
+### 3\. Available Tools After Setup
+
+Once installed, your Pi agent automatically gains access to three primary tools: [](https://pi.dev/packages/@yassimba/pi-web-access)
+
+* **`web_search`:** Searches the web and summarizes results using your configured Pi model.
+* **`fetch_content`:** Extracts readable text from web pages and PDFs, inspects YouTube videos, and automatically clones GitHub repositories locally so Pi can read the source code directly.
+* **`get_search_content`:** Retrieves full page content cached from earlier searches in your session. [](https://x.com/nicopreme/status/2025952842293412037)
+
+_(Note: If you are using the security-hardened `@diegopetrucci/pi-web-access` fork instead of the upstream [nicobailon/pi-web-access](https://github.com/nicobailon/pi-web-access) package, you must also set the `PICODINGAGENTDIR` environment variable to an absolute directory path before running any tools.)_ [](https://github.com/nicobailon/pi-web-access)
+
+Are you planning to use the **zero-config setup**, or would you like help configuring a **specific search or video provider** (like Gemini, Brave, or SearXNG) in your `web-search.json` file?
+
+* [](https://github.com/nicobailon/pi-web-access)  
+GitHub  
+GitHub - nicobailon/pi-web-access  
+Web search and content extraction extension for Pi coding agent. The agent can now pull specific values off a page, like a price o...
+* [](https://deepakness.com/blog/pi-agent-setup/)  
+DeepakNess  
+Setting Up and Using the Pi Coding Agent - DeepakNess  
+May 29, 2026 — It works out of the box with Exa search (no API key needed), and you can optionally add API keys for Perplexity, Exa, or Gemini fo...
+* [](https://www.npmjs.com/package/pi-web-access?activeTab=readme)  
+NPM  
+pi-web-access  
+November 15, 2026 — web\_search tries a configured SearXNG endpoint first for local/private search. curator summary drafts are generated separately by ...
+
+Show all
+
+# how to config pi for manual code review
+
+To configure the **Pi coding agent** for manual code review, you restrict its file-editing permissions so it operates in a read-only mode and define your review standards via repository instructions. By default, Pi has no built-in permission popups and grants full `write`, `edit`, and `bash` access, so locking down its tools is essential for safe, human-led code reviews. [](https://www.reddit.com/r/PiCodingAgent/comments/1ug2vt4/your%5Fpi%5Fcoding%5Fsetup/)
+
+### 1\. Enforce Read-Only Tool Access
+
+Restrict Pi to read-only inspection tools when launching a review session so it cannot modify files or run destructive shell commands. [](https://www.implicator.ai/how-to-install-pi-coding-agent-and-set-up-your-first-project/)
+
+* **Use the `--tools` CLI flag.** Start Pi with `pi --tools read,grep,find,ls` to strip away `write`, `edit`, and `bash` capabilities.
+* **Create a shell alias.** Add `alias pi-review='pi --tools read,grep,find,ls'` to your `.zshrc` or `.bashrc` file for one-command review sessions.
+* **Control terminal commands manually.** Run git diffs yourself inside the Pi prompt using the `!` prefix (such as `! git diff main`) to inject the output into the conversation without granting the AI autonomous shell access. [](https://docs.pi.dev/latest/usage)
+
+### 2\. Define Review Rules in `AGENTS.md`
+
+Pi automatically discovers instructions from `~/.pi/agent/` and your repository root's `AGENTS.md` file. Add a dedicated section to guide how Pi analyzes code during reviews. [](https://omidsaffari.com/blog/pi-coding-agent-1-0-setup)
+
+* **Set behavioral guardrails.** Instruct Pi to act strictly as a reviewer, point out edge cases or security issues, and never propose full-file rewrites unless asked.
+* **Specify project standards.** Document your repository's architectural patterns, naming conventions, and test coverage expectations so Pi flags violations accurately. [](https://omidsaffari.com/blog/pi-coding-agent-1-0-setup)
+* **Reload changes mid-session.** Run `/reload` inside the terminal interface whenever you update your `AGENTS.md` rules. [](https://omidsaffari.com/blog/pi-coding-agent-1-0-setup)
+
+### 3\. Optimize Reasoning and Context Scoping
+
+Fine-tune how Pi processes large diffs and complex logic during an interactive review. [](https://docs.pi.dev/latest/usage)
+
+* **Increase reasoning depth.** Run `/thinking` or press `Shift+Tab` to raise the model's reasoning level for deep architectural or security audits.
+* **Target specific files.** Type `@` followed by a filename in the prompt to explicitly pull modified files into context.
+* **Branch review discussions.** Use `/fork` or `/tree` to explore specific bug hypotheses without cluttering your main review thread. [](https://hoangyell.com/pi-agent-setup-best-practices/)
+
+### Community Best Practices
+
+One point of agreement among users on [r/PiCodingAgent](https://www.reddit.com/r/PiCodingAgent/comments/1ug2vt4/your%5Fpi%5Fcoding%5Fsetup/) is that running a vanilla Pi setup without tool guardrails risks accidental file modifications or deletions, making it critical to disable `bash` and write tools during read-only workflows. [](https://www.reddit.com/r/PiCodingAgent/comments/1ug2vt4/your%5Fpi%5Fcoding%5Fsetup/)
+
+Would you like help setting up a **custom prompt template** or **TypeScript extension** in `~/.pi` to automate diff fetching and formatting for your code reviews?
+
+* [](https://www.implicator.ai/how-to-install-pi-coding-agent-and-set-up-your-first-project/)  
+Implicator.ai  
+How to Set Up Pi Coding Agent for Your First Project  
+May 17, 2026 — Configuration: Write \`AGENTS.md\` for scopes, verification commands, and secret exclusions. Testing: Execute read-only smoke tests ...
+* [](https://www.reddit.com/r/PiCodingAgent/comments/1ug2vt4/your%5Fpi%5Fcoding%5Fsetup/)  
+Reddit·r/PiCodingAgent  
+Your pi coding setup : r/PiCodingAgent - Reddit  
+June 26, 2026 — A vanilla Pi setup, without proper guardrails, can lead to accidental file modifications or deletions. It is crucial to manage too...
+* [](https://docs.pi.dev/latest/usage)  
+Pi.dev  
+Use Pi in the terminal - Pi Documentation  
+Press Ctrl+L to open the same selector. /thinking selects how much reasoning the current model uses. Press Shift+Tab to cycle thro...
+
+Show all
+
+# how to config pi approval requirement for specific tools
+
+### how to config pi approval requirement for specific tools
+
+Because Pi runs in "YOLO mode" (auto-approving all tool calls) by default, **you must install a permission extension** to require confirmation for specific tools. [](https://agentrq.com/guidelines/yolo-mode/pi)
+
+Depending on whether you want a menu-driven toggle, MCP-specific rules, or a custom script, choose one of the three setups below.
+
+---
+
+#### Option 1: Toolset-Based Approvals (Recommended)
+
+If you want an interactive UI to toggle permissions on the fly for groups of tools (`read`, `write`, `execute`) or custom regex patterns, use the [pi-toolset-permissions](https://pi.dev/packages/pi-toolset-permissions) extension. [](https://pi.dev/packages/pi-toolset-permissions)
+
+1. **Install the extension:**  
+bash  
+```  
+pi install npm:pi-toolset-permissions  
+```  
+  
+_(Alternatively, test it for one session without saving via `pi -e npm:pi-toolset-permissions`.)_
+2. **Configure tool states:**
+  * Launch Pi and run `/permissions` to open the configuration menu.
+  * Set the desired toolset (e.g., `execute` or `write`) or custom regex pattern to **`ask`**.
+  * In `ask` mode, Pi displays the exact tool input and requires confirmation for each individual call.
+
+---
+
+#### Option 2: Specific MCP Tool Approvals
+
+If you are using Model Context Protocol (MCP) servers and want to gate destructive tool calls (like `delete_*` or `remove_*`), use the [pi-native-mcp-approvals](https://pi.dev/packages/pi-native-mcp-approvals?page=89) package. [](https://pi.dev/packages/pi-native-mcp-approvals?page=89)
+
+1. **Install the extension:**  
+bash  
+```  
+pi install npm:pi-native-mcp-approvals  
+```  
+
+2. **Create the policy file:**  
+Create `~/.pi/agent/extensions/native-mcp-approvals/config.json` (or place it inside your project's `.pi` folder for project-specific rules, as users on [r/PiCodingAgent](https://www.reddit.com/r/PiCodingAgent/comments/1wbdw9y/best%5Fconfiguration%5Ffor%5Fdifferent%5Fproductproject/) agree is standard practice):  
+json  
+```  
+{  
+  "approveTools": ["delete_*", "remove_*", "your_specific_tool"],  
+  "exemptServers": []  
+}  
+```  
+  
+_Note: Patterns are case-sensitive, use `*` as a wildcard, and should omit the `mcp_<server>_` prefix._
+3. **Apply changes:**  
+Run `/reload` inside Pi. [](https://www.reddit.com/r/PiCodingAgent/comments/1wbdw9y/best%5Fconfiguration%5Ffor%5Fdifferent%5Fproductproject/)
+
+---
+
+#### Option 3: Custom TypeScript Extension (or `oh-my-pi` Fork)
+
+* **Custom Gate:** Pi's repository includes a `permission-gate.ts` example that you can drop into `~/.pi/agent/extensions/` to intercept specific tools or dangerous bash commands (`rm -rf`, `sudo`) using native confirmation dialogs. As suggested in a [Pi GitHub Discussion](https://github.com/earendil-works/pi/discussions/2629), you can also prompt Pi itself to generate a custom TypeScript extension tailored to your exact tool rules.
+* **Built-in Config (`oh-my-pi`):** If you are using the `oh-my-pi` fork rather than standard Pi, you can set policies directly in your user configuration without extensions using `tools.approval.<toolName>: "prompt"`. [](https://github.com/can1357/oh-my-pi/blob/main/docs/approval-mode.md)
+
+If you'd like help setting up a **custom TypeScript gate**, let me know:
+
+* The **exact tool names** (e.g., `bash`, `write`, `edit`, or custom MCP tools) you want to restrict
+* Whether you want **argument-level filtering** (e.g., only prompting on specific flags or file paths)
+
+* [](https://pi.dev/packages/pi-native-mcp-approvals?page=89)  
+Pi.dev  
+pi-native-mcp-approvals · Packages  
+November 1, 2026 — Matching is case-sensitive; \* matches any characters, and other punctuation is converted to underscores. For shortened names, use ...
+* [](https://agentrq.com/guidelines/yolo-mode/pi)  
+AgentRQ  
+How to Enable YOLO Mode in Pi | AgentRQ Guidelines  
+October 30, 2026 — So with a gate like permission-gate.ts installed in … each command it stops shows up in the AgentRQ task. Answer Allow Once to run...
+* [](https://pi.dev/packages/pi-toolset-permissions)  
+Pi.dev  
+pi-toolset-permissions · Packages - Pi coding agent  
+November 19, 2026 — This extension adopts a different modular, on-the-fly approach: you can toggle sets of tools and sandboxes using a simple menu dur...
+
+Show all
+
+# how to use pi-toolset-permissions
+
+2:23 AM
+
+### how to use pi-toolset-permissions
+
+You can use **[pi-toolset-permissions](https://pi.dev/packages/pi-toolset-permissions)** to control which tool groups, directories, and OS sandboxes the Pi coding agent can access during a session. It lets you toggle permissions on the fly through a slash command or by asking the AI directly in chat. [](https://pi.dev/packages/pi-toolset-permissions)
+
+#### 1\. Install or Run the Extension
+
+* **Install permanently.** Run `pi install npm:pi-toolset-permissions` in your terminal to load the extension automatically in future sessions.
+* **Try temporarily.** Run `pi -e npm:pi-toolset-permissions` to test the extension for a single session without saving it. [](https://pi.dev/packages/pi-toolset-permissions)
+
+#### 2\. Manage Permissions via the Menu
+
+* **Open the configuration screen.** Type `/permissions` in your Pi session to open the interactive menu. [](https://pi.dev/packages/pi-toolset-permissions)
+* **Toggle toolset states.** Set any tool group (such as `execute` for Bash commands or `permissions` for self-modification) to **on**, **off**, or **ask**. [](https://pi.dev/packages/pi-toolset-permissions)
+* **Set path scopes.** Choose which directories file tools and the filesystem sandbox can access:
+  * `PROJECT ONLY` restricts access strictly to your current project root.
+  * `CUSTOM PATHS` allows access to the project root plus saved extra directories.
+  * `EVERYWHERE` removes directory restrictions. [](https://pi.dev/packages/pi-toolset-permissions)
+* **Configure the OS sandbox.** Enable the operating-system boundary to isolate shell commands at the OS level rather than relying only on command text checks. [](https://pi.dev/packages/pi-toolset-permissions)
+
+#### 3\. Change Permissions via Natural Language
+
+* **Request changes in chat.** Tell the AI what you want to restrict or allow, such as _"run in read-only mode now"_ or _"forbid writing on that file"_. [](https://pi.dev/packages/pi-toolset-permissions)
+* **Confirm the dialog.** When the `permissions` toolset is set to **on**, the AI invokes its built-in `permissions` tool (`set_toolset`) and prompts you with a confirmation dialog before applying any state change. [](https://pi.dev/packages/pi-toolset-permissions)
+* **Lock AI self-modifications.** Set the `permissions` toolset to **off** in the `/permissions` menu if you want to prevent the AI from requesting permission changes while keeping your `/permissions` command active. [](https://pi.dev/packages/pi-toolset-permissions)
+
+If you'd like to set up a specific workflow, let me know:
+
+* Whether you want to configure **custom directory paths** or **read-only modes**
+* How strict you want the **OS sandbox** to be for shell commands
+
+I can help you map out the exact toolset states to use.
+
+* [](https://pi.dev/packages/pi-toolset-permissions)  
+Pi.dev  
+pi-toolset-permissions · Packages - Pi coding agent  
+The extension provides a tool to modify the list of allowed toolsets. The AI can request state changes when the permissions toolse...
+
+## how to hide the bottom status bar of this tool
+
+how to hide the bottom status bar of this tool
+
+2:38 AM
+
+### how to hide the bottom status bar of this tool
+
+**`pi-toolset-permissions` does not have a built-in setting to hide its bottom footer status badge**, because Pi extensions render their footer indicator directly via the host UI API (`ctx.ui.setStatus`). [](https://docs.pi.dev/latest/extensions)
+
+However, you can hide or filter out extension status badges using a statusbar extension or by patching the package locally:
+
+#### 1\. Hide Extension Badges via a Statusbar Extension
+
+If you use a customizable statusbar package for Pi, you can disable extension badges globally or hide the specific badge key without editing extension code:
+
+* **pi-bar:** Run `/bar` in your session to open the menu, navigate to the **Extension badges** or **Badge** rows, and toggle the permissions badge to **hidden** (or run `/bar badges hide <key>`).
+* **[pi-inline-statusline](https://pi.dev/packages/pi-inline-statusline):** Run `/statusline` to open the interactive segment selector and toggle off the permissions status segment.
+* **[pi-statusbar](https://github.com/BumpyClock/pi-statusbar):** Customize `leftSegments`, `rightSegments`, and `secondarySegments` in `~/.pi/agent/settings.json` to exclude extension status items. [](https://pi.dev/packages/pi-inline-statusline)
+
+#### 2\. Remove `setStatus` Locally (If Using Default Pi Footer)
+
+If you use Pi's default footer without a statusbar extension, you can remove the status call from the installed package source:
+
+* **Locate the installed package.** Open your global Pi packages directory (typically `~/.pi/agent/node_modules/pi-toolset-permissions` or inside your local `node_modules/pi-toolset-permissions`).
+* **Comment out `setStatus`.** Search the extension's `.ts` or `.js` files for `ctx.ui.setStatus(` and comment those lines out, then run `/reload` inside Pi. _(Note: Updating the package later will overwrite this edit.)_
+
+If you'd like help hiding it with your current setup, let me know:
+
+* Whether you use **Pi's default footer** or a **statusbar extension** (like `pi-bar` or `pi-statusbar`)
+* Whether you installed `pi-toolset-permissions` **globally or per-project**
+
+I can give you the exact command or file path to update.
+
+* [](https://docs.pi.dev/latest/extensions)  
+Pi.dev  
+Extensions  
+Extensions are TypeScript modules that extend Pi's behavior. An extension runs inside the Pi process. It can inspect prompts, tool...
+* [](https://pi.dev/packages/pi-inline-statusline)  
+Pi.dev  
+pi-inline-statusline · Packages  
+Use the /statusline command to persistently show or hide individual segments: interactive toggle selector. In the interactive sele...
+* [](https://forums.raspberrypi.com/viewtopic.php?t=369556)  
+Raspberry Pi Forums  
+SOLVED hide task/menu bar Pi400 - Raspberry Pi Forums  
+Re: hide task/menu bar Pi400\. Thu Apr 25, 2024 12:29 am. :lol: so you got it mousepad opens the file that already is there. .confi...
+
+Show all
+
+## easiest setup to hide toolset permissions status bar
+
+easiest setup to hide toolset permissions status bar
+
+2:39 AM
+
+### easiest setup to hide toolset permissions status bar
+
+The easiest setup to hide the status badge without modifying package files (so it survives updates) is to install **`pi-bar`** and hide the badge through its interactive menu.
+
+#### 1\. Install `pi-bar`
+
+Run this command in your terminal:
+
+bash
+
+```
+pi install npm:pi-bar
+
+```
+
+
+
+_(If you are already inside a Pi session, run `/reload` afterward.)_
+
+#### 2\. Hide the Permissions Badge
+
+1. Type **`/bar`** in your Pi session to open the configuration menu.
+2. Select **Extension badges** (or **Badge** rows).
+3. Find the permissions status entry and toggle it to **hidden**.
+
+Once hidden, `pi-bar` saves that preference automatically in your configuration so the badge stays gone across future sessions and package updates.
+
+If you'd prefer not to install another extension, let me know if you use **macOS/Linux** or **Windows** and I can give you a one-line terminal command to patch your local `pi-toolset-permissions` file directly.
+
+# why is pi agent called
+
+The creator of the Pi coding agent, **Mario Zechner**, deliberately chose the name "Pi" because he wanted it to be **impossible to find on search engines**. [](https://www.youtube.com/watch?v=RKHaecOi0CA)
+
+When he first built the project, he had no intention of turning it into a commercial product or growing a user base. According to [eesel AI's breakdown of Pi](https://www.eesel.ai/blog/pi-coding-agent), Zechner explained his naming choice in his design post as giving it _"a name that's entirely un-Google-able, so there will never be any users."_ 
+
+### Key Details Behind the Name and Origin
+
+* **Anti-marketing philosophy.** Alongside naming the tool "Pi" so search results would be flooded with the mathematical constant instead of his software, Zechner initially hosted the project on a domain called `shittycodingagent.ai` to further deter random users. [](https://www.youtube.com/watch?v=RKHaecOi0CA)
+* **Frustration with bloat.** Zechner built Pi as a personal side project after growing frustrated with tools like Claude Code, which he felt had become overly complex with hidden prompts and unnecessary features. [](https://composio.dev/content/pi-vs-omp)
+* **Minimalist design.** True to the simplicity of a short two-letter name, [Pi](https://pi.dev/) is stripped down to a tiny system prompt and just four core tools (read, write, edit, and bash). [](https://lucumr.pocoo.org/2026/1/31/pi/)
+* **Accidental popularity.** His plan to stay completely under the radar failed once OpenClaw—a viral personal AI agent built on top of Pi's components—gained massive traction, bringing widespread attention to Pi's minimalist architecture. [](https://newsletter.pragmaticengineer.com/p/building-pi-and-what-makes-self-modifying)
+
+Would you like to know more about **how Pi works** under the hood, or how it compares to **OpenClaw** and other coding agents?
+
+* [](https://lucumr.pocoo.org/2026/1/31/pi/)  
+Armin Ronacher's Thoughts and Writings  
+Pi: The Minimal Agent Within OpenClaw | Armin Ronacher's Thoughts and Writings  
+January 31, 2026 — Pi is a minimal coding agent with a tiny system prompt and four core tools (Read, Write, Edit, Bash) created by Mario Zechner, und...
+* [](https://www.youtube.com/watch?v=RKHaecOi0CA)  
+YouTube·CultRepo  
+Meet Pi: The Minimalist, Self-Modifying Coding Agent  
+Aug 20, 2026 — The intention was to make Pi difficult to find, initially naming its website "shittycodingagent.ai" and calling it "Pi" because it...  
+11:23
+* [](https://pi.dev/)  
+Pi.dev  
+Pi Coding Agent  
+Pi is a minimal agent harness. Customize Pi with extensions, skills, prompt templates, and themes. skips features like sub-agents ...
+
+Show all
+
+# pi agent creator background
+
+The creator of the Pi coding agent is **Mario Zechner**, an Austrian software developer and veteran open-source programmer based in Graz. Before entering the AI tooling space, he spent nearly two decades building game development frameworks, mobile compilers, and commercial animation software. [](https://gamedevdays.com/speaker/mario-zechner/)
+
+### Career & Open-Source Background
+
+* **Game Development & libGDX.** Around 2009, Zechner created libGDX, a widely used open-source, cross-platform Java game development framework. It powered major indie hits like _Slay the Spire_ and _Ingress_, earned a Duke's Choice Award in 2014, and remained under his leadership until he handed maintenance over to core contributors in 2016\. He also authored the book _Beginning Android Games_. [](https://ai.engineer/speakers/mario-zechner)
+* **Mobile Compilers & RoboVM.** Zechner was a core team member and "Head Geek" at RoboVM, an ahead-of-time compiler that allowed Java code to run natively on iOS. After building its first commercial debugger add-on, the company was acquired by Xamarin (and subsequently Microsoft), which later shut the project down. That experience heavily shaped his skepticism of closed corporate ecosystems and his insistence on keeping core tools open and forkable. [](https://at.linkedin.com/in/mariozechner)
+* **Spine & Esoteric Software.** Beginning in 2016, Zechner spent nearly a decade working with Esoteric Software on Spine, a popular commercial 2D skeletal animation tool for game developers built on top of libGDX. [](https://esotericsoftware.com/blog/Spine-3-4-released)
+* **Research & Civic Tech.** Early in his career, Zechner worked in applied research at Know-Center focusing on natural language processing, information retrieval, and machine learning. Outside of commercial work, he has built civic data tools like _Heisse Preise_ to track supermarket price inflation in Austria. [](https://ai.engineer/speakers/mario-zechner)
+
+### Creation of Pi & Philosophy
+
+* **Motivation for Pi.** In August 2025, Zechner created [Pi](https://pi.dev/) out of frustration with existing AI coding agents like Claude Code and OpenCode. He felt competing tools suffered from bloated system prompts, opaque context manipulation, and frequent bugs.
+* **Minimalist Design.** Drawing on his background building low-level, unopinionated developer frameworks, Zechner designed Pi around a tiny core with just four basic tools (`read`, `write`, `edit`, and `bash`) and a TypeScript extension system that allows the agent to modify and extend itself.
+* **Ecosystem & Earendil.** Pi gained widespread traction in the developer community and became the underlying agent harness powering Peter Steinberger's personal AI assistant, OpenClaw. In early 2026, Zechner joined Earendil—a company co-founded by his longtime friend and Flask creator Armin Ronacher—bringing Pi under the Earendil umbrella while keeping its core MIT-licensed. [](https://www.youtube.com/watch?v=RjfbvDXpFls&vl=en&t=62)
+
+If you'd like to explore further, I can break down:
+
+**Pi's technical architecture** (how its four-tool core and self-modifying TypeScript extensions work)**How Pi compares to Claude Code** or other terminal coding harnesses**The connection between Pi and OpenClaw**
+
+Which of these would be most helpful?
+
+* [](https://www.youtube.com/watch?v=RjfbvDXpFls&vl=en&t=62)  
+YouTube·AI Engineer  
+Building pi in a World of Slop — Mario Zechner  
+Apr 16, 2026 — Building pi in a World of Slop — Mario Zechner um in 2025 I started using cloud code in about April. I think thanks to Peter uh be...  
+9m
+* [](https://newsletter.pragmaticengineer.com/p/building-pi-and-what-makes-self-modifying)  
+The Pragmatic Engineer  
+Building Pi, and what makes self-modifying software so fascinating  
+Apr 29, 2026 — Mario Zechner is the creator of Pi, a minimalist, self-modifying AI coding agent, that is the foundation upon which OpenClaw (crea...
+* [](https://medium.com/@urvvil08/i-tried-pi-after-watching-its-founder-explain-why-he-quit-claude-code-7b747c37fa22)  
+Medium·Urvil Joshi  
+Medium  
+May 6, 2026 — Overview: Pi is an open-source, minimal coding agent created by Mario Zechner featuring a sub-1,000-token system prompt and four c...
+
+Show all
+
+
+
+# how to setup agent md for pi agent
+
+To set up an **`AGENTS.md`** file for the Pi coding agent, create a Markdown file named `AGENTS.md` in your project root or global configuration folder. Pi automatically discovers these files at startup and injects their contents directly into the system prompt. [](https://dev.to/arshtechpro/pi-the-open-source-ai-coding-agent-you-probably-havent-tried-yet-2h0h)
+
+### 1\. Where to Place `AGENTS.md`
+
+Pi looks for instruction files across three hierarchical levels and concatenates them together: 
+
+* **Global instructions.** Save a file at `~/.pi/agent/AGENTS.md` for universal rules across all sessions, such as preferred version control tools or general coding habits.
+* **Parent directories.** Place files in parent folders when working inside monorepos to share guidelines across sub-projects.
+* **Project root.** Place `AGENTS.md` (or `CLAUDE.md`) in your active repository root for project-specific tech stacks, commands, and workflows. [](https://www.youtube.com/shorts/kbFSuLsOqYk)
+
+### 2\. How to Create It
+
+You can set up the file manually or automate generation using a Pi extension. On [Reddit's r/PiCodingAgent](https://www.reddit.com/r/PiCodingAgent/comments/1tcm0p5/how%5Fto%5Finit%5Fagentmd%5Ffor%5Fpi%5Fagent/), opinions are mixed on the best workflow, with some developers preferring to write the file by hand and others asking Pi or an extension to draft a starting template. [](https://www.reddit.com/r/PiCodingAgent/comments/1tcm0p5/how%5Fto%5Finit%5Fagentmd%5Ffor%5Fpi%5Fagent/)
+
+* **Automated initialization.** Install the official [pi-agentsmd package](https://pi.dev/packages/pi-agentsmd) by running `pi install npm:pi-agentsmd` in your terminal. Once installed, launch `pi` inside your repository and run `/init` so the active model scans your codebase and generates a tailored `AGENTS.md`. [](https://pi.dev/packages/pi-agentsmd)
+* **Manual creation.** Create an empty `AGENTS.md` file in your project root and add clear, concise Markdown instructions. Keep the file brief so you preserve Pi's lightweight system prompt. [](https://agents.md/)
+
+### 3\. What to Include
+
+Follow the open [AGENTS.md specification](https://agents.md/) by focusing on actionable context the agent needs to work safely in your codebase: [](https://www.youtube.com/watch?v=dcxOU3ghcfc&t=96)
+
+* **Build and test commands.** List exact terminal commands for installing dependencies, running dev servers, linting, and running tests (such as `pnpm test` or `pnpm lint`). [](https://agents.md/)
+* **Architecture and conventions.** Specify your tech stack, directory structure, naming conventions, and formatting preferences. [](https://agents.md/)
+* **Guardrails and exclusions.** Define strict boundaries, such as prohibiting automatic git commits without approval or listing sensitive files to ignore. [](https://www.implicator.ai/how-to-install-pi-coding-agent-and-set-up-your-first-project/)
+
+### Example `AGENTS.md` Template
+
+markdown
+
+```
+# Project Guidelines
+
+## Commands
+- Install: `pnpm install`
+- Dev server: `pnpm dev`
+- Test: `pnpm test`
+- Lint: `pnpm lint`
+
+## Code Style
+- Use TypeScript strict mode and functional patterns.
+- Follow camelCase for variables and functions.
+
+## Rules
+- Run tests before finishing any code change.
+- Never commit changes or modify `.env` files without explicit approval.
+
+```
+
+
+
+_(Note: After editing `AGENTS.md`, restart your Pi session or start a new conversation so the updated instructions load into the system prompt.)_ [](https://www.youtube.com/watch?v=dcxOU3ghcfc&t=96)
+
+If you'd like help drafting a custom `AGENTS.md`, share your **tech stack** and **preferred test/build commands**, and I can generate a tailored file for your project.
+
+* [](https://www.reddit.com/r/PiCodingAgent/comments/1tcm0p5/how%5Fto%5Finit%5Fagentmd%5Ffor%5Fpi%5Fagent/)  
+Reddit·r/PiCodingAgent  
+How to init Agent.md for pi agent? : r/PiCodingAgent - Reddit  
+May 14, 2026 — Users can create an \`AGENTS.md\` file by asking the Pi agent to generate it, potentially as a starting point for further edits. How...
+* [](https://deepakness.com/blog/pi-agent-setup/)  
+DeepakNess  
+Setting Up and Using the Pi Coding Agent - DeepakNess  
+May 29, 2026 — Pi loads AGENTS.md files at startup and injects them into the system prompt. I keep my global AGENTS.md minimal. Check the project...
+* [](https://agents.md/)  
+AGENTS.md  
+AGENTS.md  
+AGENTS.md markdown file providing detailed build, test, and style instructions specifically for AI coding agents. Works across div...
+
+Show all
 
 
