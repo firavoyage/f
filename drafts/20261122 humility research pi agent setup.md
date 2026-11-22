@@ -390,6 +390,43 @@ Options:
 gpt-6-luna  ❯  medium  ❯  0.0% / 1.1M
 ```
 
+```
+ ▀▀█  v1.6.0
+ █▀ █ escape interrupt · ctrl+c/ctrl+d clear/exit · / commands · ! bash · ctrl+o more
+ Press ctrl+o to show full startup help and loaded resources.
+
+ Pi can explain its own features and look up its docs. Ask it how to use or extend Pi.
+
+
+[Context]
+  ~/.pi/agent/AGENTS.md
+
+[Extensions]
+  pi-bar:status-footer.ts, pi-toolset-permissions:src, pi-web-access:dist
+
+
+ Default thinking level: off
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Thinking Level
+
+Shift+Tab cycles thinking levels in-session
+
+>
+
+→ ✓ off       No reasoning · default
+    low       Light reasoning (~2k tokens)
+    medium    Moderate reasoning (~8k tokens)
+    high      Deep reasoning (~16k tokens)
+    xhigh     Extra-high reasoning (~32k tokens)
+    max       Maximum reasoning
+
+  Enter to select · Ctrl+S to set as default · Escape/Ctrl+C to cancel
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+gpt-6-luna  ❯  off  ❯  0.0% / 1.1M
+```
+
 # . thoughts
 
 it copys on any selection, whether response or prompt.
@@ -417,6 +454,18 @@ it's reasonable to recognize claude md by default.
 it might not be good.
 
 it's political and ugly.
+
+---
+
+slash seems to have no effect once you type some prompts.
+
+i wonder.
+
+---
+
+doesnt feel thinking necessary.
+
+it's more consistently reliable if you toggle it on though. maybe not a good tradeoff. idk. i may try.
 
 # how to use pi agent like a pro
 

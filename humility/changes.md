@@ -31,16 +31,14 @@ archive version 0.3, functional chat app
 
 22
 
-web/design: migrate to tailwind css
+web/design: migrate to ~~tailwind css~~ native css
 
 style lib does not abstract much informatically.
 
-by trying to push dx, or conciseness actually, to the extreme.
+by trying to push dx, or just conciseness actually, to the extreme, it creates a very specific workflow and unconventional tweaks on util classes, w tons of dirty imperative code and an incomplete glossary.
 
 clearly such abstraction leaks as you lose the full power of css.
 
 ---
-
-
 
 

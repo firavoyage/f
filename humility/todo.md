@@ -98,36 +98,6 @@ search threads
 
 ## c
 
-lib/style: compile at build time to avoid full page reload
-
-config vite to run a script whenever certain file changes.
-
----
-
-lib/style: support all css capability
-
-```
-[raw selector]: | # e.g. css animation
-  raw content (design tokens supported)
-[raw selector]:
-  prop: value
-component:
-  element: prop-[raw value] # resolution for raw value should be supported, wo guessing
-  element: p-16px # px is automatically recognized
-  element: [raw prop]-[raw value]
-  element: [raw prop: raw value]
-```
-
----
-
-lib/style: support both css var and mixins.
-
-e.g. `h2: mt-12 mb-6 text-2xl bold, ... text.h2`
-
-you may consider it mixin if each (space separated) is valid util.
-
----
-
 web/modal search: save history, put recent threads/commands first wo query
 
 localstorage? sync?
@@ -186,6 +156,42 @@ vimium works. you may make it app specific.
 serve/append server log: give every ws client a readable id when they (dis)connect/(un)subscribe to a thread
 
 ## w
+
+lib/style: compile at build time to avoid full page reload
+
+config vite to run a script whenever certain file changes.
+
+<!-- deprecated in favor of tailwind css -->
+
+---
+
+lib/style: support all css capability
+
+```
+[raw selector]: | # e.g. css animation
+  raw content (design tokens supported)
+[raw selector]:
+  prop: value
+component:
+  element: prop-[raw value] # resolution for raw value should be supported, wo guessing
+  element: p-16px # px is automatically recognized
+  element: [raw prop]-[raw value]
+  element: [raw prop: raw value]
+```
+
+<!-- deprecated in favor of tailwind css -->
+
+---
+
+lib/style: support both css var and mixins.
+
+e.g. `h2: mt-12 mb-6 text-2xl bold, ... text.h2`
+
+you may consider it mixin if each (space separated) is valid util.
+
+<!-- deprecated in favor of tailwind css -->
+
+---
 
 web/vimium: support mod key navigation
 

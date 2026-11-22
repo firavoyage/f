@@ -11,3 +11,5 @@ use function statement for named functions
 use type, no interface
 
 use modern tech such as es module
+
+do not build or test
