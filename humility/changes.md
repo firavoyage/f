@@ -39,6 +39,14 @@ clearly such abstraction leaks as you lose the full power of css.
 
 ---
 
+web/app: + `markdown` component
+
+> 0.4.2
+
+web/app: refactor codebase for coding agents
+
+
+
 web/app: show response line by line w fade in animation, deprecate "dangerous html" prop
 
 utility/generate: generate_mock_realistic, slower generate w more subtle steps
