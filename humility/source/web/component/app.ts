@@ -5,13 +5,13 @@ import 'web/design/utilitarian.css'
 
 import { textarea } from './textarea'
 import { scroll } from './scroll'
+import { markdown } from './markdown'
 
 // import { post } from 'lib/web/request'
 import { copy } from 'lib/web/clipboard'
 import { random, random_id } from 'lib/random'
 const { stringify, parse } = JSON
 
-import { marked } from 'marked'
 import { build_context, empty_thread_structure } from 'utility/thread'
 import { modal_prompt } from './modal_prompt'
 import { modal_search } from './modal_search'
@@ -426,14 +426,16 @@ export function app() {
                           h(
                             'details.',
                             h('summary.', 'Reasoning'),
-                            h('message_prose_reasoning_details', {
-                              html: render(message?.reasoning ?? ''),
-                            }),
+                            h(
+                              'message_prose_reasoning_details',
+                              h(markdown, { markdown: message?.reasoning ?? '' }),
+                            ),
                           ),
                         ),
-                      h('message_prose', {
-                        html: render(message?.content ?? ''),
-                      }),
+                      h(
+                        'message_prose',
+                        h(markdown, { markdown: message?.content ?? '' }),
+                      ),
                       // h(
                       //   'button.message_copy',
                       //   {
@@ -612,15 +614,6 @@ function build_flat_hierarchy(
 
   return items
 }
-
-function render(md: string) {
-  return marked.parse(md, {
-    gfm: true,
-    breaks: true,
-  })
-}
-
-render = memoize(render)
 
 let ws: WebSocket
 let pending_actions: Set<fn> = set()
