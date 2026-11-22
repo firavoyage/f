@@ -3,31 +3,25 @@ import { serve, upgradeWebSocket } from '@hono/node-server'
 import { WebSocketServer } from 'ws'
 import { cors } from 'hono/cors'
 import { serveStatic } from '@hono/node-server/serve-static'
-import { append, children, read, write } from 'lib/file'
+import { children, read, write } from 'lib/file'
 import { format_log } from 'lib/log'
 import { parse_options } from 'lib/cli'
-// import * as action_index from 'action/index'
-import { list as action_list, hide } from 'action/index'
+import * as action_index from 'action/index'
 import {
   deserialize,
-  get_message_log_file,
   get_thread_file,
-  get_thread_log_file,
   serialize,
-  server_log_file,
   thread_index_file,
 } from 'action/index'
-import { monotonic, now } from 'lib/time'
+import { now } from 'lib/time'
 import { random, random_id } from 'lib/random'
 import {
   append_message,
   build_plain_context,
   empty_thread_structure,
 } from 'utility/thread'
-import { generate, generate_mock } from 'utility/generate'
-import { resolve_endpoint_model_key } from 'utility/resolve'
 
-const { deserialize: parse, stringify } = JSON
+const { parse, stringify } = JSON
 
 const { port } = parse_options({
   port: {
@@ -52,8 +46,7 @@ app.use('*', serveStatic({ root: '../web/build' }))
 let subscribers: Record<id, Set<WebSocket>> = {}
 
 let actions: Record<action, fn> = {
-  list: action_list,
-  hide,
+  ...action_index,
   subscribe({ thread, client }) {
     if (is(subscribers[thread], 'absent')) {
       subscribers[thread] = set(client)
@@ -67,23 +60,23 @@ let actions: Record<action, fn> = {
     )
 
     // todo: ongoing messages
-    broadcast('set_thread_structure', { thread, thread_structure }, client)
+    broadcast('set_thread_structure', { thread, thread_structure })
   },
   unsubscribe({ thread, client }) {
-    subscribers[thread]?.delete?.(client)
-    // subscribers[thread].delete(client)
+    subscribers[thread].delete(client)
   },
   init({ thread, title = '', folder = '', options }) {
     let thread_structure = empty_thread_structure()
+
     write(get_thread_file(thread), serialize(thread_structure))
 
-    mutate(thread_index_file, (thread_index: thread_index) => {
-      thread_index[thread] = {
-        title,
-        folder,
-        creation_time: now().timestamp,
-      }
-    })
+    let thread_index: thread_index = deserialize(read(thread_index_file))
+    thread_index[thread] = {
+      title,
+      folder,
+      creation_time: now().timestamp,
+    }
+    write(thread_index_file, serialize(thread_index))
 
     broadcast('set_thread_structure', { thread, thread_structure })
   },
@@ -95,11 +88,15 @@ let actions: Record<action, fn> = {
       content: prompt,
     }
 
-    let tree
-    mutate(get_thread_file(thread), (thread_structure: thread_structure) => {
-      append_message(thread_structure, message, message_structure)
-      ;({ tree } = thread_structure)
-    })
+    let thread_structure = deserialize(read(get_thread_file(thread)))
+    thread_structure = append_message(
+      thread_structure,
+      message,
+      message_structure,
+    )
+    write(get_thread_file(thread), serialize(thread_structure))
+
+    const { tree } = thread_structure
 
     broadcast('set_message', {
       thread,
@@ -112,24 +109,27 @@ let actions: Record<action, fn> = {
       tree,
     })
   },
-  async generate({ thread, options }) {
+  generate({ thread, options }) {
     let message = random_id()
 
     let message_structure: Partial<message_structure> = {
       role: 'assistant',
       content: '',
-      reasoning: '',
       start_time: now().timestamp,
     }
 
-    let context, tree
+    let thread_structure = deserialize(read(get_thread_file(thread)))
 
-    mutate(get_thread_file(thread), (thread_structure: thread_structure) => {
-      context = build_plain_context(thread_structure)
+    let context = build_plain_context(thread_structure)
 
-      append_message(thread_structure, message, message_structure)
-      ;({ tree } = thread_structure)
-    })
+    thread_structure = append_message(
+      thread_structure,
+      message,
+      message_structure,
+    )
+    write(get_thread_file(thread), serialize(thread_structure))
+
+    const { tree } = thread_structure
 
     broadcast('set_message', { thread, message, message_structure })
 
@@ -138,56 +138,42 @@ let actions: Record<action, fn> = {
       tree,
     })
 
-    const { endpoint, model, key } = await resolve_endpoint_model_key()
-
-    append_json_log(get_message_log_file(message), 'request', {
-      context,
-      endpoint,
-      model,
-    })
-
-    let stream_text = await generate(
+    generate_mock(
       {
         context,
-        endpoint,
-        model,
-        key,
       },
-      append,
-      finish,
-      stream,
+      receive,
     )
 
-    function append(delta: delta) {
-      broadcast('append_message', {
-        thread,
-        message,
-        delta,
-      })
+    function receive(event) {
+      const { type, payload } = event
+
+      if (type == 'append') {
+        broadcast('append_message', {
+          thread,
+          message,
+          delta: payload,
+        })
+      }
+
+      if (type == 'finish') {
+        // todo: merge message structure
+
+        let thread_structure: thread_structure = deserialize(
+          read(get_thread_file(thread)),
+        )
+
+        thread_structure.messages[message] = payload
+
+        write(get_thread_file(thread), serialize(thread_structure))
+
+        broadcast('finish_message', {
+          thread,
+          message,
+          message_structure: payload,
+        })
+      }
     }
-
-    function finish(message_structure: message_structure) {
-      mutate(get_thread_file(thread), (thread_structure: thread_structure) => {
-        thread_structure.messages[message] = message_structure
-      })
-
-      broadcast('finish_message', {
-        thread,
-        message,
-        message_structure,
-      })
-
-      append_json_log(get_thread_log_file(thread), 'finish_message', {
-        message,
-        ...message_structure,
-      })
-    }
-
-    function stream(data) {
-      append_json_log(get_message_log_file(message), 'data', data)
-    }
-
-    append_json_log(get_message_log_file(message), 'done', stream_text)
   },
 }
 
@@ -223,8 +209,6 @@ function broadcast(
 function respond(request: id, payload: any, client: WebSocket) {
   const ws = client
 
-  append_server_log('respond', payload)
-
   ws.send(
     stringify({
       type: 'response',
@@ -234,48 +218,29 @@ function respond(request: id, payload: any, client: WebSocket) {
   )
 }
 
-function mutate(file, fn) {
-  let file_structure = deserialize(read(file))
-
-  let new_file_structure = fn(file_structure)
-  if (is(new_file_structure, 'absent')) {
-    // direct mutation
-    new_file_structure = file_structure
-  }
-
-  write(file, serialize(new_file_structure))
-}
-
 app.get(
   '/api/ws',
   upgradeWebSocket(() => ({
     onOpen(_event, ws) {
       log('Client connected')
-
-      append_server_log('Client connected')
     },
 
-    async onMessage(event, ws) {
-      const { request, action, payload }: request = parse(event.data)
+    onMessage(event, ws) {
+      const { request, action, payload: _payload }: request = parse(event.data)
+
+      let payload = { ..._payload }
 
       log(action, payload)
-      append_server_log(action, payload)
-
-      if (has(payload, 'thread')) {
-        append_json_log(get_thread_log_file(payload.thread), action, payload)
-      }
 
       if (action == 'subscribe' || action == 'unsubscribe') {
         payload.client = ws
       }
 
-      respond(request, await actions[action](payload), ws)
+      respond(request, actions[action](payload), ws)
     },
 
     onClose() {
       log('Client disconnected')
-
-      append_server_log('Client disconnected')
     },
   })),
 )
@@ -304,6 +269,35 @@ serve(
     log(`Serve on http://localhost:${info.port}`)
   },
 )
+
+async function generate_mock({ context }, receive: fn) {
+  let content = ''
+
+  for (const i of each(5)) {
+    let delta = `reply for ${
+      context.length
+    } messages, ${now().format()} ${i} ${random()}\n`
+
+    content += delta
+
+    receive({
+      type: 'append',
+      payload: {
+        content: delta,
+        reasoning: '',
+      },
+    })
+    await sleep(1)
+  }
+
+  receive({
+    type: 'finish',
+    payload: {
+      content,
+      reasoning: '',
+    },
+  })
+}
 
 declare global {
   type action =
@@ -338,29 +332,5 @@ declare global {
     type: 'broadcast'
     event: event
     payload: any
-  }
-
-  type append = (delta: delta) => any
-  type finish = (message_structure: message_structure) => any
-}
-
-function append_json_log(file, type, payload) {
-  let time = monotonic()
-
-  append(
-    file,
-    `${stringify({
-      type,
-      time,
-      payload,
-    })}\n`,
-  )
-}
-
-function append_server_log(message, payload?) {
-  if (is(payload, 'present')) {
-    append(server_log_file, `${format_log(message)}\n${serialize(payload)}`)
-  } else {
-    append(server_log_file, format_log(message))
   }
 }

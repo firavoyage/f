@@ -1636,3 +1636,7 @@ idk, maybe it would be better when i do not separate them.
 and more consistent
 
 ---
+
+implement tool calls
+
+---

@@ -1,0 +1,48 @@
+/* .button, .input {
+  box-shadow: 0 0 0 1px oklch(38% 0.02 254.74);
+} */
+
+a, button, summary {
+  &:focus-visible {
+    /* margin: 2px; */
+    /* overflow: visible; */
+    /* z-index: 100; */
+    box-shadow: 0 0 0 2px var(--palette\.focus) inset;
+    /* box-shadow: 0 0 0 2px var(--palette\.accent); */
+    /* box-shadow: 0 0 0 2px var(--palette\.accent) inset; */
+    /* box-shadow: 0 0 0 2px oklch(57% 0.2 259.67); */
+  }
+}
+
+* {
+  overflow: hidden;
+}
+
+.scroll {
+  position: relative;
+
+  .scroll_content {
+    > * {
+      flex-shrink: 0;
+    }
+
+    /* use custom scrollbar */
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+/* .message_prose p {
+  animation: fade_in 300ms ease-in forwards;
+}
+
+@keyframes fade_in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+} */

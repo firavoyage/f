@@ -1,11 +1,5 @@
 # plan
 
-implement tool calls
-
-> archi thread
-
----
-
 use case:
 
 - analyze py intro pre issues
