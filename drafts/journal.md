@@ -55547,6 +55547,14 @@ alt b
 
 idk.
 
+<!-- 22, 18 10 -->
+
+```
+ctrl shift jkhl: select
+```
+
+press any key as you like.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

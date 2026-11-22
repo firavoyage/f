@@ -1296,6 +1296,7 @@ humility:
 - implement streaming
 - use case uni chem lab regulatory exam
 - use case gaming cr ai top leaderboard
+- research pi agent setup
 
 legacy:
 
