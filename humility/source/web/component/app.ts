@@ -46,8 +46,14 @@ export function app() {
   const [thread_structure, set_thread_structure] = use_state<thread_structure>(
     empty_thread_structure(),
   )
+  const [thread_structure_thread, set_thread_structure_thread] =
+    use_state<id | nil>(nil)
+  const [is_active, set_is_active] = use_state(false)
   const [thread_index, set_thread_index] = use_state<thread_index | nil>(nil)
   const [thread, set_thread] = use_thread()
+  const active_thread = use_ref<id | nil>(thread)
+  active_thread.current = thread
+  const automation = use_ref(false)
   const [display_thread, set_display_thread] = use_display_thread()
 
   const [should_show_reasoning, set_should_show_reasoning] = use_state(false)
@@ -219,8 +225,10 @@ export function app() {
   }
 
   let broadcasts: Record<event, fn> = {
-    set_thread_structure({ thread_structure }) {
+    set_thread_structure({ thread, thread_structure, is_active }) {
       set_thread_structure(thread_structure)
+      set_thread_structure_thread(thread)
+      set_is_active(is_active)
     },
     set_tree({ tree }) {
       set_thread_structure((t) => {
@@ -231,6 +239,15 @@ export function app() {
       set_thread_structure((t) => {
         t.messages[message] = message_structure
       })
+    },
+    set_pending_tools({ pending_tools }) {
+      set_thread_structure((t) => {
+        t.roots[0] ??= {}
+        t.roots[0].pending_tools = pending_tools
+      })
+    },
+    set_active({ is_active }) {
+      set_is_active(is_active)
     },
     append_message({ message, delta }) {
       const { content = '', reasoning = '' } = delta
@@ -269,6 +286,7 @@ export function app() {
       log('receive', type, payload)
 
       if (type == 'broadcast') {
+        if (payload.thread != active_thread.current) return
         const { event } = data
         broadcasts[event](payload)
       }
@@ -293,6 +311,61 @@ export function app() {
 
     return () => websocket.perform('unsubscribe', { thread })
   }, [thread])
+
+  const root_config = thread_structure.roots[0] ?? {}
+  const pending_tool_id = Object.keys(root_config.pending_tools ?? {})[0]
+  const last_message = build_context(thread_structure).at(-1)
+
+  use_effect(() => {
+    if (
+      !thread ||
+      thread_structure_thread != thread ||
+      is_active ||
+      automation.current
+    ) {
+      return
+    }
+
+    if (pending_tool_id) {
+      automation.current = true
+      set_is_active(true)
+      websocket
+        .perform('call_tool', { thread, tool_id: pending_tool_id }, 10000)
+        .then(
+          ({ started, is_active: server_is_active }) => {
+            automation.current = false
+            if (!started) set_is_active(server_is_active ?? false)
+          },
+          () => {
+            automation.current = false
+            set_is_active(false)
+          },
+        )
+      return
+    }
+
+    if (last_message?.role == 'tool') {
+      automation.current = true
+      set_is_active(true)
+      websocket.perform('generate', { thread }, 10000).then(
+        ({ started, is_active: server_is_active }) => {
+          automation.current = false
+          if (!started) set_is_active(server_is_active ?? false)
+        },
+        () => {
+          automation.current = false
+          set_is_active(false)
+        },
+      )
+    }
+  }, [
+    thread,
+    thread_structure_thread,
+    is_active,
+    pending_tool_id,
+    last_message?.id,
+    last_message?.role,
+  ])
 
   // bind shortcuts for controls
   use_keyboard('enter', controls.send_prompt, {
@@ -397,14 +470,16 @@ declare global {
         focus?: node
       }
     >
-    roots: root[]
-    focus: root
+    roots: Record<root, root_config>
     messages: Record<id, message_structure>
-    config?: {
-      system_prompt: string
-      model: string
-      provider: string
-    }
+  }
+
+  type root_config = {
+    model?: string | { provider: string; model: string }
+    system_prompt?: string
+    tools?: string[]
+    start?: node
+    pending_tools?: Record<id, tool>
   }
 
   type message_structure = {

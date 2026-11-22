@@ -14,6 +14,10 @@ use modern tech such as es module
 
 do not build or test
 
+do not use git
+
+use shell if the edit tool fails
+
 ## Web app libraries
 
 - Render components with `h(component, props, ...children)`. Do not call component functions directly (e.g. `h(button, { label })`, not `button({ label })`). This lets React invoke components and preserves hook behavior. `h` is from `lib/web/hyperscript.ts` and is installed globally by the web prelude.

@@ -1,5 +1,4 @@
-import { serialize, deserialize, config_file, env_file } from 'action/index'
-import { random } from 'lib/random'
+import { serialize } from 'action/index'
 import { monotonic, now } from 'lib/time'
 
 const { parse, stringify } = JSON
@@ -168,8 +167,6 @@ export async function generate(
       time_to_first_token: first_append_time - start_time,
     }
 
-    // parse tools
-
     return {
       role: 'assistant' as const,
       content,
@@ -225,8 +222,6 @@ export async function generate_mock(
       tokens_per_second: (usage?.total_tokens ?? 0) / duration,
       time_to_first_token: first_append_time - start_time,
     }
-
-    // parse tools
 
     return {
       role: 'assistant' as const,

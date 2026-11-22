@@ -67,4 +67,8 @@ that's not what you should do right now...
 
 ---
 
+implement tool calls
+
+> 0.5
+
 

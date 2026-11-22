@@ -1637,7 +1637,7 @@ and more consistent
 
 ## 22
 
-implement tool calls
+> implement tool calls
 
 ---
 
@@ -1701,3 +1701,12 @@ separate date by sleep.
 
 ---
 
+interesting. gpt luna.
+
+```
+	3 minutes ago	$0.230
+```
+
+total for today.
+
+---

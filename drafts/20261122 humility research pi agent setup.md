@@ -489,6 +489,10 @@ the "single edit no match all" often gets in the way.
 
 maybe unclean code issue.
 
+---
+
+they could not easily edit files > 200 lines for example.
+
 
 
 # how to use pi agent like a pro
