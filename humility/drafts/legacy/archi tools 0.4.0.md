@@ -17,3 +17,8 @@ you start the next generation if the last message is tool call result (role tool
 
 # spec
 
+```yaml
+tool: web_search
+args:
+  query: foo
+```
