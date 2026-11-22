@@ -3,16 +3,14 @@ import { use_window_active } from 'lib/web/use window active'
 import 'web/design/app.css'
 import 'web/design/utilitarian.css'
 
-import { textarea } from './textarea'
-import { scroll } from './scroll'
-import { markdown } from './markdown'
-
-// import { post } from 'lib/web/request'
-import { copy } from 'lib/web/clipboard'
+import { sidebar } from './sidebar'
+import { conversation } from './conversation'
 import { random, random_id } from 'lib/random'
 const { stringify, parse } = JSON
 
 import { build_context, empty_thread_structure } from 'utility/thread'
+import { build_flat_hierarchy } from 'web/utility/thread_hierarchy'
+import { text } from 'web/utility/text'
 import { modal_prompt } from './modal_prompt'
 import { modal_search } from './modal_search'
 import { init_localstorage_prefix } from 'lib/web/state'
@@ -171,6 +169,16 @@ export function app() {
     },
   ]
 
+  async function hide_thread(id: id) {
+    perform('hide', { thread: id })
+    set_thread_index((index) => {
+      index[id].is_hidden = true
+    })
+    if (thread == id) {
+      commands.new_thread()
+    }
+  }
+
   let controls = {
     async send_prompt() {
       if (entries(thread_structure.messages).length == 0) {
@@ -241,7 +249,7 @@ export function app() {
 
   // open websocket
   use_mount(() => {
-    function receive(e) {
+    function receive_message(e) {
       const data = parse(e.data)
 
       const { type, payload } = data
@@ -263,9 +271,7 @@ export function app() {
       }
     }
 
-    use({ receive })
-
-    connect()
+    connect(receive_message)
   })
 
   // list threads on sidebar
@@ -325,160 +331,24 @@ export function app() {
     h(
       'app',
       sidebar_open &&
-        h(
-          'sidebar',
-          h(
-            'nav',
-            h(
-              'button.nav_new_thread',
-              {
-                onclick: commands.new_thread,
-              },
-              'new thread',
-            ),
-          ),
-          h(
-            'threads',
-            h(
-              scroll,
-              map(flat_hierarchy, ({ type, label, id }) => {
-                if (type == 'file') {
-                  return h(
-                    h(
-                      'threads_thread',
-                      { focus: thread == id },
-                      h(
-                        'button.threads_set_thread',
-                        {
-                          onclick() {
-                            set_thread(id)
-                          },
-                        },
-                        label || 'Untitled',
-                      ),
-                      h(
-                        'button.threads_delete_thread',
-                        {
-                          async onclick() {
-                            perform('hide', { thread: id })
-                            set_thread_index((index) => {
-                              index[id].is_hidden = true
-                            })
-                            if (thread == id) {
-                              commands.new_thread()
-                            }
-                          },
-                        },
-                        'delete',
-                      ),
-                    ),
-                  )
-                } else if (type == 'folder') {
-                  return h(
-                    h(
-                      'threads_folder',
-                      { focus: thread == id },
-                      h(
-                        'button.threads_toggle_folder',
-                        {
-                          onclick() {
-                            controls.toggle_folder(id)
-                          },
-                        },
-                        label,
-                      ),
-                    ),
-                  )
-                } else if (type == 'whitespace') {
-                  return h('threads_whitespace')
-                }
-              }),
-            ),
-          ),
-        ),
-      h(
-        'main',
-        is_new_thread && h('status', h('status_folder', folder)),
-        h(
-          'page',
-          h(
-            scroll,
-            { ref: content },
-            h(
-              'page_content',
-              h(
-                'messages',
-                map(build_context(thread_structure), (message) =>
-                  h(
-                    'message',
-                    { role: message?.role },
-                    h(
-                      'message_content',
-                      {
-                        onclick() {
-                          copy(message.content)
-                        },
-                      },
-                      message?.reasoning &&
-                        should_show_reasoning &&
-                        h(
-                          'message_prose_reasoning',
-                          h(
-                            'details.',
-                            h('summary.', 'Reasoning'),
-                            h(
-                              'message_prose_reasoning_details',
-                              h(markdown, { markdown: message?.reasoning ?? '' }),
-                            ),
-                          ),
-                        ),
-                      h(
-                        'message_prose',
-                        h(markdown, { markdown: message?.content ?? '' }),
-                      ),
-                      // h(
-                      //   'button.message_copy',
-                      //   {
-                      //     onclick() {
-                      //       copy(message.content)
-                      //     },
-                      //   },
-                      //   'copy',
-                      // ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
-        h(
-          'prompt',
-          h(
-            'prompt_field',
-            { empty: !prompt },
-            h(
-              scroll,
-              h(
-                'prompt_textarea',
-                h(textarea, {
-                  value: prompt,
-                  set_value: set_prompt,
-                  ref: prompt_field,
-                  // autofocus: true,
-                }),
-              ),
-            ),
-          ),
-          // h(
-          //   'button.prompt_send',
-          //   {
-          //     onclick: controls.send_prompt,
-          //   },
-          //   'send',
-          // ),
-        ),
-      ),
+        h(sidebar, {
+          threads: flat_hierarchy,
+          current_thread: thread,
+          on_new_thread: commands.new_thread,
+          on_select_thread: set_thread,
+          on_hide_thread: hide_thread,
+          on_toggle_folder: controls.toggle_folder,
+        }),
+      h(conversation, {
+        messages: build_context(thread_structure),
+        folder,
+        is_new_thread,
+        prompt,
+        set_prompt,
+        should_show_reasoning,
+        prompt_ref: prompt_field,
+        content_ref: content,
+      }),
       h(modal_prompt, {
         open: modal_prompt_open,
         set_open: set_modal_prompt_open,
@@ -508,118 +378,11 @@ export function app() {
   )
 }
 
-function build_flat_hierarchy(
-  thread_index: thread_index,
-  expanded_folders: string[],
-  options = {},
-): (
-  | {
-      type: 'file'
-      label: string
-      id: id
-    }
-  | {
-      type: 'folder'
-      label: string
-      id: string
-    }
-  | {
-      type: 'whitespace'
-    }
-)[] {
-  let threads: {
-    id: id
-    title: string
-    folder: string
-    creation_time: number
-    is_hidden?: bool
-  }[] = thread_index
-  threads = map(threads ?? {}, ([thread, thread_index_item]) => ({
-    ...thread_index_item,
-    id: thread,
-  }))
-  threads = threads.filter(({ is_hidden }) => !is_hidden)
-
-  let root = {}
-
-  for (const thread of threads) {
-    let current_children = root
-
-    let dirs = thread.folder.split('/').filter((dir) => dir != '')
-
-    for (const dir of dirs) {
-      if (!has(current_children, dir)) {
-        current_children[dir] = {
-          type: 'folder',
-          label: dir,
-          creation_time: thread.creation_time,
-          children: {},
-        }
-      }
-
-      current_children = current_children[dir].children
-    }
-
-    current_children[thread.id] = {
-      type: 'file',
-      label: thread.title,
-      creation_time: thread.creation_time,
-    }
-  }
-
-  let whitespace = {
-    type: 'whitespace',
-  }
-
-  let items = []
-
-  function append_children(children, dir = '') {
-    map(children, ([id, child]) => {
-      const { type, label, creation_time, children } = child
-
-      if (type == 'file') {
-        items.push({
-          type,
-          label,
-          id,
-        })
-      } else if (type == 'folder') {
-        let folder_path = `${dir}${label}`
-
-        items.push({
-          type,
-          label,
-          id: folder_path,
-        })
-
-        let is_expanded = has(expanded_folders, folder_path)
-
-        if (is_expanded) {
-          append_children(children, `${folder_path}/`)
-        }
-
-        items.push(whitespace)
-      }
-    })
-  }
-
-  append_children(root)
-
-  items = map(items, (item, index) => {
-    if (item.type == 'whitespace' && items?.[index + 1]?.type == 'whitespace') {
-      return
-    }
-    return item
-  })
-
-  return items
-}
-
 let ws: WebSocket
 let pending_actions: Set<fn> = set()
 let pending_requests: Record<id, fn> = {}
 
-function connect() {
+function connect(on_message: (event: MessageEvent) => void) {
   ws = new WebSocket('ws://localhost:8192/api/ws')
 
   ws.onopen = () => {
@@ -628,7 +391,7 @@ function connect() {
     map(pending_actions, call)
   }
 
-  ws.onmessage = receive
+  ws.onmessage = on_message
 
   ws.onclose = () => {
     log('Disconnected')
@@ -638,7 +401,7 @@ function connect() {
     set_timeout(function () {
       log('Reconnecting...')
 
-      connect()
+      connect(on_message)
     }, delay)
   }
 }
@@ -698,14 +461,6 @@ function scroll_by(
     behavior: scroll_behavior,
   })
 }
-
-// let text = identity
-function text(s: string) {
-  return map(s.split('_'), (word) => {
-    return word.slice(0, 1).toUpperCase() + word.slice(1)
-  }).join(' ')
-}
-use({ text })
 
 function trim_start(s: string, char: string = ' '): string {
   if (char === '') return s
@@ -800,6 +555,5 @@ declare global {
     modification_time?: number
   }
 
-  var text: text
 }
 type text = typeof text

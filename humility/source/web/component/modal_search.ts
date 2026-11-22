@@ -1,5 +1,7 @@
 import { go } from 'fuzzysort'
 
+import { text } from 'web/utility/text'
+
 import { input } from './input'
 import { modal } from './modal'
 import { scroll } from './scroll'
@@ -151,7 +153,7 @@ export function modal_search({ files, commands, shortcuts }) {
                 {
                   focus: focus == index,
                   onclick: () => controls.select(index),
-                  ref: focus == index && focus_element,
+                  ref: focus == index ? focus_element : undefined,
                 },
                 h('modal_search_result_label', label),
                 h('modal_search_result_info', info),

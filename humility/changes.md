@@ -43,7 +43,7 @@ web/app: + `markdown` component
 
 > 0.4.2
 
-web/app: refactor codebase for coding agents
+web/app: document web libs on contributing, refactor codebase for coding agents
 
 
 
