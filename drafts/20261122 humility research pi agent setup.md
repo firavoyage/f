@@ -80,6 +80,17 @@ added 1 package in 2s
 Installed npm:pi-bar
 ```
 
+```
+ ~ % pi install npm:pi-usage-widget
+
+Installing npm:pi-usage-widget...
+npm warn Unknown user config "prefer-frozen-lockfile". This will stop working in the next major version of npm.
+npm warn Unknown user config "resolution-mode". This will stop working in the next major version of npm.
+
+added 1 package in 2s
+Installed npm:pi-usage-widget
+```
+
 # . sessions
 
 ```
@@ -423,6 +434,41 @@ Shift+Tab cycles thinking levels in-session
     max       Maximum reasoning
 
   Enter to select · Ctrl+S to set as default · Escape/Ctrl+C to cancel
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+gpt-6-luna  ❯  off  ❯  0.0% / 1.1M
+```
+
+```
+
+ ▀▀█  v1.6.0
+ █▀ █ escape interrupt · ctrl+c/ctrl+d clear/exit · / commands · ! bash · ctrl+o more
+ Press ctrl+o to show full startup help and loaded resources.
+
+ Pi can explain its own features and look up its docs. Ask it how to use or extend Pi.
+
+
+[Context]
+  .pi/agent/AGENTS.md
+
+[Extensions]
+  pi-bar:status-footer.ts, pi-toolset-permissions:src, pi-usage-widget, pi-web-access:dist
+
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────── Usage Settings ───────────────────────────────────────────────────────────
+┌─ Live Preview - Hidden ────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+└────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ [ Global ] [ ● Summary ] [ ● Per Provider ] [ ● Per Model ] [ ● Provider & Model ]
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+▸ Default Widget Mode: Hidden ▶
+  Time Scope: Today ▶
+  Customize Widget Colors ▶
+  Active Modes: Summary, Per Provider, Per Model, Provider & Model ▶
+
+  Pi Hotkeys: Alt+U = Cycle time scope • Alt+Ctrl+U = Cycle display mode
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+                                     ← → tabs • ↑↓ select • ← → cycle • Enter open • Esc/q close
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 gpt-6-luna  ❯  off  ❯  0.0% / 1.1M
 ```
@@ -1208,5 +1254,78 @@ AGENTS.md
 AGENTS.md markdown file providing detailed build, test, and style instructions specifically for AI coding agents. Works across div...
 
 Show all
+
+
+
+# how to check usage stats on pi agent
+
+9:00 AM
+
+### how to check usage stats on pi agent
+
+You can check your usage statistics on the **Pi coding agent** by installing a community extension, using a CLI analytics tool, or inspecting the raw JSONL session files stored locally in `~/.pi/agent/sessions/`. [](https://pi.dev/packages/pi-usage-widget)
+
+#### 1\. In-App Pi Extensions (Recommended)
+
+Install an extension directly using `pi install` to view live metrics and interactive dashboards inside your coding sessions: [](https://github.com/Observal/pi-insights)
+
+* **Live Cost & Token Widget.** Install [pi-usage-widget](https://pi.dev/packages/pi-usage-widget) via `pi install npm:pi-usage-widget` to display real-time costs, tokens, and cache stats right above your editor. You can also run `/usage` inside a session to open a full interactive dashboard. [](https://pi.dev/packages/pi-usage-widget)
+* **Subscription & Rate-Limit Monitor.** Install [pi-usage](https://github.com/mtrojnar/pi-usage) to check your remaining usage limits across providers like Anthropic Claude, Codex, GitHub Copilot, and OpenRouter at startup. [](https://github.com/mtrojnar/pi-usage)
+* **Tool & Skill Breakdown.** Install [pi-tool-stats](https://pi.dev/packages/pi-tool-stats) to track which tools, skills, and slash commands you use most. Run `/tool-stats` or `/tool-stats 7` inside Pi to see a 30-day or 7-day breakdown. [](https://pi.dev/packages/pi-tool-stats)
+* **Deep Workflow Reports.** Install [pi-insights](https://github.com/Observal/pi-insights) via `pi install npm:@observal/pi-insights` and run `/pi-insights` to generate an HTML report analyzing session friction, token waste, and model efficiency. [](https://github.com/Observal/pi-insights)
+* **TUI Cost Dashboard.** Users on [r/PiCodingAgent](https://www.reddit.com/r/PiCodingAgent/comments/1uoq5b4/pi%5Fatlas%5F020%5Fa%5Fdashboard%5Fto%5Fsee%5Fyour%5Ftoken%5Fusage/) also recommend **Pi Atlas**, a terminal dashboard for tracking token usage and estimated costs broken down by individual skills. [](https://www.reddit.com/r/PiCodingAgent/comments/1uoq5b4/pi%5Fatlas%5F020%5Fa%5Fdashboard%5Fto%5Fsee%5Fyour%5Ftoken%5Fusage/)
+
+#### 2\. External CLI Reporting with `ccusage`
+
+If you prefer checking stats outside of a Pi session, the [ccusage](https://ccusage.com/guide/pi/) CLI natively parses Pi's local session logs without requiring any extension setup: [](https://ccusage.com/guide/pi/)
+
+* **Daily Usage.** Run `npx ccusage@latest pi daily` (or `bunx ccusage pi daily`) in your terminal to view daily token counts and costs.
+* **Monthly or Per-Session Views.** Swap `daily` for `monthly` or `session` to group your usage by month or individual coding session.
+* **Date & JSON Filtering.** Add flags like `--since 2026-05-01 --until 2026-05-16` to filter dates or `--json` for raw data output. [](https://ccusage.com/guide/pi/)
+
+#### 3\. Direct Session Logs & Cloud Tracing
+
+* **Local JSONL Files.** Pi automatically logs every prompt, tool call, and token count locally under `~/.pi/agent/sessions/<encoded-cwd>/`. You can inspect these files directly or ask Pi to analyze its own session folder for custom breakdowns.
+* **Sentry AI Observability.** If you want cloud-based trace monitoring, follow the [Sentry Pi monitoring guide](https://sentry.io/cookbook/monitor-pi-with-sentry/) to install `@sentry/pi` and track per-prompt costs and latency in a web dashboard. [](https://www.youtube.com/shorts/kig11LxUtxk)
+
+Are you looking to track **real-time API costs** inside your editor, check **provider subscription limits**, or analyze **historical usage** across past sessions? Let me know and I can walk you through the exact setup steps.
+
+* [](https://pi.dev/packages/pi-usage-widget)  
+Pi.dev  
+pi-usage-widget · Packages - Pi coding agent  
+A Pi extension that shows your usage statistics as a live widget above the editor. The widget is fully themeable: toggle, reorder,
+* [](https://pi.dev/packages/pi-tool-stats)  
+Pi.dev  
+pi-tool-stats · Packages - Pi coding agent  
+Use pi normally — the extension silently records every skill load, slash command, tool call, and tool result to \~/.pi/agent/tool-s...
+* [](https://github.com/Observal/pi-insights)  
+GitHub  
+Observal/pi-insights: Personal usage analytics for Pi coding ...  
+Scans your session history, extracts deterministic stats and LLM-powered facets, then generates a self-contained HTML report cover...
+
+Show all
+
+## how to hide pi install npm:pi-usage-widget and only use that command
+
+how to hide pi install npm:pi-usage-widget and only use that command
+
+9:03 AM
+
+### how to hide pi install npm:pi-usage-widget and only use that command
+
+To hide the persistent widget bar above your editor and only open the dashboard on demand via `/usage`, configure **pi-usage-widget** using its built-in settings menu: [](https://pi.dev/packages/pi-usage-widget)
+
+1. **Open the settings menu.** Inside an active Pi session, run `/usage-settings` (or open `/usage` and navigate to the settings entry point).
+2. **Disable all display modes.** In the **Enable / disable modes** section, toggle off all active widget display modes.
+3. **Use `/usage` on demand.** With all persistent display modes disabled, the live bar above your editor stays hidden, while running `/usage` will continue to open the interactive dashboard whenever you want to check your stats.
+
+_(Tip: You can also press `Ctrl+Alt+U` or run `/cycle-usage-mode` at any time to cycle through whichever modes you have left enabled.)_ 
+
+Did disabling the modes in **`/usage-settings`** hide the bar as expected, or would you like to inspect the extension's **local configuration file** directly?
+
+* [](https://pi.dev/packages/pi-usage-widget)  
+Pi.dev  
+pi-usage-widget · Packages · Pi  
+Toggle which display modes appear in the Ctrl+Alt+U cycle. The widget only cycles through enabled modes.
 
 

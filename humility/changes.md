@@ -71,4 +71,11 @@ implement tool calls
 
 > 0.5
 
+refactor codebase
+
+- find large files and separate
+  - separate for the sake of separation, maybe not reused abstractions
+  - generally better for current workflow, both for humans and agents
+- web/utility? utility.
+
 
