@@ -483,6 +483,12 @@ i could not really code review. it's unformatted json w tons of `\n` in their wr
 
 why isnt timestamp number?!
 
+---
+
+the "single edit no match all" often gets in the way.
+
+maybe unclean code issue.
+
 
 
 # how to use pi agent like a pro

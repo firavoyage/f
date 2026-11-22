@@ -1,0 +1,1820 @@
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: |-
+        **Creating a greeting**
+
+        I
+      reasoning_details:
+        - type: reasoning.summary
+          summary: |-
+            **Creating a greeting**
+
+            I
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: ’m
+      reasoning_details:
+        - type: reasoning.summary
+          summary: ’m
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " thinking"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " thinking"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " about"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " about"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " how"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " how"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " to"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " to"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " greet"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " greet"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " someone"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " someone"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " effectively"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " effectively"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: .
+      reasoning_details:
+        - type: reasoning.summary
+          summary: .
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " A"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " A"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " friendly"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " friendly"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: ' "'
+      reasoning_details:
+        - type: reasoning.summary
+          summary: ' "'
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: Hello
+      reasoning_details:
+        - type: reasoning.summary
+          summary: Hello
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: "!"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: "!"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " How"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " How"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " can"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " can"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " I"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " I"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " help"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " help"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: ?"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: ?"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " feels"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " feels"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " warm"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " warm"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " and"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " and"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " inviting"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " inviting"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: .
+      reasoning_details:
+        - type: reasoning.summary
+          summary: .
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " It"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " It"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " sets"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " sets"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " a"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " a"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " positive"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " positive"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " tone"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " tone"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " for"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " for"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " the"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " the"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " conversation"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " conversation"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " and"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " and"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " makes"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " makes"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " it"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " it"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " clear"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " clear"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " I'm"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " I'm"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " here"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " here"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " to"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " to"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " assist"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " assist"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: —the
+      reasoning_details:
+        - type: reasoning.summary
+          summary: —the
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " user"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " user"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " in"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " in"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " any"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " any"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " way"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " way"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " I"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " I"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " can"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " can"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: .
+      reasoning_details:
+        - type: reasoning.summary
+          summary: .
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " I"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " I"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " wonder"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " wonder"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " if"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " if"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " there's"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " there's"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " a"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " a"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " more"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " more"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " engaging"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " engaging"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " or"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " or"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " personalized"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " personalized"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " way"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " way"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " to"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " to"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " express"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " express"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " this"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " this"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " greeting"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " greeting"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: .
+      reasoning_details:
+        - type: reasoning.summary
+          summary: .
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " Maybe"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " Maybe"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " I"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " I"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " could"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " could"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " tweak"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " tweak"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " it"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " it"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " a"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " a"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " bit"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " bit"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " to"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " to"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " make"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " make"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " it"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " it"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " even"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " even"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " friend"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " friend"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: lier
+      reasoning_details:
+        - type: reasoning.summary
+          summary: lier
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " or"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " or"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " more"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " more"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " tailored"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " tailored"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " to"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " to"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " the"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " the"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: " situation"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: " situation"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: "!"
+      reasoning_details:
+        - type: reasoning.summary
+          summary: "!"
+          format: openai-responses-v1
+          index: 0
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: null
+      reasoning_details:
+        - type: reasoning.encrypted
+          data: gAAAAABq_ekygWoXchDAJoeLf5xZl4mzjui2JPU41uHyfhVtTX9J0ctaD7FiNvrXv_siLyGxUD_xoFpbX2CySiX7zBZ1lee1D5eXNHDvY8zk1iE_g5V63s2h4u7XMycLUf5ZOuXZvMcjXxaBVPGw9NAWD0XvgF1FBJamQOjQN1jkcP9-lhHHURILpCv4HGvCBLHJpwCIMZtPNIdpmaBgDPB1wlguGkxZ1qUpNwTj1P9qcrPLdzUDXsvcxrAkr1E9M_8XclaAzzh_1WRSUr3FjObv7E8v3XSUnNKSQIVZXXkEC2wtYaMeqi70FcAOtAVnKupsxBAkP2r2lUKrCYNF-m5VqkIKagkahpf1Tgee-0HpGyvMeQ1W9nqf81PKuMICJji105G1nulO--MGNRXONNi4bDnTVaqYu_8uv3j5WHUIMGrHtBCcwrcT3ALRyxvrfOS6OtksUv7opK-lmE2QGg_RR2BiDtx5djhxpyqvcyPxfBXG-JKnkfyIIxamkv_fcwZ_myOji1vO0QOT3BNg_Wx_5efV2Haw3fbFS3WfmjmIC62Hm8t43gkfRRqZZErJpkSaho9UTqaPey28vmObe5ysjgXB6KJ77H8ZJOMnXyjvv3DTG4xrdP9HPmLrNaO4vgJZx4kyBd7lZqA7jzAEUder-ygVkYQpr0oaVbxDmlNqCDqx5rVtkDzrT-puM2J6YSFl-DZoLHnkGQ5PDysjwFuLSPZwfFRVdA-mZCmXBvcU_qNJHVk1UbxHNn1VgPUcULnsDKWV5NZNs8iuQ2HpO9cJwZqaqv8Ns4vjJljPopc7lvk2wsruk__M_pOh7BcRsqybbEemg0deHR6RlLq6sNKObUpI5I-Ath0--rIzqktMEiOsO2VlPP_LTr5ZCIsY412bp_MuJdSBoSmGnVt9jRH3ogUjdVdf59CLMFXXUEadKHc6BenqeFiTj080q2367iP5DkZ8_t3ZxM00DuIVSsnirfdHYsYTBIPo4Hi2gHnxVUy3gyIMkyfDK7RPPwIDY13Rf8J3BuGEHgQWQt7hEhQM8PYto4EfbRqPROtJpnW4bjEfxM2Rw6Xk-nBM3yXNz8DXU2y_Ft8bkw_656tdxOLYFgcVizvjPGMPs6c7FQv1hE0n0aaYrkoqh8EVX9RRmN9cNDDxvscmgkcur_nfIlED2-YSPmKanUmneCtVljWtlRkmq5EA5C72eKJRjNQ4IrfpVSuvFrBgnVcXjHt-YVDJBso53aI9I4pmuxauCEhXob2PuiiicR6EAEcVj-KVRSl8PA5TCf9IbcXx_T1gJ0i0Q1keylw4uewCfzeOXLPMscoABxsyBduiHDGQUqVqrQXE9zPBhmmDt5YaKHTS7QY2ekDiEOrxJv4dqJIA3acayj9SS_fr5iwauU2zcqLRu3CgAos-uTOS1gkiAK2cGI2Bw6f3AdyJ61Ep1W3F-uNQQ5E549qnhM9BwrG5catniQPkdQpUJdv5aLPIOwGOPNbKdGKjzXiyBOj81dK8mmPCkEmxGYyQnBmaBZCHDxD1nmGS4icyC5GAhDgNObcsP-xTOZfpDA3oOWBYaep5ZyTRR5xV261j88qnGCSkfjxFmmV28b0p9a0ozGONdyDT9QB5GfiJiiEFT0-1nmCi5KA51bFcVQ857XKrP__Lp4BahhP5nwxSRs39rmIW4tRn-Ma5xEo-aypv2MMz9Dn8pSgpO2ZBmtkXMfaz3MuaOgNu8DBBbb3BEdDDlVtVVSC8tHaHlvYSdFMmGQX6H_NwGyhBwXyBRun92trJYJvO2oM1LN9EhwK-c8Db2pBbbnWEk88Y0w9O_rfs3QMGFC5_riizXJEwp3Zckut8II_oQJTZd_huJ4PEZoVMD1z7aw-o_hckqJFDxkraxenQRsjid_O48FO9vW-XGwBu7myKk_tY-RkQDbQdWuHeucRyRbMaUSfCAVuqlQRh-z0grSvLpvLhN4SyqqkYJpE9hfGuuGHgFWDSNZbyO5xx.eyJlbmRwb2ludF9zbHVnIjoib3BlbmFpL2dwdC02LWx1bmEtMjAyNjA5MjJ8b3BlbmFpIn0
+          format: openai-responses-v1
+          id: rs_0475bc57b35f3529016afde930c78087d1a0a76412297a903a
+          index: 1
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: Hello
+      role: assistant
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: "!"
+      role: assistant
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: " How"
+      role: assistant
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: " can"
+      role: assistant
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: " I"
+      role: assistant
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: " help"
+      role: assistant
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: " you"
+      role: assistant
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: " today"
+      role: assistant
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: "?"
+      role: assistant
+    finish_reason: null
+    native_finish_reason: null
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+      reasoning: null
+    finish_reason: stop
+    native_finish_reason: completed
+
+id: gen-1795025200-kFMmEel1tH31tkMaBOSd
+object: chat.completion.chunk
+created: 1795025200
+model: openai/gpt-6-luna
+provider: OpenAI
+service_tier: default
+choices:
+  - index: 0
+    delta:
+      content: ""
+      role: assistant
+    finish_reason: stop
+    native_finish_reason: completed
+usage:
+  prompt_tokens: 8
+  completion_tokens: 32
+  total_tokens: 40
+  cost: 0.0000168
+  is_byok: false
+  prompt_tokens_details:
+    cached_tokens: 0
+    cache_write_tokens: 0
+    audio_tokens: 0
+    video_tokens: 0
+  cost_details:
+    upstream_inference_cost: 0.0000168
+    upstream_inference_prompt_cost: 8e-7
+    upstream_inference_completions_cost: 0.000016
+  completion_tokens_details:
+    reasoning_tokens: 17
+    image_tokens: 0
+    audio_tokens: 0
+
+{
+  role: "assistant",
+  content: "Hello! How can I help you today?",
+  start_time: 1795025198.8781474,
+  end_time: 1795025201.4753776,
+  usage: {
+    prompt_tokens: 8,
+    completion_tokens: 32,
+    total_tokens: 40,
+    cost: 0.0000168,
+    is_byok: false,
+    prompt_tokens_details: {
+      cached_tokens: 0,
+      cache_write_tokens: 0,
+      audio_tokens: 0,
+      video_tokens: 0,
+    },
+    cost_details: {
+      upstream_inference_cost: 0.0000168,
+      upstream_inference_prompt_cost: 8e-7,
+      upstream_inference_completions_cost: 0.000016,
+    },
+    completion_tokens_details: {
+      reasoning_tokens: 17,
+      image_tokens: 0,
+      audio_tokens: 0,
+    },
+  },
+  perf: {
+    tokens_per_second: 255.06049190147377,
+    time_to_first_token: 2.4404046535491943,
+  },
+  model: "openai/gpt-6-luna",
+}

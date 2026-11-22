@@ -153,7 +153,7 @@ export function modal_search({ files, commands, shortcuts }) {
                 {
                   focus: focus == index,
                   onclick: () => controls.select(index),
-                  ref: focus == index ? focus_element : undefined,
+                  ref: focus == index && focus_element,
                 },
                 h('modal_search_result_label', label),
                 h('modal_search_result_info', info),

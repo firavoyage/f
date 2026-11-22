@@ -5,21 +5,17 @@ import 'web/design/utilitarian.css'
 
 import { sidebar } from './sidebar'
 import { conversation } from './conversation'
-import { random, random_id } from 'lib/random'
-const { stringify, parse } = JSON
+import { random_id } from 'lib/random'
 
 import { build_context, empty_thread_structure } from 'utility/thread'
 import { build_flat_hierarchy } from 'web/utility/thread_hierarchy'
 import { text } from 'web/utility/text'
+import { scroll_by } from 'web/utility/scroll'
+import { trim } from 'web/utility/string'
+import { create_websocket_client } from 'web/utility/websocket'
 import { modal_prompt } from './modal_prompt'
 import { modal_search } from './modal_search'
 import { init_localstorage_prefix } from 'lib/web/state'
-
-const ws_retry_delay = 1000
-const ws_max_jitter = 1000
-
-const action_timeout = 1000
-// const action_timeout = 10000
 
 const max_title_length = 65 * 2
 
@@ -79,6 +75,14 @@ export function app() {
     modal_prompt_set_value.current = set_value
     modal_prompt_placeholder.current = placeholder
   }
+
+  const websocket_ref = use_ref<ReturnType<typeof create_websocket_client> | nil>(
+    nil,
+  )
+  if (!websocket_ref.current) {
+    websocket_ref.current = create_websocket_client()
+  }
+  const websocket = websocket_ref.current
 
   function use_vimium(on) {
     const jk_scroll_distance = 60
@@ -170,7 +174,7 @@ export function app() {
   ]
 
   async function hide_thread(id: id) {
-    perform('hide', { thread: id })
+    websocket.perform('hide', { thread: id })
     set_thread_index((index) => {
       index[id].is_hidden = true
     })
@@ -182,16 +186,16 @@ export function app() {
   let controls = {
     async send_prompt() {
       if (entries(thread_structure.messages).length == 0) {
-        await perform('init', {
+        await websocket.perform('init', {
           thread,
           title: prompt.slice(0, max_title_length),
           folder,
         })
 
-        set_thread_index(perform('list'))
+        set_thread_index(websocket.perform('list'))
       }
 
-      await perform('send', {
+      await websocket.perform('send', {
         thread,
         prompt,
         options: {},
@@ -199,7 +203,7 @@ export function app() {
 
       set_prompt('')
 
-      await perform('generate', { thread })
+      await websocket.perform('generate', { thread })
     },
     toggle_folder(folder) {
       let folders = set(expanded_folders)
@@ -249,8 +253,8 @@ export function app() {
 
   // open websocket
   use_mount(() => {
-    function receive_message(e) {
-      const data = parse(e.data)
+    function receive_message(e: MessageEvent) {
+      const data = JSON.parse(e.data)
 
       const { type, payload } = data
 
@@ -258,25 +262,24 @@ export function app() {
 
       if (type == 'response') {
         const { request } = data
+        websocket.receive_response(request, payload)
+        return
+      }
 
-        pending_requests?.[request]?.(payload)
-        pending_requests[request] = nil
-      } else if (type == 'broadcast') {
+      log('receive', type, payload)
+
+      if (type == 'broadcast') {
         const { event } = data
-
         broadcasts[event](payload)
-        // if (data.thread == thread) {
-        //   broadcasts[action](payload)
-        // }
       }
     }
 
-    connect(receive_message)
+    websocket.connect(receive_message)
   })
 
   // list threads on sidebar
   use_mount(() => {
-    set_thread_index(perform('list'))
+    set_thread_index(websocket.perform('list'))
     // set_threads(post('list'))
   })
 
@@ -286,9 +289,9 @@ export function app() {
       return
     }
 
-    perform('subscribe', { thread })
+    websocket.perform('subscribe', { thread })
 
-    return () => perform('unsubscribe', { thread })
+    return () => websocket.perform('unsubscribe', { thread })
   }, [thread])
 
   // bind shortcuts for controls
@@ -378,112 +381,6 @@ export function app() {
   )
 }
 
-let ws: WebSocket
-let pending_actions: Set<fn> = set()
-let pending_requests: Record<id, fn> = {}
-
-function connect(on_message: (event: MessageEvent) => void) {
-  ws = new WebSocket('ws://localhost:8192/api/ws')
-
-  ws.onopen = () => {
-    log('Connected!')
-
-    map(pending_actions, call)
-  }
-
-  ws.onmessage = on_message
-
-  ws.onclose = () => {
-    log('Disconnected')
-
-    const delay = ws_retry_delay + random() * ws_max_jitter
-
-    set_timeout(function () {
-      log('Reconnecting...')
-
-      connect(on_message)
-    }, delay)
-  }
-}
-
-async function perform(
-  action: action,
-  payload?: object,
-  timeout = action_timeout,
-  request = random_id(),
-): Promise<any> {
-  if (!(ws?.readyState == WebSocket.OPEN)) {
-    // log(`wait for ws to perform ${action}`)
-    pending_actions.add(() => send(action, payload, request))
-  } else {
-    send(action, payload, request)
-  }
-
-  return new Promise((resolve, reject) => {
-    pending_requests[request] = resolve
-
-    set_timeout(function () {
-      reject(
-        err(`response for action ${action} should arrive within ${timeout}ms`),
-      )
-    }, timeout)
-  })
-}
-
-async function send(action: action, payload: any, request: id) {
-  const request_payload = {
-    type: 'request',
-    request,
-    action,
-    payload,
-  }
-
-  log('perform', action, payload)
-
-  ws.send(stringify(request_payload))
-}
-
-function scroll_by(
-  ref,
-  distance,
-  scroll_behavior: 'smooth' | 'instant' = 'instant',
-) {
-  if (!ref.current) {
-    return
-  }
-
-  if (abs(distance) <= 1) {
-    distance = ref.current.clientHeight * distance
-  }
-
-  ref.current.scrollBy({
-    top: distance,
-    behavior: scroll_behavior,
-  })
-}
-
-function trim_start(s: string, char: string = ' '): string {
-  if (char === '') return s
-
-  while (s.startsWith(char)) {
-    s = s.slice(char.length)
-  }
-  return s
-}
-
-function trim_end(s: string, char: string = ' '): string {
-  if (char === '') return s
-
-  while (s.endsWith(char)) {
-    s = s.slice(0, -char.length)
-  }
-  return s
-}
-
-function trim(s: string, char: string = ' '): string {
-  return trim_end(trim_start(s, char), char)
-}
-
 declare global {
   type node = root | id
 
@@ -554,6 +451,4 @@ declare global {
     creation_time?: number
     modification_time?: number
   }
-
 }
-type text = typeof text

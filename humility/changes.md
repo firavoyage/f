@@ -45,6 +45,10 @@ web/app: + `markdown` component
 
 web/app: document web libs on contributing, refactor codebase for coding agents
 
+llms can really handle this, even a simple and fast one wo reasoning, as long as you document a bit if you go the unconventional way.
+
+> 0.4.3
+
 
 
 web/app: show response line by line w fade in animation, deprecate "dangerous html" prop
