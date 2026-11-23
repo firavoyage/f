@@ -277,10 +277,87 @@ signed main() {
 
 /*
 
+count every num.
 
+chain every num -> next
+
+maintain first appearance and current last appearance
+
+convert to set
+e.g. did count
+
+for odd, start from first appearance, traverse n/2 times, and that's it.
+
+
+
+well, quite weird it feels. count means has for map, and -> 0 or 1 
+(number? not bool?).
+for consistency maybe
 
 */
 
 void solve() {
-  
+  readint(n);
+  readseq(a, 1, n);
+
+  unordered_map<int, int> num_count;
+  unordered_map<int, int> first_appearance;
+  unordered_map<int, int> current_last_appearance;
+  // unordered_map<int, int> next;
+  seq(next, n);
+
+  // count every num
+  each(i, 1, n){
+    int value = a[i];
+    if(num_count.count(value) == 0){
+      num_count[value] = 1;
+    } else {
+      num_count[value] += 1;
+    }
+  }
+
+  // chain each
+  each(i, 1, n){
+    int value = a[i];
+    if(first_appearance.count(value) == 0){
+      first_appearance[value] = i;
+    } else {
+      next[current_last_appearance[value]] = i;
+    }
+    current_last_appearance[value] = i;
+  }
+
+  // index count
+  int count = 0;
+
+  unordered_map<int, int> has_counted;
+
+  // for odd, traverse n/2 (floordiv) times to get the index
+  each(i, 1, n){
+    int value = a[i];
+    if(has_counted.count(value) == 1){
+      continue;
+    } else {
+      has_counted[value] = true;
+    }
+
+    // impossible
+    // if(num_count.count(value) == 0){
+    //   continue;
+    // }
+
+    int appearance_count = num_count[value];
+
+    if(appearance_count % 2 == 1){
+      int current_index = first_appearance[value];
+
+      repeat(appearance_count / 2){
+        current_index = next[current_index];
+      }
+
+      count += current_index;
+    }
+  }
+
+  prn(count);
 }
