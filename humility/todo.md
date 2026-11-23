@@ -8,6 +8,16 @@ ref:
 - zsh autocomplete
 - https://base-ui.com/react/components/autocomplete
 
+---
+
+research features, do competitive ux analysis
+
+https://github.com/felinics/Memoh
+
+https://github.com/qqqqqf-q/Arkloop
+
+https://github.com/lobehub/lobehub
+
 # todo
 
 ## m

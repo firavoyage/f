@@ -17,6 +17,8 @@ a
 - edit
   - show prompt
 
+for now, choose a for simplicity
+
 b
 
 - copy
