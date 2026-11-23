@@ -40,7 +40,15 @@ i remember you should output -1 otherwise. and 0 if eq.
 
 maybe you can output either when eq but you may have to output -1... idk.
 
+r
 
+check continue and break carefully. make exhaustive.
+
+human language is ambiguous.
+
+e.g. "take one". "do sth if p". "do sth whenever p".
+
+<!-- well actually my impl on r is quite awkward. it should be while loop but im not used to write condition inside while. i was thinking about loop or while true, and define logics inside. -->
 
 # skipped
 

@@ -278,7 +278,10 @@ signed main() {
 
 /*
 
+the number of consecutives in the middle
 
+
+tle?!
 
 */
 
@@ -291,5 +294,70 @@ void solve() {
     read(a[i]);
   }
 
-  
+  // int combo = 0;
+
+  int mid = n/2 + 1;
+
+  int l = mid, r = mid;
+  while(l >= 1){
+    if(l == 1){
+      break;
+    }
+
+    if(a[l] == a[l-1]){
+      l -= 1;
+    } else {
+      break;
+    }
+  }
+  while(r <= n){
+    if(r == n){
+      break;
+    }
+
+    if(a[r] == a[r+1]){
+      r += 1;
+    } else {
+      break;
+    }
+  }
+  int count = r - l + 1;
+
+  prn(count);
 }
+// void solve() {
+//   readint(n);
+
+//   vector<char> a(n+5);
+
+//   each(i, 1, n){
+//     read(a[i]);
+//   }
+
+//   // int combo = 0;
+
+//   int mid = n/2 + 1;
+
+//   int l = mid, r = mid;
+//   while(l >= 1){
+//     if(l == 1){
+//       break;
+//     }
+
+//     if(a[l] == a[l-1]){
+//       l -= 1;
+//     }
+//   }
+//   while(r <= n){
+//     if(r == n){
+//       break;
+//     }
+
+//     if(a[r] == a[r+1]){
+//       r += 1;
+//     }
+//   }
+//   int count = r - l + 1;
+
+//   prn(count);
+// }
