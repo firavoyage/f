@@ -21,6 +21,14 @@ export function use_ref<T>(initial_value?: T) {
   return ref
 }
 
+export function forward(...refs) {
+  return (value) => {
+    map(refs, (ref) => {
+      ref?.current = value
+    })
+  }
+}
+
 export function use_state<T>(
   initial_value?: T,
 ): [state: T, set_state: typeof set_state] {
