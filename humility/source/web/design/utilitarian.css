@@ -172,7 +172,12 @@
   --color-sidebar: var(--palette-gray-700);
   --color-field: var(--palette-gray-750);
   --color-scrollbar-thumb: var(--palette-gray-600);
+  --color-hover: color-mix(in oklab, var(--palette-gray-600) 50%, transparent);
   --color-focus: color-mix(in oklab, var(--palette-accent) 50%, transparent);
+}
+
+:root {
+  --focus-outline: 0 0 0 2px var(--color-focus) inset;
 }
 
 * {
@@ -301,6 +306,12 @@
   & pre,
   & code {
     font-family: var(--typeface-mono);
+  }
+
+  & a, & summary {
+    &:focus-visible {
+      box-shadow: var(--focus-outline);
+    }
   }
 }
 
@@ -497,10 +508,14 @@
   }
 }
 
-a,
-button,
-summary {
+.button {
+  &:hover {
+    background-color: var(--color-hover);
+  }
+  &:active {
+    background-color: var(--color-click);
+  }
   &:focus-visible {
-    box-shadow: 0 0 0 2px var(--color-focus) inset;
+    box-shadow: var(--focus-outline);
   }
 }

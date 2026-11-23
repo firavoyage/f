@@ -86,4 +86,10 @@ web/modal: dismiss on outside click
 
 > 0.6
 
+## 23
+
+web/button: + component `button`
+
+have global hover/active style for such button.
+
 

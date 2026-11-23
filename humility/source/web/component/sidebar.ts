@@ -1,6 +1,7 @@
 import { text } from 'utility/text'
 import { scroll } from './scroll'
 import type { thread_hierarchy_item } from 'utility/thread_hierarchy'
+import { button } from './button'
 
 type sidebar = {
   threads: thread_hierarchy_item[]
@@ -24,8 +25,9 @@ export function sidebar({
     h(
       'nav',
       h(
-        'button.nav_new_thread',
+        button,
         {
+          class: 'nav_new_thread',
           onclick: on_new_thread,
         },
         text('new_thread'),
@@ -41,8 +43,9 @@ export function sidebar({
               'threads_thread',
               { focus: current_thread == id },
               h(
-                'button.threads_set_thread',
+                button,
                 {
+                  class: 'threads_set_thread',
                   onclick() {
                     on_select_thread(id)
                   },
@@ -50,8 +53,9 @@ export function sidebar({
                 label || 'Untitled',
               ),
               h(
-                'button.threads_delete_thread',
+                button,
                 {
+                  class: 'threads_delete_thread',
                   async onclick() {
                     on_hide_thread(id)
                   },

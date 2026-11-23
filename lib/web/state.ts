@@ -74,12 +74,12 @@ export function s<T>(initial_value: T, options: s<T> = {}) {
     return stringify(state)
   }
 
-  if (is_given(localstorage)) {
+  if (is(localstorage, 'present')) {
     const key = `${app_prefix}${localstorage}`
 
     const value = localStorage.getItem(key)
 
-    if (is_given(value)) {
+    if (is(value, 'present')) {
       state = deserialize(value)
     }
 
@@ -88,7 +88,7 @@ export function s<T>(initial_value: T, options: s<T> = {}) {
     })
   }
 
-  if (is_given(url_param)) {
+  if (is(url_param, 'present')) {
     const current_params = obj(new URL(window.location.href).searchParams)
 
     if (has(current_params, url_param)) {
@@ -105,7 +105,7 @@ export function s<T>(initial_value: T, options: s<T> = {}) {
       const current_serialized_state = serialize()
 
       if (prev_serialized_state != current_serialized_state) {
-        if (!is_given(state)) {
+        if (is(state, 'absent')) {
           url.searchParams.delete(url_param)
         } else {
           url.searchParams.set(url_param, serialize())
@@ -129,6 +129,8 @@ export function s<T>(initial_value: T, options: s<T> = {}) {
       subs.add(sync_to_url)
     })
   }
+
+  use_state.subscribe = subscribe
 
   return use_state
 }

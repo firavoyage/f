@@ -36,6 +36,8 @@ there are schema and current settings, which can be empty as every setting has d
 
 settings are global settings. thread specific config may have separate commands and dont go this way.
 
+settings include those that sync to config.yaml. use_sidebar_open doesnt sync.
+
 # structure
 
 schema
@@ -67,11 +69,13 @@ every setting item should have type default and maybe options.
 
 type is arbitrary string, as long as they are defined.
 
-you would generally have component for each type, map type to such component, and pass options via props `h(component, {options})`. you may pass options whether or not it takes.
+you would generally have component for each type, map type to such component, and pass options via props `h(component, {value, set_value, options})`. you may pass options whether or not it takes.
 
 # ux
 
-you have settings on the menu.
+you have settings on the sidebar menu.
+
+auto save settings.
 
 # impl
 
@@ -80,7 +84,14 @@ app
 ```
 schema
 
+use_settings = s(build_default_settings(schema), {
+  localstorage: 'settings'
+}) # from utility/settings
 
+app 
+  set settings from backend # same way as list all threads
+
+  
 ```
 
 # rationale
