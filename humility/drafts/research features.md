@@ -281,3 +281,5 @@ What’s on the agenda today?
 - keyboard
   - here you can assign/add shortcut for any
 - archived chats (?!)
+- storage (max 512gb) -> library
+- ...
