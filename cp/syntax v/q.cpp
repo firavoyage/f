@@ -315,6 +315,8 @@ idk.
 
 ah, i missed it.
 
+若存在两个非负整数 x,y（可以相同）
+
 
 
 */
@@ -324,6 +326,8 @@ ah, i missed it.
 // }
 
 int count(int n){
+  int current_count = 0;
+
   seq(binary, 1000);
   int last_index = 100; // even/odd
   int current = last_index + 1;
@@ -343,11 +347,18 @@ int count(int n){
 
   int first_index = current;
  
-  info("binary", n);
-  each(i, first_index, last_index){
-    pr(binary[i]);
-  }
-  prn();
+  // info("binary", n);
+  // each(i, first_index, last_index){
+  //   pr(binary[i]);
+  // }
+  // prn();
+
+  // each(i, first_index, last_index - 1){
+  //   if(binary[i] == 1){
+  //     current_count += 1;
+  //   }
+  // }
+  current_count += max(last_index - first_index, 0);
 
   last_index = 100; // even/odd
   current = last_index + 1;
@@ -374,7 +385,6 @@ int count(int n){
   // prn();
 
   int current_one_count = 0;
-  int current_count = 0;
   each(i, first_index, last_index){
   // each(i, first_index, last_index - 1){
     int digit = binary[i];
@@ -387,6 +397,19 @@ int count(int n){
     int right = last_index - i;
     if(current_one_count == 0){
       int addition = right * (right - 1) / 2;
+      // each(x, i + 1, last_index){
+      //   if(binary[x] == 1){
+      //     addition += 1;
+      //   }
+      // }
+      // if(binary[last_index] == 0){
+      //   // odd previously
+      //   addition -= 1;
+      // }
+
+      // addition += right;
+      // addition += max(right - 1, 0);
+
       current_count += addition;
       // info("pick two", i - first_index + 1, right, addition)
     } else if (current_one_count == 1){
@@ -543,13 +566,13 @@ int count(int n){
 // }
 
 void solve() {
-  int prev = 0;
+  // int prev = 0;
 
-  each(i, 0, 100){
-    int current = count(i);
-    info("count", i, current, current - prev);
-    prev = current;
-  }
+  // each(i, 0, 100){
+  //   int current = count(i);
+  //   info("count", i, current, current - prev);
+  //   prev = current;
+  // }
   // int prev = 0;
 
   // each(i, 1, 20){
@@ -558,9 +581,9 @@ void solve() {
   //   prev = current;
   // }
 
-  // readint(l, r);
+  readint(l, r);
 
-  // prn(count(r) - count(l - 1));
+  prn(count(r) - count(l - 1));
 }
 // void solve() {
 //   // int prev = 0;
