@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>
-    // separate intentional console.log and noises (typically sent via .info)
+    // keep only intentional console.log, ignore non critical(crashing) ones from deps
     console.info = () => {}
-    console.warn = () => {}
+    // console.warn = () => {}
     console.error = () => {}
   </script>
   <link rel="icon" type="image/svg+xml" href='../asset/favicon.svg'></link>

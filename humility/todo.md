@@ -1,19 +1,12 @@
 # plan
 
+implement modals for input, select, autocomplete
 
+ref: 
 
----
-
-use case:
-
-- analyze math ref ans issues
-- setup forgejo (or _repo_) via ssh, register free domain name on duckdns via browser automation (human may pick a name or handles a bit captcha stuff maybe), and binds
-
----
-
-organize (things as) drafts.
-
-> quite weird, some drafts/todo are in purpose
+- chromium omnibox
+- zsh autocomplete
+- https://base-ui.com/react/components/autocomplete
 
 # todo
 
@@ -270,6 +263,14 @@ expected?
 # misc
 
 ## use cases
+
+analyze uni advanced math ref ans issues
+
+---
+
+setup forgejo (or _repo_) via ssh, register free domain name on duckdns via browser automation (human may pick a name or handles a bit captcha stuff maybe), and binds
+
+---
 
 find and organize useful agent skills all over the internet
 

@@ -1,3 +1,4 @@
+import { text } from 'utility/text'
 import { scroll } from './scroll'
 import type { thread_hierarchy_item } from 'utility/thread_hierarchy'
 
@@ -27,7 +28,7 @@ export function sidebar({
         {
           onclick: on_new_thread,
         },
-        'new thread',
+        text('new_thread'),
       ),
     ),
     h(
