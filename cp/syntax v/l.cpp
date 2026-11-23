@@ -287,14 +287,59 @@ mem trick.
 
 idk, maybe we can have char of e6 starting.
 
-initially start = end = e6, pos = end (is end = true).
+initially start = e6 + 1, end = e6, pos = end (is end = true).
 when typing, end + 1 or start - 1, 
+when del, if start <= end, end - 1 or start + 1
+
+string = [start, end]
+
+
 
 */
 
 char opposite = '!';
-char opposite = '!';
+char del = '-';
 
 void solve() {
-  
+  readint(n);
+
+  seq(a, 1e6 * 2);
+
+  int start = 1e6 + 1, end = 1e6;
+  bool should_type_on_end = true;
+
+  repeat(n){
+    readchar(c);
+    if(c == opposite){
+      should_type_on_end = !should_type_on_end;
+    } else if (c == del){
+      if(start > end){
+        continue;
+      }
+
+      if(should_type_on_end){
+        end -= 1;
+      } else {
+        start += 1;
+      }
+    } else {
+      if(should_type_on_end){
+        end += 1;
+        a[end] = c;
+      }else {
+        start -= 1;
+        a[start] = c;
+      }
+    }
+  }
+
+  if(start > end){
+    prn("Empty");
+  } else {
+    each(i, start, end){
+      char c = a[i];
+      write(c);
+    }
+    prn();
+  }
 }

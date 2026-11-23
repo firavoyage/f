@@ -38,7 +38,7 @@
 		// instead of "raise"
     "prefix": ["r"],
     "body": [
-      "return "
+      "return;"
     ],
   },
   "log": {
