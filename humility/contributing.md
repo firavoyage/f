@@ -12,9 +12,9 @@ use type, no interface
 
 use modern tech such as es module
 
-do not build or test
-
 do not use git
+
+skip building or testing by default
 
 use shell if the edit tool fails
 

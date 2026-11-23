@@ -1715,4 +1715,12 @@ research features
 
 e.g. chatgpt
 
+---
+
+quite awkward, it would always mention "not ... per project instruction".
+
+llms inherently do poorly on negative instructions.
+
+doesnt feel would fight it.
+
 
