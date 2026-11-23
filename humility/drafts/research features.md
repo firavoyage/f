@@ -224,3 +224,60 @@ What’s on the agenda today?
       - no secondary menu?
       - prev gen are not saved it seems
     - branch
+
+## keyboard shortcuts (ctrl /)
+
+- search
+- (categories)
+- (category)
+  - label
+  - desc (redundant)
+  - shortcut/unassigned (doesnt seem i can assign...)
+
+## settings
+
+- general
+  - ui lang
+  - send msg/insert line shortcut
+    - enter
+    - ctrl enter
+    - ctrl enter when multiline (?)
+- appearance
+  - system/light/dark
+  - theme preset (e.g. vscode theme)
+  - accent
+  - bg, fg
+  - (advanced)
+    - font size
+    - code font size
+    - reduce motion
+    - separate theme for light/dark (?)
+    - constrast
+    - diff using color or `+/-`?
+- notifications
+- voice
+  - voice character
+  - lang
+  - enable dictation?
+  - set shortcut for dictation
+  - recording history (?!)
+    - incl. cancelled
+  - dict
+- personalization
+  - memory
+  - my photo
+  - style/tone
+  - custom instructions
+  - additional
+    - fast answers
+    - suggest followup
+    - reference recordings
+    - web search
+    - voice (disabled)
+    - library search
+    - connector search
+- pet (web extension?)
+  - dont show pet
+- keyboard
+  - here you can assign/add shortcut for any
+- archived chats (?!)
