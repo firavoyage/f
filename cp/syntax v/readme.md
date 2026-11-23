@@ -40,11 +40,18 @@ i remember you should output -1 otherwise. and 0 if eq.
 
 maybe you can output either when eq but you may have to output -1... idk.
 
+
+
 # skipped
 
 j
 
 unlikely to be proved quickly
+
+q
+
+segfault. im not familiar w it.
+no idea how it can be achieved wo out of bound access.
 
 # upsolved
 

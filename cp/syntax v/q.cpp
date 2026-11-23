@@ -319,6 +319,22 @@ ah, i missed it.
 
 
 
+seg fault 8/10?!
+
+array access/set out of bound?!
+
+
+
+it's not about 500...
+
+
+
+well...
+
+l r in 0 ll...
+
+what about 0?
+
 */
 
 // auto binary(int n){
@@ -326,9 +342,13 @@ ah, i missed it.
 // }
 
 int count(int n){
+  if(n <= 1){
+    return 0;
+  }
+
   int current_count = 0;
 
-  seq(binary, 1000);
+  seq(binary, 100 + 5);
   int last_index = 100; // even/odd
   int current = last_index + 1;
 
@@ -346,6 +366,8 @@ int count(int n){
   }
 
   int first_index = current;
+
+  assert(first_index >= 1);
  
   // info("binary", n);
   // each(i, first_index, last_index){
@@ -429,6 +451,218 @@ int count(int n){
 
   return current_count;
 }
+// int count(int n){
+//   int current_count = 0;
+
+//   seq(binary, 1000);
+//   int last_index = 500; // even/odd
+//   // int last_index = 100; // even/odd
+//   int current = last_index + 1;
+
+//   int temp_n = n; // you solve for n + 1 to count from 1 to n
+//   while(temp_n > 0){
+//     current -= 1;
+//     if(temp_n % 2 == 1){
+//     // if(temp_n % 2 == 0){
+//       binary[current] = 1;
+//       temp_n -= 1;
+//     } else {
+//       binary[current] = 0;
+//     }
+//     temp_n /= 2;
+//   }
+
+//   int first_index = current;
+
+//   assert(first_index >= 1);
+ 
+//   // info("binary", n);
+//   // each(i, first_index, last_index){
+//   //   pr(binary[i]);
+//   // }
+//   // prn();
+
+//   // each(i, first_index, last_index - 1){
+//   //   if(binary[i] == 1){
+//   //     current_count += 1;
+//   //   }
+//   // }
+//   current_count += max(last_index - first_index, 0);
+
+//   last_index = 500; // even/odd
+//   // last_index = 100; // even/odd
+//   current = last_index + 1;
+
+//   temp_n = n + 1; // you solve for n + 1 to count from 1 to n
+//   while(temp_n > 0){
+//     current -= 1;
+//     if(temp_n % 2 == 1){
+//     // if(temp_n % 2 == 0){
+//       binary[current] = 1;
+//       temp_n -= 1;
+//     } else {
+//       binary[current] = 0;
+//     }
+//     temp_n /= 2;
+//   }
+
+//   first_index = current;
+ 
+//   // info("binary", n + 1);
+//   // each(i, first_index, last_index){
+//   //   pr(binary[i]);
+//   // }
+//   // prn();
+
+//   int current_one_count = 0;
+//   each(i, first_index, last_index){
+//   // each(i, first_index, last_index - 1){
+//     int digit = binary[i];
+
+//     if(digit == 0){
+//       continue;
+//     }
+
+//     // assume it zero
+//     int right = last_index - i;
+//     if(current_one_count == 0){
+//       int addition = right * (right - 1) / 2;
+//       // each(x, i + 1, last_index){
+//       //   if(binary[x] == 1){
+//       //     addition += 1;
+//       //   }
+//       // }
+//       // if(binary[last_index] == 0){
+//       //   // odd previously
+//       //   addition -= 1;
+//       // }
+
+//       // addition += right;
+//       // addition += max(right - 1, 0);
+
+//       current_count += addition;
+//       // info("pick two", i - first_index + 1, right, addition)
+//     } else if (current_one_count == 1){
+//       int addition = right;
+//       current_count += addition;
+//       // info("pick one", i - first_index + 1, right, addition)
+//     } else if (current_one_count == 2){
+//       int addition = 1;
+//       current_count += addition;
+//       // info("pick zero", i - first_index + 1, right, addition)
+//     } else {
+//       break;
+//     }
+
+//     current_one_count += 1;
+//   }
+
+//   return current_count;
+// }
+// int count(int n){
+//   int current_count = 0;
+
+//   seq(binary, 1000);
+//   int last_index = 100; // even/odd
+//   int current = last_index + 1;
+
+//   int temp_n = n; // you solve for n + 1 to count from 1 to n
+//   while(temp_n > 0){
+//     current -= 1;
+//     if(temp_n % 2 == 1){
+//     // if(temp_n % 2 == 0){
+//       binary[current] = 1;
+//       temp_n -= 1;
+//     } else {
+//       binary[current] = 0;
+//     }
+//     temp_n /= 2;
+//   }
+
+//   int first_index = current;
+ 
+//   // info("binary", n);
+//   // each(i, first_index, last_index){
+//   //   pr(binary[i]);
+//   // }
+//   // prn();
+
+//   // each(i, first_index, last_index - 1){
+//   //   if(binary[i] == 1){
+//   //     current_count += 1;
+//   //   }
+//   // }
+//   current_count += max(last_index - first_index, 0);
+
+//   last_index = 100; // even/odd
+//   current = last_index + 1;
+
+//   temp_n = n + 1; // you solve for n + 1 to count from 1 to n
+//   while(temp_n > 0){
+//     current -= 1;
+//     if(temp_n % 2 == 1){
+//     // if(temp_n % 2 == 0){
+//       binary[current] = 1;
+//       temp_n -= 1;
+//     } else {
+//       binary[current] = 0;
+//     }
+//     temp_n /= 2;
+//   }
+
+//   first_index = current;
+ 
+//   // info("binary", n + 1);
+//   // each(i, first_index, last_index){
+//   //   pr(binary[i]);
+//   // }
+//   // prn();
+
+//   int current_one_count = 0;
+//   each(i, first_index, last_index){
+//   // each(i, first_index, last_index - 1){
+//     int digit = binary[i];
+
+//     if(digit == 0){
+//       continue;
+//     }
+
+//     // assume it zero
+//     int right = last_index - i;
+//     if(current_one_count == 0){
+//       int addition = right * (right - 1) / 2;
+//       // each(x, i + 1, last_index){
+//       //   if(binary[x] == 1){
+//       //     addition += 1;
+//       //   }
+//       // }
+//       // if(binary[last_index] == 0){
+//       //   // odd previously
+//       //   addition -= 1;
+//       // }
+
+//       // addition += right;
+//       // addition += max(right - 1, 0);
+
+//       current_count += addition;
+//       // info("pick two", i - first_index + 1, right, addition)
+//     } else if (current_one_count == 1){
+//       int addition = right;
+//       current_count += addition;
+//       // info("pick one", i - first_index + 1, right, addition)
+//     } else if (current_one_count == 2){
+//       int addition = 1;
+//       current_count += addition;
+//       // info("pick zero", i - first_index + 1, right, addition)
+//     } else {
+//       break;
+//     }
+
+//     current_one_count += 1;
+//   }
+
+//   return current_count;
+// }
 // int count(int n){
 //   seq(binary, 1000);
 //   int last_index = 100; // even/odd
@@ -581,10 +815,32 @@ void solve() {
   //   prev = current;
   // }
 
+  // info(count(1e18));
+
   readint(l, r);
 
   prn(count(r) - count(l - 1));
 }
+// void solve() {
+//   // int prev = 0;
+
+//   // each(i, 0, 100){
+//   //   int current = count(i);
+//   //   info("count", i, current, current - prev);
+//   //   prev = current;
+//   // }
+//   // int prev = 0;
+
+//   // each(i, 1, 20){
+//   //   int current = count(i);
+//   //   info("count", i, current, current - prev);
+//   //   prev = current;
+//   // }
+
+//   readint(l, r);
+
+//   prn(count(r) - count(l - 1));
+// }
 // void solve() {
 //   // int prev = 0;
 
