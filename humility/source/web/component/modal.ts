@@ -1,4 +1,8 @@
-export function modal({ set_open, children }) {
+export function modal({
+  set_open,
+  children,
+  position = 'top' as 'top' | 'center',
+}) {
   const modal_ref = use_ref()
 
   use_effect(() => {
@@ -14,6 +18,7 @@ export function modal({ set_open, children }) {
 
   return h(
     'modal',
+    { position },
     h('modal_backdrop'),
     h('modal_content', { ref: modal_ref }, children),
   )

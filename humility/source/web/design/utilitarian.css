@@ -310,7 +310,8 @@
   justify-content: center;
   padding-block: var(--spacing-4);
 
-  &[role='user'], &[role='tool'] {
+  &[role='user'],
+  &[role='tool'] {
     background-color: var(--color-surface-semihigh);
   }
   .message_content {
@@ -361,6 +362,10 @@
   display: flex;
   justify-content: center;
   pointer-events: none;
+
+  &[position='center'] {
+    align-items: center;
+  }
 
   .modal_backdrop {
     position: fixed;
