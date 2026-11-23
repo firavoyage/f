@@ -355,6 +355,38 @@ typically, only work on test 1 to 3 (likely 1 to 3).
 13 14 15 16
 
 
+
+ive come up w an idea after dinner.
+gcd n ... = n means n is the least.
+gcd ... = n doesnt mean n has to appear.
+and gcd n ... doesnt mean it = n when n is the least
+
+1  2  3  4
+7  x  6  8
+11 10 9  12
+13 14 15 16
+that wont work anyway
+
+~~1 2 3 4 5 6~~
+4 8 16 28 32
+5 10 15 20 25 35
+6 12 18 24 30 36
+
+currently it reports -1 for any n >= 4 it seems.
+
+4 8 16 32 44 (4)
+10 15 20 25 35 40 45 (5)
+6 12 18 24 30 36 48
+7 14 21 28 35 42 49
+
+idk, let's just see whether we can fastpass.
+
+doesnt seem it would fastpass. worth a try.
+
+
+
+yeah, still wa except 1 ~ 3. same.
+
 */
 
 void solve() {
@@ -365,15 +397,15 @@ void solve() {
 
   dict is_used;
 
-  each(j, 1, n){
-    a[1][j] = j;
-    is_used[j] = true;
-  }
+  // each(j, 1, n){
+  //   a[1][j] = j;
+  //   is_used[j] = true;
+  // }
   
   reveach(j, n, 1){
-    reveach(i, n, 2){
-      reveach(value, n * n, j){
-        if(value == j){
+    reveach(i, n, 1){
+      reveach(value, n * n, j - 1){
+        if(value == j - 1){
           prn(-1);
           return ;
         }

@@ -492,6 +492,7 @@ desktop:
 - shell rm rf
 - install deepseek harness dsh
 - update pi agent
+- gnome crashing after sleep standby
 
 android:
 
