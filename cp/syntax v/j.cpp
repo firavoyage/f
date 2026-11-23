@@ -8,6 +8,7 @@
 #define int long long
 #define float double
 #define seq(a, n) vector<int> a(n + 5)
+#define dict unordered_map<int, int>
 
 #define readint(...) \
   int __VA_ARGS__;   \
@@ -297,10 +298,144 @@ and inside such html "html" is always flashing. interval 1? time?
 
 
 
-let's say
+1 to n should appear on every column.
+order is irrelevant.
+
+let's make 1 to n column heading.
+such heading must be minimum in the column to be gcd.
+and all others must be multiples.
+
+1 2
+2 4
+
+1 2 3
+5 4 6
+7 8 9
+
+1  2  3  4
+7  x  6  8 # 5
+11 10 9  12
+13 14 15 16
+
+1 2 3 4 5
+      8 10
+      12 15
+      [16, ii] 20
+      [24, i] 25
+
+i. typically n-1 n+1
+ii. typically skipping n-1 n
+
+1 2 3 4 5 6
+
+
+
+n in 100.
+
+greedy.
+
+(assign first line as 1 to n.)
+
+for each column rtl, bottom to top,
+always take the maximal mulitple existing
+when it comes to first line skip.
+when reaching heading before first line, prn -1 return
+
+
+
+wa.
+
+typically, only work on test 1 to 3 (likely 1 to 3).
+
+
+
+1  2  3  4
+7  x  6  8 # 5
+11 10 9  12
+13 14 15 16
+
 
 */
 
 void solve() {
+  readint(n);
+
+  // row column 1 indexed
+  int a[100 + 5][100 + 5];
+
+  dict is_used;
+
+  each(j, 1, n){
+    a[1][j] = j;
+    is_used[j] = true;
+  }
   
+  reveach(j, n, 1){
+    reveach(i, n, 2){
+      reveach(value, n * n, j){
+        if(value == j){
+          prn(-1);
+          return ;
+        }
+
+        if(is_used.count(value)){
+          continue;
+        }
+
+        if(value % j == 0){
+          is_used[value] = true;
+          a[i][j] = value;
+          break;
+        }
+      }
+    }
+  }
+
+  each(i, 1, n){
+    each(j, 1, n){
+      pr(a[i][j]);
+    }
+    prn();
+  }
 }
+// void solve() {
+//   readint(n);
+
+//   // row column 1 indexed
+//   int a[100 + 5][100 + 5];
+
+//   dict is_used;
+
+//   each(j, 1, n){
+//     a[1][j] = j;
+//     is_used[j] = true;
+//   }
+  
+//   reveach(j, n, 1){
+//     reveach(i, n, 2){
+//       reveach(value, n * n, j){
+//         if(value == j){
+//           prn(-1);
+//           return ;
+//         }
+
+//         if(is_used.count(value)){
+//           continue;
+//         }
+
+//         if(value % j == 0){
+//           is_used[value] = true;
+//           a[i][j] = value;
+//           break;
+//         }
+//       }
+//     }
+//   }
+
+//   each(i, 1, n){
+//     each(j, 1, n){
+//       pr(a[i][j]);
+//     }
+//     prn();
+//   }
+// }

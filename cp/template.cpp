@@ -8,6 +8,7 @@
 #define int long long
 #define float double
 #define seq(a, n) vector<int> a(n + 5)
+#define dict unordered_map<int, int>
 
 #define readint(...) \
   int __VA_ARGS__;   \
