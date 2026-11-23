@@ -398,6 +398,14 @@ idk, i may do it manually.
 6 12 18 24 30 36 48
 7 14 21 28 35 42 49
 
+(that's wrong. corrected:)
+
+3 6 9 27 33 39 x
+4 8 16 32 44
+5 10 15 20 25 40 45
+6 12 18 24 30 36 48
+7 14 21 28 35 42 49
+
 it gives 0.0 for -1. so it doesnt test -1 at all.
 and there is at least 25 within 100 that is solvable.
 if test cases dont overlap.
@@ -412,15 +420,21 @@ idk.
 
 observe via program.
 
+
+
+how can it be?!
+
+it's not gonna be solvable anyway. maybe i missed sth.
+
 */
 
 void solve() {
   // readint(n);
-  each(n, 1, 20) {
+  each(n, 80, 100) {
     info(n);
 
     // row column
-    int a[100 * 10 + 5][100 + 5];
+    int a[100 * 50 + 5][100 + 5];
     // int a[100 * 100 + 5][100 + 5]; // seg fault
     // int a[100 * 100 + 5][100 + 5]; // seg fault
     seq(count, 100 + 5);
@@ -447,10 +461,11 @@ void solve() {
     each(j, 1, n) {
       pr(count[j], '|');
       each(i, 1, count[j]) {
-        pr(a[i][j]);
+        // pr(a[i][j]);
       }
-      prn();
+      // prn();
     }
+    prn();
   }
 }
 // void solve() {

@@ -6,6 +6,8 @@ j
 
 program for observation
 
+not working. missed sth maybe.
+
 # wonderings
 
 j

@@ -292,6 +292,9 @@ when typing, end + 1 or start - 1,
 
 */
 
+char opposite = '!';
+char opposite = '!';
+
 void solve() {
   
 }
