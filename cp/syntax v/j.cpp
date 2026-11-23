@@ -19,11 +19,11 @@
 #define readstr(...)  \
   string __VA_ARGS__; \
   read(__VA_ARGS__);
-#define readchar(...)  \
-  char __VA_ARGS__; \
+#define readchar(...) \
+  char __VA_ARGS__;   \
   read(__VA_ARGS__);
 #define readseq(v, a, b) \
-  seq(v, b);        \
+  seq(v, b);             \
   read_vec(v, a, b);
 
 #define last(a) ((a).size() - 1)
@@ -287,7 +287,8 @@ dejavu...
 ah, interesting, i can select both the title and some problem desc
 on problem page on vjudge
 
-<iframe src="/problem/description/450862592550185?3574683297507" width="100%" height="2048px" frameborder="0" scrolling="no" style="height: 1024px;"></iframe>
+<iframe src="/problem/description/450862592550185?3574683297507" width="100%"
+height="2048px" frameborder="0" scrolling="no" style="height: 1024px;"></iframe>
 
 no wonder it fouc.
 
@@ -397,7 +398,7 @@ idk, i may do it manually.
 6 12 18 24 30 36 48
 7 14 21 28 35 42 49
 
-it gives 0.0 for -1. so it doesnt test -1 at all. 
+it gives 0.0 for -1. so it doesnt test -1 at all.
 and there is at least 25 within 100 that is solvable.
 if test cases dont overlap.
 
@@ -407,51 +408,94 @@ if test cases dont overlap.
 
 idk.
 
+
+
+observe via program.
+
 */
 
 void solve() {
-  readint(n);
+  // readint(n);
+  each(n, 1, 20) {
+    info(n);
 
-  // // row column 1 indexed
-  // int a[100 + 5][100 + 5];
+    // row column
+    int a[100 * 10 + 5][100 + 5];
+    // int a[100 * 100 + 5][100 + 5]; // seg fault
+    // int a[100 * 100 + 5][100 + 5]; // seg fault
+    seq(count, 100 + 5);
+    dict is_used;
 
-  // dict is_used;
+    reveach(j, n, 1) {
+      each(value, 1, n * n) {
+        if (value % j != 0) {
+          continue;
+        }
 
-  // // each(j, 1, n){
-  // //   a[1][j] = j;
-  // //   is_used[j] = true;
-  // // }
-  
-  // reveach(j, n, 1){
-  //   reveach(i, n, 1){
-  //     reveach(value, n * n, j - 1){
-  //       if(value == j - 1){
-  //         prn(-1);
-  //         return ;
-  //       }
+        if (is_used.count(value)) {
+          continue;
+        }
 
-  //       if(is_used.count(value)){
-  //         continue;
-  //       }
+        is_used[value] = true;
 
-  //       if(value % j == 0){
-  //         is_used[value] = true;
-  //         a[i][j] = value;
-  //         break;
-  //       }
-  //     }
-  //   }
-  // }
+        count[j] += 1;
 
-  // each(i, 1, n){
-  //   each(j, 1, n){
-  //     pr(a[i][j]);
-  //   }
-  //   prn();
-  // }
+        a[count[j]][j] = value;
+      }
+    }
 
-  prn(-1);
+    each(j, 1, n) {
+      pr(count[j], '|');
+      each(i, 1, count[j]) {
+        pr(a[i][j]);
+      }
+      prn();
+    }
+  }
 }
+// void solve() {
+//   readint(n);
+
+//   // // row column 1 indexed
+//   // int a[100 + 5][100 + 5];
+
+//   // dict is_used;
+
+//   // // each(j, 1, n){
+//   // //   a[1][j] = j;
+//   // //   is_used[j] = true;
+//   // // }
+
+//   // reveach(j, n, 1){
+//   //   reveach(i, n, 1){
+//   //     reveach(value, n * n, j - 1){
+//   //       if(value == j - 1){
+//   //         prn(-1);
+//   //         return ;
+//   //       }
+
+//   //       if(is_used.count(value)){
+//   //         continue;
+//   //       }
+
+//   //       if(value % j == 0){
+//   //         is_used[value] = true;
+//   //         a[i][j] = value;
+//   //         break;
+//   //       }
+//   //     }
+//   //   }
+//   // }
+
+//   // each(i, 1, n){
+//   //   each(j, 1, n){
+//   //     pr(a[i][j]);
+//   //   }
+//   //   prn();
+//   // }
+
+//   prn(-1);
+// }
 // void solve() {
 //   readint(n);
 
@@ -464,7 +508,7 @@ void solve() {
 //   //   a[1][j] = j;
 //   //   is_used[j] = true;
 //   // }
-  
+
 //   reveach(j, n, 1){
 //     reveach(i, n, 1){
 //       reveach(value, n * n, j - 1){
@@ -505,7 +549,7 @@ void solve() {
 //     a[1][j] = j;
 //     is_used[j] = true;
 //   }
-  
+
 //   reveach(j, n, 1){
 //     reveach(i, n, 2){
 //       reveach(value, n * n, j){

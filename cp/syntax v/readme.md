@@ -2,6 +2,9 @@ syntax v
 
 # til
 
+j
+
+program for observation
 
 # wonderings
 
