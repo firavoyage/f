@@ -189,12 +189,38 @@ What’s on the agenda today?
 - send (disabled when empty)
 - incognito?
 
+---
+
+- `/` (no visual clue)
+  - add custom gpt...
+  - dictate
+  - feedback (?!)
+  - model
+    - no options on free plan
+  - move to proj
+  - read aloud
+  - study
+
 ## chat
 
 - titlebar
   - title
     - can not select or rename
+    - initially prompt, then generate title
   - share ("create a public link")
 - prompt
-  - 
+  - copy
+  - share
+  - see versions
+    - when edits exist
+  - edit
 - resp
+  - copy
+  - read aloud
+  - share
+  - more
+    - (time)
+    - retry
+      - no secondary menu?
+      - prev gen are not saved it seems
+    - branch
