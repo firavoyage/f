@@ -16,7 +16,12 @@ maybe you can force re instead. wa and tle are ambiguous. and you have no better
 
 you may just assert.
 
+q
 
+it doesnt prn/read in order it seems.
+it can print sth, show nothing, and still wait for you read.
+
+read carefully whether it can take the same.
 
 # wonderings
 
