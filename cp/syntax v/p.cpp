@@ -255,7 +255,7 @@ void solve();
 
 // entry
 
-const bool is_single_task = true;
+const bool is_single_task = false;
 
 const bool should_debug = true;
 
@@ -308,5 +308,27 @@ to make 1 to 3, it takes 2 steps.
 */
 
 void solve() {
-  
+  readint(n);
+  readseq(a, 1, n);
+
+  sort(a, 1, n);
+
+  int count = 0;
+  each(i, 1, n){
+    if(i == 1){
+      continue;
+    }
+
+    int current = a[i];
+    int prev = a[i - 1];
+
+    if(current <= prev){
+      int new_value = prev + 1;
+      int delta = new_value - current;
+
+      count += delta;
+      a[i] = new_value;
+    }
+  }
+  prn(count);
 }
