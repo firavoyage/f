@@ -1,3 +1,11 @@
+// solution
+
+/*
+
+why do they pick a prev problem on last prac?!
+
+*/
+
 #include <bits/stdc++.h>
 
 #define repeat(n) for (int _ = 0; _ < n; _ += 1)
@@ -8,7 +16,6 @@
 #define int long long
 #define float double
 #define seq(a, n) vector<int> a(n + 5)
-#define dict unordered_map<int, int>
 
 #define readint(...) \
   int __VA_ARGS__;   \
@@ -32,8 +39,6 @@
 const int modulo = 1e9 + 7;
 
 const int nil = -1;
-
-const int inf = 1e18;
 
 using namespace std;
 
@@ -255,7 +260,7 @@ void solve();
 
 // entry
 
-const bool is_single_task = true;
+const bool is_single_task = false;
 
 const bool should_debug = true;
 
@@ -278,10 +283,95 @@ signed main() {
 
 /*
 
+1 n
 
+when you del a[i]
+
+you will lose (n - i + 1) * a[i]
+
+you wanna minimize lose
+
+
+
+wa?
+
+wa only on test 8
+
+
+
+let's make some assertion
+like is it nil?
+
+
+
+ah, when you delete one, it has no impact on prev,
+it simply deducts a[i] on all i to n, but...
+on a[i] itself, it deducts all prev.
 
 */
 
+int inf = 1e18;
+
 void solve() {
-  
+  // info(inf);
+
+
+  readint(n);
+
+  readseq(a, 1, n);
+
+  int min_lose = inf;
+  int min_index = nil;
+
+  int prefix_sum = 0;
+
+
+  each(i, 1, n){
+    prefix_sum += a[i];
+
+
+    int lose = a[i] * (n-i) + prefix_sum;
+
+    if(lose < min_lose){
+      min_lose = lose;
+      min_index = i;
+
+    }
+  }
+
+  // if(min_index == nil || min_lose == inf){
+  //   force_tle();
+
+  // }
+  prn(min_index);
+
 }
+// void solve() {
+//   // info(inf);
+
+
+//   readint(n);
+
+//   readseq(a, 1, n);
+
+//   int min_lose = inf;
+//   int min_index = nil;
+
+
+//   each(i, 1, n){
+//     int lose = a[i] * (n-i+1);
+
+//     if(lose < min_lose){
+//       min_lose = lose;
+//       min_index = i;
+
+//     }
+//   }
+
+//   // if(min_index == nil || min_lose == inf){
+//   //   force_tle();
+
+//   // }
+//   prn(min_index);
+
+// }
