@@ -50,6 +50,7 @@ export function modal_prompt({
     open &&
     h(
       modal,
+      { set_open },
       h(
         'modal_prompt',
         h(input, {

@@ -130,6 +130,7 @@ export function modal_search({ files, commands, shortcuts }) {
     open &&
     h(
       modal,
+      { set_open },
       h(
         'modal_search',
         h(
