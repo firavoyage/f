@@ -19,11 +19,11 @@
 #define readstr(...)  \
   string __VA_ARGS__; \
   read(__VA_ARGS__);
-#define readchar(...)  \
-  char __VA_ARGS__; \
+#define readchar(...) \
+  char __VA_ARGS__;   \
   read(__VA_ARGS__);
 #define readseq(v, a, b) \
-  seq(v, b);        \
+  seq(v, b);             \
   read_vec(v, a, b);
 
 #define last(a) ((a).size() - 1)
@@ -287,9 +287,57 @@ void solve() {
 
   readseq(a, 1, n);
 
-  sort(a, 1, n, [&](auto a, auto b){
-    // test a
-    int a_ = a, y = b;
+  sort(a, 1, n, [&](auto a, auto b) {
+    int temp_a = a, temp_b = b;
+    int a_binary_one_count = 0, b_binary_one_count = 0;
 
-  })
+    while (temp_a > 0) {
+      if (temp_a % 2 == 1) {
+        a_binary_one_count += 1;
+        temp_a -= 1;
+      } else {
+        temp_a /= 2;
+      }
+    }
+    while (temp_b > 0) {
+      if (temp_b % 2 == 1) {
+        b_binary_one_count += 1;
+        temp_b -= 1;
+      } else {
+        temp_b /= 2;
+      }
+    }
+
+    if (a_binary_one_count != b_binary_one_count) {
+      return a_binary_one_count < b_binary_one_count;
+    }
+
+    temp_a = a, temp_b = b;
+    int a_binary_last_one_revindex = 0, b_binary_last_one_revindex = 0;
+    while (temp_a > 0) {
+      if (temp_a % 2 == 1) {
+        break;
+      } else {
+        a_binary_last_one_revindex += 1;
+        temp_a /= 2;
+      }
+    }
+    while (temp_b > 0) {
+      if (temp_b % 2 == 1) {
+        break;
+      } else {
+        b_binary_last_one_revindex += 1;
+        temp_b /= 2;
+      }
+    }
+
+    if (a_binary_last_one_revindex != b_binary_last_one_revindex) {
+      return a_binary_last_one_revindex < b_binary_last_one_revindex;
+    }
+
+    return a < b;
+  });
+
+  // prn_vec(a, 1, n);
+  prn(a[index]);
 }
