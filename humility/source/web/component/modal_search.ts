@@ -138,7 +138,7 @@ export function modal_search({ files, commands, shortcuts }) {
           h(input, {
             value: query,
             set_value: set_query,
-            placeholder: text('search threads by title'),
+            placeholder: text('search_threads'),
             ref: field,
             // autofocus: true
           }),

@@ -8,7 +8,7 @@ you want to have a visual ui for config.
 
 it saves to config file (data/config.yaml) under the hood.
 
-rather have settings as a single object. 
+rather have settings as a single object.
 
 settings are flat key value pairs. you should not group individual items as an object even if they are conceptually related or shown together on ux. you may have keys like `appearance.theme`.
 
@@ -18,10 +18,10 @@ example
 
 ```
 shortcuts:
-  - command: 
+  - command:
     key:
     when?: ...
-  - command: 
+  - command:
     key:
     when?: ...
 providers:
@@ -32,7 +32,7 @@ default_model:
   model: bar/asdf
 ```
 
-there are schema and current settings, which can be empty as every setting has default value. 
+there are schema and current settings, which can be empty as every setting has default value.
 
 settings are global settings. thread specific config may have separate commands and dont go this way.
 
@@ -46,12 +46,15 @@ schema
 appearance.theme:
   type: select
   default: system
-  options: 
+  options:
     - system
     - light
     - dark
 appearance.should_reduce_motion:
-  type: boolean
+  type: switch
+  default: false
+appearance.should_reduce_motion_asdf:
+  type: checkbox
   default: false
 foo:
   type: range
@@ -73,9 +76,41 @@ you would generally have component for each type, map type to such component, an
 
 # ux
 
-you have settings on the sidebar menu.
-
 auto save settings.
+
+---
+
+on sidebar
+
+```
+h('menu')
+  Menu # h(button, onclick toggle menu open, text('menu'))
+  menu open &&
+    Settings # h(button, onclick open settings, text('settings'))
+h('nav')
+  ...
+h('threads', ...)
+```
+
+---
+
+on settings
+
+```
+h(modal, position = center)
+  h('settings'
+    h('settings_titlebar'
+      text('settings')
+      h(button, text 'close')
+    )
+    h('settings_content' # grow-1
+      h(
+        scroll,
+        # just list everything for now
+      )
+    )
+  )
+```
 
 # impl
 
@@ -88,15 +123,15 @@ use_settings = s(build_default_settings(schema), {
   localstorage: 'settings'
 }) # from utility/settings
 
-app 
+app
   set settings from backend # same way as list all threads
 
-  
+
 ```
 
 # rationale
 
-> rather have settings as a single object. 
+> rather have settings as a single object.
 
 you will not update it frequently and you may just rerender the whole app. it's fast.
 

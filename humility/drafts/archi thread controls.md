@@ -4,9 +4,13 @@ thread controls
 
 you want to 
 
-
+- edit a message
 
 # spec
+
+
+# ux
+
 
 
 # rationale
