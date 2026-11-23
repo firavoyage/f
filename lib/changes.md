@@ -110,21 +110,21 @@ it's not really faster to join an array of strings than string add.
 
 <!-- maybe i missed sth from nickel angel discussion tg group, if i remembered -->
 
-14
+## 14
 
 - time: do not floor milisec timestamp (fix to make it really work)
   - clearly such abstraction leaks
   - and you dont have to use perf api
 - web/style: hardcode white black and transparent into palette
 
-16
+## 16
 
 - web/react: remove redundant react use state on use state
   - use ref plus use update is enough
 - time: + `monotonic` `sleep`
 - web/react: + `use_state(initial value, false)` that doesnt rerender, `ref.set = afn ref.current = _`
 
-17
+## 17
 
 - time: + `set_timeout` `set_interval`
 - std: + `type nil` alongside `nil`, alias `bool` to `boolean`
@@ -142,7 +142,7 @@ it's not really faster to join an array of strings than string add.
   - that's not clean code to implicitly match things (labels and code) by name, i.e. `name.toLowerCase().replaceAll(' ', '_')`
 - std: + `identity` `call` `pipe`
 
-18
+## 18
 
 - web/react: - `should_rerender`
   - quirky perf engineering
@@ -153,7 +153,7 @@ it's not really faster to join an array of strings than string add.
   - renamed from `cache` to avoid naming conflict w lib/file
 - std: support `set(list(...args))`
 
-20
+## 20
 
 - std: rename (alias) `list` to `array`, deprecate `list`
   - too often do you list some stuff in crud logic
@@ -169,3 +169,6 @@ it's not really faster to join an array of strings than string add.
   - temporarily disable sync url
 - web/style: (try to) ignore null values explicitly
 
+## 23
+
+- web/react: + `forward(...refs)`

@@ -1,8 +1,11 @@
 # plan
 
+
+
+---
+
 use case:
 
-- analyze py intro pre issues
 - analyze math ref ans issues
 - setup forgejo (or _repo_) via ssh, register free domain name on duckdns via browser automation (human may pick a name or handles a bit captcha stuff maybe), and binds
 
@@ -241,6 +244,12 @@ it will work if you can display correct for a state, and update the state on eve
 abstract generate as lib ~~impl generation lib~~
 
 stream payload, receive
+
+---
+
+use case: analyze py intro pre issues
+
+isnt to be judged tbh.
 
 # backlog
 
