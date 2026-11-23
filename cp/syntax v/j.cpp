@@ -387,49 +387,112 @@ doesnt seem it would fastpass. worth a try.
 
 yeah, still wa except 1 ~ 3. same.
 
+idk, i may do it manually.
+
+4 is proven. 5 is given. 6... proven. 7 x.
+
+3 6 9 27 33 39 x
+4 8 16 (20, 40) 32 44 (4)
+5 10 15 (20, 40) 25 35 45 (5)
+6 12 18 24 30 36 48
+7 14 21 28 35 42 49
+
+it gives 0.0 for -1. so it doesnt test -1 at all. 
+and there is at least 25 within 100 that is solvable.
+if test cases dont overlap.
+
+6 12 18 30 36 54 60 x
+7 14 21 28 35 42 49 63
+8 16 24 32 40 48 56 64
+
+idk.
+
 */
 
 void solve() {
   readint(n);
 
-  // row column 1 indexed
-  int a[100 + 5][100 + 5];
+  // // row column 1 indexed
+  // int a[100 + 5][100 + 5];
 
-  dict is_used;
+  // dict is_used;
 
-  // each(j, 1, n){
-  //   a[1][j] = j;
-  //   is_used[j] = true;
-  // }
+  // // each(j, 1, n){
+  // //   a[1][j] = j;
+  // //   is_used[j] = true;
+  // // }
   
-  reveach(j, n, 1){
-    reveach(i, n, 1){
-      reveach(value, n * n, j - 1){
-        if(value == j - 1){
-          prn(-1);
-          return ;
-        }
+  // reveach(j, n, 1){
+  //   reveach(i, n, 1){
+  //     reveach(value, n * n, j - 1){
+  //       if(value == j - 1){
+  //         prn(-1);
+  //         return ;
+  //       }
 
-        if(is_used.count(value)){
-          continue;
-        }
+  //       if(is_used.count(value)){
+  //         continue;
+  //       }
 
-        if(value % j == 0){
-          is_used[value] = true;
-          a[i][j] = value;
-          break;
-        }
-      }
-    }
-  }
+  //       if(value % j == 0){
+  //         is_used[value] = true;
+  //         a[i][j] = value;
+  //         break;
+  //       }
+  //     }
+  //   }
+  // }
 
-  each(i, 1, n){
-    each(j, 1, n){
-      pr(a[i][j]);
-    }
-    prn();
-  }
+  // each(i, 1, n){
+  //   each(j, 1, n){
+  //     pr(a[i][j]);
+  //   }
+  //   prn();
+  // }
+
+  prn(-1);
 }
+// void solve() {
+//   readint(n);
+
+//   // row column 1 indexed
+//   int a[100 + 5][100 + 5];
+
+//   dict is_used;
+
+//   // each(j, 1, n){
+//   //   a[1][j] = j;
+//   //   is_used[j] = true;
+//   // }
+  
+//   reveach(j, n, 1){
+//     reveach(i, n, 1){
+//       reveach(value, n * n, j - 1){
+//         if(value == j - 1){
+//           prn(-1);
+//           return ;
+//         }
+
+//         if(is_used.count(value)){
+//           continue;
+//         }
+
+//         if(value % j == 0){
+//           is_used[value] = true;
+//           a[i][j] = value;
+//           break;
+//         }
+//       }
+//     }
+//   }
+
+//   each(i, 1, n){
+//     each(j, 1, n){
+//       pr(a[i][j]);
+//     }
+//     prn();
+//   }
+// }
 // void solve() {
 //   readint(n);
 
