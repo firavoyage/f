@@ -317,12 +317,42 @@ void solve() {
     int part_index = nil;
 
     int l = 1, r = n;
+    // repeat(n){
+    //   int mid = (l + r) / 2;
+    //   info(l, r, mid);
+    //   if(start[mid] > index){
+    //     r = mid;
+    //   } else if (mid + 1 <= n && start[mid + 1] <= index){
+    //     l = mid + 1;
+    //   } else {
+    //     part_index = mid;
+    //     break;
+    //   }
+    // }
     while(true){
-      int mid = (l + 4)
+      int mid = (l + r) / 2;
+      // info(l, r, mid);
+      if(start[mid] > index){
+        r = mid;
+      } else if (mid + 1 <= n && start[mid + 1] <= index){
+        l = mid + 1;
+      } else {
+        part_index = mid;
+        break;
+      }
     }
 
-    if(part_index = nil){
-      force_mle();
-    }
+    // if(part_index == nil){
+    //   force_re();
+    // }
+    // if(part_index = nil){
+    //   info("boom, if a = b");
+    //   // force_mle();
+    // }
+    // if(part_index = nil){
+    //   force_mle();
+    // }
+
+    prn((part_index + (initial_state != 1)) % 2, part_index, index - start[part_index] + 1);
   }
 }

@@ -8,6 +8,16 @@ program for observation
 
 not working. missed sth maybe.
 
+o
+
+it doesnt mle when you force mle on local machine.
+
+maybe you can force re instead. wa and tle are ambiguous. and you have no better options (wo local compiler flags).
+
+you may just assert.
+
+
+
 # wonderings
 
 j
