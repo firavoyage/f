@@ -255,7 +255,7 @@ void solve();
 
 // entry
 
-const bool is_single_task = true;
+const bool is_single_task = false;
 
 const bool should_debug = true;
 
@@ -301,8 +301,164 @@ notice you avoid the exact n. you actually you count for n - 1.
 
 so, for n you do that for n + 1.
 
+
+
+wa 1/10
+
 */
 
-void solve() {
-  
+// auto binary(int n){
+
+// }
+
+int count(int n){
+  seq(binary, 1000);
+  int last_index = 100; // even/odd
+  int current = last_index + 1;
+
+  int temp_n = n; // you solve for n + 1 to count from 1 to n
+  while(temp_n > 0){
+    current -= 1;
+    if(temp_n % 2 == 1){
+    // if(temp_n % 2 == 0){
+      binary[current] = 1;
+      temp_n -= 1;
+    } else {
+      binary[current] = 0;
+    }
+    temp_n /= 2;
+  }
+
+  int first_index = current;
+ 
+  // info("binary", n);
+  // each(i, first_index, last_index){
+  //   pr(binary[i]);
+  // }
+  // prn();
+
+  last_index = 100; // even/odd
+  current = last_index + 1;
+
+  temp_n = n + 1; // you solve for n + 1 to count from 1 to n
+  while(temp_n > 0){
+    current -= 1;
+    if(temp_n % 2 == 1){
+    // if(temp_n % 2 == 0){
+      binary[current] = 1;
+      temp_n -= 1;
+    } else {
+      binary[current] = 0;
+    }
+    temp_n /= 2;
+  }
+
+  first_index = current;
+ 
+  info("binary", n + 1);
+  each(i, first_index, last_index){
+    pr(binary[i]);
+  }
+  prn();
+
+  int current_one_count = 0;
+  int current_count = 0;
+  each(i, first_index, last_index - 1){
+    int digit = binary[i];
+
+    if(digit == 0){
+      continue;
+    }
+
+    // assume it zero
+    int right = last_index - i;
+    if(current_one_count == 0){
+      current_count += right * (right - 1) / 2;
+    } else if (current_one_count == 1){
+      current_count += right;
+    } else if (current_one_count == 2){
+      current_count += 1;
+    } else {
+      break;
+    }
+
+    current_one_count += 1;
+  }
+
+  return current_count;
 }
+// int count(int n){
+//   seq(binary, 1000);
+//   int last_index = 100; // even/odd
+//   int current = last_index + 1;
+
+//   int temp_n = n + 1; // you solve for n + 1 to count from 1 to n
+//   while(temp_n > 0){
+//     current -= 1;
+//     if(temp_n % 2 == 1){
+//     // if(temp_n % 2 == 0){
+//       binary[current] = 1;
+//       temp_n -= 1;
+//     } else {
+//       binary[current] = 0;
+//     }
+//     temp_n /= 2;
+//   }
+
+//   int first_index = current;
+ 
+//   // info("binary", n + 1);
+//   // each(i, first_index, last_index){
+//   //   pr(binary[i]);
+//   // }
+//   // prn();
+
+//   int current_one_count = 0;
+//   int current_count = 0;
+//   each(i, first_index, last_index - 1){
+//     int digit = binary[i];
+
+//     if(digit == 0){
+//       continue;
+//     }
+
+//     // assume it zero
+//     int right = last_index - i;
+//     if(current_one_count == 0){
+//       current_count += right * (right - 1) / 2;
+//     } else if (current_one_count == 1){
+//       current_count += right;
+//     } else if (current_one_count == 2){
+//       current_count += 1;
+//     } else {
+//       break;
+//     }
+
+//     current_one_count += 1;
+//   }
+
+//   return current_count;
+// }
+
+void solve() {
+  int prev = 0;
+
+  each(i, 1, 20){
+    int current = count(i);
+    info("count", i, current - prev);
+    prev = current;
+  }
+
+  // readint(l, r);
+
+  // prn(count(r) - count(l - 1));
+}
+// void solve() {
+//   // each(i, 1, 10){
+//   //   info("count", i, count(i));
+//   // }
+
+//   readint(l, r);
+
+//   prn(count(r) - count(l - 1));
+// }
