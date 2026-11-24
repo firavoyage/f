@@ -1757,4 +1757,14 @@ https://ui.mantine.dev/
 
 https://www.radix-ui.com/
 
+---
 
+- many protocols are corp backed and irrelevant
+- acp is leaky abstraction
+- llms dont know how to style
+  - if you want some primitives in your stack, clarify it
+  - you may style it yourself. figma is better on ux. styling in css/tailwind might be the easier practical option if you know web dev.
+- llms dont know how to use icons
+  - they use unicode symbols and sometimes emojis
+
+---

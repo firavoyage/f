@@ -34,7 +34,7 @@ read spec/readme before writing specs
 # Components
 
 - do not use semantic html tags for containers. use `h('foo')` to represent `h('div.foo')`.
-- do not add any aria attrs
+- no aria attrs or role
 
 # Localization
 
