@@ -1,7 +1,5 @@
 #include <bits/stdc++.h>
 
-// #define append push_back
-
 #define repeat(n) for (int _ = 0; _ < n; _ += 1)
 // closed interval
 #define each(i, a, b) for (int i = (a); i <= (b); i += 1)
@@ -9,11 +7,36 @@
 
 #define int long long
 #define float double
-#define seq vector<int>
+#define seq(a, n) vector<int> a(n + 5)
+#define dict unordered_map<int, int>
+
+#define readint(...) \
+  int __VA_ARGS__;   \
+  read(__VA_ARGS__);
+#define readfloat(...) \
+  float __VA_ARGS__;   \
+  read(__VA_ARGS__);
+#define readstr(...)  \
+  string __VA_ARGS__; \
+  read(__VA_ARGS__);
+#define readchar(...) \
+  char __VA_ARGS__;   \
+  read(__VA_ARGS__);
+#define readseq(v, a, b) \
+  seq(v, b);             \
+  read_vec(v, a, b);
+
+#define last(a) ((a).size() - 1)
+// #define append push_back
 
 const int modulo = 1e9 + 7;
 
 const int nil = -1;
+
+const int inf = 1e18;
+
+const int has_implemented = true;
+#define todo assert(has_implemented == false);
 
 using namespace std;
 
@@ -83,7 +106,7 @@ auto force_mle() {
 }
 
 auto force_wa() {
-  // cout << "wrong answer";
+  cout << "wrong answer";
   exit(0);
 }
 
@@ -92,86 +115,35 @@ auto force_wa() {
 #define parse_int stoi
 #define parse_float stod
 
-// fp
-
-template <typename T, typename Func>
-auto map_vec(const vector<T>& vec, Func f) {
-  using ReturnType = decltype(f(declval<T>()));
-  vector<ReturnType> res;
-  res.reserve(vec.size());
-  for (const auto& x : vec) {
-    res.push_back(f(x));
-  }
-  return res;
-}
-
-template <typename T, typename Func>
-auto reduce_vec(const vector<T>& vec, Func f) {
-  using ReturnType = decltype(f(declval<T>(), declval<T>()));
-
-  ReturnType acc = vec[0];
-  for (size_t i = 1; i < vec.size(); ++i) {
-    acc = f(acc, vec[i]);
-  }
-  return acc;
-}
-
-template <typename T, typename Func, typename InitType>
-auto reduce_vec(const vector<T>& vec, Func f, InitType initial_value) {
-  using ReturnType = decltype(f(declval<InitType>(), declval<T>()));
-  ReturnType acc = initial_value;
-  for (const auto& x : vec) {
-    acc = f(acc, x);
-  }
-  return acc;  // Returns pure type directly since an initial seed guarantees a
-               // value
-}
-
-template <typename T, typename Func>
-auto reduce_right_vec(const vector<T>& vec, Func f) {
-  using ReturnType = decltype(f(declval<T>(), declval<T>()));
-  if (vec.empty()) return optional<ReturnType>(nullopt);
-
-  ReturnType acc = vec.back();
-  for (size_t i = vec.size() - 1; i > 0; --i) {
-    acc = f(vec[i - 1], acc);  // Element first, Accumulator second
-  }
-  return optional<ReturnType>(acc);
-}
-
-template <typename T, typename Func, typename InitType>
-auto reduce_right_vec(const vector<T>& vec, Func f, InitType initial_value) {
-  using ReturnType = decltype(f(declval<T>(), declval<InitType>()));
-  ReturnType acc = initial_value;
-  for (size_t i = vec.size(); i > 0; --i) {
-    acc = f(vec[i - 1], acc);  // Element first, Accumulator second
-  }
-  return acc;  // Returns pure type directly
-}
-
 // iterables
 
-#define sort_vec(vec, l, r) \
-  std::sort((vec).begin() + (l), (vec).begin() + (r) + 1)
+auto sort_arr(auto&& arr, auto l, auto r) {
+  sort((arr) + (l), (arr) + (r) + 1);
+}
+
+auto sort_arr(auto&& arr, auto l, auto r, auto cmp) {
+  sort((arr) + (l), (arr) + (r) + 1, cmp);
+}
+
+auto sort_vec(auto&& vec, auto l, auto r) {
+  sort(vec.begin() + (l), vec.begin() + (r) + 1);
+}
+
+auto sort_vec(auto&& vec, auto l, auto r, auto cmp) {
+  sort(vec.begin() + (l), vec.begin() + (r) + 1, cmp);
+}
 
 #define sort sort_vec
 
 // string
 
-#define format_float(number, precision)                                     \
-  ([&]() {                                                                  \
-    char buf[64];                                                           \
-    std::snprintf(buf, sizeof(buf), "%.*f", (precision), (double)(number)); \
-    return std::string(buf);                                                \
-  }())
+auto format_float(auto number, auto precision) {
+  char buf[64];
+  std::snprintf(buf, sizeof(buf), "%.*f", (precision), (double)(number));
+  return std::string(buf);
+}
 
 // math
-
-auto add = [](auto a, auto b) { return a + b; };
-
-auto sub = [](auto a, auto b) { return a - b; };
-
-auto mul = [](auto a, auto b) { return a * b; };
 
 auto truediv = [](auto a, auto b) { return double(a) / b; };
 
@@ -179,7 +151,7 @@ auto floordiv = [](auto a, auto b) { return std::floor(double(a) / b); };
 
 auto divmod = [](auto numerator, auto denominator) {
   auto quotient = numerator / denominator, remainder = numerator % denominator;
-  return std::pair{quotient, remainder};
+  return pair{quotient, remainder};
 };
 
 auto pow_(int base, int exp, int mod = modulo) {
@@ -200,20 +172,11 @@ auto mod_inverse(int n, int mod = modulo) {
   return pow_(n, mod - 2, mod);
 }
 
-auto and_ = [](auto a, auto b) { return a & b; };
-auto or_ = [](auto a, auto b) { return a | b; };
-auto not_ = [](auto a) { return !a; };
-auto xor_ = [](auto a, auto b) { return a ^ b; };
-
-auto summation = [](auto numbers) { return reduce_vec(numbers, add); };
-
-auto multiplication = [](auto numbers) { return reduce_vec(numbers, mul); };
-
 auto ln = [](auto a) { return log(a); };
 
 auto logab = [](auto a, auto b) { return ln(a) / ln(b); };
 
-auto combinations(int n, int r, int mod = modulo) {
+auto comb(int n, int r, int mod = modulo) {
   if (r < 0 || r > n) return 0;
   if (r == 0 || r == n) return 1;
 
@@ -228,7 +191,7 @@ auto combinations(int n, int r, int mod = modulo) {
   return result;
 }
 
-auto permutations(int n, int r, int mod = modulo) {
+auto perm(int n, int r, int mod = modulo) {
   if (r < 0 || r > n) return 0;
 
   auto result = 1;
@@ -238,16 +201,15 @@ auto permutations(int n, int r, int mod = modulo) {
   return result;
 }
 
-#define min_vec(vec, l, r)    \
-  [&]() {                     \
-    auto minimum = vec[l];    \
-    each(i, l, r) {           \
-      if (vec[i] < minimum) { \
-        minimum = element;    \
-      }                       \
-    }                         \
-    return minimum            \
-  }()
+auto min_vec(auto&& vec, auto l, auto r) {
+  auto minimum = vec[l];
+  each(i, l, r) {
+    if (vec[i] < minimum) {
+      minimum = vec[i];
+    }
+  }
+  return minimum;
+}
 
 auto min_(auto first, auto... rest) {
   auto minimum = first;
@@ -257,16 +219,15 @@ auto min_(auto first, auto... rest) {
   return minimum;
 }
 
-#define max_vec(vec, l, r)    \
-  [&]() {                     \
-    auto maximum = vec[l];    \
-    each(i, l, r) {           \
-      if (vec[i] > maximum) { \
-        maximum = element;    \
-      }                       \
-    }                         \
-    return maximum            \
-  }()
+auto max_vec(auto&& vec, auto l, auto r) {
+  auto maximum = vec[l];
+  each(i, l, r) {
+    if (vec[i] > maximum) {
+      maximum = vec[i];
+    }
+  }
+  return maximum;
+}
 
 auto max_(auto first, auto... rest) {
   auto maximum = first;
@@ -318,6 +279,16 @@ signed main() {
 
 // solution
 
+/*
+
+
+
+*/
+
+void solve() {}
+
+// Number Theory
+
 bool is_prime(int n) {
   if (n <= 2) {
     return n == 2;
@@ -332,4 +303,20 @@ bool is_prime(int n) {
   }
 
   return true;
+}
+
+// Iterables
+
+auto prefix_sum(auto vec, int l, int r) {
+  seq(a, r);
+
+  each(i, l, r) {
+    if (i == l) {
+      a[i] = vec[i];
+    } else {
+      a[i] = a[i - 1] + vec[i];
+    }
+  }
+
+  return a;
 }

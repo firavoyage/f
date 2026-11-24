@@ -288,6 +288,11 @@ and say "there is no enough even/odd numbers to fill in"
 simpler, actually you may just say,
 it takes all even on even columns
 
+
+
+maybe it's easier to prove by parity (even/odd) than prime.
+e.g. to define prime_sum(n)
+
 */
 
 bool is_prime(int n) {
@@ -328,7 +333,10 @@ void solve() {
   auto b = prefix_sum(a, 1, max_n * max_n);
 
   each(i, 1, 100){
-    info(i, i * i, b[i * i]);
+    // all primes - those possible as gcd on other columns + number 1
+    int column_one = b[i * i] - b[i] + 1;
+
+    info("can work?", column_one <= i, i, i * i, column_one);
   }
   // prn_vec(b, 1, 100);
 }
