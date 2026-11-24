@@ -774,4 +774,38 @@ If you are deciding how to handle this on your own projects, let me know:
 
 I can share the most common team policies or exact configs to enforce your preferred standard.
 
+# pros cons of using git wo meaningful commit messages and keep all these on like changes.md
+
+Using vague Git commits alongside a separate `CHANGES.md` file is a **viable workflow for solo developers, though it breaks down quickly in team environments or complex debugging**. While it separates high-level release notes from messy work-in-progress snapshots, it sacrifices Git's built-in tracking tools.
+
+Here is a breakdown of the trade-offs of this approach.
+
+### Pros
+
+* **Faster development flow:** You do not have to stop and think about phrasing every time you save a checkpoint. You can commit rapidly with messages like "wip" or "fix" and stay focused on coding.
+* **Cleaner user-facing history:** A curated `CHANGES.md` (or `CHANGELOG.md`) hides noisy internal refactors and typos. Users and stakeholders get a clean, readable summary of actual features and fixes.
+* **Centralized release notes:** Having a single markdown file makes it easy to copy and paste updates into GitHub Releases, emails, or documentation without filtering through dozens of technical commits.
+
+### Cons
+
+* **Broken `git blame` and history:** When you inspect a specific line of code months later to see why it was written, `git blame` will point to a useless message like "update" instead of explaining the business logic behind the change.
+* **Painful debugging with `git bisect`:** Finding which commit introduced a bug becomes much harder when commit messages do not describe what each snapshot actually changed.
+* **Merge conflicts on `CHANGES.md`:** In a team setting, having every developer edit the same markdown file on every branch causes constant merge conflicts.
+* **Disconnected context:** You lose the direct link between the _why_ (the description in `CHANGES.md`) and the _what_ (the exact code diff in the Git commit).
+
+### A Middle-Ground Alternative
+
+If you want the speed of messy commits without losing a clean Git history, consider **interactive rebasing or squash merging**.
+
+* **Commit freely locally:** Make as many quick, unpolished commits on your feature branch as you want while working.
+* **Squash before merging:** When the feature is done, squash those messy commits into one clean commit with a proper message before merging into your main branch.
+* **Automate your changelog:** If you follow a simple prefix format on those final squashed commits (like `feat:` or `fix:`), tools like `standard-version` or `release-please` can automatically generate your `CHANGES.md` file for you.
+
+If you'd like, let me know:
+
+* Whether you are **working solo or on a team**
+* How you **deploy or release** your code
+
+I can help you set up a lightweight Git workflow or an automated changelog tool that fits your habits.
+
 
