@@ -2,49 +2,79 @@
 
 ## Goal
 
-Provide a local page for quickly prototyping and visually reviewing the app's reusable web components with their normal styling and interactive states. Done means the page can be started through the existing Vite setup, renders the selected components in one simple list, and lets a developer exercise controlled components.
+Provide a local page for quickly prototyping and visually reviewing reusable web components with their normal styling and interactive states. The initial page is a simple list of eight atom components with working sample interactions and no component browser controls.
 
 ## User flow
 
-1. A developer opens the Storybook page using the project's Vite development server.
-2. The page renders each component in the explicitly defined component list, without a sidebar, component picker, or other navigation controls.
-3. Each component is shown with enough sample props and state to make its appearance and normal interaction visible. For controlled components, interacting with the component updates the state supplied to it, and the updated value is rendered back into the component.
-4. Component styles come from the existing `web/design/utilitarian.css`; Storybook-specific CSS only arranges the samples and should not redesign the components.
+1. A developer opens `web/storybook/index.html` through the existing Vite development server.
+2. The page renders each component in the explicit list below, without a sidebar, picker, or other navigation controls.
+3. Each sample displays the component name and enough props/state to demonstrate its ordinary appearance and interaction.
+4. Controlled components receive state and a setter from `app()`. User changes update that state and are reflected in the rendered component.
+5. Component styles come from `web/design/utilitarian.css`; Storybook-specific CSS arranges samples and supplies only simple defaults for components without existing styles.
 
 ## Page and files
 
 Add:
 
-- `web/storybook/index.html`: Vite HTML entry with a root element and module script for `./index.ts`.
-- `web/storybook/index.ts`: imports the existing CSS resets, global web prelude, and `./storybook.css`; mounts `h(app)` into the root using React's `createRoot`, following `web/index.ts`.
-- `web/storybook/app.ts`: defines and exports `app()`. It owns sample state and calls `storybook({ components })` with a record of named component elements created with `h(component, props, ...children)`.
-- `web/storybook/storybook.ts`: defines and exports `storybook({ components })`, where `components` is a record from display name to rendered element. It renders the entries as a plain list, with each name and its component sample.
-- `web/storybook/storybook.css`: styles only the Storybook page/list layout and imports no component-specific redesign.
+- `web/storybook/index.html`: HTML entry with a root element and module script for `./index.ts`.
+- `web/storybook/index.ts`: imports the project's CSS resets and global web prelude, `web/design/utilitarian.css`, and `./storybook.css`; mounts `h(app)` into the root using React's `createRoot`, following `web/index.ts`.
+- `web/storybook/app.ts`: exports `app()`. Owns each sample's state and passes a record of named rendered elements to `storybook({ components })` using `h(component, props, ...children)`.
+- `web/storybook/storybook.ts`: exports `storybook({ components })`, where `components` is a record from display name to rendered element. Returns a `main.storybook` containing a `div.storybook_components`; for each entry in insertion order, render an `section.storybook_component` with an `h2.storybook_component_name` and a `div.storybook_component_sample` containing the supplied element.
+- `web/storybook/storybook.css`: styles the Storybook page, list, labels, and basic atom presentation where no component styling exists. It does not redesign existing component styles.
 
-Add a Vite entry configuration for the Storybook HTML page in `web/vite.config.ts` so the page is served and built alongside the main app, without changing the main app's entry behavior.
+Do not modify `web/vite.config.ts`. The Storybook source and HTML live under `web/storybook`, and Vite is expected to serve the HTML entry like the existing app entry.
 
-## Initial component list
+## Initial component set
 
-Use the existing reusable components that can be rendered as standalone samples:
+Implement these eight standalone atom components under `web/component/` and include all eight in the Storybook list:
 
-- `button` from `web/component/button.ts`
-- `input` from `web/component/input.ts`
-- `textarea` from `web/component/textarea.ts`
+1. `button.ts` — `button({ children, ...props })`: clickable action using a native button element; accepts native button props and children. Existing component; retain its current `button.button` styling hook.
+2. `input.ts` — `input({ value, set_value, ...props })`: controlled single-line text field; forwards remaining input props and calls `set_value` with the changed string. Existing component.
+3. `textarea.ts` — `textarea({ value, set_value, ...props })`: controlled multiline text field; forwards remaining textarea props and calls `set_value` with the changed string. Existing component.
+4. `checkbox.ts` — `checkbox({ checked, set_checked, ...props })`: controlled boolean checkbox; forwards native checkbox props and reports checked state changes.
+5. `switch.ts` — `switch({ checked, set_checked, ...props })`: controlled boolean toggle switch; forwards relevant button props and reports toggled state.
+6. `select.ts` — `select({ value, set_value, options, ...props })`: controlled native select; options are `{ value, label }[]`, and changes report the selected value.
+7. `radio_group.ts` — `radio_group({ value, set_value, options, ...props })`: controlled single-choice group; options are `{ value, label }[]`, and changes report the selected value.
+8. `slider.ts` — `slider({ value, set_value, min?, max?, step?, ...props })`: controlled range input; defaults are `min: 0`, `max: 100`, and `step: 1`; changes report a number.
+Use native HTML elements for interactive atoms. Props should pass through to the underlying element except for component-specific props consumed by the component. Use controlled `value`/`checked` plus setter pairs for mutable selection and entry components. The existing `button`, `input`, and `textarea` modules may be updated to meet these signatures while preserving current behavior.
 
-Do not include app-level compositions such as `sidebar`, `conversation`, or modal components in this initial list.
+Do not include app-level compositions such as `sidebar`, `conversation`, or modal components.
 
-## Sample behavior and data flow
+## Samples and data flow
 
-`app()` owns a string value for the input and a separate string value for the textarea, initialized to `''`. It passes each value and its corresponding state setter as props to the controlled component. The button sample has a concise visible label and no additional behavior requirement.
+`app()` owns and initializes sample state as follows:
 
-`storybook({ components })` receives already-created React elements, not component functions, so React renders component functions and their hooks normally. It renders every record entry in insertion order. Each entry has its display name and sample content; there are no per-component controls other than the component's own props/interactions.
+- `input` and `textarea`: empty string values.
+- `checkbox` and `switch`: `false`.
+- `select`: first option selected; options `One`, `Two`, and `Three` with corresponding lowercase values.
+- `radio_group`: first option selected; options `One`, `Two`, and `Three` with corresponding lowercase values.
+- `slider`: value `50`, defaults for min/max/step.
+- `button`: label `Button`; no extra behavior required.
+Each controlled sample receives its current state and setter. `storybook({ components })` receives already-created React elements, not component functions, so React renders component functions and their hooks normally. It renders entries in record insertion order. The Storybook wrapper does not provide additional controls beyond the component samples themselves.
+
+## Returned markup anatomy
+
+`storybook({ components })` returns this class structure:
+
+```text
+main.storybook
+└── div.storybook_components
+    └── section.storybook_component (one per component)
+        ├── h2.storybook_component_name
+        └── div.storybook_component_sample
+            └── supplied component element
+```
+
+The component name heading contains the record key as visible text. The sample wrapper contains the supplied element without additional labels or controls. These class names are the Storybook layout hooks; individual atom classes belong to their component implementations.
 
 ## Styling
 
-The Storybook entry imports `web/design/utilitarian.css`, as the main app does. The Storybook page uses the existing surface, text, and typography variables for a consistent preview. Use a single-column list with a small, consistent gap between samples, page padding of `var(--spacing-4)`, and section padding of `var(--spacing-3)`. Keep the page usable at narrow viewport widths; do not add a fixed-width canvas or device frame.
+The Storybook entry imports `web/design/utilitarian.css`, as the main app does. The page uses existing surface, text, typography, spacing, and radius variables. Use a single-column list, page padding `var(--spacing-4)`, consistent list gap `var(--spacing-3)`, and sample section padding `var(--spacing-3)`. Keep the layout fluid at narrow widths; do not add a fixed-width canvas or device frame.
 
-Do not add keyboard navigation, accessibility-specific behavior, or an external component library as part of this feature.
+Existing `.button`, `.input`, and `.textarea` styles should be reused. Add minimal styles for the new atoms in `web/design/utilitarian.css` or `web/storybook/storybook.css` as appropriate, using the existing variables; avoid polished or elaborate variants. The switch should visually distinguish checked and unchecked states; checkbox, select, radio group, and slider should remain recognizable native controls.
+
+Do not add keyboard-navigation abstractions, custom keyboard bindings, or an external component library as part of this feature.
 
 ## Not in initial scope
 
-No sidebar, search, filtering, controls for changing component props, separate routes per component, code display, or generalized keyboard-navigation abstraction.
+No sidebar, search, filtering, prop-editing controls, separate routes per component, code display, app-level compositions, or generalized keyboard-navigation abstraction.
