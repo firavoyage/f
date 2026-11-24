@@ -18,7 +18,7 @@ skip git, build, or test by default
 
 use edit to find and replace text that only occurs once. use shell when it fails.
 
-read spec/guide
+read spec/readme before writing specs
 
 # Web app libraries
 
