@@ -6,6 +6,7 @@
   "scripts": {
     "spellcheck": "typos",
     "dev": "vite 'source/web'",
+    "storybook": "vite 'source/web/storybook'",
     "build": "vite build 'source/web'",
     "serve": "./script/serve.sh"
   },

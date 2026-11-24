@@ -1749,4 +1749,12 @@ technically in sdlc intent/vision and backend should come first. they are trivia
 
 you can see them as already there, already abstracted away in the extremely general (probablistic) form of human languages.
 
+---
+
+https://base-ui.com/react/components/select
+
+https://ui.mantine.dev/
+
+https://www.radix-ui.com/
+
 

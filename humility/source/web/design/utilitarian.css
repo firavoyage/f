@@ -525,3 +525,28 @@
     box-shadow: var(--focus-outline);
   }
 }
+
+.checkbox {
+  width: var(--spacing-4);
+  height: var(--spacing-4);
+  accent-color: var(--palette-accent);
+}
+
+.select {
+  min-height: var(--spacing-8);
+  padding-inline: var(--spacing-2);
+  border-radius: var(--rounded-md);
+  background-color: var(--color-field);
+  color: var(--color-on-surface);
+}
+
+.radio_group_input,
+.slider {
+  accent-color: var(--palette-accent);
+}
+
+.switch {
+  &:focus-visible {
+    box-shadow: var(--focus-outline);
+  }
+}

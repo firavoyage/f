@@ -1,7 +1,7 @@
 type input = {
   value: string
-  placeholder?: string
-  set_value: (value: string | ((...args: any) => string)) => void
+  set_value: (value: string) => void
+  [key: Key]: any
 }
 
 export function input({ value, set_value, ...props }: input) {
@@ -9,6 +9,11 @@ export function input({ value, set_value, ...props }: input) {
     set_value(event.target.value)
   }
 
-  return h('input.input', { value, onchange: handle_change, ...props })
+  return h('input.input', {
+    ...props,
+    type: 'text',
+    value,
+    onchange: handle_change,
+  })
 }
 
