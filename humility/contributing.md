@@ -12,13 +12,15 @@ use type, no interface
 
 use modern tech such as es module
 
-do not use git
+# Workflow
 
-skip building or testing by default
+skip git, build, or test by default
 
-use shell if the edit tool fails
+use edit to find and replace text that only occurs once. use shell when it fails.
 
-## Web app libraries
+read spec/guide
+
+# Web app libraries
 
 - Render components with `h(component, props, ...children)`. Do not call component functions directly (e.g. `h(button, { label })`, not `button({ label })`). This lets React invoke components and preserves hook behavior. `h` is from `lib/web/hyperscript.ts` and is installed globally by the web prelude.
 - `h(tag, props?, ...children)` also accepts DOM tags. String tags can include classes, e.g. `h('div.panel', props, child)`. `h('foo')` means `div.foo`.
