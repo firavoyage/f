@@ -92,4 +92,6 @@ web/button: + component `button`
 
 have global hover/active style for such button.
 
+> 0.6.1
+
 
