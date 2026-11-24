@@ -1496,4 +1496,184 @@ Here is a concrete, copy-pasteable example of **principles and guides** written 
 
 Would you like me to draft a **similar template tailored to your specific product type** (e.g., mobile app, e-commerce, internal tool), or write out **usage guidelines for a specific component** like buttons, forms, or navigation?
 
+# what makes a good spec for coding agents
 
+1:18 AM
+
+### what makes a good spec for coding agents
+
+A good specification for coding agents  \[Highlight start\] acts as an **executable source of truth** that separates what you want built from how the agent writes the code \[Highlight end\] . Because coding agents are stateless across sessions and have limited context windows, effective specs replace massive, vague prompts with structured, verifiable instructions. [](https://addyosmani.com/blog/good-spec/)
+
+#### Core Elements of an Effective Spec
+
+* **The "What" and "Why" First.** Define the core problem, user flows, and business goals before dictating technical implementation details. [](https://www.youtube.com/watch?v=hy8UstR2NEg&t=15)
+* **Testable Requirements.** Write concrete, checkable behaviors rather than vague adjectives like "fast" or "intuitive". Using structured patterns like EARS notation (e.g., _"When \[event\] happens, the system shall \[response\]"_) eliminates ambiguity. [](https://www.augmentcode.com/guides/living-specs-for-ai-agent-development)
+* **Explicit Boundaries and Guardrails.** State what the agent must not do, including off-limits files, strict security rules, and architectural constraints. [](https://addyosmani.com/blog/good-spec/)
+* **Clear Definition of "Done."** Give the agent an objective verification loop, such as a single test script, linter, or type checker it must pass before stopping. [](https://www.youtube.com/watch?v=DfAOBID70Q0)
+* **Modular Task Breakdown.** Split large features into small, isolated tasks that can be built and verified one by one. [](https://addyosmani.com/blog/good-spec/)
+
+#### Best Practices for Working with Specs
+
+* **Draft Collaboratively in Read-Only Mode.** Start with a high-level prompt and ask the agent to generate the detailed spec and implementation plan first. Review and fix gaps before letting the agent edit any files.
+* **Manage Context Size.** Keep the spec concise and modular so it fits comfortably within the model's attention budget. Many developers pair a high-level spec with root instruction files like `AGENTS.md` or `CLAUDE.md`.
+* **Keep Output Contracts Lean.** On [Reddit](https://www.reddit.com/r/PromptEngineering/comments/1xwbqsv/how%5Fto%5Fwrite%5Fa%5Fspec%5Ffor%5Fan%5Fai%5Fagent%5Fbefore%5Fyou/), a user suggested keeping initial output requirements minimal and postponing secondary features to later versions so you can focus on debugging core logic first.
+* **Treat the Spec as a Living Artifact.** When requirements change or bugs appear, update the specification first rather than patching code manually. This prevents drift when the agent regenerates code later. [](https://www.oreilly.com/radar/how-to-write-a-good-spec-for-ai-agents/)
+
+#### Recommended Spec Structure
+
+If you are writing a spec file (e.g., `SPEC.md`), organize it into clear markdown sections:
+
+| Section                     | What to Include                                                        |
+| --------------------------- | ---------------------------------------------------------------------- |
+| **Overview & Goals**        | A brief summary of the feature and the problem it solves.              |
+| **Functional Requirements** | Bullet points of exact system behaviors and edge cases.                |
+| **Constraints & Non-Goals** | Tech stack rules, performance limits, and what is out of scope.        |
+| **Data & Interfaces**       | Expected schemas, API contracts, or file structures.                   |
+| **Verification Steps**      | Exact terminal commands or test cases that prove the work is complete. |
+
+If you have a project in mind, share:
+
+* **What you are building** (feature, bug fix, or full app)
+* **Your coding agent** (Claude Code, Cursor, Codex, etc.)
+
+I can draft a tailored **spec template** for you to use right away.
+
++7
+
+* [](https://addyosmani.com/blog/good-spec/)  
+Addy Osmani  
+How to write a good spec for AI agents | AddyOsmani.com  
+Break large tasks into smaller ones vs. keeping everything in one large prompt. Plan first in read-only mode, then execute and ite...
+* [](https://www.youtube.com/watch?v=hy8UstR2NEg&t=15)  
+YouTube·DeepLearningAI  
+Full Course: Spec-Driven Development with Coding Agents  
+specs enhance intent fidelity by forcing the definition of the problem, success criteria, constraints, and user flows before code ...  
+7m
+* [](https://www.oreilly.com/radar/how-to-write-a-good-spec-for-ai-agents/)  
+O'Reilly Media  
+How to Write a Good Spec for AI Agents  
+\# How to Write a Good Spec for AI Agents I could write a spec that rivals an RFC, but at some point the context is too large and t...
+
+Show all
+
+## principles
+
+principles
+
+2:28 AM
+
+### principles
+
+The core principles for writing coding agent specs center on **determinism, context efficiency, and objective verification**. Because AI agents operate statelessly and tend to hallucinate when given room to guess, your spec acts as a constraint system that keeps the model on track.
+
+#### 1\. Determinism Over Ambiguity
+
+* **Eliminate "Vibe" Words:** Replace subjective terms like _fast_, _clean_, or _user-friendly_ with measurable thresholds (e.g., _"Response time under 200ms"_).
+* **Specify Edge Cases:** Agents default to the "happy path." Explicitly define how the system must behave on empty states, invalid inputs, network failures, and timeouts.
+
+#### 2\. Separation of "What" and "How"
+
+* **Focus on Behavior, Not Syntax:** Define the inputs, outputs, state transitions, and business rules rather than micromanaging variable names or line-by-line logic.
+* **Constrain Architecture, Not Implementation:** Lock down the high-level patterns (e.g., _"Use the existing repository pattern in `/src/db`"_), then let the agent figure out the boilerplate.
+
+#### 3\. Context Economy
+
+* **Keep It Atomic:** A massive, monolithic spec degrades model reasoning. Break large systems into small, self-contained specs that cover one feature or module at a time.
+* **Point, Don't Paste:** Instead of copying large schemas or style guides into every spec, reference existing files in the repo (e.g., _"Follow the error-handling format in `src/utils/errors.ts`"_).
+
+#### 4\. Closed-Loop Verifiability
+
+* **Make "Done" Binary:** Every requirement should map to an automated check—a unit test, integration test, type check, or build command—that returns a clear pass/fail signal.
+* **Test-First Alignment:** Write acceptance criteria in a `Given / When / Then` format so the agent can directly translate them into test suites before writing application code.
+
+#### 5\. Explicit Negative Constraints
+
+* **Define the "Do Nots":** Agents are overly eager to refactor untouched code or install new dependencies. Explicitly state what is off-limits (e.g., _"Do not modify database migrations"_ or _"Use standard library only; add no new packages"_).
+* **Declare Non-Goals:** List features that are intentionally out of scope for the current iteration to prevent feature creep.
+
+#### 6\. Spec-First Iteration
+
+* **Update the Source, Not the Output:** Treat the spec as the primary artifact and code as a compiled output. When you find a bug or change a requirement, edit the spec first and have the agent regenerate the code so your documentation never drifts from reality.
+
+If you'd like to dive deeper, let me know if you want:
+
+A **before-and-after example** showing a weak prompt rewritten using these principlesA **checklist** to audit your existing specs before running an agent
+
+## example
+
+example
+
+2:28 AM
+
+### example
+
+Here is a **before-and-after example** showing how a vague request is transformed into a deterministic, agent-ready spec for adding a rate limiter to an API endpoint.
+
+---
+
+#### Before: The Weak Prompt
+
+> "Add rate limiting to the `/api/login` endpoint so bots can't spam it. Make sure it's fast, handles errors gracefully, and uses Redis."
+
+**Why this fails:** The agent has to guess the rate limit threshold, the time window, what key to track (IP vs. email), what HTTP status code to return, and what happens if Redis goes down.
+
+---
+
+#### After: The Spec-Driven Approach (`SPEC.md`)
+
+##### 1\. Overview & Goal
+
+Prevent brute-force credential stuffing on `POST /api/login` by limiting repeated failed login attempts using our existing Redis instance.
+
+##### 2\. Functional Requirements (Given / When / Then)
+
+* **Normal Flow:**
+  * **Given** a client IP has fewer than 5 failed attempts in the last 15 minutes
+  * **When** a `POST /api/login` request arrives
+  * **Then** process the authentication normally.
+* **Rate Limit Exceeded:**
+  * **Given** a client IP has reached 5 failed attempts within a rolling 15-minute window
+  * **When** another `POST /api/login` request arrives from that IP
+  * **Then** block the request immediately without querying the primary database, and return HTTP `429 Too Many Requests` with a `Retry-After` header (in seconds) and JSON body `{"error": "Too many login attempts. Try again later."}`.
+* **Reset on Success:**
+  * **Given** a client IP has 1–4 failed attempts
+  * **When** a login request from that IP succeeds
+  * **Then** clear the failure counter for that IP in Redis.
+* **Fail-Open Resilience:**
+  * **Given** the Redis connection times out (>50ms) or throws an error
+  * **When** a `POST /api/login` request arrives
+  * **Then** log a warning via `src/utils/logger.ts` and allow the login request to proceed (do not block legitimate users during a Redis outage).
+
+##### 3\. Architecture & Constraints
+
+* **Reference Implementation:** Reuse the existing Redis client exported from `src/lib/redis.ts`. Do not instantiate a new Redis connection.
+* **Key Format:** Store counters using the key pattern `ratelimit:login:<ip_address>`.
+* **IP Extraction:** Use `req.ip` (which already accounts for our trusted reverse proxy headers).
+* **Negative Constraints:**
+  * Do **not** install any new npm packages (implement using standard Redis `INCR` and `EXPIRE` commands).
+  * Do **not** modify any other routes or global middleware.
+  * **Non-Goal:** Do not implement per-username locking or CAPTCHA challenges in this task.
+
+##### 4\. Verification & Definition of Done
+
+The task is complete only when:
+
+1. New unit and integration tests in `tests/api/login.ratelimit.test.ts` cover all four scenarios above (normal flow, 429 block, reset on success, and Redis failure).
+2. Running `npm test -- tests/api/login.ratelimit.test.ts` passes with 0 errors.
+3. Running `npm run typecheck` and `npm run lint` pass with 0 warnings.
+
+---
+
+#### Why This Works
+
+* **Zero Guessing:** Every number (`5 attempts`, `15 minutes`, `50ms timeout`, `429 status`) is locked down.
+* **Context Economy:** Instead of pasting Redis setup code, it points directly to `src/lib/redis.ts` and `src/utils/logger.ts`.
+* **Safe Guardrails:** It explicitly prevents the agent from pulling in bloatware packages or touching unrelated middleware.
+* **Closed-Loop Finish:** The agent knows the exact terminal commands to run to prove its work is done.
+
+If you'd like to practice this on your own work, share:
+
+* A **rough prompt or feature idea** you are currently planning
+* Your **tech stack** (language, framework, test runner)
+
+I can rewrite it into a ready-to-use **spec file** for you.
