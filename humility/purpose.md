@@ -1723,4 +1723,17 @@ llms inherently do poorly on negative instructions.
 
 doesnt feel would fight it.
 
+## 24
+
+you may argue it's better to migrate to standard tsx stack.
+
+would work better out of box for llms.
+
+doesnt provide immediate benefit though, esp when you have some docs.
+
+and it's just awkward to have `className`, `foo={foo}`. even if pascal case for components isnt a thing.
+
+and if you workaround it via `prop` that's even more ugly. and you should not fight it.
+
+you should not fight leaky abstractions.
 

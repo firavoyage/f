@@ -4,7 +4,7 @@ export function h<
   F extends (params: any) => any
 >(
   fn: F,
-  params: Partial<Parameters<F>[0]>,
+  params?: Partial<Parameters<F>[0]>,
   // params: Parameters<F>[0],
   ...children: any[]
 )

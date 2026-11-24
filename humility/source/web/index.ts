@@ -7,6 +7,4 @@ import { createRoot } from 'react-dom/client'
 
 import { app } from './component/app'
 
-const App = app
-
-createRoot(document.getElementById('root')).render(<App />)
+createRoot(document.getElementById('root')).render(h(app))
