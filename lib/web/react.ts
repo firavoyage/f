@@ -89,7 +89,7 @@ function toggle(v: boolean) {
   return !v
 }
 
-let cleanups: Set<fn> = set()
+export let cleanups: Set<fn> = set()
 
 export function use_effect(fn: fn, deps?: any[]) {
   useEffect(effect(fn), normalize_deps(deps))
@@ -119,6 +119,10 @@ function effect(fn: fn) {
     cleanups.add(effect_cleanup)
 
     let current_cleanups = cleanups
+
+    // remove after sync op, in case effect b runs before promise callbacks
+    // cleanup explicitly iff you call sth after await
+    cleanups = set()
 
     return () => {
       for (const cleanup of current_cleanups) {

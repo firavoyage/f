@@ -172,3 +172,13 @@ it's not really faster to join an array of strings than string add.
 ## 23
 
 - web/react: + `forward(...refs)`
+
+## 24
+
+- web/react: fix use effect async auto cleanups, export cleanups
+  - if you cleanup explicitly it will always work whether sync or async
+  - auto cleanups could not work anyway as set timeout has no idea where it's running, and clearly it could not inspect its outer code
+  - so turn it off when sync op finishes
+    - ~~you could not.~~ cleanups register is for the latest effect.
+    - you can. sync op in js has no race cond. and if you turn it off after sync op, some async callbacks (under the hood of promises) registering sto would not register this way on the same ref to the cleanups set.
+
