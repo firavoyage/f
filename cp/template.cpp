@@ -35,6 +35,9 @@ const int nil = -1;
 
 const int inf = 1e18;
 
+const int has_implemented = true;
+#define todo assert(has_implemented == false);
+
 using namespace std;
 
 // utils
@@ -103,7 +106,7 @@ auto force_mle() {
 }
 
 auto force_wa() {
-  // cout << "wrong answer";
+  cout << "wrong answer";
   exit(0);
 }
 

@@ -35,6 +35,9 @@ const int nil = -1;
 
 const int inf = 1e18;
 
+const int has_implemented = true;
+#define todo assert(has_implemented == false);
+
 using namespace std;
 
 // utils
@@ -255,7 +258,7 @@ void solve();
 
 // entry
 
-const bool is_single_task = true;
+const bool is_single_task = false;
 
 const bool should_debug = true;
 
@@ -278,7 +281,15 @@ signed main() {
 
 /*
 
+wa 6/10 this time.
+better than segfault though.
 
+(i could not debug prev messy code and wont reason through it manually.)
+
+
+
+wait i forgot to add itself it seems.
+maybe i could assert todo
 
 */
 
@@ -313,7 +324,9 @@ int count(int n){
   each(i, first_index, last_index + 1){
     // n itself (taking the last 1), only count two different
     if(i == last_index + 1){
-      
+      if(prev_one_count == 2){
+        current_count += 1;
+      }
     }
 
     int digit = binary[i];
@@ -353,5 +366,94 @@ int count(int n){
 }
 
 void solve() {
-  
+  // seq(a, 100);
+
+  // int max_i = 20;
+
+  // each(i, 0, max_i){
+  //   a[i] = count(i);
+  // }
+
+  // each(i, 1, max_i){
+  //   info(i, "count", a[i], "current", a[i] - a[i-1]);
+  // }
+
+  readint(l, r);
+
+  prn(count(r) - count(l - 1));
 }
+// int count(int n){
+//   if(n <= 1){
+//     return 0;
+//   }
+
+//   int current_count = 0;
+
+//   seq(binary, 100 + 5);
+//   int last_index = 100; // even/odd
+//   int current = last_index + 1;
+
+//   int temp_n = n;
+//   while(temp_n > 0){
+//     current -= 1;
+//     if(temp_n % 2 == 1){
+//     // if(temp_n % 2 == 0){
+//       binary[current] = 1;
+//       temp_n -= 1;
+//     } else {
+//       binary[current] = 0;
+//     }
+//     temp_n /= 2;
+//   }
+
+//   int first_index = current;
+//   int prev_one_count = 0;
+
+//   // count two different
+//   each(i, first_index, last_index + 1){
+//     // n itself (taking the last 1), only count two different
+//     if(i == last_index + 1){
+      
+//     }
+
+//     int digit = binary[i];
+//     if(digit == 0){
+//       continue;
+//     }
+
+//     // when it takes 0 on such digit,
+//     // it can take any 0 or 1 on the right
+//     // (i, last index]
+//     int right = last_index - i;
+//     if(prev_one_count == 0){
+//       // take two
+//       // will work for 0 or 1 right
+//       current_count += right * (right - 1) / 2;
+//     } else if (prev_one_count == 1){
+//       // take one
+//       current_count += right;
+//     } else if (prev_one_count == 2){
+//       // take zero
+//       // all digits on the right must be zero
+//       current_count += 1;
+//     }
+
+//     // when it take 1 on such digit,
+//     // it has to skip all zeros until next 1 (or it will exceed)
+//     prev_one_count += 1;
+//   }
+
+//   // count two of the same
+//   // 2, 4, 8, ... (highest digit)
+//   // i.e. digit - 1
+//   // [first, last] - 1
+//   current_count += (last_index - first_index + 1) - 1;
+
+//   return current_count;
+// }
+
+// void solve() {
+//   readint(l, r);
+
+//   prn(count(r) - count(l - 1));
+// }

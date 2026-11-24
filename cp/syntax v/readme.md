@@ -27,7 +27,9 @@ read carefully whether it can take the same.
 
 on vjudge,
 
+stat is exactly ac/all subs count.
 
+and the percentage is solved/wa/nil among participants. that's for all time.
 
 # wonderings
 
