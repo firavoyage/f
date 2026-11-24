@@ -23,6 +23,12 @@ it can print sth, show nothing, and still wait for you read.
 
 read carefully whether it can take the same.
 
+---
+
+on vjudge,
+
+
+
 # wonderings
 
 j
