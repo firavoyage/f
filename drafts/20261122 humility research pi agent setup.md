@@ -1578,3 +1578,56 @@ pi-usage-widget · Packages · Pi
 Toggle which display modes appear in the Ctrl+Alt+U cycle. The widget only cycles through enabled modes.
 
 
+
+# . sh (pi-web)
+
+```
+ ~ % npx @agegr/pi-web@latest
+Downloading node-pty@1.2.0-beta.15: 7.15 MB/7.15 MB, done
+ WARN  Tarball download average speed 44 KiB/s (size 80 KiB) is below 50 KiB/s: https://registry.npmjs.org/@smithy/types/-/types-4.20.0.tgz (GET) @agegr/pi-web@0.18.0: 2.38 MB/7.34 MB
+ WARN  Request took 12124ms: https://registry.npmjs.org/@next%2Fswc-win32-x64-msvc
+ WARN  Tarball download average speed 6 KiB/s (size 7 KiB) is below 50 KiB/s: https://registry.npmjs.org/@aws-sdk/eventstream-handler-node/-/eventstream-handler-node-3.972.42.tgz (GET)
+ WARN  Request took 17631ms: https://registry.npmjs.org/@next%2Fswc-win32-arm64-msvc
+ WARN  Tarball download average speed 46 KiB/s (size 353 KiB) is below 50 KiB/s: https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001826.tgz (GET)b@0.18.0: 3.39 MB/7.34 MB
+ WARN  4 other warnings
+ WARN  1 deprecated subdependencies found: node-domexception@1.0.0
+Packages: +161
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Downloading @earendil-works/pi-coding-agent@1.6.0: 7.97 MB/7.97 MB, done
+Downloading @agegr/pi-web@0.18.0: 7.34 MB/7.34 MB, done
+Downloading @img/sharp-libvips-linux-x64@1.3.4: 8.22 MB/8.22 MB, done
+Progress: resolved 190, reused 60, downloaded 98, added 159
+Downloading next@16.4.6: 31.94 MB/43.67 MB
+Downloading @next/swc-linux-x64-gnu@16.4.6: 28.80 MB/35.23 MB
+^C
+ ~ % npm install -g @agegr/pi-web@latest
+bun add v1.3.14 (0d9b296a)
+Resolving dependencies
+Resolved, downloaded and extracted [118]
+
+installed @agegr/pi-web@0.18.0 with binaries:
+ - pi-web
+
+29 packages installed [45.85s]
+
+Blocked 1 postinstall. Run `bun pm -g untrusted` for details.
+Saved lockfile
+```
+
+```
+ ~ % pi-web
+▲ Next.js 16.4.6
+- Local:         http://127.0.0.1:30141
+- Network:       http://127.0.0.1:30141
+✓ Ready in 255ms
+✓ Running next.config.ts took 55ms
+[pi-web] session_start dispatched to extensions for session 01a20409-6112-77c3-b80d-74b0c00cd876
+[pi-web] session_start dispatched to extensions for session 01a203d2-c8e7-70b2-8645-521e2b16920b
+[pi-web] session_start dispatched to extensions for session 01a203b0-54aa-76a5-b3d2-7a92181b77f7
+[pi-web] session_start dispatched to extensions for session 01a20396-2602-7299-b8a9-1341c3cd5939
+[pi-web] session_start dispatched to extensions for session 01a20389-4059-7340-8c27-112946420c7c
+[pi-web] session_start dispatched to extensions for session 01a2037b-e923-73ed-bd65-37e12a813436
+```
+
+
+
