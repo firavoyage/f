@@ -10,12 +10,11 @@ export function checkbox({ checked, set_checked, children, ...props }: checkbox_
   }
 
   return h(
-    'button.checkbox',
+    checked ? 'button.checkbox.is_checked' : 'button.checkbox',
     {
       ...props,
       type: 'button',
       role: 'checkbox',
-      'aria-checked': checked,
       onclick: handle_click,
     },
     h('span.checkbox_indicator', {}, checked ? '✓' : ''),

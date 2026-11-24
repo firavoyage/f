@@ -24,6 +24,7 @@ body,
   display: flex;
   flex-direction: column;
   gap: var(--spacing-3);
+  overflow: visible;
   padding: var(--spacing-3);
   border-radius: var(--rounded-md);
   background-color: var(--color-surface-semihigh);
@@ -38,58 +39,7 @@ body,
 .storybook_component_sample {
   display: flex;
   min-height: var(--spacing-8);
+  overflow: visible;
   align-items: center;
   gap: var(--spacing-3);
-}
-
-.input,
-.select {
-  max-width: var(--spacing-3xl);
-}
-
-.textarea {
-  max-width: var(--spacing-3xl);
-  min-height: var(--spacing-12);
-}
-
-.checkbox,
-.slider {
-  width: var(--spacing-3xl);
-}
-
-.switch {
-  display: inline-flex;
-  min-width: var(--spacing-16);
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing-3);
-  padding: var(--spacing-1) var(--spacing-2);
-  border-radius: var(--rounded-full);
-  background-color: var(--color-surface-higher);
-}
-
-.switch[aria-checked='true'] {
-  background-color: var(--palette-accent);
-  color: var(--palette-gray-50);
-}
-
-.switch_thumb {
-  width: var(--spacing-4);
-  height: var(--spacing-4);
-  flex: 0 0 auto;
-  order: -1;
-  border-radius: var(--rounded-full);
-  background-color: currentColor;
-}
-
-.radio_group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-4);
-}
-
-.radio_group_option {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-2);
 }

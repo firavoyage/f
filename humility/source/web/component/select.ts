@@ -29,9 +29,8 @@ export function select({ value, set_value, options, ...props }: select_props) {
     h(
       'button.select_trigger',
       {
+        role: 'combobox',
         type: 'button',
-        'aria-haspopup': 'listbox',
-        'aria-expanded': open,
         onclick: handle_toggle,
       },
       h('span.select_label', {}, selected_option?.label ?? ''),
@@ -43,11 +42,12 @@ export function select({ value, set_value, options, ...props }: select_props) {
           { role: 'listbox' },
           ...map(options, (option) =>
             h(
-              'button.select_option',
+              option.value === value
+                ? 'button.select_option.is_selected'
+                : 'button.select_option',
               {
-                type: 'button',
                 role: 'option',
-                'aria-selected': option.value === value,
+                type: 'button',
                 onclick: () => handle_select(option.value),
               },
               h('span.select_option_label', {}, option.label),

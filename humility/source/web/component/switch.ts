@@ -16,12 +16,11 @@ export function switch_toggle({
   }
 
   return h(
-    'button.switch',
+    checked ? 'button.switch.is_checked' : 'button.switch',
     {
       ...props,
       type: 'button',
       role: 'switch',
-      'aria-checked': checked,
       onclick: handle_click,
     },
     h('span.switch_thumb', {}),
