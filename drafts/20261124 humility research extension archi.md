@@ -808,4 +808,1034 @@ If you'd like, let me know:
 
 I can help you set up a lightweight Git workflow or an automated changelog tool that fits your habits.
 
+# does pi agent support acp
+
+11:53 PM
+
+### does pi agent support acp
+
+ \[Highlight start\] **Yes, the Pi coding agent supports the Agent Client Protocol (ACP) through official registry adapters and community extensions** \[Highlight end\] **.** While Pi's core binary natively uses its own headless JSONL RPC mode (`--mode rpc`), there is an active ecosystem that bridges Pi to ACP in both directions. [](https://zed.dev/acp/agent/pi)
+
+#### Running Pi Inside ACP-Compatible Editors
+
+If you want to use Pi as your coding agent inside an IDE like Zed or JetBrains, you can use an ACP adapter. [](https://github.com/svkozak/pi-acp)
+
+* **Official ACP Registry Adapter.** The [pi-acp adapter](https://github.com/svkozak/pi-acp) translates ACP JSON-RPC 2.0 over stdio into Pi's native `--mode rpc` dialect. You can install it directly from the [Zed ACP Registry](https://zed.dev/acp/agent/pi) or run it manually via `npx pi-acp`. [](https://github.com/svkozak/pi-acp)
+* **Supported Features.** The adapter supports session persistence, slash commands, Pi skills, context usage tracking, and structured diffs. [](https://github.com/svkozak/pi-acp)
+* **Current Limitations.** According to ongoing [Pi GitHub discussions](https://github.com/earendil-works/pi/discussions/4444), because `pi-acp` acts as a translation bridge rather than a native transport, it does not support client filesystem/terminal delegation for remote SSH/WSL environments or MCP passthrough. [](https://github.com/earendil-works/pi/discussions/4444)
+
+#### Using ACP Agents Inside Pi
+
+If you are running Pi in your terminal and want it to control or delegate tasks to other ACP-compatible agents (such as Gemini CLI, Claude, or Codex), you can install Pi packages: [](https://pi.dev/packages/pi-acp-agents)
+
+* **Multi-Agent Orchestration.** Installing the [pi-acp-agents package](https://pi.dev/packages/pi-acp-agents) (`pi install npm:pi-acp-agents`) turns Pi into an ACP client. It adds tools like `acp_prompt` and `acp_compare` so Pi can spawn and coordinate external ACP agents. [](https://pi.dev/packages/pi-acp-agents)
+* **ACP Provider Mode.** Installing the [pi-acp-provider package](https://pi.dev/packages/pi-acp-provider?page=32) (`pi install npm:pi-acp-provider`) bypasses Pi's own tool loop and delegates all planning, file edits, and command execution directly to an underlying ACP agent. [](https://pi.dev/packages/pi-acp-provider?page=32)
+
+_(Note: Another Pi extension called [Agentic Control Plane](https://agenticcontrolplane.com/blog/pi-acp-extension) also uses the acronym `acp`, which handles workspace security policies rather than the Agent Client Protocol.)_ [](https://agenticcontrolplane.com/blog/pi-acp-extension)
+
+Are you looking to **run Pi inside an editor** like Zed, or **connect Pi to other ACP agents** from your terminal? Let me know your setup and I can share the exact configuration steps.
+
++4
+
+* [](https://github.com/svkozak/pi-acp)  
+GitHub  
+GitHub - svkozak/pi-acp: ACP adapter for pi coding agent · GitHub  
+Session persistence pi stores its own sessions \* Slash commands Loads file-based slash commands compatible with pi's. Supports ski...
+* [](https://zed.dev/acp/agent/pi)  
+Zed  
+Pi - ACP Agent - Zed  
+Use an ACP-compatible editor with registry support to install Pi from the ACP Registry. \* Run manually if needed Start Pi with: np...
+* [](https://github.com/earendil-works/pi/discussions/4444)  
+GitHub  
+Supporting the Agent Client Protocol (ACP) · earendil-works pi  
+It has some limitations (no filesystem or terminal delegation, no MCP passthrough). the bridge has structural limits: no client FS...
+
+Show all
+
+## what are the agents that support acp
+
+what are the agents that support acp
+
+11:53 PM
+
+### what are the agents that support acp
+
+Over **50 coding and general-purpose agents** support the Agent Client Protocol (ACP), either natively out of the box or via an official or community adapter. [](https://agentclientprotocol.com/get-started/agents)
+
+You can browse the full, continuously updated directory in the [ACP Registry](https://agentclientprotocol.com/get-started/agents) or install them directly inside clients like [Zed](https://zed.dev/docs/ai/external-agents) and JetBrains IDEs. [](https://www.jetbrains.com/acp/)
+
+#### Major & Popular ACP Agents
+
+| Agent                  | Integration Type                                | Command / Registry ID     |
+| ---------------------- | ----------------------------------------------- | ------------------------- |
+| **Claude Code**        | Adapter (@agentclientprotocol/claude-agent-acp) | claude-acp                |
+| **Codex CLI**          | Adapter (@agentclientprotocol/codex-acp)        | codex-acp                 |
+| **Cursor**             | Native (CLI)                                    | cursor-agent acp          |
+| **Gemini CLI**         | Native                                          | gemini --acp              |
+| **GitHub Copilot CLI** | Native                                          | npx @github/copilot --acp |
+| **Google Antigravity** | Native                                          | agy\_acp\_server.par      |
+| **Junie** (JetBrains)  | Native                                          | junie --acp=true          |
+| **OpenCode**           | Native                                          | opencode acp              |
+| **Pi Coding Agent**    | Community Adapter (pi-acp)                      | npx pi-acp                |
+
+#### Other Notable Supported Agents
+
+Beyond the flagship tools listed in the [AgentRQ ACP overview](https://agentrq.com/blog/which-coding-agents-support-acp-agent-client-protocol), the ecosystem includes several specialized and open-source CLI agents: [](https://agentrq.com/blog/which-coding-agents-support-acp-agent-client-protocol)
+
+* **Open-Source & Terminal Coding Agents.** Cline (`npx cline --acp`), goose (`goose acp`), Kilo (`npx @kilocode/cli acp`), OpenHands, Aider/Amp (via `amp-acp`), Autohand Code, and VT Code.
+* **Model-Specific Coding CLIs.** Qwen Code (`npx @qwen-code/qwen-code --acp`), Kimi CLI (`kimi acp`), Mistral Vibe, DeepSeek / GLM / Groq (via `acp-llm-adapter`), MiniMax Code, and Grok Build.
+* **Enterprise & Specialized Agents.** Devin, Factory Droid, Poolside, Kiro CLI, Auggie CLI, Qoder CLI, and Cortex Code. [](https://agentclientprotocol.com/get-started/registry)
+
+#### ACP Clients (Where You Can Run Them)
+
+Because ACP decouples the agent from the interface, any of the agents above can run inside ACP-compatible clients, including **Zed**, **JetBrains IDEs** (IntelliJ, PyCharm, WebStorm, etc.), **Neovim**, **Emacs**, **Obsidian**, **Marimo**, and orchestrators like **Pi** (via `pi-acp-agents`) or **OpenHands**. [](https://agentclientprotocol.com/get-started/introduction)
+
+Are you looking to connect a **specific agent** to an editor, or trying to **compare options** for a particular workflow (like local models, terminal orchestration, or IDE integration)? Let me know and I can help you narrow down the best setup.
+
++6
+
+* [](https://agentclientprotocol.com/get-started/introduction)  
+Agent Client Protocol  
+Introduction - Agent Client Protocol  
+Agent Client Protocol (ACP): Standardizes communication between code editors/IDEs and coding agents … decouples editors and agents...
+* [](https://agentclientprotocol.com/get-started/agents)  
+Agent Client Protocol  
+Agents - Agent Client Protocol  
+The following agents can be used with an ACP Client: OpenCode \* OpenHands \* Pi (via pi-acp adapter)
+* [](https://www.jetbrains.com/acp/)  
+JetBrains  
+Agent Client Protocol (ACP): Use Any Coding Agent in Any IDE  
+Open-source, shared IDE-agent interoperability protocol developed by JetBrains and Zed to prevent vendor lock-in across local, rem...
+
+Show all
+
+## acp creator background
+
+acp creator background
+
+11:55 PM
+
+### acp creator background
+
+The  \[Highlight start\] **Agent Client Protocol (ACP) was created by Zed Industries** \[Highlight end\]  (the team behind the Rust-based Zed code editor) in **August 2025**, with Google providing the initial reference integration via Gemini CLI. It was quickly joined by **JetBrains** as a co-developer and is now openly governed under an Apache 2.0 license. [](https://zed.dev/acp)
+
+#### Who Is Behind Zed Industries?
+
+* **Founding Pedigree.** Zed Industries was co-founded by **Nathan Sobo** (CEO) along with Max Brunsfeld and Antonio Scandurra—the core engineering team that originally created **Atom** (GitHub's open-source text editor) and **Tree-sitter** (the incremental parsing library used across modern editors).
+* **Editor-First Philosophy.** Having spent over a decade building developer environments, Sobo and the Zed team viewed the editor as the primary interface between humans, source code, and collaborators. [](https://tessl.io/blog/zed-debuts-agent-client-protocol-to-connect-ai-coding-agents-to-any-editor)
+
+#### Why Zed Created ACP
+
+* **Solving the M×N Integration Problem.** As CLI-based coding agents (like Claude Code, Gemini CLI, and Goose) exploded in popularity in 2025, each agent required bespoke plugins or custom glue code to work inside different editors. Rather than building one-off integrations for every single agent, Zed designed a universal JSON-RPC 2.0 standard over `stdio`.
+* **The "LSP Moment" for AI Agents.** Zed explicitly modeled ACP after Microsoft's **Language Server Protocol (LSP)**. Just as LSP separated language intelligence (linters, autocomplete) from the editor UI, ACP separates agentic reasoning and tool loops from the editor's user interface.
+* **Preventing Vendor Lock-In.** By open-sourcing the specification and inviting direct competitors like [JetBrains](https://blog.jetbrains.com/ai/2025/10/jetbrains-zed-open-interoperability-for-ai-coding-agents-in-your-ide/) to co-develop the standard and launch a shared ACP Registry in early 2026, Zed aimed to keep editors neutral hubs where developers can freely swap models and agents without switching their workspace. [](https://www.youtube.com/watch?v=n11pDnBXPgk&t=167)
+
+_(Note: IBM Research also developed an open-source protocol with the same acronym—**Agent Communication Protocol (ACP)**—for agent-to-agent orchestration, which is distinct from Zed's editor-to-agent Agent Client Protocol.)_ [](https://www.morphllm.com/agent-client-protocol)
+
+Would you like to explore how **ACP compares to Anthropic's MCP** (Model Context Protocol), or see how to **build or wrap your own agent** using the ACP SDK?
+
++4
+
+* [](https://agentclientprotocol.com/get-started/introduction)  
+Agent Client Protocol  
+Agent Client Protocol: Introduction  
+Introduction. Copy pageCopy page. Get started with the Agent Client Protocol. Copy pageCopy page. The Agent Client Protocol (ACP) ...
+* [](https://www.youtube.com/watch?v=n11pDnBXPgk&t=167)  
+YouTube·JetBrains  
+What Is the Agent Client Protocol – and Why JetBrains and Zed ...  
+The core problem ACP aims to solve is the fragmentation and friction developers face with the increasing number of coding agents a...  
+1m
+* [](https://zed.dev/acp)  
+Zed  
+Zed — Agent Client Protocol  
+Created by Zed as an open standard under the Apache license for agent interoperability across editors; provides multi-file editing...
+
+Show all
+
+# model context protocol creator background
+
+11:55 PM
+
+### model context protocol creator background
+
+The **Model Context Protocol (MCP)** was co-created by  \[Highlight start\] **David Soria Parra** and **Justin Spahr-Summers** \[Highlight end\]  while working as engineers at [Anthropic](https://www.anthropic.com/news/model-context-protocol) in mid-2024\. Both engineers brought extensive backgrounds in open-source software, developer tooling, and infrastructure prior to developing the standard. [](https://latent.space/p/mcp/)
+
+#### David Soria Parra
+
+David Soria Parra is a London-based Member of Technical Staff at Anthropic who serves as co-creator, lead maintainer, and technical committee chair for the MCP ecosystem. [](https://uk.linkedin.com/in/david-soria-parra-4a78b3a)
+
+* **Open-Source Leadership.** Early in his career, Soria Parra worked as a core developer for the PHP programming language and served as the release manager for PHP 5.4 and 5.5\. He also made major contributions to distributed version control systems, including Git and Mercurial. [](https://experimentalworks.net/about/)
+* **Meta & Developer Tooling.** Before joining Anthropic in April 2024, Soria Parra spent roughly a decade at Facebook (later Meta). He worked on developer infrastructure and eventually managed engineering organizations focused on static analysis, simulation-based testing, and tooling for VR, AR, and custom silicon. [](https://uk.linkedin.com/in/david-soria-parra-4a78b3a)
+* **Venture & Advisory.** Between his tenure at Meta and Anthropic, he worked as an Entrepreneur in Residence at Sutter Hill Ventures in London. He also serves as a scout for Sequoia. [](https://uk.linkedin.com/in/david-soria-parra-4a78b3a)
+
+#### Justin Spahr-Summers
+
+Justin Spahr-Summers co-invented MCP and helped design its core host, client, and server architecture. He is recognized in the project's governance as a co-inventor and lead maintainer emeritus. 
+
+* **iOS & macOS Open-Source Ecosystem.** Spahr-Summers is well known in the Apple developer community for creating and maintaining foundational open-source libraries. His notable projects include ReactiveCocoa (reactive programming in Swift and Objective-C), Carthage (a decentralized dependency manager), Mantle, and Squirrel. [](https://jspahrsummers.com/)
+* **Engineering Career.** Prior to joining Anthropic, Spahr-Summers held software engineering roles at major tech companies, including GitHub and Meta, alongside periods of independent software consulting. [](https://jspahrsummers.com/)
+* **Post-Anthropic Work.** After leaving Anthropic in September 2025, Spahr-Summers shifted to full-time independent game development in the United Kingdom as the director of [Fern Forest Games](https://jspahrsummers.com/), focusing on emergent AI experiences in games. [](https://uk.linkedin.com/in/jspahrsummers)
+
+#### How They Created MCP
+
+The protocol grew out of a practical internal bottleneck rather than a top-down corporate directive. [](https://www.youtube.com/watch?v=m2VqaNKstGc&t=128)
+
+* **The M×N Integration Problem.** In July and August 2024, Soria Parra and Spahr-Summers grew frustrated with having to manually copy files between Claude Desktop and local code editors. Drawing inspiration from the Language Server Protocol (LSP), they envisioned a universal standard—initially nicknamed "Claude Connect"—to prevent developers from building custom integrations for every individual app and data source.
+* **Rapid Prototyping & Open Release.** Spahr-Summers built the initial integration for Claude Desktop while Soria Parra built a proof-of-concept for the Zed code editor. Following an internal Anthropic hackathon where employees used the protocol to control hardware like a 3D printer, Anthropic officially released MCP as an open-source standard on November 25, 2024, before later donating it to the Linux Foundation. [](https://www.anthropic.com/news/model-context-protocol)
+
+Would you like to explore how **MCP's technical architecture** works, or see how its **governance under the Linux Foundation** is structured today?
+
++10
+
+* [](https://latent.space/p/mcp/)  
+Latent Space  
+The Creators of Model Context Protocol — Latent Space  
+Model Context Protocol (MCP) is an open-source, bidirectional communication protocol created by Anthropic engineers David and Just...
+* [](https://www.anthropic.com/news/model-context-protocol)  
+Anthropic  
+Introducing the Model Context Protocol - Anthropic  
+MCP was created at Anthropic by David Soria Parra and Justin Spahr-Summers. We're committed to building MCP as a collaborative, op...
+* [](https://uk.linkedin.com/in/david-soria-parra-4a78b3a)  
+LinkedIn·David Soria Parra  
+David Soria Parra - Member of Technical Staff at Anthropic | Sequoia Scout | ex-Facebook | LinkedIn  
+David Soria Parra: Member of Technical Staff at Anthropic, Sequoia Scout, ex-Facebook senior manager, and co-creator of the Model ...
+
+Show all
+
+## what do ppl say on mcp
+
+what do ppl say on mcp
+
+11:55 PM
+
+### what do ppl say on mcp
+
+Public and developer sentiment around the **Model Context Protocol (MCP)** is sharply divided between enthusiasm for its role as a universal standard and skepticism over its complexity, token costs, and security vulnerabilities. [](https://news.ycombinator.com/item?id=49779329)
+
+Developers frequently compare it to **"USB-C for AI,"** praising how it eliminates repetitive integration work while criticizing it as overengineered for simpler tasks. [](https://repost.aws/articles/ARK3Jah0ZyS8GkPTsOJSnZkA/model-context-protocol-mcp-why-it-matters)
+
+#### What Proponents Praise
+
+* **Write Once, Connect Anywhere.** Supporters highlight that MCP solves the fragmented integration problem by giving AI models a shared language. Instead of writing custom glue code for every combination of AI client and data source, developers can build one MCP server and connect it across multiple platforms like Claude, Cursor, and enterprise agents. [](https://www.youtube.com/watch?v=cGuyrANVi4A)
+* **Simplicity Over Heavy Frameworks.** One point of agreement among users on [r/mcp](https://www.reddit.com/r/mcp/comments/1jhu0ad/mcp%5Fis%5Fgetting%5Foverhyped%5Fis%5Fit%5Fthe%5Fnext%5Fbig%5Fthing/) is that MCP succeeds because it is a lightweight set of guidelines rather than a bloated software framework. [](https://www.reddit.com/r/mcp/comments/1jhu0ad/mcp%5Fis%5Fgetting%5Foverhyped%5Fis%5Fit%5Fthe%5Fnext%5Fbig%5Fthing/)
+* **Enterprise Governance & Credential Hiding.** In discussions on [Hacker News](https://news.ycombinator.com/item?id=49779329), advocates emphasize that MCP is valuable in enterprise and non-CLI environments because it centralizes audit logging, enforces access controls, and keeps sensitive API keys hidden inside the server rather than exposing them directly to the model.
+
+#### Common Criticisms & Pushback
+
+* **Context Bloat & Token Burn.** A frequent complaint is that connecting too many MCP servers floods the AI's context window with massive tool definitions. Critics point out that this drives up token costs and actually degrades the model's reasoning and tool-selection accuracy. [](https://www.reddit.com/r/mcp/comments/1jl10ne/is%5Fmcp%5Freally%5Fthat%5Fgood/)
+* **Reinventing the Wheel.** Skeptics argue that for straightforward workflows, wrapping standard REST APIs or command-line tools in an MCP server introduces unnecessary architectural overhead. As covered in analyses by Vellum and [Medium](https://julsimon.medium.com/the-truth-about-mcp-pros-cons-real-world-use-cases-2e51bbec7219), many developers prefer simple function calling or existing OpenAPI standards over maintaining a separate protocol layer. [](https://julsimon.medium.com/the-truth-about-mcp-pros-cons-real-world-use-cases-2e51bbec7219)
+* **Statefulness & Scaling Friction.** Because MCP relies on long-lived, stateful connections, infrastructure engineers note that it clashes with modern serverless architectures (like AWS Lambda or Azure Functions), making scaling and deployment more cumbersome. [](https://medium.com/@nayan.j.paul/personal-and-honest-review-of-mcp-so-far-from-a-practical-point-of-view-7e8112c8b1b5)
+
+#### Security Concerns
+
+Security researchers and cybersecurity communities have raised significant alarms regarding the rapid, unchecked adoption of third-party MCP servers: [](https://www.reddit.com/r/programming/comments/1ldignq/mcp%5Fsecurity%5Fflaws%5Fwhat%5Fdevelopers%5Fneed%5Fto%5Fknow/)
+
+* **Supply Chain & Malicious Servers.** Commenters on [r/programming](https://www.reddit.com/r/programming/comments/1ldignq/mcp%5Fsecurity%5Fflaws%5Fwhat%5Fdevelopers%5Fneed%5Fto%5Fknow/) agree that the ecosystem is vulnerable to supply chain attacks—such as "rug pull" updates where a trusted server turns malicious—and strongly recommend auditing code rather than blindly installing community servers.
+* **Prompt Injection & Tool Poisoning.** Security experts warn about indirect prompt injections (where hidden instructions inside a GitHub issue or support ticket hijack an MCP-connected agent) and "tool poisoning," where deceptive tool descriptions trick an AI into exfiltrating sensitive local data.
+* **Inadequate Auditing Tools.** Users on [r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1s5vvhy/mcp%5Fmodel%5Fcontext%5Fprotocol%5Fis%5Fmoving%5Ffast%5Fand%5Fso/) note that traditional HTTP security scanners often miss protocol-level exploits like capability escalation, leaving organizations exposed if they deploy servers without strict sandboxing and human-in-the-loop approvals. [](https://www.reddit.com/r/cybersecurity/comments/1s5vvhy/mcp%5Fmodel%5Fcontext%5Fprotocol%5Fis%5Fmoving%5Ffast%5Fand%5Fso/)
+
+Are you evaluating **MCP for a specific project**, or would you like to compare it against **alternatives like standard tool calling or CLIs**?
+
++17
+
+* [](https://digiday.com/media/wtf-is-model-context-protocol-mcp-and-why-should-publishers-care/)  
+Digiday  
+WTF is Model Context Protocol, and why should publishers ...  
+Model Context Protocol (MCP) is a buzzword gaining more traction, especially as publishers think about how to prepare for the agen...
+* [](https://www.youtube.com/watch?v=cGuyrANVi4A)  
+YouTube·Google Cloud Tech  
+How Model Context Protocol (MCP) actually works  
+actually is why it exists. and how it's changing the way models interact with the world we'll walk through the core ideas step by ...  
+7:58
+* [](https://news.ycombinator.com/item?id=49779329)  
+Hacker News  
+MCP was always a bad idea? | Hacker News  
+MCP (Model Context Protocol) debate: proponents value access control, credential hiding, audit logging, standardized discovery, bl...
+
+Show all
+
+## what do ppl say on mcp v cli
+
+what do ppl say on mcp v cli
+
+11:57 PM
+
+### what do ppl say on mcp v cli
+
+The debate over **MCP vs. CLI** comes down to a core trade-off: **token efficiency and composability (CLI) versus standardized security and cross-platform reach (MCP)**. [](https://www.neteye-blog.com/blog/2026/09/29/mcp-or-cli-pros-cons-and-the-real-limits-with-local-models/)
+
+In developer communities, the consensus has shifted away from declaring a single winner toward matching the tool to the environment. One point of agreement among users on [r/ClaudeCode](https://www.reddit.com/r/ClaudeCode/comments/1sems01/mcp%5Fvs%5Fcli%5Fis%5Flike%5Fdebating%5Fcash%5Fvs%5Fcard%5Fdepends/) is a simple rule of thumb: if an AI agent already has shell access, CLI is leaner and more capable; if it lacks terminal access (such as in a web chat interface or a sandboxed enterprise app), MCP is the necessary choice. [](https://circleci.com/blog/mcp-vs-cli/)
+
+#### Quick Comparison
+
+| Dimension             | CLI (Command-Line Interface)                                                                  | MCP (Model Context Protocol)                                                                     |
+| --------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| **Token Cost**        | **Low (On-Demand):** Zero upfront context cost; tokens are only spent when a command runs.    | **High (Upfront):** Injects full JSON tool schemas into the system prompt on every turn.         |
+| **Composability**     | **High:** Agents can pipe commands together (grep, jq, awk) to filter data before reading it. | **Low:** Tools run as isolated calls that often return bulky, unfiltered payloads.               |
+| **Model Familiarity** | **Native:** LLMs are heavily pre-trained on common CLIs (git, gh, aws, kubectl).              | **Schema-Dependent:** Relies entirely on how well the server author wrote the tool descriptions. |
+| **Security & Auth**   | **Ambient:** Inherits the local user's full permissions and environment credentials.          | **Scoped:** Supports per-user OAuth, tenant isolation, and centralized audit trails.             |
+| **Best Environment**  | Local coding agents (Claude Code, Cursor, Codex) and rapid inner-loop debugging.              | Remote web/desktop apps, non-technical users, and multi-tenant production systems.               |
+
+#### Why Many Developers Prefer CLIs
+
+* **Avoiding the "Token Tax."** A major criticism of MCP is context bloat. Connecting a complex MCP server—like GitHub's—can dump tens of thousands of tokens of tool definitions into the context window before the agent does any work. With a CLI, the agent uses zero context until it invokes a tool. [](https://news.ycombinator.com/item?id=47208398)
+* **Unix Composability & Filtering.** As noted in discussions on [Hacker News](https://news.ycombinator.com/item?id=47208398), developers love CLIs because agents can chain commands together. Instead of pulling an entire 500-line JSON payload into context via an MCP call, an agent can run a CLI command piped into `jq` or `grep` to extract only the exact line it needs. [](https://www.youtube.com/watch?v=g9JIUM0MHgQ&t=155)
+* **Leveraging Training Data.** Modern LLMs have seen millions of examples of standard terminal commands during training. For mature tools like `git` or `docker`, agents rarely need a protocol wrapper to understand how to use them.
+
+#### Where MCP Still Wins
+
+* **Enterprise Security & Multi-Tenancy.** While CLI's ambient authentication is fast for a solo developer on a laptop, engineers point out that giving an autonomous agent raw shell access is a non-starter for customer-facing products. On [r/startups](https://www.reddit.com/r/startups/comments/1rv8tcx/mcp%5Fvs%5Fcli%5Fwhats%5Fyour%5Ftake%5Fon%5Fthe%5Fdiscussion%5Fin/), opinions are mixed on whether internal dev tools are safe from CLI risks, but users agree that MCP is much better suited for complex workflows requiring per-user OAuth delegation, strict permission boundaries, and audit logs. [](https://www.reddit.com/r/startups/comments/1rv8tcx/mcp%5Fvs%5Fcli%5Fwhats%5Fyour%5Ftake%5Fon%5Fthe%5Fdiscussion%5Fin/)
+* **Non-Terminal Environments.** Most end users do not live in a terminal. MCP provides a zero-install, plug-and-play way for desktop chat apps, web interfaces, and non-technical users to connect to external SaaS platforms without configuring local binaries or managing API keys. [](https://manveerc.substack.com/p/mcp-vs-cli-ai-agents)
+* **Bridging the Gap with "Skills."** Many developers are adopting a hybrid approach using lightweight **Markdown skill files** alongside CLIs. Instead of loading massive MCP schemas, a skill file gives the agent a 30-to-50-token summary of a custom CLI tool and instructs it to run `--help` only if it decides to use that tool—capturing MCP's discoverability without paying its token penalty. [](https://www.youtube.com/watch?v=TuIZoFyBKIM&vl=en&t=55)
+
+For deeper technical breakdowns, developer blogs from [Medium](https://medium.com/@girmish/cli-agent-vs-mcp-a-practical-comparison-for-students-startups-and-developers-2026-b9fe30a96559) and [NetEye](https://www.neteye-blog.com/blog/2026/09/29/mcp-or-cli-pros-cons-and-the-real-limits-with-local-models/) also highlight how local models with smaller context windows suffer heavily from MCP schema overhead compared to lean CLI execution. [](https://medium.com/@girmish/cli-agent-vs-mcp-a-practical-comparison-for-students-startups-and-developers-2026-b9fe30a96559)
+
+[MCP vs API vs CLI: How Should AI Agents Connect to Your App?18 days ago · 10+ commentsr/LLMDevsReddit](https://www.reddit.com/r/LLMDevs/comments/1xp9b3j/mcp%5Fvs%5Fapi%5Fvs%5Fcli%5Fhow%5Fshould%5Fai%5Fagents%5Fconnect%5Fto/)
+
+[Skill + CLI or MCPPopular comment · There is some kind of paper that quotes 26x more tokens for MCP. I use command line- it has everything, discovery, autoload usage, lots of training, the works.2 months ago · 30+ commentsr/AI\_AgentsReddit](https://www.reddit.com/r/AI%5FAgents/comments/1wh0ckp/skill%5Fcli%5For%5Fmcp/)
+
+[MCP vs API vs CLI: I built all 3 for agents. Here's my take...Popular comment · The client side you credit to MCP is already there for a CLI. CC's client for every CLI is the shell. In about 70,000 tool calls over 6 weeks, CC made fewer than 80 to MCP servers. It runs small command-line tools instead: a Clojure REPL client, a backup command, a browser driver. None of those needed an MCP.19 days ago · 10+ commentsr/ClaudeCodeReddit](https://www.reddit.com/r/ClaudeCode/comments/1xofjpe/mcp%5Fvs%5Fapi%5Fvs%5Fcli%5Fi%5Fbuilt%5Fall%5F3%5Ffor%5Fagents%5Fheres/)
+
+If you are deciding between the two for your own setup, let me know:
+
+* **Where the agent runs** (local terminal, cloud backend, or web UI)
+* **Who uses it** (just you, an internal team, or external customers)
+
+I can recommend the cleanest architecture for your use case.
+
++12
+
+* [](https://circleci.com/blog/mcp-vs-cli/)  
+CircleCI  
+MCP vs. CLI for AI-native development - CircleCI  
+AI has put a new kind of scrutiny on developer tooling. When a developer works alongside an AI coding assistant, the tools that as...
+* [](https://www.youtube.com/watch?v=g9JIUM0MHgQ&t=155)  
+YouTube·IBM Technology  
+CLI vs MCP: How AI Agents Choose the Right Tool for the Job  
+CLI and MCP are two methods for AI agents to interact with the external environment. CLI involves an agent using command-line inte...  
+31s
+* [](https://www.youtube.com/watch?v=CnAxiSFQ9GY)  
+YouTube·Chrome for Developers  
+How to choose between DevTools CLI and MCP for coding ...  
+The main hidden trade-off between DevTools CLI and MCP is the upfront context window tax. When an MCP server is registered with ov...  
+5:45
+
+Show all
+
+## what do ppl say on mcp v custom instructions and tools per intergration
+
+what do ppl say on mcp v custom instructions and tools per intergration
+
+11:58 PM
+
+### what do ppl say on mcp v custom instructions and tools per intergration
+
+The debate over **MCP vs. custom instructions and per-integration tools** (often referred to as native function calling or bespoke API wrappers) centers on a core engineering trade-off:  \[Highlight start\] **cross-platform portability (MCP) versus tight, deterministic control (custom integrations)** \[Highlight end\] . [](https://www.prefect.io/resources/mcp-vs-function-calling)
+
+In developer communities, people generally view these not as mutually exclusive technologies—since MCP uses function calling under the hood—but as competing architectural patterns for how much control you want to hand over to a standard protocol versus keeping inside your own application code. [](https://scalar.com/learn/mcp/mcp-vs-function-calling)
+
+#### Quick Comparison
+
+| Dimension              | Custom Instructions & Tools (Per Integration)                                                           | MCP (Model Context Protocol)                                                                                 |
+| ---------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| **Maintenance**        | **High (M × N):** Requires rewriting tool schemas, glue code, and auth per app or LLM provider.         | **Low (M + N):** Build one MCP server and connect it to any MCP-compatible client or model.                  |
+| **Precision & Tuning** | **High:** You tailor system prompts, filter outputs, and pre-fill parameters specifically for your app. | **Generic:** Relies on third-party or standardized tool descriptions that may not fit your exact workflow.   |
+| **Latency & Overhead** | **Minimal:** Runs in-process with direct API calls and zero protocol translation overhead.              | **Higher:** Adds a client-server boundary (JSON-RPC over stdio/HTTP) and runtime discovery.                  |
+| **Control & Testing**  | **Deterministic:** Easier to validate parameters, handle errors, and unit-test end-to-end.              | **Dynamic:** Client discovers tools at runtime; updates to external servers can unexpectedly shift behavior. |
+
+#### Why Many Teams Stick With Custom Tools & Instructions
+
+* **Fine-Grained Control Over Context & Outputs.** On [r/mcp](https://www.reddit.com/r/mcp/comments/1nshviw/mcp%5Fvs%5Ftool%5Fcalls/), opinions are mixed on which approach is better for production, with several developers noting that custom tool calls are often more effective because you keep full control over parameter validation, error handling, pre-filling sensitive IDs, and trimming bulky API responses before they bloat the LLM's context window. [](https://www.reddit.com/r/mcp/comments/1nshviw/mcp%5Fvs%5Ftool%5Fcalls/)
+* **Tailored Prompt Engineering.** When building a single, dedicated AI product, engineers point out that writing custom instructions paired with bespoke tool schemas lets you optimize the exact wording and few-shot examples for a specific model—something generic, one-size-fits-all MCP servers rarely get right out of the box. [](https://thinkia.com/ai-decisions/mcp-vs-custom-api-integrations/)
+* **Simpler Architecture & Lower Latency.** As highlighted in engineering guides from [Thinkia](https://thinkia.com/ai-decisions/mcp-vs-custom-api-integrations/) and [Goran Stimac](https://goranstimac.com/blog/tool-use-patterns-ai-agents-2026-function-calling-vs-mcp-vs-custom-integrations/), spinning up separate server processes and managing stateful connections is overkill if you only have one application talking to three or four internal APIs. [](https://medium.com/data-science-collective/mcp-vs-function-calling-how-should-your-agent-communicate-with-the-outside-world-8a5e15ec89ac)
+
+#### Why Teams Choose MCP Instead
+
+* **Eliminating Duplicate Glue Code.** One point of agreement among users on [r/mcp](https://www.reddit.com/r/mcp/comments/1jphxuu/difference%5Fbetween%5Fmcp%5Fand%5Ftraditional%5Ftoolcall/) is that MCP's biggest win is decoupling the tool supplier from the tool consumer. If your organization uses Claude Desktop, Cursor, an internal Slack bot, and a custom web agent, writing custom instructions and tool wrappers for each client quickly becomes unmaintainable. [](https://www.reddit.com/r/mcp/comments/1jphxuu/difference%5Fbetween%5Fmcp%5Fand%5Ftraditional%5Ftoolcall/)
+* **Future-Proofing & Ecosystem Reach.** In a discussion on [Hacker News](https://news.ycombinator.com/item?id=44370905), developers point out that exposing capabilities as an MCP server lets you use those tools in your own app while simultaneously making your software plug-and-play for the broader ecosystem of AI clients without extra integration work. [](https://news.ycombinator.com/item?id=44370905)
+* **Centralized Governance at Scale.** When managing dozens of integrations across multiple teams, contributors on r/mcp recommend pairing MCP with an API gateway so security, rate limiting, and multi-tenant authentication are enforced in one place rather than scattered across individual prompt templates and custom scripts.
+
+#### The Emerging Middle Ground
+
+Many production teams now split the difference. According to [First AI Movers](https://radar.firstaimovers.com/mcp-vs-custom-api-integrations-2026), a common pattern is using **custom tools and tailored system prompts** for core, latency-sensitive, or complex workflows inside a primary product, while using **MCP** for long-tail integrations (like connecting a user's Google Drive, Notion, or Jira) and internal developer tooling. [](https://www.youtube.com/watch?v=goU9VIXA8II&t=147)
+
+Are you building a **single dedicated AI product** or supporting **multiple AI clients and internal tools**? Knowing your setup can help narrow down which pattern fits best.
+
++10
+
+* [](https://www.reddit.com/r/ClaudeAI/comments/1h0w1z6/model%5Fcontext%5Fprotocol%5Fvs%5Ffunction%5Fcalling%5Fwhats/)  
+Reddit·r/ClaudeAI  
+Model Context Protocol vs Function Calling: What's the Big ...  
+Function Calling vs. MCP: Function calling is typically seen as a simple request-response system for LLMs to interact with externa...
+* [](https://www.reddit.com/r/mcp/comments/1nshviw/mcp%5Fvs%5Ftool%5Fcalls/)  
+Reddit·r/mcp  
+MCP vs Tool Calls - Reddit  
+Tool Calls vs. MCP: Some users find that custom tool calls are more effective for production agents due to greater control over pa...
+* [](https://www.prefect.io/resources/mcp-vs-function-calling)  
+Prefect  
+MCP vs Function Calling: When to Use Which  
+MCP (Model Context Protocol): Separate server exposes tools via standardized protocol; clients discover tools at runtime; server h...
+
+Show all
+
+# what can you do w agent client protocol
+
+12:02 AM
+
+With the **Agent Client Protocol (ACP)**, you can  \[Highlight start\] connect any compatible AI coding agent to any supporting code editor or client application using a single open standard \[Highlight end\] . It acts like the Language Server Protocol (LSP) for AI agents, eliminating vendor lock-in and bespoke plugin development. [](https://agentclientprotocol.com/get-started/introduction)
+
+### Core Capabilities
+
+* **Mix and Match Editors and Agents.** You can run different coding agents—such as Claude Code, Gemini CLI, Codex, Cursor, or OpenCode—inside your preferred IDE like Zed, JetBrains IDEs, VS Code, or Neovim. You can even run multiple agents side-by-side in the same app for different tasks. [](https://www.jetbrains.com/acp/)
+* **Stream Live Reasoning and Plans.** Agents send real-time progress updates to your editor's UI. This includes execution plans, thought chunks, streamed text responses, and tool call statuses. [](https://www.philschmid.de/acp-overview)
+* **Manage Files and Terminals Safely.** Agents can read files (including unsaved editor buffers), propose code diffs, and run shell commands inside your workspace. For sensitive actions like deleting files or executing risky commands, the protocol pauses and asks for your explicit permission first. [](https://www.instagram.com/reel/De48CTVsT7o/?hl=en)
+* **Preserve Settings and MCP Tools.** Your editor passes its existing workspace context and Model Context Protocol (MCP) servers directly to the agent when a session starts. Your tool connections and provider logins follow you seamlessly regardless of which agent you switch to. [](https://www.calummurray.ca/blog/intro-to-acp)
+* **Run Local or Remote Agents.** You can launch local agents as background subprocesses over standard I/O (`stdio`), or connect to remote, cloud-hosted agents over HTTP and WebSockets. [](https://www.youtube.com/watch?v=YkNulwcc5jk&t=94)
+* **Build and Distribute Custom Agents.** Using official SDKs or frameworks like [LangChain Deep Agents](https://docs.langchain.com/oss/python/deepagents/acp), you can wrap your own custom AI agent in ACP. Once built, it automatically works in every ACP-compatible editor without needing custom extensions. [](https://docs.langchain.com/oss/python/deepagents/acp)
+
+### ACP vs. MCP
+
+While they work together, they handle opposite sides of an AI agent: [](https://memu.pro/blog/agent-client-protocol-cross-platform-memory)
+
+| Feature         | Agent Client Protocol (ACP)                                            | Model Context Protocol (MCP)                                          |
+| --------------- | ---------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| **Connects**    | Code editors / UIs to AI agents                                        | AI agents to external tools and data                                  |
+| **Primary Job** | Manages chat sessions, code diffs, terminal output, and user approvals | Gives agents access to databases, APIs, GitHub, and file utilities    |
+| **Direction**   | The editor sends user prompts and receives streamed UI updates         | The agent calls external server tools to fetch context or take action |
+
+Are you looking to **set up an existing agent** in your editor or **build your own custom ACP agent**? Let me know which IDE or framework you use, and I can walk you through the setup.
+
+* [](https://agentclientprotocol.com/get-started/introduction)  
+Agent Client Protocol  
+Agent Client Protocol: Introduction  
+The Agent Client Protocol (ACP) standardizes communication between code editors/IDEs and coding agents and is suitable for both lo...
+* [](https://www.jetbrains.com/acp/)  
+JetBrains  
+Agent Client Protocol (ACP): Use Any Coding Agent in Any IDE  
+ACP provides a shared communication protocol so editors and agents can interoperate without bespoke plugins, reducing overhead and...
+* [](https://www.youtube.com/watch?v=YkNulwcc5jk&t=94)  
+YouTube·AI Engineer  
+ACP: The Universal Remote Control for AI Agents  
+The Agent Client Protocol (ACP) addresses the problem of custom and bespoke interfaces to AI agent harnesses, which currently limi...  
+7m
+
+Show all
+
+# what can you do w an agent that supports agent client protocol
+
+12:04 AM
+
+### what can you do w an agent that supports agent client protocol
+
+With an agent that supports the **Agent Client Protocol (ACP)**, you can  \[Highlight start\] **plug and play the agent directly into any ACP-compatible code editor or IDE** without needing custom plugins or vendor lock-in \[Highlight end\] . Think of ACP as the Language Server Protocol (LSP) for AI coding assistants. [](https://agentclientprotocol.com/get-started/introduction)
+
+#### Core Capabilities
+
+* **Run in any compatible editor.** You can connect a single ACP agent—such as Claude Code, Gemini CLI, Codex CLI, or Junie—to editors like Zed, [JetBrains IDEs](https://www.jetbrains.com/acp/), Neovim, Emacs, or Obsidian. [](https://docs.devin.ai/desktop/acp)
+* **Read and edit local files interactively.** Rather than switching back and forth to a standalone terminal, the agent operates inside your workspace. On [Reddit](https://www.reddit.com/r/neovim/comments/1n1txun/support%5Ffor%5Fagent%5Fclient%5Fprotocol%5Fin/), users agree that this setup enables tight editor integration for sharing context and reviewing, approving, or rejecting code edits directly in your interface. [](https://www.youtube.com/watch?v=wXJl4IhIYVg&t=61)
+* **Execute terminal commands with permission controls.** An ACP agent can request access to run shell commands and tools within your working directory. The client editor intercepts these actions to show real-time progress updates and ask for your approval before sensitive operations run. [](https://www.calummurray.ca/blog/intro-to-acp)
+* **Share MCP servers and tools.** When starting a session, your editor automatically passes its working directory and any configured Model Context Protocol (MCP) servers to the agent. This lets the agent immediately use your existing external data sources and tools. [](https://ai-sdk.dev/providers/community-providers/acp)
+* **Manage concurrent or persistent sessions.** You can run multiple independent agent sessions at the same time or pause and resume previous tasks using session IDs. [](https://www.calummurray.ca/blog/intro-to-acp)
+* **Embed agents into custom apps.** Using tools like the [Vercel AI SDK ACP Provider](https://ai-sdk.dev/providers/community-providers/acp), developers can spawn and manage ACP agents programmatically inside web applications or Node.js services. [](https://ai-sdk.dev/providers/community-providers/acp)
+* **Connect locally or remotely.** Most ACP agents run as local subprocesses communicating over standard input/output (stdio), while cloud-hosted remote connections over HTTP or WebSockets are also supported as the standard evolves. [](https://www.youtube.com/watch?v=CfLVtHC3WmE)
+
+If you are looking to set this up or build with it, let me know:
+
+* Which **code editor or IDE** you use
+* Whether you are **configuring an existing agent** or **building a custom one**
+
+I can walk you through the exact setup steps or code examples.
+
++8
+
+* [](https://agentclientprotocol.com/get-started/introduction)  
+Agent Client Protocol  
+Agent Client Protocol: Introduction  
+The Agent Client Protocol (ACP) standardizes communication between code editors/IDEs and coding agents and is suitable for both lo...
+* [](https://www.youtube.com/watch?v=wXJl4IhIYVg&t=61)  
+YouTube·Chris Hay  
+Host your own agents in Zed with Agent Client Protocol  
+Agent Client Protocol (ACP) facilitates communication with external AI agents, allowing them to operate outside the editor's execu...  
+9m
+* [](https://docs.devin.ai/desktop/acp)  
+Devin Docs  
+Agent Client Protocol  
+Some popular ACP-compatible agents you can plug in include: \* Codex CLI — OpenAI's coding agent \* Claude Agent — Anthropic's codin...
+
+Show all
+
+## example
+
+example
+
+12:05 AM
+
+### example
+
+Here is a practical example of how **Agent Client Protocol (ACP)** works in action, using the **Zed** editor connected to the **Gemini CLI** agent.
+
+#### Step 1: Configure the Agent in Your Editor
+
+Because both Zed and Gemini CLI speak ACP, you don't need to install a proprietary extension. You simply register the agent's CLI command in your editor's `settings.json` file:
+
+json
+
+```
+{
+  "agent_servers": {
+    "Gemini CLI": {
+      "command": "gemini",
+      "args": ["--experimental-acp"]
+    }
+  }
+}
+
+```
+
+
+
+#### Step 2: Run an Interactive Task
+
+Suppose you open a project in Zed and ask the agent: _"Add input validation to `auth.py` and run the test suite."_
+
+Here is what happens over the ACP connection behind the scenes:
+
+1. **Context Handshake:** Zed launches `gemini --experimental-acp` as a background subprocess and passes it your current workspace path and any active Model Context Protocol (MCP) tools.
+2. **Code Inspection:** The agent sends an ACP request (`fs/read_text_file`) to read `auth.py` directly from your editor's workspace.
+3. **Interactive Diff Review:** The agent proposes changes using `fs/write_text_file`. Instead of blindly overwriting your file in the background, Zed intercepts the ACP message and renders a native inline diff in your editor so you can accept or reject the edits.
+4. **Controlled Terminal Execution:** To run the tests, the agent sends a `terminal/create` request for `pytest`. Zed pops up a permission prompt asking you to approve the command, then streams the live test output back to both you and the agent.
+
+#### Why This Matters
+
+If you decide tomorrow that you want to switch from Gemini CLI to **Claude Code**, or switch your editor from Zed to **Neovim** or **JetBrains**, the workflow stays identical—you just point the editor to the new agent's `--acp` command.
+
+If you'd like to try a specific setup, let me know:
+
+* Your **preferred editor** (Zed, Neovim, JetBrains, etc.)
+* The **agent you want to connect** (Claude Code, Gemini CLI, Codex, or a custom script)
+
+I can share the exact configuration snippet or SDK starter code for that pairing.
+
+## example of what's sent
+
+example of what's sent
+
+12:19 AM
+
+### example of what's sent
+
+Under the hood, Agent Client Protocol (ACP) communicates using **JSON-RPC 2.0 messages** over standard input/output (`stdio`), very similar to the Language Server Protocol (LSP).
+
+Here is an example of the actual JSON payloads sent back and forth between the **Client (Editor)** and the **Agent** during a typical task.
+
+#### 1\. Initialization Handshake
+
+When the editor spawns the agent, it sends an `initialize` request to negotiate protocol versions and declare what features the editor supports (such as file system access or terminal execution).
+
+**Client → Agent:**
+
+json
+
+```
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "initialize",
+  "params": {
+    "protocolVersion": 1,
+    "clientCapabilities": {
+      "fs": {
+        "readTextFile": true,
+        "writeTextFile": true
+      },
+      "terminal": true
+    },
+    "clientInfo": {
+      "name": "zed",
+      "version": "0.180.0"
+    }
+  }
+}
+
+```
+
+
+
+#### 2\. Sending a Prompt
+
+Once a session is created, the editor forwards the user's message along with any attached context (like open files or highlighted code) via `session/prompt`.
+
+**Client → Agent:**
+
+json
+
+```
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "method": "session/prompt",
+  "params": {
+    "sessionId": "sess_abc123",
+    "prompt": [
+      {
+        "type": "text",
+        "text": "Fix the bug in auth.py"
+      }
+    ]
+  }
+}
+
+```
+
+
+
+#### 3\. Streaming Updates & Tool Calls
+
+As the agent thinks and works, it streams notifications (`session/update`) back to the editor so the UI can display live progress without waiting for a response.
+
+**Agent → Client:**
+
+json
+
+```
+{
+  "jsonrpc": "2.0",
+  "method": "session/update",
+  "params": {
+    "sessionId": "sess_abc123",
+    "update": {
+      "sessionUpdate": "agent_message_chunk",
+      "content": {
+        "type": "text",
+        "text": "Let me inspect auth.py first..."
+      }
+    }
+  }
+}
+
+```
+
+
+
+#### 4\. Requesting Permission & Editing Files
+
+Instead of touching the disk directly, the agent asks the editor to perform file operations or request user approval. Here, the agent asks the editor to read `auth.py`:
+
+**Agent → Client:**
+
+json
+
+```
+{
+  "jsonrpc": "2.0",
+  "id": 10,
+  "method": "fs/read_text_file",
+  "params": {
+    "sessionId": "sess_abc123",
+    "path": "/Users/dev/project/auth.py"
+  }
+}
+
+```
+
+
+
+**Client → Agent (Response):**
+
+json
+
+```
+{
+  "jsonrpc": "2.0",
+  "id": 10,
+  "result": {
+    "content": "def login(user):\n    return True\n"
+  }
+}
+
+```
+
+
+
+When the agent is ready to apply a fix, it sends a `fs/write_text_file` request (or `session/request_permission` first), allowing the editor to intercept the new content and show you an interactive diff before saving.
+
+If you are building an ACP integration or debugging traffic, let me know:
+
+* Which **programming language** you're working in (TypeScript, Python, Rust, etc.)
+* Whether you are building a **client** or an **agent**
+
+I can share a minimal working code snippet using the official ACP SDK.
+
+## can the acp provider do things directly wo playing nice
+
+can the acp provider do things directly wo playing nice
+
+12:20 AM
+
+### can the acp provider do things directly wo playing nice
+
+ \[Highlight start\] **Yes, a local ACP agent runs as an OS subprocess with your user account's permissions, meaning it technically can bypass ACP's polite JSON-RPC requests and access your files or shell directly.** \[Highlight end\]  ACP is a **communication contract, not a security sandbox**.
+
+#### Why It Can Bypass the Protocol
+
+* **Inherited OS privileges:** When an editor spawns a local agent over `stdio`, the agent runs as a standard process on your machine with full access to everything your user account can read, modify, or execute.
+* **Protocol vs. enforcement:** Sending `fs/write_text_file` or `session/request_permission` over ACP is simply the cooperative way for the agent to give your editor UI visibility and ask for approval. Nothing at the protocol layer stops a malicious or poorly coded agent from calling Python's `open()` or Node's `fs.writeFileSync()` directly behind the scenes.
+
+#### How to Sandbox an ACP Agent
+
+If you are running untrusted agents or want strict isolation, you have to enforce boundaries outside of ACP itself:
+
+* **Containers & VMs:** Run the agent inside a Docker container, devcontainer, or lightweight microVM with only your specific project folder mounted.
+* **OS-level sandboxing:** Wrap the agent's launch command in an OS sandbox tool (such as `sandbox-exec` on macOS, `bubblewrap` / `firejail` on Linux, or Windows Sandbox) to restrict network and filesystem access.
+* **Remote execution:** Connect to a cloud-hosted ACP agent over HTTP/WebSockets so the agent process never runs on your local machine—forcing it to interact with your workspace exclusively through the client's ACP methods.
+
+If you want to lock down an ACP setup, let me know:
+
+* Your **operating system** (macOS, Linux, or Windows)
+* Which **editor or client** you are using
+
+I can show you how to wrap the agent's launch command in a lightweight sandbox.
+
+## what cant you do via acp as a client
+
+what cant you do via acp as a client
+
+12:21 AM
+
+### what cant you do via acp as a client
+
+As an **ACP client** (such as a code editor or custom UI),  \[Highlight start\] **you cannot reach inside the agent to inspect or control its internal reasoning, tool executions, or model selection** \[Highlight end\] —you only drive the conversation session and respond to the requests the agent chooses to send you.
+
+Because the [Agent Client Protocol](https://agentclientprotocol.com/protocol/v1/overview) treats the agent as an opaque "black box" process, a client has several hard boundaries:
+
+#### 1\. Security & Enforcement Limits
+
+* **Enforce permissions on direct actions.** As noted in the [ACP Security Considerations](https://agentclientprotocol.com/protocol/v2/security), permission handling is cooperative. A client can reject a `session/request_permission` prompt, but it cannot stop a local agent process from using its own built-in tools or OS permissions to read files, run shell commands, or make network calls behind the protocol's back.
+* **Verify agent identity or trustworthiness.** The `clientInfo` and `agentInfo` fields exchanged during `initialize` are self-reported strings, so a client cannot cryptographically verify what code or LLM is running behind the subprocess over ACP alone.
+
+#### 2\. Model & Prompt Control Limits
+
+* **Pick or swap the underlying LLM.** ACP has no standard method for a client to select which AI model (e.g., Claude vs. Gemini vs. a local model) the agent uses, or adjust parameters like temperature and token limits—unless the agent explicitly exposes them via generic `session/set_config_option` or `session/set_mode` hooks.
+* **Intercept or edit the agent's internal system prompt.** The client sends user prompts (`session/prompt`) and working directory context, while the agent completely owns its system instructions, context window management, and prompt engineering.
+* **Inject custom client-side tools directly.** Unlike the OpenAI or Vercel AI SDKs where a client passes a list of executable functions to an LLM, ACP does not let a client register arbitrary callback tools for the agent to call. External tools must be packaged as standalone Model Context Protocol (MCP) servers and passed as server configs when creating a session.
+
+#### 3\. Execution & Architecture Limits
+
+* **Step into or pause the agent's internal loop.** Once you send `session/prompt`, the agent runs autonomously until it finishes or asks for permission. A client can stream progress updates (`session/update`) or abort the entire turn (`session/cancel`), but it cannot step through tool calls one by one or rewind the agent's internal state mid-turn.
+* **Orchestrate multi-agent workflows natively.** ACP is strictly a one-to-one interactive session between one client and one agent subprocess. A client cannot use ACP to coordinate peer-to-peer delegation between multiple independent agents (which is what protocols like Agent2Agent / A2A are built for).
+* **Control the agent's internal memory or storage.** While a client can ask an agent to `session/load` or `session/delete` a session ID (if the agent supports those capabilities), the client cannot read, export, or modify how the agent stores its conversation history or embeddings on disk.
+
+If you are evaluating ACP for a project, let me know:
+
+* What **kind of client** you are building (an editor plugin, a web UI, or an automated harness)
+* Which **missing capability** is most critical for your use case
+
+I can suggest workarounds—such as combining ACP with MCP or custom session config options.
+
+## can you do things you would take for granted for any agents of you own via general acp, like model agnostic, edit, branch, system prompt, special tools instructions extensions etc.
+
+can you do things you would take for granted for any agents of you own via general acp, like model agnostic, edit, branch, system prompt, special tools instructions extensions etc.
+
+12:23 AM
+
+### can you do things you would take for granted for any agents of you own via general acp, like model agnostic, edit, branch, system prompt, special tools instructions extensions etc.
+
+ \[Highlight start\] **No—you cannot do those things out of the box via general ACP.** \[Highlight end\]  Because ACP abstracts away the agent's inner loop to make different agents interchangeable in an editor, you give up fine-grained control over the LLM harness.
+
+Here is how those specific features break down in standard ACP:
+
+| Capability You Take for Granted       | Supported in General ACP? | How It Actually Works (or Workaround)                                                                                                                                                                                           |
+| ------------------------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Model-agnostic swapping**           | **No**                    | ACP has no standard setModel method. You can switch _agents_ (e.g., Gemini CLI to Claude Code), or an agent can optionally expose a model dropdown via generic session/set\_config\_option keys.                                |
+| **System prompt / instructions**      | **No**                    | The agent completely owns its system prompt. Your only workaround is prepending instructions to your first user message (session/prompt) or relying on project files like AGENTS.md / CLAUDE.md that the agent happens to read. |
+| **Editing past messages**             | **No**                    | There is no session/edit or message-history mutation API. You cannot rewrite an earlier turn in the agent's context window.                                                                                                     |
+| **Branching / forking conversations** | **Partial / Unstable**    | Standard ACP only supports linear session/new and session/load. Forking (session/fork) has been proposed as an unstable extension, meaning most agents do not support it and you cannot reliably duplicate state mid-thread.    |
+| **Special tools & extensions**        | **Only via MCP**          | You cannot pass inline function callbacks or custom agent hooks over ACP. Any custom tools must be packaged as standalone **Model Context Protocol (MCP)** servers and passed in session/new.                                   |
+
+#### The Core Trade-off
+
+* **Build your own harness (e.g., Vercel AI SDK, LangGraph, raw LLM APIs):** You own the message array, system prompt, model routing, conversation branching, and custom tools—but you have to build and maintain the entire coding agent loop yourself.
+* **Use ACP:** You get battle-tested, turnkey agents (like Claude Code or Gemini CLI) with zero maintenance, at the cost of treating them like opaque black boxes.
+
+If you want the best of both worlds, let me know:
+
+* Whether you are **building an IDE/UI** or **orchestrating agents in a backend**
+* Which **specific feature** (branching, custom system prompts, or model switching) is a hard requirement
+
+I can show you how to wrap a custom agent harness in ACP or combine ACP with MCP to cover the gaps.
+
+## is it leaky abstraction
+
+is it leaky abstraction
+
+12:24 AM
+
+### is it leaky abstraction
+
+ \[Highlight start\] **Yes, ACP is a leaky abstraction—by design.** \[Highlight end\]  Because it wraps complex, opinionated CLI agents as opaque black boxes rather than standardizing the underlying LLM harness, the quirks of each specific agent inevitably bleed through to the user experience.
+
+#### Where the Abstraction Leaks
+
+* **Config files and prompt conventions:** Because ACP has no standard system prompt or rule injection API, you still have to maintain agent-specific files in your repository (`CLAUDE.md`, `GEMINI.md`, `.cursorrules`, or `AGENTS.md`) for each agent to behave properly.
+* **Authentication and billing:** ACP does not handle API keys or logins. You still have to authenticate each CLI tool separately in your terminal (`claude login`, `gemini` OAuth, environment variables) before your editor can talk to it.
+* **Inconsistent capability support:** Many features—like `session/load`, `session/set_mode`, or `session/set_config_option` (used for model pickers or thinking budgets)—are optional. Switching from one ACP agent to another often means UI buttons vanish or behave differently.
+* **Hidden tool loops and context limits:** Each agent manages context compaction, sub-agents, and built-in tools differently. One agent might use the editor's `fs/read_text_file` (giving you clean UI diffs), while another shells out to `sed` or `python` via `terminal/create` (bypassing your editor's diff viewer entirely).
+* **Custom `_meta` escape hatches:** Because the base spec is minimal, agents and editors rely on vendor-specific `_meta` fields in JSON-RPC payloads to pass custom UI metadata or features, reintroducing tight coupling between specific editors and agents.
+
+#### Why It's Still Useful
+
+Like the **Language Server Protocol (LSP)** before it, ACP trades deep control for ecosystem reach. LSP doesn't standardize how TypeScript and Rust compilers work internally—and you still need a `tsconfig.json` alongside a `Cargo.toml`—but it spares editors from writing bespoke UI integrations for every single language. ACP makes that exact same compromise for AI coding agents.
+
+If you are deciding whether to adopt ACP or build your own layer, let me know:
+
+* Whether you are **integrating agents into a product** or **choosing a personal workflow**
+* Which **specific agents** you need to support
+
+I can help you weigh whether ACP fits or if a unified SDK (like OpenRouter + Vercel AI SDK) makes more sense.
+
+## does it leak too much unlike lsp where pl are conceptually similar and you just need a few genernal ide tools
+
+does it leak too much unlike lsp where pl are conceptually similar and you just need a few genernal ide tools
+
+12:26 AM
+
+### does it leak too much unlike lsp where pl are conceptually similar and you just need a few genernal ide tools
+
+**That is the central criticism of ACP—and a valid one.** Unlike programming languages, which converged over decades around deterministic compiler primitives (ASTs, symbols, diagnostics), AI agents are opinionated, non-deterministic workflows where the product's actual value lives _inside_ the loop that ACP hides.
+
+#### Why ACP Leaks More Than LSP
+
+| Dimension                 | Language Server Protocol (LSP)                                                                                                            | Agent Client Protocol (ACP)                                                                                                                    |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Underlying Domain**     | **Convergent & deterministic.** Go to definition, hover types, and diagnostics mean the exact same thing in Rust, Python, and TypeScript. | **Divergent & opinionated.** Agents compete on proprietary harnesses—how they compact context, plan, spawn sub-agents, and edit files.         |
+| **Where the Value Lives** | **In the shared primitives.** The editor UI rendering squiggly lines and autocomplete popups _is_ the user experience.                    | **Inside the black box.** Prompt engineering, memory, and tool-use loops are the secret sauce, and ACP locks the client out of them.           |
+| **Protocol vs. Reality**  | **1-to-1 fit.** A language server has no reason to bypass LSP to draw text on your screen.                                                | **Friction & bypasses.** Agents already have built-in bash/file tools and routinely bypass editor fs/\* hooks via shell commands.              |
+| **Evolution Speed**       | **Slow & stable.** Compiler features change over years.                                                                                   | **Moving target.** Thinking tokens, background sub-agents, artifacts, and computer use emerge every few months, forcing constant \_meta hacks. |
+
+#### When It Leaks "Too Much" vs. When It Works
+
+* **It leaks too much if you are building an AI-native product.** If your product's differentiator is custom UX—like conversation branching, time-travel checkpoints, custom system prompts, or multi-model routing—ACP will constantly fight you. You end up building custom bridges anyway, at which point owning the agent loop (via an SDK or raw LLM APIs) is cleaner.
+* **It works well enough as a "BYO-Agent" compatibility layer.** For traditional IDEs (Zed, JetBrains, Neovim) whose core product is text editing rather than AI orchestration, ACP solves an M × N integration problem. Users who already pay for Claude Code or Gemini CLI get a decent native UI panel without the editor team having to maintain 10 separate proprietary extensions.
+
+In short, LSP succeeded because compilers wanted to be commodities; ACP struggles because **coding agents are still competing to be the platform themselves.**
+
+If you are architecting an editor, UI, or agent platform right now, let me know:
+
+* Your **core product goal** (e.g., building a custom AI coding UX vs. adding plugin support to an existing tool)
+* Which **models or agents** you plan to target
+
+I can suggest cleaner architectural patterns—such as MCP-first designs or headless SDKs—that avoid ACP's bottlenecks.
+
+# what do ppl say on acp agent client protocol or ag ui
+
+12:07 AM
+
+### what do ppl say on acp agent client protocol or ag ui
+
+Developers view both protocols as crucial infrastructure for standardizing how AI agents connect to user interfaces, though they are built for entirely different environments. The consensus is that  \[Highlight start\] **Agent Client Protocol (ACP)** is the "LSP for coding agents" inside local code editors, while **AG-UI (Agent–User Interaction Protocol)** is the standard for streaming rich, interactive agent experiences to web and mobile apps \[Highlight end\] . [](https://agentclientprotocol.com/get-started/introduction)
+
+#### What Developers Say About ACP (Agent Client Protocol)
+
+Created by Zed Industries and quickly backed by JetBrains, [ACP](https://agentclientprotocol.com/get-started/introduction) is widely praised for ending the "browser war" of fragmented, custom IDE plugins. [](https://www.youtube.com/watch?v=n11pDnBXPgk)
+
+* **The "LSP for AI".** Developers frequently compare ACP to the Language Server Protocol. Just as LSP let any language server work in any editor, ACP decouples coding agents (like Gemini CLI, Goose, and Grok Build) from editors (like Zed, JetBrains, and Neovim). [](https://www.youtube.com/watch?v=Hvu5KDTb6JE&t=161)
+* **Local-first and Editor-centric.** People highlight that ACP treats the editor as "home" and runs the agent as a local child process over `stdio` using JSON-RPC. This allows native IDE features like live code diffs, multi-buffer reviews, and terminal permission prompts to work out of the box without context switching. [](https://www.youtube.com/watch?v=Tn1Rl-qBOr4&vl=en)
+* **Protocol Fatigue & Naming Confusion.** A common complaint in developer forums is confusion over acronyms. People often mix up Zed's _Agent Client Protocol_ with IBM/Linux Foundation's _Agent Communication Protocol_ (which also uses the acronym ACP and focuses on HTTP agent-to-agent messaging). Some also note that major players like Claude Code and Codex still rely heavily on their own programmatic or headless paths alongside ACP. [](https://www.linkedin.com/posts/nikkisiapno%5Fmcp-vs-a2a-vs-acp-vs-anp-vs-ag-ui-vs-ap2-activity-7467826250397417472-fwSS)
+
+#### What Developers Say About AG-UI (Agent–User Interaction Protocol)
+
+Backed by CopilotKit and integrated into frameworks like Microsoft's Agent Framework, AG-UI is seen as the missing frontend link for general-purpose AI applications. [](https://learn.microsoft.com/en-us/agent-framework/integrations/by-component/ui/ag-ui/)
+
+* **Solves the "Chatbox Limitation".** Builders point out that traditional request-response APIs fail when agents need to show progress, stream partial state, or render interactive widgets. AG-UI standardizes real-time, bi-directional event streaming between a backend agent and a user-facing web or mobile frontend. [](https://safeguard.sh/resources/blog/agent-client-protocol-explained-how-editors-talk-to-coding-agents-and-how-to-secure-it)
+* **Rich State Synchronization.** Developers appreciate how AG-UI handles messy, multi-step workflows. Instead of just dumping text, it synchronizes shared state so the UI can dynamically render forms, approval buttons, and live execution steps. [](https://www.appther.com/blogs/ai-agent-protocols-mcp-a2a-acp-anp)
+
+#### ACP vs. AG-UI at a Glance
+
+| Feature                 | Agent Client Protocol (ACP)                                               | Agent–User Interaction Protocol (AG-UI)                                         |
+| ----------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| **Primary Environment** | Local code editors and IDEs (Zed, JetBrains, Neovim)                      | Web applications, mobile apps, and custom frontends                             |
+| **Architecture**        | Editor spawns agent as a local subprocess (stdio / JSON-RPC)              | Server-side agent streams events to a client UI (HTTP / SSE / WebSockets)       |
+| **Core Strengths**      | Native file diffs, terminal access, and local permission prompts          | Real-time state sync, generative UI components, and interactive web widgets     |
+| **Relationship to MCP** | Complementary (MCP connects agent to tools; ACP connects agent to editor) | Complementary (MCP connects agent to tools; AG-UI connects agent to the app UI) |
+
+#### The Overall Consensus
+
+Developers generally view **MCP, A2A, ACP, and AG-UI** as a cohesive, layered stack rather than competing standards: [](https://blog.marcnuri.com/agent-client-protocol-acp-introduction)
+
+* **MCP** connects agents to data and tools.
+* **A2A** connects agents to other agents.
+* **ACP** connects coding agents to local IDEs.
+* **AG-UI** connects backend agents to end-user web applications. [](https://www.youtube.com/watch?v=Hvu5KDTb6JE&t=161)
+
+Are you looking to **integrate** one of these into a project, or just trying to keep up with the **AI protocol landscape**? Let me know what you're building and I can point you to the right SDKs or starter templates.
+
++9
+
+* [](https://www.youtube.com/watch?v=n11pDnBXPgk)  
+YouTube·JetBrains  
+What Is the Agent Client Protocol – and Why JetBrains and Zed ...  
+was an effort by Zed and Jet Brains. ACP stands for agent client protocol. ACP is all about allowing agents to talk to some form o...  
+24:49
+* [](https://www.youtube.com/watch?v=Hvu5KDTb6JE&t=161)  
+YouTube·goose OSS  
+Intro to Agent Client Protocol (ACP) | Vibe Code with goose  
+Developed by Zed Industries, ACP allows any editor that supports it to communicate with any agent that also supports it, regardles...  
+10m
+* [](https://agentclientprotocol.com/get-started/introduction)  
+Agent Client Protocol  
+Introduction - Agent Client Protocol  
+Standardizes communication between code editors/IDEs and coding agents in local and remote scenarios, similar to Language Server P...
+
+Show all
+
+## agui creator background
+
+agui creator background
+
+12:07 AM
+
+### agui creator background
+
+The **AG-UI (Agent–User Interaction) Protocol** was created by  \[Highlight start\] **[CopilotKit](https://www.copilotkit.ai/ag-ui)**, a developer infrastructure company co-founded in late 2023 by brothers **Atai Barkai (CEO)** and **Uli Barkai** \[Highlight end\] . [](https://www.copilotkit.ai/ag-ui)
+
+#### Origin of the Protocol
+
+* **Born from internal necessity.** CopilotKit originally built the protocol internally as a standardized plumbing layer so its React and frontend UI components could talk cleanly to different backend agent frameworks (like LangGraph, CrewAI, and Pydantic AI). [](https://docs.copilotkit.ai/agentic-protocols/ag-ui)
+* **Open-sourced for ecosystem adoption.** Recognizing that developers were writing fragile, bespoke WebSockets and custom JSON parsers for every agent framework, CopilotKit open-sourced the specification as AG-UI. It quickly gained widespread adoption across the industry, including official integrations from Microsoft (Agent Framework), Google (Agent Development Kit), Oracle, and Anthropic. [](https://www.copilotkit.ai/blog/ag-ui-protocol-explained-in-60-seconds)
+* **Company momentum.** Based in the Seattle/Bellevue area, CopilotKit raised a **$27 million Series A** (co-led by Glilot Capital, NFX, and SignalFire) to expand its open-source agentic frontend stack and enterprise cloud offerings. [](https://www.linkedin.com/in/atai-barkai)
+
+#### Founder Background: Atai Barkai
+
+[Atai Barkai](https://www.linkedin.com/in/atai-barkai) has a background centered on developer SDKs, mobile infrastructure, and underlying software layers rather than pure consumer apps: 
+
+* **Education.** He earned both a Bachelor's and a Master's degree in Physics from the University of Pennsylvania, where he researched quantum mechanics foundations and worked with the High Energy Physics Group.
+* **Big Tech & Infrastructure.** Prior to CopilotKit, he led a cross-team effort at **Meta** building a core media SDK used across Facebook and Instagram. Before Meta, he was a Senior iOS Engineer at **Doximity**, where he led internal SDKs and the company's Dialer app.
+* **The Pivot to CopilotKit.** In 2021, Barkai founded **tawkitAI** and built _PodcastGPT_, an AI podcast assistant and LLM media database. While building the interactive UI for that product, he realized that connecting LLMs to real-time application interfaces was a massive, unsolved infrastructure problem—prompting the pivot into CopilotKit in October 2023. [](https://www.youtube.com/watch?v=jjcTNKQSnLs)
+
+Are you interested in exploring how **AG-UI compares to MCP**, or looking into **how to implement AG-UI** with a specific backend framework like LangGraph or Microsoft Agent Framework? Let me know and I can walk you through the architecture.
+
++11
+
+* [](https://docs.copilotkit.ai/agentic-protocols/ag-ui)  
+CopilotKit Docs  
+AG-UI  
+AG-UI: Open event protocol, open standard developed by CopilotKit team and agent framework partners; connects agents from framewor...
+* [](https://www.copilotkit.ai/blog/ag-ui-protocol-explained-in-60-seconds)  
+CopilotKit  
+AG-UI Protocol Explained in 60 seconds | Blog - CopilotKit  
+AG-UI (Agent-User Interaction Protocol) standardizes how agents communicate with user-facing applications. Put simply, it's a fram...
+* [](https://learn.microsoft.com/en-us/agent-framework/integrations/by-component/ui/ag-ui/)  
+Microsoft Learn  
+AG-UI Integration with Agent Framework - Microsoft Learn  
+Build agent UIs with CopilotKit. CopilotKit provides rich UI components for building agent user interfaces based on the standard A...
+
+Show all
+
+## popularity of mcp acp a2a agui
+
+popularity of mcp acp a2a agui
+
+12:08 AM
+
+### popularity of mcp acp a2a agui
+
+ \[Highlight start\] **MCP is by far the most dominant and widely adopted protocol**, followed by **A2A** for enterprise multi-agent orchestration, while **AG-UI** and **ACP** hold strong, specialized adoption in frontend apps and code editors respectively \[Highlight end\] .
+
+Because these four protocols solve different parts of the stack, their popularity reflects how broadly each layer is needed across the AI industry.
+
+#### 1\. Model Context Protocol (MCP) — Universal Standard
+
+* **Adoption Level:** Dominant / De facto industry standard. [](https://dev.to/alex%5Faslam/a2a-vs-mcp-vs-acp-the-protocol-war-thats-costing-your-team-months-of-rework-38ga)
+* **Scale & Metrics:** MCP has seen explosive growth, reaching **97 million monthly SDK downloads** by early 2026, with its official reference servers repository surpassing **92,000 GitHub stars** and thousands of community-built connectors. [](https://github.com/modelcontextprotocol)
+* **Why it leads:** Almost every AI agent needs access to external data, APIs, or local files. Backed by Anthropic and adopted across OpenAI, Google, Microsoft, and major developer tools, MCP is treated as the baseline plumbing for any agentic system. [](https://medium.com/@martia%5Fes/the-rise-of-agent-ecosystems-mcp-a2a-and-ag-ui-05c9614a151b)
+
+#### 2\. Agent2Agent Protocol (A2A) — Enterprise Standard
+
+* **Adoption Level:** High in enterprise & multi-agent systems. [](https://www.mindstudio.ai/blog/mcp-vs-a2a-vs-agui-agent-protocols-compared)
+* **Scale & Metrics:** Originally introduced by Google and later moved under the Linux Foundation's Agentic AI Foundation alongside MCP, A2A reached its stable **v1.0 release in 2026** with support from over **150 enterprise organizations** (including Microsoft, AWS, and Salesforce) and **26,000+ GitHub stars** on its core specification. [](https://www.getmaxim.ai/articles/agent-communication-protocols/)
+* **Ecosystem Consolidation:** Notably, IBM's competing _Agent Communication Protocol_ (the _other_ ACP) merged into A2A in August 2025, cementing A2A as the clear winner for cross-vendor agent-to-agent delegation.
+
+#### 3\. AG-UI (Agent–User Interaction Protocol) — Fast-Growing Frontend Standard
+
+* **Adoption Level:** Rapidly growing in full-stack AI app development.
+* **Scale & Metrics:** While newer and smaller in raw download volume than MCP, AG-UI has become the primary standard for streaming agent state to web and mobile UIs. It has secured native integrations across major orchestration frameworks—including **Microsoft Agent Framework**, **Google ADK**, **LangGraph**, **CrewAI**, and **Pydantic AI**.
+* **Why it's growing:** Developers building user-facing products (beyond basic terminal scripts) run into the limits of plain text chat and adopt AG-UI to handle generative UI widgets and human-in-the-loop approvals.
+
+#### 4\. Agent Client Protocol (ACP) — Niche / IDE-Specific Standard
+
+* **Adoption Level:** High within AI code editors, niche elsewhere.
+* **Scale & Metrics:** Created by Zed and backed by JetBrains, Zed's ACP is the standard specifically for local IDE-to-agent communication (used by tools like Gemini CLI, Goose, and Neovim plugins).
+* **Why it stays focused:** Because ACP relies on local child processes (`stdio`) designed for code diffs and terminal permissions, its popularity is tightly bound to developer environments rather than general web apps or cloud backends.
+
+#### Summary Comparison
+
+| Protocol  | Primary Layer          | Maturity & Adoption                                | Key Backers / Ecosystem                                |
+| --------- | ---------------------- | -------------------------------------------------- | ------------------------------------------------------ |
+| **MCP**   | Agent ↔↔⁠ Tools & Data | **Massive** (90k+ stars, \~100M monthly downloads) | Anthropic, OpenAI, Google, Microsoft, Linux Foundation |
+| **A2A**   | Agent ↔↔⁠ Agent        | **High / Enterprise** (26k+ stars, 150+ orgs)      | Google, Microsoft, AWS, IBM, Linux Foundation          |
+| **AG-UI** | Agent ↔↔⁠ Web/App UI   | **Growing** (Leading frontend event spec)          | CopilotKit, Microsoft, Google ADK, LangGraph           |
+| **ACP**   | Coding Agent ↔↔⁠ IDE   | **Focused** (Standard for local editors)           | Zed Industries, JetBrains, Neovim ecosystem            |
+
+Are you trying to decide **which protocols to adopt for a new architecture**, or looking for **specific SDKs and starter repos** for one of these? Let me know your stack and I can map out how they fit together.
+
++5
+
+* [](https://dev.to/alex%5Faslam/a2a-vs-mcp-vs-acp-the-protocol-war-thats-costing-your-team-months-of-rework-38ga)  
+DEV Community  
+A2A vs. MCP vs. ACP: the protocol war that's costing your ...  
+Model Context Protocol (MCP) is the vertical integration layer. It standardizes how a single agent reaches down into the world: ca...
+* [](https://www.getmaxim.ai/articles/agent-communication-protocols/)  
+Bifrost by Maxim AI  
+Agent Communication Protocols Compared: A2A, MCP and ACP  
+IBM's Agent Communication Protocol (ACP) merged into A2A under the Linux Foundation in August 2025, so new agent-to-agent work sho...
+* [](https://www.mindstudio.ai/blog/mcp-vs-a2a-vs-agui-agent-protocols-compared)  
+MindStudio  
+MCP vs A2A vs AGUI: The Three Core Agent Protocols ...  
+MCP is the most mature, with broad adoption across major AI tools and a large ecosystem of community servers. A2A was released mor...
+
+Show all
+
+## a2a creator background
+
+a2a creator background
+
+12:09 AM
+
+### a2a creator background
+
+The **Agent2Agent (A2A) Protocol** was created by  \[Highlight start\] **Google Cloud** \[Highlight end\]  and introduced in **April 2025** alongside more than 50 enterprise technology partners. [](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/)
+
+Unlike protocols that originated from single startups or editor teams, A2A was built as a large-scale enterprise infrastructure standard. [](https://www.zscaler.com/zpedia/agent2agent-protocol-a2a)
+
+#### Origin & Engineering Background
+
+* **Born from Enterprise Scale.** Google designed A2A based on its internal experience scaling multi-agent systems and addressing bottlenecks faced by large enterprise customers. As companies deployed specialized agents across different departments (HR, IT, sales, procurement), they ran into an O(N²) custom integration problem where agents built on different vendor platforms couldn't coordinate without brittle glue code. [](https://discuss.google.dev/t/understanding-a2a-the-protocol-for-agent-collaboration/189103?gl=us)
+* **Executive & Technical Leadership.** The initiative was championed on the Google Cloud side by **Rao Surapaneni** (VP & GM of Business Application Platform at Google Cloud), alongside Google's AI engineering and Developer Relations teams (with key specification and ecosystem contributions from engineers such as Ivan Nardini and Lakshmi Harikumar). [](https://www.youtube.com/watch?v=Fbr%5FSolax1w&vl=en)
+* **Designed for "Opacity".** Drawing from Google's background in cloud microservices and distributed networking, the creators intentionally modeled A2A on familiar web standards (**HTTP, JSON-RPC 2.0, and Server-Sent Events**). A core design philosophy from its authors was _agent opacity_—allowing two agents to discover each other's skills via an "Agent Card" and delegate tasks without exposing their proprietary prompts, internal memory, or underlying tools. [](https://a2a-protocol.org/latest/specification/)
+
+#### Ecosystem Evolution & Governance
+
+* **Launch Coalition.** Rather than releasing A2A as a proprietary Google feature, Google co-launched it with over 50 major enterprise software and consulting partners—including **Salesforce, SAP, ServiceNow, Workday, Atlassian, LangChain, Accenture, and Deloitte**—to ensure cross-vendor buy-in from day one. [](https://community.sap.com/t5/technology-blog-posts-by-members/beyond-the-chat-box-how-agent-to-agent-protocol-a2a-rewires-enterprise-ai/ba-p/14462346)
+* **Move to the Linux Foundation.** To guarantee vendor neutrality, Google donated A2A to the **Linux Foundation** (under the Agentic AI Foundation, which also governs Anthropic's MCP). Shortly after, IBM merged its competing _Agent Communication Protocol_ into A2A, consolidating the industry around Google's original specification. [](https://mastra.ai/blog/what-is-agent-to-agent-protocol)
+
+Would you like to look into the **creators behind MCP or Zed's ACP** next, or explore **how A2A's Agent Cards and task lifecycle work** under the hood?
+
++6
+
+* [](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/)  
+Google for Developers Blog  
+Announcing the Agent2Agent Protocol (A2A)  
+A2A is an open protocol … we designed the A2A protocol to address the challenges we identified in deploying large-scale, multi-age...
+* [](https://www.youtube.com/watch?v=Fbr%5FSolax1w&vl=en)  
+YouTube·Google Cloud Tech  
+Introduction to Agent2Agent (A2A) Protocol  
+A2A protocol created by Google special thanks to Ivan Nardini and Lashmi Harikumar for their contributions in putting this.  
+8:00
+* [](https://a2a-protocol.org/latest/specification/)  
+A2A Protocol  
+Agent2Agent (A2A) Protocol Specification  
+The Agent2Agent (A2A) Protocol is an open standard designed to facilitate communication and interoperability between independent, ...
+
+Show all
+
 
