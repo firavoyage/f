@@ -2,32 +2,42 @@
 
 #define repeat(n) for (int _ = 0; _ < n; _ += 1)
 // closed interval
+
 #define each(i, a, b) for (int i = (a); i <= (b); i += 1)
+
 #define reveach(i, a, b) for (int i = (a); i >= (b); i -= 1)
 
 #define int long long
+
 #define float double
+
 #define seq(a, n) vector<int> a(n + 5)
+
 #define dict unordered_map<int, int>
 
 #define readint(...) \
   int __VA_ARGS__;   \
   read(__VA_ARGS__);
+
 #define readfloat(...) \
   float __VA_ARGS__;   \
   read(__VA_ARGS__);
+
 #define readstr(...)  \
   string __VA_ARGS__; \
   read(__VA_ARGS__);
-#define readchar(...)  \
-  char __VA_ARGS__; \
+
+#define readchar(...) \
+  char __VA_ARGS__;   \
   read(__VA_ARGS__);
+
 #define readseq(v, a, b) \
-  seq(v, b);        \
+  seq(v, b);             \
   read_vec(v, a, b);
 
 #define last(a) ((a).size() - 1)
-// #define append push_back
+//
+#define append push_back
 
 const int modulo = 1e9 + 7;
 
@@ -36,6 +46,7 @@ const int nil = -1;
 const int inf = 1e18;
 
 const int has_implemented = true;
+
 #define todo assert(has_implemented == false);
 
 using namespace std;
@@ -113,6 +124,7 @@ auto force_wa() {
 // std
 
 #define parse_int stoi
+
 #define parse_float stod
 
 // iterables
@@ -249,9 +261,13 @@ auto ceil_ = [](auto x) {
 // fix
 
 #define pow pow_
+
 #define floor floor_
+
 #define ceil ceil_
+
 #define min min_
+
 #define max max_
 
 void solve();
@@ -287,34 +303,141 @@ n in 1, 100
 
 seems it gets optimized. never seen such 1e7.
 
+
+
+ah, yeah, such random calc is needed to reach 20ms.
+(well... 1e7 op in 20ms?)
+
+and a direct wa is 3ms.
+
+
+
+well, it has data everywhere tbh.
+none of which results to -1.
+
+#1  18ms/432KB答案错误
+#2  19ms/504KB答案错误
+#3  19ms/392KB答案错误
+#4  19ms/400KB答案错误
+#5  3ms/396KB答案错误
+#6  3ms/392KB答案错误
+#7  3ms/392KB答案错误
+#8  2ms/512KB运行错误
+#9  0ms/262145KB运行超时
+#10 0ms/262145KB运行超时
+
+that implies all 1 to 4 are solvable. how could it be.
+
+1 5 7 11 13
+2 10 14
+3 6 9  15
+4 8 12 16
+
+i dont care what tricks you apply to others.
+just look at these primes. where could it be.
+at least two of the columns have to hold gcd of 1.
+
+> 要求 { p1..pn } 是一个长度为 n 的排列。
+
+maybe it implies "set"?
+
+like,
+
+1 5 7 11
+2 4 10 14
+3 6 9  15
+13 8 12 16
+
+
+
+nil.
+
+it has to be of len n, the number as given, not p set specific.
+
+
+
+ok, on the problem solution it formally proves
+it's unsolvable for any n >= 4.
+
+> 小男娘 发表于 2026-05-17 21:18:08
+
+
+
 */
 
 void solve() {
   readint(n);
 
-  if(n > 80){
-    force_mle();
-  }
-  if(n > 60){
-    force_wa();
-  }
-  if(n > 40){
-    force_tle();
-  }
-  if(n > 20){
-    force_re();
-  }
-  
-  int temp = 0;
-  each(i, 1, 1e7){
-    temp = i + i / 2;
-    if(temp > 100){
-      temp = 0;
-    }
-  }
 
-  prn(nil + temp);
 }
+// void solve() {
+//   readint(n);
+
+//   prn("1 2 3 13");
+//   prn("5 4 6 8");
+//   prn("7 10 9 12");
+//   prn("11 14 15 16");
+
+//   // if (n >= 20) {
+//   //   force_tle();
+//   // }
+
+//   // if (n >= 15 && n < 20) {
+//   //   force_mle();
+//   // }
+
+//   // if (n >= 10 && n < 15) {
+//   //   force_re();
+//   // }
+
+//   // if (n >= 5 && n < 10) {
+//   //   force_wa();
+//   // }
+
+//   // int temp = 0;
+//   // each(i, 1, 1e7) {
+//   //   temp = i + i / 2;
+//   //   if (temp > 100) {
+//   //     temp = 0;
+//   //   }
+//   // }
+
+//   // prn(nil + temp);
+// }
+// void solve() {
+//   readint(n);
+
+//   if (n >= 20) {
+//     force_tle();
+//   }
+
+//   if (n >= 15 && n < 20) {
+//     force_mle();
+//   }
+
+//   if (n >= 10 && n < 15) {
+//     force_re();
+//   }
+
+//   if (n >= 5 && n < 10) {
+//     force_wa();
+//   }
+
+//   int temp = 0;
+//   each(i, 1, 1e7) {
+//     temp = i + i / 2;
+//     if (temp > 100) {
+//       temp = 0;
+//     }
+//   }
+
+//   prn(nil + temp);
+// }
+// void solve() {
+//   readint(n);
+
+//   prn(-1);
+// }
 // void solve() {
 //   readint(n);
 
@@ -330,7 +453,33 @@ void solve() {
 //   if(n > 20){
 //     force_re();
 //   }
-  
+
+//   int temp = 0;
+//   each(i, 1, 1e7){
+//     temp = i + i / 2;
+//     if(temp > 100){
+//       temp = 0;
+//     }
+//   }
+
+//   prn(nil + temp);
+// }
+// void solve() {
+//   readint(n);
+
+//   if(n > 80){
+//     force_mle();
+//   }
+//   if(n > 60){
+//     force_wa();
+//   }
+//   if(n > 40){
+//     force_tle();
+//   }
+//   if(n > 20){
+//     force_re();
+//   }
+
 //   int temp = 0;
 //   each(i, 1, 1e7){
 //     temp = !temp;

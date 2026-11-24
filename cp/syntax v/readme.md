@@ -71,3 +71,8 @@ no idea how it can be achieved wo out of bound access.
 
 # upsolved
 
+j
+
+idk. impossible it seems.
+
+
