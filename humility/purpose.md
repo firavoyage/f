@@ -1737,3 +1737,16 @@ and if you workaround it via `prop` that's even more ugly. and you should not fi
 
 you should not fight leaky abstractions.
 
+---
+
+if it's more about ux, a design system (component library) comes first.
+
+have a storybook.
+
+w such comp lib, you can easily prototype features in the way you would expect in the final product.
+
+technically in sdlc intent/vision and backend should come first. they are trivial now w llms. you can easily refactor.
+
+you can see them as already there, already abstracted away in the extremely general (probablistic) form of human languages.
+
+
