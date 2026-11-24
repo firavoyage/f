@@ -363,12 +363,16 @@ it's unsolvable for any n >= 4.
 
 
 
+88.0 / 100.0
+
+damn it! it doesnt ignore trailing newline!
+
 */
 
 void solve() {
   readint(n);
 
-
+  write(nil);
 }
 // void solve() {
 //   readint(n);

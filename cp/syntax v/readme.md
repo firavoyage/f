@@ -71,8 +71,12 @@ no idea how it can be achieved wo out of bound access.
 
 # upsolved
 
-j
+~~j~~
 
 idk. impossible it seems.
+
+problem issue.
+
+it doesnt ignore trailing newline.
 
 
