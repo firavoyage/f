@@ -1629,5 +1629,23 @@ Saved lockfile
 [pi-web] session_start dispatched to extensions for session 01a2037b-e923-73ed-bd65-37e12a813436
 ```
 
-
+```
+ ~ % pi-web
+▲ Next.js 16.4.6
+- Local:         http://127.0.0.1:30141
+- Network:       http://127.0.0.1:30141
+✓ Ready in 255ms
+✓ Running next.config.ts took 55ms
+[pi-web] session_start dispatched to extensions for session 01a20409-6112-77c3-b80d-74b0c00cd876
+[pi-web] session_start dispatched to extensions for session 01a203d2-c8e7-70b2-8645-521e2b16920b
+[pi-web] session_start dispatched to extensions for session 01a203b0-54aa-76a5-b3d2-7a92181b77f7
+[pi-web] session_start dispatched to extensions for session 01a20396-2602-7299-b8a9-1341c3cd5939
+[pi-web] session_start dispatched to extensions for session 01a20389-4059-7340-8c27-112946420c7c
+[pi-web] session_start dispatched to extensions for session 01a2037b-e923-73ed-bd65-37e12a813436
+^C⨯ Error: failed to pipe response
+    at ignore-listed frames {
+  [cause]: Error: pi-web server shutting down
+      at ignore-listed frames
+}
+```
 
