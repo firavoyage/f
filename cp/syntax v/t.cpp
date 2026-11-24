@@ -281,13 +281,50 @@ signed main() {
 x, l, r in e9.
 
 <=> solve the problem for l = 1, r = 1e9.
+well, not really, you dont have to do counting
 
 
 
+defactor x, pair every odd prime factor, the prod of which is the initial y
+if within l r that's it.
+if larger than r could not solve.
+if smaller than l, try to mul w 1 4 9...
 
+idk if bisearch is needed.
+maybe floor sqrt l/y
 
 */
 
 void solve() {
+  readint(x, l, r);
+  int y = 1;
   
+  each(guess, 2, sqrt(x)){
+    int count = 0;
+    while(x % guess == 0){
+      count += 1;
+      x /= guess;
+    }
+    if(count % 2 == 1){
+      y *= guess;
+    }
+  }
+  y *= x;
+
+  each(i, sqrt(l/y), inf){
+    if(i <= 0){
+      continue;
+    }
+
+    int value = y * i * i;
+    if(value >= l && value <= r){
+      prn(value);
+      return;
+    }
+
+    if(value >= r){
+      prn(nil);
+      return;
+    }
+  }
 }

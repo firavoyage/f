@@ -72,4 +72,28 @@
       "nil",
     ],
   },
+  "continue": {
+    "prefix": [
+      "c",
+      "co",
+      "con",
+      "cont",
+      "conti",
+    ],
+    "body": [
+      "continue;",
+    ],
+  },
+  "break": {
+    "prefix": [
+      "b",
+      "br",
+      "bre",
+      "brea",
+      "break",
+    ],
+    "body": [
+      "break;",
+    ],
+  },
 }
