@@ -1,18 +1,26 @@
+import { scroll } from 'web/component/scroll'
+
 type storybook_props = {
   components: Record<string, any>
 }
 
 export function storybook({ components }: storybook_props) {
   return h(
-    'main.storybook',
+    'app',
     h(
-      'div.storybook_components',
-      ...map(entries(components), ([name, component]) =>
+      scroll,
+      h(
+        'storybook',
         h(
-          'section.storybook_component',
-          {},
-          h('h2.storybook_component_name', {}, name),
-          h('div.storybook_component_sample', {}, component),
+          'storybook_components',
+          ...map(entries(components), ([name, component]) =>
+            h(
+              'storybook_component',
+              {},
+              h('storybook_component_name', {}, name),
+              h('storybook_component_sample', {}, component),
+            ),
+          ),
         ),
       ),
     ),

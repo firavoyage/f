@@ -8,8 +8,8 @@ use(react)
 // override react.use
 use({ use })
 
-import * as react_use from 'react-use'
-use(react_use)
+// import * as react_use from 'react-use'
+// use(react_use)
 
 import * as react_hooks from 'lib/web/react'
 use(react_hooks)

@@ -1,4 +1,4 @@
-import { useScroll, useUpdate } from 'react-use'
+import { useToggle, useScroll, useUpdate } from 'react-use'
 
 const min_thumb_length = 16
 const scroll_hint_duration = 500

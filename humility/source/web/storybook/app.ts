@@ -16,6 +16,9 @@ const options = [
 ]
 
 export function app() {
+  use_sync_theme('system')
+  use_window_active()
+
   const [input_value, set_input_value] = use_state('')
   const [textarea_value, set_textarea_value] = use_state('')
   const [checkbox_checked, set_checkbox_checked] = use_state(false)
