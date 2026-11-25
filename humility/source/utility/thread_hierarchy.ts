@@ -20,7 +20,7 @@ type hierarchy_node = {
   children?: Record<string, hierarchy_node>
 }
 
-export function build_flat_hierarchy(
+export function build_thread_index_hierarchy(
   thread_index: thread_index,
   expanded_folders: string[],
 ): thread_hierarchy_item[] {

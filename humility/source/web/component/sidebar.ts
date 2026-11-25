@@ -4,7 +4,7 @@ import type { thread_hierarchy_item } from 'utility/thread_hierarchy'
 
 type sidebar = {
   threads: thread_hierarchy_item[]
-  thread_id: id
+  thread_id: id | nil
   new_thread: () => void
   select_thread: (thread: id) => void
   hide_thread: (thread: id) => void

@@ -8,7 +8,7 @@ import { conversation } from './conversation'
 import { random_id } from 'lib/random'
 
 import { build_context, empty_thread } from 'utility/thread'
-import { build_flat_hierarchy } from 'utility/thread_hierarchy'
+import { build_thread_index_hierarchy } from 'utility/thread_hierarchy'
 import { text } from 'utility/text'
 import { scroll_by } from 'utility/web/scroll'
 import { trim } from 'utility/string'
@@ -155,16 +155,6 @@ export function app({ should_use_vimium = true }) {
     },
   ]
 
-  async function hide_thread(id: id) {
-    websocket.perform('hide', { thread: id })
-    set_thread_index((index) => {
-      index[id].is_hidden = true
-    })
-    if (thread_id == id) {
-      commands.new_thread()
-    }
-  }
-
   let controls = {
     async send_prompt() {
       let current_thread_id = thread_id
@@ -201,6 +191,15 @@ export function app({ should_use_vimium = true }) {
       }
 
       set_expanded_folders(array(folders))
+    },
+    async hide_thread(id: id) {
+      websocket.perform('hide', { thread: id })
+      set_thread_index((index) => {
+        index[id].is_hidden = true
+      })
+      if (thread_id == id) {
+        commands.new_thread()
+      }
     },
   }
 
@@ -249,38 +248,15 @@ export function app({ should_use_vimium = true }) {
 
   // open websocket
   use_mount(() => {
-    function receive_message(e: MessageEvent) {
-      const data = JSON.parse(e.data)
-
-      const { type, payload } = data
-
-      if (type == 'response') {
-        log('receive', type, payload)
-
-        const { request } = data
-        websocket.receive_response(request, payload)
-        return
-      }
-
-      if (type == 'broadcast') {
-        const { event } = data
-
-        log('receive', type, event, payload)
-
-        broadcasts[event](payload)
-      }
-    }
-
-    websocket.connect(receive_message)
+    connect(broadcasts)
   })
 
   // list threads on sidebar
   use_mount(() => {
     set_thread_index(websocket.perform('list'))
-    // set_threads(post('list'))
   })
 
-  // subscribe broadcast of current thread
+  // subscribe current thread
   use_effect(() => {
     if (!thread_id) {
       set_thread(empty_thread())
@@ -292,25 +268,18 @@ export function app({ should_use_vimium = true }) {
     return () => websocket.perform('unsubscribe', { thread: thread_id })
   }, [thread_id])
 
-  const root_config = thread.roots[0] ?? {}
-  const pending_tool_id = Object.keys(root_config.pending_tools ?? {})[0]
-  const last_message = build_context(thread).at(-1)
-
-  // bind shortcuts for controls
+  // enter to send prompt
   use_keyboard('enter', controls.send_prompt, {
     when: () => prompt && document.activeElement == prompt_field.current,
   })
-  // disable entering on empty prompt
+  // disable sending empty prompt
   use_keyboard('enter', identity, {
     when: () => !prompt && document.activeElement == prompt_field.current,
   })
 
-  // focus prompt when thread change
+  // focus prompt
   use_effect(() => {
-    // you may want to just browse existing threads
-    if (is_new_thread) {
-      prompt_field.current?.focus()
-    }
+    prompt_field.current?.focus()
   }, [thread_id, is_new_thread])
 
   // expand all folders on path to cwd
@@ -326,7 +295,7 @@ export function app({ should_use_vimium = true }) {
     set_expanded_folders(array(folders))
   }, [folder])
 
-  let flat_hierarchy = build_flat_hierarchy(
+  let threads = build_thread_index_hierarchy(
     thread_index ?? {},
     expanded_folders,
   )
@@ -337,11 +306,11 @@ export function app({ should_use_vimium = true }) {
       'app',
       sidebar_open &&
         h(sidebar, {
-          threads: flat_hierarchy,
+          threads,
           thread_id,
           new_thread: commands.new_thread,
           select_thread: set_thread_id,
-          hide_thread: hide_thread,
+          hide_thread: controls.hide_thread,
           toggle_folder: controls.toggle_folder,
         }),
       h(conversation, {
