@@ -5,19 +5,19 @@ import type { thread_hierarchy_item } from 'utility/thread_hierarchy'
 type sidebar = {
   threads: thread_hierarchy_item[]
   current_thread: id
-  on_new_thread: () => void
-  on_select_thread: (thread: id) => void
-  on_hide_thread: (thread: id) => void
-  on_toggle_folder: (folder: string) => void
+  new_thread: () => void
+  select_thread: (thread: id) => void
+  hide_thread: (thread: id) => void
+  toggle_folder: (folder: string) => void
 }
 
 export function sidebar({
   threads,
   current_thread,
-  on_new_thread,
-  on_select_thread,
-  on_hide_thread,
-  on_toggle_folder,
+  new_thread,
+  select_thread,
+  hide_thread,
+  toggle_folder,
 }: sidebar) {
   return h(
     'sidebar',
@@ -26,7 +26,7 @@ export function sidebar({
       h(
         'button.link.nav_new_thread',
         {
-          onclick: on_new_thread,
+          onclick: new_thread,
         },
         text('new_thread'),
       ),
@@ -44,7 +44,7 @@ export function sidebar({
                 'button.link.threads_set_thread',
                 {
                   onclick() {
-                    on_select_thread(id)
+                    select_thread(id)
                   },
                 },
                 label || 'Untitled',
@@ -53,7 +53,7 @@ export function sidebar({
                 'button.link.threads_delete_thread',
                 {
                   async onclick() {
-                    on_hide_thread(id)
+                    hide_thread(id)
                   },
                 },
                 'delete',
@@ -69,7 +69,7 @@ export function sidebar({
                 'button.threads_toggle_folder',
                 {
                   onclick() {
-                    on_toggle_folder(id)
+                    toggle_folder(id)
                   },
                 },
                 label,

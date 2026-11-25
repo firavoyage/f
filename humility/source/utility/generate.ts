@@ -7,7 +7,7 @@ export async function generate(
   { context, endpoint, model, key },
   append: append,
   finish: finish,
-  stream: fn = identity,
+  stream?: fn,
 ) {
   let start_time = monotonic(),
     end_time
@@ -34,19 +34,17 @@ export async function generate(
     }),
   )
   if (is_error(response)) {
-    finish(fail('network', response.message))
-    return
+    throw err({
+      type: 'network',
+      message: response.message,
+    })
   }
 
   if (!response.ok) {
-    finish(
-      fail(
-        'endpoint',
-        `${response.status} ${response.statusText}`,
-        await handle(() => response.json()),
-      ),
-    )
-    return
+    throw err({
+      type: 'endpoint',
+      message: `${response.status} ${response.statusText}`,
+    })
   }
 
   if (!response.body) {
@@ -95,7 +93,7 @@ export async function generate(
 
       const payload = parse(payload_text)
 
-      stream(payload)
+      stream?.(payload)
 
       const new_content = payload.choices?.[0]?.delta?.content ?? ''
       const new_reasoning = payload.choices?.[0]?.delta?.reasoning ?? ''
@@ -131,31 +129,6 @@ export async function generate(
   buffer += decoder.decode()
 
   finish(complete())
-
-  function fail(
-    type: 'network' | 'endpoint',
-    message: string,
-    payload = response,
-  ) {
-    end_time = monotonic()
-
-    return {
-      has_failed: true,
-      role: 'assistant' as const,
-      content:
-        content +
-        '\n```chat_error\n' +
-        serialize({
-          type,
-          message,
-          payload,
-        }) +
-        '```\n',
-      start_time,
-      end_time,
-      model,
-    }
-  }
 
   function complete() {
     end_time = monotonic()

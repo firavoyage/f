@@ -7,7 +7,7 @@ import { sidebar } from './sidebar'
 import { conversation } from './conversation'
 import { random_id } from 'lib/random'
 
-import { build_context, empty_thread_structure } from 'utility/thread'
+import { build_context, empty_thread_structure as empty_thread } from 'utility/thread'
 import { build_flat_hierarchy } from 'utility/thread_hierarchy'
 import { text } from 'utility/text'
 import { scroll_by } from 'utility/web/scroll'
@@ -25,17 +25,18 @@ export const use_sidebar_open = s(false, {
   localstorage: 'sidebar',
 })
 
-export const use_display_thread = s(nil as id | nil, {
+export const use_thread_id = s(nil as id | nil, {
   url_param: 'thread',
 })
-export const use_thread = s(nil as id | nil)
 
 export const use_folder = s('', {
   localstorage: 'folder',
   // localstorage: 'cwd',
 })
 
-export function app() {
+export function app({
+  should_use_vimium = true
+}) {
   use_sync_theme('system')
   use_window_active()
 
@@ -43,28 +44,18 @@ export function app() {
 
   const [folder, set_folder] = use_folder()
   const [expanded_folders, set_expanded_folders] = use_state<string[]>([])
-  const [thread_structure, set_thread_structure] = use_state<thread_structure>(
-    empty_thread_structure(),
-  )
-  const [thread_structure_thread, set_thread_structure_thread] =
-    use_state<id | nil>(nil)
+  const [thread, set_thread] = use_state<thread>(empty_thread())
   const [is_active, set_is_active] = use_state(false)
   const [thread_index, set_thread_index] = use_state<thread_index | nil>(nil)
-  const [thread, set_thread] = use_thread()
-  const active_thread = use_ref<id | nil>(thread)
-  active_thread.current = thread
-  const automation = use_ref(false)
-  const [display_thread, set_display_thread] = use_display_thread()
+  const [thread_id, set_thread_id] = use_thread_id()
 
   const [should_show_reasoning, set_should_show_reasoning] = use_state(false)
 
   const [modal_prompt_open, set_modal_prompt_open] = use_state(false)
 
-  const [should_use_vimium, set_should_use_vimium] = use_state(true)
-
   const [sidebar_open, set_sidebar_open] = use_sidebar_open()
 
-  let is_new_thread = thread_index != nil && !has(thread_index, thread)
+  let is_new_thread = thread_id == nil
 
   const content = use_ref()
   const prompt_field = use_ref()
@@ -82,9 +73,9 @@ export function app() {
     modal_prompt_placeholder.current = placeholder
   }
 
-  const websocket_ref = use_ref<ReturnType<typeof create_websocket_client> | nil>(
-    nil,
-  )
+  const websocket_ref = use_ref<
+    ReturnType<typeof create_websocket_client> | nil
+  >(nil)
   if (!websocket_ref.current) {
     websocket_ref.current = create_websocket_client()
   }
@@ -131,22 +122,9 @@ export function app() {
 
   use_vimium(should_use_vimium)
 
-  // set thread url param: nil for new thread, otherwise existing
-  // for simplicity, it technically subscribes a (random) thread regardless
-  use_effect(() => {
-    set_thread(display_thread ?? random_id())
-  }, [display_thread])
-  use_effect(() => {
-    if (has(thread_index, thread)) {
-      set_display_thread(thread)
-    } else if (is_new_thread) {
-      set_display_thread(nil)
-    }
-  }, [thread, is_new_thread])
-
   let commands = {
     new_thread() {
-      set_thread(random_id())
+      set_thread_id(nil)
     },
     change_current_folder() {
       open_prompt_modal({
@@ -184,16 +162,16 @@ export function app() {
     set_thread_index((index) => {
       index[id].is_hidden = true
     })
-    if (thread == id) {
+    if (thread_id == id) {
       commands.new_thread()
     }
   }
 
   let controls = {
     async send_prompt() {
-      if (entries(thread_structure.messages).length == 0) {
+      if (entries(thread.messages).length == 0) {
         await websocket.perform('init', {
-          thread,
+          thread: thread_id,
           title: prompt.slice(0, max_title_length),
           folder,
         })
@@ -202,14 +180,14 @@ export function app() {
       }
 
       await websocket.perform('send', {
-        thread,
+        thread: thread_id,
         prompt,
         options: {},
       })
 
       set_prompt('')
 
-      await websocket.perform('generate', { thread })
+      await websocket.perform('generate', { thread: thread_id })
     },
     toggle_folder(folder) {
       let folders = set(expanded_folders)
@@ -226,22 +204,21 @@ export function app() {
 
   let broadcasts: Record<event, fn> = {
     set_thread_structure({ thread, thread_structure, is_active }) {
-      set_thread_structure(thread_structure)
-      set_thread_structure_thread(thread)
+      set_thread(thread_structure)
       set_is_active(is_active)
     },
     set_tree({ tree }) {
-      set_thread_structure((t) => {
+      set_thread((t) => {
         t.tree = tree
       })
     },
     set_message({ message, message_structure }) {
-      set_thread_structure((t) => {
+      set_thread((t) => {
         t.messages[message] = message_structure
       })
     },
     set_pending_tools({ pending_tools }) {
-      set_thread_structure((t) => {
+      set_thread((t) => {
         t.roots[0] ??= {}
         t.roots[0].pending_tools = pending_tools
       })
@@ -252,7 +229,7 @@ export function app() {
     append_message({ message, delta }) {
       const { content = '', reasoning = '' } = delta
 
-      set_thread_structure((t) => {
+      set_thread((t) => {
         t.messages[message].content =
           (t.messages[message].content ?? '') + content
         t.messages[message].reasoning =
@@ -262,7 +239,7 @@ export function app() {
       })
     },
     finish_message({ message, message_structure }) {
-      set_thread_structure((t) => {
+      set_thread((t) => {
         t.messages[message] = message_structure
       })
     },
@@ -286,7 +263,7 @@ export function app() {
       log('receive', type, payload)
 
       if (type == 'broadcast') {
-        if (payload.thread != active_thread.current) return
+        if (payload.thread != thread_id) return
         const { event } = data
         broadcasts[event](payload)
       }
@@ -303,69 +280,19 @@ export function app() {
 
   // subscribe broadcast of current thread
   use_effect(() => {
-    if (!thread) {
+    if (!thread_id) {
+      // set_thread(empty_thread())
       return
     }
 
-    websocket.perform('subscribe', { thread })
+    websocket.perform('subscribe', { thread: thread_id })
 
-    return () => websocket.perform('unsubscribe', { thread })
-  }, [thread])
+    return () => websocket.perform('unsubscribe', { thread: thread_id })
+  }, [thread_id])
 
-  const root_config = thread_structure.roots[0] ?? {}
+  const root_config = thread.roots[0] ?? {}
   const pending_tool_id = Object.keys(root_config.pending_tools ?? {})[0]
-  const last_message = build_context(thread_structure).at(-1)
-
-  use_effect(() => {
-    if (
-      !thread ||
-      thread_structure_thread != thread ||
-      is_active ||
-      automation.current
-    ) {
-      return
-    }
-
-    if (pending_tool_id) {
-      automation.current = true
-      set_is_active(true)
-      websocket
-        .perform('call_tool', { thread, tool_id: pending_tool_id }, 10000)
-        .then(
-          ({ started, is_active: server_is_active }) => {
-            automation.current = false
-            if (!started) set_is_active(server_is_active ?? false)
-          },
-          () => {
-            automation.current = false
-            set_is_active(false)
-          },
-        )
-      return
-    }
-
-    if (last_message?.role == 'tool') {
-      automation.current = true
-      set_is_active(true)
-      websocket.perform('generate', { thread }, 10000).then(
-        ({ started, is_active: server_is_active }) => {
-          automation.current = false
-          if (!started) set_is_active(server_is_active ?? false)
-        },
-        () => {
-          automation.current = false
-          set_is_active(false)
-        },
-      )
-    }
-  }, [
-    thread,
-    thread_structure_thread,
-    is_active,
-    pending_tool_id,
-    last_message?.id,
-    last_message?.role,
-  ])
+  const last_message = build_context(thread).at(-1)
 
   // bind shortcuts for controls
   use_keyboard('enter', controls.send_prompt, {
@@ -382,7 +309,7 @@ export function app() {
     if (is_new_thread) {
       prompt_field.current?.focus()
     }
-  }, [thread, is_new_thread])
+  }, [thread_id, is_new_thread])
 
   // expand all folders on path to cwd
   use_effect(() => {
@@ -409,14 +336,14 @@ export function app() {
       sidebar_open &&
         h(sidebar, {
           threads: flat_hierarchy,
-          current_thread: thread,
-          on_new_thread: commands.new_thread,
-          on_select_thread: set_thread,
-          on_hide_thread: hide_thread,
-          on_toggle_folder: controls.toggle_folder,
+          current_thread: thread_id,
+          new_thread: commands.new_thread,
+          select_thread: set_thread_id,
+          hide_thread: hide_thread,
+          toggle_folder: controls.toggle_folder,
         }),
       h(conversation, {
-        messages: build_context(thread_structure),
+        messages: build_context(thread),
         folder,
         is_new_thread,
         prompt,
@@ -441,7 +368,7 @@ export function app() {
                 label: title,
                 info: folder,
                 fn() {
-                  set_thread(id)
+                  set_thread_id(id)
                 },
               }
             }
@@ -462,7 +389,7 @@ declare global {
 
   type role = 'system' | 'user' | 'assistant' | 'tool'
 
-  type thread_structure = {
+  type thread = {
     tree: Record<
       node,
       {
@@ -471,7 +398,7 @@ declare global {
       }
     >
     roots: Record<root, root_config>
-    messages: Record<id, message_structure>
+    messages: Record<id, message>
   }
 
   type root_config = {
@@ -482,10 +409,9 @@ declare global {
     pending_tools?: Record<id, tool>
   }
 
-  type message_structure = {
-    id?: id
+  type message = {
     role: role
-    content: string
+    content?: string
     reasoning?: string
     tools?: tool[]
     usage?: {
@@ -497,10 +423,16 @@ declare global {
       tokens_per_second: number
       time_to_first_token: number
     }
-    has_failed?: bool
-    start_time: number
-    end_time: number
+    error?: any
+    start_time?: number
+    end_time?: number
     model?: string
+  }
+
+  type tool = {
+    id: id
+    tool_name: string
+    args: Record<Key, any>
   }
 
   type plain_message_structure = {
@@ -513,17 +445,14 @@ declare global {
     reasoning?: string
   }
 
-  type tool = {
-    tool: string
-    args: Record<Key, any>
-  }
-
-  type thread_index = Record<id, thread_index_item>
-  type thread_index_item = {
-    title: string
-    folder: string
-    is_hidden?: boolean
-    creation_time?: number
-    modification_time?: number
-  }
+  type thread_index = Record<
+    id,
+    {
+      title: string
+      folder: string
+      is_hidden?: boolean
+      creation_time?: number
+      modification_time?: number
+    }
+  >
 }
