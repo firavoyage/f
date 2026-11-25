@@ -53,8 +53,6 @@ export function app({ should_use_vimium = true }) {
 
   const [sidebar_open, set_sidebar_open] = use_sidebar_open()
 
-  use_debug(thread)
-
   let is_new_thread = thread_id == nil
 
   const content = use_ref()
