@@ -5,12 +5,16 @@ import {
   thread_index_file,
 } from 'action/index'
 import { read, write } from 'lib/file'
+import { empty_thread } from 'utility/thread'
 
 export let threads: Record<id, thread> = {}
 
 export function read_thread(thread_id: id) {
   if (!has(threads, thread_id)) {
-    threads[thread_id] = deserialize(read(get_thread_file(thread_id)))
+    threads[thread_id] = handle(
+      () => deserialize(read(get_thread_file(thread_id))),
+      empty_thread(),
+    )
   }
 
   return threads[thread_id]
@@ -43,6 +47,7 @@ export function update_thread(
 
   threads[thread_id] = new_thread
 
+  log(get_thread_file(thread_id), serialize(new_thread))
   write(get_thread_file(thread_id), serialize(new_thread))
 
   return new_thread

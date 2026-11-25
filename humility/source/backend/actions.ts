@@ -6,7 +6,7 @@ import {
   update_thread,
   update_thread_index,
 } from 'action'
-import { broadcast } from './websocket'
+import { all_clients, broadcast } from './websocket'
 import { monotonic, now } from 'lib/time'
 import { append_message, build_context, empty_thread } from 'utility/thread'
 import { random_id } from 'lib/random'
@@ -22,18 +22,22 @@ export const actions: Record<action, fn> = {
     subscribers[thread_id] ??= set()
 
     subscribers[thread_id].add(client)
+
+    broadcast('set_thread', read_thread(thread_id), client)
   },
   unsubscribe({ thread_id, client }) {
-    subscribers[thread_id].delete(client)
+    subscribers[thread_id]?.delete?.(client)
   },
   init({ thread_id, title, folder }) {
-    update_thread_index((thread_index) => {
+    let thread_index = update_thread_index((thread_index) => {
       thread_index[thread_id] = {
         title,
         folder,
         creation_time: now().timestamp,
       }
     })
+
+    broadcast('set_thread_index', thread_index, all_clients())
 
     update_thread(thread_id, empty_thread())
   },

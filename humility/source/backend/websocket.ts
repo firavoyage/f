@@ -50,7 +50,7 @@ export const websocket = {
 
     if (action == 'subscribe' || action == 'unsubscribe') {
       payload.client = client
-    } 
+    }
 
     if (!has(actions, action)) {
       warn(`action ${action} should be handled`)
@@ -63,8 +63,8 @@ export const websocket = {
   onClose(e, client) {
     let client_id = client_ids.get(client)
 
-    log(`Client ${client_id} connected`)
-    append_server_log(`Client ${client_id} connected`)
+    log(`Client ${client_id} disconnected`)
+    append_server_log(`Client ${client_id} disconnected`)
 
     clients.delete(client)
     client_ids.delete(client)
@@ -83,7 +83,11 @@ function respond(request: id, payload: any, client: WebSocket) {
   )
 }
 
-export function broadcast(event: event, payload: any, clients: WebSocket | Set<WebSocket>) {
+export function broadcast(
+  event: event,
+  payload: any,
+  clients: WebSocket | Set<WebSocket> | WebSocket[],
+) {
   append_server_log(`broadcast ${event}`, payload)
 
   clients = array(clients)
@@ -97,4 +101,8 @@ export function broadcast(event: event, payload: any, clients: WebSocket | Set<W
       }),
     )
   })
+}
+
+export function all_clients() {
+  return map(clients, ([id, client]) => client)
 }

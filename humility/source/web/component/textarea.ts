@@ -5,13 +5,9 @@ type textarea = {
 }
 
 export function textarea({ value, set_value, ...props }: textarea) {
-  const ref = useRef()
+  const ref = forward(use_ref(), props.ref)
 
-  function handle_change(event) {
-    set_value(event.target.value)
-  }
-
-  useEffect(() => {
+  use_effect(() => {
     const textarea = ref.current
     if (!textarea) return
 
@@ -47,7 +43,7 @@ export function textarea({ value, set_value, ...props }: textarea) {
     textarea.style.overflowY = originalOverflow
   }, [value])
 
-  useEffect(() => {
+  use_effect(() => {
     const handleResize = () => {
       const textarea = ref.current
       if (!textarea) return
@@ -62,7 +58,7 @@ export function textarea({ value, set_value, ...props }: textarea) {
   return h('textarea.textarea', {
     ...props,
     value,
-    onchange: handle_change,
+    set_value,
     ref,
   })
 }

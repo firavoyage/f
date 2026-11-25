@@ -159,23 +159,21 @@ export function app({
         current_thread_id = random_id()
 
         await perform('init', {
-          thread_id,
+          thread_id: current_thread_id,
           title: prompt.slice(0, max_title_length),
           folder,
         })
-
-        set_thread_index(perform('list'))
       }
 
       await perform('send', {
-        current_thread_id,
+        thread_id: current_thread_id,
         prompt,
         options: {},
       })
 
       set_prompt('')
 
-      await perform('generate', { thread_id })
+      await perform('generate', { thread_id: current_thread_id })
     },
     toggle_folder(folder) {
       let folders = set(expanded_folders)
@@ -200,6 +198,9 @@ export function app({
   }
 
   let broadcasts: Record<event, fn> = {
+    set_thread_index(thread_index){
+      set_thread_index(thread_index)
+    },
     set_thread({ thread, is_active }) {
       set_thread(thread)
       set_is_active(is_active)
@@ -434,6 +435,7 @@ declare global {
     | 'hide'
 
   type event =
+    | 'set_thread_index'
     | 'set_thread'
     | 'set_tree'
     | 'set_message'

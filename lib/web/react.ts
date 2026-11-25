@@ -34,6 +34,10 @@ export function forward<T>(...refs: ref<T>[]): { current: T | null } {
     { current },
     {
       get(_target, property) {
+        if (property == 'hasOwnProperty') {
+          return () => true
+        } 
+
         return property == 'current' ? current : undefined
       },
       set(_target, property, value: T | null) {
@@ -42,9 +46,11 @@ export function forward<T>(...refs: ref<T>[]): { current: T | null } {
         current = value
         refs.forEach((ref) => {
           if (typeof ref == 'function') {
-            ref(value)
+            handle(() => ref(value))
           } else if (ref) {
-            ref.current = value
+            handle(() => {
+              ref.current = value
+            })
           }
         })
 
