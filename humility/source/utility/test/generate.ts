@@ -14,6 +14,7 @@ function base_url_model_key(provider = 'openrouter') {
 
   return {
     base_url,
+    key,
     provider,
     model,
   }
@@ -21,11 +22,30 @@ function base_url_model_key(provider = 'openrouter') {
 
 import { generate_stream_openai } from 'utility/generate'
 
-generate_stream_openai({
-  messages: [
-    {
-      role: 'user',
-      content: 'give me some random thoughts'
-    }
-  ]
-})
+generate_stream_openai(
+  {
+    messages: [
+      {
+        role: 'user',
+        content: 'think hard about anything',
+      },
+    ],
+    ...base_url_model_key(),
+  },
+  log,
+  log,
+  log,
+)
+// generate_stream_openai(
+//   {
+//     messages: [
+//       {
+//         role: 'user',
+//         content: 'give me some random thoughts',
+//       },
+//     ],
+//     ...base_url_model_key(),
+//   },
+//   log,
+//   log,
+// )

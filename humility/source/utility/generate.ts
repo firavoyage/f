@@ -50,7 +50,7 @@ export async function generate_stream_openai(
   if (!response.body) {
     throw err({
       type: 'endpoint',
-      message: `endpoint should send response stream`
+      message: `endpoint should send response stream`,
     })
   }
 
@@ -132,6 +132,7 @@ export async function generate_stream_openai(
     let duration = end_time - (first_append_time ?? start_time)
 
     let perf = {
+      duration,
       tokens_per_second: (usage?.total_tokens ?? 0) / duration,
       time_to_first_token: first_append_time - start_time,
     }

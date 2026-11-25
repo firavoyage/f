@@ -383,6 +383,7 @@ declare global {
       total_tokens: number
     }
     perf?: {
+      duration: number
       tokens_per_second: number
       time_to_first_token: number
     }
