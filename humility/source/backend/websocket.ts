@@ -1,6 +1,6 @@
 import { append_thread_log, append_server_log } from 'backend/log'
 
-const { parse } = JSON
+const { parse, stringify } = JSON
 
 type request = {
   type: 'request'
@@ -20,6 +20,8 @@ type broadcast = {
   event: event
   payload: any
 }
+
+// client -> client id
 
 export const websocket = {
   onOpen() {
@@ -48,4 +50,20 @@ export const websocket = {
     log('Client disconnected')
     append_server_log('Client disconnected')
   },
+}
+
+function respond(request: id, payload: any, client: WebSocket) {
+  append_server_log('respond', payload)
+
+  client.send(
+    stringify({
+      type: 'response',
+      request,
+      payload,
+    }),
+  )
+}
+
+let actions = {
+  
 }

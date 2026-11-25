@@ -8,6 +8,8 @@ prefer self explanatory code over commenting. use lowercase on comments.
 
 use function statement for named functions
 
+prefer let over const
+
 use type, no interface
 
 use `==` and `!=`, no `===`.

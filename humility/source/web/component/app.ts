@@ -3,12 +3,13 @@ import { use_window_active } from 'lib/web/use window active'
 import 'web/design/app.css'
 import 'web/design/utilitarian.css'
 
-import { sidebar } from './sidebar'
+// import { sidebar } from './sidebar'
+import { scroll } from './scroll'
 import { conversation } from './conversation'
 import { random_id } from 'lib/random'
 
 import { build_context, empty_thread } from 'utility/thread'
-import { build_thread_index_hierarchy } from 'utility/thread_index_hierarchy'
+import { build_thread_hierarchy } from 'utility/thread_hierarchy'
 import { text } from 'utility/text'
 import { scroll_by } from 'utility/web/scroll'
 import { trim } from 'utility/string'
@@ -60,15 +61,15 @@ export function app({ should_use_vimium = true }) {
 
   const [modal_prompt_initial_value, set_modal_prompt_initial_value] =
     use_state()
-  const modal_prompt_set_value = use_ref()
-  const modal_prompt_placeholder = use_ref()
+  const [modal_prompt_set_value, set_modal_prompt_set_value] = use_state()
+  const [modal_prompt_placeholder, set_modal_prompt_placeholder] = use_state()
 
   function open_prompt_modal({ value, set_value, placeholder }) {
     set_modal_prompt_open(true)
 
     set_modal_prompt_initial_value(value)
-    modal_prompt_set_value.current = set_value
-    modal_prompt_placeholder.current = placeholder
+    set_modal_prompt_set_value(set_value)
+    set_modal_prompt_placeholder(placeholder)
   }
 
   function use_vimium(on) {
@@ -227,11 +228,11 @@ export function app({ should_use_vimium = true }) {
         thread.messages[message].reasoning += reasoning
       })
     },
-    finish_message({ message, message_structure }) {
-      set_thread((t) => {
-        t.messages[message] = message_structure
-      })
-    },
+    // finish_message({ message, message_structure }) {
+    //   set_thread((thread) => {
+    //     thread.messages[message] = message_structure
+    //   })
+    // },
   }
 
   // open websocket
@@ -283,7 +284,7 @@ export function app({ should_use_vimium = true }) {
     set_expanded_folders(array(folders))
   }, [folder])
 
-  let threads = build_thread_index_hierarchy(
+  let thread_hierarchy = build_thread_hierarchy(
     thread_index ?? {},
     expanded_folders,
   )
@@ -293,14 +294,69 @@ export function app({ should_use_vimium = true }) {
     h(
       'app',
       sidebar_open &&
-        h(sidebar, {
-          threads,
-          thread_id,
-          new_thread: commands.new_thread,
-          select_thread: set_thread_id,
-          hide_thread: controls.hide_thread,
-          toggle_folder: controls.toggle_folder,
-        }),
+        h(
+          'sidebar',
+          h(
+            'nav',
+            h(
+              'button.link.nav_new_thread',
+              {
+                onclick: commands.new_thread,
+              },
+              text('new_thread'),
+            ),
+          ),
+          h(
+            'threads',
+            h(
+              scroll,
+              map(thread_hierarchy, ({ type, label, id }) => {
+                if (type == 'file') {
+                  return h(
+                    'threads_thread',
+                    { focus: thread_id == id },
+                    h(
+                      'button.link.threads_set_thread',
+                      {
+                        onclick() {
+                          set_thread_id(id)
+                        },
+                      },
+                      label || 'Untitled',
+                    ),
+                    h(
+                      'button.link.threads_delete_thread',
+                      {
+                        async onclick() {
+                          controls.hide_thread(id)
+                        },
+                      },
+                      'delete',
+                    ),
+                  )
+                }
+
+                if (type == 'folder') {
+                  return h(
+                    'threads_folder',
+                    { focus: thread_id == id },
+                    h(
+                      'button.threads_toggle_folder',
+                      {
+                        onclick() {
+                          controls.toggle_folder(id)
+                        },
+                      },
+                      label,
+                    ),
+                  )
+                }
+
+                return h('threads_whitespace')
+              }),
+            ),
+          ),
+        ),
       h(conversation, {
         messages: build_context(thread),
         folder,
@@ -315,8 +371,8 @@ export function app({ should_use_vimium = true }) {
         open: modal_prompt_open,
         set_open: set_modal_prompt_open,
         initial_value: modal_prompt_initial_value,
-        set_value: modal_prompt_set_value.current,
-        placeholder: modal_prompt_placeholder.current,
+        set_value: modal_prompt_set_value,
+        placeholder: modal_prompt_placeholder,
       }),
       h(modal_search, {
         files: map(
