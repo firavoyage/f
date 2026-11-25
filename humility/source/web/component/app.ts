@@ -7,7 +7,7 @@ import { sidebar } from './sidebar'
 import { conversation } from './conversation'
 import { random_id } from 'lib/random'
 
-import { build_context, empty_thread_structure as empty_thread } from 'utility/thread'
+import { build_context, empty_thread } from 'utility/thread'
 import { build_flat_hierarchy } from 'utility/thread_hierarchy'
 import { text } from 'utility/text'
 import { scroll_by } from 'utility/web/scroll'
@@ -34,9 +34,7 @@ export const use_folder = s('', {
   // localstorage: 'cwd',
 })
 
-export function app({
-  should_use_vimium = true
-}) {
+export function app({ should_use_vimium = true }) {
   use_sync_theme('system')
   use_window_active()
 
@@ -54,6 +52,8 @@ export function app({
   const [modal_prompt_open, set_modal_prompt_open] = use_state(false)
 
   const [sidebar_open, set_sidebar_open] = use_sidebar_open()
+
+  use_debug(thread)
 
   let is_new_thread = thread_id == nil
 
@@ -169,7 +169,11 @@ export function app({
 
   let controls = {
     async send_prompt() {
-      if (entries(thread.messages).length == 0) {
+      let current_thread_id = thread_id
+
+      if (is_new_thread) {
+        current_thread_id = random_id()
+
         await websocket.perform('init', {
           thread: thread_id,
           title: prompt.slice(0, max_title_length),
@@ -252,19 +256,19 @@ export function app({
 
       const { type, payload } = data
 
-      log('receive', type, payload)
-
       if (type == 'response') {
+        log('receive', type, payload)
+
         const { request } = data
         websocket.receive_response(request, payload)
         return
       }
 
-      log('receive', type, payload)
-
       if (type == 'broadcast') {
-        if (payload.thread != thread_id) return
         const { event } = data
+
+        log('receive', type, event, payload)
+
         broadcasts[event](payload)
       }
     }
@@ -281,7 +285,7 @@ export function app({
   // subscribe broadcast of current thread
   use_effect(() => {
     if (!thread_id) {
-      // set_thread(empty_thread())
+      set_thread(empty_thread())
       return
     }
 

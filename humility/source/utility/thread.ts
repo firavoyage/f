@@ -1,6 +1,6 @@
 import { tool_instructions as tool_instruction_text } from './tools'
 
-export function empty_thread_structure(): thread_structure {
+export function empty_thread(): thread {
   return {
     tree: {
       0: {
@@ -17,7 +17,7 @@ export function empty_thread_structure(): thread_structure {
   }
 }
 
-export function append_node(tree: thread_structure['tree'], message: id) {
+export function append_node(tree: thread['tree'], message: id) {
   let node: node = 0
 
   while (tree[node]?.focus) {
@@ -33,14 +33,14 @@ export function append_node(tree: thread_structure['tree'], message: id) {
   return tree
 }
 
-export function build_context(thread_structure: thread_structure) {
-  return build_path(thread_structure).map(
-    (node) => thread_structure.messages[node],
+export function build_context(thread: thread) {
+  return build_path(thread).map(
+    (node) => thread.messages[node],
   )
 }
 
-export function build_plain_context(thread_structure: thread_structure) {
-  const root_config = thread_structure.roots[0] ?? {}
+export function build_plain_context(thread: thread) {
+  const root_config = thread.roots[0] ?? {}
   const tool_instruction_list = (root_config.tools ?? [])
     .map((name) => tool_instruction_text[name])
     .filter(Boolean)
@@ -54,8 +54,8 @@ export function build_plain_context(thread_structure: thread_structure) {
     context.push({ role: 'system', content: system_prompt })
   }
 
-  for (const node of build_path(thread_structure)) {
-    const message = thread_structure.messages[node]
+  for (const node of build_path(thread)) {
+    const message = thread.messages[node]
     if (!message) continue
 
     const role = message.role == 'tool' ? 'user' : message.role
@@ -75,23 +75,23 @@ export function build_plain_context(thread_structure: thread_structure) {
 }
 
 export function append_message(
-  thread_structure: thread_structure,
+  thread: thread,
   message: id,
   message_structure: Partial<message_structure>,
-): thread_structure {
-  append_node(thread_structure.tree, message)
-  thread_structure.messages[message] = message_structure as message_structure
+): thread {
+  append_node(thread.tree, message)
+  thread.messages[message] = message_structure as message_structure
 
-  return thread_structure
+  return thread
 }
 
-function build_path(thread_structure: thread_structure): node[] {
+function build_path(thread: thread): node[] {
   const root: root = 0
-  let node: node = thread_structure.roots[root]?.start ?? root
+  let node: node = thread.roots[root]?.start ?? root
   const path: node[] = node == root ? [] : [node]
 
-  while (thread_structure.tree[node]?.focus) {
-    node = thread_structure.tree[node].focus!
+  while (thread.tree[node]?.focus) {
+    node = thread.tree[node].focus!
     path.push(node)
   }
 

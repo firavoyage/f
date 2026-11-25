@@ -1,7 +1,7 @@
 import { list as action_list, hide, get_thread_file, serialize } from 'action/index'
 import { now } from 'lib/time'
 import { random_id } from 'lib/random'
-import { append_message, empty_thread_structure } from 'utility/thread'
+import { append_message, empty_thread } from 'utility/thread'
 import { broadcast, is_thread_active, subscribe, unsubscribe } from './connections'
 import { generate_thread } from './generation'
 import { run_tool } from './tool_run'
@@ -31,7 +31,7 @@ export let actions: Record<action, fn> = {
     unsubscribe(thread, client)
   },
   init({ thread, title = '', folder = '' }) {
-    const thread_structure = empty_thread_structure()
+    const thread_structure = empty_thread()
     write_thread(thread, thread_structure)
 
     mutate_thread_index((thread_index: thread_index) => {

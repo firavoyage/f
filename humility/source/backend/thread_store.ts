@@ -5,12 +5,12 @@ import {
   serialize,
   thread_index_file,
 } from 'action/index'
-import { empty_thread_structure } from 'utility/thread'
+import { empty_thread } from 'utility/thread'
 
 export function read_thread_structure(thread: id): thread_structure {
   return handle(
     () => deserialize(read(get_thread_file(thread))),
-    empty_thread_structure(),
+    empty_thread(),
   )
 }
 

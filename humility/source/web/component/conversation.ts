@@ -34,40 +34,41 @@ export function conversation({
         { ref: content_ref },
         h(
           'page_content',
-          h(
-            'messages',
-            map(messages, (message) =>
-              h(
-                'message',
-                { role: message?.role },
+          !is_new_thread &&
+            h(
+              'messages',
+              map(messages, (message) =>
                 h(
-                  'message_content',
-                  {
-                    onclick() {
-                      copy(message.content)
+                  'message',
+                  { role: message?.role },
+                  h(
+                    'message_content',
+                    {
+                      onclick() {
+                        copy(message.content)
+                      },
                     },
-                  },
-                  message?.reasoning &&
-                    should_show_reasoning &&
-                    h(
-                      'message_prose_reasoning',
+                    message?.reasoning &&
+                      should_show_reasoning &&
                       h(
-                        'details.',
-                        h('summary.', 'Reasoning'),
+                        'message_prose_reasoning',
                         h(
-                          'message_prose_reasoning_details',
-                          h(markdown, { markdown: message?.reasoning ?? '' }),
+                          'details.',
+                          h('summary.', 'Reasoning'),
+                          h(
+                            'message_prose_reasoning_details',
+                            h(markdown, { markdown: message?.reasoning ?? '' }),
+                          ),
                         ),
                       ),
+                    h(
+                      'message_prose',
+                      h(markdown, { markdown: message?.content ?? '' }),
                     ),
-                  h(
-                    'message_prose',
-                    h(markdown, { markdown: message?.content ?? '' }),
                   ),
                 ),
               ),
             ),
-          ),
         ),
       ),
     ),
