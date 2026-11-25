@@ -47,7 +47,6 @@ export function update_thread(
 
   threads[thread_id] = new_thread
 
-  log(get_thread_file(thread_id), serialize(new_thread))
   write(get_thread_file(thread_id), serialize(new_thread))
 
   return new_thread

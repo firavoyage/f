@@ -74,7 +74,7 @@ export const websocket = {
 function respond(request: id, payload: any, client: WebSocket) {
   append_server_log('respond', payload)
 
-  client.send(
+  client?.send?.(
     stringify({
       type: 'response',
       request,
@@ -93,7 +93,7 @@ export function broadcast(
   clients = array(clients)
 
   map(clients, (client) => {
-    client.send(
+    client?.send?.(
       stringify({
         type: 'broadcast',
         event,

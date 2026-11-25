@@ -23,7 +23,7 @@ export const actions: Record<action, fn> = {
 
     subscribers[thread_id].add(client)
 
-    broadcast('set_thread', read_thread(thread_id), client)
+    broadcast('set_thread', { thread: read_thread(thread_id) }, client)
   },
   unsubscribe({ thread_id, client }) {
     subscribers[thread_id]?.delete?.(client)
@@ -37,7 +37,7 @@ export const actions: Record<action, fn> = {
       }
     })
 
-    broadcast('set_thread_index', thread_index, all_clients())
+    broadcast('set_thread_index', { thread_index }, all_clients())
 
     update_thread(thread_id, empty_thread())
   },
@@ -54,7 +54,7 @@ export const actions: Record<action, fn> = {
 
     let context = build_context(read_thread(thread_id))
 
-    update_thread(thread_id, (thread) => {
+    let thread = update_thread(thread_id, (thread) => {
       append_message(
         thread,
         {
@@ -65,6 +65,8 @@ export const actions: Record<action, fn> = {
         message_id,
       )
     })
+
+    broadcast('set_thread', { thread }, subscribers[thread_id])
 
     // todo: handle errors
     generate_stream_openai(
@@ -80,14 +82,22 @@ export const actions: Record<action, fn> = {
           thread.messages[message_id].reasoning += reasoning
         })
 
-        broadcast('append_message', delta, subscribers[thread_id])
+        broadcast(
+          'append_message',
+          { message_id, delta },
+          subscribers[thread_id],
+        )
       },
       (message) => {
         update_thread(thread_id, (thread) => {
           thread.messages[message_id] = message
         })
 
-        broadcast('finish_message', message, subscribers[thread_id])
+        broadcast(
+          'finish_message',
+          { message_id, message },
+          subscribers[thread_id],
+        )
       },
     )
   },

@@ -8,7 +8,7 @@ import { scroll } from './scroll'
 import { conversation } from './conversation'
 import { random_id } from 'lib/random'
 
-import { render_messages, empty_thread } from 'utility/thread'
+import { render_conversation, empty_thread } from 'utility/thread'
 import { build_thread_hierarchy } from 'utility/thread_hierarchy'
 import { text } from 'utility/text'
 import { scroll_by } from 'utility/web/scroll'
@@ -49,7 +49,7 @@ export function app({
   const [folder, set_folder] = use_folder()
   const [expanded_folders, set_expanded_folders] = use_state<string[]>([])
 
-  const [thread_id, set_thread_id] = use_thread_id()
+  let [thread_id, set_thread_id] = use_thread_id()
 
   const [thread, set_thread] = use_state<thread>(empty_thread())
   const [is_active, set_is_active] = use_state(false)
@@ -153,27 +153,28 @@ export function app({
 
   let controls = {
     async send_prompt() {
-      let current_thread_id = thread_id
-
       if (is_new_thread) {
-        current_thread_id = random_id()
+        thread_id = random_id()
+        set_thread_id(thread_id)
 
         await perform('init', {
-          thread_id: current_thread_id,
+          thread_id,
           title: prompt.slice(0, max_title_length),
           folder,
         })
       }
 
+      await perform('subscribe', { thread_id })
+
       await perform('send', {
-        thread_id: current_thread_id,
+        thread_id,
         prompt,
         options: {},
       })
 
       set_prompt('')
 
-      await perform('generate', { thread_id: current_thread_id })
+      await perform('generate', { thread_id })
     },
     toggle_folder(folder) {
       let folders = set(expanded_folders)
@@ -198,10 +199,12 @@ export function app({
   }
 
   let broadcasts: Record<event, fn> = {
-    set_thread_index(thread_index){
+    set_thread_index({ thread_index }) {
       set_thread_index(thread_index)
     },
     set_thread({ thread, is_active }) {
+      log(thread)
+
       set_thread(thread)
       set_is_active(is_active)
     },
@@ -238,6 +241,7 @@ export function app({
     //   })
     // },
   }
+  use_debug(thread)
 
   // open websocket
   use_mount(() => {
@@ -309,7 +313,7 @@ export function app({
       h(
         'main',
         h(conversation, {
-          messages: render_messages(thread),
+          messages: render_conversation(thread),
           folder,
           is_new_thread,
           prompt,

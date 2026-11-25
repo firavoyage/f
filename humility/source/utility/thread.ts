@@ -33,9 +33,28 @@ export function append_node(tree: thread['tree'], message: id) {
   return tree
 }
 
-export function render_messages(thread: thread) {
-  return build_path(thread).map((node) => thread.messages[node])
+export function render_conversation(thread: thread) {
+  const { tree, messages } = thread
+
+  const root = 0
+  let node = root
+
+  let conversation = []
+  log(tree, tree[node], tree[node].focus)
+  while (tree[node].focus) {
+    let child = tree[node].focus
+
+    conversation.push(messages[child])
+    node = child
+  }
+
+  log(conversation)
+
+  return conversation
 }
+// export function render_messages(thread: thread) {
+//   return build_path(thread).map((node) => thread.messages[node])
+// }
 
 export function build_context(thread: thread) {
   const root_config = thread.roots[0] ?? {}
