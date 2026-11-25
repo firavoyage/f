@@ -3,7 +3,7 @@ import { use_window_active } from 'lib/web/use window active'
 import 'web/design/app.css'
 import 'web/design/utilitarian.css'
 
-// import { sidebar } from './sidebar'
+import { sidebar } from './sidebar'
 import { scroll } from './scroll'
 import { conversation } from './conversation'
 import { random_id } from 'lib/random'
@@ -293,80 +293,28 @@ export function app({ should_use_vimium = true }) {
     h('title.', 'Humility'),
     h(
       'app',
-      sidebar_open &&
-        h(
-          'sidebar',
-          h(
-            'nav',
-            h(
-              'button.link.nav_new_thread',
-              {
-                onclick: commands.new_thread,
-              },
-              text('new_thread'),
-            ),
-          ),
-          h(
-            'threads',
-            h(
-              scroll,
-              map(thread_hierarchy, ({ type, label, id }) => {
-                if (type == 'file') {
-                  return h(
-                    'threads_thread',
-                    { focus: thread_id == id },
-                    h(
-                      'button.link.threads_set_thread',
-                      {
-                        onclick() {
-                          set_thread_id(id)
-                        },
-                      },
-                      label || 'Untitled',
-                    ),
-                    h(
-                      'button.link.threads_delete_thread',
-                      {
-                        async onclick() {
-                          controls.hide_thread(id)
-                        },
-                      },
-                      'delete',
-                    ),
-                  )
-                }
-
-                if (type == 'folder') {
-                  return h(
-                    'threads_folder',
-                    { focus: thread_id == id },
-                    h(
-                      'button.threads_toggle_folder',
-                      {
-                        onclick() {
-                          controls.toggle_folder(id)
-                        },
-                      },
-                      label,
-                    ),
-                  )
-                }
-
-                return h('threads_whitespace')
-              }),
-            ),
-          ),
-        ),
-      h(conversation, {
-        messages: build_context(thread),
-        folder,
-        is_new_thread,
-        prompt,
-        set_prompt,
-        should_show_reasoning,
-        prompt_ref: prompt_field,
-        content_ref: content,
+      h(sidebar, {
+        open: sidebar_open,
+        thread_hierarchy,
+        thread_id,
+        new_thread: commands.new_thread,
+        select_thread: set_thread_id,
+        hide_thread: controls.hide_thread,
+        toggle_folder: controls.toggle_folder,
       }),
+      h(
+        'main',
+        h(conversation, {
+          messages: build_context(thread),
+          folder,
+          is_new_thread,
+          prompt,
+          set_prompt,
+          should_show_reasoning,
+          prompt_field,
+          content,
+        }),
+      ),
       h(modal_prompt, {
         open: modal_prompt_open,
         set_open: set_modal_prompt_open,

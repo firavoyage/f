@@ -3,17 +3,6 @@ import { markdown } from './markdown'
 import { scroll } from './scroll'
 import { textarea } from './textarea'
 
-type conversation = {
-  messages: message_structure[]
-  folder: string
-  is_new_thread: boolean
-  prompt: string
-  set_prompt: fn
-  should_show_reasoning: boolean
-  prompt_ref: any
-  content_ref: any
-}
-
 export function conversation({
   messages,
   folder,
@@ -21,17 +10,16 @@ export function conversation({
   prompt,
   set_prompt,
   should_show_reasoning,
-  prompt_ref,
-  content_ref,
-}: conversation) {
+  prompt_field,
+  content,
+}) {
   return h(
-    'main',
     is_new_thread && h('status', h('status_folder', folder)),
     h(
       'page',
       h(
         scroll,
-        { ref: content_ref },
+        { ref: content },
         h(
           'page_content',
           !is_new_thread &&
@@ -84,7 +72,7 @@ export function conversation({
             h(textarea, {
               value: prompt,
               set_value: set_prompt,
-              ref: prompt_ref,
+              ref: prompt_field,
             }),
           ),
         ),

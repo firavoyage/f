@@ -1,4 +1,4 @@
-export type thread_hierarchy_item =
+type thread_hierarchy_item =
   | {
       type: 'file'
       label: string
@@ -13,11 +13,11 @@ export type thread_hierarchy_item =
       type: 'whitespace'
     }
 
-type hierarchy_node = {
+type thread_hierarchy_node = {
   type: 'file' | 'folder'
   label: string
   creation_time?: number
-  children?: Record<string, hierarchy_node>
+  children?: Record<string, thread_hierarchy_node>
 }
 
 export function build_thread_hierarchy(
@@ -29,7 +29,7 @@ export function build_thread_hierarchy(
     id: thread,
   })).filter(({ is_hidden }) => !is_hidden)
 
-  let root: Record<string, hierarchy_node> = {}
+  let root: Record<string, thread_hierarchy_node> = {}
 
   for (const thread of threads) {
     let current_children = root
@@ -60,7 +60,7 @@ export function build_thread_hierarchy(
   }
   let items: thread_hierarchy_item[] = []
 
-  function append_children(children: Record<string, hierarchy_node>, dir = '') {
+  function append_children(children: Record<string, thread_hierarchy_node>, dir = '') {
     map(children, ([id, child]) => {
       const { type, label, children: child_nodes } = child
 
