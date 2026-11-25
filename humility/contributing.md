@@ -50,7 +50,7 @@ render components w `h(component, props?, ...children)`. do not call directly (e
 
 be simple and functional. avoid semantic html container tags like `section`. no aria attrs or role.
 
-props for html tags are flexible. 
+props for html tags are flexible. both `class` and `className` (or `classname`) are accepted, prefer `class`. style can be string or object. `onclick` and `onClick` are the same. false values will be omitted.
 
 use `use_state`, `use_ref`, `use_effect`, `use_layout_effect`, `use_mount`, `forward(...refs): { current }` from `lib/web/react.ts`. `use_state` returns `[value, set_value]`, calling `set_value()` wo args behaves like `toggle_value()` for booleans. `set_value((value) => { do sth })` can mutate value directly wo return statement. `set_value(promise)` behaves as `promise.then set value`. use effect deps are automatically stringified. use effect can accept async fn.
 
