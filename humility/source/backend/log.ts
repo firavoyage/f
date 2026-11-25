@@ -5,6 +5,10 @@ import { monotonic } from 'lib/time'
 
 const { stringify } = JSON
 
+export function append_thread_log(thread_id, ) {
+  
+}
+
 export function append_json_log(file, type, payload) {
   append(
     file,

@@ -12,7 +12,7 @@ import { build_thread_index_hierarchy } from 'utility/thread_hierarchy'
 import { text } from 'utility/text'
 import { scroll_by } from 'utility/web/scroll'
 import { trim } from 'utility/string'
-import { create_websocket_client } from 'utility/web/websocket'
+import { connect, perform } from 'utility/web/websocket'
 import { modal_prompt } from './modal_prompt'
 import { modal_search } from './modal_search'
 import { init_localstorage_prefix } from 'lib/web/state'
@@ -70,14 +70,6 @@ export function app({ should_use_vimium = true }) {
     modal_prompt_set_value.current = set_value
     modal_prompt_placeholder.current = placeholder
   }
-
-  const websocket_ref = use_ref<
-    ReturnType<typeof create_websocket_client> | nil
-  >(nil)
-  if (!websocket_ref.current) {
-    websocket_ref.current = create_websocket_client()
-  }
-  const websocket = websocket_ref.current
 
   function use_vimium(on) {
     const jk_scroll_distance = 60
@@ -162,16 +154,16 @@ export function app({ should_use_vimium = true }) {
       if (is_new_thread) {
         current_thread_id = random_id()
 
-        await websocket.perform('init', {
+        await perform('init', {
           thread: thread_id,
           title: prompt.slice(0, max_title_length),
           folder,
         })
 
-        set_thread_index(websocket.perform('list'))
+        set_thread_index(perform('list'))
       }
 
-      await websocket.perform('send', {
+      await perform('send', {
         thread: thread_id,
         prompt,
         options: {},
@@ -179,7 +171,7 @@ export function app({ should_use_vimium = true }) {
 
       set_prompt('')
 
-      await websocket.perform('generate', { thread: thread_id })
+      await perform('generate', { thread: thread_id })
     },
     toggle_folder(folder) {
       let folders = set(expanded_folders)
@@ -193,7 +185,7 @@ export function app({ should_use_vimium = true }) {
       set_expanded_folders(array(folders))
     },
     async hide_thread(id: id) {
-      websocket.perform('hide', { thread: id })
+      perform('hide', { thread: id })
       set_thread_index((index) => {
         index[id].is_hidden = true
       })
@@ -253,7 +245,7 @@ export function app({ should_use_vimium = true }) {
 
   // list threads on sidebar
   use_mount(() => {
-    set_thread_index(websocket.perform('list'))
+    set_thread_index(perform('list'))
   })
 
   // subscribe current thread
@@ -263,9 +255,9 @@ export function app({ should_use_vimium = true }) {
       return
     }
 
-    websocket.perform('subscribe', { thread: thread_id })
+    perform('subscribe', { thread: thread_id })
 
-    return () => websocket.perform('unsubscribe', { thread: thread_id })
+    return () => perform('unsubscribe', { thread: thread_id })
   }, [thread_id])
 
   // enter to send prompt
@@ -426,4 +418,23 @@ declare global {
       modification_time?: number
     }
   >
+
+  type action =
+    | 'subscribe'
+    | 'unsubscribe'
+    | 'init'
+    | 'send'
+    | 'generate'
+    | 'call_tool'
+    | 'list'
+    | 'hide'
+
+  type event =
+    | 'set_thread_structure'
+    | 'set_tree'
+    | 'set_message'
+    | 'set_pending_tools'
+    | 'set_active'
+    | 'append_message'
+    | 'finish_message'
 }

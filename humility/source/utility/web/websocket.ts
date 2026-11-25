@@ -2,9 +2,9 @@ import { random, random_id } from 'lib/random'
 
 const { stringify, parse } = JSON
 
-const retry_delay = 1000
-const max_jitter = 1000
-const action_timeout = 1000
+const default_retry_delay = 1000
+const default_max_jitter = 1000
+const default_action_timeout = 1000
 
 let socket: WebSocket
 let pending_actions: Set<fn> = set()
@@ -14,7 +14,10 @@ let __broadcasts: Record<string, fn>
 
 export function connect(
   broadcasts: Record<string, fn>,
-  { endpoint = 'ws://localhost:8192/api/ws' } = {},
+  { endpoint = 'ws://localhost:8192/api/ws',
+    retry_delay = default_retry_delay,
+    max_jitter = default_max_jitter
+   } = {},
 ) {
   socket = new WebSocket(endpoint)
 
@@ -43,7 +46,7 @@ export function connect(
 export function perform(
   action: action,
   payload?: object,
-  timeout = action_timeout,
+  timeout = default_action_timeout,
   request = random_id(),
 ): Promise<any> {
   return new Promise((resolve, reject) => {

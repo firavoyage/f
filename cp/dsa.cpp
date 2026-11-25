@@ -307,7 +307,7 @@ bool is_prime(int n) {
 
 // Iterables
 
-auto prefix_sum(auto vec, int l, int r) {
+auto prefix_sum(auto&& vec, int l, int r) {
   seq(a, r);
 
   each(i, l, r) {

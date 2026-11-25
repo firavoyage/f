@@ -1,5 +1,4 @@
 import { append_server_log } from './log'
-import type { event } from './protocol'
 
 const { stringify } = JSON
 

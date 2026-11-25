@@ -1777,4 +1777,12 @@ for llms, nothing wrong to use typeof and has own.
 
 i would use has and is anyway.
 
+---
+
+do not separate files when you do not reuse logics.
+
+well, you could, if you like.
+
+---
+
 
