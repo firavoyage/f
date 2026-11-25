@@ -182,3 +182,15 @@ it's not really faster to join an array of strings than string add.
     - ~~you could not.~~ cleanups register is for the latest effect.
     - you can. sync op in js has no race cond. and if you turn it off after sync op, some async callbacks (under the hood of promises) registering sto would not register this way on the same ref to the cleanups set.
 
+## 25
+
+- web/react: make `forward` return proxy of current.
+- web/use keyboard: deprecate `priority` and `global`.
+  - priority
+    - too complicated.
+    - nothing wrong to 
+    - use when instead when you need.
+  - global
+    - it's not self explanatory. you would not know it enables which on input fields.
+
+

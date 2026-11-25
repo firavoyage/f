@@ -10,6 +10,10 @@ use function statement for named functions
 
 use type, no interface
 
+use `==` and `!=`, no `===`.
+
+tsconfig path starts from source
+
 use modern tech such as es module
 
 # Workflow
@@ -22,20 +26,19 @@ read spec/readme before writing specs
 
 # Web app libraries
 
-render components w `h(component, props?, ...children)`. do not call directly (e.g. `h(button, { label })`, not `button({ label })`). `h` is on global this.
+render components w `h(component, props?, ...children)`. do not call directly (e.g. `h(button, { label })`, not `button({ label })`).
 
 `h(tag, props?, ...children)` also accepts html tags, which can include classes (e.g. `h("button.foo.bar")`). when dot is absent, it's treated as class of div (i.e. prefer `h('panel')` over `h('div.panel')`). write `h('summary.')` when you need html tag wo classes.
 
 be simple and functional. avoid semantic html container tags like `section`. no aria attrs or role.
 
+use `use_state`, `use_ref`, `use_effect`, `use_mount`, `forward(...refs): { current }` from `lib/web/react.ts`. `use_state` returns `[value, set_value]`, calling `set_value()` wo args behaves like `toggle_value()` for booleans. `set_value((value) => { do sth })` can mutate value directly wo return statement. `set_value(promise)` behaves as `promise.then set value`. use effect deps are automatically stringified.
 
+use `use_keyboard(key, handle, { when: bool | fn = true, prevent_default = true, stop_propagation = true } = {})` from `lib/web/use keyboard.ts`. when accepts fn. you should pass fn if it depends on real time state (e.g. `when: () => document.activeElement == ...`).
 
-- `use_state`, `use_ref`, `forward(...refs): (value) => assign to all refs`, `use_effect`, and `use_mount` from `lib/web/react.ts` are project hook wrappers. `use_state` returns `[value, set_value]`; calling the setter with no argument toggles a boolean. Effects can return cleanup functions.
-- `s(initial_value, options)` from `lib/web/state.ts` declares shared state and returns a hook. Options used in this app include `localstorage` and `url_param`; `init_localstorage_prefix(name)` scopes persisted keys.
-- `use_keyboard(key, handler, options)` from `lib/web/use keyboard.ts` registers a shortcut; use `when` for conditional activation.
-- `use_sync_theme` and `use_window_active` are hooks from `lib/web/use sync theme.ts` and `lib/web/use window active.ts`.
-- The web prelude `lib/web/global.ts` installs React, web helpers, and shared utilities as globals. For an unfamiliar unimported name, check the prelude and its defining module; don't assume it is a React built-in.
-- tsconfig path starts from source, not source/web
+always run `use_sync_theme('system' | 'light' | 'dark')` and `use_window_active()` on the top inside `app` component.
+
+all functions mentioned above are from `node_modules/lib/web`, exposed on global this.
 
 # Components
 

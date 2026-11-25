@@ -5,14 +5,8 @@ import { use } from 'lib/global'
 import * as react from 'react'
 use(react)
 
-// override react.use
-use({ use })
-
-// import * as react_use from 'react-use'
-// use(react_use)
-
-import * as react_hooks from 'lib/web/react'
-use(react_hooks)
+import * as hooks from 'lib/web/react'
+use(hooks)
 
 import * as p from 'lib/web/props'
 use(p)
@@ -22,3 +16,6 @@ use(state)
 
 import * as hyperscript from 'lib/web/hyperscript'
 use(hyperscript)
+
+// override react.use
+use({ use })

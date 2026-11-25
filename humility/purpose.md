@@ -1773,5 +1773,8 @@ the more you abstract away the less you can take control of.
 
 ---
 
+for llms, nothing wrong to use typeof and has own.
+
+i would use has and is anyway.
 
 
