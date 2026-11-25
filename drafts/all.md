@@ -1300,6 +1300,7 @@ humility:
 - research pi agent setup
 - research extension archi
 - web utilitarian component library
+- web react basics
 
 legacy:
 

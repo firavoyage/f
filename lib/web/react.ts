@@ -21,16 +21,37 @@ export function use_ref<T>(initial_value?: T) {
   return ref
 }
 
-export function forward(...refs) {
-  return (value) => {
-    map(refs, (ref) => {
-      if (is(ref, 'function')) {
-        ref(value)
-      } else if (is(ref, 'object')) {
-        ref.current = value
-      }
-    })
-  }
+type ref<T> =
+  | ((value: T | null) => void)
+  | { current: T | null }
+  | null
+  | undefined
+
+export function forward<T>(...refs: ref<T>[]): { current: T | null } {
+  let current: T | null = null
+
+  return new Proxy(
+    { current },
+    {
+      get(_target, property) {
+        return property == 'current' ? current : undefined
+      },
+      set(_target, property, value: T | null) {
+        if (property != 'current') return false
+
+        current = value
+        refs.forEach((ref) => {
+          if (typeof ref == 'function') {
+            ref(value)
+          } else if (ref) {
+            ref.current = value
+          }
+        })
+
+        return true
+      },
+    },
+  )
 }
 
 export function use_state<T>(

@@ -1767,4 +1767,11 @@ https://www.radix-ui.com/
 - llms dont know how to use icons
   - they use unicode symbols and sometimes emojis
 
+## 25
+
+the more you abstract away the less you can take control of.
+
 ---
+
+
+
