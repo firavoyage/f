@@ -338,7 +338,7 @@ export function app({ should_use_vimium = true }) {
       sidebar_open &&
         h(sidebar, {
           threads: flat_hierarchy,
-          current_thread: thread_id,
+          thread_id,
           new_thread: commands.new_thread,
           select_thread: set_thread_id,
           hide_thread: hide_thread,

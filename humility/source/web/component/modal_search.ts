@@ -2,7 +2,6 @@ import { go } from 'fuzzysort'
 
 import { text } from 'utility/text'
 
-import { input } from './input'
 import { modal } from './modal'
 import { scroll } from './scroll'
 
@@ -135,7 +134,7 @@ export function modal_search({ files, commands, shortcuts }) {
         'modal_search',
         h(
           'modal_search_query',
-          h(input, {
+          h('input.input', {
             value: query,
             set_value: set_query,
             placeholder: text('search_threads'),

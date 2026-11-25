@@ -34,7 +34,7 @@ you may see polymorphism via `is(value, "string" | "number" | "bigint" | "boolea
 
 you may see error handling like `result = handle(() => JSON.parse(value)); result = await handle(() => fetch(...)); if(is_error(result)){early return}; ...` `throw err('it should be valid input')`.
 
-you may see collections like `foo = dict(), bar = set(), numbers = array(...args)` (e.g. when you write `max(...args) { const numbers = array(...args) }`, it will be `number[]` as expected whether you call `max([1,2,3])` or `max(1,2,3)` or `max(1)`).
+you may see collections like `foo = dict(), bar = set(), numbers = array(...args), entries({})` (e.g. when you write `max(...args) { const numbers = array(...args) }`, it will be `number[]` as expected whether you call `max([1,2,3])` or `max(1,2,3)` or `max(1)`).
 
 you may see `log`, an alias of `console.log`.
 

@@ -9,7 +9,7 @@ import parse_style from 'style-to-js'
 export function p<T>(props: T): T {
   const converted_props: any = {}
 
-  for (const [key, value] of Object.entries(props)) {
+  for (const [key, value] of entries(props)) {
     if (key == 'class' || key == 'className' || key == 'classname') {
       if (is(value, 'array')) {
         converted_props.className = clsx(converted_props.className, ...value)
@@ -18,6 +18,11 @@ export function p<T>(props: T): T {
       }
     } else if (key == 'style' && typeof value == 'string') {
       converted_props.style = parse_style(value)
+    } else if (key == 'set_value') {
+      let set_value = value
+      converted_props.onChange = (event) => {
+        set_value(event.target.value)
+      }
     } else {
       if (key.startsWith('on')) {
         const normalized_key =
@@ -36,7 +41,7 @@ export function p<T>(props: T): T {
 
           continue
         }
-        
+
         converted_props[key] = value
       }
     }

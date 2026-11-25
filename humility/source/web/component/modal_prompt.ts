@@ -1,4 +1,3 @@
-import { input } from './input'
 import { modal } from './modal'
 
 export function modal_prompt({
@@ -53,7 +52,7 @@ export function modal_prompt({
       { set_open },
       h(
         'modal_prompt',
-        h(input, {
+        h('input.input', {
           value: content,
           set_value: set_content,
           placeholder,

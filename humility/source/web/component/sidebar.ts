@@ -4,7 +4,7 @@ import type { thread_hierarchy_item } from 'utility/thread_hierarchy'
 
 type sidebar = {
   threads: thread_hierarchy_item[]
-  current_thread: id
+  thread_id: id
   new_thread: () => void
   select_thread: (thread: id) => void
   hide_thread: (thread: id) => void
@@ -13,7 +13,7 @@ type sidebar = {
 
 export function sidebar({
   threads,
-  current_thread,
+  thread_id,
   new_thread,
   select_thread,
   hide_thread,
@@ -39,7 +39,7 @@ export function sidebar({
           if (type == 'file') {
             return h(
               'threads_thread',
-              { focus: current_thread == id },
+              { focus: thread_id == id },
               h(
                 'button.link.threads_set_thread',
                 {
@@ -64,7 +64,7 @@ export function sidebar({
           if (type == 'folder') {
             return h(
               'threads_folder',
-              { focus: current_thread == id },
+              { focus: thread_id == id },
               h(
                 'button.threads_toggle_folder',
                 {
