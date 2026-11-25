@@ -1,63 +1,51 @@
 import { p } from 'lib/web/props'
 
-export function h<
-  F extends (params: any) => any
->(
-  fn: F,
-  params?: Partial<Parameters<F>[0]>,
+export function h<F extends (params: any) => any>(
+  component: F,
+  props?: Partial<Parameters<F>[0]>,
   // params: Parameters<F>[0],
   ...children: any[]
 )
 
+type props = object
+
+export function h(tag: string, props: props, ...children: any[])
+
 export function h(tag: string, ...children: any[])
 
-export function h(tag: any[], ...children: any[])
-
-// export function h(tag: object, ...children: any[])
-
 export function h(...args) {
-  let tag,
-    props,
-    children = []
-  let given_tag = 'div',
-    given_props = {}
+  let { flexible_tag, props, children } = parse_hyperscript(...args)
 
-  if (is_tag(args[0]) && is_plain_object(args[1])) {
-    ;[given_tag, given_props, ...children] = args
-  } else if (is_tag(args[0])) {
-    ;[given_tag, ...children] = args
-  } else if (is_plain_object(args[0])) {
-    ;[given_props, ...children] = args
-  } else {
-    given_tag = Fragment
-
-    children = args
-  }
-
-  if (is(given_tag, 'string')) {
-    props = p(given_props)
+  let tag
+  if (is(flexible_tag, 'string')) {
+    props = p(props)
 
     const { tag: parsed_tag, classname: parsed_classname } =
-      parse_tag(given_tag)
+      parse_tag(flexible_tag)
 
-    if (parsed_tag) {
-      tag = parsed_tag
-    }
+    tag = parsed_tag
 
-    if (parsed_classname) {
-      props.className = `${props.className ?? ''} ${parsed_classname}`.trim()
-    }
+    props.className = [props.className, parsed_classname]
+
+    props = p(props)
   } else {
-    tag = given_tag
-
-    props = given_props
+    // component
+    tag = flexible_tag
   }
 
   return createElement(tag, props, ...children)
 }
 
-function is_tag(v) {
-  return is(v, 'string') || is(v, 'function')
+function parse_hyperscript(...args) {
+  if (is_plain_object(args[1])) {
+    const [flexible_tag, props, ...children] = args
+
+    return { flexible_tag, props, children }
+  } else {
+    const [flexible_tag, ...children] = args
+
+    return { flexible_tag, props: {}, children }
+  }
 }
 
 function is_plain_object(v) {
@@ -66,7 +54,7 @@ function is_plain_object(v) {
 
 function parse_tag(s) {
   if (s == '') {
-    return Fragment
+    return { tag: Fragment, classname: '' }
   }
 
   if (!has(s, '.')) {

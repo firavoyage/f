@@ -192,7 +192,12 @@ it's not really faster to join an array of strings than string add.
     - use when instead when you need.
   - global
     - it's not self explanatory. you would not know it enables which on input fields.
-- lib/global: deprecate `union` `collection`.
+- global: deprecate `union` `collection`.
   - use native `'foo' as 'foo' | 'bar'` instead
   - import iterable utils instead, no need to be global
+- web/props: deprecate `html`, `on_callback`.
+  - use a component w use effect instead
+- web/props: deprecate `kebab_to_camel`.
+  - you couldnt define stuff in kebab case anyway. would be more reasonable for snake case.
+- web/hyperscript: refactor code. make behavior more predictable and self explanable. only support actual use cases.
 

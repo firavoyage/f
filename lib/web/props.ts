@@ -1,54 +1,13 @@
 import clsx from 'clsx'
 import parse from 'style-to-js'
 
-function kebab_to_camel(str: string): string {
-  let result = ''
-  let capitalize_next = false
-
-  for (let i = 0; i < str.length; i++) {
-    const char = str[i]
-
-    if (char == '-') {
-      capitalize_next = true
-    } else {
-      if (capitalize_next) {
-        result += char.toUpperCase()
-        capitalize_next = false
-      } else {
-        result += char
-      }
-    }
-  }
-
-  return result
-}
-
-let caches = dict()
-
-function cache(k, v) {
-  if (has(caches, k)) {
-    return caches.get(k)
-  } else {
-    caches.set(k, v)
-    return v
-  }
-}
-
 /**
  * Write react props flexibly
  *
  * idempotent
  */
 export function p<T>(props: T): T {
-  if (typeof props != 'object') {
-    return {}
-  }
-
-  // export function p<Tag extends keyof React.JSX.IntrinsicElements>(
-  //   props: RelaxedProps<React.JSX.IntrinsicElements[Tag]>
-  // ): any {
-  const converted_props = {}
-  // const converted_props: RelaxedProps<React.JSX.IntrinsicElements[Tag]> = {}
+  const converted_props: any = {}
 
   for (const [key, value] of Object.entries(props)) {
     if (key == 'class' || key == 'className') {
@@ -61,22 +20,14 @@ export function p<T>(props: T): T {
       // assume style couldnt map to an array
 
       converted_props.style = parse(value)
-    } else if (key == 'html') {
-      converted_props.dangerouslySetInnerHTML = cache(value, { __html: value })
     } else {
       if (key.startsWith('data-') || key.startsWith('aria-')) {
         converted_props[key] = value
-      } else if (key.startsWith('on_')) {
-        const normalized_key =
-          key.slice(0, 2) + key[3].toUpperCase() + key.slice(4)
-        converted_props[normalized_key] = value
       } else if (key.startsWith('on')) {
         const normalized_key =
           key.slice(0, 2) + key[2].toUpperCase() + key.slice(3)
         converted_props[normalized_key] = value
       } else {
-        // converted_props[key] = value
-
         const normalized_key = kebab_to_camel(key)
 
         if (is(value, 'boolean')) {
