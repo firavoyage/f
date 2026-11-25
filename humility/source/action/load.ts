@@ -27,6 +27,8 @@ export function mutate_thread(
   }
 
   threads[thread_id] = new_thread
+
+  return new_thread
 }
 
 export function update_thread(
@@ -42,12 +44,16 @@ export function update_thread(
   threads[thread_id] = new_thread
 
   write(get_thread_file(thread_id), serialize(new_thread))
+
+  return new_thread
 }
 
 export let thread_index: thread_index = deserialize(read(thread_index_file))
 
 export function update_thread_index(
-  new_thread_index: thread_index | ((thread: thread_index) => thread_index | void),
+  new_thread_index:
+    | thread_index
+    | ((thread: thread_index) => thread_index | void),
 ) {
   if (is(new_thread_index, 'function')) {
     new_thread_index = new_thread_index(thread_index) ?? thread_index
@@ -56,4 +62,6 @@ export function update_thread_index(
   thread_index = new_thread_index
 
   write(thread_index_file, serialize(thread_index))
+
+  return new_thread_index
 }

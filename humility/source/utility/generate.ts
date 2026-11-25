@@ -1,4 +1,5 @@
-import { serialize } from 'action/index'
+import { config_file, deserialize, env_file, serialize } from 'action/index'
+import { read } from 'lib/file'
 import { monotonic, now } from 'lib/time'
 
 const { parse, stringify } = JSON
@@ -150,4 +151,25 @@ export async function generate_stream_openai(
   }
 
   return stream_text
+}
+
+// todo
+export function base_url_model_key() {
+  let config = deserialize(read(config_file))
+  let env = deserialize(read(env_file))
+
+  let { provider, model } = config.default_model
+
+  let { base_url, key = { env: provider } } = config.providers[provider]
+
+  if (has(key, 'env')) {
+    key = env[key.env]
+  }
+
+  return {
+    base_url,
+    key,
+    provider,
+    model,
+  }
 }

@@ -83,7 +83,7 @@ function respond(request: id, payload: any, client: WebSocket) {
   )
 }
 
-export function broadcast(event: event, payload: any, clients: WebSocket) {
+export function broadcast(event: event, payload: any, clients: WebSocket | Set<WebSocket>) {
   append_server_log(`broadcast ${event}`, payload)
 
   clients = array(clients)

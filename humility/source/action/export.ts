@@ -6,7 +6,7 @@ import {
 } from 'action/index'
 import { read, write, join, santinize } from 'lib/file'
 import { at } from 'lib/time'
-import { build_context } from 'utility/thread'
+import { render_messages } from 'utility/thread'
 
 type export_to_dir = {
   dir: string
@@ -90,7 +90,7 @@ export function export_to_dir({
       // contents.push(`# ${title}`)
 
       let thread_structure = deserialize(read(get_thread_file(thread)))
-      let messages = build_context(thread_structure)
+      let messages = render_messages(thread_structure)
 
       for (const message of messages) {
         const { role, content } = message

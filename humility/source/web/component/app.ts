@@ -8,7 +8,7 @@ import { scroll } from './scroll'
 import { conversation } from './conversation'
 import { random_id } from 'lib/random'
 
-import { build_context, empty_thread } from 'utility/thread'
+import { render_messages, empty_thread } from 'utility/thread'
 import { build_thread_hierarchy } from 'utility/thread_hierarchy'
 import { text } from 'utility/text'
 import { scroll_by } from 'utility/web/scroll'
@@ -168,7 +168,7 @@ export function app({
       }
 
       await perform('send', {
-        thread_id,
+        current_thread_id,
         prompt,
         options: {},
       })
@@ -308,7 +308,7 @@ export function app({
       h(
         'main',
         h(conversation, {
-          messages: build_context(thread),
+          messages: render_messages(thread),
           folder,
           is_new_thread,
           prompt,
@@ -371,8 +371,8 @@ declare global {
     model?: string | { provider: string; model: string }
     system_prompt?: string
     tools?: string[]
-    start?: node
-    pending_tools?: Record<id, tool>
+    // start?: node
+    // pending_tools?: Record<id, tool>
   }
 
   type message = {
@@ -409,7 +409,7 @@ declare global {
 
   type delta = {
     content: string
-    reasoning?: string
+    reasoning: string
   }
 
   type thread_index = Record<

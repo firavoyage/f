@@ -1,3 +1,4 @@
+import { random_id } from 'lib/random'
 import { tool_instructions as tool_instruction_text } from './tools'
 
 export function empty_thread(): thread {
@@ -9,8 +10,7 @@ export function empty_thread(): thread {
     },
     roots: {
       0: {
-        tools: ['bash'],
-        pending_tools: {},
+        tools: [],
       },
     },
     messages: {},
@@ -33,13 +33,11 @@ export function append_node(tree: thread['tree'], message: id) {
   return tree
 }
 
-export function build_context(thread: thread) {
-  return build_path(thread).map(
-    (node) => thread.messages[node],
-  )
+export function render_messages(thread: thread) {
+  return build_path(thread).map((node) => thread.messages[node])
 }
 
-export function build_plain_context(thread: thread) {
+export function build_context(thread: thread) {
   const root_config = thread.roots[0] ?? {}
   const tool_instruction_list = (root_config.tools ?? [])
     .map((name) => tool_instruction_text[name])
@@ -48,7 +46,7 @@ export function build_plain_context(thread: thread) {
     .filter(Boolean)
     .join('\n\n')
 
-  const context: plain_message_structure[] = []
+  const context: plain_message[] = []
 
   if (system_prompt) {
     context.push({ role: 'system', content: system_prompt })
@@ -76,11 +74,11 @@ export function build_plain_context(thread: thread) {
 
 export function append_message(
   thread: thread,
-  message: id,
-  message_structure: Partial<message_structure>,
+  message: Partial<message>,
+  message_id: id = random_id(),
 ): thread {
-  append_node(thread.tree, message)
-  thread.messages[message] = message_structure as message_structure
+  append_node(thread.tree, message_id)
+  thread.messages[message_id] = message
 
   return thread
 }
