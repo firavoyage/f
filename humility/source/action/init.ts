@@ -16,16 +16,16 @@ const message_log_folder = data('chat', 'log', 'message')
 mkpath(thread_log_folder)
 mkpath(message_log_folder)
 
-export function get_thread_file(thread: id) {
-  return join(thread_folder, thread)
+export function get_thread_file(thread_id: id) {
+  return join(thread_folder, thread_id)
 }
 
-export function get_thread_log_file(thread: id) {
-  return join(thread_log_folder, `${thread}.jsonl`)
+export function get_thread_log_file(thread_id: id) {
+  return join(thread_log_folder, `${thread_id}.jsonl`)
 }
 
-export function get_message_log_file(message: id) {
-  return join(message_log_folder, `${message}.jsonl`)
+export function get_message_log_file(message_id: id) {
+  return join(message_log_folder, `${message_id}.jsonl`)
 }
 
 export const server_log_file = data('chat', 'log', 'server', `server.log`)
