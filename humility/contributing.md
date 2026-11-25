@@ -16,6 +16,8 @@ tsconfig path starts from source
 
 use modern tech such as es module
 
+avoid typescriptism. you may define types. you do not have to fix types.
+
 # Workflow
 
 skip git, build, or test by default
@@ -26,15 +28,17 @@ read spec/readme before writing specs
 
 # Prelude
 
+`use({foo, bar})` makes `foo` and `bar` global.
+
 you may see polymorphism via `is(value, "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" | Function (constructors like Map, Set) | "nil" | "absent" | "present" | "array" | "numeric" | "literal" | "iterable")`, `has(array | set, element)` `has(map | object, key)` `has(s, substring)`.
 
 you may see error handling like `result = handle(() => JSON.parse(value)); result = await handle(() => fetch(...)); if(is_error(result)){early return}; ...` `throw err('it should be valid input')`.
 
-you may see collections like `foo = dict(), bar = set(), numbers = array(...args)` (e.g. when you write `max(...args) { const numbers = array(...args) | `).
+you may see collections like `foo = dict(), bar = set(), numbers = array(...args)` (e.g. when you write `max(...args) { const numbers = array(...args) }`, it will be `number[]` as expected whether you call `max([1,2,3])` or `max(1,2,3)` or `max(1)`).
 
 you may see `log`, an alias of `console.log`.
 
-they are prelude from `lib/global.ts`. they are generally self explanatory and you may guess their behavior.
+they are from `lib/global.ts`. they are generally self explanatory and you may guess their behavior. you can check their implementation when debugging.
 
 # Web app libraries
 
@@ -42,7 +46,11 @@ render components w `h(component, props?, ...children)`. do not call directly (e
 
 `h(tag, props?, ...children)` also accepts html tags, which can include classes (e.g. `h("button.foo.bar")`). when dot is absent, it's treated as class of div (i.e. prefer `h('panel')` over `h('div.panel')`). write `h('summary.')` when you need html tag wo classes.
 
+`h('', ...children)` makes a fragment.
+
 be simple and functional. avoid semantic html container tags like `section`. no aria attrs or role.
+
+on props, 
 
 use `use_state`, `use_ref`, `use_effect`, `use_layout_effect`, `use_mount`, `forward(...refs): { current }` from `lib/web/react.ts`. `use_state` returns `[value, set_value]`, calling `set_value()` wo args behaves like `toggle_value()` for booleans. `set_value((value) => { do sth })` can mutate value directly wo return statement. `set_value(promise)` behaves as `promise.then set value`. use effect deps are automatically stringified. use effect can accept async fn.
 
