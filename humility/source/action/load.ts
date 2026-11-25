@@ -6,7 +6,7 @@ import {
 } from 'action/index'
 import { read, write } from 'lib/file'
 
-let threads: Record<id, thread> = {}
+export let threads: Record<id, thread> = {}
 
 export function read_thread(thread_id: id) {
   if (!has(threads, thread_id)) {
