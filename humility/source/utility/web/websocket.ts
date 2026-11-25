@@ -90,6 +90,7 @@ function receive(e: MessageEvent) {
 
     if (!has(__broadcasts, event)) {
       warn(`handler for broadcast ${event} should exist`)
+      return 
     }
 
     __broadcasts[event](payload)

@@ -35,34 +35,37 @@ export const use_folder = s('', {
   // localstorage: 'cwd',
 })
 
-export function app({ should_use_vimium = true }) {
+export function app({
+  should_use_vimium = true,
+  should_show_reasoning = false,
+}) {
   use_sync_theme('system')
   use_window_active()
 
   const [prompt, set_prompt] = use_state('')
 
+  const [thread_index, set_thread_index] = use_state<thread_index | nil>(nil)
+
   const [folder, set_folder] = use_folder()
   const [expanded_folders, set_expanded_folders] = use_state<string[]>([])
-  const [thread, set_thread] = use_state<thread>(empty_thread())
-  const [is_active, set_is_active] = use_state(false)
-  const [thread_index, set_thread_index] = use_state<thread_index | nil>(nil)
+
   const [thread_id, set_thread_id] = use_thread_id()
 
-  const [should_show_reasoning, set_should_show_reasoning] = use_state(false)
-
-  const [modal_prompt_open, set_modal_prompt_open] = use_state(false)
+  const [thread, set_thread] = use_state<thread>(empty_thread())
+  const [is_active, set_is_active] = use_state(false)
 
   const [sidebar_open, set_sidebar_open] = use_sidebar_open()
+
+  const [modal_prompt_open, set_modal_prompt_open] = use_state(false)
+  const [modal_prompt_initial_value, set_modal_prompt_initial_value] =
+    use_state()
+  const [modal_prompt_set_value, set_modal_prompt_set_value] = use_state()
+  const [modal_prompt_placeholder, set_modal_prompt_placeholder] = use_state()
 
   let is_new_thread = thread_id == nil
 
   const content = use_ref()
   const prompt_field = use_ref()
-
-  const [modal_prompt_initial_value, set_modal_prompt_initial_value] =
-    use_state()
-  const [modal_prompt_set_value, set_modal_prompt_set_value] = use_state()
-  const [modal_prompt_placeholder, set_modal_prompt_placeholder] = use_state()
 
   function open_prompt_modal({ value, set_value, placeholder }) {
     set_modal_prompt_open(true)
@@ -156,7 +159,7 @@ export function app({ should_use_vimium = true }) {
         current_thread_id = random_id()
 
         await perform('init', {
-          thread: thread_id,
+          thread_id,
           title: prompt.slice(0, max_title_length),
           folder,
         })
@@ -165,14 +168,14 @@ export function app({ should_use_vimium = true }) {
       }
 
       await perform('send', {
-        thread: thread_id,
+        thread_id,
         prompt,
         options: {},
       })
 
       set_prompt('')
 
-      await perform('generate', { thread: thread_id })
+      await perform('generate', { thread_id })
     },
     toggle_folder(folder) {
       let folders = set(expanded_folders)
@@ -185,12 +188,12 @@ export function app({ should_use_vimium = true }) {
 
       set_expanded_folders(array(folders))
     },
-    async hide_thread(id: id) {
-      perform('hide', { thread: id })
+    async hide_thread(current_thread_id: id) {
+      perform('hide', { thread_id: current_thread_id })
       set_thread_index((index) => {
-        index[id].is_hidden = true
+        index[current_thread_id].is_hidden = true
       })
-      if (thread_id == id) {
+      if (thread_id == current_thread_id) {
         commands.new_thread()
       }
     },
@@ -252,9 +255,9 @@ export function app({ should_use_vimium = true }) {
       return
     }
 
-    perform('subscribe', { thread: thread_id })
+    perform('subscribe', { thread_id })
 
-    return () => perform('unsubscribe', { thread: thread_id })
+    return () => perform('unsubscribe', { thread_id })
   }, [thread_id])
 
   // enter to send prompt

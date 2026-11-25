@@ -16,6 +16,19 @@ export function read_thread(thread_id: id) {
   return threads[thread_id]
 }
 
+export function mutate_thread(
+  thread_id: id,
+  new_thread: thread | ((thread: thread) => thread | void),
+) {
+  if (is(new_thread, 'function')) {
+    let thread = read_thread(thread_id)
+
+    new_thread = new_thread(thread) ?? thread
+  }
+
+  threads[thread_id] = new_thread
+}
+
 export function update_thread(
   thread_id: id,
   new_thread: thread | ((thread: thread) => thread | void),

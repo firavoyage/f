@@ -1,5 +1,6 @@
 import { append_thread_log, append_server_log } from 'backend/log'
 import { actions, non_mutative_actions } from 'backend/actions'
+import { random_id } from 'lib/random'
 
 const { parse, stringify } = JSON
 
@@ -22,15 +23,22 @@ type broadcast = {
   payload: any
 }
 
-// client -> client id
+// client <-> client id
+let client_ids = dict()
+let clients = dict()
 
 export const websocket = {
-  onOpen() {
-    log('Client connected')
-    append_server_log('Client connected')
+  onOpen(e, client) {
+    let client_id = random_id()
+
+    log(`Client ${client_id} connected`)
+    append_server_log(`Client ${client_id} connected`)
+
+    client_ids.set(client, client_id)
+    clients.set(client_id, client)
   },
 
-  async onMessage(e, ws) {
+  async onMessage(e, client) {
     const { request, action, payload }: request = parse(e.data)
 
     log(action, payload)
@@ -41,15 +49,25 @@ export const websocket = {
     }
 
     if (action == 'subscribe' || action == 'unsubscribe') {
-      payload.client = ws
+      payload.client = client
+    } 
+
+    if (!has(actions, action)) {
+      warn(`action ${action} should be handled`)
+      return
     }
 
-    respond(request, await actions[action](payload), ws)
+    respond(request, await actions[action](payload), client)
   },
 
-  onClose() {
-    log('Client disconnected')
-    append_server_log('Client disconnected')
+  onClose(e, client) {
+    let client_id = client_ids.get(client)
+
+    log(`Client ${client_id} connected`)
+    append_server_log(`Client ${client_id} connected`)
+
+    clients.delete(client)
+    client_ids.delete(client)
   },
 }
 
@@ -65,3 +83,18 @@ function respond(request: id, payload: any, client: WebSocket) {
   )
 }
 
+export function broadcast(event: event, payload: any, clients: WebSocket) {
+  append_server_log(`broadcast ${event}`, payload)
+
+  clients = array(clients)
+
+  map(clients, (client) => {
+    client.send(
+      stringify({
+        type: 'broadcast',
+        event,
+        payload,
+      }),
+    )
+  })
+}
