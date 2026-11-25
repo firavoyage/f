@@ -1,6 +1,6 @@
 import { text } from 'utility/text'
 import { scroll } from './scroll'
-import type { thread_hierarchy_item } from 'utility/thread_hierarchy'
+import type { thread_hierarchy_item } from 'utility/thread_index_hierarchy'
 
 type sidebar = {
   threads: thread_hierarchy_item[]

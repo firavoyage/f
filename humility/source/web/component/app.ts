@@ -8,7 +8,7 @@ import { conversation } from './conversation'
 import { random_id } from 'lib/random'
 
 import { build_context, empty_thread } from 'utility/thread'
-import { build_thread_index_hierarchy } from 'utility/thread_hierarchy'
+import { build_thread_index_hierarchy } from 'utility/thread_index_hierarchy'
 import { text } from 'utility/text'
 import { scroll_by } from 'utility/web/scroll'
 import { trim } from 'utility/string'
@@ -196,24 +196,24 @@ export function app({ should_use_vimium = true }) {
   }
 
   let broadcasts: Record<event, fn> = {
-    set_thread_structure({ thread, thread_structure, is_active }) {
-      set_thread(thread_structure)
+    set_thread({ thread, is_active }) {
+      set_thread(thread)
       set_is_active(is_active)
     },
     set_tree({ tree }) {
-      set_thread((t) => {
-        t.tree = tree
+      set_thread((thread) => {
+        thread.tree = tree
       })
     },
     set_message({ message, message_structure }) {
-      set_thread((t) => {
-        t.messages[message] = message_structure
+      set_thread((thread) => {
+        thread.messages[message] = message_structure
       })
     },
     set_pending_tools({ pending_tools }) {
-      set_thread((t) => {
-        t.roots[0] ??= {}
-        t.roots[0].pending_tools = pending_tools
+      set_thread((thread) => {
+        thread.roots[0] ??= {}
+        thread.roots[0].pending_tools = pending_tools
       })
     },
     set_active({ is_active }) {
@@ -222,13 +222,9 @@ export function app({ should_use_vimium = true }) {
     append_message({ message, delta }) {
       const { content = '', reasoning = '' } = delta
 
-      set_thread((t) => {
-        t.messages[message].content =
-          (t.messages[message].content ?? '') + content
-        t.messages[message].reasoning =
-          (t.messages[message].reasoning ?? '') + reasoning
-        // t.messages[message].content += content
-        // t.messages[message].reasoning += reasoning
+      set_thread((thread) => {
+        thread.messages[message].content += content
+        thread.messages[message].reasoning += reasoning
       })
     },
     finish_message({ message, message_structure }) {
@@ -430,7 +426,7 @@ declare global {
     | 'hide'
 
   type event =
-    | 'set_thread_structure'
+    | 'set_thread'
     | 'set_tree'
     | 'set_message'
     | 'set_pending_tools'

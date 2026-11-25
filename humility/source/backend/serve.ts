@@ -6,31 +6,7 @@ import { serveStatic } from '@hono/node-server/serve-static'
 import { mkpath, read } from 'lib/file'
 import { format_log } from 'lib/log'
 import { parse_options } from 'lib/cli'
-import { get_thread_log_file } from 'action/index'
-import { append_json_log, append_server_log } from 'backend/log'
-import { actions, non_mutative_actions } from 'backend/actions'
-import { respond } from 'backend/connections'
-
-const { parse } = JSON
-
-type request = {
-  type: 'request'
-  request: id
-  action: action
-  payload: any
-}
-
-type response = {
-  type: 'response'
-  request: id
-  payload: any
-}
-
-type broadcast = {
-  type: 'broadcast'
-  event: event
-  payload: any
-}
+import { websocket } from 'backend/websocket'
 
 const { port } = parse_options({
   port: {
@@ -58,34 +34,7 @@ app.use('*', serveStatic({ root: build_dir }))
 
 app.get(
   '/api/ws',
-  upgradeWebSocket(() => ({
-    onOpen() {
-      log('Client connected')
-      append_server_log('Client connected')
-    },
-
-    async onMessage(e, ws) {
-      const { request, action, payload }: request = parse(e.data)
-
-      log(action, payload)
-      append_server_log(action, payload)
-
-      if (has(payload, 'thread') && !has(non_mutative_actions, action)) {
-        append_json_log(get_thread_log_file(payload.thread), action, payload)
-      }
-
-      if (action == 'subscribe' || action == 'unsubscribe') {
-        payload.client = ws
-      }
-
-      respond(request, await actions[action](payload), ws)
-    },
-
-    onClose() {
-      log('Client disconnected')
-      append_server_log('Client disconnected')
-    },
-  })),
+  upgradeWebSocket(() => websocket),
 )
 
 app.get('*', (c) => {
