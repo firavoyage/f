@@ -23,12 +23,9 @@ use(each)
 import * as handle from 'lib/handle'
 use(handle)
 
-import * as union from 'lib/union'
 import * as map from 'lib/map'
-import * as collection from 'lib/collection'
 use(union)
 use(map)
-use(collection)
 
 import * as chainable from 'lib/chainable'
 use(chainable)

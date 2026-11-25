@@ -192,5 +192,7 @@ it's not really faster to join an array of strings than string add.
     - use when instead when you need.
   - global
     - it's not self explanatory. you would not know it enables which on input fields.
-
+- lib/global: deprecate `union` `collection`.
+  - use native `'foo' as 'foo' | 'bar'` instead
+  - import iterable utils instead, no need to be global
 
