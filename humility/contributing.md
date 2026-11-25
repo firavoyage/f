@@ -4,7 +4,7 @@ on naming, use snake case, verb noun for actions, predicate for bools, plural fo
 
 for coding style, prefer functional programming, be modular and cohesive
 
-prefer self explanatory code over commenting
+prefer self explanatory code over commenting. use lowercase on comments.
 
 use function statement for named functions
 

@@ -3,7 +3,7 @@ import { serve, upgradeWebSocket } from '@hono/node-server'
 import { WebSocketServer } from 'ws'
 import { cors } from 'hono/cors'
 import { serveStatic } from '@hono/node-server/serve-static'
-import { read } from 'lib/file'
+import { mkpath, read } from 'lib/file'
 import { format_log } from 'lib/log'
 import { parse_options } from 'lib/cli'
 import { create_websocket_handlers } from './websocket'
@@ -16,16 +16,21 @@ const { port } = parse_options({
   },
 })
 
+// source/serve -> source/web/build
+const build_dir = '../web/build'
+
 const app = new Hono()
 
 app.use('*', cors())
 
+// log requests
 app.use('*', async (c, next) => {
   await next()
   log(format_log(`${c.req.method} ${c.req.path}`, 'info'))
 })
 
-app.use('*', serveStatic({ root: '../web/build' }))
+mkpath(build_dir)
+app.use('*', serveStatic({ root: build_dir }))
 
 app.get(
   '/api/ws',
@@ -51,7 +56,7 @@ serve(
     port,
     websocket: { server: ws },
   },
-  (info) => {
-    log(`Serve on http://localhost:${info.port}`)
+  ({ port }) => {
+    log(`Serve on http://localhost:${port}`)
   },
 )

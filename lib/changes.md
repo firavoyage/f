@@ -200,4 +200,4 @@ it's not really faster to join an array of strings than string add.
 - web/props: deprecate `kebab_to_camel`.
   - you couldnt define stuff in kebab case anyway. would be more reasonable for snake case.
 - web/hyperscript: refactor code. make behavior more predictable and self explanable. only support actual use cases.
-
+- map: move to `collection`

@@ -1,7 +1,67 @@
+const halt_symbol = Symbol('halt')
+export function halt(value: any) {
+  return { [halt_symbol]: true, value }
+}
+
+type pair<K = any, V = any> = [key: K, value: V]
+
+export function map<T>(items: T[], fn: (item: T, index: number, array: T[]) => any): any[]
+export function map<K, V>(items: Map<K, V>, fn: (item: pair<K, V>, index: number, array: pair<K, V>[]) => any): any[]
+export function map<T>(items: Set<T>, fn: (item: T, index: number, array: T[]) => any): any[]
+export function map<K extends Key, V>(items: Record<K, V>, fn: (item: pair<K, V>, index: number, array: pair<K, V>[]) => any): any[]
+// export function map(items: any, fn: (item: any, index: number, array: any[]) => any): any[]
+
+/**
+ * Map an array to a fn
+ * 
+ * return void to continue
+ * 
+ * return halt(value?) to break (or after pushing the last value)
+ * 
+ * auto convert to entries for objects
+ */
+export function map(items: any, fn: (item: any, index: number, array: any[]) => any) {
+// export function map(items: any, fn: (item: any, index: number, array: any[]) => any) {
+  if (is(items, Map)) {
+    items = Array.from(items.entries())
+  } else if (is(items, Set)) {
+    items = Array.from(items)
+  }  else if (is(items, 'object')) {
+    items = Object.entries(items)
+  }
+
+  const result = []
+
+  for (const [index, item] of Object.entries(items)) {
+    const value = fn(item, +index, items)
+
+    if (value === undefined) {
+      continue
+    }
+    // if (!is_given(value)) {
+    //   continue
+    // }
+
+    if (value == halt) {
+      break
+    }
+
+    if (has(value, halt_symbol)) {
+      // @ts-expect-error 
+      result.push(value.value)
+      break
+    }
+
+    result.push(value);
+  }
+
+  return result
+}
+
 /**
  * Toggle the presense of an element in a set
  */
-export function toggle<T>(set: Set<T>, element: T) {
+export function toggle_set<T>(set: Set<T>, element: T) {
   if (set.has(element)) {
     set.delete(element)
   } else {
@@ -13,69 +73,13 @@ export function reverse_map(obj: object) {
   return Object.fromEntries(map(obj, ([key, value]) => [value, key]))
 }
 
-export function flatten(object: object, is_leaf: fn = () => false) {
-  const result = []
-
-  // 'hr' | type, label | type, content
-  function append(...args) {
-    result.push(args)
-  }
-
-  function flatten_array(array: any[]) {
-    let result = []
-
-    // flatten any array while prepending and appending a hr for each array
-    map(array, (item) => {
-      if (is(item, 'array')) {
-        result.push(['hr'])
-        result.push(...flatten_array(item))
-        result.push(['hr'])
-      } else {
-        result.push(['p', item])
-      }
-    })
-
-    // merge duplicate consecutive hr into one, omit the starting and trailing hr
-    result = map(result, (item, index) => {
-      if (item[0] == 'hr') {
-        if (result[index - 1][0] == 'hr' || index == 0 || index == result.length - 1) {
-          return
-        }
-      }
-
-      return item
-    })
-
-    return result
-  }
-
-  function traverse(object: object, depth = 1) {
-    if (is_leaf(object)) {
-      // see as primitive
-      append('p', object)
-    } else if (is(object, 'array')) {
-      result.push(...flatten_array(object))
-    } else if (is(object, 'object')) {
-      map(object, ([k, v]) => {
-        append(`h${depth}`, k)
-        traverse(v, depth + 1)
-      })
-    } else {
-      // primitive
-      append('p', object)
-    }
-  }
-
-  traverse(object)
-
-  return result
-}
-
-type toggle = typeof toggle
+type halt = typeof halt
+type map = typeof map
+type toggle = typeof toggle_set
 type reverse_map = typeof reverse_map
-type flatten = typeof flatten
 declare global {
-  var toggle: toggle
+  var halt: halt
+  var map: map
+  var toggle_set: toggle
   var reverse_map: reverse_map
-  var flatten: flatten
 }
