@@ -1,6 +1,5 @@
-import { deserialize, serialize, thread_index_file } from 'action/index'
-import { read } from 'lib/file'
+import { thread_index } from 'action/index'
 
 export function list() {
-  return deserialize(read(thread_index_file))
+  return thread_index
 }

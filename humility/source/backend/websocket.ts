@@ -1,4 +1,5 @@
 import { append_thread_log, append_server_log } from 'backend/log'
+import { actions, non_mutative_actions } from 'backend/actions'
 
 const { parse, stringify } = JSON
 
@@ -64,6 +65,3 @@ function respond(request: id, payload: any, client: WebSocket) {
   )
 }
 
-let actions = {
-  
-}

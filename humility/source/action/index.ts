@@ -1,5 +1,5 @@
 export { parse as deserialize, stringify as serialize } from 'yaml'
-export * from 'action/load'
 export * from 'action/init'
+export * from 'action/load'
 export * from 'action/list'
 export * from 'action/hide'

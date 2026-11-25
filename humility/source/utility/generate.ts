@@ -3,8 +3,8 @@ import { monotonic, now } from 'lib/time'
 
 const { parse, stringify } = JSON
 
-export async function generate(
-  { context, endpoint, model, key },
+export async function generate_stream_openai(
+  { base_url, key, model, messages },
   append: append,
   finish: finish,
   stream?: fn,
@@ -17,7 +17,7 @@ export async function generate(
   let first_append_time: number
 
   const response = await handle(() =>
-    fetch(endpoint, {
+    fetch(`${base_url}/v1/chat/completions`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${key}`,
@@ -25,7 +25,7 @@ export async function generate(
       },
       body: stringify({
         model,
-        messages: context,
+        messages,
         stream: true,
         stream_options: {
           include_usage: true,
@@ -48,14 +48,10 @@ export async function generate(
   }
 
   if (!response.body) {
-    finish(
-      fail(
-        'endpoint',
-        `endpoint should send response stream`,
-        await handle(() => response.json()),
-      ),
-    )
-    return
+    throw err({
+      type: 'endpoint',
+      message: `endpoint should send response stream`
+    })
   }
 
   const reader = response.body.getReader()
@@ -141,7 +137,7 @@ export async function generate(
     }
 
     return {
-      role: 'assistant' as const,
+      role: 'assistant',
       content,
       reasoning,
       start_time,

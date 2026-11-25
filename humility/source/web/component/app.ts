@@ -206,9 +206,9 @@ export function app({ should_use_vimium = true }) {
         thread.tree = tree
       })
     },
-    set_message({ message, message_structure }) {
+    set_message({ message_id, message }) {
       set_thread((thread) => {
-        thread.messages[message] = message_structure
+        thread.messages[message_id] = message
       })
     },
     set_pending_tools({ pending_tools }) {
@@ -220,17 +220,17 @@ export function app({ should_use_vimium = true }) {
     set_active({ is_active }) {
       set_is_active(is_active)
     },
-    append_message({ message, delta }) {
+    append_message({ message_id, delta }) {
       const { content = '', reasoning = '' } = delta
 
       set_thread((thread) => {
-        thread.messages[message].content += content
-        thread.messages[message].reasoning += reasoning
+        thread.messages[message_id].content += content
+        thread.messages[message_id].reasoning += reasoning
       })
     },
-    // finish_message({ message, message_structure }) {
+    // finish_message({ message_id, message }) {
     //   set_thread((thread) => {
-    //     thread.messages[message] = message_structure
+    //     thread.messages[message_id] = message
     //   })
     // },
   }
@@ -398,7 +398,7 @@ declare global {
     args: Record<Key, any>
   }
 
-  type plain_message_structure = {
+  type plain_message = {
     role: role
     content: string
   }
@@ -437,4 +437,7 @@ declare global {
     | 'set_active'
     | 'append_message'
     | 'finish_message'
+
+  type append = (delta: delta) => any
+  type finish = (message: message) => any
 }
