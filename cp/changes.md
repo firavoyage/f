@@ -35,14 +35,16 @@ simplify
 p
 
 ```
-auto min_(auto first, auto... rest) {
+auto min_(auto first, auto... rest)
 ```
 
 c
 
 ```
-auto min_(auto... numbers) {
+auto min_(auto... numbers)
 ```
 
 > template 0.3
+
+> template 0.4
 

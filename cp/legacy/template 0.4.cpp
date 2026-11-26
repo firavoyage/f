@@ -1,0 +1,291 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define repeat(n) for (int _ = 0; _ < n; _ += 1)
+
+// closed interval
+#define each(i, a, b) for (int i = a; i <= b; i += 1)
+#define reveach(i, b, a) for (int i = b; i >= a; i -= 1)
+
+#define int long long
+#define float double
+#define seq(a, n) vector<int> a(n + 5)
+#define dict unordered_map<int, int>
+
+#define readint(...) \
+  int __VA_ARGS__;   \
+  read(__VA_ARGS__);
+#define readfloat(...) \
+  float __VA_ARGS__;   \
+  read(__VA_ARGS__);
+#define readstr(...)  \
+  string __VA_ARGS__; \
+  read(__VA_ARGS__);
+#define readchar(...) \
+  char __VA_ARGS__;   \
+  read(__VA_ARGS__);
+
+#define readseq(a, l, r) \
+  seq(a, r);             \
+  read_vec(a, l, r);
+
+// #define last(a) ((a).size() - 1)
+// #define append push_back
+
+const int modulo = 1e9 + 7;
+const int nil = -1;
+const int inf = 1e18;
+
+const int has_implemented = true;
+#define todo assert(has_implemented == false);
+
+// utils
+
+auto read(auto&&... variables) {
+  ((cin >> variables), ...);
+}
+
+auto read_vec(auto&& a, int l, int r) {
+  each(i, l, r) {
+    read(a[i]);
+  }
+}
+
+auto readline(auto&&... s) {
+  cin >> ws;  // ignore any trailing whitespace
+  ((getline(cin, s)), ...);
+}
+
+auto write(auto&&... items) {
+  ((cout << items), ...);
+}
+
+auto pr(auto&&... items) {
+  (write(items, ' '), ...);
+}
+
+auto prn() {
+  write('\n');
+}
+
+auto prn(auto&&... items) {
+  (pr(items), ...);
+
+  write('\n');
+}
+
+auto prn_vec(auto&& a, int l, int r) {
+  each(i, l, r) {
+    pr(a[i]);
+  }
+  write('\n');
+}
+
+#define print prn
+
+// debug
+
+#define info(...)             \
+  if (should_debug) {         \
+    prn("info", __VA_ARGS__); \
+  }
+
+auto force_tle() {
+  while (true) {
+  }
+}
+
+auto force_re() {
+  assert(false);
+}
+
+auto force_mle() {
+  vector<vector<int>> leak;
+  while (true) {
+    leak.push_back(vector<int>(1000000, 42));
+  }
+}
+
+auto force_wa() {
+  cout << "wrong answer";
+  exit(0);
+}
+
+// std
+
+#define parse_int stoi
+#define parse_float stod
+
+// iterables
+
+auto sort_arr(auto&& a, auto l, auto r) {
+  sort((a) + (l), (a) + (r) + 1);
+}
+
+auto sort_arr(auto&& a, auto l, auto r, auto cmp) {
+  sort((a) + (l), (a) + (r) + 1, cmp);
+}
+
+auto sort_vec(auto&& a, auto l, auto r) {
+  sort(a.begin() + (l), a.begin() + (r) + 1);
+}
+
+auto sort_vec(auto&& a, auto l, auto r, auto cmp) {
+  sort(a.begin() + (l), a.begin() + (r) + 1, cmp);
+}
+
+#define sort sort_vec
+
+// string
+
+auto format_float(auto number, auto precision) {
+  char buf[64];
+  snprintf(buf, sizeof(buf), "%.*f", (precision), (double)(number));
+  return string(buf);
+}
+
+// math
+
+auto truediv = [](auto a, auto b) { return double(a) / b; };
+
+auto floordiv = [](auto a, auto b) { return floor(double(a) / b); };
+
+auto divmod = [](auto numerator, auto denominator) {
+  auto quotient = numerator / denominator, remainder = numerator % denominator;
+  return pair{quotient, remainder};
+};
+
+auto pow_(int base, int exp, int mod = modulo) {
+  int res = 1;
+  base %= mod;
+
+  while (exp > 0) {
+    if (exp & 1) {  // exp % 2 == 1
+      res = res * base % mod;
+    }
+    base = base * base % mod;
+    exp >>= 1;  // exp /= 2;
+  }
+  return res;
+}
+
+auto mod_inverse(int n, int mod = modulo) {
+  return pow_(n, mod - 2, mod);
+}
+
+auto ln = [](auto a) { return log(a); };
+
+auto logab = [](auto a, auto b) { return ln(a) / ln(b); };
+
+auto comb(int n, int r, int mod = modulo) {
+  if (r < 0 || r > n) return 0;
+  if (r == 0 || r == n) return 1;
+
+  if (r > n - r) {
+    r = n - r;
+  }
+
+  auto result = 1;
+  each(i, 1, r) {
+    result = (result * (n - r + i) * mod_inverse(i, mod)) % mod;
+  }
+  return result;
+}
+
+auto perm(int n, int r, int mod = modulo) {
+  if (r < 0 || r > n) return 0;
+
+  auto result = 1;
+  each(i, n, n - r + 1) {
+    result = (result * i) % mod;
+  }
+  return result;
+}
+
+auto min_seq(auto&& a, auto l, auto r) {
+  auto minimum = a[l];
+  each(i, l, r) {
+    if (a[i] < minimum) {
+      minimum = a[i];
+    }
+  }
+  return minimum;
+}
+
+auto min_(auto... numbers) {
+  auto minimum = inf;
+
+  ((minimum = (numbers < minimum) ? numbers : minimum), ...);
+
+  return minimum;
+}
+
+auto max_seq(auto&& a, auto l, auto r) {
+  auto maximum = a[l];
+  each(i, l, r) {
+    if (a[i] > maximum) {
+      maximum = a[i];
+    }
+  }
+  return maximum;
+}
+
+auto max_(auto... numbers) {
+  auto maximum = -inf;
+
+  ((maximum = (numbers > maximum) ? numbers : maximum), ...);
+
+  return maximum;
+}
+
+auto floor_ = [](auto x) {
+  int result = floor(x);
+  return result;
+};
+auto ceil_ = [](auto x) {
+  int result = ceil(x);
+  return result;
+};
+
+// fix
+
+#define pow pow_
+#define floor floor_
+#define ceil ceil_
+#define min min_
+#define max max_
+
+void solve();
+
+// entry
+
+const bool is_single_task = true;
+
+const bool should_debug = true;
+
+signed main() {
+  ios_base::sync_with_stdio(false);
+  cin.tie(nullptr);
+
+  int t = 1;
+
+  if (!is_single_task) {
+    read(t);
+  }
+  repeat(t) {
+    solve();
+  }
+}
+
+// solution
+
+/*
+
+
+
+*/
+
+void solve() {
+  
+}

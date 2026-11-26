@@ -3,9 +3,10 @@
 using namespace std;
 
 #define repeat(n) for (int _ = 0; _ < n; _ += 1)
+
 // closed interval
-#define each(i, a, b) for (int i = (a); i <= (b); i += 1)
-#define reveach(i, a, b) for (int i = (a); i >= (b); i -= 1)
+#define each(i, a, b) for (int i = a; i <= b; i += 1)
+#define reveach(i, b, a) for (int i = b; i >= a; i -= 1)
 
 #define int long long
 #define float double
@@ -29,7 +30,7 @@ using namespace std;
   seq(a, r);             \
   read_vec(a, l, r);
 
-#define last(a) ((a).size() - 1)
+// #define last(a) ((a).size() - 1)
 // #define append push_back
 
 const int modulo = 1e9 + 7;
@@ -118,20 +119,20 @@ auto force_wa() {
 
 // iterables
 
-auto sort_arr(auto&& arr, auto l, auto r) {
-  sort((arr) + (l), (arr) + (r) + 1);
+auto sort_arr(auto&& a, auto l, auto r) {
+  sort((a) + (l), (a) + (r) + 1);
 }
 
-auto sort_arr(auto&& arr, auto l, auto r, auto cmp) {
-  sort((arr) + (l), (arr) + (r) + 1, cmp);
+auto sort_arr(auto&& a, auto l, auto r, auto cmp) {
+  sort((a) + (l), (a) + (r) + 1, cmp);
 }
 
-auto sort_vec(auto&& vec, auto l, auto r) {
-  sort(vec.begin() + (l), vec.begin() + (r) + 1);
+auto sort_vec(auto&& a, auto l, auto r) {
+  sort(a.begin() + (l), a.begin() + (r) + 1);
 }
 
-auto sort_vec(auto&& vec, auto l, auto r, auto cmp) {
-  sort(vec.begin() + (l), vec.begin() + (r) + 1, cmp);
+auto sort_vec(auto&& a, auto l, auto r, auto cmp) {
+  sort(a.begin() + (l), a.begin() + (r) + 1, cmp);
 }
 
 #define sort sort_vec
@@ -202,11 +203,11 @@ auto perm(int n, int r, int mod = modulo) {
   return result;
 }
 
-auto min_seq(auto&& vec, auto l, auto r) {
-  auto minimum = vec[l];
+auto min_seq(auto&& a, auto l, auto r) {
+  auto minimum = a[l];
   each(i, l, r) {
-    if (vec[i] < minimum) {
-      minimum = vec[i];
+    if (a[i] < minimum) {
+      minimum = a[i];
     }
   }
   return minimum;
@@ -220,11 +221,11 @@ auto min_(auto... numbers) {
   return minimum;
 }
 
-auto max_seq(auto&& vec, auto l, auto r) {
-  auto maximum = vec[l];
+auto max_seq(auto&& a, auto l, auto r) {
+  auto maximum = a[l];
   each(i, l, r) {
-    if (vec[i] > maximum) {
-      maximum = vec[i];
+    if (a[i] > maximum) {
+      maximum = a[i];
     }
   }
   return maximum;
@@ -275,7 +276,6 @@ signed main() {
   repeat(t) {
     solve();
   }
-  return 0;
 }
 
 // solution

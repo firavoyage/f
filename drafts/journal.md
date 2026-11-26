@@ -55555,6 +55555,12 @@ ctrl shift jkhl: select
 
 press any key as you like.
 
+26
+
+15 00 write down cp template on a notebook.
+
+make syntax easier to memorize.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

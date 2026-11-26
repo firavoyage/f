@@ -3,9 +3,10 @@
 using namespace std;
 
 #define repeat(n) for (int _ = 0; _ < n; _ += 1)
+
 // closed interval
-#define each(i, a, b) for (int i = (a); i <= (b); i += 1)
-#define reveach(i, a, b) for (int i = (a); i >= (b); i -= 1)
+#define each(i, a, b) for (int i = a; i <= b; i += 1)
+#define reveach(i, b, a) for (int i = b; i >= a; i -= 1)
 
 #define int long long
 #define float double
@@ -29,7 +30,7 @@ using namespace std;
   seq(a, r);             \
   read_vec(a, l, r);
 
-#define last(a) ((a).size() - 1)
+// #define last(a) ((a).size() - 1)
 // #define append push_back
 
 const int modulo = 1e9 + 7;
