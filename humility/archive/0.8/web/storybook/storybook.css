@@ -1,0 +1,45 @@
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+.storybook {
+  min-height: 100dvh;
+  padding: var(--spacing-4);
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  font-family: var(--typeface-sans);
+  font-size: var(--text-base-font-size);
+  line-height: var(--text-base-line-height);
+}
+
+.storybook_components {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.storybook_component {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  overflow: visible;
+  padding: var(--spacing-3);
+  border-radius: var(--rounded-md);
+  background-color: var(--color-surface-semihigh);
+}
+
+.storybook_component_name {
+  color: var(--color-on-surface-low);
+  font-size: var(--text-sm-font-size);
+  font-weight: 600;
+}
+
+.storybook_component_sample {
+  display: flex;
+  min-height: var(--spacing-8);
+  overflow: visible;
+  align-items: center;
+  gap: var(--spacing-3);
+}

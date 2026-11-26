@@ -1785,4 +1785,13 @@ well, you could, if you like.
 
 ---
 
+tricky!
+
+```
+    set_modal_prompt_initial_value(value)
+    set_modal_prompt_set_value(() => set_value)
+    set_modal_prompt_placeholder(placeholder)
+```
+
+---
 

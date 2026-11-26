@@ -46,7 +46,7 @@ export function app({
 
   const [thread_index, set_thread_index] = use_state<thread_index | nil>(nil)
 
-  const [folder, set_folder] = use_folder()
+  const [folder, set_folder] = use_folder('')
   const [expanded_folders, set_expanded_folders] = use_state<string[]>([])
 
   let [thread_id, set_thread_id] = use_thread_id()
@@ -71,7 +71,7 @@ export function app({
     set_modal_prompt_open(true)
 
     set_modal_prompt_initial_value(value)
-    set_modal_prompt_set_value(set_value)
+    set_modal_prompt_set_value(() => set_value)
     set_modal_prompt_placeholder(placeholder)
   }
 
@@ -235,13 +235,12 @@ export function app({
         thread.messages[message_id].reasoning += reasoning
       })
     },
-    // finish_message({ message_id, message }) {
-    //   set_thread((thread) => {
-    //     thread.messages[message_id] = message
-    //   })
-    // },
+    finish_message({ message_id, message }) {
+      set_thread((thread) => {
+        thread.messages[message_id] = message
+      })
+    },
   }
-  use_debug(thread)
 
   // open websocket
   use_mount(() => {

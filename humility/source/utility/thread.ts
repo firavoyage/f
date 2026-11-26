@@ -33,6 +33,17 @@ export function append_node(tree: thread['tree'], message: id) {
   return tree
 }
 
+export function append_message(
+  thread: thread,
+  message: Partial<message>,
+  message_id: id = random_id(),
+): thread {
+  append_node(thread.tree, message_id)
+  thread.messages[message_id] = message
+
+  return thread
+}
+
 export function render_conversation(thread: thread) {
   const { tree, messages } = thread
 
@@ -40,7 +51,6 @@ export function render_conversation(thread: thread) {
   let node = root
 
   let conversation = []
-  log(tree, tree[node], tree[node].focus)
   while (tree[node].focus) {
     let child = tree[node].focus
 
@@ -48,13 +58,8 @@ export function render_conversation(thread: thread) {
     node = child
   }
 
-  log(conversation)
-
   return conversation
 }
-// export function render_messages(thread: thread) {
-//   return build_path(thread).map((node) => thread.messages[node])
-// }
 
 export function build_context(thread: thread) {
   const root_config = thread.roots[0] ?? {}
@@ -89,17 +94,6 @@ export function build_context(thread: thread) {
   }
 
   return context
-}
-
-export function append_message(
-  thread: thread,
-  message: Partial<message>,
-  message_id: id = random_id(),
-): thread {
-  append_node(thread.tree, message_id)
-  thread.messages[message_id] = message
-
-  return thread
 }
 
 function build_path(thread: thread): node[] {

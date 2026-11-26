@@ -23,7 +23,7 @@ export function modal_prompt({
       set_open(false)
     },
     {
-      when: document.activeElement == field.current,
+      when: () => document.activeElement == field.current,
     },
   )
 
