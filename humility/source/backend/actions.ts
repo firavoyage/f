@@ -105,4 +105,14 @@ export const actions: Record<action, fn> = {
     return thread_index
   },
   hide,
+  call_tool() {
+    // todo
+  },
+  set_focus({ thread_id, parent, focus }) {
+    let thread = update_thread(thread_id, (thread) => {
+      thread.tree[parent].focus = focus
+    })
+
+    broadcast('set_tree', { tree: thread.tree })
+  },
 }

@@ -23,7 +23,7 @@ export function read_thread(thread_id: id) {
 export function mutate_thread(
   thread_id: id,
   new_thread: thread | ((thread: thread) => thread | void),
-) {
+): thread {
   if (is(new_thread, 'function')) {
     let thread = read_thread(thread_id)
 
@@ -38,7 +38,7 @@ export function mutate_thread(
 export function update_thread(
   thread_id: id,
   new_thread: thread | ((thread: thread) => thread | void),
-) {
+): thread {
   if (is(new_thread, 'function')) {
     let thread = read_thread(thread_id)
 

@@ -3,9 +3,7 @@ import { use_window_active } from 'lib/web/use window active'
 import 'web/design/app.css'
 import 'web/design/utilitarian.css'
 
-import { sidebar } from './sidebar'
-import { scroll } from './scroll'
-import { conversation } from './conversation'
+import { copy } from 'lib/web/clipboard'
 import { random_id } from 'lib/random'
 
 import { render_conversation, empty_thread } from 'utility/thread'
@@ -14,9 +12,13 @@ import { text } from 'utility/text'
 import { scroll_by } from 'utility/web/scroll'
 import { trim } from 'utility/string'
 import { connect, perform } from 'utility/web/websocket'
+import { init_localstorage_prefix } from 'lib/web/state'
+
 import { modal_prompt } from './modal_prompt'
 import { modal_search } from './modal_search'
-import { init_localstorage_prefix } from 'lib/web/state'
+import { markdown } from './markdown'
+import { scroll } from './scroll'
+import { textarea } from './textarea'
 
 const max_title_length = 65 * 2
 
@@ -300,27 +302,142 @@ export function app({
     h('title.', 'Humility'),
     h(
       'app',
-      h(sidebar, {
-        open: sidebar_open,
-        thread_hierarchy,
-        thread_id,
-        new_thread: commands.new_thread,
-        select_thread: set_thread_id,
-        hide_thread: controls.hide_thread,
-        toggle_folder: controls.toggle_folder,
-      }),
+      // sidebar
+      sidebar_open &&
+        h(
+          'sidebar',
+          h(
+            'nav',
+            h(
+              'button.link.nav_new_thread',
+              {
+                onclick: commands.new_thread,
+              },
+              text('new_thread'),
+            ),
+          ),
+          h(
+            'threads',
+            h(
+              scroll,
+              map(thread_hierarchy, ({ type, label, id }) => {
+                if (type == 'file') {
+                  return h(
+                    'threads_thread',
+                    { focus: thread_id == id },
+                    h(
+                      'button.link.threads_set_thread',
+                      {
+                        onclick() {
+                          set_thread_id(id)
+                        },
+                      },
+                      label || 'Untitled',
+                    ),
+                    h(
+                      'button.link.threads_delete_thread',
+                      {
+                        async onclick() {
+                          controls.hide_thread(id)
+                        },
+                      },
+                      'delete',
+                    ),
+                  )
+                }
+
+                if (type == 'folder') {
+                  return h(
+                    'threads_folder',
+                    { focus: thread_id == id },
+                    h(
+                      'button.threads_toggle_folder',
+                      {
+                        onclick() {
+                          controls.toggle_folder(id)
+                        },
+                      },
+                      label,
+                    ),
+                  )
+                }
+
+                return h('threads_whitespace')
+              }),
+            ),
+          ),
+        ),
       h(
         'main',
-        h(conversation, {
-          messages: render_conversation(thread),
-          folder,
-          is_new_thread,
-          prompt,
-          set_prompt,
-          should_show_reasoning,
-          prompt_field,
-          content,
-        }),
+        // conversation
+        h(
+          is_new_thread && h('status', h('status_folder', folder)),
+          h(
+            'page',
+            h(
+              scroll,
+              { ref: content },
+              h(
+                'page_content',
+                !is_new_thread &&
+                  h(
+                    'messages',
+                    map(render_conversation(thread), (message) =>
+                      h(
+                        'message',
+                        { role: message?.role },
+                        h(
+                          'message_content',
+                          {
+                            onclick() {
+                              copy(message.content)
+                            },
+                          },
+                          message?.reasoning &&
+                            should_show_reasoning &&
+                            h(
+                              'message_prose_reasoning',
+                              h(
+                                'details.',
+                                h('summary.', 'Reasoning'),
+                                h(
+                                  'message_prose_reasoning_details',
+                                  h(markdown, {
+                                    markdown: message?.reasoning ?? '',
+                                  }),
+                                ),
+                              ),
+                            ),
+                          h(
+                            'message_prose',
+                            h(markdown, { markdown: message?.content ?? '' }),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+              ),
+            ),
+          ),
+          h(
+            'prompt',
+            h(
+              'prompt_field',
+              { empty: !prompt },
+              h(
+                scroll,
+                h(
+                  'prompt_textarea',
+                  h(textarea, {
+                    value: prompt,
+                    set_value: set_prompt,
+                    ref: prompt_field,
+                  }),
+                ),
+              ),
+            ),
+          ),
+        ),
       ),
       h(modal_prompt, {
         open: modal_prompt_open,
@@ -436,6 +553,8 @@ declare global {
     | 'call_tool'
     | 'list'
     | 'hide'
+    | 'set_focus'
+    | 'edit'
 
   type event =
     | 'set_thread_index'
