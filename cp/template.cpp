@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 
+using namespace std;
+
 #define repeat(n) for (int _ = 0; _ < n; _ += 1)
 // closed interval
 #define each(i, a, b) for (int i = (a); i <= (b); i += 1)
@@ -19,37 +21,35 @@
 #define readstr(...)  \
   string __VA_ARGS__; \
   read(__VA_ARGS__);
-#define readchar(...)  \
-  char __VA_ARGS__; \
+#define readchar(...) \
+  char __VA_ARGS__;   \
   read(__VA_ARGS__);
-#define readseq(v, a, b) \
-  seq(v, b);        \
-  read_vec(v, a, b);
+
+#define readseq(a, l, r) \
+  seq(a, r);             \
+  read_vec(a, l, r);
 
 #define last(a) ((a).size() - 1)
 // #define append push_back
 
 const int modulo = 1e9 + 7;
-
 const int nil = -1;
-
 const int inf = 1e18;
 
 const int has_implemented = true;
 #define todo assert(has_implemented == false);
 
-using namespace std;
-
 // utils
 
 auto read(auto&&... variables) {
-  (cin >> ... >> variables);
+  ((cin >> variables), ...);
 }
 
-#define read_vec(vec, l, r) \
-  each(i, l, r) {           \
-    read(vec[i]);           \
+auto read_vec(auto&& a, int l, int r) {
+  each(i, l, r) {
+    read(a[i]);
   }
+}
 
 auto readline(auto&&... s) {
   cin >> ws;  // ignore any trailing whitespace
@@ -57,8 +57,7 @@ auto readline(auto&&... s) {
 }
 
 auto write(auto&&... items) {
-  (cout << ... << items);
-  // (cout << ... << items);
+  ((cout << items), ...);
 }
 
 auto pr(auto&&... items) {
@@ -70,18 +69,19 @@ auto prn() {
 }
 
 auto prn(auto&&... items) {
-  pr(items...);
+  (pr(items), ...);
 
   write('\n');
 }
 
-#define print prn
-
-#define prn_vec(vec, l, r) \
-  each(i, l, r) {          \
-    pr(vec[i]);            \
-  }                        \
+auto prn_vec(auto&& a, int l, int r) {
+  each(i, l, r) {
+    pr(a[i]);
+  }
   write('\n');
+}
+
+#define print prn
 
 // debug
 
@@ -140,15 +140,15 @@ auto sort_vec(auto&& vec, auto l, auto r, auto cmp) {
 
 auto format_float(auto number, auto precision) {
   char buf[64];
-  std::snprintf(buf, sizeof(buf), "%.*f", (precision), (double)(number));
-  return std::string(buf);
+  snprintf(buf, sizeof(buf), "%.*f", (precision), (double)(number));
+  return string(buf);
 }
 
 // math
 
 auto truediv = [](auto a, auto b) { return double(a) / b; };
 
-auto floordiv = [](auto a, auto b) { return std::floor(double(a) / b); };
+auto floordiv = [](auto a, auto b) { return floor(double(a) / b); };
 
 auto divmod = [](auto numerator, auto denominator) {
   auto quotient = numerator / denominator, remainder = numerator % denominator;
@@ -202,7 +202,7 @@ auto perm(int n, int r, int mod = modulo) {
   return result;
 }
 
-auto min_vec(auto&& vec, auto l, auto r) {
+auto min_seq(auto&& vec, auto l, auto r) {
   auto minimum = vec[l];
   each(i, l, r) {
     if (vec[i] < minimum) {
@@ -212,15 +212,15 @@ auto min_vec(auto&& vec, auto l, auto r) {
   return minimum;
 }
 
-auto min_(auto first, auto... rest) {
-  auto minimum = first;
+auto min_(auto... numbers) {
+  auto minimum = inf;
 
-  ((minimum = (rest < minimum) ? rest : minimum), ...);
+  ((minimum = (numbers < minimum) ? numbers : minimum), ...);
 
   return minimum;
 }
 
-auto max_vec(auto&& vec, auto l, auto r) {
+auto max_seq(auto&& vec, auto l, auto r) {
   auto maximum = vec[l];
   each(i, l, r) {
     if (vec[i] > maximum) {
@@ -230,20 +230,20 @@ auto max_vec(auto&& vec, auto l, auto r) {
   return maximum;
 }
 
-auto max_(auto first, auto... rest) {
-  auto maximum = first;
+auto max_(auto... numbers) {
+  auto maximum = -inf;
 
-  ((maximum = (rest > maximum) ? rest : maximum), ...);
+  ((maximum = (numbers > maximum) ? numbers : maximum), ...);
 
   return maximum;
 }
 
 auto floor_ = [](auto x) {
-  int result = std::floor(x);
+  int result = floor(x);
   return result;
 };
 auto ceil_ = [](auto x) {
-  int result = std::ceil(x);
+  int result = ceil(x);
   return result;
 };
 

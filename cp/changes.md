@@ -24,5 +24,25 @@ use consistent `((statement), ...);` syntax.
 
 easier to write.
 
+---
+
+use fn instead of define hack when possible.
+
+---
+
+simplify
+
+p
+
+```
+auto min_(auto first, auto... rest) {
+```
+
+c
+
+```
+auto min_(auto... numbers) {
+```
+
 > template 0.3
 
