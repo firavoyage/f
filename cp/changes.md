@@ -1,8 +1,8 @@
 changes
 
-nov 2026
+# nov 2026
 
-02
+## 02
 
 deprecate fp templates.
 
@@ -17,3 +17,12 @@ deprecate redundant math fn like `add` `sub` (which basically wraps they operato
 you do need summation occasionally, but you would likely to prefix sum it, it's o(n) worst case aw, but avoids all messy tles.
 
 it's easy to prefix sum.
+
+## 26
+
+use consistent `((statement), ...);` syntax.
+
+easier to write.
+
+> template 0.3
+

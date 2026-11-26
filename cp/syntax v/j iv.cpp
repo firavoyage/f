@@ -57,7 +57,7 @@ auto readline(auto&&... s) {
 }
 
 auto write(auto&&... items) {
-  (cout << ... << items);
+  ((cout << items), ...);
 }
 
 auto pr(auto&&... items) {
