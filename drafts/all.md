@@ -659,6 +659,7 @@ ux: <!-- ui/ux design, ia -->
 - select radio feeling
 - scroll spacebar instant jump smooth scroll continuous scroll full page scroll element based snapping
 - traditional methodology user research ia ixd visual design good bad examples
+- analog ux paper prototyping
 
 typography:
 
